@@ -1,0 +1,41 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "repository": "git@github.com:tihuan/components.git",
+  "author": "Timmy Huang <thuang@chanzuckerberg.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@rollup/plugin-typescript": "^8.2.0",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "babel-loader": "^8.2.2",
+    "prettier": "2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "rollup": "^2.40.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "typescript": "^4.2.3"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build-watch": "rollup -c -w",
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {}
+}
