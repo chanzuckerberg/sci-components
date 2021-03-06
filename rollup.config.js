@@ -2,17 +2,27 @@ import typescript from "@rollup/plugin-typescript";
 import del from "rollup-plugin-delete";
 import pkg from "./package.json";
 
-export default [
+const config = [
   {
+    external: Object.keys(pkg.peerDependencies || {}),
     input: "src/index.ts",
     output: [
-      { file: pkg.main, format: "cjs" },
-      { file: pkg.module, format: "esm" },
+      {
+        file: pkg.main,
+        format: "cjs",
+      },
+      {
+        file: pkg.module,
+        format: "esm",
+      },
     ],
     plugins: [
-      del({ targets: ["dist/*", "playground/src/components"] }),
+      del({
+        targets: ["dist/*", "playground/src/components"],
+      }),
       typescript(),
     ],
-    external: Object.keys(pkg.peerDependencies || {}),
   },
 ];
+
+export default config;
