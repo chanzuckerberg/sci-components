@@ -12,3 +12,15 @@ export const actions = {
 storiesOf("Button", module).add("default", () => (
   <Button {...actions}>{text}</Button>
 ));
+
+storiesOf("Button", module).add("primary", () => (
+  <Button {...actions} color="primary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("secondary", () => (
+  <Button {...actions} color="secondary">
+    {text}
+  </Button>
+));

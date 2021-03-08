@@ -2,9 +2,7 @@ import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
 
-// <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800" rel="stylesheet">
-
-export const themeOptions: ThemeOptions = {
+export const defaultThemeOptions: ThemeOptions = {
   palette: {
     primary: {
       dark: "#2b52cd",
@@ -47,6 +45,6 @@ export const themeOptions: ThemeOptions = {
   },
 };
 
-const defaultTheme = createMuiTheme(themeOptions);
+export const defaultTheme = createMuiTheme(defaultThemeOptions);
 
-export default defaultTheme;
+export default defaultThemeOptions;
