@@ -10,5 +10,5 @@ export const actions = {
 };
 
 storiesOf("Button", module).add("default", () => (
-  <Button text={text} {...actions} />
+  <Button {...actions}>{text}</Button>
 ));
