@@ -15,19 +15,19 @@ storiesOf("Button", module).add("default", () => (
 ));
 
 storiesOf("Button", module).add("primary", () => (
-  <Button onClick={actions.onClick} color="primary">
+  <Button variant="contained" onClick={actions.onClick} color="primary">
     {text}
   </Button>
 ));
 
 storiesOf("Button", module).add("secondary", () => (
-  <Button variant="outlined" disableElevation {...actions} color="primary">
+  <Button variant="outlined" disableElevation onClick={actions.onClick} color="primary">
     {text}
   </Button>
 ));
 
 storiesOf("Button", module).add("disabled", () => (
-  <Button variant="contained" disabled {...actions} color="primary">
+  <Button variant="contained" disabled onClick={actions.onClick} color="primary">
     {text}
   </Button>
 ));
@@ -37,7 +37,7 @@ storiesOf("Button", module).add("startIcon", () => (
     variant="contained"
     disableElevation
     startIcon={<DeleteIcon />}
-    {...actions}
+    onClick={actions.onClick}
     color="primary"
   >
     {text}
