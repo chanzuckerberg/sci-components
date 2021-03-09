@@ -1,4 +1,4 @@
-// https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+// https://robertcooper.me/post/using-eslint-and-prettier-in-a-typescript-project
 module.exports = {
   env: {
     browser: true,
@@ -10,20 +10,11 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-    "react-app",
+    "plugin:jsx-a11y/recommended",
+    "airbnb-typescript",
     "plugin:sonarjs/recommended",
     "plugin:jest-playwright/recommended",
-  ],
-  overrides: [
-    // Override some TypeScript rules just for .js files
-    {
-      files: ["*.js"],
-      rules: {
-        "@typescript-eslint/no-var-requires": "off", //
-      },
-    },
+    "plugin:prettier/recommended", // This always needs to be the last configuration in the extends array
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -33,15 +24,11 @@ module.exports = {
     ecmaVersion: 2020,
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module", // Allows for the use of imports
+    project: "./tsconfig.json",
   },
   plugins: ["@typescript-eslint", "react", "sonarjs"],
   rules: {
-    "@typescript-eslint/camelcase": 0,
-    // Disable prop-types as we use TypeScript for type checking
-    "@typescript-eslint/explicit-function-return-type": "off",
-    camelcase: "off",
     "react/jsx-no-target-blank": 0,
-    "react/prop-types": "off",
     "sort-keys": [
       "error",
       "asc",
@@ -50,6 +37,22 @@ module.exports = {
         minKeys: 2,
         natural: false,
       },
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        types: {
+          "React.FC": {
+            message:
+              "Use implicit return type, define props as parameters instead. More: https://github.com/facebook/create-react-app/pull/8177",
+            fixWith: "React.FC",
+          },
+        },
+      },
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { devDependencies: ["**/*.stories.ts", "**/*.stories.tsx"] },
     ],
   },
   settings: {
