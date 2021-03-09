@@ -1,4 +1,2 @@
-import Button from "./core/Button";
-
-// eslint-disable-next-line import/prefer-default-export -- more exports to come, disable once added
-export { Button };
+export * from "@material-ui/core";
+export * as Button from "./core/Button";
