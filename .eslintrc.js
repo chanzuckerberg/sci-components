@@ -10,7 +10,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:jsx-a11y/recommended",
     "airbnb-typescript",
     "plugin:sonarjs/recommended",
