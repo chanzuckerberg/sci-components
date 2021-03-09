@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import Button from "./";
+import Button from "./index";
 
 export const text = "Click me!";
 
@@ -10,17 +10,17 @@ export const actions = {
 };
 
 storiesOf("Button", module).add("default", () => (
-  <Button {...actions}>{text}</Button>
+  <Button onClick={actions.onClick}>{text}</Button>
 ));
 
 storiesOf("Button", module).add("primary", () => (
-  <Button {...actions} color="primary">
+  <Button onClick={actions.onClick} color="primary">
     {text}
   </Button>
 ));
 
 storiesOf("Button", module).add("secondary", () => (
-  <Button {...actions} color="secondary">
+  <Button onClick={actions.onClick} color="secondary">
     {text}
   </Button>
 ));
