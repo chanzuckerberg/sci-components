@@ -50,6 +50,10 @@ module.exports = {
         },
       },
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { devDependencies: ["**/*.stories.ts", "**/*.stories.tsx"] },
+    ],
   },
   settings: {
     react: {
