@@ -1,6 +1,5 @@
 import {
   default as createMuiTheme,
-  default as Shadows,
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
 
@@ -21,6 +20,7 @@ export const defaultThemeOptions: ThemeOptions = {
       disableRipple: true,
     },
   },
+  // shadows: 'none',
   shape: {
     borderRadius: 20,
   },
@@ -45,7 +45,6 @@ export const defaultThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: "Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif",
   },
-  shadows: Shadows.none,
 };
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
