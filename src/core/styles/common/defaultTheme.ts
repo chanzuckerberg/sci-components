@@ -46,5 +46,3 @@ export const defaultThemeOptions: ThemeOptions = {
 };
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
-
-export default defaultThemeOptions;
