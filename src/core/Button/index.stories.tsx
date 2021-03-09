@@ -1,3 +1,4 @@
+import DeleteIcon from "@material-ui/icons/Delete";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
@@ -20,7 +21,25 @@ storiesOf("Button", module).add("primary", () => (
 ));
 
 storiesOf("Button", module).add("secondary", () => (
-  <Button onClick={actions.onClick} color="secondary">
+  <Button variant="outlined" disableElevation {...actions} color="primary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("disabled", () => (
+  <Button variant="contained" disabled {...actions} color="primary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("startIcon", () => (
+  <Button
+    variant="contained"
+    disableElevation
+    startIcon={<DeleteIcon />}
+    {...actions}
+    color="primary"
+  >
     {text}
   </Button>
 ));

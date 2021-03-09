@@ -43,6 +43,7 @@ export const defaultThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: "Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif",
   },
+  // shadows: shadows[0]
 };
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
