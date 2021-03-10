@@ -1,14 +1,14 @@
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
-import { colors, corners, spacing, typography } from "../app/appTheme";
+import { colors, spacing, typography } from "../app/appTheme";
 
 export const defaultThemeOptions: ThemeOptions = {
   palette: {
     grey: {
-      500: colors.gray[500],
-      400: colors.gray[400],
-      300: colors.gray[300],
+      "300": colors.gray[300],
+      "400": colors.gray[400],
+      "500": colors.gray[500],
     },
     primary: {
       dark: colors.primary[500],
@@ -26,7 +26,7 @@ export const defaultThemeOptions: ThemeOptions = {
     },
   },
   shape: {
-    borderRadius: [corners.none, corners.s, corners.m, corners.l],
+    borderRadius: 4,
   },
   spacing: [
     spacing.default,
