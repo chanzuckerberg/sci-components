@@ -1,76 +1,76 @@
 export const colors = {
-  "primary": {
-    600: "#223F9C",
-    500: "#2B52CD",
-    400: "#3867FA",
-    300: "#A9BDFC",
-    200: "#EFF2FC",
-    100: "#F8F9FE"
+  black: "000000",
+  error: {
+    "100": "#FEF2F2",
+    "200": "#FBE8E8",
+    "400": "#DC132C",
+    "600": "#B70016",
   },
-  "secondary": {
-    400: "9BC74E"
+  gray: {
+    "100": "#F8F8F8",
+    "200": "#EAEAEA",
+    "300": "#CCCCCC",
+    "400": "#999999",
+    "500": "#767676",
+    "600": "#545454",
   },
-  "black": "000000",
-  "white": "FFFFFF",
-  "gray": {
-    600: "#545454",
-    500: "#767676",
-    400: "#999999",
-    300: "#CCCCCC",
-    200: "#EAEAEA",
-    100: "#F8F8F8"
+  info: {
+    "100": "#EFF2FC",
+    "200": "#EBEFFC",
+    "400": "#3867FA",
+    "600": "#223F9C",
   },
-  "info": {
-    600: "#223F9C",
-    400: "#3867FA",
-    200: "#EBEFFC",
-    100: "#EFF2FC"
+  primary: {
+    "100": "#F8F9FE",
+    "200": "#EFF2FC",
+    "300": "#A9BDFC",
+    "400": "#3867FA",
+    "500": "#2B52CD",
+    "600": "#223F9C",
   },
-  "success": {
-    600: "#1C7F48",
-    400: "#3CB371",
-    200: "#E6F7ED",
-    100: "#ECF5F0"
+  secondary: {
+    "400": "9BC74E",
   },
-  "warning": {
-    600: "#946314",
-    400: "#F5A623",
-    200: "#FFF3E1",
-    100: "#FCF6EC"
+  success: {
+    "100": "#ECF5F0",
+    "200": "#E6F7ED",
+    "400": "#3CB371",
+    "600": "#1C7F48",
   },
-  "error": {
-    600: "#B70016",
-    400: "#DC132C",
-    200: "#FBE8E8",
-    100: "#FEF2F2"
-  }
-}
+  warning: {
+    "100": "#FCF6EC",
+    "200": "#FFF3E1",
+    "400": "#F5A623",
+    "600": "#946314",
+  },
+  white: "FFFFFF",
+};
 
 export const textColors = {
-  "primary": colors.black,
-  "secondary": colors.gray[500],
-  "disabled": colors.gray[300]
-}
+  disabled: colors.gray[300],
+  primary: colors.black,
+  secondary: colors.gray[500],
+};
 
 export const spacing = {
   default: 10,
-  xxxs: 2,
-  xxs: 4,
-  xs: 6,
-  s: 8,
-  m: 10,
   l: 14,
+  m: 10,
+  s: 8,
   xl: 22,
-  xxl: 38
-}
+  xs: 6,
+  xxl: 38,
+  xxs: 4,
+  xxxs: 2,
+};
 
 export const corners = {
+  l: 20,
+  m: 4,
   none: 0,
   s: 2,
-  m: 4,
-  l: 20
-}
+};
 
 export const typography = {
-  primaryAppFont: "Open Sans"
-}
+  primaryAppFont: "Open Sans",
+};
