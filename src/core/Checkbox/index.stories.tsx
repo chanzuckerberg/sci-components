@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import Checkbox from ".";
+import Checkbox from "./index";
 
-export const actions = {
+const actions = {
   onClick: action("onClick"),
 };
 
@@ -19,5 +19,5 @@ const StyledCheckbox = styled(Checkbox)`
 `;
 
 storiesOf("Checkbox", module).add("primary", () => (
-  <StyledCheckbox color="primary" {...actions} />
+  <StyledCheckbox color="primary" onClick={actions.onClick} />
 ));

@@ -1,5 +1,4 @@
-import {
-  default as createMuiTheme,
+import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
 import { Shadows } from "@material-ui/core/styles/Shadows";
