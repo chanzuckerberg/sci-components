@@ -69,6 +69,5 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
-  },
-  "dependencies": {}
+  }
 }
