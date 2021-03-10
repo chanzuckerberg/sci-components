@@ -1,20 +1,19 @@
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
-
-import { colors, spacing, corners, typography } from "../app/appTheme";
+import { colors, corners, spacing, typography } from "../app/appTheme";
 
 export const defaultThemeOptions: ThemeOptions = {
   palette: {
+    grey: {
+      500: colors.gray[500],
+      400: colors.gray[400],
+      300: colors.gray[300],
+    },
     primary: {
       dark: colors.primary[500],
       light: colors.primary[300],
       main: colors.primary[400],
-    },
-    gray: {
-      dark: colors.gray[500],
-      light: colors.gray[400],
-      main: colors.gray[300],
     },
     secondary: {
       main: colors.secondary[400],
@@ -29,7 +28,17 @@ export const defaultThemeOptions: ThemeOptions = {
   shape: {
     borderRadius: [corners.none, corners.s, corners.m, corners.l],
   },
-  spacing: [spacing.default, spacing.xxxs, spacing.xxs, spacing.xs, spacing.s, spacing.m, spacing.l, spacing.xl, spacing.xxl],
+  spacing: [
+    spacing.default,
+    spacing.xxxs,
+    spacing.xxs,
+    spacing.xs,
+    spacing.s,
+    spacing.m,
+    spacing.l,
+    spacing.xl,
+    spacing.xxl,
+  ],
   transitions: {
     duration: {
       complex: 200,
@@ -48,8 +57,8 @@ export const defaultThemeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: `${typography.primaryAppFont}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`
-  }
+    fontFamily: `${typography.primaryAppFont}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+  },
 };
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
