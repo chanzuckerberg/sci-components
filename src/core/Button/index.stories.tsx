@@ -21,7 +21,7 @@ storiesOf("Button", module).add("primary", () => (
 ));
 
 storiesOf("Button", module).add("secondary", () => (
-  <Button variant="outlined" disableElevation onClick={actions.onClick} color="primary">
+  <Button variant="outlined" onClick={actions.onClick} color="primary">
     {text}
   </Button>
 ));
@@ -35,7 +35,6 @@ storiesOf("Button", module).add("disabled", () => (
 storiesOf("Button", module).add("startIcon", () => (
   <Button
     variant="contained"
-    disableElevation
     startIcon={<DeleteIcon />}
     onClick={actions.onClick}
     color="primary"
