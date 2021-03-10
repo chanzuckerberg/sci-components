@@ -11,7 +11,9 @@ export const actions = {
 };
 
 storiesOf("Button", module).add("default", () => (
-  <Button onClick={actions.onClick}>{text}</Button>
+  <Button variant="contained" onClick={actions.onClick}>
+    {text}
+  </Button>
 ));
 
 storiesOf("Button", module).add("primary", () => (
@@ -27,7 +29,12 @@ storiesOf("Button", module).add("secondary", () => (
 ));
 
 storiesOf("Button", module).add("disabled", () => (
-  <Button variant="contained" disabled onClick={actions.onClick} color="primary">
+  <Button
+    variant="contained"
+    disabled
+    onClick={actions.onClick}
+    color="primary"
+  >
     {text}
   </Button>
 ));
