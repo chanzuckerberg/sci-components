@@ -1,6 +1,9 @@
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
+import { Shadows } from "@material-ui/core/styles/shadows";
+
+const SHADOWS = Array.from(Array(25)).map(() => "none");
 
 export const defaultThemeOptions: ThemeOptions = {
   palette: {
@@ -19,6 +22,7 @@ export const defaultThemeOptions: ThemeOptions = {
       disableRipple: true,
     },
   },
+  shadows: SHADOWS as Shadows,
   shape: {
     borderRadius: 20,
   },
