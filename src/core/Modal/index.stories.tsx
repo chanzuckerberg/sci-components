@@ -5,7 +5,7 @@ import Modal, { WIDTHS } from "./index";
 
 export const text = "This is a modal";
 
-const DefaultModal = ({ width = WIDTHS.DEFAULT } = {}) => {
+const DefaultModal = ({ width = WIDTHS.DEFAULT }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -29,12 +29,15 @@ const DefaultModal = ({ width = WIDTHS.DEFAULT } = {}) => {
 storiesOf("Modal", module).add("narrow", () =>
   DefaultModal({ width: WIDTHS.NARROW })
 );
+
 storiesOf("Modal", module).add("default", () =>
   DefaultModal({ width: WIDTHS.DEFAULT })
 );
+
 storiesOf("Modal", module).add("wide", () =>
   DefaultModal({ width: WIDTHS.WIDE })
 );
+
 storiesOf("Modal", module).add("widest", () =>
   DefaultModal({ width: WIDTHS.WIDEST })
 );
