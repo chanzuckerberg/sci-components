@@ -18,7 +18,7 @@ const config = [
     ],
     plugins: [
       del({
-        targets: ["playground/src/components"],
+        targets: ["dist/*", "playground/src/components"],
       }),
       typescript(),
     ],
