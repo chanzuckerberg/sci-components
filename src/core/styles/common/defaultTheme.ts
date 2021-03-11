@@ -2,12 +2,24 @@ import { common } from "@material-ui/core/colors";
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
-import { Shadows } from "@material-ui/core/styles/shadows";
+import { TypographyStyle } from "@material-ui/core/styles/createTypography";
 
-const SHADOWS = Array.from(Array(25)).map(() => "none");
+enum FontWeight {
+  bold = 700,
+  light = 300,
+  medium = 800,
+  regular = 400,
+  semibold = 600,
+}
 
 const appTheme: AppTheme = {
   colors: {
+    beta: {
+      "100": "#F4F0F9",
+      "200": "#F0EBF6",
+      "400": "#7A41CE",
+      "600": "#693BAC",
+    },
     error: {
       "100": "#FEF2F2",
       "200": "#FBE8E8",
@@ -37,7 +49,7 @@ const appTheme: AppTheme = {
       "600": "#223F9C",
     },
     secondary: {
-      "400": "9BC74E",
+      "400": "#9BC74E",
     },
     success: {
       "100": "#ECF5F0",
@@ -58,7 +70,129 @@ const appTheme: AppTheme = {
     none: 0,
     s: 2,
   },
-  font: "Open Sans",
+  typography: {
+    fontFamily: "Open Sans",
+    styles: {
+      header: {
+        xxl: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 26,
+          lineHeight: "34px",
+          letterSpacing: "0.3px",
+        },
+        xl: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 22,
+          lineHeight: "30px",
+          letterSpacing: "0.3px",
+        },
+        l: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 18,
+          lineHeight: "24px",
+          letterSpacing: "0.3px",
+        },
+        m: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 16,
+          lineHeight: "22px",
+          letterSpacing: "0.3px",
+        },
+        s: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 14,
+          lineHeight: "20px",
+          letterSpacing: "0.3px",
+        },
+        xs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 13,
+          lineHeight: "18px",
+          letterSpacing: "0.3px",
+        },
+        xxs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 12,
+          lineHeight: "18px",
+          letterSpacing: "0.3px",
+        },
+        xxxs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 11,
+          lineHeight: "16px",
+          letterSpacing: "0.3px",
+        },
+      },
+      body: {
+        button: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 13,
+          lineHeight: "20px",
+          letterSpacing: "0.3px",
+          textTransform: "none",
+        },
+        l: {
+          fontWeight: FontWeight.regular,
+          fontSize: 18,
+          lineHeight: "28px",
+          letterSpacing: "0.3px",
+        },
+        m: {
+          fontWeight: FontWeight.regular,
+          fontSize: 16,
+          lineHeight: "26px",
+          letterSpacing: "0.3px",
+        },
+        s: {
+          fontWeight: FontWeight.regular,
+          fontSize: 14,
+          lineHeight: "24px",
+          letterSpacing: "0.3px",
+        },
+        xs: {
+          fontWeight: FontWeight.regular,
+          fontSize: 13,
+          lineHeight: "20px",
+          letterSpacing: "0.3px",
+        },
+        xxs: {
+          fontWeight: FontWeight.regular,
+          fontSize: 12,
+          lineHeight: "18px",
+          letterSpacing: "0.3px",
+        },
+        xxxs: {
+          fontWeight: FontWeight.regular,
+          fontSize: 11,
+          lineHeight: "16px",
+          letterSpacing: "0.3px",
+        },
+      },
+      caps: {
+        xxs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 12,
+          lineHeight: "18px",
+          letterSpacing: "1.0px",
+          textTransform: "uppercase",
+        },
+        xxxs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 11,
+          lineHeight: "16px",
+          letterSpacing: "1.0px",
+          textTransform: "uppercase",
+        },
+        xxxxs: {
+          fontWeight: FontWeight.semibold,
+          fontSize: 10,
+          lineHeight: "14px",
+          letterSpacing: "1.0px",
+          textTransform: "uppercase",
+        },
+      },
+    },
+  },
   spacing: {
     default: 10,
     l: 14,
@@ -75,6 +209,7 @@ const appTheme: AppTheme = {
 export const defaultThemeOptions: AppThemeOptions = {
   app: appTheme,
   palette: {
+    divider: appTheme.colors.gray[200],
     grey: {
       "100": appTheme.colors.gray[100],
       "200": appTheme.colors.gray[200],
@@ -103,7 +238,33 @@ export const defaultThemeOptions: AppThemeOptions = {
       disableRipple: true,
     },
   },
-  shadows: SHADOWS as Shadows,
+  shadows: [
+    "none",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+  ],
   shape: {
     borderRadius: appTheme.corners.m,
   },
@@ -136,7 +297,20 @@ export const defaultThemeOptions: AppThemeOptions = {
     },
   },
   typography: {
-    fontFamily: `${appTheme.font}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+    fontFamily: `${appTheme.typography.fontFamily}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+    h1: appTheme.typography.styles.header.xxl,
+    h2: appTheme.typography.styles.header.xl,
+    h3: appTheme.typography.styles.header.l,
+    h4: appTheme.typography.styles.header.m,
+    h5: appTheme.typography.styles.header.s,
+    h6: appTheme.typography.styles.header.xs,
+    body1: appTheme.typography.styles.body.xs,
+    body2: appTheme.typography.styles.body.xxs,
+    subtitle1: appTheme.typography.styles.body.xs,
+    subtitle2: appTheme.typography.styles.header.xxs,
+    button: appTheme.typography.styles.body.button,
+    caption: appTheme.typography.styles.body.xxxs,
+    overline: appTheme.typography.styles.caps.xxxs,
   },
 };
 
@@ -148,7 +322,37 @@ interface AppTheme {
   colors: Colors;
   corners: Corners;
   spacing: Spacing;
-  font: string;
+  typography: Typography;
+}
+
+interface Typography {
+  fontFamily: React.CSSProperties["fontFamily"];
+  styles: {
+    header: {
+      xxl: TypographyStyle;
+      xl: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    body: {
+      button: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    caps: {
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
+    };
+  };
 }
 
 interface Corners {
@@ -180,6 +384,7 @@ interface Color {
 }
 
 interface Colors {
+  beta: Color;
   primary: Color;
   secondary: Color;
   gray: Color;
