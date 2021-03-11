@@ -5,7 +5,7 @@ import Modal, { HEIGHTS, WIDTHS } from "./index";
 
 export const text = "This is a modal";
 
-const DefaultModal = ({ width = WIDTHS.DEFAULT, height = HEIGHTS.DEFAULT }) => {
+const SimpleModal = ({ width = WIDTHS.DEFAULT, height = HEIGHTS.DEFAULT }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -29,33 +29,33 @@ const DefaultModal = ({ width = WIDTHS.DEFAULT, height = HEIGHTS.DEFAULT }) => {
 };
 
 storiesOf("Modal", module).add("default", () =>
-  DefaultModal({ width: WIDTHS.DEFAULT })
+  SimpleModal({ width: WIDTHS.DEFAULT })
 );
 
 storiesOf("Modal", module).add("narrow", () =>
-  DefaultModal({ width: WIDTHS.NARROW })
+  SimpleModal({ width: WIDTHS.NARROW })
 );
 
 storiesOf("Modal", module).add("narrow tall", () =>
-  DefaultModal({ width: WIDTHS.NARROW, height: HEIGHTS.TALL })
+  SimpleModal({ width: WIDTHS.NARROW, height: HEIGHTS.TALL })
 );
 
 storiesOf("Modal", module).add("default tall", () =>
-  DefaultModal({ width: WIDTHS.DEFAULT, height: HEIGHTS.TALL })
+  SimpleModal({ width: WIDTHS.DEFAULT, height: HEIGHTS.TALL })
 );
 
 storiesOf("Modal", module).add("wide", () =>
-  DefaultModal({ width: WIDTHS.WIDE })
+  SimpleModal({ width: WIDTHS.WIDE })
 );
 
 storiesOf("Modal", module).add("wide tall", () =>
-  DefaultModal({ width: WIDTHS.WIDE, height: HEIGHTS.TALL })
+  SimpleModal({ width: WIDTHS.WIDE, height: HEIGHTS.TALL })
 );
 
 storiesOf("Modal", module).add("widest", () =>
-  DefaultModal({ width: WIDTHS.WIDEST })
+  SimpleModal({ width: WIDTHS.WIDEST })
 );
 
 storiesOf("Modal", module).add("widest tall", () =>
-  DefaultModal({ width: WIDTHS.WIDEST, height: HEIGHTS.TALL })
+  SimpleModal({ width: WIDTHS.WIDEST, height: HEIGHTS.TALL })
 );
