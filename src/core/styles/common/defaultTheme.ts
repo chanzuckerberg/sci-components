@@ -70,6 +70,23 @@ const appTheme: AppTheme = {
     none: 0,
     s: 2,
   },
+  shadows: {
+    l: "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    m: "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    none: "none",
+    s: "0 2px 4px 0 rbga (0,0,0, 0.25)",
+  },
+  spacing: {
+    default: 8,
+    l: 16,
+    m: 12,
+    s: 8,
+    xl: 24,
+    xs: 6,
+    xxl: 40,
+    xxs: 4,
+    xxxs: 2,
+  },
   typography: {
     fontFamily: "Open Sans",
     styles: {
@@ -193,17 +210,6 @@ const appTheme: AppTheme = {
       },
     },
   },
-  spacing: {
-    default: 10,
-    l: 14,
-    m: 10,
-    s: 8,
-    xl: 22,
-    xs: 6,
-    xxl: 38,
-    xxs: 4,
-    xxxs: 2,
-  },
 };
 
 export const defaultThemeOptions: AppThemeOptions = {
@@ -226,6 +232,26 @@ export const defaultThemeOptions: AppThemeOptions = {
     secondary: {
       main: appTheme.colors.secondary[400],
     },
+    error: {
+      dark: appTheme.colors.error[600],
+      light: appTheme.colors.error[200],
+      main: appTheme.colors.error[400],
+    },
+    info: {
+      dark: appTheme.colors.info[600],
+      light: appTheme.colors.info[200],
+      main: appTheme.colors.info[400],
+    },
+    warning: {
+      dark: appTheme.colors.warning[600],
+      light: appTheme.colors.warning[200],
+      main: appTheme.colors.warning[400],
+    },
+    success: {
+      dark: appTheme.colors.success[600],
+      light: appTheme.colors.success[200],
+      main: appTheme.colors.success[400],
+    },
     text: {
       disabled: appTheme.colors.gray[300],
       primary: common.black,
@@ -239,31 +265,31 @@ export const defaultThemeOptions: AppThemeOptions = {
     },
   },
   shadows: [
-    "none",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.25)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    "0 2px 12px 0 rbga (0,0,0, 0.3)",
+    appTheme.shadows.none,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
   ],
   shape: {
     borderRadius: appTheme.corners.m,
@@ -321,8 +347,16 @@ interface AppThemeOptions extends ThemeOptions {
 interface AppTheme {
   colors: Colors;
   corners: Corners;
+  shadows: Shadows;
   spacing: Spacing;
   typography: Typography;
+}
+
+interface Shadows {
+  none: "none";
+  s: string;
+  m: string;
+  l: string;
 }
 
 interface Typography {
