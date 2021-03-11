@@ -53,8 +53,8 @@ const SnackbarAlert = () => {
       </Button>
       <Snackbar
         anchorOrigin={{
-          vertical: "top",
           horizontal: "right",
+          vertical: "top",
         }}
         open={open}
         autoHideDuration={6000}
