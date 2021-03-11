@@ -37,7 +37,7 @@ const appTheme: AppTheme = {
       "600": "#223F9C",
     },
     secondary: {
-      "400": "9BC74E",
+      "400": "#9BC74E",
     },
     success: {
       "100": "#ECF5F0",

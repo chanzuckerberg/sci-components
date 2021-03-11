@@ -17,12 +17,10 @@ const SimpleDialog = ({ width = WIDTHS.DEFAULT, height = HEIGHTS.DEFAULT }) => {
         {width}, {height}
       </Button>
       <Dialog width={width} height={height} open={open} onClose={handleClose}>
-        <>
-          <h2 id="simple-Dialog-title">Text in a Dialog</h2>
-          <p id="simple-Dialog-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-        </>
+        <h2 id="simple-Dialog-title">Text in a Dialog</h2>
+        <p id="simple-Dialog-description">
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        </p>
       </Dialog>
     </div>
   );
