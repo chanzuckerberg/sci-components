@@ -17,10 +17,12 @@ const DefaultModal = ({ width = WIDTHS.DEFAULT, height = HEIGHTS.DEFAULT }) => {
         {width}, {height}
       </Button>
       <Modal width={width} height={height} open={open} onClose={handleClose}>
-        <h2 id="simple-modal-title">Text in a modal</h2>
-        <p id="simple-modal-description">
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </p>
+        <>
+          <h2 id="simple-modal-title">Text in a modal</h2>
+          <p id="simple-modal-description">
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </p>
+        </>
       </Modal>
     </div>
   );
