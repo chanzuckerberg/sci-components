@@ -1,26 +1,42 @@
 import styled from "@emotion/styled";
-import { Button, Snackbar } from "@material-ui/core";
+import { Snackbar } from "@material-ui/core";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import Button from "../Button";
+import { defaultTheme } from "../styles";
 import Alert from "./index";
 
 const StyledAlert = styled(Alert)`
-  border-radius: 4px;
-  color: black;
-  padding: 14px 14px 14px 9px;
+  margin: ${defaultTheme.spacing(5)}px 0;
+  border-radius: ${defaultTheme.spacing(1)};
+  color: ${defaultTheme.palette.text.primary};
+  padding: ${defaultTheme.spacing(6)}px ${defaultTheme.spacing(6)}px
+    ${defaultTheme.spacing(6)}px 9px;
   &.elevated {
     border-left: 5px solid;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     border-color: ${(props) =>
       props.severity === "info"
-        ? "#3867fa"
+        ? defaultTheme.palette.primary.main
         : props.severity === "warning"
-        ? `#f5a623`
+        ? defaultTheme.palette.warning.main
         : props.severity === "error"
-        ? "#dc132c"
-        : `#3cb371`};
+        ? defaultTheme.palette.error.main
+        : defaultTheme.palette.success.main};
+  }
+`;
+
+const DismissButton = styled(Button)`
+  margin-left: -${defaultTheme.spacing(3)}px;
+  padding-bottom: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  &:hover {
+    background: none;
   }
 `;
 
@@ -33,7 +49,7 @@ const SnackbarAlert = () => {
   return (
     <div>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        Open notification
+        Open alert
       </Button>
       <Snackbar
         anchorOrigin={{
@@ -43,12 +59,9 @@ const SnackbarAlert = () => {
         open={open}
         autoHideDuration={6000}
       >
-        <StyledAlert
-          className="elevated"
-          severity="info"
-          action={<Button onClick={handleClose}>DISMISS</Button>}
-        >
-          Hello!!
+        <StyledAlert className="elevated" severity="info">
+          <div>This is a snackbar alert!</div>
+          <DismissButton onClick={handleClose}>DISMISS</DismissButton>
         </StyledAlert>
       </Snackbar>
     </div>
@@ -56,70 +69,56 @@ const SnackbarAlert = () => {
 };
 
 storiesOf("Alert", module).add("default", () => (
-  <StyledAlert icon={<CheckCircleOutlineIcon />}>This is an alert!</StyledAlert>
-));
-
-storiesOf("Alert", module).add("snackbar alert", () => <SnackbarAlert />);
-
-storiesOf("Alert", module).add("elevated success", () => (
-  <StyledAlert
-    className="elevated"
-    severity="success"
-    icon={<CheckCircleOutlineIcon />}
-    action={<Button>DISMISS</Button>}
-  >
-    This is a success alert!
+  <StyledAlert icon={<CheckCircleOutlineIcon />} onClose={() => {}}>
+    This is an alert!
   </StyledAlert>
 ));
 
-storiesOf("Alert", module).add("flat success", () => (
-  <StyledAlert severity="success" icon={<CheckCircleOutlineIcon />}>
-    This is a success alert!
-  </StyledAlert>
+storiesOf("Alert", module).add("snackbar", () => <SnackbarAlert />);
+
+storiesOf("Alert", module).add("elevated", () => (
+  <div>
+    <StyledAlert
+      className="elevated"
+      severity="success"
+      icon={<CheckCircleOutlineIcon />}
+    >
+      This is a success alert!
+    </StyledAlert>
+    <StyledAlert
+      className="elevated"
+      icon={<ErrorOutlineIcon />}
+      severity="warning"
+    >
+      This is a warning alert!
+    </StyledAlert>
+    <StyledAlert className="elevated" severity="error">
+      This is an error alert!
+    </StyledAlert>
+    <StyledAlert
+      className="elevated"
+      severity="info"
+      icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
+    >
+      This is an info alert!
+    </StyledAlert>
+  </div>
 ));
 
-storiesOf("Alert", module).add("elevated warning", () => (
-  <StyledAlert
-    className="elevated"
-    icon={<ErrorOutlineIcon />}
-    severity="warning"
-    onClose={() => {}}
-  >
-    This is a warning alert!
-  </StyledAlert>
-));
-
-storiesOf("Alert", module).add("flat warning", () => (
-  <StyledAlert severity="warning" icon={<ErrorOutlineIcon />}>
-    This is a warning alert!
-  </StyledAlert>
-));
-
-storiesOf("Alert", module).add("elevated error", () => (
-  <StyledAlert className="elevated" severity="error">
-    This is an error alert!
-  </StyledAlert>
-));
-
-storiesOf("Alert", module).add("flat error", () => (
-  <StyledAlert severity="error">This is an error alert!</StyledAlert>
-));
-
-storiesOf("Alert", module).add("elevated info", () => (
-  <StyledAlert
-    className="elevated"
-    severity="info"
-    icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
-  >
-    This is an info alert!
-  </StyledAlert>
-));
-
-storiesOf("Alert", module).add("flat info", () => (
-  <StyledAlert
-    severity="info"
-    icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
-  >
-    This is an info alert!
-  </StyledAlert>
+storiesOf("Alert", module).add("flat", () => (
+  <div>
+    <StyledAlert severity="success" icon={<CheckCircleOutlineIcon />}>
+      This is a success alert!
+    </StyledAlert>
+    <StyledAlert severity="warning" icon={<ErrorOutlineIcon />}>
+      This is a warning alert!
+    </StyledAlert>
+    <StyledAlert severity="error">This is an error alert!</StyledAlert>
+    <StyledAlert
+      severity="info"
+      icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
+    >
+      This is an info alert!
+    </StyledAlert>
+  </div>
 ));
