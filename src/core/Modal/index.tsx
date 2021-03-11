@@ -12,16 +12,23 @@ export enum WIDTHS {
   WIDE = "Wide",
   WIDEST = "Widest",
 }
+
+export enum HEIGHTS {
+  NONE = "None",
+  DEFAULT = "Default",
+  TALL = "Tall",
+}
 export interface ModalProps extends RawModalProps {
   width?: WIDTHS;
+  height?: HEIGHTS;
 }
 
 const MODAL_CONTENT_CLASSNAME = "modal-content";
 
+// Values here are to be generalized from either appTheme.ts or defaultTheme.ts
 const StyledModal = styled(RawModal)<ModalProps>`
   & > .${MODAL_CONTENT_CLASSNAME} {
     width: ${({ width }) => {
-      console.log(width);
       switch (width) {
         case WIDTHS.NARROW:
           return "400px";
@@ -33,18 +40,29 @@ const StyledModal = styled(RawModal)<ModalProps>`
           return "1080px";
       }
     }};
-    height: 400px;
+    height: ${({ height }) => {
+      switch (height) {
+        case HEIGHTS.DEFAULT:
+          return "70vh";
+        case HEIGHTS.TALL:
+          return "85vh";
+      }
+    }};
+    min-height: ${({ height }) => (height === HEIGHTS.NONE ? "0px" : "400px")};
+    background-color: white;
+    padding: 38px;
   }
 `;
 
 const Modal = ({
   width = WIDTHS.DEFAULT,
+  height = HEIGHTS.DEFAULT,
   ...props
 }: ModalProps): JSX.Element => {
   return (
     <StylesProvider injectFirst>
       {/*  eslint-disable-next-line react/jsx-props-no-spreading -- disable prop spread for extension */}
-      <StyledModal width={width} {...props}>
+      <StyledModal width={width} height={height} {...props}>
         <div className={MODAL_CONTENT_CLASSNAME}>{props.children}</div>
       </StyledModal>
     </StylesProvider>
