@@ -17,15 +17,18 @@ const StyledAlert = styled(Alert)`
   &.elevated {
     border-left: 5px solid;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-    border-color: ${(props) =>
-      props.severity === "info"
-        ? defaultTheme.palette.primary.main
-        : props.severity === "warning"
-        ? defaultTheme.palette.warning.main
-        : props.severity === "error"
-        ? defaultTheme.palette.error.main
-        : defaultTheme.palette.success.main};
-  }
+    border-color: ${(props) => {
+      switch (props.severity) {
+        case "info":
+          return defaultTheme.palette.primary.main;
+        case "warning":
+          return defaultTheme.palette.warning.main;
+        case "error":
+          return defaultTheme.palette.error.main;
+        case "success":
+          return defaultTheme.palette.success.main;
+      }
+    }}
 `;
 
 const DismissButton = styled(Button)`
