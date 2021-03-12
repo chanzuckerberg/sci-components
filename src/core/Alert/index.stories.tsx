@@ -27,8 +27,11 @@ const StyledAlert = styled(Alert)`
           return defaultTheme.palette.error.main;
         case "success":
           return defaultTheme.palette.success.main;
+        default:
+          return defaultTheme.palette.primary.main;
       }
-    }}
+    }};
+  }
 `;
 
 const DismissButton = styled(Button)`
