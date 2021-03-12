@@ -16,7 +16,7 @@ const StyledAlert = styled(Alert)`
     ${defaultTheme.spacing(6)}px 9px;
   &.elevated {
     border-left: 5px solid;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: ${defaultTheme.shadows[1]};
     border-color: ${(props) => {
       switch (props.severity) {
         case "info":
