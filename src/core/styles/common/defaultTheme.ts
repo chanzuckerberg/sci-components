@@ -71,10 +71,10 @@ const appTheme: AppTheme = {
     s: 2,
   },
   shadows: {
-    l: "0 2px 12px 0 rbga (0,0,0, 0.3)",
-    m: "0 2px 4px 0 rbga (0,0,0, 0.15), 0 2px 10px 0 rbga (0,0,0, 0.15)",
+    l: "0 2px 12px 0 rbga(0,0,0, 0.3)",
+    m: "0 2px 4px 0 rbga(0,0,0, 0.15), 0 2px 10px 0 rbga(0,0,0, 0.15)",
     none: "none",
-    s: "0 2px 4px 0 rbga (0,0,0, 0.25)",
+    s: "0 2px 4px 0 rbga(0,0,0, 0.25)",
   },
   spacing: {
     default: 8,
