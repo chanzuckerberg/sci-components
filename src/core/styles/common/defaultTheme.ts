@@ -2,9 +2,24 @@ import { common } from "@material-ui/core/colors";
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
+import { TypographyStyle } from "@material-ui/core/styles/createTypography";
+
+enum FontWeight {
+  bold = 700,
+  light = 300,
+  medium = 800,
+  regular = 400,
+  semibold = 600,
+}
 
 const appTheme: AppTheme = {
   colors: {
+    beta: {
+      "100": "#F4F0F9",
+      "200": "#F0EBF6",
+      "400": "#7A41CE",
+      "600": "#693BAC",
+    },
     error: {
       "100": "#FEF2F2",
       "200": "#FBE8E8",
@@ -55,29 +70,157 @@ const appTheme: AppTheme = {
     none: 0,
     s: 2,
   },
-  font: "Open Sans",
+  shadows: {
+    l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
+    m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
+    none: "none",
+    s: "0 2px 4px 0 rgba(0,0,0, 0.25)",
+  },
   spacing: {
-    default: 10,
-    l: 14,
-    m: 10,
+    default: 8,
+    l: 16,
+    m: 12,
     s: 8,
-    xl: 22,
+    xl: 24,
     xs: 6,
-    xxl: 38,
+    xxl: 40,
     xxs: 4,
     xxxs: 2,
   },
+  typography: {
+    fontFamily: "Open Sans",
+    styles: {
+      body: {
+        button: {
+          fontSize: 13,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "20px",
+          textTransform: "none",
+        },
+        l: {
+          fontSize: 18,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "28px",
+        },
+        m: {
+          fontSize: 16,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "26px",
+        },
+        s: {
+          fontSize: 14,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontSize: 13,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "20px",
+        },
+        xxs: {
+          fontSize: 12,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "18px",
+        },
+        xxxs: {
+          fontSize: 11,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.3px",
+          lineHeight: "16px",
+        },
+      },
+      caps: {
+        xxs: {
+          fontSize: 12,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "1.0px",
+          lineHeight: "18px",
+          textTransform: "uppercase",
+        },
+        xxxs: {
+          fontSize: 11,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "1.0px",
+          lineHeight: "16px",
+          textTransform: "uppercase",
+        },
+        xxxxs: {
+          fontSize: 10,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "1.0px",
+          lineHeight: "14px",
+          textTransform: "uppercase",
+        },
+      },
+      header: {
+        l: {
+          fontSize: 18,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "24px",
+        },
+        m: {
+          fontSize: 16,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "22px",
+        },
+        s: {
+          fontSize: 14,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "20px",
+        },
+        xl: {
+          fontSize: 22,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "30px",
+        },
+        xs: {
+          fontSize: 13,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "18px",
+        },
+        xxl: {
+          fontSize: 26,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "34px",
+        },
+        xxs: {
+          fontSize: 12,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "18px",
+        },
+        xxxs: {
+          fontSize: 11,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.3px",
+          lineHeight: "16px",
+        },
+      },
+    },
+  },
 };
-
-enum Shadows {
-  A = "0 2px 4px 0 rgba(0,0,0, 0.25)",
-  B = "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
-  C = "0 2px 12px 0 rgba(0,0,0, 0.3)",
-}
 
 export const defaultThemeOptions: AppThemeOptions = {
   app: appTheme,
   palette: {
+    divider: appTheme.colors.gray[200],
+    error: {
+      dark: appTheme.colors.error[600],
+      light: appTheme.colors.error[200],
+      main: appTheme.colors.error[400],
+    },
     grey: {
       "100": appTheme.colors.gray[100],
       "200": appTheme.colors.gray[200],
@@ -85,6 +228,11 @@ export const defaultThemeOptions: AppThemeOptions = {
       "400": appTheme.colors.gray[400],
       "500": appTheme.colors.gray[500],
       "600": appTheme.colors.gray[600],
+    },
+    info: {
+      dark: appTheme.colors.info[600],
+      light: appTheme.colors.info[200],
+      main: appTheme.colors.info[400],
     },
     primary: {
       dark: appTheme.colors.primary[600],
@@ -94,12 +242,22 @@ export const defaultThemeOptions: AppThemeOptions = {
     secondary: {
       main: appTheme.colors.secondary[400],
     },
+    success: {
+      dark: appTheme.colors.success[600],
+      light: appTheme.colors.success[200],
+      main: appTheme.colors.success[400],
+    },
     text: {
       disabled: appTheme.colors.gray[300],
       primary: common.black,
       secondary: appTheme.colors.gray[500],
     },
     type: "light",
+    warning: {
+      dark: appTheme.colors.warning[600],
+      light: appTheme.colors.warning[200],
+      main: appTheme.colors.warning[400],
+    },
   },
   props: {
     MuiButtonBase: {
@@ -107,31 +265,31 @@ export const defaultThemeOptions: AppThemeOptions = {
     },
   },
   shadows: [
-    "none",
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.A,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.B,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
-    Shadows.C,
+    appTheme.shadows.none,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.s,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.m,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
+    appTheme.shadows.l,
   ],
   shape: {
     borderRadius: appTheme.corners.m,
@@ -165,7 +323,20 @@ export const defaultThemeOptions: AppThemeOptions = {
     },
   },
   typography: {
-    fontFamily: `${appTheme.font}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+    body1: appTheme.typography.styles.body.xs,
+    body2: appTheme.typography.styles.body.xxs,
+    button: appTheme.typography.styles.body.button,
+    caption: appTheme.typography.styles.body.xxxs,
+    fontFamily: `${appTheme.typography.fontFamily}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+    h1: appTheme.typography.styles.header.xxl,
+    h2: appTheme.typography.styles.header.xl,
+    h3: appTheme.typography.styles.header.l,
+    h4: appTheme.typography.styles.header.m,
+    h5: appTheme.typography.styles.header.s,
+    h6: appTheme.typography.styles.header.xs,
+    overline: appTheme.typography.styles.caps.xxxs,
+    subtitle1: appTheme.typography.styles.body.xs,
+    subtitle2: appTheme.typography.styles.header.xxs,
   },
 };
 
@@ -176,8 +347,46 @@ interface AppThemeOptions extends ThemeOptions {
 interface AppTheme {
   colors: Colors;
   corners: Corners;
+  shadows: Shadows;
   spacing: Spacing;
-  font: string;
+  typography: Typography;
+}
+
+interface Shadows {
+  none: "none";
+  s: string;
+  m: string;
+  l: string;
+}
+
+interface Typography {
+  fontFamily: React.CSSProperties["fontFamily"];
+  styles: {
+    header: {
+      xxl: TypographyStyle;
+      xl: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    body: {
+      button: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    caps: {
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
+    };
+  };
 }
 
 interface Corners {
@@ -209,6 +418,7 @@ interface Color {
 }
 
 interface Colors {
+  beta: Color;
   primary: Color;
   secondary: Color;
   gray: Color;
