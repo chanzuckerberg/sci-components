@@ -1,24 +1,14 @@
 /* eslint-disable no-use-before-define */
-import { Select, SelectProps } from "@material-ui/core";
+import { InputLabel, Select, SelectProps } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./index";
 
-const useStyles = makeStyles((theme) => ({
-  /* stylelint-disable-next-line */
-  formControl: {
-    margin: theme.spacing(1),
-    maxWidth: 300,
-    minWidth: 120,
-  },
-}));
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
+
 const MenuProps = {
   PaperProps: {
     style: {
@@ -41,6 +31,30 @@ const PERSONS = [
   { name: "Timmy Huang", number: 10 },
 ];
 
+function renderMenuItems(personName: string[]) {
+  return PERSONS.map((person) => {
+    const { name, number } = person;
+    return (
+      <MenuItem
+        key={name}
+        text={name}
+        value={name}
+        column={number}
+        selected={personName.includes(name)}
+      />
+    );
+  });
+}
+
+const useStyles = makeStyles((theme) => ({
+  /* stylelint-disable-next-line */
+  formControl: {
+    margin: theme.spacing(5),
+    maxWidth: 300,
+    minWidth: 120,
+  },
+}));
+
 function MultipleSelect() {
   const classes = useStyles();
   const [personName, setPersonName] = React.useState<string[]>([]);
@@ -52,32 +66,59 @@ function MultipleSelect() {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-name-label">Name</InputLabel>
+        <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
         <Select
-          labelId="demo-mutiple-name-label"
-          id="demo-mutiple-name"
+          MenuProps={MenuProps}
           multiple
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
           value={personName}
           onChange={handleChange}
-          input={<Input />}
-          MenuProps={MenuProps}
+          label="Name"
           renderValue={(selected) => {
             return (selected as string[]).join(", ");
           }}
         >
-          {PERSONS.map((person) => {
-            const { name, number } = person;
+          {renderMenuItems(personName)}
+        </Select>
+      </FormControl>
 
-            return (
-              <MenuItem
-                key={name}
-                text={name}
-                value={name}
-                column={number}
-                selected={personName.includes(name)}
-              />
-            );
-          })}
+      <br />
+
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          multiple
+          value={personName}
+          onChange={handleChange}
+          MenuProps={MenuProps}
+          label="Name"
+          renderValue={(selected) => {
+            return (selected as string[]).join(", ");
+          }}
+        >
+          {renderMenuItems(personName)}
+        </Select>
+      </FormControl>
+
+      <br />
+
+      <FormControl variant="filled" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-filled-label">Name</InputLabel>
+        <Select
+          MenuProps={MenuProps}
+          multiple
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          value={personName}
+          onChange={handleChange}
+          renderValue={(selected) => {
+            return (selected as string[]).join(", ");
+          }}
+        >
+          {renderMenuItems(personName)}
         </Select>
       </FormControl>
     </div>
