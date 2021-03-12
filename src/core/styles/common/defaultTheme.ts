@@ -2,9 +2,6 @@ import { common } from "@material-ui/core/colors";
 import createMuiTheme, {
   ThemeOptions,
 } from "@material-ui/core/styles/createMuiTheme";
-import { Shadows } from "@material-ui/core/styles/shadows";
-
-const SHADOWS = Array.from(Array(25)).map(() => "none");
 
 const appTheme: AppTheme = {
   colors: {
@@ -72,6 +69,12 @@ const appTheme: AppTheme = {
   },
 };
 
+enum Shadows {
+  A = "0 2px 4px 0 rgba(0,0,0, 0.25)",
+  B = "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
+  C = "0 2px 12px 0 rgba(0,0,0, 0.3)",
+}
+
 export const defaultThemeOptions: AppThemeOptions = {
   app: appTheme,
   palette: {
@@ -103,7 +106,33 @@ export const defaultThemeOptions: AppThemeOptions = {
       disableRipple: true,
     },
   },
-  shadows: SHADOWS as Shadows,
+  shadows: [
+    "none",
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.A,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.B,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+    Shadows.C,
+  ],
   shape: {
     borderRadius: appTheme.corners.m,
   },
