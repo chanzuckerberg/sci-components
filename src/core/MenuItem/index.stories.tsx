@@ -1,29 +1,19 @@
 /* eslint-disable no-use-before-define */
-import { Select } from "@material-ui/core";
+import { Select, SelectProps } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
-import { FontWeights } from "../styles/common/constants/fontWeights";
 import MenuItem from "./index";
 
 const useStyles = makeStyles((theme) => ({
-  chip: {
-    margin: 2,
-  },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
+  /* stylelint-disable-next-line */
   formControl: {
     margin: theme.spacing(1),
     maxWidth: 300,
     minWidth: 120,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
   },
 }));
 
@@ -51,21 +41,12 @@ const PERSONS = [
   { name: "Timmy Huang", number: 10 },
 ];
 
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : FontWeights.SEMI_BOLD,
-  };
-}
-
 function MultipleSelect() {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = React.useState<string[]>([]);
 
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
+  const handleChange: SelectProps["onChange"] = (event) => {
+    setPersonName(event.target.value as string[]);
   };
 
   return (
@@ -81,7 +62,7 @@ function MultipleSelect() {
           input={<Input />}
           MenuProps={MenuProps}
           renderValue={(selected) => {
-            return selected.join(", ");
+            return (selected as string[]).join(", ");
           }}
         >
           {PERSONS.map((person) => {

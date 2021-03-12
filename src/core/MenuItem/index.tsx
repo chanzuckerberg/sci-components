@@ -14,11 +14,11 @@ interface Props extends MenuItemProps {
   text: string;
 }
 
-const MenuItem = forwardRef((props: Props, ref) => {
+const MenuItem = forwardRef((props: Props) => {
   const { column, selected, text } = props;
 
   return (
-    <RawMenuItem {...props} ref={ref}>
+    <RawMenuItem {...(props as unknown)}>
       <Checkbox
         icon={icon}
         checkedIcon={checkedIcon}

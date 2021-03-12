@@ -11,10 +11,14 @@ export const ContentWrapper = styled.span`
   width: 100%;
 `;
 
+interface TextWrapperProps {
+  selected: boolean;
+}
+
 export const TextWrapper = styled.span`
   ${fontXs}
   color: ${Black.DEFAULT};
-  font-weight: ${({ selected }) =>
+  font-weight: ${({ selected }: TextWrapperProps) =>
     selected ? FontWeights.SEMI_BOLD : FontWeights.REGULAR};
 `;
 
