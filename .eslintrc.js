@@ -22,13 +22,34 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2020,
-    // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of imports
+    // Allows for the use of imports
     project: "./tsconfig.json",
+    // Allows for the parsing of modern ECMAScript features
+    sourceType: "module",
   },
   plugins: ["@typescript-eslint", "react", "sonarjs"],
   rules: {
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        types: {
+          "React.FC": {
+            fixWith: "React.FC",
+            message:
+              "Use implicit return type, define props as parameters instead. More: https://github.com/facebook/create-react-app/pull/8177",
+          },
+        },
+      },
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: ["**/*.stories.ts", "**/*.stories.tsx"],
+      },
+    ],
+    "import/prefer-default-export": "off",
     "react/jsx-no-target-blank": 0,
+    "react/jsx-props-no-spreading": 0,
     "sort-keys": [
       "error",
       "asc",
@@ -37,22 +58,6 @@ module.exports = {
         minKeys: 2,
         natural: false,
       },
-    ],
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        types: {
-          "React.FC": {
-            message:
-              "Use implicit return type, define props as parameters instead. More: https://github.com/facebook/create-react-app/pull/8177",
-            fixWith: "React.FC",
-          },
-        },
-      },
-    ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { devDependencies: ["**/*.stories.ts", "**/*.stories.tsx"] },
     ],
   },
   settings: {
