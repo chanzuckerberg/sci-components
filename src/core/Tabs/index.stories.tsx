@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 import React, { useState } from "react";
-import { Tab, Tabs, TabsProps } from "./index";
+import Tabs, { Tab, TabsProps } from "./index";
 
 export default {
   component: Tabs,
@@ -22,16 +22,16 @@ const Template: Story<TabsArgs> = ({
     event: React.SyntheticEvent,
     tabsValue: unknown
   ) => {
-    console.log("hello");
-    console.log({ tabsValue });
     setValue(tabsValue as number);
   };
   return (
+    /* eslint-disable react/jsx-props-no-spreading,  @typescript-eslint/ban-ts-comment -- Need to spread and disable ts-ignore */
     // @ts-ignore -- mui-org/material-ui/issues/17454 will be fixed in 5.x
     <Tabs value={value} onChange={handleTabsChange} {...args}>
       <Tab label={tabOneLabel} />
       <Tab label={tabTwoLabel} />
     </Tabs>
+    /* eslint-disable react/jsx-props-no-spreading,  @typescript-eslint/ban-ts-comment -- Need to spread and disable ts-ignore */
   );
 };
 export const Default = Template.bind({});
