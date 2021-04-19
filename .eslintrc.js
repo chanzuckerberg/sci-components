@@ -41,6 +41,13 @@ module.exports = {
         },
       },
     ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
+    ],
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -48,6 +55,8 @@ module.exports = {
       },
     ],
     "import/prefer-default-export": "off",
+    // (thuang): Disable this line for `@typescript-eslint/no-unused-vars` to work
+    "no-unused-vars": "off",
     "react/jsx-no-target-blank": 0,
     "react/jsx-props-no-spreading": 0,
     "sort-keys": [

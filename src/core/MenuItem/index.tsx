@@ -1,41 +1,80 @@
-import Checkbox from "@material-ui/core/Checkbox";
-import RawMenuItem, { MenuItemProps } from "@material-ui/core/MenuItem";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import {
+  Checkbox,
+  Icon as RawIcon,
+  IconTypeMap,
+  MenuItemProps as RawMenuItemProps,
+} from "@material-ui/core";
+import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+import { Check, CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
 import React, { forwardRef } from "react";
-import { ColumnWrapper, ContentWrapper, TextWrapper } from "./style";
+import {
+  ColumnWrapper,
+  ContentWrapper,
+  StyledMenuItem,
+  TextWrapper,
+} from "./style";
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
-
-interface Props extends MenuItemProps {
+export interface ExtraProps {
   column?: React.ReactNode;
-  selected: boolean;
-  text: string;
+  isMultiSelect?: boolean;
+  isMultiSelectCheckbox?: boolean;
 }
 
-const MenuItem = forwardRef((props: Props) => {
-  const { column, selected, text } = props;
+export type MenuItemProps = ExtraProps & RawMenuItemProps;
+
+const MenuItem = forwardRef((props: MenuItemProps, _) => {
+  const {
+    children,
+    column,
+    isMultiSelect,
+    isMultiSelectCheckbox,
+    ...originalMenuItemProps
+  } = props;
+
+  const { selected = false } = originalMenuItemProps as MenuItemProps;
+
+  let Icon:
+    | OverridableComponent<IconTypeMap<Record<string, unknown>, "span">>
+    | OverridableComponent<IconTypeMap<Record<string, unknown>, "svg">>
+    | null = null;
+  let CheckedIcon;
+
+  if (isMultiSelect) {
+    Icon = RawIcon;
+    CheckedIcon = Check;
+  } else if (isMultiSelectCheckbox) {
+    Icon = CheckBoxOutlineBlank as OverridableComponent<
+      IconTypeMap<Record<string, unknown>, "svg">
+    >;
+    CheckedIcon = CheckBox;
+  }
+
+  const hasCheckbox = isMultiSelect || isMultiSelectCheckbox;
 
   return (
-    <RawMenuItem {...(props as unknown)}>
-      <Checkbox
-        icon={icon}
-        checkedIcon={checkedIcon}
-        style={{ marginRight: 8 }}
-        checked={selected}
-        color="primary"
-      />
+    <StyledMenuItem {...(originalMenuItemProps as unknown)}>
+      {hasCheckbox && (
+        <Checkbox
+          icon={Icon && <Icon fontSize="small" />}
+          checkedIcon={CheckedIcon && <CheckedIcon fontSize="small" />}
+          style={{ marginRight: 8 }}
+          checked={selected}
+          color="primary"
+        />
+      )}
+
       <ContentWrapper>
-        <TextWrapper selected={selected}>{text}</TextWrapper>
+        <TextWrapper selected={selected}>{children}</TextWrapper>
         {column && <ColumnWrapper>{column}</ColumnWrapper>}
       </ContentWrapper>
-    </RawMenuItem>
+    </StyledMenuItem>
   );
 });
 
 MenuItem.defaultProps = {
   column: null,
+  isMultiSelect: false,
+  isMultiSelectCheckbox: false,
 };
 
 export default MenuItem;

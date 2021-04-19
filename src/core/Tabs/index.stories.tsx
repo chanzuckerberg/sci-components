@@ -18,23 +18,23 @@ const Template: Story<TabsArgs> = ({
   ...args
 }: TabsArgs) => {
   const [value, setValue] = useState(0);
+
   const handleTabsChange = (
-    event: React.SyntheticEvent,
-    tabsValue: unknown
+    _: React.ChangeEvent<Record<string, unknown>>,
+    tabsValue: never
   ) => {
     setValue(tabsValue as number);
   };
+
   return (
-    /* eslint-disable react/jsx-props-no-spreading,  @typescript-eslint/ban-ts-comment -- Need to spread and disable ts-ignore */
-    // @ts-ignore -- mui-org/material-ui/issues/17454 will be fixed in 5.x
-    <Tabs value={value} onChange={handleTabsChange} {...args}>
+    <Tabs {...args} value={value} onChange={handleTabsChange}>
       <Tab label={tabOneLabel} />
       <Tab label={tabTwoLabel} />
     </Tabs>
-    /* eslint-disable react/jsx-props-no-spreading,  @typescript-eslint/ban-ts-comment -- Need to spread and disable ts-ignore */
   );
 };
 export const Default = Template.bind({});
+
 Default.args = {
   tabOneLabel: "Upload from Your Computer",
   tabTwoLabel: "Upload from Basespace",
