@@ -1,3 +1,3 @@
-import { defaultTheme, defaultThemeOptions } from "./common/defaultTheme";
-
-export { defaultThemeOptions, defaultTheme };
+export * from "./common/defaultTheme";
+export * from "./common/mixins/body";
+export * from "./common/selectors/theme";

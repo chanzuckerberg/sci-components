@@ -2,9 +2,10 @@
 import { InputLabel, Select, SelectProps } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
-import { storiesOf } from "@storybook/react";
+import { Args, storiesOf, Story } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./index";
+import { DemoWrapper } from "./style";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -34,14 +35,16 @@ const PERSONS = [
 function renderMenuItems(personName: string[]) {
   return PERSONS.map((person) => {
     const { name, number } = person;
+
     return (
       <MenuItem
         key={name}
-        text={name}
         value={name}
         column={number}
         selected={personName.includes(name)}
-      />
+      >
+        {name}
+      </MenuItem>
     );
   });
 }
@@ -124,6 +127,63 @@ function MultipleSelect() {
     </div>
   );
 }
+
+const Demo = (props: Args): JSX.Element => (
+  <DemoWrapper>
+    <MenuItem {...props} />
+  </DemoWrapper>
+);
+
+export default {
+  component: Demo,
+  title: "MenuItem",
+};
+
+const Template: Story = (args) => <Demo {...args} />;
+
+export const Default = Template.bind({});
+
+Default.args = {
+  children: "text here",
+  value: "value-here",
+};
+
+export const WithColumn = Template.bind({});
+
+WithColumn.args = {
+  ...Default.args,
+  column: "column value",
+};
+
+export const WithMultiSelect = Template.bind({});
+
+WithMultiSelect.args = {
+  ...Default.args,
+  isMultiSelect: true,
+};
+
+export const WithMultiSelectSelected = Template.bind({});
+
+WithMultiSelectSelected.args = {
+  ...Default.args,
+  isMultiSelect: true,
+  selected: true,
+};
+
+export const WithMultiSelectCheckbox = Template.bind({});
+
+WithMultiSelectCheckbox.args = {
+  ...Default.args,
+  isMultiSelectCheckbox: true,
+};
+
+export const WithMultiSelectCheckboxSelected = Template.bind({});
+
+WithMultiSelectCheckboxSelected.args = {
+  ...Default.args,
+  isMultiSelectCheckbox: true,
+  selected: true,
+};
 
 const MenuItemStories = storiesOf("MenuItem", module);
 

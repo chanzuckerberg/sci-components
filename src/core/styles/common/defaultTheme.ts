@@ -1,8 +1,8 @@
-import { common } from "@material-ui/core/colors";
-import createMuiTheme, {
-  ThemeOptions,
-} from "@material-ui/core/styles/createMuiTheme";
+import { colors } from "@material-ui/core";
+import { createMuiTheme, ThemeOptions } from "@material-ui/core/styles";
 import { TypographyStyle } from "@material-ui/core/styles/createTypography";
+
+const { common } = colors;
 
 enum FontWeight {
   bold = 700,
@@ -70,6 +70,13 @@ const appTheme: AppTheme = {
     none: 0,
     s: 2,
   },
+  fontWeights: {
+    bold: 700,
+    light: 300,
+    medium: 800,
+    regular: 400,
+    semibold: 600,
+  },
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
     m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
@@ -77,13 +84,13 @@ const appTheme: AppTheme = {
     s: "0 2px 4px 0 rgba(0,0,0, 0.25)",
   },
   spacing: {
-    default: 8,
-    l: 16,
-    m: 12,
+    default: 10,
+    l: 14,
+    m: 10,
     s: 8,
-    xl: 24,
+    xl: 22,
     xs: 6,
-    xxl: 40,
+    xxl: 38,
     xxs: 4,
     xxxs: 2,
   },
@@ -340,15 +347,16 @@ export const defaultThemeOptions: AppThemeOptions = {
   },
 };
 
-interface AppThemeOptions extends ThemeOptions {
-  app: AppTheme;
+export interface AppThemeOptions extends ThemeOptions {
+  app?: AppTheme;
 }
 
 interface AppTheme {
   colors: Colors;
   corners: Corners;
+  fontWeights: FontWeights;
   shadows: Shadows;
-  spacing: Spacing;
+  spacing: Spacings;
   typography: Typography;
 }
 
@@ -359,7 +367,7 @@ interface Shadows {
   l: string;
 }
 
-interface Typography {
+export interface Typography {
   fontFamily: React.CSSProperties["fontFamily"];
   styles: {
     header: {
@@ -389,14 +397,21 @@ interface Typography {
   };
 }
 
-interface Corners {
+export interface FontWeights {
+  bold: number;
+  light: number;
+  medium: number;
+  regular: number;
+  semibold: number;
+}
+export interface Corners {
   none: number;
   s: number;
   m: number;
   l: number;
 }
 
-interface Spacing {
+export interface Spacings {
   default: number;
   xxxs: number;
   xxs: number;
@@ -408,7 +423,7 @@ interface Spacing {
   xxl: number;
 }
 
-interface Color {
+export interface Color {
   600?: string;
   500?: string;
   400: string;
@@ -417,7 +432,7 @@ interface Color {
   100?: string;
 }
 
-interface Colors {
+export interface Colors {
   beta: Color;
   primary: Color;
   secondary: Color;

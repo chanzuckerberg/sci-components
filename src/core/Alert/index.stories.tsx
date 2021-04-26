@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { Snackbar } from "@material-ui/core";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import { CheckCircleOutline, ErrorOutline } from "@material-ui/icons";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import { defaultTheme } from "../styles";
+import { defaultTheme } from "../styles/common/defaultTheme";
 import Alert from "./index";
 
 const StyledAlert = styled(Alert)`
@@ -75,7 +74,7 @@ const SnackbarAlert = () => {
 };
 
 storiesOf("Alert", module).add("default", () => (
-  <StyledAlert icon={<CheckCircleOutlineIcon />} onClose={() => {}}>
+  <StyledAlert icon={<CheckCircleOutline />} onClose={() => {}}>
     This is an alert!
   </StyledAlert>
 ));
@@ -87,13 +86,13 @@ storiesOf("Alert", module).add("elevated", () => (
     <StyledAlert
       className="elevated"
       severity="success"
-      icon={<CheckCircleOutlineIcon />}
+      icon={<CheckCircleOutline />}
     >
       This is a success alert!
     </StyledAlert>
     <StyledAlert
       className="elevated"
-      icon={<ErrorOutlineIcon />}
+      icon={<ErrorOutline />}
       severity="warning"
     >
       This is a warning alert!
@@ -104,7 +103,7 @@ storiesOf("Alert", module).add("elevated", () => (
     <StyledAlert
       className="elevated"
       severity="info"
-      icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
+      icon={<CheckCircleOutline style={{ color: "#3867fa" }} />}
     >
       This is an info alert!
     </StyledAlert>
@@ -113,16 +112,16 @@ storiesOf("Alert", module).add("elevated", () => (
 
 storiesOf("Alert", module).add("flat", () => (
   <div>
-    <StyledAlert severity="success" icon={<CheckCircleOutlineIcon />}>
+    <StyledAlert severity="success" icon={<CheckCircleOutline />}>
       This is a success alert!
     </StyledAlert>
-    <StyledAlert severity="warning" icon={<ErrorOutlineIcon />}>
+    <StyledAlert severity="warning" icon={<ErrorOutline />}>
       This is a warning alert!
     </StyledAlert>
     <StyledAlert severity="error">This is an error alert!</StyledAlert>
     <StyledAlert
       severity="info"
-      icon={<CheckCircleOutlineIcon style={{ color: "#3867fa" }} />}
+      icon={<CheckCircleOutline style={{ color: "#3867fa" }} />}
     >
       This is an info alert!
     </StyledAlert>
