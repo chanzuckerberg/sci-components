@@ -2,6 +2,7 @@ import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import {
   AppThemeOptions,
   Colors,
+  Corners,
   Shadows,
   Spacings,
   Typography,
@@ -29,4 +30,8 @@ export const getColors = ({ theme }: Props): Colors | null => {
 
 export const getShadows = ({ theme }: Props): Shadows | null => {
   return theme?.app?.shadows || null;
+};
+
+export const getCorners = ({ theme }: Props): Corners | null => {
+  return theme?.app?.corners || null;
 };

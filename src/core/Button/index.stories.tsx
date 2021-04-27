@@ -22,6 +22,17 @@ storiesOf("Button", module).add("primary", () => (
   </Button>
 ));
 
+storiesOf("Button", module).add("primaryRounded", () => (
+  <Button
+    variant="contained"
+    onClick={actions.onClick}
+    color="primary"
+    isRounded
+  >
+    {text}
+  </Button>
+));
+
 storiesOf("Button", module).add("secondary", () => (
   <Button variant="outlined" onClick={actions.onClick} color="primary">
     {text}
