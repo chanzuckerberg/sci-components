@@ -48,6 +48,7 @@ module.exports = {
         argsIgnorePattern: "^_",
       },
     ],
+    "@typescript-eslint/no-use-before-define": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
