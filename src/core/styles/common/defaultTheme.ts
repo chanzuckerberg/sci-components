@@ -360,7 +360,7 @@ interface AppTheme {
   typography: Typography;
 }
 
-interface Shadows {
+export interface Shadows {
   none: "none";
   s: string;
   m: string;
