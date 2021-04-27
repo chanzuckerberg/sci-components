@@ -3,7 +3,7 @@ import React from "react";
 
 export { CheckboxProps };
 
-const Checkbox = (props: CheckboxProps) => {
+const Checkbox = (props: CheckboxProps): JSX.Element => {
   return <RawCheckbox {...props} />;
 };
 

@@ -3,7 +3,7 @@ import { MenuItem } from "@material-ui/core";
 import { Black } from "../styles/common/constants/black";
 import { FontWeights } from "../styles/common/constants/fontWeights";
 import { Gray } from "../styles/common/constants/gray";
-import { fontXs } from "../styles/common/mixins/body";
+import { fontBodyXs } from "../styles/common/mixins/fonts";
 import { getPalette, getSpacings } from "../styles/common/selectors/theme";
 
 export const StyledMenuItem = styled(MenuItem)`
@@ -28,7 +28,7 @@ interface TextWrapperProps {
 }
 
 export const TextWrapper = styled.span<TextWrapperProps>`
-  ${fontXs}
+  ${fontBodyXs}
 
   ${(props) => {
     const { selected } = props;
@@ -42,7 +42,7 @@ export const TextWrapper = styled.span<TextWrapperProps>`
 `;
 
 export const ColumnWrapper = styled.span`
-  ${fontXs}
+  ${fontBodyXs}
   color: ${Gray.DARK};
 `;
 
