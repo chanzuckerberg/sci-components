@@ -3,5 +3,6 @@ module.exports = {
   ignoreFiles: [
     // (thuang): Ignore `venv` folder
     "venv/**/*",
+    "dist/**/*",
   ],
 };
