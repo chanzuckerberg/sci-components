@@ -3,8 +3,10 @@ import { MenuItem } from "@material-ui/core";
 import { Black } from "../styles/common/constants/black";
 import { FontWeights } from "../styles/common/constants/fontWeights";
 import { Gray } from "../styles/common/constants/gray";
-import { fontBodyXs } from "../styles/common/mixins/fonts";
+import { fontBody } from "../styles/common/mixins/fonts";
 import { getPalette, getSpacings } from "../styles/common/selectors/theme";
+
+const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
