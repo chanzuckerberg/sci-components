@@ -1,62 +1,55 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { TypographyStyle } from "@material-ui/core";
+import { Typography } from "../defaultTheme";
 import { getTypography, Props } from "../selectors/theme";
 
-export const fontBodyXs = (props: Props): SerializedStyles | null => {
-  const typography = getTypography(props);
+type FontBodySize = keyof Typography["styles"]["body"];
 
-  if (!typography) return null;
+export const fontBody = (fontSize: FontBodySize) => {
+  return (props: Props): SerializedStyles | null => {
+    const typography = getTypography(props);
 
-  const {
-    styles: {
-      body: { xs },
-    },
-  } = typography;
+    if (!typography) return null;
 
-  return themeToCss(xs);
+    const {
+      styles: { body },
+    } = typography;
+
+    return themeToCss(body[fontSize]);
+  };
 };
 
-export const fontBodyM = (props: Props): SerializedStyles | null => {
-  const typography = getTypography(props);
+export const fontBodyL = fontBody("l");
+export const fontBodyM = fontBody("m");
+export const fontBodyS = fontBody("s");
+export const fontBodyXs = fontBody("xs");
+export const fontBodyXxs = fontBody("xxs");
+export const fontBodyXxxs = fontBody("xxxs");
 
-  if (!typography) return null;
+type FontHeaderSize = keyof Typography["styles"]["header"];
 
-  const {
-    styles: {
-      body: { m },
-    },
-  } = typography;
+export const fontHeader = (fontSize: FontHeaderSize) => {
+  return (props: Props): SerializedStyles | null => {
+    const typography = getTypography(props);
 
-  return themeToCss(m);
+    if (!typography) return null;
+
+    const {
+      styles: { header },
+    } = typography;
+
+    return themeToCss(header[fontSize]);
+  };
 };
 
-export const fontBodyS = (props: Props): SerializedStyles | null => {
-  const typography = getTypography(props);
-
-  if (!typography) return null;
-
-  const {
-    styles: {
-      body: { s },
-    },
-  } = typography;
-
-  return themeToCss(s);
-};
-
-export const fontHeaderXxl = (props: Props): SerializedStyles | null => {
-  const typography = getTypography(props);
-
-  if (!typography) return null;
-
-  const {
-    styles: {
-      header: { xxl },
-    },
-  } = typography;
-
-  return themeToCss(xxl);
-};
+export const fontHeaderXxl = fontHeader("xxl");
+export const fontHeaderXl = fontHeader("xl");
+export const fontHeaderL = fontHeader("l");
+export const fontHeaderM = fontHeader("m");
+export const fontHeaderS = fontHeader("s");
+export const fontHeaderXs = fontHeader("xs");
+export const fontHeaderXxs = fontHeader("xxs");
+export const fontHeaderXxxs = fontHeader("xxxs");
 
 function themeToCss(fontTheme: TypographyStyle) {
   return css`
