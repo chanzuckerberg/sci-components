@@ -2,7 +2,7 @@ import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ListItem } from "@material-ui/core";
 import { TypographyOptions } from "@material-ui/core/styles/createTypography";
-import { fontBody, getSpacings, Props } from "../styles";
+import { fontBody, getFontWeights, getSpacings, Props } from "../styles";
 
 const fontBodyL = fontBody("l");
 const fontBodyM = fontBody("m");
@@ -95,3 +95,15 @@ function propsToMarginBottom(props: ExtraProps) {
     margin-bottom: ${propsToMarginBottomMap[marginBottom || "xs"]}px;
   `;
 }
+
+export const ListItemLabel = styled.span`
+  margin-right: 5px;
+
+  ${(props) => {
+    const fontWeights = getFontWeights(props);
+
+    return `
+      font-weight: ${fontWeights?.semibold};
+    `;
+  }}
+`;
