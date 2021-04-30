@@ -3,6 +3,7 @@ import {
   AppThemeOptions,
   Colors,
   Corners,
+  FontWeights,
   Shadows,
   Spacings,
   Typography,
@@ -34,4 +35,8 @@ export const getShadows = ({ theme }: Props): Shadows | null => {
 
 export const getCorners = ({ theme }: Props): Corners | null => {
   return theme?.app?.corners || null;
+};
+
+export const getFontWeights = ({ theme }: Props): FontWeights | null => {
+  return theme?.app?.fontWeights || null;
 };
