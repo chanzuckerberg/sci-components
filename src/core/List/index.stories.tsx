@@ -8,7 +8,6 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <div>
       <List
-        ordered
         subheader={<ListSubheader disableSticky>This is a list</ListSubheader>}
         {...props}
       >
