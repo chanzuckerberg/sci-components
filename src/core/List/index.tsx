@@ -1,10 +1,15 @@
-import { List as RawList, ListProps } from "@material-ui/core";
+import { ListProps as RawListProps } from "@material-ui/core";
 import React from "react";
+import { ExtraProps, StyledList } from "./style";
 
-export { ListProps };
+type ListProps = ExtraProps & RawListProps;
 
 const List = (props: ListProps): JSX.Element => {
-  return <RawList disablePadding {...props} />;
+  const { ordered } = props;
+
+  return (
+    <StyledList component={ordered ? "ol" : "ul"} disablePadding {...props} />
+  );
 };
 
 export default List;

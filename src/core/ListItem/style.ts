@@ -14,10 +14,11 @@ const fontBodyXxxs = fontBody("xxxs");
 export interface ExtraProps extends Props {
   marginBottom?: "s" | "xs" | "xxs";
   fontSize?: "xxxs" | "xxs" | "xs" | "s" | "m" | "l";
+  ordered?: boolean;
 }
 
 // (thuang): Please keep this in sync with the props used in `ExtraProps`
-const doNotForwardProps = ["marginBottom", "fontSize"];
+const doNotForwardProps = ["marginBottom", "fontSize", "ordered"];
 
 export const StyledListItem = styled(ListItem, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -30,6 +31,7 @@ export const StyledListItem = styled(ListItem, {
 
     ${(props) => {
       const spacings = getSpacings(props);
+      const { ordered } = props;
 
       const {
         theme: { typography },
@@ -37,27 +39,33 @@ export const StyledListItem = styled(ListItem, {
 
       return `
         font-family: ${(typography as TypographyOptions).fontFamily};
-        margin-left: ${spacings?.m as number}px;
+        margin-left: ${markerMargin(Boolean(ordered), spacings?.m || 1)}px;
+        ${ordered ? "counter-increment: section;" : ""}
       `;
     }}
 
     &:before {
-      content: "•";
       display: inline-block;
       font-weight: 600;
       position: absolute;
+      top: 0;
 
       ${(props) => {
         const spacings = getSpacings(props);
+        const { ordered } = props;
 
         return `
-          top: 0;
-          left: -${spacings?.m}px;
-      `;
+          content: ${ordered ? `counters(section, ".")` : `"•"`};
+          left: -${markerMargin(Boolean(ordered), spacings?.m || 1)}px;
+        `;
       }}
     }
   }
 `;
+
+function markerMargin(ordered: boolean, spacing = 1) {
+  return ordered ? 3 * spacing : spacing;
+}
 
 function propsToFontBody(props: ExtraProps) {
   const propsToFontBodyMap: Record<
