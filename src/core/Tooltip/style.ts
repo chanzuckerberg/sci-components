@@ -1,17 +1,19 @@
 import { css } from "@emotion/css";
 import {
-  AppThemeOptions,
   fontBodyXs,
   getColors,
   getShadows,
   getSpacings,
+  Props,
 } from "../styles";
 
-export const tooltipCss = (
-  { inverted = false },
-  theme: AppThemeOptions
-): string => {
-  const props = { theme };
+export interface ExtraProps extends Props {
+  inverted?: boolean;
+}
+
+export const tooltipCss = (props: ExtraProps): string => {
+  const { inverted } = props;
+
   const colors = getColors(props);
   const shadows = getShadows(props);
   const spacings = getSpacings(props);
@@ -27,11 +29,9 @@ export const tooltipCss = (
   `;
 };
 
-export const arrowCss = (
-  { inverted = false },
-  theme: AppThemeOptions
-): string => {
-  const props = { theme };
+export const arrowCss = (props: ExtraProps): string => {
+  const { inverted } = props;
+
   const colors = getColors(props);
 
   return css`
