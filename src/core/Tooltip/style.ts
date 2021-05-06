@@ -7,7 +7,10 @@ import {
   getSpacings,
 } from "../styles";
 
-export const tooltipCss = (theme: AppThemeOptions): string => {
+export const tooltipCss = (
+  { inverted = false },
+  theme: AppThemeOptions
+): string => {
   const props = { theme };
   const colors = getColors(props);
   const shadows = getShadows(props);
@@ -16,20 +19,23 @@ export const tooltipCss = (theme: AppThemeOptions): string => {
   return css`
     ${fontBodyXs(props)}
 
-    background-color: white;
+    background-color: ${inverted ? "black" : "white"};
     border: 1px solid ${colors?.gray["300"]};
     box-shadow: ${shadows?.m};
-    color: black;
+    color: ${inverted ? "white" : "black"};
     padding: ${spacings?.l}px;
   `;
 };
 
-export const arrowCss = (theme: AppThemeOptions): string => {
+export const arrowCss = (
+  { inverted = false },
+  theme: AppThemeOptions
+): string => {
   const props = { theme };
   const colors = getColors(props);
 
   return css`
-    color: white;
+    color: ${inverted ? "black" : "white"};
     &:before {
       border: 1px solid ${colors?.gray[300]};
     }

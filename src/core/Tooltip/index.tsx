@@ -1,16 +1,28 @@
 import { useTheme } from "@emotion/react";
-import { Tooltip as RawTooltip, TooltipProps } from "@material-ui/core";
+import {
+  Tooltip as RawTooltip,
+  TooltipProps as RawTooltipProps,
+} from "@material-ui/core";
 import React from "react";
 import { arrowCss, tooltipCss } from "./style";
 
+interface ExtraProps {
+  inverted?: boolean;
+}
+
+type TooltipProps = ExtraProps & RawTooltipProps;
 export { TooltipProps };
 
-const TooltipInfo = (props: TooltipProps): JSX.Element => {
+const Tooltip = (props: TooltipProps): JSX.Element => {
   const theme = useTheme();
-  const tooltip = tooltipCss(theme);
-  const arrow = arrowCss(theme);
+  const tooltip = tooltipCss({ ...props }, theme);
+  const arrow = arrowCss({ ...props }, theme);
 
   return <RawTooltip arrow classes={{ arrow, tooltip }} {...props} />;
 };
 
-export default TooltipInfo;
+Tooltip.defaultProps = {
+  inverted: false,
+};
+
+export default Tooltip;
