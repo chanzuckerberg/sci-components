@@ -1,6 +1,7 @@
 import { useTheme } from "@emotion/react";
 import {
   Tooltip as RawTooltip,
+  TooltipClassKey,
   TooltipProps as RawTooltipProps,
 } from "@material-ui/core";
 import React from "react";
@@ -22,11 +23,38 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     /* stylelint-enable property-no-unknown -- false positive */
   };
 
-  const tooltip = tooltipCss(extraProps);
-  const arrow = arrowCss(extraProps);
+  const tooltip = mergeClass({
+    className: tooltipCss(extraProps),
+    key: "tooltip",
+    props,
+  });
 
-  return <RawTooltip arrow classes={{ arrow, tooltip }} {...rest} />;
+  const arrow = mergeClass({
+    className: arrowCss(extraProps),
+    key: "arrow",
+    props,
+  });
+
+  return <RawTooltip {...rest} arrow classes={{ arrow, tooltip }} />;
 };
+
+function mergeClass({
+  props,
+  className,
+  key,
+}: {
+  props: TooltipProps;
+  className: string;
+  key: TooltipClassKey;
+}) {
+  const { classes } = props;
+
+  if (!classes) return className;
+
+  const propClassName = classes[key];
+
+  return propClassName ? `${propClassName} ${className}` : className;
+}
 
 Tooltip.defaultProps = {
   inverted: false,

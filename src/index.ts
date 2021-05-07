@@ -16,3 +16,4 @@ export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
 export * from "./core/Tooltip";
+export { default as Tooltip } from "./core/Tooltip";
