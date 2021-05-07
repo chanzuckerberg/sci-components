@@ -36,6 +36,7 @@ export const arrowCss = (props: ExtraProps): string => {
 
   return css`
     color: ${inverted ? "black" : "white"};
+
     &:before {
       border: 1px solid ${colors?.gray[300]};
     }

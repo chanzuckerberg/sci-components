@@ -8,7 +8,7 @@ const tooltipContent =
 
 const Demo = (props: Args): JSX.Element => {
   return (
-    <Tooltip title={tooltipContent} {...props}>
+    <Tooltip {...props} title={tooltipContent}>
       <InfoOutlinedIcon />
     </Tooltip>
   );
