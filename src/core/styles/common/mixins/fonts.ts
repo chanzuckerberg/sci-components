@@ -26,6 +26,29 @@ export const fontBodyXs = fontBody("xs");
 export const fontBodyXxs = fontBody("xxs");
 export const fontBodyXxxs = fontBody("xxxs");
 
+type FontCapsSize = keyof Typography["styles"]["caps"];
+
+export const fontCaps = (fontSize: FontCapsSize) => {
+  return (props: Props): SerializedStyles | null => {
+    const typography = getTypography(props);
+
+    if (!typography) return null;
+
+    const {
+      styles: { caps },
+    } = typography;
+
+    return css`
+      ${themeToCss(caps[fontSize])}
+      text-transform: uppercase;
+    `;
+  };
+};
+
+export const fontCapsXxs = fontCaps("xxs");
+export const fontCapsXxxs = fontCaps("xxxs");
+export const fontCapsXxxxs = fontCaps("xxxxs");
+
 type FontHeaderSize = keyof Typography["styles"]["header"];
 
 export const fontHeader = (fontSize: FontHeaderSize) => {

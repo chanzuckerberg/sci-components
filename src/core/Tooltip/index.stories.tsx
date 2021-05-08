@@ -1,3 +1,4 @@
+import { css } from "@emotion/css";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
@@ -31,4 +32,14 @@ export const Info = Template.bind({});
 
 Info.args = {
   inverted: false,
+};
+
+export const StyledArrow = Template.bind({});
+
+const arrow = css`
+  left: 0 !important;
+`;
+
+StyledArrow.args = {
+  classes: { arrow },
 };

@@ -1,6 +1,8 @@
 /* eslint-disable import/export */
 export { default as Button } from "./core/Button";
 export { default as Checkbox } from "./core/Checkbox";
+export * from "./core/Chip";
+export { default as Chip } from "./core/Chip";
 export * from "./core/Link";
 export { default as Link } from "./core/Link";
 export * from "./core/List";
