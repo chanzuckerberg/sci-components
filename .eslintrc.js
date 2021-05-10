@@ -49,6 +49,7 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-use-before-define": "off",
+    "consistent-return": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
