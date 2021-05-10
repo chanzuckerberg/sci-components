@@ -17,12 +17,12 @@ const rows = [
 
 const data = [
   {
-    label: "Section 1",
     dataRows: rows.slice(0, 5),
+    label: "Section 1",
   },
   {
-    label: "Section 2",
     dataRows: rows.slice(5, 10),
+    label: "Section 2",
   },
 ];
 
@@ -40,6 +40,6 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  data: data,
-  alert: alert,
+  alert,
+  data,
 };

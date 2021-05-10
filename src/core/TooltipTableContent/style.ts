@@ -23,7 +23,7 @@ export interface ExtraProps extends Props {
 
 export const alertCss = (props: ExtraProps): string => {
   return css`
-    ${fontBodyXxs(props)};
+    ${fontBodyXxs(props)}
   `;
 };
 
@@ -56,7 +56,7 @@ export const sectionLabelCss = (props: ExtraProps): string => {
   const spacings = getSpacings(props);
 
   return css`
-    ${fontCapsXxxxs(props)};
+    ${fontCapsXxxxs(props)}
     margin-bottom: ${spacings?.m}px;
     color: ${colors?.gray["500"]};
 
@@ -68,7 +68,7 @@ export const sectionLabelCss = (props: ExtraProps): string => {
 
 export const rowLabelCss = (props: ExtraProps): string => {
   return css`
-    ${fontHeaderXs(props)};
+    ${fontHeaderXs(props)}
     padding: 0;
     width: 50%;
   `;
@@ -76,7 +76,7 @@ export const rowLabelCss = (props: ExtraProps): string => {
 
 export const rowValueCss = (props: ExtraProps): string => {
   return css`
-    ${fontBodyXs(props)};
+    ${fontBodyXs(props)}
     padding-top: 0;
     padding-bottom: 0;
   `;

@@ -26,7 +26,9 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   const theme = useTheme();
 
   const extraProps = {
+    /* stylelint-disable property-no-unknown -- false positive */
     theme,
+    /* stylelint-enable property-no-unknown -- false positive */
   };
 
   const alertClassName = alertCss(extraProps);

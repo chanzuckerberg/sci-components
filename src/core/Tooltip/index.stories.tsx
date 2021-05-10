@@ -52,13 +52,13 @@ const rows = [
 
 const data = [
   {
-    label: "Section 1",
     dataRows: rows.slice(0, 3),
+    label: "Section 1",
   },
   {
-    label: "Section 2",
     dataRows: rows.slice(3, 9),
     disabled: true,
+    label: "Section 2",
   },
 ];
 
