@@ -74,26 +74,6 @@ export const fontHeaderXs = fontHeader("xs");
 export const fontHeaderXxs = fontHeader("xxs");
 export const fontHeaderXxxs = fontHeader("xxxs");
 
-type FontCapsSize = keyof Typography["styles"]["caps"];
-
-export const fontCaps = (fontSize: FontCapsSize) => {
-  return (props: Props): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      styles: { caps },
-    } = typography;
-
-    return themeToCss(caps[fontSize]);
-  };
-};
-
-export const fontCapsXxs = fontCaps("xxs");
-export const fontCapsXxxs = fontCaps("xxxs");
-export const fontCapsXxxxs = fontCaps("xxxxs");
-
 function themeToCss(fontTheme: TypographyStyle) {
   return css`
     font-size: ${fontTheme.fontSize}px;
