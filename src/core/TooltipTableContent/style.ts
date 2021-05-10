@@ -70,6 +70,7 @@ export const rowLabelCss = (props: ExtraProps): string => {
   return css`
     ${fontHeaderXs(props)};
     padding: 0;
+    width: 50%;
   `;
 };
 

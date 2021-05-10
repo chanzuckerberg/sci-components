@@ -2,26 +2,27 @@ import { Args, Story } from "@storybook/react";
 import React from "react";
 import TooltipTableContent from "./index";
 
-function createDataRow(label: any, value: any) {
-  return { label, value };
-}
-
 const rows = [
-  createDataRow("Frozen yoghurt", 159),
-  createDataRow("Ice cream sandwich", 237),
-  createDataRow("Eclair", 262),
-  createDataRow("Cupcake", 305),
-  createDataRow("Gingerbread", 356),
+  { label: "Harley Thomas", value: 1 },
+  { label: "Janeece Pourroy", value: 2 },
+  { label: "Jennifer Tang", value: 3 },
+  { label: "Jonathan Sheu", value: 4 },
+  { label: "Julie Han", value: 5 },
+  { label: "Katrina Kalantar", value: 6 },
+  { label: "Omar Valenzuela", value: 7 },
+  { label: "Seve Badajoz", value: 8 },
+  { label: "Tiago Carvalho", value: 9 },
+  { label: "Timmy Huang", value: 10 },
 ];
 
 const data = [
   {
     label: "Section 1",
-    dataRows: rows,
+    dataRows: rows.slice(0, 5),
   },
   {
     label: "Section 2",
-    dataRows: rows,
+    dataRows: rows.slice(5, 10),
   },
 ];
 

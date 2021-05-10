@@ -35,7 +35,9 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     props,
   });
 
-  return <RawTooltip {...rest} arrow classes={{ arrow, tooltip }} />;
+  return (
+    <RawTooltip arrow classes={{ arrow, tooltip }} interactive {...rest} />
+  );
 };
 
 function mergeClass({
