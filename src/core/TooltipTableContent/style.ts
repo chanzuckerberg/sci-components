@@ -1,4 +1,5 @@
-import { css } from "@emotion/css";
+import styled from "@emotion/styled";
+import { TableCell } from "@material-ui/core";
 import {
   fontBodyXs,
   fontBodyXxs,
@@ -13,71 +14,80 @@ export interface ExtraProps extends Props {
   data?: Array<{
     label: string;
     dataRows: {
-      label: any;
-      value: any;
+      label: string;
+      value: string | number;
     }[];
     disabled?: boolean;
   }>;
   alert?: string | Element;
 }
 
-export const alertCss = (props: ExtraProps): string => {
-  return css`
-    ${fontBodyXxs(props)}
-  `;
-};
-
-export const disabledCss = (props: ExtraProps): string => {
+export const disabled = (props: SectionProps): string => {
   const colors = getColors(props);
+  const { disabled } = props;
 
-  return css`
+  if (!disabled) return "";
+
+  return `
     color: ${colors?.gray["300"]};
   `;
 };
 
-export const sectionCss = (props: ExtraProps): string => {
-  const colors = getColors(props);
-  const spacings = getSpacings(props);
+interface SectionProps extends Props {
+  disabled?: boolean;
+}
 
-  return css`
-    &:not(:last-child) {
-      padding-bottom: ${spacings?.l}px;
-      border-bottom: 1px solid ${colors?.gray["200"]};
-    }
+export const Section = styled.div`
+  ${disabled}
 
-    &:not(:first-child) {
-      padding-top: ${spacings?.l}px;
-    }
-  `;
-};
+  ${(props: SectionProps) => {
+    const colors = getColors(props);
+    const spacings = getSpacings(props);
 
-export const sectionLabelCss = (props: ExtraProps): string => {
-  const colors = getColors(props);
-  const spacings = getSpacings(props);
+    return `
+      &:not(:last-child) {
+        padding-bottom: ${spacings?.l}px;
+        border-bottom: 1px solid ${colors?.gray["200"]};
+      }
 
-  return css`
-    ${fontCapsXxxxs(props)}
-    margin-bottom: ${spacings?.m}px;
-    color: ${colors?.gray["500"]};
+      &:not(:first-child) {
+        padding-top: ${spacings?.l}px;
+      }
+    `;
+  }}
+`;
 
-    &.disabled {
-      color: ${colors?.gray["300"]};
-    }
-  `;
-};
+export const SectionLabel = styled.div`
+  ${fontCapsXxxxs}
+  ${disabled}
 
-export const rowLabelCss = (props: ExtraProps): string => {
-  return css`
-    ${fontHeaderXs(props)}
-    padding: 0;
-    width: 50%;
-  `;
-};
+  ${(props: SectionProps) => {
+    const colors = getColors(props);
+    const spacings = getSpacings(props);
 
-export const rowValueCss = (props: ExtraProps): string => {
-  return css`
-    ${fontBodyXs(props)}
-    padding-top: 0;
-    padding-bottom: 0;
-  `;
-};
+    return `
+      margin-bottom: ${spacings?.m}px;
+      color: ${colors?.gray["500"]};
+    `;
+  }}
+`;
+
+export const RowLabel = styled(TableCell)`
+  ${fontHeaderXs}
+  ${disabled}
+
+  padding: 0;
+  width: 50%;
+`;
+
+export const RowValue = styled(TableCell)`
+  ${fontBodyXs}
+  ${disabled}
+
+  padding-top: 0;
+  padding-bottom: 0;
+`;
+
+export const Alert = styled.div`
+  ${fontBodyXxs}
+`;
