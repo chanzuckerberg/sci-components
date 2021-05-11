@@ -80,5 +80,6 @@ function themeToCss(fontTheme: TypographyStyle) {
     line-height: ${fontTheme.lineHeight};
     letter-spacing: ${fontTheme.letterSpacing};
     font-weight: ${fontTheme.fontWeight};
+    text-transform: ${fontTheme.textTransform};
   `;
 }
