@@ -27,6 +27,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Action = Template.bind({});
 
 Action.args = {
+  arrow: true,
   inverted: true,
   title: tooltipContent,
 };
@@ -34,6 +35,7 @@ Action.args = {
 export const Info = Template.bind({});
 
 Info.args = {
+  arrow: true,
   inverted: false,
   title: tooltipContent,
 };
@@ -77,5 +79,7 @@ const arrow = css`
 `;
 
 StyledArrow.args = {
+  arrow: true,
   classes: { arrow },
+  title: tooltipContent,
 };

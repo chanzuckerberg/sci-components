@@ -35,9 +35,9 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     props,
   });
 
-  return (
-    <RawTooltip arrow classes={{ arrow, tooltip }} interactive {...rest} />
-  );
+  // (thuang): {...rest} needs to be first, otherwise it will overwrite latter
+  // props
+  return <RawTooltip {...rest} interactive classes={{ arrow, tooltip }} />;
 };
 
 function mergeClass({
