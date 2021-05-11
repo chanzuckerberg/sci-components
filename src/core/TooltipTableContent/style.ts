@@ -22,7 +22,7 @@ export interface ExtraProps extends Props {
   alert?: string | Element;
 }
 
-export const disabled = (props: SectionProps): string => {
+export const disabledStyle = (props: SectionProps): string => {
   const colors = getColors(props);
   const { disabled } = props;
 
@@ -38,7 +38,7 @@ interface SectionProps extends Props {
 }
 
 export const Section = styled.div`
-  ${disabled}
+  ${disabledStyle}
 
   ${(props: SectionProps) => {
     const colors = getColors(props);
@@ -59,7 +59,7 @@ export const Section = styled.div`
 
 export const SectionLabel = styled.div`
   ${fontCapsXxxxs}
-  ${disabled}
+  ${disabledStyle}
 
   ${(props: SectionProps) => {
     const colors = getColors(props);
@@ -74,7 +74,7 @@ export const SectionLabel = styled.div`
 
 export const RowLabel = styled(TableCell)`
   ${fontHeaderXs}
-  ${disabled}
+  ${disabledStyle}
 
   padding: 0;
   width: 50%;
@@ -82,7 +82,7 @@ export const RowLabel = styled(TableCell)`
 
 export const RowValue = styled(TableCell)`
   ${fontBodyXs}
-  ${disabled}
+  ${disabledStyle}
 
   padding-top: 0;
   padding-bottom: 0;
