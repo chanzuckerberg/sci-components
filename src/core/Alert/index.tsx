@@ -1,8 +1,11 @@
-import { Alert as RawAlert, AlertProps } from "@material-ui/lab";
+import { AlertProps } from "@material-ui/lab";
 import React from "react";
+import { StyledAlert } from "./style";
+
+export { AlertProps };
 
 const Alert = (props: AlertProps): JSX.Element => {
-  return <RawAlert {...props} />;
+  return <StyledAlert {...props} />;
 };
 
 export default Alert;

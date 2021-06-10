@@ -39,7 +39,7 @@ To use the default theme, please do the following:
 1. Import the default theme object and use it in Material UI's `<ThemeProvider />`:
 
    ```tsx
-     import { defaultTheme } from '@chanzuckerberg/sci-components/core/styles`
+     import { defaultTheme } from '@chanzuckerberg/czifui/core/styles`
      import { ThemeProvider } from "@material-ui/core/styles";
 
      <ThemeProvider theme={defaultTheme}>
@@ -52,17 +52,24 @@ To use the default theme, please do the following:
    extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultThemeOptions` instead of your own custom options
 
 ```tsx
-  import { defaultThemeOptions } from '@chanzuckerberg/sci-components/core/styles`
-  import { ThemeProvider } from "@material-ui/core/styles";
+  import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+  import { defaultAppTheme, makeThemeOptions } from '@chanzuckerberg/czifui/core/styles`
+  import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
   import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
   const customTheme = {
     ...
   }
 
-  const theme = createMuiTheme({ ...defaultThemeOptions, ...customTheme })
+  const appTheme = makeThemeOptions({ ...defaultThemeOptions, ...customTheme })
 
-    <ThemeProvider theme={theme}>
-      <YourApp />
-    </ThemeProvider>
+  const theme = createMuiTheme(appTheme)
+
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={defaultTheme}>
+          <YourApp />
+        </EmotionThemeProvider>
+      </ThemeProvider>
+    </StylesProvider>
 ```

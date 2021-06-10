@@ -1,7 +1,4 @@
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableRow from "@material-ui/core/TableRow";
+import { Table, TableBody, TableContainer, TableRow } from "@material-ui/core";
 import React from "react";
 import {
   Alert,
