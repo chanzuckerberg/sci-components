@@ -1,5 +1,9 @@
 /* eslint-disable import/export */
+export * from "./core/Alert";
+export { default as Alert } from "./core/Alert";
+export * from "./core/Button";
 export { default as Button } from "./core/Button";
+export * from "./core/Checkbox";
 export { default as Checkbox } from "./core/Checkbox";
 export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
@@ -11,6 +15,7 @@ export * from "./core/ListItem";
 export { default as ListItem } from "./core/ListItem";
 export * from "./core/ListSubheader";
 export { default as ListSubheader } from "./core/ListSubheader";
+export * from "./core/Menu";
 export { default as Menu } from "./core/Menu";
 export * from "./core/MenuItem";
 export { default as MenuItem } from "./core/MenuItem";
