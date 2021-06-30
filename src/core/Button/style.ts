@@ -9,19 +9,17 @@ export interface IsRounded extends Props {
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "isRounded",
 })`
-  &.MuiButton-root {
-    ${(props: IsRounded) => {
-      if (!props.isRounded) return ``;
+  ${(props: IsRounded) => {
+    if (!props.isRounded) return ``;
 
-      const corners = getCorners(props);
-      const spacings = getSpacings(props);
+    const corners = getCorners(props);
+    const spacings = getSpacings(props);
 
-      return `
-        border-radius: ${corners?.l}px;
-        padding: ${spacings?.xs}px ${spacings?.l}px;
-        min-width: 120px;
-        height: 34px;
-      `;
-    }}
-  }
+    return `
+      border-radius: ${corners?.l}px;
+      padding: ${spacings?.xs}px ${spacings?.l}px;
+      min-width: 120px;
+      height: 34px;
+    `;
+  }}
 `;

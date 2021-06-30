@@ -6,11 +6,27 @@
 
 ## Get Started
 
-### Peer dependencies
+### Installation
 
-In order to avoid installing multiple versions of the same library in the host project, which could cause bugs, the component library does not have its own dependencies.
+https://www.npmjs.com/package/czifui
 
-Therefore, please kindly ensure your project includes the following dependencies in your `package.json`:
+```shell
+npm i czifui
+```
+
+or
+
+```shell
+yarn add czifui
+```
+
+NOTE: Please make sure the peer dependencies are installed as well
+
+### Peer Dependencies
+
+In order to avoid installing multiple versions of the same library in the host project, which could cause bugs, the component library does **NOT** have its own dependencies.
+
+Therefore, please kindly ensure your project includes the following dependencies in your project's `package.json`:
 
 ```json
   "@emotion/css"
@@ -23,12 +39,31 @@ Therefore, please kindly ensure your project includes the following dependencies
   "react-dom"
 ```
 
-### Installation
+Install the peer dependencies in your project:
 
 ```shell
-// with yarn
-yarn add czifui
+npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 ```
+
+or
+
+```shell
+yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+```
+
+### Demo
+
+`czifui` comes with [Storybook](https://storybook.js.org/) integration, so you can browse the components locally by following the steps below:
+
+1. Cloning the repo: `git clone git@github.com:chanzuckerberg/sci-components.git`
+1. Run: `yarn && yarn start`
+1. A new browser tab will be automatically opened with the storybook!
+
+![image](https://user-images.githubusercontent.com/6309723/124010513-c09f0900-d993-11eb-8fc7-f66a0b4ec16e.png)
+
+#### Tips
+
+It's super useful to read the `*.stories.tsx` files to see how the components are used in real examples. You can also find additional examples in [Aspen](https://github.com/chanzuckerberg/aspen), which uses `czifui` extensively
 
 ## Default Theme
 
@@ -83,3 +118,103 @@ To use the default theme, please do the following:
       </ThemeProvider>
     </StylesProvider>
 ```
+
+💡 Aspen example available [here](https://github.com/chanzuckerberg/aspen/blob/trunk/src/frontend/pages/_app.tsx)
+
+## Design System
+
+`czifui` implements the Science Initiative Design System as documented in [Figma](https://www.figma.com/file/EaRifXLFs54XTjO1Mlszkg/Science-Design-System-Reference). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
+
+![image](https://user-images.githubusercontent.com/6309723/123888574-a53aec00-d908-11eb-96b3-e32381e30c9a.png)
+(NOTE: Please use the left panel to find different types of components (Bases, Genes, DNA, and Chromosomes))
+
+## How to Use
+
+`czifui` comes with three main exports that help you build your app following the design system:
+
+1. Components - Components that implement the design system
+
+   E.g., `Alert`, `Button`, `Menu`
+
+   Source: [src/core](src/core)
+
+   NOTE: Since most of the `czifui` components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://material-ui.com/) to learn about what you can do with the components
+
+1. Mixins - Mixins defined by the design system
+
+   E.g., `fontBodyL`, `fontHeaderM`, `fontCapsXxs`
+
+   Source: [src/core/styles/common/mixins](src/core/styles/common/mixins)
+
+1. Selectors - Helper functions that pick out theme variables for you
+
+   E.g., `getSpacings`, `getColors`, `getCorners`, `getFontWeights`
+
+   Source: [src/core/styles/common/selectors](src/core/styles/common/selectors)
+
+### Example
+
+```ts
+    import { fontBodyM, getColors, getSpacings } from "czifui";
+
+    export const Foo = styled.div`
+      // This is the design system's font body medium mixin we import from czifui
+      ${fontBodyM}
+
+      // This is the regular css rules
+      overflow: auto;
+
+      // This is a callback function that returns more CSS rules, but the only way
+      // to access the custom theme object
+      ${(props) => {
+        // getColors() is a selector that picks out colors from the theme object
+        const colors = getColors(props);
+        // getSpacings() is a selector that picks out spacings from the theme object
+        const spacings = getSpacings(props);
+
+        return `
+          background-color: ${colors?.gray[500]};
+          padding-bottom: ${spacings?.m}px;
+          margin-bottom: ${spacings?.xxl}px;
+        `;
+      }}
+    `;
+```
+
+NOTE: If you are not familiar with `styled()`, please check out Emotion's `styled()` API [here](https://emotion.sh/docs/styled)
+
+NOTE II: You can find more examples in the repo's `*.stories.tsx` and [Aspen](https://github.com/chanzuckerberg/aspen)
+
+## Q&A
+
+1. Why wrapping a component with `styled()` doesn't style the root element as expected?
+
+   This is likely because the component is **NOT** forwarding the css class name that `styled()` generates to the intended root element. So we likely need to update the `czif` component to make it work
+
+   For example, if a `czif` component `Foo` has the following implementation, `styled(Foo)` won't style the wrapper `<div />` as expected:
+
+   ```tsx
+   function Foo() {
+     return (
+       <div>
+         <ChildA />
+         <ChildB />
+       </div>
+     )
+   }
+   ```
+
+   The fix is:
+
+   ```tsx
+   function Foo({className}) {
+     return (
+       <div className={className}>
+         <ChildA />
+         <ChildB />
+       </div>
+     )
+   }
+   ```
+
+## [Contribution Guide ⚡️](docs/contribution.md)
