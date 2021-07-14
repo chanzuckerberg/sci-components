@@ -12,10 +12,6 @@ Ready to dive in? 🤿🐠🐟🦈
 
 ## Steps to start 🎯
 
-1. [Sign up](https://www.npmjs.com/signup) for an npm account! Since you’ll need it to publish the package
-
-1. Ask **@thuang** or anyone you know that is a collaborator of the npm package to add your account to the collab list
-
 1. Download the repo to your local machine and fire it up with `yarn && yarn start`, it will automatically start a local Storybook instance, and you can browse existing components there as well
 
 1. Take a quick tour of all existing components and see the different ways we use to style the MUI components. We will also cover the different styling strategies in details in the [styling section](#styling)
@@ -30,36 +26,11 @@ Ready to dive in? 🤿🐠🐟🦈
 
       E.g., `npm install ../sci-components` if your projects look like this: `parentFolder/productProject` and `parentFolder/sci-components`
 
-   1. If you **ARE** using Happy Path, since our local component library directory is **NOT** mounted in the local Docker container, the app won’t be able to find the directory. So the only way to test out the component library is to publish it to `npm` and then upgrade your `czifui` dependency accordingly
-
-      Steps:
-
-      1. Publish a new version to npm
-
-      1. In your project’s `frontend` folder, `npm remove czifui && npm i czifui@latest`, this will upgrade your `czifui` version to the latest, please double check `package.json` has the latest version
-
-      1. In another terminal tab, at the root of your product project (e.g., /aspen`:
-
-      1. Run `docker-compose exec frontend /bin/bash`, this will ssh into your local FE Docker container
-
-      1. Run `npm i`- this is needed to ensure the container updates its node_modules/ properly, because often it doesn’t update
-
-      1. Exit out of the ssh and run`make local-sync`, this will recompile your FE container and the app to start using the latest component library code
-
-      1. At your product project’s `frontend`folder, run`npm i`again, this is needed because when FE container runs`npm i`, it overwrites `package-lock.json`with version 1 schema, since it doesn’t have npm 7.x, whereas your local machine is likely running v7 already. So we’ll`npm i`again to overwrite the`package-lock.json` back to the new version 2 schema!
-
-      1. Now you should be able to check `localhost:3000` and see the new component in action!
-
-      1. Now you should be able to import your component via `import { ComponentName} from "czifui"` and verify that it works as intended in your feature!
+   1. If you **ARE** using Happy Path, since our local component library directory is **NOT** mounted in the local Docker container, the app won’t be able to find the directory. So the only way to test out the component library is to publish it to `npm` and then upgrade your `czifui` dependency accordingly.
 
 1. When you’re happy with your component, please submit a [PR](https://github.com/chanzuckerberg/sci-components/pulls) to get a code review
 
-1. Once your PR is merged, please follow the steps below to publish a new package version 🚀
-
-   1. `npm version patch` to bump up a patch version. E.g., 0.0.1 -> 0.0.2
-   1. `npm publish` to upload the new package to npm registry!
-
-1. Congrats and thank you for contributing to the component library 🙌👏🎉✨❤️!!
+1. Once your PR is merged, congrats and thank you for contributing to the component library 🙌👏🎉✨❤️!!
 
 ## Styling
 
@@ -130,3 +101,7 @@ When it comes to styling Material UI's components, generally the following strat
    E.g., [Tooltip CSS API section](https://material-ui.com/api/tooltip/#css)
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
+
+## Reporting Security Issues
+
+Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)

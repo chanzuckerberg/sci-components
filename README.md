@@ -1,8 +1,6 @@
 # Components
 
-2021 Create-a-thon Science Initiative Component Library
-
-[Teams](https://docs.google.com/spreadsheets/d/1gxkz60L2e_oXHVyRS6G48ZwPPnuiYv92yh7pMZaD6BM/edit?ts=60467aab#gid=0)
+CZIF Science Initiative Component Library
 
 ## Get Started
 
@@ -217,4 +215,11 @@ NOTE II: You can find more examples in the repo's `*.stories.tsx` and [Aspen](ht
    }
    ```
 
-## [Contribution Guide ⚡️](docs/contribution.md)
+## Project status
+
+This project is under **active development**. Contributions and ideas are welcome! If you would like to contribute, check out the [contribution guidelines](docs/contribution.md) or open an issue.
+This project is governed under the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
+
+## Reporting Security Issues
+
+Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
