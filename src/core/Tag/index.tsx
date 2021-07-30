@@ -3,11 +3,11 @@ import { Clear } from "@material-ui/icons";
 import React from "react";
 import { ExtraProps, StyledChip } from "./style";
 
-type ChipProps = ExtraProps & RawChipProps;
+type TagProps = ExtraProps & RawChipProps;
 
-export { ChipProps };
+export { TagProps };
 
-const Tag = (props: ChipProps): JSX.Element => {
+const Tag = (props: TagProps): JSX.Element => {
   const { dismissable } = props;
   if (dismissable) {
     return <StyledChip deleteIcon={<Clear />} {...props} />;
