@@ -2,6 +2,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import Tooltip from "../Tooltip";
 import Button from "./index";
 
 export const text = "Click me!";
@@ -59,4 +60,17 @@ storiesOf("Button", module).add("startIcon", () => (
   >
     {text}
   </Button>
+));
+
+storiesOf("Button", module).add("with Tooltip", () => (
+  <Tooltip title="tooltip here">
+    <Button
+      variant="contained"
+      startIcon={<DeleteIcon />}
+      onClick={actions.onClick}
+      color="primary"
+    >
+      With Tooltip!
+    </Button>
+  </Tooltip>
 ));
