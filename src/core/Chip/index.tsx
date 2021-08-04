@@ -7,7 +7,7 @@ type ChipProps = ExtraProps & RawChipProps;
 
 export { ChipProps };
 
-const Tag = (props: ChipProps): JSX.Element => {
+const Chip = (props: ChipProps): JSX.Element => {
   const { dismissable } = props;
   if (dismissable) {
     return <StyledChip deleteIcon={<Clear />} {...props} />;
@@ -16,4 +16,4 @@ const Tag = (props: ChipProps): JSX.Element => {
   }
 };
 
-export default Tag;
+export default Chip;
