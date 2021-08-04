@@ -166,11 +166,11 @@ export const StyledChip = styled(Chip)`
     const { size, status, isRounded } = props;
 
     return css`
+      ${isRounded && rounded(props)}
+      ${!isRounded && square(props)}
       ${size === "small" && small(props)}
       ${size === "medium" && medium(props)}
       ${status && statusToCss[status](props)}
-      ${isRounded && rounded(props)}
-      ${!isRounded && square(props)}
     `;
   }}
 `;

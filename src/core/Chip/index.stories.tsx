@@ -34,61 +34,61 @@ const Template: Story = (args) => <Demo {...args} />;
 export const MediumSquareChip = Template.bind({});
 
 MediumSquareChip.args = {
+  isRounded: false,
   label: "Chip",
   size: "medium",
-  isRounded: false,
 };
 
 export const Success = Template.bind({});
 
 Success.args = {
+  isRounded: true,
   label: "success",
   size: "small",
   status: "success",
-  isRounded: true,
 };
 
 export const Error = Template.bind({});
 
 Error.args = {
+  isRounded: true,
   label: "error",
   size: "small",
   status: "error",
-  isRounded: true,
 };
 
 export const Warning = Template.bind({});
 
 Warning.args = {
+  isRounded: true,
   label: "warning",
   size: "small",
   status: "warning",
-  isRounded: true,
 };
 
 export const Info = Template.bind({});
 
 Info.args = {
+  isRounded: true,
   label: "info",
   size: "small",
   status: "info",
-  isRounded: true,
 };
 
 export const Pending = Template.bind({});
 
 Pending.args = {
+  isRounded: true,
   label: "pending",
   size: "small",
   status: "pending",
-  isRounded: true,
 };
 
 export const Beta = Template.bind({});
 
 Beta.args = {
+  isRounded: true,
   label: "beta",
   size: "small",
   status: "beta",
-  isRounded: true,
 };
