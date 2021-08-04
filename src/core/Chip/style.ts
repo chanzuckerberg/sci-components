@@ -1,16 +1,20 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Chip, ChipProps } from "@material-ui/core";
+import { Chip } from "@material-ui/core";
 import {
   fontCapsXxxxs,
+  fontHeaderXs,
   getColors,
   getCorners,
   getSpacings,
   Props,
 } from "../styles";
 
-export interface ExtraProps extends Props, ChipProps {
+export interface ExtraProps extends Props {
+  dismissable?: boolean;
+  size?: "small" | "large";
   status?: "success" | "error" | "warning" | "info" | "pending" | "beta";
+  variant?: "square" | "rounded";
 }
 
 const small = (props: ExtraProps): SerializedStyles => {
@@ -24,6 +28,56 @@ const small = (props: ExtraProps): SerializedStyles => {
       ${fontCapsXxxxs(props)}
       padding: 0;
     }
+  `;
+};
+
+const large = (props: ExtraProps): SerializedStyles => {
+  const spacings = getSpacings(props);
+  const colors = getColors(props);
+
+  return css`
+    margin: 0 ${spacings?.s}px;
+    height: 24px;
+
+    background-color: ${colors?.primary[400]};
+
+    &:hover {
+      background-color: ${colors?.primary[500]};
+    }
+
+    &:active {
+      background-color: ${colors?.primary[600]};
+    }
+
+    .MuiChip-label {
+      ${fontHeaderXs(props)}
+      color: white;
+      padding-left: ${spacings?.s}px;
+    }
+
+    .MuiChip-deleteIcon {
+      color: white;
+      padding-right: ${spacings?.xxs}px;
+      margin: 0 0 0 -${spacings?.s}px;
+      height: ${spacings?.l}px;
+      width: ${spacings?.l}px;
+    }
+  `;
+};
+
+const rounded = (props: ExtraProps): SerializedStyles => {
+  const corners = getCorners(props);
+
+  return css`
+    border-radius: ${corners?.l}px;
+  `;
+};
+
+const square = (props: ExtraProps): SerializedStyles => {
+  const corners = getCorners(props);
+
+  return css`
+    border-radius: ${corners?.m}px;
   `;
 };
 
@@ -107,18 +161,17 @@ const statusToCss = {
 };
 
 export const StyledChip = styled(Chip)`
-  color: white;
+  border: none;
 
   ${(props: ExtraProps) => {
-    const { size, status } = props;
-
-    const corners = getCorners(props);
+    const { size, status, variant } = props;
 
     return css`
-      border-radius: ${corners?.l}px;
-
       ${size === "small" && small(props)}
+      ${size === "large" && large(props)}
       ${status && statusToCss[status](props)}
+      ${variant === "rounded" && rounded(props)}
+      ${variant === "square" && square(props)}
     `;
   }}
 `;
