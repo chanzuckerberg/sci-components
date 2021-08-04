@@ -8,8 +8,8 @@ type ChipProps = ExtraProps & RawChipProps;
 export { ChipProps };
 
 const Chip = (props: ChipProps): JSX.Element => {
-  const { dismissable } = props;
-  if (dismissable) {
+  const { onDelete } = props;
+  if (onDelete) {
     return <StyledChip deleteIcon={<Clear />} {...props} />;
   } else {
     return <StyledChip {...props} />;

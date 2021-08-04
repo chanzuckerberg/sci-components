@@ -11,7 +11,6 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends Props {
-  dismissable?: boolean;
   size?: "small" | "large";
   status?: "success" | "error" | "warning" | "info" | "pending" | "beta";
   variant?: "square" | "rounded";

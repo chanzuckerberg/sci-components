@@ -4,13 +4,13 @@ import Button from "../Button";
 import Chip from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { dismissable } = props;
+  const { size, variant } = props;
   const [visible, setVisible] = React.useState(false);
 
   const handleShowChip = () => setVisible(true);
   const handleDismissChip = () => setVisible(false);
 
-  if (dismissable) {
+  if (size === "large" && variant === "square") {
     return (
       <>
         <Button variant="contained" onClick={handleShowChip}>
@@ -34,7 +34,6 @@ const Template: Story = (args) => <Demo {...args} />;
 export const LargeSquareChip = Template.bind({});
 
 LargeSquareChip.args = {
-  dismissable: true,
   label: "Chip",
   size: "large",
   variant: "square",
