@@ -11,9 +11,8 @@ const Chip = (props: ChipProps): JSX.Element => {
   const { onDelete } = props;
   if (onDelete) {
     return <StyledChip deleteIcon={<Clear />} {...props} />;
-  } else {
-    return <StyledChip {...props} />;
   }
+  return <StyledChip {...props} />;
 };
 
 export default Chip;
