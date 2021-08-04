@@ -4,13 +4,13 @@ import Button from "../Button";
 import Chip from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { size, variant } = props;
+  const { size, isRounded } = props;
   const [visible, setVisible] = React.useState(false);
 
   const handleShowChip = () => setVisible(true);
   const handleDismissChip = () => setVisible(false);
 
-  if (size === "large" && variant === "square") {
+  if (size === "medium" && !isRounded) {
     return (
       <>
         <Button variant="contained" onClick={handleShowChip}>
@@ -31,12 +31,12 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const LargeSquareChip = Template.bind({});
+export const MediumSquareChip = Template.bind({});
 
-LargeSquareChip.args = {
+MediumSquareChip.args = {
   label: "Chip",
-  size: "large",
-  variant: "square",
+  size: "medium",
+  isRounded: false,
 };
 
 export const Success = Template.bind({});
@@ -45,7 +45,7 @@ Success.args = {
   label: "success",
   size: "small",
   status: "success",
-  variant: "rounded",
+  isRounded: true,
 };
 
 export const Error = Template.bind({});
@@ -54,7 +54,7 @@ Error.args = {
   label: "error",
   size: "small",
   status: "error",
-  variant: "rounded",
+  isRounded: true,
 };
 
 export const Warning = Template.bind({});
@@ -63,7 +63,7 @@ Warning.args = {
   label: "warning",
   size: "small",
   status: "warning",
-  variant: "rounded",
+  isRounded: true,
 };
 
 export const Info = Template.bind({});
@@ -72,7 +72,7 @@ Info.args = {
   label: "info",
   size: "small",
   status: "info",
-  variant: "rounded",
+  isRounded: true,
 };
 
 export const Pending = Template.bind({});
@@ -81,7 +81,7 @@ Pending.args = {
   label: "pending",
   size: "small",
   status: "pending",
-  variant: "rounded",
+  isRounded: true,
 };
 
 export const Beta = Template.bind({});
@@ -90,5 +90,5 @@ Beta.args = {
   label: "beta",
   size: "small",
   status: "beta",
-  variant: "rounded",
+  isRounded: true,
 };

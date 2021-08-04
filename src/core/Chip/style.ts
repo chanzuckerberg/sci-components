@@ -11,9 +11,9 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends Props {
-  size?: "small" | "large";
+  size?: "small" | "medium";
   status?: "success" | "error" | "warning" | "info" | "pending" | "beta";
-  variant?: "square" | "rounded";
+  isRounded?: boolean;
 }
 
 const small = (props: ExtraProps): SerializedStyles => {
@@ -30,7 +30,7 @@ const small = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const large = (props: ExtraProps): SerializedStyles => {
+const medium = (props: ExtraProps): SerializedStyles => {
   const spacings = getSpacings(props);
   const colors = getColors(props);
 
@@ -163,14 +163,14 @@ export const StyledChip = styled(Chip)`
   border: none;
 
   ${(props: ExtraProps) => {
-    const { size, status, variant } = props;
+    const { size, status, isRounded } = props;
 
     return css`
       ${size === "small" && small(props)}
-      ${size === "large" && large(props)}
+      ${size === "medium" && medium(props)}
       ${status && statusToCss[status](props)}
-      ${variant === "rounded" && rounded(props)}
-      ${variant === "square" && square(props)}
+      ${isRounded && rounded(props)}
+      ${!isRounded && square(props)}
     `;
   }}
 `;
