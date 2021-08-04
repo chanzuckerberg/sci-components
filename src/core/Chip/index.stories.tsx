@@ -44,8 +44,8 @@ export const Success = Template.bind({});
 
 Success.args = {
   label: "success",
-  status: "success",
   size: "small",
+  status: "success",
   variant: "rounded",
 };
 
@@ -53,8 +53,8 @@ export const Error = Template.bind({});
 
 Error.args = {
   label: "error",
-  status: "error",
   size: "small",
+  status: "error",
   variant: "rounded",
 };
 
@@ -62,8 +62,8 @@ export const Warning = Template.bind({});
 
 Warning.args = {
   label: "warning",
-  status: "warning",
   size: "small",
+  status: "warning",
   variant: "rounded",
 };
 
@@ -71,8 +71,8 @@ export const Info = Template.bind({});
 
 Info.args = {
   label: "info",
-  status: "info",
   size: "small",
+  status: "info",
   variant: "rounded",
 };
 
@@ -80,8 +80,8 @@ export const Pending = Template.bind({});
 
 Pending.args = {
   label: "pending",
-  status: "pending",
   size: "small",
+  status: "pending",
   variant: "rounded",
 };
 
@@ -89,7 +89,7 @@ export const Beta = Template.bind({});
 
 Beta.args = {
   label: "beta",
-  status: "beta",
   size: "small",
+  status: "beta",
   variant: "rounded",
 };
