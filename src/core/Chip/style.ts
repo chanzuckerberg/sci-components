@@ -159,7 +159,11 @@ const statusToCss = {
   warning,
 };
 
-export const StyledChip = styled(Chip)`
+const doNotForwardProps = ["isRounded"];
+
+export const StyledChip = styled(Chip, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   border: none;
 
   ${(props: ExtraProps) => {
