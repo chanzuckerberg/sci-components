@@ -1,6 +1,6 @@
 {
   "name": "czifui",
-  "version": "0.0.43",
+  "version": "0.0.42",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
