@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import { Checkbox as RawCheckbox, CheckboxProps } from "@material-ui/core";
+import {
+  Checkbox as RawCheckbox,
+  CheckboxProps,
+  SvgIcon,
+} from "@material-ui/core";
 import React from "react";
 import { ReactComponent as IconCheckboxChecked } from "../../common/svgs/IconCheckboxChecked.svg";
 import { ReactComponent as IconCheckboxIndeterminate } from "../../common/svgs/IconCheckboxIndeterminate.svg";
@@ -27,9 +31,13 @@ const StyledCheckbox = styled(RawCheckbox)`
 const Checkbox = (props: CheckboxProps): JSX.Element => (
   <StyledCheckbox
     {...props}
-    checkedIcon={<IconCheckboxChecked />}
-    icon={<IconCheckboxUnchecked />}
-    indeterminateIcon={<IconCheckboxIndeterminate />}
+    checkedIcon={
+      <SvgIcon fillContrast="white" component={IconCheckboxChecked} />
+    }
+    icon={<SvgIcon fillContrast="white" component={IconCheckboxUnchecked} />}
+    indeterminateIcon={
+      <SvgIcon fillContrast="white" component={IconCheckboxIndeterminate} />
+    }
   />
 );
 

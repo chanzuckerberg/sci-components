@@ -1,0 +1,6 @@
+{
+	"replaceAttrValues": {
+	  "#000": "{props.hmtlColor}",
+	  "#c00": "{props.fillContrast}",
+	}
+}
