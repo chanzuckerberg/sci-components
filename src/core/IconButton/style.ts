@@ -60,15 +60,17 @@ const secondary = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const small = (): SerializedStyles => {
+const small = (props: ExtraProps): SerializedStyles => {
+  const spacings = getSpacings(props);
+
   return css`
     &:hover {
       background: none;
     }
 
     .MuiSvgIcon-root {
-      height: 14px;
-      width: 14px;
+      height: ${spacings?.l}px;
+      width: ${spacings?.l}px;
     }
   `;
 };
@@ -100,7 +102,7 @@ export const StyledIconButton = styled(IconButton, {
       ${color === "secondary" && secondary(props)}
       ${active && isActive(props)}
       ${disabled && isDisabled(props)}
-      ${size === "small" && small()}
+      ${size === "small" && small(props)}
       ${size === "medium" && medium(props)}
     `;
   }}
