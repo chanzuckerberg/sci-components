@@ -6,8 +6,10 @@ export interface ButtonProps extends RawButtonProps {
   isRounded?: boolean;
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  return <StyledButton {...props} />;
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref): JSX.Element => {
+    return <StyledButton {...props} ref={ref} />;
+  }
+);
 
 export default Button;
