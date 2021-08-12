@@ -89,7 +89,7 @@ const medium = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["active", "secondary"];
+const doNotForwardProps = ["active"];
 
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
