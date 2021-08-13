@@ -1,98 +1,104 @@
+import { FormControlLabel } from "@material-ui/core";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import Checkbox from "./index";
 
 const actions = {
-  onClick: action("onClick"),
+  onChange: action("onChange"),
 };
 
-storiesOf("Checkbox", module).add("default", () => (
-  <>
+const storyColumn = {
+  alignItems: "flex-start",
+  display: "flex",
+  flexDirection: "column",
+};
+
+storiesOf("Checkbox", module).add("unchecked", () => (
+  <div style={storyColumn as React.CSSProperties}>
     <p>
-      Accessibility: All checkboxes should have a label. This can be done with a
-      visible form label or with the aria-label attribute.
+      <strong>Accessibility</strong>: All checkboxes should have a label. This
+      can be done with a visible form label or with the aria-label attribute.
+      Note aria labels should be meaningful based on your content. <br /> Good:
+      &ldquo;XYZ Gene&ldquo;
+      <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
       https://material-ui.com/components/checkboxes/#accessibility
     </p>
+    <FormControlLabel
+      control={<Checkbox onChange={actions.onChange} stage="unchecked" />}
+      label="Unchecked"
+    />
+    <FormControlLabel
+      control={
+        <Checkbox disabled onChange={actions.onChange} stage="unchecked" />
+      }
+      label="Unchecked & disabled"
+    />
+    With aria labels:
     <Checkbox
-      color="default"
-      defaultChecked
-      inputProps={{ "aria-label": "checkbox-default-checked" }}
-      onClick={actions.onClick}
+      inputProps={{ "aria-label": "checkbox unchecked" }}
+      onChange={actions.onChange}
+      stage="unchecked"
     />
     <Checkbox
-      color="default"
-      inputProps={{ "aria-label": "checkbox" }}
-      onClick={actions.onClick}
-    />
-    <Checkbox
-      color="default"
       disabled
-      inputProps={{ "aria-label": "checkbox-disabled" }}
-      onClick={actions.onClick}
+      inputProps={{ "aria-label": "checkbox unchecked and disabled" }}
+      onChange={actions.onChange}
+      stage="unchecked"
     />
-  </>
+  </div>
 ));
 
-storiesOf("Checkbox", module).add("primary", () => (
-  <>
+storiesOf("Checkbox", module).add("checked", () => (
+  <div style={storyColumn as React.CSSProperties}>
+    <FormControlLabel
+      control={<Checkbox onChange={actions.onChange} stage="checked" />}
+      label="Checked"
+    />
+    <FormControlLabel
+      control={
+        <Checkbox disabled onChange={actions.onChange} stage="checked" />
+      }
+      label="Checked & disabled"
+    />
+    With aria labels:
     <Checkbox
-      color="primary"
-      defaultChecked
-      inputProps={{ "aria-label": "primary-checkbox-default-checked" }}
-      onClick={actions.onClick}
+      inputProps={{ "aria-label": "checked" }}
+      onChange={actions.onChange}
+      stage="checked"
     />
     <Checkbox
-      color="primary"
-      inputProps={{ "aria-label": "primary-checkbox" }}
-      onClick={actions.onClick}
-    />
-    <Checkbox
-      color="primary"
       disabled
-      inputProps={{ "aria-label": "primary-checkbox-disabled" }}
-      onClick={actions.onClick}
+      inputProps={{ "aria-label": "checked and disabled" }}
+      onChange={actions.onChange}
+      stage="checked"
     />
-  </>
-));
-
-storiesOf("Checkbox", module).add("secondary", () => (
-  <>
-    <Checkbox
-      color="secondary"
-      defaultChecked
-      inputProps={{ "aria-label": "secondary-checkbox-default-checked" }}
-      onClick={actions.onClick}
-    />
-    <Checkbox
-      color="secondary"
-      inputProps={{ "aria-label": "secondary-checkbox" }}
-      onClick={actions.onClick}
-    />
-    <Checkbox
-      color="secondary"
-      disabled
-      inputProps={{ "aria-label": "secondary-checkbox-disabled" }}
-      onClick={actions.onClick}
-    />
-  </>
+  </div>
 ));
 
 storiesOf("Checkbox", module).add("indeterminate", () => (
-  <>
+  <div style={storyColumn as React.CSSProperties}>
+    <FormControlLabel
+      control={<Checkbox onChange={actions.onChange} stage="indeterminate" />}
+      label="Checked"
+    />
+    <FormControlLabel
+      control={
+        <Checkbox disabled onChange={actions.onChange} stage="indeterminate" />
+      }
+      label="Checked & disabled"
+    />
+    With aria labels:
     <Checkbox
-      color="primary"
-      defaultChecked
-      indeterminate
-      inputProps={{ "aria-label": "primary-checkbox-indeterminate" }}
-      onClick={actions.onClick}
+      inputProps={{ "aria-label": "indeterminate" }}
+      onChange={actions.onChange}
+      stage="indeterminate"
     />
     <Checkbox
-      color="secondary"
-      defaultChecked
-      indeterminate
-      inputProps={{ "aria-label": "secondary-checkbox-indeterminate" }}
-      onClick={actions.onClick}
+      disabled
+      inputProps={{ "aria-label": "indeterminate and disabled" }}
+      onChange={actions.onChange}
+      stage="indeterminate"
     />
-  </>
+  </div>
 ));
