@@ -4,6 +4,7 @@ import {
   Colors,
   Corners,
   FontWeights,
+  IconSizes,
   Shadows,
   Spacings,
   Typography,
@@ -39,4 +40,8 @@ export const getCorners = ({ theme }: Props): Corners | null => {
 
 export const getFontWeights = ({ theme }: Props): FontWeights | null => {
   return theme?.app?.fontWeights || null;
+};
+
+export const getIconSizes = ({ theme }: Props): IconSizes | null => {
+  return theme?.app?.iconSizes || null;
 };

@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButton } from "@material-ui/core";
-import { getColors, getSpacings, Props } from "../styles";
+import { getColors, getIconSizes, getSpacings, Props } from "../styles";
 
 export interface ExtraProps extends Props {
   active?: boolean;
@@ -61,7 +61,7 @@ const secondary = (props: ExtraProps): SerializedStyles => {
 };
 
 const small = (props: ExtraProps): SerializedStyles => {
-  const spacings = getSpacings(props);
+  const iconSizes = getIconSizes(props);
 
   return css`
     &:hover {
@@ -69,8 +69,8 @@ const small = (props: ExtraProps): SerializedStyles => {
     }
 
     .MuiSvgIcon-root {
-      height: ${spacings?.l}px;
-      width: ${spacings?.l}px;
+      height: ${iconSizes?.s.height}px;
+      width: ${iconSizes?.s.width}px;
     }
   `;
 };
@@ -78,13 +78,14 @@ const small = (props: ExtraProps): SerializedStyles => {
 const medium = (props: ExtraProps): SerializedStyles => {
   const { color } = props;
   const spacings = getSpacings(props);
+  const iconSizes = getIconSizes(props);
 
   return css`
     padding: ${color === "primary" ? spacings?.xxs : 0}px;
 
     .MuiSvgIcon-root {
-      height: 32px;
-      width: 32px;
+      height: ${iconSizes?.xl.height}px;
+      width: ${iconSizes?.xl.height}px;
     }
   `;
 };
