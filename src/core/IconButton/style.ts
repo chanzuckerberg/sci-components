@@ -15,7 +15,7 @@ const isActive = (props: ExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
-    color: ${color === "primary" ? colors?.primary[600] : colors?.primary[500]};
+    color: ${color === "primary" ? colors?.primary[600] : colors?.primary[400]};
 
     &:hover {
       color: ${colors?.primary[600]};
