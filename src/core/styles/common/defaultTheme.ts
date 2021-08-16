@@ -78,10 +78,10 @@ export const defaultAppTheme: AppTheme = {
     semibold: 600,
   },
   iconSizes: {
-    xs: { width: 10, height: 10 },
-    s: { width: 14, height: 14 },
-    l: { width: 22, height: 22 },
-    xl: { width: 32, height: 32 },
+    l: { height: 22, width: 22 },
+    s: { height: 14, width: 14 },
+    xl: { height: 32, width: 32 },
+    xs: { height: 10, width: 10 },
   },
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
@@ -455,8 +455,8 @@ export interface Colors {
 }
 
 interface IconSize {
-  width: number;
   height: number;
+  width: number;
 }
 
 export interface IconSizes {
