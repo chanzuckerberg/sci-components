@@ -5,7 +5,7 @@ import IconCheckboxIndeterminate from "../../common/svgs/IconCheckboxIndetermina
 import IconCheckboxUnchecked from "../../common/svgs/IconCheckboxUnchecked.svg";
 import { StyledCheckbox } from "./styles";
 
-interface CheckboxProps
+export interface CheckboxProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
   stage: "checked" | "unchecked" | "indeterminate";
 }
