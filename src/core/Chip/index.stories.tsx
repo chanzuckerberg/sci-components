@@ -19,9 +19,8 @@ const Demo = (props: Args): JSX.Element => {
         {visible && <Chip onDelete={handleDismissChip} {...props} />}
       </>
     );
-  } else {
-    return <Chip {...props} />;
   }
+  return <Chip {...props} />;
 };
 
 export default {
