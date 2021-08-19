@@ -5,17 +5,19 @@ import { getColors, getIconSizes, getSpacings, Props } from "../styles";
 
 export interface ExtraProps extends Props {
   active?: boolean;
-  color?: "primary" | "secondary";
   disabled?: boolean;
-  size?: "small" | "medium";
+  sdsSize?: "small" | "large";
+  sdsType?: "primary" | "secondary";
 }
 
 const isActive = (props: ExtraProps): SerializedStyles => {
-  const { color } = props;
+  const { sdsType } = props;
   const colors = getColors(props);
 
   return css`
-    color: ${color === "primary" ? colors?.primary[600] : colors?.primary[400]};
+    color: ${sdsType === "primary"
+      ? colors?.primary[600]
+      : colors?.primary[400]};
 
     &:hover {
       color: ${colors?.primary[600]};
@@ -75,13 +77,13 @@ const small = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const medium = (props: ExtraProps): SerializedStyles => {
-  const { color } = props;
+const large = (props: ExtraProps): SerializedStyles => {
+  const { sdsType } = props;
   const spacings = getSpacings(props);
   const iconSizes = getIconSizes(props);
 
   return css`
-    padding: ${color === "primary" ? spacings?.xxs : 0}px;
+    padding: ${sdsType === "primary" ? spacings?.xxs : 0}px;
 
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
@@ -96,15 +98,15 @@ export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: ExtraProps) => {
-    const { active, color, disabled, size } = props;
+    const { active, disabled, sdsSize, sdsType } = props;
 
     return css`
-      ${color === "primary" && primary(props)}
-      ${color === "secondary" && secondary(props)}
+      ${sdsType === "primary" && primary(props)}
+      ${sdsType === "secondary" && secondary(props)}
       ${active && isActive(props)}
       ${disabled && isDisabled(props)}
-      ${size === "small" && small(props)}
-      ${size === "medium" && medium(props)}
+      ${sdsSize === "small" && small(props)}
+      ${sdsSize === "large" && large(props)}
     `;
   }}
 `;

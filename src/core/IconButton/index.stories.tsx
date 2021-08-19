@@ -23,38 +23,38 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const MediumPrimaryIconButton = Template.bind({});
+export const LargePrimaryIconButton = Template.bind({});
 
-MediumPrimaryIconButton.args = {
-  color: "primary",
+LargePrimaryIconButton.args = {
   disabled: false,
   icon: <DehazeIcon />,
-  size: "medium",
+  sdsSize: "large",
+  sdsType: "primary",
 };
 
-export const MediumSecondaryIconButton = Template.bind({});
+export const LargeSecondaryIconButton = Template.bind({});
 
-MediumSecondaryIconButton.args = {
-  color: "secondary",
+LargeSecondaryIconButton.args = {
   disabled: false,
   icon: <DehazeIcon />,
-  size: "medium",
+  sdsSize: "large",
+  sdsType: "secondary",
 };
 
 export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
-  color: "primary",
   disabled: false,
   icon: <DehazeIcon />,
-  size: "small",
+  sdsSize: "small",
+  sdsType: "primary",
 };
 
 export const SmallSecondaryIconButton = Template.bind({});
 
 SmallSecondaryIconButton.args = {
-  color: "secondary",
   disabled: false,
   icon: <DehazeIcon />,
-  size: "small",
+  sdsSize: "small",
+  sdsType: "secondary",
 };
