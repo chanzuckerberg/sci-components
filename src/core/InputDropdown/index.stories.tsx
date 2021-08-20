@@ -13,9 +13,9 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const MinimalInputDropdown = Template.bind({});
+export const Minimal = Template.bind({});
 
-MinimalInputDropdown.args = {
+Minimal.args = {
   disabled: false,
   label: "Dropdown",
   onClick: () => null,
