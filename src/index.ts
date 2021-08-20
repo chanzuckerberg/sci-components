@@ -7,6 +7,8 @@ export * from "./core/Checkbox";
 export { default as Checkbox } from "./core/Checkbox";
 export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
+export * from "./core/IconButton";
+export { default as IconButton } from "./core/IconButton";
 export * from "./core/Link";
 export { default as Link } from "./core/Link";
 export * from "./core/List";

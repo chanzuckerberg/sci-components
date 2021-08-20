@@ -77,6 +77,12 @@ export const defaultAppTheme: AppTheme = {
     regular: 400,
     semibold: 600,
   },
+  iconSizes: {
+    l: { height: 22, width: 22 },
+    s: { height: 14, width: 14 },
+    xl: { height: 32, width: 32 },
+    xs: { height: 10, width: 10 },
+  },
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
     m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
@@ -359,6 +365,7 @@ interface AppTheme {
   colors: Colors;
   corners: Corners;
   fontWeights: FontWeights;
+  iconSizes: IconSizes;
   shadows: Shadows;
   spacing: Spacings;
   typography: Typography;
@@ -445,6 +452,18 @@ export interface Colors {
   success: Color;
   warning: Color;
   error: Color;
+}
+
+interface IconSize {
+  height: number;
+  width: number;
+}
+
+export interface IconSizes {
+  xs: IconSize;
+  s: IconSize;
+  l: IconSize;
+  xl: IconSize;
 }
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
