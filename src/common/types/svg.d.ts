@@ -3,6 +3,7 @@ interface CustomSVGProps extends React.SVGAttributes<SVGElement> {
 }
 
 declare module "*.svg" {
-  const value: React.FunctionComponent<CustomSVGProps>;
-  export default value;
+  export const ReactComponent: React.FunctionComponent<CustomSVGProps>;
+  const src: string;
+  export default src;
 }
