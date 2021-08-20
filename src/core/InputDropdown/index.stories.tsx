@@ -3,7 +3,16 @@ import React from "react";
 import InputDropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  return <InputDropdown {...props} />;
+  const { disabled, label, onClick, sdsStyle, ...rest } = props;
+  return (
+    <InputDropdown
+      disabled={disabled}
+      label={label}
+      onClick={onClick}
+      sdsStyle={sdsStyle}
+      {...rest}
+    />
+  );
 };
 
 export default {

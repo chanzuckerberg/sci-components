@@ -7,7 +7,15 @@ import {
   getIconSizes,
   getPalette,
   getSpacings,
+  Props,
 } from "../styles";
+
+export interface InputDropdownProps extends Props {
+  disabled?: boolean;
+  label: string;
+  onClick: () => void;
+  sdsStyle?: "minimal" | "square" | "rounded";
+}
 
 const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
