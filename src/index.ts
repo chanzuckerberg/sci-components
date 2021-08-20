@@ -21,6 +21,8 @@ export * from "./core/Menu";
 export { default as Menu } from "./core/Menu";
 export * from "./core/MenuItem";
 export { default as MenuItem } from "./core/MenuItem";
+export * from "./core/MenuSelect";
+export { default as MenuSelect } from "./core/MenuSelect";
 export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
