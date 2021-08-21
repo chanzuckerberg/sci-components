@@ -1,6 +1,8 @@
-import DehazeIcon from "@material-ui/icons/Dehaze";
+import { SvgIcon } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import { ReactComponent as IconFilters } from "../../common/svgs/IconFilters.svg";
+import { ReactComponent as IconInfoPanel } from "../../common/svgs/IconInfoPanel.svg";
 import IconButton from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -27,7 +29,13 @@ export const LargePrimaryIconButton = Template.bind({});
 
 LargePrimaryIconButton.args = {
   disabled: false,
-  icon: <DehazeIcon />,
+  icon: (
+    <SvgIcon
+      fillContrast="white"
+      viewBox="0 0 32 32"
+      component={IconInfoPanel}
+    />
+  ),
   sdsSize: "large",
   sdsType: "primary",
 };
@@ -36,7 +44,9 @@ export const LargeSecondaryIconButton = Template.bind({});
 
 LargeSecondaryIconButton.args = {
   disabled: false,
-  icon: <DehazeIcon />,
+  icon: (
+    <SvgIcon fillContrast="white" viewBox="0 0 32 32" component={IconFilters} />
+  ),
   sdsSize: "large",
   sdsType: "secondary",
 };
@@ -45,7 +55,13 @@ export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
   disabled: false,
-  icon: <DehazeIcon />,
+  icon: (
+    <SvgIcon
+      fillContrast="white"
+      viewBox="0 0 32 32"
+      component={IconInfoPanel}
+    />
+  ),
   sdsSize: "small",
   sdsType: "primary",
 };
@@ -54,7 +70,9 @@ export const SmallSecondaryIconButton = Template.bind({});
 
 SmallSecondaryIconButton.args = {
   disabled: false,
-  icon: <DehazeIcon />,
+  icon: (
+    <SvgIcon fillContrast="white" viewBox="0 0 32 32" component={IconFilters} />
+  ),
   sdsSize: "small",
   sdsType: "secondary",
 };

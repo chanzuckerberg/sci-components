@@ -92,7 +92,7 @@ const large = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["active"];
+const doNotForwardProps = ["active", "sdsSize", "sdsType"];
 
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
