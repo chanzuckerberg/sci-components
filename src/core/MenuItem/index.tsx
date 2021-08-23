@@ -1,5 +1,4 @@
 import {
-  Checkbox,
   Icon as RawIcon,
   IconTypeMap,
   MenuItemProps as RawMenuItemProps,
@@ -10,6 +9,7 @@ import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
   ContentWrapper,
+  StyledCheckbox,
   StyledMenuItem,
   TextWrapper,
 } from "./style";
@@ -54,10 +54,9 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   return (
     <StyledMenuItem {...(originalMenuItemProps as unknown)}>
       {hasCheckbox && (
-        <Checkbox
+        <StyledCheckbox
           icon={Icon && <Icon fontSize="small" />}
           checkedIcon={CheckedIcon && <CheckedIcon fontSize="small" />}
-          style={{ marginRight: 8 }}
           checked={selected}
           color="primary"
         />

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MenuItem } from "@material-ui/core";
+import { Checkbox, MenuItem } from "@material-ui/core";
 import { Black } from "../styles/common/constants/black";
 import { FontWeights } from "../styles/common/constants/fontWeights";
 import { Gray } from "../styles/common/constants/gray";
@@ -50,4 +50,14 @@ export const ColumnWrapper = styled.span`
 
 export const DemoWrapper = styled.div`
   width: 250px;
+`;
+
+export const StyledCheckbox = styled(Checkbox)`
+  ${(props) => {
+    const spacings = getSpacings(props);
+
+    return `
+      margin-right: ${spacings?.s}px;
+    `;
+  }}
 `;
