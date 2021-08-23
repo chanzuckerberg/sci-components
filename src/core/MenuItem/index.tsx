@@ -1,14 +1,14 @@
 import {
-  Icon as RawIcon,
   IconTypeMap,
   MenuItemProps as RawMenuItemProps,
 } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import { Check, CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
+import { CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
 import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
   ContentWrapper,
+  StyledCheck,
   StyledCheckbox,
   StyledMenuItem,
   TextWrapper,
@@ -40,8 +40,8 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   let CheckedIcon;
 
   if (isMultiSelect) {
-    Icon = RawIcon;
-    CheckedIcon = Check;
+    Icon = StyledCheck;
+    CheckedIcon = StyledCheck;
   } else if (isMultiSelectCheckbox) {
     Icon = CheckBoxOutlineBlank as OverridableComponent<
       IconTypeMap<Record<string, unknown>, "svg">
@@ -57,7 +57,9 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
         <StyledCheckbox
           // TODO (mlila): replace with sds Icon class once complete
           icon={Icon && <Icon fontSize="small" />}
-          checkedIcon={CheckedIcon && <CheckedIcon fontSize="small" />}
+          checkedIcon={
+            CheckedIcon && <CheckedIcon fontSize="small" selected={selected} />
+          }
           checked={selected}
           color="primary"
         />
