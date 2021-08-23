@@ -25,7 +25,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
       color: ${colors?.gray[300]};
     }
     path {
-      fill: ${colors?.gray[200]};
+      fill: ${colors?.gray[300]};
     }
   `;
 };
