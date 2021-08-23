@@ -50,11 +50,12 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   }
 
   const hasCheckbox = isMultiSelect || isMultiSelectCheckbox;
-
   return (
     <StyledMenuItem {...(originalMenuItemProps as unknown)}>
       {hasCheckbox && (
+        // TODO (mlila): replace with sds InputCheckbox class once complete
         <StyledCheckbox
+          // TODO (mlila): replace with sds Icon class once complete
           icon={Icon && <Icon fontSize="small" />}
           checkedIcon={CheckedIcon && <CheckedIcon fontSize="small" />}
           checked={selected}
@@ -63,7 +64,9 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
       )}
 
       <ContentWrapper>
-        <TextWrapper selected={selected}>{children}</TextWrapper>
+        <TextWrapper selected={selected} className="primary-text">
+          {children}
+        </TextWrapper>
         {column && <ColumnWrapper>{column}</ColumnWrapper>}
       </ContentWrapper>
     </StyledMenuItem>

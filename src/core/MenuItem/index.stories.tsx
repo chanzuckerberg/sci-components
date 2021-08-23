@@ -42,6 +42,7 @@ function renderMenuItems(personName: string[]) {
         value={name}
         column={number}
         selected={personName.includes(name)}
+        isMultiSelect
       >
         {name}
       </MenuItem>

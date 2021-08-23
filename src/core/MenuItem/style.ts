@@ -1,19 +1,40 @@
 import styled from "@emotion/styled";
 import { Checkbox, MenuItem } from "@material-ui/core";
-import { Black } from "../styles/common/constants/black";
-import { FontWeights } from "../styles/common/constants/fontWeights";
-import { Gray } from "../styles/common/constants/gray";
 import { fontBody } from "../styles/common/mixins/fonts";
-import { getPalette, getSpacings } from "../styles/common/selectors/theme";
+import {
+  getColors,
+  getFontWeights,
+  getPalette,
+  getSpacings,
+} from "../styles/common/selectors/theme";
 
 const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
+    const colors = getColors(props);
+    const fontWeights = getFontWeights(props);
     const spacings = getSpacings(props);
 
     return `
       padding: ${spacings?.s}px ${spacings?.m}px;
+
+      .MuiIconButton-root {
+        padding: 0;
+      }
+
+      &.MuiListItem-root.Mui-selected,
+      &.MuiListItem-root.Mui-selected:hover {
+        background-color: transparent;
+
+        &:hover {
+          background-color: ${colors?.gray[100]};
+        }
+      }
+
+      &:active .primary-text {
+        font-weight: ${fontWeights?.semibold};
+      }
     `;
   }}
 `;
@@ -33,19 +54,24 @@ export const TextWrapper = styled.span<TextWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
-    const { selected } = props;
     const palette = getPalette(props);
 
     return `
-      color: ${palette?.text?.primary || Black.DEFAULT};
-      font-weight: ${selected ? FontWeights.SEMI_BOLD : FontWeights.REGULAR}};
+      color: ${palette?.text?.primary};
     `;
   }}
 `;
 
 export const ColumnWrapper = styled.span`
   ${fontBodyXs}
-  color: ${Gray.DARK};
+
+  ${(props) => {
+    const colors = getColors(props);
+
+    return `
+      color: ${colors?.gray[500]};
+    `;
+  }}
 `;
 
 export const DemoWrapper = styled.div`
@@ -57,7 +83,11 @@ export const StyledCheckbox = styled(Checkbox)`
     const spacings = getSpacings(props);
 
     return `
-      margin-right: ${spacings?.s}px;
+      margin-right: ${spacings?.m}px;
+
+      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
+        background-color: transparent;
+      }
     `;
   }}
 `;
