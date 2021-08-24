@@ -40,7 +40,9 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   let CheckedIcon;
 
   if (isMultiSelect) {
-    Icon = StyledCheck;
+    Icon = StyledCheck as OverridableComponent<
+      IconTypeMap<Record<string, unknown>, "svg">
+    >;
     CheckedIcon = StyledCheck;
   } else if (isMultiSelectCheckbox) {
     Icon = CheckBoxOutlineBlank as OverridableComponent<

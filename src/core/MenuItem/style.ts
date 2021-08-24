@@ -19,6 +19,8 @@ export const StyledMenuItem = styled(MenuItem)`
     const fontWeights = getFontWeights(props);
     const spacings = getSpacings(props);
 
+    const primary = colors?.primary[400];
+
     return `
       padding: ${spacings?.s}px ${spacings?.m}px;
 
@@ -31,13 +33,19 @@ export const StyledMenuItem = styled(MenuItem)`
         }
       }
 
-      &:active .primary-text {
-        font-weight: ${fontWeights?.semibold};
-      }
-
       &:hover {
         svg {
-          color: ${selected ? "currentColor" : colors?.gray[500]};
+          color: ${selected ? primary : colors?.gray[500]};
+        }
+      }
+
+      &:active {
+        svg {
+          color: ${primary};
+        }
+
+        .primary-text {
+          font-weight: ${fontWeights?.semibold};
         }
       }
     `;
@@ -83,6 +91,10 @@ export const DemoWrapper = styled.div`
   width: 250px;
 `;
 
+interface StyledCheckType {
+  selected?: boolean;
+}
+
 export const StyledCheckbox = styled(Checkbox)`
   ${(props) => {
     const spacings = getSpacings(props);
@@ -100,7 +112,7 @@ export const StyledCheckbox = styled(Checkbox)`
 
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
-})`
+})<StyledCheckType>`
   ${(props) => {
     const { selected } = props;
     const iconSizes = getIconSizes(props);
