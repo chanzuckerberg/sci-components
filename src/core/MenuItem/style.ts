@@ -24,8 +24,7 @@ export const StyledMenuItem = styled(MenuItem)`
     return `
       padding: ${spacings?.s}px ${spacings?.m}px;
 
-      &.MuiListItem-root.Mui-selected,
-      &.MuiListItem-root.Mui-selected:hover {
+      &.MuiListItem-root.MuiListItem-button {
         background-color: transparent;
 
         &:hover {
