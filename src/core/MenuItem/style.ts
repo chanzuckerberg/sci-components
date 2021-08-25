@@ -24,6 +24,10 @@ export const StyledMenuItem = styled(MenuItem)`
     return `
       padding: ${spacings?.xs}px ${spacings?.m}px;
 
+      .primary-text {
+        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
+      }
+
       &.MuiListItem-root.MuiListItem-button {
         background-color: transparent;
 
