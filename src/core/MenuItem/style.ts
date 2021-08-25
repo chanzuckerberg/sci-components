@@ -22,7 +22,7 @@ export const StyledMenuItem = styled(MenuItem)`
     const primary = colors?.primary[400];
 
     return `
-      padding: ${spacings?.s}px ${spacings?.m}px;
+      padding: ${spacings?.xs}px ${spacings?.m}px;
 
       &.MuiListItem-root.MuiListItem-button {
         background-color: transparent;
