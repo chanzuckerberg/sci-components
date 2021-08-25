@@ -171,21 +171,6 @@ WithMultiSelectSelected.args = {
   selected: true,
 };
 
-export const WithMultiSelectCheckbox = Template.bind({});
-
-WithMultiSelectCheckbox.args = {
-  ...Default.args,
-  isMultiSelectCheckbox: true,
-};
-
-export const WithMultiSelectCheckboxSelected = Template.bind({});
-
-WithMultiSelectCheckboxSelected.args = {
-  ...Default.args,
-  isMultiSelectCheckbox: true,
-  selected: true,
-};
-
 const MenuItemStories = storiesOf("MenuItem", module);
 
 MenuItemStories.add("MultipleSelect", () => <MultipleSelect />);

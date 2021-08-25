@@ -1,15 +1,8 @@
-import {
-  IconTypeMap,
-  MenuItemProps as RawMenuItemProps,
-} from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import { CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
 import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
   ContentWrapper,
   StyledCheck,
-  StyledCheckbox,
   StyledMenuItem,
   TextWrapper,
 } from "./style";
@@ -17,52 +10,21 @@ import {
 export interface ExtraProps {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
-  isMultiSelectCheckbox?: boolean;
 }
 
 export type MenuItemProps = ExtraProps & RawMenuItemProps;
 
 const MenuItem = forwardRef((props: MenuItemProps, _) => {
-  const {
-    children,
-    column,
-    isMultiSelect,
-    isMultiSelectCheckbox,
-    ...originalMenuItemProps
-  } = props;
-
+  const { children, column, isMultiSelect, ...originalMenuItemProps } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps;
 
-  let Icon:
-    | OverridableComponent<IconTypeMap<Record<string, unknown>, "span">>
-    | OverridableComponent<IconTypeMap<Record<string, unknown>, "svg">>
-    | null = null;
-  let CheckedIcon;
-
-  if (isMultiSelect) {
-    Icon = StyledCheck as OverridableComponent<
-      IconTypeMap<Record<string, unknown>, "svg">
-    >;
-    CheckedIcon = StyledCheck;
-  } else if (isMultiSelectCheckbox) {
-    Icon = CheckBoxOutlineBlank as OverridableComponent<
-      IconTypeMap<Record<string, unknown>, "svg">
-    >;
-    CheckedIcon = CheckBox;
-  }
-
-  const hasCheckbox = isMultiSelect || isMultiSelectCheckbox;
   return (
     <StyledMenuItem {...(originalMenuItemProps as unknown)}>
-      {hasCheckbox && (
+      {isMultiSelect && (
         // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheckbox
+        <StyledCheck
           // TODO (mlila): replace with sds Icon class once complete
-          icon={Icon && <Icon fontSize="small" />}
-          checkedIcon={
-            CheckedIcon && <CheckedIcon fontSize="small" selected={selected} />
-          }
-          checked={selected}
+          selected={selected}
           color="primary"
         />
       )}
@@ -80,7 +42,6 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
 MenuItem.defaultProps = {
   column: null,
   isMultiSelect: false,
-  isMultiSelectCheckbox: false,
 };
 
 export default MenuItem;

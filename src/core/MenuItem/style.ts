@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Checkbox, MenuItem } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
 import { Check } from "@material-ui/icons";
 import { fontBody } from "../styles/common/mixins/fonts";
 import {
@@ -94,34 +94,26 @@ interface StyledCheckType {
   selected?: boolean;
 }
 
-export const StyledCheckbox = styled(Checkbox)`
-  ${(props) => {
-    const spacings = getSpacings(props);
-
-    return `
-      margin-right: ${spacings?.m}px;
-      padding: 0;
-
-      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
-        background-color: transparent;
-      }
-    `;
-  }}
-`;
-
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<StyledCheckType>`
   ${(props) => {
     const { selected } = props;
+    const colors = getColors(props);
     const iconSizes = getIconSizes(props);
     const spacings = getSpacings(props);
 
     return `
-      color: ${selected ? "currentColor" : "transparent"};
+      color: ${selected ? colors?.primary[400] : "transparent"};
+      margin-right: ${spacings?.m}px;
       margin-top: ${spacings?.xxxs}px;
+      padding: 0;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
+
+      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
+        background-color: transparent;
+      }
     `;
   }}
 `;
