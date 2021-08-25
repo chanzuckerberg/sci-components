@@ -1,3 +1,4 @@
+import { MenuItemProps as RawMenuItemProps } from "@material-ui/core";
 import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
