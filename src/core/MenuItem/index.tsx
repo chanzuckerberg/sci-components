@@ -1,15 +1,9 @@
-import {
-  Checkbox,
-  Icon as RawIcon,
-  IconTypeMap,
-  MenuItemProps as RawMenuItemProps,
-} from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
-import { Check, CheckBox, CheckBoxOutlineBlank } from "@material-ui/icons";
+import { MenuItemProps as RawMenuItemProps } from "@material-ui/core";
 import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
   ContentWrapper,
+  StyledCheck,
   StyledMenuItem,
   TextWrapper,
 } from "./style";
@@ -17,54 +11,29 @@ import {
 export interface ExtraProps {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
-  isMultiSelectCheckbox?: boolean;
 }
 
 export type MenuItemProps = ExtraProps & RawMenuItemProps;
 
 const MenuItem = forwardRef((props: MenuItemProps, _) => {
-  const {
-    children,
-    column,
-    isMultiSelect,
-    isMultiSelectCheckbox,
-    ...originalMenuItemProps
-  } = props;
-
+  const { children, column, isMultiSelect, ...originalMenuItemProps } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps;
-
-  let Icon:
-    | OverridableComponent<IconTypeMap<Record<string, unknown>, "span">>
-    | OverridableComponent<IconTypeMap<Record<string, unknown>, "svg">>
-    | null = null;
-  let CheckedIcon;
-
-  if (isMultiSelect) {
-    Icon = RawIcon;
-    CheckedIcon = Check;
-  } else if (isMultiSelectCheckbox) {
-    Icon = CheckBoxOutlineBlank as OverridableComponent<
-      IconTypeMap<Record<string, unknown>, "svg">
-    >;
-    CheckedIcon = CheckBox;
-  }
-
-  const hasCheckbox = isMultiSelect || isMultiSelectCheckbox;
 
   return (
     <StyledMenuItem {...(originalMenuItemProps as unknown)}>
-      {hasCheckbox && (
-        <Checkbox
-          icon={Icon && <Icon fontSize="small" />}
-          checkedIcon={CheckedIcon && <CheckedIcon fontSize="small" />}
-          style={{ marginRight: 8 }}
-          checked={selected}
+      {isMultiSelect && (
+        // TODO (mlila): replace with sds InputCheckbox class once complete
+        <StyledCheck
+          // TODO (mlila): replace with sds Icon class once complete
+          selected={selected}
           color="primary"
         />
       )}
 
       <ContentWrapper>
-        <TextWrapper selected={selected}>{children}</TextWrapper>
+        <TextWrapper selected={selected} className="primary-text">
+          {children}
+        </TextWrapper>
         {column && <ColumnWrapper>{column}</ColumnWrapper>}
       </ContentWrapper>
     </StyledMenuItem>
@@ -74,7 +43,6 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
 MenuItem.defaultProps = {
   column: null,
   isMultiSelect: false,
-  isMultiSelectCheckbox: false,
 };
 
 export default MenuItem;

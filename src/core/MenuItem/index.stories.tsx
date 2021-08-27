@@ -42,6 +42,7 @@ function renderMenuItems(personName: string[]) {
         value={name}
         column={number}
         selected={personName.includes(name)}
+        isMultiSelect
       >
         {name}
       </MenuItem>
@@ -167,21 +168,6 @@ export const WithMultiSelectSelected = Template.bind({});
 WithMultiSelectSelected.args = {
   ...Default.args,
   isMultiSelect: true,
-  selected: true,
-};
-
-export const WithMultiSelectCheckbox = Template.bind({});
-
-WithMultiSelectCheckbox.args = {
-  ...Default.args,
-  isMultiSelectCheckbox: true,
-};
-
-export const WithMultiSelectCheckboxSelected = Template.bind({});
-
-WithMultiSelectCheckboxSelected.args = {
-  ...Default.args,
-  isMultiSelectCheckbox: true,
   selected: true,
 };
 
