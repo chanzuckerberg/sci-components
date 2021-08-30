@@ -2,6 +2,7 @@ import svgr from "@svgr/rollup";
 import ts from "@wessberg/rollup-plugin-ts";
 import del from "rollup-plugin-delete";
 import pkg from "./package.json";
+import url from "@rollup/plugin-url";
 
 const config = [
   {
@@ -24,6 +25,7 @@ const config = [
       del({
         targets: ["dist/*", "playground/src/components"],
       }),
+      url(),
       svgr(),
       ts(),
     ],
