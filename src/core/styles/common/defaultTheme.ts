@@ -1,9 +1,7 @@
 import { colors } from "@material-ui/core";
 import { createMuiTheme, ThemeOptions } from "@material-ui/core/styles";
 import { TypographyStyle } from "@material-ui/core/styles/createTypography";
-
 const { common } = colors;
-
 enum FontWeight {
   bold = 700,
   light = 300,
@@ -11,8 +9,45 @@ enum FontWeight {
   regular = 400,
   semibold = 600,
 }
-
 export const defaultAppTheme: AppTheme = {
+  borders: {
+    error: {
+      "400": "1px solid #DC132C",
+    },
+    gray: {
+      "100": "1px solid #F8F8F8",
+      "200": "1px solid #EAEAEA",
+      "300": "1px solid #CCCCCC",
+      "400": "1px solid #999999",
+      "500": "1px solid #767676",
+      dashed: "2px dashed #999999",
+    },
+    primary: {
+      "400": "1px solid #3867FA",
+      "500": "1px solid #2B52CD",
+      "600": "1px solid #223F9C",
+      dashed: "2px dashed #3867FA",
+    },
+    success: {
+      "400": "1px solid #3CB371",
+    },
+    warning: {
+      "400": "1px solid #F5A623",
+    },
+    // error400: "1px solid #DC132C",
+    // gray100: "1px solid #F8F8F8",
+    // gray200: "1px solid #EAEAEA",
+    // gray300: "1px solid #CCCCCC",
+    // gray400: "1px solid #999999",
+    // gray400Dashed: "2px dashed #999999",
+    // gray500: "1px solid #767676",
+    // primary400: "1px solid #3867FA",
+    // primary400Dashed: "2px dashed #3867FA",
+    // primary500: "1px solid #2B52CD",
+    // primary600: "1px solid #223F9C",
+    // success400: "1px solid #3CB371",
+    // warning400: "1px solid #F5A623",
+  },
   colors: {
     beta: {
       "100": "#F4F0F9",
@@ -224,7 +259,6 @@ export const defaultAppTheme: AppTheme = {
     },
   },
 };
-
 export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
   return {
     app: appTheme,
@@ -354,14 +388,12 @@ export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
     },
   };
 }
-
 const defaultThemeOptions: AppThemeOptions = makeThemeOptions(defaultAppTheme);
-
 export interface AppThemeOptions extends ThemeOptions {
   app?: AppTheme;
 }
-
 interface AppTheme {
+  borders: Borders;
   colors: Colors;
   corners: Corners;
   fontWeights: FontWeights;
@@ -370,14 +402,12 @@ interface AppTheme {
   spacing: Spacings;
   typography: Typography;
 }
-
 export interface Shadows {
   none: "none";
   s: string;
   m: string;
   l: string;
 }
-
 export interface Typography {
   fontFamily: React.CSSProperties["fontFamily"];
   styles: {
@@ -407,7 +437,6 @@ export interface Typography {
     };
   };
 }
-
 export interface FontWeights {
   bold: number;
   light: number;
@@ -421,7 +450,6 @@ export interface Corners {
   m: number;
   l: number;
 }
-
 export interface Spacings {
   default: number;
   xxxs: number;
@@ -433,7 +461,6 @@ export interface Spacings {
   xl: number;
   xxl: number;
 }
-
 export interface Color {
   600?: string;
   500?: string;
@@ -442,7 +469,6 @@ export interface Color {
   200?: string;
   100?: string;
 }
-
 export interface Colors {
   beta: Color;
   primary: Color;
@@ -453,17 +479,43 @@ export interface Colors {
   warning: Color;
   error: Color;
 }
-
 interface IconSize {
   height: number;
   width: number;
 }
-
 export interface IconSizes {
   xs: IconSize;
   s: IconSize;
   l: IconSize;
   xl: IconSize;
 }
-
+export interface Border {
+  600?: React.CSSProperties["border"];
+  500?: React.CSSProperties["border"];
+  400: React.CSSProperties["border"];
+  300?: React.CSSProperties["border"];
+  200?: React.CSSProperties["border"];
+  100?: React.CSSProperties["border"];
+  dashed?: React.CSSProperties["border"];
+}
+export interface Borders {
+  error: Border;
+  gray: Border;
+  primary: Border;
+  success: Border;
+  warning: Border;
+  // primary600: React.CSSProperties["border"];
+  // primary500: React.CSSProperties["border"];
+  // primary400: React.CSSProperties["border"];
+  // gray500: React.CSSProperties["border"];
+  // gray400: React.CSSProperties["border"];
+  // gray300: React.CSSProperties["border"];
+  // gray200: React.CSSProperties["border"];
+  // gray100: React.CSSProperties["border"];
+  // success400: React.CSSProperties["border"];
+  // error400: React.CSSProperties["border"];
+  // warning400: React.CSSProperties["border"];
+  // gray400Dashed: React.CSSProperties["border"];
+  // primary400Dashed: React.CSSProperties["border"];
+}
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
