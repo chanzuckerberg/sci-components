@@ -3,6 +3,7 @@ import { createMuiTheme, ThemeOptions } from "@material-ui/core/styles";
 import { TypographyStyle } from "@material-ui/core/styles/createTypography";
 
 const { common } = colors;
+
 enum FontWeight {
   bold = 700,
   light = 300,
@@ -10,6 +11,7 @@ enum FontWeight {
   regular = 400,
   semibold = 600,
 }
+
 export const defaultAppTheme: AppTheme = {
   borders: {
     error: {
@@ -247,6 +249,7 @@ export const defaultAppTheme: AppTheme = {
     },
   },
 };
+
 export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
   return {
     app: appTheme,
@@ -376,10 +379,13 @@ export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
     },
   };
 }
+
 const defaultThemeOptions: AppThemeOptions = makeThemeOptions(defaultAppTheme);
+
 export interface AppThemeOptions extends ThemeOptions {
   app?: AppTheme;
 }
+
 interface AppTheme {
   borders: Borders;
   colors: Colors;
@@ -390,12 +396,14 @@ interface AppTheme {
   spacing: Spacings;
   typography: Typography;
 }
+
 export interface Shadows {
   none: "none";
   s: string;
   m: string;
   l: string;
 }
+
 export interface Typography {
   fontFamily: React.CSSProperties["fontFamily"];
   styles: {
@@ -425,6 +433,7 @@ export interface Typography {
     };
   };
 }
+
 export interface FontWeights {
   bold: number;
   light: number;
@@ -432,12 +441,14 @@ export interface FontWeights {
   regular: number;
   semibold: number;
 }
+
 export interface Corners {
   none: number;
   s: number;
   m: number;
   l: number;
 }
+
 export interface Spacings {
   default: number;
   xxxs: number;
@@ -449,6 +460,7 @@ export interface Spacings {
   xl: number;
   xxl: number;
 }
+
 export interface Color {
   600?: string;
   500?: string;
@@ -457,6 +469,7 @@ export interface Color {
   200?: string;
   100?: string;
 }
+
 export interface Colors {
   beta: Color;
   primary: Color;
@@ -467,16 +480,19 @@ export interface Colors {
   warning: Color;
   error: Color;
 }
+
 interface IconSize {
   height: number;
   width: number;
 }
+
 export interface IconSizes {
   xs: IconSize;
   s: IconSize;
   l: IconSize;
   xl: IconSize;
 }
+
 export interface Border {
   600?: string;
   500?: string;
@@ -486,6 +502,7 @@ export interface Border {
   100?: string;
   dashed?: string;
 }
+
 export interface Borders {
   error: Border;
   gray: Border;
@@ -493,4 +510,5 @@ export interface Borders {
   success: Border;
   warning: Border;
 }
+
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
