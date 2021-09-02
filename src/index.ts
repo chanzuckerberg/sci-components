@@ -27,6 +27,8 @@ export * from "./core/MenuItem";
 export { default as MenuItem } from "./core/MenuItem";
 export * from "./core/MenuSelect";
 export { default as MenuSelect } from "./core/MenuSelect";
+export * from "./core/Radio";
+export { default as RadioButton } from "./core/Radio";
 export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
