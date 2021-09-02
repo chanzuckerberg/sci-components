@@ -17,12 +17,12 @@ const storyColumn = {
 storiesOf("Radio Button", module).add("unchecked", () => (
   <div style={storyColumn as React.CSSProperties}>
     <p>
-      <strong>Accessibility</strong>: All checkboxes should have a label. This
-      can be done with a visible form label or with the aria-label attribute.
-      Note aria labels should be meaningful based on your content. <br /> Good:
-      &ldquo;XYZ Gene&ldquo;
+      <strong>Accessibility</strong>: All radio buttons should have a label.
+      This can be done with a visible form label or with the aria-label
+      attribute. Note aria labels should be meaningful based on your content.{" "}
+      <br /> Good: &ldquo;XYZ Gene&ldquo;
       <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
-      https://material-ui.com/components/checkboxes/#accessibility
+      https://material-ui.com/components/radio-buttons/#accessibility
     </p>
     <FormControlLabel
       control={<RadioButton onChange={actions.onChange} stage="unchecked" />}

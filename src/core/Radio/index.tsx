@@ -5,8 +5,8 @@ import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadi
 import { StyledRadioButton } from "./style";
 
 export interface RadioProps
-  extends Omit<MUIRadioProps, "color" | "defaultChecked" | "indeterminate"> {
-  stage: "checked" | "unchecked" | "indeterminate";
+  extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
+  stage: "checked" | "unchecked";
 }
 
 const RadioButton = (props: RadioProps): JSX.Element => {
