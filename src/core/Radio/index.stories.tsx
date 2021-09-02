@@ -36,13 +36,13 @@ storiesOf("Radio Button", module).add("unchecked", () => (
     />
     With aria labels:
     <RadioButton
-      inputProps={{ "aria-label": "checkbox unchecked" }}
+      inputProps={{ "aria-label": "radio button unchecked" }}
       onChange={actions.onChange}
       stage="unchecked"
     />
     <RadioButton
       disabled
-      inputProps={{ "aria-label": "checkbox unchecked and disabled" }}
+      inputProps={{ "aria-label": "radio button unchecked and disabled" }}
       onChange={actions.onChange}
       stage="unchecked"
     />
