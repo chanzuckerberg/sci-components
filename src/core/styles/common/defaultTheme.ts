@@ -254,8 +254,6 @@ export const defaultAppTheme: AppTheme = {
   },
 };
 
-console.log(defaultAppTheme);
-
 export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
   return {
     app: appTheme,
