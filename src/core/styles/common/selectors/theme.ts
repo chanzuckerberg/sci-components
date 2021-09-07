@@ -1,6 +1,7 @@
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import {
   AppThemeOptions,
+  Borders,
   Colors,
   Corners,
   FontWeights,
@@ -44,4 +45,8 @@ export const getFontWeights = ({ theme }: Props): FontWeights | null => {
 
 export const getIconSizes = ({ theme }: Props): IconSizes | null => {
   return theme?.app?.iconSizes || null;
+};
+
+export const getBorders = ({ theme }: Props): Borders | null => {
+  return theme?.app?.borders || null;
 };

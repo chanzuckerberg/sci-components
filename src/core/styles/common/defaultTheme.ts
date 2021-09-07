@@ -12,58 +12,87 @@ enum FontWeight {
   semibold = 600,
 }
 
-export const defaultAppTheme: AppTheme = {
-  colors: {
-    beta: {
-      "100": "#F4F0F9",
-      "200": "#F0EBF6",
-      "400": "#7A41CE",
-      "600": "#693BAC",
-    },
-    error: {
-      "100": "#FEF2F2",
-      "200": "#FBE8E8",
-      "400": "#DC132C",
-      "600": "#B70016",
-    },
-    gray: {
-      "100": "#F8F8F8",
-      "200": "#EAEAEA",
-      "300": "#CCCCCC",
-      "400": "#999999",
-      "500": "#767676",
-      "600": "#545454",
-    },
-    info: {
-      "100": "#EFF2FC",
-      "200": "#EBEFFC",
-      "400": "#3867FA",
-      "600": "#223F9C",
-    },
-    primary: {
-      "100": "#F8F9FE",
-      "200": "#EFF2FC",
-      "300": "#A9BDFC",
-      "400": "#3867FA",
-      "500": "#2B52CD",
-      "600": "#223F9C",
-    },
-    secondary: {
-      "400": "#9BC74E",
-    },
-    success: {
-      "100": "#ECF5F0",
-      "200": "#E6F7ED",
-      "400": "#3CB371",
-      "600": "#1C7F48",
-    },
-    warning: {
-      "100": "#FCF6EC",
-      "200": "#FFF3E1",
-      "400": "#F5A623",
-      "600": "#946314",
-    },
+const defaultThemeColors = {
+  beta: {
+    "100": "#F4F0F9",
+    "200": "#F0EBF6",
+    "400": "#7A41CE",
+    "600": "#693BAC",
   },
+  error: {
+    "100": "#FEF2F2",
+    "200": "#FBE8E8",
+    "400": "#DC132C",
+    "600": "#B70016",
+  },
+  gray: {
+    "100": "#F8F8F8",
+    "200": "#EAEAEA",
+    "300": "#CCCCCC",
+    "400": "#999999",
+    "500": "#767676",
+    "600": "#545454",
+  },
+  info: {
+    "100": "#EFF2FC",
+    "200": "#EBEFFC",
+    "400": "#3867FA",
+    "600": "#223F9C",
+  },
+  primary: {
+    "100": "#F8F9FE",
+    "200": "#EFF2FC",
+    "300": "#A9BDFC",
+    "400": "#3867FA",
+    "500": "#2B52CD",
+    "600": "#223F9C",
+  },
+  secondary: {
+    "400": "#9BC74E",
+  },
+  success: {
+    "100": "#ECF5F0",
+    "200": "#E6F7ED",
+    "400": "#3CB371",
+    "600": "#1C7F48",
+  },
+  warning: {
+    "100": "#FCF6EC",
+    "200": "#FFF3E1",
+    "400": "#F5A623",
+    "600": "#946314",
+  },
+};
+
+const borders = {
+  error: {
+    "400": `1px solid ${defaultThemeColors.error["400"]}`,
+  },
+  gray: {
+    "100": `1px solid ${defaultThemeColors.gray["100"]}`,
+    "200": `1px solid ${defaultThemeColors.gray["200"]}`,
+    "300": `1px solid ${defaultThemeColors.gray["300"]}`,
+    "400": `1px solid ${defaultThemeColors.gray["400"]}`,
+    "500": `1px solid ${defaultThemeColors.gray["500"]}`,
+    dashed: `2px dashed ${defaultThemeColors.gray["400"]}`,
+  },
+  primary: {
+    "400": `1px solid ${defaultThemeColors.primary["400"]}`,
+    "500": `1px solid ${defaultThemeColors.primary["500"]}`,
+    "600": `1px solid${defaultThemeColors.primary["600"]}`,
+    dashed: `2px dashed ${defaultThemeColors.primary["400"]}`,
+  },
+  success: {
+    "400": `1px solid ${defaultThemeColors.success["400"]}`,
+  },
+  warning: {
+    "400": `1px solid ${defaultThemeColors.warning["400"]}`,
+  },
+};
+
+export const defaultAppTheme: AppTheme = {
+  borders,
+  colors: defaultThemeColors,
   corners: {
     l: 20,
     m: 4,
@@ -362,6 +391,7 @@ export interface AppThemeOptions extends ThemeOptions {
 }
 
 interface AppTheme {
+  borders: Borders;
   colors: Colors;
   corners: Corners;
   fontWeights: FontWeights;
@@ -415,6 +445,7 @@ export interface FontWeights {
   regular: number;
   semibold: number;
 }
+
 export interface Corners {
   none: number;
   s: number;
@@ -464,6 +495,24 @@ export interface IconSizes {
   s: IconSize;
   l: IconSize;
   xl: IconSize;
+}
+
+export interface Border {
+  600?: string;
+  500?: string;
+  400: string;
+  300?: string;
+  200?: string;
+  100?: string;
+  dashed?: string;
+}
+
+export interface Borders {
+  error: Border;
+  gray: Border;
+  primary: Border;
+  success: Border;
+  warning: Border;
 }
 
 export const defaultTheme = createMuiTheme(defaultThemeOptions);
