@@ -1,5 +1,5 @@
 import { colors } from "@material-ui/core";
-import { createMuiTheme, ThemeOptions } from "@material-ui/core/styles";
+import { createTheme, ThemeOptions } from "@material-ui/core/styles";
 import { TypographyStyle } from "@material-ui/core/styles/createTypography";
 
 const { common } = colors;
@@ -515,4 +515,4 @@ export interface Borders {
   warning: Border;
 }
 
-export const defaultTheme = createMuiTheme(defaultThemeOptions);
+export const defaultTheme = createTheme(defaultThemeOptions);
