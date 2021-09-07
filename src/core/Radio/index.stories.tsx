@@ -75,30 +75,3 @@ storiesOf("Radio Button", module).add("checked", () => (
     />
   </div>
 ));
-
-// storiesOf("Checkbox", module).add("indeterminate", () => (
-//   <div style={storyColumn as React.CSSProperties}>
-//     <FormControlLabel
-//       control={<Checkbox onChange={actions.onChange} stage="indeterminate" />}
-//       label="Checked"
-//     />
-//     <FormControlLabel
-//       control={
-//         <Checkbox disabled onChange={actions.onChange} stage="indeterminate" />
-//       }
-//       label="Checked & disabled"
-//     />
-//     With aria labels:
-//     <Checkbox
-//       inputProps={{ "aria-label": "indeterminate" }}
-//       onChange={actions.onChange}
-//       stage="indeterminate"
-//     />
-//     <Checkbox
-//       disabled
-//       inputProps={{ "aria-label": "indeterminate and disabled" }}
-//       onChange={actions.onChange}
-//       stage="indeterminate"
-//     />
-//   </div>
-// ));

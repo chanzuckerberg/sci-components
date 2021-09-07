@@ -26,4 +26,8 @@ export const StyledRadioButton = styled(RawRadio)`
       }
     `;
   }}
+  .MuiSvgIcon-root {
+    height: 16px;
+    width: 16px;
+  }
 `;
