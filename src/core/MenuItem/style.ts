@@ -13,6 +13,8 @@ import {
 const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
+  min-height: 30px;
+
   ${(props) => {
     const { selected } = props;
     const colors = getColors(props);
@@ -22,7 +24,7 @@ export const StyledMenuItem = styled(MenuItem)`
     const primary = colors?.primary[400];
 
     return `
-      padding: ${spacings?.xs}px ${spacings?.m}px;
+      padding: ${spacings?.s}px ${spacings?.m}px;
 
       .primary-text {
         font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};

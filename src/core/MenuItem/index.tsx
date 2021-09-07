@@ -16,7 +16,12 @@ export interface ExtraProps {
 export type MenuItemProps = ExtraProps & RawMenuItemProps;
 
 const MenuItem = forwardRef((props: MenuItemProps, _) => {
-  const { children, column, isMultiSelect, ...originalMenuItemProps } = props;
+  const {
+    children,
+    column = null,
+    isMultiSelect = false,
+    ...originalMenuItemProps
+  } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps;
 
   return (
@@ -39,10 +44,5 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
     </StyledMenuItem>
   );
 });
-
-MenuItem.defaultProps = {
-  column: null,
-  isMultiSelect: false,
-};
 
 export default MenuItem;

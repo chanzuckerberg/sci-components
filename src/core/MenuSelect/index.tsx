@@ -56,6 +56,7 @@ export default function MenuSelect<
     renderOption = defaultRenderOption,
     disableCloseOnSelect = multiple,
     noOptionsText = "No options",
+    search = false,
   } = props;
 
   return (
@@ -68,7 +69,7 @@ export default function MenuSelect<
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       renderInput={(params) => (
-        <InputBaseWrapper>
+        <InputBaseWrapper search={search}>
           <StyledInputBase
             placeholder="Search"
             ref={params.InputProps.ref}

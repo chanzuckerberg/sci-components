@@ -22,9 +22,9 @@ const Demo = (props: Args): JSX.Element => {
     null | DefaultMenuSelectOption | DefaultMenuSelectOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<
-    null | DefaultMenuSelectOption[]
-  >([]);
+  const [pendingValue, setPendingValue] = useState<DefaultMenuSelectOption[]>(
+    []
+  );
 
   const open = Boolean(anchorEl);
 
