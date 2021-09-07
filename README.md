@@ -90,15 +90,15 @@ To use the default theme, please do the following:
      </ThemeProvider>
    ```
 
-1. Optional: If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createMuiTheme` to generate
-   the full theme object like below. This is needed because `createMuiTheme` generates
+1. Optional: If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
+   the full theme object like below. This is needed because `createTheme` generates
    extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultAppTheme` instead of your own custom options
 
 ```tsx
   import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
   import { defaultAppTheme, makeThemeOptions } from '@chanzuckerberg/czifui/core/styles`
   import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-  import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+  import createTheme from "@material-ui/core/styles/createTheme";
 
   const customTheme = {
     ...
@@ -106,7 +106,7 @@ To use the default theme, please do the following:
 
   const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
 
-  const theme = createMuiTheme(appTheme)
+  const theme = createTheme(appTheme)
 
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
