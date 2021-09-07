@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { Checkbox as RawCheckbox } from "@material-ui/core";
-import { getColors } from "../styles/common/selectors/theme";
+import { getColors, getIconSizes } from "../styles/common/selectors/theme";
 
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props) => {
     const colors = getColors(props);
+    const iconSizes = getIconSizes(props);
     return `
       color: ${colors?.gray[400]};
       &:hover {
@@ -23,6 +24,11 @@ export const StyledCheckbox = styled(RawCheckbox)`
         &.Mui-disabled {
           color: ${colors?.primary[300]}
         }
+      }
+
+      .MuiSvgIcon-root {
+        height: ${iconSizes?.input.height}px;
+        width: ${iconSizes?.input.width}px;
       }
     `;
   }}
