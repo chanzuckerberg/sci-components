@@ -7,6 +7,8 @@ export * from "./core/Checkbox";
 export { default as Checkbox } from "./core/Checkbox";
 export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
+export * from "./core/ComplexFilter";
+export { default as ComplexFilter } from "./core/ComplexFilter";
 export * from "./core/IconButton";
 export { default as IconButton } from "./core/IconButton";
 export * from "./core/InputDropdown";

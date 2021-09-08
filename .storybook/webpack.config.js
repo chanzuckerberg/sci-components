@@ -2,6 +2,11 @@ const path = require("path");
 const pathToInlineSvg = path.resolve(__dirname, "../src/common/svgs/");
 
 module.exports = ({ config }) => {
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    src: path.resolve(__dirname, "../src"),
+  };
+
   // remove svg from existing rule
   config.module.rules = config.module.rules.map((rule) => {
     if (

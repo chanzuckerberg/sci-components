@@ -12,7 +12,7 @@ type TooltipProps = ExtraProps & RawTooltipProps;
 export { TooltipProps };
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
-  const { inverted, ...rest } = props;
+  const { inverted = false, ...rest } = props;
 
   const theme = useTheme();
 
@@ -57,9 +57,5 @@ function mergeClass({
 
   return propClassName ? `${propClassName} ${className}` : className;
 }
-
-Tooltip.defaultProps = {
-  inverted: false,
-};
 
 export default Tooltip;

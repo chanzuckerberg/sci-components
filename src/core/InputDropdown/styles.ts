@@ -13,7 +13,7 @@ import {
 export interface InputDropdownProps extends Props {
   disabled?: boolean;
   label: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
   sdsStyle?: "minimal" | "square" | "rounded";
 }
 
