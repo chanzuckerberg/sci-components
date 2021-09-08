@@ -1,8 +1,8 @@
 /* eslint-disable import/export */
-export * from "./core/Alert";
-export { default as Alert } from "./core/Alert";
 export * from "./core/Button";
 export { default as Button } from "./core/Button";
+export * from "./core/Callout";
+export { default as Callout } from "./core/Callout";
 export * from "./core/Checkbox";
 export { default as Checkbox } from "./core/Checkbox";
 export * from "./core/Chip";
