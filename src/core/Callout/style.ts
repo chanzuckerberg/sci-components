@@ -45,11 +45,19 @@ export const StyledCallout = styled(Alert)`
         }
       }
 
-      .MuiAlert-action .MuiIconButton-label {
-        height: ${iconSizes?.s.height}px;
-        width: ${iconSizes?.s.width}px;
-        color: ${colors?.gray[500]}
-      }
+      .MuiAlert-action {
+        margin-right: 0;
+
+        > *:first-child {
+          padding: ${spacings?.xs}px;
+
+          .MuiIconButton-label {
+            height: ${iconSizes?.s.height}px;
+            width: ${iconSizes?.s.width}px;
+            color: ${colors?.gray[500]}
+          } 
+        }
+      } 
     `;
   }}
 `;
