@@ -18,10 +18,11 @@ export const StyledCallout = styled(Alert)`
     const colors = getColors(props);
     const spacings = getSpacings(props);
     const shadows = getShadows(props);
-    const { severity = "primary" } = props;
+    const { severity = "success" } = props;
     const borderColor = (colors && colors[severity][400]) || "black";
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
+    const iconColor = (colors && colors[severity][400]) || "black";
 
     return `
       margin: ${spacings?.m}px 0;
@@ -39,12 +40,15 @@ export const StyledCallout = styled(Alert)`
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
         margin-right: ${spacings?.m}px;
+        path {
+          fill: ${iconColor};
+        }
       }
 
       .MuiAlert-action .MuiIconButton-label {
         height: ${iconSizes?.s.height}px;
         width: ${iconSizes?.s.width}px;
-
+        color: ${colors?.gray[500]}
       }
     `;
   }}
