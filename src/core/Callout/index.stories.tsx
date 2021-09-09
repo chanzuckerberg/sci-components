@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { Snackbar } from "@material-ui/core";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
 import Button from "../Button";
 import { defaultTheme } from "../styles/common/defaultTheme";
 import Callout from "./index";
@@ -48,41 +47,23 @@ const SnackbarAlert = () => {
 };
 
 storiesOf("Callout", module).add("default", () => (
-  <Callout icon={<IconAlert fillContrast="white" />} onClose={() => {}}>
-    This is a callout!
-  </Callout>
+  <Callout onClose={() => {}}>This is a callout!</Callout>
 ));
 
 storiesOf("Callout", module).add("snackbar", () => <SnackbarAlert />);
 
 storiesOf("Callout", module).add("elevated", () => (
   <div>
-    <Callout
-      className="elevated"
-      severity="success"
-      icon={<IconAlert fillContrast="white" />}
-    >
+    <Callout className="elevated" severity="success">
       This is a success callout!
     </Callout>
-    <Callout
-      className="elevated"
-      icon={<IconAlert fillContrast="white" />}
-      severity="warning"
-    >
+    <Callout className="elevated" severity="warning">
       This is a warning callout!
     </Callout>
-    <Callout
-      className="elevated"
-      severity="error"
-      icon={<IconAlert fillContrast="white" />}
-    >
+    <Callout className="elevated" severity="error">
       This is an error callout!
     </Callout>
-    <Callout
-      className="elevated"
-      severity="info"
-      icon={<IconAlert fillContrast="white" />}
-    >
+    <Callout className="elevated" severity="info">
       This is an info callout!
     </Callout>
   </div>
@@ -90,17 +71,9 @@ storiesOf("Callout", module).add("elevated", () => (
 
 storiesOf("Callout", module).add("flat", () => (
   <div>
-    <Callout severity="success" icon={<IconAlert fillContrast="white" />}>
-      This is a success callout!
-    </Callout>
-    <Callout severity="warning" icon={<IconAlert fillContrast="white" />}>
-      This is a warning callout!
-    </Callout>
-    <Callout severity="error" icon={<IconAlert fillContrast="white" />}>
-      This is an error callout!
-    </Callout>
-    <Callout severity="info" icon={<IconAlert fillContrast="white" />}>
-      This is an info callout!
-    </Callout>
+    <Callout severity="success">This is a success callout!</Callout>
+    <Callout severity="warning">This is a warning callout!</Callout>
+    <Callout severity="error">This is an error callout!</Callout>
+    <Callout severity="info">This is an info callout!</Callout>
   </div>
 ));
