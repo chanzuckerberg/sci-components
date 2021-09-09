@@ -113,6 +113,7 @@ export const defaultAppTheme: AppTheme = {
     semibold: 600,
   },
   iconSizes: {
+    input: { height: 16, width: 16 }, // for use with input icons only (radio and checkbox)
     l: { height: 22, width: 22 },
     s: { height: 14, width: 14 },
     xl: { height: 32, width: 32 },
@@ -501,6 +502,7 @@ export interface IconSizes {
   s: IconSize;
   l: IconSize;
   xl: IconSize;
+  input: IconSize;
 }
 
 export interface Border {
