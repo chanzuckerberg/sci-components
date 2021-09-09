@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { Radio as RawRadio } from "@material-ui/core";
-import { getColors } from "../styles";
+import { getColors, getIconSizes } from "../styles";
 
 export const StyledRadioButton = styled(RawRadio)`
   ${(props) => {
     const colors = getColors(props);
+    const iconSizes = getIconSizes(props);
     return `
       color: ${colors?.gray[400]};
       &:hover {
@@ -24,10 +25,11 @@ export const StyledRadioButton = styled(RawRadio)`
           color: ${colors?.primary[300]}
         }
       }
+
+      .MuiSvgIcon-root {
+        height: ${iconSizes?.input.height}px;
+        width: ${iconSizes?.input.width}px;
+      }
     `;
   }}
-  .MuiSvgIcon-root {
-    height: 16px;
-    width: 16px;
-  }
 `;
