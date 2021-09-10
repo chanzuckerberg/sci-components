@@ -1,6 +1,6 @@
 ---
 name: Propose new Component
-about: Describe this issue template's purpose here.
+about: Propose a new component to the Science Design System
 title: 'Propose new component: [component name]'
 labels: ''
 assignees: ''
