@@ -6,7 +6,7 @@ import { AutocompleteCloseReason } from "@material-ui/lab";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import Chip from "../Chip";
-import { AppThemeOptions, getColors, getCorners, getShadows } from "../styles";
+import { AppThemeOptions, getBorders, getCorners, getShadows } from "../styles";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
@@ -185,9 +185,9 @@ MultiSelectWithSearch.args = {
 };
 
 const useStyles = makeStyles((theme: AppThemeOptions) => {
-  const colors = getColors({ theme });
   const shadows = getShadows({ theme });
   const corners = getCorners({ theme });
+  const borders = getBorders({ theme });
 
   return {
     button: {
@@ -214,7 +214,7 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
     },
     popper: {
       backgroundColor: "white",
-      border: `1px solid ${colors?.gray[100]}`,
+      border: `${borders?.gray[100]}`,
       borderRadius: corners?.m,
       boxShadow: shadows?.m,
       color: "#586069",

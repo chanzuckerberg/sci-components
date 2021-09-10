@@ -3,6 +3,7 @@ import { Paper } from "@material-ui/core";
 import Popper from "@material-ui/core/Popper";
 import {
   fontHeaderXs,
+  getBorders,
   getColors,
   getCorners,
   getShadows,
@@ -26,10 +27,11 @@ export const StyledPopper = styled(Popper)`
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const spacings = getSpacings(props);
+    const borders = getBorders(props);
 
     return `
       background-color: white;
-      border: 1px solid ${colors?.gray[100]};
+      border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       color: ${colors?.gray[500]};

@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
 import {
   fontBodyXs,
-  getColors,
+  getBorders,
   getShadows,
   getSpacings,
   Props,
@@ -14,15 +14,15 @@ export interface ExtraProps extends Props {
 export const tooltipCss = (props: ExtraProps): string => {
   const { inverted } = props;
 
-  const colors = getColors(props);
   const shadows = getShadows(props);
   const spacings = getSpacings(props);
+  const borders = getBorders(props);
 
   return css`
     ${fontBodyXs(props)}
 
     background-color: ${inverted ? "black" : "white"};
-    border: 1px solid ${colors?.gray["300"]};
+    border: ${borders?.gray["300"]};
     box-shadow: ${shadows?.m};
     color: ${inverted ? "white" : "black"};
     padding: ${spacings?.l}px;
@@ -32,13 +32,13 @@ export const tooltipCss = (props: ExtraProps): string => {
 export const arrowCss = (props: ExtraProps): string => {
   const { inverted } = props;
 
-  const colors = getColors(props);
+  const borders = getBorders(props);
 
   return css`
     color: ${inverted ? "black" : "white"};
 
     &:before {
-      border: 1px solid ${colors?.gray[300]};
+      border: ${borders?.gray[300]};
     }
   `;
 };

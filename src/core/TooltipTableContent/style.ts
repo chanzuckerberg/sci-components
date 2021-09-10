@@ -5,6 +5,7 @@ import {
   fontBodyXxs,
   fontCapsXxxxs,
   fontHeaderXs,
+  getBorders,
   getColors,
   getSpacings,
   Props,
@@ -41,13 +42,13 @@ export const Section = styled.div`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const colors = getColors(props);
     const spacings = getSpacings(props);
+    const borders = getBorders(props);
 
     return `
       &:not(:last-child) {
         padding-bottom: ${spacings?.l}px;
-        border-bottom: 1px solid ${colors?.gray["200"]};
+        border-bottom: ${borders?.gray["200"]};
       }
 
       &:not(:first-child) {
