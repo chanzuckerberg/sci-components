@@ -2,8 +2,11 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import Callout from "./index";
 
-storiesOf("Callout", module).add("basic dismissable", () => (
-  <Callout onClose={() => {}}>This is a callout!</Callout>
+storiesOf("Callout", module).add("basic", () => (
+  <>
+    <Callout onClose={() => {}}>This is a dismissable callout!</Callout>
+    <Callout>This is a callout!</Callout>
+  </>
 ));
 
 storiesOf("Callout", module).add("intent", () => (
