@@ -1,75 +1,12 @@
-import styled from "@emotion/styled";
-import { Snackbar } from "@material-ui/core";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import Button from "../Button";
-import { defaultTheme } from "../styles/common/defaultTheme";
 import Callout from "./index";
 
-const DismissButton = styled(Button)`
-  margin-left: -${defaultTheme.spacing(3)}px;
-  padding-bottom: 0;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  &:hover {
-    background: none;
-  }
-`;
-
-const SnackbarAlert = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  return (
-    <div>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Open alert
-      </Button>
-      <Snackbar
-        anchorOrigin={{
-          horizontal: "right",
-          vertical: "top",
-        }}
-        open={open}
-        autoHideDuration={6000}
-      >
-        <Callout className="elevated" severity="info">
-          <div>This is a snackbar alert!</div>
-          <DismissButton onClick={handleClose}>DISMISS</DismissButton>
-        </Callout>
-      </Snackbar>
-    </div>
-  );
-};
-
-storiesOf("Callout", module).add("default", () => (
+storiesOf("Callout", module).add("basic dismissable", () => (
   <Callout onClose={() => {}}>This is a callout!</Callout>
 ));
 
-storiesOf("Callout", module).add("snackbar", () => <SnackbarAlert />);
-
-storiesOf("Callout", module).add("elevated", () => (
-  <div>
-    <Callout className="elevated" severity="success">
-      This is a success callout!
-    </Callout>
-    <Callout className="elevated" severity="warning">
-      This is a warning callout!
-    </Callout>
-    <Callout className="elevated" severity="error">
-      This is an error callout!
-    </Callout>
-    <Callout className="elevated" severity="info">
-      This is an info callout!
-    </Callout>
-  </div>
-));
-
-storiesOf("Callout", module).add("flat", () => (
+storiesOf("Callout", module).add("intent", () => (
   <div>
     <Callout severity="success">This is a success callout!</Callout>
     <Callout severity="warning">This is a warning callout!</Callout>
