@@ -40,9 +40,14 @@ export const StyledCallout = styled(Alert)`
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
         margin-right: ${spacings?.m}px;
+        padding: 0;
         path {
           fill: ${iconColor};
         }
+      }
+      
+      .MuiAlert-message {
+        padding: 0;
       }
 
       .MuiAlert-action {
