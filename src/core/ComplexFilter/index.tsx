@@ -9,7 +9,8 @@ import { StyledPaper, StyledPopper, Wrapper } from "./style";
 
 export {
   StyledPopper as ComplexFilterPopper,
-  StyledPaper as ComplexFilterStyledPaper,
+  StyledPaper as ComplexFilterPaper,
+  InputDropdown as ComplexFilterInputDropdown,
 };
 
 export type ComplexFilterValue =
@@ -30,6 +31,7 @@ interface ComplexFilterProps {
   className?: string;
   PopperComponent?: typeof StyledPopper;
   PaperComponent?: typeof StyledPaper;
+  InputDropdownComponent?: typeof InputDropdown;
 }
 
 export default function ComplexFilter({
@@ -43,6 +45,7 @@ export default function ComplexFilter({
   value: propValue,
   PopperComponent = StyledPopper,
   PaperComponent = StyledPaper,
+  InputDropdownComponent = InputDropdown,
   ...rest
 }: ComplexFilterProps): JSX.Element {
   const isControlled = propValue !== undefined;
@@ -72,7 +75,7 @@ export default function ComplexFilter({
   return (
     <>
       <Wrapper {...rest}>
-        <InputDropdown
+        <InputDropdownComponent
           label={label}
           onClick={handleClick}
           {...InputDropdownProps}

@@ -215,6 +215,23 @@ NOTE II: You can find more examples in the repo's `*.stories.tsx` and [Aspen](ht
    }
    ```
 
+1. To style a sub-component of a `czif` component, typically we export the sub-component for the call site to import and style via `styled`, and then you will be able to pass back the styled sub-component to the `czif` component through prop
+
+   For example, `ComplexFilter` exports `ComplexFilterInputDropdown` sub-component, so if you want to style it, you can do the following:
+
+   ```tsx
+   import { ComplexFilter, ComplexFilterInputDropdown } from 'czifui'
+   import styled from '@emotion/styled'
+
+   const StyledComplexFilterInputDropdown = styled(ComplexFilterInputDropdown)`
+    color: pink;
+   `
+
+   function Foo() {
+     return <ComplexFilter InputDropdownComponent={StyledComplexFilterInputDropdown} />
+   }
+   ```
+
 ## Project status
 
 This project is under **active development**. Contributions and ideas are welcome! If you would like to contribute, check out the [contribution guidelines](docs/contribution.md) or open an issue.
