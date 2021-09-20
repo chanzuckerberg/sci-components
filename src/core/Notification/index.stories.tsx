@@ -7,8 +7,14 @@ storiesOf("Notification", module).add("basic", () => (
     <Notification onClose={() => {}}>
       This is a dismissable Notification!
     </Notification>
-    <Notification title="This is a Notification">
-      <div>hold for content</div>
+    <Notification title="This is a Notification with extra content">
+      <div>extra content</div>
+    </Notification>
+    <Notification
+      onClose={() => {}}
+      title="This is a Notification with extra content that's dismissable"
+    >
+      <div>extra content</div>
     </Notification>
   </>
 ));
