@@ -14,6 +14,7 @@ export interface InputDropdownProps extends Props {
   disabled?: boolean;
   label: string;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
+  open?: boolean;
   sdsStyle?: "minimal" | "square" | "rounded";
 }
 
@@ -72,21 +73,35 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
         color: ${palette?.text?.primary};
       }
       path {
-        fill: ${palette?.text?.primary};
+        fill: ${colors?.primary[400]};
       }
     }
   `;
 };
+
+const isOpen = (props: InputDropdownProps): SerializedStyles => {
+  const palette = getPalette(props);
+  return css`
+    span {
+      color: ${palette?.text?.primary};
+    }
+    path {
+      fill: ${palette?.text?.primary};
+    }
+  `;
+};
+
 const doNotForwardProps = ["sdsStyle"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: InputDropdownProps) => {
-    const { disabled, sdsStyle } = props;
+    const { disabled, open, sdsStyle } = props;
 
     return css`
       ${sdsStyle === "minimal" && minimal(props)}
+      ${open && isOpen(props)}
       ${disabled && isDisabled(props)}
     `;
   }}
