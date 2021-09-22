@@ -1,20 +1,33 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import Button from "../Button";
 import Notification from "./index";
 
 storiesOf("Notification", module).add("basic", () => (
   <>
+    <Notification>
+      This is a non-dismissable Notification with no extra content!
+    </Notification>
+
     <Notification onClose={() => {}}>
       This is a dismissable Notification!
     </Notification>
+
     <Notification title="This is a Notification with extra content">
-      <div>extra content</div>
+      <div>
+        <p>extra content</p>
+        <Button>Click me!</Button>
+      </div>
     </Notification>
+
     <Notification
       onClose={() => {}}
       title="This is a Notification with extra content that's dismissable"
     >
-      <div>extra content</div>
+      <div>
+        <p>extra content</p>
+        <Button>Click me!</Button>
+      </div>
     </Notification>
   </>
 ));
