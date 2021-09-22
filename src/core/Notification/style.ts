@@ -13,7 +13,7 @@ import { defaultTheme } from "../styles/common/defaultTheme";
 const fontBodyXs = fontBody("xs");
 
 export const StyledNotification = styled(Alert)`
-  ${fontBodyXs};
+  ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);
     const spacings = getSpacings(props);
@@ -68,5 +68,5 @@ export const StyledNotification = styled(Alert)`
 `;
 
 export const StyledNotificationTitle = styled(AlertTitle)`
-  ${fontBodyXs};
+  ${fontBodyXs}
 `;
