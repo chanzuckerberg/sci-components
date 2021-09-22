@@ -4,6 +4,8 @@ import { StyledButton } from "./style";
 
 export interface ButtonProps extends RawButtonProps {
   isRounded?: boolean;
+  sdsType?: "primary" | "secondary";
+  sdsStyle?: "text";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
