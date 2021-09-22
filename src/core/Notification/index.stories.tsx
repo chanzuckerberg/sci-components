@@ -1,10 +1,18 @@
+import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import Button from "../Button";
 import Notification from "./index";
+
+export const actions = {
+  onClick: action("onClick"),
+};
 
 storiesOf("Notification", module).add("basic", () => (
   <>
+    <p>
+      The text button is not yet implemented in the sds, so the button does not
+      have the correct styles
+    </p>
     <Notification>
       This is a non-dismissable Notification with no extra content!
     </Notification>
@@ -13,20 +21,24 @@ storiesOf("Notification", module).add("basic", () => (
       This is a dismissable Notification!
     </Notification>
 
-    <Notification title="This is a Notification with extra content">
+    <Notification
+      title="This is a Notification with extra content"
+      sdsAction={actions.onClick}
+      sdsActionText="Click Me!"
+    >
       <div>
         <p>extra content</p>
-        <Button>Click me!</Button>
       </div>
     </Notification>
 
     <Notification
       onClose={() => {}}
       title="This is a Notification with extra content that's dismissable"
+      sdsAction={actions.onClick}
+      sdsActionText="Click Me!"
     >
       <div>
         <p>extra content</p>
-        <Button>Click me!</Button>
       </div>
     </Notification>
   </>
