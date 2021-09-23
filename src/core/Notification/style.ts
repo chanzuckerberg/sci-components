@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import Button from "../Button";
 import {
   fontBody,
+  fontCaps,
   getColors,
   getCorners,
   getIconSizes,
@@ -11,6 +13,7 @@ import {
 import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
+const fontCapsXxxs = fontCaps("xxxs");
 
 export const StyledNotification = styled(Alert)`
   ${fontBodyXs}
@@ -69,4 +72,23 @@ export const StyledNotification = styled(Alert)`
 
 export const StyledNotificationTitle = styled(AlertTitle)`
   ${fontBodyXs}
+`;
+
+export const StyledButton = styled(Button)`
+  ${fontCapsXxxs};
+
+  ${(props) => {
+    const colors = getColors(props);
+
+    return `
+    &:hover {
+      color: ${colors?.primary[500]};
+      background: none;
+    }
+
+    &:active {
+      color: ${colors?.primary[600]};
+    }
+    `;
+  }};
 `;
