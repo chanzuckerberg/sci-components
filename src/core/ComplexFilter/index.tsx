@@ -1,4 +1,4 @@
-import { AutocompleteCloseReason } from "@material-ui/lab";
+import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
@@ -13,20 +13,32 @@ export {
   InputDropdown as ComplexFilterInputDropdown,
 };
 
+/**
+ * @deprecated This type is no longer needed and will be removed in the next major version.
+ */
 export type ComplexFilterValue =
   | DefaultMenuSelectOption[]
   | DefaultMenuSelectOption
   | null;
 
-interface ComplexFilterProps {
+// (thuang): Value's type is based on generic type placeholder (T) and Multiple
+// type. If Multiple is true, Value's type is T[] | null.
+// Otherwise, Value's type is T | null.
+// Conditional Type
+// https://www.typescriptlang.org/docs/handbook/2/conditional-types.html
+export type Value<T, Multiple> = Multiple extends undefined | false
+  ? T | null
+  : Array<T> | null;
+
+interface ComplexFilterProps<Multiple> {
   label: string;
   options: DefaultMenuSelectOption[];
-  multiple?: boolean;
+  multiple?: Multiple;
   search?: boolean;
-  onChange: (options: ComplexFilterValue) => void;
+  onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
   MenuSelectProps?: Partial<typeof MenuSelect>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: ComplexFilterValue;
+  value?: Value<DefaultMenuSelectOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper;
@@ -34,7 +46,9 @@ interface ComplexFilterProps {
   InputDropdownComponent?: typeof InputDropdown;
 }
 
-export default function ComplexFilter({
+export default function ComplexFilter<
+  Multiple extends boolean | undefined = false
+>({
   options,
   label = "",
   multiple = false,
@@ -47,17 +61,17 @@ export default function ComplexFilter({
   PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
   ...rest
-}: ComplexFilterProps): JSX.Element {
+}: ComplexFilterProps<Multiple>): JSX.Element {
   const isControlled = propValue !== undefined;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const [value, setValue] = useState<
-    null | DefaultMenuSelectOption | DefaultMenuSelectOption[]
-  >(getInitialValue());
+  const [value, setValue] = useState<Value<DefaultMenuSelectOption, Multiple>>(
+    getInitialValue()
+  );
 
   const [pendingValue, setPendingValue] = useState<
-    null | DefaultMenuSelectOption[]
+    Value<DefaultMenuSelectOption, true>
   >([]);
 
   useEffect(() => {
@@ -66,7 +80,7 @@ export default function ComplexFilter({
 
   useEffect(() => {
     if (isControlled) {
-      setValue(propValue as ComplexFilterValue);
+      setValue(propValue);
     }
   }, [propValue]);
 
@@ -90,9 +104,16 @@ export default function ComplexFilter({
           open
           search={search}
           onClose={handleClose}
-          multiple={multiple}
+          multiple={multiple as Multiple}
           PaperComponent={PaperComponent}
-          value={multiple ? pendingValue : value}
+          value={
+            (multiple ? pendingValue : value) as MUIValue<
+              DefaultMenuSelectOption,
+              Multiple,
+              undefined,
+              undefined
+            >
+          }
           onChange={handleChange}
           disableCloseOnSelect={multiple}
           options={options}
@@ -120,7 +141,7 @@ export default function ComplexFilter({
     }
 
     if (multiple) {
-      setValue(pendingValue);
+      setValue(pendingValue as Value<DefaultMenuSelectOption, Multiple>);
     }
 
     if (anchorEl) {
@@ -138,7 +159,7 @@ export default function ComplexFilter({
       return setPendingValue(newValue as DefaultMenuSelectOption[]);
     }
 
-    setValue(newValue as DefaultMenuSelectOption);
+    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
   }
 
   function handleDelete(option: DefaultMenuSelectOption) {
@@ -146,18 +167,21 @@ export default function ComplexFilter({
       return setValue(null);
     }
 
-    const newValue = (value as DefaultMenuSelectOption[]).filter(
-      (item) => item !== option
-    );
+    const newValue =
+      (value as Value<DefaultMenuSelectOption, true>)?.filter(
+        (item) => item !== option
+      ) || null;
 
-    setValue(newValue);
+    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
   }
 
-  function getInitialValue() {
+  function getInitialValue(): Value<DefaultMenuSelectOption, Multiple> {
     if (isControlled) {
-      return propValue as ComplexFilterValue;
+      return propValue;
     }
 
-    return multiple ? [] : null;
+    return multiple
+      ? ([] as unknown as Value<DefaultMenuSelectOption, Multiple>)
+      : null;
   }
 }
