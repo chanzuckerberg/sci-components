@@ -10,8 +10,9 @@ export const actions = {
 storiesOf("Notification", module).add("basic", () => (
   <>
     <p>
-      The text button is not yet implemented in the sds, so the button does not
-      have the correct styles
+      The text button is not yet implemented in the sds, so the button has the
+      correct styles but does not use the sdsProps to set the style. This will
+      be patched once the button styles are updated.
     </p>
     <Notification>
       This is a non-dismissable Notification with no extra content!
