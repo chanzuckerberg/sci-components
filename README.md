@@ -1,4 +1,8 @@
-# Components
+# Purpose
+
+A multi-product design system that offers a library of high quality reusable components, that deliver a predictable, accessible, and easy-to-learn experiences that democratize access to tools & technologies for scientists.
+
+## Components
 
 CZIF Science Initiative Component Library
 
@@ -242,3 +246,8 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
+
+
+##
+
+[2021 Plans](https://docs.google.com/presentation/d/1ka5BbivcXYuDdkz3N_rpRdeaYE73GPhxfL4Bk8S0u98/edit#slide=id.geb12a33db6_2_4)
