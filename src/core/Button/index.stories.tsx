@@ -11,64 +11,132 @@ export const actions = {
   onClick: action("onClick"),
 };
 
-storiesOf("Button", module).add("default", () => (
-  <Button variant="contained" onClick={actions.onClick}>
+storiesOf("Button", module).add("Default", () => (
+  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
     {text}
   </Button>
 ));
 
-storiesOf("Button", module).add("primary", () => (
-  <Button variant="contained" onClick={actions.onClick} color="primary">
+storiesOf("Button", module).add("Rounded Primary", () => (
+  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
     {text}
   </Button>
 ));
 
-storiesOf("Button", module).add("primaryRounded", () => (
+storiesOf("Button", module).add("Rounded Primary Disabled", () => (
   <Button
-    variant="contained"
-    onClick={actions.onClick}
-    color="primary"
-    isRounded
-  >
-    {text}
-  </Button>
-));
-
-storiesOf("Button", module).add("secondary", () => (
-  <Button variant="outlined" onClick={actions.onClick} color="primary">
-    {text}
-  </Button>
-));
-
-storiesOf("Button", module).add("disabled", () => (
-  <Button
-    variant="contained"
     disabled
     onClick={actions.onClick}
-    color="primary"
+    sdsStyle="rounded"
+    sdsType="primary"
   >
     {text}
   </Button>
 ));
 
-storiesOf("Button", module).add("startIcon", () => (
+storiesOf("Button", module).add("Rounded Secondary", () => (
+  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="secondary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Rounded Secondary Disabled", () => (
   <Button
-    variant="contained"
+    disabled
+    onClick={actions.onClick}
+    sdsStyle="rounded"
+    sdsType="secondary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Square Primary", () => (
+  <Button onClick={actions.onClick} sdsStyle="square" sdsType="primary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Square Primary Disabled", () => (
+  <Button
+    disabled
+    onClick={actions.onClick}
+    sdsStyle="square"
+    sdsType="primary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Square Secondary", () => (
+  <Button onClick={actions.onClick} sdsStyle="square" sdsType="secondary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Square Secondary Disabled", () => (
+  <Button
+    disabled
+    onClick={actions.onClick}
+    sdsStyle="square"
+    sdsType="secondary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Minimal Primary", () => (
+  <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="primary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Minimal Primary Disabled", () => (
+  <Button
+    disabled
+    onClick={actions.onClick}
+    sdsStyle="minimal"
+    sdsType="primary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Minimal Secondary", () => (
+  <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="secondary">
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Minimal Secondary Disabled", () => (
+  <Button
+    disabled
+    onClick={actions.onClick}
+    sdsStyle="minimal"
+    sdsType="secondary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("With Icon", () => (
+  <Button
     startIcon={<DeleteIcon />}
     onClick={actions.onClick}
-    color="primary"
+    sdsStyle="rounded"
+    sdsType="primary"
   >
     {text}
   </Button>
 ));
 
-storiesOf("Button", module).add("with Tooltip", () => (
+storiesOf("Button", module).add("With Tooltip", () => (
   <Tooltip title="tooltip here">
     <Button
-      variant="contained"
       startIcon={<DeleteIcon />}
       onClick={actions.onClick}
-      color="primary"
+      sdsStyle="square"
+      sdsType="secondary"
     >
       With Tooltip!
     </Button>
