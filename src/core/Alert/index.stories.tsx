@@ -47,15 +47,19 @@ const SnackbarAlert = () => {
   );
 };
 
-storiesOf("Alert", module).add("default", () => (
+const AlertToBeDepreciated = "Alert - To Be Depreciated";
+
+storiesOf(AlertToBeDepreciated, module).add("default", () => (
   <Alert icon={<CheckCircleOutline />} onClose={() => {}}>
     This is an alert!
   </Alert>
 ));
 
-storiesOf("Alert", module).add("snackbar", () => <SnackbarAlert />);
+storiesOf(AlertToBeDepreciated, module).add("snackbar", () => (
+  <SnackbarAlert />
+));
 
-storiesOf("Alert", module).add("elevated", () => (
+storiesOf(AlertToBeDepreciated, module).add("elevated", () => (
   <div>
     <Alert
       className="elevated"
@@ -80,7 +84,7 @@ storiesOf("Alert", module).add("elevated", () => (
   </div>
 ));
 
-storiesOf("Alert", module).add("flat", () => (
+storiesOf(AlertToBeDepreciated, module).add("flat", () => (
   <div>
     <Alert severity="success" icon={<CheckCircleOutline />}>
       This is a success alert!
