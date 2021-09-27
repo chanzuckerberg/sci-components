@@ -55,14 +55,10 @@ export const StyledNotification = styled(Alert)`
 
       .MuiAlert-action {
         margin-right: 0;
-
-        > *:first-child {
-          padding: ${spacings?.xs}px;
+        align-items: flex-start;
 
           .MuiIconButton-label {
-            height: ${iconSizes?.s.height}px;
-            width: ${iconSizes?.s.width}px;
-            color: ${colors?.gray[500]}
+            color: ${colors?.gray[500]};
           } 
         }
       } 
@@ -76,6 +72,7 @@ export const StyledNotificationTitle = styled(AlertTitle)`
 
 export const StyledButton = styled(Button)`
   ${fontCapsXxxs};
+  padding: 0;
 
   ${(props) => {
     const colors = getColors(props);

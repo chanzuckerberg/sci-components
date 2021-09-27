@@ -1,6 +1,7 @@
 import { AlertProps } from "@material-ui/lab";
 import React from "react";
 import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
+import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import {
   StyledButton,
@@ -19,6 +20,7 @@ export type ExposedNotificationProps = AlertProps & NotificationProps;
 
 const Notification = ({
   children,
+  onClose,
   severity,
   title,
   sdsAction,
@@ -28,6 +30,7 @@ const Notification = ({
   return (
     <StyledNotification
       {...rest}
+      action={onClose ? <IconClose fillContrast="white" /> : null}
       icon={
         severity === "success" ? (
           <IconSuccess fillContrast="white" />
@@ -38,7 +41,7 @@ const Notification = ({
       className="elevated"
       severity={severity}
     >
-      <StyledNotificationTitle>{title}</StyledNotificationTitle>
+      {title && <StyledNotificationTitle>{title}</StyledNotificationTitle>}
       {children}
       {sdsAction && (
         <StyledButton onClick={sdsAction}>{sdsActionText}</StyledButton>
