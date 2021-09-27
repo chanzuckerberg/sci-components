@@ -15,11 +15,13 @@ const ButtonBase = styled(Button)`
       &:hover {
         color: white;
         background-color: ${colors?.primary[500]};
+        border: none;
         box-shadow: none;
       }
       &:active {
         color: white;
         background-color: ${colors?.primary[600]};
+        border: none;
         box-shadow: none;
       }
       &:disabled {
