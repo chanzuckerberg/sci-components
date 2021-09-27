@@ -2,7 +2,8 @@ import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import Button from "../Button";
-import ComplexFilter, { ComplexFilterValue } from "./index";
+import { DefaultMenuSelectOption } from "../MenuSelect";
+import ComplexFilter from "./index";
 
 const Demo = (props: Args): JSX.Element => {
   return (
@@ -31,7 +32,9 @@ SingleSelectWithSearch.args = {
 };
 
 export const SingleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<ComplexFilterValue>(GITHUB_LABELS[0]);
+  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
+    GITHUB_LABELS[0]
+  );
 
   return (
     <>
@@ -54,7 +57,7 @@ export const SingleSelectControlled = (): JSX.Element => {
     setValue(GITHUB_LABELS[1]);
   }
 
-  function handleChange(newValue: ComplexFilterValue) {
+  function handleChange(newValue: DefaultMenuSelectOption | null) {
     setValue(newValue);
   }
 };
@@ -93,7 +96,7 @@ function ResizableWrapper({
 }
 
 export const MultipleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<ComplexFilterValue>([
+  const [value, setValue] = useState<DefaultMenuSelectOption[] | null>([
     GITHUB_LABELS[0],
     GITHUB_LABELS[1],
     GITHUB_LABELS[2],
@@ -130,7 +133,7 @@ export const MultipleSelectControlled = (): JSX.Element => {
     setValue([GITHUB_LABELS[7], GITHUB_LABELS[8], GITHUB_LABELS[9]]);
   }
 
-  function handleChange(newValue: ComplexFilterValue) {
+  function handleChange(newValue: DefaultMenuSelectOption[] | null) {
     setValue(newValue);
   }
 };
