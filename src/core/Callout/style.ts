@@ -5,7 +5,6 @@ import {
   getColors,
   getCorners,
   getIconSizes,
-  getShadows,
   getSpacings,
 } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
@@ -17,9 +16,7 @@ export const StyledCallout = styled(Alert)`
   ${(props) => {
     const colors = getColors(props);
     const spacings = getSpacings(props);
-    const shadows = getShadows(props);
     const { severity = "success" } = props;
-    const borderColor = (colors && colors[severity][400]) || "black";
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
@@ -29,12 +26,6 @@ export const StyledCallout = styled(Alert)`
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.m}px;
-
-      &.elevated {
-        border-left: 5px solid;
-        box-shadow: ${shadows?.s};
-        border-color: ${borderColor};
-      }
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
@@ -52,16 +43,12 @@ export const StyledCallout = styled(Alert)`
 
       .MuiAlert-action {
         margin-right: 0;
+        padding: 0;
+        align-items: flex-start;
 
-        > *:first-child {
-          padding: ${spacings?.xs}px;
-
-          .MuiIconButton-label {
-            height: ${iconSizes?.s.height}px;
-            width: ${iconSizes?.s.width}px;
-            color: ${colors?.gray[500]}
-          } 
-        }
+        .MuiIconButton-label {
+          color: ${colors?.gray[500]}
+        } 
       } 
     `;
   }}
