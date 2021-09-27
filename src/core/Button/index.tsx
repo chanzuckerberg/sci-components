@@ -15,7 +15,7 @@ export interface ButtonProps extends RawButtonProps {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref): JSX.Element | null => {
+  (props: ButtonProps, ref): JSX.Element | null => {
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
 

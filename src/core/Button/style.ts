@@ -43,7 +43,7 @@ export const RoundedButton = styled(ButtonBase)`
   }}
 `;
 
-export const SquareButton = styled(ButtonBase)``;
+export const SquareButton = ButtonBase;
 
 const MinimalButton = styled(Button)`
   &:hover {

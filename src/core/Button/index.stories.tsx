@@ -10,12 +10,6 @@ export const actions = {
   onClick: action("onClick"),
 };
 
-storiesOf("Button", module).add("Default", () => (
-  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
-    {text}
-  </Button>
-));
-
 storiesOf("Button", module).add("Rounded Primary", () => (
   <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
     {text}
