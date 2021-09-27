@@ -22,25 +22,18 @@ storiesOf("Notification", module).add("basic", () => (
       This is a dismissable Notification!
     </Notification>
 
-    <Notification
-      title="This is a Notification with extra content"
-      sdsAction={actions.onClick}
-      sdsActionText="Click Me!"
-    >
-      <div>
-        <p>extra content</p>
-      </div>
+    <Notification sdsAction={actions.onClick} sdsActionText="Click Me!">
+      This is a Notification with extra content
+      <div>extra content</div>
     </Notification>
 
     <Notification
       onClose={() => {}}
-      title="This is a Notification with extra content that's dismissable"
       sdsAction={actions.onClick}
       sdsActionText="Click Me!"
     >
-      <div>
-        <p>extra content</p>
-      </div>
+      This is a Notification with extra content that is dismissable
+      <div>extra content</div>
     </Notification>
   </>
 ));

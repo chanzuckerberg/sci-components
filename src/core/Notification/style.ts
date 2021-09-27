@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert } from "@material-ui/lab";
 import Button from "../Button";
 import {
   fontBody,
@@ -31,7 +31,8 @@ export const StyledNotification = styled(Alert)`
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
-      padding: ${spacings?.l}px ${spacings?.l}px ${spacings?.l}px ${spacings?.m}px;
+      padding: ${spacings?.l}px ${spacings?.xl}px;
+      align-items: flex-start;
 
       &.elevated {
         border-left: 5px solid;
@@ -51,10 +52,15 @@ export const StyledNotification = styled(Alert)`
       
       .MuiAlert-message {
         padding: 0;
+
+        > *:not(button) {
+          margin: ${spacings?.m}px 0px;
+        }
       }
 
       .MuiAlert-action {
         margin-right: 0;
+        padding: 0;
         align-items: flex-start;
 
           .MuiIconButton-label {
@@ -64,10 +70,6 @@ export const StyledNotification = styled(Alert)`
       } 
     `;
   }}
-`;
-
-export const StyledNotificationTitle = styled(AlertTitle)`
-  ${fontBodyXs}
 `;
 
 export const StyledButton = styled(Button)`

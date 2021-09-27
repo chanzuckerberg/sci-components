@@ -3,11 +3,7 @@ import React from "react";
 import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
 import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
-import {
-  StyledButton,
-  StyledNotification,
-  StyledNotificationTitle,
-} from "./style";
+import { StyledButton, StyledNotification } from "./style";
 
 export { AlertProps };
 
@@ -22,7 +18,6 @@ const Notification = ({
   children,
   onClose,
   severity,
-  title,
   sdsAction,
   sdsActionText,
   ...rest
@@ -41,7 +36,6 @@ const Notification = ({
       className="elevated"
       severity={severity}
     >
-      {title && <StyledNotificationTitle>{title}</StyledNotificationTitle>}
       {children}
       {sdsAction && (
         <StyledButton onClick={sdsAction}>{sdsActionText}</StyledButton>
