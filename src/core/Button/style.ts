@@ -20,11 +20,12 @@ const ButtonBase = styled(Button)`
       &:active {
         color: white;
         background-color: ${colors?.primary[600]};
+        box-shadow: none;
       }
       &:disabled {
         color: ${colors?.gray[400]};
-        background-color: ${colors?.gray[300]} 
-        border-color: ${colors?.gray[300]} 
+        background-color: ${colors?.gray[300]};
+        border-color: ${colors?.gray[300]};
       }
     `;
   }}
@@ -46,6 +47,14 @@ const MinimalButton = styled(Button)`
   &:hover {
     background-color: transparent;
   }
+  ${(props) => {
+    const spacings = getSpacings(props);
+
+    return `
+      padding-top: ${spacings?.xxs}
+      padding-bottom: ${spacings?.xxs}
+    `;
+  }}
 `;
 
 export const PrimaryMinimalButton = styled(MinimalButton)`
