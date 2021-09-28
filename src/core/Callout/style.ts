@@ -39,6 +39,7 @@ export const StyledCallout = styled(Alert)`
       
       .MuiAlert-message {
         padding: 0;
+        margin-right: ${spacings?.m}px;
       }
 
       .MuiAlert-action {

@@ -52,6 +52,7 @@ export const StyledNotification = styled(Alert)`
       
       .MuiAlert-message {
         padding: 0;
+        margin-right: ${spacings?.m}px;
 
         > *:not(button) {
           margin: ${spacings?.m}px 0px;
