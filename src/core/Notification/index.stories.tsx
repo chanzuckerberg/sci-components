@@ -4,8 +4,8 @@ import React from "react";
 import Notification from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { intent, onClose, sdsAction, sdsActionText } = props;
-  if (sdsAction) {
+  const { intent, onClose, buttonOnClick, buttonText } = props;
+  if (buttonOnClick) {
     return (
       <>
         <p>
@@ -17,8 +17,8 @@ const Demo = (props: Args): JSX.Element => {
         <Notification
           intent={intent}
           onClose={onClose ? () => {} : undefined}
-          sdsAction={action("onClick")}
-          sdsActionText={sdsActionText}
+          buttonOnClick={action("onClick")}
+          buttonText={buttonText}
           {...props}
         >
           This is a notification!
@@ -48,14 +48,14 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    buttonOnClick: {
+      control: { type: "boolean" },
+    },
     intent: {
       control: { type: "radio" },
       options: ["info", "error", "success", "warning"],
     },
     onClose: {
-      control: { type: "boolean" },
-    },
-    sdsAction: {
       control: { type: "boolean" },
     },
   },
@@ -68,10 +68,10 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  buttonOnClick: false,
+  buttonText: "click me",
   intent: "success",
   onClose: false,
-  sdsAction: false,
-  sdsActionText: "click me",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {

@@ -5,11 +5,9 @@ import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import { StyledButton, StyledNotification } from "./style";
 
-export { AlertProps };
-
 export interface NotificationProps {
-  sdsAction?: (event: React.SyntheticEvent) => void;
-  sdsActionText?: string;
+  buttonOnClick?: (event: React.SyntheticEvent) => void;
+  buttonText?: string;
   intent: "info" | "error" | "success" | "warning";
 }
 
@@ -19,8 +17,8 @@ const Notification = ({
   children,
   intent,
   onClose,
-  sdsAction,
-  sdsActionText,
+  buttonOnClick,
+  buttonText,
   ...rest
 }: ExposedNotificationProps): JSX.Element => {
   return (
@@ -38,8 +36,8 @@ const Notification = ({
       severity={intent}
     >
       {children}
-      {sdsAction && (
-        <StyledButton onClick={sdsAction}>{sdsActionText}</StyledButton>
+      {buttonOnClick && (
+        <StyledButton onClick={buttonOnClick}>{buttonText}</StyledButton>
       )}
     </StyledNotification>
   );
