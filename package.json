@@ -1,11 +1,11 @@
 {
   "name": "czifui",
-  "version": "0.0.56",
+  "version": "0.0.0-development",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/chanzuckerberg/sci-components.git"
+    "url": "https://github.com/chanzuckerberg/sci-components.git"
   },
   "license": "MIT",
   "devDependencies": {
@@ -79,7 +79,8 @@
     "build-storybook": "build-storybook -o docs-build",
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "semantic-release": "semantic-release"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
