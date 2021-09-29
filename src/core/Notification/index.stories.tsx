@@ -1,52 +1,94 @@
 import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
+import { Args, Story } from "@storybook/react";
 import React from "react";
 import Notification from "./index";
 
-export const actions = {
-  onClick: action("onClick"),
+const Demo = (props: Args): JSX.Element => {
+  const { intent, onClose, sdsAction, sdsActionText } = props;
+  if (sdsAction) {
+    return (
+      <>
+        <p>
+          The text button is not yet implemented in the sds, so the button has
+          the correct styles but does not use the sdsProps to set the style.
+          This will be patched once the button styles are updated.
+        </p>
+
+        <Notification
+          intent={intent}
+          onClose={onClose ? () => {} : undefined}
+          sdsAction={action("onClick")}
+          sdsActionText={sdsActionText}
+          {...props}
+        >
+          This is a notification!
+          <div>extra content</div>
+        </Notification>
+      </>
+    );
+  }
+  return (
+    <>
+      <p>
+        The text button is not yet implemented in the sds, so the button has the
+        correct styles but does not use the sdsProps to set the style. This will
+        be patched once the button styles are updated.
+      </p>
+
+      <Notification
+        intent={intent}
+        onClose={onClose ? () => {} : undefined}
+        {...props}
+      >
+        This is a notification!
+      </Notification>
+    </>
+  );
 };
 
-storiesOf("Notification", module).add("basic", () => (
-  <>
-    <p>
-      The text button is not yet implemented in the sds, so the button has the
-      correct styles but does not use the sdsProps to set the style. This will
-      be patched once the button styles are updated.
-    </p>
-    <Notification>
-      This is a non-dismissable Notification with no extra content!
-    </Notification>
+export default {
+  argTypes: {
+    intent: {
+      control: { type: "radio" },
+      options: ["info", "error", "success", "warning"],
+    },
+    onClose: {
+      control: { type: "boolean" },
+    },
+    sdsAction: {
+      control: { type: "boolean" },
+    },
+  },
+  component: Demo,
+  title: "Notification",
+};
 
-    <Notification onClose={() => {}}>
-      This is a dismissable Notification!
-    </Notification>
+const Template: Story = (args) => <Demo {...args} />;
 
-    <Notification sdsAction={actions.onClick} sdsActionText="Click Me!">
-      This is a Notification with extra content
-      <div>extra content</div>
-    </Notification>
+export const Default = Template.bind({});
 
-    <Notification
-      onClose={() => {}}
-      sdsAction={actions.onClick}
-      sdsActionText="Click Me!"
-    >
-      This is a Notification with extra content that is dismissable
-      <div>extra content</div>
-    </Notification>
-  </>
-));
+Default.args = {
+  intent: "success",
+  onClose: false,
+  sdsAction: false,
+  sdsActionText: "click me",
+};
 
-storiesOf("Notification", module).add("intent", () => (
-  <div>
-    <Notification severity="success">
-      This is a success Notification!
-    </Notification>
-    <Notification severity="warning">
-      This is a warning Notification!
-    </Notification>
-    <Notification severity="error">This is an error Notification!</Notification>
-    <Notification severity="info">This is an info Notification!</Notification>
-  </div>
-));
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { intent } = props;
+  return (
+    <>
+      <Notification intent={intent} {...props}>
+        this is a notification
+      </Notification>
+    </>
+  );
+};
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.args = {
+  intent: "success",
+};

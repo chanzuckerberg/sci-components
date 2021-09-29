@@ -10,14 +10,15 @@ export { AlertProps };
 export interface NotificationProps {
   sdsAction?: (event: React.SyntheticEvent) => void;
   sdsActionText?: string;
+  intent: "info" | "error" | "success" | "warning";
 }
 
 export type ExposedNotificationProps = AlertProps & NotificationProps;
 
 const Notification = ({
   children,
+  intent,
   onClose,
-  severity,
   sdsAction,
   sdsActionText,
   ...rest
@@ -27,14 +28,14 @@ const Notification = ({
       {...rest}
       action={onClose ? <IconClose fillContrast="white" /> : null}
       icon={
-        severity === "success" ? (
+        intent === "success" ? (
           <IconSuccess fillContrast="white" />
         ) : (
           <IconAlert fillContrast="white" />
         )
       }
       className="elevated"
-      severity={severity}
+      severity={intent}
     >
       {children}
       {sdsAction && (

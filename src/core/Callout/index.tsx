@@ -5,26 +5,30 @@ import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import { StyledCallout } from "./style";
 
-export { AlertProps };
+export interface CalloutProps {
+  intent: "info" | "error" | "success" | "warning";
+}
+
+export type ExposedCalloutProps = AlertProps & CalloutProps;
 
 const Callout = ({
   children,
   onClose,
-  severity,
+  intent,
   ...rest
-}: AlertProps): JSX.Element => {
+}: ExposedCalloutProps): JSX.Element => {
   return (
     <StyledCallout
       {...rest}
       action={onClose ? <IconClose fillContrast="white" /> : null}
       icon={
-        severity === "success" ? (
+        intent === "success" ? (
           <IconSuccess fillContrast="white" />
         ) : (
           <IconAlert fillContrast="white" />
         )
       }
-      severity={severity}
+      severity={intent}
     >
       {children}
     </StyledCallout>
