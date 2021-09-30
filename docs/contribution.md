@@ -102,6 +102,14 @@ When it comes to styling Material UI's components, generally the following strat
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
 
+## Commit Message
+
+This repo uses [Commitizen](https://github.com/commitizen/cz-cli) to ensure the
+commits follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/),
+so we can do semantic versioning properly
+
+NOTE: Commitizen command is automatically triggered through [Husky](https://github.com/typicode/husky) when you write a commit message. However, you can always do `^ + C` to skip Commitizen if you're not ready to submit a PR!
+
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)

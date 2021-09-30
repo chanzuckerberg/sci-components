@@ -1,6 +1,6 @@
 {
   "name": "czifui",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -31,7 +31,9 @@
     "@wessberg/rollup-plugin-ts": "^1.3.14",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "commitizen": "^4.2.4",
     "concurrently": "^6.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -98,5 +100,10 @@
     "component",
     "library"
   ],
-  "author": ""
+  "author": "",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

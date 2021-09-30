@@ -9,6 +9,7 @@ const config = [
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
       "@material-ui/core/styles",
+      "@material-ui/core/Popper",
     ],
     input: "src/index.ts",
     output: [
