@@ -8,21 +8,30 @@ import {
   StyledButton,
 } from "./style";
 
-export interface ButtonProps extends RawButtonProps {
+interface SdsProps {
+  isAllCaps?: boolean;
   isRounded?: boolean;
   sdsStyle?: "minimal" | "rounded" | "square";
   sdsType?: "primary" | "secondary";
 }
+export type ButtonProps = RawButtonProps & SdsProps;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref): JSX.Element | null => {
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
+    const isAllCaps = props?.isAllCaps;
 
     if (!sdsStyle || !sdsType) {
       // eslint-disable-next-line no-console
       console.warn(
         "Warning: Buttons without sdsStyle or sdsType props will be deprecated."
+      );
+    }
+    if (isAllCaps && sdsStyle !== "minimal") {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'."
       );
     }
 

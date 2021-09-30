@@ -1,8 +1,20 @@
 import styled from "@emotion/styled";
 import { Button } from "@material-ui/core";
-import { getColors, getCorners, getSpacings, Props } from "../styles";
+import {
+  fontCapsXxxs,
+  getColors,
+  getCorners,
+  getSpacings,
+  Props,
+} from "../styles";
 
-const ButtonBase = styled(Button)`
+const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+
+const ButtonBase = styled(Button, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
   box-shadow: none;
   ${(props) => {
     const colors = getColors(props);
@@ -45,18 +57,32 @@ export const RoundedButton = styled(ButtonBase)`
 
 export const SquareButton = ButtonBase;
 
-const MinimalButton = styled(Button)`
-  &:hover {
-    background-color: transparent;
-  }
-  ${(props) => {
+interface IsAllCaps extends Props {
+  isAllCaps?: boolean;
+}
+
+const MinimalButton = styled(Button, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
+  ${(props: IsAllCaps) => {
     const spacings = getSpacings(props);
 
     return `
-      padding-top: ${spacings?.xxs}
-      padding-bottom: ${spacings?.xxs}
+      padding: ${spacings?.xxs}px 0;
     `;
   }}
+
+  ${(props: IsAllCaps) => {
+    if (props?.isAllCaps) {
+      return fontCapsXxxs;
+    }
+    return ``;
+  }}
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 export const PrimaryMinimalButton = styled(MinimalButton)`
@@ -96,11 +122,13 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
 `;
 
 // Legacy support for backwards-compatible props
-export interface IsRounded extends Props {
+interface IsRounded extends Props {
   isRounded?: boolean;
 }
 export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== "isRounded",
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
 })`
   ${(props: IsRounded) => {
     if (!props.isRounded) return ``;

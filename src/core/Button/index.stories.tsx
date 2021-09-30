@@ -84,6 +84,17 @@ storiesOf("Button", module).add("Minimal Primary", () => (
   </Button>
 ));
 
+storiesOf("Button", module).add("Minimal Primary AllCaps", () => (
+  <Button
+    isAllCaps
+    onClick={actions.onClick}
+    sdsStyle="minimal"
+    sdsType="primary"
+  >
+    {text}
+  </Button>
+));
+
 storiesOf("Button", module).add("Minimal Primary Disabled", () => (
   <Button
     disabled
