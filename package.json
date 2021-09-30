@@ -80,7 +80,8 @@
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "prepare": "husky install",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "ci": "yarn install --frozen-lockfile"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
