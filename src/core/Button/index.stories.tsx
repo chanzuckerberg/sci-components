@@ -84,17 +84,6 @@ storiesOf("Button", module).add("Minimal Primary", () => (
   </Button>
 ));
 
-storiesOf("Button", module).add("Minimal Primary AllCaps", () => (
-  <Button
-    isAllCaps
-    onClick={actions.onClick}
-    sdsStyle="minimal"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
-
 storiesOf("Button", module).add("Minimal Primary Disabled", () => (
   <Button
     disabled
@@ -118,6 +107,17 @@ storiesOf("Button", module).add("Minimal Secondary Disabled", () => (
     onClick={actions.onClick}
     sdsStyle="minimal"
     sdsType="secondary"
+  >
+    {text}
+  </Button>
+));
+
+storiesOf("Button", module).add("Minimal No Caps - use sparingly", () => (
+  <Button
+    isAllCaps={false}
+    onClick={actions.onClick}
+    sdsStyle="minimal"
+    sdsType="primary"
   >
     {text}
   </Button>

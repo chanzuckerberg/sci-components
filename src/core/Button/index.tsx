@@ -20,7 +20,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref): JSX.Element | null => {
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
-    const isAllCaps = props?.isAllCaps;
 
     if (!sdsStyle || !sdsType) {
       // eslint-disable-next-line no-console
@@ -28,12 +27,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "Warning: Buttons without sdsStyle or sdsType props will be deprecated."
       );
     }
-    if (isAllCaps && sdsStyle !== "minimal") {
+
+    if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
       // eslint-disable-next-line no-console
       console.warn(
         "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'."
       );
     }
+
+    // isAllCaps is only used for the Minimal Button.  It defaults to true.
+    const isAllCaps =
+      typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
+    const propsWithDefault = { ...props, isAllCaps };
 
     switch (true) {
       case sdsStyle === "rounded" && sdsType === "primary":
@@ -42,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="primary"
             ref={ref}
             variant="contained"
-            {...props}
+            {...propsWithDefault}
           />
         );
       case sdsStyle === "rounded" && sdsType === "secondary":
@@ -51,7 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="primary"
             ref={ref}
             variant="outlined"
-            {...props}
+            {...propsWithDefault}
           />
         );
       case sdsStyle === "square" && sdsType === "primary":
@@ -60,7 +65,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="primary"
             ref={ref}
             variant="contained"
-            {...props}
+            {...propsWithDefault}
           />
         );
       case sdsStyle === "square" && sdsType === "secondary":
@@ -69,7 +74,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="primary"
             ref={ref}
             variant="outlined"
-            {...props}
+            {...propsWithDefault}
           />
         );
       case sdsStyle === "minimal" && sdsType === "primary":
@@ -78,7 +83,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="primary"
             ref={ref}
             variant="text"
-            {...props}
+            {...propsWithDefault}
           />
         );
       case sdsStyle === "minimal" && sdsType === "secondary":
@@ -87,11 +92,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             color="default"
             ref={ref}
             variant="text"
-            {...props}
+            {...propsWithDefault}
           />
         );
       default:
-        return <StyledButton {...props} ref={ref} />;
+        return <StyledButton {...propsWithDefault} ref={ref} />;
     }
   }
 );
