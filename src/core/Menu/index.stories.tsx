@@ -16,7 +16,12 @@ const Demo = (props: Args): JSX.Element => {
   };
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+      }}
+    >
       <Button onClick={handleClick}>Click me!</Button>
       <Menu
         anchorEl={anchorEl}
@@ -31,7 +36,7 @@ const Demo = (props: Args): JSX.Element => {
         <MenuItem onClick={handleClose}>Privacy Policy</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
-    </>
+    </div>
   );
 };
 
@@ -45,3 +50,18 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {};
+
+export const CustomPlacement = Template.bind({});
+
+CustomPlacement.args = {
+  ...Default.args,
+  anchorOrigin: {
+    horizontal: "right",
+    vertical: "bottom",
+  },
+  column: "column value",
+  transformOrigin: {
+    horizontal: "right",
+    vertical: "top",
+  },
+};
