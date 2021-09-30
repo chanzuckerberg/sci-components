@@ -17,9 +17,9 @@ export { MenuProps };
 const Menu = (props: MenuProps): JSX.Element => {
   return (
     <StyledMenu
-      {...props}
       anchorOrigin={ANCHOR_ORIGIN}
       transformOrigin={TRANSFORM_ORIGIN}
+      {...props}
     />
   );
 };
