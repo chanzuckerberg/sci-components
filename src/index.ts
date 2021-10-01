@@ -21,6 +21,8 @@ export * from "./core/ListItem";
 export { default as ListItem } from "./core/ListItem";
 export * from "./core/ListSubheader";
 export { default as ListSubheader } from "./core/ListSubheader";
+export * from "./core/LoadingIndicator";
+export { default as LoadingIndicator } from "./core/LoadingIndicator";
 export * from "./core/Menu";
 export { default as Menu } from "./core/Menu";
 export * from "./core/MenuItem";
