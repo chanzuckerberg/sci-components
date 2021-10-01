@@ -8,7 +8,13 @@ import {
   getCorners,
   getIconSizes,
   getSpacings,
+  getTypography,
+  Props,
 } from "../styles";
+
+export interface LoadingIndicatorProps extends Props {
+  sdsStyle: "minimal" | "tag";
+}
 
 export const StyledIconLoadingAnimated = styled(IconLoadingAnimated)`
   ${(props) => {
@@ -25,10 +31,8 @@ const fontBodyS = fontBody("s");
 
 export const StyledText = styled.span`
   ${(props) => {
-    const {
-      theme: { typography },
-    } = props;
     const spacings = getSpacings(props);
+    const typography = getTypography(props);
 
     return `
       margin: 0 ${spacings?.xs}px;
@@ -37,7 +41,7 @@ export const StyledText = styled.span`
   }}
 `;
 
-const minimal = (props): SerializedStyles => {
+const minimal = (props: Props): SerializedStyles => {
   const colors = getColors(props);
   const iconSizes = getIconSizes(props);
 
@@ -57,7 +61,7 @@ const minimal = (props): SerializedStyles => {
   `;
 };
 
-const tag = (props): SerializedStyles => {
+const tag = (props: Props): SerializedStyles => {
   const colors = getColors(props);
   const corners = getCorners(props);
 
@@ -81,7 +85,7 @@ const doNotForwardProps = ["sdsStyle"];
 export const StyledLoadingIndicator = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props) => {
+  ${(props: LoadingIndicatorProps) => {
     const { sdsStyle } = props;
     const spacings = getSpacings(props);
 

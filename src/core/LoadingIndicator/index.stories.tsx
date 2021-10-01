@@ -3,7 +3,8 @@ import React from "react";
 import LoadingIndicator from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  return <LoadingIndicator {...props} />;
+  const { sdsStyle } = props;
+  return <LoadingIndicator sdsStyle={sdsStyle} {...props} />;
 };
 
 export default {

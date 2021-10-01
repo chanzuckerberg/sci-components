@@ -1,19 +1,16 @@
 import React from "react";
 import {
+  LoadingIndicatorProps,
   StyledIconLoadingAnimated,
   StyledLoadingIndicator,
   StyledText,
 } from "./style";
 
-interface Props {
-  sdsStyle: "minimal" | "tag";
-}
-
-const LoadingIndicator = ({ sdsStyle }: Props): JSX.Element => {
+const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
   // TODO (mlila): replace with sds tag when available
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle}>
-      <StyledIconLoadingAnimated />
+      <StyledIconLoadingAnimated fillContrast="white" />
       <StyledText>Loading</StyledText>
     </StyledLoadingIndicator>
   );
