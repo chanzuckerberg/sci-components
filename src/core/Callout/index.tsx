@@ -19,7 +19,6 @@ const Callout = ({
 }: ExposedCalloutProps): JSX.Element => {
   return (
     <StyledCallout
-      {...rest}
       action={onClose ? <IconClose fillContrast="white" /> : null}
       icon={
         intent === "success" ? (
@@ -29,6 +28,7 @@ const Callout = ({
         )
       }
       severity={intent}
+      {...rest}
     >
       {children}
     </StyledCallout>

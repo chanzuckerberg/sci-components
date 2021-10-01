@@ -23,7 +23,6 @@ const Notification = ({
 }: ExposedNotificationProps): JSX.Element => {
   return (
     <StyledNotification
-      {...rest}
       action={onClose ? <IconClose fillContrast="white" /> : null}
       icon={
         intent === "success" ? (
@@ -34,6 +33,7 @@ const Notification = ({
       }
       className="elevated"
       severity={intent}
+      {...rest}
     >
       {children}
       {buttonOnClick && (
