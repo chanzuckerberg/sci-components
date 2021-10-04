@@ -110,6 +110,10 @@ so we can do semantic versioning properly
 
 NOTE: Commitizen command is automatically triggered through [Husky](https://github.com/typicode/husky) when you write a commit message. However, you can always do `^ + C` to skip Commitizen if you're not ready to submit a PR!
 
+## Major/Breaking Change Release
+
+Major/Breaking Change Release should happen on `next` branch first, so we publish the breaking change version bump on `packageName@next` first. After the `next` branch is merged into `main`, the new breaking change version will be available on `packageName@latest`
+
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
