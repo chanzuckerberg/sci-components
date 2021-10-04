@@ -114,6 +114,8 @@ NOTE: Commitizen command is automatically triggered through [Husky](https://gith
 
 Major/Breaking Change Release should happen on `next` branch first, so we publish the breaking change version bump on `packageName@next` first. After the `next` branch is merged into `main`, the new breaking change version will be available on `packageName@latest`
 
+WARNING: Please merge `next` into `main` via a merge commit instead of squah and merge, otherwise Semantic Release won't be able to analyze the commit messages correctly [source](https://semantic-release.gitbook.io/semantic-release/support/troubleshooting#squashed-commits-are-ignored-by-semantic-release)
+
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
