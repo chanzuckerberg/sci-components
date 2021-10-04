@@ -46,6 +46,7 @@ interface ComplexFilterProps<Multiple> {
   InputDropdownComponent?: typeof InputDropdown;
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export default function ComplexFilter<
   Multiple extends boolean | undefined = false
 >({
