@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 import { Alert } from "@material-ui/lab";
-import Button from "../Button";
 import {
   fontBody,
-  fontCaps,
   getColors,
   getCorners,
   getIconSizes,
@@ -13,7 +11,6 @@ import {
 import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
-const fontCapsXxxs = fontCaps("xxxs");
 
 export const StyledNotification = styled(Alert)`
   ${fontBodyXs}
@@ -28,10 +25,11 @@ export const StyledNotification = styled(Alert)`
     const iconColor = (colors && colors[severity][400]) || "black";
 
     return `
+      width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
-      padding: ${spacings?.l}px ${spacings?.xl}px;
+      padding: ${spacings?.l}px;
       align-items: flex-start;
 
       &.elevated {
@@ -54,9 +52,15 @@ export const StyledNotification = styled(Alert)`
         padding: 0;
         margin-right: ${spacings?.m}px;
 
-        > *:not(button) {
+        > * {
           margin: ${spacings?.m}px 0px;
         }
+
+        button {
+          display: block;
+          margin-bottom: 0;
+        }
+
       }
 
       .MuiAlert-action {
@@ -71,24 +75,4 @@ export const StyledNotification = styled(Alert)`
       } 
     `;
   }}
-`;
-
-export const StyledButton = styled(Button)`
-  ${fontCapsXxxs};
-  padding: 0;
-
-  ${(props) => {
-    const colors = getColors(props);
-
-    return `
-    &:hover {
-      color: ${colors?.primary[500]};
-      background: none;
-    }
-
-    &:active {
-      color: ${colors?.primary[600]};
-    }
-    `;
-  }};
 `;
