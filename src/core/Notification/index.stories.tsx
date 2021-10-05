@@ -16,7 +16,7 @@ const Demo = (props: Args): JSX.Element => {
   } = props;
 
   const [dismissed, setDismissed] = React.useState(false);
-
+  // TODO autodismiss, waiting on design feedback
   const handleChange = () => {
     setDismissed((prev) => !prev);
   };
