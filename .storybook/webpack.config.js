@@ -1,5 +1,4 @@
 const path = require("path");
-const pathToInlineSvg = path.resolve(__dirname, "../src/common/svgs/");
 
 module.exports = ({ config }) => {
   config.resolve.alias = {
