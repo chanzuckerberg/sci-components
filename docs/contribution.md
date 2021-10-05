@@ -114,7 +114,16 @@ NOTE: Commitizen command is automatically triggered through [Husky](https://gith
 
 Major/Breaking Change Release should happen on `next` branch first, so we publish the breaking change version bump on `packageName@next` first. After the `next` branch is merged into `main`, the new breaking change version will be available on `packageName@latest`
 
-WARNING: Please merge `next` into `main` via a merge commit instead of squah and merge, otherwise Semantic Release won't be able to analyze the commit messages correctly [source](https://semantic-release.gitbook.io/semantic-release/support/troubleshooting#squashed-commits-are-ignored-by-semantic-release)
+WARNING: Please "rebase and merge" `next` into `main` via a merge commit instead of "squash and merge", otherwise Semantic Release won't be able to analyze the commit messages correctly [source](https://semantic-release.gitbook.io/semantic-release/support/troubleshooting#squashed-commits-are-ignored-by-semantic-release)
+
+If Github detects merge conflicts when merging `next` into `main`, please create a new branch from `main`, merge `next` into the new branch, resolve conflicts, then create a PR against `main`.
+
+Example:
+
+1. `git fetch && git stash && git checkout main && git checkout -b temp-main && git merge origin next`
+1. Resolve conflicts, then make commit
+1. `git push -u origin temp-main`
+1. Create a PR
 
 ## Reporting Security Issues
 
