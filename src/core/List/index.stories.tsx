@@ -115,6 +115,12 @@ const Demo = (props: Args): JSX.Element => {
         <ListItem ordered>This is an ordered list item 3.</ListItem>
         <ListItem ordered>This is an ordered list item 4.</ListItem>
         <ListItem ordered>This is an ordered list item 5.</ListItem>
+        <ListItem ordered>This is an ordered list item 6.</ListItem>
+        <ListItem ordered>This is an ordered list item 7.</ListItem>
+        <ListItem ordered>This is an ordered list item 8.</ListItem>
+        <ListItem ordered>This is an ordered list item 9.</ListItem>
+        <ListItem ordered>This is an ordered list item 10.</ListItem>
+        <ListItem ordered>This is an ordered list item 11.</ListItem>
       </List>
       <br />
       <br />
@@ -125,11 +131,74 @@ const Demo = (props: Args): JSX.Element => {
         }
         {...props}
       >
-        <ListItem>This is an ordered list item 1.</ListItem>
-        <ListItem>This is an ordered list item 2.</ListItem>
-        <ListItem>This is an ordered list item 3.</ListItem>
-        <ListItem>This is an ordered list item 4.</ListItem>
-        <ListItem>This is an ordered list item 5.</ListItem>
+        <ListItem>This is an unordered list item 1.</ListItem>
+        <ListItem>This is an unordered list item 2.</ListItem>
+        <ListItem>This is an unordered list item 3.</ListItem>
+        <ListItem>This is an unordered list item 4.</ListItem>
+        <ListItem>This is an unordered list item 5.</ListItem>
+        <ListItem>This is an unordered list item 6.</ListItem>
+        <ListItem>This is an unordered list item 7.</ListItem>
+        <ListItem>This is an unordered list item 8.</ListItem>
+        <ListItem>This is an unordered list item 9.</ListItem>
+        <ListItem>This is an unordered list item 10.</ListItem>
+        <ListItem>This is an unordered list item 11.</ListItem>
+      </List>
+      <List
+        ordered
+        subheader={
+          <ListSubheader disableSticky>
+            Font sizes and spacing for a nested ordered list
+          </ListSubheader>
+        }
+        {...props}
+      >
+        <ListItem ordered>
+          <span>
+            Nested List 1
+            <List ordered>
+              <ListItem ordered>Nested List item</ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+            </List>
+          </span>
+        </ListItem>
+        <ListItem ordered>
+          <span>
+            Nested List 2
+            <List ordered>
+              <ListItem ordered>
+                <span>
+                  Nested List 2
+                  <List ordered>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                    <ListItem ordered>Nested List item</ListItem>
+                  </List>
+                </span>
+              </ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+            </List>
+          </span>
+        </ListItem>
+        <ListItem ordered>
+          <span>
+            Nested List 3
+            <List ordered>
+              <ListItem ordered>Nested List item</ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+              <ListItem ordered>Nested List item</ListItem>
+            </List>
+          </span>
+        </ListItem>
       </List>
     </div>
   );

@@ -3,12 +3,13 @@ import { List } from "@material-ui/core";
 import { getSpacings, Props } from "../styles";
 
 export interface ExtraProps extends Props {
-  ordered?: boolean;
   component?: unknown;
+  marginBottom?: "xxxs" | "xxs" | "xs" | "s" | "m" | "l";
+  ordered?: boolean;
 }
 
 // (thuang): Please keep this in sync with the props used in `ExtraProps`
-const doNotForwardProps = ["ordered"];
+const doNotForwardProps = ["marginBotton", "ordered"];
 
 export const StyledList = styled(List, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
