@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { List } from "@material-ui/core";
-import { Props } from "../styles";
+import { getSpacings, Props } from "../styles";
 
 export interface ExtraProps extends Props {
   ordered?: boolean;
@@ -13,6 +13,10 @@ const doNotForwardProps = ["ordered"];
 export const StyledList = styled(List, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
+  .MuiListSubheader-root {
+    ${propsToMarginBottom}
+  }
+
   ${(props: ExtraProps) => {
     if (!props.ordered) return "";
 
@@ -21,3 +25,25 @@ export const StyledList = styled(List, {
     `;
   }}
 `;
+
+function propsToMarginBottom(props: ExtraProps) {
+  const spacings = getSpacings(props);
+
+  const propsToMarginBottomMap: Record<
+    NonNullable<ExtraProps["marginBottom"]>,
+    number | undefined
+  > = {
+    l: spacings?.l,
+    m: spacings?.l,
+    s: spacings?.m,
+    xs: spacings?.m,
+    xxs: spacings?.m,
+    xxxs: spacings?.s,
+  };
+
+  const { marginBottom } = props;
+
+  return `
+    margin-bottom: ${propsToMarginBottomMap[marginBottom || "s"]}px;
+  `;
+}
