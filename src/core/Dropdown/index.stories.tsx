@@ -1,8 +1,6 @@
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React from "react";
 import { noop } from "src/common/utils";
-import Button from "../Button";
-import { DefaultMenuSelectOption } from "../MenuSelect";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -29,7 +27,6 @@ export const SingleSelect = Template.bind({});
 SingleSelect.args = {
   label: LABEL,
   onChange: noop,
-  sdsType: "single",
 };
 
 export const SingleSelectWithSearch = Template.bind({});
@@ -37,39 +34,7 @@ export const SingleSelectWithSearch = Template.bind({});
 SingleSelectWithSearch.args = {
   label: LABEL,
   onChange: noop,
-  sdsType: "single",
   search: true,
-};
-
-export const SingleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
-    GITHUB_LABELS[0]
-  );
-
-  return (
-    <>
-      <Dropdown
-        label="Click Target"
-        options={GITHUB_LABELS}
-        onChange={handleChange}
-        value={value}
-      />
-
-      <br />
-
-      <Button color="primary" variant="contained" onClick={update}>
-        Update Controlled Value
-      </Button>
-    </>
-  );
-
-  function update() {
-    setValue(GITHUB_LABELS[1]);
-  }
-
-  function handleChange(newValue: DefaultMenuSelectOption | null) {
-    setValue(newValue);
-  }
 };
 
 export const MultipleSelect = Template.bind({});
@@ -78,7 +43,6 @@ MultipleSelect.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
-  sdsType: "multiple",
 };
 
 export const MultipleSelectWithSearch = Template.bind({});
@@ -87,48 +51,7 @@ MultipleSelectWithSearch.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
-  sdsType: "multiple",
   search: true,
-};
-
-export const MultipleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption[] | null>([
-    GITHUB_LABELS[0],
-    GITHUB_LABELS[1],
-    GITHUB_LABELS[2],
-    GITHUB_LABELS[3],
-    GITHUB_LABELS[4],
-    GITHUB_LABELS[5],
-    GITHUB_LABELS[6],
-    GITHUB_LABELS[7],
-    GITHUB_LABELS[8],
-    GITHUB_LABELS[9],
-  ]);
-
-  return (
-    <>
-      <Dropdown
-        sdsType="multiple"
-        label="Click Target"
-        options={GITHUB_LABELS}
-        onChange={handleChange}
-        value={value}
-        style={{ width: "100%" }}
-      />
-      <br />
-      <Button color="primary" variant="contained" onClick={update}>
-        Update Controlled Value
-      </Button>
-    </>
-  );
-
-  function update() {
-    setValue([GITHUB_LABELS[7], GITHUB_LABELS[8], GITHUB_LABELS[9]]);
-  }
-
-  function handleChange(newValue: DefaultMenuSelectOption[] | null) {
-    setValue(newValue);
-  }
 };
 
 // From https://github.com/abdonrd/github-labels
