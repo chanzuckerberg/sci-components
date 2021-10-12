@@ -1,24 +1,32 @@
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
-import { Value } from "../Dropdown";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import MenuSelect, { DefaultMenuSelectOption } from "../MenuSelect";
-import Chips from "./components/Chips";
-import { StyledPaper, StyledPopper, Wrapper } from "./style";
+import { StyledPaper, StyledPopper } from "./style";
 
 export {
-  StyledPopper as ComplexFilterPopper,
-  StyledPaper as ComplexFilterPaper,
-  InputDropdown as ComplexFilterInputDropdown,
+  StyledPopper as DropdownPopper,
+  StyledPaper as DropdownPaper,
+  InputDropdown as DropdownInputDropdown,
 };
-interface ComplexFilterProps<Multiple> {
+
+// (thuang): Value's type is based on generic type placeholder (T) and Multiple
+// type. If Multiple is true, Value's type is T[] | null.
+// Otherwise, Value's type is T | null.
+// Conditional Type
+// https://www.typescriptlang.org/docs/handbook/2/conditional-types.html
+export type Value<T, Multiple> = Multiple extends undefined | false
+  ? T | null
+  : Array<T> | null;
+
+interface DropdownProps<Multiple> {
   label: string;
   options: DefaultMenuSelectOption[];
+  onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
   multiple?: Multiple;
   search?: boolean;
-  onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
   MenuSelectProps?: Partial<typeof MenuSelect>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
   value?: Value<DefaultMenuSelectOption, Multiple>;
@@ -30,9 +38,7 @@ interface ComplexFilterProps<Multiple> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export default function ComplexFilter<
-  Multiple extends boolean | undefined = false
->({
+export default function Dropdown<Multiple extends boolean | undefined = false>({
   options,
   label = "",
   multiple = false,
@@ -44,8 +50,7 @@ export default function ComplexFilter<
   PopperComponent = StyledPopper,
   PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
-  ...rest
-}: ComplexFilterProps<Multiple>): JSX.Element {
+}: DropdownProps<Multiple>): JSX.Element {
   const isControlled = propValue !== undefined;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -70,22 +75,13 @@ export default function ComplexFilter<
 
   const open = Boolean(anchorEl);
 
-  // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
-  // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,
-  // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
-      <Wrapper {...rest}>
-        <InputDropdownComponent
-          label={label}
-          onClick={handleClick}
-          {...InputDropdownProps}
-        />
-
-        <div>
-          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-        </div>
-      </Wrapper>
+      <InputDropdownComponent
+        label={label}
+        onClick={handleClick}
+        {...InputDropdownProps}
+      />
       <PopperComponent open={open} anchorEl={anchorEl}>
         <MenuSelect
           open
@@ -145,19 +141,6 @@ export default function ComplexFilter<
     if (multiple) {
       return setPendingValue(newValue as DefaultMenuSelectOption[]);
     }
-
-    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
-  }
-
-  function handleDelete(option: DefaultMenuSelectOption) {
-    if (!multiple) {
-      return setValue(null);
-    }
-
-    const newValue =
-      (value as Value<DefaultMenuSelectOption, true>)?.filter(
-        (item) => item !== option
-      ) || null;
 
     setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
   }
