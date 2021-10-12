@@ -1,5 +1,6 @@
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
+import { Value } from "../Dropdown";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
@@ -12,24 +13,6 @@ export {
   StyledPaper as ComplexFilterPaper,
   InputDropdown as ComplexFilterInputDropdown,
 };
-
-/**
- * @deprecated This type is no longer needed and will be removed in the next major version.
- */
-export type ComplexFilterValue =
-  | DefaultMenuSelectOption[]
-  | DefaultMenuSelectOption
-  | null;
-
-// (thuang): Value's type is based on generic type placeholder (T) and Multiple
-// type. If Multiple is true, Value's type is T[] | null.
-// Otherwise, Value's type is T | null.
-// Conditional Type
-// https://www.typescriptlang.org/docs/handbook/2/conditional-types.html
-export type Value<T, Multiple> = Multiple extends undefined | false
-  ? T | null
-  : Array<T> | null;
-
 interface ComplexFilterProps<Multiple> {
   label: string;
   options: DefaultMenuSelectOption[];
@@ -87,6 +70,9 @@ export default function ComplexFilter<
 
   const open = Boolean(anchorEl);
 
+  // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
+  // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,
+  // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
       <Wrapper {...rest}>
