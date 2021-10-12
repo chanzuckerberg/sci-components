@@ -46,10 +46,11 @@ export const StyledCallout = styled(Alert)`
         margin-right: 0;
         padding: 0;
         align-items: flex-start;
+        margin-top: ${spacings?.xxs}px;
 
-        .MuiIconButton-label {
-          color: ${colors?.gray[500]}
-        } 
+        > button {
+          padding: 0;
+        }
       } 
     `;
   }}

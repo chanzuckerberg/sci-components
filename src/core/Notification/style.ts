@@ -67,10 +67,11 @@ export const StyledNotification = styled(Alert)`
         margin-right: 0;
         padding: 0;
         align-items: flex-start;
-
-          .MuiIconButton-label {
-            color: ${colors?.gray[500]};
-          } 
+        margin-top: ${spacings?.xxs}px;
+          
+        > button {
+            padding: 0;
+          }
         }
       } 
     `;

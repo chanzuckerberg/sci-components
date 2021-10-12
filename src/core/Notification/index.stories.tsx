@@ -2,6 +2,7 @@ import { FormControlLabel, Switch } from "@material-ui/core";
 import { action } from "@storybook/addon-actions";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import Button from "../Button";
 import Notification from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -16,7 +17,7 @@ const Demo = (props: Args): JSX.Element => {
   } = props;
 
   const [dismissed, setDismissed] = React.useState(false);
-  // TODO autodismiss, waiting on design feedback
+
   const handleChange = () => {
     setDismissed((prev) => !prev);
   };
@@ -24,16 +25,18 @@ const Demo = (props: Args): JSX.Element => {
   if (buttonOnClick) {
     return (
       <>
-        <FormControlLabel
-          control={<Switch checked={dismissed} onChange={handleChange} />}
-          label="Hide"
-        />
+        {!autoDismiss && (
+          <FormControlLabel
+            control={<Switch checked={dismissed} onChange={handleChange} />}
+            label="Hide"
+          />
+        )}
         <Notification
           autoDismiss={autoDismiss}
           dismissed={dismissed}
           dismissDirection={dismissDirection}
           intent={intent}
-          onClose={onClose ? () => {} : undefined}
+          onClose={onClose}
           buttonOnClick={action("onClick")}
           buttonText={buttonText}
           {...props}
@@ -46,21 +49,26 @@ const Demo = (props: Args): JSX.Element => {
             </div>
           )}
         </Notification>
+        <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
+          Reset Notification
+        </Button>
       </>
     );
   }
   return (
     <>
-      <FormControlLabel
-        control={<Switch checked={dismissed} onChange={handleChange} />}
-        label="Hide"
-      />
+      {!autoDismiss && (
+        <FormControlLabel
+          control={<Switch checked={dismissed} onChange={handleChange} />}
+          label="Hide"
+        />
+      )}
       <Notification
         autoDismiss={autoDismiss}
         dismissed={dismissed}
         dismissDirection={dismissDirection}
         intent={intent}
-        onClose={onClose ? () => {} : undefined}
+        onClose={onClose}
         {...props}
       >
         This is a notification!
@@ -71,6 +79,9 @@ const Demo = (props: Args): JSX.Element => {
           </div>
         )}
       </Notification>
+      <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
+        Reset Notification
+      </Button>
     </>
   );
 };
@@ -78,7 +89,8 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   argTypes: {
     autoDismiss: {
-      control: { type: "boolean" },
+      control: { type: "select" },
+      options: [true, false, 4000, 12000, 20000],
     },
     buttonOnClick: {
       control: { type: "boolean" },
@@ -95,7 +107,14 @@ export default {
       options: ["info", "error", "success", "warning"],
     },
     onClose: {
-      control: { type: "boolean" },
+      control: {
+        labels: {
+          "() => {}": true,
+          undefined,
+        },
+        type: "select",
+      },
+      options: [action("onClick"), undefined],
     },
   },
   component: Demo,
@@ -107,13 +126,12 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  autoDismiss: true,
+  autoDismiss: false,
   buttonOnClick: false,
   buttonText: "click me",
-  dismissDirection: "right",
+  dismissDirection: "left",
   extraContent: false,
   intent: "success",
-  onClose: false,
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {

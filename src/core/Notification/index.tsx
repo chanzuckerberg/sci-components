@@ -1,14 +1,15 @@
-import { Slide } from "@material-ui/core";
+import { Slide, SvgIcon } from "@material-ui/core";
 import { AlertProps } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
 import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import Button from "../Button";
+import IconButton from "../IconButton";
 import { StyledNotification } from "./style";
 
 export interface NotificationProps {
-  autoDismiss?: boolean;
+  autoDismiss?: boolean | number;
   buttonOnClick?: (event: React.SyntheticEvent) => void;
   buttonText?: string;
   dismissed?: boolean;
@@ -23,7 +24,7 @@ const Notification = ({
   autoDismiss,
   children,
   dismissed,
-  dismissDirection,
+  dismissDirection = "left",
   intent,
   onClose,
   buttonOnClick,
@@ -34,25 +35,41 @@ const Notification = ({
 
   useEffect(() => {
     setHide(dismissed);
-  }, [dismissed]);
 
-  // if (autoDismiss) {
-  //   console.log('$$$$$$$$$$$$ autodismiss true')
-  //   useEffect(() => {
-  //     console.log('%%%%%%%%%%% inside useEffect')
-  //     setTimeout(() => {
-  //       console.log('*********** inside timeout')
-  //       setHide(true);
-  //     }, 8000);
-  //   }, [autoDismiss]);
-  // }
+    if (autoDismiss) {
+      const timeout = typeof autoDismiss === "boolean" ? 8000 : autoDismiss;
+      setTimeout(() => {
+        setHide(true);
+      }, timeout);
+    }
+  }, [dismissed, autoDismiss]);
+
+  const handleClose = (event: React.SyntheticEvent<Element, Event>) => {
+    setHide(true);
+    if (onClose) onClose(event);
+  };
+
   return (
     <>
       <Slide in={!hide} direction={dismissDirection} mountOnEnter unmountOnExit>
         <StyledNotification
-          aria-labelledby="alert-notification-title"
-          aria-describedby="alert-notification-description"
-          action={onClose ? <IconClose fillContrast="white" /> : null}
+          onClose={onClose ? handleClose : undefined}
+          action={
+            onClose ? (
+              <IconButton
+                onClick={handleClose}
+                sdsSize="small"
+                sdsType="secondary"
+              >
+                {" "}
+                <SvgIcon
+                  fillContrast="white"
+                  viewBox="0 0 14 14"
+                  component={IconClose}
+                />{" "}
+              </IconButton>
+            ) : null
+          }
           icon={
             intent === "success" ? (
               <IconSuccess fillContrast="white" />
