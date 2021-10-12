@@ -11,6 +11,8 @@ export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
 export * from "./core/ComplexFilter";
 export { default as ComplexFilter } from "./core/ComplexFilter";
+export * from "./core/Dropdown";
+export { default as Dropdown } from "./core/Dropdown";
 export * from "./core/IconButton";
 export { default as IconButton } from "./core/IconButton";
 export * from "./core/InputDropdown";
