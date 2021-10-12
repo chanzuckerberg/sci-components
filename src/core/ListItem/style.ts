@@ -30,7 +30,6 @@ export const StyledListItem = styled(ListItem, {
     padding: 0;
 
     ${(props) => {
-      const spacings = getSpacings(props);
       const { ordered } = props;
 
       const {
@@ -38,8 +37,8 @@ export const StyledListItem = styled(ListItem, {
       } = props;
 
       return `
+        align-items: flex-start;
         font-family: ${(typography as TypographyOptions).fontFamily};
-        margin-left: ${markerMargin(Boolean(ordered), spacings?.m || 1)}px;
         ${ordered ? "counter-increment: section;" : ""}
       `;
     }}
@@ -47,25 +46,19 @@ export const StyledListItem = styled(ListItem, {
     &:before {
       display: inline-block;
       font-weight: 600;
-      position: absolute;
-      top: 0;
 
       ${(props) => {
         const spacings = getSpacings(props);
         const { ordered } = props;
 
         return `
-          content: ${ordered ? `counters(section, ".")` : `"•"`};
-          left: -${markerMargin(Boolean(ordered), spacings?.m || 1)}px;
+          content: ${ordered ? `counters(section, ".")"."` : `"•"`};
+          margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
         `;
       }}
     }
   }
 `;
-
-function markerMargin(ordered: boolean, spacing = 1) {
-  return ordered ? 3 * spacing : spacing;
-}
 
 function propsToFontBody(props: ExtraProps) {
   const propsToFontBodyMap: Record<

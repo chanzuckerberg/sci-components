@@ -110,6 +110,21 @@ so we can do semantic versioning properly
 
 NOTE: Commitizen command is automatically triggered through [Husky](https://github.com/typicode/husky) when you write a commit message. However, you can always do `^ + C` to skip Commitizen if you're not ready to submit a PR!
 
+## Major/Breaking Change Release
+
+Major/Breaking Change Release should happen on `next` branch first, so we publish the breaking change version bump on `packageName@next` first. After the `next` branch is merged into `main`, the new breaking change version will be available on `packageName@latest`
+
+WARNING: Please "rebase and merge" `next` into `main` via a merge commit instead of "squash and merge", otherwise Semantic Release won't be able to analyze the commit messages correctly [source](https://semantic-release.gitbook.io/semantic-release/support/troubleshooting#squashed-commits-are-ignored-by-semantic-release)
+
+If Github detects merge conflicts when merging `next` into `main`, please create a new branch from `main`, merge `next` into the new branch, resolve conflicts, then create a PR against `main`.
+
+Example:
+
+1. `git fetch && git stash && git checkout main && git checkout -b temp-main && git merge origin next`
+1. Resolve conflicts, then make commit
+1. `git push -u origin temp-main`
+1. Create a PR
+
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
