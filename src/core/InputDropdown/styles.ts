@@ -2,8 +2,10 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "../Button";
 import {
+  fontBodyXs,
   fontHeaderS,
   getColors,
+  getCorners,
   getIconSizes,
   getPalette,
   getSpacings,
@@ -18,33 +20,30 @@ export interface InputDropdownProps extends Props {
   sdsStyle?: "minimal" | "square" | "rounded";
 }
 
-const isDisabled = (props: InputDropdownProps): SerializedStyles => {
-  const colors = getColors(props);
-
-  return css`
-    span {
-      color: ${colors?.gray[300]};
-    }
-    path {
-      fill: ${colors?.gray[300]};
-    }
-  `;
-};
-
-const minimal = (props: InputDropdownProps): SerializedStyles => {
+const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const iconSizes = getIconSizes(props);
   const palette = getPalette(props);
   const spacings = getSpacings(props);
 
   return css`
+    color: ${colors?.gray[500]};
+
     .MuiButton-label {
       display: flex;
       align-items: center;
+      margin: 0 ${spacings?.xs}px;
+
+      span {
+        margin-right: ${spacings?.xs}px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
 
     path {
-      fill: ${colors?.gray[500]};
+      fill: currentColor;
     }
 
     svg {
@@ -52,29 +51,40 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
       width: ${iconSizes?.s.width}px;
     }
 
-    span {
-      ${fontHeaderS(props)}
-      color: ${colors?.gray[500]};
-      margin-right: ${spacings?.xs}px;
-    }
-
     &:hover {
       background-color: unset;
-      span {
-        color: ${colors?.gray[600]};
-      }
-      path {
-        fill: ${colors?.gray[600]};
-      }
+      color: ${colors?.gray[600]};
     }
 
     &:active {
-      span {
-        color: ${palette?.text?.primary};
-      }
+      color: ${palette?.text?.primary};
       path {
         fill: ${colors?.primary[400]};
       }
+    }
+  `;
+};
+
+const minimal = (props: InputDropdownProps): SerializedStyles => {
+  return css`
+    span {
+      ${fontHeaderS(props)}
+    }
+  `;
+};
+
+const square = (props: InputDropdownProps): SerializedStyles => {
+  const corners = getCorners(props);
+  return css`
+    border: 1px solid currentColor;
+    border-radius: ${corners?.m}px;
+
+    .MuiButton-label {
+      justify-content: space-between;
+    }
+
+    span {
+      ${fontBodyXs(props)}
     }
   `;
 };
@@ -91,6 +101,19 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
+const isDisabled = (props: InputDropdownProps): SerializedStyles => {
+  const colors = getColors(props);
+
+  return css`
+    span {
+      color: ${colors?.gray[300]};
+    }
+    path {
+      fill: ${colors?.gray[300]};
+    }
+  `;
+};
+
 const doNotForwardProps = ["sdsStyle"];
 
 export const StyledInputDropdown = styled(Button, {
@@ -100,7 +123,9 @@ export const StyledInputDropdown = styled(Button, {
     const { disabled, open, sdsStyle } = props;
 
     return css`
+      ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
+      ${sdsStyle === "square" && square(props)}
       ${open && isOpen(props)}
       ${disabled && isDisabled(props)}
     `;
