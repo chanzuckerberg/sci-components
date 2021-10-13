@@ -40,3 +40,11 @@ Minimal.args = {
   label: "Dropdown",
   sdsStyle: "minimal",
 };
+
+export const Square = Template.bind({});
+
+Square.args = {
+  disabled: false,
+  label: "Dropdown",
+  sdsStyle: "square",
+};
