@@ -76,22 +76,28 @@ Default.args = {
   onClose: false,
 };
 
+const storyRow = {
+  alignItems: "flex-start",
+  display: "flex",
+  flexDirection: "row",
+  gap: "20px",
+};
+
 const LivePreviewDemo = (props: Args): JSX.Element => {
   // TODO: add accordion
-  const { intent } = props;
   return (
-    <>
-      <Callout intent={intent} {...props}>
+    <div style={storyRow as React.CSSProperties}>
+      <Callout intent="info" {...props}>
         this is a callout
       </Callout>
-    </>
+      <Callout intent="info" {...props}>
+        <CalloutTitle>Title</CalloutTitle>
+        this is a callout
+      </Callout>
+    </div>
   );
 };
 
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.args = {
-  intent: "success",
-};

@@ -3,6 +3,7 @@ import { AlertProps } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
 import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
+import { ReactComponent as IconInfo } from "../../common/svgs/IconInfo.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import IconButton from "../IconButton";
 import { StyledCallout } from "./style";
@@ -41,6 +42,17 @@ const Callout = ({
     if (onClose) onClose(event);
   };
 
+  const getIcon = () => {
+    switch (intent) {
+      case "success":
+        return <IconSuccess fillContrast="white" />;
+      case "info":
+        return <IconInfo fillContrast="white" />;
+      default:
+        return <IconAlert fillContrast="white" />;
+    }
+  };
+
   return (
     <>
       <Grow in={!hide}>
@@ -62,13 +74,7 @@ const Callout = ({
               </IconButton>
             ) : null
           }
-          icon={
-            intent === "success" ? (
-              <IconSuccess fillContrast="white" />
-            ) : (
-              <IconAlert fillContrast="white" />
-            )
-          }
+          icon={getIcon()}
           severity={intent}
           {...rest}
         >

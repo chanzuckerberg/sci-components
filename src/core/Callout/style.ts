@@ -22,6 +22,7 @@ export const StyledCallout = styled(Alert)`
     const iconColor = (colors && colors[severity][400]) || "black";
 
     return `
+      width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};

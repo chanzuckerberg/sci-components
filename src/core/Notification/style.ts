@@ -54,13 +54,15 @@ export const StyledNotification = styled(Alert)`
 
         > * {
           margin: ${spacings?.m}px 0px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
 
         button {
           display: block;
-          margin-bottom: 0;
         }
-
       }
 
       .MuiAlert-action {

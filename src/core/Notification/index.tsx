@@ -3,6 +3,7 @@ import { AlertProps } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
 import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
+import { ReactComponent as IconInfo } from "../../common/svgs/IconInfo.svg";
 import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import Button from "../Button";
 import IconButton from "../IconButton";
@@ -49,6 +50,17 @@ const Notification = ({
     if (onClose) onClose(event);
   };
 
+  const getIcon = () => {
+    switch (intent) {
+      case "success":
+        return <IconSuccess fillContrast="white" />;
+      case "info":
+        return <IconInfo fillContrast="white" />;
+      default:
+        return <IconAlert fillContrast="white" />;
+    }
+  };
+
   return (
     <>
       <Slide in={!hide} direction={dismissDirection} mountOnEnter unmountOnExit>
@@ -70,13 +82,7 @@ const Notification = ({
               </IconButton>
             ) : null
           }
-          icon={
-            intent === "success" ? (
-              <IconSuccess fillContrast="white" />
-            ) : (
-              <IconAlert fillContrast="white" />
-            )
-          }
+          icon={getIcon()}
           className="elevated"
           severity={intent}
           {...rest}

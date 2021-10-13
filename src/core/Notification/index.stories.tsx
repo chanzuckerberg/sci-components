@@ -134,21 +134,45 @@ Default.args = {
   intent: "success",
 };
 
+const storyRow = {
+  alignItems: "flex-start",
+  display: "flex",
+  flexDirection: "row",
+  gap: "20px",
+};
+
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const { intent } = props;
   return (
-    <>
-      <Notification dismissDirection="left" intent={intent} {...props}>
+    <div style={storyRow as React.CSSProperties}>
+      <Notification dismissDirection="left" intent="info" {...props}>
         this is a notification
       </Notification>
-    </>
+      <Notification
+        dismissDirection="left"
+        intent="info"
+        buttonOnClick={action("onClick")}
+        buttonText="click me"
+        {...props}
+      >
+        this is a notification
+      </Notification>
+      <Notification
+        dismissDirection="left"
+        intent="info"
+        buttonOnClick={action("onClick")}
+        buttonText="click me"
+        {...props}
+      >
+        this is a notification
+        <div>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet eveniet
+          sapiente, officiis aut possimus suscipit assumenda non?
+        </div>
+      </Notification>
+    </div>
   );
 };
 
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.args = {
-  intent: "success",
-};
