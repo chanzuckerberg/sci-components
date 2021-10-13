@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { AlertTitle } from "@material-ui/lab";
-import { fontHeader, getSpacings } from "src/core/styles";
+import { fontBody, getSpacings } from "src/core/styles";
 
-const fontHeaderXs = fontHeader("xs");
+const fontBodyXs = fontBody("xs");
 
 export const StyledCalloutTitle = styled(AlertTitle)`
-  ${fontHeaderXs};
+  ${fontBodyXs};
 
   ${(props) => {
     const spacings = getSpacings(props);
