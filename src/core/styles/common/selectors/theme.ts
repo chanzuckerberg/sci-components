@@ -7,6 +7,7 @@ import {
   FontWeights,
   IconSizes,
   Shadows,
+  Spaces,
   Spacings,
   Typography,
 } from "src/core/styles/common/defaultTheme";
@@ -15,7 +16,14 @@ export interface Props {
   theme?: AppThemeOptions;
 }
 
+export const getSpaces = ({ theme }: Props): Spaces | null => {
+  return theme?.app?.spacing || null;
+};
+
 export const getSpacings = ({ theme }: Props): Spacings | null => {
+  console.warn(
+    "getSpacings() is deprecated and may be removed in a future release. Please use getSpaces()"
+  );
   return theme?.app?.spacing || null;
 };
 
