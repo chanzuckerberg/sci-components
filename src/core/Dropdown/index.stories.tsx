@@ -1,6 +1,8 @@
+import { Dialog } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
-import React from "react";
+import React, { useState } from "react";
 import { noop } from "src/common/utils";
+import { DefaultMenuSelectOption } from "../MenuSelect";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -52,6 +54,28 @@ MultipleSelectWithSearch.args = {
   multiple: true,
   onChange: noop,
   search: true,
+};
+
+export const InsideModal = (): JSX.Element => {
+  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
+    GITHUB_LABELS[0]
+  );
+
+  return (
+    <Dialog open disableEnforceFocus>
+      <Dropdown
+        label="Dropdown"
+        options={GITHUB_LABELS}
+        onChange={handleChange}
+        value={value}
+        InputDropdownProps={{ sdsStyle: "square" }}
+      />
+    </Dialog>
+  );
+
+  function handleChange(newValue: DefaultMenuSelectOption | null) {
+    setValue(newValue);
+  }
 };
 
 // From https://github.com/abdonrd/github-labels
