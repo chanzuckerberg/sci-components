@@ -2,6 +2,7 @@ import { Dialog } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
+import { DefaultMenuSelectOption } from "../MenuSelect";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
