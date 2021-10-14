@@ -102,6 +102,23 @@ When it comes to styling Material UI's components, generally the following strat
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
 
+## Testing
+
+This repo uses [Jest](https://jestjs.io/) as it's main testing framework and [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) as middleware to reuse stories as tests. Tests are written for each component to test for functionality and integration. Currently, as components are small and independent, unit tests are the bulk of the test written. As more complex components are created, integration tests will become the bulk of the test coverage. Snapshots are captured to test for changes to the DOM.
+
+Snapshots should only be captured of the LivePreview story. Use the following to skip snapshots on Default:
+
+```tsx
+// index.stories.tsx
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+```
+
+If snapshots needs to be updated (due to anticipated DOM changes), run `yarn test path/to/test/file -u `
+
 ## Commit Message
 
 This repo uses [Commitizen](https://github.com/commitizen/cz-cli) to ensure the

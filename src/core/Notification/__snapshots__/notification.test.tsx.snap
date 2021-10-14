@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notification /> LivePreview story renders snapshot 1`] = `
+<div
+  style="align-items: flex-start; display: flex; flex-direction: row; gap: 20px;"
+>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo elevated css-1yrog93 MuiPaper-elevation0"
+    role="alert"
+    style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        data-jest-file-name="IconInfo.svg"
+        data-jest-svg-name="IconInfo"
+        data-testid="IconInfo"
+        fillcontrast="white"
+      />
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      this is a notification
+    </div>
+  </div>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo elevated css-1yrog93 MuiPaper-elevation0"
+    role="alert"
+    style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        data-jest-file-name="IconInfo.svg"
+        data-jest-svg-name="IconInfo"
+        data-testid="IconInfo"
+        fillcontrast="white"
+      />
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      this is a notification
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text css-stetv"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          click me
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo elevated css-1yrog93 MuiPaper-elevation0"
+    role="alert"
+    style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+  >
+    <div
+      class="MuiAlert-icon"
+    >
+      <svg
+        data-jest-file-name="IconInfo.svg"
+        data-jest-svg-name="IconInfo"
+        data-testid="IconInfo"
+        fillcontrast="white"
+      />
+    </div>
+    <div
+      class="MuiAlert-message"
+    >
+      this is a notification
+      <div>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet eveniet sapiente, officiis aut possimus suscipit assumenda non?
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text css-stetv"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          click me
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

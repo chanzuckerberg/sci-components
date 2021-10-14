@@ -134,6 +134,12 @@ Default.args = {
   intent: "success",
 };
 
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 const storyRow = {
   alignItems: "flex-start",
   display: "flex",
