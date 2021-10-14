@@ -45,11 +45,11 @@ const Callout = ({
   const getIcon = () => {
     switch (intent) {
       case "success":
-        return <IconSuccess fillContrast="white" />;
+        return <IconSuccess fillcontrast="white" />;
       case "info":
-        return <IconInfo fillContrast="white" />;
+        return <IconInfo fillcontrast="white" />;
       default:
-        return <IconAlert fillContrast="white" />;
+        return <IconAlert fillcontrast="white" />;
     }
   };
 
@@ -67,7 +67,7 @@ const Callout = ({
               >
                 {" "}
                 <SvgIcon
-                  fillContrast="white"
+                  fillcontrast="white"
                   viewBox="0 0 14 14"
                   component={IconClose}
                 />{" "}

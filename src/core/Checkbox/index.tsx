@@ -44,21 +44,21 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
       {...newProps}
       checkedIcon={
         <SvgIcon
-          fillContrast="white"
+          fillcontrast="white"
           component={IconCheckboxChecked}
           viewBox="0 0 16 16"
         />
       }
       icon={
         <SvgIcon
-          fillContrast="white"
+          fillcontrast="white"
           component={IconCheckboxUnchecked}
           viewBox="0 0 16 16"
         />
       }
       indeterminateIcon={
         <SvgIcon
-          fillContrast="white"
+          fillcontrast="white"
           component={IconCheckboxIndeterminate}
           viewBox="0 0 16 16"
         />

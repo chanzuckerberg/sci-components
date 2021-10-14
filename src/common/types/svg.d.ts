@@ -1,5 +1,5 @@
 interface CustomSVGProps extends React.SVGAttributes<SVGElement> {
-  fillContrast: string;
+  fillcontrast: string;
 }
 
 declare module "*.svg" {
