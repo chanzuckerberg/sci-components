@@ -26,6 +26,7 @@ const Notification = ({
   children,
   dismissed,
   dismissDirection = "left",
+  extraContent,
   intent,
   onClose,
   buttonOnClick,
