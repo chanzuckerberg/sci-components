@@ -182,3 +182,21 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <Notification dismissDirection={"left"} intent={"info"} {...props}>
+      this is a notification
+    </Notification>
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
