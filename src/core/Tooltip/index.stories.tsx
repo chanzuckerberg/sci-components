@@ -1,19 +1,27 @@
 import { css } from "@emotion/css";
+import { Box, Grid } from "@material-ui/core/";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import Button from "../Button";
 import TooltipTableContent from "../TooltipTableContent/index";
 import Tooltip from "./index";
-
-const tooltipContent =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
 const Demo = (props: Args): JSX.Element => {
   const { title } = props;
   return (
-    <Tooltip title={title} {...props}>
-      <InfoOutlinedIcon />
-    </Tooltip>
+    <div>
+      Hover over the info icon to view the tooltip.
+      <div
+        style={{
+          margin: "125px",
+        }}
+      >
+        <Tooltip title={title} {...props}>
+          <InfoOutlinedIcon />
+        </Tooltip>
+      </div>
+    </div>
   );
 };
 
@@ -24,20 +32,35 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const Action = Template.bind({});
+export const Dark = Template.bind({});
 
-Action.args = {
+Dark.args = {
   arrow: true,
-  inverted: true,
-  title: tooltipContent,
+  placement: "top",
+  sdsStyle: "dark",
+  subtitle: "dolor sit amet",
+  title: "Lorem ipsum",
 };
 
-export const Info = Template.bind({});
+export const Light = Template.bind({});
 
-Info.args = {
+Light.args = {
   arrow: true,
-  inverted: false,
-  title: tooltipContent,
+  placement: "top",
+  sdsStyle: "light",
+  title:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+};
+
+export const LightWide = Template.bind({});
+
+LightWide.args = {
+  arrow: true,
+  placement: "top",
+  sdsStyle: "light",
+  title:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  width: "wide",
 };
 
 const rows = [
@@ -69,6 +92,7 @@ const alert = "Some values do not pass the selected filters.";
 export const Table = Template.bind({});
 
 Table.args = {
+  followCursor: true,
   title: <TooltipTableContent alert={alert} data={data} />,
 };
 
@@ -81,5 +105,93 @@ const arrow = css`
 StyledArrow.args = {
   arrow: true,
   classes: { arrow },
-  title: tooltipContent,
+  title:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 };
+
+const PlacementDemo = (): JSX.Element => {
+  return (
+    <Box sx={{ width: 500, margin: 75 }}>
+      <Grid container spacing={8} justifyContent="center">
+        <Grid item>
+          <Tooltip title="Text" placement="top-start" arrow open>
+            <Button>top-start</Button>
+          </Tooltip>
+          <Tooltip title="Text" placement="top" arrow open>
+            <Button>top</Button>
+          </Tooltip>
+          <Tooltip title="Text" placement="top-end" arrow open>
+            <Button>top-end</Button>
+          </Tooltip>
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="center">
+        <Grid
+          item
+          container
+          spacing={8}
+          xs={6}
+          alignItems="flex-start"
+          direction="column"
+        >
+          <Grid item>
+            <Tooltip title="Text" placement="left-start" arrow open>
+              <Button>left-start</Button>
+            </Tooltip>
+          </Grid>
+          <Grid item>
+            <Tooltip title="Text" placement="left" arrow open>
+              <Button>left</Button>
+            </Tooltip>
+          </Grid>
+          <Grid item>
+            <Tooltip title="Text" placement="left-end" arrow open>
+              <Button>left-end</Button>
+            </Tooltip>
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          spacing={8}
+          xs={6}
+          alignItems="flex-end"
+          direction="column"
+        >
+          <Grid item>
+            <Tooltip title="Text" placement="right-start" arrow open>
+              <Button>right-start</Button>
+            </Tooltip>
+          </Grid>
+          <Grid item>
+            <Tooltip title="Text" placement="right" arrow open>
+              <Button>right</Button>
+            </Tooltip>
+          </Grid>
+          <Grid item>
+            <Tooltip title="Text" placement="right-end" arrow open>
+              <Button>right-end</Button>
+            </Tooltip>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container spacing={8} justifyContent="center">
+        <Grid item>
+          <Tooltip title="Text" placement="bottom-start" arrow open>
+            <Button>bottom-start</Button>
+          </Tooltip>
+          <Tooltip title="Text" placement="bottom" arrow open>
+            <Button>bottom</Button>
+          </Tooltip>
+          <Tooltip title="Text" placement="bottom-end" arrow open>
+            <Button>bottom-end</Button>
+          </Tooltip>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
+const PlacementTemplate: Story = (args) => <PlacementDemo />;
+
+export const PlacementPreview = PlacementTemplate.bind({});

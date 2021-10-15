@@ -5,21 +5,37 @@ import {
   TooltipProps as RawTooltipProps,
 } from "@material-ui/core";
 import React from "react";
-import { arrowCss, ExtraProps, tooltipCss } from "./style";
+import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
 
 type TooltipProps = ExtraProps & RawTooltipProps;
 
 export { TooltipProps };
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
-  const { inverted = false, ...rest } = props;
+  const {
+    inverted = false,
+    sdsStyle = "light",
+    subtitle,
+    title,
+    width,
+    ...rest
+  } = props;
+
+  if (props.hasOwnProperty("inverted")) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead."
+    );
+  }
 
   const theme = useTheme();
 
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
     inverted,
+    sdsStyle,
     theme,
+    width,
     /* stylelint-enable property-no-unknown -- false positive */
   };
 
@@ -35,9 +51,26 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     props,
   });
 
+  const content = (
+    <>
+      {title}
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    </>
+  );
+
+  const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
+
   // (thuang): {...rest} needs to be first, otherwise it will overwrite latter
   // props
-  return <RawTooltip {...rest} interactive classes={{ arrow, tooltip }} />;
+  return (
+    <RawTooltip
+      {...rest}
+      classes={{ arrow, tooltip }}
+      leaveDelay={leaveDelay}
+      interactive
+      title={content}
+    />
+  );
 };
 
 function mergeClass({
