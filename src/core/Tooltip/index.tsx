@@ -13,7 +13,7 @@ export { TooltipProps };
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
-    inverted = false,
+    inverted,
     sdsStyle = "light",
     subtitle,
     title,
@@ -21,7 +21,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     ...rest
   } = props;
 
-  if (props.hasOwnProperty("inverted")) {
+  if (inverted) {
     // eslint-disable-next-line no-console
     console.warn(
       "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead."

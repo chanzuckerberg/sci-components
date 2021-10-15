@@ -7,7 +7,7 @@ import {
   getBorders,
   getColors,
   getShadows,
-  getSpacings,
+  getSpaces,
   Props,
 } from "../styles";
 
@@ -19,7 +19,7 @@ export interface ExtraProps extends Props {
 }
 
 const dark = (props: ExtraProps): string => {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   return css`
     ${fontHeaderXs(props)}
@@ -32,7 +32,7 @@ const dark = (props: ExtraProps): string => {
 };
 
 const light = (props: ExtraProps): string => {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   return css`
     ${fontBodyXs(props)}

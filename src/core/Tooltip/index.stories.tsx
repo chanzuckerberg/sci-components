@@ -7,6 +7,9 @@ import Button from "../Button";
 import TooltipTableContent from "../TooltipTableContent/index";
 import Tooltip from "./index";
 
+const fillerText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
 const Demo = (props: Args): JSX.Element => {
   const { title } = props;
   return (
@@ -48,8 +51,7 @@ Light.args = {
   arrow: true,
   placement: "top",
   sdsStyle: "light",
-  title:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  title: fillerText,
 };
 
 export const LightWide = Template.bind({});
@@ -58,8 +60,7 @@ LightWide.args = {
   arrow: true,
   placement: "top",
   sdsStyle: "light",
-  title:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  title: fillerText,
   width: "wide",
 };
 
@@ -105,13 +106,12 @@ const arrow = css`
 StyledArrow.args = {
   arrow: true,
   classes: { arrow },
-  title:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  title: fillerText,
 };
 
 const PlacementDemo = (): JSX.Element => {
   return (
-    <Box sx={{ width: 500, margin: 75 }}>
+    <Box sx={{ margin: 75, width: 500 }}>
       <Grid container spacing={8} justifyContent="center">
         <Grid item>
           <Tooltip title="Text" placement="top-start" arrow open>
@@ -192,6 +192,6 @@ const PlacementDemo = (): JSX.Element => {
   );
 };
 
-const PlacementTemplate: Story = (args) => <PlacementDemo />;
+const PlacementTemplate: Story = () => <PlacementDemo />;
 
 export const PlacementPreview = PlacementTemplate.bind({});
