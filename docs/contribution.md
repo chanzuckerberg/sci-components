@@ -108,6 +108,8 @@ This repo uses [Commitizen](https://github.com/commitizen/cz-cli) to ensure the
 commits follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/),
 so we can do semantic versioning properly
 
+NOTE: If your PR has more than one commit, please kindly make sure the first line of your commit reflects the most important commit type, so Semantic Release will trigger the right release version. More details [here](https://github.com/amannn/action-semantic-pull-request#action-semantic-pull-request)
+
 NOTE: Commitizen command is automatically triggered through [Husky](https://github.com/typicode/husky) when you write a commit message. However, you can always do `^ + C` to skip Commitizen if you're not ready to submit a PR!
 
 ## Major/Breaking Change Release
