@@ -460,7 +460,7 @@ export interface Corners {
   l: number;
 }
 
-export interface Spacings {
+export interface Spaces {
   default: number;
   xxxs: number;
   xxs: number;
@@ -471,6 +471,7 @@ export interface Spacings {
   xl: number;
   xxl: number;
 }
+export type Spacings = Spaces;
 
 export interface Color {
   600?: string;
