@@ -106,11 +106,17 @@ When it comes to styling Material UI's components, generally the following strat
 
 This repo uses [Jest](https://jestjs.io/) as it's main testing framework and [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) as middleware to reuse stories as tests. Tests are written for each component to test for functionality and integration. Currently, as components are small and independent, unit tests are the bulk of the test written. As more complex components are created, integration tests will become the bulk of the test coverage. Snapshots are captured to test for changes to the DOM.
 
-Snapshots should only be captured of the LivePreview story. Use the following to skip snapshots on Default:
+Snapshots should only be captured of the Test story. Use the following to skip snapshots on Default and LivePreview:
 
 ```tsx
 // index.stories.tsx
 Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+LivePreview.parameters = {
   snapshot: {
     skip: true,
   },
