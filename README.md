@@ -28,6 +28,8 @@ NOTE: Please make sure the peer dependencies are installed as well
 
 ### Peer Dependencies
 
+#### ⚠️ WARNING: Currently we require [Material UI v4](https://v4.mui.com/), even though Material UI v5 was released in September 2021 ⚠️
+
 In order to avoid installing multiple versions of the same library in the host project, which could cause bugs, the component library does **NOT** have its own dependencies.
 
 Therefore, please kindly ensure your project includes the following dependencies in your project's `package.json`:
@@ -142,7 +144,7 @@ To use the default theme, please do the following:
 
    Source: [src/core](src/core)
 
-   NOTE: Since most of the `czifui` components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://material-ui.com/) to learn about what you can do with the components
+   NOTE: Since most of the `czifui` components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) (**NOTE: We are still on MUI v4 in the short term**) to learn about what you can do with the components
 
 1. Mixins - Mixins defined by the design system
 
@@ -246,7 +248,6 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 ## Reporting Security Issues
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
-
 
 ## 2021 Plans
 
