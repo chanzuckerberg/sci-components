@@ -35,14 +35,14 @@ const RadioButton = (props: RadioProps): JSX.Element => {
       {...newProps}
       checkedIcon={
         <SvgIcon
-          fillContrast="white"
+          fillcontrast="white"
           component={IconRadioChecked}
           viewBox="0 0 16 16"
         />
       }
       icon={
         <SvgIcon
-          fillContrast="white"
+          fillcontrast="white"
           component={IconRadioUnChecked}
           viewBox="0 0 16 16"
         />

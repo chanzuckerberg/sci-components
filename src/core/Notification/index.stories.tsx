@@ -134,6 +134,12 @@ Default.args = {
   intent: "success",
 };
 
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 const storyRow = {
   alignItems: "flex-start",
   display: "flex",
@@ -176,3 +182,26 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <Notification
+      dismissDirection="left"
+      intent="info"
+      {...props}
+      data-testid="notification"
+    >
+      this is a notification
+    </Notification>
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});

@@ -31,7 +31,7 @@ LargePrimaryIconButton.args = {
   disabled: false,
   icon: (
     <SvgIcon
-      fillContrast="white"
+      fillcontrast="white"
       viewBox="0 0 32 32"
       component={IconInfoPanel}
     />
@@ -45,7 +45,7 @@ export const LargeSecondaryIconButton = Template.bind({});
 LargeSecondaryIconButton.args = {
   disabled: false,
   icon: (
-    <SvgIcon fillContrast="white" viewBox="0 0 32 32" component={IconFilters} />
+    <SvgIcon fillcontrast="white" viewBox="0 0 32 32" component={IconFilters} />
   ),
   sdsSize: "large",
   sdsType: "secondary",
@@ -57,7 +57,7 @@ SmallPrimaryIconButton.args = {
   disabled: false,
   icon: (
     <SvgIcon
-      fillContrast="white"
+      fillcontrast="white"
       viewBox="0 0 32 32"
       component={IconInfoPanel}
     />
@@ -71,7 +71,7 @@ export const SmallSecondaryIconButton = Template.bind({});
 SmallSecondaryIconButton.args = {
   disabled: false,
   icon: (
-    <SvgIcon fillContrast="white" viewBox="0 0 32 32" component={IconFilters} />
+    <SvgIcon fillcontrast="white" viewBox="0 0 32 32" component={IconFilters} />
   ),
   sdsSize: "small",
   sdsType: "secondary",
