@@ -76,6 +76,7 @@ const Notification = ({
                 onClick={handleClose}
                 sdsSize="small"
                 sdsType="secondary"
+                data-testid="notificationCloseButton"
               >
                 {" "}
                 <SvgIcon
