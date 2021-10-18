@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ReactComponent as IconLoadingAnimated } from "src/common/svgs/IconLoadingAnimated.svg";
+import { ReactComponent as IconLoadingAnimated } from "../../common/svgs/IconLoadingAnimated.svg";
 import {
   fontBody,
   fontCapsXxxxs,
