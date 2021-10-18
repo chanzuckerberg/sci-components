@@ -13,6 +13,7 @@ export { TooltipProps };
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
   const {
+    classes,
     inverted,
     sdsStyle = "light",
     subtitle,
@@ -60,15 +61,13 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
 
   const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
 
-  // (thuang): {...rest} needs to be first, otherwise it will overwrite latter
-  // props
   return (
     <RawTooltip
-      {...rest}
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
       interactive
       title={content}
+      {...rest}
     />
   );
 };

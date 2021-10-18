@@ -93,7 +93,6 @@ const alert = "Some values do not pass the selected filters.";
 export const Table = Template.bind({});
 
 Table.args = {
-  followCursor: true,
   title: <TooltipTableContent alert={alert} data={data} />,
 };
 
