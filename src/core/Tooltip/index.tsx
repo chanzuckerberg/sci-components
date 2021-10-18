@@ -33,6 +33,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
 
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
+    classes,
     inverted,
     sdsStyle,
     theme,
