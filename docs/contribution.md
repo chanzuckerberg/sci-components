@@ -125,6 +125,8 @@ LivePreview.parameters = {
 
 If snapshots needs to be updated (due to anticipated DOM changes), run `yarn test path/to/test/file -u `
 
+This repo will also be using Chromatic to run visual testing. Chromatic captures visual changes between components and also hosts live versions of components so designers and engineers can quickly and easily interact with them witout needin to spin up a local Storybook instance. More info on how to capture visual stories in Chromatic will be added in November.
+
 ## Commit Message
 
 This repo uses [Commitizen](https://github.com/commitizen/cz-cli) to ensure the
