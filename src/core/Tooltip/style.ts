@@ -15,7 +15,7 @@ export interface ExtraProps extends Props {
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
   subtitle?: string;
-  width?: "wide";
+  width?: "default" | "wide";
 }
 
 const dark = (props: ExtraProps): string => {
@@ -70,7 +70,7 @@ export const tooltipCss = (props: ExtraProps): string => {
 
   return css`
     ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
-    ${width === "wide" && wide()}
+    ${width === "wide" && sdsStyle === "light" && wide()}
 
     border: ${borders?.gray["300"]};
     box-shadow: ${shadows?.m};

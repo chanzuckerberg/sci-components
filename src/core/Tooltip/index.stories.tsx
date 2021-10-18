@@ -52,6 +52,7 @@ Light.args = {
   placement: "top",
   sdsStyle: "light",
   title: fillerText,
+  width: "default",
 };
 
 export const LightWide = Template.bind({});

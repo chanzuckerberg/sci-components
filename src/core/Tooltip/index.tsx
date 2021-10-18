@@ -18,7 +18,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     sdsStyle = "light",
     subtitle,
     title,
-    width,
+    width = "default",
     ...rest
   } = props;
 
@@ -26,6 +26,13 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     // eslint-disable-next-line no-console
     console.warn(
       "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead."
+    );
+  }
+
+  if (width === "wide" && sdsStyle === "dark") {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: The 'wide' width is only available for light tooltips."
     );
   }
 
