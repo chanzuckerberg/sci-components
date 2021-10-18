@@ -26,7 +26,6 @@ const Notification = ({
   children,
   dismissed,
   dismissDirection = "left",
-  extraContent,
   intent,
   onClose,
   buttonOnClick,
@@ -34,6 +33,10 @@ const Notification = ({
   ...rest
 }: ExposedNotificationProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
+
+  // remove prop used only for stories
+  const passedProps = { ...rest };
+  delete passedProps.extraContent;
 
   useEffect(() => {
     setHide(dismissed);
@@ -86,7 +89,7 @@ const Notification = ({
           icon={getIcon()}
           className="elevated"
           severity={intent}
-          {...rest}
+          {...passedProps}
         >
           {children}
           {buttonOnClick && (

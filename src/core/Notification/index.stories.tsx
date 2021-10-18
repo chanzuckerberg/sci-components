@@ -191,7 +191,7 @@ LivePreview.parameters = {
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
-    <Notification dismissDirection={"left"} intent={"info"} {...props}>
+    <Notification dismissDirection="left" intent="info" {...props}>
       this is a notification
     </Notification>
   );
