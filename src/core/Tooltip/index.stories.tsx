@@ -29,6 +29,39 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 export default {
+  argTypes: {
+    arrow: {
+      control: { type: "boolean" },
+    },
+    placement: {
+      control: { type: "select" },
+      options: [
+        "bottom-start",
+        "bottom",
+        "bottom-end",
+        "left-start",
+        "left",
+        "left-end",
+        "right-start",
+        "right",
+        "right-end",
+        "top-start",
+        "top",
+        "top-end",
+      ],
+    },
+    sdsStyle: {
+      control: { type: "radio" },
+      options: ["dark", "light"],
+    },
+    title: {
+      control: { type: "text" },
+    },
+    width: {
+      control: { type: "radio" },
+      options: ["default", "wide"],
+    },
+  },
   component: Demo,
   title: "Tooltip",
 };
@@ -43,6 +76,7 @@ Dark.args = {
   sdsStyle: "dark",
   subtitle: "dolor sit amet",
   title: "Lorem ipsum",
+  width: "default",
 };
 
 export const Light = Template.bind({});
