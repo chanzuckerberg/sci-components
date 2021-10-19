@@ -14,7 +14,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
       <SvgIcon
         viewBox="0 0 14 14"
         component={IconArrowDown}
-        fillContrast="white"
+        fillcontrast="white"
       />
     </StyledInputDropdown>
   );

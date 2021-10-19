@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true,
     node: true,
   },
   // Specifies the ESLint parser
@@ -27,7 +28,7 @@ module.exports = {
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "sonarjs"],
+  plugins: ["@typescript-eslint", "react", "sonarjs", "jest"],
   rules: {
     "@typescript-eslint/ban-types": [
       "error",
@@ -53,7 +54,11 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        devDependencies: ["**/*.stories.ts", "**/*.stories.tsx"],
+        devDependencies: [
+          "**/*.stories.ts",
+          "**/*.stories.tsx",
+          "**/*.test.tsx",
+        ],
       },
     ],
     "import/prefer-default-export": "off",
