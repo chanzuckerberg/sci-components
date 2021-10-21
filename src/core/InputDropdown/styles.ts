@@ -14,9 +14,11 @@ import {
 
 export interface InputDropdownProps extends Props {
   disabled?: boolean;
+  intent?: "default" | "error" | "warning";
   label: string;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   open?: boolean;
+  sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
 }
 
@@ -156,18 +158,19 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["intent", "sdsStage", "sdsStyle"];
+const doNotForwardProps = ["intent", "open", "sdsStage", "sdsStyle"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: InputDropdownProps) => {
-    const { disabled, intent, sdsStage, sdsStyle } = props;
+    const { disabled, intent, open, sdsStage, sdsStyle } = props;
 
     return css`
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
+      ${open && userInput(props)}
       ${sdsStage === "userInput" && userInput(props)}
       ${intent === "warning" && warning(props)}
       ${intent === "error" && error(props)}

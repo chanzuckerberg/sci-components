@@ -65,10 +65,11 @@ MultipleSelectWithSearch.args = {
   search: true,
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
+  /* stylelint-disable-next-line */
   paper: {
-    width: "200px",
     padding: "50px",
+    width: "200px",
   },
 }));
 
