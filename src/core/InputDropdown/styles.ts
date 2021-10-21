@@ -130,15 +130,33 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 
 const warning = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
+  const yellow = colors?.warning[400];
   return css`
-    border-color: ${colors?.warning[400]};
+    border-color: ${yellow};
+
+    &:hover {
+      border-color: ${yellow};
+    }
+
+    &:active {
+      border-color: ${yellow};
+    }
   `;
 };
 
 const error = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
+  const red = colors?.error[400];
   return css`
-    border-color: ${colors?.error[400]};
+    border-color: ${red};
+
+    &:hover {
+      border-color: ${red};
+    }
+
+    &:active {
+      border-color: ${red};
+    }
   `;
 };
 
