@@ -1,4 +1,5 @@
 import { Dialog } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
@@ -23,6 +24,14 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 const LABEL = "Click Target";
+
+export const Disabled = Template.bind({});
+
+Disabled.args = {
+  disabled: true,
+  label: LABEL,
+  onChange: noop,
+};
 
 export const SingleSelect = Template.bind({});
 
@@ -56,13 +65,23 @@ MultipleSelectWithSearch.args = {
   search: true,
 };
 
+const useStyles = makeStyles(() => ({
+  /* stylelint-disable-next-line */
+  paper: {
+    padding: "50px",
+    width: "200px",
+  },
+}));
+
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultMenuSelectOption | null>(
     GITHUB_LABELS[0]
   );
 
+  const classes = useStyles();
+
   return (
-    <Dialog open disableEnforceFocus>
+    <Dialog open disableEnforceFocus classes={{ paper: classes.paper }}>
       <Dropdown
         label="Dropdown"
         options={GITHUB_LABELS}

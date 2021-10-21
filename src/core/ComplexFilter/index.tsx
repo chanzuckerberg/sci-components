@@ -79,6 +79,7 @@ export default function ComplexFilter<
         <InputDropdownComponent
           label={label}
           onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
           {...InputDropdownProps}
         />
 

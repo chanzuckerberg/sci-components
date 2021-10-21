@@ -16,7 +16,7 @@ const Demo = (props: Args): JSX.Element => {
         disabled={disabled}
         label={label}
         onClick={onClick}
-        open={open}
+        sdsStage={open ? "userInput" : "default"}
         sdsStyle={sdsStyle}
         {...rest}
       />
@@ -33,6 +33,23 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
+export const Error = Template.bind({});
+
+Error.args = {
+  disabled: false,
+  intent: "error",
+  label: "Dropdown",
+  sdsStyle: "square",
+};
+
+export const Disabled = Template.bind({});
+
+Disabled.args = {
+  disabled: true,
+  label: "Dropdown",
+  sdsStyle: "square",
+};
+
 export const Minimal = Template.bind({});
 
 Minimal.args = {
@@ -45,6 +62,15 @@ export const Square = Template.bind({});
 
 Square.args = {
   disabled: false,
+  label: "Dropdown",
+  sdsStyle: "square",
+};
+
+export const Warning = Template.bind({});
+
+Warning.args = {
+  disabled: false,
+  intent: "warning",
   label: "Dropdown",
   sdsStyle: "square",
 };

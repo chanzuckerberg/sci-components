@@ -14,9 +14,11 @@ import {
 
 export interface InputDropdownProps extends Props {
   disabled?: boolean;
+  intent?: "default" | "error" | "warning";
   label: string;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   open?: boolean;
+  sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
 }
 
@@ -27,7 +29,9 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const spacings = getSpacings(props);
 
   return css`
+    border: 1px solid ${colors?.gray[400]};
     color: ${colors?.gray[500]};
+    cursor: pointer;
 
     .MuiButton-label {
       display: flex;
@@ -53,11 +57,18 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: unset;
-      color: ${colors?.gray[600]};
+      border-color: ${colors?.gray[500]};
+      color: ${palette?.text?.primary};
+
+      path {
+        fill: ${colors?.gray[600]};
+      }
     }
 
     &:active {
+      border-color: ${colors?.primary[400]};
       color: ${palette?.text?.primary};
+
       path {
         fill: ${colors?.primary[400]};
       }
@@ -66,18 +77,33 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const minimal = (props: InputDropdownProps): SerializedStyles => {
+  const colors = getColors(props);
+  const palette = getPalette(props);
+
   return css`
+    border: none;
+
     span {
       ${fontHeaderS(props)}
+    }
+
+    &:hover {
+      color: ${colors?.gray[600]};
+    }
+
+    &:active {
+      color: ${palette?.text?.primary};
     }
   `;
 };
 
 const square = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
+
   return css`
-    border: 1px solid currentColor;
     border-radius: ${corners?.m}px;
+    height: 34px;
+    min-width: 90px;
 
     .MuiButton-label {
       justify-content: space-between;
@@ -89,14 +115,47 @@ const square = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const isOpen = (props: InputDropdownProps): SerializedStyles => {
+const userInput = (props: InputDropdownProps): SerializedStyles => {
+  const colors = getColors(props);
   const palette = getPalette(props);
   return css`
     span {
       color: ${palette?.text?.primary};
     }
     path {
-      fill: ${palette?.text?.primary};
+      fill: ${colors?.gray[500]};
+    }
+  `;
+};
+
+const warning = (props: InputDropdownProps): SerializedStyles => {
+  const colors = getColors(props);
+  const yellow = colors?.warning[400];
+  return css`
+    border-color: ${yellow};
+
+    &:hover {
+      border-color: ${yellow};
+    }
+
+    &:active {
+      border-color: ${yellow};
+    }
+  `;
+};
+
+const error = (props: InputDropdownProps): SerializedStyles => {
+  const colors = getColors(props);
+  const red = colors?.error[400];
+  return css`
+    border-color: ${red};
+
+    &:hover {
+      border-color: ${red};
+    }
+
+    &:active {
+      border-color: ${red};
     }
   `;
 };
@@ -105,28 +164,34 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
+    cursor: default;
+
     span {
       color: ${colors?.gray[300]};
     }
+
     path {
       fill: ${colors?.gray[300]};
     }
   `;
 };
 
-const doNotForwardProps = ["sdsStyle"];
+const doNotForwardProps = ["intent", "open", "sdsStage", "sdsStyle"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: InputDropdownProps) => {
-    const { disabled, open, sdsStyle } = props;
+    const { disabled, intent, open, sdsStage, sdsStyle } = props;
 
     return css`
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
-      ${open && isOpen(props)}
+      ${open && userInput(props)}
+      ${sdsStage === "userInput" && userInput(props)}
+      ${intent === "warning" && warning(props)}
+      ${intent === "error" && error(props)}
       ${disabled && isDisabled(props)}
     `;
   }}
