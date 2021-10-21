@@ -50,6 +50,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   PopperComponent = StyledPopper,
   PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
+  ...rest
 }: DropdownProps<Multiple>): JSX.Element {
   const isControlled = propValue !== undefined;
 
@@ -80,7 +81,9 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       <InputDropdownComponent
         label={label}
         onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
         {...InputDropdownProps}
+        {...rest}
       />
       <PopperComponent open={open} anchorEl={anchorEl}>
         <MenuSelect
