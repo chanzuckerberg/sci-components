@@ -4,7 +4,7 @@ import {
   fontCapsXxxs,
   getColors,
   getCorners,
-  getSpacings,
+  getSpaces,
   Props,
 } from "../styles";
 
@@ -18,7 +18,7 @@ const ButtonBase = styled(Button, {
   box-shadow: none;
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       padding: ${spacings?.xs}px ${spacings?.l}px;
@@ -67,7 +67,7 @@ const MinimalButton = styled(Button, {
   },
 })`
   ${(props: IsAllCaps) => {
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       padding: ${spacings?.xxs}px 0;
@@ -134,7 +134,7 @@ export const StyledButton = styled(Button, {
     if (!props.isRounded) return ``;
 
     const corners = getCorners(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       border-radius: ${corners?.l}px;

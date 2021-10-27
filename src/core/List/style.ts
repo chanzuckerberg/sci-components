@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { List } from "@material-ui/core";
-import { getSpacings, Props } from "../styles";
+import { getSpaces, Props } from "../styles";
 
 export interface ExtraProps extends Props {
   component?: unknown;
@@ -28,7 +28,7 @@ export const StyledList = styled(List, {
 `;
 
 function propsToMarginBottom(props: ExtraProps) {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
     NonNullable<ExtraProps["marginBottom"]>,

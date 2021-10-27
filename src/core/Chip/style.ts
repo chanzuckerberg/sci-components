@@ -6,7 +6,7 @@ import {
   fontHeaderXs,
   getColors,
   getCorners,
-  getSpacings,
+  getSpaces,
   Props,
 } from "../styles";
 
@@ -17,7 +17,7 @@ export interface ExtraProps extends Props {
 }
 
 const small = (props: ExtraProps): SerializedStyles => {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   return css`
     height: ${spacings?.l}px;
@@ -31,7 +31,7 @@ const small = (props: ExtraProps): SerializedStyles => {
 };
 
 const medium = (props: ExtraProps): SerializedStyles => {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
   const colors = getColors(props);
 
   return css`

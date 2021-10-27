@@ -6,7 +6,7 @@ import {
   getColors,
   getCorners,
   getShadows,
-  getSpacings,
+  getSpaces,
 } from "../styles";
 
 export const Wrapper = styled.div`
@@ -25,7 +25,7 @@ export const StyledPopper = styled(Popper)`
     const colors = getColors(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       background-color: white;

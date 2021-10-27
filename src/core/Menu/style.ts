@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { Menu } from "@material-ui/core";
-import { getSpacings } from "../styles";
+import { getSpaces } from "../styles";
 
 export const StyledMenu = styled(Menu)`
   .MuiMenu-paper {
     ${(props) => {
-      const spacings = getSpacings(props);
+      const spacings = getSpaces(props);
 
       return `
         padding: ${spacings?.xs}px;

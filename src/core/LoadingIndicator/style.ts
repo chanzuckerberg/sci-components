@@ -7,7 +7,7 @@ import {
   getColors,
   getCorners,
   getIconSizes,
-  getSpacings,
+  getSpaces,
   getTypography,
   Props,
 } from "../styles";
@@ -31,7 +31,7 @@ const fontBodyS = fontBody("s");
 
 export const StyledText = styled.span`
   ${(props) => {
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const typography = getTypography(props);
 
     return `
@@ -87,7 +87,7 @@ export const StyledLoadingIndicator = styled("div", {
 })`
   ${(props: LoadingIndicatorProps) => {
     const { sdsStyle } = props;
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     const style = css`
       display: inline-flex;

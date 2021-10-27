@@ -6,7 +6,7 @@ import {
   getCorners,
   getIconSizes,
   getShadows,
-  getSpacings,
+  getSpaces,
 } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
 
@@ -16,7 +16,7 @@ export const StyledNotification = styled(Alert)`
   ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const shadows = getShadows(props);
     const { severity = "success" } = props;
     const borderColor = (colors && colors[severity][400]) || "black";
@@ -47,7 +47,7 @@ export const StyledNotification = styled(Alert)`
           fill: ${iconColor};
         }
       }
-      
+
       .MuiAlert-message {
         padding: 0;
         margin-right: ${spacings?.m}px;
@@ -70,12 +70,12 @@ export const StyledNotification = styled(Alert)`
         padding: 0;
         align-items: flex-start;
         margin-top: ${spacings?.xxs}px;
-          
+
         > button {
             padding: 0;
           }
         }
-      } 
+      }
     `;
   }}
 `;
