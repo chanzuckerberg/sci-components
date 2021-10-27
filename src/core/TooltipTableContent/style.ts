@@ -6,7 +6,7 @@ import {
   fontCapsXxxxs,
   fontHeaderXs,
   getColors,
-  getSpacings,
+  getSpaces,
   Props,
 } from "../styles";
 
@@ -42,7 +42,7 @@ export const Section = styled.div`
 
   ${(props: SectionProps) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       &:not(:last-child) {
@@ -63,7 +63,7 @@ export const SectionLabel = styled.div`
 
   ${(props: SectionProps) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       margin-bottom: ${spacings?.m}px;

@@ -11,7 +11,7 @@ import { AppThemeOptions } from "../styles/common/defaultTheme";
 import {
   getColors,
   getPalette,
-  getSpacings,
+  getSpaces,
 } from "../styles/common/selectors/theme";
 
 // (thuang): https://github.com/mui-org/material-ui/issues/17454#issuecomment-647132303
@@ -81,7 +81,7 @@ export default Tabs;
 export const Tab = styled(RawTab)`
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const palette = getPalette(props);
 
     return `

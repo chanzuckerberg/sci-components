@@ -8,7 +8,7 @@ import {
   getCorners,
   getIconSizes,
   getPalette,
-  getSpacings,
+  getSpaces,
   Props,
 } from "../styles";
 
@@ -26,7 +26,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const iconSizes = getIconSizes(props);
   const palette = getPalette(props);
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   return css`
     border: 1px solid ${colors?.gray[400]};

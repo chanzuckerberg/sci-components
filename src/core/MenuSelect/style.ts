@@ -3,7 +3,7 @@ import { InputBase } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { Autocomplete } from "@material-ui/lab";
 import MenuItem from "../MenuItem";
-import { getColors, getCorners, getSpacings, Props } from "../styles";
+import { getColors, getCorners, getSpaces, Props } from "../styles";
 
 export const StyledMenuItem = styled(MenuItem)`
   width: 100%;
@@ -36,7 +36,7 @@ export const InputBaseWrapper = styled.div`
       `;
     }
 
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const corners = getCorners(props);
     const colors = getColors(props);
 

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { ListSubheader } from "@material-ui/core";
-import { fontHeader, getSpacings } from "../styles";
+import { fontHeader, getSpaces } from "../styles";
 
 const fontHeaderM = fontHeader("m");
 
@@ -12,7 +12,7 @@ export const StyledListSubheader = styled(ListSubheader)`
     color: unset;
 
     ${(props) => {
-      const spacings = getSpacings(props);
+      const spacings = getSpaces(props);
 
       return `
         margin-bottom: ${spacings?.l}px;

@@ -7,7 +7,7 @@ import {
   getFontWeights,
   getIconSizes,
   getPalette,
-  getSpacings,
+  getSpaces,
 } from "../styles/common/selectors/theme";
 
 const fontBodyXs = fontBody("xs");
@@ -19,7 +19,7 @@ export const StyledMenuItem = styled(MenuItem)`
     const { selected } = props;
     const colors = getColors(props);
     const fontWeights = getFontWeights(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     const primary = colors?.primary[400];
 
@@ -107,7 +107,7 @@ export const StyledCheck = styled(Check, {
     const { selected } = props;
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
 
     return `
       color: ${selected ? colors?.primary[400] : "transparent"};

@@ -154,14 +154,14 @@ To use the default theme, please do the following:
 
 1. Selectors - Helper functions that pick out theme variables for you
 
-   E.g., `getSpacings`, `getColors`, `getCorners`, `getFontWeights`
+   E.g., `getSpaces`, `getColors`, `getCorners`, `getFontWeights`
 
    Source: [src/core/styles/common/selectors](src/core/styles/common/selectors)
 
 ### Example
 
 ```ts
-    import { fontBodyM, getColors, getSpacings } from "czifui";
+    import { fontBodyM, getColors, getSpaces } from "czifui";
 
     export const Foo = styled.div`
       // This is the design system's font body medium mixin we import from czifui
@@ -175,8 +175,8 @@ To use the default theme, please do the following:
       ${(props) => {
         // getColors() is a selector that picks out colors from the theme object
         const colors = getColors(props);
-        // getSpacings() is a selector that picks out spacings from the theme object
-        const spacings = getSpacings(props);
+        // getSpaces() is a selector that picks out spacings from the theme object
+        const spacings = getSpaces(props);
 
         return `
           background-color: ${colors?.gray[500]};

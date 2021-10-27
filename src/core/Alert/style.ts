@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { Alert } from "@material-ui/lab";
-import { getColors, getShadows, getSpacings } from "../styles";
+import { getColors, getShadows, getSpaces } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
 
 export const StyledAlert = styled(Alert)`
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const shadows = getShadows(props);
     const { severity = "primary" } = props;
     const borderColor = (colors && colors[severity][400]) || "black";

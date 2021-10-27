@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButton } from "@material-ui/core";
-import { getColors, getIconSizes, getSpacings, Props } from "../styles";
+import { getColors, getIconSizes, getSpaces, Props } from "../styles";
 
 export interface ExtraProps extends Props {
   active?: boolean;
@@ -79,7 +79,7 @@ const small = (props: ExtraProps): SerializedStyles => {
 
 const large = (props: ExtraProps): SerializedStyles => {
   const { sdsType } = props;
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`

@@ -5,7 +5,7 @@ import {
   getColors,
   getCorners,
   getIconSizes,
-  getSpacings,
+  getSpaces,
 } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
 
@@ -15,7 +15,7 @@ export const StyledCallout = styled(Alert)`
   ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpacings(props);
+    const spacings = getSpaces(props);
     const { severity = "success" } = props;
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
@@ -37,7 +37,7 @@ export const StyledCallout = styled(Alert)`
           fill: ${iconColor};
         }
       }
-      
+
       .MuiAlert-message {
         padding: 0;
         margin-right: ${spacings?.m}px;
@@ -52,7 +52,7 @@ export const StyledCallout = styled(Alert)`
         > button {
           padding: 0;
         }
-      } 
+      }
     `;
   }}
 `;

@@ -2,7 +2,7 @@ import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ListItem } from "@material-ui/core";
 import { TypographyOptions } from "@material-ui/core/styles/createTypography";
-import { fontBody, getFontWeights, getSpacings, Props } from "../styles";
+import { fontBody, getFontWeights, getSpaces, Props } from "../styles";
 
 const fontBodyL = fontBody("l");
 const fontBodyM = fontBody("m");
@@ -48,7 +48,7 @@ export const StyledListItem = styled(ListItem, {
       font-weight: 600;
 
       ${(props) => {
-        const spacings = getSpacings(props);
+        const spacings = getSpaces(props);
         const { ordered } = props;
 
         return `
@@ -79,7 +79,7 @@ function propsToFontBody(props: ExtraProps) {
 }
 
 function propsToMarginBottom(props: ExtraProps) {
-  const spacings = getSpacings(props);
+  const spacings = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
     NonNullable<ExtraProps["marginBottom"]>,
