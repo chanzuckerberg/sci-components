@@ -90,12 +90,15 @@ To use the default theme, please do the following:
 1. Import the default theme object and use it in Material UI's `<ThemeProvider />`:
 
    ```tsx
-     import { defaultTheme } from '@chanzuckerberg/czifui/core/styles`
+     import { defaultTheme } from "czifui";
      import { ThemeProvider } from "@material-ui/core/styles";
+      import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-     <ThemeProvider theme={defaultTheme}>
-       <YourApp />
-     </ThemeProvider>
+    <EmotionThemeProvider theme={defaultTheme}>
+      <ThemeProvider theme={defaultTheme}>
+        <YourApp />
+      </ThemeProvider>
+    </EmotionThemeProvider>
    ```
 
 1. Optional: If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
@@ -104,7 +107,7 @@ To use the default theme, please do the following:
 
 ```tsx
   import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-  import { defaultAppTheme, makeThemeOptions } from '@chanzuckerberg/czifui/core/styles`
+  import { defaultAppTheme, makeThemeOptions } from "czifui";
   import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
   import createTheme from "@material-ui/core/styles/createTheme";
 
