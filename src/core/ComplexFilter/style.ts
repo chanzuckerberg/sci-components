@@ -35,6 +35,7 @@ export const StyledPopper = styled(Popper)`
       color: ${colors?.gray[500]};
       padding: ${spacings?.s}px;
       min-width: 244px;
+      z-index: 1400; // allows the dropdown to be used in modals
     `;
   }}
 `;
