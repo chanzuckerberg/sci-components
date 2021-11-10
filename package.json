@@ -98,7 +98,10 @@
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/common/styles-dictionary/css/variables.css",
+    "src/common/styles-dictionary/scss/_variables.scss",
+    "src/common/styles-dictionary/typescript"
   ],
   "description": "2021 Create-a-thon Science Initiative Component Library",
   "bugs": {
