@@ -1,0 +1,39 @@
+{
+  "source": ["src/common/styles-dictionary/*.json"],
+  "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "src/common/styles-dictionary/scss/",
+      "files": [
+        {
+          "destination": "_variables.scss",
+          "format": "scss/variables"
+        }
+      ]
+    },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/common/styles-dictionary/css/",
+      "files": [
+        {
+          "destination": "variables.css",
+          "format": "css/variables"
+        }
+      ]
+    },
+    "ts": {
+      "transformGroup": "js",
+      "buildPath": "src/common/styles-dictionary/typescript/",
+      "files": [
+        {
+          "destination": "variables.js",
+          "format": "javascript/es6"
+        },
+        {
+          "destination": "variables.d.ts",
+          "format": "typescript/es6-declarations"
+        }
+      ]
+    }
+  }
+}

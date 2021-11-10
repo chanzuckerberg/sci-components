@@ -1,0 +1,369 @@
+{
+  "sds": {
+    "font": {
+      "body": {
+        "xxxs": {
+          "button": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "13px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "20px" },
+            "font-weight": { "value": "600" },
+            "text=transform": { "value": "none" }
+          },
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "11px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "16px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "11px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "16px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "12px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "18px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "12px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "18px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "xs": {
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "13px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "20px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "13px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "20px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "s": {
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "14px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "24px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "14px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "24px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "m": {
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "16px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "26px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "16px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "26px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "l": {
+          "400": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+            "font-size": { "value": "18px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "28px" },
+            "font-weight": { "value": "400" },
+            "color": { "value": "black" }
+          },
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "18px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "28px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        }
+      },
+      "caps": {
+        "xxxxs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "10px" },
+            "letter-spacing": { "value": "1px" },
+            "line-height": { "value": "14px" },
+            "font-weight": { "value": "600" },
+            "text-transform": { "value": " uppercase" },
+            "color": { "value": "black" }
+          }
+        },
+        "xxxs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "11px" },
+            "letter-spacing": { "value": "1px" },
+            "line-height": { "value": "16px" },
+            "font-weight": { "value": "600" },
+            "text-transform": { "value": " uppercase" },
+            "color": { "value": "black" }
+          }
+        },
+        "xxs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "12px" },
+            "letter-spacing": { "value": "1px" },
+            "line-height": { "value": "18px" },
+            "font-weight": { "value": "600" },
+            "text-transform": { "value": " uppercase" },
+            "color": { "value": "black" }
+          }
+        }
+      },
+      "header": {
+        "xxxs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "11px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "16px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "xxs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "12px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "18px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "xs": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "13px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "18px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "s": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "14px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "20px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "m": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "16px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "22px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "l": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "18px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "24px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+
+        "xl": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "22px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "30px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        },
+        "xxl": {
+          "600": {
+            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
+            "font-size": { "value": "26px" },
+            "letter-spacing": { "value": "0.3px" },
+            "line-height": { "value": "34px" },
+            "font-weight": { "value": "600" },
+            "color": { "value": "black" }
+          }
+        }
+      }
+    },
+    "color": {
+      "beta": {
+        "100": { "value": "#f4f0f9" },
+        "200": { "value": "#f0ebf6" },
+        "400": { "value": "#7a41ce" },
+        "600": { "value": "#693bac" },
+        "100 Overlay": { "value": "#ece8f1" }
+      },
+      "error": {
+        "100": { "value": "#fef2f2" },
+        "200": { "value": "#f8e8e8" },
+        "400": { "value": "#dc132c" },
+        "600": { "value": "#b70016" },
+        "100 Overlay": { "value": "#f6eaea" }
+      },
+      "gray": {
+        "100": { "value": "#f8f8f8" },
+        "200": { "value": "#eaeaea" },
+        "300": { "value": "#cccccc" },
+        "400": { "value": "#999999" },
+        "500": { "value": "#767676" },
+        "600": { "value": "#545454" },
+        "Black": { "value": "#000000" },
+        "White": { "value": "#ffffff" }
+      },
+      "info": {
+        "100": { "value": "#eff2fc" },
+        "200": { "value": "#ebeffc" },
+        "400": { "value": "#3867fa" },
+        "600": { "value": "#223f9c" },
+        "100 Overlay": { "value": "#e7eaf4" }
+      },
+      "primary": {
+        "100": { "value": "#f8f9fe" },
+        "200": { "value": "#eff2fc" },
+        "300": { "value": "#a9bdfc" },
+        "400": { "value": "#3867fa" },
+        "500": { "value": "#2b52cd" },
+        "600": { "value": "#223f9c" }
+      },
+      "secondary": { "400": { "value": "#9bc74e" } },
+      "success": {
+        "100": { "value": "#ecf5f0" },
+        "200": { "value": "#e6f7ed" },
+        "400": { "value": "#3cb371" },
+        "600": { "value": "#1c7f48" },
+        "100 Overlay": { "value": "#e4ede8" }
+      },
+      "warning": {
+        "100": { "value": "#fcf6ec" },
+        "200": { "value": "#fff3e1" },
+        "400": { "value": "#f5a623" },
+        "600": { "value": "#946314" },
+        "100 Overlay": { "value": "#f4eee4" }
+      }
+    },
+    "drop-shadows": {
+      "shadowL": { "value": "0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3)" },
+      "shadowM": {
+        "value": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15),0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)"
+      },
+      "shadowS": { "value": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)" }
+    },
+    "borders": {
+      "error": {
+        "400": { "value": "1px solid {sds.color.error.400.value}" }
+      },
+      "gray": {
+        "100": { "value": "1px solid {sds.color.gray.100.value}" },
+        "200": { "value": "1px solid {sds.color.gray.200.value}" },
+        "300": { "value": "1px solid {sds.color.gray.300.value}" },
+        "400": { "value": "1px solid {sds.color.gray.400.value}" },
+        "500": { "value": "1px solid {sds.color.gray.500.value}" },
+        "dashed": { "value": "2px dashed {sds.color.gray.400.value}" }
+      },
+      "primary": {
+        "400": { "value": "1px solid {sds.color.primary.400.value}" },
+        "500": { "value": "1px solid {sds.color.primary.500.value}" },
+        "600": { "value": "1px solid {sds.color.primary.600.value}" },
+        "dashed": { "value": "2px dashed {sds.color.primary.400.value}" }
+      },
+      "success": {
+        "400": { "value": "1px solid {sds.color.success.400.value}" }
+      },
+      "warning": {
+        "400": { "value": "1px solid {sds.color.warning.400.value}" }
+      }
+    },
+    "spaces": {
+      "default": { "value": "10px" },
+      "xxxs": { "value": "2px" },
+      "xxs": { "value": "4px" },
+      "xs": { "value": "6px" },
+      "s": { "value": "8px" },
+      "m": { "value": "10px" },
+      "l": { "value": "14px" },
+      "xl": { "value": "22px" },
+      "xxl": { "value": "38px" }
+    },
+    "iconSizes": {
+      "input": {
+        "height": {
+          "value": "16px",
+          "comment": "for use with input icons only"
+        },
+        "width": {
+          "value": "16px",
+          "comment": "for use with input icons only"
+        }
+      },
+      "xs": {
+        "height": { "value": "10px" },
+        "width": { "value": "10px" }
+      },
+      "s": {
+        "height": { "value": "14px" },
+        "width": { "value": "14px" }
+      },
+      "l": {
+        "height": { "value": "22px" },
+        "width": { "value": "22px" }
+      },
+      "xl": {
+        "height": { "value": "32px" },
+        "width": { "value": "32px" }
+      }
+    }
+  }
+}
