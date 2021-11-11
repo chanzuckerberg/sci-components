@@ -20,20 +20,6 @@
           "format": "css/variables"
         }
       ]
-    },
-    "ts": {
-      "transformGroup": "js",
-      "buildPath": "src/common/styles-dictionary/typescript/",
-      "files": [
-        {
-          "destination": "variables.js",
-          "format": "javascript/es6"
-        },
-        {
-          "destination": "variables.d.ts",
-          "format": "typescript/es6-declarations"
-        }
-      ]
     }
   }
 }
