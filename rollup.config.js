@@ -3,6 +3,8 @@ import ts from "@wessberg/rollup-plugin-ts";
 import del from "rollup-plugin-delete";
 import pkg from "./package.json";
 import url from "@rollup/plugin-url";
+import css from "rollup-plugin-css-only";
+import bundleScss from "rollup-plugin-bundle-scss";
 
 const config = [
   {
@@ -29,6 +31,8 @@ const config = [
       url(),
       svgr(),
       ts(),
+      css({ output: "variables.css" }),
+      bundleScss({ output: "variables.scss" }),
     ],
   },
 ];
