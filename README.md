@@ -175,7 +175,10 @@ These stylesheets can be imported into the index.js file of your application to 
 
 import React from "react";
 import ReactDOM from "react-dom";
+// If you need css
 import "czifui/dist/variables.css";
+// If you need scss
+import "czifui/dist/_variables.scss";
 import "./index.css";
 import App from "./App";
 ```
