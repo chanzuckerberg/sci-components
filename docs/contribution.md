@@ -102,6 +102,19 @@ When it comes to styling Material UI's components, generally the following strat
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
 
+1. If you are modifying or adding a new Base (colors, borders, typogrpahy, etc), be sure to add them to the [style-dictionary.json](src/common/styles-dictionary/style-dictionary.json) in addition to updating the [defaultheme.ts](src/core/styles/common/defaultTheme.ts). Run `sd-build` before committing your changes. `czifui` uses [style-dictionary](https://amzn.github.io/style-dictionary/#/) to generate css and scss variable stylesheets. This allows projects that use css modules or scss to still benefit from our standard styles. The `style-dictionary.json` is the source of truth for these css & scss stylesheets.
+
+New additions to the `style-dictionary.json` should be nested accordingly:
+
+```json
+{
+  "sds": { // this prefixes all variables from our package to increase specificity
+    "category": { // this is what the new variable is at a high level (font, color, space)
+      "type": { // this is the main grouping within the category (body, success, size)
+```
+
+All tokens must have a `value` and can optionally have a `comment`, which can give insight into how the value should be used.
+
 ## Testing
 
 This repo uses [Jest](https://jestjs.io/) as it's main testing framework and [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) as middleware to reuse stories as tests. Tests are written for each component to test for functionality and integration. Currently, as components are small and independent, unit tests are the bulk of the test written. As more complex components are created, integration tests will become the bulk of the test coverage. Snapshots are captured to test for changes to the DOM.
