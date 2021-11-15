@@ -84,7 +84,7 @@
     "react-dom": "^17.0.1"
   },
   "scripts": {
-    "build": "sd-build && rollup -c",
+    "build": "yarn sd-build && rollup -c",
     "build-watch": "rollup -c -w",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build",
