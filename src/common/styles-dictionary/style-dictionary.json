@@ -3,14 +3,6 @@
     "font": {
       "body": {
         "xxxs": {
-          "button": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "13px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "20px" },
-            "font-weight": { "value": "600" },
-            "text=transform": { "value": "none" }
-          },
           "400": {
             "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
             "font-size": { "value": "11px" },
