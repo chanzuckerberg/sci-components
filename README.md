@@ -139,7 +139,7 @@ To use the default theme, please do the following:
 
 ## How to Use
 
-`czifui` comes with three main exports that help you build your app following the design system:
+`czifui` comes with four main exports that help you build your app following the design system:
 
 1. Components - Components that implement the design system
 
@@ -160,6 +160,28 @@ To use the default theme, please do the following:
    E.g., `getSpaces`, `getColors`, `getCorners`, `getFontWeights`
 
    Source: [src/core/styles/common/selectors](src/core/styles/common/selectors)
+
+1. CSS & SCSS Variables
+
+E.g., CSS: `--sds-color-beta-400`, `--sds-spaces-m`; SCSS: `$sds-color-beta-400`, `$sds-spaces-m`
+
+Source: [src/common/styles-dictionary](src/common/styles-dictionary)
+
+These stylesheets can be imported into the index.js file of your application to make use of czifui's standard styles in projects that use SCSS or CSS modules to style the front end:
+
+```js
+// example using create-react-app structure
+// index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+// If you need css
+import "czifui/dist/variables.css";
+// If you need scss
+import "czifui/dist/_variables.scss";
+import "./index.css";
+import App from "./App";
+```
 
 ### Example
 
