@@ -1,0 +1,25 @@
+{
+  "source": ["src/common/styles-dictionary/*.json"],
+  "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "src/common/styles-dictionary/scss/",
+      "files": [
+        {
+          "destination": "_variables.scss",
+          "format": "scss/variables"
+        }
+      ]
+    },
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/common/styles-dictionary/css/",
+      "files": [
+        {
+          "destination": "variables.css",
+          "format": "css/variables"
+        }
+      ]
+    }
+  }
+}
