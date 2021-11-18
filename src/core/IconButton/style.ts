@@ -6,13 +6,15 @@ import { getColors, getIconSizes, getSpaces, Props } from "../styles";
 export interface ExtraProps extends Props {
   active?: boolean;
   disabled?: boolean;
-  sdsSize?: "small" | "large";
-  sdsType?: "primary" | "secondary";
+  sdsSize?: "small" | "medium" | "large";
+  sdsType?: "primary" | "secondary" | "tertiary";
 }
 
 const isActive = (props: ExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
+
+  if (sdsType === "tertiary") return;
 
   return css`
     color: ${sdsType === "primary"
@@ -62,6 +64,23 @@ const secondary = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
+const tertiary = (props: ExtraProps): SerializedStyles => {
+  const colors = getColors(props);
+
+  return css`
+    color: ${colors?.gray[500]};
+
+    &:hover {
+      background: none;
+      color: black;
+    }
+
+    &:active {
+      color: black;
+    }
+  `;
+};
+
 const small = (props: ExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
@@ -73,6 +92,17 @@ const small = (props: ExtraProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
+    }
+  `;
+};
+
+const medium = (props: ExtraProps): SerializedStyles => {
+  const iconSizes = getIconSizes(props);
+
+  return css`
+    .MuiSvgIcon-root {
+      height: ${iconSizes?.l.height}px;
+      width: ${iconSizes?.l.width}px;
     }
   `;
 };
@@ -103,9 +133,11 @@ export const StyledIconButton = styled(IconButton, {
     return css`
       ${sdsType === "primary" && primary(props)}
       ${sdsType === "secondary" && secondary(props)}
+      ${sdsType === "tertiary" && tertiary(props)}
       ${active && isActive(props)}
       ${disabled && isDisabled(props)}
       ${sdsSize === "small" && small(props)}
+      ${sdsSize === "medium" && medium(props)}
       ${sdsSize === "large" && large(props)}
     `;
   }}
