@@ -14,16 +14,17 @@ const isActive = (props: ExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
 
-  if (sdsType === "tertiary") return;
-
   return css`
-    color: ${sdsType === "primary"
-      ? colors?.primary[600]
-      : colors?.primary[400]};
+    ${sdsType !== "tertiary" &&
+    `
+      color: ${
+        sdsType === "primary" ? colors?.primary[600] : colors?.primary[400]
+      };
 
-    &:hover {
-      color: ${colors?.primary[600]};
-    }
+      &:hover {
+        color: ${colors?.primary[600]};
+      }
+    `}
   `;
 };
 
