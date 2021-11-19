@@ -91,14 +91,16 @@ To use the default theme, please do the following:
 
    ```tsx
      import { defaultTheme } from "czifui";
-     import { ThemeProvider } from "@material-ui/core/styles";
+     import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
       import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-    <EmotionThemeProvider theme={defaultTheme}>
-      <ThemeProvider theme={defaultTheme}>
-        <YourApp />
-      </ThemeProvider>
-    </EmotionThemeProvider>
+    <StylesProvider injectFirst>
+      <EmotionThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={defaultTheme}>
+          <YourApp />
+        </ThemeProvider>
+      </EmotionThemeProvider>
+    </StylesProvider>
    ```
 
 1. Optional: If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
