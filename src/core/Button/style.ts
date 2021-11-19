@@ -24,11 +24,15 @@ const ButtonBase = styled(Button, {
       padding: ${spacings?.xs}px ${spacings?.l}px;
       min-width: 120px;
       height: 34px;
-      &:hover {
+      &:hover, &:focus {
         color: white;
         background-color: ${colors?.primary[500]};
         border: none;
         box-shadow: none;
+      }
+      &:focus {
+        outline: 5px auto Highlight;
+        outline: 5px auto -webkit-focus-ring-color;
       }
       &:active {
         color: white;
@@ -80,8 +84,12 @@ const MinimalButton = styled(Button, {
     }
     return ``;
   }}
-  &:hover {
+  &:hover, &:focus {
     background-color: transparent;
+  }
+  &:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
   }
 `;
 
@@ -90,7 +98,7 @@ export const PrimaryMinimalButton = styled(MinimalButton)`
     const colors = getColors(props);
 
     return `
-      &:hover {
+      &:hover, &:focus {
         color: ${colors?.primary[500]};
       }
       &:active {
@@ -108,9 +116,10 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
     const colors = getColors(props);
 
     return `
-      &:hover {
+      &:hover, &:focus {
         color: ${colors?.gray[500]};
       }
+      
       &:active {
         color: ${colors?.gray[600]};
       }
@@ -130,6 +139,10 @@ export const StyledButton = styled(Button, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
+  &:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
   ${(props: IsRounded) => {
     if (!props.isRounded) return ``;
 
