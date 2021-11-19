@@ -5,6 +5,7 @@ import {
   AutocompleteRenderOptionState,
 } from "@material-ui/lab";
 import React from "react";
+import { noop } from "src/common/utils";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
@@ -21,6 +22,7 @@ export interface DefaultMenuSelectOption {
 
 interface ExtraProps extends StyleProps {
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
+  onInputChange?: (event: React.SyntheticEvent) => void;
 }
 
 type CustomAutocompleteProps<
@@ -57,6 +59,7 @@ export default function MenuSelect<
     disableCloseOnSelect = multiple,
     noOptionsText = "No options",
     search = false,
+    onInputChange = noop,
   } = props;
 
   return (
@@ -74,6 +77,7 @@ export default function MenuSelect<
             placeholder="Search"
             ref={params.InputProps.ref}
             inputProps={params.inputProps}
+            onChange={onInputChange}
             autoFocus
             endAdornment={
               <InputAdornment position="end">
