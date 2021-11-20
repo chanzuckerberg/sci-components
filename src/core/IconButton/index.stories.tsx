@@ -41,6 +41,24 @@ LargeSecondaryIconButton.args = {
   sdsType: "secondary",
 };
 
+export const LargeTertiaryIconButton = Template.bind({});
+
+LargeTertiaryIconButton.args = {
+  disabled: false,
+  icon: <Icon sdsIcon="xMark" sdsSize="l" />,
+  sdsSize: "large",
+  sdsType: "tertiary",
+};
+
+export const MediumTertiaryIconButton = Template.bind({});
+
+MediumTertiaryIconButton.args = {
+  disabled: false,
+  icon: <Icon sdsIcon="xMark" sdsSize="l" />,
+  sdsSize: "medium",
+  sdsType: "tertiary",
+};
+
 export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
@@ -57,4 +75,13 @@ SmallSecondaryIconButton.args = {
   icon: <Icon sdsIcon="slidersHorizontal" sdsSize="xl" />,
   sdsSize: "small",
   sdsType: "secondary",
+};
+
+export const SmallTertiaryIconButton = Template.bind({});
+
+SmallTertiaryIconButton.args = {
+  disabled: false,
+  icon: <Icon sdsIcon="xMark" sdsSize="l" />,
+  sdsSize: "small",
+  sdsType: "tertiary",
 };

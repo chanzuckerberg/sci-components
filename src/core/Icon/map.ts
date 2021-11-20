@@ -405,11 +405,6 @@ const iconMap: Props = {
     largeIcon: IconXMarkLarge,
     smallIcon: IconXMarkSmall,
   },
-  // xMarkCircle: {
-  //   availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
-  //   largeIcon: null,
-  //   smallIcon: IconXMarkCircleSmall,
-  // },
 };
 
 export { iconMap };
