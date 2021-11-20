@@ -10,12 +10,20 @@ exports[`<Notification /> Test story renders snapshot 1`] = `
   <div
     class="MuiAlert-icon"
   >
-    <svg
-      data-jest-file-name="IconInfo.svg"
-      data-jest-svg-name="IconInfo"
-      data-testid="IconInfo"
-      fillcontrast="white"
-    />
+    <div
+      class="css-1y0u8yq"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root"
+        data-jest-file-name="IconInfoCircleLarge.svg"
+        data-jest-svg-name="IconInfoCircleLarge"
+        data-testid="IconInfoCircleLarge"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 32 32"
+      />
+    </div>
   </div>
   <div
     class="MuiAlert-message"
