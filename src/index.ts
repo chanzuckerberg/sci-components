@@ -15,6 +15,8 @@ export * from "./core/ComplexFilter";
 export { default as ComplexFilter } from "./core/ComplexFilter";
 export * from "./core/Dropdown";
 export { default as Dropdown } from "./core/Dropdown";
+export * from "./core/Icon";
+export { default as Icon } from "./core/Icon";
 export * from "./core/IconButton";
 export { default as IconButton } from "./core/IconButton";
 export * from "./core/InputDropdown";
