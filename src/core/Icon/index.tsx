@@ -8,10 +8,7 @@ interface Props {
   sdsSize: IconSizes;
 }
 
-const SMALL_ICON_SIZES = [IconSizes.EXTRA_SMALL, IconSizes.SMALL];
-const LARGE_ICON_SIZES = [IconSizes.LARGE, IconSizes.EXTRA_LARGE];
-
-const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element => {
+const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element | null => {
   const icon = iconMap[sdsIcon] ?? {};
   const { availableSizes, largeIcon, smallIcon } = icon;
 
@@ -25,7 +22,7 @@ const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element => {
     return null;
   }
 
-  if (SMALL_ICON_SIZES.includes(sdsSize) && smallIcon) {
+  if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
       <StyledIcon sdsSize={sdsSize}>
         <SvgIcon
@@ -36,8 +33,7 @@ const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element => {
       </StyledIcon>
     );
   }
-
-  if (LARGE_ICON_SIZES.includes(sdsSize) && largeIcon) {
+  if ((sdsSize === "l" || sdsSize === "xl") && largeIcon) {
     return (
       <StyledIcon sdsSize={sdsSize}>
         <SvgIcon

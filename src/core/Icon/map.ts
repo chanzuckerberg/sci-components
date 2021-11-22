@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
 import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
 import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
@@ -64,344 +65,269 @@ import { ReactComponent as IconTreeVerticalSmall } from "../../common/svgs/IconT
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
-export enum IconSizes {
-  EXTRA_SMALL = "xs",
-  SMALL = "s",
-  LARGE = "l",
-  EXTRA_LARGE = "xl",
-}
+export type IconSizes = "xs" | "s" | "l" | "xl";
 
 interface Props {
   [key: string]: {
-    availableSizes: IconSizes;
-    largeIcon: string;
-    smallIcon: string;
+    availableSizes: IconSizes[];
+    largeIcon: FC<CustomSVGProps> | null;
+    smallIcon: FC<CustomSVGProps> | null;
   };
 }
 
 const iconMap: Props = {
   barChartHorizontal3: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartHorizontal3Small,
   },
   barChartVertical3: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartVertical3Small,
   },
   barChartVertical4: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartVertical4Small,
   },
   check: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconCheckSmall,
   },
   checkCircle: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconCheckCircleLarge,
     smallIcon: IconCheckCircleSmall,
   },
   chevronDown: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronDownLarge,
     smallIcon: IconChevronDownSmall,
   },
   chevronRight: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
   },
   chevronUp: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
   },
   copy: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
   },
   download: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconDownloadLarge,
     smallIcon: IconDownloadSmall,
   },
   edit: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconEditSmall,
   },
   exclamationMarkCircle: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconExclamationMarkCircleLarge,
     smallIcon: IconExclamationMarkCircleSmall,
   },
   eyeOpen: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconEyeOpenSmall,
   },
   flask: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconFlaskLarge,
     smallIcon: null,
   },
   flaskPrivate: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconFlaskPrivateLarge,
     smallIcon: null,
   },
   flaskPublic: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconFlaskPublicLarge,
     smallIcon: null,
   },
   globe: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconGlobeSmall,
   },
   grid: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconGridLarge,
     smallIcon: null,
   },
   gridPrivate: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconGridPrivateLarge,
     smallIcon: null,
   },
   gridPublic: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconGridPublicLarge,
     smallIcon: null,
   },
   infoCircle: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconInfoCircleLarge,
     smallIcon: IconInfoCircleSmall,
   },
   infoSpeechBubble: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconInfoSpeechBubbleLarge,
     smallIcon: null,
   },
   lightBulb: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLightBulbSmall,
   },
   linesHorizontal: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLinesHorizontalSmall,
   },
   link: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLinkSmall,
   },
   list: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconListSmall,
   },
   loading: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
   },
   lock: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLockSmall,
   },
   lockCircle: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLockCircleSmall,
   },
   minus: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconMinusSmall,
   },
   open: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconOpenSmall,
   },
   people: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconPeopleLarge,
     smallIcon: IconPeopleSmall,
   },
   percentage: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPercentageSmall,
   },
   plus: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPlusSmall,
   },
   plusCircle: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPlusCircleSmall,
   },
   projectPrivate: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconProjectPrivateLarge,
     smallIcon: null,
   },
   projectPublic: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconProjectPublicLarge,
     smallIcon: null,
   },
   puzzlePiece: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPuzzlePieceSmall,
   },
   questionMark: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconQuestionMarkLarge,
     smallIcon: null,
   },
   refresh: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconRefreshLarge,
     smallIcon: IconRefreshSmall,
   },
   save: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconSaveLarge,
     smallIcon: null,
   },
   search: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconSearchLarge,
     smallIcon: IconSearchSmall,
   },
   share: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconShareLarge,
     smallIcon: null,
   },
   slidersHorizontal: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconSlidersHorizontalLarge,
     smallIcon: null,
   },
   table: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconTableSmall,
   },
   treeDendogram: {
-    availableSizes: [IconSizes.LARGE, IconSizes.EXTRA_LARGE],
+    availableSizes: ["l", "xl"],
     largeIcon: IconTreeDendogramLarge,
     smallIcon: null,
   },
   treeHorizontal: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconTreeHorizontalLarge,
     smallIcon: IconTreeHorizontalSmall,
   },
   treeHorizontalPrivate: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconTreeHorizontalPrivateLarge,
     smallIcon: null,
   },
   treeHorizontalPublic: {
-    availableSizes: [IconSizes.EXTRA_LARGE],
+    availableSizes: ["xl"],
     largeIcon: IconTreeHorizontalPublicLarge,
     smallIcon: null,
   },
   treeVertical: {
-    availableSizes: [IconSizes.EXTRA_SMALL, IconSizes.SMALL],
+    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconTreeVerticalSmall,
   },
   xMark: {
-    availableSizes: [
-      IconSizes.EXTRA_SMALL,
-      IconSizes.SMALL,
-      IconSizes.LARGE,
-      IconSizes.EXTRA_LARGE,
-    ],
+    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconXMarkLarge,
     smallIcon: IconXMarkSmall,
   },

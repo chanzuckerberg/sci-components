@@ -70,13 +70,27 @@ export const IconSizes = () => {
 export const IconBank = () => {
   const icons = Object.entries(iconMap);
   return (
-    <div style={gridStyles}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
       {icons.map(([sdsIcon, icon]) => {
         const { availableSizes } = icon;
         const sdsSize = availableSizes[availableSizes.length - 1];
 
         return (
-          <div style={cellStyles}>
+          <div
+            style={{
+              alignItems: "center",
+              border: "1px solid black",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "5px",
+            }}
+          >
             <Icon sdsSize={sdsSize} sdsIcon={sdsIcon} />
             <span>{sdsIcon}</span>
             <span>(size {sdsSize})</span>
@@ -85,19 +99,4 @@ export const IconBank = () => {
       })}
     </div>
   );
-};
-
-const gridStyles = {
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-};
-
-const cellStyles = {
-  alignItems: "center",
-  border: "1px solid black",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  padding: "5px",
 };
