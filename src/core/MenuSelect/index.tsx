@@ -79,6 +79,7 @@ export default function MenuSelect<
             inputProps={params.inputProps}
             onChange={onInputChange}
             autoFocus
+            readOnly={!search}
             endAdornment={
               <InputAdornment position="end">
                 <StyledSearchIcon />
