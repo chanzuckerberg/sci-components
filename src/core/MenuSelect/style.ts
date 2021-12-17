@@ -49,8 +49,10 @@ export const InputBaseWrapper = styled.div`
   }}
 `;
 
-export const StyledInputBase = styled(InputBase)`
+export const StyledInputBase = styled(InputBase)<{ search: boolean }>`
   width: 100%;
+  /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
+  caret-color: ${({ search }) => (search ? "auto" : "transparent")};
 `;
 
 export const StyledSearchIcon = styled(Search)`
