@@ -62,6 +62,7 @@ import { ReactComponent as IconTreeHorizontalPrivateLarge } from "../../common/s
 import { ReactComponent as IconTreeHorizontalPublicLarge } from "../../common/svgs/IconTreeHorizontalPublicLarge.svg";
 import { ReactComponent as IconTreeHorizontalSmall } from "../../common/svgs/IconTreeHorizontalSmall.svg";
 import { ReactComponent as IconTreeVerticalSmall } from "../../common/svgs/IconTreeVerticalSmall.svg";
+import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
@@ -330,6 +331,11 @@ const iconMap: Props = {
     availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconXMarkLarge,
     smallIcon: IconXMarkSmall,
+  },
+  xMarkCircle: {
+    availableSizes: ["xs", "s"],
+    largeIcon: null,
+    smallIcon: IconXMarkCircleSmall,
   },
 };
 
