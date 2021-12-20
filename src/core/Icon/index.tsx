@@ -1,7 +1,6 @@
-import { SvgIcon } from "@material-ui/core";
 import React from "react";
 import { iconMap, IconSizes } from "./map";
-import { StyledIcon } from "./style";
+import { StyledIcon, StyledSvgIcon } from "./style";
 
 interface Props {
   sdsIcon: keyof typeof iconMap;
@@ -24,22 +23,24 @@ const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element | null => {
 
   if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
-      <StyledIcon sdsSize={sdsSize}>
-        <SvgIcon
+      <StyledIcon>
+        <StyledSvgIcon
           fillcontrast="white"
           viewBox="0 0 14 14"
           component={smallIcon}
+          sdsSize={sdsSize}
         />
       </StyledIcon>
     );
   }
   if ((sdsSize === "l" || sdsSize === "xl") && largeIcon) {
     return (
-      <StyledIcon sdsSize={sdsSize}>
-        <SvgIcon
+      <StyledIcon>
+        <StyledSvgIcon
           fillcontrast="white"
           viewBox="0 0 32 32"
           component={largeIcon}
+          sdsSize={sdsSize}
         />
       </StyledIcon>
     );

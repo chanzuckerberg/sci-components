@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { SvgIcon } from "@material-ui/core";
 import { getColors, getIconSizes, Props } from "../styles";
 import { IconSizes } from "./map";
 
@@ -7,7 +8,8 @@ interface ExtraProps extends Props {
 }
 
 const doNotForwardProps = ["sdsSize"];
-export const StyledIcon = styled("div", {
+
+export const StyledSvgIcon = styled(SvgIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: ExtraProps) => {
@@ -16,20 +18,22 @@ export const StyledIcon = styled("div", {
     const iconSizes = getIconSizes(props);
 
     return `
-      display: contents;
-      svg {
-        height: ${iconSizes?.[sdsSize]?.height}px;
-        width: ${iconSizes?.[sdsSize]?.width}px;
-        color: ${colors?.primary[400]};
+      height: ${iconSizes?.[sdsSize]?.height}px;
+      width: ${iconSizes?.[sdsSize]?.width}px;
 
-        path {
-          fill: ${colors?.primary[400]};
-        }
+      color: ${colors?.primary[400]};
 
-        stroke {
-          fill: ${colors?.primary[400]};
-        }
+      &:hover {
+        background: ${colors?.gray[300]};
+      }
+
+      &:active {
+        color: ${colors?.primary[600]};
       }
     `;
   }}
+`;
+
+export const StyledIcon = styled.div`
+  display: contents;
 `;
