@@ -46,24 +46,40 @@ IconXL.args = {
 
 export const IconSizes = () => {
   return (
-    <div>
-      <div>
-        <span>Size: xs (10px)</span>
-        <Icon sdsIcon="exclamationMarkCircle" sdsSize="xs" />
-      </div>
-      <div>
-        <span>Size: s (14px)</span>
-        <Icon sdsIcon="exclamationMarkCircle" sdsSize="s" />
-      </div>
-      <div>
-        <span>Size: l (22px)</span>
-        <Icon sdsIcon="exclamationMarkCircle" sdsSize="l" />
-      </div>
-      <div>
-        <span>Size: xl (32px)</span>
-        <Icon sdsIcon="exclamationMarkCircle" sdsSize="xl" />
-      </div>
-    </div>
+    <table>
+      <tr>
+        <td>
+          <span>Size: xs (10px)</span>
+        </td>
+        <td>
+          <Icon sdsIcon="exclamationMarkCircle" sdsSize="xs" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Size: s (14px)</span>
+        </td>
+        <td>
+          <Icon sdsIcon="exclamationMarkCircle" sdsSize="s" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Size: l (22px)</span>
+        </td>
+        <td>
+          <Icon sdsIcon="exclamationMarkCircle" sdsSize="l" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>Size: xl (32px)</span>
+        </td>
+        <td>
+          <Icon sdsIcon="exclamationMarkCircle" sdsSize="xl" />
+        </td>
+      </tr>
+    </table>
   );
 };
 
