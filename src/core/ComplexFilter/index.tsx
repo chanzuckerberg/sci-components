@@ -1,3 +1,4 @@
+import { ClickAwayListener } from "@material-ui/core";
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import { Value } from "../Dropdown";
@@ -88,25 +89,29 @@ export default function ComplexFilter<
         </div>
       </Wrapper>
       <PopperComponent open={open} anchorEl={anchorEl}>
-        <MenuSelect
-          open
-          search={search}
-          onClose={handleClose}
-          multiple={multiple as Multiple}
-          PaperComponent={PaperComponent}
-          value={
-            (multiple ? pendingValue : value) as MUIValue<
-              DefaultMenuSelectOption,
-              Multiple,
-              undefined,
-              undefined
-            >
-          }
-          onChange={handleChange}
-          disableCloseOnSelect={multiple}
-          options={options}
-          {...MenuSelectProps}
-        />
+        <ClickAwayListener onClickAway={handleClose}>
+          <div>
+            <MenuSelect
+              open
+              onClose={handleMenuSelectClose}
+              search={search}
+              multiple={multiple as Multiple}
+              PaperComponent={PaperComponent}
+              value={
+                (multiple ? pendingValue : value) as MUIValue<
+                  DefaultMenuSelectOption,
+                  Multiple,
+                  undefined,
+                  undefined
+                >
+              }
+              onChange={handleChange}
+              disableCloseOnSelect={multiple}
+              options={options}
+              {...MenuSelectProps}
+            />
+          </div>
+        </ClickAwayListener>
       </PopperComponent>
     </>
   );
@@ -119,15 +124,7 @@ export default function ComplexFilter<
     setAnchorEl(event.currentTarget);
   }
 
-  function handleClose(
-    _: React.ChangeEvent<unknown>,
-    reason: AutocompleteCloseReason
-  ) {
-    // (thuang): We don't want to close the menu when the input is clicked
-    if (reason === "toggleInput") {
-      return;
-    }
-
+  function handleClose() {
     if (multiple) {
       setValue(pendingValue as Value<DefaultMenuSelectOption, Multiple>);
     }
@@ -137,6 +134,17 @@ export default function ComplexFilter<
     }
 
     setAnchorEl(null);
+  }
+
+  function handleMenuSelectClose(
+    event: React.ChangeEvent<unknown>,
+    reason: AutocompleteCloseReason
+  ) {
+    const reasons = ["escape", "select-option"];
+
+    if (reasons.includes(reason)) {
+      handleClose();
+    }
   }
 
   function handleChange(

@@ -74,9 +74,17 @@ export default function MenuSelect<
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledInputBase
+            search={search}
             placeholder="Search"
             ref={params.InputProps.ref}
-            inputProps={params.inputProps}
+            inputProps={{
+              ...params.inputProps,
+              /**
+               * (thuang): Works with css caret-color: "transparent" to hide
+               * mobile keyboard
+               */
+              inputMode: search ? "text" : "none",
+            }}
             onChange={onInputChange}
             autoFocus
             endAdornment={

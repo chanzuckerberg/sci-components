@@ -1,231 +1,170 @@
 {
   "sds": {
     "font": {
+      "letter-spacing": {
+        "default": { "value": "0.3px" },
+        "caps": { "value": "1px" }
+      },
+      "color": {
+        "value": "black"
+      },
+      "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
       "body": {
         "xxxs": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "11px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "16px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 11px/16px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "11px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "16px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "xxs": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "12px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "18px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 12px/18px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "12px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "18px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "xs": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "13px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "20px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 13px/20px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "13px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "20px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 13px/20px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "s": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "14px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "24px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 14px/24px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "14px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "24px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 14px/24px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "m": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "16px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "26px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 16px/26px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "16px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "26px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 16px/26px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "l": {
           "400": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
-            "font-size": { "value": "18px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "28px" },
-            "font-weight": { "value": "400" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "400 18px/28px {sds.font.font-family.value}"
+            }
           },
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "18px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "28px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 18px/28px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         }
       },
       "caps": {
         "xxxxs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "10px" },
-            "letter-spacing": { "value": "1px" },
-            "line-height": { "value": "14px" },
-            "font-weight": { "value": "600" },
-            "text-transform": { "value": " uppercase" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 10px/14px 'Open Sans', 'OpenSans-SemiBold'"
+            },
+            "text-transform": { "value": " uppercase" }
           }
         },
         "xxxs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "11px" },
-            "letter-spacing": { "value": "1px" },
-            "line-height": { "value": "16px" },
-            "font-weight": { "value": "600" },
-            "text-transform": { "value": " uppercase" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+            },
+            "text-transform": { "value": " uppercase" }
           }
         },
         "xxs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "12px" },
-            "letter-spacing": { "value": "1px" },
-            "line-height": { "value": "18px" },
-            "font-weight": { "value": "600" },
-            "text-transform": { "value": " uppercase" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+            },
+            "text-transform": { "value": " uppercase" }
           }
         }
       },
       "header": {
         "xxxs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "11px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "16px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "xxs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "12px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "18px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "xs": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "13px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "18px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 13px/18px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "s": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "14px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "20px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 14px/20px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "m": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "16px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "22px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 16px/22px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "l": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "18px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "24px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 18px/24px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
 
         "xl": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "22px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "30px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 22px/30px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         },
         "xxl": {
           "600": {
-            "font-family": { "value": "'Open Sans', 'OpenSans-SemiBold'" },
-            "font-size": { "value": "26px" },
-            "letter-spacing": { "value": "0.3px" },
-            "line-height": { "value": "34px" },
-            "font-weight": { "value": "600" },
-            "color": { "value": "black" }
+            "font": {
+              "value": "600 26px/34px 'Open Sans', 'OpenSans-SemiBold'"
+            }
           }
         }
       }
