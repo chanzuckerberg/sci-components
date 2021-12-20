@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Icons / Large / IconNextclade</title>
-    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
         <g id="Group-3" transform="translate(2.000000, 4.000000)">
             <line x1="8.28333333" y1="13.9740741" x2="2.35657552" y2="13.9740741" id="Line-2-Copy-3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></line>
             <polyline id="Path-3-Copy-3" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" points="24.7333333 2.56666667 14 2.56666667 14 11.554321 24.7333333 11.554321"></polyline>
