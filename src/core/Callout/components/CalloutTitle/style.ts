@@ -5,7 +5,7 @@ import { fontBody, getSpaces } from "src/core/styles";
 const fontBodyXs = fontBody("xs");
 
 export const StyledCalloutTitle = styled(AlertTitle)`
-  ${fontBodyXs};
+  ${fontBodyXs}
 
   ${(props) => {
     const spacings = getSpaces(props);
@@ -13,5 +13,5 @@ export const StyledCalloutTitle = styled(AlertTitle)`
     return `
     margin: ${spacings?.xxxs}px 0 ${spacings?.xs}px;
   `;
-  }};
+  }}
 `;

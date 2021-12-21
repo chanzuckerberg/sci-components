@@ -37,12 +37,15 @@ const StyledTabs = styled(TempTabs, {
   ${(props) => {
     const { underlined } = props;
     const colors = getColors(props);
+    const spaces = getSpaces(props);
 
     return `
       box-sizing: border-box;
       padding-bottom: 0px;
-      margin-bottom: 0px;
-      border-bottom: ${underlined ? `3px solid ${colors?.gray[200]};` : "none"};
+      margin-top: ${spaces?.l}px;
+      margin-bottom: ${spaces?.xl}px;
+      min-height: unset;
+      border-bottom: ${underlined ? `2px solid ${colors?.gray[200]};` : "none"};
       position: relative;
       z-index: 1;
       overflow: inherit;
@@ -59,8 +62,8 @@ const TabIndicator = (theme: AppThemeOptions) => {
 
   return css`
     background-color: ${colors?.primary[400]};
-    height: 3px;
-    bottom: -3px;
+    height: 2px;
+    bottom: -2px;
     z-index: 2;
   `;
 };
@@ -81,18 +84,22 @@ export default Tabs;
 export const Tab = styled(RawTab)`
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const palette = getPalette(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: black;
       text-transform: none;
-      height: 20px;
+      min-height: unset;
+      // (thuang): Large Tab height is 30px, the offset is 4px
+      height: 26px;
       font-style: normal;
       font-weight: 600;
       font-size: 14px;
       line-height: 20px;
-      padding-bottom: ${spacings?.xxs}px;
+      padding: 0;
+      margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
+      min-width: 32px;
       &:hover {
         color: ${colors?.gray[600]};
       }
