@@ -1,6 +1,6 @@
 import { ClickAwayListener } from "@material-ui/core";
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Value } from "../Dropdown";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
@@ -58,6 +58,10 @@ export default function ComplexFilter<
   const [pendingValue, setPendingValue] = useState<
     Value<DefaultMenuSelectOption, true>
   >([]);
+
+  // Store pending value in ref so that the click away listener can access the
+  // updated pending value state.
+  const pendingValueRef = useRef(pendingValue);
 
   useEffect(() => {
     onChange(value);
@@ -126,7 +130,15 @@ export default function ComplexFilter<
 
   function handleClose() {
     if (multiple) {
-      setValue(pendingValue as Value<DefaultMenuSelectOption, Multiple>);
+      // Set pending value from ref on close. This needs to happen through a ref
+      // because when the click away listener is rendered initially, it uses an
+      // instance of `handleClose()` that forms a closure around the initial
+      // state of `pendingValue`. Because of this, when the click away listener
+      // calls `handleClose()`, it will always call `setValue()` with the stale
+      // pending state.
+      setValue(
+        pendingValueRef.current as Value<DefaultMenuSelectOption, Multiple>
+      );
     }
 
     if (anchorEl) {
@@ -152,6 +164,7 @@ export default function ComplexFilter<
     newValue: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null
   ) {
     if (multiple) {
+      pendingValueRef.current = newValue as DefaultMenuSelectOption[];
       return setPendingValue(newValue as DefaultMenuSelectOption[]);
     }
 
