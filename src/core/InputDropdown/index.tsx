@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "../Icon";
-import { InputDropdownProps, StyledInputDropdown } from "./styles";
+import IconButton from "../IconButton";
+import { InputDropdownProps, StyledInputDropdown } from "./style";
 
 export { InputDropdownProps };
 
@@ -17,7 +17,12 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown {...props}>
       <span>{label}</span>
-      <Icon sdsIcon="chevronDown" sdsSize="s" />
+      <IconButton
+        active={open}
+        sdsIcon="chevronDown"
+        sdsSize="s"
+        sdsType="secondary" // TODO: check this against states
+      />
     </StyledInputDropdown>
   );
 };

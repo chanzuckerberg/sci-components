@@ -107,7 +107,7 @@ export const IconBank = () => {
               padding: "5px",
             }}
           >
-            <Icon sdsSize={sdsSize} sdsIcon={sdsIcon} />
+            <Icon sdsSize={sdsSize} sdsIcon={sdsIcon} sdsType="static" />
             <span>{sdsIcon}</span>
             <span>(size {sdsSize})</span>
           </div>

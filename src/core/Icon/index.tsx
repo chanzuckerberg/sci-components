@@ -5,9 +5,10 @@ import { StyledIcon, StyledSvgIcon } from "./style";
 interface Props {
   sdsIcon: keyof typeof iconMap;
   sdsSize: IconSizes;
+  sdsType: "interactive" | "static";
 }
 
-const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element | null => {
+const Icon = ({ sdsIcon, sdsSize, sdsType }: Props): JSX.Element | null => {
   const icon = iconMap[sdsIcon] ?? {};
   const { availableSizes, largeIcon, smallIcon } = icon;
 
@@ -29,6 +30,7 @@ const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element | null => {
           viewBox="0 0 14 14"
           component={smallIcon}
           sdsSize={sdsSize}
+          sdsType={sdsType}
         />
       </StyledIcon>
     );
@@ -41,6 +43,7 @@ const Icon = ({ sdsIcon, sdsSize }: Props): JSX.Element | null => {
           viewBox="0 0 32 32"
           component={largeIcon}
           sdsSize={sdsSize}
+          sdsType={sdsType}
         />
       </StyledIcon>
     );

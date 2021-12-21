@@ -6,7 +6,6 @@ import {
   fontHeaderS,
   getColors,
   getCorners,
-  getIconSizes,
   getPalette,
   getSpaces,
   Props,
@@ -24,7 +23,6 @@ export interface InputDropdownProps extends Props {
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
-  const iconSizes = getIconSizes(props);
   const palette = getPalette(props);
   const spacings = getSpaces(props);
 
@@ -47,12 +45,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: currentColor;
-    }
-
-    svg {
-      height: ${iconSizes?.s.height}px;
-      width: ${iconSizes?.s.width}px;
+      fill: ${colors?.gray[500]};
     }
 
     &:hover {

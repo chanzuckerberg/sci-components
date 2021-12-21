@@ -54,11 +54,13 @@ const Notification = ({
   const getIcon = () => {
     switch (intent) {
       case "success":
-        return <Icon sdsSize="l" sdsIcon="checkCircle" />;
+        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
       case "info":
-        return <Icon sdsSize="l" sdsIcon="infoCircle" />;
+        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
       default:
-        return <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" />;
+        return (
+          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+        );
     }
   };
 
@@ -72,11 +74,11 @@ const Notification = ({
               <IconButton
                 onClick={handleClose}
                 sdsSize="small"
-                sdsType="secondary"
+                sdsType="tertiary"
                 data-testid="notificationCloseButton"
               >
                 {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="static" />{" "}
               </IconButton>
             ) : null
           }
