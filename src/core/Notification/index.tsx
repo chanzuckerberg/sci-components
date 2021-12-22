@@ -78,7 +78,7 @@ const Notification = ({
                 data-testid="notificationCloseButton"
               >
                 {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="static" />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
               </IconButton>
             ) : null
           }

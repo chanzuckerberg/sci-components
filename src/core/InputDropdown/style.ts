@@ -116,7 +116,7 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
       color: ${palette?.text?.primary};
     }
     path {
-      fill: ${colors?.gray[500]};
+      fill: ${colors?.primary[400]};
     }
   `;
 };

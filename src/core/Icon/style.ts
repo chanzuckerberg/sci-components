@@ -4,13 +4,12 @@ import { SvgIcon } from "@material-ui/core";
 import { getColors, getIconSizes, Props } from "../styles";
 import { IconSizes } from "./map";
 
-interface ExtraProps extends Props {
-  active: boolean;
+export interface ExtraProps extends Props {
   sdsSize: IconSizes;
-  sdsType: "interactive" | "static";
+  sdsType: "iconButton" | "interactive" | "static";
 }
 
-const icon = (props: ExtraProps): SerializedStyles => {
+const iconSize = (props: ExtraProps): SerializedStyles => {
   const { sdsSize } = props;
   const iconSizes = getIconSizes(props);
 
@@ -57,7 +56,7 @@ export const StyledSvgIcon = styled(SvgIcon, {
     const { sdsType } = props;
 
     return css`
-      ${icon(props)}
+      ${sdsType !== "iconButton" && iconSize(props)}
       ${sdsType === "static" && staticStyle(props)}
       ${sdsType === "interactive" && interactive(props)}
     `;

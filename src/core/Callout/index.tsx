@@ -62,10 +62,10 @@ const Callout = ({
               <IconButton
                 onClick={handleClose}
                 sdsSize="small"
-                sdsType="secondary"
+                sdsType="tertiary"
               >
                 {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="static" />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconbutton" />{" "}
               </IconButton>
             ) : null
           }

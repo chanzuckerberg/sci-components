@@ -1,11 +1,9 @@
 import React from "react";
-import { iconMap, IconSizes } from "./map";
-import { StyledIcon, StyledSvgIcon } from "./style";
+import { iconMap } from "./map";
+import { ExtraProps, StyledIcon, StyledSvgIcon } from "./style";
 
-interface Props {
+interface Props extends ExtraProps {
   sdsIcon: keyof typeof iconMap;
-  sdsSize: IconSizes;
-  sdsType: "interactive" | "static";
 }
 
 const Icon = ({ sdsIcon, sdsSize, sdsType }: Props): JSX.Element | null => {

@@ -73,7 +73,7 @@ Default.args = {
   autoDismiss: false,
   calloutTitle: "this is a title",
   intent: "success",
-  onClose: false,
+  onClose: () => console.log(1),
 };
 
 const storyRow = {

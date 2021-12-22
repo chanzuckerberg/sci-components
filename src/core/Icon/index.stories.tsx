@@ -4,9 +4,14 @@ import Icon from "./index";
 import { iconMap } from "./map";
 
 const Demo = (props: Args): JSX.Element => {
-  const { sdsIcon, sdsSize } = props;
+  const { px, sdsIcon, sdsSize, sdsType } = props;
 
-  return <Icon sdsIcon={sdsIcon} sdsSize={sdsSize} />;
+  return (
+    <div style={{ alignItems: "center", display: "flex" }}>
+      <Icon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} />
+      <span style={{ marginLeft: "8px" }}>{px}px</span>
+    </div>
+  );
 };
 
 export default {
@@ -19,68 +24,46 @@ const Template: Story = (args) => <Demo {...args} />;
 export const IconXS = Template.bind({});
 
 IconXS.args = {
+  px: 10,
   sdsIcon: "checkCircle",
   sdsSize: "xs",
+  sdsType: "static",
 };
 
 export const IconS = Template.bind({});
 
 IconS.args = {
+  px: 14,
   sdsIcon: "checkCircle",
   sdsSize: "s",
+  sdsType: "static",
 };
 
 export const IconL = Template.bind({});
 
 IconL.args = {
+  px: 22,
   sdsIcon: "checkCircle",
   sdsSize: "l",
+  sdsType: "static",
 };
 
 export const IconXL = Template.bind({});
 
 IconXL.args = {
+  px: 32,
   sdsIcon: "checkCircle",
   sdsSize: "xl",
+  sdsType: "static",
 };
 
-export const IconSizes = () => {
-  return (
-    <table>
-      <tr>
-        <td>
-          <span>Size: xs (10px)</span>
-        </td>
-        <td>
-          <Icon sdsIcon="exclamationMarkCircle" sdsSize="xs" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Size: s (14px)</span>
-        </td>
-        <td>
-          <Icon sdsIcon="exclamationMarkCircle" sdsSize="s" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Size: l (22px)</span>
-        </td>
-        <td>
-          <Icon sdsIcon="exclamationMarkCircle" sdsSize="l" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>Size: xl (32px)</span>
-        </td>
-        <td>
-          <Icon sdsIcon="exclamationMarkCircle" sdsSize="xl" />
-        </td>
-      </tr>
-    </table>
-  );
+export const IconInteractive = Template.bind({});
+
+IconInteractive.args = {
+  px: 32,
+  sdsIcon: "checkCircle",
+  sdsSize: "xl",
+  sdsType: "interactive",
 };
 
 export const IconBank = () => {

@@ -27,7 +27,7 @@ export const LargePrimaryIconButton = Template.bind({});
 
 LargePrimaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="infoSpeechBubble" sdsSize="xl" />,
+  icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "primary",
 };
@@ -36,7 +36,7 @@ export const LargeSecondaryIconButton = Template.bind({});
 
 LargeSecondaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="slidersHorizontal" sdsSize="xl" />,
+  icon: <Icon sdsIcon="checkCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "secondary",
 };
@@ -45,7 +45,7 @@ export const LargeTertiaryIconButton = Template.bind({});
 
 LargeTertiaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="s" />,
+  icon: <Icon sdsIcon="xMark" sdsSize="xl" />,
   sdsSize: "large",
   sdsType: "tertiary",
 };
@@ -54,7 +54,7 @@ export const MediumTertiaryIconButton = Template.bind({});
 
 MediumTertiaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="s" />,
+  icon: <Icon sdsIcon="xMark" sdsSize="l" />,
   sdsSize: "medium",
   sdsType: "tertiary",
 };
@@ -63,7 +63,7 @@ export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="infoSpeechBubble" sdsSize="xl" />,
+  icon: <Icon sdsIcon="infoCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "primary",
 };
@@ -72,7 +72,7 @@ export const SmallSecondaryIconButton = Template.bind({});
 
 SmallSecondaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="slidersHorizontal" sdsSize="xl" />,
+  icon: <Icon sdsIcon="checkCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "secondary",
 };
