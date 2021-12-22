@@ -55,12 +55,13 @@ export default function ComplexFilter<
     getInitialValue()
   );
 
-  const [pendingValue, setPendingValue] = useState<
-    Value<DefaultMenuSelectOption, true>
-  >([]);
+  const [pendingValue, setPendingValue] = useState<DefaultMenuSelectOption[]>(
+    getInitialValue() as DefaultMenuSelectOption[]
+  );
 
   useEffect(() => {
     onChange(value);
+    setPendingValue(value as DefaultMenuSelectOption[]);
   }, [value]);
 
   useEffect(() => {
@@ -117,10 +118,6 @@ export default function ComplexFilter<
   );
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
-    if (multiple) {
-      setPendingValue(value as DefaultMenuSelectOption[]);
-    }
-
     setAnchorEl(event.currentTarget);
   }
 
@@ -164,9 +161,8 @@ export default function ComplexFilter<
     }
 
     const newValue =
-      (value as Value<DefaultMenuSelectOption, true>)?.filter(
-        (item) => item !== option
-      ) || null;
+      (value as DefaultMenuSelectOption[])?.filter((item) => item !== option) ||
+      null;
 
     setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
   }
