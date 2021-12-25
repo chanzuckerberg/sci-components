@@ -132,7 +132,6 @@ Default.args = {
   dismissDirection: "left",
   extraContent: false,
   intent: "success",
-  onClose: () => console.log(1),
 };
 
 Default.parameters = {

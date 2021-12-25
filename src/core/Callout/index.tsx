@@ -65,7 +65,7 @@ const Callout = ({
                 sdsType="tertiary"
               >
                 {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconbutton" />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
               </IconButton>
             ) : null
           }

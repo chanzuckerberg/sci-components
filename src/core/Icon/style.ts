@@ -1,6 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
-import { SvgIcon } from "@material-ui/core";
+import { SvgIcon, SvgIconProps } from "@material-ui/core";
+import { FC } from "react";
 import { getColors, getIconSizes, Props } from "../styles";
 import { IconSizes } from "./map";
 
@@ -49,10 +50,14 @@ const interactive = (props: ExtraProps): SerializedStyles => {
 
 const doNotForwardProps = ["sdsSize", "sdsType"];
 
+type StyledSvgIconProps = ExtraProps &
+  CustomSVGProps &
+  SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
+
 export const StyledSvgIcon = styled(SvgIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props: ExtraProps) => {
+  ${(props: StyledSvgIconProps) => {
     const { sdsType } = props;
 
     return css`

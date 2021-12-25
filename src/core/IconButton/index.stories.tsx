@@ -45,7 +45,7 @@ export const LargeTertiaryIconButton = Template.bind({});
 
 LargeTertiaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="xl" />,
+  icon: <Icon sdsIcon="xMark" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "tertiary",
 };
@@ -54,7 +54,7 @@ export const MediumTertiaryIconButton = Template.bind({});
 
 MediumTertiaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="l" />,
+  icon: <Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />,
   sdsSize: "medium",
   sdsType: "tertiary",
 };
@@ -81,7 +81,7 @@ export const SmallTertiaryIconButton = Template.bind({});
 
 SmallTertiaryIconButton.args = {
   disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="s" />,
+  icon: <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "tertiary",
 };

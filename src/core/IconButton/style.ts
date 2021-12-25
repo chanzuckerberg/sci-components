@@ -1,7 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButton } from "@material-ui/core";
-import Icon from "../Icon";
 import { getColors, getIconSizes, getSpaces, Props } from "../styles";
 
 export interface ExtraProps extends Props {
