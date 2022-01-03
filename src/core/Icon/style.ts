@@ -3,14 +3,18 @@ import styled from "@emotion/styled";
 import { SvgIcon, SvgIconProps } from "@material-ui/core";
 import { FC } from "react";
 import { getColors, getIconSizes, Props } from "../styles";
-import { IconSizes } from "./map";
+import { IconNameToSizes } from "./map";
 
-export interface ExtraProps extends Props {
-  sdsSize: IconSizes;
+export interface ExtraProps<IconName extends keyof IconNameToSizes>
+  extends Props {
+  sdsIcon: IconName;
+  sdsSize: IconNameToSizes[IconName];
   sdsType: "iconButton" | "interactive" | "static";
 }
 
-const iconSize = (props: ExtraProps): SerializedStyles => {
+function iconSize<IconName extends keyof IconNameToSizes>(
+  props: ExtraProps<IconName>
+): SerializedStyles {
   const { sdsSize } = props;
   const iconSizes = getIconSizes(props);
 
@@ -18,17 +22,21 @@ const iconSize = (props: ExtraProps): SerializedStyles => {
     height: ${iconSizes?.[sdsSize]?.height}px;
     width: ${iconSizes?.[sdsSize]?.width}px;
   `;
-};
+}
 
-const staticStyle = (props: ExtraProps): SerializedStyles => {
+function staticStyle<IconName extends keyof IconNameToSizes>(
+  props: ExtraProps<IconName>
+): SerializedStyles {
   const colors = getColors(props);
 
   return css`
     color: ${colors?.primary[400]};
   `;
-};
+}
 
-const interactive = (props: ExtraProps): SerializedStyles => {
+function interactive<IconName extends keyof IconNameToSizes>(
+  props: ExtraProps<IconName>
+): SerializedStyles {
   const colors = getColors(props);
 
   return css`
@@ -46,18 +54,21 @@ const interactive = (props: ExtraProps): SerializedStyles => {
       color: ${colors?.gray[300]};
     }
   `;
-};
+}
 
-const doNotForwardProps = ["sdsSize", "sdsType"];
+const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType"];
 
-type StyledSvgIconProps = ExtraProps &
-  CustomSVGProps &
-  SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
+type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
+  ExtraProps<IconName> &
+    CustomSVGProps &
+    SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
 
 export const StyledSvgIcon = styled(SvgIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props: StyledSvgIconProps) => {
+  ${<IconName extends keyof IconNameToSizes>(
+    props: StyledSvgIconProps<IconName>
+  ) => {
     const { sdsType } = props;
 
     return css`

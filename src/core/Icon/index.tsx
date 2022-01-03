@@ -1,24 +1,16 @@
 import React from "react";
-import { iconMap } from "./map";
+import { iconMap, IconNameToSizes } from "./map";
 import { ExtraProps, StyledIcon, StyledSvgIcon } from "./style";
 
-interface Props extends ExtraProps {
-  sdsIcon: keyof typeof iconMap;
-}
+type Props<IconName extends keyof IconNameToSizes> = ExtraProps<IconName>;
 
-const Icon = ({ sdsIcon, sdsSize, sdsType }: Props): JSX.Element | null => {
+function Icon<IconName extends keyof IconNameToSizes>({
+  sdsIcon,
+  sdsSize,
+  sdsType,
+}: Props<IconName>): JSX.Element | null {
   const icon = iconMap[sdsIcon] ?? {};
-  const { availableSizes, largeIcon, smallIcon } = icon;
-
-  if (!availableSizes?.includes(sdsSize)) {
-    console.error(
-      `Error: Icon ${sdsIcon} not available in size ${sdsSize}.
-      Please choose from available sizes for this icon: ${availableSizes?.join(
-        ", "
-      )}.`
-    );
-    return null;
-  }
+  const { largeIcon, smallIcon } = icon;
 
   if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
@@ -29,6 +21,7 @@ const Icon = ({ sdsIcon, sdsSize, sdsType }: Props): JSX.Element | null => {
           component={smallIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
+          sdsIcon={sdsIcon}
         />
       </StyledIcon>
     );
@@ -42,16 +35,18 @@ const Icon = ({ sdsIcon, sdsSize, sdsType }: Props): JSX.Element | null => {
           component={largeIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
+          sdsIcon={sdsIcon}
         />
       </StyledIcon>
     );
   }
 
+  // eslint-disable-next-line no-console
   console.error(
     `Error: Icon ${sdsIcon} not found for size ${sdsSize}. This is a czifui problem.`
   );
 
   return null;
-};
+}
 
 export default Icon;

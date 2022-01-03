@@ -66,277 +66,276 @@ import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXM
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
-export type IconSizes = "xs" | "s" | "l" | "xl";
-
-interface Props {
-  [key: string]: {
-    availableSizes: IconSizes[];
-    largeIcon: FC<CustomSVGProps> | null;
-    smallIcon: FC<CustomSVGProps> | null;
-  };
+export interface IconNameToSizes {
+  barChartHorizontal3: "xs" | "s";
+  barChartVertical3: "xs" | "s";
+  barChartVertical4: "xs" | "s";
+  check: "xs" | "s";
+  checkCircle: "xs" | "s" | "l" | "xl";
+  chevronDown: "xs" | "s" | "l" | "xl";
+  chevronRight: "xs" | "s" | "l" | "xl";
+  chevronUp: "xs" | "s" | "l" | "xl";
+  copy: "xs" | "s" | "l" | "xl";
+  download: "xs" | "s" | "l" | "xl";
+  edit: "xs" | "s" | "l" | "xl";
+  exclamationMarkCircle: "xs" | "s" | "l" | "xl";
+  eyeOpen: "xs" | "s";
+  flask: "l" | "xl";
+  flaskPrivate: "xl";
+  flaskPublic: "xl";
+  globe: "xs" | "s";
+  grid: "l" | "xl";
+  gridPrivate: "xl";
+  gridPublic: "xl";
+  infoCircle: "xs" | "s" | "l" | "xl";
+  infoSpeechBubble: "l" | "xl";
+  lightBulb: "xs" | "s";
+  linesHorizontal: "xs" | "s";
+  link: "xs" | "s";
+  list: "xs" | "s";
+  loading: "xs" | "s" | "l" | "xl";
+  lock: "xs" | "s";
+  lockCircle: "xs" | "s";
+  minus: "xs" | "s";
+  open: "xs" | "s";
+  people: "xs" | "s" | "l" | "xl";
+  percentage: "xs" | "s";
+  plus: "xs" | "s";
+  plusCircle: "xs" | "s";
+  projectPrivate: "xl";
+  projectPublic: "xl";
+  puzzlePiece: "xs" | "s";
+  questionMark: "l" | "xl";
+  refresh: "xs" | "s" | "l" | "xl";
+  save: "l" | "xl";
+  search: "xs" | "s" | "l" | "xl";
+  share: "l" | "xl";
+  slidersHorizontal: "l" | "xl";
+  table: "xs" | "s";
+  treeDendogram: "l" | "xl";
+  treeHorizontal: "xs" | "s" | "l" | "xl";
+  treeHorizontalPrivate: "xl";
+  treeHorizontalPublic: "xl";
+  treeVertical: "xs" | "s";
+  xMark: "xs" | "s" | "l" | "xl";
+  xMarkCircle: "xs" | "s";
 }
 
-const iconMap: Props = {
+type Props = Record<
+  keyof IconNameToSizes,
+  {
+    largeIcon: FC<CustomSVGProps> | null;
+    smallIcon: FC<CustomSVGProps> | null;
+  }
+>;
+
+export const iconMap: Props = {
   barChartHorizontal3: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartHorizontal3Small,
   },
   barChartVertical3: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartVertical3Small,
   },
   barChartVertical4: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconBarChartVertical4Small,
   },
   check: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconCheckSmall,
   },
   checkCircle: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconCheckCircleLarge,
     smallIcon: IconCheckCircleSmall,
   },
   chevronDown: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronDownLarge,
     smallIcon: IconChevronDownSmall,
   },
   chevronRight: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
   },
   chevronUp: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
   },
   copy: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
   },
   download: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconDownloadLarge,
     smallIcon: IconDownloadSmall,
   },
   edit: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconEditSmall,
   },
   exclamationMarkCircle: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconExclamationMarkCircleLarge,
     smallIcon: IconExclamationMarkCircleSmall,
   },
   eyeOpen: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconEyeOpenSmall,
   },
   flask: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconFlaskLarge,
     smallIcon: null,
   },
   flaskPrivate: {
-    availableSizes: ["xl"],
     largeIcon: IconFlaskPrivateLarge,
     smallIcon: null,
   },
   flaskPublic: {
-    availableSizes: ["xl"],
     largeIcon: IconFlaskPublicLarge,
     smallIcon: null,
   },
   globe: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconGlobeSmall,
   },
   grid: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconGridLarge,
     smallIcon: null,
   },
   gridPrivate: {
-    availableSizes: ["xl"],
     largeIcon: IconGridPrivateLarge,
     smallIcon: null,
   },
   gridPublic: {
-    availableSizes: ["xl"],
     largeIcon: IconGridPublicLarge,
     smallIcon: null,
   },
   infoCircle: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconInfoCircleLarge,
     smallIcon: IconInfoCircleSmall,
   },
   infoSpeechBubble: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconInfoSpeechBubbleLarge,
     smallIcon: null,
   },
   lightBulb: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLightBulbSmall,
   },
   linesHorizontal: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLinesHorizontalSmall,
   },
   link: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLinkSmall,
   },
   list: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconListSmall,
   },
   loading: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
   },
   lock: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLockSmall,
   },
   lockCircle: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconLockCircleSmall,
   },
   minus: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconMinusSmall,
   },
   open: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconOpenSmall,
   },
   people: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconPeopleLarge,
     smallIcon: IconPeopleSmall,
   },
   percentage: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPercentageSmall,
   },
   plus: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPlusSmall,
   },
   plusCircle: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPlusCircleSmall,
   },
   projectPrivate: {
-    availableSizes: ["xl"],
     largeIcon: IconProjectPrivateLarge,
     smallIcon: null,
   },
   projectPublic: {
-    availableSizes: ["xl"],
     largeIcon: IconProjectPublicLarge,
     smallIcon: null,
   },
   puzzlePiece: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconPuzzlePieceSmall,
   },
   questionMark: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconQuestionMarkLarge,
     smallIcon: null,
   },
   refresh: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconRefreshLarge,
     smallIcon: IconRefreshSmall,
   },
   save: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconSaveLarge,
     smallIcon: null,
   },
   search: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconSearchLarge,
     smallIcon: IconSearchSmall,
   },
   share: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconShareLarge,
     smallIcon: null,
   },
   slidersHorizontal: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconSlidersHorizontalLarge,
     smallIcon: null,
   },
   table: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconTableSmall,
   },
   treeDendogram: {
-    availableSizes: ["l", "xl"],
     largeIcon: IconTreeDendogramLarge,
     smallIcon: null,
   },
   treeHorizontal: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconTreeHorizontalLarge,
     smallIcon: IconTreeHorizontalSmall,
   },
   treeHorizontalPrivate: {
-    availableSizes: ["xl"],
     largeIcon: IconTreeHorizontalPrivateLarge,
     smallIcon: null,
   },
   treeHorizontalPublic: {
-    availableSizes: ["xl"],
     largeIcon: IconTreeHorizontalPublicLarge,
     smallIcon: null,
   },
   treeVertical: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconTreeVerticalSmall,
   },
   xMark: {
-    availableSizes: ["xs", "s", "l", "xl"],
     largeIcon: IconXMarkLarge,
     smallIcon: IconXMarkSmall,
   },
   xMarkCircle: {
-    availableSizes: ["xs", "s"],
     largeIcon: null,
     smallIcon: IconXMarkCircleSmall,
   },
 };
-
-export { iconMap };
