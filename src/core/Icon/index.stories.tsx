@@ -1,7 +1,7 @@
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "./index";
-import { iconMap } from "./map";
+import { iconMap, IconNameToSizes } from "./map";
 
 const Demo = (props: Args): JSX.Element => {
   const { px, sdsIcon, sdsSize, sdsType } = props;
@@ -76,11 +76,12 @@ export const IconBank = () => {
       }}
     >
       {icons.map(([sdsIcon, icon]) => {
-        const { availableSizes } = icon;
-        const sdsSize = availableSizes[availableSizes.length - 1];
+        const { largeIcon } = icon;
+        const sdsSize = largeIcon ? "l" : "s";
 
         return (
           <div
+            key={sdsIcon}
             style={{
               alignItems: "center",
               border: "1px solid black",
@@ -90,7 +91,11 @@ export const IconBank = () => {
               padding: "5px",
             }}
           >
-            <Icon sdsSize={sdsSize} sdsIcon={sdsIcon} sdsType="static" />
+            <Icon
+              sdsSize={sdsSize}
+              sdsIcon={sdsIcon as keyof IconNameToSizes}
+              sdsType="static"
+            />
             <span>{sdsIcon}</span>
             <span>(size {sdsSize})</span>
           </div>
