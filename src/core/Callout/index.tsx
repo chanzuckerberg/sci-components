@@ -1,10 +1,7 @@
-import { Grow, SvgIcon } from "@material-ui/core";
+import { Grow } from "@material-ui/core";
 import { AlertProps } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
-import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
-import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
-import { ReactComponent as IconInfo } from "../../common/svgs/IconInfo.svg";
-import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
+import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { StyledCallout } from "./style";
 
@@ -45,11 +42,13 @@ const Callout = ({
   const getIcon = () => {
     switch (intent) {
       case "success":
-        return <IconSuccess fillcontrast="white" />;
+        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
       case "info":
-        return <IconInfo fillcontrast="white" />;
+        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
       default:
-        return <IconAlert fillcontrast="white" />;
+        return (
+          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+        );
     }
   };
 
@@ -63,14 +62,10 @@ const Callout = ({
               <IconButton
                 onClick={handleClose}
                 sdsSize="small"
-                sdsType="secondary"
+                sdsType="tertiary"
               >
                 {" "}
-                <SvgIcon
-                  fillcontrast="white"
-                  viewBox="0 0 14 14"
-                  component={IconClose}
-                />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
               </IconButton>
             ) : null
           }

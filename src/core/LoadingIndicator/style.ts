@@ -1,6 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ReactComponent as IconLoadingAnimated } from "../../common/svgs/IconLoadingAnimated.svg";
 import {
   fontBody,
   fontCapsXxxxs,
@@ -15,17 +14,6 @@ import {
 export interface LoadingIndicatorProps extends Props {
   sdsStyle: "minimal" | "tag";
 }
-
-export const StyledIconLoadingAnimated = styled(IconLoadingAnimated)`
-  ${(props) => {
-    const iconSizes = getIconSizes(props);
-
-    return `
-      height: ${iconSizes?.l.height}px;
-      width: ${iconSizes?.l.width}px;
-    `;
-  }}
-`;
 
 const fontBodyS = fontBody("s");
 
