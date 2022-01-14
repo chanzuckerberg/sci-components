@@ -11,7 +11,6 @@ export const StyledAlert = styled(Alert)`
     const { severity = "primary" } = props;
     const borderColor = (colors && colors[severity][400]) || "black";
     return `
-      background-color: cyan;
       margin: ${spacings?.m}px 0;
       border-radius: ${spacings?.default};
       color: ${defaultTheme.palette.text.primary};
