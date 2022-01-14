@@ -1,3 +1,8 @@
+name: "Chromatic"
+
+# Event for the workflow
+on: push
+
 jobs:
   chromatic-deployment:
     steps:
