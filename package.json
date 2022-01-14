@@ -96,7 +96,7 @@
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.json",
-    "chromatic": "npx chromatic --project-token=cad4aacbfeba"
+    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"

@@ -36,6 +36,11 @@ jobs:
         run: |
           yarn test
 
+  chromatic-deployment:
+    - name: Chromatic Deployment
+      run: |
+        yarn chromatic
+
   build:
     runs-on: ubuntu-20.04
     steps:
