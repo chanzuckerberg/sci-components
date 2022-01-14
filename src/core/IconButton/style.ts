@@ -128,6 +128,8 @@ const doNotForwardProps = ["active", "sdsSize", "sdsType"];
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
+  padding: 0;
+
   ${(props: ExtraProps) => {
     const { active, disabled, sdsSize, sdsType } = props;
 

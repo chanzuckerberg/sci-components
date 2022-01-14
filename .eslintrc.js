@@ -66,6 +66,8 @@ module.exports = {
     "no-unused-vars": "off",
     "react/jsx-no-target-blank": 0,
     "react/jsx-props-no-spreading": 0,
+    // (thuang): Disable this since we use TypeScript
+    "react/prop-types": "off",
     // (thuang): DefaultProps is being deprecated
     // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/default_props/
     "react/require-default-props": "off",

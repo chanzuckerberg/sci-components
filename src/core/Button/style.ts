@@ -17,17 +17,26 @@ const ButtonBase = styled(Button, {
 })`
   box-shadow: none;
   ${(props) => {
+    const { variant } = props;
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
+    const containedPadding = `${spacings?.xs}px ${spacings?.l}px`;
+
+    // (thuang): outline variant has border 1px, so padding needs to be smaller
+    const outlinedPadding = `${(spacings?.xs || 0) - 1}px ${
+      (spacings?.l || 0) - 1
+    }px`;
+
+    const padding = variant === "outlined" ? outlinedPadding : containedPadding;
+
     return `
-      padding: ${spacings?.xs}px ${spacings?.l}px;
+      padding: ${padding};
       min-width: 120px;
       height: 34px;
       &:hover, &:focus {
         color: white;
         background-color: ${colors?.primary[500]};
-        border: none;
         box-shadow: none;
       }
       &:focus {
@@ -37,7 +46,6 @@ const ButtonBase = styled(Button, {
       &:active {
         color: white;
         background-color: ${colors?.primary[600]};
-        border: none;
         box-shadow: none;
       }
       &:disabled {
@@ -119,7 +127,7 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
       &:hover, &:focus {
         color: ${colors?.gray[500]};
       }
-      
+
       &:active {
         color: ${colors?.gray[600]};
       }
