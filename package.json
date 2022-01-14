@@ -35,6 +35,7 @@
     "@wessberg/rollup-plugin-ts": "^1.3.14",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "chromatic": "^6.3.4",
     "commitizen": "^4.2.4",
     "concurrently": "^6.0.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -94,7 +95,8 @@
     "semantic-release": "semantic-release",
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
-    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.json"
+    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.json",
+    "chromatic": "npx chromatic --project-token=cad4aacbfeba"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
