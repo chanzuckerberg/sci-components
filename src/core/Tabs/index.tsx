@@ -94,7 +94,7 @@ export const Tab = styled(RawTab)`
       // (thuang): Large Tab height is 30px, the offset is 4px
       height: 26px;
       font-style: normal;
-      font-weight: 600;
+      font-weight: 300;
       font-size: 14px;
       line-height: 20px;
       padding: 0;

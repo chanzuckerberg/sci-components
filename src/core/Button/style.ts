@@ -22,6 +22,7 @@ const ButtonBase = styled(Button, {
 
     return `
       padding: ${spacings?.xs}px ${spacings?.l}px;
+      padding: 50px;
       min-width: 120px;
       height: 34px;
       &:hover, &:focus {
