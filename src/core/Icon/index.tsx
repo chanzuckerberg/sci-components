@@ -1,20 +1,22 @@
-import React from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { iconMap, IconNameToSizes } from "./map";
 import { ExtraProps, StyledIcon, StyledSvgIcon } from "./style";
 
-type Props<IconName extends keyof IconNameToSizes> = ExtraProps<IconName>;
+export type { IconNameToSizes };
 
-function Icon<IconName extends keyof IconNameToSizes>({
-  sdsIcon,
-  sdsSize,
-  sdsType,
-}: Props<IconName>): JSX.Element | null {
+export type IconProps<IconName extends keyof IconNameToSizes> =
+  ExtraProps<IconName>;
+
+export default forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
+  { sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
+  ref: ForwardedRef<HTMLDivElement | null>
+): JSX.Element | null {
   const icon = iconMap[sdsIcon] ?? {};
   const { largeIcon, smallIcon } = icon;
 
   if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
-      <StyledIcon>
+      <StyledIcon ref={ref}>
         <StyledSvgIcon
           fillcontrast="white"
           viewBox="0 0 14 14"
@@ -28,7 +30,7 @@ function Icon<IconName extends keyof IconNameToSizes>({
   }
   if ((sdsSize === "l" || sdsSize === "xl") && largeIcon) {
     return (
-      <StyledIcon>
+      <StyledIcon ref={ref}>
         <StyledSvgIcon
           fillcontrast="white"
           viewBox="0 0 32 32"
@@ -47,6 +49,4 @@ function Icon<IconName extends keyof IconNameToSizes>({
   );
 
   return null;
-}
-
-export default Icon;
+});
