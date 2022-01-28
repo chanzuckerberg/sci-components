@@ -28,11 +28,7 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
     <StyledMenuItem {...(originalMenuItemProps as unknown)}>
       {isMultiSelect && (
         // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheck
-          // TODO (mlila): replace with sds Icon class once complete
-          selected={selected}
-          color="primary"
-        />
+        <StyledCheck selected={selected} color="primary" />
       )}
 
       <ContentWrapper>

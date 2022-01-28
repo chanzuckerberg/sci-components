@@ -49,7 +49,9 @@ export const InputBaseWrapper = styled.div`
   }}
 `;
 
-export const StyledInputBase = styled(InputBase)<{ search: boolean }>`
+export const StyledInputBase = styled(InputBase, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})<{ search: boolean }>`
   width: 100%;
   /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
   caret-color: ${({ search }) => (search ? "auto" : "transparent")};

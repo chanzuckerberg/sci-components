@@ -4,14 +4,22 @@ import {
   TooltipClassKey,
   TooltipProps as RawTooltipProps,
 } from "@material-ui/core";
-import React from "react";
+import React, { forwardRef } from "react";
 import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
 
 type TooltipProps = ExtraProps & RawTooltipProps;
 
 export { TooltipProps };
 
-const Tooltip = (props: TooltipProps): JSX.Element => {
+/**
+ * @warning If the tooltip wraps a disabled component, please make sure to
+ * wrap the children in a `<span>` tag.
+ * https://mui.com/components/tooltips/#disabled-elements
+ */
+export default forwardRef(function Tooltip(
+  props: TooltipProps,
+  ref
+): JSX.Element {
   const {
     classes,
     inverted,
@@ -75,10 +83,11 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
       leaveDelay={leaveDelay}
       interactive
       title={content}
+      ref={ref}
       {...rest}
     />
   );
-};
+});
 
 function mergeClass({
   props,
@@ -97,5 +106,3 @@ function mergeClass({
 
   return propClassName ? `${propClassName} ${className}` : className;
 }
-
-export default Tooltip;

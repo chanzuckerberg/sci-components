@@ -1,9 +1,6 @@
-import { SvgIcon } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
 import React from "react";
-import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
-import { ReactComponent as IconFilters } from "../../common/svgs/IconFilters.svg";
-import { ReactComponent as IconInfoPanel } from "../../common/svgs/IconInfoPanel.svg";
+import Icon from "../Icon";
 import IconButton from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -30,13 +27,7 @@ export const LargePrimaryIconButton = Template.bind({});
 
 LargePrimaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon
-      fillcontrast="white"
-      viewBox="0 0 32 32"
-      component={IconInfoPanel}
-    />
-  ),
+  icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "primary",
 };
@@ -45,9 +36,7 @@ export const LargeSecondaryIconButton = Template.bind({});
 
 LargeSecondaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon fillcontrast="white" viewBox="0 0 32 32" component={IconFilters} />
-  ),
+  icon: <Icon sdsIcon="checkCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "secondary",
 };
@@ -56,9 +45,7 @@ export const LargeTertiaryIconButton = Template.bind({});
 
 LargeTertiaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon fillcontrast="white" viewBox="0 0 14 14" component={IconClose} />
-  ),
+  icon: <Icon sdsIcon="xMark" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
   sdsType: "tertiary",
 };
@@ -67,9 +54,7 @@ export const MediumTertiaryIconButton = Template.bind({});
 
 MediumTertiaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon fillcontrast="white" viewBox="0 0 14 14" component={IconClose} />
-  ),
+  icon: <Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />,
   sdsSize: "medium",
   sdsType: "tertiary",
 };
@@ -78,13 +63,7 @@ export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon
-      fillcontrast="white"
-      viewBox="0 0 32 32"
-      component={IconInfoPanel}
-    />
-  ),
+  icon: <Icon sdsIcon="infoCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "primary",
 };
@@ -93,9 +72,7 @@ export const SmallSecondaryIconButton = Template.bind({});
 
 SmallSecondaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon fillcontrast="white" viewBox="0 0 32 32" component={IconFilters} />
-  ),
+  icon: <Icon sdsIcon="checkCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "secondary",
 };
@@ -104,9 +81,7 @@ export const SmallTertiaryIconButton = Template.bind({});
 
 SmallTertiaryIconButton.args = {
   disabled: false,
-  icon: (
-    <SvgIcon fillcontrast="white" viewBox="0 0 14 14" component={IconClose} />
-  ),
+  icon: <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
   sdsType: "tertiary",
 };

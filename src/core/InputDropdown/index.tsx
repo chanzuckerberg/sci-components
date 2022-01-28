@@ -1,7 +1,6 @@
-import { SvgIcon } from "@material-ui/core";
 import React from "react";
-import { ReactComponent as IconArrowDown } from "../../common/svgs/IconArrowDown.svg";
-import { InputDropdownProps, StyledInputDropdown } from "./styles";
+import Icon from "../Icon";
+import { InputDropdownProps, StyledInputDropdown } from "./style";
 
 export { InputDropdownProps };
 
@@ -18,11 +17,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown {...props}>
       <span>{label}</span>
-      <SvgIcon
-        viewBox="0 0 14 14"
-        component={IconArrowDown}
-        fillcontrast="white"
-      />
+      <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
     </StyledInputDropdown>
   );
 };

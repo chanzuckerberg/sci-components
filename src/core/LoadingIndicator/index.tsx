@@ -1,16 +1,15 @@
 import React from "react";
+import Icon from "../Icon";
 import {
   LoadingIndicatorProps,
-  StyledIconLoadingAnimated,
   StyledLoadingIndicator,
   StyledText,
 } from "./style";
 
 const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
-  // TODO (mlila): replace with sds tag when available
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle}>
-      <StyledIconLoadingAnimated fillcontrast="white" />
+      <Icon sdsIcon="loading" sdsSize="l" sdsType="static" />
       <StyledText>Loading</StyledText>
     </StyledLoadingIndicator>
   );

@@ -1,11 +1,8 @@
-import { Slide, SvgIcon } from "@material-ui/core";
+import { Slide } from "@material-ui/core";
 import { AlertProps } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
-import { ReactComponent as IconAlert } from "../../common/svgs/IconAlert.svg";
-import { ReactComponent as IconClose } from "../../common/svgs/IconClose.svg";
-import { ReactComponent as IconInfo } from "../../common/svgs/IconInfo.svg";
-import { ReactComponent as IconSuccess } from "../../common/svgs/IconSuccess.svg";
 import Button from "../Button";
+import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { StyledNotification } from "./style";
 
@@ -57,11 +54,13 @@ const Notification = ({
   const getIcon = () => {
     switch (intent) {
       case "success":
-        return <IconSuccess fillcontrast="white" />;
+        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
       case "info":
-        return <IconInfo fillcontrast="white" />;
+        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
       default:
-        return <IconAlert fillcontrast="white" />;
+        return (
+          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+        );
     }
   };
 
@@ -75,15 +74,11 @@ const Notification = ({
               <IconButton
                 onClick={handleClose}
                 sdsSize="small"
-                sdsType="secondary"
+                sdsType="tertiary"
                 data-testid="notificationCloseButton"
               >
                 {" "}
-                <SvgIcon
-                  fillcontrast="white"
-                  viewBox="0 0 14 14"
-                  component={IconClose}
-                />{" "}
+                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
               </IconButton>
             ) : null
           }

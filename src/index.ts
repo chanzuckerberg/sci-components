@@ -1,6 +1,7 @@
 /* eslint-disable import/export */
 import "./common/styles-dictionary/css/variables.css";
 import "./common/styles-dictionary/scss/_variables.scss";
+
 export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
 export * from "./core/Button";
@@ -13,8 +14,20 @@ export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
 export * from "./core/ComplexFilter";
 export { default as ComplexFilter } from "./core/ComplexFilter";
+export * from "./core/Dialog";
+export { default as Dialog } from "./core/Dialog";
+export * from "./core/DialogActions";
+export { default as DialogActions } from "./core/DialogActions";
+export * from "./core/DialogContent";
+export { default as DialogContent } from "./core/DialogContent";
+export * from "./core/DialogPaper";
+export { default as DialogPaper } from "./core/DialogPaper";
+export * from "./core/DialogTitle";
+export { default as DialogTitle } from "./core/DialogTitle";
 export * from "./core/Dropdown";
 export { default as Dropdown } from "./core/Dropdown";
+export * from "./core/Icon";
+export { default as Icon } from "./core/Icon";
 export * from "./core/IconButton";
 export { default as IconButton } from "./core/IconButton";
 export * from "./core/InputDropdown";
