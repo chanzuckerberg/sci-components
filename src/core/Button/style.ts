@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button } from "@material-ui/core";
+import { Button, ButtonProps } from "@material-ui/core";
 import {
   fontCapsXxxs,
   getColors,
@@ -13,7 +13,7 @@ export interface ExtraProps {
   isRounded?: boolean;
   sdsStyle?: "minimal" | "rounded" | "square";
   sdsType?: "primary" | "secondary";
-  color?: "success" | "error" | "warning" | "info";
+  color?: "primary" | "secondary" | "success" | "error" | "warning" | "info";
 }
 
 // Please keep this in sync with the props used in `ExtraProps`
@@ -27,12 +27,12 @@ const doNotForwardProps = [
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !doNotForwardProps.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
-})<ExtraProps>`
+})`
   box-shadow: none;
-  ${(props) => {
-    const { variant, color: colorProp } = props;
+  ${(props: Props & ExtraProps & Omit<ButtonProps, "color">) => {
+    const { variant, color: colorProp = "primary" } = props;
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
@@ -46,6 +46,10 @@ const ButtonBase = styled(Button, {
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
 
     const color = colors && colors[colorProp];
+
+    if (!color) {
+      throw new Error(`Button color not found: ${colorProp}`);
+    }
 
     return `
       padding: ${padding};
@@ -92,7 +96,7 @@ interface IsAllCaps extends Props {
 
 const MinimalButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
 })`
   ${(props: IsAllCaps) => {
@@ -161,7 +165,7 @@ interface IsRounded extends Props {
 }
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
 })`
   &:focus {
