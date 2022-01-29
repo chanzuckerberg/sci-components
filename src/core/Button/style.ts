@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button } from "@material-ui/core";
+import { alpha, Button, ButtonProps } from "@material-ui/core";
 import {
   fontCapsXxxs,
   getColors,
@@ -8,16 +8,44 @@ import {
   Props,
 } from "../styles";
 
-const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+export interface ExtraProps {
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+  sdsStyle?: "minimal" | "rounded" | "square";
+  sdsType?: "primary" | "secondary";
+  /**
+   * TODO(thuang): Remove custom `color` prop when we upgrade to MUIv5.
+   * Currently we're extending MUIv4 Button's `color` props from "primary" and
+   * "secondary" to the following ones.
+   */
+  color?: "primary" | "secondary" | "success" | "error" | "warning" | "info";
+}
+
+type V5ButtonProps = Props & ExtraProps & Omit<ButtonProps, "color">;
+
+// Please keep this in sync with the props used in `ExtraProps`
+const doNotForwardProps = [
+  "isAllCaps",
+  "isRounded",
+  "sdsStyle",
+  "sdsType",
+  /**
+   * TODO(thuang): Exception. This is a native MUI prop.
+   */
+  // "color",
+];
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
 })`
   box-shadow: none;
-  ${(props) => {
-    const { variant } = props;
+
+  ${v5ColorSupport}
+
+  ${(props: V5ButtonProps) => {
+    const { variant, color: colorProp = "primary" } = props;
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
@@ -30,22 +58,19 @@ const ButtonBase = styled(Button, {
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
 
+    const color = colors && colors[colorProp];
+
     return `
       padding: ${padding};
       min-width: 120px;
       height: 34px;
-      &:hover, &:focus {
-        color: white;
-        background-color: ${colors?.primary[500]};
-        box-shadow: none;
-      }
       &:focus {
         outline: 5px auto Highlight;
         outline: 5px auto -webkit-focus-ring-color;
       }
       &:active {
         color: white;
-        background-color: ${colors?.primary[600]};
+        background-color: ${color?.[600]};
         box-shadow: none;
       }
       &:disabled {
@@ -69,15 +94,17 @@ export const RoundedButton = styled(ButtonBase)`
 
 export const SquareButton = ButtonBase;
 
-interface IsAllCaps extends Props {
+interface IsAllCaps extends V5ButtonProps {
   isAllCaps?: boolean;
 }
 
-const MinimalButton = styled(Button, {
+export const MinimalButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
 })`
+  ${v5ColorSupport}
+
   ${(props: IsAllCaps) => {
     const spacings = getSpaces(props);
 
@@ -101,50 +128,14 @@ const MinimalButton = styled(Button, {
   }
 `;
 
-export const PrimaryMinimalButton = styled(MinimalButton)`
-  ${(props) => {
-    const colors = getColors(props);
-
-    return `
-      &:hover, &:focus {
-        color: ${colors?.primary[500]};
-      }
-      &:active {
-        color: ${colors?.primary[600]};
-      }
-      &:disabled {
-        color: ${colors?.gray[400]};
-      }
-    `;
-  }}
-`;
-
-export const SecondaryMinimalButton = styled(MinimalButton)`
-  ${(props) => {
-    const colors = getColors(props);
-
-    return `
-      &:hover, &:focus {
-        color: ${colors?.gray[500]};
-      }
-
-      &:active {
-        color: ${colors?.gray[600]};
-      }
-      &:disabled {
-        color: ${colors?.gray[300]};
-      }
-    `;
-  }}
-`;
-
 // Legacy support for backwards-compatible props
-interface IsRounded extends Props {
+interface IsRounded extends V5ButtonProps {
   isRounded?: boolean;
 }
+
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(String(prop));
   },
 })`
   &:focus {
@@ -165,3 +156,46 @@ export const StyledButton = styled(Button, {
     `;
   }}
 `;
+
+function v5ColorSupport(props: V5ButtonProps) {
+  const colors = getColors(props);
+  const {
+    variant = "contained",
+    color: colorProp = "primary",
+    sdsType,
+  } = props;
+
+  const color = colors?.[colorProp];
+
+  const result = {
+    contained: `
+      color: white;
+      background-color: ${color?.[400]};
+      &:hover, &:focus {
+        color: white;
+        background-color: ${color?.[500]};
+        box-shadow: none;
+      }
+    `,
+    outlined: `
+      color: ${color?.[400]};
+      border: 1px solid ${alpha(color?.[400] || "#000", 0.5)};
+      &:hover, &:focus {
+        color: white;
+        border: 1px solid ${color?.[500]};
+        background-color: ${color?.[500]};
+      }
+    `,
+    text: `
+      color: ${sdsType === "primary" ? color?.[400] : "black"};
+      &:hover, &:focus {
+        color: ${sdsType === "primary" ? color?.[500] : "black"};
+      }
+      &:active {
+        color: ${sdsType === "primary" ? color?.[600] : "black"};
+      }
+    `,
+  };
+
+  return result[variant];
+}

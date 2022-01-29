@@ -1,25 +1,24 @@
 import { ButtonProps as RawButtonProps } from "@material-ui/core";
 import React from "react";
 import {
-  PrimaryMinimalButton,
+  ExtraProps,
+  MinimalButton,
   RoundedButton,
-  SecondaryMinimalButton,
   SquareButton,
   StyledButton,
 } from "./style";
 
-interface SdsProps {
-  isAllCaps?: boolean;
-  isRounded?: boolean;
-  sdsStyle?: "minimal" | "rounded" | "square";
-  sdsType?: "primary" | "secondary";
-}
-export type ButtonProps = RawButtonProps & SdsProps;
+export type ButtonProps = Omit<RawButtonProps, "color"> & ExtraProps;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref): JSX.Element | null => {
-    const sdsStyle = props?.sdsStyle;
-    const sdsType = props?.sdsType;
+    const {
+      // TEMP(thuang): Set as any to get around the type error.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      color = "" as any,
+      sdsStyle,
+      sdsType,
+    } = props;
 
     if (!sdsStyle || !sdsType) {
       // eslint-disable-next-line no-console
@@ -38,13 +37,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     // isAllCaps is only used for the Minimal Button.  It defaults to true.
     const isAllCaps =
       typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
+
     const propsWithDefault = { ...props, isAllCaps };
 
     switch (true) {
       case sdsStyle === "rounded" && sdsType === "primary":
         return (
           <RoundedButton
-            color="primary"
+            color={color || "primary"}
             ref={ref}
             variant="contained"
             {...propsWithDefault}
@@ -53,7 +53,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       case sdsStyle === "rounded" && sdsType === "secondary":
         return (
           <RoundedButton
-            color="primary"
+            color={color || "primary"}
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
@@ -62,7 +62,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       case sdsStyle === "square" && sdsType === "primary":
         return (
           <SquareButton
-            color="primary"
+            color={color || "primary"}
             ref={ref}
             variant="contained"
             {...propsWithDefault}
@@ -71,32 +71,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       case sdsStyle === "square" && sdsType === "secondary":
         return (
           <SquareButton
-            color="primary"
+            color={color || "primary"}
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
           />
         );
-      case sdsStyle === "minimal" && sdsType === "primary":
+      case sdsStyle === "minimal":
         return (
-          <PrimaryMinimalButton
-            color="primary"
-            ref={ref}
-            variant="text"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "minimal" && sdsType === "secondary":
-        return (
-          <SecondaryMinimalButton
-            color="default"
+          <MinimalButton
+            color={color || "primary"}
             ref={ref}
             variant="text"
             {...propsWithDefault}
           />
         );
       default:
-        return <StyledButton {...propsWithDefault} ref={ref} />;
+        return <StyledButton color={color} {...propsWithDefault} ref={ref} />;
     }
   }
 );
