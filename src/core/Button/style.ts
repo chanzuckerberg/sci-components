@@ -8,16 +8,31 @@ import {
   Props,
 } from "../styles";
 
-const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+export interface ExtraProps {
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+  sdsStyle?: "minimal" | "rounded" | "square";
+  sdsType?: "primary" | "secondary";
+  color?: "success" | "error" | "warning" | "info";
+}
+
+// Please keep this in sync with the props used in `ExtraProps`
+const doNotForwardProps = [
+  "isAllCaps",
+  "isRounded",
+  "sdsStyle",
+  "sdsType",
+  "color",
+];
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(prop.toString());
   },
-})`
+})<ExtraProps>`
   box-shadow: none;
   ${(props) => {
-    const { variant } = props;
+    const { variant, color: colorProp } = props;
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
@@ -30,13 +45,15 @@ const ButtonBase = styled(Button, {
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
 
+    const color = colors && colors[colorProp];
+
     return `
       padding: ${padding};
       min-width: 120px;
       height: 34px;
       &:hover, &:focus {
         color: white;
-        background-color: ${colors?.primary[500]};
+        background-color: ${color[500]};
         box-shadow: none;
       }
       &:focus {
@@ -45,7 +62,7 @@ const ButtonBase = styled(Button, {
       }
       &:active {
         color: white;
-        background-color: ${colors?.primary[600]};
+        background-color: ${color[600]};
         box-shadow: none;
       }
       &:disabled {
