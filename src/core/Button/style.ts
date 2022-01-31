@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Button, ButtonProps } from "@material-ui/core";
 import {
   fontCapsXxxs,
+  getBorders,
   getColors,
   getCorners,
   getSpaces,
@@ -9,11 +10,11 @@ import {
 } from "../styles";
 
 export interface ExtraProps {
+  color?: "primary" | "error";
   isAllCaps?: boolean;
   isRounded?: boolean;
   sdsStyle?: "minimal" | "rounded" | "square";
   sdsType?: "primary" | "secondary";
-  color?: "primary" | "secondary" | "success" | "error" | "warning" | "info";
 }
 
 // Please keep this in sync with the props used in `ExtraProps`
@@ -33,6 +34,7 @@ const ButtonBase = styled(Button, {
   box-shadow: none;
   ${(props: Props & ExtraProps & Omit<ButtonProps, "color">) => {
     const { variant, color: colorProp = "primary" } = props;
+    const borders = getBorders(props);
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
@@ -45,19 +47,26 @@ const ButtonBase = styled(Button, {
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
 
+    const border = borders && borders[colorProp];
     const color = colors && colors[colorProp];
 
+    if (!border) {
+      throw new Error(`Button border not found: ${colorProp}`);
+    }
     if (!color) {
       throw new Error(`Button color not found: ${colorProp}`);
     }
 
     return `
+      background-color: ${color[400]};
+      border: ${border[400]};
+      color: white;
       padding: ${padding};
       min-width: 120px;
       height: 34px;
       &:hover, &:focus {
         color: white;
-        background-color: ${color[500]};
+        background-color: ${color[600]};
         box-shadow: none;
       }
       &:focus {
@@ -67,6 +76,7 @@ const ButtonBase = styled(Button, {
       &:active {
         color: white;
         background-color: ${color[600]};
+        border: ${border[600]};
         box-shadow: none;
       }
       &:disabled {
