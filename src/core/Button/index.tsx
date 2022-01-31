@@ -9,7 +9,7 @@ import {
   StyledButton,
 } from "./style";
 
-export type ButtonProps = RawButtonProps & ExtraProps;
+export type ButtonProps = Omit<RawButtonProps, "color"> & ExtraProps;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref): JSX.Element | null => {
