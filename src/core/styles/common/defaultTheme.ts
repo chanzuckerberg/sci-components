@@ -73,6 +73,7 @@ const defaultThemeColors = {
 const borders = {
   error: {
     "400": `1px solid ${defaultThemeColors.error["400"]}`,
+    "600": `1px solid ${defaultThemeColors.error["600"]}`,
   },
   gray: {
     "100": `1px solid ${defaultThemeColors.gray["100"]}`,
