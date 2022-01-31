@@ -1,17 +1,17 @@
-import { Link as RawLink, LinkProps, makeStyles } from "@material-ui/core";
-import React from "react";
-import { AppThemeOptions } from "../styles";
+import React, { ForwardedRef, forwardRef } from "react";
+import { LinkProps, StyledLink } from "./style";
+
+const Link = (props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
+  const { sdsStyle } = props;
+  let underline: LinkProps["underline"];
+
+  if (sdsStyle === "default") {
+    underline = "none";
+  }
+
+  return <StyledLink {...props} underline={underline} ref={ref} />;
+};
 
 export { LinkProps };
 
-const useStyles = makeStyles((theme: AppThemeOptions) => {
-  return { root: { "&:hover": { color: theme?.app?.colors.primary[600] } } };
-});
-
-const Link = (props: LinkProps): JSX.Element => {
-  const classes = useStyles();
-
-  return <RawLink classes={classes} underline="none" {...props} />;
-};
-
-export default Link;
+export default forwardRef(Link);
