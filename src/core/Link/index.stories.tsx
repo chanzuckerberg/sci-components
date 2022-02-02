@@ -1,8 +1,8 @@
-import { Args, Story } from "@storybook/react";
+import { Story } from "@storybook/react";
 import React from "react";
-import Link from "./index";
+import Link, { LinkProps } from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Demo = (props: LinkProps): JSX.Element => {
   return (
     <Link href="/" {...props}>
       Test Link
@@ -15,8 +15,10 @@ export default {
   title: "Link",
 };
 
-const Template: Story = (args) => <Demo {...args} />;
+const Template: Story<LinkProps> = (args) => <Demo {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  sdsStyle: "default",
+};
