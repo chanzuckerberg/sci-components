@@ -12,15 +12,18 @@ import {
 
 export interface ExtraProps extends Props {
   data?: Array<{
-    label: string;
+    label?: string;
     dataRows: {
       label: string;
       value: string | number;
     }[];
     disabled?: boolean;
   }>;
-  alert?: string | Element;
+  contentAlert?: string | Element;
+  itemAlign?: "left" | "right";
 }
+
+const sdsPropNames = ["contentAlert", "itemAlign"];
 
 export const disabledStyle = (props: SectionProps): string => {
   const colors = getColors(props);
@@ -35,6 +38,7 @@ export const disabledStyle = (props: SectionProps): string => {
 
 interface SectionProps extends Props {
   disabled?: boolean;
+  label?: string;
 }
 
 export const Section = styled.div`
@@ -65,6 +69,8 @@ export const SectionLabel = styled.div`
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
+    if (!props.label) return "";
+
     return `
       margin-bottom: ${spacings?.m}px;
       color: ${colors?.gray["500"]};
@@ -72,7 +78,11 @@ export const SectionLabel = styled.div`
   }}
 `;
 
-export const RowLabel = styled(TableCell)`
+export const RowLabel = styled(TableCell, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
   ${fontHeaderXs}
   ${disabledStyle}
 
@@ -80,7 +90,11 @@ export const RowLabel = styled(TableCell)`
   width: 50%;
 `;
 
-export const RowValue = styled(TableCell)`
+export const RowValue = styled(TableCell, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
   ${fontBodyXs}
   ${disabledStyle}
 

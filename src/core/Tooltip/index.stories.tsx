@@ -128,7 +128,7 @@ const alert = "Some values do not pass the selected filters.";
 export const Table = Template.bind({});
 
 Table.args = {
-  title: <TooltipTableContent alert={alert} data={data} />,
+  title: <TooltipTableContent contentAlert={alert} data={data} />,
 };
 
 export const StyledArrow = Template.bind({});
