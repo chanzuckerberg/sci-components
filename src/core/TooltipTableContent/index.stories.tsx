@@ -1,5 +1,7 @@
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import Tooltip from "../Tooltip";
 import TooltipTableContent from "./index";
 
 const rows = [
@@ -79,7 +81,7 @@ Default.parameters = {
 };
 
 const storyRow = {
-  alignItems: "flex-start",
+  alignItems: "stretch",
   display: "flex",
   flexDirection: "row",
   gap: "20px",
@@ -87,42 +89,37 @@ const storyRow = {
 };
 
 const tooltipStyleMock = {
-  border: "1px solid #CCCCCC",
-  boxShadow: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
   flexGrow: 1,
-  maxWidth: "250px",
-  padding: "6px 14px",
 };
-
-const dataWithoutLabel = [
-  {
-    dataRows: rows.slice(0, 5),
-  },
-];
-
-const dataWithDisabledSection = [
-  {
-    dataRows: rows.slice(0, 5),
-    label: "Section 1",
-  },
-  {
-    dataRows: rows.slice(5, 10),
-    disabled: true,
-    label: "Section 2",
-  },
-];
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
       <div style={tooltipStyleMock as React.CSSProperties}>
-        <TooltipTableContent {...props} data={dataWithoutLabel} />
+        <Tooltip
+          placement="bottom"
+          title={<TooltipTableContent {...props} data={[data[0]]} />}
+        >
+          <InfoOutlinedIcon color="primary" fontSize="small" />
+        </Tooltip>
       </div>
+
       <div style={tooltipStyleMock as React.CSSProperties}>
-        <TooltipTableContent {...props} data={dataWithDisabledSection} />
+        <Tooltip
+          placement="bottom"
+          title={<TooltipTableContent {...props} data={[data[0], data[1]]} />}
+        >
+          <InfoOutlinedIcon color="primary" fontSize="small" />
+        </Tooltip>
       </div>
+
       <div style={tooltipStyleMock as React.CSSProperties}>
-        <TooltipTableContent {...props} data={data} />
+        <Tooltip
+          placement="bottom"
+          title={<TooltipTableContent {...props} data={data} />}
+        >
+          <InfoOutlinedIcon color="primary" fontSize="small" />
+        </Tooltip>
       </div>
     </div>
   );
