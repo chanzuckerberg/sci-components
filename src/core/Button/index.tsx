@@ -4,20 +4,25 @@ import {
   ExtraProps,
   MinimalButton,
   RoundedButton,
+  SecondaryMinimalButton,
   SquareButton,
   StyledButton,
 } from "./style";
 
-export type ButtonProps = Omit<RawButtonProps, "color"> & ExtraProps;
+export interface ButtonProps extends Omit<RawButtonProps, "color">, ExtraProps {
+  sdsStyle?: "minimal" | "rounded" | "square";
+  sdsType?: "primary" | "secondary";
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props: ButtonProps, ref): JSX.Element | null => {
     const {
       // TEMP(thuang): Set as any to get around the type error.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      color = "" as any,
+      color = undefined as any,
       sdsStyle,
       sdsType,
+      ...rest
     } = props;
 
     if (!sdsStyle || !sdsType) {
@@ -38,56 +43,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isAllCaps =
       typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
 
-    const propsWithDefault = { ...props, isAllCaps };
+    const propsWithDefault = { ...rest, color, isAllCaps };
 
     switch (true) {
       case sdsStyle === "rounded" && sdsType === "primary":
         return (
-          <RoundedButton
-            color={color || "primary"}
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
+          <RoundedButton ref={ref} variant="contained" {...propsWithDefault} />
         );
       case sdsStyle === "rounded" && sdsType === "secondary":
         return (
-          <RoundedButton
-            color={color || "primary"}
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
+          <RoundedButton ref={ref} variant="outlined" {...propsWithDefault} />
         );
       case sdsStyle === "square" && sdsType === "primary":
         return (
-          <SquareButton
-            color={color || "primary"}
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
+          <SquareButton ref={ref} variant="contained" {...propsWithDefault} />
         );
       case sdsStyle === "square" && sdsType === "secondary":
         return (
-          <SquareButton
-            color={color || "primary"}
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
+          <SquareButton ref={ref} variant="outlined" {...propsWithDefault} />
         );
-      case sdsStyle === "minimal":
+      case sdsStyle === "minimal" && sdsType === "primary":
+        return <MinimalButton ref={ref} variant="text" {...propsWithDefault} />;
+      case sdsStyle === "minimal" && sdsType === "secondary":
         return (
-          <MinimalButton
-            color={color || "primary"}
+          <SecondaryMinimalButton
             ref={ref}
             variant="text"
             {...propsWithDefault}
           />
         );
       default:
-        return <StyledButton color={color} {...propsWithDefault} ref={ref} />;
+        return <StyledButton {...propsWithDefault} ref={ref} />;
     }
   }
 );

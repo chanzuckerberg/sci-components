@@ -11,8 +11,6 @@ import {
 export interface ExtraProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
-  sdsStyle?: "minimal" | "rounded" | "square";
-  sdsType?: "primary" | "secondary";
   /**
    * TODO(thuang): Remove custom `color` prop when we upgrade to MUIv5.
    * Currently we're extending MUIv4 Button's `color` props from "primary" and
@@ -23,21 +21,12 @@ export interface ExtraProps {
 
 type V5ButtonProps = Props & ExtraProps & Omit<ButtonProps, "color">;
 
-// Please keep this in sync with the props used in `ExtraProps`
-const doNotForwardProps = [
-  "isAllCaps",
-  "isRounded",
-  "sdsStyle",
-  "sdsType",
-  /**
-   * TODO(thuang): Exception. This is a native MUI prop.
-   */
-  // "color",
-];
+// Please add non MUI props from `ExtraProps` here
+const NON_MUI_PROPS = ["isAllCaps", "isRounded"];
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !doNotForwardProps.includes(String(prop));
+    return !NON_MUI_PROPS.includes(String(prop));
   },
 })`
   box-shadow: none;
@@ -100,10 +89,25 @@ interface IsAllCaps extends V5ButtonProps {
 
 export const MinimalButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !doNotForwardProps.includes(String(prop));
+    return !NON_MUI_PROPS.includes(String(prop));
   },
 })`
-  ${v5ColorSupport}
+  ${(props) => {
+    const colors = getColors(props);
+    const { color: colorProp = "primary" } = props;
+
+    const color = colors?.[colorProp];
+
+    return `
+      color: ${color?.[400]};
+      &:hover, &:focus {
+        color: ${color?.[500]};
+      }
+      &:active {
+        color: ${color?.[600]};
+      }
+    `;
+  }}
 
   ${(props: IsAllCaps) => {
     const spacings = getSpaces(props);
@@ -128,6 +132,20 @@ export const MinimalButton = styled(Button, {
   }
 `;
 
+export const SecondaryMinimalButton = styled(MinimalButton)`
+  ${() => {
+    return `
+      color: black;
+      &:hover, &:focus {
+        color: black;
+      }
+      &:active {
+        color: black;
+      }
+    `;
+  }}
+`;
+
 // Legacy support for backwards-compatible props
 interface IsRounded extends V5ButtonProps {
   isRounded?: boolean;
@@ -135,7 +153,7 @@ interface IsRounded extends V5ButtonProps {
 
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop) => {
-    return !doNotForwardProps.includes(String(prop));
+    return !NON_MUI_PROPS.includes(String(prop));
   },
 })`
   &:focus {
@@ -159,11 +177,7 @@ export const StyledButton = styled(Button, {
 
 function v5ColorSupport(props: V5ButtonProps) {
   const colors = getColors(props);
-  const {
-    variant = "contained",
-    color: colorProp = "primary",
-    sdsType,
-  } = props;
+  const { variant = "contained", color: colorProp = "primary" } = props;
 
   const color = colors?.[colorProp];
 
@@ -186,15 +200,7 @@ function v5ColorSupport(props: V5ButtonProps) {
         background-color: ${color?.[500]};
       }
     `,
-    text: `
-      color: ${sdsType === "primary" ? color?.[400] : "black"};
-      &:hover, &:focus {
-        color: ${sdsType === "primary" ? color?.[500] : "black"};
-      }
-      &:active {
-        color: ${sdsType === "primary" ? color?.[600] : "black"};
-      }
-    `,
+    text: ``,
   };
 
   return result[variant];
