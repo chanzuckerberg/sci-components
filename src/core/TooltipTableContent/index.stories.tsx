@@ -56,9 +56,7 @@ const Demo = (props: Args): JSX.Element => {
     return alertContent;
   };
 
-  return (
-    <TooltipTableContent {...props} contentAlert={handleAlert(contentAlert)} />
-  );
+  return <TooltipTableContent {...props} contentAlert={handleAlert()} />;
 };
 
 export default {
