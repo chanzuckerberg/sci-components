@@ -22,6 +22,7 @@ export default forwardRef(function Tooltip(
 ): JSX.Element {
   const {
     classes,
+    followCursor = false,
     inverted,
     sdsStyle = "light",
     subtitle,
@@ -77,6 +78,8 @@ export default forwardRef(function Tooltip(
 
   const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
 
+  const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
   return (
     <RawTooltip
       classes={{ arrow, tooltip }}
@@ -84,6 +87,29 @@ export default forwardRef(function Tooltip(
       interactive
       title={content}
       ref={ref}
+      onMouseMove={
+        followCursor
+          ? (e) => setPosition({ x: e.pageX, y: e.pageY })
+          : undefined
+      }
+      PopperProps={
+        followCursor
+          ? {
+              anchorEl: {
+                clientHeight: 0,
+                clientWidth: 0,
+                getBoundingClientRect: () => ({
+                  bottom: position.y,
+                  height: 0,
+                  left: position.x,
+                  right: position.x,
+                  top: position.y,
+                  width: 0,
+                }),
+              },
+            }
+          : undefined
+      }
       {...rest}
     />
   );

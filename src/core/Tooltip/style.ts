@@ -12,6 +12,7 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends Props {
+  followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
   subtitle?: string;
