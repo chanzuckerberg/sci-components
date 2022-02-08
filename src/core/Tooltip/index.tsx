@@ -92,6 +92,9 @@ export default forwardRef(function Tooltip(
           ? (e) => setPosition({ x: e.pageX, y: e.pageY })
           : undefined
       }
+      // MM: typescript error, missing properties x, y, and toJSON from PopperProps
+      // Tooltip declaration file states all props are optional, unsure why this is happening
+
       PopperProps={
         followCursor
           ? {
@@ -103,8 +106,11 @@ export default forwardRef(function Tooltip(
                   height: 0,
                   left: position.x,
                   right: position.x,
+                  toJSON: () => {},
                   top: position.y,
                   width: 0,
+                  x: position.x,
+                  y: position.y,
                 }),
               },
             }

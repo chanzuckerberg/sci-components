@@ -19,7 +19,7 @@ export interface ExtraProps extends Props {
     }[];
     disabled?: boolean;
   }>;
-  contentAlert?: string | Element;
+  contentAlert?: string | JSX.Element;
   itemAlign?: "left" | "right";
 }
 

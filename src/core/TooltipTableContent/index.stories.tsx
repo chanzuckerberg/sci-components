@@ -1,6 +1,7 @@
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import Link from "../Link";
 import Tooltip from "../Tooltip";
 import TooltipTableContent from "./index";
 
@@ -37,23 +38,34 @@ const data = [
   },
 ];
 
-const itemAlign = "right";
-const contentAlert = null;
-
 const Demo = (props: Args): JSX.Element => {
-  return <TooltipTableContent {...props} />;
+  const { contentAlert } = props;
+  const handleAlert = () => {
+    let alertContent;
+    switch (contentAlert) {
+      case "String":
+        alertContent = "Some values do not pass the selected filter";
+        break;
+      case "Element":
+        alertContent = <Link href="/">Click this link to see samples</Link>;
+        break;
+      case "None":
+      default:
+        alertContent = undefined;
+    }
+    return alertContent;
+  };
+
+  return (
+    <TooltipTableContent {...props} contentAlert={handleAlert(contentAlert)} />
+  );
 };
-const alertWithLink = <p>alert with link</p>;
 
 export default {
   argTypes: {
     contentAlert: {
       control: { type: "select" },
-      options: [
-        "Some values do not pass the selected filter",
-        "Alert with Link",
-        "none",
-      ],
+      options: ["String", "Element", "None"],
     },
     itemAlign: {
       control: { type: "radio" },
@@ -69,9 +81,9 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  contentAlert,
+  contentAlert: "None",
   data,
-  itemAlign,
+  itemAlign: "right",
 };
 
 Default.parameters = {
