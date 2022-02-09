@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TooltipTable /> Test story renders snapshot 1`] = `
+<div
+  class="MuiTableContainer-root"
+  data-testid="tooltipTable"
+>
+  <div
+    class="css-2u46e7"
+  >
+    <div
+      class="css-k74gq5"
+      label="Section 1"
+    >
+      Section 1
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 1
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            1
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 2
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            2
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 3
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            3
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 4
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            4
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 5 
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            5
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    class="css-2u46e7"
+  >
+    <div
+      class="css-k74gq5"
+      label="Section 2"
+    >
+      Section 2
+    </div>
+    <table
+      class="MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 6
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            6
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 7
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            7
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 8
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            8
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 9
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            9
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+          >
+            Label 10
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body css-qctptq MuiTableCell-alignRight MuiTableCell-sizeSmall"
+          >
+            10
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

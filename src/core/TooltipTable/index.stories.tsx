@@ -108,7 +108,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0]]} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
@@ -118,7 +117,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0], data[1]]} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
@@ -128,7 +126,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          placement="right-end"
           title={<TooltipTableContent {...props} data={data} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
@@ -147,3 +144,17 @@ LivePreview.parameters = {
     skip: true,
   },
 };
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <TooltipTableContent
+      {...props}
+      data={[data[0], data[1]]}
+      data-testid="tooltipTable"
+    />
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
