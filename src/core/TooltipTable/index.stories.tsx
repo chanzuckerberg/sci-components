@@ -71,7 +71,7 @@ export default {
     },
   },
   component: Demo,
-  title: "TooltipTableContent",
+  title: "TooltipTable",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
