@@ -65,7 +65,7 @@ yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material
 1. Run: `yarn && yarn start`
 1. A new browser tab will be automatically opened with the storybook!
 
-![image](https://user-images.githubusercontent.com/6309723/124010513-c09f0900-d993-11eb-8fc7-f66a0b4ec16e.png)
+![ ](https://user-images.githubusercontent.com/6309723/124010513-c09f0900-d993-11eb-8fc7-f66a0b4ec16e.png)
 
 #### Tips
 
@@ -136,7 +136,7 @@ To use the default theme, please do the following:
 
 `czifui` implements the Science Initiative Design System as documented in [Figma](https://www.figma.com/file/EaRifXLFs54XTjO1Mlszkg/Science-Design-System-Reference). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
 
-![image](https://user-images.githubusercontent.com/6309723/123888574-a53aec00-d908-11eb-96b3-e32381e30c9a.png)
+![Science Design System Reference file in Figma with Pages outlined in the left panel](https://user-images.githubusercontent.com/6309723/123888574-a53aec00-d908-11eb-96b3-e32381e30c9a.png)
 (NOTE: Please use the left panel to find different types of components (Bases, Genes, DNA, and Chromosomes))
 
 ## How to Use
