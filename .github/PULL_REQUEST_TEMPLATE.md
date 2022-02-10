@@ -1,8 +1,3 @@
----
-title: "type_of_change(scope_of_work): ticket title"
-reviewers: "sds-eng, sds-design"
----
-
 ## Summary
 
 **Structural Element (Base, Gene, DNA, Chromosome or Cell)**
