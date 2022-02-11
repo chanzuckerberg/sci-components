@@ -15,7 +15,8 @@ module.exports = {
     "airbnb-typescript",
     "plugin:sonarjs/recommended",
     "plugin:jest-playwright/recommended",
-    "plugin:prettier/recommended", // This always needs to be the last configuration in the extends array
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

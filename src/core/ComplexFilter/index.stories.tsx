@@ -64,15 +64,26 @@ export const SingleSelectControlled = (): JSX.Element => {
 
 export const MultipleSelect = Template.bind({});
 
+MultipleSelect.args = {
+  multiple: true,
+};
+
+export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
+  isTriggerChangeOnOptionClick: true,
+  multiple: true,
+  onChange: (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+};
+
 export const MultipleSelectWithSearch = Template.bind({});
 
 MultipleSelectWithSearch.args = {
   multiple: true,
   search: true,
-};
-
-MultipleSelect.args = {
-  multiple: true,
 };
 
 function ResizableWrapper({
