@@ -164,4 +164,4 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
 If you would like to contribute to the Science Design System by building requested components, please follow the contribution guidelines [here](https://github.com/chanzuckerberg/sci-components/blob/main/docs/contribution.md).
 
-To request a component, please \***\*\_\_\_\_\*\***.
+To request a component, please reach out in the [#sci-design-system-support channel](https://czi-sci.slack.com/archives/C032S43KKFV).
