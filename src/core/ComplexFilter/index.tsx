@@ -28,6 +28,7 @@ interface ComplexFilterProps<Multiple> {
   PopperComponent?: typeof StyledPopper;
   PaperComponent?: typeof StyledPaper;
   InputDropdownComponent?: typeof InputDropdown;
+  isTriggerChangeOnOptionClick?: boolean;
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -45,6 +46,7 @@ export default function ComplexFilter<
   PopperComponent = StyledPopper,
   PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
+  isTriggerChangeOnOptionClick = false,
   ...rest
 }: ComplexFilterProps<Multiple>): JSX.Element {
   const isControlled = propValue !== undefined;
@@ -149,6 +151,11 @@ export default function ComplexFilter<
     newValue: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null
   ) {
     if (multiple) {
+      if (isTriggerChangeOnOptionClick) {
+        setPendingValue(newValue as DefaultMenuSelectOption[]);
+        return setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+      }
+
       return setPendingValue(newValue as DefaultMenuSelectOption[]);
     }
 
