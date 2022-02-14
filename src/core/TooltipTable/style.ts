@@ -100,6 +100,7 @@ export const RowValue = styled(TableCell, {
 
   padding-top: 0;
   padding-bottom: 0;
+  padding-right: 0 !important;
 `;
 
 export const Alert = styled.div`
