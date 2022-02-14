@@ -50,6 +50,7 @@ export default forwardRef(function Tooltip(
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
     classes,
+    followCursor,
     inverted,
     sdsStyle,
     theme,
