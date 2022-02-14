@@ -19,6 +19,10 @@ import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall
 import { ReactComponent as IconExclamationMarkCircleLarge } from "../../common/svgs/IconExclamationMarkCircleLarge.svg";
 import { ReactComponent as IconExclamationMarkCircleSmall } from "../../common/svgs/IconExclamationMarkCircleSmall.svg";
 import { ReactComponent as IconEyeOpenSmall } from "../../common/svgs/IconEyeOpenSmall.svg";
+import { ReactComponent as IconFlagCheckSmall } from "../../common/svgs/IconFlagCheckSmall.svg";
+import { ReactComponent as IconFlagOutlineSmall } from "../../common/svgs/IconFlagOutlineSmall.svg";
+import { ReactComponent as IconFlagQuestionmarkSmall } from "../../common/svgs/IconFlagQuestionmarkSmall.svg";
+import { ReactComponent as IconFlagXmarkSmall } from "../../common/svgs/IconFlagXmarkSmall.svg";
 import { ReactComponent as IconFlaskLarge } from "../../common/svgs/IconFlaskLarge.svg";
 import { ReactComponent as IconFlaskPrivateLarge } from "../../common/svgs/IconFlaskPrivateLarge.svg";
 import { ReactComponent as IconFlaskPublicLarge } from "../../common/svgs/IconFlaskPublicLarge.svg";
@@ -30,6 +34,7 @@ import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInf
 import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
 import { ReactComponent as IconInfoSpeechBubbleLarge } from "../../common/svgs/IconInfoSpeechBubbleLarge.svg";
 import { ReactComponent as IconLightBulbSmall } from "../../common/svgs/IconLightBulbSmall.svg";
+import { ReactComponent as IconLinesDashed3Solid1Small } from "../../common/svgs/IconLinesDashed3Solid1Small.svg";
 import { ReactComponent as IconLinesHorizontalSmall } from "../../common/svgs/IconLinesHorizontalSmall.svg";
 import { ReactComponent as IconLinkSmall } from "../../common/svgs/IconLinkSmall.svg";
 import { ReactComponent as IconListSmall } from "../../common/svgs/IconListSmall.svg";
@@ -52,9 +57,12 @@ import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefres
 import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
 import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
+import { ReactComponent as IconSearchLinesHorizontalLarge } from "../../common/svgs/IconSearchLinesHorizontalLarge.svg";
+import { ReactComponent as IconSearchLinesHorizontalSmall } from "../../common/svgs/IconSearchLinesHorizontalSmall.svg";
 import { ReactComponent as IconSearchSmall } from "../../common/svgs/IconSearchSmall.svg";
 import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLarge.svg";
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
+import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
 import { ReactComponent as IconTreeDendogramLarge } from "../../common/svgs/IconTreeDendogramLarge.svg";
 import { ReactComponent as IconTreeHorizontalLarge } from "../../common/svgs/IconTreeHorizontalLarge.svg";
@@ -80,6 +88,10 @@ export interface IconNameToSizes {
   edit: "xs" | "s" | "l" | "xl";
   exclamationMarkCircle: "xs" | "s" | "l" | "xl";
   eyeOpen: "xs" | "s";
+  flagCheck: "xs" | "s";
+  flagOutline: "xs" | "s";
+  flagQuestionmark: "xs" | "s";
+  flagXmark: "xs" | "s";
   flask: "l" | "xl";
   flaskPrivate: "xl";
   flaskPublic: "xl";
@@ -90,6 +102,7 @@ export interface IconNameToSizes {
   infoCircle: "xs" | "s" | "l" | "xl";
   infoSpeechBubble: "l" | "xl";
   lightBulb: "xs" | "s";
+  linesDashed3Solid1: "xs" | "s";
   linesHorizontal: "xs" | "s";
   link: "xs" | "s";
   list: "xs" | "s";
@@ -109,8 +122,10 @@ export interface IconNameToSizes {
   refresh: "xs" | "s" | "l" | "xl";
   save: "l" | "xl";
   search: "xs" | "s" | "l" | "xl";
+  searchLinesHorizontal: "xs" | "s" | "l" | "xl";
   share: "l" | "xl";
   slidersHorizontal: "l" | "xl";
+  squareOnDashedSquare: "l" | "xl";
   table: "xs" | "s";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
@@ -182,6 +197,22 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconEyeOpenSmall,
   },
+  flagCheck: {
+    largeIcon: null,
+    smallIcon: IconFlagCheckSmall,
+  },
+  flagOutline: {
+    largeIcon: null,
+    smallIcon: IconFlagOutlineSmall,
+  },
+  flagQuestionmark: {
+    largeIcon: null,
+    smallIcon: IconFlagQuestionmarkSmall,
+  },
+  flagXmark: {
+    largeIcon: null,
+    smallIcon: IconFlagXmarkSmall,
+  },
   flask: {
     largeIcon: IconFlaskLarge,
     smallIcon: null,
@@ -221,6 +252,10 @@ export const iconMap: Props = {
   lightBulb: {
     largeIcon: null,
     smallIcon: IconLightBulbSmall,
+  },
+  linesDashed3Solid1: {
+    largeIcon: null,
+    smallIcon: IconLinesDashed3Solid1Small,
   },
   linesHorizontal: {
     largeIcon: null,
@@ -298,12 +333,20 @@ export const iconMap: Props = {
     largeIcon: IconSearchLarge,
     smallIcon: IconSearchSmall,
   },
+  searchLinesHorizontal: {
+    largeIcon: IconSearchLinesHorizontalLarge,
+    smallIcon: IconSearchLinesHorizontalSmall,
+  },
   share: {
     largeIcon: IconShareLarge,
     smallIcon: null,
   },
   slidersHorizontal: {
     largeIcon: IconSlidersHorizontalLarge,
+    smallIcon: null,
+  },
+  squareOnDashedSquare: {
+    largeIcon: IconSquareOnDashedSquareLarge,
     smallIcon: null,
   },
   table: {

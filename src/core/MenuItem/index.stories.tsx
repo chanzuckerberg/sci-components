@@ -2,7 +2,7 @@
 import { InputLabel, Select, SelectProps } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
-import { Args, storiesOf, Story } from "@storybook/react";
+import { Args, Story } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./index";
 import { DemoWrapper } from "./style";
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MultipleSelect() {
+function MultipleSelectDemo() {
   const classes = useStyles();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
@@ -171,6 +171,4 @@ WithMultiSelectSelected.args = {
   selected: true,
 };
 
-const MenuItemStories = storiesOf("MenuItem", module);
-
-MenuItemStories.add("MultipleSelect", () => <MultipleSelect />);
+export const MultipleSelect = MultipleSelectDemo.bind({});

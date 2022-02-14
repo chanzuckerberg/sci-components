@@ -34,7 +34,7 @@ export const Title = styled(Typography)`
  * Recommends adding props: variant="h6"
  */
 export const Subtitle = styled(Typography)`
-  ${fontBodyXs};
+  ${fontBodyXs}
 
   ${(props) => {
     const colors = getColors(props);
