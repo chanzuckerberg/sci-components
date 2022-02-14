@@ -18,7 +18,7 @@ yarn add czifui
 
 **Currently SDS uses Material UI v4**
 
-czifui installs without peer dependencies to prevent version errors. Please ensure the following dependencies are also installed:
+czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```
   "@emotion/css"
@@ -39,17 +39,6 @@ npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui
 
 // with yarn
 yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
-```
-
-Add the following HTML to your `index.html` at the `<head>` section:
-
-```html
-// installs the sds font from google fonts
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-  rel="stylesheet"
-/>
 ```
 
 ## Usage
