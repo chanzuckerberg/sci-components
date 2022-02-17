@@ -12,7 +12,7 @@ export interface ExtraProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
   /**
-   * TODO(thuang): Remove custom `color` prop when we upgrade to MUIv5.
+   * TODO(185930): Remove custom `color` prop when we upgrade to MUIv5.
    * Currently we're extending MUIv4 Button's `color` props from "primary" and
    * "secondary" to the following ones.
    */
