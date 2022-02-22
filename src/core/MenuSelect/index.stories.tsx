@@ -180,6 +180,7 @@ MultiSelect.args = {
 export const MultiSelectWithSearch = Template.bind({});
 
 MultiSelectWithSearch.args = {
+  InputBaseProps: { placeholder: "Custom placeholder..." },
   multiple: true,
   search: true,
 };
