@@ -12,6 +12,7 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends Props {
+  // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";

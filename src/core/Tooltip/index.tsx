@@ -22,6 +22,7 @@ export default forwardRef(function Tooltip(
 ): JSX.Element {
   const {
     classes,
+    // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
     followCursor = false,
     inverted,
     sdsStyle = "light",
