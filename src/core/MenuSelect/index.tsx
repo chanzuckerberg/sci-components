@@ -1,4 +1,7 @@
-import { InputAdornment } from "@material-ui/core";
+import {
+  InputAdornment,
+  InputBaseProps as RawInputBaseProps,
+} from "@material-ui/core";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
@@ -23,6 +26,7 @@ export interface DefaultMenuSelectOption {
 interface ExtraProps extends StyleProps {
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (event: React.SyntheticEvent) => void;
+  InputBaseProps?: RawInputBaseProps;
 }
 
 type CustomAutocompleteProps<
@@ -60,6 +64,7 @@ export default function MenuSelect<
     noOptionsText = "No options",
     search = false,
     onInputChange = noop,
+    InputBaseProps = {},
   } = props;
 
   return (
@@ -92,6 +97,7 @@ export default function MenuSelect<
                 <StyledSearchIcon />
               </InputAdornment>
             }
+            {...InputBaseProps}
           />
         </InputBaseWrapper>
       )}
