@@ -1,33 +1,61 @@
 import { TextFieldProps as RawTextFieldProps } from "@material-ui/core";
-import React from "react";
-import { StyledInputBase } from "./style";
+import React, { ForwardedRef, forwardRef, useState } from "react";
+import { ExtraProps, StyledInputBase, StyledLabel } from "./style";
 
-interface ExtraProps {
-  intent?: "default" | "error" | "warning";
-  sdsType?: "textField" | "textArea";
-  sdsStage?: "default" | "userInput";
+interface AccessibleInputTextProps {
+  label: string;
+  placeholder?: string;
 }
 
-export type TextFieldProps = RawTextFieldProps & ExtraProps;
+export type InputTextProps = RawTextFieldProps &
+  ExtraProps &
+  AccessibleInputTextProps;
 
-// sdsType: "text field" | "text area"
-// sdsStage: "default" (blank) | "user input" (active)
-// states: default, hover, active, disabled
-// intent: default (accept input) | error (incorrect/incomplete input) | warning (needs attention)
+const TextInput = (
+  props: InputTextProps,
+  ref: ForwardedRef<HTMLInputElement>
+): JSX.Element => {
+  const {
+    id,
+    intent = "default",
+    label,
+    placeholder,
+    sdsType,
+    hideLabel,
+    ...rest
+  } = props;
 
-const TextInput = ({ id, intent }: TextFieldProps): JSX.Element => {
+  const [hasValue, setHasValue] = useState<boolean>(false);
+
+  const handleChange = (event: { target: { value: string } }) => {
+    event.target.value ? setHasValue(true) : setHasValue(false);
+  };
+
+  const inputProps = {
+    "aria-label": `${label}`,
+  };
+
   return (
     <>
-      <label htmlFor={id}>Label</label>
+      {!hideLabel && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
       <StyledInputBase
+        {...rest}
+        ref={ref}
+        inputProps={inputProps}
         type="text"
+        multiline={sdsType === "textArea" ? true : false}
+        minRows={sdsType === "textArea" ? 4 : 2}
         id={id}
+        intent={intent}
         variant="outlined"
         size="small"
-        placeholder="Value"
+        placeholder={placeholder}
+        sdsStage={hasValue ? "userInput" : "default"}
+        sdsType={sdsType}
+        onChange={handleChange}
       />
     </>
   );
 };
 
-export default TextInput;
+export default forwardRef(TextInput);
