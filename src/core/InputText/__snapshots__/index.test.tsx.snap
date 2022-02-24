@@ -5,13 +5,13 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
   class="MuiFormControl-root"
 >
   <label
-    class="css-11wit4b"
+    class="css-ju2puj"
     for="test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-vrrjoa"
+    class="MuiFormControl-root MuiTextField-root css-1b2i1wl"
     data-testid="inputTextBase"
   >
     <div
@@ -43,7 +43,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-vrrjoa"
+    class="MuiFormControl-root MuiTextField-root css-1b2i1wl"
     data-testid="inputTextHideLabel"
   >
     <div
@@ -74,13 +74,13 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <label
-    class="css-11wit4b"
+    class="css-ju2puj"
     for="test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-8kxiym"
+    class="MuiFormControl-root MuiTextField-root css-1j5999k"
     data-testid="inputTextArea"
   >
     <div
