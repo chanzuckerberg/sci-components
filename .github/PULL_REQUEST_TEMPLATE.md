@@ -12,4 +12,4 @@ Copy ticket descirption here
 - [ ] Tests written
 - [ ] Variables from `defaultTheme.ts` used wherever possible
 - [ ] If updating an existing component, depreciate flag has been used where necessary
-- [ ] Chromatic build verified by @sds-design
+- [ ] Chromatic build verified by @chanzuckerberg/sds-design
