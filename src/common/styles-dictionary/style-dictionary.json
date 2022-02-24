@@ -295,6 +295,12 @@
         "height": { "value": "32px" },
         "width": { "value": "32px" }
       }
+    },
+    "corners": {
+      "cornerL": { "value": "20px" },
+      "cornerM": { "value": "4px" },
+      "cornerS": { "value": "2px" },
+      "cornerNone": { "value": "0px" }
     }
   }
 }
