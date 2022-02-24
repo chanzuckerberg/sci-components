@@ -1,5 +1,5 @@
 import { ButtonProps as RawButtonProps } from "@material-ui/core";
-import React from "react";
+import React, { ForwardedRef } from "react";
 import {
   PrimaryMinimalButton,
   RoundedButton,
@@ -14,10 +14,20 @@ interface SdsProps {
   sdsStyle?: "minimal" | "rounded" | "square";
   sdsType?: "primary" | "secondary";
 }
-export type ButtonProps = RawButtonProps & SdsProps;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props: ButtonProps, ref): JSX.Element | null => {
+// (thuang): Support `component` prop
+// https://stackoverflow.com/a/66123108
+export type ButtonProps<C extends React.ElementType> = RawButtonProps<
+  C,
+  { component?: C }
+> &
+  SdsProps;
+
+const Button = React.forwardRef(
+  <C extends React.ElementType>(
+    props: ButtonProps<C>,
+    ref: ForwardedRef<HTMLButtonElement>
+  ): JSX.Element | null => {
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
 
