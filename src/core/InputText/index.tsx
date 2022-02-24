@@ -29,7 +29,11 @@ const TextInput = (
   const [hasValue, setHasValue] = useState<boolean>(false);
 
   const handleChange = (event: { target: { value: string } }) => {
-    event.target.value !== "" ? setHasValue(true) : setHasValue(false);
+    if (event.target.value !== "") {
+      setHasValue(true);
+    } else {
+      setHasValue(false);
+    }
   };
 
   const inputProps = {
