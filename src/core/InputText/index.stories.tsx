@@ -21,35 +21,34 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    placeholder: {
-      control: { type: "text" },
-      defaultValue: "Value",
+    disabled: {
+      control: { type: "boolean" },
     },
-    label: {
-      control: { type: "text" },
-      required: true,
-    },
-    sdsType: {
-      control: { type: "radio" },
-      options: ["textField", "textArea"],
-    },
-    intent: {
-      control: { type: "radio" },
-      options: ["default", "error", "warning"],
-    },
-    sdsStage: {
-      control: { type: "radio" },
-      options: ["default", "userInput"],
+    hideLabel: {
+      control: { type: "boolean" },
     },
     id: {
       control: { type: "text" },
       required: true,
     },
-    hideLabel: {
-      control: { type: "boolean" },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "error", "warning"],
     },
-    disabled: {
-      control: { type: "boolean" },
+    label: {
+      control: { type: "text" },
+      required: true,
+    },
+    placeholder: {
+      control: { type: "text" },
+    },
+    sdsStage: {
+      control: { type: "radio" },
+      options: ["default", "userInput"],
+    },
+    sdsType: {
+      control: { type: "radio" },
+      options: ["textField", "textArea"],
     },
   },
   component: Demo,
@@ -87,6 +86,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
       <InputText
+        {...props}
         id="textFieldPreview"
         sdsType="textField"
         label="Label"
@@ -95,6 +95,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         style={{ width: "200px" }}
       />
       <InputText
+        {...props}
         id="textAreaPreview"
         sdsType="textArea"
         label="Label"
@@ -120,6 +121,7 @@ const TestDemo = (props: Args): JSX.Element => {
   return (
     <FormControl>
       <InputText
+        {...props}
         id="test"
         sdsType="textField"
         label="Label"
@@ -127,7 +129,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Value"
         data-testid="inputTextBase"
       />
-      {/* @ts-ignore */}
+      {/* @ts-expect-error */}
       <InputText
         sdsType="textField"
         hideLabel={false}
