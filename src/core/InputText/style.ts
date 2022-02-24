@@ -76,9 +76,11 @@ export const StyledLabel = styled.label`
 
   ${(props) => {
     const typography = getTypography(props);
+    const spacings = getSpaces(props);
 
     return `
       font-family: ${typography?.fontFamily};
+      margin-bottom: ${spacings?.xxxs}px;
     `;
   }}
 `;
@@ -121,7 +123,7 @@ export const StyledInputBase = styled(TextField, {
 
       ${sdsType === "textArea" && textArea(props)}
       ${intent === "error" && error(props)}
-    ${intent === "warning" && warning(props)}
+      ${intent === "warning" && warning(props)}
       ${disabled && disabledStyled(props)}
     `;
   }}

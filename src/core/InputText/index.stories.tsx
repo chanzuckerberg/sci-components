@@ -100,7 +100,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         label="Label"
         hideLabel={true}
         placeholder="Value"
-        style={{ width: "200px" }}
+        style={{ minWidth: "200px" }}
       />
     </div>
   );
