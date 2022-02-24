@@ -5,6 +5,10 @@ import Tabs, { Tab, TabsProps } from "./index";
 
 export default {
   argTypes: {
+    sdsSize: {
+      control: { type: "select" },
+      options: ["large", "small"],
+    },
     tabOneLabel: {
       control: {
         type: "text",
@@ -28,10 +32,12 @@ export default {
 interface TabsArgs extends TabsProps {
   tabOneLabel: string;
   tabTwoLabel: string;
+  tabOneCount?: number;
+  tabTwoCount?: number;
 }
 
 const Template: Story<TabsArgs> = (props: TabsArgs) => {
-  const { tabOneLabel, tabTwoLabel, ...args } = props;
+  const { tabOneLabel, tabTwoLabel, tabOneCount, tabTwoCount, ...args } = props;
 
   const [value, setValue] = useState(0);
 
@@ -44,8 +50,8 @@ const Template: Story<TabsArgs> = (props: TabsArgs) => {
 
   return (
     <Tabs {...args} value={value} onChange={handleTabsChange}>
-      <Tab label={tabOneLabel} />
-      <Tab label={tabTwoLabel} />
+      <Tab label={tabOneLabel} count={tabOneCount} />
+      <Tab label={tabTwoLabel} count={tabTwoCount} />
     </Tabs>
   );
 };
@@ -54,6 +60,7 @@ const Template: Story<TabsArgs> = (props: TabsArgs) => {
 export const Default = Template.bind({});
 
 Default.args = {
+  sdsSize: "large",
   tabOneLabel: "Upload from Your Computer",
   tabTwoLabel: "Upload from Basespace",
   underlined: true,
@@ -73,32 +80,59 @@ Default.parameters = {
 const livePreviewWrapperStyle: React.CSSProperties = {
   alignItems: "center",
   display: "flex",
-  flexDirection: "column",
-  gap: "20px",
+  gap: "40px",
   width: "100%",
 };
 
 function LivePreviewDemo(props: Args): JSX.Element {
   const finalProps = {
     ...props,
-    style: { width: "400px" },
+    style: { width: "200px" },
   };
 
   return (
     <div style={livePreviewWrapperStyle}>
-      <Template
-        tabOneLabel="Tab One"
-        tabTwoLabel="Tab Two"
-        onChange={noop}
-        {...finalProps}
-      />
-      <Template
-        {...finalProps}
-        onChange={noop}
-        tabOneLabel="Tab One"
-        tabTwoLabel="Tab Two"
-        underlined
-      />
+      <div>
+        <Template
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          onChange={noop}
+          underlined
+          {...finalProps}
+        />
+      </div>
+      <div>
+        <Template
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          tabOneCount={123}
+          onChange={noop}
+          underlined
+          {...finalProps}
+        />
+      </div>
+      <div />
+      <div>
+        <Template
+          onChange={noop}
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          sdsSize="small"
+          underlined
+          {...finalProps}
+        />
+      </div>
+      <div>
+        <Template
+          onChange={noop}
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          tabOneCount={123}
+          sdsSize="small"
+          underlined
+          {...finalProps}
+        />
+      </div>
     </div>
   );
 }
@@ -107,10 +141,7 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
 
-LivePreview.args = {
-  tabOneLabel: "Upload from Your Computer",
-  tabTwoLabel: "Upload from Basespace",
-};
+LivePreview.args = {};
 
 LivePreview.parameters = {
   snapshot: {
@@ -120,15 +151,47 @@ LivePreview.parameters = {
 
 // Test
 function TestDemo(props: Args): JSX.Element {
+  const finalProps = {
+    ...props,
+    "data-testid": "tabs",
+    style: { width: "400px" },
+  };
+
   return (
-    <Template
-      {...props}
-      onChange={noop}
-      tabOneLabel="Tab One"
-      tabTwoLabel="Tab Two"
-      data-testid="tabs"
-      underlined
-    />
+    <div style={livePreviewWrapperStyle}>
+      <div>
+        <h4>Default</h4>
+        <Template
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          tabOneCount={123}
+          onChange={noop}
+          {...finalProps}
+        />
+      </div>
+      <div>
+        <h4>Small</h4>
+        <Template
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          tabOneCount={123}
+          onChange={noop}
+          sdsSize="small"
+          {...finalProps}
+        />
+      </div>
+      <div>
+        <h4>Underlined</h4>
+        <Template
+          onChange={noop}
+          tabOneLabel="Tab One"
+          tabTwoLabel="Tab Two"
+          tabOneCount={123}
+          underlined
+          {...finalProps}
+        />
+      </div>
+    </div>
   );
 }
 

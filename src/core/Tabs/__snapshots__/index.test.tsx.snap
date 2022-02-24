@@ -2,54 +2,217 @@
 
 exports[`<Tabs /> Test story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root css-m4aju7"
-  data-testid="tabs"
+  style="align-items: center; display: flex; gap: 40px; width: 100%;"
 >
-  <div
-    class="MuiTabs-scroller MuiTabs-fixed"
-    style="overflow: hidden;"
-  >
+  <div>
+    <h4>
+      Default
+    </h4>
     <div
-      class="MuiTabs-flexContainer"
-      role="tablist"
+      class="MuiTabs-root css-7c5evh"
+      data-testid="tabs"
+      style="width: 400px;"
     >
-      <button
-        aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-17gm9np Mui-selected"
-        role="tab"
-        tabindex="0"
-        type="button"
+      <div
+        class="MuiTabs-scroller MuiTabs-fixed"
+        style="overflow: hidden;"
       >
-        <span
-          class="MuiTab-wrapper"
+        <div
+          class="MuiTabs-flexContainer"
+          role="tablist"
         >
-          Tab One
-        </span>
+          <button
+            aria-selected="true"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds Mui-selected"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              <span
+                class="css-1wj4pv3"
+              >
+                <span
+                  class="css-1szlfza"
+                >
+                  Tab One
+                </span>
+                <span
+                  class="css-1mg4zid"
+                >
+                  123
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              Tab Two
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
         <span
-          class="MuiTouchRipple-root"
+          class="PrivateTabIndicator-root-1 PrivateTabIndicator-colorSecondary-3 css-1r8eawc"
+          style="left: 0px; width: 0px;"
         />
-      </button>
-      <button
-        aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-17gm9np"
-        role="tab"
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="MuiTab-wrapper"
-        >
-          Tab Two
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
+      </div>
     </div>
-    <span
-      class="PrivateTabIndicator-root-1 PrivateTabIndicator-colorSecondary-3 css-1r8eawc"
-      style="left: 0px; width: 0px;"
-    />
+  </div>
+  <div>
+    <h4>
+      Small
+    </h4>
+    <div
+      class="MuiTabs-root css-7c5evh"
+      data-testid="tabs"
+      style="width: 400px;"
+    >
+      <div
+        class="MuiTabs-scroller MuiTabs-fixed"
+        style="overflow: hidden;"
+      >
+        <div
+          class="MuiTabs-flexContainer"
+          role="tablist"
+        >
+          <button
+            aria-selected="true"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-csy3xc Mui-selected"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              <span
+                class="css-1wj4pv3"
+              >
+                <span
+                  class="css-1szlfza"
+                >
+                  Tab One
+                </span>
+                <span
+                  class="css-1mg4zid"
+                >
+                  123
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-csy3xc"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              Tab Two
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <span
+          class="PrivateTabIndicator-root-1 PrivateTabIndicator-colorSecondary-3 css-1r8eawc"
+          style="left: 0px; width: 0px;"
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>
+      Underlined
+    </h4>
+    <div
+      class="MuiTabs-root css-3mytyp"
+      data-testid="tabs"
+      style="width: 400px;"
+    >
+      <div
+        class="MuiTabs-scroller MuiTabs-fixed"
+        style="overflow: hidden;"
+      >
+        <div
+          class="MuiTabs-flexContainer"
+          role="tablist"
+        >
+          <button
+            aria-selected="true"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds Mui-selected"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              <span
+                class="css-1wj4pv3"
+              >
+                <span
+                  class="css-1szlfza"
+                >
+                  Tab One
+                </span>
+                <span
+                  class="css-1mg4zid"
+                >
+                  123
+                </span>
+              </span>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiTab-wrapper"
+            >
+              Tab Two
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <span
+          class="PrivateTabIndicator-root-1 PrivateTabIndicator-colorSecondary-3 css-1r8eawc"
+          style="left: 0px; width: 0px;"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;
