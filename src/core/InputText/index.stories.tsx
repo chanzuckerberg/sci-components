@@ -60,12 +60,12 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  placeholder: "Value",
-  label: "Label",
-  sdsType: "textField",
-  id: "Test",
-  hideLabel: false,
   disabled: false,
+  hideLabel: false,
+  id: "Test",
+  label: "Label",
+  placeholder: "Value",
+  sdsType: "textField",
 };
 
 Default.parameters = {
@@ -79,7 +79,6 @@ const storyRow = {
   display: "flex",
   flexDirection: "row",
   gap: "24px",
-  flex: "0 0 200px",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
@@ -129,7 +128,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Value"
         data-testid="inputTextBase"
       />
-      {/* @ts-expect-error */}
+      {/* @ts-expect-error testing fail state */}
       <InputText
         sdsType="textField"
         hideLabel={false}

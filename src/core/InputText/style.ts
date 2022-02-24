@@ -72,7 +72,7 @@ const textArea = (props: ExtraProps): SerializedStyles => {
 
 export const StyledLabel = styled.label`
   display: block;
-  ${fontBodyM};
+  ${fontBodyM}
 
   ${(props) => {
     const typography = getTypography(props);
@@ -121,7 +121,7 @@ export const StyledInputBase = styled(TextField, {
 
       ${sdsType === "textArea" && textArea(props)}
       ${intent === "error" && error(props)}
-    ${intent === "warning" && warning(props)};
+    ${intent === "warning" && warning(props)}
       ${disabled && disabledStyled(props)}
     `;
   }}
