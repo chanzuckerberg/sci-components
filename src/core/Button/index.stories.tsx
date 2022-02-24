@@ -11,7 +11,13 @@ export const actions = {
 };
 
 storiesOf("Button", module).add("Rounded Primary", () => (
-  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
+  <Button
+    // (thuang): This is here to test that SDS Button support `component` prop
+    component="span"
+    onClick={actions.onClick}
+    sdsStyle="rounded"
+    sdsType="primary"
+  >
     {text}
   </Button>
 ));
