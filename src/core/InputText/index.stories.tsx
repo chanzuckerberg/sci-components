@@ -125,7 +125,30 @@ const TestDemo = (props: Args): JSX.Element => {
         label="Label"
         hideLabel={false}
         placeholder="Value"
-        data-testid="inputText"
+        data-testid="inputTextBase"
+      />
+      {/* @ts-ignore */}
+      <InputText
+        sdsType="textField"
+        hideLabel={false}
+        data-testid="inputTextFail"
+      />
+
+      <InputText
+        id="test-hide-label"
+        sdsType="textField"
+        label="Hidden Label"
+        hideLabel={true}
+        data-testid="inputTextHideLabel"
+      />
+
+      <InputText
+        id="test"
+        sdsType="textArea"
+        label="Label"
+        hideLabel={false}
+        placeholder="Value"
+        data-testid="inputTextArea"
       />
     </FormControl>
   );

@@ -5,6 +5,7 @@ import { ExtraProps, StyledInputBase, StyledLabel } from "./style";
 interface AccessibleInputTextProps {
   label: string;
   placeholder?: string;
+  id: string;
 }
 
 export type InputTextProps = RawTextFieldProps &
@@ -34,6 +35,14 @@ const TextInput = (
   const inputProps = {
     "aria-label": `${label}`,
   };
+
+  if (!id || !label) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `Error: czifui component InputText requires id and label props for accessibility.`
+    );
+    return <></>;
+  }
 
   return (
     <>
