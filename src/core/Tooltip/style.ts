@@ -12,6 +12,8 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends Props {
+  // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
+  followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
   subtitle?: string;
@@ -50,6 +52,14 @@ const wide = (): string => {
   `;
 };
 
+const tableStyles = (props: ExtraProps): string => {
+  const spacings = getSpaces(props);
+
+  return css`
+    padding: ${spacings?.m}px;
+  `;
+};
+
 export const Subtitle = styled.div`
   ${fontHeaderXxs}
 
@@ -63,7 +73,7 @@ export const Subtitle = styled.div`
 `;
 
 export const tooltipCss = (props: ExtraProps): string => {
-  const { inverted, sdsStyle, width } = props;
+  const { inverted, sdsStyle, width, followCursor } = props;
 
   const borders = getBorders(props);
   const shadows = getShadows(props);
@@ -71,6 +81,8 @@ export const tooltipCss = (props: ExtraProps): string => {
   return css`
     ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
     ${width === "wide" && sdsStyle === "light" && wide()}
+    
+    ${followCursor === true && tableStyles(props)};
 
     border: ${borders?.gray["300"]};
     box-shadow: ${shadows?.m};

@@ -4,7 +4,6 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import TooltipTableContent from "../TooltipTableContent/index";
 import Tooltip from "./index";
 
 const fillerText =
@@ -97,38 +96,6 @@ LightWide.args = {
   sdsStyle: "light",
   title: fillerText,
   width: "wide",
-};
-
-const rows = [
-  { label: "Sample", value: "Sample Name" },
-  { label: "Name", value: "Taxon Name" },
-  { label: "Category", value: "Species" },
-  { label: "NT Z Score", value: 100 },
-  { label: "NT rPM", value: 200 },
-  { label: "NT r (total reads)", value: 333 },
-  { label: "NR Z Score", value: 404 },
-  { label: "NR rPM", value: 524 },
-  { label: "NR r (total reads)", value: 600 },
-];
-
-const data = [
-  {
-    dataRows: rows.slice(0, 3),
-    label: "Section 1",
-  },
-  {
-    dataRows: rows.slice(3, 9),
-    disabled: true,
-    label: "Section 2",
-  },
-];
-
-const alert = "Some values do not pass the selected filters.";
-
-export const Table = Template.bind({});
-
-Table.args = {
-  title: <TooltipTableContent alert={alert} data={data} />,
 };
 
 export const StyledArrow = Template.bind({});

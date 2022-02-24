@@ -14,22 +14,24 @@ type TooltipTableContentProps = ExtraProps;
 export { TooltipTableContentProps };
 
 const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
-  const { alert, data, ...rest } = props;
+  const { contentAlert, data, itemAlign = "right", ...rest } = props;
 
   return (
     <TableContainer {...rest}>
-      {alert && <Alert>{alert}</Alert>}
+      {contentAlert && <Alert>{contentAlert}</Alert>}
       {data?.map((section) => (
         <Section disabled={section.disabled} key={`${section.label}`}>
-          <SectionLabel disabled={section.disabled}>
+          <SectionLabel disabled={section.disabled} label={section.label}>
             {section.label}
           </SectionLabel>
           <Table size="small">
             <TableBody>
               {section.dataRows.map((row) => (
                 <TableRow key={row.label}>
-                  <RowLabel disabled={section.disabled}>{row.label}</RowLabel>
-                  <RowValue disabled={section.disabled} align="left">
+                  <RowLabel disabled={section.disabled} align="left">
+                    {row.label}
+                  </RowLabel>
+                  <RowValue disabled={section.disabled} align={itemAlign}>
                     {row.value}
                   </RowValue>
                 </TableRow>
