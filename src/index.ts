@@ -59,5 +59,5 @@ export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
 export * from "./core/Tooltip";
 export { default as Tooltip } from "./core/Tooltip";
-export * from "./core/TooltipTableContent";
-export { default as TooltipTableContent } from "./core/TooltipTableContent";
+export * from "./core/TooltipTable";
+export { default as TooltipTable } from "./core/TooltipTable";
