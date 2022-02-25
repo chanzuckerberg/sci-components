@@ -15,7 +15,7 @@ const Demo = (props: Args): JSX.Element => {
       Hover over the info icon to view the tooltip.
       <div
         style={{
-          margin: "135px",
+          margin: "135px 300px",
         }}
       >
         <Tooltip title={title} {...props}>
