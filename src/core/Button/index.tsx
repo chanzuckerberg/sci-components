@@ -17,11 +17,8 @@ interface SdsProps {
 
 // (thuang): Support `component` prop
 // https://stackoverflow.com/a/66123108
-export type ButtonProps<C extends React.ElementType> = RawButtonProps<
-  C,
-  { component?: C }
-> &
-  SdsProps;
+export type ButtonProps<C extends React.ElementType = "button"> =
+  RawButtonProps<C, { component?: C }> & SdsProps;
 
 const Button = React.forwardRef(
   <C extends React.ElementType>(
