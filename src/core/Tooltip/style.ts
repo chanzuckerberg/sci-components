@@ -99,6 +99,7 @@ export const arrowCss = (props: ExtraProps): string => {
 
     &:before {
       border: ${inverted || sdsStyle === "dark" ? null : borders?.gray["300"]};
+      box-sizing: border-box;
     }
   `;
 };
