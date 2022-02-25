@@ -29,7 +29,7 @@ const TextInput = (
   const [hasValue, setHasValue] = useState<boolean>(false);
 
   const handleChange = (event: { target: { value: string } }) => {
-    if (event.target.value !== "") {
+    if (event.target.value) {
       setHasValue(true);
     } else {
       setHasValue(false);
@@ -52,7 +52,6 @@ const TextInput = (
     <>
       {!hideLabel && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
       <StyledInputBase
-        {...rest}
         ref={ref}
         inputProps={inputProps}
         type="text"
@@ -66,6 +65,7 @@ const TextInput = (
         sdsStage={hasValue ? "userInput" : "default"}
         sdsType={sdsType}
         onChange={handleChange}
+        {...rest}
       />
     </>
   );
