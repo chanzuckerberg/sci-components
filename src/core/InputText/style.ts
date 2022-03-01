@@ -80,7 +80,7 @@ export const StyledLabel = styled.label`
 
     return `
       font-family: ${typography?.fontFamily};
-      margin-bottom: ${spacings?.xxxs}px;
+      margin-bottom: ${spacings?.xxs}px;
     `;
   }}
 `;
