@@ -100,6 +100,7 @@ export const StyledInputBase = styled(TextField, {
       margin-bottom: ${spacings?.l}px;
       margin-right: ${spacings?.m}px;
       min-width: 160px;
+      display: block;
 
       .MuiOutlinedInput-inputMarginDense {
         padding: ${spacings?.xs}px ${spacings?.l}px;

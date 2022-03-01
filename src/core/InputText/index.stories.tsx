@@ -122,7 +122,7 @@ const TestDemo = (props: Args): JSX.Element => {
     <FormControl>
       <InputText
         {...props}
-        id="test"
+        id="test-textField"
         sdsType="textField"
         label="Label"
         hideLabel={false}
@@ -145,7 +145,7 @@ const TestDemo = (props: Args): JSX.Element => {
       />
 
       <InputText
-        id="test"
+        id="test-textArea"
         sdsType="textArea"
         label="Label"
         hideLabel={false}

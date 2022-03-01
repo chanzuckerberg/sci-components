@@ -6,12 +6,12 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
 >
   <label
     class="css-19c61dz"
-    for="test"
+    for="test-textField"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1ma3600"
+    class="MuiFormControl-root MuiTextField-root css-5vur86"
     data-testid="inputTextBase"
   >
     <div
@@ -21,7 +21,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
         aria-invalid="false"
         aria-label="Label"
         class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-        id="test"
+        id="test-textField"
         placeholder="Value"
         type="text"
         value=""
@@ -43,7 +43,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1ma3600"
+    class="MuiFormControl-root MuiTextField-root css-5vur86"
     data-testid="inputTextHideLabel"
   >
     <div
@@ -75,12 +75,12 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
   </div>
   <label
     class="css-19c61dz"
-    for="test"
+    for="test-textArea"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1j30b4t"
+    class="MuiFormControl-root MuiTextField-root css-1wszfle"
     data-testid="inputTextArea"
   >
     <div
@@ -90,7 +90,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
         aria-invalid="false"
         aria-label="Label"
         class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-        id="test"
+        id="test-textArea"
         placeholder="Value"
         rows="4"
         style="height: 0px; overflow: hidden;"
