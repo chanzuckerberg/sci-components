@@ -12,7 +12,7 @@ export type InputTextProps = RawTextFieldProps &
   ExtraProps &
   AccessibleInputTextProps;
 
-const TextInput = (
+const InputText = (
   props: InputTextProps,
   ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element => {
@@ -71,4 +71,4 @@ const TextInput = (
   );
 };
 
-export default forwardRef(TextInput);
+export default forwardRef(InputText);
