@@ -1,11 +1,11 @@
 import {
   InputAdornment,
-  TextField,
   TextFieldProps as RawTextFieldSearchProps,
 } from "@material-ui/core";
 import React, { ForwardedRef, forwardRef } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
+import { ExtraProps, StyledSearchBase } from "./style";
 
 interface AccessibleInputSearchProps {
   label: string;
@@ -14,20 +14,21 @@ interface AccessibleInputSearchProps {
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
-  AccessibleInputSearchProps;
+  AccessibleInputSearchProps &
+  ExtraProps;
 
 const InputSearch = (
   props: InputSearchProps,
   ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element => {
-  const { label, id, placeholder, ...rest } = props;
+  const { label, id, placeholder, sdsStyle = "square", ...rest } = props;
 
   const inputProps = {
     "aria-label": `${label}`,
   };
 
   return (
-    <TextField
+    <StyledSearchBase
       ref={ref}
       // passed to html input
       inputProps={inputProps}
@@ -46,6 +47,7 @@ const InputSearch = (
       variant="outlined"
       size="small"
       placeholder={placeholder}
+      sdsStyle={sdsStyle}
       {...rest}
     />
   );

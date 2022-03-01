@@ -3,13 +3,14 @@ import React from "react";
 import InputSearch from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { id, placeholder, label, disabled } = props;
+  const { id, placeholder, label, disabled, sdsStyle } = props;
   return (
     <InputSearch
       id={id}
       placeholder={placeholder}
       label={label}
       disabled={disabled}
+      sdsStyle={sdsStyle}
     />
   );
 };
@@ -29,6 +30,10 @@ export default {
     },
     placeholder: {
       control: { type: "text" },
+    },
+    sdsStyle: {
+      control: { type: "radio" },
+      options: ["rounded", "square"],
     },
   },
   component: Demo,
