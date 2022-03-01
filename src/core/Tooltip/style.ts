@@ -82,7 +82,7 @@ export const tooltipCss = (props: ExtraProps): string => {
     ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
     ${width === "wide" && sdsStyle === "light" && wide()}
     
-    ${followCursor === true && tableStyles(props)};
+    ${followCursor === true && tableStyles(props)}
 
     border: ${borders?.gray["300"]};
     box-shadow: ${shadows?.m};

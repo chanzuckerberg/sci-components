@@ -7,7 +7,7 @@ export type { IconNameToSizes };
 export type IconProps<IconName extends keyof IconNameToSizes> =
   ExtraProps<IconName>;
 
-export default forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
+const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   { sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
@@ -50,3 +50,5 @@ export default forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
 
   return null;
 });
+
+export default Icon;

@@ -11,7 +11,7 @@ export interface DialogTitleProps extends ExtraProps, RawDialogTitleProps {
   onClose?: () => void;
 }
 
-export default forwardRef(function DialogTitle(
+const DialogTitle = forwardRef(function DialogTitle(
   props: DialogTitleProps,
   ref
 ): JSX.Element {
@@ -29,3 +29,5 @@ export default forwardRef(function DialogTitle(
     </StyledDialogTitle>
   );
 });
+
+export default DialogTitle;
