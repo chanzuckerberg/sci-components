@@ -5,7 +5,7 @@ import { StyledPaper } from "./style";
 
 export { PaperProps as DialogPaperProps };
 
-export default forwardRef<unknown, PaperProps>(function DialogPaper(
+const DialogPaper = forwardRef<unknown, PaperProps>(function DialogPaper(
   props,
   ref
 ): JSX.Element {
@@ -15,3 +15,5 @@ export default forwardRef<unknown, PaperProps>(function DialogPaper(
     </DialogContext.Consumer>
   );
 });
+
+export default DialogPaper;

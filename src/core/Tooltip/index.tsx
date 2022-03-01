@@ -16,7 +16,7 @@ export { TooltipProps };
  * wrap the children in a `<span>` tag.
  * https://mui.com/components/tooltips/#disabled-elements
  */
-export default forwardRef(function Tooltip(
+const Tooltip = forwardRef(function Tooltip(
   props: TooltipProps,
   ref
 ): JSX.Element {
@@ -138,3 +138,5 @@ function mergeClass({
 
   return propClassName ? `${propClassName} ${className}` : className;
 }
+
+export default Tooltip;
