@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Link, LinkProps as Props } from "@material-ui/core";
+import { Link, LinkProps as RawLinkProps } from "@material-ui/core";
 import { Props as StyleProps } from "../styles";
 
-export type LinkProps = Props &
+export type LinkProps = RawLinkProps &
   StyleProps & {
     sdsStyle?: "default";
   };
