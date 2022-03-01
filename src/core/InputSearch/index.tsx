@@ -25,6 +25,7 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
       placeholder,
       sdsStyle = "square",
       intent = "default",
+      handleSubmit,
       ...rest
     } = props;
 
@@ -35,6 +36,13 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
         setHasValue(true);
       } else {
         setHasValue(false);
+      }
+    };
+
+    const handleKeyPress = (event: React.KeyboardEvent) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleSubmit(event);
       }
     };
 
@@ -68,7 +76,7 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
               </InputAdornment>
             ),
           }}
-          type="search"
+          type="text"
           id={id}
           variant="outlined"
           size="small"
@@ -76,6 +84,7 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
           sdsStyle={sdsStyle}
           sdsStage={hasValue ? "userInput" : "default"}
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
           intent={intent}
           {...rest}
         />

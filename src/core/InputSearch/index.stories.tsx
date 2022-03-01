@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import InputSearch from "./index";
@@ -14,6 +15,7 @@ const Demo = (props: Args): JSX.Element => {
       sdsStyle={sdsStyle}
       sdsStage={sdsStage}
       intent={intent}
+      handleSubmit={action("onSubmit")}
     />
   );
 };
@@ -76,6 +78,7 @@ const RoundLivePreviewDemo = (props: Args): JSX.Element => {
       label="Search"
       sdsStyle="rounded"
       placeholder="Search"
+      handleSubmit={action("onSubmit")}
     />
   );
 };
@@ -100,6 +103,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       label="Search"
       sdsStyle="square"
       placeholder="Search"
+      handleSubmit={action("onSubmit")}
     />
   );
 };
@@ -125,6 +129,7 @@ const TestDemo = (props: Args): JSX.Element => {
         label="Round Search"
         placeholder="Search"
         data-testid="inputSearchRound"
+        handleSubmit={action("onSubmit")}
       />
       <InputSearch
         id="test-square"
@@ -132,12 +137,14 @@ const TestDemo = (props: Args): JSX.Element => {
         label="Square Search"
         placeholder="Search"
         data-testid="inputSearchSquare"
+        handleSubmit={action("onSubmit")}
       />
       {/* @ts-expect-error testing fail state */}
       <InputSearch
         sdsStyle="square"
         placeholder="Search"
         data-testid="inputSearchFail"
+        handleSubmit={action("onSubmit")}
       />
     </>
   );

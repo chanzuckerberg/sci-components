@@ -1,7 +1,3 @@
-// sdsStyle: "rounded" | "square" - grab from button?
-// sdsStage: "default" | "userInput" - grab from input text
-// states: default, hover, active, disabled - grab from input text
-
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { TextField } from "@material-ui/core";
@@ -20,9 +16,10 @@ export interface ExtraProps extends Props {
   intent?: "default" | "error" | "warning";
   sdsStyle?: "rounded" | "square";
   sdsStage?: "default" | "userInput";
+  handleSubmit: (event: React.SyntheticEvent) => void;
 }
 
-const sdsPropNames = ["sdsStyle", "sdsStage", "intent"];
+const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
 
 const rounded = (props: ExtraProps): SerializedStyles => {
   const corners = getCorners(props);
