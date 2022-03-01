@@ -134,10 +134,9 @@ To use the default theme, please do the following:
 
 ## Design System
 
-`czifui` implements the Science Initiative Design System as documented in [Figma](https://www.figma.com/file/EaRifXLFs54XTjO1Mlszkg/Science-Design-System-Reference). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
+`czifui` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
 
-![Science Design System Reference file in Figma with Pages outlined in the left panel](https://user-images.githubusercontent.com/6309723/123888574-a53aec00-d908-11eb-96b3-e32381e30c9a.png)
-(NOTE: Please use the left panel to find different types of components (Bases, Genes, DNA, and Chromosomes))
+![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
 
 ## How to Use
 

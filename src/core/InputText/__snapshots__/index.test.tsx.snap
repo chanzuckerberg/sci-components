@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputText /> Test story renders snapshot 1`] = `
+<div
+  class="MuiFormControl-root"
+>
+  <label
+    class="css-19c61dz"
+    for="test-textField"
+  >
+    Label
+  </label>
+  <div
+    class="MuiFormControl-root MuiTextField-root css-5vur86"
+    data-testid="inputTextBase"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+    >
+      <input
+        aria-invalid="false"
+        aria-label="Label"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        id="test-textField"
+        placeholder="Value"
+        type="text"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-2"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+  <div
+    class="MuiFormControl-root MuiTextField-root css-5vur86"
+    data-testid="inputTextHideLabel"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+    >
+      <input
+        aria-invalid="false"
+        aria-label="Hidden Label"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        id="test-hide-label"
+        type="text"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-2"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+  <label
+    class="css-19c61dz"
+    for="test-textArea"
+  >
+    Label
+  </label>
+  <div
+    class="MuiFormControl-root MuiTextField-root css-1wszfle"
+    data-testid="inputTextArea"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+    >
+      <textarea
+        aria-invalid="false"
+        aria-label="Label"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        id="test-textArea"
+        placeholder="Value"
+        rows="4"
+        style="height: 0px; overflow: hidden;"
+      />
+      <textarea
+        aria-hidden="true"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        readonly=""
+        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+        tabindex="-1"
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-2"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</div>
+`;

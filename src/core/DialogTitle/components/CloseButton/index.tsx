@@ -18,7 +18,7 @@ const SDS_SIZE_TO_ICON_SIZE = {
   xs: "s",
 };
 
-export default forwardRef<HTMLButtonElement, IconButtonProps>(
+const CloseButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function CloseButton(props, ref) {
     return (
       <DialogContext.Consumer>
@@ -46,3 +46,5 @@ export default forwardRef<HTMLButtonElement, IconButtonProps>(
     );
   }
 );
+
+export default CloseButton;

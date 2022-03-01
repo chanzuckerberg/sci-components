@@ -1,8 +1,3 @@
----
-title: "type_of_change(scope_of_work): ticket title"
-reviewers: "sds-eng, sds-design"
----
-
 ## Summary
 
 **Structural Element (Base, Gene, DNA, Chromosome or Cell)**
@@ -17,4 +12,4 @@ Copy ticket descirption here
 - [ ] Tests written
 - [ ] Variables from `defaultTheme.ts` used wherever possible
 - [ ] If updating an existing component, depreciate flag has been used where necessary
-- [ ] Chromatic build verified by @sds-design
+- [ ] Chromatic build verified by @chanzuckerberg/sds-design

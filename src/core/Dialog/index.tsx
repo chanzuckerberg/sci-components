@@ -16,7 +16,7 @@ interface ExtraProps {
 
 export type DialogProps = RawDialogProps & ExtraProps;
 
-export default forwardRef<HTMLDivElement, DialogProps>(function Dialog(
+const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   props,
   ref
 ): JSX.Element {
@@ -35,3 +35,5 @@ export default forwardRef<HTMLDivElement, DialogProps>(function Dialog(
     </DialogContext.Provider>
   );
 });
+
+export default Dialog;
