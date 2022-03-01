@@ -32,6 +32,8 @@ export * from "./core/IconButton";
 export { default as IconButton } from "./core/IconButton";
 export * from "./core/InputDropdown";
 export { default as InputDropdown } from "./core/InputDropdown";
+export * from "./core/InputText";
+export { default as InputText } from "./core/InputText";
 export * from "./core/Link";
 export { default as Link } from "./core/Link";
 export * from "./core/List";
