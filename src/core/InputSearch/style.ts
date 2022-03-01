@@ -5,7 +5,15 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { TextField } from "@material-ui/core";
-import { getBorders, getColors, getCorners, getSpaces, Props } from "../styles";
+import {
+  fontBodyM,
+  getBorders,
+  getColors,
+  getCorners,
+  getSpaces,
+  getTypography,
+  Props,
+} from "../styles";
 
 export interface ExtraProps extends Props {
   disabled?: boolean;
@@ -67,6 +75,23 @@ const disabledStyled = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
+export const StyledLabel = styled.label`
+  ${fontBodyM}
+  ${(props) => {
+    const typography = getTypography(props);
+    const spacings = getSpaces(props);
+    return `
+      font-family: ${typography?.fontFamily};
+      margin-bottom: ${spacings?.xxs}px;
+      position: absolute; 
+      overflow: hidden; 
+      clip: rect(0 0 0 0); 
+      height: 1px; width: 1px; 
+      margin: -1px; padding: 0; border: 0; 
+    `;
+  }}
+`;
+
 export const StyledSearchBase = styled(TextField, {
   shouldForwardProp: (prop) => {
     return !sdsPropNames.includes(prop.toString());
@@ -80,9 +105,10 @@ export const StyledSearchBase = styled(TextField, {
     const colors = getColors(props);
 
     return css`
-      margin-bottom: ${spacings?.l}px;
-      margin-right: ${spacings?.m}px;
-      min-width: 160px;
+      margin-top: ${spacings?.m}px;
+      margin-bottom: ${spacings?.m}px;
+      margin-right: ${spacings?.xl}px;
+      min-width: 120px;
       display: block;
       .MuiOutlinedInput-inputMarginDense {
         padding: ${spacings?.xs}px ${spacings?.l}px;

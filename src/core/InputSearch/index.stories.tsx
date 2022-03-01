@@ -3,7 +3,8 @@ import React from "react";
 import InputSearch from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { id, placeholder, label, disabled, sdsStyle } = props;
+  const { id, placeholder, label, disabled, sdsStyle, sdsStage, intent } =
+    props;
   return (
     <InputSearch
       id={id}
@@ -11,6 +12,8 @@ const Demo = (props: Args): JSX.Element => {
       label={label}
       disabled={disabled}
       sdsStyle={sdsStyle}
+      sdsStage={sdsStage}
+      intent={intent}
     />
   );
 };
@@ -24,12 +27,20 @@ export default {
       control: { type: "text" },
       required: true,
     },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "error", "warning"],
+    },
     label: {
       control: { type: "text" },
       required: true,
     },
     placeholder: {
       control: { type: "text" },
+    },
+    sdsStage: {
+      control: { type: "radio" },
+      options: ["default", "userInput"],
     },
     sdsStyle: {
       control: { type: "radio" },
@@ -47,7 +58,7 @@ export const Default = Template.bind({});
 Default.args = {
   disabled: false,
   id: "Test",
-  label: "Label",
+  label: "Search",
   placeholder: "Search",
 };
 
@@ -56,3 +67,82 @@ Default.parameters = {
     skip: true,
   },
 };
+
+const RoundLivePreviewDemo = (props: Args): JSX.Element => {
+  return (
+    <InputSearch
+      {...props}
+      id="squareSearchPreview"
+      label="Search"
+      sdsStyle="rounded"
+      placeholder="Search"
+    />
+  );
+};
+
+const RoundLivePreviewTemplate: Story = (args) => (
+  <RoundLivePreviewDemo {...args} />
+);
+
+export const RoundLivePreview = RoundLivePreviewTemplate.bind({});
+
+RoundLivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+const SquareLivePreviewDemo = (props: Args): JSX.Element => {
+  return (
+    <InputSearch
+      {...props}
+      id="squareSearchPreview"
+      label="Search"
+      sdsStyle="square"
+      placeholder="Search"
+    />
+  );
+};
+
+const SquareLivePreviewTemplate: Story = (args) => (
+  <SquareLivePreviewDemo {...args} />
+);
+
+export const SquareLivePreview = SquareLivePreviewTemplate.bind({});
+
+SquareLivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <>
+      <InputSearch
+        id="test-round"
+        sdsStyle="rounded"
+        label="Round Search"
+        placeholder="Search"
+        data-testid="inputSearchRound"
+      />
+      <InputSearch
+        id="test-square"
+        sdsStyle="square"
+        label="Square Search"
+        placeholder="Search"
+        data-testid="inputSearchSquare"
+      />
+      {/* @ts-expect-error testing fail state */}
+      <InputSearch
+        sdsStyle="square"
+        placeholder="Search"
+        data-testid="inputSearchFail"
+      />
+    </>
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
