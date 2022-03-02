@@ -9,7 +9,7 @@ import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
 
 type TooltipProps = ExtraProps & RawTooltipProps;
 
-export { TooltipProps };
+export type { TooltipProps };
 
 /**
  * @warning If the tooltip wraps a disabled component, please make sure to

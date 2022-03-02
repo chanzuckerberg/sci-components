@@ -14,6 +14,6 @@ const Link = forwardRef(
   }
 );
 
-export { LinkProps };
+export type { LinkProps };
 
 export default Link;

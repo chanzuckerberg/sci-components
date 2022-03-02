@@ -2,7 +2,12 @@ import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ListItem } from "@material-ui/core";
 import { TypographyOptions } from "@material-ui/core/styles/createTypography";
-import { fontBody, getFontWeights, getSpaces, Props } from "../styles";
+import {
+  CommonThemeProps,
+  fontBody,
+  getFontWeights,
+  getSpaces,
+} from "../styles";
 
 const fontBodyL = fontBody("l");
 const fontBodyM = fontBody("m");
@@ -11,7 +16,7 @@ const fontBodyXs = fontBody("xs");
 const fontBodyXxs = fontBody("xxs");
 const fontBodyXxxs = fontBody("xxxs");
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   marginBottom?: "s" | "xs" | "xxs";
   fontSize?: "xxxs" | "xxs" | "xs" | "s" | "m" | "l";
   ordered?: boolean;
@@ -38,7 +43,7 @@ export const StyledListItem = styled(ListItem, {
 
       return `
         align-items: flex-start;
-        font-family: ${(typography as TypographyOptions).fontFamily};
+        font-family: ${(typography as TypographyOptions)?.fontFamily};
         ${ordered ? "counter-increment: section;" : ""}
       `;
     }}
@@ -63,7 +68,7 @@ export const StyledListItem = styled(ListItem, {
 function propsToFontBody(props: ExtraProps) {
   const propsToFontBodyMap: Record<
     NonNullable<ExtraProps["fontSize"]>,
-    (props: Props) => SerializedStyles | null
+    (props: CommonThemeProps) => SerializedStyles | null
   > = {
     l: fontBodyL,
     m: fontBodyM,
