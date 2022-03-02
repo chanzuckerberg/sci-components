@@ -12,49 +12,56 @@ import {
   Typography,
 } from "src/core/styles/common/defaultTheme";
 
-export interface Props {
+// (thuang): Somehow this namespace needs to be globally unique to prevent
+// namespace collisions.
+// Might be related to using `rollup-plugin-ts`, which does code splitting?
+export interface CommonThemeProps {
   theme?: AppThemeOptions;
 }
 
-export const getSpaces = ({ theme }: Props): Spaces | null => {
+export const getSpaces = ({ theme }: CommonThemeProps): Spaces | null => {
   return theme?.app?.spacing || null;
 };
 
-export const getSpacings = ({ theme }: Props): Spacings | null => {
+export const getSpacings = ({ theme }: CommonThemeProps): Spacings | null => {
   console.warn(
     "getSpacings() is deprecated and may be removed in a future release. Please use getSpaces()"
   );
   return theme?.app?.spacing || null;
 };
 
-export const getTypography = ({ theme }: Props): Typography | null => {
+export const getTypography = ({
+  theme,
+}: CommonThemeProps): Typography | null => {
   return theme?.app?.typography || null;
 };
 
-export const getPalette = ({ theme }: Props): PaletteOptions => {
+export const getPalette = ({ theme }: CommonThemeProps): PaletteOptions => {
   return theme?.palette as PaletteOptions;
 };
 
-export const getColors = ({ theme }: Props): Colors | null => {
+export const getColors = ({ theme }: CommonThemeProps): Colors | null => {
   return theme?.app?.colors || null;
 };
 
-export const getShadows = ({ theme }: Props): Shadows | null => {
+export const getShadows = ({ theme }: CommonThemeProps): Shadows | null => {
   return theme?.app?.shadows || null;
 };
 
-export const getCorners = ({ theme }: Props): Corners | null => {
+export const getCorners = ({ theme }: CommonThemeProps): Corners | null => {
   return theme?.app?.corners || null;
 };
 
-export const getFontWeights = ({ theme }: Props): FontWeights | null => {
+export const getFontWeights = ({
+  theme,
+}: CommonThemeProps): FontWeights | null => {
   return theme?.app?.fontWeights || null;
 };
 
-export const getIconSizes = ({ theme }: Props): IconSizes | null => {
+export const getIconSizes = ({ theme }: CommonThemeProps): IconSizes | null => {
   return theme?.app?.iconSizes || null;
 };
 
-export const getBorders = ({ theme }: Props): Borders | null => {
+export const getBorders = ({ theme }: CommonThemeProps): Borders | null => {
   return theme?.app?.borders || null;
 };

@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "../Icon";
 import { InputDropdownProps, StyledInputDropdown } from "./style";
 
-export { InputDropdownProps };
+export type { InputDropdownProps };
 
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const { label, open } = props;

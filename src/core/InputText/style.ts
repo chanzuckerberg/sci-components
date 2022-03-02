@@ -2,15 +2,15 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { TextField } from "@material-ui/core";
 import {
+  CommonThemeProps,
   fontBody,
   getBorders,
   getCorners,
   getSpaces,
   getTypography,
-  Props,
 } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   sdsType?: "textField" | "textArea";

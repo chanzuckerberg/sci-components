@@ -1,12 +1,12 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { TypographyStyle } from "@material-ui/core";
 import { Typography } from "../defaultTheme";
-import { getTypography, Props } from "../selectors/theme";
+import { CommonThemeProps, getTypography } from "../selectors/theme";
 
 type FontBodySize = keyof Typography["styles"]["body"];
 
 export const fontBody = (fontSize: FontBodySize) => {
-  return (props: Props): SerializedStyles | null => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
 
     if (!typography) return null;
@@ -29,7 +29,7 @@ export const fontBodyXxxs = fontBody("xxxs");
 type FontCapsSize = keyof Typography["styles"]["caps"];
 
 export const fontCaps = (fontSize: FontCapsSize) => {
-  return (props: Props): SerializedStyles | null => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
 
     if (!typography) return null;
@@ -52,7 +52,7 @@ export const fontCapsXxxxs = fontCaps("xxxxs");
 type FontHeaderSize = keyof Typography["styles"]["header"];
 
 export const fontHeader = (fontSize: FontHeaderSize) => {
-  return (props: Props): SerializedStyles | null => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
 
     if (!typography) return null;

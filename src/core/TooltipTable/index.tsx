@@ -11,7 +11,7 @@ import {
 
 type TooltipTableContentProps = ExtraProps;
 
-export { TooltipTableContentProps };
+export type { TooltipTableContentProps };
 
 const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   const { contentAlert, data, itemAlign = "right", ...rest } = props;

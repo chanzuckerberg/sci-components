@@ -1,9 +1,14 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { IconButton } from "@material-ui/core";
-import { getColors, getIconSizes, getSpaces, Props } from "../styles";
+import {
+  CommonThemeProps,
+  getColors,
+  getIconSizes,
+  getSpaces,
+} from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   active?: boolean;
   disabled?: boolean;
   sdsSize?: "small" | "medium" | "large";

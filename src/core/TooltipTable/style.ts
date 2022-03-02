@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 import { TableCell } from "@material-ui/core";
 import {
+  CommonThemeProps,
   fontBodyXs,
   fontBodyXxs,
   fontCapsXxxxs,
   fontHeaderXs,
   getColors,
   getSpaces,
-  Props,
 } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   data?: Array<{
     label?: string;
     dataRows: {
@@ -36,7 +36,7 @@ export const disabledStyle = (props: SectionProps): string => {
   `;
 };
 
-interface SectionProps extends Props {
+interface SectionProps extends CommonThemeProps {
   disabled?: boolean;
   label?: string;
 }

@@ -12,7 +12,7 @@ const TRANSFORM_ORIGIN: PopoverOrigin = {
   vertical: "top",
 };
 
-export { MenuProps };
+export type { MenuProps };
 
 const Menu = (props: MenuProps): JSX.Element => {
   return (
