@@ -12,7 +12,7 @@ import { noop } from "src/common/utils";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
-  StyledInputBase,
+  StyledInputText,
   StyledMenuItem,
   StyledSearchIcon,
   StyleProps,
@@ -78,11 +78,22 @@ export default function MenuSelect<
       getOptionLabel={getOptionLabel}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
-          <StyledInputBase
-            search={search}
+          <StyledInputText
+            hideLabel
+            id="location-search"
+            label="Search for a location"
             placeholder="Search"
             ref={params.InputProps.ref}
-            inputProps={{
+            sdsType="textField"
+            search={search}
+            onChange={onInputChange}
+            autoFocus
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <StyledSearchIcon />
+                </InputAdornment>
+              ),
               ...params.inputProps,
               /**
                * (thuang): Works with css caret-color: "transparent" to hide
@@ -90,13 +101,6 @@ export default function MenuSelect<
                */
               inputMode: search ? "text" : "none",
             }}
-            onChange={onInputChange}
-            autoFocus
-            endAdornment={
-              <InputAdornment position="end">
-                <StyledSearchIcon />
-              </InputAdornment>
-            }
             {...InputBaseProps}
           />
         </InputBaseWrapper>

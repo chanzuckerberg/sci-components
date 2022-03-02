@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { InputBase } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { Autocomplete } from "@material-ui/lab";
+import InputText from "../InputText";
 import MenuItem from "../MenuItem";
-import { getColors, getCorners, getSpaces, Props } from "../styles";
+import { getColors, getSpaces, Props } from "../styles";
 
 export const StyledMenuItem = styled(MenuItem)`
   width: 100%;
@@ -37,22 +37,21 @@ export const InputBaseWrapper = styled.div`
     }
 
     const spacings = getSpaces(props);
-    const corners = getCorners(props);
-    const colors = getColors(props);
 
     return `
-      padding: ${spacings?.xxs}px ${spacings?.m}px;
       margin: ${spacings?.s}px;
-      border: ${colors?.gray["300"]} solid 1px;
-      border-radius: ${corners?.m}px;
     `;
   }}
 `;
 
-export const StyledInputBase = styled(InputBase, {
+export const StyledInputText = styled(InputText, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })<{ search: boolean }>`
-  width: 100%;
+  margin: 0;
+  .MuiInputBase-root {
+    width: 100%;
+  }
+
   /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
   caret-color: ${({ search }) => (search ? "auto" : "transparent")};
 `;
@@ -62,7 +61,7 @@ export const StyledSearchIcon = styled(Search)`
     const colors = getColors(props);
 
     return `
-      color: ${colors?.gray["500"]};
+      color: ${colors?.gray[500]};
     `;
   }}
 `;

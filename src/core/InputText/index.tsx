@@ -53,7 +53,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
           ref={ref}
           inputProps={inputProps}
           type="text"
-          multiline={sdsType === "textArea" ? true : false}
+          multiline={sdsType === "textArea"}
           minRows={sdsType === "textArea" ? 4 : 2}
           id={id}
           intent={intent}
