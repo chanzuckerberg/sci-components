@@ -2,21 +2,20 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { TextField } from "@material-ui/core";
 import {
+  CommonThemeProps,
   fontBodyM,
   getBorders,
   getColors,
   getCorners,
   getSpaces,
   getTypography,
-  Props,
 } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   sdsStyle?: "rounded" | "square";
   sdsStage?: "default" | "userInput";
-  handleSubmit: (event: React.SyntheticEvent) => void;
 }
 
 const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];

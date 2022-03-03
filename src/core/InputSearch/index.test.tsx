@@ -1,6 +1,6 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStory } from "@storybook/testing-react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, { Test as TestStory } from "./index.stories";
@@ -29,5 +29,12 @@ describe("<InputSearch />", () => {
     render(<Test />);
     const inputSearchElement = screen.getByLabelText("Round Search");
     expect(inputSearchElement).not.toBeNull();
+  });
+
+  it("input value updates on change", () => {
+    render(<Test />);
+    const input = screen.getByLabelText("Round Search") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "apple" } });
+    expect(input.value).toBe("apple");
   });
 });

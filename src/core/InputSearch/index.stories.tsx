@@ -6,6 +6,9 @@ import InputSearch from "./index";
 const Demo = (props: Args): JSX.Element => {
   const { id, placeholder, label, disabled, sdsStyle, sdsStage, intent } =
     props;
+  const handleSubmit = (value: string) => {
+    console.log(value);
+  };
   return (
     <InputSearch
       id={id}
@@ -15,7 +18,7 @@ const Demo = (props: Args): JSX.Element => {
       sdsStyle={sdsStyle}
       sdsStage={sdsStage}
       intent={intent}
-      handleSubmit={action("onSubmit")}
+      handleSubmit={handleSubmit}
     />
   );
 };

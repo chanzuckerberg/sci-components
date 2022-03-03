@@ -11,6 +11,7 @@ interface AccessibleInputSearchProps {
   label: string;
   placeholder?: string;
   id: string;
+  handleSubmit: (value: string) => void;
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
@@ -30,19 +31,25 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
     } = props;
 
     const [hasValue, setHasValue] = useState<boolean>(false);
+    const [value, setValue] = useState<string>("");
 
-    const handleChange = (event: { target: { value: string } }) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (event.target.value) {
         setHasValue(true);
       } else {
         setHasValue(false);
       }
+      setValue(event.target.value);
+    };
+
+    const localHandleSubmit = () => {
+      handleSubmit(value);
     };
 
     const handleKeyPress = (event: React.KeyboardEvent) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        handleSubmit(event);
+        handleSubmit(value);
       }
     };
 
@@ -70,7 +77,11 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton sdsType="secondary">
+                <IconButton
+                  onClick={localHandleSubmit}
+                  data-testId="searchButton"
+                  sdsType="secondary"
+                >
                   <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
                 </IconButton>
               </InputAdornment>
@@ -81,6 +92,7 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
           variant="outlined"
           size="small"
           placeholder={placeholder}
+          value={value}
           sdsStyle={sdsStyle}
           sdsStage={hasValue ? "userInput" : "default"}
           onChange={handleChange}
