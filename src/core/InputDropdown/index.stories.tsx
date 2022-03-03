@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputDropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { disabled, label, sdsStyle, ...rest } = props;
+  const { disabled, label, sdsStyle, sdsType, ...rest } = props;
 
   const [open, setOpen] = useState<boolean>(false);
   const onClick = () => {
@@ -18,6 +18,7 @@ const Demo = (props: Args): JSX.Element => {
         onClick={onClick}
         sdsStage={open ? "userInput" : "default"}
         sdsStyle={sdsStyle}
+        sdsType={sdsType}
         {...rest}
       />
       <br />
@@ -27,50 +28,99 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 export default {
+  argTypes: {
+    details: {
+      control: { type: "text" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "error", "warning"],
+    },
+    label: {
+      control: { type: "text" },
+    },
+    sdsStage: {
+      control: { type: "radio" },
+      options: ["default", "userInput"],
+    },
+    sdsStyle: {
+      control: { type: "select" },
+      options: ["square", "rounded", "minimal"],
+    },
+    sdsType: {
+      control: { type: "radio" },
+      options: ["singleSelect", "multiSelect"],
+    },
+  },
   component: Demo,
   title: "InputDropdown",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const Error = Template.bind({});
+export const Default = Template.bind({});
 
-Error.args = {
-  disabled: false,
-  intent: "error",
-  label: "Dropdown",
-  sdsStyle: "square",
-};
-
-export const Disabled = Template.bind({});
-
-Disabled.args = {
-  disabled: true,
-  label: "Dropdown",
-  sdsStyle: "square",
-};
-
-export const Minimal = Template.bind({});
-
-Minimal.args = {
-  disabled: false,
-  label: "Dropdown",
-  sdsStyle: "minimal",
-};
-
-export const Square = Template.bind({});
-
-Square.args = {
+Default.args = {
   disabled: false,
   label: "Dropdown",
   sdsStyle: "square",
 };
 
-export const Warning = Template.bind({});
-
-Warning.args = {
-  disabled: false,
-  intent: "warning",
-  label: "Dropdown",
-  sdsStyle: "square",
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
+
+// export const Error = Template.bind({});
+
+// Error.args = {
+//   disabled: false,
+//   intent: "error",
+//   label: "Dropdown",
+//   sdsStyle: "square",
+// };
+
+// export const Disabled = Template.bind({});
+
+// Disabled.args = {
+//   disabled: true,
+//   label: "Dropdown",
+//   sdsStyle: "square",
+// };
+
+// export const Minimal = Template.bind({});
+
+// Minimal.args = {
+//   disabled: false,
+//   label: "Dropdown",
+//   sdsStyle: "minimal",
+// };
+
+// export const Square = Template.bind({});
+
+// Square.args = {
+//   disabled: false,
+//   label: "Dropdown",
+//   sdsStyle: "square",
+// };
+
+// export const Rounded = Template.bind({});
+
+// Rounded.args = {
+//   disabled: false,
+//   label: "Dropdown",
+//   sdsStyle: "rounded",
+// };
+
+// export const Warning = Template.bind({});
+
+// Warning.args = {
+//   disabled: false,
+//   intent: "warning",
+//   label: "Dropdown",
+//   sdsStyle: "square",
+// };

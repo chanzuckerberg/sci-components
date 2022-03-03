@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Button from "../Button";
 import {
   CommonThemeProps,
+  fontBody,
   fontBodyXs,
   fontHeaderS,
   getColors,
@@ -19,7 +20,12 @@ export interface InputDropdownProps extends CommonThemeProps {
   open?: boolean;
   sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
+  sdsType?: "singleSelect" | "multiSelect";
+  details?: string;
+  counter?: number;
 }
+
+const labelFontBodyXs = fontBody("xs");
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
@@ -104,6 +110,26 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
     span {
       ${fontBodyXs(props)}
+      font-weight: 600;
+    }
+  `;
+};
+
+const rounded = (props: InputDropdownProps): SerializedStyles => {
+  const corners = getCorners(props);
+
+  return css`
+    border-radius: ${corners?.l}px;
+    height: 34px;
+    min-width: 90px;
+
+    .MuiButton-label {
+      justify-content: space-between;
+    }
+
+    span {
+      ${fontBodyXs(props)}
+      font-weight: 600;
     }
   `;
 };
@@ -181,6 +207,7 @@ export const StyledInputDropdown = styled(Button, {
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
+      ${sdsStyle === "rounded" && rounded(props)}
       ${open && userInput(props)}
       ${sdsStage === "userInput" && userInput(props)}
       ${intent === "warning" && warning(props)}
@@ -188,4 +215,8 @@ export const StyledInputDropdown = styled(Button, {
       ${disabled && isDisabled(props)}
     `;
   }}
+`;
+
+export const StyledDetail = styled.span`
+  ${labelFontBodyXs};
 `;
