@@ -71,8 +71,6 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
         <StyledSearchBase
           ref={ref}
-          // passed to html input
-          inputProps={inputProps}
           // passed to mui Input
           InputProps={{
             endAdornment: (
@@ -86,6 +84,8 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
                 </IconButton>
               </InputAdornment>
             ),
+            // passed to html input
+            inputProps: inputProps,
           }}
           type="text"
           id={id}

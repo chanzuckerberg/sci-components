@@ -133,6 +133,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Search"
         data-testid="inputSearchRound"
         handleSubmit={action("onSubmit")}
+        {...props}
       />
       <InputSearch
         id="test-square"
@@ -141,6 +142,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Search"
         data-testid="inputSearchSquare"
         handleSubmit={action("onSubmit")}
+        {...props}
       />
       {/* @ts-expect-error testing fail state */}
       <InputSearch
