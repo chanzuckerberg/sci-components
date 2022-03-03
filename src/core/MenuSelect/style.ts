@@ -3,13 +3,13 @@ import { InputBase } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { Autocomplete } from "@material-ui/lab";
 import MenuItem from "../MenuItem";
-import { getColors, getCorners, getSpaces, Props } from "../styles";
+import { CommonThemeProps, getColors, getCorners, getSpaces } from "../styles";
 
 export const StyledMenuItem = styled(MenuItem)`
   width: 100%;
 `;
 
-export interface StyleProps extends Props {
+export interface StyleProps extends CommonThemeProps {
   search?: boolean;
 }
 

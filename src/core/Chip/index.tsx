@@ -5,7 +5,7 @@ import { ExtraProps, StyledChip } from "./style";
 
 type ChipProps = ExtraProps & RawChipProps;
 
-export { ChipProps };
+export type { ChipProps };
 
 const Chip = (props: ChipProps): JSX.Element => {
   const { onDelete } = props;

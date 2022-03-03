@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { Button } from "@material-ui/core";
 import {
+  CommonThemeProps,
   fontCapsXxxs,
   getColors,
   getCorners,
   getSpaces,
-  Props,
 } from "../styles";
 
 const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
@@ -69,7 +69,7 @@ export const RoundedButton = styled(ButtonBase)`
 
 export const SquareButton = ButtonBase;
 
-interface IsAllCaps extends Props {
+interface IsAllCaps extends CommonThemeProps {
   isAllCaps?: boolean;
 }
 
@@ -139,7 +139,7 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
 `;
 
 // Legacy support for backwards-compatible props
-interface IsRounded extends Props {
+interface IsRounded extends CommonThemeProps {
   isRounded?: boolean;
 }
 export const StyledButton = styled(Button, {

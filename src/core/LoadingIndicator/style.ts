@@ -1,6 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import {
+  CommonThemeProps,
   fontBody,
   fontCapsXxxxs,
   getColors,
@@ -8,10 +9,9 @@ import {
   getIconSizes,
   getSpaces,
   getTypography,
-  Props,
 } from "../styles";
 
-export interface LoadingIndicatorProps extends Props {
+export interface LoadingIndicatorProps extends CommonThemeProps {
   sdsStyle: "minimal" | "tag";
 }
 
@@ -29,7 +29,7 @@ export const StyledText = styled.span`
   }}
 `;
 
-const minimal = (props: Props): SerializedStyles => {
+const minimal = (props: CommonThemeProps): SerializedStyles => {
   const colors = getColors(props);
   const iconSizes = getIconSizes(props);
 
@@ -49,7 +49,7 @@ const minimal = (props: Props): SerializedStyles => {
   `;
 };
 
-const tag = (props: Props): SerializedStyles => {
+const tag = (props: CommonThemeProps): SerializedStyles => {
   const colors = getColors(props);
   const corners = getCorners(props);
 

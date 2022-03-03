@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { DialogActions } from "@material-ui/core";
-import { getSpaces, Props } from "../styles";
+import { CommonThemeProps, getSpaces } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   buttonPosition?: "left" | "right";
 }
 

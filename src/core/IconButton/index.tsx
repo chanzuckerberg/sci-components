@@ -4,7 +4,7 @@ import { ExtraProps, StyledIconButton } from "./style";
 
 type IconButtonProps = ExtraProps & RawIconButtonProps;
 
-export { IconButtonProps };
+export type { IconButtonProps };
 
 const IconButton = forwardRef<HTMLButtonElement | null, IconButtonProps>(
   (props, ref): JSX.Element => {

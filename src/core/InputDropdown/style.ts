@@ -2,16 +2,16 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "../Button";
 import {
+  CommonThemeProps,
   fontBodyXs,
   fontHeaderS,
   getColors,
   getCorners,
   getPalette,
   getSpaces,
-  Props,
 } from "../styles";
 
-export interface InputDropdownProps extends Props {
+export interface InputDropdownProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   label: string;
