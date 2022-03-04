@@ -22,8 +22,8 @@ export type Value<T, Multiple> = Multiple extends undefined | false
   : Array<T> | null;
 
 interface DropdownProps<Multiple> {
-  buttons?: boolean;
   buttonPosition?: "left" | "right";
+  buttons?: boolean;
   closeOnBlur?: boolean;
   label: string;
   options: DefaultMenuSelectOption[];
@@ -46,14 +46,14 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   label = "",
   multiple = false,
   search = false,
-  buttons = false,
   buttonPosition = "right",
+  buttons = false,
   // By default, most dropdowns will close when the user clicks outside the dropdown.
   // The exception is the multiple select variant with Apply/Cancel buttons,
   // which by default will not close on blur. If closeOnBlur is enabled, clicking out
   // is equivalent to clicking the Cancel button, closing the dropdown and losing
   // unapplied changes.
-  closeOnBlur = buttons ? false : true,
+  closeOnBlur = !buttons,
   onChange,
   MenuSelectProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },

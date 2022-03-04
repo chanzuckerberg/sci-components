@@ -68,8 +68,8 @@ MultipleSelectWithSearch.args = {
 export const MultipleSelectWithButtons = Template.bind({});
 
 MultipleSelectWithButtons.args = {
-  buttons: true,
   buttonPosition: "right",
+  buttons: true,
   closeOnBlur: false,
   label: LABEL,
   multiple: true,
