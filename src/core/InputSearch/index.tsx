@@ -7,11 +7,11 @@ import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { ExtraProps, StyledLabel, StyledSearchBase } from "./style";
 
-interface AccessibleInputSearchProps {
+export interface AccessibleInputSearchProps {
   label: string;
   placeholder?: string;
   id: string;
-  handleSubmit: (value: string) => void;
+  handleSubmit?: (value: string) => void;
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
@@ -43,13 +43,13 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
     };
 
     const localHandleSubmit = () => {
-      handleSubmit(value);
+      if (handleSubmit) handleSubmit(value);
     };
 
     const handleKeyPress = (event: React.KeyboardEvent) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        handleSubmit(value);
+        if (handleSubmit) handleSubmit(value);
       }
     };
 

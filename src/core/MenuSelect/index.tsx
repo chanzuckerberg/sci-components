@@ -1,7 +1,4 @@
-import {
-  InputAdornment,
-  InputBaseProps as RawInputBaseProps,
-} from "@material-ui/core";
+import { InputAdornment } from "@material-ui/core";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
@@ -9,12 +6,14 @@ import {
 } from "@material-ui/lab";
 import React from "react";
 import { noop } from "src/common/utils";
+import Icon from "../Icon";
+import IconButton from "../IconButton";
+import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
-  StyledInputBase,
+  StyledMenuInputSearch,
   StyledMenuItem,
-  StyledSearchIcon,
   StyleProps,
 } from "./style";
 
@@ -26,7 +25,7 @@ export interface DefaultMenuSelectOption {
 interface ExtraProps extends StyleProps {
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (event: React.SyntheticEvent) => void;
-  InputBaseProps?: RawInputBaseProps;
+  InputBaseProps?: InputSearchProps;
 }
 
 type CustomAutocompleteProps<
@@ -78,25 +77,35 @@ export default function MenuSelect<
       getOptionLabel={getOptionLabel}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
-          <StyledInputBase
-            search={search}
+          <StyledMenuInputSearch
+            id="location-search"
+            label="Search for a location"
             placeholder="Search"
             ref={params.InputProps.ref}
-            inputProps={{
-              ...params.inputProps,
+            search={search}
+            onChange={onInputChange}
+            autoFocus
+            InputProps={{
               /**
                * (thuang): Works with css caret-color: "transparent" to hide
                * mobile keyboard
                */
               inputMode: search ? "text" : "none",
+              /**
+               * (mmoore): passing only the ref along to InputProps to prevent
+               * default MUI arrow from rendering in search input.
+               * renderInput strips InputProps, so we explictly pass end adornment here
+               */
+              ...params.InputProps.ref,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton sdsType="secondary">
+                    <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+              inputProps: params.inputProps,
             }}
-            onChange={onInputChange}
-            autoFocus
-            endAdornment={
-              <InputAdornment position="end">
-                <StyledSearchIcon />
-              </InputAdornment>
-            }
             {...InputBaseProps}
           />
         </InputBaseWrapper>
