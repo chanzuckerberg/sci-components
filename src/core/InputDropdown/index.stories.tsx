@@ -29,6 +29,9 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    counter: {
+      control: { type: "text" },
+    },
     details: {
       control: { type: "text" },
     },
@@ -65,8 +68,9 @@ export const Default = Template.bind({});
 
 Default.args = {
   disabled: false,
-  label: "Dropdown",
+  label: "Label",
   sdsStyle: "square",
+  sdsType: "singleSelect",
 };
 
 Default.parameters = {
