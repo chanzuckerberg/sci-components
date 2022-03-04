@@ -65,6 +65,18 @@ MultipleSelectWithSearch.args = {
   search: true,
 };
 
+export const MultipleSelectWithButtons = Template.bind({});
+
+MultipleSelectWithButtons.args = {
+  buttons: true,
+  buttonPosition: "right",
+  closeOnBlur: false,
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  search: true,
+};
+
 const useStyles = makeStyles(() => ({
   /* stylelint-disable-next-line */
   paper: {

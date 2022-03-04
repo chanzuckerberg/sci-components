@@ -4,7 +4,7 @@ import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import MenuSelect, { DefaultMenuSelectOption } from "../MenuSelect";
-import { StyledPaper, StyledPopper } from "./style";
+import { StyledButton, StyledPaper, StyledPopper } from "./style";
 
 export {
   StyledPopper as DropdownPopper,
@@ -22,6 +22,9 @@ export type Value<T, Multiple> = Multiple extends undefined | false
   : Array<T> | null;
 
 interface DropdownProps<Multiple> {
+  buttons?: boolean;
+  buttonPosition?: "left" | "right";
+  closeOnBlur?: boolean;
   label: string;
   options: DefaultMenuSelectOption[];
   onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
@@ -43,6 +46,14 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   label = "",
   multiple = false,
   search = false,
+  buttons = false,
+  buttonPosition = "right",
+  // By default, most dropdowns will close when the user clicks outside the dropdown.
+  // The exception is the multiple select variant with Apply/Cancel buttons,
+  // which by default will not close on blur. If closeOnBlur is enabled, clicking out
+  // is equivalent to clicking the Cancel button, closing the dropdown and losing
+  // unapplied changes.
+  closeOnBlur = buttons ? false : true,
   onChange,
   MenuSelectProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
@@ -52,6 +63,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   InputDropdownComponent = InputDropdown,
   ...rest
 }: DropdownProps<Multiple>): JSX.Element {
+  if (typeof buttons === "boolean" && !multiple) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: buttons are only supported for multiple select dropdowns."
+    );
+  }
+
   const isControlled = propValue !== undefined;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -105,6 +123,45 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
           options={options}
           {...MenuSelectProps}
         />
+        {buttons && (
+          <div>
+            {buttonPosition === "left" ? (
+              <div>
+                <StyledButton
+                  onClick={handleClose}
+                  sdsStyle="square"
+                  sdsType="primary"
+                >
+                  Apply
+                </StyledButton>
+                <StyledButton
+                  onClick={handleCancel}
+                  sdsStyle="square"
+                  sdsType="secondary"
+                >
+                  Cancel
+                </StyledButton>
+              </div>
+            ) : (
+              <div>
+                <StyledButton
+                  onClick={handleCancel}
+                  sdsStyle="square"
+                  sdsType="secondary"
+                >
+                  Cancel
+                </StyledButton>
+                <StyledButton
+                  onClick={handleClose}
+                  sdsStyle="square"
+                  sdsType="primary"
+                >
+                  Apply
+                </StyledButton>
+              </div>
+            )}
+          </div>
+        )}
       </PopperComponent>
     </>
   );
@@ -123,6 +180,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   ) {
     // (thuang): We don't want to close the menu when the input is clicked
     if (reason === "toggleInput") {
+      return;
+    }
+
+    if (buttons && reason === "blur") {
+      if (closeOnBlur) {
+        handleCancel();
+      }
       return;
     }
 
@@ -146,6 +210,15 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
 
     setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+  }
+
+  function handleCancel() {
+    setPendingValue(null);
+
+    if (anchorEl) {
+      anchorEl.focus();
+    }
+    setAnchorEl(null);
   }
 
   function getInitialValue(): Value<DefaultMenuSelectOption, Multiple> {

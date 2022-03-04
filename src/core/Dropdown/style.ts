@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Paper } from "@material-ui/core";
 import Popper from "@material-ui/core/Popper";
+import Button from "../Button";
 import {
   fontHeaderXs,
   getColors,
@@ -33,7 +34,7 @@ export const StyledPopper = styled(Popper)`
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       color: ${colors?.gray[500]};
-      padding: ${spacings?.s}px;
+      padding: ${spacings?.xs}px;
       min-width: 244px;
       z-index: 1400; // allows the dropdown to be used in modals
     `;
@@ -65,4 +66,25 @@ export const StyledPaper = styled(Paper)`
       `;
     }}
   }
+`;
+
+export const StyledButton = styled(Button)`
+  ${(props) => {
+    const spacings = getSpaces(props);
+
+    return `
+      margin-top: ${spacings?.l}px;
+      margin-bottom: ${spacings?.s}px;
+
+      &:first-child {
+        margin-left: ${spacings?.s}px;
+        margin-right: ${spacings?.m}px;
+      }
+      
+      &:last-child {
+        margin-left: 0;
+        margin-right: ${spacings?.s}px;
+      }
+    `;
+  }}
 `;
