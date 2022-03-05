@@ -8,11 +8,10 @@ import {
 import React, { ChangeEvent, FormEvent } from "react";
 import { fontBodyS, fontBodyXs } from "../styles";
 import {
+  CommonThemeProps,
   getColors,
   getFontWeights,
-  getPalette,
   getSpaces,
-  Props,
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
 
@@ -65,24 +64,23 @@ export const StyledTabs = styled(TempTabs, {
 
 const TAB_DO_NOT_FORWARD_PROPS = ["sdsSize"];
 
-interface TabProps extends Props {
+interface TabProps extends CommonThemeProps {
   sdsSize: SdsSize;
 }
 
 export const StyledTab = styled(RawTab, {
   shouldForwardProp: (prop) => !TAB_DO_NOT_FORWARD_PROPS.includes(String(prop)),
 })<TabProps>`
-  color: black;
   min-height: unset;
   padding: 0;
   min-width: 32px;
+  opacity: 1 !important;
 
   ${tabFontMixin}
 
   ${(props) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
-    const palette = getPalette(props);
     const fontWeights = getFontWeights(props);
 
     const { sdsSize } = props;
@@ -96,12 +94,24 @@ export const StyledTab = styled(RawTab, {
       // (thuang): Large Tab height is 30px, the offset is 4px
       height: ${isLarge ? 26 : 22}px;
 
-      &:hover {
-        color: ${colors?.gray[600]};
+      color: ${colors?.gray[500]};
+
+      &:hover, :focus {
+        color: black;
       }
+
+      &.Mui-selected {
+        color: black;
+
+        &:hover {
+          color: black;
+        }
+      }
+
       &:active {
-        color: ${palette?.text?.primary};
+        color: black;
       }
+
       &:disabled {
         color: ${colors?.gray[200]};
       }

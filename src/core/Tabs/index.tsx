@@ -7,7 +7,7 @@ import { TabsContext } from "./components/common";
 import LabelWithCount from "./components/LabelWithCount";
 import { StyledTab, StyledTabs, TabsProps } from "./style";
 
-export { TabsProps };
+export type { TabsProps };
 
 const TabIndicator = (theme: AppThemeOptions) => {
   const colors = getColors({ theme });

@@ -1,28 +1,22 @@
 import styled from "@emotion/styled";
 import {
+  CommonThemeProps as StyleProps,
   fontBodyS,
   fontBodyXs,
   fontBodyXxs,
   getColors,
   getFontWeights,
-  getPalette,
   getSpaces,
-  Props as StyleProps,
 } from "src/core/styles";
 import { SdsSize } from "../common";
 
 export const Wrapper = styled.span`
   ${(props) => {
     const colors = getColors(props);
-    const palette = getPalette(props);
 
     return `
-      &:hover {
-        color: ${colors?.gray[600]};
-      }
-
       &:active {
-        color: ${palette?.text?.primary};
+        color: black;
       }
 
       &:disabled {

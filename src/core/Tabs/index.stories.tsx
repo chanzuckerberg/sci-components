@@ -87,7 +87,7 @@ const livePreviewWrapperStyle: React.CSSProperties = {
 function LivePreviewDemo(props: Args): JSX.Element {
   const finalProps = {
     ...props,
-    style: { width: "200px" },
+    style: { width: "250px" },
   };
 
   return (
@@ -106,6 +106,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
           tabOneLabel="Tab One"
           tabTwoLabel="Tab Two"
           tabOneCount={123}
+          tabTwoCount={456}
           onChange={noop}
           underlined
           {...finalProps}
@@ -128,6 +129,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
           tabOneLabel="Tab One"
           tabTwoLabel="Tab Two"
           tabOneCount={123}
+          tabTwoCount={456}
           sdsSize="small"
           underlined
           {...finalProps}

@@ -23,7 +23,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds Mui-selected"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-rizdpq Mui-selected"
             role="tab"
             tabindex="0"
             type="button"
@@ -32,7 +32,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
               class="MuiTab-wrapper"
             >
               <span
-                class="css-1wj4pv3"
+                class="css-1d9n0h0"
               >
                 <span
                   class="css-1szlfza"
@@ -52,7 +52,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-rizdpq"
             role="tab"
             tabindex="-1"
             type="button"
@@ -93,7 +93,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-csy3xc Mui-selected"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1a0z6ji Mui-selected"
             role="tab"
             tabindex="0"
             type="button"
@@ -102,7 +102,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
               class="MuiTab-wrapper"
             >
               <span
-                class="css-1wj4pv3"
+                class="css-1d9n0h0"
               >
                 <span
                   class="css-1szlfza"
@@ -122,7 +122,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-csy3xc"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1a0z6ji"
             role="tab"
             tabindex="-1"
             type="button"
@@ -163,7 +163,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds Mui-selected"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-rizdpq Mui-selected"
             role="tab"
             tabindex="0"
             type="button"
@@ -172,7 +172,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
               class="MuiTab-wrapper"
             >
               <span
-                class="css-1wj4pv3"
+                class="css-1d9n0h0"
               >
                 <span
                   class="css-1szlfza"
@@ -192,7 +192,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-1e93pds"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-rizdpq"
             role="tab"
             tabindex="-1"
             type="button"
