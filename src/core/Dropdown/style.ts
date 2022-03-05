@@ -49,22 +49,24 @@ export const StyledPaper = styled(Paper)`
     padding: 0;
   }
 
-  .MuiAutocomplete-option {
-    padding: 0;
+  ${(props) => {
+    const colors = getColors(props);
+    const spacings = getSpaces(props);
 
-    &[aria-selected="true"] {
-      background-color: initial;
-    }
+    return `
+      .MuiAutocomplete-option {
+        margin: 0 ${spacings?.s}px;
+        padding: 0;
 
-    ${(props) => {
-      const colors = getColors(props);
-
-      return `
+        &[aria-selected="true"] {
+          background-color: initial;
+        }
+        
         &:hover {
           background-color: ${colors?.gray[100]};
         }
       `;
-    }}
+  }}
   }
 `;
 
