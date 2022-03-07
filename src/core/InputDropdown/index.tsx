@@ -22,11 +22,13 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
 
   return (
     <StyledInputDropdown {...props}>
-      <StyledLabel details={details}>{label}</StyledLabel>
+      <StyledLabel details={details} counter={counter}>
+        {counter !== undefined || details ? `${label}:` : label}
+      </StyledLabel>
       {sdsType === "singleSelect" && details && (
         <StyledDetail>{details}</StyledDetail>
       )}
-      {sdsType === "multiSelect" && counter && (
+      {sdsType === "multiSelect" && counter !== undefined && (
         <StyledCounter>{counter}</StyledCounter>
       )}
       <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />

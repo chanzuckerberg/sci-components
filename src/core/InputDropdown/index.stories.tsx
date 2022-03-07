@@ -1,5 +1,7 @@
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
+import Menu from "../Menu";
+import MenuItem from "../MenuItem";
 import InputDropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -30,7 +32,7 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   argTypes: {
     counter: {
-      control: { type: "text" },
+      control: { type: "number" },
     },
     details: {
       control: { type: "text" },
@@ -79,52 +81,153 @@ Default.parameters = {
   },
 };
 
-// export const Error = Template.bind({});
+const storyRow = {
+  display: "grid",
+  gridColumnGap: "24px",
+  gridTemplateColumns: "repeat(3, 160px)",
+  gridTemplateRows: "1fr",
+};
 
-// Error.args = {
-//   disabled: false,
-//   intent: "error",
-//   label: "Dropdown",
-//   sdsStyle: "square",
-// };
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { sdsStyle, ...rest } = props;
 
-// export const Disabled = Template.bind({});
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
 
-// Disabled.args = {
-//   disabled: true,
-//   label: "Dropdown",
-//   sdsStyle: "square",
-// };
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-// export const Minimal = Template.bind({});
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-// Minimal.args = {
-//   disabled: false,
-//   label: "Dropdown",
-//   sdsStyle: "minimal",
-// };
+  return (
+    <div style={storyRow as React.CSSProperties}>
+      <InputDropdown
+        sdsStyle={sdsStyle}
+        sdsType="singleSelect"
+        label="Label"
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        {...rest}
+      />
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
+      >
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </Menu>
+      {/* details */}
+      <InputDropdown
+        sdsStyle={sdsStyle}
+        sdsType="singleSelect"
+        label="Label"
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        details="Details"
+        {...rest}
+      />
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
+      >
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </Menu>
 
-// export const Square = Template.bind({});
+      {/* multiselect */}
+      <InputDropdown
+        sdsStyle={sdsStyle}
+        sdsType="multiSelect"
+        label="Label"
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        {...rest}
+      />
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
+      >
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </Menu>
+    </div>
+  );
+};
 
-// Square.args = {
-//   disabled: false,
-//   label: "Dropdown",
-//   sdsStyle: "square",
-// };
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-// export const Rounded = Template.bind({});
+export const RoundLivePreview = LivePreviewTemplate.bind({});
 
-// Rounded.args = {
-//   disabled: false,
-//   label: "Dropdown",
-//   sdsStyle: "rounded",
-// };
+RoundLivePreview.args = {
+  sdsStyle: "rounded",
+};
 
-// export const Warning = Template.bind({});
+export const SquareLivePreview = LivePreviewTemplate.bind({});
 
-// Warning.args = {
-//   disabled: false,
-//   intent: "warning",
-//   label: "Dropdown",
-//   sdsStyle: "square",
-// };
+SquareLivePreview.args = {
+  sdsStyle: "square",
+};
+
+const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
+  const { ...rest } = props;
+
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <InputDropdown
+        sdsStyle="minimal"
+        sdsType="singleSelect"
+        label="Label"
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        {...rest}
+      />
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
+      >
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </Menu>
+    </div>
+  );
+};
+
+const MinimalPreviewTemplate: Story = (args) => (
+  <MinimalLivePreviewDemo {...args} />
+);
+
+export const MinimalLivePreview = MinimalPreviewTemplate.bind({});

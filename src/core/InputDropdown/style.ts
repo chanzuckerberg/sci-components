@@ -22,7 +22,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   sdsStyle?: "minimal" | "square" | "rounded";
   sdsType?: "singleSelect" | "multiSelect";
   details?: string;
-  counter?: number;
+  counter?: string;
 }
 
 const labelFontBodyXs = fontBody("xs");
@@ -38,10 +38,10 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
+    margin: ${spacings?.l}px 0;
 
     .MuiButton-label {
-      display: flex;
-      align-items: center;
+      justify-content: flex-start;
       margin: 0 ${spacings?.xs}px;
 
       > span {
@@ -49,6 +49,10 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+      }
+
+      svg {
+        margin-left: auto;
       }
     }
 
@@ -95,10 +99,16 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       color: ${colors?.gray[600]};
+      border: none;
     }
 
     &:active {
       color: ${palette?.text?.primary};
+      border: none;
+    }
+
+    &:focus {
+      outline: none;
     }
   `;
 };
@@ -110,23 +120,25 @@ const square = (props: InputDropdownProps): SerializedStyles => {
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
-
-    .MuiButton-label {
-      justify-content: space-between;
-    }
   `;
 };
 
 const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
+  const colors = getColors(props);
+  const palette = getPalette(props);
+  const labelColor = props.disabled
+    ? colors?.gray[300]
+    : palette?.text?.primary;
 
   return css`
     border-radius: ${corners?.l}px;
     height: 34px;
     min-width: 90px;
 
-    .MuiButton-label {
-      justify-content: space-between;
+    .MuiButton-label > span:first-of-type {
+      font-weight: 600;
+      color: ${labelColor};
     }
   `;
 };
@@ -223,18 +235,21 @@ export const StyledDetail = styled("span")`
   }}
 `;
 
-interface detailsAndCounter extends CommonThemeProps {
+interface DetailsAndCounter extends CommonThemeProps {
   details?: string;
   counter?: string;
 }
 
 export const StyledLabel = styled("span")`
   ${labelFontBodyXs};
-  ${(props: detailsAndCounter) => {
+  ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
+    const colors = getColors(props);
     const palette = getPalette(props);
-    const labelColor = details || counter ? palette?.text?.primary : "";
-
+    const labelColor =
+      details || counter !== undefined
+        ? palette?.text?.primary
+        : colors?.gray[500];
     return `
       color: ${labelColor};
     `;
