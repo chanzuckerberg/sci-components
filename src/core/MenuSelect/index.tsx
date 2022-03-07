@@ -69,6 +69,7 @@ export default function MenuSelect<
 
   return (
     <StyledAutocomplete
+      clearOnBlur={false}
       open
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal

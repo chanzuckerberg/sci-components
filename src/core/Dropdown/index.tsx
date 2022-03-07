@@ -218,6 +218,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     if (anchorEl) {
       anchorEl.focus();
     }
+
     setAnchorEl(null);
   }
 

@@ -61,7 +61,7 @@ export const StyledPaper = styled(Paper)`
         &[aria-selected="true"] {
           background-color: initial;
         }
-        
+
         &:hover {
           background-color: ${colors?.gray[100]};
         }
@@ -78,7 +78,7 @@ export const StyledButton = styled(Button)`
       margin-top: ${spacings?.l}px;
       margin-bottom: ${spacings?.s}px;
 
-      &:first-child {
+      &:first-of-type {
         margin-left: ${spacings?.s}px;
         margin-right: ${spacings?.m}px;
       }
