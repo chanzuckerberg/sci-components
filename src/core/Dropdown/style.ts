@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Paper } from "@material-ui/core";
 import Popper from "@material-ui/core/Popper";
+import Button from "../Button";
 import {
   fontHeaderXs,
   getColors,
@@ -33,7 +34,7 @@ export const StyledPopper = styled(Popper)`
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       color: ${colors?.gray[500]};
-      padding: ${spacings?.s}px;
+      padding: ${spacings?.xs}px;
       min-width: 244px;
       z-index: 1400; // allows the dropdown to be used in modals
     `;
@@ -48,21 +49,44 @@ export const StyledPaper = styled(Paper)`
     padding: 0;
   }
 
-  .MuiAutocomplete-option {
-    padding: 0;
+  ${(props) => {
+    const colors = getColors(props);
+    const spacings = getSpaces(props);
 
-    &[aria-selected="true"] {
-      background-color: initial;
-    }
+    return `
+      .MuiAutocomplete-option {
+        margin: 0 ${spacings?.s}px;
+        padding: 0;
 
-    ${(props) => {
-      const colors = getColors(props);
+        &[aria-selected="true"] {
+          background-color: initial;
+        }
 
-      return `
         &:hover {
           background-color: ${colors?.gray[100]};
         }
       `;
-    }}
+  }}
   }
+`;
+
+export const StyledButton = styled(Button)`
+  ${(props) => {
+    const spacings = getSpaces(props);
+
+    return `
+      margin-top: ${spacings?.l}px;
+      margin-bottom: ${spacings?.s}px;
+
+      &:first-of-type {
+        margin-left: ${spacings?.s}px;
+        margin-right: ${spacings?.m}px;
+      }
+      
+      &:last-child {
+        margin-left: 0;
+        margin-right: ${spacings?.s}px;
+      }
+    `;
+  }}
 `;

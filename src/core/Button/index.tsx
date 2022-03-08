@@ -8,7 +8,7 @@ import {
   StyledButton,
 } from "./style";
 
-interface SdsProps {
+export interface SdsProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
   sdsStyle?: "minimal" | "rounded" | "square";
