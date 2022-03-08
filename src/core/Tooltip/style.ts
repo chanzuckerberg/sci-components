@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
 import {
+  CommonThemeProps,
   fontBodyXs,
   fontHeaderXs,
   fontHeaderXxs,
@@ -8,10 +9,9 @@ import {
   getColors,
   getShadows,
   getSpaces,
-  Props,
 } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
   followCursor?: boolean;
   inverted?: boolean;
@@ -81,7 +81,7 @@ export const tooltipCss = (props: ExtraProps): string => {
   return css`
     ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
     ${width === "wide" && sdsStyle === "light" && wide()}
-    
+
     ${followCursor === true && tableStyles(props)}
 
     border: ${borders?.gray["300"]};
@@ -99,6 +99,7 @@ export const arrowCss = (props: ExtraProps): string => {
 
     &:before {
       border: ${inverted || sdsStyle === "dark" ? null : borders?.gray["300"]};
+      box-sizing: border-box;
     }
   `;
 };

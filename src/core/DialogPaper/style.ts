@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { Paper, PaperProps } from "@material-ui/core";
-import { getCorners, getSpaces, Props } from "src/core/styles";
+import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
 import { BoxShadows } from "../styles/common/constants/boxShadows";
 
-export interface StyledPaperProps extends Props, PaperProps {
+export interface StyledPaperProps extends CommonThemeProps, PaperProps {
   sdsSize: "xs" | "s" | "m" | "l";
 }
 

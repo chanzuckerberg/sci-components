@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import { DialogContext } from "../Dialog/components/common";
 import { StyledPaper } from "./style";
 
-export { PaperProps as DialogPaperProps };
+export type { PaperProps as DialogPaperProps };
 
 const DialogPaper = forwardRef<unknown, PaperProps>(function DialogPaper(
   props,

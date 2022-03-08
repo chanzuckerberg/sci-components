@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { DialogTitle, Typography } from "@material-ui/core";
 import {
+  CommonThemeProps as ExtraProps,
   fontBodyXs,
   fontHeaderXl,
   getColors,
   getSpaces,
-  Props as ExtraProps,
 } from "src/core/styles";
 
 export type { ExtraProps };

@@ -21,6 +21,8 @@ export type Value<T, Multiple> = Multiple extends undefined | false
   ? T | null
   : Array<T> | null;
 
+type RenderFunctionType = (props: any) => JSX.Element;
+
 interface DropdownProps<Multiple> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
@@ -35,8 +37,8 @@ interface DropdownProps<Multiple> {
   value?: Value<DefaultMenuSelectOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
-  PopperComponent?: typeof StyledPopper;
-  PaperComponent?: typeof StyledPaper;
+  PopperComponent?: typeof StyledPopper | RenderFunctionType;
+  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   InputDropdownComponent?: typeof InputDropdown;
 }
 

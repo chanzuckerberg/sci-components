@@ -2,11 +2,11 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { SvgIcon, SvgIconProps } from "@material-ui/core";
 import { FC } from "react";
-import { getColors, getIconSizes, Props } from "../styles";
+import { CommonThemeProps, getColors, getIconSizes } from "../styles";
 import { IconNameToSizes } from "./map";
 
 export interface ExtraProps<IconName extends keyof IconNameToSizes>
-  extends Props {
+  extends CommonThemeProps {
   sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];
   sdsType: "iconButton" | "interactive" | "static";

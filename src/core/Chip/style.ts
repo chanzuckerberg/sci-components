@@ -2,15 +2,15 @@ import { css, SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Chip } from "@material-ui/core";
 import {
+  CommonThemeProps,
   fontCapsXxxxs,
   fontHeaderXs,
   getColors,
   getCorners,
   getSpaces,
-  Props,
 } from "../styles";
 
-export interface ExtraProps extends Props {
+export interface ExtraProps extends CommonThemeProps {
   size?: "small" | "medium";
   status?: "success" | "error" | "warning" | "info" | "pending" | "beta";
   isRounded?: boolean;
