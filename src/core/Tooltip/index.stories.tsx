@@ -168,3 +168,9 @@ const PlacementDemo = (): JSX.Element => {
 const PlacementTemplate: Story = () => <PlacementDemo />;
 
 export const PlacementPreview = PlacementTemplate.bind({});
+
+PlacementPreview.args = {
+  // Chrome shifts elements when fonts load in
+  // delay allows for font to load and prevents chromatic from constantly creating new baselines
+  chromatic: { delay: 500 },
+};
