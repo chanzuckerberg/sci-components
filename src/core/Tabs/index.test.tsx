@@ -17,18 +17,18 @@ describe("<Tabs />", () => {
   it("renders Tabs component", () => {
     render(<Test />);
 
-    const element = screen.getByTestId("tabs");
+    const elements = screen.getAllByTestId("tabs");
 
-    expect(element).not.toBeNull();
+    expect(elements.length).toBeTruthy();
   });
 
   it("renders tab texts", () => {
     render(<Test />);
 
-    const Label1 = screen.getByText(/Tab One/i);
-    const Label2 = screen.getByText(/Tab Two/i);
+    const Label1 = screen.getAllByText(/Tab One/i);
+    const Label2 = screen.getAllByText(/Tab Two/i);
 
-    expect(Label1).toBeTruthy();
-    expect(Label2).toBeTruthy();
+    expect(Label1.length).toBeTruthy();
+    expect(Label2.length).toBeTruthy();
   });
 });
