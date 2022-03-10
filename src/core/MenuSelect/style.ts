@@ -12,7 +12,7 @@ export interface StyleProps extends CommonThemeProps {
   search?: boolean;
 }
 
-const doNotForwardProps = ["search"];
+const doNotForwardProps = ["search", "InputBaseProps"];
 
 // (thuang): Casting the type to `Autocomplete`
 //  per https://github.com/mui-org/material-ui/issues/21727#issuecomment-880263271
@@ -31,6 +31,14 @@ export const InputBaseWrapper = styled.div`
       // the component needs to be in the DOM to handle backdrop
       // click to close the menu
       return `
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
         margin: 0;
       `;
     }

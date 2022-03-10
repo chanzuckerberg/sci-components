@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputDropdown /> Test story renders snapshot 1`] = `
+<button
+  class="MuiButtonBase-root MuiButton-root MuiButton-text css-b86eeh"
+  data-testid="InputDropdown"
+  label="Label"
+  tabindex="0"
+  type="button"
+>
+  <span
+    class="MuiButton-label"
+  >
+    <span
+      class="css-ebsz01"
+    >
+      Label
+    </span>
+    <div
+      class="css-jbvua0"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root css-106974y"
+        data-jest-file-name="IconChevronDownSmall.svg"
+        data-jest-svg-name="IconChevronDownSmall"
+        data-testid="IconChevronDownSmall"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 14 14"
+      />
+    </div>
+  </span>
+  <span
+    class="MuiTouchRipple-root"
+  />
+</button>
+`;

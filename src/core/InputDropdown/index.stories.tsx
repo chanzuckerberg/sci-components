@@ -1,30 +1,55 @@
+import { Popper } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import Menu from "../Menu";
-import MenuItem from "../MenuItem";
+import MenuSelect from "../MenuSelect";
 import InputDropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { disabled, label, sdsStyle, sdsType, ...rest } = props;
+  const { disabled, label, sdsStyle, sdsType, multiple, ...rest } = props;
 
-  const [open, setOpen] = useState<boolean>(false);
-  const onClick = () => {
-    setOpen(!open);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const options = [
+    {
+      name: "Menu Item",
+    },
+    {
+      name: "Menu Item",
+    },
+    {
+      name: "Menu Item",
+    },
+  ];
 
   return (
     <>
       <InputDropdown
         disabled={disabled}
         label={label}
-        onClick={onClick}
+        onClick={handleClick}
         sdsStage={open ? "userInput" : "default"}
         sdsStyle={sdsStyle}
         sdsType={sdsType}
+        data-testid="InputDropdown"
         {...rest}
       />
-      <br />
-      {open && <div>This is a menu.</div>}
+      <Popper open={open} anchorEl={anchorEl} style={{ width: "160px" }}>
+        <MenuSelect
+          search={false}
+          options={options}
+          onClose={handleClose}
+          multiple={multiple}
+        />
+      </Popper>
     </>
   );
 };
@@ -91,83 +116,32 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
 
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <div style={storyRow as React.CSSProperties}>
-      <InputDropdown
-        sdsStyle={sdsStyle}
+      <Template
         sdsType="singleSelect"
+        sdsStyle={sdsStyle}
         label="Label"
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
         {...rest}
       />
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        getContentAnchorEl={null}
-        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
-      >
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-      </Menu>
+
       {/* details */}
-      <InputDropdown
-        sdsStyle={sdsStyle}
+      <Template
         sdsType="singleSelect"
+        sdsStyle={sdsStyle}
         label="Label"
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
         details="Details"
         {...rest}
       />
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        getContentAnchorEl={null}
-        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
-      >
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-      </Menu>
 
       {/* multiselect */}
-      <InputDropdown
+      <Template
+        sdsType="singleSelect"
         sdsStyle={sdsStyle}
-        sdsType="multiSelect"
         label="Label"
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
+        multiple
         {...rest}
       />
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        getContentAnchorEl={null}
-        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
-      >
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-      </Menu>
     </div>
   );
 };
@@ -180,49 +154,34 @@ RoundLivePreview.args = {
   sdsStyle: "rounded",
 };
 
+RoundLivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const SquareLivePreview = LivePreviewTemplate.bind({});
 
 SquareLivePreview.args = {
   sdsStyle: "square",
 };
 
+SquareLivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
-  const { ...rest } = props;
-
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const { sdsStyle, ...rest } = props;
 
   return (
-    <div>
-      <InputDropdown
-        sdsStyle="minimal"
-        sdsType="singleSelect"
-        label="Label"
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
-        {...rest}
-      />
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        getContentAnchorEl={null}
-        PaperProps={{ style: { marginTop: "8px", width: "148px" } }}
-      >
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
-      </Menu>
-    </div>
+    <Template
+      sdsType="singleSelect"
+      sdsStyle={sdsStyle}
+      label="Label"
+      {...rest}
+    />
   );
 };
 
@@ -231,3 +190,24 @@ const MinimalPreviewTemplate: Story = (args) => (
 );
 
 export const MinimalLivePreview = MinimalPreviewTemplate.bind({});
+
+MinimalLivePreview.args = {
+  sdsStyle: "minimal",
+};
+
+MinimalLivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+const TestTemplate: Story = (args) => <Demo {...args} />;
+
+export const Test = TestTemplate.bind({});
+
+Test.args = {
+  disabled: false,
+  label: "Label",
+  sdsStyle: "square",
+  sdsType: "singleSelect",
+};
