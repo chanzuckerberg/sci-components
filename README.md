@@ -1,40 +1,32 @@
 # Purpose
 
-A multi-product design system that offers a library of high quality reusable components, that deliver a predictable, accessible, and easy-to-learn experiences that democratize access to tools & technologies for scientists.
+The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists.
 
-## Components
+## Design System Documentation
 
-CZIF Science Initiative Component Library
+`czifui` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
 
-[Demo Site](https://chanzuckerberg.github.io/sci-components)
+![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
 
-## Get Started
+## Installation
 
-### Installation
+NPM Package
 
-https://www.npmjs.com/package/czifui
-
-```shell
-npm i czifui
 ```
+// with npm
+npm i czifui
 
-or
-
-```shell
+// with yarn
 yarn add czifui
 ```
 
-NOTE: Please make sure the peer dependencies are installed as well
+**Currently SDS uses Material UI v4**
 
-### Peer Dependencies
+NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) to learn about what you can do with the components.
 
-#### ⚠️ WARNING: Currently we require [Material UI v4](https://v4.mui.com/), even though Material UI v5 was released in September 2021 ⚠️
+`czifui` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
-In order to avoid installing multiple versions of the same library in the host project, which could cause bugs, the component library does **NOT** have its own dependencies.
-
-Therefore, please kindly ensure your project includes the following dependencies in your project's `package.json`:
-
-```json
+```
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
@@ -45,161 +37,60 @@ Therefore, please kindly ensure your project includes the following dependencies
   "react-dom"
 ```
 
-Install the peer dependencies in your project:
+To install the dependencies:
 
-```shell
-npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 ```
+// with npm
+npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 
-or
-
-```shell
+// with yarn
 yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 ```
 
-### Demo
+## Usage
 
-`czifui` comes with [Storybook](https://storybook.js.org/) integration, so you can browse the components locally by following the steps below:
+`czifui` comes with four main exports that help you build your app:
 
-1. Cloning the repo: `git clone git@github.com:chanzuckerberg/sci-components.git`
-1. Run: `yarn && yarn start`
-1. A new browser tab will be automatically opened with the storybook!
+1. Components - Accessible and reusable components
 
-![ ](https://user-images.githubusercontent.com/6309723/124010513-c09f0900-d993-11eb-8fc7-f66a0b4ec16e.png)
-
-#### Tips
-
-It's super useful to read the `*.stories.tsx` files to see how the components are used in real examples. You can also find additional examples in [Aspen](https://github.com/chanzuckerberg/aspen), which uses `czifui` extensively
-
-## Default Theme
-
-### Instructions
-
-To use the default theme, please do the following:
-
-1. Add the following HTML to your `index.html` at the `<head>` section:
-
-   ```html
-   <link rel="preconnect" href="https://fonts.gstatic.com" />
-   <link
-     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-     rel="stylesheet"
-   />
-   ```
-
-1. Import the default theme object and use it in Material UI's `<ThemeProvider />`:
-
-   ```tsx
-     import { defaultTheme } from "czifui";
-     import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-      import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-
-    <StylesProvider injectFirst>
-      <EmotionThemeProvider theme={defaultTheme}>
-        <ThemeProvider theme={defaultTheme}>
-          <YourApp />
-        </ThemeProvider>
-      </EmotionThemeProvider>
-    </StylesProvider>
-   ```
-
-1. Optional: If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
-   the full theme object like below. This is needed because `createTheme` generates
-   extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultAppTheme` instead of your own custom options
-
-```tsx
-  import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-  import { defaultAppTheme, makeThemeOptions } from "czifui";
-  import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-  import createTheme from "@material-ui/core/styles/createTheme";
-
-  const customTheme = {
-    ...
-  }
-
-  const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
-
-  const theme = createTheme(appTheme)
-
-    <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={theme}>
-          <YourApp />
-        </EmotionThemeProvider>
-      </ThemeProvider>
-    </StylesProvider>
-```
-
-💡 Aspen example available [here](https://github.com/chanzuckerberg/aspen/blob/trunk/src/frontend/pages/_app.tsx)
-
-## Design System
-
-`czifui` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
-
-![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
-
-## How to Use
-
-`czifui` comes with four main exports that help you build your app following the design system:
-
-1. Components - Components that implement the design system
-
-   E.g., `Alert`, `Button`, `Menu`
-
-   Source: [src/core](src/core)
-
-   NOTE: Since most of the `czifui` components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) (**NOTE: We are still on MUI v4 in the short term**) to learn about what you can do with the components
-
-1. Mixins - Mixins defined by the design system
-
-   E.g., `fontBodyL`, `fontHeaderM`, `fontCapsXxs`
-
-   Source: [src/core/styles/common/mixins](src/core/styles/common/mixins)
-
-1. Selectors - Helper functions that pick out theme variables for you
-
-   E.g., `getSpaces`, `getColors`, `getCorners`, `getFontWeights`
-
-   Source: [src/core/styles/common/selectors](src/core/styles/common/selectors)
-
-1. CSS & SCSS Variables
-
-E.g., CSS: `--sds-color-beta-400`, `--sds-spaces-m`; SCSS: `$sds-color-beta-400`, `$sds-spaces-m`
-
-Source: [src/common/styles-dictionary](src/common/styles-dictionary)
-
-These stylesheets can be imported into the index.js file of your application to make use of czifui's standard styles in projects that use SCSS or CSS modules to style the front end:
-
-```js
-// example using create-react-app structure
-// index.js
-
+```javascript
 import React from "react";
-import ReactDOM from "react-dom";
-// If you need css
-import "czifui/dist/variables.css";
-// If you need scss
-import "czifui/dist/_variables.scss";
-import "./index.css";
-import App from "./App";
+import { Button } from "czifui";
+<Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
+  {text}
+</Button>;
 ```
 
-### Example
+2. Mixins - Grouped styles defined by the design system
+
+```javascript
+import styled from "@emotion/styled";
+import { Typography } from "@material-ui/core";
+import { fontHeaderXL } from "czifui";
+
+export const Title - styled(Typography)`
+  ${fontHeaderXl}
+
+  // which compiles to:
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 30px;
+`;
+```
+
+3. Selectors - Helper functions that return theme variables baased on passed props
 
 ```ts
-    import { fontBodyM, getColors, getSpaces } from "czifui";
+import { css, SerializedStyles } from "@emotion/react";
+import styled from "@emotion/styled";
+import { getColors, getCorners } from "czifui";
 
-    export const Foo = styled.div`
-      // This is the design system's font body medium mixin we import from czifui
-      ${fontBodyM}
-
-      // This is the regular css rules
-      overflow: auto;
-
-      // This is a callback function that returns more CSS rules, but the only way
-      // to access the custom theme object
+export const Tag = styled.div`
+  // This is a callback function that returns more CSS rules, but the only way
+  // to access the custom theme object
       ${(props) => {
-        // getColors() is a selector that picks out colors from the theme object
+        //  getColors() is a selector that picks out colors from the theme object
         const colors = getColors(props);
         // getSpaces() is a selector that picks out spacings from the theme object
         const spacings = getSpaces(props);
@@ -210,12 +101,59 @@ import App from "./App";
           margin-bottom: ${spacings?.xxl}px;
         `;
       }}
-    `;
+`;
 ```
 
-NOTE: If you are not familiar with `styled()`, please check out Emotion's `styled()` API [here](https://emotion.sh/docs/styled)
+4. CSS & SCSS Variables - Variables for the `defaultTheme` to use if your app doesn't support `@emotion/styled`
 
-NOTE II: You can find more examples in the repo's `*.stories.tsx` and [Aspen](https://github.com/chanzuckerberg/aspen)
+```scss
+// with SCSS variables
+@import "~czifui/dist/variables";
+
+.button-primary {
+  background-color: $sds-color-primary-400;
+  padding: $sds-spaces-xxs;
+}
+
+// with CSS variables
+.button-primary {
+  background-color: var(--sds-color-primary-400);
+  padding: var(--sds-spaces-xxs);
+}
+```
+
+### Default Theme
+
+To use the default theme in your React application, complete the following:
+
+1. Add the following HTML to your `index.html` at the `<head>` section:
+
+```html
+// installs the sds font from google fonts
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+2. Import the default theme object and use it in Material UI's `<ThemeProvier />`:
+
+```javascript
+import { defaultTheme } from "czifui";
+import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+
+<StylesProvider injectFirst>
+  <EmotionThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <YourApp />
+    </ThemeProvider>
+  </EmotionThemeProvider>
+</StylesProvider>;
+```
+
+3.  If you need to override the default SDS theme, please follow the instructions [here](https://github.com/chanzuckerberg/sci-components/blob/main/docs/how-to-override-default-theme.md).
 
 ## Q&A
 
