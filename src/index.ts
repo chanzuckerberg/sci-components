@@ -2,6 +2,8 @@
 import "./common/styles-dictionary/css/variables.css";
 import "./common/styles-dictionary/scss/_variables.scss";
 
+export * from "./core/Accordion";
+export { default as Accordion } from "./core/Accordion";
 export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
 export * from "./core/Button";
