@@ -147,7 +147,7 @@ export const StyledButton = styled(Button, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  &:focus {
+  &:focus-visible {
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
   }
