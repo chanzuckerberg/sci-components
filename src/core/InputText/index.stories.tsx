@@ -89,7 +89,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         id="textFieldPreview"
         sdsType="textField"
         label="Label"
-        hideLabel={true}
+        hideLabel
         placeholder="Value"
         style={{ width: "200px" }}
       />
@@ -98,7 +98,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         id="textAreaPreview"
         sdsType="textArea"
         label="Label"
-        hideLabel={true}
+        hideLabel
         placeholder="Value"
         style={{ minWidth: "200px" }}
         inputProps={{ style: { minWidth: "200px" } }}
@@ -140,7 +140,7 @@ const TestDemo = (props: Args): JSX.Element => {
         id="test-hide-label"
         sdsType="textField"
         label="Hidden Label"
-        hideLabel={true}
+        hideLabel
         data-testid="inputTextHideLabel"
       />
 
