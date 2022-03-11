@@ -1,13 +1,37 @@
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import AccordionDetails from "./components/AccordionDetails";
+import AccordionHeader from "./components/AccordionHeader";
 import Accordion from "./index";
 
 const Template: Story = (props: Args) => {
-  const { id } = props;
-  return <Accordion id={id}>Test</Accordion>;
+  const { id, subtitle, useDivider } = props;
+  return (
+    <Accordion id={id} useDivider={useDivider}>
+      <AccordionHeader id={id} subtitle={subtitle}>
+        TEST
+      </AccordionHeader>
+      <AccordionDetails>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        malesuada lacus ex, sit amet blandit leo lobortis eget.
+      </AccordionDetails>
+    </Accordion>
+  );
 };
 
 export default {
+  argTypes: {
+    id: {
+      control: { type: "text" },
+      required: true,
+    },
+    subtitle: {
+      control: { type: "text" },
+    },
+    useDivider: {
+      control: { type: "boolean" },
+    },
+  },
   component: Accordion,
   title: "Accordion",
 };

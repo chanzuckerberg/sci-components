@@ -1,17 +1,14 @@
+import { AccordionProps as RawAccordionProps } from "@material-ui/core";
 import React from "react";
-import AccordionDetails from "./components/AccordionDetails";
-import AccordionHeader from "./components/AccordionHeader";
-import { StyledAccordion } from "./style";
+import { ExtraProps, StyledAccordion } from "./style";
 
-const Accordion = (props) => {
-  const { id } = props;
+export type AccordionProps = RawAccordionProps & ExtraProps;
+
+const Accordion = (props: AccordionProps) => {
+  const { children, useDivider } = props;
   return (
-    <StyledAccordion>
-      <AccordionHeader id={id}>Accordion 1</AccordionHeader>
-      <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
-      </AccordionDetails>
+    <StyledAccordion square useDivider={useDivider}>
+      {children}
     </StyledAccordion>
   );
 };
