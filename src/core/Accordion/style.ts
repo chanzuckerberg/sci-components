@@ -10,11 +10,12 @@ import {
 
 export interface ExtraProps extends CommonThemeProps {
   useDivider?: boolean;
+  togglePosition?: "right" | "left";
 }
 
 export const StyledAccordion = styled(Accordion)`
   ${(props: ExtraProps) => {
-    const { useDivider } = props;
+    const { useDivider, togglePosition } = props;
     const shadows = getShadows(props);
     const typography = getTypography(props);
     const border = getBorders(props);
@@ -26,3 +27,15 @@ export const StyledAccordion = styled(Accordion)`
     `;
   }};
 `;
+
+const leftPosition = () => {
+  return css`
+    .MuiAccordionSummary-root {
+      flex-direction: "row-reverse";
+
+      .MuiIconButton-edgeEnd {
+        margin: 0;
+      }
+    }
+  `;
+};

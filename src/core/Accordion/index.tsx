@@ -5,9 +5,13 @@ import { ExtraProps, StyledAccordion } from "./style";
 export type AccordionProps = RawAccordionProps & ExtraProps;
 
 const Accordion = (props: AccordionProps) => {
-  const { children, useDivider } = props;
+  const { children, useDivider, togglePosition = "right" } = props;
   return (
-    <StyledAccordion square useDivider={useDivider}>
+    <StyledAccordion
+      square
+      useDivider={useDivider}
+      togglePosition={togglePosition}
+    >
       {children}
     </StyledAccordion>
   );

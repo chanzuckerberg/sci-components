@@ -28,6 +28,10 @@ export default {
     subtitle: {
       control: { type: "text" },
     },
+    togglePosition: {
+      control: { type: "select" },
+      options: ["right", "left"],
+    },
     useDivider: {
       control: { type: "boolean" },
     },
@@ -46,4 +50,5 @@ Default.parameters = {
 
 Default.args = {
   id: "test-story",
+  togglePosition: "right",
 };
