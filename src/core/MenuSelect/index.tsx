@@ -25,7 +25,7 @@ export interface DefaultMenuSelectOption {
 interface ExtraProps extends StyleProps {
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (event: React.SyntheticEvent) => void;
-  InputBaseProps?: InputSearchProps;
+  InputBaseProps?: Partial<InputSearchProps>;
 }
 
 type CustomAutocompleteProps<
