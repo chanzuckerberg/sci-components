@@ -5,9 +5,9 @@ import AccordionHeader from "./components/AccordionHeader";
 import Accordion from "./index";
 
 const Template: Story = (props: Args) => {
-  const { id, subtitle, useDivider } = props;
+  const { id, subtitle, useDivider, togglePosition } = props;
   return (
-    <Accordion id={id} useDivider={useDivider}>
+    <Accordion id={id} useDivider={useDivider} togglePosition={togglePosition}>
       <AccordionHeader id={id} subtitle={subtitle}>
         TEST
       </AccordionHeader>
@@ -49,6 +49,13 @@ Default.parameters = {
 };
 
 Default.args = {
+  id: "test-story",
+  togglePosition: "right",
+};
+
+export const Test = Template.bind({});
+
+Test.args = {
   id: "test-story",
   togglePosition: "right",
 };
