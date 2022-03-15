@@ -2,7 +2,7 @@
 
 exports[`<InputDropdown /> Test story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text css-b86eeh"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text css-uxw73"
   data-testid="InputDropdown"
   label="Label"
   tabindex="0"
