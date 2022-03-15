@@ -38,7 +38,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
-    margin: ${spacings?.l}px 0;
+    margin: ${spacings?.xxs}px 0;
 
     .MuiButton-label {
       justify-content: flex-start;
