@@ -18,7 +18,7 @@ export type InputSearchProps = RawTextFieldSearchProps &
   AccessibleInputSearchProps &
   ExtraProps;
 
-const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
+const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
   function InputSearch(props, ref): JSX.Element {
     const {
       label,
@@ -85,7 +85,7 @@ const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
               </InputAdornment>
             ),
             // passed to html input
-            inputProps: inputProps,
+            inputProps,
           }}
           type="text"
           id={id}

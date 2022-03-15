@@ -13,6 +13,7 @@ import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChev
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
+import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
 import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
 import { ReactComponent as IconDownloadSmall } from "../../common/svgs/IconDownloadSmall.svg";
 import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
@@ -84,6 +85,7 @@ export interface IconNameToSizes {
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
+  dotsHorizontal: "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
   exclamationMarkCircle: "xs" | "s" | "l" | "xl";
@@ -180,6 +182,10 @@ export const iconMap: Props = {
   copy: {
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
+  },
+  dotsHorizontal: {
+    largeIcon: IconDotsHorizontal3Large,
+    smallIcon: null,
   },
   download: {
     largeIcon: IconDownloadLarge,
