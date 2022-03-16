@@ -134,21 +134,21 @@ const PlacementDemo = (): JSX.Element => {
       <Tooltip title="Text" placement="left-start" arrow open>
         <Button>left-start</Button>
       </Tooltip>
-      <div></div>
+      <div />
       <Tooltip title="Text" placement="right-start" arrow open>
         <Button>right-start</Button>
       </Tooltip>
       <Tooltip title="Text" placement="left" arrow open>
         <Button>left</Button>
       </Tooltip>
-      <div></div>
+      <div />
       <Tooltip title="Text" placement="right" arrow open>
         <Button>right</Button>
       </Tooltip>
       <Tooltip title="Text" placement="left-end" arrow open>
         <Button>left-end</Button>
       </Tooltip>
-      <div></div>
+      <div />
       <Tooltip title="Text" placement="right-end" arrow open>
         <Button>right-end</Button>
       </Tooltip>
