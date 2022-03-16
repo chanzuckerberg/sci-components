@@ -57,8 +57,10 @@ export const StyledPaper = styled(Paper)`
 
     ${(props) => {
       const colors = getColors(props);
+      const spaces = getSpaces(props);
 
       return `
+        margin: 0 ${spaces?.s}px;
         &:hover {
           background-color: ${colors?.gray[100]};
         }

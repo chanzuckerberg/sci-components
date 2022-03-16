@@ -65,7 +65,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   InputDropdownComponent = InputDropdown,
   ...rest
 }: DropdownProps<Multiple>): JSX.Element {
-  if (typeof buttons === "boolean" && !multiple) {
+  if (buttons && !multiple) {
     // eslint-disable-next-line no-console
     console.warn(
       "Warning: buttons are only supported for multiple select dropdowns."
