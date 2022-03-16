@@ -10,15 +10,7 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Installation
 
-NPM Package
-
-```
-// with npm
-npm i czifui
-
-// with yarn
-yarn add czifui
-```
+[NPM Package](https://www.npmjs.com/package/czifui)
 
 **Currently SDS uses Material UI v4**
 
@@ -37,14 +29,14 @@ NOTE: Since most of the czifui components are built on top of Material UI's equi
   "react-dom"
 ```
 
-To install the dependencies:
+To install czifui and the dependencies:
 
 ```
 // with npm
-npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+npm i czifui @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 
 // with yarn
-yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+yarn add czifui @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
 ```
 
 ## Usage
@@ -153,7 +145,36 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 </StylesProvider>;
 ```
 
-3.  If you need to override the default SDS theme, please follow the instructions [here](https://github.com/chanzuckerberg/sci-components/blob/main/docs/how-to-override-default-theme.md).
+If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
+the full theme object like below. This is needed because `createTheme` generates
+extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultAppTheme` instead of your own custom options
+
+```tsx
+  import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+  import { defaultAppTheme, makeThemeOptions } from "czifui";
+  import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
+  import createTheme from "@material-ui/core/styles/createTheme";
+
+  const customTheme = {
+    ...
+  }
+
+  const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
+
+  const theme = createTheme(appTheme)
+
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={theme}>
+          <YourApp />
+        </EmotionThemeProvider>
+      </ThemeProvider>
+    </StylesProvider>
+```
+
+💡 Aspen example available [here](https://github.com/chanzuckerberg/aspen/blob/trunk/src/frontend/pages/_app.tsx).
+
+💡 Material UI docs for custom theming available [here](https://v4.mui.com/customization/theming/).
 
 ## Q&A
 
@@ -187,7 +208,7 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
    }
    ```
 
-1. To style a sub-component of a `czif` component, typically we export the sub-component for the call site to import and style via `styled`, and then you will be able to pass back the styled sub-component to the `czif` component through prop
+1. To style a sub-component of a `czifui` component, typically we export the sub-component for the call site to import and style via `styled`, and then you will be able to pass back the styled sub-component to the `czifui` component through prop
 
    For example, `ComplexFilter` exports `ComplexFilterInputDropdown` sub-component, so if you want to style it, you can do the following:
 
