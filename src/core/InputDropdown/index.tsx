@@ -1,11 +1,17 @@
 import React from "react";
 import Icon from "../Icon";
-import { InputDropdownProps, StyledInputDropdown } from "./style";
+import {
+  InputDropdownProps,
+  StyledCounter,
+  StyledDetail,
+  StyledInputDropdown,
+  StyledLabel,
+} from "./style";
 
 export type { InputDropdownProps };
 
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
-  const { label, open } = props;
+  const { label, open, sdsType, details, counter } = props;
 
   if (open !== undefined) {
     // eslint-disable-next-line no-console
@@ -16,7 +22,15 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
 
   return (
     <StyledInputDropdown {...props}>
-      <span>{label}</span>
+      <StyledLabel details={details} counter={counter}>
+        {counter !== undefined || details ? `${label}:` : label}
+      </StyledLabel>
+      {sdsType === "singleSelect" && details && (
+        <StyledDetail>{details}</StyledDetail>
+      )}
+      {sdsType === "multiSelect" && counter !== undefined && (
+        <StyledCounter>{counter}</StyledCounter>
+      )}
       <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
     </StyledInputDropdown>
   );
