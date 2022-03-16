@@ -2,7 +2,7 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiAccordion-root css-287zh9 MuiPaper-elevation1"
+  class="MuiPaper-root MuiAccordion-root css-1llpkvm MuiPaper-elevation1"
   data-testid="accordion"
   id="test-story"
 >
@@ -18,7 +18,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
     <div
       class="MuiAccordionSummary-content"
     >
-      TEST
+      Accordion Header
     </div>
     <div
       aria-disabled="false"
@@ -63,7 +63,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-1age93e"
+            class="MuiAccordionDetails-root css-zewcw3"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>
