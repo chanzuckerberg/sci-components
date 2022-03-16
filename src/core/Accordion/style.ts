@@ -33,7 +33,16 @@ export const StyledAccordion = styled(Accordion, {
       font-family: ${typography?.fontFamily};
       box-shadow: ${shadows?.none};
       border-bottom: ${useDivider ? border?.gray[300] : "none"};
+      height: fit-content;
       ${togglePosition === "left" && leftPosition(props)};
+
+      &::before {
+        opacity: 0;
+      }
+
+      &.Mui-expanded {
+        margin: 0;
+      }
     `;
   }};
 `;

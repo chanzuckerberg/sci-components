@@ -9,7 +9,7 @@ const Template: Story = (props: Args) => {
   return (
     <Accordion id={id} useDivider={useDivider} togglePosition={togglePosition}>
       <AccordionHeader id={id} subtitle={subtitle}>
-        TEST
+        Accordion Header
       </AccordionHeader>
       <AccordionDetails>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -58,4 +58,45 @@ export const Test = Template.bind({});
 Test.args = {
   id: "test-story",
   togglePosition: "right",
+};
+
+const livePreviewStyles = {
+  display: "grid",
+  gridColumnGap: "24px",
+  gridRowGap: "50px",
+  gridTemplateColumns: "repeat(4, 200px)",
+};
+
+// LivePreview
+function LivePreviewDemo(props: Args): JSX.Element {
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <Template id="accordion-1" togglePosition="right" useDivider {...props} />
+      <Template
+        id="accordion-2"
+        togglePosition="right"
+        subtitle="Optional Subtitle"
+        useDivider
+        {...props}
+      />
+      <Template id="accordion-3" togglePosition="left" useDivider {...props} />
+      <Template
+        id="accordion-4"
+        togglePosition="left"
+        subtitle="Optional Subtitle"
+        useDivider
+        {...props}
+      />
+    </div>
+  );
+}
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
