@@ -9,7 +9,7 @@ export interface ExtraProps<IconName extends keyof IconNameToSizes>
   extends CommonThemeProps {
   sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];
-  sdsType: "iconButton" | "interactive" | "static";
+  sdsType: "button" | "iconButton" | "interactive" | "static";
 }
 
 function iconSize<IconName extends keyof IconNameToSizes>(
@@ -21,6 +21,14 @@ function iconSize<IconName extends keyof IconNameToSizes>(
   return css`
     height: ${iconSizes?.[sdsSize]?.height}px;
     width: ${iconSizes?.[sdsSize]?.width}px;
+  `;
+}
+
+function buttonStyle<IconName extends keyof IconNameToSizes>(
+  props: ExtraProps<IconName>
+): SerializedStyles {
+  return css`
+    color: inherit;
   `;
 }
 
@@ -75,6 +83,7 @@ export const StyledSvgIcon = styled(SvgIcon, {
       ${sdsType !== "iconButton" && iconSize(props)}
       ${sdsType === "static" && staticStyle(props)}
       ${sdsType === "interactive" && interactive(props)}
+      ${sdsType === "button" && buttonStyle(props)}
     `;
   }}
 `;
