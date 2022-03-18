@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { Link, LinkProps as RawLinkProps } from "@material-ui/core";
-import { CommonThemeProps as StyleProps } from "../styles";
+import { CommonThemeProps as StyleProps, getBorders } from "../styles";
 
 export type LinkProps = RawLinkProps &
   StyleProps & {
     sdsStyle?: "default" | "dashed";
   };
+
+const sdsPropNames = ["sdsStyle"];
 
 const defaultStyle = (props: LinkProps) => {
   const { theme } = props;
@@ -21,20 +23,26 @@ const defaultStyle = (props: LinkProps) => {
   `;
 };
 
-const dashedStyle = (_props: LinkProps) => {
+const dashedStyle = (props: LinkProps) => {
+  const border = getBorders(props);
+
   return css`
     color: inherit;
-    border-bottom: 1px dashed;
+    border-bottom: ${border?.link.dashed};
 
     &:hover,
     &:focus {
       text-decoration: none;
-      border-bottom: 1px solid;
+      border-bottom: ${border?.link.solid};
     }
   `;
 };
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(Link, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
   ${(props: LinkProps) => {
     const { sdsStyle } = props;
 

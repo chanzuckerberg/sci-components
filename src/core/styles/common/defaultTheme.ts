@@ -82,6 +82,10 @@ const borders = {
     "500": `1px solid ${defaultThemeColors.gray["500"]}`,
     dashed: `2px dashed ${defaultThemeColors.gray["400"]}`,
   },
+  link: {
+    dashed: `1px dashed`,
+    solid: `1px solid`,
+  },
   primary: {
     "400": `1px solid ${defaultThemeColors.primary["400"]}`,
     "500": `1px solid ${defaultThemeColors.primary["500"]}`,
@@ -509,16 +513,18 @@ export interface IconSizes {
 export interface Border {
   600?: string;
   500?: string;
-  400: string;
+  400?: string;
   300?: string;
   200?: string;
   100?: string;
   dashed?: string;
+  solid?: string;
 }
 
 export interface Borders {
   error: Border;
   gray: Border;
+  link: Border;
   primary: Border;
   success: Border;
   warning: Border;

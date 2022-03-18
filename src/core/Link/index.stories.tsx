@@ -3,8 +3,9 @@ import React from "react";
 import Link, { LinkProps } from "./index";
 
 const Demo = (props: LinkProps): JSX.Element => {
+  const { sdsStyle } = props;
   return (
-    <Link href="/" {...props}>
+    <Link href="/" sdsStyle={sdsStyle} {...props}>
       Test Link
     </Link>
   );
