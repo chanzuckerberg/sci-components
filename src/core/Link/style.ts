@@ -5,7 +5,7 @@ import { CommonThemeProps as StyleProps } from "../styles";
 
 export type LinkProps = RawLinkProps &
   StyleProps & {
-    sdsStyle?: "default";
+    sdsStyle?: "default" | "dashed";
   };
 
 const defaultStyle = (props: LinkProps) => {
@@ -21,12 +21,26 @@ const defaultStyle = (props: LinkProps) => {
   `;
 };
 
+const dashedStyle = (_props: LinkProps) => {
+  return css`
+    color: inherit;
+    border-bottom: 1px dashed;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      border-bottom: 1px solid;
+    }
+  `;
+};
+
 export const StyledLink = styled(Link)`
   ${(props: LinkProps) => {
     const { sdsStyle } = props;
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}
+      ${sdsStyle === "dashed" && dashedStyle(props)}
     `;
   }}
 `;
