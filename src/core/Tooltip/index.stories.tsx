@@ -67,6 +67,11 @@ export default {
 const Template: Story = (args) => <Demo {...args} />;
 
 export const Dark = Template.bind({});
+Dark.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 Dark.args = {
   arrow: true,
@@ -78,6 +83,11 @@ Dark.args = {
 };
 
 export const Light = Template.bind({});
+Light.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 Light.args = {
   arrow: true,
@@ -88,6 +98,11 @@ Light.args = {
 };
 
 export const LightWide = Template.bind({});
+LightWide.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 LightWide.args = {
   arrow: true,
@@ -98,6 +113,11 @@ LightWide.args = {
 };
 
 export const StyledArrow = Template.bind({});
+StyledArrow.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 const arrow = css`
   left: 0 !important;
@@ -168,9 +188,26 @@ const PlacementDemo = (): JSX.Element => {
 const PlacementTemplate: Story = () => <PlacementDemo />;
 
 export const PlacementPreview = PlacementTemplate.bind({});
+PlacementPreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 PlacementPreview.args = {
   // Chrome shifts elements when fonts load in
   // delay allows for font to load and prevents chromatic from constantly creating new baselines
   chromatic: { delay: 500 },
 };
+
+const TestDemo = (props: Args): JSX.Element => {
+  const { title, ...rest } = props;
+  return (
+    <Tooltip title={title} {...rest} data-testid="tooltip">
+      <div />
+    </Tooltip>
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo title="test" {...args} />;
+export const Test = TestTemplate.bind({});
