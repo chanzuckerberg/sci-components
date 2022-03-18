@@ -19,7 +19,7 @@ export type { TooltipProps };
 const Tooltip = forwardRef(function Tooltip(
   props: TooltipProps,
   ref
-): JSX.Element {
+): JSX.Element | null {
   const {
     classes,
     // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
@@ -70,6 +70,10 @@ const Tooltip = forwardRef(function Tooltip(
     key: "arrow",
     props,
   });
+
+  // (mlila) if no content is passed into the tooltip, don't render
+  // anything. this matches with the native MUI behavior.
+  if (!title && !subtitle) return null;
 
   const content = (
     <>
