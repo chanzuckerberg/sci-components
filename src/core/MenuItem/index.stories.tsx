@@ -59,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export const MultipleSelect = MultipleSelectDemo.bind({});
+
 function MultipleSelectDemo() {
   const classes = useStyles();
   const [personName, setPersonName] = React.useState<string[]>([]);
@@ -171,4 +173,22 @@ WithMultiSelectSelected.args = {
   selected: true,
 };
 
-export const MultipleSelect = MultipleSelectDemo.bind({});
+export const Disabled = DisabledMenuItem.bind({});
+
+function DisabledMenuItem() {
+  return (
+    <>
+      <div>Single Select</div>
+      <Demo {...Default.args} disabled isMultiSelect={false} />
+      <Demo {...Default.args} disabled isMultiSelect={false} selected />
+      <br />
+      <div>Multi Select</div>
+      <Demo {...Default.args} disabled isMultiSelect />
+      <Demo {...Default.args} disabled isMultiSelect selected />
+      <br />
+      <div>With Column</div>
+      <Demo {...Default.args} disabled column="column value" />
+      <Demo {...Default.args} disabled column="column value" selected />
+    </>
+  );
+}

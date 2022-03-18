@@ -225,7 +225,7 @@ export const StyledInputDropdown = styled(Button, {
 `;
 
 export const StyledDetail = styled("span")`
-  ${labelFontBodyXs};
+  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
 
@@ -241,7 +241,7 @@ interface DetailsAndCounter extends CommonThemeProps {
 }
 
 export const StyledLabel = styled("span")`
-  ${labelFontBodyXs};
+  ${labelFontBodyXs}
   ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
     const colors = getColors(props);
@@ -257,7 +257,7 @@ export const StyledLabel = styled("span")`
 `;
 
 export const StyledCounter = styled("span")`
-  ${labelFontBodyXs};
+  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
     const corners = getCorners(props);
