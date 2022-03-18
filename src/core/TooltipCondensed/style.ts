@@ -28,7 +28,7 @@ export const condensedCSS = (props: ExtraProps): string => {
   const spaces = getSpaces(props);
 
   return css`
-    &.MuiTooltip-tooltip {
+    && {
       padding-top: ${spaces?.xxs}px;
       padding-bottom: ${spaces?.xxs}px;
       padding-left: ${spaces?.m}px;
