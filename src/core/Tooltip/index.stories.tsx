@@ -201,12 +201,13 @@ PlacementPreview.args = {
 };
 
 const TestDemo = (props: Args): JSX.Element => {
+  const { title, ...rest } = props;
   return (
-    <Tooltip {...props} data-testid="tooltip">
+    <Tooltip title={title} {...rest} data-testid="tooltip">
       <div />
     </Tooltip>
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
+const TestTemplate: Story = (args) => <TestDemo title="test" {...args} />;
 export const Test = TestTemplate.bind({});
