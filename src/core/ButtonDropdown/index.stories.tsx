@@ -11,45 +11,102 @@ const actions = {
 };
 
 const Demo = (props: Args): JSX.Element => {
-  const { icon, sdsTypes, ...rest } = props;
-
-  return (
-    <>
-      <span style={{ marginRight: "10px" }}>
-        <ButtonDropdown icon={icon} sdsType={sdsTypes[0]} {...rest}>
-          {text}
-        </ButtonDropdown>
-      </span>
-      <ButtonDropdown icon={icon} sdsType={sdsTypes[1]} {...rest}>
-        {text}
-      </ButtonDropdown>
-    </>
-  );
+  return <ButtonDropdown {...props}>{text}</ButtonDropdown>;
 };
 
 export default {
-  comonent: Demo,
+  component: Demo,
   title: "ButtonDropdown",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const RoundedButtonDropdown = Template.bind({});
+export const RoundedPrimary = Template.bind({});
 
-RoundedButtonDropdown.args = {
+RoundedPrimary.args = {
   disabled: false,
   icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
   onClick: actions.onClick,
   sdsStyle: "rounded",
-  sdsTypes: ["primary", "secondary"],
+  sdsType: "primary",
 };
 
-export const SquareButtonDropdown = Template.bind({});
+export const RoundedSecondary = Template.bind({});
 
-SquareButtonDropdown.args = {
+RoundedSecondary.args = {
+  disabled: false,
+  icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+  onClick: actions.onClick,
+  sdsStyle: "rounded",
+  sdsType: "secondary",
+};
+
+export const SquarePrimary = Template.bind({});
+
+SquarePrimary.args = {
   disabled: false,
   icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
   onClick: actions.onClick,
   sdsStyle: "square",
-  sdsTypes: ["primary", "secondary"],
+  sdsType: "primary",
+};
+
+export const SquareSecondary = Template.bind({});
+
+SquareSecondary.args = {
+  disabled: false,
+  icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+  onClick: actions.onClick,
+  sdsStyle: "square",
+  sdsType: "secondary",
+};
+
+// LivePreview
+function LivePreviewDemo(props: Args): JSX.Element {
+  return (
+    <>
+      <span style={{ marginRight: "10px" }}>
+        <ButtonDropdown
+          sdsType="primary"
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          {...props}
+        >
+          {text}
+        </ButtonDropdown>
+      </span>
+      <ButtonDropdown
+        sdsType="secondary"
+        icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+        {...props}
+      >
+        {text}
+      </ButtonDropdown>
+    </>
+  );
+}
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
+export const LivePreviewRounded = LivePreviewTemplate.bind({});
+
+LivePreviewRounded.args = {
+  sdsStyle: "rounded",
+};
+
+LivePreviewRounded.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+export const LivePreviewSquare = LivePreviewTemplate.bind({});
+
+LivePreviewSquare.args = {
+  sdsStyle: "square",
+};
+
+LivePreviewSquare.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
