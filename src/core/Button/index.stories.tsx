@@ -1,7 +1,7 @@
-import DeleteIcon from "@material-ui/icons/Delete";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";
+import Icon from "../Icon";
 import Button from "./index";
 
 export const text = "Click me!";
@@ -118,20 +118,9 @@ storiesOf("Button", module).add("Minimal Secondary Disabled", () => (
   </Button>
 ));
 
-storiesOf("Button", module).add("Minimal No Caps - use sparingly", () => (
-  <Button
-    isAllCaps={false}
-    onClick={actions.onClick}
-    sdsStyle="minimal"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
-
 storiesOf("Button", module).add("With Icon", () => (
   <Button
-    startIcon={<DeleteIcon />}
+    startIcon={<Icon sdsIcon="refresh" sdsSize="s" sdsType="button" />}
     onClick={actions.onClick}
     sdsStyle="rounded"
     sdsType="primary"
@@ -142,7 +131,7 @@ storiesOf("Button", module).add("With Icon", () => (
 
 storiesOf("Button", module).add("Minimal With Icon", () => (
   <Button
-    startIcon={<DeleteIcon />}
+    startIcon={<Icon sdsIcon="refresh" sdsSize="s" sdsType="button" />}
     onClick={actions.onClick}
     sdsStyle="minimal"
     sdsType="primary"
