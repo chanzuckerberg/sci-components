@@ -101,41 +101,33 @@ const MinimalButton = styled(Button, {
   }
 `;
 
-export const PrimaryMinimalButton = styled(MinimalButton)`
-  ${(props) => {
-    const colors = getColors(props);
+const minimal = (props: CommonThemeProps) => {
+  const colors = getColors(props);
+  const spaces = getSpaces(props);
 
-    return `
-      &:hover, &:focus {
-        color: ${colors?.primary[500]};
-      }
-      &:active {
-        color: ${colors?.primary[600]};
-      }
-      &:disabled {
-        color: ${colors?.gray[400]};
-      }
-    `;
-  }}
+  return `
+    &:hover, &:focus {
+      color: ${colors?.primary[500]};
+    }
+    &:active {
+      color: ${colors?.primary[600]};
+    }
+    &:disabled {
+      color: ${colors?.gray[400]};
+    }
+
+    .MuiButton-startIcon {
+      margin-right: ${spaces?.xxs}px;
+    }
+  `;
+};
+
+export const PrimaryMinimalButton = styled(MinimalButton)`
+  ${minimal}
 `;
 
 export const SecondaryMinimalButton = styled(MinimalButton)`
-  ${(props) => {
-    const colors = getColors(props);
-
-    return `
-      &:hover, &:focus {
-        color: ${colors?.gray[500]};
-      }
-
-      &:active {
-        color: ${colors?.gray[600]};
-      }
-      &:disabled {
-        color: ${colors?.gray[300]};
-      }
-    `;
-  }}
+  ${minimal}
 `;
 
 // Legacy support for backwards-compatible props

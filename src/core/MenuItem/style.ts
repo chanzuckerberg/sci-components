@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { MenuItem } from "@material-ui/core";
 import { Check } from "@material-ui/icons";
+import { CommonThemeProps } from "../styles";
 import { fontBody } from "../styles/common/mixins/fonts";
 import {
   getColors,
@@ -64,7 +65,24 @@ export const ContentWrapper = styled.span`
   width: 100%;
 `;
 
+interface DisabledType extends CommonThemeProps {
+  disabled?: boolean;
+}
+
+const disabledStyles = (props: DisabledType) => {
+  const { disabled } = props;
+  if (!disabled) return ``;
+
+  const colors = getColors(props);
+
+  return `
+    color: ${colors?.gray[300]};
+    cursor: default;
+  `;
+};
+
 interface TextWrapperProps {
+  disabled?: boolean;
   selected: boolean;
 }
 
@@ -78,9 +96,15 @@ export const TextWrapper = styled.span<TextWrapperProps>`
       color: ${palette?.text?.primary};
     `;
   }}
+
+  ${disabledStyles}
 `;
 
-export const ColumnWrapper = styled.span`
+interface ColumnWrapperProps {
+  disabled?: boolean;
+}
+
+export const ColumnWrapper = styled.span<ColumnWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
@@ -90,6 +114,8 @@ export const ColumnWrapper = styled.span`
       color: ${colors?.gray[500]};
     `;
   }}
+
+  ${disabledStyles}
 `;
 
 export const DemoWrapper = styled.div`
