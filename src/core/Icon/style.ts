@@ -9,7 +9,7 @@ export interface ExtraProps<IconName extends keyof IconNameToSizes>
   extends CommonThemeProps {
   sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];
-  sdsType: "button" | "iconButton" | "interactive" | "static";
+  sdsType: "iconButton" | "interactive" | "static" | "button";
 }
 
 function iconSize<IconName extends keyof IconNameToSizes>(
