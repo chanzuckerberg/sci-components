@@ -8,6 +8,8 @@ export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
 export * from "./core/Button";
 export { default as Button } from "./core/Button";
+export * from "./core/ButtonDropdown";
+export { default as ButtonDropdown } from "./core/ButtonDropdown";
 export * from "./core/Callout";
 export { default as Callout } from "./core/Callout";
 export * from "./core/Checkbox";

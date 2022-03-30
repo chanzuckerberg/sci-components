@@ -24,6 +24,12 @@ function iconSize<IconName extends keyof IconNameToSizes>(
   `;
 }
 
+function buttonStyle(): SerializedStyles {
+  return css`
+    color: inherit;
+  `;
+}
+
 function staticStyle<IconName extends keyof IconNameToSizes>(
   props: ExtraProps<IconName>
 ): SerializedStyles {
@@ -75,6 +81,7 @@ export const StyledSvgIcon = styled(SvgIcon, {
       ${sdsType !== "iconButton" && iconSize(props)}
       ${sdsType === "static" && staticStyle(props)}
       ${sdsType === "interactive" && interactive(props)}
+      ${sdsType === "button" && buttonStyle()}
     `;
   }}
 `;
