@@ -18,7 +18,7 @@ import {
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
-export interface DefaultMenuSelectOption {
+export interface DefaultDropdownMenuOption {
   name: string;
 }
 
@@ -38,7 +38,7 @@ type CustomAutocompleteProps<
   "renderInput"
 >;
 
-export type MenuSelectProps<
+export type DropdownMenuProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
@@ -46,13 +46,13 @@ export type MenuSelectProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraProps;
 
-export default function MenuSelect<
-  T extends DefaultMenuSelectOption,
+export default function DropdownMenu<
+  T extends DefaultDropdownMenuOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
-  props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
+  props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
     multiple = false,
@@ -65,11 +65,6 @@ export default function MenuSelect<
     onInputChange = noop,
     InputBaseProps = {},
   } = props;
-
-  // eslint-disable-next-line no-console
-  console.warn(
-    "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
-  );
 
   return (
     <StyledAutocomplete

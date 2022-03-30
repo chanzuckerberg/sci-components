@@ -1,13 +1,13 @@
-import ButtonBase from "@material-ui/core/ButtonBase";
+// import ButtonBase from "@material-ui/core/ButtonBase";
 import Popper from "@material-ui/core/Popper";
 import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { AutocompleteCloseReason } from "@material-ui/lab";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import Chip from "../Chip";
+import InputDropdown from "../InputDropdown";
 import { AppThemeOptions, getColors, getCorners, getShadows } from "../styles";
-import MenuSelect, { DefaultMenuSelectOption } from "./index";
+import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
@@ -19,10 +19,10 @@ const Demo = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    null | DefaultMenuSelectOption | DefaultMenuSelectOption[]
+    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<DefaultMenuSelectOption[]>(
+  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
     []
   );
 
@@ -32,34 +32,28 @@ const Demo = (props: Args): JSX.Element => {
 
   return (
     <>
+      <p>
+        note: toggling both multiple and search to true requires a soft refresh
+        of the page to load the options correctly
+      </p>
       <div className={classes.root}>
-        <ButtonBase
-          disableRipple
-          className={classes.button}
+        <InputDropdown
           aria-describedby={id}
           onClick={handleClick}
-        >
-          <span>Click Target</span>
-          <ExpandMoreIcon />
-        </ButtonBase>
+          label="Click Target"
+          sdsStage={open ? "userInput" : "default"}
+          sdsType={multiple ? "multiSelect" : "singleSelect"}
+          sdsStyle="square"
+        />
 
         <Chips value={value} multiple={multiple} onDelete={handleDelete} />
       </div>
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        className={classes.popper}
-      >
-        <MenuSelect
+      <Popper id={id} open={open} anchorEl={anchorEl}>
+        <DropdownMenu
           open
           search={search}
           onClose={handleClose}
           multiple={multiple}
-          classes={{
-            paper: classes.paper,
-            popperDisablePortal: classes.popperDisablePortal,
-          }}
           value={multiple ? pendingValue : value}
           onChange={handleChange}
           disableCloseOnSelect={multiple}
@@ -72,7 +66,7 @@ const Demo = (props: Args): JSX.Element => {
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (multiple) {
-      setPendingValue(value as DefaultMenuSelectOption[]);
+      setPendingValue(value as DefaultDropdownMenuOption[]);
     }
 
     setAnchorEl(event.currentTarget);
@@ -99,21 +93,21 @@ const Demo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultMenuSelectOption[]);
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
-    setValue(newValue as DefaultMenuSelectOption);
+    setValue(newValue as DefaultDropdownMenuOption);
   }
 
-  function handleDelete(option: DefaultMenuSelectOption) {
+  function handleDelete(option: DefaultDropdownMenuOption) {
     if (!multiple) {
       return setValue(null);
     }
 
-    const newValue = (value as DefaultMenuSelectOption[]).filter(
+    const newValue = (value as DefaultDropdownMenuOption[]).filter(
       (item) => item !== option
     );
 
@@ -122,9 +116,9 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 interface ChipsProps {
-  value: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null;
+  value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
   multiple: boolean;
-  onDelete: (option: DefaultMenuSelectOption) => void;
+  onDelete: (option: DefaultDropdownMenuOption) => void;
 }
 
 function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
@@ -138,7 +132,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 
   return (
     <>
-      {(value as DefaultMenuSelectOption[]).map((item) => {
+      {(value as DefaultDropdownMenuOption[]).map((item) => {
         const { name } = item;
 
         return (
@@ -155,35 +149,46 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 }
 
 export default {
+  argTypes: {
+    multiple: {
+      control: { type: "boolean" },
+    },
+    search: {
+      control: { type: "boolean" },
+    },
+  },
   component: Demo,
-  title: "MenuSelect - To Be Depreciated",
+  title: "DropdownMenu",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
-
-export const SingleSelectWithSearch = Template.bind({});
-
-SingleSelectWithSearch.args = {
-  search: true,
+Default.args = {
+  multiple: false,
+  search: false,
 };
 
-export const MultiSelect = Template.bind({});
+// export const SingleSelectWithSearch = Template.bind({});
 
-MultiSelect.args = {
-  multiple: true,
-};
+// SingleSelectWithSearch.args = {
+//   search: true,
+// };
 
-export const MultiSelectWithSearch = Template.bind({});
+// export const MultiSelect = Template.bind({});
 
-MultiSelectWithSearch.args = {
-  InputBaseProps: { placeholder: "Custom placeholder..." },
-  multiple: true,
-  search: true,
-};
+// MultiSelect.args = {
+//   multiple: true,
+// };
+
+// export const MultiSelectWithSearch = Template.bind({});
+
+// MultiSelectWithSearch.args = {
+//   InputBaseProps: { placeholder: "Custom placeholder..." },
+//   multiple: true,
+//   search: true,
+// };
 
 const useStyles = makeStyles((theme: AppThemeOptions) => {
   const colors = getColors({ theme });
@@ -191,24 +196,6 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
   const corners = getCorners({ theme });
 
   return {
-    button: {
-      "& span": {
-        width: "100%",
-      },
-      "& svg": {
-        height: 16,
-        width: 16,
-      },
-      "&:hover,&:focus": {
-        color: "#0366d6",
-      },
-      color: "#586069",
-      fontSize: 13,
-      fontWeight: 600,
-      paddingBottom: 8,
-      textAlign: "left",
-      width: "100%",
-    },
     paper: {
       boxShadow: "none",
       margin: 0,
