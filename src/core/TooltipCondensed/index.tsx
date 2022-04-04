@@ -29,7 +29,14 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
   });
 
   return (
-    <Tooltip followCursor title={title} ref={ref} classes={{ tooltip }}>
+    <Tooltip
+      followCursor
+      enterDelay={50}
+      leaveDelay={50}
+      title={title}
+      ref={ref}
+      classes={{ tooltip }}
+    >
       {children}
     </Tooltip>
   );
