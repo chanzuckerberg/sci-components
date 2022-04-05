@@ -244,6 +244,10 @@
         "500": { "value": "1px solid {sds.color.gray.500.value}" },
         "dashed": { "value": "2px dashed {sds.color.gray.400.value}" }
       },
+      "link": {
+        "dashed": { "value": "1px dashed" },
+        "solid": { "value": "1px solid" }
+      },
       "primary": {
         "400": { "value": "1px solid {sds.color.primary.400.value}" },
         "500": { "value": "1px solid {sds.color.primary.500.value}" },
