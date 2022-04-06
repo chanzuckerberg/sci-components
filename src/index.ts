@@ -58,6 +58,8 @@ export * from "./core/Notification";
 export { default as Notification } from "./core/Notification";
 export * from "./core/Radio";
 export { default as RadioButton } from "./core/Radio";
+export * from "./core/SegmentedControl";
+export { default as SegmentedControl } from "./core/SegmentedControl";
 export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
