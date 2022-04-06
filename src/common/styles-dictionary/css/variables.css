@@ -1,50 +1,49 @@
 /**
  * Do not edit directly
- * Generated on Fri, 18 Mar 2022 19:32:28 GMT
+ * Generated on Wed, 06 Apr 2022 00:34:03 GMT
  */
 
 :root {
   --sds-font-letter-spacing-default: 0.3px;
   --sds-font-letter-spacing-caps: 1px;
   --sds-font-color: black;
-  --sds-font-font-family: "Open Sans", "OpenSans-Regular";
-  --sds-font-body-xxxs-400-font: 400 11px/16px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-xxxs-600-font: 600 11px/16px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-body-xxs-400-font: 400 12px/18px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-xxs-600-font: 600 12px/18px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-body-xs-400-font: 400 13px/20px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-xs-600-font: 600 13px/20px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-body-s-400-font: 400 14px/24px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-s-600-font: 600 14px/24px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-body-m-400-font: 400 16px/26px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-m-600-font: 600 16px/26px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-body-l-400-font: 400 18px/28px "Open Sans", "OpenSans-Regular";
-  --sds-font-body-l-600-font: 600 18px/28px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-caps-xxxxs-600-font: 600 10px/14px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-caps-xxxxs-600-text-transform: uppercase;
-  --sds-font-caps-xxxs-600-font: 600 11px/16px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-caps-xxxs-600-text-transform: uppercase;
-  --sds-font-caps-xxs-600-font: 600 12px/18px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-caps-xxs-600-text-transform: uppercase;
-  --sds-font-header-xxxs-600-font: 600 11px/16px "Open Sans",
-    "OpenSans-SemiBold";
-  --sds-font-header-xxs-600-font: 600 12px/18px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-xs-600-font: 600 13px/18px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-s-600-font: 600 14px/20px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-m-600-font: 600 16px/22px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-l-600-font: 600 18px/24px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-xl-600-font: 600 22px/30px "Open Sans", "OpenSans-SemiBold";
-  --sds-font-header-xxl-600-font: 600 26px/34px "Open Sans", "OpenSans-SemiBold";
+  --sds-font-font-family: 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-xxxs-400-font: 400 11px/16px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-xxxs-600-font: 600 11px/16px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-body-xxs-400-font: 400 12px/18px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-xxs-600-font: 600 12px/18px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-body-xs-400-font: 400 13px/20px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-xs-600-font: 600 13px/20px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-body-s-400-font: 400 14px/24px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-s-600-font: 600 14px/24px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-body-m-400-font: 400 16px/26px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-m-600-font: 600 16px/26px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-body-l-400-font: 400 18px/28px 'Open Sans', 'OpenSans-Regular';
+  --sds-font-body-l-600-font: 600 18px/28px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-caps-xxxxs-600-font: 600 10px/14px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-caps-xxxxs-600-text-transform:  uppercase;
+  --sds-font-caps-xxxs-600-font: 600 11px/16px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-caps-xxxs-600-text-transform:  uppercase;
+  --sds-font-caps-xxs-600-font: 600 12px/18px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-caps-xxs-600-text-transform:  uppercase;
+  --sds-font-header-xxxs-600-font: 600 11px/16px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-xxs-600-font: 600 12px/18px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-xs-600-font: 600 13px/18px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-s-600-font: 600 14px/20px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-m-600-font: 600 16px/22px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-l-600-font: 600 18px/24px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-xl-600-font: 600 22px/30px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-font-header-xxl-600-font: 600 26px/34px 'Open Sans', 'OpenSans-SemiBold';
+  --sds-color-overlay-100: rgba(0, 0, 0, 0.08);
+  --sds-color-overlay-200: rgba(0, 0, 0, 0.03);
   --sds-color-beta-100: #f4f0f9;
   --sds-color-beta-200: #f0ebf6;
   --sds-color-beta-400: #7a41ce;
   --sds-color-beta-600: #693bac;
-  --sds-color-beta-100-overlay: #ece8f1;
   --sds-color-error-100: #fef2f2;
   --sds-color-error-200: #f8e8e8;
   --sds-color-error-400: #dc132c;
   --sds-color-error-600: #b70016;
-  --sds-color-error-100-overlay: #f6eaea;
   --sds-color-gray-100: #f8f8f8;
   --sds-color-gray-200: #eaeaea;
   --sds-color-gray-300: #cccccc;
@@ -57,7 +56,6 @@
   --sds-color-info-200: #ebeffc;
   --sds-color-info-400: #3867fa;
   --sds-color-info-600: #223f9c;
-  --sds-color-info-100-overlay: #e7eaf4;
   --sds-color-primary-100: #f8f9fe;
   --sds-color-primary-200: #eff2fc;
   --sds-color-primary-300: #a9bdfc;
@@ -69,16 +67,13 @@
   --sds-color-success-200: #e6f7ed;
   --sds-color-success-400: #3cb371;
   --sds-color-success-600: #1c7f48;
-  --sds-color-success-100-overlay: #e4ede8;
   --sds-color-warning-100: #fcf6ec;
   --sds-color-warning-200: #fff3e1;
   --sds-color-warning-400: #f5a623;
   --sds-color-warning-600: #946314;
-  --sds-color-warning-100-overlay: #f4eee4;
-  --sds-drop-shadows-shadow-l: 0px 2px 12px 0px rgba(0, 0, 0, 0.3);
-  --sds-drop-shadows-shadow-m: 0px 2px 10px 0px rgba(0, 0, 0, 0.15),
-    0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  --sds-drop-shadows-shadow-s: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  --sds-drop-shadows-shadow-l: 0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3);
+  --sds-drop-shadows-shadow-m: 0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15),0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15);
+  --sds-drop-shadows-shadow-s: 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25);
   --sds-borders-error-400: 1px solid #dc132c;
   --sds-borders-gray-100: 1px solid #f8f8f8;
   --sds-borders-gray-200: 1px solid #eaeaea;
