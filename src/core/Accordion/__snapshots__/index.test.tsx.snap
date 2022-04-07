@@ -10,7 +10,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
     aria-controls="test-story-panel-content"
     aria-disabled="false"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root css-1mt5nul"
+    class="MuiButtonBase-root MuiAccordionSummary-root css-umpy8n"
     id="test-story"
     role="button"
     tabindex="0"
@@ -63,7 +63,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-zewcw3"
+            class="MuiAccordionDetails-root css-12zh0q5"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>
