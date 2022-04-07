@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Alert } from "@material-ui/lab";
+import { Alert } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { getColors, getShadows, getSpaces } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
 

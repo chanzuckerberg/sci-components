@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBody,
@@ -17,7 +17,7 @@ export interface LoadingIndicatorProps extends CommonThemeProps {
 
 const fontBodyS = fontBody("s");
 
-export const StyledText = styled.span`
+export const StyledText = styled("span")`
   ${(props) => {
     const spacings = getSpaces(props);
     const typography = getTypography(props);

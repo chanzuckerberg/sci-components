@@ -1,10 +1,10 @@
 import { SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
 import {
   Tab as RawTab,
   Tabs as RawTabs,
   TabsProps as RawTabsProps,
-} from "@material-ui/core";
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
 import React, { ChangeEvent, FormEvent } from "react";
 import { fontBodyS, fontBodyXs } from "../styles";
 import {

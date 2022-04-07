@@ -1,4 +1,4 @@
-import { MenuProps, PopoverOrigin } from "@material-ui/core";
+import { MenuProps, PopoverOrigin } from "@mui/material";
 import React from "react";
 import { StyledMenu } from "./style";
 

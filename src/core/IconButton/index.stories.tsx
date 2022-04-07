@@ -10,7 +10,12 @@ const Demo = (props: Args): JSX.Element => {
   const handleButtonClick = () => setActive(!active);
 
   return (
-    <IconButton onClick={handleButtonClick} active={active} {...rest}>
+    <IconButton
+      onClick={handleButtonClick}
+      active={active}
+      {...rest}
+      size="large"
+    >
       {icon}
     </IconButton>
   );

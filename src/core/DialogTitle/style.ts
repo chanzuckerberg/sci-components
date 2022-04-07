@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { DialogTitle, Typography } from "@material-ui/core";
+import { DialogTitle, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as ExtraProps,
   fontBodyXs,

@@ -1,4 +1,4 @@
-import { FormControlLabel, Switch } from "@material-ui/core";
+import { FormControlLabel, Switch } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { Args, Story } from "@storybook/react";
 import React from "react";

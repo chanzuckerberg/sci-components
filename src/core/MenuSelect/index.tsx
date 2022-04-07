@@ -1,9 +1,9 @@
-import { InputAdornment } from "@material-ui/core";
+import { InputAdornment } from "@mui/material";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
-} from "@material-ui/lab";
+} from "@mui/material/Autocomplete";
 import React from "react";
 import { noop } from "src/common/utils";
 import Icon from "../Icon";
@@ -95,12 +95,12 @@ export default function MenuSelect<
               /**
                * (mmoore): passing only the ref along to InputProps to prevent
                * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explictly pass end adornment here
+               * renderInput strips InputProps, so we explicitly pass end adornment here
                */
               ...params.InputProps.ref,
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton sdsType="secondary">
+                  <IconButton sdsType="secondary" size="large">
                     <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
                   </IconButton>
                 </InputAdornment>
@@ -124,17 +124,20 @@ export default function MenuSelect<
   }
 
   function defaultRenderOption(
+    optionProps: React.HTMLAttributes<HTMLLIElement>,
     option: T,
     { selected }: AutocompleteRenderOptionState
   ) {
     return (
-      <StyledMenuItem
-        {...{ component: "div" }}
-        isMultiSelect={multiple}
-        selected={selected}
-      >
-        {option.name}
-      </StyledMenuItem>
+      <li {...optionProps}>
+        <StyledMenuItem
+          {...{ component: "div" }}
+          isMultiSelect={multiple}
+          selected={selected}
+        >
+          {option.name}
+        </StyledMenuItem>
+      </li>
     );
   }
 }

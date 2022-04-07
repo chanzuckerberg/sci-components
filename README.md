@@ -56,7 +56,7 @@ import { Button } from "czifui";
 2. Mixins - Grouped styles defined by the design system
 
 ```javascript
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 import { Typography } from "@material-ui/core";
 import { fontHeaderXL } from "czifui";
 
@@ -75,10 +75,10 @@ export const Title - styled(Typography)`
 
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 import { getColors, getCorners } from "czifui";
 
-export const Tag = styled.div`
+export const Tag = styled("div")`
   // This is a callback function that returns more CSS rules, but the only way
   // to access the custom theme object
       ${(props) => {

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Autocomplete } from "@material-ui/lab";
+import { Autocomplete } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import InputSearch from "../InputSearch";
 import MenuItem from "../MenuItem";
 import { CommonThemeProps, getSpaces } from "../styles";
@@ -22,7 +22,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
   ${({ search }: StyleProps) => !search && "height: 0;"}
 ` as typeof Autocomplete;
 
-export const InputBaseWrapper = styled.div`
+export const InputBaseWrapper = styled("div")`
   ${(props: StyleProps) => {
     const { search } = props;
 

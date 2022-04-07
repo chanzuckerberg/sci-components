@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Link, LinkProps as RawLinkProps } from "@material-ui/core";
+import { Link, LinkProps as RawLinkProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps as StyleProps, getBorders } from "../styles";
 
 export type LinkProps = RawLinkProps &

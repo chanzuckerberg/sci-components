@@ -1,5 +1,8 @@
-import { ClickAwayListener } from "@material-ui/core";
-import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
+import { ClickAwayListener } from "@mui/material";
+import {
+  AutocompleteCloseReason,
+  AutocompleteValue,
+} from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import { Value } from "../Dropdown";
 import InputDropdown, {
@@ -101,7 +104,7 @@ export default function ComplexFilter<
               multiple={multiple as Multiple}
               PaperComponent={PaperComponent}
               value={
-                (multiple ? pendingValue : value) as MUIValue<
+                (multiple ? pendingValue : value) as AutocompleteValue<
                   DefaultMenuSelectOption,
                   Multiple,
                   undefined,

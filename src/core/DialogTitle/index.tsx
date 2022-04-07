@@ -1,4 +1,4 @@
-import { DialogTitleProps as RawDialogTitleProps } from "@material-ui/core";
+import { DialogTitleProps as RawDialogTitleProps } from "@mui/material";
 import React, { forwardRef } from "react";
 import CloseButton from "./components/CloseButton";
 import { ExtraProps, StyledDialogTitle, Subtitle, Title } from "./style";
@@ -18,7 +18,7 @@ const DialogTitle = forwardRef(function DialogTitle(
   const { children, title, subtitle, onClose, ...rest } = props;
 
   return (
-    <StyledDialogTitle disableTypography ref={ref} {...rest}>
+    <StyledDialogTitle ref={ref} {...rest}>
       {children || (
         <>
           {onClose && <CloseButton onClick={onClose} />}

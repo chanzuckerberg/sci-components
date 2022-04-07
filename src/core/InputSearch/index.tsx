@@ -1,7 +1,7 @@
 import {
   InputAdornment,
   TextFieldProps as RawTextFieldSearchProps,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { forwardRef, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
@@ -79,6 +79,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   onClick={localHandleSubmit}
                   data-testId="searchButton"
                   sdsType="secondary"
+                  size="large"
                 >
                   <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
                 </IconButton>

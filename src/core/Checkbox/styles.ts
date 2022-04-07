@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Checkbox as RawCheckbox } from "@material-ui/core";
+import { Checkbox as RawCheckbox } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { getColors, getIconSizes } from "../styles/common/selectors/theme";
 
 export const StyledCheckbox = styled(RawCheckbox)`

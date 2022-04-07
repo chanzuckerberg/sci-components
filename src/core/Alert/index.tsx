@@ -1,4 +1,4 @@
-import { AlertProps } from "@material-ui/lab";
+import { AlertProps } from "@mui/lab";
 import React from "react";
 import { StyledAlert } from "./style";
 

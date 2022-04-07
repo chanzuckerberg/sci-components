@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -60,7 +60,7 @@ const tableStyles = (props: ExtraProps): string => {
   `;
 };
 
-export const Subtitle = styled.div`
+export const Subtitle = styled("div")`
   ${fontHeaderXxs}
 
   ${(props: ExtraProps) => {
