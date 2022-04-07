@@ -1,4 +1,4 @@
-import { AlertTitleProps } from "@material-ui/lab/AlertTitle";
+import { AlertTitleProps } from "@mui/material/AlertTitle";
 import React from "react";
 import { StyledCalloutTitle } from "./style";
 

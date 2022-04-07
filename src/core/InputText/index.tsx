@@ -1,4 +1,4 @@
-import { TextFieldProps as RawTextFieldProps } from "@material-ui/core";
+import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import React, { forwardRef, useState } from "react";
 import { ExtraProps, StyledInputBase, StyledLabel } from "./style";
 

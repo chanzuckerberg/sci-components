@@ -1,9 +1,10 @@
 /* eslint-disable no-use-before-define */
-import { InputLabel, Select, SelectProps } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import { makeStyles } from "@material-ui/core/styles";
+import { InputLabel, Select, SelectProps } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import makeStyles from "@mui/styles/makeStyles";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
+import { SDSTheme } from "../styles";
 import MenuItem from "./index";
 import { DemoWrapper } from "./style";
 
@@ -50,14 +51,15 @@ function renderMenuItems(personName: string[]) {
   });
 }
 
-const useStyles = makeStyles((theme) => ({
-  /* stylelint-disable-next-line */
-  formControl: {
-    margin: theme.spacing(5),
-    maxWidth: 300,
-    minWidth: 120,
-  },
-}));
+const useStyles = makeStyles((theme: SDSTheme) => {
+  return {
+    formControl: {
+      margin: theme.spacing(5),
+      maxWidth: 300,
+      minWidth: 120,
+    },
+  };
+});
 
 export const MultipleSelect = MultipleSelectDemo.bind({});
 

@@ -1,9 +1,9 @@
-import { useTheme } from "@emotion/react";
 import {
   Tooltip as RawTooltip,
   TooltipClassKey,
   TooltipProps as RawTooltipProps,
-} from "@material-ui/core";
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
 import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
 
@@ -90,7 +90,6 @@ const Tooltip = forwardRef(function Tooltip(
     <RawTooltip
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
-      interactive
       title={content}
       ref={ref}
       onMouseMove={
@@ -103,8 +102,6 @@ const Tooltip = forwardRef(function Tooltip(
         followCursor
           ? {
               anchorEl: {
-                clientHeight: 0,
-                clientWidth: 0,
                 getBoundingClientRect: () => ({
                   bottom: position.y,
                   height: 0,

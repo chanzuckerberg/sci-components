@@ -1,4 +1,4 @@
-import { ListItemProps as RawListItemProps } from "@material-ui/core";
+import { ListItemProps as RawListItemProps } from "@mui/material";
 import React from "react";
 import { ExtraProps, ListItemLabel, StyledListItem } from "./style";
 

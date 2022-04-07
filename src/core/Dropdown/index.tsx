@@ -1,4 +1,7 @@
-import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
+import {
+  AutocompleteCloseReason,
+  AutocompleteValue as MUIValue,
+} from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,

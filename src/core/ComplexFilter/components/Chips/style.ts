@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import Chip from "src/core/Chip";
 import { getSpaces } from "src/core/styles";
 

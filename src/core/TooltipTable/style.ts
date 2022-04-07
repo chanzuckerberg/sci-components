@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { TableCell } from "@material-ui/core";
+import { TableCell } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -41,7 +41,7 @@ interface SectionProps extends CommonThemeProps {
   label?: string;
 }
 
-export const Section = styled.div`
+export const Section = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
@@ -61,7 +61,7 @@ export const Section = styled.div`
   }}
 `;
 
-export const SectionLabel = styled.div`
+export const SectionLabel = styled("div")`
   ${fontCapsXxxxs}
   ${disabledStyle}
 
@@ -103,6 +103,6 @@ export const RowValue = styled(TableCell, {
   padding-right: 0 !important;
 `;
 
-export const Alert = styled.div`
+export const Alert = styled("div")`
   ${fontBodyXxs}
 `;

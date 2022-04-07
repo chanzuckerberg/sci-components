@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { Paper } from "@material-ui/core";
-import Popper from "@material-ui/core/Popper";
+import { Paper } from "@mui/material";
+import Popper from "@mui/material/Popper";
+import { styled } from "@mui/material/styles";
 import Button from "../Button";
 import {
   fontHeaderXs,
@@ -10,7 +10,7 @@ import {
   getSpaces,
 } from "../styles";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled("div")`
   width: 150px;
 `;
 
@@ -82,7 +82,7 @@ export const StyledButton = styled(Button)`
         margin-left: ${spacings?.s}px;
         margin-right: ${spacings?.m}px;
       }
-      
+
       &:last-child {
         margin-left: 0;
         margin-right: ${spacings?.s}px;

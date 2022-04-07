@@ -1,11 +1,11 @@
-import { PaperProps } from "@material-ui/core";
+import { PaperProps } from "@mui/material";
 import React, { forwardRef } from "react";
 import { DialogContext } from "../Dialog/components/common";
 import { StyledPaper } from "./style";
 
 export type { PaperProps as DialogPaperProps };
 
-const DialogPaper = forwardRef<unknown, PaperProps>(function DialogPaper(
+const DialogPaper = forwardRef<HTMLDivElement, PaperProps>(function DialogPaper(
   props,
   ref
 ): JSX.Element {

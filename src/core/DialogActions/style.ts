@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { DialogActions } from "@material-ui/core";
+import { DialogActions } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getSpaces } from "../styles";
 
 export interface ExtraProps extends CommonThemeProps {

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { AlertTitle } from "@material-ui/lab";
+import { AlertTitle } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { fontBody, getSpaces } from "src/core/styles";
 
 const fontBodyXs = fontBody("xs");

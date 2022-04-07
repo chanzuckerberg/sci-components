@@ -1,4 +1,4 @@
-import { IconButtonProps as RawIconButtonProps } from "@material-ui/core";
+import { IconButtonProps as RawIconButtonProps } from "@mui/material";
 import React, { forwardRef } from "react";
 import { ExtraProps, StyledIconButton } from "./style";
 

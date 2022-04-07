@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyM,
@@ -71,7 +71,7 @@ const disabledStyled = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-export const StyledLabel = styled.label`
+export const StyledLabel = styled("label")`
   ${fontBodyM}
   ${(props) => {
     const typography = getTypography(props);
@@ -79,11 +79,11 @@ export const StyledLabel = styled.label`
     return `
       font-family: ${typography?.fontFamily};
       margin-bottom: ${spacings?.xxs}px;
-      position: absolute; 
-      overflow: hidden; 
-      clip: rect(0 0 0 0); 
-      height: 1px; width: 1px; 
-      margin: -1px; padding: 0; border: 0; 
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      height: 1px; width: 1px;
+      margin: -1px; padding: 0; border: 0;
     `;
   }}
 `;

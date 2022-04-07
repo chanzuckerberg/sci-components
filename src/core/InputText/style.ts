@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { TextField } from "@material-ui/core";
+import { TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBody,
@@ -70,7 +70,7 @@ const textArea = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-export const StyledLabel = styled.label`
+export const StyledLabel = styled("label")`
   display: block;
   ${fontBodyM}
 

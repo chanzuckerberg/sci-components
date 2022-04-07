@@ -1,12 +1,12 @@
 import { SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { ListItem } from "@material-ui/core";
-import { TypographyOptions } from "@material-ui/core/styles/createTypography";
+import { ListItem } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBody,
   getFontWeights,
   getSpaces,
+  getTypography,
 } from "../styles";
 
 const fontBodyL = fontBody("l");
@@ -37,13 +37,11 @@ export const StyledListItem = styled(ListItem, {
     ${(props) => {
       const { ordered } = props;
 
-      const {
-        theme: { typography },
-      } = props;
+      const typography = getTypography(props);
 
       return `
         align-items: flex-start;
-        font-family: ${(typography as TypographyOptions)?.fontFamily};
+        font-family: ${typography?.fontFamily};
         ${ordered ? "counter-increment: section;" : ""}
       `;
     }}
@@ -102,7 +100,7 @@ function propsToMarginBottom(props: ExtraProps) {
   `;
 }
 
-export const ListItemLabel = styled.span`
+export const ListItemLabel = styled("span")`
   margin-right: 5px;
 
   ${(props) => {

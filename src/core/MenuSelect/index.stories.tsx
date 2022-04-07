@@ -1,12 +1,12 @@
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Popper from "@material-ui/core/Popper";
-import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AutocompleteCloseReason } from "@material-ui/lab";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ButtonBase from "@mui/material/ButtonBase";
+import Popper from "@mui/material/Popper";
+import { AutocompleteCloseReason } from "@mui/material/useAutocomplete";
+import makeStyles from "@mui/styles/makeStyles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import Chip from "../Chip";
-import { AppThemeOptions, getColors, getCorners, getShadows } from "../styles";
+import { getColors, getCorners, getShadows, SDSTheme } from "../styles";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
@@ -185,7 +185,7 @@ MultiSelectWithSearch.args = {
   search: true,
 };
 
-const useStyles = makeStyles((theme: AppThemeOptions) => {
+const useStyles = makeStyles((theme: SDSTheme) => {
   const colors = getColors({ theme });
   const shadows = getShadows({ theme });
   const corners = getCorners({ theme });

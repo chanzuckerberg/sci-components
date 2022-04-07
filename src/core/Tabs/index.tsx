@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { TabProps as RawTabProps, useTheme } from "@material-ui/core";
+import { TabProps as RawTabProps, useTheme } from "@mui/material";
 import React, { forwardRef, useContext, useMemo } from "react";
-import { AppThemeOptions } from "../styles/common/defaultTheme";
+import { SDSTheme } from "../styles/common/defaultTheme";
 import { getColors } from "../styles/common/selectors/theme";
 import { TabsContext } from "./components/common";
 import LabelWithCount from "./components/LabelWithCount";
@@ -9,7 +9,7 @@ import { StyledTab, StyledTabs, TabsProps } from "./style";
 
 export type { TabsProps };
 
-const TabIndicator = (theme: AppThemeOptions) => {
+const TabIndicator = (theme: SDSTheme) => {
   const colors = getColors({ theme });
 
   return css`

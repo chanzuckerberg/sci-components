@@ -1,4 +1,4 @@
-import { ButtonProps as RawButtonProps } from "@material-ui/core";
+import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
 import {
   PrimaryMinimalButton,

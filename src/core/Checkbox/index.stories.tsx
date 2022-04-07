@@ -1,4 +1,4 @@
-import { FormControlLabel } from "@material-ui/core";
+import { FormControlLabel } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react";
 import React from "react";

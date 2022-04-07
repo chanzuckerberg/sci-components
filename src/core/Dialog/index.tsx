@@ -1,7 +1,7 @@
 import {
   Dialog as RawDialog,
   DialogProps as RawDialogProps,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { ComponentType, forwardRef, useMemo } from "react";
 import DialogPaper, { DialogPaperProps } from "../DialogPaper";
 import { DialogContext } from "./components/common";

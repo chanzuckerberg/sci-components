@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { MenuItem } from "@material-ui/core";
-import { Check } from "@material-ui/icons";
+import { Check } from "@mui/icons-material";
+import { MenuItem } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps } from "../styles";
 import { fontBody } from "../styles/common/mixins/fonts";
 import {
@@ -58,7 +58,7 @@ export const StyledMenuItem = styled(MenuItem)`
   }}
 `;
 
-export const ContentWrapper = styled.span`
+export const ContentWrapper = styled("span")`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,7 +86,7 @@ interface TextWrapperProps {
   selected: boolean;
 }
 
-export const TextWrapper = styled.span<TextWrapperProps>`
+export const TextWrapper = styled("span")<TextWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
@@ -104,7 +104,7 @@ interface ColumnWrapperProps {
   disabled?: boolean;
 }
 
-export const ColumnWrapper = styled.span<ColumnWrapperProps>`
+export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
@@ -118,7 +118,7 @@ export const ColumnWrapper = styled.span<ColumnWrapperProps>`
   ${disabledStyles}
 `;
 
-export const DemoWrapper = styled.div`
+export const DemoWrapper = styled("div")`
   width: 250px;
 `;
 

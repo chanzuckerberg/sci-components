@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import Button from "../Button";
 import {
   CommonThemeProps,

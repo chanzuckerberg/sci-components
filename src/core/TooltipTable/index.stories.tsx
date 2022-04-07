@@ -1,4 +1,4 @@
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Link from "../Link";

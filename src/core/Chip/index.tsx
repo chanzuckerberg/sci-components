@@ -1,5 +1,5 @@
-import { ChipProps as RawChipProps } from "@material-ui/core";
-import { Clear } from "@material-ui/icons";
+import { Clear } from "@mui/icons-material";
+import { ChipProps as RawChipProps } from "@mui/material";
 import React from "react";
 import { ExtraProps, StyledChip } from "./style";
 

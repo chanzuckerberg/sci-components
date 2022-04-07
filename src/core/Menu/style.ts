@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Menu } from "@material-ui/core";
+import { Menu } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { getSpaces } from "../styles";
 
 export const StyledMenu = styled(Menu)`

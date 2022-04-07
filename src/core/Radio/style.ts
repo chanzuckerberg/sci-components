@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Radio as RawRadio } from "@material-ui/core";
+import { Radio as RawRadio } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { getColors, getIconSizes } from "../styles";
 
 export const StyledRadioButton = styled(RawRadio)`
