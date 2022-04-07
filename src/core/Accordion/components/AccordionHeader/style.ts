@@ -19,6 +19,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
       padding: ${spaces?.m}px;
       min-height: 40px;
       align-items: flex-start;
+      box-sizing: border-box;
 
       &.Mui-expanded {
         min-height: 40px;
@@ -35,6 +36,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
 
       .MuiAccordionSummary-expandIcon {
         padding: 0px;
+        margin-right: 0;
         svg {
           color: ${colors?.gray[500]};
         }

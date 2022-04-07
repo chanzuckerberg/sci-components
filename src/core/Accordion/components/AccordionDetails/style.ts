@@ -11,7 +11,7 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
 
     return css`
       padding: ${spaces?.m}px;
-      padding-top: 0;
+      padding-top: ${spaces?.xxs}px;
     `;
   }};
 `;

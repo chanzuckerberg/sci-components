@@ -53,7 +53,6 @@ const leftPosition = (props: ExtraProps): SerializedStyles => {
   return css`
     .MuiAccordionSummary-root {
       flex-direction: row-reverse;
-      padding-left: 0;
 
       .MuiAccordionSummary-content {
         padding-left: ${spaces?.xs}px;
