@@ -58,6 +58,7 @@ const Demo = (props: Args): JSX.Element => {
           onChange={handleChange}
           disableCloseOnSelect={multiple}
           options={options}
+          groupBy={(option) => option.section}
           {...props}
         />
       </Popper>
@@ -237,46 +238,55 @@ const GITHUB_LABELS = [
     color: "#b60205",
     description: "",
     name: "priority: critical",
+    section: "priority",
   },
   {
     color: "#d93f0b",
     description: "",
     name: "priority: high",
+    section: "priority",
   },
   {
     color: "#0e8a16",
     description: "",
     name: "priority: low",
+    section: "priority",
   },
   {
     color: "#fbca04",
     description: "",
     name: "priority: medium",
+    section: "priority",
   },
   {
     color: "#fec1c1",
     description: "",
     name: "status: can't reproduce",
+    section: "status",
   },
   {
     color: "#215cea",
     description: "",
     name: "status: confirmed",
+    section: "status",
   },
   {
     color: "#cfd3d7",
     description: "This issue or pull request already exists",
     name: "status: duplicate",
+    section: "status",
   },
   {
     color: "#fef2c0",
     description: "",
     name: "status: needs information",
+    section: "status",
   },
   {
     color: "#eeeeee",
     description: "This will not be worked on",
     name: "status: wont do/fix",
+    section: "status",
   },
   {
     color: "#d73a4a",

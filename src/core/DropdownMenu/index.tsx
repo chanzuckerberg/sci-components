@@ -20,6 +20,7 @@ import {
 // (thuang): This requires option to have a `name` property.
 export interface DefaultDropdownMenuOption {
   name: string;
+  section?: string;
 }
 
 interface ExtraProps extends StyleProps {
@@ -66,6 +67,9 @@ export default function DropdownMenu<
     InputBaseProps = {},
   } = props;
 
+  // data object in ZH is wrong  - I messed up. if the individual object array has a property on it that matches across each "section" (ie type, format etc), that property can be passed to the `groupBy` prop as (option) => option.${proertyName}. The groupBy value is what will be used as the heading
+
+  // add optional prop of section to DefaultDropdownMenuOption
   return (
     <StyledAutocomplete
       clearOnBlur={false}
