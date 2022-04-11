@@ -14,6 +14,8 @@ import {
   StyledAutocomplete,
   StyledMenuInputSearch,
   StyledMenuItem,
+  StyledMenuItemCount,
+  StyledMenuItemDetails,
   StyleProps,
 } from "./style";
 
@@ -21,6 +23,8 @@ import {
 export interface DefaultDropdownMenuOption {
   name: string;
   section?: string;
+  details?: string;
+  count?: string;
 }
 
 interface ExtraProps extends StyleProps {
@@ -67,9 +71,6 @@ export default function DropdownMenu<
     InputBaseProps = {},
   } = props;
 
-  // data object in ZH is wrong  - I messed up. if the individual object array has a property on it that matches across each "section" (ie type, format etc), that property can be passed to the `groupBy` prop as (option) => option.${proertyName}. The groupBy value is what will be used as the heading
-
-  // add optional prop of section to DefaultDropdownMenuOption
   return (
     <StyledAutocomplete
       clearOnBlur={false}
@@ -136,8 +137,15 @@ export default function DropdownMenu<
         {...{ component: "div" }}
         isMultiSelect={multiple}
         selected={selected}
+        count={option.count}
       >
-        {option.name}
+        <div>{option.name}</div>
+        {option.details && (
+          <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
+        )}
+        {option.count && (
+          <StyledMenuItemCount>{option.count}</StyledMenuItemCount>
+        )}
       </StyledMenuItem>
     );
   }

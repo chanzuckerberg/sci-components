@@ -12,7 +12,7 @@ import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const { multiple, options = GITHUB_LABELS, search, hasSections } = props;
 
   const classes = useStyles();
 
@@ -58,7 +58,9 @@ const Demo = (props: Args): JSX.Element => {
           onChange={handleChange}
           disableCloseOnSelect={multiple}
           options={options}
-          groupBy={(option) => option.section}
+          groupBy={
+            hasSections ? (option) => option.section as string : undefined
+          }
           {...props}
         />
       </Popper>
@@ -151,6 +153,9 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 
 export default {
   argTypes: {
+    hasSections: {
+      control: { type: "boolean" },
+    },
     multiple: {
       control: { type: "boolean" },
     },
@@ -167,6 +172,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  hasSections: false,
   multiple: false,
   search: false,
 };
@@ -226,6 +232,7 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
 const GITHUB_LABELS = [
   {
     color: "#7057ff",
+    count: "3",
     description: "Good for newcomers",
     name: "good first issue",
   },
@@ -237,6 +244,7 @@ const GITHUB_LABELS = [
   {
     color: "#b60205",
     description: "",
+    details: "test",
     name: "priority: critical",
     section: "priority",
   },
