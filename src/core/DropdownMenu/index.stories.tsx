@@ -177,6 +177,31 @@ Default.args = {
   search: false,
 };
 
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  return (
+    <div>
+      <InputDropdown
+        aria-describedby="livePreviewDemo"
+        onClick={handleClick}
+        label="Click Target"
+        sdsStage={open ? "userInput" : "default"}
+        sdsType="singleSelect"
+        sdsStyle="minimal"
+      />
+      <Popper id="livePreviewDemo" open={open} anchorEl={anchorEl}>
+        <DropdownMenu
+          open
+          onClose={handleClose}
+          value={value}
+          onChange={handleChange}
+          options={options}
+          {...props}
+        />
+      </Popper>
+    </div>
+  );
+};
+
 // export const SingleSelectWithSearch = Template.bind({});
 
 // SingleSelectWithSearch.args = {
