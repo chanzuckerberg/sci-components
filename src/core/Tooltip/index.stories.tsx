@@ -1,4 +1,3 @@
-import { css } from "@emotion/css";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
@@ -18,7 +17,7 @@ const Demo = (props: Args): JSX.Element => {
           margin: "135px 300px",
         }}
       >
-        <Tooltip title={title} {...props}>
+        <Tooltip open title={title} {...props}>
           <InfoOutlinedIcon />
         </Tooltip>
       </div>
@@ -119,13 +118,8 @@ StyledArrow.parameters = {
   },
 };
 
-const arrow = css`
-  left: 0 !important;
-`;
-
 StyledArrow.args = {
   arrow: true,
-  classes: { arrow },
   title: fillerText,
 };
 
@@ -204,7 +198,7 @@ const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
   return (
     <Tooltip title={title} {...rest} data-testid="tooltip">
-      <div />
+      <div>Test</div>
     </Tooltip>
   );
 };

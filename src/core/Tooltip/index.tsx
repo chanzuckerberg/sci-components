@@ -22,8 +22,6 @@ const Tooltip = forwardRef(function Tooltip(
 ): JSX.Element | null {
   const {
     classes,
-    // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
-    followCursor = false,
     inverted,
     sdsStyle = "light",
     subtitle,
@@ -51,7 +49,6 @@ const Tooltip = forwardRef(function Tooltip(
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
     classes,
-    followCursor,
     inverted,
     sdsStyle,
     theme,
@@ -84,39 +81,12 @@ const Tooltip = forwardRef(function Tooltip(
 
   const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
 
-  const [position, setPosition] = React.useState({ x: 0, y: 0 });
-
   return (
     <RawTooltip
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
       title={content}
       ref={ref}
-      onMouseMove={
-        followCursor
-          ? (e) => setPosition({ x: e.pageX, y: e.pageY })
-          : undefined
-      }
-      placement={followCursor ? "right-end" : undefined}
-      PopperProps={
-        followCursor
-          ? {
-              anchorEl: {
-                getBoundingClientRect: () => ({
-                  bottom: position.y,
-                  height: 0,
-                  left: position.x,
-                  right: position.x,
-                  toJSON: () => {},
-                  top: position.y,
-                  width: 0,
-                  x: position.x,
-                  y: position.y,
-                }),
-              },
-            }
-          : undefined
-      }
       {...rest}
     />
   );
