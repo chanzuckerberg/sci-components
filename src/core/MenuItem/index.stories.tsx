@@ -86,6 +86,7 @@ function MultipleSelectDemo() {
           renderValue={(selected) => {
             return (selected as string[]).join(", ");
           }}
+          variant="standard"
         >
           {renderMenuItems(personName)}
         </Select>
@@ -125,6 +126,7 @@ function MultipleSelectDemo() {
           renderValue={(selected) => {
             return (selected as string[]).join(", ");
           }}
+          variant="filled"
         >
           {renderMenuItems(personName)}
         </Select>
