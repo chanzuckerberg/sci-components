@@ -5,7 +5,7 @@ import {
   TabsProps as RawTabsProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React, { ChangeEvent, FormEvent } from "react";
+import React, { FormEvent, SyntheticEvent } from "react";
 import { fontBodyS, fontBodyXs } from "../styles";
 import {
   CommonThemeProps,
@@ -19,7 +19,7 @@ import { SdsSize } from "./components/common";
 // Will be fixed in v5.x
 interface TabsPropsFixed extends Omit<RawTabsProps, "onChange"> {
   onChange:
-    | ((event: ChangeEvent<Record<string, unknown>>, value: never) => void)
+    | ((event: SyntheticEvent<Record<string, unknown>>, value: never) => void)
     | ((event: FormEvent<HTMLButtonElement>) => void);
 }
 

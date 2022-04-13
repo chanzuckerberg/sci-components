@@ -13,10 +13,12 @@ const TabIndicator = (theme: SDSTheme) => {
   const colors = getColors({ theme });
 
   return css`
-    background-color: ${colors?.primary[400]};
-    height: 2px;
-    bottom: -2px;
-    z-index: 2;
+    &.MuiTabs-indicator {
+      background-color: ${colors?.primary[400]};
+      height: 2px;
+      bottom: -2px;
+      z-index: 2;
+    }
   `;
 };
 

@@ -60,7 +60,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
         </div>
         <span
-          class="MuiTabs-indicator css-1r8eawc css-1aquho2-MuiTabs-indicator"
+          class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
           style="left: 0px; width: 0px;"
         />
       </div>
@@ -122,7 +122,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
         </div>
         <span
-          class="MuiTabs-indicator css-1r8eawc css-1aquho2-MuiTabs-indicator"
+          class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
           style="left: 0px; width: 0px;"
         />
       </div>
@@ -184,7 +184,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
         </div>
         <span
-          class="MuiTabs-indicator css-1r8eawc css-1aquho2-MuiTabs-indicator"
+          class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
           style="left: 0px; width: 0px;"
         />
       </div>
