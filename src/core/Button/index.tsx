@@ -96,7 +96,7 @@ const Button = React.forwardRef(
       case sdsStyle === "minimal" && sdsType === "secondary":
         return (
           <SecondaryMinimalButton
-            color="default"
+            color="primary"
             ref={ref}
             variant="text"
             {...propsWithDefault}
