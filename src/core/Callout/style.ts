@@ -20,7 +20,7 @@ export const StyledCallout = styled(Alert)`
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
-    const calloutColor = (colors && colors[severity][200]) || "white";
+    const calloutColor = (colors && colors[severity][100]) || "white";
 
     return `
       width: 360px;
