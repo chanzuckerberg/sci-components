@@ -23,6 +23,7 @@ export const StyledNotification = styled(Alert)`
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
+    const notificationColor = (colors && colors[severity][100]) || "white";
 
     return `
       width: 360px;
@@ -31,6 +32,7 @@ export const StyledNotification = styled(Alert)`
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.l}px;
       align-items: flex-start;
+      background-color: ${notificationColor};
 
       &.elevated {
         border-left: 5px solid;

@@ -20,6 +20,7 @@ export const StyledCallout = styled(Alert)`
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
+    const calloutColor = (colors && colors[severity][200]) || "white";
 
     return `
       width: 360px;
@@ -27,6 +28,7 @@ export const StyledCallout = styled(Alert)`
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.m}px;
+      background-color: ${calloutColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
