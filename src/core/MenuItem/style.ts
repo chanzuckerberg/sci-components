@@ -1,5 +1,5 @@
 import { Check } from "@mui/icons-material";
-import { MenuItem } from "@mui/material";
+import { MenuItem, menuItemClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps } from "../styles";
 import { fontBody } from "../styles/common/mixins/fonts";
@@ -14,48 +14,60 @@ import {
 const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
-  min-height: 30px;
+  && {
+    min-height: 30px;
 
-  ${(props) => {
-    const { selected } = props;
-    const colors = getColors(props);
-    const fontWeights = getFontWeights(props);
-    const spacings = getSpaces(props);
+    ${(props) => {
+      const { selected } = props;
+      const colors = getColors(props);
+      const fontWeights = getFontWeights(props);
+      const spacings = getSpaces(props);
 
-    const primary = colors?.primary[400];
+      const primary = colors?.primary[400];
 
-    return `
-      padding: ${spacings?.s}px ${spacings?.m}px;
-
-      .primary-text {
-        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
-      }
-
-      &.MuiButtonBase-root {
-        background-color: transparent;
-
-        &:hover {
-          background-color: ${colors?.gray[100]};
-        }
-      }
-
-      &:hover {
-        svg {
-          color: ${selected ? primary : colors?.gray[500]};
-        }
-      }
-
-      &:active {
-        svg {
-          color: ${primary};
-        }
+      return `
+        padding: ${spacings?.s}px ${spacings?.m}px;
 
         .primary-text {
-          font-weight: ${fontWeights?.semibold};
+          font-weight: ${
+            selected ? fontWeights?.semibold : fontWeights?.regular
+          };
         }
-      }
+
+        &.MuiButtonBase-root {
+          background-color: transparent;
+
+          &:hover, &.${menuItemClasses.focusVisible} {
+            background-color: ${colors?.gray[100]};
+
+            &[aria-selected="true"] {
+              background-color: ${colors?.gray[100]};
+            }
+          }
+
+          &[aria-selected="true"] {
+            background-color: initial;
+          }
+        }
+
+        &:hover, &.${menuItemClasses.focusVisible} {
+          svg {
+            color: ${selected ? primary : colors?.gray[500]};
+          }
+        }
+
+        &:active {
+          svg {
+            color: ${primary};
+          }
+
+          .primary-text {
+            font-weight: ${fontWeights?.semibold};
+          }
+        }
     `;
-  }}
+    }}
+  }
 `;
 
 export const ContentWrapper = styled("span")`

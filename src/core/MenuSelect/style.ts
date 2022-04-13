@@ -1,4 +1,4 @@
-import { Autocomplete } from "@mui/material";
+import { Autocomplete, inputBaseClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import InputSearch from "../InputSearch";
 import MenuItem from "../MenuItem";
@@ -54,10 +54,16 @@ export const InputBaseWrapper = styled("div")`
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })<{ search: boolean }>`
-  margin: 0;
-  .MuiInputBase-root {
-    width: 100%;
+  && {
+    margin: 0;
+
+    .${inputBaseClasses.root} {
+      width: 100%;
+      padding: 0;
+      padding-right: 14px !important;
+    }
+
+    /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
+    caret-color: ${({ search }) => (search ? "auto" : "transparent")};
   }
-  /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
-  caret-color: ${({ search }) => (search ? "auto" : "transparent")};
 `;
