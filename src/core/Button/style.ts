@@ -39,7 +39,7 @@ const ButtonBase = styled(Button, {
         background-color: ${colors?.primary[500]};
         box-shadow: none;
       }
-      &:focus {
+      &:focus-visible {
         outline: 5px auto Highlight;
         outline: 5px auto -webkit-focus-ring-color;
       }
@@ -92,10 +92,10 @@ const MinimalButton = styled(Button, {
     }
     return ``;
   }}
-  &:hover, &:focus {
+  &:hover, &:focus-visible {
     background-color: transparent;
   }
-  &:focus {
+  &:focus-visible {
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
   }
@@ -106,7 +106,7 @@ const minimal = (props: CommonThemeProps) => {
   const spaces = getSpaces(props);
 
   return `
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
       color: ${colors?.primary[500]};
     }
     &:active {
