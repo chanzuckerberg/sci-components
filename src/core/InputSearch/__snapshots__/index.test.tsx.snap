@@ -2,7 +2,7 @@
 
 exports[`<InputSearch /> Test story renders snapshot 1`] = `
 <label
-  class="css-1m92ss4"
+  class="css-hqpixd"
   for="test-round"
 >
   Round Search
