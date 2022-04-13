@@ -13,20 +13,22 @@ const doNotForwardProps = ["sdsSize"];
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })<StyledPaperProps>`
-  box-shadow: ${BoxShadows.L};
+  & {
+    box-shadow: ${BoxShadows.L};
 
-  ${paperDimensions}
+    ${paperDimensions}
 
-  ${(props) => {
-    const spaces = getSpaces(props);
-    const corners = getCorners(props);
+    ${(props) => {
+      const spaces = getSpaces(props);
+      const corners = getCorners(props);
 
-    return `
-      max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
-      border-radius: ${corners?.m || 0}px;
-      padding: ${spaces?.xxl || 0}px;
-    `;
-  }}
+      return `
+        max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
+        border-radius: ${corners?.m || 0}px;
+        padding: ${spaces?.xxl || 0}px;
+      `;
+    }}
+  }
 `;
 
 function paperDimensions(props: StyledPaperProps) {

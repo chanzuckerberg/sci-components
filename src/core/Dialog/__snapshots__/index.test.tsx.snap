@@ -29,16 +29,16 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mmzf5k-MuiTypography-root"
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
   >
     Title
-  </h6>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mrdvr-MuiTypography-root"
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
   >
     Optional subtitle
-  </h6>
+  </p>
 </h2>
 `;
 
@@ -108,16 +108,16 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mmzf5k-MuiTypography-root"
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
   >
     Title
-  </h6>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mrdvr-MuiTypography-root"
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
   >
     Optional subtitle
-  </h6>
+  </p>
 </h2>
 `;
 
@@ -187,16 +187,16 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mmzf5k-MuiTypography-root"
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
   >
     Title
-  </h6>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mrdvr-MuiTypography-root"
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
   >
     Optional subtitle
-  </h6>
+  </p>
 </h2>
 `;
 
@@ -266,16 +266,16 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mmzf5k-MuiTypography-root"
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
   >
     Title
-  </h6>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mrdvr-MuiTypography-root"
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
   >
     Optional subtitle
-  </h6>
+  </p>
 </h2>
 `;
 
@@ -350,15 +350,15 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
   data-testid="dialog-title"
   id="mui-5"
 >
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mmzf5k-MuiTypography-root"
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
   >
     Title
-  </h6>
-  <h6
-    class="MuiTypography-root MuiTypography-h6 css-1mrdvr-MuiTypography-root"
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
   >
     Optional subtitle
-  </h6>
+  </p>
 </h2>
 `;

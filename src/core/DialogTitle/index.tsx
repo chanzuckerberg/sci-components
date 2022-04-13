@@ -22,8 +22,8 @@ const DialogTitle = forwardRef(function DialogTitle(
       {children || (
         <>
           {onClose && <CloseButton onClick={onClose} />}
-          <Title variant="h6">{title}</Title>
-          <Subtitle variant="h6">{subtitle}</Subtitle>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
         </>
       )}
     </StyledDialogTitle>
