@@ -2,7 +2,7 @@
 
 exports[`<InputText /> Test story renders snapshot 1`] = `
 <div
-  class="MuiFormControl-root"
+  class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
 >
   <label
     class="css-19c61dz"
@@ -11,16 +11,16 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-5vur86"
+    class="MuiFormControl-root MuiTextField-root css-n3o03w-MuiFormControl-root-MuiTextField-root"
     data-testid="inputTextBase"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
         aria-label="Label"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
         id="test-textField"
         placeholder="Value"
         type="text"
@@ -28,14 +28,14 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        style="padding-left: 8px;"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legend-2"
-          style="width: 0.01px;"
+          class="css-hdw1oc"
         >
-          <span>
+          <span
+            class="notranslate"
+          >
             ​
           </span>
         </legend>
@@ -43,30 +43,30 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-5vur86"
+    class="MuiFormControl-root MuiTextField-root css-n3o03w-MuiFormControl-root-MuiTextField-root"
     data-testid="inputTextHideLabel"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
         aria-label="Hidden Label"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
         id="test-hide-label"
         type="text"
         value=""
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        style="padding-left: 8px;"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legend-2"
-          style="width: 0.01px;"
+          class="css-hdw1oc"
         >
-          <span>
+          <span
+            class="notranslate"
+          >
             ​
           </span>
         </legend>
@@ -80,38 +80,37 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1wszfle"
+    class="MuiFormControl-root MuiTextField-root css-1bpvfem-MuiFormControl-root-MuiTextField-root"
     data-testid="inputTextArea"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-multiline css-1qxw4jt-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <textarea
         aria-invalid="false"
         aria-label="Label"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline MuiInputBase-inputSizeSmall css-12tl3rr-MuiInputBase-input-MuiOutlinedInput-input"
         id="test-textArea"
         placeholder="Value"
-        rows="4"
         style="height: 0px; overflow: hidden;"
       />
       <textarea
         aria-hidden="true"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+        class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline MuiInputBase-inputSizeSmall css-12tl3rr-MuiInputBase-input-MuiOutlinedInput-input"
         readonly=""
-        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+        style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
         tabindex="-1"
       />
       <fieldset
         aria-hidden="true"
-        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
-        style="padding-left: 8px;"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="PrivateNotchedOutline-legend-2"
-          style="width: 0.01px;"
+          class="css-hdw1oc"
         >
-          <span>
+          <span
+            class="notranslate"
+          >
             ​
           </span>
         </legend>

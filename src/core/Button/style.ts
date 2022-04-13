@@ -128,6 +128,7 @@ export const PrimaryMinimalButton = styled(MinimalButton)`
 
 export const SecondaryMinimalButton = styled(MinimalButton)`
   ${minimal}
+  color: #000;
 `;
 
 // Legacy support for backwards-compatible props

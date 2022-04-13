@@ -2,7 +2,7 @@
 
 exports[`<TooltipTable /> Test story renders snapshot 1`] = `
 <div
-  class="MuiTableContainer-root"
+  class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
   data-testid="tooltipTable"
 >
   <div
@@ -15,77 +15,77 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
       Section 1
     </div>
     <table
-      class="MuiTable-root"
+      class="MuiTable-root css-rqglhn-MuiTable-root"
     >
       <tbody
-        class="MuiTableBody-root"
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
       >
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 1
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             1
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 2
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             2
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 3
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             3
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 4
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             4
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 5 
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             5
           </td>
@@ -103,77 +103,77 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
       Section 2
     </div>
     <table
-      class="MuiTable-root"
+      class="MuiTable-root css-rqglhn-MuiTable-root"
     >
       <tbody
-        class="MuiTableBody-root"
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
       >
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 6
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             6
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 7
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             7
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 8
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             8
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 9
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             9
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root"
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body css-5zy583 MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-zihy0d-MuiTableCell-root"
           >
             Label 10
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body css-teijfd MuiTableCell-alignRight MuiTableCell-sizeSmall"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-1hkg3k5-MuiTableCell-root"
           >
             10
           </td>

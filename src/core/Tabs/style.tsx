@@ -33,8 +33,11 @@ export type TabsProps = TabsPropsFixed & {
 // https://github.com/mui-org/material-ui/issues/17454#issuecomment-647132303
 const TempTabs = (props: TabsPropsFixed) => <RawTabs {...(props as never)} />;
 
+const TABS_DO_NOT_FORWARD_PROPS = ["underlined", "sdsSize"];
+
 export const StyledTabs = styled(TempTabs, {
-  shouldForwardProp: (prop) => prop !== "underlined",
+  shouldForwardProp: (prop) =>
+    !TABS_DO_NOT_FORWARD_PROPS.includes(String(prop)),
 })<TabsProps>`
   box-sizing: border-box;
   padding-bottom: 0px;
