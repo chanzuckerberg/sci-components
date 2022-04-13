@@ -22,7 +22,9 @@ const Demo = (props: Args): JSX.Element => {
         justifyContent: "space-around",
       }}
     >
-      <Button onClick={handleClick}>Click me!</Button>
+      <Button onClick={handleClick} sdsStyle="square" sdsType="secondary">
+        Click me!
+      </Button>
       <Menu
         anchorEl={anchorEl}
         keepMounted
