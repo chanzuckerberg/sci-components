@@ -17,7 +17,7 @@ const Demo = (props: Args): JSX.Element => {
           margin: "135px 300px",
         }}
       >
-        <Tooltip open title={title} {...props}>
+        <Tooltip title={title} {...props}>
           <InfoOutlinedIcon />
         </Tooltip>
       </div>
