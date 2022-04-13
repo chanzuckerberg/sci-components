@@ -31,7 +31,7 @@ export const StyledMenuItem = styled(MenuItem)`
         font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
       }
 
-      &.MuiListItem-root.MuiListItem-button {
+      &.MuiButtonBase-root {
         background-color: transparent;
 
         &:hover {

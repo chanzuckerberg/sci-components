@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 import { InputLabel, Select, SelectProps } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import makeStyles from "@mui/styles/makeStyles";
+import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import { SDSTheme } from "../styles";
+import { getSpaces } from "../styles";
 import MenuItem from "./index";
 import { DemoWrapper } from "./style";
 
@@ -51,20 +51,20 @@ function renderMenuItems(personName: string[]) {
   });
 }
 
-const useStyles = makeStyles((theme: SDSTheme) => {
-  return {
-    formControl: {
-      margin: theme.spacing(5),
-      maxWidth: 300,
-      minWidth: 120,
-    },
-  };
-});
+const StyledFormControl = styled(FormControl)`
+  ${(props) => {
+    const spacings = getSpaces(props);
+    return `
+      margin: ${spacings?.xxl}px;
+      max-width: 300px;
+      min-width: 120px;
+    `;
+  }}
+`;
 
 export const MultipleSelect = MultipleSelectDemo.bind({});
 
 function MultipleSelectDemo() {
-  const classes = useStyles();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
   const handleChange: SelectProps["onChange"] = (event) => {
@@ -73,7 +73,7 @@ function MultipleSelectDemo() {
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
+      <StyledFormControl variant="standard">
         <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
         <Select
           MenuProps={MenuProps}
@@ -89,11 +89,11 @@ function MultipleSelectDemo() {
         >
           {renderMenuItems(personName)}
         </Select>
-      </FormControl>
+      </StyledFormControl>
 
       <br />
 
-      <FormControl variant="outlined" className={classes.formControl}>
+      <StyledFormControl variant="outlined">
         <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
@@ -109,11 +109,11 @@ function MultipleSelectDemo() {
         >
           {renderMenuItems(personName)}
         </Select>
-      </FormControl>
+      </StyledFormControl>
 
       <br />
 
-      <FormControl variant="filled" className={classes.formControl}>
+      <StyledFormControl variant="filled">
         <InputLabel id="demo-simple-select-filled-label">Name</InputLabel>
         <Select
           MenuProps={MenuProps}
@@ -128,7 +128,7 @@ function MultipleSelectDemo() {
         >
           {renderMenuItems(personName)}
         </Select>
-      </FormControl>
+      </StyledFormControl>
     </div>
   );
 }
