@@ -60,6 +60,11 @@ const medium = (props: ExtraProps): SerializedStyles => {
       margin: 0 0 0 -${spacings?.s}px;
       height: ${spacings?.l}px;
       width: ${spacings?.l}px;
+
+      &:hover,
+      &:focus-visible {
+        color: white;
+      }
     }
   `;
 };
