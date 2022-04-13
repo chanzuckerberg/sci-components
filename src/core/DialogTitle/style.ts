@@ -21,18 +21,12 @@ export const StyledDialogTitle = styled(DialogTitle)`
   }}
 `;
 
-/**
- * Recommends adding props: variant="h6"
- */
 export const Title = styled(Typography)`
   ${fontHeaderXl}
 
   color: black;
 `;
 
-/**
- * Recommends adding props: variant="h6"
- */
 export const Subtitle = styled(Typography)`
   ${fontBodyXs}
 
