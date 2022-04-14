@@ -1,5 +1,10 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { TextField } from "@mui/material";
+import {
+  inputAdornmentClasses,
+  inputBaseClasses,
+  outlinedInputClasses,
+  TextField,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
@@ -24,7 +29,7 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.notchedOutline} {
       border-radius: ${corners?.l}px;
     }
   `;
@@ -34,7 +39,7 @@ const error = (props: ExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
-    .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.error[400]};
     }
   `;
@@ -44,7 +49,7 @@ const warning = (props: ExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
-    .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.warning[400]};
     }
   `;
@@ -56,7 +61,7 @@ const disabledStyled = (props: ExtraProps): SerializedStyles => {
 
   return css`
     .Mui-disabled {
-      .MuiOutlinedInput-notchedOutline {
+      .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
       }
 
@@ -64,7 +69,7 @@ const disabledStyled = (props: ExtraProps): SerializedStyles => {
         color: ${colors?.gray[300]};
       }
 
-      &:hover .MuiOutlinedInput-notchedOutline {
+      &:hover .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
       }
     }
@@ -82,7 +87,8 @@ export const StyledLabel = styled("label")`
       position: absolute;
       overflow: hidden;
       clip: rect(0 0 0 0);
-      height: 1px; width: 1px;
+      height: 1px;
+      width: 1px;
       margin: -1px; padding: 0; border: 0;
     `;
   }}
@@ -106,25 +112,30 @@ export const StyledSearchBase = styled(TextField, {
       margin-right: ${spacings?.xl}px;
       min-width: 120px;
       display: block;
-      .MuiInputBase-inputSizeSmall {
+
+      .${inputBaseClasses.inputSizeSmall} {
         padding: ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;
-        .MuiOutlinedInput-notchedOutline {
+
+        .${outlinedInputClasses.notchedOutline} {
           border-radius: ${corners?.m}px;
           border: ${borders?.gray[400]};
         }
       }
-      .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+
+      .${outlinedInputClasses.root}:hover
+        .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[500]};
       }
-      .MuiOutlinedInput-root.Mui-focused {
-        .MuiOutlinedInput-notchedOutline {
+
+      .${outlinedInputClasses.root}.Mui-focused {
+        .${outlinedInputClasses.notchedOutline} {
           border: ${borders?.primary[400]};
         }
 
-        .MuiInputAdornment-root svg {
+        .${inputAdornmentClasses.root} svg {
           color: ${colors?.primary[400]};
         }
       }

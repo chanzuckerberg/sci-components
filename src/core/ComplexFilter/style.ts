@@ -1,4 +1,5 @@
 import { Paper } from "@mui/material";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
 import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import {
@@ -14,57 +15,57 @@ export const Wrapper = styled("div")`
 `;
 
 export const StyledPopper = styled(Popper)`
-  ${fontHeaderXs}
+  & {
+    ${fontHeaderXs}
 
-  .MuiAutocomplete-popperDisablePortal {
-    position: relative;
-    width: 100% !important;
-  }
-
-  ${(props) => {
-    const colors = getColors(props);
-    const corners = getCorners(props);
-    const shadows = getShadows(props);
-    const spacings = getSpaces(props);
-
-    return `
-      background-color: white;
-      border: 1px solid ${colors?.gray[100]};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      color: ${colors?.gray[500]};
-      padding: ${spacings?.s}px;
-      min-width: 244px;
-      z-index: 1400; // allows the dropdown to be used in modals
-    `;
-  }}
-`;
-
-export const StyledPaper = styled(Paper)`
-  box-shadow: none;
-  margin: 0;
-
-  .MuiAutocomplete-listbox {
-    padding: 0;
-  }
-
-  .MuiAutocomplete-option {
-    padding: 0;
-
-    &[aria-selected="true"] {
-      background-color: initial;
+    .${autocompleteClasses.popperDisablePortal} {
+      /* (thuang): !important is needed to fight inline style */
+      position: relative !important;
+      transform: none !important;
     }
 
     ${(props) => {
       const colors = getColors(props);
-      const spaces = getSpaces(props);
+      const corners = getCorners(props);
+      const shadows = getShadows(props);
+      const spacings = getSpaces(props);
 
       return `
-        margin: 0 ${spaces?.s}px;
-        &:hover {
-          background-color: ${colors?.gray[100]};
-        }
-      `;
+        background-color: white;
+        border: 1px solid ${colors?.gray[100]};
+        border-radius: ${corners?.m}px;
+        box-shadow: ${shadows?.m};
+        color: ${colors?.gray[500]};
+        padding: ${spacings?.s}px;
+        min-width: 244px;
+        z-index: 1400; // allows the dropdown to be used in modals
+    `;
     }}
+  }
+`;
+
+export const StyledPaper = styled(Paper)`
+  & {
+    box-shadow: none;
+    margin: 0;
+
+    .${autocompleteClasses.listbox} {
+      background-color: white;
+      padding: 0;
+    }
+
+    .${autocompleteClasses.option} {
+      padding: 0;
+      min-height: 30px;
+
+      ${(props) => {
+        const spaces = getSpaces(props);
+
+        return `
+          margin: 0 ${spaces?.s}px;
+          padding: ${spaces?.s}px ${spaces?.m}px;
+        `;
+      }}
+    }
   }
 `;
