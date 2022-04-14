@@ -1,4 +1,5 @@
 import { Paper } from "@mui/material";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
 import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
@@ -15,58 +16,63 @@ export const Wrapper = styled("div")`
 `;
 
 export const StyledPopper = styled(Popper)`
-  ${fontHeaderXs}
+  & {
+    ${fontHeaderXs}
 
-  .MuiAutocomplete-popperDisablePortal {
-    position: relative;
-    width: 100% !important;
+    .${autocompleteClasses.popperDisablePortal} {
+      position: relative !important;
+      transform: none !important;
+    }
+
+    ${(props) => {
+      const colors = getColors(props);
+      const corners = getCorners(props);
+      const shadows = getShadows(props);
+      const spacings = getSpaces(props);
+
+      return `
+        background-color: white;
+        border: 1px solid ${colors?.gray[100]};
+        border-radius: ${corners?.m}px;
+        box-shadow: ${shadows?.m};
+        color: ${colors?.gray[500]};
+        padding: ${spacings?.xs}px;
+        min-width: 244px;
+        z-index: 1400; // allows the dropdown to be used in modals
+      `;
+    }}
   }
-
-  ${(props) => {
-    const colors = getColors(props);
-    const corners = getCorners(props);
-    const shadows = getShadows(props);
-    const spacings = getSpaces(props);
-
-    return `
-      background-color: white;
-      border: 1px solid ${colors?.gray[100]};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      color: ${colors?.gray[500]};
-      padding: ${spacings?.xs}px;
-      min-width: 244px;
-      z-index: 1400; // allows the dropdown to be used in modals
-    `;
-  }}
 `;
 
 export const StyledPaper = styled(Paper)`
-  box-shadow: none;
-  margin: 0;
+  & {
+    box-shadow: none;
+    margin: 0;
 
-  .MuiAutocomplete-listbox {
-    padding: 0;
-  }
+    .${autocompleteClasses.listbox} {
+      padding: 0;
+      background-color: #FFF;
+    }
 
-  ${(props) => {
-    const colors = getColors(props);
-    const spacings = getSpaces(props);
+    ${(props) => {
+      const colors = getColors(props);
+      const spacings = getSpaces(props);
 
-    return `
-      .MuiAutocomplete-option {
-        margin: 0 ${spacings?.s}px;
-        padding: 0;
+      return `
+      .${autocompleteClasses.option} {
+          margin: 0 ${spacings?.s}px;
+          padding: 0;
 
-        &[aria-selected="true"] {
-          background-color: initial;
-        }
+          &[aria-selected="true"] {
+            background-color: initial;
+          }
 
-        &:hover {
-          background-color: ${colors?.gray[100]};
-        }
-      `;
-  }}
+          &:hover {
+            background-color: ${colors?.gray[100]};
+          }
+        `;
+    }}
+    }
   }
 `;
 

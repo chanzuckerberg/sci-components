@@ -108,7 +108,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          open
           placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0]]} />}
         >
@@ -119,7 +118,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          open
           placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0], data[1]]} />}
         >
@@ -130,7 +128,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
-          open
           placement="right-end"
           title={<TooltipTableContent {...props} data={data} />}
         >
