@@ -37,6 +37,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
       .MuiAccordionSummary-expandIcon {
         padding: 0px;
         margin-right: 0;
+        margin-left: ${spaces?.m}px;
         svg {
           color: ${colors?.gray[500]};
         }

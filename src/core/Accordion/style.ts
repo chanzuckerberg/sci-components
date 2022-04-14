@@ -69,5 +69,9 @@ const leftPosition = (props: ExtraProps): SerializedStyles => {
         }
       }
     }
+
+    .MuiAccordionDetails-root {
+      padding-left: 30px;
+    }
   `;
 };
