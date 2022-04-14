@@ -108,7 +108,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         {...InputDropdownProps}
         {...rest}
       />
-      <PopperComponent open={open} anchorEl={anchorEl} disablePortal>
+      <PopperComponent open={open} anchorEl={anchorEl}>
         <MenuSelect
           open
           search={search}
