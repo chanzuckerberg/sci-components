@@ -248,6 +248,7 @@
         "solid": { "value": "1px solid" }
       },
       "primary": {
+        "300": { "value": "1px solid {sds.color.primary.300.value}" },
         "400": { "value": "1px solid {sds.color.primary.400.value}" },
         "500": { "value": "1px solid {sds.color.primary.500.value}" },
         "600": { "value": "1px solid {sds.color.primary.600.value}" },
