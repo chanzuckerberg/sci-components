@@ -26,29 +26,24 @@ export default {
   title: "InputToggle",
 };
 
-// const LivePreviewDemo = (props: Args): JSX.Element => {
-//   return <InputToggle {...props} id="togglePreview" sdsStage="off" />;
-// };
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  return <InputToggle {...props} id="togglePreview" />;
+};
 
-// const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-// export const LivePreview = LivePreviewTemplate.bind({});
+export const LivePreview = LivePreviewTemplate.bind({});
 
-// LivePreview.parameters = {
-//   snapshot: {
-//     skip: true,
-//   },
-// };
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
-// const TestDemo = (props: Args): JSX.Element => {
-//   return (
-//     <InputToggle
-//       {...props}
-//       id="test-toggle"
-//     />
-//   );
-// };
+const TestDemo = (props: Args): JSX.Element => {
+  return <InputToggle {...props} data-testid="test-toggle" />;
+};
 
-// const TestTemplate: Story = (args) => <TestDemo {...args} />;
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
-// export const Test = TestTemplate.bind({});
+export const Test = TestTemplate.bind({});
