@@ -5,5 +5,7 @@ exports[`<Tooltip /> Test story renders snapshot 1`] = `
   class=""
   data-mui-internal-clone-element="true"
   data-testid="tooltip"
-/>
+>
+  Test
+</div>
 `;
