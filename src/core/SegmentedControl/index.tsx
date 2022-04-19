@@ -2,9 +2,9 @@ import {
   ButtonGroupProps,
   IconButtonProps as RawIconButtonProps,
 } from "@material-ui/core";
+import { ToggleButton } from "@mui/material";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
-import IconButton from "../IconButton";
 import Tooltip from "../Tooltip";
 import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
@@ -22,45 +22,47 @@ export type SegmentedControlProps = ButtonGroupProps &
   ExtraProps &
   RawIconButtonProps;
 
-function ButtonGroupIconButton(props: SegmentedControlProps) {
-  // intercept props only implemented by `Button`
-  const { disableElevation, fullWidth, variant, ...iconButtonProps } = props;
-  return <IconButton sdsSize="small" sdsType="primary" {...iconButtonProps} />;
-}
+//function(event: React.MouseEvent<HTMLElement>, value: any) => void
 
 const SegmentedControl = (props: SegmentedControlProps) => {
   const { buttonDefinition } = props;
+  const leftmost = buttonDefinition[0]?.tooltipText;
+  const [active, setActive] = React.useState<string | null>(leftmost);
+
+  const handleActive = (
+    event: React.MouseEvent<HTMLElement>,
+    newActive: string | null
+  ) => {
+    if (newActive !== null) {
+      setActive(newActive);
+    }
+  };
 
   return (
-    <StyledSegmentedControl size="small" variant="outlined">
+    <StyledSegmentedControl
+      size="small"
+      value={active}
+      exclusive
+      onChange={handleActive}
+      color="primary"
+    >
       {(buttonDefinition as singleButtonDefinition[]).map((button) => {
         const { iconName, tooltipText } = button;
         return (
-          <Tooltip title={tooltipText} sdsStyle="dark" arrow key={tooltipText}>
-            <ButtonGroupIconButton {...props}>
+          <ToggleButton disableRipple value={tooltipText} key={tooltipText}>
+            <Tooltip title={tooltipText} sdsStyle="dark" arrow>
+              {/* <span> */}
               <Icon
                 sdsIcon={iconName as keyof IconNameToSizes}
                 sdsSize="s"
                 sdsType="iconButton"
               />
-            </ButtonGroupIconButton>
-            {/* <Button>
-                            <IconButton sdsSize="small" sdsType = "primary">
-                                <Icon sdsIcon={iconName as keyof IconNameToSizes} sdsSize="s" sdsType="iconButton" />
-                            </IconButton>
-                        </Button> */}
-          </Tooltip>
+              {/* </span> */}
+            </Tooltip>
+          </ToggleButton>
         );
       })}
-      {/* <Tooltip title="placeholder" sdsStyle="dark" arrow>
-                <Button>button 1</Button>
-            </Tooltip>
-            <Tooltip title="placeholder" sdsStyle="dark" arrow>
-                <Button>button 2</Button>
-            </Tooltip>
-            <Tooltip title="placeholder" sdsStyle="dark" arrow>
-                <Button>button 3</Button>
-            </Tooltip> */}
+      ;
     </StyledSegmentedControl>
   );
 };

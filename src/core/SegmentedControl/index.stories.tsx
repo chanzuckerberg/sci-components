@@ -4,9 +4,9 @@ import SegmentedControl from "./index";
 
 const Demo = () => {
   const buttonDefinition = [
-    { iconName: "barChartHorizontal3", tooltipText: "test tooltip 1" },
-    { iconName: "eyeOpen", tooltipText: "test tooltip 2" },
-    { iconName: "lock", tooltipText: "test tooltip 3" },
+    { iconName: "list", tooltipText: "test tooltip 1" },
+    { iconName: "list", tooltipText: "test tooltip 2" },
+    { iconName: "list", tooltipText: "test tooltip 3" },
   ];
   return (
     <SegmentedControl buttonDefinition={buttonDefinition}></SegmentedControl>
