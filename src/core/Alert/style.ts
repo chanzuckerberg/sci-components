@@ -8,11 +8,13 @@ export const StyledAlert = styled(Alert)`
     const colors = getColors(props);
     const spacings = getSpaces(props);
     const shadows = getShadows(props);
-    const { severity = "primary" } = props;
+    const { severity = "success" } = props;
     const borderColor = (colors && colors[severity][400]) || "black";
+    const backgroundColor = colors && colors[severity][100];
+
     return `
+      background-color: ${backgroundColor};
       margin: ${spacings?.m}px 0;
-      border-radius: ${spacings?.default};
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.l}px ${spacings?.l}px
         ${spacings?.l}px 9px;
