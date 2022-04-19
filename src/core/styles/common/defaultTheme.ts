@@ -87,6 +87,7 @@ const borders = {
     solid: `1px solid`,
   },
   primary: {
+    "300": `1px solid ${defaultThemeColors.primary["300"]}`,
     "400": `1px solid ${defaultThemeColors.primary["400"]}`,
     "500": `1px solid ${defaultThemeColors.primary["500"]}`,
     "600": `1px solid${defaultThemeColors.primary["600"]}`,
