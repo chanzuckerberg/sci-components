@@ -51,13 +51,13 @@ const SegmentedControl = (props: SegmentedControlProps) => {
         return (
           <ToggleButton disableRipple value={tooltipText} key={tooltipText}>
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
-              {/* <span> */}
-              <Icon
-                sdsIcon={iconName as keyof IconNameToSizes}
-                sdsSize="s"
-                sdsType="iconButton"
-              />
-              {/* </span> */}
+              <span>
+                <Icon
+                  sdsIcon={iconName as keyof IconNameToSizes}
+                  sdsSize="s"
+                  sdsType="button"
+                />
+              </span>
             </Tooltip>
           </ToggleButton>
         );
