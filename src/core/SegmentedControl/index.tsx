@@ -2,7 +2,7 @@ import {
   ButtonGroupProps,
   IconButtonProps as RawIconButtonProps,
 } from "@material-ui/core";
-import { ToggleButton } from "@mui/material";
+import ToggleButton from "@mui/material/ToggleButton";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
