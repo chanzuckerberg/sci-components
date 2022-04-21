@@ -12,7 +12,6 @@ import {
 } from "../styles";
 
 export interface ExtraProps extends CommonThemeProps {
-  // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
@@ -79,13 +78,15 @@ export const tooltipCss = (props: ExtraProps): string => {
   const shadows = getShadows(props);
 
   return css`
-    ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
-    ${width === "wide" && sdsStyle === "light" && wide()}
+    &.MuiTooltip-tooltip {
+      ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
+      ${width === "wide" && sdsStyle === "light" && wide()}
 
-    ${followCursor === true && tableStyles(props)}
+      ${followCursor === true && tableStyles(props)}
 
-    border: ${borders?.gray["300"]};
-    box-shadow: ${shadows?.m};
+      border: ${borders?.gray["300"]};
+      box-shadow: ${shadows?.m};
+    }
   `;
 };
 
@@ -95,11 +96,15 @@ export const arrowCss = (props: ExtraProps): string => {
   const borders = getBorders(props);
 
   return css`
-    color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+    &.MuiTooltip-arrow {
+      color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
 
-    &:before {
-      border: ${inverted || sdsStyle === "dark" ? null : borders?.gray["300"]};
-      box-sizing: border-box;
+      &:before {
+        border: ${inverted || sdsStyle === "dark"
+          ? null
+          : borders?.gray["300"]};
+        box-sizing: border-box;
+      }
     }
   `;
 };

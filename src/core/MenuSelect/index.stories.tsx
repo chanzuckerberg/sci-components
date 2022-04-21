@@ -42,31 +42,22 @@ const Demo = (props: Args): JSX.Element => {
           <span>Click Target</span>
           <ExpandMoreIcon />
         </ButtonBase>
+        <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom">
+          <MenuSelect
+            open
+            search={search}
+            onClose={handleClose}
+            multiple={multiple}
+            value={multiple ? pendingValue : value}
+            onChange={handleChange}
+            disableCloseOnSelect={multiple}
+            options={options}
+            {...props}
+          />
+        </Popper>
 
         <Chips value={value} multiple={multiple} onDelete={handleDelete} />
       </div>
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        className={classes.popper}
-      >
-        <MenuSelect
-          open
-          search={search}
-          onClose={handleClose}
-          multiple={multiple}
-          classes={{
-            paper: classes.paper,
-            popperDisablePortal: classes.popperDisablePortal,
-          }}
-          value={multiple ? pendingValue : value}
-          onChange={handleChange}
-          disableCloseOnSelect={multiple}
-          options={options}
-          {...props}
-        />
-      </Popper>
     </>
   );
 

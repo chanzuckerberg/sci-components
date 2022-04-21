@@ -31,6 +31,7 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
   return (
     <Tooltip
       followCursor
+      placement="right-end"
       enterDelay={50}
       leaveDelay={50}
       title={title}
