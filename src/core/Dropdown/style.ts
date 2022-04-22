@@ -16,18 +16,15 @@ export const Wrapper = styled.div`
 
 export const StyledPopper = styled(Popper)`
   ${fontHeaderXs}
-
   .MuiAutocomplete-popperDisablePortal {
     position: relative;
     width: 100% !important;
   }
-
   ${(props) => {
     const colors = getColors(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const spacings = getSpaces(props);
-
     return `
       background-color: white;
       border: 1px solid ${colors?.gray[100]};
@@ -44,24 +41,19 @@ export const StyledPopper = styled(Popper)`
 export const StyledPaper = styled(Paper)`
   box-shadow: none;
   margin: 0;
-
   .MuiAutocomplete-listbox {
     padding: 0;
   }
-
   ${(props) => {
     const colors = getColors(props);
     const spacings = getSpaces(props);
-
     return `
       .MuiAutocomplete-option {
         margin: 0 ${spacings?.s}px;
         padding: 0;
-
         &[aria-selected="true"] {
           background-color: initial;
         }
-
         &:hover {
           background-color: ${colors?.gray[100]};
         }
@@ -73,11 +65,9 @@ export const StyledPaper = styled(Paper)`
 export const StyledButton = styled(Button)`
   ${(props) => {
     const spacings = getSpaces(props);
-
     return `
       margin-top: ${spacings?.l}px;
       margin-bottom: ${spacings?.s}px;
-
       &:first-of-type {
         margin-left: ${spacings?.s}px;
         margin-right: ${spacings?.m}px;
