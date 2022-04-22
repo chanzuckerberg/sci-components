@@ -2,7 +2,7 @@
 
 exports[`<Notification /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard elevated css-1xj0a98-MuiPaper-root-MuiAlert-root"
+  class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo elevated css-ge3qs3 MuiPaper-elevation0"
   data-testid="notification"
   role="alert"
   style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
