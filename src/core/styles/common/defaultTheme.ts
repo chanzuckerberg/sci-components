@@ -29,6 +29,7 @@ const defaultThemeColors = {
     "100": "#FEF2F2",
     "200": "#FBE8E8",
     "400": "#DC132C",
+    "500": "#C61128",
     "600": "#B70016",
   },
   gray: {
