@@ -18,8 +18,8 @@ interface ExtraProps {
   buttonDefinition: singleButtonDefinition[];
 }
 
-export type SegmentedControlProps = ButtonGroupProps &
-  ExtraProps &
+export type SegmentedControlProps = ExtraProps &
+  ButtonGroupProps &
   RawIconButtonProps;
 
 //function(event: React.MouseEvent<HTMLElement>, value: any) => void
