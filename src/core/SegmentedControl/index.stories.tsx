@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import SegmentedControl, { SegmentedControlProps } from "./index";
 
@@ -127,20 +127,30 @@ LivePreview.parameters = {
 };
 
 // Test
-export const Test = Template.bind({});
-Test.args = {
-  segmentOneIcon: "list",
-  segmentOneTooltipText: "List A",
-  segmentTwoIcon: "table",
-  segmentTwoTooltipText: "Table A",
-  segmentThreeIcon: "people",
-  segmentThreeTooltipText: "Team",
-  segmentFourIcon: "globe",
-  segmentFourTooltipText: "More",
-};
+function TestDemo(props: Args): JSX.Element {
+  const finalProps = {
+    ...props,
+    "data-testid": "segmentedControl",
+  };
 
-Test.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
+  return (
+    <div>
+      <Template
+        segmentOneIcon="list"
+        segmentOneTooltipText="List A"
+        segmentTwoIcon="table"
+        segmentTwoTooltipText="Table A"
+        segmentThreeIcon="people"
+        segmentThreeTooltipText="Team"
+        segmentFourIcon="globe"
+        segmentFourTooltipText="More"
+        buttonDefinition={[]}
+        {...finalProps}
+      />
+    </div>
+  );
+}
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
