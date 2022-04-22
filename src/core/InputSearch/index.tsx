@@ -61,11 +61,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       return <></>;
     }
 
-    const inputProps = {
-      "aria-label": `${label}`,
-      role: "search",
-    };
-
     return (
       <>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
@@ -79,15 +74,14 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   onClick={localHandleSubmit}
                   data-testId="searchButton"
                   sdsType="secondary"
+                  aria-label="search-button"
                 >
                   <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
                 </IconButton>
               </InputAdornment>
             ),
-            // passed to html input
-            inputProps,
           }}
-          type="text"
+          type="search"
           id={id}
           variant="outlined"
           size="small"

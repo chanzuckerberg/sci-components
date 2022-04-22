@@ -37,7 +37,7 @@ export const condensedCSS = (props: ExtraProps): string => {
       display: flex;
       align-items: center;
 
-      ${indicator === true && indicatorCSS(props)};
+      ${indicator === true && indicatorCSS(props)}
     }
   `;
 };
