@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "storybook-addon-material-ui",
     "storybook-addon-emotion-theme",
+    "@storybook/addon-a11y",
   ],
   webpackFinal: async (config) => {
     return {
