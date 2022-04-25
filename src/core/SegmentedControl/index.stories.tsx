@@ -1,13 +1,10 @@
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
-import SegmentedControl, { SegmentedControlProps } from "./index";
+import SegmentedControl from "./index";
 
-const Demo = () => {
-  const buttonDefinition = [
-    { iconName: "list", tooltipText: "test tooltip 1" },
-    { iconName: "list", tooltipText: "test tooltip 2" },
-    { iconName: "list", tooltipText: "test tooltip 3" },
-  ];
+const Demo = (props: Args): JSX.Element => {
+  const { buttonDefinition } = props;
+
   return (
     <SegmentedControl buttonDefinition={buttonDefinition}></SegmentedControl>
   );
@@ -58,66 +55,57 @@ export default {
   title: "SegmentedControl",
 } as Meta;
 
-interface SegmentedControlArgs extends SegmentedControlProps {
-  segmentOneIcon: string;
-  segmentOneTooltipText: string;
-  segmentTwoIcon: string;
-  segmentTwoTooltipText: string;
-  segmentThreeIcon: string;
-  segmentThreeTooltipText: string;
-  segmentFourIcon: string;
-  segmentFourTooltipText: string;
-}
+const Template: Story = (args) => <Demo {...args} />;
 
-const Template: Story<SegmentedControlArgs> = (props: SegmentedControlArgs) => {
-  const {
-    segmentOneIcon,
-    segmentOneTooltipText,
-    segmentTwoIcon,
-    segmentTwoTooltipText,
-    segmentThreeIcon,
-    segmentThreeTooltipText,
-    segmentFourIcon,
-    segmentFourTooltipText,
-    ...args
-  } = props;
-
-  const buttonDefinition = [
-    { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
-    { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
-    { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
-    { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
-  ];
-
-  return (
-    <SegmentedControl buttonDefinition={buttonDefinition}></SegmentedControl>
-  );
-};
+export const Default = Template.bind({});
 
 // Default
-export const Default = Template.bind({});
 Default.args = {
-  segmentOneIcon: "list",
-  segmentOneTooltipText: "List A",
-  segmentTwoIcon: "list",
-  segmentTwoTooltipText: "List B",
-  segmentThreeIcon: "list",
-  segmentThreeTooltipText: "List C",
-  segmentFourIcon: "list",
-  segmentFourTooltipText: "List D",
+  buttonDefinition: [
+    { iconName: "list", tooltipText: "List A" },
+    { iconName: "list", tooltipText: "List B" },
+    { iconName: "list", tooltipText: "List C" },
+    { iconName: "list", tooltipText: "List D" },
+  ],
 };
 
 // LivePreview
+
+const livePreviewStyles = {
+  columnGap: "24px",
+  display: "flex",
+};
+
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { buttonDefinition } = props;
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div>
+        <SegmentedControl
+          {...props}
+          buttonDefinition={[
+            { iconName: "list", tooltipText: "List A" },
+            { iconName: "list", tooltipText: "List B" },
+            { iconName: "list", tooltipText: "List C" },
+            { iconName: "list", tooltipText: "List D" },
+          ]}
+        />
+      </div>
+    </div>
+  );
+};
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
 export const LivePreview = Template.bind({});
 LivePreview.args = {
-  segmentOneIcon: "list",
-  segmentOneTooltipText: "List A",
-  segmentTwoIcon: "list",
-  segmentTwoTooltipText: "List B",
-  segmentThreeIcon: "list",
-  segmentThreeTooltipText: "List C",
-  segmentFourIcon: "list",
-  segmentFourTooltipText: "List D",
+  buttonDefinition: [
+    { iconName: "list", tooltipText: "List A" },
+    { iconName: "list", tooltipText: "List B" },
+    { iconName: "list", tooltipText: "List C" },
+    { iconName: "list", tooltipText: "List D" },
+  ],
 };
 
 LivePreview.parameters = {
@@ -127,30 +115,26 @@ LivePreview.parameters = {
 };
 
 // Test
-function TestDemo(props: Args): JSX.Element {
-  const finalProps = {
-    ...props,
-    "data-testid": "segmentedControl",
-  };
-
+const TestDemo = (props: Args): JSX.Element => {
+  const { buttonDefinition } = props;
   return (
-    <div>
-      <Template
-        segmentOneIcon="list"
-        segmentOneTooltipText="List A"
-        segmentTwoIcon="table"
-        segmentTwoTooltipText="Table A"
-        segmentThreeIcon="people"
-        segmentThreeTooltipText="Team"
-        segmentFourIcon="globe"
-        segmentFourTooltipText="More"
-        buttonDefinition={[]}
-        {...finalProps}
-      />
-    </div>
+    <SegmentedControl
+      buttonDefinition={buttonDefinition}
+      data-testid="segmentedControl"
+      {...props}
+    />
   );
-}
+};
 
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.args = {
+  buttonDefinition: [
+    { iconName: "list", tooltipText: "List A" },
+    { iconName: "list", tooltipText: "List B" },
+    { iconName: "list", tooltipText: "List C" },
+    { iconName: "list", tooltipText: "List D" },
+  ],
+};

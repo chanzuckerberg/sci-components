@@ -16,9 +16,7 @@ describe("<SegmentedControl />", () => {
 
   it("renders Segmented Control component", () => {
     render(<Test />);
-
     const elements = screen.getAllByTestId("segmentedControl");
-
     expect(elements.length).toBeTruthy();
   });
 });
