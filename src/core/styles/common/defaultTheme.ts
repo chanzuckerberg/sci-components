@@ -18,7 +18,7 @@ enum FontWeight {
   semibold = 600,
 }
 
-const defaultThemeColors = {
+export const defaultThemeColors = {
   beta: {
     "100": "#F4F0F9",
     "200": "#F0EBF6",
@@ -70,39 +70,7 @@ const defaultThemeColors = {
   },
 };
 
-const borders = {
-  error: {
-    "400": `1px solid ${defaultThemeColors.error["400"]}`,
-  },
-  gray: {
-    "100": `1px solid ${defaultThemeColors.gray["100"]}`,
-    "200": `1px solid ${defaultThemeColors.gray["200"]}`,
-    "300": `1px solid ${defaultThemeColors.gray["300"]}`,
-    "400": `1px solid ${defaultThemeColors.gray["400"]}`,
-    "500": `1px solid ${defaultThemeColors.gray["500"]}`,
-    dashed: `2px dashed ${defaultThemeColors.gray["400"]}`,
-  },
-  link: {
-    dashed: `1px dashed`,
-    solid: `1px solid`,
-  },
-  primary: {
-    "300": `1px solid ${defaultThemeColors.primary["300"]}`,
-    "400": `1px solid ${defaultThemeColors.primary["400"]}`,
-    "500": `1px solid ${defaultThemeColors.primary["500"]}`,
-    "600": `1px solid${defaultThemeColors.primary["600"]}`,
-    dashed: `2px dashed ${defaultThemeColors.primary["400"]}`,
-  },
-  success: {
-    "400": `1px solid ${defaultThemeColors.success["400"]}`,
-  },
-  warning: {
-    "400": `1px solid ${defaultThemeColors.warning["400"]}`,
-  },
-};
-
-export const defaultAppTheme: AppTheme = {
-  borders,
+const defaultAppTheme: AppTheme = {
   colors: defaultThemeColors,
   corners: {
     l: 20,
@@ -266,6 +234,43 @@ export const defaultAppTheme: AppTheme = {
   },
 };
 
+// (mlila) whenever our theme uses colors, we need to make sure we allow consuming
+// applications to override those colors using their own custom theme.
+// By defining borders using defaultAppTheme.colors instead of defaultThemeColors,
+// we allow other apps to specify their colors once, and have them apply
+// throughtout the application, such as in borders, etc without having to manually
+// override every theme property that makes use of colors.
+defaultAppTheme.borders = {
+  error: {
+    "400": `1px solid ${defaultAppTheme.colors.error[400]}`,
+  },
+  gray: {
+    "100": `1px solid ${defaultAppTheme.colors.gray[100]}`,
+    "200": `1px solid ${defaultAppTheme.colors.gray[200]}`,
+    "300": `1px solid ${defaultAppTheme.colors.gray[300]}`,
+    "400": `1px solid ${defaultAppTheme.colors.gray[400]}`,
+    "500": `1px solid ${defaultAppTheme.colors.gray[500]}`,
+    dashed: `2px dashed ${defaultAppTheme.colors.gray[400]}`,
+  },
+  link: {
+    dashed: `1px dashed`,
+    solid: `1px solid`,
+  },
+  primary: {
+    "300": `1px solid ${defaultAppTheme.colors.primary[300]}`,
+    "400": `1px solid ${defaultAppTheme.colors.primary[400]}`,
+    "500": `1px solid ${defaultAppTheme.colors.primary[500]}`,
+    "600": `1px solid${defaultAppTheme.colors.primary[600]}`,
+    dashed: `2px dashed ${defaultAppTheme.colors.primary[400]}`,
+  },
+  success: {
+    "400": `1px solid ${defaultAppTheme.colors.success[400]}`,
+  },
+  warning: {
+    "400": `1px solid ${defaultAppTheme.colors.warning[400]}`,
+  },
+};
+
 export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
   return {
     app: appTheme,
@@ -403,7 +408,7 @@ export interface AppThemeOptions extends ThemeOptions {
 }
 
 interface AppTheme {
-  borders: Borders;
+  borders?: Borders;
   colors: Colors;
   corners: Corners;
   fontWeights: FontWeights;
