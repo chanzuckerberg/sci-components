@@ -1,6 +1,6 @@
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
-import SegmentedControl from "./index";
+import SegmentedControl, { SegmentedControlProps } from "./index";
 
 const Demo = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
@@ -55,58 +55,89 @@ export default {
   title: "SegmentedControl",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
+interface SegmentedControlArgs extends SegmentedControlProps {
+  segmentOneIcon: string;
+  segmentOneTooltipText: string;
+  segmentTwoIcon: string;
+  segmentTwoTooltipText: string;
+  segmentThreeIcon: string;
+  segmentThreeTooltipText: string;
+  segmentFourIcon: string;
+  segmentFourTooltipText: string;
+}
 
-export const Default = Template.bind({});
+const Template: Story<SegmentedControlArgs> = (props: SegmentedControlArgs) => {
+  const {
+    segmentOneIcon,
+    segmentOneTooltipText,
+    segmentTwoIcon,
+    segmentTwoTooltipText,
+    segmentThreeIcon,
+    segmentThreeTooltipText,
+    segmentFourIcon,
+    segmentFourTooltipText,
+    ...args
+  } = props;
+
+  const buttonDefinition = [
+    { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
+    { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
+    { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
+    { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
+  ];
+
+  return (
+    <SegmentedControl buttonDefinition={buttonDefinition}></SegmentedControl>
+  );
+};
 
 // Default
+export const Default = Template.bind({});
 Default.args = {
-  buttonDefinition: [
-    { iconName: "list", tooltipText: "List A" },
-    { iconName: "list", tooltipText: "List B" },
-    { iconName: "list", tooltipText: "List C" },
-    { iconName: "list", tooltipText: "List D" },
-  ],
+  segmentOneIcon: "list",
+  segmentOneTooltipText: "List A",
+  segmentTwoIcon: "list",
+  segmentTwoTooltipText: "List B",
+  segmentThreeIcon: "list",
+  segmentThreeTooltipText: "List C",
+  segmentFourIcon: "list",
+  segmentFourTooltipText: "List D",
 };
 
 // LivePreview
-
 const livePreviewStyles = {
   columnGap: "24px",
   display: "flex",
 };
 
-const LivePreviewDemo = (props: Args): JSX.Element => {
-  const { buttonDefinition } = props;
+function LivePreviewDemo(props: Args): JSX.Element {
+  const finalProps = {
+    ...props,
+    style: { width: "250px" },
+  };
 
   return (
-    <div style={livePreviewStyles as React.CSSProperties}>
+    <div style={livePreviewStyles}>
       <div>
-        <SegmentedControl
-          {...props}
-          buttonDefinition={[
-            { iconName: "list", tooltipText: "List A" },
-            { iconName: "list", tooltipText: "List B" },
-            { iconName: "list", tooltipText: "List C" },
-            { iconName: "list", tooltipText: "List D" },
-          ]}
+        <Template
+          segmentOneIcon="list"
+          segmentOneTooltipText="List A"
+          segmentTwoIcon="list"
+          segmentTwoTooltipText="List B"
+          segmentThreeIcon="list"
+          segmentThreeTooltipText="List C"
+          segmentFourIcon="list"
+          segmentFourTooltipText="List D"
+          buttonDefinition={[]}
+          {...finalProps}
         />
       </div>
     </div>
   );
-};
-
+}
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-export const LivePreview = Template.bind({});
-LivePreview.args = {
-  buttonDefinition: [
-    { iconName: "list", tooltipText: "List A" },
-    { iconName: "list", tooltipText: "List B" },
-    { iconName: "list", tooltipText: "List C" },
-    { iconName: "list", tooltipText: "List D" },
-  ],
-};
+export const LivePreview = LivePreviewTemplate.bind({});
 
 LivePreview.parameters = {
   snapshot: {
@@ -134,7 +165,7 @@ Test.args = {
   buttonDefinition: [
     { iconName: "list", tooltipText: "List A" },
     { iconName: "list", tooltipText: "List B" },
-    { iconName: "list", tooltipText: "List C" },
-    { iconName: "list", tooltipText: "List D" },
+    { iconName: "table", tooltipText: "Table" },
+    { iconName: "people", tooltipText: "People" },
   ],
 };
