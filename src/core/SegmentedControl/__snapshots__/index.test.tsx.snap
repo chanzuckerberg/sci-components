@@ -175,7 +175,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-primary MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1dlyelz-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List C"
+    value="Table"
   >
     <span
       class=""
@@ -186,9 +186,9 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root css-1i7v7tv"
-          data-jest-file-name="IconListSmall.svg"
-          data-jest-svg-name="IconListSmall"
-          data-testid="IconListSmall"
+          data-jest-file-name="IconTableSmall.svg"
+          data-jest-svg-name="IconTableSmall"
+          data-testid="IconTableSmall"
           fillcontrast="white"
           focusable="false"
           viewBox="0 0 14 14"
@@ -201,7 +201,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-primary MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1dlyelz-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List D"
+    value="People"
   >
     <span
       class=""
@@ -212,9 +212,9 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root css-1i7v7tv"
-          data-jest-file-name="IconListSmall.svg"
-          data-jest-svg-name="IconListSmall"
-          data-testid="IconListSmall"
+          data-jest-file-name="IconPeopleSmall.svg"
+          data-jest-svg-name="IconPeopleSmall"
+          data-testid="IconPeopleSmall"
           fillcontrast="white"
           focusable="false"
           viewBox="0 0 14 14"
