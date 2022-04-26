@@ -170,18 +170,18 @@ RoundedSecondaryWithIcon.args = {
   sdsType: "secondary",
 };
 
-export const DoubleColorSecondaryWithoutIcon = Template.bind({});
+export const DoubleColorWithoutIcon = Template.bind({});
 
-DoubleColorSecondaryWithoutIcon.args = {
+DoubleColorWithoutIcon.args = {
   color: ["#ffcc23", "#121212"],
   label: "Label",
   sdsStyle: "rounded",
   sdsType: "secondary",
 };
 
-export const TripleColorSecondaryWithIcon = Template.bind({});
+export const TripleColorWithIcon = Template.bind({});
 
-TripleColorSecondaryWithIcon.args = {
+TripleColorWithIcon.args = {
   color: ["#fc3", "#121212", "#ffaa45"],
   icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
   label: "Label",
@@ -190,7 +190,7 @@ TripleColorSecondaryWithIcon.args = {
 };
 
 /*
- * Rounded Tag Live Preview
+ * Live Preview for Rounded Tag
  */
 
 const livePreviewStyles = {
@@ -239,46 +239,46 @@ const TagLivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const RoundedTagLivePreviewTemplate: Story = (args) => (
+const LivePreviewRoundedTemplate: Story = (args) => (
   <TagLivePreviewDemo {...args} />
 );
 
-export const RoundedTagLivePreview = RoundedTagLivePreviewTemplate.bind({});
+export const LivePreviewRounded = LivePreviewRoundedTemplate.bind({});
 
-RoundedTagLivePreview.parameters = {
+LivePreviewRounded.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-RoundedTagLivePreview.args = {
+LivePreviewRounded.args = {
   label: "Label",
   sdsStyle: "rounded",
 };
 
 /*
- * Square Tag Live Preview
+ * Live Preview for Square Tag
  */
 
-const SquareTagLivePreviewTemplate: Story = (args) => (
+const LivePreviewSquareTemplate: Story = (args) => (
   <TagLivePreviewDemo {...args} />
 );
 
-export const SquareTagLivePreview = SquareTagLivePreviewTemplate.bind({});
+export const LivePreviewSquare = LivePreviewSquareTemplate.bind({});
 
-SquareTagLivePreview.parameters = {
+LivePreviewSquare.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-SquareTagLivePreview.args = {
+LivePreviewSquare.args = {
   label: "Label",
   sdsStyle: "square",
 };
 
 /*
- * Test
+ * Test Story
  */
 
 const TestDemo = (props: Args): JSX.Element => {

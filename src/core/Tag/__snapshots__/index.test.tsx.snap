@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tag /> DoubleColorSecondaryWithoutIcon story renders snapshot 1`] = `
+exports[`<Tag /> DoubleColorWithoutIcon story renders snapshot 1`] = `
 <div
   class="MuiButtonBase-root MuiChip-root css-gx8qpa MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
@@ -227,7 +227,7 @@ exports[`<Tag /> Test story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<Tag /> TripleColorSecondaryWithIcon story renders snapshot 1`] = `
+exports[`<Tag /> TripleColorWithIcon story renders snapshot 1`] = `
 <div
   class="MuiButtonBase-root MuiChip-root css-1an067j MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
