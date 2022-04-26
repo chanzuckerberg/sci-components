@@ -40,6 +40,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
   return (
     <StyledSegmentedControl
+      {...props}
       size="small"
       value={active}
       exclusive

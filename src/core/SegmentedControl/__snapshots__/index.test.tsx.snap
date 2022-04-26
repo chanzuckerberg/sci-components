@@ -115,6 +115,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
 <div
   class="MuiToggleButtonGroup-root css-1f6outo-MuiToggleButtonGroup-root"
+  data-testid="segmentedControl"
   role="group"
 >
   <button
