@@ -2,27 +2,27 @@ import {
   ButtonGroupProps,
   IconButtonProps as RawIconButtonProps,
 } from "@material-ui/core";
-import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButton from "@material-ui/lab/ToggleButton";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
 import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
-interface singleButtonDefinition {
+interface SingleButtonDefinition {
   iconName: string;
   tooltipText: string;
 }
 
 interface ExtraProps {
-  buttonDefinition: singleButtonDefinition[];
+  buttonDefinition: SingleButtonDefinition[];
 }
 
 export type SegmentedControlProps = ExtraProps &
   ButtonGroupProps &
   RawIconButtonProps;
 
-//function(event: React.MouseEvent<HTMLElement>, value: any) => void
+// function(event: React.MouseEvent<HTMLElement>, value: any) => void
 
 const SegmentedControl = (props: SegmentedControlProps) => {
   const { buttonDefinition } = props;
@@ -47,7 +47,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       onChange={handleActive}
       color="primary"
     >
-      {(buttonDefinition as singleButtonDefinition[]).map((button) => {
+      {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
         const { iconName, tooltipText } = button;
         return (
           <ToggleButton disableRipple value={tooltipText} key={tooltipText}>

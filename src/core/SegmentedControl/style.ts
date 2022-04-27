@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ToggleButtonGroup } from "@mui/material";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import { CommonThemeProps, getColors, getCorners, getSpaces } from "../styles";
 
 const sdsPropNames = ["buttonDefinition"];
