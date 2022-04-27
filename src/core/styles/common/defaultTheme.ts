@@ -23,6 +23,7 @@ export const defaultThemeColors = {
     "100": "#F4F0F9",
     "200": "#F0EBF6",
     "400": "#7A41CE",
+    "500": "#703CBE",
     "600": "#693BAC",
   },
   error: {
@@ -44,6 +45,7 @@ export const defaultThemeColors = {
     "100": "#EFF2FC",
     "200": "#EBEFFC",
     "400": "#3867FA",
+    "500": "#2B52CD",
     "600": "#223F9C",
   },
   primary: {
@@ -61,12 +63,14 @@ export const defaultThemeColors = {
     "100": "#ECF5F0",
     "200": "#E6F7ED",
     "400": "#3CB371",
+    "500": "#349A61",
     "600": "#1C7F48",
   },
   warning: {
     "100": "#FCF6EC",
     "200": "#FFF3E1",
     "400": "#F5A623",
+    "500": "#D8921F",
     "600": "#946314",
   },
 };
