@@ -4,7 +4,7 @@ import { Chip } from "@material-ui/core";
 import {
   CommonThemeProps,
   fontBodyXs,
-  fontBodyXxs,
+  fontBodyXxxs,
   fontHeaderXs,
   getColors,
   getCorners,
@@ -34,9 +34,13 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
   return css`
     height: 20px;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     .MuiChip-label {
-      ${fontBodyXxs(props)}
-      padding: 0;
+      ${fontBodyXxxs(props)}
+      padding: ${spacings?.xxxs}px 0;
     }
 
     .MuiChip-deleteIcon {
@@ -60,8 +64,10 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
 
   return css`
     height: 30px;
-    padding: ${spacings?.xxs}px ${spacings?.xs}px ${spacings?.xxs}px
-      ${spacings?.s}px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -101,10 +107,20 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
-  return css`
-    border-radius: ${corners?.l}px;
-    padding: ${spacings?.xs}px ${spacings?.s}px;
-  `;
+  const { icon } = props;
+
+  if (icon) {
+    return css`
+      border-radius: ${corners?.l}px;
+      padding: ${spacings?.xs}px ${spacings?.s}px ${spacings?.xs}px
+        ${spacings?.xs}px;
+    `;
+  } else {
+    return css`
+      border-radius: ${corners?.l}px;
+      padding: ${spacings?.xs}px ${spacings?.s}px;
+    `;
+  }
 };
 
 const square = (props: ExtraProps): SerializedStyles => {
@@ -113,7 +129,7 @@ const square = (props: ExtraProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    padding: ${spacings?.xxs}px ${spacings?.xs}px;
+    padding: ${spacings?.xxs}px ${spacings?.s}px;
   `;
 };
 
