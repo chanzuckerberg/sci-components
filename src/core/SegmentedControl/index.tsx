@@ -17,8 +17,6 @@ interface ExtraProps {
 
 export type SegmentedControlProps = ExtraProps & ToggleButtonGroupProps;
 
-// function(event: React.MouseEvent<HTMLElement>, value: any) => void
-
 const SegmentedControl = (props: SegmentedControlProps) => {
   const { buttonDefinition } = props;
   const leftmost = buttonDefinition[0]?.tooltipText;
