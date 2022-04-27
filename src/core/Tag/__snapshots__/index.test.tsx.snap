@@ -2,7 +2,7 @@
 
 exports[`<Tag /> DoubleColorWithoutIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-gx8qpa MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-i86qva MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -19,7 +19,7 @@ exports[`<Tag /> DoubleColorWithoutIcon story renders snapshot 1`] = `
 
 exports[`<Tag /> Primary story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-w7x9kq MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-1f3a35n MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -36,7 +36,7 @@ exports[`<Tag /> Primary story renders snapshot 1`] = `
 
 exports[`<Tag /> PrimaryWithIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-lw5g2p MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-13nlwsz MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -67,7 +67,7 @@ exports[`<Tag /> PrimaryWithIcon story renders snapshot 1`] = `
 
 exports[`<Tag /> RoundedPrimary story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-w7x9kq MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-pmlld3 MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -84,7 +84,7 @@ exports[`<Tag /> RoundedPrimary story renders snapshot 1`] = `
 
 exports[`<Tag /> RoundedPrimaryWithIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-lw5g2p MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-1i243g5 MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -115,7 +115,7 @@ exports[`<Tag /> RoundedPrimaryWithIcon story renders snapshot 1`] = `
 
 exports[`<Tag /> RoundedSecondary story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-12xtgxb MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-u97u7r MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -132,7 +132,7 @@ exports[`<Tag /> RoundedSecondary story renders snapshot 1`] = `
 
 exports[`<Tag /> RoundedSecondaryWithIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-yrxanw MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-v7xsjr MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -163,7 +163,7 @@ exports[`<Tag /> RoundedSecondaryWithIcon story renders snapshot 1`] = `
 
 exports[`<Tag /> Secondary story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-12xtgxb MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-11c2o8r MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -180,7 +180,7 @@ exports[`<Tag /> Secondary story renders snapshot 1`] = `
 
 exports[`<Tag /> SecondaryWithIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-yrxanw MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-1fq0g95 MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
@@ -211,7 +211,7 @@ exports[`<Tag /> SecondaryWithIcon story renders snapshot 1`] = `
 
 exports[`<Tag /> Test story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-w7x9kq MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-1f3a35n MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   data-testid="tags"
   role="button"
   tabindex="0"
@@ -229,7 +229,7 @@ exports[`<Tag /> Test story renders snapshot 1`] = `
 
 exports[`<Tag /> TripleColorWithIcon story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root css-1an067j MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  class="MuiButtonBase-root MuiChip-root css-ildeve MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
   role="button"
   tabindex="0"
 >
