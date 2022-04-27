@@ -1,8 +1,5 @@
-import {
-  ButtonGroupProps,
-  IconButtonProps as RawIconButtonProps,
-} from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
+import { ToggleButtonGroupProps } from "@material-ui/lab/ToggleButtonGroup";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
@@ -18,9 +15,7 @@ interface ExtraProps {
   buttonDefinition: SingleButtonDefinition[];
 }
 
-export type SegmentedControlProps = ExtraProps &
-  ButtonGroupProps &
-  RawIconButtonProps;
+export type SegmentedControlProps = ExtraProps & ToggleButtonGroupProps;
 
 // function(event: React.MouseEvent<HTMLElement>, value: any) => void
 
@@ -40,12 +35,12 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
   return (
     <StyledSegmentedControl
-      {...props}
       size="small"
       value={active}
       exclusive
       onChange={handleActive}
       color="primary"
+      {...props}
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
         const { iconName, tooltipText } = button;
