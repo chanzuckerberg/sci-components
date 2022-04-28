@@ -158,17 +158,17 @@ function createTypeCss(
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
   let cssFilters: {
-    hoverFilter?: string;
     activeFilter?: string;
+    hoverFilter?: string;
   } = {
-    hoverFilter: "brightness(1) saturate(1)",
     activeFilter: "brightness(1) saturate(1)",
+    hoverFilter: "brightness(1) saturate(1)",
   };
 
   if (colors.length >= 2) {
     cssFilters = {
-      hoverFilter: "brightness(0.85) saturate(1.15)",
       activeFilter: "brightness(0.7) saturate(1.3)",
+      hoverFilter: "brightness(0.85) saturate(1.15)",
     };
   }
 
