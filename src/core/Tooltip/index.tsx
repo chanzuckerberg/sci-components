@@ -32,6 +32,8 @@ const Tooltip = forwardRef(function Tooltip(
     ...rest
   } = props;
 
+  const { children } = rest;
+
   if (inverted) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -72,8 +74,8 @@ const Tooltip = forwardRef(function Tooltip(
   });
 
   // (mlila) if no content is passed into the tooltip, don't render
-  // anything. this matches with the native MUI behavior.
-  if (!title && !subtitle) return null;
+  // a tooltip. this matches with the native MUI behavior.
+  if (!title && !subtitle) return <>{children}</>;
 
   const content = (
     <>
