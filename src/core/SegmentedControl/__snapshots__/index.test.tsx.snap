@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
+<div
+  class="MuiToggleButtonGroup-root css-686uuq"
+  color="primary"
+  role="group"
+>
+  <button
+    aria-pressed="true"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal Mui-selected MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List A"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List B"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List C"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List D"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
+<div
+  class="MuiToggleButtonGroup-root css-686uuq"
+  color="primary"
+  data-testid="segmentedControl"
+  role="group"
+>
+  <button
+    aria-pressed="true"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal Mui-selected MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List A"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="List B"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconListSmall.svg"
+            data-jest-svg-name="IconListSmall"
+            data-testid="IconListSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="Table"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconTableSmall.svg"
+            data-jest-svg-name="IconTableSmall"
+            data-testid="IconTableSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+  <button
+    aria-pressed="false"
+    class="MuiButtonBase-root MuiToggleButton-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-sizeSmall"
+    tabindex="0"
+    type="button"
+    value="People"
+  >
+    <span
+      class="MuiToggleButton-label"
+    >
+      <span
+        class=""
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-1i7v7tv"
+            data-jest-file-name="IconPeopleSmall.svg"
+            data-jest-svg-name="IconPeopleSmall"
+            data-testid="IconPeopleSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+    </span>
+  </button>
+</div>
+`;
