@@ -20,8 +20,8 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 const customColorTuples = {
-  labelAndBack: ["#ffcc32", "#121212"],
-  labelAndBackAndIcon: ["#ffcc32", "#121212", "#ffaa45"],
+  labelAndBack: ["brown", "lightsalmon"],
+  labelAndBackAndIcon: ["brown", "lightsalmon", "crimson"],
 };
 
 const availableColorOptions = [
@@ -173,7 +173,7 @@ RoundedSecondaryWithIcon.args = {
 export const DoubleColorWithoutIcon = Template.bind({});
 
 DoubleColorWithoutIcon.args = {
-  color: ["#ffcc23", "#121212"],
+  color: ["brown", "lightsalmon"],
   label: "Label",
   sdsStyle: "rounded",
   sdsType: "secondary",
@@ -182,7 +182,7 @@ DoubleColorWithoutIcon.args = {
 export const TripleColorWithIcon = Template.bind({});
 
 TripleColorWithIcon.args = {
-  color: ["#fc3", "#121212", "#ffaa45"],
+  color: ["brown", "lightsalmon", "crimson"],
   icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
   label: "Label",
   sdsStyle: "rounded",

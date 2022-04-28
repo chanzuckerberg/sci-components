@@ -114,11 +114,18 @@ const rounded = (props: ExtraProps): SerializedStyles => {
       border-radius: ${corners?.l}px;
       padding: ${spacings?.xs}px ${spacings?.s}px ${spacings?.xs}px
         ${spacings?.xs}px;
+
+      &:after {
+        border-radius: ${corners?.l}px;
+      }
     `;
   } else {
     return css`
       border-radius: ${corners?.l}px;
       padding: ${spacings?.xs}px ${spacings?.s}px;
+      &:after {
+        border-radius: ${corners?.l}px;
+      }
     `;
   }
 };
@@ -150,6 +157,21 @@ function createTypeCss(
     typeof props.tagColor === "string" ? props.tagColor : "primary";
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
+  let cssFilters: {
+    hoverFilter?: string;
+    activeFilter?: string;
+  } = {
+    hoverFilter: "brightness(1) saturate(1)",
+    activeFilter: "brightness(1) saturate(1)",
+  };
+
+  if (colors.length >= 2) {
+    cssFilters = {
+      hoverFilter: "brightness(0.85) saturate(1.15)",
+      activeFilter: "brightness(0.7) saturate(1.3)",
+    };
+  }
+
   const typeToColors = {
     primary: {
       background: colors.length >= 2 ? colors[1] : themeColors?.[intent][400],
@@ -175,6 +197,7 @@ function createTypeCss(
 
   return css`
     background-color: ${typeColors.background};
+    position: relative;
 
     .MuiChip-label {
       color: ${typeColors.label};
@@ -186,10 +209,16 @@ function createTypeCss(
 
     &:hover {
       background-color: ${typeColors.backgroundHover};
+      &:after {
+        backdrop-filter: ${cssFilters.hoverFilter};
+      }
     }
 
     &:active {
       background-color: ${typeColors.backgroundClicked};
+      &:after {
+        backdrop-filter: ${cssFilters.activeFilter};
+      }
     }
 
     &:hover,
@@ -216,6 +245,22 @@ export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   border: none;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+  }
+
+  .MuiChip-label,
+  svg {
+    z-index: 2;
+  }
 
   ${(props: ExtraProps) => {
     const { sdsType, sdsStyle, icon } = props;
