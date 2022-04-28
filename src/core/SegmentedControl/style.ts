@@ -28,9 +28,14 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
     }
 
     .MuiToggleButton-root {
+      border-color: ${colors?.gray[300]};
       line-height: 0px;
       color: #000;
       padding: 0;
+
+      &:hover {
+        background-color: ${colors?.gray[100]};
+      }
     }
 
     .MuiSvgIcon-root {
