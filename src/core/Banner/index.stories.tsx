@@ -3,7 +3,10 @@ import React from "react";
 import Banner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
-const Demo = (props: Args): JSX.Element => <Banner {...props} />;
+const Demo = (props: Args): JSX.Element => {
+  const { sdsType, text } = props;
+  return <Banner sdsType={sdsType} text={text} {...props} />;
+};
 
 export default {
   argTypes: {
@@ -54,11 +57,6 @@ const LivePreviewDemo = (): JSX.Element => {
 };
 
 export const LivePreview = LivePreviewDemo.bind({});
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
 
 const TestTemplate: Story = (args) => <Demo {...args} />;
 export const Test = TestTemplate.bind({});

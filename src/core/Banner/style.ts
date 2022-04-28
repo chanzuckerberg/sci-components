@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import IconButton from "../IconButton";
+import { ExtraProps as IconButtonProps } from "../IconButton/style";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -31,13 +32,14 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
+type IconButtonType = IconButtonProps & { bannerType: string };
 const doNotForwardPropsIconButton = ["bannerType"];
 
 export const StyledIconButton = styled(IconButton, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsIconButton.includes(prop),
 })`
-  ${(props) => {
+  ${(props: IconButtonType) => {
     const spaces = getSpaces(props);
 
     return `
@@ -46,7 +48,7 @@ export const StyledIconButton = styled(IconButton, {
     `;
   }}
 
-  ${(props) => {
+  ${(props: IconButtonType) => {
     const { bannerType } = props;
     const colors = getColors(props);
 
