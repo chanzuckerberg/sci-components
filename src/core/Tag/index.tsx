@@ -44,15 +44,16 @@ const Tag = (props: SdsTagProps): JSX.Element => {
           <StyledTag
             {...props}
             deleteIcon={<ClearIcon fontSize="small" />}
-            color="primary"
             tagColor={color}
             onDelete={handleDelete}
+            {...props}
+            color="primary"
           />
         )}
       </>
     );
   }
-  return <StyledTag {...props} color="primary" tagColor={color} />;
+  return <StyledTag tagColor={color} {...props} color="primary" />;
 };
 
 export default Tag;
