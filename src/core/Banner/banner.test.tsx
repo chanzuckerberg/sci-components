@@ -24,7 +24,7 @@ describe("<Banner />", () => {
     expect(bannerText).not.toBeNull();
   });
 
-  it("can be dismissed automatically", async () => {
+  it("can be dismissed", async () => {
     render(<Test {...Test.args} />);
     const banner = screen.getByRole("banner");
     expect(banner).not.toBeNull();

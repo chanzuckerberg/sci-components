@@ -18,6 +18,7 @@ export const Centered = styled("div")`
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 export const IconWrapper = styled("div")`
@@ -26,7 +27,7 @@ export const IconWrapper = styled("div")`
     const spaces = getSpaces(props);
 
     return `
-      height: ${iconSizes?.s.height}px;
+      height: ${iconSizes?.l.height}px;
       margin-right: ${spaces?.m}px;
     `;
   }}

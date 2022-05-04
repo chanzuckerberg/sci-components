@@ -72,3 +72,8 @@ export const LivePreview = LivePreviewDemo.bind({});
 const TestTemplate: Story = (args) => <Demo {...args} />;
 
 export const Test = TestTemplate.bind({});
+Test.args = {
+  dismissible: true,
+  sdsType: "primary",
+  text: "test text",
+};

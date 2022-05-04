@@ -9,7 +9,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     role="banner"
   >
     <div
-      class="css-1x1t9d9"
+      class="css-1879pua"
     >
       <div
         class="css-1f3aume"
@@ -71,7 +71,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     role="banner"
   >
     <div
-      class="css-1x1t9d9"
+      class="css-1879pua"
     >
       <div
         class="css-1f3aume"
@@ -133,7 +133,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     role="banner"
   >
     <div
-      class="css-1x1t9d9"
+      class="css-1879pua"
     >
       <div
         class="css-1f3aume"
@@ -192,11 +192,11 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
 
 exports[`<Banner /> Test story renders snapshot 1`] = `
 <div
-  class="css-8cu6xh"
+  class="css-9mzx1i"
   role="banner"
 >
   <div
-    class="css-1x1t9d9"
+    class="css-1879pua"
   >
     <div
       class="css-1f3aume"
@@ -218,10 +218,12 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
     </div>
     <div
       class="css-1xpysbw"
-    />
+    >
+      test text
+    </div>
   </div>
   <button
-    class="MuiButtonBase-root MuiIconButton-root css-1v2l5li"
+    class="MuiButtonBase-root MuiIconButton-root css-1nnw59r"
     tabindex="0"
     type="button"
   >
