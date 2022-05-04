@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import Icon from "../Icon";
 import {
   Centered,
@@ -11,13 +11,23 @@ import {
 
 interface Props extends ExtraProps {
   dismissed?: boolean;
-  dismissable?: boolean;
+  dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
   text: string;
 }
 
-const Banner = (props: Props): JSX.Element | null => {
-  const { dismissed, dismissable = true, onClose, sdsType, text } = props;
+const Banner = forwardRef<HTMLDivElement, Props>(function Banner(
+  props,
+  ref
+): JSX.Element | null {
+  const {
+    dismissed,
+    dismissible = true,
+    onClose,
+    sdsType,
+    text,
+    ...rest
+  } = props;
 
   const [wasDismissed, setWasDismissed] = useState<boolean>(false);
 
@@ -32,14 +42,14 @@ const Banner = (props: Props): JSX.Element | null => {
   };
 
   return (
-    <StyledBanner role="banner" sdsType={sdsType}>
+    <StyledBanner role="banner" sdsType={sdsType} ref={ref} {...rest}>
       <Centered>
         <IconWrapper>
           <Icon sdsIcon="infoCircle" sdsSize="l" sdsType="static" />
         </IconWrapper>
         <Text>{text}</Text>
       </Centered>
-      {dismissable && (
+      {dismissible && (
         <StyledIconButton
           bannerType={sdsType}
           sdsType="tertiary"
@@ -51,6 +61,6 @@ const Banner = (props: Props): JSX.Element | null => {
       )}
     </StyledBanner>
   );
-};
+});
 
 export default Banner;
