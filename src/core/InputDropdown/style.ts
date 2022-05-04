@@ -38,14 +38,17 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
-    margin: ${spacings?.xxs}px 0;
+    margin-top: ${spacings?.xxs}px;
+    margin-bottom: ${spacings?.xxs}px;
 
-    .MuiButton-label {
+    &.MuiButton-text {
       justify-content: flex-start;
-      margin: 0 ${spacings?.xs}px;
+      margin-top: ${spacings?.xxs}px;
+      margin-bottom: ${spacings?.xxs}px;
 
       > span {
         margin-right: ${spacings?.xs}px;
+        margin-left: ${spacings?.xs}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -53,6 +56,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       svg {
         margin-left: auto;
+        margin-right: ${spacings?.xs}px;
       }
     }
 

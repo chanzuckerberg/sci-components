@@ -22,7 +22,7 @@ export const StyledPopper = styled(Popper)`
     .${autocompleteClasses.popperDisablePortal} {
       /* (thuang): !important is needed to fight inline style */
       position: relative !important;
-      transform: none !important;
+      transform: translate3d(5px ,0px ,0px ) !important;
 
     ${(props) => {
       const colors = getColors(props);
@@ -31,7 +31,7 @@ export const StyledPopper = styled(Popper)`
       const spacings = getSpaces(props);
 
       return `
-        background-color: white;
+        background-color: cyan;
         border: 1px solid ${colors?.gray[100]};
         border-radius: ${corners?.m}px;
         box-shadow: ${shadows?.m};
@@ -48,19 +48,23 @@ export const StyledPaper = styled(Paper)`
   & {
     box-shadow: none;
     margin: 0;
-
+    
     .${autocompleteClasses.listbox} {
-    padding: 0;
-  }
+      padding: 0;
+      min-height: 200px;
+
+    }
 
     ${(props) => {
       const colors = getColors(props);
       const spacings = getSpaces(props);
 
-      return `
+      return ` 
         .${autocompleteClasses.option} {
           margin: 0 ${spacings?.s}px;
           padding: 0;
+          min-height: 48px !important;
+      
 
           &[aria-selected="true"] {
             background-color: initial;
