@@ -16,31 +16,33 @@ export const Wrapper = styled("div")`
 `;
 
 export const StyledPopper = styled(Popper)`
-& {
+  & {
     ${fontHeaderXs}
 
     .${autocompleteClasses.popperDisablePortal} {
       /* (thuang): !important is needed to fight inline style */
       position: relative !important;
-      transform: translate3d(5px ,0px ,0px ) !important;
+      transform: translate3d(5px, 0px, 0px) !important;
 
-    ${(props) => {
-      const colors = getColors(props);
-      const corners = getCorners(props);
-      const shadows = getShadows(props);
-      const spacings = getSpaces(props);
+      ${(props) => {
+        const colors = getColors(props);
+        const corners = getCorners(props);
+        const shadows = getShadows(props);
+        const spacings = getSpaces(props);
 
-      return `
-        background-color: cyan;
+        return `
         border: 1px solid ${colors?.gray[100]};
         border-radius: ${corners?.m}px;
         box-shadow: ${shadows?.m};
         color: ${colors?.gray[500]};
         padding: ${spacings?.xs}px;
-        min-width: 244px;
+        min-width: 244px !important;
         z-index: 1400; // allows the dropdown to be used in modals
+        margin-right: ${spacings?.s}px !important;
+        margin-left: ${spacings?.s}px ;
       `;
-    }}
+      }}
+    }
   }
 `;
 
@@ -61,10 +63,8 @@ export const StyledPaper = styled(Paper)`
 
       return ` 
         .${autocompleteClasses.option} {
-          margin: 0 ${spacings?.s}px;
-          padding: 0;
+          margin: 0;
           min-height: 48px !important;
-      
 
           &[aria-selected="true"] {
             background-color: initial;
@@ -73,6 +73,7 @@ export const StyledPaper = styled(Paper)`
           &:hover {
             background-color: ${colors?.gray[100]};
           }
+        
         `;
     }}
     }
