@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Banner /> LivePreview story renders snapshot 1`] = `
+<div
+  style="padding: 24px; width: 600px;"
+>
+  <div
+    class="css-9mzx1i"
+    role="banner"
+  >
+    <div
+      class="css-1x1t9d9"
+    >
+      <div
+        class="css-1f3aume"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-henzh4"
+            data-jest-file-name="IconInfoCircleLarge.svg"
+            data-jest-svg-name="IconInfoCircleLarge"
+            data-testid="IconInfoCircleLarge"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 32 32"
+          />
+        </div>
+      </div>
+      <div
+        class="css-1xpysbw"
+      >
+        Banner text lorem ipsum dolor mit
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root css-1nnw59r"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-10tbi0i"
+            data-jest-file-name="IconXMarkSmall.svg"
+            data-jest-svg-name="IconXMarkSmall"
+            data-testid="IconXMarkSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+  <div
+    style="height: 24px;"
+  />
+  <div
+    class="css-1x062lx"
+    role="banner"
+  >
+    <div
+      class="css-1x1t9d9"
+    >
+      <div
+        class="css-1f3aume"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-henzh4"
+            data-jest-file-name="IconInfoCircleLarge.svg"
+            data-jest-svg-name="IconInfoCircleLarge"
+            data-testid="IconInfoCircleLarge"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 32 32"
+          />
+        </div>
+      </div>
+      <div
+        class="css-1xpysbw"
+      >
+        Banner text lorem ipsum dolor mit
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root css-1v2l5li"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-10tbi0i"
+            data-jest-file-name="IconXMarkSmall.svg"
+            data-jest-svg-name="IconXMarkSmall"
+            data-testid="IconXMarkSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<Banner /> Test story renders snapshot 1`] = `
+<div
+  class="css-8cu6xh"
+  role="banner"
+>
+  <div
+    class="css-1x1t9d9"
+  >
+    <div
+      class="css-1f3aume"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root css-henzh4"
+          data-jest-file-name="IconInfoCircleLarge.svg"
+          data-jest-svg-name="IconInfoCircleLarge"
+          data-testid="IconInfoCircleLarge"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 32 32"
+        />
+      </div>
+    </div>
+    <div
+      class="css-1xpysbw"
+    />
+  </div>
+  <button
+    class="MuiButtonBase-root MuiIconButton-root css-1v2l5li"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiIconButton-label"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root css-10tbi0i"
+          data-jest-file-name="IconXMarkSmall.svg"
+          data-jest-svg-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
