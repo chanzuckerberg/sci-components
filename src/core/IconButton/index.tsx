@@ -1,8 +1,8 @@
 import { IconButtonProps as RawIconButtonProps } from "@material-ui/core";
 import React, { forwardRef } from "react";
-import { ExtraProps, StyledIconButton } from "./style";
+import { IconButtonExtraProps, StyledIconButton } from "./style";
 
-type IconButtonProps = ExtraProps & RawIconButtonProps;
+type IconButtonProps = IconButtonExtraProps & RawIconButtonProps;
 
 export type { IconButtonProps };
 

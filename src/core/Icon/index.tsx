@@ -1,11 +1,11 @@
 import React, { ForwardedRef, forwardRef } from "react";
 import { iconMap, IconNameToSizes } from "./map";
-import { ExtraProps, StyledIcon, StyledSvgIcon } from "./style";
+import { IconExtraProps, StyledIcon, StyledSvgIcon } from "./style";
 
 export type { IconNameToSizes };
 
 export type IconProps<IconName extends keyof IconNameToSizes> =
-  ExtraProps<IconName>;
+  IconExtraProps<IconName>;
 
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   { sdsIcon, sdsSize, sdsType }: IconProps<IconName>,

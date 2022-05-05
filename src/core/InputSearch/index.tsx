@@ -5,7 +5,7 @@ import {
 import React, { forwardRef, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
-import { ExtraProps, StyledLabel, StyledSearchBase } from "./style";
+import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -16,7 +16,7 @@ export interface AccessibleInputSearchProps {
 
 export type InputSearchProps = RawTextFieldSearchProps &
   AccessibleInputSearchProps &
-  ExtraProps;
+  InputSearchExtraProps;
 
 const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
   function InputSearch(props, ref): JSX.Element {

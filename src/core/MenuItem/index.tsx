@@ -8,12 +8,12 @@ import {
   TextWrapper,
 } from "./style";
 
-export interface ExtraProps {
+export interface MenuItemExtraProps {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
 }
 
-export type MenuItemProps = ExtraProps & RawMenuItemProps;
+export type MenuItemProps = MenuItemExtraProps & RawMenuItemProps;
 
 const MenuItem = forwardRef((props: MenuItemProps, _) => {
   const {

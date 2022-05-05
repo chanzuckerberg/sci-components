@@ -8,13 +8,13 @@ import { DialogContext } from "./components/common";
 
 export { DialogContext };
 
-interface ExtraProps {
+interface DialogExtraProps {
   sdsSize?: "xs" | "s" | "m" | "l";
   PaperComponent?: ComponentType<DialogPaperProps>;
   DialogComponent?: ComponentType<RawDialogProps>;
 }
 
-export type DialogProps = RawDialogProps & ExtraProps;
+export type DialogProps = RawDialogProps & DialogExtraProps;
 
 const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   props,

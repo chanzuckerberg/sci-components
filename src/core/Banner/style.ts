@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import IconButton from "../IconButton";
-import { ExtraProps as IconButtonProps } from "../IconButton/style";
+import { IconButtonExtraProps } from "../IconButton/style";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -10,7 +10,7 @@ import {
   getTypography,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface BannerExtraProps extends CommonThemeProps {
   sdsType: "primary" | "secondary";
 }
 
@@ -33,7 +33,7 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
-type IconButtonType = IconButtonProps & { bannerType: string };
+type IconButtonType = IconButtonExtraProps & { bannerType: string };
 const doNotForwardPropsIconButton = ["bannerType"];
 
 export const StyledIconButton = styled(IconButton, {
@@ -74,7 +74,7 @@ export const Text = styled("div")`
   }}
 `;
 
-const primary = (props: ExtraProps) => {
+const primary = (props: BannerExtraProps) => {
   const colors = getColors(props);
 
   return `
@@ -86,7 +86,7 @@ const primary = (props: ExtraProps) => {
   `;
 };
 
-const secondary = (props: ExtraProps) => {
+const secondary = (props: BannerExtraProps) => {
   const colors = getColors(props);
 
   return `
@@ -105,7 +105,7 @@ export const StyledBanner = styled("div", {
   height: 40px;
   width: 100%;
 
-  ${(props: ExtraProps) => {
+  ${(props: BannerExtraProps) => {
     const { sdsType } = props;
 
     return `

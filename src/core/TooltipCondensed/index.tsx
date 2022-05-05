@@ -2,12 +2,12 @@ import { useTheme } from "@emotion/react";
 import { TooltipClassKey } from "@material-ui/core";
 import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
-import { condensedCSS, ExtraProps } from "./style";
+import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 
-export type TooltipCondesnedProps = TooltipProps & ExtraProps;
+export type TooltipCondensedProps = TooltipProps & TooltipCondensedExtraProps;
 
 const TooltipCondensed = forwardRef(function TooltipCondensed(
-  props: TooltipCondesnedProps,
+  props: TooltipCondensedProps,
   ref
 ): JSX.Element {
   const { children, title, indicator, indicatorColor } = props;

@@ -1,11 +1,18 @@
 import { DialogTitleProps as RawDialogTitleProps } from "@material-ui/core";
 import React, { forwardRef } from "react";
 import CloseButton from "./components/CloseButton";
-import { ExtraProps, StyledDialogTitle, Subtitle, Title } from "./style";
+import {
+  DialogTitleExtraProps,
+  StyledDialogTitle,
+  Subtitle,
+  Title,
+} from "./style";
 
 export { Subtitle as DialogTitleSubtitle, Title as DialogTitleTitle };
 
-export interface DialogTitleProps extends ExtraProps, RawDialogTitleProps {
+export interface DialogTitleProps
+  extends DialogTitleExtraProps,
+    RawDialogTitleProps {
   title?: string;
   subtitle?: string;
   onClose?: () => void;

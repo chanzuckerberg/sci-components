@@ -11,11 +11,12 @@ interface SingleButtonDefinition {
   tooltipText: string;
 }
 
-interface ExtraProps {
+interface SegmentedControlExtraProps {
   buttonDefinition: SingleButtonDefinition[];
 }
 
-export type SegmentedControlProps = ExtraProps & ToggleButtonGroupProps;
+export type SegmentedControlProps = SegmentedControlExtraProps &
+  ToggleButtonGroupProps;
 
 const SegmentedControl = (props: SegmentedControlProps) => {
   const { buttonDefinition } = props;

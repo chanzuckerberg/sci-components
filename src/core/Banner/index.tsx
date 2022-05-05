@@ -1,22 +1,22 @@
 import React, { forwardRef, useState } from "react";
 import Icon from "../Icon";
 import {
+  BannerExtraProps,
   Centered,
-  ExtraProps,
   IconWrapper,
   StyledBanner,
   StyledIconButton,
   Text,
 } from "./style";
 
-interface Props extends ExtraProps {
+export interface BannerProps extends BannerExtraProps {
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
   text: string;
 }
 
-const Banner = forwardRef<HTMLDivElement, Props>(function Banner(
+const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   props,
   ref
 ): JSX.Element | null {

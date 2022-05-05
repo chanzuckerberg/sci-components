@@ -1,8 +1,8 @@
 import { AccordionProps as RawAccordionProps } from "@material-ui/core";
 import React from "react";
-import { ExtraProps, StyledAccordion } from "./style";
+import { AccordionExtraProps, StyledAccordion } from "./style";
 
-export type AccordionProps = RawAccordionProps & ExtraProps;
+export type AccordionProps = RawAccordionProps & AccordionExtraProps;
 
 const Accordion = (props: AccordionProps) => {
   const { children, useDivider, togglePosition = "right", id } = props;
