@@ -120,8 +120,8 @@ export interface IconNameToSizes {
   minus: "xs" | "s";
   open: "xs" | "s";
   people: "xs" | "s" | "l" | "xl";
-  person: "xs" | "s" | "l" | "xl";
   percentage: "xs" | "s";
+  person: "xs" | "s" | "l" | "xl";
   pin: "xs" | "s";
   pinLocation: "xs" | "s";
   plus: "xs" | "s";
@@ -309,13 +309,13 @@ export const iconMap: Props = {
     largeIcon: IconPeopleLarge,
     smallIcon: IconPeopleSmall,
   },
-  person: {
-    largeIcon: IconPersonLarge,
-    smallIcon: IconPersonSmall,
-  },
   percentage: {
     largeIcon: null,
     smallIcon: IconPercentageSmall,
+  },
+  person: {
+    largeIcon: IconPersonLarge,
+    smallIcon: IconPersonSmall,
   },
   pin: {
     largeIcon: null,
