@@ -67,6 +67,8 @@ export { default as SegmentedControl } from "./core/SegmentedControl";
 export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
+export * from "./core/Tag";
+export { default as Tag } from "./core/Tag";
 export * from "./core/Tooltip";
 export { default as Tooltip } from "./core/Tooltip";
 export * from "./core/TooltipCondensed";
