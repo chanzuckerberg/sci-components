@@ -5,9 +5,9 @@ import {
   TooltipProps as RawTooltipProps,
 } from "@material-ui/core";
 import React, { forwardRef } from "react";
-import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
+import { arrowCss, Subtitle, tooltipCss, TooltipExtraProps } from "./style";
 
-type TooltipProps = ExtraProps & RawTooltipProps;
+type TooltipProps = TooltipExtraProps & RawTooltipProps;
 
 export type { TooltipProps };
 

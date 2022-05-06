@@ -9,7 +9,7 @@ import {
   getTypography,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
   togglePosition?: "right" | "left";
   id: string;
@@ -22,7 +22,7 @@ export const StyledAccordion = styled(Accordion, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${(props: ExtraProps) => {
+  ${(props: AccordionExtraProps) => {
     const { useDivider, togglePosition } = props;
 
     const shadows = getShadows(props);
@@ -47,7 +47,7 @@ export const StyledAccordion = styled(Accordion, {
   }};
 `;
 
-const leftPosition = (props: ExtraProps): SerializedStyles => {
+const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`

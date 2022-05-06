@@ -8,14 +8,14 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface IconButtonExtraProps extends CommonThemeProps {
   active?: boolean;
   disabled?: boolean;
   sdsSize?: "small" | "medium" | "large";
   sdsType?: "primary" | "secondary" | "tertiary";
 }
 
-const isActive = (props: ExtraProps): SerializedStyles => {
+const isActive = (props: IconButtonExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
 
@@ -33,7 +33,7 @@ const isActive = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const isDisabled = (props: ExtraProps): SerializedStyles => {
+const isDisabled = (props: IconButtonExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -41,7 +41,7 @@ const isDisabled = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const primary = (props: ExtraProps): SerializedStyles => {
+const primary = (props: IconButtonExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -57,7 +57,7 @@ const primary = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const secondary = (props: ExtraProps): SerializedStyles => {
+const secondary = (props: IconButtonExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -70,7 +70,7 @@ const secondary = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const tertiary = (props: ExtraProps): SerializedStyles => {
+const tertiary = (props: IconButtonExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -87,7 +87,7 @@ const tertiary = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const small = (props: ExtraProps): SerializedStyles => {
+const small = (props: IconButtonExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
@@ -102,7 +102,7 @@ const small = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const medium = (props: ExtraProps): SerializedStyles => {
+const medium = (props: IconButtonExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
@@ -113,7 +113,7 @@ const medium = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const large = (props: ExtraProps): SerializedStyles => {
+const large = (props: IconButtonExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
@@ -135,7 +135,7 @@ export const StyledIconButton = styled(IconButton, {
 })`
   padding: 0;
 
-  ${(props: ExtraProps) => {
+  ${(props: IconButtonExtraProps) => {
     const { active, disabled, sdsSize, sdsType } = props;
 
     return css`

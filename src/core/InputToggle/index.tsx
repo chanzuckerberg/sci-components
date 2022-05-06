@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ExtraProps, Toggle } from "./style";
+import { InputToggleExtraProps, Toggle } from "./style";
 
-const InputToggle = (props: ExtraProps) => {
+const InputToggle = (props: InputToggleExtraProps) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const { offLabel = "Off", onChange, onLabel = "On", ...rest } = props;

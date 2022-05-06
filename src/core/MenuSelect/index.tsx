@@ -21,7 +21,7 @@ export interface DefaultMenuSelectOption {
   name: string;
 }
 
-interface ExtraProps extends StyleProps {
+interface MenuSelectExtraProps extends StyleProps {
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   InputBaseProps?: Partial<InputSearchProps>;
 }
@@ -42,7 +42,7 @@ export type MenuSelectProps<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
-  ExtraProps;
+  MenuSelectExtraProps;
 
 export default function MenuSelect<
   T extends DefaultMenuSelectOption,

@@ -1,12 +1,12 @@
 import { css } from "@emotion/css";
 import { CommonThemeProps, getCorners, getSpaces } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface TooltipCondensedExtraProps extends CommonThemeProps {
   indicator?: boolean;
   indicatorColor?: string;
 }
 
-const indicatorCSS = (props: ExtraProps): string => {
+const indicatorCSS = (props: TooltipCondensedExtraProps): string => {
   const { indicatorColor } = props;
   const spaces = getSpaces(props);
   const corners = getCorners(props);
@@ -23,7 +23,7 @@ const indicatorCSS = (props: ExtraProps): string => {
   `;
 };
 
-export const condensedCSS = (props: ExtraProps): string => {
+export const condensedCSS = (props: TooltipCondensedExtraProps): string => {
   const { indicator } = props;
   const spaces = getSpaces(props);
 

@@ -1,6 +1,6 @@
 import { TextFieldProps as RawTextFieldProps } from "@material-ui/core";
 import React, { forwardRef, useState } from "react";
-import { ExtraProps, StyledInputBase, StyledLabel } from "./style";
+import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 
 interface AccessibleInputTextProps {
   label: string;
@@ -9,7 +9,7 @@ interface AccessibleInputTextProps {
 }
 
 export type InputTextProps = RawTextFieldProps &
-  ExtraProps &
+  InputTextExtraProps &
   AccessibleInputTextProps;
 
 const InputText = forwardRef<HTMLInputElement, InputTextProps>(
