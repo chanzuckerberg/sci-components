@@ -2,14 +2,14 @@ import { Table, TableBody, TableContainer, TableRow } from "@material-ui/core";
 import React from "react";
 import {
   Alert,
-  ExtraProps,
   RowLabel,
   RowValue,
   Section,
   SectionLabel,
+  TooltipTableExtraProps,
 } from "./style";
 
-type TooltipTableContentProps = ExtraProps;
+type TooltipTableContentProps = TooltipTableExtraProps;
 
 export type { TooltipTableContentProps };
 

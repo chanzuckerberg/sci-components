@@ -112,6 +112,21 @@ LightWide.args = {
   width: "wide",
 };
 
+export const NoTooltipTitle = Template.bind({});
+
+NoTooltipTitle.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+NoTooltipTitle.args = {
+  arrow: true,
+  placement: "top",
+  sdsStyle: "light",
+  width: "wide",
+};
+
 export const StyledArrow = Template.bind({});
 StyledArrow.parameters = {
   snapshot: {
@@ -204,7 +219,7 @@ const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
   return (
     <Tooltip title={title} {...rest} data-testid="tooltip">
-      <div />
+      <div>I am a tooltip child element</div>
     </Tooltip>
   );
 };

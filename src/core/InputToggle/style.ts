@@ -9,13 +9,13 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface ExtraProps extends SwitchProps, CommonThemeProps {
+export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
   offLabel?: string;
   onChange?(e: React.ChangeEvent): void;
   onLabel?: string;
 }
 
-const toggle = (props: ExtraProps) => {
+const toggle = (props: InputToggleExtraProps) => {
   const { disabled } = props;
   const corners = getCorners(props);
   const spaces = getSpaces(props);
@@ -53,7 +53,7 @@ const toggle = (props: ExtraProps) => {
   `;
 };
 
-const toggleOn = (props: ExtraProps) => {
+const toggleOn = (props: InputToggleExtraProps) => {
   const { disabled, value } = props;
   const borders = getBorders(props);
   const colors = getColors(props);
@@ -96,7 +96,7 @@ const toggleOn = (props: ExtraProps) => {
   `;
 };
 
-const toggleOff = (props: ExtraProps) => {
+const toggleOff = (props: InputToggleExtraProps) => {
   const { disabled, value } = props;
   const borders = getBorders(props);
   const colors = getColors(props);
@@ -143,7 +143,7 @@ const toggleOff = (props: ExtraProps) => {
 
 export const Toggle = styled(Switch)`
   ${fontBodyXs}
-  ${(props: ExtraProps) => {
+  ${(props: InputToggleExtraProps) => {
     const { checked } = props;
 
     return `

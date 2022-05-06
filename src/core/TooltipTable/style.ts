@@ -10,7 +10,7 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface TooltipTableExtraProps extends CommonThemeProps {
   data?: Array<{
     label?: string;
     dataRows: {

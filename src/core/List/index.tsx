@@ -1,8 +1,8 @@
 import { ListProps as RawListProps } from "@material-ui/core";
 import React from "react";
-import { ExtraProps, StyledList } from "./style";
+import { ListExtraProps, StyledList } from "./style";
 
-type ListProps = ExtraProps & RawListProps;
+type ListProps = ListExtraProps & RawListProps;
 
 const List = (props: ListProps): JSX.Element => {
   const { ordered } = props;

@@ -18,7 +18,7 @@ enum FontWeight {
   semibold = 600,
 }
 
-export const defaultThemeColors = {
+const defaultThemeColors = {
   beta: {
     "100": "#F4F0F9",
     "200": "#F0EBF6",
@@ -75,7 +75,7 @@ export const defaultThemeColors = {
   },
 };
 
-const defaultAppTheme: AppTheme = {
+export const defaultAppTheme: AppTheme = {
   colors: defaultThemeColors,
   corners: {
     l: 20,

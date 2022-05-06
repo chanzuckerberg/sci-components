@@ -2,8 +2,12 @@
 import "./common/styles-dictionary/css/variables.css";
 import "./common/styles-dictionary/scss/_variables.scss";
 
+export * from "./core/Accordion";
+export { default as Accordion } from "./core/Accordion";
 export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
+export * from "./core/Banner";
+export { default as Banner } from "./core/Banner";
 export * from "./core/Button";
 export { default as Button } from "./core/Button";
 export * from "./core/ButtonDropdown";
@@ -58,6 +62,8 @@ export * from "./core/Notification";
 export { default as Notification } from "./core/Notification";
 export * from "./core/Radio";
 export { default as RadioButton } from "./core/Radio";
+export * from "./core/SegmentedControl";
+export { default as SegmentedControl } from "./core/SegmentedControl";
 export * from "./core/styles";
 export * from "./core/Tabs";
 export { default as Tabs } from "./core/Tabs";
