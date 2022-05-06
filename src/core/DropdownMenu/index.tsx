@@ -62,6 +62,7 @@ export default function DropdownMenu<
   const {
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
+    getOptionSelected = defaultGetOptionSelected,
     renderTags = defaultRenderTags,
     renderOption = defaultRenderOption,
     disableCloseOnSelect = multiple,
@@ -70,6 +71,8 @@ export default function DropdownMenu<
     onInputChange = noop,
     InputBaseProps = {},
   } = props;
+
+  console.log({ props });
 
   return (
     <StyledAutocomplete
@@ -81,6 +84,7 @@ export default function DropdownMenu<
       noOptionsText={noOptionsText}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
+      getOptionSelected={getOptionSelected}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
@@ -122,6 +126,10 @@ export default function DropdownMenu<
 
   function defaultGetOptionLabel(option: T): string {
     return option.name;
+  }
+
+  function defaultGetOptionSelected(option: T, value: T): boolean {
+    return option.name === value.name;
   }
 
   function defaultRenderTags() {

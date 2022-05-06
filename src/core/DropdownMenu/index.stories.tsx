@@ -14,6 +14,9 @@ const Demo = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
   const { multiple, options = GITHUB_LABELS, search, hasSections } = props;
 
+  const propsToPass = { ...props };
+  delete propsToPass.hasSections;
+
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -61,7 +64,7 @@ const Demo = (props: Args): JSX.Element => {
           groupBy={
             hasSections ? (option) => option.section as string : undefined
           }
-          {...props}
+          {...propsToPass}
         />
       </Popper>
     </>
@@ -130,23 +133,36 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
   if (!multiple) {
     const { name } = value as never;
 
-    return <Chip size="medium" label={name} onDelete={onDelete} />;
+    return (
+      <Chip
+        size="medium"
+        label={name}
+        onDelete={onDelete}
+        style={{
+          margin: "0 4px 6px 0",
+        }}
+      />
+    );
   }
 
   return (
     <>
-      {(value as DefaultDropdownMenuOption[]).map((item) => {
-        const { name } = item;
+      {value &&
+        (value as DefaultDropdownMenuOption[]).map((item) => {
+          const { name } = item;
 
-        return (
-          <Chip
-            size="medium"
-            key={name}
-            label={name}
-            onDelete={() => onDelete(item)}
-          />
-        );
-      })}
+          return (
+            <Chip
+              size="medium"
+              key={name}
+              label={name}
+              onDelete={() => onDelete(item)}
+              style={{
+                margin: "0 4px 6px 0",
+              }}
+            />
+          );
+        })}
     </>
   );
 }
@@ -177,30 +193,30 @@ Default.args = {
   search: false,
 };
 
-const LivePreviewDemo = (props: Args): JSX.Element => {
-  return (
-    <div>
-      <InputDropdown
-        aria-describedby="livePreviewDemo"
-        onClick={handleClick}
-        label="Click Target"
-        sdsStage={open ? "userInput" : "default"}
-        sdsType="singleSelect"
-        sdsStyle="minimal"
-      />
-      <Popper id="livePreviewDemo" open={open} anchorEl={anchorEl}>
-        <DropdownMenu
-          open
-          onClose={handleClose}
-          value={value}
-          onChange={handleChange}
-          options={options}
-          {...props}
-        />
-      </Popper>
-    </div>
-  );
-};
+// const LivePreviewDemo = (props: Args): JSX.Element => {
+//   return (
+//     <div>
+//       <InputDropdown
+//         aria-describedby="livePreviewDemo"
+//         onClick={handleClick}
+//         label="Click Target"
+//         sdsStage={open ? "userInput" : "default"}
+//         sdsType="singleSelect"
+//         sdsStyle="minimal"
+//       />
+//       <Popper id="livePreviewDemo" open={open} anchorEl={anchorEl}>
+//         <DropdownMenu
+//           open
+//           onClose={handleClose}
+//           value={value}
+//           onChange={handleChange}
+//           options={options}
+//           {...props}
+//         />
+//       </Popper>
+//     </div>
+//   );
+// };
 
 // export const SingleSelectWithSearch = Template.bind({});
 
