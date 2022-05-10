@@ -1,4 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
+import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
 import {
@@ -274,4 +276,13 @@ export const StyledCounter = styled("span")`
     padding: 1px ${spacings?.xs}px;
   `;
   }}
+`;
+
+export const StyledPopper = styled(Popper)`
+  & {
+    .${autocompleteClasses.popperDisablePortal} {
+      position: relative !important;
+      transform: translate3d(5px, 0px, 0px) !important;
+    }
+  }
 `;

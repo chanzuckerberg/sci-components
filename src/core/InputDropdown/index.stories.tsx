@@ -1,8 +1,8 @@
-import { Popper } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import MenuSelect from "../MenuSelect";
 import InputDropdown from "./index";
+import { StyledPopper } from "./style";
 
 const Demo = (props: Args): JSX.Element => {
   const { disabled, label, sdsStyle, sdsType, multiple, ...rest } = props;
@@ -42,14 +42,14 @@ const Demo = (props: Args): JSX.Element => {
         data-testid="InputDropdown"
         {...rest}
       />
-      <Popper open={open} anchorEl={anchorEl} style={{ width: "160px" }}>
+      <StyledPopper open={open} anchorEl={anchorEl} style={{ width: "160px" }}>
         <MenuSelect
           search={false}
           options={options}
           onClose={handleClose}
           multiple={multiple}
         />
-      </Popper>
+      </StyledPopper>
     </>
   );
 };
