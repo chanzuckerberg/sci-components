@@ -41,17 +41,12 @@ export const StyledAutocomplete = styled(Autocomplete, {
   & {
     ${({ search }: StyleProps) => {
       return `
-
-      ${!search ? "" : "height: 0"}
-      //color: cyan !important;
-      background-color: cyan !important;
+      height: ${search ? "auto" : "0"};
       width: 300px;
       color: #586069;
-      width: 300px;
       border: none;
       z-index: 1;
       font-size: 13px;
-
       .MuiAutocomplete-root {
         box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%) !important;
         color: red !important;
@@ -67,6 +62,7 @@ export const InputBaseWrapper = styled("div", {
 })`
   ${(props: StyleProps) => {
     const { search } = props;
+    const spacings = getSpaces(props);
 
     if (!search) {
       // (thuang): We cannot use `display: none;` here, since
@@ -74,8 +70,7 @@ export const InputBaseWrapper = styled("div", {
       // click to close the menu
       return `
         border: 0;
-        padding: 0;
-
+        padding-bottom: ${spacings?.s}px;
         white-space: nowrap;
 
         clip-path: inset(100%);
@@ -84,8 +79,6 @@ export const InputBaseWrapper = styled("div", {
         margin: 0;
       `;
     }
-
-    const spacings = getSpaces(props);
 
     return `
       margin: ${spacings?.s}px;
@@ -102,7 +95,7 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 
     .${inputBaseClasses.root} {
       width: 100%;
-      padding: 0;
+      padding: 0 !important;
       padding-right: 14px !important;
     }
 
@@ -114,27 +107,31 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 export const StyledPopper = styled(Popper)`
   //tooltip
   & {
+    ${(props) => {
+      const spacings = getSpaces(props);
+      return `
+    
     transform: translate3d(5px, 5px, 0px) !important;
     position: inherit !important;
     border: 1px;
+    border-radius: ${spacings?.xxs}px;
     width: 300px;
-    padding-top: 10px;
-    background-color: cyan;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%), 0 2px 10px 0 rgb(0 0 0 / 15%);
+
+    
+    padding-top: ${spacings?.xxxs}px;
+
 
     .${autocompleteClasses.popperDisablePortal} {
       position: relative !important;
-      background-color: cyan;
     }
 
     .MuiAutocomplete-popper {
       //second child of tooltip
       transform: none !important;
-      width: auto;
-
-      .MuiPaper-root {
-        box-shadow: none;
-        background-color: cyan;
-      }
+      width: auto !important;
     }
+    `;
+    }}
   }
 `;

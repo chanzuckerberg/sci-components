@@ -201,7 +201,7 @@ const useStyles = makeStyles((theme: SDSTheme) => {
       color: "#586069",
       fontSize: 13,
       fontWeight: 600,
-      paddingBottom: 8,
+      paddingBottom: "8px !important",
       textAlign: "left",
       width: "100%",
     },

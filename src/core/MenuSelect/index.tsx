@@ -1,4 +1,4 @@
-import { InputAdornment } from "@mui/material";
+import { InputAdornment, Paper } from "@mui/material";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
@@ -70,6 +70,7 @@ export default function MenuSelect<
     <StyledAutocomplete
       clearOnBlur={false}
       open
+      PaperComponent={(props) => <Paper elevation={0} {...props} />}
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
       renderTags={renderTags}
