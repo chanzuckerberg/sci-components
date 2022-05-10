@@ -6,7 +6,6 @@ import MenuItem from "../MenuItem";
 import { CommonThemeProps, getSpaces } from "../styles";
 
 export const StyledMenuItem = styled(MenuItem)`
-  //first child of tooltip
   & {
     ${(props) => {
       const spacings = getSpaces(props);
@@ -105,13 +104,12 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 `;
 
 export const StyledPopper = styled(Popper)`
-  //tooltip
   & {
     ${(props) => {
       const spacings = getSpaces(props);
       return `
     
-    transform: translate3d(5px, 5px, 0px) !important;
+    transform: translate3d(-10px, 5px, 0px) !important;
     position: inherit !important;
     border: 1px;
     border-radius: ${spacings?.xxs}px;
@@ -127,7 +125,6 @@ export const StyledPopper = styled(Popper)`
     }
 
     .MuiAutocomplete-popper {
-      //second child of tooltip
       transform: none !important;
       width: auto !important;
     }
