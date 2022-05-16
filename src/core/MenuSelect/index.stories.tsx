@@ -1,5 +1,6 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ButtonBase from "@mui/material/ButtonBase";
+import Popper from "@mui/material/Popper";
 import { AutocompleteCloseReason } from "@mui/material/useAutocomplete";
 import makeStyles from "@mui/styles/makeStyles";
 import { Args, Story } from "@storybook/react";
@@ -7,7 +8,6 @@ import React, { useState } from "react";
 import Chip from "../Chip";
 import { getColors, getCorners, getShadows, SDSTheme } from "../styles";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
-import { StyledPopper } from "./style";
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
@@ -42,12 +42,7 @@ const Demo = (props: Args): JSX.Element => {
           <span>Click Target</span>
           <ExpandMoreIcon />
         </ButtonBase>
-        <StyledPopper
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          placement="bottom"
-        >
+        <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom">
           <MenuSelect
             open
             search={search}
@@ -59,7 +54,7 @@ const Demo = (props: Args): JSX.Element => {
             options={options}
             {...props}
           />
-        </StyledPopper>
+        </Popper>
 
         <Chips value={value} multiple={multiple} onDelete={handleDelete} />
       </div>
@@ -201,7 +196,7 @@ const useStyles = makeStyles((theme: SDSTheme) => {
       color: "#586069",
       fontSize: 13,
       fontWeight: 600,
-      paddingBottom: "8px !important",
+      paddingBottom: 8,
       textAlign: "left",
       width: "100%",
     },

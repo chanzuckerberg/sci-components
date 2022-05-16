@@ -21,7 +21,7 @@ export const StyledPopper = styled(Popper)`
     .${autocompleteClasses.popperDisablePortal} {
       /* (thuang): !important is needed to fight inline style */
       position: relative !important;
-      transform: translate3d(5px, 0px, 0px) !important;
+      transform: none !important;
     }
 
     ${(props) => {

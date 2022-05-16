@@ -1,29 +1,11 @@
-import { Autocomplete, inputBaseClasses, Popper } from "@mui/material";
-import { autocompleteClasses } from "@mui/material/Autocomplete";
+import { Autocomplete, inputBaseClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import InputSearch from "../InputSearch";
 import MenuItem from "../MenuItem";
 import { CommonThemeProps, getSpaces } from "../styles";
 
 export const StyledMenuItem = styled(MenuItem)`
-  & {
-    ${(props) => {
-      const spacings = getSpaces(props);
-
-      return `
-      
-      width: 100%;
-    
-
-      & > span {
-        padding-right: ${spacings?.l}px;
-        padding-left: ${spacings?.l}px;
-        padding-top: ${spacings?.xs}px;
-        padding-bottom: ${spacings?.xs}px;
-      }
-    `;
-    }}
-  }
+  width: 100%;
 `;
 
 export interface StyleProps extends CommonThemeProps {
@@ -37,23 +19,7 @@ const doNotForwardProps = ["search", "InputBaseProps"];
 export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  & {
-    ${({ search }: StyleProps) => {
-      return `
-      height: ${search ? "auto" : "0"};
-      width: 300px;
-      color: #586069;
-      border: none;
-      z-index: 1;
-      font-size: 13px;
-      .MuiAutocomplete-root {
-        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%) !important;
-        color: red !important;
-      }
-
-      `;
-    }}
-  }
+  ${({ search }: StyleProps) => !search && "height: 0;"}
 ` as typeof Autocomplete;
 
 export const InputBaseWrapper = styled("div", {
@@ -61,7 +27,6 @@ export const InputBaseWrapper = styled("div", {
 })`
   ${(props: StyleProps) => {
     const { search } = props;
-    const spacings = getSpaces(props);
 
     if (!search) {
       // (thuang): We cannot use `display: none;` here, since
@@ -69,7 +34,8 @@ export const InputBaseWrapper = styled("div", {
       // click to close the menu
       return `
         border: 0;
-        padding-bottom: ${spacings?.s}px;
+        padding: 0;
+
         white-space: nowrap;
 
         clip-path: inset(100%);
@@ -78,6 +44,8 @@ export const InputBaseWrapper = styled("div", {
         margin: 0;
       `;
     }
+
+    const spacings = getSpaces(props);
 
     return `
       margin: ${spacings?.s}px;
@@ -90,45 +58,14 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 })<{ search: boolean }>`
   && {
     margin: 0;
-    transform: none !important;
 
     .${inputBaseClasses.root} {
       width: 100%;
-      padding: 0 !important;
+      padding: 0;
       padding-right: 14px !important;
     }
 
     /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
     caret-color: ${({ search }) => (search ? "auto" : "transparent")};
-  }
-`;
-
-export const StyledPopper = styled(Popper)`
-  & {
-    ${(props) => {
-      const spacings = getSpaces(props);
-      return `
-    
-    transform: translate3d(-10px, 5px, 0px) !important;
-    position: inherit !important;
-    border: 1px;
-    border-radius: ${spacings?.xxs}px;
-    width: 300px;
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%), 0 2px 10px 0 rgb(0 0 0 / 15%);
-
-    
-    padding-top: ${spacings?.xxxs}px;
-
-
-    .${autocompleteClasses.popperDisablePortal} {
-      position: relative !important;
-    }
-
-    .MuiAutocomplete-popper {
-      transform: none !important;
-      width: auto !important;
-    }
-    `;
-    }}
   }
 `;
