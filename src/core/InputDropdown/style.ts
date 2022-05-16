@@ -126,6 +126,10 @@ const square = (props: InputDropdownProps): SerializedStyles => {
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
+
+    > span:first-of-type {
+      margin-right: 0px;
+    }
   `;
 };
 
@@ -142,9 +146,10 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
     height: 34px;
     min-width: 90px;
 
-    .MuiButton-label > span:first-of-type {
+    > span:first-of-type {
       font-weight: 600;
       color: ${labelColor};
+      margin-right: 0px;
     }
   `;
 };
