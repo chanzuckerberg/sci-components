@@ -47,6 +47,40 @@ const StyledHeaderTitle = styled("div")<{ search: boolean }>`
   }}
 `;
 
+const useStyles = makeStyles((theme: AppThemeOptions) => {
+  const shadows = getShadows({ theme });
+  const corners = getCorners({ theme });
+  const spacings = getSpaces({ theme });
+  const borders = getBorders({ theme });
+
+  return {
+    livePreviewPopper: {
+      backgroundColor: "white",
+      border: borders?.gray[100],
+      borderRadius: corners?.m,
+      boxShadow: shadows?.m,
+      marginTop: spacings?.s,
+      padding: spacings?.xs,
+      width: 146,
+      zIndex: 1,
+    },
+    popper: {
+      backgroundColor: "white",
+      border: borders?.gray[100],
+      borderRadius: corners?.m,
+      boxShadow: shadows?.m,
+      marginTop: spacings?.s,
+      padding: spacings?.xs,
+      width: 286,
+      zIndex: 1,
+    },
+    popperDisablePortal: {
+      position: "relative",
+      width: "100% !important",
+    },
+  };
+});
+
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
@@ -204,13 +238,13 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  hasSections: false,
-  multiple: false,
-  search: false,
-  title: false,
+  hasSections: true,
+  multiple: true,
+  search: true,
+  title: true,
 };
 
-// Live Preview
+// Live Preview Story
 
 const storyRow = {
   display: "grid",
@@ -590,39 +624,152 @@ LivePreview.parameters = {
   },
 };
 
-const useStyles = makeStyles((theme: AppThemeOptions) => {
-  const shadows = getShadows({ theme });
-  const corners = getCorners({ theme });
-  const spacings = getSpaces({ theme });
-  const borders = getBorders({ theme });
+// Test Story
 
-  return {
-    livePreviewPopper: {
-      backgroundColor: "white",
-      border: borders?.gray[100],
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      marginTop: spacings?.s,
-      padding: spacings?.xs,
-      width: 146,
-      zIndex: 1,
-    },
-    popper: {
-      backgroundColor: "white",
-      border: borders?.gray[100],
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      marginTop: spacings?.s,
-      padding: spacings?.xs,
-      width: 286,
-      zIndex: 1,
-    },
-    popperDisablePortal: {
-      position: "relative",
-      width: "100% !important",
-    },
-  };
-});
+const TestDemo = (props: Args): JSX.Element => {
+  const {
+    hasSections,
+    multiple,
+    options = GITHUB_LABELS,
+    search,
+    title,
+  } = props;
+
+  const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const [open, setOpen] = useState(false);
+
+  const [value, setValue] = useState<
+    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
+  >(multiple ? [] : null);
+
+  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
+    []
+  );
+
+  const id = open ? "github-label" : undefined;
+
+  return (
+    <>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          <StyledInputDropdown
+            aria-describedby={id}
+            onClick={handleClick}
+            label="Click Target"
+            sdsStage={open ? "userInput" : "default"}
+            sdsType={multiple ? "multiSelect" : "singleSelect"}
+            sdsStyle="square"
+          />
+
+          <Popper
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            className={classes.popper}
+          >
+            {title && (
+              <StyledHeaderTitle search={search}>
+                Github Labels {hasSections ? " by category" : ""}
+              </StyledHeaderTitle>
+            )}
+
+            <DropdownMenu
+              open={!!open}
+              search={search}
+              multiple={multiple}
+              value={multiple ? pendingValue : value}
+              onChange={handleChange}
+              disableCloseOnSelect={multiple}
+              options={options}
+              groupBy={
+                hasSections ? (option) => option.section as string : undefined
+              }
+              {...props}
+            />
+          </Popper>
+        </div>
+      </ClickAwayListener>
+
+      <div style={{ marginTop: 8, width: 300 }}>
+        <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+      </div>
+    </>
+  );
+
+  function handleClickAway() {
+    if (open) {
+      setOpen(false);
+      return multiple && setValue(pendingValue);
+    }
+  }
+
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
+    if (!open) {
+      if (multiple) {
+        setPendingValue(value as DefaultDropdownMenuOption[]);
+      }
+
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    } else {
+      if (multiple) {
+        setValue(pendingValue);
+      }
+
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    }
+  }
+
+  function handleChange(
+    _: React.ChangeEvent<unknown>,
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ) {
+    if (!multiple) {
+      setValue(newValue as DefaultDropdownMenuOption);
+      setOpen(false);
+    }
+
+    return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+  }
+
+  function handleDelete(option: DefaultDropdownMenuOption) {
+    if (multiple) {
+      const newValue = (value as DefaultDropdownMenuOption[]).filter(
+        (item) => item !== option
+      );
+
+      setValue(newValue);
+    }
+
+    return setValue(null);
+  }
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
+
+Test.args = {
+  hasSections: false,
+  multiple: false,
+  search: false,
+  title: false,
+};
+
+Test.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 /*
  * From https://github.com/abdonrd/github-labels
