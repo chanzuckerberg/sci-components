@@ -38,6 +38,7 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:hover {
+        background-color: ${colors?.gray[100]};
         svg {
           color: ${selected ? primary : colors?.gray[500]}
         }
