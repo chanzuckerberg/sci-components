@@ -44,9 +44,12 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &.Mui-selected {
-        background-color: white !important
+        background-color: white !important;
         &:hover {
-          background-color: ${colors?.gray[100]} !important
+          background-color: ${colors?.gray[100]} !important;
+        }
+        .primary-text {
+          font-weight: ${fontWeights?.semibold};
         }
       }
 
