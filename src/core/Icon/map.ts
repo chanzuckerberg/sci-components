@@ -14,6 +14,7 @@ import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChev
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
+import { ReactComponent as IconDotsHorizontal3Small } from "../../common/svgs/IconDotsHorizontal3Small.svg";
 import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
 import { ReactComponent as IconDownloadSmall } from "../../common/svgs/IconDownloadSmall.svg";
 import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
@@ -48,6 +49,10 @@ import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall
 import { ReactComponent as IconPeopleLarge } from "../../common/svgs/IconPeopleLarge.svg";
 import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleSmall.svg";
 import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
+import { ReactComponent as IconPersonLarge } from "../../common/svgs/IconPersonLarge.svg";
+import { ReactComponent as IconPersonSmall } from "../../common/svgs/IconPersonSmall.svg";
+import { ReactComponent as IconPinLocationSmall } from "../../common/svgs/IconPinLocationSmall.svg";
+import { ReactComponent as IconPinSmall } from "../../common/svgs/IconPinSmall.svg";
 import { ReactComponent as IconPlusCircleSmall } from "../../common/svgs/IconPlusCircleSmall.svg";
 import { ReactComponent as IconPlusSmall } from "../../common/svgs/IconPlusSmall.svg";
 import { ReactComponent as IconProjectPrivateLarge } from "../../common/svgs/IconProjectPrivateLarge.svg";
@@ -65,6 +70,7 @@ import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLar
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
+import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";
 import { ReactComponent as IconTreeDendogramLarge } from "../../common/svgs/IconTreeDendogramLarge.svg";
 import { ReactComponent as IconTreeHorizontalLarge } from "../../common/svgs/IconTreeHorizontalLarge.svg";
 import { ReactComponent as IconTreeHorizontalPrivateLarge } from "../../common/svgs/IconTreeHorizontalPrivateLarge.svg";
@@ -85,7 +91,7 @@ export interface IconNameToSizes {
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
-  dotsHorizontal: "l" | "xl";
+  dotsHorizontal: "xs" | "s" | "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
   exclamationMarkCircle: "xs" | "s" | "l" | "xl";
@@ -115,6 +121,9 @@ export interface IconNameToSizes {
   open: "xs" | "s";
   people: "xs" | "s" | "l" | "xl";
   percentage: "xs" | "s";
+  person: "xs" | "s" | "l" | "xl";
+  pin: "xs" | "s";
+  pinLocation: "xs" | "s";
   plus: "xs" | "s";
   plusCircle: "xs" | "s";
   projectPrivate: "xl";
@@ -129,6 +138,7 @@ export interface IconNameToSizes {
   slidersHorizontal: "l" | "xl";
   squareOnDashedSquare: "l" | "xl";
   table: "xs" | "s";
+  trashCan: "xs" | "s";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
   treeHorizontalPrivate: "xl";
@@ -185,7 +195,7 @@ export const iconMap: Props = {
   },
   dotsHorizontal: {
     largeIcon: IconDotsHorizontal3Large,
-    smallIcon: null,
+    smallIcon: IconDotsHorizontal3Small,
   },
   download: {
     largeIcon: IconDownloadLarge,
@@ -303,6 +313,18 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconPercentageSmall,
   },
+  person: {
+    largeIcon: IconPersonLarge,
+    smallIcon: IconPersonSmall,
+  },
+  pin: {
+    largeIcon: null,
+    smallIcon: IconPinSmall,
+  },
+  pinLocation: {
+    largeIcon: null,
+    smallIcon: IconPinLocationSmall,
+  },
   plus: {
     largeIcon: null,
     smallIcon: IconPlusSmall,
@@ -358,6 +380,10 @@ export const iconMap: Props = {
   table: {
     largeIcon: null,
     smallIcon: IconTableSmall,
+  },
+  trashCan: {
+    largeIcon: null,
+    smallIcon: IconTrashCanSmall,
   },
   treeDendogram: {
     largeIcon: IconTreeDendogramLarge,

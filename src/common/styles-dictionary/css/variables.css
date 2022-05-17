@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 24 Feb 2022 00:16:20 GMT
+ * Generated on Thu, 05 May 2022 18:22:44 GMT
  */
 
 :root {
@@ -35,16 +35,16 @@
   --sds-font-header-l-600-font: 600 18px/24px "Open Sans", "OpenSans-SemiBold";
   --sds-font-header-xl-600-font: 600 22px/30px "Open Sans", "OpenSans-SemiBold";
   --sds-font-header-xxl-600-font: 600 26px/34px "Open Sans", "OpenSans-SemiBold";
+  --sds-color-overlay-100: rgba(0, 0, 0, 0.08);
+  --sds-color-overlay-200: rgba(0, 0, 0, 0.03);
   --sds-color-beta-100: #f4f0f9;
   --sds-color-beta-200: #f0ebf6;
   --sds-color-beta-400: #7a41ce;
   --sds-color-beta-600: #693bac;
-  --sds-color-beta-100-overlay: #ece8f1;
   --sds-color-error-100: #fef2f2;
   --sds-color-error-200: #f8e8e8;
   --sds-color-error-400: #dc132c;
   --sds-color-error-600: #b70016;
-  --sds-color-error-100-overlay: #f6eaea;
   --sds-color-gray-100: #f8f8f8;
   --sds-color-gray-200: #eaeaea;
   --sds-color-gray-300: #cccccc;
@@ -57,7 +57,6 @@
   --sds-color-info-200: #ebeffc;
   --sds-color-info-400: #3867fa;
   --sds-color-info-600: #223f9c;
-  --sds-color-info-100-overlay: #e7eaf4;
   --sds-color-primary-100: #f8f9fe;
   --sds-color-primary-200: #eff2fc;
   --sds-color-primary-300: #a9bdfc;
@@ -69,12 +68,10 @@
   --sds-color-success-200: #e6f7ed;
   --sds-color-success-400: #3cb371;
   --sds-color-success-600: #1c7f48;
-  --sds-color-success-100-overlay: #e4ede8;
   --sds-color-warning-100: #fcf6ec;
   --sds-color-warning-200: #fff3e1;
   --sds-color-warning-400: #f5a623;
   --sds-color-warning-600: #946314;
-  --sds-color-warning-100-overlay: #f4eee4;
   --sds-drop-shadows-shadow-l: 0px 2px 12px 0px rgba(0, 0, 0, 0.3);
   --sds-drop-shadows-shadow-m: 0px 2px 10px 0px rgba(0, 0, 0, 0.15),
     0px 2px 4px 0px rgba(0, 0, 0, 0.15);
@@ -86,6 +83,9 @@
   --sds-borders-gray-400: 1px solid #999999;
   --sds-borders-gray-500: 1px solid #767676;
   --sds-borders-gray-dashed: 2px dashed #999999;
+  --sds-borders-link-dashed: 1px dashed;
+  --sds-borders-link-solid: 1px solid;
+  --sds-borders-primary-300: 1px solid #a9bdfc;
   --sds-borders-primary-400: 1px solid #3867fa;
   --sds-borders-primary-500: 1px solid #2b52cd;
   --sds-borders-primary-600: 1px solid #223f9c;

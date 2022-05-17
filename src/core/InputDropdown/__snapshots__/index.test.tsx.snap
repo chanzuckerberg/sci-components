@@ -21,7 +21,7 @@ exports[`<InputDropdown /> Test story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root css-106974y"
+        class="MuiSvgIcon-root css-dkgei6"
         data-jest-file-name="IconChevronDownSmall.svg"
         data-jest-svg-name="IconChevronDownSmall"
         data-testid="IconChevronDownSmall"

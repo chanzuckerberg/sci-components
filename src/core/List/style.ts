@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 import { List } from "@material-ui/core";
 import { CommonThemeProps, getSpaces } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface ListExtraProps extends CommonThemeProps {
   component?: unknown;
   marginBottom?: "xxxs" | "xxs" | "xs" | "s" | "m" | "l";
   ordered?: boolean;
 }
 
-// (thuang): Please keep this in sync with the props used in `ExtraProps`
+// (thuang): Please keep this in sync with the props used in `ListExtraProps`
 const doNotForwardProps = ["marginBotton", "ordered"];
 
 export const StyledList = styled(List, {
@@ -18,7 +18,7 @@ export const StyledList = styled(List, {
     ${propsToMarginBottom}
   }
 
-  ${(props: ExtraProps) => {
+  ${(props: ListExtraProps) => {
     if (!props.ordered) return "";
 
     return `
@@ -27,11 +27,11 @@ export const StyledList = styled(List, {
   }}
 `;
 
-function propsToMarginBottom(props: ExtraProps) {
+function propsToMarginBottom(props: ListExtraProps) {
   const spacings = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
-    NonNullable<ExtraProps["marginBottom"]>,
+    NonNullable<ListExtraProps["marginBottom"]>,
     number | undefined
   > = {
     l: spacings?.l,

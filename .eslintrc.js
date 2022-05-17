@@ -29,7 +29,7 @@ module.exports = {
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "sonarjs", "jest"],
+  plugins: ["@typescript-eslint", "react", "sonarjs", "jest", "jsx-a11y"],
   rules: {
     "@typescript-eslint/ban-types": [
       "error",

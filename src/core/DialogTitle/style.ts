@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 import { DialogTitle, Typography } from "@material-ui/core";
 import {
-  CommonThemeProps as ExtraProps,
+  CommonThemeProps as DialogTitleExtraProps,
   fontBodyXs,
   fontHeaderXl,
   getColors,
   getSpaces,
 } from "src/core/styles";
 
-export type { ExtraProps };
+export type { DialogTitleExtraProps };
 
 export const StyledDialogTitle = styled(DialogTitle)`
   padding: 0;

@@ -5,7 +5,7 @@ import {
 import React, { forwardRef, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
-import { ExtraProps, StyledLabel, StyledSearchBase } from "./style";
+import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -16,7 +16,7 @@ export interface AccessibleInputSearchProps {
 
 export type InputSearchProps = RawTextFieldSearchProps &
   AccessibleInputSearchProps &
-  ExtraProps;
+  InputSearchExtraProps;
 
 const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
   function InputSearch(props, ref): JSX.Element {
@@ -61,11 +61,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       return <></>;
     }
 
-    const inputProps = {
-      "aria-label": `${label}`,
-      role: "search",
-    };
-
     return (
       <>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
@@ -79,15 +74,14 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   onClick={localHandleSubmit}
                   data-testId="searchButton"
                   sdsType="secondary"
+                  aria-label="search-button"
                 >
                   <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
                 </IconButton>
               </InputAdornment>
             ),
-            // passed to html input
-            inputProps,
           }}
-          type="text"
+          type="search"
           id={id}
           variant="outlined"
           size="small"

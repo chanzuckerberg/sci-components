@@ -5,7 +5,7 @@ import { FC } from "react";
 import { CommonThemeProps, getColors, getIconSizes } from "../styles";
 import { IconNameToSizes } from "./map";
 
-export interface ExtraProps<IconName extends keyof IconNameToSizes>
+export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   extends CommonThemeProps {
   sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];
@@ -13,7 +13,7 @@ export interface ExtraProps<IconName extends keyof IconNameToSizes>
 }
 
 function iconSize<IconName extends keyof IconNameToSizes>(
-  props: ExtraProps<IconName>
+  props: IconExtraProps<IconName>
 ): SerializedStyles {
   const { sdsSize } = props;
   const iconSizes = getIconSizes(props);
@@ -24,8 +24,14 @@ function iconSize<IconName extends keyof IconNameToSizes>(
   `;
 }
 
+function buttonStyle(): SerializedStyles {
+  return css`
+    color: inherit;
+  `;
+}
+
 function staticStyle<IconName extends keyof IconNameToSizes>(
-  props: ExtraProps<IconName>
+  props: IconExtraProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
 
@@ -35,7 +41,7 @@ function staticStyle<IconName extends keyof IconNameToSizes>(
 }
 
 function interactive<IconName extends keyof IconNameToSizes>(
-  props: ExtraProps<IconName>
+  props: IconExtraProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
 
@@ -59,7 +65,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
 const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType"];
 
 type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
-  ExtraProps<IconName> &
+  IconExtraProps<IconName> &
     CustomSVGProps &
     SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
 
@@ -75,6 +81,7 @@ export const StyledSvgIcon = styled(SvgIcon, {
       ${sdsType !== "iconButton" && iconSize(props)}
       ${sdsType === "static" && staticStyle(props)}
       ${sdsType === "interactive" && interactive(props)}
+      ${sdsType === "button" && buttonStyle()}
     `;
   }}
 `;
