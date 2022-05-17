@@ -12,6 +12,9 @@ export type InputTextProps = RawTextFieldProps &
   InputTextExtraProps &
   AccessibleInputTextProps;
 
+/**
+ * @see https://v4.mui.com/components/text-fields/
+ */
 const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   function InputText(props, ref): JSX.Element {
     const {

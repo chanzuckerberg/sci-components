@@ -4,6 +4,9 @@ import { AccordionExtraProps, StyledAccordion } from "./style";
 
 export type AccordionProps = RawAccordionProps & AccordionExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/accordion/
+ */
 const Accordion = (props: AccordionProps) => {
   const { children, useDivider, togglePosition = "right", id } = props;
   const [expanded, setExpanded] = React.useState<string | false>(false);

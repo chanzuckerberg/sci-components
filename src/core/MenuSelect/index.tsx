@@ -44,6 +44,9 @@ export type MenuSelectProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   MenuSelectExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/autocomplete/
+ */
 export default function MenuSelect<
   T extends DefaultMenuSelectOption,
   Multiple extends boolean | undefined = undefined,

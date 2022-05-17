@@ -13,6 +13,9 @@ type TooltipTableContentProps = TooltipTableExtraProps;
 
 export type { TooltipTableContentProps };
 
+/**
+ * @see https://v4.mui.com/components/tables/
+ */
 const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   const { contentAlert, data, itemAlign = "right", ...rest } = props;
 
