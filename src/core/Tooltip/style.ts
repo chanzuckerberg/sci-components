@@ -12,6 +12,7 @@ import {
 } from "../styles";
 
 export interface TooltipExtraProps extends CommonThemeProps {
+  arrowOffset?: number;
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
@@ -91,13 +92,14 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 };
 
 export const arrowCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle } = props;
+  const { inverted, sdsStyle, arrowOffset } = props;
 
   const borders = getBorders(props);
 
   return css`
     &.MuiTooltip-arrow {
       color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+      left: ${arrowOffset}px !important;
 
       &:before {
         border: ${inverted || sdsStyle === "dark"

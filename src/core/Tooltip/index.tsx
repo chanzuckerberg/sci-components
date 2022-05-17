@@ -23,6 +23,7 @@ const Tooltip = forwardRef(function Tooltip(
   ref
 ): JSX.Element | null {
   const {
+    arrowOffset,
     classes,
     inverted,
     sdsStyle = "light",
@@ -52,6 +53,7 @@ const Tooltip = forwardRef(function Tooltip(
 
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
+    arrowOffset,
     classes,
     inverted,
     sdsStyle,
