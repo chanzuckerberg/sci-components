@@ -14,8 +14,6 @@ import {
 const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
-  min-height: 30px;
-
   ${(props) => {
     const { selected } = props;
     const colors = getColors(props);
@@ -25,33 +23,40 @@ export const StyledMenuItem = styled(MenuItem)`
     const primary = colors?.primary[400];
 
     return `
-      padding: ${spacings?.s}px ${spacings?.m}px;
+      padding: ${spacings?.s}px ${spacings?.m}px
 
       .primary-text {
-        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
+        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular}
       }
 
       &.MuiListItem-root.MuiListItem-button {
-        background-color: transparent;
+        background-color: transparent
 
         &:hover {
-          background-color: ${colors?.gray[100]};
+          background-color: ${colors?.gray[100]}
         }
       }
 
       &:hover {
         svg {
-          color: ${selected ? primary : colors?.gray[500]};
+          color: ${selected ? primary : colors?.gray[500]}
+        }
+      }
+
+      &.Mui-selected {
+        background-color: white !important
+        &:hover {
+          background-color: ${colors?.gray[100]} !important
         }
       }
 
       &:active {
         svg {
-          color: ${primary};
+          color: ${primary}
         }
 
         .primary-text {
-          font-weight: ${fontWeights?.semibold};
+          font-weight: ${fontWeights?.semibold}
         }
       }
     `;

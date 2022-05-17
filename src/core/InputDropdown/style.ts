@@ -202,7 +202,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["intent", "open", "sdsStage", "sdsStyle"];
+const doNotForwardProps = ["intent", "open"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),

@@ -15,6 +15,8 @@ import {
 export const StyledMenuItem = styled(MenuItem)`
   width: 100%;
   padding: 0;
+  min-height: unset;
+  white-space: pre-wrap;
 
   ${(props: StyleProps) => {
     const { count } = props;
@@ -22,12 +24,13 @@ export const StyledMenuItem = styled(MenuItem)`
     if (count) {
       return `
         > span > span {
+          width: 100%;
           display: flex;
           justify-content: space-between;
         }
       `;
     }
-  }};
+  }}
 `;
 
 export const StyledMenuItemDetails = styled("div")`
@@ -37,6 +40,7 @@ export const StyledMenuItemDetails = styled("div")`
 
     return `
       color: ${colors?.gray[500]};
+      white-space: pre-wrap;
     `;
   }}
 `;
@@ -44,7 +48,7 @@ export const StyledMenuItemDetails = styled("div")`
 export const StyledMenuItemCount = styled("span")`
   ${fontBodyXs}
   text-align: right;
-  color: #000;
+  color: black;
 
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
@@ -54,27 +58,32 @@ export const StyledMenuItemCount = styled("span")`
     `;
   }}
 `;
-
 export interface StyleProps extends CommonThemeProps {
   search?: boolean;
+  title?: boolean;
+  hasSections?: boolean;
   count?: string;
 }
 
-const doNotForwardProps = ["count", "search", "InputBaseProps"];
+const doNotForwardProps = [
+  "count",
+  "search",
+  "InputBaseProps",
+  "hasSections",
+  "title",
+];
 
-// (thuang): Casting the type to `Autocomplete`
-//  per https://github.com/mui-org/material-ui/issues/21727#issuecomment-880263271
 export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   + .MuiAutocomplete-popper
     > .MuiAutocomplete-paper
     .MuiAutocomplete-groupLabel {
-    ${fontCapsXxxxs};
+    ${fontCapsXxxxs}
   }
 
   ${(props: StyleProps) => {
-    const { search } = props;
+    const { search, title, hasSections } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const borders = getBorders(props);
@@ -82,28 +91,63 @@ export const StyledAutocomplete = styled(Autocomplete, {
     return `
       ${!search && `height: 0`};
 
+      & + .MuiAutocomplete-popper {
+        position: relative;
+        width: 100% !important;
+      }
+
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
-        padding: ${spacings?.xs}px;
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        ${
+          search || title || hasSections
+            ? `padding-left: ${spacings?.s}px;`
+            : ""
+        }
+
+        .MuiAutocomplete-listbox {
+          max-height: 40vh;
+          padding-top: 0;
+          padding-bottom: 0;
+          ${
+            search || title || hasSections
+              ? `padding-right: ${spacings?.s}px;`
+              : ""
+          }
+
+          & > li:last-child .MuiAutocomplete-groupUl {
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
+          }
+        }
 
         .MuiAutocomplete-option {
-          padding-top: ${spacings?.xs}px;
-          padding-bottom: ${spacings?.xs}px;
-          padding-left: ${spacings?.s}px;
-          padding-right: ${spacings?.s}px;
+          padding: 0;
+          min-height: unset;
+        }
+
+        .MuiMenuItem-root {
+          padding: ${spacings?.xs}px ${spacings?.s}px;
         }
 
         .MuiAutocomplete-groupLabel {
+          top: 0;
           color: ${colors?.gray[500]};
-          margin-bottom: ${spacings?.xxs}px;
-          padding-left: ${spacings?.s}px;
+          padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
         }
 
         .MuiAutocomplete-groupUl {
+          margin-bottom: ${spacings?.l}px;
+          position: relative;
+          padding: 0 0 ${spacings?.xs}px 0 0;
           border-bottom: ${borders?.gray[200]};
-          margin-bottom: ${spacings?.m}px;
 
-          &:last-of-type {
-            border-bottom: none;
+          & li:last-of-type {
+            position: relative;
+            margin-bottom: ${spacings?.xxs}px !important;
           }
         }
       }

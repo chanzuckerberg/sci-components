@@ -8,12 +8,16 @@ import {
   getSpaces,
 } from "../styles";
 
-const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+const sdsPropNames = [
+  "isAllCaps",
+  "isRounded",
+  "sdsStyle",
+  "sdsType",
+  "sdsStage",
+];
 
 const ButtonBase = styled(Button, {
-  shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
-  },
+  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
   box-shadow: none;
   ${(props) => {
@@ -57,7 +61,9 @@ const ButtonBase = styled(Button, {
   }}
 `;
 
-export const RoundedButton = styled(ButtonBase)`
+export const RoundedButton = styled(ButtonBase, {
+  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
+})`
   ${(props) => {
     const corners = getCorners(props);
 
@@ -74,9 +80,7 @@ interface IsAllCaps extends CommonThemeProps {
 }
 
 const MinimalButton = styled(Button, {
-  shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
-  },
+  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
   ${(props: IsAllCaps) => {
     const spacings = getSpaces(props);
@@ -135,9 +139,7 @@ interface IsRounded extends CommonThemeProps {
   isRounded?: boolean;
 }
 export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
-  },
+  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
   &:focus-visible {
     outline: 5px auto Highlight;

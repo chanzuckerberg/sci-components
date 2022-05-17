@@ -72,56 +72,59 @@ export default function DropdownMenu<
     InputBaseProps = {},
   } = props;
 
-  console.log({ props });
-
   return (
-    <StyledAutocomplete
-      clearOnBlur={false}
-      open
-      disableCloseOnSelect={disableCloseOnSelect}
-      disablePortal
-      renderTags={renderTags}
-      noOptionsText={noOptionsText}
-      renderOption={renderOption}
-      getOptionLabel={getOptionLabel}
-      getOptionSelected={getOptionSelected}
-      renderInput={(params) => (
-        <InputBaseWrapper search={search}>
-          <StyledMenuInputSearch
-            id="location-search"
-            label="Search for a location"
-            placeholder="Search"
-            ref={params.InputProps.ref}
-            search={search}
-            onChange={onInputChange}
-            autoFocus
-            InputProps={{
-              /**
-               * (thuang): Works with css caret-color: "transparent" to hide
-               * mobile keyboard
-               */
-              inputMode: search ? "text" : "none",
-              /**
-               * (mmoore): passing only the ref along to InputProps to prevent
-               * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explictly pass end adornment here
-               */
-              ...params.InputProps.ref,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton sdsType="secondary">
-                    <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              inputProps: params.inputProps,
-            }}
-            {...InputBaseProps}
-          />
-        </InputBaseWrapper>
-      )}
-      {...props}
-    />
+    <div>
+      <StyledAutocomplete
+        clearOnBlur={false}
+        disableCloseOnSelect={disableCloseOnSelect}
+        disablePortal
+        renderTags={renderTags}
+        noOptionsText={noOptionsText}
+        renderOption={renderOption}
+        getOptionLabel={getOptionLabel}
+        getOptionSelected={getOptionSelected}
+        renderInput={(params) => (
+          <InputBaseWrapper search={search}>
+            <StyledMenuInputSearch
+              id="location-search"
+              label="Search for a location"
+              placeholder="Search"
+              ref={params.InputProps.ref}
+              search={search}
+              onChange={onInputChange}
+              autoFocus
+              InputProps={{
+                /**
+                 * (thuang): Works with css caret-color: "transparent" to hide
+                 * mobile keyboard
+                 */
+                inputMode: search ? "text" : "none",
+                /**
+                 * (mmoore): passing only the ref along to InputProps to prevent
+                 * default MUI arrow from rendering in search input.
+                 * renderInput strips InputProps, so we explictly pass end adornment here
+                 */
+                ...params.InputProps.ref,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton sdsType="secondary">
+                      <Icon
+                        sdsIcon="search"
+                        sdsSize="s"
+                        sdsType="interactive"
+                      />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+                inputProps: params.inputProps,
+              }}
+              {...InputBaseProps}
+            />
+          </InputBaseWrapper>
+        )}
+        {...props}
+      />
+    </div>
   );
 
   function defaultGetOptionLabel(option: T): string {
@@ -147,10 +150,14 @@ export default function DropdownMenu<
         selected={selected}
         count={option.count}
       >
-        <div>{option.name}</div>
-        {option.details && (
-          <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
-        )}
+        <div>
+          {option.name}
+
+          {option.details && (
+            <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
+          )}
+        </div>
+
         {option.count && (
           <StyledMenuItemCount>{option.count}</StyledMenuItemCount>
         )}
