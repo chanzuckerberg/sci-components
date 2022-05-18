@@ -147,7 +147,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
 
           & li:last-of-type {
             position: relative;
-            margin-bottom: ${spacings?.xxs}px !important;
+            margin-bottom: ${spacings?.xxs}px;
           }
         }
       }
