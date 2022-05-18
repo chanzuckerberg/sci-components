@@ -23,7 +23,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
     if (count) {
       return `
-        > span > span {
+        & .primary-text {
           width: 100%;
           display: flex;
           justify-content: space-between;

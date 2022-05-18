@@ -8,13 +8,7 @@ import {
   getSpaces,
 } from "../styles";
 
-const sdsPropNames = [
-  "isAllCaps",
-  "isRounded",
-  "sdsStyle",
-  "sdsType",
-  "sdsStage",
-];
+const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),

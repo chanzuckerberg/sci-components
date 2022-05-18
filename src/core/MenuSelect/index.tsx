@@ -16,6 +16,7 @@ import {
   StyleProps,
 } from "./style";
 
+let hasWarned = false;
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -63,10 +64,13 @@ export default function MenuSelect<
     InputBaseProps = {},
   } = props;
 
-  // eslint-disable-next-line no-console
-  console.warn(
-    "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
-  );
+  if (!hasWarned) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
+    );
+    hasWarned = true;
+  }
 
   return (
     <StyledAutocomplete
@@ -96,7 +100,7 @@ export default function MenuSelect<
               /**
                * (mmoore): passing only the ref along to InputProps to prevent
                * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explictly pass end adornment here
+               * renderInput strips InputProps, so we explicitly pass end adornment here
                */
               ...params.InputProps.ref,
               endAdornment: (
