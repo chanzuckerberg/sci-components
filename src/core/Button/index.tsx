@@ -20,6 +20,9 @@ export interface SdsProps {
 export type ButtonProps<C extends React.ElementType = "button"> =
   RawButtonProps<C, { component?: C }> & SdsProps;
 
+/**
+ * @see https://v4.mui.com/components/buttons/
+ */
 const Button = React.forwardRef(
   <C extends React.ElementType>(
     props: ButtonProps<C>,

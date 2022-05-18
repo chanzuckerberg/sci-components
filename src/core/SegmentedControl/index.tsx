@@ -15,6 +15,9 @@ interface SegmentedControlExtraProps {
   buttonDefinition: SingleButtonDefinition[];
 }
 
+/**
+ * @see https://v4.mui.com/components/toggle-button/
+ */
 export type SegmentedControlProps = SegmentedControlExtraProps &
   ToggleButtonGroupProps;
 

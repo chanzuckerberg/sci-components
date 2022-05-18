@@ -12,6 +12,8 @@ type TooltipProps = TooltipExtraProps & RawTooltipProps;
 export type { TooltipProps };
 
 /**
+ * @see https://v4.mui.com/components/tooltips/
+ *
  * @warning If the tooltip wraps a disabled component, please make sure to
  * wrap the children in a `<span>` tag.
  * https://mui.com/components/tooltips/#disabled-elements
