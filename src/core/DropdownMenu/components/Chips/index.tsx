@@ -16,7 +16,7 @@ export default function Chips({
   if (!value) return null;
 
   if (!multiple) {
-    const { name } = value as never;
+    const { name } = value as DefaultMenuSelectOption;
 
     return <StyledChip size="medium" label={name} onDelete={onDelete} />;
   }

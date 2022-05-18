@@ -119,8 +119,8 @@ export const StyledAutocomplete = styled(Autocomplete, {
           }
 
           & > li:last-child .MuiAutocomplete-groupUl {
-            border-bottom: none !important;
-            margin-bottom: 0 !important;
+            border-bottom: none;
+            margin-bottom: 0;
           }
         }
 
