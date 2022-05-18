@@ -6,6 +6,13 @@ import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 
 export type TooltipCondensedProps = TooltipProps & TooltipCondensedExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/tooltips/
+ *
+ * @warning If the tooltip wraps a disabled component, please make sure to
+ * wrap the children in a `<span>` tag.
+ * https://mui.com/components/tooltips/#disabled-elements
+ */
 const TooltipCondensed = forwardRef(function TooltipCondensed(
   props: TooltipCondensedProps,
   ref

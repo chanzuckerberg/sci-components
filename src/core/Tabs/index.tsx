@@ -46,6 +46,9 @@ export interface TabProps extends RawTabProps {
   count?: number;
 }
 
+/**
+ * @see https://v4.mui.com/components/tabs/
+ */
 export const Tab = forwardRef<HTMLDivElement, TabProps>(function Tab(
   props,
   ref

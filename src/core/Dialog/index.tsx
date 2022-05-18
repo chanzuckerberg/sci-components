@@ -16,6 +16,9 @@ interface DialogExtraProps {
 
 export type DialogProps = RawDialogProps & DialogExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/dialogs/
+ */
 const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   props,
   ref

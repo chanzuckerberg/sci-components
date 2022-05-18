@@ -8,6 +8,7 @@ import {
   StyledButton,
 } from "./style";
 
+let hasWarned = false;
 export interface SdsProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
@@ -20,8 +21,9 @@ export interface SdsProps {
 export type ButtonProps<C extends React.ElementType = "button"> =
   RawButtonProps<C, { component?: C }> & SdsProps;
 
-let hasWarned = false;
-
+/**
+ * @see https://v4.mui.com/components/buttons/
+ */
 const Button = React.forwardRef(
   <C extends React.ElementType>(
     props: ButtonProps<C>,

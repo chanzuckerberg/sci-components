@@ -18,6 +18,9 @@ export interface DialogTitleProps
   onClose?: () => void;
 }
 
+/**
+ * @see https://v4.mui.com/components/dialogs/
+ */
 const DialogTitle = forwardRef(function DialogTitle(
   props: DialogTitleProps,
   ref

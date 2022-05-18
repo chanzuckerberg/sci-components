@@ -7,6 +7,9 @@ type ChipProps = ChipExtraProps & RawChipProps;
 
 export type { ChipProps };
 
+/**
+ * @see https://v4.mui.com/components/chips/
+ */
 const Chip = (props: ChipProps): JSX.Element => {
   const { onDelete } = props;
   if (onDelete) {
