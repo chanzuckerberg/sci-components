@@ -12,6 +12,9 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   sdsType: "iconButton" | "interactive" | "static" | "button";
 }
 
+/**
+ * @see https://v4.mui.com/components/icons/#svgicon
+ */
 function iconSize<IconName extends keyof IconNameToSizes>(
   props: IconExtraProps<IconName>
 ): SerializedStyles {

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { InputToggleExtraProps, Toggle } from "./style";
 
+/**
+ * @see https://v4.mui.com/components/switches/
+ */
 const InputToggle = (props: InputToggleExtraProps) => {
   const [checked, setChecked] = useState<boolean>(false);
 

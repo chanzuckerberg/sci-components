@@ -18,6 +18,9 @@ export type InputSearchProps = RawTextFieldSearchProps &
   AccessibleInputSearchProps &
   InputSearchExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/text-fields/
+ */
 const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
   function InputSearch(props, ref): JSX.Element {
     const {

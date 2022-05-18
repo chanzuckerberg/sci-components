@@ -8,16 +8,21 @@ import { StyledCallout } from "./style";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
+  icon?: React.ReactNode;
   intent: "info" | "error" | "success" | "warning";
 }
 
 export type ExposedCalloutProps = AlertProps & CalloutProps;
 
+/**
+ * @see https://v4.mui.com/components/alert/
+ */
 const Callout = ({
   autoDismiss,
   children,
   dismissed,
   onClose,
+  icon,
   intent,
   ...rest
 }: ExposedCalloutProps): JSX.Element => {
@@ -40,6 +45,8 @@ const Callout = ({
   };
 
   const getIcon = () => {
+    if (icon) return icon;
+
     switch (intent) {
       case "success":
         return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
