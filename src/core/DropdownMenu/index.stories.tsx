@@ -662,6 +662,7 @@ const TestDemo = (props: Args): JSX.Element => {
             sdsStage={open ? "userInput" : "default"}
             sdsType={multiple ? "multiSelect" : "singleSelect"}
             sdsStyle="square"
+            data-testid="dropdown-menu"
           />
 
           <Popper
@@ -778,120 +779,82 @@ Test.parameters = {
  */
 const GITHUB_LABELS = [
   {
-    color: "#b60205",
-    count: 12,
-    description: "",
     details: "Bigger than 85",
     name: "Priority: critical",
     section: "priority",
   },
   {
-    color: "#d93f0b",
-    description: "",
     details: "Between 50 and 85",
     name: "Priority: high",
     section: "priority",
   },
   {
-    color: "#fbca04",
-    count: 4,
-    description: "",
     details: "Between 25 and 50",
     name: "Priority: medium",
     section: "priority",
   },
   {
-    color: "#0e8a16",
-    count: 1,
-    description: "",
     details: "Smaller than 25",
     name: "Priority: low",
     section: "priority",
   },
   {
-    color: "#fec1c1",
-    description: "",
+    details: "are you sure about this?",
     name: "Status: can't reproduce",
     section: "status",
   },
   {
-    color: "#215cea",
-    description: "",
     name: "Status: confirmed",
     section: "status",
   },
   {
-    color: "#cfd3d7",
     count: 3,
-    description: "This issue or pull request already exists",
     name: "Status: duplicate",
     section: "status",
   },
   {
-    color: "#fef2c0",
-    description: "",
     name: "Status: needs information",
     section: "status",
   },
   {
-    color: "#eeeeee",
-    description: "This will not be worked on",
     details: "This will not be worked on",
     name: "Status: wont do/fix",
     section: "status",
   },
   {
-    color: "#d73a4a",
-    description: "Something isn't working",
     name: "Type: bug",
     section: "type",
   },
   {
-    color: "#d4c5f9",
-    description: "",
     name: "Type: discussion",
     section: "type",
   },
   {
-    color: "#006b75",
-    description: "",
     name: "Type: documentation",
     section: "type",
   },
   {
-    color: "#84b6eb",
-    description: "",
     name: "Type: enhancement",
     section: "type",
   },
   {
-    color: "#3e4b9e",
-    description: "A theme of work that contain sub-tasks",
     name: "Type: epic",
     section: "type",
   },
   {
-    color: "#fbca04",
-    description: "New feature or request",
     name: "Type: feature request",
     section: "type",
   },
   {
-    color: "#d876e3",
-    description: "Further information is requested",
     name: "Type: question",
     section: "type",
   },
   {
-    color: "#7057ff",
     count: "3",
-    description: "Good for newcomers",
     name: "Good first issue",
     section: "uncategorized",
   },
   {
-    color: "#008672",
-    description: "Extra attention is needed",
     name: "Help wanted",
     section: "uncategorized",
   },

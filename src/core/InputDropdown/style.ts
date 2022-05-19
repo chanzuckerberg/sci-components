@@ -93,6 +93,13 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   return css`
     border: none;
 
+    padding-right: 0;
+    padding-left: 0;
+
+    & .MuiButton-label {
+      margin-left: 0;
+    }
+
     span {
       ${fontHeaderS(props)}
     }

@@ -140,7 +140,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
         }
 
         .MuiAutocomplete-groupUl {
-          margin-bottom: ${spacings?.l}px;
+          margin-bottom: ${spacings?.m}px;
           position: relative;
           padding: 0 0 ${spacings?.xs}px 0 0;
           border-bottom: ${borders?.gray[200]};
