@@ -11,7 +11,11 @@ import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
 
-export const StyledCallout = styled(Alert)`
+const doNotForwardProps = ["calloutTitle"];
+
+export const StyledCallout = styled(Alert, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);

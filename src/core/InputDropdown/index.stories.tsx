@@ -20,13 +20,13 @@ const Demo = (props: Args): JSX.Element => {
 
   const options = [
     {
-      name: "Menu Item",
+      name: "Menu Item 1",
     },
     {
-      name: "Menu Item",
+      name: "Menu Item 2",
     },
     {
-      name: "Menu Item",
+      name: "Menu Item 3",
     },
   ];
 
