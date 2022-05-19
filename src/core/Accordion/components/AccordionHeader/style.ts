@@ -43,11 +43,11 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         }
       }
     `;
-  }};
+  }}
 `;
 
 export const StyledSubtitle = styled.p`
-  ${fontBodyXxs};
+  ${fontBodyXxs}
 
   ${(props: CommonThemeProps) => {
     const colors = getColors(props);
@@ -56,5 +56,5 @@ export const StyledSubtitle = styled.p`
       color: ${colors?.gray[500]};
       margin: 0;
     `;
-  }};
+  }}
 `;

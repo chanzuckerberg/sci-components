@@ -82,11 +82,6 @@ export default {
       control: { type: "text" },
       required: true,
     },
-    onDelete: {
-      control: { labels: ["Undefined", "onDelete: () => {}"], type: "select" },
-      mapping: [undefined, () => {}],
-      options: [0, 1],
-    },
     sdsStyle: {
       control: { type: "radio" },
       options: ["rounded", "square"],
@@ -118,8 +113,8 @@ const livePreviewStyles = {
   display: "inline-grid",
   gridColumnGap: 24,
   gridRowGap: 24,
-  gridTemplateColumns: "repeat(3, 1fr)",
-  gridTemplateRows: "repeat(2, 1fr)",
+  gridTemplateColumns: "repeat(3, auto)",
+  gridTemplateRows: "repeat(2, auto)",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {

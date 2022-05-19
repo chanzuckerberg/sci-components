@@ -4,6 +4,7 @@ import { Chip } from "@material-ui/core";
 import {
   CommonThemeProps,
   fontBodyXs,
+  fontBodyXxxs,
   fontHeaderXs,
   getColors,
   getCorners,
@@ -38,7 +39,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     }
 
     .MuiChip-label {
-      ${fontBodyXs(props)}
+      ${fontBodyXxxs(props)}
       padding: 0;
       line-height: unset;
     }
@@ -110,34 +111,29 @@ const rounded = (props: ExtraProps): SerializedStyles => {
 
   const { icon } = props;
 
-  if (icon) {
-    return css`
-      border-radius: ${corners?.l}px;
-      padding: ${spacings?.xxs}px ${spacings?.s}px ${spacings?.xxs}px
-        ${spacings?.xs}px;
+  return css`
+    border-radius: ${corners?.l}px;
+    padding: ${icon
+      ? `${spacings?.xxs}px ${spacings?.s}px ${spacings?.xxs}px ${spacings?.xs}px`
+      : `${spacings?.xxxs}px ${spacings?.s}px`};
 
-      &:after {
-        border-radius: ${corners?.l}px;
-      }
-    `;
-  } else {
-    return css`
+    &:after {
       border-radius: ${corners?.l}px;
-      padding: ${spacings?.xxs}px ${spacings?.s}px;
-      &:after {
-        border-radius: ${corners?.l}px;
-      }
-    `;
-  }
+    }
+  `;
 };
 
 const square = (props: ExtraProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
+  const { icon } = props;
+
   return css`
     border-radius: ${corners?.m}px;
-    padding: ${spacings?.xxs}px ${spacings?.xs}px;
+    padding: ${icon
+      ? `${spacings?.xxs}px ${spacings?.s}px`
+      : `${spacings?.xxxs}px ${spacings?.xs}px`};
 
     &:after {
       border-radius: ${corners?.m}px;

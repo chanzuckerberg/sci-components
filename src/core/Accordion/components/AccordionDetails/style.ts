@@ -13,5 +13,5 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
       padding: ${spaces?.m}px;
       padding-top: ${spaces?.xxs}px;
     `;
-  }};
+  }}
 `;
