@@ -16,7 +16,6 @@ import {
   getSpaces,
   getTypography,
 } from "../styles";
-import Chips from "./components/Chips";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
@@ -149,10 +148,6 @@ const Demo = (props: Args): JSX.Element => {
           </Popper>
         </div>
       </ClickAwayListener>
-
-      <div style={{ marginTop: 8, width: 300 }}>
-        <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-      </div>
     </>
   );
 
@@ -199,18 +194,6 @@ const Demo = (props: Args): JSX.Element => {
 
     setValue(newValue as DefaultDropdownMenuOption);
     setOpen(false);
-  }
-
-  function handleDelete(option: DefaultDropdownMenuOption) {
-    if (!multiple) {
-      return setValue(null);
-    }
-
-    const newValue = (value as DefaultDropdownMenuOption[]).filter(
-      (item) => item !== option
-    );
-
-    setValue(newValue);
   }
 };
 
@@ -294,8 +277,6 @@ const LivePreviewDemo = (): JSX.Element => {
 
   const [value1, setValue1] = useState<null | DefaultDropdownMenuOption>(null);
   const [value2, setValue2] = useState<null | DefaultDropdownMenuOption>(null);
-  const [value3, setValue3] = useState<null | DefaultDropdownMenuOption[]>([]);
-  const [value4, setValue4] = useState<null | DefaultDropdownMenuOption[]>([]);
 
   const [pendingValue3, setPendingValue3] = useState<
     DefaultDropdownMenuOption[]
@@ -339,9 +320,6 @@ const LivePreviewDemo = (): JSX.Element => {
           </div>
         </ClickAwayListener>
       </div>
-      <div style={{ gridArea: "2/1/3/2" }}>
-        <Chips value={value1} multiple={false} onDelete={handleDelete1} />
-      </div>
 
       <div style={{ gridArea: "1/2/2/3" }}>
         <ClickAwayListener onClickAway={handleClickAway2}>
@@ -384,9 +362,6 @@ const LivePreviewDemo = (): JSX.Element => {
           </div>
         </ClickAwayListener>
       </div>
-      <div style={{ gridArea: "2/2/3/3" }}>
-        <Chips value={value2} multiple={false} onDelete={handleDelete2} />
-      </div>
 
       <div style={{ gridArea: "1/3/2/4" }}>
         <ClickAwayListener onClickAway={handleClickAway3}>
@@ -419,9 +394,6 @@ const LivePreviewDemo = (): JSX.Element => {
             </Popper>
           </div>
         </ClickAwayListener>
-      </div>
-      <div style={{ gridArea: "2/3/3/4" }}>
-        <Chips value={value3} multiple onDelete={handleDelete3} />
       </div>
 
       <div style={{ gridArea: "1/4/2/5" }}>
@@ -458,9 +430,6 @@ const LivePreviewDemo = (): JSX.Element => {
           </div>
         </ClickAwayListener>
       </div>
-      <div style={{ gridArea: "2/4/3/5" }}>
-        <Chips value={value4} multiple onDelete={handleDelete4} />
-      </div>
     </div>
   );
 
@@ -491,10 +460,6 @@ const LivePreviewDemo = (): JSX.Element => {
     setValue1(newValue as DefaultDropdownMenuOption);
   }
 
-  function handleDelete1() {
-    return setValue1(null);
-  }
-
   function handleClickAway2() {
     return open2 && setOpen2(false);
   }
@@ -522,20 +487,13 @@ const LivePreviewDemo = (): JSX.Element => {
     setValue2(newValue as DefaultDropdownMenuOption);
   }
 
-  function handleDelete2() {
-    return setValue2(null);
-  }
-
   function handleClickAway3() {
-    setValue3(pendingValue3);
     return open3 && setOpen3(false);
   }
 
   function handleClick3(event: React.MouseEvent<HTMLElement>) {
     if (open3) {
       setOpen3(false);
-
-      setValue3(pendingValue3);
 
       if (anchorEl3) {
         anchorEl3.focus();
@@ -555,25 +513,13 @@ const LivePreviewDemo = (): JSX.Element => {
     return setPendingValue3(newValue as DefaultDropdownMenuOption[]);
   }
 
-  function handleDelete3(option: DefaultDropdownMenuOption) {
-    const newValue = (value3 as DefaultDropdownMenuOption[]).filter(
-      (item) => item !== option
-    );
-
-    setValue3(newValue);
-    setPendingValue3(newValue);
-  }
-
   function handleClickAway4() {
-    setValue4(pendingValue4);
     return open4 && setOpen4(false);
   }
 
   function handleClick4(event: React.MouseEvent<HTMLElement>) {
     if (open4) {
       setOpen4(false);
-
-      setValue3(pendingValue3);
 
       if (anchorEl4) {
         anchorEl4.focus();
@@ -591,15 +537,6 @@ const LivePreviewDemo = (): JSX.Element => {
     newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     return setPendingValue4(newValue as DefaultDropdownMenuOption[]);
-  }
-
-  function handleDelete4(option: DefaultDropdownMenuOption) {
-    const newValue = (value4 as DefaultDropdownMenuOption[]).filter(
-      (item) => item !== option
-    );
-
-    setValue4(newValue);
-    setPendingValue4(newValue);
   }
 };
 
@@ -689,10 +626,6 @@ const TestDemo = (props: Args): JSX.Element => {
           </Popper>
         </div>
       </ClickAwayListener>
-
-      <div style={{ marginTop: 8, width: 300 }}>
-        <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-      </div>
     </>
   );
 
@@ -736,18 +669,6 @@ const TestDemo = (props: Args): JSX.Element => {
     }
 
     return setPendingValue(newValue as DefaultDropdownMenuOption[]);
-  }
-
-  function handleDelete(option: DefaultDropdownMenuOption) {
-    if (multiple) {
-      const newValue = (value as DefaultDropdownMenuOption[]).filter(
-        (item) => item !== option
-      );
-
-      setValue(newValue);
-    }
-
-    return setValue(null);
   }
 };
 
