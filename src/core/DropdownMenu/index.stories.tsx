@@ -247,12 +247,11 @@ Default.args = {
 // Live Preview Story
 
 const storyRow = {
-  alignItems: "end",
   display: "grid",
   gridColumnGap: 24,
-  gridRowGap: 0,
+  gridRowGap: 8,
   gridTemplateColumns: "repeat(4, 160px)",
-  gridTemplateRows: "1fr",
+  gridTemplateRows: "repeat(2, auto)",
 };
 
 const StyledInputDropdownLive1 = styled(InputDropdown)`
@@ -307,7 +306,7 @@ const LivePreviewDemo = (): JSX.Element => {
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <div style={{ gridArea: "1/1/2/2" }}>
+      <div style={{ alignSelf: "end", gridArea: "1/1/2/2" }}>
         <ClickAwayListener onClickAway={handleClickAway1}>
           <div>
             <StyledInputDropdownLive1
@@ -339,10 +338,9 @@ const LivePreviewDemo = (): JSX.Element => {
             </Popper>
           </div>
         </ClickAwayListener>
-
-        <div style={{ marginTop: 8, width: 160 }}>
-          <Chips value={value1} multiple={false} onDelete={handleDelete1} />
-        </div>
+      </div>
+      <div style={{ gridArea: "2/1/3/2" }}>
+        <Chips value={value1} multiple={false} onDelete={handleDelete1} />
       </div>
 
       <div style={{ gridArea: "1/2/2/3" }}>
@@ -385,10 +383,9 @@ const LivePreviewDemo = (): JSX.Element => {
             </Popper>
           </div>
         </ClickAwayListener>
-
-        <div style={{ marginTop: 8, width: 160 }}>
-          <Chips value={value2} multiple={false} onDelete={handleDelete2} />
-        </div>
+      </div>
+      <div style={{ gridArea: "2/2/3/3" }}>
+        <Chips value={value2} multiple={false} onDelete={handleDelete2} />
       </div>
 
       <div style={{ gridArea: "1/3/2/4" }}>
@@ -422,10 +419,9 @@ const LivePreviewDemo = (): JSX.Element => {
             </Popper>
           </div>
         </ClickAwayListener>
-
-        <div style={{ marginTop: 8, width: 160 }}>
-          <Chips value={value3} multiple onDelete={handleDelete3} />
-        </div>
+      </div>
+      <div style={{ gridArea: "2/3/3/4" }}>
+        <Chips value={value3} multiple onDelete={handleDelete3} />
       </div>
 
       <div style={{ gridArea: "1/4/2/5" }}>
@@ -461,10 +457,9 @@ const LivePreviewDemo = (): JSX.Element => {
             </Popper>
           </div>
         </ClickAwayListener>
-
-        <div style={{ marginTop: 8, width: 160 }}>
-          <Chips value={value4} multiple onDelete={handleDelete4} />
-        </div>
+      </div>
+      <div style={{ gridArea: "2/4/3/5" }}>
+        <Chips value={value4} multiple onDelete={handleDelete4} />
       </div>
     </div>
   );
