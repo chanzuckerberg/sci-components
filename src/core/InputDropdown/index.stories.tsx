@@ -19,16 +19,6 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
   const borders = getBorders({ theme });
 
   return {
-    livePreviewPopper: {
-      backgroundColor: "white",
-      border: borders?.gray[100],
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      marginTop: spacings?.s,
-      padding: spacings?.xs,
-      width: 146,
-      zIndex: 1,
-    },
     popper: {
       backgroundColor: "white",
       border: borders?.gray[100],
@@ -38,10 +28,6 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
       padding: spacings?.xs,
       width: "auto",
       zIndex: 1,
-    },
-    popperDisablePortal: {
-      position: "relative",
-      width: "100% !important",
     },
   };
 });
