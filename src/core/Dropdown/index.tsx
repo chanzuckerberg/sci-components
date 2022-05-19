@@ -1,14 +1,13 @@
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
+import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
-import MenuSelect, { DefaultMenuSelectOption } from "../MenuSelect";
-import { StyledButton, StyledPaper, StyledPopper } from "./style";
+import { StyledButton, StyledPopper } from "./style";
 
 export {
   StyledPopper as DropdownPopper,
-  StyledPaper as DropdownPaper,
   InputDropdown as DropdownInputDropdown,
 };
 
@@ -28,17 +27,16 @@ interface DropdownProps<Multiple> {
   buttons?: boolean;
   closeOnBlur?: boolean;
   label: string;
-  options: DefaultMenuSelectOption[];
-  onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
+  options: DefaultDropdownMenuOption[];
+  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
   multiple?: Multiple;
   search?: boolean;
-  MenuSelectProps?: Partial<typeof MenuSelect>;
+  MenuSelectProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultMenuSelectOption, Multiple>;
+  value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper | RenderFunctionType;
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   InputDropdownComponent?: typeof InputDropdown;
 }
 
@@ -61,7 +59,6 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
   PopperComponent = StyledPopper,
-  PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
   ...rest
 }: DropdownProps<Multiple>): JSX.Element {
@@ -76,12 +73,12 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const [value, setValue] = useState<Value<DefaultMenuSelectOption, Multiple>>(
-    getInitialValue()
-  );
+  const [value, setValue] = useState<
+    Value<DefaultDropdownMenuOption, Multiple>
+  >(getInitialValue());
 
   const [pendingValue, setPendingValue] = useState<
-    Value<DefaultMenuSelectOption, true>
+    Value<DefaultDropdownMenuOption, true>
   >([]);
 
   useEffect(() => {
@@ -105,16 +102,15 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         {...InputDropdownProps}
         {...rest}
       />
-      <PopperComponent open={open} anchorEl={anchorEl}>
-        <MenuSelect
+      <PopperComponent open={open} anchorEl={anchorEl} placement="bottom-start">
+        <DropdownMenu
           open
           search={search}
           onClose={handleClose}
           multiple={multiple as Multiple}
-          PaperComponent={PaperComponent}
           value={
             (multiple ? pendingValue : value) as MUIValue<
-              DefaultMenuSelectOption,
+              DefaultDropdownMenuOption,
               Multiple,
               undefined,
               undefined
@@ -170,7 +166,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (multiple) {
-      setPendingValue(value as DefaultMenuSelectOption[]);
+      setPendingValue(value as DefaultDropdownMenuOption[]);
     }
 
     setAnchorEl(event.currentTarget);
@@ -193,7 +189,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
 
     if (multiple) {
-      setValue(pendingValue as Value<DefaultMenuSelectOption, Multiple>);
+      setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
     }
 
     if (anchorEl) {
@@ -205,13 +201,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultMenuSelectOption[]);
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
-    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
   }
 
   function handleCancel() {
@@ -224,13 +220,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     setAnchorEl(null);
   }
 
-  function getInitialValue(): Value<DefaultMenuSelectOption, Multiple> {
+  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
     if (isControlled) {
       return propValue;
     }
 
     return multiple
-      ? ([] as unknown as Value<DefaultMenuSelectOption, Multiple>)
+      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
   }
 }

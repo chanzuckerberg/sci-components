@@ -1,55 +1,134 @@
-import { Popper } from "@material-ui/core";
+import { ClickAwayListener, Popper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import MenuSelect from "../MenuSelect";
+import DropdownMenu from "../DropdownMenu";
+import {
+  AppThemeOptions,
+  getBorders,
+  getCorners,
+  getShadows,
+  getSpaces,
+} from "../styles";
 import InputDropdown from "./index";
+
+const useStyles = makeStyles((theme: AppThemeOptions) => {
+  const shadows = getShadows({ theme });
+  const corners = getCorners({ theme });
+  const spacings = getSpaces({ theme });
+  const borders = getBorders({ theme });
+
+  return {
+    livePreviewPopper: {
+      backgroundColor: "white",
+      border: borders?.gray[100],
+      borderRadius: corners?.m,
+      boxShadow: shadows?.m,
+      marginTop: spacings?.s,
+      padding: spacings?.xs,
+      width: 146,
+      zIndex: 1,
+    },
+    popper: {
+      backgroundColor: "white",
+      border: borders?.gray[100],
+      borderRadius: corners?.m,
+      boxShadow: shadows?.m,
+      marginTop: spacings?.s,
+      padding: spacings?.xs,
+      width: "auto",
+      zIndex: 1,
+    },
+    popperDisablePortal: {
+      position: "relative",
+      width: "100% !important",
+    },
+  };
+});
 
 const Demo = (props: Args): JSX.Element => {
   const { disabled, label, sdsStyle, sdsType, multiple, ...rest } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
+  const [open, setOpen] = useState(false);
+
+  const classes = useStyles();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleChange = () => {
+    if (!multiple) {
+      setOpen(false);
+    }
+  };
+
+  const handleClose = () => {};
+
+  const handleClickAway = () => {
+    if (open) {
+      setOpen(false);
+    }
   };
 
   const options = [
     {
-      name: "Menu Item",
+      details: "Details for menu item 1",
+      name: "Menu Item 1",
     },
     {
-      name: "Menu Item",
+      name: "Menu Item 2",
     },
     {
-      name: "Menu Item",
+      name: "Menu Item 3",
     },
   ];
 
   return (
     <>
-      <InputDropdown
-        disabled={disabled}
-        label={label}
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
-        sdsStyle={sdsStyle}
-        sdsType={sdsType}
-        data-testid="InputDropdown"
-        {...rest}
-      />
-      <Popper open={open} anchorEl={anchorEl} style={{ width: "160px" }}>
-        <MenuSelect
-          search={false}
-          options={options}
-          onClose={handleClose}
-          multiple={multiple}
-        />
-      </Popper>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          <InputDropdown
+            disabled={disabled}
+            label={label}
+            onClick={handleClick}
+            sdsStage={open ? "userInput" : "default"}
+            sdsStyle={sdsStyle}
+            sdsType={sdsType}
+            data-testid="InputDropdown"
+            {...rest}
+          />
+
+          <Popper
+            open={open}
+            anchorEl={anchorEl}
+            className={classes.popper}
+            placement="bottom-start"
+          >
+            <DropdownMenu
+              open={!!open}
+              onClose={handleClose}
+              onChange={handleChange}
+              search={false}
+              multiple={multiple}
+              disableCloseOnSelect={multiple}
+              options={options}
+            />
+          </Popper>
+        </div>
+      </ClickAwayListener>
     </>
   );
 };
