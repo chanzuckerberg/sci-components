@@ -1,14 +1,14 @@
 import { DialogTitle, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
-  CommonThemeProps as ExtraProps,
+  CommonThemeProps as DialogTitleExtraProps,
   fontBodyXs,
   fontHeaderXl,
   getColors,
   getSpaces,
 } from "src/core/styles";
 
-export type { ExtraProps };
+export type { DialogTitleExtraProps };
 
 export const StyledDialogTitle = styled(DialogTitle)`
   padding: 0;

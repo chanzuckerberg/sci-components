@@ -31,6 +31,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const LargePrimaryIconButton = Template.bind({});
 
 LargePrimaryIconButton.args = {
+  "aria-label": "info",
   disabled: false,
   icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
@@ -40,6 +41,7 @@ LargePrimaryIconButton.args = {
 export const LargeSecondaryIconButton = Template.bind({});
 
 LargeSecondaryIconButton.args = {
+  "aria-label": "checked",
   disabled: false,
   icon: <Icon sdsIcon="checkCircle" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
@@ -49,6 +51,7 @@ LargeSecondaryIconButton.args = {
 export const LargeTertiaryIconButton = Template.bind({});
 
 LargeTertiaryIconButton.args = {
+  "aria-label": "x mark",
   disabled: false,
   icon: <Icon sdsIcon="xMark" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
@@ -58,6 +61,7 @@ LargeTertiaryIconButton.args = {
 export const MediumTertiaryIconButton = Template.bind({});
 
 MediumTertiaryIconButton.args = {
+  "aria-label": "x mark",
   disabled: false,
   icon: <Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />,
   sdsSize: "medium",
@@ -67,6 +71,7 @@ MediumTertiaryIconButton.args = {
 export const SmallPrimaryIconButton = Template.bind({});
 
 SmallPrimaryIconButton.args = {
+  "aria-label": "info",
   disabled: false,
   icon: <Icon sdsIcon="infoCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
@@ -76,6 +81,7 @@ SmallPrimaryIconButton.args = {
 export const SmallSecondaryIconButton = Template.bind({});
 
 SmallSecondaryIconButton.args = {
+  "aria-label": "checked",
   disabled: false,
   icon: <Icon sdsIcon="checkCircle" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",
@@ -85,6 +91,7 @@ SmallSecondaryIconButton.args = {
 export const SmallTertiaryIconButton = Template.bind({});
 
 SmallTertiaryIconButton.args = {
+  "aria-label": "x mark",
   disabled: false,
   icon: <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />,
   sdsSize: "small",

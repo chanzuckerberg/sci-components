@@ -16,7 +16,7 @@ import {
   getTypography,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface InputSearchExtraProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   sdsStyle?: "rounded" | "square";
@@ -25,7 +25,7 @@ export interface ExtraProps extends CommonThemeProps {
 
 const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
 
-const rounded = (props: ExtraProps): SerializedStyles => {
+const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
@@ -35,7 +35,7 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const error = (props: ExtraProps): SerializedStyles => {
+const error = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
@@ -45,7 +45,7 @@ const error = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const warning = (props: ExtraProps): SerializedStyles => {
+const warning = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
@@ -55,7 +55,7 @@ const warning = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const disabledStyled = (props: ExtraProps): SerializedStyles => {
+const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
   const colors = getColors(props);
 
@@ -99,7 +99,7 @@ export const StyledSearchBase = styled(TextField, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${(props: ExtraProps) => {
+  ${(props: InputSearchExtraProps) => {
     const { intent, disabled, sdsStyle } = props;
     const spacings = getSpaces(props);
     const borders = getBorders(props);

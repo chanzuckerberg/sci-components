@@ -1,6 +1,6 @@
 import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import React, { forwardRef, useState } from "react";
-import { ExtraProps, StyledInputBase, StyledLabel } from "./style";
+import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 
 interface AccessibleInputTextProps {
   label: string;
@@ -9,9 +9,12 @@ interface AccessibleInputTextProps {
 }
 
 export type InputTextProps = RawTextFieldProps &
-  ExtraProps &
+  InputTextExtraProps &
   AccessibleInputTextProps;
 
+/**
+ * @see https://v4.mui.com/components/text-fields/
+ */
 const InputText = forwardRef<HTMLInputElement, InputTextProps>(
   function InputText(props, ref): JSX.Element {
     const {

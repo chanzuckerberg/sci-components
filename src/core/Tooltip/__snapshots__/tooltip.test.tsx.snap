@@ -6,6 +6,6 @@ exports[`<Tooltip /> Test story renders snapshot 1`] = `
   data-mui-internal-clone-element="true"
   data-testid="tooltip"
 >
-  Test
+  I am a tooltip child element
 </div>
 `;

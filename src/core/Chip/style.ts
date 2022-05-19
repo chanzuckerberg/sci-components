@@ -10,13 +10,13 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface ChipExtraProps extends CommonThemeProps {
   size?: "small" | "medium";
   status?: "success" | "error" | "warning" | "info" | "pending" | "beta";
   isRounded?: boolean;
 }
 
-const small = (props: ExtraProps): SerializedStyles => {
+const small = (props: ChipExtraProps): SerializedStyles => {
   const spacings = getSpaces(props);
 
   return css`
@@ -30,7 +30,7 @@ const small = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const medium = (props: ExtraProps): SerializedStyles => {
+const medium = (props: ChipExtraProps): SerializedStyles => {
   const spacings = getSpaces(props);
   const colors = getColors(props);
 
@@ -69,7 +69,7 @@ const medium = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const rounded = (props: ExtraProps): SerializedStyles => {
+const rounded = (props: ChipExtraProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
@@ -77,7 +77,7 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const square = (props: ExtraProps): SerializedStyles => {
+const square = (props: ChipExtraProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
@@ -85,33 +85,33 @@ const square = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const success = (props: ExtraProps): SerializedStyles | undefined => {
+const success = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "success");
 };
 
-const error = (props: ExtraProps): SerializedStyles | undefined => {
+const error = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "error");
 };
 
-const beta = (props: ExtraProps): SerializedStyles | undefined => {
+const beta = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "beta");
 };
 
-const pending = (props: ExtraProps): SerializedStyles | undefined => {
+const pending = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "pending");
 };
 
-const warning = (props: ExtraProps): SerializedStyles | undefined => {
+const warning = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "warning");
 };
 
-const info = (props: ExtraProps): SerializedStyles | undefined => {
+const info = (props: ChipExtraProps): SerializedStyles | undefined => {
   return createStatusCss(props, "info");
 };
 
 function createStatusCss(
-  props: ExtraProps,
-  status: NonNullable<ExtraProps["status"]>
+  props: ChipExtraProps,
+  status: NonNullable<ChipExtraProps["status"]>
 ): SerializedStyles | undefined {
   const colors = getColors(props);
 
@@ -171,7 +171,7 @@ export const StyledChip = styled(Chip, {
 })`
   border: none;
 
-  ${(props: ExtraProps) => {
+  ${(props: ChipExtraProps) => {
     const { size, status, isRounded } = props;
 
     return css`

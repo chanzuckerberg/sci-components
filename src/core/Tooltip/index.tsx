@@ -5,13 +5,15 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
-import { arrowCss, ExtraProps, Subtitle, tooltipCss } from "./style";
+import { arrowCss, Subtitle, tooltipCss, TooltipExtraProps } from "./style";
 
-type TooltipProps = ExtraProps & RawTooltipProps;
+type TooltipProps = TooltipExtraProps & RawTooltipProps;
 
 export type { TooltipProps };
 
 /**
+ * @see https://v4.mui.com/components/tooltips/
+ *
  * @warning If the tooltip wraps a disabled component, please make sure to
  * wrap the children in a `<span>` tag.
  * https://mui.com/components/tooltips/#disabled-elements
@@ -29,6 +31,8 @@ const Tooltip = forwardRef(function Tooltip(
     width = "default",
     ...rest
   } = props;
+
+  const { children } = rest;
 
   if (inverted) {
     // eslint-disable-next-line no-console
@@ -69,8 +73,8 @@ const Tooltip = forwardRef(function Tooltip(
   });
 
   // (mlila) if no content is passed into the tooltip, don't render
-  // anything. this matches with the native MUI behavior.
-  if (!title && !subtitle) return null;
+  // a tooltip. this matches with the native MUI behavior.
+  if (!title && !subtitle) return <>{children}</>;
 
   const content = (
     <>
