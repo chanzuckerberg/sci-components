@@ -247,6 +247,7 @@ Default.args = {
 // Live Preview Story
 
 const storyRow = {
+  alignItems: "end",
   display: "grid",
   gridColumnGap: 24,
   gridRowGap: 0,
