@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { ClickAwayListener, Popper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Args, Story } from "@storybook/react";
@@ -32,8 +33,13 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
   };
 });
 
+const StyledInputDropdown = styled(InputDropdown)`
+  width: 160px;
+`;
+
 const Demo = (props: Args): JSX.Element => {
-  const { disabled, label, sdsStyle, sdsType, multiple, ...rest } = props;
+  const { disabled, fullWidth, label, sdsStyle, sdsType, multiple, ...rest } =
+    props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -86,16 +92,29 @@ const Demo = (props: Args): JSX.Element => {
     <>
       <ClickAwayListener onClickAway={handleClickAway}>
         <div>
-          <InputDropdown
-            disabled={disabled}
-            label={label}
-            onClick={handleClick}
-            sdsStage={open ? "userInput" : "default"}
-            sdsStyle={sdsStyle}
-            sdsType={sdsType}
-            data-testid="InputDropdown"
-            {...rest}
-          />
+          {fullWidth ? (
+            <StyledInputDropdown
+              disabled={disabled}
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              sdsStyle={sdsStyle}
+              sdsType={sdsType}
+              data-testid="InputDropdown"
+              {...rest}
+            />
+          ) : (
+            <InputDropdown
+              disabled={disabled}
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              sdsStyle={sdsStyle}
+              sdsType={sdsType}
+              data-testid="InputDropdown"
+              {...rest}
+            />
+          )}
 
           <Popper
             open={open}
@@ -216,6 +235,7 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 export const RoundLivePreview = LivePreviewTemplate.bind({});
 
 RoundLivePreview.args = {
+  fullWidth: true,
   sdsStyle: "rounded",
 };
 
@@ -228,6 +248,7 @@ RoundLivePreview.parameters = {
 export const SquareLivePreview = LivePreviewTemplate.bind({});
 
 SquareLivePreview.args = {
+  fullWidth: true,
   sdsStyle: "square",
 };
 
