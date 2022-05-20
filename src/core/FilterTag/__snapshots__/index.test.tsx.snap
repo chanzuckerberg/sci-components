@@ -24,7 +24,7 @@ exports[`<FilterTag /> Default story renders snapshot 1`] = `
     style="grid-area: 2 / 1 / 2 / 2;"
   >
     <div
-      class="MuiButtonBase-root MuiChip-root css-10g9uq9 MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-deletableColorPrimary MuiChip-clickable MuiChip-deletable"
+      class="MuiButtonBase-root MuiChip-root css-jkv6tl MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-deletableColorPrimary MuiChip-clickable MuiChip-deletable"
       role="button"
       tabindex="0"
     >

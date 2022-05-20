@@ -23,6 +23,10 @@ export const StyledTag = styled(Tag)`
         ${fontHeaderXs(props)}
       }
 
+      .MuiChip-deleteIcon {
+        margin-left: ${spacings?.s}px;
+      }
+
       .MuiChip-label,
       svg {
         z-index: auto;
