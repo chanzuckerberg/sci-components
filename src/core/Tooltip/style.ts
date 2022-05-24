@@ -87,18 +87,6 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 
       border: ${borders?.gray["300"]};
       box-shadow: ${shadows?.m};
-
-      .MuiTooltip-arrow {
-        color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
-        left: ${arrowOffset}px;
-
-        &:before {
-          border: ${inverted || sdsStyle === "dark"
-            ? null
-            : borders?.gray["300"]};
-          box-sizing: border-box;
-        }
-      }
     }
   `;
 };
@@ -108,5 +96,17 @@ export const arrowCss = (props: TooltipExtraProps): string => {
 
   const borders = getBorders(props);
 
-  return css``;
+  return css`
+    &.MuiTooltip-arrow {
+      /* (bethbertozzi): !important is needed to fight inline style */
+      left: ${arrowOffset}px !important;
+      color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+      &:before {
+        border: ${inverted || sdsStyle === "dark"
+          ? null
+          : borders?.gray["300"]};
+        box-sizing: border-box;
+      }
+    }
+  `;
 };
