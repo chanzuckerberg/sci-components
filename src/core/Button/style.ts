@@ -34,7 +34,7 @@ const ButtonBase = styled(Button, {
       padding: ${padding};
       min-width: 120px;
       height: 34px;
-      &:hover, &:focus {
+      &:hover {
         color: white;
         background-color: ${colors?.primary[500]};
         box-shadow: none;
@@ -60,9 +60,13 @@ const ButtonBase = styled(Button, {
 export const RoundedButton = styled(ButtonBase)`
   ${(props) => {
     const corners = getCorners(props);
+    const spacings = getSpaces(props);
 
     return `
       border-radius: ${corners?.l}px;
+      .MuiButton-startIcon {
+        margin-right: ${spacings?.m}px;
+      }
     `;
   }}
 `;

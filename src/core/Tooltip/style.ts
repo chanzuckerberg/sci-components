@@ -73,7 +73,7 @@ export const Subtitle = styled("div")`
 `;
 
 export const tooltipCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, width, followCursor } = props;
+  const { inverted, sdsStyle, width, followCursor, arrowOffset } = props;
 
   const borders = getBorders(props);
   const shadows = getShadows(props);
@@ -87,6 +87,18 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 
       border: ${borders?.gray["300"]};
       box-shadow: ${shadows?.m};
+
+      .MuiTooltip-arrow {
+        color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+        left: ${arrowOffset}px;
+
+        &:before {
+          border: ${inverted || sdsStyle === "dark"
+            ? null
+            : borders?.gray["300"]};
+          box-sizing: border-box;
+        }
+      }
     }
   `;
 };
@@ -96,17 +108,5 @@ export const arrowCss = (props: TooltipExtraProps): string => {
 
   const borders = getBorders(props);
 
-  return css`
-    &.MuiTooltip-arrow {
-      color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
-      left: ${arrowOffset}px !important;
-
-      &:before {
-        border: ${inverted || sdsStyle === "dark"
-          ? null
-          : borders?.gray["300"]};
-        box-sizing: border-box;
-      }
-    }
-  `;
+  return css``;
 };

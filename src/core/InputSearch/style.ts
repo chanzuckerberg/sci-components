@@ -27,10 +27,12 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
 
 const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const corners = getCorners(props);
+  const borders = getBorders(props);
 
   return css`
     .${outlinedInputClasses.notchedOutline} {
       border-radius: ${corners?.l}px;
+      border: ${borders?.gray[400]};
     }
   `;
 };
@@ -113,16 +115,17 @@ export const StyledSearchBase = styled(TextField, {
       min-width: 120px;
       display: block;
 
+      .${outlinedInputClasses.root} {
+        .${outlinedInputClasses.notchedOutline} {
+          border: ${borders?.gray[400]};
+        }
+      }
+
       .${inputBaseClasses.inputSizeSmall} {
         padding: ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;
-
-        .${outlinedInputClasses.notchedOutline} {
-          border-radius: ${corners?.m}px;
-          border: ${borders?.gray[400]};
-        }
       }
 
       .${outlinedInputClasses.root}:hover
