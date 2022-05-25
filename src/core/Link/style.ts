@@ -51,4 +51,4 @@ export const StyledLink = styled(Link, {
       ${sdsStyle === "dashed" && dashedStyle(props)}
     `;
   }}
-`;
+` as typeof Link;

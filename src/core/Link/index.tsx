@@ -1,3 +1,4 @@
+import { Link as RawLink } from "@mui/material";
 import React, { ForwardedRef, forwardRef } from "react";
 import { LinkProps, StyledLink } from "./style";
 
@@ -12,7 +13,7 @@ const Link = forwardRef(
 
     return <StyledLink {...props} underline={underline} ref={ref} />;
   }
-);
+) as typeof RawLink;
 
 export type { LinkProps };
 
