@@ -82,11 +82,6 @@ export default {
       control: { type: "text" },
       required: true,
     },
-    onDelete: {
-      control: { labels: ["Undefined", "onDelete: () => {}"], type: "select" },
-      mapping: [undefined, () => {}],
-      options: [0, 1],
-    },
     sdsStyle: {
       control: { type: "radio" },
       options: ["rounded", "square"],
@@ -102,128 +97,54 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
 
-Primary.args = {
+Default.args = {
   label: "Label",
   sdsStyle: "square",
   sdsType: "primary",
-};
-
-export const RoundedPrimary = Template.bind({});
-
-RoundedPrimary.args = {
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "primary",
-};
-
-export const PrimaryWithIcon = Template.bind({});
-
-PrimaryWithIcon.args = {
-  icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "primary",
-};
-
-export const RoundedPrimaryWithIcon = Template.bind({});
-
-RoundedPrimaryWithIcon.args = {
-  icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "primary",
-};
-
-export const Secondary = Template.bind({});
-
-Secondary.args = {
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "secondary",
-};
-
-export const RoundedSecondary = Template.bind({});
-
-RoundedSecondary.args = {
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "secondary",
-};
-
-export const SecondaryWithIcon = Template.bind({});
-
-SecondaryWithIcon.args = {
-  icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "secondary",
-};
-
-export const RoundedSecondaryWithIcon = Template.bind({});
-
-RoundedSecondaryWithIcon.args = {
-  icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "secondary",
-};
-
-export const DoubleColorWithoutIcon = Template.bind({});
-
-DoubleColorWithoutIcon.args = {
-  color: ["brown", "lightsalmon"],
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "secondary",
-};
-
-export const TripleColorWithIcon = Template.bind({});
-
-TripleColorWithIcon.args = {
-  color: ["brown", "lightsalmon", "crimson"],
-  icon: <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  label: "Label",
-  sdsStyle: "rounded",
-  sdsType: "secondary",
 };
 
 /*
- * Live Preview for Rounded Tag
+ * Live Preview
  */
 
 const livePreviewStyles = {
-  columnGap: "24px",
-  display: "flex",
+  display: "inline-grid",
+  gridColumnGap: 24,
+  gridRowGap: 24,
+  gridTemplateColumns: "repeat(3, auto)",
+  gridTemplateRows: "repeat(2, auto)",
 };
 
-const TagLivePreviewDemo = (props: Args): JSX.Element => {
-  const { color, icon, label, sdsStyle } = props;
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { color, icon, label } = props;
 
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <div>
+      <div style={{ gridArea: "1 / 1 / 2 / 2" }}>
         <Tag
           {...props}
           color={color}
           icon={undefined}
           label={label}
-          sdsStyle={sdsStyle}
+          sdsStyle="square"
           sdsType="primary"
         />
       </div>
-      <div>
+
+      <div style={{ gridArea: "1 / 2 / 2 / 3" }}>
         <Tag
           {...props}
           color={color}
           icon={undefined}
           label={label}
-          sdsStyle={sdsStyle}
+          sdsStyle="square"
           sdsType="secondary"
         />
       </div>
-      <div>
+
+      <div style={{ gridArea: "1 / 3 / 2 / 4" }}>
         <Tag
           {...props}
           color={color}
@@ -231,7 +152,42 @@ const TagLivePreviewDemo = (props: Args): JSX.Element => {
             icon || <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />
           }
           label={label}
-          sdsStyle={sdsStyle}
+          sdsStyle="square"
+          sdsType="secondary"
+        />
+      </div>
+
+      <div style={{ gridArea: "2 / 1 / 3 / 2" }}>
+        <Tag
+          {...props}
+          color={color}
+          icon={undefined}
+          label={label}
+          sdsStyle="rounded"
+          sdsType="primary"
+        />
+      </div>
+
+      <div style={{ gridArea: "2 / 2 / 3 / 3" }}>
+        <Tag
+          {...props}
+          color={color}
+          icon={undefined}
+          label={label}
+          sdsStyle="rounded"
+          sdsType="secondary"
+        />
+      </div>
+
+      <div style={{ gridArea: "2 / 3 / 3 / 4" }}>
+        <Tag
+          {...props}
+          color={color}
+          icon={
+            icon || <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />
+          }
+          label={label}
+          sdsStyle="rounded"
           sdsType="secondary"
         />
       </div>
@@ -239,42 +195,18 @@ const TagLivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewRoundedTemplate: Story = (args) => (
-  <TagLivePreviewDemo {...args} />
-);
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-export const LivePreviewRounded = LivePreviewRoundedTemplate.bind({});
+export const LivePreview = LivePreviewTemplate.bind({});
 
-LivePreviewRounded.parameters = {
+LivePreview.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-LivePreviewRounded.args = {
+LivePreview.args = {
   label: "Label",
-  sdsStyle: "rounded",
-};
-
-/*
- * Live Preview for Square Tag
- */
-
-const LivePreviewSquareTemplate: Story = (args) => (
-  <TagLivePreviewDemo {...args} />
-);
-
-export const LivePreviewSquare = LivePreviewSquareTemplate.bind({});
-
-LivePreviewSquare.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-LivePreviewSquare.args = {
-  label: "Label",
-  sdsStyle: "square",
 };
 
 /*
@@ -289,6 +221,12 @@ const TestDemo = (props: Args): JSX.Element => {
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 Test.args = {
   label: "Label",
