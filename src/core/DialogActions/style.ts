@@ -2,16 +2,16 @@ import { DialogActions } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getSpaces } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface DialogActionsExtraProps extends CommonThemeProps {
   buttonPosition?: "left" | "right";
 }
 
-// (thuang): Please keep this in sync with the props used in `ExtraProps`
+// (thuang): Please keep this in sync with the props used in `DialogActionsExtraProps`
 const doNotForwardProps = ["buttonPosition"];
 
 export const StyledDialogActions = styled(DialogActions, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})<ExtraProps>`
+})<DialogActionsExtraProps>`
   padding: 0;
 
   ${(props) => {

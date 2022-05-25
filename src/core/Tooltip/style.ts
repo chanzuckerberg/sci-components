@@ -11,7 +11,7 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface TooltipExtraProps extends CommonThemeProps {
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
@@ -19,7 +19,7 @@ export interface ExtraProps extends CommonThemeProps {
   width?: "default" | "wide";
 }
 
-const dark = (props: ExtraProps): string => {
+const dark = (props: TooltipExtraProps): string => {
   const spacings = getSpaces(props);
 
   return css`
@@ -32,7 +32,7 @@ const dark = (props: ExtraProps): string => {
   `;
 };
 
-const light = (props: ExtraProps): string => {
+const light = (props: TooltipExtraProps): string => {
   const spacings = getSpaces(props);
 
   return css`
@@ -51,7 +51,7 @@ const wide = (): string => {
   `;
 };
 
-const tableStyles = (props: ExtraProps): string => {
+const tableStyles = (props: TooltipExtraProps): string => {
   const spacings = getSpaces(props);
 
   return css`
@@ -62,7 +62,7 @@ const tableStyles = (props: ExtraProps): string => {
 export const Subtitle = styled("div")`
   ${fontHeaderXxs}
 
-  ${(props: ExtraProps) => {
+  ${(props: TooltipExtraProps) => {
     const colors = getColors(props);
 
     return `
@@ -71,7 +71,7 @@ export const Subtitle = styled("div")`
   }}
 `;
 
-export const tooltipCss = (props: ExtraProps): string => {
+export const tooltipCss = (props: TooltipExtraProps): string => {
   const { inverted, sdsStyle, width, followCursor } = props;
 
   const borders = getBorders(props);
@@ -90,7 +90,7 @@ export const tooltipCss = (props: ExtraProps): string => {
   `;
 };
 
-export const arrowCss = (props: ExtraProps): string => {
+export const arrowCss = (props: TooltipExtraProps): string => {
   const { inverted, sdsStyle } = props;
 
   const borders = getBorders(props);

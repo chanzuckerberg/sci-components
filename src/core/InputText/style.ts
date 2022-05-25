@@ -10,7 +10,7 @@ import {
   getTypography,
 } from "../styles";
 
-export interface ExtraProps extends CommonThemeProps {
+export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   sdsType?: "textField" | "textArea";
@@ -22,7 +22,7 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
 
 const fontBodyM = fontBody("m");
 
-const error = (props: ExtraProps): SerializedStyles => {
+const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
@@ -32,7 +32,7 @@ const error = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const warning = (props: ExtraProps): SerializedStyles => {
+const warning = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
@@ -42,7 +42,7 @@ const warning = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const disabledStyled = (props: ExtraProps): SerializedStyles => {
+const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
@@ -57,7 +57,7 @@ const disabledStyled = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const textArea = (props: ExtraProps): SerializedStyles => {
+const textArea = (props: InputTextExtraProps): SerializedStyles => {
   const spacings = getSpaces(props);
   return css`
     .MuiInputBase-multiline {
@@ -90,7 +90,7 @@ export const StyledInputBase = styled(TextField, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${(props: ExtraProps) => {
+  ${(props: InputTextExtraProps) => {
     const { intent, sdsType, disabled } = props;
     const spacings = getSpaces(props);
     const borders = getBorders(props);

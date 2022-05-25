@@ -11,7 +11,11 @@ import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
 
-export const StyledCallout = styled(Alert)`
+const doNotForwardProps = ["calloutTitle"];
+
+export const StyledCallout = styled(Alert, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);
@@ -21,8 +25,10 @@ export const StyledCallout = styled(Alert)`
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
     const calloutColor = (colors && colors[severity][100]) || "white";
+    const backgroundColor = colors && colors[severity][100];
 
     return `
+      background-color: ${backgroundColor};
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;

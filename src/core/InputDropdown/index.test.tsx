@@ -21,6 +21,6 @@ describe("<InputDropdown />", () => {
     render(<Test {...Test.args} />);
     const InputDropdownElement = screen.getByTestId("InputDropdown");
     fireEvent.click(InputDropdownElement);
-    expect(screen.getAllByText("Menu Item")).not.toBeNull();
+    expect(screen.getAllByText("Menu Item 1")).not.toBeNull();
   });
 });

@@ -2,12 +2,19 @@ import { TooltipClassKey } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
-import { condensedCSS, ExtraProps } from "./style";
+import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 
-export type TooltipCondesnedProps = TooltipProps & ExtraProps;
+export type TooltipCondensedProps = TooltipProps & TooltipCondensedExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/tooltips/
+ *
+ * @warning If the tooltip wraps a disabled component, please make sure to
+ * wrap the children in a `<span>` tag.
+ * https://mui.com/components/tooltips/#disabled-elements
+ */
 const TooltipCondensed = forwardRef(function TooltipCondensed(
-  props: TooltipCondesnedProps,
+  props: TooltipCondensedProps,
   ref
 ): JSX.Element {
   const { children, title, indicator, indicatorColor } = props;

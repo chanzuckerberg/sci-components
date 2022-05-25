@@ -17,9 +17,15 @@ describe("<Tooltip />", () => {
     expect(tooltipElement).not.toBeNull();
   });
 
-  it("does not render when no content provided", () => {
+  it("does not render when no title content provided", () => {
     render(<Test {...Test.args} title="" />);
     const tooltipElement = screen.queryByTestId("tooltip");
     expect(tooltipElement).toBeNull();
+  });
+
+  it("renders children even when it does not render a tooltip", () => {
+    render(<Test {...Test.args} title="" />);
+    const child = screen.getByText("I am a tooltip child element");
+    expect(child).not.toBeNull();
   });
 });

@@ -11,6 +11,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-addon-emotion-theme",
+    "@storybook/addon-a11y",
   ],
   webpackFinal: async (config) => {
     return {
