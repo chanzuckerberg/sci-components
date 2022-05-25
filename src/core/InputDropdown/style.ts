@@ -48,6 +48,10 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       margin-top: ${spacings?.xxs}px;
       margin-bottom: ${spacings?.xxs}px;
 
+      &:hover {
+        color: #000;
+      }
+
       > span {
         margin-right: ${spacings?.xs}px;
         margin-left: ${spacings?.xs}px;
@@ -63,7 +67,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${colors?.gray[500]};
+      fill: ${colors?.gray[400]};
     }
 
     &:hover {
@@ -72,7 +76,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${palette?.text?.primary};
 
       path {
-        fill: ${colors?.gray[600]};
+        fill: ${colors?.gray[500]};
+      }
+
+      > span {
+        color: #000;
       }
     }
 
@@ -101,16 +109,37 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     span {
       ${fontHeaderS(props)}
+      color: ${colors?.gray[500]}
+    }
+
+    path {
+      fill: ${colors?.gray[500]};
     }
 
     &:hover {
       color: ${colors?.gray[600]};
       border: none;
+
+      span {
+        color: ${colors?.gray[600]};
+      }
+
+      path {
+        fill: ${colors?.gray[600]};
+      }
     }
 
     &:active {
       color: ${palette?.text?.primary};
       border: none;
+
+      span {
+        color: #000;
+      }
+
+      path {
+        fill: ${colors?.primary[400]};
+      }
     }
 
     &:focus {

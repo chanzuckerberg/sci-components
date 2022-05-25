@@ -105,7 +105,6 @@ export const StyledSearchBase = styled(TextField, {
     const { intent, disabled, sdsStyle } = props;
     const spacings = getSpaces(props);
     const borders = getBorders(props);
-    const corners = getCorners(props);
     const colors = getColors(props);
 
     return css`
