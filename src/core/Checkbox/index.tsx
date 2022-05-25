@@ -10,6 +10,9 @@ export interface CheckboxProps
   stage: "checked" | "unchecked" | "indeterminate";
 }
 
+/**
+ * @see https://v4.mui.com/components/checkboxes/
+ */
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   let newProps: MUICheckboxProps;
   switch (props.stage) {

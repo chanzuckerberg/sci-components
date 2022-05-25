@@ -49,6 +49,9 @@ import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall
 import { ReactComponent as IconPeopleLarge } from "../../common/svgs/IconPeopleLarge.svg";
 import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleSmall.svg";
 import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
+import { ReactComponent as IconPersonLarge } from "../../common/svgs/IconPersonLarge.svg";
+import { ReactComponent as IconPersonSmall } from "../../common/svgs/IconPersonSmall.svg";
+import { ReactComponent as IconPinLocationSmall } from "../../common/svgs/IconPinLocationSmall.svg";
 import { ReactComponent as IconPinSmall } from "../../common/svgs/IconPinSmall.svg";
 import { ReactComponent as IconPlusCircleSmall } from "../../common/svgs/IconPlusCircleSmall.svg";
 import { ReactComponent as IconPlusSmall } from "../../common/svgs/IconPlusSmall.svg";
@@ -118,7 +121,9 @@ export interface IconNameToSizes {
   open: "xs" | "s";
   people: "xs" | "s" | "l" | "xl";
   percentage: "xs" | "s";
+  person: "xs" | "s" | "l" | "xl";
   pin: "xs" | "s";
+  pinLocation: "xs" | "s";
   plus: "xs" | "s";
   plusCircle: "xs" | "s";
   projectPrivate: "xl";
@@ -308,9 +313,17 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconPercentageSmall,
   },
+  person: {
+    largeIcon: IconPersonLarge,
+    smallIcon: IconPersonSmall,
+  },
   pin: {
     largeIcon: null,
     smallIcon: IconPinSmall,
+  },
+  pinLocation: {
+    largeIcon: null,
+    smallIcon: IconPinLocationSmall,
   },
   plus: {
     largeIcon: null,

@@ -1,12 +1,15 @@
 import { Clear } from "@mui/icons-material";
 import { ChipProps as RawChipProps } from "@mui/material";
 import React from "react";
-import { ExtraProps, StyledChip } from "./style";
+import { ChipExtraProps, StyledChip } from "./style";
 
-type ChipProps = ExtraProps & RawChipProps;
+type ChipProps = ChipExtraProps & RawChipProps;
 
 export type { ChipProps };
 
+/**
+ * @see https://v4.mui.com/components/chips/
+ */
 const Chip = (props: ChipProps): JSX.Element => {
   const { onDelete } = props;
   if (onDelete) {

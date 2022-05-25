@@ -22,7 +22,9 @@ export const StyledAutocomplete = styled(Autocomplete, {
   ${({ search }: StyleProps) => !search && "height: 0;"}
 ` as typeof Autocomplete;
 
-export const InputBaseWrapper = styled("div")`
+export const InputBaseWrapper = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: StyleProps) => {
     const { search } = props;
 
