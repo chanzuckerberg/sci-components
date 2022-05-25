@@ -34,7 +34,7 @@ export const StyledAccordion = styled(Accordion, {
       box-shadow: ${shadows?.none};
       border-bottom: ${useDivider ? border?.gray[300] : "none"};
       height: fit-content;
-      ${togglePosition === "left" && leftPosition(props)};
+      ${togglePosition === "left" && leftPosition(props)}
 
       &::before {
         opacity: 0;
@@ -44,7 +44,7 @@ export const StyledAccordion = styled(Accordion, {
         margin: 0;
       }
     `;
-  }};
+  }}
 `;
 
 const leftPosition = (props: AccordionExtraProps): SerializedStyles => {

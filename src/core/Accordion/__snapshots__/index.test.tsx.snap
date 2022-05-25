@@ -2,7 +2,7 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiAccordion-root css-1llpkvm MuiPaper-elevation1"
+  class="MuiPaper-root MuiAccordion-root css-cqyok5 MuiPaper-elevation1"
   data-testid="accordion"
   id="test-story"
 >
@@ -10,7 +10,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
     aria-controls="test-story-panel-content"
     aria-disabled="false"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root css-qefece"
+    class="MuiButtonBase-root MuiAccordionSummary-root css-131fy9e"
     id="test-story"
     role="button"
     tabindex="0"
@@ -63,7 +63,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-12zh0q5"
+            class="MuiAccordionDetails-root css-14myhfl"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>

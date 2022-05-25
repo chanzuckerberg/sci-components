@@ -25,7 +25,7 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   component: Demo,
-  title: "Chip",
+  title: "Chip - To Be Depreciated",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
