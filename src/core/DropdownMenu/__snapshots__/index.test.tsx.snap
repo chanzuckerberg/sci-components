@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<InputDropdown /> Test story renders snapshot 1`] = `
+exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text css-uxw73"
-    data-testid="InputDropdown"
-    label="Label"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text css-yenj9k"
+    label="Click Target"
     tabindex="0"
     type="button"
   >
@@ -15,7 +14,7 @@ exports[`<InputDropdown /> Test story renders snapshot 1`] = `
       <span
         class="css-1sjvubj"
       >
-        Label
+        Click Target
       </span>
       <div
         class="css-jbvua0"

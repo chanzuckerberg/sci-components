@@ -5,22 +5,21 @@ import React from "react";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, { Test as TestStory } from "./index.stories";
 
-// Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<InputDropdown />", () => {
+describe("<DropdownMenu />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders InputDropdown component", () => {
+  it("renders DropdownMenu component", () => {
     render(<Test {...Test.args} />);
-    const InputDropdownElement = screen.getByTestId("InputDropdown");
-    expect(InputDropdownElement).not.toBeNull();
+    const DropdownMenuElement = screen.getByTestId("dropdown-menu");
+    expect(DropdownMenuElement).not.toBeNull();
   });
 
   it("opens the menu on click", () => {
     render(<Test {...Test.args} />);
-    const InputDropdownElement = screen.getByTestId("InputDropdown");
+    const InputDropdownElement = screen.getByTestId("dropdown-menu");
     fireEvent.click(InputDropdownElement);
-    expect(screen.getAllByText("Menu Item 1")).not.toBeNull();
+    expect(screen.getAllByText("Priority: critical")).not.toBeNull();
   });
 });
