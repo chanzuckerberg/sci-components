@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
-import { DefaultMenuSelectOption } from "../MenuSelect";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -86,7 +86,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const InsideModal = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
+  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
@@ -104,7 +104,7 @@ export const InsideModal = (): JSX.Element => {
     </Dialog>
   );
 
-  function handleChange(newValue: DefaultMenuSelectOption | null) {
+  function handleChange(newValue: DefaultDropdownMenuOption | null) {
     setValue(newValue);
   }
 };

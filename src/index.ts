@@ -32,6 +32,8 @@ export * from "./core/DialogTitle";
 export { default as DialogTitle } from "./core/DialogTitle";
 export * from "./core/Dropdown";
 export { default as Dropdown } from "./core/Dropdown";
+export * from "./core/DropdownMenu";
+export { default as DropdownMenu } from "./core/DropdownMenu";
 export * from "./core/FilterTag";
 export { default as FilterTag } from "./core/FilterTag";
 export * from "./core/Icon";

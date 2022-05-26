@@ -1,11 +1,11 @@
 import React from "react";
-import { DefaultMenuSelectOption } from "src/core/MenuSelect";
+import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
 import { StyledChip } from "./style";
 
 interface Props {
-  value: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null;
+  value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
   multiple?: boolean;
-  onDelete: (option: DefaultMenuSelectOption) => void;
+  onDelete: (option: DefaultDropdownMenuOption) => void;
 }
 
 export default function Chips({
@@ -23,7 +23,7 @@ export default function Chips({
 
   return (
     <>
-      {(value as DefaultMenuSelectOption[]).map((item) => {
+      {(value as DefaultDropdownMenuOption[]).map((item) => {
         const { name } = item;
 
         return (

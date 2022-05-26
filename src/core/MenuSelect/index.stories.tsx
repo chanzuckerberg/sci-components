@@ -156,7 +156,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 
 export default {
   component: Demo,
-  title: "MenuSelect",
+  title: "MenuSelect - To Be Depreciated",
 };
 
 const Template: Story = (args) => <Demo {...args} />;

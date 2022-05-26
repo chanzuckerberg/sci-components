@@ -93,6 +93,12 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   return css`
     border: none;
 
+    padding: 0;
+
+    & .MuiButton-label {
+      margin: 0;
+    }
+
     span {
       ${fontHeaderS(props)}
     }
@@ -205,7 +211,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 const doNotForwardProps = ["intent", "open", "sdsStage"];
 
 export const StyledInputDropdown = styled(Button, {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
@@ -224,7 +230,9 @@ export const StyledInputDropdown = styled(Button, {
   }}
 `;
 
-export const StyledDetail = styled("span")`
+export const StyledDetail = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
@@ -240,7 +248,9 @@ interface DetailsAndCounter extends CommonThemeProps {
   counter?: string;
 }
 
-export const StyledLabel = styled("span")`
+export const StyledLabel = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
@@ -256,7 +266,9 @@ export const StyledLabel = styled("span")`
   }}
 `;
 
-export const StyledCounter = styled("span")`
+export const StyledCounter = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
