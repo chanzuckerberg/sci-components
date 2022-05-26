@@ -75,7 +75,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
               <InputAdornment position="end">
                 <IconButton
                   onClick={localHandleSubmit}
-                  data-testId="searchButton"
                   sdsType="secondary"
                   aria-label="search-button"
                 >
