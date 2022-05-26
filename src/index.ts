@@ -34,6 +34,8 @@ export * from "./core/Dropdown";
 export { default as Dropdown } from "./core/Dropdown";
 export * from "./core/DropdownMenu";
 export { default as DropdownMenu } from "./core/DropdownMenu";
+export * from "./core/FilterTag";
+export { default as FilterTag } from "./core/FilterTag";
 export * from "./core/Icon";
 export { default as Icon } from "./core/Icon";
 export * from "./core/IconButton";

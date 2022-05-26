@@ -32,7 +32,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
-    height: 20px;
+    height: unset;
 
     &:hover {
       cursor: pointer;
@@ -40,7 +40,8 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
-      padding: ${spacings?.xxxs}px 0;
+      padding: 0;
+      line-height: unset;
     }
 
     .MuiChip-deleteIcon {
@@ -63,7 +64,7 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
-    height: 30px;
+    height: unset;
 
     &:hover {
       cursor: pointer;
@@ -72,6 +73,7 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXs(props)}
       padding: 0;
+      line-height: unset;
     }
 
     .MuiChip-icon,
@@ -109,34 +111,33 @@ const rounded = (props: ExtraProps): SerializedStyles => {
 
   const { icon } = props;
 
-  if (icon) {
-    return css`
-      border-radius: ${corners?.l}px;
-      padding: ${spacings?.xs}px ${spacings?.s}px ${spacings?.xs}px
-        ${spacings?.xs}px;
+  return css`
+    border-radius: ${corners?.l}px;
+    padding: ${icon
+      ? `${spacings?.xxs}px ${spacings?.s}px ${spacings?.xxs}px ${spacings?.xs}px`
+      : `${spacings?.xxxs}px ${spacings?.s}px`};
 
-      &:after {
-        border-radius: ${corners?.l}px;
-      }
-    `;
-  } else {
-    return css`
+    &:after {
       border-radius: ${corners?.l}px;
-      padding: ${spacings?.xs}px ${spacings?.s}px;
-      &:after {
-        border-radius: ${corners?.l}px;
-      }
-    `;
-  }
+    }
+  `;
 };
 
 const square = (props: ExtraProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
+  const { icon } = props;
+
   return css`
     border-radius: ${corners?.m}px;
-    padding: ${spacings?.xxs}px ${spacings?.s}px;
+    padding: ${icon
+      ? `${spacings?.xxs}px ${spacings?.s}px`
+      : `${spacings?.xxxs}px ${spacings?.xs}px`};
+
+    &:after {
+      border-radius: ${corners?.m}px;
+    }
   `;
 };
 
@@ -214,7 +215,8 @@ function createTypeCss(
       }
     }
 
-    &:active {
+    &:active,
+    &:focus {
       background-color: ${typeColors.backgroundClicked};
       &:after {
         backdrop-filter: ${cssFilters.activeFilter};
@@ -222,7 +224,8 @@ function createTypeCss(
     }
 
     &:hover,
-    &:active {
+    &:active,
+    &:focus {
       .MuiChip-label {
         color: white;
       }
@@ -254,12 +257,12 @@ export const StyledTag = styled(Chip, {
     top: 0;
     position: absolute;
     background-color: transparent;
-    z-index: 1;
+    z-index: 0;
   }
 
   .MuiChip-label,
   svg {
-    z-index: 2;
+    z-index: 1;
   }
 
   ${(props: ExtraProps) => {
