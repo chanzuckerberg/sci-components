@@ -148,15 +148,9 @@ export const StyledCheck = styled(Check, {
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
     const spacings = getSpaces(props);
-
+    const selectedColor = disabled ? colors?.gray[300] : colors?.primary[400];
     return `
-      color: ${
-        selected
-          ? disabled
-            ? colors?.gray[300]
-            : colors?.primary[400]
-          : "transparent"
-      };
+      color: ${selected ? selectedColor : "transparent"};
       margin-right: ${spacings?.m}px;
       margin-top: ${spacings?.xxxs}px;
       padding: 0;
