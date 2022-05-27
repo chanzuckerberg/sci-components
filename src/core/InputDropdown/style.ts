@@ -54,7 +54,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       > span {
         margin-right: ${spacings?.xs}px;
-        margin-left: ${spacings?.xs}px;
+        margin-left: ${spacings?.s}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -62,7 +62,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       svg {
         margin-left: auto;
-        margin-right: ${spacings?.xs}px;
+        margin-right: ${spacings?.s}px;
       }
     }
 

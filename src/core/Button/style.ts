@@ -53,6 +53,12 @@ const ButtonBase = styled(Button, {
         background-color: ${colors?.gray[300]};
         border-color: ${colors?.gray[300]};
       }
+      .MuiButton-startIcon {
+        margin-right: ${spacings?.m}px;
+      }
+      .MuiButton-endIcon {
+        margin-left: ${spacings?.m}px;
+      }
     `;
   }}
 `;
@@ -60,13 +66,9 @@ const ButtonBase = styled(Button, {
 export const RoundedButton = styled(ButtonBase)`
   ${(props) => {
     const corners = getCorners(props);
-    const spacings = getSpaces(props);
 
     return `
       border-radius: ${corners?.l}px;
-      .MuiButton-startIcon {
-        margin-right: ${spacings?.m}px;
-      }
     `;
   }}
 `;
