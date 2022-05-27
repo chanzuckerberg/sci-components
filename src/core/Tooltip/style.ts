@@ -73,7 +73,7 @@ export const Subtitle = styled("div")`
 `;
 
 export const tooltipCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, width, followCursor, arrowOffset } = props;
+  const { inverted, sdsStyle, width, followCursor } = props;
 
   const borders = getBorders(props);
   const shadows = getShadows(props);
