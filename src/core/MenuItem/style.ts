@@ -24,6 +24,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
     return `
       padding: ${spacings?.xs}px ${spacings?.s}px;
+      min-height: unset;
 
       .primary-text {
         font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
