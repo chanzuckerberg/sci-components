@@ -137,19 +137,26 @@ export const DemoWrapper = styled("div")`
 
 interface StyledCheckType {
   selected?: boolean;
+  disabled?: boolean;
 }
 
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<StyledCheckType>`
   ${(props) => {
-    const { selected } = props;
+    const { selected, disabled } = props;
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
     const spacings = getSpaces(props);
 
     return `
-      color: ${selected ? colors?.primary[400] : "transparent"};
+      color: ${
+        selected
+          ? disabled
+            ? colors?.gray[300]
+            : colors?.primary[400]
+          : "transparent"
+      };
       margin-right: ${spacings?.m}px;
       margin-top: ${spacings?.xxxs}px;
       padding: 0;
