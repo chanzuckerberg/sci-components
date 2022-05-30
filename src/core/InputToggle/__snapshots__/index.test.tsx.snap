@@ -2,7 +2,7 @@
 
 exports[`<InputToggle /> Test story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root css-ujw0lf"
+  class="MuiSwitch-root css-14g4sls"
 >
   <span
     aria-disabled="false"
@@ -21,9 +21,6 @@ exports[`<InputToggle /> Test story renders snapshot 1`] = `
         class="MuiSwitch-thumb"
       />
     </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
   </span>
   <span
     class="MuiSwitch-track"

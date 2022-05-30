@@ -21,6 +21,7 @@ const InputToggle = (props: InputToggleExtraProps) => {
       color="primary"
       onChange={handleChange}
       value={labelValue}
+      disableRipple
       {...rest}
     >
       {labelValue}

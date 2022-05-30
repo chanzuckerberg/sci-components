@@ -22,31 +22,33 @@ const toggle = (props: InputToggleExtraProps) => {
   const TOGGLE_HEIGHT = 18;
 
   return `
-    cursor: ${disabled ? "default" : "pointer"};
-    border-radius: ${corners?.l}px;
-    height: 26px;
-    width: 62px;
-    line-height: 18px;
-    margin-bottom: ${spaces?.m}px;
-    padding: 0;
-
-    .MuiSwitch-switchBase {
-      font: inherit;
-      margin: ${spaces?.xxs}px;
+    &&{
+      cursor: ${disabled ? "default" : "pointer"};
+      border-radius: ${corners?.l}px;
+      height: 26px;
+      width: 62px;
+      line-height: 18px;
+      margin-bottom: ${spaces?.m}px;
       padding: 0;
 
-      &:hover {
-        background-color: white;
+      .MuiSwitch-switchBase {
+        font: inherit;
+        margin: ${spaces?.xxs}px;
+        padding: 0;
+        transform: unset;
+
+        &:hover {
+          background-color: white;
+        }
       }
-    }
 
-    .MuiSwitch-thumb {
-      height: ${TOGGLE_HEIGHT}px;
-      width: ${TOGGLE_HEIGHT}px;
-      box-shadow: none;
-    }
+      .MuiSwitch-thumb {
+        height: ${TOGGLE_HEIGHT}px;
+        width: ${TOGGLE_HEIGHT}px;
+        box-shadow: none;
+      }
 
-    && .MuiSwitch-track {
+    .MuiSwitch-track {
       background-color: white;
       width: unset;
     }
