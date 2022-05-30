@@ -34,6 +34,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       padding: 0;
 
       &:hover {
+        border-color: ${colors?.gray[300]};
         background-color: ${colors?.gray[100]};
       }
     }

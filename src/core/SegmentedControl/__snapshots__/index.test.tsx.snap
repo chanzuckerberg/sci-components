@@ -2,7 +2,7 @@
 
 exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 <div
-  class="MuiToggleButtonGroup-root css-686uuq"
+  class="MuiToggleButtonGroup-root css-xct8ce"
   color="primary"
   role="group"
 >
@@ -135,7 +135,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 
 exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
 <div
-  class="MuiToggleButtonGroup-root css-686uuq"
+  class="MuiToggleButtonGroup-root css-xct8ce"
   color="primary"
   data-testid="segmentedControl"
   role="group"
