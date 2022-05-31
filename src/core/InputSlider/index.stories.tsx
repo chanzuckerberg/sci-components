@@ -14,24 +14,28 @@ const useStyles = makeStyles(() => {
   };
 });
 
-const Demo = (props: Args): JSX.Element => {
-  const classes = useStyles();
-  const { marks, max, min } = props;
-
-  const customMarks = [
+const generateCustomMarks = (min: number, max: number) => {
+  return [
     {
       label: min,
       value: min,
     },
     {
-      label: ((max - min) / 2).toFixed(0),
-      value: (max - min) / 2,
+      label: ((max - min) / 2 + min).toFixed(0),
+      value: (max - min) / 2 + min,
     },
     {
       label: max,
       value: max,
     },
   ];
+};
+
+const Demo = (props: Args): JSX.Element => {
+  const classes = useStyles();
+  const { marks, max, min } = props;
+
+  const customMarks = generateCustomMarks(min, max);
 
   return (
     <div className={classes.root}>
@@ -119,20 +123,7 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { marks, max, min } = props;
 
-  const customMarks = [
-    {
-      label: min,
-      value: min,
-    },
-    {
-      label: ((max - min) / 2).toFixed(0),
-      value: (max - min) / 2,
-    },
-    {
-      label: max,
-      value: max,
-    },
-  ];
+  const customMarks = generateCustomMarks(min, max);
 
   return (
     <div style={storyRow as React.CSSProperties}>
@@ -182,20 +173,7 @@ const TestDemo = (props: Args): JSX.Element => {
   const classes = useStyles();
   const { marks, max, min } = props;
 
-  const customMarks = [
-    {
-      label: min,
-      value: min,
-    },
-    {
-      label: ((max - min) / 2).toFixed(0),
-      value: (max - min) / 2,
-    },
-    {
-      label: max,
-      value: max,
-    },
-  ];
+  const customMarks = generateCustomMarks(min, max);
 
   return (
     <div className={classes.root}>
