@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Switch, SwitchProps } from "@material-ui/core";
+import { Switch, SwitchProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -22,31 +22,30 @@ const toggle = (props: InputToggleExtraProps) => {
   const TOGGLE_HEIGHT = 18;
 
   return `
-    &&{
-      cursor: ${disabled ? "default" : "pointer"};
-      border-radius: ${corners?.l}px;
-      height: 26px;
-      width: 62px;
-      line-height: 18px;
-      margin-bottom: ${spaces?.m}px;
+    cursor: ${disabled ? "default" : "pointer"};
+    border-radius: ${corners?.l}px;
+    height: 26px;
+    width: 62px;
+    line-height: 18px;
+    margin-bottom: ${spaces?.m}px;
+    padding: 0;
+
+    .MuiSwitch-switchBase {
+      font: inherit;
+      margin: ${spaces?.xxs}px;
       padding: 0;
+      transform: unset;
 
-      .MuiSwitch-switchBase {
-        font: inherit;
-        margin: ${spaces?.xxs}px;
-        padding: 0;
-        transform: unset;
-
-        &:hover {
-          background-color: white;
-        }
+      &:hover {
+        background-color: white;
       }
+    }
 
-      .MuiSwitch-thumb {
-        height: ${TOGGLE_HEIGHT}px;
-        width: ${TOGGLE_HEIGHT}px;
-        box-shadow: none;
-      }
+    .MuiSwitch-thumb {
+      height: ${TOGGLE_HEIGHT}px;
+      width: ${TOGGLE_HEIGHT}px;
+      box-shadow: none;
+    }
 
     .MuiSwitch-track {
       background-color: white;
@@ -66,6 +65,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
 
     .MuiSwitch-thumb {
       color: ${disabled ? colors?.primary[300] : colors?.primary[400]};
+      margin-left: ${spaces?.s}px;
     }
 
     .MuiSwitch-switchBase {
@@ -111,6 +111,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
 
     .MuiSwitch-thumb {
       color: ${disabled ? colors?.gray[300] : colors?.gray[400]};
+      margin-right: ${spaces?.s}px;
     }
 
     .MuiSwitch-switchBase {
