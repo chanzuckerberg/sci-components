@@ -53,7 +53,7 @@ Default.parameters = {
 Default.args = {
   defaultValue: [15, 85],
   disabled: false,
-  marks: [],
+  marks: true,
   max: 100,
   min: 0,
   orientation: "horizontal",
@@ -173,6 +173,7 @@ LivePreview.parameters = {
 LivePreview.args = {
   defaultValue: [15, 85],
   disabled: false,
+  marks: true,
   max: 100,
   min: 0,
 };
