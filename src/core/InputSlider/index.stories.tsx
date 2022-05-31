@@ -14,30 +14,28 @@ const useStyles = makeStyles(() => {
   };
 });
 
-const availableMarkOptions = [
-  false,
-  [
-    {
-      label: "0",
-      value: 0,
-    },
-    {
-      label: "50",
-      value: 50,
-    },
-    {
-      label: "100",
-      value: 100,
-    },
-  ],
-];
-
 const Demo = (props: Args): JSX.Element => {
   const classes = useStyles();
+  const { marks, max, min } = props;
+
+  const customMarks = [
+    {
+      label: min,
+      value: min,
+    },
+    {
+      label: ((max - min) / 2).toFixed(0),
+      value: (max - min) / 2,
+    },
+    {
+      label: max,
+      value: max,
+    },
+  ];
 
   return (
     <div className={classes.root}>
-      <InputSlider {...props} />
+      <InputSlider {...props} marks={marks ? customMarks : false} />
     </div>
   );
 };
@@ -55,7 +53,9 @@ Default.parameters = {
 Default.args = {
   defaultValue: [15, 85],
   disabled: false,
-  marks: availableMarkOptions[1],
+  marks: [],
+  max: 100,
+  min: 0,
   orientation: "horizontal",
   step: 5,
   valueLabelDisplay: "on",
@@ -73,11 +73,8 @@ export default {
     },
     marks: {
       control: {
-        labels: ["off", "on"],
-        type: "select",
+        type: "boolean",
       },
-      mapping: availableMarkOptions,
-      options: Object.keys(availableMarkOptions),
     },
     max: {
       control: {
@@ -120,25 +117,42 @@ const storyRow = {
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { marks, max, min } = props;
+
+  const customMarks = [
+    {
+      label: min,
+      value: min,
+    },
+    {
+      label: ((max - min) / 2).toFixed(0),
+      value: (max - min) / 2,
+    },
+    {
+      label: max,
+      value: max,
+    },
+  ];
+
   return (
     <div style={storyRow as React.CSSProperties}>
       <div style={{ gridArea: "1/1/2/2" }}>
         <InputSlider
-          marks={availableMarkOptions[1]}
           step={5}
           valueLabelDisplay="on"
           {...props}
           defaultValue={85}
+          marks={marks ? customMarks : false}
           orientation="horizontal"
         />
       </div>
 
       <div style={{ gridArea: "1/2/2/3" }}>
         <InputSlider
-          marks={availableMarkOptions[1]}
           step={5}
           valueLabelDisplay="on"
           {...props}
+          marks={marks ? customMarks : false}
           orientation="horizontal"
         />
       </div>
@@ -158,14 +172,37 @@ LivePreview.parameters = {
 
 LivePreview.args = {
   defaultValue: [15, 85],
+  disabled: false,
+  max: 100,
+  min: 0,
 };
 
 const TestDemo = (props: Args): JSX.Element => {
   const classes = useStyles();
+  const { marks, max, min } = props;
+
+  const customMarks = [
+    {
+      label: min,
+      value: min,
+    },
+    {
+      label: ((max - min) / 2).toFixed(0),
+      value: (max - min) / 2,
+    },
+    {
+      label: max,
+      value: max,
+    },
+  ];
 
   return (
     <div className={classes.root}>
-      <InputSlider {...props} data-testid="test-input-slider" />
+      <InputSlider
+        {...props}
+        data-testid="test-input-slider"
+        marks={marks ? customMarks : false}
+      />
     </div>
   );
 };
@@ -173,3 +210,9 @@ const TestDemo = (props: Args): JSX.Element => {
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.args = {
+  defaultValue: 15,
+  max: 100,
+  min: 0,
+};
