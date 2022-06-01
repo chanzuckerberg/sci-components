@@ -155,6 +155,17 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 }
 
 export default {
+  argTypes: {
+    keepSearchOnSelect: {
+      control: { type: "boolean" },
+    },
+    multiple: {
+      control: { type: "boolean" },
+    },
+    search: {
+      control: { type: "boolean" },
+    },
+  },
   component: Demo,
   title: "MenuSelect - To Be Depreciated",
 };
@@ -163,24 +174,33 @@ const Template: Story = (args) => <Demo {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  keepSearchOnSelect: false,
+  multiple: false,
+  search: false,
+};
 
 export const SingleSelectWithSearch = Template.bind({});
 
 SingleSelectWithSearch.args = {
+  keepSearchOnSelect: false,
+  multiple: false,
   search: true,
 };
 
 export const MultiSelect = Template.bind({});
 
 MultiSelect.args = {
+  keepSearchOnSelect: false,
   multiple: true,
+  search: false,
 };
 
 export const MultiSelectWithSearch = Template.bind({});
 
 MultiSelectWithSearch.args = {
   InputBaseProps: { placeholder: "Custom placeholder..." },
+  keepSearchOnSelect: true,
   multiple: true,
   search: true,
 };
@@ -214,6 +234,10 @@ const useStyles = makeStyles((theme: AppThemeOptions) => {
       margin: 0,
     },
     popper: {
+      "& .MuiAutocomplete-option[aria-selected='true'], & .MuiAutocomplete-option[data-focus='true']":
+        {
+          backgroundColor: "transparent",
+        },
       backgroundColor: "white",
       border: `1px solid ${colors?.gray[100]}`,
       borderRadius: corners?.m,
