@@ -1,13 +1,11 @@
-import styled from "@emotion/styled";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import { styled } from "@mui/material/styles";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { CommonThemeProps, getColors, getCorners, getSpaces } from "../styles";
 
-const sdsPropNames = ["buttonDefinition"];
+const doNotForwardProps = ["color", "buttonDefinition"];
 
 export const StyledSegmentedControl = styled(ToggleButtonGroup, {
-  shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
-  },
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CommonThemeProps) => {
     const colors = getColors(props);
