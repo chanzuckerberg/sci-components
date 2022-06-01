@@ -67,6 +67,7 @@ export interface StyleProps extends CommonThemeProps {
 
 const doNotForwardProps = [
   "count",
+  "keepSearchOnSelect",
   "search",
   "InputBaseProps",
   "hasSections",
