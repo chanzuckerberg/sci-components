@@ -98,23 +98,18 @@ const horizontal = () => {
     .MuiSlider-rail,
     .MuiSlider-track {
       height: 4px;
-    }
-
-    .MuiSlider-rail {
-      padding-right: 3px;
-    }
     
-    .MuiSlider-track {
+      //to cover the last mark 3px pading is needed for rail and track
       padding-right: 3px;
     }
 
     .MuiSlider-mark {
       margin-top: 1px; 
-      margin-left: 1px;
     }
 
-    .MuiSlider-mark ~ .MuiSlider-mark {
-      margin-left: 0;
+    //the first mark needs 1px margin-left to not touch the rail element
+    .MuiSlider-mark[data-index="0"] {
+      margin-left: 1px;
     }
 
     .MuiSlider-thumb.Mui-disabled {
@@ -129,22 +124,23 @@ const vertical = () => {
     .MuiSlider-rail,
     .MuiSlider-track {
       width: 4px;
-      margin-top: -3px;
-    }
 
-    .MuiSlider-rail {
+      //to cover the last mark -3px margin-top is needed for rail and track 
+      margin-top: -3px;
+
+      //to cover the first mark 3px padding-bottom is needed for rail and track
       padding-bottom: 3px;
     }
     
     .MuiSlider-mark {
-      margin-bottom: 1px; 
-      margin-left: 1px;
+      margin-left: 1px; 
     }
 
-    .MuiSlider-mark ~ .MuiSlider-mark {
-      margin-bottom: 0;
+    //the first mark needs 1px margin-bottom to not touch the rail element
+    .MuiSlider-mark[data-index="0"] {
+      margin-bottom: 1px;
     }
-    
+
     .MuiSlider-thumb.Mui-disabled {
       margin-left: -5px;
       margin-bottom: -6px;
