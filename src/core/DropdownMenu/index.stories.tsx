@@ -202,6 +202,9 @@ export default {
     hasSections: {
       control: { type: "boolean" },
     },
+    keepSearchOnSelect: {
+      control: { type: "boolean" },
+    },
     multiple: {
       control: { type: "boolean" },
     },
@@ -222,6 +225,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   hasSections: true,
+  keepSearchOnSelect: true,
   multiple: true,
   search: true,
   title: true,
@@ -546,6 +550,7 @@ export const LivePreview = LivePreviewTemplate.bind({});
 
 LivePreview.args = {
   hasSections: false,
+  keepSearchOnSelect: true,
   multiple: false,
   search: false,
   title: false,
@@ -678,6 +683,7 @@ export const Test = TestTemplate.bind({});
 
 Test.args = {
   hasSections: false,
+  keepSearchOnSelect: false,
   multiple: false,
   search: false,
   title: false,

@@ -4,7 +4,7 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
 } from "@material-ui/lab";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -23,6 +23,7 @@ export interface DefaultMenuSelectOption {
 }
 
 interface MenuSelectExtraProps extends StyleProps {
+  keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   InputBaseProps?: Partial<InputSearchProps>;
 }
@@ -57,6 +58,7 @@ export default function MenuSelect<
   props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
+    keepSearchOnSelect = true,
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
     renderTags = defaultRenderTags,
@@ -66,6 +68,8 @@ export default function MenuSelect<
     search = false,
     InputBaseProps = {},
   } = props;
+
+  const [inputValue, setInputValue] = useState("");
 
   if (!hasWarned) {
     // eslint-disable-next-line no-console
@@ -85,6 +89,17 @@ export default function MenuSelect<
       noOptionsText={noOptionsText}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
+      inputValue={inputValue}
+      onInputChange={(event, value, reason) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+      }}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch

@@ -4,7 +4,7 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
 } from "@material-ui/lab";
-import React from "react";
+import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
@@ -26,8 +26,8 @@ export interface DefaultDropdownMenuOption {
   details?: string;
   count?: string;
 }
-
 interface ExtraProps extends StyleProps {
+  keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (event: React.SyntheticEvent) => void;
   InputBaseProps?: Partial<InputSearchProps>;
@@ -60,6 +60,7 @@ export default function DropdownMenu<
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
+    keepSearchOnSelect = true,
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
     getOptionSelected = defaultGetOptionSelected,
@@ -72,6 +73,8 @@ export default function DropdownMenu<
     InputBaseProps = {},
   } = props;
 
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <StyledAutocomplete
       clearOnBlur={false}
@@ -82,6 +85,17 @@ export default function DropdownMenu<
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       getOptionSelected={getOptionSelected}
+      inputValue={inputValue}
+      onInputChange={(event, value, reason) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+      }}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
