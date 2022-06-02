@@ -1,4 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
+import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
 import {
@@ -38,14 +40,21 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
-    margin: ${spacings?.xxs}px 0;
+    margin-top: ${spacings?.xxs}px;
+    margin-bottom: ${spacings?.xxs}px;
 
-    .MuiButton-label {
+    &.MuiButton-text {
       justify-content: flex-start;
-      margin: 0 ${spacings?.xs}px;
+      margin-top: ${spacings?.xxs}px;
+      margin-bottom: ${spacings?.xxs}px;
+
+      &:hover {
+        color: #000;
+      }
 
       > span {
         margin-right: ${spacings?.xs}px;
+        margin-left: ${spacings?.s}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -53,11 +62,12 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       svg {
         margin-left: auto;
+        margin-right: ${spacings?.s}px;
       }
     }
 
     path {
-      fill: ${colors?.gray[500]};
+      fill: ${colors?.gray[400]};
     }
 
     &:hover {
@@ -66,7 +76,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${palette?.text?.primary};
 
       path {
-        fill: ${colors?.gray[600]};
+        fill: ${colors?.gray[500]};
+      }
+
+      > span {
+        color: #000;
       }
     }
 
@@ -95,16 +109,37 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     span {
       ${fontHeaderS(props)}
+      color: ${colors?.gray[500]}
+    }
+
+    path {
+      fill: ${colors?.gray[500]};
     }
 
     &:hover {
       color: ${colors?.gray[600]};
       border: none;
+
+      span {
+        color: ${colors?.gray[600]};
+      }
+
+      path {
+        fill: ${colors?.gray[600]};
+      }
     }
 
     &:active {
       color: ${palette?.text?.primary};
       border: none;
+
+      span {
+        color: #000;
+      }
+
+      path {
+        fill: ${colors?.primary[400]};
+      }
     }
 
     &:focus {
@@ -120,6 +155,10 @@ const square = (props: InputDropdownProps): SerializedStyles => {
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
+
+    > span:first-of-type {
+      margin-right: 0px;
+    }
   `;
 };
 
@@ -136,9 +175,10 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
     height: 34px;
     min-width: 90px;
 
-    .MuiButton-label > span:first-of-type {
+    > span:first-of-type {
       font-weight: 600;
       color: ${labelColor};
+      margin-right: 0px;
     }
   `;
 };
@@ -270,4 +310,13 @@ export const StyledCounter = styled("span")`
     padding: 1px ${spacings?.xs}px;
   `;
   }}
+`;
+
+export const StyledPopper = styled(Popper)`
+  & {
+    .${autocompleteClasses.popperDisablePortal} {
+      position: relative !important;
+      transform: translate3d(5px, 0px, 0px) !important;
+    }
+  }
 `;

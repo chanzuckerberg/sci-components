@@ -32,7 +32,7 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
     <StyledMenuItem {...(originalMenuItemProps as unknown)} disabled={disabled}>
       {isMultiSelect && (
         // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheck selected={selected} color="primary" />
+        <StyledCheck selected={selected} color="primary" disabled={disabled} />
       )}
 
       <ContentWrapper>

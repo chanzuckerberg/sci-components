@@ -69,7 +69,13 @@ const Notification = ({
 
   return (
     <>
-      <Slide in={!hide} direction={dismissDirection} mountOnEnter unmountOnExit>
+      <Slide
+        in={!hide}
+        direction={dismissDirection}
+        mountOnEnter
+        unmountOnExit
+        timeout={250}
+      >
         <StyledNotification
           onClose={onClose ? handleClose : undefined}
           action={
