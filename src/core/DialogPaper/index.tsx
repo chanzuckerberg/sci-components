@@ -5,6 +5,9 @@ import { StyledPaper } from "./style";
 
 export type { PaperProps as DialogPaperProps };
 
+/**
+ * @see https://v4.mui.com/components/paper/
+ */
 const DialogPaper = forwardRef<HTMLDivElement, PaperProps>(function DialogPaper(
   props,
   ref
