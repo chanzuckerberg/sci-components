@@ -78,7 +78,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
       }
 
       &:before {
-        color: ${disabled ? colors?.gray[300] : "black"};
+        color: ${disabled ? colors?.gray[300] : colors?.gray[600]};
         content: "${value}";
         font: inherit;
         font-family: 'Open sans';
