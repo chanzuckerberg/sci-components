@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
-  fontBody,
+  fontBodyS,
   getBorders,
   getCorners,
   getSpaces,
@@ -19,8 +19,6 @@ export interface InputTextExtraProps extends CommonThemeProps {
 }
 
 const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
-
-const fontBodyM = fontBody("m");
 
 const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
@@ -72,7 +70,7 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
 
 export const StyledLabel = styled("label")`
   display: block;
-  ${fontBodyM}
+  ${fontBodyS}
 
   ${(props) => {
     const typography = getTypography(props);

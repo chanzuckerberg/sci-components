@@ -13,6 +13,7 @@ import {
 
 export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
+  arrowOffset?: number;
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
@@ -92,14 +93,15 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 };
 
 export const arrowCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle } = props;
+  const { inverted, sdsStyle, arrowOffset } = props;
 
   const borders = getBorders(props);
 
   return css`
     &.MuiTooltip-arrow {
+      /* (bethbertozzi): !important is needed to fight inline style */
+      left: ${arrowOffset}px !important;
       color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
-
       &:before {
         border: ${inverted || sdsStyle === "dark"
           ? null

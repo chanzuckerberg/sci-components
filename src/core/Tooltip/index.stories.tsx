@@ -12,6 +12,11 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <div>
       Hover over the info icon to view the tooltip.
+      <p>
+        ArrowOffset changes the position of the tooltip arrow and can be any
+        numeric value within [-120, 120]. Any value value over the width of the
+        tooltip will remove the arrow from the tooltip.
+      </p>
       <div
         style={{
           margin: "135px 300px",
@@ -29,6 +34,9 @@ export default {
   argTypes: {
     arrow: {
       control: { type: "boolean" },
+    },
+    arrowOffset: {
+      control: { type: "number" },
     },
     placement: {
       control: { type: "select" },

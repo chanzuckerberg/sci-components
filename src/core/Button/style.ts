@@ -34,7 +34,7 @@ const ButtonBase = styled(Button, {
       padding: ${padding};
       min-width: 120px;
       height: 34px;
-      &:hover, &:focus {
+      &:hover {
         color: white;
         background-color: ${colors?.primary[500]};
         box-shadow: none;
@@ -52,6 +52,12 @@ const ButtonBase = styled(Button, {
         color: ${colors?.gray[400]};
         background-color: ${colors?.gray[300]};
         border-color: ${colors?.gray[300]};
+      }
+      .MuiButton-startIcon {
+        margin-right: ${spacings?.m}px;
+      }
+      .MuiButton-endIcon {
+        margin-left: ${spacings?.m}px;
       }
     `;
   }}

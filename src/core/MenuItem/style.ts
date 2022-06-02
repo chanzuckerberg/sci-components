@@ -26,8 +26,9 @@ export const StyledMenuItem = styled(MenuItem)`
       const primary = colors?.primary[400];
 
       return `
-        padding: ${spacings?.s}px ${spacings?.m}px;
-
+        padding: ${spacings?.xs}px ${spacings?.s}px;
+        opacity: 1;
+       
         .primary-text {
           font-weight: ${
             selected ? fontWeights?.semibold : fontWeights?.regular
@@ -136,19 +137,20 @@ export const DemoWrapper = styled("div")`
 
 interface StyledCheckType {
   selected?: boolean;
+  disabled?: boolean;
 }
 
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<StyledCheckType>`
   ${(props) => {
-    const { selected } = props;
+    const { selected, disabled } = props;
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
     const spacings = getSpaces(props);
-
+    const selectedColor = disabled ? colors?.gray[300] : colors?.primary[400];
     return `
-      color: ${selected ? colors?.primary[400] : "transparent"};
+      color: ${selected ? selectedColor : "transparent"};
       margin-right: ${spacings?.m}px;
       margin-top: ${spacings?.xxxs}px;
       padding: 0;
