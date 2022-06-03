@@ -66,7 +66,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  label: "Filter Tag",
+  label: "Tag Filter",
 };
 
 /*
