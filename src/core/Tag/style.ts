@@ -199,14 +199,6 @@ function createTypeCss(
       fill: ${typeColors.iconColor};
     }
 
-    &:hover {
-      background-color: ${typeColors.backgroundHover};
-    }
-
-    &:active {
-      background-color: ${typeColors.backgroundClicked};
-    }
-
     &:hover,
     &:active,
     &:focus {
@@ -217,6 +209,26 @@ function createTypeCss(
       svg {
         fill: white;
       }
+    }
+
+    &:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:active {
+      background-color: ${typeColors.backgroundClicked};
+    }
+
+    &:focus {
+      background-color: ${typeColors.background};
+    }
+
+    &:focus:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:focus:active {
+      background-color: ${typeColors.backgroundClicked};
     }
   `;
 }
