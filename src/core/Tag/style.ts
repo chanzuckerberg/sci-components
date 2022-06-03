@@ -41,7 +41,6 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXxxs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiChip-deleteIcon {
@@ -73,7 +72,6 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiChip-icon,
@@ -205,8 +203,7 @@ function createTypeCss(
       background-color: ${typeColors.backgroundHover};
     }
 
-    &:active,
-    &:focus {
+    &:active {
       background-color: ${typeColors.backgroundClicked};
     }
 
