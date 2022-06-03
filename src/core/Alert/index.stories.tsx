@@ -38,10 +38,12 @@ const SnackbarAlert = () => {
         open={open}
         autoHideDuration={6000}
       >
-        <Alert className="elevated" severity="info">
-          <div>This is a snackbar alert!</div>
-          <DismissButton onClick={handleClose}>DISMISS</DismissButton>
-        </Alert>
+        <div>
+          <Alert className="elevated" severity="info">
+            <div>This is a snackbar alert!</div>
+            <DismissButton onClick={handleClose}>DISMISS</DismissButton>
+          </Alert>
+        </div>
       </Snackbar>
     </div>
   );
