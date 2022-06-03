@@ -146,7 +146,7 @@ export const LivePreview = LivePreviewTemplate.bind({});
 LivePreview.args = {};
 
 LivePreview.parameters = {
-  chromatic: { delay: 5000 },
+  chromatic: { delay: 10000 },
   snapshot: {
     skip: true,
   },
