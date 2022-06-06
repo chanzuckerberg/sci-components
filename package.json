@@ -86,6 +86,9 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
+  "resolutions": {
+    "ip": "1.1.6"
+  },
   "scripts": {
     "build": "yarn sd-build && rollup -c",
     "build-watch": "rollup -c -w",
