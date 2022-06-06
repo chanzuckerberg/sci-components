@@ -45,7 +45,7 @@ export const SingleSelectControlled = (): JSX.Element => {
         value={value}
       />
 
-      <Button color="primary" variant="contained" onClick={update}>
+      <Button sdsType="primary" sdsStyle="square" onClick={update}>
         Update Controlled Value
       </Button>
     </>
@@ -134,7 +134,7 @@ export const MultipleSelectControlled = (): JSX.Element => {
         />
       </ResizableWrapper>
       <br />
-      <Button color="primary" variant="contained" onClick={update}>
+      <Button sdsType="primary" sdsStyle="square" onClick={update}>
         Update Controlled Value
       </Button>
     </>
