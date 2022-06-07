@@ -1,20 +1,79 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ButtonBase from "@mui/material/ButtonBase";
 import Popper from "@mui/material/Popper";
+import { styled } from "@mui/material/styles";
 import { AutocompleteCloseReason } from "@mui/material/useAutocomplete";
-import makeStyles from "@mui/styles/makeStyles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import Chip from "../Chip";
-import { getColors, getCorners, getShadows, SDSTheme } from "../styles";
+import { getColors, getCorners, getShadows } from "../styles";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
+
+const StyledPopper = styled(Popper)`
+  ${(props) => {
+    const colors = getColors(props);
+    const shadows = getShadows(props);
+    const corners = getCorners(props);
+
+    return `
+      & .MuiAutocomplete-option[aria-selected='true'], 
+      & .MuiAutocomplete-option[data-focus='true'] {
+        background-color: transparent,
+      }
+
+      & .MuiAutocomplete-popper.MuiAutocomplete-popperDisablePortal {
+        position: relative !important;
+        transform: none !important;
+      }
+
+      .MuiAutocomplete-paper {
+        box-shadow: none;
+        margin: 0;
+
+        .MuiAutocomplete-listbox {
+          padding: 8px;
+        }
+      }
+
+      background-color: white;
+      border: 1px solid ${colors?.gray[100]};
+      border-radius: ${corners?.m}px;
+      box-shadow: ${shadows?.m};
+      color: #586069;
+      font-size: 13px;
+      width: 300px;
+      z-index: 1;
+    `;
+  }}
+`;
+
+const StyledButton = styled(ButtonBase)`
+  & span {
+    width: 100%;
+  }
+
+  & svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #0366d6;
+  }
+
+  color: #586069;
+  font-size: 13px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  text-align: left;
+  width: 100%;
+`;
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
   const { multiple, options = GITHUB_LABELS, search } = props;
-
-  const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
@@ -32,17 +91,30 @@ const Demo = (props: Args): JSX.Element => {
 
   return (
     <>
-      <div className={classes.root}>
-        <ButtonBase
-          disableRipple
-          className={classes.button}
-          aria-describedby={id}
-          onClick={handleClick}
-        >
+      <div
+        style={{
+          width: 221,
+        }}
+      >
+        <StyledButton disableRipple aria-describedby={id} onClick={handleClick}>
           <span>Click Target</span>
           <ExpandMoreIcon />
-        </ButtonBase>
-        <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom">
+        </StyledButton>
+        <StyledPopper
+          disablePortal
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          placement="bottom-start"
+          modifiers={[
+            {
+              name: "offset",
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ]}
+        >
           <MenuSelect
             open
             search={search}
@@ -54,7 +126,7 @@ const Demo = (props: Args): JSX.Element => {
             options={options}
             {...props}
           />
-        </Popper>
+        </StyledPopper>
 
         <Chips value={value} multiple={multiple} onDelete={handleDelete} />
       </div>
@@ -146,84 +218,55 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
 }
 
 export default {
+  argTypes: {
+    keepSearchOnSelect: {
+      control: { type: "boolean" },
+    },
+    multiple: {
+      control: { type: "boolean" },
+    },
+    search: {
+      control: { type: "boolean" },
+    },
+  },
   component: Demo,
-  title: "MenuSelect",
+  title: "MenuSelect - To Be Depreciated",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
 
 export const Default = Template.bind({});
 
-Default.args = {};
+Default.args = {
+  keepSearchOnSelect: false,
+  multiple: false,
+  search: false,
+};
 
 export const SingleSelectWithSearch = Template.bind({});
 
 SingleSelectWithSearch.args = {
+  keepSearchOnSelect: false,
+  multiple: false,
   search: true,
 };
 
 export const MultiSelect = Template.bind({});
 
 MultiSelect.args = {
+  keepSearchOnSelect: false,
   multiple: true,
+  search: false,
 };
 
 export const MultiSelectWithSearch = Template.bind({});
 
 MultiSelectWithSearch.args = {
   InputBaseProps: { placeholder: "Custom placeholder..." },
+  keepSearchOnSelect: true,
   multiple: true,
   search: true,
 };
-
-const useStyles = makeStyles((theme: SDSTheme) => {
-  const colors = getColors({ theme });
-  const shadows = getShadows({ theme });
-  const corners = getCorners({ theme });
-
-  return {
-    button: {
-      "& span": {
-        width: "100%",
-      },
-      "& svg": {
-        height: 16,
-        width: 16,
-      },
-      "&:hover,&:focus": {
-        color: "#0366d6",
-      },
-      color: "#586069",
-      fontSize: 13,
-      fontWeight: 600,
-      paddingBottom: 8,
-      textAlign: "left",
-      width: "100%",
-    },
-    paper: {
-      boxShadow: "none",
-      margin: 0,
-    },
-    popper: {
-      backgroundColor: "white",
-      border: `1px solid ${colors?.gray[100]}`,
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      color: "#586069",
-      fontSize: 13,
-      width: 300,
-      zIndex: 1,
-    },
-    popperDisablePortal: {
-      position: "relative",
-      width: "100% !important",
-    },
-    root: {
-      fontSize: 13,
-      width: 221,
-    },
-  };
-});
 
 // From https://github.com/abdonrd/github-labels
 const GITHUB_LABELS = [

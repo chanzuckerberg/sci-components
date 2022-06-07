@@ -1,6 +1,4 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { autocompleteClasses } from "@mui/material/Autocomplete";
-import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
 import {
@@ -54,7 +52,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       > span {
         margin-right: ${spacings?.xs}px;
-        margin-left: ${spacings?.s}px;
+        margin-left: ${spacings?.xs}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -62,12 +60,12 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       svg {
         margin-left: auto;
-        margin-right: ${spacings?.s}px;
+        margin-right: ${spacings?.xs}px;
       }
     }
 
     path {
-      fill: ${colors?.gray[400]};
+      fill: ${colors?.gray[500]};
     }
 
     &:hover {
@@ -76,7 +74,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${palette?.text?.primary};
 
       path {
-        fill: ${colors?.gray[500]};
+        fill: ${colors?.gray[600]};
       }
 
       > span {
@@ -106,10 +104,15 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border: none;
+    padding: 0;
+
+    & .MuiButton-label {
+      margin: 0;
+    }
 
     span {
       ${fontHeaderS(props)}
-      color: ${colors?.gray[500]}
+      color: ${colors?.gray[500]};
     }
 
     path {
@@ -144,6 +147,15 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     &:focus {
       outline: none;
+    }
+
+    &.MuiButton-root.MuiButton-text > span {
+      margin-left: 0;
+    }
+
+    &.MuiButton-root.MuiButton-text svg {
+      margin-left: auto;
+      margin-right: 0;
     }
   `;
 };
@@ -245,7 +257,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 const doNotForwardProps = ["intent", "open", "sdsStage"];
 
 export const StyledInputDropdown = styled(Button, {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
@@ -264,7 +276,9 @@ export const StyledInputDropdown = styled(Button, {
   }}
 `;
 
-export const StyledDetail = styled("span")`
+export const StyledDetail = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
@@ -280,7 +294,9 @@ interface DetailsAndCounter extends CommonThemeProps {
   counter?: string;
 }
 
-export const StyledLabel = styled("span")`
+export const StyledLabel = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
@@ -296,7 +312,9 @@ export const StyledLabel = styled("span")`
   }}
 `;
 
-export const StyledCounter = styled("span")`
+export const StyledCounter = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
@@ -310,13 +328,4 @@ export const StyledCounter = styled("span")`
     padding: 1px ${spacings?.xs}px;
   `;
   }}
-`;
-
-export const StyledPopper = styled(Popper)`
-  & {
-    .${autocompleteClasses.popperDisablePortal} {
-      position: relative !important;
-      transform: translate3d(5px, 0px, 0px) !important;
-    }
-  }
 `;

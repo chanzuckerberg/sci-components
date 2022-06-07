@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { Chip } from "@mui/material";
+import { Chip, darken } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
@@ -158,37 +158,30 @@ function createTypeCss(
     typeof props.tagColor === "string" ? props.tagColor : "primary";
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
-  let cssFilters: {
-    activeFilter?: string;
-    hoverFilter?: string;
-  } = {
-    activeFilter: "brightness(1) saturate(1)",
-    hoverFilter: "brightness(1) saturate(1)",
-  };
-
-  if (colors.length >= 2) {
-    cssFilters = {
-      activeFilter: "brightness(0.7) saturate(1.3)",
-      hoverFilter: "brightness(0.85) saturate(1.15)",
-    };
-  }
-
   const typeToColors = {
     primary: {
       background: colors.length >= 2 ? colors[1] : themeColors?.[intent][400],
       backgroundClicked:
-        colors.length >= 2 ? colors[1] : themeColors?.[intent][600],
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : themeColors?.[intent][600],
       backgroundHover:
-        colors.length >= 2 ? colors[1] : themeColors?.[intent][500],
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : themeColors?.[intent][500],
       iconColor: colors.length > 2 ? colors[2] : "white",
       label: colors.length ? colors[0] : "white",
     },
     secondary: {
       background: colors.length >= 2 ? colors[1] : themeColors?.[intent][200],
       backgroundClicked:
-        colors.length >= 2 ? colors[1] : themeColors?.[intent][600],
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : themeColors?.[intent][600],
       backgroundHover:
-        colors.length >= 2 ? colors[1] : themeColors?.[intent][500],
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : themeColors?.[intent][500],
       iconColor: colors.length > 2 ? colors[2] : themeColors?.[intent][400],
       label: colors.length ? colors[0] : themeColors?.[intent][600],
     },
@@ -210,17 +203,11 @@ function createTypeCss(
 
     &:hover {
       background-color: ${typeColors.backgroundHover};
-      &:after {
-        backdrop-filter: ${cssFilters.hoverFilter};
-      }
     }
 
     &:active,
     &:focus {
       background-color: ${typeColors.backgroundClicked};
-      &:after {
-        backdrop-filter: ${cssFilters.activeFilter};
-      }
     }
 
     &:hover,
@@ -248,22 +235,6 @@ export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   border: none;
-
-  &:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    background-color: transparent;
-    z-index: 0;
-  }
-
-  .MuiChip-label,
-  svg {
-    z-index: 1;
-  }
 
   ${(props: ExtraProps) => {
     const { sdsType, sdsStyle, icon } = props;

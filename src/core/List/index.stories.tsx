@@ -15,12 +15,24 @@ const Demo = (props: Args): JSX.Element => {
         }
         {...props}
       >
-        <ListItem fontSize="l">fontSize=l marginBottom=s</ListItem>
-        <ListItem fontSize="m">fontSize=m marginBottom=s</ListItem>
-        <ListItem fontSize="s">fontSize=s marginBottom=xs</ListItem>
-        <ListItem fontSize="xs">fontSize=xs marginBottom=xs</ListItem>
-        <ListItem fontSize="xxs">fontSize=xxs marginBottom=xs</ListItem>
-        <ListItem fontSize="xxxs">fontSize=xxxs marginBottom=xxs</ListItem>
+        <ListItem fontSize="l" marginBottom="s">
+          fontSize=l marginBottom=s
+        </ListItem>
+        <ListItem fontSize="m" marginBottom="s">
+          fontSize=m marginBottom=s
+        </ListItem>
+        <ListItem fontSize="s" marginBottom="xs">
+          fontSize=s marginBottom=xs
+        </ListItem>
+        <ListItem fontSize="xs" marginBottom="xs">
+          fontSize=xs marginBottom=xs
+        </ListItem>
+        <ListItem fontSize="xxs" marginBottom="xs">
+          fontSize=xxs marginBottom=xs
+        </ListItem>
+        <ListItem fontSize="xxxs" marginBottom="xxs">
+          fontSize=xxxs marginBottom=xxs
+        </ListItem>
         <ListItem fontSize="m">
           <div style={{ width: "200px" }}>
             Really long list item here to make it wrap, so we can see if the
@@ -43,13 +55,13 @@ const Demo = (props: Args): JSX.Element => {
           <span>
             Nested List 1
             <List ordered>
-              <ListItem ordered fontSize="l">
+              <ListItem ordered fontSize="l" marginBottom="s">
                 fontSize=l marginBottom=s
               </ListItem>
-              <ListItem ordered fontSize="m">
+              <ListItem ordered fontSize="m" marginBottom="s">
                 fontSize=m marginBottom=s
               </ListItem>
-              <ListItem ordered fontSize="s">
+              <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
             </List>
@@ -63,22 +75,22 @@ const Demo = (props: Args): JSX.Element => {
                 <span>
                   Nested List 2
                   <List ordered>
-                    <ListItem ordered fontSize="l">
+                    <ListItem ordered fontSize="l" marginBottom="s">
                       fontSize=l marginBottom=s
                     </ListItem>
-                    <ListItem ordered fontSize="m">
+                    <ListItem ordered fontSize="m" marginBottom="s">
                       fontSize=m marginBottom=s
                     </ListItem>
-                    <ListItem ordered fontSize="s">
+                    <ListItem ordered fontSize="s" marginBottom="xs">
                       fontSize=s marginBottom=xs
                     </ListItem>
                   </List>
                 </span>
               </ListItem>
-              <ListItem ordered fontSize="m">
+              <ListItem ordered fontSize="m" marginBottom="s">
                 fontSize=m marginBottom=s
               </ListItem>
-              <ListItem ordered fontSize="s">
+              <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
             </List>
@@ -88,13 +100,13 @@ const Demo = (props: Args): JSX.Element => {
           <span>
             Nested List 3
             <List ordered>
-              <ListItem ordered fontSize="l">
+              <ListItem ordered fontSize="l" marginBottom="s">
                 fontSize=l marginBottom=s
               </ListItem>
-              <ListItem ordered fontSize="m">
+              <ListItem ordered fontSize="m" marginBottom="s">
                 fontSize=m marginBottom=s
               </ListItem>
-              <ListItem ordered fontSize="s">
+              <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
             </List>
