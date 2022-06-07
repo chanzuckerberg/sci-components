@@ -58,7 +58,7 @@ export default {
     },
   },
   component: Demo,
-  title: "Tag Filter",
+  title: "TagFilter",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
@@ -66,7 +66,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  label: "Tag Filter",
+  label: "TagFilter",
 };
 
 /*

@@ -61,6 +61,10 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    chromatic: { delay: 5000 },
+  },
   title: "Tooltip",
 };
 
@@ -75,8 +79,6 @@ Dark.parameters = {
 
 Dark.args = {
   arrow: true,
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
   placement: "top",
   sdsStyle: "dark",
   subtitle: "dolor sit amet",
@@ -93,8 +95,6 @@ Light.parameters = {
 
 Light.args = {
   arrow: true,
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
   placement: "top",
   sdsStyle: "light",
   title: fillerText,
@@ -110,8 +110,6 @@ LightWide.parameters = {
 
 LightWide.args = {
   arrow: true,
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
   placement: "top",
   sdsStyle: "light",
   title: fillerText,
@@ -128,8 +126,6 @@ NoTooltipTitle.parameters = {
 
 NoTooltipTitle.args = {
   arrow: true,
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
   placement: "top",
   sdsStyle: "light",
   width: "wide",
@@ -148,8 +144,6 @@ const arrow = css`
 
 StyledArrow.args = {
   arrow: true,
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
   classes: { arrow },
   title: fillerText,
 };
@@ -219,12 +213,6 @@ PlacementPreview.parameters = {
   },
 };
 
-PlacementPreview.args = {
-  // Chrome shifts elements when fonts load in
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
-};
-
 const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
   return (
@@ -236,8 +224,3 @@ const TestDemo = (props: Args): JSX.Element => {
 
 const TestTemplate: Story = (args) => <TestDemo title="test" {...args} />;
 export const Test = TestTemplate.bind({});
-
-Test.args = {
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 5000 },
-};

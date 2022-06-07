@@ -26,6 +26,12 @@ export default {
     },
   },
   component: Tabs,
+  parameters: {
+    // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
+    chromatic: { delay: 10000 },
+  },
   title: "Tabs",
 } as Meta;
 
@@ -67,10 +73,6 @@ Default.args = {
 };
 
 Default.parameters = {
-  // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
-  chromatic: { delay: 5000 },
   snapshot: {
     skip: true,
   },
@@ -146,7 +148,6 @@ export const LivePreview = LivePreviewTemplate.bind({});
 LivePreview.args = {};
 
 LivePreview.parameters = {
-  chromatic: { delay: 10000 },
   snapshot: {
     skip: true,
   },
@@ -201,7 +202,3 @@ function TestDemo(props: Args): JSX.Element {
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  chromatic: { delay: 5000 },
-};

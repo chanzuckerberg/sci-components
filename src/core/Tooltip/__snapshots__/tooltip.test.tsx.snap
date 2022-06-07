@@ -2,7 +2,6 @@
 
 exports[`<Tooltip /> Test story renders snapshot 1`] = `
 <div
-  chromatic="[object Object]"
   class=""
   data-testid="tooltip"
 >
