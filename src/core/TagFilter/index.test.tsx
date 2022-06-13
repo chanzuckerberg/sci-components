@@ -7,12 +7,12 @@ import Meta, { Test as TestStory } from "./index.stories";
 
 const Test = composeStory(TestStory, Meta);
 
-describe("<FilterTag />", () => {
+describe("<TagFilter />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders FilterTag component", () => {
+  it("renders TagFilter component", () => {
     render(<Test />);
-    const elements = screen.getAllByTestId("filter-tag");
+    const elements = screen.getAllByTestId("tag-filter");
     expect(elements.length).toBeTruthy();
   });
 });
