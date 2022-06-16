@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> Default story renders snapshot 1`] = `
+<div
+  class="MuiButtonBase-root MuiChip-root css-43vdnq MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-clickable"
+  role="button"
+  tabindex="0"
+>
+  <span
+    class="MuiChip-label"
+  >
+    Label
+  </span>
+  <span
+    class="MuiTouchRipple-root"
+  />
+</div>
+`;

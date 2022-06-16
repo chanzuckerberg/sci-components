@@ -2,31 +2,29 @@ import { ClickAwayListener } from "@material-ui/core";
 import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
 import React, { useEffect, useState } from "react";
 import { Value } from "../Dropdown";
+import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
-import MenuSelect, { DefaultMenuSelectOption } from "../MenuSelect";
 import Chips from "./components/Chips";
-import { StyledPaper, StyledPopper, Wrapper } from "./style";
+import { StyledChipsWrapper, StyledPopper, Wrapper } from "./style";
 
 export {
   StyledPopper as ComplexFilterPopper,
-  StyledPaper as ComplexFilterPaper,
   InputDropdown as ComplexFilterInputDropdown,
 };
 interface ComplexFilterProps<Multiple> {
   label: string;
-  options: DefaultMenuSelectOption[];
+  options: DefaultDropdownMenuOption[];
   multiple?: Multiple;
   search?: boolean;
-  onChange: (options: Value<DefaultMenuSelectOption, Multiple>) => void;
-  MenuSelectProps?: Partial<typeof MenuSelect>;
+  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
+  MenuSelectProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultMenuSelectOption, Multiple>;
+  value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper;
-  PaperComponent?: typeof StyledPaper;
   InputDropdownComponent?: typeof InputDropdown;
   isTriggerChangeOnOptionClick?: boolean;
 }
@@ -44,7 +42,6 @@ export default function ComplexFilter<
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
   PopperComponent = StyledPopper,
-  PaperComponent = StyledPaper,
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
@@ -53,17 +50,17 @@ export default function ComplexFilter<
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const [value, setValue] = useState<Value<DefaultMenuSelectOption, Multiple>>(
-    getInitialValue()
-  );
+  const [value, setValue] = useState<
+    Value<DefaultDropdownMenuOption, Multiple>
+  >(getInitialValue());
 
-  const [pendingValue, setPendingValue] = useState<DefaultMenuSelectOption[]>(
-    getInitialValue() as DefaultMenuSelectOption[]
+  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
+    getInitialValue() as DefaultDropdownMenuOption[]
   );
 
   useEffect(() => {
     onChange(value);
-    setPendingValue(value as DefaultMenuSelectOption[]);
+    setPendingValue(value as DefaultDropdownMenuOption[]);
   }, [value]);
 
   useEffect(() => {
@@ -87,22 +84,21 @@ export default function ComplexFilter<
           {...InputDropdownProps}
         />
 
-        <div>
+        <StyledChipsWrapper>
           <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-        </div>
+        </StyledChipsWrapper>
       </Wrapper>
-      <PopperComponent open={open} anchorEl={anchorEl}>
+      <PopperComponent open={open} anchorEl={anchorEl} placement="bottom-start">
         <ClickAwayListener onClickAway={handleClose}>
           <div>
-            <MenuSelect
+            <DropdownMenu
               open
               onClose={handleMenuSelectClose}
               search={search}
               multiple={multiple as Multiple}
-              PaperComponent={PaperComponent}
               value={
                 (multiple ? pendingValue : value) as MUIValue<
-                  DefaultMenuSelectOption,
+                  DefaultDropdownMenuOption,
                   Multiple,
                   undefined,
                   undefined
@@ -125,7 +121,7 @@ export default function ComplexFilter<
 
   function handleClose() {
     if (multiple) {
-      setValue(pendingValue as Value<DefaultMenuSelectOption, Multiple>);
+      setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
     }
 
     if (anchorEl) {
@@ -148,39 +144,40 @@ export default function ComplexFilter<
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
       if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as DefaultMenuSelectOption[]);
-        return setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+        setPendingValue(newValue as DefaultDropdownMenuOption[]);
+        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
       }
 
-      return setPendingValue(newValue as DefaultMenuSelectOption[]);
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
-    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
   }
 
-  function handleDelete(option: DefaultMenuSelectOption) {
+  function handleDelete(option: DefaultDropdownMenuOption) {
     if (!multiple) {
       return setValue(null);
     }
 
     const newValue =
-      (value as DefaultMenuSelectOption[])?.filter((item) => item !== option) ||
-      null;
+      (value as DefaultDropdownMenuOption[])?.filter(
+        (item) => item !== option
+      ) || null;
 
-    setValue(newValue as Value<DefaultMenuSelectOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
   }
 
-  function getInitialValue(): Value<DefaultMenuSelectOption, Multiple> {
+  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
     if (isControlled) {
       return propValue;
     }
 
     return multiple
-      ? ([] as unknown as Value<DefaultMenuSelectOption, Multiple>)
+      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
   }
 }

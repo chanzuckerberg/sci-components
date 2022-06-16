@@ -61,6 +61,10 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    chromatic: { delay: 5000 },
+  },
   title: "Tooltip",
 };
 
@@ -109,6 +113,21 @@ LightWide.args = {
   placement: "top",
   sdsStyle: "light",
   title: fillerText,
+  width: "wide",
+};
+
+export const NoTooltipTitle = Template.bind({});
+
+NoTooltipTitle.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+NoTooltipTitle.args = {
+  arrow: true,
+  placement: "top",
+  sdsStyle: "light",
   width: "wide",
 };
 
@@ -194,17 +213,11 @@ PlacementPreview.parameters = {
   },
 };
 
-PlacementPreview.args = {
-  // Chrome shifts elements when fonts load in
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 500 },
-};
-
 const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
   return (
     <Tooltip title={title} {...rest} data-testid="tooltip">
-      <div />
+      <div>I am a tooltip child element</div>
     </Tooltip>
   );
 };

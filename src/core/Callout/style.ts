@@ -20,8 +20,10 @@ export const StyledCallout = styled(Alert)`
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
+    const backgroundColor = colors && colors[severity][100];
 
     return `
+      background-color: ${backgroundColor};
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;

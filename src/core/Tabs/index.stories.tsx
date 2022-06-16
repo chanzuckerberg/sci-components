@@ -26,6 +26,12 @@ export default {
     },
   },
   component: Tabs,
+  parameters: {
+    // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
+    chromatic: { delay: 10000 },
+  },
   title: "Tabs",
 } as Meta;
 
@@ -67,10 +73,6 @@ Default.args = {
 };
 
 Default.parameters = {
-  // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
-  chromatic: { delay: 500 },
   snapshot: {
     skip: true,
   },

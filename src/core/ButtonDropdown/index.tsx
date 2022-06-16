@@ -13,6 +13,9 @@ interface SdsProps {
 export type ButtonDropdownProps<C extends React.ElementType = "button"> =
   RawButtonProps<C, { component?: C }> & SdsProps;
 
+/**
+ * @see https://v4.mui.com/components/buttons/
+ */
 const ButtonDropdown = React.forwardRef(
   <C extends React.ElementType>(
     props: ButtonDropdownProps<C>,

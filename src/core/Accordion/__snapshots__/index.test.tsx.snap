@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> Test story renders snapshot 1`] = `
+<div
+  class="MuiPaper-root MuiAccordion-root css-cqyok5 MuiPaper-elevation1"
+  data-testid="accordion"
+  id="test-story"
+>
+  <div
+    aria-controls="test-story-panel-content"
+    aria-disabled="false"
+    aria-expanded="false"
+    class="MuiButtonBase-root MuiAccordionSummary-root css-131fy9e"
+    id="test-story"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="MuiAccordionSummary-content"
+    >
+      Accordion Header
+    </div>
+    <div
+      aria-disabled="false"
+      aria-hidden="true"
+      class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root css-henzh4"
+            data-jest-file-name="IconChevronDownSmall.svg"
+            data-jest-svg-name="IconChevronDownSmall"
+            data-testid="IconChevronDownSmall"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </div>
+  </div>
+  <div
+    class="MuiCollapse-root MuiCollapse-hidden"
+    style="min-height: 0px;"
+  >
+    <div
+      class="MuiCollapse-wrapper"
+    >
+      <div
+        class="MuiCollapse-wrapperInner"
+      >
+        <div
+          aria-labelledby="test-story"
+          role="region"
+        >
+          <div
+            class="MuiAccordionDetails-root css-14myhfl"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

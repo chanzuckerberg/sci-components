@@ -16,58 +16,56 @@ const fontBodyXs = fontBody("xs");
 const fontBodyXxs = fontBody("xxs");
 const fontBodyXxxs = fontBody("xxxs");
 
-export interface ExtraProps extends CommonThemeProps {
+export interface ListItemExtraProps extends CommonThemeProps {
   marginBottom?: "s" | "xs" | "xxs";
   fontSize?: "xxxs" | "xxs" | "xs" | "s" | "m" | "l";
   ordered?: boolean;
 }
 
-// (thuang): Please keep this in sync with the props used in `ExtraProps`
+// (thuang): Please keep this in sync with the props used in `ListItemExtraProps`
 const doNotForwardProps = ["marginBottom", "fontSize", "ordered"];
 
 export const StyledListItem = styled(ListItem, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  &.MuiListItem-root {
-    ${propsToMarginBottom}
-    ${propsToFontBody}
+  ${propsToMarginBottom}
+  ${propsToFontBody}
 
-    padding: 0;
+  padding: 0;
+
+  ${(props) => {
+    const { ordered } = props;
+
+    const {
+      theme: { typography },
+    } = props;
+
+    return `
+      align-items: flex-start;
+      font-family: ${(typography as TypographyOptions)?.fontFamily};
+      ${ordered ? "counter-increment: section;" : ""}
+    `;
+  }}
+
+  &:before {
+    display: inline-block;
+    font-weight: 600;
 
     ${(props) => {
+      const spacings = getSpaces(props);
       const { ordered } = props;
 
-      const {
-        theme: { typography },
-      } = props;
-
       return `
-        align-items: flex-start;
-        font-family: ${(typography as TypographyOptions)?.fontFamily};
-        ${ordered ? "counter-increment: section;" : ""}
+        content: ${ordered ? `counters(section, ".")"."` : `"•"`};
+        margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
       `;
     }}
-
-    &:before {
-      display: inline-block;
-      font-weight: 600;
-
-      ${(props) => {
-        const spacings = getSpaces(props);
-        const { ordered } = props;
-
-        return `
-          content: ${ordered ? `counters(section, ".")"."` : `"•"`};
-          margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
-        `;
-      }}
-    }
   }
 `;
 
-function propsToFontBody(props: ExtraProps) {
+function propsToFontBody(props: ListItemExtraProps) {
   const propsToFontBodyMap: Record<
-    NonNullable<ExtraProps["fontSize"]>,
+    NonNullable<ListItemExtraProps["fontSize"]>,
     (props: CommonThemeProps) => SerializedStyles | null
   > = {
     l: fontBodyL,
@@ -83,11 +81,11 @@ function propsToFontBody(props: ExtraProps) {
   return propsToFontBodyMap[fontSize || "s"];
 }
 
-function propsToMarginBottom(props: ExtraProps) {
+function propsToMarginBottom(props: ListItemExtraProps) {
   const spacings = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
-    NonNullable<ExtraProps["marginBottom"]>,
+    NonNullable<ListItemExtraProps["marginBottom"]>,
     number | undefined
   > = {
     s: spacings?.s,

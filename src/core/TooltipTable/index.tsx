@@ -2,17 +2,20 @@ import { Table, TableBody, TableContainer, TableRow } from "@material-ui/core";
 import React from "react";
 import {
   Alert,
-  ExtraProps,
   RowLabel,
   RowValue,
   Section,
   SectionLabel,
+  TooltipTableExtraProps,
 } from "./style";
 
-type TooltipTableContentProps = ExtraProps;
+type TooltipTableContentProps = TooltipTableExtraProps;
 
 export type { TooltipTableContentProps };
 
+/**
+ * @see https://v4.mui.com/components/tables/
+ */
 const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   const { contentAlert, data, itemAlign = "right", ...rest } = props;
 

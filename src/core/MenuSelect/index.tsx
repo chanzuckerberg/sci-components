@@ -4,8 +4,7 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
 } from "@material-ui/lab";
-import React from "react";
-import { noop } from "src/common/utils";
+import React, { useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -17,14 +16,15 @@ import {
   StyleProps,
 } from "./style";
 
+let hasWarned = false;
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
 }
 
-interface ExtraProps extends StyleProps {
+interface MenuSelectExtraProps extends StyleProps {
+  keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
-  onInputChange?: (event: React.SyntheticEvent) => void;
   InputBaseProps?: Partial<InputSearchProps>;
 }
 
@@ -44,8 +44,11 @@ export type MenuSelectProps<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
-  ExtraProps;
+  MenuSelectExtraProps;
 
+/**
+ * @see https://v4.mui.com/components/autocomplete/
+ */
 export default function MenuSelect<
   T extends DefaultMenuSelectOption,
   Multiple extends boolean | undefined = undefined,
@@ -55,6 +58,7 @@ export default function MenuSelect<
   props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
+    keepSearchOnSelect = true,
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
     renderTags = defaultRenderTags,
@@ -62,9 +66,18 @@ export default function MenuSelect<
     disableCloseOnSelect = multiple,
     noOptionsText = "No options",
     search = false,
-    onInputChange = noop,
     InputBaseProps = {},
   } = props;
+
+  const [inputValue, setInputValue] = useState("");
+
+  if (!hasWarned) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
+    );
+    hasWarned = true;
+  }
 
   return (
     <StyledAutocomplete
@@ -76,6 +89,17 @@ export default function MenuSelect<
       noOptionsText={noOptionsText}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
+      inputValue={inputValue}
+      onInputChange={(event, value, reason) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+      }}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
@@ -84,7 +108,6 @@ export default function MenuSelect<
             placeholder="Search"
             ref={params.InputProps.ref}
             search={search}
-            onChange={onInputChange}
             autoFocus
             InputProps={{
               /**
@@ -95,7 +118,7 @@ export default function MenuSelect<
               /**
                * (mmoore): passing only the ref along to InputProps to prevent
                * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explictly pass end adornment here
+               * renderInput strips InputProps, so we explicitly pass end adornment here
                */
               ...params.InputProps.ref,
               endAdornment: (

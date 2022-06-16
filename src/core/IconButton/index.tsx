@@ -1,11 +1,14 @@
 import { IconButtonProps as RawIconButtonProps } from "@material-ui/core";
 import React, { forwardRef } from "react";
-import { ExtraProps, StyledIconButton } from "./style";
+import { IconButtonExtraProps, StyledIconButton } from "./style";
 
-type IconButtonProps = ExtraProps & RawIconButtonProps;
+type IconButtonProps = IconButtonExtraProps & RawIconButtonProps;
 
 export type { IconButtonProps };
 
+/**
+ * @see https://v4.mui.com/components/buttons/#icon-buttons
+ */
 const IconButton = forwardRef<HTMLButtonElement | null, IconButtonProps>(
   (props, ref): JSX.Element => {
     return <StyledIconButton {...props} ref={ref} />;
