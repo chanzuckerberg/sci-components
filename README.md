@@ -114,6 +114,65 @@ export const Tag = styled.div`
 }
 ```
 
+5. Tailwind - Tailwind compliant configuration for the `defaultTheme` to use if your app uses TailwindA
+
+First you need to import the SDS config into your application's Tailwind config:
+
+```js
+// tailwind.config.js
+
+const sds = require("czifui/dist/tailwind.json");
+
+module.exports = {
+  mode: "jit",
+  content: ["./src/**/*.{tsx,scss}"],
+  theme: {
+    extend: sds,
+  },
+};
+```
+
+If you have existing styles that you'd like to maintain, you can pick and choose
+different parts of the SDS config:
+
+```js
+// tailwind.config.js
+
+const sds = require("czifui/dist/tailwind.json");
+
+module.exports = {
+  mode: "jit",
+  content: ["./src/**/*.{tsx,scss}"],
+  theme: {
+    extend: {
+      ...sds,
+
+      width: {
+        ...sds.width,
+        "app-modal-width": "500px",
+      },
+
+      height: {
+        ...sds.width,
+        "app-modal-height": "200px",
+      },
+    },
+  },
+};
+```
+
+After that, you should be able to use SDS Tailwind classes in your app:
+
+```tsx
+export function Hello() {
+  return (
+    <p className="m-sds-xl px-sds-xs py-sds-s text-sds-error-400">
+      Hello, World!
+    </p>
+  );
+}
+```
+
 ### Default Theme
 
 To use the default theme in your React application, complete the following:
