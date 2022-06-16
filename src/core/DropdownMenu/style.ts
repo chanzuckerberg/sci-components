@@ -11,6 +11,7 @@ import {
   getColors,
   getSpaces,
 } from "../styles";
+
 export interface StyleProps extends CommonThemeProps {
   search?: boolean;
   title?: boolean;

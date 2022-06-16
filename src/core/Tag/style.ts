@@ -11,6 +11,7 @@ import {
   getIconSizes,
   getSpaces,
 } from "../styles";
+
 export interface ExtraProps extends CommonThemeProps {
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
@@ -201,15 +202,6 @@ function createTypeCss(
       fill: ${typeColors.iconColor};
     }
 
-    &:hover {
-      background-color: ${typeColors.backgroundHover};
-    }
-
-    &:active,
-    &:focus {
-      background-color: ${typeColors.backgroundClicked};
-    }
-
     &:hover,
     &:active,
     &:focus {
@@ -220,6 +212,26 @@ function createTypeCss(
       svg {
         fill: white;
       }
+    }
+
+    &:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:active {
+      background-color: ${typeColors.backgroundClicked};
+    }
+
+    &:focus {
+      background-color: ${typeColors.background};
+    }
+
+    &:focus:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:focus:active {
+      background-color: ${typeColors.backgroundClicked};
     }
   `;
 }
@@ -243,7 +255,7 @@ export const StyledTag = styled(Chip, {
     const type = sdsType || "primary";
 
     return css`
-      ${!!icon ? withIcon(props) : withoutIcon(props)}
+      ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
     `;

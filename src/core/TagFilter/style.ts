@@ -1,15 +1,15 @@
 import { css } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
 import Tag from "../Tag";
 
-export interface FilterTagExtraProps extends CommonThemeProps {
+export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;
-  onDelete: React.EventHandler<any>;
+  onDelete: (e: React.SyntheticEvent) => void;
 }
 
 export const StyledTag = styled(Tag)`
-  ${(props: FilterTagExtraProps) => {
+  ${(props: TagFilterExtraProps) => {
     const spacings = getSpaces(props);
 
     return css`

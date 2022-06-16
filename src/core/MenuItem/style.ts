@@ -53,7 +53,11 @@ export const StyledMenuItem = styled(MenuItem)`
         }
       }
 
+<<<<<<< HEAD
       &.MuiMenuItem-root .MuiSvgIcon-root {
+=======
+      &.MuiListItem-root .MuiSvgIcon-root {
+>>>>>>> ca75ae99316e2b87b520f28d82318c5bc17fcb80
         align-self: flex-start;
         margin-top: 3px;
       }
