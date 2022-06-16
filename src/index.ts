@@ -74,7 +74,7 @@ export { default as Tabs } from "./core/Tabs";
 export * from "./core/Tag";
 export { default as Tag } from "./core/Tag";
 export * from "./core/TagFilter";
-export { default as FilterTag, default as TagFilter } from "./core/TagFilter";
+export { default as TagFilter } from "./core/TagFilter";
 export * from "./core/Tooltip";
 export { default as Tooltip } from "./core/Tooltip";
 export * from "./core/TooltipCondensed";

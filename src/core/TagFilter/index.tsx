@@ -6,7 +6,7 @@ import { StyledTag } from "./style";
 export interface SdsTagFilterProps
   extends Omit<ChipProps, "color" | "variant"> {
   label: string;
-  onDelete: (e: React.SyntheticEvent) => void;
+  onDelete: React.EventHandler<any>;
 }
 
 export type TagFilterProps = SdsTagFilterProps;
@@ -16,7 +16,7 @@ export type TagFilterProps = SdsTagFilterProps;
  */
 
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
-  return <StyledTag deleteIcon={<ClearIcon fontSize="small" />} {...props} />;
+  return <StyledTag deleteIcon={<ClearIcon />} {...props} />;
 };
 
 export default TagFilter;

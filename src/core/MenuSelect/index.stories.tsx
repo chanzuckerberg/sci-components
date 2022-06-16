@@ -5,8 +5,8 @@ import { styled } from "@mui/material/styles";
 import { AutocompleteCloseReason } from "@mui/material/useAutocomplete";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import Chip from "../Chip";
 import { getColors, getCorners, getShadows } from "../styles";
+import TagFilter from "../TagFilter";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
 
 const StyledPopper = styled(Popper)`
@@ -196,7 +196,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
   if (!multiple) {
     const { name } = value as never;
 
-    return <Chip size="medium" label={name} onDelete={onDelete} />;
+    return <TagFilter label={name} onDelete={onDelete} />;
   }
 
   return (
@@ -205,12 +205,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
         const { name } = item;
 
         return (
-          <Chip
-            size="medium"
-            key={name}
-            label={name}
-            onDelete={() => onDelete(item)}
-          />
+          <TagFilter key={name} label={name} onDelete={() => onDelete(item)} />
         );
       })}
     </>

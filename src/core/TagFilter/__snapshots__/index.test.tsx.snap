@@ -31,7 +31,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconOutlinedColorPrimary MuiSvgIcon-fontSizeSmall"
+        class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconOutlinedColorPrimary"
         focusable="false"
         viewBox="0 0 24 24"
       >

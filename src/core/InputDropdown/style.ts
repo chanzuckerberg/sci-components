@@ -95,6 +95,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       outline: ${borders?.primary[400]};
       outline-offset: -1px;
     }
+
+    &.MuiButton-root .MuiSvgIcon-root {
+      height: 14px;
+      width: 14px;
+    }
   `;
 };
 

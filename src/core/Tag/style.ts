@@ -77,18 +77,11 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
       line-height: unset;
     }
 
-    .MuiChip-icon,
-    & > div > svg {
+    .MuiSvgIcon-root {
       height: ${iconSizes?.l.height};
       width: ${iconSizes?.l.width};
       padding-right: ${spacings?.xxs}px;
       margin: 0 0 0 -${spacings?.xxxs}px;
-      font-size: ${iconSizes?.l.height}px;
-    }
-
-    &:focus-visible > svg,
-    &:hover > div > svg {
-      fill: white;
     }
 
     .MuiChip-deleteIcon {

@@ -1,11 +1,12 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import React from "react";
 import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
 import Tag from "../Tag";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;
-  onDelete: (e: React.SyntheticEvent) => void;
+  onDelete: React.EventHandler<any>;
 }
 
 export const StyledTag = styled(Tag)`
