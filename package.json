@@ -37,6 +37,7 @@
     "chromatic": "^6.3.4",
     "commitizen": "^4.2.4",
     "concurrently": "^6.0.0",
+    "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "7.21.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
@@ -96,7 +97,7 @@
     "semantic-release": "semantic-release",
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
-    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.json",
+    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba"
   },
   "lint-staged": {
