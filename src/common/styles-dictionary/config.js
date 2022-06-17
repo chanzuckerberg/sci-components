@@ -17,7 +17,7 @@ module.exports = {
       files: [
         {
           destination: "tailwind.json",
-          format: "tailwindFormat",
+          format: "tailwind",
           options: {
             prefix: "sds",
             remapNames: {

@@ -69,7 +69,6 @@ StyleDictionary.registerFormat({
       for (const key of keys) {
         for (const [size, fonts] of Object.entries(tokens[key])) {
           for (const [boldSize, { font }] of Object.entries(fonts)) {
-            // const name = getName(`${key}-${size}-${boldSizeMap[boldSize]}`);
             const parsed = cssFont.parse(font.value);
             fontFamily[getName(boldNameMap[boldSize])] = parsed.family;
             fontSize[getName([key, size])] = parsed.size;
@@ -98,5 +97,5 @@ StyleDictionary.registerFormat({
 
     return JSON.stringify(tailwindConfig, null, 2);
   },
-  name: "tailwindFormat",
+  name: "tailwind",
 });
