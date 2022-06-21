@@ -47,10 +47,7 @@ const Template: Story<TabsArgs> = (props: TabsArgs) => {
 
   const [value, setValue] = useState(0);
 
-  const handleTabsChange = (
-    _: React.SyntheticEvent<Record<string, unknown>>,
-    tabsValue: never
-  ) => {
+  const handleTabsChange = (_: React.SyntheticEvent, tabsValue: unknown) => {
     setValue(tabsValue as number);
   };
 
