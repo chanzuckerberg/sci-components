@@ -1,4 +1,7 @@
-import { InputAdornment } from "@mui/material";
+import {
+  AutocompleteFreeSoloValueMapping,
+  InputAdornment,
+} from "@mui/material";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
@@ -138,8 +141,11 @@ export default function MenuSelect<
     />
   );
 
-  function defaultGetOptionLabel(option: T): string {
-    return option.name;
+  function defaultGetOptionLabel(
+    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
+  ): string {
+    if (typeof option === "object" && "name" in option) return option.name;
+    return option.toString();
   }
 
   function defaultRenderTags() {

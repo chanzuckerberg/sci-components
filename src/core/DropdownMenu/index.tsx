@@ -1,4 +1,5 @@
 import {
+  AutocompleteFreeSoloValueMapping,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
@@ -135,8 +136,11 @@ export default function DropdownMenu<
     />
   );
 
-  function defaultGetOptionLabel(option: T): string {
-    return option.name;
+  function defaultGetOptionLabel(
+    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
+  ): string {
+    if (typeof option === "object" && "name" in option) return option.name;
+    return option.toString();
   }
 
   function defaultIsOptionEqualToValue(option: T, value: T): boolean {
