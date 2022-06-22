@@ -41,7 +41,6 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXxxs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiChip-deleteIcon {
@@ -73,7 +72,6 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiChip-icon,
@@ -201,15 +199,6 @@ function createTypeCss(
       fill: ${typeColors.iconColor};
     }
 
-    &:hover {
-      background-color: ${typeColors.backgroundHover};
-    }
-
-    &:active,
-    &:focus {
-      background-color: ${typeColors.backgroundClicked};
-    }
-
     &:hover,
     &:active,
     &:focus {
@@ -220,6 +209,26 @@ function createTypeCss(
       svg {
         fill: white;
       }
+    }
+
+    &:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:active {
+      background-color: ${typeColors.backgroundClicked};
+    }
+
+    &:focus {
+      background-color: ${typeColors.background};
+    }
+
+    &:focus:hover {
+      background-color: ${typeColors.backgroundHover};
+    }
+
+    &:focus:active {
+      background-color: ${typeColors.backgroundClicked};
     }
   `;
 }
