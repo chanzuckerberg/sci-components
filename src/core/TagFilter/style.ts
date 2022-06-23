@@ -24,7 +24,8 @@ export const StyledTag = styled(Tag)`
         ${fontHeaderXs(props)}
       }
 
-      .MuiChip-deleteIcon {
+      .MuiChip-deleteIcon,
+      .MuiSvgIcon-root {
         margin-left: ${spacings?.s}px;
       }
 

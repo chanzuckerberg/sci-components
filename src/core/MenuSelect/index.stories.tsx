@@ -16,6 +16,10 @@ const StyledPopper = styled(Popper)`
     const corners = getCorners(props);
 
     return `
+      & .MuiInputBase-root {
+        padding: 0 6px;
+      }
+
       & .MuiAutocomplete-option[aria-selected='true'], 
       & .MuiAutocomplete-option[data-focus='true'] {
         background-color: transparent,
@@ -24,6 +28,7 @@ const StyledPopper = styled(Popper)`
       & .MuiAutocomplete-popper.MuiAutocomplete-popperDisablePortal {
         position: relative !important;
         transform: none !important;
+        width: 100% !important;
       }
 
       .MuiAutocomplete-paper {
@@ -128,7 +133,9 @@ const Demo = (props: Args): JSX.Element => {
           />
         </StyledPopper>
 
-        <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+        <div style={{ marginTop: 4 }}>
+          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+        </div>
       </div>
     </>
   );
@@ -196,7 +203,9 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
   if (!multiple) {
     const { name } = value as never;
 
-    return <TagFilter label={name} onDelete={onDelete} />;
+    return (
+      <TagFilter label={name} onDelete={onDelete} style={{ marginTop: 4 }} />
+    );
   }
 
   return (
@@ -205,7 +214,12 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
         const { name } = item;
 
         return (
-          <TagFilter key={name} label={name} onDelete={() => onDelete(item)} />
+          <TagFilter
+            key={name}
+            label={name}
+            onDelete={() => onDelete(item)}
+            style={{ marginTop: 4 }}
+          />
         );
       })}
     </>

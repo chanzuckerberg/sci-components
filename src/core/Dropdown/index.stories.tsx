@@ -1,4 +1,4 @@
-import { Dialog } from "@mui/material";
+import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
@@ -76,13 +76,18 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
+const StyledPaper = styled(Paper)`
+  width: 200px;
+  padding: 50px;
+`;
+
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
   return (
-    <Dialog open disableEnforceFocus>
+    <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
       <Dropdown
         label="Dropdown"
         options={GITHUB_LABELS}

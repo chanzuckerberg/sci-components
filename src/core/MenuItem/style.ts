@@ -23,33 +23,27 @@ export const StyledMenuItem = styled(MenuItem)`
     const primary = colors?.primary[400];
 
     return `
-        padding: ${spacings?.xs}px ${spacings?.s}px;
+      padding: ${spacings?.xs}px ${spacings?.s}px;
+      min-height: unset;
+      opacity: 1;
+
+      &.MuiAutocomplete-option {
         min-height: unset;
-        opacity: 1;
-       
-        .primary-text {
-          font-weight: ${
-            selected ? fontWeights?.semibold : fontWeights?.regular
-          };
-        }
+      }
+      
+      .primary-text {
+        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
+      }
 
-        &.MuiButtonBase-root {
-          background-color: transparent;
+      &.MuiButtonBase-root {
+        background-color: transparent;
 
-          &:hover, &.${menuItemClasses.focusVisible} {
-            background-color: ${colors?.gray[100]};
-
-            &[aria-selected="true"] {
-              background-color: ${colors?.gray[100]};
-            }
-          }
-        }
-
-      &.MuiAutocomplete-option[aria-selected="true"] {
-        background-color: white;
-
-        &:hover {
+        &:hover, &.${menuItemClasses.focusVisible} {
           background-color: ${colors?.gray[100]};
+
+          &[aria-selected="true"] {
+            background-color: ${colors?.gray[100]};
+          }
         }
       }
 
@@ -57,10 +51,22 @@ export const StyledMenuItem = styled(MenuItem)`
         align-self: flex-start;
         margin-top: 3px;
       }
+  
+      &.MuiAutocomplete-option[aria-selected="true"] {
+        background-color: white;
+
+        &:hover {
+          background-color: ${colors?.gray[100]};
+        }
+
+        svg.MuiSvgIcon-root {
+          color: ${selected ? primary : colors?.gray[500]};
+        }
+      }
 
       &:hover {
         background-color: ${colors?.gray[100]};
-        svg {
+        svg.MuiSvgIcon-root {
           color: ${selected ? primary : colors?.gray[500]};
         }
       }
@@ -76,12 +82,12 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:active {
-        svg {
+        svg.MuiSvgIcon-root {
           color: ${primary};
         }
 
         &:active {
-          svg {
+          svg.MuiSvgIcon-root {
             color: ${primary};
           }
 

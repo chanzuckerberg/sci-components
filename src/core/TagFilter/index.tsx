@@ -1,5 +1,5 @@
 import { ChipProps } from "@material-ui/core";
-import ClearIcon from "@material-ui/icons/Clear";
+import { Clear } from "@mui/icons-material";
 import React from "react";
 import { StyledTag } from "./style";
 
@@ -16,7 +16,7 @@ export type TagFilterProps = SdsTagFilterProps;
  */
 
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
-  return <StyledTag deleteIcon={<ClearIcon />} {...props} />;
+  return <StyledTag deleteIcon={<Clear />} {...props} />;
 };
 
 export default TagFilter;
