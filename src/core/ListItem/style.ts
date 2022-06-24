@@ -28,40 +28,38 @@ const doNotForwardProps = ["marginBottom", "fontSize", "ordered"];
 export const StyledListItem = styled(ListItem, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  &.MuiListItem-root {
-    ${propsToMarginBottom}
-    ${propsToFontBody}
+  ${propsToMarginBottom}
+  ${propsToFontBody}
 
-    padding: 0;
+  padding: 0;
+
+  ${(props) => {
+    const { ordered } = props;
+
+    const {
+      theme: { typography },
+    } = props;
+
+    return `
+      align-items: flex-start;
+      font-family: ${(typography as TypographyOptions)?.fontFamily};
+      ${ordered ? "counter-increment: section;" : ""}
+    `;
+  }}
+
+  &:before {
+    display: inline-block;
+    font-weight: 600;
 
     ${(props) => {
+      const spacings = getSpaces(props);
       const { ordered } = props;
 
-      const {
-        theme: { typography },
-      } = props;
-
       return `
-        align-items: flex-start;
-        font-family: ${(typography as TypographyOptions)?.fontFamily};
-        ${ordered ? "counter-increment: section;" : ""}
+        content: ${ordered ? `counters(section, ".")"."` : `"•"`};
+        margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
       `;
     }}
-
-    &:before {
-      display: inline-block;
-      font-weight: 600;
-
-      ${(props) => {
-        const spacings = getSpaces(props);
-        const { ordered } = props;
-
-        return `
-          content: ${ordered ? `counters(section, ".")"."` : `"•"`};
-          margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
-        `;
-      }}
-    }
   }
 `;
 

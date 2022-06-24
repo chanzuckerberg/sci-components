@@ -3,19 +3,19 @@ import ClearIcon from "@material-ui/icons/Clear";
 import React from "react";
 import { StyledTag } from "./style";
 
-export interface SdsFilterTagProps extends Omit<ChipProps, "color"> {
+export interface SdsTagFilterProps extends Omit<ChipProps, "color"> {
   label: string;
   onDelete: React.EventHandler<any>;
 }
 
-export type FilterTagProps = SdsFilterTagProps;
+export type TagFilterProps = SdsTagFilterProps;
 
 /**
  * @see https://v4.mui.com/components/chips/
  */
 
-const FilterTag = (props: SdsFilterTagProps): JSX.Element => {
+const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
   return <StyledTag deleteIcon={<ClearIcon fontSize="small" />} {...props} />;
 };
 
-export default FilterTag;
+export default TagFilter;

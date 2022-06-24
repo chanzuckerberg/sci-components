@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FilterTag /> Default story renders snapshot 1`] = `
+exports[`<TagFilter /> Default story renders snapshot 1`] = `
 <div
   style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
 >
@@ -24,14 +24,14 @@ exports[`<FilterTag /> Default story renders snapshot 1`] = `
     style="grid-area: 2 / 1 / 2 / 2;"
   >
     <div
-      class="MuiButtonBase-root MuiChip-root css-ipf0dd MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-deletableColorPrimary MuiChip-clickable MuiChip-deletable"
+      class="MuiButtonBase-root MuiChip-root css-pth3fm MuiChip-colorPrimary MuiChip-clickableColorPrimary MuiChip-deletableColorPrimary MuiChip-clickable MuiChip-deletable"
       role="button"
       tabindex="0"
     >
       <span
         class="MuiChip-label"
       >
-        Filter Tag
+        TagFilter
       </span>
       <svg
         aria-hidden="true"

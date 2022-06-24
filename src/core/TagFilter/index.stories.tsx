@@ -58,7 +58,7 @@ export default {
     },
   },
   component: Demo,
-  title: "Filter Tag",
+  title: "TagFilter",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
@@ -66,7 +66,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  label: "Filter Tag",
+  label: "TagFilter",
 };
 
 /*
@@ -102,7 +102,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
   return (
     <FilterTag
-      data-testid="filter-tag"
+      data-testid="tag-filter"
       label={label}
       onDelete={() => {}}
       {...props}
