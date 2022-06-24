@@ -38,6 +38,7 @@ interface DropdownProps<Multiple> {
   className?: string;
   PopperComponent?: typeof StyledPopper | RenderFunctionType;
   InputDropdownComponent?: typeof InputDropdown;
+  isTriggerChangeOnOptionClick?: boolean;
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -60,6 +61,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   value: propValue,
   PopperComponent = StyledPopper,
   InputDropdownComponent = InputDropdown,
+  isTriggerChangeOnOptionClick = false,
   ...rest
 }: DropdownProps<Multiple>): JSX.Element {
   if (buttons && !multiple) {
@@ -204,6 +206,11 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
+      if (isTriggerChangeOnOptionClick) {
+        setPendingValue(newValue as DefaultDropdownMenuOption[]);
+        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+      }
+
       return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
