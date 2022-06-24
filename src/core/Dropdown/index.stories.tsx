@@ -77,6 +77,17 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
+export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
+  isTriggerChangeOnOptionClick: true,
+  multiple: true,
+  onChange: (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+};
+
 const useStyles = makeStyles(() => ({
   /* stylelint-disable-next-line */
   paper: {
