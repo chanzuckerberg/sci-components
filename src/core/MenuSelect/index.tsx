@@ -1,5 +1,6 @@
 import { InputAdornment } from "@material-ui/core";
 import {
+  AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
@@ -67,6 +68,7 @@ export default function MenuSelect<
     noOptionsText = "No options",
     search = false,
     InputBaseProps = {},
+    onInputChange,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -90,17 +92,7 @@ export default function MenuSelect<
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       inputValue={inputValue}
-      onInputChange={(event, value, reason) => {
-        if (event && event.type === "blur") {
-          setInputValue("");
-        } else if (
-          reason !== "reset" ||
-          (reason === "reset" && !keepSearchOnSelect)
-        ) {
-          setInputValue(value);
-        }
-      }}
-      renderInput={(params) => (
+      renderInput={(params: AutocompleteRenderInputParams) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
             id="location-search"
@@ -135,6 +127,21 @@ export default function MenuSelect<
         </InputBaseWrapper>
       )}
       {...props}
+      onInputChange={(
+        event: React.ChangeEvent<Record<string, unknown>>,
+        value: string,
+        reason: AutocompleteInputChangeReason
+      ) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+        if (onInputChange) onInputChange(event, value, reason);
+      }}
     />
   );
 
