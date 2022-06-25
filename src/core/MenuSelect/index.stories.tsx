@@ -2,7 +2,10 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import Popper from "@material-ui/core/Popper";
 import { makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { AutocompleteCloseReason } from "@material-ui/lab";
+import {
+  AutocompleteCloseReason,
+  AutocompleteInputChangeReason,
+} from "@material-ui/lab";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import Chip from "../Chip";
@@ -29,6 +32,17 @@ const Demo = (props: Args): JSX.Element => {
   const open = Boolean(anchorEl);
 
   const id = open ? "github-label" : undefined;
+
+  const inputChangeHandler = (
+    _: React.ChangeEvent<Record<string, unknown>>,
+    val: string,
+    __: AutocompleteInputChangeReason
+  ) => {
+    if (val) {
+      // eslint-disable-next-line no-console
+      console.log("input value: ", val);
+    }
+  };
 
   return (
     <>
@@ -64,6 +78,7 @@ const Demo = (props: Args): JSX.Element => {
           onChange={handleChange}
           disableCloseOnSelect={multiple}
           options={options}
+          onInputChange={inputChangeHandler}
           {...props}
         />
       </Popper>
