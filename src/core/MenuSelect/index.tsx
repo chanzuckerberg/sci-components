@@ -6,6 +6,7 @@ import {
   AutocompleteRenderOptionState,
 } from "@material-ui/lab";
 import React, { useState } from "react";
+import { noop } from "src/common/utils";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -68,7 +69,7 @@ export default function MenuSelect<
     noOptionsText = "No options",
     search = false,
     InputBaseProps = {},
-    onInputChange,
+    onInputChange = noop,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
