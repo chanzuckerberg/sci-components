@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
+<div
+  style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr;"
+>
+  <button
+    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-jest-file-name="IconDownloadSmall.svg"
+          data-jest-svg-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-2bl1ol-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
+<div
+  style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr;"
+>
+  <button
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-jest-file-name="IconDownloadSmall.svg"
+          data-jest-svg-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1tmp5lh-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1tmp5lh-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-jest-file-name="IconDownloadSmall.svg"
+          data-jest-svg-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
+<div
+  style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr;"
+>
+  <button
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-jest-file-name="IconDownloadSmall.svg"
+          data-jest-svg-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-jest-file-name="IconDownloadSmall.svg"
+          data-jest-svg-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+    Label
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<button /> Test story renders snapshot 1`] = `
+<button
+  class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+  data-testid="button"
+  tabindex="0"
+  text="Label"
+  type="button"
+>
+  Label
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;

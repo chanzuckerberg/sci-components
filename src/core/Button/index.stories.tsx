@@ -1,141 +1,190 @@
 import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
+import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import Button from "./index";
 
-export const text = "Click me!";
+const text = "Label";
+const sdsStyles = ["rounded", "square", "minimal"];
+const sdsTypes = ["primary", "secondary"];
 
-export const actions = {
+const actions = {
   onClick: action("onClick"),
 };
 
-storiesOf("Button", module).add("Rounded Primary", () => (
-  <Button
-    // (thuang): This is here to test that SDS Button support `component` prop
-    component="span"
-    onClick={actions.onClick}
-    sdsStyle="rounded"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+const Demo = (props: Args): JSX.Element => {
+  const { sdsType, sdsStyle } = props;
+  return (
+    <Button
+      onClick={actions.onClick}
+      sdsType={sdsType}
+      sdsStyle={sdsStyle}
+      {...props}
+    >
+      {text}
+    </Button>
+  );
+};
 
-storiesOf("Button", module).add("Rounded Primary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="rounded"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+export default {
+  argTypes: {
+    sdsStyle: {
+      control: { type: "select" },
+      options: sdsStyles,
+    },
+    sdsType: {
+      control: { type: "select" },
+      options: sdsTypes,
+    },
+    text: {
+      control: {
+        type: "text",
+      },
+    },
+  },
+  component: Demo,
+  title: "Button",
+};
 
-storiesOf("Button", module).add("Rounded Secondary", () => (
-  <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="secondary">
-    {text}
-  </Button>
-));
+const Template: Story = (args) => <Demo {...args} />;
 
-storiesOf("Button", module).add("Rounded Secondary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="rounded"
-    sdsType="secondary"
-  >
-    {text}
-  </Button>
-));
+export const Default = Template.bind({});
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
-storiesOf("Button", module).add("Square Primary", () => (
-  <Button onClick={actions.onClick} sdsStyle="square" sdsType="primary">
-    {text}
-  </Button>
-));
+Default.args = {
+  disabled: false,
+  sdsStyle: "rounded",
+  sdsType: "primary",
+  text: "Label",
+};
 
-storiesOf("Button", module).add("Square Primary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="square"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+export const Test = Template.bind({});
 
-storiesOf("Button", module).add("Square Secondary", () => (
-  <Button onClick={actions.onClick} sdsStyle="square" sdsType="secondary">
-    {text}
-  </Button>
-));
+Test.args = {
+  disabled: false,
+  sdsStyle: "rounded",
+  sdsType: "primary",
+  text: "Label",
+};
 
-storiesOf("Button", module).add("Square Secondary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="square"
-    sdsType="secondary"
-  >
-    {text}
-  </Button>
-));
+const placementStyles = {
+  display: "grid",
+  gridColumnGap: "10px",
+  gridRowGap: "0px",
+  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateRows: "1fr",
+};
 
-storiesOf("Button", module).add("Minimal Primary", () => (
-  <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="primary">
-    {text}
-  </Button>
-));
+const RoundedLivePreviewDemo = (): JSX.Element => {
+  return (
+    <div style={placementStyles as React.CSSProperties}>
+      <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
+        {text}
+      </Button>
 
-storiesOf("Button", module).add("Minimal Primary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="minimal"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+      <Button
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        onClick={actions.onClick}
+        sdsStyle="rounded"
+        sdsType="primary"
+      >
+        {text}
+      </Button>
+      <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="secondary">
+        {text}
+      </Button>
+      <Button
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        onClick={actions.onClick}
+        sdsStyle="rounded"
+        sdsType="secondary"
+      >
+        {text}
+      </Button>
+    </div>
+  );
+};
 
-storiesOf("Button", module).add("Minimal Secondary", () => (
-  <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="secondary">
-    {text}
-  </Button>
-));
+RoundedLivePreviewDemo.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+export const RoundedLivePreview = RoundedLivePreviewDemo.bind({});
 
-storiesOf("Button", module).add("Minimal Secondary Disabled", () => (
-  <Button
-    disabled
-    onClick={actions.onClick}
-    sdsStyle="minimal"
-    sdsType="secondary"
-  >
-    {text}
-  </Button>
-));
+const SquareLivePreviewDemo = (): JSX.Element => {
+  return (
+    <div style={placementStyles as React.CSSProperties}>
+      <Button onClick={actions.onClick} sdsStyle="square" sdsType="primary">
+        {text}
+      </Button>
+      <Button
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        onClick={actions.onClick}
+        sdsStyle="square"
+        sdsType="primary"
+      >
+        {text}
+      </Button>
+      <Button onClick={actions.onClick} sdsStyle="square" sdsType="secondary">
+        {text}
+      </Button>
+      <Button
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        onClick={actions.onClick}
+        sdsStyle="square"
+        sdsType="secondary"
+      >
+        {text}
+      </Button>
+    </div>
+  );
+};
 
-storiesOf("Button", module).add("With Icon", () => (
-  <Button
-    startIcon={<Icon sdsIcon="refresh" sdsSize="s" sdsType="button" />}
-    onClick={actions.onClick}
-    sdsStyle="rounded"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+SquareLivePreviewDemo.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+export const SquareLivePreview = SquareLivePreviewDemo.bind({});
 
-storiesOf("Button", module).add("Minimal With Icon", () => (
-  <Button
-    startIcon={<Icon sdsIcon="refresh" sdsSize="s" sdsType="button" />}
-    onClick={actions.onClick}
-    sdsStyle="minimal"
-    sdsType="primary"
-  >
-    {text}
-  </Button>
-));
+const minimalPlacementStyles = {
+  display: "grid",
+  gridColumnGap: "24px",
+  gridRowGap: "0px",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateRows: "1fr",
+};
+
+const MinimalLivePreviewDemo = (): JSX.Element => {
+  return (
+    <div style={minimalPlacementStyles as React.CSSProperties}>
+      <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="primary">
+        {text}
+      </Button>
+
+      <Button
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        onClick={actions.onClick}
+        sdsStyle="minimal"
+        sdsType="primary"
+      >
+        {text}
+      </Button>
+      <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="secondary">
+        {text}
+      </Button>
+    </div>
+  );
+};
+
+MinimalLivePreviewDemo.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+export const MinimalLivePreview = MinimalLivePreviewDemo.bind({});

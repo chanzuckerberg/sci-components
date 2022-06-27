@@ -9,6 +9,7 @@ exports[`<FilterTag /> Default story renders snapshot 1`] = `
   >
     <button
       class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-1qnokts-MuiButtonBase-root-MuiButton-root"
+      data-testid="button"
       disabled=""
       tabindex="-1"
       type="button"
