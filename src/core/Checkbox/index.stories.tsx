@@ -1,27 +1,47 @@
-import { FormControlLabel } from "@mui/material";
-import { action } from "@storybook/addon-actions";
+import { Box, FormControlLabel } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Checkbox from "./index";
 
-const actions = {
-  onChange: action("onChange"),
+const CheckboxDemo = (props: Args): JSX.Element => {
+  const { disabled } = props;
+  const [checked, setChecked] = React.useState(true);
+
+  const handleCheck = () => setChecked(true);
+  const handleUncheck = () => setChecked(false);
+
+  const livePreviewStyles = {
+    display: "grid",
+    gridColumnGap: "24px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+        <FormControlLabel
+          control={
+            <Checkbox
+              disabled={disabled}
+              onChange={checked ? handleUncheck : handleCheck}
+              stage={checked ? "unchecked" : "checked"}
+            />
+          }
+          label="Label"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default {
-  component: Checkbox,
+  component: CheckboxDemo,
   title: "Checkbox",
 };
 
-const Template: Story = (props: Args) => {
-  const { stage } = props;
-  return (
-    <FormControlLabel
-      control={<Checkbox onChange={actions.onChange} stage={stage} />}
-      label="Label"
-    />
-  );
-};
+const Template: Story = (args) => <CheckboxDemo {...args} />;
 
 export const Default = Template.bind({});
 
@@ -33,7 +53,6 @@ Default.parameters = {
 
 Default.args = {
   id: "test-story",
-  stage: "checked",
 };
 
 export const Test = Template.bind({});
@@ -43,23 +62,97 @@ Test.args = {
   togglePosition: "right",
 };
 
-const livePreviewStyles = {
-  display: "grid",
-  gridColumnGap: "24px",
-  gridRowGap: "0px",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gridTemplateRows: "1fr",
-};
+/*
+ * Live Preview
+ */
 
-// LivePreview
-function LivePreviewDemo(props: Args): JSX.Element {
+const IndeterminateDemo = (): JSX.Element => {
+  const [checked, setChecked] = React.useState([true, false]);
+
+  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([event.target.checked, event.target.checked]);
+  };
+
+  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([event.target.checked, checked[1]]);
+  };
+
+  const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([checked[0], event.target.checked]);
+  };
+
+  const children = (
+    <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
+      <FormControlLabel
+        label="Child 1"
+        control={
+          <Checkbox
+            onChange={handleChange2}
+            stage={checked[0] ? "checked" : "unchecked"}
+          />
+        }
+      />
+      <FormControlLabel
+        label="Child 2"
+        control={
+          <Checkbox
+            onChange={handleChange3}
+            stage={checked[1] ? "checked" : "unchecked"}
+          />
+        }
+      />
+    </Box>
+  );
+
+  function getParentStage() {
+    if (checked[0] && checked[1]) {
+      return "checked";
+    }
+    if (checked[0] !== checked[1]) {
+      return "indeterminate";
+    }
+    return "unchecked";
+  }
   return (
-    <div style={livePreviewStyles as React.CSSProperties}>
-      <Template id="checkbox-1" stage="unchecked" {...props} />
-      <Template id="checkbox-2" stage="unchecked" {...props} />
+    <div>
+      <FormControlLabel
+        label="Parent"
+        control={
+          <Checkbox
+            checked={checked[0] && checked[1]}
+            stage={getParentStage()}
+            onChange={handleChange1}
+          />
+        }
+      />
+      {children}
     </div>
   );
-}
+};
+
+const LivePreviewDemo = (): JSX.Element => {
+  const livePreviewStyles = {
+    display: "grid",
+    gridColumnGap: "24px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+        <CheckboxDemo disabled={false} />
+      </div>
+      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
+        <CheckboxDemo disabled />
+      </div>
+      <div style={{ gridArea: "1 / 3 / 1 / 3" }}>
+        <IndeterminateDemo />
+      </div>
+    </div>
+  );
+};
 
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
