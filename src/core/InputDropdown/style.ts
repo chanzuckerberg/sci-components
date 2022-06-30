@@ -25,6 +25,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   counter?: string;
 }
 
+const labelFontBodyS = fontBody("s");
 const labelFontBodyXs = fontBody("xs");
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
@@ -38,13 +39,9 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
-    margin-top: ${spacings?.xxs}px;
-    margin-bottom: ${spacings?.xxs}px;
 
     &.MuiButton-text {
       justify-content: flex-start;
-      margin-top: ${spacings?.xxs}px;
-      margin-bottom: ${spacings?.xxs}px;
 
       &:hover {
         color: #000;
@@ -56,6 +53,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        line-height: unset;
+        font-size: unset;
       }
 
       svg {
@@ -259,6 +258,7 @@ const doNotForwardProps = ["intent", "open", "sdsStage"];
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
+  ${labelFontBodyS}
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
 
