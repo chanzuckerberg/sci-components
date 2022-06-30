@@ -10,28 +10,18 @@ const CheckboxDemo = (props: Args): JSX.Element => {
   const handleCheck = () => setChecked(true);
   const handleUncheck = () => setChecked(false);
 
-  const livePreviewStyles = {
-    display: "grid",
-    gridColumnGap: "24px",
-    gridRowGap: "0px",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridTemplateRows: "1fr",
-  };
-
   return (
-    <div style={livePreviewStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <FormControlLabel
-          control={
-            <Checkbox
-              disabled={disabled}
-              onChange={checked ? handleUncheck : handleCheck}
-              stage={checked ? "unchecked" : "checked"}
-            />
-          }
-          label="Label"
-        />
-      </div>
+    <div>
+      <FormControlLabel
+        control={
+          <Checkbox
+            disabled={disabled}
+            onChange={checked ? handleUncheck : handleCheck}
+            stage={checked ? "unchecked" : "checked"}
+          />
+        }
+        label="Label"
+      />
     </div>
   );
 };
@@ -135,7 +125,7 @@ const LivePreviewDemo = (): JSX.Element => {
     display: "grid",
     gridColumnGap: "24px",
     gridRowGap: "0px",
-    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateColumns: "repeat(3, 70px)",
     gridTemplateRows: "1fr",
   };
 
