@@ -2,7 +2,7 @@ import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import Button from "../Button";
-import { DefaultMenuSelectOption } from "../MenuSelect";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import ComplexFilter from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -32,7 +32,7 @@ SingleSelectWithSearch.args = {
 };
 
 export const SingleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
+  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
@@ -45,8 +45,6 @@ export const SingleSelectControlled = (): JSX.Element => {
         value={value}
       />
 
-      <br />
-
       <Button color="primary" variant="contained" onClick={update}>
         Update Controlled Value
       </Button>
@@ -57,7 +55,7 @@ export const SingleSelectControlled = (): JSX.Element => {
     setValue(GITHUB_LABELS[1]);
   }
 
-  function handleChange(newValue: DefaultMenuSelectOption | null) {
+  function handleChange(newValue: DefaultDropdownMenuOption | null) {
     setValue(newValue);
   }
 };
@@ -94,9 +92,11 @@ function ResizableWrapper({
   return (
     <div
       style={{
-        border: "1px solid black",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
         height: "200px",
         overflow: "auto",
+        padding: "8px 10px",
         resize: "both",
         width: "500px",
       }}
@@ -107,7 +107,7 @@ function ResizableWrapper({
 }
 
 export const MultipleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption[] | null>([
+  const [value, setValue] = useState<DefaultDropdownMenuOption[] | null>([
     GITHUB_LABELS[0],
     GITHUB_LABELS[1],
     GITHUB_LABELS[2],
@@ -122,7 +122,7 @@ export const MultipleSelectControlled = (): JSX.Element => {
 
   return (
     <>
-      Resize to see how chips flow given different widths and heights!
+      <p>Resize to see how chips flow given different widths and heights!</p>
       <ResizableWrapper>
         <ComplexFilter
           multiple
@@ -144,7 +144,7 @@ export const MultipleSelectControlled = (): JSX.Element => {
     setValue([GITHUB_LABELS[7], GITHUB_LABELS[8], GITHUB_LABELS[9]]);
   }
 
-  function handleChange(newValue: DefaultMenuSelectOption[] | null) {
+  function handleChange(newValue: DefaultDropdownMenuOption[] | null) {
     setValue(newValue);
   }
 };

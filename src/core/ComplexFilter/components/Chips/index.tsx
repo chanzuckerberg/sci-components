@@ -1,11 +1,11 @@
 import React from "react";
-import { DefaultMenuSelectOption } from "src/core/MenuSelect";
-import { StyledChip } from "./style";
+import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
+import { StyledTagFilter } from "./style";
 
 interface Props {
-  value: DefaultMenuSelectOption | DefaultMenuSelectOption[] | null;
+  value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
   multiple?: boolean;
-  onDelete: (option: DefaultMenuSelectOption) => void;
+  onDelete: (option: DefaultDropdownMenuOption) => void;
 }
 
 export default function Chips({
@@ -18,17 +18,16 @@ export default function Chips({
   if (!multiple) {
     const { name } = value as never;
 
-    return <StyledChip size="medium" label={name} onDelete={onDelete} />;
+    return <StyledTagFilter label={name} onDelete={onDelete} />;
   }
 
   return (
     <>
-      {(value as DefaultMenuSelectOption[]).map((item) => {
+      {(value as DefaultDropdownMenuOption[]).map((item) => {
         const { name } = item;
 
         return (
-          <StyledChip
-            size="medium"
+          <StyledTagFilter
             key={name}
             label={name}
             onDelete={() => onDelete(item)}

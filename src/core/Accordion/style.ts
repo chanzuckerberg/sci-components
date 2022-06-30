@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
 import { Accordion } from "@material-ui/core";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   getBorders,
@@ -30,18 +30,39 @@ export const StyledAccordion = styled(Accordion, {
     const border = getBorders(props);
 
     return css`
-      font-family: ${typography?.fontFamily};
-      box-shadow: ${shadows?.none};
-      border-bottom: ${useDivider ? border?.gray[300] : "none"};
-      height: fit-content;
-      ${togglePosition === "left" && leftPosition(props)}
+      &.MuiAccordion-root {
+        box-shadow: ${shadows?.none};
+        font-family: ${typography?.fontFamily};
+        border-bottom: ${useDivider ? border?.gray[300] : "none"};
+        height: fit-content;
+        ${togglePosition === "left" && leftPosition(props)}
 
-      &::before {
-        opacity: 0;
-      }
+        & .MuiAccordionSummary-root {
+          padding: 10px;
+          min-height: 40px;
 
-      &.Mui-expanded {
-        margin: 0;
+          &.Mui-expanded {
+            min-height: unset;
+          }
+
+          & .MuiAccordionSummary-expandIcon {
+            padding: 0;
+            align-self: flex-start;
+          }
+        }
+
+        .MuiAccordionDetails-root {
+          padding: 10px;
+          padding-top: 4px;
+        }
+
+        &:before {
+          opacity: 0;
+        }
+
+        &.Mui-expanded {
+          margin: 0;
+        }
       }
     `;
   }}
@@ -51,27 +72,29 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`
-    .MuiAccordionSummary-root {
-      flex-direction: row-reverse;
+    &.MuiAccordion-root {
+      & .MuiAccordionSummary-root {
+        flex-direction: row-reverse;
 
-      .MuiAccordionSummary-content {
-        padding-left: ${spaces?.xs}px;
-      }
+        .MuiAccordionSummary-content {
+          padding-left: ${spaces?.xs}px;
+        }
 
-      .MuiIconButton-edgeEnd {
-        margin: 0;
-        transform: rotate(-90deg);
-        align-self: flex-start;
-        margin-top: ${spaces?.xxs}px;
+        .MuiIconButton-edgeEnd {
+          margin: 0;
+          transform: rotate(-90deg);
+          align-self: flex-start;
+          margin-top: ${spaces?.xxs}px;
 
-        &.Mui-expanded {
-          transform: rotate(0deg);
+          &.Mui-expanded {
+            transform: rotate(0deg);
+          }
         }
       }
-    }
 
-    .MuiAccordionDetails-root {
-      padding-left: 30px;
+      & .MuiAccordionDetails-root {
+        padding-left: 30px;
+      }
     }
   `;
 };

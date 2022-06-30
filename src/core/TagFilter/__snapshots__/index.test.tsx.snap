@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FilterTag /> Default story renders snapshot 1`] = `
+exports[`<TagFilter /> Default story renders snapshot 1`] = `
 <div
   style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
 >
@@ -20,23 +20,24 @@ exports[`<FilterTag /> Default story renders snapshot 1`] = `
     style="grid-area: 2 / 1 / 2 / 2;"
   >
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-idoedp-MuiButtonBase-root-MuiChip-root"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-1fk0qlc-MuiButtonBase-root-MuiChip-root"
       role="button"
       tabindex="0"
     >
       <span
         class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
       >
-        Filter Tag
+        TagFilter
       </span>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconOutlinedColorPrimary MuiSvgIcon-fontSizeSmall"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconOutlinedColorPrimary css-i4bv87-MuiSvgIcon-root"
+        data-testid="ClearIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
         <path
-          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
         />
       </svg>
     </div>

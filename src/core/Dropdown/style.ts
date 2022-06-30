@@ -1,4 +1,3 @@
-import { Paper } from "@mui/material";
 import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
@@ -39,35 +38,6 @@ export const StyledPopper = styled(Popper)`
       z-index: 1400; // allows the dropdown to be used in modals
     `;
   }}
-`;
-
-export const StyledPaper = styled(Paper)`
-  box-shadow: none;
-  margin: 0;
-
-  .MuiAutocomplete-listbox {
-    padding: 0;
-  }
-
-  ${(props) => {
-    const colors = getColors(props);
-    const spacings = getSpaces(props);
-
-    return `
-      .MuiAutocomplete-option {
-        margin: 0 ${spacings?.s}px;
-        padding: 0;
-
-        &[aria-selected="true"] {
-          background-color: initial;
-        }
-
-        &:hover {
-          background-color: ${colors?.gray[100]};
-        }
-      `;
-  }}
-  }
 `;
 
 export const StyledButton = styled(Button)`
