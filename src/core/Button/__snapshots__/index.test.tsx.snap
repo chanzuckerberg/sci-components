@@ -2,7 +2,7 @@
 
 exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr;"
+  style="display: grid; grid-template-columns: repeat(3, minmax(37px,50px)); grid-template-rows: 1fr;"
 >
   <button
     class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
@@ -60,7 +60,7 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
 
 exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr;"
+  style="display: grid; grid-template-columns: repeat(6, 120px); grid-template-rows: 1fr;"
 >
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
@@ -147,7 +147,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
 
 exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr;"
+  style="display: grid; grid-template-columns: repeat(6, 120px); grid-template-rows: 1fr;"
 >
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"

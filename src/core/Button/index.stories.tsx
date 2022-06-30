@@ -75,7 +75,7 @@ const placementStyles = {
   display: "grid",
   gridColumnGap: "10px",
   gridRowGap: "0px",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(6, 120px)",
   gridTemplateRows: "1fr",
 };
 
@@ -156,7 +156,7 @@ const minimalPlacementStyles = {
   display: "grid",
   gridColumnGap: "24px",
   gridRowGap: "0px",
-  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateColumns: "repeat(3, minmax(37px,50px))",
   gridTemplateRows: "1fr",
 };
 
