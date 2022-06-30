@@ -114,7 +114,7 @@ export const Tag = styled.div`
 }
 ```
 
-5. Tailwind - Tailwind compliant configuration for the `defaultTheme` to use if your app uses TailwindA
+5. Tailwind - Tailwind compliant configuration for the `defaultTheme` to use if your app uses Tailwind
 
 First you need to import the SDS config into your application's Tailwind config:
 
