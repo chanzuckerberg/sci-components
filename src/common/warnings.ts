@@ -1,5 +1,7 @@
 export enum SDSWarningTypes {
   ButtonMissingSDSProps = "buttonMissingProps",
+  ChipDeprecated = "chipDeprecated",
+  MenuSelectDeprecated = "menuSelectDeprecated",
 }
 
 const SDS_WARNINGS = {
@@ -7,6 +9,15 @@ const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Buttons without sdsStyle or sdsType props will be deprecated.",
+  },
+  [SDSWarningTypes.ChipDeprecated]: {
+    hasWarned: false,
+    message: "Warning: <Chip /> will be deprecated and replaced with <Tag />",
+  },
+  [SDSWarningTypes.MenuSelectDeprecated]: {
+    hasWarned: false,
+    message:
+      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />",
   },
 };
 
