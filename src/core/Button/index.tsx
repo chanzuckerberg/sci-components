@@ -1,6 +1,9 @@
 import { ButtonProps as RawButtonProps } from "@material-ui/core";
 import React, { ForwardedRef } from "react";
-import { SDSWarningTypes, showWarningIfFirstOccurence } from "src/common/utils";
+import {
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
 import {
   PrimaryMinimalButton,
   RoundedButton,
