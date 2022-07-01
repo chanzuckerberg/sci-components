@@ -14,7 +14,7 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 **Currently SDS uses Material UI v4**
 
-NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) to learn about what you can do with the components.
+NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) to learn about what you can do with the components. Many czifui components are style wrappers that pass props through to the MUI component without modifying them.
 
 `czifui` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
@@ -41,7 +41,7 @@ yarn add czifui @emotion/css @emotion/react @emotion/styled @material-ui/core @m
 
 ## Usage
 
-`czifui` comes with four main exports that help you build your app:
+`czifui` comes with five main exports that help you build your app:
 
 1. Components - Accessible and reusable components
 
@@ -82,7 +82,7 @@ export const Tag = styled.div`
   // This is a callback function that returns more CSS rules, but the only way
   // to access the custom theme object
       ${(props) => {
-        //  getColors() is a selector that picks out colors from the theme object
+        // getColors() is a selector that picks out colors from the theme object
         const colors = getColors(props);
         // getSpaces() is a selector that picks out spacings from the theme object
         const spacings = getSpaces(props);
@@ -231,9 +231,9 @@ extra theme variables based on the themeOptions provided, so if you override `de
     </StylesProvider>
 ```
 
-💡 Aspen example available [here](https://github.com/chanzuckerberg/aspen/blob/trunk/src/frontend/pages/_app.tsx).
+💡 CZGE example available [here](https://github.com/chanzuckerberg/czgenepi/blob/trunk/src/frontend/src/common/styles/theme.ts).
 
-💡 Material UI docs for custom theming available [here](https://v4.mui.com/customization/theming/).
+💡 Material UI docs for custom theming available [here](https://mui.com/material-ui/customization/theming/).
 
 ## Q&A
 
@@ -293,6 +293,6 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
 
-## 2021 Plans
+## 2022 Plans
 
-[2021 Plans](https://docs.google.com/presentation/d/1ka5BbivcXYuDdkz3N_rpRdeaYE73GPhxfL4Bk8S0u98/edit#slide=id.geb12a33db6_2_4)
+[2022 Plans](https://docs.google.com/presentation/d/1pKAY6Wl3-EHInvOZuf0L3yEDFt2xVvMlO7ZWefQbgjA/edit?usp=sharing)
