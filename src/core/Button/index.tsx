@@ -1,5 +1,6 @@
 import { ButtonProps as RawButtonProps } from "@material-ui/core";
 import React, { ForwardedRef } from "react";
+import { SDSWarningTypes, showWarningIfFirstOccurence } from "src/common/utils";
 import {
   PrimaryMinimalButton,
   RoundedButton,
@@ -8,7 +9,6 @@ import {
   StyledButton,
 } from "./style";
 
-let hasWarned = false;
 export interface SdsProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
@@ -32,12 +32,8 @@ const Button = React.forwardRef(
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
 
-    if ((!sdsStyle || !sdsType) && !hasWarned) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "Warning: Buttons without sdsStyle or sdsType props will be deprecated."
-      );
-      hasWarned = true;
+    if (!sdsStyle || !sdsType) {
+      showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
     }
 
     if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
