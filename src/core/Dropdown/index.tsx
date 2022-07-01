@@ -29,6 +29,7 @@ interface DropdownProps<Multiple> {
   label: string;
   options: DefaultDropdownMenuOption[];
   onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
+  onClose?: () => void;
   multiple?: Multiple;
   search?: boolean;
   MenuSelectProps?: Partial<typeof DropdownMenu>;
@@ -56,6 +57,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   // unapplied changes.
   closeOnBlur = !buttons,
   onChange,
+  onClose,
   MenuSelectProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
@@ -198,6 +200,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
+    if (onClose) onClose();
     setAnchorEl(null);
   }
 
@@ -224,6 +227,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
+    if (onClose) onClose();
     setAnchorEl(null);
   }
 
