@@ -5,6 +5,7 @@ import pkg from "./package.json";
 import url from "@rollup/plugin-url";
 import css from "rollup-plugin-css-only";
 import bundleScss from "rollup-plugin-bundle-scss";
+import copy from "rollup-plugin-copy";
 
 const config = [
   {
@@ -33,6 +34,14 @@ const config = [
       ts(),
       css({ output: "variables.css" }),
       bundleScss({ output: "variables.scss" }),
+      copy({
+        targets: [
+          {
+            src: "./src/common/styles-dictionary/json/tailwind.json",
+            dest: "./dist",
+          },
+        ],
+      }),
     ],
   },
 ];
