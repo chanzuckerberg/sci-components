@@ -22,7 +22,11 @@ const SDS_WARNINGS = {
 };
 
 export const showWarningIfFirstOccurence = (warningType: SDSWarningTypes) => {
-  if (SDS_WARNINGS[warningType].hasWarned) return;
+  if (
+    !(<string>warningType in SDS_WARNINGS) ||
+    SDS_WARNINGS[warningType].hasWarned
+  )
+    return;
 
   // eslint-disable-next-line no-console
   console.warn(SDS_WARNINGS[warningType].message);
