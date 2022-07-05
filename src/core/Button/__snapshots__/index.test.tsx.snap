@@ -2,7 +2,7 @@
 
 exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: repeat(3, minmax(37px,50px)); grid-template-rows: 1fr;"
+  style="display: grid; grid-template-columns: repeat(3, min-content); grid-template-rows: 1fr;"
 >
   <button
     class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
