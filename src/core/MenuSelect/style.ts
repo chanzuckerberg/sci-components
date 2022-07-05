@@ -12,7 +12,7 @@ export interface StyleProps extends CommonThemeProps {
   search?: boolean;
 }
 
-const doNotForwardProps = ["search", "InputBaseProps"];
+const doNotForwardProps = ["search", "InputBaseProps", "keepSearchOnSelect"];
 
 // (thuang): Casting the type to `Autocomplete`
 //  per https://github.com/mui-org/material-ui/issues/21727#issuecomment-880263271
@@ -20,6 +20,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${({ search }: StyleProps) => !search && "height: 0;"}
+  width: 100%;
 ` as typeof Autocomplete;
 
 export const InputBaseWrapper = styled("div", {

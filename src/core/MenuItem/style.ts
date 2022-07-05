@@ -14,51 +14,80 @@ import {
 const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
-  && {
-    min-height: 30px;
+  ${(props) => {
+    const { selected } = props;
+    const colors = getColors(props);
+    const fontWeights = getFontWeights(props);
+    const spacings = getSpaces(props);
 
-    ${(props) => {
-      const { selected } = props;
-      const colors = getColors(props);
-      const fontWeights = getFontWeights(props);
-      const spacings = getSpaces(props);
+    const primary = colors?.primary[400];
 
-      const primary = colors?.primary[400];
+    return `
+      padding: ${spacings?.xs}px ${spacings?.s}px;
+      min-height: unset;
+      opacity: 1;
 
-      return `
-        padding: ${spacings?.xs}px ${spacings?.s}px;
-        opacity: 1;
-       
-        .primary-text {
-          font-weight: ${
-            selected ? fontWeights?.semibold : fontWeights?.regular
-          };
-        }
+      &.MuiAutocomplete-option {
+        min-height: unset;
+      }
+      
+      .primary-text {
+        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
+      }
 
-        &.MuiButtonBase-root {
-          background-color: transparent;
-
-          &:hover, &.${menuItemClasses.focusVisible} {
-            background-color: ${colors?.gray[100]};
-
-            &[aria-selected="true"] {
-              background-color: ${colors?.gray[100]};
-            }
-          }
-
-          &[aria-selected="true"] {
-            background-color: initial;
-          }
-        }
+      &.MuiButtonBase-root {
+        background-color: transparent;
 
         &:hover, &.${menuItemClasses.focusVisible} {
-          svg {
-            color: ${selected ? primary : colors?.gray[500]};
+          background-color: ${colors?.gray[100]};
+
+          &[aria-selected="true"] {
+            background-color: ${colors?.gray[100]};
           }
+        }
+      }
+
+      &.MuiMenuItem-root .MuiSvgIcon-root {
+        align-self: flex-start;
+        margin-top: 3px;
+      }
+  
+      &.MuiAutocomplete-option[aria-selected="true"] {
+        background-color: white;
+
+        &:hover {
+          background-color: ${colors?.gray[100]};
+        }
+
+        svg.MuiSvgIcon-root {
+          color: ${selected ? primary : colors?.gray[500]};
+        }
+      }
+
+      &:hover {
+        background-color: ${colors?.gray[100]};
+        svg.MuiSvgIcon-root {
+          color: ${selected ? primary : colors?.gray[500]};
+        }
+      }
+
+      &.Mui-selected.MuiListItem-root.MuiListItem-button {
+        background-color: white;
+        &:hover {
+          background-color: ${colors?.gray[100]};
+        }
+        .primary-text {
+          font-weight: ${fontWeights?.semibold};
+        }
+      }
+
+      &:active {
+        svg.MuiSvgIcon-root {
+          color: ${primary};
         }
 
         &:active {
-          svg {
+          svg.MuiSvgIcon-root {
             color: ${primary};
           }
 
@@ -66,9 +95,9 @@ export const StyledMenuItem = styled(MenuItem)`
             font-weight: ${fontWeights?.semibold};
           }
         }
+      }
     `;
-    }}
-  }
+  }}
 `;
 
 export const ContentWrapper = styled("span")`

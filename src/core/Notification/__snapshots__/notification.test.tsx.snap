@@ -26,7 +26,7 @@ exports[`<Notification /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiAlert-message css-acap47-MuiAlert-message"
+    class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
   >
     this is a notification
   </div>

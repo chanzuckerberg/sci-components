@@ -2,7 +2,7 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiAccordion-root css-cqyok5 MuiPaper-elevation1"
+  class="MuiPaper-root MuiAccordion-root css-efcnpv MuiPaper-elevation1"
   data-testid="accordion"
   id="test-story"
 >

@@ -154,4 +154,4 @@ export const Toggle = styled(Switch)`
       ${checked ? toggleOn(props) : toggleOff(props)}
     `;
   }}
-`;
+` as typeof Switch;

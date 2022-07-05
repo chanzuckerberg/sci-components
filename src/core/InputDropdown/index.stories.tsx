@@ -1,25 +1,74 @@
+import { ClickAwayListener } from "@mui/base";
+import { Popper } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import MenuSelect from "../MenuSelect";
+import DropdownMenu from "../DropdownMenu";
+import { getBorders, getCorners, getShadows, getSpaces } from "../styles";
 import InputDropdown from "./index";
-import { StyledPopper } from "./style";
+
+const StyledPopper = styled(Popper)`
+  ${(props) => {
+    const borders = getBorders(props);
+    const corners = getCorners(props);
+    const shadows = getShadows(props);
+    const spacings = getSpaces(props);
+
+    return `
+      background-color: white;
+      border: ${borders?.gray[100]};
+      border-radius: ${corners?.m}px;
+      box-shadow: ${shadows?.m};
+      padding: ${spacings?.xs}px;
+      width: auto;
+      z-index: 1;
+    `;
+  }}
+`;
+
+const StyledInputDropdown = styled(InputDropdown)`
+  width: 160px;
+`;
 
 const Demo = (props: Args): JSX.Element => {
-  const { disabled, label, sdsStyle, sdsType, multiple, ...rest } = props;
+  const { disabled, fullWidth, label, sdsStyle, sdsType, multiple, ...rest } =
+    props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
+  const [open, setOpen] = useState(false);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleChange = () => {
+    if (!multiple) {
+      setOpen(false);
+    }
+  };
+
+  const handleClose = () => {};
+
+  const handleClickAway = () => {
+    if (open) {
+      setOpen(false);
+    }
   };
 
   const options = [
     {
+      details: "Details for menu item 1",
       name: "Menu Item 1",
     },
     {
@@ -32,24 +81,57 @@ const Demo = (props: Args): JSX.Element => {
 
   return (
     <>
-      <InputDropdown
-        disabled={disabled}
-        label={label}
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
-        sdsStyle={sdsStyle}
-        sdsType={sdsType}
-        data-testid="InputDropdown"
-        {...rest}
-      />
-      <StyledPopper open={open} anchorEl={anchorEl} style={{ width: "160px" }}>
-        <MenuSelect
-          search={false}
-          options={options}
-          onClose={handleClose}
-          multiple={multiple}
-        />
-      </StyledPopper>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          {fullWidth ? (
+            <StyledInputDropdown
+              disabled={disabled}
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              sdsStyle={sdsStyle}
+              sdsType={sdsType}
+              data-testid="InputDropdown"
+              {...rest}
+            />
+          ) : (
+            <InputDropdown
+              disabled={disabled}
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              sdsStyle={sdsStyle}
+              sdsType={sdsType}
+              data-testid="InputDropdown"
+              {...rest}
+            />
+          )}
+
+          <StyledPopper
+            modifiers={[
+              {
+                name: "offset",
+                options: {
+                  offset: [0, 8],
+                },
+              },
+            ]}
+            open={open}
+            anchorEl={anchorEl}
+            placement="bottom-start"
+          >
+            <DropdownMenu
+              open={!!open}
+              onClose={handleClose}
+              onChange={handleChange}
+              search={false}
+              multiple={multiple}
+              disableCloseOnSelect={multiple}
+              options={options}
+            />
+          </StyledPopper>
+        </div>
+      </ClickAwayListener>
     </>
   );
 };
@@ -151,6 +233,7 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 export const RoundLivePreview = LivePreviewTemplate.bind({});
 
 RoundLivePreview.args = {
+  fullWidth: true,
   sdsStyle: "rounded",
 };
 
@@ -163,6 +246,7 @@ RoundLivePreview.parameters = {
 export const SquareLivePreview = LivePreviewTemplate.bind({});
 
 SquareLivePreview.args = {
+  fullWidth: true,
   sdsStyle: "square",
 };
 

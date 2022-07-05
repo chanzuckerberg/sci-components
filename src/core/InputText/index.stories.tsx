@@ -15,6 +15,7 @@ const Demo = (props: Args): JSX.Element => {
       intent={intent}
       hideLabel={hideLabel}
       disabled={disabled}
+      name="input-text-name"
     />
   );
 };

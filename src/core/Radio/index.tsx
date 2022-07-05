@@ -14,7 +14,9 @@ export interface RadioProps
  */
 const RadioButton = (props: RadioProps): JSX.Element => {
   let newProps: MUIRadioProps;
-  switch (props.stage) {
+  const { stage } = props;
+
+  switch (stage) {
     case "checked":
       newProps = {
         ...props,

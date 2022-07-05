@@ -8,6 +8,7 @@ import {
   StyledButton,
 } from "./style";
 
+let hasWarned = false;
 export interface SdsProps {
   isAllCaps?: boolean;
   isRounded?: boolean;
@@ -31,11 +32,12 @@ const Button = React.forwardRef(
     const sdsStyle = props?.sdsStyle;
     const sdsType = props?.sdsType;
 
-    if (!sdsStyle || !sdsType) {
+    if ((!sdsStyle || !sdsType) && !hasWarned) {
       // eslint-disable-next-line no-console
       console.warn(
         "Warning: Buttons without sdsStyle or sdsType props will be deprecated."
       );
+      hasWarned = true;
     }
 
     if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {

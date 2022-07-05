@@ -68,6 +68,10 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    chromatic: { delay: 5000 },
+  },
   title: "Tooltip",
 };
 
@@ -209,12 +213,6 @@ PlacementPreview.parameters = {
   snapshot: {
     skip: true,
   },
-};
-
-PlacementPreview.args = {
-  // Chrome shifts elements when fonts load in
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  chromatic: { delay: 500 },
 };
 
 const TestDemo = (props: Args): JSX.Element => {

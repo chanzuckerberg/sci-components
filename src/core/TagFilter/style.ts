@@ -1,15 +1,16 @@
 import { css } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
+import React from "react";
 import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
 import Tag from "../Tag";
 
-export interface FilterTagExtraProps extends CommonThemeProps {
+export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;
   onDelete: React.EventHandler<any>;
 }
 
 export const StyledTag = styled(Tag)`
-  ${(props: FilterTagExtraProps) => {
+  ${(props: TagFilterExtraProps) => {
     const spacings = getSpaces(props);
 
     return css`
@@ -23,7 +24,8 @@ export const StyledTag = styled(Tag)`
         ${fontHeaderXs(props)}
       }
 
-      .MuiChip-deleteIcon {
+      .MuiChip-deleteIcon,
+      .MuiSvgIcon-root {
         margin-left: ${spacings?.s}px;
       }
 

@@ -22,9 +22,7 @@ const InputToggle = (props: InputToggleExtraProps) => {
       onChange={handleChange}
       value={labelValue}
       {...rest}
-    >
-      {labelValue}
-    </Toggle>
+    />
   );
 };
 
