@@ -156,7 +156,7 @@ const minimalPlacementStyles = {
   display: "grid",
   gridColumnGap: "24px",
   gridRowGap: "0px",
-  gridTemplateColumns: "repeat(3, minmax(37px,50px))",
+  gridTemplateColumns: "repeat(3, min-content)",
   gridTemplateRows: "1fr",
 };
 
