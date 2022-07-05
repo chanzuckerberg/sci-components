@@ -77,6 +77,33 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
+export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
+  isTriggerChangeOnOptionClick: true,
+  multiple: true,
+  onChange: (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+};
+
+export const SearchWithOnClose = Template.bind({});
+
+SearchWithOnClose.args = {
+  buttonPosition: "right",
+  buttons: true,
+  closeOnBlur: false,
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  onClose: () => {
+    // eslint-disable-next-line no-console
+    console.log(123);
+  },
+  search: true,
+};
+
 const useStyles = makeStyles(() => ({
   /* stylelint-disable-next-line */
   paper: {
