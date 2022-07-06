@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import React from "react";
 import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
 import Tag from "../Tag";

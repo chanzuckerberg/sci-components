@@ -24,9 +24,10 @@ czifui installs without direct dependencies to prevent version errors. Please en
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@material-ui/core"
-  "@material-ui/icons"
-  "@material-ui/lab"
+  "@mui/base"
+  "@mui/icons-material"
+  "@mui/lab"
+  "@mui/material"
   "react"
   "react-dom"
 ```
@@ -35,10 +36,10 @@ To install the dependencies:
 
 ```
 // with npm
-npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+npm i czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Usage

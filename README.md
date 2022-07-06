@@ -12,9 +12,9 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 [NPM Package](https://www.npmjs.com/package/czifui)
 
-**Currently SDS uses Material UI v4**
+**Currently SDS uses Material UI v5**
 
-NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://v4.mui.com/) to learn about what you can do with the components.
+NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components.
 
 `czifui` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
@@ -22,9 +22,10 @@ NOTE: Since most of the czifui components are built on top of Material UI's equi
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@material-ui/core"
-  "@material-ui/icons"
-  "@material-ui/lab"
+  "@mui/base"
+  "@mui/icons-material"
+  "@mui/lab"
+  "@mui/material"
   "react"
   "react-dom"
 ```
@@ -33,10 +34,10 @@ To install czifui and the dependencies:
 
 ```
 // with npm
-npm i czifui @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+npm i czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add czifui @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Usage
@@ -57,7 +58,7 @@ import { Button } from "czifui";
 
 ```javascript
 import { styled } from '@mui/material/styles';
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import { fontHeaderXL } from "czifui";
 
 export const Title - styled(Typography)`
@@ -191,20 +192,20 @@ extra theme variables based on the themeOptions provided, so if you override `de
          <ChildA />
          <ChildB />
        </div>
-     )
+     );
    }
    ```
 
    The fix is:
 
    ```tsx
-   function Foo({className}) {
+   function Foo({ className }) {
      return (
        <div className={className}>
          <ChildA />
          <ChildB />
        </div>
-     )
+     );
    }
    ```
 
@@ -213,15 +214,19 @@ extra theme variables based on the themeOptions provided, so if you override `de
    For example, `ComplexFilter` exports `ComplexFilterInputDropdown` sub-component, so if you want to style it, you can do the following:
 
    ```tsx
-   import { ComplexFilter, ComplexFilterInputDropdown } from 'czifui'
-   import styled from '@emotion/styled'
+   import styled from "@emotion/styled";
+   import { ComplexFilter, ComplexFilterInputDropdown } from "czifui";
 
    const StyledComplexFilterInputDropdown = styled(ComplexFilterInputDropdown)`
-    color: pink;
-   `
+     color: pink;
+   `;
 
    function Foo() {
-     return <ComplexFilter InputDropdownComponent={StyledComplexFilterInputDropdown} />
+     return (
+       <ComplexFilter
+         InputDropdownComponent={StyledComplexFilterInputDropdown}
+       />
+     );
    }
    ```
 

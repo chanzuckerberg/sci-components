@@ -22,7 +22,7 @@ storiesOf("Radio Button", module).add("unchecked", () => (
       attribute. Note aria labels should be meaningful based on your content.{" "}
       <br /> Good: &ldquo;XYZ Gene&ldquo;
       <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
-      https://material-ui.com/components/radio-buttons/#accessibility
+      https://mui.com/material-ui/react-radio-button/#accessibility
     </p>
     <FormControlLabel
       control={<RadioButton onChange={actions.onChange} stage="unchecked" />}

@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { Accordion } from "@material-ui/core";
+import { Accordion } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,

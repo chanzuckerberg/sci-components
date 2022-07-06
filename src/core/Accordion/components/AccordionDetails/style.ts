@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { AccordionDetails } from "@material-ui/core";
+import { AccordionDetails } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
 
 export const StyledAccordionDetails = styled(AccordionDetails)`
