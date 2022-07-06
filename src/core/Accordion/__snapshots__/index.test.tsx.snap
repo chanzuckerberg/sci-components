@@ -2,14 +2,14 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1n9gvev-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1x3fmw6-MuiPaper-root-MuiAccordion-root"
   data-testid="accordion"
   id="test-story"
 >
   <div
     aria-controls="test-story-panel-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-fqrme5-MuiButtonBase-root-MuiAccordionSummary-root"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-q39ari-MuiButtonBase-root-MuiAccordionSummary-root"
     id="test-story"
     role="button"
     tabindex="0"

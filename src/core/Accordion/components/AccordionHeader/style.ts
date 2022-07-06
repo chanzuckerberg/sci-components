@@ -34,7 +34,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         }
       }
 
-      .MuiAccordionSummary-expandIcon {
+      .MuiAccordionSummary-expandIconWrapper {
         padding: 0px;
         margin-right: 0;
         margin-left: ${spaces?.m}px;

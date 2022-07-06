@@ -35,7 +35,6 @@ export const StyledAccordion = styled(Accordion, {
         font-family: ${typography?.fontFamily};
         border-bottom: ${useDivider ? border?.gray[300] : "none"};
         height: fit-content;
-        ${togglePosition === "left" && leftPosition(props)}
 
         & .MuiAccordionSummary-root {
           padding: 10px;
@@ -45,7 +44,8 @@ export const StyledAccordion = styled(Accordion, {
             min-height: unset;
           }
 
-          & .MuiAccordionSummary-expandIcon {
+          & .MuiAccordionSummary-expandIcon,
+          & .MuiAccordionSummary-expandIconWrapper {
             padding: 0;
             align-self: flex-start;
           }
@@ -63,6 +63,7 @@ export const StyledAccordion = styled(Accordion, {
         &.Mui-expanded {
           margin: 0;
         }
+        ${togglePosition === "left" && leftPosition(props)}
       }
     `;
   }}
@@ -80,7 +81,7 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
           padding-left: ${spaces?.xs}px;
         }
 
-        .MuiIconButton-edgeEnd {
+        .MuiAccordionSummary-expandIconWrapper {
           margin: 0;
           transform: rotate(-90deg);
           align-self: flex-start;
