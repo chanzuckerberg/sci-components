@@ -109,7 +109,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           style={{ marginLeft: "24px", marginRight: "10px" }}
           icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
-          sdsType="secondary"
+          sdsType="tertiary"
         />
       </div>
       <div>
@@ -117,7 +117,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           style={{ marginLeft: "24px", marginRight: "10px" }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="medium"
-          sdsType="secondary"
+          sdsType="tertiary"
         />
       </div>
       <div>
@@ -169,7 +169,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           style={{ marginLeft: "24px", marginRight: "8px" }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
-          sdsType="secondary"
+          sdsType="tertiary"
         />
       </div>
     </div>
