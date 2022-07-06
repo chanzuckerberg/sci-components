@@ -39,6 +39,12 @@ Default.args = {
   sdsType: "primary",
 };
 
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const Test = Template.bind({});
 
 Test.args = {
@@ -172,62 +178,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
 export const LivePreview = LivePreviewTemplate.bind({});
-export const LargeSecondaryIconButton = Template.bind({});
 
-LargeSecondaryIconButton.args = {
-  "aria-label": "checked",
-  disabled: false,
-  icon: <Icon sdsIcon="checkCircle" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "secondary",
-};
-
-export const LargeTertiaryIconButton = Template.bind({});
-
-LargeTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "tertiary",
-};
-
-export const MediumTertiaryIconButton = Template.bind({});
-
-MediumTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />,
-  sdsSize: "medium",
-  sdsType: "tertiary",
-};
-
-export const SmallPrimaryIconButton = Template.bind({});
-
-SmallPrimaryIconButton.args = {
-  "aria-label": "info",
-  disabled: false,
-  icon: <Icon sdsIcon="infoCircle" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
-  sdsType: "primary",
-};
-
-export const SmallSecondaryIconButton = Template.bind({});
-
-SmallSecondaryIconButton.args = {
-  "aria-label": "checked",
-  disabled: false,
-  icon: <Icon sdsIcon="checkCircle" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
-  sdsType: "secondary",
-};
-
-export const SmallTertiaryIconButton = Template.bind({});
-
-SmallTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
-  sdsType: "tertiary",
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
