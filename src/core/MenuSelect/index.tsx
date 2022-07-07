@@ -7,6 +7,10 @@ import {
 } from "@material-ui/lab";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
+import {
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -18,7 +22,6 @@ import {
   StyleProps,
 } from "./style";
 
-let hasWarned = false;
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -74,13 +77,7 @@ export default function MenuSelect<
 
   const [inputValue, setInputValue] = useState("");
 
-  if (!hasWarned) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
-    );
-    hasWarned = true;
-  }
+  showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
 
   return (
     <StyledAutocomplete
