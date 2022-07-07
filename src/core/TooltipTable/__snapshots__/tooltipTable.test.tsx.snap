@@ -6,7 +6,7 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
   data-testid="tooltipTable"
 >
   <div
-    class="css-2u46e7"
+    class="css-1x04v0m"
   >
     <div
       class="css-k74gq5"
@@ -94,7 +94,7 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
     </table>
   </div>
   <div
-    class="css-2u46e7"
+    class="css-1x04v0m"
   >
     <div
       class="css-k74gq5"

@@ -78,8 +78,8 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     }
 
     .MuiSvgIcon-root {
-      height: ${iconSizes?.l.height};
-      width: ${iconSizes?.l.width};
+      height: ${iconSizes?.l.height}px;
+      width: ${iconSizes?.l.width}px;
       padding-right: ${spacings?.xxs}px;
       margin: 0 0 0 -${spacings?.xxxs}px;
     }

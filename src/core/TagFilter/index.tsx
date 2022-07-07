@@ -1,5 +1,5 @@
-import { ChipProps } from "@material-ui/core";
 import { Clear } from "@mui/icons-material";
+import { ChipProps } from "@mui/material";
 import React from "react";
 import { StyledTag } from "./style";
 

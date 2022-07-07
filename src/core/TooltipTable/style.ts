@@ -54,7 +54,7 @@ export const Section = styled("div")`
         border-bottom: 1px solid ${colors?.gray["200"]};
       }
 
-      &:not(:first-child) {
+      &:not(:first-of-type) {
         padding-top: ${spacings?.l}px;
       }
     `;

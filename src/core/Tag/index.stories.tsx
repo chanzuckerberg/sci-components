@@ -1,4 +1,4 @@
-import { CheckCircleOutline, WbSunny } from "@material-ui/icons";
+import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";

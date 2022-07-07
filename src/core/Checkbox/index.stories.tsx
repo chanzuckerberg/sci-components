@@ -22,7 +22,7 @@ storiesOf("Checkbox", module).add("unchecked", () => (
       Note aria labels should be meaningful based on your content. <br /> Good:
       &ldquo;XYZ Gene&ldquo;
       <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
-      https://material-ui.com/components/checkboxes/#accessibility
+      https://mui.com/material-ui/react-checkbox/#accessibility
     </p>
     <FormControlLabel
       control={<Checkbox onChange={actions.onChange} stage="unchecked" />}
