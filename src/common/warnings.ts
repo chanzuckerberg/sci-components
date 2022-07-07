@@ -22,11 +22,17 @@ const SDS_WARNINGS = {
 };
 
 export const showWarningIfFirstOccurence = (warningType: SDSWarningTypes) => {
-  if (
-    !(<string>warningType in SDS_WARNINGS) ||
-    SDS_WARNINGS[warningType].hasWarned
-  )
+  if (!(<string>warningType in SDS_WARNINGS)) {
+    // add undefined warning to prevent multiple warnings
+    SDS_WARNINGS[warningType] = {
+      hasWarned: false,
+      message: `Warning: SDSWarningType ${warningType} is not defined in SDS_WARNINGS`,
+    };
+  }
+
+  if (SDS_WARNINGS[warningType].hasWarned) {
     return;
+  }
 
   // eslint-disable-next-line no-console
   console.warn(SDS_WARNINGS[warningType].message);
