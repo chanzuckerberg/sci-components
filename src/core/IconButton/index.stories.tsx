@@ -1,7 +1,7 @@
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
-import { getSpaces } from "../styles";
+import { defaultAppTheme } from "../styles";
 import IconButton from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -55,20 +55,26 @@ Test.args = {
   sdsType: "secondary",
 };
 
-const LivePreviewDemo = (props: Args): JSX.Element => {
-  const spacings = getSpaces(props);
+const LivePreviewDemo = (): JSX.Element => {
+  const spacings = defaultAppTheme?.spacing;
 
   const livePreviewStyles = {
     alignItems: "center",
     display: "grid",
-    gridColumnGap: "0px",
+    gridColumnGap: "24px",
     gridRowGap: "50px",
-    gridTemplateColumns: "repeat(11, min-content)",
+    gridTemplateColumns: "repeat(7, min-content)",
   };
 
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <div>
+      <div style={{ display: "flex" }}>
+        <Demo
+          style={{ marginRight: spacings?.xxs }}
+          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsSize="large"
+          sdsType="primary"
+        />
         <Demo
           style={{ marginRight: spacings?.xxs }}
           icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
@@ -76,27 +82,17 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           sdsType="primary"
         />
       </div>
-      <div>
+      <div style={{ display: "flex" }}>
         <Demo
-          style={{ marginRight: spacings?.xxs }}
-          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
-          sdsSize="large"
-          sdsType="primary"
-        />
-      </div>
-      <div>
-        <Demo
-          style={{ marginLeft: "24px", marginRight: "10px" }}
+          style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
           }
           sdsSize="large"
           sdsType="secondary"
         />
-      </div>
-      <div>
         <Demo
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
           }
@@ -120,9 +116,21 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           sdsType="tertiary"
         />
       </div>
-      <div>
+      <div style={{ display: "flex" }}>
         <Demo
-          style={{ marginLeft: "24px", marginRight: "8px" }}
+          style={{ marginRight: spacings?.s }}
+          icon={
+            <Icon
+              sdsIcon="barChartVertical3"
+              sdsSize="s"
+              sdsType="iconButton"
+            />
+          }
+          sdsSize="small"
+          sdsType="primary"
+        />
+        <Demo
+          style={{ marginRight: spacings?.s }}
           icon={
             <Icon
               sdsIcon="barChartVertical3"
@@ -134,23 +142,15 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           sdsType="primary"
         />
       </div>
-      <div>
+      <div style={{ display: "flex" }}>
         <Demo
-          style={{ marginRight: "8px" }}
-          icon={
-            <Icon
-              sdsIcon="barChartVertical3"
-              sdsSize="s"
-              sdsType="iconButton"
-            />
-          }
+          style={{ marginRight: spacings?.s }}
+          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
-          sdsType="primary"
+          sdsType="secondary"
         />
-      </div>
-      <div>
         <Demo
-          style={{ marginLeft: "24px", marginRight: "8px" }}
+          style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
           sdsType="secondary"
@@ -158,15 +158,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
       <div>
         <Demo
-          style={{ marginRight: "8px" }}
-          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
-          sdsSize="small"
-          sdsType="secondary"
-        />
-      </div>
-      <div>
-        <Demo
-          style={{ marginLeft: "24px", marginRight: "8px" }}
+          style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
           sdsType="tertiary"
