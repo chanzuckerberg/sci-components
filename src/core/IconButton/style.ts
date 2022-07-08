@@ -43,12 +43,14 @@ const isDisabled = (props: IconButtonExtraProps): SerializedStyles => {
 
 const primary = (props: IconButtonExtraProps): SerializedStyles => {
   const colors = getColors(props);
+  const { sdsSize } = props;
 
   return css`
     color: ${colors?.primary[400]};
 
     &:hover {
-      background: ${colors?.gray[300]};
+      background: ${colors?.gray[200]};
+      color: ${sdsSize === "small" ? colors?.gray[600] : colors?.primary[400]};
     }
 
     &:active {
