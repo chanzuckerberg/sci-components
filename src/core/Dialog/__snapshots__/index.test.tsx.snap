@@ -58,6 +58,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
 >
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -68,6 +69,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -137,6 +139,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
 >
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -147,6 +150,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -216,6 +220,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
 >
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -226,6 +231,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -295,6 +301,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
 >
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -305,6 +312,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -323,6 +331,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
 >
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -333,6 +342,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    data-testid="button"
     tabindex="0"
     type="button"
   >

@@ -1,10 +1,13 @@
-import { InputAdornment } from "@mui/material";
+import {
+  AutocompleteFreeSoloValueMapping,
+  InputAdornment,
+} from "@mui/material";
 import {
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
 } from "@mui/material/Autocomplete";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -16,12 +19,14 @@ import {
   StyleProps,
 } from "./style";
 
+let hasWarned = false;
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
 }
 
 interface MenuSelectExtraProps extends StyleProps {
+  keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   InputBaseProps?: Partial<InputSearchProps>;
 }
@@ -56,6 +61,7 @@ export default function MenuSelect<
   props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
+    keepSearchOnSelect = true,
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
     renderTags = defaultRenderTags,
@@ -65,6 +71,16 @@ export default function MenuSelect<
     search = false,
     InputBaseProps = {},
   } = props;
+
+  const [inputValue, setInputValue] = useState("");
+
+  if (!hasWarned) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
+    );
+    hasWarned = true;
+  }
 
   return (
     <StyledAutocomplete
@@ -76,6 +92,17 @@ export default function MenuSelect<
       noOptionsText={noOptionsText}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
+      inputValue={inputValue}
+      onInputChange={(event, value, reason) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+      }}
       renderInput={(params) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
@@ -114,8 +141,11 @@ export default function MenuSelect<
     />
   );
 
-  function defaultGetOptionLabel(option: T): string {
-    return option.name;
+  function defaultGetOptionLabel(
+    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
+  ): string {
+    if (typeof option === "object" && "name" in option) return option.name;
+    return option.toString();
   }
 
   function defaultRenderTags() {

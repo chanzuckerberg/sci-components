@@ -1,9 +1,8 @@
-import { Dialog } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
-import { DefaultMenuSelectOption } from "../MenuSelect";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -77,23 +76,18 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
-const useStyles = makeStyles(() => ({
-  /* stylelint-disable-next-line */
-  paper: {
-    padding: "50px",
-    width: "200px",
-  },
-}));
+const StyledPaper = styled(Paper)`
+  width: 200px;
+  padding: 50px;
+`;
 
 export const InsideModal = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultMenuSelectOption | null>(
+  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
-  const classes = useStyles();
-
   return (
-    <Dialog open disableEnforceFocus classes={{ paper: classes.paper }}>
+    <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
       <Dropdown
         label="Dropdown"
         options={GITHUB_LABELS}
@@ -104,7 +98,7 @@ export const InsideModal = (): JSX.Element => {
     </Dialog>
   );
 
-  function handleChange(newValue: DefaultMenuSelectOption | null) {
+  function handleChange(newValue: DefaultDropdownMenuOption | null) {
     setValue(newValue);
   }
 };

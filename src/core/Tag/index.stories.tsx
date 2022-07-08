@@ -1,4 +1,4 @@
-import { CheckCircleOutline, WbSunny } from "@material-ui/icons";
+import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
@@ -20,8 +20,8 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 const customColorTuples = {
-  labelAndBack: ["brown", "lightsalmon"],
-  labelAndBackAndIcon: ["brown", "lightsalmon", "crimson"],
+  labelAndBack: ["#A52A2A", "#ffa07a"],
+  labelAndBackAndIcon: ["#A52A2A", "#ffa07a", "#ffe74a"],
 };
 
 const availableColorOptions = [
@@ -56,8 +56,8 @@ export default {
           "error",
           "gray",
           "beta",
-          "Label + Background",
-          "Label + Background + Icon",
+          "Custom colors for Label, Background",
+          "Custom colors for Label, Background, Icon",
         ],
         type: "select",
       },

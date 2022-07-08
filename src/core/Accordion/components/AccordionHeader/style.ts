@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { AccordionSummary } from "@material-ui/core";
+import { AccordionSummary } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXxs,
@@ -34,7 +34,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         }
       }
 
-      .MuiAccordionSummary-expandIcon {
+      .MuiAccordionSummary-expandIconWrapper {
         padding: 0px;
         margin-right: 0;
         margin-left: ${spaces?.m}px;
@@ -46,7 +46,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
   }}
 `;
 
-export const StyledSubtitle = styled.p`
+export const StyledSubtitle = styled("p")`
   ${fontBodyXxs}
 
   ${(props: CommonThemeProps) => {

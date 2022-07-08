@@ -21,23 +21,22 @@ export interface DialogTitleProps
 /**
  * @see https://v4.mui.com/components/dialogs/
  */
-const DialogTitle = forwardRef(function DialogTitle(
-  props: DialogTitleProps,
-  ref
-): JSX.Element {
-  const { children, title, subtitle, onClose, ...rest } = props;
+const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
+  function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
+    const { children, title, subtitle, onClose, ...rest } = props;
 
-  return (
-    <StyledDialogTitle ref={ref} {...rest}>
-      {children || (
-        <>
-          {onClose && <CloseButton onClick={onClose} />}
-          <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
-        </>
-      )}
-    </StyledDialogTitle>
-  );
-});
+    return (
+      <StyledDialogTitle ref={ref} {...rest}>
+        {children || (
+          <>
+            {onClose && <CloseButton onClick={onClose} />}
+            <Title>{title}</Title>
+            <Subtitle>{subtitle}</Subtitle>
+          </>
+        )}
+      </StyledDialogTitle>
+    );
+  }
+);
 
 export default DialogTitle;
