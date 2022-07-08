@@ -5,12 +5,15 @@ import {
 } from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import { Value } from "../Dropdown";
-import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import DropdownContent, {
+  DefaultDropdownContentOption,
+} from "../DropdownContent";
+import { StyledPopper } from "../DropdownContent/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import Chips from "./components/Chips";
-import { StyledChipsWrapper, StyledPopper, Wrapper } from "./style";
+import { StyledChipsWrapper, Wrapper } from "./style";
 
 export {
   StyledPopper as ComplexFilterPopper,
@@ -18,13 +21,13 @@ export {
 };
 interface ComplexFilterProps<Multiple> {
   label: string;
-  options: DefaultDropdownMenuOption[];
+  options: DefaultDropdownContentOption[];
   multiple?: Multiple;
   search?: boolean;
-  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
-  MenuSelectProps?: Partial<typeof DropdownMenu>;
+  onChange: (options: Value<DefaultDropdownContentOption, Multiple>) => void;
+  DropdownContentProps?: Partial<typeof DropdownContent>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultDropdownMenuOption, Multiple>;
+  value?: Value<DefaultDropdownContentOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper;
@@ -41,10 +44,10 @@ export default function ComplexFilter<
   multiple = false,
   search = false,
   onChange,
-  MenuSelectProps = {},
+  DropdownContentProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
-  PopperComponent = StyledPopper,
+  PopperComponent,
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
@@ -55,16 +58,16 @@ export default function ComplexFilter<
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    Value<DefaultDropdownMenuOption, Multiple>
+    Value<DefaultDropdownContentOption, Multiple>
   >(getInitialValue());
 
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    getInitialValue() as DefaultDropdownMenuOption[]
-  );
+  const [pendingValue, setPendingValue] = useState<
+    DefaultDropdownContentOption[]
+  >(getInitialValue() as DefaultDropdownContentOption[]);
 
   useEffect(() => {
     onChange(value);
-    setPendingValue(value as DefaultDropdownMenuOption[]);
+    setPendingValue(value as DefaultDropdownContentOption[]);
   }, [value]);
 
   useEffect(() => {
@@ -78,61 +81,55 @@ export default function ComplexFilter<
   // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
-      <Wrapper {...rest}>
-        <InputDropdownComponent
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          {...InputDropdownProps}
-        />
-
-        <StyledChipsWrapper>
-          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-        </StyledChipsWrapper>
-      </Wrapper>
-      <PopperComponent
-        anchorEl={anchorEl}
-        modifiers={[
-          {
-            name: "offset",
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
-        open={open}
-        placement="bottom-start"
-      >
-        <ClickAwayListener onClickAway={handleClose}>
-          <div>
-            <DropdownMenu
-              open={!!open}
-              onClose={handleMenuSelectClose}
-              search={search}
-              multiple={multiple as Multiple}
-              value={
-                (multiple ? pendingValue : value) as AutocompleteValue<
-                  DefaultDropdownMenuOption,
-                  Multiple,
-                  undefined,
-                  undefined
-                >
-              }
-              onChange={handleChange}
-              disableCloseOnSelect={multiple}
-              options={options}
-              {...MenuSelectProps}
+      <ClickAwayListener onClickAway={handleClose}>
+        <div>
+          <Wrapper {...rest}>
+            <InputDropdownComponent
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              {...InputDropdownProps}
             />
-          </div>
-        </ClickAwayListener>
-      </PopperComponent>
+
+            <StyledChipsWrapper>
+              <Chips
+                value={value}
+                multiple={multiple}
+                onDelete={handleDelete}
+              />
+            </StyledChipsWrapper>
+          </Wrapper>
+
+          <DropdownContent
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuSelectClose}
+            search={search}
+            multiple={multiple as Multiple}
+            value={
+              (multiple ? pendingValue : value) as AutocompleteValue<
+                DefaultDropdownContentOption,
+                Multiple,
+                undefined,
+                undefined
+              >
+            }
+            onChange={handleChange}
+            disableCloseOnSelect={multiple}
+            options={options}
+            PopperComponent={PopperComponent}
+            PopperBaseProps={{ sx: { minWidth: 250 } }}
+            {...DropdownContentProps}
+          />
+        </div>
+      </ClickAwayListener>
     </>
   );
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
       if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+        setValue(pendingValue as Value<DefaultDropdownContentOption, Multiple>);
       }
 
       setOpen(false);
@@ -144,7 +141,7 @@ export default function ComplexFilter<
       setAnchorEl(null);
     } else {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
+        setPendingValue(value as DefaultDropdownContentOption[]);
       }
 
       setAnchorEl(event.currentTarget);
@@ -157,7 +154,7 @@ export default function ComplexFilter<
       setOpen(false);
 
       if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+        setValue(pendingValue as Value<DefaultDropdownContentOption, Multiple>);
       }
     }
   }
@@ -175,41 +172,46 @@ export default function ComplexFilter<
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
     if (multiple) {
       if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as DefaultDropdownMenuOption[]);
-        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+        setPendingValue(newValue as DefaultDropdownContentOption[]);
+        return setValue(
+          newValue as Value<DefaultDropdownContentOption, Multiple>
+        );
       }
 
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+      return setPendingValue(newValue as DefaultDropdownContentOption[]);
     }
 
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownContentOption, Multiple>);
     setOpen(false);
   }
 
-  function handleDelete(option: DefaultDropdownMenuOption) {
+  function handleDelete(option: DefaultDropdownContentOption) {
     if (!multiple) {
       return setValue(null);
     }
 
     const newValue =
-      (value as DefaultDropdownMenuOption[])?.filter(
+      (value as DefaultDropdownContentOption[])?.filter(
         (item) => item !== option
       ) || null;
 
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownContentOption, Multiple>);
   }
 
-  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
+  function getInitialValue(): Value<DefaultDropdownContentOption, Multiple> {
     if (isControlled) {
       return propValue;
     }
 
     return multiple
-      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
+      ? ([] as unknown as Value<DefaultDropdownContentOption, Multiple>)
       : null;
   }
 }

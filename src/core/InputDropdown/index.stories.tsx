@@ -1,30 +1,9 @@
 import { ClickAwayListener } from "@mui/base";
-import { Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import DropdownMenu from "../DropdownMenu";
-import { getBorders, getCorners, getShadows, getSpaces } from "../styles";
+import DropdownContent from "../DropdownContent";
 import InputDropdown from "./index";
-
-const StyledPopper = styled(Popper)`
-  ${(props) => {
-    const borders = getBorders(props);
-    const corners = getCorners(props);
-    const shadows = getShadows(props);
-    const spacings = getSpaces(props);
-
-    return `
-      background-color: white;
-      border: ${borders?.gray[100]};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      padding: ${spacings?.xs}px;
-      width: auto;
-      z-index: 1;
-    `;
-  }}
-`;
 
 const StyledInputDropdown = styled(InputDropdown)`
   width: 160px;
@@ -107,29 +86,16 @@ const Demo = (props: Args): JSX.Element => {
             />
           )}
 
-          <StyledPopper
-            modifiers={[
-              {
-                name: "offset",
-                options: {
-                  offset: [0, 8],
-                },
-              },
-            ]}
+          <DropdownContent
             open={open}
             anchorEl={anchorEl}
-            placement="bottom-start"
-          >
-            <DropdownMenu
-              open={!!open}
-              onClose={handleClose}
-              onChange={handleChange}
-              search={false}
-              multiple={multiple}
-              disableCloseOnSelect={multiple}
-              options={options}
-            />
-          </StyledPopper>
+            onClose={handleClose}
+            onChange={handleChange}
+            search={false}
+            multiple={multiple}
+            disableCloseOnSelect={multiple}
+            options={options}
+          />
         </div>
       </ClickAwayListener>
     </>

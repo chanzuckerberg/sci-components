@@ -2,7 +2,7 @@ import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
-import { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { DefaultDropdownContentOption } from "../DropdownContent";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -82,7 +82,7 @@ const StyledPaper = styled(Paper)`
 `;
 
 export const InsideModal = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
+  const [value, setValue] = useState<DefaultDropdownContentOption | null>(
     GITHUB_LABELS[0]
   );
 
@@ -98,7 +98,7 @@ export const InsideModal = (): JSX.Element => {
     </Dialog>
   );
 
-  function handleChange(newValue: DefaultDropdownMenuOption | null) {
+  function handleChange(newValue: DefaultDropdownContentOption | null) {
     setValue(newValue);
   }
 };

@@ -1,176 +1,63 @@
-import { ClickAwayListener } from "@mui/base";
-import { Popper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { ClickAwayListener, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import InputDropdown from "../InputDropdown";
-import {
-  fontHeaderXs,
-  getBorders,
-  getCorners,
-  getShadows,
-  getSpaces,
-  getTypography,
-} from "../styles";
-import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
+import DropdownMenu, { DefaultDropdownContentOption } from "./index";
 
-const doNotForwardProps = [
-  "count",
-  "keepSearchOnSelect",
-  "search",
-  "InputBaseProps",
-  "hasSections",
-  "title",
-];
-
-const StyledInputDropdown = styled(InputDropdown, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
-  position: relative;
+const StyledInputDropdown = styled(InputDropdown)`
   min-width: 300px;
-  &.MuiButtonBase-root {
-    margin: 0 !important;
-  }
 `;
 
-const StyledHeaderTitle = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<{ search: boolean }>`
-  ${fontHeaderXs}
+const POPPER_POSITION = "bottom-start";
+const POPPER_WIDTH = 160;
 
-  ${(props) => {
-    const { search } = props;
-
-    const typography = getTypography(props);
-    const spacings = getSpaces(props);
-
-    return `
-      font-family: ${typography?.fontFamily};
-      color: black;
-      padding-top: ${spacings?.xxs}px;
-      padding-right: ${spacings?.s}px;
-      padding-left: ${spacings?.s}px; 
-      ${search ? `padding-bottom: 0px;` : `padding-bottom: ${spacings?.xs}px;`}
-    `;
-  }}
-`;
-
-const StyledPopper = styled(Popper, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
-  ${(props) => {
-    const borders = getBorders(props);
-    const corners = getCorners(props);
-    const shadows = getShadows(props);
-    const spacings = getSpaces(props);
-
-    return `
-      background-color: white;
-      border: ${borders?.gray[100]};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      padding: ${spacings?.xs}px;
-      width: 286px;
-      z-index: 1;
-    `;
-  }}
-`;
-
-const StyledLivePreviewPopper = styled(Popper)`
-  ${(props) => {
-    const borders = getBorders(props);
-    const corners = getCorners(props);
-    const shadows = getShadows(props);
-    const spacings = getSpaces(props);
-
-    return `
-      background-color: white;
-      border: ${borders?.gray[100]};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      padding: ${spacings?.xs}px;
-      width: 146px;
-      z-index: 1;
-    `;
-  }}
-`;
-
-// eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
-  // eslint-disable-next-line react/prop-types -- Demo code
-  const {
-    multiple,
-    options = GITHUB_LABELS,
-    search,
-    hasSections,
-    title,
-  } = props;
-
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const { multiple, options = GITHUB_LABELS, search, title, label } = props;
 
   const [open, setOpen] = useState(false);
 
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
   const [value, setValue] = useState<
-    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
+    null | DefaultDropdownContentOption | DefaultDropdownContentOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    []
-  );
+  const [pendingValue, setPendingValue] = useState<
+    DefaultDropdownContentOption[]
+  >([]);
 
-  const id = open ? "github-label" : undefined;
+  const id = open ? `dropdown-menu` : undefined;
 
   return (
-    <>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <div>
-          <StyledInputDropdown
-            aria-describedby={id}
-            onClick={handleClick}
-            label="Click Target"
-            sdsStage={open ? "userInput" : "default"}
-            sdsType={multiple ? "multiSelect" : "singleSelect"}
-            sdsStyle="square"
-          />
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <div>
+        <StyledInputDropdown
+          aria-describedby={id}
+          label={label}
+          onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
+          sdsType={multiple ? "multiSelect" : "singleSelect"}
+          sdsStyle="square"
+        />
 
-          <StyledPopper
-            id={id}
-            modifiers={[
-              {
-                name: "offset",
-                options: {
-                  offset: [0, 8],
-                },
-              },
-            ]}
-            open={open}
-            anchorEl={anchorEl}
-          >
-            {title && (
-              <StyledHeaderTitle search={search}>
-                Github Labels {hasSections ? " by category" : ""}
-              </StyledHeaderTitle>
-            )}
-
-            <DropdownMenu
-              open={!!open}
-              search={search}
-              multiple={multiple}
-              value={multiple ? pendingValue : value}
-              onChange={handleChange}
-              disableCloseOnSelect={false}
-              options={options}
-              groupBy={
-                hasSections ? (option) => option.section as string : undefined
-              }
-              {...props}
-            />
-          </StyledPopper>
-        </div>
-      </ClickAwayListener>
-    </>
+        <DropdownMenu
+          anchorEl={anchorEl}
+          disableCloseOnSelect={false}
+          id={id}
+          multiple={multiple}
+          onChange={handleChange}
+          open={open}
+          options={options}
+          PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
+          search={search}
+          title={title}
+          value={multiple ? pendingValue : value}
+          {...props}
+        />
+      </div>
+    </ClickAwayListener>
   );
 
   function handleClickAway() {
@@ -198,7 +85,7 @@ const Demo = (props: Args): JSX.Element => {
       setAnchorEl(null);
     } else {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
+        setPendingValue(value as DefaultDropdownContentOption[]);
       }
 
       setAnchorEl(event.currentTarget);
@@ -207,25 +94,42 @@ const Demo = (props: Args): JSX.Element => {
   }
 
   function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    _: SyntheticEvent<Element, Event>,
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+      return setPendingValue(newValue as DefaultDropdownContentOption[]);
     }
 
-    setValue(newValue as DefaultDropdownMenuOption);
+    setValue(newValue as DefaultDropdownContentOption);
     setOpen(false);
   }
 };
 
+const groupByOptions = [
+  undefined,
+  (option: DefaultDropdownContentOption) => option.section as string,
+];
+
 export default {
   argTypes: {
-    hasSections: {
-      control: { type: "boolean" },
+    groupBy: {
+      control: {
+        labels: ["No group by", "Group by section names"],
+        type: "select",
+      },
+      mapping: groupByOptions,
+      options: Object.keys(groupByOptions),
     },
     keepSearchOnSelect: {
       control: { type: "boolean" },
+    },
+    label: {
+      control: { type: "text" },
+      require: true,
     },
     multiple: {
       control: { type: "boolean" },
@@ -234,11 +138,11 @@ export default {
       control: { type: "boolean" },
     },
     title: {
-      control: { type: "boolean" },
+      control: { type: "text" },
     },
   },
   component: Demo,
-  title: "DropdownMenu",
+  title: "DropdownContent",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
@@ -246,11 +150,12 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  hasSections: true,
+  groupBy: groupByOptions[1],
   keepSearchOnSelect: true,
+  label: "Click Target",
   multiple: true,
   search: true,
-  title: true,
+  title: "Github Labels",
 };
 
 // Live Preview Story
@@ -300,14 +205,18 @@ const LivePreviewDemo = (): JSX.Element => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
 
-  const [value1, setValue1] = useState<null | DefaultDropdownMenuOption>(null);
-  const [value2, setValue2] = useState<null | DefaultDropdownMenuOption>(null);
+  const [value1, setValue1] = useState<null | DefaultDropdownContentOption>(
+    null
+  );
+  const [value2, setValue2] = useState<null | DefaultDropdownContentOption>(
+    null
+  );
 
   const [pendingValue3, setPendingValue3] = useState<
-    DefaultDropdownMenuOption[]
+    DefaultDropdownContentOption[]
   >([]);
   const [pendingValue4, setPendingValue4] = useState<
-    DefaultDropdownMenuOption[]
+    DefaultDropdownContentOption[]
   >([]);
 
   return (
@@ -324,31 +233,22 @@ const LivePreviewDemo = (): JSX.Element => {
               sdsStyle="minimal"
             />
 
-            <StyledLivePreviewPopper
-              id="live1"
-              modifiers={[
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ]}
-              open={open1}
+            <DropdownMenu
               anchorEl={anchorEl1}
-              placement="bottom-start"
-            >
-              <DropdownMenu
-                open={!!open1}
-                onChange={handleChange1}
-                disableCloseOnSelect={false}
-                options={options.slice(0, 3)}
-                search={false}
-                multiple={false}
-                hasSections={false}
-                value={value1}
-              />
-            </StyledLivePreviewPopper>
+              id="live1"
+              open={!!open1}
+              onChange={handleChange1}
+              disableCloseOnSelect={false}
+              options={options.slice(0, 3)}
+              PopperBaseProps={{
+                placement: POPPER_POSITION,
+                sx: { width: POPPER_WIDTH },
+              }}
+              search={false}
+              multiple={false}
+              hasSections={false}
+              value={value1}
+            />
           </div>
         </ClickAwayListener>
       </div>
@@ -370,34 +270,22 @@ const LivePreviewDemo = (): JSX.Element => {
               />
             </IconButton>
 
-            <StyledLivePreviewPopper
-              id="live2"
-              modifiers={[
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ]}
-              open={open2}
+            <DropdownMenu
               anchorEl={anchorEl2}
-              placement="bottom-start"
-            >
-              <StyledHeaderTitle search={false}>
-                Title Lorem Ipsum
-              </StyledHeaderTitle>
-
-              <DropdownMenu
-                open={!!open2}
-                search={false}
-                multiple={false}
-                onChange={handleChange2}
-                disableCloseOnSelect={false}
-                options={options.slice(0, 3)}
-                value={value2}
-              />
-            </StyledLivePreviewPopper>
+              id="live2"
+              open={!!open2}
+              search={false}
+              multiple={false}
+              onChange={handleChange2}
+              disableCloseOnSelect={false}
+              options={options.slice(0, 3)}
+              PopperBaseProps={{
+                placement: POPPER_POSITION,
+                sx: { width: POPPER_WIDTH },
+              }}
+              value={value2}
+              title="Title Lorem Ipsum"
+            />
           </div>
         </ClickAwayListener>
       </div>
@@ -414,30 +302,21 @@ const LivePreviewDemo = (): JSX.Element => {
               sdsStyle="rounded"
             />
 
-            <StyledLivePreviewPopper
+            <DropdownMenu
               id="live3"
-              modifiers={[
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ]}
-              open={open3}
               anchorEl={anchorEl3}
-              placement="bottom-start"
-            >
-              <DropdownMenu
-                open={!!open3}
-                search
-                multiple
-                onChange={handleChange3}
-                disableCloseOnSelect
-                options={options}
-                value={pendingValue3}
-              />
-            </StyledLivePreviewPopper>
+              open={!!open3}
+              search
+              multiple
+              onChange={handleChange3}
+              disableCloseOnSelect
+              options={options}
+              PopperBaseProps={{
+                placement: POPPER_POSITION,
+                sx: { width: POPPER_WIDTH },
+              }}
+              value={pendingValue3}
+            />
           </div>
         </ClickAwayListener>
       </div>
@@ -454,32 +333,23 @@ const LivePreviewDemo = (): JSX.Element => {
               sdsStyle="square"
             />
 
-            <StyledLivePreviewPopper
+            <DropdownMenu
               id="live4"
-              modifiers={[
-                {
-                  name: "offset",
-                  options: {
-                    offset: [0, 8],
-                  },
-                },
-              ]}
-              open={open4}
               anchorEl={anchorEl4}
-              placement="bottom-start"
-            >
-              <DropdownMenu
-                open={!!open4}
-                search={false}
-                multiple
-                hasSections
-                groupBy={(option) => option.section as string}
-                onChange={handleChange4}
-                disableCloseOnSelect
-                options={options}
-                value={pendingValue4}
-              />
-            </StyledLivePreviewPopper>
+              open={!!open4}
+              search={false}
+              multiple
+              hasSections
+              groupBy={(option) => option.section as string}
+              onChange={handleChange4}
+              disableCloseOnSelect
+              options={options}
+              PopperBaseProps={{
+                placement: POPPER_POSITION,
+                sx: { width: POPPER_WIDTH },
+              }}
+              value={pendingValue4}
+            />
           </div>
         </ClickAwayListener>
       </div>
@@ -507,10 +377,13 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange1(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
     setOpen1(false);
-    setValue1(newValue as DefaultDropdownMenuOption);
+    setValue1(newValue as DefaultDropdownContentOption);
   }
 
   function handleClickAway2() {
@@ -534,10 +407,13 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange2(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
     setOpen2(false);
-    setValue2(newValue as DefaultDropdownMenuOption);
+    setValue2(newValue as DefaultDropdownContentOption);
   }
 
   function handleClickAway3() {
@@ -561,9 +437,12 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange3(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
-    return setPendingValue3(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue3(newValue as DefaultDropdownContentOption[]);
   }
 
   function handleClickAway4() {
@@ -587,9 +466,12 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange4(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
-    return setPendingValue4(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue4(newValue as DefaultDropdownContentOption[]);
   }
 };
 
@@ -598,11 +480,9 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 export const LivePreview = LivePreviewTemplate.bind({});
 
 LivePreview.args = {
-  hasSections: false,
   keepSearchOnSelect: true,
   multiple: false,
   search: false,
-  title: false,
 };
 
 LivePreview.parameters = {
@@ -614,25 +494,19 @@ LivePreview.parameters = {
 // Test Story
 
 const TestDemo = (props: Args): JSX.Element => {
-  const {
-    hasSections,
-    multiple,
-    options = GITHUB_LABELS,
-    search,
-    title,
-  } = props;
+  const { multiple, options = GITHUB_LABELS, search } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [open, setOpen] = useState(false);
 
   const [value, setValue] = useState<
-    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
+    null | DefaultDropdownContentOption | DefaultDropdownContentOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    []
-  );
+  const [pendingValue, setPendingValue] = useState<
+    DefaultDropdownContentOption[]
+  >([]);
 
   const id = open ? "github-label" : undefined;
 
@@ -640,7 +514,7 @@ const TestDemo = (props: Args): JSX.Element => {
     <>
       <ClickAwayListener onClickAway={handleClickAway}>
         <div>
-          <StyledInputDropdown
+          <InputDropdown
             aria-describedby={id}
             onClick={handleClick}
             label="Click Target"
@@ -650,39 +524,18 @@ const TestDemo = (props: Args): JSX.Element => {
             data-testid="dropdown-menu"
           />
 
-          <StyledPopper
-            id={id}
-            modifiers={[
-              {
-                name: "offset",
-                options: {
-                  offset: [0, 8],
-                },
-              },
-            ]}
-            open={open}
+          <DropdownMenu
             anchorEl={anchorEl}
-          >
-            {title && (
-              <StyledHeaderTitle search={search}>
-                Github Labels {hasSections ? " by category" : ""}
-              </StyledHeaderTitle>
-            )}
-
-            <DropdownMenu
-              open={!!open}
-              search={search}
-              multiple={multiple}
-              value={multiple ? pendingValue : value}
-              onChange={handleChange}
-              disableCloseOnSelect={multiple}
-              options={options}
-              groupBy={
-                hasSections ? (option) => option.section as string : undefined
-              }
-              {...props}
-            />
-          </StyledPopper>
+            id={id}
+            open={open}
+            search={search}
+            multiple={multiple}
+            value={multiple ? pendingValue : value}
+            onChange={handleChange}
+            disableCloseOnSelect={multiple}
+            options={options}
+            {...props}
+          />
         </div>
       </ClickAwayListener>
     </>
@@ -698,7 +551,7 @@ const TestDemo = (props: Args): JSX.Element => {
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (!open) {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
+        setPendingValue(value as DefaultDropdownContentOption[]);
       }
 
       setAnchorEl(event.currentTarget);
@@ -720,14 +573,17 @@ const TestDemo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue:
+      | DefaultDropdownContentOption
+      | DefaultDropdownContentOption[]
+      | null
   ) {
     if (!multiple) {
-      setValue(newValue as DefaultDropdownMenuOption);
+      setValue(newValue as DefaultDropdownContentOption);
       setOpen(false);
     }
 
-    return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue(newValue as DefaultDropdownContentOption[]);
   }
 };
 
@@ -736,11 +592,9 @@ const TestTemplate: Story = (args) => <TestDemo {...args} />;
 export const Test = TestTemplate.bind({});
 
 Test.args = {
-  hasSections: false,
   keepSearchOnSelect: false,
   multiple: false,
   search: false,
-  title: false,
 };
 
 Test.parameters = {
