@@ -17,6 +17,7 @@ exports[`<InputSlider /> Test story renders snapshot 1`] = `
     />
     <span
       class="MuiSlider-thumbColorPrimary MuiSlider-thumbSizeMedium MuiSlider-thumb css-eg0mwd-MuiSlider-thumb"
+      data-focusvisible="false"
       data-index="0"
       style="left: 15%;"
     >
