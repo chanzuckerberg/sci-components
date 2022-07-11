@@ -7,8 +7,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
   const { disabled } = props;
   const [checked, setChecked] = React.useState(true);
 
-  const handleCheck = () => setChecked(true);
-  const handleUncheck = () => setChecked(false);
+  const handleChange = () => setChecked((prevState) => !prevState);
 
   return (
     <div>
@@ -16,7 +15,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
         control={
           <Checkbox
             disabled={disabled}
-            onChange={checked ? handleUncheck : handleCheck}
+            onChange={handleChange}
             stage={checked ? "unchecked" : "checked"}
           />
         }
