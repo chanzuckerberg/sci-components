@@ -46,6 +46,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   return (
     <StyledCheckbox
+      data-testid="checkbox"
       {...newProps}
       checkedIcon={
         <SvgIcon
