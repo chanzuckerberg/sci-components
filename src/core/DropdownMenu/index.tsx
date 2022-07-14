@@ -26,7 +26,7 @@ import {
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
-export interface DefaultDropdownContentOption {
+export interface DefaultDropdownMenuOption {
   name: string;
   section?: string;
   details?: string;
@@ -62,7 +62,7 @@ type CustomAutocompleteProps<
   "renderInput"
 >;
 
-export type DropdownContentProps<
+export type DropdownMenuProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
@@ -70,13 +70,13 @@ export type DropdownContentProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraProps;
 
-export default function DropdownContent<
-  T extends DefaultDropdownContentOption,
+export default function DropdownMenu<
+  T extends DefaultDropdownMenuOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
-  props: DropdownContentProps<T, Multiple, DisableClearable, FreeSolo>
+  props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
     multiple = false,

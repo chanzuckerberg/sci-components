@@ -1,11 +1,11 @@
 import React from "react";
-import { DefaultDropdownContentOption } from "src/core/DropdownContent";
+import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
 import { StyledTagFilter } from "./style";
 
 interface Props {
-  value: DefaultDropdownContentOption | DefaultDropdownContentOption[] | null;
+  value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
   multiple?: boolean;
-  onDelete: (option: DefaultDropdownContentOption) => void;
+  onDelete: (option: DefaultDropdownMenuOption) => void;
 }
 
 export default function Chips({
@@ -23,7 +23,7 @@ export default function Chips({
 
   return (
     <>
-      {(value as DefaultDropdownContentOption[]).map((item) => {
+      {(value as DefaultDropdownMenuOption[]).map((item) => {
         const { name } = item;
 
         return (

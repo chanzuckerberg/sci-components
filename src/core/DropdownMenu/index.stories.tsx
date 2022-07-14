@@ -4,7 +4,7 @@ import React, { SyntheticEvent, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import InputDropdown from "../InputDropdown";
-import DropdownMenu, { DefaultDropdownContentOption } from "./index";
+import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
   min-width: 300px;
@@ -21,12 +21,12 @@ const Demo = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    null | DefaultDropdownContentOption | DefaultDropdownContentOption[]
+    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<
-    DefaultDropdownContentOption[]
-  >([]);
+  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
+    []
+  );
 
   const id = open ? `dropdown-menu` : undefined;
 
@@ -85,7 +85,7 @@ const Demo = (props: Args): JSX.Element => {
       setAnchorEl(null);
     } else {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownContentOption[]);
+        setPendingValue(value as DefaultDropdownMenuOption[]);
       }
 
       setAnchorEl(event.currentTarget);
@@ -95,23 +95,20 @@ const Demo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultDropdownContentOption[]);
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
-    setValue(newValue as DefaultDropdownContentOption);
+    setValue(newValue as DefaultDropdownMenuOption);
     setOpen(false);
   }
 };
 
 const groupByOptions = [
   undefined,
-  (option: DefaultDropdownContentOption) => option.section as string,
+  (option: DefaultDropdownMenuOption) => option.section as string,
 ];
 
 export default {
@@ -142,7 +139,7 @@ export default {
     },
   },
   component: Demo,
-  title: "DropdownContent",
+  title: "DropdownMenu",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
@@ -205,18 +202,14 @@ const LivePreviewDemo = (): JSX.Element => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
 
-  const [value1, setValue1] = useState<null | DefaultDropdownContentOption>(
-    null
-  );
-  const [value2, setValue2] = useState<null | DefaultDropdownContentOption>(
-    null
-  );
+  const [value1, setValue1] = useState<null | DefaultDropdownMenuOption>(null);
+  const [value2, setValue2] = useState<null | DefaultDropdownMenuOption>(null);
 
   const [pendingValue3, setPendingValue3] = useState<
-    DefaultDropdownContentOption[]
+    DefaultDropdownMenuOption[]
   >([]);
   const [pendingValue4, setPendingValue4] = useState<
-    DefaultDropdownContentOption[]
+    DefaultDropdownMenuOption[]
   >([]);
 
   return (
@@ -377,13 +370,10 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange1(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     setOpen1(false);
-    setValue1(newValue as DefaultDropdownContentOption);
+    setValue1(newValue as DefaultDropdownMenuOption);
   }
 
   function handleClickAway2() {
@@ -407,13 +397,10 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange2(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     setOpen2(false);
-    setValue2(newValue as DefaultDropdownContentOption);
+    setValue2(newValue as DefaultDropdownMenuOption);
   }
 
   function handleClickAway3() {
@@ -437,12 +424,9 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange3(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
-    return setPendingValue3(newValue as DefaultDropdownContentOption[]);
+    return setPendingValue3(newValue as DefaultDropdownMenuOption[]);
   }
 
   function handleClickAway4() {
@@ -466,12 +450,9 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange4(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
-    return setPendingValue4(newValue as DefaultDropdownContentOption[]);
+    return setPendingValue4(newValue as DefaultDropdownMenuOption[]);
   }
 };
 
@@ -501,12 +482,12 @@ const TestDemo = (props: Args): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const [value, setValue] = useState<
-    null | DefaultDropdownContentOption | DefaultDropdownContentOption[]
+    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
   >(multiple ? [] : null);
 
-  const [pendingValue, setPendingValue] = useState<
-    DefaultDropdownContentOption[]
-  >([]);
+  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
+    []
+  );
 
   const id = open ? "github-label" : undefined;
 
@@ -551,7 +532,7 @@ const TestDemo = (props: Args): JSX.Element => {
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (!open) {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownContentOption[]);
+        setPendingValue(value as DefaultDropdownMenuOption[]);
       }
 
       setAnchorEl(event.currentTarget);
@@ -573,17 +554,14 @@ const TestDemo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (!multiple) {
-      setValue(newValue as DefaultDropdownContentOption);
+      setValue(newValue as DefaultDropdownMenuOption);
       setOpen(false);
     }
 
-    return setPendingValue(newValue as DefaultDropdownContentOption[]);
+    return setPendingValue(newValue as DefaultDropdownMenuOption[]);
   }
 };
 

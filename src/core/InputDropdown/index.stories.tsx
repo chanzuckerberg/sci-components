@@ -2,7 +2,7 @@ import { ClickAwayListener } from "@mui/base";
 import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
-import DropdownContent from "../DropdownContent";
+import DropdownMenu from "../DropdownMenu";
 import InputDropdown from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
@@ -86,7 +86,7 @@ const Demo = (props: Args): JSX.Element => {
             />
           )}
 
-          <DropdownContent
+          <DropdownMenu
             open={open}
             anchorEl={anchorEl}
             onClose={handleClose}

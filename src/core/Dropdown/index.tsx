@@ -3,10 +3,8 @@ import {
   AutocompleteValue as MUIValue,
 } from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
-import DropdownContent, {
-  DefaultDropdownContentOption,
-} from "../DropdownContent";
-import { StyledPopper } from "../DropdownContent/style";
+import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
@@ -33,13 +31,13 @@ interface DropdownProps<Multiple> {
   buttons?: boolean;
   closeOnBlur?: boolean;
   label: string;
-  options: DefaultDropdownContentOption[];
-  onChange: (options: Value<DefaultDropdownContentOption, Multiple>) => void;
+  options: DefaultDropdownMenuOption[];
+  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
   multiple?: Multiple;
   search?: boolean;
-  MenuSelectProps?: Partial<typeof DropdownContent>;
+  MenuSelectProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultDropdownContentOption, Multiple>;
+  value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper | RenderFunctionType;
@@ -80,11 +78,11 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    Value<DefaultDropdownContentOption, Multiple>
+    Value<DefaultDropdownMenuOption, Multiple>
   >(getInitialValue());
 
   const [pendingValue, setPendingValue] = useState<
-    Value<DefaultDropdownContentOption, true>
+    Value<DefaultDropdownMenuOption, true>
   >([]);
 
   useEffect(() => {
@@ -108,7 +106,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         {...InputDropdownProps}
         {...rest}
       />
-      <DropdownContent
+      <DropdownMenu
         anchorEl={anchorEl}
         open={open}
         search={search}
@@ -116,7 +114,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         multiple={multiple as Multiple}
         value={
           (multiple ? pendingValue : value) as MUIValue<
-            DefaultDropdownContentOption,
+            DefaultDropdownMenuOption,
             Multiple,
             undefined,
             undefined
@@ -168,13 +166,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
             )}
           </div>
         ) : null}
-      </DropdownContent>
+      </DropdownMenu>
     </>
   );
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (multiple) {
-      setPendingValue(value as DefaultDropdownContentOption[]);
+      setPendingValue(value as DefaultDropdownMenuOption[]);
     }
 
     setAnchorEl(event.currentTarget);
@@ -197,7 +195,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
 
     if (multiple) {
-      setValue(pendingValue as Value<DefaultDropdownContentOption, Multiple>);
+      setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
     }
 
     if (anchorEl) {
@@ -209,16 +207,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue:
-      | DefaultDropdownContentOption
-      | DefaultDropdownContentOption[]
-      | null
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultDropdownContentOption[]);
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
     }
 
-    setValue(newValue as Value<DefaultDropdownContentOption, Multiple>);
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
   }
 
   function handleCancel() {
@@ -231,13 +226,13 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     setAnchorEl(null);
   }
 
-  function getInitialValue(): Value<DefaultDropdownContentOption, Multiple> {
+  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
     if (isControlled) {
       return propValue;
     }
 
     return multiple
-      ? ([] as unknown as Value<DefaultDropdownContentOption, Multiple>)
+      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
   }
 }
