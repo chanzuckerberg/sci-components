@@ -13,7 +13,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
       name="radio-buttons-group"
     >
       <FormControlLabel
-        control={<RadioButton stage="checked" />}
+        control={<RadioButton stage="checked" {...props} />}
         label={text}
         value="demo"
       />
@@ -43,7 +43,7 @@ Default.args = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { text } = props;
 
-  const [checked, setChecked] = React.useState([true, false]);
+  const [checked, setChecked] = React.useState([true, false, false]);
 
   const handleCheck1 = () => {
     setChecked([true, false, false]);
@@ -63,6 +63,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
             <RadioButton
               onChange={handleCheck1}
               stage={checked[0] ? "checked" : "unchecked"}
+              data-testid="radioButton"
             />
           }
           label={text}
@@ -75,6 +76,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
             <RadioButton
               stage={checked[1] ? "checked" : "unchecked"}
               onChange={handleCheck2}
+              data-testid="radioButton"
             />
           }
           label={text}
@@ -87,6 +89,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
             <RadioButton
               stage={checked[2] ? "checked" : "unchecked"}
               onChange={handleCheck3}
+              data-testid="radioButton"
             />
           }
           label={text}

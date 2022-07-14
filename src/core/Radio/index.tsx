@@ -37,7 +37,6 @@ const RadioButton = (props: RadioProps): JSX.Element => {
 
   return (
     <StyledRadioButton
-      data-testid="radioButton"
       {...newProps}
       checkedIcon={
         <SvgIcon
