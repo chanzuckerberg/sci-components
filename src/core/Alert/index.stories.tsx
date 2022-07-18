@@ -27,7 +27,7 @@ const SnackbarAlert = () => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
+      <Button sdsType="primary" sdsStyle="square" onClick={handleOpen}>
         Open alert
       </Button>
       <Snackbar

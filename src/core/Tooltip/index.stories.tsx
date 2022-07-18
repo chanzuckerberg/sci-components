@@ -164,43 +164,67 @@ const PlacementDemo = (): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
       <Tooltip title="Text" placement="top-start" arrow open>
-        <Button>top-start</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          top-start
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="top" arrow open>
-        <Button>top</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          top
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="top-end" arrow open>
-        <Button>top-end</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          top-end
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="left-start" arrow open>
-        <Button>left-start</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          left-start
+        </Button>
       </Tooltip>
       <div />
       <Tooltip title="Text" placement="right-start" arrow open>
-        <Button>right-start</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          right-start
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="left" arrow open>
-        <Button>left</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          left
+        </Button>
       </Tooltip>
       <div />
       <Tooltip title="Text" placement="right" arrow open>
-        <Button>right</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          right
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="left-end" arrow open>
-        <Button>left-end</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          left-end
+        </Button>
       </Tooltip>
       <div />
       <Tooltip title="Text" placement="right-end" arrow open>
-        <Button>right-end</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          right-end
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="bottom-start" arrow open>
-        <Button>bottom-start</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          bottom-start
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="bottom" arrow open>
-        <Button>bottom</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          bottom
+        </Button>
       </Tooltip>
       <Tooltip title="Text" placement="bottom-end" arrow open>
-        <Button>bottom-end</Button>
+        <Button sdsStyle="minimal" sdsType="secondary">
+          bottom-end
+        </Button>
       </Tooltip>
     </div>
   );

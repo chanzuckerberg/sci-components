@@ -11,7 +11,6 @@ import {
   getIconSizes,
   getSpaces,
 } from "../styles";
-
 export interface ExtraProps extends CommonThemeProps {
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";

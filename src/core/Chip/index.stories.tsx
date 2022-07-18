@@ -13,7 +13,7 @@ const Demo = (props: Args): JSX.Element => {
   if (size === "medium" && !isRounded) {
     return (
       <>
-        <Button sdsType="primary" sdsStyle="square" onClick={handleShowChip}>
+        <Button onClick={handleShowChip} sdsType="secondary" sdsStyle="square">
           Click me!
         </Button>
         {visible && <Chip onDelete={handleDismissChip} {...props} />}

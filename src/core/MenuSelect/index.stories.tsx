@@ -2,9 +2,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ButtonBase from "@mui/material/ButtonBase";
 import Popper from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
-import { AutocompleteCloseReason } from "@mui/material/useAutocomplete";
+import {
+  AutocompleteCloseReason,
+  AutocompleteInputChangeReason,
+} from "@mui/material/useAutocomplete";
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { getColors, getCorners, getShadows } from "../styles";
 import TagFilter from "../TagFilter";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
@@ -94,6 +97,17 @@ const Demo = (props: Args): JSX.Element => {
 
   const id = open ? "github-label" : undefined;
 
+  const inputChangeHandler = (
+    _: SyntheticEvent<Element, Event>,
+    val: string,
+    __: AutocompleteInputChangeReason
+  ) => {
+    if (val) {
+      // eslint-disable-next-line no-console
+      console.log("input value: ", val);
+    }
+  };
+
   return (
     <>
       <div
@@ -129,6 +143,7 @@ const Demo = (props: Args): JSX.Element => {
             onChange={handleChange}
             disableCloseOnSelect={multiple}
             options={options}
+            onInputChange={inputChangeHandler}
             {...props}
           />
         </StyledPopper>
