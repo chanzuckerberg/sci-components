@@ -6,11 +6,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { Value } from "../Dropdown";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import Chips from "./components/Chips";
-import { StyledChipsWrapper, StyledPopper, Wrapper } from "./style";
+import { StyledChipsWrapper, Wrapper } from "./style";
 
 export {
   StyledPopper as ComplexFilterPopper,
@@ -22,7 +23,7 @@ interface ComplexFilterProps<Multiple> {
   multiple?: Multiple;
   search?: boolean;
   onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
-  MenuSelectProps?: Partial<typeof DropdownMenu>;
+  DropdownMenuProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
   value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
@@ -41,10 +42,10 @@ export default function ComplexFilter<
   multiple = false,
   search = false,
   onChange,
-  MenuSelectProps = {},
+  DropdownMenuProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
-  PopperComponent = StyledPopper,
+  PopperComponent,
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
@@ -78,54 +79,48 @@ export default function ComplexFilter<
   // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
-      <Wrapper {...rest}>
-        <InputDropdownComponent
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          {...InputDropdownProps}
-        />
-
-        <StyledChipsWrapper>
-          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
-        </StyledChipsWrapper>
-      </Wrapper>
-      <PopperComponent
-        anchorEl={anchorEl}
-        modifiers={[
-          {
-            name: "offset",
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
-        open={open}
-        placement="bottom-start"
-      >
-        <ClickAwayListener onClickAway={handleClose}>
-          <div>
-            <DropdownMenu
-              open={!!open}
-              onClose={handleMenuSelectClose}
-              search={search}
-              multiple={multiple as Multiple}
-              value={
-                (multiple ? pendingValue : value) as AutocompleteValue<
-                  DefaultDropdownMenuOption,
-                  Multiple,
-                  undefined,
-                  undefined
-                >
-              }
-              onChange={handleChange}
-              disableCloseOnSelect={multiple}
-              options={options}
-              {...MenuSelectProps}
+      <ClickAwayListener onClickAway={handleClose}>
+        <div>
+          <Wrapper {...rest}>
+            <InputDropdownComponent
+              label={label}
+              onClick={handleClick}
+              sdsStage={open ? "userInput" : "default"}
+              {...InputDropdownProps}
             />
-          </div>
-        </ClickAwayListener>
-      </PopperComponent>
+
+            <StyledChipsWrapper>
+              <Chips
+                value={value}
+                multiple={multiple}
+                onDelete={handleDelete}
+              />
+            </StyledChipsWrapper>
+          </Wrapper>
+
+          <DropdownMenu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuSelectClose}
+            search={search}
+            multiple={multiple as Multiple}
+            value={
+              (multiple ? pendingValue : value) as AutocompleteValue<
+                DefaultDropdownMenuOption,
+                Multiple,
+                undefined,
+                undefined
+              >
+            }
+            onChange={handleChange}
+            disableCloseOnSelect={multiple}
+            options={options}
+            PopperComponent={PopperComponent}
+            PopperBaseProps={{ sx: { minWidth: 250 } }}
+            {...DropdownMenuProps}
+          />
+        </div>
+      </ClickAwayListener>
     </>
   );
 

@@ -5,6 +5,7 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   InputAdornment,
+  PopperProps,
 } from "@mui/material";
 import React, { SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
@@ -14,10 +15,13 @@ import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
+  StyledHeaderTitle,
   StyledMenuInputSearch,
   StyledMenuItem,
   StyledMenuItemCount,
   StyledMenuItemDetails,
+  StyledPaper,
+  StyledPopper,
   StyleProps,
 } from "./style";
 
@@ -28,15 +32,24 @@ export interface DefaultDropdownMenuOption {
   details?: string;
   count?: string;
 }
+
+type RenderFunctionType = (props: any) => JSX.Element;
+
 interface ExtraProps extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
-    event: React.ChangeEvent<Record<string, unknown>>,
+    event: SyntheticEvent<Element, Event>,
     value: string,
     reason: AutocompleteInputChangeReason
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
+  PopperBaseProps?: Partial<PopperProps>;
+  title?: string;
+  anchorEl: HTMLElement | null;
+  PopperComponent?: typeof StyledPopper | RenderFunctionType;
+  PaperComponent?: typeof StyledPaper | RenderFunctionType;
+  children?: JSX.Element | null;
 }
 
 type CustomAutocompleteProps<
@@ -66,83 +79,115 @@ export default function DropdownMenu<
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
-    keepSearchOnSelect = true,
     multiple = false,
-    getOptionLabel = defaultGetOptionLabel,
-    isOptionEqualToValue = defaultIsOptionEqualToValue,
-    renderTags = defaultRenderTags,
-    renderOption = defaultRenderOption,
+    anchorEl,
     disableCloseOnSelect = multiple,
-    noOptionsText = "No options",
-    search = false,
-    onInputChange = noop,
+    getOptionLabel = defaultGetOptionLabel,
+    id,
     InputBaseProps = {},
+    isOptionEqualToValue = defaultIsOptionEqualToValue,
+    keepSearchOnSelect = true,
+    noOptionsText = "No options",
+    onInputChange = noop,
+    open = false,
+    PaperComponent = StyledPaper,
+    PopperComponent = StyledPopper,
+    PopperBaseProps = {},
+    renderOption = defaultRenderOption,
+    renderTags = defaultRenderTags,
+    search = false,
+    title,
+    children,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <StyledAutocomplete
-      clearOnBlur={false}
-      disableCloseOnSelect={disableCloseOnSelect}
-      disablePortal
-      renderTags={renderTags}
-      noOptionsText={noOptionsText}
-      renderOption={renderOption}
-      getOptionLabel={getOptionLabel}
-      isOptionEqualToValue={isOptionEqualToValue}
-      inputValue={inputValue}
-      renderInput={(params: AutocompleteRenderInputParams) => (
-        <InputBaseWrapper search={search}>
-          <StyledMenuInputSearch
-            id="location-search"
-            label="Search for a location"
-            placeholder="Search"
-            ref={params.InputProps.ref}
-            search={search}
-            autoFocus
-            InputProps={{
-              /**
-               * (thuang): Works with css caret-color: "transparent" to hide
-               * mobile keyboard
-               */
-              inputMode: search ? "text" : "none",
-              /**
-               * (mmoore): passing only the ref along to InputProps to prevent
-               * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explicitly pass end adornment here
-               */
-              ...params.InputProps.ref,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton sdsType="secondary">
-                    <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                  </IconButton>
-                </InputAdornment>
-              ),
-              inputProps: params.inputProps,
-            }}
-            {...InputBaseProps}
-          />
-        </InputBaseWrapper>
-      )}
-      {...props}
-      onInputChange={(
-        event: SyntheticEvent<Element, Event>,
-        value: string,
-        reason: AutocompleteInputChangeReason
-      ) => {
-        if (event && event.type === "blur") {
-          setInputValue("");
-        } else if (
-          reason !== "reset" ||
-          (reason === "reset" && !keepSearchOnSelect)
-        ) {
-          setInputValue(value);
-        }
-        if (onInputChange) onInputChange(event, value, reason);
-      }}
-    />
+    <PopperComponent
+      id={id}
+      modifiers={[
+        {
+          name: "offset",
+          options: {
+            offset: [0, 8],
+          },
+        },
+      ]}
+      open={open}
+      anchorEl={anchorEl}
+      placement="bottom-start"
+      {...PopperBaseProps}
+    >
+      {title && <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>}
+
+      <StyledAutocomplete
+        clearOnBlur={false}
+        disableCloseOnSelect={disableCloseOnSelect}
+        disablePortal
+        renderTags={renderTags}
+        noOptionsText={noOptionsText}
+        PaperComponent={PaperComponent}
+        renderOption={renderOption}
+        getOptionLabel={getOptionLabel}
+        isOptionEqualToValue={isOptionEqualToValue}
+        inputValue={inputValue}
+        renderInput={(params: AutocompleteRenderInputParams) => (
+          <InputBaseWrapper search={search}>
+            <StyledMenuInputSearch
+              id="location-search"
+              label="Search for a location"
+              placeholder="Search"
+              ref={params.InputProps.ref}
+              search={search}
+              autoFocus
+              InputProps={{
+                /**
+                 * (thuang): Works with css caret-color: "transparent" to hide
+                 * mobile keyboard
+                 */
+                inputMode: search ? "text" : "none",
+                /**
+                 * (mmoore): passing only the ref along to InputProps to prevent
+                 * default MUI arrow from rendering in search input.
+                 * renderInput strips InputProps, so we explicitly pass end adornment here
+                 */
+                ...params.InputProps.ref,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton sdsType="secondary">
+                      <Icon
+                        sdsIcon="search"
+                        sdsSize="s"
+                        sdsType="interactive"
+                      />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+                inputProps: params.inputProps,
+              }}
+              {...InputBaseProps}
+            />
+          </InputBaseWrapper>
+        )}
+        {...props}
+        onInputChange={(
+          event: SyntheticEvent<Element, Event>,
+          value: string,
+          reason: AutocompleteInputChangeReason
+        ) => {
+          if (event && event.type === "blur") {
+            setInputValue("");
+          } else if (
+            reason !== "reset" ||
+            (reason === "reset" && !keepSearchOnSelect)
+          ) {
+            setInputValue(value);
+          }
+          if (onInputChange) onInputChange(event, value, reason);
+        }}
+      />
+      {children}
+    </PopperComponent>
   );
 
   function defaultGetOptionLabel(
@@ -152,8 +197,8 @@ export default function DropdownMenu<
     return option.toString();
   }
 
-  function defaultIsOptionEqualToValue(option: T, value: T): boolean {
-    return option.name === value.name;
+  function defaultIsOptionEqualToValue(option: T, val: T): boolean {
+    return option.name === val.name;
   }
 
   function defaultRenderTags() {

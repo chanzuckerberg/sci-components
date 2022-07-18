@@ -53,8 +53,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        line-height: unset;
-        font-size: unset;
       }
 
       svg {
@@ -110,7 +108,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     span {
-      ${fontHeaderS(props)}
       color: ${colors?.gray[500]};
     }
 
@@ -149,6 +146,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &.MuiButton-root.MuiButton-text > span {
+      ${fontHeaderS(props)}
       margin-left: 0;
     }
 
@@ -166,10 +164,6 @@ const square = (props: InputDropdownProps): SerializedStyles => {
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
-
-    > span:first-of-type {
-      margin-right: 0px;
-    }
   `;
 };
 
@@ -186,10 +180,11 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
     height: 34px;
     min-width: 90px;
 
-    > span:first-of-type {
-      font-weight: 600;
-      color: ${labelColor};
-      margin-right: 0px;
+    &.MuiButton-text {
+      > span:first-of-type {
+        font-weight: 600;
+        color: ${labelColor};
+      }
     }
   `;
 };
