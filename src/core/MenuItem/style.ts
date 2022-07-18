@@ -64,6 +64,11 @@ export const StyledMenuItem = styled(MenuItem)`
         }
       }
 
+      &.MuiListItem-root .MuiSvgIcon-root {
+        align-self: flex-start;
+        margin-top: 3px;
+      }
+
       &:hover {
         background-color: ${colors?.gray[100]};
         svg.MuiSvgIcon-root {

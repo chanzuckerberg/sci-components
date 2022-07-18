@@ -27,8 +27,11 @@ const ButtonBase = styled(Button, {
     }px`;
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
+    const outlineBorder =
+      variant === "outlined" ? `border-color: ${colors?.primary[400]};` : "";
 
     return `
+      ${outlineBorder}
       padding: ${padding};
       min-width: 120px;
       height: 34px;

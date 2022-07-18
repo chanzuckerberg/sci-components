@@ -1,11 +1,12 @@
 import {
   AutocompleteFreeSoloValueMapping,
+  AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   InputAdornment,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
@@ -30,7 +31,11 @@ export interface DefaultDropdownMenuOption {
 interface ExtraProps extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
-  onInputChange?: (event: React.SyntheticEvent) => void;
+  onInputChange?: (
+    event: React.ChangeEvent<Record<string, unknown>>,
+    value: string,
+    reason: AutocompleteInputChangeReason
+  ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
 }
 
@@ -87,17 +92,7 @@ export default function DropdownMenu<
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
       inputValue={inputValue}
-      onInputChange={(event, value, reason) => {
-        if (event && event.type === "blur") {
-          setInputValue("");
-        } else if (
-          reason !== "reset" ||
-          (reason === "reset" && !keepSearchOnSelect)
-        ) {
-          setInputValue(value);
-        }
-      }}
-      renderInput={(params) => (
+      renderInput={(params: AutocompleteRenderInputParams) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
             id="location-search"
@@ -105,7 +100,6 @@ export default function DropdownMenu<
             placeholder="Search"
             ref={params.InputProps.ref}
             search={search}
-            onChange={onInputChange}
             autoFocus
             InputProps={{
               /**
@@ -133,6 +127,21 @@ export default function DropdownMenu<
         </InputBaseWrapper>
       )}
       {...props}
+      onInputChange={(
+        event: SyntheticEvent<Element, Event>,
+        value: string,
+        reason: AutocompleteInputChangeReason
+      ) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+        if (onInputChange) onInputChange(event, value, reason);
+      }}
     />
   );
 
