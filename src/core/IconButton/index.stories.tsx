@@ -62,7 +62,6 @@ const LivePreviewDemo = (): JSX.Element => {
     alignItems: "center",
     display: "grid",
     gridColumnGap: "24px",
-    gridRowGap: "50px",
     gridTemplateColumns: "repeat(7, min-content)",
   };
 
@@ -102,7 +101,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div>
         <Demo
-          style={{ marginLeft: "24px", marginRight: "10px" }}
+          style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
           sdsType="tertiary"
@@ -110,7 +109,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div>
         <Demo
-          style={{ marginLeft: "24px", marginRight: "10px" }}
+          style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="medium"
           sdsType="tertiary"

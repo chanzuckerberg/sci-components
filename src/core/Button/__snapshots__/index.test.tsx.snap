@@ -63,7 +63,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
   style="display: grid; grid-template-columns: repeat(6, 120px); grid-template-rows: 1fr;"
 >
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-ok6hdy-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -74,7 +74,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-ok6hdy-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -103,7 +103,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1tmp5lh-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-3ea70w-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -114,7 +114,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1tmp5lh-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-3ea70w-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -150,7 +150,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
   style="display: grid; grid-template-columns: repeat(6, 120px); grid-template-rows: 1fr;"
 >
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -161,7 +161,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-n81ggq-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -190,7 +190,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -201,7 +201,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-1vw9sg-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -234,7 +234,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
 
 exports[`<button /> Test story renders snapshot 1`] = `
 <button
-  class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-bbwlrt-MuiButtonBase-root-MuiButton-root"
+  class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-ok6hdy-MuiButtonBase-root-MuiButton-root"
   data-testid="button"
   tabindex="0"
   text="Label"

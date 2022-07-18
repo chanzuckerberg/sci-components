@@ -1,6 +1,6 @@
-import { AutocompleteInputChangeReason } from "@mui/base";
 import {
   AutocompleteFreeSoloValueMapping,
+  AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
@@ -171,19 +171,19 @@ export default function DropdownMenu<
         )}
         {...props}
         onInputChange={(
-          _event: SyntheticEvent<Element, Event>,
-          _value: string,
-          _reason: AutocompleteInputChangeReason
+          event: SyntheticEvent<Element, Event>,
+          value: string,
+          reason: AutocompleteInputChangeReason
         ) => {
-          if (_event && _event.type === "blur") {
+          if (event && event.type === "blur") {
             setInputValue("");
           } else if (
-            _reason !== "reset" ||
-            (_reason === "reset" && !keepSearchOnSelect)
+            reason !== "reset" ||
+            (reason === "reset" && !keepSearchOnSelect)
           ) {
-            setInputValue(_value);
+            setInputValue(value);
           }
-          if (onInputChange) onInputChange(_event, _value, _reason);
+          if (onInputChange) onInputChange(event, value, reason);
         }}
       />
       {children}

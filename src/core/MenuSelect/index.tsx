@@ -3,11 +3,17 @@ import {
   InputAdornment,
 } from "@mui/material";
 import {
+  AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
 } from "@mui/material/Autocomplete";
 import React, { useState } from "react";
+import { noop } from "src/common/utils";
+import {
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
@@ -18,8 +24,6 @@ import {
   StyledMenuItem,
   StyleProps,
 } from "./style";
-
-let hasWarned = false;
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -70,17 +74,12 @@ export default function MenuSelect<
     noOptionsText = "No options",
     search = false,
     InputBaseProps = {},
+    onInputChange = noop,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
 
-  if (!hasWarned) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />"
-    );
-    hasWarned = true;
-  }
+  showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
 
   return (
     <StyledAutocomplete
@@ -93,17 +92,7 @@ export default function MenuSelect<
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       inputValue={inputValue}
-      onInputChange={(event, value, reason) => {
-        if (event && event.type === "blur") {
-          setInputValue("");
-        } else if (
-          reason !== "reset" ||
-          (reason === "reset" && !keepSearchOnSelect)
-        ) {
-          setInputValue(value);
-        }
-      }}
-      renderInput={(params) => (
+      renderInput={(params: AutocompleteRenderInputParams) => (
         <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
             id="location-search"
@@ -138,6 +127,21 @@ export default function MenuSelect<
         </InputBaseWrapper>
       )}
       {...props}
+      onInputChange={(
+        event: React.SyntheticEvent<Element, Event>,
+        value: string,
+        reason: AutocompleteInputChangeReason
+      ) => {
+        if (event && event.type === "blur") {
+          setInputValue("");
+        } else if (
+          reason !== "reset" ||
+          (reason === "reset" && !keepSearchOnSelect)
+        ) {
+          setInputValue(value);
+        }
+        if (onInputChange) onInputChange(event, value, reason);
+      }}
     />
   );
 
