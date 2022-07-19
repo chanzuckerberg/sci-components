@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
+<div
+  style="display: grid; grid-template-columns: repeat(2, 70px); grid-template-rows: 1fr;"
+>
+  <div
+    style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
+  >
+    <div
+      class="css-1o5w4es"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          data-jest-file-name="IconLoadingLarge.svg"
+          data-jest-svg-name="IconLoadingLarge"
+          data-testid="IconLoadingLarge"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 32 32"
+        />
+      </div>
+      <span
+        class="css-1xm9l9z"
+      >
+        Loading
+      </span>
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
+  >
+    <div
+      class="css-k87s1p"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          data-jest-file-name="IconLoadingLarge.svg"
+          data-jest-svg-name="IconLoadingLarge"
+          data-testid="IconLoadingLarge"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 32 32"
+        />
+      </div>
+      <span
+        class="css-1xm9l9z"
+      >
+        Loading
+      </span>
+    </div>
+  </div>
+</div>
+`;
