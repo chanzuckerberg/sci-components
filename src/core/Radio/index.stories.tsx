@@ -1,77 +1,120 @@
-import { FormControlLabel } from "@mui/material";
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
+import { FormControlLabel, RadioGroup } from "@mui/material";
+import { Args, Story } from "@storybook/react";
 import React from "react";
 import RadioButton from "./index";
 
-const actions = {
-  onChange: action("onChange"),
+const DefaultDemo = (props: Args): JSX.Element => {
+  const { text } = props;
+
+  return (
+    <RadioGroup
+      aria-labelledby="demo-radio-buttons-group-label"
+      defaultValue="demo"
+      name="radio-buttons-group"
+    >
+      <FormControlLabel
+        control={<RadioButton stage="checked" {...props} />}
+        label={text}
+        value="demo"
+      />
+    </RadioGroup>
+  );
 };
 
-const storyColumn = {
-  alignItems: "flex-start",
-  display: "flex",
-  flexDirection: "column",
+export default {
+  component: DefaultDemo,
+  title: "Radio Button",
 };
 
-storiesOf("Radio Button", module).add("unchecked", () => (
-  <div style={storyColumn as React.CSSProperties}>
-    <p>
-      <strong>Accessibility</strong>: All radio buttons should have a label.
-      This can be done with a visible form label or with the aria-label
-      attribute. Note aria labels should be meaningful based on your content.{" "}
-      <br /> Good: &ldquo;XYZ Gene&ldquo;
-      <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
-      https://mui.com/material-ui/react-radio-button/#accessibility
-    </p>
-    <FormControlLabel
-      control={<RadioButton onChange={actions.onChange} stage="unchecked" />}
-      label="Unchecked"
-    />
-    <FormControlLabel
-      control={
-        <RadioButton disabled onChange={actions.onChange} stage="unchecked" />
-      }
-      label="Unchecked & disabled"
-    />
-    With aria labels:
-    <RadioButton
-      inputProps={{ "aria-label": "radio button unchecked" }}
-      onChange={actions.onChange}
-      stage="unchecked"
-    />
-    <RadioButton
-      disabled
-      inputProps={{ "aria-label": "radio button unchecked and disabled" }}
-      onChange={actions.onChange}
-      stage="unchecked"
-    />
-  </div>
-));
+const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;
 
-storiesOf("Radio Button", module).add("checked", () => (
-  <div style={storyColumn as React.CSSProperties}>
-    <FormControlLabel
-      control={<RadioButton onChange={actions.onChange} stage="checked" />}
-      label="Checked"
-    />
-    <FormControlLabel
-      control={
-        <RadioButton disabled onChange={actions.onChange} stage="checked" />
-      }
-      label="Checked & disabled"
-    />
-    With aria labels:
-    <RadioButton
-      inputProps={{ "aria-label": "checked" }}
-      onChange={actions.onChange}
-      stage="checked"
-    />
-    <RadioButton
-      disabled
-      inputProps={{ "aria-label": "checked and disabled" }}
-      onChange={actions.onChange}
-      stage="checked"
-    />
-  </div>
-));
+export const Default = DefaultTemplate.bind({});
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+Default.args = {
+  disabled: false,
+  text: "Label",
+};
+
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { text } = props;
+
+  const [checked, setChecked] = React.useState([true, false, false]);
+
+  const handleCheck1 = () => {
+    setChecked([true, false, false]);
+  };
+  const handleCheck2 = () => {
+    setChecked([false, true, false]);
+  };
+  const handleCheck3 = () => {
+    setChecked([false, false, true]);
+  };
+
+  return (
+    <div>
+      <div>
+        <FormControlLabel
+          control={
+            <RadioButton
+              onChange={handleCheck1}
+              stage={checked[0] ? "checked" : "unchecked"}
+              data-testid="radioButton"
+            />
+          }
+          label={text}
+          value="demo1"
+        />
+      </div>
+      <div>
+        <FormControlLabel
+          control={
+            <RadioButton
+              stage={checked[1] ? "checked" : "unchecked"}
+              onChange={handleCheck2}
+              data-testid="radioButton"
+            />
+          }
+          label={text}
+          value="demo2"
+        />
+      </div>
+      <div>
+        <FormControlLabel
+          control={
+            <RadioButton
+              stage={checked[2] ? "checked" : "unchecked"}
+              onChange={handleCheck3}
+              data-testid="radioButton"
+            />
+          }
+          label={text}
+          value="demo3"
+        />
+      </div>
+    </div>
+  );
+};
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+LivePreview.args = {
+  text: "Label",
+};
+
+export const Test = LivePreviewTemplate.bind({});
+
+Test.args = {
+  text: "Test Label",
+};
