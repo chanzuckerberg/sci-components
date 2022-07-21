@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -13,6 +13,7 @@ import {
 
 export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
+  arrowOffset?: number;
   followCursor?: boolean;
   inverted?: boolean;
   sdsStyle?: "dark" | "light";
@@ -60,7 +61,7 @@ const tableStyles = (props: TooltipExtraProps): string => {
   `;
 };
 
-export const Subtitle = styled.div`
+export const Subtitle = styled("div")`
   ${fontHeaderXxs}
 
   ${(props: TooltipExtraProps) => {
@@ -79,27 +80,34 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
   const shadows = getShadows(props);
 
   return css`
-    ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
-    ${width === "wide" && sdsStyle === "light" && wide()}
+    &.MuiTooltip-tooltip {
+      ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
+      ${width === "wide" && sdsStyle === "light" && wide()}
 
-    ${followCursor === true && tableStyles(props)}
+      ${followCursor === true && tableStyles(props)}
 
-    border: ${borders?.gray["300"]};
-    box-shadow: ${shadows?.m};
+      border: ${borders?.gray["300"]};
+      box-shadow: ${shadows?.m};
+    }
   `;
 };
 
 export const arrowCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle } = props;
+  const { inverted, sdsStyle, arrowOffset } = props;
 
   const borders = getBorders(props);
 
   return css`
-    color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
-
-    &:before {
-      border: ${inverted || sdsStyle === "dark" ? null : borders?.gray["300"]};
-      box-sizing: border-box;
+    &.MuiTooltip-arrow {
+      /* (bethbertozzi): !important is needed to fight inline style */
+      left: ${arrowOffset}px !important;
+      color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+      &:before {
+        border: ${inverted || sdsStyle === "dark"
+          ? null
+          : borders?.gray["300"]};
+        box-sizing: border-box;
+      }
     }
   `;
 };

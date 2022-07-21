@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import IconButton from "../IconButton";
 import { IconButtonExtraProps } from "../IconButton/style";
 import {
@@ -22,7 +22,7 @@ export const Centered = styled("div")`
 `;
 
 export const IconWrapper = styled("div")`
-  ${(props) => {
+  ${(props: IconButtonExtraProps) => {
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
 

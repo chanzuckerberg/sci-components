@@ -1,6 +1,7 @@
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
+import { defaultAppTheme } from "../styles";
 import IconButton from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -10,7 +11,12 @@ const Demo = (props: Args): JSX.Element => {
   const handleButtonClick = () => setActive(!active);
 
   return (
-    <IconButton onClick={handleButtonClick} active={active} {...rest}>
+    <IconButton
+      onClick={handleButtonClick}
+      active={active}
+      {...rest}
+      size="large"
+    >
       {icon}
     </IconButton>
   );
@@ -23,9 +29,9 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const LargePrimaryIconButton = Template.bind({});
+export const Default = Template.bind({});
 
-LargePrimaryIconButton.args = {
+Default.args = {
   "aria-label": "info",
   disabled: false,
   icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
@@ -33,62 +39,139 @@ LargePrimaryIconButton.args = {
   sdsType: "primary",
 };
 
-export const LargeSecondaryIconButton = Template.bind({});
-
-LargeSecondaryIconButton.args = {
-  "aria-label": "checked",
-  disabled: false,
-  icon: <Icon sdsIcon="checkCircle" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "secondary",
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
-export const LargeTertiaryIconButton = Template.bind({});
+export const Test = Template.bind({});
 
-LargeTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "tertiary",
-};
-
-export const MediumTertiaryIconButton = Template.bind({});
-
-MediumTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />,
-  sdsSize: "medium",
-  sdsType: "tertiary",
-};
-
-export const SmallPrimaryIconButton = Template.bind({});
-
-SmallPrimaryIconButton.args = {
+Test.args = {
   "aria-label": "info",
   disabled: false,
-  icon: <Icon sdsIcon="infoCircle" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
-  sdsType: "primary",
-};
-
-export const SmallSecondaryIconButton = Template.bind({});
-
-SmallSecondaryIconButton.args = {
-  "aria-label": "checked",
-  disabled: false,
-  icon: <Icon sdsIcon="checkCircle" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
+  icon: <Icon sdsIcon="search" sdsSize="xl" sdsType="iconButton" />,
+  sdsSize: "large",
   sdsType: "secondary",
 };
 
-export const SmallTertiaryIconButton = Template.bind({});
+const LivePreviewDemo = (): JSX.Element => {
+  const spacings = defaultAppTheme?.spacing;
 
-SmallTertiaryIconButton.args = {
-  "aria-label": "x mark",
-  disabled: false,
-  icon: <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />,
-  sdsSize: "small",
-  sdsType: "tertiary",
+  const livePreviewStyles = {
+    alignItems: "center",
+    display: "grid",
+    gridColumnGap: "24px",
+    gridTemplateColumns: "repeat(7, min-content)",
+  };
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div style={{ display: "flex" }}>
+        <Demo
+          style={{ marginRight: spacings?.xxs }}
+          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsSize="large"
+          sdsType="primary"
+        />
+        <Demo
+          style={{ marginRight: spacings?.xxs }}
+          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsSize="large"
+          sdsType="primary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <Demo
+          style={{ marginRight: spacings?.m }}
+          icon={
+            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
+          }
+          sdsSize="large"
+          sdsType="secondary"
+        />
+        <Demo
+          style={{ marginRight: spacings?.m }}
+          icon={
+            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
+          }
+          sdsSize="large"
+          sdsType="secondary"
+        />
+      </div>
+      <div>
+        <Demo
+          style={{ marginRight: spacings?.m }}
+          icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
+          sdsSize="large"
+          sdsType="tertiary"
+        />
+      </div>
+      <div>
+        <Demo
+          style={{ marginRight: spacings?.m }}
+          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsSize="medium"
+          sdsType="tertiary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <Demo
+          style={{ marginRight: spacings?.s }}
+          icon={
+            <Icon
+              sdsIcon="barChartVertical3"
+              sdsSize="s"
+              sdsType="iconButton"
+            />
+          }
+          sdsSize="small"
+          sdsType="primary"
+        />
+        <Demo
+          style={{ marginRight: spacings?.s }}
+          icon={
+            <Icon
+              sdsIcon="barChartVertical3"
+              sdsSize="s"
+              sdsType="iconButton"
+            />
+          }
+          sdsSize="small"
+          sdsType="primary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <Demo
+          style={{ marginRight: spacings?.s }}
+          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsSize="small"
+          sdsType="secondary"
+        />
+        <Demo
+          style={{ marginRight: spacings?.s }}
+          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsSize="small"
+          sdsType="secondary"
+        />
+      </div>
+      <div>
+        <Demo
+          style={{ marginRight: spacings?.s }}
+          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsSize="small"
+          sdsType="tertiary"
+        />
+      </div>
+    </div>
+  );
+};
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };

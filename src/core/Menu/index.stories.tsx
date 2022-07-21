@@ -30,7 +30,6 @@ const Demo = (props: Args): JSX.Element => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        getContentAnchorEl={null}
         {...props}
       >
         <MenuItem onClick={handleClose}>Contact us</MenuItem>

@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Chip } from "@material-ui/core";
+import { Chip } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontCapsXxxxs,
@@ -60,6 +60,11 @@ const medium = (props: ChipExtraProps): SerializedStyles => {
       margin: 0 0 0 -${spacings?.s}px;
       height: ${spacings?.l}px;
       width: ${spacings?.l}px;
+
+      &:hover,
+      &:focus-visible {
+        color: white;
+      }
     }
   `;
 };

@@ -1,4 +1,4 @@
-import { DialogActionsProps as RawDialogActionsProps } from "@material-ui/core";
+import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
 import React, { forwardRef } from "react";
 import { DialogActionsExtraProps, StyledDialogActions } from "./style";
 

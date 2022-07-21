@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
   fontBodyS,
@@ -10,7 +10,7 @@ import {
 } from "src/core/styles";
 import { SdsSize } from "../common";
 
-export const Wrapper = styled.span`
+export const Wrapper = styled("span")`
   ${(props) => {
     const colors = getColors(props);
 
@@ -30,7 +30,12 @@ interface Props extends StyleProps {
   sdsSize: SdsSize;
 }
 
-export const Label = styled.span`
+const LABEL_DO_NOT_FORWARD_PROPS = ["sdsSize"];
+
+export const Label = styled("span", {
+  shouldForwardProp: (prop) =>
+    !LABEL_DO_NOT_FORWARD_PROPS.includes(String(prop)),
+})<Props>`
   ${(props: Props) => {
     const { sdsSize } = props;
 
@@ -54,7 +59,12 @@ export const Label = styled.span`
   }}
 `;
 
-export const Count = styled.span`
+const COUNT_DO_NOT_FORWARD_PROPS = ["sdsSize"];
+
+export const Count = styled("span", {
+  shouldForwardProp: (prop) =>
+    !COUNT_DO_NOT_FORWARD_PROPS.includes(String(prop)),
+})`
   ${(props: Props) => {
     const { sdsSize } = props;
 

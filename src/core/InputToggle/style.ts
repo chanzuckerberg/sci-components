@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Switch, SwitchProps } from "@material-ui/core";
+import { Switch, SwitchProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -34,6 +34,7 @@ const toggle = (props: InputToggleExtraProps) => {
       font: inherit;
       margin: ${spaces?.xxs}px;
       padding: 0;
+      transform: unset;
 
       &:hover {
         background-color: white;
@@ -46,7 +47,7 @@ const toggle = (props: InputToggleExtraProps) => {
       box-shadow: none;
     }
 
-    && .MuiSwitch-track {
+    .MuiSwitch-track {
       background-color: white;
       width: unset;
     }
@@ -64,6 +65,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
 
     .MuiSwitch-thumb {
       color: ${disabled ? colors?.primary[300] : colors?.primary[400]};
+      margin-left: ${spaces?.s}px;
     }
 
     .MuiSwitch-switchBase {
@@ -76,7 +78,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
       }
 
       &:before {
-        color: ${disabled ? colors?.gray[300] : "black"};
+        color: ${disabled ? colors?.gray[300] : colors?.gray[600]};
         content: "${value}";
         font: inherit;
         font-family: 'Open sans';
@@ -109,6 +111,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
 
     .MuiSwitch-thumb {
       color: ${disabled ? colors?.gray[300] : colors?.gray[400]};
+      margin-right: ${spaces?.s}px;
     }
 
     .MuiSwitch-switchBase {
@@ -151,4 +154,4 @@ export const Toggle = styled(Switch)`
       ${checked ? toggleOn(props) : toggleOff(props)}
     `;
   }}
-`;
+` as typeof Switch;

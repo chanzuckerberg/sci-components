@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Paper, PaperProps } from "@material-ui/core";
+import { Paper, PaperProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
 import { BoxShadows } from "../styles/common/constants/boxShadows";
 
@@ -13,20 +13,22 @@ const doNotForwardProps = ["sdsSize"];
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })<StyledPaperProps>`
-  box-shadow: ${BoxShadows.L};
+  & {
+    box-shadow: ${BoxShadows.L};
 
-  ${paperDimensions}
+    ${paperDimensions}
 
-  ${(props) => {
-    const spaces = getSpaces(props);
-    const corners = getCorners(props);
+    ${(props) => {
+      const spaces = getSpaces(props);
+      const corners = getCorners(props);
 
-    return `
-      max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
-      border-radius: ${corners?.m || 0}px;
-      padding: ${spaces?.xxl || 0}px;
-    `;
-  }}
+      return `
+        max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
+        border-radius: ${corners?.m || 0}px;
+        padding: ${spaces?.xxl || 0}px;
+      `;
+    }}
+  }
 `;
 
 function paperDimensions(props: StyledPaperProps) {

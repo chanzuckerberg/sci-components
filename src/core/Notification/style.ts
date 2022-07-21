@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Alert } from "@material-ui/lab";
+import { Alert } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   fontBody,
   getColors,
@@ -23,6 +23,7 @@ export const StyledNotification = styled(Alert)`
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const iconColor = (colors && colors[severity][400]) || "black";
+    const notificationColor = (colors && colors[severity][100]) || "white";
     const backgroundColor = colors && colors[severity][100];
 
     return `
@@ -33,6 +34,7 @@ export const StyledNotification = styled(Alert)`
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.l}px;
       align-items: flex-start;
+      background-color: ${notificationColor};
 
       &.elevated {
         border-left: 5px solid;

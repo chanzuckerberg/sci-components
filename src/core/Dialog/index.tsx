@@ -1,7 +1,7 @@
 import {
   Dialog as RawDialog,
   DialogProps as RawDialogProps,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { ComponentType, forwardRef, useMemo } from "react";
 import DialogPaper, { DialogPaperProps } from "../DialogPaper";
 import { DialogContext } from "./components/common";
@@ -23,18 +23,13 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   props,
   ref
 ): JSX.Element {
-  const {
-    sdsSize = "m",
-    DialogComponent = RawDialog,
-    PaperComponent = DialogPaper,
-    ...rest
-  } = props;
+  const { sdsSize = "m", PaperComponent = DialogPaper, ...rest } = props;
 
   const contextValue = useMemo(() => ({ sdsSize }), [sdsSize]);
 
   return (
     <DialogContext.Provider value={contextValue}>
-      <DialogComponent ref={ref} PaperComponent={PaperComponent} {...rest} />
+      <RawDialog ref={ref} PaperComponent={PaperComponent} {...rest} />
     </DialogContext.Provider>
   );
 });

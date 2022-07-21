@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontCapsXxxs,
@@ -35,12 +35,12 @@ const ButtonBase = styled(Button, {
       padding: ${padding};
       min-width: 120px;
       height: 34px;
-      &:hover, &:focus {
+      &:hover {
         color: white;
         background-color: ${colors?.primary[500]};
         box-shadow: none;
       }
-      &:focus {
+      &:focus-visible {
         outline: 5px auto Highlight;
         outline: 5px auto -webkit-focus-ring-color;
       }
@@ -53,6 +53,12 @@ const ButtonBase = styled(Button, {
         color: ${colors?.gray[400]};
         background-color: ${colors?.gray[300]};
         border-color: ${colors?.gray[300]};
+      }
+      .MuiButton-startIcon {
+        margin-right: ${spacings?.m}px;
+      }
+      .MuiButton-endIcon {
+        margin-left: ${spacings?.m}px;
       }
     `;
   }}
@@ -93,10 +99,10 @@ const MinimalButton = styled(Button, {
     }
     return ``;
   }}
-  &:hover, &:focus {
+  &:hover, &:focus-visible {
     background-color: transparent;
   }
-  &:focus {
+  &:focus-visible {
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
   }
@@ -107,7 +113,7 @@ const minimal = (props: CommonThemeProps) => {
   const spaces = getSpaces(props);
 
   return `
-    &:hover, &:focus {
+    &:hover, &:focus-visible {
       color: ${colors?.primary[500]};
     }
     &:active {
@@ -129,6 +135,7 @@ export const PrimaryMinimalButton = styled(MinimalButton)`
 
 export const SecondaryMinimalButton = styled(MinimalButton)`
   ${minimal}
+  color: #000;
 `;
 
 // Legacy support for backwards-compatible props

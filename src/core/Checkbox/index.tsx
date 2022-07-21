@@ -1,4 +1,4 @@
-import { CheckboxProps as MUICheckboxProps, SvgIcon } from "@material-ui/core";
+import { CheckboxProps as MUICheckboxProps, SvgIcon } from "@mui/material";
 import React from "react";
 import { ReactComponent as IconCheckboxChecked } from "../../common/svgs/IconCheckboxChecked.svg";
 import { ReactComponent as IconCheckboxIndeterminate } from "../../common/svgs/IconCheckboxIndeterminate.svg";
@@ -15,7 +15,9 @@ export interface CheckboxProps
  */
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   let newProps: MUICheckboxProps;
-  switch (props.stage) {
+  const { stage } = props;
+
+  switch (stage) {
     case "checked":
       newProps = {
         ...props,
@@ -44,6 +46,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   return (
     <StyledCheckbox
+      data-testid="checkbox"
       {...newProps}
       checkedIcon={
         <SvgIcon

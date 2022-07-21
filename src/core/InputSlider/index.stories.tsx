@@ -1,18 +1,6 @@
-import { makeStyles } from "@material-ui/core";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import InputSlider from "./index";
-
-const useStyles = makeStyles(() => {
-  return {
-    root: {
-      height: 180,
-      marginLeft: 20,
-      marginTop: 15,
-      width: 180,
-    },
-  };
-});
 
 const generateCustomMarks = (min: number, max: number) => {
   return [
@@ -31,14 +19,20 @@ const generateCustomMarks = (min: number, max: number) => {
   ];
 };
 
+const DemoWrapperStyles = {
+  height: 180,
+  marginLeft: 20,
+  marginTop: 15,
+  width: 180,
+};
+
 const Demo = (props: Args): JSX.Element => {
-  const classes = useStyles();
   const { marks, max, min } = props;
 
   const customMarks = generateCustomMarks(min, max);
 
   return (
-    <div className={classes.root}>
+    <div style={DemoWrapperStyles as React.CSSProperties}>
       <InputSlider {...props} marks={marks ? customMarks : false} />
     </div>
   );
@@ -170,13 +164,12 @@ LivePreview.args = {
 };
 
 const TestDemo = (props: Args): JSX.Element => {
-  const classes = useStyles();
   const { marks, max, min } = props;
 
   const customMarks = generateCustomMarks(min, max);
 
   return (
-    <div className={classes.root}>
+    <div style={DemoWrapperStyles as React.CSSProperties}>
       <InputSlider
         {...props}
         data-testid="test-input-slider"

@@ -1,4 +1,4 @@
-import { FormControl } from "@material-ui/core";
+import { FormControl } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import InputText from "./index";
@@ -15,6 +15,7 @@ const Demo = (props: Args): JSX.Element => {
       intent={intent}
       hideLabel={hideLabel}
       disabled={disabled}
+      name="input-text-name"
     />
   );
 };

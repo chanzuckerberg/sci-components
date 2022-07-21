@@ -47,10 +47,7 @@ const Template: Story<TabsArgs> = (props: TabsArgs) => {
 
   const [value, setValue] = useState(0);
 
-  const handleTabsChange = (
-    _: React.ChangeEvent<Record<string, unknown>>,
-    tabsValue: never
-  ) => {
+  const handleTabsChange = (_: React.SyntheticEvent, tabsValue: unknown) => {
     setValue(tabsValue as number);
   };
 
@@ -73,6 +70,10 @@ Default.args = {
 };
 
 Default.parameters = {
+  // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
+  // delay allows for font to load and prevents chromatic from constantly creating new baselines
+  // https://github.cwom/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
+  chromatic: { delay: 5000 },
   snapshot: {
     skip: true,
   },
@@ -148,6 +149,7 @@ export const LivePreview = LivePreviewTemplate.bind({});
 LivePreview.args = {};
 
 LivePreview.parameters = {
+  chromatic: { delay: 5000 },
   snapshot: {
     skip: true,
   },
@@ -202,3 +204,7 @@ function TestDemo(props: Args): JSX.Element {
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  chromatic: { delay: 5000 },
+};

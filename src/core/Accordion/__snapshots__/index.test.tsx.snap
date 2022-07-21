@@ -2,68 +2,59 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiAccordion-root css-cqyok5 MuiPaper-elevation1"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1x3fmw6-MuiPaper-root-MuiAccordion-root"
   data-testid="accordion"
   id="test-story"
 >
   <div
     aria-controls="test-story-panel-content"
-    aria-disabled="false"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root css-131fy9e"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-q39ari-MuiButtonBase-root-MuiAccordionSummary-root"
     id="test-story"
     role="button"
     tabindex="0"
   >
     <div
-      class="MuiAccordionSummary-content"
+      class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
     >
       Accordion Header
     </div>
     <div
-      aria-disabled="false"
-      aria-hidden="true"
-      class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+      class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
     >
-      <span
-        class="MuiIconButton-label"
+      <div
+        class="css-jbvua0"
       >
-        <div
-          class="css-jbvua0"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root css-henzh4"
-            data-jest-file-name="IconChevronDownSmall.svg"
-            data-jest-svg-name="IconChevronDownSmall"
-            data-testid="IconChevronDownSmall"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 14 14"
-          />
-        </div>
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronDownSmall.svg"
+          data-jest-svg-name="IconChevronDownSmall"
+          data-testid="IconChevronDownSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
     </div>
   </div>
   <div
-    class="MuiCollapse-root MuiCollapse-hidden"
+    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
     style="min-height: 0px;"
   >
     <div
-      class="MuiCollapse-wrapper"
+      class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
     >
       <div
-        class="MuiCollapse-wrapperInner"
+        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
         <div
           aria-labelledby="test-story"
+          class="MuiAccordion-region"
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-14myhfl"
+            class="MuiAccordionDetails-root css-rnrgul-MuiAccordionDetails-root"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>

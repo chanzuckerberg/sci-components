@@ -1,5 +1,5 @@
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import { ToggleButtonGroupProps } from "@material-ui/lab/ToggleButtonGroup";
+import ToggleButton from "@mui/material/ToggleButton";
+import { ToggleButtonGroupProps } from "@mui/material/ToggleButtonGroup";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
@@ -11,8 +11,18 @@ interface SingleButtonDefinition {
   tooltipText: string;
 }
 
-interface SegmentedControlExtraProps {
+interface SegmentedControlExtraProps
+  extends Omit<ToggleButtonGroupProps, "color"> {
   buttonDefinition: SingleButtonDefinition[];
+  color?:
+    | "primary"
+    | "secondary"
+    | "standard"
+    | "success"
+    | "error"
+    | "info"
+    | "warning"
+    | undefined;
 }
 
 /**
@@ -37,11 +47,11 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
   return (
     <StyledSegmentedControl
+      color="primary"
       size="small"
       value={active}
       exclusive
       onChange={handleActive}
-      color="primary"
       {...props}
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {

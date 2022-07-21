@@ -1,4 +1,4 @@
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Link from "../Link";
@@ -108,6 +108,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
+          placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0]]} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
@@ -117,6 +118,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
+          placement="right-end"
           title={<TooltipTableContent {...props} data={[data[0], data[1]]} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
@@ -126,6 +128,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div style={tooltipStyleMock as React.CSSProperties}>
         <Tooltip
           followCursor
+          placement="right-end"
           title={<TooltipTableContent {...props} data={data} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />

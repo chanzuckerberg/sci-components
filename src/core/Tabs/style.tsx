@@ -1,11 +1,11 @@
 import { SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
 import {
   Tab as RawTab,
   Tabs as RawTabs,
   TabsProps as RawTabsProps,
-} from "@material-ui/core";
-import React, { ChangeEvent, FormEvent } from "react";
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import React from "react";
 import { fontBodyS, fontBodyXs } from "../styles";
 import {
   CommonThemeProps,
@@ -15,26 +15,18 @@ import {
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
 
-// TODO(185930): https://github.com/mui-org/material-ui/issues/17454#issuecomment-647132303
-// Will be fixed in v5.x
-interface TabsPropsFixed extends Omit<RawTabsProps, "onChange"> {
-  onChange:
-    | ((event: ChangeEvent<Record<string, unknown>>, value: never) => void)
-    | ((event: FormEvent<HTMLButtonElement>) => void);
-}
-
-export type TabsProps = TabsPropsFixed & {
+export type TabsProps = RawTabsProps & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
 };
 
-// TODO(185930): Use this instead of MUI's raw Tabs. `onChange` type will be fixed
-// in v5.x
-// https://github.com/mui-org/material-ui/issues/17454#issuecomment-647132303
-const TempTabs = (props: TabsPropsFixed) => <RawTabs {...(props as never)} />;
+const TempTabs = (props: RawTabsProps) => <RawTabs {...props} />;
+
+const TABS_DO_NOT_FORWARD_PROPS = ["underlined", "sdsSize"];
 
 export const StyledTabs = styled(TempTabs, {
-  shouldForwardProp: (prop) => prop !== "underlined",
+  shouldForwardProp: (prop) =>
+    !TABS_DO_NOT_FORWARD_PROPS.includes(String(prop)),
 })<TabsProps>`
   box-sizing: border-box;
   padding-bottom: 0px;

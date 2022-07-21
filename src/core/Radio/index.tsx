@@ -1,4 +1,4 @@
-import { RadioProps as MUIRadioProps, SvgIcon } from "@material-ui/core";
+import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
 import React from "react";
 import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
 import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";
@@ -14,7 +14,9 @@ export interface RadioProps
  */
 const RadioButton = (props: RadioProps): JSX.Element => {
   let newProps: MUIRadioProps;
-  switch (props.stage) {
+  const { stage } = props;
+
+  switch (stage) {
     case "checked":
       newProps = {
         ...props,

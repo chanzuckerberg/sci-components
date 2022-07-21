@@ -1,5 +1,5 @@
-import { Grow } from "@material-ui/core";
-import { AlertProps } from "@material-ui/lab";
+import { AlertProps } from "@mui/lab";
+import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Icon from "../Icon";
 import IconButton from "../IconButton";
@@ -70,6 +70,7 @@ const Callout = ({
                 onClick={handleClose}
                 sdsSize="small"
                 sdsType="tertiary"
+                size="large"
               >
                 {" "}
                 <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}

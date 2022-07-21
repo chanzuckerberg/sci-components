@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconButton /> Test story renders snapshot 1`] = `
+<button
+  aria-label="info"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1hws01p-MuiButtonBase-root-MuiIconButton-root"
+  data-testid="iconButton"
+  tabindex="0"
+  type="button"
+>
+  <div
+    class="css-jbvua0"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+      data-jest-file-name="IconSearchLarge.svg"
+      data-jest-svg-name="IconSearchLarge"
+      data-testid="IconSearchLarge"
+      fillcontrast="white"
+      focusable="false"
+      viewBox="0 0 32 32"
+    />
+  </div>
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;

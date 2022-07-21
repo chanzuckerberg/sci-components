@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { Chip, darken } from "@material-ui/core";
+import { Chip, darken } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
@@ -11,6 +11,7 @@ import {
   getIconSizes,
   getSpaces,
 } from "../styles";
+
 export interface ExtraProps extends CommonThemeProps {
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
@@ -41,6 +42,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXxxs(props)}
       padding: 0;
+      line-height: unset;
     }
 
     .MuiChip-deleteIcon {
@@ -72,20 +74,14 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXs(props)}
       padding: 0;
+      line-height: unset;
     }
 
-    .MuiChip-icon,
-    & > div > svg {
-      height: ${iconSizes?.l.height};
-      width: ${iconSizes?.l.width};
+    .MuiSvgIcon-root {
+      height: ${iconSizes?.l.height}px;
+      width: ${iconSizes?.l.width}px;
       padding-right: ${spacings?.xxs}px;
       margin: 0 0 0 -${spacings?.xxxs}px;
-      font-size: ${iconSizes?.l.height}px;
-    }
-
-    &:focus-visible > svg,
-    &:hover > div > svg {
-      fill: white;
     }
 
     .MuiChip-deleteIcon {
@@ -252,7 +248,7 @@ export const StyledTag = styled(Chip, {
     const type = sdsType || "primary";
 
     return css`
-      ${!!icon ? withIcon(props) : withoutIcon(props)}
+      ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
     `;

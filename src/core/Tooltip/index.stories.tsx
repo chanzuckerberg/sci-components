@@ -1,5 +1,4 @@
-import { css } from "@emotion/css";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
@@ -13,6 +12,11 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <div>
       Hover over the info icon to view the tooltip.
+      <p>
+        ArrowOffset changes the position of the tooltip arrow and can be any
+        numeric value within [-120, 120]. Any value value over the width of the
+        tooltip will remove the arrow from the tooltip.
+      </p>
       <div
         style={{
           margin: "135px 300px",
@@ -30,6 +34,9 @@ export default {
   argTypes: {
     arrow: {
       control: { type: "boolean" },
+    },
+    arrowOffset: {
+      control: { type: "number" },
     },
     placement: {
       control: { type: "select" },
@@ -138,13 +145,8 @@ StyledArrow.parameters = {
   },
 };
 
-const arrow = css`
-  left: 0 !important;
-`;
-
 StyledArrow.args = {
   arrow: true,
-  classes: { arrow },
   title: fillerText,
 };
 

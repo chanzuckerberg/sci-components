@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";

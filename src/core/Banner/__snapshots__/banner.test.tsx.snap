@@ -19,7 +19,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root css-henzh4"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -36,30 +36,27 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       </div>
     </div>
     <button
-      class="MuiButtonBase-root MuiIconButton-root css-1nnw59r"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiIconButton-label"
+      <div
+        class="css-jbvua0"
       >
-        <div
-          class="css-jbvua0"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root css-10tbi0i"
-            data-jest-file-name="IconXMarkSmall.svg"
-            data-jest-svg-name="IconXMarkSmall"
-            data-testid="IconXMarkSmall"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 14 14"
-          />
-        </div>
-      </span>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconXMarkSmall.svg"
+          data-jest-svg-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
@@ -81,7 +78,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root css-henzh4"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -98,30 +95,27 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       </div>
     </div>
     <button
-      class="MuiButtonBase-root MuiIconButton-root css-1v2l5li"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiIconButton-label"
+      <div
+        class="css-jbvua0"
       >
-        <div
-          class="css-jbvua0"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root css-10tbi0i"
-            data-jest-file-name="IconXMarkSmall.svg"
-            data-jest-svg-name="IconXMarkSmall"
-            data-testid="IconXMarkSmall"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 14 14"
-          />
-        </div>
-      </span>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconXMarkSmall.svg"
+          data-jest-svg-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
@@ -143,7 +137,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root css-henzh4"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -160,30 +154,27 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       </div>
     </div>
     <button
-      class="MuiButtonBase-root MuiIconButton-root css-1nnw59r"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
-      <span
-        class="MuiIconButton-label"
+      <div
+        class="css-jbvua0"
       >
-        <div
-          class="css-jbvua0"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root css-10tbi0i"
-            data-jest-file-name="IconXMarkSmall.svg"
-            data-jest-svg-name="IconXMarkSmall"
-            data-testid="IconXMarkSmall"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 14 14"
-          />
-        </div>
-      </span>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconXMarkSmall.svg"
+          data-jest-svg-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
@@ -206,7 +197,7 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root css-henzh4"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
           data-jest-file-name="IconInfoCircleLarge.svg"
           data-jest-svg-name="IconInfoCircleLarge"
           data-testid="IconInfoCircleLarge"
@@ -223,30 +214,27 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <button
-    class="MuiButtonBase-root MuiIconButton-root css-1nnw59r"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+    data-testid="iconButton"
     tabindex="0"
     type="button"
   >
-    <span
-      class="MuiIconButton-label"
+    <div
+      class="css-jbvua0"
     >
-      <div
-        class="css-jbvua0"
-      >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root css-10tbi0i"
-          data-jest-file-name="IconXMarkSmall.svg"
-          data-jest-svg-name="IconXMarkSmall"
-          data-testid="IconXMarkSmall"
-          fillcontrast="white"
-          focusable="false"
-          viewBox="0 0 14 14"
-        />
-      </div>
-    </span>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        data-jest-file-name="IconXMarkSmall.svg"
+        data-jest-svg-name="IconXMarkSmall"
+        data-testid="IconXMarkSmall"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 14 14"
+      />
+    </div>
     <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
 </div>

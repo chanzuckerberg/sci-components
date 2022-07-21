@@ -1,5 +1,5 @@
-import { Slide } from "@material-ui/core";
-import { AlertProps } from "@material-ui/lab";
+import { AlertProps } from "@mui/lab";
+import { Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -69,7 +69,13 @@ const Notification = ({
 
   return (
     <>
-      <Slide in={!hide} direction={dismissDirection} mountOnEnter unmountOnExit>
+      <Slide
+        in={!hide}
+        direction={dismissDirection}
+        mountOnEnter
+        unmountOnExit
+        timeout={250}
+      >
         <StyledNotification
           onClose={onClose ? handleClose : undefined}
           action={
@@ -79,6 +85,7 @@ const Notification = ({
                 sdsSize="small"
                 sdsType="tertiary"
                 data-testid="notificationCloseButton"
+                size="large"
               >
                 {" "}
                 <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}

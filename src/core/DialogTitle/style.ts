@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { DialogTitle, Typography } from "@material-ui/core";
+import { DialogTitle, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as DialogTitleExtraProps,
   fontBodyXs,
@@ -21,18 +21,12 @@ export const StyledDialogTitle = styled(DialogTitle)`
   }}
 `;
 
-/**
- * Recommends adding props: variant="h6"
- */
 export const Title = styled(Typography)`
   ${fontHeaderXl}
 
   color: black;
 `;
 
-/**
- * Recommends adding props: variant="h6"
- */
 export const Subtitle = styled(Typography)`
   ${fontBodyXs}
 

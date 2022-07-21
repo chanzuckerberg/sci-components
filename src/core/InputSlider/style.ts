@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Slider, SliderProps } from "@material-ui/core";
+import { Slider, SliderProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXxs,
@@ -39,6 +39,10 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
   }
 
+  .MuiSlider-thumb::before {
+    display: none;
+  }
+
   .MuiSlider-thumb::after {
     background-color: white !important;
     height: 6px !important;
@@ -55,7 +59,11 @@ const inputSlider = (props: InputSliderExtraProps) => {
     background-color: ${colors?.primary[200]};
     border-radius: ${corners?.m}px;
     left: unset; 
-    top: -15px;
+    top: -3px;
+
+    &::before {
+      display: none;
+    }
 
     & * {
       background: transparent;
@@ -63,10 +71,6 @@ const inputSlider = (props: InputSliderExtraProps) => {
       transform: none;
       width: unset;
       height: unset;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-      line-height: 18px;
     }
   }
 
@@ -80,10 +84,6 @@ const inputSlider = (props: InputSliderExtraProps) => {
   }
 
   .MuiSlider-markLabel {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    line-height: 18px;
     color: ${colors?.gray[500]}
   }
 
@@ -97,24 +97,22 @@ const horizontal = () => {
   return `
     .MuiSlider-rail,
     .MuiSlider-track {
+      border: none;
       height: 4px;
     
-      //to cover the last mark 3px pading is needed for rail and track
-      padding-right: 3px;
+      //to cover the last mark 4px padding is needed for rail and track
+      padding-right: 4px;
+
+      // to cover the first mark -2px padding left is needed for rail and track
+      margin-left: -2px;
     }
 
-    .MuiSlider-mark {
-      margin-top: 1px; 
+    .MuiSlider-markLabel {
+      top: 26px;
     }
 
-    //the first mark needs 1px margin-left to not touch the rail element
-    .MuiSlider-mark[data-index="0"] {
-      margin-left: 1px;
-    }
-
-    .MuiSlider-thumb.Mui-disabled {
-      margin-top: -5px;
-      margin-left: -6px;
+    .Mui-disabled .MuiSlider-track {
+      border: none;
     }
   `;
 };
@@ -123,27 +121,18 @@ const vertical = () => {
   return `  
     .MuiSlider-rail,
     .MuiSlider-track {
+      border: none;
       width: 4px;
 
       //to cover the last mark -3px margin-top is needed for rail and track 
-      margin-top: -3px;
+      margin-top: -2px;
 
       //to cover the first mark 3px padding-bottom is needed for rail and track
-      padding-bottom: 3px;
-    }
-    
-    .MuiSlider-mark {
-      margin-left: 1px; 
+      padding-bottom: 4px;
     }
 
-    //the first mark needs 1px margin-bottom to not touch the rail element
-    .MuiSlider-mark[data-index="0"] {
-      margin-bottom: 1px;
-    }
-
-    .MuiSlider-thumb.Mui-disabled {
-      margin-left: -5px;
-      margin-bottom: -6px;
+    .MuiSlider-markLabel {
+      left: 26px;
     }
   `;
 };

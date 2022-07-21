@@ -1,4 +1,4 @@
-import { MenuItemProps as RawMenuItemProps } from "@material-ui/core";
+import { MenuItemProps as RawMenuItemProps } from "@mui/material";
 import React, { forwardRef } from "react";
 import {
   ColumnWrapper,
@@ -29,10 +29,10 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   const { selected = false } = originalMenuItemProps as MenuItemProps;
 
   return (
-    <StyledMenuItem {...(originalMenuItemProps as unknown)} disabled={disabled}>
+    <StyledMenuItem {...originalMenuItemProps} disabled={disabled}>
       {isMultiSelect && (
         // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheck selected={selected} color="primary" />
+        <StyledCheck selected={selected} color="primary" disabled={disabled} />
       )}
 
       <ContentWrapper>

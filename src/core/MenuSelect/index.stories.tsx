@@ -1,23 +1,87 @@
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Popper from "@material-ui/core/Popper";
-import { makeStyles } from "@material-ui/core/styles";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ButtonBase from "@mui/material/ButtonBase";
+import Popper from "@mui/material/Popper";
+import { styled } from "@mui/material/styles";
 import {
   AutocompleteCloseReason,
   AutocompleteInputChangeReason,
-} from "@material-ui/lab";
+} from "@mui/material/useAutocomplete";
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
-import Chip from "../Chip";
-import { AppThemeOptions, getColors, getCorners, getShadows } from "../styles";
+import React, { SyntheticEvent, useState } from "react";
+import { getColors, getCorners, getShadows } from "../styles";
+import TagFilter from "../TagFilter";
 import MenuSelect, { DefaultMenuSelectOption } from "./index";
+
+const StyledPopper = styled(Popper)`
+  ${(props) => {
+    const colors = getColors(props);
+    const shadows = getShadows(props);
+    const corners = getCorners(props);
+
+    return `
+      & .MuiInputBase-root {
+        padding: 0 6px;
+      }
+
+      & .MuiAutocomplete-option[aria-selected='true'], 
+      & .MuiAutocomplete-option[data-focus='true'] {
+        background-color: transparent,
+      }
+
+      & .MuiAutocomplete-popper.MuiAutocomplete-popperDisablePortal {
+        position: relative !important;
+        transform: none !important;
+        width: 100% !important;
+      }
+
+      .MuiAutocomplete-paper {
+        box-shadow: none;
+        margin: 0;
+
+        .MuiAutocomplete-listbox {
+          padding: 8px;
+        }
+      }
+
+      background-color: white;
+      border: 1px solid ${colors?.gray[100]};
+      border-radius: ${corners?.m}px;
+      box-shadow: ${shadows?.m};
+      color: #586069;
+      font-size: 13px;
+      width: 300px;
+      z-index: 1;
+    `;
+  }}
+`;
+
+const StyledButton = styled(ButtonBase)`
+  & span {
+    width: 100%;
+  }
+
+  & svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #0366d6;
+  }
+
+  color: #586069;
+  font-size: 13px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  text-align: left;
+  width: 100%;
+`;
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const Demo = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
   const { multiple, options = GITHUB_LABELS, search } = props;
-
-  const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
@@ -34,7 +98,7 @@ const Demo = (props: Args): JSX.Element => {
   const id = open ? "github-label" : undefined;
 
   const inputChangeHandler = (
-    _: React.ChangeEvent<Record<string, unknown>>,
+    _: SyntheticEvent<Element, Event>,
     val: string,
     __: AutocompleteInputChangeReason
   ) => {
@@ -46,42 +110,48 @@ const Demo = (props: Args): JSX.Element => {
 
   return (
     <>
-      <div className={classes.root}>
-        <ButtonBase
-          disableRipple
-          className={classes.button}
-          aria-describedby={id}
-          onClick={handleClick}
-        >
+      <div
+        style={{
+          width: 221,
+        }}
+      >
+        <StyledButton disableRipple aria-describedby={id} onClick={handleClick}>
           <span>Click Target</span>
           <ExpandMoreIcon />
-        </ButtonBase>
+        </StyledButton>
+        <StyledPopper
+          disablePortal
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          placement="bottom-start"
+          modifiers={[
+            {
+              name: "offset",
+              options: {
+                offset: [0, 8],
+              },
+            },
+          ]}
+        >
+          <MenuSelect
+            open
+            search={search}
+            onClose={handleClose}
+            multiple={multiple}
+            value={multiple ? pendingValue : value}
+            onChange={handleChange}
+            disableCloseOnSelect={multiple}
+            options={options}
+            onInputChange={inputChangeHandler}
+            {...props}
+          />
+        </StyledPopper>
 
-        <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+        <div style={{ marginTop: 4 }}>
+          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+        </div>
       </div>
-      <Popper
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        className={classes.popper}
-      >
-        <MenuSelect
-          open
-          search={search}
-          onClose={handleClose}
-          multiple={multiple}
-          classes={{
-            paper: classes.paper,
-            popperDisablePortal: classes.popperDisablePortal,
-          }}
-          value={multiple ? pendingValue : value}
-          onChange={handleChange}
-          disableCloseOnSelect={multiple}
-          options={options}
-          onInputChange={inputChangeHandler}
-          {...props}
-        />
-      </Popper>
     </>
   );
 
@@ -148,7 +218,9 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
   if (!multiple) {
     const { name } = value as never;
 
-    return <Chip size="medium" label={name} onDelete={onDelete} />;
+    return (
+      <TagFilter label={name} onDelete={onDelete} style={{ marginTop: 4 }} />
+    );
   }
 
   return (
@@ -157,11 +229,11 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
         const { name } = item;
 
         return (
-          <Chip
-            size="medium"
+          <TagFilter
             key={name}
             label={name}
             onDelete={() => onDelete(item)}
+            style={{ marginTop: 4 }}
           />
         );
       })}
@@ -219,59 +291,6 @@ MultiSelectWithSearch.args = {
   multiple: true,
   search: true,
 };
-
-const useStyles = makeStyles((theme: AppThemeOptions) => {
-  const colors = getColors({ theme });
-  const shadows = getShadows({ theme });
-  const corners = getCorners({ theme });
-
-  return {
-    button: {
-      "& span": {
-        width: "100%",
-      },
-      "& svg": {
-        height: 16,
-        width: 16,
-      },
-      "&:hover,&:focus": {
-        color: "#0366d6",
-      },
-      color: "#586069",
-      fontSize: 13,
-      fontWeight: 600,
-      paddingBottom: 8,
-      textAlign: "left",
-      width: "100%",
-    },
-    paper: {
-      boxShadow: "none",
-      margin: 0,
-    },
-    popper: {
-      "& .MuiAutocomplete-option[aria-selected='true'], & .MuiAutocomplete-option[data-focus='true']":
-        {
-          backgroundColor: "transparent",
-        },
-      backgroundColor: "white",
-      border: `1px solid ${colors?.gray[100]}`,
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      color: "#586069",
-      fontSize: 13,
-      width: 300,
-      zIndex: 1,
-    },
-    popperDisablePortal: {
-      position: "relative",
-      width: "100% !important",
-    },
-    root: {
-      fontSize: 13,
-      width: 221,
-    },
-  };
-});
 
 // From https://github.com/abdonrd/github-labels
 const GITHUB_LABELS = [

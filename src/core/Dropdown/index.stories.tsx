@@ -1,5 +1,4 @@
-import { Dialog } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
@@ -77,50 +76,18 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
-export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
-
-MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
-  isTriggerChangeOnOptionClick: true,
-  multiple: true,
-  onChange: (value: never) => {
-    // eslint-disable-next-line no-console
-    console.log(value);
-  },
-};
-
-export const SearchWithOnClose = Template.bind({});
-
-SearchWithOnClose.args = {
-  buttonPosition: "right",
-  buttons: true,
-  closeOnBlur: false,
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
-  onClose: () => {
-    // eslint-disable-next-line no-console
-    console.log(123);
-  },
-  search: true,
-};
-
-const useStyles = makeStyles(() => ({
-  /* stylelint-disable-next-line */
-  paper: {
-    padding: "50px",
-    width: "200px",
-  },
-}));
+const StyledPaper = styled(Paper)`
+  width: 200px;
+  padding: 50px;
+`;
 
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
-  const classes = useStyles();
-
   return (
-    <Dialog open disableEnforceFocus classes={{ paper: classes.paper }}>
+    <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
       <Dropdown
         label="Dropdown"
         options={GITHUB_LABELS}

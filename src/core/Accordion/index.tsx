@@ -1,4 +1,4 @@
-import { AccordionProps as RawAccordionProps } from "@material-ui/core";
+import { AccordionProps as RawAccordionProps } from "@mui/material";
 import React from "react";
 import { AccordionExtraProps, StyledAccordion } from "./style";
 

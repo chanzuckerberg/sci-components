@@ -1,6 +1,6 @@
 import React from "react";
 import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
-import { StyledChip } from "./style";
+import { StyledTagFilter } from "./style";
 
 interface Props {
   value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
@@ -18,7 +18,7 @@ export default function Chips({
   if (!multiple) {
     const { name } = value as never;
 
-    return <StyledChip size="medium" label={name} onDelete={onDelete} />;
+    return <StyledTagFilter label={name} onDelete={onDelete} />;
   }
 
   return (
@@ -27,8 +27,7 @@ export default function Chips({
         const { name } = item;
 
         return (
-          <StyledChip
-            size="medium"
+          <StyledTagFilter
             key={name}
             label={name}
             onDelete={() => onDelete(item)}
