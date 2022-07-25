@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IconButton /> Test story renders snapshot 1`] = `
+exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
 <button
   aria-label="info"
   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1hws01p-MuiButtonBase-root-MuiIconButton-root"

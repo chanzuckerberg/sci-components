@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
-import IconButton from "../IconButton";
-import { IconButtonExtraProps } from "../IconButton/style";
+import ButtonIcon from "../ButtonIcon";
+import { ButtonIconExtraProps } from "../ButtonIcon/style";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -22,7 +22,7 @@ export const Centered = styled("div")`
 `;
 
 export const IconWrapper = styled("div")`
-  ${(props: IconButtonExtraProps) => {
+  ${(props: ButtonIconExtraProps) => {
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
 
@@ -33,14 +33,14 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
-type IconButtonType = IconButtonExtraProps & { bannerType: string };
-const doNotForwardPropsIconButton = ["bannerType"];
+type ButtonIconType = ButtonIconExtraProps & { bannerType: string };
+const doNotForwardPropsButtonIcon = ["bannerType"];
 
-export const StyledIconButton = styled(IconButton, {
+export const StyledButtonIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop: string) =>
-    !doNotForwardPropsIconButton.includes(prop),
+    !doNotForwardPropsButtonIcon.includes(prop),
 })`
-  ${(props: IconButtonType) => {
+  ${(props: ButtonIconType) => {
     const spaces = getSpaces(props);
 
     return `
@@ -49,7 +49,7 @@ export const StyledIconButton = styled(IconButton, {
     `;
   }}
 
-  ${(props: IconButtonType) => {
+  ${(props: ButtonIconType) => {
     const { bannerType } = props;
     const colors = getColors(props);
 

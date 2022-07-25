@@ -1,8 +1,8 @@
 import { ClickAwayListener, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import InputDropdown from "../InputDropdown";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
@@ -249,7 +249,7 @@ const LivePreviewDemo = (): JSX.Element => {
       <div style={{ gridArea: "1/2/2/3" }}>
         <ClickAwayListener onClickAway={handleClickAway2}>
           <div>
-            <IconButton
+            <ButtonIcon
               aria-describedby="live2"
               onClick={handleClick2}
               active={false}
@@ -261,7 +261,7 @@ const LivePreviewDemo = (): JSX.Element => {
                 sdsSize="l"
                 sdsType="iconButton"
               />
-            </IconButton>
+            </ButtonIcon>
 
             <DropdownMenu
               anchorEl={anchorEl2}

@@ -1,8 +1,8 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { StyledCallout } from "./style";
 
 export interface CalloutProps {
@@ -66,7 +66,7 @@ const Callout = ({
           onClose={onClose ? handleClose : undefined}
           action={
             onClose ? (
-              <IconButton
+              <ButtonIcon
                 onClick={handleClose}
                 sdsSize="small"
                 sdsType="tertiary"
@@ -74,7 +74,7 @@ const Callout = ({
               >
                 {" "}
                 <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-              </IconButton>
+              </ButtonIcon>
             ) : null
           }
           icon={getIcon()}

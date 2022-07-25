@@ -9,12 +9,12 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<IconButton />", () => {
+describe("<ButtonIcon />", () => {
   generateSnapshots<StoryFileExports<typeof Meta>, typeof Meta>(
     snapshotTestStoryFile
   );
 
-  it("renders IconButton component", () => {
+  it("renders ButtonIcon component", () => {
     render(<Test />);
     const elements = screen.getAllByTestId("iconButton");
     expect(elements.length).toBeTruthy();

@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
+import { ButtonIconProps } from "src/core/ButtonIcon";
 import { DialogContext } from "src/core/Dialog/components/common";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import { IconButtonProps } from "src/core/IconButton";
-import { StyledIconButton } from "./style";
+import { StyledButtonIcon } from "./style";
 
 const SDS_SIZE_TO_COMPONENT_SIZE = {
   l: "large",
@@ -18,28 +18,28 @@ const SDS_SIZE_TO_ICON_SIZE = {
   xs: "s",
 };
 
-const CloseButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+const CloseButton = forwardRef<HTMLButtonElement, ButtonIconProps>(
   function CloseButton(props, ref) {
     return (
       <DialogContext.Consumer>
         {({ sdsSize }) => {
           const size = SDS_SIZE_TO_COMPONENT_SIZE[
             sdsSize
-          ] as IconButtonProps["sdsSize"];
+          ] as ButtonIconProps["sdsSize"];
 
           const iconSize = SDS_SIZE_TO_ICON_SIZE[sdsSize] as IconProps<
             keyof IconNameToSizes
           >["sdsSize"];
 
           return (
-            <StyledIconButton
+            <StyledButtonIcon
               ref={ref}
               sdsType="tertiary"
               sdsSize={size}
               {...props}
             >
               <Icon sdsIcon="xMark" sdsSize={iconSize} sdsType="iconButton" />
-            </StyledIconButton>
+            </StyledButtonIcon>
           );
         }}
       </DialogContext.Consumer>

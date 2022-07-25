@@ -1,8 +1,8 @@
 import { styled } from "@mui/material/styles";
-import IconButton from "src/core/IconButton";
+import ButtonIcon from "src/core/ButtonIcon";
 import { getSpaces } from "src/core/styles";
 
-export const StyledIconButton = styled(IconButton)`
+export const StyledButtonIcon = styled(ButtonIcon)`
   position: absolute;
 
   ${(props) => {

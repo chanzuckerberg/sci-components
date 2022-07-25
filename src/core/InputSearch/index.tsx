@@ -3,8 +3,8 @@ import {
   TextFieldProps as RawTextFieldSearchProps,
 } from "@mui/material";
 import React, { forwardRef, useState } from "react";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
 
 export interface AccessibleInputSearchProps {
@@ -73,14 +73,14 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton
+                <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}
                   sdsType="secondary"
                   size="large"
                 >
                   <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                </IconButton>
+                </ButtonIcon>
               </InputAdornment>
             ),
           }}

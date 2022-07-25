@@ -9,8 +9,8 @@ import {
 } from "@mui/material";
 import React, { SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
@@ -154,13 +154,13 @@ export default function DropdownMenu<
                 ...params.InputProps.ref,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton sdsType="secondary">
+                    <ButtonIcon sdsType="secondary">
                       <Icon
                         sdsIcon="search"
                         sdsSize="s"
                         sdsType="interactive"
                       />
-                    </IconButton>
+                    </ButtonIcon>
                   </InputAdornment>
                 ),
                 inputProps: params.inputProps,

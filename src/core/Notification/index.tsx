@@ -2,8 +2,8 @@ import { AlertProps } from "@mui/lab";
 import { Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { StyledNotification } from "./style";
 
 export interface NotificationProps {
@@ -80,7 +80,7 @@ const Notification = ({
           onClose={onClose ? handleClose : undefined}
           action={
             onClose ? (
-              <IconButton
+              <ButtonIcon
                 onClick={handleClose}
                 sdsSize="small"
                 sdsType="tertiary"
@@ -89,7 +89,7 @@ const Notification = ({
               >
                 {" "}
                 <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-              </IconButton>
+              </ButtonIcon>
             ) : null
           }
           icon={getIcon()}

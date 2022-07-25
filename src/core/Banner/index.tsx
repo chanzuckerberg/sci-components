@@ -5,7 +5,7 @@ import {
   Centered,
   IconWrapper,
   StyledBanner,
-  StyledIconButton,
+  StyledButtonIcon,
   Text,
 } from "./style";
 
@@ -50,14 +50,14 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
         <Text>{text}</Text>
       </Centered>
       {dismissible && (
-        <StyledIconButton
+        <StyledButtonIcon
           bannerType={sdsType}
           sdsType="tertiary"
           sdsSize="small"
           onClick={handleClose}
         >
           <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />
-        </StyledIconButton>
+        </StyledButtonIcon>
       )}
     </StyledBanner>
   );

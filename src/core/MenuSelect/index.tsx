@@ -14,8 +14,8 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
@@ -115,9 +115,9 @@ export default function MenuSelect<
               ...params.InputProps.ref,
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton sdsType="secondary" size="large">
+                  <ButtonIcon sdsType="secondary" size="large">
                     <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                  </IconButton>
+                  </ButtonIcon>
                 </InputAdornment>
               ),
               inputProps: params.inputProps,

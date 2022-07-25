@@ -2,7 +2,7 @@ import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
-import IconButton from "./index";
+import ButtonIcon from "./index";
 
 const Demo = (props: Args): JSX.Element => {
   const { icon, ...rest } = props;
@@ -11,20 +11,20 @@ const Demo = (props: Args): JSX.Element => {
   const handleButtonClick = () => setActive(!active);
 
   return (
-    <IconButton
+    <ButtonIcon
       onClick={handleButtonClick}
       active={active}
       {...rest}
       size="large"
     >
       {icon}
-    </IconButton>
+    </ButtonIcon>
   );
 };
 
 export default {
   component: Demo,
-  title: "IconButton",
+  title: "ButtonIcon",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
