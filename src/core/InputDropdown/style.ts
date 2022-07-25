@@ -89,7 +89,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:focus {
-      outline: ${borders?.primary[400]};
       outline-offset: -1px;
     }
   `;
@@ -194,6 +193,16 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
   return css`
     path {
       fill: ${colors?.primary[400]};
+    }
+
+    border-color: ${colors?.primary[400]};
+
+    &:hover {
+      path {
+        fill: ${colors?.primary[400]};
+      }
+
+      border-color: ${colors?.primary[400]};
     }
   `;
 };
