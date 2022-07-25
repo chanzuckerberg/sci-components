@@ -190,7 +190,12 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
+
   return css`
+    ${props.sdsStyle === "minimal"
+      ? "& > span, &:hover > span { color: black; }"
+      : ""}
+
     path {
       fill: ${colors?.primary[400]};
     }
