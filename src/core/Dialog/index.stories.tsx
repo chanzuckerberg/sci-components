@@ -24,6 +24,11 @@ export default {
       },
       options: ["left", "right"],
     },
+    canClickOutsideClose: {
+      control: {
+        type: "boolean",
+      },
+    },
     longContent: {
       control: {
         type: "boolean",
