@@ -4,6 +4,7 @@ import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
+import LoadingIndicator from "../LoadingIndicator";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -62,6 +63,36 @@ MultipleSelectWithSearch.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
+  search: true,
+};
+
+export const MultipleSelectWithSearchNoOptionsText = Template.bind({});
+MultipleSelectWithSearchNoOptionsText.args = {
+  MenuSelectProps: {
+    noOptionsText: "No results",
+  },
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  // options: [],
+  search: true,
+};
+
+export const MultipleSelectWithSearchLoadingIndicator = Template.bind({});
+
+MultipleSelectWithSearchLoadingIndicator.args = {
+  MenuSelectProps: {
+    loading: true,
+    loadingText: (
+      <>
+        <LoadingIndicator sdsStyle="minimal" />
+      </>
+    ),
+  },
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  options: [],
   search: true,
 };
 
