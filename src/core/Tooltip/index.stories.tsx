@@ -2,10 +2,9 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
+import Icon from "../Icon";
+import IconButton from "../IconButton";
 import Tooltip from "./index";
-
-const fillerText =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
 const Demo = (props: Args): JSX.Element => {
   const { title } = props;
@@ -77,14 +76,14 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const Dark = Template.bind({});
-Dark.parameters = {
+export const Default = Template.bind({});
+Default.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-Dark.args = {
+Default.args = {
   arrow: true,
   placement: "top",
   sdsStyle: "dark",
@@ -93,77 +92,60 @@ Dark.args = {
   width: "default",
 };
 
-export const Light = Template.bind({});
-Light.parameters = {
+const LivePreviewDemo = (): JSX.Element => {
+  const livePreviewStyles = {
+    alignSelf: "self-start",
+    display: "grid",
+    gridColumnGap: "80px",
+    gridTemplateColumns: "repeat(3, 130px)",
+    paddingTop: "80px",
+  };
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <Tooltip title="Label lorem" sdsStyle="dark" placement="top" arrow open>
+        <IconButton sdsType="secondary" sdsSize="large">
+          <Icon sdsIcon="infoSpeechBubble" sdsSize="xl" sdsType="iconButton" />
+        </IconButton>
+      </Tooltip>
+      <Tooltip
+        title="Label lorem ipsum tellus ac cursus commodo, tortor mauris."
+        sdsStyle="light"
+        placement="top"
+        arrow
+        open
+      >
+        <Button sdsType="primary" sdsStyle="rounded">
+          Label
+        </Button>
+      </Tooltip>
+    </div>
+  );
+};
+
+const LivePreviewTemplate: Story = () => <LivePreviewDemo />;
+
+export const LivePreview = LivePreviewTemplate.bind({});
+LivePreview.parameters = {
   snapshot: {
     skip: true,
   },
-};
-
-Light.args = {
-  arrow: true,
-  placement: "top",
-  sdsStyle: "light",
-  title: fillerText,
-  width: "default",
-};
-
-export const LightWide = Template.bind({});
-LightWide.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-LightWide.args = {
-  arrow: true,
-  placement: "top",
-  sdsStyle: "light",
-  title: fillerText,
-  width: "wide",
-};
-
-export const NoTooltipTitle = Template.bind({});
-
-NoTooltipTitle.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-NoTooltipTitle.args = {
-  arrow: true,
-  placement: "top",
-  sdsStyle: "light",
-  width: "wide",
-};
-
-export const StyledArrow = Template.bind({});
-StyledArrow.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-StyledArrow.args = {
-  arrow: true,
-  title: fillerText,
-};
-
-const placementStyles = {
-  display: "grid",
-  gridColumnGap: "50px",
-  gridRowGap: "50px",
-  gridTemplateColumns: "repeat(3, 130px",
-  gridTemplateRows: "repeat(5, 60px)",
-  justifyContent: "center",
-  padding: "100px",
 };
 
 const PlacementDemo = (): JSX.Element => {
+  const placementStyles = {
+    display: "grid",
+    gridColumnGap: "50px",
+    gridRowGap: "50px",
+    gridTemplateColumns: "repeat(3, 130px",
+    gridTemplateRows: "repeat(5, 60px)",
+    justifyContent: "center",
+    padding: "100px",
+  };
+
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Tooltip title="Text" placement="top-start" arrow open>
+      <Tooltip title="Text" placement="top-start" arrow open sdsStyle="dark">
         <Button sdsStyle="minimal" sdsType="secondary">
           top-start
         </Button>
