@@ -2,8 +2,8 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import Tooltip from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -104,9 +104,9 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <Tooltip title="Label lorem" sdsStyle="dark" placement="top" arrow open>
-        <IconButton sdsType="secondary" sdsSize="large">
+        <ButtonIcon sdsType="secondary" sdsSize="large">
           <Icon sdsIcon="infoSpeechBubble" sdsSize="xl" sdsType="iconButton" />
-        </IconButton>
+        </ButtonIcon>
       </Tooltip>
       <Tooltip
         title="Label lorem ipsum tellus ac cursus commodo, tortor mauris."

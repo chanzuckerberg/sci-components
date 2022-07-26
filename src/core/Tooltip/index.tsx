@@ -5,7 +5,13 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
-import { arrowCss, Subtitle, tooltipCss, TooltipExtraProps } from "./style";
+import {
+  arrowCss,
+  StyledPopper,
+  Subtitle,
+  tooltipCss,
+  TooltipExtraProps,
+} from "./style";
 
 type TooltipProps = TooltipExtraProps & RawTooltipProps;
 
@@ -30,6 +36,7 @@ const Tooltip = forwardRef(function Tooltip(
     subtitle,
     title,
     width = "default",
+    PopperComponent = StyledPopper,
     ...rest
   } = props;
 
@@ -92,6 +99,7 @@ const Tooltip = forwardRef(function Tooltip(
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
       title={content}
+      PopperComponent={PopperComponent}
       ref={ref}
       {...rest}
     />
