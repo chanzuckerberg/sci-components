@@ -18,7 +18,7 @@ const defaultStyle = (props: LinkProps) => {
 
     &:hover,
     &:focus {
-      color: ${theme?.app?.colors.primary[600]};
+      color: ${theme?.app?.colors.primary[500]};
     }
   `;
 };
