@@ -97,7 +97,7 @@ const LivePreviewDemo = (): JSX.Element => {
     alignSelf: "self-start",
     display: "grid",
     gridColumnGap: "80px",
-    gridTemplateColumns: "repeat(3, 130px",
+    gridTemplateColumns: "repeat(3, 130px)",
     paddingTop: "80px",
   };
 
