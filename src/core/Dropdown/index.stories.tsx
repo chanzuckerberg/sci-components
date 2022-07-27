@@ -74,7 +74,6 @@ MultipleSelectWithSearchNoOptionsText.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
-  // options: [],
   search: true,
 };
 
@@ -165,6 +164,24 @@ export const InsideModal = (): JSX.Element => {
   function handleChange(newValue: DefaultDropdownMenuOption | null) {
     setValue(newValue);
   }
+};
+
+// Test Story
+export const Test = (props: Args): JSX.Element => {
+  return (
+    <Dropdown
+      label="Click Target"
+      onChange={noop}
+      options={GITHUB_LABELS}
+      {...props}
+      data-testid="dropdown"
+    />
+  );
+};
+
+Test.args = {
+  label: LABEL,
+  onChange: noop,
 };
 
 // From https://github.com/abdonrd/github-labels
