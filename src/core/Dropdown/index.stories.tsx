@@ -34,11 +34,23 @@ Disabled.args = {
   onChange: noop,
 };
 
+Disabled.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const SingleSelect = Template.bind({});
 
 SingleSelect.args = {
   label: LABEL,
   onChange: noop,
+};
+
+SingleSelect.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const SingleSelectWithSearch = Template.bind({});
@@ -49,12 +61,24 @@ SingleSelectWithSearch.args = {
   search: true,
 };
 
+SingleSelectWithSearch.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const MultipleSelect = Template.bind({});
 
 MultipleSelect.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
+};
+
+MultipleSelect.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const MultipleSelectWithSearch = Template.bind({});
@@ -66,6 +90,12 @@ MultipleSelectWithSearch.args = {
   search: true,
 };
 
+MultipleSelectWithSearch.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const MultipleSelectWithSearchNoOptionsText = Template.bind({});
 MultipleSelectWithSearchNoOptionsText.args = {
   MenuSelectProps: {
@@ -75,6 +105,12 @@ MultipleSelectWithSearchNoOptionsText.args = {
   multiple: true,
   onChange: noop,
   search: true,
+};
+
+MultipleSelectWithSearchNoOptionsText.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const MultipleSelectWithSearchLoadingIndicator = Template.bind({});
@@ -95,6 +131,12 @@ MultipleSelectWithSearchLoadingIndicator.args = {
   search: true,
 };
 
+MultipleSelectWithSearchLoadingIndicator.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const MultipleSelectWithButtons = Template.bind({});
 
 MultipleSelectWithButtons.args = {
@@ -107,6 +149,12 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
+MultipleSelectWithButtons.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
 
 MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
@@ -115,6 +163,12 @@ MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
   onChange: (value: never) => {
     // eslint-disable-next-line no-console
     console.log(value);
+  },
+};
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.parameters = {
+  snapshot: {
+    skip: true,
   },
 };
 
@@ -132,6 +186,12 @@ SearchWithOnClose.args = {
     console.log(123);
   },
   search: true,
+};
+
+SearchWithOnClose.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 const useStyles = makeStyles(() => ({
@@ -166,8 +226,14 @@ export const InsideModal = (): JSX.Element => {
   }
 };
 
+InsideModal.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 // Test Story
-export const Test = (props: Args): JSX.Element => {
+
+const TestDemo = (props: Args): JSX.Element => {
   return (
     <Dropdown
       label="Click Target"
@@ -178,6 +244,9 @@ export const Test = (props: Args): JSX.Element => {
     />
   );
 };
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+export const Test = TestTemplate.bind({});
 
 Test.args = {
   label: LABEL,
