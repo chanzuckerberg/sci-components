@@ -118,11 +118,7 @@ export const MultipleSelectWithSearchLoadingIndicator = Template.bind({});
 MultipleSelectWithSearchLoadingIndicator.args = {
   MenuSelectProps: {
     loading: true,
-    loadingText: (
-      <>
-        <LoadingIndicator sdsStyle="minimal" />
-      </>
-    ),
+    loadingText: <LoadingIndicator sdsStyle="minimal" />,
   },
   label: LABEL,
   multiple: true,
