@@ -72,6 +72,8 @@ export default function DropdownMenu<
     renderTags = defaultRenderTags,
     renderOption = defaultRenderOption,
     disableCloseOnSelect = multiple,
+    loading = false,
+    loadingText = "",
     noOptionsText = "No options",
     search = false,
     onInputChange = noop,
@@ -86,6 +88,8 @@ export default function DropdownMenu<
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
       renderTags={renderTags}
+      loading={loading}
+      loadingText={loadingText}
       noOptionsText={noOptionsText}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
