@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { SvgIcon, SvgIconProps } from "@material-ui/core";
+import { SvgIcon, SvgIconProps } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { FC } from "react";
 import { CommonThemeProps, getColors, getIconSizes } from "../styles";
 import { IconNameToSizes } from "./map";
@@ -89,6 +89,6 @@ export const StyledSvgIcon = styled(SvgIcon, {
   }}
 `;
 
-export const StyledIcon = styled.div`
+export const StyledIcon = styled("div")`
   display: contents;
 `;

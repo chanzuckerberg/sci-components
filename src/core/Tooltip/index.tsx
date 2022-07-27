@@ -1,11 +1,17 @@
-import { useTheme } from "@emotion/react";
 import {
   Tooltip as RawTooltip,
   TooltipClassKey,
   TooltipProps as RawTooltipProps,
-} from "@material-ui/core";
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
-import { arrowCss, Subtitle, tooltipCss, TooltipExtraProps } from "./style";
+import {
+  arrowCss,
+  StyledPopper,
+  Subtitle,
+  tooltipCss,
+  TooltipExtraProps,
+} from "./style";
 
 type TooltipProps = TooltipExtraProps & RawTooltipProps;
 
@@ -23,14 +29,14 @@ const Tooltip = forwardRef(function Tooltip(
   ref
 ): JSX.Element | null {
   const {
+    arrowOffset,
     classes,
-    // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
-    followCursor = false,
     inverted,
     sdsStyle = "light",
     subtitle,
     title,
     width = "default",
+    PopperComponent = StyledPopper,
     ...rest
   } = props;
 
@@ -54,8 +60,8 @@ const Tooltip = forwardRef(function Tooltip(
 
   const extraProps = {
     /* stylelint-disable property-no-unknown -- false positive */
+    arrowOffset,
     classes,
-    followCursor,
     inverted,
     sdsStyle,
     theme,
@@ -88,42 +94,13 @@ const Tooltip = forwardRef(function Tooltip(
 
   const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
 
-  const [position, setPosition] = React.useState({ x: 0, y: 0 });
-
   return (
     <RawTooltip
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
-      interactive
       title={content}
+      PopperComponent={PopperComponent}
       ref={ref}
-      onMouseMove={
-        followCursor
-          ? (e) => setPosition({ x: e.pageX, y: e.pageY })
-          : undefined
-      }
-      placement={followCursor ? "right-end" : undefined}
-      PopperProps={
-        followCursor
-          ? {
-              anchorEl: {
-                clientHeight: 0,
-                clientWidth: 0,
-                getBoundingClientRect: () => ({
-                  bottom: position.y,
-                  height: 0,
-                  left: position.x,
-                  right: position.x,
-                  toJSON: () => {},
-                  top: position.y,
-                  width: 0,
-                  x: position.x,
-                  y: position.y,
-                }),
-              },
-            }
-          : undefined
-      }
       {...rest}
     />
   );

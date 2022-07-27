@@ -1,4 +1,4 @@
-import { AccordionDetailsProps } from "@material-ui/core";
+import { AccordionDetailsProps } from "@mui/material";
 import React from "react";
 import { StyledAccordionDetails } from "./style";
 

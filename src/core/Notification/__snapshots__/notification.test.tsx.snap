@@ -2,20 +2,20 @@
 
 exports[`<Notification /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo elevated css-ge3qs3 MuiPaper-elevation0"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard elevated css-fwvngz-MuiPaper-root-MuiAlert-root"
   data-testid="notification"
   role="alert"
-  style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+  style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 250ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 250ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
 >
   <div
-    class="MuiAlert-icon"
+    class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
   >
     <div
       class="css-jbvua0"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root css-henzh4"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
         data-jest-file-name="IconInfoCircleLarge.svg"
         data-jest-svg-name="IconInfoCircleLarge"
         data-testid="IconInfoCircleLarge"
@@ -26,7 +26,7 @@ exports[`<Notification /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiAlert-message"
+    class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
   >
     this is a notification
   </div>

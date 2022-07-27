@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenuItem /> Test story renders snapshot 1`] = `
+<div
+  class="css-1m75yyh"
+>
+  <li
+    class="MuiMenuItem-root MuiMenuItem-gutters MuiButtonBase-root css-1nyx05q-MuiButtonBase-root-MuiMenuItem-root"
+    data-testid="MenuItem"
+    role="menuitem"
+    tabindex="-1"
+  >
+    <span
+      class="css-pe6vce"
+    >
+      <span
+        class="primary-text css-13a4omo"
+      >
+        test text
+      </span>
+      <span
+        class="css-1hhtny0"
+      >
+        test column
+      </span>
+    </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </li>
+</div>
+`;

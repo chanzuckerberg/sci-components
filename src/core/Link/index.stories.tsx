@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Story } from "@storybook/react";
 import React from "react";
 import Link, { LinkProps } from "./index";
 
@@ -37,7 +37,7 @@ const livePreviewStyles = {
   gridTemplateColumns: "repeat(2, 250px)",
 };
 
-const LivePreviewDemo = (props: Args): JSX.Element => {
+const LivePreviewDemo = (props: LinkProps): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div>
@@ -57,7 +57,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+const LivePreviewTemplate: Story<LinkProps> = (args) => (
+  <LivePreviewDemo {...args} />
+);
 
 export const LivePreview = LivePreviewTemplate.bind({});
 

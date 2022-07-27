@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   getColors,
@@ -8,14 +8,14 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface IconButtonExtraProps extends CommonThemeProps {
+export interface ButtonIconExtraProps extends CommonThemeProps {
   active?: boolean;
   disabled?: boolean;
   sdsSize?: "small" | "medium" | "large";
   sdsType?: "primary" | "secondary" | "tertiary";
 }
 
-const isActive = (props: IconButtonExtraProps): SerializedStyles => {
+const isActive = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
 
@@ -33,7 +33,7 @@ const isActive = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const isDisabled = (props: IconButtonExtraProps): SerializedStyles => {
+const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -41,14 +41,16 @@ const isDisabled = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const primary = (props: IconButtonExtraProps): SerializedStyles => {
+const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   const colors = getColors(props);
+  const { sdsSize } = props;
 
   return css`
     color: ${colors?.primary[400]};
 
     &:hover {
-      background: ${colors?.gray[300]};
+      background: ${colors?.gray[200]};
+      color: ${sdsSize === "small" ? colors?.gray[600] : colors?.primary[400]};
     }
 
     &:active {
@@ -57,7 +59,7 @@ const primary = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const secondary = (props: IconButtonExtraProps): SerializedStyles => {
+const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -70,7 +72,7 @@ const secondary = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const tertiary = (props: IconButtonExtraProps): SerializedStyles => {
+const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -87,7 +89,7 @@ const tertiary = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const small = (props: IconButtonExtraProps): SerializedStyles => {
+const small = (props: ButtonIconExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
@@ -102,7 +104,7 @@ const small = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const medium = (props: IconButtonExtraProps): SerializedStyles => {
+const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
@@ -113,7 +115,7 @@ const medium = (props: IconButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const large = (props: IconButtonExtraProps): SerializedStyles => {
+const large = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
@@ -130,12 +132,12 @@ const large = (props: IconButtonExtraProps): SerializedStyles => {
 
 const doNotForwardProps = ["active", "sdsSize", "sdsType"];
 
-export const StyledIconButton = styled(IconButton, {
+export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   padding: 0;
 
-  ${(props: IconButtonExtraProps) => {
+  ${(props: ButtonIconExtraProps) => {
     const { active, disabled, sdsSize, sdsType } = props;
 
     return css`

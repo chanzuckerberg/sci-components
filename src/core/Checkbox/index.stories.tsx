@@ -1,104 +1,154 @@
-import { FormControlLabel } from "@material-ui/core";
-import { action } from "@storybook/addon-actions";
-import { storiesOf } from "@storybook/react";
+import { Box, FormControlLabel } from "@mui/material";
+import { Args, Story } from "@storybook/react";
 import React from "react";
 import Checkbox from "./index";
 
-const actions = {
-  onChange: action("onChange"),
+const CheckboxDemo = (props: Args): JSX.Element => {
+  const { disabled } = props;
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = () => setChecked((prevState) => !prevState);
+
+  return (
+    <div>
+      <FormControlLabel
+        control={
+          <Checkbox
+            disabled={disabled}
+            onChange={handleChange}
+            stage={checked ? "unchecked" : "checked"}
+          />
+        }
+        label="Label"
+      />
+    </div>
+  );
 };
 
-const storyColumn = {
-  alignItems: "flex-start",
-  display: "flex",
-  flexDirection: "column",
+export default {
+  component: CheckboxDemo,
+  title: "Checkbox",
 };
 
-storiesOf("Checkbox", module).add("unchecked", () => (
-  <div style={storyColumn as React.CSSProperties}>
-    <p>
-      <strong>Accessibility</strong>: All checkboxes should have a label. This
-      can be done with a visible form label or with the aria-label attribute.
-      Note aria labels should be meaningful based on your content. <br /> Good:
-      &ldquo;XYZ Gene&ldquo;
-      <br /> Bad: &ldquo;Unchecked&ldquo; <br />{" "}
-      https://material-ui.com/components/checkboxes/#accessibility
-    </p>
-    <FormControlLabel
-      control={<Checkbox onChange={actions.onChange} stage="unchecked" />}
-      label="Unchecked"
-    />
-    <FormControlLabel
-      control={
-        <Checkbox disabled onChange={actions.onChange} stage="unchecked" />
-      }
-      label="Unchecked & disabled"
-    />
-    With aria labels:
-    <Checkbox
-      inputProps={{ "aria-label": "checkbox unchecked" }}
-      onChange={actions.onChange}
-      stage="unchecked"
-    />
-    <Checkbox
-      disabled
-      inputProps={{ "aria-label": "checkbox unchecked and disabled" }}
-      onChange={actions.onChange}
-      stage="unchecked"
-    />
-  </div>
-));
+const Template: Story = (args) => <CheckboxDemo {...args} />;
 
-storiesOf("Checkbox", module).add("checked", () => (
-  <div style={storyColumn as React.CSSProperties}>
-    <FormControlLabel
-      control={<Checkbox onChange={actions.onChange} stage="checked" />}
-      label="Checked"
-    />
-    <FormControlLabel
-      control={
-        <Checkbox disabled onChange={actions.onChange} stage="checked" />
-      }
-      label="Checked & disabled"
-    />
-    With aria labels:
-    <Checkbox
-      inputProps={{ "aria-label": "checked" }}
-      onChange={actions.onChange}
-      stage="checked"
-    />
-    <Checkbox
-      disabled
-      inputProps={{ "aria-label": "checked and disabled" }}
-      onChange={actions.onChange}
-      stage="checked"
-    />
-  </div>
-));
+export const Default = Template.bind({});
 
-storiesOf("Checkbox", module).add("indeterminate", () => (
-  <div style={storyColumn as React.CSSProperties}>
-    <FormControlLabel
-      control={<Checkbox onChange={actions.onChange} stage="indeterminate" />}
-      label="Checked"
-    />
-    <FormControlLabel
-      control={
-        <Checkbox disabled onChange={actions.onChange} stage="indeterminate" />
-      }
-      label="Checked & disabled"
-    />
-    With aria labels:
-    <Checkbox
-      inputProps={{ "aria-label": "indeterminate" }}
-      onChange={actions.onChange}
-      stage="indeterminate"
-    />
-    <Checkbox
-      disabled
-      inputProps={{ "aria-label": "indeterminate and disabled" }}
-      onChange={actions.onChange}
-      stage="indeterminate"
-    />
-  </div>
-));
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+Default.args = {
+  id: "test-story",
+};
+
+export const Test = Template.bind({});
+
+Test.args = {
+  id: "test-story",
+  togglePosition: "right",
+};
+
+/*
+ * Live Preview
+ */
+
+const IndeterminateDemo = (): JSX.Element => {
+  const [checked, setChecked] = React.useState([true, false]);
+
+  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([event.target.checked, event.target.checked]);
+  };
+
+  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([event.target.checked, checked[1]]);
+  };
+
+  const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked([checked[0], event.target.checked]);
+  };
+
+  const children = (
+    <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
+      <FormControlLabel
+        label="Child 1"
+        control={
+          <Checkbox
+            onChange={handleChange2}
+            stage={checked[0] ? "checked" : "unchecked"}
+          />
+        }
+      />
+      <FormControlLabel
+        label="Child 2"
+        control={
+          <Checkbox
+            onChange={handleChange3}
+            stage={checked[1] ? "checked" : "unchecked"}
+          />
+        }
+      />
+    </Box>
+  );
+
+  function getParentStage() {
+    if (checked[0] && checked[1]) {
+      return "checked";
+    }
+    if (checked[0] !== checked[1]) {
+      return "indeterminate";
+    }
+    return "unchecked";
+  }
+  return (
+    <div>
+      <FormControlLabel
+        label="Parent"
+        control={
+          <Checkbox
+            checked={checked[0] && checked[1]}
+            stage={getParentStage()}
+            onChange={handleChange1}
+          />
+        }
+      />
+      {children}
+    </div>
+  );
+};
+
+const LivePreviewDemo = (): JSX.Element => {
+  const livePreviewStyles = {
+    display: "grid",
+    gridColumnGap: "24px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(3, 70px)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+        <CheckboxDemo disabled={false} />
+      </div>
+      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
+        <CheckboxDemo disabled />
+      </div>
+      <div style={{ gridArea: "1 / 3 / 1 / 3" }}>
+        <IndeterminateDemo />
+      </div>
+    </div>
+  );
+};
+
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};

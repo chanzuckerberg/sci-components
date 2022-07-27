@@ -2,14 +2,18 @@ const path = require("path");
 const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
+  features: {
+    // (thuang): https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility
+    emotionAlias: false,
+  },
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-material-ui",
-    "storybook-addon-emotion-theme",
+    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
   ],
+  framework: "@storybook/react",
   webpackFinal: async (config) => {
     return {
       ...config,

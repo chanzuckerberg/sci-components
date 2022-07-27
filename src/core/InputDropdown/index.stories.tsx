@@ -1,37 +1,9 @@
-import styled from "@emotion/styled";
-import { ClickAwayListener, Popper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { ClickAwayListener } from "@mui/base";
+import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import DropdownMenu from "../DropdownMenu";
-import {
-  AppThemeOptions,
-  getBorders,
-  getCorners,
-  getShadows,
-  getSpaces,
-} from "../styles";
 import InputDropdown from "./index";
-
-const useStyles = makeStyles((theme: AppThemeOptions) => {
-  const shadows = getShadows({ theme });
-  const corners = getCorners({ theme });
-  const spacings = getSpaces({ theme });
-  const borders = getBorders({ theme });
-
-  return {
-    popper: {
-      backgroundColor: "white",
-      border: borders?.gray[100],
-      borderRadius: corners?.m,
-      boxShadow: shadows?.m,
-      marginTop: spacings?.s,
-      padding: spacings?.xs,
-      width: "auto",
-      zIndex: 1,
-    },
-  };
-});
 
 const StyledInputDropdown = styled(InputDropdown)`
   width: 160px;
@@ -43,8 +15,6 @@ const Demo = (props: Args): JSX.Element => {
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
-
-  const classes = useStyles();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (open) {
@@ -116,22 +86,16 @@ const Demo = (props: Args): JSX.Element => {
             />
           )}
 
-          <Popper
+          <DropdownMenu
             open={open}
             anchorEl={anchorEl}
-            className={classes.popper}
-            placement="bottom-start"
-          >
-            <DropdownMenu
-              open={!!open}
-              onClose={handleClose}
-              onChange={handleChange}
-              search={false}
-              multiple={multiple}
-              disableCloseOnSelect={multiple}
-              options={options}
-            />
-          </Popper>
+            onClose={handleClose}
+            onChange={handleChange}
+            search={false}
+            multiple={multiple}
+            disableCloseOnSelect={multiple}
+            options={options}
+          />
         </div>
       </ClickAwayListener>
     </>

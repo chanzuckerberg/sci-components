@@ -1,10 +1,14 @@
-import { AutocompleteCloseReason, Value as MUIValue } from "@material-ui/lab";
+import {
+  AutocompleteCloseReason,
+  AutocompleteValue as MUIValue,
+} from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
-import { StyledButton, StyledPopper } from "./style";
+import { StyledButton } from "./style";
 
 export {
   StyledPopper as DropdownPopper,
@@ -61,7 +65,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   MenuSelectProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
-  PopperComponent = StyledPopper,
+  PopperComponent,
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
@@ -106,26 +110,28 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         {...InputDropdownProps}
         {...rest}
       />
-      <PopperComponent open={open} anchorEl={anchorEl} placement="bottom-start">
-        <DropdownMenu
-          open
-          search={search}
-          onClose={handleClose}
-          multiple={multiple as Multiple}
-          value={
-            (multiple ? pendingValue : value) as MUIValue<
-              DefaultDropdownMenuOption,
-              Multiple,
-              undefined,
-              undefined
-            >
-          }
-          onChange={handleChange}
-          disableCloseOnSelect={multiple}
-          options={options}
-          {...MenuSelectProps}
-        />
-        {buttons && (
+      <DropdownMenu
+        anchorEl={anchorEl}
+        open={open}
+        search={search}
+        onClose={handleClose}
+        multiple={multiple as Multiple}
+        value={
+          (multiple ? pendingValue : value) as MUIValue<
+            DefaultDropdownMenuOption,
+            Multiple,
+            undefined,
+            undefined
+          >
+        }
+        onChange={handleChange}
+        disableCloseOnSelect={multiple}
+        PopperComponent={PopperComponent}
+        PopperBaseProps={{ sx: { minWidth: 250 } }}
+        options={options}
+        {...MenuSelectProps}
+      >
+        {buttons ? (
           <div>
             {buttonPosition === "left" ? (
               <div>
@@ -163,8 +169,8 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
               </div>
             )}
           </div>
-        )}
-      </PopperComponent>
+        ) : null}
+      </DropdownMenu>
     </>
   );
 

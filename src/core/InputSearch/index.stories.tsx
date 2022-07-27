@@ -19,6 +19,7 @@ const Demo = (props: Args): JSX.Element => {
       sdsStage={sdsStage}
       intent={intent}
       handleSubmit={handleSubmit}
+      name="input-search-name"
     />
   );
 };
@@ -82,6 +83,7 @@ const RoundLivePreviewDemo = (props: Args): JSX.Element => {
       sdsStyle="rounded"
       placeholder="Search"
       handleSubmit={action("onSubmit")}
+      name="round-input-search"
     />
   );
 };
@@ -107,6 +109,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       sdsStyle="square"
       placeholder="Search"
       handleSubmit={action("onSubmit")}
+      name="square-input-search"
     />
   );
 };
@@ -133,6 +136,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Search"
         data-testid="inputSearchRound"
         handleSubmit={action("onSubmit")}
+        name="round-search"
         {...props}
       />
       <InputSearch
@@ -142,6 +146,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Search"
         data-testid="inputSearchSquare"
         handleSubmit={action("onSubmit")}
+        name="square-search"
         {...props}
       />
       {/* @ts-expect-error testing fail state */}
@@ -150,6 +155,7 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Search"
         data-testid="inputSearchFail"
         handleSubmit={action("onSubmit")}
+        name="with-error"
       />
     </>
   );

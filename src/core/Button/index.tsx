@@ -1,4 +1,4 @@
-import { ButtonProps as RawButtonProps } from "@material-ui/core";
+import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
 import {
   SDSWarningTypes,
@@ -58,6 +58,7 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="contained"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -67,6 +68,7 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="outlined"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -76,6 +78,7 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="contained"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -85,6 +88,7 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="outlined"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -94,20 +98,24 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="text"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
       case sdsStyle === "minimal" && sdsType === "secondary":
         return (
           <SecondaryMinimalButton
-            color="default"
+            color="primary"
             ref={ref}
             variant="text"
+            data-testid="button"
             {...propsWithDefault}
           />
         );
       default:
-        return <StyledButton {...propsWithDefault} ref={ref} />;
+        return (
+          <StyledButton data-testid="button" {...propsWithDefault} ref={ref} />
+        );
     }
   }
 );

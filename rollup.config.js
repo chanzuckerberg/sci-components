@@ -11,8 +11,11 @@ const config = [
   {
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
-      "@material-ui/core/styles",
-      "@material-ui/core/Popper",
+      "@mui/material/Popper",
+      "@mui/material/ToggleButton",
+      "@mui/material/styles",
+      "@mui/material/Autocomplete",
+      "@mui/material/ToggleButtonGroup",
     ],
     input: "src/index.ts",
     output: [

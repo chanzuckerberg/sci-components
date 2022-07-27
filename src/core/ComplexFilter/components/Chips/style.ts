@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import Chip from "src/core/Chip";
+import { styled } from "@mui/material/styles";
 import { getSpaces } from "src/core/styles";
+import TagFilter from "src/core/TagFilter";
 
-export const StyledChip = styled(Chip)`
+export const StyledTagFilter = styled(TagFilter)`
   ${(props) => {
     const spacings = getSpaces(props);
 

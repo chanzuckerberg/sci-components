@@ -24,9 +24,10 @@ czifui installs without direct dependencies to prevent version errors. Please en
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@material-ui/core"
-  "@material-ui/icons"
-  "@material-ui/lab"
+  "@mui/base"
+  "@mui/icons-material"
+  "@mui/lab"
+  "@mui/material"
   "react"
   "react-dom"
 ```
@@ -35,10 +36,10 @@ To install the dependencies:
 
 ```
 // with npm
-npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+npm i czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
+yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Usage
@@ -58,7 +59,7 @@ import { Button } from "czifui";
 2. Mixins - Grouped styles defined by the design system
 
 ```javascript
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 import { Typography } from "@material-ui/core";
 import { fontHeaderXL } from "czifui";
 
@@ -77,10 +78,10 @@ export const Title - styled(Typography)`
 
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 import { getColors, getCorners } from "czifui";
 
-export const Tag = styled.div`
+export const Tag = styled("div")`
   // This is a callback function that returns more CSS rules, but the only way
   // to access the custom theme object
       ${(props) => {

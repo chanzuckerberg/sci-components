@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
+import React from "react";
 import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
 import Tag from "../Tag";
 
@@ -23,7 +24,8 @@ export const StyledTag = styled(Tag)`
         ${fontHeaderXs(props)}
       }
 
-      .MuiChip-deleteIcon {
+      .MuiChip-deleteIcon,
+      .MuiSvgIcon-root {
         margin-left: ${spacings?.s}px;
       }
 

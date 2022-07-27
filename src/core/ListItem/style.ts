@@ -1,7 +1,7 @@
 import { SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
-import { ListItem } from "@material-ui/core";
-import { TypographyOptions } from "@material-ui/core/styles/createTypography";
+import { ListItem } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { TypographyOptions } from "@mui/material/styles/createTypography";
 import {
   CommonThemeProps,
   fontBody,
@@ -100,7 +100,7 @@ function propsToMarginBottom(props: ListItemExtraProps) {
   `;
 }
 
-export const ListItemLabel = styled.span`
+export const ListItemLabel = styled("span")`
   margin-right: 5px;
 
   ${(props) => {

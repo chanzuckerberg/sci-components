@@ -2,31 +2,26 @@
 
 exports[`<InputToggle /> Test story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root css-ujw0lf"
+  class="MuiSwitch-root MuiSwitch-sizeMedium css-14ifyh6-MuiSwitch-root"
 >
   <span
-    aria-disabled="false"
-    class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-1 MuiSwitch-switchBase MuiSwitch-colorPrimary"
+    class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
     data-testid="test-toggle"
   >
+    <input
+      class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+      type="checkbox"
+      value="Off"
+    />
     <span
-      class="MuiIconButton-label"
-    >
-      <input
-        class="PrivateSwitchBase-input-4 MuiSwitch-input"
-        type="checkbox"
-        value="Off"
-      />
-      <span
-        class="MuiSwitch-thumb"
-      />
-    </span>
+      class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+    />
     <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </span>
   <span
-    class="MuiSwitch-track"
+    class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
   />
 </span>
 `;

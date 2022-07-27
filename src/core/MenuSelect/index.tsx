@@ -1,18 +1,21 @@
-import { InputAdornment } from "@material-ui/core";
+import {
+  AutocompleteFreeSoloValueMapping,
+  InputAdornment,
+} from "@mui/material";
 import {
   AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
-} from "@material-ui/lab";
+} from "@mui/material/Autocomplete";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
+import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
-import IconButton from "../IconButton";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
@@ -21,7 +24,6 @@ import {
   StyledMenuItem,
   StyleProps,
 } from "./style";
-
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -113,9 +115,9 @@ export default function MenuSelect<
               ...params.InputProps.ref,
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton sdsType="secondary">
+                  <ButtonIcon sdsType="secondary" size="large">
                     <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                  </IconButton>
+                  </ButtonIcon>
                 </InputAdornment>
               ),
               inputProps: params.inputProps,
@@ -126,7 +128,7 @@ export default function MenuSelect<
       )}
       {...props}
       onInputChange={(
-        event: React.ChangeEvent<Record<string, unknown>>,
+        event: React.SyntheticEvent<Element, Event>,
         value: string,
         reason: AutocompleteInputChangeReason
       ) => {
@@ -143,8 +145,11 @@ export default function MenuSelect<
     />
   );
 
-  function defaultGetOptionLabel(option: T): string {
-    return option.name;
+  function defaultGetOptionLabel(
+    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
+  ): string {
+    if (typeof option === "object" && "name" in option) return option.name;
+    return option.toString();
   }
 
   function defaultRenderTags() {
@@ -152,14 +157,16 @@ export default function MenuSelect<
   }
 
   function defaultRenderOption(
+    optionProps: React.HTMLAttributes<HTMLLIElement>,
     option: T,
     { selected }: AutocompleteRenderOptionState
   ) {
     return (
       <StyledMenuItem
-        {...{ component: "div" }}
+        {...{ component: "li" }}
         isMultiSelect={multiple}
         selected={selected}
+        {...optionProps}
       >
         {option.name}
       </StyledMenuItem>

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { MenuItem } from "@material-ui/core";
-import { Check } from "@material-ui/icons";
+import { Check } from "@mui/icons-material";
+import { MenuItem, menuItemClasses } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { CommonThemeProps } from "../styles";
 import { fontBody } from "../styles/common/mixins/fonts";
 import {
@@ -25,17 +25,48 @@ export const StyledMenuItem = styled(MenuItem)`
     return `
       padding: ${spacings?.xs}px ${spacings?.s}px;
       min-height: unset;
+      opacity: 1;
 
+      &.MuiAutocomplete-option {
+        min-height: unset;
+      }
+      
       .primary-text {
         font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
       }
 
-      &.MuiListItem-root.MuiListItem-button {
+      &.MuiButtonBase-root {
         background-color: transparent;
+
+        &:hover, &.${menuItemClasses.focusVisible} {
+          background-color: ${colors?.gray[100]};
+
+          &[aria-selected="true"] {
+            background-color: ${colors?.gray[100]};
+          }
+        }
+      }
+
+      &.MuiMenuItem-root .MuiSvgIcon-root {
+        align-self: flex-start;
+        margin-top: 3px;
+      }
+  
+      &.MuiAutocomplete-option[aria-selected="true"] {
+        background-color: white;
 
         &:hover {
           background-color: ${colors?.gray[100]};
         }
+
+        svg.MuiSvgIcon-root {
+          color: ${selected ? primary : colors?.gray[500]};
+        }
+      }
+
+      &.MuiListItem-root .MuiSvgIcon-root {
+        align-self: flex-start;
+        margin-top: 3px;
       }
 
       &.MuiListItem-root .MuiSvgIcon-root {
@@ -45,7 +76,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:hover {
         background-color: ${colors?.gray[100]};
-        svg {
+        svg.MuiSvgIcon-root {
           color: ${selected ? primary : colors?.gray[500]};
         }
       }
@@ -61,19 +92,25 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:active {
-        svg {
+        svg.MuiSvgIcon-root {
           color: ${primary};
         }
 
-        .primary-text {
-          font-weight: ${fontWeights?.semibold};
+        &:active {
+          svg.MuiSvgIcon-root {
+            color: ${primary};
+          }
+
+          .primary-text {
+            font-weight: ${fontWeights?.semibold};
+          }
         }
       }
     `;
   }}
 `;
 
-export const ContentWrapper = styled.span`
+export const ContentWrapper = styled("span")`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,7 +138,7 @@ interface TextWrapperProps {
   selected: boolean;
 }
 
-export const TextWrapper = styled.span<TextWrapperProps>`
+export const TextWrapper = styled("span")<TextWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
@@ -119,7 +156,7 @@ interface ColumnWrapperProps {
   disabled?: boolean;
 }
 
-export const ColumnWrapper = styled.span<ColumnWrapperProps>`
+export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
@@ -133,25 +170,26 @@ export const ColumnWrapper = styled.span<ColumnWrapperProps>`
   ${disabledStyles}
 `;
 
-export const DemoWrapper = styled.div`
+export const DemoWrapper = styled("div")`
   width: 250px;
 `;
 
 interface StyledCheckType {
   selected?: boolean;
+  disabled?: boolean;
 }
 
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<StyledCheckType>`
   ${(props) => {
-    const { selected } = props;
+    const { selected, disabled } = props;
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
     const spacings = getSpaces(props);
-
+    const selectedColor = disabled ? colors?.gray[300] : colors?.primary[400];
     return `
-      color: ${selected ? colors?.primary[400] : "transparent"};
+      color: ${selected ? selectedColor : "transparent"};
       margin-right: ${spacings?.m}px;
       margin-top: ${spacings?.xxxs}px;
       padding: 0;

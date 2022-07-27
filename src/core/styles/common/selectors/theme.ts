@@ -1,11 +1,11 @@
-import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { PaletteOptions } from "@mui/material/styles";
 import {
-  AppThemeOptions,
   Borders,
   Colors,
   Corners,
   FontWeights,
   IconSizes,
+  SDSTheme,
   Shadows,
   Spaces,
   Spacings,
@@ -16,7 +16,7 @@ import {
 // namespace collisions.
 // Might be related to using `rollup-plugin-ts`, which does code splitting?
 export interface CommonThemeProps {
-  theme?: AppThemeOptions;
+  theme?: SDSTheme;
 }
 
 export const getSpaces = ({ theme }: CommonThemeProps): Spaces | null => {

@@ -1,7 +1,7 @@
 import {
   Dialog as RawDialog,
   DialogProps as RawDialogProps,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { ComponentType, forwardRef, useMemo } from "react";
 import DialogPaper, { DialogPaperProps } from "../DialogPaper";
 import { DialogContext } from "./components/common";
@@ -9,6 +9,8 @@ import { DialogContext } from "./components/common";
 export { DialogContext };
 
 interface DialogExtraProps {
+  canClickOutsideClose?: boolean;
+  onClose?: (event: object, reason: string) => void;
   sdsSize?: "xs" | "s" | "m" | "l";
   PaperComponent?: ComponentType<DialogPaperProps>;
   DialogComponent?: ComponentType<RawDialogProps>;
@@ -24,8 +26,9 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
   ref
 ): JSX.Element {
   const {
+    canClickOutsideClose = true,
+    onClose,
     sdsSize = "m",
-    DialogComponent = RawDialog,
     PaperComponent = DialogPaper,
     ...rest
   } = props;
@@ -34,7 +37,23 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
 
   return (
     <DialogContext.Provider value={contextValue}>
-      <DialogComponent ref={ref} PaperComponent={PaperComponent} {...rest} />
+      <RawDialog
+        ref={ref}
+        PaperComponent={PaperComponent}
+        {...rest}
+        onClose={(
+          event: React.SyntheticEvent<Element, Event>,
+          reason: string
+        ) => {
+          if (
+            !canClickOutsideClose &&
+            reason &&
+            (reason === "backdropClick" || reason === "escapeKeyDown")
+          )
+            return;
+          if (onClose) onClose(event, reason);
+        }}
+      />
     </DialogContext.Provider>
   );
 });

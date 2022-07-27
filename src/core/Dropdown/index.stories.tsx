@@ -1,5 +1,4 @@
-import { Dialog } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
@@ -145,6 +144,11 @@ MultipleSelectWithButtons.args = {
   search: true,
 };
 
+const StyledPaper = styled(Paper)`
+  width: 200px;
+  padding: 50px;
+`;
+
 MultipleSelectWithButtons.parameters = {
   snapshot: {
     skip: true,
@@ -190,23 +194,13 @@ SearchWithOnClose.parameters = {
   },
 };
 
-const useStyles = makeStyles(() => ({
-  /* stylelint-disable-next-line */
-  paper: {
-    padding: "50px",
-    width: "200px",
-  },
-}));
-
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
     GITHUB_LABELS[0]
   );
 
-  const classes = useStyles();
-
   return (
-    <Dialog open disableEnforceFocus classes={{ paper: classes.paper }}>
+    <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
       <Dropdown
         label="Dropdown"
         options={GITHUB_LABELS}

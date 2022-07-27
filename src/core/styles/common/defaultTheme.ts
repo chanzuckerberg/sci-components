@@ -1,12 +1,12 @@
-import { colors } from "@material-ui/core";
+import { colors } from "@mui/material";
 import {
-  createMuiTheme,
   createTheme,
+  Theme,
   ThemeOptions,
-} from "@material-ui/core/styles";
-import { TypographyStyle } from "@material-ui/core/styles/createTypography";
+  TypographyStyle,
+} from "@mui/material/styles";
 
-const createThemeAdaptor = createTheme || createMuiTheme;
+const createThemeAdaptor = createTheme;
 
 const { common } = colors;
 
@@ -276,9 +276,22 @@ defaultAppTheme.borders = {
   },
 };
 
-export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
+export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
   return {
     app: appTheme,
+    components: {
+      MuiButtonBase: {
+        defaultProps: {
+          disableRipple: true,
+        },
+      },
+
+      MuiLink: {
+        defaultProps: {
+          underline: "hover",
+        },
+      },
+    },
     palette: {
       divider: appTheme.colors.gray[200],
       error: {
@@ -299,6 +312,7 @@ export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
         light: appTheme.colors.info[200],
         main: appTheme.colors.info[400],
       },
+      mode: "light",
       primary: {
         dark: appTheme.colors.primary[600],
         light: appTheme.colors.primary[300],
@@ -317,16 +331,10 @@ export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
         primary: common.black,
         secondary: appTheme.colors.gray[500],
       },
-      type: "light",
       warning: {
         dark: appTheme.colors.warning[600],
         light: appTheme.colors.warning[200],
         main: appTheme.colors.warning[400],
-      },
-    },
-    props: {
-      MuiButtonBase: {
-        disableRipple: true,
       },
     },
     shadows: [
@@ -406,9 +414,13 @@ export function makeThemeOptions(appTheme: AppTheme): AppThemeOptions {
   };
 }
 
-const defaultThemeOptions: AppThemeOptions = makeThemeOptions(defaultAppTheme);
+const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(defaultAppTheme);
 
-export interface AppThemeOptions extends ThemeOptions {
+export interface SDSTheme extends Theme {
+  app?: AppTheme;
+}
+
+export interface SDSThemeOptions extends ThemeOptions {
   app?: AppTheme;
 }
 

@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { Autocomplete } from "@material-ui/lab";
+import { Autocomplete, inputBaseClasses } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import InputSearch from "../InputSearch";
 import MenuItem from "../MenuItem";
 import { CommonThemeProps, getSpaces } from "../styles";
@@ -20,9 +20,12 @@ export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${({ search }: StyleProps) => !search && "height: 0;"}
+  width: 100%;
 ` as typeof Autocomplete;
 
-export const InputBaseWrapper = styled.div`
+export const InputBaseWrapper = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: StyleProps) => {
     const { search } = props;
 
@@ -54,10 +57,16 @@ export const InputBaseWrapper = styled.div`
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })<{ search: boolean }>`
-  margin: 0;
-  .MuiInputBase-root {
-    width: 100%;
+  && {
+    margin: 0;
+
+    .${inputBaseClasses.root} {
+      width: 100%;
+      padding: 0;
+      padding-right: 14px !important;
+    }
+
+    /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
+    caret-color: ${({ search }) => (search ? "auto" : "transparent")};
   }
-  /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
-  caret-color: ${({ search }) => (search ? "auto" : "transparent")};
 `;
