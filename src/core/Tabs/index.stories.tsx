@@ -97,20 +97,22 @@ function LivePreviewDemo(props: Args): JSX.Element {
     <div style={livePreviewWrapperStyle}>
       <div>
         <Template
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
           onChange={noop}
+          sdsSize="large"
+          tabOneLabel="Label"
+          tabTwoLabel="Label"
           underlined
           {...finalProps}
         />
       </div>
       <div>
         <Template
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
-          tabOneCount={123}
-          tabTwoCount={456}
           onChange={noop}
+          sdsSize="large"
+          tabOneLabel="Label"
+          tabTwoLabel="Label"
+          tabOneCount={0}
+          tabTwoCount={0}
           underlined
           {...finalProps}
         />
@@ -119,9 +121,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
       <div>
         <Template
           onChange={noop}
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
           sdsSize="small"
+          tabOneLabel="Label"
+          tabTwoLabel="Label"
           underlined
           {...finalProps}
         />
@@ -129,11 +131,11 @@ function LivePreviewDemo(props: Args): JSX.Element {
       <div>
         <Template
           onChange={noop}
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
-          tabOneCount={123}
-          tabTwoCount={456}
           sdsSize="small"
+          tabOneLabel="Label"
+          tabTwoLabel="Label"
+          tabOneCount={0}
+          tabTwoCount={0}
           underlined
           {...finalProps}
         />
