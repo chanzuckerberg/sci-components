@@ -87,6 +87,8 @@ export default function DropdownMenu<
     InputBaseProps = {},
     isOptionEqualToValue = defaultIsOptionEqualToValue,
     keepSearchOnSelect = true,
+    loading = false,
+    loadingText = "",
     noOptionsText = "No options",
     onInputChange = noop,
     open = false,
@@ -125,6 +127,8 @@ export default function DropdownMenu<
         disableCloseOnSelect={disableCloseOnSelect}
         disablePortal
         renderTags={renderTags}
+        loading={loading}
+        loadingText={loadingText}
         noOptionsText={noOptionsText}
         PaperComponent={PaperComponent}
         renderOption={renderOption}

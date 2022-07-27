@@ -13,9 +13,8 @@ export interface RadioProps
  * @see https://v4.mui.com/components/radio-buttons/
  */
 const RadioButton = (props: RadioProps): JSX.Element => {
-  let newProps: MUIRadioProps;
   const { stage } = props;
-
+  let newProps: MUIRadioProps;
   switch (stage) {
     case "checked":
       newProps = {

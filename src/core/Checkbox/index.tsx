@@ -14,9 +14,8 @@ export interface CheckboxProps
  * @see https://v4.mui.com/components/checkboxes/
  */
 const Checkbox = (props: CheckboxProps): JSX.Element => {
-  let newProps: MUICheckboxProps;
   const { stage } = props;
-
+  let newProps: MUICheckboxProps;
   switch (stage) {
     case "checked":
       newProps = {

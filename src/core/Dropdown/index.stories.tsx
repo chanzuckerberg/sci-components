@@ -3,6 +3,7 @@ import { Args, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
+import LoadingIndicator from "../LoadingIndicator";
 import Dropdown from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -32,11 +33,23 @@ Disabled.args = {
   onChange: noop,
 };
 
+Disabled.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const SingleSelect = Template.bind({});
 
 SingleSelect.args = {
   label: LABEL,
   onChange: noop,
+};
+
+SingleSelect.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const SingleSelectWithSearch = Template.bind({});
@@ -47,12 +60,24 @@ SingleSelectWithSearch.args = {
   search: true,
 };
 
+SingleSelectWithSearch.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
 export const MultipleSelect = Template.bind({});
 
 MultipleSelect.args = {
   label: LABEL,
   multiple: true,
   onChange: noop,
+};
+
+MultipleSelect.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const MultipleSelectWithSearch = Template.bind({});
@@ -62,6 +87,49 @@ MultipleSelectWithSearch.args = {
   multiple: true,
   onChange: noop,
   search: true,
+};
+
+MultipleSelectWithSearch.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+export const MultipleSelectWithSearchNoOptionsText = Template.bind({});
+MultipleSelectWithSearchNoOptionsText.args = {
+  MenuSelectProps: {
+    noOptionsText: "No results",
+  },
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  search: true,
+};
+
+MultipleSelectWithSearchNoOptionsText.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+export const MultipleSelectWithSearchLoadingIndicator = Template.bind({});
+
+MultipleSelectWithSearchLoadingIndicator.args = {
+  MenuSelectProps: {
+    loading: true,
+    loadingText: <LoadingIndicator sdsStyle="minimal" />,
+  },
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  options: [],
+  search: true,
+};
+
+MultipleSelectWithSearchLoadingIndicator.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 export const MultipleSelectWithButtons = Template.bind({});
@@ -80,6 +148,51 @@ const StyledPaper = styled(Paper)`
   width: 200px;
   padding: 50px;
 `;
+
+MultipleSelectWithButtons.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
+  isTriggerChangeOnOptionClick: true,
+  multiple: true,
+  onChange: (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+};
+
+MultipleSelectWithIsTriggerChangeOnOptionClick.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+export const SearchWithOnClose = Template.bind({});
+
+SearchWithOnClose.args = {
+  buttonPosition: "right",
+  buttons: true,
+  closeOnBlur: false,
+  label: LABEL,
+  multiple: true,
+  onChange: noop,
+  onClose: () => {
+    // eslint-disable-next-line no-console
+    console.log(123);
+  },
+  search: true,
+};
+
+SearchWithOnClose.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
@@ -101,6 +214,33 @@ export const InsideModal = (): JSX.Element => {
   function handleChange(newValue: DefaultDropdownMenuOption | null) {
     setValue(newValue);
   }
+};
+
+InsideModal.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+// Test Story
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <Dropdown
+      label="Click Target"
+      onChange={noop}
+      options={GITHUB_LABELS}
+      {...props}
+      data-testid="dropdown"
+    />
+  );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+export const Test = TestTemplate.bind({});
+
+Test.args = {
+  label: LABEL,
+  onChange: noop,
 };
 
 // From https://github.com/abdonrd/github-labels
