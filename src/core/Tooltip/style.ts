@@ -136,7 +136,7 @@ export const StyledPopper = styled(Popper)`
 
   &[data-popper-placement*="left"] .MuiTooltip-arrow {
     width: 12px !important;
-    height: 24px !important;
+    height: 16px !important;
     margin-right: -12px !important;
     &:before {
       transform: rotate(45deg) translate(-1px, 1px);
@@ -147,10 +147,10 @@ export const StyledPopper = styled(Popper)`
 
   &[data-popper-placement*="right"] .MuiTooltip-arrow {
     width: 12px !important;
-    height: 24px !important;
+    height: 16px !important;
     margin-left: -12px !important;
     &:before {
-      transform: rotate(45deg) translate(5px, 3px);
+      transform: rotate(45deg) translate(4px, 2px);
       border-bottom-left-radius: 2px;
       box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
     }
