@@ -193,7 +193,7 @@ To use the default theme in your React application, complete the following:
 
 ```javascript
 import { defaultTheme } from "czifui";
-import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
+import { StylesProvider, ThemeProvider } from "@mui/material/styles";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
 <StylesProvider injectFirst>
@@ -212,8 +212,8 @@ extra theme variables based on the themeOptions provided, so if you override `de
 ```tsx
   import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
   import { defaultAppTheme, makeThemeOptions } from "czifui";
-  import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-  import createTheme from "@material-ui/core/styles/createTheme";
+  import { StylesProvider, ThemeProvider } from "@mui/material/styles";
+  import createTheme from "@mui/material/styles/createTheme";
 
   const customTheme = {
     ...
