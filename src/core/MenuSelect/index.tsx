@@ -45,7 +45,7 @@ type CustomAutocompleteProps<
   "renderInput"
 >;
 
-export type DropdownMenuProps<
+export type MenuSelectProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
@@ -62,7 +62,7 @@ export default function MenuSelect<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
-  props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
+  props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element {
   const {
     keepSearchOnSelect = true,
