@@ -17,7 +17,80 @@ const Demo = (props: Args): JSX.Element => {
   );
 };
 
+const onChangeOptions = [
+  noop,
+  (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+];
+
+const onCloseOptions = [
+  noop,
+  () => {
+    // eslint-disable-next-line no-console
+    console.log("Closed!");
+  },
+];
+
+const buttonPositionOptions = ["left", "right"];
+
 export default {
+  argTypes: {
+    DropdownMenuProps: { control: { type: "object" } },
+    buttonPosition: {
+      constrol: {
+        labels: ["left", "right"],
+        type: "select",
+      },
+      defaultValue: buttonPositionOptions[0],
+      mapping: buttonPositionOptions,
+      options: Object.keys(buttonPositionOptions),
+    },
+    buttons: {
+      control: {
+        type: "boolean",
+      },
+      defaulValue: true,
+    },
+    closeOnBlur: {
+      control: {
+        type: "boolean",
+      },
+      defaulValue: false,
+    },
+    label: { control: { type: "text" } },
+    multiple: {
+      control: {
+        type: "boolean",
+      },
+      defaulValue: true,
+    },
+    onChange: {
+      control: {
+        labels: ["NOOP", "Log value on change"],
+        type: "select",
+      },
+      defaultValue: onChangeOptions[0],
+      mapping: onChangeOptions,
+      options: Object.keys(onChangeOptions),
+    },
+    onClose: {
+      control: {
+        labels: ["NOOP", "console.log('Closed!')"],
+        type: "select",
+      },
+      defaultValue: onCloseOptions[0],
+      mapping: onCloseOptions,
+      options: Object.keys(onCloseOptions),
+    },
+    search: {
+      control: {
+        type: "boolean",
+      },
+      defaulValue: true,
+    },
+  },
   component: Demo,
   title: "Dropdown",
 };
@@ -25,174 +98,48 @@ export default {
 const Template: Story = (args) => <Demo {...args} />;
 const LABEL = "Click Target";
 
-export const Disabled = Template.bind({});
+export const Default = Template.bind({});
 
-Disabled.args = {
-  disabled: true,
-  label: LABEL,
-  onChange: noop,
-};
-
-Disabled.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const SingleSelect = Template.bind({});
-
-SingleSelect.args = {
-  label: LABEL,
-  onChange: noop,
-};
-
-SingleSelect.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const SingleSelectWithSearch = Template.bind({});
-
-SingleSelectWithSearch.args = {
-  label: LABEL,
-  onChange: noop,
-  search: true,
-};
-
-SingleSelectWithSearch.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const MultipleSelect = Template.bind({});
-
-MultipleSelect.args = {
+Default.args = {
+  buttonPosition: "left",
+  buttons: false,
+  closeOnBlur: false,
+  isTriggerChangeOnOptionClick: true,
   label: LABEL,
   multiple: true,
   onChange: noop,
-};
-
-MultipleSelect.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const MultipleSelectWithSearch = Template.bind({});
-
-MultipleSelectWithSearch.args = {
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
+  onClose: noop,
   search: true,
 };
 
-MultipleSelectWithSearch.parameters = {
+Default.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-export const MultipleSelectWithSearchNoOptionsText = Template.bind({});
-MultipleSelectWithSearchNoOptionsText.args = {
-  MenuSelectProps: {
-    noOptionsText: "No results",
-  },
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
-  search: true,
-};
+export const LoadingResultsIndicator = Template.bind({});
 
-MultipleSelectWithSearchNoOptionsText.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const MultipleSelectWithSearchLoadingIndicator = Template.bind({});
-
-MultipleSelectWithSearchLoadingIndicator.args = {
-  MenuSelectProps: {
+LoadingResultsIndicator.args = {
+  DropdownMenuProps: {
     loading: true,
     loadingText: <LoadingIndicator sdsStyle="minimal" />,
   },
   label: LABEL,
-  multiple: true,
   onChange: noop,
   options: [],
-  search: true,
 };
 
-MultipleSelectWithSearchLoadingIndicator.parameters = {
+LoadingResultsIndicator.parameters = {
   snapshot: {
     skip: true,
   },
-};
-
-export const MultipleSelectWithButtons = Template.bind({});
-
-MultipleSelectWithButtons.args = {
-  buttonPosition: "right",
-  buttons: true,
-  closeOnBlur: false,
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
-  search: true,
 };
 
 const StyledPaper = styled(Paper)`
   width: 200px;
   padding: 50px;
 `;
-
-MultipleSelectWithButtons.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
-
-MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
-  isTriggerChangeOnOptionClick: true,
-  multiple: true,
-  onChange: (value: never) => {
-    // eslint-disable-next-line no-console
-    console.log(value);
-  },
-};
-
-MultipleSelectWithIsTriggerChangeOnOptionClick.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-export const SearchWithOnClose = Template.bind({});
-
-SearchWithOnClose.args = {
-  buttonPosition: "right",
-  buttons: true,
-  closeOnBlur: false,
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
-  onClose: () => {
-    // eslint-disable-next-line no-console
-    console.log(123);
-  },
-  search: true,
-};
-
-SearchWithOnClose.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
 
 export const InsideModal = (): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
