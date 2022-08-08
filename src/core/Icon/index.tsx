@@ -11,7 +11,7 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
  * @see https://v4.mui.com/components/dialogs/
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
-  { sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
+  { className, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
   const icon = iconMap[sdsIcon] ?? {};
@@ -21,6 +21,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
     return (
       <StyledIcon ref={ref}>
         <StyledSvgIcon
+          className={className}
           fillcontrast="white"
           viewBox="0 0 14 14"
           component={smallIcon}
@@ -35,6 +36,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
     return (
       <StyledIcon ref={ref}>
         <StyledSvgIcon
+          className={className}
           fillcontrast="white"
           viewBox="0 0 32 32"
           component={largeIcon}
