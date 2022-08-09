@@ -8,6 +8,8 @@ export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
 export * from "./core/Banner";
 export { default as Banner } from "./core/Banner";
+export * from "./core/BasicCell";
+export { default as BasicCell } from "./core/BasicCell";
 export * from "./core/Button";
 export { default as Button } from "./core/Button";
 export * from "./core/ButtonDropdown";
