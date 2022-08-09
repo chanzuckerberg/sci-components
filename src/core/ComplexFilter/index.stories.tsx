@@ -108,18 +108,6 @@ const LivePreviewDemo = (): JSX.Element => {
           options={LIVE_PREVIEW_OPTIONS}
         />
       </div>
-      <div style={{ gridArea: "1/3/2/4" }}>
-        {/* <ComplexFilter
-          DropdownMenuProps={{
-            PopperBaseProps: {
-              sx: { width: 200 },
-            },
-          }}
-          label="Filter Label"
-          onChange={noop}
-          options={LIVE_PREVIEW_OPTIONS}
-        /> */}
-      </div>
     </div>
   );
 };
