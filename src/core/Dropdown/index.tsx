@@ -36,7 +36,7 @@ interface DropdownProps<Multiple> {
   onClose?: () => void;
   multiple?: Multiple;
   search?: boolean;
-  MenuSelectProps?: Partial<typeof DropdownMenu>;
+  DropdownMenuProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
   value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
@@ -62,7 +62,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   closeOnBlur = !buttons,
   onChange,
   onClose,
-  MenuSelectProps = {},
+  DropdownMenuProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
   PopperComponent,
@@ -129,7 +129,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         PopperComponent={PopperComponent}
         PopperBaseProps={{ sx: { minWidth: 250 } }}
         options={options}
-        {...MenuSelectProps}
+        {...DropdownMenuProps}
       >
         {buttons ? (
           <div>
