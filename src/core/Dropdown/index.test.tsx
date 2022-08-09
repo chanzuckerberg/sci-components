@@ -20,7 +20,7 @@ describe("<Dropdown />", () => {
   it("renders loading indicator when loading state passed in", () => {
     const args = {
       ...Test.args,
-      MenuSelectProps: {
+      DropdownMenuProps: {
         loading: true,
         loadingText: (
           <>
