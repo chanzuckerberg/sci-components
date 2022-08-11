@@ -51,11 +51,6 @@ const Callout = ({
     if (onClose) onClose(event);
   };
 
-  // const toggleStage = () => {
-  //   const newStage = stage === SDS_STAGE_OPEN ? SDS_STAGE_CLOSED : SDS_STAGE_OPEN;
-  //   setStage(newStage);
-  // }
-
   const getIcon = () => {
     if (icon) return icon;
 
