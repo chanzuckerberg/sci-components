@@ -88,11 +88,15 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
       <Callout intent="info" {...props}>
-        this is a callout
+        Title
       </Callout>
       <Callout intent="info" {...props}>
         <CalloutTitle>Title</CalloutTitle>
-        this is a callout
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      </Callout>
+      <Callout intent="info" expandable sdsStage="closed" {...props}>
+        <CalloutTitle>Title</CalloutTitle>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </Callout>
     </div>
   );

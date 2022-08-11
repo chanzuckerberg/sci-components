@@ -5,11 +5,15 @@ import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
 import { StyledCallout } from "./style";
 
+const SDS_STAGE_OPEN = "open";
+const SDS_STAGE_CLOSED = "closed";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
+  expandable?: boolean;
   icon?: React.ReactNode;
   intent: "info" | "error" | "success" | "warning";
+  sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
 
 export type ExposedCalloutProps = AlertProps & CalloutProps;
@@ -21,12 +25,15 @@ const Callout = ({
   autoDismiss,
   children,
   dismissed,
+  expandable,
   onClose,
   icon,
   intent,
+  sdsStage,
   ...rest
 }: ExposedCalloutProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
+  const [stage, setStage] = useState(sdsStage || SDS_STAGE_CLOSED);
 
   useEffect(() => {
     setHide(dismissed);
@@ -44,6 +51,11 @@ const Callout = ({
     if (onClose) onClose(event);
   };
 
+  // const toggleStage = () => {
+  //   const newStage = stage === SDS_STAGE_OPEN ? SDS_STAGE_CLOSED : SDS_STAGE_OPEN;
+  //   setStage(newStage);
+  // }
+
   const getIcon = () => {
     if (icon) return icon;
 
@@ -59,29 +71,66 @@ const Callout = ({
     }
   };
 
+  const getAction = () => {
+    if (expandable) {
+      return (
+        <ButtonIcon
+          onClick={() => {
+            setStage(expanded ? SDS_STAGE_CLOSED : SDS_STAGE_OPEN);
+          }}
+          sdsSize="small"
+          sdsType="tertiary"
+        >
+          <Icon
+            sdsIcon={expanded ? "chevronUp" : "chevronDown"}
+            sdsSize="s"
+            sdsType="button"
+          />
+        </ButtonIcon>
+      );
+    }
+    return onClose ? (
+      <ButtonIcon
+        onClick={handleClose}
+        sdsSize="small"
+        sdsType="tertiary"
+        size="large"
+      >
+        {" "}
+        <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
+      </ButtonIcon>
+    ) : null;
+  };
+
+  const expanded = !expandable || stage === "open";
+
+  let calloutTitle = children;
+  let calloutContent;
+
+  if (Array.isArray(children)) {
+    if (children[0].type.name === "CalloutTitle") {
+      [calloutTitle, ...calloutContent] = children;
+    } else {
+      // no CalloutTitle component, so use all child nodes as title
+      calloutTitle = children;
+    }
+  } else {
+    // single node specified for children
+    calloutTitle = children;
+  }
+
   return (
     <>
       <Grow in={!hide}>
         <StyledCallout
           onClose={onClose ? handleClose : undefined}
-          action={
-            onClose ? (
-              <ButtonIcon
-                onClick={handleClose}
-                sdsSize="small"
-                sdsType="tertiary"
-                size="large"
-              >
-                {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-              </ButtonIcon>
-            ) : null
-          }
+          action={getAction()}
           icon={getIcon()}
           severity={intent}
           {...rest}
         >
-          {children}
+          {calloutTitle}
+          {expanded && calloutContent}
         </StyledCallout>
       </Grow>
     </>
