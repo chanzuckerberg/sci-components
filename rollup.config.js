@@ -34,6 +34,15 @@ const config = [
       }),
       url(),
       svgr(),
+      /**
+       * (thuang): https://github.com/wessberg/rollup-plugin-ts/issues/186
+       * Please make sure complied d.ts file has default generic type as we have in the
+       * source code.
+       * e.g., the "button" should be in type ButtonProps<C extends React.ElementType = "button"> =
+       * RawButtonProps<C, {component?: C;}> & SdsProps;
+       * NOTE: `rollup-plugin-ts` + Typescript@4.7.x will drop default generic
+       * type in the d.ts file, so let's use typescript@4.6 until the issue above is resolved
+       */
       ts(),
       css({ output: "variables.css" }),
       bundleScss({ output: "variables.scss" }),
