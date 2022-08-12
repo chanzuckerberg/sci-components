@@ -1,4 +1,3 @@
-import { Link as RawLink } from "@mui/material";
 import React, { ForwardedRef, forwardRef } from "react";
 import { LinkProps, StyledLink } from "./style";
 
@@ -6,7 +5,10 @@ import { LinkProps, StyledLink } from "./style";
  * @see https://v4.mui.com/components/links/
  */
 const Link = forwardRef(
-  (props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
+  <C extends React.ElementType>(
+    props: LinkProps<C>,
+    ref: ForwardedRef<HTMLAnchorElement>
+  ) => {
     const { sdsStyle } = props;
     let underline: LinkProps["underline"];
 
@@ -16,7 +18,7 @@ const Link = forwardRef(
 
     return <StyledLink {...props} underline={underline} ref={ref} />;
   }
-) as typeof RawLink;
+);
 
 export type { LinkProps };
 
