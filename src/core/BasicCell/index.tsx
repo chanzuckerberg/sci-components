@@ -10,7 +10,9 @@ import {
 
 interface BasicCellContentProps {
   primaryText: string;
+  primaryTextWrapLineCount?: number;
   secondaryText?: string;
+  secondaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
 }
 
@@ -25,14 +27,28 @@ export type BasicCellProps = BasicCellRawProps &
 
 const BasicCellContent = forwardRef(
   (props: BasicCellContentProps, _): JSX.Element | null => {
-    const { primaryText, secondaryText, shouldTextWrap = false } = props;
+    const {
+      primaryText,
+      primaryTextWrapLineCount,
+      secondaryText,
+      secondaryTextWrapLineCount,
+      shouldTextWrap = false,
+    } = props;
 
     return (
       <>
-        <PrimaryText shouldTextWrap={shouldTextWrap}>{primaryText}</PrimaryText>
+        <PrimaryText
+          shouldTextWrap={shouldTextWrap}
+          primaryTextWrapLineCount={primaryTextWrapLineCount}
+        >
+          {primaryText}
+        </PrimaryText>
 
         {secondaryText && (
-          <SecondaryText shouldTextWrap={shouldTextWrap}>
+          <SecondaryText
+            shouldTextWrap={shouldTextWrap}
+            secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+          >
             {secondaryText}
           </SecondaryText>
         )}

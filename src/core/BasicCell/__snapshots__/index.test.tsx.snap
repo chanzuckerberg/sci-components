@@ -4,22 +4,71 @@ exports[`<BasicCell /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr>
-      <td
-        class=" css-lw14ji"
-        data-mui-internal-clone-element="true"
-        data-testid="BasicCell"
-      >
-        <span
-          class="css-1w283yb"
-        >
-          Primary text
-        </span>
-        <span
-          class="css-1rl2dmz"
-        >
-          Secondary Text
-        </span>
-      </td>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label
+                class="css-19c61dz"
+                for="maxWidth"
+              >
+                Set a max-width to see text wrap inside the cell
+              </label>
+              <div
+                class="MuiFormControl-root MuiTextField-root css-9u937e-MuiFormControl-root-MuiTextField-root"
+              >
+                <div
+                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="Set a max-width to see text wrap inside the cell"
+                    class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="maxWidth"
+                    placeholder="max-width"
+                    type="text"
+                    value="100"
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-hdw1oc"
+                    >
+                      <span
+                        class="notranslate"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr
+            style="display: block; max-width: 100px;"
+          >
+            <td
+              class=" css-vj1dg5"
+              data-mui-internal-clone-element="true"
+              data-testid="BasicCell"
+            >
+              <span
+                class="css-z41sca"
+              >
+                Primary Text
+              </span>
+              <span
+                class="css-1rl2dmz"
+              >
+                Secondary Text
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </tr>
   </tbody>
 </table>
