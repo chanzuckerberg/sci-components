@@ -11,7 +11,7 @@ export interface CheckboxProps
 }
 
 /**
- * @see https://v4.mui.com/components/checkboxes/
+ * @see https://mui.com/material-ui/react-checkbox/
  */
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   const { stage } = props;

@@ -15,7 +15,7 @@ const TRANSFORM_ORIGIN: PopoverOrigin = {
 export type { MenuProps };
 
 /**
- * @see https://v4.mui.com/components/menus/
+ * @see https://mui.com/material-ui/react-menu/
  */
 const Menu = (props: MenuProps): JSX.Element => {
   return (

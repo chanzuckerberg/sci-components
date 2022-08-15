@@ -21,7 +21,7 @@ export interface SdsTagProps extends Omit<ChipProps, "color"> {
 export type TagProps = SdsTagProps;
 
 /**
- * @see https://v4.mui.com/components/chips/
+ * @see https://mui.com/material-ui/react-chip/
  *
  * @props color: {string}                   - applies color for tag based on default theme color values
  *               [string, string]           - applies custom colors for [font, background]

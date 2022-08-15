@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { InputSliderExtraProps, StyledSlider } from "./style";
 
 /**
- * @see https://v4.mui.com/components/slider/
+ * @see https://mui.com/material-ui/react-slider/
  */
 const InputSlider = forwardRef<HTMLSpanElement, InputSliderExtraProps>(
   (props, ref) => {

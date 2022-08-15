@@ -19,7 +19,7 @@ export interface DialogTitleProps
 }
 
 /**
- * @see https://v4.mui.com/components/dialogs/
+ * @see https://mui.com/material-ui/react-dialog/
  */
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
