@@ -100,7 +100,7 @@ const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
-        <BasicCell
+        <BasicCellRaw
           data-testid="BasicCell"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
