@@ -3,7 +3,12 @@ import { Link, LinkProps as RawLinkProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps as StyleProps, getBorders } from "../styles";
 
-export type LinkProps = RawLinkProps &
+// (thuang): Support `component` prop
+// https://stackoverflow.com/a/66123108
+export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
+  C,
+  { component?: C }
+> &
   StyleProps & {
     sdsStyle?: "default" | "dashed";
   };

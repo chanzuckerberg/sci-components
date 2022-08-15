@@ -23,6 +23,34 @@ const Demo = (props: Args): JSX.Element => {
 };
 
 export default {
+  argTypes: {
+    active: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: false,
+    },
+    sdsSize: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "medium",
+      options: ["small", "medium", "large"],
+    },
+    sdsType: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "primary",
+      options: ["primary", "secondary", "tertiary"],
+    },
+  },
   component: Demo,
   title: "ButtonIcon",
 };

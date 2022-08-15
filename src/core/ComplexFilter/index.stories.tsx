@@ -1,8 +1,6 @@
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React from "react";
 import { noop } from "src/common/utils";
-import Button from "../Button";
-import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import ComplexFilter from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -16,137 +14,144 @@ const Demo = (props: Args): JSX.Element => {
   );
 };
 
+const onChangeOptions = [
+  noop,
+  (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+];
+
 export default {
+  argTypes: {
+    isTriggerChangeOnOptionClick: {
+      control: {
+        type: "boolean",
+      },
+    },
+    label: {
+      control: {
+        type: "text",
+      },
+    },
+    multiple: {
+      control: {
+        type: "boolean",
+      },
+    },
+    onChange: {
+      control: {
+        labels: ["Noop", "console.log(value)"],
+        type: "select",
+      },
+      mapping: onChangeOptions,
+      options: Object.keys(onChangeOptions),
+    },
+    search: {
+      control: {
+        type: "boolean",
+      },
+    },
+  },
   component: Demo,
   title: "ComplexFilter",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const SingleSelect = Template.bind({});
+export const Default = Template.bind({});
 
-export const SingleSelectWithSearch = Template.bind({});
-
-SingleSelectWithSearch.args = {
+Default.args = {
+  isTriggerChangeOnOptionClick: false,
+  label: "Click Target",
+  multiple: true,
+  onChange: onChangeOptions[1],
   search: true,
 };
 
-export const SingleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
-    GITHUB_LABELS[0]
-  );
+// Live preview
 
+const livePreviewStyles = {
+  display: "grid",
+  gridColumnGap: 30,
+  gridTemplateColumns: "repeat(3, min-content)",
+};
+
+const LivePreviewDemo = (): JSX.Element => {
   return (
-    <>
-      <ComplexFilter
-        label="Click Target"
-        options={GITHUB_LABELS}
-        onChange={handleChange}
-        value={value}
-      />
-
-      <Button sdsType="primary" sdsStyle="square" onClick={update}>
-        Update Controlled Value
-      </Button>
-    </>
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1/1/2/2" }}>
+        <ComplexFilter
+          DropdownMenuProps={{
+            PopperBaseProps: {
+              sx: { width: 160 },
+            },
+          }}
+          label="Filter Label"
+          multiple={false}
+          search={false}
+          onChange={noop}
+          options={LIVE_PREVIEW_OPTIONS}
+        />
+      </div>
+      <div style={{ gridArea: "1/2/2/3" }}>
+        <ComplexFilter
+          DropdownMenuProps={{
+            PopperBaseProps: {
+              sx: { width: 160 },
+            },
+          }}
+          label="Filter Label"
+          multiple
+          search={false}
+          onChange={noop}
+          options={LIVE_PREVIEW_OPTIONS}
+        />
+      </div>
+    </div>
   );
-
-  function update() {
-    setValue(GITHUB_LABELS[1]);
-  }
-
-  function handleChange(newValue: DefaultDropdownMenuOption | null) {
-    setValue(newValue);
-  }
 };
 
-export const MultipleSelect = Template.bind({});
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-MultipleSelect.args = {
-  multiple: true,
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.args = {
+  keepSearchOnSelect: true,
+  multiple: false,
+  search: false,
 };
 
-export const MultipleSelectWithIsTriggerChangeOnOptionClick = Template.bind({});
-
-MultipleSelectWithIsTriggerChangeOnOptionClick.args = {
-  isTriggerChangeOnOptionClick: true,
-  multiple: true,
-  onChange: (value: never) => {
-    // eslint-disable-next-line no-console
-    console.log(value);
+LivePreview.parameters = {
+  snapshot: {
+    skip: true,
   },
 };
 
-export const MultipleSelectWithSearch = Template.bind({});
+// Test
 
-MultipleSelectWithSearch.args = {
-  multiple: true,
-  search: true,
+// Test Story
+
+const TestDemo = (props: Args): JSX.Element => {
+  return (
+    <ComplexFilter
+      data-testid="complex-filter"
+      label="Click Target"
+      onChange={noop}
+      options={GITHUB_LABELS}
+      {...props}
+    />
+  );
 };
 
-function ResizableWrapper({
-  children,
-}: {
-  children: JSX.Element;
-}): JSX.Element {
-  return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "4px",
-        height: "200px",
-        overflow: "auto",
-        padding: "8px 10px",
-        resize: "both",
-        width: "500px",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
-export const MultipleSelectControlled = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultDropdownMenuOption[] | null>([
-    GITHUB_LABELS[0],
-    GITHUB_LABELS[1],
-    GITHUB_LABELS[2],
-    GITHUB_LABELS[3],
-    GITHUB_LABELS[4],
-    GITHUB_LABELS[5],
-    GITHUB_LABELS[6],
-    GITHUB_LABELS[7],
-    GITHUB_LABELS[8],
-    GITHUB_LABELS[9],
-  ]);
+export const Test = TestTemplate.bind({});
 
-  return (
-    <>
-      <p>Resize to see how chips flow given different widths and heights!</p>
-      <ResizableWrapper>
-        <ComplexFilter
-          multiple
-          label="Click Target"
-          options={GITHUB_LABELS}
-          onChange={handleChange}
-          value={value}
-          style={{ width: "100%" }}
-        />
-      </ResizableWrapper>
-      <br />
-      <Button sdsType="primary" sdsStyle="square" onClick={update}>
-        Update Controlled Value
-      </Button>
-    </>
-  );
-
-  function update() {
-    setValue([GITHUB_LABELS[7], GITHUB_LABELS[8], GITHUB_LABELS[9]]);
-  }
-
-  function handleChange(newValue: DefaultDropdownMenuOption[] | null) {
-    setValue(newValue);
-  }
+Test.parameters = {
+  snapshot: {
+    skip: true,
+  },
 };
 
 // From https://github.com/abdonrd/github-labels
@@ -241,4 +246,10 @@ const GITHUB_LABELS = [
     description: "Further information is requested",
     name: "type: question",
   },
+];
+
+const LIVE_PREVIEW_OPTIONS = [
+  { name: "Filter Item 1" },
+  { name: "Filter Item 2" },
+  { name: "Filter Item 3" },
 ];

@@ -5,15 +5,14 @@ import React from "react";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, { Test as TestStory } from "./index.stories";
 
-// Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<ButtonIcon />", () => {
+describe("<ComplexFilter />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders ButtonIcon component", () => {
-    render(<Test />);
-    const elements = screen.getAllByTestId("iconButton");
-    expect(elements.length).toBeTruthy();
+  it("renders ComplexFilter component", () => {
+    render(<Test {...Test.args} />);
+    const ComplexFilterElement = screen.getByTestId("complex-filter");
+    expect(ComplexFilterElement).not.toBeNull();
   });
 });
