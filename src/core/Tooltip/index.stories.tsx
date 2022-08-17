@@ -145,7 +145,7 @@ const PlacementDemo = (): JSX.Element => {
 
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Tooltip title="Text" placement="top-start" arrow open sdsStyle="dark">
+      <Tooltip title="Text" placement="top-start" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           top-start
         </Button>
