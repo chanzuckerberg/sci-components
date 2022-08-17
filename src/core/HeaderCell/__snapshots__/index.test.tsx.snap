@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeaderCell /> Test story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <th
+        class=" css-1geukup"
+        data-mui-internal-clone-element="true"
+        data-testid="HeaderCell"
+      >
+        <span>
+          Header
+        </span>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ou4owx-MuiButtonBase-root-MuiIconButton-root"
+          data-testid="iconButton"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="css-jbvua0"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+              data-jest-file-name="IconChevronDownSmall.svg"
+              data-jest-svg-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              viewBox="0 0 14 14"
+            />
+          </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </th>
+    </tr>
+  </tbody>
+</table>
+`;
