@@ -15,6 +15,7 @@ interface HeaderCellContentProps {
   hideSortIcon?: boolean;
   children: string;
 }
+
 interface HeaderCellRawProps {
   tooltipText?: string;
   tooltipSubtitle?: string;

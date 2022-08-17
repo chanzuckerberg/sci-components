@@ -8,11 +8,7 @@ const HeaderCell = (props: Args): JSX.Element => {
     <table>
       <tbody>
         <tr>
-          <HeaderCellRaw
-            tooltipProps={{ sdsStyle: "light" }}
-            tooltipText="This is a table header"
-            {...props}
-          >
+          <HeaderCellRaw tooltipText="This is a table header" {...props}>
             Header
           </HeaderCellRaw>
         </tr>
