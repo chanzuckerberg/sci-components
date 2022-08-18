@@ -4,12 +4,18 @@ exports[`<Row /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      class=" css-mgrq6u"
+      class=" css-cauujv"
       data-mui-internal-clone-element="true"
       data-testid="TableRow"
     >
-      <td>
-        Cell
+      <td
+        class="css-yzk6pq"
+      >
+        <span
+          class="css-z41sca"
+        >
+          Primary
+        </span>
       </td>
     </tr>
   </tbody>

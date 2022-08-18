@@ -1,35 +1,24 @@
-import React, { forwardRef, ReactElement } from "react";
+import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
 
 import { RowExtraProps, StyledTableRow } from "./style";
 
-interface RowContentProps {
-  children: ReactElement;
-}
-
 interface RowRawProps {
+  children: React.ReactNode;
   tooltipText?: string;
   tooltipSubtitle?: string;
   shouldShowTooltipOnHover?: boolean;
   tooltipProps?: Partial<TooltipProps>;
 }
 
-export type RowProps = RowRawProps & RowExtraProps & RowContentProps;
-
-const RowContent = forwardRef(
-  (props: RowContentProps, _): JSX.Element | null => {
-    const { children } = props;
-
-    return <>{children}</>;
-  }
-);
+export type RowProps = RowRawProps & RowExtraProps;
 
 const Row = forwardRef((props: RowProps, _): JSX.Element | null => {
   const {
     children,
     shouldShowTooltipOnHover = true,
     tooltipProps,
-    tooltipText = props.children,
+    tooltipText = false,
     tooltipSubtitle,
   } = props;
 
@@ -37,23 +26,16 @@ const Row = forwardRef((props: RowProps, _): JSX.Element | null => {
     return (
       <Tooltip
         arrow
-        placement="top-start"
         sdsStyle="dark"
         subtitle={tooltipSubtitle}
         title={tooltipText}
         {...tooltipProps}
       >
-        <StyledTableRow {...props}>
-          <RowContent {...props}>{children}</RowContent>
-        </StyledTableRow>
+        <StyledTableRow {...props}>{children}</StyledTableRow>
       </Tooltip>
     );
   }
-  return (
-    <StyledTableRow {...props}>
-      <RowContent {...props}>{children}</RowContent>
-    </StyledTableRow>
-  );
+  return <StyledTableRow {...props}>{children}</StyledTableRow>;
 });
 
 export default Row;

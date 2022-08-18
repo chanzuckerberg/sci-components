@@ -46,9 +46,9 @@ export const StyledTableRow = styled("tr", {
       align-items: center;
       border-bottom: ${useDivider ? `solid 1px ${colors?.gray[300]}` : "none"};
 
-      ${rowHeight ? `min-height: ${rowHeight}px;` : null}
+      ${rowHeight ? `min-height: ${rowHeight}px;` : ""}
 
-      ${selected ? `background-color: ${colors?.primary[200]}` : null};
+      ${selected ? `background-color: ${colors?.primary[200]};` : ""}
 
       &:hover {
         background-color: ${colors?.gray[200]};

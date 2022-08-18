@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
+import BasicCell from "../BasicCell";
 import RowRaw from "./index";
 
 const Row = (props: Args): JSX.Element => {
@@ -8,7 +9,11 @@ const Row = (props: Args): JSX.Element => {
     <table>
       <tbody>
         <RowRaw {...props}>
-          <td>Basic Cell</td>
+          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
         </RowRaw>
       </tbody>
     </table>
@@ -69,7 +74,7 @@ const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <RowRaw data-testid="TableRow" tooltipText="testTooltipTitle">
-        <td>Cell</td>
+        <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
       </RowRaw>
     </tbody>
   </table>
