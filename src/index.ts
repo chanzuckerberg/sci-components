@@ -26,6 +26,8 @@ export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
 export * from "./core/ComplexFilter";
 export { default as ComplexFilter } from "./core/ComplexFilter";
+export * from "./core/ComponentCell";
+export { default as ComponentCell } from "./core/ComponentCell";
 export * from "./core/Dialog";
 export { default as Dialog } from "./core/Dialog";
 export * from "./core/DialogActions";
