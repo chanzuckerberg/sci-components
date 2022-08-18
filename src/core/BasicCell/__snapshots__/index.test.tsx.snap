@@ -5,7 +5,7 @@ exports[`<BasicCell /> Test story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class=" css-vj1dg5"
+        class=" css-zrydn7"
         data-mui-internal-clone-element="true"
         data-testid="BasicCell"
       >

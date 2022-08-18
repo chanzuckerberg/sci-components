@@ -43,7 +43,6 @@ export const StyledTableData = styled("td", {
         max-width: 100%;
         display: block;
         overflow: hidden;
-        border: dashed 1px #ddd;
     `;
   }}
 `;

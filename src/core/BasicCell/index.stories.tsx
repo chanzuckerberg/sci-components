@@ -1,35 +1,16 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import InputText from "../InputText";
 import BasicCellRaw from "./index";
 
 const BasicCell = (props: Args): JSX.Element => {
-  const [maxWidth, setMaxWidth] = React.useState(100);
-
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMaxWidth(+event.target.value);
-  };
-
   return (
     <table>
       <tbody>
-        <tr>
-          {/* <span>Set a max-width to see text wrap inside the cell</span> */}
-          <td>
-            <InputText
-              id="maxWidth"
-              label="Set a max-width to see text wrap inside the cell"
-              placeholder="max-width"
-              value={maxWidth}
-              onChange={changeHandler}
-            />
-          </td>
-        </tr>
         <tr
           style={{
             display: "block",
-            maxWidth: `${maxWidth}px`,
+            maxWidth: "180px",
           }}
         >
           <BasicCellRaw
