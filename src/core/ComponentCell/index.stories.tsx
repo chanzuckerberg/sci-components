@@ -112,5 +112,3 @@ const TestDemo = (props: Args): JSX.Element => {
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
-
-Test.args = {};

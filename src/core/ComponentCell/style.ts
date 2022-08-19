@@ -2,8 +2,8 @@ import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getSpaces } from "../styles";
 
 const contentPositionMapping = {
-  left: "flex-start",
   center: "center",
+  left: "flex-start",
   right: "flex-end",
 };
 export interface ComponentCellExtraProps extends CommonThemeProps {
@@ -14,18 +14,18 @@ export const StyledTableData = styled("td")`
   ${(props: ComponentCellExtraProps) => {
     const spacings = getSpaces(props);
     return `
-        padding: ${spacings?.l}px ${spacings?.s}px;
+        align-items: center;
+        border: dashed 1px #ddd;
+        display: flex;
         justify-content: ${
           props.contentPosition
             ? contentPositionMapping[props.contentPosition]
             : "center"
         };
-        align-items: center;
+        max-width: 100%;
         min-width: 96px;
         overflow: hidden;
-        max-width: 100%;
-        display: flex;
-        border: dashed 1px #ddd;
+        padding: ${spacings?.l}px ${spacings?.s}px;
     `;
   }}
 `;
