@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactNode } from "react";
 
-import { ComponentCellExtraProps, StyledTableData } from "./style";
+import { ComponentCellExtraProps, StyledComponentCellData } from "./style";
 
 export interface ComponentCellRawProps {
   children?: ReactNode | React.ReactNode[];
@@ -13,7 +13,9 @@ const ComponentCell = forwardRef(
   (props: ComponentCellProps, _): JSX.Element | null => {
     const { children } = props;
 
-    return <StyledTableData {...props}>{children}</StyledTableData>;
+    return (
+      <StyledComponentCellData {...props}>{children}</StyledComponentCellData>
+    );
   }
 );
 

@@ -10,12 +10,11 @@ export interface ComponentCellExtraProps extends CommonThemeProps {
   contentPosition?: "left" | "center" | "right";
 }
 
-export const StyledTableData = styled("td")`
+export const StyledComponentCellData = styled("td")`
   ${(props: ComponentCellExtraProps) => {
     const spacings = getSpaces(props);
     return `
         align-items: center;
-        border: dashed 1px #ddd;
         display: flex;
         justify-content: ${
           props.contentPosition

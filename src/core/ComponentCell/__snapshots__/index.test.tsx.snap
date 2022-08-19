@@ -10,7 +10,7 @@ exports[`<ComponentCell /> Test story renders snapshot 1`] = `
         style="display: block; max-width: 180px;"
       >
         <td
-          class="css-44gap1"
+          class="css-7sbz7u"
           contentposition="left"
           data-testid="ComponentCellA"
         >
@@ -56,7 +56,7 @@ exports[`<ComponentCell /> Test story renders snapshot 1`] = `
         style="display: block; max-width: 180px;"
       >
         <td
-          class="css-7mjic6"
+          class="css-wjfusp"
           contentposition="right"
           data-testid="ComponentCellB"
         >

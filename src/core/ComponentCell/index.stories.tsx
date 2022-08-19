@@ -39,6 +39,8 @@ export default {
       options: ["left", "center", "right"],
     },
   },
+  component: ComponentCell,
+  title: "ComponentCell",
 };
 
 const Template: Story = (props: Args) => {
