@@ -15,12 +15,7 @@ const actions = {
 const Demo = (props: Args): JSX.Element => {
   const { sdsType, sdsStyle } = props;
   return (
-    <Button
-      onClick={actions.onClick}
-      sdsType={sdsType}
-      sdsStyle={sdsStyle}
-      {...props}
-    >
+    <Button sdsType={sdsType} sdsStyle={sdsStyle} {...props}>
       {text}
     </Button>
   );
@@ -28,6 +23,8 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    // https://storybook.js.org/docs/react/essentials/actions#action-argtype-annotation
+    onClick: { action: actions.onClick },
     sdsStyle: {
       control: { type: "select" },
       options: sdsStyles,
@@ -46,7 +43,7 @@ export default {
   title: "Button",
 };
 
-const Template: Story = (args) => <Demo {...args} />;
+const Template: Story = (props) => <Demo {...props} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -79,27 +76,27 @@ const placementStyles = {
   gridTemplateRows: "1fr",
 };
 
-const RoundedLivePreviewDemo = (): JSX.Element => {
+const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
+      <Button {...props} sdsStyle="rounded" sdsType="primary">
         {text}
       </Button>
 
       <Button
+        {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        onClick={actions.onClick}
         sdsStyle="rounded"
         sdsType="primary"
       >
         {text}
       </Button>
-      <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="secondary">
+      <Button {...props} sdsStyle="rounded" sdsType="secondary">
         {text}
       </Button>
       <Button
+        {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        onClick={actions.onClick}
         sdsStyle="rounded"
         sdsType="secondary"
       >
@@ -116,26 +113,26 @@ RoundedLivePreviewDemo.parameters = {
 };
 export const RoundedLivePreview = RoundedLivePreviewDemo.bind({});
 
-const SquareLivePreviewDemo = (): JSX.Element => {
+const SquareLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Button onClick={actions.onClick} sdsStyle="square" sdsType="primary">
+      <Button {...props} sdsStyle="square" sdsType="primary">
         {text}
       </Button>
       <Button
+        {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        onClick={actions.onClick}
         sdsStyle="square"
         sdsType="primary"
       >
         {text}
       </Button>
-      <Button onClick={actions.onClick} sdsStyle="square" sdsType="secondary">
+      <Button {...props} sdsStyle="square" sdsType="secondary">
         {text}
       </Button>
       <Button
+        {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        onClick={actions.onClick}
         sdsStyle="square"
         sdsType="secondary"
       >
@@ -160,22 +157,22 @@ const minimalPlacementStyles = {
   gridTemplateRows: "1fr",
 };
 
-const MinimalLivePreviewDemo = (): JSX.Element => {
+const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={minimalPlacementStyles as React.CSSProperties}>
-      <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="primary">
+      <Button {...props} sdsStyle="minimal" sdsType="primary">
         {text}
       </Button>
 
       <Button
+        {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        onClick={actions.onClick}
         sdsStyle="minimal"
         sdsType="primary"
       >
         {text}
       </Button>
-      <Button onClick={actions.onClick} sdsStyle="minimal" sdsType="secondary">
+      <Button {...props} sdsStyle="minimal" sdsType="secondary">
         {text}
       </Button>
     </div>
