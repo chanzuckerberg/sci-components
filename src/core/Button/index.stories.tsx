@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
-import Button from "./index";
+import RawButton from "./index";
 
 const text = "Label";
 const sdsStyles = ["rounded", "square", "minimal"];
@@ -12,12 +12,12 @@ const actions = {
   onClick: action("onClick"),
 };
 
-const Demo = (props: Args): JSX.Element => {
+const Button = (props: Args): JSX.Element => {
   const { sdsType, sdsStyle } = props;
   return (
-    <Button sdsType={sdsType} sdsStyle={sdsStyle} {...props}>
+    <RawButton sdsType={sdsType} sdsStyle={sdsStyle} {...props}>
       {text}
-    </Button>
+    </RawButton>
   );
 };
 
@@ -39,11 +39,11 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: Button,
   title: "Button",
 };
 
-const Template: Story = (props) => <Demo {...props} />;
+const Template: Story = (props) => <Button {...props} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
@@ -79,29 +79,29 @@ const placementStyles = {
 const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Button {...props} sdsStyle="rounded" sdsType="primary">
+      <RawButton {...props} sdsStyle="rounded" sdsType="primary">
         {text}
-      </Button>
+      </RawButton>
 
-      <Button
+      <RawButton
         {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="rounded"
         sdsType="primary"
       >
         {text}
-      </Button>
-      <Button {...props} sdsStyle="rounded" sdsType="secondary">
+      </RawButton>
+      <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
         {text}
-      </Button>
-      <Button
+      </RawButton>
+      <RawButton
         {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="rounded"
         sdsType="secondary"
       >
         {text}
-      </Button>
+      </RawButton>
     </div>
   );
 };
@@ -116,28 +116,28 @@ export const RoundedLivePreview = RoundedLivePreviewDemo.bind({});
 const SquareLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Button {...props} sdsStyle="square" sdsType="primary">
+      <RawButton {...props} sdsStyle="square" sdsType="primary">
         {text}
-      </Button>
-      <Button
+      </RawButton>
+      <RawButton
         {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="square"
         sdsType="primary"
       >
         {text}
-      </Button>
-      <Button {...props} sdsStyle="square" sdsType="secondary">
+      </RawButton>
+      <RawButton {...props} sdsStyle="square" sdsType="secondary">
         {text}
-      </Button>
-      <Button
+      </RawButton>
+      <RawButton
         {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="square"
         sdsType="secondary"
       >
         {text}
-      </Button>
+      </RawButton>
     </div>
   );
 };
@@ -160,21 +160,21 @@ const minimalPlacementStyles = {
 const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={minimalPlacementStyles as React.CSSProperties}>
-      <Button {...props} sdsStyle="minimal" sdsType="primary">
+      <RawButton {...props} sdsStyle="minimal" sdsType="primary">
         {text}
-      </Button>
+      </RawButton>
 
-      <Button
+      <RawButton
         {...props}
         startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="minimal"
         sdsType="primary"
       >
         {text}
-      </Button>
-      <Button {...props} sdsStyle="minimal" sdsType="secondary">
+      </RawButton>
+      <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
         {text}
-      </Button>
+      </RawButton>
     </div>
   );
 };
