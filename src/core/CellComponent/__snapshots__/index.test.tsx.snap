@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CellComponent /> Test story renders snapshot 1`] = `
+<div
+  style="display: grid; grid-template-columns: 279px 50px; grid-template-rows: 1fr;"
+>
+  <div>
+    <table>
+      <tbody>
+        <tr
+          style="display: block; max-width: 280px;"
+        >
+          <td
+            class="css-44gap1"
+            contentposition="left"
+            data-testid="CellComponentA"
+            style="width: 279px;"
+          >
+            <div
+              style="display: block;"
+            >
+              <span
+                class="css-qt2d73"
+              >
+                Lorem ipsum dolor
+              </span>
+              <span
+                class="css-1piukzs"
+                style="padding-bottom: 10px;"
+              >
+                Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+              </span>
+              <div
+                class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-cp1czy-MuiButtonBase-root-MuiChip-root"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  Tertiary
+                </span>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table>
+      <tbody>
+        <tr
+          style="display: block; max-width: 280px;"
+        >
+          <td
+            class="css-7mjic6"
+            contentposition="right"
+            data-testid="CellComponentB"
+          >
+            <span
+              class="MuiSwitch-root MuiSwitch-sizeMedium css-14ifyh6-MuiSwitch-root"
+            >
+              <span
+                class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+              >
+                <input
+                  class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                  type="checkbox"
+                  value="Off"
+                />
+                <span
+                  class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+                />
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+              />
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

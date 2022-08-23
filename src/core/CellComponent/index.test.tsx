@@ -8,31 +8,31 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<ComponentCell />", () => {
+describe("<CellComponent />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders component cell component", () => {
+  it("renders cellComponent component", () => {
     render(<Test />);
-    const elements = screen.getAllByTestId("ComponentCellA");
+    const elements = screen.getAllByTestId("CellComponentA");
     expect(elements).toBeTruthy();
   });
 
-  it("renders component at left side", async () => {
+  it("renders content at left side", async () => {
     render(<Test />);
-    const componentCellElement = screen.getByTestId("ComponentCellA");
+    const cellComponentElement = screen.getByTestId("CellComponentA");
     const renderedElement = document.getElementsByClassName(
-      componentCellElement.className
+      cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
     expect(style.justifyContent).toBe("flex-start");
     expect(style.display).toBe("flex");
   });
 
-  it("renders component at right side", async () => {
+  it("renders content at right side", async () => {
     render(<Test />);
-    const componentCellElement = screen.getByTestId("ComponentCellB");
+    const cellComponentElement = screen.getByTestId("CellComponentB");
     const renderedElement = document.getElementsByClassName(
-      componentCellElement.className
+      cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
     expect(style.justifyContent).toBe("flex-end");
