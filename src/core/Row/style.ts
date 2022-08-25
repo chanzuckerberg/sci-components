@@ -1,7 +1,10 @@
 import { styled } from "@mui/material/styles";
+import React from "react";
 import { CommonThemeProps, fontHeaderS, getColors } from "../styles";
 
-export interface RowExtraProps extends CommonThemeProps {
+export interface RowExtraProps
+  extends CommonThemeProps,
+    Omit<React.HTMLProps<HTMLTableRowElement>, "as"> {
   rowHeight?: number;
   useDivider?: boolean;
   selected?: boolean;

@@ -12,29 +12,33 @@ interface RowRawProps {
 
 export type RowProps = RowRawProps & RowExtraProps;
 
-const Row = forwardRef((props: RowProps, _): JSX.Element | null => {
-  const {
-    children,
-    shouldShowTooltipOnHover = true,
-    tooltipProps,
-    tooltipText = false,
-    tooltipSubtitle,
-  } = props;
+const Row = forwardRef<HTMLTableRowElement, RowProps>(
+  (props: RowProps, ref): JSX.Element | null => {
+    const {
+      children,
+      shouldShowTooltipOnHover = true,
+      tooltipProps,
+      tooltipText = false,
+      tooltipSubtitle,
+    } = props;
 
-  if (shouldShowTooltipOnHover) {
-    return (
-      <Tooltip
-        arrow
-        sdsStyle="dark"
-        subtitle={tooltipSubtitle}
-        title={tooltipText}
-        {...tooltipProps}
-      >
-        <StyledTableRow {...props}>{children}</StyledTableRow>
-      </Tooltip>
-    );
+    if (shouldShowTooltipOnHover) {
+      return (
+        <Tooltip
+          arrow
+          sdsStyle="dark"
+          subtitle={tooltipSubtitle}
+          title={tooltipText}
+          {...tooltipProps}
+        >
+          <StyledTableRow ref={ref} {...props}>
+            {children}
+          </StyledTableRow>
+        </Tooltip>
+      );
+    }
+    return <StyledTableRow {...props}>{children}</StyledTableRow>;
   }
-  return <StyledTableRow {...props}>{children}</StyledTableRow>;
-});
+);
 
 export default Row;
