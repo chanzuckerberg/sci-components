@@ -17,6 +17,12 @@ describe("<CellComponent />", () => {
     expect(elements).toBeTruthy();
   });
 
+  it("renders child components", async () => {
+    render(<Test />);
+    const elements = screen.getAllByTestId("Child");
+    expect(elements).toHaveLength(4);
+  });
+
   it("renders content at left side", async () => {
     render(<Test />);
     const cellComponentElement = screen.getByTestId("CellComponentA");

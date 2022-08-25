@@ -93,13 +93,16 @@ const TestDemo = (props: Args): JSX.Element => {
           style={{ width: 279 }}
         >
           <div style={{ display: "block" }}>
-            <StyledStoryHeading>Lorem ipsum dolor</StyledStoryHeading>
-            <StyledStoryBody style={{ paddingBottom: 10 }}>
+            <StyledStoryHeading data-testid="Child">
+              Lorem ipsum dolor
+            </StyledStoryHeading>
+            <StyledStoryBody data-testid="Child" style={{ paddingBottom: 10 }}>
               Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor.
             </StyledStoryBody>
             <Tag
               color="primary"
+              data-testid="Child"
               label="Tertiary"
               sdsStyle="rounded"
               sdsType="primary"
@@ -110,7 +113,7 @@ const TestDemo = (props: Args): JSX.Element => {
       </div>
       <div>
         <CellComponent data-testid="CellComponentB" contentPosition="right">
-          <InputToggle {...props} />
+          <InputToggle data-testid="Child" {...props} />
         </CellComponent>
       </div>
     </div>

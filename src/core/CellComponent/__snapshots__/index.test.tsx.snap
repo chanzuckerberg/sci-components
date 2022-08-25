@@ -20,17 +20,20 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
             >
               <span
                 class="css-15m7i9b"
+                data-testid="Child"
               >
                 Lorem ipsum dolor
               </span>
               <span
                 class="css-18teywq"
+                data-testid="Child"
                 style="padding-bottom: 10px;"
               >
                 Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
               </span>
               <div
                 class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-cp1czy-MuiButtonBase-root-MuiChip-root"
+                data-testid="Child"
                 role="button"
                 tabindex="0"
               >
@@ -64,6 +67,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
             >
               <span
                 class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                data-testid="Child"
               >
                 <input
                   class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
