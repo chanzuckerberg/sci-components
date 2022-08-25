@@ -25,6 +25,9 @@ export default {
     disabled: {
       control: { type: "boolean" },
     },
+    hover: {
+      control: { type: "boolean" },
+    },
     rowHeight: {
       control: { type: "number" },
     },
@@ -57,6 +60,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   disabled: false,
+  hover: true,
   selected: false,
   shouldShowTooltipOnHover: true,
   tooltipProps: { sdsStyle: "dark" },

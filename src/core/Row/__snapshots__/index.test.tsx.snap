@@ -4,7 +4,7 @@ exports[`<Row /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      class=" css-cauujv"
+      class=" css-k48uld"
       data-mui-internal-clone-element="true"
       data-testid="TableRow"
     >

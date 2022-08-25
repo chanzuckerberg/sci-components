@@ -6,6 +6,7 @@ export interface RowExtraProps extends CommonThemeProps {
   useDivider?: boolean;
   selected?: boolean;
   disabled?: boolean;
+  hover?: boolean;
 }
 
 const doNotForwardProps = [
@@ -26,6 +27,16 @@ const disabledStyled = (props: RowExtraProps) => {
   `;
 };
 
+const hoverStyled = (props: RowExtraProps) => {
+  const colors = getColors(props);
+
+  return `
+    &:hover {
+      background-color: ${colors?.gray[200]};
+    }
+  `;
+};
+
 export const StyledTableRow = styled("tr", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
@@ -37,6 +48,7 @@ export const StyledTableRow = styled("tr", {
       useDivider = true,
       selected = false,
       disabled = false,
+      hover = true,
     } = props;
 
     const colors = getColors(props);
@@ -50,9 +62,7 @@ export const StyledTableRow = styled("tr", {
 
       ${selected ? `background-color: ${colors?.primary[200]};` : ""}
 
-      &:hover {
-        background-color: ${colors?.gray[200]};
-      }
+      ${hover && hoverStyled(props)};
 
       ${disabled && disabledStyled(props)}
     `;
