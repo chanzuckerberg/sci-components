@@ -87,6 +87,7 @@ const TestDemo = (): JSX.Element => (
           data-testid="CellHeader"
           textPosition="right"
           shouldShowTooltipOnHover
+          active
           tooltipText="testTooltipTitle"
         >
           Header

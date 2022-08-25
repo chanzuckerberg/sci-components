@@ -33,4 +33,12 @@ describe("<CellHeader />", () => {
     const style = window.getComputedStyle(renderedElement as Element);
     expect(style.justifyContent).toBe("flex-end");
   });
+
+  it("renders a sort icon when header is active", async () => {
+    render(<Test />);
+    const headerCellElement = screen.getByTestId("CellHeader");
+    const sortIcon =
+      headerCellElement.getElementsByClassName("MuiButtonBase-root")[0];
+    expect(sortIcon).toBeTruthy();
+  });
 });

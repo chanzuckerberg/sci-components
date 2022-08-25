@@ -5,7 +5,7 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
   <tbody>
     <tr>
       <th
-        class=" css-10ucgd"
+        class=" css-1c4r0vw"
         data-mui-internal-clone-element="true"
         data-testid="CellHeader"
       >
@@ -15,7 +15,7 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
           </span>
         </div>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eu9s78-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-37ti23-MuiButtonBase-root-MuiIconButton-root"
           data-testid="iconButton"
           tabindex="0"
           type="button"
