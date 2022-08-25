@@ -1,9 +1,8 @@
 import React, { forwardRef, ReactNode } from "react";
-
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 
 export interface CellComponentRawProps {
-  children?: ReactNode | React.ReactNode[];
+  children?: ReactNode;
 }
 
 export type CellComponentProps = CellComponentRawProps &
