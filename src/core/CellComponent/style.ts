@@ -17,17 +17,21 @@ export interface CellComponentExtraProps extends CommonThemeProps {
   contentPosition?: "left" | "center" | "right";
 }
 
-export const StyledCellComponentData = styled("td")`
+const doNotForwardProps = ["contentPosition"];
+
+export const StyledCellComponentData = styled("td", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: CellComponentExtraProps) => {
     const spacings = getSpaces(props);
+    const { contentPosition } = props;
+
     return `
         align-items: center;
         border: dashed 1px #ddd;
         display: flex;
         justify-content: ${
-          props.contentPosition
-            ? contentPositionMapping[props.contentPosition]
-            : "center"
+          contentPosition ? contentPositionMapping[contentPosition] : "center"
         };
         max-width: 100%;
         min-width: 96px;
@@ -36,7 +40,7 @@ export const StyledCellComponentData = styled("td")`
     `;
   }}
 `;
-export const StyledStoryHeading = styled("span", {})`
+export const StyledStoryHeading = styled("span")`
   ${fontHeaderS}
   ${(props) => {
     const typography = getTypography(props);
@@ -50,7 +54,7 @@ export const StyledStoryHeading = styled("span", {})`
   }}
 `;
 
-export const StyledStoryBody = styled("span", {})`
+export const StyledStoryBody = styled("span")`
   ${fontBodyXxs}
   ${(props) => {
     const typography = getTypography(props);

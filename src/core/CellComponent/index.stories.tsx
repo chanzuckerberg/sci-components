@@ -8,6 +8,8 @@ import CellComponentRaw from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
 
 const CellComponent = (props: Args): JSX.Element => {
+  const { contentPosition } = props;
+
   return (
     <table>
       <tbody>
@@ -18,7 +20,7 @@ const CellComponent = (props: Args): JSX.Element => {
           }}
         >
           <CellComponentRaw
-            contentPosition="center"
+            contentPosition={contentPosition}
             data-testid="CellComponent"
             {...props}
           />
@@ -40,13 +42,13 @@ export default {
 };
 
 const Template: Story = (props: Args) => {
-  const { disabled } = props;
+  const { disabled, contentPosition } = props;
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = () => setChecked((prevState) => !prevState);
 
   return (
-    <CellComponent style={{ width: 150 }}>
+    <CellComponent contentPosition={contentPosition} style={{ width: 150 }}>
       <FormControlLabel
         control={
           <Checkbox

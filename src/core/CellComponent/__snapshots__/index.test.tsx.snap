@@ -12,7 +12,6 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
         >
           <td
             class="css-44gap1"
-            contentposition="left"
             data-testid="CellComponentA"
             style="width: 279px;"
           >
@@ -20,12 +19,12 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
               style="display: block;"
             >
               <span
-                class="css-qt2d73"
+                class="css-15m7i9b"
               >
                 Lorem ipsum dolor
               </span>
               <span
-                class="css-1piukzs"
+                class="css-18teywq"
                 style="padding-bottom: 10px;"
               >
                 Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
@@ -58,7 +57,6 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
         >
           <td
             class="css-7mjic6"
-            contentposition="right"
             data-testid="CellComponentB"
           >
             <span
