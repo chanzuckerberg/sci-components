@@ -8,29 +8,29 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<HeaderCell />", () => {
+describe("<CellHeader />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
   it("renders header cell component", () => {
     render(<Test />);
-    const elements = screen.getAllByTestId("HeaderCell");
+    const elements = screen.getAllByTestId("CellHeader");
     expect(elements).toBeTruthy();
   });
 
   it("renders tooltip on hover", async () => {
     render(<Test />);
-    const headerCellElement = screen.getByTestId("HeaderCell");
+    const headerCellElement = screen.getByTestId("CellHeader");
     fireEvent.mouseOver(headerCellElement);
     await screen.findByText("testTooltipTitle");
   });
 
   it("renders text at right side", async () => {
     render(<Test />);
-    const headerCellElement = screen.getByTestId("HeaderCell");
+    const headerCellElement = screen.getByTestId("CellHeader");
     const renderedElement = document.getElementsByClassName(
       headerCellElement.className
-    )[0];
-    const style = window.getComputedStyle(renderedElement);
+    )[0].firstElementChild;
+    const style = window.getComputedStyle(renderedElement as Element);
     expect(style.justifyContent).toBe("flex-end");
   });
 });

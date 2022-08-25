@@ -8,9 +8,9 @@ import {
   getTypography,
 } from "../styles";
 
-export interface HeaderCellExtraProps extends CommonThemeProps {
+export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
-  textPosition?: "left" | "right";
+  textPosition?: "left" | "center" | "right";
 }
 
 const doNotForwardProps = [
@@ -22,10 +22,16 @@ const doNotForwardProps = [
   "hideSortIcon",
 ];
 
+const contentPositionMapping = {
+  center: "center",
+  left: "flex-start",
+  right: "flex-end",
+};
+
 export const StyledSortingIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props: HeaderCellExtraProps) => {
+  ${(props: CellHeaderExtraProps) => {
     const { active = false, textPosition = "left" } = props;
 
     const spacings = getSpaces(props);
@@ -36,6 +42,7 @@ export const StyledSortingIcon = styled(ButtonIcon, {
       margin-left: ${textPosition === "left" ? "auto" : "unset"};
       
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
+      opacity: ${active ? 1 : 0};
     `;
   }}
 `;
@@ -45,7 +52,7 @@ export const StyledTableHeader = styled("th", {
 })`
   ${fontHeaderS}
 
-  ${(props: HeaderCellExtraProps) => {
+  ${(props: CellHeaderExtraProps) => {
     const { active = false, textPosition = "left" } = props;
 
     const spacings = getSpaces(props);
@@ -57,19 +64,27 @@ export const StyledTableHeader = styled("th", {
       color: ${active ? colors?.primary[400] : colors?.gray[600]};
       font-family: ${typography?.fontFamily};
       padding: ${spacings?.l}px ${spacings?.s}px;
-      text-align: ${textPosition};
       min-height: 48px;
       min-width: 96px;
+      width: 100%;
       display: flex;
       align-items: center;
-      justify-content: ${textPosition === "left" ? "flex-start" : "flex-end"}; 
       cursor: pointer;
+
+      & > div {
+        width: 100%;
+        display: flex;
+        justify-content: ${
+          textPosition ? contentPositionMapping[textPosition] : "flex-start"
+        };
+      }
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
 
         & > .MuiButtonBase-root {
           color: ${active ? colors?.primary[500] : colors?.gray[500]};
+          opacity: 1;
         }
       }
     `;

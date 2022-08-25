@@ -1,16 +1,29 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import HeaderCellRaw from "./index";
+import CellHeaderRaw, { CellHeaderDirection } from "./index";
 
-const HeaderCell = (props: Args): JSX.Element => {
+const CellHeader = (props: Args): JSX.Element => {
+  const { direction, ...rest } = props;
+  const [sorting, setSorting] = React.useState<CellHeaderDirection>(direction);
+
+  React.useEffect(() => {
+    setSorting(direction);
+  }, [direction]);
+
+  const clickHandler = () => {
+    setSorting((prevState) => {
+      return prevState === "asc" ? "desc" : "asc";
+    });
+  };
+
   return (
     <table>
       <tbody>
-        <tr>
-          <HeaderCellRaw tooltipText="This is a table header" {...props}>
+        <tr style={{ display: "block", width: 150 }}>
+          <CellHeaderRaw onClick={clickHandler} direction={sorting} {...rest}>
             Header
-          </HeaderCellRaw>
+          </CellHeaderRaw>
         </tr>
       </tbody>
     </table>
@@ -34,7 +47,7 @@ export default {
     },
     textPosition: {
       control: { type: "select" },
-      options: ["left", "right"],
+      options: ["left", "center", "right"],
     },
     tooltipProps: {
       control: { type: "object" },
@@ -43,11 +56,11 @@ export default {
       control: { type: "text" },
     },
   },
-  component: HeaderCell,
-  title: "HeaderCell",
+  component: CellHeader,
+  title: "CellHeader",
 };
 
-const Template: Story = (args) => <HeaderCell {...args} />;
+const Template: Story = (args) => <CellHeader {...args} />;
 
 export const Default = Template.bind({});
 
@@ -70,13 +83,14 @@ const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
-        <HeaderCellRaw
-          data-testid="HeaderCell"
+        <CellHeaderRaw
+          data-testid="CellHeader"
           textPosition="right"
+          shouldShowTooltipOnHover
           tooltipText="testTooltipTitle"
         >
           Header
-        </HeaderCellRaw>
+        </CellHeaderRaw>
       </tr>
     </tbody>
   </table>
