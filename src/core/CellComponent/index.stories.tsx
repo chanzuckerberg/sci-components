@@ -1,8 +1,8 @@
-import { FormControlLabel } from "@mui/material";
+import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
 import Checkbox from "../Checkbox";
-import InputToggle from "../InputToggle";
+import RadioButton from "../Radio";
 import Tag from "../Tag";
 import CellComponentRaw from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
@@ -113,7 +113,26 @@ const TestDemo = (props: Args): JSX.Element => {
       </div>
       <div>
         <CellComponent data-testid="CellComponentB" contentPosition="right">
-          <InputToggle data-testid="Child" {...props} />
+          <div style={{ display: "block" }}>
+            <StyledStoryHeading
+              data-testid="Child"
+              style={{ paddingBottom: 10 }}
+            >
+              Lorem ipsum dolor
+            </StyledStoryHeading>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              data-testid="Child"
+              defaultValue="demo"
+              name="radio-buttons-group"
+            >
+              <FormControlLabel
+                control={<RadioButton stage="checked" {...props} />}
+                label="Label"
+                value="demo"
+              />
+            </RadioGroup>
+          </div>
         </CellComponent>
       </div>
     </div>

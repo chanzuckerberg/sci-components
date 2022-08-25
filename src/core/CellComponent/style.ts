@@ -28,7 +28,6 @@ export const StyledCellComponentData = styled("td", {
 
     return `
         align-items: center;
-        border: dashed 1px #ddd;
         display: flex;
         justify-content: ${
           contentPosition ? contentPositionMapping[contentPosition] : "center"

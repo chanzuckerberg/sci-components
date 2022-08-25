@@ -11,7 +11,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-44gap1"
+            class="css-7sbz7u"
             data-testid="CellComponentA"
             style="width: 279px;"
           >
@@ -59,32 +59,61 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-7mjic6"
+            class="css-wjfusp"
             data-testid="CellComponentB"
           >
-            <span
-              class="MuiSwitch-root MuiSwitch-sizeMedium css-14ifyh6-MuiSwitch-root"
+            <div
+              style="display: block;"
             >
               <span
-                class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                class="css-15m7i9b"
                 data-testid="Child"
+                style="padding-bottom: 10px;"
               >
-                <input
-                  class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
-                  type="checkbox"
-                  value="Off"
-                />
-                <span
-                  class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
-                />
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
+                Lorem ipsum dolor
               </span>
-              <span
-                class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
-              />
-            </span>
+              <div
+                aria-labelledby="demo-radio-buttons-group-label"
+                class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+                data-testid="Child"
+                role="radiogroup"
+              >
+                <label
+                  class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+                >
+                  <span
+                    class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root Mui-checked css-b0a55y-MuiButtonBase-root-MuiRadio-root"
+                    stage="checked"
+                  >
+                    <input
+                      checked=""
+                      class="PrivateSwitchBase-input css-1m9pwf3"
+                      name="radio-buttons-group"
+                      type="radio"
+                      value="demo"
+                    />
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-jest-file-name="IconRadioChecked.svg"
+                      data-jest-svg-name="IconRadioChecked"
+                      data-testid="IconRadioChecked"
+                      fillcontrast="white"
+                      focusable="false"
+                      viewBox="0 0 16 16"
+                    />
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </span>
+                  <span
+                    class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+                  >
+                    Label
+                  </span>
+                </label>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

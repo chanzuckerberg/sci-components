@@ -20,7 +20,7 @@ describe("<CellComponent />", () => {
   it("renders child components", async () => {
     render(<Test />);
     const elements = screen.getAllByTestId("Child");
-    expect(elements).toHaveLength(4);
+    expect(elements).toHaveLength(5);
   });
 
   it("renders content at left side", async () => {
