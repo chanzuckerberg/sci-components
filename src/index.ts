@@ -18,6 +18,8 @@ export * from "./core/Callout";
 export { default as Callout } from "./core/Callout";
 export * from "./core/CellBasic";
 export { default as CellBasic } from "./core/CellBasic";
+export * from "./core/CellHeader";
+export { default as CellHeader } from "./core/CellHeader";
 export * from "./core/Checkbox";
 export { default as Checkbox } from "./core/Checkbox";
 export * from "./core/Chip";
