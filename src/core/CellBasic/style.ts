@@ -8,7 +8,7 @@ import {
   getTypography,
 } from "../styles";
 
-export interface BasicCellExtraProps extends CommonThemeProps {
+export interface CellBasicExtraProps extends CommonThemeProps {
   textPosition?: "left" | "center" | "right";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
@@ -29,7 +29,7 @@ const doNotForwardProps = [
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props: BasicCellExtraProps) => {
+  ${(props: CellBasicExtraProps) => {
     const { textPosition = "left" } = props;
 
     const spacings = getSpaces(props);
@@ -69,7 +69,7 @@ export const PrimaryText = styled("span", {
 })`
   ${fontBodyS}
 
-  ${(props: BasicCellExtraProps) => {
+  ${(props: CellBasicExtraProps) => {
     const { primaryTextWrapLineCount = 3 } = props;
 
     return `
@@ -89,7 +89,7 @@ export const SecondaryText = styled("span", {
 })`
   ${fontBodyXxs}
 
-  ${(props: BasicCellExtraProps) => {
+  ${(props: CellBasicExtraProps) => {
     const { secondaryTextWrapLineCount = 1 } = props;
 
     const colors = getColors(props);

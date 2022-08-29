@@ -1,14 +1,13 @@
 import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
-
 import {
-  BasicCellExtraProps,
+  CellBasicExtraProps,
   PrimaryText,
   SecondaryText,
   StyledTableData,
 } from "./style";
 
-interface BasicCellContentProps {
+interface CellBasicContentProps {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;
@@ -16,17 +15,17 @@ interface BasicCellContentProps {
   shouldTextWrap?: boolean;
 }
 
-export interface BasicCellRawProps {
+export interface CellBasicRawProps {
   shouldShowTooltipOnHover?: boolean;
   tooltipProps?: Partial<TooltipProps>;
 }
 
-export type BasicCellProps = BasicCellRawProps &
-  BasicCellExtraProps &
-  BasicCellContentProps;
+export type CellBasicProps = CellBasicRawProps &
+  CellBasicExtraProps &
+  CellBasicContentProps;
 
-const BasicCellContent = forwardRef(
-  (props: BasicCellContentProps, _): JSX.Element | null => {
+const CellBasicContent = forwardRef(
+  (props: CellBasicContentProps, _): JSX.Element | null => {
     const {
       primaryText,
       primaryTextWrapLineCount,
@@ -57,7 +56,7 @@ const BasicCellContent = forwardRef(
   }
 );
 
-const BasicCell = forwardRef((props: BasicCellProps, _): JSX.Element | null => {
+const CellBasic = forwardRef((props: CellBasicProps, _): JSX.Element | null => {
   const {
     primaryText,
     secondaryText,
@@ -74,16 +73,16 @@ const BasicCell = forwardRef((props: BasicCellProps, _): JSX.Element | null => {
         {...tooltipProps}
       >
         <StyledTableData {...props}>
-          <BasicCellContent {...props} />
+          <CellBasicContent {...props} />
         </StyledTableData>
       </Tooltip>
     );
   }
   return (
     <StyledTableData {...props}>
-      <BasicCellContent {...props} />
+      <CellBasicContent {...props} />
     </StyledTableData>
   );
 });
 
-export default BasicCell;
+export default CellBasic;
