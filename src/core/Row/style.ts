@@ -19,6 +19,7 @@ const doNotForwardProps = [
   "tooltipProps",
   "tooltipSubtitle",
   "tooltipText",
+  "hover",
 ];
 
 const disabledStyled = (props: RowExtraProps) => {
