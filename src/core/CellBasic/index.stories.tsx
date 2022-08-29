@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import BasicCellRaw from "./index";
+import CellBasicRaw from "./index";
 
-const BasicCell = (props: Args): JSX.Element => {
+const CellBasic = (props: Args): JSX.Element => {
   return (
     <table>
       <tbody>
@@ -13,8 +13,8 @@ const BasicCell = (props: Args): JSX.Element => {
             maxWidth: "180px",
           }}
         >
-          <BasicCellRaw
-            data-testid="BasicCell"
+          <CellBasicRaw
+            data-testid="CellBasic"
             primaryText="Primary Text"
             tooltipProps={{ sdsStyle: "light" }}
             {...props}
@@ -53,11 +53,11 @@ export default {
       control: { type: "object" },
     },
   },
-  component: BasicCell,
-  title: "BasicCell",
+  component: CellBasic,
+  title: "CellBasic",
 };
 
-const Template: Story = (args) => <BasicCell {...args} />;
+const Template: Story = (args) => <CellBasic {...args} />;
 
 export const Default = Template.bind({});
 
@@ -81,8 +81,8 @@ const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
-        <BasicCellRaw
-          data-testid="BasicCell"
+        <CellBasicRaw
+          data-testid="CellBasic"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           textPosition="right"
