@@ -28,7 +28,7 @@ export const StyledNotification = styled(Alert)`
 
     return `
       background-color: ${backgroundColor};
-      max-width: 450px;
+      max-width: 480px;
       min-width: 280px;
       box-sizing: border-box;
       margin: ${spacings?.m}px 0;
