@@ -42,12 +42,12 @@ export default {
     hideSortIcon: {
       control: { type: "boolean" },
     },
-    shouldShowTooltipOnHover: {
-      control: { type: "boolean" },
-    },
-    textPosition: {
+    horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
+    },
+    shouldShowTooltipOnHover: {
+      control: { type: "boolean" },
     },
     tooltipProps: {
       control: { type: "object" },
@@ -85,7 +85,7 @@ const TestDemo = (): JSX.Element => (
       <tr>
         <CellHeaderRaw
           data-testid="CellHeader"
-          textPosition="right"
+          horizontalAlign="right"
           shouldShowTooltipOnHover
           active
           tooltipText="testTooltipTitle"

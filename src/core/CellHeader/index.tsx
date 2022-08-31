@@ -11,7 +11,7 @@ export type CellHeaderDirection = "asc" | "desc";
 
 interface CellHeaderContentProps {
   active?: boolean;
-  textPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   children: string;
@@ -34,7 +34,7 @@ const CellHeaderContent = (
 ): JSX.Element | null => {
   const {
     active,
-    textPosition,
+    horizontalAlign,
     children,
     direction = "desc",
     hideSortIcon = false,
@@ -48,7 +48,7 @@ const CellHeaderContent = (
       sdsType="tertiary"
       sdsSize="small"
       active={active}
-      textPosition={textPosition}
+      horizontalAlign={horizontalAlign}
     >
       <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
     </StyledSortingIcon>
