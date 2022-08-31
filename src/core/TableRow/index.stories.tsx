@@ -2,19 +2,19 @@
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
-import RowRaw from "./index";
+import TableRowRaw from "./index";
 
-const Row = (props: Args): JSX.Element => {
+const TableRow = (props: Args): JSX.Element => {
   return (
     <table>
       <tbody>
-        <RowRaw {...props}>
+        <TableRowRaw {...props}>
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
-        </RowRaw>
+        </TableRowRaw>
       </tbody>
     </table>
   );
@@ -50,11 +50,11 @@ export default {
       control: { type: "boolean" },
     },
   },
-  component: Row,
-  title: "Row",
+  component: TableRow,
+  title: "TableRow",
 };
 
-const Template: Story = (args) => <Row {...args} />;
+const Template: Story = (args) => <TableRow {...args} />;
 
 export const Default = Template.bind({});
 
@@ -64,7 +64,7 @@ Default.args = {
   selected: false,
   shouldShowTooltipOnHover: true,
   tooltipProps: { sdsStyle: "dark" },
-  tooltipText: "This is a Row component",
+  tooltipText: "This is a TableRow component",
   useDivider: true,
 };
 
@@ -77,9 +77,14 @@ Default.parameters = {
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
-      <RowRaw data-testid="TableRow" tooltipText="testTooltipTitle">
+      <TableRowRaw
+        data-testid="TableRow"
+        hover
+        shouldShowTooltipOnHover
+        tooltipText="testTooltipTitle"
+      >
         <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
-      </RowRaw>
+      </TableRowRaw>
     </tbody>
   </table>
 );

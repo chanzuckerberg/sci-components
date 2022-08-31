@@ -12,7 +12,7 @@ interface RowRawProps {
 
 export type RowProps = RowRawProps & RowExtraProps;
 
-const Row = forwardRef<HTMLTableRowElement, RowProps>(
+const TableRow = forwardRef<HTMLTableRowElement, RowProps>(
   (props: RowProps, ref): JSX.Element | null => {
     const {
       children,
@@ -20,9 +20,10 @@ const Row = forwardRef<HTMLTableRowElement, RowProps>(
       tooltipProps,
       tooltipText = false,
       tooltipSubtitle,
+      hover,
     } = props;
 
-    if (shouldShowTooltipOnHover) {
+    if (shouldShowTooltipOnHover && hover) {
       return (
         <Tooltip
           arrow
@@ -41,4 +42,4 @@ const Row = forwardRef<HTMLTableRowElement, RowProps>(
   }
 );
 
-export default Row;
+export default TableRow;

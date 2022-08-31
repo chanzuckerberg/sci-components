@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Row /> Test story renders snapshot 1`] = `
+exports[`<TableRow /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
