@@ -100,3 +100,17 @@ const TestDemo = (): JSX.Element => (
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  controls: {
+    exclude: [
+      "active",
+      "direction",
+      "hideSortIcon",
+      "horizontalAlign",
+      "shouldShowTooltipOnHover",
+      "tooltipProps",
+      "tooltipText",
+    ],
+  },
+};
