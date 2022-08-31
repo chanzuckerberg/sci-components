@@ -9,14 +9,16 @@ import {
 } from "../styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
-  textPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
+  verticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
 }
 
 const doNotForwardProps = [
-  "textPosition",
+  "horizontalAlign",
+  "verticalAlign",
   "primaryText",
   "secondaryText",
   "shouldTextWrap",
@@ -26,11 +28,26 @@ const doNotForwardProps = [
   "secondaryTextWrapLineCount",
 ];
 
+const FLEX_START = "flex-start";
+const FLEX_END = "flex-end";
+
+const horizontalPositionMapping = {
+  center: "center",
+  left: FLEX_START,
+  right: FLEX_END,
+};
+
+const verticalPositionMapping = {
+  bottom: "end",
+  center: "center",
+  top: "start",
+};
+
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellBasicExtraProps) => {
-    const { textPosition = "left" } = props;
+    const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
@@ -38,10 +55,19 @@ export const StyledTableData = styled("td", {
     return `
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
-        text-align: ${textPosition};
+        text-align: ${horizontalAlign};
         min-width: 96px;
         max-width: 100%;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: ${
+          horizontalAlign
+            ? horizontalPositionMapping[horizontalAlign]
+            : FLEX_START
+        };
+        justify-content: ${
+          verticalAlign ? verticalPositionMapping[verticalAlign] : FLEX_START
+        };
         overflow: hidden;
     `;
   }}

@@ -27,6 +27,10 @@ const CellBasic = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    horizontalAlign: {
+      control: { type: "select" },
+      options: ["left", "center", "right"],
+    },
     primaryText: {
       control: { type: "text" },
     },
@@ -45,12 +49,12 @@ export default {
     shouldTextWrap: {
       control: { type: "boolean" },
     },
-    textPosition: {
-      control: { type: "select" },
-      options: ["left", "center", "right"],
-    },
     tooltipProps: {
       control: { type: "object" },
+    },
+    verticalAlign: {
+      control: { type: "select" },
+      options: ["top", "center", "bottom"],
     },
   },
   component: CellBasic,
@@ -85,7 +89,7 @@ const TestDemo = (): JSX.Element => (
           data-testid="CellBasic"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
-          textPosition="right"
+          horizontalAlign="right"
           tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
         />
       </tr>

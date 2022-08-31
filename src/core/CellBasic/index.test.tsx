@@ -31,6 +31,6 @@ describe("<CellBasic />", () => {
       cellBasicElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
-    expect(style.textAlign).toBe("right");
+    expect(style.alignItems).toBe("flex-end");
   });
 });

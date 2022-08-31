@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
-
 import {
   BasicCellExtraProps,
   PrimaryText,

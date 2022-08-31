@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
-
 import {
   CellHeaderExtraProps,
   StyledSortingIcon,
