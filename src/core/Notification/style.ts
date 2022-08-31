@@ -37,12 +37,9 @@ export const StyledNotification = styled(Alert)`
       padding: ${spacings?.l}px;
       align-items: flex-start;
       background-color: ${notificationColor};
-
-      &.elevated {
-        border-left: 5px solid;
-        box-shadow: ${shadows?.s};
-        border-color: ${borderColor};
-      }
+      border-left: 5px solid;
+      box-shadow: ${shadows?.s};
+      border-color: ${borderColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
