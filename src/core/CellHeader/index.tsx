@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
-
 import {
   CellHeaderExtraProps,
   StyledSortingIcon,
@@ -12,7 +11,7 @@ export type CellHeaderDirection = "asc" | "desc";
 
 interface CellHeaderContentProps {
   active?: boolean;
-  textPosition?: "left" | "right";
+  textPosition?: "left" | "center" | "right";
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   children: string;
