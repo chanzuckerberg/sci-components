@@ -2,11 +2,13 @@
 
 exports[`<Table /> Test story renders snapshot 1`] = `
 <table
-  class="css-k924yx"
+  class="css-mpwjyz"
   data-testid="Table"
 >
   <tbody>
-    <tr>
+    <tr
+      class="css-k48uld"
+    >
       <td
         class="css-yzk6pq"
       >

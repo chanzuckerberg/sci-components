@@ -1,24 +1,51 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import BasicCell from "../BasicCell";
+import CellBasic from "../CellBasic";
+import CellHeader from "../CellHeader";
+import TableRow from "../TableRow";
 import TableRaw from "./index";
 
 const Table = (props: Args): JSX.Element => {
   return (
     <TableRaw {...props}>
+      <thead style={{ borderBottom: "solid 2px #ddd" }}>
+        <TableRow useDivider={false} hover={false}>
+          <CellHeader active>Column 1</CellHeader>
+          <CellHeader>Column 2</CellHeader>
+          <CellHeader textPosition="right">Column 3</CellHeader>
+        </TableRow>
+      </thead>
       <tbody>
-        {/* TODO: Use SDS Row component after it is added */}
-        <tr>
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-        </tr>
-        <tr>
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-          <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-        </tr>
+        <TableRow>
+          <CellBasic
+            primaryText="Primary"
+            secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            secondaryTextWrapLineCount={3}
+            shouldTextWrap
+            shouldShowTooltipOnHover={false}
+          />
+          <CellBasic
+            primaryText="Primary"
+            secondaryText="Secondary Text"
+            shouldShowTooltipOnHover={false}
+          />
+          <CellBasic
+            primaryText="356"
+            textPosition="right"
+            shouldShowTooltipOnHover={false}
+          />
+        </TableRow>
+        <TableRow>
+          <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <CellBasic
+            primaryText="1,234"
+            secondaryText="2,344,000"
+            textPosition="right"
+            shouldShowTooltipOnHover={false}
+          />
+        </TableRow>
       </tbody>
     </TableRaw>
   );
@@ -42,9 +69,9 @@ Default.parameters = {
 const TestDemo = (): JSX.Element => (
   <TableRaw data-testid="Table">
     <tbody>
-      <tr>
-        <BasicCell primaryText="Primary" shouldShowTooltipOnHover={false} />
-      </tr>
+      <TableRow>
+        <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
+      </TableRow>
     </tbody>
   </TableRaw>
 );
