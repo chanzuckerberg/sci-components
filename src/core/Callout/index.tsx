@@ -97,21 +97,17 @@ const Callout = ({
     ) : null;
   };
 
-  const expanded = !expandable || stage === "open";
+  const expanded = !expandable || stage === SDS_STAGE_OPEN;
 
+  // when there is no CalloutTitlecomponent, or there is a single child element
+  // the contents of children will be used as the title
   let calloutTitle = children;
   let calloutContent;
 
-  if (Array.isArray(children)) {
-    if (children[0].type.name === "CalloutTitle") {
-      [calloutTitle, ...calloutContent] = children;
-    } else {
-      // no CalloutTitle component, so use all child nodes as title
-      calloutTitle = children;
-    }
-  } else {
-    // single node specified for children
-    calloutTitle = children;
+  const firstChildIsCalloutTitle =
+    Array.isArray(children) && children[0]?.type?.name === "CalloutTitle";
+  if (firstChildIsCalloutTitle) {
+    [calloutTitle, ...calloutContent] = children;
   }
 
   return (
@@ -122,6 +118,8 @@ const Callout = ({
           action={getAction()}
           icon={getIcon()}
           severity={intent}
+          expandable={expandable || false}
+          expanded={expanded}
           {...rest}
         >
           {calloutTitle}

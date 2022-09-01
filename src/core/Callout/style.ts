@@ -1,6 +1,7 @@
-import { Alert } from "@mui/material";
+import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
+  CommonThemeProps,
   fontBody,
   getColors,
   getCorners,
@@ -9,15 +10,22 @@ import {
 } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
 
+interface CalloutExtraProps extends CommonThemeProps {
+  expandable: boolean;
+  expanded: boolean;
+}
+
+type CalloutProps = AlertProps & CalloutExtraProps;
+
 const fontBodyXs = fontBody("xs");
 
-const doNotForwardProps = ["calloutTitle"];
+const doNotForwardProps = ["calloutTitle", "expandable", "expanded"];
 
 export const StyledCallout = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXs}
-  ${(props) => {
+  ${(props: CalloutProps) => {
     const colors = getColors(props);
     const spacings = getSpaces(props);
     const { severity = "success" } = props;
@@ -27,6 +35,17 @@ export const StyledCallout = styled(Alert, {
     const calloutColor = (colors && colors[severity][100]) || "white";
     const backgroundColor = colors && colors[severity][100];
 
+    // when a title is present Mui's default styling has a margin,
+    // but for an expandable callout that is collapsed, we do not want
+    // any vertical margin
+    const { expandable, expanded } = props;
+    const titleStyling =
+      expandable && !expanded
+        ? `.MuiAlertTitle-root{
+              margin-top: 0;
+              margin-bottom: 0;
+            }`
+        : "";
     return `
       background-color: ${backgroundColor};
       width: 360px;
@@ -49,6 +68,8 @@ export const StyledCallout = styled(Alert, {
       .MuiAlert-message {
         padding: 0;
         margin-right: ${spacings?.m}px;
+
+        ${titleStyling}
       }
 
       .MuiAlert-action {
