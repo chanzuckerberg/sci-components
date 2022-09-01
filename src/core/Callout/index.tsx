@@ -118,8 +118,6 @@ const Callout = ({
           action={getAction(collapsed)}
           icon={getIcon()}
           severity={intent}
-          // expandable={expandable || false}
-          // expanded={expanded}
           collapsed={collapsed || false}
           {...rest}
         >
