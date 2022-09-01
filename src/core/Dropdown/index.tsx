@@ -4,13 +4,14 @@ import {
 } from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
-import { StyledPopper } from "../DropdownMenu/style";
+import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import { StyledButton } from "./style";
 
 export {
+  StyledPaper as DropdownPaper,
   StyledPopper as DropdownPopper,
   InputDropdown as DropdownInputDropdown,
 };

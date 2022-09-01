@@ -56,6 +56,13 @@ const Tooltip = forwardRef(function Tooltip(
     );
   }
 
+  if (subtitle && sdsStyle === "light") {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: The 'subtitle' text is only available for dark tooltips."
+    );
+  }
+
   const theme = useTheme();
 
   const extraProps = {
@@ -88,7 +95,7 @@ const Tooltip = forwardRef(function Tooltip(
   const content = (
     <>
       {title}
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {sdsStyle === "dark" && subtitle && <Subtitle>{subtitle}</Subtitle>}
     </>
   );
 
