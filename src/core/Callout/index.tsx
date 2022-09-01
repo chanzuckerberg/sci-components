@@ -66,18 +66,18 @@ const Callout = ({
     }
   };
 
-  const getAction = () => {
+  const getAction = (collapsed: boolean) => {
     if (expandable) {
       return (
         <ButtonIcon
           onClick={() => {
-            setStage(expanded ? SDS_STAGE_CLOSED : SDS_STAGE_OPEN);
+            setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
           }}
           sdsSize="small"
           sdsType="tertiary"
         >
           <Icon
-            sdsIcon={expanded ? "chevronUp" : "chevronDown"}
+            sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
             sdsSize="s"
             sdsType="button"
           />
@@ -97,7 +97,7 @@ const Callout = ({
     ) : null;
   };
 
-  const expanded = !expandable || stage === SDS_STAGE_OPEN;
+  const collapsed = (expandable && stage === SDS_STAGE_CLOSED) || false;
 
   // when there is no CalloutTitlecomponent, or there is a single child element
   // the contents of children will be used as the title
@@ -115,15 +115,16 @@ const Callout = ({
       <Grow in={!hide}>
         <StyledCallout
           onClose={onClose ? handleClose : undefined}
-          action={getAction()}
+          action={getAction(collapsed)}
           icon={getIcon()}
           severity={intent}
-          expandable={expandable || false}
-          expanded={expanded}
+          // expandable={expandable || false}
+          // expanded={expanded}
+          collapsed={collapsed || false}
           {...rest}
         >
           {calloutTitle}
-          {expanded && calloutContent}
+          {!collapsed && calloutContent}
         </StyledCallout>
       </Grow>
     </>
