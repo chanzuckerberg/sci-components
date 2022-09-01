@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableRow /> Test story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr
+      class=" css-k48uld"
+      data-mui-internal-clone-element="true"
+      data-testid="TableRow"
+    >
+      <td
+        class="css-yzk6pq"
+      >
+        <span
+          class="css-z41sca"
+        >
+          Primary
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
