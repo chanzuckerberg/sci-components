@@ -81,6 +81,8 @@ Default.parameters = {
   },
 };
 
+const TableCellStyle = { border: "dashed 1px #eee", height: 80, width: 150 };
+
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
@@ -90,17 +92,25 @@ const TestDemo = (): JSX.Element => (
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           horizontalAlign="right"
-          verticalAlign="bottom"
-          tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
+          tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
+          style={TableCellStyle as React.CSSProperties}
         />
-      </tr>
-      <tr>
         <CellBasicRaw
           data-testid="CellBasicVerticalAlignTest"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           verticalAlign="bottom"
-          tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
+          shouldShowTooltipOnHover={false}
+          style={TableCellStyle as React.CSSProperties}
+        />
+        <CellBasicRaw
+          data-testid="CellBasicCenterAlignTest"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          verticalAlign="center"
+          horizontalAlign="center"
+          shouldShowTooltipOnHover={false}
+          style={TableCellStyle as React.CSSProperties}
         />
       </tr>
     </tbody>
@@ -114,4 +124,21 @@ export const Test = TestTemplate.bind({});
 Test.args = {
   primaryText: "Primary text",
   secondaryText: "Secondary Text",
+};
+
+Test.parameters = {
+  controls: {
+    exclude: [
+      "primaryText",
+      "secondaryText",
+      "primaryTextWrapLineCount",
+      "secondaryText",
+      "secondaryTextWrapLineCount",
+      "shouldShowTooltipOnHover",
+      "shouldTextWrap",
+      "tooltipProps",
+      "horizontalAlign",
+      "verticalAlign",
+    ],
+  },
 };
