@@ -28,21 +28,6 @@ const doNotForwardProps = [
   "secondaryTextWrapLineCount",
 ];
 
-const FLEX_START = "flex-start";
-const FLEX_END = "flex-end";
-
-const horizontalPositionMapping = {
-  center: "center",
-  left: FLEX_START,
-  right: FLEX_END,
-};
-
-const verticalPositionMapping = {
-  bottom: "end",
-  center: "center",
-  top: "start",
-};
-
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
@@ -56,18 +41,8 @@ export const StyledTableData = styled("td", {
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
         text-align: ${horizontalAlign};
-        min-width: 96px;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: ${
-          horizontalAlign
-            ? horizontalPositionMapping[horizontalAlign]
-            : FLEX_START
-        };
-        justify-content: ${
-          verticalAlign ? verticalPositionMapping[verticalAlign] : FLEX_START
-        };
+        vertical-align: ${verticalAlign};
+        width: 96px;
         overflow: hidden;
     `;
   }}

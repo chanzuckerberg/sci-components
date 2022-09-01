@@ -90,6 +90,16 @@ const TestDemo = (): JSX.Element => (
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           horizontalAlign="right"
+          verticalAlign="bottom"
+          tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
+        />
+      </tr>
+      <tr>
+        <CellBasicRaw
+          data-testid="CellBasicVerticalAlignTest"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          verticalAlign="bottom"
           tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
         />
       </tr>

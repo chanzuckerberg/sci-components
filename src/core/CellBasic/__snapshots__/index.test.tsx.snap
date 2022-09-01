@@ -5,9 +5,27 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class=" css-1r117ne"
+        class=" css-1uuapu7"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
+      >
+        <span
+          class="css-z41sca"
+        >
+          Primary Text
+        </span>
+        <span
+          class="css-1rl2dmz"
+        >
+          Secondary Text
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td
+        class=" css-1x6gfa0"
+        data-mui-internal-clone-element="true"
+        data-testid="CellBasicVerticalAlignTest"
       >
         <span
           class="css-z41sca"
