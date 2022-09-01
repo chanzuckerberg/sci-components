@@ -3,6 +3,7 @@ import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import {
   CellHeaderExtraProps,
+  StyledCellHeaderContainer,
   StyledSortingIcon,
   StyledTableHeader,
 } from "./style";
@@ -55,12 +56,12 @@ const CellHeaderContent = (
   );
 
   return (
-    <>
+    <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
       <div>
         <span>{children}</span>
       </div>
       {!hideSortIcon && sortIcon}
-    </>
+    </StyledCellHeaderContainer>
   );
 };
 

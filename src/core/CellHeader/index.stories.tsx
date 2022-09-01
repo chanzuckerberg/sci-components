@@ -20,7 +20,7 @@ const CellHeader = (props: Args): JSX.Element => {
   return (
     <table>
       <tbody>
-        <tr style={{ display: "block", width: 150 }}>
+        <tr>
           <CellHeaderRaw onClick={clickHandler} direction={sorting} {...rest}>
             Header
           </CellHeaderRaw>

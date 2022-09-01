@@ -47,29 +47,15 @@ export const StyledSortingIcon = styled(ButtonIcon, {
   }}
 `;
 
-export const StyledTableHeader = styled("th", {
+export const StyledCellHeaderContainer = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontHeaderS}
-
   ${(props: CellHeaderExtraProps) => {
-    const { active = false, horizontalAlign = "left" } = props;
-
-    const spacings = getSpaces(props);
-    const typography = getTypography(props);
-    const colors = getColors(props);
+    const { horizontalAlign = "left" } = props;
 
     return `
-      box-sizing: border-box;
-      color: ${active ? colors?.primary[400] : colors?.gray[600]};
-      font-family: ${typography?.fontFamily};
-      padding: ${spacings?.l}px ${spacings?.s}px;
-      min-height: 48px;
-      min-width: 96px;
-      width: 100%;
       display: flex;
       align-items: center;
-      cursor: pointer;
 
       & > div {
         width: 100%;
@@ -80,11 +66,34 @@ export const StyledTableHeader = styled("th", {
             : "flex-start"
         };
       }
+    `;
+  }}
+`;
+
+export const StyledTableHeader = styled("th", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${fontHeaderS}
+
+  ${(props: CellHeaderExtraProps) => {
+    const { active = false } = props;
+
+    const spacings = getSpaces(props);
+    const typography = getTypography(props);
+    const colors = getColors(props);
+
+    return `
+      color: ${active ? colors?.primary[400] : colors?.gray[600]};
+      font-family: ${typography?.fontFamily};
+      padding: ${spacings?.l}px ${spacings?.s}px;
+      min-width: 96px;
+      width: 96px;
+      cursor: pointer;
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
 
-        & > .MuiButtonBase-root {
+        & .MuiButtonBase-root {
           color: ${active ? colors?.primary[500] : colors?.gray[500]};
           opacity: 1;
         }
