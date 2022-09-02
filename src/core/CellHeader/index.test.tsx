@@ -29,7 +29,7 @@ describe("<CellHeader />", () => {
     const headerCellElement = screen.getByTestId("CellHeader");
     const renderedElement = document.getElementsByClassName(
       headerCellElement.className
-    )[0].firstElementChild;
+    )[0].firstElementChild?.firstElementChild;
     const style = window.getComputedStyle(renderedElement as Element);
     expect(style.justifyContent).toBe("flex-end");
   });
