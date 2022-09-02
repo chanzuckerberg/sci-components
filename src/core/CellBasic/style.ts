@@ -9,14 +9,16 @@ import {
 } from "../styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
-  textPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
+  verticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
 }
 
 const doNotForwardProps = [
-  "textPosition",
+  "horizontalAlign",
+  "verticalAlign",
   "primaryText",
   "secondaryText",
   "shouldTextWrap",
@@ -30,7 +32,7 @@ export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellBasicExtraProps) => {
-    const { textPosition = "left" } = props;
+    const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
@@ -38,10 +40,9 @@ export const StyledTableData = styled("td", {
     return `
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
-        text-align: ${textPosition};
-        min-width: 96px;
-        max-width: 100%;
-        display: block;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlign};
+        width: 96px;
         overflow: hidden;
     `;
   }}
