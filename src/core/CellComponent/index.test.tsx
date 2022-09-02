@@ -23,25 +23,25 @@ describe("<CellComponent />", () => {
     expect(elements).toHaveLength(5);
   });
 
-  it("renders content at left side", async () => {
+  it("renders content at bottom right side", async () => {
     render(<Test />);
     const cellComponentElement = screen.getByTestId("CellComponentA");
     const renderedElement = document.getElementsByClassName(
       cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
-    expect(style.justifyContent).toBe("flex-start");
-    expect(style.display).toBe("flex");
+    expect(style.textAlign).toBe("right");
+    expect(style.verticalAlign).toBe("bottom");
   });
 
-  it("renders content at right side", async () => {
+  it("renders content at upper left side", async () => {
     render(<Test />);
     const cellComponentElement = screen.getByTestId("CellComponentB");
     const renderedElement = document.getElementsByClassName(
       cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
-    expect(style.justifyContent).toBe("flex-end");
-    expect(style.display).toBe("flex");
+    expect(style.textAlign).toBe("left");
+    expect(style.verticalAlign).toBe("top");
   });
 });

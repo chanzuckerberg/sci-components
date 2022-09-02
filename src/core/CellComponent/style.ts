@@ -8,32 +8,25 @@ import {
   getTypography,
 } from "../styles";
 
-const contentPositionMapping = {
-  center: "center",
-  left: "flex-start",
-  right: "flex-end",
-};
 export interface CellComponentExtraProps extends CommonThemeProps {
-  contentPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
+  verticalAlign?: "top" | "center" | "bottom";
 }
 
-const doNotForwardProps = ["contentPosition"];
+const doNotForwardProps = ["horizontalAlign", "verticalAlign"];
 
 export const StyledCellComponentData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellComponentExtraProps) => {
     const spacings = getSpaces(props);
-    const { contentPosition } = props;
+    const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     return `
         align-items: center;
-        display: flex;
-        justify-content: ${
-          contentPosition ? contentPositionMapping[contentPosition] : "center"
-        };
-        max-width: 100%;
-        min-width: 96px;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlign};
+        width: 96px;
         overflow: hidden;
         padding: ${spacings?.l}px ${spacings?.s}px;
     `;

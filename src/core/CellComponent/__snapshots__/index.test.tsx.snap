@@ -8,12 +8,14 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
     <table>
       <tbody>
         <tr
+          class="css-k48uld"
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-7sbz7u"
+            class="css-1yo7ij0"
             data-testid="CellComponentA"
-            style="width: 279px;"
+            style="height: 116px; width: 279px;"
+            text-align="right"
           >
             <div
               style="display: block;"
@@ -56,11 +58,13 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
     <table>
       <tbody>
         <tr
+          class="css-k48uld"
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-wjfusp"
+            class="css-1yw7yff"
             data-testid="CellComponentB"
+            text-align="left"
           >
             <div
               style="display: block;"

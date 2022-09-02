@@ -3,28 +3,30 @@ import { Args, Story } from "@storybook/react";
 import * as React from "react";
 import Checkbox from "../Checkbox";
 import RadioButton from "../Radio";
+import TableRow from "../TableRow";
 import Tag from "../Tag";
 import CellComponentRaw from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
 
 const CellComponent = (props: Args): JSX.Element => {
-  const { contentPosition } = props;
+  const { horizontalAlign, verticalAlign } = props;
 
   return (
     <table>
       <tbody>
-        <tr
+        <TableRow
           style={{
             display: "block",
             maxWidth: "280px",
           }}
         >
           <CellComponentRaw
-            contentPosition={contentPosition}
+            text-align={horizontalAlign}
+            verticalAlign={verticalAlign}
             data-testid="CellComponent"
             {...props}
           />
-        </tr>
+        </TableRow>
       </tbody>
     </table>
   );
@@ -32,9 +34,13 @@ const CellComponent = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    contentPosition: {
+    horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
+    },
+    verticalAlign: {
+      control: { type: "select" },
+      options: ["top", "center", "bottom"],
     },
   },
   component: CellComponent,
@@ -42,13 +48,17 @@ export default {
 };
 
 const Template: Story = (props: Args) => {
-  const { disabled, contentPosition } = props;
+  const { disabled, horizontalAlign, verticalAlign } = props;
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = () => setChecked((prevState) => !prevState);
 
   return (
-    <CellComponent contentPosition={contentPosition} style={{ width: 150 }}>
+    <CellComponent
+      horizontalAlign={horizontalAlign}
+      verticalAlign={verticalAlign}
+      style={{ height: 60, width: 150 }}
+    >
       <FormControlLabel
         control={
           <Checkbox
@@ -72,7 +82,8 @@ Default.parameters = {
 };
 
 Default.args = {
-  contentPosition: "left",
+  horizontalAlign: "center",
+  verticalAlign: "center",
 };
 
 const TestDemo = (props: Args): JSX.Element => {
@@ -89,8 +100,9 @@ const TestDemo = (props: Args): JSX.Element => {
       <div>
         <CellComponent
           data-testid="CellComponentA"
-          contentPosition="left"
-          style={{ width: 279 }}
+          horizontalAlign="right"
+          verticalAlign="bottom"
+          style={{ height: 116, width: 279 }}
         >
           <div style={{ display: "block" }}>
             <StyledStoryHeading data-testid="Child">
@@ -112,7 +124,11 @@ const TestDemo = (props: Args): JSX.Element => {
         </CellComponent>
       </div>
       <div>
-        <CellComponent data-testid="CellComponentB" contentPosition="right">
+        <CellComponent
+          data-testid="CellComponentB"
+          horizontalAlign="left"
+          verticalAlign="top"
+        >
           <div style={{ display: "block" }}>
             <StyledStoryHeading
               data-testid="Child"
@@ -143,4 +159,6 @@ const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
 
-Test.parameters = { controls: { exclude: ["contentPosition"] } };
+Test.parameters = {
+  controls: { exclude: ["verticalAlign", "horizontalAlign"] },
+};
