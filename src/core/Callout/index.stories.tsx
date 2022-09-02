@@ -86,14 +86,20 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Callout intent="info" {...props}>
+      <Callout intent="info" {...props} style={{ width: "180px" }}>
         Title
       </Callout>
-      <Callout intent="info" {...props}>
+      <Callout intent="info" {...props} style={{ width: "180px" }}>
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </Callout>
-      <Callout intent="info" expandable sdsStage="closed" {...props}>
+      <Callout
+        intent="info"
+        expandable
+        sdsStage="closed"
+        {...props}
+        style={{ width: "180px" }}
+      >
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </Callout>
@@ -102,6 +108,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         {...props}
         // eslint-disable-next-line no-alert
         onClose={() => alert("callout closed")}
+        style={{ width: "180px" }}
       >
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
