@@ -10,12 +10,12 @@ import {
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
-  textPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
 }
 
 const doNotForwardProps = [
   "active",
-  "textPosition",
+  "horizontalAlign",
   "shouldShowTooltipOnHover",
   "tooltipProps",
   "tooltipText",
@@ -32,17 +32,40 @@ export const StyledSortingIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellHeaderExtraProps) => {
-    const { active = false, textPosition = "left" } = props;
+    const { active = false, horizontalAlign = "left" } = props;
 
     const spacings = getSpaces(props);
     const colors = getColors(props);
 
     return `
       padding-left: ${spacings?.s}px;
-      margin-left: ${textPosition === "left" ? "auto" : "unset"};
+      margin-left: ${horizontalAlign === "left" ? "auto" : "unset"};
       
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
       opacity: ${active ? 1 : 0};
+    `;
+  }}
+`;
+
+export const StyledCellHeaderContainer = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: CellHeaderExtraProps) => {
+    const { horizontalAlign = "left" } = props;
+
+    return `
+      display: flex;
+      align-items: center;
+
+      & > div {
+        width: 100%;
+        display: flex;
+        justify-content: ${
+          horizontalAlign
+            ? contentPositionMapping[horizontalAlign]
+            : "flex-start"
+        };
+      }
     `;
   }}
 `;
@@ -53,36 +76,24 @@ export const StyledTableHeader = styled("th", {
   ${fontHeaderS}
 
   ${(props: CellHeaderExtraProps) => {
-    const { active = false, textPosition = "left" } = props;
+    const { active = false } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
     const colors = getColors(props);
 
     return `
-      box-sizing: border-box;
       color: ${active ? colors?.primary[400] : colors?.gray[600]};
       font-family: ${typography?.fontFamily};
       padding: ${spacings?.l}px ${spacings?.s}px;
-      min-height: 48px;
       min-width: 96px;
-      width: 100%;
-      display: flex;
-      align-items: center;
+      width: 96px;
       cursor: pointer;
-
-      & > div {
-        width: 100%;
-        display: flex;
-        justify-content: ${
-          textPosition ? contentPositionMapping[textPosition] : "flex-start"
-        };
-      }
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
 
-        & > .MuiButtonBase-root {
+        & .MuiButtonBase-root {
           color: ${active ? colors?.primary[500] : colors?.gray[500]};
           opacity: 1;
         }

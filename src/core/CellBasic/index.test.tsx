@@ -33,4 +33,14 @@ describe("<CellBasic />", () => {
     const style = window.getComputedStyle(renderedElement);
     expect(style.textAlign).toBe("right");
   });
+
+  it("renders text at the bottom", async () => {
+    render(<Test />);
+    const cellBasicElement = screen.getByTestId("CellBasicVerticalAlignTest");
+    const renderedElement = document.getElementsByClassName(
+      cellBasicElement.className
+    )[0];
+    const style = window.getComputedStyle(renderedElement);
+    expect(style.verticalAlign).toBe("bottom");
+  });
 });
