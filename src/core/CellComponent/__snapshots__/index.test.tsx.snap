@@ -2,7 +2,7 @@
 
 exports[`<CellComponent /> Test story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: 279px 50px; grid-template-rows: 1fr;"
+  style="display: grid; grid-template-columns: 112px 50px; grid-template-rows: 1fr;"
 >
   <div>
     <table>
@@ -14,7 +14,6 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           <td
             class="css-1yo7ij0"
             data-testid="CellComponentA"
-            style="height: 116px; width: 279px;"
             text-align="right"
           >
             <div

@@ -57,7 +57,6 @@ const Template: Story = (props: Args) => {
     <CellComponent
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
-      style={{ height: 60, width: 150 }}
     >
       <FormControlLabel
         control={
@@ -91,7 +90,7 @@ const TestDemo = (props: Args): JSX.Element => {
     display: "grid",
     gridColumnGap: "14px",
     gridRowGap: "0px",
-    gridTemplateColumns: "279px 50px",
+    gridTemplateColumns: "112px 50px",
     gridTemplateRows: "1fr",
   };
 
@@ -102,7 +101,6 @@ const TestDemo = (props: Args): JSX.Element => {
           data-testid="CellComponentA"
           horizontalAlign="right"
           verticalAlign="bottom"
-          style={{ height: 116, width: 279 }}
         >
           <div style={{ display: "block" }}>
             <StyledStoryHeading data-testid="Child">
