@@ -8,15 +8,17 @@ import {
   getTypography,
 } from "../styles";
 
-export interface BasicCellExtraProps extends CommonThemeProps {
-  textPosition?: "left" | "center" | "right";
+export interface CellBasicExtraProps extends CommonThemeProps {
+  horizontalAlign?: "left" | "center" | "right";
+  verticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
 }
 
 const doNotForwardProps = [
-  "textPosition",
+  "horizontalAlign",
+  "verticalAlign",
   "primaryText",
   "secondaryText",
   "shouldTextWrap",
@@ -29,8 +31,8 @@ const doNotForwardProps = [
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${(props: BasicCellExtraProps) => {
-    const { textPosition = "left" } = props;
+  ${(props: CellBasicExtraProps) => {
+    const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
@@ -38,10 +40,9 @@ export const StyledTableData = styled("td", {
     return `
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
-        text-align: ${textPosition};
-        min-width: 96px;
-        max-width: 100%;
-        display: block;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlign};
+        width: 96px;
         overflow: hidden;
     `;
   }}
@@ -69,7 +70,7 @@ export const PrimaryText = styled("span", {
 })`
   ${fontBodyS}
 
-  ${(props: BasicCellExtraProps) => {
+  ${(props: CellBasicExtraProps) => {
     const { primaryTextWrapLineCount = 3 } = props;
 
     return `
@@ -89,7 +90,7 @@ export const SecondaryText = styled("span", {
 })`
   ${fontBodyXxs}
 
-  ${(props: BasicCellExtraProps) => {
+  ${(props: CellBasicExtraProps) => {
     const { secondaryTextWrapLineCount = 1 } = props;
 
     const colors = getColors(props);
