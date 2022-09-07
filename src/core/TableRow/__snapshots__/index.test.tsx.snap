@@ -4,7 +4,7 @@ exports[`<TableRow /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      class=" css-k48uld"
+      class=" css-1te7wvi"
       data-mui-internal-clone-element="true"
       data-testid="TableRow"
     >
@@ -12,7 +12,7 @@ exports[`<TableRow /> Test story renders snapshot 1`] = `
         class="css-ms0or8"
       >
         <span
-          class="css-z41sca"
+          class="css-l4a0ln"
         >
           Primary
         </span>

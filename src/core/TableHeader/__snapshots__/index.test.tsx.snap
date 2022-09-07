@@ -7,7 +7,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
     data-testid="TableHeader"
   >
     <tr
-      class="css-1eqhtgs"
+      class="css-1nusez2"
     >
       <th
         class="css-1f4hh9k"
