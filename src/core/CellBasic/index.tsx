@@ -5,6 +5,7 @@ import {
   PrimaryText,
   SecondaryText,
   StyledTableData,
+  TertiaryText,
 } from "./style";
 
 interface CellBasicContentProps
@@ -13,6 +14,8 @@ interface CellBasicContentProps
   primaryTextWrapLineCount?: number;
   secondaryText?: string;
   secondaryTextWrapLineCount?: number;
+  tertiaryText?: string;
+  tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
 }
 
@@ -31,7 +34,9 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     primaryTextWrapLineCount,
     secondaryText,
     secondaryTextWrapLineCount,
-    shouldTextWrap = false,
+    tertiaryText,
+    tertiaryTextWrapLineCount,
+    shouldTextWrap = true,
   } = props;
 
   return (
@@ -50,6 +55,15 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
         >
           {secondaryText}
         </SecondaryText>
+      )}
+
+      {tertiaryText && (
+        <TertiaryText
+          shouldTextWrap={shouldTextWrap}
+          tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+        >
+          {tertiaryText}
+        </TertiaryText>
       )}
     </>
   );
