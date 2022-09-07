@@ -10,6 +10,9 @@ on:
       - next-major
       - beta
       - alpha
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 jobs:
   release:
     name: Release
@@ -43,3 +46,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
+      - name: Post breaking changes to a Slack channel
+        uses: act10ns/slack@v1
+        with:
+          status: complete
+          config: .github/workflows/slack-breaking-changes.yml
+          if: contains(payload.commits.*.message, 'breaking changes')
