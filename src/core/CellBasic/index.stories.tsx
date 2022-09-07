@@ -27,6 +27,10 @@ const CellBasic = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    horizontalAlign: {
+      control: { type: "select" },
+      options: ["left", "center", "right"],
+    },
     primaryText: {
       control: { type: "text" },
     },
@@ -45,12 +49,12 @@ export default {
     shouldTextWrap: {
       control: { type: "boolean" },
     },
-    textPosition: {
-      control: { type: "select" },
-      options: ["left", "center", "right"],
-    },
     tooltipProps: {
       control: { type: "object" },
+    },
+    verticalAlign: {
+      control: { type: "select" },
+      options: ["top", "center", "bottom"],
     },
   },
   component: CellBasic,
@@ -77,6 +81,8 @@ Default.parameters = {
   },
 };
 
+const TableCellStyle = { border: "dashed 1px #eee", height: 80, width: 150 };
+
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
@@ -85,8 +91,26 @@ const TestDemo = (): JSX.Element => (
           data-testid="CellBasic"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
-          textPosition="right"
-          tooltipProps={{ sdsStyle: "light", title: "testTooltipTitle" }}
+          horizontalAlign="right"
+          tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
+          style={TableCellStyle as React.CSSProperties}
+        />
+        <CellBasicRaw
+          data-testid="CellBasicVerticalAlignTest"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          verticalAlign="bottom"
+          shouldShowTooltipOnHover={false}
+          style={TableCellStyle as React.CSSProperties}
+        />
+        <CellBasicRaw
+          data-testid="CellBasicCenterAlignTest"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          verticalAlign="center"
+          horizontalAlign="center"
+          shouldShowTooltipOnHover={false}
+          style={TableCellStyle as React.CSSProperties}
         />
       </tr>
     </tbody>
@@ -100,4 +124,21 @@ export const Test = TestTemplate.bind({});
 Test.args = {
   primaryText: "Primary text",
   secondaryText: "Secondary Text",
+};
+
+Test.parameters = {
+  controls: {
+    exclude: [
+      "primaryText",
+      "secondaryText",
+      "primaryTextWrapLineCount",
+      "secondaryText",
+      "secondaryTextWrapLineCount",
+      "shouldShowTooltipOnHover",
+      "shouldTextWrap",
+      "tooltipProps",
+      "horizontalAlign",
+      "verticalAlign",
+    ],
+  },
 };

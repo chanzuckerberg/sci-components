@@ -58,7 +58,7 @@ export const StyledTableRow = styled("tr", {
     const colors = getColors(props);
 
     return `
-      display: flex;
+      // display: flex;
       align-items: center;
       border-bottom: ${useDivider ? `solid 1px ${colors?.gray[300]}` : "none"};
 
