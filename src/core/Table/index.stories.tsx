@@ -14,7 +14,9 @@ const Table = (props: Args): JSX.Element => {
         <TableRow useDivider={false} hover={false}>
           <CellHeader active>Column 1</CellHeader>
           <CellHeader>Column 2</CellHeader>
-          <CellHeader horizontalAlign="right">Column 3</CellHeader>
+          <CellHeader horizontalAlign="right" hideSortIcon>
+            Column 3
+          </CellHeader>
         </TableRow>
       </TableHeader>
       <tbody>

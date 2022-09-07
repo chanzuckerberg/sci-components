@@ -7,13 +7,13 @@ exports[`<Table /> Test story renders snapshot 1`] = `
 >
   <tbody>
     <tr
-      class="css-k48uld"
+      class="css-1te7wvi"
     >
       <td
         class="css-ms0or8"
       >
         <span
-          class="css-z41sca"
+          class="css-l4a0ln"
         >
           Primary
         </span>
