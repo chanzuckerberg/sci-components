@@ -20,7 +20,7 @@ const CellHeader = (props: Args): JSX.Element => {
   return (
     <table>
       <tbody>
-        <tr style={{ display: "block", width: 150 }}>
+        <tr>
           <CellHeaderRaw onClick={clickHandler} direction={sorting} {...rest}>
             Header
           </CellHeaderRaw>
@@ -42,12 +42,12 @@ export default {
     hideSortIcon: {
       control: { type: "boolean" },
     },
-    shouldShowTooltipOnHover: {
-      control: { type: "boolean" },
-    },
-    textPosition: {
+    horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
+    },
+    shouldShowTooltipOnHover: {
+      control: { type: "boolean" },
     },
     tooltipProps: {
       control: { type: "object" },
@@ -85,7 +85,7 @@ const TestDemo = (): JSX.Element => (
       <tr>
         <CellHeaderRaw
           data-testid="CellHeader"
-          textPosition="right"
+          horizontalAlign="right"
           shouldShowTooltipOnHover
           active
           tooltipText="testTooltipTitle"
@@ -100,3 +100,17 @@ const TestDemo = (): JSX.Element => (
 const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
 export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  controls: {
+    exclude: [
+      "active",
+      "direction",
+      "hideSortIcon",
+      "horizontalAlign",
+      "shouldShowTooltipOnHover",
+      "tooltipProps",
+      "tooltipText",
+    ],
+  },
+};
