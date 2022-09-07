@@ -60,6 +60,29 @@ const Table = (props: Args): JSX.Element => {
             shouldShowTooltipOnHover={false}
           />
         </TableRow>
+        <TableRow
+          disabled
+          shouldShowTooltipOnHover
+          // hover
+          tooltipText="This row is DISABLED!"
+          tooltipSubtitle="Tooltip subtitle"
+        >
+          <CellBasic
+            primaryText="Primary Text"
+            secondaryText="Secondary Text"
+            tertiaryText="Tertiary Text"
+            shouldShowTooltipOnHover={false}
+          />
+          <CellBasic
+            primaryText="Primary Text"
+            shouldShowTooltipOnHover={false}
+          />
+          <CellBasic
+            primaryText="0.4"
+            horizontalAlign="right"
+            shouldShowTooltipOnHover={false}
+          />
+        </TableRow>
       </tbody>
     </TableRaw>
   );
