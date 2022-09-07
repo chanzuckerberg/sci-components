@@ -22,15 +22,16 @@ const Table = (props: Args): JSX.Element => {
       <tbody>
         <TableRow>
           <CellBasic
-            primaryText="Primary"
+            primaryText="Primary Text"
             secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-            secondaryTextWrapLineCount={3}
+            secondaryTextWrapLineCount={2}
             shouldTextWrap
             shouldShowTooltipOnHover={false}
           />
           <CellBasic
-            primaryText="Primary"
+            primaryText="Primary Text"
             secondaryText="Secondary Text"
+            tertiaryText="Tertiary Text"
             shouldShowTooltipOnHover={false}
           />
           <CellBasic
@@ -40,11 +41,21 @@ const Table = (props: Args): JSX.Element => {
           />
         </TableRow>
         <TableRow>
-          <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
-          <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
+          <CellBasic
+            primaryText="Primary Text"
+            secondaryText="Secondary Text"
+            tertiaryText="Tertiary Text"
+            shouldShowTooltipOnHover={false}
+          />
+          <CellBasic
+            primaryText="Primary Text"
+            secondaryText="Secondary Text"
+            shouldShowTooltipOnHover={false}
+          />
           <CellBasic
             primaryText="1,234"
             secondaryText="2,344,000"
+            tertiaryText="12.5%"
             horizontalAlign="right"
             shouldShowTooltipOnHover={false}
           />
