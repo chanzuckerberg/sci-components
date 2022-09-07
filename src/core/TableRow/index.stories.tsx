@@ -6,7 +6,7 @@ import TableRowRaw from "./index";
 
 const TableRow = (props: Args): JSX.Element => {
   return (
-    <table>
+    <table style={{ borderCollapse: "collapse" }}>
       <tbody>
         <TableRowRaw {...props}>
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
