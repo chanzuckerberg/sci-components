@@ -8,7 +8,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
     <table>
       <tbody>
         <tr
-          class="css-k48uld"
+          class="css-1te7wvi"
           style="display: block; max-width: 280px;"
         >
           <td
@@ -57,7 +57,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
     <table>
       <tbody>
         <tr
-          class="css-k48uld"
+          class="css-1te7wvi"
           style="display: block; max-width: 280px;"
         >
           <td
