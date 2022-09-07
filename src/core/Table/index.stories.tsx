@@ -3,19 +3,20 @@ import { Args, Story } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
 import CellHeader from "../CellHeader";
+import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
 import TableRaw from "./index";
 
 const Table = (props: Args): JSX.Element => {
   return (
     <TableRaw {...props}>
-      <thead style={{ borderBottom: "solid 2px #ddd" }}>
+      <TableHeader>
         <TableRow useDivider={false} hover={false}>
           <CellHeader active>Column 1</CellHeader>
           <CellHeader>Column 2</CellHeader>
-          <CellHeader textPosition="right">Column 3</CellHeader>
+          <CellHeader horizontalAlign="right">Column 3</CellHeader>
         </TableRow>
-      </thead>
+      </TableHeader>
       <tbody>
         <TableRow>
           <CellBasic
@@ -32,7 +33,7 @@ const Table = (props: Args): JSX.Element => {
           />
           <CellBasic
             primaryText="356"
-            textPosition="right"
+            horizontalAlign="right"
             shouldShowTooltipOnHover={false}
           />
         </TableRow>
@@ -42,7 +43,7 @@ const Table = (props: Args): JSX.Element => {
           <CellBasic
             primaryText="1,234"
             secondaryText="2,344,000"
-            textPosition="right"
+            horizontalAlign="right"
             shouldShowTooltipOnHover={false}
           />
         </TableRow>
