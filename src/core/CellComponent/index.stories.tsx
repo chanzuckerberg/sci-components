@@ -1,7 +1,7 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import Checkbox from "../Checkbox";
+import Icon from "../Icon";
 import RadioButton from "../Radio";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
@@ -48,26 +48,14 @@ export default {
 };
 
 const Template: Story = (props: Args) => {
-  const { disabled, horizontalAlign, verticalAlign } = props;
-  const [checked, setChecked] = React.useState(true);
-
-  const handleChange = () => setChecked((prevState) => !prevState);
+  const { horizontalAlign, verticalAlign } = props;
 
   return (
     <CellComponent
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
     >
-      <FormControlLabel
-        control={
-          <Checkbox
-            disabled={disabled}
-            onChange={handleChange}
-            stage={checked ? "unchecked" : "checked"}
-          />
-        }
-        label="Label"
-      />
+      <Icon sdsSize="xl" sdsIcon="checkCircle" sdsType="static" />
     </CellComponent>
   );
 };
