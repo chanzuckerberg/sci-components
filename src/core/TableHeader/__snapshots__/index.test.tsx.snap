@@ -10,115 +10,97 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
       class="css-1nusez2"
     >
       <th
-        class="css-1f4hh9k"
+        class="css-6omr7c"
       >
-        <div
-          class="css-s7bxyi"
+        <span>
+          Column 1
+        </span>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-9lolwn-MuiButtonBase-root-MuiIconButton-root"
+          data-testid="iconButton"
+          tabindex="0"
+          type="button"
         >
-          <div>
-            <span>
-              Column 1
-            </span>
-          </div>
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1j31s22-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-jbvua0"
           >
-            <div
-              class="css-jbvua0"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+              data-jest-file-name="IconChevronDownSmall.svg"
+              data-jest-svg-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              viewBox="0 0 14 14"
             />
-          </button>
-        </div>
+          </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
       </th>
       <th
-        class="css-iz3tbo"
+        class="css-jl2z0r"
       >
-        <div
-          class="css-s7bxyi"
+        <span>
+          Column 2
+        </span>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pj2pb5-MuiButtonBase-root-MuiIconButton-root"
+          data-testid="iconButton"
+          tabindex="0"
+          type="button"
         >
-          <div>
-            <span>
-              Column 2
-            </span>
-          </div>
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1o14r5s-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-jbvua0"
           >
-            <div
-              class="css-jbvua0"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+              data-jest-file-name="IconChevronDownSmall.svg"
+              data-jest-svg-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              viewBox="0 0 14 14"
             />
-          </button>
-        </div>
+          </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
       </th>
       <th
-        class="css-iz3tbo"
+        class="css-jl2z0r"
       >
-        <div
-          class="css-s7bxyi"
+        <span>
+          Column 3
+        </span>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pj2pb5-MuiButtonBase-root-MuiIconButton-root"
+          data-testid="iconButton"
+          tabindex="0"
+          type="button"
         >
-          <div>
-            <span>
-              Column 3
-            </span>
-          </div>
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1o14r5s-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-jbvua0"
           >
-            <div
-              class="css-jbvua0"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+              data-jest-file-name="IconChevronDownSmall.svg"
+              data-jest-svg-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              viewBox="0 0 14 14"
             />
-          </button>
-        </div>
+          </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
       </th>
     </tr>
   </thead>
