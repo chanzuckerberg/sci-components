@@ -15,7 +15,34 @@ exports[`<Table /> Test story renders snapshot 1`] = `
         <span
           class="css-l4a0ln"
         >
-          Primary
+          Primary 1
+        </span>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <span
+          class="css-l4a0ln"
+        >
+          Primary 2
+        </span>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <span
+          class="css-l4a0ln"
+        >
+          Primary 3
+        </span>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <span
+          class="css-l4a0ln"
+        >
+          Primary 4
         </span>
       </td>
     </tr>

@@ -16,4 +16,9 @@ describe("<Table />", () => {
     const elements = screen.getAllByTestId("Table");
     expect(elements).toBeTruthy();
   });
+
+  it("renders table component children", async () => {
+    render(<Test />);
+    await screen.findByText("Primary 1");
+  });
 });

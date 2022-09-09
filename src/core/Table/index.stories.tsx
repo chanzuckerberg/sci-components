@@ -63,7 +63,6 @@ const Table = (props: Args): JSX.Element => {
         <TableRow
           disabled
           shouldShowTooltipOnHover
-          // hover
           tooltipText="This row is DISABLED!"
           tooltipSubtitle="Tooltip subtitle"
         >
@@ -107,7 +106,10 @@ const TestDemo = (): JSX.Element => (
   <TableRaw data-testid="Table">
     <tbody>
       <TableRow>
-        <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
+        <CellBasic primaryText="Primary 1" shouldShowTooltipOnHover={false} />
+        <CellBasic primaryText="Primary 2" shouldShowTooltipOnHover={false} />
+        <CellBasic primaryText="Primary 3" shouldShowTooltipOnHover={false} />
+        <CellBasic primaryText="Primary 4" shouldShowTooltipOnHover={false} />
       </TableRow>
     </tbody>
   </TableRaw>
