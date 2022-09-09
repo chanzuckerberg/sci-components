@@ -1,7 +1,7 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import Icon from "../Icon";
+import InputToggle from "../InputToggle";
 import RadioButton from "../Radio";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
@@ -55,7 +55,7 @@ const Template: Story = (props: Args) => {
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
     >
-      <Icon sdsSize="xl" sdsIcon="checkCircle" sdsType="static" />
+      <InputToggle {...props} />
     </CellComponent>
   );
 };
@@ -69,7 +69,7 @@ Default.parameters = {
 };
 
 Default.args = {
-  horizontalAlign: "center",
+  horizontalAlign: "left",
   verticalAlign: "center",
 };
 
