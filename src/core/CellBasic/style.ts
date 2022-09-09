@@ -14,6 +14,7 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
+  tertiaryTextWrapLineCount?: number;
 }
 
 const doNotForwardProps = [
@@ -21,11 +22,13 @@ const doNotForwardProps = [
   "verticalAlign",
   "primaryText",
   "secondaryText",
+  "tertiaryText",
   "shouldTextWrap",
   "shouldShowTooltipOnHover",
   "tooltipProps",
   "primaryTextWrapLineCount",
   "secondaryTextWrapLineCount",
+  "tertiaryTextWrapLineCount",
 ];
 
 export const StyledTableData = styled("td", {
@@ -104,6 +107,31 @@ export const SecondaryText = styled("span", {
       ${
         props.shouldTextWrap
           ? ShouldWrap(secondaryTextWrapLineCount)
+          : ShouldTruncate()
+      }
+    `;
+  }}
+`;
+
+export const TertiaryText = styled("span", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${fontBodyXxs}
+
+  ${(props: CellBasicExtraProps) => {
+    const { tertiaryTextWrapLineCount = 1 } = props;
+
+    const colors = getColors(props);
+    const spaces = getSpaces(props);
+
+    return `
+      display: block;
+      color: ${colors?.gray[500]};
+      padding-top: ${spaces?.s}px;
+
+      ${
+        props.shouldTextWrap
+          ? ShouldWrap(tertiaryTextWrapLineCount)
           : ShouldTruncate()
       }
     `;

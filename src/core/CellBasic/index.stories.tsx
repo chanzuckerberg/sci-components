@@ -49,6 +49,12 @@ export default {
     shouldTextWrap: {
       control: { type: "boolean" },
     },
+    tertiaryText: {
+      control: { type: "text" },
+    },
+    tertiaryTextWrapLineCount: {
+      control: { type: "number" },
+    },
     tooltipProps: {
       control: { type: "object" },
     },
@@ -72,6 +78,8 @@ Default.args = {
   secondaryTextWrapLineCount: 1,
   shouldShowTooltipOnHover: true,
   shouldTextWrap: true,
+  tertiaryText: "Tertiary Text",
+  tertiaryTextWrapLineCount: 1,
   tooltipProps: { sdsStyle: "dark" },
 };
 
@@ -81,24 +89,23 @@ Default.parameters = {
   },
 };
 
-const TableCellStyle = { border: "dashed 1px #eee", height: 80, width: 150 };
+const TableCellStyle = {
+  border: "dashed 1px #eee",
+  height: 100,
+  maxWidth: 160,
+  width: 160,
+};
 
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
         <CellBasicRaw
-          data-testid="CellBasic"
-          primaryText="Primary Text"
-          secondaryText="Secondary Text"
-          horizontalAlign="right"
-          tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
-          style={TableCellStyle as React.CSSProperties}
-        />
-        <CellBasicRaw
           data-testid="CellBasicVerticalAlignTest"
           primaryText="Primary Text"
-          secondaryText="Secondary Text"
+          secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          secondaryTextWrapLineCount={2}
+          shouldTextWrap
           verticalAlign="bottom"
           shouldShowTooltipOnHover={false}
           style={TableCellStyle as React.CSSProperties}
@@ -110,6 +117,15 @@ const TestDemo = (): JSX.Element => (
           verticalAlign="center"
           horizontalAlign="center"
           shouldShowTooltipOnHover={false}
+          style={TableCellStyle as React.CSSProperties}
+        />
+        <CellBasicRaw
+          data-testid="CellBasic"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          tertiaryText="Tertiary Text"
+          horizontalAlign="right"
+          tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
           style={TableCellStyle as React.CSSProperties}
         />
       </tr>
@@ -130,10 +146,11 @@ Test.parameters = {
   controls: {
     exclude: [
       "primaryText",
-      "secondaryText",
       "primaryTextWrapLineCount",
       "secondaryText",
       "secondaryTextWrapLineCount",
+      "tertiaryText",
+      "tertiaryTextWrapLineCount",
       "shouldShowTooltipOnHover",
       "shouldTextWrap",
       "tooltipProps",
