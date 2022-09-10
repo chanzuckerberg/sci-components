@@ -9,28 +9,33 @@ import {
 } from "../styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
-  textPosition?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "center" | "right";
+  verticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
+  tertiaryTextWrapLineCount?: number;
 }
 
 const doNotForwardProps = [
-  "textPosition",
+  "horizontalAlign",
+  "verticalAlign",
   "primaryText",
   "secondaryText",
+  "tertiaryText",
   "shouldTextWrap",
   "shouldShowTooltipOnHover",
   "tooltipProps",
   "primaryTextWrapLineCount",
   "secondaryTextWrapLineCount",
+  "tertiaryTextWrapLineCount",
 ];
 
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellBasicExtraProps) => {
-    const { textPosition = "left" } = props;
+    const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
@@ -38,10 +43,9 @@ export const StyledTableData = styled("td", {
     return `
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
-        text-align: ${textPosition};
-        min-width: 96px;
-        max-width: 100%;
-        display: block;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlign};
+        width: 96px;
         overflow: hidden;
     `;
   }}
@@ -103,6 +107,31 @@ export const SecondaryText = styled("span", {
       ${
         props.shouldTextWrap
           ? ShouldWrap(secondaryTextWrapLineCount)
+          : ShouldTruncate()
+      }
+    `;
+  }}
+`;
+
+export const TertiaryText = styled("span", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${fontBodyXxs}
+
+  ${(props: CellBasicExtraProps) => {
+    const { tertiaryTextWrapLineCount = 1 } = props;
+
+    const colors = getColors(props);
+    const spaces = getSpaces(props);
+
+    return `
+      display: block;
+      color: ${colors?.gray[500]};
+      padding-top: ${spaces?.s}px;
+
+      ${
+        props.shouldTextWrap
+          ? ShouldWrap(tertiaryTextWrapLineCount)
           : ShouldTruncate()
       }
     `;

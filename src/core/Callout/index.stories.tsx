@@ -84,15 +84,34 @@ const storyRow = {
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  // TODO: add accordion
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Callout intent="info" {...props}>
-        this is a callout
+      <Callout intent="info" {...props} style={{ width: "180px" }}>
+        Title
       </Callout>
-      <Callout intent="info" {...props}>
+      <Callout intent="info" {...props} style={{ width: "180px" }}>
         <CalloutTitle>Title</CalloutTitle>
-        this is a callout
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      </Callout>
+      <Callout
+        intent="info"
+        expandable
+        sdsStage="closed"
+        {...props}
+        style={{ width: "180px" }}
+      >
+        <CalloutTitle>Title</CalloutTitle>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      </Callout>
+      <Callout
+        intent="info"
+        {...props}
+        // eslint-disable-next-line no-alert
+        onClose={() => alert("callout closed")}
+        style={{ width: "180px" }}
+      >
+        <CalloutTitle>Title</CalloutTitle>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </Callout>
     </div>
   );

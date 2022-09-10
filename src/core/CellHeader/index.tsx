@@ -11,7 +11,6 @@ export type CellHeaderDirection = "asc" | "desc";
 
 interface CellHeaderContentProps {
   active?: boolean;
-  textPosition?: "left" | "right";
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   children: string;
@@ -32,33 +31,20 @@ export type CellHeaderProps = CellHeaderRawProps &
 const CellHeaderContent = (
   props: CellHeaderContentProps
 ): JSX.Element | null => {
-  const {
-    active,
-    textPosition,
-    children,
-    direction = "desc",
-    hideSortIcon = false,
-  } = props;
+  const { active, children, direction = "desc", hideSortIcon = false } = props;
 
   const sdsIconName: keyof IconNameToSizes =
     direction === "asc" ? "chevronUp" : "chevronDown";
 
   const sortIcon = (
-    <StyledSortingIcon
-      sdsType="tertiary"
-      sdsSize="small"
-      active={active}
-      textPosition={textPosition}
-    >
+    <StyledSortingIcon sdsType="tertiary" sdsSize="small" active={active}>
       <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
     </StyledSortingIcon>
   );
 
   return (
     <>
-      <div>
-        <span>{children}</span>
-      </div>
+      <span>{children}</span>
       {!hideSortIcon && sortIcon}
     </>
   );

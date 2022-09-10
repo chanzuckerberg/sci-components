@@ -5,13 +5,17 @@ import {
   PrimaryText,
   SecondaryText,
   StyledTableData,
+  TertiaryText,
 } from "./style";
 
-interface CellBasicContentProps {
+interface CellBasicContentProps
+  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;
   secondaryTextWrapLineCount?: number;
+  tertiaryText?: string;
+  tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
 }
 
@@ -24,65 +28,70 @@ export type CellBasicProps = CellBasicRawProps &
   CellBasicExtraProps &
   CellBasicContentProps;
 
-const CellBasicContent = forwardRef(
-  (props: CellBasicContentProps, _): JSX.Element | null => {
+const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
+  const {
+    primaryText,
+    primaryTextWrapLineCount,
+    secondaryText,
+    secondaryTextWrapLineCount,
+    tertiaryText,
+    tertiaryTextWrapLineCount,
+    shouldTextWrap = true,
+  } = props;
+
+  return (
+    <>
+      <PrimaryText
+        shouldTextWrap={shouldTextWrap}
+        primaryTextWrapLineCount={primaryTextWrapLineCount}
+      >
+        {primaryText}
+      </PrimaryText>
+
+      {secondaryText && (
+        <SecondaryText
+          shouldTextWrap={shouldTextWrap}
+          secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+        >
+          {secondaryText}
+        </SecondaryText>
+      )}
+
+      {tertiaryText && (
+        <TertiaryText
+          shouldTextWrap={shouldTextWrap}
+          tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+        >
+          {tertiaryText}
+        </TertiaryText>
+      )}
+    </>
+  );
+};
+
+const CellBasic = forwardRef<HTMLTableCellElement, CellBasicProps>(
+  (props: CellBasicProps, ref): JSX.Element | null => {
     const {
       primaryText,
-      primaryTextWrapLineCount,
-      secondaryText,
-      secondaryTextWrapLineCount,
-      shouldTextWrap = false,
+      shouldShowTooltipOnHover = true,
+      tooltipProps,
     } = props;
 
+    if (shouldShowTooltipOnHover) {
+      return (
+        <Tooltip title={primaryText} arrow {...tooltipProps}>
+          <StyledTableData ref={ref} {...props}>
+            <CellBasicContent {...props} />
+          </StyledTableData>
+        </Tooltip>
+      );
+    }
     return (
-      <>
-        <PrimaryText
-          shouldTextWrap={shouldTextWrap}
-          primaryTextWrapLineCount={primaryTextWrapLineCount}
-        >
-          {primaryText}
-        </PrimaryText>
-
-        {secondaryText && (
-          <SecondaryText
-            shouldTextWrap={shouldTextWrap}
-            secondaryTextWrapLineCount={secondaryTextWrapLineCount}
-          >
-            {secondaryText}
-          </SecondaryText>
-        )}
-      </>
+      <StyledTableData ref={ref} {...props}>
+        <CellBasicContent {...props} />
+      </StyledTableData>
     );
   }
 );
-
-const CellBasic = forwardRef((props: CellBasicProps, _): JSX.Element | null => {
-  const {
-    primaryText,
-    secondaryText,
-    shouldShowTooltipOnHover = true,
-    tooltipProps,
-  } = props;
-
-  if (shouldShowTooltipOnHover) {
-    return (
-      <Tooltip
-        title={primaryText}
-        subtitle={secondaryText}
-        arrow
-        {...tooltipProps}
-      >
-        <StyledTableData {...props}>
-          <CellBasicContent {...props} />
-        </StyledTableData>
-      </Tooltip>
-    );
-  }
-  return (
-    <StyledTableData {...props}>
-      <CellBasicContent {...props} />
-    </StyledTableData>
-  );
-});
 
 export default CellBasic;

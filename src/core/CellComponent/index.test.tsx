@@ -1,6 +1,6 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStory } from "@storybook/testing-react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, { Test as TestStory } from "./index.stories";
@@ -8,39 +8,40 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<CellBasic />", () => {
+describe("<CellComponent />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders cell basic component", () => {
+  it("renders cellComponent component", () => {
     render(<Test />);
-    const elements = screen.getAllByTestId("CellBasic");
+    const elements = screen.getAllByTestId("CellComponentA");
     expect(elements).toBeTruthy();
   });
 
-  it("renders tooltip on hover", async () => {
+  it("renders child components", async () => {
     render(<Test />);
-    const cellBasicElement = screen.getByTestId("CellBasic");
-    fireEvent.mouseOver(cellBasicElement);
-    await screen.findByText("testTooltipTitle");
+    const elements = screen.getAllByTestId("Child");
+    expect(elements).toHaveLength(5);
   });
 
-  it("renders text at right side", async () => {
+  it("renders content at bottom right side", async () => {
     render(<Test />);
-    const cellBasicElement = screen.getByTestId("CellBasic");
+    const cellComponentElement = screen.getByTestId("CellComponentA");
     const renderedElement = document.getElementsByClassName(
-      cellBasicElement.className
+      cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
     expect(style.textAlign).toBe("right");
+    expect(style.verticalAlign).toBe("bottom");
   });
 
-  it("renders text at the bottom", async () => {
+  it("renders content at upper left side", async () => {
     render(<Test />);
-    const cellBasicElement = screen.getByTestId("CellBasicVerticalAlignTest");
+    const cellComponentElement = screen.getByTestId("CellComponentB");
     const renderedElement = document.getElementsByClassName(
-      cellBasicElement.className
+      cellComponentElement.className
     )[0];
     const style = window.getComputedStyle(renderedElement);
-    expect(style.verticalAlign).toBe("bottom");
+    expect(style.textAlign).toBe("left");
+    expect(style.verticalAlign).toBe("top");
   });
 });
