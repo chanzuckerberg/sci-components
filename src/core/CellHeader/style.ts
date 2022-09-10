@@ -13,6 +13,12 @@ export interface CellHeaderExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
 }
 
+const contentPositionMapping = {
+  center: "center",
+  left: "flex-start",
+  right: "flex-end",
+};
+
 const doNotForwardProps = [
   "active",
   "horizontalAlign",
@@ -33,9 +39,10 @@ export const StyledSortingIcon = styled(ButtonIcon, {
 
     return `
       padding-left: ${spacings?.s}px;
-      margin-top: -2px;
+      margin-bottom: 2px;
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
       opacity: ${active ? 1 : 0};
+      outline: none;
     `;
   }}
 `;
@@ -60,6 +67,7 @@ export const StyledTableHeader = styled("th", {
       min-width: 96px;
       width: 96px;
       cursor: pointer;
+      vertical-align: bottom;
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
@@ -69,6 +77,22 @@ export const StyledTableHeader = styled("th", {
           opacity: 1;
         }
       }
+    `;
+  }}
+`;
+
+export const StyledCellHeaderContainer = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: CellHeaderExtraProps) => {
+    const { horizontalAlign = "left" } = props;
+    return `
+      align-items: flex-end;
+      width: 100%;
+      display: flex;
+      justify-content: ${
+        horizontalAlign ? contentPositionMapping[horizontalAlign] : "flex-start"
+      };
     `;
   }}
 `;
