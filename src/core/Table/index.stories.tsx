@@ -89,7 +89,7 @@ const Table = (props: Args): JSX.Element => {
 
 export default {
   component: Table,
-  title: "Table",
+  title: "Table/Table",
 };
 
 const Template: Story = (args) => <Table {...args} />;

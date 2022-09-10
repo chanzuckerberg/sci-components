@@ -44,7 +44,7 @@ export default {
     },
   },
   component: CellComponent,
-  title: "CellComponent",
+  title: "Table/CellComponent",
 };
 
 const Template: Story = (props: Args) => {

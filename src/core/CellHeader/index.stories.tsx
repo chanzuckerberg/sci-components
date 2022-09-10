@@ -57,7 +57,7 @@ export default {
     },
   },
   component: CellHeader,
-  title: "CellHeader",
+  title: "Table/CellHeader",
 };
 
 const Template: Story = (args) => <CellHeader {...args} />;
