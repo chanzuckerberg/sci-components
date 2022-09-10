@@ -4,13 +4,14 @@ import {
 } from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
-import { StyledPopper } from "../DropdownMenu/style";
+import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
 import { StyledButton } from "./style";
 
 export {
+  StyledPaper as DropdownPaper,
   StyledPopper as DropdownPopper,
   InputDropdown as DropdownInputDropdown,
 };
@@ -36,7 +37,7 @@ interface DropdownProps<Multiple> {
   onClose?: () => void;
   multiple?: Multiple;
   search?: boolean;
-  MenuSelectProps?: Partial<typeof DropdownMenu>;
+  DropdownMenuProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
   value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
@@ -62,7 +63,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   closeOnBlur = !buttons,
   onChange,
   onClose,
-  MenuSelectProps = {},
+  DropdownMenuProps = {},
   InputDropdownProps = { sdsStyle: "minimal" },
   value: propValue,
   PopperComponent,
@@ -129,7 +130,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
         PopperComponent={PopperComponent}
         PopperBaseProps={{ sx: { minWidth: 250 } }}
         options={options}
-        {...MenuSelectProps}
+        {...DropdownMenuProps}
       >
         {buttons ? (
           <div>

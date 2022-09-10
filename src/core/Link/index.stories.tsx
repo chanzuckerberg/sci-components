@@ -53,6 +53,13 @@ const LivePreviewDemo = (props: LinkProps): JSX.Element => {
         </Link>{" "}
         consectetur, adipisicing elit.
       </p>
+      <p style={{ backgroundColor: "#EFF2FC", padding: "10px" }}>
+        Lorem ipsum{" "}
+        <Link href="/" sdsStyle="dashed" component="button" {...props}>
+          button element
+        </Link>{" "}
+        consectetur, adipisicing elit.
+      </p>
     </div>
   );
 };
