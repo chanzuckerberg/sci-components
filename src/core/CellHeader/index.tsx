@@ -3,7 +3,6 @@ import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import {
   CellHeaderExtraProps,
-  StyledCellHeaderContainer,
   StyledSortingIcon,
   StyledTableHeader,
 } from "./style";
@@ -12,7 +11,6 @@ export type CellHeaderDirection = "asc" | "desc";
 
 interface CellHeaderContentProps {
   active?: boolean;
-  horizontalAlign?: "left" | "center" | "right";
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   children: string;
@@ -33,35 +31,22 @@ export type CellHeaderProps = CellHeaderRawProps &
 const CellHeaderContent = (
   props: CellHeaderContentProps
 ): JSX.Element | null => {
-  const {
-    active,
-    horizontalAlign,
-    children,
-    direction = "desc",
-    hideSortIcon = false,
-  } = props;
+  const { active, children, direction = "desc", hideSortIcon = false } = props;
 
   const sdsIconName: keyof IconNameToSizes =
     direction === "asc" ? "chevronUp" : "chevronDown";
 
   const sortIcon = (
-    <StyledSortingIcon
-      sdsType="tertiary"
-      sdsSize="small"
-      active={active}
-      horizontalAlign={horizontalAlign}
-    >
+    <StyledSortingIcon sdsType="tertiary" sdsSize="small" active={active}>
       <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
     </StyledSortingIcon>
   );
 
   return (
-    <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
-      <div>
-        <span>{children}</span>
-      </div>
+    <>
+      <span>{children}</span>
       {!hideSortIcon && sortIcon}
-    </StyledCellHeaderContainer>
+    </>
   );
 };
 

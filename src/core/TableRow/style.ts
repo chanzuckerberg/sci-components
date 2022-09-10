@@ -28,6 +28,9 @@ const disabledStyled = (props: RowExtraProps) => {
   return `
     background-color: ${colors?.gray[100]};
     color: ${colors?.gray[300]};
+    & span, & div {
+      color: ${colors?.gray[300]};
+    }
   `;
 };
 

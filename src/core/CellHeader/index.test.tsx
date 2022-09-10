@@ -27,11 +27,8 @@ describe("<CellHeader />", () => {
   it("renders text at right side", async () => {
     render(<Test />);
     const headerCellElement = screen.getByTestId("CellHeader");
-    const renderedElement = document.getElementsByClassName(
-      headerCellElement.className
-    )[0].firstElementChild?.firstElementChild;
-    const style = window.getComputedStyle(renderedElement as Element);
-    expect(style.justifyContent).toBe("flex-end");
+    const style = window.getComputedStyle(headerCellElement as Element);
+    expect(style.textAlign).toBe("right");
   });
 
   it("renders a sort icon when header is active", async () => {
