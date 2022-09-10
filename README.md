@@ -192,17 +192,17 @@ To use the default theme in your React application, complete the following:
 2. Import the default theme object and use it in Material UI's `<ThemeProvier />`:
 
 ```javascript
-import { defaultTheme } from "czifui";
-import { StylesProvider, ThemeProvider } from "@mui/material/styles";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { defaultTheme } from "czifui";
 
-<StylesProvider injectFirst>
-  <EmotionThemeProvider theme={defaultTheme}>
-    <ThemeProvider theme={defaultTheme}>
+<StyledEngineProvider injectFirst>
+  <ThemeProvider theme={defaultTheme}>
+    <EmotionThemeProvider theme={defaultTheme}>
       <YourApp />
-    </ThemeProvider>
-  </EmotionThemeProvider>
-</StylesProvider>;
+    </EmotionThemeProvider>
+  </ThemeProvider>
+</StyledEngineProvider>;
 ```
 
 If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
@@ -210,26 +210,26 @@ the full theme object like below. This is needed because `createTheme` generates
 extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultAppTheme` instead of your own custom options
 
 ```tsx
-  import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-  import { defaultAppTheme, makeThemeOptions } from "czifui";
-  import { StylesProvider, ThemeProvider } from "@mui/material/styles";
-  import createTheme from "@mui/material/styles/createTheme";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { defaultAppTheme, makeThemeOptions } from "czifui";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import createTheme from "@mui/material/styles/createTheme";
 
-  const customTheme = {
-    ...
-  }
+const customTheme = {
+  ...
+}
 
-  const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
+const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
 
-  const theme = createTheme(appTheme)
+const theme = createTheme(appTheme)
 
-    <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={theme}>
-          <YourApp />
-        </EmotionThemeProvider>
-      </ThemeProvider>
-    </StylesProvider>
+<StyledEngineProvider injectFirst>
+  <ThemeProvider theme={theme}>
+    <EmotionThemeProvider theme={theme}>
+      <YourApp />
+    </EmotionThemeProvider>
+  </ThemeProvider>
+</StyledEngineProvider>
 ```
 
 💡 CZGE example available [here](https://github.com/chanzuckerberg/czgenepi/blob/trunk/src/frontend/src/common/styles/theme.ts).
