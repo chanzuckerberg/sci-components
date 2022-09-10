@@ -12,10 +12,12 @@ const Table = (props: Args): JSX.Element => {
     <TableRaw {...props}>
       <TableHeader>
         <TableRow useDivider={false} hover={false}>
-          <CellHeader active>Column 1</CellHeader>
-          <CellHeader>Column 2</CellHeader>
+          <CellHeader active>Active Header</CellHeader>
+          <CellHeader>
+            A very long table header title to test sort icon positioning
+          </CellHeader>
           <CellHeader horizontalAlign="right" hideSortIcon>
-            Column 3
+            Not sortable
           </CellHeader>
         </TableRow>
       </TableHeader>
