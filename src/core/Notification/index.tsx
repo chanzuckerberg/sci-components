@@ -1,5 +1,5 @@
 import { AlertProps } from "@mui/lab";
-import { Slide } from "@mui/material";
+import { Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
@@ -76,38 +76,40 @@ const Notification = ({
         unmountOnExit
         timeout={250}
       >
-        <StyledNotification
-          onClose={onClose ? handleClose : undefined}
-          action={
-            onClose ? (
-              <ButtonIcon
-                onClick={handleClose}
-                sdsSize="small"
-                sdsType="tertiary"
-                data-testid="notificationCloseButton"
-                size="large"
+        <Box>
+          <StyledNotification
+            onClose={onClose ? handleClose : undefined}
+            action={
+              onClose ? (
+                <ButtonIcon
+                  onClick={handleClose}
+                  sdsSize="small"
+                  sdsType="tertiary"
+                  data-testid="notificationCloseButton"
+                  size="large"
+                >
+                  {" "}
+                  <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
+                </ButtonIcon>
+              ) : null
+            }
+            icon={getIcon()}
+            className="elevated"
+            severity={intent}
+            {...passedProps}
+          >
+            {children}
+            {buttonOnClick && (
+              <Button
+                sdsStyle="minimal"
+                sdsType="secondary"
+                onClick={buttonOnClick}
               >
-                {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-              </ButtonIcon>
-            ) : null
-          }
-          icon={getIcon()}
-          className="elevated"
-          severity={intent}
-          {...passedProps}
-        >
-          {children}
-          {buttonOnClick && (
-            <Button
-              sdsStyle="minimal"
-              sdsType="secondary"
-              onClick={buttonOnClick}
-            >
-              {buttonText}
-            </Button>
-          )}
-        </StyledNotification>
+                {buttonText}
+              </Button>
+            )}
+          </StyledNotification>
+        </Box>
       </Slide>
     </>
   );
