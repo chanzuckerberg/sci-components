@@ -75,6 +75,8 @@ export { default as RadioButton } from "./core/Radio";
 export * from "./core/SegmentedControl";
 export { default as SegmentedControl } from "./core/SegmentedControl";
 export * from "./core/styles";
+export * from "./core/Table";
+export { default as Table } from "./core/Table";
 export * from "./core/TableHeader";
 export { default as TableHeader } from "./core/TableHeader";
 export * from "./core/TableRow";
