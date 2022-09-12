@@ -21,7 +21,7 @@ const TableHeader = (props: Args): JSX.Element => {
 
 export default {
   component: TableHeader,
-  title: "TableHeader",
+  title: "Table/TableHeader",
 };
 
 const Template: Story = (args) => <TableHeader {...args} />;
