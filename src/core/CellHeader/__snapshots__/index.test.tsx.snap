@@ -5,20 +5,18 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
   <tbody>
     <tr>
       <th
-        class=" css-1f4hh9k"
+        class=" css-zwamnh"
         data-mui-internal-clone-element="true"
         data-testid="CellHeader"
       >
         <div
-          class="css-1mxuk8l"
+          class="css-wg04tn"
         >
-          <div>
-            <span>
-              Header
-            </span>
-          </div>
+          <span>
+            Header
+          </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-37ti23-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1dive4p-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"

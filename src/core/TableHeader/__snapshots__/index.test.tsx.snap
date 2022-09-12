@@ -10,18 +10,16 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
       class="css-1nusez2"
     >
       <th
-        class="css-1f4hh9k"
+        class="css-1vtbnka"
       >
         <div
-          class="css-s7bxyi"
+          class="css-rm9mvq"
         >
-          <div>
-            <span>
-              Column 1
-            </span>
-          </div>
+          <span>
+            Column 1
+          </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1j31s22-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1dive4p-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"
@@ -47,18 +45,16 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-iz3tbo"
+        class="css-dzta2w"
       >
         <div
-          class="css-s7bxyi"
+          class="css-rm9mvq"
         >
-          <div>
-            <span>
-              Column 2
-            </span>
-          </div>
+          <span>
+            Column 2
+          </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1o14r5s-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1l80hhm-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"
@@ -84,18 +80,16 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-iz3tbo"
+        class="css-dzta2w"
       >
         <div
-          class="css-s7bxyi"
+          class="css-rm9mvq"
         >
-          <div>
-            <span>
-              Column 3
-            </span>
-          </div>
+          <span>
+            Column 3
+          </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1o14r5s-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1l80hhm-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"

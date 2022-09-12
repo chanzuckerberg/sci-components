@@ -51,7 +51,7 @@ export default {
     },
   },
   component: TableRow,
-  title: "TableRow",
+  title: "Table/TableRow",
 };
 
 const Template: Story = (args) => <TableRow {...args} />;

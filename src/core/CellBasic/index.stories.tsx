@@ -64,7 +64,7 @@ export default {
     },
   },
   component: CellBasic,
-  title: "CellBasic",
+  title: "Table/CellBasic",
 };
 
 const Template: Story = (args) => <CellBasic {...args} />;

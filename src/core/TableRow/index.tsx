@@ -20,7 +20,7 @@ const TableRow = forwardRef<HTMLTableRowElement, RowProps>(
       tooltipProps,
       tooltipText = false,
       tooltipSubtitle,
-      hover,
+      hover = true,
     } = props;
 
     if (shouldShowTooltipOnHover && hover) {

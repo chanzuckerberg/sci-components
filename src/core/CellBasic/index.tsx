@@ -73,13 +73,22 @@ const CellBasic = forwardRef<HTMLTableCellElement, CellBasicProps>(
   (props: CellBasicProps, ref): JSX.Element | null => {
     const {
       primaryText,
+      secondaryText,
       shouldShowTooltipOnHover = true,
       tooltipProps,
     } = props;
 
     if (shouldShowTooltipOnHover) {
       return (
-        <Tooltip title={primaryText} arrow {...tooltipProps}>
+        <Tooltip
+          title={primaryText}
+          subtitle={secondaryText}
+          arrow
+          leaveDelay={0}
+          leaveTouchDelay={0}
+          sdsStyle="dark"
+          {...tooltipProps}
+        >
           <StyledTableData ref={ref} {...props}>
             <CellBasicContent {...props} />
           </StyledTableData>

@@ -13,6 +13,12 @@ export interface CellHeaderExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
 }
 
+const contentPositionMapping = {
+  center: "center",
+  left: "flex-start",
+  right: "flex-end",
+};
+
 const doNotForwardProps = [
   "active",
   "horizontalAlign",
@@ -22,50 +28,21 @@ const doNotForwardProps = [
   "hideSortIcon",
 ];
 
-const contentPositionMapping = {
-  center: "center",
-  left: "flex-start",
-  right: "flex-end",
-};
-
 export const StyledSortingIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellHeaderExtraProps) => {
-    const { active = false, horizontalAlign = "left" } = props;
+    const { active = false } = props;
 
     const spacings = getSpaces(props);
     const colors = getColors(props);
 
     return `
       padding-left: ${spacings?.s}px;
-      margin-left: ${horizontalAlign === "left" ? "auto" : "unset"};
-      
+      margin-bottom: 2px;
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
       opacity: ${active ? 1 : 0};
-    `;
-  }}
-`;
-
-export const StyledCellHeaderContainer = styled("div", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${(props: CellHeaderExtraProps) => {
-    const { horizontalAlign = "left" } = props;
-
-    return `
-      display: flex;
-      align-items: center;
-
-      & > div {
-        width: 100%;
-        display: flex;
-        justify-content: ${
-          horizontalAlign
-            ? contentPositionMapping[horizontalAlign]
-            : "flex-start"
-        };
-      }
+      outline: none;
     `;
   }}
 `;
@@ -76,7 +53,7 @@ export const StyledTableHeader = styled("th", {
   ${fontHeaderS}
 
   ${(props: CellHeaderExtraProps) => {
-    const { active = false } = props;
+    const { active = false, horizontalAlign = "left" } = props;
 
     const spacings = getSpaces(props);
     const typography = getTypography(props);
@@ -86,9 +63,11 @@ export const StyledTableHeader = styled("th", {
       color: ${active ? colors?.primary[400] : colors?.gray[600]};
       font-family: ${typography?.fontFamily};
       padding: ${spacings?.l}px ${spacings?.s}px;
+      text-align: ${horizontalAlign};
       min-width: 96px;
       width: 96px;
       cursor: pointer;
+      vertical-align: bottom;
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
@@ -98,6 +77,22 @@ export const StyledTableHeader = styled("th", {
           opacity: 1;
         }
       }
+    `;
+  }}
+`;
+
+export const StyledCellHeaderContainer = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: CellHeaderExtraProps) => {
+    const { horizontalAlign = "left" } = props;
+    return `
+      align-items: flex-end;
+      width: 100%;
+      display: flex;
+      justify-content: ${
+        horizontalAlign ? contentPositionMapping[horizontalAlign] : "flex-start"
+      };
     `;
   }}
 `;
