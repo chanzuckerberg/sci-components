@@ -10,7 +10,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
       class="css-1nusez2"
     >
       <th
-        class="css-1vtbnka"
+        class="css-bc0x2f"
       >
         <div
           class="css-rm9mvq"
@@ -19,7 +19,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             Column 1
           </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1dive4p-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mbcl5i-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"
@@ -45,7 +45,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-dzta2w"
+        class="css-x40omn"
       >
         <div
           class="css-rm9mvq"
@@ -54,7 +54,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             Column 2
           </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1l80hhm-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1enjk1p-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"
@@ -80,7 +80,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-dzta2w"
+        class="css-x40omn"
       >
         <div
           class="css-rm9mvq"
@@ -89,7 +89,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             Column 3
           </span>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1l80hhm-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1enjk1p-MuiButtonBase-root-MuiIconButton-root"
             data-testid="iconButton"
             tabindex="0"
             type="button"
