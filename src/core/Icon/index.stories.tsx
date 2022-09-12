@@ -1,5 +1,13 @@
+import styled from "@emotion/styled";
 import { Args, Story } from "@storybook/react";
-import React from "react";
+import React, { useRef } from "react";
+import {
+  CommonThemeProps,
+  getColors,
+  getSpaces,
+  getTypography,
+} from "../styles";
+import TooltipCondensed from "../TooltipCondensed";
 import Icon from "./index";
 import { iconMap, IconNameToSizes } from "./map";
 
@@ -66,41 +74,85 @@ IconInteractive.args = {
   sdsType: "interactive",
 };
 
+const IconBankWrapper = styled("div")`
+  ${(props: CommonThemeProps) => {
+    const typography = getTypography(props);
+    const spacings = getSpaces(props);
+    const colors = getColors(props);
+
+    return `
+      font-family: ${typography?.fontFamily};
+      display: grid;
+      grid-gap: ${spacings?.s}px;
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, 180px);
+
+      input {
+        margin: ${spacings?.m}px 0 0 0;
+        border: none;
+        outline: none;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      span {
+        color: ${colors?.gray[400]};
+        font-size: 12px;
+      }
+    `;
+  }}
+`;
+
+const IconWrapper = styled("div")`
+  align-items: center;
+  border: 1px dashed #eee;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px;
+`;
+
 export const IconBank = () => {
   const icons = Object.entries(iconMap);
+
+  const copyIconNameHandler = (
+    iconName: string,
+    icon: HTMLInputElement | null
+  ) => {
+    navigator.clipboard.writeText(iconName);
+    if (icon) icon.select();
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconBankWrapper>
       {icons.map(([sdsIcon, icon]) => {
         const { largeIcon } = icon;
         const sdsSize = largeIcon ? "l" : "s";
+        const iconInputRef = useRef<HTMLInputElement>(null);
 
         return (
-          <div
-            key={sdsIcon}
-            style={{
-              alignItems: "center",
-              border: "1px solid black",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              padding: "5px",
-            }}
-          >
-            <Icon
-              sdsSize={sdsSize}
-              sdsIcon={sdsIcon as keyof IconNameToSizes}
-              sdsType="static"
-            />
-            <span>{sdsIcon}</span>
-            <span>(size {sdsSize})</span>
-          </div>
+          <TooltipCondensed title="Click to copy!" key={sdsIcon}>
+            <IconWrapper
+              onClick={() => copyIconNameHandler(sdsIcon, iconInputRef.current)}
+            >
+              <Icon
+                sdsSize={sdsSize}
+                sdsIcon={sdsIcon as keyof IconNameToSizes}
+                sdsType="static"
+              />
+              <input
+                type="text"
+                ref={iconInputRef}
+                value={sdsIcon}
+                onChange={() => {}}
+              />
+              <span>(size {sdsSize})</span>
+            </IconWrapper>
+          </TooltipCondensed>
         );
       })}
-    </div>
+    </IconBankWrapper>
   );
 };
