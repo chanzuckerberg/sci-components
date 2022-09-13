@@ -9,7 +9,7 @@ import CellComponentRaw from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
 
 const CellComponent = (props: Args): JSX.Element => {
-  const { horizontalAlign, verticalAlign } = props;
+  const { horizontalAlign, verticalAlign, children } = props;
 
   return (
     <table>
@@ -21,11 +21,13 @@ const CellComponent = (props: Args): JSX.Element => {
           }}
         >
           <CellComponentRaw
-            text-align={horizontalAlign}
+            horizontalAlign={horizontalAlign}
             verticalAlign={verticalAlign}
             data-testid="CellComponent"
             {...props}
-          />
+          >
+            {children}
+          </CellComponentRaw>
         </TableRow>
       </tbody>
     </table>
@@ -54,6 +56,8 @@ const Template: Story = (props: Args) => {
     <CellComponent
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
+      data-testid="CellComponent"
+      {...props}
     >
       <InputToggle {...props} />
     </CellComponent>
