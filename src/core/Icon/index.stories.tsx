@@ -117,6 +117,14 @@ const IconWrapper = styled("div")`
         font-size: 11px;
       }
 
+      span.size-tag {
+        background-color: rgba(0, 0, 0, 0.05);
+        font-size: 10px;
+        padding: 0 4px;
+        margin: 0 2px;
+        border-radius: 2px;
+      }
+
       &:hover {
         border-radius: 2px;
         background-color: ${colors?.primary[400]};
@@ -129,6 +137,10 @@ const IconWrapper = styled("div")`
 
         span {
           color: white;
+        }
+
+        span.size-tag {
+          background-color: rgba(0, 0, 0, 0.2);
         }
 
         svg {
@@ -152,9 +164,6 @@ const IconWrapper = styled("div")`
         color: white;
         align-items: center;
         justify-content: center;
-        p {
-          margin: 4px 0;
-        }
       }
     `;
   }}
@@ -166,44 +175,61 @@ export const IconBank = () => {
   return (
     <IconBankWrapper>
       {icons.map(([sdsIcon, icon]) => {
-        const { largeIcon } = icon;
-        const sdsSize = largeIcon ? "l" : "s";
+        return Object.entries(icon).map((innerIcon) => {
+          if (!innerIcon[1]) return;
+          const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+          const [copied, setCopied] = useState(false);
 
-        const [copied, setCopied] = useState(false);
+          const copyIconNameHandler = (iconName: string) => {
+            navigator.clipboard.writeText(iconName);
+            setCopied(true);
 
-        const copyIconNameHandler = (iconName: string) => {
-          navigator.clipboard.writeText(iconName);
-          setCopied(true);
+            setTimeout(() => {
+              setCopied(false);
+            }, 1500);
+          };
 
-          setTimeout(() => {
-            setCopied(false);
-          }, 1500);
-        };
-
-        return (
-          <IconWrapper
-            key={sdsIcon}
-            onClick={() => copyIconNameHandler(sdsIcon)}
-          >
-            <Icon
-              sdsSize={sdsSize}
-              sdsIcon={sdsIcon as keyof IconNameToSizes}
-              sdsType="static"
-            />
-            <p>{sdsIcon}</p>
-            <span>(size {sdsSize})</span>
-            {copied && (
-              <div className="notif">
-                <Icon
-                  sdsSize={sdsSize}
-                  sdsIcon={sdsIcon as keyof IconNameToSizes}
-                  sdsType="static"
-                />
-                <p>Copied!</p>
-              </div>
-            )}
-          </IconWrapper>
-        );
+          return (
+            <IconWrapper
+              key={sdsIcon + sdsSize}
+              onClick={() => copyIconNameHandler(sdsIcon)}
+            >
+              <Icon
+                sdsSize={sdsSize}
+                sdsIcon={sdsIcon as keyof IconNameToSizes}
+                sdsType="static"
+              />
+              <p>{sdsIcon}</p>
+              <span>
+                Available sizes{" "}
+                {sdsSize === "s" ? (
+                  <>
+                    <span className="size-tag">xs</span>
+                    <span className="size-tag">s</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="size-tag">l</span>
+                    <span className="size-tag">xl</span>
+                  </>
+                )}
+              </span>
+              {copied && (
+                <div className="notif">
+                  <Icon
+                    sdsSize={sdsSize}
+                    sdsIcon={sdsIcon as keyof IconNameToSizes}
+                    sdsType="static"
+                  />
+                  <p>Copied!</p>
+                  <span>
+                    <Icon sdsSize="xs" sdsIcon="check" sdsType="static" />
+                  </span>
+                </div>
+              )}
+            </IconWrapper>
+          );
+        });
       })}
     </IconBankWrapper>
   );

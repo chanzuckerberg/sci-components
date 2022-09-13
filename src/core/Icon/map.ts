@@ -85,7 +85,7 @@ import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLar
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
 export interface IconNameToSizes {
-  bacteria: "l";
+  bacteria: "l" | "xl";
   barChartHorizontal3: "xs" | "s";
   barChartVertical3: "xs" | "s";
   barChartVertical4: "xs" | "s";
@@ -95,7 +95,7 @@ export interface IconNameToSizes {
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
-  dna: "l";
+  dna: "l" | "xl";
   dotsHorizontal: "xs" | "s" | "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
@@ -106,12 +106,12 @@ export interface IconNameToSizes {
   flagQuestionmark: "xs" | "s";
   flagXmark: "xs" | "s";
   flask: "l" | "xl";
-  flaskPrivate: "xl";
-  flaskPublic: "xl";
+  flaskPrivate: "l" | "xl";
+  flaskPublic: "l" | "xl";
   globe: "xs" | "s";
   grid: "l" | "xl";
-  gridPrivate: "xl";
-  gridPublic: "xl";
+  gridPrivate: "l" | "xl";
+  gridPublic: "l" | "xl";
   infoCircle: "xs" | "s" | "l" | "xl";
   infoSpeechBubble: "l" | "xl";
   lightBulb: "xs" | "s";
@@ -131,8 +131,8 @@ export interface IconNameToSizes {
   pinLocation: "xs" | "s";
   plus: "xs" | "s";
   plusCircle: "xs" | "s";
-  projectPrivate: "xl";
-  projectPublic: "xl";
+  projectPrivate: "l" | "xl";
+  projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
@@ -146,10 +146,10 @@ export interface IconNameToSizes {
   trashCan: "xs" | "s";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
-  treeHorizontalPrivate: "xl";
-  treeHorizontalPublic: "xl";
+  treeHorizontalPrivate: "l" | "xl";
+  treeHorizontalPublic: "l" | "xl";
   treeVertical: "xs" | "s";
-  virus: "l";
+  virus: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
 }
