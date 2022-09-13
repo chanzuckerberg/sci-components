@@ -83,7 +83,7 @@ const IconBankWrapper = styled("div")`
       display: grid;
       grid-gap: ${spacings?.s}px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, 150px);
+      grid-template-columns: repeat(auto-fit, 180px);
     `;
   }}
 `;
@@ -152,6 +152,12 @@ const IconWrapper = styled("div")`
         }
       }
 
+      div.icon {
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+      }
+
       div.notif {
         flex-direction: column;
         border-radius: 2px;
@@ -194,11 +200,13 @@ export const IconBank = () => {
               key={sdsIcon + sdsSize}
               onClick={() => copyIconNameHandler(sdsIcon)}
             >
-              <Icon
-                sdsSize={sdsSize}
-                sdsIcon={sdsIcon as keyof IconNameToSizes}
-                sdsType="static"
-              />
+              <div className="icon">
+                <Icon
+                  sdsSize={sdsSize}
+                  sdsIcon={sdsIcon as keyof IconNameToSizes}
+                  sdsType="static"
+                />
+              </div>
               <p>{sdsIcon}</p>
               <span>
                 Available sizes{" "}
