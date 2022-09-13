@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
 import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
 import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
 import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
@@ -13,6 +14,7 @@ import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChev
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
+import { ReactComponent as IconDnaLarge } from "../../common/svgs/IconDnaLarge.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
 import { ReactComponent as IconDotsHorizontal3Small } from "../../common/svgs/IconDotsHorizontal3Small.svg";
 import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
@@ -77,11 +79,13 @@ import { ReactComponent as IconTreeHorizontalPrivateLarge } from "../../common/s
 import { ReactComponent as IconTreeHorizontalPublicLarge } from "../../common/svgs/IconTreeHorizontalPublicLarge.svg";
 import { ReactComponent as IconTreeHorizontalSmall } from "../../common/svgs/IconTreeHorizontalSmall.svg";
 import { ReactComponent as IconTreeVerticalSmall } from "../../common/svgs/IconTreeVerticalSmall.svg";
+import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
 export interface IconNameToSizes {
+  bacteria: "l" | "xl";
   barChartHorizontal3: "xs" | "s";
   barChartVertical3: "xs" | "s";
   barChartVertical4: "xs" | "s";
@@ -91,6 +95,7 @@ export interface IconNameToSizes {
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
+  dna: "l" | "xl";
   dotsHorizontal: "xs" | "s" | "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
@@ -101,12 +106,12 @@ export interface IconNameToSizes {
   flagQuestionmark: "xs" | "s";
   flagXmark: "xs" | "s";
   flask: "l" | "xl";
-  flaskPrivate: "xl";
-  flaskPublic: "xl";
+  flaskPrivate: "l" | "xl";
+  flaskPublic: "l" | "xl";
   globe: "xs" | "s";
   grid: "l" | "xl";
-  gridPrivate: "xl";
-  gridPublic: "xl";
+  gridPrivate: "l" | "xl";
+  gridPublic: "l" | "xl";
   infoCircle: "xs" | "s" | "l" | "xl";
   infoSpeechBubble: "l" | "xl";
   lightBulb: "xs" | "s";
@@ -126,8 +131,8 @@ export interface IconNameToSizes {
   pinLocation: "xs" | "s";
   plus: "xs" | "s";
   plusCircle: "xs" | "s";
-  projectPrivate: "xl";
-  projectPublic: "xl";
+  projectPrivate: "l" | "xl";
+  projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
@@ -141,9 +146,10 @@ export interface IconNameToSizes {
   trashCan: "xs" | "s";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
-  treeHorizontalPrivate: "xl";
-  treeHorizontalPublic: "xl";
+  treeHorizontalPrivate: "l" | "xl";
+  treeHorizontalPublic: "l" | "xl";
   treeVertical: "xs" | "s";
+  virus: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
 }
@@ -157,6 +163,10 @@ type Props = Record<
 >;
 
 export const iconMap: Props = {
+  bacteria: {
+    largeIcon: IconBacteriaLarge,
+    smallIcon: null,
+  },
   barChartHorizontal3: {
     largeIcon: null,
     smallIcon: IconBarChartHorizontal3Small,
@@ -192,6 +202,10 @@ export const iconMap: Props = {
   copy: {
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
+  },
+  dna: {
+    largeIcon: IconDnaLarge,
+    smallIcon: null,
   },
   dotsHorizontal: {
     largeIcon: IconDotsHorizontal3Large,
@@ -404,6 +418,10 @@ export const iconMap: Props = {
   treeVertical: {
     largeIcon: null,
     smallIcon: IconTreeVerticalSmall,
+  },
+  virus: {
+    largeIcon: IconVirusLarge,
+    smallIcon: null,
   },
   xMark: {
     largeIcon: IconXMarkLarge,
