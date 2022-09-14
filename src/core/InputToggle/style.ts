@@ -27,8 +27,7 @@ const toggle = (props: InputToggleExtraProps) => {
     height: 26px;
     width: 62px;
     line-height: 18px;
-    margin-bottom: ${spaces?.m}px;
-    padding: 0;
+    padding: ${spaces?.xxs}px;
 
     .MuiSwitch-switchBase {
       font: inherit;
@@ -37,7 +36,7 @@ const toggle = (props: InputToggleExtraProps) => {
       transform: unset;
 
       &:hover {
-        background-color: white;
+        background-color: transparent;
       }
     }
 

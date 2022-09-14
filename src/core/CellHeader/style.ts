@@ -38,7 +38,7 @@ export const StyledSortingIcon = styled(ButtonIcon, {
     const colors = getColors(props);
 
     return `
-      padding-left: ${spacings?.s}px;
+      margin-left: ${spacings?.s}px;
       margin-bottom: 2px;
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
       opacity: ${active ? 1 : 0};
@@ -68,6 +68,10 @@ export const StyledTableHeader = styled("th", {
       width: 96px;
       cursor: pointer;
       vertical-align: bottom;
+
+      & .MuiButtonBase-root {
+        outline: none;
+      }
 
       &:hover {
         color: ${active ? colors?.primary[500] : "black"};
