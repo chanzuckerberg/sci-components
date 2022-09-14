@@ -13,7 +13,9 @@ const CellComponent = forwardRef(
     const { children } = props;
 
     return (
-      <StyledCellComponentData {...props}>{children}</StyledCellComponentData>
+      <StyledCellComponentData className="cell-component" {...props}>
+        {children}
+      </StyledCellComponentData>
     );
   }
 );

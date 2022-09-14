@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  fontBodyS,
   fontBodyXxs,
   fontHeaderS,
   getColors,
@@ -18,11 +19,15 @@ const doNotForwardProps = ["horizontalAlign", "verticalAlign"];
 export const StyledCellComponentData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
+  ${fontBodyS}
+
   ${(props: CellComponentExtraProps) => {
     const spacings = getSpaces(props);
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
+    const typography = getTypography(props);
 
     return `
+        font-family: ${typography?.fontFamily};
         align-items: center;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlign};
