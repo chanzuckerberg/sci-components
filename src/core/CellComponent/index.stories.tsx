@@ -59,7 +59,7 @@ const Template: Story = (props: Args) => {
       data-testid="CellComponent"
       {...props}
     >
-      <InputToggle {...props} />
+      <InputToggle />
     </CellComponent>
   );
 };
