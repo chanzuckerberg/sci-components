@@ -68,6 +68,23 @@ const ShouldTruncate = () => {
   `;
 };
 
+export const StyledCellContentWrapper = styled("div")`
+  display: flex;
+`;
+
+export const StyledCellBasicIconWrapper = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: CellBasicExtraProps) => {
+    const spacings = getSpaces(props);
+
+    return `
+      padding-top: ${spacings?.xxs}px;
+      padding-right: ${spacings?.l}px;
+    `;
+  }}
+`;
+
 export const PrimaryText = styled("span", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`

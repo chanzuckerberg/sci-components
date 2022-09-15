@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
+import Icon from "../Icon";
 import CellBasicRaw from "./index";
 
 const CellBasic = (props: Args): JSX.Element => {
@@ -25,11 +26,33 @@ const CellBasic = (props: Args): JSX.Element => {
   );
 };
 
+const availableIconOptions = [
+  undefined,
+  <Icon sdsSize="xs" sdsIcon="download" sdsType="static" />,
+  <Icon sdsSize="s" sdsIcon="lightBulb" sdsType="static" />,
+  <Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />,
+  <Icon sdsSize="xl" sdsIcon="flask" sdsType="static" />,
+];
+
 export default {
   argTypes: {
     horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
+    },
+    icon: {
+      control: {
+        labels: [
+          "No Icon",
+          "XS Download",
+          "S Light bulb",
+          "L Bacteria",
+          "XL Flask",
+        ],
+        type: "select",
+      },
+      mapping: availableIconOptions,
+      options: Object.keys(availableIconOptions),
     },
     primaryText: {
       control: { type: "text" },

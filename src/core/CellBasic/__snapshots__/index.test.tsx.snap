@@ -9,32 +9,44 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
         data-testid="CellBasicVerticalAlignTest"
         style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary Text
-        </span>
-        <span
-          class="css-102yezv"
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </span>
+          <div>
+            <span
+              class="css-l4a0ln"
+            >
+              Primary Text
+            </span>
+            <span
+              class="css-102yezv"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </span>
+          </div>
+        </div>
       </td>
       <td
         class="css-1a6gmj3"
         data-testid="CellBasicCenterAlignTest"
         style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary Text
-        </span>
-        <span
-          class="css-1xqvcqn"
-        >
-          Secondary Text
-        </span>
+          <div>
+            <span
+              class="css-l4a0ln"
+            >
+              Primary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+          </div>
+        </div>
       </td>
       <td
         class=" css-ulyme7"
@@ -42,21 +54,27 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
         data-testid="CellBasic"
         style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary Text
-        </span>
-        <span
-          class="css-1xqvcqn"
-        >
-          Secondary Text
-        </span>
-        <span
-          class="css-1xqvcqn"
-        >
-          Tertiary Text
-        </span>
+          <div>
+            <span
+              class="css-l4a0ln"
+            >
+              Primary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Tertiary Text
+            </span>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

@@ -4,6 +4,8 @@ import {
   CellBasicExtraProps,
   PrimaryText,
   SecondaryText,
+  StyledCellBasicIconWrapper,
+  StyledCellContentWrapper,
   StyledTableData,
   TertiaryText,
 } from "./style";
@@ -17,6 +19,7 @@ interface CellBasicContentProps
   tertiaryText?: string;
   tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
+  icon?: JSX.Element;
 }
 
 export interface CellBasicRawProps {
@@ -37,35 +40,39 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     tertiaryText,
     tertiaryTextWrapLineCount,
     shouldTextWrap = true,
+    icon,
   } = props;
 
   return (
-    <>
-      <PrimaryText
-        shouldTextWrap={shouldTextWrap}
-        primaryTextWrapLineCount={primaryTextWrapLineCount}
-      >
-        {primaryText}
-      </PrimaryText>
-
-      {secondaryText && (
-        <SecondaryText
+    <StyledCellContentWrapper>
+      {icon && <StyledCellBasicIconWrapper>{icon}</StyledCellBasicIconWrapper>}
+      <div>
+        <PrimaryText
           shouldTextWrap={shouldTextWrap}
-          secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+          primaryTextWrapLineCount={primaryTextWrapLineCount}
         >
-          {secondaryText}
-        </SecondaryText>
-      )}
+          {primaryText}
+        </PrimaryText>
 
-      {tertiaryText && (
-        <TertiaryText
-          shouldTextWrap={shouldTextWrap}
-          tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
-        >
-          {tertiaryText}
-        </TertiaryText>
-      )}
-    </>
+        {secondaryText && (
+          <SecondaryText
+            shouldTextWrap={shouldTextWrap}
+            secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+          >
+            {secondaryText}
+          </SecondaryText>
+        )}
+
+        {tertiaryText && (
+          <TertiaryText
+            shouldTextWrap={shouldTextWrap}
+            tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+          >
+            {tertiaryText}
+          </TertiaryText>
+        )}
+      </div>
+    </StyledCellContentWrapper>
   );
 };
 

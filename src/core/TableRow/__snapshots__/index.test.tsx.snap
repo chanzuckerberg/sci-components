@@ -11,11 +11,17 @@ exports[`<TableRow /> Test story renders snapshot 1`] = `
       <td
         class="css-ms0or8"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary
-        </span>
+          <div>
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>
