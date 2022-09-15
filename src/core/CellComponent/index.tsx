@@ -1,11 +1,12 @@
 import React, { forwardRef, ReactNode } from "react";
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 
-export interface CellComponentRawProps {
+interface CellComponentContentProps
+  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
   children?: ReactNode;
 }
 
-export type CellComponentProps = CellComponentRawProps &
+export type CellComponentProps = CellComponentContentProps &
   CellComponentExtraProps;
 
 const CellComponent = forwardRef(

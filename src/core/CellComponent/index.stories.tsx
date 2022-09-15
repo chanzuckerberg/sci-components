@@ -1,7 +1,7 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import Icon from "../Icon";
+import InputToggle from "../InputToggle";
 import RadioButton from "../Radio";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
@@ -9,7 +9,7 @@ import CellComponentRaw from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
 
 const CellComponent = (props: Args): JSX.Element => {
-  const { horizontalAlign, verticalAlign } = props;
+  const { horizontalAlign, verticalAlign, children } = props;
 
   return (
     <table>
@@ -21,11 +21,13 @@ const CellComponent = (props: Args): JSX.Element => {
           }}
         >
           <CellComponentRaw
-            text-align={horizontalAlign}
+            horizontalAlign={horizontalAlign}
             verticalAlign={verticalAlign}
             data-testid="CellComponent"
             {...props}
-          />
+          >
+            {children}
+          </CellComponentRaw>
         </TableRow>
       </tbody>
     </table>
@@ -54,8 +56,10 @@ const Template: Story = (props: Args) => {
     <CellComponent
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
+      data-testid="CellComponent"
+      {...props}
     >
-      <Icon sdsSize="xl" sdsIcon="checkCircle" sdsType="static" />
+      <InputToggle />
     </CellComponent>
   );
 };
@@ -69,7 +73,7 @@ Default.parameters = {
 };
 
 Default.args = {
-  horizontalAlign: "center",
+  horizontalAlign: "left",
   verticalAlign: "center",
 };
 
