@@ -14,7 +14,6 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           <td
             class="cell-component css-1mr94ht"
             data-testid="CellComponentA"
-            text-align="right"
           >
             <div
               style="display: block;"
@@ -63,7 +62,6 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           <td
             class="cell-component css-4d5itv"
             data-testid="CellComponentB"
-            text-align="left"
           >
             <div
               style="display: block;"
