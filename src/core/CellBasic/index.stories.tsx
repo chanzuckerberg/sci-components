@@ -168,6 +168,7 @@ Test.args = {
 Test.parameters = {
   controls: {
     exclude: [
+      "icon",
       "primaryText",
       "primaryTextWrapLineCount",
       "secondaryText",
