@@ -32,7 +32,9 @@ export const StyledCellComponentData = styled("td", {
     `;
   }}
 `;
-export const StyledStoryHeading = styled("span")`
+export const StyledStoryHeading = styled("span", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${fontHeaderS}
   ${(props) => {
     const typography = getTypography(props);
@@ -46,7 +48,9 @@ export const StyledStoryHeading = styled("span")`
   }}
 `;
 
-export const StyledStoryBody = styled("span")`
+export const StyledStoryBody = styled("span", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${fontBodyXxs}
   ${(props) => {
     const typography = getTypography(props);
