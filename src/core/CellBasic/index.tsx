@@ -4,8 +4,9 @@ import {
   CellBasicExtraProps,
   PrimaryText,
   SecondaryText,
-  StyledCellBasicIconWrapper,
+  StyledCellContent,
   StyledCellContentWrapper,
+  StyledCellIconWrapper,
   StyledTableData,
   TertiaryText,
 } from "./style";
@@ -20,6 +21,7 @@ interface CellBasicContentProps
   tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
   icon?: JSX.Element;
+  iconVerticalAlign?: "top" | "center" | "bottom";
 }
 
 export interface CellBasicRawProps {
@@ -41,12 +43,17 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     tertiaryTextWrapLineCount,
     shouldTextWrap = true,
     icon,
+    iconVerticalAlign,
   } = props;
 
   return (
-    <StyledCellContentWrapper>
-      {icon && <StyledCellBasicIconWrapper>{icon}</StyledCellBasicIconWrapper>}
-      <div>
+    <StyledCellContent>
+      {icon && (
+        <StyledCellIconWrapper iconVerticalAlign={iconVerticalAlign}>
+          {icon}
+        </StyledCellIconWrapper>
+      )}
+      <StyledCellContentWrapper>
         <PrimaryText
           shouldTextWrap={shouldTextWrap}
           primaryTextWrapLineCount={primaryTextWrapLineCount}
@@ -71,8 +78,8 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
             {tertiaryText}
           </TertiaryText>
         )}
-      </div>
-    </StyledCellContentWrapper>
+      </StyledCellContentWrapper>
+    </StyledCellContent>
   );
 };
 

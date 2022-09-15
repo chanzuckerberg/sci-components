@@ -43,4 +43,11 @@ describe("<CellBasic />", () => {
     const style = window.getComputedStyle(renderedElement);
     expect(style.verticalAlign).toBe("bottom");
   });
+
+  it("renders icon with a basic cell", async () => {
+    render(<Test />);
+    const cellBasicElement = screen.getByTestId("CellBasicWithIcon");
+    const iconElement = cellBasicElement.getElementsByTagName("svg");
+    expect(iconElement).toBeTruthy();
+  });
 });

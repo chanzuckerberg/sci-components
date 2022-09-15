@@ -11,7 +11,7 @@ const CellBasic = (props: Args): JSX.Element => {
         <tr
           style={{
             display: "block",
-            maxWidth: "180px",
+            maxWidth: "200px",
           }}
         >
           <CellBasicRaw
@@ -53,6 +53,10 @@ export default {
       },
       mapping: availableIconOptions,
       options: Object.keys(availableIconOptions),
+    },
+    iconVerticalAlign: {
+      control: { type: "select" },
+      options: ["top", "center", "bottom"],
     },
     primaryText: {
       control: { type: "text" },
@@ -151,6 +155,14 @@ const TestDemo = (): JSX.Element => (
           tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
           style={TableCellStyle as React.CSSProperties}
         />
+        <CellBasicRaw
+          data-testid="CellBasicWithIcon"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          tertiaryText="Tertiary Text"
+          icon={<Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />}
+          style={TableCellStyle as React.CSSProperties}
+        />
       </tr>
     </tbody>
   </table>
@@ -169,6 +181,7 @@ Test.parameters = {
   controls: {
     exclude: [
       "icon",
+      "iconVerticalAlign",
       "primaryText",
       "primaryTextWrapLineCount",
       "secondaryText",

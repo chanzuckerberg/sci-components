@@ -11,6 +11,7 @@ import {
 export interface CellBasicExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
   verticalAlign?: "top" | "center" | "bottom";
+  iconVerticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
@@ -18,6 +19,8 @@ export interface CellBasicExtraProps extends CommonThemeProps {
 }
 
 const doNotForwardProps = [
+  "icon",
+  "iconVerticalAlign",
   "horizontalAlign",
   "verticalAlign",
   "primaryText",
@@ -30,6 +33,18 @@ const doNotForwardProps = [
   "secondaryTextWrapLineCount",
   "tertiaryTextWrapLineCount",
 ];
+
+const verticalAlignCSSMap = {
+  bottom: "bottom",
+  center: "middle",
+  top: "top",
+};
+
+const verticalAlignToFlexMap = {
+  bottom: "flex-end",
+  center: "center",
+  top: "flex-start",
+};
 
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -44,7 +59,7 @@ export const StyledTableData = styled("td", {
         font-family: ${typography?.fontFamily};
         padding: ${spacings?.l}px ${spacings?.s}px;
         text-align: ${horizontalAlign};
-        vertical-align: ${verticalAlign};
+        vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         width: 96px;
         overflow: hidden;
     `;
@@ -68,19 +83,26 @@ const ShouldTruncate = () => {
   `;
 };
 
-export const StyledCellContentWrapper = styled("div")`
+export const StyledCellContent = styled("div")`
   display: flex;
 `;
 
-export const StyledCellBasicIconWrapper = styled("div", {
+export const StyledCellContentWrapper = styled("div")`
+  width: 100%;
+`;
+
+export const StyledCellIconWrapper = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellBasicExtraProps) => {
+    const { iconVerticalAlign = "top" } = props;
     const spacings = getSpaces(props);
 
     return `
-      padding-top: ${spacings?.xxs}px;
       padding-right: ${spacings?.l}px;
+      display: flex;
+      flex-direction: column;
+      justify-content: ${verticalAlignToFlexMap[iconVerticalAlign]};
     `;
   }}
 `;
