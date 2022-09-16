@@ -28,8 +28,26 @@ const disabledStyled = (props: RowExtraProps) => {
   return `
     background-color: ${colors?.gray[100]};
     color: ${colors?.gray[300]};
+    user-select: none;
+
     & span, & div {
       color: ${colors?.gray[300]};
+    }
+
+    .cell-component {
+      color: black;
+      pointer-events: none;
+      user-select: none;
+      & span, & div {
+        color: black;
+      }
+
+      svg {
+        fill: black;
+      }
+
+      filter: grayscale(100%);
+      opacity: 0.2;
     }
   `;
 };

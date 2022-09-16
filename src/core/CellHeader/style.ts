@@ -42,7 +42,7 @@ export const StyledSortingIcon = styled(ButtonIcon, {
       margin-bottom: 2px;
       color: ${active ? colors?.primary[400] : colors?.gray[400]};
       opacity: ${active ? 1 : 0};
-      outline: none;
+      outline: none !important;
     `;
   }}
 `;

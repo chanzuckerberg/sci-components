@@ -4,6 +4,9 @@ import {
   CellBasicExtraProps,
   PrimaryText,
   SecondaryText,
+  StyledCellContent,
+  StyledCellContentWrapper,
+  StyledCellIconWrapper,
   StyledTableData,
   TertiaryText,
 } from "./style";
@@ -17,6 +20,8 @@ interface CellBasicContentProps
   tertiaryText?: string;
   tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
+  icon?: JSX.Element;
+  iconVerticalAlign?: "top" | "center" | "bottom";
 }
 
 export interface CellBasicRawProps {
@@ -37,35 +42,44 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     tertiaryText,
     tertiaryTextWrapLineCount,
     shouldTextWrap = true,
+    icon,
+    iconVerticalAlign,
   } = props;
 
   return (
-    <>
-      <PrimaryText
-        shouldTextWrap={shouldTextWrap}
-        primaryTextWrapLineCount={primaryTextWrapLineCount}
-      >
-        {primaryText}
-      </PrimaryText>
-
-      {secondaryText && (
-        <SecondaryText
-          shouldTextWrap={shouldTextWrap}
-          secondaryTextWrapLineCount={secondaryTextWrapLineCount}
-        >
-          {secondaryText}
-        </SecondaryText>
+    <StyledCellContent>
+      {icon && (
+        <StyledCellIconWrapper iconVerticalAlign={iconVerticalAlign}>
+          {icon}
+        </StyledCellIconWrapper>
       )}
-
-      {tertiaryText && (
-        <TertiaryText
+      <StyledCellContentWrapper>
+        <PrimaryText
           shouldTextWrap={shouldTextWrap}
-          tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+          primaryTextWrapLineCount={primaryTextWrapLineCount}
         >
-          {tertiaryText}
-        </TertiaryText>
-      )}
-    </>
+          {primaryText}
+        </PrimaryText>
+
+        {secondaryText && (
+          <SecondaryText
+            shouldTextWrap={shouldTextWrap}
+            secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+          >
+            {secondaryText}
+          </SecondaryText>
+        )}
+
+        {tertiaryText && (
+          <TertiaryText
+            shouldTextWrap={shouldTextWrap}
+            tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+          >
+            {tertiaryText}
+          </TertiaryText>
+        )}
+      </StyledCellContentWrapper>
+    </StyledCellContent>
   );
 };
 

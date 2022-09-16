@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { StyledTable } from "./style";
+import { StyledTable, StyledTableWrapper } from "./style";
 
 export interface TableProps {
   children: React.ReactNode;
@@ -10,9 +10,11 @@ const Table = forwardRef<HTMLTableElement, TableProps>(
     const { children } = props;
 
     return (
-      <StyledTable ref={ref} {...props}>
-        {children}
-      </StyledTable>
+      <StyledTableWrapper>
+        <StyledTable ref={ref} {...props}>
+          {children}
+        </StyledTable>
+      </StyledTableWrapper>
     );
   }
 );

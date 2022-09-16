@@ -38,7 +38,11 @@ const TableRow = forwardRef<HTMLTableRowElement, RowProps>(
         </Tooltip>
       );
     }
-    return <StyledTableRow {...props}>{children}</StyledTableRow>;
+    return (
+      <StyledTableRow ref={ref} {...props}>
+        {children}
+      </StyledTableRow>
+    );
   }
 );
 
