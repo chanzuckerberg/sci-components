@@ -42,6 +42,7 @@ import { ReactComponent as IconLinesDashed3Solid1Small } from "../../common/svgs
 import { ReactComponent as IconLinesHorizontalSmall } from "../../common/svgs/IconLinesHorizontalSmall.svg";
 import { ReactComponent as IconLinkSmall } from "../../common/svgs/IconLinkSmall.svg";
 import { ReactComponent as IconListSmall } from "../../common/svgs/IconListSmall.svg";
+import { ReactComponent as IconLoadingAnimatedLarge } from "../../common/svgs/IconLoadingAnimatedLarge.svg";
 import { ReactComponent as IconLoadingLarge } from "../../common/svgs/IconLoadingLarge.svg";
 import { ReactComponent as IconLoadingSmall } from "../../common/svgs/IconLoadingSmall.svg";
 import { ReactComponent as IconLockCircleSmall } from "../../common/svgs/IconLockCircleSmall.svg";
@@ -120,6 +121,7 @@ export interface IconNameToSizes {
   link: "xs" | "s";
   list: "xs" | "s";
   loading: "xs" | "s" | "l" | "xl";
+  loadingAnimated: "l" | "xl";
   lock: "xs" | "s";
   lockCircle: "xs" | "s";
   minus: "xs" | "s";
@@ -302,6 +304,10 @@ export const iconMap: Props = {
   loading: {
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
+  },
+  loadingAnimated: {
+    largeIcon: IconLoadingAnimatedLarge,
+    smallIcon: null,
   },
   lock: {
     largeIcon: null,
