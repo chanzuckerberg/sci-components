@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
+import Icon from "../Icon";
 import CellBasicRaw from "./index";
 
 const CellBasic = (props: Args): JSX.Element => {
@@ -10,7 +11,7 @@ const CellBasic = (props: Args): JSX.Element => {
         <tr
           style={{
             display: "block",
-            maxWidth: "180px",
+            maxWidth: "200px",
           }}
         >
           <CellBasicRaw
@@ -25,11 +26,37 @@ const CellBasic = (props: Args): JSX.Element => {
   );
 };
 
+const availableIconOptions = [
+  undefined,
+  <Icon sdsSize="xs" sdsIcon="download" sdsType="static" />,
+  <Icon sdsSize="s" sdsIcon="lightBulb" sdsType="static" />,
+  <Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />,
+  <Icon sdsSize="xl" sdsIcon="flask" sdsType="static" />,
+];
+
 export default {
   argTypes: {
     horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
+    },
+    icon: {
+      control: {
+        labels: [
+          "No Icon",
+          "XS Download",
+          "S Light bulb",
+          "L Bacteria",
+          "XL Flask",
+        ],
+        type: "select",
+      },
+      mapping: availableIconOptions,
+      options: Object.keys(availableIconOptions),
+    },
+    iconVerticalAlign: {
+      control: { type: "select" },
+      options: ["top", "center", "bottom"],
     },
     primaryText: {
       control: { type: "text" },
@@ -128,6 +155,14 @@ const TestDemo = (): JSX.Element => (
           tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
           style={TableCellStyle as React.CSSProperties}
         />
+        <CellBasicRaw
+          data-testid="CellBasicWithIcon"
+          primaryText="Primary Text"
+          secondaryText="Secondary Text"
+          tertiaryText="Tertiary Text"
+          icon={<Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />}
+          style={TableCellStyle as React.CSSProperties}
+        />
       </tr>
     </tbody>
   </table>
@@ -145,6 +180,8 @@ Test.args = {
 Test.parameters = {
   controls: {
     exclude: [
+      "icon",
+      "iconVerticalAlign",
       "primaryText",
       "primaryTextWrapLineCount",
       "secondaryText",

@@ -12,38 +12,70 @@ exports[`<Table /> Test story renders snapshot 1`] = `
       <td
         class="css-ms0or8"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary 1
-        </span>
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary 1
+            </span>
+          </div>
+        </div>
       </td>
       <td
         class="css-ms0or8"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary 2
-        </span>
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary 2
+            </span>
+          </div>
+        </div>
       </td>
       <td
         class="css-ms0or8"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary 3
-        </span>
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary 3
+            </span>
+          </div>
+        </div>
       </td>
       <td
         class="css-ms0or8"
       >
-        <span
-          class="css-l4a0ln"
+        <div
+          class="css-ov1ktg"
         >
-          Primary 4
-        </span>
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary 4
+            </span>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>
