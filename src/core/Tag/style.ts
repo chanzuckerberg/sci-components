@@ -35,7 +35,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xs}px ${spacings?.xs}px 0;
+    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
 
     &:hover {
       cursor: pointer;
@@ -67,7 +67,7 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xs}px ${spacings?.xs}px 0;
+    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
     &:hover {
       cursor: pointer;
     }
