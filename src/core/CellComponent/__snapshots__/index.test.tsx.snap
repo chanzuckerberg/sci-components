@@ -12,7 +12,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-1yo7ij0"
+            class="cell-component css-laz68p"
             data-testid="CellComponentA"
           >
             <div
@@ -32,7 +32,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
                 Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
               </span>
               <div
-                class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-cp1czy-MuiButtonBase-root-MuiChip-root"
+                class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-k04xcz-MuiButtonBase-root-MuiChip-root"
                 data-testid="Child"
                 role="button"
                 tabindex="0"
@@ -60,7 +60,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="css-1yw7yff"
+            class="cell-component css-1lcwo8q"
             data-testid="CellComponentB"
           >
             <div
