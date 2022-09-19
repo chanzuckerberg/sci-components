@@ -12,7 +12,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="cell-component css-laz68p"
+            class="cell-component css-i1o3nx"
             data-testid="CellComponentA"
           >
             <div
@@ -60,7 +60,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
           style="display: block; max-width: 280px;"
         >
           <td
-            class="cell-component css-1lcwo8q"
+            class="cell-component css-1tllcjx"
             data-testid="CellComponentB"
           >
             <div

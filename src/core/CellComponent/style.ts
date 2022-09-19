@@ -31,7 +31,6 @@ export const StyledCellComponentData = styled("td", {
         align-items: center;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlign};
-        width: 96px;
         overflow: hidden;
         padding: ${spacings?.l}px ${spacings?.s}px;
     `;
