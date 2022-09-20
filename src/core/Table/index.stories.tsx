@@ -25,20 +25,18 @@ const Table = (props: Args): JSX.Element => {
   return (
     <TableRaw {...props}>
       <TableHeader>
-        <TableRow useDivider={false} hover={false}>
-          <CellHeader horizontalAlign="center" hideSortIcon>
-            Category
-          </CellHeader>
-          <CellHeader active>Active Header</CellHeader>
-          <CellHeader>
-            A very long table header title to test sort icon positioning
-          </CellHeader>
-          <CellHeader horizontalAlign="center">Centered</CellHeader>
-          <CellHeader hideSortIcon>Component</CellHeader>
-          <CellHeader horizontalAlign="right" hideSortIcon>
-            Right Aligned and Not sortable
-          </CellHeader>
-        </TableRow>
+        <CellHeader horizontalAlign="center" hideSortIcon>
+          Category
+        </CellHeader>
+        <CellHeader active>Active Header</CellHeader>
+        <CellHeader>
+          A very long table header title to test sort icon positioning
+        </CellHeader>
+        <CellHeader horizontalAlign="center">Centered</CellHeader>
+        <CellHeader hideSortIcon>Component</CellHeader>
+        <CellHeader horizontalAlign="right" hideSortIcon>
+          Right Aligned and Not sortable
+        </CellHeader>
       </TableHeader>
       <tbody>
         <TableRow>
@@ -75,6 +73,7 @@ const Table = (props: Args): JSX.Element => {
           <CellComponent>
             {["primary", "warning", "beta", "error", "success"].map((item) => (
               <Tag
+                key={item}
                 color={item as SdsTagColorType}
                 label={item as string}
                 sdsStyle="rounded"
