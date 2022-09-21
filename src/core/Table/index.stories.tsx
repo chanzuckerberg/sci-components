@@ -45,7 +45,7 @@ const Table = (props: Args): JSX.Element => {
               <Icon sdsSize="xl" sdsIcon="flask" sdsType="static" />
               <Tag
                 color="primary"
-                label="Chemistery"
+                label="Chemistry"
                 sdsStyle="rounded"
                 sdsType="secondary"
               />
