@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import TableRow from "../TableRow";
 import { StyledTableHeader } from "./style";
 
 interface TableHeaderProps {
@@ -11,7 +12,9 @@ const TableHeader = forwardRef<HTMLTableElement["tHead"], TableHeaderProps>(
 
     return (
       <StyledTableHeader ref={ref} {...props}>
-        {children}
+        <TableRow hover={false} shouldShowTooltipOnHover={false}>
+          {children}
+        </TableRow>
       </StyledTableHeader>
     );
   }
