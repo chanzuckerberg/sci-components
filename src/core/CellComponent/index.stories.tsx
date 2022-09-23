@@ -36,6 +36,9 @@ const CellComponent = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
+    fitCellToComponent: {
+      control: { type: "boolean" },
+    },
     horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
@@ -50,13 +53,27 @@ export default {
 };
 
 const Template: Story = (props: Args) => {
-  const { horizontalAlign, verticalAlign } = props;
+  const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
+
+  if (fitCellToComponent) {
+    return (
+      <CellComponent
+        horizontalAlign={horizontalAlign}
+        verticalAlign={verticalAlign}
+        data-testid="CellComponent"
+        {...props}
+      >
+        <InputToggle />
+      </CellComponent>
+    );
+  }
 
   return (
     <CellComponent
       horizontalAlign={horizontalAlign}
       verticalAlign={verticalAlign}
       data-testid="CellComponent"
+      style={{ height: 100, width: 100 }}
       {...props}
     >
       <InputToggle />
