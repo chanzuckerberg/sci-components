@@ -1,7 +1,7 @@
 import { ClickAwayListener } from "@mui/material";
 import {
   AutocompleteCloseReason,
-  AutocompleteValue as MUIValue,
+  AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { useEffect, useState } from "react";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
@@ -25,6 +25,13 @@ export {
 export type Value<T, Multiple> = Multiple extends undefined | false
   ? T | null
   : Array<T> | null;
+
+export type MUIValue<Multiple> = AutocompleteValue<
+  DefaultDropdownMenuOption,
+  Multiple,
+  undefined,
+  undefined
+>;
 
 type RenderFunctionType = (props: any) => JSX.Element;
 
@@ -119,14 +126,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
           search={search}
           onClose={handleClose}
           multiple={multiple as Multiple}
-          value={
-            (multiple ? pendingValue : value) as MUIValue<
-              DefaultDropdownMenuOption,
-              Multiple,
-              undefined,
-              undefined
-            >
-          }
+          value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
           onChange={handleChange}
           disableCloseOnSelect={multiple}
           PopperComponent={PopperComponent}
@@ -183,14 +183,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       setOpen(false);
 
       if (multiple) {
-        setValue(
-          pendingValue as MUIValue<
-            DefaultDropdownMenuOption,
-            Multiple,
-            undefined,
-            undefined
-          >
-        );
+        setValue(pendingValue as MUIValue<Multiple>);
       }
     }
   }
@@ -198,14 +191,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
       if (multiple) {
-        setValue(
-          pendingValue as MUIValue<
-            DefaultDropdownMenuOption,
-            Multiple,
-            undefined,
-            undefined
-          >
-        );
+        setValue(pendingValue as MUIValue<Multiple>);
       }
 
       setOpen(false);
@@ -215,14 +201,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       }
     } else {
       if (multiple) {
-        setPendingValue(
-          value as MUIValue<
-            DefaultDropdownMenuOption,
-            true,
-            undefined,
-            undefined
-          >
-        );
+        setPendingValue(value as MUIValue<true>);
       }
 
       setAnchorEl(event.currentTarget);
