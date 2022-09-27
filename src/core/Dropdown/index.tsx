@@ -1,3 +1,4 @@
+import { ClickAwayListener } from "@mui/material";
 import {
   AutocompleteCloseReason,
   AutocompleteValue as MUIValue,
@@ -100,87 +101,133 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
   }, [propValue]);
 
-  const open = Boolean(anchorEl);
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <InputDropdownComponent
-        label={label}
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
-        {...InputDropdownProps}
-        {...rest}
-      />
-      <DropdownMenu
-        anchorEl={anchorEl}
-        open={open}
-        search={search}
-        onClose={handleClose}
-        multiple={multiple as Multiple}
-        value={
-          (multiple ? pendingValue : value) as MUIValue<
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <div>
+        <InputDropdownComponent
+          label={label}
+          onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
+          {...InputDropdownProps}
+          {...rest}
+        />
+        <DropdownMenu
+          anchorEl={anchorEl}
+          open={open}
+          search={search}
+          onClose={handleClose}
+          multiple={multiple as Multiple}
+          value={
+            (multiple ? pendingValue : value) as MUIValue<
+              DefaultDropdownMenuOption,
+              Multiple,
+              undefined,
+              undefined
+            >
+          }
+          onChange={handleChange}
+          disableCloseOnSelect={multiple}
+          PopperComponent={PopperComponent}
+          PopperBaseProps={{ sx: { minWidth: 250 } }}
+          options={options}
+          {...DropdownMenuProps}
+        >
+          {buttons ? (
+            <div>
+              {buttonPosition === "left" ? (
+                <div>
+                  <StyledButton
+                    onClick={handleClose}
+                    sdsStyle="square"
+                    sdsType="primary"
+                  >
+                    Apply
+                  </StyledButton>
+                  <StyledButton
+                    onClick={handleCancel}
+                    sdsStyle="square"
+                    sdsType="secondary"
+                  >
+                    Cancel
+                  </StyledButton>
+                </div>
+              ) : (
+                <div>
+                  <StyledButton
+                    onClick={handleCancel}
+                    sdsStyle="square"
+                    sdsType="secondary"
+                  >
+                    Cancel
+                  </StyledButton>
+                  <StyledButton
+                    onClick={handleClose}
+                    sdsStyle="square"
+                    sdsType="primary"
+                  >
+                    Apply
+                  </StyledButton>
+                </div>
+              )}
+            </div>
+          ) : null}
+        </DropdownMenu>
+      </div>
+    </ClickAwayListener>
+  );
+
+  function handleClickAway() {
+    if (open) {
+      setOpen(false);
+
+      if (multiple) {
+        setValue(
+          pendingValue as MUIValue<
             DefaultDropdownMenuOption,
             Multiple,
             undefined,
             undefined
           >
-        }
-        onChange={handleChange}
-        disableCloseOnSelect={multiple}
-        PopperComponent={PopperComponent}
-        PopperBaseProps={{ sx: { minWidth: 250 } }}
-        options={options}
-        {...DropdownMenuProps}
-      >
-        {buttons ? (
-          <div>
-            {buttonPosition === "left" ? (
-              <div>
-                <StyledButton
-                  onClick={handleClose}
-                  sdsStyle="square"
-                  sdsType="primary"
-                >
-                  Apply
-                </StyledButton>
-                <StyledButton
-                  onClick={handleCancel}
-                  sdsStyle="square"
-                  sdsType="secondary"
-                >
-                  Cancel
-                </StyledButton>
-              </div>
-            ) : (
-              <div>
-                <StyledButton
-                  onClick={handleCancel}
-                  sdsStyle="square"
-                  sdsType="secondary"
-                >
-                  Cancel
-                </StyledButton>
-                <StyledButton
-                  onClick={handleClose}
-                  sdsStyle="square"
-                  sdsType="primary"
-                >
-                  Apply
-                </StyledButton>
-              </div>
-            )}
-          </div>
-        ) : null}
-      </DropdownMenu>
-    </>
-  );
+        );
+      }
+    }
+  }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
-    if (multiple) {
-      setPendingValue(value as DefaultDropdownMenuOption[]);
-    }
+    if (open) {
+      if (multiple) {
+        setValue(
+          pendingValue as MUIValue<
+            DefaultDropdownMenuOption,
+            Multiple,
+            undefined,
+            undefined
+          >
+        );
+      }
 
-    setAnchorEl(event.currentTarget);
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+    } else {
+      if (multiple) {
+        setPendingValue(
+          value as MUIValue<
+            DefaultDropdownMenuOption,
+            true,
+            undefined,
+            undefined
+          >
+        );
+      }
+
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
   }
 
   function handleClose(
@@ -208,7 +255,6 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
 
     if (onClose) onClose();
-    setAnchorEl(null);
   }
 
   function handleChange(
@@ -217,14 +263,17 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   ) {
     if (multiple) {
       if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as DefaultDropdownMenuOption[]);
+        setPendingValue(newValue as Value<DefaultDropdownMenuOption, true>);
         return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
       }
 
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+      return setPendingValue(
+        newValue as Value<DefaultDropdownMenuOption, true>
+      );
     }
 
     setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+    setOpen(false);
   }
 
   function handleCancel() {
@@ -235,7 +284,6 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
     }
 
     if (onClose) onClose();
-    setAnchorEl(null);
   }
 
   function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
