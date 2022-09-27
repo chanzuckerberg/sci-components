@@ -3,6 +3,8 @@ import { Args, Story } from "@storybook/react";
 import React from "react";
 import Checkbox from "./index";
 
+const testId = "test-story";
+
 const CheckboxDemo = (props: Args): JSX.Element => {
   const { disabled } = props;
   const [checked, setChecked] = React.useState(true);
@@ -14,6 +16,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
       <FormControlLabel
         control={
           <Checkbox
+            data-testid="checkbox"
             disabled={disabled}
             onChange={handleChange}
             stage={checked ? "unchecked" : "checked"}
@@ -41,14 +44,44 @@ Default.parameters = {
 };
 
 Default.args = {
-  id: "test-story",
+  id: { testId },
 };
 
-export const Test = Template.bind({});
+const CheckboxLabelDemo = (props: Args): JSX.Element => {
+  const { label, disabled } = props;
+  return (
+    <div>
+      <Checkbox data-testid="labelCheckbox" label={label} disabled={disabled} />
+    </div>
+  );
+};
+
+const TestDemo = (): JSX.Element => {
+  const testStyles = {
+    display: "grid",
+    gridColumnGap: "10px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(2, 100px)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={testStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+        <CheckboxLabelDemo label="Lable A" disabled={false} />
+      </div>
+      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
+        <CheckboxDemo />
+      </div>
+    </div>
+  );
+};
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
 
 Test.args = {
-  id: "test-story",
-  togglePosition: "right",
+  id: { testId },
 };
 
 /*
@@ -131,7 +164,7 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <CheckboxDemo disabled={false} />
+        <CheckboxLabelDemo label="Label" disabled={false} />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
         <CheckboxDemo disabled />
