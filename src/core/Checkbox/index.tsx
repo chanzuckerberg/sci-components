@@ -11,8 +11,9 @@ import { StyledCheckbox } from "./styles";
 
 export interface CheckboxProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
-  stage?: "checked" | "unchecked" | "indeterminate";
+  checkboxProps?: string;
   label?: string;
+  stage?: "checked" | "unchecked" | "indeterminate";
 }
 
 /**
@@ -21,7 +22,7 @@ export interface CheckboxProps
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   const { stage, label, disabled } = props;
 
-  if (label === undefined) {
+  if (label === undefined && stage !== undefined) {
     let newProps: MUICheckboxProps;
     switch (stage) {
       case "checked":
