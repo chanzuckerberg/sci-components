@@ -1,6 +1,6 @@
 import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import LoadingIndicator from "../LoadingIndicator";
@@ -14,6 +14,42 @@ const Demo = (props: Args): JSX.Element => {
       options={GITHUB_LABELS}
       {...props}
     />
+  );
+};
+
+const BugWrapper = (): JSX.Element => {
+  const [buttonProp, setButtonProp] = useState("a");
+  const clickHandler = () => {
+    setButtonProp(`${buttonProp}a`);
+    console.log(buttonProp);
+  };
+  return (
+    <>
+      <div onClick={clickHandler}>Change Prop</div>
+      <BugDropdown someProp={buttonProp} />
+    </>
+  );
+};
+
+const BugDropdown = ({ someProp }): JSX.Element => {
+  const dropdownVal: never[] | DefaultDropdownMenuOption | null | undefined =
+    [];
+
+  const changeCount = useRef(0);
+  return (
+    <>
+      <div>Some prop in parent: {someProp}</div>
+      <div>Onchange called count: {changeCount.current}</div>
+      <Dropdown
+        label="Dropdown label"
+        value={dropdownVal}
+        onChange={() => {
+          changeCount.current += 1;
+        }}
+        options={GITHUB_LABELS}
+        multiple
+      />
+    </>
   );
 };
 
@@ -96,8 +132,15 @@ export default {
 };
 
 const Template: Story = (args) => <Demo {...args} />;
+const TemplateBug: Story = (args) => <BugWrapper {...args} />;
 const LABEL = "Click Target";
 
+export const Buggy = TemplateBug.bind({});
+Buggy.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
 export const Default = Template.bind({});
 
 Default.args = {
