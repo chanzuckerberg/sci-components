@@ -70,6 +70,8 @@ export * from "./core/MenuSelect";
 export { default as MenuSelect } from "./core/MenuSelect";
 export * from "./core/Notification";
 export { default as Notification } from "./core/Notification";
+export * from "./core/Pagination";
+export { default as Pagination } from "./core/Pagination";
 export * from "./core/Radio";
 export { default as RadioButton } from "./core/Radio";
 export * from "./core/SegmentedControl";
