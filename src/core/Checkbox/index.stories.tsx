@@ -105,23 +105,19 @@ const IndeterminateDemo = (): JSX.Element => {
 
   const children = (
     <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      <FormControlLabel
+      <Checkbox
         label="Child 1"
-        control={
-          <Checkbox
-            onChange={handleChange2}
-            stage={checked[0] ? "checked" : "unchecked"}
-          />
-        }
+        checkboxProps={{
+          onChange: handleChange2,
+          checked: checked[0],
+        }}
       />
-      <FormControlLabel
+      <Checkbox
         label="Child 2"
-        control={
-          <Checkbox
-            onChange={handleChange3}
-            stage={checked[1] ? "checked" : "unchecked"}
-          />
-        }
+        checkboxProps={{
+          onChange: handleChange3,
+          checked: checked[1],
+        }}
       />
     </Box>
   );
@@ -137,15 +133,13 @@ const IndeterminateDemo = (): JSX.Element => {
   }
   return (
     <div>
-      <FormControlLabel
+      <Checkbox
         label="Parent"
-        control={
-          <Checkbox
-            checked={checked[0] && checked[1]}
-            stage={getParentStage()}
-            onChange={handleChange1}
-          />
-        }
+        checkboxProps={{
+          checked: checked[0] && checked[1],
+          onChange: handleChange1,
+          indeterminate: checked[0] !== checked[1],
+        }}
       />
       {children}
     </div>
