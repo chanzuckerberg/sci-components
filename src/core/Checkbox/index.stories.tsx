@@ -108,37 +108,28 @@ const IndeterminateDemo = (): JSX.Element => {
       <Checkbox
         label="Child 1"
         checkboxProps={{
-          onChange: handleChange2,
           checked: checked[0],
+          onChange: handleChange2,
         }}
       />
       <Checkbox
         label="Child 2"
         checkboxProps={{
-          onChange: handleChange3,
           checked: checked[1],
+          onChange: handleChange3,
         }}
       />
     </Box>
   );
 
-  function getParentStage() {
-    if (checked[0] && checked[1]) {
-      return "checked";
-    }
-    if (checked[0] !== checked[1]) {
-      return "indeterminate";
-    }
-    return "unchecked";
-  }
   return (
     <div>
       <Checkbox
         label="Parent"
         checkboxProps={{
           checked: checked[0] && checked[1],
-          onChange: handleChange1,
           indeterminate: checked[0] !== checked[1],
+          onChange: handleChange1,
         }}
       />
       {children}
