@@ -21,7 +21,6 @@ const BugWrapper = (): JSX.Element => {
   const [buttonProp, setButtonProp] = useState("a");
   const clickHandler = () => {
     setButtonProp(`${buttonProp}a`);
-    console.log(buttonProp);
   };
   return (
     <>
@@ -45,6 +44,7 @@ const BugDropdown = ({ someProp }): JSX.Element => {
         value={dropdownVal}
         onChange={() => {
           changeCount.current += 1;
+          console.log("dropdown value: ", dropdownVal);
         }}
         options={GITHUB_LABELS}
         multiple
