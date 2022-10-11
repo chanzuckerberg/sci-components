@@ -10,7 +10,6 @@ import {
 import React, { SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
@@ -158,13 +157,11 @@ export default function DropdownMenu<
                 ...params.InputProps.ref,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <ButtonIcon sdsType="secondary">
-                      <Icon
-                        sdsIcon="search"
-                        sdsSize="s"
-                        sdsType="interactive"
-                      />
-                    </ButtonIcon>
+                    <ButtonIcon
+                      sdsType="secondary"
+                      sdsSize="small"
+                      sdsIcon="search"
+                    />
                   </InputAdornment>
                 ),
                 inputProps: params.inputProps,

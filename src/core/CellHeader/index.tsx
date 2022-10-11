@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import Icon, { IconNameToSizes } from "../Icon";
+import { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import {
   CellHeaderExtraProps,
@@ -45,9 +45,12 @@ const CellHeaderContent = (
     direction === "asc" ? "chevronUp" : "chevronDown";
 
   const sortIcon = (
-    <StyledSortingIcon sdsType="tertiary" sdsSize="small" active={active}>
-      <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
-    </StyledSortingIcon>
+    <StyledSortingIcon
+      sdsType="tertiary"
+      sdsSize="small"
+      active={active}
+      sdsIcon={sdsIconName}
+    />
   );
 
   return (

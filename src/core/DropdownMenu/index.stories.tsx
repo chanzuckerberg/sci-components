@@ -2,7 +2,6 @@ import { ClickAwayListener, styled } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
 import InputDropdown from "../InputDropdown";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
@@ -255,13 +254,8 @@ const LivePreviewDemo = (): JSX.Element => {
               active={false}
               sdsSize="large"
               sdsType="secondary"
-            >
-              <Icon
-                sdsIcon="infoSpeechBubble"
-                sdsSize="l"
-                sdsType="iconButton"
-              />
-            </ButtonIcon>
+              sdsIcon="infoSpeechBubble"
+            />
 
             <DropdownMenu
               anchorEl={anchorEl2}

@@ -75,13 +75,8 @@ const Callout = ({
           }}
           sdsSize="small"
           sdsType="tertiary"
-        >
-          <Icon
-            sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
-            sdsSize="s"
-            sdsType="button"
-          />
-        </ButtonIcon>
+          sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
+        />
       );
     }
     return onClose ? (
@@ -90,10 +85,8 @@ const Callout = ({
         sdsSize="small"
         sdsType="tertiary"
         size="large"
-      >
-        {" "}
-        <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-      </ButtonIcon>
+        sdsIcon="xMark"
+      />
     ) : null;
   };
 

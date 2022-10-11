@@ -1,18 +1,56 @@
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
-import React, { forwardRef } from "react";
-import { ButtonIconExtraProps, StyledButtonIcon } from "./style";
+import React, { ForwardedRef, forwardRef } from "react";
+import Icon, { IconNameToSizes, IconProps } from "../Icon";
+import {
+  ButtonIconExtraProps,
+  ButtonIconSizeToTypes,
+  StyledButtonIcon,
+} from "./style";
 
-type ButtonIconProps = ButtonIconExtraProps & RawButtonIconProps;
-
+export type { ButtonIconSizeToTypes };
 export type { ButtonIconProps };
+export interface ButtonIconInternalProps<
+  IconName extends keyof IconNameToSizes
+> {
+  sdsIcon: IconName;
+  sdsIconProps?: Partial<IconProps<IconName>>;
+}
+
+type ButtonIconProps<
+  IconName extends keyof IconNameToSizes,
+  ButtonIconSize extends keyof ButtonIconSizeToTypes
+> = ButtonIconExtraProps<ButtonIconSize> &
+  RawButtonIconProps &
+  ButtonIconInternalProps<IconName>;
+
+const ButtonIconSizeToSdsIconSize = {
+  large: "xl",
+  medium: "l",
+  small: "s",
+};
 
 /**
  * @see https://v4.mui.com/components/buttons/#icon-buttons
  */
-const ButtonIcon = forwardRef<HTMLButtonElement | null, ButtonIconProps>(
-  (props, ref): JSX.Element => {
-    return <StyledButtonIcon data-testid="iconButton" {...props} ref={ref} />;
-  }
-);
+const ButtonIcon = forwardRef(function ButtonIcon<
+  IconName extends keyof IconNameToSizes,
+  ButtonIconSize extends keyof ButtonIconSizeToTypes
+>(
+  props: ButtonIconProps<IconName, ButtonIconSize>,
+  ref: ForwardedRef<HTMLButtonElement | null>
+): JSX.Element {
+  const { sdsIcon, sdsSize = "large", sdsIconProps } = props;
+  const iconSize = ButtonIconSizeToSdsIconSize[sdsSize];
+  return (
+    <StyledButtonIcon {...props} ref={ref}>
+      <Icon
+        sdsType="iconButton"
+        {...sdsIconProps}
+        sdsIcon={sdsIcon}
+        sdsSize={iconSize as IconNameToSizes[IconName]}
+      />
+    </StyledButtonIcon>
+  );
+});
 
 export default ButtonIcon;
