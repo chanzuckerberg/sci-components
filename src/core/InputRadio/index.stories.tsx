@@ -4,17 +4,17 @@ import React from "react";
 import InputRadio from "./index";
 
 const DefaultDemo = (props: Args): JSX.Element => {
-  const { text } = props;
+  const { label } = props;
 
   return (
     <RadioGroup
-      aria-labelledby="demo-radio-buttons-group-label"
+      aria-labelledby="demo-input-radio-group-label"
       defaultValue="demo"
-      name="radio-buttons-group"
+      name="input-radio-group"
     >
       <FormControlLabel
         control={<InputRadio stage="checked" {...props} />}
-        label={text}
+        label={label}
         value="demo"
       />
     </RadioGroup>
@@ -37,65 +37,49 @@ Default.parameters = {
 
 Default.args = {
   disabled: false,
-  text: "Label",
+  label: "Label",
+};
+
+const DefaultLabelDemo = (props: Args): JSX.Element => {
+  return (
+    <RadioGroup
+      aria-labelledby="demo-radio-buttons-group-label"
+      defaultValue="demo"
+      name="radio-buttons-group"
+    >
+      <InputRadio label="TEST" {...props} />
+    </RadioGroup>
+  );
+};
+
+const DefaultLabelTemplate: Story = (args) => <DefaultLabelDemo {...args} />;
+
+export const DefaultLabel = DefaultLabelTemplate.bind({});
+DefaultLabel.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+DefaultLabel.args = {
+  disabled: false,
+  label: "Label",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const { text } = props;
-
-  const [checked, setChecked] = React.useState([true, false, false]);
-
-  const handleCheck1 = () => {
-    setChecked([true, false, false]);
-  };
-  const handleCheck2 = () => {
-    setChecked([false, true, false]);
-  };
-  const handleCheck3 = () => {
-    setChecked([false, false, true]);
-  };
+  const { label } = props;
 
   return (
     <div>
-      <div>
-        <FormControlLabel
-          control={
-            <InputRadio
-              onChange={handleCheck1}
-              stage={checked[0] ? "checked" : "unchecked"}
-              data-testid="InputRadio"
-            />
-          }
-          label={text}
-          value="demo1"
-        />
-      </div>
-      <div>
-        <FormControlLabel
-          control={
-            <InputRadio
-              stage={checked[1] ? "checked" : "unchecked"}
-              onChange={handleCheck2}
-              data-testid="InputRadio"
-            />
-          }
-          label={text}
-          value="demo2"
-        />
-      </div>
-      <div>
-        <FormControlLabel
-          control={
-            <InputRadio
-              stage={checked[2] ? "checked" : "unchecked"}
-              onChange={handleCheck3}
-              data-testid="InputRadio"
-            />
-          }
-          label={text}
-          value="demo3"
-        />
-      </div>
+      <RadioGroup
+        aria-labelledby="demo-input-radio-group-label"
+        defaultValue="demo1"
+        name="input-radio-group"
+      >
+        <InputRadio data-testid="inputRadio" label={label} value="demo1" />
+        <InputRadio data-testid="inputRadio" label={label} value="demo2" />
+        <InputRadio data-testid="inputRadio" label={label} value="demo3" />
+      </RadioGroup>
     </div>
   );
 };
@@ -110,11 +94,11 @@ LivePreview.parameters = {
 };
 
 LivePreview.args = {
-  text: "Label",
+  label: "Label",
 };
 
 export const Test = LivePreviewTemplate.bind({});
 
 Test.args = {
-  text: "Test Label",
+  label: "Test Label",
 };
