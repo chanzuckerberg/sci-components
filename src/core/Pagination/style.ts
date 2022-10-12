@@ -5,6 +5,7 @@ import {
   fontBodyS,
   getColors,
   getCorners,
+  getFontWeights,
   getSpaces,
   getTypography,
 } from "../styles";
@@ -90,8 +91,11 @@ export const StyledPagination = styled("ul", {
 
   ${(props: PaginationExtraProps) => {
     const typography = getTypography(props);
+    const fontWeights = getFontWeights(props);
+
     return `
       font-family: ${typography?.fontFamily};
+      font-weight: ${fontWeights?.semibold};
       display: flex;
       flex-wrap: wrap;
       padding: 0;
