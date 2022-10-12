@@ -1,19 +1,25 @@
 /* eslint-disable no-use-before-define */
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import PaginationRow from "./index";
+import PaginationRaw from "./index";
 
 const Pagination = (props: Args): JSX.Element => {
-  const { pageSize = 5 } = props;
+  const { pageSize, totalCount, siblingCount, truncateDropdown, sdsStyle } =
+    props;
+  const [currentPage, setCurrentPage] = React.useState(1);
   return (
-    <PaginationRow
+    <PaginationRaw
+      sdsStyle={sdsStyle}
       pageSize={pageSize}
-      onPageChange={() => {}}
-      nextPage={() => {}}
-      previousPage={() => {}}
-      totalCount={300}
-      siblingCount={1}
-      currentPage={20}
+      onPageChange={(page) => {
+        setCurrentPage(page as number);
+      }}
+      onNextPage={() => setCurrentPage(currentPage + 1)}
+      onPreviousPage={() => setCurrentPage(currentPage - 1)}
+      totalCount={totalCount}
+      siblingCount={siblingCount}
+      currentPage={currentPage}
+      truncateDropdown={truncateDropdown}
     />
   );
 };
@@ -22,6 +28,19 @@ export default {
   argTypes: {
     pageSize: {
       control: { type: "number" },
+    },
+    sdsStyle: {
+      control: { type: "select" },
+      options: ["round", "square"],
+    },
+    siblingCount: {
+      control: { type: "number" },
+    },
+    totalCount: {
+      control: { type: "number" },
+    },
+    truncateDropdown: {
+      control: { type: "boolean" },
     },
   },
   component: Pagination,
@@ -32,14 +51,44 @@ const Template: Story = (args) => <Pagination {...args} />;
 
 export const Default = Template.bind({});
 
+Default.args = {
+  pageSize: 5,
+  siblingCount: 1,
+  totalCount: 300,
+};
+
 Default.parameters = {
   snapshot: {
     skip: true,
   },
 };
 
-// const TestDemo = (): JSX.Element => <PaginationRow pageSize={2} />;
+const TestDemo = (): JSX.Element => (
+  <PaginationRaw
+    data-testid="Pagination"
+    pageSize={5}
+    onPageChange={() => {}}
+    onNextPage={() => {}}
+    onPreviousPage={() => {}}
+    totalCount={50}
+    siblingCount={1}
+    currentPage={5}
+    truncateDropdown
+  />
+);
 
-// const TestTemplate: Story = (args) => <TestDemo {...args} />;
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
 
-// export const Test = TestTemplate.bind({});
+export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  controls: {
+    exclude: [
+      "pageSize",
+      "sdsStyle",
+      "siblingCount",
+      "totalCount",
+      "truncateDropdown",
+    ],
+  },
+};

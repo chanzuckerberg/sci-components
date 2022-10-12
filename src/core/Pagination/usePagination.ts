@@ -54,8 +54,9 @@ export const usePagination = ({
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = 3 + 2 * siblingCount;
       const leftRange = range(1, leftItemCount);
+      const rightDotsRange = range(leftItemCount + 1, totalPageCount - 1);
 
-      return [...leftRange, DOTS, totalPageCount];
+      return [...leftRange, rightDotsRange, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
@@ -64,12 +65,21 @@ export const usePagination = ({
         totalPageCount - rightItemCount + 1,
         totalPageCount
       );
-      return [firstPageIndex, DOTS, ...rightRange];
+      const leftDotsRange = range(2, totalPageCount - rightItemCount);
+      return [firstPageIndex, leftDotsRange, ...rightRange];
     }
 
     if (shouldShowLeftDots && shouldShowRightDots) {
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
-      return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
+      const leftDotsRange = range(2, leftSiblingIndex - 1);
+      const rightDotsRange = range(rightSiblingIndex + 1, totalPageCount - 1);
+      return [
+        firstPageIndex,
+        leftDotsRange,
+        ...middleRange,
+        rightDotsRange,
+        lastPageIndex,
+      ];
     }
   }, [totalCount, pageSize, siblingCount, currentPage]);
 };
