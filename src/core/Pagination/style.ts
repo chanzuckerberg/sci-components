@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import ButtonIcon from "../ButtonIcon";
+import Menu from "../Menu";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -80,6 +81,12 @@ export const StyledPaginationChevronButton = styled(ButtonIcon, {
       }
     `;
   }}
+`;
+
+export const StyledPaginationDropdownMenu = styled(Menu)`
+  & .MuiPaper-root {
+    max-height: 120px;
+  }
 `;
 
 export const StyledPagination = styled("ul", {

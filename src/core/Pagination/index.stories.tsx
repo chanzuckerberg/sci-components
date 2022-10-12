@@ -54,7 +54,7 @@ export const Default = Template.bind({});
 Default.args = {
   pageSize: 5,
   siblingCount: 1,
-  totalCount: 300,
+  totalCount: 100,
 };
 
 Default.parameters = {

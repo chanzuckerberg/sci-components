@@ -1,6 +1,5 @@
 import React, { forwardRef } from "react";
 import Icon from "../Icon";
-import Menu from "../Menu";
 import MenuItem from "../MenuItem";
 import {
   Page,
@@ -8,6 +7,7 @@ import {
   StyledPagination,
   StyledPaginationButtonIcon,
   StyledPaginationChevronButton,
+  StyledPaginationDropdownMenu,
 } from "./style";
 import { usePagination } from "./usePagination";
 
@@ -48,7 +48,7 @@ const PageListDropdown = (props: PageListDropdownProps) => {
       <StyledPaginationButtonIcon onClick={(e) => handleClick(e)}>
         <Icon sdsIcon="dotsHorizontal" sdsSize="xs" sdsType="iconButton" />
       </StyledPaginationButtonIcon>
-      <Menu
+      <StyledPaginationDropdownMenu
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -67,7 +67,7 @@ const PageListDropdown = (props: PageListDropdownProps) => {
             </MenuItem>
           );
         })}
-      </Menu>
+      </StyledPaginationDropdownMenu>
     </Page>
   );
 };
