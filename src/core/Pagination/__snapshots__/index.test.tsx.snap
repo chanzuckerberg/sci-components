@@ -2,11 +2,11 @@
 
 exports[`<Pagination /> Test story renders snapshot 1`] = `
 <ul
-  class="css-1rh7tqp"
+  class="css-epcftv"
   data-testid="Pagination"
 >
   <button
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ke0x1x-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
     type="button"
@@ -30,12 +30,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     />
   </button>
   <li
-    class="css-a47giw"
+    class="css-1lkfddh"
   >
     1
   </li>
   <li
-    class="css-8h257s"
+    class="css-q2xema"
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1u7qekg-MuiButtonBase-root-MuiIconButton-root"
@@ -63,22 +63,22 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-a47giw"
+    class="css-1lkfddh"
   >
     4
   </li>
   <li
-    class="css-1cv9k3z"
+    class="css-z16zeq"
   >
     5
   </li>
   <li
-    class="css-a47giw"
+    class="css-1lkfddh"
   >
     6
   </li>
   <li
-    class="css-8h257s"
+    class="css-q2xema"
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1u7qekg-MuiButtonBase-root-MuiIconButton-root"
@@ -106,12 +106,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-a47giw"
+    class="css-1lkfddh"
   >
     10
   </li>
   <button
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1ke0x1x-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
     type="button"

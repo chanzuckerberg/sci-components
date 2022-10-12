@@ -65,8 +65,6 @@ export const StyledPaginationChevronButton = styled(ButtonIcon, {
     const spaces = getSpaces(props);
 
     return `
-      width: 32px;
-      height: 32px;
       &:first-of-type {
         margin-right: ${spaces?.xl}px;
       }
@@ -91,11 +89,9 @@ export const StyledPagination = styled("ul", {
 
   ${(props: PaginationExtraProps) => {
     const typography = getTypography(props);
-    const fontWeights = getFontWeights(props);
 
     return `
       font-family: ${typography?.fontFamily};
-      font-weight: ${fontWeights?.semibold};
       display: flex;
       flex-wrap: wrap;
       padding: 0;
@@ -128,8 +124,10 @@ export const Page = styled("li", {
     const spaces = getSpaces(props);
     const corners = getCorners(props);
     const colors = getColors(props);
+    const fontWeights = getFontWeights(props);
 
     return `
+      font-weight: ${fontWeights?.semibold};
       cursor: pointer;
       list-style: none;
       width: 32px;
