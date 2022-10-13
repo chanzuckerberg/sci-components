@@ -68,6 +68,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     <FormControlLabel
       control={
         <StyledRadioButton
+          {...props}
           checkedIcon={
             <SvgIcon
               fillcontrast="white"
