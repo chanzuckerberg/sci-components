@@ -16,4 +16,10 @@ describe("<Checkbox />", () => {
     const checkboxElement = screen.getByTestId("checkbox");
     expect(checkboxElement).not.toBeNull();
   });
+
+  it("renders checkbox with label component", () => {
+    render(<Test {...Test.args} />);
+    const checkboxElement = screen.getByTestId("labelCheckbox");
+    expect(checkboxElement).not.toBeNull();
+  });
 });
