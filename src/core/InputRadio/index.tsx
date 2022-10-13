@@ -75,6 +75,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
               viewBox="0 0 16 16"
             />
           }
+          data-testid="radioButton"
           icon={
             <SvgIcon
               fillcontrast="white"

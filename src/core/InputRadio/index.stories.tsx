@@ -75,10 +75,11 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         aria-labelledby="demo-input-radio-group-label"
         defaultValue="demo1"
         name="input-radio-group"
+        data-testid="radioButtonGroup"
       >
-        <InputRadio data-testid="inputRadio" label={label} value="demo1" />
-        <InputRadio data-testid="inputRadio" label={label} value="demo2" />
-        <InputRadio data-testid="inputRadio" label={label} value="demo3" />
+        <InputRadio label={label} value="demo1" />
+        <InputRadio label={label} value="demo2" />
+        <InputRadio label={label} value="demo3" />
       </RadioGroup>
     </div>
   );
