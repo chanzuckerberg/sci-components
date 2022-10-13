@@ -7,7 +7,7 @@ import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
 import CellHeader from "../CellHeader";
 import Icon from "../Icon";
-import RadioButton from "../Radio";
+import RadioButton from "../InputRadio";
 import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
 import Tag from "../Tag";

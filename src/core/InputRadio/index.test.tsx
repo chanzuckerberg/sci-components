@@ -8,7 +8,7 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<Radio />", () => {
+describe("<InputRadio />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
   it("renders 3 radio buttons", async () => {

@@ -23,7 +23,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
 
 export default {
   component: DefaultDemo,
-  title: "Radio Button",
+  title: "InputRadio",
 };
 
 const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;

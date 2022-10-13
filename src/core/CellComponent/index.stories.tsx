@@ -1,8 +1,8 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
+import RadioButton from "../InputRadio";
 import InputToggle from "../InputToggle";
-import RadioButton from "../Radio";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
 import CellComponentRaw from "./index";

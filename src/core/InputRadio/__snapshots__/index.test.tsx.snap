@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> Test story renders snapshot 1`] = `
+exports[`<InputRadio /> Test story renders snapshot 1`] = `
 <div>
   <div>
     <label
