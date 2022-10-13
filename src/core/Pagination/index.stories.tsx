@@ -44,7 +44,7 @@ export default {
     },
   },
   component: Pagination,
-  title: "Pagination",
+  title: "Table/Pagination",
 };
 
 const Template: Story = (args) => <Pagination {...args} />;
