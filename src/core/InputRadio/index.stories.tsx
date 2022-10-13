@@ -77,9 +77,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         name="input-radio-group"
         data-testid="radioButtonGroup"
       >
-        <InputRadio label={label} value="demo1" />
-        <InputRadio label={label} value="demo2" />
-        <InputRadio label={label} value="demo3" />
+        <InputRadio data-testid="inputRadio" label={label} value="demo1" />
+        <InputRadio data-testid="inputRadio" label={label} value="demo2" />
+        <InputRadio data-testid="inputRadio" label={label} value="demo3" />
       </RadioGroup>
     </div>
   );

@@ -3,7 +3,7 @@
 exports[`<InputRadio /> Test story renders snapshot 1`] = `
 <div>
   <div
-    aria-labelledby="demo-radio-buttons-group-label"
+    aria-labelledby="demo-input-radio-group-label"
     class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
     data-testid="radioButtonGroup"
     role="radiogroup"
@@ -13,12 +13,11 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root Mui-checked css-b0a55y-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
       >
         <input
           checked=""
           class="PrivateSwitchBase-input css-1m9pwf3"
-          name="radio-buttons-group"
+          name="input-radio-group"
           type="radio"
           value="demo1"
         />
@@ -47,11 +46,10 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root css-b0a55y-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
       >
         <input
           class="PrivateSwitchBase-input css-1m9pwf3"
-          name="radio-buttons-group"
+          name="input-radio-group"
           type="radio"
           value="demo2"
         />
@@ -80,11 +78,10 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root css-b0a55y-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
       >
         <input
           class="PrivateSwitchBase-input css-1m9pwf3"
-          name="radio-buttons-group"
+          name="input-radio-group"
           type="radio"
           value="demo3"
         />
