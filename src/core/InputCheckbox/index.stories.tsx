@@ -30,7 +30,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
 
 export default {
   component: CheckboxDemo,
-  title: "Checkbox",
+  title: "Inputs/Checkbox",
 };
 
 const Template: Story = (args) => <CheckboxDemo {...args} />;
