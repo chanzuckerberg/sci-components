@@ -23,7 +23,7 @@ export default {
     },
   },
   component: Demo,
-  title: "InputToggle",
+  title: "Inputs/Toggle",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
