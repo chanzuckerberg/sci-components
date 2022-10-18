@@ -1,18 +1,17 @@
 import React, { forwardRef } from "react";
 import Icon from "../Icon";
-import MenuItem from "../MenuItem";
+import PageListDropdown from "./components/PageListDropdown";
 import {
   Page,
   PaginationExtraProps,
   StyledPagination,
   StyledPaginationButtonIcon,
   StyledPaginationChevronButton,
-  StyledPaginationDropdownMenu,
 } from "./style";
 import { usePagination } from "./usePagination";
 
 export interface PaginationInternalProps {
-  onPageChange: (page: number | string) => void;
+  onPageChange: (page: number) => void;
   onNextPage: () => void;
   onPreviousPage: () => void;
   totalCount: number;
@@ -23,54 +22,6 @@ export interface PaginationInternalProps {
 }
 
 export type PaginationProps = PaginationExtraProps & PaginationInternalProps;
-
-interface PageListDropdownProps {
-  pageList: number[];
-  onPageChange: (page: number | string) => void;
-  sdsStyle: "round" | "square";
-}
-
-const PageListDropdown = (props: PageListDropdownProps) => {
-  const { pageList, onPageChange, sdsStyle } = props;
-
-  const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
-
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <Page sdsStyle={sdsStyle}>
-      <StyledPaginationButtonIcon onClick={(e) => handleClick(e)}>
-        <Icon sdsIcon="dotsHorizontal" sdsSize="xs" sdsType="iconButton" />
-      </StyledPaginationButtonIcon>
-      <StyledPaginationDropdownMenu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        {pageList.map((page: number) => {
-          return (
-            <MenuItem
-              onClick={() => {
-                onPageChange(page);
-                handleClose();
-              }}
-              key={page}
-            >
-              {page}
-            </MenuItem>
-          );
-        })}
-      </StyledPaginationDropdownMenu>
-    </Page>
-  );
-};
 
 const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
   (props: PaginationProps, ref): JSX.Element | null => {
@@ -122,19 +73,21 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
                 <PageListDropdown
                   pageList={pageNumber}
                   onPageChange={onPageChange}
-                  key={pageNumber.join()}
+                  key={pageNumber.join("-")}
                   sdsStyle={sdsStyle}
                 />
               );
             }
             return (
-              <StyledPaginationButtonIcon disabled>
-                <Icon
-                  sdsIcon="dotsHorizontal"
-                  sdsSize="xs"
-                  sdsType="iconButton"
-                />
-              </StyledPaginationButtonIcon>
+              <Page sdsStyle={sdsStyle}>
+                <StyledPaginationButtonIcon key={pageNumber.join("-")} disabled>
+                  <Icon
+                    sdsIcon="dotsHorizontal"
+                    sdsSize="xs"
+                    sdsType="iconButton"
+                  />
+                </StyledPaginationButtonIcon>
+              </Page>
             );
           }
 

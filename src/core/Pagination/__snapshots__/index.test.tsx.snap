@@ -1,44 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Pagination /> Test story renders snapshot 1`] = `
-<ul
-  class="css-epcftv"
-  data-testid="Pagination"
->
-  <button
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
-    data-testid="iconButton"
-    tabindex="0"
-    type="button"
-  >
-    <div
-      class="css-jbvua0"
-    >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconChevronLeftSmall.svg"
-        data-jest-svg-name="IconChevronLeftSmall"
-        data-testid="IconChevronLeftSmall"
-        fillcontrast="white"
-        focusable="false"
-        viewBox="0 0 14 14"
-      />
-    </div>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </button>
-  <li
-    class="css-1lkfddh"
-  >
-    1
-  </li>
-  <li
-    class="css-q2xema"
+<div>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1u7qekg-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       tabindex="0"
       type="button"
@@ -49,9 +18,9 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-          data-jest-file-name="IconDotsHorizontal3Small.svg"
-          data-jest-svg-name="IconDotsHorizontal3Small"
-          data-testid="IconDotsHorizontal3Small"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
           fillcontrast="white"
           focusable="false"
           viewBox="0 0 14 14"
@@ -61,27 +30,33 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
-  </li>
-  <li
-    class="css-1lkfddh"
-  >
-    4
-  </li>
-  <li
-    class="css-z16zeq"
-  >
-    5
-  </li>
-  <li
-    class="css-1lkfddh"
-  >
-    6
-  </li>
-  <li
-    class="css-q2xema"
-  >
+    <li
+      class="css-1lkfddh"
+    >
+      1
+    </li>
+    <li
+      class="css-z16zeq"
+    >
+      2
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      3
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      4
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      5
+    </li>
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1u7qekg-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       tabindex="0"
       type="button"
@@ -92,9 +67,9 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-          data-jest-file-name="IconDotsHorizontal3Small.svg"
-          data-jest-svg-name="IconDotsHorizontal3Small"
-          data-testid="IconDotsHorizontal3Small"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
           fillcontrast="white"
           focusable="false"
           viewBox="0 0 14 14"
@@ -104,35 +79,547 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
-  </li>
-  <li
-    class="css-1lkfddh"
+  </ul>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination-disabled-left-arrow"
   >
-    10
-  </li>
-  <button
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
-    data-testid="iconButton"
-    tabindex="0"
-    type="button"
-  >
-    <div
-      class="css-jbvua0"
+    <button
+      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1gu1j9g-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      disabled=""
+      tabindex="-1"
+      type="button"
     >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconChevronRightSmall.svg"
-        data-jest-svg-name="IconChevronRightSmall"
-        data-testid="IconChevronRightSmall"
-        fillcontrast="white"
-        focusable="false"
-        viewBox="0 0 14 14"
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </button>
+    <li
+      class="css-z16zeq"
+    >
+      1
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      2
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      3
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      4
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      5
+    </li>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
-    </div>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </button>
-</ul>
+    </button>
+  </ul>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination-with-left-dropdown"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <li
+      class="css-1lkfddh"
+    >
+      1
+    </li>
+    <li
+      class="css-q2xema"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14oxo28-MuiButtonBase-root-MuiIconButton-root"
+        data-testid="iconButton"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-jest-file-name="IconDotsHorizontal3Small.svg"
+            data-jest-svg-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      4
+    </li>
+    <li
+      class="css-z16zeq"
+    >
+      5
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      6
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      7
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      8
+    </li>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </ul>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination-with-right-dropdown"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <li
+      class="css-1lkfddh"
+    >
+      1
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      2
+    </li>
+    <li
+      class="css-z16zeq"
+    >
+      3
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      4
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      5
+    </li>
+    <li
+      class="css-q2xema"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14oxo28-MuiButtonBase-root-MuiIconButton-root"
+        data-testid="iconButton"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-jest-file-name="IconDotsHorizontal3Small.svg"
+            data-jest-svg-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      15
+    </li>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </ul>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination-with-both-dropdowns"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <li
+      class="css-1lkfddh"
+    >
+      1
+    </li>
+    <li
+      class="css-q2xema"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14oxo28-MuiButtonBase-root-MuiIconButton-root"
+        data-testid="iconButton"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-jest-file-name="IconDotsHorizontal3Small.svg"
+            data-jest-svg-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      3
+    </li>
+    <li
+      class="css-z16zeq"
+    >
+      4
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      5
+    </li>
+    <li
+      class="css-q2xema"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14oxo28-MuiButtonBase-root-MuiIconButton-root"
+        data-testid="iconButton"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-jest-file-name="IconDotsHorizontal3Small.svg"
+            data-jest-svg-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      8
+    </li>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </ul>
+  <ul
+    class="css-epcftv"
+    data-testid="Pagination-disabled-dropdown"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronLeftSmall.svg"
+          data-jest-svg-name="IconChevronLeftSmall"
+          data-testid="IconChevronLeftSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <li
+      class="css-1lkfddh"
+    >
+      1
+    </li>
+    <li
+      class="css-q2xema"
+    >
+      <button
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-cgzcdm-MuiButtonBase-root-MuiIconButton-root"
+        data-testid="iconButton"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <div
+          class="css-jbvua0"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-jest-file-name="IconDotsHorizontal3Small.svg"
+            data-jest-svg-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            viewBox="0 0 14 14"
+          />
+        </div>
+      </button>
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      4
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      5
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      6
+    </li>
+    <li
+      class="css-z16zeq"
+    >
+      7
+    </li>
+    <li
+      class="css-1lkfddh"
+    >
+      8
+    </li>
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-j24v0s-MuiButtonBase-root-MuiIconButton-root"
+      data-testid="iconButton"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-jbvua0"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-jest-file-name="IconChevronRightSmall.svg"
+          data-jest-svg-name="IconChevronRightSmall"
+          data-testid="IconChevronRightSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </ul>
+</div>
 `;

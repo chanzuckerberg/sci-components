@@ -11,8 +11,8 @@ const Pagination = (props: Args): JSX.Element => {
     <PaginationRaw
       sdsStyle={sdsStyle}
       pageSize={pageSize}
-      onPageChange={(page) => {
-        setCurrentPage(page as number);
+      onPageChange={(page: number) => {
+        setCurrentPage(page);
       }}
       onNextPage={() => setCurrentPage(currentPage + 1)}
       onPreviousPage={() => setCurrentPage(currentPage - 1)}
@@ -63,18 +63,76 @@ Default.parameters = {
   },
 };
 
-const TestDemo = (): JSX.Element => (
-  <PaginationRaw
-    data-testid="Pagination"
-    pageSize={5}
-    onPageChange={() => {}}
-    onNextPage={() => {}}
-    onPreviousPage={() => {}}
-    totalCount={50}
-    siblingCount={1}
-    currentPage={5}
-    truncateDropdown
-  />
+const TestDemo = (props: Args): JSX.Element => (
+  <div>
+    <PaginationRaw
+      data-testid="Pagination"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={20}
+      siblingCount={1}
+      currentPage={2}
+      truncateDropdown
+      {...props}
+    />
+    <PaginationRaw
+      data-testid="Pagination-disabled-left-arrow"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={20}
+      siblingCount={1}
+      currentPage={1}
+      truncateDropdown
+    />
+    <PaginationRaw
+      data-testid="Pagination-with-left-dropdown"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={30}
+      siblingCount={1}
+      currentPage={5}
+      truncateDropdown
+    />
+    <PaginationRaw
+      data-testid="Pagination-with-right-dropdown"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={60}
+      siblingCount={1}
+      currentPage={3}
+      truncateDropdown
+    />
+    <PaginationRaw
+      data-testid="Pagination-with-both-dropdowns"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={30}
+      siblingCount={1}
+      currentPage={4}
+      truncateDropdown
+    />
+    <PaginationRaw
+      data-testid="Pagination-disabled-dropdown"
+      pageSize={4}
+      onPageChange={() => {}}
+      onNextPage={() => {}}
+      onPreviousPage={() => {}}
+      totalCount={30}
+      siblingCount={1}
+      currentPage={7}
+      truncateDropdown={false}
+    />
+  </div>
 );
 
 const TestTemplate: Story = (args) => <TestDemo {...args} />;

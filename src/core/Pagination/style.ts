@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
 import ButtonIcon from "../ButtonIcon";
-import Menu from "../Menu";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -20,7 +19,6 @@ export interface PaginationExtraProps extends CommonThemeProps {
 
 const doNotForwardProps = [
   "sdsStyle",
-  "disabled",
   "selected",
   "onPageChange",
   "onNextPage",
@@ -39,12 +37,8 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
   ${(props: PaginationExtraProps) => {
     const { disabled } = props;
     const colors = getColors(props);
-    const spaces = getSpaces(props);
 
     return `
-      width: 32px;
-      height: 32px;
-      margin-right: ${disabled ? spaces?.l : 0}px;
       cursor: ${disabled ? "auto" : "pointer"};
       &:hover {
         background-color: ${disabled ? "transparent" : colors?.gray[200]};
@@ -81,12 +75,6 @@ export const StyledPaginationChevronButton = styled(ButtonIcon, {
       }
     `;
   }}
-`;
-
-export const StyledPaginationDropdownMenu = styled(Menu)`
-  & .MuiPaper-root {
-    max-height: 120px;
-  }
 `;
 
 export const StyledPagination = styled("ul", {
