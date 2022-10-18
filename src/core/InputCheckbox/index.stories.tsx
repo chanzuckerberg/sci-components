@@ -1,7 +1,7 @@
 import { Box, FormControlLabel } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
-import Checkbox from "./index";
+import InputCheckbox from "./index";
 
 const testId = "test-story";
 
@@ -15,7 +15,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
     <div>
       <FormControlLabel
         control={
-          <Checkbox
+          <InputCheckbox
             data-testid="checkbox"
             disabled={disabled}
             onChange={handleChange}
@@ -30,7 +30,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
 
 export default {
   component: CheckboxDemo,
-  title: "Inputs/Checkbox",
+  title: "Inputs/InputCheckbox",
 };
 
 const Template: Story = (args) => <CheckboxDemo {...args} />;
@@ -51,7 +51,11 @@ const CheckboxLabelDemo = (props: Args): JSX.Element => {
   const { label, disabled } = props;
   return (
     <div>
-      <Checkbox data-testid="labelCheckbox" label={label} disabled={disabled} />
+      <InputCheckbox
+        data-testid="labelCheckbox"
+        label={label}
+        disabled={disabled}
+      />
     </div>
   );
 };
@@ -105,14 +109,14 @@ const IndeterminateDemo = (): JSX.Element => {
 
   const children = (
     <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      <Checkbox
+      <InputCheckbox
         label="Child 1"
         checkboxProps={{
           checked: checked[0],
           onChange: handleChange2,
         }}
       />
-      <Checkbox
+      <InputCheckbox
         label="Child 2"
         checkboxProps={{
           checked: checked[1],
@@ -124,7 +128,7 @@ const IndeterminateDemo = (): JSX.Element => {
 
   return (
     <div>
-      <Checkbox
+      <InputCheckbox
         label="Parent"
         checkboxProps={{
           checked: checked[0] && checked[1],

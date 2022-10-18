@@ -43,7 +43,7 @@ export { default as DropdownMenu } from "./core/DropdownMenu";
 export * from "./core/Icon";
 export { default as Icon } from "./core/Icon";
 export * from "./core/InputCheckbox";
-export { default as Checkbox } from "./core/InputCheckbox";
+export { default as InputCheckbox } from "./core/InputCheckbox";
 export * from "./core/InputDropdown";
 export { default as InputDropdown } from "./core/InputDropdown";
 export * from "./core/InputSearch";

@@ -104,7 +104,7 @@ export default {
     },
   },
   component: Demo,
-  title: "Inputs/Slider",
+  title: "Inputs/InputSlider",
 };
 
 const storyRow = {

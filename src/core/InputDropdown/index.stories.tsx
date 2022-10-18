@@ -134,7 +134,7 @@ export default {
     },
   },
   component: Demo,
-  title: "Inputs/Dropdown",
+  title: "Inputs/InputDropdown",
 };
 
 const Template: Story = (args) => <Demo {...args} />;
