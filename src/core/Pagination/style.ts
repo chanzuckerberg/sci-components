@@ -39,6 +39,8 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
     const colors = getColors(props);
 
     return `
+      width: 32px;
+      height: 32px;
       cursor: ${disabled ? "auto" : "pointer"};
       &:hover {
         background-color: ${disabled ? "transparent" : colors?.gray[200]};
