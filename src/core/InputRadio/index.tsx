@@ -12,7 +12,7 @@ export interface RadioProps
 /**
  * @see https://v4.mui.com/components/radio-buttons/
  */
-const RadioButton = (props: RadioProps): JSX.Element => {
+const InputRadio = (props: RadioProps): JSX.Element => {
   const { stage } = props;
   let newProps: MUIRadioProps;
   switch (stage) {
@@ -55,4 +55,4 @@ const RadioButton = (props: RadioProps): JSX.Element => {
   );
 };
 
-export default RadioButton;
+export default InputRadio;

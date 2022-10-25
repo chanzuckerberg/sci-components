@@ -1,7 +1,7 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import * as React from "react";
-import RadioButton from "../InputRadio";
+import InputRadio from "../InputRadio";
 import InputToggle from "../InputToggle";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
@@ -150,7 +150,7 @@ const TestDemo = (props: Args): JSX.Element => {
               name="radio-buttons-group"
             >
               <FormControlLabel
-                control={<RadioButton stage="checked" {...props} />}
+                control={<InputRadio stage="checked" {...props} />}
                 label="Label"
                 value="demo"
               />
