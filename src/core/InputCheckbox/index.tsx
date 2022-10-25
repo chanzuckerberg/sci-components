@@ -19,7 +19,7 @@ export interface CheckboxProps
 /**
  * @see https://v4.mui.com/components/checkboxes/
  */
-const Checkbox = (props: CheckboxProps): JSX.Element => {
+const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   const { stage, label, disabled, checkboxProps } = props;
 
   if (label === undefined && stage !== undefined) {
@@ -113,4 +113,4 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
   );
 };
 
-export default Checkbox;
+export default InputCheckbox;

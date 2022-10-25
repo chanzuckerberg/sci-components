@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Checkbox /> Test story renders snapshot 1`] = `
+exports[`<InputCheckbox /> Test story renders snapshot 1`] = `
 <div
   style="display: grid; grid-template-columns: repeat(2, 100px); grid-template-rows: 1fr;"
 >
