@@ -47,10 +47,7 @@ export { default as InputCheckbox } from "./core/InputCheckbox";
 export * from "./core/InputDropdown";
 export { default as InputDropdown } from "./core/InputDropdown";
 export * from "./core/InputRadio";
-export {
-  default as InputRadio,
-  default as InputRadio,
-} from "./core/InputRadio";
+export { default as InputRadio } from "./core/InputRadio";
 export * from "./core/InputSearch";
 export { default as InputSearch } from "./core/InputSearch";
 export * from "./core/InputSlider";
