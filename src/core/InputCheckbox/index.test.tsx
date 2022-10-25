@@ -22,4 +22,10 @@ describe("<InputCheckbox />", () => {
     const checkboxElement = screen.getByTestId("labelCheckbox");
     expect(checkboxElement).not.toBeNull();
   });
+
+  it("renders checkbox with caption", () => {
+    render(<Test {...Test.args} />);
+    const captionElement = screen.findAllByText("Caption");
+    expect(captionElement).not.toBeNull();
+  });
 });
