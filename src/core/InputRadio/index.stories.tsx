@@ -1,4 +1,4 @@
-import { FormControlLabel, RadioGroup } from "@mui/material";
+import { RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import InputRadio from "./index";
@@ -8,15 +8,11 @@ const DefaultDemo = (props: Args): JSX.Element => {
 
   return (
     <RadioGroup
-      aria-labelledby="demo-input-radio-group-label"
+      aria-labelledby="demo-radio-buttons-group-label"
       defaultValue="demo"
-      name="input-radio-group"
+      name="radio-buttons-group"
     >
-      <FormControlLabel
-        control={<InputRadio stage="checked" {...props} />}
-        label={label}
-        value="demo"
-      />
+      <InputRadio label={label} value="demo" {...props} />
     </RadioGroup>
   );
 };
@@ -36,32 +32,6 @@ Default.parameters = {
 };
 
 Default.args = {
-  disabled: false,
-  label: "Label",
-};
-
-const DefaultLabelDemo = (props: Args): JSX.Element => {
-  return (
-    <RadioGroup
-      aria-labelledby="demo-radio-buttons-group-label"
-      defaultValue="demo"
-      name="radio-buttons-group"
-    >
-      <InputRadio label="TEST" {...props} />
-    </RadioGroup>
-  );
-};
-
-const DefaultLabelTemplate: Story = (args) => <DefaultLabelDemo {...args} />;
-
-export const DefaultLabel = DefaultLabelTemplate.bind({});
-DefaultLabel.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-DefaultLabel.args = {
   disabled: false,
   label: "Label",
 };

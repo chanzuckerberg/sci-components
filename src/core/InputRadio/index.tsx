@@ -21,7 +21,8 @@ export interface RadioProps
  */
 const InputRadio = (props: RadioProps): JSX.Element => {
   const { label, stage, radioProps, value } = props;
-
+  console.log(label);
+  console.log(label === undefined && stage !== undefined);
   if (label === undefined && stage !== undefined) {
     let newProps: MUIRadioProps;
     switch (stage) {
