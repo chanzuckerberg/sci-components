@@ -7,7 +7,7 @@ import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
 import CellHeader from "../CellHeader";
 import Icon from "../Icon";
-import RadioButton from "../Radio";
+import InputRadio from "../InputRadio";
 import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
@@ -122,11 +122,11 @@ const Table = (props: Args): JSX.Element => {
               name="radio-buttons-group"
             >
               <FormControlLabel
-                control={<RadioButton stage="unchecked" />}
+                control={<InputRadio stage="unchecked" />}
                 label="Option 1"
               />
               <FormControlLabel
-                control={<RadioButton stage="checked" />}
+                control={<InputRadio stage="checked" />}
                 label="Option 2"
               />
             </RadioGroup>
