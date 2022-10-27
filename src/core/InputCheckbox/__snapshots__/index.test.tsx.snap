@@ -10,7 +10,7 @@ exports[`<InputCheckbox /> Test story renders snapshot 1`] = `
     <div>
       <label
         caption="Caption"
-        class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-14ykopr-MuiFormControlLabel-root"
+        class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
       >
         <span
           class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root css-1x95i3r-MuiButtonBase-root-MuiCheckbox-root"
