@@ -99,6 +99,10 @@ Test.args = {
   id: { testId },
 };
 
+Test.parameters = {
+  controls: { exclude: ["caption", "label", "id"] },
+};
+
 /*
  * Live Preview
  */
@@ -181,6 +185,7 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 export const LivePreview = LivePreviewTemplate.bind({});
 
 LivePreview.parameters = {
+  controls: { exclude: ["caption", "label"] },
   snapshot: {
     skip: true,
   },
