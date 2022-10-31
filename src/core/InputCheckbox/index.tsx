@@ -22,7 +22,7 @@ export interface CheckboxProps
 const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   const { stage, label, disabled, checkboxProps } = props;
 
-  if (label === undefined && stage !== undefined) {
+  if (label === undefined || stage !== undefined) {
     let newProps: MUICheckboxProps;
     switch (stage) {
       case "checked":
