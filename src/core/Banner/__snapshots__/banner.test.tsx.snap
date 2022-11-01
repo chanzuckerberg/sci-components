@@ -90,9 +90,8 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       </div>
       <div
         class="css-1xpysbw"
-      >
-        Banner text lorem ipsum dolor mit
-      </div>
+      />
+      Banner text lorem ipsum dolor mit
       <div
         style="padding: 5px;"
       />

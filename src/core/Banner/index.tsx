@@ -22,6 +22,7 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   ref
 ): JSX.Element | null {
   const {
+    children,
     dismissed,
     dismissible = true,
     onClose,
@@ -33,6 +34,10 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   const [wasDismissed, setWasDismissed] = useState<boolean>(false);
 
   if (dismissed || wasDismissed) return null;
+
+  if (children && text) {
+    throw new Error("Either text or children should be used");
+  }
 
   const handleClose = (e: React.MouseEvent) => {
     if (dismissed === undefined) {
@@ -49,7 +54,7 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
           <Icon sdsIcon="infoCircle" sdsSize="l" sdsType="static" />
         </IconWrapper>
         <Text>{text}</Text>
-        {props.children}
+        {children}
       </Centered>
       {dismissible && (
         <StyledButtonIcon

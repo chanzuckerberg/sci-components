@@ -62,7 +62,8 @@ const LivePreviewDemo = (): JSX.Element => {
     <div style={{ padding: "24px", width: "600px" }}>
       <Banner dismissible sdsType="primary" text={BANNER_TEXT} />
       <div style={{ height: "24px" }} />
-      <Banner dismissible sdsType="secondary" text={BANNER_TEXT}>
+      <Banner dismissible sdsType="secondary">
+        {BANNER_TEXT}
         <div style={{ padding: 5 }} />
         <Link href="/" sdsStyle="default">
           Learn More
