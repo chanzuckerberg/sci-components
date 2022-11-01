@@ -1,13 +1,18 @@
 import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React from "react";
+import Link from "../Link";
 import Banner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
 const Demo = (props: Args): JSX.Element => {
-  const { sdsType, text } = props;
-  return <Banner sdsType={sdsType} text={text} {...props} />;
+  const { children, sdsType } = props;
+  return (
+    <Banner sdsType={sdsType} {...props}>
+      {children}
+    </Banner>
+  );
 };
 
 export default {
@@ -55,14 +60,21 @@ const StyledBanner = styled(Banner)`
 const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={{ padding: "24px", width: "600px" }}>
-      <Banner dismissible sdsType="primary" text={BANNER_TEXT} />
+      <Banner dismissible sdsType="primary">
+        {BANNER_TEXT}
+      </Banner>
       <div style={{ height: "24px" }} />
-      <Banner dismissible sdsType="secondary" text={BANNER_TEXT} />
+      <Banner dismissible sdsType="secondary">
+        {BANNER_TEXT}
+        <div style={{ padding: 5 }} />
+        <Link href="/" sdsStyle="default">
+          Learn More
+        </Link>
+      </Banner>
       <div style={{ height: "24px" }} />
-      <StyledBanner
-        sdsType="primary"
-        text="Stylable. Should have pink background color"
-      />
+      <StyledBanner sdsType="primary">
+        Stylable. Should have pink background color
+      </StyledBanner>
     </div>
   );
 };
