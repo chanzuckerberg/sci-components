@@ -6,20 +6,29 @@ import {
   IconWrapper,
   StyledBanner,
   StyledButtonIcon,
+  Text,
 } from "./style";
 
 export interface BannerProps extends BannerExtraProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
+  text?: string;
 }
 
 const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
   props,
   ref
 ): JSX.Element | null {
-  const { dismissed, dismissible = true, onClose, sdsType, ...rest } = props;
+  const {
+    dismissed,
+    dismissible = true,
+    onClose,
+    sdsType,
+    text,
+    ...rest
+  } = props;
 
   const [wasDismissed, setWasDismissed] = useState<boolean>(false);
 
@@ -39,6 +48,7 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
         <IconWrapper>
           <Icon sdsIcon="infoCircle" sdsSize="l" sdsType="static" />
         </IconWrapper>
+        <Text>{text}</Text>
         {props.children}
       </Centered>
       {dismissible && (

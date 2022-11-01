@@ -29,7 +29,11 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
           />
         </div>
       </div>
-      Banner text lorem ipsum dolor mit
+      <div
+        class="css-1xpysbw"
+      >
+        Banner text lorem ipsum dolor mit
+      </div>
     </div>
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
@@ -84,7 +88,11 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
           />
         </div>
       </div>
-      Banner text lorem ipsum dolor mit
+      <div
+        class="css-1xpysbw"
+      >
+        Banner text lorem ipsum dolor mit
+      </div>
       <div
         style="padding: 5px;"
       />
@@ -148,7 +156,11 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
           />
         </div>
       </div>
-      Stylable. Should have pink background color
+      <div
+        class="css-1xpysbw"
+      >
+        Stylable. Should have pink background color
+      </div>
     </div>
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
@@ -182,7 +194,6 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
 <div
   class="css-1v3i1xe"
   role="banner"
-  text="test text"
 >
   <div
     class="css-1879pua"
@@ -204,6 +215,11 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
           viewBox="0 0 32 32"
         />
       </div>
+    </div>
+    <div
+      class="css-1xpysbw"
+    >
+      test text
     </div>
   </div>
   <button

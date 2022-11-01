@@ -7,9 +7,9 @@ import Banner from "./index";
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
 const Demo = (props: Args): JSX.Element => {
-  const { children, sdsType } = props;
+  const { children, sdsType, text } = props;
   return (
-    <Banner sdsType={sdsType} {...props}>
+    <Banner sdsType={sdsType} text={text} {...props}>
       {children}
     </Banner>
   );
@@ -60,21 +60,19 @@ const StyledBanner = styled(Banner)`
 const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={{ padding: "24px", width: "600px" }}>
-      <Banner dismissible sdsType="primary">
-        {BANNER_TEXT}
-      </Banner>
+      <Banner dismissible sdsType="primary" text={BANNER_TEXT} />
       <div style={{ height: "24px" }} />
-      <Banner dismissible sdsType="secondary">
-        {BANNER_TEXT}
+      <Banner dismissible sdsType="secondary" text={BANNER_TEXT}>
         <div style={{ padding: 5 }} />
         <Link href="/" sdsStyle="default">
           Learn More
         </Link>
       </Banner>
       <div style={{ height: "24px" }} />
-      <StyledBanner sdsType="primary">
-        Stylable. Should have pink background color
-      </StyledBanner>
+      <StyledBanner
+        sdsType="primary"
+        text="Stylable. Should have pink background color"
+      />
     </div>
   );
 };
