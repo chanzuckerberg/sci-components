@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Radio /> Test story renders snapshot 1`] = `
+exports[`<InputRadio /> Test story renders snapshot 1`] = `
 <div>
   <div>
     <label
@@ -8,7 +8,7 @@ exports[`<Radio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root Mui-checked css-b0a55y-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
+        data-testid="InputRadio"
         stage="checked"
       >
         <input
@@ -44,7 +44,7 @@ exports[`<Radio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorDefault MuiButtonBase-root MuiRadio-root MuiRadio-colorDefault PrivateSwitchBase-root css-1vqgfov-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
+        data-testid="InputRadio"
         stage="unchecked"
       >
         <input
@@ -79,7 +79,7 @@ exports[`<Radio /> Test story renders snapshot 1`] = `
     >
       <span
         class="MuiRadio-root MuiRadio-colorDefault MuiButtonBase-root MuiRadio-root MuiRadio-colorDefault PrivateSwitchBase-root css-1vqgfov-MuiButtonBase-root-MuiRadio-root"
-        data-testid="radioButton"
+        data-testid="InputRadio"
         stage="unchecked"
       >
         <input

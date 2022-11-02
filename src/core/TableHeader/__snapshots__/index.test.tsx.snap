@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableHeader /> Test story renders snapshot 1`] = `
+<table>
+  <thead
+    class="css-1426k2b"
+    data-testid="TableHeader"
+  >
+    <tr
+      class="css-1nusez2"
+    >
+      <th
+        class="css-bc0x2f"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 1
+          </span>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1c9gy53-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="iconButton"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-jbvua0"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                data-jest-file-name="IconChevronDownSmall.svg"
+                data-jest-svg-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 14 14"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </th>
+      <th
+        class="css-x40omn"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 2
+          </span>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="iconButton"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-jbvua0"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                data-jest-file-name="IconChevronDownSmall.svg"
+                data-jest-svg-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 14 14"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </th>
+      <th
+        class="css-x40omn"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 3
+          </span>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="iconButton"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-jbvua0"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                data-jest-file-name="IconChevronDownSmall.svg"
+                data-jest-svg-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 14 14"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </th>
+    </tr>
+  </thead>
+</table>
+`;

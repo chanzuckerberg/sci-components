@@ -8,12 +8,17 @@ import Meta, { Test as TestStory } from "./index.stories";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
 
-describe("<Radio />", () => {
+describe("<Table />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders 3 radio buttons", async () => {
-    render(<Test {...Test.args} />);
-    const radio = screen.getAllByTestId("radioButton");
-    expect(radio).toHaveLength(3);
+  it("renders table component", () => {
+    render(<Test />);
+    const elements = screen.getAllByTestId("Table");
+    expect(elements).toBeTruthy();
+  });
+
+  it("renders table component children", async () => {
+    render(<Test />);
+    await screen.findByText("Primary 1");
   });
 });

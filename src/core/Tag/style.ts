@@ -12,19 +12,20 @@ import {
   getSpaces,
 } from "../styles";
 
+export type SdsTagColorType =
+  | "primary"
+  | "info"
+  | "success"
+  | "warning"
+  | "error"
+  | "gray"
+  | "beta"
+  | [string, string]
+  | [string, string, string];
 export interface ExtraProps extends CommonThemeProps {
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
-  tagColor?:
-    | "primary"
-    | "info"
-    | "success"
-    | "warning"
-    | "error"
-    | "gray"
-    | "beta"
-    | [string, string]
-    | [string, string, string];
+  tagColor?: SdsTagColorType;
   icon?: JSX.Element;
 }
 
@@ -34,6 +35,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
 
   return css`
     height: unset;
+    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
 
     &:hover {
       cursor: pointer;
@@ -42,7 +44,6 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXxxs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiChip-deleteIcon {
@@ -66,7 +67,7 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
 
   return css`
     height: unset;
-
+    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
     &:hover {
       cursor: pointer;
     }
@@ -74,7 +75,6 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontBodyXs(props)}
       padding: 0;
-      line-height: unset;
     }
 
     .MuiSvgIcon-root {

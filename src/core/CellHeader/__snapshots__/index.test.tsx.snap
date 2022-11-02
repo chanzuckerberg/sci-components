@@ -5,39 +5,41 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
   <tbody>
     <tr>
       <th
-        class=" css-1c4r0vw"
+        class=" css-1v6z816"
         data-mui-internal-clone-element="true"
         data-testid="CellHeader"
       >
-        <div>
+        <div
+          class="css-wg04tn"
+        >
           <span>
             Header
           </span>
-        </div>
-        <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-37ti23-MuiButtonBase-root-MuiIconButton-root"
-          data-testid="iconButton"
-          tabindex="0"
-          type="button"
-        >
-          <div
-            class="css-jbvua0"
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1c9gy53-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="iconButton"
+            tabindex="0"
+            type="button"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-              data-jest-file-name="IconChevronDownSmall.svg"
-              data-jest-svg-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              viewBox="0 0 14 14"
+            <div
+              class="css-jbvua0"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                data-jest-file-name="IconChevronDownSmall.svg"
+                data-jest-svg-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 14 14"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
-          </div>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
+          </button>
+        </div>
       </th>
     </tr>
   </tbody>

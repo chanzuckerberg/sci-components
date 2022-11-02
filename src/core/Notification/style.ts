@@ -28,19 +28,18 @@ export const StyledNotification = styled(Alert)`
 
     return `
       background-color: ${backgroundColor};
-      width: 360px;
+      max-width: 480px;
+      min-width: 280px;
+      box-sizing: border-box;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.l}px;
       align-items: flex-start;
       background-color: ${notificationColor};
-
-      &.elevated {
-        border-left: 5px solid;
-        box-shadow: ${shadows?.s};
-        border-color: ${borderColor};
-      }
+      border-left: 5px solid;
+      box-shadow: ${shadows?.s};
+      border-color: ${borderColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
