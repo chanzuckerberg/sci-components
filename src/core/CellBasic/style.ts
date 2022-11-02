@@ -3,6 +3,7 @@ import {
   CommonThemeProps,
   fontBodyS,
   fontBodyXxs,
+  getColors,
   getPalette,
   getSpaces,
   getTypography,

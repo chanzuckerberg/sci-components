@@ -10,7 +10,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
       class="css-1nusez2"
     >
       <th
-        class="css-bc0x2f"
+        class="css-1yuv55h"
       >
         <div
           class="css-rm9mvq"
@@ -45,7 +45,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-x40omn"
+        class="css-1d8dxe8"
       >
         <div
           class="css-rm9mvq"
@@ -80,7 +80,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-x40omn"
+        class="css-1d8dxe8"
       >
         <div
           class="css-rm9mvq"

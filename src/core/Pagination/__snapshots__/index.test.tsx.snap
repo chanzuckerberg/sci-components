@@ -85,7 +85,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     data-testid="Pagination-disabled-left-arrow"
   >
     <button
-      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1gu1j9g-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-t596ge-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       disabled=""
       tabindex="-1"
@@ -549,7 +549,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       class="css-q2xema"
     >
       <button
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1iu48fk-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-tapin4-MuiButtonBase-root-MuiIconButton-root"
         data-testid="iconButton"
         disabled=""
         tabindex="-1"
