@@ -15,7 +15,7 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
           Primary Text
         </span>
         <span
-          class="css-1rl2dmz"
+          class="css-px22cu"
         >
           Secondary Text
         </span>

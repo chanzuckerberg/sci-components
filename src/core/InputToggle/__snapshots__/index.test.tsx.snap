@@ -2,7 +2,7 @@
 
 exports[`<InputToggle /> Test story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium css-14ifyh6-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium css-183wik3-MuiSwitch-root"
 >
   <span
     class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"

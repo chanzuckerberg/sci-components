@@ -75,10 +75,6 @@ export const StyledTab = styled(RawTab, {
     const spaces = getSpaces(props);
     const fontWeights = getFontWeights(props);
 
-    const { sdsSize } = props;
-
-    const isLarge = sdsSize === "large";
-
     return `
       font-weight: ${fontWeights?.semibold};
       margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;

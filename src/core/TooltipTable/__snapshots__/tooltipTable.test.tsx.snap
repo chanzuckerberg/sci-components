@@ -6,10 +6,10 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
   data-testid="tooltipTable"
 >
   <div
-    class="css-1x04v0m"
+    class="css-1h9lvka"
   >
     <div
-      class="css-k74gq5"
+      class="css-1xcmb8m"
       label="Section 1"
     >
       Section 1
@@ -94,10 +94,10 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
     </table>
   </div>
   <div
-    class="css-1x04v0m"
+    class="css-1h9lvka"
   >
     <div
-      class="css-k74gq5"
+      class="css-1xcmb8m"
       label="Section 2"
     >
       Section 2

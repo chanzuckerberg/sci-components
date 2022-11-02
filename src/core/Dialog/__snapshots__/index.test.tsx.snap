@@ -31,12 +31,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
     Optional subtitle
   </p>
@@ -58,7 +58,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-11wyw7t-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -69,7 +69,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-133fmh6-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -113,12 +113,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
     Optional subtitle
   </p>
@@ -140,7 +140,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-11wyw7t-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -151,7 +151,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-133fmh6-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -195,12 +195,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
     Optional subtitle
   </p>
@@ -222,7 +222,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-11wyw7t-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -233,7 +233,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-133fmh6-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -277,12 +277,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
     Optional subtitle
   </p>
@@ -304,7 +304,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-11wyw7t-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -315,7 +315,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-133fmh6-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -334,7 +334,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-133fmh6-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -345,7 +345,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
     />
   </button>
   <button
-    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-11wyw7t-MuiButtonBase-root-MuiButton-root"
     data-testid="button"
     tabindex="0"
     type="button"
@@ -365,12 +365,12 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
   id="mui-5"
 >
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
     Optional subtitle
   </p>

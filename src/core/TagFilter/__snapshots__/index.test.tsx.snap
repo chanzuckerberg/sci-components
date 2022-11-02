@@ -8,7 +8,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
     style="grid-area: 1 / 1 / 1 / 2;"
   >
     <button
-      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-1qnokts-MuiButtonBase-root-MuiButton-root"
+      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-63yctn-MuiButtonBase-root-MuiButton-root"
       data-testid="button"
       disabled=""
       tabindex="-1"

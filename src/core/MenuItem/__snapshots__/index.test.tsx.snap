@@ -19,7 +19,7 @@ exports[`<MenuItem /> Test story renders snapshot 1`] = `
         test text
       </span>
       <span
-        class="css-1hhtny0"
+        class="css-6t2mms"
       >
         test column
       </span>
