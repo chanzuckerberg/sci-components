@@ -1,7 +1,7 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Story } from "@storybook/react";
 import React from "react";
-import RadioButton from "./index";
+import InputRadio from "./index";
 
 const DefaultDemo = (props: Args): JSX.Element => {
   const { text } = props;
@@ -13,7 +13,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
       name="radio-buttons-group"
     >
       <FormControlLabel
-        control={<RadioButton stage="checked" {...props} />}
+        control={<InputRadio stage="checked" {...props} />}
         label={text}
         value="demo"
       />
@@ -23,7 +23,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
 
 export default {
   component: DefaultDemo,
-  title: "Radio Button",
+  title: "Inputs/InputRadio",
 };
 
 const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;
@@ -60,10 +60,10 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <FormControlLabel
           control={
-            <RadioButton
+            <InputRadio
               onChange={handleCheck1}
               stage={checked[0] ? "checked" : "unchecked"}
-              data-testid="radioButton"
+              data-testid="InputRadio"
             />
           }
           label={text}
@@ -73,10 +73,10 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <FormControlLabel
           control={
-            <RadioButton
+            <InputRadio
               stage={checked[1] ? "checked" : "unchecked"}
               onChange={handleCheck2}
-              data-testid="radioButton"
+              data-testid="InputRadio"
             />
           }
           label={text}
@@ -86,10 +86,10 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <FormControlLabel
           control={
-            <RadioButton
+            <InputRadio
               stage={checked[2] ? "checked" : "unchecked"}
               onChange={handleCheck3}
-              data-testid="radioButton"
+              data-testid="InputRadio"
             />
           }
           label={text}

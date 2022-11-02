@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
 import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
 import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
 import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
@@ -7,12 +8,15 @@ import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCh
 import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
 import { ReactComponent as IconChevronDownLarge } from "../../common/svgs/IconChevronDownLarge.svg";
 import { ReactComponent as IconChevronDownSmall } from "../../common/svgs/IconChevronDownSmall.svg";
+import { ReactComponent as IconChevronLeftLarge } from "../../common/svgs/IconChevronLeftLarge.svg";
+import { ReactComponent as IconChevronLeftSmall } from "../../common/svgs/IconChevronLeftSmall.svg";
 import { ReactComponent as IconChevronRightLarge } from "../../common/svgs/IconChevronRightLarge.svg";
 import { ReactComponent as IconChevronRightSmall } from "../../common/svgs/IconChevronRightSmall.svg";
 import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChevronUpLarge.svg";
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
+import { ReactComponent as IconDnaLarge } from "../../common/svgs/IconDnaLarge.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
 import { ReactComponent as IconDotsHorizontal3Small } from "../../common/svgs/IconDotsHorizontal3Small.svg";
 import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
@@ -40,6 +44,7 @@ import { ReactComponent as IconLinesDashed3Solid1Small } from "../../common/svgs
 import { ReactComponent as IconLinesHorizontalSmall } from "../../common/svgs/IconLinesHorizontalSmall.svg";
 import { ReactComponent as IconLinkSmall } from "../../common/svgs/IconLinkSmall.svg";
 import { ReactComponent as IconListSmall } from "../../common/svgs/IconListSmall.svg";
+import { ReactComponent as IconLoadingAnimatedLarge } from "../../common/svgs/IconLoadingAnimatedLarge.svg";
 import { ReactComponent as IconLoadingLarge } from "../../common/svgs/IconLoadingLarge.svg";
 import { ReactComponent as IconLoadingSmall } from "../../common/svgs/IconLoadingSmall.svg";
 import { ReactComponent as IconLockCircleSmall } from "../../common/svgs/IconLockCircleSmall.svg";
@@ -77,20 +82,24 @@ import { ReactComponent as IconTreeHorizontalPrivateLarge } from "../../common/s
 import { ReactComponent as IconTreeHorizontalPublicLarge } from "../../common/svgs/IconTreeHorizontalPublicLarge.svg";
 import { ReactComponent as IconTreeHorizontalSmall } from "../../common/svgs/IconTreeHorizontalSmall.svg";
 import { ReactComponent as IconTreeVerticalSmall } from "../../common/svgs/IconTreeVerticalSmall.svg";
+import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
 export interface IconNameToSizes {
+  bacteria: "l" | "xl";
   barChartHorizontal3: "xs" | "s";
   barChartVertical3: "xs" | "s";
   barChartVertical4: "xs" | "s";
   check: "xs" | "s";
   checkCircle: "xs" | "s" | "l" | "xl";
   chevronDown: "xs" | "s" | "l" | "xl";
+  chevronLeft: "xs" | "s" | "l" | "xl";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
+  dna: "l" | "xl";
   dotsHorizontal: "xs" | "s" | "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
@@ -101,12 +110,12 @@ export interface IconNameToSizes {
   flagQuestionmark: "xs" | "s";
   flagXmark: "xs" | "s";
   flask: "l" | "xl";
-  flaskPrivate: "xl";
-  flaskPublic: "xl";
+  flaskPrivate: "l" | "xl";
+  flaskPublic: "l" | "xl";
   globe: "xs" | "s";
   grid: "l" | "xl";
-  gridPrivate: "xl";
-  gridPublic: "xl";
+  gridPrivate: "l" | "xl";
+  gridPublic: "l" | "xl";
   infoCircle: "xs" | "s" | "l" | "xl";
   infoSpeechBubble: "l" | "xl";
   lightBulb: "xs" | "s";
@@ -115,6 +124,7 @@ export interface IconNameToSizes {
   link: "xs" | "s";
   list: "xs" | "s";
   loading: "xs" | "s" | "l" | "xl";
+  loadingAnimated: "l" | "xl";
   lock: "xs" | "s";
   lockCircle: "xs" | "s";
   minus: "xs" | "s";
@@ -126,8 +136,8 @@ export interface IconNameToSizes {
   pinLocation: "xs" | "s";
   plus: "xs" | "s";
   plusCircle: "xs" | "s";
-  projectPrivate: "xl";
-  projectPublic: "xl";
+  projectPrivate: "l" | "xl";
+  projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
@@ -141,9 +151,10 @@ export interface IconNameToSizes {
   trashCan: "xs" | "s";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
-  treeHorizontalPrivate: "xl";
-  treeHorizontalPublic: "xl";
+  treeHorizontalPrivate: "l" | "xl";
+  treeHorizontalPublic: "l" | "xl";
   treeVertical: "xs" | "s";
+  virus: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
 }
@@ -157,6 +168,10 @@ type Props = Record<
 >;
 
 export const iconMap: Props = {
+  bacteria: {
+    largeIcon: IconBacteriaLarge,
+    smallIcon: null,
+  },
   barChartHorizontal3: {
     largeIcon: null,
     smallIcon: IconBarChartHorizontal3Small,
@@ -181,6 +196,10 @@ export const iconMap: Props = {
     largeIcon: IconChevronDownLarge,
     smallIcon: IconChevronDownSmall,
   },
+  chevronLeft: {
+    largeIcon: IconChevronLeftLarge,
+    smallIcon: IconChevronLeftSmall,
+  },
   chevronRight: {
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
@@ -192,6 +211,10 @@ export const iconMap: Props = {
   copy: {
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
+  },
+  dna: {
+    largeIcon: IconDnaLarge,
+    smallIcon: null,
   },
   dotsHorizontal: {
     largeIcon: IconDotsHorizontal3Large,
@@ -288,6 +311,10 @@ export const iconMap: Props = {
   loading: {
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
+  },
+  loadingAnimated: {
+    largeIcon: IconLoadingAnimatedLarge,
+    smallIcon: null,
   },
   lock: {
     largeIcon: null,
@@ -404,6 +431,10 @@ export const iconMap: Props = {
   treeVertical: {
     largeIcon: null,
     smallIcon: IconTreeVerticalSmall,
+  },
+  virus: {
+    largeIcon: IconVirusLarge,
+    smallIcon: null,
   },
   xMark: {
     largeIcon: IconXMarkLarge,
