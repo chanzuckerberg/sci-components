@@ -125,10 +125,10 @@ const disabledStyles = (props: DisabledType) => {
   const { disabled } = props;
   if (!disabled) return ``;
 
-  const colors = getColors(props);
+  const palette = getPalette(props);
 
   return `
-    color: ${colors?.gray[300]};
+  color: ${palette?.text?.disabled};
     cursor: default;
   `;
 };
@@ -160,10 +160,10 @@ export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
-    const colors = getColors(props);
+    const palette = getPalette(props);
 
     return `
-      color: ${colors?.gray[500]};
+    color: ${palette?.text?.secondary};
     `;
   }}
 

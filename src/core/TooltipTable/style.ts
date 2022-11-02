@@ -6,8 +6,11 @@ import {
   fontBodyXxs,
   fontCapsXxxxs,
   fontHeaderXs,
+  getBorders,
   getColors,
+  getPalette,
   getSpaces,
+  getTypography,
 } from "../styles";
 
 export interface TooltipTableExtraProps extends CommonThemeProps {
@@ -45,13 +48,13 @@ export const Section = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const colors = getColors(props);
     const spacings = getSpaces(props);
+    const borders = getBorders(props);
 
     return `
       &:not(:last-child) {
         padding-bottom: ${spacings?.l}px;
-        border-bottom: 1px solid ${colors?.gray["200"]};
+        border-bottom: ${borders?.gray[200]};
       }
 
       &:not(:first-of-type) {
@@ -66,14 +69,16 @@ export const SectionLabel = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const colors = getColors(props);
+    const palette = getPalette(props);
     const spacings = getSpaces(props);
+    const typography = getTypography(props);
 
     if (!props.label) return "";
 
     return `
       margin-bottom: ${spacings?.m}px;
-      color: ${colors?.gray["500"]};
+      font-family: ${typography?.fontFamily};
+      color: ${palette?.text?.secondary};
     `;
   }}
 `;

@@ -7,6 +7,7 @@ import {
   getColors,
   getCorners,
   getSpaces,
+  getTypography,
 } from "../styles";
 
 export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
@@ -59,6 +60,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
   const borders = getBorders(props);
   const colors = getColors(props);
   const spaces = getSpaces(props);
+  const typography = getTypography(props);
 
   return `
     outline: ${disabled ? borders?.primary[300] : borders?.primary[400]};
@@ -81,7 +83,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
         color: ${disabled ? colors?.gray[300] : colors?.gray[600]};
         content: "${value}";
         font: inherit;
-        font-family: 'Open sans';
+        font-family: ${typography?.fontFamily};
       }
     }
 
@@ -103,6 +105,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
   const borders = getBorders(props);
   const colors = getColors(props);
   const spaces = getSpaces(props);
+  const typography = getTypography(props);
 
   return `
     & {
@@ -127,7 +130,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
         color: ${disabled ? colors?.gray[300] : colors?.gray[500]};
         content: "${value}";
         font: inherit;
-        font-family: 'Open sans';
+        font-family: ${typography?.fontFamily};
       }
     }
 

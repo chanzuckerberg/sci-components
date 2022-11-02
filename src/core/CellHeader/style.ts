@@ -4,6 +4,7 @@ import {
   CommonThemeProps,
   fontHeaderS,
   getColors,
+  getPalette,
   getSpaces,
   getTypography,
 } from "../styles";
@@ -58,10 +59,11 @@ export const StyledTableHeader = styled("th", {
     const spacings = getSpaces(props);
     const typography = getTypography(props);
     const colors = getColors(props);
+    const palette = getPalette(props);
 
     return `
       box-sizing: border-box;
-      color: ${active ? colors?.primary[400] : colors?.gray[600]};
+      color: ${active ? colors?.primary[400] : palette.text?.secondary};
       font-family: ${typography?.fontFamily};
       padding: ${spacings?.l}px ${spacings?.s}px;
       min-height: 48px;
@@ -83,7 +85,7 @@ export const StyledTableHeader = styled("th", {
         color: ${active ? colors?.primary[500] : "black"};
 
         & > .MuiButtonBase-root {
-          color: ${active ? colors?.primary[500] : colors?.gray[500]};
+          color: ${active ? colors?.primary[500] : palette.text?.secondary};
           opacity: 1;
         }
       }

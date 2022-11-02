@@ -84,7 +84,6 @@ export const StyledTab = styled(RawTab, {
       margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
 
       // (thuang): Large Tab height is 30px, the offset is 4px
-      height: ${isLarge ? 26 : 22}px;
 
       color: ${colors?.gray[500]};
 

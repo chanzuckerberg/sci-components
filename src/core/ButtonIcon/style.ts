@@ -5,6 +5,7 @@ import {
   CommonThemeProps,
   getColors,
   getIconSizes,
+  getPalette,
   getSpaces,
 } from "../styles";
 
@@ -34,10 +35,10 @@ const isActive = (props: ButtonIconExtraProps): SerializedStyles => {
 };
 
 const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
-  const colors = getColors(props);
+  const palette = getPalette(props);
 
   return css`
-    color: ${colors?.gray[300]};
+    color: ${palette?.text?.disabled};
   `;
 };
 

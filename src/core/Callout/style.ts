@@ -5,9 +5,9 @@ import {
   getColors,
   getCorners,
   getIconSizes,
+  getPalette,
   getSpaces,
 } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
 
@@ -19,6 +19,7 @@ export const StyledCallout = styled(Alert, {
   ${fontBodyXs}
   ${(props) => {
     const colors = getColors(props);
+    const palette = getPalette(props);
     const spacings = getSpaces(props);
     const { severity = "success" } = props;
     const corners = getCorners(props);
@@ -32,7 +33,7 @@ export const StyledCallout = styled(Alert, {
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${palette?.text?.primary};
       padding: ${spacings?.m}px;
       background-color: ${calloutColor};
 

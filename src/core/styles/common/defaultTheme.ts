@@ -293,6 +293,10 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
       },
     },
     palette: {
+      action: {
+        disabled: appTheme.colors.gray[400],
+        disabledBackground: appTheme.colors.gray[300],
+      },
       divider: appTheme.colors.gray[200],
       error: {
         dark: appTheme.colors.error[600],

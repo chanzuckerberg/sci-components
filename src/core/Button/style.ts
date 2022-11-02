@@ -5,6 +5,7 @@ import {
   fontCapsXxxs,
   getColors,
   getCorners,
+  getPalette,
   getSpaces,
 } from "../styles";
 
@@ -18,6 +19,7 @@ const ButtonBase = styled(Button, {
     const { variant } = props;
     const colors = getColors(props);
     const spacings = getSpaces(props);
+    const palette = getPalette(props);
 
     const containedPadding = `${spacings?.xs}px ${spacings?.l}px`;
 
@@ -50,8 +52,8 @@ const ButtonBase = styled(Button, {
         box-shadow: none;
       }
       &:disabled {
-        color: ${colors?.gray[400]};
-        background-color: ${colors?.gray[300]};
+        color: ${palette?.action?.disabled};
+        background-color: ${palette?.action?.disabledBackground};
         border-color: ${colors?.gray[300]};
       }
       .MuiButton-startIcon {
@@ -111,6 +113,7 @@ const MinimalButton = styled(Button, {
 const minimal = (props: CommonThemeProps) => {
   const colors = getColors(props);
   const spaces = getSpaces(props);
+  const palette = getPalette(props);
 
   return `
     &:hover, &:focus-visible {
@@ -120,7 +123,7 @@ const minimal = (props: CommonThemeProps) => {
       color: ${colors?.primary[600]};
     }
     &:disabled {
-      color: ${colors?.gray[400]};
+      color: ${palette?.text?.disabled};
     }
 
     .MuiButton-startIcon {

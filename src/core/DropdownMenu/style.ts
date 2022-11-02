@@ -12,6 +12,7 @@ import {
   getBorders,
   getColors,
   getCorners,
+  getPalette,
   getShadows,
   getSpaces,
   getTypography,
@@ -57,10 +58,10 @@ export const StyledMenuItem = styled(MenuItem)`
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
   ${(props: StyleProps) => {
-    const colors = getColors(props);
+    const palette = getPalette(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: ${palette?.text?.secondary};
       white-space: pre-wrap;
     `;
   }}
@@ -93,6 +94,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
     const { search, title, hasSections } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
+    const palette = getPalette(props);
     const borders = getBorders(props);
 
     return `
@@ -161,7 +163,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
 
       .MuiAutocomplete-groupLabel {
         top: 0;
-        color: ${colors?.gray[500]};
+        color: ${palette?.text?.secondary};
         padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
       }
 

@@ -36,7 +36,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border: ${borders?.gray[400]};
-    color: ${colors?.gray[500]};
+    color: ${palette?.text?.secondary};
     cursor: pointer;
     padding: ${spacings?.xs}px;
 
@@ -107,7 +107,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     span {
-      color: ${colors?.gray[500]};
+      color: ${palette?.text?.secondary};
     }
 
     path {
@@ -161,7 +161,6 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    height: 34px;
     min-width: 90px;
   `;
 };
@@ -171,12 +170,11 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const palette = getPalette(props);
   const labelColor = props.disabled
-    ? colors?.gray[300]
+    ? palette?.text?.disabled
     : palette?.text?.primary;
 
   return css`
     border-radius: ${corners?.l}px;
-    height: 34px;
     min-width: 90px;
 
     &.MuiButton-text {

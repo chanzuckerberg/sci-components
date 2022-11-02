@@ -3,7 +3,7 @@ import {
   CommonThemeProps,
   fontBodyS,
   fontBodyXxs,
-  getColors,
+  getPalette,
   getSpaces,
   getTypography,
 } from "../styles";
@@ -92,12 +92,12 @@ export const SecondaryText = styled("span", {
   ${(props: CellBasicExtraProps) => {
     const { secondaryTextWrapLineCount = 1 } = props;
 
-    const colors = getColors(props);
+    const palette = getPalette(props);
     const spaces = getSpaces(props);
 
     return `
       display: block;
-      color: ${colors?.gray[600]};
+      color: ${palette.text?.secondary};
       padding-top: ${spaces?.xxxs}px;
 
       ${
