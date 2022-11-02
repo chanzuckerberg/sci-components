@@ -167,7 +167,6 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
 const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
-  const colors = getColors(props);
   const palette = getPalette(props);
   const labelColor = props.disabled
     ? palette?.text?.disabled
