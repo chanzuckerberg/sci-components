@@ -113,7 +113,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
         />
       }
     >
-      <div>Conetnes</div>
+      <div>Content</div>
     </StyledFormControlLabel>
   );
 };
