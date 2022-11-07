@@ -1,6 +1,44 @@
-import { Checkbox as RawCheckbox } from "@mui/material";
+import {
+  Checkbox as RawCheckbox,
+  FormControlLabel as RawFormControlLabel,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getColors, getIconSizes } from "../styles/common/selectors/theme";
+import { fontBodyXxs } from "../styles";
+import {
+  CommonThemeProps,
+  getColors,
+  getIconSizes,
+  getTypography,
+} from "../styles/common/selectors/theme";
+
+export interface CheckboxExtraProps extends CommonThemeProps {
+  caption?: string;
+}
+
+export const StyledFormControlLabel = styled(RawFormControlLabel)`
+  position: relative;
+  z-index: 0;
+
+  &:after {
+    ${fontBodyXxs}
+    left:34px;
+    position: absolute;
+    top: 30px;
+    z-index: -1;
+
+    ${(props: CheckboxExtraProps) => {
+      const { caption } = props;
+      const content = caption !== undefined ? caption : "";
+      const typography = getTypography(props);
+      const colors = getColors(props);
+      return `
+        content: "${content}";
+        font-family: ${typography?.fontFamily};
+        color: ${colors?.gray[500]};
+      `;
+    }}
+  }
+`;
 
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props) => {
