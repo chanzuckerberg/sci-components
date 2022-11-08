@@ -8,6 +8,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -18,4 +19,4 @@ jobs:
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
-          TARGET_URL: "https://chanzuckerberg.github.io/sci-components"
+          TARGET_URL: "${{ github.event.deployment_status.target_url }}"
