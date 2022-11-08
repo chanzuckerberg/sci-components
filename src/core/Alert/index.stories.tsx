@@ -1,7 +1,7 @@
-import { CheckCircleOutline, ErrorOutline } from "@mui/icons-material";
+import { CheckCircleOutline } from "@mui/icons-material";
 import { Snackbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { storiesOf } from "@storybook/react";
+import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import { defaultTheme } from "../styles/common/defaultTheme";
@@ -19,7 +19,40 @@ const DismissButton = styled(Button)`
   }
 `;
 
-const SnackbarAlert = () => {
+const Demo = (props: Args): JSX.Element => {
+  const { text } = props;
+  return (
+    <Alert icon={<CheckCircleOutline />} onClose={() => {}} {...props}>
+      {text}
+    </Alert>
+  );
+};
+
+export default {
+  argTypes: {
+    text: {
+      control: { type: "text" },
+      required: true,
+    },
+  },
+  component: Demo,
+  title: "Alert - To Be Depreciated",
+};
+
+const Template: Story = (args) => <Demo {...args} />;
+
+export const Default = Template.bind({});
+Default.parameters = {
+  snapshot: {
+    skip: true,
+  },
+};
+
+Default.args = {
+  text: "This is an alert!",
+};
+
+export const SnackbarAlert = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -49,57 +82,9 @@ const SnackbarAlert = () => {
   );
 };
 
-const AlertToBeDepreciated = "Alert - To Be Depreciated";
+const TestTemplate: Story = (args) => <Demo {...args} />;
 
-storiesOf(AlertToBeDepreciated, module).add("default", () => (
-  <Alert icon={<CheckCircleOutline />} onClose={() => {}}>
-    This is an alert!
-  </Alert>
-));
-
-storiesOf(AlertToBeDepreciated, module).add("snackbar", () => (
-  <SnackbarAlert />
-));
-
-storiesOf(AlertToBeDepreciated, module).add("elevated", () => (
-  <div>
-    <Alert
-      className="elevated"
-      severity="success"
-      icon={<CheckCircleOutline />}
-    >
-      This is a success alert!
-    </Alert>
-    <Alert className="elevated" icon={<ErrorOutline />} severity="warning">
-      This is a warning alert!
-    </Alert>
-    <Alert className="elevated" severity="error">
-      This is an error alert!
-    </Alert>
-    <Alert
-      className="elevated"
-      severity="info"
-      icon={<CheckCircleOutline style={{ color: "#3867fa" }} />}
-    >
-      This is an info alert!
-    </Alert>
-  </div>
-));
-
-storiesOf(AlertToBeDepreciated, module).add("flat", () => (
-  <div>
-    <Alert severity="success" icon={<CheckCircleOutline />}>
-      This is a success alert!
-    </Alert>
-    <Alert severity="warning" icon={<ErrorOutline />}>
-      This is a warning alert!
-    </Alert>
-    <Alert severity="error">This is an error alert!</Alert>
-    <Alert
-      severity="info"
-      icon={<CheckCircleOutline style={{ color: "#3867fa" }} />}
-    >
-      This is an info alert!
-    </Alert>
-  </div>
-));
+export const Test = TestTemplate.bind({});
+Test.args = {
+  text: "Test Alert!",
+};
