@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
 import ComplexFilter from "./index";
@@ -55,7 +55,7 @@ export default {
   },
   component: Demo,
   title: "ComplexFilter",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

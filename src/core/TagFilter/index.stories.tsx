@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import FilterTag from "./index";
@@ -59,7 +59,7 @@ export default {
   },
   component: Demo,
   title: "TagFilter",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

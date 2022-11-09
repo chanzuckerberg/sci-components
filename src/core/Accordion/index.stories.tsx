@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
@@ -38,7 +38,7 @@ export default {
   },
   component: Accordion,
   title: "Accordion",
-};
+} as Meta<Args>;
 
 export const Default = Template.bind({});
 

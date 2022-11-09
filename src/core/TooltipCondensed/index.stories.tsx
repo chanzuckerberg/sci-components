@@ -1,5 +1,5 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import TooltipCondensed from "./index";
 
@@ -32,7 +32,7 @@ export default {
   },
   component: Demo,
   title: "TooltipCondensed",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

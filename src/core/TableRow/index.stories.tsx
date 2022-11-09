@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
 import TableRowRaw from "./index";
@@ -52,7 +52,7 @@ export default {
   },
   component: TableRow,
   title: "Table/TableRow",
-};
+} as Meta;
 
 const Template: Story = (args) => <TableRow {...args} />;
 

@@ -1,5 +1,5 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputRadio from "./index";
 
@@ -24,7 +24,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
 export default {
   component: DefaultDemo,
   title: "Inputs/InputRadio",
-};
+} as Meta;
 
 const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;
 
