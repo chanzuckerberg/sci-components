@@ -38,7 +38,7 @@ export default {
   },
   component: Accordion,
   title: "Accordion",
-} as Meta<Args>;
+} as Meta;
 
 export const Default = Template.bind({});
 
