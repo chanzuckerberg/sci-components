@@ -104,13 +104,15 @@ export const StyledBanner = styled("div", {
   align-items: center;
   height: 40px;
   width: 100%;
-
+  ${fontBodyS}
   ${(props: BannerExtraProps) => {
     const { sdsType } = props;
+    const typography = getTypography(props);
 
     return `
       ${sdsType === "primary" ? primary(props) : ""}
       ${sdsType === "secondary" ? secondary(props) : ""}
+      font-family: ${typography?.fontFamily};
     `;
   }}
 `;

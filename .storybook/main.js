@@ -3,6 +3,7 @@ const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
   features: {
+    buildStoriesJson: true,
     // (thuang): https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility
     emotionAlias: false,
   },
