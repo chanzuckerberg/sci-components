@@ -2,18 +2,24 @@
 
 exports[`<InputRadio /> Test story renders snapshot 1`] = `
 <div>
-  <div>
+  <div
+    aria-labelledby="demo-input-radio-group-label"
+    class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+    data-testid="radioButtonGroup"
+    role="radiogroup"
+  >
     <label
       class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root Mui-checked css-b0a55y-MuiButtonBase-root-MuiRadio-root"
-        data-testid="InputRadio"
-        stage="checked"
+        data-testid="inputRadio"
+        label="Test Label"
       >
         <input
           checked=""
           class="PrivateSwitchBase-input css-1m9pwf3"
+          name="input-radio-group"
           type="radio"
           value="demo1"
         />
@@ -37,18 +43,17 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
         Test Label
       </span>
     </label>
-  </div>
-  <div>
     <label
       class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
     >
       <span
-        class="MuiRadio-root MuiRadio-colorDefault MuiButtonBase-root MuiRadio-root MuiRadio-colorDefault PrivateSwitchBase-root css-1vqgfov-MuiButtonBase-root-MuiRadio-root"
-        data-testid="InputRadio"
-        stage="unchecked"
+        class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root css-b0a55y-MuiButtonBase-root-MuiRadio-root"
+        data-testid="inputRadio"
+        label="Test Label"
       >
         <input
           class="PrivateSwitchBase-input css-1m9pwf3"
+          name="input-radio-group"
           type="radio"
           value="demo2"
         />
@@ -72,18 +77,17 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
         Test Label
       </span>
     </label>
-  </div>
-  <div>
     <label
       class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
     >
       <span
-        class="MuiRadio-root MuiRadio-colorDefault MuiButtonBase-root MuiRadio-root MuiRadio-colorDefault PrivateSwitchBase-root css-1vqgfov-MuiButtonBase-root-MuiRadio-root"
-        data-testid="InputRadio"
-        stage="unchecked"
+        class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root css-b0a55y-MuiButtonBase-root-MuiRadio-root"
+        data-testid="inputRadio"
+        label="Test Label"
       >
         <input
           class="PrivateSwitchBase-input css-1m9pwf3"
+          name="input-radio-group"
           type="radio"
           value="demo3"
         />

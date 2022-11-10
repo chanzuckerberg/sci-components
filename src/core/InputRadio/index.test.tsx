@@ -13,7 +13,7 @@ describe("<InputRadio />", () => {
 
   it("renders 3 radio buttons", async () => {
     render(<Test {...Test.args} />);
-    const radio = screen.getAllByTestId("InputRadio");
+    const radio = screen.getAllByTestId("inputRadio");
     expect(radio).toHaveLength(3);
   });
 });
