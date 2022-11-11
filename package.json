@@ -47,6 +47,7 @@
     "concurrently": "^6.0.0",
     "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
+    "czifui": "./",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -109,7 +110,8 @@
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
-    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba"
+    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
+    "namespace-check": "tsc --p tsconfig-namespace-check.json --noEmit"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"

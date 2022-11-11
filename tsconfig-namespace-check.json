@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+    "src/core/Accordion/Accordion.namespace.tsx",
+    "src/core/Banner/Banner.namespace.tsx"
+  ]
+}
