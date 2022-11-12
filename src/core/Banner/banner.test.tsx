@@ -19,7 +19,7 @@ describe("<Banner />", () => {
 
   it("renders text given to it", () => {
     const text = "this is a test component";
-    render(<Test {...Test.args} text={text} />);
+    render(<Test {...Test.args} textChild={text} />);
     const bannerText = screen.getByText(text);
     expect(bannerText).not.toBeNull();
   });
