@@ -15,7 +15,7 @@ interface CellHeaderContentProps {
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
-  children: string;
+  children: ReactNode;
 }
 
 interface CellHeaderRawProps
