@@ -33,6 +33,7 @@ const CloseButton = forwardRef<HTMLButtonElement, ButtonIconProps>(
 
           return (
             <StyledButtonIcon
+              aria-label="Close"
               ref={ref}
               sdsType="tertiary"
               sdsSize={size}
