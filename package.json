@@ -1,6 +1,6 @@
 {
   "name": "czifui",
-  "version": "0.0.24",
+  "version": "0.0.26",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -47,7 +47,7 @@
     "concurrently": "^6.0.0",
     "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
-    "czifui": "file:czifui-v0.0.24.tgz",
+    "czifui": "file:czifui-v0.0.26.tgz",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -113,7 +113,7 @@
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "build-and-pack-a-new-version": "yarn build && yarn version --no-git-tag-version --patch && yarn pack",
     "install-czifui-locally": "yarn add -D file:\"czifui-v$npm_package_version.tgz\"",
-    "prenamespace-check": "rm czifui-*.tgz && yarn build-and-pack-a-new-version && yarn install-czifui-locally",
+    "prenamespace-check": "rm czifui-*.tgz && yarn remove czifui && yarn build-and-pack-a-new-version && yarn install-czifui-locally",
     "namespace-check": "tsc --p tsconfig-namespace-check.json --noEmit"
   },
   "lint-staged": {
