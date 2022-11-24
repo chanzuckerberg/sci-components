@@ -14,5 +14,5 @@ const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
     </StyledLoadingIndicator>
   );
 };
-
+export type { LoadingIndicatorProps };
 export default LoadingIndicator;

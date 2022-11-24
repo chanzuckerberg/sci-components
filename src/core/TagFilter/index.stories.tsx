@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Args, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import FilterTag from "./index";
+import TagFilter from "./index";
 
 const StyledButton = styled(Button)`
   &:focus {
@@ -43,7 +43,7 @@ const Demo = (props: Args): JSX.Element => {
 
       <div style={{ gridArea: "2 / 1 / 2 / 2" }}>
         {visible && (
-          <FilterTag label={label} onDelete={handleDismissChip} {...props} />
+          <TagFilter label={label} onDelete={handleDismissChip} {...props} />
         )}
       </div>
     </div>
@@ -76,7 +76,7 @@ Default.args = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { label } = props;
 
-  return <FilterTag label={label} onDelete={() => {}} {...props} />;
+  return <TagFilter label={label} onDelete={() => {}} {...props} />;
 };
 
 const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
@@ -101,7 +101,7 @@ const TestDemo = (props: Args): JSX.Element => {
   const { label } = props;
 
   return (
-    <FilterTag
+    <TagFilter
       data-testid="tag-filter"
       label={label}
       onDelete={() => {}}

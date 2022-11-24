@@ -35,7 +35,7 @@ export type MUIValue<Multiple> = AutocompleteValue<
 
 type RenderFunctionType = (props: any) => JSX.Element;
 
-interface DropdownProps<Multiple> {
+export interface DropdownProps<Multiple> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
   closeOnBlur?: boolean;

@@ -17,7 +17,7 @@ export {
   StyledPopper as ComplexFilterPopper,
   InputDropdown as ComplexFilterInputDropdown,
 };
-interface ComplexFilterProps<Multiple> {
+export interface ComplexFilterProps<Multiple> {
   label: string;
   options: DefaultDropdownMenuOption[];
   multiple?: Multiple;
