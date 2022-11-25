@@ -38,7 +38,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
         <StyledSvgIcon
           className={className}
           fillcontrast="white"
-          viewBox="0 0 32 32"
+          viewBox="0 0 22 22"
           component={largeIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}

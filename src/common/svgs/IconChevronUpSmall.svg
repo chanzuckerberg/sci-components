@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>IconArrowUpSmall@1x</title>
-    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
-        <g id="Icons-/-Small-/-IconArrowUpSmall" >
-            <polygon id="Shape" transform="translate(6.994792, 7.431327) scale(1, -1) translate(-6.994792, -7.431327) " points="6.973 8.975 1.78238779 3.64909743 0.643808853 4.7264284 6.97100328 11.2135557 13.3457756 4.79372708 12.4597566 3.83072953 12.2757797 3.75 12.2210034 3.75 12.0428191 3.82464223"></polygon>
-        </g>
-    </g>
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.62423 3.53904C6.81961 3.3408 7.13926 3.34027 7.3353 3.53786L12.8825 9.12909C13.077 9.32513 13.0757 9.6417 12.8797 9.83619L12.2408 10.4701C12.0447 10.6646 11.7282 10.6633 11.5337 10.4673L7.33978 6.24008C7.14374 6.04249 6.82409 6.04302 6.62871 6.24126L2.4671 10.4639C2.27326 10.6605 1.95668 10.6628 1.76001 10.469L1.119 9.83725C0.922321 9.64342 0.920018 9.32684 1.11386 9.13017L6.62423 3.53904Z" />
 </svg>
+    
