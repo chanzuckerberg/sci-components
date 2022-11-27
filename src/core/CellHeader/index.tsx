@@ -15,7 +15,7 @@ interface CellHeaderContentProps {
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 interface CellHeaderRawProps
@@ -64,7 +64,7 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
       children,
       shouldShowTooltipOnHover = false,
       tooltipProps,
-      tooltipText = props.children,
+      tooltipText = "",
       tooltipSubtitle,
       ...rest
     } = props;
