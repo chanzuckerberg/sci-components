@@ -1,0 +1,155 @@
+<meta property="og:description" content="SDS design system by CZI" />
+<meta property="og:title" content="Vibe Design System" />
+<link rel="icon" type="image/png" href="/favicon.png" sizes="48x48" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+<title>SDS Design System</title>
+<style>
+  body {
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 14px;
+  }
+
+  div[role="main"] {
+    top: 0 !important;
+  }
+
+  div[role="main"] > div {
+    box-shadow: none !important;
+  }
+
+  div[role="main"] .os-host {
+    border-bottom: solid 1px #e6e6e6;
+    border-top: solid 1px #e6e6e6;
+  }
+
+  .react-draggable {
+    border-right: solid 1px #e6e6e6;
+  }
+
+  #storybook-explorer-menu svg {
+    color: #555;
+    margin-top: 4px;
+  }
+
+  #storybook-explorer-menu button:focus,
+  #storybook-explorer-menu a[data-selected]:hover {
+    background-color: #f7f7f7;
+  }
+
+  #storybook-explorer-menu a[data-selected="true"],
+  #storybook-explorer-menu a[data-selected="true"]:hover {
+    background-color: #eee;
+    color: #000;
+    font-weight: 600;
+  }
+
+  #storybook-explorer-menu a[data-selected="true"] svg {
+    color: #ff414a;
+  }
+
+  .os-content button:hover {
+    background-color: #f7f7f7;
+  }
+
+  .os-content button:hover svg {
+    color: black;
+  }
+
+  #storybook-explorer-menu .sidebar-subheading > button {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    color: #000 !important;
+    letter-spacing: 0 !important;
+  }
+
+  #storybook-explorer-menu .sidebar-subheading > button:hover,
+  #storybook-explorer-menu .sidebar-subheading > button:active,
+  #storybook-explorer-menu .sidebar-subheading > button:focus {
+    background-color: transparent !important;
+  }
+
+  #storybook-explorer-menu button.sidebar-item {
+    font-size: 14px;
+    padding: 5px 3px 5px 2px;
+  }
+
+  #storybook-explorer-menu a.sidebar-item {
+    font-size: 14px;
+    padding: 5px 3px 5px 34px;
+  }
+
+  #storybook-explorer-menu .sidebar-item > span,
+  #storybook-explorer-menu .sidebar-subheading > button > span {
+    display: inline-block;
+    position: relative;
+    border-style: solid;
+    height: 5px !important;
+    width: 5px !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    border-top: solid 1px !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: solid 1px;
+    margin-left: 8px;
+    margin-right: 6px;
+  }
+
+  #storybook-explorer-menu .sidebar-item > span {
+    margin-top: 7px;
+  }
+
+  #storybook-explorer-menu .sidebar-subheading > button > span {
+    margin-top: 5px;
+  }
+
+  #storybook-explorer-menu .sidebar-item[aria-expanded="true"] > span,
+  #storybook-explorer-menu
+    .sidebar-subheading[aria-expanded="true"]
+    > button
+    > span {
+    transform: rotate(135deg);
+  }
+</style>
+
+<script>
+  //workaround to increase the left panel width just enough to show even the longer story names
+  //based on https://github.com/storybookjs/storybook/issues/9682#issuecomment-983356523
+  const DEFAULT_MINIMUM_LEFT_PANEL_WIDTH = 260; // original default is 230
+  let storybookConfig = JSON.parse(localStorage.getItem("storybook-layout"));
+
+  // we only resize the left panel if it is set to a value lower than DEFAULT_MINIMUM_LEFT_PANEL_WIDTH
+  if (
+    typeof storybookConfig === "object" &&
+    storybookConfig !== null &&
+    storybookConfig.resizerNav.x < DEFAULT_MINIMUM_LEFT_PANEL_WIDTH
+  ) {
+    storybookConfig.resizerNav.x = DEFAULT_MINIMUM_LEFT_PANEL_WIDTH;
+    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
+    document.location.reload();
+  } else if (storybookConfig === null) {
+    storybookConfig = {
+      resizerNav: { x: DEFAULT_MINIMUM_LEFT_PANEL_WIDTH, y: 0 },
+    };
+    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
+    document.location.reload();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let bookmarkHollowIcon = document.getElementById(
+      "icon--bookmarkhollow"
+    ).firstChild;
+    bookmarkHollowIcon.setAttribute(
+      "d",
+      "M 943.548 481.063 C 950.438 497.039 954 514.416 954 532.001 C 954 549.586 950.438 566.962 943.548 582.939 C 936.665 598.915 926.615 613.113 914.108 624.557 L 631.498 883.042 C 621.145 892.507 607.959 897.714 594.323 897.714 L 127.121 897.714 C 111.971 897.714 97.443 891.292 86.731 879.86 C 76.018 868.428 70 852.929 70 836.764 L 70 227.238 C 70 211.073 76.018 195.57 86.731 184.139 C 97.443 172.708 111.971 166.286 127.121 166.286 L 594.323 166.286 C 607.959 166.287 621.145 171.491 631.498 180.96 L 914.108 439.445 C 926.615 450.89 936.665 465.086 943.548 481.063 Z M 822.288 567.27 C 826.554 563.364 830.277 558.245 832.926 552.098 C 835.573 545.945 837.017 539.075 837.017 532.001 C 837.017 524.927 835.573 518.056 832.926 511.904 C 830.277 505.756 826.554 500.638 822.288 496.732 L 568.454 264.567 L 166.984 264.567 L 166.984 799.434 L 568.454 799.434 L 822.288 567.27 Z"
+    );
+    bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
+  });
+</script>
