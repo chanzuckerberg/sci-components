@@ -85,9 +85,13 @@ export const RowLabel = styled(TableCell, {
 })`
   ${fontHeaderXs}
   ${disabledStyle}
-
-  padding: 0;
-  width: 50%;
+  ${(props: SectionProps) => {
+    const spacings = getSpaces(props);
+    return `
+      padding: ${spacings?.xxxs}px 0;
+      width: 50%;
+    `;
+  }}
 `;
 
 export const RowValue = styled(TableCell, {
