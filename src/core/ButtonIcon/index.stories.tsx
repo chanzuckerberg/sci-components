@@ -2,23 +2,23 @@ import { Args, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
-import ButtonIcon from "./index";
+import RawButtonIcon from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const ButtonIcon = (props: Args): JSX.Element => {
   const { icon, ...rest } = props;
 
   const [active, setActive] = React.useState(false);
   const handleButtonClick = () => setActive(!active);
 
   return (
-    <ButtonIcon
+    <RawButtonIcon
       onClick={handleButtonClick}
       active={active}
       {...rest}
       size="large"
     >
       {icon}
-    </ButtonIcon>
+    </RawButtonIcon>
   );
 };
 
@@ -51,11 +51,11 @@ export default {
       options: ["primary", "secondary", "tertiary"],
     },
   },
-  component: Demo,
+  component: ButtonIcon,
   title: "ButtonIcon",
 };
 
-const Template: Story = (args) => <Demo {...args} />;
+const Template: Story = (args) => <ButtonIcon {...args} />;
 
 export const Default = Template.bind({});
 
@@ -73,7 +73,10 @@ Default.parameters = {
   },
 };
 
-export const Test = Template.bind({});
+const TestTemplate: Story = (props) => (
+  <ButtonIcon {...props} data-testId="iconButton" />
+);
+export const Test = TestTemplate.bind({});
 
 Test.args = {
   "aria-label": "info",
@@ -96,13 +99,13 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.xxs }}
           icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
           sdsType="primary"
         />
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.xxs }}
           icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
@@ -110,7 +113,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
@@ -118,7 +121,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsSize="large"
           sdsType="secondary"
         />
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
@@ -128,7 +131,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
@@ -136,7 +139,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="medium"
@@ -144,7 +147,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.s }}
           icon={
             <Icon
@@ -156,7 +159,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsSize="small"
           sdsType="primary"
         />
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.s }}
           icon={
             <Icon
@@ -170,13 +173,13 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
           sdsType="secondary"
         />
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
@@ -184,7 +187,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
