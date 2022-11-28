@@ -88,8 +88,9 @@ export const RowLabel = styled(TableCell, {
   ${(props: SectionProps) => {
     const spacings = getSpaces(props);
     return `
-      padding: ${spacings?.xxxs}px 0;
+      padding: 0 0 ${spacings?.xxs}px 0;
       width: 50%;
+      border-bottom: none;
     `;
   }}
 `;
@@ -105,6 +106,7 @@ export const RowValue = styled(TableCell, {
   padding-top: 0;
   padding-bottom: 0;
   padding-right: 0 !important;
+  border-bottom: none;
 `;
 
 export const Alert = styled("div")`
