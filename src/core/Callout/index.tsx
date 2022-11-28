@@ -5,11 +5,15 @@ import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
 import { StyledCallout } from "./style";
 
+const SDS_STAGE_OPEN = "open";
+const SDS_STAGE_CLOSED = "closed";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
+  expandable?: boolean;
   icon?: React.ReactNode;
   intent: "info" | "error" | "success" | "warning";
+  sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
 
 export type ExposedCalloutProps = AlertProps & CalloutProps;
@@ -21,12 +25,15 @@ const Callout = ({
   autoDismiss,
   children,
   dismissed,
+  expandable,
   onClose,
   icon,
   intent,
+  sdsStage,
   ...rest
 }: ExposedCalloutProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
+  const [stage, setStage] = useState(sdsStage || SDS_STAGE_CLOSED);
 
   useEffect(() => {
     setHide(dismissed);
@@ -59,29 +66,63 @@ const Callout = ({
     }
   };
 
+  const getAction = (collapsed: boolean) => {
+    if (expandable) {
+      return (
+        <ButtonIcon
+          onClick={() => {
+            setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
+          }}
+          sdsSize="small"
+          sdsType="tertiary"
+        >
+          <Icon
+            sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
+            sdsSize="s"
+            sdsType="button"
+          />
+        </ButtonIcon>
+      );
+    }
+    return onClose ? (
+      <ButtonIcon
+        onClick={handleClose}
+        sdsSize="small"
+        sdsType="tertiary"
+        size="large"
+      >
+        {" "}
+        <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
+      </ButtonIcon>
+    ) : null;
+  };
+
+  const collapsed = (expandable && stage === SDS_STAGE_CLOSED) || false;
+
+  // when there is no CalloutTitlecomponent, or there is a single child element
+  // the contents of children will be used as the title
+  let calloutTitle = children;
+  let calloutContent;
+
+  const firstChildIsCalloutTitle =
+    Array.isArray(children) && children[0]?.type?.name === "CalloutTitle";
+  if (firstChildIsCalloutTitle) {
+    [calloutTitle, ...calloutContent] = children;
+  }
+
   return (
     <>
       <Grow in={!hide}>
         <StyledCallout
           onClose={onClose ? handleClose : undefined}
-          action={
-            onClose ? (
-              <ButtonIcon
-                onClick={handleClose}
-                sdsSize="small"
-                sdsType="tertiary"
-                size="large"
-              >
-                {" "}
-                <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-              </ButtonIcon>
-            ) : null
-          }
+          action={getAction(collapsed)}
           icon={getIcon()}
           severity={intent}
+          collapsed={collapsed || false}
           {...rest}
         >
-          {children}
+          {calloutTitle}
+          {!collapsed && calloutContent}
         </StyledCallout>
       </Grow>
     </>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<ellipse cx="22.286" cy="22.728" rx="2.6" ry="2.6" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0.8" />
+	</ellipse>
+	<ellipse cx="25.486" cy="15.823" rx="2.4" ry="2.4" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0.7" />
+	</ellipse>
+	<ellipse cx="22.57" cy="9.032" rx="2.3" ry="2.3" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin=".6" />
+	</ellipse>
+	<ellipse cx="15.276" cy="6.273" rx="2.2" ry="2.2" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0.5" />
+	</ellipse>
+	<ellipse cx="8.703" cy="9.176" rx="2.1" ry="2.1" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0.4" />
+	</ellipse>
+	<ellipse cx="6.084" cy="15.542" rx="1.9" ry="1.9" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin=".3" />
+	</ellipse>
+	<ellipse cx="7.72" cy="21.27" rx="1.7" ry="1.7" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin=".2" />
+	</ellipse>
+	<ellipse cx="11.992" cy="24.747" rx="1.55" ry="1.55" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0.1" />
+	</ellipse>
+	<ellipse cx="17.162" cy="25.67" rx="1.2" ry="1.2" style="opacity: 0.01">
+		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="5s" repeatCount="indefinite" />
+		<animate attributeName="opacity" dur="1.4s" values="1;0;0;0;" repeatCount="indefinite" begin="0" />
+	</ellipse>
+</svg>

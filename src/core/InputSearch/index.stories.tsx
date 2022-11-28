@@ -54,7 +54,7 @@ export default {
     },
   },
   component: Demo,
-  title: "InputSearch",
+  title: "Inputs/InputSearch",
 };
 
 const Template: Story = (args) => <Demo {...args} />;

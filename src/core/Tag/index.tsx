@@ -1,21 +1,12 @@
 import { ChipProps } from "@mui/material";
 import React from "react";
-import { StyledTag } from "./style";
+import { SdsTagColorType, StyledTag } from "./style";
 
 export interface SdsTagProps extends Omit<ChipProps, "color"> {
   label: string;
   sdsStyle?: "rounded" | "square";
   sdsType?: "primary" | "secondary";
-  color?:
-    | "primary"
-    | "info"
-    | "success"
-    | "warning"
-    | "error"
-    | "gray"
-    | "beta"
-    | [string, string]
-    | [string, string, string];
+  color?: SdsTagColorType;
 }
 
 export type TagProps = SdsTagProps;
