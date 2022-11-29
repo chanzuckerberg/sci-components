@@ -3298,7 +3298,7 @@
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.5.13":
+"@storybook/addons@6.5.13", "@storybook/addons@^6.5.13":
   version "6.5.13"
   resolved "https://registry.npmjs.org/@storybook/addons/-/addons-6.5.13.tgz"
   integrity sha512-18CqzNnrGMfeZtiKz+R/3rHtSNnfNwz6y6prIQIbWseK16jY8ELTfIFGviwO5V2OqpbHDQi5+xQQ63QAIb89YA==
@@ -4258,7 +4258,7 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/theming@6.5.13":
+"@storybook/theming@6.5.13", "@storybook/theming@^6.5.13":
   version "6.5.13"
   resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.5.13.tgz"
   integrity sha512-oif5NGFAUQhizo50r+ctw2hZNLWV4dPHai+L/gFvbaSeRBeHSNkIcMoZ2FlrO566HdGZTDutYXcR+xus8rI28g==
@@ -4268,7 +4268,7 @@
     memoizerific "^1.11.3"
     regenerator-runtime "^0.13.7"
 
-"@storybook/theming@6.5.9", "@storybook/theming@^6.5.9":
+"@storybook/theming@6.5.9":
   version "6.5.9"
   resolved "https://registry.npmjs.org/@storybook/theming/-/theming-6.5.9.tgz"
   integrity sha512-KM0AMP5jMQPAdaO8tlbFCYqx9uYM/hZXGSVUhznhLYu7bhNAIK7ZVmXxyE/z/khM++8eUHzRoZGiO/cwCkg9Xw==
