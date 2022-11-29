@@ -79,8 +79,6 @@ export const StyledTab = styled(RawTab, {
       font-weight: ${fontWeights?.semibold};
       margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
 
-      // (thuang): Large Tab height is 30px, the offset is 4px
-
       color: ${colors?.gray[500]};
 
       &:hover, :focus {

@@ -23,7 +23,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="0"
             type="button"
@@ -48,7 +48,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="-1"
             type="button"
@@ -85,7 +85,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="0"
             type="button"
@@ -110,7 +110,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="-1"
             type="button"
@@ -147,7 +147,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
         >
           <button
             aria-selected="true"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="0"
             type="button"
@@ -172,7 +172,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
           </button>
           <button
             aria-selected="false"
-            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-yd8l9f-MuiButtonBase-root-MuiTab-root"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-14ynw7t-MuiButtonBase-root-MuiTab-root"
             role="tab"
             tabindex="-1"
             type="button"

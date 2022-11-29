@@ -76,9 +76,9 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? colors?.primary[500] : "black"};
+        color: ${active ? colors?.primary[500] : palette.text?.primary};
 
-        & > .MuiButtonBase-root {
+        & .MuiButtonBase-root {
           color: ${active ? colors?.primary[500] : palette.text?.secondary};
           opacity: 1;
         }
