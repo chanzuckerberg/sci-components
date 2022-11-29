@@ -5,7 +5,7 @@ import { ListExtraProps, StyledList } from "./style";
 export type ListProps = ListExtraProps & RawListProps;
 
 /**
- * @see https://v4.mui.com/components/lists/
+ * @see https://mui.com/material-ui/react-list/
  */
 const List = (props: ListProps): JSX.Element => {
   const { ordered } = props;

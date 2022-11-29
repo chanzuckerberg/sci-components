@@ -5,7 +5,7 @@ import { StyledAlert } from "./style";
 export type { AlertProps };
 
 /**
- * @see https://v4.mui.com/components/alert/
+ * @see https://mui.com/material-ui/react-alert/
  */
 const Alert = (props: AlertProps): JSX.Element => {
   return <StyledAlert {...props} />;

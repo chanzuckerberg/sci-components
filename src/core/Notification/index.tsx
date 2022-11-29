@@ -19,7 +19,7 @@ export interface NotificationProps {
 export type ExposedNotificationProps = AlertProps & NotificationProps;
 
 /**
- * @see https://v4.mui.com/components/alert/
+ * @see https://mui.com/material-ui/react-alert/
  */
 const Notification = ({
   autoDismiss,

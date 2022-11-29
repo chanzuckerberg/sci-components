@@ -54,7 +54,7 @@ export type MenuSelectProps<
   MenuSelectExtraProps;
 
 /**
- * @see https://v4.mui.com/components/autocomplete/
+ * @see https://mui.com/material-ui/react-autocomplete/
  */
 const MenuSelect = <
   T extends DefaultMenuSelectOption,

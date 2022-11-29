@@ -9,7 +9,7 @@ export { AccordionHeader, AccordionDetails };
 export type AccordionProps = RawAccordionProps & AccordionExtraProps;
 
 /**
- * @see https://v4.mui.com/components/accordion/
+ * @see https://mui.com/material-ui/react-accordion/
  */
 const Accordion = (props: AccordionProps) => {
   const { children, useDivider, togglePosition = "right", id } = props;

@@ -26,7 +26,7 @@ interface SegmentedControlExtraProps
 }
 
 /**
- * @see https://v4.mui.com/components/toggle-button/
+ * @see https://mui.com/material-ui/react-toggle-button/
  */
 export type SegmentedControlProps = SegmentedControlExtraProps &
   ToggleButtonGroupProps;
