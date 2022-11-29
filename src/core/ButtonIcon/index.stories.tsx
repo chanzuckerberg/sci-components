@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
@@ -53,7 +53,7 @@ export default {
   },
   component: Demo,
   title: "ButtonIcon",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

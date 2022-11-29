@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputToggle from "./index";
 
@@ -24,7 +24,7 @@ export default {
   },
   component: Demo,
   title: "Inputs/InputToggle",
-};
+} as Meta;
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return <InputToggle {...props} id="togglePreview" />;

@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import { defaultAppTheme } from "../styles";
 import LoadingIndicator from "./index";
@@ -17,7 +17,7 @@ export default {
   },
   component: Demo,
   title: "LoadingIndicator",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

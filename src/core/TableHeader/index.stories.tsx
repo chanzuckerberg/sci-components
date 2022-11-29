@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import CellHeader from "../CellHeader";
 import TableHeaderRaw from "./index";
@@ -19,7 +19,7 @@ const TableHeader = (props: Args): JSX.Element => {
 export default {
   component: TableHeader,
   title: "Table/TableHeader",
-};
+} as Meta;
 
 const Template: Story = (args) => <TableHeader {...args} />;
 

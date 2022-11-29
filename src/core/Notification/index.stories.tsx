@@ -1,6 +1,6 @@
 import { FormControlLabel, Switch } from "@mui/material";
 import { action } from "@storybook/addon-actions";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import Notification from "./index";
@@ -119,7 +119,7 @@ export default {
   },
   component: Demo,
   title: "Notification",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

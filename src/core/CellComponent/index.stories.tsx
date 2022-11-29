@@ -1,5 +1,5 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import InputRadio from "../InputRadio";
 import InputToggle from "../InputToggle";
@@ -50,7 +50,7 @@ export default {
   },
   component: CellComponent,
   title: "Table/CellComponent",
-};
+} as Meta;
 
 const Template: Story = (props: Args) => {
   const { horizontalAlign, verticalAlign, fitCellToComponent } = props;

@@ -10,7 +10,7 @@ import {
   Spaces,
   Spacings,
   Typography,
-} from "src/core/styles/common/defaultTheme";
+} from "../defaultTheme";
 
 // (thuang): Somehow this namespace needs to be globally unique to prevent
 // namespace collisions.

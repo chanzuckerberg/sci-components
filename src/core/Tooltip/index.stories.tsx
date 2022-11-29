@@ -1,5 +1,5 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
@@ -72,7 +72,7 @@ export default {
     chromatic: { delay: 5000 },
   },
   title: "Tooltip",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 
