@@ -31,6 +31,7 @@ import { ReactComponent as IconEditLarge } from "../../common/svgs/IconEditLarge
 import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
 import { ReactComponent as IconExclamationMarkCircleLarge } from "../../common/svgs/IconExclamationMarkCircleLarge.svg";
 import { ReactComponent as IconExclamationMarkCircleSmall } from "../../common/svgs/IconExclamationMarkCircleSmall.svg";
+import { ReactComponent as IconExclamationMarkSpeechBubbleLarge } from "../../common/svgs/IconExclamationmarkSpeechBubbleLarge.svg";
 import { ReactComponent as IconEyeClosedSmall } from "../../common/svgs/IconEyeClosedSmall.svg";
 import { ReactComponent as IconEyeOpenSmall } from "../../common/svgs/IconEyeOpenSmall.svg";
 import { ReactComponent as IconFilterSmall } from "../../common/svgs/IconFilterSmall.svg";
@@ -134,6 +135,7 @@ export interface IconNameToSizes {
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
   exclamationMarkCircle: "xs" | "s" | "l" | "xl";
+  exclamationMarkSpeechBubble: "l" | "xl";
   eyeClosed: "xs" | "s";
   eyeOpen: "xs" | "s";
   filter: "xs" | "s";
@@ -293,6 +295,10 @@ export const iconMap: Props = {
   exclamationMarkCircle: {
     largeIcon: IconExclamationMarkCircleLarge,
     smallIcon: IconExclamationMarkCircleSmall,
+  },
+  exclamationMarkSpeechBubble: {
+    largeIcon: IconExclamationMarkSpeechBubbleLarge,
+    smallIcon: null,
   },
   eyeClosed: {
     largeIcon: null,

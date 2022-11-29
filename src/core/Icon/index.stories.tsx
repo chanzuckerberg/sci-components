@@ -85,7 +85,7 @@ const IconBankWrapper = styled("div")`
       display: grid;
       grid-gap: ${spacings?.s}px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, 180px);
+      grid-template-columns: repeat(auto-fit, 210px);
       margin-top: ${spacings?.m}px;
     `;
   }}
