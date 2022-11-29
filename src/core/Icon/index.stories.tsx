@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { Args, Meta, Story } from "@storybook/react";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
+import Callout from "../Callout";
+import InputSearch from "../InputSearch";
 import {
   CommonThemeProps,
   getColors,
@@ -83,7 +85,8 @@ const IconBankWrapper = styled("div")`
       display: grid;
       grid-gap: ${spacings?.s}px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, 180px);
+      grid-template-columns: repeat(auto-fit, 210px);
+      margin-top: ${spacings?.m}px;
     `;
   }}
 `;
@@ -176,69 +179,115 @@ const IconWrapper = styled("div")`
 `;
 
 export const IconBank = () => {
-  const icons = Object.entries(iconMap);
+  const initialIcons = Object.entries(iconMap);
+
+  const [icons, setIcons] = useState(initialIcons);
+
+  const searchIconHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    const regex = new RegExp(query, "gi");
+    const newIcons = initialIcons.filter((icon) => {
+      return icon[0].match(regex);
+    });
+    setIcons(newIcons);
+  };
 
   return (
-    <IconBankWrapper>
-      {icons.map(([sdsIcon, icon]) => {
-        return Object.entries(icon).map((innerIcon) => {
-          if (!innerIcon[1]) return;
-          const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
-          const [copied, setCopied] = useState(false);
+    <>
+      <InputSearch
+        id="squareSearchPreview"
+        label="Search"
+        sdsStyle="square"
+        placeholder="Search icons"
+        name="square-input-search"
+        onChange={searchIconHandler}
+      />
+      {icons.length ? (
+        <IconBankWrapper>
+          {icons.map(([sdsIcon, icon]) => {
+            return Object.entries(icon).map((innerIcon) => (
+              <IconItem
+                key={sdsIcon + innerIcon[0]}
+                innerIcon={innerIcon}
+                sdsIcon={sdsIcon}
+              />
+            ));
+          })}
+        </IconBankWrapper>
+      ) : (
+        <Callout
+          intent="warning"
+          icon={
+            <Icon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
+          }
+        >
+          Sorry, there are no matches for your search!
+        </Callout>
+      )}
+    </>
+  );
+};
 
-          const copyIconNameHandler = (iconName: string) => {
-            navigator.clipboard.writeText(iconName);
-            setCopied(true);
+type IconItemProps = {
+  sdsIcon: string;
+  innerIcon: [string, FC<CustomSVGProps> | null];
+};
 
-            setTimeout(() => {
-              setCopied(false);
-            }, 1500);
-          };
+const IconItem = (props: IconItemProps) => {
+  const { sdsIcon, innerIcon } = props;
+  if (!innerIcon[1]) return null;
+  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+  const [copied, setCopied] = useState(false);
 
-          return (
-            <IconWrapper
-              key={sdsIcon + sdsSize}
-              onClick={() => copyIconNameHandler(sdsIcon)}
-            >
-              <div className="icon">
-                <Icon
-                  sdsSize={sdsSize}
-                  sdsIcon={sdsIcon as keyof IconNameToSizes}
-                  sdsType="static"
-                />
-              </div>
-              <p>{sdsIcon}</p>
-              <span>
-                Available sizes{" "}
-                {sdsSize === "s" ? (
-                  <>
-                    <span className="size-tag">xs</span>
-                    <span className="size-tag">s</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="size-tag">l</span>
-                    <span className="size-tag">xl</span>
-                  </>
-                )}
-              </span>
-              {copied && (
-                <div className="notif">
-                  <Icon
-                    sdsSize={sdsSize}
-                    sdsIcon={sdsIcon as keyof IconNameToSizes}
-                    sdsType="static"
-                  />
-                  <p>Copied!</p>
-                  <span>
-                    <Icon sdsSize="xs" sdsIcon="check" sdsType="static" />
-                  </span>
-                </div>
-              )}
-            </IconWrapper>
-          );
-        });
-      })}
-    </IconBankWrapper>
+  const copyIconNameHandler = (iconName: string) => {
+    navigator.clipboard.writeText(iconName);
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1500);
+  };
+
+  return (
+    <IconWrapper
+      key={sdsIcon + sdsSize}
+      onClick={() => copyIconNameHandler(sdsIcon)}
+    >
+      <div className="icon">
+        <Icon
+          sdsSize={sdsSize}
+          sdsIcon={sdsIcon as keyof IconNameToSizes}
+          sdsType="static"
+        />
+      </div>
+      <p>{sdsIcon}</p>
+      <span>
+        Available sizes{" "}
+        {sdsSize === "s" ? (
+          <>
+            <span className="size-tag">xs</span>
+            <span className="size-tag">s</span>
+          </>
+        ) : (
+          <>
+            <span className="size-tag">l</span>
+            <span className="size-tag">xl</span>
+          </>
+        )}
+      </span>
+      {copied && (
+        <div className="notif">
+          <Icon
+            sdsSize={sdsSize}
+            sdsIcon={sdsIcon as keyof IconNameToSizes}
+            sdsType="static"
+          />
+          <p>Copied!</p>
+          <span>
+            <Icon sdsSize="xs" sdsIcon="check" sdsType="static" />
+          </span>
+        </div>
+      )}
+    </IconWrapper>
   );
 };
