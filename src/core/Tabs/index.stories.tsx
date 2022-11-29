@@ -90,7 +90,7 @@ const livePreviewWrapperStyle: React.CSSProperties = {
 function LivePreviewDemo(props: Args): JSX.Element {
   const finalProps = {
     ...props,
-    style: { width: "250px" },
+    style: { width: "150px" },
   };
 
   return (
@@ -117,7 +117,6 @@ function LivePreviewDemo(props: Args): JSX.Element {
           {...finalProps}
         />
       </div>
-      <div />
       <div>
         <Template
           sdsSize="small"
