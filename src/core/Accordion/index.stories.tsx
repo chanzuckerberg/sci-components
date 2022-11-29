@@ -91,7 +91,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
   );
 }
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+const LivePreviewTemplate: Story = (args: Args) => (
+  <LivePreviewDemo {...args} />
+);
 
 export const LivePreview = LivePreviewTemplate.bind({});
 

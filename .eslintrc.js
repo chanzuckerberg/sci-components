@@ -15,8 +15,21 @@ module.exports = {
     "airbnb-typescript",
     "plugin:sonarjs/recommended",
     "plugin:jest-playwright/recommended",
-    "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "plugin:prettier/recommended",
+  ],
+  // this is to disable
+  // no-unused-var, no-extraneous-dependencies and prettier
+  // rules in all ComponentName.namespace.tsx files
+  overrides: [
+    {
+      files: ["src/core/**/*.namespace-test.tsx"],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+        "import/no-extraneous-dependencies": "off",
+        "prettier/prettier": "off",
+      },
+    },
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
