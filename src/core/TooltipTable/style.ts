@@ -5,7 +5,6 @@ import {
   fontBodyXs,
   fontBodyXxs,
   fontCapsXxxxs,
-  fontHeaderXs,
   getColors,
   getSpaces,
 } from "../styles";
@@ -83,7 +82,7 @@ export const RowLabel = styled(TableCell, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${fontHeaderXs}
+  ${fontBodyXs}
   ${disabledStyle}
   ${(props: SectionProps) => {
     const spacings = getSpaces(props);
@@ -91,6 +90,7 @@ export const RowLabel = styled(TableCell, {
       padding: 0 0 ${spacings?.xxs}px 0;
       width: 50%;
       border-bottom: none;
+      font-weight: 600;
     `;
   }}
 `;
