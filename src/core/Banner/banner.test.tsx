@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { StoryFileExports } from "@chanzuckerberg/story-utils/build/getStories";
 import { composeStory } from "@storybook/testing-react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
@@ -9,7 +10,9 @@ import Meta, { Test as TestStory } from "./index.stories";
 const Test = composeStory(TestStory, Meta);
 
 describe("<Banner />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots<StoryFileExports<typeof Meta>, typeof Meta>(
+    snapshotTestStoryFile
+  );
 
   it("renders banner component", async () => {
     render(<Test {...Test.args} />);
@@ -19,7 +22,7 @@ describe("<Banner />", () => {
 
   it("renders text given to it", () => {
     const text = "this is a test component";
-    render(<Test {...Test.args} text={text} />);
+    render(<Test {...Test.args} textChild={text} />);
     const bannerText = screen.getByText(text);
     expect(bannerText).not.toBeNull();
   });

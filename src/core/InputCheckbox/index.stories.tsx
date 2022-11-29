@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputCheckbox from "./index";
 
@@ -29,11 +29,19 @@ const CheckboxDemo = (props: Args): JSX.Element => {
 };
 
 export default {
+  argTypes: {
+    Caption: {
+      control: { type: "string" },
+    },
+    Label: {
+      control: { type: "string" },
+    },
+  },
   component: CheckboxDemo,
   title: "Inputs/InputCheckbox",
-};
+} as Meta;
 
-const Template: Story = (args) => <CheckboxDemo {...args} />;
+const Template: Story = (args) => <CheckboxLabelDemo {...args} />;
 
 export const Default = Template.bind({});
 
@@ -44,14 +52,17 @@ Default.parameters = {
 };
 
 Default.args = {
+  caption: "Caption",
   id: { testId },
+  label: "Label",
 };
 
 const CheckboxLabelDemo = (props: Args): JSX.Element => {
-  const { label, disabled } = props;
+  const { caption, label, disabled } = props;
   return (
     <div>
       <InputCheckbox
+        caption={caption}
         data-testid="labelCheckbox"
         label={label}
         disabled={disabled}
@@ -72,7 +83,7 @@ const TestDemo = (): JSX.Element => {
   return (
     <div style={testStyles as React.CSSProperties}>
       <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <CheckboxLabelDemo label="Lable A" disabled={false} />
+        <CheckboxLabelDemo caption="Caption" label="Lable A" disabled={false} />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
         <CheckboxDemo />
@@ -86,6 +97,10 @@ export const Test = TestTemplate.bind({});
 
 Test.args = {
   id: { testId },
+};
+
+Test.parameters = {
+  controls: { exclude: ["caption", "label", "id"] },
 };
 
 /*
@@ -170,6 +185,7 @@ const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 export const LivePreview = LivePreviewTemplate.bind({});
 
 LivePreview.parameters = {
+  controls: { exclude: ["caption", "label"] },
   snapshot: {
     skip: true,
   },

@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import ButtonDropdown from "./index";
@@ -17,7 +17,7 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   component: Demo,
   title: "ButtonDropdown",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

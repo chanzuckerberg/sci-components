@@ -12,7 +12,7 @@ type ChipProps = ChipExtraProps & RawChipProps;
 export type { ChipProps };
 
 /**
- * @see https://v4.mui.com/components/chips/
+ * @see https://mui.com/material-ui/react-chip/
  */
 const Chip = (props: ChipProps): JSX.Element => {
   showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);

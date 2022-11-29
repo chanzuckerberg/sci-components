@@ -25,7 +25,7 @@ export type ButtonProps<C extends React.ElementType = "button"> =
   RawButtonProps<C, { component?: C }> & SdsProps;
 
 /**
- * @see https://v4.mui.com/components/buttons/
+ * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
   <C extends React.ElementType>(

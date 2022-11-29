@@ -88,11 +88,17 @@ export const RowLabel = styled(TableCell, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${fontHeaderXs}
+  ${fontBodyXs}
   ${disabledStyle}
-
-  padding: 0;
-  width: 50%;
+  ${(props: SectionProps) => {
+    const spacings = getSpaces(props);
+    return `
+      padding: 0 0 ${spacings?.xxs}px 0;
+      width: 50%;
+      border-bottom: none;
+      font-weight: 600;
+    `;
+  }}
 `;
 
 export const RowValue = styled(TableCell, {
@@ -106,6 +112,7 @@ export const RowValue = styled(TableCell, {
   padding-top: 0;
   padding-bottom: 0;
   padding-right: 0 !important;
+  border-bottom: none;
 `;
 
 export const Alert = styled("div")`
