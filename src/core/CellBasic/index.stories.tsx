@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import Icon from "../Icon";
 import CellBasicRaw from "./index";
@@ -92,7 +92,7 @@ export default {
   },
   component: CellBasic,
   title: "Table/CellBasic",
-};
+} as Meta;
 
 const Template: Story = (args) => <CellBasic {...args} />;
 

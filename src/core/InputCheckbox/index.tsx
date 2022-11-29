@@ -19,7 +19,7 @@ interface CheckboxContentProps
 export type CheckboxProps = CheckboxContentProps & CheckboxExtraProps;
 
 /**
- * @see https://v4.mui.com/components/checkboxes/
+ * @see https://mui.com/material-ui/react-checkbox/
  */
 const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   const { caption, checkboxProps, disabled, label, stage, value } = props;

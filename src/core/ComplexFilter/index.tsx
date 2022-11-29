@@ -17,7 +17,7 @@ export {
   StyledPopper as ComplexFilterPopper,
   InputDropdown as ComplexFilterInputDropdown,
 };
-interface ComplexFilterProps<Multiple> {
+export interface ComplexFilterProps<Multiple> {
   label: string;
   options: DefaultDropdownMenuOption[];
   multiple?: Multiple;
@@ -34,9 +34,7 @@ interface ComplexFilterProps<Multiple> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export default function ComplexFilter<
-  Multiple extends boolean | undefined = false
->({
+const ComplexFilter = <Multiple extends boolean | undefined = false>({
   options,
   label = "",
   multiple = false,
@@ -49,7 +47,7 @@ export default function ComplexFilter<
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
-}: ComplexFilterProps<Multiple>): JSX.Element {
+}: ComplexFilterProps<Multiple>): JSX.Element => {
   const isControlled = propValue !== undefined;
 
   const [open, setOpen] = useState(false);
@@ -207,4 +205,6 @@ export default function ComplexFilter<
       ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
   }
-}
+};
+
+export default ComplexFilter;

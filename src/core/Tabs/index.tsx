@@ -49,7 +49,7 @@ export interface TabProps extends RawTabProps {
 }
 
 /**
- * @see https://v4.mui.com/components/tabs/
+ * @see https://mui.com/material-ui/react-tabs/
  */
 export const Tab = forwardRef<HTMLDivElement, TabProps>(function Tab(
   props,

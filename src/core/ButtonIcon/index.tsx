@@ -7,7 +7,7 @@ type ButtonIconProps = ButtonIconExtraProps & RawButtonIconProps;
 export type { ButtonIconProps };
 
 /**
- * @see https://v4.mui.com/components/buttons/#icon-buttons
+ * @see https://mui.com/material-ui/react-button/#icon-buttons
  */
 const ButtonIcon = forwardRef<HTMLButtonElement | null, ButtonIconProps>(
   (props, ref): JSX.Element => {

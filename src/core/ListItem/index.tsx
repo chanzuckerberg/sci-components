@@ -7,7 +7,7 @@ export { ListItemLabel };
 export type ListItemProps = RawListItemProps & ListItemExtraProps;
 
 /**
- * @see https://v4.mui.com/components/lists/
+ * @see https://mui.com/material-ui/react-list/
  */
 const ListItem = (props: ListItemProps): JSX.Element => {
   return <StyledListItem disableGutters {...props} />;

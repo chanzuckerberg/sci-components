@@ -19,7 +19,7 @@ export interface RadioContentProps
 export type RadioProps = RadioContentProps & RadioExtraProps;
 
 /**
- * @see https://v4.mui.com/components/radio-buttons/
+ * @see https://mui.com/material-ui/react-radio-button/
  */
 const InputRadio = (props: RadioProps): JSX.Element => {
   const { label, caption, radioProps, stage, value } = props;

@@ -7,7 +7,7 @@ import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 export type TooltipCondensedProps = TooltipProps & TooltipCondensedExtraProps;
 
 /**
- * @see https://v4.mui.com/components/tooltips/
+ * @see https://mui.com/material-ui/react-tooltip/
  *
  * @warning If the tooltip wraps a disabled component, please make sure to
  * wrap the children in a `<span>` tag.
