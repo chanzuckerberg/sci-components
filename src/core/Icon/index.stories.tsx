@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React, { FC, useState } from "react";
 import Callout from "../Callout";
 import InputSearch from "../InputSearch";
@@ -26,7 +26,7 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   component: Demo,
   title: "Icon",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

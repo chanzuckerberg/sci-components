@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputCheckbox from "./index";
 
@@ -39,7 +39,7 @@ export default {
   },
   component: CheckboxDemo,
   title: "Inputs/InputCheckbox",
-};
+} as Meta;
 
 const Template: Story = (args) => <CheckboxLabelDemo {...args} />;
 

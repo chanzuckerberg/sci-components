@@ -12,7 +12,7 @@ export interface SdsTagFilterProps
 export type TagFilterProps = SdsTagFilterProps;
 
 /**
- * @see https://v4.mui.com/components/chips/
+ * @see https://mui.com/material-ui/react-chip/
  */
 
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {

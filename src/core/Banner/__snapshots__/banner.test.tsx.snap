@@ -182,7 +182,6 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
 <div
   class="css-1v3i1xe"
   role="banner"
-  textchild="test text"
 >
   <div
     class="css-1879pua"

@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import React from "react";
 import Link, { LinkProps } from "./index";
 
@@ -20,7 +20,7 @@ export default {
   },
   component: Demo,
   title: "Link",
-};
+} as Meta;
 
 const Template: Story<LinkProps> = (args) => <Demo {...args} />;
 
