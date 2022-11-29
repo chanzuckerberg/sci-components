@@ -19,7 +19,7 @@ export interface CalloutProps {
 export type ExposedCalloutProps = AlertProps & CalloutProps;
 
 /**
- * @see https://v4.mui.com/components/alert/
+ * @see https://mui.com/material-ui/react-alert/
  */
 const Callout = ({
   autoDismiss,

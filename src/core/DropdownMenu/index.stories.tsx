@@ -1,5 +1,5 @@
 import { ClickAwayListener, styled } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
@@ -140,7 +140,7 @@ export default {
   },
   component: Demo,
   title: "DropdownMenu",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

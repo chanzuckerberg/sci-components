@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
@@ -38,7 +38,7 @@ export default {
   },
   component: Accordion,
   title: "Accordion",
-};
+} as Meta;
 
 export const Default = Template.bind({});
 
@@ -91,7 +91,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
   );
 }
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+const LivePreviewTemplate: Story = (args: Args) => (
+  <LivePreviewDemo {...args} />
+);
 
 export const LivePreview = LivePreviewTemplate.bind({});
 

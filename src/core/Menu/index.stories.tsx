@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import MenuItem from "../MenuItem";
@@ -44,7 +44,7 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   component: Demo,
   title: "Menu",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

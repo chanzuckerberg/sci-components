@@ -2,7 +2,7 @@ import React, { ForwardedRef, forwardRef } from "react";
 import { LinkProps, StyledLink } from "./style";
 
 /**
- * @see https://v4.mui.com/components/links/
+ * @see https://mui.com/material-ui/react-link/
  */
 const Link = forwardRef(
   <C extends React.ElementType>(

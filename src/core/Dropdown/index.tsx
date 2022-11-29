@@ -35,7 +35,7 @@ export type MUIValue<Multiple> = AutocompleteValue<
 
 type RenderFunctionType = (props: any) => JSX.Element;
 
-interface DropdownProps<Multiple> {
+export interface DropdownProps<Multiple> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
   closeOnBlur?: boolean;
@@ -56,7 +56,7 @@ interface DropdownProps<Multiple> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-export default function Dropdown<Multiple extends boolean | undefined = false>({
+const Dropdown = <Multiple extends boolean | undefined = false>({
   options,
   label = "",
   multiple = false,
@@ -78,7 +78,7 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
   ...rest
-}: DropdownProps<Multiple>): JSX.Element {
+}: DropdownProps<Multiple>): JSX.Element => {
   if (buttons && !multiple) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -274,4 +274,6 @@ export default function Dropdown<Multiple extends boolean | undefined = false>({
       ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
   }
-}
+};
+
+export default Dropdown;

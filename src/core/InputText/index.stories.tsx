@@ -1,5 +1,5 @@
 import { FormControl } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputText from "./index";
 
@@ -54,7 +54,7 @@ export default {
   },
   component: Demo,
   title: "Inputs/InputText",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

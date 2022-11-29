@@ -16,7 +16,7 @@ export interface MenuItemExtraProps {
 export type MenuItemProps = MenuItemExtraProps & RawMenuItemProps;
 
 /**
- * @see https://v4.mui.com/components/menus/
+ * @see https://mui.com/material-ui/react-menu/
  */
 const MenuItem = forwardRef((props: MenuItemProps, _) => {
   const {

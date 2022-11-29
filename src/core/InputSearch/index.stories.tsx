@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputSearch from "./index";
 
@@ -7,6 +7,7 @@ const Demo = (props: Args): JSX.Element => {
   const { id, placeholder, label, disabled, sdsStyle, sdsStage, intent } =
     props;
   const handleSubmit = (value: string) => {
+    // eslint-disable-next-line no-console
     console.log(value);
   };
   return (
@@ -55,7 +56,7 @@ export default {
   },
   component: Demo,
   title: "Inputs/InputSearch",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

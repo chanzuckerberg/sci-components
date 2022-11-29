@@ -1,11 +1,15 @@
 import { AccordionProps as RawAccordionProps } from "@mui/material";
 import React from "react";
+import AccordionDetails from "./components/AccordionDetails";
+import AccordionHeader from "./components/AccordionHeader";
 import { AccordionExtraProps, StyledAccordion } from "./style";
+
+export { AccordionHeader, AccordionDetails };
 
 export type AccordionProps = RawAccordionProps & AccordionExtraProps;
 
 /**
- * @see https://v4.mui.com/components/accordion/
+ * @see https://mui.com/material-ui/react-accordion/
  */
 const Accordion = (props: AccordionProps) => {
   const { children, useDivider, togglePosition = "right", id } = props;

@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { StoryFileExports } from "@chanzuckerberg/story-utils/build/getStories";
 import { composeStory } from "@storybook/testing-react";
 import {
   render,
@@ -13,7 +14,9 @@ import Meta, { Test as TestStory } from "./index.stories";
 const Test = composeStory(TestStory, Meta);
 
 describe("<Notification />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots<StoryFileExports<typeof Meta>, typeof Meta>(
+    snapshotTestStoryFile
+  );
 
   it("renders notification component", () => {
     render(<Test {...Test.args} />);

@@ -8,7 +8,7 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
   IconExtraProps<IconName>;
 
 /**
- * @see https://v4.mui.com/components/dialogs/
+ * @see https://mui.com/material-ui/icons/#icons
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   { className, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
