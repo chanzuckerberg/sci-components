@@ -1,5 +1,5 @@
 import { Dialog, Paper, styled } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
@@ -93,7 +93,7 @@ export default {
   },
   component: Demo,
   title: "Dropdown",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 const LABEL = "Click Target";

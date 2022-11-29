@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { StoryFileExports } from "@chanzuckerberg/story-utils/build/getStories";
 import { composeStory } from "@storybook/testing-react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
@@ -9,7 +10,9 @@ import Meta, { Test as TestStory } from "./index.stories";
 const Test = composeStory(TestStory, Meta);
 
 describe("<CellBasic />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots<StoryFileExports<typeof Meta>, typeof Meta>(
+    snapshotTestStoryFile
+  );
 
   it("renders cell basic component", () => {
     render(<Test />);
