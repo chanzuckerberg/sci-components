@@ -142,23 +142,30 @@ const StyledPaper = styled(Paper)`
 `;
 
 export const InsideModal = (): JSX.Element => {
-  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(
-    GITHUB_LABELS[0]
-  );
+  const [value, setValue] = useState<
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);
+
+  const FullWidthDropdown = styled(Dropdown)`
+    width: 100%;
+  `;
 
   return (
     <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
-      <Dropdown
+      <FullWidthDropdown
         label="Dropdown"
         options={GITHUB_LABELS}
         onChange={handleChange}
         value={value}
+        multiple
         InputDropdownProps={{ sdsStyle: "square" }}
       />
     </Dialog>
   );
 
-  function handleChange(newValue: DefaultDropdownMenuOption | null) {
+  function handleChange(
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ) {
     setValue(newValue);
   }
 };
@@ -168,8 +175,8 @@ InsideModal.parameters = {
     skip: true,
   },
 };
-// Test Story
 
+// Test Story
 const TestDemo = (props: Args): JSX.Element => {
   return (
     <Dropdown

@@ -1,13 +1,18 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
+import Link from "../Link";
 import Banner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
 const Demo = (props: Args): JSX.Element => {
-  const { sdsType, text } = props;
-  return <Banner sdsType={sdsType} text={text} {...props} />;
+  const { sdsType, textChild } = props;
+  return (
+    <Banner sdsType={sdsType} {...props}>
+      {textChild}
+    </Banner>
+  );
 };
 
 export default {
@@ -23,7 +28,7 @@ export default {
       options: ["primary", "secondary"],
       required: true,
     },
-    text: {
+    textChild: {
       control: { type: "text" },
       required: true,
     },
@@ -45,7 +50,7 @@ Default.args = {
   dismissed: false,
   dismissible: true,
   sdsType: "primary",
-  text: BANNER_TEXT,
+  textChild: BANNER_TEXT,
 };
 
 const StyledBanner = styled(Banner)`
@@ -55,19 +60,33 @@ const StyledBanner = styled(Banner)`
 const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={{ padding: "24px", width: "600px" }}>
-      <Banner dismissible sdsType="primary" text={BANNER_TEXT} />
+      <Banner dismissible sdsType="primary">
+        {BANNER_TEXT}
+      </Banner>
       <div style={{ height: "24px" }} />
-      <Banner dismissible sdsType="secondary" text={BANNER_TEXT} />
+      <Banner dismissible sdsType="secondary">
+        {BANNER_TEXT}
+        <div style={{ padding: 5 }} />
+        <Link href="/" sdsStyle="default">
+          Learn More
+        </Link>
+      </Banner>
       <div style={{ height: "24px" }} />
-      <StyledBanner
-        sdsType="primary"
-        text="Stylable. Should have pink background color"
-      />
+      <StyledBanner sdsType="primary">
+        Stylable. Should have pink background color
+      </StyledBanner>
     </div>
   );
 };
 
-export const LivePreview = LivePreviewDemo.bind({});
+const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+export const LivePreview = LivePreviewTemplate.bind({});
+
+LivePreview.parameters = {
+  controls: {
+    exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+  },
+};
 
 const TestTemplate: Story = (args) => <Demo {...args} />;
 
@@ -75,5 +94,11 @@ export const Test = TestTemplate.bind({});
 Test.args = {
   dismissible: true,
   sdsType: "primary",
-  text: "test text",
+  textChild: "test text",
+};
+
+Test.parameters = {
+  controls: {
+    exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+  },
 };

@@ -10,10 +10,10 @@ interface RowRawProps {
   tooltipProps?: Partial<TooltipProps>;
 }
 
-export type RowProps = RowRawProps & RowExtraProps;
+export type TableRowProps = RowRawProps & RowExtraProps;
 
-const TableRow = forwardRef<HTMLTableRowElement, RowProps>(
-  (props: RowProps, ref): JSX.Element | null => {
+const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+  (props: TableRowProps, ref): JSX.Element | null => {
     const {
       children,
       shouldShowTooltipOnHover = true,

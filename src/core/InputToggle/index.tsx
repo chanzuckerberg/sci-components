@@ -26,4 +26,6 @@ const InputToggle = (props: InputToggleExtraProps) => {
   );
 };
 
+export type { InputToggleExtraProps as InputToggleProps };
+
 export default InputToggle;

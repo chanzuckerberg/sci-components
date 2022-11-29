@@ -2,7 +2,7 @@ import { ListProps as RawListProps } from "@mui/material";
 import React from "react";
 import { ListExtraProps, StyledList } from "./style";
 
-type ListProps = ListExtraProps & RawListProps;
+export type ListProps = ListExtraProps & RawListProps;
 
 /**
  * @see https://v4.mui.com/components/lists/

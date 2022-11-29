@@ -8,11 +8,11 @@ interface Props {
   onDelete: (option: DefaultDropdownMenuOption) => void;
 }
 
-export default function Chips({
+const Chips = ({
   value,
   multiple = false,
   onDelete,
-}: Props): JSX.Element | null {
+}: Props): JSX.Element | null => {
   if (!value) return null;
 
   if (!multiple) {
@@ -32,4 +32,6 @@ export default function Chips({
       })}
     </>
   );
-}
+};
+
+export default Chips;
