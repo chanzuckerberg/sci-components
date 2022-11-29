@@ -7,6 +7,7 @@ import {
   StyledPagination,
   StyledPaginationButtonIcon,
   StyledPaginationChevronButton,
+  StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
 
@@ -57,14 +58,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
 
     return (
       <StyledPagination ref={ref} {...props}>
-        <StyledPaginationChevronButton
-          key="prevPage"
-          onClick={() => currentPage > 1 && onPreviousPage()}
-          disabled={currentPage === 1}
-          sdsSize="small"
-        >
-          <Icon sdsIcon="chevronLeft" sdsType="iconButton" sdsSize="s" />
-        </StyledPaginationChevronButton>
+        <StyledPaginationChevronList>
+          <StyledPaginationChevronButton
+            key="prevPage"
+            onClick={() => currentPage > 1 && onPreviousPage()}
+            disabled={currentPage === 1}
+            sdsSize="small"
+            data-order="first"
+          >
+            <Icon sdsIcon="chevronLeft" sdsType="iconButton" sdsSize="s" />
+          </StyledPaginationChevronButton>
+        </StyledPaginationChevronList>
 
         {paginationRange.map((pageNumber) => {
           if (Array.isArray(pageNumber)) {
@@ -103,14 +107,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           );
         })}
 
-        <StyledPaginationChevronButton
-          key="onNextPage"
-          onClick={() => currentPage !== lastPage && onNextPage()}
-          disabled={currentPage === lastPage}
-          sdsSize="small"
-        >
-          <Icon sdsIcon="chevronRight" sdsType="iconButton" sdsSize="s" />
-        </StyledPaginationChevronButton>
+        <StyledPaginationChevronList>
+          <StyledPaginationChevronButton
+            key="onNextPage"
+            onClick={() => currentPage !== lastPage && onNextPage()}
+            disabled={currentPage === lastPage}
+            sdsSize="small"
+            data-order="last"
+          >
+            <Icon sdsIcon="chevronRight" sdsType="iconButton" sdsSize="s" />
+          </StyledPaginationChevronButton>
+        </StyledPaginationChevronList>
       </StyledPagination>
     );
   }
