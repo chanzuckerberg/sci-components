@@ -34,7 +34,7 @@ export const IconWrapper = styled("div")`
 `;
 
 type ButtonIconType = ButtonIconExtraProps & { bannerType: string };
-const doNotForwardPropsButtonIcon = ["bannerType"];
+const doNotForwardPropsButtonIcon = ["bannerType", "textChild"];
 
 export const StyledButtonIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop: string) =>
@@ -95,7 +95,7 @@ const secondary = (props: BannerExtraProps) => {
   `;
 };
 
-const doNotForwardProps = ["sdsType"];
+const doNotForwardProps = ["sdsType", "textChild"];
 
 export const StyledBanner = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
