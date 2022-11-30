@@ -26,6 +26,11 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    axe: {
+      disabledRules: ["aria-required-parent"],
+    },
+  },
   title: "MenuItem",
 } as Meta;
 

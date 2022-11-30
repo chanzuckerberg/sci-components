@@ -8,7 +8,7 @@ const Template: Story = (props: Args) => {
   const { id, subtitle, useDivider, togglePosition } = props;
   return (
     <Accordion id={id} useDivider={useDivider} togglePosition={togglePosition}>
-      <AccordionHeader id={id} subtitle={subtitle}>
+      <AccordionHeader id={`${id}-header`} subtitle={subtitle}>
         Accordion Header
       </AccordionHeader>
       <AccordionDetails>

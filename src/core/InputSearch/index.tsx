@@ -12,6 +12,7 @@ export interface AccessibleInputSearchProps {
   placeholder?: string;
   id: string;
   handleSubmit?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
@@ -30,6 +31,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       sdsStyle = "square",
       intent = "default",
       handleSubmit,
+      onChange,
       ...rest
     } = props;
 
@@ -43,6 +45,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
         setHasValue(false);
       }
       setValue(event.target.value);
+      if (onChange) onChange(event);
     };
 
     const localHandleSubmit = () => {

@@ -79,6 +79,12 @@ Default.parameters = {
   },
 };
 
+export const Ascending = Template.bind({});
+
+Ascending.args = {
+  direction: "asc",
+};
+
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>

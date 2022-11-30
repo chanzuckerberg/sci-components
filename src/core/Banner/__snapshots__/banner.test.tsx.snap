@@ -25,13 +25,14 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
       Banner text lorem ipsum dolor mit
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       tabindex="0"
@@ -80,7 +81,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
@@ -96,6 +97,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       </a>
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       tabindex="0"
@@ -144,13 +146,14 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
       Stylable. Should have pink background color
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
       data-testid="iconButton"
       tabindex="0"
@@ -200,13 +203,14 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
           data-testid="IconInfoCircleLarge"
           fillcontrast="white"
           focusable="false"
-          viewBox="0 0 32 32"
+          viewBox="0 0 22 22"
         />
       </div>
     </div>
     test text
   </div>
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
