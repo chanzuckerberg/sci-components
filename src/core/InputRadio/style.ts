@@ -27,7 +27,7 @@ export const StyledFormControlLabel = styled(RawFormControlLabel)`
     return `
       position: relative;
       z-index: 0;
-      padding-bottom: ${caption === undefined ? 0 : spaces?.l}px;
+      padding-bottom: ${caption === undefined ? 0 : spaces?.xl}px;
       
       &:after {
         ${fontBodyXxs}
