@@ -2,7 +2,7 @@
 
 exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
 <button
-  aria-label="info"
+  aria-label="search"
   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-1hws01p-MuiButtonBase-root-MuiIconButton-root"
   data-testid="iconButton"
   tabindex="0"

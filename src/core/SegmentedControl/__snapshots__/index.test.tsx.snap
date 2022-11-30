@@ -6,6 +6,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
   role="group"
 >
   <button
+    aria-label="List A"
     aria-pressed="true"
     class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -33,6 +34,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="List B"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -60,6 +62,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="List C"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -87,6 +90,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="List D"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -123,6 +127,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
   role="group"
 >
   <button
+    aria-label="List A"
     aria-pressed="true"
     class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -150,6 +155,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="List B"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -177,6 +183,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="Table"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
@@ -204,6 +211,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
     </span>
   </button>
   <button
+    aria-label="People"
     aria-pressed="false"
     class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
