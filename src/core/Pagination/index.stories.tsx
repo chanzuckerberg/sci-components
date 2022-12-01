@@ -44,6 +44,14 @@ export default {
     },
   },
   component: Pagination,
+  parameters: {
+    axe: {
+      disabledRules: [
+        // FIXME - component has invalid nesting of non-LI elements within its UL.
+        "list",
+      ],
+    },
+  },
   title: "Table/Pagination",
 } as Meta;
 

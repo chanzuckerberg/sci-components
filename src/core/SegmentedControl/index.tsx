@@ -57,7 +57,12 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
         const { iconName, tooltipText } = button;
         return (
-          <ToggleButton disableRipple value={tooltipText} key={tooltipText}>
+          <ToggleButton
+            aria-label={tooltipText}
+            disableRipple
+            value={tooltipText}
+            key={tooltipText}
+          >
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
               <span>
                 <Icon

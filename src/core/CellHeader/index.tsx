@@ -45,7 +45,16 @@ const CellHeaderContent = (
     direction === "asc" ? "chevronUp" : "chevronDown";
 
   const sortIcon = (
-    <StyledSortingIcon sdsType="tertiary" sdsSize="small" active={active}>
+    <StyledSortingIcon
+      aria-label={
+        direction === "asc"
+          ? "Change sort direction from ascending to descending"
+          : "Change sort direction from descending to ascending"
+      }
+      sdsType="tertiary"
+      sdsSize="small"
+      active={active}
+    >
       <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
     </StyledSortingIcon>
   );

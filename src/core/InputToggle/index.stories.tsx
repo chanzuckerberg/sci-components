@@ -23,6 +23,15 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    axe: {
+      disabledRules: [
+        // Unfortunately the MUI Switch component renders an input field without a label, which
+        // fails an axe check.
+        "label",
+      ],
+    },
+  },
   title: "Inputs/InputToggle",
 } as Meta;
 

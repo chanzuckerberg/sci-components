@@ -251,6 +251,7 @@ const LivePreviewDemo = (): JSX.Element => {
           <div>
             <ButtonIcon
               aria-describedby="live2"
+              aria-label="Open menu"
               onClick={handleClick2}
               active={false}
               sdsSize="large"

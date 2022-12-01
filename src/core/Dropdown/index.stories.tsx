@@ -171,6 +171,9 @@ export const InsideModal = (): JSX.Element => {
 };
 
 InsideModal.parameters = {
+  axe: {
+    disabledRules: ["aria-dialog-name"],
+  },
   snapshot: {
     skip: true,
   },

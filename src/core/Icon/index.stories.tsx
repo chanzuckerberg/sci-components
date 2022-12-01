@@ -116,7 +116,7 @@ const IconWrapper = styled("div")`
       }
 
       span {
-        color: ${colors?.gray[400]};
+        color: ${colors?.gray[600]};
         font-size: 11px;
       }
 
