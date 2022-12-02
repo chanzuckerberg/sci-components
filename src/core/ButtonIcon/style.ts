@@ -9,13 +9,13 @@ import {
 } from "../styles";
 
 export interface ButtonIconExtraProps extends CommonThemeProps {
-  active?: boolean;
+  on?: boolean;
   disabled?: boolean;
   sdsSize?: "small" | "medium" | "large";
   sdsType?: "primary" | "secondary" | "tertiary";
 }
 
-const isActive = (props: ButtonIconExtraProps): SerializedStyles => {
+const isOn = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
 
@@ -130,7 +130,7 @@ const large = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["active", "sdsSize", "sdsType"];
+const doNotForwardProps = ["on", "sdsSize", "sdsType"];
 
 export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -138,13 +138,13 @@ export const StyledButtonIcon = styled(IconButton, {
   padding: 0;
 
   ${(props: ButtonIconExtraProps) => {
-    const { active, disabled, sdsSize, sdsType } = props;
+    const { on, disabled, sdsSize, sdsType } = props;
 
     return css`
       ${sdsType === "primary" && primary(props)}
       ${sdsType === "secondary" && secondary(props)}
       ${sdsType === "tertiary" && tertiary(props)}
-      ${active && isActive(props)}
+      ${on && isOn(props)}
       ${disabled && isDisabled(props)}
       ${sdsSize === "small" && small(props)}
       ${sdsSize === "medium" && medium(props)}

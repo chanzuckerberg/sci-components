@@ -7,16 +7,11 @@ import ButtonIcon from "./index";
 const Demo = (props: Args): JSX.Element => {
   const { icon, ...rest } = props;
 
-  const [active, setActive] = React.useState(false);
-  const handleButtonClick = () => setActive(!active);
+  const [on, setOn] = React.useState(false);
+  const handleButtonClick = () => setOn(!on);
 
   return (
-    <ButtonIcon
-      onClick={handleButtonClick}
-      active={active}
-      {...rest}
-      size="large"
-    >
+    <ButtonIcon onClick={handleButtonClick} on={on} {...rest} size="large">
       {icon}
     </ButtonIcon>
   );
@@ -24,13 +19,13 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    active: {
+    disabled: {
       control: {
         type: "boolean",
       },
       defaultValue: false,
     },
-    disabled: {
+    on: {
       control: {
         type: "boolean",
       },

@@ -252,7 +252,7 @@ const LivePreviewDemo = (): JSX.Element => {
             <ButtonIcon
               aria-describedby="live2"
               onClick={handleClick2}
-              active={false}
+              on={false}
               sdsSize="large"
               sdsType="secondary"
             >
