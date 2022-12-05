@@ -60,7 +60,6 @@ import { ReactComponent as IconLinesHorizontalLarge } from "../../common/svgs/Ic
 import { ReactComponent as IconLinesHorizontalSmall } from "../../common/svgs/IconLinesHorizontalSmall.svg";
 import { ReactComponent as IconLinkSmall } from "../../common/svgs/IconLinkSmall.svg";
 import { ReactComponent as IconListSmall } from "../../common/svgs/IconListSmall.svg";
-import { ReactComponent as IconLoadingAnimatedLarge } from "../../common/svgs/IconLoadingAnimatedLarge.svg";
 import { ReactComponent as IconLoadingLarge } from "../../common/svgs/IconLoadingLarge.svg";
 import { ReactComponent as IconLoadingSmall } from "../../common/svgs/IconLoadingSmall.svg";
 import { ReactComponent as IconLockCircleSmall } from "../../common/svgs/IconLockCircleSmall.svg";
@@ -96,6 +95,7 @@ import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/sv
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
 import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
+import { ReactComponent as IconTrashCanLarge } from "../../common/svgs/IconTrashCanLarge.svg";
 import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";
 import { ReactComponent as IconTreeDendogramLarge } from "../../common/svgs/IconTreeDendogramLarge.svg";
 import { ReactComponent as IconTreeHorizontalLarge } from "../../common/svgs/IconTreeHorizontalLarge.svg";
@@ -162,7 +162,6 @@ export interface IconNameToSizes {
   link: "xs" | "s";
   list: "xs" | "s";
   loading: "xs" | "s" | "l" | "xl";
-  loadingAnimated: "l" | "xl";
   lock: "xs" | "s" | "l" | "xl";
   lockCircle: "xs" | "s";
   minus: "xs" | "s";
@@ -190,7 +189,7 @@ export interface IconNameToSizes {
   starburst: "xs" | "s";
   star: "l" | "xl";
   table: "xs" | "s";
-  trashCan: "xs" | "s";
+  trashCan: "xs" | "s" | "l" | "xl";
   treeDendogram: "l" | "xl";
   treeHorizontal: "xs" | "s" | "l" | "xl";
   treeHorizontalPrivate: "l" | "xl";
@@ -404,10 +403,6 @@ export const iconMap: Props = {
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
   },
-  loadingAnimated: {
-    largeIcon: IconLoadingAnimatedLarge,
-    smallIcon: null,
-  },
   lock: {
     largeIcon: IconLockLarge,
     smallIcon: IconLockSmall,
@@ -517,7 +512,7 @@ export const iconMap: Props = {
     smallIcon: IconTableSmall,
   },
   trashCan: {
-    largeIcon: null,
+    largeIcon: IconTrashCanLarge,
     smallIcon: IconTrashCanSmall,
   },
   treeDendogram: {
