@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import Icon, { IconNameToSizes } from "../Icon";
+import { IconNameToSizes } from "../Icon";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import {
   CellHeaderExtraProps,
@@ -54,9 +54,8 @@ const CellHeaderContent = (
       sdsType="tertiary"
       sdsSize="small"
       active={active}
-    >
-      <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
-    </StyledSortingIcon>
+      sdsIcon={sdsIconName}
+    />
   );
 
   return (

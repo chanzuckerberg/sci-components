@@ -219,7 +219,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -360,7 +360,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -461,7 +461,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -504,7 +504,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
@@ -605,7 +605,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1iu48fk-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-yjj55h-MuiButtonBase-root-MuiIconButton-root"
         disabled=""
         tabindex="-1"
         type="button"

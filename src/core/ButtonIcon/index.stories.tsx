@@ -1,11 +1,10 @@
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
-import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 
 const ButtonIcon = (props: Args): JSX.Element => {
-  const { icon, ...rest } = props;
+  const { sdsIcon, ...rest } = props;
 
   const [active, setActive] = React.useState(false);
   const handleButtonClick = () => setActive(!active);
@@ -14,11 +13,11 @@ const ButtonIcon = (props: Args): JSX.Element => {
     <RawButtonIcon
       onClick={handleButtonClick}
       active={active}
+      sdsIcon={sdsIcon}
+      sdsSize="medium"
+      sdsType="primary"
       {...rest}
-      size="large"
-    >
-      {icon}
-    </RawButtonIcon>
+    />
   );
 };
 
@@ -35,6 +34,22 @@ export default {
         type: "boolean",
       },
       defaultValue: false,
+    },
+    sdsIcon: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "dotsHorizontal",
+      options: [
+        "dotsHorizontal",
+        "copy",
+        "download",
+        "people",
+        "treeHorizontal",
+        "grid",
+        "virus",
+        "xMark",
+      ],
     },
     sdsSize: {
       control: {
@@ -62,7 +77,7 @@ export const Default = Template.bind({});
 Default.args = {
   "aria-label": "info",
   disabled: false,
-  icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
+  sdsIcon: "dotsHorizontal",
   sdsSize: "large",
   sdsType: "primary",
 };
@@ -71,19 +86,6 @@ Default.parameters = {
   snapshot: {
     skip: true,
   },
-};
-
-const TestTemplate: Story = (props) => (
-  <ButtonIcon {...props} data-testId="iconButton" />
-);
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  "aria-label": "search",
-  disabled: false,
-  icon: <Icon sdsIcon="search" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "secondary",
 };
 
 const LivePreviewDemo = (): JSX.Element => {
@@ -102,14 +104,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="grid"
           sdsSize="large"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="grid"
           sdsSize="large"
           sdsType="primary"
         />
@@ -118,18 +120,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          icon={
-            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
-          }
+          sdsIcon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          icon={
-            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
-          }
+          sdsIcon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
@@ -138,7 +136,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="large"
           sdsType="tertiary"
         />
@@ -147,7 +145,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="medium"
           sdsType="tertiary"
         />
@@ -156,26 +154,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          icon={
-            <Icon
-              sdsIcon="barChartVertical3"
-              sdsSize="s"
-              sdsType="iconButton"
-            />
-          }
+          sdsIcon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          icon={
-            <Icon
-              sdsIcon="barChartVertical3"
-              sdsSize="s"
-              sdsType="iconButton"
-            />
-          }
+          sdsIcon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
@@ -184,14 +170,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
@@ -200,7 +186,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="small"
           sdsType="tertiary"
         />
@@ -217,3 +203,20 @@ LivePreview.parameters = {
     skip: true,
   },
 };
+
+const TestDemo = (): JSX.Element => {
+  return (
+    <RawButtonIcon
+      aria-label="dotsHorizontal"
+      data-testid="iconButton"
+      active
+      sdsIcon="dotsHorizontal"
+      sdsSize="medium"
+      sdsType="primary"
+    />
+  );
+};
+
+const TestTemplate: Story = () => <TestDemo />;
+
+export const Test = TestTemplate.bind({});

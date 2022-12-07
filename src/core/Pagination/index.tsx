@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import Icon from "../Icon";
 import PageListDropdown from "./components/PageListDropdown";
 import {
   Page,
@@ -65,10 +64,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             onClick={() => currentPage > 1 && onPreviousPage()}
             disabled={currentPage === 1}
             sdsSize="small"
+            sdsIcon="chevronLeft"
             data-order="first"
-          >
-            <Icon sdsIcon="chevronLeft" sdsType="iconButton" sdsSize="s" />
-          </StyledPaginationChevronButton>
+          />
         </StyledPaginationChevronList>
 
         {paginationRange.map((pageNumber) => {
@@ -89,13 +87,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
                   aria-label="Go to a page"
                   key={pageNumber.join("-")}
                   disabled
-                >
-                  <Icon
-                    sdsIcon="dotsHorizontal"
-                    sdsSize="xs"
-                    sdsType="iconButton"
-                  />
-                </StyledPaginationButtonIcon>
+                  sdsIcon="dotsHorizontal"
+                  sdsSize="small"
+                />
               </Page>
             );
           }
@@ -120,9 +114,8 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             disabled={currentPage === lastPage}
             sdsSize="small"
             data-order="last"
-          >
-            <Icon sdsIcon="chevronRight" sdsType="iconButton" sdsSize="s" />
-          </StyledPaginationChevronButton>
+            sdsIcon="chevronRight"
+          />
         </StyledPaginationChevronList>
       </StyledPagination>
     );
