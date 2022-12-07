@@ -11,7 +11,7 @@ export type { ButtonIconProps };
  */
 const ButtonIcon = forwardRef<HTMLButtonElement | null, ButtonIconProps>(
   (props, ref): JSX.Element => {
-    return <StyledButtonIcon data-testid="iconButton" {...props} ref={ref} />;
+    return <StyledButtonIcon {...props} ref={ref} />;
   }
 );
 

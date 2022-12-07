@@ -13,7 +13,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -68,7 +67,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -103,7 +101,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-gqnerr-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         disabled=""
         tabindex="-1"
         type="button"
@@ -156,7 +153,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -191,7 +187,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -225,7 +220,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       <button
         aria-label="Go to a page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -280,7 +274,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -315,7 +308,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -369,7 +361,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       <button
         aria-label="Go to a page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -404,7 +395,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -439,7 +429,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -473,7 +462,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       <button
         aria-label="Go to a page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -517,7 +505,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       <button
         aria-label="Go to a page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12tz5ge-MuiButtonBase-root-MuiIconButton-root"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -552,7 +539,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -587,7 +573,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Previous page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >
@@ -621,7 +606,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
       <button
         aria-label="Go to a page"
         class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1iu48fk-MuiButtonBase-root-MuiIconButton-root"
-        data-testid="iconButton"
         disabled=""
         tabindex="-1"
         type="button"
@@ -674,7 +658,6 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         aria-label="Next page"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
-        data-testid="iconButton"
         tabindex="0"
         type="button"
       >

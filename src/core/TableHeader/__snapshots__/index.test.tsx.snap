@@ -21,7 +21,6 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1c9gy53-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
             tabindex="0"
             type="button"
           >
@@ -57,7 +56,6 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
             tabindex="0"
             type="button"
           >
@@ -93,7 +91,6 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
-            data-testid="iconButton"
             tabindex="0"
             type="button"
           >

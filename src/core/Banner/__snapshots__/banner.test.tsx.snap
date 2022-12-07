@@ -34,7 +34,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -99,7 +98,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -155,7 +153,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -212,7 +209,6 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
   <button
     aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-    data-testid="iconButton"
     tabindex="0"
     type="button"
   >

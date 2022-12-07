@@ -2,12 +2,17 @@ import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
-import Accordion from "./index";
+import RawAccordion from "./index";
 
-const Template: Story = (props: Args) => {
+const Accordion = (props: Args): JSX.Element => {
   const { id, subtitle, useDivider, togglePosition } = props;
   return (
-    <Accordion id={id} useDivider={useDivider} togglePosition={togglePosition}>
+    <RawAccordion
+      id={id}
+      useDivider={useDivider}
+      togglePosition={togglePosition}
+      {...props}
+    >
       <AccordionHeader id={`${id}-header`} subtitle={subtitle}>
         Accordion Header
       </AccordionHeader>
@@ -15,9 +20,11 @@ const Template: Story = (props: Args) => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         malesuada lacus ex, sit amet blandit leo lobortis eget.
       </AccordionDetails>
-    </Accordion>
+    </RawAccordion>
   );
 };
+
+const Template: Story = (props) => <Accordion {...props} />;
 
 export default {
   argTypes: {
@@ -53,7 +60,11 @@ Default.args = {
   togglePosition: "right",
 };
 
-export const Test = Template.bind({});
+const TestTemplate: Story = (props) => (
+  <Accordion {...props} data-testid="accordion" />
+);
+
+export const Test = TestTemplate.bind({});
 
 Test.args = {
   id: "test-story",
