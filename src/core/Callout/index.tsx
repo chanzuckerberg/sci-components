@@ -70,6 +70,7 @@ const Callout = ({
     if (expandable) {
       return (
         <ButtonIcon
+          aria-label={collapsed ? "open" : "close"}
           onClick={() => {
             setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
           }}
@@ -86,6 +87,7 @@ const Callout = ({
     }
     return onClose ? (
       <ButtonIcon
+        aria-label="Dismiss"
         onClick={handleClose}
         sdsSize="small"
         sdsType="tertiary"

@@ -104,6 +104,14 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    axe: {
+      disabledRules: [
+        // FIXME - inputs should have labels
+        "label",
+      ],
+    },
+  },
   title: "Inputs/InputSlider",
 } as Meta;
 

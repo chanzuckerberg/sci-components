@@ -7,6 +7,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
   id="mui-1"
 >
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1f83sro-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
@@ -89,6 +90,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
   id="mui-2"
 >
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5pzevu-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
@@ -105,7 +107,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
-        viewBox="0 0 32 32"
+        viewBox="0 0 22 22"
       />
     </div>
     <span
@@ -171,6 +173,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
   id="mui-3"
 >
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-d7ftbp-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
@@ -187,7 +190,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
-        viewBox="0 0 32 32"
+        viewBox="0 0 22 22"
       />
     </div>
     <span
@@ -253,6 +256,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
   id="mui-4"
 >
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-d7ftbp-MuiButtonBase-root-MuiIconButton-root"
     data-testid="iconButton"
     tabindex="0"
@@ -269,7 +273,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
-        viewBox="0 0 32 32"
+        viewBox="0 0 22 22"
       />
     </div>
     <span

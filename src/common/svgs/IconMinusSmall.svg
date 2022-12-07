@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>IconMinusSmall@1x</title>
-    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
-        <g id="Icons-/-Small-/-IconMinusSmall" >
-            <rect id="Rectangle" x="1" y="6.13" width="12" height="1.75"></rect>
-        </g>
-    </g>
+<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13 7.005C13 6.52176 12.6082 6.13 12.125 6.13H1.875C1.39175 6.13 1 6.52176 1 7.005C1 7.48825 1.39175 7.88 1.875 7.88H12.125C12.6082 7.88 13 7.48825 13 7.005Z" />
 </svg>
+    

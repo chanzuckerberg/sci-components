@@ -199,6 +199,13 @@ const Template: Story = (args) => <Table {...args} />;
 export const Default = Template.bind({});
 
 Default.parameters = {
+  axe: {
+    disabledRules: [
+      // For some reason axe is still checking color contrast of the disabled row. Maybe it only
+      // takes that into consideration for form controls?
+      "color-contrast",
+    ],
+  },
   snapshot: {
     skip: true,
   },

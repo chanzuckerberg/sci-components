@@ -50,6 +50,7 @@ const Banner = forwardRef<HTMLDivElement, BannerProps>(function Banner(
       </Centered>
       {dismissible && (
         <StyledButtonIcon
+          aria-label="Close"
           bannerType={sdsType}
           sdsType="tertiary"
           sdsSize="small"

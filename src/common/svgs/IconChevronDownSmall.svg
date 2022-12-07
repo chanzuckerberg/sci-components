@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>IconArrowDownSmall@1x</title>
-    <g id="Icons" stroke="none" stroke-width="1" fill-rule="evenodd">
-        <g id="Icons-/-Small-/-IconArrowDownSmall" >
-            <polygon id="Shape" points="6.973 8.977 1.78238929 3.64902546 0.643884085 4.72673552 6.97100296 11.2164883 13.3457069 4.79405362 12.4597917 3.83076772 12.2757797 3.75 12.2210034 3.75 12.0427826 3.82467934"></polygon>
-        </g>
-    </g>
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.37381 10.4611C7.17843 10.6593 6.85878 10.6599 6.66274 10.4623L1.11557 4.87104C0.921083 4.675 0.922335 4.35842 1.11837 4.16394L1.75728 3.53006C1.95331 3.33557 2.26989 3.33682 2.46438 3.53286L6.65826 7.76005C6.8543 7.95764 7.17395 7.95711 7.36933 7.75887L11.5309 3.53627C11.7248 3.33959 12.0414 3.33729 12.238 3.53112L12.879 4.16287C13.0757 4.35671 13.078 4.67328 12.8842 4.86996L7.37381 10.4611Z" />
 </svg>
+    

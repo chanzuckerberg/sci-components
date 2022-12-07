@@ -8,17 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: "14.x"
+          node-version-file: ".node-version"
       - name: Install dependencies
         run: yarn
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
-        run: yarn build-storybook-for-tests
+        run: yarn build-storybook --quiet
+      - name: Run accessibility tests 🤟
+        run: yarn storybook:axeOnly
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
+            "npx http-server docs-build --port 6006 --silent" \
             "npx wait-on tcp:6006 && yarn test-storybook"
