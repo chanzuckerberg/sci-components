@@ -7,10 +7,10 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
   id="test-story"
 >
   <div
-    aria-controls="test-story-panel-content"
+    aria-controls="test-story-header-panel-content"
     aria-expanded="false"
     class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-q39ari-MuiButtonBase-root-MuiAccordionSummary-root"
-    id="test-story"
+    id="test-story-header"
     role="button"
     tabindex="0"
   >
@@ -49,7 +49,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
         class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
         <div
-          aria-labelledby="test-story"
+          aria-labelledby="test-story-header"
           class="MuiAccordion-region"
           role="region"
         >

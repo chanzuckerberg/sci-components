@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
@@ -53,7 +53,7 @@ export default {
   },
   component: ButtonIcon,
   title: "ButtonIcon",
-};
+} as Meta;
 
 const Template: Story = (args) => <ButtonIcon {...args} />;
 
@@ -79,7 +79,7 @@ const TestTemplate: Story = (props) => (
 export const Test = TestTemplate.bind({});
 
 Test.args = {
-  "aria-label": "info",
+  "aria-label": "search",
   disabled: false,
   icon: <Icon sdsIcon="search" sdsSize="xl" sdsType="iconButton" />,
   sdsSize: "large",
@@ -100,12 +100,14 @@ const LivePreviewDemo = (): JSX.Element => {
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ display: "flex" }}>
         <ButtonIcon
+          aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
           icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
           sdsType="primary"
         />
         <ButtonIcon
+          aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
           icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
@@ -114,6 +116,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div style={{ display: "flex" }}>
         <ButtonIcon
+          aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
@@ -122,6 +125,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsType="secondary"
         />
         <ButtonIcon
+          aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
           icon={
             <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
@@ -132,6 +136,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div>
         <ButtonIcon
+          aria-label="xMark"
           style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
           sdsSize="large"
@@ -140,6 +145,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div>
         <ButtonIcon
+          aria-label="xMark"
           style={{ marginRight: spacings?.m }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="medium"
@@ -148,6 +154,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div style={{ display: "flex" }}>
         <ButtonIcon
+          aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
           icon={
             <Icon
@@ -160,6 +167,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsType="primary"
         />
         <ButtonIcon
+          aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
           icon={
             <Icon
@@ -174,12 +182,14 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div style={{ display: "flex" }}>
         <ButtonIcon
+          aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
           sdsType="secondary"
         />
         <ButtonIcon
+          aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"
@@ -188,6 +198,7 @@ const LivePreviewDemo = (): JSX.Element => {
       </div>
       <div>
         <ButtonIcon
+          aria-label="xMark"
           style={{ marginRight: spacings?.s }}
           icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
           sdsSize="small"

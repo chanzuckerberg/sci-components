@@ -27,4 +27,4 @@ extra theme variables based on the themeOptions provided, so if you override `de
 
 💡 Aspen example available [here](https://github.com/chanzuckerberg/aspen/blob/trunk/src/frontend/pages/_app.tsx).
 
-💡 Material UI docs for custom theming available [here](https://v4.mui.com/customization/theming/).
+💡 Material UI docs for custom theming available [here](https://mui.com/material-ui/customization/theming/).

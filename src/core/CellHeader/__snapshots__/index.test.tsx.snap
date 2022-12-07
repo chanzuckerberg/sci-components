@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<CellHeader /> Ascending story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <th
+        class="css-x40omn"
+        direction="asc"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Header
+          </span>
+          <button
+            aria-label="Change sort direction from ascending to descending"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="css-jbvua0"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                data-jest-file-name="IconChevronUpSmall.svg"
+                data-jest-svg-name="IconChevronUpSmall"
+                data-testid="IconChevronUpSmall"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 14 14"
+              />
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </th>
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`<CellHeader /> Test story renders snapshot 1`] = `
 <table>
   <tbody>
@@ -16,6 +61,7 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
             Header
           </span>
           <button
+            aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1c9gy53-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"

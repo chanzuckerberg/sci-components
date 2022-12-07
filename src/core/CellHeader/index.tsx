@@ -15,7 +15,7 @@ interface CellHeaderContentProps {
   direction?: CellHeaderDirection;
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
-  children: string;
+  children: React.ReactNode;
 }
 
 interface CellHeaderRawProps
@@ -45,7 +45,16 @@ const CellHeaderContent = (
     direction === "asc" ? "chevronUp" : "chevronDown";
 
   const sortIcon = (
-    <StyledSortingIcon sdsType="tertiary" sdsSize="small" active={active}>
+    <StyledSortingIcon
+      aria-label={
+        direction === "asc"
+          ? "Change sort direction from ascending to descending"
+          : "Change sort direction from descending to ascending"
+      }
+      sdsType="tertiary"
+      sdsSize="small"
+      active={active}
+    >
       <Icon sdsSize="s" sdsIcon={sdsIconName} sdsType="iconButton" />
     </StyledSortingIcon>
   );
@@ -64,7 +73,7 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
       children,
       shouldShowTooltipOnHover = false,
       tooltipProps,
-      tooltipText = props.children,
+      tooltipText = "",
       tooltipSubtitle,
       ...rest
     } = props;

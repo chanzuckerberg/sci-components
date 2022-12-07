@@ -1,6 +1,6 @@
 {
   "name": "czifui",
-  "version": "0.0.0-development",
+  "version": "0.0.26",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.8",
+    "@chanzuckerberg/axe-storybook-testing": "^6.2.0",
     "@chanzuckerberg/story-utils": "^2.1.0",
     "@emotion/core": "^11.0.0",
     "@emotion/css": "^11.1.3",
@@ -20,18 +21,19 @@
     "@mui/material": "^5.6.0",
     "@rollup/plugin-typescript": "^8.3.1",
     "@rollup/plugin-url": "^6.1.0",
-    "@storybook/addon-a11y": "^6.4.22",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-webpack4": "^6.5.9",
-    "@storybook/manager-webpack4": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@storybook/test-runner": "^0.9.0",
+    "@storybook/addon-a11y": "^6.5.13",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/addons": "^6.5.13",
+    "@storybook/builder-webpack4": "^6.5.13",
+    "@storybook/manager-webpack4": "^6.5.13",
+    "@storybook/react": "^6.5.13",
+    "@storybook/test-runner": "^0.9.1",
     "@storybook/testing-library": "^0.0.13",
-    "@storybook/testing-react": "^1.2.4",
-    "@storybook/theming": "^6.5.9",
+    "@storybook/testing-react": "^1.3.0",
+    "@storybook/theming": "^6.5.13",
     "@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/react": "^12.1.2",
@@ -47,6 +49,7 @@
     "concurrently": "^6.0.0",
     "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
+    "czifui": "file:czifui-v0.0.26.tgz",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -60,7 +63,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sonarjs": "^0.10.0",
-    "eslint-plugin-storybook": "^0.5.11",
+    "eslint-plugin-storybook": "^0.6.7",
     "husky": "^5.1.3",
     "jest": "^27.2.5",
     "lint-staged": "^10.5.4",
@@ -100,7 +103,6 @@
     "build-watch": "rollup -c -w",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build",
-    "build-storybook-for-tests": "build-storybook --quiet",
     "test-storybook": "test-storybook",
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
@@ -109,7 +111,13 @@
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
-    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba"
+    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
+    "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
+    "storybook:axeOnly": "axe-storybook --build-dir docs-build",
+    "build-and-pack-a-new-version": "yarn build && yarn version --no-git-tag-version --patch && yarn pack",
+    "install-czifui-locally": "yarn add -D file:\"czifui-v$npm_package_version.tgz\"",
+    "prenamespace-check": "rm czifui-*.tgz && yarn remove czifui && yarn build-and-pack-a-new-version && yarn install-czifui-locally",
+    "namespace-check": "tsc --p tsconfig-namespace-check.json --noEmit"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
@@ -136,6 +144,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {}
+  }
 }

@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawButton from "./index";
@@ -41,7 +41,7 @@ export default {
   },
   component: Button,
   title: "Button",
-};
+} as Meta;
 
 const Template: Story = (props) => <Button {...props} />;
 

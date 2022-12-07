@@ -8,7 +8,7 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
   IconExtraProps<IconName>;
 
 /**
- * @see https://v4.mui.com/components/dialogs/
+ * @see https://mui.com/material-ui/icons/#icons
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   { className, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
@@ -38,7 +38,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
         <StyledSvgIcon
           className={className}
           fillcontrast="white"
-          viewBox="0 0 32 32"
+          viewBox="0 0 22 22"
           component={largeIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
