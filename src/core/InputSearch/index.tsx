@@ -4,7 +4,6 @@ import {
 } from "@mui/material";
 import React, { forwardRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
 import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
 
 export interface AccessibleInputSearchProps {
@@ -80,10 +79,12 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   aria-label="search-button"
                   onClick={localHandleSubmit}
                   sdsType="secondary"
-                  size="large"
-                >
-                  <Icon sdsIcon="search" sdsSize="s" sdsType="interactive" />
-                </ButtonIcon>
+                  sdsSize="small"
+                  sdsIconProps={{
+                    sdsType: "interactive",
+                  }}
+                  sdsIcon="search"
+                />
               </InputAdornment>
             ),
           }}

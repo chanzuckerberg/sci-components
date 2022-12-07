@@ -6,7 +6,6 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
 >
   <button
     class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -17,7 +16,6 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-gsef57-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -46,7 +44,6 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-2bl1ol-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -64,7 +61,6 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
 >
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-ok6hdy-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -75,7 +71,6 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-ok6hdy-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -104,7 +99,6 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-3ea70w-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -115,7 +109,6 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-3ea70w-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -151,7 +144,6 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
 >
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -162,7 +154,6 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-4j8oia-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -191,7 +182,6 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >
@@ -202,7 +192,6 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
   </button>
   <button
     class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root css-39o5u-MuiButtonBase-root-MuiButton-root"
-    data-testid="button"
     tabindex="0"
     type="button"
   >

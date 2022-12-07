@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import Icon from "../Icon";
 import PageListDropdown from "./components/PageListDropdown";
 import {
   Page,
@@ -7,6 +6,7 @@ import {
   StyledPagination,
   StyledPaginationButtonIcon,
   StyledPaginationChevronButton,
+  StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
 
@@ -57,15 +57,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
 
     return (
       <StyledPagination ref={ref} {...props}>
-        <StyledPaginationChevronButton
-          aria-label="Previous page"
-          key="prevPage"
-          onClick={() => currentPage > 1 && onPreviousPage()}
-          disabled={currentPage === 1}
-          sdsSize="small"
-        >
-          <Icon sdsIcon="chevronLeft" sdsType="iconButton" sdsSize="s" />
-        </StyledPaginationChevronButton>
+        <StyledPaginationChevronList>
+          <StyledPaginationChevronButton
+            aria-label="Previous page"
+            key="prevPage"
+            onClick={() => currentPage > 1 && onPreviousPage()}
+            disabled={currentPage === 1}
+            sdsSize="small"
+            sdsIcon="chevronLeft"
+            data-order="first"
+          />
+        </StyledPaginationChevronList>
 
         {paginationRange.map((pageNumber) => {
           if (Array.isArray(pageNumber)) {
@@ -85,13 +87,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
                   aria-label="Go to a page"
                   key={pageNumber.join("-")}
                   disabled
-                >
-                  <Icon
-                    sdsIcon="dotsHorizontal"
-                    sdsSize="xs"
-                    sdsType="iconButton"
-                  />
-                </StyledPaginationButtonIcon>
+                  sdsIcon="dotsHorizontal"
+                  sdsSize="small"
+                />
               </Page>
             );
           }
@@ -108,15 +106,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           );
         })}
 
-        <StyledPaginationChevronButton
-          aria-label="Next page"
-          key="onNextPage"
-          onClick={() => currentPage !== lastPage && onNextPage()}
-          disabled={currentPage === lastPage}
-          sdsSize="small"
-        >
-          <Icon sdsIcon="chevronRight" sdsType="iconButton" sdsSize="s" />
-        </StyledPaginationChevronButton>
+        <StyledPaginationChevronList>
+          <StyledPaginationChevronButton
+            aria-label="Next page"
+            key="onNextPage"
+            onClick={() => currentPage !== lastPage && onNextPage()}
+            disabled={currentPage === lastPage}
+            sdsSize="small"
+            data-order="last"
+            sdsIcon="chevronRight"
+          />
+        </StyledPaginationChevronList>
       </StyledPagination>
     );
   }

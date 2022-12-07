@@ -46,6 +46,7 @@ export default {
 const Template: Story = (props) => <Button {...props} />;
 
 export const Default = Template.bind({});
+
 Default.parameters = {
   snapshot: {
     skip: true,
@@ -59,7 +60,11 @@ Default.args = {
   text: "Label",
 };
 
-export const Test = Template.bind({});
+const TestTemplate: Story = (props) => (
+  <Button {...props} data-testId="button" />
+);
+
+export const Test = TestTemplate.bind({});
 
 Test.args = {
   disabled: false,

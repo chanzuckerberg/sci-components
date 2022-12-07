@@ -1,6 +1,9 @@
 import { styled } from "@mui/material/styles";
 import ButtonIcon from "../ButtonIcon";
-import { ButtonIconExtraProps } from "../ButtonIcon/style";
+import {
+  ButtonIconExtraProps,
+  ButtonIconSizeToTypes,
+} from "../ButtonIcon/style";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -10,8 +13,10 @@ import {
   getTypography,
 } from "../styles";
 
-export interface BannerExtraProps extends CommonThemeProps {
-  sdsType: "primary" | "secondary";
+export interface BannerExtraProps<
+  ButtonIconSize extends keyof ButtonIconSizeToTypes
+> extends CommonThemeProps {
+  sdsType: ButtonIconSizeToTypes[ButtonIconSize];
 }
 
 export const Centered = styled("div")`
@@ -22,7 +27,9 @@ export const Centered = styled("div")`
 `;
 
 export const IconWrapper = styled("div")`
-  ${(props: ButtonIconExtraProps) => {
+  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+    props: ButtonIconExtraProps<ButtonIconSize>
+  ) => {
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
 
@@ -33,14 +40,17 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
-type ButtonIconType = ButtonIconExtraProps & { bannerType: string };
+type ButtonIconType<ButtonIconSize extends keyof ButtonIconSizeToTypes> =
+  ButtonIconExtraProps<ButtonIconSize> & { bannerType: string };
 const doNotForwardPropsButtonIcon = ["bannerType", "textChild"];
 
 export const StyledButtonIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsButtonIcon.includes(prop),
 })`
-  ${(props: ButtonIconType) => {
+  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+    props: ButtonIconType<ButtonIconSize>
+  ) => {
     const spaces = getSpaces(props);
 
     return `
@@ -49,7 +59,9 @@ export const StyledButtonIcon = styled(ButtonIcon, {
     `;
   }}
 
-  ${(props: ButtonIconType) => {
+  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+    props: ButtonIconType<ButtonIconSize>
+  ) => {
     const { bannerType } = props;
     const colors = getColors(props);
 
@@ -74,7 +86,9 @@ export const Text = styled("div")`
   }}
 `;
 
-const primary = (props: BannerExtraProps) => {
+const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: BannerExtraProps<ButtonIconSize>
+) => {
   const colors = getColors(props);
 
   return `
@@ -86,7 +100,9 @@ const primary = (props: BannerExtraProps) => {
   `;
 };
 
-const secondary = (props: BannerExtraProps) => {
+const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: BannerExtraProps<ButtonIconSize>
+) => {
   const colors = getColors(props);
 
   return `
@@ -104,8 +120,12 @@ export const StyledBanner = styled("div", {
   align-items: center;
   height: 40px;
   width: 100%;
+
   ${fontBodyS}
-  ${(props: BannerExtraProps) => {
+
+  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+    props: BannerExtraProps<ButtonIconSize>
+  ) => {
     const { sdsType } = props;
     const typography = getTypography(props);
 
