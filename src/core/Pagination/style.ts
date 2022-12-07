@@ -53,6 +53,12 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
   }}
 `;
 
+export const StyledPaginationChevronList = styled("li")`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const StyledPaginationChevronButton = styled(ButtonIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
@@ -62,10 +68,10 @@ export const StyledPaginationChevronButton = styled(ButtonIcon, {
     const spaces = getSpaces(props);
 
     return `
-      &:first-of-type {
+      &[data-order="first"] {
         margin-right: ${spaces?.xl}px;
       }
-      &:last-of-type {
+      &[data-order="last"] {
         margin-left: ${spaces?.xl}px;
       }
       cursor: ${disabled ? "auto" : "pointer"};
@@ -139,7 +145,7 @@ export const Page = styled("li", {
         background-color: ${colors?.gray[200]};
       }
 
-      &:last-of-type {
+      &:nth-last-of-type(-n+2) {
         margin-right: 0;
       }
 
