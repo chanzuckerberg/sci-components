@@ -4,13 +4,6 @@ import { DialogContext } from "src/core/Dialog/components/common";
 import { IconNameToSizes } from "src/core/Icon";
 import { StyledButtonIcon } from "./style";
 
-const SDS_SIZE_TO_COMPONENT_SIZE = {
-  l: "large",
-  m: "large",
-  s: "medium",
-  xs: "small",
-};
-
 const CloseButton = forwardRef(function CloseButton<
   IconName extends keyof IconNameToSizes,
   ButtonIconSize extends keyof ButtonIconSizeToTypes
@@ -18,10 +11,19 @@ const CloseButton = forwardRef(function CloseButton<
   props: ButtonIconProps<IconName, ButtonIconSize>,
   ref: ForwardedRef<HTMLButtonElement | null>
 ) {
+  const SDS_SIZE_TO_COMPONENT_SIZE: {
+    [key: string]: keyof ButtonIconSizeToTypes;
+  } = {
+    l: "large",
+    m: "large",
+    s: "medium",
+    xs: "small",
+  };
+
   return (
     <DialogContext.Consumer>
       {({ sdsSize }) => {
-        const size = SDS_SIZE_TO_COMPONENT_SIZE[sdsSize] as ButtonIconSize;
+        const size = SDS_SIZE_TO_COMPONENT_SIZE[sdsSize];
 
         return (
           <StyledButtonIcon

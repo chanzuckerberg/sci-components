@@ -207,6 +207,7 @@ LivePreview.parameters = {
 const TestDemo = (): JSX.Element => {
   return (
     <RawButtonIcon
+      aria-label="dotsHorizontal"
       data-testid="iconButton"
       active
       sdsIcon="dotsHorizontal"

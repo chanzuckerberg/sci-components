@@ -1,7 +1,7 @@
 import { Banner, BannerProps } from "czifui";
 import React from "react";
 
-const BannerNameSpaceTest = (props: BannerProps) => {
+const BannerNameSpaceTest = (props: BannerProps<"medium">) => {
   return (
     <Banner {...props} dismissible sdsType="primary">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aliquid
