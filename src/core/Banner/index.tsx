@@ -7,15 +7,14 @@ import {
   IconWrapper,
   StyledBanner,
   StyledButtonIcon,
-  Text,
 } from "./style";
 
 export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
   extends BannerExtraProps<ButtonIconSize> {
+  children: React.ReactNode;
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
-  text: string;
 }
 
 const Banner = forwardRef(function Banner<
@@ -25,11 +24,11 @@ const Banner = forwardRef(function Banner<
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
   const {
+    children,
     dismissed,
     dismissible = true,
     onClose,
     sdsType,
-    text,
     ...rest
   } = props;
 
@@ -51,10 +50,11 @@ const Banner = forwardRef(function Banner<
         <IconWrapper>
           <Icon sdsIcon="infoCircle" sdsSize="l" sdsType="static" />
         </IconWrapper>
-        <Text>{text}</Text>
+        {children}
       </Centered>
       {dismissible && (
         <StyledButtonIcon
+          aria-label="Close"
           bannerType={sdsType}
           sdsType="tertiary"
           sdsSize="small"

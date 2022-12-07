@@ -14,7 +14,7 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
 }
 
 /**
- * @see https://v4.mui.com/components/icons/#svgicon
+ * @see https://mui.com/material-ui/icons/#svgicon
  */
 function iconSize<IconName extends keyof IconNameToSizes>(
   props: IconExtraProps<IconName>

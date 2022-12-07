@@ -151,11 +151,10 @@ const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   const iconSizes = getIconSizes(props);
 
   return css`
-    ${sdsType === "primary" ? `height: 42px; width: 42px;` : ""}
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
+      ${sdsType === "primary" ? `padding: 5px;` : ""}
     }
   `;
 };

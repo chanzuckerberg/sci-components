@@ -53,16 +53,16 @@ export type MenuSelectProps<
   MenuSelectExtraProps;
 
 /**
- * @see https://v4.mui.com/components/autocomplete/
+ * @see https://mui.com/material-ui/react-autocomplete/
  */
-export default function MenuSelect<
+const MenuSelect = <
   T extends DefaultMenuSelectOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
   props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
-): JSX.Element {
+): JSX.Element => {
   const {
     keepSearchOnSelect = true,
     multiple = false,
@@ -176,4 +176,6 @@ export default function MenuSelect<
       </StyledMenuItem>
     );
   }
-}
+};
+
+export default MenuSelect;

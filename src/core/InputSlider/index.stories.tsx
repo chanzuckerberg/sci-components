@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputSlider from "./index";
 
@@ -104,8 +104,16 @@ export default {
     },
   },
   component: Demo,
-  title: "InputSlider",
-};
+  parameters: {
+    axe: {
+      disabledRules: [
+        // FIXME - inputs should have labels
+        "label",
+      ],
+    },
+  },
+  title: "Inputs/InputSlider",
+} as Meta;
 
 const storyRow = {
   display: "grid",

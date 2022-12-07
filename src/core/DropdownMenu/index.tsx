@@ -69,14 +69,14 @@ export type DropdownMenuProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraProps;
 
-export default function DropdownMenu<
+const DropdownMenu = <
   T extends DefaultDropdownMenuOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
-): JSX.Element {
+): JSX.Element => {
   const {
     multiple = false,
     anchorEl,
@@ -236,4 +236,6 @@ export default function DropdownMenu<
       </li>
     );
   }
-}
+};
+
+export default DropdownMenu;

@@ -26,7 +26,7 @@ interface SegmentedControlExtraProps
 }
 
 /**
- * @see https://v4.mui.com/components/toggle-button/
+ * @see https://mui.com/material-ui/react-toggle-button/
  */
 export type SegmentedControlProps = SegmentedControlExtraProps &
   ToggleButtonGroupProps;
@@ -57,7 +57,12 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
         const { iconName, tooltipText } = button;
         return (
-          <ToggleButton disableRipple value={tooltipText} key={tooltipText}>
+          <ToggleButton
+            aria-label={tooltipText}
+            disableRipple
+            value={tooltipText}
+            key={tooltipText}
+          >
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
               <span>
                 <Icon

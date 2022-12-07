@@ -5,7 +5,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
   style="padding: 24px; width: 600px;"
 >
   <div
-    class="css-9mzx1i"
+    class="css-1v66a8t"
     role="banner"
   >
     <div
@@ -25,17 +25,14 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
-      <div
-        class="css-1xpysbw"
-      >
-        Banner text lorem ipsum dolor mit
-      </div>
+      Banner text lorem ipsum dolor mit
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
@@ -63,7 +60,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     style="height: 24px;"
   />
   <div
-    class="css-1x062lx"
+    class="css-1ran7dc"
     role="banner"
   >
     <div
@@ -83,17 +80,23 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
+      Banner text lorem ipsum dolor mit
       <div
-        class="css-1xpysbw"
+        style="padding: 5px;"
+      />
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-otz8ol-MuiTypography-root-MuiLink-root"
+        href="/"
       >
-        Banner text lorem ipsum dolor mit
-      </div>
+        Learn More
+      </a>
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
@@ -121,7 +124,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     style="height: 24px;"
   />
   <div
-    class="css-yd06ia"
+    class="css-rew8a4"
     role="banner"
   >
     <div
@@ -141,17 +144,14 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
             data-testid="IconInfoCircleLarge"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 32 32"
+            viewBox="0 0 22 22"
           />
         </div>
       </div>
-      <div
-        class="css-1xpysbw"
-      >
-        Stylable. Should have pink background color
-      </div>
+      Stylable. Should have pink background color
     </div>
     <button
+      aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
@@ -180,7 +180,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
 
 exports[`<Banner /> Test story renders snapshot 1`] = `
 <div
-  class="css-9mzx1i"
+  class="css-1v66a8t"
   role="banner"
 >
   <div
@@ -200,17 +200,14 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
           data-testid="IconInfoCircleLarge"
           fillcontrast="white"
           focusable="false"
-          viewBox="0 0 32 32"
+          viewBox="0 0 22 22"
         />
       </div>
     </div>
-    <div
-      class="css-1xpysbw"
-    >
-      test text
-    </div>
+    test text
   </div>
   <button
+    aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"

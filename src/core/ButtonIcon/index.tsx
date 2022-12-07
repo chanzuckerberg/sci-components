@@ -30,7 +30,7 @@ const ButtonIconSizeToSdsIconSize = {
 };
 
 /**
- * @see https://v4.mui.com/components/buttons/#icon-buttons
+ * @see https://mui.com/material-ui/react-button/#icon-buttons
  */
 const ButtonIcon = forwardRef(function ButtonIcon<
   IconName extends keyof IconNameToSizes,

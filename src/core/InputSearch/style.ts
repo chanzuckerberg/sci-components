@@ -91,7 +91,9 @@ export const StyledLabel = styled("label")`
       clip: rect(0 0 0 0);
       height: 1px;
       width: 1px;
-      margin: -1px; padding: 0; border: 0;
+      margin: -1px; 
+      padding: 0; 
+      border: 0;
     `;
   }}
 `;
@@ -121,7 +123,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${inputBaseClasses.inputSizeSmall} {
-        padding: ${spacings?.xs}px ${spacings?.l}px;
+        padding: ${spacings?.xs}px 0 ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;

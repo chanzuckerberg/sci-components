@@ -1,6 +1,6 @@
 import { ClickAwayListener } from "@mui/base";
 import { styled } from "@mui/material/styles";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React, { useState } from "react";
 import DropdownMenu from "../DropdownMenu";
 import InputDropdown from "./index";
@@ -134,8 +134,8 @@ export default {
     },
   },
   component: Demo,
-  title: "InputDropdown",
-};
+  title: "Inputs/InputDropdown",
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

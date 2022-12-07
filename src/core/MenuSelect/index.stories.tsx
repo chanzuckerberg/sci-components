@@ -6,7 +6,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteInputChangeReason,
 } from "@mui/material/useAutocomplete";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import { getColors, getCorners, getShadows } from "../styles";
 import TagFilter from "../TagFilter";
@@ -255,7 +255,7 @@ export default {
   },
   component: Demo,
   title: "MenuSelect - To Be Depreciated",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

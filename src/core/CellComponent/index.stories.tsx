@@ -1,8 +1,8 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
+import InputRadio from "../InputRadio";
 import InputToggle from "../InputToggle";
-import RadioButton from "../Radio";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
 import CellComponentRaw from "./index";
@@ -49,8 +49,17 @@ export default {
     },
   },
   component: CellComponent,
+  parameters: {
+    axe: {
+      disabledRules: [
+        // Unfortunately the MUI Switch component renders an input field without a label, which
+        // fails an axe check.
+        "label",
+      ],
+    },
+  },
   title: "Table/CellComponent",
-};
+} as Meta;
 
 const Template: Story = (props: Args) => {
   const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
@@ -150,7 +159,7 @@ const TestDemo = (props: Args): JSX.Element => {
               name="radio-buttons-group"
             >
               <FormControlLabel
-                control={<RadioButton stage="checked" {...props} />}
+                control={<InputRadio stage="checked" {...props} />}
                 label="Label"
                 value="demo"
               />
