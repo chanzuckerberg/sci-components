@@ -1,24 +1,23 @@
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
-import Icon from "../Icon";
 import { defaultAppTheme } from "../styles";
-import ButtonIcon from "./index";
+import RawButtonIcon from "./index";
 
-const Demo = (props: Args): JSX.Element => {
-  const { icon, ...rest } = props;
+const ButtonIcon = (props: Args): JSX.Element => {
+  const { sdsIcon, ...rest } = props;
 
   const [active, setActive] = React.useState(false);
   const handleButtonClick = () => setActive(!active);
 
   return (
-    <ButtonIcon
+    <RawButtonIcon
       onClick={handleButtonClick}
       active={active}
+      sdsIcon={sdsIcon}
+      sdsSize="medium"
+      sdsType="primary"
       {...rest}
-      size="large"
-    >
-      {icon}
-    </ButtonIcon>
+    />
   );
 };
 
@@ -36,6 +35,22 @@ export default {
       },
       defaultValue: false,
     },
+    sdsIcon: {
+      control: {
+        type: "select",
+      },
+      defaultValue: "dotsHorizontal",
+      options: [
+        "dotsHorizontal",
+        "copy",
+        "download",
+        "people",
+        "treeHorizontal",
+        "grid",
+        "virus",
+        "xMark",
+      ],
+    },
     sdsSize: {
       control: {
         type: "select",
@@ -51,18 +66,18 @@ export default {
       options: ["primary", "secondary", "tertiary"],
     },
   },
-  component: Demo,
+  component: ButtonIcon,
   title: "ButtonIcon",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
+const Template: Story = (args) => <ButtonIcon {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
   "aria-label": "info",
   disabled: false,
-  icon: <Icon sdsIcon="infoCircle" sdsSize="xl" sdsType="iconButton" />,
+  sdsIcon: "dotsHorizontal",
   sdsSize: "large",
   sdsType: "primary",
 };
@@ -71,16 +86,6 @@ Default.parameters = {
   snapshot: {
     skip: true,
   },
-};
-
-export const Test = Template.bind({});
-
-Test.args = {
-  "aria-label": "search",
-  disabled: false,
-  icon: <Icon sdsIcon="search" sdsSize="xl" sdsType="iconButton" />,
-  sdsSize: "large",
-  sdsType: "secondary",
 };
 
 const LivePreviewDemo = (): JSX.Element => {
@@ -96,108 +101,92 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="grid"
           sdsSize="large"
           sdsType="primary"
         />
-        <Demo
+        <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          icon={<Icon sdsIcon="grid" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="grid"
           sdsSize="large"
           sdsType="primary"
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          icon={
-            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
-          }
+          sdsIcon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
-        <Demo
+        <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          icon={
-            <Icon sdsIcon="infoSpeechBubble" sdsSize="l" sdsType="iconButton" />
-          }
+          sdsIcon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          icon={<Icon sdsIcon="xMark" sdsSize="l" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="large"
           sdsType="tertiary"
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="medium"
           sdsType="tertiary"
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          icon={
-            <Icon
-              sdsIcon="barChartVertical3"
-              sdsSize="s"
-              sdsType="iconButton"
-            />
-          }
+          sdsIcon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
-        <Demo
+        <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          icon={
-            <Icon
-              sdsIcon="barChartVertical3"
-              sdsSize="s"
-              sdsType="iconButton"
-            />
-          }
+          sdsIcon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
       </div>
       <div style={{ display: "flex" }}>
-        <Demo
+        <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
-        <Demo
+        <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="plusCircle" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
       </div>
       <div>
-        <Demo
+        <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.s }}
-          icon={<Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />}
+          sdsIcon="xMark"
           sdsSize="small"
           sdsType="tertiary"
         />
@@ -214,3 +203,20 @@ LivePreview.parameters = {
     skip: true,
   },
 };
+
+const TestDemo = (): JSX.Element => {
+  return (
+    <RawButtonIcon
+      aria-label="dotsHorizontal"
+      data-testid="iconButton"
+      active
+      sdsIcon="dotsHorizontal"
+      sdsSize="medium"
+      sdsType="primary"
+    />
+  );
+};
+
+const TestTemplate: Story = () => <TestDemo />;
+
+export const Test = TestTemplate.bind({});

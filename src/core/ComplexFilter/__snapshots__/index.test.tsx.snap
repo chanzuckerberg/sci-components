@@ -7,7 +7,6 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
   >
     <button
       class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-6o30iu-MuiButtonBase-root-MuiButton-root"
-      data-testid="button"
       label="Click Target"
       tabindex="0"
       type="button"

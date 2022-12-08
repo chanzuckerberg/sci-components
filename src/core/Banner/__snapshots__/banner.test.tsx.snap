@@ -5,7 +5,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
   style="padding: 24px; width: 600px;"
 >
   <div
-    class="css-1v3i1xe"
+    class="css-1v66a8t"
     role="banner"
   >
     <div
@@ -34,7 +34,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -61,7 +60,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     style="height: 24px;"
   />
   <div
-    class="css-1doigm5"
+    class="css-1ran7dc"
     role="banner"
   >
     <div
@@ -99,7 +98,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -126,7 +124,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     style="height: 24px;"
   />
   <div
-    class="css-n7miuv"
+    class="css-rew8a4"
     role="banner"
   >
     <div
@@ -155,7 +153,6 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     <button
       aria-label="Close"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-      data-testid="iconButton"
       tabindex="0"
       type="button"
     >
@@ -183,7 +180,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
 
 exports[`<Banner /> Test story renders snapshot 1`] = `
 <div
-  class="css-1v3i1xe"
+  class="css-1v66a8t"
   role="banner"
 >
   <div
@@ -212,7 +209,6 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
   <button
     aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
-    data-testid="iconButton"
     tabindex="0"
     type="button"
   >

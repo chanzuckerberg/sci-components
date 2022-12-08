@@ -86,11 +86,8 @@ const Notification = ({
                   sdsSize="small"
                   sdsType="tertiary"
                   data-testid="notificationCloseButton"
-                  size="large"
-                >
-                  {" "}
-                  <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-                </ButtonIcon>
+                  sdsIcon="xMark"
+                />
               ) : null
             }
             icon={getIcon()}

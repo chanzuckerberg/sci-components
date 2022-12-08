@@ -1,51 +1,43 @@
-import React, { forwardRef } from "react";
-import { ButtonIconProps } from "src/core/ButtonIcon";
+import React, { ForwardedRef, forwardRef } from "react";
+import { ButtonIconProps, ButtonIconSizeToTypes } from "src/core/ButtonIcon";
 import { DialogContext } from "src/core/Dialog/components/common";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+import { IconNameToSizes } from "src/core/Icon";
 import { StyledButtonIcon } from "./style";
 
-const SDS_SIZE_TO_COMPONENT_SIZE = {
-  l: "large",
-  m: "large",
-  s: "medium",
-  xs: "small",
-};
+const CloseButton = forwardRef(function CloseButton<
+  IconName extends keyof IconNameToSizes,
+  ButtonIconSize extends keyof ButtonIconSizeToTypes
+>(
+  props: ButtonIconProps<IconName, ButtonIconSize>,
+  ref: ForwardedRef<HTMLButtonElement | null>
+) {
+  const SDS_SIZE_TO_COMPONENT_SIZE: {
+    [key: string]: keyof ButtonIconSizeToTypes;
+  } = {
+    l: "large",
+    m: "large",
+    s: "medium",
+    xs: "small",
+  };
 
-const SDS_SIZE_TO_ICON_SIZE = {
-  l: "xl",
-  m: "xl",
-  s: "l",
-  xs: "s",
-};
+  return (
+    <DialogContext.Consumer>
+      {({ sdsSize }) => {
+        const size = SDS_SIZE_TO_COMPONENT_SIZE[sdsSize];
 
-const CloseButton = forwardRef<HTMLButtonElement, ButtonIconProps>(
-  function CloseButton(props, ref) {
-    return (
-      <DialogContext.Consumer>
-        {({ sdsSize }) => {
-          const size = SDS_SIZE_TO_COMPONENT_SIZE[
-            sdsSize
-          ] as ButtonIconProps["sdsSize"];
-
-          const iconSize = SDS_SIZE_TO_ICON_SIZE[sdsSize] as IconProps<
-            keyof IconNameToSizes
-          >["sdsSize"];
-
-          return (
-            <StyledButtonIcon
-              aria-label="Close"
-              ref={ref}
-              sdsType="tertiary"
-              sdsSize={size}
-              {...props}
-            >
-              <Icon sdsIcon="xMark" sdsSize={iconSize} sdsType="iconButton" />
-            </StyledButtonIcon>
-          );
-        }}
-      </DialogContext.Consumer>
-    );
-  }
-);
+        return (
+          <StyledButtonIcon
+            aria-label="Close"
+            ref={ref}
+            sdsType="tertiary"
+            sdsSize={size}
+            {...props}
+            sdsIcon="xMark"
+          />
+        );
+      }}
+    </DialogContext.Consumer>
+  );
+});
 
 export default CloseButton;
