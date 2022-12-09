@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { Page, StyledPaginationButtonIcon } from "../../style";
 import { StyledPaginationDropdownMenu } from "./style";
@@ -25,9 +24,12 @@ const PageListDropdown = (props: PageListDropdownProps) => {
 
   return (
     <Page sdsStyle={sdsStyle}>
-      <StyledPaginationButtonIcon onClick={handleClick}>
-        <Icon sdsIcon="dotsHorizontal" sdsSize="xs" sdsType="iconButton" />
-      </StyledPaginationButtonIcon>
+      <StyledPaginationButtonIcon
+        aria-label="Go to a page"
+        onClick={handleClick}
+        sdsIcon="dotsHorizontal"
+        sdsSize="small"
+      />
       <StyledPaginationDropdownMenu
         anchorEl={anchorEl}
         keepMounted

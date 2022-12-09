@@ -1,9 +1,8 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
 import Tooltip from "./index";
 
 const Demo = (props: Args): JSX.Element => {
@@ -72,7 +71,7 @@ export default {
     chromatic: { delay: 5000 },
   },
   title: "Tooltip",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 
@@ -104,9 +103,11 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <Tooltip title="Label lorem" sdsStyle="dark" placement="top" arrow open>
-        <ButtonIcon sdsType="secondary" sdsSize="large">
-          <Icon sdsIcon="infoSpeechBubble" sdsSize="xl" sdsType="iconButton" />
-        </ButtonIcon>
+        <ButtonIcon
+          sdsType="secondary"
+          sdsSize="large"
+          sdsIcon="infoSpeechBubble"
+        />
       </Tooltip>
       <Tooltip
         title="Label lorem ipsum tellus ac cursus commodo, tortor mauris."

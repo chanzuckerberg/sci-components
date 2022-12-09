@@ -19,7 +19,7 @@ export interface CalloutProps {
 export type ExposedCalloutProps = AlertProps & CalloutProps;
 
 /**
- * @see https://v4.mui.com/components/alert/
+ * @see https://mui.com/material-ui/react-alert/
  */
 const Callout = ({
   autoDismiss,
@@ -70,30 +70,25 @@ const Callout = ({
     if (expandable) {
       return (
         <ButtonIcon
+          aria-label={collapsed ? "open" : "close"}
           onClick={() => {
             setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
           }}
           sdsSize="small"
           sdsType="tertiary"
-        >
-          <Icon
-            sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
-            sdsSize="s"
-            sdsType="button"
-          />
-        </ButtonIcon>
+          sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
+        />
       );
     }
     return onClose ? (
       <ButtonIcon
+        aria-label="Dismiss"
         onClick={handleClose}
         sdsSize="small"
         sdsType="tertiary"
         size="large"
-      >
-        {" "}
-        <Icon sdsIcon="xMark" sdsSize="s" sdsType="iconButton" />{" "}
-      </ButtonIcon>
+        sdsIcon="xMark"
+      />
     ) : null;
   };
 

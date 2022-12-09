@@ -1,14 +1,14 @@
-import {
-  FormControlLabel,
-  RadioProps as MUIRadioProps,
-  SvgIcon,
-} from "@mui/material";
+import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
 import React from "react";
 import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
 import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";
-import { StyledRadioButton } from "./style";
+import {
+  RadioExtraProps,
+  StyledFormControlLabel,
+  StyledRadioButton,
+} from "./style";
 
-export interface RadioProps
+export interface RadioContentProps
   extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
   label?: string;
   radioProps?: Partial<MUIRadioProps>;
@@ -16,11 +16,13 @@ export interface RadioProps
   value?: string;
 }
 
+export type RadioProps = RadioContentProps & RadioExtraProps;
+
 /**
- * @see https://v4.mui.com/components/radio-buttons/
+ * @see https://mui.com/material-ui/react-radio-button/
  */
 const InputRadio = (props: RadioProps): JSX.Element => {
-  const { label, stage, radioProps, value } = props;
+  const { label, caption, radioProps, stage, value } = props;
   if (label === undefined || stage !== undefined) {
     let newProps: MUIRadioProps;
     switch (stage) {
@@ -62,9 +64,9 @@ const InputRadio = (props: RadioProps): JSX.Element => {
       />
     );
   }
-
   return (
-    <FormControlLabel
+    <StyledFormControlLabel
+      caption={caption}
       control={
         <StyledRadioButton
           {...props}

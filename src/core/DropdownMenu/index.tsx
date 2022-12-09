@@ -10,7 +10,6 @@ import {
 import React, { SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
@@ -70,14 +69,14 @@ export type DropdownMenuProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraProps;
 
-export default function DropdownMenu<
+const DropdownMenu = <
   T extends DefaultDropdownMenuOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
-): JSX.Element {
+): JSX.Element => {
   const {
     multiple = false,
     anchorEl,
@@ -158,13 +157,11 @@ export default function DropdownMenu<
                 ...params.InputProps.ref,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <ButtonIcon sdsType="secondary">
-                      <Icon
-                        sdsIcon="search"
-                        sdsSize="s"
-                        sdsType="interactive"
-                      />
-                    </ButtonIcon>
+                    <ButtonIcon
+                      sdsType="secondary"
+                      sdsSize="small"
+                      sdsIcon="search"
+                    />
                   </InputAdornment>
                 ),
                 inputProps: params.inputProps,
@@ -239,4 +236,6 @@ export default function DropdownMenu<
       </li>
     );
   }
-}
+};
+
+export default DropdownMenu;

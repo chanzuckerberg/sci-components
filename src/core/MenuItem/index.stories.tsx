@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./index";
 import { DemoWrapper } from "./style";
@@ -26,8 +26,13 @@ export default {
     },
   },
   component: Demo,
+  parameters: {
+    axe: {
+      disabledRules: ["aria-required-parent"],
+    },
+  },
   title: "MenuItem",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

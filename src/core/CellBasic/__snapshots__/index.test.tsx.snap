@@ -105,7 +105,7 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
                 data-testid="IconBacteriaLarge"
                 fillcontrast="white"
                 focusable="false"
-                viewBox="0 0 32 32"
+                viewBox="0 0 22 22"
               />
             </div>
           </div>

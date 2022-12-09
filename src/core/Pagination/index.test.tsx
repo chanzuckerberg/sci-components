@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { StoryFileExports } from "@chanzuckerberg/story-utils/build/getStories";
 import { composeStory } from "@storybook/testing-react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
@@ -9,7 +10,9 @@ import Meta, { Test as TestStory } from "./index.stories";
 const Test = composeStory(TestStory, Meta);
 
 describe("<Pagination />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots<StoryFileExports<typeof Meta>, typeof Meta>(
+    snapshotTestStoryFile
+  );
 
   it("renders pagination component", () => {
     render(<Test />);
@@ -27,7 +30,7 @@ describe("<Pagination />", () => {
   it("should have a dropdown for left hidden pages list", () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-with-left-dropdown");
-    const listItem = element.getElementsByTagName("li")[1];
+    const listItem = element.getElementsByTagName("li")[2];
     const leftMenuButton = listItem.getElementsByTagName("button")[0];
     expect(leftMenuButton).toBeTruthy();
   });
@@ -35,7 +38,7 @@ describe("<Pagination />", () => {
   it("should have a dropdown for right hidden pages list", () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-with-right-dropdown");
-    const listItem = element.getElementsByTagName("li")[5];
+    const listItem = element.getElementsByTagName("li")[6];
     const rightMenuButton = listItem.getElementsByTagName("button")[0];
     expect(rightMenuButton).toBeTruthy();
   });
@@ -44,15 +47,15 @@ describe("<Pagination />", () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-with-both-dropdowns");
     const listItems = element.getElementsByTagName("li");
-    const leftMenuButton = listItems[1].getElementsByTagName("button")[0];
-    const rightMenuButton = listItems[5].getElementsByTagName("button")[0];
+    const leftMenuButton = listItems[2].getElementsByTagName("button")[0];
+    const rightMenuButton = listItems[6].getElementsByTagName("button")[0];
     expect(leftMenuButton && rightMenuButton).toBeTruthy();
   });
 
   it("should open right dropdown on click", async () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-with-right-dropdown");
-    const listItem = element.getElementsByTagName("li")[5];
+    const listItem = element.getElementsByTagName("li")[6];
     const rightMenuButton = listItem.getElementsByTagName("button")[0];
 
     fireEvent.click(rightMenuButton);
@@ -62,7 +65,7 @@ describe("<Pagination />", () => {
   it("should not open disabled dropdown on click", async () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-disabled-dropdown");
-    const listItem = element.getElementsByTagName("li")[1];
+    const listItem = element.getElementsByTagName("li")[2];
     const leftMenuButton = listItem.getElementsByTagName("button")[0];
     expect(leftMenuButton.disabled).toBeTruthy();
   });

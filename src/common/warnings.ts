@@ -2,6 +2,7 @@ export enum SDSWarningTypes {
   ButtonMissingSDSProps = "buttonMissingProps",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
+  ButtonIconMediumSize = "buttonIconMediumSize",
 }
 
 const SDS_WARNINGS = {
@@ -18,6 +19,10 @@ const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />",
+  },
+  [SDSWarningTypes.ButtonIconMediumSize]: {
+    hasWarned: false,
+    message: "Warning: A medium size ButtonIcon can only be of type tertiary!",
   },
 };
 

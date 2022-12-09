@@ -19,7 +19,7 @@ export interface DialogTitleProps
 }
 
 /**
- * @see https://v4.mui.com/components/dialogs/
+ * @see https://mui.com/material-ui/react-dialog/
  */
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
@@ -29,7 +29,7 @@ const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
       <StyledDialogTitle ref={ref} {...rest}>
         {children || (
           <>
-            {onClose && <CloseButton onClick={onClose} />}
+            {onClose && <CloseButton sdsIcon="xMark" onClick={onClose} />}
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
           </>

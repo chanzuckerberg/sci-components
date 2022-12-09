@@ -25,7 +25,7 @@ export type ButtonProps<C extends React.ElementType = "button"> =
   RawButtonProps<C, { component?: C }> & SdsProps;
 
 /**
- * @see https://v4.mui.com/components/buttons/
+ * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
   <C extends React.ElementType>(
@@ -58,7 +58,6 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="contained"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -68,7 +67,6 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="outlined"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -78,7 +76,6 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="contained"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -88,7 +85,6 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="outlined"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -98,7 +94,6 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="text"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
@@ -108,14 +103,11 @@ const Button = React.forwardRef(
             color="primary"
             ref={ref}
             variant="text"
-            data-testid="button"
             {...propsWithDefault}
           />
         );
       default:
-        return (
-          <StyledButton data-testid="button" {...propsWithDefault} ref={ref} />
-        );
+        return <StyledButton {...propsWithDefault} ref={ref} />;
     }
   }
 );

@@ -11,7 +11,7 @@ import {
 export type { InputDropdownProps };
 
 /**
- * @see https://v4.mui.com/components/buttons/
+ * @see https://mui.com/material-ui/react-button/
  */
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const { label, open, sdsType, details, counter } = props;

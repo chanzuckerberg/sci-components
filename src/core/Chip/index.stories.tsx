@@ -1,4 +1,4 @@
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import Chip from "./index";
@@ -26,7 +26,7 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   component: Demo,
   title: "Chip - To Be Depreciated",
-};
+} as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 

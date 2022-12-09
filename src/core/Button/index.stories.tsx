@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawButton from "./index";
@@ -41,11 +41,12 @@ export default {
   },
   component: Button,
   title: "Button",
-};
+} as Meta;
 
 const Template: Story = (props) => <Button {...props} />;
 
 export const Default = Template.bind({});
+
 Default.parameters = {
   snapshot: {
     skip: true,
@@ -59,7 +60,11 @@ Default.args = {
   text: "Label",
 };
 
-export const Test = Template.bind({});
+const TestTemplate: Story = (props) => (
+  <Button {...props} data-testId="button" />
+);
+
+export const Test = TestTemplate.bind({});
 
 Test.args = {
   disabled: false,

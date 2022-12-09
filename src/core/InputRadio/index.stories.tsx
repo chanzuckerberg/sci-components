@@ -1,10 +1,10 @@
 import { RadioGroup } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputRadio from "./index";
 
 const DefaultDemo = (props: Args): JSX.Element => {
-  const { label } = props;
+  const { caption, label } = props;
 
   return (
     <RadioGroup
@@ -12,7 +12,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
       defaultValue="demo"
       name="radio-buttons-group"
     >
-      <InputRadio label={label} value="demo" {...props} />
+      <InputRadio caption={caption} label={label} value="demo" {...props} />
     </RadioGroup>
   );
 };
@@ -20,7 +20,7 @@ const DefaultDemo = (props: Args): JSX.Element => {
 export default {
   component: DefaultDemo,
   title: "Inputs/InputRadio",
-};
+} as Meta;
 
 const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;
 
@@ -32,6 +32,7 @@ Default.parameters = {
 };
 
 Default.args = {
+  caption: "Caption",
   disabled: false,
   label: "Label",
 };
@@ -48,8 +49,18 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         data-testid="radioButtonGroup"
       >
         <InputRadio data-testid="inputRadio" label={label} value="demo1" />
-        <InputRadio data-testid="inputRadio" label={label} value="demo2" />
-        <InputRadio data-testid="inputRadio" label={label} value="demo3" />
+        <InputRadio
+          caption="Caption"
+          data-testid="inputRadio"
+          label={label}
+          value="demo2"
+        />
+        <InputRadio
+          caption="Caption"
+          data-testid="inputRadio"
+          label={label}
+          value="demo3"
+        />
       </RadioGroup>
     </div>
   );

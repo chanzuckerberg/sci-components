@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import InputCheckbox from "./index";
 
@@ -16,13 +16,14 @@ const CheckboxDemo = (props: Args): JSX.Element => {
       <FormControlLabel
         control={
           <InputCheckbox
-            data-testid="checkbox"
             disabled={disabled}
             onChange={handleChange}
             stage={checked ? "unchecked" : "checked"}
+            {...props}
           />
         }
         label="Label"
+        value="Demo"
       />
     </div>
   );
@@ -39,7 +40,7 @@ export default {
   },
   component: CheckboxDemo,
   title: "Inputs/InputCheckbox",
-};
+} as Meta;
 
 const Template: Story = (args) => <CheckboxLabelDemo {...args} />;
 
@@ -63,9 +64,10 @@ const CheckboxLabelDemo = (props: Args): JSX.Element => {
     <div>
       <InputCheckbox
         caption={caption}
-        data-testid="labelCheckbox"
         label={label}
         disabled={disabled}
+        value="Demo"
+        {...props}
       />
     </div>
   );
@@ -83,10 +85,15 @@ const TestDemo = (): JSX.Element => {
   return (
     <div style={testStyles as React.CSSProperties}>
       <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <CheckboxLabelDemo caption="Caption" label="Lable A" disabled={false} />
+        <CheckboxLabelDemo
+          caption="Caption"
+          label="Lable A"
+          disabled={false}
+          data-testid="labelCheckbox"
+        />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <CheckboxDemo />
+        <CheckboxDemo data-testid="checkbox" />
       </div>
     </div>
   );

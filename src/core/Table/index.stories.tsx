@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import styled from "@emotion/styled";
 import { FormControlLabel, RadioGroup } from "@mui/material";
-import { Args, Story } from "@storybook/react";
+import { Args, Meta, Story } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
@@ -192,13 +192,20 @@ const Table = (props: Args): JSX.Element => {
 export default {
   component: Table,
   title: "Table/Table",
-};
+} as Meta;
 
 const Template: Story = (args) => <Table {...args} />;
 
 export const Default = Template.bind({});
 
 Default.parameters = {
+  axe: {
+    disabledRules: [
+      // For some reason axe is still checking color contrast of the disabled row. Maybe it only
+      // takes that into consideration for form controls?
+      "color-contrast",
+    ],
+  },
   snapshot: {
     skip: true,
   },

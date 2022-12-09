@@ -2,20 +2,28 @@ import { css, SerializedStyles } from "@emotion/react";
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
-  CommonThemeProps,
-  getColors,
-  getIconSizes,
-  getSpaces,
-} from "../styles";
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
+import { CommonThemeProps, getColors, getIconSizes } from "../styles";
 
-export interface ButtonIconExtraProps extends CommonThemeProps {
+export interface ButtonIconSizeToTypes {
+  small: "primary" | "secondary" | "tertiary";
+  medium: "tertiary";
+  large: "primary" | "secondary" | "tertiary";
+}
+export interface ButtonIconExtraProps<
+  ButtonIconSize extends keyof ButtonIconSizeToTypes
+> extends CommonThemeProps {
   on?: boolean;
   disabled?: boolean;
-  sdsSize?: "small" | "medium" | "large";
-  sdsType?: "primary" | "secondary" | "tertiary";
+  sdsSize?: ButtonIconSize;
+  sdsType?: ButtonIconSizeToTypes[ButtonIconSize];
 }
 
-const isOn = (props: ButtonIconExtraProps): SerializedStyles => {
+const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const { sdsType } = props;
   const colors = getColors(props);
 
@@ -33,7 +41,9 @@ const isOn = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
+const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -41,7 +51,9 @@ const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const primary = (props: ButtonIconExtraProps): SerializedStyles => {
+const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const colors = getColors(props);
   const { sdsSize } = props;
 
@@ -59,7 +71,9 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
+const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -72,7 +86,9 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
+const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
@@ -89,7 +105,9 @@ const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const small = (props: ButtonIconExtraProps): SerializedStyles => {
+const small = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const iconSizes = getIconSizes(props);
 
   return css`
@@ -104,10 +122,21 @@ const small = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const medium = (props: ButtonIconExtraProps): SerializedStyles => {
+const medium = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
+  const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
+  if (sdsType === "primary" || sdsType === "secondary") {
+    showWarningIfFirstOccurence(SDSWarningTypes.ButtonIconMediumSize);
+  }
+
   return css`
+    &:hover {
+      background: none;
+    }
+
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
@@ -115,29 +144,31 @@ const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   `;
 };
 
-const large = (props: ButtonIconExtraProps): SerializedStyles => {
+const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+  props: ButtonIconExtraProps<ButtonIconSize>
+): SerializedStyles => {
   const { sdsType } = props;
-  const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
-    padding: ${sdsType === "primary" ? spacings?.xxs : 0}px;
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
+      ${sdsType === "primary" ? `padding: 5px;` : ""}
     }
   `;
 };
 
-const doNotForwardProps = ["on", "sdsSize", "sdsType"];
+const doNotForwardProps = ["on", "sdsSize", "sdsType", "sdsIcon"];
 
 export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   padding: 0;
 
-  ${(props: ButtonIconExtraProps) => {
+  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+    props: ButtonIconExtraProps<ButtonIconSize>
+  ) => {
     const { on, disabled, sdsSize, sdsType } = props;
 
     return css`
