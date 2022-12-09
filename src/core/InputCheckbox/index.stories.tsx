@@ -23,6 +23,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
           />
         }
         label="Label"
+        value="Demo"
       />
     </div>
   );
@@ -65,6 +66,7 @@ const CheckboxLabelDemo = (props: Args): JSX.Element => {
         caption={caption}
         label={label}
         disabled={disabled}
+        value="Demo"
         {...props}
       />
     </div>
