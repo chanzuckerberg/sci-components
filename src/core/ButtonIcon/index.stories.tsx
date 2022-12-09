@@ -209,7 +209,7 @@ const TestDemo = (): JSX.Element => {
     <RawButtonIcon
       aria-label="dotsHorizontal"
       data-testid="iconButton"
-      active
+      on
       sdsIcon="dotsHorizontal"
       sdsSize="medium"
       sdsType="primary"

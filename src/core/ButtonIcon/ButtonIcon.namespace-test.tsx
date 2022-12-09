@@ -5,7 +5,7 @@ const ButtonIconNameSpaceTest = (
   props: ButtonIconProps<"download", "large">
 ) => {
   return (
-    <ButtonIcon active size="large" sdsType="primary" {...props}>
+    <ButtonIcon on size="large" sdsType="primary" {...props}>
       <Icon sdsIcon="download" sdsSize="l" sdsType="button" />
     </ButtonIcon>
   );
