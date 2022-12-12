@@ -1,6 +1,49 @@
-import { Radio as RawRadio } from "@mui/material";
+import {
+  FormControlLabel as RawFormControlLabel,
+  Radio as RawRadio,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getColors, getIconSizes } from "../styles";
+import {
+  CommonThemeProps,
+  fontBodyXxs,
+  getColors,
+  getIconSizes,
+  getSpaces,
+  getTypography,
+} from "../styles";
+
+export interface RadioExtraProps extends CommonThemeProps {
+  caption?: string;
+}
+
+export const StyledFormControlLabel = styled(RawFormControlLabel)`
+  ${(props: RadioExtraProps) => {
+    const { caption } = props;
+    const content = caption === undefined ? "" : caption;
+    const typography = getTypography(props);
+    const colors = getColors(props);
+    const spaces = getSpaces(props);
+
+    return `
+      position: relative;
+      z-index: 0;
+      padding-bottom: ${caption === undefined ? 0 : spaces?.xl}px;
+      
+      &:after {
+        ${fontBodyXxs}
+        font-size: 12px;
+        left: 34px;
+        position: absolute;
+        top: 30px;
+        z-index: -1;
+        content: "${content}";
+        font-family: ${typography?.fontFamily};
+        color: ${colors?.gray[500]}; 
+        
+      }
+    `;
+  }}
+`;
 
 export const StyledRadioButton = styled(RawRadio)`
   ${(props) => {

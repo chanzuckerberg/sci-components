@@ -6,13 +6,13 @@ import RawButtonIcon from "./index";
 const ButtonIcon = (props: Args): JSX.Element => {
   const { sdsIcon, ...rest } = props;
 
-  const [active, setActive] = React.useState(false);
-  const handleButtonClick = () => setActive(!active);
+  const [on, setOn] = React.useState(false);
+  const handleButtonClick = () => setOn(!on);
 
   return (
     <RawButtonIcon
       onClick={handleButtonClick}
-      active={active}
+      on={on}
       sdsIcon={sdsIcon}
       sdsSize="medium"
       sdsType="primary"
@@ -23,13 +23,13 @@ const ButtonIcon = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    active: {
+    disabled: {
       control: {
         type: "boolean",
       },
       defaultValue: false,
     },
-    disabled: {
+    on: {
       control: {
         type: "boolean",
       },
@@ -209,7 +209,7 @@ const TestDemo = (): JSX.Element => {
     <RawButtonIcon
       aria-label="dotsHorizontal"
       data-testid="iconButton"
-      active
+      on
       sdsIcon="dotsHorizontal"
       sdsSize="medium"
       sdsType="primary"

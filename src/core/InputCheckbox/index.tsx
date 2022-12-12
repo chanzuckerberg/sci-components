@@ -22,7 +22,8 @@ export type CheckboxProps = CheckboxContentProps & CheckboxExtraProps;
  * @see https://mui.com/material-ui/react-checkbox/
  */
 const InputCheckbox = (props: CheckboxProps): JSX.Element => {
-  const { caption, checkboxProps, disabled, label, stage, ...rest } = props;
+  const { caption, checkboxProps, disabled, label, stage, value, ...rest } =
+    props;
 
   if (label === undefined || stage !== undefined) {
     let newProps: MUICheckboxProps;
@@ -83,7 +84,6 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   return (
     <StyledFormControlLabel
       caption={caption}
-      label={label}
       control={
         <StyledCheckbox
           disabled={disabled}
@@ -112,6 +112,8 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
           {...rest}
         />
       }
+      label={label}
+      value={value}
     >
       <div>Content</div>
     </StyledFormControlLabel>
