@@ -15,13 +15,13 @@ export interface ButtonIconSizeToTypes {
 export interface ButtonIconExtraProps<
   ButtonIconSize extends keyof ButtonIconSizeToTypes
 > extends CommonThemeProps {
-  active?: boolean;
+  on?: boolean;
   disabled?: boolean;
   sdsSize?: ButtonIconSize;
   sdsType?: ButtonIconSizeToTypes[ButtonIconSize];
 }
 
-const isActive = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
+const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
   const { sdsType } = props;
@@ -159,7 +159,7 @@ const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const doNotForwardProps = ["active", "sdsSize", "sdsType", "sdsIcon"];
+const doNotForwardProps = ["on", "sdsSize", "sdsType", "sdsIcon"];
 
 export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -169,13 +169,13 @@ export const StyledButtonIcon = styled(IconButton, {
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconExtraProps<ButtonIconSize>
   ) => {
-    const { active, disabled, sdsSize, sdsType } = props;
+    const { on, disabled, sdsSize, sdsType } = props;
 
     return css`
       ${sdsType === "primary" && primary(props)}
       ${sdsType === "secondary" && secondary(props)}
       ${sdsType === "tertiary" && tertiary(props)}
-      ${active && isActive(props)}
+      ${on && isOn(props)}
       ${disabled && isDisabled(props)}
       ${sdsSize === "small" && small(props)}
       ${sdsSize === "medium" && medium(props)}

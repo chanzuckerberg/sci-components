@@ -252,7 +252,7 @@ const LivePreviewDemo = (): JSX.Element => {
               aria-describedby="live2"
               aria-label="Open menu"
               onClick={handleClick2}
-              active={false}
+              on={false}
               sdsSize="large"
               sdsType="secondary"
               sdsIcon="infoSpeechBubble"
