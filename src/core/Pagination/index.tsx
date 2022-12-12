@@ -57,10 +57,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
 
     return (
       <StyledPagination ref={ref} {...props}>
-        <StyledPaginationChevronList>
+        <StyledPaginationChevronList key="prevPage">
           <StyledPaginationChevronButton
             aria-label="Previous page"
-            key="prevPage"
             onClick={() => currentPage > 1 && onPreviousPage()}
             disabled={currentPage === 1}
             sdsSize="small"
@@ -82,10 +81,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
               );
             }
             return (
-              <Page sdsStyle={sdsStyle}>
+              <Page sdsStyle={sdsStyle} key={pageNumber.join("-")}>
                 <StyledPaginationButtonIcon
                   aria-label="Go to a page"
-                  key={pageNumber.join("-")}
                   disabled
                   sdsIcon="dotsHorizontal"
                   sdsSize="small"
@@ -106,10 +104,9 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           );
         })}
 
-        <StyledPaginationChevronList>
+        <StyledPaginationChevronList key="onNextPage">
           <StyledPaginationChevronButton
             aria-label="Next page"
-            key="onNextPage"
             onClick={() => currentPage !== lastPage && onNextPage()}
             disabled={currentPage === lastPage}
             sdsSize="small"
