@@ -1,22 +1,18 @@
 import React, { forwardRef } from "react";
-import { StyledTable, StyledTableWrapper, TableExtraProps } from "./style";
+import { StyledTable } from "./style";
 
-interface TableRawProps {
+export interface TableProps {
   children: React.ReactNode;
 }
 
-export type TableProps = TableRawProps & TableExtraProps;
-
 const Table = forwardRef<HTMLTableElement, TableProps>(
   (props: TableProps, ref): JSX.Element | null => {
-    const { children, height, width, ...rest } = props;
+    const { children } = props;
 
     return (
-      <StyledTableWrapper height={height} width={width}>
-        <StyledTable ref={ref} {...rest}>
-          {children}
-        </StyledTable>
-      </StyledTableWrapper>
+      <StyledTable ref={ref} {...props}>
+        {children}
+      </StyledTable>
     );
   }
 );
