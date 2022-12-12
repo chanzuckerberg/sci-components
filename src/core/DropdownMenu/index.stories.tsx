@@ -1,4 +1,4 @@
-import { ClickAwayListener, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import { Args, Meta, Story } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
@@ -30,33 +30,32 @@ const Demo = (props: Args): JSX.Element => {
   const id = open ? `dropdown-menu` : undefined;
 
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
-      <div>
-        <StyledInputDropdown
-          aria-describedby={id}
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          sdsType={multiple ? "multiSelect" : "singleSelect"}
-          sdsStyle="square"
-        />
+    <>
+      <StyledInputDropdown
+        aria-describedby={id}
+        label={label}
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        sdsType={multiple ? "multiSelect" : "singleSelect"}
+        sdsStyle="square"
+      />
 
-        <DropdownMenu
-          anchorEl={anchorEl}
-          disableCloseOnSelect={false}
-          id={id}
-          multiple={multiple}
-          onChange={handleChange}
-          open={open}
-          options={options}
-          PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
-          search={search}
-          title={title}
-          value={multiple ? pendingValue : value}
-          {...props}
-        />
-      </div>
-    </ClickAwayListener>
+      <DropdownMenu
+        anchorEl={anchorEl}
+        disableCloseOnSelect={false}
+        id={id}
+        multiple={multiple}
+        onChange={handleChange}
+        open={open}
+        options={options}
+        PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
+        search={search}
+        title={title}
+        value={multiple ? pendingValue : value}
+        onClickAway={handleClickAway}
+        {...props}
+      />
+    </>
   );
 
   function handleClickAway() {
@@ -214,132 +213,120 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
       <div style={{ alignSelf: "end", gridArea: "1/1/2/2" }}>
-        <ClickAwayListener onClickAway={handleClickAway1}>
-          <div>
-            <StyledInputDropdownLive1
-              aria-describedby="live1"
-              onClick={handleClick1}
-              label="Click Target"
-              sdsStage={open1 ? "userInput" : "default"}
-              sdsType="singleSelect"
-              sdsStyle="minimal"
-            />
+        <StyledInputDropdownLive1
+          aria-describedby="live1"
+          onClick={handleClick1}
+          label="Click Target"
+          sdsStage={open1 ? "userInput" : "default"}
+          sdsType="singleSelect"
+          sdsStyle="minimal"
+        />
 
-            <DropdownMenu
-              anchorEl={anchorEl1}
-              id="live1"
-              open={!!open1}
-              onChange={handleChange1}
-              disableCloseOnSelect={false}
-              options={options.slice(0, 3)}
-              PopperBaseProps={{
-                placement: POPPER_POSITION,
-                sx: { width: POPPER_WIDTH },
-              }}
-              search={false}
-              multiple={false}
-              hasSections={false}
-              value={value1}
-            />
-          </div>
-        </ClickAwayListener>
+        <DropdownMenu
+          anchorEl={anchorEl1}
+          id="live1"
+          open={!!open1}
+          onChange={handleChange1}
+          disableCloseOnSelect={false}
+          options={options.slice(0, 3)}
+          PopperBaseProps={{
+            placement: POPPER_POSITION,
+            sx: { width: POPPER_WIDTH },
+          }}
+          search={false}
+          multiple={false}
+          hasSections={false}
+          value={value1}
+          onClickAway={handleClickAway1}
+        />
       </div>
 
       <div style={{ gridArea: "1/2/2/3" }}>
-        <ClickAwayListener onClickAway={handleClickAway2}>
-          <div>
-            <ButtonIcon
-              aria-describedby="live2"
-              aria-label="Open menu"
-              onClick={handleClick2}
-              on={false}
-              sdsSize="large"
-              sdsType="secondary"
-              sdsIcon="infoSpeechBubble"
-            />
+        <ButtonIcon
+          aria-describedby="live2"
+          aria-label="Open menu"
+          onClick={handleClick2}
+          on={false}
+          sdsSize="large"
+          sdsType="secondary"
+          sdsIcon="infoSpeechBubble"
+        />
 
-            <DropdownMenu
-              anchorEl={anchorEl2}
-              id="live2"
-              open={!!open2}
-              search={false}
-              multiple={false}
-              onChange={handleChange2}
-              disableCloseOnSelect={false}
-              options={options.slice(0, 3)}
-              PopperBaseProps={{
-                placement: POPPER_POSITION,
-                sx: { width: POPPER_WIDTH },
-              }}
-              value={value2}
-              title="Title Lorem Ipsum"
-            />
-          </div>
-        </ClickAwayListener>
+        <DropdownMenu
+          anchorEl={anchorEl2}
+          id="live2"
+          open={!!open2}
+          search={false}
+          multiple={false}
+          onChange={handleChange2}
+          disableCloseOnSelect={false}
+          options={options.slice(0, 3)}
+          PopperBaseProps={{
+            placement: POPPER_POSITION,
+            sx: { width: POPPER_WIDTH },
+          }}
+          value={value2}
+          title="Title Lorem Ipsum"
+          onClickAway={handleClickAway2}
+        />
       </div>
 
       <div style={{ gridArea: "1/3/2/4" }}>
-        <ClickAwayListener onClickAway={handleClickAway3}>
-          <div>
-            <StyledInputDropdownLive3
-              aria-describedby="live3"
-              onClick={handleClick3}
-              label="Click Target"
-              sdsStage={open3 ? "userInput" : "default"}
-              sdsType="multiSelect"
-              sdsStyle="rounded"
-            />
+        <StyledInputDropdownLive3
+          aria-describedby="live3"
+          onClick={handleClick3}
+          label="Click Target"
+          sdsStage={open3 ? "userInput" : "default"}
+          sdsType="multiSelect"
+          sdsStyle="rounded"
+        />
 
-            <DropdownMenu
-              id="live3"
-              anchorEl={anchorEl3}
-              open={!!open3}
-              search
-              multiple
-              onChange={handleChange3}
-              disableCloseOnSelect
-              options={options}
-              PopperBaseProps={{
-                placement: POPPER_POSITION,
-                sx: { width: POPPER_WIDTH },
-              }}
-              value={pendingValue3}
-            />
-          </div>
-        </ClickAwayListener>
+        <DropdownMenu
+          id="live3"
+          anchorEl={anchorEl3}
+          open={!!open3}
+          search
+          multiple
+          onChange={handleChange3}
+          disableCloseOnSelect
+          options={options}
+          PopperBaseProps={{
+            placement: POPPER_POSITION,
+            sx: { width: POPPER_WIDTH },
+          }}
+          value={pendingValue3}
+          onClickAway={handleClickAway3}
+        />
       </div>
 
       <div style={{ gridArea: "1/4/2/5" }}>
-        <ClickAwayListener onClickAway={handleClickAway4}>
-          <div>
-            <StyledInputDropdownLive3
-              aria-describedby="live4"
-              onClick={handleClick4}
-              label="Click Target"
-              sdsStage={open4 ? "userInput" : "default"}
-              sdsType="multiSelect"
-              sdsStyle="square"
-            />
+        <StyledInputDropdownLive3
+          aria-describedby="live4"
+          onClick={handleClick4}
+          label="Click Target"
+          sdsStage={open4 ? "userInput" : "default"}
+          sdsType="multiSelect"
+          sdsStyle="square"
+        />
 
-            <DropdownMenu
-              id="live4"
-              anchorEl={anchorEl4}
-              open={!!open4}
-              search={false}
-              multiple
-              hasSections
-              groupBy={(option) => option.section as string}
-              onChange={handleChange4}
-              disableCloseOnSelect
-              options={options}
-              PopperBaseProps={{
-                placement: POPPER_POSITION,
-                sx: { width: POPPER_WIDTH },
-              }}
-              value={pendingValue4}
-            />
-          </div>
-        </ClickAwayListener>
+        <DropdownMenu
+          id="live4"
+          anchorEl={anchorEl4}
+          open={!!open4}
+          search={false}
+          multiple
+          hasSections
+          groupBy={(option) => option.section as string}
+          onChange={handleChange4}
+          disableCloseOnSelect
+          options={options}
+          PopperBaseProps={{
+            placement: POPPER_POSITION,
+            sx: { width: POPPER_WIDTH },
+          }}
+          value={pendingValue4}
+          onClickAway={handleClickAway4}
+        />
       </div>
     </div>
   );
@@ -488,32 +475,29 @@ const TestDemo = (props: Args): JSX.Element => {
 
   return (
     <>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <div>
-          <InputDropdown
-            aria-describedby={id}
-            onClick={handleClick}
-            label="Click Target"
-            sdsStage={open ? "userInput" : "default"}
-            sdsType={multiple ? "multiSelect" : "singleSelect"}
-            sdsStyle="square"
-            data-testid="dropdown-menu"
-          />
+      <InputDropdown
+        aria-describedby={id}
+        onClick={handleClick}
+        label="Click Target"
+        sdsStage={open ? "userInput" : "default"}
+        sdsType={multiple ? "multiSelect" : "singleSelect"}
+        sdsStyle="square"
+        data-testid="dropdown-menu"
+      />
 
-          <DropdownMenu
-            anchorEl={anchorEl}
-            id={id}
-            open={open}
-            search={search}
-            multiple={multiple}
-            value={multiple ? pendingValue : value}
-            onChange={handleChange}
-            disableCloseOnSelect={multiple}
-            options={options}
-            {...props}
-          />
-        </div>
-      </ClickAwayListener>
+      <DropdownMenu
+        anchorEl={anchorEl}
+        id={id}
+        open={open}
+        search={search}
+        multiple={multiple}
+        value={multiple ? pendingValue : value}
+        onChange={handleChange}
+        disableCloseOnSelect={multiple}
+        options={options}
+        onClickAway={handleClickAway}
+        {...props}
+      />
     </>
   );
 

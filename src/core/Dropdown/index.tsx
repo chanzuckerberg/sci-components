@@ -1,4 +1,3 @@
-import { ClickAwayListener } from "@mui/material";
 import {
   AutocompleteCloseReason,
   AutocompleteValue,
@@ -111,71 +110,70 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   const [open, setOpen] = useState(false);
 
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
-      <div>
-        <InputDropdownComponent
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          {...InputDropdownProps}
-          {...rest}
-        />
-        <DropdownMenu
-          anchorEl={anchorEl}
-          open={open}
-          search={search}
-          onClose={handleClose}
-          multiple={multiple as Multiple}
-          value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
-          onChange={handleChange}
-          disableCloseOnSelect={multiple}
-          PopperComponent={PopperComponent}
-          PopperBaseProps={{ sx: { minWidth: 250 } }}
-          options={options}
-          {...DropdownMenuProps}
-        >
-          {buttons ? (
-            <div>
-              {buttonPosition === "left" ? (
-                <div>
-                  <StyledButton
-                    onClick={handleClose}
-                    sdsStyle="square"
-                    sdsType="primary"
-                  >
-                    Apply
-                  </StyledButton>
-                  <StyledButton
-                    onClick={handleCancel}
-                    sdsStyle="square"
-                    sdsType="secondary"
-                  >
-                    Cancel
-                  </StyledButton>
-                </div>
-              ) : (
-                <div>
-                  <StyledButton
-                    onClick={handleCancel}
-                    sdsStyle="square"
-                    sdsType="secondary"
-                  >
-                    Cancel
-                  </StyledButton>
-                  <StyledButton
-                    onClick={handleClose}
-                    sdsStyle="square"
-                    sdsType="primary"
-                  >
-                    Apply
-                  </StyledButton>
-                </div>
-              )}
-            </div>
-          ) : null}
-        </DropdownMenu>
-      </div>
-    </ClickAwayListener>
+    <>
+      <InputDropdownComponent
+        label={label}
+        onClick={handleClick}
+        sdsStage={open ? "userInput" : "default"}
+        {...InputDropdownProps}
+        {...rest}
+      />
+      <DropdownMenu
+        anchorEl={anchorEl}
+        open={open}
+        search={search}
+        onClose={handleClose}
+        multiple={multiple as Multiple}
+        value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
+        onChange={handleChange}
+        disableCloseOnSelect={multiple}
+        PopperComponent={PopperComponent}
+        PopperBaseProps={{ sx: { minWidth: 250 } }}
+        options={options}
+        onClickAway={handleClickAway}
+        {...DropdownMenuProps}
+      >
+        {buttons ? (
+          <div>
+            {buttonPosition === "left" ? (
+              <div>
+                <StyledButton
+                  onClick={handleClose}
+                  sdsStyle="square"
+                  sdsType="primary"
+                >
+                  Apply
+                </StyledButton>
+                <StyledButton
+                  onClick={handleCancel}
+                  sdsStyle="square"
+                  sdsType="secondary"
+                >
+                  Cancel
+                </StyledButton>
+              </div>
+            ) : (
+              <div>
+                <StyledButton
+                  onClick={handleCancel}
+                  sdsStyle="square"
+                  sdsType="secondary"
+                >
+                  Cancel
+                </StyledButton>
+                <StyledButton
+                  onClick={handleClose}
+                  sdsStyle="square"
+                  sdsType="primary"
+                >
+                  Apply
+                </StyledButton>
+              </div>
+            )}
+          </div>
+        ) : null}
+      </DropdownMenu>
+    </>
   );
 
   function handleClickAway() {
