@@ -89,9 +89,8 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const [value, setValue] = useState<
-    Value<DefaultDropdownMenuOption, Multiple>
-  >(getInitialValue());
+  const [value, setValue] =
+    useState<Value<DefaultDropdownMenuOption, Multiple>>(getInitialValue);
 
   const [pendingValue, setPendingValue] = useState<
     Value<DefaultDropdownMenuOption, true>
