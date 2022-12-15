@@ -1,4 +1,3 @@
-import { ClickAwayListener } from "@mui/base";
 import {
   AutocompleteCloseReason,
   AutocompleteValue,
@@ -77,48 +76,41 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
   // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
-      <ClickAwayListener onClickAway={handleClose}>
-        <div>
-          <Wrapper {...rest}>
-            <InputDropdownComponent
-              label={label}
-              onClick={handleClick}
-              sdsStage={open ? "userInput" : "default"}
-              {...InputDropdownProps}
-            />
+      <Wrapper {...rest}>
+        <InputDropdownComponent
+          label={label}
+          onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
+          {...InputDropdownProps}
+        />
 
-            <StyledChipsWrapper>
-              <Chips
-                value={value}
-                multiple={multiple}
-                onDelete={handleDelete}
-              />
-            </StyledChipsWrapper>
-          </Wrapper>
+        <StyledChipsWrapper>
+          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+        </StyledChipsWrapper>
+      </Wrapper>
 
-          <DropdownMenu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleMenuSelectClose}
-            search={search}
-            multiple={multiple as Multiple}
-            value={
-              (multiple ? pendingValue : value) as AutocompleteValue<
-                DefaultDropdownMenuOption,
-                Multiple,
-                undefined,
-                undefined
-              >
-            }
-            onChange={handleChange}
-            disableCloseOnSelect={multiple}
-            options={options}
-            PopperComponent={PopperComponent}
-            PopperBaseProps={{ sx: { minWidth: 250 } }}
-            {...DropdownMenuProps}
-          />
-        </div>
-      </ClickAwayListener>
+      <DropdownMenu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleMenuSelectClose}
+        search={search}
+        multiple={multiple as Multiple}
+        value={
+          (multiple ? pendingValue : value) as AutocompleteValue<
+            DefaultDropdownMenuOption,
+            Multiple,
+            undefined,
+            undefined
+          >
+        }
+        onChange={handleChange}
+        disableCloseOnSelect={multiple}
+        options={options}
+        PopperComponent={PopperComponent}
+        PopperBaseProps={{ sx: { minWidth: 250 } }}
+        onClickAway={handleClose}
+        {...DropdownMenuProps}
+      />
     </>
   );
 
