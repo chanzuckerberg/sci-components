@@ -1,36 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dropdown /> Test story renders snapshot 1`] = `
-<div>
-  <button
-    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-6o30iu-MuiButtonBase-root-MuiButton-root"
-    data-testid="dropdown"
-    label="Click Target"
-    tabindex="0"
-    type="button"
+<button
+  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-6o30iu-MuiButtonBase-root-MuiButton-root"
+  data-testid="dropdown"
+  label="Click Target"
+  tabindex="0"
+  type="button"
+>
+  <span
+    class="css-1sjvubj"
   >
-    <span
-      class="css-1sjvubj"
-    >
-      Click Target
-    </span>
-    <div
-      class="css-jbvua0"
-    >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
-        data-jest-file-name="IconChevronDownSmall.svg"
-        data-jest-svg-name="IconChevronDownSmall"
-        data-testid="IconChevronDownSmall"
-        fillcontrast="white"
-        focusable="false"
-        viewBox="0 0 14 14"
-      />
-    </div>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    Click Target
+  </span>
+  <div
+    class="css-jbvua0"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+      data-jest-file-name="IconChevronDownSmall.svg"
+      data-jest-svg-name="IconChevronDownSmall"
+      data-testid="IconChevronDownSmall"
+      fillcontrast="white"
+      focusable="false"
+      viewBox="0 0 14 14"
     />
-  </button>
-</div>
+  </div>
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
 `;

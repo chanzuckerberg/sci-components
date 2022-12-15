@@ -1,4 +1,3 @@
-import { ClickAwayListener } from "@mui/base";
 import { styled } from "@mui/material/styles";
 import { Args, Meta, Story } from "@storybook/react";
 import React, { useState } from "react";
@@ -60,44 +59,41 @@ const Demo = (props: Args): JSX.Element => {
 
   return (
     <>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <div>
-          {fullWidth ? (
-            <StyledInputDropdown
-              disabled={disabled}
-              label={label}
-              onClick={handleClick}
-              sdsStage={open ? "userInput" : "default"}
-              sdsStyle={sdsStyle}
-              sdsType={sdsType}
-              data-testid="InputDropdown"
-              {...rest}
-            />
-          ) : (
-            <InputDropdown
-              disabled={disabled}
-              label={label}
-              onClick={handleClick}
-              sdsStage={open ? "userInput" : "default"}
-              sdsStyle={sdsStyle}
-              sdsType={sdsType}
-              data-testid="InputDropdown"
-              {...rest}
-            />
-          )}
+      {fullWidth ? (
+        <StyledInputDropdown
+          disabled={disabled}
+          label={label}
+          onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
+          sdsStyle={sdsStyle}
+          sdsType={sdsType}
+          data-testid="InputDropdown"
+          {...rest}
+        />
+      ) : (
+        <InputDropdown
+          disabled={disabled}
+          label={label}
+          onClick={handleClick}
+          sdsStage={open ? "userInput" : "default"}
+          sdsStyle={sdsStyle}
+          sdsType={sdsType}
+          data-testid="InputDropdown"
+          {...rest}
+        />
+      )}
 
-          <DropdownMenu
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            onChange={handleChange}
-            search={false}
-            multiple={multiple}
-            disableCloseOnSelect={multiple}
-            options={options}
-          />
-        </div>
-      </ClickAwayListener>
+      <DropdownMenu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        onChange={handleChange}
+        search={false}
+        multiple={multiple}
+        disableCloseOnSelect={multiple}
+        options={options}
+        onClickAway={handleClickAway}
+      />
     </>
   );
 };

@@ -43,7 +43,6 @@ export default {
         labels: ["left", "right"],
         type: "select",
       },
-      defaultValue: buttonPositionOptions[0],
       mapping: buttonPositionOptions,
       options: Object.keys(buttonPositionOptions),
     },
@@ -51,27 +50,23 @@ export default {
       control: {
         type: "boolean",
       },
-      defaulValue: true,
     },
     closeOnBlur: {
       control: {
         type: "boolean",
       },
-      defaulValue: false,
     },
     label: { control: { type: "text" } },
     multiple: {
       control: {
         type: "boolean",
       },
-      defaulValue: true,
     },
     onChange: {
       control: {
         labels: ["NOOP", "Log value on change"],
         type: "select",
       },
-      defaultValue: onChangeOptions[0],
       mapping: onChangeOptions,
       options: Object.keys(onChangeOptions),
     },
@@ -80,7 +75,6 @@ export default {
         labels: ["NOOP", "console.log('Closed!')"],
         type: "select",
       },
-      defaultValue: onCloseOptions[0],
       mapping: onCloseOptions,
       options: Object.keys(onCloseOptions),
     },

@@ -27,19 +27,16 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
     },
     on: {
       control: {
         type: "boolean",
       },
-      defaultValue: false,
     },
     sdsIcon: {
       control: {
         type: "select",
       },
-      defaultValue: "dotsHorizontal",
       options: [
         "dotsHorizontal",
         "copy",
@@ -55,14 +52,12 @@ export default {
       control: {
         type: "select",
       },
-      defaultValue: "medium",
       options: ["small", "medium", "large"],
     },
     sdsType: {
       control: {
         type: "select",
       },
-      defaultValue: "primary",
       options: ["primary", "secondary", "tertiary"],
     },
   },

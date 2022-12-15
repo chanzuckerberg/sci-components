@@ -39,6 +39,7 @@ const DropdownMenuNameSpaceTest = (
       PopperBaseProps={{ sx: { width: 300 } }}
       search
       title="Dropdown Menu Title"
+      onClickAway={noop}
     />
   );
 };

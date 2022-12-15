@@ -23,7 +23,7 @@ const StyledPopper = styled(Popper)`
         padding: 0 6px;
       }
 
-      & .MuiAutocomplete-option[aria-selected='true'], 
+      & .MuiAutocomplete-option[aria-selected='true'],
       & .MuiAutocomplete-option[data-focus='true'] {
         background-color: transparent,
       }
