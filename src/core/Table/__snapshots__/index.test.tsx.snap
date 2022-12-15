@@ -1,87 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Table /> Test story renders snapshot 1`] = `
-<div
-  class="css-1fovr45"
+<table
+  class="css-mpwjyz"
+  data-testid="Table"
 >
-  <table
-    class="css-mpwjyz"
-    data-testid="Table"
-  >
-    <tbody>
-      <tr
-        class="css-1te7wvi"
+  <tbody>
+    <tr
+      class="css-1te7wvi"
+    >
+      <td
+        class="css-ms0or8"
       >
-        <td
-          class="css-ms0or8"
+        <div
+          class="css-ov1ktg"
         >
           <div
-            class="css-ov1ktg"
+            class="css-1ago99h"
           >
-            <div
-              class="css-1ago99h"
+            <span
+              class="css-l4a0ln"
             >
-              <span
-                class="css-l4a0ln"
-              >
-                Primary 1
-              </span>
-            </div>
+              Primary 1
+            </span>
           </div>
-        </td>
-        <td
-          class="css-ms0or8"
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
         >
           <div
-            class="css-ov1ktg"
+            class="css-1ago99h"
           >
-            <div
-              class="css-1ago99h"
+            <span
+              class="css-l4a0ln"
             >
-              <span
-                class="css-l4a0ln"
-              >
-                Primary 2
-              </span>
-            </div>
+              Primary 2
+            </span>
           </div>
-        </td>
-        <td
-          class="css-ms0or8"
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
         >
           <div
-            class="css-ov1ktg"
+            class="css-1ago99h"
           >
-            <div
-              class="css-1ago99h"
+            <span
+              class="css-l4a0ln"
             >
-              <span
-                class="css-l4a0ln"
-              >
-                Primary 3
-              </span>
-            </div>
+              Primary 3
+            </span>
           </div>
-        </td>
-        <td
-          class="css-ms0or8"
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
         >
           <div
-            class="css-ov1ktg"
+            class="css-1ago99h"
           >
-            <div
-              class="css-1ago99h"
+            <span
+              class="css-l4a0ln"
             >
-              <span
-                class="css-l4a0ln"
-              >
-                Primary 4
-              </span>
-            </div>
+              Primary 4
+            </span>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
