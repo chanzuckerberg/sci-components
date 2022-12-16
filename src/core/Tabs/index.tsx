@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 import { TabProps as RawTabProps, useTheme } from "@mui/material";
-import React, { forwardRef, useContext, useMemo } from "react";
+import React, { forwardRef, ReactNode, useContext, useMemo } from "react";
 import { SDSTheme } from "../styles/common/defaultTheme";
 import { getColors } from "../styles/common/selectors/theme";
 import { TabsContext } from "./components/common";
@@ -45,7 +45,7 @@ const Tabs = forwardRef<HTMLButtonElement, TabsProps>(function Tabs(
 export default Tabs;
 
 export interface TabProps extends RawTabProps {
-  count?: number;
+  count?: ReactNode;
 }
 
 /**

@@ -1,5 +1,7 @@
+import styled from "@emotion/styled";
 import { Args, Meta, Story } from "@storybook/react";
-import React, { useState } from "react";
+import { Tag } from "czifui";
+import React, { ReactNode, useState } from "react";
 import { noop } from "src/common/utils";
 import Tabs, { Tab, TabsProps } from "./index";
 
@@ -38,8 +40,8 @@ export default {
 interface TabsArgs extends TabsProps {
   tabOneLabel: string;
   tabTwoLabel: string;
-  tabOneCount?: number;
-  tabTwoCount?: number;
+  tabOneCount?: ReactNode;
+  tabTwoCount?: ReactNode;
 }
 
 const Template: Story<TabsArgs> = (props: TabsArgs) => {
@@ -139,6 +141,18 @@ function LivePreviewDemo(props: Args): JSX.Element {
           {...finalProps}
         />
       </div>
+      <div>
+        <Template
+          onChange={noop}
+          sdsSize="large"
+          tabOneLabel="Label"
+          tabTwoLabel="Label"
+          underlined
+          tabOneCount={<BetaTagWithCount />}
+          {...finalProps}
+          style={{ width: "200px" }}
+        />
+      </div>
     </div>
   );
 }
@@ -209,3 +223,16 @@ export const Test = TestTemplate.bind({});
 Test.parameters = {
   chromatic: { delay: 5000 },
 };
+
+const CountWrapper = styled("span")`
+  margin-right: 5px;
+`;
+
+function BetaTagWithCount() {
+  return (
+    <>
+      <CountWrapper>123</CountWrapper>
+      <Tag label="BETA" color="beta" sdsStyle="rounded" sdsType="secondary" />
+    </>
+  );
+}

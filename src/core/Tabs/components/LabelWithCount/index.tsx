@@ -1,10 +1,10 @@
-import React, { forwardRef, useContext } from "react";
+import React, { forwardRef, ReactNode, useContext } from "react";
 import { TabsContext } from "../common";
 import { Count, Label, Wrapper } from "./style";
 
 interface Props {
-  label: React.ReactNode;
-  count: number;
+  label: ReactNode;
+  count: ReactNode;
 }
 
 export default forwardRef<HTMLSpanElement, Props>(function LabelWithCount(
