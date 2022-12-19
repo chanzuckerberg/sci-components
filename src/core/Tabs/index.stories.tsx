@@ -141,18 +141,6 @@ function LivePreviewDemo(props: Args): JSX.Element {
           {...finalProps}
         />
       </div>
-      <div>
-        <Template
-          onChange={noop}
-          sdsSize="large"
-          tabOneLabel="Label"
-          tabTwoLabel="Label"
-          underlined
-          tabOneCount={<BetaTagWithCount />}
-          {...finalProps}
-          style={{ width: "200px" }}
-        />
-      </div>
     </div>
   );
 }
@@ -179,38 +167,57 @@ function TestDemo(props: Args): JSX.Element {
   };
 
   return (
-    <div style={livePreviewWrapperStyle}>
-      <div>
-        <h4>Default</h4>
-        <Template
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
-          tabOneCount={123}
-          onChange={noop}
-          {...finalProps}
-        />
+    <div>
+      <div style={livePreviewWrapperStyle}>
+        <div>
+          <h4>Default</h4>
+          <Template
+            tabOneLabel="Tab One"
+            tabTwoLabel="Tab Two"
+            tabOneCount={123}
+            onChange={noop}
+            {...finalProps}
+          />
+        </div>
+        <div>
+          <h4>Small</h4>
+          <Template
+            tabOneLabel="Tab One"
+            tabTwoLabel="Tab Two"
+            tabOneCount={123}
+            onChange={noop}
+            sdsSize="small"
+            {...finalProps}
+          />
+        </div>
+        <div>
+          <h4>Underlined</h4>
+          <Template
+            onChange={noop}
+            tabOneLabel="Tab One"
+            tabTwoLabel="Tab Two"
+            tabOneCount={123}
+            underlined
+            {...finalProps}
+          />
+        </div>
       </div>
-      <div>
-        <h4>Small</h4>
-        <Template
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
-          tabOneCount={123}
-          onChange={noop}
-          sdsSize="small"
-          {...finalProps}
-        />
-      </div>
-      <div>
-        <h4>Underlined</h4>
-        <Template
-          onChange={noop}
-          tabOneLabel="Tab One"
-          tabTwoLabel="Tab Two"
-          tabOneCount={123}
-          underlined
-          {...finalProps}
-        />
+      <div style={livePreviewWrapperStyle}>
+        <div>
+          <h4>Label with count</h4>
+          <div>
+            <Template
+              onChange={noop}
+              sdsSize="large"
+              tabOneLabel="Label"
+              tabTwoLabel="Label"
+              underlined
+              tabOneCount={<BetaTagWithCount />}
+              {...finalProps}
+              style={{ width: "200px" }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
