@@ -119,7 +119,7 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   `;
 };
 
-const withHover = (props: ExtraTagProps): SerializedStyles => {
+const withHover = (): SerializedStyles => {
   return css`
     &:hover {
       cursor: pointer;
@@ -248,7 +248,7 @@ export const StyledTag = styled(Chip, {
       ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
-      ${hover ? withHover(props) : `pointer-events: none;`}
+      ${hover ? withHover() : `pointer-events: none;`}
     `;
   }}
 `;
