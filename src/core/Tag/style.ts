@@ -23,6 +23,7 @@ export type SdsTagColorType =
   | [string, string]
   | [string, string, string];
 export interface ExtraProps extends CommonThemeProps {
+  hover: boolean;
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
   tagColor?: SdsTagColorType;
@@ -30,6 +31,7 @@ export interface ExtraProps extends CommonThemeProps {
 }
 
 const withoutIcon = (props: ExtraProps): SerializedStyles => {
+  const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
@@ -37,9 +39,10 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
 
-    &:hover {
+    ${hover &&
+    `&:hover {
       cursor: pointer;
-    }
+    }`}
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
@@ -53,24 +56,27 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
 
-      &:hover,
+      ${hover &&
+      `&:hover,
       &:focus-visible {
         color: white;
-      }
+      }`}
     }
   `;
 };
 
 const withIcon = (props: ExtraProps): SerializedStyles => {
+  const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
-    &:hover {
+    ${hover &&
+    `&:hover {
       cursor: pointer;
-    }
+    }`}
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -91,10 +97,11 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
 
-      &:hover,
+      ${hover &&
+      `&:hover,
       &:focus-visible {
         color: white;
-      }
+      }`}
     }
   `;
 };
@@ -147,6 +154,7 @@ function createTypeCss(
   props: ExtraProps,
   type: NonNullable<ExtraProps["sdsType"]>
 ): SerializedStyles | undefined {
+  const { hover = true } = props;
   const themeColors = getColors(props);
   const intent =
     typeof props.tagColor === "string" ? props.tagColor : "primary";
@@ -194,7 +202,8 @@ function createTypeCss(
     svg {
       fill: ${typeColors.iconColor};
     }
-
+    ${hover &&
+    `
     &:hover,
     &:active,
     &:focus {
@@ -225,7 +234,7 @@ function createTypeCss(
 
     &:focus:active {
       background-color: ${typeColors.backgroundClicked};
-    }
+    }`}
   `;
 }
 
