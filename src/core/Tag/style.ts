@@ -22,15 +22,15 @@ export type SdsTagColorType =
   | "beta"
   | [string, string]
   | [string, string, string];
-export interface ExtraProps extends CommonThemeProps {
-  hover: boolean;
+export interface ExtraTagProps extends CommonThemeProps {
+  hover?: boolean;
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
   tagColor?: SdsTagColorType;
   icon?: JSX.Element;
 }
 
-const withoutIcon = (props: ExtraProps): SerializedStyles => {
+const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
   const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
@@ -65,7 +65,7 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const withIcon = (props: ExtraProps): SerializedStyles => {
+const withIcon = (props: ExtraTagProps): SerializedStyles => {
   const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
@@ -106,7 +106,7 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const rounded = (props: ExtraProps): SerializedStyles => {
+const rounded = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
@@ -124,7 +124,7 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const square = (props: ExtraProps): SerializedStyles => {
+const square = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
@@ -142,17 +142,17 @@ const square = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const primary = (props: ExtraProps): SerializedStyles | undefined => {
+const primary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "primary");
 };
 
-const secondary = (props: ExtraProps): SerializedStyles | undefined => {
+const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "secondary");
 };
 
 function createTypeCss(
-  props: ExtraProps,
-  type: NonNullable<ExtraProps["sdsType"]>
+  props: ExtraTagProps,
+  type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
   const { hover = true } = props;
   const themeColors = getColors(props);
@@ -250,7 +250,7 @@ export const StyledTag = styled(Chip, {
 })`
   border: none;
 
-  ${(props: ExtraProps) => {
+  ${(props: ExtraTagProps) => {
     const { sdsType, sdsStyle, icon } = props;
 
     const isRounded = sdsStyle === "rounded";
