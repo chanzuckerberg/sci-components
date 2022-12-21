@@ -31,18 +31,12 @@ export interface ExtraTagProps extends CommonThemeProps {
 }
 
 const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
-  const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
-
-    ${hover &&
-    `&:hover {
-      cursor: pointer;
-    }`}
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
@@ -55,28 +49,17 @@ const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
       margin: 0 0 0 ${spacings?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-
-      ${hover &&
-      `&:hover,
-      &:focus-visible {
-        color: white;
-      }`}
     }
   `;
 };
 
 const withIcon = (props: ExtraTagProps): SerializedStyles => {
-  const { hover = true } = props;
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
-    ${hover &&
-    `&:hover {
-      cursor: pointer;
-    }`}
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -96,12 +79,6 @@ const withIcon = (props: ExtraTagProps): SerializedStyles => {
       margin: 0 0 0 ${spacings?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-
-      ${hover &&
-      `&:hover,
-      &:focus-visible {
-        color: white;
-      }`}
     }
   `;
 };
@@ -142,6 +119,19 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   `;
 };
 
+const withHover = (props: ExtraTagProps): SerializedStyles => {
+  return css`
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: white;
+    }
+  `;
+};
+
 const primary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "primary");
 };
@@ -154,7 +144,6 @@ function createTypeCss(
   props: ExtraTagProps,
   type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
-  const { hover = true } = props;
   const themeColors = getColors(props);
   const intent =
     typeof props.tagColor === "string" ? props.tagColor : "primary";
@@ -202,8 +191,7 @@ function createTypeCss(
     svg {
       fill: ${typeColors.iconColor};
     }
-    ${hover &&
-    `
+
     &:hover,
     &:active,
     &:focus {
@@ -234,7 +222,7 @@ function createTypeCss(
 
     &:focus:active {
       background-color: ${typeColors.backgroundClicked};
-    }`}
+    }
   `;
 }
 
@@ -251,7 +239,7 @@ export const StyledTag = styled(Chip, {
   border: none;
 
   ${(props: ExtraTagProps) => {
-    const { sdsType, sdsStyle, icon } = props;
+    const { hover, sdsType, sdsStyle, icon } = props;
 
     const isRounded = sdsStyle === "rounded";
     const type = sdsType || "primary";
@@ -260,6 +248,7 @@ export const StyledTag = styled(Chip, {
       ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
+      ${hover ? withHover(props) : `pointer-events: none;`}
     `;
   }}
 `;
