@@ -64,6 +64,9 @@ export default {
       mapping: availableColorOptions,
       options: Object.keys(availableColorOptions),
     },
+    hover: {
+      control: { type: "boolean" },
+    },
     icon: {
       control: {
         labels: [
@@ -100,6 +103,7 @@ const Template: Story = (args) => <Demo {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
+  hover: true,
   label: "Label",
   sdsStyle: "square",
   sdsType: "primary",

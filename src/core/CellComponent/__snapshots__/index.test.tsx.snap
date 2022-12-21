@@ -32,7 +32,7 @@ exports[`<CellComponent /> Test story renders snapshot 1`] = `
                 Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
               </span>
               <div
-                class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-k04xcz-MuiButtonBase-root-MuiChip-root"
+                class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-1re09u5-MuiButtonBase-root-MuiChip-root"
                 data-testid="Child"
                 role="button"
                 tabindex="0"

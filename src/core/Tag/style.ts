@@ -22,24 +22,21 @@ export type SdsTagColorType =
   | "beta"
   | [string, string]
   | [string, string, string];
-export interface ExtraProps extends CommonThemeProps {
+export interface ExtraTagProps extends CommonThemeProps {
+  hover?: boolean;
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
   tagColor?: SdsTagColorType;
   icon?: JSX.Element;
 }
 
-const withoutIcon = (props: ExtraProps): SerializedStyles => {
+const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
-
-    &:hover {
-      cursor: pointer;
-    }
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
@@ -52,25 +49,17 @@ const withoutIcon = (props: ExtraProps): SerializedStyles => {
       margin: 0 0 0 ${spacings?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-
-      &:hover,
-      &:focus-visible {
-        color: white;
-      }
     }
   `;
 };
 
-const withIcon = (props: ExtraProps): SerializedStyles => {
+const withIcon = (props: ExtraTagProps): SerializedStyles => {
   const spacings = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
     margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
-    &:hover {
-      cursor: pointer;
-    }
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -90,16 +79,11 @@ const withIcon = (props: ExtraProps): SerializedStyles => {
       margin: 0 0 0 ${spacings?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-
-      &:hover,
-      &:focus-visible {
-        color: white;
-      }
     }
   `;
 };
 
-const rounded = (props: ExtraProps): SerializedStyles => {
+const rounded = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
@@ -117,7 +101,7 @@ const rounded = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const square = (props: ExtraProps): SerializedStyles => {
+const square = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spacings = getSpaces(props);
 
@@ -135,17 +119,30 @@ const square = (props: ExtraProps): SerializedStyles => {
   `;
 };
 
-const primary = (props: ExtraProps): SerializedStyles | undefined => {
+const withHover = (): SerializedStyles => {
+  return css`
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: white;
+    }
+  `;
+};
+
+const primary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "primary");
 };
 
-const secondary = (props: ExtraProps): SerializedStyles | undefined => {
+const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "secondary");
 };
 
 function createTypeCss(
-  props: ExtraProps,
-  type: NonNullable<ExtraProps["sdsType"]>
+  props: ExtraTagProps,
+  type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
   const themeColors = getColors(props);
   const intent =
@@ -241,8 +238,8 @@ export const StyledTag = styled(Chip, {
 })`
   border: none;
 
-  ${(props: ExtraProps) => {
-    const { sdsType, sdsStyle, icon } = props;
+  ${(props: ExtraTagProps) => {
+    const { hover, sdsType, sdsStyle, icon } = props;
 
     const isRounded = sdsStyle === "rounded";
     const type = sdsType || "primary";
@@ -251,6 +248,7 @@ export const StyledTag = styled(Chip, {
       ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
+      ${hover ? withHover() : `pointer-events: none;`}
     `;
   }}
 `;
