@@ -239,7 +239,7 @@ export const StyledTag = styled(Chip, {
   border: none;
 
   ${(props: ExtraTagProps) => {
-    const { hover, sdsType, sdsStyle, icon } = props;
+    const { hover = true, sdsType, sdsStyle, icon } = props;
 
     const isRounded = sdsStyle === "rounded";
     const type = sdsType || "primary";
