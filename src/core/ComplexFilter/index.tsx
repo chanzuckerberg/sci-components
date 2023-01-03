@@ -33,24 +33,20 @@ export interface ComplexFilterProps<Multiple> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const ComplexFilter = <Multiple extends boolean | undefined = false>(
-  props: ComplexFilterProps<Multiple>
-): JSX.Element => {
-  const {
-    options,
-    label = "",
-    multiple = false,
-    search = false,
-    onChange,
-    DropdownMenuProps = {},
-    InputDropdownProps = { sdsStyle: "minimal" },
-    value: propValue,
-    PopperComponent,
-    InputDropdownComponent = InputDropdown,
-    isTriggerChangeOnOptionClick = false,
-    ...rest
-  } = props;
-
+const ComplexFilter = <Multiple extends boolean | undefined = false>({
+  options,
+  label = "",
+  multiple = false,
+  search = false,
+  onChange,
+  DropdownMenuProps = {},
+  InputDropdownProps = { sdsStyle: "minimal" },
+  value: propValue,
+  PopperComponent,
+  InputDropdownComponent = InputDropdown,
+  isTriggerChangeOnOptionClick = false,
+  ...rest
+}: ComplexFilterProps<Multiple>): JSX.Element => {
   const isControlled = propValue !== undefined;
 
   const [open, setOpen] = useState(false);
@@ -74,90 +70,6 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>(
       setValue(propValue);
     }
   }, [propValue]);
-
-  const handleClose = () => {
-    if (open) {
-      setOpen(false);
-
-      if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
-    }
-  };
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (open) {
-      if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
-
-      setOpen(false);
-
-      if (anchorEl) {
-        anchorEl.focus();
-      }
-
-      setAnchorEl(null);
-    } else {
-      if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
-      }
-
-      setAnchorEl(event.currentTarget);
-      setOpen(true);
-    }
-  };
-
-  const handleMenuSelectClose = (
-    event: React.ChangeEvent<unknown>,
-    reason: AutocompleteCloseReason
-  ) => {
-    const reasons = ["escape", "select-option"];
-
-    if (reasons.includes(reason)) {
-      handleClose();
-    }
-  };
-
-  const handleChange = (
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ) => {
-    if (multiple) {
-      if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as DefaultDropdownMenuOption[]);
-        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
-
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
-    }
-
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-    setOpen(false);
-  };
-
-  const handleDelete = (option: DefaultDropdownMenuOption) => {
-    if (!multiple) {
-      return setValue(null);
-    }
-
-    const newValue =
-      (value as DefaultDropdownMenuOption[])?.filter(
-        (item) => item !== option
-      ) || null;
-
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-  };
-
-  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
-      : null;
-  }
 
   // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
   // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,
@@ -201,6 +113,90 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>(
       />
     </>
   );
+
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
+    if (open) {
+      if (multiple) {
+        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+      }
+
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      if (multiple) {
+        setPendingValue(value as DefaultDropdownMenuOption[]);
+      }
+
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
+  }
+
+  function handleClose() {
+    if (open) {
+      setOpen(false);
+
+      if (multiple) {
+        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+      }
+    }
+  }
+
+  function handleMenuSelectClose(
+    event: React.ChangeEvent<unknown>,
+    reason: AutocompleteCloseReason
+  ) {
+    const reasons = ["escape", "select-option"];
+
+    if (reasons.includes(reason)) {
+      handleClose();
+    }
+  }
+
+  function handleChange(
+    _: React.ChangeEvent<unknown>,
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ) {
+    if (multiple) {
+      if (isTriggerChangeOnOptionClick) {
+        setPendingValue(newValue as DefaultDropdownMenuOption[]);
+        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+      }
+
+      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+    }
+
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+    setOpen(false);
+  }
+
+  function handleDelete(option: DefaultDropdownMenuOption) {
+    if (!multiple) {
+      return setValue(null);
+    }
+
+    const newValue =
+      (value as DefaultDropdownMenuOption[])?.filter(
+        (item) => item !== option
+      ) || null;
+
+    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+  }
+
+  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
+    if (isControlled) {
+      return propValue;
+    }
+
+    return multiple
+      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
+      : null;
+  }
 };
 
 export default ComplexFilter;
