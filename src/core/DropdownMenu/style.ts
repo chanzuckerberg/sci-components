@@ -33,6 +33,7 @@ const doNotForwardProps = [
   "hasSections",
   "title",
   "PopperBaseProps",
+  "onClickAway",
 ];
 
 export const StyledMenuItem = styled(MenuItem)`
