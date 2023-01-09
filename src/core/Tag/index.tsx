@@ -8,6 +8,7 @@ export interface SdsTagProps extends Omit<ChipProps, "color"> {
 }
 
 export type TagProps = SdsTagProps & ExtraTagProps;
+export type { SdsTagColorType };
 
 /**
  * @see https://mui.com/material-ui/react-chip/
