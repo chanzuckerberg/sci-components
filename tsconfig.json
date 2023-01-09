@@ -58,7 +58,6 @@
   },
   "include": [
     "src/**/*",
-    "demos/**/*",
     ".eslintrc.js"
   ],
   "exclude": [
