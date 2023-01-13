@@ -10,15 +10,6 @@ export type Person = {
   visits: number;
 };
 
-const range = (len: number) => {
-  const arr: number[] = [];
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
-
 const newPerson = (): Person => {
   return {
     age: faker.datatype.number(96),
@@ -37,7 +28,7 @@ const newPerson = (): Person => {
 export function makeData(...lens: number[]) {
   const makeDataLevel = (depth = 0): Person[] => {
     const len = lens[depth];
-    return range(len).map((_): Person => {
+    return [...Array(len)].map((_): Person => {
       return {
         ...newPerson(),
         subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
