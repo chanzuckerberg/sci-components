@@ -168,7 +168,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13pwrar-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dw2tn7-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -248,7 +248,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13pwrar-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dw2tn7-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
