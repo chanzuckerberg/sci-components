@@ -3,6 +3,9 @@ export enum SDSWarningTypes {
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
   ButtonIconMediumSize = "buttonIconMediumSize",
+  TooltipSubtitle = "tooltipSubtitle",
+  TooltipWidth = "tooltipWidth",
+  TooltipInverted = "tooltipInverted",
 }
 
 const SDS_WARNINGS = {
@@ -23,6 +26,20 @@ const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonIconMediumSize]: {
     hasWarned: false,
     message: "Warning: A medium size ButtonIcon can only be of type tertiary!",
+  },
+  [SDSWarningTypes.TooltipSubtitle]: {
+    hasWarned: false,
+    message:
+      "Warning: The 'subtitle' text is only available for dark tooltips!",
+  },
+  [SDSWarningTypes.TooltipWidth]: {
+    hasWarned: false,
+    message: "Warning: The 'wide' width is only available for light tooltips!",
+  },
+  [SDSWarningTypes.TooltipInverted]: {
+    hasWarned: false,
+    message:
+      "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead!",
   },
 };
 
