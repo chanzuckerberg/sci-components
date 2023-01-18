@@ -159,7 +159,13 @@ const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const doNotForwardProps = ["on", "sdsSize", "sdsType", "sdsIcon"];
+const doNotForwardProps = [
+  "on",
+  "sdsSize",
+  "sdsType",
+  "sdsIcon",
+  "sdsIconProps",
+];
 
 export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
