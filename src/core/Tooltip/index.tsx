@@ -6,6 +6,10 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React, { forwardRef } from "react";
 import {
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
+import {
   arrowCss,
   StyledPopper,
   Subtitle,
@@ -43,24 +47,15 @@ const Tooltip = forwardRef(function Tooltip(
   const { children } = rest;
 
   if (inverted) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead."
-    );
+    showWarningIfFirstOccurence(SDSWarningTypes.TooltipInverted);
   }
 
   if (width === "wide" && sdsStyle === "dark") {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: The 'wide' width is only available for light tooltips."
-    );
+    showWarningIfFirstOccurence(SDSWarningTypes.TooltipWidth);
   }
 
   if (subtitle && sdsStyle === "light") {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: The 'subtitle' text is only available for dark tooltips."
-    );
+    showWarningIfFirstOccurence(SDSWarningTypes.TooltipSubtitle);
   }
 
   const theme = useTheme();
