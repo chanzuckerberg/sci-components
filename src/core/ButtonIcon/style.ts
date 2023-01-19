@@ -172,6 +172,11 @@ export const StyledButtonIcon = styled(IconButton, {
 })`
   padding: 0;
 
+  :focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconExtraProps<ButtonIconSize>
   ) => {
