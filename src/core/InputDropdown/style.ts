@@ -39,15 +39,14 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${colors?.gray[500]};
     cursor: pointer;
     padding: ${spacings?.xs}px;
+    /* minimal left right will be s px instead */
 
     &.MuiButton-text {
-      justify-content: flex-start;
-
       &:hover {
         color: #000;
       }
 
-      > span {
+      .styled-label {
         margin-right: ${spacings?.xs}px;
         margin-left: ${spacings?.xs}px;
         overflow: hidden;
@@ -74,7 +73,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         fill: ${colors?.gray[600]};
       }
 
-      > span {
+      .styled-label {
         color: #000;
       }
     }
@@ -97,13 +96,20 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const palette = getPalette(props);
+  const spacings = getSpaces(props);
 
   return css`
-    border: none;
-    padding: 0;
+    ${labelStyle(props)}
 
-    & .MuiButton-label {
-      margin: 0;
+    border: none;
+    padding: ${spacings?.xs}px ${spacings?.s}px;
+
+    /* Nesting to increase CSS specificity for style override */
+    &.MuiButton-text {
+      .styled-label {
+        margin: 0;
+        margin-right: ${spacings?.xs}px;
+      }
     }
 
     span {
@@ -156,10 +162,29 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
+function labelStyle(props: InputDropdownProps): SerializedStyles {
+  const colors = getColors(props);
+  const palette = getPalette(props);
+  const labelColor = props.disabled
+    ? colors?.gray[300]
+    : palette?.text?.primary;
+
+  return css`
+    &.MuiButton-text {
+      .styled-label {
+        font-weight: 600;
+        color: ${labelColor};
+      }
+    }
+  `;
+}
+
 const square = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
+    ${labelStyle(props)}
+
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
@@ -168,23 +193,13 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
 const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
-  const colors = getColors(props);
-  const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
 
   return css`
+    ${labelStyle(props)}
+
     border-radius: ${corners?.l}px;
     height: 34px;
     min-width: 90px;
-
-    &.MuiButton-text {
-      > span:first-of-type {
-        font-weight: 600;
-        color: ${labelColor};
-      }
-    }
   `;
 };
 

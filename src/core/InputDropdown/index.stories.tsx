@@ -5,7 +5,9 @@ import DropdownMenu from "../DropdownMenu";
 import InputDropdown from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
-  width: 160px;
+  ${({ width }: Args) => {
+    return `width: ${width || 160}px;`;
+  }}
 `;
 
 const Demo = (props: Args): JSX.Element => {
@@ -128,6 +130,9 @@ export default {
       control: { type: "radio" },
       options: ["singleSelect", "multiSelect"],
     },
+    width: {
+      control: { type: "number" },
+    },
   },
   component: Demo,
   title: "Inputs/InputDropdown",
@@ -159,6 +164,11 @@ const storyRow = {
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
+
+  // DEBUG
+  // DEBUG
+  // DEBUG
+  console.log("---rest", rest);
 
   return (
     <div style={storyRow as React.CSSProperties}>
@@ -220,6 +230,11 @@ SquareLivePreview.parameters = {
 
 const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
+
+  // DEBUG
+  // DEBUG
+  // DEBUG
+  console.log("---Minimal rest", rest);
 
   return (
     <Template
