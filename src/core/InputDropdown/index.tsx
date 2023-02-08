@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../Icon";
 import {
   InputDropdownProps,
+  LabelWrapper,
   MinimalDetails,
   StyledCounter,
   StyledDetail,
@@ -41,19 +42,8 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     sdsType === "multiSelect" && counter !== undefined;
 
   return (
-    <StyledInputDropdown
-      style={{
-        alignItems: isMinimal ? "flex-start" : "center",
-        flexDirection: isMinimal ? "column" : "row",
-      }}
-      {...props}
-    >
-      <span
-        style={{
-          alignItems: isMinimal ? "center" : undefined,
-          display: isMinimal ? "inline-flex" : "contents",
-        }}
-      >
+    <StyledInputDropdown {...props}>
+      <LabelWrapper isMinimal={isMinimal}>
         <StyledLabel
           className="styled-label"
           details={details}
@@ -64,7 +54,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
         {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
         {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
         <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
-      </span>
+      </LabelWrapper>
 
       {isMinimal && (
         <MinimalDetails

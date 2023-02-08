@@ -102,7 +102,9 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
+    align-items: flex-start;
     border: none;
+    flex-direction: column;
     padding: ${spacings?.xs}px ${spacings?.s}px;
 
     /* Nesting to increase CSS specificity for style override */
@@ -284,6 +286,10 @@ export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${labelFontBodyS}
+
+  align-items: center;
+  flex-direction: row;
+
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
 
@@ -371,5 +377,14 @@ export const MinimalDetails = styled("div")`
         white-space: nowrap;
       `;
     }
+  }}
+`;
+
+export const LabelWrapper = styled("span")`
+  ${({ isMinimal }: { isMinimal: boolean }) => {
+    return `
+      align-items: ${isMinimal ? "center" : undefined};
+      display: ${isMinimal ? "inline-flex" : "contents"};
+    `;
   }}
 `;
