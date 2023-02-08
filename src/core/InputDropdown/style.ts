@@ -183,8 +183,6 @@ const square = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    ${labelStyle(props)}
-
     border-radius: ${corners?.m}px;
     height: 34px;
     min-width: 90px;
