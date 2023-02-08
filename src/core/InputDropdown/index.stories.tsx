@@ -188,11 +188,6 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
 
-  // DEBUG
-  // DEBUG
-  // DEBUG
-  console.log("---rest", rest);
-
   return (
     <div style={storyRow as React.CSSProperties}>
       <Template
@@ -253,11 +248,6 @@ SquareLivePreview.parameters = {
 
 const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
-
-  // DEBUG
-  // DEBUG
-  // DEBUG
-  console.log("---Minimal rest", rest);
 
   return (
     <Template

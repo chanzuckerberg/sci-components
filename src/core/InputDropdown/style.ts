@@ -167,23 +167,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-function labelStyle(props: InputDropdownProps): SerializedStyles {
-  const colors = getColors(props);
-  const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
-
-  return css`
-    &.MuiButton-text {
-      .styled-label {
-        font-weight: 600;
-        color: ${labelColor};
-      }
-    }
-  `;
-}
-
 const square = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
@@ -287,7 +270,9 @@ export const StyledInputDropdown = styled(Button, {
 })`
   ${labelFontBodyS}
 
+  /* (thuang): in Minimal it's a different value */
   align-items: center;
+  /* (thuang): in Minimal it's a different value */
   flex-direction: row;
 
   ${(props: InputDropdownProps) => {
@@ -388,3 +373,20 @@ export const LabelWrapper = styled("span")`
     `;
   }}
 `;
+
+function labelStyle(props: InputDropdownProps): SerializedStyles {
+  const colors = getColors(props);
+  const palette = getPalette(props);
+  const labelColor = props.disabled
+    ? colors?.gray[300]
+    : palette?.text?.primary;
+
+  return css`
+    &.MuiButton-text {
+      .styled-label {
+        font-weight: 600;
+        color: ${labelColor};
+      }
+    }
+  `;
+}
