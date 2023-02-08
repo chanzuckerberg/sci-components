@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../Icon";
 import {
   InputDropdownProps,
+  MinimalDetails,
   StyledCounter,
   StyledDetail,
   StyledInputDropdown,
@@ -14,16 +15,17 @@ export type { InputDropdownProps };
  * @see https://mui.com/material-ui/react-button/
  */
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
-  const { label, open, sdsType, sdsStyle, details, counter } = props;
-
-  // DEBUG
-  // DEBUG
-  // DEBUG
-  console.log("---sdsStyle", sdsStyle);
+  const {
+    label,
+    open,
+    sdsType,
+    sdsStyle,
+    details,
+    counter,
+    shouldTruncateMinimalDetails,
+  } = props;
 
   const isMinimal = sdsStyle === "minimal";
-
-  // if sdsStyle is minimal, render details in new line, otherwise between label and icon
 
   if (open !== undefined) {
     // eslint-disable-next-line no-console
@@ -31,6 +33,12 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
       "Warning: InputDropdown prop `open` has been replaced by `sdsStage` and will be deprecated."
     );
   }
+
+  const shouldRenderDetails =
+    sdsType === "singleSelect" && details && !isMinimal;
+
+  const shouldRenderCounter =
+    sdsType === "multiSelect" && counter !== undefined;
 
   return (
     <StyledInputDropdown
@@ -51,20 +59,40 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
           details={details}
           counter={counter}
         >
-          {counter !== undefined || details ? `${label}:` : label}
+          {renderLabelText({ counter, details, isMinimal, label })}
         </StyledLabel>
-        {sdsType === "singleSelect" && details && (
-          <StyledDetail>{details}</StyledDetail>
-        )}
-        {sdsType === "multiSelect" && counter !== undefined && (
-          <StyledCounter>{counter}</StyledCounter>
-        )}
+        {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
+        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
         <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
       </span>
 
-      {isMinimal && <div>new minimal details</div>}
+      {isMinimal && (
+        <MinimalDetails
+          shouldTruncateMinimalDetails={shouldTruncateMinimalDetails}
+        >
+          {details}
+        </MinimalDetails>
+      )}
     </StyledInputDropdown>
   );
 };
+
+function renderLabelText({
+  counter,
+  details,
+  isMinimal,
+  label,
+}: {
+  counter: InputDropdownProps["counter"];
+  details: InputDropdownProps["details"];
+  isMinimal: boolean;
+  label: InputDropdownProps["label"];
+}) {
+  if (isMinimal) {
+    return label;
+  }
+
+  return counter !== undefined || details ? `${label}:` : label;
+}
 
 export default InputDropdown;

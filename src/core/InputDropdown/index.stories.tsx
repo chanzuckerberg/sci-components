@@ -103,35 +103,58 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   argTypes: {
     counter: {
-      control: { type: "number" },
+      control: {
+        type: "number",
+      },
     },
     details: {
-      control: { type: "text" },
+      control: {
+        type: "text",
+      },
     },
     disabled: {
-      control: { type: "boolean" },
+      control: {
+        type: "boolean",
+      },
     },
     intent: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["default", "error", "warning"],
     },
     label: {
-      control: { type: "text" },
+      control: {
+        type: "text",
+      },
     },
     sdsStage: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["default", "userInput"],
     },
     sdsStyle: {
-      control: { type: "select" },
+      control: {
+        type: "select",
+      },
       options: ["square", "rounded", "minimal"],
     },
     sdsType: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["singleSelect", "multiSelect"],
     },
+    shouldTruncateMinimalDetails: {
+      control: {
+        type: "boolean",
+      },
+    },
     width: {
-      control: { type: "number" },
+      control: {
+        type: "number",
+      },
     },
   },
   component: Demo,

@@ -23,6 +23,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   sdsType?: "singleSelect" | "multiSelect";
   details?: string;
   counter?: string;
+  shouldTruncateMinimalDetails?: boolean;
 }
 
 const labelFontBodyS = fontBody("s");
@@ -36,7 +37,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border: ${borders?.gray[400]};
-    color: ${colors?.gray[500]};
+    color: black;
     cursor: pointer;
     padding: ${spacings?.xs}px;
     /* minimal left right will be s px instead */
@@ -121,8 +122,9 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      color: ${colors?.gray[600]};
+      background-color: ${colors?.gray[100]};
       border: none;
+      color: ${colors?.gray[600]};
 
       span {
         color: ${colors?.gray[600]};
@@ -134,8 +136,9 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      color: ${palette?.text?.primary};
+      background-color: ${colors?.gray[100]};
       border: none;
+      color: ${palette?.text?.primary};
 
       span {
         color: #000;
@@ -349,5 +352,24 @@ export const StyledCounter = styled("span", {
     border-radius: ${corners?.l}px;
     padding: 1px ${spacings?.xs}px;
   `;
+  }}
+`;
+
+export const MinimalDetails = styled("div")`
+  text-align: left;
+  width: 100%;
+
+  ${({
+    shouldTruncateMinimalDetails,
+  }: {
+    shouldTruncateMinimalDetails: InputDropdownProps["shouldTruncateMinimalDetails"];
+  }) => {
+    if (shouldTruncateMinimalDetails) {
+      return `
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      `;
+    }
   }}
 `;
