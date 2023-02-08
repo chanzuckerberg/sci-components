@@ -2,6 +2,8 @@ import React from "react";
 import Icon from "../Icon";
 import {
   InputDropdownProps,
+  LabelWrapper,
+  MinimalDetails,
   StyledCounter,
   StyledDetail,
   StyledInputDropdown,
@@ -14,7 +16,17 @@ export type { InputDropdownProps };
  * @see https://mui.com/material-ui/react-button/
  */
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
-  const { label, open, sdsType, details, counter } = props;
+  const {
+    label,
+    open,
+    sdsType,
+    sdsStyle,
+    details,
+    counter,
+    shouldTruncateMinimalDetails,
+  } = props;
+
+  const isMinimal = sdsStyle === "minimal";
 
   if (open !== undefined) {
     // eslint-disable-next-line no-console
@@ -23,20 +35,54 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     );
   }
 
+  const shouldRenderDetails =
+    sdsType === "singleSelect" && details && !isMinimal;
+
+  const shouldRenderCounter =
+    sdsType === "multiSelect" && counter !== undefined;
+
   return (
     <StyledInputDropdown {...props}>
-      <StyledLabel details={details} counter={counter}>
-        {counter !== undefined || details ? `${label}:` : label}
-      </StyledLabel>
-      {sdsType === "singleSelect" && details && (
-        <StyledDetail>{details}</StyledDetail>
+      <LabelWrapper isMinimal={isMinimal}>
+        <StyledLabel
+          className="styled-label"
+          details={details}
+          counter={counter}
+        >
+          {renderLabelText({ counter, details, isMinimal, label })}
+        </StyledLabel>
+        {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
+        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+      </LabelWrapper>
+
+      {isMinimal && (
+        <MinimalDetails
+          shouldTruncateMinimalDetails={shouldTruncateMinimalDetails}
+        >
+          {details}
+        </MinimalDetails>
       )}
-      {sdsType === "multiSelect" && counter !== undefined && (
-        <StyledCounter>{counter}</StyledCounter>
-      )}
-      <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
     </StyledInputDropdown>
   );
 };
+
+function renderLabelText({
+  counter,
+  details,
+  isMinimal,
+  label,
+}: {
+  counter: InputDropdownProps["counter"];
+  details: InputDropdownProps["details"];
+  isMinimal: boolean;
+  label: InputDropdownProps["label"];
+}) {
+  if (isMinimal) {
+    return label;
+  }
+
+  return counter !== undefined || details ? `${label}:` : label;
+}
 
 export default InputDropdown;
