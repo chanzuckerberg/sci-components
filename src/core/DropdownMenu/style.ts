@@ -1,6 +1,7 @@
 import { Paper, Popper } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
+import { ReactElement } from "react";
 import InputSearch from "../InputSearch";
 import MenuItem from "../MenuItem";
 import {
@@ -18,10 +19,11 @@ import {
 } from "../styles";
 
 export interface StyleProps extends CommonThemeProps {
+  count?: number;
+  hasSections?: boolean;
+  icon?: ReactElement;
   search?: boolean;
   title?: string;
-  hasSections?: boolean;
-  count?: string;
 }
 
 const doNotForwardProps = [
@@ -55,6 +57,11 @@ export const StyledMenuItem = styled(MenuItem)`
   }}
 `;
 
+export const StyledMenuItemContent = styled("div")`
+  display: flex;
+  justify-content: left;
+`;
+
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
   ${(props: StyleProps) => {
@@ -63,6 +70,16 @@ export const StyledMenuItemDetails = styled("div")`
     return `
       color: ${colors?.gray[500]};
       white-space: pre-wrap;
+    `;
+  }}
+`;
+
+export const StyledMenuItemIcon = styled("div")`
+  ${(props: StyleProps) => {
+    const spacings = getSpaces(props);
+
+    return `
+      margin-right: ${spacings?.xs}px;
     `;
   }}
 `;

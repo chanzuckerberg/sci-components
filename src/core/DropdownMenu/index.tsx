@@ -8,7 +8,7 @@ import {
   InputAdornment,
   PopperProps,
 } from "@mui/material";
-import React, { SyntheticEvent, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { InputSearchProps } from "../InputSearch";
@@ -18,21 +18,38 @@ import {
   StyledHeaderTitle,
   StyledMenuInputSearch,
   StyledMenuItem,
+  StyledMenuItemContent,
   StyledMenuItemCount,
   StyledMenuItemDetails,
+  StyledMenuItemIcon,
   StyledPaper,
   StyledPopper,
   StyleProps,
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
-export interface DefaultDropdownMenuOption {
+
+interface DropdownMenuOptionGeneral {
   name: string;
   section?: string;
+}
+export interface DropdownMenuOptionBasic extends DropdownMenuOptionGeneral {
+  count?: number;
   details?: string;
-  count?: string;
+  icon?: ReactNode;
 }
 
+export interface DropdownMenuOptionComponent extends DropdownMenuOptionGeneral {
+  children: ReactNode;
+}
+
+type Exclusive<T, U> = T & { [K in Exclude<keyof U, keyof T>]?: undefined };
+
+export type DefaultDropdownMenuOption =
+  | Exclusive<DropdownMenuOptionBasic, DropdownMenuOptionComponent>
+  | Exclusive<DropdownMenuOptionComponent, DropdownMenuOptionBasic>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
 interface ExtraProps extends StyleProps {
@@ -228,13 +245,17 @@ const DropdownMenu = <
           selected={selected}
           count={option.count}
         >
-          <div>
-            {option.name}
-
-            {option.details && (
-              <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
+          <StyledMenuItemContent>
+            {option.icon && (
+              <StyledMenuItemIcon>{option.icon}</StyledMenuItemIcon>
             )}
-          </div>
+            <div>
+              {option.name}
+              {option.details && (
+                <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
+              )}
+            </div>
+          </StyledMenuItemContent>
 
           {option.count && (
             <StyledMenuItemCount className="menuItem-count">

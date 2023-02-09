@@ -15,7 +15,7 @@ const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
-    const { selected } = props;
+    const { selected, disabled } = props;
     const colors = getColors(props);
     const fontWeights = getFontWeights(props);
     const spacings = getSpaces(props);
@@ -50,6 +50,8 @@ export const StyledMenuItem = styled(MenuItem)`
       &.MuiMenuItem-root .MuiSvgIcon-root {
         align-self: flex-start;
         margin-top: 3px;
+        margin-bottom: -3px;
+        ${disabled ? `background-color: red;` : null}
       }
   
       &.MuiAutocomplete-option[aria-selected="true"] {
@@ -59,7 +61,7 @@ export const StyledMenuItem = styled(MenuItem)`
           background-color: ${colors?.gray[100]};
         }
 
-        svg.MuiSvgIcon-root {
+        svg.check-icon {
           color: ${selected ? primary : colors?.gray[500]};
         }
       }
@@ -76,7 +78,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:hover {
         background-color: ${colors?.gray[100]};
-        svg.MuiSvgIcon-root {
+        svg.check-icon {
           color: ${selected ? primary : colors?.gray[500]};
         }
       }
@@ -92,12 +94,12 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:active {
-        svg.MuiSvgIcon-root {
+        svg.check-icon {
           color: ${primary};
         }
 
         &:active {
-          svg.MuiSvgIcon-root {
+          svg.check-icon {
             color: ${primary};
           }
 
