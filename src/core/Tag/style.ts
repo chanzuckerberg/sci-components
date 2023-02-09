@@ -231,7 +231,7 @@ const typeToCss = {
   secondary,
 };
 
-const doNotForwardProps = ["sdsType", "sdsStyle", "tagColor"];
+const doNotForwardProps = ["sdsType", "sdsStyle", "tagColor", "hover"];
 
 export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
