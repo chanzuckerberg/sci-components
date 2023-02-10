@@ -37,10 +37,9 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border: ${borders?.gray[400]};
-    color: black;
+    color: ${palette?.text?.primary};
     cursor: pointer;
     padding: ${spacings?.xs}px;
-    /* minimal left right will be s px instead */
 
     &.MuiButton-text {
       &:hover {
@@ -102,6 +101,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
+    /* this is needed to left align the label text */
     align-items: flex-start;
     border: none;
     flex-direction: column;
@@ -126,29 +126,11 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &:hover {
       background-color: ${colors?.gray[100]};
       border: none;
-      color: ${colors?.gray[600]};
-
-      span {
-        color: ${colors?.gray[600]};
-      }
-
-      path {
-        fill: ${colors?.gray[600]};
-      }
     }
 
     &:active {
       background-color: ${colors?.gray[100]};
       border: none;
-      color: ${palette?.text?.primary};
-
-      span {
-        color: #000;
-      }
-
-      path {
-        fill: ${colors?.primary[400]};
-      }
     }
 
     &:focus {
@@ -191,10 +173,11 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
+  const palette = getPalette(props);
 
   return css`
     ${props.sdsStyle === "minimal"
-      ? "& > span, &:hover > span { color: black; }"
+      ? `& > span, &:hover > span { color: ${palette?.text?.primary}; }`
       : ""}
 
     path {

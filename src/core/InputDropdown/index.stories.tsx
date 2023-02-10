@@ -6,7 +6,10 @@ import InputDropdown from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
   ${({ width }: Args) => {
-    return `width: ${width || 160}px;`;
+    return `
+      width: fit-content;
+      max-width: ${width || 160}px;
+    `;
   }}
 `;
 
@@ -179,6 +182,8 @@ Default.parameters = {
 };
 
 const storyRow = {
+  // lprins: This prevents InputDropdown component from stretching height in grid
+  alignItems: "start",
   display: "grid",
   gridColumnGap: "24px",
   gridTemplateColumns: "repeat(3, 160px)",
