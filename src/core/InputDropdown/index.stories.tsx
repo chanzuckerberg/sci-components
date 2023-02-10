@@ -62,7 +62,7 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <>
       {fullWidth ? (
-        <StyledInputDropdown
+        <InputDropdown
           disabled={disabled}
           label={label}
           onClick={handleClick}
@@ -73,7 +73,7 @@ const Demo = (props: Args): JSX.Element => {
           {...rest}
         />
       ) : (
-        <InputDropdown
+        <StyledInputDropdown
           disabled={disabled}
           label={label}
           onClick={handleClick}
@@ -250,12 +250,33 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
 
   return (
-    <Template
-      sdsType="singleSelect"
-      sdsStyle={sdsStyle}
-      label="Label"
-      {...rest}
-    />
+    <div style={storyRow as React.CSSProperties}>
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        {...rest}
+      />
+
+      {/* Details */}
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        details="Very looooooong details"
+        {...rest}
+      />
+
+      {/* shouldTruncateMinimalDetails */}
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        details="Very looooooong details"
+        shouldTruncateMinimalDetails
+        {...rest}
+      />
+    </div>
   );
 };
 
