@@ -95,7 +95,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
-  const palette = getPalette(props);
   const spacings = getSpaces(props);
 
   return css`
