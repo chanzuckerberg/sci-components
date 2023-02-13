@@ -12,16 +12,14 @@ import React, { ReactNode, SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { InputSearchProps } from "../InputSearch";
+import MenuItem from "../MenuItem";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
   StyledHeaderTitle,
   StyledMenuInputSearch,
-  StyledMenuItem,
-  StyledMenuItemContent,
-  StyledMenuItemCount,
   StyledMenuItemDetails,
-  StyledMenuItemIcon,
+  StyledMenuItemText,
   StyledPaper,
   StyledPopper,
   StyleProps,
@@ -40,7 +38,7 @@ export interface DropdownMenuOptionBasic extends DropdownMenuOptionGeneral {
 }
 
 export interface DropdownMenuOptionComponent extends DropdownMenuOptionGeneral {
-  children: ReactNode;
+  component?: ReactNode;
 }
 
 type Exclusive<T, U> = T & { [K in Exclude<keyof U, keyof T>]?: undefined };
@@ -237,33 +235,34 @@ const DropdownMenu = <
     option: T,
     { selected }: AutocompleteRenderOptionState
   ) {
-    return (
-      <li {...optionProps}>
-        <StyledMenuItem
-          {...{ component: "div" }}
-          isMultiSelect={multiple}
-          selected={selected}
-          count={option.count}
-        >
-          <StyledMenuItemContent>
-            {option.icon && (
-              <StyledMenuItemIcon>{option.icon}</StyledMenuItemIcon>
-            )}
-            <div>
-              {option.name}
-              {option.details && (
-                <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
-              )}
-            </div>
-          </StyledMenuItemContent>
+    let MenuItemContent;
 
-          {option.count && (
-            <StyledMenuItemCount className="menuItem-count">
-              {option.count}
-            </StyledMenuItemCount>
+    if (option.component) {
+      MenuItemContent = option.component;
+    } else {
+      MenuItemContent = (
+        <StyledMenuItemText>
+          {option.name}
+          {option.details && (
+            <StyledMenuItemDetails className="menuItem-details">
+              {option.details}
+            </StyledMenuItemDetails>
           )}
-        </StyledMenuItem>
-      </li>
+        </StyledMenuItemText>
+      );
+    }
+
+    return (
+      <MenuItem
+        column={option.count}
+        disabled={optionProps["aria-disabled"] === true}
+        icon={option.icon}
+        isMultiSelect={multiple}
+        selected={selected}
+        {...optionProps}
+      >
+        {MenuItemContent}
+      </MenuItem>
     );
   }
 };

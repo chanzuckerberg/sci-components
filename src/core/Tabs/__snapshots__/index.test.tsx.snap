@@ -237,7 +237,7 @@ exports[`<Tabs /> Test story renders snapshot 1`] = `
                       123
                     </span>
                     <div
-                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-eqa7zc-MuiChip-root"
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1xd7h49-MuiChip-root"
                     >
                       <span
                         class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"

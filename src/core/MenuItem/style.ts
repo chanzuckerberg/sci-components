@@ -15,7 +15,7 @@ const fontBodyXs = fontBody("xs");
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
-    const { selected, disabled } = props;
+    const { selected } = props;
     const colors = getColors(props);
     const fontWeights = getFontWeights(props);
     const spacings = getSpaces(props);
@@ -23,7 +23,7 @@ export const StyledMenuItem = styled(MenuItem)`
     const primary = colors?.primary[400];
 
     return `
-      padding: ${spacings?.xs}px ${spacings?.s}px;
+      padding: ${spacings?.xs}px ${spacings?.s}px !important;
       min-height: unset;
       opacity: 1;
 
@@ -37,6 +37,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiButtonBase-root {
         background-color: transparent;
+        opacity: 1;
 
         &:hover, &.${menuItemClasses.focusVisible} {
           background-color: ${colors?.gray[100]};
@@ -51,19 +52,24 @@ export const StyledMenuItem = styled(MenuItem)`
         align-self: flex-start;
         margin-top: 3px;
         margin-bottom: -3px;
-        ${disabled ? `background-color: red;` : null}
       }
-  
-      &.MuiAutocomplete-option[aria-selected="true"] {
-        background-color: white;
 
+      &.MuiMenuItem-root .Mui-disabled {
+        opacity: 1 !important;
+      }
+
+      &.MuiAutocomplete-option[aria-selected="true"] {
         &:hover {
-          background-color: ${colors?.gray[100]};
+          background-color: ${colors?.gray[100]} !important;
         }
 
         svg.check-icon {
           color: ${selected ? primary : colors?.gray[500]};
         }
+      }
+
+      &.MuiAutocomplete-option[aria-disabled="true"] {
+        opacity: 1;
       }
 
       &.MuiListItem-root .MuiSvgIcon-root {
@@ -115,7 +121,7 @@ export const StyledMenuItem = styled(MenuItem)`
 export const ContentWrapper = styled("span")`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 `;
 
@@ -148,10 +154,32 @@ export const TextWrapper = styled("span")<TextWrapperProps>`
 
     return `
       color: ${palette?.text?.primary};
+      display: flex;
+      white-space: pre-wrap;
     `;
   }}
 
   ${disabledStyles}
+`;
+
+interface MenuItemIconProps extends CommonThemeProps {
+  disabled?: boolean;
+}
+
+export const StyledMenuItemIcon = styled("span")`
+  ${(props: MenuItemIconProps) => {
+    const { disabled } = props;
+    const spacings = getSpaces(props);
+    const colors = getColors(props);
+
+    return `
+      margin-right: ${spacings?.xs}px;
+
+      .MuiSvgIcon-root {
+        ${disabled ? `color: ${colors?.gray[300]};` : null}
+      }
+    `;
+  }}
 `;
 
 interface ColumnWrapperProps {
@@ -161,13 +189,9 @@ interface ColumnWrapperProps {
 export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${fontBodyXs}
 
-  ${(props) => {
-    const colors = getColors(props);
-
-    return `
-      color: ${colors?.gray[500]};
-    `;
-  }}
+  text-align: right;
+  color: black;
+  margin-left: 10px;
 
   ${disabledStyles}
 `;

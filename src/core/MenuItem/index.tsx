@@ -5,11 +5,13 @@ import {
   ContentWrapper,
   StyledCheck,
   StyledMenuItem,
+  StyledMenuItemIcon,
   TextWrapper,
 } from "./style";
 
 export interface MenuItemExtraProps {
   column?: React.ReactNode;
+  icon?: React.ReactNode;
   isMultiSelect?: boolean;
 }
 
@@ -22,6 +24,7 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
   const {
     children,
     column = null,
+    icon = null,
     disabled,
     isMultiSelect = false,
     ...originalMenuItemProps
@@ -46,8 +49,12 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
           className="primary-text"
           disabled={disabled}
         >
+          {icon && (
+            <StyledMenuItemIcon disabled={disabled}>{icon}</StyledMenuItemIcon>
+          )}
           {children}
         </TextWrapper>
+
         {column && <ColumnWrapper disabled={disabled}>{column}</ColumnWrapper>}
       </ContentWrapper>
     </StyledMenuItem>

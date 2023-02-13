@@ -5,6 +5,7 @@ import ButtonIcon from "../ButtonIcon";
 import { MUIValue, Value } from "../Dropdown";
 import Icon from "../Icon";
 import InputDropdown from "../InputDropdown";
+import Tag from "../Tag";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 export type DropdownOptionValue<T, Multiple> = Multiple extends
@@ -77,6 +78,7 @@ const Demo = <Multiple extends boolean | undefined = false>(
           return (
             option.name === "Type: feature request" ||
             option.name === "Type: documentation"
+            // option.section === "priority"
           );
         }}
         {...props}
@@ -609,92 +611,109 @@ Test.parameters = {
  */
 const GITHUB_LABELS = [
   {
-    count: 7,
-    details: "Bigger than 85",
-    name: "Priority: critical",
-    section: "priority",
-  },
-  {
-    details: "Between 50 and 85",
-    name: "Priority: high",
-    section: "priority",
-  },
-  {
-    details: "Between 25 and 50",
-    name: "Priority: medium",
-    section: "priority",
-  },
-  {
-    details: "Smaller than 25",
-    name: "Priority: low",
-    section: "priority",
-  },
-  {
-    details: "are you sure about this?",
     name: "Status: can't reproduce",
-    section: "status",
+    section: "name only",
   },
   {
     name: "Status: confirmed",
-    section: "status",
+    section: "name only",
   },
   {
     count: 3,
     name: "Status: duplicate",
-    section: "status",
+    section: "name with count",
   },
   {
+    count: 5,
     name: "Status: needs information",
-    section: "status",
+    section: "name with count",
   },
   {
     details: "This will not be worked on",
     name: "Status: wont do/fix",
-    section: "status",
+    section: "name with details",
   },
   {
+    details: "This is still in progress",
+    name: "Status: work in progress",
+    section: "name with details",
+  },
+  {
+    details: "This will not be worked on",
     icon: <Icon sdsIcon="bacteria" sdsSize="s" sdsType="static" />,
     name: "Type: bug",
-    section: "type",
+    section: "With Icon",
   },
   {
+    count: 4,
     icon: <Icon sdsIcon="puzzlePiece" sdsSize="s" sdsType="static" />,
     name: "Type: discussion",
-    section: "type",
+    section: "With Icon",
   },
   {
     icon: <Icon sdsIcon="copy" sdsSize="s" sdsType="static" />,
     name: "Type: documentation",
-    section: "type",
+    section: "With Icon",
   },
   {
     icon: <Icon sdsIcon="lightBulb" sdsSize="s" sdsType="static" />,
     name: "Type: enhancement",
-    section: "type",
+    section: "With Icon",
   },
   {
     icon: <Icon sdsIcon="list" sdsSize="s" sdsType="static" />,
     name: "Type: epic",
-    section: "type",
+    section: "With Icon",
   },
   {
     icon: <Icon sdsIcon="treeVertical" sdsSize="s" sdsType="static" />,
     name: "Type: feature request",
-    section: "type",
+    section: "With Icon",
   },
   {
     icon: <Icon sdsIcon="search" sdsSize="s" sdsType="static" />,
     name: "Type: question",
-    section: "type",
+    section: "With Icon",
   },
   {
-    count: "3",
-    name: "Good first issue",
-    section: "uncategorized",
+    component: (
+      <div>
+        <Icon sdsIcon="exclamationMarkCircle" sdsSize="s" sdsType="static" />{" "}
+        <span>Add an icon using custom component</span>
+      </div>
+    ),
+    count: 32,
+    name: "custom 1",
+    section: "custom component",
   },
   {
-    name: "Help wanted",
-    section: "uncategorized",
+    component: (
+      <div>
+        Available Labels:
+        <div style={{ marginTop: 10 }}>
+          <Tag
+            label="bug"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="error"
+          />
+          <Tag
+            label="feature"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="warning"
+          />
+          <Tag
+            label="refactor"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="gray"
+          />
+        </div>
+      </div>
+    ),
+    name: "custom 2",
+    section: "custom component",
   },
 ];
 
