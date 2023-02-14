@@ -2,7 +2,7 @@
 
 exports[`<Dropdown /> Test story renders snapshot 1`] = `
 <button
-  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-je8px9-MuiButtonBase-root-MuiButton-root"
+  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-4n1h51-MuiButtonBase-root-MuiButton-root"
   data-testid="dropdown"
   label="Click Target"
   tabindex="0"
@@ -12,7 +12,7 @@ exports[`<Dropdown /> Test story renders snapshot 1`] = `
     class="css-t2kylo"
   >
     <span
-      class="styled-label css-1sjvubj"
+      class="styled-label css-1wq753n"
     >
       Click Target
     </span>
@@ -32,7 +32,7 @@ exports[`<Dropdown /> Test story renders snapshot 1`] = `
     </div>
   </span>
   <div
-    class="css-194gbul"
+    class="css-z8cnb2"
   />
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"

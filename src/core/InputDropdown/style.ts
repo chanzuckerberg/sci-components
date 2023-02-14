@@ -4,7 +4,6 @@ import Button from "../Button";
 import {
   CommonThemeProps,
   fontBody,
-  fontHeaderS,
   getBorders,
   getColors,
   getCorners,
@@ -137,7 +136,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &.MuiButton-root.MuiButton-text > span {
-      ${fontHeaderS(props)}
+      ${labelFontBodyS(props)}
       margin-left: 0;
     }
 
@@ -250,7 +249,7 @@ const doNotForwardProps = ["intent", "open", "sdsStage"];
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyS}
+  ${labelFontBodyXs}
 
   /* (thuang): in Minimal it's a different value */
   align-items: center;
@@ -277,7 +276,6 @@ export const StyledInputDropdown = styled(Button, {
 export const StyledDetail = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
 
@@ -295,7 +293,6 @@ interface DetailsAndCounter extends CommonThemeProps {
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
     const colors = getColors(props);
@@ -313,7 +310,6 @@ export const StyledLabel = styled("span", {
 export const StyledCounter = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
     const corners = getCorners(props);
@@ -328,15 +324,16 @@ export const StyledCounter = styled("span", {
   }}
 `;
 
+interface MinimalDetailsProps extends CommonThemeProps {
+  shouldTruncateMinimalDetails: InputDropdownProps["shouldTruncateMinimalDetails"];
+}
+
 export const MinimalDetails = styled("div")`
+  ${labelFontBodyS}
   text-align: left;
   width: 100%;
 
-  ${({
-    shouldTruncateMinimalDetails,
-  }: {
-    shouldTruncateMinimalDetails: InputDropdownProps["shouldTruncateMinimalDetails"];
-  }) => {
+  ${({ shouldTruncateMinimalDetails }: MinimalDetailsProps) => {
     if (shouldTruncateMinimalDetails) {
       return `
         overflow: hidden;
