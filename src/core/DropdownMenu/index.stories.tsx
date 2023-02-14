@@ -501,7 +501,7 @@ LivePreview.parameters = {
 // Test Story
 
 const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const { multiple, options = LIVE_PREVIEW_LABELS, search } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
