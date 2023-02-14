@@ -244,7 +244,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["intent", "open", "sdsStage"];
+const doNotForwardProps = ["intent", "open", "sdsStage", "isMinimal"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -344,7 +344,9 @@ export const MinimalDetails = styled("div")`
   }}
 `;
 
-export const LabelWrapper = styled("span")`
+export const LabelWrapper = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${({ isMinimal }: { isMinimal: boolean }) => {
     return `
       align-items: ${isMinimal ? "center" : undefined};
