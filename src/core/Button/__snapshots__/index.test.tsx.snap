@@ -23,7 +23,7 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
       class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -78,7 +78,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
       class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -116,7 +116,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
       class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -161,7 +161,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
       class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -199,7 +199,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
       class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"

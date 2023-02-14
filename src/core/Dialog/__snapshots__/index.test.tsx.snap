@@ -13,7 +13,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -93,7 +93,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -173,7 +173,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -253,7 +253,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
