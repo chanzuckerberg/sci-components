@@ -78,7 +78,6 @@ const Demo = <Multiple extends boolean | undefined = false>(
           return (
             option.name === "Type: feature request" ||
             option.name === "Type: documentation"
-            // option.section === "priority"
           );
         }}
         {...props}
