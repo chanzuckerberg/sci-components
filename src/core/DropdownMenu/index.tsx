@@ -11,8 +11,9 @@ import {
 import React, { ReactNode, SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
+import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
-import MenuItem from "../MenuItem";
+import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
@@ -34,7 +35,8 @@ interface DropdownMenuOptionGeneral {
 export interface DropdownMenuOptionBasic extends DropdownMenuOptionGeneral {
   count?: number;
   details?: string;
-  icon?: ReactNode;
+  sdsIcon?: keyof IconNameToSmallSizes;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>;
 }
 
 export interface DropdownMenuOptionComponent extends DropdownMenuOptionGeneral {
@@ -256,7 +258,7 @@ const DropdownMenu = <
       <MenuItem
         column={option.count}
         disabled={optionProps["aria-disabled"] === true}
-        icon={option.icon}
+        sdsIcon={option.sdsIcon}
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}

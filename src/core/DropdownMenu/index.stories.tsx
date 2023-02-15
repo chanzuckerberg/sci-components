@@ -640,39 +640,39 @@ const GITHUB_LABELS = [
   },
   {
     details: "This will not be worked on",
-    icon: <Icon sdsIcon="bacteria" sdsSize="s" sdsType="static" />,
     name: "Type: bug",
+    sdsIcon: "bacteria",
     section: "With Icon",
   },
   {
     count: 4,
-    icon: <Icon sdsIcon="puzzlePiece" sdsSize="s" sdsType="static" />,
     name: "Type: discussion",
+    sdsIcon: "puzzlePiece",
     section: "With Icon",
   },
   {
-    icon: <Icon sdsIcon="copy" sdsSize="s" sdsType="static" />,
     name: "Type: documentation",
+    sdsIcon: "copy",
     section: "With Icon",
   },
   {
-    icon: <Icon sdsIcon="lightBulb" sdsSize="s" sdsType="static" />,
     name: "Type: enhancement",
+    sdsIcon: "lightBulb",
     section: "With Icon",
   },
   {
-    icon: <Icon sdsIcon="list" sdsSize="s" sdsType="static" />,
     name: "Type: epic",
+    sdsIcon: "list",
     section: "With Icon",
   },
   {
-    icon: <Icon sdsIcon="treeVertical" sdsSize="s" sdsType="static" />,
     name: "Type: feature request",
+    sdsIcon: "treeVertical",
     section: "With Icon",
   },
   {
-    icon: <Icon sdsIcon="search" sdsSize="s" sdsType="static" />,
     name: "Type: question",
+    sdsIcon: "search",
     section: "With Icon",
   },
   {
@@ -719,7 +719,6 @@ const GITHUB_LABELS = [
 
 const LIVE_PREVIEW_LABELS = [
   {
-    // icon: <Icon sdsIcon="flagCheck" sdsSize="s" sdsType="static" />,
     name: "Menu Item 1",
     section: "Section 1",
   },

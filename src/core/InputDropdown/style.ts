@@ -244,7 +244,13 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["intent", "open", "sdsStage", "isMinimal"];
+const doNotForwardProps = [
+  "intent",
+  "open",
+  "sdsStage",
+  "isMinimal",
+  "shouldTruncateMinimalDetails",
+];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -328,7 +334,9 @@ interface MinimalDetailsProps extends CommonThemeProps {
   shouldTruncateMinimalDetails: InputDropdownProps["shouldTruncateMinimalDetails"];
 }
 
-export const MinimalDetails = styled("div")`
+export const MinimalDetails = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${labelFontBodyS}
   text-align: left;
   width: 100%;
