@@ -13,6 +13,10 @@ const Demo = (props: Args): JSX.Element => {
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
+      DropdownMenuProps={{
+        groupBy: (option: DefaultDropdownMenuOption) =>
+          option.section as string,
+      }}
       {...props}
     />
   );

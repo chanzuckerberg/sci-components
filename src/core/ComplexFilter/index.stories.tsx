@@ -1,6 +1,7 @@
 import { Args, Meta, Story } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import ComplexFilter from "./index";
 
@@ -10,6 +11,10 @@ const Demo = (props: Args): JSX.Element => {
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
+      DropdownMenuProps={{
+        groupBy: (option: DefaultDropdownMenuOption) =>
+          option.section as string,
+      }}
       {...props}
     />
   );
