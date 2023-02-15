@@ -21,7 +21,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -75,7 +75,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -110,7 +110,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -161,7 +161,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -195,7 +195,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -228,7 +228,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -282,7 +282,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -316,7 +316,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -369,7 +369,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -403,7 +403,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -437,7 +437,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -470,7 +470,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -513,7 +513,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -547,7 +547,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -581,7 +581,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -615,7 +615,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -666,7 +666,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"

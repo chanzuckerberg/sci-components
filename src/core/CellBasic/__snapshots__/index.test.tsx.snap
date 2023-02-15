@@ -99,7 +99,7 @@ exports[`<CellBasic /> Test story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-s2a1ac-MuiSvgIcon-root"
                 data-jest-file-name="IconBacteriaLarge.svg"
                 data-jest-svg-name="IconBacteriaLarge"
                 data-testid="IconBacteriaLarge"

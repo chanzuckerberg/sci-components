@@ -11,68 +11,69 @@ import {
 } from "../styles";
 import Icon from "./index";
 import { iconMap, IconNameToSizes } from "./map";
+import { SdsIconColorType } from "./style";
 
 const Demo = (props: Args): JSX.Element => {
-  const { px, sdsIcon, sdsSize, sdsType } = props;
+  const { sdsIcon, sdsSize, sdsType, ...rest } = props;
 
   return (
-    <div style={{ alignItems: "center", display: "flex" }}>
-      <Icon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} />
-      <span style={{ marginLeft: "8px" }}>{px}px</span>
-    </div>
+    <Icon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
   );
 };
 
 export default {
+  argTypes: {
+    color: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "beta",
+        "gray",
+        "primary",
+        "secondary",
+        "error",
+        "info",
+        "success",
+        "warning",
+      ],
+    },
+    sdsIcon: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "checkCircle",
+        "copy",
+        "edit",
+        "lightBulb",
+        "linesHorizontal",
+        "loading",
+        "xMark",
+      ],
+    },
+    sdsSize: {
+      control: { type: "select" },
+      options: ["xs", "s", "l", "xl"],
+    },
+    sdsType: {
+      control: { type: "select" },
+      options: ["iconButton", "interactive", "static", "button"],
+    },
+  },
   component: Demo,
   title: "Icon",
 } as Meta;
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const IconXS = Template.bind({});
+export const Default = Template.bind({});
 
-IconXS.args = {
-  px: 10,
-  sdsIcon: "checkCircle",
-  sdsSize: "xs",
-  sdsType: "static",
-};
-
-export const IconS = Template.bind({});
-
-IconS.args = {
-  px: 14,
-  sdsIcon: "checkCircle",
-  sdsSize: "s",
-  sdsType: "static",
-};
-
-export const IconL = Template.bind({});
-
-IconL.args = {
-  px: 22,
+Default.args = {
+  color: "primary",
   sdsIcon: "checkCircle",
   sdsSize: "l",
   sdsType: "static",
-};
-
-export const IconXL = Template.bind({});
-
-IconXL.args = {
-  px: 32,
-  sdsIcon: "checkCircle",
-  sdsSize: "xl",
-  sdsType: "static",
-};
-
-export const IconInteractive = Template.bind({});
-
-IconInteractive.args = {
-  px: 32,
-  sdsIcon: "checkCircle",
-  sdsSize: "xl",
-  sdsType: "interactive",
 };
 
 const IconBankWrapper = styled("div")`
@@ -92,9 +93,11 @@ const IconBankWrapper = styled("div")`
 `;
 
 const IconWrapper = styled("div")`
-  ${(props: CommonThemeProps) => {
+  ${(props: CommonThemeProps & { color?: SdsIconColorType }) => {
     const colors = getColors(props);
     const spacings = getSpaces(props);
+
+    const { color } = props;
 
     return `
       align-items: center;
@@ -130,8 +133,10 @@ const IconWrapper = styled("div")`
 
       &:hover {
         border-radius: 2px;
-        background-color: ${colors?.primary[400]};
-        border-color: ${colors?.primary[400]};
+        background-color: ${
+          color ? colors?.[color][400] : colors?.primary[400]
+        };
+        border-color: ${color ? colors?.[color][400] : colors?.primary[400]};
         color: white;
 
         p {
@@ -178,7 +183,77 @@ const IconWrapper = styled("div")`
   }}
 `;
 
-export const IconBank = () => {
+type IconItemProps = {
+  sdsIcon: string;
+  innerIcon: [string, FC<CustomSVGProps> | null];
+  color?: SdsIconColorType;
+};
+
+const IconItem = (props: IconItemProps) => {
+  const { sdsIcon, innerIcon, color } = props;
+  if (!innerIcon[1]) return null;
+  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+  const [copied, setCopied] = useState(false);
+
+  const copyIconNameHandler = (iconName: string) => {
+    navigator.clipboard.writeText(iconName);
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1500);
+  };
+
+  return (
+    <IconWrapper
+      color={color}
+      key={sdsIcon + sdsSize}
+      onClick={() => copyIconNameHandler(sdsIcon)}
+    >
+      <div className="icon">
+        <Icon
+          color={color}
+          sdsSize={sdsSize}
+          sdsIcon={sdsIcon as keyof IconNameToSizes}
+          sdsType="static"
+        />
+      </div>
+      <p>{sdsIcon}</p>
+      <span>
+        Available sizes{" "}
+        {sdsSize === "s" ? (
+          <>
+            <span className="size-tag">xs</span>
+            <span className="size-tag">s</span>
+          </>
+        ) : (
+          <>
+            <span className="size-tag">l</span>
+            <span className="size-tag">xl</span>
+          </>
+        )}
+      </span>
+      {copied && (
+        <div className="notif">
+          <Icon
+            color={color}
+            sdsSize={sdsSize}
+            sdsIcon={sdsIcon as keyof IconNameToSizes}
+            sdsType="static"
+          />
+          <p>Copied!</p>
+          <span>
+            <Icon color={color} sdsSize="xs" sdsIcon="check" sdsType="static" />
+          </span>
+        </div>
+      )}
+    </IconWrapper>
+  );
+};
+
+const IconBankDemo = (props: Args): JSX.Element => {
+  const { color } = props;
+
   const initialIcons = Object.entries(iconMap);
 
   const [icons, setIcons] = useState(initialIcons);
@@ -207,6 +282,7 @@ export const IconBank = () => {
           {icons.map(([sdsIcon, icon]) => {
             return Object.entries(icon).map((innerIcon) => (
               <IconItem
+                color={color}
                 key={sdsIcon + innerIcon[0]}
                 innerIcon={innerIcon}
                 sdsIcon={sdsIcon}
@@ -228,66 +304,38 @@ export const IconBank = () => {
   );
 };
 
-type IconItemProps = {
-  sdsIcon: string;
-  innerIcon: [string, FC<CustomSVGProps> | null];
+const IconBankTemplate: Story = (args) => <IconBankDemo {...args} />;
+
+export const IconBank = IconBankTemplate.bind({});
+
+IconBank.parameters = {
+  controls: {
+    exclude: ["sdsIcon", "sdsSize", "sdsType"],
+  },
 };
 
-const IconItem = (props: IconItemProps) => {
-  const { sdsIcon, innerIcon } = props;
-  if (!innerIcon[1]) return null;
-  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
-  const [copied, setCopied] = useState(false);
+IconBank.args = {
+  color: "primary",
+};
 
-  const copyIconNameHandler = (iconName: string) => {
-    navigator.clipboard.writeText(iconName);
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 1500);
-  };
-
+const TestDemo = (): JSX.Element => {
   return (
-    <IconWrapper
-      key={sdsIcon + sdsSize}
-      onClick={() => copyIconNameHandler(sdsIcon)}
-    >
-      <div className="icon">
-        <Icon
-          sdsSize={sdsSize}
-          sdsIcon={sdsIcon as keyof IconNameToSizes}
-          sdsType="static"
-        />
-      </div>
-      <p>{sdsIcon}</p>
-      <span>
-        Available sizes{" "}
-        {sdsSize === "s" ? (
-          <>
-            <span className="size-tag">xs</span>
-            <span className="size-tag">s</span>
-          </>
-        ) : (
-          <>
-            <span className="size-tag">l</span>
-            <span className="size-tag">xl</span>
-          </>
-        )}
-      </span>
-      {copied && (
-        <div className="notif">
-          <Icon
-            sdsSize={sdsSize}
-            sdsIcon={sdsIcon as keyof IconNameToSizes}
-            sdsType="static"
-          />
-          <p>Copied!</p>
-          <span>
-            <Icon sdsSize="xs" sdsIcon="check" sdsType="static" />
-          </span>
-        </div>
-      )}
-    </IconWrapper>
+    <Icon
+      sdsIcon="checkCircle"
+      sdsSize="l"
+      sdsType="static"
+      color="success"
+      data-testid="icon"
+    />
   );
+};
+
+const TestTemplate: Story = (args) => <TestDemo {...args} />;
+
+export const Test = TestTemplate.bind({});
+
+Test.parameters = {
+  controls: {
+    exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
+  },
 };

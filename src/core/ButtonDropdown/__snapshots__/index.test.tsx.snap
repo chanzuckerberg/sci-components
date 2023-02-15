@@ -16,7 +16,7 @@ exports[`<ButtonDropdown /> Test story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
         data-jest-file-name="IconDownloadLarge.svg"
         data-jest-svg-name="IconDownloadLarge"
         data-testid="IconDownloadLarge"
@@ -35,7 +35,7 @@ exports[`<ButtonDropdown /> Test story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
         data-jest-file-name="IconChevronDownSmall.svg"
         data-jest-svg-name="IconChevronDownSmall"
         data-testid="IconChevronDownSmall"

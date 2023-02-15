@@ -13,6 +13,24 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   sdsType: "iconButton" | "interactive" | "static" | "button";
 }
 
+export type SdsIconColorType =
+  | "beta"
+  | "gray"
+  | "primary"
+  | "secondary"
+  | "info"
+  | "success"
+  | "warning"
+  | "error";
+
+interface CustomSvgIconProps
+  extends SvgIconProps<"svg", { component: FC<CustomSVGProps> }> {
+  iconColor?: SdsIconColorType;
+}
+
+export type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
+  IconExtraProps<IconName> & CustomSVGProps & CustomSvgIconProps;
+
 /**
  * @see https://mui.com/material-ui/icons/#svgicon
  */
@@ -23,6 +41,7 @@ function iconSize<IconName extends keyof IconNameToSizes>(
   const iconSizes = getIconSizes(props);
 
   return css`
+    color: inherit;
     height: ${iconSizes?.[sdsSize]?.height}px;
     width: ${iconSizes?.[sdsSize]?.width}px;
   `;
@@ -35,19 +54,22 @@ function buttonStyle(): SerializedStyles {
 }
 
 function staticStyle<IconName extends keyof IconNameToSizes>(
-  props: IconExtraProps<IconName>
+  props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
+  const { iconColor } = props;
   const colors = getColors(props);
 
+  // ${color ? null : `color: ${colors?.primary[400]};`}
   return css`
-    color: ${colors?.primary[400]};
+    color: ${iconColor ? colors?.[iconColor][400] : colors?.primary[400]};
   `;
 }
 
 function interactive<IconName extends keyof IconNameToSizes>(
-  props: IconExtraProps<IconName>
+  props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
+  const { iconColor } = props;
 
   return css`
     color: ${colors?.gray[500]};
@@ -57,7 +79,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:active {
-      color: ${colors?.primary[400]};
+      color: ${iconColor ? colors?.[iconColor][400] : colors?.primary[400]};
     }
 
     &:disabled {
@@ -66,12 +88,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
   `;
 }
 
-const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType"];
-
-type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
-  IconExtraProps<IconName> &
-    CustomSVGProps &
-    SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
+const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType", "iconColor"];
 
 export const StyledSvgIcon = styled(SvgIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),

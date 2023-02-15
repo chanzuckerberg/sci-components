@@ -1,6 +1,8 @@
-import { Icon, IconProps } from "czifui";
+import { Icon } from "czifui";
 import React from "react";
 
-const IconNameSpaceTest = (props: IconProps<"bacteria">) => {
-  return <Icon sdsIcon="bacteria" sdsSize="xl" sdsType="static" />;
+const IconNameSpaceTest = () => {
+  return (
+    <Icon color="primary" sdsIcon="bacteria" sdsSize="xl" sdsType="static" />
+  );
 };

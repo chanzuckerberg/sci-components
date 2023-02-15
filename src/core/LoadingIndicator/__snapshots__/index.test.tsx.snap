@@ -15,7 +15,7 @@ exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-s2a1ac-MuiSvgIcon-root"
           data-jest-file-name="IconLoadingLarge.svg"
           data-jest-svg-name="IconLoadingLarge"
           data-testid="IconLoadingLarge"
@@ -42,7 +42,7 @@ exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-s2a1ac-MuiSvgIcon-root"
           data-jest-file-name="IconLoadingLarge.svg"
           data-jest-svg-name="IconLoadingLarge"
           data-testid="IconLoadingLarge"
