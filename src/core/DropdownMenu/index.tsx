@@ -239,15 +239,17 @@ const DropdownMenu = <
   ) {
     let MenuItemContent;
 
-    if (option.component) {
-      MenuItemContent = option.component;
+    const { component, name, details, count, sdsIcon } = option;
+
+    if (component) {
+      MenuItemContent = component;
     } else {
       MenuItemContent = (
         <StyledMenuItemText>
-          {option.name}
-          {option.details && (
+          {name}
+          {details && (
             <StyledMenuItemDetails className="menuItem-details">
-              {option.details}
+              {details}
             </StyledMenuItemDetails>
           )}
         </StyledMenuItemText>
@@ -256,9 +258,9 @@ const DropdownMenu = <
 
     return (
       <MenuItem
-        column={option.count}
+        column={count}
         disabled={optionProps["aria-disabled"] === true}
-        sdsIcon={option.sdsIcon}
+        sdsIcon={sdsIcon}
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
