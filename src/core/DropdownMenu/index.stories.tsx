@@ -3,9 +3,8 @@ import { Args, Meta, Story } from "@storybook/react";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import { MUIValue, Value } from "../Dropdown";
-import Icon from "../Icon";
 import InputDropdown from "../InputDropdown";
-import Tag from "../Tag";
+import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 export type DropdownOptionValue<T, Multiple> = Multiple extends
@@ -602,119 +601,6 @@ Test.parameters = {
     skip: true,
   },
 };
-
-/*
- * From https://github.com/abdonrd/github-labels
- * Edited to have Sections and sorted to fix the MUI warning
- * for unsorted and groupedBy options
- */
-const GITHUB_LABELS = [
-  {
-    name: "Status: can't reproduce",
-    section: "name only",
-  },
-  {
-    name: "Status: confirmed",
-    section: "name only",
-  },
-  {
-    count: 3,
-    name: "Status: duplicate",
-    section: "name with count",
-  },
-  {
-    count: 5,
-    name: "Status: needs information",
-    section: "name with count",
-  },
-  {
-    details: "This will not be worked on",
-    name: "Status: wont do/fix",
-    section: "name with details",
-  },
-  {
-    details: "This is still in progress",
-    name: "Status: work in progress",
-    section: "name with details",
-  },
-  {
-    details: "This will not be worked on",
-    name: "Type: bug",
-    sdsIcon: "bacteria",
-    section: "With Icon",
-  },
-  {
-    count: 4,
-    name: "Type: discussion",
-    sdsIcon: "puzzlePiece",
-    section: "With Icon",
-  },
-  {
-    name: "Type: documentation",
-    sdsIcon: "copy",
-    section: "With Icon",
-  },
-  {
-    name: "Type: enhancement",
-    sdsIcon: "lightBulb",
-    section: "With Icon",
-  },
-  {
-    name: "Type: epic",
-    sdsIcon: "list",
-    section: "With Icon",
-  },
-  {
-    name: "Type: feature request",
-    sdsIcon: "treeVertical",
-    section: "With Icon",
-  },
-  {
-    name: "Type: question",
-    sdsIcon: "search",
-    section: "With Icon",
-  },
-  {
-    component: (
-      <div>
-        <Icon sdsIcon="exclamationMarkCircle" sdsSize="s" sdsType="static" />{" "}
-        <span>Add an icon using custom component</span>
-      </div>
-    ),
-    count: 32,
-    name: "custom 1",
-    section: "custom component",
-  },
-  {
-    component: (
-      <div>
-        Available Labels:
-        <div style={{ marginTop: 10 }}>
-          <Tag
-            label="bug"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="error"
-          />
-          <Tag
-            label="feature"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="warning"
-          />
-          <Tag
-            label="refactor"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="gray"
-          />
-        </div>
-      </div>
-    ),
-    name: "custom 2",
-    section: "custom component",
-  },
-];
 
 const LIVE_PREVIEW_LABELS = [
   {

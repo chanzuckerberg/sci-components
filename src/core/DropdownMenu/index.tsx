@@ -27,7 +27,6 @@ import {
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
-
 interface DropdownMenuOptionGeneral {
   name: string;
   section?: string;
@@ -52,7 +51,7 @@ export type DefaultDropdownMenuOption =
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
-interface ExtraProps extends StyleProps {
+interface ExtraDropdownMenuProps extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
@@ -86,7 +85,7 @@ export type DropdownMenuProps<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
-  ExtraProps;
+  ExtraDropdownMenuProps;
 
 const DropdownMenu = <
   T extends DefaultDropdownMenuOption,
@@ -239,7 +238,7 @@ const DropdownMenu = <
   ) {
     let MenuItemContent;
 
-    const { component, name, details, count, sdsIcon } = option;
+    const { component, name, details, count, sdsIcon, sdsIconProps } = option;
 
     if (component) {
       MenuItemContent = component;
@@ -261,6 +260,7 @@ const DropdownMenu = <
         column={count}
         disabled={optionProps["aria-disabled"] === true}
         sdsIcon={sdsIcon}
+        sdsIconProps={sdsIconProps}
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
