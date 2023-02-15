@@ -22,7 +22,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -50,7 +50,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -78,7 +78,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -106,7 +106,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -143,7 +143,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -171,7 +171,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconListSmall.svg"
           data-jest-svg-name="IconListSmall"
           data-testid="IconListSmall"
@@ -199,7 +199,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconTableSmall.svg"
           data-jest-svg-name="IconTableSmall"
           data-testid="IconTableSmall"
@@ -227,7 +227,7 @@ exports[`<SegmentedControl /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconPeopleSmall.svg"
           data-jest-svg-name="IconPeopleSmall"
           data-testid="IconPeopleSmall"

@@ -41,7 +41,6 @@ function iconSize<IconName extends keyof IconNameToSizes>(
   const iconSizes = getIconSizes(props);
 
   return css`
-    color: inherit;
     height: ${iconSizes?.[sdsSize]?.height}px;
     width: ${iconSizes?.[sdsSize]?.width}px;
   `;
@@ -59,7 +58,6 @@ function staticStyle<IconName extends keyof IconNameToSizes>(
   const { iconColor } = props;
   const colors = getColors(props);
 
-  // ${color ? null : `color: ${colors?.primary[400]};`}
   return css`
     color: ${iconColor ? colors?.[iconColor][400] : colors?.primary[400]};
   `;

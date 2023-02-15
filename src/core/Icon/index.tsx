@@ -31,7 +31,6 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
       <StyledIcon ref={ref}>
         <StyledSvgIcon
           iconColor={color}
-          color="primary"
           className={className}
           fillcontrast="white"
           viewBox="0 0 14 14"
@@ -48,7 +47,6 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
       <StyledIcon ref={ref}>
         <StyledSvgIcon
           iconColor={color}
-          color="primary"
           className={className}
           fillcontrast="white"
           viewBox="0 0 22 22"

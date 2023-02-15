@@ -27,7 +27,7 @@ exports[`<button /> MinimalLivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconDownloadSmall.svg"
           data-jest-svg-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
@@ -82,7 +82,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconDownloadSmall.svg"
           data-jest-svg-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
@@ -120,7 +120,7 @@ exports[`<button /> RoundedLivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconDownloadSmall.svg"
           data-jest-svg-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
@@ -165,7 +165,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconDownloadSmall.svg"
           data-jest-svg-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
@@ -203,7 +203,7 @@ exports[`<button /> SquareLivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1uy0k8-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
           data-jest-file-name="IconDownloadSmall.svg"
           data-jest-svg-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"

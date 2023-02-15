@@ -13,7 +13,7 @@ exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
       data-jest-file-name="IconDotsHorizontal3Large.svg"
       data-jest-svg-name="IconDotsHorizontal3Large"
       data-testid="IconDotsHorizontal3Large"

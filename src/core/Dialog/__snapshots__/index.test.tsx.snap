@@ -17,7 +17,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
         data-jest-file-name="IconXMarkSmall.svg"
         data-jest-svg-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
@@ -97,7 +97,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
@@ -177,7 +177,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
@@ -257,7 +257,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1i58sq6-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
