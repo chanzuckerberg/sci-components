@@ -4,7 +4,6 @@ import Button from "../Button";
 import {
   CommonThemeProps,
   fontBody,
-  fontHeaderS,
   getBorders,
   getColors,
   getCorners,
@@ -23,6 +22,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   sdsType?: "singleSelect" | "multiSelect";
   details?: string;
   counter?: string;
+  shouldTruncateMinimalDetails?: boolean;
 }
 
 const labelFontBodyS = fontBody("s");
@@ -36,18 +36,16 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border: ${borders?.gray[400]};
-    color: ${colors?.gray[500]};
+    color: ${palette?.text?.primary};
     cursor: pointer;
     padding: ${spacings?.xs}px;
 
     &.MuiButton-text {
-      justify-content: flex-start;
-
       &:hover {
         color: #000;
       }
 
-      > span {
+      .styled-label {
         margin-right: ${spacings?.xs}px;
         margin-left: ${spacings?.xs}px;
         overflow: hidden;
@@ -74,7 +72,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         fill: ${colors?.gray[600]};
       }
 
-      > span {
+      .styled-label {
         color: #000;
       }
     }
@@ -96,14 +94,23 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
-  const palette = getPalette(props);
+  const spacings = getSpaces(props);
 
   return css`
-    border: none;
-    padding: 0;
+    ${labelStyle(props)}
 
-    & .MuiButton-label {
-      margin: 0;
+    /* this is needed to left align the label text */
+    align-items: flex-start;
+    border: none;
+    flex-direction: column;
+    padding: ${spacings?.xs}px ${spacings?.s}px;
+
+    /* Nesting to increase CSS specificity for style override */
+    &.MuiButton-text {
+      .styled-label {
+        margin: 0;
+        margin-right: ${spacings?.xs}px;
+      }
     }
 
     span {
@@ -115,29 +122,13 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      color: ${colors?.gray[600]};
+      background-color: ${colors?.gray[100]};
       border: none;
-
-      span {
-        color: ${colors?.gray[600]};
-      }
-
-      path {
-        fill: ${colors?.gray[600]};
-      }
     }
 
     &:active {
-      color: ${palette?.text?.primary};
+      background-color: ${colors?.gray[100]};
       border: none;
-
-      span {
-        color: #000;
-      }
-
-      path {
-        fill: ${colors?.primary[400]};
-      }
     }
 
     &:focus {
@@ -145,7 +136,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &.MuiButton-root.MuiButton-text > span {
-      ${fontHeaderS(props)}
+      ${labelFontBodyS(props)}
       margin-left: 0;
     }
 
@@ -168,32 +159,23 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
 const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
-  const colors = getColors(props);
-  const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
 
   return css`
+    ${labelStyle(props)}
+
     border-radius: ${corners?.l}px;
     height: 34px;
     min-width: 90px;
-
-    &.MuiButton-text {
-      > span:first-of-type {
-        font-weight: 600;
-        color: ${labelColor};
-      }
-    }
   `;
 };
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
+  const palette = getPalette(props);
 
   return css`
     ${props.sdsStyle === "minimal"
-      ? "& > span, &:hover > span { color: black; }"
+      ? `& > span, &:hover > span { color: ${palette?.text?.primary}; }`
       : ""}
 
     path {
@@ -262,12 +244,18 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = ["intent", "open", "sdsStage"];
+const doNotForwardProps = ["intent", "open", "sdsStage", "isMinimal"];
 
 export const StyledInputDropdown = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyS}
+  ${labelFontBodyXs}
+
+  /* (thuang): in Minimal it's a different value */
+  align-items: center;
+  /* (thuang): in Minimal it's a different value */
+  flex-direction: row;
+
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
 
@@ -288,7 +276,6 @@ export const StyledInputDropdown = styled(Button, {
 export const StyledDetail = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
 
@@ -306,7 +293,6 @@ interface DetailsAndCounter extends CommonThemeProps {
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props: DetailsAndCounter) => {
     const { details, counter } = props;
     const colors = getColors(props);
@@ -324,7 +310,6 @@ export const StyledLabel = styled("span", {
 export const StyledCounter = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${labelFontBodyXs}
   ${(props) => {
     const colors = getColors(props);
     const corners = getCorners(props);
@@ -338,3 +323,51 @@ export const StyledCounter = styled("span", {
   `;
   }}
 `;
+
+interface MinimalDetailsProps extends CommonThemeProps {
+  shouldTruncateMinimalDetails: InputDropdownProps["shouldTruncateMinimalDetails"];
+}
+
+export const MinimalDetails = styled("div")`
+  ${labelFontBodyS}
+  text-align: left;
+  width: 100%;
+
+  ${({ shouldTruncateMinimalDetails }: MinimalDetailsProps) => {
+    if (shouldTruncateMinimalDetails) {
+      return `
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      `;
+    }
+  }}
+`;
+
+export const LabelWrapper = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${({ isMinimal }: { isMinimal: boolean }) => {
+    return `
+      align-items: ${isMinimal ? "center" : undefined};
+      display: ${isMinimal ? "inline-flex" : "contents"};
+    `;
+  }}
+`;
+
+function labelStyle(props: InputDropdownProps): SerializedStyles {
+  const colors = getColors(props);
+  const palette = getPalette(props);
+  const labelColor = props.disabled
+    ? colors?.gray[300]
+    : palette?.text?.primary;
+
+  return css`
+    &.MuiButton-text {
+      .styled-label {
+        font-weight: 600;
+        color: ${labelColor};
+      }
+    }
+  `;
+}
