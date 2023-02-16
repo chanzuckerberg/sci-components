@@ -23,6 +23,6 @@ describe("<DropdownMenu />", () => {
     render(<Test {...Test.args} />);
     const InputDropdownElement = screen.getByTestId("dropdown-menu");
     fireEvent.click(InputDropdownElement);
-    expect(screen.getAllByText("Priority: critical")).not.toBeNull();
+    expect(screen.getAllByText("Menu Item 1")).not.toBeNull();
   });
 });
