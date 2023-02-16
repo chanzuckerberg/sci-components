@@ -55,11 +55,11 @@ function buttonStyle(): SerializedStyles {
 function staticStyle<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const { iconColor } = props;
+  const { iconColor = "primary" } = props;
   const colors = getColors(props);
 
   return css`
-    color: ${iconColor ? colors?.[iconColor][400] : colors?.primary[400]};
+    color: ${colors?.[iconColor][400]};
   `;
 }
 
@@ -67,7 +67,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
-  const { iconColor } = props;
+  const { iconColor = "primary" } = props;
 
   return css`
     color: ${colors?.gray[500]};
@@ -77,7 +77,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:active {
-      color: ${iconColor ? colors?.[iconColor][400] : colors?.primary[400]};
+      color: ${colors?.[iconColor][400]};
     }
 
     &:disabled {

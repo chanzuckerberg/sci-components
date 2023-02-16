@@ -97,7 +97,7 @@ const IconWrapper = styled("div")`
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
-    const { color } = props;
+    const { color = "primary" } = props;
 
     return `
       align-items: center;
@@ -133,10 +133,8 @@ const IconWrapper = styled("div")`
 
       &:hover {
         border-radius: 2px;
-        background-color: ${
-          color ? colors?.[color][400] : colors?.primary[400]
-        };
-        border-color: ${color ? colors?.[color][400] : colors?.primary[400]};
+        background-color: ${colors?.[color][400]};
+        border-color: ${colors?.[color][400]};
         color: white;
 
         p {
