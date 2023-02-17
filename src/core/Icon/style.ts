@@ -23,13 +23,16 @@ export type SdsIconColorType =
   | "warning"
   | "error";
 
-interface CustomSvgIconProps
-  extends SvgIconProps<"svg", { component: FC<CustomSVGProps> }> {
+export interface SdsIconWithColor {
   iconColor?: SdsIconColorType;
+  shade?: 100 | 200 | 300 | 400 | 500 | 600;
 }
 
 export type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
-  IconExtraProps<IconName> & CustomSVGProps & CustomSvgIconProps;
+  IconExtraProps<IconName> &
+    CustomSVGProps &
+    SvgIconProps<"svg", { component: FC<CustomSVGProps> }> &
+    SdsIconWithColor;
 
 /**
  * @see https://mui.com/material-ui/icons/#svgicon
@@ -55,11 +58,11 @@ function buttonStyle(): SerializedStyles {
 function staticStyle<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const { iconColor = "primary" } = props;
+  const { iconColor = "primary", shade = 400 } = props;
   const colors = getColors(props);
 
   return css`
-    color: ${colors?.[iconColor][400]};
+    color: ${colors?.[iconColor][shade]};
   `;
 }
 
@@ -67,7 +70,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
-  const { iconColor = "primary" } = props;
+  const { iconColor = "primary", shade = 400 } = props;
 
   return css`
     color: ${colors?.gray[500]};
@@ -77,7 +80,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:active {
-      color: ${colors?.[iconColor][400]};
+      color: ${colors?.[iconColor][shade]};
     }
 
     &:disabled {

@@ -60,6 +60,12 @@ export default {
       control: { type: "select" },
       options: ["iconButton", "interactive", "static", "button"],
     },
+    shade: {
+      control: {
+        type: "select",
+      },
+      options: [100, 200, 300, 400, 500, 600],
+    },
   },
   component: Demo,
   title: "Icon",
@@ -72,8 +78,9 @@ export const Default = Template.bind({});
 Default.args = {
   color: "primary",
   sdsIcon: "checkCircle",
-  sdsSize: "l",
+  sdsSize: "xl",
   sdsType: "static",
+  shade: 400,
 };
 
 const IconBankWrapper = styled("div")`
