@@ -9,9 +9,8 @@ import {
   getSpaces,
   getTypography,
 } from "../styles";
-import Icon from "./index";
+import Icon, { SdsIconWithColor } from "./index";
 import { iconMap, IconNameToSizes } from "./map";
-import { SdsIconColorType } from "./style";
 
 const Demo = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, sdsType, ...rest } = props;
@@ -100,11 +99,11 @@ const IconBankWrapper = styled("div")`
 `;
 
 const IconWrapper = styled("div")`
-  ${(props: CommonThemeProps & { color?: SdsIconColorType }) => {
+  ${(props: CommonThemeProps & SdsIconWithColor) => {
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
-    const { color = "primary" } = props;
+    const { color = "primary", shade = 400 } = props;
 
     return `
       align-items: center;
@@ -140,8 +139,8 @@ const IconWrapper = styled("div")`
 
       &:hover {
         border-radius: 2px;
-        background-color: ${colors?.[color][400]};
-        border-color: ${colors?.[color][400]};
+        background-color: ${colors?.[color][shade]};
+        border-color: ${colors?.[color][shade]};
         color: white;
 
         p {
@@ -191,11 +190,10 @@ const IconWrapper = styled("div")`
 type IconItemProps = {
   sdsIcon: string;
   innerIcon: [string, FC<CustomSVGProps> | null];
-  color?: SdsIconColorType;
-};
+} & SdsIconWithColor;
 
 const IconItem = (props: IconItemProps) => {
-  const { sdsIcon, innerIcon, color } = props;
+  const { sdsIcon, innerIcon, color, shade } = props;
   if (!innerIcon[1]) return null;
   const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
   const [copied, setCopied] = useState(false);
@@ -212,12 +210,14 @@ const IconItem = (props: IconItemProps) => {
   return (
     <IconWrapper
       color={color}
+      shade={shade}
       key={sdsIcon + sdsSize}
       onClick={() => copyIconNameHandler(sdsIcon)}
     >
       <div className="icon">
         <Icon
           color={color}
+          shade={shade}
           sdsSize={sdsSize}
           sdsIcon={sdsIcon as keyof IconNameToSizes}
           sdsType="static"
@@ -242,13 +242,20 @@ const IconItem = (props: IconItemProps) => {
         <div className="notif">
           <Icon
             color={color}
+            shade={shade}
             sdsSize={sdsSize}
             sdsIcon={sdsIcon as keyof IconNameToSizes}
             sdsType="static"
           />
           <p>Copied!</p>
           <span>
-            <Icon color={color} sdsSize="xs" sdsIcon="check" sdsType="static" />
+            <Icon
+              color={color}
+              shade={shade}
+              sdsSize="xs"
+              sdsIcon="check"
+              sdsType="static"
+            />
           </span>
         </div>
       )}
@@ -257,7 +264,7 @@ const IconItem = (props: IconItemProps) => {
 };
 
 const IconBankDemo = (props: Args): JSX.Element => {
-  const { color } = props;
+  const { color, shade } = props;
 
   const initialIcons = Object.entries(iconMap);
 
@@ -288,6 +295,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
             return Object.entries(icon).map((innerIcon) => (
               <IconItem
                 color={color}
+                shade={shade}
                 key={sdsIcon + innerIcon[0]}
                 innerIcon={innerIcon}
                 sdsIcon={sdsIcon}

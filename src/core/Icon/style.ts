@@ -23,7 +23,7 @@ export type SdsIconColorType =
   | "warning"
   | "error";
 
-export interface SdsIconWithColor {
+interface SdsIconWithColor {
   iconColor?: SdsIconColorType;
   shade?: 100 | 200 | 300 | 400 | 500 | 600;
 }

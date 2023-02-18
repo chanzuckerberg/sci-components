@@ -9,7 +9,7 @@ import {
 
 export type { IconNameToSizes };
 
-interface SdsIconWithColor {
+export interface SdsIconWithColor {
   color?: SdsIconColorType;
   shade?: 100 | 200 | 300 | 400 | 500 | 600;
 }
