@@ -60,8 +60,8 @@ Default.args = {
   text: "Label",
 };
 
-const TestTemplate: Story = (props) => (
-  <Button {...props} data-testId="button" />
+const TestTemplate: Story = (props: Args) => (
+  <Button {...props} data-testid="button" />
 );
 
 export const Test = TestTemplate.bind({});

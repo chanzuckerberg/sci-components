@@ -5,7 +5,12 @@ import DropdownMenu from "../DropdownMenu";
 import InputDropdown from "./index";
 
 const StyledInputDropdown = styled(InputDropdown)`
-  width: 160px;
+  ${({ width }: Args) => {
+    return `
+      width: fit-content;
+      max-width: ${width || 160}px;
+    `;
+  }}
 `;
 
 const Demo = (props: Args): JSX.Element => {
@@ -60,7 +65,7 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <>
       {fullWidth ? (
-        <StyledInputDropdown
+        <InputDropdown
           disabled={disabled}
           label={label}
           onClick={handleClick}
@@ -71,7 +76,7 @@ const Demo = (props: Args): JSX.Element => {
           {...rest}
         />
       ) : (
-        <InputDropdown
+        <StyledInputDropdown
           disabled={disabled}
           label={label}
           onClick={handleClick}
@@ -101,32 +106,58 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   argTypes: {
     counter: {
-      control: { type: "number" },
+      control: {
+        type: "number",
+      },
     },
     details: {
-      control: { type: "text" },
+      control: {
+        type: "text",
+      },
     },
     disabled: {
-      control: { type: "boolean" },
+      control: {
+        type: "boolean",
+      },
     },
     intent: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["default", "error", "warning"],
     },
     label: {
-      control: { type: "text" },
+      control: {
+        type: "text",
+      },
     },
     sdsStage: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["default", "userInput"],
     },
     sdsStyle: {
-      control: { type: "select" },
+      control: {
+        type: "select",
+      },
       options: ["square", "rounded", "minimal"],
     },
     sdsType: {
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
       options: ["singleSelect", "multiSelect"],
+    },
+    shouldTruncateMinimalDetails: {
+      control: {
+        type: "boolean",
+      },
+    },
+    width: {
+      control: {
+        type: "number",
+      },
     },
   },
   component: Demo,
@@ -151,6 +182,8 @@ Default.parameters = {
 };
 
 const storyRow = {
+  // lprins: This prevents InputDropdown component from stretching height in grid
+  alignItems: "start",
   display: "grid",
   gridColumnGap: "24px",
   gridTemplateColumns: "repeat(3, 160px)",
@@ -222,12 +255,33 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   const { sdsStyle, ...rest } = props;
 
   return (
-    <Template
-      sdsType="singleSelect"
-      sdsStyle={sdsStyle}
-      label="Label"
-      {...rest}
-    />
+    <div style={storyRow as React.CSSProperties}>
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        {...rest}
+      />
+
+      {/* Details */}
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        details="Very looooooong details"
+        {...rest}
+      />
+
+      {/* shouldTruncateMinimalDetails */}
+      <Template
+        sdsType="singleSelect"
+        sdsStyle={sdsStyle}
+        label="Label"
+        details="Very looooooong details"
+        shouldTruncateMinimalDetails
+        {...rest}
+      />
+    </div>
   );
 };
 

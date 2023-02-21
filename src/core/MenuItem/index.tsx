@@ -1,38 +1,89 @@
 import { MenuItemProps as RawMenuItemProps } from "@mui/material";
-import React, { forwardRef } from "react";
+import React, { ForwardedRef, forwardRef } from "react";
+import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ColumnWrapper,
   ContentWrapper,
   StyledCheck,
   StyledMenuItem,
+  StyledMenuItemIcon,
   TextWrapper,
 } from "./style";
 
-export interface MenuItemExtraProps {
+/* 
+  The final goal is to create a typescript interface which only accepts the 
+  icons with "xs" or "s" size. At first we create a new TypeScript interface 
+  that modifies the IconNameToSizes interface to change the values of icons 
+  with 'xs' | 's' | 'l' | 'xl' sizes to 'xs' | 's', allowing for easy 
+  filtering of items with 'l' | 'xl' sizes only later on
+ */
+type ModifiedIconNameToSizes = {
+  [K in keyof IconNameToSizes]: IconNameToSizes[K] extends
+    | "xs"
+    | "s"
+    | "l"
+    | "xl"
+    ? IconNameToSizes[K] extends "l" | "xl"
+      ? "l" | "xl"
+      : "xs" | "s"
+    : IconNameToSizes[K];
+};
+
+/* 
+  In the second step we create a TypeScript interface that is a subset of 
+  the IconNameToSizes interface, containing only those icons that can be "xs" or "s" in size.
+
+  As a result, the MenuItem component accepts a bacteria icon with a 
+  size value of "xs" | "s" | "l" | "xl" or a check icon with a size value of "xs" | "s", 
+  but not a book icon since it has a size value of "l" | "xl".
+ */
+export type IconNameToSmallSizes = {
+  [K in keyof ModifiedIconNameToSizes as ModifiedIconNameToSizes[K] extends
+    | "xs"
+    | "s"
+    ? K
+    : never]: IconNameToSizes[K];
+};
+
+export interface MenuItemExtraProps<
+  IconName extends keyof IconNameToSmallSizes
+> {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
+  sdsIcon?: IconName;
+  sdsIconProps?: Partial<IconProps<IconName>>;
 }
 
-export type MenuItemProps = MenuItemExtraProps & RawMenuItemProps;
+export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
+  MenuItemExtraProps<IconName> & RawMenuItemProps;
 
 /**
  * @see https://mui.com/material-ui/react-menu/
  */
-const MenuItem = forwardRef((props: MenuItemProps, _) => {
+const MenuItem = forwardRef(function MenuItem<
+  IconName extends keyof IconNameToSmallSizes
+>(props: MenuItemProps<IconName>, ref: ForwardedRef<HTMLLIElement | null>) {
   const {
     children,
     column = null,
     disabled,
     isMultiSelect = false,
+    sdsIcon,
+    sdsIconProps,
     ...originalMenuItemProps
   } = props;
-  const { selected = false } = originalMenuItemProps as MenuItemProps;
+  const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
 
   return (
-    <StyledMenuItem {...originalMenuItemProps} disabled={disabled}>
+    <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
       {isMultiSelect && (
         // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheck selected={selected} color="primary" disabled={disabled} />
+        <StyledCheck
+          className="check-icon"
+          selected={selected}
+          color="primary"
+          disabled={disabled}
+        />
       )}
 
       <ContentWrapper>
@@ -41,8 +92,19 @@ const MenuItem = forwardRef((props: MenuItemProps, _) => {
           className="primary-text"
           disabled={disabled}
         >
+          {sdsIcon && (
+            <StyledMenuItemIcon disabled={disabled}>
+              <Icon
+                {...sdsIconProps}
+                sdsType="static"
+                sdsIcon={sdsIcon}
+                sdsSize="s"
+              />
+            </StyledMenuItemIcon>
+          )}
           {children}
         </TextWrapper>
+
         {column && <ColumnWrapper disabled={disabled}>{column}</ColumnWrapper>}
       </ContentWrapper>
     </StyledMenuItem>

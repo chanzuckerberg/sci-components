@@ -13,6 +13,27 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   sdsType: "iconButton" | "interactive" | "static" | "button";
 }
 
+export type SdsIconColorType =
+  | "beta"
+  | "gray"
+  | "primary"
+  | "secondary"
+  | "info"
+  | "success"
+  | "warning"
+  | "error";
+
+interface SdsIconWithColor {
+  iconColor?: SdsIconColorType;
+  shade?: 100 | 200 | 300 | 400 | 500 | 600;
+}
+
+export type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
+  IconExtraProps<IconName> &
+    CustomSVGProps &
+    SvgIconProps<"svg", { component: FC<CustomSVGProps> }> &
+    SdsIconWithColor;
+
 /**
  * @see https://mui.com/material-ui/icons/#svgicon
  */
@@ -35,19 +56,21 @@ function buttonStyle(): SerializedStyles {
 }
 
 function staticStyle<IconName extends keyof IconNameToSizes>(
-  props: IconExtraProps<IconName>
+  props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
+  const { iconColor = "primary", shade = 400 } = props;
   const colors = getColors(props);
 
   return css`
-    color: ${colors?.primary[400]};
+    color: ${colors?.[iconColor][shade]};
   `;
 }
 
 function interactive<IconName extends keyof IconNameToSizes>(
-  props: IconExtraProps<IconName>
+  props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
+  const { iconColor = "primary", shade = 400 } = props;
 
   return css`
     color: ${colors?.gray[500]};
@@ -57,7 +80,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:active {
-      color: ${colors?.primary[400]};
+      color: ${colors?.[iconColor][shade]};
     }
 
     &:disabled {
@@ -66,12 +89,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
   `;
 }
 
-const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType"];
-
-type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
-  IconExtraProps<IconName> &
-    CustomSVGProps &
-    SvgIconProps<"svg", { component: FC<CustomSVGProps> }>;
+const doNotForwardProps = ["sdsIcon", "sdsSize", "sdsType", "iconColor"];
 
 export const StyledSvgIcon = styled(SvgIcon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -91,5 +109,6 @@ export const StyledSvgIcon = styled(SvgIcon, {
 `;
 
 export const StyledIcon = styled("div")`
+  /* display: contents causes an element's children to appear as if they were direct children of the element's parent, ignoring the element itself. This can be useful when a wrapper element should be ignored when using CSS grid or similar layout techniques. */
   display: contents;
 `;

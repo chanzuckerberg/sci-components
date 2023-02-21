@@ -32,6 +32,7 @@ export type MUIValue<Multiple> = AutocompleteValue<
   undefined
 >;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
 export interface DropdownProps<Multiple> {

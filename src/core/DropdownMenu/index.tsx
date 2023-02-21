@@ -8,34 +8,50 @@ import {
   InputAdornment,
   PopperProps,
 } from "@mui/material";
-import React, { SyntheticEvent, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
+import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
+import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
   InputBaseWrapper,
   StyledAutocomplete,
   StyledHeaderTitle,
   StyledMenuInputSearch,
-  StyledMenuItem,
-  StyledMenuItemCount,
   StyledMenuItemDetails,
+  StyledMenuItemText,
   StyledPaper,
   StyledPopper,
   StyleProps,
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
-export interface DefaultDropdownMenuOption {
+interface DropdownMenuOptionGeneral {
   name: string;
   section?: string;
+}
+export interface DropdownMenuOptionBasic extends DropdownMenuOptionGeneral {
+  count?: number;
   details?: string;
-  count?: string;
+  sdsIcon?: keyof IconNameToSmallSizes;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>;
 }
 
+export interface DropdownMenuOptionComponent extends DropdownMenuOptionGeneral {
+  component?: ReactNode;
+}
+
+type Exclusive<T, U> = T & { [K in Exclude<keyof U, keyof T>]?: undefined };
+
+export type DefaultDropdownMenuOption =
+  | Exclusive<DropdownMenuOptionBasic, DropdownMenuOptionComponent>
+  | Exclusive<DropdownMenuOptionComponent, DropdownMenuOptionBasic>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
-interface ExtraProps extends StyleProps {
+interface ExtraDropdownMenuProps extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
@@ -69,7 +85,7 @@ export type DropdownMenuProps<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
-  ExtraProps;
+  ExtraDropdownMenuProps;
 
 const DropdownMenu = <
   T extends DefaultDropdownMenuOption,
@@ -220,29 +236,37 @@ const DropdownMenu = <
     option: T,
     { selected }: AutocompleteRenderOptionState
   ) {
-    return (
-      <li {...optionProps}>
-        <StyledMenuItem
-          {...{ component: "div" }}
-          isMultiSelect={multiple}
-          selected={selected}
-          count={option.count}
-        >
-          <div>
-            {option.name}
+    let MenuItemContent;
 
-            {option.details && (
-              <StyledMenuItemDetails>{option.details}</StyledMenuItemDetails>
-            )}
-          </div>
+    const { component, name, details, count, sdsIcon, sdsIconProps } = option;
 
-          {option.count && (
-            <StyledMenuItemCount className="menuItem-count">
-              {option.count}
-            </StyledMenuItemCount>
+    if (component) {
+      MenuItemContent = component;
+    } else {
+      MenuItemContent = (
+        <StyledMenuItemText>
+          {name}
+          {details && (
+            <StyledMenuItemDetails className="menuItem-details">
+              {details}
+            </StyledMenuItemDetails>
           )}
-        </StyledMenuItem>
-      </li>
+        </StyledMenuItemText>
+      );
+    }
+
+    return (
+      <MenuItem
+        column={count}
+        disabled={optionProps["aria-disabled"] === true}
+        sdsIcon={sdsIcon}
+        sdsIconProps={sdsIconProps}
+        isMultiSelect={multiple}
+        selected={selected}
+        {...optionProps}
+      >
+        {MenuItemContent}
+      </MenuItem>
     );
   }
 };
