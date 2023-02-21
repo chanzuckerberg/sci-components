@@ -16,7 +16,7 @@ exports[`<CellHeader /> Ascending story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from ascending to descending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xhp77i-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -62,7 +62,7 @@ exports[`<CellHeader /> Test story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1c9gy53-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-uq52cw-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
