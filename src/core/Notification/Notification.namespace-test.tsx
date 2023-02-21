@@ -7,7 +7,7 @@ const NotificationNameSpaceTest = (props: NotificationProps) => {
     <Notification
       autoDismiss
       dismissed={false}
-      dismissDirection="left"
+      slideDirection="left"
       intent="info"
       onClose={noop}
       buttonOnClick={noop}

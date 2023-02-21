@@ -7754,9 +7754,9 @@ cz-conventional-changelog@^3.3.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-"czifui@file:czifui-v0.0.43.tgz":
-  version "0.0.43"
-  resolved "file:czifui-v0.0.43.tgz#a52f1c598aabdd7cb9671de05fc438f9f9153329"
+"czifui@file:czifui-v0.0.44.tgz":
+  version "0.0.44"
+  resolved "file:czifui-v0.0.44.tgz#16459b590b623dd9b6711f247dca597fb9422d72"
 
 damerau-levenshtein@^1.0.8:
   version "1.0.8"
