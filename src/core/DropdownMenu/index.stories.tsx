@@ -1,9 +1,17 @@
 import { styled } from "@mui/material";
 import { Args, Meta, Story } from "@storybook/react";
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
+import { MUIValue, Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
+import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
+
+export type DropdownOptionValue<T, Multiple> = Multiple extends
+  | undefined
+  | false
+  ? T | undefined
+  : Array<T> | undefined;
 
 const StyledInputDropdown = styled(InputDropdown)`
   min-width: 300px;
@@ -12,22 +20,34 @@ const StyledInputDropdown = styled(InputDropdown)`
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
 
-const Demo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search, title, label } = props;
+const Demo = <Multiple extends boolean | undefined = false>(
+  props: Args
+): JSX.Element => {
+  const {
+    multiple,
+    options = GITHUB_LABELS,
+    search,
+    title,
+    label,
+    value: propValue,
+  } = props;
 
+  const isControlled = propValue !== undefined;
   const [open, setOpen] = useState(false);
-
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
   const [value, setValue] = useState<
-    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
-  >(multiple ? [] : null);
-
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    []
-  );
-
+    Value<DefaultDropdownMenuOption, Multiple>
+  >(getInitialValue());
+  const [pendingValue, setPendingValue] = useState<
+    Value<DefaultDropdownMenuOption, Multiple>
+  >(getInitialValue());
   const id = open ? `dropdown-menu` : undefined;
+
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [propValue]);
 
   return (
     <>
@@ -46,13 +66,19 @@ const Demo = (props: Args): JSX.Element => {
         id={id}
         multiple={multiple}
         onChange={handleChange}
+        onClickAway={handleClickAway}
         open={open}
         options={options}
         PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
         search={search}
         title={title}
-        value={multiple ? pendingValue : value}
-        onClickAway={handleClickAway}
+        value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
+        getOptionDisabled={(option: DefaultDropdownMenuOption) => {
+          return (
+            option.name === "Type: feature request" ||
+            option.name === "Type: documentation"
+          );
+        }}
         {...props}
       />
     </>
@@ -83,7 +109,7 @@ const Demo = (props: Args): JSX.Element => {
       setAnchorEl(null);
     } else {
       if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
+        setPendingValue(value);
       }
 
       setAnchorEl(event.currentTarget);
@@ -93,14 +119,24 @@ const Demo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue: Value<DefaultDropdownMenuOption, Multiple>
   ) {
     if (multiple) {
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+      return setPendingValue(newValue);
     }
 
-    setValue(newValue as DefaultDropdownMenuOption);
+    setValue(newValue);
     setOpen(false);
+  }
+
+  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
+    if (isControlled) {
+      return propValue;
+    }
+
+    return multiple
+      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
+      : null;
   }
 };
 
@@ -200,14 +236,16 @@ const LivePreviewDemo = (): JSX.Element => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
 
-  const [value1, setValue1] = useState<null | DefaultDropdownMenuOption>(null);
-  const [value2, setValue2] = useState<null | DefaultDropdownMenuOption>(null);
+  const [value1, setValue1] =
+    useState<Value<DefaultDropdownMenuOption, false>>(null);
+  const [value2, setValue2] =
+    useState<Value<DefaultDropdownMenuOption, false>>(null);
 
   const [pendingValue3, setPendingValue3] = useState<
-    DefaultDropdownMenuOption[]
+    DropdownOptionValue<DefaultDropdownMenuOption, true>
   >([]);
   const [pendingValue4, setPendingValue4] = useState<
-    DefaultDropdownMenuOption[]
+    DropdownOptionValue<DefaultDropdownMenuOption, true>
   >([]);
 
   return (
@@ -228,7 +266,7 @@ const LivePreviewDemo = (): JSX.Element => {
           open={!!open1}
           onChange={handleChange1}
           disableCloseOnSelect={false}
-          options={options.slice(0, 3)}
+          options={options.slice(0, 3) as DefaultDropdownMenuOption[]}
           PopperBaseProps={{
             placement: POPPER_POSITION,
             sx: { width: POPPER_WIDTH },
@@ -260,7 +298,7 @@ const LivePreviewDemo = (): JSX.Element => {
           multiple={false}
           onChange={handleChange2}
           disableCloseOnSelect={false}
-          options={options.slice(0, 3)}
+          options={options.slice(0, 3) as DefaultDropdownMenuOption[]}
           PopperBaseProps={{
             placement: POPPER_POSITION,
             sx: { width: POPPER_WIDTH },
@@ -289,7 +327,7 @@ const LivePreviewDemo = (): JSX.Element => {
           multiple
           onChange={handleChange3}
           disableCloseOnSelect
-          options={options}
+          options={options as DefaultDropdownMenuOption[]}
           PopperBaseProps={{
             placement: POPPER_POSITION,
             sx: { width: POPPER_WIDTH },
@@ -319,7 +357,7 @@ const LivePreviewDemo = (): JSX.Element => {
           groupBy={(option) => option.section as string}
           onChange={handleChange4}
           disableCloseOnSelect
-          options={options}
+          options={options as DefaultDropdownMenuOption[]}
           PopperBaseProps={{
             placement: POPPER_POSITION,
             sx: { width: POPPER_WIDTH },
@@ -351,11 +389,11 @@ const LivePreviewDemo = (): JSX.Element => {
   }
 
   function handleChange1(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: Value<DefaultDropdownMenuOption, false>
   ) {
     setOpen1(false);
-    setValue1(newValue as DefaultDropdownMenuOption);
+    setValue1(newValue as Value<DefaultDropdownMenuOption, false>);
   }
 
   function handleClickAway2() {
@@ -378,11 +416,11 @@ const LivePreviewDemo = (): JSX.Element => {
   }
 
   function handleChange2(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: Value<DefaultDropdownMenuOption, false>
   ) {
     setOpen2(false);
-    setValue2(newValue as DefaultDropdownMenuOption);
+    setValue2(newValue as Value<DefaultDropdownMenuOption, false>);
   }
 
   function handleClickAway3() {
@@ -405,10 +443,12 @@ const LivePreviewDemo = (): JSX.Element => {
   }
 
   function handleChange3(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: DropdownOptionValue<DefaultDropdownMenuOption, true>
   ) {
-    return setPendingValue3(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue3(
+      newValue as DropdownOptionValue<DefaultDropdownMenuOption, true>
+    );
   }
 
   function handleClickAway4() {
@@ -431,10 +471,12 @@ const LivePreviewDemo = (): JSX.Element => {
   }
 
   function handleChange4(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: DropdownOptionValue<DefaultDropdownMenuOption, true>
   ) {
-    return setPendingValue4(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue4(
+      newValue as DropdownOptionValue<DefaultDropdownMenuOption, true>
+    );
   }
 };
 
@@ -457,7 +499,7 @@ LivePreview.parameters = {
 // Test Story
 
 const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const { multiple, options = LIVE_PREVIEW_LABELS, search } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
@@ -560,128 +602,28 @@ Test.parameters = {
   },
 };
 
-/*
- * From https://github.com/abdonrd/github-labels
- * Edited to have Sections and sorted to fix the MUI warning
- * for unsorted and groupedBy options
- */
-const GITHUB_LABELS = [
-  {
-    details: "Bigger than 85",
-    name: "Priority: critical",
-    section: "priority",
-  },
-  {
-    details: "Between 50 and 85",
-    name: "Priority: high",
-    section: "priority",
-  },
-  {
-    details: "Between 25 and 50",
-    name: "Priority: medium",
-    section: "priority",
-  },
-  {
-    details: "Smaller than 25",
-    name: "Priority: low",
-    section: "priority",
-  },
-  {
-    details: "are you sure about this?",
-    name: "Status: can't reproduce",
-    section: "status",
-  },
-  {
-    name: "Status: confirmed",
-    section: "status",
-  },
-  {
-    count: 3,
-    name: "Status: duplicate",
-    section: "status",
-  },
-  {
-    name: "Status: needs information",
-    section: "status",
-  },
-  {
-    details: "This will not be worked on",
-    name: "Status: wont do/fix",
-    section: "status",
-  },
-  {
-    name: "Type: bug",
-    section: "type",
-  },
-  {
-    name: "Type: discussion",
-    section: "type",
-  },
-  {
-    name: "Type: documentation",
-    section: "type",
-  },
-  {
-    name: "Type: enhancement",
-    section: "type",
-  },
-  {
-    name: "Type: epic",
-    section: "type",
-  },
-  {
-    name: "Type: feature request",
-    section: "type",
-  },
-  {
-    name: "Type: question",
-    section: "type",
-  },
-  {
-    count: "3",
-    name: "Good first issue",
-    section: "uncategorized",
-  },
-  {
-    name: "Help wanted",
-    section: "uncategorized",
-  },
-];
-
 const LIVE_PREVIEW_LABELS = [
   {
-    count: "",
-    details: "",
     name: "Menu Item 1",
     section: "Section 1",
   },
   {
-    count: "",
-    details: "",
     name: "Menu Item 2",
     section: "Section 1",
   },
   {
-    count: "",
-    details: "",
     name: "Menu Item 3",
     section: "Section 1",
   },
   {
-    count: "",
-    details: "",
     name: "Menu Item 4",
     section: "Section 2",
   },
   {
-    count: "",
-    details: "",
     name: "Menu Item 5",
     section: "Section 2",
   },
   {
-    count: "",
-    details: "",
     name: "Menu Item 6",
     section: "Section 2",
   },

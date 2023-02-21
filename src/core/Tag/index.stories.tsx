@@ -5,18 +5,9 @@ import Icon from "../Icon";
 import Tag from "./index";
 
 const Demo = (props: Args): JSX.Element => {
-  const { color, icon, label, sdsStyle, sdsType } = props;
+  const { label } = props;
 
-  return (
-    <Tag
-      color={color}
-      icon={icon}
-      label={label}
-      sdsStyle={sdsStyle}
-      sdsType={sdsType}
-      {...props}
-    />
-  );
+  return <Tag label={label} {...props} />;
 };
 
 const customColorTuples = {

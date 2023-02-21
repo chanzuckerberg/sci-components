@@ -1,11 +1,10 @@
 import { Paper, Popper } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { styled } from "@mui/material/styles";
+import { ReactElement } from "react";
 import InputSearch from "../InputSearch";
-import MenuItem from "../MenuItem";
 import {
   CommonThemeProps,
-  fontBodyXs,
   fontBodyXxs,
   fontCapsXxxxs,
   fontHeaderXs,
@@ -18,10 +17,11 @@ import {
 } from "../styles";
 
 export interface StyleProps extends CommonThemeProps {
+  count?: number;
+  hasSections?: boolean;
+  icon?: ReactElement;
   search?: boolean;
   title?: string;
-  hasSections?: boolean;
-  count?: string;
 }
 
 const doNotForwardProps = [
@@ -35,51 +35,6 @@ const doNotForwardProps = [
   "PopperBaseProps",
   "onClickAway",
 ];
-
-export const StyledMenuItem = styled(MenuItem)`
-  width: 100%;
-  min-height: unset;
-  white-space: pre-wrap;
-
-  ${(props: StyleProps) => {
-    const { count } = props;
-    if (count) {
-      return `
-        .primary-text {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-        }
-      `;
-    }
-  }}
-`;
-
-export const StyledMenuItemDetails = styled("div")`
-  ${fontBodyXxs}
-  ${(props: StyleProps) => {
-    const colors = getColors(props);
-
-    return `
-      color: ${colors?.gray[500]};
-      white-space: pre-wrap;
-    `;
-  }}
-`;
-
-export const StyledMenuItemCount = styled("span")`
-  ${fontBodyXs}
-  text-align: right;
-  color: black;
-
-  ${(props: StyleProps) => {
-    const spacings = getSpaces(props);
-
-    return `
-      margin-left: ${spacings?.m}px;
-    `;
-  }}
-`;
 
 export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -133,13 +88,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
         }
 
         .MuiAutocomplete-option {
-          padding: 0;
           min-height: unset;
-
-          .MuiMenuItem-root {
-            padding: ${spacings?.xs}px ${spacings?.s}px;
-            width: 100%;
-          }
         }
 
         .MuiAutocomplete-option.Mui-focused {
@@ -148,6 +97,10 @@ export const StyledAutocomplete = styled(Autocomplete, {
 
         .MuiAutocomplete-option[aria-selected="true"] {
           background-color: white;
+        }
+
+        .MuiAutocomplete-option[aria-disabled="true"] {
+          opacity: 1;
         }
 
         .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
@@ -281,4 +234,21 @@ export const StyledPaper = styled(Paper)`
   border-radius: 0;
   padding-top: 0;
   padding-bottom: 0;
+`;
+
+export const StyledMenuItemDetails = styled("div")`
+  ${fontBodyXxs}
+  ${(props) => {
+    const colors = getColors(props);
+
+    return `
+      color: ${colors?.gray[500]};
+      white-space: pre-wrap;
+    `;
+  }}
+`;
+
+export const StyledMenuItemText = styled("div")`
+  display: flex;
+  flex-direction: column;
 `;

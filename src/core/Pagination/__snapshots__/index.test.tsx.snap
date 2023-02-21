@@ -11,13 +11,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -65,13 +65,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -99,14 +99,14 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-gqnerr-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-2pawhs-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -151,13 +151,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -185,13 +185,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -219,12 +219,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -272,13 +272,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -306,13 +306,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -360,12 +360,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -393,13 +393,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -427,13 +427,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -461,12 +461,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -504,12 +504,12 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1p588kw-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -537,13 +537,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -571,13 +571,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="first"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -605,13 +605,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-yjj55h-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-5wqsi6-MuiButtonBase-root-MuiIconButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -656,13 +656,13 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lriot2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
         data-order="last"
         tabindex="0"
         type="button"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"

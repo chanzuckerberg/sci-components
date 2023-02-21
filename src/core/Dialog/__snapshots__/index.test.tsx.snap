@@ -8,12 +8,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1f83sro-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1pznqzi-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -88,12 +88,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-100qpau-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11j1e9v-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -168,12 +168,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dw2tn7-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"
@@ -248,12 +248,12 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-dw2tn7-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"

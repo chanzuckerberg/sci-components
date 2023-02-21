@@ -15,7 +15,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         class="css-1f3aume"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -33,12 +33,12 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -70,7 +70,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         class="css-1f3aume"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -97,12 +97,12 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-quxuam-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-18h951f-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -134,7 +134,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         class="css-1f3aume"
       >
         <div
-          class="css-jbvua0"
+          class="css-1ft6wgl"
         >
           <svg
             aria-hidden="true"
@@ -152,12 +152,12 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
       tabindex="0"
       type="button"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -190,7 +190,7 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
       class="css-1f3aume"
     >
       <div
-        class="css-jbvua0"
+        class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
@@ -208,12 +208,12 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-reo6um-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-jbvua0"
+      class="css-1ft6wgl"
     >
       <svg
         aria-hidden="true"

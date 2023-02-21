@@ -3,13 +3,13 @@
 exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
 <button
   aria-label="dotsHorizontal"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-w1by74-MuiButtonBase-root-MuiIconButton-root"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-4l34x5-MuiButtonBase-root-MuiIconButton-root"
   data-testid="iconButton"
   tabindex="0"
   type="button"
 >
   <div
-    class="css-jbvua0"
+    class="css-1ft6wgl"
   >
     <svg
       aria-hidden="true"
