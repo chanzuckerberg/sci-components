@@ -19,11 +19,16 @@
   }
 
   div[role="main"] {
-    top: 0 !important;
+    transform: translate(0px, -11px);
+    transform-origin: top left;
   }
 
   div[role="main"] > div {
     box-shadow: none !important;
+  }
+
+  div[role="main"] > div > div {
+    width: 100% !important;
   }
 
   div[role="main"] .os-host {
@@ -31,9 +36,18 @@
     border-top: solid 1px #e6e6e6;
   }
 
+  div[role="main"] .os-host-foreign {
+    background-color: #f9f9f9 !important;
+  }
+
   .react-draggable {
     border-right: solid 1px #e6e6e6;
+    margin-top: 0px !important;
+  }
+
+  .react-draggable ~ .react-draggable {
     margin-top: -19px !important;
+    border-right: none;
   }
 
   #storybook-explorer-menu svg {
@@ -158,4 +172,58 @@
     );
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
+
+  window.addEventListener("load", () => {
+    changeElementDimension(
+      document.querySelector('div[role="main"]'),
+      "width",
+      10
+    );
+    changeElementDimension(
+      document.querySelector('div[role="main"]'),
+      "height",
+      20
+    );
+    changeElementDimension(
+      document.querySelector('div[role="main"] > div > div ~ div'),
+      "height",
+      20
+    );
+  });
+
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      changeElementDimension(
+        document.querySelector('div[role="main"]'),
+        "width",
+        10
+      );
+      changeElementDimension(
+        document.querySelector('div[role="main"]'),
+        "height",
+        20
+      );
+      changeElementDimension(
+        document.querySelector('div[role="main"] > div > div ~ div'),
+        "height",
+        20
+      );
+    })
+  );
+
+  function debounce(func, delay = 100) {
+    let debounceTimer;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => func.apply(context, args), delay);
+    };
+  }
+
+  function changeElementDimension(element, attribute, value) {
+    element.style[attribute] =
+      parseInt(element.style[attribute]) + value + "px";
+  }
 </script>
