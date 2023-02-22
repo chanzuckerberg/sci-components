@@ -11,7 +11,7 @@ export interface NotificationProps {
   buttonOnClick?: (event: React.SyntheticEvent) => void;
   buttonText?: string;
   dismissed?: boolean;
-  dismissDirection: "left" | "right";
+  slideDirection: "left" | "right";
   extraContent?: boolean;
   intent: "info" | "error" | "success" | "warning";
 }
@@ -25,7 +25,7 @@ const Notification = ({
   autoDismiss,
   children,
   dismissed,
-  dismissDirection = "left",
+  slideDirection = "left",
   intent,
   onClose,
   buttonOnClick,
@@ -71,7 +71,7 @@ const Notification = ({
     <>
       <Slide
         in={!hide}
-        direction={dismissDirection}
+        direction={slideDirection}
         mountOnEnter
         unmountOnExit
         timeout={250}
