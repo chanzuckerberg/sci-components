@@ -173,46 +173,7 @@
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
 
-  window.addEventListener("load", () => {
-    changeElementDimension(
-      document.querySelector('div[role="main"]'),
-      "width",
-      10
-    );
-    changeElementDimension(
-      document.querySelector('div[role="main"]'),
-      "height",
-      20
-    );
-    changeElementDimension(
-      document.querySelector('div[role="main"] > div > div ~ div'),
-      "height",
-      20
-    );
-  });
-
-  window.addEventListener(
-    "resize",
-    debounce(() => {
-      changeElementDimension(
-        document.querySelector('div[role="main"]'),
-        "width",
-        10
-      );
-      changeElementDimension(
-        document.querySelector('div[role="main"]'),
-        "height",
-        20
-      );
-      changeElementDimension(
-        document.querySelector('div[role="main"] > div > div ~ div'),
-        "height",
-        20
-      );
-    })
-  );
-
-  function debounce(func, delay = 100) {
+  function debounce(func, delay = 50) {
     let debounceTimer;
     return function () {
       const context = this;
@@ -226,4 +187,24 @@
     element.style[attribute] =
       parseInt(element.style[attribute]) + value + "px";
   }
+
+  function resizeStorybookElements() {
+    const mainDiv = document.querySelector('div[role="main"]');
+    const controlsDiv = document.querySelector(
+      'div[role="main"] > div > div ~ div'
+    );
+
+    changeElementDimension(mainDiv, "width", 10);
+    changeElementDimension(mainDiv, "height", 20);
+    changeElementDimension(controlsDiv, "height", 20);
+  }
+
+  window.addEventListener("load", () => {
+    resizeStorybookElements();
+  });
+
+  window.addEventListener(
+    "resize",
+    debounce(() => resizeStorybookElements())
+  );
 </script>
