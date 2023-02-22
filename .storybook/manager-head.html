@@ -172,16 +172,6 @@
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
 
-  function debounce(func, delay = 50) {
-    let debounceTimer;
-    return function () {
-      const context = this;
-      const args = arguments;
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => func.apply(context, args), delay);
-    };
-  }
-
   // Throttle with last call to the callback function
   const throttle = (func, limit) => {
     let lastFunc;
