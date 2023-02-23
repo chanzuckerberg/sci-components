@@ -323,7 +323,7 @@ export const IconBank = IconBankTemplate.bind({});
 
 IconBank.parameters = {
   controls: {
-    exclude: ["sdsIcon", "sdsSize", "sdsType"],
+    exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
   },
 };
 
