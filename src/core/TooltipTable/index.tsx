@@ -25,7 +25,7 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
       {data?.map((section, index) => (
         <Section
           disabled={section.disabled}
-          key={`${section.label?.concat(index.toString())}`}
+          key={`${section.label + String(index)}`}
         >
           <SectionLabel disabled={section.disabled} label={section.label}>
             {section.label}
@@ -33,7 +33,7 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
           <Table size="small">
             <TableBody>
               {section.dataRows.map((row, rowIndex) => (
-                <TableRow key={row.label.concat(rowIndex.toString())}>
+                <TableRow key={row.label + String(rowIndex)}>
                   <RowLabel disabled={section.disabled} align="left">
                     {row.label}
                   </RowLabel>
