@@ -19,11 +19,16 @@
   }
 
   div[role="main"] {
-    top: 0 !important;
+    transform: translate(0px, -11px);
+    transform-origin: top left;
   }
 
   div[role="main"] > div {
     box-shadow: none !important;
+  }
+
+  div[role="main"] > div > div {
+    width: 100% !important;
   }
 
   div[role="main"] .os-host {
@@ -31,9 +36,18 @@
     border-top: solid 1px #e6e6e6;
   }
 
+  div[role="main"] .os-host-foreign {
+    background-color: #f9f9f9 !important;
+  }
+
   .react-draggable {
     border-right: solid 1px #e6e6e6;
+    margin-top: 0px !important;
+  }
+
+  .react-draggable ~ .react-draggable {
     margin-top: -19px !important;
+    border-right: none;
   }
 
   #storybook-explorer-menu svg {
@@ -124,7 +138,6 @@
     transform: rotate(135deg);
   }
 </style>
-
 <script>
   //workaround to increase the left panel width just enough to show even the longer story names
   //based on https://github.com/storybookjs/storybook/issues/9682#issuecomment-983356523
@@ -158,4 +171,50 @@
     );
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
+
+  // Throttle with last call to the callback function
+  const throttle = (func, limit) => {
+    let lastFunc;
+    let lastRan;
+    return function () {
+      const context = this;
+      const args = arguments;
+      if (!lastRan) {
+        func.apply(context, args);
+        lastRan = Date.now();
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(function () {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
+      }
+    };
+  };
+
+  function changeElementDimension(element, attribute, value) {
+    element.style[attribute] =
+      parseInt(element.style[attribute]) + value + "px";
+  }
+
+  function resizeStorybookElements() {
+    const mainDiv = document.querySelector('div[role="main"]');
+    const controlsDiv = document.querySelector(
+      'div[role="main"] > div > div ~ div'
+    );
+
+    if (mainDiv) {
+      changeElementDimension(mainDiv, "width", 10);
+      changeElementDimension(mainDiv, "height", 20);
+    }
+    controlsDiv && changeElementDimension(controlsDiv, "height", 20);
+  }
+
+  window.addEventListener("load", () => {
+    resizeStorybookElements();
+  });
+
+  window.addEventListener("resize", throttle(resizeStorybookElements, 100));
 </script>

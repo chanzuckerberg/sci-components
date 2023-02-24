@@ -11,7 +11,7 @@ const Demo = (props: Args): JSX.Element => {
     onClose,
     buttonOnClick,
     buttonText,
-    dismissDirection,
+    slideDirection,
     extraContent,
     autoDismiss,
   } = props;
@@ -34,7 +34,7 @@ const Demo = (props: Args): JSX.Element => {
         <Notification
           autoDismiss={autoDismiss}
           dismissed={dismissed}
-          dismissDirection={dismissDirection}
+          slideDirection={slideDirection}
           intent={intent}
           onClose={onClose}
           buttonOnClick={action("onClick")}
@@ -66,7 +66,7 @@ const Demo = (props: Args): JSX.Element => {
       <Notification
         autoDismiss={autoDismiss}
         dismissed={dismissed}
-        dismissDirection={dismissDirection}
+        slideDirection={slideDirection}
         intent={intent}
         onClose={onClose}
         {...props}
@@ -95,10 +95,6 @@ export default {
     buttonOnClick: {
       control: { type: "boolean" },
     },
-    dismissDirection: {
-      control: { type: "radio" },
-      options: ["left", "right"],
-    },
     extraContent: {
       control: { type: "boolean" },
     },
@@ -116,6 +112,10 @@ export default {
       },
       options: [action("onClick"), undefined],
     },
+    slideDirection: {
+      control: { type: "radio" },
+      options: ["left", "right"],
+    },
   },
   component: Demo,
   title: "Notification",
@@ -129,9 +129,9 @@ Default.args = {
   autoDismiss: false,
   buttonOnClick: false,
   buttonText: "click me",
-  dismissDirection: "left",
   extraContent: false,
   intent: "success",
+  slideDirection: "left",
 };
 
 Default.parameters = {
@@ -150,11 +150,11 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Notification dismissDirection="left" intent="info" {...props}>
+      <Notification slideDirection="left" intent="info" {...props}>
         this is a notification
       </Notification>
       <Notification
-        dismissDirection="left"
+        slideDirection="left"
         intent="info"
         buttonOnClick={action("onClick")}
         buttonText="click me"
@@ -163,7 +163,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         this is a notification
       </Notification>
       <Notification
-        dismissDirection="left"
+        slideDirection="left"
         intent="info"
         buttonOnClick={action("onClick")}
         buttonText="click me"
@@ -192,7 +192,7 @@ LivePreview.parameters = {
 const TestDemo = (props: Args): JSX.Element => {
   return (
     <Notification
-      dismissDirection="left"
+      slideDirection="left"
       intent="info"
       {...props}
       data-testid="notification"

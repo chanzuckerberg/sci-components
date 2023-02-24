@@ -22,15 +22,18 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   return (
     <TableContainer {...rest}>
       {contentAlert && <Alert>{contentAlert}</Alert>}
-      {data?.map((section) => (
-        <Section disabled={section.disabled} key={`${section.label}`}>
+      {data?.map((section, index) => (
+        <Section
+          disabled={section.disabled}
+          key={`${section.label + String(index)}`}
+        >
           <SectionLabel disabled={section.disabled} label={section.label}>
             {section.label}
           </SectionLabel>
           <Table size="small">
             <TableBody>
-              {section.dataRows.map((row) => (
-                <TableRow key={row.label}>
+              {section.dataRows.map((row, rowIndex) => (
+                <TableRow key={row.label + String(rowIndex)}>
                   <RowLabel disabled={section.disabled} align="left">
                     {row.label}
                   </RowLabel>
