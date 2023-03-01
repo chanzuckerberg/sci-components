@@ -99,8 +99,8 @@
     "@mui/icons-material": "^5.6.0",
     "@mui/lab": "^5.0.0-alpha.76",
     "@mui/material": "^5.6.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": ">=17.0.1",
+    "react-dom": ">=17.0.1"
   },
   "scripts": {
     "build": "yarn sd-build && rollup -c",
