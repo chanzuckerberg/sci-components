@@ -2,7 +2,7 @@
 
 exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-1pqkjcl-MuiButtonBase-root-MuiButton-root"
+  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-pcs5v9-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"

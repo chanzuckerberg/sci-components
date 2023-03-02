@@ -55,7 +55,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       }
 
       svg {
-        margin-left: auto;
         margin-right: ${spacings?.s}px;
         margin-left: ${spacings?.l}px;
       }
