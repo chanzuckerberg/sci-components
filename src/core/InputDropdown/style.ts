@@ -41,6 +41,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     color: ${palette?.text?.primary};
     cursor: pointer;
     padding: ${spacings?.xs}px;
+    justify-content: start;
 
     &.MuiButton-text {
       &:hover {
@@ -368,9 +369,18 @@ export const LabelWrapper = styled("span", {
     return `
       align-items: ${isMinimal ? "center" : undefined};
       display: ${isMinimal ? "inline-flex" : "contents"};
+      justify-content: ${isMinimal ? "space-between" : undefined};
       width: 100%;
     `;
   }}
+`;
+
+export const IconWrapper = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 `;
 
 function labelStyle(props: InputDropdownProps): SerializedStyles {

@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../Icon";
 import {
+  IconWrapper,
   InputDropdownProps,
   LabelWrapper,
   MinimalDetails,
@@ -45,24 +46,24 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown {...props}>
       <LabelWrapper isMinimal={isMinimal}>
-        <span style={{ display: "contents" }}>
-          <StyledLabel
-            className="styled-label"
-            details={details}
-            counter={counter}
-          >
-            {renderLabelText({
-              counter,
-              details,
-              isMinimal,
-              label,
-              shouldPutAColonAfterLabel,
-            })}
-          </StyledLabel>
-          {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
-          {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
-        </span>
-        <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+        <StyledLabel
+          className="styled-label"
+          details={details}
+          counter={counter}
+        >
+          {renderLabelText({
+            counter,
+            details,
+            isMinimal,
+            label,
+            shouldPutAColonAfterLabel,
+          })}
+        </StyledLabel>
+        {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
+        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        <IconWrapper>
+          <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+        </IconWrapper>
       </LabelWrapper>
 
       {isMinimal && (
