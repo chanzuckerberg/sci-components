@@ -14,7 +14,7 @@ describe("<Dropdown />", () => {
     snapshotTestStoryFile
   );
 
-  it("renders DropdownMenu component", () => {
+  it("renders Dropdown component", () => {
     render(<Test {...Test.args} />);
     const DropdownElement = screen.getByTestId("dropdown");
     expect(DropdownElement).not.toBeNull();

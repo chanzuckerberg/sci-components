@@ -2,7 +2,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
@@ -39,7 +39,8 @@ export interface DropdownProps<Multiple> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
   closeOnBlur?: boolean;
-  label: string;
+  disabled?: boolean;
+  label: ReactNode;
   options: DefaultDropdownMenuOption[];
   onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
   onClose?: () => void;
@@ -77,6 +78,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   PopperComponent,
   InputDropdownComponent = InputDropdown,
   isTriggerChangeOnOptionClick = false,
+  disabled = false,
   ...rest
 }: DropdownProps<Multiple>): JSX.Element => {
   if (buttons && !multiple) {
@@ -112,6 +114,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   return (
     <>
       <InputDropdownComponent
+        disabled={disabled}
         label={label}
         onClick={handleClick}
         sdsStage={open ? "userInput" : "default"}

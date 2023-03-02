@@ -61,6 +61,11 @@ export default {
         type: "boolean",
       },
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
     label: { control: { type: "text" } },
     multiple: {
       control: {
@@ -103,6 +108,7 @@ Default.args = {
   buttonPosition: "left",
   buttons: false,
   closeOnBlur: false,
+  disabled: false,
   isTriggerChangeOnOptionClick: true,
   label: LABEL,
   multiple: true,

@@ -2,19 +2,23 @@
 
 exports[`<InputDropdown /> Test story renders snapshot 1`] = `
 <button
-  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-18rcnae-MuiButtonBase-root-MuiButton-root"
+  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-1tvwivv-MuiButtonBase-root-MuiButton-root"
   data-testid="InputDropdown"
   label="Label"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-112kt0x"
+    class="css-nx7095"
   >
     <span
-      class="styled-label css-1wq753n"
+      style="display: contents;"
     >
-      Label
+      <span
+        class="styled-label css-1wq753n"
+      >
+        Label
+      </span>
     </span>
     <div
       class="css-1ft6wgl"

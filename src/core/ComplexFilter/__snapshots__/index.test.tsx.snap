@@ -5,18 +5,22 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
   class="css-1x0reya"
 >
   <button
-    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-je8px9-MuiButtonBase-root-MuiButton-root"
+    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-ecwmom-MuiButtonBase-root-MuiButton-root"
     label="Click Target"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-t2kylo"
+      class="css-8awmeg"
     >
       <span
-        class="styled-label css-1wq753n"
+        style="display: contents;"
       >
-        Click Target
+        <span
+          class="styled-label css-1wq753n"
+        >
+          Click Target
+        </span>
       </span>
       <div
         class="css-1ft6wgl"

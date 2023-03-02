@@ -1,5 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { styled } from "@mui/material/styles";
+import { ReactNode } from "react";
 import Button from "../Button";
 import {
   CommonThemeProps,
@@ -14,7 +15,7 @@ import {
 export interface InputDropdownProps extends CommonThemeProps {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
-  label: string;
+  label: ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   open?: boolean;
   sdsStage: "default" | "userInput";
@@ -23,6 +24,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   details?: string;
   counter?: string;
   shouldTruncateMinimalDetails?: boolean;
+  shouldPutAColonAfterLabel?: boolean;
 }
 
 const labelFontBodyS = fontBody("s");
@@ -46,7 +48,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       }
 
       .styled-label {
-        margin-right: ${spacings?.xs}px;
         margin-left: ${spacings?.xs}px;
         overflow: hidden;
         white-space: nowrap;
@@ -55,7 +56,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
       svg {
         margin-left: auto;
-        margin-right: ${spacings?.xs}px;
+        margin-right: ${spacings?.s}px;
+        margin-left: ${spacings?.l}px;
       }
     }
 
@@ -109,7 +111,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &.MuiButton-text {
       .styled-label {
         margin: 0;
-        margin-right: ${spacings?.xs}px;
       }
     }
 
@@ -141,7 +142,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &.MuiButton-root.MuiButton-text svg {
-      margin-left: auto;
+      margin-left: ${spacings?.xs}px;
       margin-right: 0;
     }
   `;
@@ -250,6 +251,7 @@ const doNotForwardProps = [
   "sdsStage",
   "isMinimal",
   "shouldTruncateMinimalDetails",
+  "shouldPutAColonAfterLabel",
 ];
 
 export const StyledInputDropdown = styled(Button, {
@@ -261,6 +263,8 @@ export const StyledInputDropdown = styled(Button, {
   align-items: center;
   /* (thuang): in Minimal it's a different value */
   flex-direction: row;
+
+  justify-content: space-between;
 
   ${(props: InputDropdownProps) => {
     const { disabled, intent, open, sdsStage, sdsStyle } = props;
@@ -284,9 +288,14 @@ export const StyledDetail = styled("span", {
 })`
   ${(props) => {
     const colors = getColors(props);
+    const spaces = getSpaces(props);
 
     return `
       color: ${colors?.gray[500]};
+      margin-left: ${spaces?.xs}px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     `;
   }}
 `;
@@ -322,11 +331,12 @@ export const StyledCounter = styled("span", {
     const spacings = getSpaces(props);
 
     return `
-    background-color: ${colors?.gray[200]};
-    color: ${colors?.primary[400]};
-    border-radius: ${corners?.l}px;
-    padding: 1px ${spacings?.xs}px;
-  `;
+      background-color: ${colors?.gray[200]};
+      color: ${colors?.primary[400]};
+      border-radius: ${corners?.l}px;
+      padding: 0 ${spacings?.xs}px;
+      margin-left: ${spacings?.xs}px;
+    `;
   }}
 `;
 
@@ -359,6 +369,7 @@ export const LabelWrapper = styled("span", {
     return `
       align-items: ${isMinimal ? "center" : undefined};
       display: ${isMinimal ? "inline-flex" : "contents"};
+      width: 100%;
     `;
   }}
 `;

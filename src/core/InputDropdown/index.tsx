@@ -24,6 +24,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     details,
     counter,
     shouldTruncateMinimalDetails,
+    shouldPutAColonAfterLabel = true,
   } = props;
 
   const isMinimal = sdsStyle === "minimal";
@@ -39,20 +40,28 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     sdsType === "singleSelect" && details && !isMinimal;
 
   const shouldRenderCounter =
-    sdsType === "multiSelect" && counter !== undefined;
+    sdsType === "multiSelect" && counter !== undefined && !isMinimal;
 
   return (
     <StyledInputDropdown {...props}>
       <LabelWrapper isMinimal={isMinimal}>
-        <StyledLabel
-          className="styled-label"
-          details={details}
-          counter={counter}
-        >
-          {renderLabelText({ counter, details, isMinimal, label })}
-        </StyledLabel>
-        {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
-        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        <span style={{ display: "contents" }}>
+          <StyledLabel
+            className="styled-label"
+            details={details}
+            counter={counter}
+          >
+            {renderLabelText({
+              counter,
+              details,
+              isMinimal,
+              label,
+              shouldPutAColonAfterLabel,
+            })}
+          </StyledLabel>
+          {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
+          {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        </span>
         <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
       </LabelWrapper>
 
@@ -72,17 +81,21 @@ function renderLabelText({
   details,
   isMinimal,
   label,
+  shouldPutAColonAfterLabel,
 }: {
   counter: InputDropdownProps["counter"];
   details: InputDropdownProps["details"];
   isMinimal: boolean;
   label: InputDropdownProps["label"];
+  shouldPutAColonAfterLabel: InputDropdownProps["shouldPutAColonAfterLabel"];
 }) {
   if (isMinimal) {
     return label;
   }
 
-  return counter !== undefined || details ? `${label}:` : label;
+  return (counter !== undefined || details) && shouldPutAColonAfterLabel
+    ? `${label}:`
+    : label;
 }
 
 export default InputDropdown;
