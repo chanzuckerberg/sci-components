@@ -149,6 +149,11 @@ export default {
       },
       options: ["singleSelect", "multiSelect"],
     },
+    shouldPutAColonAfterLabel: {
+      control: {
+        type: "boolean",
+      },
+    },
     shouldTruncateMinimalDetails: {
       control: {
         type: "boolean",

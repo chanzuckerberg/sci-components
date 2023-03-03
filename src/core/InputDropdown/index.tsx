@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../Icon";
 import {
+  IconWrapper,
   InputDropdownProps,
   LabelWrapper,
   MinimalDetails,
@@ -24,6 +25,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     details,
     counter,
     shouldTruncateMinimalDetails,
+    shouldPutAColonAfterLabel = true,
   } = props;
 
   const isMinimal = sdsStyle === "minimal";
@@ -39,7 +41,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     sdsType === "singleSelect" && details && !isMinimal;
 
   const shouldRenderCounter =
-    sdsType === "multiSelect" && counter !== undefined;
+    sdsType === "multiSelect" && counter !== undefined && !isMinimal;
 
   return (
     <StyledInputDropdown {...props}>
@@ -49,11 +51,19 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
           details={details}
           counter={counter}
         >
-          {renderLabelText({ counter, details, isMinimal, label })}
+          {renderLabelText({
+            counter,
+            details,
+            isMinimal,
+            label,
+            shouldPutAColonAfterLabel,
+          })}
         </StyledLabel>
         {shouldRenderDetails && <StyledDetail>{details}</StyledDetail>}
         {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
-        <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+        <IconWrapper>
+          <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+        </IconWrapper>
       </LabelWrapper>
 
       {isMinimal && (
@@ -72,17 +82,21 @@ function renderLabelText({
   details,
   isMinimal,
   label,
+  shouldPutAColonAfterLabel,
 }: {
   counter: InputDropdownProps["counter"];
   details: InputDropdownProps["details"];
   isMinimal: boolean;
   label: InputDropdownProps["label"];
+  shouldPutAColonAfterLabel: InputDropdownProps["shouldPutAColonAfterLabel"];
 }) {
   if (isMinimal) {
     return label;
   }
 
-  return counter !== undefined || details ? `${label}:` : label;
+  return (counter !== undefined || details) && shouldPutAColonAfterLabel
+    ? `${label}:`
+    : label;
 }
 
 export default InputDropdown;

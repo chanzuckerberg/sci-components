@@ -14,6 +14,7 @@ const InputDropdownNameSpaceTest = (props: InputDropdownProps) => {
       counter="2"
       details="Details"
       intent="warning"
+      shouldPutAColonAfterLabel
     />
   );
 };
