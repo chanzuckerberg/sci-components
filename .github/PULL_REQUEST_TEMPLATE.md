@@ -1,8 +1,8 @@
 ## Summary
 
 **Structural Element (Base, Gene, DNA, Chromosome or Cell)**
-Shortcut ticket: [sh-XXXX](link)
-Copy ticket descirption here
+Github issue: [#XXXX](link)
+Copy isuue descirption here
 
 ## Checklist
 
