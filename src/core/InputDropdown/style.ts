@@ -49,7 +49,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       }
 
       .styled-label {
-        margin-left: ${spacings?.xs}px;
+        margin-left: ${spacings?.s}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -144,6 +144,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &.MuiButton-root.MuiButton-text svg {
       margin-left: ${spacings?.xs}px;
       margin-right: 0;
+      padding-top: 2px;
     }
   `;
 };
