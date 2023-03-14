@@ -3,7 +3,7 @@
 exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
 <button
   aria-label="dotsHorizontal"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-4l34x5-MuiButtonBase-root-MuiIconButton-root"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-12d7v0h-MuiButtonBase-root-MuiIconButton-root-primary-isOn-medium-StyledButtonIcon"
   data-testid="iconButton"
   tabindex="0"
   type="button"
@@ -13,7 +13,7 @@ exports[`<ButtonIcon /> Test story renders snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
       data-jest-file-name="IconDotsHorizontal3Large.svg"
       data-jest-svg-name="IconDotsHorizontal3Large"
       data-testid="IconDotsHorizontal3Large"

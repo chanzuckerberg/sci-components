@@ -11,7 +11,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="first"
         tabindex="0"
         type="button"
@@ -21,7 +21,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -65,7 +65,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -75,7 +75,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -99,7 +99,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-2pawhs-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-150gyek-MuiButtonBase-root-MuiIconButton-root-isDisabled-small-StyledButtonIcon"
         data-order="first"
         disabled=""
         tabindex="-1"
@@ -110,7 +110,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -151,7 +151,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -161,7 +161,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -185,7 +185,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="first"
         tabindex="0"
         type="button"
@@ -195,7 +195,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -219,7 +219,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16ipw4n-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         tabindex="0"
         type="button"
       >
@@ -228,7 +228,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -272,7 +272,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -282,7 +282,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -306,7 +306,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="first"
         tabindex="0"
         type="button"
@@ -316,7 +316,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -360,7 +360,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16ipw4n-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         tabindex="0"
         type="button"
       >
@@ -369,7 +369,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -393,7 +393,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -403,7 +403,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -427,7 +427,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="first"
         tabindex="0"
         type="button"
@@ -437,7 +437,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -461,7 +461,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16ipw4n-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         tabindex="0"
         type="button"
       >
@@ -470,7 +470,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -504,7 +504,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1mowwm2-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16ipw4n-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         tabindex="0"
         type="button"
       >
@@ -513,7 +513,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -537,7 +537,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -547,7 +547,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
@@ -571,7 +571,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Previous page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="first"
         tabindex="0"
         type="button"
@@ -581,7 +581,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronLeftSmall.svg"
             data-jest-svg-name="IconChevronLeftSmall"
             data-testid="IconChevronLeftSmall"
@@ -605,7 +605,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Go to a page"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-5wqsi6-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1h3ytkl-MuiButtonBase-root-MuiIconButton-root-isDisabled-small-StyledButtonIcon"
         disabled=""
         tabindex="-1"
         type="button"
@@ -615,7 +615,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconDotsHorizontal3Small.svg"
             data-jest-svg-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
@@ -656,7 +656,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
     >
       <button
         aria-label="Next page"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16k5j8f-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1oayfs3-MuiButtonBase-root-MuiIconButton-root-small-StyledButtonIcon"
         data-order="last"
         tabindex="0"
         type="button"
@@ -666,7 +666,7 @@ exports[`<Pagination /> Test story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
             data-jest-file-name="IconChevronRightSmall.svg"
             data-jest-svg-name="IconChevronRightSmall"
             data-testid="IconChevronRightSmall"
