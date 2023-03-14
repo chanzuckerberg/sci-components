@@ -166,6 +166,12 @@ const DropdownMenu = <
                   ref={params.InputProps.ref}
                   search={search}
                   autoFocus
+                  // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
+                  onKeyDown={(event) => {
+                    if (event.key === "Backspace") {
+                      event.stopPropagation();
+                    }
+                  }}
                   InputProps={{
                     /**
                      * (thuang): Works with css caret-color: "transparent" to hide
