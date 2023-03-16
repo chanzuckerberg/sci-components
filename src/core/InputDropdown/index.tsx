@@ -46,11 +46,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown {...props}>
       <LabelWrapper isMinimal={isMinimal}>
-        <StyledLabel
-          className="styled-label"
-          details={details}
-          counter={counter}
-        >
+        <StyledLabel details={details} counter={counter}>
           {renderLabelText({
             counter,
             details,

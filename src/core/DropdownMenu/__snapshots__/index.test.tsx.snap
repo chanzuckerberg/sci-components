@@ -11,7 +11,7 @@ exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
     class="css-1y6wtno-LabelWrapper e1xjaxqv1"
   >
     <span
-      class="styled-label css-906iv0-StyledLabel e1xjaxqv4"
+      class="css-906iv0-StyledLabel e1xjaxqv4"
     >
       Click Target
     </span>
