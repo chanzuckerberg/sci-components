@@ -5,7 +5,7 @@ on:
     # any versioned branch: "+([0-9])?(.{+([0-9]),x}).x" as specified in
     # .releaserc.js. So we'll need to manually add such branch's name here manually
     branches:
-      - main
+      - prod
       - next
       - next-major
       - beta
