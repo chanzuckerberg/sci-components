@@ -5,7 +5,7 @@ exports[`<MenuItem /> Test story renders snapshot 1`] = `
   class="css-1m75yyh"
 >
   <li
-    class="MuiMenuItem-root MuiMenuItem-gutters MuiButtonBase-root css-178xhae-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiMenuItem-root MuiMenuItem-gutters MuiButtonBase-root css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="test text"
     role="menuitem"

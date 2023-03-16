@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { ReactNode } from "react";
 import Button from "../Button";
 import {
@@ -48,7 +48,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         color: #000;
       }
 
-      .styled-label {
+      ${StyledLabel} {
         margin-left: ${spacings?.s}px;
         overflow: hidden;
         white-space: nowrap;
@@ -74,7 +74,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         fill: ${colors?.gray[600]};
       }
 
-      .styled-label {
+      ${StyledLabel} {
         color: #000;
       }
     }
@@ -109,7 +109,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
-      .styled-label {
+      ${StyledLabel} {
         margin: 0;
       }
     }
@@ -144,7 +144,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &.MuiButton-root.MuiButton-text svg {
       margin-left: ${spacings?.xs}px;
       margin-right: 0;
-      padding-top: 2px;
     }
   `;
 };
@@ -287,7 +286,7 @@ export const StyledInputDropdown = styled(Button, {
 export const StyledDetail = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
 
@@ -326,7 +325,7 @@ export const StyledLabel = styled("span", {
 export const StyledCounter = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const colors = getColors(props);
     const corners = getCorners(props);
     const spacings = getSpaces(props);
@@ -393,7 +392,7 @@ function labelStyle(props: InputDropdownProps): SerializedStyles {
 
   return css`
     &.MuiButton-text {
-      .styled-label {
+      ${StyledLabel} {
         font-weight: 600;
         color: ${labelColor};
       }

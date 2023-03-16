@@ -50,8 +50,6 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiMenuItem-root .MuiSvgIcon-root {
         align-self: flex-start;
-        margin-top: 3px;
-        margin-bottom: -3px;
       }
 
       &.MuiMenuItem-root .Mui-disabled {
@@ -70,16 +68,6 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiAutocomplete-option[aria-disabled="true"] {
         opacity: 1;
-      }
-
-      &.MuiListItem-root .MuiSvgIcon-root {
-        align-self: flex-start;
-        margin-top: 3px;
-      }
-
-      &.MuiListItem-root .MuiSvgIcon-root {
-        align-self: flex-start;
-        margin-top: 3px;
       }
 
       &:hover {
@@ -170,10 +158,13 @@ export const StyledMenuItemIcon = styled("span")`
   ${(props: MenuItemIconProps) => {
     const { disabled } = props;
     const spacings = getSpaces(props);
+    const iconSizes = getIconSizes(props);
     const colors = getColors(props);
 
     return `
       margin-right: ${spacings?.xs}px;
+      margin-top: ${spacings?.xxxs}px;
+      height: ${iconSizes?.s.height}px;
 
       .MuiSvgIcon-root {
         ${disabled ? `color: ${colors?.gray[300]};` : null}
@@ -205,6 +196,20 @@ interface StyledCheckType {
   disabled?: boolean;
 }
 
+export const StyledCheckIconWrapper = styled("span")`
+  ${(props) => {
+    const spacings = getSpaces(props);
+    const iconSizes = getIconSizes(props);
+
+    return `
+      align-self: start;
+      margin-right: ${spacings?.m}px;
+      margin-top: ${spacings?.xxxs}px;
+      height: ${iconSizes?.s.height}px;
+    `;
+  }}
+`;
+
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<StyledCheckType>`
@@ -212,12 +217,9 @@ export const StyledCheck = styled(Check, {
     const { selected, disabled } = props;
     const colors = getColors(props);
     const iconSizes = getIconSizes(props);
-    const spacings = getSpaces(props);
     const selectedColor = disabled ? colors?.gray[300] : colors?.primary[400];
     return `
       color: ${selected ? selectedColor : "transparent"};
-      margin-right: ${spacings?.m}px;
-      margin-top: ${spacings?.xxxs}px;
       padding: 0;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;

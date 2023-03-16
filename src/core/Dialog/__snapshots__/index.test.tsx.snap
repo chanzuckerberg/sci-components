@@ -8,7 +8,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1pznqzi-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-yd5l6-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
     tabindex="0"
     type="button"
   >
@@ -17,7 +17,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
         data-jest-file-name="IconXMarkSmall.svg"
         data-jest-svg-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
@@ -88,7 +88,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11j1e9v-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-gq3qb7-MuiButtonBase-root-MuiIconButton-root-tertiary-medium-StyledButtonIcon"
     tabindex="0"
     type="button"
   >
@@ -97,7 +97,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
@@ -168,7 +168,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1w13185-MuiButtonBase-root-MuiIconButton-root-tertiary-large-StyledButtonIcon"
     tabindex="0"
     type="button"
   >
@@ -177,7 +177,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
@@ -248,7 +248,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1w13185-MuiButtonBase-root-MuiIconButton-root-tertiary-large-StyledButtonIcon"
     tabindex="0"
     type="button"
   >
@@ -257,7 +257,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
         data-jest-file-name="IconXMarkLarge.svg"
         data-jest-svg-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"

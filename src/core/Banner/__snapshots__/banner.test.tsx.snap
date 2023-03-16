@@ -19,7 +19,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -33,7 +33,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ozv4bb-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
       tabindex="0"
       type="button"
     >
@@ -42,7 +42,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
           data-jest-file-name="IconXMarkSmall.svg"
           data-jest-svg-name="IconXMarkSmall"
           data-testid="IconXMarkSmall"
@@ -74,7 +74,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -89,7 +89,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         style="padding: 5px;"
       />
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-otz8ol-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-ov1h50-MuiTypography-root-MuiLink-root-defaultStyle-StyledLink"
         href="/"
       >
         Learn More
@@ -97,7 +97,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-18h951f-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-jjv6wj-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
       tabindex="0"
       type="button"
     >
@@ -106,7 +106,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
           data-jest-file-name="IconXMarkSmall.svg"
           data-jest-svg-name="IconXMarkSmall"
           data-testid="IconXMarkSmall"
@@ -138,7 +138,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
             data-jest-file-name="IconInfoCircleLarge.svg"
             data-jest-svg-name="IconInfoCircleLarge"
             data-testid="IconInfoCircleLarge"
@@ -152,7 +152,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ozv4bb-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
       tabindex="0"
       type="button"
     >
@@ -161,7 +161,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
           data-jest-file-name="IconXMarkSmall.svg"
           data-jest-svg-name="IconXMarkSmall"
           data-testid="IconXMarkSmall"
@@ -194,7 +194,7 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
           data-jest-file-name="IconInfoCircleLarge.svg"
           data-jest-svg-name="IconInfoCircleLarge"
           data-testid="IconInfoCircleLarge"
@@ -208,7 +208,7 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ozv4bb-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
     tabindex="0"
     type="button"
   >
@@ -217,7 +217,7 @@ exports[`<Banner /> Test story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
         data-jest-file-name="IconXMarkSmall.svg"
         data-jest-svg-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"

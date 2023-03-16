@@ -11,7 +11,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-9u937e-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-1t41xix-MuiFormControl-root-MuiTextField-root-StyledInputBase"
     data-testid="inputTextBase"
   >
     <div
@@ -43,7 +43,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-9u937e-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-1t41xix-MuiFormControl-root-MuiTextField-root-StyledInputBase"
     data-testid="inputTextHideLabel"
   >
     <div
@@ -80,7 +80,7 @@ exports[`<InputText /> Test story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1w9kuh8-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-b54oik-MuiFormControl-root-MuiTextField-root-textArea-StyledInputBase"
     data-testid="inputTextArea"
   >
     <div

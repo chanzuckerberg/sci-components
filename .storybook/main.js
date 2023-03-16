@@ -2,6 +2,12 @@ const path = require("path");
 const toPath = (filePath) => path.join(process.cwd(), filePath);
 
 module.exports = {
+  // (masoudmanson): Enable @emotion/babel-plugin on storybook in order to
+  // use componenet selectors in styled component
+  babel: async (options) => ({
+    ...options,
+    plugins: [...options.plugins, "@emotion"],
+  }),
   features: {
     buildStoriesJson: true,
     // (thuang): https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility

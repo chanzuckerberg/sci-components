@@ -1,11 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import svgr from "@svgr/rollup";
 import ts from "rollup-plugin-ts";
 import del from "rollup-plugin-delete";
-import pkg from "./package.json";
 import url from "@rollup/plugin-url";
 import css from "rollup-plugin-css-only";
 import bundleScss from "rollup-plugin-bundle-scss";
 import copy from "rollup-plugin-copy";
+import pkg from "./package.json";
 
 const config = [
   {
@@ -49,8 +50,8 @@ const config = [
       copy({
         targets: [
           {
-            src: "./src/common/styles-dictionary/json/tailwind.json",
             dest: "./dist",
+            src: "./src/common/styles-dictionary/json/tailwind.json",
           },
         ],
       }),
