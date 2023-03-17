@@ -2,28 +2,28 @@
 
 exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root e1xjaxqv6 css-ug4ely-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-inputDropdownStyles-square-StyledInputDropdown"
+  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-1d93k5v-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-1y6wtno-LabelWrapper e1xjaxqv1"
+    class="css-18dv0oe"
   >
     <span
-      class="css-906iv0-StyledLabel e1xjaxqv4"
+      class="styled-label css-1wq753n"
     >
       Click Target
     </span>
     <span
-      class="css-1v6rz9s-IconWrapper e1xjaxqv0"
+      class="css-1qt6g1x"
     >
       <div
         class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-13n8ekv-MuiSvgIcon-root-iconSize-interactive-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
           data-jest-file-name="IconChevronDownSmall.svg"
           data-jest-svg-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
