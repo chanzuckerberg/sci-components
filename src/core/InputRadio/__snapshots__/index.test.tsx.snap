@@ -9,7 +9,7 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     role="radiogroup"
   >
     <label
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-sf17zu-MuiFormControlLabel-root"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-188i020-MuiFormControlLabel-root"
     >
       <span
         class="MuiRadio-root MuiRadio-colorPrimary MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root Mui-checked css-b0a55y-MuiButtonBase-root-MuiRadio-root"
@@ -45,7 +45,7 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     </label>
     <label
       caption="Caption"
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1brtohd-MuiFormControlLabel-root"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-krj95y-MuiFormControlLabel-root"
     >
       <span
         caption="Caption"
@@ -81,7 +81,7 @@ exports[`<InputRadio /> Test story renders snapshot 1`] = `
     </label>
     <label
       caption="Caption"
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1brtohd-MuiFormControlLabel-root"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-krj95y-MuiFormControlLabel-root"
     >
       <span
         caption="Caption"

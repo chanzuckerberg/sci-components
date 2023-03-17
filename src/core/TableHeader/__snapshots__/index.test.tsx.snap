@@ -20,7 +20,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-iknymi-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-uq52cw-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -29,7 +29,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
                 data-jest-file-name="IconChevronDownSmall.svg"
                 data-jest-svg-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
@@ -55,7 +55,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-c5cchj-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -64,7 +64,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
                 data-jest-file-name="IconChevronDownSmall.svg"
                 data-jest-svg-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
@@ -90,7 +90,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-c5cchj-MuiButtonBase-root-MuiIconButton-root-tertiary-small-StyledButtonIcon"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -99,7 +99,7 @@ exports[`<TableHeader /> Test story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-dj49f0-MuiSvgIcon-root-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
                 data-jest-file-name="IconChevronDownSmall.svg"
                 data-jest-svg-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"

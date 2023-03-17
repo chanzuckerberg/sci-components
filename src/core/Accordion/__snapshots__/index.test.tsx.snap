@@ -2,14 +2,14 @@
 
 exports[`<Accordion /> Test story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-117pwbd-MuiPaper-root-MuiAccordion-root-StyledAccordion"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1x3fmw6-MuiPaper-root-MuiAccordion-root"
   data-testid="accordion"
   id="test-story"
 >
   <div
     aria-controls="test-story-header-panel-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-19rbov-MuiButtonBase-root-MuiAccordionSummary-root-StyledAccordionHeader"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-q39ari-MuiButtonBase-root-MuiAccordionSummary-root"
     id="test-story-header"
     role="button"
     tabindex="0"
@@ -27,7 +27,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
           data-jest-file-name="IconChevronDownSmall.svg"
           data-jest-svg-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
@@ -54,7 +54,7 @@ exports[`<Accordion /> Test story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-1krbxh6-MuiAccordionDetails-root-StyledAccordionDetails"
+            class="MuiAccordionDetails-root css-rnrgul-MuiAccordionDetails-root"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>

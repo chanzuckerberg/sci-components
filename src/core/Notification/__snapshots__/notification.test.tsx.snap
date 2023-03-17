@@ -18,7 +18,7 @@ exports[`<Notification /> Test story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
           data-jest-file-name="IconInfoCircleLarge.svg"
           data-jest-svg-name="IconInfoCircleLarge"
           data-testid="IconInfoCircleLarge"

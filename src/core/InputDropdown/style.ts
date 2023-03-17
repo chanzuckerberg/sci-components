@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { ReactNode } from "react";
 import Button from "../Button";
 import {
@@ -48,7 +48,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         color: #000;
       }
 
-      ${StyledLabel} {
+      .styled-label {
         margin-left: ${spacings?.s}px;
         overflow: hidden;
         white-space: nowrap;
@@ -74,7 +74,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
         fill: ${colors?.gray[600]};
       }
 
-      ${StyledLabel} {
+      .styled-label {
         color: #000;
       }
     }
@@ -109,7 +109,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
-      ${StyledLabel} {
+      .styled-label {
         margin: 0;
       }
     }
@@ -392,7 +392,7 @@ function labelStyle(props: InputDropdownProps): SerializedStyles {
 
   return css`
     &.MuiButton-text {
-      ${StyledLabel} {
+      .styled-label {
         font-weight: 600;
         color: ${labelColor};
       }

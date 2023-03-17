@@ -9,7 +9,6 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.[tj]sx?$": "./jest.transform.js",
     "^.+\\.svg$": "svg-jest",
   },
 };

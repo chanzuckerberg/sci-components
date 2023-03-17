@@ -8,14 +8,14 @@ exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
     style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
   >
     <div
-      class="css-16ntpkt-style-minimal-StyledLoadingIndicator"
+      class="css-1o5w4es"
     >
       <div
         class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
           data-jest-file-name="IconLoadingLarge.svg"
           data-jest-svg-name="IconLoadingLarge"
           data-testid="IconLoadingLarge"
@@ -35,14 +35,14 @@ exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
     style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
   >
     <div
-      class="css-1eshxkn-style-tag-StyledLoadingIndicator"
+      class="css-k87s1p"
     >
       <div
         class="css-1ft6wgl"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q73dgu-MuiSvgIcon-root-iconSize-staticStyle-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
           data-jest-file-name="IconLoadingLarge.svg"
           data-jest-svg-name="IconLoadingLarge"
           data-testid="IconLoadingLarge"
