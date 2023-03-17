@@ -10,6 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.21.0",
+    "@babel/preset-typescript": "^7.21.0",
     "@chanzuckerberg/axe-storybook-testing": "^6.3.0",
     "@chanzuckerberg/story-utils": "^2.1.0",
     "@emotion/core": "^11.0.0",
