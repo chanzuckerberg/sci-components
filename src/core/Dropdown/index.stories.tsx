@@ -109,7 +109,7 @@ Default.args = {
   buttons: false,
   closeOnBlur: false,
   disabled: false,
-  isTriggerChangeOnOptionClick: true,
+  isTriggerChangeOnOptionClick: false,
   label: LABEL,
   multiple: true,
   onChange: noop,

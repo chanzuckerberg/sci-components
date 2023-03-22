@@ -111,6 +111,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
 
   const [open, setOpen] = useState(false);
 
+  const shouldShowButtons =
+    buttons && !isTriggerChangeOnOptionClick && multiple;
+
   return (
     <>
       <InputDropdownComponent
@@ -136,7 +139,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
         onClickAway={handleClickAway}
         {...DropdownMenuProps}
       >
-        {buttons ? (
+        {shouldShowButtons ? (
           <div>
             {buttonPosition === "left" ? (
               <div>
@@ -219,10 +222,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       return;
     }
 
-    if (buttons && reason === "blur") {
-      if (closeOnBlur) {
-        handleCancel();
-      }
+    // (masoudmanson): When the dropdown loses focus, we will not close it immediately. Instead, we will update the values and
+    // only close the dropdown at the end of this block by calling setOpen(false).
+    if (shouldShowButtons && reason === "blur") {
       return;
     }
 
@@ -234,7 +236,10 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
-    if (onClose) onClose();
+    if (closeOnBlur) {
+      if (onClose) onClose();
+      setOpen(false);
+    }
   }
 
   function handleChange(
@@ -257,13 +262,21 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   }
 
   function handleCancel() {
-    setPendingValue(null);
+    if (multiple) {
+      // (masoudmanson): To undo the latest actions made on the selections,
+      // we set the value of the selection to the pendingValue. This allows us to
+      // cancel any recent changes and restore the previous selection state.
+      setPendingValue(value as Value<DefaultDropdownMenuOption, true>);
+    }
 
     if (anchorEl) {
       anchorEl.focus();
     }
 
-    if (onClose) onClose();
+    if (closeOnBlur) {
+      if (onClose) onClose();
+      setOpen(false);
+    }
   }
 
   function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
