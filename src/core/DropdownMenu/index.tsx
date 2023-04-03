@@ -5,6 +5,7 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   ClickAwayListener,
+  ClickAwayListenerProps as MUIClickAwayListenerProps,
   InputAdornment,
   PopperProps,
 } from "@mui/material";
@@ -67,6 +68,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
   onClickAway: (event: MouseEvent | TouchEvent) => void;
+  ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
 }
 
 type CustomAutocompleteProps<
@@ -118,6 +120,7 @@ const DropdownMenu = <
     title,
     children,
     onClickAway,
+    ClickAwayListenerProps,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
@@ -138,7 +141,7 @@ const DropdownMenu = <
       placement="bottom-start"
       {...PopperBaseProps}
     >
-      <ClickAwayListener onClickAway={onClickAway}>
+      <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
         <div>
           {title && (
             <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
