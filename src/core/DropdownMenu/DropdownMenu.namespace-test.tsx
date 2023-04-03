@@ -40,7 +40,7 @@ const DropdownMenuNameSpaceTest = (
       search
       title="Dropdown Menu Title"
       onClickAway={noop}
-      clickAwayListenerProps={{ mouseEvent: false }}
+      ClickAwayListenerProps={{ mouseEvent: false }}
     />
   );
 };

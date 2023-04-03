@@ -34,7 +34,7 @@ const doNotForwardProps = [
   "title",
   "PopperBaseProps",
   "onClickAway",
-  "clickAwayListenerProps",
+  "ClickAwayListenerProps",
 ];
 
 export const StyledAutocomplete = styled(Autocomplete, {
