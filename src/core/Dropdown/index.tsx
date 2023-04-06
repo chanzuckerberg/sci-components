@@ -67,7 +67,7 @@ export interface DropdownProps<Multiple extends boolean | undefined> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const Dropdown = <Multiple extends boolean | undefined = undefined>({
+const Dropdown = <Multiple extends boolean | undefined = false>({
   options,
   label = "",
   multiple = false,
@@ -194,6 +194,10 @@ const Dropdown = <Multiple extends boolean | undefined = undefined>({
 
   function handleClickAway() {
     if (open) {
+      // (masoudmanson): We want to keep the dropdown menu open in two scenarios:
+      // 1. If the dropdown has buttons,
+      // 2. When there are no buttons, and the closeOnBlur property is set to false,
+      // In all other cases, we close the menu.
       if (closeOnBlur && !shouldShowButtons) {
         setOpen(false);
       }
