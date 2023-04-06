@@ -107,7 +107,7 @@ export const Default = Template.bind({});
 Default.args = {
   buttonPosition: "left",
   buttons: false,
-  closeOnBlur: false,
+  closeOnBlur: true,
   disabled: false,
   isTriggerChangeOnOptionClick: false,
   label: LABEL,

@@ -147,6 +147,9 @@ const groupByOptions = [
 
 export default {
   argTypes: {
+    ClickAwayListenerProps: {
+      control: { type: "object" },
+    },
     groupBy: {
       control: {
         labels: ["No group by", "Group by section names"],

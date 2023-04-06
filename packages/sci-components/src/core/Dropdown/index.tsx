@@ -3,7 +3,10 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
-import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import DropdownMenu, {
+  DefaultDropdownMenuOption,
+  DropdownMenuProps as SdsDropdownMenuProps,
+} from "../DropdownMenu";
 import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
@@ -35,7 +38,7 @@ export type MUIValue<Multiple> = AutocompleteValue<
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
-export interface DropdownProps<Multiple> {
+export interface DropdownProps<Multiple extends boolean | undefined> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
   closeOnBlur?: boolean;
@@ -46,7 +49,14 @@ export interface DropdownProps<Multiple> {
   onClose?: () => void;
   multiple?: Multiple;
   search?: boolean;
-  DropdownMenuProps?: Partial<typeof DropdownMenu>;
+  DropdownMenuProps?: Partial<
+    SdsDropdownMenuProps<
+      DefaultDropdownMenuOption,
+      Multiple,
+      undefined,
+      undefined
+    >
+  >;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
   value?: Value<DefaultDropdownMenuOption, Multiple>;
   style?: React.CSSProperties;
@@ -184,7 +194,13 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
 
   function handleClickAway() {
     if (open) {
-      setOpen(false);
+      // (masoudmanson): We want to keep the dropdown menu open in two scenarios:
+      // 1. If the dropdown has buttons,
+      // 2. When there are no buttons, and the closeOnBlur property is set to false,
+      // In all other cases, we close the menu.
+      if (closeOnBlur && !shouldShowButtons) {
+        setOpen(false);
+      }
 
       if (multiple) {
         setValue(pendingValue as MUIValue<Multiple>);
@@ -236,8 +252,8 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
-    if (closeOnBlur) {
-      if (onClose) onClose();
+    if (shouldShowButtons || closeOnBlur) {
+      onClose?.();
       setOpen(false);
     }
   }
@@ -273,10 +289,8 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
-    if (closeOnBlur) {
-      if (onClose) onClose();
-      setOpen(false);
-    }
+    onClose?.();
+    setOpen(false);
   }
 
   function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {

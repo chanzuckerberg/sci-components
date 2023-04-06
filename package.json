@@ -86,9 +86,6 @@
     "react-dom": ">=17.0.1"
   },
   "scripts": {
-    "build": "yarn sd-build && rollup -c",
-    "start": "lerna run start --stream",
-    "namespace": "lerna run namespace-check --stream"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
