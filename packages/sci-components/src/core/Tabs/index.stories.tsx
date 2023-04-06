@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { Args, Meta, Story } from "@storybook/react";
-import { Tag } from "czifui";
 import React, { ReactNode, useState } from "react";
 import { noop } from "src/common/utils";
+import Tag from "../Tag";
 import Tabs, { Tab, TabsProps } from "./index";
 
 export default {

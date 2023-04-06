@@ -23,7 +23,7 @@ module.exports = {
   // rules in all ComponentName.namespace.tsx files
   overrides: [
     {
-      files: ["packages/**/src/core/**/*.namespace-test.tsx"],
+      files: ["src/core/**/*.namespace-test.tsx"],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "import/no-extraneous-dependencies": "off",

@@ -1,13 +1,9 @@
 {
-  "name": "czifui",
+  "name": "@czifui/monorepo",
   "version": "0.0.51",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chanzuckerberg/sci-components.git"
-  },
+  "repository": "https://github.com/chanzuckerberg/sci-components.git",
   "license": "MIT",
+  "private": "true",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
@@ -23,21 +19,7 @@
     "@mui/material": "^5.6.0",
     "@rollup/plugin-typescript": "^8.3.1",
     "@rollup/plugin-url": "^6.1.0",
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/addons": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "@storybook/test-runner": "^0.9.4",
-    "@storybook/testing-library": "^0.0.13",
-    "@storybook/testing-react": "^1.3.0",
-    "@storybook/theming": "^6.5.16",
-    "@svgr/rollup": "^5.5.0",
+    "lerna": "^6.5.1","@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.2",
@@ -54,7 +36,6 @@
     "concurrently": "^6.0.0",
     "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
-    "czifui": "file:czifui-v0.0.51.tgz",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -106,25 +87,8 @@
   },
   "scripts": {
     "build": "yarn sd-build && rollup -c",
-    "build-watch": "rollup -c -w",
-    "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build",
-    "test-storybook": "test-storybook",
-    "prelint": "yarn install-czifui-locally",
-    "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
-    "type-check": "tsc --noEmit",
-    "prepare": "husky install",
-    "semantic-release": "semantic-release",
-    "ci": "yarn install --frozen-lockfile",
-    "test": "jest",
-    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
-    "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
-    "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
-    "storybook:axeOnly": "axe-storybook --build-dir docs-build",
-    "build-and-pack-a-new-version": "yarn build && yarn version --no-git-tag-version --patch && yarn pack",
-    "install-czifui-locally": "yarn add -D file:\"czifui-v$npm_package_version.tgz\"",
-    "prenamespace-check": "rm czifui-*.tgz && yarn remove czifui && yarn build-and-pack-a-new-version && yarn install-czifui-locally",
-    "namespace-check": "tsc --p tsconfig-namespace-check.json --noEmit"
+    "start": "lerna run start --stream",
+    "namespace": "lerna run namespace-check --stream"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
@@ -152,5 +116,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {}
+  "workspaces": [
+    "packages/*"
+  ],
+  "main": "index.js"
 }
