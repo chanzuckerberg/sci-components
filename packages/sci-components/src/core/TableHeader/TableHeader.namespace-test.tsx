@@ -1,4 +1,4 @@
-import { TableHeader, TableHeaderProps } from "czifui";
+import { TableHeader, TableHeaderProps } from "@czifui/sci-components";
 import React from "react";
 
 const TableHeaderNameSpaceTest = (props: TableHeaderProps) => {

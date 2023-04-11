@@ -1,4 +1,8 @@
-import { IconNameToSmallSizes, MenuItem, MenuItemProps } from "czifui";
+import {
+  IconNameToSmallSizes,
+  MenuItem,
+  MenuItemProps,
+} from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

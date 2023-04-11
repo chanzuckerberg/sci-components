@@ -89,7 +89,7 @@ exports[`<Banner /> LivePreview story renders snapshot 1`] = `
         style="padding: 5px;"
       />
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-otz8ol-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-h3bn0e-MuiTypography-root-MuiLink-root"
         href="/"
       >
         Learn More

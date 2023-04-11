@@ -16,9 +16,9 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
-        run: yarn build-storybook --quiet
+        run: lerna run build-storybook --quiet
       - name: Run accessibility tests 🤟
-        run: yarn storybook:axeOnly
+        run: lerna run storybook:axeOnly
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \

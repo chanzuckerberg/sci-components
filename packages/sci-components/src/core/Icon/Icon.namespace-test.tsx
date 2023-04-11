@@ -1,4 +1,4 @@
-import { Icon } from "czifui";
+import { Icon } from "@czifui/sci-components";
 import React from "react";
 
 const IconNameSpaceTest = () => {

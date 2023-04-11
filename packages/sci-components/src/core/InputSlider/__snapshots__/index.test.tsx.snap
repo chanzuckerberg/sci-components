@@ -5,7 +5,7 @@ exports[`<InputSlider /> Test story renders snapshot 1`] = `
   style="height: 180px; margin-left: 20px; margin-top: 15px; width: 180px;"
 >
   <span
-    class="MuiSlider-colorPrimary MuiSlider-sizeMedium MuiSlider-root css-1hcvxj3-MuiSlider-root"
+    class="MuiSlider-root MuiSlider-colorPrimary MuiSlider-sizeMedium css-1hcvxj3-MuiSlider-root"
     data-testid="test-input-slider"
   >
     <span
@@ -16,8 +16,7 @@ exports[`<InputSlider /> Test story renders snapshot 1`] = `
       style="left: 0%; width: 15%;"
     />
     <span
-      class="MuiSlider-thumbColorPrimary MuiSlider-thumbSizeMedium MuiSlider-thumb css-eg0mwd-MuiSlider-thumb"
-      data-focusvisible="false"
+      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-eg0mwd-MuiSlider-thumb"
       data-index="0"
       style="left: 15%;"
     >

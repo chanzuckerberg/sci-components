@@ -1,4 +1,8 @@
-import { ButtonDropdown, ButtonDropdownProps, Icon } from "czifui";
+import {
+  ButtonDropdown,
+  ButtonDropdownProps,
+  Icon,
+} from "@czifui/sci-components";
 import React from "react";
 
 const ButtonDropdownNameSpaceTest = (props: ButtonDropdownProps) => {

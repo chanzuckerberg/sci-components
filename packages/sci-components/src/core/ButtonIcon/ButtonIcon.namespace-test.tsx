@@ -1,4 +1,4 @@
-import { ButtonIcon, ButtonIconProps, Icon } from "czifui";
+import { ButtonIcon, ButtonIconProps, Icon } from "@czifui/sci-components";
 import React from "react";
 
 const ButtonIconNameSpaceTest = (

@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 import { Args, Meta, Story } from "@storybook/react";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import { MUIValue, Value } from "../Dropdown";
+import { Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
 import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
@@ -36,10 +36,10 @@ const Demo = <Multiple extends boolean | undefined = false>(
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [value, setValue] = useState<
-    Value<DefaultDropdownMenuOption, Multiple>
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   >(getInitialValue());
   const [pendingValue, setPendingValue] = useState<
-    Value<DefaultDropdownMenuOption, Multiple>
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   >(getInitialValue());
   const id = open ? `dropdown-menu` : undefined;
 
@@ -72,7 +72,7 @@ const Demo = <Multiple extends boolean | undefined = false>(
         PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
         search={search}
         title={title}
-        value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
+        value={multiple ? pendingValue : value}
         getOptionDisabled={(option: DefaultDropdownMenuOption) => {
           return (
             option.name === "Type: feature request" ||
@@ -119,7 +119,7 @@ const Demo = <Multiple extends boolean | undefined = false>(
 
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue: Value<DefaultDropdownMenuOption, Multiple>
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   ) {
     if (multiple) {
       return setPendingValue(newValue);

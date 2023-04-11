@@ -1,4 +1,7 @@
-import { SegmentedControl, SegmentedControlProps } from "czifui";
+import {
+  SegmentedControl,
+  SegmentedControlProps,
+} from "@czifui/sci-components";
 import React from "react";
 
 const SegmentedControlNameSpaceTest = (props: SegmentedControlProps) => {

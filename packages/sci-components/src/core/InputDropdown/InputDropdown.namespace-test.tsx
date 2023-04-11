@@ -1,4 +1,4 @@
-import { InputDropdown, InputDropdownProps } from "czifui";
+import { InputDropdown, InputDropdownProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

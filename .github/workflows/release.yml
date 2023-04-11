@@ -38,14 +38,14 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: npm run ci
+        run: lerna run ci
       - name: Build component library in dist/
-        run: yarn build
+        run: lerna run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: npx lerna run semantic-release
       - name: Post breaking changes to a Slack channel
         uses: act10ns/slack@v1
         with:

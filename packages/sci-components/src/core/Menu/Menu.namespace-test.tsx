@@ -1,4 +1,4 @@
-import { Menu, MenuItem, MenuProps } from "czifui";
+import { Menu, MenuItem, MenuProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

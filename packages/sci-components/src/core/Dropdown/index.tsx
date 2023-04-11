@@ -203,7 +203,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       }
 
       if (multiple) {
-        setValue(pendingValue as MUIValue<Multiple>);
+        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
       }
     }
   }
@@ -211,7 +211,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
       if (multiple) {
-        setValue(pendingValue as MUIValue<Multiple>);
+        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
       }
 
       setOpen(false);

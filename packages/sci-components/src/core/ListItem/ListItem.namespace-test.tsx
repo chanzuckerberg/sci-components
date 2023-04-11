@@ -1,4 +1,4 @@
-import { ListItem, ListItemProps } from "czifui";
+import { ListItem, ListItemProps } from "@czifui/sci-components";
 import React from "react";
 
 const ListItemSpaceTest = (props: ListItemProps) => {

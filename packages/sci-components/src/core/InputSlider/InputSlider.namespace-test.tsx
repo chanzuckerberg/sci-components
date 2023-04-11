@@ -1,4 +1,4 @@
-import { InputSlider, InputSliderProps } from "czifui";
+import { InputSlider, InputSliderProps } from "@czifui/sci-components";
 import React from "react";
 
 const InputSearchNameSpaceTest = (props: InputSliderProps) => {

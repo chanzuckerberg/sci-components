@@ -1,5 +1,5 @@
+import { InputRadio, RadioProps } from "@czifui/sci-components";
 import { RadioGroup } from "@mui/material";
-import { InputRadio, RadioProps } from "czifui";
 import React from "react";
 
 const InputRadioNameSpaceTest = (props: RadioProps) => {

@@ -1,4 +1,4 @@
-import { CellHeader, CellHeaderProps } from "czifui";
+import { CellHeader, CellHeaderProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

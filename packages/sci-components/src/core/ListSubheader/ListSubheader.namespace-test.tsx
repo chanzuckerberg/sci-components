@@ -1,4 +1,4 @@
-import { ListSubheader, ListSubheaderProps } from "czifui";
+import { ListSubheader, ListSubheaderProps } from "@czifui/sci-components";
 import React from "react";
 
 const ListSubheaderNameSpaceTest = (props: ListSubheaderProps) => {

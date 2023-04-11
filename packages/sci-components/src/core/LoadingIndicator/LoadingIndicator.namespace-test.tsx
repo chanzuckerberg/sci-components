@@ -1,4 +1,7 @@
-import { LoadingIndicator, LoadingIndicatorProps } from "czifui";
+import {
+  LoadingIndicator,
+  LoadingIndicatorProps,
+} from "@czifui/sci-components";
 import React from "react";
 
 const LoadingIndicatorNameSpaceTest = (props: LoadingIndicatorProps) => {

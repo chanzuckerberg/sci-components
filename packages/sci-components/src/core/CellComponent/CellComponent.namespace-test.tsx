@@ -1,4 +1,8 @@
-import { CellComponent, CellComponentProps, Icon } from "czifui";
+import {
+  CellComponent,
+  CellComponentProps,
+  Icon,
+} from "@czifui/sci-components";
 import React from "react";
 
 const CellBasicNameSpaceTest = (props: CellComponentProps) => {

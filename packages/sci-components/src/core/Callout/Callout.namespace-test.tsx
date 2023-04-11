@@ -1,4 +1,4 @@
-import { Callout, CalloutProps, CalloutTitle } from "czifui";
+import { Callout, CalloutProps, CalloutTitle } from "@czifui/sci-components";
 import React from "react";
 
 const CalloutNameSpaceTest = (props: CalloutProps) => {

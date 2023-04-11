@@ -1,4 +1,4 @@
-import { ComplexFilter, ComplexFilterProps } from "czifui";
+import { ComplexFilter, ComplexFilterProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

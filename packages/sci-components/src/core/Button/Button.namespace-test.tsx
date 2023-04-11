@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "czifui";
+import { Button, ButtonProps } from "@czifui/sci-components";
 import React from "react";
 
 const ButtonNameSpaceTest = (props: ButtonProps) => {

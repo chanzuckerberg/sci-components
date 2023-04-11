@@ -1,4 +1,4 @@
-import { Pagination, PaginationProps } from "czifui";
+import { Pagination, PaginationProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

@@ -1,4 +1,4 @@
-import { Icon, Tag, TagProps } from "czifui";
+import { Icon, Tag, TagProps } from "@czifui/sci-components";
 import React from "react";
 
 const TagNameSpaceTest = (props: TagProps) => {

@@ -1,4 +1,4 @@
-import { TagFilter, TagFilterProps } from "czifui";
+import { TagFilter, TagFilterProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

@@ -1,4 +1,4 @@
-import { Banner, BannerProps } from "czifui";
+import { Banner, BannerProps } from "@czifui/sci-components";
 import React from "react";
 
 const BannerNameSpaceTest = (props: BannerProps<"medium">) => {

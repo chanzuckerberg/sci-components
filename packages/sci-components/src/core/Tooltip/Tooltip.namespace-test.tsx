@@ -1,4 +1,4 @@
-import { Tooltip, TooltipProps } from "czifui";
+import { Tooltip, TooltipProps } from "@czifui/sci-components";
 import React from "react";
 
 const TooltipNameSpaceTest = (props: TooltipProps) => {

@@ -1,4 +1,4 @@
-import { InputText, InputTextProps } from "czifui";
+import { InputText, InputTextProps } from "@czifui/sci-components";
 import React from "react";
 
 const InputSearchNameSpaceTest = (props: InputTextProps) => {

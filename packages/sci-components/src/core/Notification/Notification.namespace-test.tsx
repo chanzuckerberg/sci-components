@@ -1,4 +1,4 @@
-import { Notification, NotificationProps } from "czifui";
+import { Notification, NotificationProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

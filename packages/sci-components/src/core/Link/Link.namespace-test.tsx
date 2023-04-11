@@ -1,4 +1,4 @@
-import { Link, LinkProps } from "czifui";
+import { Link, LinkProps } from "@czifui/sci-components";
 import React from "react";
 
 const LinkNameSpaceTest = (props: LinkProps) => {

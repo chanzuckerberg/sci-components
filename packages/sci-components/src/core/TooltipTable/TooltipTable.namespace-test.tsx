@@ -1,4 +1,7 @@
-import { TooltipTableContent, TooltipTableContentProps } from "czifui";
+import {
+  TooltipTableContent,
+  TooltipTableContentProps,
+} from "@czifui/sci-components";
 import React from "react";
 
 const data = [

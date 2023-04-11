@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogProps,
   DialogTitle,
-} from "czifui";
+} from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

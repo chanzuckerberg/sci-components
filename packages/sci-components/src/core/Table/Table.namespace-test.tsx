@@ -1,4 +1,4 @@
-import { Table, TableProps } from "czifui";
+import { Table, TableProps } from "@czifui/sci-components";
 import React from "react";
 
 const TableNameSpaceTest = (props: TableProps) => {

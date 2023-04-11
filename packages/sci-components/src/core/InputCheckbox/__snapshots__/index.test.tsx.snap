@@ -13,7 +13,7 @@ exports[`<InputCheckbox /> Test story renders snapshot 1`] = `
         class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
       >
         <span
-          class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root css-1x95i3r-MuiButtonBase-root-MuiCheckbox-root"
+          class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-root MuiCheckbox-colorPrimary css-1x95i3r-MuiButtonBase-root-MuiCheckbox-root"
           data-testid="labelCheckbox"
         >
           <input
@@ -52,7 +52,7 @@ exports[`<InputCheckbox /> Test story renders snapshot 1`] = `
         class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
       >
         <span
-          class="MuiCheckbox-root MuiCheckbox-colorDefault MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
+          class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-root MuiCheckbox-colorDefault css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
           data-testid="checkbox"
           stage="unchecked"
         >

@@ -8,7 +8,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
     style="grid-area: 1 / 1 / 1 / 2;"
   >
     <button
-      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-1qnokts-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1qnokts-MuiButtonBase-root-MuiButton-root"
       disabled=""
       tabindex="-1"
       type="button"
@@ -20,7 +20,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
     style="grid-area: 2 / 1 / 2 / 2;"
   >
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-1l5khx7-MuiButtonBase-root-MuiChip-root"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-hfstnr-MuiButtonBase-root-MuiChip-root"
       role="button"
       tabindex="0"
     >
@@ -31,7 +31,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       </span>
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconOutlinedColorPrimary css-i4bv87-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-i4bv87-MuiSvgIcon-root"
         data-testid="ClearIcon"
         focusable="false"
         viewBox="0 0 24 24"

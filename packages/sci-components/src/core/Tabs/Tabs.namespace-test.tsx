@@ -1,4 +1,4 @@
-import { Tab, Tabs, TabsProps } from "czifui";
+import { Tab, Tabs, TabsProps } from "@czifui/sci-components";
 import React from "react";
 import { noop } from "src/common/utils";
 

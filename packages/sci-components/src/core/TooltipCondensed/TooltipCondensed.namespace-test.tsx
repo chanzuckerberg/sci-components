@@ -1,4 +1,7 @@
-import { TooltipCondensed, TooltipCondensedProps } from "czifui";
+import {
+  TooltipCondensed,
+  TooltipCondensedProps,
+} from "@czifui/sci-components";
 import React from "react";
 
 const TooltipCondensedNameSpaceTest = (props: TooltipCondensedProps) => {

@@ -1,4 +1,4 @@
-import { Accordion, AccordionProps } from "czifui";
+import { Accordion, AccordionProps } from "@czifui/sci-components";
 import React from "react";
 
 const AccordionNameSpaceTest = (props: AccordionProps) => {
