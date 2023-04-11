@@ -1,6 +1,6 @@
 {
   "name": "@czifui/sci-components",
-  "version": "0.0.65",
+  "version": "0.0.68",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -54,7 +54,6 @@
     "concurrently": "^6.0.0",
     "css-font": "^1.2.0",
     "cz-conventional-changelog": "^3.3.0",
-    "@czifui/sci-components": "file:czifui-sci-components-v0.0.65.tgz",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",
@@ -113,7 +112,7 @@
     "prelint": "yarn install-czifui-locally",
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install",
+    "prepare": "cd ../../ && husky install",
     "semantic-release": "semantic-release",
     "ci": "yarn install --frozen-lockfile",
     "test": "jest -u",
@@ -151,5 +150,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@czifui/sci-components": "file:czifui-sci-components-v0.0.68.tgz"
   }
 }

@@ -247,14 +247,15 @@ const DropdownMenu = <
   ) {
     let MenuItemContent;
 
-    const { component, name, details, count, sdsIcon, sdsIconProps } = option;
+    const { component, details, count, sdsIcon, sdsIconProps } = option;
+    const label = getOptionLabel(option);
 
     if (component) {
       MenuItemContent = component;
     } else {
       MenuItemContent = (
         <StyledMenuItemText>
-          {name}
+          {label}
           {details && (
             <StyledMenuItemDetails className="menuItem-details">
               {details}
