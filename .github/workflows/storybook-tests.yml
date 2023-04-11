@@ -16,7 +16,7 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
-        run: lerna run build-storybook --quiet
+        run: lerna run build-storybook
       - name: Run accessibility tests 🤟
         run: lerna run storybook:axeOnly
       - name: Serve Storybook and run tests
