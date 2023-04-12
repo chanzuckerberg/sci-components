@@ -1271,6 +1271,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@czifui/sci-components@file:czifui-sci-components-v0.0.68.tgz":
+  version "0.0.68"
+  uid c0046ff817b30ba331548abdd2f8e8a96de4e0f2
+  resolved "file:czifui-sci-components-v0.0.68.tgz#c0046ff817b30ba331548abdd2f8e8a96de4e0f2"
+
 "@czifui/sci-components@file:packages/sci-components/czifui-sci-components-v0.0.68.tgz":
   version "0.0.68"
   resolved "file:packages/sci-components/czifui-sci-components-v0.0.68.tgz#c0046ff817b30ba331548abdd2f8e8a96de4e0f2"
