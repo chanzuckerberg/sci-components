@@ -16,11 +16,11 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
-        run: lerna run build-storybook
+        run: yarn build-storybook
       - name: Run accessibility tests 🤟
-        run: lerna run storybook:axeOnly
+        run: yarn storybook:axeOnly
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server packages/sci-components/docs-build --port 6006 --silent" \
-            "npx wait-on tcp:6006 && lerna run test-storybook"
+            "npx http-server docs-build --port 6006 --silent" \
+            "npx wait-on tcp:6006 && yarn test-storybook"
