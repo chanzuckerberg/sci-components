@@ -6,16 +6,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-        with:
-          persist-credentials: false
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ".node-version"
-      - name: Install and Build 🔧
-        run: | # Install npm packages and build the Storybook files
-          yarn install
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
 
       - name: Namespace Checking
         run: lerna run namespace-check

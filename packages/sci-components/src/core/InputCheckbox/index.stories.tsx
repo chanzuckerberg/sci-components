@@ -54,7 +54,7 @@ Default.parameters = {
 
 Default.args = {
   caption: "Caption",
-  id: { testId },
+  id: testId,
   label: "Label",
 };
 
@@ -103,7 +103,7 @@ const TestTemplate: Story = (args) => <TestDemo {...args} />;
 export const Test = TestTemplate.bind({});
 
 Test.args = {
-  id: { testId },
+  id: testId,
 };
 
 Test.parameters = {
