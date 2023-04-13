@@ -1,13 +1,53 @@
 {
-  "name": "@czifui/sci-components",
-  "version": "0.0.95",
+  "name": "@czifui/sci-data-viz",
+  "version": "0.0.15",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "author": "",
+  "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/sci-data-viz#readme",
+  "description": "2023 Science Initiative Data Visualization Component Library",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/chanzuckerberg/sci-components.git"
   },
-  "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
+  },
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/chanzuckerberg/sci-components/issues"
+  },
+  "keywords": [
+    "react",
+    "materialui",
+    "science",
+    "design",
+    "system",
+    "component",
+    "library",
+    "data-viz",
+    "visualization",
+    "heatmap"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {
+    "@emotion/css": "^11.1.3",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@mui/base": "^5.0.0-alpha.83",
+    "@mui/icons-material": "^5.6.0",
+    "@mui/lab": "^5.0.0-alpha.76",
+    "@mui/material": "^5.6.0",
+    "react": ">=17.0.1",
+    "react-dom": ">=17.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
@@ -92,23 +132,9 @@
     "ts-jest": "^27.0.5",
     "typescript": "4.6"
   },
-  "peerDependencies": {
-    "@emotion/css": "^11.1.3",
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@mui/base": "^5.0.0-alpha.83",
-    "@mui/icons-material": "^5.6.0",
-    "@mui/lab": "^5.0.0-alpha.76",
-    "@mui/material": "^5.6.0",
-    "react": ">=17.0.1",
-    "react-dom": ">=17.0.1"
-  },
   "scripts": {
     "build": "yarn sd-build && rollup -c",
     "build-watch": "rollup -c -w",
-    "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build",
-    "test-storybook": "test-storybook",
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "prepare": "cd ../../ && husky install",
@@ -117,35 +143,6 @@
     "test": "jest -u",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
-    "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
-    "storybook:axeOnly": "axe-storybook --build-dir docs-build",
     "namespace-check": "tsc --p tsconfig-namespace-check.json --noEmit"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
-  },
-  "files": [
-    "dist"
-  ],
-  "description": "2021 Create-a-thon Science Initiative Component Library",
-  "bugs": {
-    "url": "https://github.com/chanzuckerberg/sci-components/issues"
-  },
-  "homepage": "https://github.com/chanzuckerberg/sci-components#readme",
-  "keywords": [
-    "react",
-    "materialui",
-    "science",
-    "design",
-    "system",
-    "component",
-    "library"
-  ],
-  "author": "",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {}
+  }
 }
