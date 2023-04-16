@@ -2,7 +2,7 @@ module.exports = {
   extends: "stylelint-config-recommended",
   ignoreFiles: [
     // (thuang): Ignore `venv` folder
-    "venv/**/*",
-    "dist/**/*",
+    "packages/**/venv/**/*",
+    "packages/**/dist/**/*",
   ],
 };

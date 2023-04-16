@@ -1,12 +1,17 @@
-import React, { forwardRef } from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import { StyledTable } from "./style";
 
-export interface TableProps {
+export interface SdsTableProps {
   children: React.ReactNode;
 }
 
+export type TableProps = SdsTableProps & React.HTMLAttributes<HTMLTableElement>;
+
 const Table = forwardRef<HTMLTableElement, TableProps>(
-  (props: TableProps, ref): JSX.Element | null => {
+  (
+    props: TableProps,
+    ref: ForwardedRef<HTMLTableElement>
+  ): JSX.Element | null => {
     const { children } = props;
 
     return (

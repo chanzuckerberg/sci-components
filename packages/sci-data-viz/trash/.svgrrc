@@ -1,8 +1,0 @@
-
-{
-	"__comment": "fillcontrast uses all lowercase to prevent react errors from cluttering the console and test outputs. Props that are in camelCase and passed down by {...rest} are parsed by react and lead to an Unknown Prop Warning. By using lowercase, we pass it along as a custom html attribute and the error is removed",
-	"replaceAttrValues": {
-	  "#000": "{props.fill}",
-	  "#c00": "{props.fillcontrast}" 
-	}
-}

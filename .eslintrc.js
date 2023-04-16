@@ -23,7 +23,7 @@ module.exports = {
   // rules in all ComponentName.namespace.tsx files
   overrides: [
     {
-      files: ["src/core/**/*.namespace-test.tsx"],
+      files: ["packages/**/src/core/**/*.namespace-test.tsx"],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "import/no-extraneous-dependencies": "off",
@@ -68,7 +68,7 @@ module.exports = {
     "consistent-return": "off",
     "import/no-anonymous-default-export": 2,
     "import/no-extraneous-dependencies": [
-      "error",
+      "off",
       {
         devDependencies: [
           "**/*.stories.ts",
