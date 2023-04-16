@@ -1271,6 +1271,12 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@czifui/sci-components@file:./packages/sci-components":
+  version "0.0.95"
+
+"@czifui/sci-data-viz@file:./packages/sci-data-viz":
+  version "0.0.15"
+
 "@design-systems/utils@2.12.0":
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/@design-systems/utils/-/utils-2.12.0.tgz#955c108be07cb8f01532207cbfea8f848fa760c9"
