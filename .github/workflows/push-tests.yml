@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint
         run: |
-          lerna run lint
+          yarn lint
 
   test:
     runs-on: ubuntu-20.04
@@ -34,7 +34,7 @@ jobs:
 
       - name: Test
         run: |
-          lerna run test
+          yarn test
 
   build:
     runs-on: ubuntu-20.04
@@ -48,4 +48,4 @@ jobs:
 
       - name: Build
         run: |
-          lerna run build
+          yarn build

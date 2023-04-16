@@ -14,4 +14,4 @@ jobs:
       - uses: bahmutov/npm-install@v1
 
       - name: Namespace Checking
-        run: lerna run namespace-check
+        run: yarn namespace-check

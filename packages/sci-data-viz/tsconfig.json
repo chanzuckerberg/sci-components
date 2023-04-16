@@ -1,9 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist"
-  },
-  "include": ["src/**/*", "../../.eslintrc.js"],
-  "exclude": ["node_modules"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist",
+        "composite": true
+    },
+    "include": [
+        "src/**/*",
+        "../../.eslintrc.js"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "references": []
 }
