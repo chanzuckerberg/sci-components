@@ -8,20 +8,6 @@ on:
     branches: "*"
 
 jobs:
-  build:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
-
-      - name: Build
-        run: |
-          yarn build
-
   lint:
     runs-on: ubuntu-20.04
     steps:
@@ -31,6 +17,9 @@ jobs:
 
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
+
+      - name: Build component library in dist/
+        run: yarn build
 
       - name: Lint
         run: |
@@ -49,3 +38,17 @@ jobs:
       - name: Test
         run: |
           yarn test
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+
+      - name: Build
+        run: |
+          yarn build
