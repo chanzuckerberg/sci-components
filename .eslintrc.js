@@ -68,7 +68,7 @@ module.exports = {
     "consistent-return": "off",
     "import/no-anonymous-default-export": 2,
     "import/no-extraneous-dependencies": [
-      "off",
+      "error",
       {
         devDependencies: [
           "**/*.stories.ts",
