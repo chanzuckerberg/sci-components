@@ -98,7 +98,7 @@ export default {
     },
   },
   component: Dropdown,
-  title: "Dropdown",
+  title: "Dropdowns/Dropdown",
 } as Meta;
 
 export const Default = {

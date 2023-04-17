@@ -49,7 +49,7 @@ export default {
       disabledRules: ["aria-required-parent"],
     },
   },
-  title: "MenuItem",
+  title: "Dropdowns/MenuItem",
 } as Meta;
 
 // Default

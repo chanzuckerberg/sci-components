@@ -43,7 +43,7 @@ const Menu = (props: Args): JSX.Element => {
 
 export default {
   component: Menu,
-  title: "Menu",
+  title: "Dropdowns/Menu",
 } as Meta;
 
 // Default

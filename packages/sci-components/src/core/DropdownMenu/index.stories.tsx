@@ -174,7 +174,7 @@ export default {
     },
   },
   component: DropdownMenu,
-  title: "DropdownMenu",
+  title: "Dropdowns/DropdownMenu",
 } as Meta;
 
 // Default

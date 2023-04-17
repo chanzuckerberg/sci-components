@@ -255,7 +255,7 @@ export default {
     },
   },
   component: MenuSelect,
-  title: "MenuSelect - To Be Depreciated",
+  title: "Dropdowns/MenuSelect - To Be Depreciated",
 } as Meta;
 
 // Default
