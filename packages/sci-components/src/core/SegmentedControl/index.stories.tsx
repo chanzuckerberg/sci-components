@@ -64,6 +64,28 @@ interface SegmentedControlArgs extends SegmentedControlProps {
   segmentFourTooltipText: string;
 }
 
+const Template = (props: SegmentedControlArgs) => {
+  const {
+    segmentOneIcon,
+    segmentOneTooltipText,
+    segmentTwoIcon,
+    segmentTwoTooltipText,
+    segmentThreeIcon,
+    segmentThreeTooltipText,
+    segmentFourIcon,
+    segmentFourTooltipText,
+  } = props;
+
+  const buttonDefinition = [
+    { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
+    { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
+    { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
+    { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
+  ];
+
+  return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
+};
+
 // Default
 
 export const Default = {
@@ -77,27 +99,7 @@ export const Default = {
     segmentTwoIcon: "list",
     segmentTwoTooltipText: "List B",
   },
-  render: (props: SegmentedControlArgs) => {
-    const {
-      segmentOneIcon,
-      segmentOneTooltipText,
-      segmentTwoIcon,
-      segmentTwoTooltipText,
-      segmentThreeIcon,
-      segmentThreeTooltipText,
-      segmentFourIcon,
-      segmentFourTooltipText,
-    } = props;
-
-    const buttonDefinition = [
-      { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
-      { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
-      { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
-      { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
-    ];
-
-    return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
-  },
+  render: Template,
 };
 
 // Live Preview
@@ -116,7 +118,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles}>
       <div>
-        <SegmentedControl
+        <Template
           segmentOneIcon="list"
           segmentOneTooltipText="List A"
           segmentTwoIcon="list"
