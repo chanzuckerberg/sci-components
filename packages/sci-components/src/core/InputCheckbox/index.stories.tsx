@@ -1,11 +1,11 @@
 import { Box, FormControlLabel } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputCheckbox from "./index";
+import RawInputCheckbox from "./index";
 
 const testId = "test-story";
 
-const CheckboxDemo = (props: Args): JSX.Element => {
+const InputCheckbox = (props: Args): JSX.Element => {
   const { disabled } = props;
   const [checked, setChecked] = React.useState(true);
 
@@ -15,7 +15,7 @@ const CheckboxDemo = (props: Args): JSX.Element => {
     <div>
       <FormControlLabel
         control={
-          <InputCheckbox
+          <RawInputCheckbox
             disabled={disabled}
             onChange={handleChange}
             stage={checked ? "unchecked" : "checked"}
@@ -38,9 +38,11 @@ export default {
       control: { type: "string" },
     },
   },
-  component: CheckboxDemo,
+  component: InputCheckbox,
   title: "Inputs/InputCheckbox",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -48,18 +50,13 @@ export const Default = {
     id: testId,
     label: "Label",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 const CheckboxLabelDemo = (props: Args): JSX.Element => {
   const { caption, label, disabled } = props;
   return (
     <div>
-      <InputCheckbox
+      <RawInputCheckbox
         caption={caption}
         label={label}
         disabled={disabled}
@@ -87,14 +84,14 @@ const IndeterminateDemo = (): JSX.Element => {
 
   const children = (
     <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
-      <InputCheckbox
+      <RawInputCheckbox
         label="Child 1"
         checkboxProps={{
           checked: checked[0],
           onChange: handleChange2,
         }}
       />
-      <InputCheckbox
+      <RawInputCheckbox
         label="Child 2"
         checkboxProps={{
           checked: checked[1],
@@ -106,7 +103,7 @@ const IndeterminateDemo = (): JSX.Element => {
 
   return (
     <div>
-      <InputCheckbox
+      <RawInputCheckbox
         label="Parent"
         checkboxProps={{
           checked: checked[0] && checked[1],
@@ -136,7 +133,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <CheckboxLabelDemo label="Label" disabled={false} />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <CheckboxDemo disabled />
+        <InputCheckbox disabled />
       </div>
       <div style={{ gridArea: "1 / 3 / 1 / 3" }}>
         <IndeterminateDemo />
@@ -177,7 +174,7 @@ const TestDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <CheckboxDemo data-testid="checkbox" />
+        <InputCheckbox data-testid="checkbox" />
       </div>
     </div>
   );
@@ -189,6 +186,9 @@ export const Test = {
   },
   parameters: {
     controls: { exclude: ["caption", "label", "id"] },
+    snapshot: {
+      skip: true,
+    },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render: (args: Args) => <TestDemo {...args} data-testid="input-checkbox" />,
 };

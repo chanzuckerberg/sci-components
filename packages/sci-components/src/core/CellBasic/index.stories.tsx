@@ -2,7 +2,7 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import Icon from "../Icon";
-import CellBasicRaw from "./index";
+import RawCellBasic from "./index";
 
 const CellBasic = (props: Args): JSX.Element => {
   return (
@@ -14,7 +14,7 @@ const CellBasic = (props: Args): JSX.Element => {
             maxWidth: "200px",
           }}
         >
-          <CellBasicRaw
+          <RawCellBasic
             data-testid="CellBasic"
             primaryText="Primary Text"
             tooltipProps={{ sdsStyle: "light" }}
@@ -94,6 +94,8 @@ export default {
   title: "Table/CellBasic",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     primaryText: "Primary Text",
@@ -106,12 +108,9 @@ export const Default = {
     tertiaryTextWrapLineCount: 1,
     tooltipProps: { sdsStyle: "dark" },
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
+
+// Test
 
 const TableCellStyle = {
   border: "dashed 1px #eee",
@@ -124,7 +123,7 @@ const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
-        <CellBasicRaw
+        <RawCellBasic
           data-testid="CellBasicVerticalAlignTest"
           primaryText="Primary Text"
           secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -134,7 +133,7 @@ const TestDemo = (): JSX.Element => (
           shouldShowTooltipOnHover={false}
           style={TableCellStyle as React.CSSProperties}
         />
-        <CellBasicRaw
+        <RawCellBasic
           data-testid="CellBasicCenterAlignTest"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
@@ -143,7 +142,7 @@ const TestDemo = (): JSX.Element => (
           shouldShowTooltipOnHover={false}
           style={TableCellStyle as React.CSSProperties}
         />
-        <CellBasicRaw
+        <RawCellBasic
           data-testid="CellBasic"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
@@ -152,7 +151,7 @@ const TestDemo = (): JSX.Element => (
           tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
           style={TableCellStyle as React.CSSProperties}
         />
-        <CellBasicRaw
+        <RawCellBasic
           data-testid="CellBasicWithIcon"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
@@ -187,6 +186,9 @@ export const Test = {
         "horizontalAlign",
         "verticalAlign",
       ],
+    },
+    snapshot: {
+      skip: true,
     },
   },
   render: (args: Args) => <TestDemo {...args} />,

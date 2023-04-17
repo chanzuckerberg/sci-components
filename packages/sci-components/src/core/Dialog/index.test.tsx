@@ -1,10 +1,12 @@
-import { composeStory } from "@storybook/testing-react";
+import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import * as snapshotTestStoryFile from "./index.stories";
 import Meta, {
   Test as TestStory,
-  TestButtonPositionLeft,
-  TestNoTitleOnClose,
+  TestButtonPositionLeft as TestButtonPositionLeftStory,
+  TestNoTitleOnClose as TestNoTitleOnCloseStory,
 } from "./index.stories";
 
 const DIALOG_TITLE_TEST_ID = "dialog-title";
@@ -13,8 +15,12 @@ const DIALOG_ACTIONS_TEST_ID = "dialog-actions";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const Test = composeStory(TestStory, Meta);
+const TestButtonPositionLeft = composeStory(TestButtonPositionLeftStory, Meta);
+const TestNoTitleOnClose = composeStory(TestNoTitleOnCloseStory, Meta);
 
 describe("<Dialog />", () => {
+  generateSnapshots(snapshotTestStoryFile);
+
   test("Dialog all sizes match the snapshots", () => {
     render(<Test />);
 

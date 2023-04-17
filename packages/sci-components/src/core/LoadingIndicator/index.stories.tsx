@@ -1,11 +1,11 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { defaultAppTheme } from "../styles";
-import LoadingIndicator from "./index";
+import RawLoadingIndicator from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const LoadingIndicator = (props: Args): JSX.Element => {
   const { sdsStyle } = props;
-  return <LoadingIndicator sdsStyle={sdsStyle} {...props} />;
+  return <RawLoadingIndicator sdsStyle={sdsStyle} {...props} />;
 };
 
 export default {
@@ -15,18 +15,15 @@ export default {
       options: ["minimal", "tag"],
     },
   },
-  component: Demo,
+  component: LoadingIndicator,
   title: "LoadingIndicator",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
     sdsStyle: "minimal",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -52,7 +49,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           marginTop: spacings?.l,
         }}
       >
-        <LoadingIndicator sdsStyle="minimal" {...props} />
+        <RawLoadingIndicator sdsStyle="minimal" {...props} />
       </div>
       <div
         style={{
@@ -61,7 +58,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           marginTop: spacings?.l,
         }}
       >
-        <LoadingIndicator sdsStyle="tag" {...props} />
+        <RawLoadingIndicator sdsStyle="tag" {...props} />
       </div>
     </div>
   );
@@ -79,5 +76,10 @@ export const LivePreview = {
 // Test
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };

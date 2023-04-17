@@ -3,9 +3,9 @@ import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import Notification from "./index";
+import RawNotification from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Notification = (props: Args): JSX.Element => {
   const {
     intent,
     onClose,
@@ -31,7 +31,7 @@ const Demo = (props: Args): JSX.Element => {
             label="Hide"
           />
         )}
-        <Notification
+        <RawNotification
           autoDismiss={autoDismiss}
           dismissed={dismissed}
           slideDirection={slideDirection}
@@ -48,7 +48,7 @@ const Demo = (props: Args): JSX.Element => {
               eveniet sapiente, officiis aut possimus suscipit assumenda non?
             </div>
           )}
-        </Notification>
+        </RawNotification>
         <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
           Reset Notification
         </Button>
@@ -63,7 +63,7 @@ const Demo = (props: Args): JSX.Element => {
           label="Hide"
         />
       )}
-      <Notification
+      <RawNotification
         autoDismiss={autoDismiss}
         dismissed={dismissed}
         slideDirection={slideDirection}
@@ -78,7 +78,7 @@ const Demo = (props: Args): JSX.Element => {
             eveniet sapiente, officiis aut possimus suscipit assumenda non?
           </div>
         )}
-      </Notification>
+      </RawNotification>
       <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
         Reset Notification
       </Button>
@@ -117,9 +117,11 @@ export default {
       options: ["left", "right"],
     },
   },
-  component: Demo,
+  component: Notification,
   title: "Notification",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -129,11 +131,6 @@ export const Default = {
     extraContent: false,
     intent: "success",
     slideDirection: "left",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -149,10 +146,10 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Notification slideDirection="left" intent="info" {...props}>
+      <RawNotification slideDirection="left" intent="info" {...props}>
         this is a notification
-      </Notification>
-      <Notification
+      </RawNotification>
+      <RawNotification
         slideDirection="left"
         intent="info"
         buttonOnClick={action("onClick")}
@@ -160,8 +157,8 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         {...props}
       >
         this is a notification
-      </Notification>
-      <Notification
+      </RawNotification>
+      <RawNotification
         slideDirection="left"
         intent="info"
         buttonOnClick={action("onClick")}
@@ -173,7 +170,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet eveniet
           sapiente, officiis aut possimus suscipit assumenda non?
         </div>
-      </Notification>
+      </RawNotification>
     </div>
   );
 };
@@ -191,17 +188,22 @@ export const LivePreview = {
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
-    <Notification
+    <RawNotification
       slideDirection="left"
       intent="info"
       {...props}
       data-testid="notification"
     >
       this is a notification
-    </Notification>
+    </RawNotification>
   );
 };
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <TestDemo {...args} />,
 };

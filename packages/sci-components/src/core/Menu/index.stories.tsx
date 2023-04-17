@@ -2,9 +2,9 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import MenuItem from "../MenuItem";
-import Menu from "./index";
+import RawMenu from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Menu = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -25,7 +25,7 @@ const Demo = (props: Args): JSX.Element => {
       <Button sdsStyle="minimal" sdsType="secondary" onClick={handleClick}>
         Click me!
       </Button>
-      <Menu
+      <RawMenu
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -36,15 +36,17 @@ const Demo = (props: Args): JSX.Element => {
         <MenuItem onClick={handleClose}>Terms of Use</MenuItem>
         <MenuItem onClick={handleClose}>Privacy Policy</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+      </RawMenu>
     </div>
   );
 };
 
 export default {
-  component: Demo,
+  component: Menu,
   title: "Menu",
 } as Meta;
+
+// Default
 
 export const Default = {};
 

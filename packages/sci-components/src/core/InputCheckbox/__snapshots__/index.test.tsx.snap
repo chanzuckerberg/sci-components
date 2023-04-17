@@ -1,88 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<InputCheckbox /> Test story renders snapshot 1`] = `
-<div
-  style="display: grid; grid-template-columns: repeat(2, 100px); grid-template-rows: 1fr;"
->
-  <div
-    style="grid-area: 1 / 1 / 1 / 2;"
+exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
+<div>
+  <label
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
   >
-    <div>
-      <label
-        caption="Caption"
-        class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
-      >
-        <span
-          class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-root MuiCheckbox-colorPrimary css-1x95i3r-MuiButtonBase-root-MuiCheckbox-root"
-          data-testid="labelCheckbox"
-        >
-          <input
-            class="PrivateSwitchBase-input css-1m9pwf3"
-            data-indeterminate="false"
-            type="checkbox"
-            value="Demo"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-jest-file-name="IconCheckboxUnchecked.svg"
-            data-jest-svg-name="IconCheckboxUnchecked"
-            data-testid="IconCheckboxUnchecked"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 16 16"
-          />
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </span>
-        <span
-          class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
-        >
-          Lable A
-        </span>
-      </label>
-    </div>
-  </div>
-  <div
-    style="grid-area: 1 / 2 / 1 / 2;"
-  >
-    <div>
-      <label
-        class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
-      >
-        <span
-          class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-root MuiCheckbox-colorDefault css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
-          data-testid="checkbox"
-          stage="unchecked"
-        >
-          <input
-            class="PrivateSwitchBase-input css-1m9pwf3"
-            data-indeterminate="false"
-            type="checkbox"
-            value="Demo"
-          />
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-jest-file-name="IconCheckboxUnchecked.svg"
-            data-jest-svg-name="IconCheckboxUnchecked"
-            data-testid="IconCheckboxUnchecked"
-            fillcontrast="white"
-            focusable="false"
-            viewBox="0 0 16 16"
-          />
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </span>
-        <span
-          class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
-        >
-          Label
-        </span>
-      </label>
-    </div>
-  </div>
+    <span
+      caption="Caption"
+      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-root MuiCheckbox-colorDefault css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
+      label="Label"
+      stage="unchecked"
+    >
+      <input
+        class="PrivateSwitchBase-input css-1m9pwf3"
+        data-indeterminate="false"
+        id="test-story"
+        type="checkbox"
+        value="Demo"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-jest-file-name="IconCheckboxUnchecked.svg"
+        data-jest-svg-name="IconCheckboxUnchecked"
+        data-testid="IconCheckboxUnchecked"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 16 16"
+      />
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </span>
+    <span
+      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+    >
+      Label
+    </span>
+  </label>
 </div>
 `;

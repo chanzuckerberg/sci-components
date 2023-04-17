@@ -1,13 +1,13 @@
 import { FormControl } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputText from "./index";
+import RawInputText from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const InputText = (props: Args): JSX.Element => {
   const { id, intent, disabled, hideLabel, placeholder, label, sdsType } =
     props;
   return (
-    <InputText
+    <RawInputText
       id={id}
       sdsType={sdsType}
       label={label}
@@ -52,9 +52,11 @@ export default {
       options: ["textField", "textArea"],
     },
   },
-  component: Demo,
+  component: InputText,
   title: "Inputs/InputText",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -64,11 +66,6 @@ export const Default = {
     label: "Label",
     placeholder: "Value",
     sdsType: "textField",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -84,7 +81,7 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <InputText
+      <RawInputText
         {...props}
         id="textFieldPreview"
         sdsType="textField"
@@ -93,7 +90,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         placeholder="Value"
         style={{ width: "200px" }}
       />
-      <InputText
+      <RawInputText
         {...props}
         id="textAreaPreview"
         sdsType="textArea"
@@ -121,7 +118,7 @@ export const LivePreview = {
 const TestDemo = (props: Args): JSX.Element => {
   return (
     <FormControl>
-      <InputText
+      <RawInputText
         {...props}
         id="test-textField"
         sdsType="textField"
@@ -130,14 +127,15 @@ const TestDemo = (props: Args): JSX.Element => {
         placeholder="Value"
         data-testid="inputTextBase"
       />
+
       {/* @ts-expect-error testing fail state */}
-      <InputText
+      <RawInputText
         sdsType="textField"
         hideLabel={false}
         data-testid="inputTextFail"
       />
 
-      <InputText
+      <RawInputText
         id="test-hide-label"
         sdsType="textField"
         label="Hidden Label"
@@ -145,7 +143,7 @@ const TestDemo = (props: Args): JSX.Element => {
         data-testid="inputTextHideLabel"
       />
 
-      <InputText
+      <RawInputText
         id="test-textArea"
         sdsType="textArea"
         label="Label"
@@ -158,5 +156,10 @@ const TestDemo = (props: Args): JSX.Element => {
 };
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <TestDemo {...args} />,
 };

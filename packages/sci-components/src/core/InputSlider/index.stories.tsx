@@ -1,6 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputSlider from "./index";
+import RawInputSlider from "./index";
 
 const generateCustomMarks = (min: number, max: number) => {
   return [
@@ -26,34 +26,16 @@ const DemoWrapperStyles = {
   width: 180,
 };
 
-const Demo = (props: Args): JSX.Element => {
+const InputSlider = (props: Args): JSX.Element => {
   const { marks, max, min } = props;
 
   const customMarks = generateCustomMarks(min, max);
 
   return (
     <div style={DemoWrapperStyles as React.CSSProperties}>
-      <InputSlider {...props} marks={marks ? customMarks : false} />
+      <RawInputSlider {...props} marks={marks ? customMarks : false} />
     </div>
   );
-};
-
-export const Default = {
-  args: {
-    defaultValue: [15, 85],
-    disabled: false,
-    marks: true,
-    max: 100,
-    min: 0,
-    orientation: "horizontal",
-    step: 5,
-    valueLabelDisplay: "on",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 export default {
@@ -100,7 +82,7 @@ export default {
       options: ["auto", "off", "on"],
     },
   },
-  component: Demo,
+  component: InputSlider,
   parameters: {
     axe: {
       disabledRules: [
@@ -111,6 +93,21 @@ export default {
   },
   title: "Inputs/InputSlider",
 } as Meta;
+
+// Default
+
+export const Default = {
+  args: {
+    defaultValue: [15, 85],
+    disabled: false,
+    marks: true,
+    max: 100,
+    min: 0,
+    orientation: "horizontal",
+    step: 5,
+    valueLabelDisplay: "on",
+  },
+};
 
 // Live Preview
 
@@ -129,7 +126,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
       <div style={{ gridArea: "1/1/2/2" }}>
-        <InputSlider
+        <RawInputSlider
           step={5}
           valueLabelDisplay="on"
           {...props}
@@ -140,7 +137,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "1/2/2/3" }}>
-        <InputSlider
+        <RawInputSlider
           step={5}
           valueLabelDisplay="on"
           {...props}
@@ -177,7 +174,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={DemoWrapperStyles as React.CSSProperties}>
-      <InputSlider
+      <RawInputSlider
         {...props}
         data-testid="test-input-slider"
         marks={marks ? customMarks : false}
@@ -192,5 +189,10 @@ export const Test = {
     max: 100,
     min: 0,
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} data-testid="input-slider" />,
 };

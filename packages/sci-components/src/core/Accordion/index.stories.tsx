@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
@@ -24,8 +24,6 @@ const Accordion = (props: Args): JSX.Element => {
   );
 };
 
-const Template: Story = (props) => <Accordion {...props} />;
-
 export default {
   argTypes: {
     id: {
@@ -47,30 +45,12 @@ export default {
   title: "Accordion",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     togglePosition: "right",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
-};
-
-export const Test = {
-  arg: {
-    id: "test-story",
-    togglePosition: "right",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (props: Args): JSX.Element => (
-    <Accordion {...props} data-testid="accordion" />
-  ),
 };
 
 // LivePreview
@@ -85,16 +65,21 @@ const livePreviewStyles = {
 function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <Template id="accordion-1" togglePosition="right" useDivider {...props} />
-      <Template
+      <Accordion
+        id="accordion-1"
+        togglePosition="right"
+        useDivider
+        {...props}
+      />
+      <Accordion
         id="accordion-2"
         togglePosition="right"
         subtitle="Optional Subtitle"
         useDivider
         {...props}
       />
-      <Template id="accordion-3" togglePosition="left" useDivider {...props} />
-      <Template
+      <Accordion id="accordion-3" togglePosition="left" useDivider {...props} />
+      <Accordion
         id="accordion-4"
         togglePosition="left"
         subtitle="Optional Subtitle"
@@ -112,4 +97,21 @@ export const LivePreview = {
     },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Test
+
+export const Test = {
+  arg: {
+    id: "test-story",
+    togglePosition: "right",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => (
+    <Accordion {...props} data-testid="accordion" />
+  ),
 };

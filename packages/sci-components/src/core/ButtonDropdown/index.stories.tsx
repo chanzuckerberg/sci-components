@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
-import ButtonDropdown from "./index";
+import RawButtonDropdown from "./index";
 
 const text = "Label";
 
@@ -10,14 +10,16 @@ const actions = {
   onClick: action("onClick"),
 };
 
-const Demo = (props: Args): JSX.Element => {
-  return <ButtonDropdown {...props}>{text}</ButtonDropdown>;
+const ButtonDropdown = (props: Args): JSX.Element => {
+  return <RawButtonDropdown {...props}>{text}</RawButtonDropdown>;
 };
 
 export default {
-  component: Demo,
+  component: ButtonDropdown,
   title: "ButtonDropdown",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -27,14 +29,10 @@ export const Default = {
     sdsStyle: "square",
     sdsType: "primary",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 // LivePreview
+
 const livePreviewWrapperStyle = {
   display: "grid",
   gridColumnGap: 10,
@@ -102,6 +100,8 @@ export const LivePreview = {
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
+// Test
+
 export const Test = {
   args: {
     disabled: false,
@@ -109,6 +109,11 @@ export const Test = {
     onClick: actions.onClick,
     sdsStyle: "rounded",
     sdsType: "primary",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
   render: (props: Args): JSX.Element => {
     return (

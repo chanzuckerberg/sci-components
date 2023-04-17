@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
-import CellHeaderRaw, { CellHeaderDirection } from "./index";
+import RawCellHeader, { CellHeaderDirection } from "./index";
 
 const CellHeader = (props: Args): JSX.Element => {
   const { direction, ...rest } = props;
@@ -21,9 +21,9 @@ const CellHeader = (props: Args): JSX.Element => {
     <table>
       <tbody>
         <tr>
-          <CellHeaderRaw onClick={clickHandler} direction={sorting} {...rest}>
+          <RawCellHeader onClick={clickHandler} direction={sorting} {...rest}>
             Header
-          </CellHeaderRaw>
+          </RawCellHeader>
         </tr>
       </tbody>
     </table>
@@ -60,6 +60,8 @@ export default {
   title: "Table/CellHeader",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     active: false,
@@ -69,18 +71,15 @@ export const Default = {
     tooltipProps: { sdsStyle: "dark" },
     tooltipText: "This is a header cell",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
+
+// Test
 
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
       <tr>
-        <CellHeaderRaw
+        <RawCellHeader
           data-testid="CellHeader"
           horizontalAlign="right"
           shouldShowTooltipOnHover
@@ -88,7 +87,7 @@ const TestDemo = (): JSX.Element => (
           tooltipText="testTooltipTitle"
         >
           Header
-        </CellHeaderRaw>
+        </RawCellHeader>
       </tr>
     </tbody>
   </table>
@@ -106,6 +105,9 @@ export const Test = {
         "tooltipProps",
         "tooltipText",
       ],
+    },
+    snapshot: {
+      skip: true,
     },
   },
   render: (args: Args) => <TestDemo {...args} />,

@@ -1,9 +1,9 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import TooltipCondensed from "./index";
+import RawTooltipCondensed from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const TooltipCondensed = (props: Args): JSX.Element => {
   const { title, indicator } = props;
   return (
     <div>
@@ -13,9 +13,9 @@ const Demo = (props: Args): JSX.Element => {
           margin: "135px 300px",
         }}
       >
-        <TooltipCondensed indicator={indicator} title={title} {...props}>
+        <RawTooltipCondensed indicator={indicator} title={title} {...props}>
           <InfoOutlinedIcon data-testid="tooltip-hover" />
-        </TooltipCondensed>
+        </RawTooltipCondensed>
       </div>
     </div>
   );
@@ -30,18 +30,15 @@ export default {
       control: { type: "color" },
     },
   },
-  component: Demo,
+  component: TooltipCondensed,
   title: "TooltipCondensed",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
     title: "Label",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -55,17 +52,17 @@ const livePreviewStyles = {
 function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <TooltipCondensed title="Label" {...props}>
+      <RawTooltipCondensed title="Label" {...props}>
         <InfoOutlinedIcon />
-      </TooltipCondensed>
-      <TooltipCondensed
+      </RawTooltipCondensed>
+      <RawTooltipCondensed
         indicator
         indicatorColor="#223F9C"
         title="Label"
         {...props}
       >
         <InfoOutlinedIcon />
-      </TooltipCondensed>
+      </RawTooltipCondensed>
     </div>
   );
 }
@@ -85,4 +82,12 @@ export const Test = {
   args: {
     title: "Test",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <TooltipCondensed {...args} data-testid="tooltip-condensed" />
+  ),
 };

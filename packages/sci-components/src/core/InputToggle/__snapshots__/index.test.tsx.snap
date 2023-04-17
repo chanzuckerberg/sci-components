@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<InputToggle /> Test story renders snapshot 1`] = `
+exports[`<InputToggle /> Default story renders snapshot 1`] = `
 <span
   class="MuiSwitch-root MuiSwitch-sizeMedium css-1mglvc-MuiSwitch-root"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
-    data-testid="test-toggle"
   >
     <input
       class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"

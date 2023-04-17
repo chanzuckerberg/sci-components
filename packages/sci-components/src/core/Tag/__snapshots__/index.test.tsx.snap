@@ -2,17 +2,12 @@
 
 exports[`<Tag /> Default story renders snapshot 1`] = `
 <div
-  class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-clickable MuiChip-clickableColorPrimary MuiChip-filledPrimary css-cwsgsn-MuiButtonBase-root-MuiChip-root"
-  role="button"
-  tabindex="0"
+  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-g7b9te-MuiChip-root"
 >
   <span
     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
   >
     Label
   </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
 </div>
 `;

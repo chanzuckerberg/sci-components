@@ -1,62 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoadingIndicator /> Test story renders snapshot 1`] = `
+exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
 <div
-  style="display: grid; grid-template-columns: repeat(2, 70px); grid-template-rows: 1fr;"
+  class="css-1o5w4es"
 >
   <div
-    style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
+    class="css-1ft6wgl"
   >
-    <div
-      class="css-1o5w4es"
-    >
-      <div
-        class="css-1ft6wgl"
-      >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-          data-jest-file-name="IconLoadingLarge.svg"
-          data-jest-svg-name="IconLoadingLarge"
-          data-testid="IconLoadingLarge"
-          fillcontrast="white"
-          focusable="false"
-          viewBox="0 0 22 22"
-        />
-      </div>
-      <span
-        class="css-1xm9l9z"
-      >
-        Loading
-      </span>
-    </div>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+      data-jest-file-name="IconLoadingLarge.svg"
+      data-jest-svg-name="IconLoadingLarge"
+      data-testid="IconLoadingLarge"
+      fillcontrast="white"
+      focusable="false"
+      viewBox="0 0 22 22"
+    />
   </div>
-  <div
-    style="margin-bottom: 14px; margin-right: 14px; margin-top: 14px;"
+  <span
+    class="css-1xm9l9z"
   >
-    <div
-      class="css-k87s1p"
-    >
-      <div
-        class="css-1ft6wgl"
-      >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-          data-jest-file-name="IconLoadingLarge.svg"
-          data-jest-svg-name="IconLoadingLarge"
-          data-testid="IconLoadingLarge"
-          fillcontrast="white"
-          focusable="false"
-          viewBox="0 0 22 22"
-        />
-      </div>
-      <span
-        class="css-1xm9l9z"
-      >
-        Loading
-      </span>
-    </div>
-  </div>
+    Loading
+  </span>
 </div>
 `;

@@ -1,14 +1,14 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
-import PaginationRaw from "./index";
+import RawPagination from "./index";
 
 const Pagination = (props: Args): JSX.Element => {
   const { pageSize, totalCount, siblingCount, truncateDropdown, sdsStyle } =
     props;
   const [currentPage, setCurrentPage] = React.useState(1);
   return (
-    <PaginationRaw
+    <RawPagination
       sdsStyle={sdsStyle}
       pageSize={pageSize}
       onPageChange={(page: number) => {
@@ -47,16 +47,13 @@ export default {
   title: "Table/Pagination",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     pageSize: 5,
     siblingCount: 1,
     totalCount: 100,
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -64,7 +61,7 @@ export const Default = {
 
 const TestDemo = (props: Args): JSX.Element => (
   <div>
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination"
       pageSize={4}
       onPageChange={() => {}}
@@ -76,7 +73,7 @@ const TestDemo = (props: Args): JSX.Element => (
       truncateDropdown
       {...props}
     />
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination-disabled-left-arrow"
       pageSize={4}
       onPageChange={() => {}}
@@ -87,7 +84,7 @@ const TestDemo = (props: Args): JSX.Element => (
       currentPage={1}
       truncateDropdown
     />
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination-with-left-dropdown"
       pageSize={4}
       onPageChange={() => {}}
@@ -98,7 +95,7 @@ const TestDemo = (props: Args): JSX.Element => (
       currentPage={5}
       truncateDropdown
     />
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination-with-right-dropdown"
       pageSize={4}
       onPageChange={() => {}}
@@ -109,7 +106,7 @@ const TestDemo = (props: Args): JSX.Element => (
       currentPage={3}
       truncateDropdown
     />
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination-with-both-dropdowns"
       pageSize={4}
       onPageChange={() => {}}
@@ -120,7 +117,7 @@ const TestDemo = (props: Args): JSX.Element => (
       currentPage={4}
       truncateDropdown
     />
-    <PaginationRaw
+    <RawPagination
       data-testid="Pagination-disabled-dropdown"
       pageSize={4}
       onPageChange={() => {}}
@@ -144,6 +141,9 @@ export const Test = {
         "totalCount",
         "truncateDropdown",
       ],
+    },
+    snapshot: {
+      skip: true,
     },
   },
   render: (args: Args) => <TestDemo {...args} />,

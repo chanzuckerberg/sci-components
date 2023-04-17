@@ -3,9 +3,9 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
-import Tooltip from "./index";
+import RawTooltip from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Tooltip = (props: Args): JSX.Element => {
   const { title } = props;
   return (
     <div>
@@ -20,9 +20,9 @@ const Demo = (props: Args): JSX.Element => {
           margin: "135px 300px",
         }}
       >
-        <Tooltip title={title} {...props}>
+        <RawTooltip title={title} {...props}>
           <InfoOutlinedIcon />
-        </Tooltip>
+        </RawTooltip>
       </div>
     </div>
   );
@@ -65,13 +65,15 @@ export default {
       options: ["default", "wide"],
     },
   },
-  component: Demo,
+  component: Tooltip,
   parameters: {
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     chromatic: { delay: 5000 },
   },
   title: "Tooltip",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -81,11 +83,6 @@ export const Default = {
     subtitle: "dolor sit amet",
     title: "Lorem ipsum",
     width: "default",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -102,14 +99,20 @@ const LivePreviewDemo = (): JSX.Element => {
 
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <Tooltip title="Label lorem" sdsStyle="dark" placement="top" arrow open>
+      <RawTooltip
+        title="Label lorem"
+        sdsStyle="dark"
+        placement="top"
+        arrow
+        open
+      >
         <ButtonIcon
           sdsType="secondary"
           sdsSize="large"
           sdsIcon="infoSpeechBubble"
         />
-      </Tooltip>
-      <Tooltip
+      </RawTooltip>
+      <RawTooltip
         title="Label lorem ipsum tellus ac cursus commodo, tortor mauris."
         sdsStyle="light"
         placement="top"
@@ -119,7 +122,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <Button sdsType="primary" sdsStyle="rounded">
           Label
         </Button>
-      </Tooltip>
+      </RawTooltip>
     </div>
   );
 };
@@ -148,69 +151,69 @@ const PlacementDemo = (): JSX.Element => {
 
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <Tooltip title="Text" placement="top-start" arrow open>
+      <RawTooltip title="Text" placement="top-start" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           top-start
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="top" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="top" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           top
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="top-end" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="top-end" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           top-end
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="left-start" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="left-start" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           left-start
         </Button>
-      </Tooltip>
+      </RawTooltip>
       <div />
-      <Tooltip title="Text" placement="right-start" arrow open>
+      <RawTooltip title="Text" placement="right-start" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           right-start
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="left" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="left" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           left
         </Button>
-      </Tooltip>
+      </RawTooltip>
       <div />
-      <Tooltip title="Text" placement="right" arrow open>
+      <RawTooltip title="Text" placement="right" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           right
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="left-end" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="left-end" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           left-end
         </Button>
-      </Tooltip>
+      </RawTooltip>
       <div />
-      <Tooltip title="Text" placement="right-end" arrow open>
+      <RawTooltip title="Text" placement="right-end" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           right-end
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="bottom-start" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="bottom-start" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           bottom-start
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="bottom" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="bottom" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           bottom
         </Button>
-      </Tooltip>
-      <Tooltip title="Text" placement="bottom-end" arrow open>
+      </RawTooltip>
+      <RawTooltip title="Text" placement="bottom-end" arrow open>
         <Button sdsStyle="minimal" sdsType="secondary">
           bottom-end
         </Button>
-      </Tooltip>
+      </RawTooltip>
     </div>
   );
 };
@@ -229,12 +232,19 @@ export const PlacementPreview = {
 const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
   return (
-    <Tooltip title={title} {...rest} data-testid="tooltip">
+    <RawTooltip title={title} {...rest} data-testid="tooltip">
       <div>I am a tooltip child element</div>
-    </Tooltip>
+    </RawTooltip>
   );
 };
 
 export const Test = {
-  render: (args: Args) => <TestDemo title="test" {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <TestDemo title="test" {...args} data-testid="tooltip" />
+  ),
 };

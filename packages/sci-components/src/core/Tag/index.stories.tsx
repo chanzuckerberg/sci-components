@@ -2,12 +2,12 @@ import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
-import Tag from "./index";
+import RawTag from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Tag = (props: Args): JSX.Element => {
   const { label } = props;
 
-  return <Tag label={label} {...props} />;
+  return <RawTag label={label} {...props} />;
 };
 
 const customColorTuples = {
@@ -85,9 +85,11 @@ export default {
       options: ["primary", "secondary"],
     },
   },
-  component: Demo,
+  component: Tag,
   title: "Tag",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -114,7 +116,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ gridArea: "1 / 1 / 2 / 2" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={undefined}
@@ -125,7 +127,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "1 / 2 / 2 / 3" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={undefined}
@@ -136,7 +138,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "1 / 3 / 2 / 4" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={
@@ -149,7 +151,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "2 / 1 / 3 / 2" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={undefined}
@@ -160,7 +162,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "2 / 2 / 3 / 3" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={undefined}
@@ -171,7 +173,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       </div>
 
       <div style={{ gridArea: "2 / 3 / 3 / 4" }}>
-        <Tag
+        <RawTag
           {...props}
           color={color}
           icon={
@@ -202,7 +204,7 @@ export const LivePreview = {
 
 const TestDemo = (props: Args): JSX.Element => {
   const { label } = props;
-  return <Tag label={label} data-testid="tags" {...props} />;
+  return <RawTag label={label} {...props} data-testid="tags" />;
 };
 
 export const Test = {

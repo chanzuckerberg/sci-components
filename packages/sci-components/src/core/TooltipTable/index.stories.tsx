@@ -3,7 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Link from "../Link";
 import Tooltip from "../Tooltip";
-import TooltipTableContent from "./index";
+import RawTooltipTableContent from "./index";
 
 const rows = [
   { label: "Label 1", value: 1 },
@@ -38,7 +38,7 @@ const data = [
   },
 ];
 
-const Demo = (props: Args): JSX.Element => {
+const TooltipTableContent = (props: Args): JSX.Element => {
   const { contentAlert } = props;
   const handleAlert = () => {
     let alertContent;
@@ -56,7 +56,7 @@ const Demo = (props: Args): JSX.Element => {
     return alertContent;
   };
 
-  return <TooltipTableContent {...props} contentAlert={handleAlert()} />;
+  return <RawTooltipTableContent {...props} contentAlert={handleAlert()} />;
 };
 
 export default {
@@ -70,20 +70,17 @@ export default {
       options: ["right", "left"],
     },
   },
-  component: Demo,
+  component: TooltipTableContent,
   title: "TooltipTable",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
     contentAlert: "None",
     data,
     itemAlign: "right",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -108,7 +105,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         <Tooltip
           followCursor
           placement="right-end"
-          title={<TooltipTableContent {...props} data={[data[0]]} />}
+          title={<RawTooltipTableContent {...props} data={[data[0]]} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
         </Tooltip>
@@ -118,7 +115,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         <Tooltip
           followCursor
           placement="right-end"
-          title={<TooltipTableContent {...props} data={[data[0], data[1]]} />}
+          title={
+            <RawTooltipTableContent {...props} data={[data[0], data[1]]} />
+          }
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
         </Tooltip>
@@ -128,7 +127,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         <Tooltip
           followCursor
           placement="right-end"
-          title={<TooltipTableContent {...props} data={data} />}
+          title={<RawTooltipTableContent {...props} data={data} />}
         >
           <InfoOutlinedIcon color="primary" fontSize="small" />
         </Tooltip>
@@ -150,7 +149,7 @@ export const LivePreview = {
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
-    <TooltipTableContent
+    <RawTooltipTableContent
       {...props}
       data={[data[0], data[1]]}
       data-testid="tooltipTable"
@@ -159,5 +158,10 @@ const TestDemo = (props: Args): JSX.Element => {
 };
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <TestDemo {...args} />,
 };

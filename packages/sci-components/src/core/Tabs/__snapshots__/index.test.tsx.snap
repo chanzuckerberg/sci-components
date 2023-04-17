@@ -1,277 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tabs /> Test story renders snapshot 1`] = `
-<div>
+exports[`<Tabs /> Default story renders snapshot 1`] = `
+<div
+  class="MuiTabs-root css-11fro2b-MuiTabs-root"
+>
   <div
-    style="align-items: center; display: flex; gap: 40px; width: 100%;"
+    class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+    style="overflow: hidden; margin-bottom: 0px;"
   >
-    <div>
-      <h4>
-        Default
-      </h4>
-      <div
-        class="MuiTabs-root css-1qewznr-MuiTabs-root"
-        data-testid="tabs"
-        style="width: 400px;"
+    <div
+      class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+      role="tablist"
+    >
+      <button
+        aria-selected="true"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-17rzz1x-MuiButtonBase-root-MuiTab-root"
+        role="tab"
+        tabindex="0"
+        type="button"
       >
-        <div
-          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
-          style="overflow: hidden; margin-bottom: 0px;"
-        >
-          <div
-            class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
-            role="tablist"
-          >
-            <button
-              aria-selected="true"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="0"
-              type="button"
-            >
-              <span
-                class="css-1d9n0h0"
-              >
-                <span
-                  class="css-1szlfza"
-                >
-                  Tab One
-                </span>
-                <span
-                  class="css-1mg4zid"
-                >
-                  123
-                </span>
-              </span>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="-1"
-              type="button"
-            >
-              Tab Two
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-          </div>
-          <span
-            class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
-            style="left: 0px; width: 0px;"
-          />
-        </div>
-      </div>
-    </div>
-    <div>
-      <h4>
-        Small
-      </h4>
-      <div
-        class="MuiTabs-root css-1qewznr-MuiTabs-root"
-        data-testid="tabs"
-        style="width: 400px;"
+        Upload from Your Computer
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-selected="false"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-17rzz1x-MuiButtonBase-root-MuiTab-root"
+        role="tab"
+        tabindex="-1"
+        type="button"
       >
-        <div
-          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
-          style="overflow: hidden; margin-bottom: 0px;"
-        >
-          <div
-            class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
-            role="tablist"
-          >
-            <button
-              aria-selected="true"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-dhf7hn-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="0"
-              type="button"
-            >
-              <span
-                class="css-1d9n0h0"
-              >
-                <span
-                  class="css-1szlfza"
-                >
-                  Tab One
-                </span>
-                <span
-                  class="css-1mg4zid"
-                >
-                  123
-                </span>
-              </span>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-dhf7hn-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="-1"
-              type="button"
-            >
-              Tab Two
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-          </div>
-          <span
-            class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
-            style="left: 0px; width: 0px;"
-          />
-        </div>
-      </div>
+        Upload from Basespace
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
     </div>
-    <div>
-      <h4>
-        Underlined
-      </h4>
-      <div
-        class="MuiTabs-root css-11fro2b-MuiTabs-root"
-        data-testid="tabs"
-        style="width: 400px;"
-      >
-        <div
-          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
-          style="overflow: hidden; margin-bottom: 0px;"
-        >
-          <div
-            class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
-            role="tablist"
-          >
-            <button
-              aria-selected="true"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="0"
-              type="button"
-            >
-              <span
-                class="css-1d9n0h0"
-              >
-                <span
-                  class="css-1szlfza"
-                >
-                  Tab One
-                </span>
-                <span
-                  class="css-1mg4zid"
-                >
-                  123
-                </span>
-              </span>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-              role="tab"
-              tabindex="-1"
-              type="button"
-            >
-              Tab Two
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-          </div>
-          <span
-            class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
-            style="left: 0px; width: 0px;"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    style="align-items: center; display: flex; gap: 40px; width: 100%;"
-  >
-    <div>
-      <h4>
-        Label with count
-      </h4>
-      <div>
-        <div
-          class="MuiTabs-root css-11fro2b-MuiTabs-root"
-          data-testid="tabs"
-          style="width: 200px;"
-        >
-          <div
-            class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
-            style="overflow: hidden; margin-bottom: 0px;"
-          >
-            <div
-              class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
-              role="tablist"
-            >
-              <button
-                aria-selected="true"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-                role="tab"
-                tabindex="0"
-                type="button"
-              >
-                <span
-                  class="css-1d9n0h0"
-                >
-                  <span
-                    class="css-1szlfza"
-                  >
-                    Label
-                  </span>
-                  <span
-                    class="css-1mg4zid"
-                  >
-                    <span
-                      class="css-2dse8b"
-                    >
-                      123
-                    </span>
-                    <div
-                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
-                    >
-                      <span
-                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                      >
-                        BETA
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-              <button
-                aria-selected="false"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-17rzz1x-MuiButtonBase-root-MuiTab-root"
-                role="tab"
-                tabindex="-1"
-                type="button"
-              >
-                Label
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-            </div>
-            <span
-              class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
-              style="left: 0px; width: 0px;"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <span
+      class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
+      style="left: 0px; width: 0px;"
+    />
   </div>
 </div>
 `;

@@ -3,11 +3,11 @@ import React from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
-import ComplexFilter from "./index";
+import RawComplexFilter from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const ComplexFilter = (props: Args): JSX.Element => {
   return (
-    <ComplexFilter
+    <RawComplexFilter
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
@@ -59,9 +59,11 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: ComplexFilter,
   title: "ComplexFilter",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -85,7 +87,7 @@ const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div style={{ gridArea: "1/1/2/2" }}>
-        <ComplexFilter
+        <RawComplexFilter
           DropdownMenuProps={{
             PopperBaseProps: {
               sx: { width: 160 },
@@ -99,7 +101,7 @@ const LivePreviewDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ gridArea: "1/2/2/3" }}>
-        <ComplexFilter
+        <RawComplexFilter
           DropdownMenuProps={{
             PopperBaseProps: {
               sx: { width: 160 },
@@ -140,7 +142,7 @@ const LIVE_PREVIEW_OPTIONS = [
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
-    <ComplexFilter
+    <RawComplexFilter
       data-testid="complex-filter"
       label="Click Target"
       onChange={noop}

@@ -3,7 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React, { ReactNode, useState } from "react";
 import { noop } from "src/common/utils";
 import Tag from "../Tag";
-import Tabs, { Tab, TabsProps } from "./index";
+import RawTabs, { Tab, TabsProps } from "./index";
 
 interface TabsArgs extends TabsProps {
   tabOneLabel: string;
@@ -12,7 +12,7 @@ interface TabsArgs extends TabsProps {
   tabTwoCount?: ReactNode;
 }
 
-const Demo = (props: TabsArgs): JSX.Element => {
+const Tabs = (props: TabsArgs): JSX.Element => {
   const { tabOneLabel, tabTwoLabel, tabOneCount, tabTwoCount, ...args } = props;
 
   const [value, setValue] = useState(0);
@@ -22,10 +22,10 @@ const Demo = (props: TabsArgs): JSX.Element => {
   };
 
   return (
-    <Tabs {...args} value={value} onChange={handleTabsChange}>
+    <RawTabs {...args} value={value} onChange={handleTabsChange}>
       <Tab label={tabOneLabel} count={tabOneCount} />
       <Tab label={tabTwoLabel} count={tabTwoCount} />
-    </Tabs>
+    </RawTabs>
   );
 };
 
@@ -51,7 +51,7 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: Tabs,
   parameters: {
     // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
@@ -75,9 +75,6 @@ export const Default = {
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     // https://github.cwom/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
     chromatic: { delay: 5000 },
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -99,7 +96,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewWrapperStyle}>
       <div>
-        <Demo
+        <Tabs
           onChange={noop}
           sdsSize="large"
           tabOneLabel="Label"
@@ -109,7 +106,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Demo
+        <Tabs
           onChange={noop}
           sdsSize="large"
           tabOneLabel="Label"
@@ -121,7 +118,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Demo
+        <Tabs
           sdsSize="small"
           onChange={noop}
           tabOneLabel="Label"
@@ -131,7 +128,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Demo
+        <Tabs
           sdsSize="small"
           onChange={noop}
           tabOneLabel="Label"
@@ -170,7 +167,7 @@ function TestDemo(props: Args): JSX.Element {
       <div style={livePreviewWrapperStyle}>
         <div>
           <h4>Default</h4>
-          <Demo
+          <Tabs
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
             tabOneCount={123}
@@ -180,7 +177,7 @@ function TestDemo(props: Args): JSX.Element {
         </div>
         <div>
           <h4>Small</h4>
-          <Demo
+          <Tabs
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
             tabOneCount={123}
@@ -191,7 +188,7 @@ function TestDemo(props: Args): JSX.Element {
         </div>
         <div>
           <h4>Underlined</h4>
-          <Demo
+          <Tabs
             onChange={noop}
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
@@ -205,7 +202,7 @@ function TestDemo(props: Args): JSX.Element {
         <div>
           <h4>Label with count</h4>
           <div>
-            <Demo
+            <Tabs
               onChange={noop}
               sdsSize="large"
               tabOneLabel="Label"
@@ -225,6 +222,9 @@ function TestDemo(props: Args): JSX.Element {
 export const Test = {
   parameters: {
     chromatic: { delay: 5000 },
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <TestDemo {...args} />,
 };

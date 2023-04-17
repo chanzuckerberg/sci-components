@@ -1,16 +1,16 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Banner from "./index";
+import RawBanner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
-const Demo = (props: Args): JSX.Element => {
+const Banner = (props: Args): JSX.Element => {
   const { sdsType, textChild } = props;
   return (
-    <Banner sdsType={sdsType} {...props}>
+    <RawBanner sdsType={sdsType} {...props}>
       {textChild}
-    </Banner>
+    </RawBanner>
   );
 };
 
@@ -32,7 +32,7 @@ export default {
       required: true,
     },
   },
-  component: Demo,
+  component: Banner,
   parameters: {
     axe: {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
@@ -41,6 +41,8 @@ export default {
   title: "Banner",
 } as Meta<Args>;
 
+// Default
+
 export const Default = {
   args: {
     dismissed: false,
@@ -48,27 +50,24 @@ export const Default = {
     sdsType: "primary",
     textChild: BANNER_TEXT,
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
-const StyledBanner = styled(Banner)`
+// Live Preview
+
+const StyledBanner = styled(RawBanner)`
   background-color: Crimson;
 `;
 
 const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={{ padding: "24px", width: "600px" }}>
-      <Banner dismissible sdsType="primary">
+      <RawBanner dismissible sdsType="primary">
         {BANNER_TEXT}
-      </Banner>
+      </RawBanner>
       <div style={{ height: "24px" }} />
-      <Banner dismissible sdsType="secondary">
+      <RawBanner dismissible sdsType="secondary">
         {BANNER_TEXT}
-      </Banner>
+      </RawBanner>
       <div style={{ height: "24px" }} />
       <StyledBanner sdsType="primary">
         Stylable. Should have Crimson background color
@@ -90,9 +89,14 @@ export const LivePreview = {
     controls: {
       exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
     },
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
+
+// Test
 
 export const Test = {
   args: {
@@ -104,5 +108,11 @@ export const Test = {
     controls: {
       exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
     },
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (props: Args): JSX.Element => (
+    <Banner {...props} data-testid="banner" />
+  ),
 };

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
+<button
+  aria-label="info"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1x4beu0-MuiButtonBase-root-MuiIconButton-root"
+  tabindex="0"
+  type="button"
+>
+  <div
+    class="css-1ft6wgl"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+      data-jest-file-name="IconDotsHorizontal3Large.svg"
+      data-jest-svg-name="IconDotsHorizontal3Large"
+      data-testid="IconDotsHorizontal3Large"
+      fillcontrast="white"
+      focusable="false"
+      viewBox="0 0 22 22"
+    />
+  </div>
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;

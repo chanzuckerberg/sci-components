@@ -11,7 +11,7 @@ import React, { SyntheticEvent, useState } from "react";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { getColors, getCorners, getShadows } from "../styles";
 import TagFilter from "../TagFilter";
-import MenuSelect, { DefaultMenuSelectOption } from "./index";
+import RawMenuSelect, { DefaultMenuSelectOption } from "./index";
 
 const StyledPopper = styled(Popper)`
   ${(props) => {
@@ -80,7 +80,7 @@ const StyledButton = styled(ButtonBase)`
 `;
 
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
-const Demo = (props: Args): JSX.Element => {
+const MenuSelect = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
   const { multiple, options = GITHUB_LABELS, search } = props;
 
@@ -135,7 +135,7 @@ const Demo = (props: Args): JSX.Element => {
             },
           ]}
         >
-          <MenuSelect
+          <RawMenuSelect
             open
             search={search}
             onClose={handleClose}
@@ -254,9 +254,11 @@ export default {
       control: { type: "boolean" },
     },
   },
-  component: Demo,
+  component: MenuSelect,
   title: "MenuSelect - To Be Depreciated",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {

@@ -1,114 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CellBasic /> Test story renders snapshot 1`] = `
+exports[`<CellBasic /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
-    <tr>
-      <td
-        class="css-1x6gfa0"
-        data-testid="CellBasicVerticalAlignTest"
-        style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-l4a0ln"
-            >
-              Primary Text
-            </span>
-            <span
-              class="css-102yezv"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </span>
-          </div>
-        </div>
-      </td>
-      <td
-        class="css-1fypcbh"
-        data-testid="CellBasicCenterAlignTest"
-        style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-l4a0ln"
-            >
-              Primary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Secondary Text
-            </span>
-          </div>
-        </div>
-      </td>
-      <td
-        class=" css-ulyme7"
-        data-mui-internal-clone-element="true"
-        data-testid="CellBasic"
-        style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-l4a0ln"
-            >
-              Primary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Secondary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Tertiary Text
-            </span>
-          </div>
-        </div>
-      </td>
+    <tr
+      style="display: block; max-width: 200px;"
+    >
       <td
         class=" css-ms0or8"
         data-mui-internal-clone-element="true"
-        data-testid="CellBasicWithIcon"
-        style="border: 1px dashed #eee; height: 100px; max-width: 160px; width: 160px;"
+        data-testid="CellBasic"
       >
         <div
           class="css-ov1ktg"
         >
-          <div
-            class="css-fm7ypo"
-          >
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-                data-jest-file-name="IconBacteriaLarge.svg"
-                data-jest-svg-name="IconBacteriaLarge"
-                data-testid="IconBacteriaLarge"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 22 22"
-              />
-            </div>
-          </div>
           <div
             class="css-1ago99h"
           >

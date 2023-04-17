@@ -1,12 +1,12 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
-import HeatmapRaw from "./index";
+import RawHeatmap from "./index";
 
 const Heatmap = (props: Args): JSX.Element => {
   return (
-    <HeatmapRaw {...props}>
+    <RawHeatmap {...props}>
       <p>This is a heatmap!</p>
-    </HeatmapRaw>
+    </RawHeatmap>
   );
 };
 
@@ -15,13 +15,14 @@ export default {
   title: "Data Viz/Heatmap",
 } as Meta;
 
+// Default
+
 export const Default = {
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
+  args: {},
+  parameters: {},
 };
+
+// Test
 
 export const Test = {
   args: {},
@@ -30,9 +31,7 @@ export const Test = {
       skip: true,
     },
   },
-  render: (): JSX.Element => (
-    <HeatmapRaw data-testid="Heatmap">
-      <p>heatmap test!</p>
-    </HeatmapRaw>
+  render: (args: Args): JSX.Element => (
+    <Heatmap {...args} data-testid="Heatmap" />
   ),
 };

@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CellHeader /> Test story renders snapshot 1`] = `
+exports[`<CellHeader /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr>
       <th
-        class=" css-1v6z816"
+        class=" css-x40omn"
         data-mui-internal-clone-element="true"
-        data-testid="CellHeader"
+        direction="desc"
       >
         <div
-          class="css-wg04tn"
+          class="css-rm9mvq"
         >
           <span>
             Header
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-uq52cw-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >

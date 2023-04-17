@@ -1,10 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Dialog /> Default story renders snapshot 1`] = `
+<button
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-gsef57-MuiButtonBase-root-MuiButton-root"
+  tabindex="0"
+  type="button"
+>
+  Open 
+  m
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;
+
 exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-1"
+  id="mui-2"
 >
   <button
     aria-label="Close"
@@ -84,7 +98,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-2"
+  id="mui-3"
 >
   <button
     aria-label="Close"
@@ -164,7 +178,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-3"
+  id="mui-4"
 >
   <button
     aria-label="Close"
@@ -244,7 +258,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-4"
+  id="mui-5"
 >
   <button
     aria-label="Close"
@@ -352,7 +366,7 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-5"
+  id="mui-6"
 >
   <p
     class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"

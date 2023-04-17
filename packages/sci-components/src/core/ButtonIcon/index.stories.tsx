@@ -65,6 +65,8 @@ export default {
   title: "ButtonIcon",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     "aria-label": "info",
@@ -73,12 +75,9 @@ export const Default = {
     sdsSize: "large",
     sdsType: "primary",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
+
+// Live Preview
 
 const LivePreviewDemo = (): JSX.Element => {
   const spacings = defaultAppTheme?.spacing;
@@ -195,6 +194,8 @@ export const LivePreview = {
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
+
+// Test
 
 export const Test = {
   parameters: {

@@ -2,12 +2,12 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import ListItem from "../ListItem";
 import ListSubheader from "../ListSubheader";
-import List from "./index";
+import RawList from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const List = (props: Args): JSX.Element => {
   return (
     <div>
-      <List
+      <RawList
         subheader={
           <ListSubheader disableSticky>
             Font sizes and spacing for an unordered list
@@ -39,10 +39,10 @@ const Demo = (props: Args): JSX.Element => {
             bullet is top aligned
           </div>
         </ListItem>
-      </List>
+      </RawList>
       <br />
       <br />
-      <List
+      <RawList
         ordered
         subheader={
           <ListSubheader disableSticky>
@@ -54,7 +54,7 @@ const Demo = (props: Args): JSX.Element => {
         <ListItem ordered>
           <span>
             Nested List 1
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered fontSize="l" marginBottom="s">
                 fontSize=l marginBottom=s
               </ListItem>
@@ -64,17 +64,17 @@ const Demo = (props: Args): JSX.Element => {
               <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
         <ListItem ordered>
           <span>
             Nested List 2
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered fontSize="l">
                 <span>
                   Nested List 2
-                  <List ordered>
+                  <RawList ordered>
                     <ListItem ordered fontSize="l" marginBottom="s">
                       fontSize=l marginBottom=s
                     </ListItem>
@@ -84,7 +84,7 @@ const Demo = (props: Args): JSX.Element => {
                     <ListItem ordered fontSize="s" marginBottom="xs">
                       fontSize=s marginBottom=xs
                     </ListItem>
-                  </List>
+                  </RawList>
                 </span>
               </ListItem>
               <ListItem ordered fontSize="m" marginBottom="s">
@@ -93,13 +93,13 @@ const Demo = (props: Args): JSX.Element => {
               <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
         <ListItem ordered>
           <span>
             Nested List 3
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered fontSize="l" marginBottom="s">
                 fontSize=l marginBottom=s
               </ListItem>
@@ -109,13 +109,13 @@ const Demo = (props: Args): JSX.Element => {
               <ListItem ordered fontSize="s" marginBottom="xs">
                 fontSize=s marginBottom=xs
               </ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
-      </List>
+      </RawList>
       <br />
       <br />
-      <List
+      <RawList
         ordered
         subheader={
           <ListSubheader disableSticky>This is an ordered list</ListSubheader>
@@ -133,10 +133,10 @@ const Demo = (props: Args): JSX.Element => {
         <ListItem ordered>This is an ordered list item 9.</ListItem>
         <ListItem ordered>This is an ordered list item 10.</ListItem>
         <ListItem ordered>This is an ordered list item 11.</ListItem>
-      </List>
+      </RawList>
       <br />
       <br />
-      <List
+      <RawList
         ordered
         subheader={
           <ListSubheader disableSticky>This is an unordered list</ListSubheader>
@@ -154,8 +154,8 @@ const Demo = (props: Args): JSX.Element => {
         <ListItem>This is an unordered list item 9.</ListItem>
         <ListItem>This is an unordered list item 10.</ListItem>
         <ListItem>This is an unordered list item 11.</ListItem>
-      </List>
-      <List
+      </RawList>
+      <RawList
         ordered
         subheader={
           <ListSubheader disableSticky>
@@ -167,21 +167,21 @@ const Demo = (props: Args): JSX.Element => {
         <ListItem ordered>
           <span>
             Nested List 1
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered>Nested List item</ListItem>
               <ListItem ordered>Nested List item</ListItem>
               <ListItem ordered>Nested List item</ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
         <ListItem ordered>
           <span>
             Nested List 2
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered>
                 <span>
                   Nested List 2
-                  <List ordered>
+                  <RawList ordered>
                     <ListItem ordered>Nested List item</ListItem>
                     <ListItem ordered>Nested List item</ListItem>
                     <ListItem ordered>Nested List item</ListItem>
@@ -193,32 +193,34 @@ const Demo = (props: Args): JSX.Element => {
                     <ListItem ordered>Nested List item</ListItem>
                     <ListItem ordered>Nested List item</ListItem>
                     <ListItem ordered>Nested List item</ListItem>
-                  </List>
+                  </RawList>
                 </span>
               </ListItem>
               <ListItem ordered>Nested List item</ListItem>
               <ListItem ordered>Nested List item</ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
         <ListItem ordered>
           <span>
             Nested List 3
-            <List ordered>
+            <RawList ordered>
               <ListItem ordered>Nested List item</ListItem>
               <ListItem ordered>Nested List item</ListItem>
               <ListItem ordered>Nested List item</ListItem>
-            </List>
+            </RawList>
           </span>
         </ListItem>
-      </List>
+      </RawList>
     </div>
   );
 };
 
 export default {
-  component: Demo,
+  component: List,
   title: "List",
 } as Meta;
+
+// Default
 
 export const Default = {};

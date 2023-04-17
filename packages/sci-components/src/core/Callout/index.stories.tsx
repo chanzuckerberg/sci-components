@@ -4,9 +4,9 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import CalloutTitle from "./components/CalloutTitle";
-import Callout from "./index";
+import RawCallout from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Callout = (props: Args): JSX.Element => {
   const { intent, onClose, calloutTitle, autoDismiss } = props;
 
   const [dismissed, setDismissed] = React.useState(false);
@@ -23,7 +23,7 @@ const Demo = (props: Args): JSX.Element => {
           label="Hide"
         />
       )}
-      <Callout
+      <RawCallout
         autoDismiss={autoDismiss}
         intent={intent}
         dismissed={dismissed}
@@ -32,7 +32,7 @@ const Demo = (props: Args): JSX.Element => {
       >
         {calloutTitle && <CalloutTitle>{calloutTitle}</CalloutTitle>}
         This is a callout!
-      </Callout>
+      </RawCallout>
       <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
         Reset Callout
       </Button>
@@ -61,9 +61,11 @@ export default {
       options: [action("onClick"), undefined],
     },
   },
-  component: Demo,
+  component: Callout,
   title: "Callout",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -73,6 +75,8 @@ export const Default = {
     onClose: false,
   },
 };
+
+// Live Preview
 
 const storyRow = {
   alignItems: "flex-start",
@@ -84,14 +88,14 @@ const storyRow = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Callout intent="info" {...props} style={{ width: "180px" }}>
+      <RawCallout intent="info" {...props} style={{ width: "180px" }}>
         Title
-      </Callout>
-      <Callout intent="info" {...props} style={{ width: "180px" }}>
+      </RawCallout>
+      <RawCallout intent="info" {...props} style={{ width: "180px" }}>
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </Callout>
-      <Callout
+      </RawCallout>
+      <RawCallout
         intent="info"
         expandable
         sdsStage="closed"
@@ -100,8 +104,8 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       >
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </Callout>
-      <Callout
+      </RawCallout>
+      <RawCallout
         intent="info"
         {...props}
         // eslint-disable-next-line no-alert
@@ -110,7 +114,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
       >
         <CalloutTitle>Title</CalloutTitle>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </Callout>
+      </RawCallout>
     </div>
   );
 };

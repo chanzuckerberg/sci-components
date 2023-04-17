@@ -4,11 +4,11 @@ import Button from "../Button";
 import DialogActions from "../DialogActions";
 import DialogContent from "../DialogContent";
 import DialogTitle from "../DialogTitle";
-import Dialog from "./index";
+import RawDialog from "./index";
 
 const LONG_TEXT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus feugiat turpis vitae odio posuere mattis. Duis tincidunt felis nibh, eget posuere diam sagittis ut. Mauris eleifend neque nec lacinia efficitur. Donec vitae diam ac massa tempus facilisis nec in mauris. Etiam id dignissim odio. Nam risus nibh, tempor ut sem quis, consequat condimentum diam. In risus leo, lacinia eget porttitor eget, viverra vel nulla. Vivamus et nibh sit amet tellus pharetra dictum ut nec ante. Nunc malesuada consequat quam, non fringilla nunc convallis et. Curabitur facilisis tristique est. Curabitur auctor pulvinar diam, ut pretium ante. Etiam a finibus elit. Cras in augue malesuada, cursus turpis posuere, volutpat ex. Sed sagittis suscipit congue. Aliquam et erat nec lacus vulputate mattis. Sed commodo purus ac dignissim sagittis. Donec nisi erat, gravida eget malesuada non, gravida quis nisl. In iaculis ipsum et varius finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar enim a eros condimentum, ac viverra magna volutpat. Proin sed cursus mauris. Curabitur condimentum lobortis placerat. Proin semper mauris id velit elementum, sed pellentesque arcu pulvinar. Curabitur hendrerit enim sit amet ante imperdiet porta. Ut semper neque et faucibus lacinia. Sed auctor ut ex ut ullamcorper. Integer nunc eros, efficitur vitae sapien at, imperdiet dictum magna. Mauris eget bibendum libero, in bibendum sem. Nulla convallis eu eros ac efficitur. Fusce porttitor, ante scelerisque dignissim sollicitudin, tortor lectus volutpat sapien, nec viverra lectus ipsum non libero. Donec aliquet quam sit amet turpis sodales condimentum. Nunc vehicula iaculis nulla. Etiam tempor dui non ullamcorper facilisis. Nam ut fermentum arcu. Etiam porttitor elementum leo a tempus. Sed posuere feugiat est sollicitudin lacinia. Vivamus vel lectus laoreet, rutrum sem sed, blandit libero. Sed pulvinar urna consectetur risus eleifend, in iaculis purus eleifend. Donec quis maximus dui. Suspendisse sit amet ultricies mi. Etiam malesuada odio eget felis posuere pulvinar. Aliquam nec pellentesque risus, in scelerisque sapien. Vivamus vel lobortis mi, id consequat diam. Quisque aliquam dignissim sem.`;
 
-const Demo = (props: Args): JSX.Element => {
+const Dialog = (props: Args): JSX.Element => {
   const {
     buttonPosition,
     longContent = false,
@@ -24,7 +24,7 @@ const Demo = (props: Args): JSX.Element => {
       <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
         Open {rest.sdsSize}
       </Button>
-      <Dialog onClose={handleClose} open={isOpen} {...rest}>
+      <RawDialog onClose={handleClose} open={isOpen} {...rest}>
         <DialogTitle
           title="Title"
           subtitle="Optional subtitle"
@@ -40,7 +40,7 @@ const Demo = (props: Args): JSX.Element => {
         >
           <Buttons />
         </DialogActions>
-      </Dialog>
+      </RawDialog>
     </>
   );
 
@@ -109,7 +109,7 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: Dialog,
   title: "Dialog",
 } as Meta;
 
@@ -122,11 +122,6 @@ export const Default = {
     sdsSize: "m",
     titleOnClose: false,
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 // LivePreview
@@ -134,10 +129,10 @@ export const Default = {
 function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <>
-      <Demo sdsSize="xs" {...props} />
-      <Demo sdsSize="s" {...props} />
-      <Demo sdsSize="m" {...props} />
-      <Demo sdsSize="l" {...props} />
+      <Dialog sdsSize="xs" {...props} />
+      <Dialog sdsSize="s" {...props} />
+      <Dialog sdsSize="m" {...props} />
+      <Dialog sdsSize="l" {...props} />
     </>
   );
 }
@@ -161,14 +156,49 @@ function TestDemo(props: Args): JSX.Element {
 
   return (
     <>
-      <Demo sdsSize="xs" {...defaultProps} />
-      <Demo sdsSize="s" {...defaultProps} />
-      <Demo sdsSize="m" {...defaultProps} />
-      <Demo sdsSize="l" {...defaultProps} />
+      <Dialog sdsSize="xs" {...defaultProps} />
+      <Dialog sdsSize="s" {...defaultProps} />
+      <Dialog sdsSize="m" {...defaultProps} />
+      <Dialog sdsSize="l" {...defaultProps} />
     </>
   );
 }
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <TestDemo {...args} />,
+};
+
+// Test No Title On Close
+
+function TestNoTitleOnCloseDemo(props: Args): JSX.Element {
+  return <Dialog sdsSize="xs" {...props} isOpen />;
+}
+
+export const TestNoTitleOnClose = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestNoTitleOnCloseDemo {...args} />,
+};
+
+// Test Button Position Left
+
+function TestButtonPositionLeftDemo(props: Args): JSX.Element {
+  return <Dialog sdsSize="xs" {...props} isOpen buttonPosition="left" />;
+}
+
+export const TestButtonPositionLeft = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestButtonPositionLeftDemo {...args} />,
 };

@@ -1,13 +1,13 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Link, { LinkProps } from "./index";
+import RawLink, { LinkProps } from "./index";
 
-const Demo = (props: LinkProps): JSX.Element => {
+const Link = (props: LinkProps): JSX.Element => {
   const { sdsStyle } = props;
   return (
-    <Link href="/" sdsStyle={sdsStyle} {...props}>
+    <RawLink href="/" sdsStyle={sdsStyle} {...props}>
       Test Link
-    </Link>
+    </RawLink>
   );
 };
 
@@ -18,9 +18,11 @@ export default {
       options: ["default", "dashed"],
     },
   },
-  component: Demo,
+  component: Link,
   title: "Link",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -42,22 +44,22 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
     <div style={livePreviewStyles as React.CSSProperties}>
       <div>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-        <Link href="/" sdsStyle="default" {...props}>
+        <RawLink href="/" sdsStyle="default" {...props}>
           Learn More
-        </Link>
+        </RawLink>
       </div>
       <p style={{ backgroundColor: "#EFF2FC", padding: "10px" }}>
         Lorem ipsum{" "}
-        <Link href="/" sdsStyle="dashed" {...props}>
+        <RawLink href="/" sdsStyle="dashed" {...props}>
           dolor sit apsidy
-        </Link>{" "}
+        </RawLink>{" "}
         consectetur, adipisicing elit.
       </p>
       <p style={{ backgroundColor: "#EFF2FC", padding: "10px" }}>
         Lorem ipsum{" "}
-        <Link href="/" sdsStyle="dashed" component="button" {...props}>
+        <RawLink href="/" sdsStyle="dashed" component="button" {...props}>
           button element
-        </Link>{" "}
+        </RawLink>{" "}
         consectetur, adipisicing elit.
       </p>
     </div>

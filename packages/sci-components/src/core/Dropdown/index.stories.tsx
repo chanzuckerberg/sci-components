@@ -5,11 +5,11 @@ import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import LoadingIndicator from "../LoadingIndicator";
-import Dropdown from "./index";
+import RawDropdown from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const Dropdown = (props: Args): JSX.Element => {
   return (
-    <Dropdown
+    <RawDropdown
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
@@ -97,7 +97,7 @@ export default {
       defaulValue: true,
     },
   },
-  component: Demo,
+  component: Dropdown,
   title: "Dropdown",
 } as Meta;
 
@@ -113,11 +113,6 @@ export const Default = {
     onChange: noop,
     onClose: noop,
     search: true,
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -159,7 +154,7 @@ export const InsideModal = {
       DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
     >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);
 
-    const FullWidthDropdown = styled(Dropdown)`
+    const FullWidthDropdown = styled(RawDropdown)`
       width: 100%;
     `;
 
@@ -188,7 +183,7 @@ export const InsideModal = {
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
-    <Dropdown
+    <RawDropdown
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
@@ -202,6 +197,11 @@ export const Test = {
   args: {
     label: LABEL,
     onChange: noop,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <TestDemo {...args} />,
 };

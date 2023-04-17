@@ -5,7 +5,7 @@ import ButtonIcon from "../ButtonIcon";
 import { Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
 import { GITHUB_LABELS } from "./GITHUB_LABELS";
-import DropdownMenu, { DefaultDropdownMenuOption } from "./index";
+import RawDropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
 export type DropdownOptionValue<T, Multiple> = Multiple extends
   | undefined
@@ -23,7 +23,7 @@ const groupByOptions = [
   (option: DefaultDropdownMenuOption) => option.section as string,
 ];
 
-const Demo = <Multiple extends boolean | undefined = false>(
+const DropdownMenu = <Multiple extends boolean | undefined = false>(
   props: Args
 ): JSX.Element => {
   const {
@@ -63,7 +63,7 @@ const Demo = <Multiple extends boolean | undefined = false>(
         sdsStyle="square"
       />
 
-      <DropdownMenu
+      <RawDropdownMenu
         anchorEl={anchorEl}
         disableCloseOnSelect={false}
         id={id}
@@ -173,9 +173,11 @@ export default {
       control: { type: "text" },
     },
   },
-  component: Demo,
+  component: DropdownMenu,
   title: "DropdownMenu",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -286,7 +288,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsStyle="minimal"
         />
 
-        <DropdownMenu
+        <RawDropdownMenu
           anchorEl={anchorEl1}
           id="live1"
           open={!!open1}
@@ -316,7 +318,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsIcon="infoSpeechBubble"
         />
 
-        <DropdownMenu
+        <RawDropdownMenu
           anchorEl={anchorEl2}
           id="live2"
           open={!!open2}
@@ -345,7 +347,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsStyle="rounded"
         />
 
-        <DropdownMenu
+        <RawDropdownMenu
           id="live3"
           anchorEl={anchorEl3}
           open={!!open3}
@@ -373,7 +375,7 @@ const LivePreviewDemo = (): JSX.Element => {
           sdsStyle="square"
         />
 
-        <DropdownMenu
+        <RawDropdownMenu
           id="live4"
           anchorEl={anchorEl4}
           open={!!open4}
@@ -551,7 +553,7 @@ const TestDemo = (props: Args): JSX.Element => {
         data-testid="dropdown-menu"
       />
 
-      <DropdownMenu
+      <RawDropdownMenu
         anchorEl={anchorEl}
         id={id}
         open={open}

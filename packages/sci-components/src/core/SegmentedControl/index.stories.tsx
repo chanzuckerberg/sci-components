@@ -1,11 +1,11 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import SegmentedControl, { SegmentedControlProps } from "./index";
+import RawSegmentedControl, { SegmentedControlProps } from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
 
-  return <SegmentedControl buttonDefinition={buttonDefinition} />;
+  return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
 };
 
 const iconOptions = ["list", "infoCircle", "table", "globe", "people"];
@@ -49,7 +49,7 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: SegmentedControl,
   title: "SegmentedControl",
 } as Meta;
 
@@ -63,6 +63,8 @@ interface SegmentedControlArgs extends SegmentedControlProps {
   segmentFourIcon: string;
   segmentFourTooltipText: string;
 }
+
+// Default
 
 export const Default = {
   args: {
@@ -94,7 +96,7 @@ export const Default = {
       { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
     ];
 
-    return <SegmentedControl buttonDefinition={buttonDefinition} />;
+    return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
   },
 };
 
@@ -114,7 +116,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles}>
       <div>
-        <Demo
+        <SegmentedControl
           segmentOneIcon="list"
           segmentOneTooltipText="List A"
           segmentTwoIcon="list"
@@ -145,7 +147,7 @@ export const LivePreview = {
 const TestDemo = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
   return (
-    <SegmentedControl
+    <RawSegmentedControl
       buttonDefinition={buttonDefinition}
       data-testid="segmentedControl"
       {...props}
@@ -161,6 +163,11 @@ export const Test = {
       { iconName: "table", tooltipText: "Table" },
       { iconName: "people", tooltipText: "People" },
     ],
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <TestDemo {...args} />,
 };

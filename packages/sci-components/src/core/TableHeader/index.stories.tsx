@@ -2,16 +2,16 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import CellHeader from "../CellHeader";
-import TableHeaderRaw from "./index";
+import RawTableHeader from "./index";
 
 const TableHeader = (props: Args): JSX.Element => {
   return (
     <table>
-      <TableHeaderRaw {...props}>
+      <RawTableHeader {...props}>
         <CellHeader active>Column 1</CellHeader>
         <CellHeader>Column 2</CellHeader>
         <CellHeader>Column 3</CellHeader>
-      </TableHeaderRaw>
+      </RawTableHeader>
     </table>
   );
 };
@@ -21,26 +21,25 @@ export default {
   title: "Table/TableHeader",
 } as Meta;
 
-export const Default = {
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
-};
+export const Default = {};
 
 // Test
 
 const TestDemo = (): JSX.Element => (
   <table>
-    <TableHeaderRaw data-testid="TableHeader">
+    <RawTableHeader data-testid="TableHeader">
       <CellHeader active>Column 1</CellHeader>
       <CellHeader>Column 2</CellHeader>
       <CellHeader>Column 3</CellHeader>
-    </TableHeaderRaw>
+    </RawTableHeader>
   </table>
 );
 
 export const Test = {
-  render: (args: Args) => <TestDemo {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} data-testid="table-header" />,
 };

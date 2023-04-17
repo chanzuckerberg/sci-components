@@ -43,6 +43,8 @@ export default {
   title: "Button",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     disabled: false,
@@ -50,22 +52,9 @@ export const Default = {
     sdsType: "primary",
     text: "Label",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
-export const Test = {
-  args: {
-    disabled: false,
-    sdsStyle: "rounded",
-    sdsType: "primary",
-    text: "Label",
-  },
-  render: (props: Args) => <Button {...props} data-testid="button" />,
-};
+// Live Preview
 
 const placementStyles = {
   display: "grid",
@@ -183,4 +172,21 @@ export const MinimalLivePreview = {
       </div>
     );
   },
+};
+
+// Test
+
+export const Test = {
+  args: {
+    disabled: false,
+    sdsStyle: "rounded",
+    sdsType: "primary",
+    text: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args) => <Button {...props} data-testid="button" />,
 };

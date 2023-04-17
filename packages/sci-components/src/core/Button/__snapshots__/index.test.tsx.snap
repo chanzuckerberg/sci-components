@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<button /> Test story renders snapshot 1`] = `
+exports[`<button /> Default story renders snapshot 1`] = `
 <button
   class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-ok6hdy-MuiButtonBase-root-MuiButton-root"
-  data-testid="button"
   tabindex="0"
   text="Label"
   type="button"

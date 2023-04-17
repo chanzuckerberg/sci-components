@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import TagFilter from "./index";
+import RawTagFilter from "./index";
 
 const StyledButton = styled(Button)`
   &:focus {
@@ -10,7 +10,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Demo = (props: Args): JSX.Element => {
+const TagFilter = (props: Args): JSX.Element => {
   const { label } = props;
 
   const [visible, setVisible] = React.useState(true);
@@ -43,7 +43,7 @@ const Demo = (props: Args): JSX.Element => {
 
       <div style={{ gridArea: "2 / 1 / 2 / 2" }}>
         {visible && (
-          <TagFilter label={label} onDelete={handleDismissChip} {...props} />
+          <RawTagFilter label={label} onDelete={handleDismissChip} {...props} />
         )}
       </div>
     </div>
@@ -57,9 +57,11 @@ export default {
       required: true,
     },
   },
-  component: Demo,
+  component: TagFilter,
   title: "TagFilter",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -72,7 +74,7 @@ export const Default = {
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { label } = props;
 
-  return <TagFilter label={label} onDelete={() => {}} {...props} />;
+  return <RawTagFilter label={label} onDelete={() => {}} {...props} />;
 };
 
 export const LivePreview = {
@@ -93,7 +95,7 @@ const TestDemo = (props: Args): JSX.Element => {
   const { label } = props;
 
   return (
-    <TagFilter
+    <RawTagFilter
       data-testid="tag-filter"
       label={label}
       onDelete={() => {}}
@@ -111,5 +113,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render: (args: Args) => <TestDemo {...args} data-testid="tag-filter" />,
 };

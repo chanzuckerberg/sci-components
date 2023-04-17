@@ -1,10 +1,10 @@
 import { styled } from "@mui/material/styles";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React, { useState } from "react";
 import DropdownMenu from "../DropdownMenu";
-import InputDropdown from "./index";
+import RawInputDropdown from "./index";
 
-const StyledInputDropdown = styled(InputDropdown)`
+const StyledInputDropdown = styled(RawInputDropdown)`
   ${({ width }: Args) => {
     return `
       width: fit-content;
@@ -13,7 +13,7 @@ const StyledInputDropdown = styled(InputDropdown)`
   }}
 `;
 
-const Demo = (props: Args): JSX.Element => {
+const InputDropdown = (props: Args): JSX.Element => {
   const { disabled, fullWidth, label, sdsStyle, sdsType, multiple, ...rest } =
     props;
 
@@ -65,7 +65,7 @@ const Demo = (props: Args): JSX.Element => {
   return (
     <>
       {fullWidth ? (
-        <InputDropdown
+        <RawInputDropdown
           disabled={disabled}
           label={label}
           onClick={handleClick}
@@ -165,11 +165,11 @@ export default {
       },
     },
   },
-  component: Demo,
+  component: InputDropdown,
   title: "Inputs/InputDropdown",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
+// Default
 
 export const Default = {
   args: {
@@ -177,11 +177,6 @@ export const Default = {
     label: "Label",
     sdsStyle: "square",
     sdsType: "singleSelect",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -201,15 +196,14 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
         {...rest}
       />
 
-      {/* details */}
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
@@ -217,8 +211,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         {...rest}
       />
 
-      {/* multiselect */}
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
@@ -260,15 +253,14 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
         {...rest}
       />
 
-      {/* Details */}
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
@@ -276,8 +268,7 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
         {...rest}
       />
 
-      {/* shouldTruncateMinimalDetails */}
-      <Template
+      <InputDropdown
         sdsType="singleSelect"
         sdsStyle={sdsStyle}
         label="Label"
@@ -310,4 +301,10 @@ export const Test = {
     sdsStyle: "square",
     sdsType: "singleSelect",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <InputDropdown {...args} />,
 };

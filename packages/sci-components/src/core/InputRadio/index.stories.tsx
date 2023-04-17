@@ -1,9 +1,9 @@
 import { RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputRadio from "./index";
+import RawInputRadio from "./index";
 
-const DefaultDemo = (props: Args): JSX.Element => {
+const InputRadio = (props: Args): JSX.Element => {
   const { caption, label } = props;
 
   return (
@@ -12,26 +12,23 @@ const DefaultDemo = (props: Args): JSX.Element => {
       defaultValue="demo"
       name="radio-buttons-group"
     >
-      <InputRadio caption={caption} label={label} value="demo" {...props} />
+      <RawInputRadio caption={caption} label={label} value="demo" {...props} />
     </RadioGroup>
   );
 };
 
 export default {
-  component: DefaultDemo,
+  component: InputRadio,
   title: "Inputs/InputRadio",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
     caption: "Caption",
     disabled: false,
     label: "Label",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -48,14 +45,14 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         name="input-radio-group"
         data-testid="radioButtonGroup"
       >
-        <InputRadio data-testid="inputRadio" label={label} value="demo1" />
-        <InputRadio
+        <RawInputRadio data-testid="inputRadio" label={label} value="demo1" />
+        <RawInputRadio
           caption="Caption"
           data-testid="inputRadio"
           label={label}
           value="demo2"
         />
-        <InputRadio
+        <RawInputRadio
           caption="Caption"
           data-testid="inputRadio"
           label={label}
@@ -83,6 +80,11 @@ export const LivePreview = {
 export const Test = {
   args: {
     label: "Test Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };

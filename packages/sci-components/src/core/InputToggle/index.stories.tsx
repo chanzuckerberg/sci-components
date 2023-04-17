@@ -1,17 +1,9 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputToggle from "./index";
+import RawInputToggle from "./index";
 
-const Demo = (props: Args): JSX.Element => {
-  return <InputToggle {...props} />;
-};
-
-export const Default = {
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
+const InputToggle = (props: Args): JSX.Element => {
+  return <RawInputToggle {...props} />;
 };
 
 export default {
@@ -20,7 +12,7 @@ export default {
       control: { type: "boolean" },
     },
   },
-  component: Demo,
+  component: InputToggle,
   parameters: {
     axe: {
       disabledRules: [
@@ -33,10 +25,14 @@ export default {
   title: "Inputs/InputToggle",
 } as Meta;
 
+// Default
+
+export const Default = {};
+
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  return <InputToggle {...props} id="togglePreview" />;
+  return <RawInputToggle {...props} id="togglePreview" />;
 };
 
 export const LivePreview = {
@@ -50,10 +46,13 @@ export const LivePreview = {
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
-  return <InputToggle {...props} data-testid="test-toggle" />;
-};
-
 export const Test = {
-  render: (args: Args) => <TestDemo {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <RawInputToggle {...args} data-testid="test-toggle" />
+  ),
 };

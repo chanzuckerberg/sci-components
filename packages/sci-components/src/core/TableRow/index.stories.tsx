@@ -2,19 +2,19 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
-import TableRowRaw from "./index";
+import RawTableRow from "./index";
 
 const TableRow = (props: Args): JSX.Element => {
   return (
     <table style={{ borderCollapse: "collapse" }}>
       <tbody>
-        <TableRowRaw {...props}>
+        <RawTableRow {...props}>
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
           <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
-        </TableRowRaw>
+        </RawTableRow>
       </tbody>
     </table>
   );
@@ -64,11 +64,6 @@ export const Default = {
     tooltipText: "This is a TableRow component",
     useDivider: true,
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 // Test
@@ -76,18 +71,23 @@ export const Default = {
 const TestDemo = (): JSX.Element => (
   <table>
     <tbody>
-      <TableRowRaw
+      <RawTableRow
         data-testid="TableRow"
         hover
         shouldShowTooltipOnHover
         tooltipText="testTooltipTitle"
       >
         <CellBasic primaryText="Primary" shouldShowTooltipOnHover={false} />
-      </TableRowRaw>
+      </RawTableRow>
     </tbody>
   </table>
 );
 
 export const Test = {
-  render: (args: Args) => <TestDemo {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} data-testid="table-row" />,
 };

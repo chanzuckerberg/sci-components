@@ -139,7 +139,7 @@ Once the config has been updated, run `sd-build` to generate the new stylesheet.
 
 ## Testing
 
-This repo uses [Jest](https://jestjs.io/) as it's main testing framework and [@storybook/testing-react](https://storybook.js.org/addons/@storybook/testing-react) as middleware to reuse stories as tests. Tests are written for each component to test for functionality and integration. Currently, as components are small and independent, unit tests are the bulk of the test written. As more complex components are created, integration tests will become the bulk of the test coverage. Snapshots are captured to test for changes to the DOM.
+This repo uses [Jest](https://jestjs.io/) as it's main testing framework and [@storybook/react](https://storybook.js.org/addons/@storybook/react) as middleware to reuse stories as tests. Tests are written for each component to test for functionality and integration. Currently, as components are small and independent, unit tests are the bulk of the test written. As more complex components are created, integration tests will become the bulk of the test coverage. Snapshots are captured to test for changes to the DOM.
 
 Snapshots should only be captured of the Test story. Use the following to skip snapshots on Default and LivePreview:
 

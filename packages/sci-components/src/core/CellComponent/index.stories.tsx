@@ -5,7 +5,7 @@ import InputRadio from "../InputRadio";
 import InputToggle from "../InputToggle";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
-import CellComponentRaw from "./index";
+import RawCellComponent from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
 
 const CellComponent = (props: Args): JSX.Element => {
@@ -20,14 +20,14 @@ const CellComponent = (props: Args): JSX.Element => {
             maxWidth: "280px",
           }}
         >
-          <CellComponentRaw
+          <RawCellComponent
             horizontalAlign={horizontalAlign}
             verticalAlign={verticalAlign}
             data-testid="CellComponent"
             {...props}
           >
             {children}
-          </CellComponentRaw>
+          </RawCellComponent>
         </TableRow>
       </tbody>
     </table>
@@ -61,15 +61,12 @@ export default {
   title: "Table/CellComponent",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     horizontalAlign: "left",
     verticalAlign: "center",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
   render: (props: Args) => {
     const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
@@ -100,6 +97,8 @@ export const Default = {
     );
   },
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const placementStyles = {
@@ -172,6 +171,9 @@ const TestDemo = (props: Args): JSX.Element => {
 export const Test = {
   parameters: {
     controls: { exclude: ["verticalAlign", "horizontalAlign"] },
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <TestDemo {...args} />,
 };

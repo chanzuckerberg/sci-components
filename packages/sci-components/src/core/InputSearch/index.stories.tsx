@@ -1,9 +1,9 @@
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import InputSearch from "./index";
+import RawInputSearch from "./index";
 
-const Demo = (props: Args): JSX.Element => {
+const InputSearch = (props: Args): JSX.Element => {
   const { id, placeholder, label, disabled, sdsStyle, sdsStage, intent } =
     props;
   const handleSubmit = (value: string) => {
@@ -11,7 +11,7 @@ const Demo = (props: Args): JSX.Element => {
     console.log(value);
   };
   return (
-    <InputSearch
+    <RawInputSearch
       id={id}
       placeholder={placeholder}
       label={label}
@@ -54,9 +54,11 @@ export default {
       options: ["rounded", "square"],
     },
   },
-  component: Demo,
+  component: InputSearch,
   title: "Inputs/InputSearch",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -65,18 +67,13 @@ export const Default = {
     label: "Search",
     placeholder: "Search",
   },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
 };
 
 // Live Preview
 
 const RoundLivePreviewDemo = (props: Args): JSX.Element => {
   return (
-    <InputSearch
+    <RawInputSearch
       {...props}
       id="squareSearchPreview"
       label="Search"
@@ -99,7 +96,7 @@ export const RoundLivePreview = {
 
 const SquareLivePreviewDemo = (props: Args): JSX.Element => {
   return (
-    <InputSearch
+    <RawInputSearch
       {...props}
       id="squareSearchPreview"
       label="Search"
@@ -125,7 +122,7 @@ export const SquareLivePreview = {
 const TestDemo = (props: Args): JSX.Element => {
   return (
     <>
-      <InputSearch
+      <RawInputSearch
         id="test-round"
         sdsStyle="rounded"
         label="Round Search"
@@ -135,7 +132,7 @@ const TestDemo = (props: Args): JSX.Element => {
         name="round-search"
         {...props}
       />
-      <InputSearch
+      <RawInputSearch
         id="test-square"
         sdsStyle="square"
         label="Square Search"
@@ -146,7 +143,7 @@ const TestDemo = (props: Args): JSX.Element => {
         {...props}
       />
       {/* @ts-expect-error testing fail state */}
-      <InputSearch
+      <RawInputSearch
         sdsStyle="square"
         placeholder="Search"
         data-testid="inputSearchFail"
@@ -158,5 +155,10 @@ const TestDemo = (props: Args): JSX.Element => {
 };
 
 export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
   render: (args: Args) => <TestDemo {...args} />,
 };

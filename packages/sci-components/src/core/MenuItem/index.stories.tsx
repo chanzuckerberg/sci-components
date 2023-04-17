@@ -1,16 +1,16 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
-import MenuItem from "./index";
+import RawMenuItem from "./index";
 import { DemoWrapper } from "./style";
 
-const Demo = (props: Args): JSX.Element => {
+const MenuItem = (props: Args): JSX.Element => {
   const { name } = props;
   return (
     <DemoWrapper>
-      <MenuItem data-testid="MenuItem" {...props}>
+      <RawMenuItem data-testid="MenuItem" {...props}>
         {name}
-      </MenuItem>
+      </RawMenuItem>
     </DemoWrapper>
   );
 };
@@ -43,7 +43,7 @@ export default {
       control: { type: "boolean" },
     },
   },
-  component: Demo,
+  component: MenuItem,
   parameters: {
     axe: {
       disabledRules: ["aria-required-parent"],
@@ -52,15 +52,12 @@ export default {
   title: "MenuItem",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     column: "column value here",
     name: "text here",
-  },
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
@@ -71,4 +68,10 @@ export const Test = {
     column: "test column",
     name: "test text",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <MenuItem {...args} />,
 };

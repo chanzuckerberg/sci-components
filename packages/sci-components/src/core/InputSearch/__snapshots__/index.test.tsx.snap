@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<InputSearch /> Test story renders snapshot 1`] = `
+exports[`<InputSearch /> Default story renders snapshot 1`] = `
 <label
   class="css-1xrxdra"
-  for="test-round"
+  for="Test"
 >
-  Round Search
+  Search
 </label>
 `;

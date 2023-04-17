@@ -9,14 +9,14 @@ import {
   getSpaces,
   getTypography,
 } from "../styles";
-import Icon, { SdsIconWithColor } from "./index";
+import RawIcon, { SdsIconWithColor } from "./index";
 import { iconMap, IconNameToSizes } from "./map";
 
-const Demo = (props: Args): JSX.Element => {
+const Icon = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, sdsType, ...rest } = props;
 
   return (
-    <Icon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
+    <RawIcon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
   );
 };
 
@@ -66,9 +66,11 @@ export default {
       options: [100, 200, 300, 400, 500, 600],
     },
   },
-  component: Demo,
+  component: Icon,
   title: "Icon",
 } as Meta;
+
+// Default
 
 export const Default = {
   args: {
@@ -215,7 +217,7 @@ const IconItem = (props: IconItemProps) => {
       onClick={() => copyIconNameHandler(sdsIcon)}
     >
       <div className="icon">
-        <Icon
+        <RawIcon
           color={color}
           shade={shade}
           sdsSize={sdsSize}
@@ -240,7 +242,7 @@ const IconItem = (props: IconItemProps) => {
       </span>
       {copied && (
         <div className="notif">
-          <Icon
+          <RawIcon
             color={color}
             shade={shade}
             sdsSize={sdsSize}
@@ -249,7 +251,7 @@ const IconItem = (props: IconItemProps) => {
           />
           <p>Copied!</p>
           <span>
-            <Icon
+            <RawIcon
               color={color}
               shade={shade}
               sdsSize="xs"
@@ -307,7 +309,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
         <Callout
           intent="warning"
           icon={
-            <Icon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
+            <RawIcon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
           }
         >
           Sorry, there are no matches for your search!
@@ -336,9 +338,12 @@ export const Test = {
     controls: {
       exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
     },
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => (
-    <Icon
+    <RawIcon
       sdsIcon="checkCircle"
       sdsSize="l"
       sdsType="static"

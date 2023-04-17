@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TooltipTable /> Test story renders snapshot 1`] = `
+exports[`<TooltipTable /> Default story renders snapshot 1`] = `
 <div
   class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
-  data-testid="tooltipTable"
 >
   <div
     class="css-1x04v0m"
@@ -176,6 +175,94 @@ exports[`<TooltipTable /> Test story renders snapshot 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
           >
             10
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    class="css-1x04v0m"
+  >
+    <div
+      class="css-k74gq5"
+      label="Section 3"
+    >
+      Section 3
+    </div>
+    <table
+      class="MuiTable-root css-rqglhn-MuiTable-root"
+    >
+      <tbody
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-14jzyn8-MuiTableCell-root"
+          >
+            Label 11
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+          >
+            11
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-14jzyn8-MuiTableCell-root"
+          >
+            Label 12
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+          >
+            12
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-14jzyn8-MuiTableCell-root"
+          >
+            Label 13
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+          >
+            13
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-14jzyn8-MuiTableCell-root"
+          >
+            Label 14
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+          >
+            14
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-14jzyn8-MuiTableCell-root"
+          >
+            Label 15
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+          >
+            15
           </td>
         </tr>
       </tbody>

@@ -12,7 +12,7 @@ import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
 import Tag from "../Tag";
 import { SdsTagColorType } from "../Tag/style";
-import TableRaw from "./index";
+import RawTable from "./index";
 
 const StyledIconCell = styled("div")`
   align-items: center;
@@ -23,7 +23,7 @@ const StyledIconCell = styled("div")`
 
 const Table = (props: Args): JSX.Element => {
   return (
-    <TableRaw {...props}>
+    <RawTable {...props}>
       <TableHeader>
         <CellHeader horizontalAlign="center" hideSortIcon>
           Category
@@ -185,7 +185,7 @@ const Table = (props: Args): JSX.Element => {
           />
         </TableRow>
       </tbody>
-    </TableRaw>
+    </RawTable>
   );
 };
 
@@ -203,16 +203,13 @@ export const Default = {
         "color-contrast",
       ],
     },
-    snapshot: {
-      skip: true,
-    },
   },
 };
 
 // Test
 
 const TestDemo = (): JSX.Element => (
-  <TableRaw data-testid="Table">
+  <RawTable data-testid="Table">
     <tbody>
       <TableRow>
         <CellBasic primaryText="Primary 1" shouldShowTooltipOnHover={false} />
@@ -221,9 +218,14 @@ const TestDemo = (): JSX.Element => (
         <CellBasic primaryText="Primary 4" shouldShowTooltipOnHover={false} />
       </TableRow>
     </tbody>
-  </TableRaw>
+  </RawTable>
 );
 
 export const Test = {
-  render: (args: Args) => <TestDemo {...args} />,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} data-testid="table" />,
 };
