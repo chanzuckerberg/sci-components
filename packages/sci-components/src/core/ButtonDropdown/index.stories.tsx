@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import ButtonDropdown from "./index";
@@ -19,21 +19,18 @@ export default {
   title: "ButtonDropdown",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
-  onClick: actions.onClick,
-  sdsStyle: "square",
-  sdsType: "primary",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+    onClick: actions.onClick,
+    sdsStyle: "square",
+    sdsType: "primary",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
@@ -96,32 +93,28 @@ function LivePreviewDemo(props: Args): JSX.Element {
   );
 }
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-const TestDemo = (props: Args): JSX.Element => {
-  return (
-    <ButtonDropdown data-testid="button-dropdown" {...props}>
-      {text}
-    </ButtonDropdown>
-  );
-};
-
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  disabled: false,
-  icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
-  onClick: actions.onClick,
-  sdsStyle: "rounded",
-  sdsType: "primary",
+export const Test = {
+  args: {
+    disabled: false,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+    onClick: actions.onClick,
+    sdsStyle: "rounded",
+    sdsType: "primary",
+  },
+  render: (props: Args): JSX.Element => {
+    return (
+      <ButtonDropdown data-testid="button-dropdown" {...props}>
+        {text}
+      </ButtonDropdown>
+    );
+  },
 };

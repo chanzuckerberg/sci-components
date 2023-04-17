@@ -24,9 +24,13 @@ module.exports = ({ config }) => {
   });
 
   // use svgr for svg files
-  config.module.rules.unshift({
+  config.module.rules.push({
     test: /\.svg$/,
     use: ["@svgr/webpack", "url-loader"],
+    type: "javascript/auto",
+    issuer: {
+      and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
+    },
   });
 
   return config;

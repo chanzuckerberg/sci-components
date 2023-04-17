@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { defaultAppTheme } from "../styles";
 import LoadingIndicator from "./index";
@@ -19,19 +19,18 @@ export default {
   title: "LoadingIndicator",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  sdsStyle: "minimal",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    sdsStyle: "minimal",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const spacings = defaultAppTheme?.spacing;
@@ -68,16 +67,17 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-const TestTemplate: Story = (args) => <LivePreviewDemo {...args} />;
+// Test
 
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};

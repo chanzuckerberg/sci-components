@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
@@ -63,16 +63,14 @@ export default {
   title: "ComplexFilter",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  isTriggerChangeOnOptionClick: false,
-  label: "Click Target",
-  multiple: true,
-  onChange: onChangeOptions[1],
-  search: true,
+export const Default = {
+  args: {
+    isTriggerChangeOnOptionClick: false,
+    label: "Click Target",
+    multiple: true,
+    onChange: onChangeOptions[1],
+    search: true,
+  },
 };
 
 // Live preview
@@ -118,25 +116,27 @@ const LivePreviewDemo = (): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.args = {
-  keepSearchOnSelect: true,
-  multiple: false,
-  search: false,
-};
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    keepSearchOnSelect: true,
+    multiple: false,
+    search: false,
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
+
+const LIVE_PREVIEW_OPTIONS = [
+  { name: "Filter Item 1" },
+  { name: "Filter Item 2" },
+  { name: "Filter Item 3" },
+];
 
 // Test
-
-// Test Story
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
@@ -150,18 +150,11 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  snapshot: {
-    skip: true,
+export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <TestDemo {...args} />,
 };
-
-const LIVE_PREVIEW_OPTIONS = [
-  { name: "Filter Item 1" },
-  { name: "Filter Item 2" },
-  { name: "Filter Item 3" },
-];

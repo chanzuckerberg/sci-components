@@ -1,5 +1,5 @@
 import { RadioGroup } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import InputRadio from "./index";
 
@@ -22,20 +22,20 @@ export default {
   title: "Inputs/InputRadio",
 } as Meta;
 
-const DefaultTemplate: Story = (args) => <DefaultDemo {...args} />;
-
-export const Default = DefaultTemplate.bind({});
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    caption: "Caption",
+    disabled: false,
+    label: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-Default.args = {
-  caption: "Caption",
-  disabled: false,
-  label: "Label",
-};
+// Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { label } = props;
@@ -66,21 +66,23 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    label: "Label",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-LivePreview.args = {
-  label: "Label",
-};
+// Test
 
-export const Test = LivePreviewTemplate.bind({});
-
-Test.args = {
-  label: "Test Label",
+export const Test = {
+  args: {
+    label: "Test Label",
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };

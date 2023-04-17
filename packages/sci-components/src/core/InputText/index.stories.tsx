@@ -1,5 +1,5 @@
 import { FormControl } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import InputText from "./index";
 
@@ -56,24 +56,23 @@ export default {
   title: "Inputs/InputText",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  hideLabel: false,
-  id: "Test",
-  label: "Label",
-  placeholder: "Value",
-  sdsType: "textField",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    hideLabel: false,
+    id: "Test",
+    label: "Label",
+    placeholder: "Value",
+    sdsType: "textField",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Live Preview
 
 const storyRow = {
   alignItems: "flex-start",
@@ -108,15 +107,16 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
@@ -157,6 +157,6 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo {...args} />,
+};

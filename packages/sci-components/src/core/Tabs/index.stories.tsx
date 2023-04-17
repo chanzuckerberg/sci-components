@@ -1,9 +1,33 @@
 import styled from "@emotion/styled";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React, { ReactNode, useState } from "react";
 import { noop } from "src/common/utils";
 import Tag from "../Tag";
 import Tabs, { Tab, TabsProps } from "./index";
+
+interface TabsArgs extends TabsProps {
+  tabOneLabel: string;
+  tabTwoLabel: string;
+  tabOneCount?: ReactNode;
+  tabTwoCount?: ReactNode;
+}
+
+const Demo = (props: TabsArgs): JSX.Element => {
+  const { tabOneLabel, tabTwoLabel, tabOneCount, tabTwoCount, ...args } = props;
+
+  const [value, setValue] = useState(0);
+
+  const handleTabsChange = (_: React.SyntheticEvent, tabsValue: unknown) => {
+    setValue(tabsValue as number);
+  };
+
+  return (
+    <Tabs {...args} value={value} onChange={handleTabsChange}>
+      <Tab label={tabOneLabel} count={tabOneCount} />
+      <Tab label={tabTwoLabel} count={tabTwoCount} />
+    </Tabs>
+  );
+};
 
 export default {
   argTypes: {
@@ -27,7 +51,7 @@ export default {
       },
     },
   },
-  component: Tabs,
+  component: Demo,
   parameters: {
     // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
@@ -37,51 +61,28 @@ export default {
   title: "Tabs",
 } as Meta;
 
-interface TabsArgs extends TabsProps {
-  tabOneLabel: string;
-  tabTwoLabel: string;
-  tabOneCount?: ReactNode;
-  tabTwoCount?: ReactNode;
-}
-
-const Template: Story<TabsArgs> = (props: TabsArgs) => {
-  const { tabOneLabel, tabTwoLabel, tabOneCount, tabTwoCount, ...args } = props;
-
-  const [value, setValue] = useState(0);
-
-  const handleTabsChange = (_: React.SyntheticEvent, tabsValue: unknown) => {
-    setValue(tabsValue as number);
-  };
-
-  return (
-    <Tabs {...args} value={value} onChange={handleTabsChange}>
-      <Tab label={tabOneLabel} count={tabOneCount} />
-      <Tab label={tabTwoLabel} count={tabTwoCount} />
-    </Tabs>
-  );
-};
-
 // Default
-export const Default = Template.bind({});
 
-Default.args = {
-  sdsSize: "large",
-  tabOneLabel: "Upload from Your Computer",
-  tabTwoLabel: "Upload from Basespace",
-  underlined: true,
-};
-
-Default.parameters = {
-  // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
-  // delay allows for font to load and prevents chromatic from constantly creating new baselines
-  // https://github.cwom/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
-  chromatic: { delay: 5000 },
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    sdsSize: "large",
+    tabOneLabel: "Upload from Your Computer",
+    tabTwoLabel: "Upload from Basespace",
+    underlined: true,
+  },
+  parameters: {
+    // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
+    // delay allows for font to load and prevents chromatic from constantly creating new baselines
+    // https://github.cwom/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
+    chromatic: { delay: 5000 },
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
 // LivePreview
+
 const livePreviewWrapperStyle: React.CSSProperties = {
   alignItems: "center",
   display: "flex",
@@ -98,7 +99,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewWrapperStyle}>
       <div>
-        <Template
+        <Demo
           onChange={noop}
           sdsSize="large"
           tabOneLabel="Label"
@@ -108,7 +109,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Template
+        <Demo
           onChange={noop}
           sdsSize="large"
           tabOneLabel="Label"
@@ -120,7 +121,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Template
+        <Demo
           sdsSize="small"
           onChange={noop}
           tabOneLabel="Label"
@@ -130,7 +131,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         />
       </div>
       <div>
-        <Template
+        <Demo
           sdsSize="small"
           onChange={noop}
           tabOneLabel="Label"
@@ -145,20 +146,18 @@ function LivePreviewDemo(props: Args): JSX.Element {
   );
 }
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.args = {};
-
-LivePreview.parameters = {
-  chromatic: { delay: 5000 },
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    chromatic: { delay: 5000 },
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test
+
 function TestDemo(props: Args): JSX.Element {
   const finalProps = {
     ...props,
@@ -171,7 +170,7 @@ function TestDemo(props: Args): JSX.Element {
       <div style={livePreviewWrapperStyle}>
         <div>
           <h4>Default</h4>
-          <Template
+          <Demo
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
             tabOneCount={123}
@@ -181,7 +180,7 @@ function TestDemo(props: Args): JSX.Element {
         </div>
         <div>
           <h4>Small</h4>
-          <Template
+          <Demo
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
             tabOneCount={123}
@@ -192,7 +191,7 @@ function TestDemo(props: Args): JSX.Element {
         </div>
         <div>
           <h4>Underlined</h4>
-          <Template
+          <Demo
             onChange={noop}
             tabOneLabel="Tab One"
             tabTwoLabel="Tab Two"
@@ -206,7 +205,7 @@ function TestDemo(props: Args): JSX.Element {
         <div>
           <h4>Label with count</h4>
           <div>
-            <Template
+            <Demo
               onChange={noop}
               sdsSize="large"
               tabOneLabel="Label"
@@ -223,12 +222,11 @@ function TestDemo(props: Args): JSX.Element {
   );
 }
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  chromatic: { delay: 5000 },
+export const Test = {
+  parameters: {
+    chromatic: { delay: 5000 },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };
 
 const CountWrapper = styled("span")`

@@ -1,4 +1,4 @@
-import { Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Link, { LinkProps } from "./index";
 
@@ -22,13 +22,13 @@ export default {
   title: "Link",
 } as Meta;
 
-const Template: Story<LinkProps> = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  sdsStyle: "default",
+export const Default = {
+  args: {
+    sdsStyle: "default",
+  },
 };
+
+// Live Preview
 
 const livePreviewStyles = {
   display: "grid",
@@ -37,7 +37,7 @@ const livePreviewStyles = {
   gridTemplateColumns: "repeat(2, 250px)",
 };
 
-const LivePreviewDemo = (props: LinkProps): JSX.Element => {
+const LivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
       <div>
@@ -64,14 +64,11 @@ const LivePreviewDemo = (props: LinkProps): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story<LinkProps> = (args) => (
-  <LivePreviewDemo {...args} />
-);
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };

@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Link from "../Link";
 import Banner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
@@ -42,24 +41,22 @@ export default {
   title: "Banner",
 } as Meta<Args>;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    dismissed: false,
+    dismissible: true,
+    sdsType: "primary",
+    textChild: BANNER_TEXT,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-Default.args = {
-  dismissed: false,
-  dismissible: true,
-  sdsType: "primary",
-  textChild: BANNER_TEXT,
-};
-
 const StyledBanner = styled(Banner)`
-  background-color: pink;
+  background-color: Crimson;
 `;
 
 const LivePreviewDemo = (): JSX.Element => {
@@ -71,47 +68,41 @@ const LivePreviewDemo = (): JSX.Element => {
       <div style={{ height: "24px" }} />
       <Banner dismissible sdsType="secondary">
         {BANNER_TEXT}
-        <div style={{ padding: 5 }} />
-        <Link href="/" sdsStyle="default">
-          Learn More
-        </Link>
       </Banner>
       <div style={{ height: "24px" }} />
       <StyledBanner sdsType="primary">
-        Stylable. Should have pink background color
+        Stylable. Should have Crimson background color
       </StyledBanner>
     </div>
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  axe: {
-    disabledRules: [
-      // FIXME - examples fail color contrast requirements.
-      "color-contrast",
-      "landmark-no-duplicate-banner",
-      "landmark-unique",
-    ],
+export const LivePreview = {
+  args: {
+    dismissible: true,
+    sdsType: "primary",
+    textChild: "test text",
   },
-  controls: {
-    exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+  parameters: {
+    axe: {
+      disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
+    },
+    controls: {
+      exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-const TestTemplate: Story = (args) => <Demo {...args} />;
-
-export const Test = TestTemplate.bind({});
-Test.args = {
-  dismissible: true,
-  sdsType: "primary",
-  textChild: "test text",
-};
-
-Test.parameters = {
-  controls: {
-    exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+export const Test = {
+  args: {
+    dismissible: true,
+    sdsType: "primary",
+    textChild: "test text",
+  },
+  parameters: {
+    controls: {
+      exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+    },
   },
 };

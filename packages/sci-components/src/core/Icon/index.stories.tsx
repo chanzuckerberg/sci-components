@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React, { FC, useState } from "react";
 import Callout from "../Callout";
 import InputSearch from "../InputSearch";
@@ -70,17 +70,17 @@ export default {
   title: "Icon",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  color: "primary",
-  sdsIcon: "checkCircle",
-  sdsSize: "xl",
-  sdsType: "static",
-  shade: 400,
+export const Default = {
+  args: {
+    color: "primary",
+    sdsIcon: "checkCircle",
+    sdsSize: "xl",
+    sdsType: "static",
+    shade: 400,
+  },
 };
+
+// Icon Bank
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {
@@ -317,38 +317,34 @@ const IconBankDemo = (props: Args): JSX.Element => {
   );
 };
 
-const IconBankTemplate: Story = (args) => <IconBankDemo {...args} />;
-
-export const IconBank = IconBankTemplate.bind({});
-
-IconBank.parameters = {
-  controls: {
-    exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
+export const IconBank = {
+  args: {
+    color: "primary",
   },
+  parameters: {
+    controls: {
+      exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
+    },
+  },
+  render: (args: Args) => <IconBankDemo {...args} />,
 };
 
-IconBank.args = {
-  color: "primary",
-};
+// Test
 
-const TestDemo = (): JSX.Element => {
-  return (
+export const Test = {
+  parameters: {
+    controls: {
+      exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
+    },
+  },
+  render: (args: Args) => (
     <Icon
       sdsIcon="checkCircle"
       sdsSize="l"
       sdsType="static"
       color="success"
       data-testid="icon"
+      {...args}
     />
-  );
-};
-
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  controls: {
-    exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
-  },
+  ),
 };

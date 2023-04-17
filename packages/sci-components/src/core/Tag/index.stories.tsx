@@ -1,5 +1,5 @@
 import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import Tag from "./index";
@@ -89,20 +89,16 @@ export default {
   title: "Tag",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  hover: true,
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "primary",
+export const Default = {
+  args: {
+    hover: true,
+    label: "Label",
+    sdsStyle: "square",
+    sdsType: "primary",
+  },
 };
 
-/*
- * Live Preview
- */
+// Live Preview
 
 const livePreviewStyles = {
   display: "inline-grid",
@@ -190,39 +186,33 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    label: "Label",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-LivePreview.args = {
-  label: "Label",
-};
-
-/*
- * Test Story
- */
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const { label } = props;
   return <Tag label={label} data-testid="tags" {...props} />;
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  snapshot: {
-    skip: true,
+export const Test = {
+  args: {
+    label: "Label",
   },
-};
-
-Test.args = {
-  label: "Label",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

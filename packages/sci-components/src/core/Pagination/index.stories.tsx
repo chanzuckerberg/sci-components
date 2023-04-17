@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import PaginationRaw from "./index";
 
@@ -47,21 +47,20 @@ export default {
   title: "Table/Pagination",
 } as Meta;
 
-const Template: Story = (args) => <Pagination {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  pageSize: 5,
-  siblingCount: 1,
-  totalCount: 100,
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    pageSize: 5,
+    siblingCount: 1,
+    totalCount: 100,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => (
   <div>
@@ -135,18 +134,17 @@ const TestDemo = (props: Args): JSX.Element => (
   </div>
 );
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  controls: {
-    exclude: [
-      "pageSize",
-      "sdsStyle",
-      "siblingCount",
-      "totalCount",
-      "truncateDropdown",
-    ],
+export const Test = {
+  parameters: {
+    controls: {
+      exclude: [
+        "pageSize",
+        "sdsStyle",
+        "siblingCount",
+        "totalCount",
+        "truncateDropdown",
+      ],
+    },
   },
+  render: (args: Args) => <TestDemo {...args} />,
 };

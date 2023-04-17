@@ -1,7 +1,7 @@
 import { CheckCircleOutline } from "@mui/icons-material";
 import { Snackbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import { defaultTheme } from "../styles/common/defaultTheme";
@@ -39,17 +39,15 @@ export default {
   title: "Alert - To Be Depreciated",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    text: "This is an alert!",
   },
-};
-
-Default.args = {
-  text: "This is an alert!",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
 export const SnackbarAlert = () => {
@@ -82,9 +80,8 @@ export const SnackbarAlert = () => {
   );
 };
 
-const TestTemplate: Story = (args) => <Demo {...args} />;
-
-export const Test = TestTemplate.bind({});
-Test.args = {
-  text: "Test Alert!",
+export const Test = {
+  args: {
+    text: "Test Alert!",
+  },
 };

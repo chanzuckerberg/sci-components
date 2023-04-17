@@ -1,5 +1,5 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
@@ -73,23 +73,23 @@ export default {
   title: "Tooltip",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    arrow: true,
+    placement: "top",
+    sdsStyle: "dark",
+    subtitle: "dolor sit amet",
+    title: "Lorem ipsum",
+    width: "default",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-Default.args = {
-  arrow: true,
-  placement: "top",
-  sdsStyle: "dark",
-  subtitle: "dolor sit amet",
-  title: "Lorem ipsum",
-  width: "default",
-};
+// Live Preview
 
 const LivePreviewDemo = (): JSX.Element => {
   const livePreviewStyles = {
@@ -124,14 +124,16 @@ const LivePreviewDemo = (): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = () => <LivePreviewDemo />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: () => <LivePreviewDemo />,
 };
+
+// Placement Demo
 
 const PlacementDemo = (): JSX.Element => {
   const placementStyles = {
@@ -213,14 +215,16 @@ const PlacementDemo = (): JSX.Element => {
   );
 };
 
-const PlacementTemplate: Story = () => <PlacementDemo />;
-
-export const PlacementPreview = PlacementTemplate.bind({});
-PlacementPreview.parameters = {
-  snapshot: {
-    skip: true,
+export const PlacementPreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: () => <PlacementDemo />,
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
@@ -231,5 +235,6 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo title="test" {...args} />;
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo title="test" {...args} />,
+};

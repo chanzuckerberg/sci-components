@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import { Value } from "../Dropdown";
@@ -16,9 +16,12 @@ export type DropdownOptionValue<T, Multiple> = Multiple extends
 const StyledInputDropdown = styled(InputDropdown)`
   min-width: 300px;
 `;
-
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
+const groupByOptions = [
+  undefined,
+  (option: DefaultDropdownMenuOption) => option.section as string,
+];
 
 const Demo = <Multiple extends boolean | undefined = false>(
   props: Args
@@ -140,11 +143,6 @@ const Demo = <Multiple extends boolean | undefined = false>(
   }
 };
 
-const groupByOptions = [
-  undefined,
-  (option: DefaultDropdownMenuOption) => option.section as string,
-];
-
 export default {
   argTypes: {
     ClickAwayListenerProps: {
@@ -179,20 +177,18 @@ export default {
   title: "DropdownMenu",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  groupBy: groupByOptions[1],
-  keepSearchOnSelect: true,
-  label: "Click Target",
-  multiple: true,
-  search: true,
-  title: "Github Labels",
+export const Default = {
+  args: {
+    groupBy: groupByOptions[1],
+    keepSearchOnSelect: true,
+    label: "Click Target",
+    multiple: true,
+    search: true,
+    title: "Github Labels",
+  },
 };
 
-// Live Preview Story
+// Live Preview
 
 const storyRow = {
   display: "grid",
@@ -225,6 +221,33 @@ const StyledInputDropdownLive3 = styled(InputDropdown)`
     }
   }
 `;
+
+const LIVE_PREVIEW_LABELS = [
+  {
+    name: "Menu Item 1",
+    section: "Section 1",
+  },
+  {
+    name: "Menu Item 2",
+    section: "Section 1",
+  },
+  {
+    name: "Menu Item 3",
+    section: "Section 1",
+  },
+  {
+    name: "Menu Item 4",
+    section: "Section 2",
+  },
+  {
+    name: "Menu Item 5",
+    section: "Section 2",
+  },
+  {
+    name: "Menu Item 6",
+    section: "Section 2",
+  },
+];
 
 const LivePreviewDemo = (): JSX.Element => {
   const options = LIVE_PREVIEW_LABELS;
@@ -483,23 +506,21 @@ const LivePreviewDemo = (): JSX.Element => {
   }
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.args = {
-  keepSearchOnSelect: true,
-  multiple: false,
-  search: false,
-};
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    keepSearchOnSelect: true,
+    multiple: false,
+    search: false,
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-// Test Story
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const { multiple, options = LIVE_PREVIEW_LABELS, search } = props;
@@ -589,45 +610,16 @@ const TestDemo = (props: Args): JSX.Element => {
   }
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  keepSearchOnSelect: false,
-  multiple: false,
-  search: false,
+export const Test = {
+  args: {
+    keepSearchOnSelect: false,
+    multiple: false,
+    search: false,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };
-
-Test.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
-
-const LIVE_PREVIEW_LABELS = [
-  {
-    name: "Menu Item 1",
-    section: "Section 1",
-  },
-  {
-    name: "Menu Item 2",
-    section: "Section 1",
-  },
-  {
-    name: "Menu Item 3",
-    section: "Section 1",
-  },
-  {
-    name: "Menu Item 4",
-    section: "Section 2",
-  },
-  {
-    name: "Menu Item 5",
-    section: "Section 2",
-  },
-  {
-    name: "Menu Item 6",
-    section: "Section 2",
-  },
-];

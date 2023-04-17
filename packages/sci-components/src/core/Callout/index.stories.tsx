@@ -1,6 +1,6 @@
 import { FormControlLabel, Switch } from "@mui/material";
 import { action } from "@storybook/addon-actions";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import CalloutTitle from "./components/CalloutTitle";
@@ -65,15 +65,13 @@ export default {
   title: "Callout",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  autoDismiss: false,
-  calloutTitle: "this is a title",
-  intent: "success",
-  onClose: false,
+export const Default = {
+  args: {
+    autoDismiss: false,
+    calloutTitle: "this is a title",
+    intent: "success",
+    onClose: false,
+  },
 };
 
 const storyRow = {
@@ -117,6 +115,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
+export const LivePreview = {
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};

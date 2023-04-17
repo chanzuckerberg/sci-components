@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import TagFilter from "./index";
@@ -61,17 +61,13 @@ export default {
   title: "TagFilter",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  label: "TagFilter",
+export const Default = {
+  args: {
+    label: "TagFilter",
+  },
 };
 
-/*
- * Live Preview
- */
+// Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
   const { label } = props;
@@ -79,23 +75,19 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   return <TagFilter label={label} onDelete={() => {}} {...props} />;
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    label: "Label",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-LivePreview.args = {
-  label: "Label",
-};
-
-/*
- * Test Story
- */
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const { label } = props;
@@ -110,16 +102,14 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  snapshot: {
-    skip: true,
+export const Test = {
+  args: {
+    label: "Label",
   },
-};
-
-Test.args = {
-  label: "Label",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

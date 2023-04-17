@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./index";
 import { DemoWrapper } from "./style";
@@ -52,24 +52,23 @@ export default {
   title: "MenuItem",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  column: "column value here",
-  name: "text here",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    column: "column value here",
+    name: "text here",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-export const Test = Template.bind({});
+// Test
 
-Test.args = {
-  column: "test column",
-  name: "test text",
+export const Test = {
+  args: {
+    column: "test column",
+    name: "test text",
+  },
 };

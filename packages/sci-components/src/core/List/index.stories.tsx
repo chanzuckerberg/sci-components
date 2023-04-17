@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import ListItem from "../ListItem";
 import ListSubheader from "../ListSubheader";
@@ -221,8 +221,4 @@ export default {
   title: "List",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {};
+export const Default = {};

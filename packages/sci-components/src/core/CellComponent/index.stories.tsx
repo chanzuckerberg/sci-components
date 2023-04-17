@@ -1,5 +1,5 @@
 import { FormControlLabel, RadioGroup } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import InputRadio from "../InputRadio";
 import InputToggle from "../InputToggle";
@@ -61,46 +61,44 @@ export default {
   title: "Table/CellComponent",
 } as Meta;
 
-const Template: Story = (props: Args) => {
-  const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
+export const Default = {
+  args: {
+    horizontalAlign: "left",
+    verticalAlign: "center",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args) => {
+    const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
 
-  if (fitCellToComponent) {
+    if (fitCellToComponent) {
+      return (
+        <CellComponent
+          horizontalAlign={horizontalAlign}
+          verticalAlign={verticalAlign}
+          data-testid="CellComponent"
+          {...props}
+        >
+          <InputToggle />
+        </CellComponent>
+      );
+    }
+
     return (
       <CellComponent
         horizontalAlign={horizontalAlign}
         verticalAlign={verticalAlign}
         data-testid="CellComponent"
+        style={{ height: 100, width: 100 }}
         {...props}
       >
         <InputToggle />
       </CellComponent>
     );
-  }
-
-  return (
-    <CellComponent
-      horizontalAlign={horizontalAlign}
-      verticalAlign={verticalAlign}
-      data-testid="CellComponent"
-      style={{ height: 100, width: 100 }}
-      {...props}
-    >
-      <InputToggle />
-    </CellComponent>
-  );
-};
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
   },
-};
-
-Default.args = {
-  horizontalAlign: "left",
-  verticalAlign: "center",
 };
 
 const TestDemo = (props: Args): JSX.Element => {
@@ -171,10 +169,9 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  controls: { exclude: ["verticalAlign", "horizontalAlign"] },
+export const Test = {
+  parameters: {
+    controls: { exclude: ["verticalAlign", "horizontalAlign"] },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

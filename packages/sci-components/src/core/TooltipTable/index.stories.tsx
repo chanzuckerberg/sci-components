@@ -1,5 +1,5 @@
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Link from "../Link";
 import Tooltip from "../Tooltip";
@@ -74,21 +74,20 @@ export default {
   title: "TooltipTable",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  contentAlert: "None",
-  data,
-  itemAlign: "right",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    contentAlert: "None",
+    data,
+    itemAlign: "right",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Live Preview
 
 const storyRow = {
   alignItems: "stretch",
@@ -138,15 +137,16 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
@@ -158,6 +158,6 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo {...args} />,
+};

@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import Icon from "../Icon";
 import CellBasicRaw from "./index";
@@ -94,25 +94,22 @@ export default {
   title: "Table/CellBasic",
 } as Meta;
 
-const Template: Story = (args) => <CellBasic {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  primaryText: "Primary Text",
-  primaryTextWrapLineCount: 3,
-  secondaryText: "Secondary Text",
-  secondaryTextWrapLineCount: 1,
-  shouldShowTooltipOnHover: true,
-  shouldTextWrap: true,
-  tertiaryText: "Tertiary Text",
-  tertiaryTextWrapLineCount: 1,
-  tooltipProps: { sdsStyle: "dark" },
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    primaryText: "Primary Text",
+    primaryTextWrapLineCount: 3,
+    secondaryText: "Secondary Text",
+    secondaryTextWrapLineCount: 1,
+    shouldShowTooltipOnHover: true,
+    shouldTextWrap: true,
+    tertiaryText: "Tertiary Text",
+    tertiaryTextWrapLineCount: 1,
+    tooltipProps: { sdsStyle: "dark" },
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
@@ -168,31 +165,29 @@ const TestDemo = (): JSX.Element => (
   </table>
 );
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  primaryText: "Primary text",
-  secondaryText: "Secondary Text",
-};
-
-Test.parameters = {
-  controls: {
-    exclude: [
-      "icon",
-      "iconVerticalAlign",
-      "primaryText",
-      "primaryTextWrapLineCount",
-      "secondaryText",
-      "secondaryTextWrapLineCount",
-      "tertiaryText",
-      "tertiaryTextWrapLineCount",
-      "shouldShowTooltipOnHover",
-      "shouldTextWrap",
-      "tooltipProps",
-      "horizontalAlign",
-      "verticalAlign",
-    ],
+export const Test = {
+  args: {
+    primaryText: "Primary text",
+    secondaryText: "Secondary Text",
   },
+  parameters: {
+    controls: {
+      exclude: [
+        "icon",
+        "iconVerticalAlign",
+        "primaryText",
+        "primaryTextWrapLineCount",
+        "secondaryText",
+        "secondaryTextWrapLineCount",
+        "tertiaryText",
+        "tertiaryTextWrapLineCount",
+        "shouldShowTooltipOnHover",
+        "shouldTextWrap",
+        "tooltipProps",
+        "horizontalAlign",
+        "verticalAlign",
+      ],
+    },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

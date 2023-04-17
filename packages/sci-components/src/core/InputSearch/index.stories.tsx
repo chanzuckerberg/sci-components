@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import InputSearch from "./index";
 
@@ -58,22 +58,21 @@ export default {
   title: "Inputs/InputSearch",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  id: "Test",
-  label: "Search",
-  placeholder: "Search",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    id: "Test",
+    label: "Search",
+    placeholder: "Search",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Live Preview
 
 const RoundLivePreviewDemo = (props: Args): JSX.Element => {
   return (
@@ -89,16 +88,13 @@ const RoundLivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const RoundLivePreviewTemplate: Story = (args) => (
-  <RoundLivePreviewDemo {...args} />
-);
-
-export const RoundLivePreview = RoundLivePreviewTemplate.bind({});
-
-RoundLivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const RoundLivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <RoundLivePreviewDemo {...args} />,
 };
 
 const SquareLivePreviewDemo = (props: Args): JSX.Element => {
@@ -115,17 +111,16 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const SquareLivePreviewTemplate: Story = (args) => (
-  <SquareLivePreviewDemo {...args} />
-);
-
-export const SquareLivePreview = SquareLivePreviewTemplate.bind({});
-
-SquareLivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const SquareLivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <SquareLivePreviewDemo {...args} />,
 };
+
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   return (
@@ -162,6 +157,6 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo {...args} />,
+};

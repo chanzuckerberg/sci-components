@@ -1,24 +1,43 @@
 const path = require("path");
 const toPath = (filePath) => path.join(process.cwd(), filePath);
-
 module.exports = {
+  // Storybook version 7 needs babel config
+  babel: (config) => {
+    return {
+      ...config,
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-typescript",
+        [
+          "@babel/preset-react",
+          {
+            runtime: "automatic",
+          },
+        ],
+      ],
+      plugins: [],
+    };
+  },
   features: {
     buildStoriesJson: true,
     // (thuang): https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#emotion11-quasi-compatibility
     emotionAlias: false,
   },
   stories: [
-    "../packages/**/src/**/*.stories.mdx",
-    "../packages/**/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/sci-components/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/sci-data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
-    "@storybook/addon-postcss",
+    "@storybook/react",
   ],
-  framework: "@storybook/react",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
+  },
   webpackFinal: async (config) => {
     return {
       ...config,
@@ -33,5 +52,8 @@ module.exports = {
         },
       },
     };
+  },
+  docs: {
+    autodocs: false,
   },
 };

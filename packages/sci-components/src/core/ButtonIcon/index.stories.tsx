@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
@@ -65,21 +65,18 @@ export default {
   title: "ButtonIcon",
 } as Meta;
 
-const Template: Story = (args) => <ButtonIcon {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  "aria-label": "info",
-  disabled: false,
-  sdsIcon: "dotsHorizontal",
-  sdsSize: "large",
-  sdsType: "primary",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    "aria-label": "info",
+    disabled: false,
+    sdsIcon: "dotsHorizontal",
+    sdsSize: "large",
+    sdsType: "primary",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
@@ -189,29 +186,32 @@ const LivePreviewDemo = (): JSX.Element => {
     </div>
   );
 };
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-export const LivePreview = LivePreviewTemplate.bind({});
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
 
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const Test = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (): JSX.Element => {
+    return (
+      <RawButtonIcon
+        aria-label="dotsHorizontal"
+        data-testid="iconButton"
+        on
+        sdsIcon="dotsHorizontal"
+        sdsSize="medium"
+        sdsType="primary"
+      />
+    );
   },
 };
-
-const TestDemo = (): JSX.Element => {
-  return (
-    <RawButtonIcon
-      aria-label="dotsHorizontal"
-      data-testid="iconButton"
-      on
-      sdsIcon="dotsHorizontal"
-      sdsSize="medium"
-      sdsType="primary"
-    />
-  );
-};
-
-const TestTemplate: Story = () => <TestDemo />;
-
-export const Test = TestTemplate.bind({});

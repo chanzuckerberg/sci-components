@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import CellHeader from "../CellHeader";
 import TableHeaderRaw from "./index";
@@ -21,15 +21,15 @@ export default {
   title: "Table/TableHeader",
 } as Meta;
 
-const Template: Story = (args) => <TableHeader {...args} />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Test
 
 const TestDemo = (): JSX.Element => (
   <table>
@@ -41,6 +41,6 @@ const TestDemo = (): JSX.Element => (
   </table>
 );
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo {...args} />,
+};

@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import CellHeaderRaw, { CellHeaderDirection } from "./index";
 
@@ -60,29 +60,20 @@ export default {
   title: "Table/CellHeader",
 } as Meta;
 
-const Template: Story = (args) => <CellHeader {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  active: false,
-  direction: "desc",
-  hideSortIcon: false,
-  shouldShowTooltipOnHover: true,
-  tooltipProps: { sdsStyle: "dark" },
-  tooltipText: "This is a header cell",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    active: false,
+    direction: "desc",
+    hideSortIcon: false,
+    shouldShowTooltipOnHover: true,
+    tooltipProps: { sdsStyle: "dark" },
+    tooltipText: "This is a header cell",
   },
-};
-
-export const Ascending = Template.bind({});
-
-Ascending.args = {
-  direction: "asc",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
 const TestDemo = (): JSX.Element => (
@@ -103,20 +94,19 @@ const TestDemo = (): JSX.Element => (
   </table>
 );
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.parameters = {
-  controls: {
-    exclude: [
-      "active",
-      "direction",
-      "hideSortIcon",
-      "horizontalAlign",
-      "shouldShowTooltipOnHover",
-      "tooltipProps",
-      "tooltipText",
-    ],
+export const Test = {
+  parameters: {
+    controls: {
+      exclude: [
+        "active",
+        "direction",
+        "hideSortIcon",
+        "horizontalAlign",
+        "shouldShowTooltipOnHover",
+        "tooltipProps",
+        "tooltipText",
+      ],
+    },
   },
+  render: (args: Args) => <TestDemo {...args} />,
 };

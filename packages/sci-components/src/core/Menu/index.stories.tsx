@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import MenuItem from "../MenuItem";
@@ -46,23 +46,20 @@ export default {
   title: "Menu",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
+export const Default = {};
 
-export const Default = Template.bind({});
+// Custom Placement
 
-Default.args = {};
-
-export const CustomPlacement = Template.bind({});
-
-CustomPlacement.args = {
-  ...Default.args,
-  anchorOrigin: {
-    horizontal: "right",
-    vertical: "bottom",
-  },
-  column: "column value",
-  transformOrigin: {
-    horizontal: "right",
-    vertical: "top",
+export const CustomPlacement = {
+  args: {
+    anchorOrigin: {
+      horizontal: "right",
+      vertical: "bottom",
+    },
+    column: "column value",
+    transformOrigin: {
+      horizontal: "right",
+      vertical: "top",
+    },
   },
 };

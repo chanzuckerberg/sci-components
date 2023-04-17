@@ -47,29 +47,33 @@ export default {
   title: "Accordion",
 } as Meta;
 
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    togglePosition: "right",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-Default.args = {
-  id: "test-story",
-  togglePosition: "right",
+export const Test = {
+  arg: {
+    id: "test-story",
+    togglePosition: "right",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => (
+    <Accordion {...props} data-testid="accordion" />
+  ),
 };
 
-const TestTemplate: Story = (props) => (
-  <Accordion {...props} data-testid="accordion" />
-);
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  id: "test-story",
-  togglePosition: "right",
-};
+// LivePreview
 
 const livePreviewStyles = {
   display: "grid",
@@ -78,7 +82,6 @@ const livePreviewStyles = {
   gridTemplateColumns: "repeat(4, 200px)",
 };
 
-// LivePreview
 function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
@@ -102,14 +105,11 @@ function LivePreviewDemo(props: Args): JSX.Element {
   );
 }
 
-const LivePreviewTemplate: Story = (args: Args) => (
-  <LivePreviewDemo {...args} />
-);
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };

@@ -1,5 +1,4 @@
-/* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import HeatmapRaw from "./index";
 
@@ -16,22 +15,24 @@ export default {
   title: "Data Viz/Heatmap",
 } as Meta;
 
-const Template: Story = (args) => <Heatmap {...args} />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-const TestDemo = (): JSX.Element => (
-  <HeatmapRaw data-testid="Heatmap">
-    <p>heatmap test!</p>
-  </HeatmapRaw>
-);
-
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  args: {},
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (): JSX.Element => (
+    <HeatmapRaw data-testid="Heatmap">
+      <p>heatmap test!</p>
+    </HeatmapRaw>
+  ),
+};

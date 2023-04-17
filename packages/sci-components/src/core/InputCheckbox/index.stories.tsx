@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import InputCheckbox from "./index";
 
@@ -42,20 +42,17 @@ export default {
   title: "Inputs/InputCheckbox",
 } as Meta;
 
-const Template: Story = (args) => <CheckboxLabelDemo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    caption: "Caption",
+    id: testId,
+    label: "Label",
   },
-};
-
-Default.args = {
-  caption: "Caption",
-  id: testId,
-  label: "Label",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
 const CheckboxLabelDemo = (props: Args): JSX.Element => {
@@ -72,47 +69,6 @@ const CheckboxLabelDemo = (props: Args): JSX.Element => {
     </div>
   );
 };
-
-const TestDemo = (): JSX.Element => {
-  const testStyles = {
-    display: "grid",
-    gridColumnGap: "10px",
-    gridRowGap: "0px",
-    gridTemplateColumns: "repeat(2, 100px)",
-    gridTemplateRows: "1fr",
-  };
-
-  return (
-    <div style={testStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <CheckboxLabelDemo
-          caption="Caption"
-          label="Lable A"
-          disabled={false}
-          data-testid="labelCheckbox"
-        />
-      </div>
-      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <CheckboxDemo data-testid="checkbox" />
-      </div>
-    </div>
-  );
-};
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  id: testId,
-};
-
-Test.parameters = {
-  controls: { exclude: ["caption", "label", "id"] },
-};
-
-/*
- * Live Preview
- */
 
 const IndeterminateDemo = (): JSX.Element => {
   const [checked, setChecked] = React.useState([true, false]);
@@ -163,6 +119,8 @@ const IndeterminateDemo = (): JSX.Element => {
   );
 };
 
+// Live Preview
+
 const LivePreviewDemo = (): JSX.Element => {
   const livePreviewStyles = {
     display: "grid",
@@ -187,13 +145,50 @@ const LivePreviewDemo = (): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  controls: { exclude: ["caption", "label"] },
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    controls: { exclude: ["caption", "label"] },
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Test
+
+const TestDemo = (): JSX.Element => {
+  const testStyles = {
+    display: "grid",
+    gridColumnGap: "10px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(2, 100px)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={testStyles as React.CSSProperties}>
+      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+        <CheckboxLabelDemo
+          caption="Caption"
+          label="Lable A"
+          disabled={false}
+          data-testid="labelCheckbox"
+        />
+      </div>
+      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
+        <CheckboxDemo data-testid="checkbox" />
+      </div>
+    </div>
+  );
+};
+
+export const Test = {
+  args: {
+    id: testId,
+  },
+  parameters: {
+    controls: { exclude: ["caption", "label", "id"] },
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

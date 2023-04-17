@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import InputSlider from "./index";
 
@@ -38,25 +38,22 @@ const Demo = (props: Args): JSX.Element => {
   );
 };
 
-const Template: Story = (args) => <Demo {...args} />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    defaultValue: [15, 85],
+    disabled: false,
+    marks: true,
+    max: 100,
+    min: 0,
+    orientation: "horizontal",
+    step: 5,
+    valueLabelDisplay: "on",
   },
-};
-
-Default.args = {
-  defaultValue: [15, 85],
-  disabled: false,
-  marks: true,
-  max: 100,
-  min: 0,
-  orientation: "horizontal",
-  step: 5,
-  valueLabelDisplay: "on",
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
 export default {
@@ -115,6 +112,8 @@ export default {
   title: "Inputs/InputSlider",
 } as Meta;
 
+// Live Preview
+
 const storyRow = {
   display: "grid",
   gridColumnGap: 40,
@@ -153,23 +152,23 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  args: {
+    defaultValue: [15, 85],
+    disabled: false,
+    marks: true,
+    max: 100,
+    min: 0,
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-LivePreview.args = {
-  defaultValue: [15, 85],
-  disabled: false,
-  marks: true,
-  max: 100,
-  min: 0,
-};
+// Test
 
 const TestDemo = (props: Args): JSX.Element => {
   const { marks, max, min } = props;
@@ -187,12 +186,11 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  defaultValue: 15,
-  max: 100,
-  min: 0,
+export const Test = {
+  args: {
+    defaultValue: 15,
+    max: 100,
+    min: 0,
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

@@ -1,5 +1,5 @@
 import { Dialog, Paper, styled } from "@mui/material";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
@@ -39,6 +39,8 @@ const onCloseOptions = [
 ];
 
 const buttonPositionOptions = ["left", "right"];
+
+const LABEL = "Click Target";
 
 export default {
   argTypes: {
@@ -99,92 +101,91 @@ export default {
   title: "Dropdown",
 } as Meta;
 
-const Template: Story = (args) => <Demo {...args} />;
-const LABEL = "Click Target";
-
-export const Default = Template.bind({});
-
-Default.args = {
-  buttonPosition: "left",
-  buttons: false,
-  closeOnBlur: true,
-  disabled: false,
-  isTriggerChangeOnOptionClick: false,
-  label: LABEL,
-  multiple: true,
-  onChange: noop,
-  onClose: noop,
-  search: true,
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    buttonPosition: "left",
+    buttons: false,
+    closeOnBlur: true,
+    disabled: false,
+    isTriggerChangeOnOptionClick: false,
+    label: LABEL,
+    multiple: true,
+    onChange: noop,
+    onClose: noop,
+    search: true,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-export const LoadingResultsIndicator = Template.bind({});
-
-LoadingResultsIndicator.args = {
-  DropdownMenuProps: {
-    loading: true,
-    loadingText: <LoadingIndicator sdsStyle="minimal" />,
+export const LoadingResultsIndicator = {
+  args: {
+    DropdownMenuProps: {
+      loading: true,
+      loadingText: <LoadingIndicator sdsStyle="minimal" />,
+    },
+    label: LABEL,
+    onChange: noop,
+    options: [],
   },
-  label: LABEL,
-  onChange: noop,
-  options: [],
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
-LoadingResultsIndicator.parameters = {
-  snapshot: {
-    skip: true,
-  },
-};
+// Inside Modal
 
 const StyledPaper = styled(Paper)`
   width: 200px;
   padding: 50px;
 `;
 
-export const InsideModal = (): JSX.Element => {
-  const [value, setValue] = useState<
-    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);
+export const InsideModal = {
+  parameters: {
+    axe: {
+      disabledRules: ["aria-dialog-name"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (): JSX.Element => {
+    const [value, setValue] = useState<
+      DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);
 
-  const FullWidthDropdown = styled(Dropdown)`
-    width: 100%;
-  `;
+    const FullWidthDropdown = styled(Dropdown)`
+      width: 100%;
+    `;
 
-  return (
-    <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
-      <FullWidthDropdown
-        label="Dropdown"
-        options={GITHUB_LABELS}
-        onChange={handleChange}
-        value={value}
-        multiple
-        InputDropdownProps={{ sdsStyle: "square" }}
-      />
-    </Dialog>
-  );
+    return (
+      <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
+        <FullWidthDropdown
+          label="Dropdown"
+          options={GITHUB_LABELS}
+          onChange={handleChange}
+          value={value}
+          multiple
+          InputDropdownProps={{ sdsStyle: "square" }}
+        />
+      </Dialog>
+    );
 
-  function handleChange(
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ) {
-    setValue(newValue);
-  }
+    function handleChange(
+      newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    ) {
+      setValue(newValue);
+    }
+  },
 };
 
-InsideModal.parameters = {
-  axe: {
-    disabledRules: ["aria-dialog-name"],
-  },
-  snapshot: {
-    skip: true,
-  },
-};
+// Test
 
-// Test Story
 const TestDemo = (props: Args): JSX.Element => {
   return (
     <Dropdown
@@ -197,10 +198,10 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  label: LABEL,
-  onChange: noop,
+export const Test = {
+  args: {
+    label: LABEL,
+    onChange: noop,
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

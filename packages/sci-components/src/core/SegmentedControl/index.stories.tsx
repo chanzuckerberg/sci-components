@@ -1,4 +1,4 @@
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import SegmentedControl, { SegmentedControlProps } from "./index";
 
@@ -64,42 +64,42 @@ interface SegmentedControlArgs extends SegmentedControlProps {
   segmentFourTooltipText: string;
 }
 
-const Template: Story<SegmentedControlArgs> = (props: SegmentedControlArgs) => {
-  const {
-    segmentOneIcon,
-    segmentOneTooltipText,
-    segmentTwoIcon,
-    segmentTwoTooltipText,
-    segmentThreeIcon,
-    segmentThreeTooltipText,
-    segmentFourIcon,
-    segmentFourTooltipText,
-  } = props;
+export const Default = {
+  args: {
+    segmentFourIcon: "list",
+    segmentFourTooltipText: "List D",
+    segmentOneIcon: "list",
+    segmentOneTooltipText: "List A",
+    segmentThreeIcon: "list",
+    segmentThreeTooltipText: "List C",
+    segmentTwoIcon: "list",
+    segmentTwoTooltipText: "List B",
+  },
+  render: (props: SegmentedControlArgs) => {
+    const {
+      segmentOneIcon,
+      segmentOneTooltipText,
+      segmentTwoIcon,
+      segmentTwoTooltipText,
+      segmentThreeIcon,
+      segmentThreeTooltipText,
+      segmentFourIcon,
+      segmentFourTooltipText,
+    } = props;
 
-  const buttonDefinition = [
-    { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
-    { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
-    { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
-    { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
-  ];
+    const buttonDefinition = [
+      { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
+      { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
+      { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
+      { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
+    ];
 
-  return <SegmentedControl buttonDefinition={buttonDefinition} />;
+    return <SegmentedControl buttonDefinition={buttonDefinition} />;
+  },
 };
 
-// Default
-export const Default = Template.bind({});
-Default.args = {
-  segmentFourIcon: "list",
-  segmentFourTooltipText: "List D",
-  segmentOneIcon: "list",
-  segmentOneTooltipText: "List A",
-  segmentThreeIcon: "list",
-  segmentThreeTooltipText: "List C",
-  segmentTwoIcon: "list",
-  segmentTwoTooltipText: "List B",
-};
+// Live Preview
 
-// LivePreview
 const livePreviewStyles = {
   columnGap: "24px",
   display: "flex",
@@ -114,7 +114,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewStyles}>
       <div>
-        <Template
+        <Demo
           segmentOneIcon="list"
           segmentOneTooltipText="List A"
           segmentTwoIcon="list"
@@ -130,17 +130,18 @@ function LivePreviewDemo(props: Args): JSX.Element {
     </div>
   );
 }
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
 
-export const LivePreview = LivePreviewTemplate.bind({});
-
-LivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test
+
 const TestDemo = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
   return (
@@ -152,15 +153,14 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 };
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  buttonDefinition: [
-    { iconName: "list", tooltipText: "List A" },
-    { iconName: "list", tooltipText: "List B" },
-    { iconName: "table", tooltipText: "Table" },
-    { iconName: "people", tooltipText: "People" },
-  ],
+export const Test = {
+  args: {
+    buttonDefinition: [
+      { iconName: "list", tooltipText: "List A" },
+      { iconName: "list", tooltipText: "List B" },
+      { iconName: "table", tooltipText: "Table" },
+      { iconName: "people", tooltipText: "People" },
+    ],
+  },
+  render: (args: Args) => <TestDemo {...args} />,
 };

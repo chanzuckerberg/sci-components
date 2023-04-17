@@ -171,20 +171,21 @@ export default {
 
 const Template: Story = (args) => <Demo {...args} />;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "singleSelect",
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    label: "Label",
+    sdsStyle: "square",
+    sdsType: "singleSelect",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Live Preview
 
 const storyRow = {
   // lprins: This prevents InputDropdown component from stretching height in grid
@@ -228,32 +229,30 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const LivePreviewTemplate: Story = (args) => <LivePreviewDemo {...args} />;
-
-export const RoundLivePreview = LivePreviewTemplate.bind({});
-
-RoundLivePreview.args = {
-  fullWidth: true,
-  sdsStyle: "rounded",
-};
-
-RoundLivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const RoundLivePreview = {
+  args: {
+    fullWidth: true,
+    sdsStyle: "rounded",
   },
-};
-
-export const SquareLivePreview = LivePreviewTemplate.bind({});
-
-SquareLivePreview.args = {
-  fullWidth: true,
-  sdsStyle: "square",
-};
-
-SquareLivePreview.parameters = {
-  snapshot: {
-    skip: true,
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+export const SquareLivePreview = {
+  args: {
+    fullWidth: true,
+    sdsStyle: "square",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
@@ -290,29 +289,25 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-const MinimalPreviewTemplate: Story = (args) => (
-  <MinimalLivePreviewDemo {...args} />
-);
-
-export const MinimalLivePreview = MinimalPreviewTemplate.bind({});
-
-MinimalLivePreview.args = {
-  sdsStyle: "minimal",
-};
-
-MinimalLivePreview.parameters = {
-  snapshot: {
-    skip: true,
+export const MinimalLivePreview = {
+  args: {
+    sdsStyle: "minimal",
   },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <MinimalLivePreviewDemo {...args} />,
 };
 
-const TestTemplate: Story = (args) => <Demo {...args} />;
+// Test
 
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  disabled: false,
-  label: "Label",
-  sdsStyle: "square",
-  sdsType: "singleSelect",
+export const Test = {
+  args: {
+    disabled: false,
+    label: "Label",
+    sdsStyle: "square",
+    sdsType: "singleSelect",
+  },
 };

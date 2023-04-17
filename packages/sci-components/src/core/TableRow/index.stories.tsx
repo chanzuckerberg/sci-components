@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import CellBasic from "../CellBasic";
 import TableRowRaw from "./index";
@@ -54,25 +54,24 @@ export default {
   title: "Table/TableRow",
 } as Meta;
 
-const Template: Story = (args) => <TableRow {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  hover: true,
-  selected: false,
-  shouldShowTooltipOnHover: true,
-  tooltipProps: { sdsStyle: "dark" },
-  tooltipText: "This is a TableRow component",
-  useDivider: true,
-};
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    hover: true,
+    selected: false,
+    shouldShowTooltipOnHover: true,
+    tooltipProps: { sdsStyle: "dark" },
+    tooltipText: "This is a TableRow component",
+    useDivider: true,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
+
+// Test
 
 const TestDemo = (): JSX.Element => (
   <table>
@@ -89,6 +88,6 @@ const TestDemo = (): JSX.Element => (
   </table>
 );
 
-const TestTemplate: Story = (args) => <TestDemo {...args} />;
-
-export const Test = TestTemplate.bind({});
+export const Test = {
+  render: (args: Args) => <TestDemo {...args} />,
+};

@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import { Args, Meta, Story } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawButton from "./index";
@@ -43,34 +43,28 @@ export default {
   title: "Button",
 } as Meta;
 
-const Template: Story = (props) => <Button {...props} />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  snapshot: {
-    skip: true,
+export const Default = {
+  args: {
+    disabled: false,
+    sdsStyle: "rounded",
+    sdsType: "primary",
+    text: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
   },
 };
 
-Default.args = {
-  disabled: false,
-  sdsStyle: "rounded",
-  sdsType: "primary",
-  text: "Label",
-};
-
-const TestTemplate: Story = (props: Args) => (
-  <Button {...props} data-testid="button" />
-);
-
-export const Test = TestTemplate.bind({});
-
-Test.args = {
-  disabled: false,
-  sdsStyle: "rounded",
-  sdsType: "primary",
-  text: "Label",
+export const Test = {
+  args: {
+    disabled: false,
+    sdsStyle: "rounded",
+    sdsType: "primary",
+    text: "Label",
+  },
+  render: (props: Args) => <Button {...props} data-testid="button" />,
 };
 
 const placementStyles = {
@@ -81,78 +75,78 @@ const placementStyles = {
   gridTemplateRows: "1fr",
 };
 
-const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
-  return (
-    <div style={placementStyles as React.CSSProperties}>
-      <RawButton {...props} sdsStyle="rounded" sdsType="primary">
-        {text}
-      </RawButton>
+export const RoundedLivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => {
+    return (
+      <div style={placementStyles as React.CSSProperties}>
+        <RawButton {...props} sdsStyle="rounded" sdsType="primary">
+          {text}
+        </RawButton>
 
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="rounded"
-        sdsType="primary"
-      >
-        {text}
-      </RawButton>
-      <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
-        {text}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="rounded"
-        sdsType="secondary"
-      >
-        {text}
-      </RawButton>
-    </div>
-  );
-};
-
-RoundedLivePreviewDemo.parameters = {
-  snapshot: {
-    skip: true,
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="rounded"
+          sdsType="primary"
+        >
+          {text}
+        </RawButton>
+        <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
+          {text}
+        </RawButton>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="rounded"
+          sdsType="secondary"
+        >
+          {text}
+        </RawButton>
+      </div>
+    );
   },
 };
-export const RoundedLivePreview = RoundedLivePreviewDemo.bind({});
 
-const SquareLivePreviewDemo = (props: Args): JSX.Element => {
-  return (
-    <div style={placementStyles as React.CSSProperties}>
-      <RawButton {...props} sdsStyle="square" sdsType="primary">
-        {text}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="square"
-        sdsType="primary"
-      >
-        {text}
-      </RawButton>
-      <RawButton {...props} sdsStyle="square" sdsType="secondary">
-        {text}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="square"
-        sdsType="secondary"
-      >
-        {text}
-      </RawButton>
-    </div>
-  );
-};
-
-SquareLivePreviewDemo.parameters = {
-  snapshot: {
-    skip: true,
+export const SquareLivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => {
+    return (
+      <div style={placementStyles as React.CSSProperties}>
+        <RawButton {...props} sdsStyle="square" sdsType="primary">
+          {text}
+        </RawButton>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="square"
+          sdsType="primary"
+        >
+          {text}
+        </RawButton>
+        <RawButton {...props} sdsStyle="square" sdsType="secondary">
+          {text}
+        </RawButton>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="square"
+          sdsType="secondary"
+        >
+          {text}
+        </RawButton>
+      </div>
+    );
   },
 };
-export const SquareLivePreview = SquareLivePreviewDemo.bind({});
 
 const minimalPlacementStyles = {
   display: "grid",
@@ -162,31 +156,31 @@ const minimalPlacementStyles = {
   gridTemplateRows: "1fr",
 };
 
-const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
-  return (
-    <div style={minimalPlacementStyles as React.CSSProperties}>
-      <RawButton {...props} sdsStyle="minimal" sdsType="primary">
-        {text}
-      </RawButton>
+export const MinimalLivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => {
+    return (
+      <div style={minimalPlacementStyles as React.CSSProperties}>
+        <RawButton {...props} sdsStyle="minimal" sdsType="primary">
+          {text}
+        </RawButton>
 
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="minimal"
-        sdsType="primary"
-      >
-        {text}
-      </RawButton>
-      <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
-        {text}
-      </RawButton>
-    </div>
-  );
-};
-
-MinimalLivePreviewDemo.parameters = {
-  snapshot: {
-    skip: true,
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="minimal"
+          sdsType="primary"
+        >
+          {text}
+        </RawButton>
+        <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
+          {text}
+        </RawButton>
+      </div>
+    );
   },
 };
-export const MinimalLivePreview = MinimalLivePreviewDemo.bind({});
