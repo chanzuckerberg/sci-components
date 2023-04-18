@@ -44,18 +44,18 @@ yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/mater
 
 Common yarn scrips have been moved to the monorepo root. The-- syntax can be used to pass parameters to the underlying yarn scripts. For instance, to update the snapshots, use `lerna run test -- -u` instead of running all tests on both packages with `yarn test`.
 
-    - `yarn start`: Starts storybook on the local machine
-    - `yarn build-storybook`: Builds the storybook in the docs-build folder
-    - `yarn test-storybook`: Tests current running instance of storybook
-    - `yarn storybook:axe`: Builds the storybook and runs accessibility tests
-    - `yarn storybook:axeOnly`: Runs accessibility tests on the latest build of the storybook inside the docs-build folder
-    - `yarn test`: Runs `jest` tests
-    - `yarn namespace-check`: Runs typescript type checking on namespace files to ensure that there are no duplicated exports
-    - `yarn lint`: Runs linter
-    - `yarn build`: Build the packages
-    - `yarn ci`: Executes `yarn install --frozen-lockfile` in both packages
+- `yarn start`: Starts storybook on the local machine
+- `yarn build-storybook`: Builds the storybook in the docs-build folder
+- `yarn test-storybook`: Tests current running instance of storybook
+- `yarn storybook:axe`: Builds the storybook and runs accessibility tests
+- `yarn storybook:axeOnly`: Runs accessibility tests on the latest build of the storybook inside the docs-build folder
+- `yarn test`: Runs `jest` tests
+- `yarn namespace-check`: Runs typescript type checking on namespace files to ensure that there are no duplicated exports
+- `yarn lint`: Runs linter
+- `yarn build`: Build the packages
+- `yarn ci`: Executes `yarn install --frozen-lockfile` in both packages
 
-    - _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czifui/sci-components`._
+- _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czifui/sci-components`._
 
 ## Usage
 
