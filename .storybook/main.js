@@ -53,6 +53,10 @@ module.exports = {
       },
     };
   },
+  // (masoudmanson): The latest update of Storybook version 7 now features
+  // a new Docs tab, in addition to the Default, Live Preview, and Test Stories.
+  // In order to align with our project requirements, we have set the auto Docs
+  // tab to a value of "false" as we do not currently require its functionality.
   docs: {
     autodocs: false,
   },

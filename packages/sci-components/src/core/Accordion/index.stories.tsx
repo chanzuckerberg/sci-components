@@ -102,7 +102,7 @@ export const LivePreview = {
 // Test
 
 export const Test = {
-  arg: {
+  args: {
     id: "test-story",
     togglePosition: "right",
   },

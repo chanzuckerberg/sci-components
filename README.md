@@ -42,7 +42,7 @@ yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/mater
 
 ## Yarn scripts
 
-Common yarn scrips have been moved to the monorepo root. The-- syntax can be used to pass parameters to the underlying yarn scripts. For instance, to update the snapshots, use `lerna run test -- -u` instead of running all tests on both packages with `yarn test`.
+Common yarn scrips have been moved to the monorepo root. The -- syntax can be used to pass parameters to the underlying yarn scripts. For instance, to update the snapshots, use `lerna run test -- -u` instead of running all tests on both packages with `yarn test`.
 
 - `yarn start`: Starts storybook on the local machine
 - `yarn build-storybook`: Builds the storybook in the docs-build folder
