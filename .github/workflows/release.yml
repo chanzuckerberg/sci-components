@@ -44,7 +44,7 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
         run: npx lerna run semantic-release
       - name: Post breaking changes to a Slack channel
         uses: act10ns/slack@v1
