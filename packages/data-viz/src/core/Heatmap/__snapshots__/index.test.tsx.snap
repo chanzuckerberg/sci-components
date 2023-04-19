@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heatmap /> Default story renders snapshot 1`] = `
+<div
+  class="css-13m8ec6"
+>
+  <p>
+    This is a heatmap!
+  </p>
+</div>
+`;

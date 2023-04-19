@@ -18,6 +18,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
 
+      - name: Build component library in dist/
+        run: yarn build
+
       - name: Lint
         run: |
           yarn lint

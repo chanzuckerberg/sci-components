@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist",
+        "composite": true
+    },
+    "include": [
+        "src/**/*",
+        "../../.eslintrc.js"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "references": []
+}

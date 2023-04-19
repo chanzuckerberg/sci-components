@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dialog /> Default story renders snapshot 1`] = `
+<button
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-gsef57-MuiButtonBase-root-MuiButton-root"
+  tabindex="0"
+  type="button"
+>
+  Open 
+  m
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  data-testid="dialog-title"
+  id="mui-2"
+>
+  <button
+    aria-label="Close"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1pznqzi-MuiButtonBase-root-MuiIconButton-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        data-jest-file-name="IconXMarkSmall.svg"
+        data-jest-svg-name="IconXMarkSmall"
+        data-testid="IconXMarkSmall"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 14 14"
+      />
+    </div>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+  >
+    Title
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+  >
+    Optional subtitle
+  </p>
+</h2>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 2`] = `
+<div
+  class="MuiDialogContent-root css-1sec6bs-MuiDialogContent-root"
+  data-testid="dialog-content"
+>
+  Content Module
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
+<div
+  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  data-testid="dialog-actions"
+>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Secondary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Primary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  data-testid="dialog-title"
+  id="mui-3"
+>
+  <button
+    aria-label="Close"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11j1e9v-MuiButtonBase-root-MuiIconButton-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        data-jest-file-name="IconXMarkLarge.svg"
+        data-jest-svg-name="IconXMarkLarge"
+        data-testid="IconXMarkLarge"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 22 22"
+      />
+    </div>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+  >
+    Title
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+  >
+    Optional subtitle
+  </p>
+</h2>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 5`] = `
+<div
+  class="MuiDialogContent-root css-1sec6bs-MuiDialogContent-root"
+  data-testid="dialog-content"
+>
+  Content Module
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
+<div
+  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  data-testid="dialog-actions"
+>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Secondary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Primary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  data-testid="dialog-title"
+  id="mui-4"
+>
+  <button
+    aria-label="Close"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        data-jest-file-name="IconXMarkLarge.svg"
+        data-jest-svg-name="IconXMarkLarge"
+        data-testid="IconXMarkLarge"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 22 22"
+      />
+    </div>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+  >
+    Title
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+  >
+    Optional subtitle
+  </p>
+</h2>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 8`] = `
+<div
+  class="MuiDialogContent-root css-1sec6bs-MuiDialogContent-root"
+  data-testid="dialog-content"
+>
+  Content Module
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
+<div
+  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  data-testid="dialog-actions"
+>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Secondary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Primary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  data-testid="dialog-title"
+  id="mui-5"
+>
+  <button
+    aria-label="Close"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        data-jest-file-name="IconXMarkLarge.svg"
+        data-jest-svg-name="IconXMarkLarge"
+        data-testid="IconXMarkLarge"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 22 22"
+      />
+    </div>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+  >
+    Title
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+  >
+    Optional subtitle
+  </p>
+</h2>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 11`] = `
+<div
+  class="MuiDialogContent-root css-1sec6bs-MuiDialogContent-root"
+  data-testid="dialog-content"
+>
+  Content Module
+</div>
+`;
+
+exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
+<div
+  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  data-testid="dialog-actions"
+>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Secondary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Primary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
+<div
+  class="MuiDialogActions-root MuiDialogActions-spacing css-1ordac3-MuiDialogActions-root"
+  data-testid="dialog-actions"
+>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Primary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    Secondary Action
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`<Dialog /> renders Dialog without title X button 1`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  data-testid="dialog-title"
+  id="mui-6"
+>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"
+  >
+    Title
+  </p>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+  >
+    Optional subtitle
+  </p>
+</h2>
+`;

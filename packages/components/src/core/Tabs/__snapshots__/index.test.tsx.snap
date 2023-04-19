@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tabs /> Default story renders snapshot 1`] = `
+<div
+  class="MuiTabs-root css-11fro2b-MuiTabs-root"
+>
+  <div
+    class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+    style="overflow: hidden; margin-bottom: 0px;"
+  >
+    <div
+      class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+      role="tablist"
+    >
+      <button
+        aria-selected="true"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-17rzz1x-MuiButtonBase-root-MuiTab-root"
+        role="tab"
+        tabindex="0"
+        type="button"
+      >
+        Upload from Your Computer
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-selected="false"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-17rzz1x-MuiButtonBase-root-MuiTab-root"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Upload from Basespace
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <span
+      class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
+      style="left: 0px; width: 0px;"
+    />
+  </div>
+</div>
+`;

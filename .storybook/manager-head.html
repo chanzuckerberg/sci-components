@@ -18,38 +18,6 @@
     font-size: 14px;
   }
 
-  div[role="main"] {
-    transform: translate(0px, -11px);
-    transform-origin: top left;
-  }
-
-  div[role="main"] > div {
-    box-shadow: none !important;
-  }
-
-  div[role="main"] > div > div {
-    width: 100% !important;
-  }
-
-  div[role="main"] .os-host {
-    border-bottom: solid 1px #e6e6e6;
-    border-top: solid 1px #e6e6e6;
-  }
-
-  div[role="main"] .os-host-foreign {
-    background-color: #f9f9f9 !important;
-  }
-
-  .react-draggable {
-    border-right: solid 1px #e6e6e6;
-    margin-top: 0px !important;
-  }
-
-  .react-draggable ~ .react-draggable {
-    margin-top: -19px !important;
-    border-right: none;
-  }
-
   #storybook-explorer-menu svg {
     color: #555;
     margin-top: 4px;
@@ -161,60 +129,15 @@
     document.location.reload();
   }
 
+  // Change bookmark icon to SDS designed icon
   document.addEventListener("DOMContentLoaded", function () {
     let bookmarkHollowIcon = document.getElementById(
       "icon--bookmarkhollow"
     ).firstChild;
     bookmarkHollowIcon.setAttribute(
       "d",
-      "M 943.548 481.063 C 950.438 497.039 954 514.416 954 532.001 C 954 549.586 950.438 566.962 943.548 582.939 C 936.665 598.915 926.615 613.113 914.108 624.557 L 631.498 883.042 C 621.145 892.507 607.959 897.714 594.323 897.714 L 127.121 897.714 C 111.971 897.714 97.443 891.292 86.731 879.86 C 76.018 868.428 70 852.929 70 836.764 L 70 227.238 C 70 211.073 76.018 195.57 86.731 184.139 C 97.443 172.708 111.971 166.286 127.121 166.286 L 594.323 166.286 C 607.959 166.287 621.145 171.491 631.498 180.96 L 914.108 439.445 C 926.615 450.89 936.665 465.086 943.548 481.063 Z M 822.288 567.27 C 826.554 563.364 830.277 558.245 832.926 552.098 C 835.573 545.945 837.017 539.075 837.017 532.001 C 837.017 524.927 835.573 518.056 832.926 511.904 C 830.277 505.756 826.554 500.638 822.288 496.732 L 568.454 264.567 L 166.984 264.567 L 166.984 799.434 L 568.454 799.434 L 822.288 567.27 Z"
+      "M 13.762 6.202 C 13.87 6.452 13.927 6.724 13.927 7.001 C 13.927 7.275 13.87 7.548 13.762 7.799 C 13.656 8.049 13.498 8.272 13.303 8.451 L 8.873 12.502 C 8.711 12.65 8.504 12.731 8.29 12.731 L 0.968 12.731 C 0.731 12.731 0.503 12.631 0.336 12.452 C 0.168 12.273 0.073 12.03 0.073 11.775 L 0.073 2.224 C 0.073 1.971 0.168 1.727 0.336 1.548 C 0.503 1.369 0.731 1.269 0.968 1.269 L 8.29 1.269 C 8.504 1.269 8.711 1.35 8.873 1.499 L 13.303 5.55 C 13.498 5.729 13.656 5.952 13.762 6.202 Z M 11.862 7.553 C 11.929 7.492 11.988 7.412 12.029 7.315 C 12.071 7.219 12.093 7.11 12.093 7.001 C 12.093 6.889 12.071 6.782 12.029 6.684 C 11.988 6.589 11.929 6.508 11.862 6.447 L 7.885 2.809 L 1.594 2.809 L 1.594 11.191 L 7.885 11.191 L 11.862 7.553 Z"
     );
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
-
-  // Throttle with last call to the callback function
-  const throttle = (func, limit) => {
-    let lastFunc;
-    let lastRan;
-    return function () {
-      const context = this;
-      const args = arguments;
-      if (!lastRan) {
-        func.apply(context, args);
-        lastRan = Date.now();
-      } else {
-        clearTimeout(lastFunc);
-        lastFunc = setTimeout(function () {
-          if (Date.now() - lastRan >= limit) {
-            func.apply(context, args);
-            lastRan = Date.now();
-          }
-        }, limit - (Date.now() - lastRan));
-      }
-    };
-  };
-
-  function changeElementDimension(element, attribute, value) {
-    element.style[attribute] =
-      parseInt(element.style[attribute]) + value + "px";
-  }
-
-  function resizeStorybookElements() {
-    const mainDiv = document.querySelector('div[role="main"]');
-    const controlsDiv = document.querySelector(
-      'div[role="main"] > div > div ~ div'
-    );
-
-    if (mainDiv) {
-      changeElementDimension(mainDiv, "width", 10);
-      changeElementDimension(mainDiv, "height", 20);
-    }
-    controlsDiv && changeElementDimension(controlsDiv, "height", 20);
-  }
-
-  window.addEventListener("load", () => {
-    resizeStorybookElements();
-  });
-
-  window.addEventListener("resize", throttle(resizeStorybookElements, 100));
 </script>

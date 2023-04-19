@@ -1,0 +1,125 @@
+import { action } from "@storybook/addon-actions";
+import { Args, Meta } from "@storybook/react";
+import React from "react";
+import Icon from "../Icon";
+import RawButtonDropdown from "./index";
+
+const text = "Label";
+
+const actions = {
+  onClick: action("onClick"),
+};
+
+const ButtonDropdown = (props: Args): JSX.Element => {
+  return <RawButtonDropdown {...props}>{text}</RawButtonDropdown>;
+};
+
+export default {
+  component: ButtonDropdown,
+  title: "ButtonDropdown",
+} as Meta;
+
+// Default
+
+export const Default = {
+  args: {
+    disabled: false,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+    onClick: actions.onClick,
+    sdsStyle: "square",
+    sdsType: "primary",
+  },
+};
+
+// LivePreview
+
+const livePreviewWrapperStyle = {
+  display: "grid",
+  gridColumnGap: 10,
+  gridRowGap: 24,
+  gridTemplateColumns: "repeat(4, min-content)",
+  gridTemplateRows: "repeat(2, auto)",
+};
+
+function LivePreviewDemo(props: Args): JSX.Element {
+  return (
+    <div style={livePreviewWrapperStyle as React.CSSProperties}>
+      <div style={{ gridArea: "1/1/2/2" }}>
+        <ButtonDropdown
+          sdsType="primary"
+          sdsStyle="rounded"
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          {...props}
+        >
+          {text}
+        </ButtonDropdown>
+      </div>
+
+      <div style={{ gridArea: "1/2/2/3" }}>
+        <ButtonDropdown
+          sdsType="secondary"
+          sdsStyle="rounded"
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          {...props}
+        >
+          {text}
+        </ButtonDropdown>
+      </div>
+
+      <div style={{ gridArea: "2/1/3/2" }}>
+        <ButtonDropdown
+          sdsType="primary"
+          sdsStyle="square"
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          {...props}
+        >
+          {text}
+        </ButtonDropdown>
+      </div>
+
+      <div style={{ gridArea: "2/2/3/3" }}>
+        <ButtonDropdown
+          sdsType="secondary"
+          sdsStyle="square"
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          {...props}
+        >
+          {text}
+        </ButtonDropdown>
+      </div>
+    </div>
+  );
+}
+
+export const LivePreview = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Test
+
+export const Test = {
+  args: {
+    disabled: false,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
+    onClick: actions.onClick,
+    sdsStyle: "rounded",
+    sdsType: "primary",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Args): JSX.Element => {
+    return (
+      <ButtonDropdown data-testid="button-dropdown" {...props}>
+        {text}
+      </ButtonDropdown>
+    );
+  },
+};

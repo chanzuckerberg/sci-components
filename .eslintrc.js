@@ -23,7 +23,7 @@ module.exports = {
   // rules in all ComponentName.namespace.tsx files
   overrides: [
     {
-      files: ["src/core/**/*.namespace-test.tsx"],
+      files: ["packages/**/src/core/**/*.namespace-test.tsx"],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "import/no-extraneous-dependencies": "off",
@@ -75,6 +75,8 @@ module.exports = {
           "**/*.stories.tsx",
           "**/*.test.tsx",
         ],
+        // specify the path to the folder containing package.json
+        packageDir: "./",
       },
     ],
     "import/prefer-default-export": "off",
