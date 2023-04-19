@@ -204,3 +204,43 @@ Test.args = {
   label: LABEL,
   onChange: noop,
 };
+
+// Controlled without buttons Story
+const ControlledWithoutButtonsDemo = (props: Args): JSX.Element => {
+  const [value, setValue] = useState<DefaultDropdownMenuOption[]>([]);
+
+  const onDropdownChange: (
+    options: DefaultDropdownMenuOption[] | null
+  ) => void = (options) => {
+    if (!options) {
+      return;
+    }
+    // You don't have to create a new array, but if you do,
+    // the dropdown will still work
+    const newValue = [...options];
+    setValue(newValue);
+  };
+
+  return (
+    <Dropdown
+      label="Click Target"
+      onChange={onDropdownChange}
+      options={GITHUB_LABELS}
+      value={value}
+      multiple
+      {...props}
+      data-testid="dropdown"
+    />
+  );
+};
+
+const ControlledWithoutButtonsTemplate: Story = (args) => (
+  <ControlledWithoutButtonsDemo {...args} />
+);
+export const ControlledWithoutButtons = ControlledWithoutButtonsTemplate.bind(
+  {}
+);
+
+ControlledWithoutButtons.args = {
+  label: LABEL,
+};

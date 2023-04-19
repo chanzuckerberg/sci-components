@@ -13,6 +13,16 @@ import InputDropdown, {
 } from "../InputDropdown";
 import { StyledButton } from "./style";
 
+const compareOptionArrays = (
+  a: DefaultDropdownMenuOption[] | null,
+  b: DefaultDropdownMenuOption[] | null
+) =>
+  a?.length === b?.length &&
+  a?.every(
+    (option: DefaultDropdownMenuOption, index: number) =>
+      option.name === (b && b[index]?.name)
+  );
+
 export {
   StyledPaper as DropdownPaper,
   StyledPopper as DropdownPopper,
@@ -114,7 +124,11 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   }, [value]);
 
   useEffect(() => {
-    if (isControlled) {
+    if (
+      isControlled &&
+      ((!multiple && propValue !== value) ||
+        (multiple && !compareOptionArrays(propValue, value)))
+    ) {
       setValue(propValue);
     }
   }, [propValue]);
