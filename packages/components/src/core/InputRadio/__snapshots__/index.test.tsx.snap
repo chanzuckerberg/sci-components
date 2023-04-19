@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputRadio /> Default story renders snapshot 1`] = `
+<div
+  aria-labelledby="demo-radio-buttons-group-label"
+  class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+  role="radiogroup"
+>
+  <label
+    caption="Caption"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-krj95y-MuiFormControlLabel-root"
+  >
+    <span
+      caption="Caption"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-b0a55y-MuiButtonBase-root-MuiRadio-root"
+      label="Label"
+    >
+      <input
+        checked=""
+        class="PrivateSwitchBase-input css-1m9pwf3"
+        name="radio-buttons-group"
+        type="radio"
+        value="demo"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-jest-file-name="IconRadioChecked.svg"
+        data-jest-svg-name="IconRadioChecked"
+        data-testid="IconRadioChecked"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 16 16"
+      />
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </span>
+    <span
+      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+    >
+      Label
+    </span>
+  </label>
+</div>
+`;

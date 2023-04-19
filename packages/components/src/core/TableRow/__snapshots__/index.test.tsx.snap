@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableRow /> Default story renders snapshot 1`] = `
+<table
+  style="border-collapse: collapse;"
+>
+  <tbody>
+    <tr
+      class=" css-1te7wvi"
+      data-mui-internal-clone-element="true"
+    >
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-ms0or8"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <span
+              class="css-l4a0ln"
+            >
+              Primary
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

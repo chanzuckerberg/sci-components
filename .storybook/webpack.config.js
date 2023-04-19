@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = ({ config }) => {
   config.resolve.alias = {
     ...config.resolve.alias,
-    src: path.resolve(__dirname, "../src"),
+    src: path.resolve(__dirname, "../packages/components/src"),
   };
 
   // remove svg from existing rule
@@ -24,9 +24,13 @@ module.exports = ({ config }) => {
   });
 
   // use svgr for svg files
-  config.module.rules.unshift({
+  config.module.rules.push({
     test: /\.svg$/,
     use: ["@svgr/webpack", "url-loader"],
+    type: "javascript/auto",
+    issuer: {
+      and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
+    },
   });
 
   return config;
