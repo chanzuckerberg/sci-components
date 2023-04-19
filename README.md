@@ -4,19 +4,19 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`czifui` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
 
 ![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
 
 ## Installation
 
-[NPM Package](https://www.npmjs.com/package/czifui)
+[NPM Package](https://www.npmjs.com/package/czi-sds/components)
 
 **Currently SDS uses Material UI v5**
 
-NOTE: Since most of the czifui components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components. Many czifui components are style wrappers that pass props through to the MUI component without modifying them.
+NOTE: Since most of the czi-sds components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components. Many czi-sds components are style wrappers that pass props through to the MUI component without modifying them.
 
-`czifui` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
+`@czi-sds/components` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```
   "@emotion/css"
@@ -30,14 +30,14 @@ NOTE: Since most of the czifui components are built on top of Material UI's equi
   "react-dom"
 ```
 
-To install czifui and the dependencies:
+To install @czi-sds/components and the dependencies:
 
 ```
 // with npm
-npm i czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add czifui @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Yarn scripts
@@ -55,17 +55,17 @@ Common yarn scrips have been moved to the monorepo root. The -- syntax can be us
 - `yarn build`: Build the packages
 - `yarn ci`: Executes `yarn install --frozen-lockfile` in both packages
 
-- _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czifui/sci-components`._
+- _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czi-sds/components`._
 
 ## Usage
 
-`czifui` comes with five main exports that help you build your app:
+`@czi-sds/components` comes with five main exports that help you build your app:
 
 1. Components - Accessible and reusable components
 
 ```javascript
 import React from "react";
-import { Button } from "czifui";
+import { Button } from "@czi-sds/components";
 <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
   {text}
 </Button>;
@@ -76,7 +76,7 @@ import { Button } from "czifui";
 ```javascript
 import { styled } from '@mui/material/styles';
 import { Typography } from "@mui/material";
-import { fontHeaderXL } from "czifui";
+import { fontHeaderXL } from "@czi-sds/components";
 
 export const Title - styled(Typography)`
   ${fontHeaderXl}
@@ -94,7 +94,7 @@ export const Title - styled(Typography)`
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
 import { styled } from '@mui/material/styles';
-import { getColors, getCorners } from "czifui";
+import { getColors, getCorners } from "@czi-sds/components";
 
 export const Tag = styled("div")`
   // This is a callback function that returns more CSS rules, but the only way
@@ -118,7 +118,7 @@ export const Tag = styled("div")`
 
 ```scss
 // with SCSS variables
-@import "~czifui/dist/variables";
+@import "~@czi-sds/components/dist/variables";
 
 .button-primary {
   background-color: $sds-color-primary-400;
@@ -139,7 +139,7 @@ First you need to import the SDS config into your application's Tailwind config:
 ```js
 // tailwind.config.js
 
-const sds = require("czifui/dist/tailwind.json");
+const sds = require("@czi-sds/components/dist/tailwind.json");
 
 module.exports = {
   mode: "jit",
@@ -156,7 +156,7 @@ different parts of the SDS config:
 ```js
 // tailwind.config.js
 
-const sds = require("czifui/dist/tailwind.json");
+const sds = require("@czi-sds/components/dist/tailwind.json");
 
 module.exports = {
   mode: "jit",
@@ -211,7 +211,7 @@ To use the default theme in your React application, complete the following:
 ```javascript
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
-import { defaultTheme } from "czifui";
+import { defaultTheme } from "@czi-sds/components";
 
 <StyledEngineProvider injectFirst>
   <ThemeProvider theme={defaultTheme}>
@@ -228,7 +228,7 @@ extra theme variables based on the themeOptions provided, so if you override `de
 
 ```tsx
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-import { defaultAppTheme, makeThemeOptions } from "czifui";
+import { defaultAppTheme, makeThemeOptions } from "@czi-sds/components";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import createTheme from "@mui/material/styles/createTheme";
 
@@ -285,13 +285,16 @@ const theme = createTheme(appTheme)
    }
    ```
 
-1. To style a sub-component of a `czifui` component, typically we export the sub-component for the call site to import and style via `styled`, and then you will be able to pass back the styled sub-component to the `czifui` component through prop
+1. To style a sub-component of a `@czi-sds/components` component, typically we export the sub-component for the call site to import and style via `styled`, and then you will be able to pass back the styled sub-component to the `@czi-sds/components` component through prop
 
    For example, `ComplexFilter` exports `ComplexFilterInputDropdown` sub-component, so if you want to style it, you can do the following:
 
    ```tsx
+   import {
+     ComplexFilter,
+     ComplexFilterInputDropdown,
+   } from "@czi-sds/components";
    import styled from "@emotion/styled";
-   import { ComplexFilter, ComplexFilterInputDropdown } from "czifui";
 
    const StyledComplexFilterInputDropdown = styled(ComplexFilterInputDropdown)`
      color: pink;

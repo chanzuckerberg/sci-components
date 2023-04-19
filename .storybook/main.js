@@ -24,8 +24,8 @@ module.exports = {
     emotionAlias: false,
   },
   stories: [
-    "../packages/sci-components/src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../packages/sci-data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
