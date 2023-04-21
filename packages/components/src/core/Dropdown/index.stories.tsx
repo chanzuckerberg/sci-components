@@ -179,6 +179,49 @@ export const InsideModal = {
   },
 };
 
+// Controlled Dropdown
+const ControlledDropdownDemo = (props: Args): JSX.Element => {
+  const [value, setValue] = useState<DefaultDropdownMenuOption[] | null>([]);
+
+  return (
+    <>
+      <button type="button" onClick={handleClick}>
+        Click me to select the first three options
+      </button>
+      <br />
+      <RawDropdown
+        label="Click Target"
+        options={GITHUB_LABELS}
+        {...props}
+        value={value}
+        onChange={handleChange}
+        data-testid="dropdown"
+        multiple
+      />
+    </>
+  );
+
+  function handleClick() {
+    setValue([...GITHUB_LABELS.slice(0, 3)] as DefaultDropdownMenuOption[]);
+  }
+
+  function handleChange(newValue: DefaultDropdownMenuOption[] | null) {
+    setValue(newValue);
+  }
+};
+
+export const ControlledDropdown = {
+  args: {
+    label: LABEL,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ControlledDropdownDemo {...args} />,
+};
+
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
