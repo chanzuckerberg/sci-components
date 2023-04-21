@@ -15,7 +15,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bahmutov/npm-install@v1
 
       - name: Build component library in dist/
@@ -32,7 +32,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bahmutov/npm-install@v1
 
       - name: Test
@@ -46,7 +46,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bahmutov/npm-install@v1
 
       - name: Build
