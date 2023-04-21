@@ -137,5 +137,7 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {}
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  }
 }
