@@ -15171,6 +15171,11 @@ storybook-addon-emotion-theme@^2.1.1:
     immutable "^3.8.2"
     recompose "^0.27.1"
 
+storybook-addon-pseudo-states@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/storybook-addon-pseudo-states/-/storybook-addon-pseudo-states-2.0.1.tgz#3c2f7219eb1c9aa125a33fe7d7570957dbc81578"
+  integrity sha512-k7btLopDyoZELDSvVYMzNhEInf+IWns8NGJbvCPBrZxkukhnYmzQ9aLxjPDwjBTfLxSewu9Yfx2qKGzKDj+/ng==
+
 storybook@^7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/storybook/-/storybook-7.0.5.tgz#079540e985832d1a2bc81fecdfbc11b9f6931caf"

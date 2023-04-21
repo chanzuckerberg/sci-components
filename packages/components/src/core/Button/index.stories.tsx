@@ -64,6 +64,8 @@ const placementStyles = {
   gridTemplateRows: "1fr",
 };
 
+const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
+
 export const RoundedLivePreview = {
   parameters: {
     snapshot: {
@@ -72,32 +74,49 @@ export const RoundedLivePreview = {
   },
   render: (props: Args): JSX.Element => {
     return (
-      <div style={placementStyles as React.CSSProperties}>
-        <RawButton {...props} sdsStyle="rounded" sdsType="primary">
-          {text}
-        </RawButton>
-
-        <RawButton
-          {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-          sdsStyle="rounded"
-          sdsType="primary"
-        >
-          {text}
-        </RawButton>
-        <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
-          {text}
-        </RawButton>
-        <RawButton
-          {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-          sdsStyle="rounded"
-          sdsType="secondary"
-        >
-          {text}
-        </RawButton>
-      </div>
+      <>
+        {PSEUDO_STATES.map((state) => {
+          return <ButtonRow state={state} />;
+        })}
+      </>
     );
+
+    function ButtonRow({ state = "default" }) {
+      return (
+        <div id={state} className={`pseudo-${state}`}>
+          <h5>{state}</h5>
+          <div style={placementStyles as React.CSSProperties}>
+            <RawButton {...props} sdsStyle="rounded" sdsType="primary">
+              {text}
+            </RawButton>
+
+            <RawButton
+              {...props}
+              startIcon={
+                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
+              }
+              sdsStyle="rounded"
+              sdsType="primary"
+            >
+              {text}
+            </RawButton>
+            <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
+              {text}
+            </RawButton>
+            <RawButton
+              {...props}
+              startIcon={
+                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
+              }
+              sdsStyle="rounded"
+              sdsType="secondary"
+            >
+              {text}
+            </RawButton>
+          </div>
+        </div>
+      );
+    }
   },
 };
 

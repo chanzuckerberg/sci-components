@@ -33,6 +33,7 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-a11y",
     "@storybook/react",
+    "storybook-addon-pseudo-states",
   ],
   framework: {
     name: "@storybook/react-webpack5",
