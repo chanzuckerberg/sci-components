@@ -112,8 +112,8 @@
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "lerna run ci",
-    "prepublish": "lerna version --conventional-commits --conventional-graduate --yes",
-    "publish": "lerna publish --no-push --registry=\"http://localhost:4873/\""
+    "prerelease": "lerna version --conventional-commits --conventional-graduate --yes",
+    "release": "lerna publish --no-push --registry=\"http://localhost:4873/\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
