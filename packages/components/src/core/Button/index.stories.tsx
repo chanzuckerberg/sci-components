@@ -5,8 +5,8 @@ import Icon from "../Icon";
 import RawButton from "./index";
 
 const text = "Label";
-const sdsStyles = ["rounded", "square", "minimal"];
-const sdsTypes = ["primary", "secondary"];
+const SDS_STYLES = ["rounded", "square", "minimal"];
+const SDS_TYPES = ["primary", "secondary"];
 
 const actions = {
   onClick: action("onClick"),
@@ -26,16 +26,16 @@ export default {
     // https://storybook.js.org/docs/react/essentials/actions#action-argtype-annotation
     onClick: { action: actions.onClick },
     sdsStyle: {
-      control: { type: "select" },
-      options: sdsStyles,
+      control: { sdsType: "select" },
+      options: SDS_STYLES,
     },
     sdsType: {
-      control: { type: "select" },
-      options: sdsTypes,
+      control: { sdsType: "select" },
+      options: SDS_TYPES,
     },
     text: {
       control: {
-        type: "text",
+        sdsType: "text",
       },
     },
   },
@@ -56,17 +56,25 @@ export const Default = {
 
 // Live Preview
 
-const placementStyles = {
+const buttonPlacementStyles = {
   display: "grid",
   gridColumnGap: "10px",
   gridRowGap: "0px",
-  gridTemplateColumns: "repeat(6, 120px)",
+  gridTemplateColumns: "repeat(4, 120px)",
   gridTemplateRows: "1fr",
+};
+
+const sectionPlacementStyles = {
+  display: "inline-block",
+  marginBottom: "60px",
+  marginRight: "60px",
+  verticalAlign: "text-top",
+  alignItems: "stretch",
 };
 
 const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
 
-export const RoundedLivePreview = {
+export const LivePreview = {
   parameters: {
     snapshot: {
       skip: true,
@@ -75,149 +83,68 @@ export const RoundedLivePreview = {
   render: (props: Args): JSX.Element => {
     return (
       <>
-        {PSEUDO_STATES.map((state) => {
-          return <ButtonRow state={state} />;
+        {SDS_STYLES.map((sdsStyle) => {
+          return <ButtonStyle sdsStyle={sdsStyle} key={sdsStyle} />;
         })}
       </>
     );
 
-    function ButtonRow({ state = "default" }) {
+    function ButtonStyle({ sdsStyle }) {
       return (
-        <div id={state} className={`pseudo-${state}`}>
-          <h5>{state}</h5>
-          <div style={placementStyles as React.CSSProperties}>
-            <RawButton {...props} sdsStyle="rounded" sdsType="primary">
-              {text}
-            </RawButton>
-
-            <RawButton
-              {...props}
-              startIcon={
-                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
-              }
-              sdsStyle="rounded"
-              sdsType="primary"
-            >
-              {text}
-            </RawButton>
-            <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
-              {text}
-            </RawButton>
-            <RawButton
-              {...props}
-              startIcon={
-                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
-              }
-              sdsStyle="rounded"
-              sdsType="secondary"
-            >
-              {text}
-            </RawButton>
-          </div>
+        <div style={sectionPlacementStyles}>
+          <h3>{sdsStyle}</h3>
+          {PSEUDO_STATES.map((state) => {
+            return (
+              <ButtonState state={state} sdsStyle={sdsStyle} key={state} />
+            );
+          })}
         </div>
       );
     }
-  },
-};
 
-export const SquareLivePreview = {
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (props: Args): JSX.Element => {
-    return (
-      <>
-        {PSEUDO_STATES.map((state) => {
-          return <ButtonRowSquare state={state} />;
-        })}
-      </>
-    );
-    function ButtonRowSquare({ state = "default" }) {
+    function ButtonState({ sdsStyle, state = "default" }) {
       return (
-        <div id={state} className={`pseudo-${state}`}>
+        <>
           <h5>{state}</h5>
-          <div style={placementStyles as React.CSSProperties}>
-            <RawButton {...props} sdsStyle="square" sdsType="primary">
-              {text}
-            </RawButton>
-            <RawButton
-              {...props}
-              startIcon={
-                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
-              }
-              sdsStyle="square"
-              sdsType="primary"
-            >
-              {text}
-            </RawButton>
-            <RawButton {...props} sdsStyle="square" sdsType="secondary">
-              {text}
-            </RawButton>
-            <RawButton
-              {...props}
-              startIcon={
-                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
-              }
-              sdsStyle="square"
-              sdsType="secondary"
-            >
-              {text}
-            </RawButton>
+          <div
+            style={buttonPlacementStyles as React.CSSProperties}
+            id={state}
+            className={`pseudo-${state}`}
+          >
+            {SDS_TYPES.map((sdsType) => {
+              return (
+                <ButtonType
+                  state={state}
+                  sdsStyle={sdsStyle}
+                  sdsType={sdsType}
+                  key={sdsType}
+                />
+              );
+            })}
           </div>
-        </div>
+        </>
       );
     }
-  },
-};
 
-const minimalPlacementStyles = {
-  display: "grid",
-  gridColumnGap: "24px",
-  gridRowGap: "0px",
-  gridTemplateColumns: "repeat(3, min-content)",
-  gridTemplateRows: "1fr",
-};
-
-export const MinimalLivePreview = {
-  parameters: {
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (props: Args): JSX.Element => {
-    return (
-      <>
-        {PSEUDO_STATES.map((state) => {
-          return <ButtonRowMinimal state={state} />;
-        })}
-      </>
-    );
-    function ButtonRowMinimal({ state = "default" }) {
+    function ButtonType({ sdsStyle, sdsType }) {
       return (
-        <div id={state} className={`pseudo-${state}`}>
-          <h5>{state}</h5>
-          <div style={minimalPlacementStyles as React.CSSProperties}>
-            <RawButton {...props} sdsStyle="minimal" sdsType="primary">
-              {text}
-            </RawButton>
-
+        <>
+          <RawButton {...props} sdsStyle={sdsStyle} sdsType={sdsType}>
+            {text}
+          </RawButton>
+          {(sdsStyle !== "minimal" || sdsType === "primary") && (
             <RawButton
               {...props}
               startIcon={
                 <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
               }
-              sdsStyle="minimal"
-              sdsType="primary"
+              sdsStyle={sdsStyle}
+              sdsType={sdsType}
             >
               {text}
             </RawButton>
-            <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
-              {text}
-            </RawButton>
-          </div>
-        </div>
+          )}
+        </>
       );
     }
   },
