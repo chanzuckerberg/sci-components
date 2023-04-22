@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "0.0.95",
+  "version": "14.5.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -72,7 +72,6 @@
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-ts": "^3.0.2",
-    "semantic-release": "^18.0.0",
     "storybook-addon-emotion-theme": "^2.1.1",
     "style-dictionary": "^3.0.3",
     "stylelint": "^13.11.0",
@@ -102,7 +101,6 @@
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "prepare": "cd ../../ && husky install",
-    "semantic-release": "semantic-release",
     "ci": "yarn install --frozen-lockfile",
     "test": "jest",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
@@ -136,6 +134,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {}
+  }
 }
