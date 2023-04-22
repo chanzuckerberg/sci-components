@@ -110,7 +110,7 @@
     "namespace-check": "lerna run namespace-check",
     "lint": "lerna run lint",
     "build": "lerna run build",
-    "ci": "lerna run ci",
+    "ci": "yarn install --frozen-lockfile --network-concurrency 1",
     "release": "lerna publish --yes"
   },
   "lint-staged": {
