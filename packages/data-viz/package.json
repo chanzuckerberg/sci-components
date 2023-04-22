@@ -127,7 +127,7 @@
     "lint": "concurrently \"node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "prepare": "cd ../../ && husky install",
-    "ci": "yarn install --frozen-lockfile",
+    "ci": "yarn install",
     "test": "jest",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
