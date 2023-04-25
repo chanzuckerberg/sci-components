@@ -2,7 +2,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { Value } from "../Dropdown";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { StyledPopper } from "../DropdownMenu/style";
@@ -17,7 +17,7 @@ export {
   InputDropdown as ComplexFilterInputDropdown,
 };
 export interface ComplexFilterProps<Multiple> {
-  label: string;
+  label: ReactNode;
   options: DefaultDropdownMenuOption[];
   multiple?: Multiple;
   search?: boolean;
