@@ -26,6 +26,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -36,16 +37,22 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn ci
+
       - name: Build component library in dist/
         run: yarn build
-      - name: Release
+
+      - name: Lerna Version and Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
-        run: yarn release
+        run: |
+          yarn lerna-version
+          yarn release
+
       - name: Post breaking changes to a Slack channel
         uses: act10ns/slack@v1
         with:

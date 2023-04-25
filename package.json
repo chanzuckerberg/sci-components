@@ -111,7 +111,8 @@
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
-    "release": "lerna publish --yes"
+    "lerna-version": "lerna version --conventional-commits --conventional-graduate --yes",
+    "release": "lerna publish from-git --yes"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
