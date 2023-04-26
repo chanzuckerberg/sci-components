@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.6.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@14.6.1...@czi-sds/components@14.6.2) (2023-04-26)
+
+### Bug Fixes
+
+- **change complexfilter 'label' type:** change the 'label' prop type to React Node (from String) ([#440](https://github.com/chanzuckerberg/sci-components/issues/440)) ([75d1cbb](https://github.com/chanzuckerberg/sci-components/commit/75d1cbb5b99807f30a0441e58a8cd06f7c334391))
+
 ## [14.6.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@14.6.0...@czi-sds/components@14.6.1) (2023-04-26)
 
 **Note:** Version bump only for package @czi-sds/components
