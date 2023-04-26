@@ -76,6 +76,11 @@ jobs:
         with:
           branch: ${{ github.head_ref }}
 
+      - name: "Setup npm"
+        run: |
+          npm set @czi-sds:registry=https://registry.npmjs.com
+          npm set "//https://registry.npmjs.com/:_authToken=${{ secrets.CZI_SDS_NPM_TOKEN }}"
+
       - name: Lerna Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
