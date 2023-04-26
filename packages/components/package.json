@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/chanzuckerberg/sci-components.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.21.0",

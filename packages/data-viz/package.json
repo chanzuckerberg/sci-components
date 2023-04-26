@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/chanzuckerberg/sci-components.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
   },
