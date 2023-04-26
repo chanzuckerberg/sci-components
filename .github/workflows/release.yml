@@ -73,6 +73,11 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$CZI_SDS_NPM_TOKEN" > .npmrc
 
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.head_ref }}
+
       - name: Lerna Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
