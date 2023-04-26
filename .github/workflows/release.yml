@@ -69,10 +69,6 @@ jobs:
           git stash
           yarn lerna-version-fallback
 
-      - name: "NPM Identity"
-        run: |
-          echo "//registry.npmjs.org/:_authToken=$CZI_SDS_NPM_TOKEN" > .npmrc
-
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
