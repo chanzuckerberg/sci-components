@@ -74,6 +74,8 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=$CZI_SDS_NPM_TOKEN" > .npmrc
 
       - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.head_ref }}
