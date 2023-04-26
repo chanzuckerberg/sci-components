@@ -22,6 +22,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -45,13 +46,29 @@ jobs:
       - name: Build component library in dist/
         run: yarn build
 
-      - name: Lerna Version and Publish
+      - name: Bump Prod Version Graduate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+        continue-on-error: true
+        id: graduateRelease
+        run: yarn lerna-version
+
+      - name: Bump Prod Version Fallback
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+        if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
         run: |
-          yarn lerna-version
-          yarn release
+          echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
+          git stash
+          yarn lerna version --conventional-commits --yes
+
+      - name: Lerna Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+        run: yarn release
 
       - name: Post breaking changes to a Slack channel
         uses: act10ns/slack@v1
