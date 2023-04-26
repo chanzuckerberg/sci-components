@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.2.0...@czi-sds/data-viz@0.2.1) (2023-04-26)
+
+### Bug Fixes
+
+- **styles:** return to previous styling ([1f42e15](https://github.com/chanzuckerberg/sci-components/commit/1f42e15a89ccd52777e5e11016e238133ae18af9))
+
 # 0.2.0 (2023-04-26)
 
 ### Bug Fixes
