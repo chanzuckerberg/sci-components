@@ -69,6 +69,10 @@ jobs:
           git stash
           yarn lerna version --conventional-commits --yes
 
+      - name: "NPM Identity"
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$CZI_SDS_NPM_TOKEN" > .npmrc
+
       - name: Lerna Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
