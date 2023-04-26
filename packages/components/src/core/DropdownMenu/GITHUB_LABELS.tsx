@@ -8,7 +8,7 @@ export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
     section: "name only",
   },
   {
-    name: "Status: confirmed",
+    name: "Status: confirmed!",
     section: "name only",
   },
   {
