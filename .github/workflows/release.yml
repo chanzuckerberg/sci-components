@@ -52,7 +52,10 @@ jobs:
           NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
         continue-on-error: true
         id: graduateRelease
-        run: yarn lerna-version
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+          yarn lerna-version
 
       - name: Bump Prod Version Fallback
         env:
@@ -60,6 +63,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
         if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
         run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
           echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
           git stash
           yarn lerna version --conventional-commits --yes
