@@ -10,8 +10,6 @@ on:
       - next-major
       - beta
       - alpha
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   release:
@@ -76,11 +74,6 @@ jobs:
         with:
           branch: ${{ github.head_ref }}
 
-      - name: "Setup npm"
-        run: |
-          npm set @czi-sds:registry=https://registry.npmjs.com
-          npm set "//https://registry.npmjs.com/:_authToken=${{ secrets.CZI_SDS_NPM_TOKEN }}"
-
       - name: Lerna Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -89,6 +82,8 @@ jobs:
         run: yarn release
 
       - name: Post breaking changes to a Slack channel
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         uses: act10ns/slack@v1
         with:
           status: complete
