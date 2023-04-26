@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@14.6.0...@czi-sds/components@14.7.0) (2023-04-26)
+
+### Features
+
+- **readme:** add readme files to packages ([42cb992](https://github.com/chanzuckerberg/sci-components/commit/42cb992e22824d93d321e7d161d702a12d349637))
+
 # 14.6.0 (2023-04-26)
 
 ### Bug Fixes
