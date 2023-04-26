@@ -1178,12 +1178,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@czi-sds/components@file:./packages/components":
-  version "14.5.0"
-
-"@czi-sds/data-viz@file:./packages/data-viz":
-  version "0.0.0"
-
 "@discoveryjs/json-ext@^0.5.3", "@discoveryjs/json-ext@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
