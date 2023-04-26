@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.2.1...@czi-sds/data-viz@0.2.2) (2023-04-26)
+
+### Bug Fixes
+
+- **package.json:** remove dependency cycles ([7402317](https://github.com/chanzuckerberg/sci-components/commit/740231742aac4cf088d9b96be4c90e9c18ad34bd))
+
 ## [0.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.2.0...@czi-sds/data-viz@0.2.1) (2023-04-26)
 
 ### Bug Fixes
