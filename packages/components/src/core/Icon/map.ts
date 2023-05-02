@@ -109,6 +109,7 @@ import { ReactComponent as IconTriangleLeftSmall } from "../../common/svgs/IconT
 import { ReactComponent as IconTriangleRightSmall } from "../../common/svgs/IconTriangleRightSmall.svg";
 import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTriangleUpSmall.svg";
 import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
+import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
 import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
@@ -557,7 +558,7 @@ export const iconMap: Props = {
   },
   upload: {
     largeIcon: IconUploadLarge,
-    smallIcon: null,
+    smallIcon: IconUploadSmall,
   },
   virus: {
     largeIcon: IconVirusLarge,
