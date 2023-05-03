@@ -173,14 +173,6 @@ export const LivePreview = {
               key={ICON_OPTIONS[0]}
             />
           )}
-          {/* {ICON_OPTIONS.map((icon) => {
-            return <ButtonIconOption
-              sdsStyle={sdsStyle}
-              type={type}
-              icon={icon} 
-              key={icon}
-            />;
-          })} */}
         </div>
       );
     }
