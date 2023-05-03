@@ -26,16 +26,16 @@ export default {
     // https://storybook.js.org/docs/react/essentials/actions#action-argtype-annotation
     onClick: { action: actions.onClick },
     sdsStyle: {
-      control: { sdsType: "select" },
+      control: { type: "select" },
       options: SDS_STYLES,
     },
     sdsType: {
-      control: { sdsType: "select" },
+      control: { type: "select" },
       options: SDS_TYPES,
     },
     text: {
       control: {
-        sdsType: "text",
+        type: "text",
       },
     },
   },
