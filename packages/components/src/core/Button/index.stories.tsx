@@ -4,9 +4,15 @@ import React from "react";
 import Icon from "../Icon";
 import RawButton from "./index";
 
-const text = "Label";
 const SDS_STYLES = ["rounded", "square", "minimal"];
 const SDS_TYPES = ["primary", "secondary"];
+const ICON_OPTIONS = [
+  undefined,
+  <Icon sdsSize="l" sdsIcon="download" sdsType="button" />,
+];
+const DISABLED_OPTIONS = [false, true];
+const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
+const TEXT = "Label";
 
 const actions = {
   onClick: action("onClick"),
@@ -16,7 +22,7 @@ const Button = (props: Args): JSX.Element => {
   const { sdsType, sdsStyle } = props;
   return (
     <RawButton sdsType={sdsType} sdsStyle={sdsStyle} {...props}>
-      {text}
+      {TEXT}
     </RawButton>
   );
 };
@@ -56,23 +62,58 @@ export const Default = {
 
 // Live Preview
 
-const buttonPlacementStyles = {
-  display: "grid",
-  gridColumnGap: "10px",
-  gridRowGap: "0px",
-  gridTemplateColumns: "repeat(4, 120px)",
-  gridTemplateRows: "1fr",
+const styleLevel = {
+  fontFamily: "sans-serif",
+  display: "inline-grid",
+  gridColumnTemplate:
+    "min-content min-content min-content min-content min-content",
+  columnGap: "20px",
+  marginRight: "50px",
+};
+const displayContents = {
+  display: "contents",
+};
+const disabledLevel = {
+  display: "contents",
+};
+const stateLevel = {
+  marginBottom: 10,
 };
 
-const sectionPlacementStyles = {
-  display: "inline-block",
-  marginBottom: "60px",
-  marginRight: "60px",
-  verticalAlign: "text-top",
-  alignItems: "stretch",
+const styleLabel = {
+  fontWeight: "normal",
+  gridColumn: "2 / 6",
+  marginBottom: 0,
 };
-
-const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
+const typeLabel = {
+  fontWeight: "normal",
+  gridColumn: "2 / 6",
+  borderStyle: "solid none none none",
+  borderWidth: "2px",
+  justifySelf: "stretch",
+  margin: "20px 0",
+  paddingTop: 10,
+};
+const iconLabel = {
+  fontWeight: "normal",
+  gridColumn: "2 / 6",
+  borderStyle: "solid none none none",
+  borderWidth: "1px",
+  justifySelf: "stretch",
+  alignSelf: "end",
+  margin: "0 0 5px 0",
+  paddingTop: 10,
+};
+const disabledLabel = {
+  fontWeight: "normal",
+  gridColumn: "1 / 2",
+  alignSelf: "end",
+  marginTop: 0,
+};
+const stateLabel = {
+  fontWeight: "normal",
+  margin: "10px 0",
+};
 
 export const LivePreview = {
   parameters: {
@@ -81,70 +122,131 @@ export const LivePreview = {
     },
   },
   render: (props: Args): JSX.Element => {
+    // loop through all SDS_STYLES
     return (
       <>
         {SDS_STYLES.map((sdsStyle) => {
-          return <ButtonStyle sdsStyle={sdsStyle} key={sdsStyle} />;
+          return <ButtonStyleOption sdsStyle={sdsStyle} key={sdsStyle} />;
         })}
       </>
     );
 
-    function ButtonStyle({ sdsStyle }) {
+    // loop through all SDS_TYPES + create headers for SDS_STYLES
+    function ButtonStyleOption({ sdsStyle }) {
       return (
-        <div style={sectionPlacementStyles}>
-          <h3>{sdsStyle}</h3>
-          {PSEUDO_STATES.map((state) => {
+        <div style={styleLevel}>
+          <h1 style={styleLabel}>
+            Style: <b>{sdsStyle}</b>
+          </h1>
+          {SDS_TYPES.map((type) => {
             return (
-              <ButtonState state={state} sdsStyle={sdsStyle} key={state} />
+              <ButtonTypeOption sdsStyle={sdsStyle} type={type} key={type} />
             );
           })}
         </div>
       );
     }
 
-    function ButtonState({ sdsStyle, state = "default" }) {
+    // loop through all ICON_OPTIONS + create headers for SDS_TYPES
+    function ButtonTypeOption({ sdsStyle, type }) {
       return (
-        <>
-          <h5>{state}</h5>
-          <div
-            style={buttonPlacementStyles as React.CSSProperties}
-            id={state}
-            className={`pseudo-${state}`}
-          >
-            {SDS_TYPES.map((sdsType) => {
+        <div style={displayContents}>
+          <h3 style={typeLabel}>
+            Type: <b>{type}</b>
+          </h3>
+          {type === "primary" ? (
+            ICON_OPTIONS.map((icon) => {
               return (
-                <ButtonType
-                  state={state}
+                <ButtonIconOption
                   sdsStyle={sdsStyle}
-                  sdsType={sdsType}
-                  key={sdsType}
+                  type={type}
+                  icon={icon}
+                  key={icon}
                 />
               );
-            })}
-          </div>
-        </>
+            })
+          ) : (
+            <ButtonIconOption
+              sdsStyle={sdsStyle}
+              type={type}
+              icon={ICON_OPTIONS[0]}
+              key={ICON_OPTIONS[0]}
+            />
+          )}
+          {/* {ICON_OPTIONS.map((icon) => {
+            return <ButtonIconOption
+              sdsStyle={sdsStyle}
+              type={type}
+              icon={icon} 
+              key={icon}
+            />;
+          })} */}
+        </div>
       );
     }
 
-    function ButtonType({ sdsStyle, sdsType }) {
+    // loop through all DISABLED_OPTIONS + create headers for ICON_OPTIONS
+    function ButtonIconOption({ sdsStyle, type, icon }) {
       return (
-        <>
-          <RawButton {...props} sdsStyle={sdsStyle} sdsType={sdsType}>
-            {text}
-          </RawButton>
-          {(sdsStyle !== "minimal" || sdsType === "primary") && (
-            <RawButton
-              {...props}
-              startIcon={
-                <Icon sdsIcon="download" sdsSize="s" sdsType="button" />
-              }
-              sdsStyle={sdsStyle}
-              sdsType={sdsType}
-            >
-              {text}
-            </RawButton>
-          )}
-        </>
+        <div style={displayContents}>
+          <h5 style={iconLabel}>
+            Icon: <b>{icon ? "yes" : "no"}</b>
+          </h5>
+          {DISABLED_OPTIONS.map((disabled, disabledIndex) => {
+            return (
+              <ButtonDisabledOption
+                sdsStyle={sdsStyle}
+                type={type}
+                icon={icon}
+                disabled={disabled}
+                key={disabled}
+                disabledIndex={disabledIndex}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+
+    // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
+    function ButtonDisabledOption({
+      sdsStyle,
+      type,
+      icon,
+      disabled,
+      disabledIndex,
+    }) {
+      return (
+        <div style={disabledLevel}>
+          <h6 style={disabledLabel}>
+            Disabled: <b>{disabled ? "true" : "false"}</b>
+          </h6>
+          {PSEUDO_STATES.map((state) => {
+            return (
+              <div style={stateLevel}>
+                {disabledIndex % 2 ? (
+                  false
+                ) : (
+                  <h6 style={stateLabel}>
+                    State: <b>{state}</b>
+                  </h6>
+                )}
+                <RawButton
+                  {...props}
+                  data-testid="button"
+                  sdsStyle={sdsStyle}
+                  sdsType={type}
+                  startIcon={icon}
+                  disabled={disabled}
+                  className={`pseudo-${state}`}
+                  key={state}
+                >
+                  {TEXT}
+                </RawButton>
+              </div>
+            );
+          })}
+        </div>
       );
     }
   },
