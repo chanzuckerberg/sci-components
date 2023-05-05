@@ -63,11 +63,11 @@ export const Default = {
 // Live Preview
 
 const styleLevel = {
-  fontFamily: "sans-serif",
+  columnGap: "20px",
   display: "inline-grid",
+  fontFamily: "sans-serif",
   gridColumnTemplate:
     "min-content min-content min-content min-content min-content",
-  columnGap: "20px",
   marginRight: "50px",
 };
 const displayContents = {
@@ -81,33 +81,35 @@ const stateLevel = {
 };
 
 const styleLabel = {
+  fontSize: "2em",
   fontWeight: "normal",
   gridColumn: "2 / 6",
   marginBottom: 0,
 };
 const typeLabel = {
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
   borderStyle: "solid none none none",
   borderWidth: "2px",
+  fontSize: "1.17em",
+  fontWeight: "normal",
+  gridColumn: "2 / 6",
   justifySelf: "stretch",
   margin: "20px 0",
   paddingTop: 10,
 };
 const iconLabel = {
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
+  alignSelf: "end",
   borderStyle: "solid none none none",
   borderWidth: "1px",
+  fontWeight: "normal",
+  gridColumn: "2 / 6",
   justifySelf: "stretch",
-  alignSelf: "end",
   margin: "0 0 5px 0",
   paddingTop: 10,
 };
 const disabledLabel = {
+  alignSelf: "end",
   fontWeight: "normal",
   gridColumn: "1 / 2",
-  alignSelf: "end",
   marginTop: 0,
 };
 const stateLabel = {
@@ -135,9 +137,9 @@ export const LivePreview = {
     function ButtonStyleOption({ sdsStyle }) {
       return (
         <div style={styleLevel}>
-          <h1 style={styleLabel}>
+          <h3 style={styleLabel}>
             Style: <b>{sdsStyle}</b>
-          </h1>
+          </h3>
           {SDS_TYPES.map((type) => {
             return (
               <ButtonTypeOption sdsStyle={sdsStyle} type={type} key={type} />
@@ -151,9 +153,9 @@ export const LivePreview = {
     function ButtonTypeOption({ sdsStyle, type }) {
       return (
         <div style={displayContents}>
-          <h3 style={typeLabel}>
+          <h4 style={typeLabel}>
             Type: <b>{type}</b>
-          </h3>
+          </h4>
           {type === "primary" ? (
             ICON_OPTIONS.map((icon) => {
               return (
