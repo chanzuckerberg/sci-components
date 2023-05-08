@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/monorepo",
-  "version": "0.0.51",
+  "version": "0.0.1",
   "repository": "https://github.com/chanzuckerberg/sci-components.git",
   "license": "MIT",
   "private": "true",
@@ -78,7 +78,6 @@
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-ts": "^3.0.2",
-    "semantic-release": "^18.0.0",
     "storybook": "^7.0.5",
     "storybook-addon-emotion-theme": "^2.1.1",
     "style-dictionary": "^3.0.3",
@@ -111,7 +110,10 @@
     "namespace-check": "lerna run namespace-check",
     "lint": "lerna run lint",
     "build": "lerna run build",
-    "ci": "lerna run ci"
+    "ci": "yarn install --frozen-lockfile --network-concurrency 1",
+    "lerna-version": "lerna version --no-changelog --conventional-commits --conventional-graduate --yes",
+    "lerna-version-fallback": "lerna version --no-changelog --conventional-commits --yes",
+    "release": "lerna publish from-package --no-verify-access --yes"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"

@@ -10,8 +10,6 @@ on:
       - next-major
       - beta
       - alpha
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
   release:
@@ -22,10 +20,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -36,17 +36,54 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: npm run ci
+        run: yarn ci
+
       - name: Build component library in dist/
         run: yarn build
-      - name: Release
+
+      - name: Bump Prod Version Graduate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
-        run: npx lerna run semantic-release
+        continue-on-error: true
+        id: graduateRelease
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+          yarn lerna-version
+
+      - name: Bump Prod Version Fallback
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+        if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+          echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
+          git stash
+          yarn lerna-version-fallback
+
+      - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: ${{ github.head_ref }}
+
+      - name: Lerna Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.CZI_SDS_NPM_TOKEN}}
+        run: yarn release
+
       - name: Post breaking changes to a Slack channel
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         uses: act10ns/slack@v1
         with:
           status: complete

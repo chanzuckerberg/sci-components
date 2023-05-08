@@ -10,6 +10,9 @@ module.exports = {
           format: "css/variables",
         },
       ],
+      options: {
+        showFileHeader: false,
+      },
       transformGroup: "css",
     },
     js: {
@@ -32,6 +35,9 @@ module.exports = {
           },
         },
       ],
+      options: {
+        showFileHeader: false,
+      },
       transformGroup: "js",
     },
     scss: {
@@ -42,6 +48,9 @@ module.exports = {
           format: "scss/variables",
         },
       ],
+      options: {
+        showFileHeader: false,
+      },
       transformGroup: "scss",
     },
   },
