@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawTag from "./index";
+import { ExtraTagProps } from "./style";
 
 const Tag = (props: Args): JSX.Element => {
   const { label } = props;
@@ -35,12 +36,12 @@ const availableIconOptions = [
   <CheckCircleOutline />,
 ];
 
-const SDS_STYLES = ["rounded", "square"];
-const COLORS = availableColorOptions.slice(0, 9);
+const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
+const COLORS = availableColorOptions.slice(0, 9) as ExtraTagProps["tagColor"][];
 COLORS.splice(7, 1);
 const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
 const HOVERABLE_OPTIONS = [true, false];
-const SDS_TYPES = ["primary", "secondary"];
+const SDS_TYPES: ExtraTagProps["sdsType"][] = ["primary", "secondary"];
 const ICON_OPTIONS = availableIconOptions.slice(0, 2);
 
 export default {
@@ -110,79 +111,73 @@ export const Default = {
 
 // Live Preview
 
-const styleLevel = {
+const styleLevel: React.CSSProperties = {
   columnGap: "20px",
   display: "inline-grid",
   fontFamily: "sans-serif",
-  gridColumnTemplate:
-    "min-content min-content min-content min-content min-content",
   marginRight: "50px",
 };
-const displayContents = {
+const displayContents: React.CSSProperties = {
   display: "contents",
 };
-const hoverLevel = {
+const hoverLevel: React.CSSProperties = {
   display: "contents",
 };
-const stateLevel = {
+const stateLevel: React.CSSProperties = {
   marginBottom: 10,
 };
-
-const styleLabel = {
-  fontSize: "2em",
+const fontWeightNormal: React.CSSProperties = {
   fontWeight: "normal",
+};
+const styleLabel: React.CSSProperties = {
+  ...fontWeightNormal,
+  fontSize: "2em",
   gridColumn: "2 / 6",
   marginBottom: 0,
 };
-const colorLabel = {
+const midLevelLabel: React.CSSProperties = {
+  ...fontWeightNormal,
   borderStyle: "solid none none none",
+  gridColumn: "2 / 6",
+  justifySelf: "stretch",
+  paddingTop: 10,
+};
+const colorLabel: React.CSSProperties = {
+  ...midLevelLabel,
   borderWidth: "5px",
   fontSize: "1.5em",
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
-  hyphens: "auto",
-  justifySelf: "stretch",
   margin: "20px 0 0 0",
-  paddingTop: 10,
 };
-const typeLabel = {
-  borderStyle: "solid none none none",
+const typeLabel: React.CSSProperties = {
+  ...midLevelLabel,
   borderWidth: "2px",
   fontSize: "1.17em",
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
-  justifySelf: "stretch",
   margin: "20px 0",
-  paddingTop: 10,
 };
-const iconLabel = {
+const iconLabel: React.CSSProperties = {
+  ...midLevelLabel,
   alignSelf: "end",
-  borderStyle: "solid none none none",
   borderWidth: "1px",
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
-  justifySelf: "stretch",
   margin: "0 0 5px 0",
-  paddingTop: 10,
 };
-const hoverLabel = {
+const hoverLabel: React.CSSProperties = {
+  ...fontWeightNormal,
   alignSelf: "end",
-  fontWeight: "normal",
   gridColumn: "1 / 2",
   marginTop: 0,
 };
-const stateLabel = {
-  fontWeight: "normal",
+const stateLabel: React.CSSProperties = {
+  ...fontWeightNormal,
   margin: "10px 0",
 };
 
 export const LivePreview = {
   args: {
-    sdsStyle: SDS_STYLES[0],
     color: COLORS[0],
     hover: HOVERABLE_OPTIONS[0],
-    sdsType: SDS_TYPES[0],
     label: "Label",
+    sdsStyle: SDS_STYLES[0],
+    sdsType: SDS_TYPES[0],
   },
   parameters: {
     snapshot: {
@@ -201,25 +196,34 @@ export const LivePreview = {
     );
 
     // loop through all COLORS + create headers for SDS_STYLES
-    function TagStyle({ sdsStyle }) {
+    function TagStyle({ sdsStyle }: { sdsStyle: ExtraTagProps["sdsStyle"] }) {
       return (
         <div style={styleLevel}>
           <h2 style={styleLabel}>
             Style: <b>{sdsStyle}</b>
           </h2>
           {COLORS.map((color) => {
-            return <TagColor sdsStyle={sdsStyle} color={color} key={color} />;
+            return (
+              <TagColor sdsStyle={sdsStyle} color={color} key={String(color)} />
+            );
           })}
         </div>
       );
     }
 
     // loop through all SDS_TYPES + create headers for COLORS
-    function TagColor({ sdsStyle, color }) {
+    function TagColor({
+      sdsStyle,
+      color,
+    }: {
+      sdsStyle: ExtraTagProps["sdsStyle"];
+      color: ExtraTagProps["tagColor"];
+    }) {
       return (
         <div style={displayContents}>
           <h3 style={colorLabel}>
-            Color: <b>{color[0].length === 1 ? color : "custom"}</b>
+            {/* Color: <b>{color[0].length === 1 ? color : "custom"}</b> */}
+            Color: <b>{typeof color === "string" ? color : "custom"}</b>
           </h3>
           {SDS_TYPES.map((sdsType) => {
             return (
@@ -236,7 +240,15 @@ export const LivePreview = {
     }
 
     // loop through all ICON_OPTIONS + create headers for SDS_TYPES
-    function TagType({ sdsStyle, color, sdsType }) {
+    function TagType({
+      sdsStyle,
+      color,
+      sdsType,
+    }: {
+      sdsStyle: ExtraTagProps["sdsStyle"];
+      color: ExtraTagProps["tagColor"];
+      sdsType: ExtraTagProps["sdsType"];
+    }) {
       return (
         <div style={displayContents}>
           <h4 style={typeLabel}>
@@ -249,7 +261,7 @@ export const LivePreview = {
                 color={color}
                 sdsType={sdsType}
                 icon={icon}
-                key={icon}
+                key={String(icon)}
               />
             );
           })}
@@ -258,7 +270,17 @@ export const LivePreview = {
     }
 
     // loop through all HOVERABLE_OPTIONS + create headers for ICON_OPTIONS
-    function TagIcon({ sdsStyle, color, sdsType, icon }) {
+    function TagIcon({
+      sdsStyle,
+      color,
+      sdsType,
+      icon,
+    }: {
+      sdsStyle: ExtraTagProps["sdsStyle"];
+      color: ExtraTagProps["tagColor"];
+      sdsType: ExtraTagProps["sdsType"];
+      icon: (typeof ICON_OPTIONS)[number];
+    }) {
       return (
         <div style={displayContents}>
           <h5 style={iconLabel}>
@@ -272,7 +294,7 @@ export const LivePreview = {
                 sdsType={sdsType}
                 icon={icon}
                 hover={hover}
-                key={hover}
+                key={String(hover)}
                 hoverIndex={hoverIndex}
               />
             );
@@ -282,7 +304,21 @@ export const LivePreview = {
     }
 
     // loop through all PSEUDO_STATES + create headers for HOVERABLE_OPTIONS, PSEUDO_STATES
-    function TagState({ sdsStyle, color, sdsType, icon, hover, hoverIndex }) {
+    function TagState({
+      sdsStyle,
+      color,
+      sdsType,
+      icon,
+      hover,
+      hoverIndex,
+    }: {
+      sdsStyle: ExtraTagProps["sdsStyle"];
+      color: ExtraTagProps["tagColor"];
+      sdsType: ExtraTagProps["sdsType"];
+      icon: (typeof ICON_OPTIONS)[number];
+      hover: (typeof HOVERABLE_OPTIONS)[number];
+      hoverIndex: number;
+    }) {
       return (
         <div style={hoverLevel}>
           <h6 style={hoverLabel}>
@@ -299,6 +335,7 @@ export const LivePreview = {
                   </h6>
                 )}
                 <RawTag
+                  label={props.label}
                   {...props}
                   data-testid="tag"
                   sdsStyle={sdsStyle}
