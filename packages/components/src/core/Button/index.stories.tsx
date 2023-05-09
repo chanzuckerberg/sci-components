@@ -66,8 +66,6 @@ const styleLevel = {
   columnGap: "20px",
   display: "inline-grid",
   fontFamily: "sans-serif",
-  gridColumnTemplate:
-    "min-content min-content min-content min-content min-content",
   marginRight: "50px",
 };
 const displayContents = {
@@ -134,7 +132,11 @@ export const LivePreview = {
     );
 
     // loop through all SDS_TYPES + create headers for SDS_STYLES
-    function ButtonStyleOption({ sdsStyle }) {
+    function ButtonStyleOption({
+      sdsStyle,
+    }: {
+      sdsStyle: (typeof SDS_STYLES)[number];
+    }) {
       return (
         <div style={styleLevel}>
           <h3 style={styleLabel}>
@@ -150,37 +152,52 @@ export const LivePreview = {
     }
 
     // loop through all ICON_OPTIONS + create headers for SDS_TYPES
-    function ButtonTypeOption({ sdsStyle, type }) {
+    function ButtonTypeOption({
+      sdsStyle,
+      type,
+    }: {
+      sdsStyle: (typeof SDS_STYLES)[number];
+      type: (typeof SDS_TYPES)[number];
+    }) {
       return (
         <div style={displayContents}>
           <h4 style={typeLabel}>
             Type: <b>{type}</b>
           </h4>
-          {type === "primary" ? (
+          {/* Minimal Secondary doesn't have icon button option */}
+          {sdsStyle === "minimal" && type === "secondary" ? (
+            <ButtonIconOption
+              sdsStyle={sdsStyle}
+              type={type}
+              icon={ICON_OPTIONS[0]}
+              key={String(ICON_OPTIONS[0])}
+            />
+          ) : (
             ICON_OPTIONS.map((icon) => {
               return (
                 <ButtonIconOption
                   sdsStyle={sdsStyle}
                   type={type}
                   icon={icon}
-                  key={icon}
+                  key={String(icon)}
                 />
               );
             })
-          ) : (
-            <ButtonIconOption
-              sdsStyle={sdsStyle}
-              type={type}
-              icon={ICON_OPTIONS[0]}
-              key={ICON_OPTIONS[0]}
-            />
           )}
         </div>
       );
     }
 
     // loop through all DISABLED_OPTIONS + create headers for ICON_OPTIONS
-    function ButtonIconOption({ sdsStyle, type, icon }) {
+    function ButtonIconOption({
+      sdsStyle,
+      type,
+      icon,
+    }: {
+      sdsStyle: (typeof SDS_STYLES)[number];
+      type: (typeof SDS_TYPES)[number];
+      icon: (typeof ICON_OPTIONS)[number];
+    }) {
       return (
         <div style={displayContents}>
           <h5 style={iconLabel}>
@@ -193,7 +210,7 @@ export const LivePreview = {
                 type={type}
                 icon={icon}
                 disabled={disabled}
-                key={disabled}
+                key={String(disabled)}
                 disabledIndex={disabledIndex}
               />
             );
@@ -209,6 +226,12 @@ export const LivePreview = {
       icon,
       disabled,
       disabledIndex,
+    }: {
+      sdsStyle: (typeof SDS_STYLES)[number];
+      type: (typeof SDS_TYPES)[number];
+      icon: (typeof ICON_OPTIONS)[number];
+      disabled: (typeof DISABLED_OPTIONS)[number];
+      disabledIndex: number;
     }) {
       return (
         <div style={disabledLevel}>
