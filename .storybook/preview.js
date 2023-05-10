@@ -8,3 +8,15 @@ export const decorators = [
     </ThemeProvider>
   ),
 ];
+
+/**
+ * (thuang): This is a temporary fix for the Storybook addon to work with
+ * `storybook-addon-pseudo-states` plugin
+ * https://github.com/chromaui/storybook-addon-pseudo-states/issues/59#issuecomment-1498182067
+ */
+const preview = {
+  globalTypes: {
+    pseudo: {},
+  },
+};
+export default preview;
