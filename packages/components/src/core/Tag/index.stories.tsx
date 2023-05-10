@@ -171,6 +171,177 @@ const stateLabel: React.CSSProperties = {
   margin: "10px 0",
 };
 
+function LivePreviewDemo(props: Args): JSX.Element {
+  // loop through all SDS_STYLES
+  return (
+    <>
+      {SDS_STYLES.map((sdsStyle) => {
+        return <TagStyle sdsStyle={sdsStyle} key={sdsStyle} />;
+      })}
+    </>
+  );
+
+  // loop through all COLORS + create headers for SDS_STYLES
+  function TagStyle({ sdsStyle }: { sdsStyle: ExtraTagProps["sdsStyle"] }) {
+    return (
+      <div style={styleLevel}>
+        <h2 style={styleLabel}>
+          Style: <b>{sdsStyle}</b>
+        </h2>
+        {COLORS.map((color) => {
+          return (
+            <TagColor sdsStyle={sdsStyle} color={color} key={String(color)} />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all SDS_TYPES + create headers for COLORS
+  function TagColor({
+    sdsStyle,
+    color,
+  }: {
+    sdsStyle: ExtraTagProps["sdsStyle"];
+    color: ExtraTagProps["tagColor"];
+  }) {
+    return (
+      <div style={displayContents}>
+        <h3 style={colorLabel}>
+          {/* Color: <b>{color[0].length === 1 ? color : "custom"}</b> */}
+          Color: <b>{typeof color === "string" ? color : "custom"}</b>
+        </h3>
+        {SDS_TYPES.map((sdsType) => {
+          return (
+            <TagType
+              sdsStyle={sdsStyle}
+              color={color}
+              sdsType={sdsType}
+              key={sdsType}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all ICON_OPTIONS + create headers for SDS_TYPES
+  function TagType({
+    sdsStyle,
+    color,
+    sdsType,
+  }: {
+    sdsStyle: ExtraTagProps["sdsStyle"];
+    color: ExtraTagProps["tagColor"];
+    sdsType: ExtraTagProps["sdsType"];
+  }) {
+    return (
+      <div style={displayContents}>
+        <h4 style={typeLabel}>
+          Type: <b>{sdsType}</b>
+        </h4>
+        {ICON_OPTIONS.map((icon) => {
+          return (
+            <TagIcon
+              sdsStyle={sdsStyle}
+              color={color}
+              sdsType={sdsType}
+              icon={icon}
+              key={String(icon)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all HOVERABLE_OPTIONS + create headers for ICON_OPTIONS
+  function TagIcon({
+    sdsStyle,
+    color,
+    sdsType,
+    icon,
+  }: {
+    sdsStyle: ExtraTagProps["sdsStyle"];
+    color: ExtraTagProps["tagColor"];
+    sdsType: ExtraTagProps["sdsType"];
+    icon: (typeof ICON_OPTIONS)[number];
+  }) {
+    return (
+      <div style={displayContents}>
+        <h5 style={iconLabel}>
+          Icon: <b>{icon ? "yes" : "no"}</b>
+        </h5>
+        {HOVERABLE_OPTIONS.map((hover, hoverIndex) => {
+          return (
+            <TagState
+              sdsStyle={sdsStyle}
+              color={color}
+              sdsType={sdsType}
+              icon={icon}
+              hover={hover}
+              key={String(hover)}
+              hoverIndex={hoverIndex}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all PSEUDO_STATES + create headers for HOVERABLE_OPTIONS, PSEUDO_STATES
+  function TagState({
+    sdsStyle,
+    color,
+    sdsType,
+    icon,
+    hover,
+    hoverIndex,
+  }: {
+    sdsStyle: ExtraTagProps["sdsStyle"];
+    color: ExtraTagProps["tagColor"];
+    sdsType: ExtraTagProps["sdsType"];
+    icon: (typeof ICON_OPTIONS)[number];
+    hover: (typeof HOVERABLE_OPTIONS)[number];
+    hoverIndex: number;
+  }) {
+    const { label } = props;
+
+    return (
+      <div style={hoverLevel}>
+        <h6 style={hoverLabel}>
+          Hoverable: <b>{hover ? "true" : "false"}</b>
+        </h6>
+        {PSEUDO_STATES.map((state) => {
+          return (
+            <div style={stateLevel}>
+              {hoverIndex % 2 ? (
+                false
+              ) : (
+                <h6 style={stateLabel}>
+                  State: <b>{state}</b>
+                </h6>
+              )}
+              <RawTag
+                {...props}
+                label={label}
+                data-testid="tag"
+                sdsStyle={sdsStyle}
+                color={color}
+                sdsType={sdsType}
+                icon={icon}
+                hover={hover}
+                className={hover ? `pseudo-${state}` : `pseudo-default`}
+                key={state}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
 export const LivePreview = {
   args: {
     color: COLORS[0],
@@ -185,174 +356,7 @@ export const LivePreview = {
     },
   },
 
-  render: (props: Args): JSX.Element => {
-    // loop through all SDS_STYLES
-    return (
-      <>
-        {SDS_STYLES.map((sdsStyle) => {
-          return <TagStyle sdsStyle={sdsStyle} key={sdsStyle} />;
-        })}
-      </>
-    );
-
-    // loop through all COLORS + create headers for SDS_STYLES
-    function TagStyle({ sdsStyle }: { sdsStyle: ExtraTagProps["sdsStyle"] }) {
-      return (
-        <div style={styleLevel}>
-          <h2 style={styleLabel}>
-            Style: <b>{sdsStyle}</b>
-          </h2>
-          {COLORS.map((color) => {
-            return (
-              <TagColor sdsStyle={sdsStyle} color={color} key={String(color)} />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all SDS_TYPES + create headers for COLORS
-    function TagColor({
-      sdsStyle,
-      color,
-    }: {
-      sdsStyle: ExtraTagProps["sdsStyle"];
-      color: ExtraTagProps["tagColor"];
-    }) {
-      return (
-        <div style={displayContents}>
-          <h3 style={colorLabel}>
-            {/* Color: <b>{color[0].length === 1 ? color : "custom"}</b> */}
-            Color: <b>{typeof color === "string" ? color : "custom"}</b>
-          </h3>
-          {SDS_TYPES.map((sdsType) => {
-            return (
-              <TagType
-                sdsStyle={sdsStyle}
-                color={color}
-                sdsType={sdsType}
-                key={sdsType}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all ICON_OPTIONS + create headers for SDS_TYPES
-    function TagType({
-      sdsStyle,
-      color,
-      sdsType,
-    }: {
-      sdsStyle: ExtraTagProps["sdsStyle"];
-      color: ExtraTagProps["tagColor"];
-      sdsType: ExtraTagProps["sdsType"];
-    }) {
-      return (
-        <div style={displayContents}>
-          <h4 style={typeLabel}>
-            Type: <b>{sdsType}</b>
-          </h4>
-          {ICON_OPTIONS.map((icon) => {
-            return (
-              <TagIcon
-                sdsStyle={sdsStyle}
-                color={color}
-                sdsType={sdsType}
-                icon={icon}
-                key={String(icon)}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all HOVERABLE_OPTIONS + create headers for ICON_OPTIONS
-    function TagIcon({
-      sdsStyle,
-      color,
-      sdsType,
-      icon,
-    }: {
-      sdsStyle: ExtraTagProps["sdsStyle"];
-      color: ExtraTagProps["tagColor"];
-      sdsType: ExtraTagProps["sdsType"];
-      icon: (typeof ICON_OPTIONS)[number];
-    }) {
-      return (
-        <div style={displayContents}>
-          <h5 style={iconLabel}>
-            Icon: <b>{icon ? "yes" : "no"}</b>
-          </h5>
-          {HOVERABLE_OPTIONS.map((hover, hoverIndex) => {
-            return (
-              <TagState
-                sdsStyle={sdsStyle}
-                color={color}
-                sdsType={sdsType}
-                icon={icon}
-                hover={hover}
-                key={String(hover)}
-                hoverIndex={hoverIndex}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all PSEUDO_STATES + create headers for HOVERABLE_OPTIONS, PSEUDO_STATES
-    function TagState({
-      sdsStyle,
-      color,
-      sdsType,
-      icon,
-      hover,
-      hoverIndex,
-    }: {
-      sdsStyle: ExtraTagProps["sdsStyle"];
-      color: ExtraTagProps["tagColor"];
-      sdsType: ExtraTagProps["sdsType"];
-      icon: (typeof ICON_OPTIONS)[number];
-      hover: (typeof HOVERABLE_OPTIONS)[number];
-      hoverIndex: number;
-    }) {
-      return (
-        <div style={hoverLevel}>
-          <h6 style={hoverLabel}>
-            Hoverable: <b>{hover ? "true" : "false"}</b>
-          </h6>
-          {PSEUDO_STATES.map((state) => {
-            return (
-              <div style={stateLevel}>
-                {hoverIndex % 2 ? (
-                  false
-                ) : (
-                  <h6 style={stateLabel}>
-                    State: <b>{state}</b>
-                  </h6>
-                )}
-                <RawTag
-                  label={props.label}
-                  {...props}
-                  data-testid="tag"
-                  sdsStyle={sdsStyle}
-                  color={color}
-                  sdsType={sdsType}
-                  icon={icon}
-                  hover={hover}
-                  className={hover ? `pseudo-${state}` : `pseudo-default`}
-                  key={state}
-                />
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  },
+  render: (props: Args): JSX.Element => <LivePreviewDemo {...props} />,
 };
 
 // Test
