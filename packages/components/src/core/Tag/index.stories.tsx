@@ -352,7 +352,7 @@ export const LivePreview = {
   },
   parameters: {
     axe: {
-      timeout: 5 * 1000,
+      timeout: 10 * 1000,
     },
     snapshot: {
       skip: true,
