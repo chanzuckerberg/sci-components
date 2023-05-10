@@ -351,6 +351,9 @@ export const LivePreview = {
     sdsType: SDS_TYPES[0],
   },
   parameters: {
+    axe: {
+      timeout: 5 * 1000,
+    },
     snapshot: {
       skip: true,
     },
