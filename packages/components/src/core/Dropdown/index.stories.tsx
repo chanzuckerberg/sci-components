@@ -195,6 +195,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   args: {
+    buttonPosition: "left",
     label: LABEL,
     onChange: noop,
   },
