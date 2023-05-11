@@ -252,7 +252,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       anchorEl.focus();
     }
 
-    if (shouldShowButtons || closeOnBlur) {
+    if (closeOnBlur) onClose?.();
+
+    if (shouldShowButtons) {
       onClose?.();
       setOpen(false);
     }
