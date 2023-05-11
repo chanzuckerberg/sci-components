@@ -167,11 +167,15 @@ export const LivePreview = {
           </h3>
           {SDS_SIZES.map((sdsSize) => {
             return (
-              <ButtonIconSizeOption
-                sdsType={sdsType}
-                sdsSize={sdsSize}
-                key={sdsSize}
-              />
+              (((sdsType === "primary" || sdsType === "secondary") &&
+                sdsSize !== "medium") ||
+                sdsType === "tertiary") && (
+                <ButtonIconSizeOption
+                  sdsType={sdsType}
+                  sdsSize={sdsSize}
+                  key={sdsSize}
+                />
+              )
             );
           })}
         </div>
@@ -180,6 +184,9 @@ export const LivePreview = {
 
     // loop through all ON_OPTIONS + create headers for SDS_SIZES
     function ButtonIconSizeOption({ sdsType, sdsSize }) {
+      const onLabelNeeded =
+        sdsType === "primary" ||
+        (sdsType === "secondary" && sdsSize === "small");
       return (
         <div style={displayContents}>
           <h4 style={secondLabel}>
@@ -187,12 +194,19 @@ export const LivePreview = {
           </h4>
           {ON_OPTIONS.map((on) => {
             return (
-              <ButtonIconOnOption
-                sdsType={sdsType}
-                sdsSize={sdsSize}
-                on={on}
-                key={on}
-              />
+              // ((sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small")) || (((sdsType === "tertiary") || (sdsType === "secondary" && sdsSize === "large")) && on === true)) &&
+              (onLabelNeeded ||
+                ((sdsType === "tertiary" ||
+                  (sdsType === "secondary" && sdsSize === "large")) &&
+                  on === true)) && (
+                <ButtonIconOnOption
+                  sdsType={sdsType}
+                  sdsSize={sdsSize}
+                  on={on}
+                  key={on}
+                  onLabelNeeded={onLabelNeeded}
+                />
+              )
             );
           })}
         </div>
@@ -200,12 +214,15 @@ export const LivePreview = {
     }
 
     // loop through all DISABLED_OPTIONS + create headers for ON_OPTIONS
-    function ButtonIconOnOption({ sdsType, sdsSize, on }) {
+    function ButtonIconOnOption({ sdsType, sdsSize, on, onLabelNeeded }) {
       return (
         <div style={displayContents}>
-          <h5 style={thirdLabel}>
-            On: <b>{on ? "true" : "false"}</b>
-          </h5>
+          {/* {(sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small")) && */}
+          {onLabelNeeded && (
+            <h5 style={thirdLabel}>
+              On: <b>{on ? "true" : "false"}</b>
+            </h5>
+          )}
           {DISABLED_OPTIONS.map((disabled, disabledIndex) => {
             return (
               <ButtonIconDisabledOption
@@ -230,6 +247,17 @@ export const LivePreview = {
       disabled,
       disabledIndex,
     }) {
+      const iconToShow =
+        sdsType === "primary" && sdsSize === "large"
+          ? "grid"
+          : sdsType === "primary" && sdsSize === "small"
+          ? "barChartVertical3"
+          : sdsType === "secondary" && sdsSize === "large"
+          ? "infoSpeechBubble"
+          : sdsType === "secondary" && sdsSize === "small"
+          ? "plusCircle"
+          : "xMark";
+
       return (
         <div style={penultimateLevel}>
           <h6 style={penultimateLabel}>
@@ -249,8 +277,9 @@ export const LivePreview = {
                 )}
                 <RawButtonIcon
                   {...props}
-                  aria-label="xMark"
-                  sdsIcon="xMark"
+                  aria-label={iconToShow}
+                  // sdsIcon="xMark"
+                  sdsIcon={iconToShow}
                   data-testid="button-icon"
                   sdsType={sdsType}
                   sdsSize={sdsSize}
