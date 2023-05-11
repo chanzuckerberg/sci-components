@@ -106,13 +106,13 @@ const fontWeightNormal = {
 const topLabel = {
   ...fontWeightNormal,
   fontSize: "2em",
-  gridColumn: "2 / 6",
+  gridColumn: "1 / 6",
   marginBottom: 0,
 };
 const midLabel = {
   ...fontWeightNormal,
   borderStyle: "solid none none none",
-  gridColumn: "2 / 6",
+  gridColumn: "1 / 6",
   justifySelf: "stretch",
   paddingTop: 10,
 };
@@ -194,7 +194,6 @@ export const LivePreview = {
           </h4>
           {ON_OPTIONS.map((on) => {
             return (
-              // ((sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small")) || (((sdsType === "tertiary") || (sdsType === "secondary" && sdsSize === "large")) && on === true)) &&
               (onLabelNeeded ||
                 ((sdsType === "tertiary" ||
                   (sdsType === "secondary" && sdsSize === "large")) &&
@@ -217,13 +216,12 @@ export const LivePreview = {
     function ButtonIconOnOption({ sdsType, sdsSize, on, onLabelNeeded }) {
       return (
         <div style={displayContents}>
-          {/* {(sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small")) && */}
           {onLabelNeeded && (
             <h5 style={thirdLabel}>
               On: <b>{on ? "true" : "false"}</b>
             </h5>
           )}
-          {DISABLED_OPTIONS.map((disabled, disabledIndex) => {
+          {DISABLED_OPTIONS.map((disabled) => {
             return (
               <ButtonIconDisabledOption
                 sdsType={sdsType}
@@ -231,7 +229,6 @@ export const LivePreview = {
                 on={on}
                 disabled={disabled}
                 key={disabled}
-                disabledIndex={disabledIndex}
               />
             );
           })}
@@ -240,13 +237,7 @@ export const LivePreview = {
     }
 
     // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
-    function ButtonIconDisabledOption({
-      sdsType,
-      sdsSize,
-      on,
-      disabled,
-      disabledIndex,
-    }) {
+    function ButtonIconDisabledOption({ sdsType, sdsSize, on, disabled }) {
       const iconToShow =
         sdsType === "primary" && sdsSize === "large"
           ? "grid"
@@ -260,34 +251,44 @@ export const LivePreview = {
 
       return (
         <div style={penultimateLevel}>
-          <h6 style={penultimateLabel}>
-            Disabled: <br />
-            <b>{disabled ? "true" : "false"}</b>
-          </h6>
           {PSEUDO_STATES.map((state) => {
+            function bottomLabelContents(disabledStatus) {
+              let label = "State: ";
+              let value = state;
+              disabledStatus && ((label = "Disabled: "), (value = "true"));
+              return (
+                <h6 style={bottomLabel}>
+                  {label}
+                  <br />
+                  <b>{value}</b>
+                </h6>
+              );
+            }
+
             return (
               <div style={bottomLevel}>
-                {disabledIndex % 2 ? (
-                  false
-                ) : (
-                  <h6 style={bottomLabel}>
-                    State: <br />
-                    <b>{state}</b>
-                  </h6>
+                {(disabled === false ||
+                  (disabled === true && state === "default")) && (
+                  <>
+                    {/* <h6 style={bottomLabel}>
+                      {disabled === false ? "State: " : "Disabled: "}<br />
+                      <b>{disabled === false ? state : "true"}</b>
+                    </h6> */}
+                    {bottomLabelContents(disabled)}
+                    <RawButtonIcon
+                      {...props}
+                      aria-label={iconToShow}
+                      sdsIcon={iconToShow}
+                      data-testid="button-icon"
+                      sdsType={sdsType}
+                      sdsSize={sdsSize}
+                      on={on}
+                      disabled={disabled}
+                      className={`pseudo-${state}`}
+                      key={state}
+                    />
+                  </>
                 )}
-                <RawButtonIcon
-                  {...props}
-                  aria-label={iconToShow}
-                  // sdsIcon="xMark"
-                  sdsIcon={iconToShow}
-                  data-testid="button-icon"
-                  sdsType={sdsType}
-                  sdsSize={sdsSize}
-                  on={on}
-                  disabled={disabled}
-                  className={`pseudo-${state}`}
-                  key={state}
-                />
               </div>
             );
           })}
