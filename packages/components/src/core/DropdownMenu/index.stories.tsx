@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import { Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
@@ -13,9 +13,6 @@ export type DropdownOptionValue<T, Multiple> = Multiple extends
   ? T | undefined
   : Array<T> | undefined;
 
-const StyledInputDropdown = styled(InputDropdown)`
-  min-width: 300px;
-`;
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
 const groupByOptions = [
@@ -31,20 +28,22 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
     options = GITHUB_LABELS,
     search,
     title,
-    label,
     value: propValue,
   } = props;
 
   const isControlled = propValue !== undefined;
-  const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [value, setValue] = useState<
     DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   >(getInitialValue());
   const [pendingValue, setPendingValue] = useState<
     DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
   >(getInitialValue());
-  const id = open ? `dropdown-menu` : undefined;
+  const anchorRef = useRef(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  useEffect(() => {
+    setAnchorEl(anchorRef.current);
+  }, [anchorRef.current]);
 
   useEffect(() => {
     if (isControlled) {
@@ -53,26 +52,21 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
   }, [propValue]);
 
   return (
-    <>
-      <StyledInputDropdown
-        aria-describedby={id}
-        label={label}
-        onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
-        sdsType={multiple ? "multiSelect" : "singleSelect"}
-        sdsStyle="square"
-      />
-
+    <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       <RawDropdownMenu
         anchorEl={anchorEl}
         disableCloseOnSelect={false}
-        id={id}
+        id="dropdown-menu"
         multiple={multiple}
         onChange={handleChange}
         onClickAway={handleClickAway}
-        open={open}
+        open
         options={options}
-        PopperBaseProps={{ placement: POPPER_POSITION, sx: { width: 300 } }}
+        PopperBaseProps={{
+          disablePortal: false,
+          placement: POPPER_POSITION,
+          sx: { width: 300 },
+        }}
         search={search}
         title={title}
         value={multiple ? pendingValue : value}
@@ -84,39 +78,12 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
         }}
         {...props}
       />
-    </>
+    </div>
   );
 
   function handleClickAway() {
-    if (open) {
-      setOpen(false);
-
-      if (multiple) {
-        setValue(pendingValue);
-      }
-    }
-  }
-
-  function handleClick(event: React.MouseEvent<HTMLElement>) {
-    if (open) {
-      if (multiple) {
-        setValue(pendingValue);
-      }
-
-      setOpen(false);
-
-      if (anchorEl) {
-        anchorEl.focus();
-      }
-
-      setAnchorEl(null);
-    } else {
-      if (multiple) {
-        setPendingValue(value);
-      }
-
-      setAnchorEl(event.currentTarget);
-      setOpen(true);
+    if (multiple) {
+      setValue(pendingValue);
     }
   }
 
@@ -129,7 +96,6 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
     }
 
     setValue(newValue);
-    setOpen(false);
   }
 
   function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
@@ -183,7 +149,6 @@ export const Default = {
   args: {
     groupBy: groupByOptions[1],
     keepSearchOnSelect: true,
-    label: "Click Target",
     multiple: true,
     search: true,
     title: "Github Labels",
@@ -525,11 +490,10 @@ export const LivePreview = {
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = LIVE_PREVIEW_LABELS, search } = props;
+  const { multiple, options = GITHUB_LABELS, search } = props;
 
+  const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
-  const [open, setOpen] = useState(false);
 
   const [value, setValue] = useState<
     null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
@@ -539,24 +503,16 @@ const TestDemo = (props: Args): JSX.Element => {
     []
   );
 
-  const id = open ? "github-label" : undefined;
+  useEffect(() => {
+    setAnchorEl(anchorRef.current);
+  }, [anchorRef.current]);
 
   return (
-    <>
-      <InputDropdown
-        aria-describedby={id}
-        onClick={handleClick}
-        label="Click Target"
-        sdsStage={open ? "userInput" : "default"}
-        sdsType={multiple ? "multiSelect" : "singleSelect"}
-        sdsStyle="square"
-        data-testid="dropdown-menu"
-      />
-
+    <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       <RawDropdownMenu
         anchorEl={anchorEl}
-        id={id}
-        open={open}
+        id="github-label"
+        open
         search={search}
         multiple={multiple}
         value={multiple ? pendingValue : value}
@@ -564,39 +520,16 @@ const TestDemo = (props: Args): JSX.Element => {
         disableCloseOnSelect={multiple}
         options={options}
         onClickAway={handleClickAway}
+        groupBy={(option: DefaultDropdownMenuOption) =>
+          option.section as string
+        }
         {...props}
       />
-    </>
+    </div>
   );
 
   function handleClickAway() {
-    if (open) {
-      setOpen(false);
-      return multiple && setValue(pendingValue);
-    }
-  }
-
-  function handleClick(event: React.MouseEvent<HTMLElement>) {
-    if (!open) {
-      if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
-      }
-
-      setAnchorEl(event.currentTarget);
-      setOpen(true);
-    } else {
-      if (multiple) {
-        setValue(pendingValue);
-      }
-
-      setOpen(false);
-
-      if (anchorEl) {
-        anchorEl.focus();
-      }
-
-      setAnchorEl(null);
-    }
+    return multiple && setValue(pendingValue);
   }
 
   function handleChange(
@@ -605,7 +538,6 @@ const TestDemo = (props: Args): JSX.Element => {
   ) {
     if (!multiple) {
       setValue(newValue as DefaultDropdownMenuOption);
-      setOpen(false);
     }
 
     return setPendingValue(newValue as DefaultDropdownMenuOption[]);
@@ -615,13 +547,14 @@ const TestDemo = (props: Args): JSX.Element => {
 export const Test = {
   args: {
     keepSearchOnSelect: false,
-    multiple: false,
-    search: false,
+    multiple: true,
+    search: true,
+    title: "Github Labels",
   },
   parameters: {
     snapshot: {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render: (args: Args) => <TestDemo data-testid="dropdown-menu" {...args} />,
 };
