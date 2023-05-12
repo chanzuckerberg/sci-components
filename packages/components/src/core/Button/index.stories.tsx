@@ -62,61 +62,60 @@ export const Default = {
 
 // Live Preview
 
-const styleLevel = {
+const topLevel: React.CSSProperties = {
   columnGap: "20px",
   display: "inline-grid",
   fontFamily: "sans-serif",
   marginRight: "50px",
 };
-const displayContents = {
+const displayContents: React.CSSProperties = {
   display: "contents",
 };
-const disabledLevel = {
+const penultimateLevel: React.CSSProperties = {
   display: "contents",
 };
-const stateLevel = {
+const bottomLevel: React.CSSProperties = {
   marginBottom: 10,
 };
-
-const styleLabel = {
-  fontSize: "2em",
+const fontWeightNormal: React.CSSProperties = {
   fontWeight: "normal",
-  gridColumn: "2 / 6",
+};
+const topLabel: React.CSSProperties = {
+  ...fontWeightNormal,
+  fontSize: "2em",
+  gridColumn: "1 / 6",
   marginBottom: 0,
 };
-const typeLabel = {
+const midLabel: React.CSSProperties = {
+  ...fontWeightNormal,
   borderStyle: "solid none none none",
+  gridColumn: "1 / 6",
+  justifySelf: "stretch",
+  paddingTop: 10,
+};
+const secondLabel: React.CSSProperties = {
+  ...midLabel,
   borderWidth: "2px",
   fontSize: "1.17em",
-  fontWeight: "normal",
-  gridColumn: "2 / 6",
-  justifySelf: "stretch",
   margin: "20px 0",
-  paddingTop: 10,
 };
-const iconLabel = {
+const thirdLabel: React.CSSProperties = {
+  ...midLabel,
   alignSelf: "end",
-  borderStyle: "solid none none none",
   borderWidth: "1px",
   fontWeight: "normal",
-  gridColumn: "2 / 6",
-  justifySelf: "stretch",
   margin: "0 0 5px 0",
-  paddingTop: 10,
 };
-const disabledLabel = {
-  alignSelf: "end",
-  fontWeight: "normal",
-  gridColumn: "1 / 2",
-  marginTop: 0,
-};
-const stateLabel = {
-  fontWeight: "normal",
+const bottomLabel: React.CSSProperties = {
+  ...fontWeightNormal,
   margin: "10px 0",
 };
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ["onClick", "sdsStyle", "sdsType", "text"],
+    },
     snapshot: {
       skip: true,
     },
@@ -138,8 +137,8 @@ export const LivePreview = {
       sdsStyle: (typeof SDS_STYLES)[number];
     }) {
       return (
-        <div style={styleLevel}>
-          <h3 style={styleLabel}>
+        <div style={topLevel}>
+          <h3 style={topLabel}>
             Style: <b>{sdsStyle}</b>
           </h3>
           {SDS_TYPES.map((type) => {
@@ -161,7 +160,7 @@ export const LivePreview = {
     }) {
       return (
         <div style={displayContents}>
-          <h4 style={typeLabel}>
+          <h4 style={secondLabel}>
             Type: <b>{type}</b>
           </h4>
           {/* Minimal Secondary doesn't have icon button option */}
@@ -200,10 +199,10 @@ export const LivePreview = {
     }) {
       return (
         <div style={displayContents}>
-          <h5 style={iconLabel}>
+          <h5 style={thirdLabel}>
             Icon: <b>{icon ? "yes" : "no"}</b>
           </h5>
-          {DISABLED_OPTIONS.map((disabled, disabledIndex) => {
+          {DISABLED_OPTIONS.map((disabled) => {
             return (
               <ButtonDisabledOption
                 sdsStyle={sdsStyle}
@@ -211,7 +210,6 @@ export const LivePreview = {
                 icon={icon}
                 disabled={disabled}
                 key={String(disabled)}
-                disabledIndex={disabledIndex}
               />
             );
           })}
@@ -225,41 +223,40 @@ export const LivePreview = {
       type,
       icon,
       disabled,
-      disabledIndex,
     }: {
       sdsStyle: (typeof SDS_STYLES)[number];
       type: (typeof SDS_TYPES)[number];
       icon: (typeof ICON_OPTIONS)[number];
       disabled: (typeof DISABLED_OPTIONS)[number];
-      disabledIndex: number;
     }) {
       return (
-        <div style={disabledLevel}>
-          <h6 style={disabledLabel}>
-            Disabled: <b>{disabled ? "true" : "false"}</b>
-          </h6>
+        <div style={penultimateLevel}>
           {PSEUDO_STATES.map((state) => {
             return (
-              <div style={stateLevel}>
-                {disabledIndex % 2 ? (
-                  false
-                ) : (
-                  <h6 style={stateLabel}>
-                    State: <b>{state}</b>
-                  </h6>
+              <div style={bottomLevel}>
+                {(disabled === false ||
+                  (disabled === true && state === "default")) && (
+                  <>
+                    <h6 style={bottomLabel}>
+                      {disabled === false ? "State: " : "Disabled: "}
+                      <br />
+                      <b>{disabled === false ? state : "true"}</b>
+                    </h6>
+
+                    <RawButton
+                      {...props}
+                      data-testid="button"
+                      sdsStyle={sdsStyle}
+                      sdsType={type}
+                      startIcon={icon}
+                      disabled={disabled}
+                      className={`pseudo-${state}`}
+                      key={state}
+                    >
+                      {TEXT}
+                    </RawButton>
+                  </>
                 )}
-                <RawButton
-                  {...props}
-                  data-testid="button"
-                  sdsStyle={sdsStyle}
-                  sdsType={type}
-                  startIcon={icon}
-                  disabled={disabled}
-                  className={`pseudo-${state}`}
-                  key={state}
-                >
-                  {TEXT}
-                </RawButton>
               </div>
             );
           })}
