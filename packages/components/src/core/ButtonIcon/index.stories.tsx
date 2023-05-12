@@ -3,16 +3,16 @@ import React from "react";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 
-const SDS_TYPES: ButtonIconExtraProps["sdsType"][] = [
-  "primary",
-  "secondary",
-  "tertiary",
-];
-const SDS_SIZES: ButtonIconSizeToTypes["sdsSize"][] = [
-  "large",
-  "medium",
-  "small",
-];
+type SDSTypes = (
+  | ButtonIconExtraProps<"small">["sdsType"]
+  | ButtonIconExtraProps<"medium">["sdsType"]
+  | ButtonIconExtraProps<"large">["sdsType"]
+)[];
+
+type SDSSizes = (keyof ButtonIconSizeToTypes)[];
+
+const SDS_TYPES: SDSTypes = ["primary", "secondary", "tertiary"];
+const SDS_SIZES: SDSSizes = ["large", "medium", "small"];
 const ON_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
@@ -160,11 +160,7 @@ export const LivePreview = {
     );
 
     // loop through all SDS_SIZES + create headers for SDS_TYPES
-    function ButtonIconTypeOption({
-      sdsType,
-    }: {
-      sdsType: ButtonIconExtraProps["sdsType"];
-    }) {
+    function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
       return (
         <div style={topLevel}>
           <h3 style={topLabel}>
@@ -193,8 +189,8 @@ export const LivePreview = {
       sdsType,
       sdsSize,
     }: {
-      sdsType: ButtonIconExtraProps["sdsType"];
-      sdsSize: ButtonIconSizeToTypes["sdsSize"];
+      sdsType: SDSTypes[number];
+      sdsSize: SDSSizes[number];
     }) {
       // establish which combinations have `on` as a prop (used below and passed to next loop)
       const onLabelNeeded =
@@ -269,8 +265,8 @@ export const LivePreview = {
       on,
       disabled,
     }: {
-      sdsType: ButtonIconExtraProps["sdsType"];
-      sdsSize: ButtonIconSizeToTypes["sdsSize"];
+      sdsType: SDSTypes[number];
+      sdsSize: SDSSizes[number];
       on: (typeof ON_OPTIONS)[number];
       disabled: (typeof DISABLED_OPTIONS)[number];
     }) {
