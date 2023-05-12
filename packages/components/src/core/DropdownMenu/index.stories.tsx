@@ -140,6 +140,24 @@ export default {
     },
   },
   component: DropdownMenu,
+  // (masoudmanson) For the purpose of storybook, the button is removed
+  // from the dropdown menu component which may cause some accessibility
+  // violations related to ARIA roles and attributes. However, this
+  // should not be a concern as the component is always used with a button
+  // in real applications. To avoid false positive test failures, the following
+  // accessibility rules have been temporarily disabled in the tests
+  parameters: {
+    axe: {
+      disabledRules: [
+        "aria-input-field-name",
+        "aria-required-children",
+        "aria-required-parent",
+        "button-name",
+        "list",
+        "listitem",
+      ],
+    },
+  },
   title: "Dropdowns/DropdownMenu",
 } as Meta;
 
