@@ -56,7 +56,6 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
       <RawDropdownMenu
         anchorEl={anchorEl}
         disableCloseOnSelect={false}
-        id="dropdown-menu"
         multiple={multiple}
         onChange={handleChange}
         onClickAway={handleClickAway}
@@ -273,7 +272,6 @@ const LivePreviewDemo = (): JSX.Element => {
 
         <RawDropdownMenu
           anchorEl={anchorEl1}
-          id="live1"
           open={!!open1}
           onChange={handleChange1}
           disableCloseOnSelect={false}
@@ -303,7 +301,6 @@ const LivePreviewDemo = (): JSX.Element => {
 
         <RawDropdownMenu
           anchorEl={anchorEl2}
-          id="live2"
           open={!!open2}
           search={false}
           multiple={false}
@@ -331,7 +328,6 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         <RawDropdownMenu
-          id="live3"
           anchorEl={anchorEl3}
           open={!!open3}
           search
@@ -359,7 +355,6 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         <RawDropdownMenu
-          id="live4"
           anchorEl={anchorEl4}
           open={!!open4}
           search={false}
@@ -529,7 +524,6 @@ const TestDemo = (props: Args): JSX.Element => {
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       <RawDropdownMenu
         anchorEl={anchorEl}
-        id="github-label"
         open
         search={search}
         multiple={multiple}
