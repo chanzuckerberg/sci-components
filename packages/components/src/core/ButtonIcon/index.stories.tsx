@@ -144,6 +144,9 @@ const bottomLabel: React.CSSProperties = {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ["disabled", "on", "sdsIcon", "sdsSize", "sdsType"],
+    },
     snapshot: {
       skip: true,
     },
