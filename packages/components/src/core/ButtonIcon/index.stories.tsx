@@ -230,8 +230,8 @@ export const LivePreview = {
       on,
       onLabelNeeded,
     }: {
-      sdsType: ButtonIconExtraProps["sdsType"];
-      sdsSize: ButtonIconSizeToTypes["sdsSize"];
+      sdsType: SDSTypes[number];
+      sdsSize: SDSSizes[number];
       on: (typeof ON_OPTIONS)[number];
       onLabelNeeded: boolean;
     }) {
@@ -270,16 +270,21 @@ export const LivePreview = {
       on: (typeof ON_OPTIONS)[number];
       disabled: (typeof DISABLED_OPTIONS)[number];
     }) {
-      const iconToShow =
-        sdsType === "primary" && sdsSize === "large"
-          ? "grid"
-          : sdsType === "primary" && sdsSize === "small"
-          ? "barChartVertical3"
-          : sdsType === "secondary" && sdsSize === "large"
-          ? "infoSpeechBubble"
-          : sdsType === "secondary" && sdsSize === "small"
-          ? "plusCircle"
-          : "xMark";
+      const SDS_ICONS = {
+        primary: {
+          large: "grid",
+          small: "barChartVertical3",
+        },
+        secondary: {
+          large: "infoSpeechBubble",
+          small: "plusCircle",
+        },
+        tertiary: {
+          large: "xMark",
+          medium: "xMark",
+          small: "xMark",
+        },
+      };
 
       return (
         <div style={penultimateLevel}>
@@ -296,8 +301,8 @@ export const LivePreview = {
                     </h6>
                     <RawButtonIcon
                       {...props}
-                      aria-label={iconToShow}
-                      sdsIcon={iconToShow}
+                      aria-label={SDS_ICONS[sdsType][sdsSize]}
+                      sdsIcon={SDS_ICONS[sdsType][sdsSize]}
                       data-testid="button-icon"
                       sdsType={sdsType}
                       sdsSize={sdsSize}
