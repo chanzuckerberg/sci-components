@@ -111,7 +111,7 @@ export const Default = {
 
 // Live Preview
 
-const styleLevel: React.CSSProperties = {
+const topLevel: React.CSSProperties = {
   columnGap: "20px",
   display: "inline-grid",
   fontFamily: "sans-serif",
@@ -120,53 +120,47 @@ const styleLevel: React.CSSProperties = {
 const displayContents: React.CSSProperties = {
   display: "contents",
 };
-const hoverLevel: React.CSSProperties = {
+const penultimateLevel: React.CSSProperties = {
   display: "contents",
 };
-const stateLevel: React.CSSProperties = {
+const bottomLevel: React.CSSProperties = {
   marginBottom: 10,
 };
 const fontWeightNormal: React.CSSProperties = {
   fontWeight: "normal",
 };
-const styleLabel: React.CSSProperties = {
+const topLabel: React.CSSProperties = {
   ...fontWeightNormal,
   fontSize: "2em",
-  gridColumn: "2 / 6",
+  gridColumn: "1 / 6",
   marginBottom: 0,
 };
-const midLevelLabel: React.CSSProperties = {
+const midLabel: React.CSSProperties = {
   ...fontWeightNormal,
   borderStyle: "solid none none none",
-  gridColumn: "2 / 6",
+  gridColumn: "1 / 6",
   justifySelf: "stretch",
   paddingTop: 10,
 };
-const colorLabel: React.CSSProperties = {
-  ...midLevelLabel,
+const h3Label: React.CSSProperties = {
+  ...midLabel,
   borderWidth: "5px",
   fontSize: "1.5em",
   margin: "20px 0 0 0",
 };
-const typeLabel: React.CSSProperties = {
-  ...midLevelLabel,
+const h4Label: React.CSSProperties = {
+  ...midLabel,
   borderWidth: "2px",
   fontSize: "1.17em",
   margin: "20px 0",
 };
-const iconLabel: React.CSSProperties = {
-  ...midLevelLabel,
+const h5Label: React.CSSProperties = {
+  ...midLabel,
   alignSelf: "end",
   borderWidth: "1px",
   margin: "0 0 5px 0",
 };
-const hoverLabel: React.CSSProperties = {
-  ...fontWeightNormal,
-  alignSelf: "end",
-  gridColumn: "1 / 2",
-  marginTop: 0,
-};
-const stateLabel: React.CSSProperties = {
+const bottomLabel: React.CSSProperties = {
   ...fontWeightNormal,
   margin: "10px 0",
 };
@@ -184,8 +178,8 @@ function LivePreviewDemo(props: Args): JSX.Element {
   // loop through all COLORS + create headers for SDS_STYLES
   function TagStyle({ sdsStyle }: { sdsStyle: ExtraTagProps["sdsStyle"] }) {
     return (
-      <div style={styleLevel}>
-        <h2 style={styleLabel}>
+      <div style={topLevel}>
+        <h2 style={topLabel}>
           Style: <b>{sdsStyle}</b>
         </h2>
         {COLORS.map((color) => {
@@ -207,7 +201,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   }) {
     return (
       <div style={displayContents}>
-        <h3 style={colorLabel}>
+        <h3 style={h3Label}>
           {/* Color: <b>{color[0].length === 1 ? color : "custom"}</b> */}
           Color: <b>{typeof color === "string" ? color : "custom"}</b>
         </h3>
@@ -237,7 +231,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
   }) {
     return (
       <div style={displayContents}>
-        <h4 style={typeLabel}>
+        <h4 style={h4Label}>
           Type: <b>{sdsType}</b>
         </h4>
         {ICON_OPTIONS.map((icon) => {
@@ -269,10 +263,10 @@ function LivePreviewDemo(props: Args): JSX.Element {
   }) {
     return (
       <div style={displayContents}>
-        <h5 style={iconLabel}>
+        <h5 style={h5Label}>
           Icon: <b>{icon ? "yes" : "no"}</b>
         </h5>
-        {HOVERABLE_OPTIONS.map((hover, hoverIndex) => {
+        {HOVERABLE_OPTIONS.map((hover) => {
           return (
             <TagState
               sdsStyle={sdsStyle}
@@ -281,7 +275,6 @@ function LivePreviewDemo(props: Args): JSX.Element {
               icon={icon}
               hover={hover}
               key={String(hover)}
-              hoverIndex={hoverIndex}
             />
           );
         })}
@@ -296,44 +289,41 @@ function LivePreviewDemo(props: Args): JSX.Element {
     sdsType,
     icon,
     hover,
-    hoverIndex,
   }: {
     sdsStyle: ExtraTagProps["sdsStyle"];
     color: ExtraTagProps["tagColor"];
     sdsType: ExtraTagProps["sdsType"];
     icon: (typeof ICON_OPTIONS)[number];
     hover: (typeof HOVERABLE_OPTIONS)[number];
-    hoverIndex: number;
   }) {
     const { label } = props;
 
     return (
-      <div style={hoverLevel}>
-        <h6 style={hoverLabel}>
-          Hoverable: <b>{hover ? "true" : "false"}</b>
-        </h6>
+      <div style={penultimateLevel}>
         {PSEUDO_STATES.map((state) => {
           return (
-            <div style={stateLevel}>
-              {hoverIndex % 2 ? (
-                false
-              ) : (
-                <h6 style={stateLabel}>
-                  State: <b>{state}</b>
-                </h6>
+            <div style={bottomLevel}>
+              {(hover === true || (hover === false && state === "default")) && (
+                <>
+                  <h6 style={bottomLabel}>
+                    {hover ? "State: " : "Hoverable: "}
+                    <br />
+                    <b>{hover ? state : "false"}</b>
+                  </h6>
+                  <RawTag
+                    {...props}
+                    label={label}
+                    data-testid="tag"
+                    sdsStyle={sdsStyle}
+                    color={color}
+                    sdsType={sdsType}
+                    icon={icon}
+                    hover={hover}
+                    className={hover ? `pseudo-${state}` : `pseudo-default`}
+                    key={state}
+                  />
+                </>
               )}
-              <RawTag
-                {...props}
-                label={label}
-                data-testid="tag"
-                sdsStyle={sdsStyle}
-                color={color}
-                sdsType={sdsType}
-                icon={icon}
-                hover={hover}
-                className={hover ? `pseudo-${state}` : `pseudo-default`}
-                key={state}
-              />
             </div>
           );
         })}
