@@ -3,11 +3,11 @@ import React from "react";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 
-type SDSTypes = (
+type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"small">["sdsType"]
   | ButtonIconExtraProps<"medium">["sdsType"]
   | ButtonIconExtraProps<"large">["sdsType"]
-)[];
+>[];
 
 type SDSSizes = (keyof ButtonIconSizeToTypes)[];
 
@@ -167,17 +167,20 @@ export const LivePreview = {
             Type: <b>{sdsType}</b>
           </h3>
           {SDS_SIZES.map((sdsSize) => {
+            // primary and secondary types don't have medium size
+            if (
+              (sdsType === "primary" || sdsType === "secondary") &&
+              sdsSize === "medium"
+            ) {
+              return null;
+            }
+
             return (
-              // weed out the non-existent combinations
-              (((sdsType === "primary" || sdsType === "secondary") &&
-                sdsSize !== "medium") ||
-                sdsType === "tertiary") && (
-                <ButtonIconSizeOption
-                  sdsType={sdsType}
-                  sdsSize={sdsSize}
-                  key={sdsSize}
-                />
-              )
+              <ButtonIconSizeOption
+                sdsType={sdsType}
+                sdsSize={sdsSize}
+                key={sdsSize}
+              />
             );
           })}
         </div>
@@ -196,6 +199,7 @@ export const LivePreview = {
       const onLabelNeeded =
         sdsType === "primary" ||
         (sdsType === "secondary" && sdsSize === "small");
+
       return (
         <div style={displayContents}>
           <h4 style={secondLabel}>
@@ -289,6 +293,10 @@ export const LivePreview = {
       return (
         <div style={penultimateLevel}>
           {PSEUDO_STATES.map((state) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore: invalid `sdsIcon` is skipped in <ButtonIconTypeOption />
+            const sdsIcon = SDS_ICONS[sdsType][sdsSize];
+
             return (
               <div style={bottomLevel}>
                 {(disabled === false ||
@@ -301,8 +309,8 @@ export const LivePreview = {
                     </h6>
                     <RawButtonIcon
                       {...props}
-                      aria-label={SDS_ICONS[sdsType][sdsSize]}
-                      sdsIcon={SDS_ICONS[sdsType][sdsSize]}
+                      aria-label={sdsIcon}
+                      sdsIcon={sdsIcon}
                       data-testid="button-icon"
                       sdsType={sdsType}
                       sdsSize={sdsSize}
