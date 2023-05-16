@@ -444,6 +444,9 @@ const ScreenshotTestDemo = (): JSX.Element => {
 
 export const ScreenshotTest = {
   parameters: {
+    controls: {
+      exclude: ["disabled", "on", "sdsIcon", "sdsSize", "sdsType"],
+    },
     snapshot: {
       skip: true,
     },
