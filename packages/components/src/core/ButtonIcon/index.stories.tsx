@@ -1,5 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
+import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 
@@ -93,245 +94,362 @@ export const Default = {
 
 // Live Preview
 
-const topLevel: React.CSSProperties = {
-  columnGap: "20px",
-  display: "inline-grid",
-  fontFamily: "sans-serif",
-  marginRight: "50px",
-};
-const displayContents: React.CSSProperties = {
-  display: "contents",
-};
-const penultimateLevel: React.CSSProperties = {
-  display: "contents",
-};
-const bottomLevel: React.CSSProperties = {
-  marginBottom: 10,
-};
-const fontWeightNormal: React.CSSProperties = {
-  fontWeight: "normal",
-};
-const topLabel: React.CSSProperties = {
-  ...fontWeightNormal,
-  fontSize: "2em",
-  gridColumn: "1 / 6",
-  marginBottom: 0,
-};
-const midLabel: React.CSSProperties = {
-  ...fontWeightNormal,
-  borderStyle: "solid none none none",
-  gridColumn: "1 / 6",
-  justifySelf: "stretch",
-  paddingTop: 10,
-};
-const secondLabel: React.CSSProperties = {
-  ...midLabel,
-  borderWidth: "2px",
-  fontSize: "1.17em",
-  margin: "20px 0",
-};
-const thirdLabel: React.CSSProperties = {
-  ...midLabel,
-  alignSelf: "end",
-  borderWidth: "1px",
-  fontWeight: "normal",
-  margin: "0 0 5px 0",
-};
-const bottomLabel: React.CSSProperties = {
-  ...fontWeightNormal,
-  margin: "10px 0",
+const LivePreviewDemo = (): JSX.Element => {
+  const spacings = defaultAppTheme?.spacing;
+
+  const livePreviewStyles: React.CSSProperties = {
+    alignItems: "center",
+    display: "grid",
+    gridColumnGap: "24px",
+    gridTemplateColumns: "repeat(7, min-content)",
+  };
+
+  return (
+    <div style={livePreviewStyles}>
+      <div style={{ display: "flex" }}>
+        <ButtonIcon
+          aria-label="grid"
+          style={{ marginRight: spacings?.xxs }}
+          sdsIcon="grid"
+          sdsSize="large"
+          sdsType="primary"
+        />
+        <ButtonIcon
+          aria-label="grid"
+          style={{ marginRight: spacings?.xxs }}
+          sdsIcon="grid"
+          sdsSize="large"
+          sdsType="primary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <ButtonIcon
+          aria-label="infoSpeechBubble"
+          style={{ marginRight: spacings?.m }}
+          sdsIcon="infoSpeechBubble"
+          sdsSize="large"
+          sdsType="secondary"
+        />
+        <ButtonIcon
+          aria-label="infoSpeechBubble"
+          style={{ marginRight: spacings?.m }}
+          sdsIcon="infoSpeechBubble"
+          sdsSize="large"
+          sdsType="secondary"
+        />
+      </div>
+      <div>
+        <ButtonIcon
+          aria-label="xMark"
+          style={{ marginRight: spacings?.m }}
+          sdsIcon="xMark"
+          sdsSize="large"
+          sdsType="tertiary"
+        />
+      </div>
+      <div>
+        <ButtonIcon
+          aria-label="xMark"
+          style={{ marginRight: spacings?.m }}
+          sdsIcon="xMark"
+          sdsSize="medium"
+          sdsType="tertiary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <ButtonIcon
+          aria-label="barChartVertical3"
+          style={{ marginRight: spacings?.s }}
+          sdsIcon="barChartVertical3"
+          sdsSize="small"
+          sdsType="primary"
+        />
+        <ButtonIcon
+          aria-label="barChartVertical3"
+          style={{ marginRight: spacings?.s }}
+          sdsIcon="barChartVertical3"
+          sdsSize="small"
+          sdsType="primary"
+        />
+      </div>
+      <div style={{ display: "flex" }}>
+        <ButtonIcon
+          aria-label="plusCircle"
+          style={{ marginRight: spacings?.s }}
+          sdsIcon="plusCircle"
+          sdsSize="small"
+          sdsType="secondary"
+        />
+        <ButtonIcon
+          aria-label="plusCircle"
+          style={{ marginRight: spacings?.s }}
+          sdsIcon="plusCircle"
+          sdsSize="small"
+          sdsType="secondary"
+        />
+      </div>
+      <div>
+        <ButtonIcon
+          aria-label="xMark"
+          style={{ marginRight: spacings?.s }}
+          sdsIcon="xMark"
+          sdsSize="small"
+          sdsType="tertiary"
+        />
+      </div>
+    </div>
+  );
 };
 
 export const LivePreview = {
   parameters: {
-    controls: {
-      exclude: ["disabled", "on", "sdsIcon", "sdsSize", "sdsType"],
-    },
     snapshot: {
       skip: true,
     },
   },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
 
-  render: (props: Args): JSX.Element => {
-    // loop through all SDS_TYPES
+// Screenshot test
+
+const ScreenshotTestDemo = (): JSX.Element => {
+  const topLevel: React.CSSProperties = {
+    columnGap: "20px",
+    display: "inline-grid",
+    fontFamily: "sans-serif",
+    marginRight: "50px",
+  };
+  const displayContents: React.CSSProperties = {
+    display: "contents",
+  };
+  const penultimateLevel: React.CSSProperties = {
+    display: "contents",
+  };
+  const bottomLevel: React.CSSProperties = {
+    marginBottom: 10,
+  };
+  const fontWeightNormal: React.CSSProperties = {
+    fontWeight: "normal",
+  };
+  const topLabel: React.CSSProperties = {
+    ...fontWeightNormal,
+    fontSize: "2em",
+    gridColumn: "1 / 6",
+    marginBottom: 0,
+  };
+  const midLabel: React.CSSProperties = {
+    ...fontWeightNormal,
+    borderStyle: "solid none none none",
+    gridColumn: "1 / 6",
+    justifySelf: "stretch",
+    paddingTop: 10,
+  };
+  const secondLabel: React.CSSProperties = {
+    ...midLabel,
+    borderWidth: "2px",
+    fontSize: "1.17em",
+    margin: "20px 0",
+  };
+  const thirdLabel: React.CSSProperties = {
+    ...midLabel,
+    alignSelf: "end",
+    borderWidth: "1px",
+    fontWeight: "normal",
+    margin: "0 0 5px 0",
+  };
+  const bottomLabel: React.CSSProperties = {
+    ...fontWeightNormal,
+    margin: "10px 0",
+  };
+
+  // loop through all SDS_TYPES
+  return (
+    <>
+      {SDS_TYPES.map((sdsType) => {
+        return <ButtonIconTypeOption sdsType={sdsType} key={sdsType} />;
+      })}
+    </>
+  );
+
+  // loop through all SDS_SIZES + create headers for SDS_TYPES
+  function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
     return (
-      <>
-        {SDS_TYPES.map((sdsType) => {
-          return <ButtonIconTypeOption sdsType={sdsType} key={sdsType} />;
+      <div style={topLevel}>
+        <h3 style={topLabel}>
+          Type: <b>{sdsType}</b>
+        </h3>
+        {SDS_SIZES.map((sdsSize) => {
+          // primary and secondary types don't have medium size
+          if (
+            (sdsType === "primary" || sdsType === "secondary") &&
+            sdsSize === "medium"
+          ) {
+            return null;
+          }
+
+          return (
+            <ButtonIconSizeOption
+              sdsType={sdsType}
+              sdsSize={sdsSize}
+              key={sdsSize}
+            />
+          );
         })}
-      </>
+      </div>
     );
+  }
 
-    // loop through all SDS_SIZES + create headers for SDS_TYPES
-    function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
-      return (
-        <div style={topLevel}>
-          <h3 style={topLabel}>
-            Type: <b>{sdsType}</b>
-          </h3>
-          {SDS_SIZES.map((sdsSize) => {
-            // primary and secondary types don't have medium size
-            if (
-              (sdsType === "primary" || sdsType === "secondary") &&
-              sdsSize === "medium"
-            ) {
-              return null;
-            }
+  // loop through all ON_OPTIONS + create headers for SDS_SIZES
+  function ButtonIconSizeOption({
+    sdsType,
+    sdsSize,
+  }: {
+    sdsType: SDSTypes[number];
+    sdsSize: SDSSizes[number];
+  }) {
+    // establish which combinations have `on` as a prop (used below and passed to next loop)
+    const onLabelNeeded =
+      sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small");
 
-            return (
-              <ButtonIconSizeOption
-                sdsType={sdsType}
-                sdsSize={sdsSize}
-                key={sdsSize}
-              />
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all ON_OPTIONS + create headers for SDS_SIZES
-    function ButtonIconSizeOption({
-      sdsType,
-      sdsSize,
-    }: {
-      sdsType: SDSTypes[number];
-      sdsSize: SDSSizes[number];
-    }) {
-      // establish which combinations have `on` as a prop (used below and passed to next loop)
-      const onLabelNeeded =
-        sdsType === "primary" ||
-        (sdsType === "secondary" && sdsSize === "small");
-
-      return (
-        <div style={displayContents}>
-          <h4 style={secondLabel}>
-            Size: <b>{sdsSize}</b>
-          </h4>
-          {ON_OPTIONS.map((on) => {
-            return (
-              // for the combinations with `on` as a prop, loop through all values for `on` (true, false)
-              // for the combinations without `on` as a prop, loop through only once
-              (onLabelNeeded ||
-                ((sdsType === "tertiary" ||
-                  (sdsType === "secondary" && sdsSize === "large")) &&
-                  on === false)) && (
-                <ButtonIconOnOption
-                  sdsType={sdsType}
-                  sdsSize={sdsSize}
-                  on={on}
-                  key={String(on)}
-                  onLabelNeeded={onLabelNeeded}
-                />
-              )
-            );
-          })}
-        </div>
-      );
-    }
-
-    // loop through all DISABLED_OPTIONS + create headers for ON_OPTIONS
-    function ButtonIconOnOption({
-      sdsType,
-      sdsSize,
-      on,
-      onLabelNeeded,
-    }: {
-      sdsType: SDSTypes[number];
-      sdsSize: SDSSizes[number];
-      on: (typeof ON_OPTIONS)[number];
-      onLabelNeeded: boolean;
-    }) {
-      return (
-        <div style={displayContents}>
-          {/* only show the "On: ..." label for combinations that have `on` as a prop */}
-          {onLabelNeeded && (
-            <h5 style={thirdLabel}>
-              On: <b>{on ? "true" : "false"}</b>
-            </h5>
-          )}
-          {DISABLED_OPTIONS.map((disabled) => {
-            return (
-              <ButtonIconDisabledOption
+    return (
+      <div style={displayContents}>
+        <h4 style={secondLabel}>
+          Size: <b>{sdsSize}</b>
+        </h4>
+        {ON_OPTIONS.map((on) => {
+          return (
+            // for the combinations with `on` as a prop, loop through all values for `on`(true, false)
+            // for the combinations without `on` as a prop, loop through only once
+            (onLabelNeeded ||
+              ((sdsType === "tertiary" ||
+                (sdsType === "secondary" && sdsSize === "large")) &&
+                on === false)) && (
+              <ButtonIconOnOption
                 sdsType={sdsType}
                 sdsSize={sdsSize}
                 on={on}
-                disabled={disabled}
-                key={String(disabled)}
+                key={String(on)}
+                onLabelNeeded={onLabelNeeded}
               />
-            );
-          })}
-        </div>
-      );
-    }
+            )
+          );
+        })}
+      </div>
+    );
+  }
 
-    // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
-    function ButtonIconDisabledOption({
-      sdsType,
-      sdsSize,
-      on,
-      disabled,
-    }: {
-      sdsType: SDSTypes[number];
-      sdsSize: SDSSizes[number];
-      on: (typeof ON_OPTIONS)[number];
-      disabled: (typeof DISABLED_OPTIONS)[number];
-    }) {
-      const SDS_ICONS = {
-        primary: {
-          large: "grid",
-          small: "barChartVertical3",
-        },
-        secondary: {
-          large: "infoSpeechBubble",
-          small: "plusCircle",
-        },
-        tertiary: {
-          large: "xMark",
-          medium: "xMark",
-          small: "xMark",
-        },
-      };
+  // loop through all DISABLED_OPTIONS + create headers for ON_OPTIONS
+  function ButtonIconOnOption({
+    sdsType,
+    sdsSize,
+    on,
+    onLabelNeeded,
+  }: {
+    sdsType: SDSTypes[number];
+    sdsSize: SDSSizes[number];
+    on: (typeof ON_OPTIONS)[number];
+    onLabelNeeded: boolean;
+  }) {
+    return (
+      <div style={displayContents}>
+        {/* only show the "On: ..." label for combinations that have `on` as a prop */}
+        {onLabelNeeded && (
+          <h5 style={thirdLabel}>
+            On: <b>{on ? "true" : "false"}</b>
+          </h5>
+        )}
+        {DISABLED_OPTIONS.map((disabled) => {
+          return (
+            <ButtonIconDisabledOption
+              sdsType={sdsType}
+              sdsSize={sdsSize}
+              on={on}
+              disabled={disabled}
+              key={String(disabled)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
 
-      return (
-        <div style={penultimateLevel}>
-          {PSEUDO_STATES.map((state) => {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore: invalid `sdsIcon` is skipped in <ButtonIconTypeOption />
-            const sdsIcon = SDS_ICONS[sdsType][sdsSize];
+  // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
+  function ButtonIconDisabledOption({
+    sdsType,
+    sdsSize,
+    on,
+    disabled,
+  }: {
+    sdsType: SDSTypes[number];
+    sdsSize: SDSSizes[number];
+    on: (typeof ON_OPTIONS)[number];
+    disabled: (typeof DISABLED_OPTIONS)[number];
+  }) {
+    const SDS_ICONS = {
+      primary: {
+        large: "grid",
+        small: "barChartVertical3",
+      },
+      secondary: {
+        large: "infoSpeechBubble",
+        small: "plusCircle",
+      },
+      tertiary: {
+        large: "xMark",
+        medium: "xMark",
+        small: "xMark",
+      },
+    };
 
-            return (
-              <div style={bottomLevel}>
-                {(disabled === false ||
-                  (disabled === true && state === "default")) && (
-                  <>
-                    <h6 style={bottomLabel}>
-                      {disabled === false ? "State: " : "Disabled: "}
-                      <br />
-                      <b>{disabled === false ? state : "true"}</b>
-                    </h6>
-                    <RawButtonIcon
-                      {...props}
-                      aria-label={sdsIcon}
-                      sdsIcon={sdsIcon}
-                      data-testid="button-icon"
-                      sdsType={sdsType}
-                      sdsSize={sdsSize}
-                      on={on}
-                      disabled={disabled}
-                      className={`pseudo-${state}`}
-                      key={state}
-                    />
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  }, // close render
-}; // close LivePreview
+    return (
+      <div style={penultimateLevel}>
+        {PSEUDO_STATES.map((state) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: invalid `sdsIcon` is skipped in <ButtonIconTypeOption />
+          const sdsIcon = SDS_ICONS[sdsType][sdsSize];
+
+          return (
+            <div style={bottomLevel}>
+              {/* remove irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
+              {(disabled === false ||
+                (disabled === true && state === "default")) && (
+                <>
+                  <h6 style={bottomLabel}>
+                    {disabled === false ? "State: " : "Disabled: "}
+                    <br />
+                    <b>{disabled === false ? state : "true"}</b>
+                  </h6>
+                  <ButtonIcon
+                    aria-label={sdsIcon}
+                    sdsIcon={sdsIcon}
+                    data-testid="button-icon"
+                    sdsType={sdsType}
+                    sdsSize={sdsSize}
+                    on={on}
+                    disabled={disabled}
+                    className={`pseudo-${state}`}
+                    key={state}
+                  />
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // }, // close render
+}; // close ScreenshotTest
+
+export const ScreenshotTest = {
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
+};
 
 // Test
 
