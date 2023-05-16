@@ -60,7 +60,144 @@ export const Default = {
   },
 };
 
-// Live Preview
+// Rounded Live Preview
+
+const placementStyles: React.CSSProperties = {
+  display: "grid",
+  gridColumnGap: "10px",
+  gridRowGap: "0px",
+  gridTemplateColumns: "repeat(6, 120px)",
+  gridTemplateRows: "1fr",
+};
+
+const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
+  return (
+    <div style={placementStyles}>
+      <RawButton {...props} sdsStyle="rounded" sdsType="primary">
+        {TEXT}
+      </RawButton>
+      <RawButton
+        {...props}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        sdsStyle="rounded"
+        sdsType="primary"
+      >
+        {TEXT}
+      </RawButton>
+      <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
+        {TEXT}
+      </RawButton>
+      <RawButton
+        {...props}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        sdsStyle="rounded"
+        sdsType="secondary"
+      >
+        {TEXT}
+      </RawButton>
+    </div>
+  );
+};
+
+export const RoundedLivePreview = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <RoundedLivePreviewDemo {...args} />,
+};
+
+// Square Live Preview
+
+const SquareLivePreviewDemo = (props: Args): JSX.Element => {
+  return (
+    <div style={placementStyles as React.CSSProperties}>
+      <RawButton {...props} sdsStyle="square" sdsType="primary">
+        {TEXT}
+      </RawButton>
+      <RawButton
+        {...props}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        sdsStyle="square"
+        sdsType="primary"
+      >
+        {TEXT}
+      </RawButton>
+      <RawButton {...props} sdsStyle="square" sdsType="secondary">
+        {TEXT}
+      </RawButton>
+      <RawButton
+        {...props}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        sdsStyle="square"
+        sdsType="secondary"
+      >
+        {TEXT}
+      </RawButton>
+    </div>
+  );
+};
+
+export const SquareLivePreview = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <SquareLivePreviewDemo {...args} />,
+};
+
+// Minimal Live Preview
+
+const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
+  const minimalPlacementStyles: React.CSSProperties = {
+    display: "grid",
+    gridColumnGap: "24px",
+    gridRowGap: "0px",
+    gridTemplateColumns: "repeat(3, min-content)",
+    gridTemplateRows: "1fr",
+  };
+
+  return (
+    <div style={minimalPlacementStyles}>
+      <RawButton {...props} sdsStyle="minimal" sdsType="primary">
+        {TEXT}
+      </RawButton>
+      <RawButton
+        {...props}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+        sdsStyle="minimal"
+        sdsType="primary"
+      >
+        {TEXT}
+      </RawButton>
+      <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
+        {TEXT}
+      </RawButton>
+    </div>
+  );
+};
+
+export const MinimalLivePreview = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <MinimalLivePreviewDemo {...args} />,
+};
+
+// Screenshot Test
 
 const topLevel: React.CSSProperties = {
   columnGap: "20px",
@@ -111,7 +248,7 @@ const bottomLabel: React.CSSProperties = {
   margin: "10px 0",
 };
 
-export const LivePreview = {
+export const ScreenshotTest = {
   parameters: {
     controls: {
       exclude: ["onClick", "sdsStyle", "sdsType", "text"],
@@ -234,6 +371,7 @@ export const LivePreview = {
           {PSEUDO_STATES.map((state) => {
             return (
               <div style={bottomLevel}>
+                {/* removes irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
                 {(disabled === false ||
                   (disabled === true && state === "default")) && (
                   <>
