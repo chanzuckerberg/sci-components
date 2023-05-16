@@ -228,17 +228,12 @@ const ScreenshotTestDemo = (): JSX.Element => {
   const bottomLevel: React.CSSProperties = {
     marginBottom: 10,
   };
-  const fontWeightNormal: React.CSSProperties = {
-    fontWeight: "normal",
-  };
   const topLabel: React.CSSProperties = {
-    ...fontWeightNormal,
     fontSize: "2em",
     gridColumn: "1 / 6",
     marginBottom: 0,
   };
   const midLabel: React.CSSProperties = {
-    ...fontWeightNormal,
     borderStyle: "solid none none none",
     gridColumn: "1 / 6",
     justifySelf: "stretch",
@@ -254,11 +249,12 @@ const ScreenshotTestDemo = (): JSX.Element => {
     ...midLabel,
     alignSelf: "end",
     borderWidth: "1px",
+    fontSize: "0.83em",
     fontWeight: "normal",
     margin: "0 0 5px 0",
   };
   const bottomLabel: React.CSSProperties = {
-    ...fontWeightNormal,
+    fontSize: "0.67em",
     margin: "10px 0",
   };
 
@@ -275,9 +271,9 @@ const ScreenshotTestDemo = (): JSX.Element => {
   function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
     return (
       <div style={topLevel}>
-        <h3 style={topLabel}>
+        <p style={topLabel}>
           Type: <b>{sdsType}</b>
-        </h3>
+        </p>
         {SDS_SIZES.map((sdsSize) => {
           // primary and secondary types don't have medium size
           if (
@@ -313,9 +309,9 @@ const ScreenshotTestDemo = (): JSX.Element => {
 
     return (
       <div style={displayContents}>
-        <h4 style={secondLabel}>
+        <p style={secondLabel}>
           Size: <b>{sdsSize}</b>
-        </h4>
+        </p>
         {ON_OPTIONS.map((on) => {
           return (
             // for the combinations with `on` as a prop, loop through all values for `on`(true, false)
@@ -354,9 +350,9 @@ const ScreenshotTestDemo = (): JSX.Element => {
       <div style={displayContents}>
         {/* only show the "On: ..." label for combinations that have `on` as a prop */}
         {onLabelNeeded && (
-          <h5 style={thirdLabel}>
+          <p style={thirdLabel}>
             On: <b>{on ? "true" : "false"}</b>
-          </h5>
+          </p>
         )}
         {DISABLED_OPTIONS.map((disabled) => {
           return (
@@ -414,11 +410,11 @@ const ScreenshotTestDemo = (): JSX.Element => {
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
                 <>
-                  <h6 style={bottomLabel}>
+                  <p style={bottomLabel}>
                     {disabled === false ? "State: " : "Disabled: "}
                     <br />
                     <b>{disabled === false ? state : "true"}</b>
-                  </h6>
+                  </p>
                   <ButtonIcon
                     aria-label={sdsIcon}
                     sdsIcon={sdsIcon}
