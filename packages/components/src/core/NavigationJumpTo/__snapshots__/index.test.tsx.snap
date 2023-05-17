@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
+<div
+  class="MuiBox-root css-1562zja"
+>
+  <div
+    class="MuiBox-root css-1nbic85"
+  >
+    <div
+      class="MuiTabs-root MuiTabs-vertical css-17er4j7-MuiTabs-root"
+    >
+      <div
+        class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+        style="overflow: hidden; margin-right: 0px;"
+      >
+        <div
+          aria-label="navigation-jump-to"
+          aria-orientation="vertical"
+          class="MuiTabs-flexContainer MuiTabs-flexContainerVertical css-lfwcke-MuiTabs-flexContainer"
+          role="tablist"
+        >
+          <button
+            aria-controls="jump-to-panel-0"
+            aria-selected="true"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected css-4q45a1-MuiButtonBase-root-MuiTab-root"
+            id="navigation-jump-to-section-1"
+            role="tab"
+            tabindex="0"
+            type="button"
+          >
+            Section 1
+          </button>
+          <button
+            aria-controls="jump-to-panel-1"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+            id="navigation-jump-to-section-2"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Section 2
+          </button>
+          <button
+            aria-controls="jump-to-panel-2"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+            id="navigation-jump-to-section-3"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Section 3
+          </button>
+          <button
+            aria-controls="jump-to-panel-3"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+            id="navigation-jump-to-section-4"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Section 4
+          </button>
+          <button
+            aria-controls="jump-to-panel-4"
+            aria-selected="false"
+            class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+            id="navigation-jump-to-section-5"
+            role="tab"
+            tabindex="-1"
+            type="button"
+          >
+            Section 5
+          </button>
+        </div>
+        <span
+          class="MuiTabs-indicator css-10d9dml-MuiTabs-indicator"
+          style="top: 0px; height: 0px;"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="MuiBox-root css-8atqhb"
+  >
+    <div
+      id="jump-to-panel-0"
+      role="tabpanel"
+      style="align-items: center; background-color: rgb(242, 242, 242); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin-bottom: 16px; margin-right: 16px; min-height: 120vh;"
+    >
+      <div
+        class="MuiBox-root css-19kzrtu"
+      >
+        Section #1
+      </div>
+    </div>
+    <div
+      id="jump-to-panel-1"
+      role="tabpanel"
+      style="align-items: center; background-color: rgb(242, 242, 242); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin-bottom: 16px; margin-right: 16px; min-height: 120vh;"
+    >
+      <div
+        class="MuiBox-root css-19kzrtu"
+      >
+        Section #2
+      </div>
+    </div>
+    <div
+      id="jump-to-panel-2"
+      role="tabpanel"
+      style="align-items: center; background-color: rgb(242, 242, 242); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin-bottom: 16px; margin-right: 16px; min-height: 120vh;"
+    >
+      <div
+        class="MuiBox-root css-19kzrtu"
+      >
+        Section #3
+      </div>
+    </div>
+    <div
+      id="jump-to-panel-3"
+      role="tabpanel"
+      style="align-items: center; background-color: rgb(242, 242, 242); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin-bottom: 16px; margin-right: 16px; min-height: 120vh;"
+    >
+      <div
+        class="MuiBox-root css-19kzrtu"
+      >
+        Section #4
+      </div>
+    </div>
+    <div
+      id="jump-to-panel-4"
+      role="tabpanel"
+      style="align-items: center; background-color: rgb(242, 242, 242); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin-bottom: 16px; margin-right: 16px; min-height: 120vh;"
+    >
+      <div
+        class="MuiBox-root css-19kzrtu"
+      >
+        Section #5
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -13,7 +13,7 @@ describe("<NavigationJumpTo />", () => {
 
   it("renders navigation jump to component", () => {
     render(<Test />);
-    const elements = screen.getAllByTestId("Section 1");
+    const elements = screen.getAllByTestId("navigation-jump-to");
     expect(elements).toBeTruthy();
   });
 });

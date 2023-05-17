@@ -17,12 +17,11 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
       <div
         ref={ref}
         role="tabpanel"
-        id={`masoud-${index}`}
-        // aria-labelledby={`navigation-jump-to-${index}`}
+        id={`jump-to-panel-${index}`}
         style={{
           alignItems: "center",
           backgroundColor: "#f2f2f2",
-          color: "rgba(0, 0, 0, 0.2)",
+          color: "black",
           display: "flex",
           fontFamily: "sans-serif",
           fontSize: "42px",
@@ -143,16 +142,43 @@ const TestDemo = (): JSX.Element => {
   const sectionRef4 = React.useRef(null);
 
   return (
-    <RawNavigationJumpTo
-      indicatorColor="primary"
-      items={[
-        { elementRef: sectionRef0, title: "Section 1" },
-        { elementRef: sectionRef1, title: "Section 2" },
-        { elementRef: sectionRef2, title: "Section 3" },
-        { elementRef: sectionRef3, title: "Section 4" },
-        { elementRef: sectionRef4, title: "Section 5" },
-      ]}
-    />
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row-reverse",
+        width: "100%",
+      }}
+    >
+      <Box sx={{ width: 150 }}>
+        <RawNavigationJumpTo
+          data-testid="navigation-jump-to"
+          items={[
+            { elementRef: sectionRef0, title: "Section 1" },
+            { elementRef: sectionRef1, title: "Section 2" },
+            { elementRef: sectionRef2, title: "Section 3" },
+            { elementRef: sectionRef3, title: "Section 4" },
+            { elementRef: sectionRef4, title: "Section 5" },
+          ]}
+        />
+      </Box>
+      <Box sx={{ width: "100%" }}>
+        <TabPanel index={0} ref={sectionRef0}>
+          Section #1
+        </TabPanel>
+        <TabPanel index={1} ref={sectionRef1}>
+          Section #2
+        </TabPanel>
+        <TabPanel index={2} ref={sectionRef2}>
+          Section #3
+        </TabPanel>
+        <TabPanel index={3} ref={sectionRef3}>
+          Section #4
+        </TabPanel>
+        <TabPanel index={4} ref={sectionRef4}>
+          Section #5
+        </TabPanel>
+      </Box>
+    </Box>
   );
 };
 

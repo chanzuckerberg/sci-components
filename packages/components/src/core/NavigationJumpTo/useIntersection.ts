@@ -12,6 +12,17 @@ export default function useInView(
     elementRef: React.MutableRefObject<HTMLElement | null>;
   }>
 ) {
+  // If IntersectionObserver is not available (e.g., in a test environment),
+  // return a default result indicating that all elements are not in view
+  if (!window.IntersectionObserver) {
+    return items.map((item) => {
+      return {
+        el: item.elementRef,
+        isInView: false,
+      };
+    });
+  }
+
   const [elements, setElements] = useState<{
     [key: string]: { isInView: boolean };
   }>({});

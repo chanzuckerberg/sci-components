@@ -66,14 +66,15 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
         {...rest}
         indicatorColor="primary"
       >
-        {items.map(({ title, elementRef }) => (
+        {items.map(({ title, elementRef }, index) => (
           <StyledTab
             disableRipple
             key={toKebabCase(title)}
             label={title}
             {...a11yProps(
               toKebabCase(title),
-              elementRef.current?.getAttribute("id") || "navigation-jump-to-id"
+              elementRef.current?.getAttribute("id") ||
+                `navigation-jump-to-${index}`
             )}
           />
         ))}
