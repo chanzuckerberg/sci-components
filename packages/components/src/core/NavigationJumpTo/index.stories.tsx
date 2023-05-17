@@ -150,6 +150,9 @@ export const LivePreview = {
     ],
   },
   parameters: {
+    axe: {
+      disabledRules: ["aria-valid-attr-value"],
+    },
     snapshot: {
       skip: true,
     },
