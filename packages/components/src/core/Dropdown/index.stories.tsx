@@ -2,6 +2,7 @@ import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
+import Button from "../Button";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import LoadingIndicator from "../LoadingIndicator";
@@ -179,6 +180,62 @@ export const InsideModal = {
   },
 };
 
+// Controlled Dropdown
+const ControlledDropdownDemo = (props: Args): JSX.Element => {
+  const [value, setValue] = useState<DefaultDropdownMenuOption[] | null>([]);
+
+  const StyledButton = styled(Button)`
+    &:focus {
+      outline: none;
+    }
+
+    margin: 0 0 24px 8px;
+  `;
+
+  return (
+    <>
+      <StyledButton onClick={handleClick} sdsStyle="minimal" sdsType="primary">
+        Click here to select the first three options
+      </StyledButton>
+      <br />
+      <RawDropdown
+        label="Click Target"
+        options={GITHUB_LABELS}
+        {...props}
+        value={value}
+        onChange={handleChange}
+        data-testid="dropdown"
+        DropdownMenuProps={{
+          groupBy: (option: DefaultDropdownMenuOption) =>
+            option.section as string,
+          title: "Github Labels",
+        }}
+        multiple
+      />
+    </>
+  );
+
+  function handleClick() {
+    setValue([...GITHUB_LABELS.slice(0, 3)] as DefaultDropdownMenuOption[]);
+  }
+
+  function handleChange(newValue: DefaultDropdownMenuOption[] | null) {
+    setValue(newValue);
+  }
+};
+
+export const ControlledDropdown = {
+  args: {
+    label: LABEL,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ControlledDropdownDemo {...args} />,
+};
+
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
@@ -195,6 +252,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   args: {
+    buttonPosition: "left",
     label: LABEL,
     onChange: noop,
   },
