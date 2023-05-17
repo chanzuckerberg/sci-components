@@ -1,5 +1,4 @@
 import React, { forwardRef, useEffect } from "react";
-import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
@@ -23,7 +22,6 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
     const { items, indicatorColor, ...rest } = props;
     const [value, setValue] = React.useState(0);
-    const [pendingValue, setPendingValue] = React.useState(0);
 
     const a11yProps = (title: string, id: string) => {
       return {
@@ -33,7 +31,6 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
     };
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
       items[newValue]?.elementRef?.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -42,16 +39,11 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
 
     const sectionIsInView = useInView(items);
 
-    useScrollStopListener(() => {
-      setValue(pendingValue);
-    }, 100);
-
     useEffect(() => {
       const sectionInView = Object.entries(sectionIsInView).findIndex(
         (section) => section[1].isInView
       );
-
-      setPendingValue(sectionInView);
+      if (sectionInView > -1) setValue(sectionInView);
     }, [sectionIsInView]);
 
     return (
