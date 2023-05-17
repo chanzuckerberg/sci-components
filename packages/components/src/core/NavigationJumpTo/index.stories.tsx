@@ -17,7 +17,6 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
       <div
         ref={ref}
         role="tabpanel"
-        id={`jump-to-panel-${index}`}
         style={{
           alignItems: "center",
           backgroundColor: "#f4f4f4",

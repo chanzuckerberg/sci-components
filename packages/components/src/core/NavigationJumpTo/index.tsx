@@ -23,6 +23,15 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
     const { items, indicatorColor, ...rest } = props;
     const [value, setValue] = React.useState(0);
 
+    useEffect(() => {
+      items.forEach((item, index) => {
+        item.elementRef.current?.setAttribute(
+          "id",
+          `navigation-jump-to-${index}`
+        );
+      });
+    }, []);
+
     const a11yProps = (title: string, id: string) => {
       return {
         "aria-controls": id,
