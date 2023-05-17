@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "14.6.2",
+  "version": "14.6.3",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
@@ -31,8 +31,8 @@
     "@storybook/react": "^7.0.5",
     "@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
-    "@testing-library/react": "^12.1.2",
     "@testing-library/dom": "^9.2.0",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^27.0.2",
     "@types/postcss-flexbugs-fixes": "^4.2.1",
