@@ -87,7 +87,8 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
     class="MuiBox-root css-8atqhb"
   >
     <div
-      id="jump-to-panel-0"
+      id="navigation-jump-to-0"
+      index="0"
       role="tabpanel"
       style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin: 6px 22px 22px 6px; min-height: 120vh;"
     >
@@ -98,7 +99,8 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      id="jump-to-panel-1"
+      id="navigation-jump-to-1"
+      index="1"
       role="tabpanel"
       style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin: 6px 22px 22px 6px; min-height: 120vh;"
     >
@@ -109,7 +111,8 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      id="jump-to-panel-2"
+      id="navigation-jump-to-2"
+      index="2"
       role="tabpanel"
       style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin: 6px 22px 22px 6px; min-height: 120vh;"
     >
@@ -120,7 +123,8 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      id="jump-to-panel-3"
+      id="navigation-jump-to-3"
+      index="3"
       role="tabpanel"
       style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin: 6px 22px 22px 6px; min-height: 120vh;"
     >
@@ -131,7 +135,8 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      id="jump-to-panel-4"
+      id="navigation-jump-to-4"
+      index="4"
       role="tabpanel"
       style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: sans-serif; font-size: 42px; font-weight: 100; justify-content: center; margin: 6px 22px 22px 6px; min-height: 120vh;"
     >

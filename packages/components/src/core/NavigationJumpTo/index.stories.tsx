@@ -11,7 +11,7 @@ interface TabPanelPropsExtra extends TabPanelProps {
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
   (props, ref) => {
-    const { children, index, ...other } = props;
+    const { children, ...other } = props;
 
     return (
       <div

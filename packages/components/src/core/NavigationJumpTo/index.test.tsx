@@ -38,6 +38,7 @@ describe("<NavigationJumpTo />", () => {
               return "test-item-1";
             },
             scrollIntoView: jest.fn(),
+            setAttribute: jest.fn(),
           },
         },
         title: "Item 1",
@@ -49,6 +50,7 @@ describe("<NavigationJumpTo />", () => {
               return "test-item-1";
             },
             scrollIntoView: jest.fn(),
+            setAttribute: jest.fn(),
           },
         },
         title: "Item 2",
