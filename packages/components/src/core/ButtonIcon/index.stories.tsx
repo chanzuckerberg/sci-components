@@ -213,49 +213,14 @@ export const LivePreview = {
 // Screenshot test
 
 const ScreenshotTestDemo = (): JSX.Element => {
-  const topLevel: React.CSSProperties = {
-    columnGap: "20px",
-    display: "inline-grid",
-    fontFamily: "sans-serif",
-    marginRight: "50px",
-  };
-  const displayContents: React.CSSProperties = {
+  const DISPLAY_CONTENTS: React.CSSProperties = {
     display: "contents",
   };
-  const penultimateLevel: React.CSSProperties = {
-    display: "contents",
-  };
-  const bottomLevel: React.CSSProperties = {
-    marginBottom: 10,
-  };
-  const topLabel: React.CSSProperties = {
-    fontSize: "2em",
-    gridColumn: "1 / 6",
-    marginBottom: 0,
-  };
-  const midLabel: React.CSSProperties = {
+  const MID_LABEL: React.CSSProperties = {
     borderStyle: "solid none none none",
     gridColumn: "1 / 6",
     justifySelf: "stretch",
     paddingTop: 10,
-  };
-  const secondLabel: React.CSSProperties = {
-    ...midLabel,
-    borderWidth: "2px",
-    fontSize: "1.17em",
-    margin: "20px 0",
-  };
-  const thirdLabel: React.CSSProperties = {
-    ...midLabel,
-    alignSelf: "end",
-    borderWidth: "1px",
-    fontSize: "0.83em",
-    fontWeight: "normal",
-    margin: "0 0 5px 0",
-  };
-  const bottomLabel: React.CSSProperties = {
-    fontSize: "0.67em",
-    margin: "10px 0",
   };
 
   // loop through all SDS_TYPES
@@ -269,9 +234,20 @@ const ScreenshotTestDemo = (): JSX.Element => {
 
   // loop through all SDS_SIZES + create headers for SDS_TYPES
   function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      columnGap: "20px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginRight: "50px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "2em",
+      gridColumn: "1 / 6",
+      marginBottom: 0,
+    };
     return (
-      <div style={topLevel}>
-        <p style={topLabel}>
+      <div style={LEVEL_STYLE}>
+        <p style={LABEL_STYLE}>
           Type: <b>{sdsType}</b>
         </p>
         {SDS_SIZES.map((sdsSize) => {
@@ -304,19 +280,25 @@ const ScreenshotTestDemo = (): JSX.Element => {
     sdsSize: SDSSizes[number];
   }) {
     // establish which combinations have `on` as a prop (used below and passed to next loop)
-    const onLabelNeeded =
+    const ON_LABEL_NEEDED =
       sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small");
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "2px",
+      fontSize: "1.17em",
+      margin: "20px 0",
+    };
 
     return (
-      <div style={displayContents}>
-        <p style={secondLabel}>
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
           Size: <b>{sdsSize}</b>
         </p>
         {ON_OPTIONS.map((on) => {
           return (
             // for the combinations with `on` as a prop, loop through all values for `on`(true, false)
             // for the combinations without `on` as a prop, loop through only once
-            (onLabelNeeded ||
+            (ON_LABEL_NEEDED ||
               ((sdsType === "tertiary" ||
                 (sdsType === "secondary" && sdsSize === "large")) &&
                 on === false)) && (
@@ -325,7 +307,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
                 sdsSize={sdsSize}
                 on={on}
                 key={String(on)}
-                onLabelNeeded={onLabelNeeded}
+                onLabelNeeded={ON_LABEL_NEEDED}
               />
             )
           );
@@ -346,11 +328,19 @@ const ScreenshotTestDemo = (): JSX.Element => {
     on: (typeof ON_OPTIONS)[number];
     onLabelNeeded: boolean;
   }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      alignSelf: "end",
+      borderWidth: "1px",
+      fontSize: "0.83em",
+      fontWeight: "normal",
+      margin: "0 0 5px 0",
+    };
     return (
-      <div style={displayContents}>
+      <div style={DISPLAY_CONTENTS}>
         {/* only show the "On: ..." label for combinations that have `on` as a prop */}
         {onLabelNeeded && (
-          <p style={thirdLabel}>
+          <p style={LABEL_STYLE}>
             On: <b>{on ? "true" : "false"}</b>
           </p>
         )}
@@ -396,21 +386,31 @@ const ScreenshotTestDemo = (): JSX.Element => {
         small: "xMark",
       },
     };
+    const DISABLED_LEVEL: React.CSSProperties = {
+      display: "contents",
+    };
+    const PSEUDO_STATE_LEVEL: React.CSSProperties = {
+      marginBottom: 10,
+    };
+    const PSEUDO_STATE_LABEL: React.CSSProperties = {
+      fontSize: "0.67em",
+      margin: "10px 0",
+    };
 
     return (
-      <div style={penultimateLevel}>
+      <div style={DISABLED_LEVEL}>
         {PSEUDO_STATES.map((state) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore: invalid `sdsIcon` is skipped in <ButtonIconTypeOption />
           const sdsIcon = SDS_ICONS[sdsType][sdsSize];
 
           return (
-            <div style={bottomLevel}>
+            <div style={PSEUDO_STATE_LEVEL}>
               {/* remove irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
                 <>
-                  <p style={bottomLabel}>
+                  <p style={PSEUDO_STATE_LABEL}>
                     {disabled === false ? "State: " : "Disabled: "}
                     <br />
                     <b>{disabled === false ? state : "true"}</b>
