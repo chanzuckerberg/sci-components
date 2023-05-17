@@ -1,22 +1,16 @@
 import { NavigationJumpTo, NavigationJumpToProps } from "@czi-sds/components";
 import React from "react";
 
-const CellBasicNameSpaceTest = (props: NavigationJumpToProps) => {
-  const sectionRef0 = React.useRef(null);
-  const sectionRef1 = React.useRef(null);
-  const sectionRef2 = React.useRef(null);
-  const sectionRef3 = React.useRef(null);
-  const sectionRef4 = React.useRef(null);
-
+const NavigationJumpToNameSpaceTest = (props: NavigationJumpToProps) => {
   return (
     <NavigationJumpTo
       indicatorColor="primary"
       items={[
-        { elementRef: sectionRef0, title: "Section 1" },
-        { elementRef: sectionRef1, title: "Section 2" },
-        { elementRef: sectionRef2, title: "Section 3" },
-        { elementRef: sectionRef3, title: "Section 4" },
-        { elementRef: sectionRef4, title: "Section 5" },
+        { elementRef: { current: null }, title: "Item 1" },
+        { elementRef: { current: null }, title: "Item 2" },
+        { elementRef: { current: null }, title: "Item 3" },
+        { elementRef: { current: null }, title: "Item 4" },
+        { elementRef: { current: null }, title: "Item 5" },
       ]}
     />
   );

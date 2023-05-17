@@ -20,15 +20,14 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
         id={`jump-to-panel-${index}`}
         style={{
           alignItems: "center",
-          backgroundColor: "#f2f2f2",
+          backgroundColor: "#f4f4f4",
           color: "black",
           display: "flex",
           fontFamily: "sans-serif",
           fontSize: "42px",
           fontWeight: 100,
           justifyContent: "center",
-          marginBottom: 16,
-          marginRight: 16,
+          margin: "6px 22px 22px 6px",
           minHeight: "120vh",
         }}
         {...other}
@@ -132,58 +131,60 @@ export const Default = {
   },
 };
 
+// Live Preview
+
+const LivePreviewDemo = (props: Args): JSX.Element => {
+  const { items, ...rest } = props;
+
+  return <RawNavigationJumpTo items={items} {...rest} />;
+};
+
+export const LivePreview = {
+  args: {
+    items: [
+      { elementRef: { current: null }, title: "Item 1" },
+      { elementRef: { current: null }, title: "Item 2" },
+      { elementRef: { current: null }, title: "Item 3" },
+      { elementRef: { current: null }, title: "Item 4" },
+      { elementRef: { current: null }, title: "Item 5" },
+    ],
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
 // Test
 
-const TestDemo = (): JSX.Element => {
-  const sectionRef0 = React.useRef(null);
-  const sectionRef1 = React.useRef(null);
-  const sectionRef2 = React.useRef(null);
-  const sectionRef3 = React.useRef(null);
-  const sectionRef4 = React.useRef(null);
+const TestDemo = (props: Args): JSX.Element => {
+  const { items, ...rest } = props;
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "row-reverse",
-        width: "100%",
-      }}
-    >
-      <Box sx={{ width: 150 }}>
-        <RawNavigationJumpTo
-          data-testid="navigation-jump-to"
-          items={[
-            { elementRef: sectionRef0, title: "Section 1" },
-            { elementRef: sectionRef1, title: "Section 2" },
-            { elementRef: sectionRef2, title: "Section 3" },
-            { elementRef: sectionRef3, title: "Section 4" },
-            { elementRef: sectionRef4, title: "Section 5" },
-          ]}
-        />
-      </Box>
-      <Box sx={{ width: "100%" }}>
-        <TabPanel index={0} ref={sectionRef0}>
-          Section #1
-        </TabPanel>
-        <TabPanel index={1} ref={sectionRef1}>
-          Section #2
-        </TabPanel>
-        <TabPanel index={2} ref={sectionRef2}>
-          Section #3
-        </TabPanel>
-        <TabPanel index={3} ref={sectionRef3}>
-          Section #4
-        </TabPanel>
-        <TabPanel index={4} ref={sectionRef4}>
-          Section #5
-        </TabPanel>
-      </Box>
-    </Box>
+    <RawNavigationJumpTo
+      data-testid="navigation-jump-to"
+      items={items}
+      {...rest}
+    />
   );
 };
 
 export const Test = {
+  args: {
+    items: [
+      { elementRef: { current: null }, title: "Item 1" },
+      { elementRef: { current: null }, title: "Item 2" },
+      { elementRef: { current: null }, title: "Item 3" },
+      { elementRef: { current: null }, title: "Item 4" },
+      { elementRef: { current: null }, title: "Item 5" },
+    ],
+  },
   parameters: {
+    axe: {
+      disabledRules: ["aria-valid-attr-value"],
+    },
     controls: {
       exclude: ["indicatorColor", "items"],
     },
