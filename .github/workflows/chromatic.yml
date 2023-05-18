@@ -1,7 +1,10 @@
 name: "Chromatic"
 
 # Event for the workflow
-on: push
+on:
+  push:
+    branches-ignore:
+      - prod
 
 jobs:
   chromatic-deployment:
