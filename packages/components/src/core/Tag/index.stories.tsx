@@ -12,41 +12,22 @@ const Tag = (props: Args): JSX.Element => {
   return <RawTag label={label} {...props} />;
 };
 
-const CUSTOM_COLOR_TUPLES = {
-  labelAndBack: ["#000000", "#C65FA7"],
-  labelAndBackAndIcon: ["#000000", "#C65FA7", "#FFD400"],
-};
-
-const availableColorOptions = [
-  "primary",
-  "info",
-  "success",
-  "warning",
-  "error",
-  "gray",
-  "beta",
-  CUSTOM_COLOR_TUPLES.labelAndBack,
-  CUSTOM_COLOR_TUPLES.labelAndBackAndIcon,
-];
-
-const availableIconOptions = [
+const ICONS = [
   undefined,
   <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
   <Icon sdsSize="l" sdsIcon="loading" sdsType="button" />,
   <WbSunny />,
   <CheckCircleOutline />,
 ];
-
 const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
-const COLORS = availableColorOptions.slice(0, 9) as ExtraTagProps["tagColor"][];
-
-// FEEDBACK
-// FEEDBACK
-// FEEDBACK
-// This mutates the constant array, so it's no longer constant
-// Why do we need to dynamically remove the last color?
-COLORS.splice(7, 1);
-
+const COLORS: ExtraTagProps["tagColor"][] = [
+  "primary",
+  "info",
+  "error",
+  "gray",
+  "beta",
+  ["#000000", "#C65FA7", "#FFD400"],
+];
 const SDS_TYPES: ExtraTagProps["sdsType"][] = ["primary", "secondary"];
 
 export default {
@@ -61,13 +42,12 @@ export default {
           "error",
           "gray",
           "beta",
-          "Custom colors for Label, Background",
           "Custom colors for Label, Background, Icon",
         ],
         type: "select",
       },
-      mapping: availableColorOptions,
-      options: Object.keys(availableColorOptions),
+      mapping: COLORS,
+      options: Object.keys(COLORS),
     },
     hover: {
       control: { type: "boolean" },
@@ -83,8 +63,8 @@ export default {
         ],
         type: "select",
       },
-      mapping: availableIconOptions,
-      options: Object.keys(availableIconOptions),
+      mapping: ICONS,
+      options: Object.keys(ICONS),
     },
     label: {
       control: { type: "text" },
@@ -214,12 +194,14 @@ export const LivePreview = {
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-// Screenshot test
+// Screenshot tests
 
 // Main Screenshot Test
 
 function ScreenshotTestDemo(props: Args): JSX.Element {
-  return <CommonScreenshotTestDemo props={props} colors={COLORS} />;
+  return (
+    <CommonScreenshotTestDemo props={props} colors={COLORS} types={SDS_TYPES} />
+  );
 }
 
 export const ScreenshotTest = {
@@ -248,11 +230,16 @@ export const ScreenshotTest = {
 // Gray Primary only
 // Tags with `color` of `gray` and `sdsType` of `primary` have their own story here because they do not currently pass the a11y tests. However, design has manually tested them with APCA, and they are accessible; our tests just do not use APCA yet. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
 
-const GRAY_PRIMARY_COLORS = ["gray"] as ExtraTagProps["tagColor"][];
+const GRAY_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = ["gray"];
+const GRAY_PRIMARY_TYPES: ExtraTagProps["sdsType"][] = ["primary"];
 
 function GrayPrimaryScreenshotTestDemo(props: Args): JSX.Element {
   return (
-    <CommonScreenshotTestDemo props={props} colors={GRAY_PRIMARY_COLORS} />
+    <CommonScreenshotTestDemo
+      props={props}
+      colors={GRAY_PRIMARY_COLORS}
+      types={GRAY_PRIMARY_TYPES}
+    />
   );
 }
 
@@ -283,24 +270,25 @@ export const GrayPrimaryScreenshotTest = {
   ),
 };
 
-// Success Primary + Warning Primary only
-// Tags with `color` of `success` or `warning` and `sdsType` of `primary` have their own story here because they do not currently pass the a11y tests. Design is aware of this and will be updating their colors. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
+// Success + Warning only
+// Tags with `color` of `success` or `warning` have their own story here because they do not currently pass the a11y tests. Design is aware of this and will be updating their colors. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
 
-const SUCCESS_WARNING_PRIMARY_COLORS = [
+const SUCCESS_WARNING_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = [
   "success",
   "warning",
-] as ExtraTagProps["tagColor"][];
+];
 
-function SuccessWarningPrimaryScreenshotTestDemo(props: Args): JSX.Element {
+function SuccessWarningScreenshotTestDemo(props: Args): JSX.Element {
   return (
     <CommonScreenshotTestDemo
       props={props}
       colors={SUCCESS_WARNING_PRIMARY_COLORS}
+      types={SDS_TYPES}
     />
   );
 }
 
-export const SuccessWarningPrimaryScreenshotTest = {
+export const SuccessWarningScreenshotTest = {
   args: {
     color: COLORS[0],
     hover: HOVER_OPTIONS[0],
@@ -323,7 +311,7 @@ export const SuccessWarningPrimaryScreenshotTest = {
   },
 
   render: (props: Args): JSX.Element => (
-    <SuccessWarningPrimaryScreenshotTestDemo {...props} />
+    <SuccessWarningScreenshotTestDemo {...props} />
   ),
 };
 

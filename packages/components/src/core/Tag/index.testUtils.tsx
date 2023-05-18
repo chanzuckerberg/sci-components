@@ -1,4 +1,3 @@
-import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
 import { Args } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
@@ -6,50 +5,37 @@ import RawTag from "./index";
 import { ExtraTagProps } from "./style";
 
 const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
-const SDS_TYPES: ExtraTagProps["sdsType"][] = ["primary", "secondary"];
-
 const DISPLAY_CONTENTS: React.CSSProperties = {
   display: "contents",
 };
-
-const FONT_WEIGHT_NORMAL: React.CSSProperties = {
-  fontWeight: "normal",
-};
-
 const MID_LABEL: React.CSSProperties = {
-  ...FONT_WEIGHT_NORMAL,
   borderStyle: "solid none none none",
   gridColumn: "1 / 6",
   justifySelf: "stretch",
   paddingTop: 10,
 };
-
-export const AVAILABLE_ICON_OPTIONS = [
+const ICON_OPTIONS = [
   undefined,
   <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  <Icon sdsSize="l" sdsIcon="loading" sdsType="button" />,
-  <WbSunny />,
-  <CheckCircleOutline />,
 ];
-
-const iconOptions = AVAILABLE_ICON_OPTIONS.slice(0, 2);
-
 export const HOVER_OPTIONS = [true, false];
-
 export function CommonScreenshotTestDemo({
   props,
   colors,
+  types,
 }: {
   props: Args;
   colors: ExtraTagProps["tagColor"][];
+  types: ExtraTagProps["sdsType"][];
 }): JSX.Element {
   // loop through all SDS_STYLES
   return (
     <>
       {SDS_STYLES.map((sdsStyle) => {
         return (
-          <PrimaryTagStyle
+          <TagStyle
             colors={colors}
+            types={types}
             props={props}
             sdsStyle={sdsStyle}
             key={sdsStyle}
@@ -61,40 +47,42 @@ export function CommonScreenshotTestDemo({
 }
 
 // loop through all COLORS + create headers for SDS_STYLES
-function PrimaryTagStyle({
+function TagStyle({
   colors,
+  types,
   sdsStyle,
   props,
 }: {
   colors: ExtraTagProps["tagColor"][];
+  types: ExtraTagProps["sdsType"][];
   sdsStyle: ExtraTagProps["sdsStyle"];
   props: Args;
 }) {
-  const topLevel: React.CSSProperties = {
+  const LEVEL_STYLE: React.CSSProperties = {
     columnGap: "20px",
     display: "inline-grid",
     fontFamily: "sans-serif",
     marginRight: "50px",
   };
 
-  const topLabel: React.CSSProperties = {
-    ...FONT_WEIGHT_NORMAL,
+  const LABEL_STYLE: React.CSSProperties = {
     fontSize: "2em",
     gridColumn: "1 / 6",
     marginBottom: 0,
   };
 
   return (
-    <div style={topLevel}>
-      <h2 style={topLabel}>
+    <div style={LEVEL_STYLE}>
+      <h2 style={LABEL_STYLE}>
         Style: <b>{sdsStyle}</b>
       </h2>
       {colors.map((color) => {
         return (
-          <PrimaryTagColor
+          <TagColor
             sdsStyle={sdsStyle}
             color={color}
             key={String(color)}
+            types={types}
             props={props}
           />
         );
@@ -104,16 +92,18 @@ function PrimaryTagStyle({
 }
 
 // loop through all SDS_TYPES + create headers for COLORS
-function PrimaryTagColor({
+function TagColor({
   sdsStyle,
   color,
+  types,
   props,
 }: {
   sdsStyle: ExtraTagProps["sdsStyle"];
   color: ExtraTagProps["tagColor"];
+  types: ExtraTagProps["sdsType"][];
   props: Args;
 }) {
-  const h3Label: React.CSSProperties = {
+  const LABEL_STYLE: React.CSSProperties = {
     ...MID_LABEL,
     borderWidth: "5px",
     fontSize: "1.5em",
@@ -122,12 +112,15 @@ function PrimaryTagColor({
 
   return (
     <div style={DISPLAY_CONTENTS}>
-      <h3 style={h3Label}>
-        Color: <b>{color}</b>
-      </h3>
-      {SDS_TYPES.map((sdsType) => {
-        return (
-          <PrimaryTagType
+      <p style={LABEL_STYLE}>
+        Color: <b>{typeof color === "string" ? color : "custom"}</b>
+      </p>
+      {types.map((sdsType) => {
+        // exclude gray primary from rendering in the main ScreenshotTest story (types.includes("secondary")), but allow gray primary to render in GrayPrimaryScreenshotTest story
+        return types.includes("secondary") &&
+          sdsType === "primary" &&
+          color === "gray" ? null : (
+          <TagType
             sdsStyle={sdsStyle}
             color={color}
             sdsType={sdsType}
@@ -141,7 +134,7 @@ function PrimaryTagColor({
 }
 
 // loop through all ICON_OPTIONS + create headers for SDS_TYPES
-function PrimaryTagType({
+function TagType({
   sdsStyle,
   color,
   sdsType,
@@ -152,7 +145,7 @@ function PrimaryTagType({
   sdsType: ExtraTagProps["sdsType"];
   props: Args;
 }) {
-  const h4Label: React.CSSProperties = {
+  const LABEL_STYLE: React.CSSProperties = {
     ...MID_LABEL,
     borderWidth: "2px",
     fontSize: "1.17em",
@@ -161,12 +154,12 @@ function PrimaryTagType({
 
   return (
     <div style={DISPLAY_CONTENTS}>
-      <h4 style={h4Label}>
+      <p style={LABEL_STYLE}>
         Type: <b>{sdsType}</b>
-      </h4>
-      {iconOptions.map((icon) => {
+      </p>
+      {ICON_OPTIONS.map((icon) => {
         return (
-          <PrimaryTagIcon
+          <TagIcon
             sdsStyle={sdsStyle}
             color={color}
             sdsType={sdsType}
@@ -180,8 +173,8 @@ function PrimaryTagType({
   );
 }
 
-// loop through all HOVER_OPTIONS + create headers for iconOptions
-function PrimaryTagIcon({
+// loop through all HOVER_OPTIONS + create headers for ICON_OPTIONS
+function TagIcon({
   sdsStyle,
   color,
   sdsType,
@@ -191,21 +184,22 @@ function PrimaryTagIcon({
   sdsStyle: ExtraTagProps["sdsStyle"];
   color: ExtraTagProps["tagColor"];
   sdsType: ExtraTagProps["sdsType"];
-  icon: (typeof iconOptions)[number];
+  icon: (typeof ICON_OPTIONS)[number];
   props: Args;
 }) {
-  const h5Label: React.CSSProperties = {
+  const LABEL_STYLE: React.CSSProperties = {
     ...MID_LABEL,
     alignSelf: "end",
     borderWidth: "1px",
+    fontSize: "0.83em",
     margin: "0 0 5px 0",
   };
 
   return (
     <div style={DISPLAY_CONTENTS}>
-      <h5 style={h5Label}>
+      <p style={LABEL_STYLE}>
         Icon: <b>{icon ? "yes" : "no"}</b>
-      </h5>
+      </p>
       {HOVER_OPTIONS.map((hover) => {
         return (
           <TagState
@@ -228,44 +222,40 @@ function TagState(props: {
   sdsStyle: ExtraTagProps["sdsStyle"];
   color: ExtraTagProps["tagColor"];
   sdsType: ExtraTagProps["sdsType"];
-  icon: (typeof iconOptions)[number];
+  icon: (typeof ICON_OPTIONS)[number];
   hover: (typeof HOVER_OPTIONS)[number];
 }) {
   const { sdsStyle, color, sdsType, icon, hover } = props;
-
   const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
-
-  const penultimateLevel: React.CSSProperties = {
+  const HOVER_LEVEL: React.CSSProperties = {
     display: "contents",
   };
-
-  const bottomLabel: React.CSSProperties = {
-    ...FONT_WEIGHT_NORMAL,
+  const STATE_LABEL: React.CSSProperties = {
+    fontSize: "0.67em",
     margin: "10px 0",
   };
-
-  const bottomLevel: React.CSSProperties = {
+  const STATE_LEVEL: React.CSSProperties = {
     marginBottom: 10,
   };
 
-  const label = "Label";
+  const LABEL = "Label";
 
   return (
-    <div style={penultimateLevel}>
+    <div style={HOVER_LEVEL}>
       {PSEUDO_STATES.map((state) => {
         return (
-          <div style={bottomLevel}>
+          <div style={STATE_LEVEL}>
             {/* removes irrelevant hover iterations: when combined with all pseudo-states except default, hover=false is impossible */}
             {(hover === true || (hover === false && state === "default")) && (
               <>
-                <h6 style={bottomLabel}>
+                <p style={STATE_LABEL}>
                   {hover ? "State: " : "Hoverable: "}
                   <br />
                   <b>{hover ? state : "false"}</b>
-                </h6>
+                </p>
                 <RawTag
                   {...props}
-                  label={label}
+                  label={LABEL}
                   data-testid="tag"
                   sdsStyle={sdsStyle}
                   color={color}
