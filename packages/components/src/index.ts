@@ -73,6 +73,8 @@ export * from "./core/MenuItem";
 export { default as MenuItem } from "./core/MenuItem";
 export * from "./core/MenuSelect";
 export { default as MenuSelect } from "./core/MenuSelect";
+export * from "./core/NavigationJumpTo";
+export { default as NavigationJumpTo } from "./core/NavigationJumpTo";
 export * from "./core/Notification";
 export { default as Notification } from "./core/Notification";
 export * from "./core/Pagination";
