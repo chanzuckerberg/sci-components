@@ -111,7 +111,6 @@
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
     "test": "lerna run test",
     "namespace-check": "lerna run namespace-check",
-    "prepare": "husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
