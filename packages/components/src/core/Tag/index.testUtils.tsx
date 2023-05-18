@@ -73,9 +73,9 @@ function TagStyle({
 
   return (
     <div style={LEVEL_STYLE}>
-      <h2 style={LABEL_STYLE}>
+      <p style={LABEL_STYLE}>
         Style: <b>{sdsStyle}</b>
-      </h2>
+      </p>
       {colors.map((color) => {
         return (
           <TagColor
