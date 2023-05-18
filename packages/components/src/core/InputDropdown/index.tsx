@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "../Icon";
 import {
   IconWrapper,
-  InputDropdownProps,
+  InputDropdownProps as SdsInputDropdownProps,
   LabelWrapper,
   MinimalDetails,
   StyledCounter,
@@ -11,7 +11,8 @@ import {
   StyledLabel,
 } from "./style";
 
-export type { InputDropdownProps };
+export type InputDropdownProps = SdsInputDropdownProps &
+  React.HTMLAttributes<HTMLButtonElement>;
 
 /**
  * @see https://mui.com/material-ui/react-button/

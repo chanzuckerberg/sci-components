@@ -16,8 +16,8 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.6.0",
-    "@mui/lab": "^5.0.0-alpha.76",
-    "@mui/material": "^5.6.0",
+    "@mui/lab": "^5.0.0-alpha.129",
+    "@mui/material": "^5.13.0",
     "@rollup/plugin-typescript": "^8.3.1",
     "@rollup/plugin-url": "^6.1.0",
     "@storybook/addon-a11y": "^7.0.5",
@@ -34,7 +34,9 @@
     "@storybook/theming": "^7.0.5",
     "@svgr/rollup": "^5.5.0",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/dom": "^9.2.0",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^27.0.2",
     "@types/postcss-flexbugs-fixes": "^4.2.1",
     "@types/react": "^17.0.2",
@@ -109,12 +111,13 @@
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
     "test": "lerna run test",
     "namespace-check": "lerna run namespace-check",
+    "prepare": "husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
     "lerna-version": "lerna version --no-changelog --conventional-commits --conventional-graduate --yes",
     "lerna-version-fallback": "lerna version --no-changelog --conventional-commits --yes",
-    "release": "lerna publish from-package --no-verify-access --yes"
+    "release": "lerna publish from-package --yes"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
