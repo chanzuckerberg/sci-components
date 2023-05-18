@@ -8,6 +8,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
     class="MuiBox-root css-1r7i9e6"
   >
     <p
+      id="nav-item-height-slider"
       style="margin-bottom: 5px;"
     >
       Section panel height:
@@ -106,6 +107,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         style="left: 80%;"
       >
         <input
+          aria-labelledby="nav-item-height-slider"
           aria-orientation="horizontal"
           aria-valuemax="120"
           aria-valuemin="20"
@@ -150,6 +152,9 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               type="button"
             >
               Section 1
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
             </button>
             <button
               aria-controls="navigation-jump-to-1"
@@ -161,6 +166,9 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               type="button"
             >
               Section 2
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
             </button>
             <button
               aria-controls="navigation-jump-to-2"
@@ -172,6 +180,9 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               type="button"
             >
               Section 3
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
             </button>
             <button
               aria-controls="navigation-jump-to-3"
@@ -183,6 +194,9 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               type="button"
             >
               Section 4
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
             </button>
             <button
               aria-controls="navigation-jump-to-4"
@@ -194,6 +208,9 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               type="button"
             >
               Section 5
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
             </button>
           </div>
           <span

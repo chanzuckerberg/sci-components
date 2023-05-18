@@ -23,7 +23,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
     const { items, indicatorColor, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);
-    const [value, setValue] = useState(0);
+    const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const sectionIsInView = useInView(items);
 
     // Assign a unique ID to each tab panel element
@@ -56,21 +56,22 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       });
 
       // Update the tab value to newValue to adjust the position of the tabsIndicator
-      setValue(newValue);
+      setFirstTabIndexInview(newValue);
     };
 
     // Observe changes in the sectionIsInView object to update the tabs value
     // based on the index of the visible sections in the viewport.
     useEffect(() => {
       // Retrieve the index of the first section that is intersecting with the viewport.
-      const sectionInView = Object.entries(sectionIsInView).findIndex(
-        (section) => section[1].isInView
+      const sectionInView = Object.values(sectionIsInView).findIndex(
+        (section) => section.isInView
       );
 
       // Update the tabs value only if a section is present in the viewport
       // and no navigation item has been clicked, preventing updates during window scroll
       // and unnecessary movement of the tabs indicator.
-      if (sectionInView > -1 && !navItemClicked) setValue(sectionInView);
+      if (sectionInView > -1 && !navItemClicked)
+        setFirstTabIndexInview(sectionInView);
     }, [sectionIsInView]);
 
     // Set navItemClicked to false to re-enable the option
@@ -84,16 +85,14 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
         ref={ref}
         orientation="vertical"
         variant="fullWidth"
-        value={value}
+        value={firstTabIndexInview}
         onChange={handleChange}
         aria-label="navigation-jump-to"
         sdsIndicatorColor={indicatorColor}
         {...rest}
-        indicatorColor="primary"
       >
         {items.map(({ title, elementRef }, index) => (
           <StyledTab
-            disableRipple
             key={toKebabCase(title)}
             label={title}
             {...a11yProps(

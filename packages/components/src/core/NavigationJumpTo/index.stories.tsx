@@ -63,8 +63,11 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
           width: 250,
         }}
       >
-        <p style={{ marginBottom: "5px" }}>Section panel height:</p>
+        <p id="nav-item-height-slider" style={{ marginBottom: "5px" }}>
+          Section panel height:
+        </p>
         <InputSlider
+          aria-labelledby="nav-item-height-slider"
           min={20}
           max={120}
           step={1}
