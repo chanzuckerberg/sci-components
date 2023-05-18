@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
+<div
+  class="MuiBox-root css-0"
+>
+  <div
+    class="MuiBox-root css-1r7i9e6"
+  >
+    <p
+      id="nav-item-height-slider"
+      style="margin-bottom: 5px;"
+    >
+      Section panel height:
+    </p>
+    <span
+      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-5fiy2b-MuiSlider-root"
+    >
+      <span
+        class="MuiSlider-rail css-14pt78w-MuiSlider-rail"
+      />
+      <span
+        class="MuiSlider-track css-1gv0vcd-MuiSlider-track"
+        style="left: 0%; width: 80%;"
+      />
+      <span
+        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        data-index="0"
+        style="left: 0%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        data-index="0"
+        style="left: 0%;"
+      >
+        20
+      </span>
+      <span
+        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        data-index="1"
+        style="left: 20%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        data-index="1"
+        style="left: 20%;"
+      >
+        40
+      </span>
+      <span
+        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        data-index="2"
+        style="left: 40%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        data-index="2"
+        style="left: 40%;"
+      >
+        60
+      </span>
+      <span
+        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        data-index="3"
+        style="left: 60%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        data-index="3"
+        style="left: 60%;"
+      >
+        80
+      </span>
+      <span
+        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        data-index="4"
+        style="left: 80%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        data-index="4"
+        style="left: 80%;"
+      >
+        100
+      </span>
+      <span
+        class="MuiSlider-mark css-1tfve6q-MuiSlider-mark"
+        data-index="5"
+        style="left: 100%;"
+      />
+      <span
+        aria-hidden="true"
+        class="MuiSlider-markLabel MuiSlider-markLabel css-yafthl-MuiSlider-markLabel"
+        data-index="5"
+        style="left: 100%;"
+      >
+        120
+      </span>
+      <span
+        class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-eg0mwd-MuiSlider-thumb"
+        data-index="0"
+        style="left: 80%;"
+      >
+        <input
+          aria-labelledby="nav-item-height-slider"
+          aria-orientation="horizontal"
+          aria-valuemax="120"
+          aria-valuemin="20"
+          aria-valuenow="100"
+          data-index="0"
+          max="120"
+          min="20"
+          step="1"
+          style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+          type="range"
+          value="100"
+        />
+      </span>
+    </span>
+  </div>
+  <div
+    class="MuiBox-root css-1562zja"
+  >
+    <div
+      class="MuiBox-root css-1nbic85"
+    >
+      <div
+        class="MuiTabs-root MuiTabs-vertical css-17er4j7-MuiTabs-root"
+      >
+        <div
+          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+          style="overflow: hidden; margin-right: 0px;"
+        >
+          <div
+            aria-label="navigation-jump-to"
+            aria-orientation="vertical"
+            class="MuiTabs-flexContainer MuiTabs-flexContainerVertical css-lfwcke-MuiTabs-flexContainer"
+            role="tablist"
+          >
+            <button
+              aria-controls="navigation-jump-to-0"
+              aria-selected="true"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected css-4q45a1-MuiButtonBase-root-MuiTab-root"
+              id="navigation-jump-to-section-1"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              Section 1
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-controls="navigation-jump-to-1"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+              id="navigation-jump-to-section-2"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Section 2
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-controls="navigation-jump-to-2"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+              id="navigation-jump-to-section-3"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Section 3
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-controls="navigation-jump-to-3"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+              id="navigation-jump-to-section-4"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Section 4
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-controls="navigation-jump-to-4"
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
+              id="navigation-jump-to-section-5"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Section 5
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+          <span
+            class="MuiTabs-indicator css-10d9dml-MuiTabs-indicator"
+            style="top: 0px; height: 0px;"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-8atqhb"
+    >
+      <div
+        id="navigation-jump-to-0"
+        index="0"
+        role="tabpanel"
+        style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          Section #1
+          <p
+            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+          >
+            height: 
+            100
+             vh
+          </p>
+        </div>
+      </div>
+      <div
+        id="navigation-jump-to-1"
+        index="1"
+        role="tabpanel"
+        style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          Section #2
+          <p
+            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+          >
+            height: 
+            100
+             vh
+          </p>
+        </div>
+      </div>
+      <div
+        id="navigation-jump-to-2"
+        index="2"
+        role="tabpanel"
+        style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          Section #3
+          <p
+            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+          >
+            height: 
+            100
+             vh
+          </p>
+        </div>
+      </div>
+      <div
+        id="navigation-jump-to-3"
+        index="3"
+        role="tabpanel"
+        style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          Section #4
+          <p
+            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+          >
+            height: 
+            100
+             vh
+          </p>
+        </div>
+      </div>
+      <div
+        id="navigation-jump-to-4"
+        index="4"
+        role="tabpanel"
+        style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          Section #5
+          <p
+            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+          >
+            height: 
+            100
+             vh
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
