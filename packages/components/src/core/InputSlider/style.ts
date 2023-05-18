@@ -93,20 +93,27 @@ const inputSlider = (props: InputSliderExtraProps) => {
   `;
 };
 
-const horizontal = () => {
+const horizontal = (props: InputSliderExtraProps) => {
+  const { marks } = props;
+  const lastMarkIndex = Array.isArray(marks) ? marks.length - 1 : null;
+
   return `
     .MuiSlider-rail,
     .MuiSlider-track {
       border: none;
       height: 4px;
-    
-      //to cover the last mark 4px padding is needed for rail and track
-      padding-right: 4px;
-
-      // to cover the first mark -2px padding left is needed for rail and track
-      margin-left: -2px;
     }
 
+    // Adjust the position of the first mark by moving it 2px to the right to fit it inside the track
+    span[data-index="0"].MuiSlider-mark {
+      left: 2px !important;
+    }
+
+    // Adjust the position of the last mark by moving it 2px to the left to fit it inside the track
+    span[data-index="${lastMarkIndex}"].MuiSlider-mark {
+      left: calc(100% - 2px) !important;
+    }
+    
     .MuiSlider-markLabel {
       top: 26px;
     }
@@ -117,18 +124,25 @@ const horizontal = () => {
   `;
 };
 
-const vertical = () => {
+const vertical = (props: InputSliderExtraProps) => {
+  const { marks } = props;
+  const lastMarkIndex = Array.isArray(marks) ? marks.length - 1 : null;
+
   return `  
     .MuiSlider-rail,
     .MuiSlider-track {
       border: none;
       width: 4px;
+    }
 
-      //to cover the last mark -3px margin-top is needed for rail and track 
-      margin-top: -2px;
+    // Adjust the position of the first mark by moving it 2px up to fit it inside the track.
+    span[data-index="0"].MuiSlider-mark {
+      bottom: 2px !important;
+    }
 
-      //to cover the first mark 3px padding-bottom is needed for rail and track
-      padding-bottom: 4px;
+    // Adjust the position of the last mark by moving it 2px down to fit it inside the track.
+    span[data-index="${lastMarkIndex}"].MuiSlider-mark {
+      bottom: calc(100% - 2px) !important;
     }
 
     .MuiSlider-markLabel {
@@ -176,7 +190,7 @@ export const StyledSlider = styled(Slider)`
 
     return `
       ${inputSlider(props)}
-      ${orientation === "vertical" ? vertical() : horizontal()}
+      ${orientation === "vertical" ? vertical(props) : horizontal(props)}
       ${disabled ? disabledSlider(props) : ""}
     `;
   }}

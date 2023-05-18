@@ -1,4 +1,5 @@
-import React, { forwardRef, useEffect } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
+import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
@@ -21,8 +22,12 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
 const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
     const { items, indicatorColor, ...rest } = props;
-    const [value, setValue] = React.useState(0);
+    const [navItemClicked, setNavItemClicked] = useState(false);
+    const [value, setValue] = useState(0);
+    const sectionIsInView = useInView(items);
 
+    // Assign a unique ID to each tab panel element
+    // for accessibility purposes
     useEffect(() => {
       items.forEach((item, index) => {
         item.elementRef.current?.setAttribute(
@@ -32,28 +37,47 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       });
     }, []);
 
-    const a11yProps = (title: string, id: string) => {
+    const a11yProps = (title: string, elementId: string) => {
       return {
-        "aria-controls": id,
+        "aria-controls": elementId,
         id: `navigation-jump-to-${title}`,
       };
     };
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+      // Set navItemClicked to true to disable changing the tab value
+      // while scrolling. Once the scrolling ends, it is changed back to false.
+      setNavItemClicked(true);
+
+      // Smoothly scroll to the section of the page referenced by the clicked nav item
       items[newValue]?.elementRef?.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
+
+      // Update the tab value to newValue to adjust the position of the tabsIndicator
+      setValue(newValue);
     };
 
-    const sectionIsInView = useInView(items);
-
+    // Observe changes in the sectionIsInView object to update the tabs value
+    // based on the index of the visible sections in the viewport.
     useEffect(() => {
+      // Retrieve the index of the first section that is intersecting with the viewport.
       const sectionInView = Object.entries(sectionIsInView).findIndex(
         (section) => section[1].isInView
       );
-      if (sectionInView > -1) setValue(sectionInView);
+
+      // Update the tabs value only if a section is present in the viewport
+      // and no navigation item has been clicked, preventing updates during window scroll
+      // and unnecessary movement of the tabs indicator.
+      if (sectionInView > -1 && !navItemClicked) setValue(sectionInView);
     }, [sectionIsInView]);
+
+    // Set navItemClicked to false to re-enable the option
+    // to update the tab value based on scroll.
+    useScrollStopListener(() => {
+      setNavItemClicked(false);
+    });
 
     return (
       <StyledTabs

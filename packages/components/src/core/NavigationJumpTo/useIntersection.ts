@@ -24,7 +24,10 @@ export default function useInView(
   }
 
   const [elements, setElements] = useState<{
-    [key: string]: { isInView: boolean };
+    [key: string]: {
+      intersectionEntry: IntersectionObserverEntry;
+      isInView: boolean;
+    };
   }>({});
 
   useEffect(() => {
@@ -38,27 +41,15 @@ export default function useInView(
       entries.forEach((entry, index) => {
         const name = entry.target.getAttribute("id") || index;
 
-        if (entry.isIntersecting) {
-          // Element is in view
-          setElements((prev) => {
-            return {
-              ...prev,
-              [name]: {
-                el: entry,
-                isInView: true,
-              },
-            };
-          });
-        } else {
-          // Element is not in view
-          setElements((prev) => ({
+        setElements((prev) => {
+          return {
             ...prev,
             [name]: {
-              el: entry,
-              isInView: false,
+              intersectionEntry: entry,
+              isInView: entry.isIntersecting,
             },
-          }));
-        }
+          };
+        });
       });
     };
 

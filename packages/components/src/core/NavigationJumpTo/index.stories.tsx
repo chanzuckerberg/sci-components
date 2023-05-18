@@ -3,15 +3,18 @@ import { TabPanelProps } from "@mui/base";
 import { Box } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
+import { useState } from "react";
 import RawNavigationJumpTo from ".";
+import InputSlider from "../InputSlider";
 
 interface TabPanelPropsExtra extends TabPanelProps {
   index: number;
+  sdsDemoHeight: number;
 }
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
   (props, ref) => {
-    const { children, ...other } = props;
+    const { children, sdsDemoHeight, ...other } = props;
 
     return (
       <div
@@ -22,22 +25,29 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
           backgroundColor: "#f4f4f4",
           color: "black",
           display: "flex",
-          fontFamily: "sans-serif",
-          fontSize: "42px",
+          fontFamily: "Open Sans, sans-serif",
+          fontSize: "36px",
           fontWeight: 100,
           justifyContent: "center",
-          margin: "6px 22px 22px 6px",
-          minHeight: "120vh",
+          margin: "0px 22px 22px 6px",
+          minHeight: `${sdsDemoHeight}vh`,
+          textAlign: "center",
         }}
         {...other}
       >
-        <Box sx={{ p: 3 }}>{children}</Box>
+        <Box sx={{ p: 3 }}>
+          {children}
+          <p style={{ fontSize: 14, margin: "5px 0 0 0" }}>
+            height: {sdsDemoHeight} vh
+          </p>
+        </Box>
       </div>
     );
   }
 );
 
 const NavigationJumpTo = (props: Args): JSX.Element => {
+  const [navPanelHeight, setNavPanelHeight] = useState(100);
   const sectionRef0 = React.useRef(null);
   const sectionRef1 = React.useRef(null);
   const sectionRef2 = React.useRef(null);
@@ -45,41 +55,69 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
   const sectionRef4 = React.useRef(null);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "row-reverse",
-        width: "100%",
-      }}
-    >
-      <Box sx={{ width: 150 }}>
-        <RawNavigationJumpTo
-          {...props}
-          items={[
-            { elementRef: sectionRef0, title: "Section 1" },
-            { elementRef: sectionRef1, title: "Section 2" },
-            { elementRef: sectionRef2, title: "Section 3" },
-            { elementRef: sectionRef3, title: "Section 4" },
-            { elementRef: sectionRef4, title: "Section 5" },
+    <Box>
+      <Box
+        sx={{
+          fontFamily: "Open Sans, sans-serif",
+          margin: "0 0 30px 6px",
+          width: 250,
+        }}
+      >
+        <p style={{ marginBottom: "5px" }}>Section panel height:</p>
+        <InputSlider
+          min={20}
+          max={120}
+          step={1}
+          onChange={(_, value) => {
+            setNavPanelHeight(value as number);
+          }}
+          defaultValue={100}
+          marks={[
+            { label: "20", value: 20 },
+            { label: "40", value: 40 },
+            { label: "60", value: 60 },
+            { label: "80", value: 80 },
+            { label: "100", value: 100 },
+            { label: "120", value: 120 },
           ]}
         />
       </Box>
-      <Box sx={{ width: "100%" }}>
-        <TabPanel index={0} ref={sectionRef0}>
-          Section #1
-        </TabPanel>
-        <TabPanel index={1} ref={sectionRef1}>
-          Section #2
-        </TabPanel>
-        <TabPanel index={2} ref={sectionRef2}>
-          Section #3
-        </TabPanel>
-        <TabPanel index={3} ref={sectionRef3}>
-          Section #4
-        </TabPanel>
-        <TabPanel index={4} ref={sectionRef4}>
-          Section #5
-        </TabPanel>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row-reverse",
+          width: "100%",
+        }}
+      >
+        <Box sx={{ width: 150 }}>
+          <RawNavigationJumpTo
+            {...props}
+            items={[
+              { elementRef: sectionRef0, title: "Section 1" },
+              { elementRef: sectionRef1, title: "Section 2" },
+              { elementRef: sectionRef2, title: "Section 3" },
+              { elementRef: sectionRef3, title: "Section 4" },
+              { elementRef: sectionRef4, title: "Section 5" },
+            ]}
+          />
+        </Box>
+        <Box sx={{ width: "100%" }}>
+          <TabPanel index={0} ref={sectionRef0} sdsDemoHeight={navPanelHeight}>
+            Section #1
+          </TabPanel>
+          <TabPanel index={1} ref={sectionRef1} sdsDemoHeight={navPanelHeight}>
+            Section #2
+          </TabPanel>
+          <TabPanel index={2} ref={sectionRef2} sdsDemoHeight={navPanelHeight}>
+            Section #3
+          </TabPanel>
+          <TabPanel index={3} ref={sectionRef3} sdsDemoHeight={navPanelHeight}>
+            Section #4
+          </TabPanel>
+          <TabPanel index={4} ref={sectionRef4} sdsDemoHeight={navPanelHeight}>
+            Section #5
+          </TabPanel>
+        </Box>
       </Box>
     </Box>
   );
