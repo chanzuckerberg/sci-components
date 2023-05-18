@@ -74,6 +74,7 @@ module.exports = {
           "**/*.stories.ts",
           "**/*.stories.tsx",
           "**/*.test.tsx",
+          "**/*.testUtils.tsx",
         ],
         // specify the path to the folder containing package.json
         packageDir: "./",

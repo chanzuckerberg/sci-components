@@ -3,19 +3,24 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawTag from "./index";
+import { CommonScreenshotTestDemo, HOVER_OPTIONS } from "./index.testUtils";
+import { ExtraTagProps } from "./style";
 
 const Tag = (props: Args): JSX.Element => {
   const { label } = props;
-
   return <RawTag label={label} {...props} />;
 };
 
-const customColorTuples = {
-  labelAndBack: ["#A52A2A", "#ffa07a"],
-  labelAndBackAndIcon: ["#A52A2A", "#ffa07a", "#ffe74a"],
-};
+const ICONS = [
+  undefined,
+  <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="loading" sdsType="button" />,
+  <WbSunny />,
+  <CheckCircleOutline />,
+];
+const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
 
-const availableColorOptions = [
+const PANEL_COLORS: ExtraTagProps["tagColor"][] = [
   "primary",
   "info",
   "success",
@@ -23,17 +28,15 @@ const availableColorOptions = [
   "error",
   "gray",
   "beta",
-  customColorTuples.labelAndBack,
-  customColorTuples.labelAndBackAndIcon,
+  ["#000000", "#C65FA7", "#FFD400"],
 ];
 
-const availableIconOptions = [
-  undefined,
-  <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  <Icon sdsSize="l" sdsIcon="loading" sdsType="button" />,
-  <WbSunny />,
-  <CheckCircleOutline />,
-];
+// use PANEL_COLORS to generate colors for ScreenshotTest ...
+const colors: ExtraTagProps["tagColor"][] = PANEL_COLORS.slice(0, 8);
+// ... but for now it can't include "success" or "warning" colors because they fail a11y tests due to known design issues
+colors.splice(2, 2);
+
+const SDS_TYPES: ExtraTagProps["sdsType"][] = ["primary", "secondary"];
 
 export default {
   argTypes: {
@@ -47,13 +50,12 @@ export default {
           "error",
           "gray",
           "beta",
-          "Custom colors for Label, Background",
           "Custom colors for Label, Background, Icon",
         ],
         type: "select",
       },
-      mapping: availableColorOptions,
-      options: Object.keys(availableColorOptions),
+      mapping: PANEL_COLORS,
+      options: Object.keys(PANEL_COLORS),
     },
     hover: {
       control: { type: "boolean" },
@@ -69,8 +71,8 @@ export default {
         ],
         type: "select",
       },
-      mapping: availableIconOptions,
-      options: Object.keys(availableIconOptions),
+      mapping: ICONS,
+      options: Object.keys(ICONS),
     },
     label: {
       control: { type: "text" },
@@ -198,6 +200,162 @@ export const LivePreview = {
     },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Screenshot tests
+
+const SANS_SERIF_STYLE = { fontFamily: "sans-serif" };
+
+// Main Screenshot Test
+
+function ScreenshotTestDemo(props: Args): JSX.Element {
+  return (
+    <>
+      <p style={SANS_SERIF_STYLE}>
+        This story currently excludes Tags with both `sdsType` of `primary` and
+        `color` of `gray`, and those with `color` of `success` and `primary`,
+        because they do not pass the a11y tests. They have their own stories
+        wherein the a11y tests are disabled until the a11y tests are updated to
+        accommodate APCA (for gray x primary) or until the Tag colors are
+        updated by design (for success and primary).
+      </p>
+      <CommonScreenshotTestDemo
+        props={props}
+        colors={colors}
+        types={SDS_TYPES}
+      />
+    </>
+  );
+}
+
+export const ScreenshotTest = {
+  args: {
+    color: colors[0],
+    hover: HOVER_OPTIONS[0],
+    label: "Label",
+    sdsStyle: SDS_STYLES[0],
+    sdsType: SDS_TYPES[0],
+  },
+  parameters: {
+    axe: {
+      timeout: 10 * 1000,
+    },
+    controls: {
+      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+
+  render: (props: Args): JSX.Element => <ScreenshotTestDemo {...props} />,
+};
+
+// Gray Primary only
+// Tags with `color` of `gray` and `sdsType` of `primary` have their own story here because they do not currently pass the a11y tests. However, design has manually tested them with APCA, and they are accessible; our tests just do not use APCA yet. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
+
+const GRAY_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = ["gray"];
+const GRAY_PRIMARY_TYPES: ExtraTagProps["sdsType"][] = ["primary"];
+
+function GrayPrimaryScreenshotTestDemo(props: Args): JSX.Element {
+  return (
+    <>
+      <p style={SANS_SERIF_STYLE}>
+        Tags with `color` of `gray` and `sdsType` of `primary` have their own
+        story here because they do not currently pass the a11y tests. However,
+        design has manually tested them with APCA, and they are accessible; our
+        tests just do not use APCA yet. In the meantime, the a11y tests are
+        currently disabled for this story, but enabled for the remaining colors
+        in the ScreenshotTest story, so they can be tested properly.
+      </p>
+      <CommonScreenshotTestDemo
+        props={props}
+        colors={GRAY_PRIMARY_COLORS}
+        types={GRAY_PRIMARY_TYPES}
+      />
+    </>
+  );
+}
+
+export const GrayPrimaryScreenshotTest = {
+  args: {
+    color: colors[0],
+    hover: HOVER_OPTIONS[0],
+    label: "Label",
+    sdsStyle: SDS_STYLES[0],
+    sdsType: SDS_TYPES[0],
+  },
+  parameters: {
+    axe: {
+      // `color-contrast` is disabled for this test because design tested it with APCA and determined these colors pass, our test just isn't able to use APCA yet; this color was pulled into its own story so the remaining colors can be tested separately
+      disabledRules: ["color-contrast"],
+      timeout: 10 * 1000,
+    },
+    controls: {
+      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+
+  render: (props: Args): JSX.Element => (
+    <GrayPrimaryScreenshotTestDemo {...props} />
+  ),
+};
+
+// Success + Warning only
+// Tags with `color` of `success` or `warning` have their own story here because they do not currently pass the a11y tests. Design is aware of this and will be updating their colors. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
+
+const SUCCESS_WARNING_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = [
+  "success",
+  "warning",
+];
+
+function SuccessWarningScreenshotTestDemo(props: Args): JSX.Element {
+  return (
+    <>
+      <p style={SANS_SERIF_STYLE}>
+        Tags with `color` of `success` or `warning`have their own story here
+        because they do not currently pass the a11y tests. Design is aware of
+        this and will be updating their colors. In the meantime the a11y tests
+        are currently disabled for this story, but enabled for the remaining
+        colors in the ScreenshotTest story, so they can be tested properly.
+      </p>
+      <CommonScreenshotTestDemo
+        props={props}
+        colors={SUCCESS_WARNING_PRIMARY_COLORS}
+        types={SDS_TYPES}
+      />
+    </>
+  );
+}
+
+export const SuccessWarningScreenshotTest = {
+  args: {
+    color: colors[0],
+    hover: HOVER_OPTIONS[0],
+    label: "Label",
+    sdsStyle: SDS_STYLES[0],
+    sdsType: SDS_TYPES[0],
+  },
+  parameters: {
+    axe: {
+      // `color-contrast` is disabled for this test because it is now a known issue and design will work on adjusting the colors so that they pass; these colors were pulled into their own story so the remaining colors can be tested separately
+      disabledRules: ["color-contrast"],
+      timeout: 10 * 1000,
+    },
+    controls: {
+      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+
+  render: (props: Args): JSX.Element => (
+    <SuccessWarningScreenshotTestDemo {...props} />
+  ),
 };
 
 // Test
