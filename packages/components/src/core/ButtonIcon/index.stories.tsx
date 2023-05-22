@@ -281,7 +281,8 @@ const ScreenshotTestDemo = (): JSX.Element => {
   }) {
     // establish which combinations have `on` as a prop (used below and passed to next loop)
     const ON_LABEL_NEEDED =
-      sdsType === "primary" || (sdsType === "secondary" && sdsSize === "small");
+      (sdsType === "primary" && sdsSize === "large") ||
+      (sdsType === "secondary" && sdsSize === "small");
     const LABEL_STYLE: React.CSSProperties = {
       ...MID_LABEL,
       borderWidth: "2px",
@@ -300,6 +301,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
             // for the combinations without `on` as a prop, loop through only once
             (ON_LABEL_NEEDED ||
               ((sdsType === "tertiary" ||
+                (sdsType === "primary" && sdsSize === "small") ||
                 (sdsType === "secondary" && sdsSize === "large")) &&
                 on === false)) && (
               <ButtonIconOnOption
