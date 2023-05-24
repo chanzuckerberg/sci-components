@@ -49,5 +49,17 @@
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.1.3",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@mui/base": "^5.0.0-beta.2",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.131",
+    "@mui/material": "^5.13.0",
+    "react": ">=17.0.1",
+    "react-dom": ">=17.0.1"
   }
 }

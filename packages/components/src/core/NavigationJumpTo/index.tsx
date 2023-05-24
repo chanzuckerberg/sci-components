@@ -28,15 +28,8 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const sectionIsInView = useInView(items);
 
-    // Assign a unique ID to each tab panel element
-    // for accessibility purposes
     useEffect(() => {
-      items.forEach((item, index) => {
-        item.elementRef.current?.setAttribute(
-          "id",
-          `navigation-panel-${index + 1}`
-        );
-
+      items.forEach((item) => {
         if (offsetTop) {
           const wrapper = document.createElement("div");
           wrapper.style.position = "relative";
@@ -137,7 +130,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
             {...a11yProps(
               toKebabCase(title),
               elementRef.current?.getAttribute("id") ||
-                `navigation-jump-to-${index}`
+                `navigation-panel-${index + 1}`
             )}
           />
         ))}

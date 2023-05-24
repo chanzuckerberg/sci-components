@@ -143,7 +143,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
             role="tablist"
           >
             <button
-              aria-controls="navigation-jump-to-0"
+              aria-controls="navigation-panel-1"
               aria-selected="true"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected css-4q45a1-MuiButtonBase-root-MuiTab-root"
               id="navigation-tab-section-1"
@@ -157,7 +157,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               />
             </button>
             <button
-              aria-controls="navigation-jump-to-1"
+              aria-controls="navigation-panel-2"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
               id="navigation-tab-section-2"
@@ -171,7 +171,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               />
             </button>
             <button
-              aria-controls="navigation-jump-to-2"
+              aria-controls="navigation-panel-3"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
               id="navigation-tab-section-3"
@@ -185,7 +185,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               />
             </button>
             <button
-              aria-controls="navigation-jump-to-3"
+              aria-controls="navigation-panel-4"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
               id="navigation-tab-section-4"
@@ -199,7 +199,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               />
             </button>
             <button
-              aria-controls="navigation-jump-to-4"
+              aria-controls="navigation-panel-5"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
               id="navigation-tab-section-5"

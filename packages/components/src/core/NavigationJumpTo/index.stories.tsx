@@ -111,19 +111,39 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
             width: "100%",
           }}
         >
-          <TabPanel ref={sectionRef0} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-1"
+            ref={sectionRef0}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #1
           </TabPanel>
-          <TabPanel ref={sectionRef1} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-2"
+            ref={sectionRef1}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #2
           </TabPanel>
-          <TabPanel ref={sectionRef2} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-3"
+            ref={sectionRef2}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #3
           </TabPanel>
-          <TabPanel ref={sectionRef3} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-4"
+            ref={sectionRef3}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #4
           </TabPanel>
-          <TabPanel ref={sectionRef4} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-5"
+            ref={sectionRef4}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #5
           </TabPanel>
         </Box>
