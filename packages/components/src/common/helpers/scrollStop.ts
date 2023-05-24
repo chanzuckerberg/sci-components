@@ -18,7 +18,8 @@ const createScrollStopListener = (callback: () => void, timeout = 50) => {
     handle = setTimeout(callback, timeout);
   };
 
-  window.addEventListener("scroll", onScroll);
+  // Attach scroll event listener to the specified element
+  document.addEventListener("scroll", onScroll, true);
 
   return () => {
     if (removed) {
@@ -31,7 +32,8 @@ const createScrollStopListener = (callback: () => void, timeout = 50) => {
       clearTimeout(handle);
     }
 
-    window.removeEventListener("scroll", onScroll);
+    // Remove the scroll event listener from the element
+    document.removeEventListener("scroll", onScroll);
   };
 };
 
