@@ -177,14 +177,22 @@ export default {
         ],
         type: "select",
       },
+      defaultValue: { summary: "primary" },
+      description: "Color of the tab indicator",
       mapping: availableColorOptions,
       options: Object.keys(availableColorOptions),
     },
     items: {
-      control: { type: "object" },
+      control: { require: true, type: "object" },
+      defaultValue: { summary: "-" },
+      description:
+        "An array of object containing a title for the Navigation Tab and a ref to the section div.",
     },
     offsetTop: {
-      control: { type: "number" },
+      control: { description: "wew", type: "number" },
+      defaultValue: { summary: "0" },
+      description:
+        "To apply the offsetTop to the component, please refresh the page.",
     },
   },
   component: NavigationJumpTo,
@@ -197,6 +205,10 @@ export const Default = {
   args: {
     indicatorColor: "primary",
     items: [],
+    offsetTop: 0,
+  },
+  parameters: {
+    controls: { expanded: true },
   },
 };
 
