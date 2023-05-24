@@ -70,14 +70,9 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        devDependencies: [
-          "**/*.stories.ts",
-          "**/*.stories.tsx",
-          "**/*.test.tsx",
-          "**/*.testUtils.tsx",
-        ],
-        // specify the path to the folder containing package.json
-        packageDir: "./",
+        // Dependencies must be specified in `devDependencies` in the monorepo root
+        devDependencies: true,
+        packageDir: __dirname,
       },
     ],
     "import/prefer-default-export": "off",

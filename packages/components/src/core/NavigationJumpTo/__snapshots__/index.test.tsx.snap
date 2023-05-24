@@ -124,7 +124,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
     </span>
   </div>
   <div
-    class="MuiBox-root css-1562zja"
+    class="MuiBox-root css-1ovs5s"
   >
     <div
       class="MuiBox-root css-1nbic85"
@@ -146,7 +146,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               aria-controls="navigation-jump-to-0"
               aria-selected="true"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected css-4q45a1-MuiButtonBase-root-MuiTab-root"
-              id="navigation-jump-to-section-1"
+              id="navigation-tab-section-1"
               role="tab"
               tabindex="0"
               type="button"
@@ -160,7 +160,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               aria-controls="navigation-jump-to-1"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
-              id="navigation-jump-to-section-2"
+              id="navigation-tab-section-2"
               role="tab"
               tabindex="-1"
               type="button"
@@ -174,7 +174,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               aria-controls="navigation-jump-to-2"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
-              id="navigation-jump-to-section-3"
+              id="navigation-tab-section-3"
               role="tab"
               tabindex="-1"
               type="button"
@@ -188,7 +188,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               aria-controls="navigation-jump-to-3"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
-              id="navigation-jump-to-section-4"
+              id="navigation-tab-section-4"
               role="tab"
               tabindex="-1"
               type="button"
@@ -202,7 +202,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
               aria-controls="navigation-jump-to-4"
               aria-selected="false"
               class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-4q45a1-MuiButtonBase-root-MuiTab-root"
-              id="navigation-jump-to-section-5"
+              id="navigation-tab-section-5"
               role="tab"
               tabindex="-1"
               type="button"
@@ -221,11 +221,10 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiBox-root css-8atqhb"
+      class="MuiBox-root css-1jke4yk"
     >
       <div
-        id="navigation-jump-to-0"
-        index="0"
+        id="navigation-panel-1"
         role="tabpanel"
         style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
       >
@@ -243,8 +242,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         </div>
       </div>
       <div
-        id="navigation-jump-to-1"
-        index="1"
+        id="navigation-panel-2"
         role="tabpanel"
         style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
       >
@@ -262,8 +260,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         </div>
       </div>
       <div
-        id="navigation-jump-to-2"
-        index="2"
+        id="navigation-panel-3"
         role="tabpanel"
         style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
       >
@@ -281,8 +278,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         </div>
       </div>
       <div
-        id="navigation-jump-to-3"
-        index="3"
+        id="navigation-panel-4"
         role="tabpanel"
         style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
       >
@@ -300,8 +296,7 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         </div>
       </div>
       <div
-        id="navigation-jump-to-4"
-        index="4"
+        id="navigation-panel-5"
         role="tabpanel"
         style="align-items: center; background-color: rgb(244, 244, 244); color: black; display: flex; font-family: Open Sans, sans-serif; font-size: 36px; font-weight: 100; justify-content: center; margin: 0px 22px 22px 6px; min-height: 100vh; text-align: center;"
       >

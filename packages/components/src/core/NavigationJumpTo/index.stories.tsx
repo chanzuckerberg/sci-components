@@ -8,7 +8,6 @@ import RawNavigationJumpTo from ".";
 import InputSlider from "../InputSlider";
 
 interface TabPanelPropsExtra extends TabPanelProps {
-  index: number;
   sdsDemoHeight: number;
 }
 
@@ -85,10 +84,12 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
           ]}
         />
       </Box>
+
       <Box
         sx={{
           display: "flex",
           flexDirection: "row-reverse",
+          position: "relative",
           width: "100%",
         }}
       >
@@ -104,20 +105,25 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
             ]}
           />
         </Box>
-        <Box sx={{ width: "100%" }}>
-          <TabPanel index={0} ref={sectionRef0} sdsDemoHeight={navPanelHeight}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <TabPanel ref={sectionRef0} sdsDemoHeight={navPanelHeight}>
             Section #1
           </TabPanel>
-          <TabPanel index={1} ref={sectionRef1} sdsDemoHeight={navPanelHeight}>
+          <TabPanel ref={sectionRef1} sdsDemoHeight={navPanelHeight}>
             Section #2
           </TabPanel>
-          <TabPanel index={2} ref={sectionRef2} sdsDemoHeight={navPanelHeight}>
+          <TabPanel ref={sectionRef2} sdsDemoHeight={navPanelHeight}>
             Section #3
           </TabPanel>
-          <TabPanel index={3} ref={sectionRef3} sdsDemoHeight={navPanelHeight}>
+          <TabPanel ref={sectionRef3} sdsDemoHeight={navPanelHeight}>
             Section #4
           </TabPanel>
-          <TabPanel index={4} ref={sectionRef4} sdsDemoHeight={navPanelHeight}>
+          <TabPanel ref={sectionRef4} sdsDemoHeight={navPanelHeight}>
             Section #5
           </TabPanel>
         </Box>
@@ -156,6 +162,9 @@ export default {
     },
     items: {
       control: { type: "object" },
+    },
+    offsetTop: {
+      control: { type: "number" },
     },
   },
   component: NavigationJumpTo,

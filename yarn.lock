@@ -999,7 +999,7 @@
     "@babel/plugin-transform-react-jsx-development" "^7.18.6"
     "@babel/plugin-transform-react-pure-annotations" "^7.18.6"
 
-"@babel/preset-typescript@^7.13.0", "@babel/preset-typescript@^7.18.6", "@babel/preset-typescript@^7.21.0", "@babel/preset-typescript@^7.21.4":
+"@babel/preset-typescript@^7.13.0", "@babel/preset-typescript@^7.18.6", "@babel/preset-typescript@^7.21.4":
   version "7.21.4"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.21.4.tgz#b913ac8e6aa8932e47c21b01b4368d8aa239a529"
   integrity sha512-sMLNWY37TCdRH/bJ6ZeeOH1nPuanED7Ai9Y/vH31IPqalioJ6ZNFUWONsakhv4r4n+I6gm5lmoE0olkgib/j/A==
@@ -1076,22 +1076,6 @@
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
-
-"@chanzuckerberg/axe-storybook-testing@^6.3.0":
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/@chanzuckerberg/axe-storybook-testing/-/axe-storybook-testing-6.3.1.tgz#95361fadf43f3750ba87fc9978dd4caa5f57dc38"
-  integrity sha512-5SoVRMJfDFJibbIxwOTPsPMkz0cTH7urTXU/YCBVR8xS9gJFMZgI7INYXeGjHeIKxhcn3maOXgeognR/Onk7hw==
-  dependencies:
-    http-server "^14.1.1"
-    indent-string "^4.0.0"
-    lodash "^4.17.21"
-    mocha "^10.2.0"
-    p-timeout "^4.1.0"
-    playwright "^1.32.1"
-    portfinder "^1.0.32"
-    ts-dedent "^2.2.0"
-    yargs "^17.7.1"
-    zod "^3.21.4"
 
 "@chanzuckerberg/axe-storybook-testing@^7.0.0":
   version "7.0.0"
@@ -7865,7 +7849,7 @@ eslint-plugin-sonarjs@^0.10.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.10.0.tgz#2b520c6d0dbdecbea98cd82f5cb84fc5c3d2b954"
   integrity sha512-FBRIBmWQh2UAfuLSnuYEfmle33jIup9hfkR0X8pkfjeCKNpHUG8qyZI63ahs3aw8CJrv47QJ9ccdK3ZxKH016A==
 
-eslint-plugin-storybook@^0.6.10, eslint-plugin-storybook@^0.6.11:
+eslint-plugin-storybook@^0.6.11:
   version "0.6.11"
   resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.6.11.tgz#3c52fc3e994d1539d8a69c4028999402601eaacb"
   integrity sha512-lIVmCqQgA0bhcuS1yWYBFrnPHBKPEQI+LHPDtlN81UE1/17onCqgwUW7Nyt7gS2OHjCAiOR4npjTGEoe0hssKw==
@@ -13488,7 +13472,7 @@ playwright-core@1.32.3:
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.3.tgz#e6dc7db0b49e9b6c0b8073c4a2d789a96f519c48"
   integrity sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==
 
-playwright@^1.14.0, playwright@^1.32.1:
+playwright@^1.14.0:
   version "1.32.2"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.32.2.tgz#9f5a510274c74d87128f7edfb709016a1f957e01"
   integrity sha512-jHVnXJke0PXpuPszKtk9y1zZSlzO5+2a+aockT/AND0oeXx46FiJEFrafthurglLygVZA+1gEbtUM1C7qtTV+Q==
