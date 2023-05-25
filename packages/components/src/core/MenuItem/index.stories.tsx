@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
-import Icon from "../Icon";
 import RawMenuItem from "./index";
 import { DemoWrapper } from "./style";
 
@@ -65,25 +64,33 @@ export const Default = {
 // Screenshot test
 
 const MULTI_SELECT_OPTIONS = [false, true];
-const DETAILS_OPTIONS = ["sample details text", undefined];
-const COLUMN_OPTIONS = ["sample column text", undefined];
-const ICON_OPTIONS = [
-  undefined,
-  <Icon sdsSize="l" sdsIcon="download" sdsType="button" />,
-];
+const DETAILS_OPTIONS = [undefined, "Details"];
+const COLUMN_OPTIONS = [undefined, "Column"];
+const ICON_OPTIONS = [undefined, "gear"];
 const SELECTED_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
 
 const ScreenshotTestDemo = (props: Args): JSX.Element => {
+  const DISPLAY_CONTENTS: React.CSSProperties = {
+    display: "contents",
+  };
+  const MID_LABEL: React.CSSProperties = {
+    borderStyle: "solid none none none",
+    gridColumn: "1 / 6",
+    justifySelf: "stretch",
+    paddingTop: 10,
+  };
+
   // loop through all MULTI_SELECT_OPTIONS
   return (
     <>
       {MULTI_SELECT_OPTIONS.map((isMultiSelect) => {
+        console.log(isMultiSelect);
         return (
           <MenuItemMultiSelect
             isMultiSelect={isMultiSelect}
-            key={isMultiSelect}
+            key={String(isMultiSelect)}
           />
         );
       })}
@@ -91,17 +98,26 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   );
 
   // loop through all DETAILS_OPTIONS + create headers for MULTI_SELECT_OPTIONS
-  function MenuItemMultiSelect({ isMultiSelect }) // : {
-  //   isMultiSelect:
-  // }
-  {
+  function MenuItemMultiSelect({
+    isMultiSelect,
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+  }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      columnGap: "20px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginRight: "50px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "2em",
+      gridColumn: "1 / 6",
+      marginBottom: 0,
+    };
+
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
-        <p>
-          {" "}
-          {/* INSERT CSS STYLE HERE */}
+      <div style={LEVEL_STYLE}>
+        <p style={LABEL_STYLE}>
           Multi-select: <b>{isMultiSelect ? "true" : "false"}</b>
         </p>
         {DETAILS_OPTIONS.map((details) => {
@@ -109,7 +125,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
             <MenuItemDetails
               isMultiSelect={isMultiSelect}
               details={details}
-              key={details}
+              key={String(details)}
             />
           );
         })}
@@ -118,18 +134,23 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }
 
   // loop through all COLUMN_OPTIONS + create headers for DETAILS_OPTIONS
-  function MenuItemDetails({ isMultiSelect, details }) // : {
-  //   isMultiSelect:
-  //   details:
-  // }
-  {
+  function MenuItemDetails({
+    isMultiSelect,
+    details,
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    details: (typeof DETAILS_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "5px",
+      fontSize: "1.5em",
+      margin: "20px 0",
+    };
+
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
-        <p>
-          {" "}
-          {/* INSERT CSS STYLE HERE */}
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
           Details: <b>{details ? "yes" : "no"}</b>
         </p>
         {COLUMN_OPTIONS.map((column) => {
@@ -138,7 +159,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               isMultiSelect={isMultiSelect}
               details={details}
               column={column}
-              key={column}
+              key={String(column)}
             />
           );
         })}
@@ -147,19 +168,25 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }
 
   // loop through all ICON_OPTIONS + create headers for COLUMN_OPTIONS
-  function MenuItemColumn({ isMultiSelect, details, column }) // : {
-  // isMultiSelect:
-  // details:
-  // column:
-  // }
-  {
+  function MenuItemColumn({
+    isMultiSelect,
+    details,
+    column,
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    details: (typeof DETAILS_OPTIONS)[number];
+    column: (typeof COLUMN_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      alignSelf: "end",
+      borderWidth: "3px",
+      fontSize: "1.17em",
+      margin: "0 0 15px 0",
+    };
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
-        <p>
-          {" "}
-          {/* INSERT CSS STYLE HERE */}
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
           Column: <b>{column ? "yes" : "no"}</b>
         </p>
         {ICON_OPTIONS.map((sdsIcon) => {
@@ -169,7 +196,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               details={details}
               column={column}
               sdsIcon={sdsIcon}
-              key={sdsIcon}
+              key={String(sdsIcon)}
             />
           );
         })}
@@ -178,20 +205,27 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }
 
   // loop through all SELECTED_OPTIONS + create headers for ICON_OPTIONS
-  function MenuItemIcon({ isMultiSelect, details, column, sdsIcon }) // : {
-  // isMultiSelect:
-  // details:
-  // column:
-  // sdsIcon:
-  // }
-  {
+  function MenuItemIcon({
+    isMultiSelect,
+    details,
+    column,
+    sdsIcon,
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    details: (typeof DETAILS_OPTIONS)[number];
+    column: (typeof COLUMN_OPTIONS)[number];
+    sdsIcon: (typeof ICON_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      alignSelf: "end",
+      borderWidth: "2px",
+      fontSize: "1em",
+      margin: "0 0 15px 0",
+    };
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
-        <p>
-          {" "}
-          {/* INSERT CSS STYLE HERE */}
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
           Icon: <b>{sdsIcon ? "yes" : "no"}</b>
         </p>
         {SELECTED_OPTIONS.map((selected) => {
@@ -202,7 +236,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               column={column}
               sdsIcon={sdsIcon}
               selected={selected}
-              key={selected}
+              key={String(selected)}
             />
           );
         })}
@@ -217,22 +251,24 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     column,
     sdsIcon,
     selected,
-  }) // : {
-  // isMultiSelect:
-  // details:
-  // column:
-  // sdsIcon:
-  // selected:
-  // }
-  {
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    details: (typeof DETAILS_OPTIONS)[number];
+    column: (typeof COLUMN_OPTIONS)[number];
+    sdsIcon: (typeof ICON_OPTIONS)[number];
+    selected: (typeof SELECTED_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      alignSelf: "end",
+      borderWidth: "1px",
+      fontSize: "0.83em",
+      margin: "0 0 10px 0",
+    };
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
-        <p>
-          {" "}
-          {/* INSERT CSS STYLE HERE */}
-          Selected: <b>{sdsIcon ? "true" : "false"}</b>
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          Selected: <b>{selected ? "true" : "false"}</b>
         </p>
         {DISABLED_OPTIONS.map((disabled) => {
           return (
@@ -243,7 +279,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               sdsIcon={sdsIcon}
               selected={selected}
               disabled={disabled}
-              key={disabled}
+              key={String(disabled)}
             />
           );
         })}
@@ -259,34 +295,34 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     sdsIcon,
     selected,
     disabled,
-  }) // : {
-  // isMultiSelect:
-  // details:
-  // column:
-  // sdsIcon:
-  // selected:
-  // disabled:
-  // }
-  {
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    details: (typeof DETAILS_OPTIONS)[number];
+    column: (typeof COLUMN_OPTIONS)[number];
+    sdsIcon: (typeof ICON_OPTIONS)[number];
+    selected: (typeof SELECTED_OPTIONS)[number];
+    disabled: (typeof DISABLED_OPTIONS)[number];
+  }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      marginBottom: 20,
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "0.67em",
+      margin: "10px 0 20px 0",
+    };
     return (
-      <div>
-        {" "}
-        {/* INSERT CSS STYLE HERE */}
+      <div style={DISPLAY_CONTENTS}>
         {PSEUDO_STATES.map((state) => {
           return (
-            <div>
-              {" "}
-              {/* INSERT CSS STYLE HERE */}
+            // to pass a11y, this container div must have role of "menu" since it contains components with roles of "menuitem"
+            <div role="menu" style={LEVEL_STYLE}>
               {/* removes irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
                 <>
-                  <p>
-                    {" "}
-                    {/* INSERT CSS STYLE HERE */}
-                    {disabled === false ? "State: " : "Disabled: "}
-                    <br />
-                    <b>{disabled === false ? state : "true"}</b>
+                  <p style={LABEL_STYLE}>
+                    {disabled ? "Disabled: " : "State: "}
+                    <b>{disabled ? "true" : state}</b>
                   </p>
                   <RawMenuItem
                     {...props}
@@ -297,11 +333,10 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     sdsIcon={sdsIcon}
                     selected={selected}
                     disabled={disabled}
-                    key={disabled}
                     className={`pseudo-${state}`}
                     key={state}
                   >
-                    Name here
+                    Name
                   </RawMenuItem>
                 </>
               )}
@@ -318,9 +353,17 @@ export const ScreenshotTest = {
     name: "text here",
   },
   parameters: {
-    // controls: {
-    //   exclude: ["onClick", "sdsStyle", "sdsType", "text"],
-    // },
+    controls: {
+      exclude: [
+        "name",
+        "column",
+        "disabled",
+        "isMultiSelect",
+        "sdsIcon",
+        "sdsIconProps",
+        "selected",
+      ],
+    },
     snapshot: {
       skip: true,
     },
