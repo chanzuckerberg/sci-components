@@ -64,7 +64,6 @@ export const Default = {
 // Screenshot test
 
 const MULTI_SELECT_OPTIONS = [false, true];
-const DETAILS_OPTIONS = [undefined, "Details"];
 const COLUMN_OPTIONS = [undefined, "Column"];
 const ICON_OPTIONS = [undefined, "gear"];
 const SELECTED_OPTIONS = [false, true];
@@ -97,7 +96,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     </>
   );
 
-  // loop through all DETAILS_OPTIONS + create headers for MULTI_SELECT_OPTIONS
+  // loop through all COLUMN_OPTIONS + create headers for MULTI_SELECT_OPTIONS
   function MenuItemMultiSelect({
     isMultiSelect,
   }: {
@@ -112,52 +111,18 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     const LABEL_STYLE: React.CSSProperties = {
       fontSize: "2em",
       gridColumn: "1 / 6",
-      marginBottom: 0,
+      marginBottom: 10,
     };
 
     return (
       <div style={LEVEL_STYLE}>
         <p style={LABEL_STYLE}>
-          Multi-select: <b>{isMultiSelect ? "true" : "false"}</b>
-        </p>
-        {DETAILS_OPTIONS.map((details) => {
-          return (
-            <MenuItemDetails
-              isMultiSelect={isMultiSelect}
-              details={details}
-              key={String(details)}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-
-  // loop through all COLUMN_OPTIONS + create headers for DETAILS_OPTIONS
-  function MenuItemDetails({
-    isMultiSelect,
-    details,
-  }: {
-    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
-    details: (typeof DETAILS_OPTIONS)[number];
-  }) {
-    const LABEL_STYLE: React.CSSProperties = {
-      ...MID_LABEL,
-      borderWidth: "5px",
-      fontSize: "1.5em",
-      margin: "20px 0",
-    };
-
-    return (
-      <div style={DISPLAY_CONTENTS}>
-        <p style={LABEL_STYLE}>
-          Details: <b>{details ? "yes" : "no"}</b>
+          Multi-select: <b>{isMultiSelect ? "yes" : "no"}</b>
         </p>
         {COLUMN_OPTIONS.map((column) => {
           return (
             <MenuItemColumn
               isMultiSelect={isMultiSelect}
-              details={details}
               column={column}
               key={String(column)}
             />
@@ -170,11 +135,9 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   // loop through all ICON_OPTIONS + create headers for COLUMN_OPTIONS
   function MenuItemColumn({
     isMultiSelect,
-    details,
     column,
   }: {
     isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
-    details: (typeof DETAILS_OPTIONS)[number];
     column: (typeof COLUMN_OPTIONS)[number];
   }) {
     const LABEL_STYLE: React.CSSProperties = {
@@ -193,7 +156,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
           return (
             <MenuItemIcon
               isMultiSelect={isMultiSelect}
-              details={details}
               column={column}
               sdsIcon={sdsIcon}
               key={String(sdsIcon)}
@@ -207,12 +169,10 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   // loop through all SELECTED_OPTIONS + create headers for ICON_OPTIONS
   function MenuItemIcon({
     isMultiSelect,
-    details,
     column,
     sdsIcon,
   }: {
     isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
-    details: (typeof DETAILS_OPTIONS)[number];
     column: (typeof COLUMN_OPTIONS)[number];
     sdsIcon: (typeof ICON_OPTIONS)[number];
   }) {
@@ -232,7 +192,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
           return (
             <MenuItemSelected
               isMultiSelect={isMultiSelect}
-              details={details}
               column={column}
               sdsIcon={sdsIcon}
               selected={selected}
@@ -247,13 +206,11 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   // loop through all DISABLED_OPTIONS + create headers for SELECTED_OPTIONS
   function MenuItemSelected({
     isMultiSelect,
-    details,
     column,
     sdsIcon,
     selected,
   }: {
     isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
-    details: (typeof DETAILS_OPTIONS)[number];
     column: (typeof COLUMN_OPTIONS)[number];
     sdsIcon: (typeof ICON_OPTIONS)[number];
     selected: (typeof SELECTED_OPTIONS)[number];
@@ -274,7 +231,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
           return (
             <MenuItemDisabled
               isMultiSelect={isMultiSelect}
-              details={details}
               column={column}
               sdsIcon={sdsIcon}
               selected={selected}
@@ -290,14 +246,12 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
   function MenuItemDisabled({
     isMultiSelect,
-    details,
     column,
     sdsIcon,
     selected,
     disabled,
   }: {
     isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
-    details: (typeof DETAILS_OPTIONS)[number];
     column: (typeof COLUMN_OPTIONS)[number];
     sdsIcon: (typeof ICON_OPTIONS)[number];
     selected: (typeof SELECTED_OPTIONS)[number];
@@ -328,7 +282,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     {...props}
                     data-testid="menu-item"
                     isMultiSelect={isMultiSelect}
-                    details={details}
                     column={column}
                     sdsIcon={sdsIcon}
                     selected={selected}
