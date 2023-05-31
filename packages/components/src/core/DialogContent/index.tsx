@@ -1,5 +1,5 @@
 import { DialogContentProps } from "@mui/material";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { StyledDialogContent } from "./style";
 
 export type { DialogContentProps };

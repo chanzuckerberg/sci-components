@@ -1,6 +1,5 @@
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import RawInputSearch from "./index";
 
 const InputSearch = (props: Args): JSX.Element => {

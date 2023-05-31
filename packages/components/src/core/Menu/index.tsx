@@ -1,5 +1,4 @@
 import { MenuProps, PopoverOrigin } from "@mui/material";
-import React from "react";
 import { StyledMenu } from "./style";
 
 const ANCHOR_ORIGIN: PopoverOrigin = {

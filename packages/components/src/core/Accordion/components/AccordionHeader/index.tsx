@@ -1,5 +1,4 @@
 import { AccordionSummaryProps as RawAccordionSummaryProps } from "@mui/material";
-import React from "react";
 import Icon from "src/core/Icon";
 import { StyledAccordionHeader, StyledSubtitle } from "./style";
 

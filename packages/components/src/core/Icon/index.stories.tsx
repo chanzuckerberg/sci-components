@@ -10,7 +10,7 @@ import {
   getTypography,
 } from "../styles";
 import RawIcon, { SdsIconWithColor } from "./index";
-import { iconMap, IconNameToSizes } from "./map";
+import { IconNameToSizes, iconMap } from "./map";
 
 const Icon = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, sdsType, ...rest } = props;
