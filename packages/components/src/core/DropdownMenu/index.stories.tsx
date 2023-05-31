@@ -500,6 +500,281 @@ export const LivePreview = {
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
+// Screenshot test
+
+const ScreenshotTestDemo = (props: Args): JSX.Element => {
+  const options = LIVE_PREVIEW_LABELS;
+
+  const TITLE_OPTIONS = [undefined, "Sample title text"];
+  const SEARCH_OPTIONS = [false, true];
+  // const groupByOptions = [false, true]; // see line 18
+  const COMPONENT_OPTIONS = [undefined, "Sample component (TAG)"];
+  const DETAILS_OPTIONS = [undefined, "Sample details text"];
+  const COUNT_OPTIONS = [undefined, 37];
+
+  const DISPLAY_CONTENTS: React.CSSProperties = {
+    display: "contents",
+  };
+  const MID_LABEL: React.CSSProperties = {
+    borderStyle: "solid none none none",
+    gridColumn: "1 / 3",
+    justifySelf: "stretch",
+    paddingTop: 10,
+  };
+
+  // loop through all TITLE_OPTIONS
+  return (
+    <>
+      {TITLE_OPTIONS.map((title) => {
+        return <DropdownMenuTitle title={title} key={title} />;
+      })}
+    </>
+  );
+
+  // loop through all SEARCH_OPTIONS + create headers for TITLE_OPTIONS
+  function DropdownMenuTitle({
+    title,
+  }: {
+    // title: (typeof TITLE_OPTIONS)[number];
+  }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      columnGap: "25px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginLeft: "50px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "2em",
+      gridColumn: "1 / 3",
+      marginBottom: 0,
+    };
+    return (
+      <div style={LEVEL_STYLE}>
+        <p style={LABEL_STYLE}>
+          Title: <b>{title ? "yes" : "no"}</b>
+        </p>
+        {SEARCH_OPTIONS.map((search) => {
+          return (
+            <DropdownMenuSearch title={title} search={search} key={search} />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all groupByOptions + create headers for SEARCH_OPTIONS
+  function DropdownMenuSearch({
+    title,
+    search,
+  }: {
+    // title: (typeof TITLE_OPTIONS)[number];
+    // search: (typeof SEARCH_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "5px",
+      fontSize: "1.5em",
+      margin: "20px 0 0 0",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          Search: <b>{search ? "yes" : "no"}</b>
+        </p>
+        {groupByOptions.map((groupBy) => {
+          return (
+            <DropdownMenuGroupBy
+              title={title}
+              search={search}
+              groupBy={groupBy}
+              key={groupBy}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all COMPONENT_OPTIONS + create headers for groupByOptions
+  function DropdownMenuGroupBy({
+    title,
+    search,
+    groupBy,
+  }: {
+    // title: (typeof TITLE_OPTIONS)[number];
+    // search: (typeof SEARCH_OPTIONS)[number];
+    // groupBy: (typeof groupByOptions)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "2px",
+      fontSize: "1.17em",
+      margin: "20px 0",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          Grouped: <b>{String(groupBy)}</b>
+        </p>
+        {COMPONENT_OPTIONS.map((component) => {
+          console.log("Component value:");
+          return (
+            <DropdownMenuComponent
+              title={title}
+              search={search}
+              groupBy={groupBy}
+              component={component}
+              key={component}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all DETAILS_OPTIONS + create headers for COMPONENT_OPTIONS
+  function DropdownMenuGroupBy({
+    title,
+    search,
+    groupBy,
+    component,
+  }: {
+    // title: (typeof TITLE_OPTIONS)[number];
+    // search: (typeof SEARCH_OPTIONS)[number];
+    // groupBy: (typeof groupByOptions)[number];
+    // component: (typeof COMPONENT_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "2px",
+      fontSize: "1.17em",
+      margin: "20px 0",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          Component: <b>{component ? "yes" : "no"}</b>
+        </p>
+        {DETAILS_OPTIONS.map((details) => {
+          return (
+            <DropdownMenuDetails
+              title={title}
+              search={search}
+              groupBy={groupBy}
+              component={component}
+              details={details}
+              key={details}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all COUNT_OPTIONS + create headers for DETAILS_OPTIONS, COUNT_OPTIONS
+  function DropdownMenuDetails({
+    title,
+    search,
+    groupBy,
+    component,
+    details,
+  }: {
+    // title: (typeof TITLE_OPTIONS)[number];
+    // search: (typeof SEARCH_OPTIONS)[number];
+    // groupBy: (typeof groupByOptions)[number];
+    // component: (typeof COMPONENT_OPTIONS)[number];
+    // details: (typeof DETAILS_OPTIONS)[number];
+  }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      margin: "0 125px 550px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "0.67em",
+      margin: "10px 0",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        {COUNT_OPTIONS.map((count) => {
+          return (
+            <div style={LEVEL_STYLE}>
+              {/* details and count are mutually exclusive */}
+              {!(details && count) && (
+                <>
+                  <p style={LABEL_STYLE}>
+                    {/* {details === false ? "Count: " : "Details: "} */}
+                    Details:
+                    {/* <br /> */}
+                    {/* <b>{details === false ? String(count) : String(details)}</b> */}
+                    <b>{String(details)}</b>
+                    <br />
+                    Count: <b>{String(count)}</b>
+                  </p>
+                  {/* <StyledInputDropdownLive3
+                    aria-describedby="live4"
+                    onClick={handleClick4}
+                    label="Click Target"
+                    sdsStage={open4 ? "userInput" : "default"}
+                    sdsType="multiSelect"
+                    sdsStyle="square"
+                  /> */}
+                  <p>
+                    <i>{String(component)}</i>
+                  </p>
+                  <DropdownMenu
+                    // anchorEl={anchorEl4}
+                    // open={!!open4}
+                    // search={false}
+                    // multiple
+                    // hasSections
+                    hasSections={groupBy}
+                    groupBy={(option) => option.section as string}
+                    // onChange={handleChange4}
+                    // disableCloseOnSelect
+                    options={options as DefaultDropdownMenuOption[]}
+                    // PopperBaseProps={{
+                    //   placement: POPPER_POSITION,
+                    //   sx: { width: POPPER_WIDTH },
+                    // }}
+                    // value={pendingValue4}
+                    // onClickAway={handleClickAway4}
+
+                    title={title}
+                    search={search}
+                    // groupBy={groupBy}
+                    component={component}
+                    details={details}
+                    count={count}
+                    key={count}
+                  />
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}; // close ScreenShotTestDemo
+
+export const ScreenshotTest = {
+  args: {
+    groupBy: groupByOptions[1],
+    keepSearchOnSelect: true,
+    multiple: true,
+    search: true,
+    title: "Github Labels",
+  },
+  parameters: {
+    // controls: {
+    //   exclude: ["onClick", "sdsStyle", "sdsType", "text"],
+    // },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
+};
+
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
