@@ -504,8 +504,10 @@ export const LivePreview = {
 // Screenshot test
 
 const ScreenshotTestDemo = (props: Args): JSX.Element => {
-  const originalOptions = LIVE_PREVIEW_LABELS;
-  const testComponent = {
+  const TITLE_OPTIONS = [undefined, "Sample title text"];
+  const SEARCH_OPTIONS = [false, true];
+  const GROUP_BY_OPTIONS = [false, true];
+  const SCREENSHOT_TEST_TAG_COMPONENT = {
     component: (
       <div>
         Available Labels:
@@ -534,11 +536,9 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     name: "custom 2",
     section: "custom component",
   };
-  const testOptions = originalOptions.concat(testComponent);
-
-  const TITLE_OPTIONS = [undefined, "Sample title text"];
-  const SEARCH_OPTIONS = [false, true];
-  const GROUP_BY_OPTIONS = [false, true];
+  const SCREENSHOT_TEST_OPTIONS = LIVE_PREVIEW_LABELS.concat(
+    SCREENSHOT_TEST_TAG_COMPONENT
+  );
 
   const DISPLAY_CONTENTS: React.CSSProperties = {
     display: "contents",
@@ -631,10 +631,12 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                   hasSections
                   groupBy={
                     groupBy &&
-                    ((option: (typeof testOptions)[number]) =>
+                    ((option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>
                       option.section as string)
                   }
-                  options={testOptions as DefaultDropdownMenuOption[]}
+                  options={
+                    SCREENSHOT_TEST_OPTIONS as DefaultDropdownMenuOption[]
+                  }
                   title={title}
                   search={search}
                   key={String(groupBy)}
