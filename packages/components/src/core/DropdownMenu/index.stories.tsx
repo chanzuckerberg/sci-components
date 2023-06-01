@@ -621,7 +621,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
         </p>
         {GROUP_BY_OPTIONS.map((groupBy) => {
           return (
-            <div style={LEVEL_STYLE}>
+            <div style={LEVEL_STYLE} key={`level-${String(groupBy)}`}>
               <>
                 <p style={GROUP_BY_LABEL}>
                   Grouped: <b>{groupBy ? "yes" : "no"}</b>
