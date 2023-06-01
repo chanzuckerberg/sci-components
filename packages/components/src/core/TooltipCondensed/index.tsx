@@ -1,6 +1,6 @@
 import { TooltipClassKey } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 

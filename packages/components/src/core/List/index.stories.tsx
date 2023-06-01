@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import ListItem from "../ListItem";
 import ListSubheader from "../ListSubheader";
 import RawList from "./index";

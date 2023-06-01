@@ -28,10 +28,10 @@ const CellBasic = (props: Args): JSX.Element => {
 
 const availableIconOptions = [
   undefined,
-  <Icon sdsSize="xs" sdsIcon="download" sdsType="static" />,
-  <Icon sdsSize="s" sdsIcon="lightBulb" sdsType="static" />,
-  <Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />,
-  <Icon sdsSize="xl" sdsIcon="flask" sdsType="static" />,
+  <Icon sdsSize="xs" sdsIcon="download" key="download" sdsType="static" />,
+  <Icon sdsSize="s" sdsIcon="lightBulb" key="lightBulb" sdsType="static" />,
+  <Icon sdsSize="l" sdsIcon="bacteria" key="bacteria" sdsType="static" />,
+  <Icon sdsSize="xl" sdsIcon="flask" key="flask" sdsType="static" />,
 ];
 
 export default {

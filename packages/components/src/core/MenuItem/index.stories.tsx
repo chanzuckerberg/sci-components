@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
-import * as React from "react";
 import RawMenuItem from "./index";
 import { DemoWrapper } from "./style";
 

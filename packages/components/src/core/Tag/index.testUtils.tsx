@@ -16,7 +16,7 @@ const MID_LABEL: React.CSSProperties = {
 };
 const ICON_OPTIONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="checkCircle" key="checkCircle" sdsType="button" />,
 ];
 export const HOVER_OPTIONS = [true, false];
 export function CommonScreenshotTestDemo({
@@ -244,7 +244,7 @@ function TagState(props: {
     <div style={HOVER_LEVEL}>
       {PSEUDO_STATES.map((state) => {
         return (
-          <div style={STATE_LEVEL}>
+          <div style={STATE_LEVEL} key={state}>
             {/* removes irrelevant hover iterations: when combined with all pseudo-states except default, hover=false is impossible */}
             {(hover === true || (hover === false && state === "default")) && (
               <>

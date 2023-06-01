@@ -1,4 +1,3 @@
-import React from "react";
 import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
 import TagFilter from "src/core/TagFilter";
 

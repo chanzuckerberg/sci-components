@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import * as React from "react";
 import RawHeatmap from "./index";
 
 const Heatmap = (props: Args): JSX.Element => {

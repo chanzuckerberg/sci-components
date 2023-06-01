@@ -1,5 +1,4 @@
 import { ListItemProps as RawListItemProps } from "@mui/material";
-import React from "react";
 import { ListItemExtraProps, ListItemLabel, StyledListItem } from "./style";
 
 export { ListItemLabel };
