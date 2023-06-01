@@ -8,7 +8,6 @@ import RawNavigationJumpTo from ".";
 import InputSlider from "../InputSlider";
 
 interface TabPanelPropsExtra extends TabPanelProps {
-  index: number;
   sdsDemoHeight: number;
 }
 
@@ -85,10 +84,12 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
           ]}
         />
       </Box>
+
       <Box
         sx={{
           display: "flex",
           flexDirection: "row-reverse",
+          position: "relative",
           width: "100%",
         }}
       >
@@ -104,20 +105,45 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
             ]}
           />
         </Box>
-        <Box sx={{ width: "100%" }}>
-          <TabPanel index={0} ref={sectionRef0} sdsDemoHeight={navPanelHeight}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <TabPanel
+            id="navigation-panel-1"
+            ref={sectionRef0}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #1
           </TabPanel>
-          <TabPanel index={1} ref={sectionRef1} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-2"
+            ref={sectionRef1}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #2
           </TabPanel>
-          <TabPanel index={2} ref={sectionRef2} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-3"
+            ref={sectionRef2}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #3
           </TabPanel>
-          <TabPanel index={3} ref={sectionRef3} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-4"
+            ref={sectionRef3}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #4
           </TabPanel>
-          <TabPanel index={4} ref={sectionRef4} sdsDemoHeight={navPanelHeight}>
+          <TabPanel
+            id="navigation-panel-5"
+            ref={sectionRef4}
+            sdsDemoHeight={navPanelHeight}
+          >
             Section #5
           </TabPanel>
         </Box>
@@ -151,11 +177,22 @@ export default {
         ],
         type: "select",
       },
+      defaultValue: { summary: "primary" },
+      description: "Color of the tab indicator",
       mapping: availableColorOptions,
       options: Object.keys(availableColorOptions),
     },
     items: {
-      control: { type: "object" },
+      control: { require: true, type: "object" },
+      defaultValue: { summary: "-" },
+      description:
+        "An array of object containing a title for the Navigation Tab and a ref to the section div.",
+    },
+    offsetTop: {
+      control: { description: "wew", type: "number" },
+      defaultValue: { summary: "0" },
+      description:
+        "To apply the offsetTop to the component, please refresh the page.",
     },
   },
   component: NavigationJumpTo,
@@ -168,6 +205,10 @@ export const Default = {
   args: {
     indicatorColor: "primary",
     items: [],
+    offsetTop: 0,
+  },
+  parameters: {
+    controls: { expanded: true },
   },
 };
 
