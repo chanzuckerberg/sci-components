@@ -113,7 +113,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
         </p>
         {PSEUDO_STATES.map((state) => {
           return (
-            <div>
+            <div key={`div-${state}`}>
               <p style={PSEUDO_STATE_LABEL}>
                 State: <b>{state}</b>
               </p>
