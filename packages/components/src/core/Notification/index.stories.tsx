@@ -306,9 +306,17 @@ export const ScreenshotTest = {
     label: "Label",
   },
   parameters: {
-    // controls: {
-    //   exclude: ["onClick", "sdsStyle", "sdsType", "text"],
-    // },
+    controls: {
+      exclude: [
+        "label",
+        "autoDismiss",
+        "buttonOnClick",
+        "extraContent",
+        "intent",
+        "onClose",
+        "slideDirection",
+      ],
+    },
     snapshot: {
       skip: true,
     },
