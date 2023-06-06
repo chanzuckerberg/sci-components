@@ -407,7 +407,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
           const sdsIcon = SDS_ICONS[sdsType][sdsSize];
 
           return (
-            <div style={PSEUDO_STATE_LEVEL}>
+            <div style={PSEUDO_STATE_LEVEL} key={`div-${state}`}>
               {/* remove irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
