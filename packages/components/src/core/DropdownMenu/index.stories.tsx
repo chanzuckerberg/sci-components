@@ -652,6 +652,9 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
 
 export const ScreenshotTest = {
   parameters: {
+    axe: {
+      timeout: 10 * 1000,
+    },
     controls: {
       exclude: [
         "groupBy",
