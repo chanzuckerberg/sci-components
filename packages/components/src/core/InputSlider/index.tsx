@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { InputSliderExtraProps, StyledSlider } from "./style";
 
 export type InputSliderProps = InputSliderExtraProps;

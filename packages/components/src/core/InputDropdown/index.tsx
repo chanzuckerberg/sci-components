@@ -2,9 +2,9 @@ import React from "react";
 import Icon from "../Icon";
 import {
   IconWrapper,
-  InputDropdownProps as SdsInputDropdownProps,
   LabelWrapper,
   MinimalDetails,
+  InputDropdownProps as SdsInputDropdownProps,
   StyledCounter,
   StyledDetail,
   StyledInputDropdown,

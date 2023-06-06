@@ -1,12 +1,11 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, {
-  Test as TestStory,
   TestButtonPositionLeft as TestButtonPositionLeftStory,
   TestNoTitleOnClose as TestNoTitleOnCloseStory,
+  Test as TestStory,
 } from "./index.stories";
 
 const DIALOG_TITLE_TEST_ID = "dialog-title";

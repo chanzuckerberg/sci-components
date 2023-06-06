@@ -62,7 +62,9 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 
     &:hover {
       background: ${colors?.gray[200]};
-      color: ${sdsSize === "small" ? colors?.gray[600] : colors?.primary[400]};
+      color: ${sdsSize === "small"
+        ? colors?.primary[600]
+        : colors?.primary[400]};
     }
 
     &:active {
@@ -79,7 +81,8 @@ const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   return css`
     color: ${colors?.gray[500]};
 
-    &:hover {
+    &:hover,
+    &:active {
       background: none;
       color: ${colors?.primary[400]};
     }
