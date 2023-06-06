@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import PageListDropdown from "./components/PageListDropdown";
 import {
   Page,

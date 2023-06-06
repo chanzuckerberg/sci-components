@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { ButtonIconProps, ButtonIconSizeToTypes } from "src/core/ButtonIcon";
 import { DialogContext } from "src/core/Dialog/components/common";
 import { IconNameToSizes } from "src/core/Icon";

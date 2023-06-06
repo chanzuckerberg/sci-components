@@ -1,6 +1,6 @@
 import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { noop } from "src/common/utils";
 import Button from "../Button";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";

@@ -18,10 +18,10 @@ import ButtonIcon from "../ButtonIcon";
 import { InputSearchProps } from "../InputSearch";
 import {
   InputBaseWrapper,
+  StyleProps,
   StyledAutocomplete,
   StyledMenuInputSearch,
   StyledMenuItem,
-  StyleProps,
 } from "./style";
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
@@ -99,6 +99,7 @@ const MenuSelect = <
             placeholder="Search"
             ref={params.InputProps.ref}
             search={search}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
             // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
             onKeyDown={(event) => {

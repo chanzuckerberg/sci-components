@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import RawInputToggle from "./index";
 
 const InputToggle = (props: Args): JSX.Element => {

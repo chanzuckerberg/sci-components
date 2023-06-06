@@ -1,5 +1,5 @@
-import React, { ForwardedRef, forwardRef } from "react";
-import { iconMap, IconNameToSizes } from "./map";
+import { ForwardedRef, forwardRef } from "react";
+import { IconNameToSizes, iconMap } from "./map";
 import {
   IconExtraProps,
   SdsIconColorType,

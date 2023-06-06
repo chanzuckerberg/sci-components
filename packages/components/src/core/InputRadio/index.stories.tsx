@@ -1,6 +1,5 @@
 import { RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import RawInputRadio from "./index";
 
 const InputRadio = (props: Args): JSX.Element => {

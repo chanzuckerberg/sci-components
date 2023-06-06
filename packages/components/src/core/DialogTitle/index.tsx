@@ -1,5 +1,5 @@
 import { DialogTitleProps as RawDialogTitleProps } from "@mui/material";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import CloseButton from "./components/CloseButton";
 import {
   DialogTitleExtraProps,

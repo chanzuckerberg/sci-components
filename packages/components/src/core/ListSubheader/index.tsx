@@ -1,5 +1,4 @@
 import { ListSubheaderProps } from "@mui/material";
-import React from "react";
 import { StyledListSubheader } from "./style";
 
 export type { ListSubheaderProps };

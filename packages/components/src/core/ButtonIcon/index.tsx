@@ -1,5 +1,5 @@
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
-import React, { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ButtonIconExtraProps,

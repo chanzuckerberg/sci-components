@@ -8,6 +8,7 @@ module.exports = {
   },
   // Specifies the ESLint parser
   extends: [
+    "plugin:import/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -66,27 +67,35 @@ module.exports = {
     ],
     "@typescript-eslint/no-use-before-define": "off",
     "consistent-return": "off",
-    "import/no-anonymous-default-export": 2,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        js: "never",
+        jsx: "never",
+        ts: "never",
+        tsx: "never",
+      },
+    ],
+    "import/no-anonymous-default-export": "error",
     "import/no-extraneous-dependencies": [
       "error",
       {
-        devDependencies: [
-          "**/*.stories.ts",
-          "**/*.stories.tsx",
-          "**/*.test.tsx",
-          "**/*.testUtils.tsx",
-        ],
-        // specify the path to the folder containing package.json
-        packageDir: "./",
+        // Dependencies must be specified in `devDependencies` in the monorepo root
+        devDependencies: true,
+        packageDir: __dirname,
       },
     ],
     "import/prefer-default-export": "off",
     // (thuang): Disable this line for `@typescript-eslint/no-unused-vars` to work
     "no-unused-vars": "off",
-    "react/jsx-no-target-blank": 0,
-    "react/jsx-props-no-spreading": 0,
+    "react/display-name": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-props-no-spreading": "off",
     // (thuang): Disable this since we use TypeScript
+    "react/jsx-uses-react": "off",
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     // (thuang): DefaultProps is being deprecated
     // https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/default_props/
     "react/require-default-props": "off",
