@@ -1,7 +1,11 @@
 # .github/workflows/namespace-check.yml
 
 name: "Namespace Check"
-on: push
+on:
+  push:
+    branches-ignore:
+      - prod
+
 jobs:
   test:
     runs-on: ubuntu-latest

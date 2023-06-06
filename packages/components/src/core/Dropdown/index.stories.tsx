@@ -1,7 +1,8 @@
 import { Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { noop } from "src/common/utils";
+import Button from "../Button";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import LoadingIndicator from "../LoadingIndicator";
@@ -183,11 +184,19 @@ export const InsideModal = {
 const ControlledDropdownDemo = (props: Args): JSX.Element => {
   const [value, setValue] = useState<DefaultDropdownMenuOption[] | null>([]);
 
+  const StyledButton = styled(Button)`
+    &:focus {
+      outline: none;
+    }
+
+    margin: 0 0 24px 8px;
+  `;
+
   return (
     <>
-      <button type="button" onClick={handleClick}>
-        Click me to select the first three options
-      </button>
+      <StyledButton onClick={handleClick} sdsStyle="minimal" sdsType="primary">
+        Click here to select the first three options
+      </StyledButton>
       <br />
       <RawDropdown
         label="Click Target"
@@ -196,6 +205,11 @@ const ControlledDropdownDemo = (props: Args): JSX.Element => {
         value={value}
         onChange={handleChange}
         data-testid="dropdown"
+        DropdownMenuProps={{
+          groupBy: (option: DefaultDropdownMenuOption) =>
+            option.section as string,
+          title: "Github Labels",
+        }}
         multiple
       />
     </>
@@ -238,6 +252,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   args: {
+    buttonPosition: "left",
     label: LABEL,
     onChange: noop,
   },

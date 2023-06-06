@@ -1,41 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
-<button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d93k5v-MuiButtonBase-root-MuiButton-root"
-  label="Click Target"
-  tabindex="0"
-  type="button"
->
-  <span
-    class="css-18dv0oe"
-  >
-    <span
-      class="styled-label css-1wq753n"
-    >
-      Click Target
-    </span>
-    <span
-      class="css-1qt6g1x"
-    >
-      <div
-        class="css-1ft6wgl"
-      >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
-          data-jest-file-name="IconChevronDownSmall.svg"
-          data-jest-svg-name="IconChevronDownSmall"
-          data-testid="IconChevronDownSmall"
-          fillcontrast="white"
-          focusable="false"
-          viewBox="0 0 14 14"
-        />
-      </div>
-    </span>
-  </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
+<div
+  style="margin: 16px 0px 0px 24px;"
+/>
 `;

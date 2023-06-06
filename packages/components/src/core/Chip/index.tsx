@@ -1,6 +1,5 @@
 import { Clear } from "@mui/icons-material";
 import { ChipProps as RawChipProps } from "@mui/material";
-import React from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,

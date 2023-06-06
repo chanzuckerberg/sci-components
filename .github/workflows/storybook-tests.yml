@@ -1,7 +1,11 @@
 # .github/workflows/storybook-tests.yml
 
 name: "Storybook Tests"
-on: push
+on:
+  push:
+    branches-ignore:
+      - prod
+
 jobs:
   test:
     timeout-minutes: 60

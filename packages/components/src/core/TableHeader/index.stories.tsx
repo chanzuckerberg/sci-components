@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
-import * as React from "react";
 import CellHeader from "../CellHeader";
 import RawTableHeader from "./index";
 

@@ -1,5 +1,4 @@
 import { Table, TableBody, TableContainer, TableRow } from "@mui/material";
-import React from "react";
 import {
   Alert,
   RowLabel,

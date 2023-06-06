@@ -26,6 +26,11 @@ jobs:
         with:
           node-version-file: ".node-version"
 
+      - name: "Setup npm"
+        run: |
+          npm set registry=//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+          npm set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -47,7 +52,7 @@ jobs:
       - name: Bump Prod Version Graduate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
         id: graduateRelease
         run: |
@@ -58,7 +63,7 @@ jobs:
       - name: Bump Prod Version Fallback
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
         run: |
           git config user.name "${{ github.actor }}"
@@ -76,9 +81,7 @@ jobs:
 
       - name: Lerna Publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.CZI_SDS_NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{secrets.CZI_SDS_NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn release
 
       - name: Post breaking changes to a Slack channel

@@ -1,4 +1,5 @@
-import React from "react";
+// (masoudmanson): The unit tests rely on the content in this file; do not alter it!
+
 import { DefaultDropdownMenuOption } from ".";
 import Tag from "../Tag";
 

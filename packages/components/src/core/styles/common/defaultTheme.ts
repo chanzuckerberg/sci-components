@@ -285,10 +285,14 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
           disableRipple: true,
         },
       },
-
       MuiLink: {
         defaultProps: {
           underline: "hover",
+        },
+      },
+      MuiTab: {
+        defaultProps: {
+          disableRipple: true,
         },
       },
     },
