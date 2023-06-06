@@ -269,31 +269,29 @@ const ScreenshotTestDemo = (): JSX.Element => {
         </p>
         {BUTTON_ON_CLICK_OPTIONS.map((buttonOnClick) => {
           return (
-            <div>
-              <>
-                <p style={BUTTON_ON_CLICK_LABEL_STYLE}>
-                  Button: <b>{buttonOnClick ? "yes" : "no"}</b>
-                </p>
-                <RawNotification
-                  slideDirection="left"
-                  data-testid="notification"
-                  intent={intent}
-                  extraContent={extraContent}
-                  buttonOnClick={buttonOnClick}
-                  buttonText="click me"
-                  key={String(buttonOnClick)}
-                >
-                  Notification test text
-                  {extraContent && (
-                    <div>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Amet eveniet sapiente, officiis aut possimus suscipit
-                      assumenda non?
-                    </div>
-                  )}
-                </RawNotification>
-              </>
-            </div>
+            <>
+              <p style={BUTTON_ON_CLICK_LABEL_STYLE}>
+                Button: <b>{buttonOnClick ? "yes" : "no"}</b>
+              </p>
+              <RawNotification
+                slideDirection="left"
+                data-testid="notification"
+                intent={intent}
+                extraContent={extraContent}
+                buttonOnClick={buttonOnClick}
+                buttonText="click me"
+                key={String(buttonOnClick)}
+              >
+                Notification test text
+                {extraContent && (
+                  <div>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Amet eveniet sapiente, officiis aut possimus suscipit
+                    assumenda non?
+                  </div>
+                )}
+              </RawNotification>
+            </>
           );
         })}
       </div>
