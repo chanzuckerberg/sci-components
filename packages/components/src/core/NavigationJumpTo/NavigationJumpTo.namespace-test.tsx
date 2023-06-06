@@ -12,6 +12,8 @@ const NavigationJumpToNameSpaceTest = (props: NavigationJumpToProps) => {
         { elementRef: { current: null }, title: "Item 4" },
         { elementRef: { current: null }, title: "Item 5" },
       ]}
+      onChange={(event: React.SyntheticEvent, value: number) => {}}
+      offsetTop={0}
     />
   );
 };

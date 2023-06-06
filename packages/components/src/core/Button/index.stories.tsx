@@ -8,7 +8,7 @@ const SDS_STYLES = ["rounded", "square", "minimal"];
 const SDS_TYPES = ["primary", "secondary"];
 const ICON_OPTIONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="download" sdsType="button" />,
+  <Icon key="download" sdsSize="l" sdsIcon="download" sdsType="button" />,
 ];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
@@ -361,7 +361,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
       <div style={penultimateLevel}>
         {PSEUDO_STATES.map((state) => {
           return (
-            <div style={bottomLevel}>
+            <div style={bottomLevel} key={state}>
               {/* removes irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (

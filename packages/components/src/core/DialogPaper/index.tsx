@@ -1,5 +1,5 @@
 import { PaperProps } from "@mui/material";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { DialogContext } from "../Dialog/components/common";
 import { StyledPaper } from "./style";
 

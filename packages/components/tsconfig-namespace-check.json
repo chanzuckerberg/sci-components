@@ -29,6 +29,7 @@
     "src/core/LoadingIndicator/LoadingIndicator.namespace-test.tsx",
     "src/core/Menu/Menu.namespace-test.tsx",
     "src/core/MenuItem/MenuItem.namespace-test.tsx",
+    "src/core/NavigationJumpTo/NavigationJumpTo.namespace-test.tsx",
     "src/core/Notification/Notification.namespace-test.tsx",
     "src/core/Pagination/Pagination.namespace-test.tsx",
     "src/core/SegmentedControl/SegmentedControl.namespace-test.tsx",

@@ -2,7 +2,6 @@
 import styled from "@emotion/styled";
 import { FormControlLabel, RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import * as React from "react";
 import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
 import CellHeader from "../CellHeader";
