@@ -65,7 +65,11 @@ export const Default = {
 
 const MULTI_SELECT_OPTIONS = [false, true];
 const COLUMN_OPTIONS = [undefined, "Column"];
-const ICON_OPTIONS = [undefined, "gear"];
+/**
+ * (thuang): Add `as const` to make sure the type is not widened to `string`
+ * and cause type error in <RawMenuItem />
+ */
+const ICON_OPTIONS = [undefined, "gear"] as const;
 const SELECTED_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
@@ -85,7 +89,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   return (
     <>
       {MULTI_SELECT_OPTIONS.map((isMultiSelect) => {
-        console.log(isMultiSelect);
         return (
           <MenuItemMultiSelect
             isMultiSelect={isMultiSelect}
@@ -269,7 +272,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
         {PSEUDO_STATES.map((state) => {
           return (
             // to pass a11y, this container div must have role of "menu" since it contains components with roles of "menuitem"
-            <div role="menu" style={LEVEL_STYLE}>
+            <div role="menu" style={LEVEL_STYLE} key={state}>
               {/* removes irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
