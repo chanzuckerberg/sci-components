@@ -608,11 +608,11 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
       margin: 0,
     };
     const LEVEL_STYLE: React.CSSProperties = {
-      margin: "0 300px 425px 0",
+      margin: "0 300px 475px 0",
     };
     const GROUP_BY_LABEL: React.CSSProperties = {
       fontSize: "0.67em",
-      margin: "10px 0",
+      margin: "10px 0 475px",
     };
     return (
       <div style={DISPLAY_CONTENTS}>
