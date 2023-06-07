@@ -44,7 +44,8 @@ const Tabs = forwardRef<HTMLButtonElement, TabsProps>(function Tabs(
 
 export default Tabs;
 
-export interface TabProps extends RawTabProps {
+export interface TabProps
+  extends Omit<RawTabProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> {
   count?: ReactNode;
 }
 

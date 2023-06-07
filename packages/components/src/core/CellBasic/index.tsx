@@ -12,7 +12,10 @@ import {
 } from "./style";
 
 interface CellBasicContentProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+  extends Omit<
+    React.HTMLProps<HTMLTableCellElement>,
+    "as" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  > {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;

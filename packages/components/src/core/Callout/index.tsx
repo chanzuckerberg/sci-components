@@ -16,7 +16,11 @@ export interface CalloutProps {
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
 
-export type ExposedCalloutProps = AlertProps & CalloutProps;
+export type ExposedCalloutProps = Omit<
+  AlertProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  CalloutProps;
 
 /**
  * @see https://mui.com/material-ui/react-alert/

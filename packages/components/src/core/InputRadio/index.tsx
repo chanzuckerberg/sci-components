@@ -8,7 +8,16 @@ import {
 } from "./style";
 
 export interface RadioContentProps
-  extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
+  extends Omit<
+    MUIRadioProps,
+    | "color"
+    | "defaultChecked"
+    | "nonce"
+    | "rev"
+    | "rel"
+    | "autoFocus"
+    | "content"
+  > {
   label?: string;
   radioProps?: Partial<MUIRadioProps>;
   stage?: "checked" | "unchecked";

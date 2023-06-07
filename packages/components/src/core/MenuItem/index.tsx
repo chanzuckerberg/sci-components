@@ -56,7 +56,8 @@ export interface MenuItemExtraProps<
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
-  MenuItemExtraProps<IconName> & RawMenuItemProps;
+  MenuItemExtraProps<IconName> &
+    Omit<RawMenuItemProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
 
 /**
  * @see https://mui.com/material-ui/react-menu/

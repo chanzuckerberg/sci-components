@@ -12,7 +12,10 @@ export { Subtitle as DialogTitleSubtitle, Title as DialogTitleTitle };
 
 export interface DialogTitleProps
   extends DialogTitleExtraProps,
-    RawDialogTitleProps {
+    Omit<
+      RawDialogTitleProps,
+      "nonce" | "rev" | "rel" | "autoFocus" | "content"
+    > {
   title?: string;
   subtitle?: string;
   onClose?: () => void;
