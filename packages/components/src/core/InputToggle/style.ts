@@ -9,7 +9,9 @@ import {
   getSpaces,
 } from "../styles";
 
-export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
+export interface InputToggleExtraProps
+  extends Omit<SwitchProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">,
+    CommonThemeProps {
   offLabel?: string;
   onChange?(e: React.ChangeEvent): void;
   onLabel?: string;

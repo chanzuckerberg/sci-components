@@ -1,7 +1,11 @@
 import { ChipProps } from "@mui/material";
 import { ExtraTagProps, SdsTagColorType, StyledTag } from "./style";
 
-export interface SdsTagProps extends Omit<ChipProps, "color"> {
+export interface SdsTagProps
+  extends Omit<
+    ChipProps,
+    "color" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  > {
   label: string;
   color?: SdsTagColorType;
 }

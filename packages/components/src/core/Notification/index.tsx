@@ -16,7 +16,11 @@ export interface NotificationProps {
   intent: "info" | "error" | "success" | "warning";
 }
 
-export type ExposedNotificationProps = AlertProps & NotificationProps;
+export type ExposedNotificationProps = Omit<
+  AlertProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  NotificationProps;
 
 /**
  * @see https://mui.com/material-ui/react-alert/

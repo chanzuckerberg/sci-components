@@ -6,7 +6,7 @@ import url from "@rollup/plugin-url";
 import css from "rollup-plugin-css-only";
 import bundleScss from "rollup-plugin-bundle-scss";
 import copy from "rollup-plugin-copy";
-import pkg from "./package.json";
+import pkg from "./package.json" assert { type: "json" };
 
 const config = [
   {

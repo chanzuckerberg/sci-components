@@ -1,5 +1,10 @@
 import React, { ForwardedRef, forwardRef } from "react";
-import { LinkProps, StyledLink } from "./style";
+import { LinkProps as RawLinkProps, StyledLink } from "./style";
+
+export type LinkProps<C extends React.ElementType = "a"> = Omit<
+  RawLinkProps<C>,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
 
 /**
  * @see https://mui.com/material-ui/react-link/
@@ -19,7 +24,5 @@ const Link = forwardRef(
     return <StyledLink {...props} underline={underline} ref={ref} />;
   }
 );
-
-export type { LinkProps };
 
 export default Link;

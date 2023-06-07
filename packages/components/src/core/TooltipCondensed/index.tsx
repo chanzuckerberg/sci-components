@@ -4,7 +4,11 @@ import { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "../Tooltip";
 import { condensedCSS, TooltipCondensedExtraProps } from "./style";
 
-export type TooltipCondensedProps = TooltipProps & TooltipCondensedExtraProps;
+export type TooltipCondensedProps = Omit<
+  TooltipProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  TooltipCondensedExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-tooltip/

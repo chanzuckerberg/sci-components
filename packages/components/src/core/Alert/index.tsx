@@ -1,7 +1,10 @@
-import { AlertProps } from "@mui/lab";
+import { AlertProps as RawAlertProps } from "@mui/lab";
 import { StyledAlert } from "./style";
 
-export type { AlertProps };
+export type AlertProps = Omit<
+  RawAlertProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
 
 /**
  * @see https://mui.com/material-ui/react-alert/

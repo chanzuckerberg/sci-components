@@ -1,4 +1,4 @@
-import { MenuProps, PopoverOrigin } from "@mui/material";
+import { PopoverOrigin, MenuProps as RawMenuProps } from "@mui/material";
 import { StyledMenu } from "./style";
 
 const ANCHOR_ORIGIN: PopoverOrigin = {
@@ -11,7 +11,10 @@ const TRANSFORM_ORIGIN: PopoverOrigin = {
   vertical: "top",
 };
 
-export type { MenuProps };
+export type MenuProps = Omit<
+  RawMenuProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
 
 /**
  * @see https://mui.com/material-ui/react-menu/

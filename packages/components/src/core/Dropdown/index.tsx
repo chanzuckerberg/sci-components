@@ -14,9 +14,9 @@ import InputDropdown, {
 import { StyledButton } from "./style";
 
 export {
+  InputDropdown as DropdownInputDropdown,
   StyledPaper as DropdownPaper,
   StyledPopper as DropdownPopper,
-  InputDropdown as DropdownInputDropdown,
 };
 
 // (thuang): Value's type is based on generic type placeholder (T) and Multiple
