@@ -1,8 +1,11 @@
-import { DialogContentProps } from "@mui/material";
+import { DialogContentProps as RawDialogContentProps } from "@mui/material";
 import { forwardRef } from "react";
 import { StyledDialogContent } from "./style";
 
-export type { DialogContentProps };
+export type DialogContentProps = Omit<
+  RawDialogContentProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
 
 export default forwardRef<HTMLDivElement, DialogContentProps>(
   /**

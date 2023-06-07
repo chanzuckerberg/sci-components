@@ -14,7 +14,10 @@ import {
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
 
-export type TabsProps = RawTabsProps & {
+export type TabsProps = Omit<
+  RawTabsProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
 };

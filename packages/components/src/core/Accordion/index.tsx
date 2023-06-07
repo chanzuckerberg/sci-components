@@ -4,9 +4,13 @@ import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
 import { AccordionExtraProps, StyledAccordion } from "./style";
 
-export { AccordionHeader, AccordionDetails };
+export { AccordionDetails, AccordionHeader };
 
-export type AccordionProps = RawAccordionProps & AccordionExtraProps;
+export type AccordionProps = Omit<
+  RawAccordionProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  AccordionExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-accordion/

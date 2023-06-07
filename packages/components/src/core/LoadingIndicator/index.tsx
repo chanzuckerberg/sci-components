@@ -1,9 +1,14 @@
 import Icon from "../Icon";
 import {
-  LoadingIndicatorProps,
+  LoadingIndicatorProps as RawLoadingIndicatorProps,
   StyledLoadingIndicator,
   StyledText,
 } from "./style";
+
+export type LoadingIndicatorProps = Omit<
+  RawLoadingIndicatorProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
 
 const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
   return (
@@ -13,5 +18,5 @@ const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
     </StyledLoadingIndicator>
   );
 };
-export type { LoadingIndicatorProps };
+
 export default LoadingIndicator;
