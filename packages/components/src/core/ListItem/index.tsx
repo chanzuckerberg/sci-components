@@ -1,10 +1,13 @@
 import { ListItemProps as RawListItemProps } from "@mui/material";
-import React from "react";
 import { ListItemExtraProps, ListItemLabel, StyledListItem } from "./style";
 
 export { ListItemLabel };
 
-export type ListItemProps = RawListItemProps & ListItemExtraProps;
+export type ListItemProps = Omit<
+  RawListItemProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  ListItemExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-list/

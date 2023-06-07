@@ -1,13 +1,13 @@
 import { Clear } from "@mui/icons-material";
 import { ChipProps as RawChipProps } from "@mui/material";
-import React from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 import { ChipExtraProps, StyledChip } from "./style";
 
-type ChipProps = ChipExtraProps & RawChipProps;
+type ChipProps = ChipExtraProps &
+  Omit<RawChipProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
 
 export type { ChipProps };
 

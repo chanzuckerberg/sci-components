@@ -14,7 +14,10 @@ export interface AccessibleInputSearchProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export type InputSearchProps = RawTextFieldSearchProps &
+export type InputSearchProps = Omit<
+  RawTextFieldSearchProps,
+  "nonce" | "rev" | "rel" | "content"
+> &
   AccessibleInputSearchProps &
   InputSearchExtraProps;
 

@@ -1,5 +1,5 @@
 import { Args, Meta } from "@storybook/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import DialogActions from "../DialogActions";
 import DialogContent from "../DialogContent";

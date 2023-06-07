@@ -5,7 +5,6 @@ import {
   TabsProps as RawTabsProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React from "react";
 import { fontBodyS, fontBodyXs } from "../styles";
 import {
   CommonThemeProps,
@@ -15,7 +14,10 @@ import {
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
 
-export type TabsProps = RawTabsProps & {
+export type TabsProps = Omit<
+  RawTabsProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
 };

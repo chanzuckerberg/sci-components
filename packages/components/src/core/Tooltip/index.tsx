@@ -1,23 +1,24 @@
 import {
   Tooltip as RawTooltip,
-  TooltipClassKey,
   TooltipProps as RawTooltipProps,
+  TooltipClassKey,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 import {
-  arrowCss,
   StyledPopper,
   Subtitle,
-  tooltipCss,
   TooltipExtraProps,
+  arrowCss,
+  tooltipCss,
 } from "./style";
 
-type TooltipProps = TooltipExtraProps & RawTooltipProps;
+type TooltipProps = TooltipExtraProps &
+  Omit<RawTooltipProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
 
 export type { TooltipProps };
 

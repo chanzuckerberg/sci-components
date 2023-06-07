@@ -1,9 +1,12 @@
 import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { DialogActionsExtraProps, StyledDialogActions } from "./style";
 
 export type DialogActionsProps = DialogActionsExtraProps &
-  RawDialogActionsProps;
+  Omit<
+    RawDialogActionsProps,
+    "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  >;
 
 /**
  * @see https://mui.com/material-ui/react-dialog/

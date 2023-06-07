@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import RawBanner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";

@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import React from "react";
 import RawSegmentedControl, { SegmentedControlProps } from "./index";
 
 const SegmentedControl = (props: Args): JSX.Element => {

@@ -92,8 +92,8 @@ import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLar
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
-import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
 import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
+import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
 import { ReactComponent as IconTrashCanLarge } from "../../common/svgs/IconTrashCanLarge.svg";
 import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";

@@ -1,5 +1,5 @@
 import { TextFieldProps as RawTextFieldProps } from "@mui/material";
-import React, { forwardRef, useState } from "react";
+import { forwardRef, useState } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 
 interface AccessibleInputTextProps {
@@ -8,7 +8,10 @@ interface AccessibleInputTextProps {
   id: string;
 }
 
-export type InputTextProps = RawTextFieldProps &
+export type InputTextProps = Omit<
+  RawTextFieldProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
   InputTextExtraProps &
   AccessibleInputTextProps;
 

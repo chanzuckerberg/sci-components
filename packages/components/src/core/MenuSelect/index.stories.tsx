@@ -9,8 +9,8 @@ import {
 import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
-import { getColors, getCorners, getShadows } from "../styles";
 import TagFilter from "../TagFilter";
+import { getColors, getCorners, getShadows } from "../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "./index";
 
 const StyledPopper = styled(Popper)`

@@ -13,10 +13,10 @@ const Tag = (props: Args): JSX.Element => {
 
 const ICONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />,
-  <Icon sdsSize="l" sdsIcon="loading" sdsType="button" />,
-  <WbSunny />,
-  <CheckCircleOutline />,
+  <Icon sdsSize="l" sdsIcon="checkCircle" key="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="loading" key="loading" sdsType="button" />,
+  <WbSunny key="WBSunny" />,
+  <CheckCircleOutline key="CheckCircleOutline" />,
 ];
 const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
 

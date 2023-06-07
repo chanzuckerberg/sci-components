@@ -1,6 +1,5 @@
 import { composeStory } from "@storybook/react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 import Meta, { Test as TestStory } from "./index.stories";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.

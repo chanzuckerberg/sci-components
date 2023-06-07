@@ -5,8 +5,8 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   ClickAwayListener,
-  ClickAwayListenerProps as MUIClickAwayListenerProps,
   InputAdornment,
+  ClickAwayListenerProps as MUIClickAwayListenerProps,
   PopperProps,
 } from "@mui/material";
 import React, { ReactNode, SyntheticEvent, useState } from "react";
@@ -17,6 +17,7 @@ import { InputSearchProps } from "../InputSearch";
 import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
   InputBaseWrapper,
+  StyleProps,
   StyledAutocomplete,
   StyledHeaderTitle,
   StyledMenuInputSearch,
@@ -24,7 +25,6 @@ import {
   StyledMenuItemText,
   StyledPaper,
   StyledPopper,
-  StyleProps,
 } from "./style";
 
 // (thuang): This requires option to have a `name` property.
@@ -78,7 +78,7 @@ type CustomAutocompleteProps<
   FreeSolo extends boolean | undefined = undefined
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput"
+  "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
 >;
 
 export type DropdownMenuProps<
@@ -168,6 +168,7 @@ const DropdownMenu = <
                   placeholder="Search"
                   ref={params.InputProps.ref}
                   search={search}
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
                   onKeyDown={(event) => {

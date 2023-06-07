@@ -2,7 +2,6 @@ import { generateSnapshots, wait } from "@chanzuckerberg/story-utils";
 import { composeStory } from "@storybook/react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
 import LoadingIndicator from "../LoadingIndicator";
 import * as snapshotTestStoryFile from "./index.stories";
 import Meta, { Test as TestStory } from "./index.stories";

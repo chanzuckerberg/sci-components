@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, useContext } from "react";
+import { forwardRef, ReactNode, useContext } from "react";
 import { TabsContext } from "../common";
 import { Count, Label, Wrapper } from "./style";
 
