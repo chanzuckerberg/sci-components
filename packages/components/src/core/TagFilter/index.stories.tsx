@@ -89,6 +89,56 @@ export const LivePreview = {
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
+// Screenshot Test
+const ScreenshotTestDemo = (props: Args): JSX.Element => {
+  const PSEUDO_STATES = ["default", "hover", "active", "focus"];
+  const { label } = props;
+  const LABEL_STYLE: React.CSSProperties = {
+    fontFamily: "sans-serif",
+    fontSize: "0.67em",
+    fontWeight: "normal",
+    margin: "20px 0 10px",
+  };
+
+  // loop through all PSEUDO_STATES + create headers for PSEUDO_STATES
+  return (
+    <>
+      {PSEUDO_STATES.map((state) => {
+        return (
+          <>
+            <p style={LABEL_STYLE}>
+              State: <b>{state}</b>
+            </p>
+            <RawTagFilter
+              data-testid="button"
+              label={label}
+              onDelete={() => {}}
+              className={`pseudo-${state}`}
+              key={state}
+              {...props}
+            />
+          </>
+        );
+      })}
+    </>
+  );
+};
+
+export const ScreenshotTest = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    controls: {
+      exclude: ["label"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
+};
+
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {

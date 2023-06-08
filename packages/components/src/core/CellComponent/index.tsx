@@ -2,7 +2,10 @@ import React, { forwardRef, ReactNode } from "react";
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 
 interface CellComponentContentProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+  extends Omit<
+    React.HTMLProps<HTMLTableCellElement>,
+    "as" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  > {
   children?: ReactNode;
 }
 

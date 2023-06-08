@@ -13,8 +13,8 @@ import Chips from "./components/Chips";
 import { StyledChipsWrapper, Wrapper } from "./style";
 
 export {
-  StyledPopper as ComplexFilterPopper,
   InputDropdown as ComplexFilterInputDropdown,
+  StyledPopper as ComplexFilterPopper,
 };
 export interface ComplexFilterProps<Multiple> {
   label: ReactNode;

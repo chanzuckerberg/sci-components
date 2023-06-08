@@ -3,7 +3,10 @@ import { styled } from "@mui/material/styles";
 import { CommonThemeProps, fontBodyXs, getColors, getSpaces } from "../styles";
 
 export interface NavigationJumpToExtraProps
-  extends Omit<TabsProps, "indicatorColor">,
+  extends Omit<
+      TabsProps,
+      "indicatorColor" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+    >,
     CommonThemeProps {
   sdsIndicatorColor?:
     | "primary"

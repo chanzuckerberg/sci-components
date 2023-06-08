@@ -9,7 +9,17 @@ import {
 } from "./styles";
 
 interface CheckboxContentProps
-  extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
+  extends Omit<
+    MUICheckboxProps,
+    | "color"
+    | "defaultChecked"
+    | "indeterminate"
+    | "nonce"
+    | "rev"
+    | "rel"
+    | "autoFocus"
+    | "content"
+  > {
   checkboxProps?: Partial<MUICheckboxProps>;
   label?: string;
   stage?: "checked" | "unchecked" | "indeterminate";

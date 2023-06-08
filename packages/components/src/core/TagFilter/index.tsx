@@ -4,7 +4,10 @@ import React from "react";
 import { StyledTag } from "./style";
 
 export interface SdsTagFilterProps
-  extends Omit<ChipProps, "color" | "variant"> {
+  extends Omit<
+    ChipProps,
+    "color" | "variant" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  > {
   label: string;
   onDelete: React.EventHandler<any>;
 }

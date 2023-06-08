@@ -16,7 +16,11 @@ interface DialogExtraProps {
   DialogComponent?: ComponentType<RawDialogProps>;
 }
 
-export type DialogProps = RawDialogProps & DialogExtraProps;
+export type DialogProps = Omit<
+  RawDialogProps,
+  "nonce" | "rev" | "rel" | "autoFocus" | "content"
+> &
+  DialogExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-dialog/
