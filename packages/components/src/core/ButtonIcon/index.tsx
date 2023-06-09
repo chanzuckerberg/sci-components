@@ -7,8 +7,7 @@ import {
   StyledButtonIcon,
 } from "./style";
 
-export type { ButtonIconSizeToTypes };
-export type { ButtonIconProps };
+export type { ButtonIconProps, ButtonIconSizeToTypes };
 export interface ButtonIconInternalProps<
   IconName extends keyof IconNameToSizes
 > {
@@ -20,7 +19,7 @@ type ButtonIconProps<
   IconName extends keyof IconNameToSizes,
   ButtonIconSize extends keyof ButtonIconSizeToTypes
 > = ButtonIconExtraProps<ButtonIconSize> &
-  RawButtonIconProps &
+  Omit<RawButtonIconProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> &
   ButtonIconInternalProps<IconName>;
 
 const ButtonIconSizeToSdsIconSize = {

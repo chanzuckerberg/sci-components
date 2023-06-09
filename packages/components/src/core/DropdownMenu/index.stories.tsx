@@ -4,6 +4,7 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import { Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
+import Tag from "../Tag";
 import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import RawDropdownMenu, { DefaultDropdownMenuOption } from "./index";
 
@@ -498,6 +499,178 @@ export const LivePreview = {
     },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Screenshot test
+
+const ScreenshotTestDemo = (props: Args): JSX.Element => {
+  const TITLE_OPTIONS = [undefined, "Sample title text"];
+  const SEARCH_OPTIONS = [false, true];
+  const GROUP_BY_OPTIONS = [false, true];
+  const SCREENSHOT_TEST_TAG_COMPONENT = {
+    component: (
+      <div>
+        Available Labels:
+        <div style={{ marginTop: 10 }}>
+          <Tag
+            label="bug"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="error"
+          />
+          <Tag
+            label="feature"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="warning"
+          />
+          <Tag
+            label="refactor"
+            sdsStyle="rounded"
+            sdsType="secondary"
+            color="gray"
+          />
+        </div>
+      </div>
+    ),
+    name: "custom 2",
+    section: "custom component",
+  };
+  const SCREENSHOT_TEST_OPTIONS = LIVE_PREVIEW_LABELS.concat(
+    SCREENSHOT_TEST_TAG_COMPONENT
+  );
+
+  const DISPLAY_CONTENTS: React.CSSProperties = {
+    display: "contents",
+  };
+  const MID_LABEL: React.CSSProperties = {
+    borderStyle: "solid none none none",
+    gridColumn: "1 / 3",
+    justifySelf: "stretch",
+    paddingTop: 10,
+  };
+
+  // loop through all TITLE_OPTIONS
+  return (
+    <>
+      {TITLE_OPTIONS.map((title) => {
+        return <DropdownMenuTitle title={title} key={title} />;
+      })}
+    </>
+  );
+
+  // loop through all SEARCH_OPTIONS + create headers for TITLE_OPTIONS
+  function DropdownMenuTitle({
+    title,
+  }: {
+    title: (typeof TITLE_OPTIONS)[number];
+  }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      columnGap: "25px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginLeft: "50px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "2em",
+      gridColumn: "1 / 3",
+      marginBottom: 10,
+    };
+    return (
+      <div style={LEVEL_STYLE}>
+        <p style={LABEL_STYLE}>
+          Title: <b>{title ? "yes" : "no"}</b>
+        </p>
+        {SEARCH_OPTIONS.map((search) => {
+          return (
+            <DropdownMenuSearch
+              title={title}
+              search={search}
+              key={String(search)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  function DropdownMenuSearch({
+    title,
+    search,
+  }: {
+    title: (typeof TITLE_OPTIONS)[number];
+    search: (typeof SEARCH_OPTIONS)[number];
+  }) {
+    const SEARCH_LABEL: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "2px",
+      fontSize: "1.17em",
+      margin: 0,
+    };
+    const LEVEL_STYLE: React.CSSProperties = {
+      margin: "0 300px 475px 0",
+    };
+    const GROUP_BY_LABEL: React.CSSProperties = {
+      fontSize: "0.67em",
+      margin: "10px 0 475px",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={SEARCH_LABEL}>
+          Search: <b>{search ? "yes" : "no"}</b>
+        </p>
+        {GROUP_BY_OPTIONS.map((groupBy) => {
+          return (
+            <div style={LEVEL_STYLE} key={`level-${String(groupBy)}`}>
+              <>
+                <p style={GROUP_BY_LABEL}>
+                  Grouped: <b>{groupBy ? "yes" : "no"}</b>
+                </p>
+                <DropdownMenu
+                  {...props}
+                  hasSections
+                  groupBy={
+                    groupBy &&
+                    ((option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>
+                      option.section as string)
+                  }
+                  options={
+                    SCREENSHOT_TEST_OPTIONS as DefaultDropdownMenuOption[]
+                  }
+                  title={title}
+                  search={search}
+                  key={String(groupBy)}
+                />
+              </>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+}; // close ScreenShotTestDemo
+
+export const ScreenshotTest = {
+  parameters: {
+    axe: {
+      timeout: 10 * 1000,
+    },
+    controls: {
+      exclude: [
+        "groupBy",
+        "keepSearchOnSelect",
+        "multiple",
+        "search",
+        "title",
+        "ClickAwayListenerProps",
+        "label",
+      ],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };
 
 // Test

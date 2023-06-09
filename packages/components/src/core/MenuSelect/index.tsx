@@ -41,7 +41,7 @@ type CustomAutocompleteProps<
   FreeSolo extends boolean | undefined = undefined
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput"
+  "renderInput" | "nonce" | "rev" | "rel" | "content"
 >;
 
 export type MenuSelectProps<

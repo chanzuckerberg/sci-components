@@ -7,7 +7,9 @@ import {
   getCorners,
 } from "../styles";
 
-export interface InputSliderExtraProps extends SliderProps, CommonThemeProps {}
+export interface InputSliderExtraProps
+  extends Omit<SliderProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">,
+    CommonThemeProps {}
 
 const inputSlider = (props: InputSliderExtraProps) => {
   const corners = getCorners(props);
