@@ -9,9 +9,9 @@
 ## 2. If needed, rename the SVG file(s)
 
 - Icon SVG files should follow these naming conventions:
-  - `Icon**InsertIconNameHere**Small` (for size `extraSmall` and `small`)
-  - `Icon**InsertIconNameHere**Large` (for size `large` and `extraLarge`)
-- Replace `**InsertIconNameHere**` with the name of the icon, but be sure to align on this name with design and product if it isn’t already clear
+  - `IconInsertIconNameHereSmall` (for size `extraSmall` and `small`)
+  - `IconInsertIconNameHereLarge` (for size `large` and `extraLarge`)
+- Replace `InsertIconNameHere` with the name of the icon, but be sure to align on this name with design and product if it isn’t already clear
 - The file names should start with `Icon` and end with `Small`, as in the naming templates above
 
 ## 3. Move the SVG file(s) into the SDS codebase
@@ -32,7 +32,7 @@
 - Add the new icon to the `iconMap` object (the last chunk of code at the bottom of map.ts) where it fits in alphabetically
   - Follow the same pattern used for existing icons, giving your new icon object keys for both `largeIcon` and `smallIcon` respectively
   - If the icon doesn’t have a large or extraLarge size, give `largeIcon` a value of `null`; otherwise pass it the full name of the icon’s large SVG file name, e.g.
-    `**IconInsertIconNameHereLarge.svg**`. Repeat for `smallIcon`.
+    `IconInsertIconNameHereLarge.svg`. Repeat for `smallIcon`.
 
 ## 5. Remove unnecessary `fill`s from `path` elements
 
