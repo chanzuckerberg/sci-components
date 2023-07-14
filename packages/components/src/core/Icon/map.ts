@@ -92,8 +92,8 @@ import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLar
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
-import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
+import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
 import { ReactComponent as IconTrashCanLarge } from "../../common/svgs/IconTrashCanLarge.svg";
 import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";
@@ -110,6 +110,7 @@ import { ReactComponent as IconTriangleRightSmall } from "../../common/svgs/Icon
 import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTriangleUpSmall.svg";
 import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
 import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
+import { ReactComponent as IconVirusCircleSLarge } from "../../common/svgs/IconVirusCircleSLarge.svg";
 import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
@@ -203,6 +204,7 @@ export interface IconNameToSizes {
   triangleUp: "xs" | "s";
   upload: "l" | "xl";
   virus: "l" | "xl";
+  virusCircleS: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
 }
@@ -562,6 +564,10 @@ export const iconMap: Props = {
   },
   virus: {
     largeIcon: IconVirusLarge,
+    smallIcon: null,
+  },
+  virusCircleS: {
+    largeIcon: IconVirusCircleSLarge,
     smallIcon: null,
   },
   xMark: {
