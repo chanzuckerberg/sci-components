@@ -1,9 +1,8 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
-import { DefaultDropdownMenuOption } from "dist/index.cjs";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
-import DropdownMenu from "../DropdownMenu";
+import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import RawInputDropdown from "./index";
 
 const StyledInputDropdown = styled(RawInputDropdown)`

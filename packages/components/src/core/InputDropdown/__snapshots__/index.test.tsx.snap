@@ -2,7 +2,7 @@
 
 exports[`<InputDropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1eacwfg-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-yez6a5-MuiButtonBase-root-MuiButton-root"
   data-testid="InputDropdown"
   label="Label"
   tabindex="0"
@@ -12,7 +12,8 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
     class="css-18dv0oe"
   >
     <span
-      class="styled-label css-1wq753n"
+      class="styled-label css-1ubkbz8"
+      sdstype="label"
     >
       Label
     </span>
