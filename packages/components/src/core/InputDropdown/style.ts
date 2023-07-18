@@ -8,6 +8,7 @@ import {
   getBorders,
   getColors,
   getCorners,
+  getFontWeights,
   getPalette,
   getSpaces,
 } from "../styles";
@@ -20,9 +21,11 @@ export interface InputDropdownProps extends CommonThemeProps {
   open?: boolean;
   sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
-  sdsType?: "singleSelect" | "multiSelect";
+  sdsType?: "label" | "value";
+  multiple?: boolean;
   details?: string;
   counter?: string;
+  value?: string;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
 }
@@ -67,11 +70,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: unset;
-      border: ${borders?.gray[500]};
+      border-color: black;
       color: ${palette?.text?.primary};
 
       path {
-        fill: ${colors?.gray[600]};
+        fill: black;
       }
 
       .styled-label {
@@ -162,8 +165,6 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    ${labelStyle(props)}
-
     border-radius: ${corners?.l}px;
     height: 34px;
     min-width: 90px;
@@ -303,21 +304,30 @@ export const StyledDetail = styled("span", {
 interface DetailsAndCounter extends CommonThemeProps {
   details?: string;
   counter?: string;
+  sdsType: InputDropdownProps["sdsType"];
 }
 
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: DetailsAndCounter) => {
-    const { details, counter } = props;
+    const { details, counter, sdsType } = props;
+
     const colors = getColors(props);
     const palette = getPalette(props);
+    const fontWeights = getFontWeights(props);
+
     const labelColor =
       details || counter !== undefined
         ? palette?.text?.primary
         : colors?.gray[500];
+
     return `
       color: ${labelColor};
+
+      font-weight: ${
+        sdsType === "label" ? fontWeights?.semibold : fontWeights?.regular
+      };
     `;
   }}
 `;
@@ -393,7 +403,6 @@ function labelStyle(props: InputDropdownProps): SerializedStyles {
   return css`
     &.MuiButton-text {
       .styled-label {
-        font-weight: 600;
         color: ${labelColor};
       }
     }
