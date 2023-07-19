@@ -23,9 +23,9 @@ export interface InputDropdownProps extends CommonThemeProps {
   sdsStyle?: "minimal" | "square" | "rounded";
   sdsType?: "label" | "value";
   multiple?: boolean;
-  details?: string;
-  counter?: string;
-  value?: string;
+  details?: ReactNode;
+  counter?: ReactNode;
+  value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
 }
@@ -139,6 +139,11 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
       outline: none;
     }
 
+    &:focus-visible {
+      outline: 5px auto Highlight;
+      outline: 5px auto -webkit-focus-ring-color;
+    }
+
     &.MuiButton-root.MuiButton-text > span {
       ${labelFontBodyS(props)}
       margin-left: 0;
@@ -250,6 +255,7 @@ const doNotForwardProps = [
   "intent",
   "open",
   "sdsStage",
+  "sdsType",
   "isMinimal",
   "shouldTruncateMinimalDetails",
   "shouldPutAColonAfterLabel",
@@ -302,8 +308,8 @@ export const StyledDetail = styled("span", {
 `;
 
 interface DetailsAndCounter extends CommonThemeProps {
-  details?: string;
-  counter?: string;
+  details?: InputDropdownProps["details"];
+  counter?: InputDropdownProps["counter"];
   sdsType: InputDropdownProps["sdsType"];
 }
 

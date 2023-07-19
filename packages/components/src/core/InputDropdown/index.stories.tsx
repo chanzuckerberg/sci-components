@@ -119,7 +119,13 @@ const InputDropdown = (props: Args): JSX.Element => {
   ];
 
   return (
-    <>
+    <div>
+      <p>
+        The &quot;Value&quot; variant of InputDropdown cannot be set to
+        &quot;multiple&quot;. <br />
+        If you set sdsType=&quot;value&quot; and multiple=&quot;true&quot;, the
+        component will revert to displaying a label and a counter.
+      </p>
       {fullWidth ? (
         <RawInputDropdown
           disabled={disabled}
@@ -162,7 +168,7 @@ const InputDropdown = (props: Args): JSX.Element => {
         value={multiple ? pendingValue : value}
         onClickAway={handleClickAway}
       />
-    </>
+    </div>
   );
 };
 

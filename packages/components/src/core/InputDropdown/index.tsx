@@ -44,7 +44,8 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const shouldRenderInlineMinimalDetails =
     isMinimal && sdsType === "value" && !multiple;
   const shouldRenderMinimalDetails = isMinimal && sdsType === "label";
-  const shouldRenderCounter = multiple && counter !== undefined && !isMinimal;
+  const shouldRenderCounter =
+    multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
   return (
     <StyledInputDropdown {...props}>
@@ -104,34 +105,52 @@ interface RenderLabelTextProps {
   value: InputDropdownProps["value"];
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
-function renderLabelText({
-  counter,
-  details,
+function renderLabelText(props: RenderLabelTextProps) {
+  const { sdsType } = props;
+
+  if (sdsType === "label") {
+    return renderLabelTypeLabelText(props);
+  }
+
+  if (sdsType === "value") {
+    return renderValueTypeLabelText(props);
+  }
+
+  return null;
+}
+
+function renderLabelTypeLabelText({
   isMinimal,
   label,
-  multiple,
-  shouldPutAColonAfterLabel,
-  sdsType,
+  counter,
   value,
+  shouldPutAColonAfterLabel,
 }: RenderLabelTextProps) {
-  if (sdsType === "label") {
+  if (isMinimal) return label;
+
+  return (counter || value) && shouldPutAColonAfterLabel ? `${label}:` : label;
+}
+
+function renderValueTypeLabelText({
+  value,
+  multiple,
+  isMinimal,
+  label,
+  counter,
+  details,
+  shouldPutAColonAfterLabel,
+}: RenderLabelTextProps) {
+  if (!value || multiple) {
     if (isMinimal) return label;
 
-    return (counter || value) && shouldPutAColonAfterLabel
-      ? `${label}:`
-      : label;
-  } else if (sdsType === "value") {
-    if (!value || multiple) {
-      if (isMinimal) return label;
-      return counter && shouldPutAColonAfterLabel ? `${label}:` : label;
-    }
-
-    if (isMinimal) return value;
-    return (counter || details) && shouldPutAColonAfterLabel
-      ? `${value}:`
-      : value;
+    return counter && shouldPutAColonAfterLabel ? `${label}:` : label;
   }
+
+  if (isMinimal) return value;
+
+  return (counter || details) && shouldPutAColonAfterLabel
+    ? `${value}:`
+    : value;
 }
 
 function renderDetailsText({
