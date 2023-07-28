@@ -267,7 +267,8 @@ const LivePreviewDemo = (): JSX.Element => {
           onClick={handleClick1}
           label="Click Target"
           sdsStage={open1 ? "userInput" : "default"}
-          sdsType="singleSelect"
+          sdsType="label"
+          multiple={false}
           sdsStyle="minimal"
         />
 
@@ -324,7 +325,8 @@ const LivePreviewDemo = (): JSX.Element => {
           onClick={handleClick3}
           label="Click Target"
           sdsStage={open3 ? "userInput" : "default"}
-          sdsType="multiSelect"
+          sdsType="label"
+          multiple
           sdsStyle="rounded"
         />
 
@@ -351,7 +353,8 @@ const LivePreviewDemo = (): JSX.Element => {
           onClick={handleClick4}
           label="Click Target"
           sdsStage={open4 ? "userInput" : "default"}
-          sdsType="multiSelect"
+          sdsType="label"
+          multiple
           sdsStyle="square"
         />
 

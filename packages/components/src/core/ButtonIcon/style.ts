@@ -175,7 +175,7 @@ export const StyledButtonIcon = styled(IconButton, {
 })`
   padding: 0;
 
-  :focus {
+  :focus-visible {
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
   }
