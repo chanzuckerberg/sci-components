@@ -112,6 +112,7 @@ import { ReactComponent as IconTriangleRightSmall } from "../../common/svgs/Icon
 import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTriangleUpSmall.svg";
 import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
 import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
+import { ReactComponent as IconVirusCircleSLarge } from "../../common/svgs/IconVirusCircleSLarge.svg";
 import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
@@ -207,6 +208,7 @@ export interface IconNameToSizes {
   triangleUp: "xs" | "s";
   upload: "l" | "xl";
   virus: "l" | "xl";
+  virusCircleS: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
 }
@@ -574,6 +576,10 @@ export const iconMap: Props = {
   },
   virus: {
     largeIcon: IconVirusLarge,
+    smallIcon: null,
+  },
+  virusCircleS: {
+    largeIcon: IconVirusCircleSLarge,
     smallIcon: null,
   },
   xMark: {
