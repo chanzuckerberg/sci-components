@@ -5,7 +5,13 @@ import { CommonThemeProps, fontBodyXs, getColors, getSpaces } from "../styles";
 export interface NavigationJumpToExtraProps
   extends Omit<
       TabsProps,
-      "indicatorColor" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+      | "indicatorColor"
+      | "nonce"
+      | "rev"
+      | "rel"
+      | "autoFocus"
+      | "content"
+      | "onChange"
     >,
     CommonThemeProps {
   sdsIndicatorColor?:

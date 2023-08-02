@@ -18,7 +18,7 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
     elementRef: React.MutableRefObject<HTMLElement | null>;
   }>;
   offsetTop?: number;
-  onChange?: (event: React.SyntheticEvent, value: number) => void;
+  onChange?: (value: number) => void;
 }
 
 const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
@@ -26,6 +26,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
     const { items, indicatorColor, offsetTop = 0, onChange, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
+    const [emittedValue, setEmittedValue] = useState(-1);
     const sectionIsInView = useInView(items);
 
     useEffect(() => {
@@ -61,6 +62,14 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       };
     };
 
+    // Emit changes only once
+    const handleOnChange = (value: number) => {
+      if (value !== emittedValue) {
+        onChange?.(value);
+        setEmittedValue(value);
+      }
+    };
+
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       // Set navItemClicked to true to disable changing the tab value
       // while scrolling. Once the scrolling ends, it is changed back to false.
@@ -88,7 +97,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       setFirstTabIndexInview(newValue);
 
       // Envoke the custom onChange prop
-      onChange?.(event, newValue);
+      handleOnChange(newValue);
     };
 
     // Observe changes in the sectionIsInView object to update the tabs value
@@ -102,8 +111,12 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       // Update the tabs value only if a section is present in the viewport
       // and no navigation item has been clicked, preventing updates during window scroll
       // and unnecessary movement of the tabs indicator.
-      if (sectionInView > -1 && !navItemClicked)
+      if (sectionInView > -1 && !navItemClicked) {
         setFirstTabIndexInview(sectionInView);
+
+        // Envoke the custom onChange prop
+        handleOnChange(sectionInView);
+      }
     }, [sectionIsInView]);
 
     // Set navItemClicked to false to re-enable the option
