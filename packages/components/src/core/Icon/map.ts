@@ -10,8 +10,10 @@ import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCh
 import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
 import { ReactComponent as IconChevronDownLarge } from "../../common/svgs/IconChevronDownLarge.svg";
 import { ReactComponent as IconChevronDownSmall } from "../../common/svgs/IconChevronDownSmall.svg";
+import { ReactComponent as IconChevronLeft2Small } from "../../common/svgs/IconChevronLeft2Small.svg";
 import { ReactComponent as IconChevronLeftLarge } from "../../common/svgs/IconChevronLeftLarge.svg";
 import { ReactComponent as IconChevronLeftSmall } from "../../common/svgs/IconChevronLeftSmall.svg";
+import { ReactComponent as IconChevronRight2Small } from "../../common/svgs/IconChevronRight2Small.svg";
 import { ReactComponent as IconChevronRightLarge } from "../../common/svgs/IconChevronRightLarge.svg";
 import { ReactComponent as IconChevronRightSmall } from "../../common/svgs/IconChevronRightSmall.svg";
 import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChevronUpLarge.svg";
@@ -125,7 +127,9 @@ export interface IconNameToSizes {
   check: "xs" | "s";
   checkCircle: "xs" | "s" | "l" | "xl";
   chevronDown: "xs" | "s" | "l" | "xl";
+  chevronLeft2: "xs" | "s";
   chevronLeft: "xs" | "s" | "l" | "xl";
+  chevronRight2: "xs" | "s";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   circlesOverlap: "xs" | "s" | "l" | "xl";
@@ -254,9 +258,17 @@ export const iconMap: Props = {
     largeIcon: IconChevronLeftLarge,
     smallIcon: IconChevronLeftSmall,
   },
+  chevronLeft2: {
+    largeIcon: null,
+    smallIcon: IconChevronLeft2Small,
+  },
   chevronRight: {
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
+  },
+  chevronRight2: {
+    largeIcon: null,
+    smallIcon: IconChevronRight2Small,
   },
   chevronUp: {
     largeIcon: IconChevronUpLarge,

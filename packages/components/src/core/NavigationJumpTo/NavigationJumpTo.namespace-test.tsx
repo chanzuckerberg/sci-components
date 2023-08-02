@@ -1,5 +1,4 @@
 import { NavigationJumpTo, NavigationJumpToProps } from "@czi-sds/components";
-import React from "react";
 
 const NavigationJumpToNameSpaceTest = (props: NavigationJumpToProps) => {
   return (
@@ -12,7 +11,7 @@ const NavigationJumpToNameSpaceTest = (props: NavigationJumpToProps) => {
         { elementRef: { current: null }, title: "Item 4" },
         { elementRef: { current: null }, title: "Item 5" },
       ]}
-      onChange={(event: React.SyntheticEvent, value: number) => {}}
+      onChange={(value: number) => {}}
       offsetTop={0}
     />
   );
