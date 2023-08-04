@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "files": [
-    "src/core/Heatmap/Heatmap.namespace-test.tsx",
+  "include": [
+    "src/core/**/*.namespace-test.tsx",
   ]
 }

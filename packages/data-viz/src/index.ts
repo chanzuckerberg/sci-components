@@ -1,2 +1,2 @@
-export * from "./core/Heatmap";
-export { default as Heatmap } from "./core/Heatmap";
+export * from "./core/HeatmapChart";
+export { default as HeatmapChart } from "./core/HeatmapChart";

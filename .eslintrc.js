@@ -18,6 +18,7 @@ module.exports = {
     "plugin:jest-playwright/recommended",
     "plugin:storybook/recommended",
     "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
   ],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier

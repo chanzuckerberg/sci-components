@@ -33,7 +33,8 @@
     "library",
     "data-viz",
     "visualization",
-    "heatmap"
+    "heatmap",
+    "echarts"
   ],
   "config": {
     "commitizen": {
@@ -45,7 +46,7 @@
     "build-watch": "rollup -c -w",
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
@@ -59,11 +60,19 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.132",
     "@mui/material": "^5.13.3",
+    "echarts": "^5.4.2",
+    "lodash": "^4.17.21",
     "react": ">=17.0.1",
     "react-dom": ">=17.0.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1"
+    "@types/react-dom": "^17.0.1",
+    "jest-canvas-mock": "^2.5.2",
+    "jest-environment-jsdom": "^29.6.2"
+  },
+  "dependencies": {
+    "echarts": "^5.4.2",
+    "lodash": "^4.17.21"
   }
 }
