@@ -143,7 +143,7 @@ describe("<Dropdown />", () => {
     expect(menuItem).toBeNull();
   });
 
-  it("Prop Test (closeOnBlur): Dropdown closes when button is clicked with closeOnBlue set to false", async () => {
+  it("Prop Test (closeOnBlur): Dropdown closes when button is clicked with closeOnBlur set to false", async () => {
     const args = {
       ...Test.args,
       closeOnBlur: false,
