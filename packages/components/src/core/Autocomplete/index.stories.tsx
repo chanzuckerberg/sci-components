@@ -87,16 +87,16 @@ export default {
   // in real applications. To avoid false positive test failures, the following
   // accessibility rules have been temporarily disabled in the tests
   parameters: {
-    // axe: {
-    //   disabledRules: [
-    //     "aria-input-field-name",
-    //     "aria-required-children",
-    //     "aria-required-parent",
-    //     "button-name",
-    //     "list",
-    //     "listitem",
-    //   ],
-    // },
+    axe: {
+      disabledRules: [
+        "aria-input-field-name",
+        "aria-required-children",
+        "aria-required-parent",
+        "button-name",
+        "list",
+        "listitem",
+      ],
+    },
   },
   title: "Dropdowns/Autocomplete",
 } as Meta;
