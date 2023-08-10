@@ -19,7 +19,6 @@ const Autocomplete = (props: Args): JSX.Element => {
   const { options = GITHUB_LABELS } = props;
 
   const [selection, setSelection] = useState<string | null>();
-  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <div style={{ margin: "16px 0 0 24px" }}>
@@ -30,10 +29,6 @@ const Autocomplete = (props: Args): JSX.Element => {
         disableCloseOnSelect={false}
         onChange={handleChange}
         options={options}
-        inputValue={inputValue}
-        onInputChange={(_, newInputValue) => {
-          setInputValue(newInputValue);
-        }}
         getOptionDisabled={(option: DefaultAutocompleteOption) => {
           return (
             option.name === "Type: feature request" ||
@@ -59,7 +54,6 @@ const Autocomplete = (props: Args): JSX.Element => {
   ) {
     if (newValue && newValue.name) {
       setSelection(newValue.name);
-      setInputValue("");
     }
   }
 };

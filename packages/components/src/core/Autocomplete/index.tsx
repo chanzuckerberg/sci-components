@@ -6,7 +6,7 @@ import {
   AutocompleteRenderOptionState,
   InputAdornment,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent } from "react";
+import React, { ReactNode, SyntheticEvent, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
@@ -94,7 +94,10 @@ const Autocomplete = <
     PaperComponent = StyledPaper,
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
+    onInputChange,
   } = props;
+
+  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <StyledAutocomplete
@@ -147,6 +150,15 @@ const Autocomplete = <
         </InputBaseWrapper>
       )}
       {...props}
+      inputValue={inputValue}
+      onInputChange={(event, newInputValue, reason) => {
+        if (reason !== "input") {
+          setInputValue("");
+        } else {
+          setInputValue(newInputValue);
+        }
+        onInputChange?.(event, newInputValue, reason);
+      }}
     />
   );
 
