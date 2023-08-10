@@ -81,7 +81,7 @@ export default {
   },
   component: Autocomplete,
   // (masoudmanson) For the purpose of storybook, the button is removed
-  // from the dropdown menu component which may cause some accessibility
+  // from the Autocomplete component which may cause some accessibility
   // violations related to ARIA roles and attributes. However, this
   // should not be a concern as the component is always used with a button
   // in real applications. To avoid false positive test failures, the following
