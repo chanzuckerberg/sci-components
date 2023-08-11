@@ -196,9 +196,12 @@ type IconItemProps = {
 
 const IconItem = (props: IconItemProps) => {
   const { sdsIcon, innerIcon, color, shade } = props;
-  if (!innerIcon[1]) return null;
-  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+
   const [copied, setCopied] = useState(false);
+
+  if (!innerIcon[1]) return null;
+
+  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
 
   const copyIconNameHandler = (iconName: string) => {
     navigator.clipboard.writeText(iconName);

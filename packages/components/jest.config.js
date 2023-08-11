@@ -1,14 +1,5 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const COMMON_CONFIG = require("../../jest.common.config");
+
 module.exports = {
-  globals: {
-    "ts-jest": {
-      isolatedModules: true,
-    },
-  },
-  moduleDirectories: ["node_modules", "<rootDir>"],
-  preset: "ts-jest",
-  testEnvironment: "jsdom",
-  transform: {
-    "^.+\\.svg$": "svg-jest",
-  },
+  ...COMMON_CONFIG,
 };

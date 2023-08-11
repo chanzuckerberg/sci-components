@@ -10,8 +10,7 @@ exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
     <svg
       aria-hidden="true"
       class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-      data-jest-file-name="IconLoadingLarge.svg"
-      data-jest-svg-name="IconLoadingLarge"
+      data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
       focusable="false"
