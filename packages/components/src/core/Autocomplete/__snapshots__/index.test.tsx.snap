@@ -52,8 +52,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
                 <svg
                   aria-hidden="true"
                   class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                  data-jest-file-name="IconSearchSmall.svg"
-                  data-jest-svg-name="IconSearchSmall"
+                  data-file-name="IconSearchSmall"
                   data-testid="IconSearchSmall"
                   fillcontrast="white"
                   focusable="false"
