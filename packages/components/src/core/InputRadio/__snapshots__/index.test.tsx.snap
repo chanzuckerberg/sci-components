@@ -25,8 +25,7 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-jest-file-name="IconRadioChecked.svg"
-        data-jest-svg-name="IconRadioChecked"
+        data-file-name="IconRadioChecked"
         data-testid="IconRadioChecked"
         fillcontrast="white"
         focusable="false"

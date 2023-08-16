@@ -42,8 +42,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -77,8 +76,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -112,8 +110,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -166,8 +163,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconFlaskLarge.svg"
-              data-jest-svg-name="IconFlaskLarge"
+              data-file-name="IconFlaskLarge"
               data-testid="IconFlaskLarge"
               fillcontrast="white"
               focusable="false"
@@ -344,8 +340,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconDownloadLarge.svg"
-              data-jest-svg-name="IconDownloadLarge"
+              data-file-name="IconDownloadLarge"
               data-testid="IconDownloadLarge"
               fillcontrast="white"
               focusable="false"
@@ -458,8 +453,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-jest-file-name="IconRadioUnchecked.svg"
-                data-jest-svg-name="IconRadioUnchecked"
+                data-file-name="IconRadioUnchecked"
                 data-testid="IconRadioUnchecked"
                 fillcontrast="white"
                 focusable="false"
@@ -492,8 +486,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-jest-file-name="IconRadioChecked.svg"
-                data-jest-svg-name="IconRadioChecked"
+                data-file-name="IconRadioChecked"
                 data-testid="IconRadioChecked"
                 fillcontrast="white"
                 focusable="false"
@@ -556,8 +549,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconBacteriaLarge.svg"
-              data-jest-svg-name="IconBacteriaLarge"
+              data-file-name="IconBacteriaLarge"
               data-testid="IconBacteriaLarge"
               fillcontrast="white"
               focusable="false"
@@ -645,8 +637,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-            data-jest-file-name="IconVirusLarge.svg"
-            data-jest-svg-name="IconVirusLarge"
+            data-file-name="IconVirusLarge"
             data-testid="IconVirusLarge"
             fillcontrast="white"
             focusable="false"

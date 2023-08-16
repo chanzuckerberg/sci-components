@@ -26,8 +26,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-          data-jest-file-name="IconChevronDownSmall.svg"
-          data-jest-svg-name="IconChevronDownSmall"
+          data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
           focusable="false"

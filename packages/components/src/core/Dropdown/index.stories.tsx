@@ -47,7 +47,7 @@ export default {
   argTypes: {
     DropdownMenuProps: { control: { type: "object" } },
     buttonPosition: {
-      constrol: {
+      control: {
         labels: ["left", "right"],
         type: "select",
       },
@@ -95,7 +95,7 @@ export default {
       control: {
         type: "boolean",
       },
-      defaulValue: true,
+      defaultValue: true,
     },
   },
   component: Dropdown,
@@ -150,7 +150,7 @@ export const InsideModal = {
       skip: true,
     },
   },
-  render: (): JSX.Element => {
+  render: function InsideModalComponent(): JSX.Element {
     const [value, setValue] = useState<
       DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
     >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);

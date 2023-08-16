@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import svgr from "@svgr/rollup";
-import ts from "rollup-plugin-ts";
-import del from "rollup-plugin-delete";
 import url from "@rollup/plugin-url";
-import css from "rollup-plugin-css-only";
+import svgr from "@svgr/rollup";
 import bundleScss from "rollup-plugin-bundle-scss";
 import copy from "rollup-plugin-copy";
+import css from "rollup-plugin-css-only";
+import del from "rollup-plugin-delete";
+import ts from "rollup-plugin-ts";
 import pkg from "./package.json" assert { type: "json" };
 
 const config = [

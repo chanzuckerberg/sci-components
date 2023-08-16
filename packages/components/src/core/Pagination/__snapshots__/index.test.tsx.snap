@@ -21,8 +21,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-          data-jest-file-name="IconChevronLeftSmall.svg"
-          data-jest-svg-name="IconChevronLeftSmall"
+          data-file-name="IconChevronLeftSmall"
           data-testid="IconChevronLeftSmall"
           fillcontrast="white"
           focusable="false"
@@ -71,8 +70,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-          data-jest-file-name="IconDotsHorizontal3Small.svg"
-          data-jest-svg-name="IconDotsHorizontal3Small"
+          data-file-name="IconDotsHorizontal3Small"
           data-testid="IconDotsHorizontal3Small"
           fillcontrast="white"
           focusable="false"
@@ -105,8 +103,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-          data-jest-file-name="IconChevronRightSmall.svg"
-          data-jest-svg-name="IconChevronRightSmall"
+          data-file-name="IconChevronRightSmall"
           data-testid="IconChevronRightSmall"
           fillcontrast="white"
           focusable="false"

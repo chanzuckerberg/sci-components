@@ -12,18 +12,6 @@ export default function useInView(
     elementRef: React.MutableRefObject<HTMLElement | null>;
   }>
 ) {
-  // If the window object is not available (e.g., in a node environment) or
-  // If the IntersectionObserver is not available (e.g., in a test environment),
-  // return a default result indicating that all elements are not in view
-  if (typeof window === "undefined" || !window.IntersectionObserver) {
-    return items.map((item) => {
-      return {
-        el: item.elementRef,
-        isInView: false,
-      };
-    });
-  }
-
   const [elements, setElements] = useState<{
     [key: string]: {
       intersectionEntry: IntersectionObserverEntry;
@@ -67,7 +55,19 @@ export default function useInView(
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [items]);
+
+  // If the window object is not available (e.g., in a node environment) or
+  // If the IntersectionObserver is not available (e.g., in a test environment),
+  // return a default result indicating that all elements are not in view
+  if (typeof window === "undefined" || !window.IntersectionObserver) {
+    return items.map((item) => {
+      return {
+        el: item.elementRef,
+        isInView: false,
+      };
+    });
+  }
 
   return elements;
 }
