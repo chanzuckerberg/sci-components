@@ -1,5 +1,9 @@
+import {
+  Autocomplete,
+  AutocompleteProps,
+  DefaultAutocompleteOption,
+} from "@czi-sds/components";
 import { noop } from "src/common/utils";
-import Autocomplete, { DefaultAutocompleteOption, SdsAutocomplete } from ".";
 
 const OPTIONS = [
   {
@@ -15,7 +19,12 @@ const OPTIONS = [
 ];
 
 const AutocompleteNameSpaceTest = (
-  props: SdsAutocomplete<DefaultAutocompleteOption, true, undefined, undefined>
+  props: AutocompleteProps<
+    DefaultAutocompleteOption,
+    true,
+    undefined,
+    undefined
+  >
 ) => {
   return (
     <Autocomplete

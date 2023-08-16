@@ -19,20 +19,14 @@ export interface StyleProps extends CommonThemeProps {
   hasSections?: boolean;
   icon?: ReactElement;
   search?: boolean;
-  title?: string;
 }
 
 const doNotForwardProps = [
-  "anchorEl",
   "count",
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
   "hasSections",
-  "title",
-  "PopperBaseProps",
-  "onClickAway",
-  "ClickAwayListenerProps",
 ];
 
 export const StyledAutocomplete = styled(Autocomplete, {
@@ -45,12 +39,13 @@ export const StyledAutocomplete = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { hasSections } = props;
+    const { search, hasSections } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const borders = getBorders(props);
 
     return `
+      ${!search && `height: 0`};
 
       .MuiOutlinedInput-root.MuiInputBase-formControl.MuiInputBase-adornedEnd {
         padding: 0 ${spacings?.l}px 0 0;
@@ -60,20 +55,19 @@ export const StyledAutocomplete = styled(Autocomplete, {
         }
       }
 
-      & + .MuiAutocomplete-popper {
-        width: 100% !important;
-      }
-
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
 
-      ${hasSections ? `padding-left: ${spacings?.s}px !important;` : ""}
+      ${
+        search || hasSections
+          ? `padding-left: ${spacings?.s}px !important;`
+          : ""
+      }
 
       .MuiAutocomplete-listbox {
         max-height: 40vh;
         padding-top: 0;
-        padding-bottom: 0;
-        
-        ${hasSections ? `padding-right: ${spacings?.s}px;` : ""}
+        padding-bottom: 0;  
+        padding-right: ${spacings?.s}px;
 
         .MuiAutocomplete-option {
           min-height: unset;
@@ -125,39 +119,54 @@ export const StyledAutocomplete = styled(Autocomplete, {
 export const InputBaseWrapper = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 0;
+  ${(props: StyleProps) => {
+    const { search } = props;
+
+    if (!search) {
+      // (thuang): We cannot use `display: none;` here, since
+      // the component needs to be in the DOM to handle backdrop
+      // click to close the menu
+      return `
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        margin: 0;
+      `;
+    }
+  }}
 `;
 
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
+})<{ search: boolean }>`
   margin: 0;
   .MuiInputBase-root {
     width: 100%;
   }
   /* (thuang): Works with attribute inputMode: "none" to hide mobile keyboard */
-  caret-color: auto;
+  caret-color: ${({ search }) => (search ? "auto" : "transparent")};
 `;
 
 export const StyledPaper = styled(Paper)`
   ${(props) => {
+    const spacings = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const spacings = getSpaces(props);
 
     return `
-    background-color: white;
-    border: ${borders?.gray[100]};
-    border-radius: ${corners?.m}px;
-    box-shadow: ${shadows?.m};
-    padding: ${spacings?.xs}px;
-    box-sizing: border-box;
-  `;
+      padding: ${spacings?.s}px 0 0 ${spacings?.s}px ;
+      background-color: white;
+      border: ${borders?.gray[100]};
+      border-radius: ${corners?.m}px;
+      box-shadow: ${shadows?.m};
+      box-sizing: border-box;
+    `;
   }}
 `;
 

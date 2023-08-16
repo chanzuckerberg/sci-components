@@ -1,10 +1,11 @@
 import { Args, Meta } from "@storybook/react";
-import { SyntheticEvent, useRef, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { Value } from "../Dropdown";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import TagFilter from "../TagFilter";
 import RawAutocomplete, { DefaultAutocompleteOption } from "./index";
 
-export type DropdownOptionValue<T, Multiple> = Multiple extends
+export type AutocompleteOptionValue<T, Multiple> = Multiple extends
   | undefined
   | false
   ? T | undefined
@@ -15,46 +16,117 @@ const groupByOptions = [
   (option: DefaultAutocompleteOption) => option.section as string,
 ];
 
-const Autocomplete = (props: Args): JSX.Element => {
-  const { options = GITHUB_LABELS } = props;
+const Autocomplete = <Multiple extends boolean | undefined = false>(
+  props: Args
+): JSX.Element => {
+  const {
+    label,
+    multiple,
+    options = GITHUB_LABELS,
+    search,
+    value: propValue,
+    keepSearchOnSelect,
+  } = props;
 
-  const [selection, setSelection] = useState<string | null>();
+  const isControlled = propValue !== undefined;
+  const [value, setValue] = useState<
+    DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
+  >(getInitialValue());
+  const [pendingValue, setPendingValue] = useState<
+    DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
+  >(getInitialValue());
+
+  const [selection, setSelection] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [propValue]);
+
+  useEffect(() => {
+    setSelection([]);
+  }, [multiple]);
 
   return (
-    <div style={{ margin: "16px 0 0 24px" }}>
+    <div style={{ margin: "16px 0 0 24px", width: 300 }}>
       <RawAutocomplete
-        // (masoudmanson): To turn off autocomplete, we need to add the id attribute.
-        id="test-id"
-        label="Select a GitHub label"
-        disableCloseOnSelect={false}
+        id="autocomplete-demo"
+        disableCloseOnSelect={multiple}
+        label={label}
+        multiple={multiple}
         onChange={handleChange}
+        keepSearchOnSelect={keepSearchOnSelect}
         options={options}
+        search={search}
+        value={multiple ? pendingValue : value}
         getOptionDisabled={(option: DefaultAutocompleteOption) => {
           return (
             option.name === "Type: feature request" ||
             option.name === "Type: documentation"
           );
         }}
-        sx={{
-          width: 300,
-        }}
         {...props}
       />
       <div style={{ marginTop: 10 }}>
-        {selection ? (
-          <TagFilter label={selection} onDelete={() => setSelection(null)} />
-        ) : null}
+        {selection.length
+          ? selection.map((item) => {
+              return (
+                <TagFilter
+                  key={item}
+                  label={item}
+                  onDelete={() => handleTagDelete(item)}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   );
 
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue: DefaultAutocompleteOption | null
+    newValue: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
   ) {
-    if (newValue && newValue.name) {
-      setSelection(newValue.name);
+    if (multiple) {
+      const newSelection = Array.isArray(newValue)
+        ? newValue?.map((item) => item.name)
+        : [];
+      setSelection(newSelection);
+      return setPendingValue(newValue);
+    } else {
+      if (newValue && !Array.isArray(newValue) && newValue.name) {
+        setValue(newValue);
+        setSelection([newValue.name]);
+      }
     }
+  }
+
+  function handleTagDelete(tag: string) {
+    if (multiple && Array.isArray(pendingValue)) {
+      const index = pendingValue?.findIndex((item) => item.name === tag);
+      const newValue = [...pendingValue];
+      newValue.splice(index, 1);
+      setPendingValue(newValue);
+
+      const newSelection = [...selection];
+      const deleteIndex = newSelection.indexOf(tag);
+      newSelection.splice(deleteIndex, 1);
+      setSelection(newSelection);
+    } else {
+      setValue(null);
+      setSelection([]);
+    }
+  }
+
+  function getInitialValue(): Value<DefaultAutocompleteOption, Multiple> {
+    if (isControlled) {
+      return propValue;
+    }
+
+    return multiple
+      ? ([] as unknown as Value<DefaultAutocompleteOption, Multiple>)
+      : null;
   }
 };
 
@@ -68,9 +140,17 @@ export default {
       mapping: groupByOptions,
       options: Object.keys(groupByOptions),
     },
+    keepSearchOnSelect: {
+      control: { type: "boolean" },
+    },
     label: {
       control: { type: "text" },
-      require: true,
+    },
+    multiple: {
+      control: { type: "boolean" },
+    },
+    search: {
+      control: { type: "boolean" },
     },
   },
   component: Autocomplete,
@@ -100,42 +180,60 @@ export default {
 export const Default = {
   args: {
     groupBy: groupByOptions[1],
-    label: "Select a GitHub label",
+    keepSearchOnSelect: true,
+    label: "Search by label",
+    multiple: true,
+    search: true,
   },
 };
 
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
-  const { options = GITHUB_LABELS, label } = props;
+  const { multiple, options = GITHUB_LABELS, search } = props;
 
-  const anchorRef = useRef(null);
+  const [value, setValue] = useState<
+    null | DefaultAutocompleteOption | DefaultAutocompleteOption[]
+  >(multiple ? [] : null);
+
+  const [pendingValue, setPendingValue] = useState<DefaultAutocompleteOption[]>(
+    []
+  );
 
   return (
-    <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
-      <RawAutocomplete
-        id="test-autocomplete-id"
-        label={label}
-        disableCloseOnSelect={false}
-        options={options}
-        groupBy={(option: DefaultAutocompleteOption) =>
-          option.section as string
-        }
-        {...props}
-        sx={{ width: 300 }}
-      />
-    </div>
+    <RawAutocomplete
+      open
+      search={search}
+      label="Search"
+      multiple={multiple}
+      value={multiple ? pendingValue : value}
+      onChange={handleChange}
+      disableCloseOnSelect={multiple}
+      options={options}
+      groupBy={(option: DefaultAutocompleteOption) => option.section as string}
+      {...props}
+    />
   );
+
+  function handleChange(
+    _: React.ChangeEvent<unknown>,
+    newValue: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
+  ) {
+    if (!multiple) {
+      setValue(newValue as DefaultAutocompleteOption);
+    }
+
+    return setPendingValue(newValue as DefaultAutocompleteOption[]);
+  }
 };
 
 export const Test = {
   args: {
-    label: "Select a label",
+    keepSearchOnSelect: false,
+    multiple: true,
+    search: true,
   },
   parameters: {
-    controls: {
-      exclude: ["groupBy", "label"],
-    },
     snapshot: {
       skip: true,
     },

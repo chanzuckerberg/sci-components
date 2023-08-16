@@ -2,27 +2,27 @@
 
 exports[`<Autocomplete /> Default story renders snapshot 1`] = `
 <div
-  style="margin: 16px 0px 0px 24px;"
+  style="margin: 16px 0px 0px 24px; width: 300px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1pftyyz-MuiAutocomplete-root"
-    label="Select a GitHub label"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1crjeuu-MuiAutocomplete-root"
+    label="Search by label"
   >
     <div
-      class="css-17c7xix"
+      class="css-1oteowz"
     >
       <label
         class="css-1xrxdra"
-        for="sds-autocomplete"
+        for="location-search"
       >
-        Select a GitHub label
+        Search by label
       </label>
       <div
         class="MuiFormControl-root MuiTextField-root css-zhsnsf-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
-          inputmode="search"
+          inputmode="text"
         >
           <input
             aria-autocomplete="list"
@@ -31,8 +31,8 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
             autocapitalize="none"
             autocomplete="off"
             class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-vvf66v-MuiInputBase-input-MuiOutlinedInput-input"
-            id="test-id"
-            placeholder="Select a GitHub label"
+            id="autocomplete-demo"
+            placeholder="Search by label"
             role="combobox"
             spellcheck="false"
             type="search"

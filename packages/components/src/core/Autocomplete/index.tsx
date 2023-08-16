@@ -1,12 +1,13 @@
 import {
   AutocompleteFreeSoloValueMapping,
   AutocompleteInputChangeReason,
-  AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   InputAdornment,
+  AutocompleteProps as MuiAutocompleteProps,
 } from "@mui/material";
 import React, { ReactNode, SyntheticEvent, useState } from "react";
+import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
@@ -55,8 +56,8 @@ interface ExtraAutocompleteProps extends StyleProps {
     reason: AutocompleteInputChangeReason
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   label: string;
+  PaperComponent?: typeof StyledPaper | RenderFunctionType;
 }
 
 type CustomAutocompleteProps<
@@ -65,11 +66,11 @@ type CustomAutocompleteProps<
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 > = Omit<
-  AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
+  MuiAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
 >;
 
-export type SdsAutocomplete<
+export type AutocompleteProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
@@ -83,39 +84,50 @@ const Autocomplete = <
   DisableClearable extends boolean | undefined = undefined,
   FreeSolo extends boolean | undefined = undefined
 >(
-  props: SdsAutocomplete<T, Multiple, DisableClearable, FreeSolo>
+  props: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
   const {
+    multiple = false,
+    disableCloseOnSelect = multiple,
     getOptionLabel = defaultGetOptionLabel,
     InputBaseProps = {},
     isOptionEqualToValue = defaultIsOptionEqualToValue,
+    keepSearchOnSelect = false,
     label,
+    loading = false,
+    loadingText = "",
     noOptionsText = "No options",
+    onInputChange = noop,
     PaperComponent = StyledPaper,
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
-    onInputChange,
+    search = false,
   } = props;
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <StyledAutocomplete
       clearOnBlur={false}
+      disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
       renderTags={renderTags}
+      loading={loading}
+      loadingText={loadingText}
       noOptionsText={noOptionsText}
       PaperComponent={PaperComponent}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
+      inputValue={inputValue}
       renderInput={(params: AutocompleteRenderInputParams) => (
-        <InputBaseWrapper>
+        <InputBaseWrapper search={search}>
           <StyledMenuInputSearch
-            id="sds-autocomplete"
+            id="location-search"
             label={label}
             placeholder={label}
             ref={params.InputProps.ref}
+            search={search}
             // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
             onKeyDown={(event) => {
               if (event.key === "Backspace") {
@@ -127,7 +139,7 @@ const Autocomplete = <
                * (thuang): Works with css caret-color: "transparent" to hide
                * mobile keyboard
                */
-              inputMode: "search",
+              inputMode: search ? "text" : "none",
               /**
                * (mmoore): passing only the ref along to InputProps to prevent
                * default MUI arrow from rendering in search input.
@@ -150,14 +162,33 @@ const Autocomplete = <
         </InputBaseWrapper>
       )}
       {...props}
-      inputValue={inputValue}
-      onInputChange={(event, newInputValue, reason) => {
-        if (reason !== "input") {
-          setInputValue("");
+      onBlur={(event: React.FocusEvent<HTMLInputElement, Element>) => {
+        setInputValue("");
+        props.onBlur?.(event);
+      }}
+      onInputChange={(
+        event: SyntheticEvent<Element, Event>,
+        value: string,
+        reason: AutocompleteInputChangeReason
+      ) => {
+        if (!multiple) {
+          if (reason === "input") {
+            setInputValue(value);
+          } else {
+            setInputValue("");
+          }
         } else {
-          setInputValue(newInputValue);
+          if (reason === "clear") {
+            setInputValue("");
+          } else if (
+            reason === "input" ||
+            (reason === "reset" && !keepSearchOnSelect)
+          ) {
+            setInputValue(value);
+          }
         }
-        onInputChange?.(event, newInputValue, reason);
+
+        if (onInputChange) onInputChange(event, value, reason);
       }}
     />
   );
@@ -185,14 +216,14 @@ const Autocomplete = <
     let MenuItemContent;
 
     const { component, details, count, sdsIcon, sdsIconProps } = option;
-    const optionLabel = getOptionLabel(option);
+    const menuItemLabel = getOptionLabel(option);
 
     if (component) {
       MenuItemContent = component;
     } else {
       MenuItemContent = (
         <StyledMenuItemText>
-          {optionLabel}
+          {menuItemLabel}
           {details && (
             <StyledMenuItemDetails className="menuItem-details">
               {details}
@@ -208,7 +239,7 @@ const Autocomplete = <
         disabled={optionProps["aria-disabled"] === true}
         sdsIcon={sdsIcon}
         sdsIconProps={sdsIconProps}
-        isMultiSelect={false}
+        isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
       >
