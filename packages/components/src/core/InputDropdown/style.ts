@@ -273,6 +273,12 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
       color: ${colors?.gray[300]};
     }
 
+    &.MuiButton-text {
+      .styled-label {
+        color: ${colors?.gray[300]};
+      }
+    }
+
     path {
       fill: ${colors?.gray[300]};
     }

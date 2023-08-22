@@ -2,6 +2,8 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
+import Callout from "../Callout";
+import CalloutTitle from "../Callout/components/CalloutTitle";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import RawInputDropdown, { InputDropdownProps } from "./index";
 
@@ -21,6 +23,7 @@ const InputDropdown = (props: Args): JSX.Element => {
     sdsStyle,
     multiple,
     value: propValue,
+    sdsType,
     ...rest
   } = props;
 
@@ -31,6 +34,8 @@ const InputDropdown = (props: Args): JSX.Element => {
   const [details, setDetials] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
+  const [invalid, setInvalid] = useState(false);
+  const [storybookLabel, setStorybookLabel] = useState("Label");
 
   const [value, setValue] = useState<
     DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
@@ -46,6 +51,22 @@ const InputDropdown = (props: Args): JSX.Element => {
       setValue(propValue);
     }
   }, [propValue, isControlled]);
+
+  useEffect(() => {
+    if (sdsType === "value" && multiple) {
+      setInvalid(true);
+    } else {
+      setInvalid(false);
+    }
+  }, [multiple, sdsType]);
+
+  useEffect(() => {
+    if (sdsType === "value") {
+      setStorybookLabel("Value");
+    } else {
+      setStorybookLabel(label);
+    }
+  }, [label, sdsType]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setSdsStage("userInput");
@@ -126,27 +147,30 @@ const InputDropdown = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <p>
-        The &quot;Value&quot; variant of InputDropdown cannot be set to
-        &quot;multiple&quot;. <br />
-        If you set sdsType=&quot;value&quot; and multiple=&quot;true&quot;, the
-        component will revert to displaying a label and a counter.
-      </p>
-
-      <StyledInputDropdown
-        disabled={disabled}
-        label={label}
-        onClick={handleClick}
-        state={open ? "open" : "default"}
-        sdsStage={sdsStage}
-        sdsStyle={sdsStyle}
-        multiple={multiple}
-        details={details}
-        value={inputDropdownValue}
-        counter={counter}
-        data-testid="InputDropdown"
-        {...rest}
-      />
+      {invalid ? (
+        <Callout autoDismiss={false} intent="error">
+          <CalloutTitle>Invalid props!</CalloutTitle>
+          When using the InputDropdown component, please note that the
+          combination of setting the sdsType prop to &quot;value&quot; and the
+          multiple prop to &quot;true&quot; is not allowed.
+        </Callout>
+      ) : (
+        <StyledInputDropdown
+          disabled={disabled}
+          label={storybookLabel}
+          onClick={handleClick}
+          state={open ? "open" : "default"}
+          sdsStage={sdsStage}
+          sdsStyle={sdsStyle}
+          sdsType={sdsType}
+          multiple={multiple}
+          details={details}
+          value={inputDropdownValue}
+          counter={counter}
+          data-testid="InputDropdown"
+          {...rest}
+        />
+      )}
 
       <DropdownMenu
         open={open}
