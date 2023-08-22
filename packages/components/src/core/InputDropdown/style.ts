@@ -40,6 +40,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
+    ${labelStyle(props)}
+
     border: ${borders?.gray[400]};
     color: ${palette?.text?.primary};
     cursor: pointer;
@@ -100,6 +102,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const spacings = getSpaces(props);
+  const palette = getPalette(props);
 
   return css`
     ${labelStyle(props)}
@@ -128,6 +131,15 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &:hover {
       background-color: ${colors?.gray[100]};
       border: none;
+      color: ${palette?.text?.primary};
+
+      path {
+        fill: black;
+      }
+
+      .styled-label {
+        color: #000;
+      }
     }
 
     &:active {
@@ -176,10 +188,18 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const userInput = (): SerializedStyles => {
+const userInput = (props: InputDropdownProps): SerializedStyles => {
+  const palette = getPalette(props);
+
   return css`
     & .styled-label {
-      color: black;
+      color: ${palette?.text?.primary};
+    }
+
+    &.MuiButton-text {
+      .styled-label {
+        color: ${palette?.text?.primary};
+      }
     }
   `;
 };
@@ -290,7 +310,7 @@ export const StyledInputDropdown = styled(Button, {
       ${sdsStyle === "square" && square(props)}
       ${sdsStyle === "rounded" && rounded(props)}
       ${state === "open" && isOpen(props)}
-      ${sdsStage === "userInput" && userInput()}
+      ${sdsStage === "userInput" && userInput(props)}
       ${intent === "warning" && warning(props)}
       ${intent === "error" && error(props)}
       ${disabled && isDisabled(props)}
@@ -410,9 +430,8 @@ export const IconWrapper = styled("span", {
 function labelStyle(props: InputDropdownProps): SerializedStyles {
   const colors = getColors(props);
   const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
+  const labelColor =
+    props.sdsType === "label" ? colors?.gray[500] : palette?.text?.primary;
 
   return css`
     &.MuiButton-text {
