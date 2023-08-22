@@ -1,0 +1,24 @@
+---
+name: Feature
+about: New features, documentation, or changes to code or figma components  
+title: 'Feature: [feature request]'
+labels: ''
+assignees: ''
+
+---
+
+## What
+
+What is needed, with 
+
+## Related Areas 
+
+- [ ] Coded Library
+- [ ] Figma Library 
+- [ ] Zeroheight 
+
+## Context
+
+In what context does your amendment solve a problem?
+
+
