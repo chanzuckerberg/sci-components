@@ -3,7 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
-import RawInputDropdown from "./index";
+import RawInputDropdown, { InputDropdownProps } from "./index";
 
 const StyledInputDropdown = styled(RawInputDropdown)`
   ${({ width }: Args) => {
@@ -17,7 +17,6 @@ const StyledInputDropdown = styled(RawInputDropdown)`
 const InputDropdown = (props: Args): JSX.Element => {
   const {
     disabled,
-    fullWidth,
     label,
     sdsStyle,
     multiple,
@@ -27,6 +26,8 @@ const InputDropdown = (props: Args): JSX.Element => {
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [sdsStage, setSdsStage] =
+    useState<InputDropdownProps["sdsStage"]>("default");
   const [details, setDetials] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
@@ -44,9 +45,11 @@ const InputDropdown = (props: Args): JSX.Element => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, isControlled]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setSdsStage("userInput");
+
     if (open) {
       setOpen(false);
 
@@ -90,6 +93,9 @@ const InputDropdown = (props: Args): JSX.Element => {
   const handleClickAway = () => {
     if (open) {
       setOpen(false);
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        setSdsStage("default");
+      }
     }
     if (multiple) {
       setValue(pendingValue);
@@ -126,35 +132,21 @@ const InputDropdown = (props: Args): JSX.Element => {
         If you set sdsType=&quot;value&quot; and multiple=&quot;true&quot;, the
         component will revert to displaying a label and a counter.
       </p>
-      {fullWidth ? (
-        <RawInputDropdown
-          disabled={disabled}
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          sdsStyle={sdsStyle}
-          multiple={multiple}
-          details={details}
-          value={inputDropdownValue}
-          counter={counter}
-          data-testid="InputDropdown"
-          {...rest}
-        />
-      ) : (
-        <StyledInputDropdown
-          disabled={disabled}
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          sdsStyle={sdsStyle}
-          multiple={multiple}
-          details={details}
-          value={inputDropdownValue}
-          counter={counter}
-          data-testid="InputDropdown"
-          {...rest}
-        />
-      )}
+
+      <StyledInputDropdown
+        disabled={disabled}
+        label={label}
+        onClick={handleClick}
+        state={open ? "open" : "default"}
+        sdsStage={sdsStage}
+        sdsStyle={sdsStyle}
+        multiple={multiple}
+        details={details}
+        value={inputDropdownValue}
+        counter={counter}
+        data-testid="InputDropdown"
+        {...rest}
+      />
 
       <DropdownMenu
         open={open}

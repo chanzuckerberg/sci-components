@@ -18,7 +18,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
   label: ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
-  open?: boolean;
+  state?: "default" | "open";
   sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
   sdsType?: "label" | "value";
@@ -176,7 +176,15 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const userInput = (props: InputDropdownProps): SerializedStyles => {
+const userInput = (): SerializedStyles => {
+  return css`
+    & .styled-label {
+      color: black;
+    }
+  `;
+};
+
+const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const palette = getPalette(props);
 
@@ -253,7 +261,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
 const doNotForwardProps = [
   "intent",
-  "open",
+  "state",
   "sdsStage",
   "sdsType",
   "isMinimal",
@@ -274,15 +282,15 @@ export const StyledInputDropdown = styled(Button, {
   justify-content: space-between;
 
   ${(props: InputDropdownProps) => {
-    const { disabled, intent, open, sdsStage, sdsStyle } = props;
+    const { disabled, intent, state, sdsStage, sdsStyle } = props;
 
     return css`
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
       ${sdsStyle === "rounded" && rounded(props)}
-      ${open && userInput(props)}
-      ${sdsStage === "userInput" && userInput(props)}
+      ${state === "open" && isOpen(props)}
+      ${sdsStage === "userInput" && userInput()}
       ${intent === "warning" && warning(props)}
       ${intent === "error" && error(props)}
       ${disabled && isDisabled(props)}
