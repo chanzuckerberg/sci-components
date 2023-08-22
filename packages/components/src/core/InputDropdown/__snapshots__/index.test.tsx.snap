@@ -8,7 +8,7 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
     If you set sdsType="value" and multiple="true", the component will revert to displaying a label and a counter.
   </p>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-fbd7s3-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-pbaak-MuiButtonBase-root-MuiButton-root"
     data-testid="InputDropdown"
     label="Label"
     tabindex="0"

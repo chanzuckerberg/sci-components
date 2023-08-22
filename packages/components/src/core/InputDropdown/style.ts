@@ -431,7 +431,7 @@ function labelStyle(props: InputDropdownProps): SerializedStyles {
   const colors = getColors(props);
   const palette = getPalette(props);
   const labelColor =
-    props.sdsType === "label" ? colors?.gray[500] : palette?.text?.primary;
+    props.sdsType === "value" ? palette?.text?.primary : colors?.gray[500];
 
   return css`
     &.MuiButton-text {
