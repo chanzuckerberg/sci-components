@@ -2,8 +2,10 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
+import Callout from "../Callout";
+import CalloutTitle from "../Callout/components/CalloutTitle";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
-import RawInputDropdown from "./index";
+import RawInputDropdown, { InputDropdownProps } from "./index";
 
 const StyledInputDropdown = styled(RawInputDropdown)`
   ${({ width }: Args) => {
@@ -17,19 +19,23 @@ const StyledInputDropdown = styled(RawInputDropdown)`
 const InputDropdown = (props: Args): JSX.Element => {
   const {
     disabled,
-    fullWidth,
     label,
     sdsStyle,
     multiple,
     value: propValue,
+    sdsType,
     ...rest
   } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [sdsStage, setSdsStage] =
+    useState<InputDropdownProps["sdsStage"]>("default");
   const [details, setDetials] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
+  const [invalid, setInvalid] = useState(false);
+  const [storybookLabel, setStorybookLabel] = useState("Label");
 
   const [value, setValue] = useState<
     DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
@@ -44,9 +50,27 @@ const InputDropdown = (props: Args): JSX.Element => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, isControlled]);
+
+  useEffect(() => {
+    if (sdsType === "value" && multiple) {
+      setInvalid(true);
+    } else {
+      setInvalid(false);
+    }
+  }, [multiple, sdsType]);
+
+  useEffect(() => {
+    if (sdsType === "value") {
+      setStorybookLabel("Value");
+    } else {
+      setStorybookLabel(label);
+    }
+  }, [label, sdsType]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setSdsStage("userInput");
+
     if (open) {
       setOpen(false);
 
@@ -90,6 +114,9 @@ const InputDropdown = (props: Args): JSX.Element => {
   const handleClickAway = () => {
     if (open) {
       setOpen(false);
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        setSdsStage("default");
+      }
     }
     if (multiple) {
       setValue(pendingValue);
@@ -120,33 +147,22 @@ const InputDropdown = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <p>
-        The &quot;Value&quot; variant of InputDropdown cannot be set to
-        &quot;multiple&quot;. <br />
-        If you set sdsType=&quot;value&quot; and multiple=&quot;true&quot;, the
-        component will revert to displaying a label and a counter.
-      </p>
-      {fullWidth ? (
-        <RawInputDropdown
-          disabled={disabled}
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          sdsStyle={sdsStyle}
-          multiple={multiple}
-          details={details}
-          value={inputDropdownValue}
-          counter={counter}
-          data-testid="InputDropdown"
-          {...rest}
-        />
+      {invalid ? (
+        <Callout autoDismiss={false} intent="error">
+          <CalloutTitle>Invalid props!</CalloutTitle>
+          When using the InputDropdown component, please note that the
+          combination of setting the sdsType prop to &quot;value&quot; and the
+          multiple prop to &quot;true&quot; is not allowed.
+        </Callout>
       ) : (
         <StyledInputDropdown
           disabled={disabled}
-          label={label}
+          label={storybookLabel}
           onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
+          state={open ? "open" : "default"}
+          sdsStage={sdsStage}
           sdsStyle={sdsStyle}
+          sdsType={sdsType}
           multiple={multiple}
           details={details}
           value={inputDropdownValue}

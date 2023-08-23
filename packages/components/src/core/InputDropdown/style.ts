@@ -18,7 +18,7 @@ export interface InputDropdownProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
   label: ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
-  open?: boolean;
+  state?: "default" | "open";
   sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
   sdsType?: "label" | "value";
@@ -40,6 +40,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
+    ${labelStyle(props)}
+
     border: ${borders?.gray[400]};
     color: ${palette?.text?.primary};
     cursor: pointer;
@@ -100,6 +102,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const spacings = getSpaces(props);
+  const palette = getPalette(props);
 
   return css`
     ${labelStyle(props)}
@@ -128,6 +131,15 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &:hover {
       background-color: ${colors?.gray[100]};
       border: none;
+      color: ${palette?.text?.primary};
+
+      path {
+        fill: black;
+      }
+
+      .styled-label {
+        color: #000;
+      }
     }
 
     &:active {
@@ -177,6 +189,22 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
+  const palette = getPalette(props);
+
+  return css`
+    & .styled-label {
+      color: ${palette?.text?.primary};
+    }
+
+    &.MuiButton-text {
+      .styled-label {
+        color: ${palette?.text?.primary};
+      }
+    }
+  `;
+};
+
+const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const palette = getPalette(props);
 
@@ -245,6 +273,12 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
       color: ${colors?.gray[300]};
     }
 
+    &.MuiButton-text {
+      .styled-label {
+        color: ${colors?.gray[300]};
+      }
+    }
+
     path {
       fill: ${colors?.gray[300]};
     }
@@ -253,7 +287,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
 const doNotForwardProps = [
   "intent",
-  "open",
+  "state",
   "sdsStage",
   "sdsType",
   "isMinimal",
@@ -274,14 +308,14 @@ export const StyledInputDropdown = styled(Button, {
   justify-content: space-between;
 
   ${(props: InputDropdownProps) => {
-    const { disabled, intent, open, sdsStage, sdsStyle } = props;
+    const { disabled, intent, state, sdsStage, sdsStyle } = props;
 
     return css`
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
       ${sdsStyle === "rounded" && rounded(props)}
-      ${open && userInput(props)}
+      ${state === "open" && isOpen(props)}
       ${sdsStage === "userInput" && userInput(props)}
       ${intent === "warning" && warning(props)}
       ${intent === "error" && error(props)}
@@ -402,9 +436,8 @@ export const IconWrapper = styled("span", {
 function labelStyle(props: InputDropdownProps): SerializedStyles {
   const colors = getColors(props);
   const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
+  const labelColor =
+    props.sdsType === "value" ? palette?.text?.primary : colors?.gray[500];
 
   return css`
     &.MuiButton-text {
