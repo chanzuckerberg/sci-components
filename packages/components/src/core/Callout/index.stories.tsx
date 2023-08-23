@@ -46,6 +46,11 @@ export default {
       control: { type: "select" },
       options: [true, false, 4000, 12000, 20000],
     },
+    expandable: {
+      control: {
+        type: "boolean",
+      },
+    },
     intent: {
       control: { type: "radio" },
       options: ["info", "error", "success", "warning"],
