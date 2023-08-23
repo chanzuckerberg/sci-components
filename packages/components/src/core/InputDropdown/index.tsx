@@ -20,7 +20,6 @@ export type InputDropdownProps = SdsInputDropdownProps &
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const {
     label,
-    open,
     multiple = false,
     sdsStyle,
     sdsType = "label",
@@ -32,13 +31,6 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   } = props;
 
   const isMinimal = sdsStyle === "minimal";
-
-  if (open !== undefined) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      "Warning: InputDropdown prop `open` has been replaced by `sdsStage` and will be deprecated."
-    );
-  }
 
   const shouldRenderDetails = !multiple && (details || value) && !isMinimal;
   const shouldRenderInlineMinimalDetails =
