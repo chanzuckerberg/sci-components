@@ -8,8 +8,8 @@ assignees: ''
 ---
 
 - [ ] Align with design, product, other engineers, if necessary, on what functionality to test
-- As a starting point, you can find the component in this doc:  Functional tests: Ideas for what to test per component
-- Write the tests in the index.test.tsx for the component.
+- As a starting point, you can find the component in this doc: [Functional tests: Ideas for what to test per component](https://docs.google.com/document/d/1qKFFBWMBq0QMhRrk5-mgrZYI2QqiL-c9YLKi28w94Gg/edit#heading=h.aixehdk039ik)
+- [ ] Write the tests in the index.test.tsx for the component.
 
 ### Tips for writing functional tests:
 - Consider the various types of [queries within the React Testing Library and when to use which](https://testing-library.com/docs/queries/about/#types-of-queries)
