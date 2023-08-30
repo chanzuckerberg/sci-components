@@ -1,5 +1,4 @@
-import { Paper, Popper } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import { Autocomplete, Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import InputSearch from "../InputSearch";
@@ -81,7 +80,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
         max-height: 40vh;
         padding-top: 0;
         padding-bottom: 0;
-        
+
         ${
           search || title || hasSections
             ? `padding-right: ${spacings?.s}px;`
@@ -130,7 +129,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
           position: relative;
           margin-bottom: ${spacings?.xxs}px;
         }
-      } 
+      }
     `;
   }}
 ` as typeof Autocomplete;
@@ -193,7 +192,7 @@ export const StyledHeaderTitle = styled("div", {
       color: black;
       padding-top: ${spacings?.xxs}px;
       padding-right: ${spacings?.s}px;
-      padding-left: ${spacings?.s}px; 
+      padding-left: ${spacings?.s}px;
       ${search ? `padding-bottom: 0px;` : `padding-bottom: ${spacings?.xs}px;`}
     `;
   }}

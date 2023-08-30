@@ -1,6 +1,5 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ButtonBase from "@mui/material/ButtonBase";
-import Popper from "@mui/material/Popper";
+import { ButtonBase, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   AutocompleteCloseReason,
