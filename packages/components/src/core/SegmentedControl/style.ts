@@ -1,5 +1,5 @@
+import { ToggleButtonGroup } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { CommonThemeProps, getColors, getCorners, getSpaces } from "../styles";
 
 const doNotForwardProps = ["color", "buttonDefinition"];
@@ -14,12 +14,12 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
     return `
     height: 26px;
-    
+
     .Mui-selected.MuiToggleButton-root {
         background-color: ${colors?.gray[100]};
         color: ${colors?.primary[400]};
         border-color: ${colors?.gray[300]};
-        
+
         &:hover {
           background-color: ${colors?.gray[100]};
         }

@@ -1,5 +1,4 @@
-import { Paper } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import { Autocomplete, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import InputSearch from "../InputSearch";
@@ -66,7 +65,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
       .MuiAutocomplete-listbox {
         max-height: 40vh;
         padding-top: 0;
-        padding-bottom: 0;  
+        padding-bottom: 0;
         padding-right: ${spacings?.s}px;
 
         .MuiAutocomplete-option {
@@ -111,7 +110,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
           position: relative;
           margin-bottom: ${spacings?.xxs}px;
         }
-      } 
+      }
     `;
   }}
 ` as typeof Autocomplete;
