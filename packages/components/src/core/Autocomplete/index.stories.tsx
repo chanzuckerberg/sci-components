@@ -42,7 +42,7 @@ const Autocomplete = <Multiple extends boolean | undefined = false>(
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [isControlled, propValue]);
 
   useEffect(() => {
     setSelection([]);
