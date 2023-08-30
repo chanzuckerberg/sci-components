@@ -11,11 +11,14 @@ const config = [
   {
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
-      "@mui/material/Popper",
-      "@mui/material/ToggleButton",
       "@mui/material/styles",
-      "@mui/material/Autocomplete",
-      "@mui/material/ToggleButtonGroup",
+      /**
+       * (thuang): Do NOT import MUI components from their component directory directly, since
+       * it breaks the ts to js transpilation. Instead, import from "@mui/material"
+       * For example:
+       * BAD: import Autocomplete from "@mui/material/Autocomplete";
+       * GOOD: import { Autocomplete } from "@mui/material";
+       */
     ],
     input: "src/index.ts",
     output: [

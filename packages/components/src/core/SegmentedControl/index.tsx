@@ -1,5 +1,4 @@
-import ToggleButton from "@mui/material/ToggleButton";
-import { ToggleButtonGroupProps } from "@mui/material/ToggleButtonGroup";
+import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";

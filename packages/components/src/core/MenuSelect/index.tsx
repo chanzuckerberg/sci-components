@@ -1,13 +1,11 @@
 import {
   AutocompleteFreeSoloValueMapping,
-  InputAdornment,
-} from "@mui/material";
-import {
   AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
-} from "@mui/material/Autocomplete";
+  InputAdornment,
+} from "@mui/material";
 import React, { useState } from "react";
 import { noop } from "src/common/utils";
 import {
