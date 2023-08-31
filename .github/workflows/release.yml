@@ -87,5 +87,5 @@ jobs:
           title: "chore(release): Merge changes from prod to main"
           body: "This pull request merges changes from the prod branch to main after Lerna publish."
           branch: merge-publish-changes-to-the-main
-          base: prod
+          base: main
           draft: true
