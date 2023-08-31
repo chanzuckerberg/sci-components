@@ -114,7 +114,7 @@
     "test": "lerna run test",
     "test:updateSnapshots": "lerna run test -- -u",
     "namespace-check": "lerna run namespace-check",
-    "prepare": "is-ci || husky install",
+    "prepare": "husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
