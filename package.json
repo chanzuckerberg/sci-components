@@ -121,7 +121,7 @@
     "lerna-version": "lerna version --no-changelog --conventional-commits --conventional-graduate --yes",
     "lerna-version-fallback": "lerna version --no-changelog --conventional-commits --yes",
     "release": "lerna publish from-package --yes",
-    "version:ci":"lerna version --yes --no-changelog --conventional-commits --create-release github --message 'chore(release): publish'",
+    "version:ci":"lerna version --yes --no-changelog --conventional-commits",
     "publish:ci": "lerna publish from-package --yes"
   },
   "lint-staged": {
