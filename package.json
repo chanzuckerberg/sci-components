@@ -114,12 +114,12 @@
     "test": "lerna run test",
     "test:updateSnapshots": "lerna run test -- -u",
     "namespace-check": "lerna run namespace-check",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
-    "version:ci":"lerna version --yes --no-changelog --conventional-commits",
-    "publish:ci": "lerna publish from-package --yes"
+    "version:ci":"HUSKY=0 lerna version --yes --no-changelog --conventional-commits",
+    "publish:ci": "HUSKY=0 lerna publish from-package --yes"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
