@@ -33,7 +33,7 @@ jobs:
 
       - name: Ensure NPM access
         run: npm whoami
-        with:
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get yarn cache directory path
