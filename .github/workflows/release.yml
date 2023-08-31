@@ -78,12 +78,3 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
-
-      - name: Post breaking changes to a Slack channel
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        uses: act10ns/slack@v1
-        with:
-          status: complete
-          config: .github/workflows/slack-breaking-changes.yml
-          if: contains(payload.commits.*.message, 'breaking changes')
