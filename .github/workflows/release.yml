@@ -26,10 +26,15 @@ jobs:
         with:
           node-version-file: ".node-version"
 
-      - name: "Setup npm"
-        run: |
-          npm set registry=//registry.npmjs.org/:_authToken=${NPM_TOKEN}
-          npm set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+      # - name: "Setup npm"
+      #   run: |
+      #     npm set registry=//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+      #     npm set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+
+      - name: Ensure NPM access
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -48,11 +53,6 @@ jobs:
 
       - name: Build component library in dist/
         run: yarn build
-
-      - name: Ensure access
-        run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Config git user
         run: |
