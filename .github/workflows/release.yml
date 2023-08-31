@@ -79,6 +79,26 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v5
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     commit-message: "Merge changes from prod to main"
+      #     title: "chore(release): Merge changes from prod to main"
+      #     body: "This pull request merges changes from the prod branch to main after Lerna publish."
+      #     branch: merge-release-changes-back-to-the-main
+      #     base: main
+
+      - name: Checkout main
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Reset promotion branch
+        run: |
+          git fetch origin prod:prod
+          git reset --hard prod
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
@@ -86,6 +106,5 @@ jobs:
           commit-message: "Merge changes from prod to main"
           title: "chore(release): Merge changes from prod to main"
           body: "This pull request merges changes from the prod branch to main after Lerna publish."
-          branch: merge-publish-changes-to-the-main
+          branch: main-promotion
           base: main
-          draft: true
