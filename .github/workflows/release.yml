@@ -84,7 +84,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Merge changes from prod to main"
-          title: "Merge changes from prod to main"
+          title: "chore(release): Merge changes from prod to main"
           body: "This pull request merges changes from the prod branch to main after Lerna publish."
           branch: main
           base: prod
+          draft: true
