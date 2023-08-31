@@ -28,8 +28,8 @@ jobs:
 
       - name: "Setup npm"
         run: |
-          npm set registry=//registry.npmjs.org/:_authToken=${NPM_TOKEN}
-          npm set "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"
+          npm set registry=//registry.npmjs.org/:_authToken=${secrets.NPM_TOKEN}
+          npm set "//registry.npmjs.org/:_authToken=${secrets.NPM_TOKEN}"
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -49,28 +49,21 @@ jobs:
       - name: Build component library in dist/
         run: yarn build
 
-      - name: Bump Prod Version Graduate
+      - name: Ensure access
+        run: npm whoami
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        continue-on-error: true
-        id: graduateRelease
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
-          yarn lerna-version
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Bump Prod Version Fallback
+      - name: Config git user
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Lerna Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ always() && steps.graduateRelease.outcome == 'failure'  }}
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
-          echo Falling back to non-graduate release due to https://github.com/lerna/lerna/issues/2532
-          git stash
-          yarn lerna-version-fallback
+        run: yarn version:ci
 
       - name: Commit changes
         env:
@@ -82,7 +75,7 @@ jobs:
       - name: Lerna Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        run: yarn release
+        run: yarn publish:ci
 
       - name: Post breaking changes to a Slack channel
         env:

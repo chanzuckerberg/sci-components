@@ -120,7 +120,9 @@
     "ci": "yarn install --frozen-lockfile --network-concurrency 1",
     "lerna-version": "lerna version --no-changelog --conventional-commits --conventional-graduate --yes",
     "lerna-version-fallback": "lerna version --no-changelog --conventional-commits --yes",
-    "release": "lerna publish from-package --yes"
+    "release": "lerna publish from-package --yes",
+    "version:ci":"lerna version --yes --no-change-log --conventional-commits --create-release github --message 'chore(release): publish'",
+    "publish:ci": "lerna publish from-package --yes"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
