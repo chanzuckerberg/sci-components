@@ -79,10 +79,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
-      - name: Push changes to the main branch
-        run: |
-          git checkout main
-          git merge prod --no-edit
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge changes from prod to main"
+          title: "Merge changes from prod to main"
+          body: "This pull request merges changes from the prod branch to main after Lerna publish."
+          branch: main
+          base: prod
