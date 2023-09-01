@@ -38,17 +38,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # - name: Get yarn cache directory path
-      #   id: yarn-cache-dir-path
-      #   run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-      # - uses: actions/cache@v3
-      #   id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      #   with:
-      #     path: "**/node_modules"
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
-
       - name: Install dependencies
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn ci
@@ -102,16 +91,10 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(github.event.commits.*.message, 'fix') }}
+          GITHUB_CONDITION: ${{ contains(toJson(github.event.commits.*.message), 'fix') }}
         run: |
           echo "$GITHUB_MESSAGES"
           echo "$GITHUB_CONDITION"
-
-      - name: Dump GitHub context
-        env:
-          RESULT: ${{ contains(fromJSON('["push(test)", "pull_request", "pushh"]'), 'push') }}
-        run: |
-          echo "$RESULT"
 
       - name: Post breaking changes to a Slack channel
         env:
@@ -120,4 +103,4 @@ jobs:
         with:
           status: complete
           config: .github/slack-breaking-changes.yml
-        if: contains(github.event.commits.*.message, 'breaking changes')
+        if: contains(toJson(github.event.commits.*.message), 'breaking changes')
