@@ -12,7 +12,6 @@ const config = [
   {
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
-      "@mui/material/styles",
       /**
        * (thuang): Do NOT import MUI components from their component directory directly, since
        * it breaks the ts to js transpilation. Instead, import from "@mui/material"
@@ -20,6 +19,11 @@ const config = [
        * BAD: import Autocomplete from "@mui/material/Autocomplete";
        * GOOD: import { Autocomplete } from "@mui/material";
        */
+      "@mui/material/styles",
+      /**
+       * (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
+       */
+      "react/jsx-runtime",
     ],
     input: "src/index.ts",
     output: [
