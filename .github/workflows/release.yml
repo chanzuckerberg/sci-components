@@ -100,7 +100,7 @@ jobs:
           base: main
 
       - name: Debugging step
-        run: echo "GitHub event commits = $(github.event.commits)"
+        run: echo "GitHub event commits = $(github.event)"
 
       - name: Post breaking changes to a Slack channel
         env:
