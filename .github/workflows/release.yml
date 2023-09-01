@@ -103,7 +103,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), "fix") }}
+          GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
         run: |
           echo "$GITHUB_MESSAGES"
           echo "$GITHUB_CONDITION"
