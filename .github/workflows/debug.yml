@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Print results
         run: |
-          echo ${{secrets.SLACK_WEBHOOK_URL}} | sed 's/./& /g' | sed 's/ //g'
+          echo ${{secrets.SLACK_WEBHOOK_URL}} | sed 's/./& /g'
