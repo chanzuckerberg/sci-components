@@ -11,4 +11,4 @@ jobs:
         env:
           SLACK: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          run: echo ${{SLACK}} | sed 's/./& /g'
+          run: echo $SLACK | sed 's/./& /g'
