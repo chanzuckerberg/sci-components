@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "15.4.11",
+  "version": "16.0.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "repository": {
