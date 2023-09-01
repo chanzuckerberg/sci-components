@@ -29,7 +29,6 @@ jobs:
 
       - name: "Setup npm"
         run: |
-          npm set registry=//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
           npm set "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -109,17 +108,10 @@ jobs:
           echo "$GITHUB_CONDITION"
 
       - name: Dump GitHub context
+        env:
+          RESULT: ${{ contains(fromJSON('["push", "pull_request"]'), 'push') }}
         run: |
-          for commit in ${{ toJson(github.event.commits) }}; do
-            message=$(echo "$commit" | jq -r '.message')
-            if [[ $message == *"fix"* ]]; then
-              GITHUB_CONDITION_2=true
-            else
-              GITHUB_CONDITION_2=false
-            fi
-            echo "Commit Message: $message"
-            echo "GITHUB_CONDITION: $GITHUB_CONDITION_2"
-          done
+          echo "$RESULT"
 
       - name: Post breaking changes to a Slack channel
         env:
