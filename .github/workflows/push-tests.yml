@@ -9,14 +9,21 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - uses: actions/checkout@v3
-      - uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Build component library in dist/
         run: yarn build
@@ -26,28 +33,42 @@ jobs:
           yarn lint
 
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Run Tests
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - uses: actions/checkout@v3
-      - uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Test
         run: |
           yarn test
 
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      - uses: actions/checkout@v3
-      - uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Build
         run: |

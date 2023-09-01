@@ -8,18 +8,23 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false
-      - uses: actions/setup-node@v3
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
-      - name: Install and Build 🔧
+          cache: "yarn"
+
+      - name: Install and Build
         run: | # Install npm packages and build the Storybook files
-          yarn install
+          yarn
           yarn build-storybook
-      - name: Deploy 🚀
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

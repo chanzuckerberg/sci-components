@@ -11,18 +11,29 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
+          cache: "yarn"
+
       - name: Install dependencies
         run: yarn
+
       - name: Install Playwright
         run: npx playwright install --with-deps
+
       - name: Build Storybook
         run: yarn build-storybook --quiet
-      - name: Run accessibility tests 🤟
+
+      - name: Run accessibility tests
         run: yarn storybook:axeOnly
+
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \

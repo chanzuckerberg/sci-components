@@ -11,21 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 👇 Version 2 of the action
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # 👈 Required to retrieve git history
-      - uses: actions/setup-node@v3
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version"
+          cache: "yarn"
+
       - name: Install dependencies
         run: yarn
-        # 👇 Adds Chromatic as a step in the workflow
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
-        # Options required to the GitHub Chromatic Action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

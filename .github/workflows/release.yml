@@ -6,10 +6,6 @@ on:
     # .releaserc.js. So we'll need to manually add such branch's name here manually
     branches:
       - prod
-      - next
-      - next-major
-      - beta
-      - alpha
 
 jobs:
   release:
@@ -39,7 +35,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
-        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn ci
 
       - name: Build component library in dist/
