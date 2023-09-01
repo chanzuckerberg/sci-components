@@ -1,6 +1,6 @@
-name: "Chromatic"
+name: "Chromatic Deployment"
 
-# Event for the workflow
+# Triggers on Push event on all branches, excluding the 'prod' branch
 on:
   push:
     branches-ignore:
@@ -8,25 +8,29 @@ on:
 
 jobs:
   chromatic-deployment:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
 
     steps:
+      # Step 1: Checkout the repository code
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn
 
+      # Step 4: Publish the project to Chromatic
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }} # Authenticate using the GitHub token
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }} # Provide the Chromatic project token for authentication

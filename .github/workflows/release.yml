@@ -1,4 +1,6 @@
 name: Release
+
+# triggers on pushes to the 'prod' branch
 on:
   push:
     # NOTE(thuang): Since REGEX is not supported for branches, we cannot target
@@ -10,47 +12,57 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
+
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js and Cache yarn
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Set up npm and authentication
       - name: "Setup npm"
         run: |
           npm set "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # Step 4: Ensure npm access
       - name: Ensure NPM access
         run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # Step 5: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn ci
 
+      # Step 6: Build the component library in 'dist/' directory
       - name: Build component library in dist/
         run: yarn build
 
+      # Step 7: Configure git user for pushing release changes back to prod branch
       - name: Config git user
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
+      # Step 8: Lerna Version
       - name: Lerna Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
+      # Step 9: Commit changes
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,21 +70,26 @@ jobs:
         with:
           branch: ${{ github.head_ref }}
 
+      # Step 10: Publish NPM packages
       - name: Lerna Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
+      # Step 11: Check out the main branch
+      # to create a pull request to push the release modifications back to the main
       - name: Checkout main
         uses: actions/checkout@v3
         with:
           ref: main
 
+      # Step 12: Reset promotion branch
       - name: Reset promotion branch
         run: |
           git fetch origin prod:prod
           git reset --hard prod
 
+      # Step 13: Create Pull Request
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
@@ -83,6 +100,7 @@ jobs:
           branch: main-promotion
           base: main
 
+      # Step 14: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

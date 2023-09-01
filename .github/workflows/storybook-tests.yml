@@ -1,39 +1,47 @@
-# .github/workflows/storybook-tests.yml
-
 name: "Storybook Tests"
+
+# Triggers on push to all branches, excluding the 'prod' branch
 on:
   push:
     branches-ignore:
-      - prod
+      - prod # Exclude the 'prod' branch from triggering this workflow
 
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
+
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn
 
+      # Step 4: Install Playwright for testing
       - name: Install Playwright
         run: npx playwright install --with-deps
 
+      # Step 5: Build Storybook
       - name: Build Storybook
         run: yarn build-storybook --quiet
 
+      # Step 6: Run accessibility tests on Storybook
       - name: Run accessibility tests
         run: yarn storybook:axeOnly
 
+      # Step 7: Serve Storybook and run tests concurrently
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \

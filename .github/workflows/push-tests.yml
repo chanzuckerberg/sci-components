@@ -1,75 +1,86 @@
 name: Push Tests
 
+# Workflow event triggers
 on:
   push:
     branches:
-      - main
+      - main # Triggered on pushes to the 'main' branch
   pull_request:
-    branches: "*"
+    branches: "*" # Triggered on pull requests for any branch
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn
 
+      # Step 4: Build the component library in 'dist/' directory
       - name: Build component library in dist/
         run: yarn build
 
+      # Step 5: Run linting
       - name: Lint
-        run: |
-          yarn lint
+        run: yarn lint
 
   test:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn
 
+      # Step 4: Run tests
       - name: Test
-        run: |
-          yarn test
+        run: yarn test
 
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-          cache: "yarn"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
       - name: Install dependencies
         run: yarn
 
+      # Step 4: Build
       - name: Build
-        run: |
-          yarn build
+        run: yarn build
