@@ -13,6 +13,6 @@ jobs:
           GITHUB_CONDITION: ${{ contains(fromJson(github.event.commits.*.message), 'fix') }}
           ARRAY: ${{ fromJSON(github.event.commits.*.message) }}
         run: |
-          echo "$GITHUB_MESSAGES"
-          echo "$GITHUB_CONDITION"
+          # echo "$GITHUB_MESSAGES"
+          # echo "$GITHUB_CONDITION"
           echo "$ARRAY"
