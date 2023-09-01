@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print results
+        env:
+          SLACK: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          run: echo ${{secrets.SLACK_WEBHOOK_URL}} | sed 's/./& /g'
+          run: echo ${{SLACK}} | sed 's/./& /g'
