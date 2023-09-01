@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Print results
         env:
-          GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(fromJson(github.event.commits.*.message), 'fix') }}
+          # GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+          # GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
           ARRAY: ${{ fromJSON(github.event.commits.*.message) }}
+          ARRAY_2: ${{ fromJSON('["push", "pull"]') }}
         run: |
-          # echo "$GITHUB_MESSAGES"
-          # echo "$GITHUB_CONDITION"
           echo "$ARRAY"
+          echo "$ARRAY_2"
