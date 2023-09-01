@@ -88,14 +88,6 @@ jobs:
           branch: main-promotion
           base: main
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(toJson(github.event.commits.*.message), 'fix') }}
-        run: |
-          echo "$GITHUB_MESSAGES"
-          echo "$GITHUB_CONDITION"
-
       - name: Post breaking changes to a Slack channel
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -103,4 +95,4 @@ jobs:
         with:
           status: complete
           config: .github/slack-breaking-changes.yml
-        if: contains(toJson(github.event.commits.*.message), 'breaking changes')
+        if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
