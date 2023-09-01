@@ -8,11 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print results
-        env:
-          GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          # GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
-          # MESSAGES: ${{ github.event.commits.*.message }}
-          ARRAY: ${{ contains(toJson(github.event.commits.*.message), 'breaking change') }}
         run: |
-          echo "$GITHUB_MESSAGES"
-          echo "$ARRAY"
+          run: echo ${{secrets.SLACK_WEBHOOK_URL}} | sed 's/./& /g'
