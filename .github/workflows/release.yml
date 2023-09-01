@@ -103,7 +103,7 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
+          GITHUB_CONDITION: ${{ contains(github.event.commits.*.message, 'fix') }}
         run: |
           echo "$GITHUB_MESSAGES"
           echo "$GITHUB_CONDITION"
@@ -113,12 +113,12 @@ jobs:
           for commit in ${{ toJson(github.event.commits) }}; do
             message=$(echo "$commit" | jq -r '.message')
             if [[ $message == *"fix"* ]]; then
-              GITHUB_CONDITION=true
+              GITHUB_CONDITION_2=true
             else
-              GITHUB_CONDITION=false
+              GITHUB_CONDITION_2=false
             fi
             echo "Commit Message: $message"
-            echo "GITHUB_CONDITION: $GITHUB_CONDITION"
+            echo "GITHUB_CONDITION: $GITHUB_CONDITION_2"
           done
 
       - name: Post breaking changes to a Slack channel
