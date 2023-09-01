@@ -61,10 +61,7 @@ const Autocomplete = <Multiple extends boolean | undefined = false>(
         search={search}
         value={multiple ? pendingValue : value}
         getOptionDisabled={(option: DefaultAutocompleteOption) => {
-          return (
-            option.name === "Type: feature request" ||
-            option.name === "Type: documentation"
-          );
+          return option.name === "Type: feature request";
         }}
         {...props}
       />
