@@ -11,8 +11,8 @@ jobs:
         env:
           # GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
           # GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
-          ARRAY: ${{ fromJSON(github.event.commits.*.message) }}
-          ARRAY_2: ${{ fromJSON('["push", "pull"]') }}
+          MESSAGES: ${{ github.event.commits.*.message }}
+          ARRAY: ${{ fromJSON($MESSAGES) }}
         run: |
           echo "$ARRAY"
-          echo "$ARRAY_2"
+          echo "$MESSAGES"
