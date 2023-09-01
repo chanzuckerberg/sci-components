@@ -29,8 +29,8 @@ jobs:
 
       - name: "Setup npm"
         run: |
-          npm set registry=//https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-          npm set "//https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
+          npm set registry=//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          npm set "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -102,13 +102,24 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
           GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(fromJson(github.event.commits.*.message), 'fix') }}
+          GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), "fix") }}
         run: |
-          echo "$GITHUB_CONTEXT"
           echo "$GITHUB_MESSAGES"
           echo "$GITHUB_CONDITION"
+
+      - name: Dump GitHub context
+        run: |
+          for commit in ${{ toJson(github.event.commits) }}; do
+            message=$(echo "$commit" | jq -r '.message')
+            if [[ $message == *"fix"* ]]; then
+              GITHUB_CONDITION=true
+            else
+              GITHUB_CONDITION=false
+            fi
+            echo "Commit Message: $message"
+            echo "GITHUB_CONDITION: $GITHUB_CONDITION"
+          done
 
       - name: Post breaking changes to a Slack channel
         env:
