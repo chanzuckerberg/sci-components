@@ -109,7 +109,7 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          RESULT: ${{ contains(fromJSON('["push", "pull_request"]'), 'push') }}
+          RESULT: ${{ contains(fromJSON('["push(test)", "pull_request", "pushh"]'), 'push') }}
         run: |
           echo "$RESULT"
 
