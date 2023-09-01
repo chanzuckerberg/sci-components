@@ -102,12 +102,10 @@ jobs:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-          GITHUB_EVENT: ${{ toJson(github.event) }}
-          GITHUB_COMMITS: ${{ toJson(github.event.commits) }}
+          GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          echo "$GITHUB_EVENT"
-          echo "$GITHUB_COMMITS"
+          echo "$GITHUB_MESSAGES"
 
       - name: Post breaking changes to a Slack channel
         env:
