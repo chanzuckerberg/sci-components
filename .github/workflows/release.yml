@@ -98,3 +98,12 @@ jobs:
           body: "This pull request merges changes from the prod branch to main after Lerna publish."
           branch: main-promotion
           base: main
+
+      - name: Post breaking changes to a Slack channel
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        uses: act10ns/slack@v1
+        with:
+          status: complete
+          config: .github/slack-breaking-changes.yml
+          if: contains(payload.commits.*.message, 'breaking changes')
