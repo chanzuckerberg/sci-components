@@ -117,7 +117,7 @@
     "prepare": "husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
-    "ci": "yarn install --frozen-lockfile --network-concurrency 1",
+    "ci": "yarn install --immutable",
     "version:ci":"HUSKY=0 lerna version --yes --no-changelog --conventional-commits",
     "publish:ci": "HUSKY=0 lerna publish from-package --yes"
   },

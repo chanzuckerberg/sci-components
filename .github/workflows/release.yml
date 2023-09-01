@@ -29,8 +29,8 @@ jobs:
 
       - name: "Setup npm"
         run: |
-          npm set registry=//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
-          npm set "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
+          npm set registry=https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          npm set "https://registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -104,7 +104,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
           GITHUB_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-          GITHUB_CONDITION: ${{ contains(github.event.commits.*.message, 'fix') }}
+          GITHUB_CONDITION: ${{ contains(fromJSON(github.event.commits.*.message), 'fix') }}
         run: |
           echo "$GITHUB_CONTEXT"
           echo "$GITHUB_MESSAGES"
