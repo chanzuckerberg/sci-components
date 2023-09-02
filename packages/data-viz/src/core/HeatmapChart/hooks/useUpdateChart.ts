@@ -1,4 +1,4 @@
-import throttle from "lodash/throttle";
+import { throttle } from "lodash";
 import { useEffect, useMemo } from "react";
 import { CreateChartOptionsProps, createChartOptions } from "./utils";
 

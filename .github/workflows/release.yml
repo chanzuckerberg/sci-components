@@ -1,4 +1,6 @@
 name: Release
+
+# triggers on pushes to the 'prod' branch
 on:
   push:
     # NOTE(thuang): Since REGEX is not supported for branches, we cannot target
@@ -6,65 +8,61 @@ on:
     # .releaserc.js. So we'll need to manually add such branch's name here manually
     branches:
       - prod
-      - next
-      - next-major
-      - beta
-      - alpha
 
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
+
     steps:
+      # Step 1: Check out the repository code
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
+      - name: Setup Node.js and Cache yarn
         uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Set up npm and authentication
       - name: "Setup npm"
         run: |
-          npm set registry=//registry.npmjs.org/:_authToken=${secrets.NPM_TOKEN}
-          npm set "//registry.npmjs.org/:_authToken=${secrets.NPM_TOKEN}"
+          npm set "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn ci
-
-      - name: Build component library in dist/
-        run: yarn build
-
-      - name: Ensure access
+      # Step 4: Ensure npm access
+      - name: Ensure NPM access
         run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # Step 5: Install project dependencies using Yarn
+      - name: Install dependencies
+        run: yarn ci
+
+      # Step 6: Build the component library in 'dist/' directory
+      - name: Build component library in dist/
+        run: yarn build
+
+      # Step 7: Configure git user for pushing release changes back to prod branch
       - name: Config git user
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
+      # Step 8: Lerna Version
       - name: Lerna Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
+      # Step 9: Commit changes
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,16 +70,50 @@ jobs:
         with:
           branch: ${{ github.head_ref }}
 
+      # Step 10: Publish NPM packages
       - name: Lerna Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
+      # Step 11: Check out the main branch
+      # to create a pull request to push the release modifications back to the main
+      - name: Checkout main
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      # Step 12: Reset promotion branch
+      - name: Reset promotion branch
+        run: |
+          git fetch origin prod:prod
+          git reset --hard prod
+
+      # Step 13: Create Pull Request
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Merge changes from prod to main"
+          title: "chore(release): Merge changes from prod to main"
+          body: |
+            This pull request merges changes from the prod branch to main after Lerna publish.
+
+            ### Tip
+
+            If you have checks that are pending due to the status not being reported, resolving the issue is possible by closing and reopening the PR. This action effectively unsticks the checks, allowing them to run as intended. [This behavior arises from the inherent limitations of GitHub Actions, where one action's execution can't directly trigger another action](https://github.com/peter-evans/create-pull-request/issues/48).
+
+            Thus, techniques like "pushing an empty commit" or "closing and reopening the PR" help unblock the process, making the PR no longer solely reliant on action-triggered events.
+          branch: main-promotion
+          base: main
+
+      # Step 14: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
         uses: act10ns/slack@v1
         with:
           status: complete
-          config: .github/workflows/slack-breaking-changes.yml
-          if: contains(payload.commits.*.message, 'breaking changes')
+          channel: "#sci-design-system-breaking-changes"
+          config: .github/config/slack.yml
+        if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')

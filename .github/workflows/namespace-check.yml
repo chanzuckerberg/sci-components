@@ -1,24 +1,35 @@
-# .github/workflows/namespace-check.yml
-
 name: "Namespace Check"
+
+# Triggers on push event on all branches, excluding the 'prod' branch
 on:
   push:
     branches-ignore:
-      - prod
+      - prod # Exclude the 'prod' branch from triggering this workflow
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  namespace-check:
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
+
     steps:
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      # Step 1: Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-      - uses: bahmutov/npm-install@v1
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
+      # Step 3: Install project dependencies using Yarn
+      - name: Install dependencies
+        run: yarn
+
+      # Step 4: Build the component library in 'dist/' directory
       - name: Build component library in dist/
         run: yarn build
 
+      # Step 5: Run the Namespace Checking script
       - name: Namespace Checking
         run: yarn namespace-check

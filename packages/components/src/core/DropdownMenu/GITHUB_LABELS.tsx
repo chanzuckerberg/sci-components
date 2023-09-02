@@ -98,7 +98,7 @@ export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
         </div>
       </div>
     ),
-    name: "custom 2",
+    name: "Available labels",
     section: "custom component",
   },
 ];
