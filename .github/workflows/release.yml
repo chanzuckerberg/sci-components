@@ -108,5 +108,5 @@ jobs:
         with:
           status: complete
           channel: "#sci-design-system-breaking-changes"
-          config: .github/slack-breaking-changes.yml
+          config: .github/workflows/slack-breaking-changes.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
