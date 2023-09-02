@@ -107,4 +107,6 @@ jobs:
         uses: act10ns/slack@v1
         with:
           status: complete
+          channel: "#sci-design-system-breaking-changes"
+          config: .github/workflows/slack.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
