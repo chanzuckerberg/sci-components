@@ -103,7 +103,7 @@ jobs:
       # Step 14: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
         uses: act10ns/slack@v1
         with:
           status: complete
