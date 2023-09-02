@@ -96,7 +96,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Merge changes from prod to main"
           title: "chore(release): Merge changes from prod to main"
-          body: "This pull request merges changes from the prod branch to main after Lerna publish."
+          body: |
+            This pull request merges changes from the prod branch to main after Lerna publish.
+
+            ### Tip
+
+            If you have checks that are pending due to the status not being reported, resolving the issue is possible by closing and reopening the PR. This action effectively unsticks the checks, allowing them to run as intended. [This behavior arises from the inherent limitations of GitHub Actions, where one action's execution can't directly trigger another action](https://github.com/peter-evans/create-pull-request/issues/48).
+
+            Thus, techniques like "pushing an empty commit" or "closing and reopening the PR" help unblock the process, making the PR no longer solely reliant on action-triggered events.
           branch: main-promotion
           base: main
 
