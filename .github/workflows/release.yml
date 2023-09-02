@@ -58,7 +58,7 @@ jobs:
       # Step 8: Lerna Version
       - name: Lerna Version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ssh-key: "${{ secrets.COMMIT_KEY }}"
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
