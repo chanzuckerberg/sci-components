@@ -50,7 +50,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, isControlled]);
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
@@ -704,7 +704,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
   useEffect(() => {
     setAnchorEl(anchorRef.current);
-  }, [anchorRef.current]);
+  }, []);
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
