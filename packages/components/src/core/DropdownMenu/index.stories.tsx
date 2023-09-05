@@ -72,10 +72,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
           title={title}
           value={multiple ? pendingValue : value}
           getOptionDisabled={(option: DefaultDropdownMenuOption) => {
-            return (
-              option.name === "Type: feature request" ||
-              option.name === "Type: documentation"
-            );
+            return option.name === "Type: feature request";
           }}
           {...props}
         />
