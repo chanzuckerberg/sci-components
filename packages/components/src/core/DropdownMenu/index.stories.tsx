@@ -44,7 +44,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
 
   useEffect(() => {
     setAnchorEl(anchorRef.current);
-  }, [anchorRef.current]);
+  }, []);
 
   useEffect(() => {
     if (isControlled) {
