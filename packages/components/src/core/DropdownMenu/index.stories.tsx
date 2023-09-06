@@ -44,13 +44,13 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
 
   useEffect(() => {
     setAnchorEl(anchorRef.current);
-  }, [anchorRef.current]);
+  }, []);
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, isControlled]);
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
@@ -72,10 +72,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
           title={title}
           value={multiple ? pendingValue : value}
           getOptionDisabled={(option: DefaultDropdownMenuOption) => {
-            return (
-              option.name === "Type: feature request" ||
-              option.name === "Type: documentation"
-            );
+            return option.name === "Type: feature request";
           }}
           {...props}
         />
@@ -704,7 +701,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
   useEffect(() => {
     setAnchorEl(anchorRef.current);
-  }, [anchorRef.current]);
+  }, []);
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>

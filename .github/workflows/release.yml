@@ -58,7 +58,7 @@ jobs:
       # Step 8: Lerna Version
       - name: Lerna Version
         env:
-          ssh-key: "${{ secrets.COMMIT_KEY }}"
+          GITHUB_TOKEN: ${{ secrets.SDS_LERNA_VERSION_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
@@ -81,6 +81,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
         with:
+          ssh-key: "${{ secrets.COMMIT_KEY }}"
           ref: main
 
       # Step 12: Reset promotion branch
