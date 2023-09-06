@@ -120,6 +120,7 @@ jobs:
 
   # Job 2
   create-version-matrix:
+    needs: release
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
