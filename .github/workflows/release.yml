@@ -77,38 +77,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
-      # Step 11: Check out the main branch
-      # to create a pull request to push the release modifications back to the main
-      - name: Checkout main
-        uses: actions/checkout@v3
-        with:
-          ssh-key: "${{ secrets.COMMIT_KEY }}"
-          ref: main
-
-      # Step 12: Reset promotion branch
-      - name: Reset promotion branch
-        run: |
-          git fetch origin prod:prod
-          git reset --hard prod
-
-      # Step 13: Create Pull Request
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Merge changes from prod to main"
-          title: "chore(release): Merge changes from prod to main"
-          body: |
-            This pull request merges changes from the prod branch to main after Lerna publish.
-
-            ### Tip
-
-            If you have checks that are pending due to the status not being reported, resolving the issue is possible by closing and reopening the PR. This action effectively unsticks the checks, allowing them to run as intended. [This behavior arises from the inherent limitations of GitHub Actions, where one action's execution can't directly trigger another action](https://github.com/peter-evans/create-pull-request/issues/48).
-
-            Thus, techniques like "pushing an empty commit" or "closing and reopening the PR" help unblock the process, making the PR no longer solely reliant on action-triggered events.
-          branch: main-promotion
-
-      # Step 14: Post breaking changes to a Slack channel
+      # Step 11: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
