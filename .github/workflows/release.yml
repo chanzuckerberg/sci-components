@@ -10,6 +10,7 @@ on:
       - prod
 
 jobs:
+  # Job 1
   release:
     name: Release
     runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
@@ -58,7 +59,7 @@ jobs:
       # Step 8: Lerna Version
       - name: Lerna Version
         env:
-          GITHUB_TOKEN: ${{ secrets.SDS_LERNA_VERSION_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
@@ -81,7 +82,6 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v3
         with:
-          ssh-key: "${{ secrets.COMMIT_KEY }}"
           ref: main
 
       # Step 12: Reset promotion branch
@@ -106,7 +106,6 @@ jobs:
 
             Thus, techniques like "pushing an empty commit" or "closing and reopening the PR" help unblock the process, making the PR no longer solely reliant on action-triggered events.
           branch: main-promotion
-          base: main
 
       # Step 14: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
@@ -118,3 +117,43 @@ jobs:
           channel: "#sci-design-system-breaking-changes"
           config: .github/config/slack.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
+
+  # Job 2
+  create-version-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Step 2: Create a matrix of package versions and names
+      - name: Create Versions Matrix
+        id: set-matrix
+        run: |
+          matrix="["
+          for package_json in $(find ./packages -name package.json); do
+            version=$(jq -r .version "$package_json")
+            name=$(jq -r .name "$package_json")
+            matrix="${matrix}{\"name\":\"${name}\", \"version\":\"${version}\"},"
+          done
+          matrix="${matrix%,}" # Remove trailing comma
+          matrix="${matrix}]" # Close the JSON array
+          echo "matrix=${matrix}" >> $GITHUB_OUTPUT
+
+  # Job 3
+  create-github-release:
+    needs: create-version-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cfg: ${{fromJson(needs.create-version-matrix.outputs.matrix)}}
+    steps:
+      # Step 1: Create a GitHub release for the latest version
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "${{ matrix.cfg.name }}@${{ matrix.cfg.version }}"
