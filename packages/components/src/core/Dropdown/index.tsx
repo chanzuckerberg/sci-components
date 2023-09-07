@@ -111,13 +111,13 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
 
   useEffect(() => {
     onChange(value);
-  }, [value]);
+  }, [value, onChange]);
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, setValue, isControlled]);
 
   const [open, setOpen] = useState(false);
 

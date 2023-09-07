@@ -63,13 +63,13 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
   useEffect(() => {
     onChange(value);
     setPendingValue(value as DefaultDropdownMenuOption[]);
-  }, [value]);
+  }, [value, onChange]);
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [propValue, isControlled]);
 
   // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
   // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,

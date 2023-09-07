@@ -90,6 +90,9 @@ module.exports = {
     "import/prefer-default-export": "off",
     // (thuang): Disable this line for `@typescript-eslint/no-unused-vars` to work
     "no-unused-vars": "off",
+    "react-hooks/exhaustive-deps": "error",
+    // React Hooks
+    "react-hooks/rules-of-hooks": "error",
     "react/display-name": "off",
     "react/jsx-no-target-blank": "off",
     "react/jsx-props-no-spreading": "off",
