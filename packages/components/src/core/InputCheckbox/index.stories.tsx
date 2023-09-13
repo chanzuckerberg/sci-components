@@ -1,4 +1,4 @@
-import { Box, FormControlLabel } from "@mui/material";
+import { Box } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawInputCheckbox from "./index";
@@ -13,17 +13,11 @@ const InputCheckbox = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <FormControlLabel
-        control={
-          <RawInputCheckbox
-            disabled={disabled}
-            onChange={handleChange}
-            stage={checked ? "unchecked" : "checked"}
-            {...props}
-          />
-        }
-        label="Label"
-        value="Demo"
+      <RawInputCheckbox
+        disabled={disabled}
+        onChange={handleChange}
+        stage={checked ? "unchecked" : "checked"}
+        {...props}
       />
     </div>
   );
@@ -31,11 +25,17 @@ const InputCheckbox = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    Caption: {
-      control: { type: "string" },
+    caption: {
+      control: { type: "text" },
     },
-    Label: {
-      control: { type: "string" },
+    label: {
+      control: { type: "text" },
+    },
+    stage: {
+      control: {
+        type: "radio",
+      },
+      options: ["checked", "unchecked", "indeterminate"],
     },
   },
   component: InputCheckbox,
@@ -47,7 +47,6 @@ export default {
 export const Default = {
   args: {
     caption: "Caption",
-    id: testId,
     label: "Label",
   },
 };
@@ -133,7 +132,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <CheckboxLabelDemo label="Label" disabled={false} />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <InputCheckbox disabled />
+        <InputCheckbox disabled label="Label" />
       </div>
       <div style={{ gridArea: "1 / 3 / 1 / 3" }}>
         <IndeterminateDemo />
@@ -144,7 +143,7 @@ const LivePreviewDemo = (): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
-    controls: { exclude: ["caption", "label"] },
+    controls: { exclude: ["caption", "label", "stage"] },
     snapshot: {
       skip: true,
     },
@@ -174,7 +173,7 @@ const TestDemo = (): JSX.Element => {
         />
       </div>
       <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <InputCheckbox data-testid="checkbox" />
+        <InputCheckbox data-testid="checkbox" label="Label" />
       </div>
     </div>
   );
@@ -185,7 +184,7 @@ export const Test = {
     id: testId,
   },
   parameters: {
-    controls: { exclude: ["caption", "label", "id"] },
+    controls: { exclude: ["caption", "label", "id", "stage"] },
     snapshot: {
       skip: true,
     },

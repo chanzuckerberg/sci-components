@@ -111,7 +111,7 @@
     "test-storybook": "test-storybook",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
-    "test": "lerna run test",
+    "test": "lerna run test -- --detectOpenHandles",
     "test:updateSnapshots": "lerna run test -- -u",
     "namespace-check": "lerna run namespace-check",
     "prepare": "husky install",
