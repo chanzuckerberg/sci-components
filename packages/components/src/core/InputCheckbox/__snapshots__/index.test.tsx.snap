@@ -3,20 +3,16 @@
 exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
 <div>
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+    caption="Caption"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
   >
     <span
-      caption="Caption"
       class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-root MuiCheckbox-colorDefault css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
-      label="Label"
-      stage="unchecked"
     >
       <input
         class="PrivateSwitchBase-input css-1m9pwf3"
         data-indeterminate="false"
-        id="test-story"
         type="checkbox"
-        value="Demo"
       />
       <svg
         aria-hidden="true"
