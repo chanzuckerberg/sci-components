@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
-import RawMenuItem from "./index";
+import RawMenuItem, { MenuItemProps } from "./index";
 import { DemoWrapper } from "./style";
 
 const MenuItem = (props: Args): JSX.Element => {
@@ -37,7 +37,15 @@ export default {
         "flagCheck",
       ],
     },
-    sdsIconProps: { control: { type: "object" } },
+    sdsIconProps: {
+      control: { type: "object" },
+    },
+    sdsStyle: {
+      control: {
+        type: "radio",
+      },
+      options: ["determinate", "indeterminate"],
+    },
     selected: {
       control: { type: "boolean" },
     },
@@ -56,13 +64,19 @@ export default {
 export const Default = {
   args: {
     column: "column value here",
+    disabled: false,
+    isMultiSelect: false,
     name: "text here",
+    sdsIconProps: {},
+    sdsStyle: "determinate",
+    selected: false,
   },
 };
 
 // Screenshot test
 
 const MULTI_SELECT_OPTIONS = [false, true];
+const SDS_STYLE_OPTIONS = ["determinate", "indeterminate"];
 const COLUMN_OPTIONS = [undefined, "Column"];
 /**
  * (thuang): Add `as const` to make sure the type is not widened to `string`
@@ -229,6 +243,48 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
         <p style={LABEL_STYLE}>
           Selected: <b>{selected ? "true" : "false"}</b>
         </p>
+        {SDS_STYLE_OPTIONS.map((sdsStyle) => {
+          return (
+            <MenuItemStyles
+              isMultiSelect={isMultiSelect}
+              column={column}
+              sdsIcon={sdsIcon}
+              selected={selected}
+              sdsStyle={sdsStyle}
+              key={String(sdsStyle)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all SDS_STYLE_OPTIONS + create headers for DITERMINISTIC_OPTIONS
+  function MenuItemStyles({
+    isMultiSelect,
+    column,
+    sdsIcon,
+    selected,
+    sdsStyle,
+  }: {
+    isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
+    column: (typeof COLUMN_OPTIONS)[number];
+    sdsIcon: (typeof ICON_OPTIONS)[number];
+    selected: (typeof SELECTED_OPTIONS)[number];
+    sdsStyle: (typeof SDS_STYLE_OPTIONS)[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      alignSelf: "end",
+      borderWidth: "1px",
+      fontSize: "0.83em",
+      margin: "0 0 10px 0",
+    };
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          SdsStyle: <b>{sdsStyle}</b>
+        </p>
         {DISABLED_OPTIONS.map((disabled) => {
           return (
             <MenuItemDisabled
@@ -236,6 +292,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               column={column}
               sdsIcon={sdsIcon}
               selected={selected}
+              sdsStyle={sdsStyle as MenuItemProps<"gear">["sdsStyle"]}
               disabled={disabled}
               key={String(disabled)}
             />
@@ -251,12 +308,14 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     column,
     sdsIcon,
     selected,
+    sdsStyle,
     disabled,
   }: {
     isMultiSelect: (typeof MULTI_SELECT_OPTIONS)[number];
     column: (typeof COLUMN_OPTIONS)[number];
     sdsIcon: (typeof ICON_OPTIONS)[number];
     selected: (typeof SELECTED_OPTIONS)[number];
+    sdsStyle: MenuItemProps<"gear">["sdsStyle"];
     disabled: (typeof DISABLED_OPTIONS)[number];
   }) {
     const LEVEL_STYLE: React.CSSProperties = {
@@ -287,6 +346,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     column={column}
                     sdsIcon={sdsIcon}
                     selected={selected}
+                    sdsStyle={sdsStyle}
                     disabled={disabled}
                     className={`pseudo-${state}`}
                     key={state}
@@ -316,6 +376,7 @@ export const ScreenshotTest = {
         "isMultiSelect",
         "sdsIcon",
         "sdsIconProps",
+        "sdsStyle",
         "selected",
       ],
     },
@@ -334,6 +395,18 @@ export const Test = {
     name: "test text",
   },
   parameters: {
+    controls: {
+      exclude: [
+        "name",
+        "column",
+        "disabled",
+        "isMultiSelect",
+        "sdsIcon",
+        "sdsIconProps",
+        "sdsStyle",
+        "selected",
+      ],
+    },
     snapshot: {
       skip: true,
     },

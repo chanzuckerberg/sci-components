@@ -1,4 +1,4 @@
-import { Check } from "@mui/icons-material";
+import { Check, Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps } from "../styles";
@@ -191,12 +191,12 @@ export const DemoWrapper = styled("div")`
   width: 250px;
 `;
 
-interface StyledCheckType {
+interface StyledIconType {
   selected?: boolean;
   disabled?: boolean;
 }
 
-export const StyledCheckIconWrapper = styled("span")`
+export const StyledIconWrapper = styled("span")`
   ${(props) => {
     const spacings = getSpaces(props);
     const iconSizes = getIconSizes(props);
@@ -212,7 +212,28 @@ export const StyledCheckIconWrapper = styled("span")`
 
 export const StyledCheck = styled(Check, {
   shouldForwardProp: (prop) => prop !== "selected",
-})<StyledCheckType>`
+})<StyledIconType>`
+  ${(props) => {
+    const { selected, disabled } = props;
+    const colors = getColors(props);
+    const iconSizes = getIconSizes(props);
+    const selectedColor = disabled ? colors?.gray[300] : colors?.primary[400];
+    return `
+      color: ${selected ? selectedColor : "transparent"};
+      padding: 0;
+      height: ${iconSizes?.s.height}px;
+      width: ${iconSizes?.s.width}px;
+
+      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
+        background-color: transparent;
+      }
+    `;
+  }}
+`;
+
+export const StyledMinus = styled(Remove, {
+  shouldForwardProp: (prop) => prop !== "selected",
+})<StyledIconType>`
   ${(props) => {
     const { selected, disabled } = props;
     const colors = getColors(props);
