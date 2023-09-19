@@ -5,8 +5,10 @@ import {
   AutocompleteRenderOptionState,
   InputAdornment,
   AutocompleteProps as MuiAutocompleteProps,
+  Popper,
+  PopperProps,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
@@ -16,6 +18,7 @@ import {
   InputBaseWrapper,
   StyleProps,
   StyledAutocomplete,
+  StyledListBox,
   StyledMenuInputSearch,
   StyledMenuItemDetails,
   StyledMenuItemText,
@@ -58,6 +61,8 @@ interface ExtraAutocompleteProps extends StyleProps {
   InputBaseProps?: Partial<InputSearchProps>;
   label: string;
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
+  isMultiColumn?: boolean;
+  columnWidth?: number;
 }
 
 type CustomAutocompleteProps<
@@ -102,9 +107,60 @@ const Autocomplete = <
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
     search = false,
+    isMultiColumn = false,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
+
+  // (masoudmanson): Utilizing useMemo hook to encapsulate the custom listbox component,
+  // mitigates the "Jump to Start" scroll glitch and enhances performance.
+  const MultiColumnListbox = React.useMemo(
+    () =>
+      React.forwardRef<
+        HTMLUListElement,
+        React.HTMLAttributes<HTMLUListElement>
+      >((listboxProps, ref) => <StyledListBox ref={ref} {...listboxProps} />),
+    []
+  );
+
+  // (masoudmanson): As we required a wider popper for multi-column dropdowns,
+  // we enforced an 'auto' width in the style file to the popper component. unfortunately
+  // the default popperOffset can not calculate the popper position with a auto width.
+  // To achieve the desired placement, we employ popper modifiers to compute the new
+  // popper position on the page, relying on the reference element's coordinates.
+
+  const DefaultPopperComponent = useCallback((popperProps: PopperProps) => {
+    return (
+      <Popper
+        {...popperProps}
+        modifiers={[
+          {
+            enabled: false,
+            name: "flip",
+            options: {
+              altBoundary: true,
+              rootBoundary: "document",
+            },
+          },
+          {
+            enabled: true,
+            fn: (params) => {
+              const offsetLeft = params.state.rects.reference.x;
+              const offsetTop =
+                params.state.rects.reference.y +
+                params.state.rects.reference.height +
+                8;
+
+              params.state.elements.popper.style.transform = `translate3d(${offsetLeft}px, ${offsetTop}px, 0)`;
+            },
+            name: "resize",
+            phase: "afterWrite",
+          },
+        ]}
+        placement="bottom-start"
+      />
+    );
+  }, []);
 
   return (
     <StyledAutocomplete
@@ -116,6 +172,8 @@ const Autocomplete = <
       loadingText={loadingText}
       noOptionsText={noOptionsText}
       PaperComponent={PaperComponent}
+      PopperComponent={DefaultPopperComponent}
+      ListboxComponent={isMultiColumn ? MultiColumnListbox : undefined}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}

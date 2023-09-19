@@ -1,8 +1,8 @@
 import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Value } from "../Dropdown";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import TagFilter from "../TagFilter";
+import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import RawAutocomplete, { DefaultAutocompleteOption } from "./index";
 
 export type AutocompleteOptionValue<T, Multiple> = Multiple extends
@@ -129,6 +129,11 @@ const Autocomplete = <Multiple extends boolean | undefined = false>(
 
 export default {
   argTypes: {
+    columnWidth: {
+      control: {
+        type: "number",
+      },
+    },
     groupBy: {
       control: {
         labels: ["No group by", "Group by section names"],
@@ -137,6 +142,9 @@ export default {
       mapping: groupByOptions,
       options: Object.keys(groupByOptions),
     },
+    isMultiColumn: {
+      control: { type: "boolean" },
+    },
     keepSearchOnSelect: {
       control: { type: "boolean" },
     },
@@ -144,9 +152,6 @@ export default {
       control: { type: "text" },
     },
     multiple: {
-      control: { type: "boolean" },
-    },
-    search: {
       control: { type: "boolean" },
     },
   },

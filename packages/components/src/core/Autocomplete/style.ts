@@ -18,10 +18,14 @@ export interface StyleProps extends CommonThemeProps {
   hasSections?: boolean;
   icon?: ReactElement;
   search?: boolean;
+  isMultiColumn?: boolean;
+  columnWidth?: number;
 }
 
 const doNotForwardProps = [
+  "columnWidth",
   "count",
+  "isMultiColumn",
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
@@ -38,7 +42,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { search, hasSections } = props;
+    const { search, hasSections, isMultiColumn } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const borders = getBorders(props);
@@ -52,6 +56,10 @@ export const StyledAutocomplete = styled(Autocomplete, {
         .MuiAutocomplete-input {
           padding: ${spacings?.xs}px ${spacings?.l}px;
         }
+      }
+
+      & + .MuiAutocomplete-popper {
+        ${isMultiColumn ? `width: auto !important;` : ""}
       }
 
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
@@ -68,6 +76,8 @@ export const StyledAutocomplete = styled(Autocomplete, {
         padding-bottom: 0;
         padding-right: ${spacings?.s}px;
 
+        ${isMultiColumn ? isMultiColumnStyles(props) : null}
+
         .MuiAutocomplete-option {
           min-height: unset;
         }
@@ -82,6 +92,9 @@ export const StyledAutocomplete = styled(Autocomplete, {
 
         .MuiAutocomplete-option[aria-disabled="true"] {
           opacity: 1;
+          .menuItem-details {
+            color: ${colors?.gray[300]};
+          }
         }
 
         .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
@@ -104,7 +117,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
         margin-bottom: ${spacings?.m}px;
         position: relative;
         padding: 0 0 ${spacings?.xs}px 0 0;
-        border-bottom: ${borders?.gray[200]};
+        border-bottom: ${isMultiColumn ? "none" : borders?.gray[200]};
 
         & li:last-of-type {
           position: relative;
@@ -114,6 +127,29 @@ export const StyledAutocomplete = styled(Autocomplete, {
     `;
   }}
 ` as typeof Autocomplete;
+
+const isMultiColumnStyles = (props: StyleProps): string => {
+  const { columnWidth = 200 } = props;
+  const spacings = getSpaces(props);
+  const borders = getBorders(props);
+
+  return `
+    & > li {
+      overflow: scroll;
+      width: ${columnWidth >= 200 ? columnWidth : 200}px;
+
+      border-right: ${borders?.gray[200]};
+      margin-right: ${spacings?.s}px;
+      padding-right: ${spacings?.s}px;
+
+      &:last-child {
+        border-right: none;
+        margin-right: 0;
+        padding-right: 0;
+      }
+    }
+  `;
+};
 
 export const InputBaseWrapper = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -184,4 +220,8 @@ export const StyledMenuItemDetails = styled("div")`
 export const StyledMenuItemText = styled("div")`
   display: flex;
   flex-direction: column;
+`;
+
+export const StyledListBox = styled("ul")`
+  display: flex;
 `;
