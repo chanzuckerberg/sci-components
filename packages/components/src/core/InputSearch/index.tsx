@@ -1,10 +1,12 @@
-import {
-  InputAdornment,
-  TextFieldProps as RawTextFieldSearchProps,
-} from "@mui/material";
+import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
+import {
+  InputSearchExtraProps,
+  StyledInputAdornment,
+  StyledLabel,
+  StyledSearchBase,
+} from "./style";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -50,6 +52,11 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       if (onChange) onChange(event);
     };
 
+    const clearInput = () => {
+      setValue("");
+      setHasValue(false);
+    };
+
     const localHandleSubmit = () => {
       if (handleSubmit) handleSubmit(value);
     };
@@ -77,7 +84,20 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           // passed to mui Input
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <StyledInputAdornment position="end">
+                {value && (
+                  <ButtonIcon
+                    aria-label="clear-button"
+                    className="input-search-clear-icon"
+                    onClick={clearInput}
+                    sdsType="primary"
+                    sdsSize="small"
+                    sdsIconProps={{
+                      sdsType: "iconButton",
+                    }}
+                    sdsIcon="xMark"
+                  />
+                )}
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}
@@ -88,7 +108,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   }}
                   sdsIcon="search"
                 />
-              </InputAdornment>
+              </StyledInputAdornment>
             ),
           }}
           type="search"

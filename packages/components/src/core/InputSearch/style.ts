@@ -1,12 +1,12 @@
 import { css, SerializedStyles } from "@emotion/react";
 import {
+  InputAdornment,
   inputAdornmentClasses,
   inputBaseClasses,
   outlinedInputClasses,
   TextField,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import xMark from "../../common/svgs/IconXMarkSmall.svg";
 import {
   CommonThemeProps,
   fontBodyM,
@@ -120,23 +120,27 @@ export const StyledSearchBase = styled(TextField, {
       [type="search"]::-webkit-search-cancel-button {
         -webkit-appearance: none;
         appearance: none;
-        height: 14px;
-        width: 14px;
-        background-color: ${colors?.primary[400]};
-        -webkit-mask-image: url(${xMark});
-        mask-image: url(${xMark});
-        background-size: 14px 14px;
-        cursor: pointer;
+      }
+
+      & .input-search-clear-icon {
+        display: none;
+        position: absolute;
+        right: 20px;
       }
 
       .${outlinedInputClasses.root} {
         .${outlinedInputClasses.notchedOutline} {
           border: ${borders?.gray[400]};
         }
+
+        &:hover .input-search-clear-icon,
+        &:focus-within .input-search-clear-icon {
+          display: inline-flex;
+        }
       }
 
       .${inputBaseClasses.inputSizeSmall} {
-        padding: ${spacings?.xs}px 0 ${spacings?.xs}px ${spacings?.l}px;
+        padding: ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;
@@ -163,4 +167,8 @@ export const StyledSearchBase = styled(TextField, {
       ${disabled && disabledStyled(props)}
     `;
   }}
+`;
+
+export const StyledInputAdornment = styled(InputAdornment)`
+  position: relative;
 `;

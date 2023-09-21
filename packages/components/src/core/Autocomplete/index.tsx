@@ -3,7 +3,6 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
-  InputAdornment,
   AutocompleteProps as MuiAutocompleteProps,
 } from "@mui/material";
 import React, { ReactNode, SyntheticEvent, useState } from "react";
@@ -11,6 +10,7 @@ import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
+import { StyledInputAdornment } from "../InputSearch/style";
 import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
   InputBaseWrapper,
@@ -147,13 +147,27 @@ const Autocomplete = <
                */
               ...params.InputProps.ref,
               endAdornment: (
-                <InputAdornment position="end">
+                <StyledInputAdornment position="end">
+                  {inputValue && (
+                    <ButtonIcon
+                      aria-label="clear-button"
+                      className="input-search-clear-icon"
+                      onClick={clearInput}
+                      sdsType="primary"
+                      sdsSize="small"
+                      sdsIconProps={{
+                        sdsType: "iconButton",
+                      }}
+                      sdsIcon="xMark"
+                    />
+                  )}
                   <ButtonIcon
+                    aria-label="search-button"
                     sdsType="secondary"
                     sdsSize="small"
                     sdsIcon="search"
                   />
-                </InputAdornment>
+                </StyledInputAdornment>
               ),
               inputProps: params.inputProps,
             }}
@@ -192,6 +206,10 @@ const Autocomplete = <
       }}
     />
   );
+
+  function clearInput() {
+    setInputValue("");
+  }
 
   function defaultGetOptionLabel(
     option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
