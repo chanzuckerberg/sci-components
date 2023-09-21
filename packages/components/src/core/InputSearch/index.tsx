@@ -58,6 +58,10 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
 
       if (handleSubmit) handleSubmit("");
 
+      /**
+       * (masoudmanson): Because we are manually firing this event,
+       * we must build a onChange event to transmit the updated value to onChange listeners.
+       */
       if (onChange) {
         onChange({
           target: { value: "" },
@@ -130,6 +134,10 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           onChange={handleChange}
           onKeyDown={handleKeyPress}
           intent={intent}
+          /**
+           * (masoudmanson): This prevents the browser's default auto completion
+           * menu from being displayed for the InputSearch.
+           */
           autoComplete="off"
           {...rest}
         />

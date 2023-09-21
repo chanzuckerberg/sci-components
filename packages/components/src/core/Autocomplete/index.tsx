@@ -148,6 +148,10 @@ const Autocomplete = <
               ...params.InputProps.ref,
               endAdornment: (
                 <StyledInputAdornment position="end">
+                  {/**
+                   * (masoudmansdon): Because the Autocomplete component overrides the
+                   * InputSearch's endAdornment, we must also include the clear IconButton here.
+                   */}
                   {inputValue && (
                     <ButtonIcon
                       aria-label="clear-button"
@@ -209,6 +213,10 @@ const Autocomplete = <
 
   function clearInput() {
     setInputValue("");
+    /**
+     * (masoudmanson): Because we are manually firing this event,
+     * we must build a onChange event to transmit the updated value to onChange listeners.
+     */
     if (onInputChange)
       onInputChange(
         { target: { value: "" } } as React.ChangeEvent<HTMLInputElement>,
