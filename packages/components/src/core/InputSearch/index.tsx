@@ -100,8 +100,9 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           sdsStyle={sdsStyle}
           sdsStage={hasValue ? "userInput" : "default"}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           intent={intent}
+          autoComplete="off"
           {...rest}
         />
       </>
