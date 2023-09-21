@@ -55,6 +55,14 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
     const clearInput = () => {
       setValue("");
       setHasValue(false);
+
+      if (handleSubmit) handleSubmit("");
+
+      if (onChange) {
+        onChange({
+          target: { value: "" },
+        } as React.ChangeEvent<HTMLInputElement>);
+      }
     };
 
     const localHandleSubmit = () => {

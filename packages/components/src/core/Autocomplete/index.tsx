@@ -209,6 +209,12 @@ const Autocomplete = <
 
   function clearInput() {
     setInputValue("");
+    if (onInputChange)
+      onInputChange(
+        { target: { value: "" } } as React.ChangeEvent<HTMLInputElement>,
+        "",
+        "clear"
+      );
   }
 
   function defaultGetOptionLabel(
