@@ -6,6 +6,7 @@ import {
   TextField,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import xMark from "../../common/svgs/IconXMarkSmall.svg";
 import {
   CommonThemeProps,
   fontBodyM,
@@ -115,6 +116,18 @@ export const StyledSearchBase = styled(TextField, {
       margin-right: ${spacings?.xl}px;
       min-width: 120px;
       display: block;
+
+      [type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 14px;
+        width: 14px;
+        background-color: ${colors?.primary[400]};
+        -webkit-mask-image: url(${xMark});
+        mask-image: url(${xMark});
+        background-size: 14px 14px;
+        cursor: pointer;
+      }
 
       .${outlinedInputClasses.root} {
         .${outlinedInputClasses.notchedOutline} {
