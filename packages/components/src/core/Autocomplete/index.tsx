@@ -4,8 +4,10 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   AutocompleteProps as MuiAutocompleteProps,
+  Popper,
+  PopperProps,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
@@ -106,6 +108,27 @@ const Autocomplete = <
 
   const [inputValue, setInputValue] = useState("");
 
+  /**
+   * (masoudmanson): Using a custom Popper or Paper with the Autocomplete
+   * without a useCalback results in scroll jumps while selecting an option!
+   */
+  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
+    return (
+      <Popper
+        modifiers={[
+          {
+            enabled: true,
+            name: "offset",
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ]}
+        {...popperProps}
+      />
+    );
+  }, []);
+
   return (
     <StyledAutocomplete
       clearOnBlur={false}
@@ -116,6 +139,7 @@ const Autocomplete = <
       loadingText={loadingText}
       noOptionsText={noOptionsText}
       PaperComponent={PaperComponent}
+      PopperComponent={defaultPopperComponent}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}

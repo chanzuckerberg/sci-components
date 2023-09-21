@@ -284,7 +284,6 @@ const LivePreviewDemo = (): JSX.Element => {
             }}
             search={false}
             multiple={false}
-            hasSections={false}
             value={value1}
             onClickAway={handleClickAway1}
           />
@@ -369,7 +368,6 @@ const LivePreviewDemo = (): JSX.Element => {
             open={!!open4}
             search={false}
             multiple
-            hasSections
             groupBy={(option) => option.section as string}
             onChange={handleChange4}
             disableCloseOnSelect
@@ -638,7 +636,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 </p>
                 <DropdownMenu
                   {...props}
-                  hasSections
                   groupBy={
                     groupBy &&
                     ((option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>
