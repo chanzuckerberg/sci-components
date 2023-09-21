@@ -5,6 +5,8 @@ import {
   AutocompleteRenderOptionState,
   InputAdornment,
   AutocompleteProps as MuiAutocompleteProps,
+  Popper,
+  PopperProps,
 } from "@mui/material";
 import React, { ReactNode, SyntheticEvent, useState } from "react";
 import { noop } from "src/common/utils";
@@ -99,6 +101,7 @@ const Autocomplete = <
     noOptionsText = "No options",
     onInputChange = noop,
     PaperComponent = StyledPaper,
+    PopperComponent = defaultPopperComponent,
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
     search = false,
@@ -116,6 +119,7 @@ const Autocomplete = <
       loadingText={loadingText}
       noOptionsText={noOptionsText}
       PaperComponent={PaperComponent}
+      PopperComponent={PopperComponent}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
@@ -206,6 +210,23 @@ const Autocomplete = <
 
   function defaultRenderTags() {
     return null;
+  }
+
+  function defaultPopperComponent(popperProps: PopperProps) {
+    return (
+      <Popper
+        modifiers={[
+          {
+            enabled: true,
+            name: "offset",
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ]}
+        {...popperProps}
+      />
+    );
   }
 
   function defaultRenderOption(

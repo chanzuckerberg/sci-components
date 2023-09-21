@@ -1,53 +1,25 @@
 import {
-  AutocompleteFreeSoloValueMapping,
   AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
-  AutocompleteRenderOptionState,
   ClickAwayListener,
-  InputAdornment,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
+  PaperProps,
   PopperProps,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useState } from "react";
-import { noop } from "src/common/utils";
-import ButtonIcon from "../ButtonIcon";
-import { IconProps } from "../Icon";
+import { DefaultAutocompleteOption } from "dist/index.cjs";
+import React, { SyntheticEvent } from "react";
+import Autocomplete from "../Autocomplete";
 import { InputSearchProps } from "../InputSearch";
-import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
-  InputBaseWrapper,
   StyleProps,
-  StyledAutocomplete,
+  StyledAutocompletePopper,
   StyledHeaderTitle,
-  StyledMenuInputSearch,
-  StyledMenuItemDetails,
-  StyledMenuItemText,
   StyledPaper,
   StyledPopper,
 } from "./style";
 
-// (thuang): This requires option to have a `name` property.
-interface DropdownMenuOptionGeneral {
-  name: string;
-  section?: string;
-}
-export interface DropdownMenuOptionBasic extends DropdownMenuOptionGeneral {
-  count?: number;
-  details?: string;
-  sdsIcon?: keyof IconNameToSmallSizes;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>;
-}
-
-export interface DropdownMenuOptionComponent extends DropdownMenuOptionGeneral {
-  component?: ReactNode;
-}
-
-type Exclusive<T, U> = T & { [K in Exclude<keyof U, keyof T>]?: undefined };
-
-export type DefaultDropdownMenuOption =
-  | Exclusive<DropdownMenuOptionBasic, DropdownMenuOptionComponent>
-  | Exclusive<DropdownMenuOptionComponent, DropdownMenuOptionBasic>;
+export type DefaultDropdownMenuOption = DefaultAutocompleteOption;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
@@ -63,8 +35,10 @@ interface ExtraDropdownMenuProps extends StyleProps {
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   title?: string;
+  label?: string;
   anchorEl: HTMLElement | null;
   PopperComponent?: typeof StyledPopper | RenderFunctionType;
+  PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
   onClickAway: (event: MouseEvent | TouchEvent) => void;
@@ -98,32 +72,27 @@ const DropdownMenu = <
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
   const {
-    multiple = false,
     anchorEl,
-    disableCloseOnSelect = multiple,
-    getOptionLabel = defaultGetOptionLabel,
     id,
-    InputBaseProps = {},
-    isOptionEqualToValue = defaultIsOptionEqualToValue,
-    keepSearchOnSelect = true,
-    loading = false,
-    loadingText = "",
-    noOptionsText = "No options",
-    onInputChange = noop,
+    InputBaseProps = {
+      autoFocus: true,
+      sx: {
+        padding: "8px",
+      },
+    },
     open = false,
     PaperComponent = StyledPaper,
     PopperComponent = StyledPopper,
+    PopperPlacement = "bottom-start",
     PopperBaseProps = {},
-    renderOption = defaultRenderOption,
-    renderTags = defaultRenderTags,
     search = false,
     title,
+    label = "Search",
     children,
     onClickAway,
     ClickAwayListenerProps,
+    ...rest
   } = props;
-
-  const [inputValue, setInputValue] = useState("");
 
   return (
     <PopperComponent
@@ -138,8 +107,8 @@ const DropdownMenu = <
       ]}
       open={open}
       anchorEl={anchorEl}
-      placement="bottom-start"
       {...PopperBaseProps}
+      placement={PopperPlacement}
     >
       <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
         <div>
@@ -147,139 +116,26 @@ const DropdownMenu = <
             <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
           )}
 
-          <StyledAutocomplete
-            clearOnBlur={false}
-            disableCloseOnSelect={disableCloseOnSelect}
-            disablePortal
-            renderTags={renderTags}
-            loading={loading}
-            loadingText={loadingText}
-            noOptionsText={noOptionsText}
-            PaperComponent={PaperComponent}
-            renderOption={renderOption}
-            getOptionLabel={getOptionLabel}
-            isOptionEqualToValue={isOptionEqualToValue}
-            inputValue={inputValue}
-            renderInput={(params: AutocompleteRenderInputParams) => (
-              <InputBaseWrapper search={search}>
-                <StyledMenuInputSearch
-                  id="location-search"
-                  label="Search for a location"
-                  placeholder="Search"
-                  ref={params.InputProps.ref}
-                  search={search}
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
-                  autoFocus
-                  // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
-                  onKeyDown={(event) => {
-                    if (event.key === "Backspace") {
-                      event.stopPropagation();
-                    }
-                  }}
-                  InputProps={{
-                    /**
-                     * (thuang): Works with css caret-color: "transparent" to hide
-                     * mobile keyboard
-                     */
-                    inputMode: search ? "text" : "none",
-                    /**
-                     * (mmoore): passing only the ref along to InputProps to prevent
-                     * default MUI arrow from rendering in search input.
-                     * renderInput strips InputProps, so we explicitly pass end adornment here
-                     */
-                    ...params.InputProps.ref,
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ButtonIcon
-                          sdsType="secondary"
-                          sdsSize="small"
-                          sdsIcon="search"
-                        />
-                      </InputAdornment>
-                    ),
-                    inputProps: params.inputProps,
-                  }}
-                  {...InputBaseProps}
-                />
-              </InputBaseWrapper>
+          <Autocomplete
+            label={label}
+            search={search}
+            InputBaseProps={InputBaseProps}
+            PaperComponent={(paperComponentProps: PaperProps) => (
+              <PaperComponent
+                search={search}
+                title={title}
+                {...paperComponentProps}
+              />
             )}
-            {...props}
-            onInputChange={(
-              event: SyntheticEvent<Element, Event>,
-              value: string,
-              reason: AutocompleteInputChangeReason
-            ) => {
-              if (event && event.type === "blur") {
-                setInputValue("");
-              } else if (
-                reason !== "reset" ||
-                (reason === "reset" && !keepSearchOnSelect)
-              ) {
-                setInputValue(value);
-              }
-              if (onInputChange) onInputChange(event, value, reason);
-            }}
+            open={open}
+            {...rest}
+            PopperComponent={StyledAutocompletePopper}
           />
           {children}
         </div>
       </ClickAwayListener>
     </PopperComponent>
   );
-
-  function defaultGetOptionLabel(
-    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
-  ): string {
-    if (typeof option === "object" && "name" in option) return option.name;
-    return option.toString();
-  }
-
-  function defaultIsOptionEqualToValue(option: T, val: T): boolean {
-    return option.name === val.name;
-  }
-
-  function defaultRenderTags() {
-    return null;
-  }
-
-  function defaultRenderOption(
-    optionProps: React.HTMLAttributes<HTMLLIElement>,
-    option: T,
-    { selected }: AutocompleteRenderOptionState
-  ) {
-    let MenuItemContent;
-
-    const { component, details, count, sdsIcon, sdsIconProps } = option;
-    const label = getOptionLabel(option);
-
-    if (component) {
-      MenuItemContent = component;
-    } else {
-      MenuItemContent = (
-        <StyledMenuItemText>
-          {label}
-          {details && (
-            <StyledMenuItemDetails className="menuItem-details">
-              {details}
-            </StyledMenuItemDetails>
-          )}
-        </StyledMenuItemText>
-      );
-    }
-
-    return (
-      <MenuItem
-        column={count}
-        disabled={optionProps["aria-disabled"] === true}
-        sdsIcon={sdsIcon}
-        sdsIconProps={sdsIconProps}
-        isMultiSelect={multiple}
-        selected={selected}
-        {...optionProps}
-      >
-        {MenuItemContent}
-      </MenuItem>
-    );
-  }
 };
 
 export default DropdownMenu;

@@ -146,9 +146,6 @@ export default {
     multiple: {
       control: { type: "boolean" },
     },
-    search: {
-      control: { type: "boolean" },
-    },
   },
   component: Autocomplete,
   // (masoudmanson) For the purpose of storybook, the button is removed
@@ -181,6 +178,11 @@ export const Default = {
     label: "Search by label",
     multiple: true,
     search: true,
+  },
+  parameters: {
+    controls: {
+      exclude: ["search"],
+    },
   },
 };
 
@@ -231,6 +233,9 @@ export const Test = {
     search: true,
   },
   parameters: {
+    controls: {
+      exclude: ["search"],
+    },
     snapshot: {
       skip: true,
     },
