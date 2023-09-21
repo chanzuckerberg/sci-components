@@ -7,7 +7,7 @@ import {
   PaperProps,
   PopperProps,
 } from "@mui/material";
-import React, { SyntheticEvent } from "react";
+import React, { SyntheticEvent, useCallback } from "react";
 import Autocomplete, { DefaultAutocompleteOption } from "../Autocomplete";
 import { InputSearchProps } from "../InputSearch";
 import {
@@ -93,6 +93,10 @@ const DropdownMenu = <
     ...rest
   } = props;
 
+  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
+    return <StyledAutocompletePopper {...popperProps} />;
+  }, []);
+
   return (
     <PopperComponent
       id={id}
@@ -119,16 +123,19 @@ const DropdownMenu = <
             label={label}
             search={search}
             InputBaseProps={InputBaseProps}
-            PaperComponent={(paperComponentProps: PaperProps) => (
-              <PaperComponent
-                search={search}
-                title={title}
-                {...paperComponentProps}
-              />
+            PaperComponent={useCallback(
+              (paperComponentProps: PaperProps) => (
+                <PaperComponent
+                  search={search}
+                  title={title}
+                  {...paperComponentProps}
+                />
+              ),
+              [PaperComponent, search, title]
             )}
             open={open}
             {...rest}
-            PopperComponent={StyledAutocompletePopper}
+            PopperComponent={defaultPopperComponent}
           />
           {children}
         </div>

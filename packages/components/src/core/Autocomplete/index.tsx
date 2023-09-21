@@ -8,7 +8,7 @@ import {
   Popper,
   PopperProps,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useState } from "react";
+import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
@@ -101,13 +101,29 @@ const Autocomplete = <
     noOptionsText = "No options",
     onInputChange = noop,
     PaperComponent = StyledPaper,
-    PopperComponent = defaultPopperComponent,
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
     search = false,
   } = props;
 
   const [inputValue, setInputValue] = useState("");
+
+  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
+    return (
+      <Popper
+        modifiers={[
+          {
+            enabled: true,
+            name: "offset",
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ]}
+        {...popperProps}
+      />
+    );
+  }, []);
 
   return (
     <StyledAutocomplete
@@ -119,7 +135,7 @@ const Autocomplete = <
       loadingText={loadingText}
       noOptionsText={noOptionsText}
       PaperComponent={PaperComponent}
-      PopperComponent={PopperComponent}
+      PopperComponent={defaultPopperComponent}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
@@ -210,23 +226,6 @@ const Autocomplete = <
 
   function defaultRenderTags() {
     return null;
-  }
-
-  function defaultPopperComponent(popperProps: PopperProps) {
-    return (
-      <Popper
-        modifiers={[
-          {
-            enabled: true,
-            name: "offset",
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
-        {...popperProps}
-      />
-    );
   }
 
   function defaultRenderOption(
