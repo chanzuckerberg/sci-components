@@ -7,9 +7,8 @@ import {
   PaperProps,
   PopperProps,
 } from "@mui/material";
-import { DefaultAutocompleteOption } from "dist/index.cjs";
 import React, { SyntheticEvent } from "react";
-import Autocomplete from "../Autocomplete";
+import Autocomplete, { DefaultAutocompleteOption } from "../Autocomplete";
 import { InputSearchProps } from "../InputSearch";
 import {
   StyleProps,
