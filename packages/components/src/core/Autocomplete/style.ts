@@ -15,7 +15,6 @@ import {
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
-  hasSections?: boolean;
   icon?: ReactElement;
   search?: boolean;
 }
@@ -25,7 +24,6 @@ const doNotForwardProps = [
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
-  "hasSections",
 ];
 
 export const StyledAutocomplete = styled(Autocomplete, {
@@ -38,7 +36,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { search, hasSections } = props;
+    const { search } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const borders = getBorders(props);
@@ -55,60 +53,56 @@ export const StyledAutocomplete = styled(Autocomplete, {
       }
 
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
+        ${search ? `padding-left: ${spacings?.s}px !important;` : ""}
 
-      ${
-        search || hasSections
-          ? `padding-left: ${spacings?.s}px !important;`
-          : ""
-      }
+        .MuiAutocomplete-listbox {
+          max-height: 40vh;
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-right: ${spacings?.s}px;
 
-      .MuiAutocomplete-listbox {
-        max-height: 40vh;
-        padding-top: 0;
-        padding-bottom: 0;
-        padding-right: ${spacings?.s}px;
+          .MuiAutocomplete-option {
+            min-height: unset;
+          }
 
-        .MuiAutocomplete-option {
-          min-height: unset;
+          .MuiAutocomplete-option.Mui-focused {
+            background-color: ${colors?.gray[100]};
+          }
+
+          .MuiAutocomplete-option[aria-selected="true"] {
+            background-color: white;
+          }
+
+          .MuiAutocomplete-option[aria-disabled="true"] {
+            opacity: 1;
+          }
+
+          .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+            background-color: ${colors?.gray[100]};
+          }
+
+          & > li:last-child .MuiAutocomplete-groupUl {
+            border-bottom: none;
+            margin-bottom: 0;
+          }
         }
 
-        .MuiAutocomplete-option.Mui-focused {
-          background-color: ${colors?.gray[100]};
+        .MuiAutocomplete-groupLabel {
+          top: 0;
+          color: ${colors?.gray[500]};
+          padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
         }
 
-        .MuiAutocomplete-option[aria-selected="true"] {
-          background-color: white;
-        }
-
-        .MuiAutocomplete-option[aria-disabled="true"] {
-          opacity: 1;
-        }
-
-        .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
-          background-color: ${colors?.gray[100]};
-        }
-
-        & > li:last-child .MuiAutocomplete-groupUl {
-          border-bottom: none;
-          margin-bottom: 0;
-        }
-      }
-
-      .MuiAutocomplete-groupLabel {
-        top: 0;
-        color: ${colors?.gray[500]};
-        padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
-      }
-
-      .MuiAutocomplete-groupUl {
-        margin-bottom: ${spacings?.m}px;
-        position: relative;
-        padding: 0 0 ${spacings?.xs}px 0 0;
-        border-bottom: ${borders?.gray[200]};
-
-        & li:last-of-type {
+        .MuiAutocomplete-groupUl {
+          margin-bottom: ${spacings?.m}px;
           position: relative;
-          margin-bottom: ${spacings?.xxs}px;
+          padding: 0 0 ${spacings?.xs}px 0 0;
+          border-bottom: ${borders?.gray[200]};
+
+          & li:last-of-type {
+            position: relative;
+            margin-bottom: ${spacings?.xxs}px;
+          }
         }
       }
     `;
