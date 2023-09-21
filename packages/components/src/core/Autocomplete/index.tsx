@@ -108,6 +108,10 @@ const Autocomplete = <
 
   const [inputValue, setInputValue] = useState("");
 
+  /**
+   * (masoudmanson): Using a custom Popper or Paper with the Autocomplete
+   * without a useCalback results in scroll jumps while selecting an option!
+   */
   const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
     return (
       <Popper
