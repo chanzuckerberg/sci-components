@@ -1,10 +1,12 @@
-import {
-  InputAdornment,
-  TextFieldProps as RawTextFieldSearchProps,
-} from "@mui/material";
+import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import { InputSearchExtraProps, StyledLabel, StyledSearchBase } from "./style";
+import {
+  InputSearchExtraProps,
+  StyledInputAdornment,
+  StyledLabel,
+  StyledSearchBase,
+} from "./style";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -50,6 +52,23 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       if (onChange) onChange(event);
     };
 
+    const clearInput = () => {
+      setValue("");
+      setHasValue(false);
+
+      if (handleSubmit) handleSubmit("");
+
+      /**
+       * (masoudmanson): Because we are manually firing this event,
+       * we must build a onChange event to transmit the updated value to onChange listeners.
+       */
+      if (onChange) {
+        onChange({
+          target: { value: "" },
+        } as React.ChangeEvent<HTMLInputElement>);
+      }
+    };
+
     const localHandleSubmit = () => {
       if (handleSubmit) handleSubmit(value);
     };
@@ -77,7 +96,18 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           // passed to mui Input
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <StyledInputAdornment position="end">
+                <ButtonIcon
+                  aria-label="clear-button"
+                  className="input-search-clear-icon"
+                  onClick={clearInput}
+                  sdsType="primary"
+                  sdsSize="small"
+                  sdsIconProps={{
+                    sdsType: "iconButton",
+                  }}
+                  sdsIcon="xMark"
+                />
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}
@@ -88,7 +118,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   }}
                   sdsIcon="search"
                 />
-              </InputAdornment>
+              </StyledInputAdornment>
             ),
           }}
           type="search"
@@ -100,8 +130,13 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           sdsStyle={sdsStyle}
           sdsStage={hasValue ? "userInput" : "default"}
           onChange={handleChange}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           intent={intent}
+          /**
+           * (masoudmanson): This prevents the browser's default auto completion
+           * menu from being displayed for the InputSearch.
+           */
+          autoComplete="off"
           {...rest}
         />
       </>
