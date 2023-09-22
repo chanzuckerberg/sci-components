@@ -153,7 +153,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding: ${spacings?.s}px 0 0 ${spacings?.s}px ;
+      padding: ${spacings?.s}px 0 0 ${spacings?.s}px;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

@@ -97,19 +97,17 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           InputProps={{
             endAdornment: (
               <StyledInputAdornment position="end">
-                {value && (
-                  <ButtonIcon
-                    aria-label="clear-button"
-                    className="input-search-clear-icon"
-                    onClick={clearInput}
-                    sdsType="primary"
-                    sdsSize="small"
-                    sdsIconProps={{
-                      sdsType: "iconButton",
-                    }}
-                    sdsIcon="xMark"
-                  />
-                )}
+                <ButtonIcon
+                  aria-label="clear-button"
+                  className="input-search-clear-icon"
+                  onClick={clearInput}
+                  sdsType="primary"
+                  sdsSize="small"
+                  sdsIconProps={{
+                    sdsType: "iconButton",
+                  }}
+                  sdsIcon="xMark"
+                />
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}

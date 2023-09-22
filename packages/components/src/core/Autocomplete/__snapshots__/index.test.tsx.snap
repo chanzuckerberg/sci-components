@@ -18,7 +18,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         Search by label
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root css-csl8fy-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-10tk5kr-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
@@ -53,7 +53,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
                   data-file-name="IconSearchSmall"
                   data-testid="IconSearchSmall"
                   fillcontrast="white"

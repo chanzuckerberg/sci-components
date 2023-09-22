@@ -193,6 +193,9 @@ const Autocomplete = <
                     aria-label="search-button"
                     sdsType="secondary"
                     sdsSize="small"
+                    sdsIconProps={{
+                      sdsType: "interactive",
+                    }}
                     sdsIcon="search"
                   />
                 </StyledInputAdornment>

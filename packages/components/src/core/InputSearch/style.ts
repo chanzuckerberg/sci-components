@@ -1,5 +1,6 @@
 import { css, SerializedStyles } from "@emotion/react";
 import {
+  buttonBaseClasses,
   InputAdornment,
   inputAdornmentClasses,
   inputBaseClasses,
@@ -22,6 +23,7 @@ export interface InputSearchExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
   sdsStyle?: "rounded" | "square";
   sdsStage?: "default" | "userInput";
+  value?: string;
 }
 
 const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
@@ -105,7 +107,7 @@ export const StyledSearchBase = styled(TextField, {
   },
 })`
   ${(props: InputSearchExtraProps) => {
-    const { intent, disabled, sdsStyle } = props;
+    const { intent, disabled, sdsStyle, value } = props;
     const spacings = getSpaces(props);
     const borders = getBorders(props);
     const colors = getColors(props);
@@ -123,9 +125,8 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       & .input-search-clear-icon {
-        display: none;
-        position: absolute;
-        right: 20px;
+        opacity: 0;
+        margin-right: ${spacings?.s}px;
       }
 
       .${outlinedInputClasses.root} {
@@ -135,7 +136,7 @@ export const StyledSearchBase = styled(TextField, {
 
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
-          display: inline-flex;
+          opacity: ${value ? 1 : 0};
         }
       }
 
@@ -156,8 +157,11 @@ export const StyledSearchBase = styled(TextField, {
           border: ${borders?.primary[400]};
         }
 
-        .${inputAdornmentClasses.root} svg {
-          color: ${colors?.primary[400]};
+        .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+          cursor: default;
+          svg {
+            color: ${colors?.primary[400]};
+          }
         }
       }
 
