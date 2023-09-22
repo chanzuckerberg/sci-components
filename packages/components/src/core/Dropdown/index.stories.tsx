@@ -15,6 +15,9 @@ const Dropdown = (props: Args): JSX.Element => {
       onChange={noop}
       options={GITHUB_LABELS}
       DropdownMenuProps={{
+        PopperBaseProps: {
+          sx: { width: "300px" },
+        },
         groupBy: (option: DefaultDropdownMenuOption) =>
           option.section as string,
       }}
@@ -150,7 +153,7 @@ export const InsideModal = {
       skip: true,
     },
   },
-  render: function InsideModalComponent(): JSX.Element {
+  render: function InsideModalComponent(props: Args): JSX.Element {
     const [value, setValue] = useState<
       DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
     >([GITHUB_LABELS[0], GITHUB_LABELS[1]]);
@@ -168,6 +171,7 @@ export const InsideModal = {
           value={value}
           multiple
           InputDropdownProps={{ sdsStyle: "square" }}
+          {...props}
         />
       </Dialog>
     );
@@ -206,6 +210,9 @@ const ControlledDropdownDemo = (props: Args): JSX.Element => {
         onChange={handleChange}
         data-testid="dropdown"
         DropdownMenuProps={{
+          PopperBaseProps: {
+            sx: { width: "300px" },
+          },
           groupBy: (option: DefaultDropdownMenuOption) =>
             option.section as string,
           title: "Github Labels",
@@ -244,6 +251,11 @@ const TestDemo = (props: Args): JSX.Element => {
       label="Click Target"
       onChange={noop}
       options={GITHUB_LABELS}
+      DropdownMenuProps={{
+        PopperBaseProps: {
+          sx: { width: "300px" },
+        },
+      }}
       {...props}
       data-testid="dropdown"
     />
