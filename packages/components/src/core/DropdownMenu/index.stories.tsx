@@ -25,6 +25,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
   props: Args
 ): JSX.Element => {
   const {
+    isMultiColumn,
     multiple,
     options = GITHUB_LABELS,
     search,
@@ -66,7 +67,7 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
           PopperBaseProps={{
             disablePortal: false,
             placement: POPPER_POSITION,
-            sx: { width: 300 },
+            sx: { width: isMultiColumn ? "auto" : 300 },
           }}
           search={search}
           title={title}
@@ -113,6 +114,12 @@ export default {
     ClickAwayListenerProps: {
       control: { type: "object" },
     },
+    columnWidth: {
+      control: {
+        min: 200,
+        type: "number",
+      },
+    },
     groupBy: {
       control: {
         labels: ["No group by", "Group by section names"],
@@ -120,6 +127,11 @@ export default {
       },
       mapping: groupByOptions,
       options: Object.keys(groupByOptions),
+    },
+    isMultiColumn: {
+      control: {
+        type: "boolean",
+      },
     },
     keepSearchOnSelect: {
       control: { type: "boolean" },
@@ -284,7 +296,6 @@ const LivePreviewDemo = (): JSX.Element => {
             }}
             search={false}
             multiple={false}
-            hasSections={false}
             value={value1}
             onClickAway={handleClickAway1}
           />
@@ -369,7 +380,6 @@ const LivePreviewDemo = (): JSX.Element => {
             open={!!open4}
             search={false}
             multiple
-            hasSections
             groupBy={(option) => option.section as string}
             onChange={handleChange4}
             disableCloseOnSelect
@@ -638,7 +648,6 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 </p>
                 <DropdownMenu
                   {...props}
-                  hasSections
                   groupBy={
                     groupBy &&
                     ((option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>

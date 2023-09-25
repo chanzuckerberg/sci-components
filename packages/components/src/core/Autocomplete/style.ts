@@ -15,7 +15,6 @@ import {
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
-  hasSections?: boolean;
   icon?: ReactElement;
   search?: boolean;
   isMultiColumn?: boolean;
@@ -29,7 +28,6 @@ const doNotForwardProps = [
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
-  "hasSections",
 ];
 
 export const StyledAutocomplete = styled(Autocomplete, {
@@ -42,7 +40,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { search, hasSections, isMultiColumn } = props;
+    const { search, isMultiColumn } = props;
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const borders = getBorders(props);
@@ -63,18 +61,13 @@ export const StyledAutocomplete = styled(Autocomplete, {
       }
 
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
+        ${search ? `padding-left: ${spacings?.s}px !important;` : ""}
 
-      ${
-        search || hasSections
-          ? `padding-left: ${spacings?.s}px !important;`
-          : ""
-      }
-
-      .MuiAutocomplete-listbox {
-        max-height: 40vh;
-        padding-top: 0;
-        padding-bottom: 0;
-        padding-right: ${spacings?.s}px;
+        .MuiAutocomplete-listbox {
+          max-height: 40vh;
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-right: ${spacings?.s}px;
 
         ${isMultiColumn ? isMultiColumnStyles(props) : null}
 
@@ -82,8 +75,10 @@ export const StyledAutocomplete = styled(Autocomplete, {
           min-height: unset;
         }
 
-        .MuiAutocomplete-option.Mui-focused {
-          background-color: ${colors?.gray[100]};
+        .MuiAutocomplete-groupLabel {
+          top: 0;
+          color: ${colors?.gray[500]};
+          padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
         }
 
         .MuiAutocomplete-option[aria-selected="true"] {
@@ -121,7 +116,7 @@ export const StyledAutocomplete = styled(Autocomplete, {
 
         & li:last-of-type {
           position: relative;
-          margin-bottom: ${spacings?.xxs}px;
+          padding: 0 0 ${spacings?.xs}px 0 0;
         }
       }
     `;
@@ -195,7 +190,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding: ${spacings?.s}px 0 0 ${spacings?.s}px ;
+      padding: ${spacings?.s}px 0 0 ${spacings?.s}px;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

@@ -3,7 +3,6 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
-  InputAdornment,
   AutocompleteProps as MuiAutocompleteProps,
   Popper,
   PopperProps,
@@ -13,6 +12,7 @@ import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
+import { StyledInputAdornment } from "../InputSearch/style";
 import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
 import {
   InputBaseWrapper,
@@ -205,13 +205,34 @@ const Autocomplete = <
                */
               ...params.InputProps.ref,
               endAdornment: (
-                <InputAdornment position="end">
+                <StyledInputAdornment position="end">
+                  {/**
+                   * (masoudmansdon): Because the Autocomplete component overrides the
+                   * InputSearch's endAdornment, we must also include the clear IconButton here.
+                   */}
+                  {inputValue && (
+                    <ButtonIcon
+                      aria-label="clear-button"
+                      className="input-search-clear-icon"
+                      onClick={clearInput}
+                      sdsType="primary"
+                      sdsSize="small"
+                      sdsIconProps={{
+                        sdsType: "iconButton",
+                      }}
+                      sdsIcon="xMark"
+                    />
+                  )}
                   <ButtonIcon
+                    aria-label="search-button"
                     sdsType="secondary"
                     sdsSize="small"
+                    sdsIconProps={{
+                      sdsType: "interactive",
+                    }}
                     sdsIcon="search"
                   />
-                </InputAdornment>
+                </StyledInputAdornment>
               ),
               inputProps: params.inputProps,
             }}
@@ -250,6 +271,20 @@ const Autocomplete = <
       }}
     />
   );
+
+  function clearInput() {
+    setInputValue("");
+    /**
+     * (masoudmanson): Because we are manually firing this event,
+     * we must build a onChange event to transmit the updated value to onChange listeners.
+     */
+    if (onInputChange)
+      onInputChange(
+        { target: { value: "" } } as React.ChangeEvent<HTMLInputElement>,
+        "",
+        "clear"
+      );
+  }
 
   function defaultGetOptionLabel(
     option: T | AutocompleteFreeSoloValueMapping<FreeSolo>

@@ -187,6 +187,11 @@ export const Default = {
     multiple: true,
     search: true,
   },
+  parameters: {
+    controls: {
+      exclude: ["search"],
+    },
+  },
 };
 
 // Test
@@ -236,6 +241,9 @@ export const Test = {
     search: true,
   },
   parameters: {
+    controls: {
+      exclude: ["search"],
+    },
     snapshot: {
       skip: true,
     },
