@@ -110,7 +110,7 @@
     "build-storybook": "storybook build -o docs-build",
     "test-storybook": "test-storybook",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
-    "storybook:axeOnly": "axe-storybook --build-dir docs-build --timeout 10000",
+    "storybook:axeOnly": "axe-storybook --build-dir docs-build",
     "test": "lerna run test -- --detectOpenHandles",
     "test:updateSnapshots": "lerna run test -- -u --detectOpenHandles",
     "namespace-check": "lerna run namespace-check",
