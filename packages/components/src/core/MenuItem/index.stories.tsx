@@ -366,6 +366,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
 export const ScreenshotTest = {
   args: {
     name: "text here",
+    timeout: 10 * 1000,
   },
   parameters: {
     controls: {
