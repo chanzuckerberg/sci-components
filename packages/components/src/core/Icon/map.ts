@@ -20,6 +20,7 @@ import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChev
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCirclesOverlapLarge } from "../../common/svgs/IconCirclesOverlapLarge.svg";
 import { ReactComponent as IconCirclesOverlapSmall } from "../../common/svgs/IconCirclesOverlapSmall.svg";
+import { ReactComponent as IconCitationLarge } from "../../common/svgs/IconCitationLarge.svg";
 import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
@@ -132,6 +133,7 @@ export interface IconNameToSizes {
   chevronRight2: "xs" | "s";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
+  citation: "l" | "xl";
   circlesOverlap: "xs" | "s" | "l" | "xl";
   compass: "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
@@ -273,6 +275,10 @@ export const iconMap: Props = {
   chevronUp: {
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
+  },
+  citation: {
+    largeIcon: IconCitationLarge,
+    smallIcon: null,
   },
   circlesOverlap: {
     largeIcon: IconCirclesOverlapLarge,
