@@ -20,7 +20,6 @@ import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChev
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCirclesOverlapLarge } from "../../common/svgs/IconCirclesOverlapLarge.svg";
 import { ReactComponent as IconCirclesOverlapSmall } from "../../common/svgs/IconCirclesOverlapSmall.svg";
-import { ReactComponent as IconCitationLarge } from "../../common/svgs/IconCitationLarge.svg";
 import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
@@ -84,6 +83,7 @@ import { ReactComponent as IconProjectPrivateLarge } from "../../common/svgs/Ico
 import { ReactComponent as IconProjectPublicLarge } from "../../common/svgs/IconProjectPublicLarge.svg";
 import { ReactComponent as IconPuzzlePieceSmall } from "../../common/svgs/IconPuzzlePieceSmall.svg";
 import { ReactComponent as IconQuestionMarkLarge } from "../../common/svgs/IconQuestionMarkLarge.svg";
+import { ReactComponent as IconQuoteLarge } from "../../common/svgs/IconQuoteLarge.svg";
 import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefreshLarge.svg";
 import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
@@ -133,7 +133,6 @@ export interface IconNameToSizes {
   chevronRight2: "xs" | "s";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
-  citation: "l" | "xl";
   circlesOverlap: "xs" | "s" | "l" | "xl";
   compass: "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
@@ -186,6 +185,7 @@ export interface IconNameToSizes {
   projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
+  quote: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
   save: "l" | "xl";
   search: "xs" | "s" | "l" | "xl";
@@ -275,10 +275,6 @@ export const iconMap: Props = {
   chevronUp: {
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
-  },
-  citation: {
-    largeIcon: IconCitationLarge,
-    smallIcon: null,
   },
   circlesOverlap: {
     largeIcon: IconCirclesOverlapLarge,
@@ -486,6 +482,10 @@ export const iconMap: Props = {
   },
   questionMark: {
     largeIcon: IconQuestionMarkLarge,
+    smallIcon: null,
+  },
+  quote: {
+    largeIcon: IconQuoteLarge,
     smallIcon: null,
   },
   refresh: {
