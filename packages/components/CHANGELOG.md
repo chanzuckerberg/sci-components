@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.0.1...@czi-sds/components@18.1.0) (2023-09-27)
+
+### Bug Fixes
+
+- **axe:** remove global timeout configuration ([#611](https://github.com/chanzuckerberg/sci-components/issues/611)) ([619bd82](https://github.com/chanzuckerberg/sci-components/commit/619bd8209ea8714ff6ec44dcf4025aba6ba53cf3))
+- **icons:** remove fill attribute from IconQuoteLarge svg ([#614](https://github.com/chanzuckerberg/sci-components/issues/614)) ([b585b0d](https://github.com/chanzuckerberg/sci-components/commit/b585b0d2a68d38d0cdaad4cd546be1d5d9e37cff))
+
+### Features
+
+- **icons:** add IconQuoteLarge ([#613](https://github.com/chanzuckerberg/sci-components/issues/613)) ([b14234f](https://github.com/chanzuckerberg/sci-components/commit/b14234f27b1bb5a44e29bc3cd62f3769e46e0dc7))
+- **menuitem:** add determinate/indeterminate variant to the MenuItem ([#602](https://github.com/chanzuckerberg/sci-components/issues/602)) ([7c7e3b3](https://github.com/chanzuckerberg/sci-components/commit/7c7e3b36704121db33818de206adb6c6ec484814))
+
 ## [18.0.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.0.0...@czi-sds/components@18.0.1) (2023-09-06)
 
 **Note:** Version bump only for package @czi-sds/components
