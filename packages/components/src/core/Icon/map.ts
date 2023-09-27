@@ -83,6 +83,7 @@ import { ReactComponent as IconProjectPrivateLarge } from "../../common/svgs/Ico
 import { ReactComponent as IconProjectPublicLarge } from "../../common/svgs/IconProjectPublicLarge.svg";
 import { ReactComponent as IconPuzzlePieceSmall } from "../../common/svgs/IconPuzzlePieceSmall.svg";
 import { ReactComponent as IconQuestionMarkLarge } from "../../common/svgs/IconQuestionMarkLarge.svg";
+import { ReactComponent as IconQuoteLarge } from "../../common/svgs/IconQuoteLarge.svg";
 import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefreshLarge.svg";
 import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
@@ -184,6 +185,7 @@ export interface IconNameToSizes {
   projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
+  quote: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
   save: "l" | "xl";
   search: "xs" | "s" | "l" | "xl";
@@ -480,6 +482,10 @@ export const iconMap: Props = {
   },
   questionMark: {
     largeIcon: IconQuestionMarkLarge,
+    smallIcon: null,
+  },
+  quote: {
+    largeIcon: IconQuoteLarge,
     smallIcon: null,
   },
   refresh: {
