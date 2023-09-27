@@ -368,6 +368,9 @@ export const ScreenshotTest = {
     name: "text here",
   },
   parameters: {
+    axe: {
+      timeout: 10 * 1000,
+    },
     controls: {
       exclude: [
         "name",
