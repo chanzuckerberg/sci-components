@@ -1,10 +1,16 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { TextField } from "@mui/material";
+import {
+  buttonBaseClasses,
+  inputAdornmentClasses,
+  outlinedInputClasses,
+  TextField,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyS,
   getBorders,
+  getColors,
   getCorners,
   getSpaces,
   getTypography,
@@ -22,34 +28,79 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
 
 const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
+  const colors = getColors(props);
 
   return css`
-    .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.error[400]};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${borders?.error[400]};
+    }
+
+    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
+      .${outlinedInputClasses.notchedOutline} {
+        border: ${borders?.error[400]};
+      }
+
+      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+        cursor: default;
+        svg {
+          color: ${colors?.gray[500]};
+        }
+      }
     }
   `;
 };
 
 const warning = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
+  const colors = getColors(props);
 
   return css`
-    .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.warning[400]};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${borders?.warning[400]};
+    }
+
+    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
+      .${outlinedInputClasses.notchedOutline} {
+        border: ${borders?.warning[400]};
+      }
+
+      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+        cursor: default;
+        svg {
+          color: ${colors?.gray[500]};
+        }
+      }
     }
   `;
 };
 
 const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
+  const colors = getColors(props);
 
   return css`
-    .Mui-disabled {
-      .MuiOutlinedInput-notchedOutline {
+    .${outlinedInputClasses.disabled} {
+      .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
       }
-      &:hover .MuiOutlinedInput-notchedOutline {
+
+      &:hover .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
+      }
+
+      &::placeholder {
+        color: ${colors?.gray[300]};
+        opacity: 1;
       }
     }
   `;
@@ -57,13 +108,37 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
 
 const textArea = (props: InputTextExtraProps): SerializedStyles => {
   const spacings = getSpaces(props);
+
   return css`
-    .MuiInputBase-multiline {
+    .${outlinedInputClasses.multiline} {
       padding: ${spacings?.xxs}px;
-      > .MuiInputBase-inputMultiline {
+      > ${outlinedInputClasses.inputMultiline} {
         padding: ${spacings?.xxs}px ${spacings?.m}px ${spacings?.m}px;
         resize: both;
       }
+    }
+  `;
+};
+
+const userInput = (props: InputTextExtraProps): SerializedStyles => {
+  const { intent } = props;
+  const borders = getBorders(props);
+
+  const border =
+    intent === "error"
+      ? borders?.error[400]
+      : intent === "warning"
+      ? borders?.warning[400]
+      : borders?.primary[400];
+
+  return css`
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
+      border: ${border};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${border};
     }
   `;
 };
@@ -89,7 +164,8 @@ export const StyledInputBase = styled(TextField, {
   },
 })`
   ${(props: InputTextExtraProps) => {
-    const { intent, sdsType, disabled } = props;
+    const { intent, sdsType, sdsStage, disabled } = props;
+
     const spacings = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
@@ -100,23 +176,25 @@ export const StyledInputBase = styled(TextField, {
       min-width: 160px;
       display: block;
 
-      .MuiInputBase-inputSizeSmall {
+      .${outlinedInputClasses.inputSizeSmall} {
         padding: ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;
 
-        .MuiOutlinedInput-notchedOutline {
+        .${outlinedInputClasses.notchedOutline} {
           border-radius: ${corners?.m}px;
           border: ${borders?.gray[400]};
         }
       }
 
-      .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+      .${outlinedInputClasses.root}:hover
+        .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[500]};
       }
 
-      .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+      .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
+        .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.primary[400]};
       }
 
@@ -124,6 +202,7 @@ export const StyledInputBase = styled(TextField, {
       ${intent === "error" && error(props)}
       ${intent === "warning" && warning(props)}
       ${disabled && disabledStyled(props)}
+      ${sdsStage === "userInput" && userInput(props)}
     `;
   }}
 `;
