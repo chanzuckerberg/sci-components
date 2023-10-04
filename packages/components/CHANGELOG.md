@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.0...@czi-sds/components@18.1.1) (2023-10-04)
+
+### Bug Fixes
+
+- **inputsearch:** fix intent and useInput styles ([#618](https://github.com/chanzuckerberg/sci-components/issues/618)) ([11430c1](https://github.com/chanzuckerberg/sci-components/commit/11430c1169391624382e9008a718861f564b4aa5))
+
 # [18.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.0.1...@czi-sds/components@18.1.0) (2023-09-27)
 
 ### Bug Fixes
