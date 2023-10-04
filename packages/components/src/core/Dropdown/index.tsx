@@ -110,10 +110,6 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   >([]);
 
   useEffect(() => {
-    onChange(value);
-  }, [onChange, value]);
-
-  useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
@@ -203,7 +199,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       }
 
       if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+        setValueAndCallOnChange(
+          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
+        );
       }
     }
   }
@@ -211,7 +209,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
       if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+        setValueAndCallOnChange(
+          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
+        );
       }
 
       setOpen(false);
@@ -221,7 +221,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       }
     } else {
       if (multiple) {
-        setPendingValue(value as MUIValue<true>);
+        setValueAndCallOnChange(
+          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
+        );
       }
 
       setAnchorEl(event.currentTarget);
@@ -245,7 +247,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
     }
 
     if (multiple) {
-      setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
+      setValueAndCallOnChange(
+        pendingValue as Value<DefaultDropdownMenuOption, Multiple>
+      );
     }
 
     if (anchorEl) {
@@ -267,7 +271,10 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
     if (multiple) {
       if (isTriggerChangeOnOptionClick) {
         setPendingValue(newValue as Value<DefaultDropdownMenuOption, true>);
-        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+
+        return setValueAndCallOnChange(
+          newValue as Value<DefaultDropdownMenuOption, Multiple>
+        );
       }
 
       return setPendingValue(
@@ -275,7 +282,9 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       );
     }
 
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
+    setValueAndCallOnChange(
+      newValue as Value<DefaultDropdownMenuOption, Multiple>
+    );
     setOpen(false);
   }
 
@@ -303,6 +312,13 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
     return multiple
       ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
       : null;
+  }
+
+  function setValueAndCallOnChange(
+    newValue: Value<DefaultDropdownMenuOption, Multiple>
+  ) {
+    setValue(newValue);
+    onChange(newValue);
   }
 };
 
