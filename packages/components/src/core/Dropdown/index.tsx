@@ -221,9 +221,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       }
     } else {
       if (multiple) {
-        setValueAndCallOnChange(
-          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
-        );
+        setPendingValue(value as MUIValue<true>);
       }
 
       setAnchorEl(event.currentTarget);
