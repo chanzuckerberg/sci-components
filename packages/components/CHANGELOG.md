@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.1...@czi-sds/components@18.1.2) (2023-10-11)
+
+### Bug Fixes
+
+- call onChange in event callback instead of useEffect ([#620](https://github.com/chanzuckerberg/sci-components/issues/620)) ([8d9ffda](https://github.com/chanzuckerberg/sci-components/commit/8d9ffda2992a112f1e489dabcf10315f0561f167))
+
 ## [18.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.0...@czi-sds/components@18.1.1) (2023-10-04)
 
 ### Bug Fixes
