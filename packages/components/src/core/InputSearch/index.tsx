@@ -136,7 +136,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
            * (masoudmanson): This prevents the browser's default auto completion
            * menu from being displayed for the InputSearch.
            */
-          autoComplete="off"
+          autoComplete="one-time-code"
           {...rest}
         />
       </>

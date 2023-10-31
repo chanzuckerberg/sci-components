@@ -8,7 +8,7 @@ import {
   PopperProps,
 } from "@mui/material";
 import React, { SyntheticEvent, useCallback } from "react";
-import Autocomplete, { DefaultAutocompleteOption } from "../Autocomplete";
+import Autocomplete, { DefaultAutocompleteOption } from "../AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
 import {
   StyleProps,

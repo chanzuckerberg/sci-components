@@ -1,32 +1,27 @@
 import { AutocompleteValue } from "@mui/base";
 import { Args, Meta } from "@storybook/react";
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
+import React, { useEffect, useState } from "react";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
-import RawAutocomplete from "./index";
+import RawAutocompleteMultiColumn from "./index";
 
 const groupByOptions = [
   undefined,
-  (option: DefaultAutocompleteOption) => option.section as string,
+  (option: DefaultDropdownMenuOption) => option.section as string,
 ];
 
-const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
-
-const Autocomplete = <
-  T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined = false
+const AutocompleteMultiColumn = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined
 >(
   props: Args
 ): JSX.Element => {
   const {
-    label,
     multiple,
     options = GITHUB_LABELS_MULTI_COLUMN,
     search,
     value: propValue,
-    keepSearchOnSelect,
   } = props;
 
   const isControlled = propValue !== undefined;
@@ -36,38 +31,30 @@ const Autocomplete = <
   const [pendingValue, setPendingValue] = useState<
     AutocompleteValue<T, Multiple, false, false>
   >(getInitialValue());
-
   const [selection, setSelection] = useState<string[]>([]);
 
   useEffect(() => {
-    if (isControlled) {
-      setValue(propValue);
-    }
-  }, [isControlled, propValue]);
+    setSelection([]);
+  }, [multiple]);
 
   useEffect(() => {
-    setSelection([]);
-    setValue(null as AutocompleteValue<T, Multiple, false, false>);
-    setPendingValue(
-      [] as unknown as AutocompleteValue<T, Multiple, false, false>
-    );
-  }, [multiple, options]);
+    if (isControlled) {
+      if (multiple) setPendingValue(propValue);
+      else setValue(propValue);
+    }
+  }, [propValue, isControlled, multiple]);
 
   return (
     <div style={{ margin: "16px 0 0 24px", width: 300 }}>
-      <RawAutocomplete
-        id="autocomplete-demo"
-        disableCloseOnSelect={multiple}
-        label={label}
+      <RawAutocompleteMultiColumn
+        disableCloseOnSelect={false}
         multiple={multiple}
         onChange={handleChange}
-        keepSearchOnSelect={keepSearchOnSelect}
+        onClickAway={handleClickAway}
+        open
         options={options}
         search={search}
         value={multiple ? pendingValue : value}
-        getOptionDisabled={(option: DefaultAutocompleteOption) => {
-          return option.name === "Type: feature request";
-        }}
         {...props}
       />
       <div style={{ marginTop: 10 }}>
@@ -86,8 +73,14 @@ const Autocomplete = <
     </div>
   );
 
+  function handleClickAway() {
+    if (multiple) {
+      setValue(pendingValue);
+    }
+  }
+
   function handleChange(
-    _: SyntheticEvent<Element, Event>,
+    _event: React.SyntheticEvent,
     newValue: AutocompleteValue<T, Multiple, false, false>
   ) {
     if (multiple) {
@@ -136,6 +129,14 @@ const Autocomplete = <
 
 export default {
   argTypes: {
+    ClickAwayListenerProps: {
+      control: { type: "object" },
+    },
+    columnWidth: {
+      control: {
+        type: "number",
+      },
+    },
     groupBy: {
       control: {
         labels: ["No group by", "Group by section names"],
@@ -149,22 +150,15 @@ export default {
     },
     label: {
       control: { type: "text" },
+      require: true,
     },
     multiple: {
       control: { type: "boolean" },
     },
-    options: {
-      control: {
-        labels: ["Single Column Autocomplete", "Multi Column Autocomplete"],
-        type: "select",
-      },
-      mapping: dataOptions,
-      options: Object.keys(dataOptions),
-    },
   },
-  component: Autocomplete,
+  component: AutocompleteMultiColumn,
   // (masoudmanson) For the purpose of storybook, the button is removed
-  // from the RawAutocomplete component which may cause some accessibility
+  // from the dropdown menu component which may cause some accessibility
   // violations related to ARIA roles and attributes. However, this
   // should not be a concern as the component is always used with a button
   // in real applications. To avoid false positive test failures, the following
@@ -181,7 +175,7 @@ export default {
       ],
     },
   },
-  title: "Dropdowns/Autocomplete",
+  title: "Dropdowns/AutocompleteMultiColumn",
 } as Meta;
 
 // Default
@@ -194,68 +188,4 @@ export const Default = {
     multiple: true,
     search: true,
   },
-  parameters: {
-    controls: {
-      exclude: ["search"],
-    },
-  },
-};
-
-// Test
-
-const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
-
-  const [value, setValue] = useState<
-    null | DefaultAutocompleteOption | DefaultAutocompleteOption[]
-  >(multiple ? [] : null);
-
-  const [pendingValue, setPendingValue] = useState<DefaultAutocompleteOption[]>(
-    []
-  );
-
-  return (
-    <RawAutocomplete
-      open
-      search={search}
-      label="Search"
-      multiple={multiple}
-      value={multiple ? pendingValue : value}
-      onChange={handleChange}
-      disableCloseOnSelect={multiple}
-      options={options}
-      groupBy={(option: DefaultAutocompleteOption) => option.section as string}
-      {...props}
-    />
-  );
-
-  function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
-  ) {
-    if (!multiple) {
-      setValue(newValue as DefaultAutocompleteOption);
-    }
-
-    return setPendingValue(newValue as DefaultAutocompleteOption[]);
-  }
-};
-
-export const Test = {
-  args: {
-    keepSearchOnSelect: false,
-    multiple: true,
-    search: true,
-  },
-  parameters: {
-    controls: {
-      exclude: ["search"],
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => (
-    <TestDemo data-testid="autocomplete-base" {...args} />
-  ),
 };

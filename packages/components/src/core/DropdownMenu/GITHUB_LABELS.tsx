@@ -82,18 +82,21 @@ export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
             sdsStyle="rounded"
             sdsType="secondary"
             color="error"
+            hover={false}
           />
           <Tag
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
             color="warning"
+            hover={false}
           />
           <Tag
             label="refactor"
             sdsStyle="rounded"
             sdsType="secondary"
             color="gray"
+            hover={false}
           />
         </div>
       </div>

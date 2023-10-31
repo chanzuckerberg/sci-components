@@ -6,12 +6,12 @@ import Meta, { Test as TestStory } from "./index.stories";
 
 const Test = composeStory(TestStory, Meta);
 
-describe("<Autocomplete />", () => {
+describe("<AutocompleteMultiColumn />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders AutocompleteBase component", () => {
+  it("renders AutocompleteMultiColumn component", () => {
     render(<Test {...Test.args} />);
-    const AutocompleteElement = screen.getByTestId("autocomplete-base");
+    const AutocompleteElement = screen.getByTestId("autocomplete-multi-column");
     expect(AutocompleteElement).not.toBeNull();
   });
 });

@@ -1,29 +1,25 @@
-import { AutocompleteValue } from "@mui/base";
+import { AutocompleteChangeReason, AutocompleteValue } from "@mui/base";
 import { Args, Meta } from "@storybook/react";
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import React, { useEffect, useState } from "react";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
-import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
-import RawAutocomplete from "./index";
+import RawAutocompleteBase, { DefaultAutocompleteOption } from "./index";
 
 const groupByOptions = [
   undefined,
   (option: DefaultAutocompleteOption) => option.section as string,
 ];
 
-const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
-
-const Autocomplete = <
+const AutocompleteBase = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined = false
+  Multiple extends boolean | undefined
 >(
   props: Args
 ): JSX.Element => {
   const {
     label,
     multiple,
-    options = GITHUB_LABELS_MULTI_COLUMN,
+    options = GITHUB_LABELS,
     search,
     value: propValue,
     keepSearchOnSelect,
@@ -47,16 +43,20 @@ const Autocomplete = <
 
   useEffect(() => {
     setSelection([]);
-    setValue(null as AutocompleteValue<T, Multiple, false, false>);
-    setPendingValue(
-      [] as unknown as AutocompleteValue<T, Multiple, false, false>
-    );
-  }, [multiple, options]);
+  }, [multiple]);
+
+  useEffect(() => {
+    console.log({ value });
+  }, [value]);
+
+  useEffect(() => {
+    console.log({ pendingValue });
+  }, [pendingValue]);
 
   return (
     <div style={{ margin: "16px 0 0 24px", width: 300 }}>
-      <RawAutocomplete
-        id="autocomplete-demo"
+      <RawAutocompleteBase
+        id="autocomplete-base-demo"
         disableCloseOnSelect={multiple}
         label={label}
         multiple={multiple}
@@ -87,20 +87,19 @@ const Autocomplete = <
   );
 
   function handleChange(
-    _: SyntheticEvent<Element, Event>,
-    newValue: AutocompleteValue<T, Multiple, false, false>
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, false, false>,
+    _reason: AutocompleteChangeReason
   ) {
     if (multiple) {
       const newSelection = Array.isArray(newValue)
         ? newValue?.map((item) => item.name)
         : [];
       setSelection(newSelection);
-      return setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, false, false>
-      );
+      return setPendingValue(newValue);
     } else {
       if (newValue && !Array.isArray(newValue) && newValue.name) {
-        setValue(newValue as AutocompleteValue<T, Multiple, false, false>);
+        setValue(newValue);
         setSelection([newValue.name]);
       }
     }
@@ -118,7 +117,7 @@ const Autocomplete = <
       newSelection.splice(deleteIndex, 1);
       setSelection(newSelection);
     } else {
-      setValue(null as AutocompleteValue<T, Multiple, false, false>);
+      setValue(null as unknown as AutocompleteValue<T, Multiple, false, false>);
       setSelection([]);
     }
   }
@@ -130,12 +129,22 @@ const Autocomplete = <
 
     return multiple
       ? ([] as unknown as AutocompleteValue<T, Multiple, false, false>)
-      : (null as AutocompleteValue<T, Multiple, false, false>);
+      : (null as unknown as AutocompleteValue<T, Multiple, false, false>);
   }
 };
 
 export default {
   argTypes: {
+    blurOnSelect: {
+      control: {
+        type: "boolean",
+      },
+    },
+    clearOnBlur: {
+      control: {
+        type: "boolean",
+      },
+    },
     groupBy: {
       control: {
         labels: ["No group by", "Group by section names"],
@@ -153,18 +162,10 @@ export default {
     multiple: {
       control: { type: "boolean" },
     },
-    options: {
-      control: {
-        labels: ["Single Column Autocomplete", "Multi Column Autocomplete"],
-        type: "select",
-      },
-      mapping: dataOptions,
-      options: Object.keys(dataOptions),
-    },
   },
-  component: Autocomplete,
+  component: AutocompleteBase,
   // (masoudmanson) For the purpose of storybook, the button is removed
-  // from the RawAutocomplete component which may cause some accessibility
+  // from the RawAutocompleteBase component which may cause some accessibility
   // violations related to ARIA roles and attributes. However, this
   // should not be a concern as the component is always used with a button
   // in real applications. To avoid false positive test failures, the following
@@ -181,7 +182,7 @@ export default {
       ],
     },
   },
-  title: "Dropdowns/Autocomplete",
+  title: "Dropdowns/AutocompleteBase",
 } as Meta;
 
 // Default
@@ -203,19 +204,30 @@ export const Default = {
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
+const TestDemo = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
+  const { multiple, options = GITHUB_LABELS, search, value: propValue } = props;
 
+  const isControlled = propValue !== undefined;
   const [value, setValue] = useState<
-    null | DefaultAutocompleteOption | DefaultAutocompleteOption[]
-  >(multiple ? [] : null);
+    AutocompleteValue<T, Multiple, false, false>
+  >(getInitialValue());
+  const [pendingValue, setPendingValue] = useState<
+    AutocompleteValue<T, Multiple, false, false>
+  >(getInitialValue());
 
-  const [pendingValue, setPendingValue] = useState<DefaultAutocompleteOption[]>(
-    []
-  );
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [isControlled, propValue]);
 
   return (
-    <RawAutocomplete
+    <RawAutocompleteBase
       open
       search={search}
       label="Search"
@@ -230,14 +242,26 @@ const TestDemo = (props: Args): JSX.Element => {
   );
 
   function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, false, false>,
+    _reason: AutocompleteChangeReason
   ) {
     if (!multiple) {
-      setValue(newValue as DefaultAutocompleteOption);
+      setValue(newValue);
     }
 
-    return setPendingValue(newValue as DefaultAutocompleteOption[]);
+    return setPendingValue(newValue);
+  }
+
+  // eslint-disable-next-line sonarjs/no-identical-functions
+  function getInitialValue(): AutocompleteValue<T, Multiple, false, false> {
+    if (isControlled) {
+      return propValue;
+    }
+
+    return multiple
+      ? ([] as unknown as AutocompleteValue<T, Multiple, false, false>)
+      : (null as unknown as AutocompleteValue<T, Multiple, false, false>);
   }
 };
 

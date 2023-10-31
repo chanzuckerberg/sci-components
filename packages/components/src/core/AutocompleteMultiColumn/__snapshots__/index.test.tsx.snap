@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Autocomplete /> Default story renders snapshot 1`] = `
+<div
+  style="margin: 16px 0px 0px 24px; width: 300px;"
+>
+  <div
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-t46og2-MuiAutocomplete-root"
+    label="Search by label"
+  >
+    <div
+      class="css-1oteowz"
+    >
+      <label
+        class="css-1xrxdra"
+        for="location-search"
+      >
+        Search by label
+      </label>
+      <div
+        class="MuiFormControl-root MuiTextField-root css-1gkuvuu-MuiFormControl-root-MuiTextField-root"
+      >
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root"
+          inputmode="text"
+        >
+          <input
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-invalid="false"
+            autocapitalize="none"
+            autocomplete="off"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-vvf66v-MuiInputBase-input-MuiOutlinedInput-input"
+            id="autocomplete-demo"
+            placeholder="Search by label"
+            role="combobox"
+            spellcheck="false"
+            type="search"
+            value=""
+          />
+          <div
+            class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-g8kzra-MuiInputAdornment-root"
+          >
+            
+            <button
+              aria-label="search-button"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1fqpm4w-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-1ft6wgl"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+                  data-file-name="IconSearchSmall"
+                  data-testid="IconSearchSmall"
+                  fillcontrast="white"
+                  focusable="false"
+                  viewBox="0 0 14 14"
+                />
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="css-ihdtdm"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 10px;"
+  />
+</div>
+`;
