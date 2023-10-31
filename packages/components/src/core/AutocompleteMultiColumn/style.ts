@@ -5,6 +5,7 @@ import InputSearch from "../InputSearch";
 import {
   CommonThemeProps,
   getBorders,
+  getColors,
   getCorners,
   getShadows,
   getSpaces,
@@ -88,8 +89,16 @@ export const StyledAutocomplesWrapper = styled("div")`
 export const StyledColumn = styled("div")`
   ${(props: StyleProps) => {
     const { columnWidth = 260 } = props;
+
+    const colors = getColors(props);
+    const spacings = getSpaces(props);
+
     return `
       width: ${columnWidth}px;
+      &:not(:last-child) {
+        border-right: solid 1px ${colors?.gray[200]};
+        margin-right: ${spacings?.xs}px;
+      }
     `;
   }}
 `;
