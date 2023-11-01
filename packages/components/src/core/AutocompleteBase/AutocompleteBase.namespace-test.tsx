@@ -1,6 +1,6 @@
 import {
-  Autocomplete,
-  AutocompleteProps,
+  AutocompleteBase,
+  AutocompleteBaseProps,
   DefaultAutocompleteOption,
 } from "@czi-sds/components";
 import { noop } from "src/common/utils";
@@ -18,16 +18,11 @@ const OPTIONS = [
   },
 ];
 
-const AutocompleteNameSpaceTest = (
-  props: AutocompleteProps<
-    DefaultAutocompleteOption,
-    true,
-    undefined,
-    undefined
-  >
+const AutocompleteBaseNameSpaceTest = (
+  props: AutocompleteBaseProps<DefaultAutocompleteOption, true, false, false>
 ) => {
   return (
-    <Autocomplete
+    <AutocompleteBase
       disableCloseOnSelect={false}
       id="1"
       onChange={noop}

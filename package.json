@@ -118,7 +118,7 @@
     "lint": "lerna run lint",
     "build": "lerna run build",
     "ci": "yarn install --immutable",
-    "version:ci":"HUSKY=0 lerna version --yes --conventional-commits",
+    "version:ci": "HUSKY=0 lerna version --yes --conventional-commits",
     "publish:ci": "HUSKY=0 lerna publish from-package --yes"
   },
   "lint-staged": {
@@ -150,5 +150,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {}
 }

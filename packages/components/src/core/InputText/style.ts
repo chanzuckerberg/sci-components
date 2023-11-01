@@ -108,8 +108,6 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
 
 const textArea = (props: InputTextExtraProps): SerializedStyles => {
   const spacings = getSpaces(props);
-  console.log(outlinedInputClasses.multiline);
-  console.log(outlinedInputClasses.inputMultiline);
 
   return css`
     .${outlinedInputClasses.multiline} {

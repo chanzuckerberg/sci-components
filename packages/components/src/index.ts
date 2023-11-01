@@ -6,6 +6,8 @@ export * from "./core/Accordion";
 export { default as Accordion } from "./core/Accordion";
 export * from "./core/Alert";
 export { default as Alert } from "./core/Alert";
+export * from "./core/Autocomplete";
+export { default as Autocomplete } from "./core/Autocomplete";
 export * from "./core/AutocompleteBase";
 export { default as AutocompleteBase } from "./core/AutocompleteBase";
 export * from "./core/AutocompleteMultiColumn";

@@ -16,25 +16,28 @@ const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined = false
+  Multiple extends boolean | undefined
 >(
   props: Args
 ): JSX.Element => {
   const {
     label,
     multiple,
-    options = GITHUB_LABELS_MULTI_COLUMN,
+    options = GITHUB_LABELS,
     search,
     value: propValue,
     keepSearchOnSelect,
   } = props;
 
+  type DisableClearable = false;
+  type FreeSolo = false;
+
   const isControlled = propValue !== undefined;
   const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, false, false>
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   >(getInitialValue());
   const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, false, false>
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   >(getInitialValue());
 
   const [selection, setSelection] = useState<string[]>([]);
@@ -47,30 +50,39 @@ const Autocomplete = <
 
   useEffect(() => {
     setSelection([]);
-    setValue(null as AutocompleteValue<T, Multiple, false, false>);
+    setValue(
+      null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    );
     setPendingValue(
-      [] as unknown as AutocompleteValue<T, Multiple, false, false>
+      [] as unknown as AutocompleteValue<
+        T,
+        Multiple,
+        DisableClearable,
+        FreeSolo
+      >
     );
   }, [multiple, options]);
 
   return (
-    <div style={{ margin: "16px 0 0 24px", width: 300 }}>
-      <RawAutocomplete
-        id="autocomplete-demo"
-        disableCloseOnSelect={multiple}
-        label={label}
-        multiple={multiple}
-        onChange={handleChange}
-        keepSearchOnSelect={keepSearchOnSelect}
-        options={options}
-        search={search}
-        value={multiple ? pendingValue : value}
-        getOptionDisabled={(option: DefaultAutocompleteOption) => {
-          return option.name === "Type: feature request";
-        }}
-        {...props}
-      />
-      <div style={{ marginTop: 10 }}>
+    <>
+      <div style={{ margin: "16px 0 0 24px", width: 300 }}>
+        <RawAutocomplete
+          id="autocomplete-demo"
+          disableCloseOnSelect={multiple}
+          label={label}
+          multiple={multiple}
+          onChange={handleChange}
+          keepSearchOnSelect={keepSearchOnSelect}
+          options={options}
+          search={search}
+          value={multiple ? pendingValue : value}
+          getOptionDisabled={(option: DefaultAutocompleteOption) => {
+            return option.name === "Type: feature request";
+          }}
+          {...props}
+        />
+      </div>
+      <div style={{ margin: "10px 0 0 24px" }}>
         {selection.length
           ? selection.map((item) => {
               return (
@@ -78,17 +90,18 @@ const Autocomplete = <
                   key={item}
                   label={item}
                   onDelete={() => handleTagDelete(item)}
+                  onClick={() => handleTagDelete(item)}
                 />
               );
             })
           : null}
       </div>
-    </div>
+    </>
   );
 
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue: AutocompleteValue<T, Multiple, false, false>
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     if (multiple) {
       const newSelection = Array.isArray(newValue)
@@ -96,11 +109,13 @@ const Autocomplete = <
         : [];
       setSelection(newSelection);
       return setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, false, false>
+        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
       );
     } else {
       if (newValue && !Array.isArray(newValue) && newValue.name) {
-        setValue(newValue as AutocompleteValue<T, Multiple, false, false>);
+        setValue(
+          newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+        );
         setSelection([newValue.name]);
       }
     }
@@ -111,26 +126,40 @@ const Autocomplete = <
       const index = pendingValue?.findIndex((item) => item.name === tag);
       const newValue = [...pendingValue];
       newValue.splice(index, 1);
-      setPendingValue(newValue as AutocompleteValue<T, Multiple, false, false>);
+      setPendingValue(
+        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+      );
 
       const newSelection = [...selection];
       const deleteIndex = newSelection.indexOf(tag);
       newSelection.splice(deleteIndex, 1);
       setSelection(newSelection);
     } else {
-      setValue(null as AutocompleteValue<T, Multiple, false, false>);
+      setValue(
+        null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+      );
       setSelection([]);
     }
   }
 
-  function getInitialValue(): AutocompleteValue<T, Multiple, false, false> {
+  function getInitialValue(): AutocompleteValue<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  > {
     if (isControlled) {
       return propValue;
     }
 
     return multiple
-      ? ([] as unknown as AutocompleteValue<T, Multiple, false, false>)
-      : (null as AutocompleteValue<T, Multiple, false, false>);
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
@@ -203,16 +232,23 @@ export const Default = {
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
+const TestDemo = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
   const { multiple, options = GITHUB_LABELS, search } = props;
 
   const [value, setValue] = useState<
-    null | DefaultAutocompleteOption | DefaultAutocompleteOption[]
-  >(multiple ? [] : null);
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
 
-  const [pendingValue, setPendingValue] = useState<DefaultAutocompleteOption[]>(
-    []
-  );
+  const [pendingValue, setPendingValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
 
   return (
     <RawAutocomplete
@@ -229,15 +265,31 @@ const TestDemo = (props: Args): JSX.Element => {
     />
   );
 
+  function getInitialValue(): AutocompleteValue<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  > {
+    return multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+  }
+
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     if (!multiple) {
-      setValue(newValue as DefaultAutocompleteOption);
+      setValue(newValue);
     }
 
-    return setPendingValue(newValue as DefaultAutocompleteOption[]);
+    return setPendingValue(newValue);
   }
 };
 

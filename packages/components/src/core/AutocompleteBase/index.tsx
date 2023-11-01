@@ -58,7 +58,8 @@ export type DefaultAutocompleteOption =
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RenderFunctionType = (props: any) => JSX.Element;
 
-interface ExtraAutocompleteProps<T, Multiple> extends StyleProps {
+interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
+  extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
@@ -68,7 +69,7 @@ interface ExtraAutocompleteProps<T, Multiple> extends StyleProps {
   ) => void;
   onChange?: (
     event: React.SyntheticEvent,
-    value: AutocompleteValue<T, Multiple, false, false>,
+    value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
     reason: AutocompleteChangeReason,
     details?: AutocompleteChangeDetails<T>
   ) => void;
@@ -77,21 +78,31 @@ interface ExtraAutocompleteProps<T, Multiple> extends StyleProps {
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
 }
 
-type CustomAutocompleteProps<T, Multiple extends boolean | undefined> = Omit<
-  MuiAutocompleteProps<T, Multiple, false, false>,
+type CustomAutocompleteProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = Omit<
+  MuiAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
 >;
 
 export type AutocompleteBaseProps<
   T,
-  Multiple extends boolean | undefined
-> = CustomAutocompleteProps<T, Multiple> & ExtraAutocompleteProps<T, Multiple>;
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
+  ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
 
 const AutocompleteBase = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >(
-  props: AutocompleteBaseProps<T, Multiple>
+  props: AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
   const {
     multiple,
@@ -112,8 +123,6 @@ const AutocompleteBase = <
     clearOnBlur = false,
     blurOnSelect = !multiple,
   } = props;
-  // console.log(props);
-
   const [inputValue, setInputValue] = useState("");
 
   return (

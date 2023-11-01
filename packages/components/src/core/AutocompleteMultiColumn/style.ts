@@ -4,11 +4,13 @@ import { ReactElement } from "react";
 import InputSearch from "../InputSearch";
 import {
   CommonThemeProps,
+  fontCapsXxxxs,
   getBorders,
   getColors,
   getCorners,
   getShadows,
   getSpaces,
+  getTypography,
 } from "../styles";
 
 export interface StyleProps extends CommonThemeProps {
@@ -88,16 +90,52 @@ export const StyledAutocomplesWrapper = styled("div")`
 
 export const StyledColumn = styled("div")`
   ${(props: StyleProps) => {
-    const { columnWidth = 260 } = props;
+    const { columnWidth = 280 } = props;
 
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
     return `
+      position: relative;
       width: ${columnWidth}px;
+      padding: 0 ${spacings?.xs}px;
       &:not(:last-child) {
         border-right: solid 1px ${colors?.gray[200]};
-        margin-right: ${spacings?.xs}px;
+        margin-right: ${spacings?.s}px;
+      }
+    `;
+  }}
+`;
+
+export const StyledColumnTitle = styled("p")`
+  ${fontCapsXxxxs}
+  ${(props: StyleProps) => {
+    const spacings = getSpaces(props);
+    const colors = getColors(props);
+    const typography = getTypography(props);
+
+    return `
+      font-family: ${typography?.fontFamily};
+      margin: 0;
+      padding: ${spacings?.xxxs}px 0;
+      color: ${colors?.gray[500]};
+    `;
+  }}
+`;
+
+export const StyledColumnIcon = styled("span")`
+  ${(props: StyleProps) => {
+    const spacings = getSpaces(props);
+    const colors = getColors(props);
+
+    return `
+      background-color: white;
+      height: ${spacings?.xl}px;
+      position: absolute;
+      right: -${spacings?.xs}px;
+
+      svg {
+        color: ${colors?.gray[500]};
       }
     `;
   }}

@@ -1,33 +1,47 @@
 import {
-  Autocomplete,
-  AutocompleteProps,
+  AutocompleteMultiColumn,
+  AutocompleteMultiColumnProps,
   DefaultAutocompleteOption,
 } from "@czi-sds/components";
 import { noop } from "src/common/utils";
 
 const OPTIONS = [
   {
-    color: "#7057ff",
-    description: "Good for newcomers",
-    name: "good first issue",
+    options: [
+      {
+        description: "Good for newcomers",
+        name: "good first issue",
+      },
+      {
+        description: "Extra attention is needed",
+        name: "help wanted",
+      },
+    ],
   },
   {
-    color: "#008672",
-    description: "Extra attention is needed",
-    name: "help wanted",
+    options: [
+      {
+        description: "needs to be fixed",
+        name: "bug",
+      },
+      {
+        description: "needs to be implemented",
+        name: "feature",
+      },
+    ],
   },
 ];
 
 const AutocompleteNameSpaceTest = (
-  props: AutocompleteProps<
+  props: AutocompleteMultiColumnProps<
     DefaultAutocompleteOption,
     true,
-    undefined,
-    undefined
+    false,
+    false
   >
 ) => {
   return (
-    <Autocomplete
+    <AutocompleteMultiColumn
       disableCloseOnSelect={false}
       id="1"
       onChange={noop}

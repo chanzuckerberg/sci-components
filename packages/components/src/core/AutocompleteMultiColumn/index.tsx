@@ -5,7 +5,6 @@ import {
   ClickAwayListenerProps as MUIClickAwayListenerProps,
   PopperProps,
 } from "@mui/material";
-import { DefaultAutocompleteOption } from "dist/index.cjs";
 import React, {
   SyntheticEvent,
   useCallback,
@@ -13,9 +12,14 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { noop } from "src/common/utils";
 import { AutocompleteMultiColumnOption } from "../Autocomplete";
-import AutocompleteBase, { AutocompleteBaseProps } from "../AutocompleteBase";
+import AutocompleteBase, {
+  AutocompleteBaseProps,
+  DefaultAutocompleteOption,
+} from "../AutocompleteBase";
 import ButtonIcon from "../ButtonIcon";
+import Icon from "../Icon";
 import { InputSearchProps } from "../InputSearch";
 import { StyledInputAdornment } from "../InputSearch/style";
 import {
@@ -24,6 +28,8 @@ import {
   StyledAutocompleteInput,
   StyledAutocompletePopper,
   StyledColumn,
+  StyledColumnIcon,
+  StyledColumnTitle,
   StyledPaper,
   StyledPopper,
 } from "./style";
@@ -33,7 +39,9 @@ type RenderFunctionType = (props: any) => JSX.Element;
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
@@ -49,27 +57,41 @@ interface ExtraAutocompleteMultiColumnProps<
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
-  onClickAway: (event: MouseEvent | TouchEvent) => void;
+  onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
-  options: AutocompleteMultiColumnOption<T, Multiple>[];
+  options: AutocompleteMultiColumnOption<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  >[];
 }
 
-type CustomAutocompleteProps<T, Multiple extends boolean | undefined> = Omit<
-  AutocompleteBaseProps<T, Multiple>,
+type CustomAutocompleteProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = Omit<
+  AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "options" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
 >;
 
 export type AutocompleteMultiColumnProps<
   T,
-  Multiple extends boolean | undefined
-> = CustomAutocompleteProps<T, Multiple> &
-  ExtraAutocompleteMultiColumnProps<T, Multiple>;
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
+  ExtraAutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>;
 
 const AutocompleteMultiColumn = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >(
-  props: AutocompleteMultiColumnProps<T, Multiple>
+  props: AutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
   const {
     id,
@@ -81,16 +103,14 @@ const AutocompleteMultiColumn = <
     PopperBaseProps,
     search = false,
     label = "Search",
-    onClickAway = () => {},
+    onClickAway = noop,
     ClickAwayListenerProps,
     options,
-    columnWidth,
     onInputChange,
     onBlur,
     multiple,
     ...rest
   } = props;
-
   const [inputValue, setInputValue] = useState("");
   const [popperOpen, setPopperOpen] = useState<boolean>(false);
 
@@ -187,6 +207,7 @@ const AutocompleteMultiColumn = <
               <RenderAutocompletes
                 autocompleteProps={autocompleteOptions}
                 key={index}
+                isLast={index === options.length - 1}
               />
             ))}
           </StyledAutocomplesWrapper>
@@ -197,12 +218,27 @@ const AutocompleteMultiColumn = <
 
   function RenderAutocompletes({
     autocompleteProps,
+    isLast,
   }: {
-    autocompleteProps: AutocompleteMultiColumnOption<T, Multiple>;
+    autocompleteProps: AutocompleteMultiColumnOption<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >;
+    isLast: boolean;
   }) {
+    const { columnName, columnWidth, sdsIcon } = autocompleteProps;
+
     return (
       <StyledColumn columnWidth={columnWidth}>
-        <AutocompleteBase<T, Multiple>
+        {sdsIcon && !isLast && (
+          <StyledColumnIcon>
+            <Icon sdsIcon={sdsIcon} sdsSize="xs" sdsType="static" />
+          </StyledColumnIcon>
+        )}
+        <StyledColumnTitle>{columnName}</StyledColumnTitle>
+        <AutocompleteBase<T, Multiple, DisableClearable, FreeSolo>
           label={label}
           InputBaseProps={InputBaseProps}
           open={open}

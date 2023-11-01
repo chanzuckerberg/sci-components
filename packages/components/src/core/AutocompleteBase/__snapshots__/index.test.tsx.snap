@@ -84,8 +84,5 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style="margin-top: 10px;"
-  />
 </div>
 `;
