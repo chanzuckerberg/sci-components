@@ -1,7 +1,14 @@
-import { AutocompleteValue } from "@mui/base";
+import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteValue,
+} from "@mui/base";
 import { Args, Meta } from "@storybook/react";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import AutocompleteBase, {
+  DefaultAutocompleteOption,
+} from "../AutocompleteBase";
+import RawAutocompleteMultiColumn from "../AutocompleteMultiColumn";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
@@ -14,6 +21,9 @@ const groupByOptions = [
   undefined,
   (option: DefaultAutocompleteOption) => option.section as string,
 ];
+
+const DIV_MARGIN = "16px 0 0 24px";
+const LABEL = "Search by label";
 
 const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
 
@@ -69,7 +79,7 @@ const Autocomplete = <
 
   return (
     <>
-      <div style={{ margin: "16px 0 0 24px", width: 300 }}>
+      <div style={{ margin: DIV_MARGIN, width: 300 }}>
         <RawAutocomplete
           id="autocomplete-demo"
           disableCloseOnSelect={multiple}
@@ -86,7 +96,7 @@ const Autocomplete = <
           {...props}
         />
       </div>
-      <div style={{ margin: "10px 0 0 24px" }}>
+      <div style={{ margin: DIV_MARGIN }}>
         {selection.length
           ? selection.map((item) => {
               return (
@@ -108,8 +118,6 @@ const Autocomplete = <
     _: SyntheticEvent<Element, Event>,
     newValue: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
-    console.log(newValue);
-
     setValue(newValue);
     const newSelection: string[] = [];
 
@@ -290,7 +298,7 @@ export const Default = {
   args: {
     groupBy: groupByOptions[1],
     keepSearchOnSelect: true,
-    label: "Search by label",
+    label: LABEL,
     multiple: true,
     search: true,
   },
@@ -299,6 +307,333 @@ export const Default = {
       exclude: ["search"],
     },
   },
+};
+
+// Single Column Autocomplete
+
+const AutocompleteSingleColumnDemo = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
+  type DisableClearable = false;
+  type FreeSolo = false;
+
+  const {
+    label,
+    multiple,
+    options = GITHUB_LABELS,
+    search,
+    value: propValue,
+    keepSearchOnSelect,
+  } = props;
+
+  const isControlled = propValue !== undefined;
+  const [value, setValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
+  const [pendingValue, setPendingValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
+
+  const [selection, setSelection] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [isControlled, propValue]);
+
+  useEffect(() => {
+    setSelection([]);
+  }, [multiple]);
+
+  return (
+    <>
+      <div style={{ margin: DIV_MARGIN, width: 300 }}>
+        <AutocompleteBase
+          id="autocomplete-base-demo"
+          disableCloseOnSelect={multiple}
+          label={label}
+          multiple={multiple}
+          keepSearchOnSelect={keepSearchOnSelect}
+          options={options}
+          search={search}
+          onChange={handleChange}
+          value={multiple ? pendingValue : value}
+          getOptionDisabled={(option: DefaultAutocompleteOption) => {
+            return option.name === "Type: feature request";
+          }}
+          {...props}
+        />
+      </div>
+      <div style={{ margin: "10px 0 0 24px" }}>
+        {selection.length
+          ? selection.map((item) => {
+              return (
+                <TagFilter
+                  key={item}
+                  label={item}
+                  onDelete={() => handleTagDelete(item)}
+                  onClick={() => handleTagDelete(item)}
+                />
+              );
+            })
+          : null}
+      </div>
+    </>
+  );
+
+  function handleChange(
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    _reason: AutocompleteChangeReason
+  ) {
+    if (multiple) {
+      const newSelection = Array.isArray(newValue)
+        ? newValue?.map((item) => item.name)
+        : [];
+      setSelection(newSelection);
+      return setPendingValue(newValue);
+    } else {
+      if (newValue && !Array.isArray(newValue) && newValue.name) {
+        setValue(newValue);
+        setSelection([newValue.name]);
+      }
+    }
+  }
+
+  function handleTagDelete(tag: string) {
+    if (multiple && Array.isArray(pendingValue)) {
+      const index = pendingValue?.findIndex((item) => item.name === tag);
+      const newValue = [...pendingValue];
+      newValue.splice(index, 1);
+      setPendingValue(
+        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+      );
+
+      const newSelection = [...selection];
+      const deleteIndex = newSelection.indexOf(tag);
+      newSelection.splice(deleteIndex, 1);
+      setSelection(newSelection);
+    } else {
+      setValue(
+        null as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >
+      );
+      setSelection([]);
+    }
+  }
+
+  function getInitialValue(): AutocompleteValue<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  > {
+    if (isControlled) {
+      return propValue;
+    }
+
+    return multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >);
+  }
+};
+
+export const SingleColumn = {
+  args: {
+    groupBy: groupByOptions[1],
+    keepSearchOnSelect: false,
+    label: LABEL,
+    multiple: true,
+    search: true,
+  },
+  parameters: {
+    controls: {
+      exclude: ["search", "options"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <AutocompleteSingleColumnDemo {...args} />,
+};
+
+// Multi Column Autocomplete
+
+const AutocompleteMultiColumnDemo = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
+  const {
+    multiple,
+    options = GITHUB_LABELS_MULTI_COLUMN,
+    search,
+    // value: propValue,
+    label,
+  } = props;
+
+  type DisableClearable = false;
+  type FreeSolo = false;
+
+  const [selection, setSelection] = useState<string[]>([]);
+
+  const [theValue, setTheValue] =
+    useState<
+      AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>
+    >();
+
+  useEffect(() => {
+    setSelection([]);
+  }, [multiple]);
+
+  const handleChange = (
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteMultiColumnValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >,
+    _reason: AutocompleteChangeReason,
+    _details?: AutocompleteChangeDetails<T>
+  ) => {
+    setTheValue(newValue);
+    const newSelection: string[] = [];
+
+    if (multiple) {
+      if (newValue) {
+        Object.values(newValue).forEach((items) => {
+          (items as T[])?.map(({ name }: { name: string }) => {
+            newSelection.push(name);
+          });
+        });
+        setSelection(newSelection);
+      }
+    } else {
+      if (newValue) {
+        Object.values(newValue).forEach((item) => {
+          newSelection.push((item as T).name);
+        });
+      }
+      setSelection(newSelection);
+    }
+  };
+
+  return (
+    <>
+      <div style={{ margin: "16px 0 0 24px", width: 300 }}>
+        <RawAutocompleteMultiColumn<T, Multiple, DisableClearable, FreeSolo>
+          label={label}
+          disableCloseOnSelect={false}
+          multiple={multiple}
+          onChange={handleChange}
+          options={options}
+          search={search}
+          value={theValue}
+          {...props}
+        />
+      </div>
+      <div style={{ margin: "10px 0 0 24px" }}>
+        {selection.length
+          ? selection.map((item) => {
+              return (
+                <TagFilter
+                  key={item}
+                  label={item}
+                  onDelete={() => handleTagDelete(item)}
+                  onClick={() => handleTagDelete(item)}
+                />
+              );
+            })
+          : null}
+      </div>
+    </>
+  );
+
+  function handleTagDelete(tag: string) {
+    if (multiple) {
+      if (theValue) {
+        Object.entries(theValue).forEach(([key, values]) => {
+          const index = (values as T[])?.findIndex(
+            (item: T) => item.name === tag
+          );
+          if (index > -1) {
+            const newValue = [...(values as T[])];
+            newValue.splice(index, 1);
+            setTheValue((prev) => {
+              return {
+                ...prev,
+                [key]: newValue as AutocompleteValue<
+                  T,
+                  Multiple,
+                  DisableClearable,
+                  FreeSolo
+                >,
+              };
+            });
+
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
+      }
+    } else {
+      if (theValue) {
+        Object.entries(theValue).forEach(([key, value]) => {
+          if ((value as T).name === tag) {
+            const finalValue = { ...theValue };
+            delete finalValue[key];
+            setTheValue(finalValue);
+
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
+      }
+    }
+  }
+};
+
+export const MultiColumn = {
+  args: {
+    groupBy: groupByOptions[1],
+    keepSearchOnSelect: false,
+    label: LABEL,
+    multiple: true,
+    search: true,
+  },
+  parameters: {
+    controls: {
+      exclude: ["search", "options", "groupBy"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <AutocompleteMultiColumnDemo {...args} />,
 };
 
 // Test

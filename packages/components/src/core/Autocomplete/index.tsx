@@ -7,11 +7,23 @@ import { PopperProps } from "@mui/material";
 import React from "react";
 import AutocompleteBase, {
   AutocompleteBaseProps,
+  AutocompleteOptionBasic,
+  AutocompleteOptionComponent,
   DefaultAutocompleteOption,
 } from "../AutocompleteBase";
-import AutocompleteMultiColumn from "../AutocompleteMultiColumn";
+import AutocompleteMultiColumn, {
+  AutocompleteMultiColumnProps,
+} from "../AutocompleteMultiColumn";
 import { IconNameToSizes } from "../Icon";
 import { StyleProps } from "./style";
+
+export type {
+  AutocompleteBaseProps,
+  AutocompleteMultiColumnProps,
+  AutocompleteOptionBasic,
+  AutocompleteOptionComponent,
+  DefaultAutocompleteOption,
+};
 
 export type AutocompleSingleColumnOption<T> = T;
 

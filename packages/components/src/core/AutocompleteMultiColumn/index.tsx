@@ -381,6 +381,8 @@ const AutocompleteMultiColumn = <
           search={false}
           {...rest}
           {...autocompleteProps.props}
+          // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns
+          groupBy={undefined}
         />
       </StyledColumn>
     );
