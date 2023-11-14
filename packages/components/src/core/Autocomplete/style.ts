@@ -24,6 +24,8 @@ const doNotForwardProps = [
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
+  "PopperBaseProps",
+  "onClickAway",
 ];
 
 export const StyledAutocompleteBase = styled(Autocomplete, {

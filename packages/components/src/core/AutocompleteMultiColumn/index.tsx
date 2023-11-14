@@ -1,10 +1,14 @@
 import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
+  AutocompleteValue,
   ClickAwayListener,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
   PopperProps,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import React, {
   SyntheticEvent,
   useCallback,
@@ -12,8 +16,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { noop } from "src/common/utils";
-import { AutocompleteMultiColumnOption } from "../Autocomplete";
+import {
+  AutocompleteMultiColumnOption,
+  AutocompleteMultiColumnValue,
+} from "../Autocomplete";
 import AutocompleteBase, {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
@@ -22,6 +28,7 @@ import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
 import { InputSearchProps } from "../InputSearch";
 import { StyledInputAdornment } from "../InputSearch/style";
+import { SDSTheme } from "../styles";
 import {
   StyleProps,
   StyledAutocomplesWrapper,
@@ -53,7 +60,7 @@ interface ExtraAutocompleteMultiColumnProps<
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   label?: string;
-  PopperComponent?: typeof StyledPopper | RenderFunctionType;
+  PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
@@ -65,6 +72,18 @@ interface ExtraAutocompleteMultiColumnProps<
     DisableClearable,
     FreeSolo
   >[];
+  value?: AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
+  onChange?: (
+    event: React.SyntheticEvent,
+    value: AutocompleteMultiColumnValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) => void;
 }
 
 type CustomAutocompleteProps<
@@ -74,7 +93,15 @@ type CustomAutocompleteProps<
   FreeSolo extends boolean | undefined
 > = Omit<
   AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput" | "options" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  | "renderInput"
+  | "options"
+  | "value"
+  | "onChange"
+  | "nonce"
+  | "rev"
+  | "rel"
+  | "autoFocus"
+  | "content"
 >;
 
 export type AutocompleteMultiColumnProps<
@@ -94,7 +121,6 @@ const AutocompleteMultiColumn = <
   props: AutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
   const {
-    id,
     InputBaseProps,
     open = false,
     PaperComponent = StyledPaper,
@@ -103,122 +129,172 @@ const AutocompleteMultiColumn = <
     PopperBaseProps,
     search = false,
     label = "Search",
-    onClickAway = noop,
+    onClickAway = defaultOnClickAway,
     ClickAwayListenerProps,
     options,
     onInputChange,
     onBlur,
     multiple,
+    value: parentInitialValue,
+    onChange,
     ...rest
   } = props;
+  const theme: SDSTheme = useTheme();
   const [inputValue, setInputValue] = useState("");
-  const [popperOpen, setPopperOpen] = useState<boolean>(false);
+  const [popperOpen, setPopperOpen] = useState<boolean>(open);
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   useEffect(() => {
-    setAnchorEl(anchorRef.current);
-  }, []);
+    setAnchorEl(anchorRef?.current);
+  }, [anchorRef]);
 
-  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
-    return <StyledAutocompletePopper {...popperProps} />;
-  }, []);
+  const [autocompleteMultiColumnValue, setAutocompleteMultiColumnValue] =
+    useState<
+      AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>
+    >({});
+
+  useEffect(() => {
+    if (parentInitialValue !== undefined) {
+      setAutocompleteMultiColumnValue(parentInitialValue);
+    }
+  }, [options, parentInitialValue]);
+
+  const defaultPopperComponent = useCallback(
+    () => (popperProps: PopperProps) => {
+      return <StyledAutocompletePopper {...popperProps} />;
+    },
+    []
+  );
+
+  const defaultOnValueChange = (
+    column: string,
+    event: React.SyntheticEvent,
+    val: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) => {
+    setAutocompleteMultiColumnValue((prev) => {
+      return {
+        ...prev,
+        [column]: val,
+      };
+    });
+
+    onChange?.(
+      event,
+      {
+        ...autocompleteMultiColumnValue,
+        [column]: val,
+      },
+      reason,
+      details
+    );
+  };
 
   return (
-    <>
-      <StyledAutocompleteInput
-        id="location-search"
-        label={label}
-        placeholder={label}
-        value={inputValue}
-        onChange={handleInputChange}
-        onClick={handleInputClick}
-        onBlur={handleInputBlur}
-        ref={anchorRef}
-        search={search}
-        onKeyDown={handleInputKeyDown}
-        InputProps={{
-          /**
-           * (mmoore): passing only the ref along to InputProps to prevent
-           * default MUI arrow from rendering in search input.
-           * renderInput strips InputProps, so we explicitly pass end adornment here
-           */
-          ...InputBaseProps?.ref,
-          endAdornment: (
-            <StyledInputAdornment position="end">
-              {/**
-               * (masoudmansdon): Because the Autocomplete component overrides the
-               * InputSearch's endAdornment, we must also include the clear IconButton here.
-               */}
-              {inputValue && (
+    <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
+      <div>
+        <StyledAutocompleteInput
+          id="location-search"
+          label={label}
+          placeholder={label}
+          value={inputValue}
+          onChange={handleInputChange}
+          onClick={handleInputClick}
+          onBlur={handleInputBlur}
+          ref={anchorRef}
+          search={search}
+          onKeyDown={handleInputKeyDown}
+          InputProps={{
+            /**
+             * (mmoore): passing only the ref along to InputProps to prevent
+             * default MUI arrow from rendering in search input.
+             * renderInput strips InputProps, so we explicitly pass end adornment here
+             */
+            ...InputBaseProps?.ref,
+            endAdornment: (
+              <StyledInputAdornment position="end">
+                {/**
+                 * (masoudmansdon): Because the Autocomplete component overrides the
+                 * InputSearch's endAdornment, we must also include the clear IconButton here.
+                 */}
+                {inputValue && (
+                  <ButtonIcon
+                    aria-label="clear-button"
+                    className="input-search-clear-icon"
+                    sdsType="primary"
+                    sdsSize="small"
+                    sdsIconProps={{
+                      sdsType: "iconButton",
+                    }}
+                    sdsIcon="xMark"
+                    onClick={clearInput}
+                  />
+                )}
                 <ButtonIcon
-                  aria-label="clear-button"
-                  className="input-search-clear-icon"
-                  sdsType="primary"
+                  aria-label="search-button"
+                  sdsType="secondary"
                   sdsSize="small"
                   sdsIconProps={{
-                    sdsType: "iconButton",
+                    sdsType: "interactive",
                   }}
-                  sdsIcon="xMark"
-                  onClick={clearInput}
+                  sdsIcon="search"
                 />
-              )}
-              <ButtonIcon
-                aria-label="search-button"
-                sdsType="secondary"
-                sdsSize="small"
-                sdsIconProps={{
-                  sdsType: "interactive",
-                }}
-                sdsIcon="search"
-              />
-            </StyledInputAdornment>
-          ),
-          /**
-           * (thuang): Works with css caret-color: "transparent" to hide
-           * mobile keyboard
-           */
-          inputMode: "text",
-        }}
-        {...InputBaseProps}
-      />
-      <PopperComponent
-        id={id}
-        modifiers={[
-          {
-            name: "offset",
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
-        open={popperOpen}
-        anchorEl={anchorEl}
-        placement={PopperPlacement}
-        {...PopperBaseProps}
-      >
-        <ClickAwayListener
-          onClickAway={onClickAway}
-          {...ClickAwayListenerProps}
-        >
-          <StyledAutocomplesWrapper>
-            {options.map((autocompleteOptions, index) => (
-              <RenderAutocompletes
-                autocompleteProps={autocompleteOptions}
-                key={index}
-                isLast={index === options.length - 1}
-              />
-            ))}
-          </StyledAutocomplesWrapper>
-        </ClickAwayListener>
-      </PopperComponent>
-    </>
+              </StyledInputAdornment>
+            ),
+            /**
+             * (thuang): Works with css caret-color: "transparent" to hide
+             * mobile keyboard
+             */
+            inputMode: "text",
+          }}
+          {...InputBaseProps}
+        />
+
+        {anchorEl && (
+          <PopperComponent
+            modifiers={[
+              {
+                name: "offset",
+                options: {
+                  offset: [0, theme.app?.spacing.s],
+                },
+              },
+            ]}
+            open={popperOpen}
+            anchorEl={anchorEl}
+            placement={PopperPlacement}
+            disablePortal
+            {...PopperBaseProps}
+          >
+            <StyledAutocomplesWrapper className="SdsAutocomplete-wrapper">
+              {options.map((autocompleteOptions) => (
+                <RenderAutocompletes
+                  autocompleteProps={autocompleteOptions}
+                  key={autocompleteOptions.columnName}
+                  onValueChange={defaultOnValueChange}
+                  value={
+                    autocompleteMultiColumnValue
+                      ? autocompleteMultiColumnValue[
+                          autocompleteOptions.columnName
+                        ]
+                      : undefined
+                  }
+                />
+              ))}
+            </StyledAutocomplesWrapper>
+          </PopperComponent>
+        )}
+      </div>
+    </ClickAwayListener>
   );
 
   function RenderAutocompletes({
     autocompleteProps,
-    isLast,
+    onValueChange,
+    value: propValue,
   }: {
     autocompleteProps: AutocompleteMultiColumnOption<
       T,
@@ -226,30 +302,85 @@ const AutocompleteMultiColumn = <
       DisableClearable,
       FreeSolo
     >;
-    isLast: boolean;
+    onValueChange: (
+      colum: string,
+      event: React.SyntheticEvent,
+      value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+      reason: AutocompleteChangeReason,
+      details?: AutocompleteChangeDetails<T>
+    ) => void;
+    value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   }) {
-    const { columnName, columnWidth, sdsIcon } = autocompleteProps;
+    const {
+      columnName,
+      columnWidth,
+      sdsIcon,
+      // value: propValue,
+      props: propProps,
+    } = autocompleteProps;
+
+    const [value, setValue] = useState<
+      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    >(getInitialValue(multiple, propValue));
+    const [pendingValue, setPendingValue] = useState<
+      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    >(getInitialValue(multiple, propValue));
+
+    useEffect(() => {
+      if (propValue !== undefined) {
+        setValue(propValue);
+      }
+    }, [propValue]);
+
+    const handleChange = useCallback(
+      (
+        event: React.SyntheticEvent,
+        newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+        reason: AutocompleteChangeReason,
+        details?: AutocompleteChangeDetails<T>
+      ) => {
+        propProps?.onChange?.(event, newValue, reason, details);
+        onValueChange(columnName, event, newValue, reason, details);
+
+        if (multiple) {
+          setPendingValue(newValue);
+        } else {
+          if (
+            newValue &&
+            !Array.isArray(newValue) &&
+            Object.prototype.hasOwnProperty.call(newValue, "name")
+          ) {
+            setValue(newValue);
+          }
+        }
+      },
+      [columnName, onValueChange, propProps]
+    );
 
     return (
       <StyledColumn columnWidth={columnWidth}>
-        {sdsIcon && !isLast && (
-          <StyledColumnIcon>
+        {sdsIcon && (
+          <StyledColumnIcon className="SdsAutocompleteMultiColumn-column-relation-icon">
             <Icon sdsIcon={sdsIcon} sdsSize="xs" sdsType="static" />
           </StyledColumnIcon>
         )}
-        <StyledColumnTitle>{columnName}</StyledColumnTitle>
+        <StyledColumnTitle className="SdsAutocompleteMultiColumn-column-title">
+          {columnName}
+        </StyledColumnTitle>
         <AutocompleteBase<T, Multiple, DisableClearable, FreeSolo>
           label={label}
           InputBaseProps={InputBaseProps}
-          open={open}
+          open={popperOpen}
           multiple={multiple}
-          {...rest}
-          {...autocompleteProps.props}
-          search={false}
           inputValue={inputValue}
           options={autocompleteProps.options as T[]}
           PaperComponent={PaperComponent}
-          PopperComponent={defaultPopperComponent}
+          PopperComponent={defaultPopperComponent()}
+          onChange={handleChange}
+          value={multiple ? pendingValue : value}
+          search={false}
+          {...rest}
+          {...autocompleteProps.props}
         />
       </StyledColumn>
     );
@@ -289,8 +420,12 @@ const AutocompleteMultiColumn = <
 
   function handleInputBlur(event: React.FocusEvent<HTMLInputElement>) {
     if (props.clearOnBlur) setInputValue("");
-    setPopperOpen(false);
+    // setPopperOpen(false);
     onBlur?.(event);
+  }
+
+  function defaultOnClickAway() {
+    setPopperOpen(false);
   }
 
   function handleInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -298,6 +433,29 @@ const AutocompleteMultiColumn = <
     if (event.key === "Backspace") {
       event.stopPropagation();
     }
+  }
+
+  function getInitialValue(
+    isMultiple: boolean | undefined,
+    customValue?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  ): AutocompleteValue<T, Multiple, DisableClearable, FreeSolo> {
+    if (customValue !== undefined) {
+      return customValue;
+    }
+
+    return isMultiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >);
   }
 };
 

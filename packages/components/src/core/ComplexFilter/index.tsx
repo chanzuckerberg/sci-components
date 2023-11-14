@@ -3,7 +3,6 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
-import { Value } from "../Dropdown";
 import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
@@ -16,15 +15,22 @@ export {
   InputDropdown as ComplexFilterInputDropdown,
   StyledPopper as ComplexFilterPopper,
 };
-export interface ComplexFilterProps<Multiple> {
+export interface ComplexFilterProps<
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> {
   label: ReactNode;
-  options: DefaultDropdownMenuOption[];
+  options: T[];
   multiple?: Multiple;
   search?: boolean;
-  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
+  onChange: (
+    options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  ) => void;
   DropdownMenuProps?: Partial<typeof DropdownMenu>;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultDropdownMenuOption, Multiple>;
+  value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   style?: React.CSSProperties;
   className?: string;
   PopperComponent?: typeof StyledPopper;
@@ -33,7 +39,12 @@ export interface ComplexFilterProps<Multiple> {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const ComplexFilter = <Multiple extends boolean | undefined = false>({
+const ComplexFilter = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>({
   options,
   label = "",
   multiple = false,
@@ -44,32 +55,34 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
   value: propValue,
   PopperComponent,
   InputDropdownComponent = InputDropdown,
-  isTriggerChangeOnOptionClick = false,
   ...rest
-}: ComplexFilterProps<Multiple>): JSX.Element => {
+}: ComplexFilterProps<
+  T,
+  Multiple,
+  DisableClearable,
+  FreeSolo
+>): JSX.Element => {
   const isControlled = propValue !== undefined;
 
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    Value<DefaultDropdownMenuOption, Multiple>
-  >(getInitialValue());
-
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    getInitialValue() as DefaultDropdownMenuOption[]
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(
+    (multiple ? [] : null) as AutocompleteValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >
   );
-
-  useEffect(() => {
-    onChange(value);
-    setPendingValue(value as DefaultDropdownMenuOption[]);
-  }, [value]);
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [propValue]);
+  }, [isControlled, propValue]);
 
   // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
   // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,
@@ -85,7 +98,16 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
         />
 
         <StyledChipsWrapper>
-          <Chips value={value} multiple={multiple} onDelete={handleDelete} />
+          <Chips
+            value={
+              value as
+                | DefaultDropdownMenuOption
+                | DefaultDropdownMenuOption[]
+                | null
+            }
+            multiple={multiple}
+            onDelete={handleDelete}
+          />
         </StyledChipsWrapper>
       </Wrapper>
 
@@ -95,14 +117,7 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
         onClose={handleMenuSelectClose}
         search={search}
         multiple={multiple as Multiple}
-        value={
-          (multiple ? pendingValue : value) as AutocompleteValue<
-            DefaultDropdownMenuOption,
-            Multiple,
-            undefined,
-            undefined
-          >
-        }
+        value={value}
         onChange={handleChange}
         disableCloseOnSelect={multiple}
         options={options}
@@ -110,16 +125,13 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
         PopperBaseProps={{ sx: { minWidth: 250 } }}
         onClickAway={handleClose}
         {...DropdownMenuProps}
+        {...rest}
       />
     </>
   );
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
-      if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
-
       setOpen(false);
 
       if (anchorEl) {
@@ -128,10 +140,6 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
 
       setAnchorEl(null);
     } else {
-      if (multiple) {
-        setPendingValue(value as DefaultDropdownMenuOption[]);
-      }
-
       setAnchorEl(event.currentTarget);
       setOpen(true);
     }
@@ -140,10 +148,6 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
   function handleClose() {
     if (open) {
       setOpen(false);
-
-      if (multiple) {
-        setValue(pendingValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
     }
   }
 
@@ -159,43 +163,28 @@ const ComplexFilter = <Multiple extends boolean | undefined = false>({
   }
 
   function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    event: React.ChangeEvent<unknown>,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
-    if (multiple) {
-      if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as DefaultDropdownMenuOption[]);
-        return setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-      }
-
-      return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+    setValue(newValue);
+    onChange?.(newValue);
+    if (!multiple) {
+      setOpen(false);
     }
-
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-    setOpen(false);
   }
 
   function handleDelete(option: DefaultDropdownMenuOption) {
     if (!multiple) {
-      return setValue(null);
+      return setValue(
+        null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+      );
     }
 
-    const newValue =
-      (value as DefaultDropdownMenuOption[])?.filter(
-        (item) => item !== option
-      ) || null;
+    const newValue = (value as T[])?.filter((item) => item !== option) || null;
 
-    setValue(newValue as Value<DefaultDropdownMenuOption, Multiple>);
-  }
-
-  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
-      : null;
+    setValue(
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    );
   }
 };
 

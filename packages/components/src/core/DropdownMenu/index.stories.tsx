@@ -1,18 +1,12 @@
-import { styled } from "@mui/material";
+import { AutocompleteValue, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
-import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import { Value } from "../Dropdown";
 import InputDropdown from "../InputDropdown";
 import Tag from "../Tag";
 import { GITHUB_LABELS } from "./GITHUB_LABELS";
+import { GITHUB_LABELS_MULTI_COLUMN } from "./GITHUB_LABELS_MULTI_COLUMN";
 import RawDropdownMenu, { DefaultDropdownMenuOption } from "./index";
-
-export type DropdownOptionValue<T, Multiple> = Multiple extends
-  | undefined
-  | false
-  ? T | undefined
-  : Array<T> | undefined;
 
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
@@ -20,58 +14,42 @@ const groupByOptions = [
   undefined,
   (option: DefaultDropdownMenuOption) => option.section as string,
 ];
+const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
 
-const DropdownMenu = <Multiple extends boolean | undefined = false>(
+const DropdownMenu = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
   props: Args
 ): JSX.Element => {
-  const {
-    multiple,
-    options = GITHUB_LABELS,
-    search,
-    title,
-    value: propValue,
-  } = props;
-
-  const isControlled = propValue !== undefined;
-  const [value, setValue] = useState<
-    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  >(getInitialValue());
+  const { label, multiple, options = GITHUB_LABELS, search, title } = props;
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   useEffect(() => {
-    setAnchorEl(anchorRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (isControlled) {
-      setValue(propValue);
-    }
-  }, [propValue, isControlled]);
+    setTimeout(() => {
+      setAnchorEl(anchorRef.current);
+    }, 1);
+  }, [anchorRef]);
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       {anchorEl ? (
-        <RawDropdownMenu
+        <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+          label={label}
           anchorEl={anchorEl}
           disableCloseOnSelect={false}
           multiple={multiple}
-          onChange={handleChange}
-          onClickAway={handleClickAway}
-          open
           options={options}
           PopperBaseProps={{
             disablePortal: false,
             placement: POPPER_POSITION,
-            sx: { width: 300 },
           }}
           search={search}
           title={title}
-          value={multiple ? pendingValue : value}
-          getOptionDisabled={(option: DefaultDropdownMenuOption) => {
+          getOptionDisabled={(option: T) => {
             return option.name === "Type: feature request";
           }}
           {...props}
@@ -79,33 +57,6 @@ const DropdownMenu = <Multiple extends boolean | undefined = false>(
       ) : null}
     </div>
   );
-
-  function handleClickAway() {
-    if (multiple) {
-      setValue(pendingValue);
-    }
-  }
-
-  function handleChange(
-    _: SyntheticEvent<Element, Event>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ) {
-    if (multiple) {
-      return setPendingValue(newValue);
-    }
-
-    setValue(newValue);
-  }
-
-  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
-      : null;
-  }
 };
 
 export default {
@@ -131,11 +82,27 @@ export default {
     multiple: {
       control: { type: "boolean" },
     },
+    open: {
+      control: {
+        type: "boolean",
+      },
+    },
+    options: {
+      control: {
+        labels: ["Single Column Autocomplete", "Multi Column Autocomplete"],
+        type: "select",
+      },
+      mapping: dataOptions,
+      options: Object.keys(dataOptions),
+    },
     search: {
       control: { type: "boolean" },
     },
     title: {
       control: { type: "text" },
+    },
+    width: {
+      control: { type: "number" },
     },
   },
   component: DropdownMenu,
@@ -167,8 +134,10 @@ export const Default = {
     groupBy: groupByOptions[1],
     keepSearchOnSelect: true,
     multiple: true,
+    open: true,
     search: true,
     title: "Github Labels",
+    width: 300,
   },
 };
 
@@ -233,7 +202,12 @@ const LIVE_PREVIEW_LABELS = [
   },
 ];
 
-const LivePreviewDemo = (): JSX.Element => {
+const LivePreviewDemo = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(): JSX.Element => {
   const options = LIVE_PREVIEW_LABELS;
 
   const [anchorEl1, setAnchorEl1] = useState<HTMLElement | null>(null);
@@ -246,17 +220,19 @@ const LivePreviewDemo = (): JSX.Element => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
 
-  const [value1, setValue1] =
-    useState<Value<DefaultDropdownMenuOption, false>>(null);
-  const [value2, setValue2] =
-    useState<Value<DefaultDropdownMenuOption, false>>(null);
+  const [value1, setValue1] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(false));
+  const [value2, setValue2] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(false));
 
   const [pendingValue3, setPendingValue3] = useState<
-    DropdownOptionValue<DefaultDropdownMenuOption, true>
-  >([]);
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(true));
   const [pendingValue4, setPendingValue4] = useState<
-    DropdownOptionValue<DefaultDropdownMenuOption, true>
-  >([]);
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(true));
 
   return (
     <div style={storyRow as React.CSSProperties}>
@@ -272,20 +248,21 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         {anchorEl1 ? (
-          <RawDropdownMenu
+          <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+            label="Search"
             anchorEl={anchorEl1}
             open={!!open1}
             onChange={handleChange1}
             disableCloseOnSelect={false}
-            options={options.slice(0, 3) as DefaultDropdownMenuOption[]}
+            options={options.slice(0, 3) as T[]}
             PopperBaseProps={{
               placement: POPPER_POSITION,
-              sx: { width: POPPER_WIDTH },
             }}
             search={false}
-            multiple={false}
+            multiple={false as Multiple}
             value={value1}
             onClickAway={handleClickAway1}
+            width={POPPER_WIDTH}
           />
         ) : null}
       </div>
@@ -302,21 +279,22 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         {anchorEl2 ? (
-          <RawDropdownMenu
+          <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+            label="Search"
             anchorEl={anchorEl2}
             open={!!open2}
             search={false}
-            multiple={false}
+            multiple={false as Multiple}
             onChange={handleChange2}
             disableCloseOnSelect={false}
-            options={options.slice(0, 3) as DefaultDropdownMenuOption[]}
+            options={options.slice(0, 3) as T[]}
             PopperBaseProps={{
               placement: POPPER_POSITION,
-              sx: { width: POPPER_WIDTH },
             }}
             value={value2}
             title="Title Lorem Ipsum"
             onClickAway={handleClickAway2}
+            width={POPPER_WIDTH}
           />
         ) : null}
       </div>
@@ -333,20 +311,21 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         {anchorEl3 ? (
-          <RawDropdownMenu
+          <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+            label="Search"
             anchorEl={anchorEl3}
             open={!!open3}
             search
-            multiple
+            multiple={true as Multiple}
             onChange={handleChange3}
             disableCloseOnSelect
-            options={options as DefaultDropdownMenuOption[]}
+            options={options as T[]}
             PopperBaseProps={{
               placement: POPPER_POSITION,
-              sx: { width: POPPER_WIDTH },
             }}
             value={pendingValue3}
             onClickAway={handleClickAway3}
+            width={POPPER_WIDTH}
           />
         ) : null}
       </div>
@@ -363,29 +342,43 @@ const LivePreviewDemo = (): JSX.Element => {
         />
 
         {anchorEl4 ? (
-          <RawDropdownMenu
+          <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+            label="Search"
             anchorEl={anchorEl4}
             open={!!open4}
             search={false}
-            multiple
+            multiple={true as Multiple}
             groupBy={(option) => option.section as string}
             onChange={handleChange4}
             disableCloseOnSelect
-            options={options as DefaultDropdownMenuOption[]}
+            options={options as T[]}
             PopperBaseProps={{
               placement: POPPER_POSITION,
-              sx: { width: POPPER_WIDTH },
             }}
             value={pendingValue4}
             onClickAway={handleClickAway4}
+            width={POPPER_WIDTH}
           />
         ) : null}
       </div>
     </div>
   );
 
+  function getInitialValue(
+    multiple: boolean
+  ): AutocompleteValue<T, Multiple, DisableClearable, FreeSolo> {
+    return multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+  }
+
   function handleClickAway1() {
-    return open1 && setOpen1(false);
+    setOpen1(false);
   }
 
   function handleClick1(event: React.MouseEvent<HTMLElement>) {
@@ -405,14 +398,16 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange1(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: Value<DefaultDropdownMenuOption, false>
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     setOpen1(false);
-    setValue1(newValue as Value<DefaultDropdownMenuOption, false>);
+    setValue1(
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    );
   }
 
   function handleClickAway2() {
-    return open2 && setOpen2(false);
+    setOpen2(false);
   }
 
   function handleClick2(event: React.MouseEvent<HTMLElement>) {
@@ -432,14 +427,16 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange2(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: Value<DefaultDropdownMenuOption, false>
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     setOpen2(false);
-    setValue2(newValue as Value<DefaultDropdownMenuOption, false>);
+    setValue2(
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    );
   }
 
   function handleClickAway3() {
-    return open3 && setOpen3(false);
+    setOpen3(false);
   }
 
   function handleClick3(event: React.MouseEvent<HTMLElement>) {
@@ -459,15 +456,15 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange3(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: DropdownOptionValue<DefaultDropdownMenuOption, true>
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     return setPendingValue3(
-      newValue as DropdownOptionValue<DefaultDropdownMenuOption, true>
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
     );
   }
 
   function handleClickAway4() {
-    return open4 && setOpen4(false);
+    setOpen4(false);
   }
 
   function handleClick4(event: React.MouseEvent<HTMLElement>) {
@@ -487,10 +484,10 @@ const LivePreviewDemo = (): JSX.Element => {
 
   function handleChange4(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: DropdownOptionValue<DefaultDropdownMenuOption, true>
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     return setPendingValue4(
-      newValue as DropdownOptionValue<DefaultDropdownMenuOption, true>
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
     );
   }
 };
@@ -502,6 +499,20 @@ export const LivePreview = {
     search: false,
   },
   parameters: {
+    controls: {
+      exclude: [
+        "keepSearchOnSelect",
+        "ClickAwayListenerProps",
+        "search",
+        "multiple",
+        "label",
+        "groupBy",
+        "open",
+        "options",
+        "title",
+        "width",
+      ],
+    },
     snapshot: {
       skip: true,
     },
@@ -664,13 +675,16 @@ export const ScreenshotTest = {
     },
     controls: {
       exclude: [
-        "groupBy",
         "keepSearchOnSelect",
-        "multiple",
-        "search",
-        "title",
         "ClickAwayListenerProps",
+        "search",
+        "multiple",
         "label",
+        "groupBy",
+        "open",
+        "options",
+        "title",
+        "width",
       ],
     },
     snapshot: {
@@ -682,19 +696,26 @@ export const ScreenshotTest = {
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
+const TestDemo = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
   const { multiple, options = GITHUB_LABELS, search } = props;
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const [value, setValue] = useState<
-    null | DefaultDropdownMenuOption | DefaultDropdownMenuOption[]
-  >(multiple ? [] : null);
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(false));
 
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
-    []
-  );
+  const [pendingValue, setPendingValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue(true));
 
   useEffect(() => {
     setAnchorEl(anchorRef.current);
@@ -703,7 +724,8 @@ const TestDemo = (props: Args): JSX.Element => {
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       {anchorEl ? (
-        <RawDropdownMenu
+        <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+          label="Search"
           anchorEl={anchorEl}
           open
           search={search}
@@ -713,9 +735,8 @@ const TestDemo = (props: Args): JSX.Element => {
           disableCloseOnSelect={multiple}
           options={options}
           onClickAway={handleClickAway}
-          groupBy={(option: DefaultDropdownMenuOption) =>
-            option.section as string
-          }
+          groupBy={(option: T) => option.section as string}
+          width={300}
           {...props}
         />
       ) : null}
@@ -728,13 +749,31 @@ const TestDemo = (props: Args): JSX.Element => {
 
   function handleChange(
     _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     if (!multiple) {
-      setValue(newValue as DefaultDropdownMenuOption);
+      setValue(
+        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+      );
     }
 
-    return setPendingValue(newValue as DefaultDropdownMenuOption[]);
+    return setPendingValue(
+      newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    );
+  }
+
+  // eslint-disable-next-line sonarjs/no-identical-functions
+  function getInitialValue(
+    isMultiple: boolean
+  ): AutocompleteValue<T, Multiple, DisableClearable, FreeSolo> {
+    return isMultiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
@@ -746,6 +785,20 @@ export const Test = {
     title: "Github Labels",
   },
   parameters: {
+    controls: {
+      exclude: [
+        "keepSearchOnSelect",
+        "ClickAwayListenerProps",
+        "search",
+        "multiple",
+        "label",
+        "groupBy",
+        "open",
+        "options",
+        "title",
+        "width",
+      ],
+    },
     snapshot: {
       skip: true,
     },

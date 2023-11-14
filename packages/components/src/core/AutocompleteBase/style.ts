@@ -24,6 +24,8 @@ const doNotForwardProps = [
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
+  "PopperBaseProps",
+  "onClickAway",
 ];
 
 export const StyledAutocompleteBase = styled(Autocomplete, {
@@ -53,13 +55,9 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       }
 
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
-        ${search ? `padding-left: ${spacings?.s}px !important;` : ""}
-
         .MuiAutocomplete-listbox {
           max-height: 40vh;
-          padding-top: 0;
-          padding-bottom: 0;
-          padding-right: ${spacings?.s}px;
+          padding: 0 ${spacings?.xs}px ${spacings?.xs}px;
 
           .MuiAutocomplete-option {
             min-height: unset;
@@ -84,6 +82,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
           & > li:last-child .MuiAutocomplete-groupUl {
             border-bottom: none;
             margin-bottom: 0;
+            padding-bottom: 0;
           }
         }
 
@@ -96,13 +95,21 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .MuiAutocomplete-groupUl {
           margin-bottom: ${spacings?.m}px;
           position: relative;
-          padding: 0 0 ${spacings?.xs}px 0 0;
           border-bottom: ${borders?.gray[200]};
+          padding-bottom: ${spacings?.xxs}px;
 
           & li:last-of-type {
             position: relative;
-            margin-bottom: ${spacings?.xxs}px;
           }
+        }
+
+        .MuiAutocomplete-noOptions {
+          padding: ${spacings?.xs}px ${spacings?.s}px;
+          margin-bottom: ${spacings?.l}px;
+        }
+
+        .MuiAutocomplete-loading {
+          margin-bottom: ${spacings?.xs}px;
         }
       }
     `;
@@ -153,7 +160,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding: ${spacings?.s}px 0 0 ${spacings?.s}px;
+      padding-top: ${spacings?.xs}px;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

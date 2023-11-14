@@ -301,7 +301,16 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["search"],
+      exclude: [
+        "search",
+        "keepSearchOnSelect",
+        "multiple",
+        "blurOnSelect",
+        "clearOnBlur",
+        "groupBy",
+        "label",
+        "options",
+      ],
     },
     snapshot: {
       skip: true,

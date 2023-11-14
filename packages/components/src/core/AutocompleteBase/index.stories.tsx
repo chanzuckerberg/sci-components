@@ -56,10 +56,10 @@ const AutocompleteBase = <
           disableCloseOnSelect={multiple}
           label={label}
           multiple={multiple}
-          onChange={handleChange}
           keepSearchOnSelect={keepSearchOnSelect}
           options={options}
           search={search}
+          onChange={handleChange}
           value={multiple ? pendingValue : value}
           getOptionDisabled={(option: DefaultAutocompleteOption) => {
             return option.name === "Type: feature request";
@@ -312,7 +312,15 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["search"],
+      exclude: [
+        "search",
+        "keepSearchOnSelect",
+        "multiple",
+        "blurOnSelect",
+        "clearOnBlur",
+        "groupBy",
+        "label",
+      ],
     },
     snapshot: {
       skip: true,

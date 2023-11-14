@@ -1,12 +1,13 @@
 import {
   AutocompleteMultiColumn,
   AutocompleteMultiColumnProps,
-  DefaultAutocompleteOption,
 } from "@czi-sds/components";
 import { noop } from "src/common/utils";
+import { DefaultDropdownMenuOption } from "../DropdownMenu";
 
 const OPTIONS = [
   {
+    columnName: "columnOne",
     options: [
       {
         description: "Good for newcomers",
@@ -19,6 +20,7 @@ const OPTIONS = [
     ],
   },
   {
+    columnName: "columnTwo",
     options: [
       {
         description: "needs to be fixed",
@@ -32,13 +34,13 @@ const OPTIONS = [
   },
 ];
 
-const AutocompleteNameSpaceTest = (
-  props: AutocompleteMultiColumnProps<
-    DefaultAutocompleteOption,
-    true,
-    false,
-    false
-  >
+const AutocompleteNameSpaceTest = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: AutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>
 ) => {
   return (
     <AutocompleteMultiColumn

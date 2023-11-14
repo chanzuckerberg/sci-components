@@ -1,17 +1,20 @@
 import {
   AutocompleteInputChangeReason,
-  AutocompleteProps,
   AutocompleteRenderInputParams,
   ClickAwayListener,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
-  PaperProps,
   PopperProps,
 } from "@mui/material";
-import React, { SyntheticEvent, useCallback } from "react";
-import Autocomplete, { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { useTheme } from "@mui/material/styles";
+import React, { SyntheticEvent } from "react";
+import { noop } from "src/common/utils";
+import { AutocompleteProps } from "../Autocomplete";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
+import { SDSTheme } from "../styles";
 import {
   StyleProps,
+  StyledAutocomplete,
   StyledAutocompletePopper,
   StyledHeaderTitle,
   StyledPaper,
@@ -40,15 +43,16 @@ interface ExtraDropdownMenuProps extends StyleProps {
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
-  onClickAway: (event: MouseEvent | TouchEvent) => void;
+  onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
+  width?: number;
 }
 
 type CustomAutocompleteProps<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
@@ -56,29 +60,26 @@ type CustomAutocompleteProps<
 
 export type DropdownMenuProps<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraDropdownMenuProps;
 
 const DropdownMenu = <
   T extends DefaultDropdownMenuOption,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >(
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
+  const theme: SDSTheme = useTheme();
+
   const {
     anchorEl,
     id,
-    InputBaseProps = {
-      autoFocus: true,
-      sx: {
-        padding: "8px",
-      },
-    },
+    InputBaseProps,
     open = false,
     PaperComponent = StyledPaper,
     PopperComponent = StyledPopper,
@@ -88,14 +89,21 @@ const DropdownMenu = <
     title,
     label = "Search",
     children,
-    onClickAway,
+    options,
+    onClickAway = noop,
     ClickAwayListenerProps,
+    width = 160,
     ...rest
   } = props;
-
-  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
-    return <StyledAutocompletePopper {...popperProps} />;
-  }, []);
+  const defaultPopperComponent = (popperProps: PopperProps) => {
+    return (
+      <StyledAutocompletePopper
+        search={search}
+        title={title}
+        {...popperProps}
+      />
+    );
+  };
 
   return (
     <PopperComponent
@@ -104,14 +112,24 @@ const DropdownMenu = <
         {
           name: "offset",
           options: {
-            offset: [0, 8],
+            offset: [0, theme.app?.spacing.s],
           },
         },
       ]}
       open={open}
       anchorEl={anchorEl}
-      {...PopperBaseProps}
       placement={PopperPlacement}
+      {...PopperBaseProps}
+      sx={{
+        ...PopperBaseProps?.sx,
+        width:
+          (options &&
+            options[0] &&
+            Object.prototype.hasOwnProperty.call(options[0], "options")) ||
+          width < 160
+            ? "auto"
+            : width,
+      }}
     >
       <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
         <div>
@@ -119,24 +137,26 @@ const DropdownMenu = <
             <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
           )}
 
-          <Autocomplete
-            label={label}
-            search={search}
-            InputBaseProps={InputBaseProps}
-            PaperComponent={useCallback(
-              (paperComponentProps: PaperProps) => (
-                <PaperComponent
-                  search={search}
-                  title={title}
-                  {...paperComponentProps}
-                />
-              ),
-              [PaperComponent, search, title]
-            )}
-            open={open}
-            {...rest}
-            PopperComponent={defaultPopperComponent}
-          />
+          {anchorEl && (
+            <StyledAutocomplete
+              label={label}
+              search={search}
+              title={title}
+              PaperComponent={PaperComponent}
+              open={open}
+              options={options}
+              PopperComponent={defaultPopperComponent}
+              InputBaseProps={{
+                ...InputBaseProps,
+                onClick: noop,
+              }}
+              PopperBaseProps={{
+                disablePortal: true,
+              }}
+              onClickAway={noop}
+              {...rest}
+            />
+          )}
           {children}
         </div>
       </ClickAwayListener>

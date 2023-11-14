@@ -1,5 +1,9 @@
-import { Dropdown, DropdownPopper, DropdownProps } from "@czi-sds/components";
-import React from "react";
+import {
+  DefaultDropdownMenuOption,
+  Dropdown,
+  DropdownPopper,
+  DropdownProps,
+} from "@czi-sds/components";
 import { noop } from "src/common/utils";
 
 const OPTIONS = [
@@ -15,7 +19,14 @@ const OPTIONS = [
   },
 ];
 
-const DropdownNameSpaceTest = (props: DropdownProps<true>) => {
+const DropdownNameSpaceTest = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: DropdownProps<T, Multiple, DisableClearable, FreeSolo>
+) => {
   return (
     <Dropdown
       DropdownMenuProps={{ loading: true, loadingText: "Loading ..." }}

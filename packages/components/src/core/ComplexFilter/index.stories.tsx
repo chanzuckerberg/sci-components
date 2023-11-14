@@ -5,12 +5,14 @@ import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import RawComplexFilter from "./index";
 
-const ComplexFilter = (props: Args): JSX.Element => {
+const ComplexFilter = <T extends DefaultDropdownMenuOption>(
+  props: Args
+): JSX.Element => {
   return (
     <RawComplexFilter
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS}
+      options={GITHUB_LABELS as T[]}
       DropdownMenuProps={{
         groupBy: (option: DefaultDropdownMenuOption) =>
           option.section as string,
@@ -140,13 +142,14 @@ const LIVE_PREVIEW_OPTIONS = [
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
+const TestDemo = <T extends DefaultDropdownMenuOption>(
+  props: Args
+): JSX.Element => {
   return (
     <RawComplexFilter
-      data-testid="complex-filter"
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS}
+      options={GITHUB_LABELS as T[]}
       {...props}
     />
   );
@@ -158,5 +161,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render: (args: Args) => <TestDemo {...args} data-testid="complex-filter" />,
 };

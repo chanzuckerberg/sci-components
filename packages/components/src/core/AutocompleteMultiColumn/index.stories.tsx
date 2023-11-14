@@ -1,7 +1,11 @@
-import { AutocompleteValue } from "@mui/base";
+import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteValue,
+} from "@mui/base";
 import { Args, Meta } from "@storybook/react";
-import React, { useEffect, useState } from "react";
-import { noop } from "src/common/utils";
+import { useEffect, useState } from "react";
+import { AutocompleteMultiColumnValue } from "../Autocomplete";
 import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
@@ -22,32 +26,56 @@ const AutocompleteMultiColumn = <
     multiple,
     options = GITHUB_LABELS_MULTI_COLUMN,
     search,
-    value: propValue,
+    // value: propValue,
     label,
   } = props;
 
   type DisableClearable = false;
   type FreeSolo = false;
 
-  const isControlled = propValue !== undefined;
-  const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
   const [selection, setSelection] = useState<string[]>([]);
+
+  const [theValue, setTheValue] =
+    useState<
+      AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>
+    >();
 
   useEffect(() => {
     setSelection([]);
   }, [multiple]);
 
-  useEffect(() => {
-    if (isControlled) {
-      if (multiple) setPendingValue(propValue);
-      else setValue(propValue);
+  const handleChange = (
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteMultiColumnValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >,
+    _reason: AutocompleteChangeReason,
+    _details?: AutocompleteChangeDetails<T>
+  ) => {
+    setTheValue(newValue);
+    const newSelection: string[] = [];
+
+    if (multiple) {
+      if (newValue) {
+        Object.values(newValue).forEach((items) => {
+          (items as T[])?.map(({ name }: { name: string }) => {
+            newSelection.push(name);
+          });
+        });
+        setSelection(newSelection);
+      }
+    } else {
+      if (newValue) {
+        Object.values(newValue).forEach((item) => {
+          newSelection.push((item as T).name);
+        });
+      }
+      setSelection(newSelection);
     }
-  }, [propValue, isControlled, multiple]);
+  };
 
   return (
     <>
@@ -57,11 +85,9 @@ const AutocompleteMultiColumn = <
           disableCloseOnSelect={false}
           multiple={multiple}
           onChange={handleChange}
-          onClickAway={handleClickAway}
-          open
           options={options}
           search={search}
-          value={multiple ? pendingValue : value}
+          value={theValue}
           {...props}
         />
       </div>
@@ -82,73 +108,51 @@ const AutocompleteMultiColumn = <
     </>
   );
 
-  function handleClickAway() {
+  function handleTagDelete(tag: string) {
     if (multiple) {
-      setValue(pendingValue);
-    }
-  }
+      if (theValue) {
+        Object.entries(theValue).forEach(([key, values]) => {
+          const index = (values as T[])?.findIndex(
+            (item: T) => item.name === tag
+          );
+          if (index > -1) {
+            const newValue = [...(values as T[])];
+            newValue.splice(index, 1);
+            setTheValue((prev) => {
+              return {
+                ...prev,
+                [key]: newValue as AutocompleteValue<
+                  T,
+                  Multiple,
+                  DisableClearable,
+                  FreeSolo
+                >,
+              };
+            });
 
-  function handleChange(
-    _event: React.SyntheticEvent,
-    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  ) {
-    if (multiple) {
-      const newSelection = Array.isArray(newValue)
-        ? newValue?.map((item) => item.name)
-        : [];
-      setSelection(newSelection);
-      return setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
+      }
     } else {
-      if (newValue && !Array.isArray(newValue) && newValue.name) {
-        setValue(
-          newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-        );
-        setSelection([newValue.name]);
+      if (theValue) {
+        Object.entries(theValue).forEach(([key, value]) => {
+          if ((value as T).name === tag) {
+            const finalValue = { ...theValue };
+            delete finalValue[key];
+            setTheValue(finalValue);
+
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
       }
     }
-  }
-
-  function handleTagDelete(tag: string) {
-    if (multiple && Array.isArray(pendingValue)) {
-      const index = pendingValue?.findIndex((item) => item.name === tag);
-      const newValue = [...pendingValue];
-      newValue.splice(index, 1);
-      setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
-
-      const newSelection = [...selection];
-      const deleteIndex = newSelection.indexOf(tag);
-      newSelection.splice(deleteIndex, 1);
-      setSelection(newSelection);
-    } else {
-      setValue(
-        null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
-      setSelection([]);
-    }
-  }
-
-  function getInitialValue(): AutocompleteValue<
-    T,
-    Multiple,
-    DisableClearable,
-    FreeSolo
-  > {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
@@ -194,6 +198,9 @@ export default {
         "listitem",
       ],
     },
+    controls: {
+      exclude: ["search"],
+    },
   },
   title: "Dropdowns/AutocompleteMultiColumn",
 } as Meta;
@@ -226,12 +233,24 @@ const TestDemo = <
   type DisableClearable = false;
   type FreeSolo = false;
 
-  const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
+  const [value, setValue] =
+    useState<
+      AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>
+    >();
+
+  const handleChange = (
+    _event: React.SyntheticEvent,
+    newValue: AutocompleteMultiColumnValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >,
+    _reason: AutocompleteChangeReason,
+    _details?: AutocompleteChangeDetails<T>
+  ) => {
+    setValue(newValue);
+  };
 
   return (
     <div
@@ -243,48 +262,13 @@ const TestDemo = <
         disableCloseOnSelect={false}
         multiple={multiple}
         onChange={handleChange}
-        onClickAway={noop}
-        open
         options={options}
         search={search}
-        value={multiple ? pendingValue : value}
+        value={value}
         {...props}
       />
     </div>
   );
-
-  function handleChange(
-    _event: React.SyntheticEvent,
-    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  ) {
-    if (multiple) {
-      return setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
-    } else {
-      if (newValue && !Array.isArray(newValue) && newValue.name) {
-        setValue(
-          newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-        );
-      }
-    }
-  }
-
-  function getInitialValue(): AutocompleteValue<
-    T,
-    Multiple,
-    DisableClearable,
-    FreeSolo
-  > {
-    return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
-  }
 };
 
 export const Test = {
@@ -296,7 +280,15 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["search"],
+      exclude: [
+        "keepSearchOnSelect",
+        "ClickAwayListenerProps",
+        "search",
+        "multiple",
+        "label",
+        "groupBy",
+        "open",
+      ],
     },
     snapshot: {
       skip: true,

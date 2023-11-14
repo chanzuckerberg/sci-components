@@ -1,10 +1,13 @@
+// import { AutocompleteValue } from "@mui/base";
+// import { DefaultAutocompleteOption } from "dist/index.cjs";
+
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 const SORTED_BY_TYPE = "Sorted by type";
 
 export const GITHUB_LABELS_MULTI_COLUMN = [
   {
     columnName: "Column 1",
-    columnWidth: 290,
+    columnWidth: 260,
     options: [
       {
         name: "Status: can't reproduce",
@@ -36,10 +39,16 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
       },
     ],
     sdsIcon: "chevronRight",
+    value: [
+      {
+        name: "Status: can't reproduce",
+        section: "name only",
+      },
+    ],
   },
   {
     columnName: "Column 2",
-    columnWidth: 230,
+    columnWidth: 260,
     options: [
       {
         details: "This will be worked on",
@@ -72,71 +81,77 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         section: SORTED_BY_TYPE,
       },
     ],
-    sdsIcon: "chevronRight2",
+    sdsIcon: "chevronRight",
   },
-  {
-    columnName: "Column 3",
-    columnWidth: 170,
-    options: [
-      {
-        details: "With Description",
-        name: "Bacteria",
-        sdsIcon: "bacteria",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        count: 4,
-        name: "Puzzle Piece",
-        sdsIcon: "puzzlePiece",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        name: "Copy",
-        sdsIcon: "copy",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        name: "Light Bulb",
-        sdsIcon: "lightBulb",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        name: "List",
-        sdsIcon: "list",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        name: "Vertical Tree",
-        sdsIcon: "treeVertical",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-      {
-        name: "Link",
-        sdsIcon: "link",
-        sdsIconProps: {
-          color: "gray",
-        },
-        section: "With Icon",
-      },
-    ],
-    sdsIcon: "triangleRight",
-  },
+  // {
+  //   columnName: "Column 3",
+  //   columnWidth: 170,
+  //   options: [
+  //     {
+  //       name: "Bacteria",
+  //       sdsIcon: "bacteria",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "Puzzle Piece",
+  //       sdsIcon: "puzzlePiece",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "Copy",
+  //       sdsIcon: "copy",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "Light Bulb",
+  //       sdsIcon: "lightBulb",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "List",
+  //       sdsIcon: "list",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "Vertical Tree",
+  //       sdsIcon: "treeVertical",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //     {
+  //       name: "Link",
+  //       sdsIcon: "link",
+  //       sdsIconProps: {
+  //         color: "gray",
+  //       },
+  //       section: "With Icon",
+  //     },
+  //   ],
+  //   props: {
+  //     onChange: (
+  //       _: React.SyntheticEvent,
+  //       val: AutocompleteValue<DefaultAutocompleteOption, true, false, false>
+  //     ) => {
+  //       console.log(val);
+  //     },
+  //   },
+  //   sdsIcon: "triangleRight",
+  // },
 ];

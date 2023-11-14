@@ -1,3 +1,4 @@
+import { AutocompleteValue } from "@mui/base";
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
@@ -16,7 +17,15 @@ const StyledInputDropdown = styled(RawInputDropdown)`
   }}
 `;
 
-const InputDropdown = (props: Args): JSX.Element => {
+type DisableClearable = false;
+type FreeSolo = false;
+
+const InputDropdown = <
+  T extends DefaultDropdownMenuOption,
+  Multiple extends boolean | undefined
+>(
+  props: Args
+): JSX.Element => {
   const {
     disabled,
     label,
@@ -38,11 +47,8 @@ const InputDropdown = (props: Args): JSX.Element => {
   const [storybookLabel, setStorybookLabel] = useState("Label");
 
   const [value, setValue] = useState<
-    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  >(getInitialValue());
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
 
   const isControlled = propValue !== undefined;
 
@@ -87,7 +93,7 @@ const InputDropdown = (props: Args): JSX.Element => {
 
   const handleChange = (
     _: React.SyntheticEvent<Element, Event>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) => {
     if (!multiple) {
       setOpen(false);
@@ -104,8 +110,8 @@ const InputDropdown = (props: Args): JSX.Element => {
         setInputDropdownValue(undefined);
       }
     } else {
-      setPendingValue(newValue);
-      setCounter((newValue as DefaultDropdownMenuOption[])?.length.toString());
+      setValue(newValue);
+      setCounter((newValue as T[])?.length.toString());
     }
   };
 
@@ -118,18 +124,7 @@ const InputDropdown = (props: Args): JSX.Element => {
         setSdsStage("default");
       }
     }
-    if (multiple) {
-      setValue(pendingValue);
-    }
   };
-
-  function getInitialValue() {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple ? ([] as unknown) : null;
-  }
 
   const options = [
     {
@@ -180,9 +175,10 @@ const InputDropdown = (props: Args): JSX.Element => {
         search={false}
         multiple={multiple}
         disableCloseOnSelect={multiple}
-        options={options}
-        value={multiple ? pendingValue : value}
+        options={options as T[]}
+        value={value}
         onClickAway={handleClickAway}
+        width={300}
       />
     </div>
   );

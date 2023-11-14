@@ -10,13 +10,15 @@ import {
   Popper,
   PopperProps,
 } from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import React, { ReactNode, SyntheticEvent, useMemo, useState } from "react";
 import { noop } from "src/common/utils";
 import ButtonIcon from "../ButtonIcon";
 import { IconProps } from "../Icon";
 import { InputSearchProps } from "../InputSearch";
 import { StyledInputAdornment } from "../InputSearch/style";
 import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
+import { SDSTheme } from "../styles";
 import {
   InputBaseWrapper,
   StyleProps,
@@ -74,7 +76,7 @@ interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
     details?: AutocompleteChangeDetails<T>
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
-  label: string;
+  label?: string;
   PaperComponent?: typeof StyledPaper | RenderFunctionType;
 }
 
@@ -111,7 +113,7 @@ const AutocompleteBase = <
     InputBaseProps = {},
     isOptionEqualToValue = defaultIsOptionEqualToValue,
     keepSearchOnSelect = false,
-    label,
+    label = "Label",
     loading = false,
     loadingText = "",
     noOptionsText = "No options",
@@ -123,6 +125,8 @@ const AutocompleteBase = <
     clearOnBlur = false,
     blurOnSelect = !multiple,
   } = props;
+  const theme: SDSTheme = useTheme();
+
   const [inputValue, setInputValue] = useState("");
 
   return (
@@ -155,22 +159,25 @@ const AutocompleteBase = <
    * without a useCalback results in scroll jumps while selecting an option!
    */
   function useDefaultPopperComponent() {
-    return useCallback((popperProps: PopperProps) => {
-      return (
-        <Popper
-          modifiers={[
-            {
-              enabled: true,
-              name: "offset",
-              options: {
-                offset: [0, 8],
+    return useMemo(
+      () => (popperProps: PopperProps) => {
+        return (
+          <Popper
+            modifiers={[
+              {
+                enabled: true,
+                name: "offset",
+                options: {
+                  offset: [0, theme.app?.spacing.s],
+                },
               },
-            },
-          ]}
-          {...popperProps}
-        />
-      );
-    }, []);
+            ]}
+            {...popperProps}
+          />
+        );
+      },
+      []
+    );
   }
 
   function defaultRenderInput(params: AutocompleteRenderInputParams) {
@@ -238,7 +245,7 @@ const AutocompleteBase = <
     );
   }
 
-  function defaultOnBlur(event: React.FocusEvent<HTMLInputElement, Element>) {
+  function defaultOnBlur(event: React.FocusEvent<HTMLInputElement>) {
     if (clearOnBlur) setInputValue("");
     props.onBlur?.(event);
   }

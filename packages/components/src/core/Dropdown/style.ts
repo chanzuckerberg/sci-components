@@ -1,12 +1,35 @@
 import { styled } from "@mui/material/styles";
 import Button from "../Button";
-import { getSpaces } from "../styles";
+import { CommonThemeProps, getSpaces } from "../styles";
 
-export const Wrapper = styled("div")`
+interface StyleProps extends CommonThemeProps {
+  buttonPosition: "left" | "right";
+}
+
+const doNotForwardProps = ["buttonPosition"];
+
+export const Wrapper = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   width: 150px;
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButtonsWrapper = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: StyleProps) => {
+    const { buttonPosition } = props;
+
+    return `
+      display: flex;
+      justify-content: ${buttonPosition === "left" ? "start" : "end"};
+    `;
+  }}
+`;
+
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props) => {
     const spacings = getSpaces(props);
 

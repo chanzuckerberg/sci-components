@@ -1,4 +1,9 @@
-import { AutocompleteValue } from "@mui/base";
+import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteValue,
+} from "@mui/base";
+import { PopperProps } from "@mui/material";
 import React from "react";
 import AutocompleteBase, {
   AutocompleteBaseProps,
@@ -23,9 +28,53 @@ export type AutocompleteMultiColumnOption<
   style?: React.CSSProperties;
   value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   columnWidth?: number;
-  columnName?: string;
+  columnName: string;
   sdsIcon?: keyof IconNameToSizes;
 };
+
+export type AutocompleteMultiColumnValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | Record<
+      string | number | symbol,
+      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    >
+  | undefined;
+
+export type AutocompleteSingleColumnValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
+
+export type AutocompleteSingleColumnOnChange<
+  T,
+  Multiple,
+  DisableClearable,
+  FreeSolo
+> = (
+  event: React.SyntheticEvent,
+  value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+  reason: AutocompleteChangeReason,
+  details?: AutocompleteChangeDetails<T>
+) => void;
+
+export type AutocompleteMultiColumnOnChange<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = (
+  event: React.SyntheticEvent,
+  value: AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>,
+  reason: AutocompleteChangeReason,
+  details?: AutocompleteChangeDetails<T>
+) => void;
+
 interface ExtraAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
@@ -35,6 +84,14 @@ interface ExtraAutocompleteProps<
   options:
     | AutocompleSingleColumnOption<T>[]
     | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
+  PopperBaseProps?: Partial<PopperProps>;
+  value?:
+    | AutocompleteSingleColumnValue<T, Multiple, DisableClearable, FreeSolo>
+    | AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
+  onClickAway?: (event: MouseEvent | TouchEvent) => void;
+  onChange?:
+    | AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo>
+    | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>;
 }
 
 export type AutocompleteProps<
@@ -44,7 +101,7 @@ export type AutocompleteProps<
   FreeSolo extends boolean | undefined
 > = Omit<
   AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
-  "options"
+  "options" | "value" | "onChange"
 > &
   ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -56,29 +113,87 @@ const Autocomplete = <
 >(
   props: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
-  const { options, ...rest } = props;
+  const { options, value, onChange, ...rest } = props;
 
   // Multi-column options
-  if (Array.isArray(options) && options.length > 0 && "options" in options[0]) {
-    return (
-      <AutocompleteMultiColumn
-        options={
-          options as AutocompleteMultiColumnOption<
-            T,
-            Multiple,
-            DisableClearable,
-            FreeSolo
-          >[]
-        }
-        {...rest}
-        PopperComponent={undefined}
-        open
-      />
-    );
+  if (options && !!options[0] && "options" in options[0]) {
+    if (options.length > 1) {
+      return (
+        <AutocompleteMultiColumn
+          options={
+            options as AutocompleteMultiColumnOption<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >[]
+          }
+          value={
+            value as AutocompleteMultiColumnValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          onChange={
+            onChange as AutocompleteMultiColumnOnChange<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          {...rest}
+          // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns
+          groupBy={undefined}
+          open
+        />
+      );
+    } else {
+      return (
+        <AutocompleteBase
+          options={options[0].options as AutocompleSingleColumnOption<T>[]}
+          value={
+            value as AutocompleteSingleColumnValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          onChange={
+            onChange as AutocompleteSingleColumnOnChange<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          {...rest}
+        />
+      );
+    }
   } else {
     return (
       <AutocompleteBase
         options={options as AutocompleSingleColumnOption<T>[]}
+        onChange={
+          onChange as AutocompleteSingleColumnOnChange<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >
+        }
+        value={
+          value as AutocompleteSingleColumnValue<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >
+        }
         {...rest}
       />
     );
