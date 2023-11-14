@@ -1,23 +1,24 @@
 import { AutocompleteValue, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useRef, useState } from "react";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import ButtonIcon from "../ButtonIcon";
 import InputDropdown from "../InputDropdown";
 import Tag from "../Tag";
 import { GITHUB_LABELS } from "./GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "./GITHUB_LABELS_MULTI_COLUMN";
-import RawDropdownMenu, { DefaultDropdownMenuOption } from "./index";
+import RawDropdownMenu from "./index";
 
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
 const groupByOptions = [
   undefined,
-  (option: DefaultDropdownMenuOption) => option.section as string,
+  (option: DefaultAutocompleteOption) => option.section as string,
 ];
 const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
 
 const DropdownMenu = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -203,7 +204,7 @@ const LIVE_PREVIEW_LABELS = [
 ];
 
 const LivePreviewDemo = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -653,7 +654,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                       option.section as string)
                   }
                   options={
-                    SCREENSHOT_TEST_OPTIONS as DefaultDropdownMenuOption[]
+                    SCREENSHOT_TEST_OPTIONS as DefaultAutocompleteOption[]
                   }
                   title={title}
                   search={search}
@@ -697,7 +698,7 @@ export const ScreenshotTest = {
 // Test
 
 const TestDemo = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined

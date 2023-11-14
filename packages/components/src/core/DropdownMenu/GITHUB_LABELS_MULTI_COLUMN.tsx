@@ -83,75 +83,67 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
     ],
     sdsIcon: "chevronRight",
   },
-  // {
-  //   columnName: "Column 3",
-  //   columnWidth: 170,
-  //   options: [
-  //     {
-  //       name: "Bacteria",
-  //       sdsIcon: "bacteria",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "Puzzle Piece",
-  //       sdsIcon: "puzzlePiece",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "Copy",
-  //       sdsIcon: "copy",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "Light Bulb",
-  //       sdsIcon: "lightBulb",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "List",
-  //       sdsIcon: "list",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "Vertical Tree",
-  //       sdsIcon: "treeVertical",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //     {
-  //       name: "Link",
-  //       sdsIcon: "link",
-  //       sdsIconProps: {
-  //         color: "gray",
-  //       },
-  //       section: "With Icon",
-  //     },
-  //   ],
-  //   props: {
-  //     onChange: (
-  //       _: React.SyntheticEvent,
-  //       val: AutocompleteValue<DefaultAutocompleteOption, true, false, false>
-  //     ) => {
-  //       console.log(val);
-  //     },
-  //   },
-  //   sdsIcon: "triangleRight",
-  // },
+  {
+    columnName: "Column 3",
+    columnWidth: 170,
+    options: [
+      {
+        name: "Bacteria",
+        sdsIcon: "bacteria",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "Puzzle Piece",
+        sdsIcon: "puzzlePiece",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "Copy",
+        sdsIcon: "copy",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "Light Bulb",
+        sdsIcon: "lightBulb",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "List",
+        sdsIcon: "list",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "Vertical Tree",
+        sdsIcon: "treeVertical",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+      {
+        name: "Link",
+        sdsIcon: "link",
+        sdsIconProps: {
+          color: "gray",
+        },
+        section: "With Icon",
+      },
+    ],
+    sdsIcon: "triangleRight",
+  },
 ];

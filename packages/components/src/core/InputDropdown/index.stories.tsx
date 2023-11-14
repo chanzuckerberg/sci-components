@@ -3,9 +3,10 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import Callout from "../Callout";
 import CalloutTitle from "../Callout/components/CalloutTitle";
-import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import DropdownMenu from "../DropdownMenu";
 import RawInputDropdown, { InputDropdownProps } from "./index";
 
 const StyledInputDropdown = styled(RawInputDropdown)`
@@ -21,7 +22,7 @@ type DisableClearable = false;
 type FreeSolo = false;
 
 const InputDropdown = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined
 >(
   props: Args

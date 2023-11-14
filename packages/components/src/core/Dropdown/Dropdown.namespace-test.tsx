@@ -1,5 +1,5 @@
 import {
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
   Dropdown,
   DropdownPopper,
   DropdownProps,
@@ -20,7 +20,7 @@ const OPTIONS = [
 ];
 
 const DropdownNameSpaceTest = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined

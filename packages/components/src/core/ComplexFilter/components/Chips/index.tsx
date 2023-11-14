@@ -1,10 +1,10 @@
-import { DefaultDropdownMenuOption } from "src/core/DropdownMenu";
+import { DefaultAutocompleteOption } from "src/core/AutocompleteBase";
 import TagFilter from "src/core/TagFilter";
 
 interface Props {
-  value: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null;
+  value: DefaultAutocompleteOption | DefaultAutocompleteOption[] | null;
   multiple?: boolean;
-  onDelete: (option: DefaultDropdownMenuOption) => void;
+  onDelete: (option: DefaultAutocompleteOption) => void;
 }
 
 const Chips = ({
@@ -22,7 +22,7 @@ const Chips = ({
 
   return (
     <>
-      {(value as DefaultDropdownMenuOption[]).map((item) => {
+      {(value as DefaultAutocompleteOption[]).map((item) => {
         const { name } = item;
 
         return (

@@ -67,7 +67,7 @@ export type DropdownMenuProps<
   ExtraDropdownMenuProps;
 
 const DropdownMenu = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined

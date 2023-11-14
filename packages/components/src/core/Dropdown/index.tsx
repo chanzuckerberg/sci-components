@@ -7,9 +7,9 @@ import React, { ReactNode, useState } from "react";
 import {
   AutocompleSingleColumnOption,
   AutocompleteMultiColumnOption,
+  DefaultAutocompleteOption,
 } from "../Autocomplete";
 import DropdownMenu, {
-  DefaultDropdownMenuOption,
   DropdownMenuProps as SdsDropdownMenuProps,
 } from "../DropdownMenu";
 import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
@@ -36,7 +36,7 @@ export type Value<T, Multiple> = Multiple extends undefined | false
 
 // (masoudmanson): This can be removed since we no longer need it
 export type MUIValue<
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -94,7 +94,7 @@ export type DropdownProps<
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
 const Dropdown = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined

@@ -25,7 +25,10 @@ const groupByOptions = [
 const DIV_MARGIN = "16px 0 0 24px";
 const LABEL = "Search by label";
 
-const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
+const dataOptions = [
+  GITHUB_LABELS,
+  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
+];
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,

@@ -1,11 +1,11 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
-import { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import RawComplexFilter from "./index";
 
-const ComplexFilter = <T extends DefaultDropdownMenuOption>(
+const ComplexFilter = <T extends DefaultAutocompleteOption>(
   props: Args
 ): JSX.Element => {
   return (
@@ -14,7 +14,7 @@ const ComplexFilter = <T extends DefaultDropdownMenuOption>(
       onChange={noop}
       options={GITHUB_LABELS as T[]}
       DropdownMenuProps={{
-        groupBy: (option: DefaultDropdownMenuOption) =>
+        groupBy: (option: DefaultAutocompleteOption) =>
           option.section as string,
       }}
       {...props}
@@ -142,7 +142,7 @@ const LIVE_PREVIEW_OPTIONS = [
 
 // Test
 
-const TestDemo = <T extends DefaultDropdownMenuOption>(
+const TestDemo = <T extends DefaultAutocompleteOption>(
   props: Args
 ): JSX.Element => {
   return (

@@ -2,15 +2,15 @@ import { AutocompleteValue, Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import { useState } from "react";
 import { noop } from "src/common/utils";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import Button from "../Button";
-import { DefaultDropdownMenuOption } from "../DropdownMenu";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import LoadingIndicator from "../LoadingIndicator";
 import RawDropdown from "./index";
 
 const Dropdown = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -217,7 +217,7 @@ export const InsideModal = {
     },
   },
   render: function InsideModalComponent<
-    T extends DefaultDropdownMenuOption,
+    T extends DefaultAutocompleteOption,
     Multiple extends boolean | undefined,
     DisableClearable extends boolean | undefined,
     FreeSolo extends boolean | undefined
@@ -238,7 +238,7 @@ export const InsideModal = {
 
 // Controlled Dropdown
 const ControlledDropdownDemo = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -273,7 +273,7 @@ const ControlledDropdownDemo = <
         onChange={handleChange}
         data-testid="dropdown"
         DropdownMenuProps={{
-          groupBy: (option: DefaultDropdownMenuOption) =>
+          groupBy: (option: DefaultAutocompleteOption) =>
             option.section as string,
           title: "Github Labels",
           width: 300,
@@ -330,7 +330,7 @@ export const ControlledDropdown = {
 // Test
 
 const TestDemo = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined

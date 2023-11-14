@@ -3,7 +3,8 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
-import DropdownMenu, { DefaultDropdownMenuOption } from "../DropdownMenu";
+import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import DropdownMenu from "../DropdownMenu";
 import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
@@ -16,7 +17,7 @@ export {
   StyledPopper as ComplexFilterPopper,
 };
 export interface ComplexFilterProps<
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -40,7 +41,7 @@ export interface ComplexFilterProps<
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
 const ComplexFilter = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
@@ -101,8 +102,8 @@ const ComplexFilter = <
           <Chips
             value={
               value as
-                | DefaultDropdownMenuOption
-                | DefaultDropdownMenuOption[]
+                | DefaultAutocompleteOption
+                | DefaultAutocompleteOption[]
                 | null
             }
             multiple={multiple}
@@ -173,7 +174,7 @@ const ComplexFilter = <
     }
   }
 
-  function handleDelete(option: DefaultDropdownMenuOption) {
+  function handleDelete(option: DefaultAutocompleteOption) {
     if (!multiple) {
       return setValue(
         null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>

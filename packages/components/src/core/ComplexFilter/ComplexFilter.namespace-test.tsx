@@ -1,7 +1,7 @@
 import {
   ComplexFilter,
   ComplexFilterProps,
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
 } from "@czi-sds/components";
 import { noop } from "src/common/utils";
 
@@ -19,7 +19,7 @@ const OPTIONS = [
 ];
 
 const ComplexFilterNameSpaceTest = <
-  T extends DefaultDropdownMenuOption,
+  T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
