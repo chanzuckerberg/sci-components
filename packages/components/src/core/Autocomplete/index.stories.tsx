@@ -1,11 +1,14 @@
 import { AutocompleteValue } from "@mui/base";
 import { Args, Meta } from "@storybook/react";
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { DefaultAutocompleteOption } from "../AutocompleteBase";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
-import RawAutocomplete from "./index";
+import RawAutocomplete, {
+  AutocompleteMultiColumnValue,
+  SDSAutocompleteValue,
+} from "./index";
 
 const groupByOptions = [
   undefined,
@@ -34,11 +37,15 @@ const Autocomplete = <
 
   const isControlled = propValue !== undefined;
   const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
+    SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(
+    (multiple ? [] : null) as SDSAutocompleteValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >
+  );
 
   const [selection, setSelection] = useState<string[]>([]);
 
@@ -51,10 +58,7 @@ const Autocomplete = <
   useEffect(() => {
     setSelection([]);
     setValue(
-      null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-    );
-    setPendingValue(
-      [] as unknown as AutocompleteValue<
+      (multiple ? [] : null) as SDSAutocompleteValue<
         T,
         Multiple,
         DisableClearable,
@@ -75,8 +79,8 @@ const Autocomplete = <
           keepSearchOnSelect={keepSearchOnSelect}
           options={options}
           search={search}
-          value={multiple ? pendingValue : value}
-          getOptionDisabled={(option: DefaultAutocompleteOption) => {
+          value={value}
+          getOptionDisabled={(option: T) => {
             return option.name === "Type: feature request";
           }}
           {...props}
@@ -99,67 +103,134 @@ const Autocomplete = <
     </>
   );
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   function handleChange(
     _: SyntheticEvent<Element, Event>,
-    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    newValue: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
-    if (multiple) {
-      const newSelection = Array.isArray(newValue)
-        ? newValue?.map((item) => item.name)
-        : [];
-      setSelection(newSelection);
-      return setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
-    } else {
-      if (newValue && !Array.isArray(newValue) && newValue.name) {
-        setValue(
-          newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    console.log(newValue);
+
+    setValue(newValue);
+    const newSelection: string[] = [];
+
+    if (
+      (newValue && (newValue as T).name) ||
+      (Array.isArray(newValue) && (newValue as T[])[0].name)
+    ) {
+      if (multiple) {
+        setSelection(
+          Array.isArray(newValue) ? newValue?.map((item) => item.name) : []
         );
-        setSelection([newValue.name]);
+      } else {
+        if (newValue && !Array.isArray(newValue) && newValue.name) {
+          setSelection([(newValue as T).name]);
+        }
+      }
+    } else {
+      if (multiple) {
+        if (newValue) {
+          Object.values(newValue).forEach((items) => {
+            (items as T[])?.map(({ name }: { name: string }) => {
+              newSelection.push(name);
+            });
+          });
+          setSelection(newSelection);
+        }
+      } else {
+        if (newValue) {
+          Object.values(newValue).forEach((item) => {
+            newSelection.push((item as T).name);
+          });
+        }
+        setSelection(newSelection);
+      }
+    }
+  }
+
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+  function handleTagDeleteMultiColumn(tag: string) {
+    if (multiple) {
+      if (value) {
+        Object.entries(value).forEach(([key, values]) => {
+          const index = (values as T[])?.findIndex(
+            (item: T) => item.name === tag
+          );
+          if (index > -1) {
+            const newValue = [...(values as T[])];
+            newValue.splice(index, 1);
+            setValue((prev) => {
+              return {
+                ...prev,
+                [key]: newValue as AutocompleteValue<
+                  T,
+                  Multiple,
+                  DisableClearable,
+                  FreeSolo
+                >,
+              };
+            });
+
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
+      }
+    } else {
+      if (value) {
+        Object.entries(value).forEach(([key, val]) => {
+          if ((val as T).name === tag) {
+            const finalValue = { ...value } as AutocompleteMultiColumnValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >;
+            if (finalValue) delete finalValue[key];
+            setValue(finalValue);
+
+            const newSelection = [...selection];
+            const deleteIndex = newSelection.indexOf(tag);
+            newSelection.splice(deleteIndex, 1);
+            setSelection(newSelection);
+          }
+        });
       }
     }
   }
 
   function handleTagDelete(tag: string) {
-    if (multiple && Array.isArray(pendingValue)) {
-      const index = pendingValue?.findIndex((item) => item.name === tag);
-      const newValue = [...pendingValue];
-      newValue.splice(index, 1);
-      setPendingValue(
-        newValue as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
+    if (
+      (value && (value as T).name) ||
+      (Array.isArray(value) && (value as T[])[0].name)
+    ) {
+      if (multiple && Array.isArray(value)) {
+        const index = value?.findIndex((item) => item.name === tag);
+        const newValue = [...value];
+        newValue.splice(index, 1);
+        setValue(
+          newValue as SDSAutocompleteValue<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >
+        );
 
-      const newSelection = [...selection];
-      const deleteIndex = newSelection.indexOf(tag);
-      newSelection.splice(deleteIndex, 1);
-      setSelection(newSelection);
+        const newSelection = [...selection];
+        const deleteIndex = newSelection.indexOf(tag);
+        newSelection.splice(deleteIndex, 1);
+        setSelection(newSelection);
+      } else {
+        setValue(
+          null as SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+        );
+        setSelection([]);
+      }
     } else {
-      setValue(
-        null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-      );
-      setSelection([]);
+      handleTagDeleteMultiColumn(tag);
     }
-  }
-
-  function getInitialValue(): AutocompleteValue<
-    T,
-    Multiple,
-    DisableClearable,
-    FreeSolo
-  > {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
@@ -232,23 +303,8 @@ export const Default = {
 
 // Test
 
-const TestDemo = <
-  T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined,
-  DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
->(
-  props: Args
-): JSX.Element => {
+const TestDemo = (props: Args): JSX.Element => {
   const { multiple, options = GITHUB_LABELS, search } = props;
-
-  const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
 
   return (
     <RawAutocomplete
@@ -256,41 +312,12 @@ const TestDemo = <
       search={search}
       label="Search"
       multiple={multiple}
-      value={multiple ? pendingValue : value}
-      onChange={handleChange}
       disableCloseOnSelect={multiple}
       options={options}
       groupBy={(option: DefaultAutocompleteOption) => option.section as string}
       {...props}
     />
   );
-
-  function getInitialValue(): AutocompleteValue<
-    T,
-    Multiple,
-    DisableClearable,
-    FreeSolo
-  > {
-    return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
-  }
-
-  function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  ) {
-    if (!multiple) {
-      setValue(newValue);
-    }
-
-    return setPendingValue(newValue);
-  }
 };
 
 export const Test = {

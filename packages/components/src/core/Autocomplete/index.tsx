@@ -32,6 +32,15 @@ export type AutocompleteMultiColumnOption<
   sdsIcon?: keyof IconNameToSizes;
 };
 
+export type SDSAutocompleteOptions<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleSingleColumnOption<T>[]
+  | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
+
 export type AutocompleteMultiColumnValue<
   T,
   Multiple extends boolean | undefined,
@@ -50,6 +59,15 @@ export type AutocompleteSingleColumnValue<
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
 > = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
+
+export type SDSAutocompleteValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleteSingleColumnValue<T, Multiple, DisableClearable, FreeSolo>
+  | AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
 
 export type AutocompleteSingleColumnOnChange<
   T,
@@ -75,23 +93,26 @@ export type AutocompleteMultiColumnOnChange<
   details?: AutocompleteChangeDetails<T>
 ) => void;
 
+export type SDSAutocompleteOnChange<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo>
+  | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>;
+
 interface ExtraAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
 > extends StyleProps {
-  options:
-    | AutocompleSingleColumnOption<T>[]
-    | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
+  options: SDSAutocompleteOptions<T, Multiple, DisableClearable, FreeSolo>;
   PopperBaseProps?: Partial<PopperProps>;
-  value?:
-    | AutocompleteSingleColumnValue<T, Multiple, DisableClearable, FreeSolo>
-    | AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
+  value?: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
-  onChange?:
-    | AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo>
-    | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>;
+  onChange?: SDSAutocompleteOnChange<T, Multiple, DisableClearable, FreeSolo>;
 }
 
 export type AutocompleteProps<
