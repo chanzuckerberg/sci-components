@@ -9,7 +9,7 @@ import { useTheme } from "@mui/material/styles";
 import React, { SyntheticEvent } from "react";
 import { noop } from "src/common/utils";
 import { AutocompleteProps } from "../Autocomplete";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
 import { SDSTheme } from "../styles";
 import {

@@ -1,7 +1,7 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import RawComplexFilter from "./index";
 

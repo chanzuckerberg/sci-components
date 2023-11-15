@@ -13,12 +13,12 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React, { ReactNode, SyntheticEvent, useMemo, useState } from "react";
 import { noop } from "src/common/utils";
-import ButtonIcon from "../ButtonIcon";
-import { IconProps } from "../Icon";
-import { InputSearchProps } from "../InputSearch";
-import { StyledInputAdornment } from "../InputSearch/style";
-import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
-import { SDSTheme } from "../styles";
+import ButtonIcon from "../../../ButtonIcon";
+import { IconProps } from "../../../Icon";
+import { InputSearchProps } from "../../../InputSearch";
+import { StyledInputAdornment } from "../../../InputSearch/style";
+import MenuItem, { IconNameToSmallSizes } from "../../../MenuItem";
+import { SDSTheme } from "../../../styles";
 import {
   InputBaseWrapper,
   StyleProps,

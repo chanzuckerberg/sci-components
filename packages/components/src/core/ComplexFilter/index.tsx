@@ -3,7 +3,7 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import DropdownMenu from "../DropdownMenu";
 import { StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {

@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { noop } from "src/common/utils";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import Callout from "../Callout";
 import CalloutTitle from "../Callout/components/CalloutTitle";
 import DropdownMenu from "../DropdownMenu";

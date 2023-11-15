@@ -1,7 +1,7 @@
 import { Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
-import InputSearch from "../InputSearch";
+import InputSearch from "../../../InputSearch";
 import {
   CommonThemeProps,
   fontCapsXxxxs,
@@ -11,7 +11,7 @@ import {
   getShadows,
   getSpaces,
   getTypography,
-} from "../styles";
+} from "../../../styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -87,7 +87,7 @@ export const StyledAutocompletePopper = styled(Popper)`
   }}
 `;
 
-export const StyledAutocomplesWrapper = styled("div")`
+export const StyledAutocompleteGroupWrapper = styled("div")`
   display: flex;
 `;
 

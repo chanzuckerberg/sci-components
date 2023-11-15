@@ -5,16 +5,16 @@ import {
 } from "@mui/base";
 import { PopperProps } from "@mui/material";
 import React from "react";
+import { IconNameToSizes } from "../Icon";
 import AutocompleteBase, {
   AutocompleteBaseProps,
   AutocompleteOptionBasic,
   AutocompleteOptionComponent,
   DefaultAutocompleteOption,
-} from "../AutocompleteBase";
+} from "./components/AutocompleteBase";
 import AutocompleteMultiColumn, {
   AutocompleteMultiColumnProps,
-} from "../AutocompleteMultiColumn";
-import { IconNameToSizes } from "../Icon";
+} from "./components/AutocompleteMultiColumn";
 import { StyleProps } from "./style";
 
 export type {
@@ -25,7 +25,7 @@ export type {
   DefaultAutocompleteOption,
 };
 
-export type AutocompleSingleColumnOption<T> = T;
+export type AutocompleteSingleColumnOption<T> = T;
 
 export type AutocompleteMultiColumnOption<
   T,
@@ -50,7 +50,7 @@ export type SDSAutocompleteOptions<
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
 > =
-  | AutocompleSingleColumnOption<T>[]
+  | AutocompleteSingleColumnOption<T>[]
   | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
 
 export type AutocompleteMultiColumnValue<
@@ -186,7 +186,7 @@ const Autocomplete = <
     } else {
       return (
         <AutocompleteBase
-          options={options[0].options as AutocompleSingleColumnOption<T>[]}
+          options={options[0].options as AutocompleteSingleColumnOption<T>[]}
           value={
             value as AutocompleteSingleColumnValue<
               T,
@@ -210,7 +210,7 @@ const Autocomplete = <
   } else {
     return (
       <AutocompleteBase
-        options={options as AutocompleSingleColumnOption<T>[]}
+        options={options as AutocompleteSingleColumnOption<T>[]}
         onChange={
           onChange as AutocompleteSingleColumnOnChange<
             T,

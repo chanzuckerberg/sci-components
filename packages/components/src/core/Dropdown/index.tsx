@@ -5,8 +5,8 @@ import {
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useState } from "react";
 import {
-  AutocompleSingleColumnOption,
   AutocompleteMultiColumnOption,
+  AutocompleteSingleColumnOption,
   DefaultAutocompleteOption,
 } from "../Autocomplete";
 import DropdownMenu, {
@@ -57,7 +57,7 @@ export interface ExtraDropdownProps<
   disabled?: boolean;
   label: ReactNode;
   options:
-    | AutocompleSingleColumnOption<T>[]
+    | AutocompleteSingleColumnOption<T>[]
     | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
   onClose?: () => void;
   search?: boolean;

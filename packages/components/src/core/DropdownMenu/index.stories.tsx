@@ -1,7 +1,7 @@
 import { AutocompleteValue, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useRef, useState } from "react";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import ButtonIcon from "../ButtonIcon";
 import InputDropdown from "../InputDropdown";
 import Tag from "../Tag";

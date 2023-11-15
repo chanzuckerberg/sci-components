@@ -1,4 +1,4 @@
-import { DefaultAutocompleteOption } from "src/core/AutocompleteBase";
+import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import TagFilter from "src/core/TagFilter";
 
 interface Props {

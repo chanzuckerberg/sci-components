@@ -19,19 +19,19 @@ import React, {
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
-} from "../Autocomplete";
+} from "../..";
+import ButtonIcon from "../../../ButtonIcon";
+import Icon from "../../../Icon";
+import { InputSearchProps } from "../../../InputSearch";
+import { StyledInputAdornment } from "../../../InputSearch/style";
+import { SDSTheme } from "../../../styles";
 import AutocompleteBase, {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
 } from "../AutocompleteBase";
-import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
-import { InputSearchProps } from "../InputSearch";
-import { StyledInputAdornment } from "../InputSearch/style";
-import { SDSTheme } from "../styles";
 import {
   StyleProps,
-  StyledAutocomplesWrapper,
+  StyledAutocompleteGroupWrapper,
   StyledAutocompleteInput,
   StyledAutocompletePopper,
   StyledColumn,
@@ -217,7 +217,7 @@ const AutocompleteMultiColumn = <
             endAdornment: (
               <StyledInputAdornment position="end">
                 {/**
-                 * (masoudmansdon): Because the Autocomplete component overrides the
+                 * (masoudmanson): Because the Autocomplete component overrides the
                  * InputSearch's endAdornment, we must also include the clear IconButton here.
                  */}
                 {inputValue && (
@@ -269,9 +269,9 @@ const AutocompleteMultiColumn = <
             disablePortal
             {...PopperBaseProps}
           >
-            <StyledAutocomplesWrapper className="SdsAutocomplete-wrapper">
+            <StyledAutocompleteGroupWrapper className="SdsAutocomplete-wrapper">
               {options.map((autocompleteOptions) => (
-                <RenderAutocompletes
+                <RenderAutocompleteGroup
                   autocompleteProps={autocompleteOptions}
                   key={autocompleteOptions.columnName}
                   onValueChange={defaultOnValueChange}
@@ -284,14 +284,14 @@ const AutocompleteMultiColumn = <
                   }
                 />
               ))}
-            </StyledAutocomplesWrapper>
+            </StyledAutocompleteGroupWrapper>
           </PopperComponent>
         )}
       </div>
     </ClickAwayListener>
   );
 
-  function RenderAutocompletes({
+  function RenderAutocompleteGroup({
     autocompleteProps,
     onValueChange,
     value: propValue,

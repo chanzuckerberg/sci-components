@@ -5,13 +5,13 @@ import {
 } from "@mui/base";
 import { Args, Meta } from "@storybook/react";
 import { SyntheticEvent, useEffect, useState } from "react";
-import AutocompleteBase, {
-  DefaultAutocompleteOption,
-} from "../AutocompleteBase";
-import RawAutocompleteMultiColumn from "../AutocompleteMultiColumn";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import TagFilter from "../TagFilter";
+import AutocompleteBase, {
+  DefaultAutocompleteOption,
+} from "./components/AutocompleteBase";
+import RawAutocompleteMultiColumn from "./components/AutocompleteMultiColumn";
 import RawAutocomplete, {
   AutocompleteMultiColumnValue,
   SDSAutocompleteValue,

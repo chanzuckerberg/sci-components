@@ -2,7 +2,7 @@ import { AutocompleteValue, Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import { useState } from "react";
 import { noop } from "src/common/utils";
-import { DefaultAutocompleteOption } from "../AutocompleteBase";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import Button from "../Button";
 import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
