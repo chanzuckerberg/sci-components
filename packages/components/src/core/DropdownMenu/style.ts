@@ -124,11 +124,60 @@ export const StyledHeaderTitle = styled("div", {
   }}
 `;
 
+const StyledDropdownMenuAutocompleteWrapperColumnStyles = (
+  props: StyleProps
+) => {
+  const { search, title } = props;
+  const spacings = getSpaces(props);
+
+  return `
+    .SdsAutocompleteMultiColumn-column-root{
+      padding-right: ${
+        search || title ? `${spacings?.xxs}px` : `${spacings?.m}px`
+      };
+
+      &:not(:last-child) {
+        margin-right: ${
+          search || title ? `2px` : `${spacings?.m}px`
+        } !important;
+        padding-right: ${search || title ? `0` : `${spacings?.m}px`} !important;
+      }
+
+      .MuiAutocomplete-popper,
+      .MuiPopper-root {
+        .MuiAutocomplete-paper,
+        .MuiPaper-root {
+          .MuiAutocomplete-listbox {
+            padding: ${
+              title || search
+                ? `0 ${spacings?.m}px ${spacings?.s}px ${spacings?.s}px`
+                : `0`
+            } !important;
+          }
+
+          .MuiAutocomplete-groupLabel {
+            padding: ${
+              title || search ? `0` : `${spacings?.xxs}px ${spacings?.s}px`
+            } !important;
+          }
+
+          .MuiAutocomplete-groupUl {
+            margin: ${
+              title || search
+                ? `0 0 ${spacings?.m}px`
+                : `0 ${spacings?.s}px ${spacings?.m}px`
+            } !important;
+          }
+        }
+      }
+    }
+  `;
+};
+
 export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
   shouldForwardProp: (prop: string) =>
     !doNotForwardProps.includes(prop) || prop === "anchorEl",
 })`
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   ${(props: StyleProps) => {
     const { search, title, isMultiColumn } = props;
     const spacings = getSpaces(props);
@@ -136,39 +185,39 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
     return `
       .SdsAutocompleteMultiColumn-column-title,
       .SdsAutocompleteMultiColumn-column-relation-icon {
-        padding-top: ${search || title ? spacings?.xxxs : 0}px
+        padding-top: ${search || title ? spacings?.xxxs : 0}px;
       }
 
       .MuiAutocomplete-popper,
       .MuiPopper-root {
-        position: relative !important
-        transform: none !important
-        box-shadow: none
-        padding: 0
-        border: none
-        width: 100% !important
+        position: relative !important;
+        transform: none !important;
+        box-shadow: none;
+        padding: 0;
+        border: none;
+        width: 100% !important;
 
         .MuiAutocomplete-paper,
         .MuiPaper-root {
-          box-shadow: none !important
-          border: none !important
-          border-radius: 0
-          margin: 0
+          box-shadow: none !important;
+          border: none !important;
+          border-radius: 0;
+          margin: 0;
           padding: ${
             (title || search) && !isMultiColumn ? `0 ${spacings?.s}px` : `0`
-          } !important
+          } !important;
 
           .MuiAutocomplete-listbox {
             ${
               title || search
-                ? `padding: : 0 ${spacings?.s}px !important`
+                ? `padding: : 0 ${spacings?.s}px !important;`
                 : null
             }
             li:first-of-type {
               .MuiAutocomplete-groupLabel {
                 padding-top: ${
                   title || search ? `${spacings?.xxxs}px` : `${spacings?.xxs}px`
-                }
+                };
               }
             }
           }
@@ -176,7 +225,7 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
           .MuiAutocomplete-groupLabel {
             padding: ${
               title || search ? `0` : `${spacings?.xxs}px ${spacings?.s}px`
-            } !important
+            } !important;
           }
   
           .MuiAutocomplete-groupUl {
@@ -184,53 +233,12 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
               title || search
                 ? `0 0 ${spacings?.m}px`
                 : `0 ${spacings?.s}px ${spacings?.m}px`
-            } !important
+            } !important;
           }
         }
       }
 
-      .SdsAutocompleteMultiColumn-column-root{
-        padding-right: ${
-          search || title ? `${spacings?.xxs}px` : `${spacings?.m}px`
-        } 
-
-        &:not(:last-child) {
-          margin-right: ${
-            search || title ? `2px` : `${spacings?.m}px`
-          } !important
-          padding-right: ${
-            search || title ? `0` : `${spacings?.m}px`
-          } !important
-        }
-
-        .MuiAutocomplete-popper,
-        .MuiPopper-root {
-          .MuiAutocomplete-paper,
-          .MuiPaper-root {
-            .MuiAutocomplete-listbox {
-              padding: ${
-                title || search
-                  ? `0 ${spacings?.m}px ${spacings?.s}px ${spacings?.s}px`
-                  : `0`
-              } !important
-            }
-
-            .MuiAutocomplete-groupLabel {
-              padding: ${
-                title || search ? `0` : `${spacings?.xxs}px ${spacings?.s}px`
-              } !important
-            }
-    
-            .MuiAutocomplete-groupUl {
-              margin: ${
-                title || search
-                  ? `0 0 ${spacings?.m}px`
-                  : `0 ${spacings?.s}px ${spacings?.m}px`
-              } !important
-            }
-          }
-        }
-      }
+      ${StyledDropdownMenuAutocompleteWrapperColumnStyles(props)}
     `;
   }}
 `;
