@@ -9,40 +9,27 @@ import {
   PopperProps,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, {
-  SyntheticEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
 } from "../..";
 import ButtonIcon from "../../../ButtonIcon";
-import Icon from "../../../Icon";
 import { InputSearchProps } from "../../../InputSearch";
 import { StyledInputAdornment } from "../../../InputSearch/style";
 import { SDSTheme } from "../../../styles";
-import AutocompleteBase, {
+import {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
 } from "../AutocompleteBase";
+import AutocompleteGroup from "../AutocompleteGroup";
 import {
   StyleProps,
   StyledAutocompleteGroupWrapper,
   StyledAutocompleteInput,
-  StyledAutocompletePopper,
-  StyledColumn,
-  StyledColumnIcon,
-  StyledColumnTitle,
   StyledPaper,
   StyledPopper,
 } from "./style";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -60,9 +47,7 @@ interface ExtraAutocompleteMultiColumnProps<
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   label?: string;
-  PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
@@ -123,8 +108,6 @@ const AutocompleteMultiColumn = <
   const {
     InputBaseProps,
     open = false,
-    PaperComponent = StyledPaper,
-    PopperComponent = StyledPopper,
     PopperPlacement = "bottom-start",
     PopperBaseProps,
     search = false,
@@ -160,13 +143,6 @@ const AutocompleteMultiColumn = <
       setAutocompleteMultiColumnValue(parentInitialValue);
     }
   }, [options, parentInitialValue]);
-
-  const defaultPopperComponent = useCallback(
-    () => (popperProps: PopperProps) => {
-      return <StyledAutocompletePopper {...popperProps} />;
-    },
-    []
-  );
 
   const defaultOnValueChange = (
     column: string,
@@ -254,7 +230,7 @@ const AutocompleteMultiColumn = <
         />
 
         {anchorEl && (
-          <PopperComponent
+          <StyledPopper
             modifiers={[
               {
                 name: "offset",
@@ -269,9 +245,9 @@ const AutocompleteMultiColumn = <
             disablePortal
             {...PopperBaseProps}
           >
-            <StyledAutocompleteGroupWrapper className="SdsAutocomplete-wrapper">
+            <StyledAutocompleteGroupWrapper className="SdsAutocompleteMultiColumn-wrapper">
               {options.map((autocompleteOptions) => (
-                <RenderAutocompleteGroup
+                <AutocompleteGroup
                   autocompleteProps={autocompleteOptions}
                   key={autocompleteOptions.columnName}
                   onValueChange={defaultOnValueChange}
@@ -282,111 +258,21 @@ const AutocompleteMultiColumn = <
                         ]
                       : undefined
                   }
+                  multiple={multiple}
+                  label={label}
+                  InputBaseProps={InputBaseProps}
+                  popperOpen={popperOpen}
+                  inputValue={inputValue}
+                  PaperComponent={StyledPaper}
+                  {...rest}
                 />
               ))}
             </StyledAutocompleteGroupWrapper>
-          </PopperComponent>
+          </StyledPopper>
         )}
       </div>
     </ClickAwayListener>
   );
-
-  function RenderAutocompleteGroup({
-    autocompleteProps,
-    onValueChange,
-    value: propValue,
-  }: {
-    autocompleteProps: AutocompleteMultiColumnOption<
-      T,
-      Multiple,
-      DisableClearable,
-      FreeSolo
-    >;
-    onValueChange: (
-      colum: string,
-      event: React.SyntheticEvent,
-      value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
-      reason: AutocompleteChangeReason,
-      details?: AutocompleteChangeDetails<T>
-    ) => void;
-    value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
-  }) {
-    const {
-      columnName,
-      columnWidth,
-      sdsIcon,
-      // value: propValue,
-      props: propProps,
-    } = autocompleteProps;
-
-    const [value, setValue] = useState<
-      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-    >(getInitialValue(multiple, propValue));
-    const [pendingValue, setPendingValue] = useState<
-      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-    >(getInitialValue(multiple, propValue));
-
-    useEffect(() => {
-      if (propValue !== undefined) {
-        setValue(propValue);
-      }
-    }, [propValue]);
-
-    const handleChange = useCallback(
-      (
-        event: React.SyntheticEvent,
-        newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
-        reason: AutocompleteChangeReason,
-        details?: AutocompleteChangeDetails<T>
-      ) => {
-        propProps?.onChange?.(event, newValue, reason, details);
-        onValueChange(columnName, event, newValue, reason, details);
-
-        if (multiple) {
-          setPendingValue(newValue);
-        } else {
-          if (
-            newValue &&
-            !Array.isArray(newValue) &&
-            Object.prototype.hasOwnProperty.call(newValue, "name")
-          ) {
-            setValue(newValue);
-          }
-        }
-      },
-      [columnName, onValueChange, propProps]
-    );
-
-    return (
-      <StyledColumn columnWidth={columnWidth}>
-        {sdsIcon && (
-          <StyledColumnIcon className="SdsAutocompleteMultiColumn-column-relation-icon">
-            <Icon sdsIcon={sdsIcon} sdsSize="xs" sdsType="static" />
-          </StyledColumnIcon>
-        )}
-        <StyledColumnTitle className="SdsAutocompleteMultiColumn-column-title">
-          {columnName}
-        </StyledColumnTitle>
-        <AutocompleteBase<T, Multiple, DisableClearable, FreeSolo>
-          label={label}
-          InputBaseProps={InputBaseProps}
-          open={popperOpen}
-          multiple={multiple}
-          inputValue={inputValue}
-          options={autocompleteProps.options as T[]}
-          PaperComponent={PaperComponent}
-          PopperComponent={defaultPopperComponent()}
-          onChange={handleChange}
-          value={multiple ? pendingValue : value}
-          search={false}
-          {...rest}
-          {...autocompleteProps.props}
-          // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns
-          groupBy={undefined}
-        />
-      </StyledColumn>
-    );
-  }
 
   function clearInput() {
     setInputValue("");
@@ -435,29 +321,6 @@ const AutocompleteMultiColumn = <
     if (event.key === "Backspace") {
       event.stopPropagation();
     }
-  }
-
-  function getInitialValue(
-    isMultiple: boolean | undefined,
-    customValue?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  ): AutocompleteValue<T, Multiple, DisableClearable, FreeSolo> {
-    if (customValue !== undefined) {
-      return customValue;
-    }
-
-    return isMultiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >);
   }
 };
 

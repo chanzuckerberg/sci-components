@@ -57,7 +57,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
         .MuiAutocomplete-listbox {
           max-height: 40vh;
-          padding: 0 ${spacings?.xs}px ${spacings?.xs}px;
+          padding: 0 ${spacings?.xs}px 0 0;
 
           .MuiAutocomplete-option {
             min-height: unset;
@@ -81,7 +81,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
           & > li:last-child .MuiAutocomplete-groupUl {
             border-bottom: none;
-            margin-bottom: 0;
+            margin-bottom: ${spacings?.s}px;
             padding-bottom: 0;
           }
         }
@@ -89,12 +89,12 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .MuiAutocomplete-groupLabel {
           top: 0;
           color: ${colors?.gray[500]};
-          padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
+          padding: ${spacings?.xxs}px ${spacings?.s}px;
         }
 
         .MuiAutocomplete-groupUl {
-          margin-bottom: ${spacings?.m}px;
           position: relative;
+          margin: 0 ${spacings?.s}px ${spacings?.m}px;
           border-bottom: ${borders?.gray[200]};
           padding-bottom: ${spacings?.xxs}px;
 
@@ -160,7 +160,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding-top: ${spacings?.xs}px;
+      padding: ${spacings?.xs}px 0 ${spacings?.xs}px ${spacings?.xs}px ;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

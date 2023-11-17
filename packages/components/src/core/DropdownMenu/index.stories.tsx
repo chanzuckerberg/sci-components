@@ -15,7 +15,16 @@ const groupByOptions = [
   undefined,
   (option: DefaultAutocompleteOption) => option.section as string,
 ];
-const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
+
+const dataOptions = [
+  GITHUB_LABELS,
+  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
+  [
+    GITHUB_LABELS_MULTI_COLUMN[0],
+    GITHUB_LABELS_MULTI_COLUMN[1],
+    GITHUB_LABELS_MULTI_COLUMN[2],
+  ],
+];
 
 const DropdownMenu = <
   T extends DefaultAutocompleteOption,
@@ -90,7 +99,7 @@ export default {
     },
     options: {
       control: {
-        labels: ["Single Column Autocomplete", "Multi Column Autocomplete"],
+        labels: ["One Column", "Two Columns", "Three Columns"],
         type: "select",
       },
       mapping: dataOptions,
@@ -136,6 +145,7 @@ export const Default = {
     keepSearchOnSelect: true,
     multiple: true,
     open: true,
+    options: dataOptions[1],
     search: true,
     title: "Github Labels",
     width: 300,
@@ -659,6 +669,8 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                   title={title}
                   search={search}
                   key={String(groupBy)}
+                  open
+                  width={250}
                 />
               </>
             </div>

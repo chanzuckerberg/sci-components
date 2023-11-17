@@ -57,9 +57,6 @@ export type DefaultAutocompleteOption =
   | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> // Represents a basic option with optional custom properties.
   | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic>; // Represents an option with a custom component and optional basic properties.
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
-
 interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
   extends StyleProps {
   keepSearchOnSelect?: boolean;
@@ -77,7 +74,6 @@ interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
   label?: string;
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
 }
 
 type CustomAutocompleteProps<
@@ -118,7 +114,6 @@ const AutocompleteBase = <
     loadingText = "",
     noOptionsText = "No options",
     onInputChange = noop,
-    PaperComponent = StyledPaper,
     renderOption = defaultRenderOption,
     renderTags = defaultRenderTags,
     search = false,
@@ -138,7 +133,7 @@ const AutocompleteBase = <
       loading={loading}
       loadingText={loadingText}
       noOptionsText={noOptionsText}
-      PaperComponent={PaperComponent}
+      PaperComponent={StyledPaper}
       PopperComponent={useDefaultPopperComponent()}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
@@ -210,7 +205,7 @@ const AutocompleteBase = <
             endAdornment: (
               <StyledInputAdornment position="end">
                 {/**
-                 * (masoudmansdon): Because the Autocomplete component overrides the
+                 * (masoudmanson): Because the Autocomplete component overrides the
                  * InputSearch's endAdornment, we must also include the clear IconButton here.
                  */}
                 {inputValue && (

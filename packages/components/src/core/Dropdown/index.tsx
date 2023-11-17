@@ -43,7 +43,7 @@ export type MUIValue<
 > = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
+// type RenderFunctionType = (props: any) => JSX.Element;
 
 export interface ExtraDropdownProps<
   T,
@@ -68,8 +68,6 @@ export interface ExtraDropdownProps<
   value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   style?: React.CSSProperties;
   className?: string;
-  PopperComponent?: typeof StyledPopper | RenderFunctionType;
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   InputDropdownComponent?: typeof InputDropdown;
   isTriggerChangeOnOptionClick?: boolean;
 }
@@ -114,18 +112,14 @@ const Dropdown = <
     // is equivalent to clicking the Cancel button, closing the dropdown and losing
     // unapplied changes.
     closeOnBlur = !buttons,
-    onChange,
     onClose,
     DropdownMenuProps = {},
     InputDropdownProps = { sdsStyle: "minimal" },
-    // value: propValue,
-    PopperComponent,
     InputDropdownComponent = InputDropdown,
     isTriggerChangeOnOptionClick = false,
     disabled = false,
     ...rest
   } = props;
-  console.log(rest);
 
   if (buttons && !multiple) {
     // eslint-disable-next-line no-console
@@ -157,11 +151,9 @@ const Dropdown = <
         onClose={handleClose}
         multiple={multiple as Multiple}
         disableCloseOnSelect={multiple}
-        PopperComponent={PopperComponent}
         options={options}
         onClickAway={handleClickAway}
         width={250}
-        onChange={onChange}
         {...DropdownMenuProps}
         {...rest}
       >

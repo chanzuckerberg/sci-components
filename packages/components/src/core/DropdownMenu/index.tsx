@@ -15,16 +15,12 @@ import { SDSTheme } from "../styles";
 import {
   StyleProps,
   StyledAutocomplete,
-  StyledAutocompletePopper,
+  StyledDropdownMenuAutocompleteWrapper,
   StyledHeaderTitle,
-  StyledPaper,
   StyledPopper,
 } from "./style";
 
 export type DefaultDropdownMenuOption = DefaultAutocompleteOption;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
 
 interface ExtraDropdownMenuProps extends StyleProps {
   keepSearchOnSelect?: boolean;
@@ -39,9 +35,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   title?: string;
   label?: string;
   anchorEl: HTMLElement | null;
-  PopperComponent?: typeof StyledPopper | RenderFunctionType;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
@@ -81,8 +75,6 @@ const DropdownMenu = <
     id,
     InputBaseProps,
     open = false,
-    PaperComponent = StyledPaper,
-    PopperComponent = StyledPopper,
     PopperPlacement = "bottom-start",
     PopperBaseProps = {},
     search = false,
@@ -95,18 +87,14 @@ const DropdownMenu = <
     width = 160,
     ...rest
   } = props;
-  const defaultPopperComponent = (popperProps: PopperProps) => {
-    return (
-      <StyledAutocompletePopper
-        search={search}
-        title={title}
-        {...popperProps}
-      />
-    );
-  };
+
+  const isMultiColumn = options && !!options[0] && "options" in options[0];
+  const singleColumnPadding = `${theme.app?.spacing?.xs}px 0 ${theme.app?.spacing?.xs}px ${theme.app?.spacing?.xs}px !important`;
+  const multiColumnNoSearchOrTitlePadding = `${theme.app?.spacing?.l}px ${theme.app?.spacing?.xxs}px ${theme.app?.spacing?.l}px ${theme.app?.spacing?.l}px !important`;
+  const multiColumnWithSearchOrTitlePadding = `${theme.app?.spacing?.xs}px 0 ${theme.app?.spacing?.l}px ${theme.app?.spacing?.xs}px !important`;
 
   return (
-    <PopperComponent
+    <StyledPopper
       id={id}
       modifiers={[
         {
@@ -122,6 +110,11 @@ const DropdownMenu = <
       {...PopperBaseProps}
       sx={{
         ...PopperBaseProps?.sx,
+        padding: isMultiColumn
+          ? search || title
+            ? multiColumnWithSearchOrTitlePadding
+            : multiColumnNoSearchOrTitlePadding
+          : singleColumnPadding,
         width:
           (options &&
             options[0] &&
@@ -132,7 +125,11 @@ const DropdownMenu = <
       }}
     >
       <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
-        <div>
+        <StyledDropdownMenuAutocompleteWrapper
+          search={search}
+          title={title}
+          isMultiColumn={isMultiColumn}
+        >
           {title && (
             <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
           )}
@@ -142,10 +139,8 @@ const DropdownMenu = <
               label={label}
               search={search}
               title={title}
-              PaperComponent={PaperComponent}
               open={open}
               options={options}
-              PopperComponent={defaultPopperComponent}
               InputBaseProps={{
                 ...InputBaseProps,
                 onClick: noop,
@@ -153,14 +148,15 @@ const DropdownMenu = <
               PopperBaseProps={{
                 disablePortal: true,
               }}
+              disablePortal
               onClickAway={noop}
               {...rest}
             />
           )}
           {children}
-        </div>
+        </StyledDropdownMenuAutocompleteWrapper>
       </ClickAwayListener>
-    </PopperComponent>
+    </StyledPopper>
   );
 };
 

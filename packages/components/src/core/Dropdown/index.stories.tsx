@@ -70,7 +70,15 @@ const onCloseOptions = [
   },
 ];
 const buttonPositionOptions = ["left", "right"];
-const dataOptions = [GITHUB_LABELS, GITHUB_LABELS_MULTI_COLUMN];
+const dataOptions = [
+  GITHUB_LABELS,
+  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
+  [
+    GITHUB_LABELS_MULTI_COLUMN[0],
+    GITHUB_LABELS_MULTI_COLUMN[1],
+    GITHUB_LABELS_MULTI_COLUMN[2],
+  ],
+];
 const LABEL = "Click Target";
 
 export default {
@@ -123,7 +131,7 @@ export default {
     },
     options: {
       control: {
-        labels: ["Single Column Autocomplete", "Multi Column Autocomplete"],
+        labels: ["One Column", "Two Columns", "Three Columns"],
         type: "select",
       },
       mapping: dataOptions,

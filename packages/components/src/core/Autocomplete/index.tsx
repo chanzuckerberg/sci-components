@@ -4,7 +4,7 @@ import {
   AutocompleteValue,
 } from "@mui/base";
 import { PopperProps } from "@mui/material";
-import React from "react";
+import React, { ReactElement } from "react";
 import { IconNameToSizes } from "../Icon";
 import AutocompleteBase, {
   AutocompleteBaseProps,
@@ -15,7 +15,6 @@ import AutocompleteBase, {
 import AutocompleteMultiColumn, {
   AutocompleteMultiColumnProps,
 } from "./components/AutocompleteMultiColumn";
-import { StyleProps } from "./style";
 
 export type {
   AutocompleteBaseProps,
@@ -119,12 +118,15 @@ interface ExtraAutocompleteProps<
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined
-> extends StyleProps {
+> {
   options: SDSAutocompleteOptions<T, Multiple, DisableClearable, FreeSolo>;
   PopperBaseProps?: Partial<PopperProps>;
   value?: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   onChange?: SDSAutocompleteOnChange<T, Multiple, DisableClearable, FreeSolo>;
+  count?: number;
+  icon?: ReactElement;
+  search?: boolean;
 }
 
 export type AutocompleteProps<
