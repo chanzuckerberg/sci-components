@@ -47,6 +47,7 @@ interface ExtraAutocompleteMultiColumnProps<
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   label?: string;
+  PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
@@ -120,6 +121,7 @@ const AutocompleteMultiColumn = <
     multiple,
     value: parentInitialValue,
     onChange,
+    PopperComponent = StyledPopper,
     ...rest
   } = props;
   const theme: SDSTheme = useTheme();
@@ -230,7 +232,7 @@ const AutocompleteMultiColumn = <
         />
 
         {anchorEl && (
-          <StyledPopper
+          <PopperComponent
             modifiers={[
               {
                 name: "offset",
@@ -268,7 +270,7 @@ const AutocompleteMultiColumn = <
                 />
               ))}
             </StyledAutocompleteGroupWrapper>
-          </StyledPopper>
+          </PopperComponent>
         )}
       </div>
     </ClickAwayListener>

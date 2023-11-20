@@ -39,12 +39,6 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
       },
     ],
     sdsIcon: "chevronRight",
-    value: [
-      {
-        name: "Status: can't reproduce",
-        section: "name only",
-      },
-    ],
   },
   {
     columnName: "Column 2",
@@ -81,7 +75,7 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         section: SORTED_BY_TYPE,
       },
     ],
-    sdsIcon: "chevronRight",
+    sdsIcon: "chevronRight2",
   },
   {
     columnName: "Column 3",
@@ -144,6 +138,5 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         section: "With Icon",
       },
     ],
-    sdsIcon: "triangleRight",
   },
 ];

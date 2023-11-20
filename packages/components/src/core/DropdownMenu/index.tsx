@@ -35,6 +35,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   title?: string;
   label?: string;
   anchorEl: HTMLElement | null;
+  PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
@@ -75,6 +76,7 @@ const DropdownMenu = <
     id,
     InputBaseProps,
     open = false,
+    PopperComponent = StyledPopper,
     PopperPlacement = "bottom-start",
     PopperBaseProps = {},
     search = false,
@@ -94,7 +96,7 @@ const DropdownMenu = <
   const multiColumnWithSearchOrTitlePadding = `${theme.app?.spacing?.xs}px 0 ${theme.app?.spacing?.l}px ${theme.app?.spacing?.xs}px !important`;
 
   return (
-    <StyledPopper
+    <PopperComponent
       id={id}
       modifiers={[
         {
@@ -156,7 +158,7 @@ const DropdownMenu = <
           {children}
         </StyledDropdownMenuAutocompleteWrapper>
       </ClickAwayListener>
-    </StyledPopper>
+    </PopperComponent>
   );
 };
 

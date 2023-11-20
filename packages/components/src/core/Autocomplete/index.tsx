@@ -15,6 +15,7 @@ import AutocompleteBase, {
 import AutocompleteMultiColumn, {
   AutocompleteMultiColumnProps,
 } from "./components/AutocompleteMultiColumn";
+import { StyledPopper } from "./components/AutocompleteMultiColumn/style";
 
 export type {
   AutocompleteBaseProps,
@@ -139,6 +140,8 @@ export type AutocompleteProps<
   "options" | "value" | "onChange"
 > &
   ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
+
+export { StyledPopper as AutocompleteMultiColumnStyledPopper };
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,
