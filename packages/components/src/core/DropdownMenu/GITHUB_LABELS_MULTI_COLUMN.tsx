@@ -75,7 +75,7 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         section: SORTED_BY_TYPE,
       },
     ],
-    sdsIcon: "chevronRight2",
+    sdsIcon: "chevronRight",
   },
   {
     columnName: "Column 3",
