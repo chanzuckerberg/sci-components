@@ -13,7 +13,7 @@ const { common } = colors;
 enum FontWeight {
   bold = 700,
   light = 300,
-  medium = 800,
+  medium = 500,
   regular = 400,
   semibold = 600,
 }
