@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.2...@czi-sds/components@19.0.0) (2023-11-22)
+
+### Bug Fixes
+
+- **defaulttheme:** fix typo in fontWeights, medium = 500 ([#707](https://github.com/chanzuckerberg/sci-components/issues/707)) ([adf650d](https://github.com/chanzuckerberg/sci-components/commit/adf650d84482585a01a9acc6dc48dbfdabab3a50))
+
+### Features
+
+- **multicolumnautocomplete:** first implementation ([#670](https://github.com/chanzuckerberg/sci-components/issues/670)) ([77342c6](https://github.com/chanzuckerberg/sci-components/commit/77342c6745537288d508299629bc1365f51eb446))
+
+### BREAKING CHANGES
+
+- **multicolumnautocomplete:** Autocomplte options type has changed from DefaultDropdownMenuOption to
+  DefaultAutocompleteOption.
+
+- refactor(autocomplete): use MUI class names object
+
+- fix(autocomplete): remove dead code
+
+- refactor(autocomplete): update comments and code cleanup
+
 ## [18.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.1...@czi-sds/components@18.1.2) (2023-10-11)
 
 ### Bug Fixes
