@@ -1,17 +1,17 @@
-import { Autocomplete, Paper } from "@mui/material";
+import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
-import InputSearch from "../InputSearch";
+import InputSearch from "../../../InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
-  fontCapsXxxxs,
+  fontCapsXxxs,
   getBorders,
   getColors,
   getCorners,
   getShadows,
   getSpaces,
-} from "../styles";
+} from "../../../styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -24,15 +24,17 @@ const doNotForwardProps = [
   "keepSearchOnSelect",
   "search",
   "InputBaseProps",
+  "PopperBaseProps",
+  "onClickAway",
 ];
 
-export const StyledAutocomplete = styled(Autocomplete, {
+export const StyledAutocompleteBase = styled(Autocomplete, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  + .MuiAutocomplete-popper
-    > .MuiAutocomplete-paper
-    .MuiAutocomplete-groupLabel {
-    ${fontCapsXxxxs}
+  + .${autocompleteClasses.popper}
+    > .${autocompleteClasses.paper}
+    .${autocompleteClasses.groupLabel} {
+    ${fontCapsXxxs}
   }
 
   ${(props: StyleProps) => {
@@ -52,57 +54,62 @@ export const StyledAutocomplete = styled(Autocomplete, {
         }
       }
 
-      & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
-        ${search ? `padding-left: ${spacings?.s}px !important;` : ""}
-
-        .MuiAutocomplete-listbox {
+      & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
+        .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding-top: 0;
-          padding-bottom: 0;
-          padding-right: ${spacings?.s}px;
+          padding: 0 ${spacings?.m}px 0 0;
 
-          .MuiAutocomplete-option {
+          .${autocompleteClasses.option} {
             min-height: unset;
+
+            &.${autocompleteClasses.focused} {
+              background-color: ${colors?.gray[100]};
+            }
+
+            &[aria-selected="true"] {
+              background-color: white;
+            }
+
+            &[aria-disabled="true"] {
+              opacity: 1;
+            }
+
+            &[aria-selected="true"].${autocompleteClasses.focused} {
+              background-color: ${colors?.gray[100]};
+            }
           }
 
-          .MuiAutocomplete-option.Mui-focused {
-            background-color: ${colors?.gray[100]};
-          }
-
-          .MuiAutocomplete-option[aria-selected="true"] {
-            background-color: white;
-          }
-
-          .MuiAutocomplete-option[aria-disabled="true"] {
-            opacity: 1;
-          }
-
-          .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
-            background-color: ${colors?.gray[100]};
-          }
-
-          & > li:last-child .MuiAutocomplete-groupUl {
+          & > li:last-child .${autocompleteClasses.groupUl} {
             border-bottom: none;
             margin-bottom: 0;
+            padding-bottom: 0;
           }
         }
 
-        .MuiAutocomplete-groupLabel {
+        .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${colors?.gray[500]};
-          padding: ${spacings?.xxs}px 0 ${spacings?.xxs}px 0;
+          padding: ${spacings?.xxs}px ${spacings?.s}px;
         }
 
-        .MuiAutocomplete-groupUl {
-          margin-bottom: ${spacings?.m}px;
+        .${autocompleteClasses.groupUl} {
           position: relative;
-          padding: 0 0 ${spacings?.xs}px 0 0;
+          margin: 0 0 ${spacings?.m}px;
           border-bottom: ${borders?.gray[200]};
+          padding-bottom: ${spacings?.xxs}px;
 
           & li:last-of-type {
             position: relative;
-            margin-bottom: ${spacings?.xxs}px;
           }
+        }
+
+        .${autocompleteClasses.noOptions} {
+          padding: ${spacings?.xs}px ${spacings?.s}px;
+          margin-right: ${spacings?.l}px;
+        }
+
+        .${autocompleteClasses.loading} {
+          padding: 0 ${spacings?.m}px 0 0;
         }
       }
     `;
@@ -122,9 +129,7 @@ export const InputBaseWrapper = styled("div", {
       return `
         border: 0;
         padding: 0;
-
         white-space: nowrap;
-
         clip-path: inset(100%);
         clip: rect(0 0 0 0);
         overflow: hidden;
@@ -153,7 +158,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding: ${spacings?.s}px 0 0 ${spacings?.s}px;
+      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px ;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

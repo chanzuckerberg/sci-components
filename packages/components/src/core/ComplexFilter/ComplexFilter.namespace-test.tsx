@@ -1,5 +1,8 @@
-import { ComplexFilter, ComplexFilterProps } from "@czi-sds/components";
-import React from "react";
+import {
+  ComplexFilter,
+  ComplexFilterProps,
+  DefaultAutocompleteOption,
+} from "@czi-sds/components";
 import { noop } from "src/common/utils";
 
 const OPTIONS = [
@@ -15,7 +18,14 @@ const OPTIONS = [
   },
 ];
 
-const ComplexFilterNameSpaceTest = (props: ComplexFilterProps<true>) => {
+const ComplexFilterNameSpaceTest = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: ComplexFilterProps<T, Multiple, DisableClearable, FreeSolo>
+) => {
   return (
     <ComplexFilter
       label="Click Target"

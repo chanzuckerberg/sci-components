@@ -1,27 +1,37 @@
 import {
   AutocompleteInputChangeReason,
-  AutocompleteProps,
   AutocompleteRenderInputParams,
   ClickAwayListener,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
   PaperProps,
   PopperProps,
 } from "@mui/material";
-import React, { SyntheticEvent, useCallback } from "react";
-import Autocomplete, { DefaultAutocompleteOption } from "../Autocomplete";
+import { useTheme } from "@mui/material/styles";
+import React, { SyntheticEvent, useMemo } from "react";
+import { EMPTY_OBJECT, noop } from "src/common/utils";
+import Autocomplete, { AutocompleteProps } from "../Autocomplete";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
+import { SDSTheme } from "../styles";
 import {
   StyleProps,
-  StyledAutocompletePopper,
+  StyledDropdownMenuAutocompleteWrapper,
   StyledHeaderTitle,
   StyledPaper,
   StyledPopper,
 } from "./style";
 
+/**
+ * (masoudmanson): We've replaced DefaultDropdownMenuOption with DefaultAutocompleteOption
+ * as the preferred choice. However, for backward compatibility, we've exported this line to
+ * prevent potential TypeScript type issues for product teams using previous versions.
+ */
+
 export type DefaultDropdownMenuOption = DefaultAutocompleteOption;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
+// (masoudmanson): Represents the minimum width defined by design specifications
+// for the dropdownMenu's popper component
+export const MINIMUM_DROPDOWN_MENU_POPPER_WIDTH = 160;
 
 interface ExtraDropdownMenuProps extends StyleProps {
   keepSearchOnSelect?: boolean;
@@ -36,19 +46,20 @@ interface ExtraDropdownMenuProps extends StyleProps {
   title?: string;
   label?: string;
   anchorEl: HTMLElement | null;
-  PopperComponent?: typeof StyledPopper | RenderFunctionType;
+  PopperComponent?: React.JSXElementConstructor<PopperProps>;
+  PaperComponent?: React.JSXElementConstructor<PaperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
   children?: JSX.Element | null;
-  onClickAway: (event: MouseEvent | TouchEvent) => void;
+  onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
+  width?: number;
 }
 
 type CustomAutocompleteProps<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
@@ -56,46 +67,68 @@ type CustomAutocompleteProps<
 
 export type DropdownMenuProps<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraDropdownMenuProps;
 
+const DEFAULT_POPPER_BASE_PROPS: Partial<PopperProps> = {
+  disablePortal: true,
+};
+
 const DropdownMenu = <
-  T extends DefaultDropdownMenuOption,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >(
   props: DropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
+  const theme: SDSTheme = useTheme();
+
   const {
     anchorEl,
     id,
-    InputBaseProps = {
-      autoFocus: true,
-      sx: {
-        padding: "8px",
-      },
-    },
+    InputBaseProps,
     open = false,
-    PaperComponent = StyledPaper,
     PopperComponent = StyledPopper,
+    PaperComponent = StyledPaper,
     PopperPlacement = "bottom-start",
     PopperBaseProps = {},
     search = false,
     title,
     label = "Search",
     children,
-    onClickAway,
+    options,
+    onClickAway = noop,
     ClickAwayListenerProps,
+    width = MINIMUM_DROPDOWN_MENU_POPPER_WIDTH,
     ...rest
   } = props;
 
-  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
-    return <StyledAutocompletePopper {...popperProps} />;
-  }, []);
+  const isMultiColumn = "options" in (options?.[0] || EMPTY_OBJECT);
+
+  // (masoudmanson): The DropdownMenu's Popper component should have a minimum
+  // width of MINIMUM_DROPDOWN_MENU_POPPER_WIDTH pixels if the DropdownMenu is
+  // a single column dropdown.However, for larger multi-column autocompletes,
+  // the width should be set to 'auto' to accommodate the expanded layout.
+  const dropdownMenuPopperSx = useMemo(() => {
+    return {
+      ...PopperBaseProps?.sx,
+      width:
+        isMultiColumn || width < MINIMUM_DROPDOWN_MENU_POPPER_WIDTH
+          ? "auto"
+          : width,
+    };
+  }, [PopperBaseProps?.sx, isMultiColumn, width]);
+
+  const DefaultInputBaseProps = useMemo(() => {
+    return {
+      ...InputBaseProps,
+      onClick: noop,
+    };
+  }, [InputBaseProps]);
 
   return (
     <PopperComponent
@@ -104,42 +137,46 @@ const DropdownMenu = <
         {
           name: "offset",
           options: {
-            offset: [0, 8],
+            offset: [0, theme.app?.spacing.s],
           },
         },
       ]}
       open={open}
       anchorEl={anchorEl}
-      {...PopperBaseProps}
       placement={PopperPlacement}
+      {...PopperBaseProps}
+      // (masoudmanson): To override the width of the Popper,
+      // the sx prop's value must be set after spreading the PopperBaseProps.
+      sx={dropdownMenuPopperSx}
     >
-      <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
-        <div>
-          {title && (
-            <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
-          )}
-
-          <Autocomplete
-            label={label}
-            search={search}
-            InputBaseProps={InputBaseProps}
-            PaperComponent={useCallback(
-              (paperComponentProps: PaperProps) => (
-                <PaperComponent
-                  search={search}
-                  title={title}
-                  {...paperComponentProps}
-                />
-              ),
-              [PaperComponent, search, title]
+      <PaperComponent>
+        <ClickAwayListener
+          onClickAway={onClickAway}
+          {...ClickAwayListenerProps}
+        >
+          <StyledDropdownMenuAutocompleteWrapper>
+            {title && (
+              <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
             )}
-            open={open}
-            {...rest}
-            PopperComponent={defaultPopperComponent}
-          />
-          {children}
-        </div>
-      </ClickAwayListener>
+
+            {anchorEl && (
+              <Autocomplete
+                label={label}
+                search={search}
+                title={title}
+                open={open}
+                options={options}
+                PopperBaseProps={DEFAULT_POPPER_BASE_PROPS}
+                disablePortal
+                onClickAway={noop}
+                {...rest}
+                InputBaseProps={DefaultInputBaseProps}
+              />
+            )}
+            {children}
+          </StyledDropdownMenuAutocompleteWrapper>
+        </ClickAwayListener>
+      </PaperComponent>
     </PopperComponent>
   );
 };

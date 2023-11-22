@@ -1,18 +1,20 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
-import { DefaultDropdownMenuOption } from "../DropdownMenu";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import RawComplexFilter from "./index";
 
-const ComplexFilter = (props: Args): JSX.Element => {
+const ComplexFilter = <T extends DefaultAutocompleteOption>(
+  props: Args
+): JSX.Element => {
   return (
     <RawComplexFilter
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS}
+      options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
       DropdownMenuProps={{
-        groupBy: (option: DefaultDropdownMenuOption) =>
+        groupBy: (option: DefaultAutocompleteOption) =>
           option.section as string,
       }}
       {...props}
@@ -140,13 +142,14 @@ const LIVE_PREVIEW_OPTIONS = [
 
 // Test
 
-const TestDemo = (props: Args): JSX.Element => {
+const TestDemo = <T extends DefaultAutocompleteOption>(
+  props: Args
+): JSX.Element => {
   return (
     <RawComplexFilter
-      data-testid="complex-filter"
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS}
+      options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
       {...props}
     />
   );
@@ -158,5 +161,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render: (args: Args) => <TestDemo {...args} data-testid="complex-filter" />,
 };

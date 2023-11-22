@@ -1,309 +1,252 @@
 import {
-  AutocompleteFreeSoloValueMapping,
-  AutocompleteInputChangeReason,
-  AutocompleteRenderInputParams,
-  AutocompleteRenderOptionState,
-  AutocompleteProps as MuiAutocompleteProps,
-  Popper,
-  PopperProps,
-} from "@mui/material";
-import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
-import { noop } from "src/common/utils";
-import ButtonIcon from "../ButtonIcon";
-import { IconProps } from "../Icon";
-import { InputSearchProps } from "../InputSearch";
-import { StyledInputAdornment } from "../InputSearch/style";
-import MenuItem, { IconNameToSmallSizes } from "../MenuItem";
-import {
-  InputBaseWrapper,
-  StyleProps,
-  StyledAutocomplete,
-  StyledMenuInputSearch,
-  StyledMenuItemDetails,
-  StyledMenuItemText,
-  StyledPaper,
-} from "./style";
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
+  AutocompleteValue,
+} from "@mui/base";
+import { PopperProps } from "@mui/material";
+import React, { ReactElement } from "react";
+import AutocompleteBase, {
+  AutocompleteBaseProps,
+  AutocompleteOptionBasic,
+  AutocompleteOptionComponent,
+  DefaultAutocompleteOption,
+} from "./components/AutocompleteBase";
+import { StyledPaper } from "./components/AutocompleteBase/style";
+import AutocompleteMultiColumn, {
+  AutocompleteMultiColumnProps,
+} from "./components/AutocompleteMultiColumn";
+import { StyledPopper } from "./components/AutocompleteMultiColumn/style";
 
-// (thuang): This requires option to have a `name` property.
-interface AutocompleteOptionGeneral {
-  name: string;
-  section?: string;
-}
-export interface AutocompleteOptionBasic extends AutocompleteOptionGeneral {
-  count?: number;
-  details?: string;
-  sdsIcon?: keyof IconNameToSmallSizes;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>;
-}
+export type {
+  AutocompleteBaseProps,
+  AutocompleteMultiColumnProps,
+  AutocompleteOptionBasic,
+  AutocompleteOptionComponent,
+  DefaultAutocompleteOption,
+};
 
-export interface AutocompleteOptionComponent extends AutocompleteOptionGeneral {
-  component?: ReactNode;
-}
+export type AutocompleteSingleColumnOption<T> = T;
 
-type Exclusive<T, U> = T & { [K in Exclude<keyof U, keyof T>]?: undefined };
-
-export type DefaultAutocompleteOption =
-  | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent>
-  | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic>;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
-
-interface ExtraAutocompleteProps extends StyleProps {
-  keepSearchOnSelect?: boolean;
-  renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
-  onInputChange?: (
-    event: SyntheticEvent<Element, Event>,
-    value: string,
-    reason: AutocompleteInputChangeReason
-  ) => void;
-  InputBaseProps?: Partial<InputSearchProps>;
-  label: string;
-  PaperComponent?: typeof StyledPaper | RenderFunctionType;
-}
-
-type CustomAutocompleteProps<
+export type AutocompleteMultiColumnOption<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
-> = Omit<
-  MuiAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
->;
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = {
+  options: T[];
+  props?: Partial<
+    AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
+  >;
+  width?: number;
+  name: string;
+  icon?: React.ReactNode;
+};
+
+export type SDSAutocompleteOptions<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleteSingleColumnOption<T>[]
+  | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
+
+export type AutocompleteMultiColumnValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | Record<
+      string | number | symbol,
+      AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+    >
+  | undefined;
+
+export type AutocompleteSingleColumnValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
+
+export type SDSAutocompleteValue<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleteSingleColumnValue<T, Multiple, DisableClearable, FreeSolo>
+  | AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
+
+export type AutocompleteSingleColumnOnChange<
+  T,
+  Multiple,
+  DisableClearable,
+  FreeSolo
+> = (
+  event: React.SyntheticEvent,
+  value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+  reason: AutocompleteChangeReason,
+  details?: AutocompleteChangeDetails<T>
+) => void;
+
+export type AutocompleteMultiColumnOnChange<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = (
+  event: React.SyntheticEvent,
+  value: AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>,
+  reason: AutocompleteChangeReason,
+  details?: AutocompleteChangeDetails<T>
+) => void;
+
+export type SDSAutocompleteOnChange<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> =
+  | AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo>
+  | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>;
+
+interface ExtraAutocompleteProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> {
+  options: SDSAutocompleteOptions<T, Multiple, DisableClearable, FreeSolo>;
+  PopperBaseProps?: Partial<PopperProps>;
+  value?: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
+  onClickAway?: (event: MouseEvent | TouchEvent) => void;
+  onChange?: SDSAutocompleteOnChange<T, Multiple, DisableClearable, FreeSolo>;
+  count?: number;
+  icon?: ReactElement;
+  search?: boolean;
+}
 
 export type AutocompleteProps<
   T,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
-> = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
-  ExtraAutocompleteProps;
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = Omit<
+  AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
+  "options" | "value" | "onChange"
+> &
+  ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
+
+/**
+ * (masoudmanson): The AutocompleteBase manages the rendering of Single-Column Autocompletes.
+ * By default, it uses MUI's Popper component without requiring custom styles.
+ * If there's a need for a custom Popper for the Single-Column Autocomplete,
+ * users have the option to import the Popper component from the @mui/material package
+ * and extend its functionalities as per their requirements.
+ *
+ * The StyledPopper component, designed for Multi-Column Autocomplete,
+ * and the StyledPaper component, intended for Single-Column Autocomplete, are exported
+ * to accommodate external use cases.
+ */
+
+export {
+  StyledPopper as AutocompleteMultiColumnStyledPopper,
+  StyledPaper as AutocompleteSingleColumnStyledPaper,
+};
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined = undefined,
-  DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >(
   props: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
-  const {
-    multiple = false,
-    disableCloseOnSelect = multiple,
-    getOptionLabel = defaultGetOptionLabel,
-    InputBaseProps = {},
-    isOptionEqualToValue = defaultIsOptionEqualToValue,
-    keepSearchOnSelect = false,
-    label,
-    loading = false,
-    loadingText = "",
-    noOptionsText = "No options",
-    onInputChange = noop,
-    PaperComponent = StyledPaper,
-    renderOption = defaultRenderOption,
-    renderTags = defaultRenderTags,
-    search = false,
-  } = props;
+  const { options, value, onChange, ...rest } = props;
 
-  const [inputValue, setInputValue] = useState("");
-
-  /**
-   * (masoudmanson): Using a custom Popper or Paper with the Autocomplete
-   * without a useCalback results in scroll jumps while selecting an option!
-   */
-  const defaultPopperComponent = useCallback((popperProps: PopperProps) => {
-    return (
-      <Popper
-        modifiers={[
-          {
-            enabled: true,
-            name: "offset",
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
-        {...popperProps}
-      />
-    );
-  }, []);
-
-  return (
-    <StyledAutocomplete
-      clearOnBlur={false}
-      disableCloseOnSelect={disableCloseOnSelect}
-      disablePortal
-      renderTags={renderTags}
-      loading={loading}
-      loadingText={loadingText}
-      noOptionsText={noOptionsText}
-      PaperComponent={PaperComponent}
-      PopperComponent={defaultPopperComponent}
-      renderOption={renderOption}
-      getOptionLabel={getOptionLabel}
-      isOptionEqualToValue={isOptionEqualToValue}
-      inputValue={inputValue}
-      renderInput={(params: AutocompleteRenderInputParams) => (
-        <InputBaseWrapper search={search}>
-          <StyledMenuInputSearch
-            id="location-search"
-            label={label}
-            placeholder={label}
-            ref={params.InputProps.ref}
-            search={search}
-            // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
-            onKeyDown={(event) => {
-              if (event.key === "Backspace") {
-                event.stopPropagation();
-              }
-            }}
-            InputProps={{
-              /**
-               * (thuang): Works with css caret-color: "transparent" to hide
-               * mobile keyboard
-               */
-              inputMode: search ? "text" : "none",
-              /**
-               * (mmoore): passing only the ref along to InputProps to prevent
-               * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explicitly pass end adornment here
-               */
-              ...params.InputProps.ref,
-              endAdornment: (
-                <StyledInputAdornment position="end">
-                  {/**
-                   * (masoudmansdon): Because the Autocomplete component overrides the
-                   * InputSearch's endAdornment, we must also include the clear IconButton here.
-                   */}
-                  {inputValue && (
-                    <ButtonIcon
-                      aria-label="clear-button"
-                      className="input-search-clear-icon"
-                      onClick={clearInput}
-                      sdsType="primary"
-                      sdsSize="small"
-                      sdsIconProps={{
-                        sdsType: "iconButton",
-                      }}
-                      sdsIcon="xMark"
-                    />
-                  )}
-                  <ButtonIcon
-                    aria-label="search-button"
-                    sdsType="secondary"
-                    sdsSize="small"
-                    sdsIconProps={{
-                      sdsType: "interactive",
-                    }}
-                    sdsIcon="search"
-                  />
-                </StyledInputAdornment>
-              ),
-              inputProps: params.inputProps,
-            }}
-            {...InputBaseProps}
-          />
-        </InputBaseWrapper>
-      )}
-      {...props}
-      onBlur={(event: React.FocusEvent<HTMLInputElement, Element>) => {
-        setInputValue("");
-        props.onBlur?.(event);
-      }}
-      onInputChange={(
-        event: SyntheticEvent<Element, Event>,
-        value: string,
-        reason: AutocompleteInputChangeReason
-      ) => {
-        if (!multiple) {
-          if (reason === "input") {
-            setInputValue(value);
-          } else {
-            setInputValue("");
+  // Multi-column options
+  if (options && !!options[0] && "options" in options[0]) {
+    if (options.length > 1) {
+      return (
+        <AutocompleteMultiColumn
+          options={
+            options as AutocompleteMultiColumnOption<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >[]
           }
-        } else {
-          if (reason === "clear") {
-            setInputValue("");
-          } else if (
-            reason === "input" ||
-            (reason === "reset" && !keepSearchOnSelect)
-          ) {
-            setInputValue(value);
+          value={
+            value as AutocompleteMultiColumnValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
           }
-        }
-
-        if (onInputChange) onInputChange(event, value, reason);
-      }}
-    />
-  );
-
-  function clearInput() {
-    setInputValue("");
-    /**
-     * (masoudmanson): Because we are manually firing this event,
-     * we must build a onChange event to transmit the updated value to onChange listeners.
-     */
-    if (onInputChange)
-      onInputChange(
-        { target: { value: "" } } as React.ChangeEvent<HTMLInputElement>,
-        "",
-        "clear"
+          onChange={
+            onChange as AutocompleteMultiColumnOnChange<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          {...rest}
+          // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns
+          groupBy={undefined}
+          open
+        />
       );
-  }
-
-  function defaultGetOptionLabel(
-    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
-  ): string {
-    if (typeof option === "object" && "name" in option) return option.name;
-    return option.toString();
-  }
-
-  function defaultIsOptionEqualToValue(option: T, val: T): boolean {
-    return option.name === val.name;
-  }
-
-  function defaultRenderTags() {
-    return null;
-  }
-
-  function defaultRenderOption(
-    optionProps: React.HTMLAttributes<HTMLLIElement>,
-    option: T,
-    { selected }: AutocompleteRenderOptionState
-  ) {
-    let MenuItemContent;
-
-    const { component, details, count, sdsIcon, sdsIconProps } = option;
-    const menuItemLabel = getOptionLabel(option);
-
-    if (component) {
-      MenuItemContent = component;
     } else {
-      MenuItemContent = (
-        <StyledMenuItemText>
-          {menuItemLabel}
-          {details && (
-            <StyledMenuItemDetails className="menuItem-details">
-              {details}
-            </StyledMenuItemDetails>
-          )}
-        </StyledMenuItemText>
+      return (
+        <AutocompleteBase
+          options={options[0].options as AutocompleteSingleColumnOption<T>[]}
+          value={
+            value as AutocompleteSingleColumnValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          onChange={
+            onChange as AutocompleteSingleColumnOnChange<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >
+          }
+          {...rest}
+        />
       );
     }
-
+  } else {
     return (
-      <MenuItem
-        column={count}
-        disabled={optionProps["aria-disabled"] === true}
-        sdsIcon={sdsIcon}
-        sdsIconProps={sdsIconProps}
-        isMultiSelect={multiple}
-        selected={selected}
-        {...optionProps}
-      >
-        {MenuItemContent}
-      </MenuItem>
+      <AutocompleteBase
+        options={options as AutocompleteSingleColumnOption<T>[]}
+        onChange={
+          onChange as AutocompleteSingleColumnOnChange<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >
+        }
+        value={
+          value as AutocompleteSingleColumnValue<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >
+        }
+        {...rest}
+      />
     );
   }
 };

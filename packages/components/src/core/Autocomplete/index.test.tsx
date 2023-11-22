@@ -9,9 +9,9 @@ const Test = composeStory(TestStory, Meta);
 describe("<Autocomplete />", () => {
   generateSnapshots(snapshotTestStoryFile);
 
-  it("renders Autocomplete component", () => {
+  it("renders AutocompleteBase component", () => {
     render(<Test {...Test.args} />);
-    const AutocompleteElement = screen.getByTestId("autocomplete");
+    const AutocompleteElement = screen.getByTestId("autocomplete-base");
     expect(AutocompleteElement).not.toBeNull();
   });
 });

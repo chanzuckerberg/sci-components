@@ -1,17 +1,25 @@
+import { AutocompleteProps } from "@mui/material";
 import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
+import { EMPTY_OBJECT } from "src/common/utils";
+import {
+  AutocompleteMultiColumnOption,
+  AutocompleteSingleColumnOption,
+  DefaultAutocompleteOption,
+} from "../Autocomplete";
 import DropdownMenu, {
-  DefaultDropdownMenuOption,
   DropdownMenuProps as SdsDropdownMenuProps,
 } from "../DropdownMenu";
 import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "../InputDropdown";
-import { StyledButton } from "./style";
+import { StyledButton, StyledButtonsWrapper } from "./style";
 
 export {
   InputDropdown as DropdownInputDropdown,
@@ -19,78 +27,83 @@ export {
   StyledPopper as DropdownPopper,
 };
 
-// (thuang): Value's type is based on generic type placeholder (T) and Multiple
-// type. If Multiple is true, Value's type is T[] | null.
-// Otherwise, Value's type is T | null.
-// Conditional Type
-// https://www.typescriptlang.org/docs/handbook/2/conditional-types.html
-export type Value<T, Multiple> = Multiple extends undefined | false
-  ? T | null
-  : Array<T> | null;
-
-export type MUIValue<Multiple> = AutocompleteValue<
-  DefaultDropdownMenuOption,
-  Multiple,
-  undefined,
-  undefined
->;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type RenderFunctionType = (props: any) => JSX.Element;
-
-export interface DropdownProps<Multiple extends boolean | undefined> {
+export interface ExtraDropdownProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
   closeOnBlur?: boolean;
   disabled?: boolean;
   label: ReactNode;
-  options: DefaultDropdownMenuOption[];
-  onChange: (options: Value<DefaultDropdownMenuOption, Multiple>) => void;
-  onClose?: () => void;
-  multiple?: Multiple;
+  options:
+    | AutocompleteSingleColumnOption<T>[]
+    | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
   search?: boolean;
   DropdownMenuProps?: Partial<
-    SdsDropdownMenuProps<
-      DefaultDropdownMenuOption,
-      Multiple,
-      undefined,
-      undefined
-    >
+    SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
   >;
   InputDropdownProps?: Partial<InputDropdownPropsType>;
-  value?: Value<DefaultDropdownMenuOption, Multiple>;
+  value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   style?: React.CSSProperties;
   className?: string;
-  PopperComponent?: typeof StyledPopper | RenderFunctionType;
   InputDropdownComponent?: typeof InputDropdown;
   isTriggerChangeOnOptionClick?: boolean;
 }
 
+type CustomAutocompleteProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = Omit<
+  AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
+  "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+>;
+
+export type DropdownProps<
+  T,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+> = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
+  ExtraDropdownProps<T, Multiple, DisableClearable, FreeSolo>;
+
 // eslint-disable-next-line sonarjs/cognitive-complexity
-const Dropdown = <Multiple extends boolean | undefined = false>({
-  options,
-  label = "",
-  multiple = false,
-  search = false,
-  buttonPosition = "right",
-  buttons = false,
-  // By default, most dropdowns will close when the user clicks outside the dropdown.
-  // The exception is the multiple select variant with Apply/Cancel buttons,
-  // which by default will not close on blur. If closeOnBlur is enabled, clicking out
-  // is equivalent to clicking the Cancel button, closing the dropdown and losing
-  // unapplied changes.
-  closeOnBlur = !buttons,
-  onChange,
-  onClose,
-  DropdownMenuProps = {},
-  InputDropdownProps = { sdsStyle: "minimal" },
-  value: propValue,
-  PopperComponent,
-  InputDropdownComponent = InputDropdown,
-  isTriggerChangeOnOptionClick = false,
-  disabled = false,
-  ...rest
-}: DropdownProps<Multiple>): JSX.Element => {
+const Dropdown = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined
+>(
+  props: DropdownProps<T, Multiple, DisableClearable, FreeSolo>
+): JSX.Element => {
+  const {
+    options,
+    label = "",
+    multiple = false,
+    search = false,
+    buttonPosition = "right",
+    buttons = false,
+    // By default, most dropdowns will close when the user clicks outside the dropdown.
+    // The exception is the multiple select variant with Apply/Cancel buttons,
+    // which by default will not close on blur. If closeOnBlur is enabled, clicking out
+    // is equivalent to clicking the Cancel button, closing the dropdown and losing
+    // unapplied changes.
+    closeOnBlur = !buttons,
+    onClose,
+    onChange,
+    DropdownMenuProps = {},
+    InputDropdownProps = { sdsStyle: "minimal" },
+    InputDropdownComponent = InputDropdown,
+    isTriggerChangeOnOptionClick = false,
+    disabled = false,
+    value: propValue,
+    ...rest
+  } = props;
+
   if (buttons && !multiple) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -98,27 +111,27 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
     );
   }
 
+  const isMultiColumn = "options" in (options?.[0] || EMPTY_OBJECT);
+
   const isControlled = propValue !== undefined;
-
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [open, setOpen] = useState(false);
 
-  const [value, setValue] =
-    useState<Value<DefaultDropdownMenuOption, Multiple>>(getInitialValue);
-
+  const [value, setValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
   const [pendingValue, setPendingValue] = useState<
-    Value<DefaultDropdownMenuOption, true>
-  >([]);
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
+
+  const shouldShowButtons =
+    buttons && !isTriggerChangeOnOptionClick && multiple;
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
   }, [isControlled, propValue]);
-
-  const [open, setOpen] = useState(false);
-
-  const shouldShowButtons =
-    buttons && !isTriggerChangeOnOptionClick && multiple;
 
   return (
     <>
@@ -128,25 +141,25 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
         onClick={handleClick}
         sdsStage={open ? "userInput" : "default"}
         {...InputDropdownProps}
-        {...rest}
+        data-testid="dropdown"
       />
-      <DropdownMenu
+      <DropdownMenu<T, Multiple, DisableClearable, FreeSolo>
         anchorEl={anchorEl}
         open={open}
         search={search}
         onClose={handleClose}
         multiple={multiple as Multiple}
-        value={(multiple ? pendingValue : value) as MUIValue<Multiple>}
-        onChange={handleChange}
         disableCloseOnSelect={multiple}
-        PopperComponent={PopperComponent}
-        PopperBaseProps={{ sx: { minWidth: 250 } }}
         options={options}
         onClickAway={handleClickAway}
+        width={250}
+        onChange={handleChange}
+        value={isMultiColumn ? value : multiple ? pendingValue : value}
         {...DropdownMenuProps}
+        {...rest}
       >
         {shouldShowButtons ? (
-          <div>
+          <StyledButtonsWrapper buttonPosition={buttonPosition}>
             {buttonPosition === "left" ? (
               <div>
                 <StyledButton
@@ -182,11 +195,48 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
                 </StyledButton>
               </div>
             )}
-          </div>
+          </StyledButtonsWrapper>
         ) : null}
       </DropdownMenu>
     </>
   );
+
+  function getInitialValue(): AutocompleteValue<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  > {
+    return multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+  }
+
+  function handleChange(
+    event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) {
+    if (multiple) {
+      if (isTriggerChangeOnOptionClick) {
+        setPendingValue(newValue);
+
+        return setValueAndCallOnChange(event, newValue, reason, details);
+      }
+
+      return setPendingValue(newValue);
+    }
+
+    setValueAndCallOnChange(event, newValue, reason, details);
+
+    if (!isMultiColumn) setOpen(false);
+  }
 
   function handleClickAway() {
     if (open) {
@@ -199,29 +249,27 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       }
 
       if (multiple) {
-        setValueAndCallOnChange(
-          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
-        );
+        setValue(pendingValue);
       }
     }
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
-      if (multiple) {
-        setValueAndCallOnChange(
-          pendingValue as Value<DefaultDropdownMenuOption, Multiple>
-        );
-      }
+      if (!shouldShowButtons) {
+        if (multiple) {
+          setValue(pendingValue);
+        }
 
-      setOpen(false);
+        setOpen(false);
 
-      if (anchorEl) {
-        anchorEl.focus();
+        if (anchorEl) {
+          anchorEl.focus();
+        }
       }
     } else {
       if (multiple) {
-        setPendingValue(value as MUIValue<true>);
+        setPendingValue(value);
       }
 
       setAnchorEl(event.currentTarget);
@@ -230,7 +278,7 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
   }
 
   function handleClose(
-    _: React.ChangeEvent<unknown>,
+    event: React.SyntheticEvent,
     reason: AutocompleteCloseReason
   ) {
     // (thuang): We don't want to close the menu when the input is clicked
@@ -245,45 +293,19 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
     }
 
     if (multiple) {
-      setValueAndCallOnChange(
-        pendingValue as Value<DefaultDropdownMenuOption, Multiple>
-      );
+      setValue(pendingValue);
     }
 
     if (anchorEl) {
       anchorEl.focus();
     }
 
-    if (closeOnBlur) onClose?.();
+    if (closeOnBlur) onClose?.(event, reason);
 
     if (shouldShowButtons) {
-      onClose?.();
+      onClose?.(event, reason);
       setOpen(false);
     }
-  }
-
-  function handleChange(
-    _: React.ChangeEvent<unknown>,
-    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ) {
-    if (multiple) {
-      if (isTriggerChangeOnOptionClick) {
-        setPendingValue(newValue as Value<DefaultDropdownMenuOption, true>);
-
-        return setValueAndCallOnChange(
-          newValue as Value<DefaultDropdownMenuOption, Multiple>
-        );
-      }
-
-      return setPendingValue(
-        newValue as Value<DefaultDropdownMenuOption, true>
-      );
-    }
-
-    setValueAndCallOnChange(
-      newValue as Value<DefaultDropdownMenuOption, Multiple>
-    );
-    setOpen(false);
   }
 
   function handleCancel() {
@@ -291,32 +313,24 @@ const Dropdown = <Multiple extends boolean | undefined = false>({
       // (masoudmanson): To undo the latest actions made on the selections,
       // we set the value of the selection to the pendingValue. This allows us to
       // cancel any recent changes and restore the previous selection state.
-      setPendingValue(value as Value<DefaultDropdownMenuOption, true>);
+      setPendingValue(value);
     }
 
     if (anchorEl) {
       anchorEl.focus();
     }
 
-    onClose?.();
     setOpen(false);
   }
 
-  function getInitialValue(): Value<DefaultDropdownMenuOption, Multiple> {
-    if (isControlled) {
-      return propValue;
-    }
-
-    return multiple
-      ? ([] as unknown as Value<DefaultDropdownMenuOption, Multiple>)
-      : null;
-  }
-
   function setValueAndCallOnChange(
-    newValue: Value<DefaultDropdownMenuOption, Multiple>
+    event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
   ) {
     setValue(newValue);
-    onChange(newValue);
+    onChange?.(event, newValue, reason, details);
   }
 };
 

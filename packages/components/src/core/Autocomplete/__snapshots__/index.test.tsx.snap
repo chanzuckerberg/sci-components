@@ -2,10 +2,10 @@
 
 exports[`<Autocomplete /> Default story renders snapshot 1`] = `
 <div
-  style="margin: 16px 0px 0px 24px; width: 300px;"
+  style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-t46og2-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-kwza7v-MuiAutocomplete-root"
     label="Search by label"
   >
     <div
@@ -84,8 +84,5 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div
-    style="margin-top: 10px;"
-  />
 </div>
 `;

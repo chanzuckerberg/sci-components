@@ -19,12 +19,7 @@ const OPTIONS = [
 ];
 
 const AutocompleteNameSpaceTest = (
-  props: AutocompleteProps<
-    DefaultAutocompleteOption,
-    true,
-    undefined,
-    undefined
-  >
+  props: AutocompleteProps<DefaultAutocompleteOption, true, false, false>
 ) => {
   return (
     <Autocomplete

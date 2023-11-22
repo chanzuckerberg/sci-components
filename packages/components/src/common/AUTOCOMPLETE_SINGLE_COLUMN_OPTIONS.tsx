@@ -1,9 +1,8 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
-import { DefaultDropdownMenuOption } from ".";
-import Tag from "../Tag";
+import Tag from "../core/Tag";
 
-export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
+export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   {
     name: "Status: can't reproduce",
     section: "name only",
@@ -33,43 +32,61 @@ export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
     section: "name with details",
   },
   {
-    details: "This will not be worked on",
-    name: "Type: bug",
+    name: "Bacteria",
     sdsIcon: "bacteria",
     sdsIconProps: {
-      className: "custom-class-name",
+      color: "gray",
     },
     section: "With Icon",
   },
   {
-    count: 4,
-    name: "Type: discussion",
+    name: "Puzzle Piece",
     sdsIcon: "puzzlePiece",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
-    name: "Type: documentation",
+    count: 10,
+    name: "Copy",
     sdsIcon: "copy",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
-    name: "Type: enhancement",
+    name: "Light Bulb",
     sdsIcon: "lightBulb",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
-    name: "Type: epic",
+    count: 6,
+    name: "List",
     sdsIcon: "list",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
-    name: "Type: feature request",
+    name: "Vertical Tree",
     sdsIcon: "treeVertical",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
-    name: "Type: question",
-    sdsIcon: "search",
+    name: "Link",
+    sdsIcon: "link",
+    sdsIconProps: {
+      color: "gray",
+    },
     section: "With Icon",
   },
   {
@@ -82,18 +99,21 @@ export const GITHUB_LABELS: DefaultDropdownMenuOption[] = [
             sdsStyle="rounded"
             sdsType="secondary"
             color="error"
+            hover={false}
           />
           <Tag
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
             color="warning"
+            hover={false}
           />
           <Tag
             label="refactor"
             sdsStyle="rounded"
             sdsType="secondary"
             color="gray"
+            hover={false}
           />
         </div>
       </div>
