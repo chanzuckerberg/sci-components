@@ -37,8 +37,6 @@ export type AutocompleteMultiColumnOption<
   props?: Partial<
     AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
   >;
-  style?: React.CSSProperties;
-  value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   width?: number;
   name: string;
   icon?: React.ReactNode;
