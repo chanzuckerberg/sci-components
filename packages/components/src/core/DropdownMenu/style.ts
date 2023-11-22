@@ -1,4 +1,4 @@
-import { Paper, Popper } from "@mui/material";
+import { autocompleteClasses, Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import {
@@ -53,8 +53,7 @@ export const StyledHeaderTitle = styled("div", {
 `;
 
 export const StyledDropdownMenuAutocompleteWrapper = styled("div")`
-  & .MuiAutocomplete-popper,
-  & .MuiPopper-root {
+  & .${autocompleteClasses.popper}, & .MuiPopper-root {
     position: relative !important;
     transform: none !important;
     width: 100% !important;
@@ -62,8 +61,7 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div")`
     padding: 0;
     border: none;
 
-    .MuiAutocomplete-paper,
-    .MuiPaper-root {
+    .${autocompleteClasses.paper}, .MuiPaper-root {
       box-shadow: none !important;
       border: none !important;
       border-radius: 0;

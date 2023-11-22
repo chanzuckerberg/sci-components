@@ -5,7 +5,6 @@ import {
 } from "@mui/base";
 import { PopperProps } from "@mui/material";
 import React, { ReactElement } from "react";
-import { IconNameToSizes } from "../Icon";
 import AutocompleteBase, {
   AutocompleteBaseProps,
   AutocompleteOptionBasic,
@@ -42,7 +41,6 @@ export type AutocompleteMultiColumnOption<
   value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   width?: number;
   name: string;
-  sdsIcon?: keyof IconNameToSizes;
   icon?: React.ReactNode;
 };
 

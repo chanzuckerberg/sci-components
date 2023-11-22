@@ -5,7 +5,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1mo70cb-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-kwza7v-MuiAutocomplete-root"
     label="Search by label"
   >
     <div

@@ -1,4 +1,4 @@
-import { Paper, Popper } from "@mui/material";
+import { autocompleteClasses, Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import InputSearch from "../../../InputSearch";
@@ -49,11 +49,11 @@ export const StyledPopper = styled(Popper, {
       box-sizing: border-box;
       z-index: 1400;
 
-      .MuiAutocomplete-popper.MuiAutocomplete-popperDisablePortal {
+      .${autocompleteClasses.popper}.${autocompleteClasses.popperDisablePortal} {
         position: relative !important;
         transform: none !important;
       
-        .MuiPaper-root .MuiAutocomplete-listbox {
+        .MuiPaper-root .${autocompleteClasses.listbox} {
           padding: 0 ${spacings?.m}px 0 0;
         }
       }

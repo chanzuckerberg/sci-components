@@ -1,4 +1,4 @@
-import { Autocomplete, Paper } from "@mui/material";
+import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import InputSearch from "../../../InputSearch";
@@ -31,9 +31,9 @@ const doNotForwardProps = [
 export const StyledAutocompleteBase = styled(Autocomplete, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  + .MuiAutocomplete-popper
-    > .MuiAutocomplete-paper
-    .MuiAutocomplete-groupLabel {
+  + .${autocompleteClasses.popper}
+    > .${autocompleteClasses.paper}
+    .${autocompleteClasses.groupLabel} {
     ${fontCapsXxxs}
   }
 
@@ -54,45 +54,45 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
       }
 
-      & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
-        .MuiAutocomplete-listbox {
+      & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
+        .${autocompleteClasses.listbox} {
           max-height: 40vh;
           padding: 0 ${spacings?.m}px 0 0;
 
-          .MuiAutocomplete-option {
+          .${autocompleteClasses.option} {
             min-height: unset;
+
+            &.${autocompleteClasses.focused} {
+              background-color: ${colors?.gray[100]};
+            }
+
+            &[aria-selected="true"] {
+              background-color: white;
+            }
+
+            &[aria-disabled="true"] {
+              opacity: 1;
+            }
+
+            &[aria-selected="true"].${autocompleteClasses.focused} {
+              background-color: ${colors?.gray[100]};
+            }
           }
 
-          .MuiAutocomplete-option.Mui-focused {
-            background-color: ${colors?.gray[100]};
-          }
-
-          .MuiAutocomplete-option[aria-selected="true"] {
-            background-color: white;
-          }
-
-          .MuiAutocomplete-option[aria-disabled="true"] {
-            opacity: 1;
-          }
-
-          .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
-            background-color: ${colors?.gray[100]};
-          }
-
-          & > li:last-child .MuiAutocomplete-groupUl {
+          & > li:last-child .${autocompleteClasses.groupUl} {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
           }
         }
 
-        .MuiAutocomplete-groupLabel {
+        .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${colors?.gray[500]};
           padding: ${spacings?.xxs}px ${spacings?.s}px;
         }
 
-        .MuiAutocomplete-groupUl {
+        .${autocompleteClasses.groupUl} {
           position: relative;
           margin: 0 0 ${spacings?.m}px;
           border-bottom: ${borders?.gray[200]};
@@ -103,12 +103,12 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
           }
         }
 
-        .MuiAutocomplete-noOptions {
+        .${autocompleteClasses.noOptions} {
           padding: ${spacings?.xs}px ${spacings?.s}px;
           margin-right: ${spacings?.l}px;
         }
 
-        .MuiAutocomplete-loading {
+        .${autocompleteClasses.loading} {
           padding: 0 ${spacings?.m}px 0 0;
         }
       }
