@@ -3,24 +3,35 @@ import {
   AutocompleteRenderInputParams,
   ClickAwayListener,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
+  PaperProps,
   PopperProps,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { SyntheticEvent } from "react";
+import React, { SyntheticEvent, useMemo } from "react";
 import { noop } from "src/common/utils";
-import { AutocompleteProps } from "../Autocomplete";
+import Autocomplete, { AutocompleteProps } from "../Autocomplete";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
 import { SDSTheme } from "../styles";
 import {
   StyleProps,
-  StyledAutocomplete,
   StyledDropdownMenuAutocompleteWrapper,
   StyledHeaderTitle,
+  StyledPaper,
   StyledPopper,
 } from "./style";
 
+/**
+ * (masoudmanson): We've replaced DefaultDropdownMenuOption with DefaultAutocompleteOption
+ * as the preferred choice. However, for backward compatibility, we've exported this line to
+ * prevent potential TypeScript type issues for product teams using previous versions.
+ */
+
 export type DefaultDropdownMenuOption = DefaultAutocompleteOption;
+
+// (masoudmanson): Represents the minimum width defined by design specifications
+// for the dropdownMenu's popper component
+export const MINIMUM_DROPDOWN_MENU_POPPER_WIDTH = 160;
 
 interface ExtraDropdownMenuProps extends StyleProps {
   keepSearchOnSelect?: boolean;
@@ -36,6 +47,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   label?: string;
   anchorEl: HTMLElement | null;
   PopperComponent?: React.JSXElementConstructor<PopperProps>;
+  PaperComponent?: React.JSXElementConstructor<PaperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
@@ -77,6 +89,7 @@ const DropdownMenu = <
     InputBaseProps,
     open = false,
     PopperComponent = StyledPopper,
+    PaperComponent = StyledPaper,
     PopperPlacement = "bottom-start",
     PopperBaseProps = {},
     search = false,
@@ -86,14 +99,36 @@ const DropdownMenu = <
     options,
     onClickAway = noop,
     ClickAwayListenerProps,
-    width = 160,
+    width = MINIMUM_DROPDOWN_MENU_POPPER_WIDTH,
     ...rest
   } = props;
 
   const isMultiColumn = options && !!options[0] && "options" in options[0];
-  const singleColumnPadding = `${theme.app?.spacing?.xs}px 0 ${theme.app?.spacing?.xs}px ${theme.app?.spacing?.xs}px !important`;
-  const multiColumnNoSearchOrTitlePadding = `${theme.app?.spacing?.l}px ${theme.app?.spacing?.xxs}px ${theme.app?.spacing?.l}px ${theme.app?.spacing?.l}px !important`;
-  const multiColumnWithSearchOrTitlePadding = `${theme.app?.spacing?.xs}px 0 ${theme.app?.spacing?.l}px ${theme.app?.spacing?.xs}px !important`;
+
+  // (masoudmanson): The DropdownMenu's Popper component should have a minimum
+  // width of MINIMUM_DROPDOWN_MENU_POPPER_WIDTH pixels if the DropdownMenu is
+  // a single column dropdown.However, for larger multi-column autocompletes,
+  // the width should be set to 'auto' to accommodate the expanded layout.
+  const dropdownMenuPopperSx = useMemo(() => {
+    return {
+      ...PopperBaseProps?.sx,
+      width:
+        isMultiColumn || width < MINIMUM_DROPDOWN_MENU_POPPER_WIDTH
+          ? "auto"
+          : width,
+    };
+  }, [PopperBaseProps?.sx, isMultiColumn, width]);
+
+  const DefaultPopperBaseProps = {
+    disablePortal: true,
+  };
+
+  const DefaultInputBaseProps = useMemo(() => {
+    return {
+      ...InputBaseProps,
+      onClick: noop,
+    };
+  }, [InputBaseProps]);
 
   return (
     <PopperComponent
@@ -110,54 +145,38 @@ const DropdownMenu = <
       anchorEl={anchorEl}
       placement={PopperPlacement}
       {...PopperBaseProps}
-      sx={{
-        ...PopperBaseProps?.sx,
-        padding: isMultiColumn
-          ? search || title
-            ? multiColumnWithSearchOrTitlePadding
-            : multiColumnNoSearchOrTitlePadding
-          : singleColumnPadding,
-        width:
-          (options &&
-            options[0] &&
-            Object.prototype.hasOwnProperty.call(options[0], "options")) ||
-          width < 160
-            ? "auto"
-            : width,
-      }}
+      // (masoudmanson): To override the width of the Popper,
+      // the sx prop's value must be set after spreading the PopperBaseProps.
+      sx={dropdownMenuPopperSx}
     >
-      <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
-        <StyledDropdownMenuAutocompleteWrapper
-          search={search}
-          title={title}
-          isMultiColumn={isMultiColumn}
+      <PaperComponent>
+        <ClickAwayListener
+          onClickAway={onClickAway}
+          {...ClickAwayListenerProps}
         >
-          {title && (
-            <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
-          )}
+          <StyledDropdownMenuAutocompleteWrapper>
+            {title && (
+              <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
+            )}
 
-          {anchorEl && (
-            <StyledAutocomplete
-              label={label}
-              search={search}
-              title={title}
-              open={open}
-              options={options}
-              InputBaseProps={{
-                ...InputBaseProps,
-                onClick: noop,
-              }}
-              PopperBaseProps={{
-                disablePortal: true,
-              }}
-              disablePortal
-              onClickAway={noop}
-              {...rest}
-            />
-          )}
-          {children}
-        </StyledDropdownMenuAutocompleteWrapper>
-      </ClickAwayListener>
+            {anchorEl && (
+              <Autocomplete
+                label={label}
+                search={search}
+                title={title}
+                open={open}
+                options={options}
+                PopperBaseProps={DefaultPopperBaseProps}
+                disablePortal
+                onClickAway={noop}
+                {...rest}
+                InputBaseProps={DefaultInputBaseProps}
+              />
+            )}
+            {children}
+          </StyledDropdownMenuAutocompleteWrapper>
+        </ClickAwayListener>
+      </PaperComponent>
     </PopperComponent>
   );
 };

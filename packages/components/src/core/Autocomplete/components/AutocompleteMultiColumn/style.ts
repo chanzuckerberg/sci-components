@@ -15,7 +15,7 @@ export interface StyleProps extends CommonThemeProps {
   icon?: ReactElement;
   search?: boolean;
   title?: string;
-  columnWidth?: number;
+  width?: number;
 }
 
 const doNotForwardProps = [
@@ -45,7 +45,7 @@ export const StyledPopper = styled(Popper, {
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
-      padding: ${spacings?.l}px;
+      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
       box-sizing: border-box;
       z-index: 1400;
 

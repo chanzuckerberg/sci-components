@@ -1,9 +1,11 @@
 import { AutocompleteProps } from "@mui/material";
 import {
+  AutocompleteChangeDetails,
+  AutocompleteChangeReason,
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteSingleColumnOption,
@@ -24,27 +26,6 @@ export {
   StyledPopper as DropdownPopper,
 };
 
-// (masoudmanson): This can be removed since we no longer need it
-// (thuang): Value's type is based on generic type placeholder (T) and Multiple
-// type. If Multiple is true, Value's type is T[] | null.
-// Otherwise, Value's type is T | null.
-// Conditional Type
-// https://www.typescriptlang.org/docs/handbook/2/conditional-types.html
-export type Value<T, Multiple> = Multiple extends undefined | false
-  ? T | null
-  : Array<T> | null;
-
-// (masoudmanson): This can be removed since we no longer need it
-export type MUIValue<
-  T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined,
-  DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
-> = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// type RenderFunctionType = (props: any) => JSX.Element;
-
 export interface ExtraDropdownProps<
   T,
   Multiple extends boolean | undefined,
@@ -59,7 +40,6 @@ export interface ExtraDropdownProps<
   options:
     | AutocompleteSingleColumnOption<T>[]
     | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
-  onClose?: () => void;
   search?: boolean;
   DropdownMenuProps?: Partial<
     SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
@@ -113,11 +93,13 @@ const Dropdown = <
     // unapplied changes.
     closeOnBlur = !buttons,
     onClose,
+    onChange,
     DropdownMenuProps = {},
     InputDropdownProps = { sdsStyle: "minimal" },
     InputDropdownComponent = InputDropdown,
     isTriggerChangeOnOptionClick = false,
     disabled = false,
+    value: propValue,
     ...rest
   } = props;
 
@@ -128,11 +110,26 @@ const Dropdown = <
     );
   }
 
+  const isMultiColumn = options && !!options[0] && "options" in options[0];
+  const isControlled = propValue !== undefined;
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
 
+  const [value, setValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
+  const [pendingValue, setPendingValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(getInitialValue());
+
   const shouldShowButtons =
     buttons && !isTriggerChangeOnOptionClick && multiple;
+
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [isControlled, propValue]);
 
   return (
     <>
@@ -154,6 +151,8 @@ const Dropdown = <
         options={options}
         onClickAway={handleClickAway}
         width={250}
+        onChange={handleChange}
+        value={isMultiColumn ? value : multiple ? pendingValue : value}
         {...DropdownMenuProps}
         {...rest}
       >
@@ -200,31 +199,84 @@ const Dropdown = <
     </>
   );
 
+  function getInitialValue(): AutocompleteValue<
+    T,
+    Multiple,
+    DisableClearable,
+    FreeSolo
+  > {
+    return multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+  }
+
+  function handleChange(
+    event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) {
+    if (multiple) {
+      if (isTriggerChangeOnOptionClick) {
+        setPendingValue(newValue);
+
+        return setValueAndCallOnChange(event, newValue, reason, details);
+      }
+
+      return setPendingValue(newValue);
+    }
+
+    setValueAndCallOnChange(event, newValue, reason, details);
+
+    if (!isMultiColumn) setOpen(false);
+  }
+
   function handleClickAway() {
-    // (masoudmanson): We want to keep the dropdown menu open in two scenarios:
-    // 1. If the dropdown has buttons,
-    // 2. When there are no buttons, and the closeOnBlur property is set to false,
-    // In all other cases, we close the menu.
-    if (open && closeOnBlur && !shouldShowButtons) {
-      setOpen(false);
+    if (open) {
+      // (masoudmanson): We want to keep the dropdown menu open in two scenarios:
+      // 1. If the dropdown has buttons,
+      // 2. When there are no buttons, and the closeOnBlur property is set to false,
+      // In all other cases, we close the menu.
+      if (closeOnBlur && !shouldShowButtons) {
+        setOpen(false);
+      }
+
+      if (multiple) {
+        setValue(pendingValue);
+      }
     }
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
     if (open) {
-      setOpen(false);
+      if (!shouldShowButtons) {
+        if (multiple) {
+          setValue(pendingValue);
+        }
 
-      if (anchorEl) {
-        anchorEl.focus();
+        setOpen(false);
+
+        if (anchorEl) {
+          anchorEl.focus();
+        }
       }
     } else {
+      if (multiple) {
+        setPendingValue(value);
+      }
+
       setAnchorEl(event.currentTarget);
       setOpen(true);
     }
   }
 
   function handleClose(
-    _: React.ChangeEvent<unknown>,
+    event: React.SyntheticEvent,
     reason: AutocompleteCloseReason
   ) {
     // (thuang): We don't want to close the menu when the input is clicked
@@ -238,25 +290,45 @@ const Dropdown = <
       return;
     }
 
+    if (multiple) {
+      setValue(pendingValue);
+    }
+
     if (anchorEl) {
       anchorEl.focus();
     }
 
-    if (closeOnBlur) onClose?.();
+    if (closeOnBlur) onClose?.(event, reason);
 
     if (shouldShowButtons) {
-      onClose?.();
+      onClose?.(event, reason);
       setOpen(false);
     }
   }
 
   function handleCancel() {
+    if (multiple) {
+      // (masoudmanson): To undo the latest actions made on the selections,
+      // we set the value of the selection to the pendingValue. This allows us to
+      // cancel any recent changes and restore the previous selection state.
+      setPendingValue(value);
+    }
+
     if (anchorEl) {
       anchorEl.focus();
     }
 
-    onClose?.();
     setOpen(false);
+  }
+
+  function setValueAndCallOnChange(
+    event: React.SyntheticEvent,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) {
+    setValue(newValue);
+    onChange?.(event, newValue, reason, details);
   }
 };
 

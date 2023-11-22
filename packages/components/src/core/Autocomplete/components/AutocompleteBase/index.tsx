@@ -11,8 +11,8 @@ import {
   PopperProps,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { ReactNode, SyntheticEvent, useMemo, useState } from "react";
-import { noop } from "src/common/utils";
+import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
+import { EMPTY_OBJECT, noop } from "src/common/utils";
 import ButtonIcon from "../../../ButtonIcon";
 import { IconProps } from "../../../Icon";
 import { InputSearchProps } from "../../../InputSearch";
@@ -106,7 +106,7 @@ const AutocompleteBase = <
     multiple,
     disableCloseOnSelect = multiple,
     getOptionLabel = defaultGetOptionLabel,
-    InputBaseProps = {},
+    InputBaseProps = EMPTY_OBJECT,
     isOptionEqualToValue = defaultIsOptionEqualToValue,
     keepSearchOnSelect = false,
     label = "Label",
@@ -142,37 +142,43 @@ const AutocompleteBase = <
       renderInput={defaultRenderInput}
       multiple={multiple}
       {...props}
+      // (masoudmanson): If multiple options are allowed (multiple === true),
+      // the blurOnSelect behavior should set to false
       blurOnSelect={multiple ? false : blurOnSelect}
-      // (masoudmanson): Overrides for onBlur and onInputChange to ensure consistency
+      // (masoudmanson): Given the necessity of maintaining consistent onBlur
+      // functionality, it's crucial to include the onBlur handler after spreading
+      // other props. Furthermore, within the defaultOnBlur function, the actual
+      // onBlur function is invoked for completeness.
       onBlur={defaultOnBlur}
+      // (masoudmanson): Considering the necessity of executing our function upon input
+      // changes universally, it's essential to place the onInputChange handler after
+      // spreading the remaining props. Additionally, within the defaultOnInputChange
+      // function, the actual onInputChange function is invoked at its conclusion.
       onInputChange={defaultOnInputChange}
     />
   );
 
   /**
    * (masoudmanson): Using a custom Popper or Paper with the Autocomplete
-   * without a useCalback results in scroll jumps while selecting an option!
+   * without a useCallback results in scroll jumps while selecting an option!
    */
   function useDefaultPopperComponent() {
-    return useMemo(
-      () => (popperProps: PopperProps) => {
-        return (
-          <Popper
-            modifiers={[
-              {
-                enabled: true,
-                name: "offset",
-                options: {
-                  offset: [0, theme.app?.spacing.s],
-                },
+    return useCallback((popperProps: PopperProps) => {
+      return (
+        <Popper
+          modifiers={[
+            {
+              enabled: true,
+              name: "offset",
+              options: {
+                offset: [0, theme.app?.spacing.s],
               },
-            ]}
-            {...popperProps}
-          />
-        );
-      },
-      []
-    );
+            },
+          ]}
+          {...popperProps}
+        />
+      );
+    }, []);
   }
 
   function defaultRenderInput(params: AutocompleteRenderInputParams) {

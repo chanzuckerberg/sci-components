@@ -1,14 +1,15 @@
 import { AutocompleteValue, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React, { useEffect, useRef, useState } from "react";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import ButtonIcon from "../ButtonIcon";
 import InputDropdown from "../InputDropdown";
 import Tag from "../Tag";
-import { GITHUB_LABELS } from "./GITHUB_LABELS";
-import { GITHUB_LABELS_MULTI_COLUMN } from "./GITHUB_LABELS_MULTI_COLUMN";
 import RawDropdownMenu from "./index";
 
+const LABEL = "Github Labels";
 const POPPER_POSITION = "bottom-start";
 const POPPER_WIDTH = 160;
 const groupByOptions = [
@@ -17,12 +18,12 @@ const groupByOptions = [
 ];
 
 const dataOptions = [
-  GITHUB_LABELS,
-  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
+  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
   [
-    GITHUB_LABELS_MULTI_COLUMN[0],
-    GITHUB_LABELS_MULTI_COLUMN[1],
-    GITHUB_LABELS_MULTI_COLUMN[2],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
   ],
 ];
 
@@ -34,7 +35,13 @@ const DropdownMenu = <
 >(
   props: Args
 ): JSX.Element => {
-  const { label, multiple, options = GITHUB_LABELS, search, title } = props;
+  const {
+    label,
+    multiple,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+    search,
+    title,
+  } = props;
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -145,11 +152,26 @@ export const Default = {
     keepSearchOnSelect: true,
     multiple: true,
     open: true,
-    options: dataOptions[1],
+    options: dataOptions[0],
     search: true,
-    title: "Github Labels",
+    title: LABEL,
     width: 300,
   },
+};
+
+// Multi Column
+
+export const MultiColumn = {
+  args: {
+    groupBy: groupByOptions[1],
+    keepSearchOnSelect: true,
+    multiple: true,
+    open: true,
+    options: dataOptions[2],
+    search: true,
+    title: LABEL,
+  },
+  render: (args: Args) => <DropdownMenu {...args} />,
 };
 
 // Live Preview
@@ -717,7 +739,11 @@ const TestDemo = <
 >(
   props: Args
 ): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const {
+    multiple,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+    search,
+  } = props;
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -795,7 +821,7 @@ export const Test = {
     keepSearchOnSelect: false,
     multiple: true,
     search: true,
-    title: "Github Labels",
+    title: LABEL,
   },
   parameters: {
     controls: {

@@ -12,6 +12,7 @@ import AutocompleteBase, {
   AutocompleteOptionComponent,
   DefaultAutocompleteOption,
 } from "./components/AutocompleteBase";
+import { StyledPaper } from "./components/AutocompleteBase/style";
 import AutocompleteMultiColumn, {
   AutocompleteMultiColumnProps,
 } from "./components/AutocompleteMultiColumn";
@@ -39,9 +40,10 @@ export type AutocompleteMultiColumnOption<
   >;
   style?: React.CSSProperties;
   value?: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
-  columnWidth?: number;
-  columnName: string;
+  width?: number;
+  name: string;
   sdsIcon?: keyof IconNameToSizes;
+  icon?: React.ReactNode;
 };
 
 export type SDSAutocompleteOptions<
@@ -141,7 +143,22 @@ export type AutocompleteProps<
 > &
   ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
 
-export { StyledPopper as AutocompleteMultiColumnStyledPopper };
+/**
+ * (masoudmanson): The AutocompleteBase manages the rendering of Single-Column Autocompletes.
+ * By default, it uses MUI's Popper component without requiring custom styles.
+ * If there's a need for a custom Popper for the Single-Column Autocomplete,
+ * users have the option to import the Popper component from the @mui/material package
+ * and extend its functionalities as per their requirements.
+ *
+ * The StyledPopper component, designed for Multi-Column Autocomplete,
+ * and the StyledPaper component, intended for Single-Column Autocomplete, are exported
+ * to accommodate external use cases.
+ */
+
+export {
+  StyledPopper as AutocompleteMultiColumnStyledPopper,
+  StyledPaper as AutocompleteSingleColumnStyledPaper,
+};
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,

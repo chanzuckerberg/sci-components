@@ -1,8 +1,8 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { noop } from "src/common/utils";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
 import RawComplexFilter from "./index";
 
 const ComplexFilter = <T extends DefaultAutocompleteOption>(
@@ -12,7 +12,7 @@ const ComplexFilter = <T extends DefaultAutocompleteOption>(
     <RawComplexFilter
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS as T[]}
+      options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
       DropdownMenuProps={{
         groupBy: (option: DefaultAutocompleteOption) =>
           option.section as string,
@@ -149,7 +149,7 @@ const TestDemo = <T extends DefaultAutocompleteOption>(
     <RawComplexFilter
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS as T[]}
+      options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
       {...props}
     />
   );

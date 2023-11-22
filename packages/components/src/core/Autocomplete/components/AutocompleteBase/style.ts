@@ -5,7 +5,7 @@ import InputSearch from "../../../InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
-  fontCapsXxxxs,
+  fontCapsXxxs,
   getBorders,
   getColors,
   getCorners,
@@ -34,7 +34,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
   + .MuiAutocomplete-popper
     > .MuiAutocomplete-paper
     .MuiAutocomplete-groupLabel {
-    ${fontCapsXxxxs}
+    ${fontCapsXxxs}
   }
 
   ${(props: StyleProps) => {
@@ -57,7 +57,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .MuiAutocomplete-popper > .MuiAutocomplete-paper {
         .MuiAutocomplete-listbox {
           max-height: 40vh;
-          padding: 0 ${spacings?.xs}px 0 0;
+          padding: 0 ${spacings?.m}px 0 0;
 
           .MuiAutocomplete-option {
             min-height: unset;
@@ -81,7 +81,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
           & > li:last-child .MuiAutocomplete-groupUl {
             border-bottom: none;
-            margin-bottom: ${spacings?.s}px;
+            margin-bottom: 0;
             padding-bottom: 0;
           }
         }
@@ -94,7 +94,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
         .MuiAutocomplete-groupUl {
           position: relative;
-          margin: 0 ${spacings?.s}px ${spacings?.m}px;
+          margin: 0 0 ${spacings?.m}px;
           border-bottom: ${borders?.gray[200]};
           padding-bottom: ${spacings?.xxs}px;
 
@@ -105,11 +105,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
         .MuiAutocomplete-noOptions {
           padding: ${spacings?.xs}px ${spacings?.s}px;
-          margin-bottom: ${spacings?.l}px;
+          margin-right: ${spacings?.l}px;
         }
 
         .MuiAutocomplete-loading {
-          margin-bottom: ${spacings?.xs}px;
+          padding: 0 ${spacings?.m}px 0 0;
         }
       }
     `;
@@ -129,9 +129,7 @@ export const InputBaseWrapper = styled("div", {
       return `
         border: 0;
         padding: 0;
-
         white-space: nowrap;
-
         clip-path: inset(100%);
         clip: rect(0 0 0 0);
         overflow: hidden;
@@ -160,7 +158,7 @@ export const StyledPaper = styled(Paper)`
     const shadows = getShadows(props);
 
     return `
-      padding: ${spacings?.xs}px 0 ${spacings?.xs}px ${spacings?.xs}px ;
+      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px ;
       background-color: white;
       border: ${borders?.gray[100]};
       border-radius: ${corners?.m}px;

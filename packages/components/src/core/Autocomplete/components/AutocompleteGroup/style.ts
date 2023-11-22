@@ -2,8 +2,9 @@ import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import {
   CommonThemeProps,
-  fontCapsXxxxs,
+  fontCapsXxxs,
   getColors,
+  getIconSizes,
   getSpaces,
   getTypography,
 } from "../../../styles";
@@ -13,19 +14,19 @@ export interface StyleProps extends CommonThemeProps {
   icon?: ReactElement;
   search?: boolean;
   title?: string;
-  columnWidth?: number;
+  width?: number;
 }
 
 export const StyledColumn = styled("div")`
   ${(props: StyleProps) => {
-    const { columnWidth = 280 } = props;
+    const { width = 280 } = props;
 
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
     return `
       position: relative;
-      width: ${columnWidth}px;
+      width: ${width}px;
 
       &:not(:last-child) {
         border-right: solid 1px ${colors?.gray[200]};
@@ -37,32 +38,22 @@ export const StyledColumn = styled("div")`
         .SdsAutocompleteMultiColumn-column-relation-icon {
           display: none;
         }
-
-        .MuiPaper-root .MuiAutocomplete-listbox {
-          padding: 0 !important;
-        }
-      }
-
-      .MuiAutocomplete-noOptions {
-        padding: ${spacings?.xs}px ${spacings?.s}px;
-        margin-bottom: ${spacings?.l}px;
       }
     `;
   }}
 `;
 
 export const StyledColumnTitle = styled("p")`
-  ${fontCapsXxxxs}
+  ${fontCapsXxxs}
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
     const colors = getColors(props);
     const typography = getTypography(props);
-
     return `
-      color: ${colors?.gray[500]};
       font-family: ${typography?.fontFamily};
-      margin: 0;
+      color: ${colors?.gray[500]};
       padding: 0 ${spacings?.s}px ${spacings?.xxs}px;
+      margin: 0;
     `;
   }}
 `;
@@ -71,6 +62,7 @@ export const StyledColumnIcon = styled("span")`
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
     const colors = getColors(props);
+    const iconSizes = getIconSizes(props);
 
     return `
       background-color: white;
@@ -81,6 +73,8 @@ export const StyledColumnIcon = styled("span")`
 
       svg {
         color: ${colors?.gray[500]};
+        width: ${iconSizes?.xs.width}px;
+        height: ${iconSizes?.xs.height}px;
       }
     `;
   }}

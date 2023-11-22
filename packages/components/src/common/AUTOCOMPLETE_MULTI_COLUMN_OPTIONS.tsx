@@ -1,85 +1,69 @@
-// import { AutocompleteValue } from "@mui/base";
-// import { DefaultAutocompleteOption } from "dist/index.cjs";
-
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
-const SORTED_BY_TYPE = "Sorted by type";
 
-export const GITHUB_LABELS_MULTI_COLUMN = [
+import Icon from "../core/Icon";
+
+export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {
-    columnName: "Column 1",
-    columnWidth: 260,
+    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
+    name: "Column One",
     options: [
       {
         name: "Status: can't reproduce",
-        section: "name only",
       },
       {
         name: "Status: confirmed",
-        section: "name only",
       },
       {
         count: 3,
         name: "Status: duplicate",
-        section: "name with count",
       },
       {
         count: 5,
         name: "Status: needs information",
-        section: "name with count",
       },
       {
         details: "This will not be worked on",
         name: "Status: wont do/fix",
-        section: "name with details",
       },
       {
         details: "This is still in progress",
         name: "Status: work in progress",
-        section: "name with details",
       },
     ],
-    sdsIcon: "chevronRight",
+    width: 260,
   },
   {
-    columnName: "Column 2",
-    columnWidth: 260,
+    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
+    name: "Column Two",
     options: [
       {
         details: "This will be worked on",
         name: "Type: bug",
-        section: SORTED_BY_TYPE,
       },
       {
         count: 4,
         name: "Type: discussion",
-        section: SORTED_BY_TYPE,
       },
       {
         name: "Type: documentation",
-        section: SORTED_BY_TYPE,
       },
       {
         name: "Type: enhancement",
-        section: SORTED_BY_TYPE,
       },
       {
         name: "Type: epic",
-        section: SORTED_BY_TYPE,
       },
       {
         name: "Type: feature request",
-        section: SORTED_BY_TYPE,
       },
       {
         name: "Type: question",
-        section: SORTED_BY_TYPE,
       },
     ],
-    sdsIcon: "chevronRight",
+    width: 260,
   },
   {
-    columnName: "Column 3",
-    columnWidth: 170,
+    name: "Column Three",
     options: [
       {
         name: "Bacteria",
@@ -87,7 +71,6 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
         name: "Puzzle Piece",
@@ -95,15 +78,14 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
+        count: 10,
         name: "Copy",
         sdsIcon: "copy",
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
         name: "Light Bulb",
@@ -111,15 +93,14 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
+        count: 6,
         name: "List",
         sdsIcon: "list",
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
         name: "Vertical Tree",
@@ -127,7 +108,6 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
       {
         name: "Link",
@@ -135,8 +115,8 @@ export const GITHUB_LABELS_MULTI_COLUMN = [
         sdsIconProps: {
           color: "gray",
         },
-        section: "With Icon",
       },
     ],
+    width: 180,
   },
 ];

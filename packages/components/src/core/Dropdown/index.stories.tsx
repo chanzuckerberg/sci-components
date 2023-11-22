@@ -2,12 +2,38 @@ import { AutocompleteValue, Dialog, Paper, styled } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import { useState } from "react";
 import { noop } from "src/common/utils";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import Button from "../Button";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
-import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
 import LoadingIndicator from "../LoadingIndicator";
 import RawDropdown from "./index";
+
+const onChangeOptions = [
+  noop,
+  (value: never) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
+];
+const onCloseOptions = [
+  noop,
+  () => {
+    // eslint-disable-next-line no-console
+    console.log("Closed!");
+  },
+];
+const buttonPositionOptions = ["left", "right"];
+const dataOptions = [
+  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
+  [
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
+  ],
+];
+const LABEL = "Click Target";
 
 const Dropdown = <
   T extends DefaultAutocompleteOption,
@@ -17,7 +43,7 @@ const Dropdown = <
 >(
   props: Args
 ): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS } = props;
+  const { multiple, options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } = props;
   const [value, setValue] = useState<
     AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   >(
@@ -38,10 +64,8 @@ const Dropdown = <
       search={false}
       multiple={multiple}
       DropdownMenuProps={{
-        PopperBaseProps: {
-          sx: { width: "300px" },
-        },
         groupBy: (option: T) => option.section as string,
+        width: 300,
       }}
       {...props}
     />
@@ -54,32 +78,6 @@ const Dropdown = <
     setValue(newValue);
   }
 };
-
-const onChangeOptions = [
-  noop,
-  (value: never) => {
-    // eslint-disable-next-line no-console
-    console.log(value);
-  },
-];
-const onCloseOptions = [
-  noop,
-  () => {
-    // eslint-disable-next-line no-console
-    console.log("Closed!");
-  },
-];
-const buttonPositionOptions = ["left", "right"];
-const dataOptions = [
-  GITHUB_LABELS,
-  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
-  [
-    GITHUB_LABELS_MULTI_COLUMN[0],
-    GITHUB_LABELS_MULTI_COLUMN[1],
-    GITHUB_LABELS_MULTI_COLUMN[2],
-  ],
-];
-const LABEL = "Click Target";
 
 export default {
   argTypes: {
@@ -148,6 +146,8 @@ export default {
   title: "Dropdowns/Dropdown",
 } as Meta;
 
+// Default
+
 export const Default = {
   args: {
     buttonPosition: "left",
@@ -161,6 +161,25 @@ export const Default = {
     search: true,
   },
 };
+
+// Multi Column
+
+export const MultiColumnWithButtons = {
+  args: {
+    buttonPosition: "left",
+    buttons: true,
+    closeOnBlur: true,
+    disabled: false,
+    isTriggerChangeOnOptionClick: false,
+    label: LABEL,
+    multiple: true,
+    options: dataOptions[2],
+    search: true,
+  },
+  render: (args: Args) => <Dropdown {...args} />,
+};
+
+// Loading Indicator
 
 export const LoadingResultsIndicator = {
   args: {
@@ -234,7 +253,7 @@ export const InsideModal = {
       <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
         <Dropdown<T, Multiple, DisableClearable, FreeSolo>
           label="Dropdown"
-          options={GITHUB_LABELS as T[]}
+          options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
           multiple
           InputDropdownProps={{ sdsStyle: "square" }}
           {...props}
@@ -245,6 +264,7 @@ export const InsideModal = {
 };
 
 // Controlled Dropdown
+
 const ControlledDropdownDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
@@ -276,7 +296,7 @@ const ControlledDropdownDemo = <
       <RawDropdown<T, Multiple, DisableClearable, FreeSolo>
         label="Click Target"
         {...props}
-        options={GITHUB_LABELS as T[]}
+        options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
         value={value}
         onChange={handleChange}
         data-testid="dropdown"
@@ -292,12 +312,9 @@ const ControlledDropdownDemo = <
   );
 
   function handleClick() {
-    setValue([...GITHUB_LABELS.slice(0, 3)] as AutocompleteValue<
-      T,
-      Multiple,
-      DisableClearable,
-      FreeSolo
-    >);
+    setValue([
+      ...AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS.slice(0, 3),
+    ] as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 
   function handleChange(
@@ -349,7 +366,7 @@ const TestDemo = <
     <RawDropdown<T, Multiple, DisableClearable, FreeSolo>
       label="Click Target"
       onChange={noop}
-      options={GITHUB_LABELS as T[]}
+      options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
       DropdownMenuProps={{
         width: 300,
       }}

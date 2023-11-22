@@ -5,8 +5,8 @@ import {
 } from "@mui/base";
 import { Args, Meta } from "@storybook/react";
 import { SyntheticEvent, useEffect, useState } from "react";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
-import { GITHUB_LABELS_MULTI_COLUMN } from "../DropdownMenu/GITHUB_LABELS_MULTI_COLUMN";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import TagFilter from "../TagFilter";
 import AutocompleteBase, {
   DefaultAutocompleteOption,
@@ -22,16 +22,20 @@ const groupByOptions = [
   (option: DefaultAutocompleteOption) => option.section as string,
 ];
 
-const DIV_MARGIN = "16px 0 0 24px";
+const WRAPPER_STYLES = {
+  margin: "16px 0 0 24px",
+  width: 274,
+};
+const DIV_MARGIN = "10px 0 0 24px";
 const LABEL = "Search by label";
 
 const dataOptions = [
-  GITHUB_LABELS,
-  [GITHUB_LABELS_MULTI_COLUMN[0], GITHUB_LABELS_MULTI_COLUMN[1]],
+  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
   [
-    GITHUB_LABELS_MULTI_COLUMN[0],
-    GITHUB_LABELS_MULTI_COLUMN[1],
-    GITHUB_LABELS_MULTI_COLUMN[2],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
   ],
 ];
 
@@ -44,7 +48,7 @@ const Autocomplete = <
   const {
     label,
     multiple,
-    options = GITHUB_LABELS,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
     search,
     value: propValue,
     keepSearchOnSelect,
@@ -87,7 +91,7 @@ const Autocomplete = <
 
   return (
     <>
-      <div style={{ margin: DIV_MARGIN, width: 300 }}>
+      <div style={WRAPPER_STYLES}>
         <RawAutocomplete
           id="autocomplete-demo"
           disableCloseOnSelect={multiple}
@@ -130,7 +134,7 @@ const Autocomplete = <
     const newSelection: string[] = [];
 
     if (
-      (newValue && (newValue as T).name) ||
+      (newValue as T)?.name ||
       (Array.isArray(newValue) && (newValue as T[])[0].name)
     ) {
       if (multiple) {
@@ -331,7 +335,7 @@ const AutocompleteSingleColumnDemo = <
   const {
     label,
     multiple,
-    options = GITHUB_LABELS,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
     search,
     value: propValue,
     keepSearchOnSelect,
@@ -359,7 +363,7 @@ const AutocompleteSingleColumnDemo = <
 
   return (
     <>
-      <div style={{ margin: DIV_MARGIN, width: 300 }}>
+      <div style={WRAPPER_STYLES}>
         <AutocompleteBase
           id="autocomplete-base-demo"
           disableCloseOnSelect={multiple}
@@ -376,7 +380,7 @@ const AutocompleteSingleColumnDemo = <
           {...props}
         />
       </div>
-      <div style={{ margin: "10px 0 0 24px" }}>
+      <div style={{ margin: DIV_MARGIN }}>
         {selection.length
           ? selection.map((item) => {
               return (
@@ -493,9 +497,8 @@ const AutocompleteMultiColumnDemo = <
 ): JSX.Element => {
   const {
     multiple,
-    options = GITHUB_LABELS_MULTI_COLUMN,
+    options = AUTOCOMPLETE_MULTI_COLUMN_OPTIONS,
     search,
-    // value: propValue,
     label,
   } = props;
 
@@ -548,7 +551,7 @@ const AutocompleteMultiColumnDemo = <
 
   return (
     <>
-      <div style={{ margin: "16px 0 0 24px", width: 300 }}>
+      <div style={WRAPPER_STYLES}>
         <RawAutocompleteMultiColumn<T, Multiple, DisableClearable, FreeSolo>
           label={label}
           disableCloseOnSelect={false}
@@ -560,7 +563,7 @@ const AutocompleteMultiColumnDemo = <
           {...props}
         />
       </div>
-      <div style={{ margin: "10px 0 0 24px" }}>
+      <div style={{ margin: DIV_MARGIN }}>
         {selection.length
           ? selection.map((item) => {
               return (
@@ -647,19 +650,27 @@ export const MultiColumn = {
 // Test
 
 const TestDemo = (props: Args): JSX.Element => {
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const {
+    multiple,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+    search,
+  } = props;
 
   return (
-    <RawAutocomplete
-      open
-      search={search}
-      label="Search"
-      multiple={multiple}
-      disableCloseOnSelect={multiple}
-      options={options}
-      groupBy={(option: DefaultAutocompleteOption) => option.section as string}
-      {...props}
-    />
+    <div style={WRAPPER_STYLES}>
+      <RawAutocomplete
+        open
+        search={search}
+        label="Search"
+        multiple={multiple}
+        disableCloseOnSelect={multiple}
+        options={options}
+        groupBy={(option: DefaultAutocompleteOption) =>
+          option.section as string
+        }
+        {...props}
+      />
+    </div>
   );
 };
 

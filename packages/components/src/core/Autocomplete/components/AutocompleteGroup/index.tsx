@@ -4,7 +4,6 @@ import {
   AutocompleteValue,
 } from "@mui/base";
 import { useCallback, useEffect, useState } from "react";
-import Icon from "src/core/Icon";
 import { AutocompleteMultiColumnOption } from "../..";
 import AutocompleteBase, {
   AutocompleteBaseProps,
@@ -82,12 +81,7 @@ const AutocompleteGroup = <
     ...rest
   } = props;
 
-  const {
-    columnName,
-    columnWidth,
-    sdsIcon,
-    props: propProps,
-  } = autocompleteProps;
+  const { name, width, icon, props: propProps } = autocompleteProps;
 
   const [value, setValue] = useState<
     AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
@@ -110,7 +104,7 @@ const AutocompleteGroup = <
       details?: AutocompleteChangeDetails<T>
     ) => {
       propProps?.onChange?.(event, newValue, reason, details);
-      onValueChange(columnName, event, newValue, reason, details);
+      onValueChange(name, event, newValue, reason, details);
 
       if (multiple) {
         setPendingValue(newValue);
@@ -124,21 +118,21 @@ const AutocompleteGroup = <
         }
       }
     },
-    [columnName, multiple, onValueChange, propProps]
+    [name, multiple, onValueChange, propProps]
   );
 
   return (
     <StyledColumn
-      columnWidth={columnWidth}
+      width={width}
       className="SdsAutocompleteMultiColumn-column-root"
     >
-      {sdsIcon && (
+      {icon && (
         <StyledColumnIcon className="SdsAutocompleteMultiColumn-column-relation-icon">
-          <Icon sdsIcon={sdsIcon} sdsSize="xs" sdsType="static" />
+          {icon}
         </StyledColumnIcon>
       )}
       <StyledColumnTitle className="SdsAutocompleteMultiColumn-column-title">
-        {columnName}
+        {name}
       </StyledColumnTitle>
       <AutocompleteBase<T, Multiple, DisableClearable, FreeSolo>
         label={label}

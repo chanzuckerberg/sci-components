@@ -251,13 +251,11 @@ const AutocompleteMultiColumn = <
               {options.map((autocompleteOptions) => (
                 <AutocompleteGroup
                   autocompleteProps={autocompleteOptions}
-                  key={autocompleteOptions.columnName}
+                  key={autocompleteOptions.name}
                   onValueChange={defaultOnValueChange}
                   value={
                     autocompleteMultiColumnValue
-                      ? autocompleteMultiColumnValue[
-                          autocompleteOptions.columnName
-                        ]
+                      ? autocompleteMultiColumnValue[autocompleteOptions.name]
                       : undefined
                   }
                   multiple={multiple}
@@ -310,7 +308,6 @@ const AutocompleteMultiColumn = <
 
   function handleInputBlur(event: React.FocusEvent<HTMLInputElement>) {
     if (props.clearOnBlur) setInputValue("");
-    // setPopperOpen(false);
     onBlur?.(event);
   }
 
