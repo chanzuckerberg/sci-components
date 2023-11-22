@@ -22,11 +22,11 @@ import {
 } from "./style";
 
 /**
+ * @deprecated
  * (masoudmanson): We've replaced DefaultDropdownMenuOption with DefaultAutocompleteOption
  * as the preferred choice. However, for backward compatibility, we've exported this line to
  * prevent potential TypeScript type issues for product teams using previous versions.
  */
-
 export type DefaultDropdownMenuOption = DefaultAutocompleteOption;
 
 // (masoudmanson): Represents the minimum width defined by design specifications
