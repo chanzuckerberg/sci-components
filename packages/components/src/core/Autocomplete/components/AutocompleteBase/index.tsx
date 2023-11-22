@@ -142,18 +142,21 @@ const AutocompleteBase = <
       renderInput={defaultRenderInput}
       multiple={multiple}
       {...props}
-      // (masoudmanson): If multiple options are allowed (multiple === true),
-      // the blurOnSelect behavior should set to false
+      // (masoudmanson): For multiple options (multiple = true), setting blurOnSelect to false
+      // keeps the dropdown open after selecting an option. This feature enhances user experience
+      // by preventing the dropdown from closing, enabling users to select multiple options
+      // without having to reopen the menu repeatedly.
       blurOnSelect={multiple ? false : blurOnSelect}
-      // (masoudmanson): Given the necessity of maintaining consistent onBlur
-      // functionality, it's crucial to include the onBlur handler after spreading
-      // other props. Furthermore, within the defaultOnBlur function, the actual
-      // onBlur function is invoked for completeness.
+      // (masoudmanson): Given the necessity of maintaining consistent onBlur functionality,
+      // and clearing the input value on blur, it's crucial to include the onBlur handler
+      // after spreading other props. Furthermore, within the defaultOnBlur function, the
+      // actual onBlur function is invoked for completeness.
       onBlur={defaultOnBlur}
-      // (masoudmanson): Considering the necessity of executing our function upon input
-      // changes universally, it's essential to place the onInputChange handler after
-      // spreading the remaining props. Additionally, within the defaultOnInputChange
-      // function, the actual onInputChange function is invoked at its conclusion.
+      // (masoudmanson): To ensure component-level actions (changing the input field value)
+      // trigger upon input changes, it's crucial to position the onInputChange handler after
+      // spreading the other props. Furthermore, within the defaultOnInputChange function,
+      // the provided onInputChange from props is called at the end to emit the input changes
+      // to the user.
       onInputChange={defaultOnInputChange}
     />
   );

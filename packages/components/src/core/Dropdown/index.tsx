@@ -6,6 +6,7 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
+import { EMPTY_OBJECT } from "src/common/utils";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteSingleColumnOption,
@@ -110,7 +111,8 @@ const Dropdown = <
     );
   }
 
-  const isMultiColumn = options && !!options[0] && "options" in options[0];
+  const isMultiColumn = "options" in (options?.[0] || EMPTY_OBJECT);
+
   const isControlled = propValue !== undefined;
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);

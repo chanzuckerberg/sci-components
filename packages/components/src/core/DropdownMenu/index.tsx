@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { SyntheticEvent, useMemo } from "react";
-import { noop } from "src/common/utils";
+import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Autocomplete, { AutocompleteProps } from "../Autocomplete";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import { InputSearchProps } from "../InputSearch";
@@ -73,6 +73,10 @@ export type DropdownMenuProps<
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraDropdownMenuProps;
 
+const DEFAULT_POPPER_BASE_PROPS: Partial<PopperProps> = {
+  disablePortal: true,
+};
+
 const DropdownMenu = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
@@ -103,7 +107,7 @@ const DropdownMenu = <
     ...rest
   } = props;
 
-  const isMultiColumn = options && !!options[0] && "options" in options[0];
+  const isMultiColumn = "options" in (options?.[0] || EMPTY_OBJECT);
 
   // (masoudmanson): The DropdownMenu's Popper component should have a minimum
   // width of MINIMUM_DROPDOWN_MENU_POPPER_WIDTH pixels if the DropdownMenu is
@@ -118,10 +122,6 @@ const DropdownMenu = <
           : width,
     };
   }, [PopperBaseProps?.sx, isMultiColumn, width]);
-
-  const DefaultPopperBaseProps = {
-    disablePortal: true,
-  };
 
   const DefaultInputBaseProps = useMemo(() => {
     return {
@@ -166,7 +166,7 @@ const DropdownMenu = <
                 title={title}
                 open={open}
                 options={options}
-                PopperBaseProps={DefaultPopperBaseProps}
+                PopperBaseProps={DEFAULT_POPPER_BASE_PROPS}
                 disablePortal
                 onClickAway={noop}
                 {...rest}
