@@ -64,6 +64,16 @@ export const StyledCheckbox = styled(RawCheckbox)`
         }
       }
 
+      &.MuiCheckbox-root {
+        &.Mui-focusVisible {
+          outline: 5px auto Highlight;
+          outline: 5px auto -webkit-focus-ring-color;
+        }
+        border-radius: 2px;
+        padding: 4px;
+        margin: 3px;
+      }
+
       .MuiSvgIcon-root {
         height: ${iconSizes?.input.height}px;
         width: ${iconSizes?.input.width}px;
