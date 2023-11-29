@@ -94,6 +94,11 @@ export const StyledTab = styled(RawTab, {
         color: black;
       }
 
+      &.Mui-focusVisible {
+        outline: 5px auto Highlight;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+
       &.Mui-selected {
         color: black;
 
