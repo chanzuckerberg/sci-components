@@ -1,29 +1,41 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStory } from "@storybook/react";
-import { fireEvent, render, screen } from "@testing-library/react";
-import * as snapshotTestStoryFile from "./index.stories";
-import Meta, { Test as TestStory } from "./index.stories";
+import { composeStories } from "@storybook/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import * as stories from "./index.stories";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
-const Test = composeStory(TestStory, Meta);
+const { Test } = composeStories(stories);
 
 describe("<Accordion />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots(stories);
 
   it("renders accordion component", () => {
-    render(<Test {...Test.args} />);
+    render(<Test />);
     const accordionElement = screen.getByTestId("accordion");
     expect(accordionElement).not.toBeNull();
   });
 
-  it("opens accordion when clicked", () => {
+  it("opens and closes the accordion when clicked", async () => {
+    const ariaExpanded = "aria-expanded";
+
     render(<Test />);
-    const accordionElement = screen.getByTestId("accordion");
-    fireEvent.click(accordionElement);
-    expect(
-      screen.getAllByText(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."
-      )
-    ).not.toBeNull();
+
+    // Starts closed
+    const accordionHeader = screen.getByRole("button");
+    expect(accordionHeader).toHaveAttribute(ariaExpanded, "false");
+    expect(screen.getByText(/Lorem ipsum/)).not.toBeVisible();
+
+    // It opens when clicked.
+    fireEvent.click(accordionHeader);
+    expect(accordionHeader).toHaveAttribute(ariaExpanded, "true");
+    expect(screen.getByText(/Lorem ipsum/)).toBeVisible();
+
+    // And closes when clicked again.
+    fireEvent.click(accordionHeader);
+    expect(accordionHeader).toHaveAttribute(ariaExpanded, "false");
+
+    await waitFor(() => {
+      expect(screen.getByText(/Lorem ipsum/)).not.toBeVisible();
+    });
   });
 });
