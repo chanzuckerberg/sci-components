@@ -56,7 +56,7 @@ const Callout = ({
   };
 
   const getIcon = () => {
-    if (icon) return icon;
+    if (icon !== undefined) return icon;
 
     switch (intent) {
       case "success":
