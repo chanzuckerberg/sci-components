@@ -38,9 +38,12 @@ const lightThemeColors = {
     "100": "#F8F8F8",
     "200": "#EAEAEA",
     "300": "#CCCCCC",
-    "400": "#999999",
+    "400": "#959595",
     "500": "#767676",
     "600": "#545454",
+    "700": "#404040",
+    "800": "#1F1F1F",
+    "900": "#121212",
   },
   info: {
     "100": "#EFF2FC",
@@ -76,62 +79,7 @@ const lightThemeColors = {
   },
 };
 
-const darkThemeColors = {
-  beta: {
-    "100": "#1E1B26",
-    "200": "#23212D",
-    "400": "#946314",
-    "500": "#8A5D0C",
-    "600": "#7F5C1E",
-  },
-  error: {
-    "100": "#5E1313",
-    "200": "#612626",
-    "400": "#FF5468",
-    "500": "#E84551",
-    "600": "#FF2D46",
-  },
-  gray: {
-    "100": "#121212",
-    "200": "#1F1F1F",
-    "300": "#3C3C3C",
-    "400": "#666666",
-    "500": "#8A8A8A",
-    "600": "#AAAAAA",
-  },
-  info: {
-    "100": "#1A1F29",
-    "200": "#1C1F29",
-    "400": "#6792FF",
-    "500": "#4A70A5",
-    "600": "#396388",
-  },
-  primary: {
-    "100": "#181A23",
-    "200": "#1A1F29",
-    "300": "#5A6F92",
-    "400": "#6792FF",
-    "500": "#4A70A5",
-    "600": "#396388",
-  },
-  secondary: {
-    "400": "#6D8E3A",
-  },
-  success: {
-    "100": "#193A26",
-    "200": "#197C5F",
-    "400": "#72B07E",
-    "500": "#5F8F6B",
-    "600": "#345B3E",
-  },
-  warning: {
-    "100": "#302B23",
-    "200": "#382E24",
-    "400": "#F5A623",
-    "500": "#D8921F",
-    "600": "#946314",
-  },
-};
+const darkThemeColors = lightThemeColors;
 
 /**
  * Base app theme for properties shared between light and dark mode. Generally, if a theme
@@ -383,8 +331,12 @@ darkAppTheme.borders = {
   },
 };
 
-const lightThemePallette = (appTheme: AppTheme): PaletteOptions => ({
+const lightThemePalette = (appTheme: AppTheme): PaletteOptions => ({
   divider: appTheme.colors.gray[200],
+  background: {
+    default: common.white,
+    secondary: appTheme.colors.gray[100],
+  },
   error: {
     dark: appTheme.colors.error[600],
     light: appTheme.colors.error[200],
@@ -431,7 +383,11 @@ const lightThemePallette = (appTheme: AppTheme): PaletteOptions => ({
 
 // TODO: Colors
 const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
-  divider: appTheme.colors.gray[200],
+  divider: appTheme.colors.gray[700],
+  background: {
+    default: appTheme.colors.gray[900],
+    secondary: appTheme.colors.gray[800],
+  },
   error: {
     dark: appTheme.colors.error[600],
     light: appTheme.colors.error[200],
@@ -444,6 +400,9 @@ const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
     "400": appTheme.colors.gray[400],
     "500": appTheme.colors.gray[500],
     "600": appTheme.colors.gray[600],
+    "700": appTheme.colors.gray[700],
+    "800": appTheme.colors.gray[800],
+    "900": appTheme.colors.gray[900],
   },
   info: {
     dark: appTheme.colors.info[600],
@@ -465,9 +424,9 @@ const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
     main: appTheme.colors.success[400],
   },
   text: {
-    disabled: appTheme.colors.gray[300],
-    primary: common.black,
-    secondary: appTheme.colors.gray[500],
+    disabled: appTheme.colors.gray[700],
+    primary: appTheme.colors.gray[100],
+    secondary: appTheme.colors.gray[400],
   },
   warning: {
     dark: appTheme.colors.warning[600],
@@ -501,7 +460,7 @@ export function makeThemeOptions(
     },
     palette:
       mode === "light"
-        ? lightThemePallette(appTheme)
+        ? lightThemePalette(appTheme)
         : darkThemePalette(appTheme),
     shadows: [
       appTheme.shadows.none,
@@ -678,6 +637,9 @@ export interface Spaces {
 export type Spacings = Spaces;
 
 export interface Color {
+  900?: string;
+  800?: string;
+  700?: string;
   600?: string;
   500?: string;
   400: string;

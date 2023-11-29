@@ -24,7 +24,11 @@ export const StyledDialogTitle = styled(DialogTitle)`
 export const Title = styled(Typography)`
   ${fontHeaderXl}
 
-  color: black;
+  ${(props) => {
+    return `
+      color: ${props.theme.palette.text.primary};
+    `;
+  }}
 `;
 
 export const Subtitle = styled(Typography)`
@@ -34,7 +38,7 @@ export const Subtitle = styled(Typography)`
     const colors = getColors(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: ${props.theme.palette.text.secondary};
     `;
   }}
 `;
