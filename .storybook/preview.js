@@ -1,15 +1,16 @@
-import { defaultTheme } from "../packages/components/src/core/styles";
+import { theme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
 export const decorators = [
   (Story, context) => {
-    const { theme } = context.globals;
+    const { theme: storybookTheme } = context.globals;
 
     return (
-    <ThemeProvider theme={defaultTheme(theme)}>
-      <Story />
-    </ThemeProvider>
-  )},
+      <ThemeProvider theme={theme(storybookTheme)}>
+        <Story />
+      </ThemeProvider>
+    );
+  },
 ];
 
 /**
