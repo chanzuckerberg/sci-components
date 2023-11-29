@@ -2,11 +2,14 @@ import { defaultTheme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
 export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={defaultTheme}>
+  (Story, context) => {
+    const { theme } = context.globals;
+
+    return (
+    <ThemeProvider theme={defaultTheme(theme)}>
       <Story />
     </ThemeProvider>
-  ),
+  )},
 ];
 
 /**
@@ -17,6 +20,20 @@ export const decorators = [
 const preview = {
   globalTypes: {
     pseudo: {},
+    theme: {
+        description: 'Global theme for components',
+        defaultValue: 'light',
+        toolbar: {
+            title: 'Theme',
+            icon: 'circlehollow',
+            dynamicTitle: true,
+            items: [
+                { value: 'light', left: '☀️', title: 'Light mode' },
+                { value: 'dark', left: '🌙', title: 'Dark mode' },
+            ],
+        },
+    },
   },
 };
+
 export default preview;

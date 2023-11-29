@@ -1,6 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { defaultAppTheme } from "../styles";
+import { sharedAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 
@@ -95,7 +95,7 @@ export const Default = {
 // Live Preview
 
 const LivePreviewDemo = (): JSX.Element => {
-  const spacings = defaultAppTheme?.spacing;
+  const spacings = sharedAppTheme?.spacing;
 
   const livePreviewStyles: React.CSSProperties = {
     alignItems: "center",

@@ -18,7 +18,7 @@ enum FontWeight {
   semibold = 600,
 }
 
-const defaultThemeColors = {
+const lightThemeColors = {
   beta: {
     "100": "#F4F0F9",
     "200": "#F0EBF6",
@@ -75,8 +75,64 @@ const defaultThemeColors = {
   },
 };
 
-export const defaultAppTheme: AppTheme = {
-  colors: defaultThemeColors,
+const darkThemeColors = {
+  beta: {
+    "100": "#1E1B26",
+    "200": "#23212D",
+    "400": "#946314",
+    "500": "#8A5D0C",
+    "600": "#7F5C1E",
+  },
+  error: {
+    "100": "#5E1313",
+    "200": "#612626",
+    "400": "#FF5468",
+    "500": "#E84551",
+    "600": "#FF2D46",
+  },
+  gray: {
+    "100": "#121212",
+    "200": "#1F1F1F",
+    "300": "#3C3C3C",
+    "400": "#666666",
+    "500": "#8A8A8A",
+    "600": "#AAAAAA",
+  },
+  info: {
+    "100": "#1A1F29",
+    "200": "#1C1F29",
+    "400": "#6792FF",
+    "500": "#4A70A5",
+    "600": "#396388",
+  },
+  primary: {
+    "100": "#181A23",
+    "200": "#1A1F29",
+    "300": "#5A6F92",
+    "400": "#6792FF",
+    "500": "#4A70A5",
+    "600": "#396388",
+  },
+  secondary: {
+    "400": "#6D8E3A",
+  },
+  success: {
+    "100": "#193A26",
+    "200": "#197C5F",
+    "400": "#72B07E",
+    "500": "#5F8F6B",
+    "600": "#345B3E",
+  },
+  warning: {
+    "100": "#302B23",
+    "200": "#382E24",
+    "400": "#F5A623",
+    "500": "#D8921F",
+    "600": "#946314",
+  },
+};
+
+export const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
   corners: {
     l: 20,
     m: 4,
@@ -97,6 +153,7 @@ export const defaultAppTheme: AppTheme = {
     xl: { height: 32, width: 32 },
     xs: { height: 10, width: 10 },
   },
+  // TODO: Dark mode?
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
     m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
@@ -239,40 +296,52 @@ export const defaultAppTheme: AppTheme = {
   },
 };
 
+const lightAppTheme: AppTheme = {
+  colors: lightThemeColors,
+  mode: "light",
+  ...sharedAppTheme,
+};
+
+const darkAppTheme: AppTheme = {
+  colors: darkThemeColors,
+  mode: "dark",
+  ...sharedAppTheme,
+};
+
 // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
 // applications to override those colors using their own custom theme.
 // By defining borders using defaultAppTheme.colors instead of defaultThemeColors,
 // we allow other apps to specify their colors once, and have them apply
-// throughtout the application, such as in borders, etc without having to manually
+// throughout the application, such as in borders, etc without having to manually
 // override every theme property that makes use of colors.
-defaultAppTheme.borders = {
+lightAppTheme.borders = {
   error: {
-    "400": `1px solid ${defaultAppTheme.colors.error[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.error[400]}`,
   },
   gray: {
-    "100": `1px solid ${defaultAppTheme.colors.gray[100]}`,
-    "200": `1px solid ${defaultAppTheme.colors.gray[200]}`,
-    "300": `1px solid ${defaultAppTheme.colors.gray[300]}`,
-    "400": `1px solid ${defaultAppTheme.colors.gray[400]}`,
-    "500": `1px solid ${defaultAppTheme.colors.gray[500]}`,
-    dashed: `2px dashed ${defaultAppTheme.colors.gray[400]}`,
+    "100": `1px solid ${lightAppTheme.colors.gray[100]}`,
+    "200": `1px solid ${lightAppTheme.colors.gray[200]}`,
+    "300": `1px solid ${lightAppTheme.colors.gray[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.gray[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.gray[500]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.gray[400]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   primary: {
-    "300": `1px solid ${defaultAppTheme.colors.primary[300]}`,
-    "400": `1px solid ${defaultAppTheme.colors.primary[400]}`,
-    "500": `1px solid ${defaultAppTheme.colors.primary[500]}`,
-    "600": `1px solid${defaultAppTheme.colors.primary[600]}`,
-    dashed: `2px dashed ${defaultAppTheme.colors.primary[400]}`,
+    "300": `1px solid ${lightAppTheme.colors.primary[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.primary[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.primary[500]}`,
+    "600": `1px solid${lightAppTheme.colors.primary[600]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.primary[400]}`,
   },
   success: {
-    "400": `1px solid ${defaultAppTheme.colors.success[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.success[400]}`,
   },
   warning: {
-    "400": `1px solid ${defaultAppTheme.colors.warning[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.warning[400]}`,
   },
 };
 
@@ -316,7 +385,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         light: appTheme.colors.info[200],
         main: appTheme.colors.info[400],
       },
-      mode: "light",
+      mode: appTheme.mode,
       primary: {
         dark: appTheme.colors.primary[600],
         light: appTheme.colors.primary[300],
@@ -418,7 +487,12 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
   };
 }
 
-const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(defaultAppTheme);
+const chooseTheme = (theme: "light" | "dark") => {
+  if (theme === "dark") {
+    return darkAppTheme;
+  }
+  return lightAppTheme;
+};
 
 export interface SDSTheme extends Theme {
   app?: AppTheme;
@@ -437,6 +511,8 @@ interface AppTheme {
   shadows: Shadows;
   spacing: Spacings;
   typography: Typography;
+  // TODO: Do I like this approach?
+  mode: "light" | "dark";
 }
 
 export interface Shadows {
@@ -557,4 +633,5 @@ export interface Borders {
   warning: Border;
 }
 
-export const defaultTheme = createThemeAdaptor(defaultThemeOptions);
+export const defaultTheme = (theme: "light" | "dark") =>
+  createThemeAdaptor(makeThemeOptions(chooseTheme(theme)));

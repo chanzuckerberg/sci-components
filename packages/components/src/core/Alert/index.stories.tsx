@@ -4,11 +4,11 @@ import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
-import { defaultTheme } from "../styles/common/defaultTheme";
 import Alert from "./index";
 
-const DismissButton = styled(Button)`
-  margin-left: -${defaultTheme.spacing(3)}px;
+const DismissButton = styled(Button)(
+  ({ theme }) => `
+  margin-left: -${theme.spacing(3)}px;
   padding-bottom: 0;
   font-size: 12px;
   line-height: 18px;
@@ -16,8 +16,8 @@ const DismissButton = styled(Button)`
   font-weight: 600;
   &:hover {
     background: none;
-  }
-`;
+  }`
+);
 
 const Demo = (props: Args): JSX.Element => {
   const { text } = props;

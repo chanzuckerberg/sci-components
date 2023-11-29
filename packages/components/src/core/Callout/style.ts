@@ -8,7 +8,6 @@ import {
   getIconSizes,
   getSpaces,
 } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
@@ -39,12 +38,13 @@ export const StyledCallout = styled(Alert, {
     // any buttom margin
     const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
 
+    // TODO: Theme shouldn't be saying it might be null
     return `
       background-color: ${backgroundColor};
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${props.theme?.palette.text.primary};
       padding: ${spacings?.m}px;
       background-color: ${calloutColor};
 

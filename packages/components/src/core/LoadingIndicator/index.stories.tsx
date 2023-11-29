@@ -1,6 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { defaultAppTheme } from "../styles";
+import { sharedAppTheme } from "../styles";
 import RawLoadingIndicator from "./index";
 
 const LoadingIndicator = (props: Args): JSX.Element => {
@@ -30,7 +30,7 @@ export const Default = {
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const spacings = defaultAppTheme?.spacing;
+  const spacings = sharedAppTheme?.spacing;
 
   const livePreviewStyles = {
     display: "grid",
