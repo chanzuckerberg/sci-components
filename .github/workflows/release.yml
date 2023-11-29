@@ -91,6 +91,7 @@ jobs:
 
       # Step 12: Merge prod branch into main
       - name: Merge prod into main
+        id: createpr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: peter-evans/create-pull-request@v4
@@ -99,6 +100,24 @@ jobs:
           title: 'chore: merge prod into main'
           base: main
           branch: prod
+          labels: automerge
+
+      # Step 13: Automerge PR
+      - name: Enable Automerge PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: steps.createpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.createpr.outputs.pull-request-number }}
+          merge-method: squash
+
+      # Step 14: Autoapprove PR
+      - name: Autoapprove PR
+        if: steps.createpr.outputs.pull-request-operation == 'created'
+        run: gh pr review --approve "${{ steps.createpr.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Job 2
   create-version-matrix:
