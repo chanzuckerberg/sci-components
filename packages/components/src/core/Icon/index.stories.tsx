@@ -356,3 +356,25 @@ export const Test = {
     />
   ),
 };
+
+export const SvgIcon = {
+  parameters: {
+    controls: {
+      exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <RawIcon
+      sdsIcon="checkCircle"
+      svgIcon={iconMap.bacteria.largeIcon ?? undefined}
+      sdsSize="l"
+      sdsType="static"
+      color="success"
+      data-testid="icon"
+      {...args}
+    />
+  ),
+};

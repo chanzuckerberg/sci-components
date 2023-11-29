@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
-import { iconMap } from "../Icon/map";
 import RawBanner from "./index";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
@@ -8,11 +7,7 @@ const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 const Banner = (props: Args): JSX.Element => {
   const { sdsType, textChild } = props;
   return (
-    <RawBanner
-      sdsType={sdsType}
-      {...props}
-      svgIcon={iconMap.bacteria.largeIcon ?? undefined}
-    >
+    <RawBanner sdsType={sdsType} {...props}>
       {textChild}
     </RawBanner>
   );
