@@ -9,6 +9,7 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   extends CommonThemeProps {
   className?: string;
   sdsIcon: IconName;
+  svgIcon?: FC<CustomSVGProps>;
   sdsSize: IconNameToSizes[IconName];
   sdsType: "iconButton" | "interactive" | "static" | "button";
 }

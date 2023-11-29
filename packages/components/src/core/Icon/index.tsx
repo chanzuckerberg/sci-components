@@ -21,7 +21,15 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
  * @see https://mui.com/material-ui/icons/#icons
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
-  { className, color, shade, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
+  {
+    className,
+    color,
+    shade,
+    sdsIcon,
+    sdsSize,
+    sdsType,
+    svgIcon,
+  }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
   const icon = iconMap[sdsIcon] ?? {};
@@ -36,7 +44,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 14 14"
-          component={smallIcon}
+          component={svgIcon ?? smallIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
           sdsIcon={sdsIcon}
@@ -53,7 +61,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 22 22"
-          component={largeIcon}
+          component={svgIcon ?? largeIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
           sdsIcon={sdsIcon}
