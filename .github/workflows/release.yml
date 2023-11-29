@@ -89,6 +89,7 @@ jobs:
           config: .github/config/slack.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
 
+      # Step 12: Merge prod branch into main
       - name: Merge prod into main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
