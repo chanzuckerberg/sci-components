@@ -1,6 +1,7 @@
+import { useTheme } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { sharedAppTheme } from "../styles";
+import { SDSTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 
@@ -95,7 +96,8 @@ export const Default = {
 // Live Preview
 
 const LivePreviewDemo = (): JSX.Element => {
-  const spacings = sharedAppTheme?.spacing;
+  const theme: SDSTheme = useTheme();
+  const spacings = theme.app?.spacing;
 
   const livePreviewStyles: React.CSSProperties = {
     alignItems: "center",
