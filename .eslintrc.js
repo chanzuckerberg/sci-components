@@ -15,7 +15,6 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "airbnb-typescript",
     "plugin:sonarjs/recommended",
-    "plugin:jest-playwright/recommended",
     "plugin:storybook/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
