@@ -4,6 +4,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { fontBodyXxs } from "../styles";
+import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getColors,
@@ -69,10 +70,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
       }
 
       &.MuiCheckbox-root {
-        &.Mui-focusVisible {
-          outline: 5px auto Highlight;
-          outline: 5px auto -webkit-focus-ring-color;
-        }
+        ${focusVisibleA11yStyle()}
         border-radius: ${corners?.s}px;        
         padding: ${spaces?.xxs}px;
         margin: 3px;

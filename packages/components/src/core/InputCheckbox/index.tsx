@@ -67,7 +67,6 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
       caption={caption}
       control={
         <StyledCheckbox
-          tabIndex={0}
           disabled={disabled}
           checkedIcon={
             <SvgIcon

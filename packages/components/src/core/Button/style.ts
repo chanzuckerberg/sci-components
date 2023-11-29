@@ -7,6 +7,7 @@ import {
   getCorners,
   getSpaces,
 } from "../styles";
+import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 
 const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
 
@@ -32,6 +33,7 @@ const ButtonBase = styled(Button, {
 
     return `
       ${outlineBorder}
+      ${focusVisibleA11yStyle()}
       padding: ${padding};
       min-width: 120px;
       height: 34px;
@@ -39,10 +41,6 @@ const ButtonBase = styled(Button, {
         color: white;
         background-color: ${colors?.primary[500]};
         box-shadow: none;
-      }
-      &:focus-visible {
-        outline: 5px auto Highlight;
-        outline: 5px auto -webkit-focus-ring-color;
       }
       &:active {
         color: white;
