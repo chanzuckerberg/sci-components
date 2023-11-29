@@ -1,4 +1,4 @@
-import { colors } from "@mui/material";
+import { colors, PaletteMode } from "@mui/material";
 import {
   createTheme,
   PaletteOptions,
@@ -8,7 +8,6 @@ import {
 } from "@mui/material/styles";
 
 const createThemeAdaptor = createTheme;
-type ThemeVariants = "light" | "dark";
 
 const { common } = colors;
 
@@ -307,13 +306,11 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
 
 const lightAppTheme: AppTheme = {
   colors: lightThemeColors,
-  mode: "light",
   ...sharedAppTheme,
 };
 
 const darkAppTheme: AppTheme = {
   colors: darkThemeColors,
-  mode: "dark",
   ...sharedAppTheme,
 };
 
@@ -406,7 +403,7 @@ const lightThemePallette = (appTheme: AppTheme): PaletteOptions => ({
     light: appTheme.colors.info[200],
     main: appTheme.colors.info[400],
   },
-  mode: appTheme.mode,
+  mode: "light",
   primary: {
     dark: appTheme.colors.primary[600],
     light: appTheme.colors.primary[300],
@@ -453,7 +450,7 @@ const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
     light: appTheme.colors.info[200],
     main: appTheme.colors.info[400],
   },
-  mode: appTheme.mode,
+  mode: "dark",
   primary: {
     dark: appTheme.colors.primary[600],
     light: appTheme.colors.primary[300],
@@ -479,7 +476,10 @@ const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
   },
 });
 
-export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
+export function makeThemeOptions(
+  appTheme: AppTheme,
+  mode: PaletteMode
+): SDSThemeOptions {
   return {
     app: appTheme,
     components: {
@@ -499,9 +499,10 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         },
       },
     },
-    palette: appTheme.mode
-      ? lightThemePallette(appTheme)
-      : darkThemePalette(appTheme),
+    palette:
+      mode === "light"
+        ? lightThemePallette(appTheme)
+        : darkThemePalette(appTheme),
     shadows: [
       appTheme.shadows.none,
       appTheme.shadows.s,
@@ -585,7 +586,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
  * @param theme The theme to choose from. Currently supports a light and dark variant.
  * @returns The appropriate app theme for the variant.
  */
-const chooseTheme = (theme: ThemeVariants): AppTheme => {
+const chooseTheme = (theme: PaletteMode): AppTheme => {
   if (theme === "dark") {
     return darkAppTheme;
   }
@@ -609,7 +610,6 @@ interface AppTheme {
   shadows: Shadows;
   spacing: Spacings;
   typography: Typography;
-  mode: ThemeVariants;
 }
 
 export interface Shadows {
@@ -736,7 +736,7 @@ export interface Borders {
  * @deprecated Use the `theme` to get a flexible light/dark mode theme function
  */
 export const defaultTheme = createThemeAdaptor(
-  makeThemeOptions(chooseTheme("light"))
+  makeThemeOptions(chooseTheme("light"), "light")
 );
 
 /**
@@ -745,5 +745,5 @@ export const defaultTheme = createThemeAdaptor(
  * @param t The theme to use. Currently supports a light and dark variant.
  * @returns The selected theme object to be used in the ThemeProvider
  */
-export const theme = (t: ThemeVariants) =>
-  createThemeAdaptor(makeThemeOptions(chooseTheme(t)));
+export const theme = (t: PaletteMode) =>
+  createThemeAdaptor(makeThemeOptions(chooseTheme(t), t));
