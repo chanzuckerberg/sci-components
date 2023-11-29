@@ -89,6 +89,16 @@ jobs:
           config: .github/config/slack.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
 
+      - name: Merge prod into main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: merge prod into main
+          title: 'chore: merge prod into main'
+          base: main
+          branch: prod
+
   # Job 2
   create-version-matrix:
     needs: release
