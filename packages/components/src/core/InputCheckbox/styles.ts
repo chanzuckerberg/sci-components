@@ -7,7 +7,9 @@ import { fontBodyXxs } from "../styles";
 import {
   CommonThemeProps,
   getColors,
+  getCorners,
   getIconSizes,
+  getSpaces,
   getTypography,
 } from "../styles/common/selectors/theme";
 
@@ -43,7 +45,9 @@ export const StyledFormControlLabel = styled(RawFormControlLabel)`
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props) => {
     const colors = getColors(props);
+    const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
+    const spaces = getSpaces(props);
     return `
       color: ${colors?.gray[400]};
       &:hover {
@@ -69,8 +73,8 @@ export const StyledCheckbox = styled(RawCheckbox)`
           outline: 5px auto Highlight;
           outline: 5px auto -webkit-focus-ring-color;
         }
-        border-radius: 2px;
-        padding: 4px;
+        border-radius: ${corners?.s}px;        
+        padding: ${spaces?.xxs}px;
         margin: 3px;
       }
 
