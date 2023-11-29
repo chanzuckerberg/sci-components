@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import Button from "../Button";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBody,
   getBorders,
   getColors,
@@ -106,6 +107,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     ${labelStyle(props)}
+    ${focusVisibleA11yStyle()}
 
     /* this is needed to left align the label text */
     align-items: flex-start;
@@ -149,11 +151,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     &:focus {
       outline: none;
-    }
-
-    &:focus-visible {
-      outline: 5px auto Highlight;
-      outline: 5px auto -webkit-focus-ring-color;
     }
 
     &.MuiButton-root.MuiButton-text > span {

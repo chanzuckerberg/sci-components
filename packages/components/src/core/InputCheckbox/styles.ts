@@ -4,10 +4,13 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { fontBodyXxs } from "../styles";
+import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getColors,
+  getCorners,
   getIconSizes,
+  getSpaces,
   getTypography,
 } from "../styles/common/selectors/theme";
 
@@ -43,7 +46,9 @@ export const StyledFormControlLabel = styled(RawFormControlLabel)`
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props) => {
     const colors = getColors(props);
+    const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
+    const spaces = getSpaces(props);
     return `
       color: ${colors?.gray[400]};
       &:hover {
@@ -62,6 +67,13 @@ export const StyledCheckbox = styled(RawCheckbox)`
         &.Mui-disabled {
           color: ${colors?.primary[300]}
         }
+      }
+
+      &.MuiCheckbox-root {
+        ${focusVisibleA11yStyle()}
+        border-radius: ${corners?.s}px;        
+        padding: ${spaces?.xxs}px;
+        margin: 3px;
       }
 
       .MuiSvgIcon-root {
