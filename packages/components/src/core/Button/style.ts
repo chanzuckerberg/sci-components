@@ -33,7 +33,7 @@ const ButtonBase = styled(Button, {
 
     return `
       ${outlineBorder}
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle}
       padding: ${padding};
       min-width: 120px;
       height: 34px;
