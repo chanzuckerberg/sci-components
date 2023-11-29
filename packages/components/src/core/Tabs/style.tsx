@@ -5,7 +5,7 @@ import {
   TabsProps as RawTabsProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { fontBodyS, fontBodyXs } from "../styles";
+import { focusVisibleA11yStyle, fontBodyS, fontBodyXs } from "../styles";
 import {
   CommonThemeProps,
   getColors,
@@ -71,6 +71,7 @@ export const StyledTab = styled(RawTab, {
   opacity: 1 !important;
 
   ${tabFontMixin}
+  ${focusVisibleA11yStyle}
 
   ${(props) => {
     const colors = getColors(props);
@@ -92,11 +93,6 @@ export const StyledTab = styled(RawTab, {
 
       &:hover, :focus {
         color: black;
-      }
-
-      &.Mui-focusVisible {
-        outline: 5px auto Highlight;
-        outline: 5px auto -webkit-focus-ring-color;
       }
 
       &.Mui-selected {
