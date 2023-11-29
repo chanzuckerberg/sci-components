@@ -90,34 +90,53 @@ jobs:
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
 
       # Step 12: Merge prod branch into main
-      - name: Merge prod into main
+      - name: Create PR to merge prod into main
         id: createpr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: peter-evans/create-pull-request@v4
+        uses: actions/github-script@v6
         with:
-          commit-message: merge prod into main
-          title: 'chore: merge prod into main'
-          base: main
-          branch: prod
-          labels: automerge
+          script: |
+            const ownerAndRepo = '${{ github.repository }}';
+            const [owner, repo] = ownerAndRepo.split('/');
+            const head = "prod";
+            const base = "main";
+            const title = "blah";
+            const pr = await github.rest.pulls.list({owner, repo, base, head: `${owner}:${head}`})
+            if (pr.data.length>0){
+              return pr.data[0].number
+            }
+            const result = await github.rest.pulls.create({
+              owner,
+              repo,
+              head,
+              base,
+              title,
+            });
+            return result.data.number;
 
       # Step 13: Automerge PR
       - name: Enable Automerge PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: steps.createpr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          pull-request-number: ${{ steps.createpr.outputs.pull-request-number }}
+          pull-request-number: ${{steps.createpr.outputs.result}}
           merge-method: squash
+      
+      # Step 14: Generate token for autoapproving PR
+      - name: Generate token
+        id: generate_token
+        uses: chanzuckerberg/github-app-token@v1.1.4
+        with:
+          app_id: ${{ secrets.CZI_GITHUB_HELPER_APP_ID }}
+          private_key: ${{ secrets.CZI_GITHUB_HELPER_PK }}
 
-      # Step 14: Autoapprove PR
+      # Step 15: Autoapprove PR
       - name: Autoapprove PR
-        if: steps.createpr.outputs.pull-request-operation == 'created'
-        run: gh pr review --approve "${{ steps.createpr.outputs.pull-request-number }}"
+        run: gh pr review --approve "${{steps.createpr.outputs.result}}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
   # Job 2
   create-version-matrix:
