@@ -5,6 +5,7 @@ export const decorators = [
   (Story, context) => {
     const { theme: storybookTheme } = context.globals;
 
+    // TODO: Make the background work with light/dark theme
     return (
       <ThemeProvider theme={theme(storybookTheme)}>
         <Story />

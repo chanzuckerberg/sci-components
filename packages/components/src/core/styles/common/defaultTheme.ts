@@ -1,6 +1,7 @@
 import { colors } from "@mui/material";
 import {
   createTheme,
+  PaletteOptions,
   Theme,
   ThemeOptions,
   TypographyStyle,
@@ -385,7 +386,7 @@ darkAppTheme.borders = {
   },
 };
 
-const lightThemePallette = (appTheme: AppTheme) => ({
+const lightThemePallette = (appTheme: AppTheme): PaletteOptions => ({
   divider: appTheme.colors.gray[200],
   error: {
     dark: appTheme.colors.error[600],
@@ -432,7 +433,7 @@ const lightThemePallette = (appTheme: AppTheme) => ({
 });
 
 // TODO: Colors
-const darkThemePalette = (appTheme: AppTheme) => ({
+const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
   divider: appTheme.colors.gray[200],
   error: {
     dark: appTheme.colors.error[600],
@@ -580,7 +581,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
 
 /**
  * Helper function to select the appropriate theme settings.
- * 
+ *
  * @param theme The theme to choose from. Currently supports a light and dark variant.
  * @returns The appropriate app theme for the variant.
  */
