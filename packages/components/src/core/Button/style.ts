@@ -15,6 +15,7 @@ const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
   box-shadow: none;
+  ${focusVisibleA11yStyle}
   ${(props) => {
     const { variant } = props;
     const colors = getColors(props);
@@ -33,7 +34,6 @@ const ButtonBase = styled(Button, {
 
     return `
       ${outlineBorder}
-      ${focusVisibleA11yStyle}
       padding: ${padding};
       min-width: 120px;
       height: 34px;
@@ -83,6 +83,8 @@ interface IsAllCaps extends CommonThemeProps {
 const MinimalButton = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
+  ${focusVisibleA11yStyle}
+
   ${(props: IsAllCaps) => {
     const spacings = getSpaces(props);
 
@@ -99,10 +101,6 @@ const MinimalButton = styled(Button, {
   }}
   &:hover, &:focus-visible {
     background-color: transparent;
-  }
-  &:focus-visible {
-    outline: 5px auto Highlight;
-    outline: 5px auto -webkit-focus-ring-color;
   }
 `;
 
@@ -143,10 +141,7 @@ interface IsRounded extends CommonThemeProps {
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
-  &:focus-visible {
-    outline: 5px auto Highlight;
-    outline: 5px auto -webkit-focus-ring-color;
-  }
+  ${focusVisibleA11yStyle}
   ${(props: IsRounded) => {
     if (!props.isRounded) return ``;
 
