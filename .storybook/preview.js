@@ -1,3 +1,4 @@
+import CssBaseline from "@mui/material/CssBaseline";
 import { theme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -5,9 +6,10 @@ export const decorators = [
   (Story, context) => {
     const { theme: storybookTheme } = context.globals;
 
-    // TODO: Make the background work with light/dark theme
     return (
       <ThemeProvider theme={theme(storybookTheme)}>
+        {/* CssBaseline provides light/dark background MUI theme for all stories */}
+        <CssBaseline />
         <Story />
       </ThemeProvider>
     );
@@ -20,6 +22,10 @@ export const decorators = [
  * https://github.com/chromaui/storybook-addon-pseudo-states/issues/59#issuecomment-1498182067
  */
 const preview = {
+  parameters: {
+    // Removes the change background button since it's controlled by the theme toggle
+    backgrounds: { disable: true },
+  },
   globalTypes: {
     pseudo: {},
     theme: {
