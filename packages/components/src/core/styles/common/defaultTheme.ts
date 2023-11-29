@@ -7,6 +7,7 @@ import {
 } from "@mui/material/styles";
 
 const createThemeAdaptor = createTheme;
+type ThemeVariants = "light" | "dark";
 
 const { common } = colors;
 
@@ -132,7 +133,15 @@ const darkThemeColors = {
   },
 };
 
-export const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
+/**
+ * Base app theme for properties shared between light and dark mode. Generally, if a theme
+ * property doesn't deal with colors it belongs here, otherwise it'll have its specific
+ * theme variant defined in `lightAppTheme` or `darkAppTheme`.
+ *
+ * `colors` and `mode` are ommitted because they must be defined by the `lightAppTheme` and
+ * `darkAppTheme` objects before use in the `makeThemeOptions` function.
+ */
+const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
   corners: {
     l: 20,
     m: 4,
@@ -153,7 +162,6 @@ export const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
     xl: { height: 32, width: 32 },
     xs: { height: 10, width: 10 },
   },
-  // TODO: Dark mode for shadows?
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
     m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
@@ -345,7 +353,7 @@ lightAppTheme.borders = {
   },
 };
 
-// TODO: Colors
+// TODO: Dark mode colors
 darkAppTheme.borders = {
   error: {
     "400": `1px solid ${lightAppTheme.colors.error[400]}`,
@@ -570,7 +578,13 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
   };
 }
 
-const chooseTheme = (theme: "light" | "dark") => {
+/**
+ * Helper function to select the appropriate theme settings.
+ * 
+ * @param theme The theme to choose from. Currently supports a light and dark variant.
+ * @returns The appropriate app theme for the variant.
+ */
+const chooseTheme = (theme: ThemeVariants): AppTheme => {
   if (theme === "dark") {
     return darkAppTheme;
   }
@@ -594,8 +608,7 @@ interface AppTheme {
   shadows: Shadows;
   spacing: Spacings;
   typography: Typography;
-  // TODO: Do I like this approach?
-  mode: "light" | "dark";
+  mode: ThemeVariants;
 }
 
 export interface Shadows {
@@ -731,5 +744,5 @@ export const defaultTheme = createThemeAdaptor(
  * @param t The theme to use. Currently supports a light and dark variant.
  * @returns The selected theme object to be used in the ThemeProvider
  */
-export const theme = (t: "light" | "dark") =>
+export const theme = (t: ThemeVariants) =>
   createThemeAdaptor(makeThemeOptions(chooseTheme(t)));
