@@ -25,7 +25,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
     className,
     color,
     shade,
-    icon: icon,
+    icon,
     sdsSize,
     sdsType,
   }: IconProps<IconName>,
