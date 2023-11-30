@@ -1,10 +1,10 @@
-name: New Component Request
+name: Request new SDS component
 description: Request a component be added to SDS
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for requesting a new component! Please fill out the following information about the requested component.
+        Thanks for requesting a new component in the SDS! Please fill out the following information about the requested component.
   - type: input
     id: component-name
     attributes:
