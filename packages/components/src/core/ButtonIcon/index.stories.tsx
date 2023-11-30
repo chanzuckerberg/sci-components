@@ -28,7 +28,7 @@ const ButtonIcon = (props: Args): JSX.Element => {
     <RawButtonIcon
       onClick={handleButtonClick}
       on={on}
-      sdsIcon={sdsIcon}
+      icon={sdsIcon}
       sdsSize="medium"
       sdsType="primary"
       {...rest}
@@ -466,7 +466,7 @@ export const Test = {
         aria-label="dotsHorizontal"
         data-testid="iconButton"
         on
-        sdsIcon="dotsHorizontal"
+        icon="dotsHorizontal"
         sdsSize="medium"
         sdsType="primary"
       />

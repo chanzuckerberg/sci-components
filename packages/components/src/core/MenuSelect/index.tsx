@@ -125,7 +125,7 @@ const MenuSelect = <
                     sdsIconProps={{
                       sdsType: "interactive",
                     }}
-                    sdsIcon="search"
+                    icon="search"
                   />
                 </InputAdornment>
               ),

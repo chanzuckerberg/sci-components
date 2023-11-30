@@ -25,18 +25,17 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
     className,
     color,
     shade,
-    sdsIcon,
+    icon: icon,
     sdsSize,
     sdsType,
-    svgIcon,
   }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
-  const icon = (): FC<CustomSVGProps> => {
-    if (svgIcon) return svgIcon;
+  const iconItem = (): FC<CustomSVGProps> => {
+    if (typeof icon !== "string") return icon;
     if (sdsSize === "xs" || sdsSize === "s")
-      return iconMap[sdsIcon].smallIcon as FC<CustomSVGProps>;
-    return iconMap[sdsIcon].largeIcon as FC<CustomSVGProps>;
+      return iconMap[icon].smallIcon as FC<CustomSVGProps>;
+    return iconMap[icon].largeIcon as FC<CustomSVGProps>;
   };
 
   if (sdsSize === "xs" || sdsSize === "s") {
@@ -48,10 +47,10 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 14 14"
-          component={icon()}
+          component={iconItem()}
           sdsSize={sdsSize}
           sdsType={sdsType}
-          sdsIcon={sdsIcon}
+          icon={icon}
         />
       </StyledIcon>
     );
@@ -65,10 +64,10 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 22 22"
-          component={icon()}
+          component={iconItem()}
           sdsSize={sdsSize}
           sdsType={sdsType}
-          sdsIcon={sdsIcon}
+          icon={icon}
         />
       </StyledIcon>
     );
@@ -76,7 +75,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
 
   // eslint-disable-next-line no-console
   console.error(
-    `Error: Icon ${sdsIcon} not found for size ${sdsSize}. This is a @czi-sds/components problem.`
+    `Error: Icon ${icon} not found for size ${sdsSize}. This is a @czi-sds/components problem.`
   );
 
   return null;

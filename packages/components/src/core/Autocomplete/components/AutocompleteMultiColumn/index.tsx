@@ -207,7 +207,7 @@ const AutocompleteMultiColumn = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    sdsIcon="xMark"
+                    icon="xMark"
                     onClick={clearInput}
                   />
                 )}
@@ -218,7 +218,7 @@ const AutocompleteMultiColumn = <
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
-                  sdsIcon="search"
+                  icon="search"
                 />
               </StyledInputAdornment>
             ),

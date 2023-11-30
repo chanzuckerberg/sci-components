@@ -11,7 +11,7 @@ export type { ButtonIconProps, ButtonIconSizeToTypes };
 export interface ButtonIconInternalProps<
   IconName extends keyof IconNameToSizes
 > {
-  sdsIcon: IconName;
+  icon: IconName | FC<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
 }
 
@@ -20,7 +20,7 @@ type ButtonIconProps<
   ButtonIconSize extends keyof ButtonIconSizeToTypes
 > = ButtonIconExtraProps<ButtonIconSize> &
   Omit<RawButtonIconProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> &
-  ButtonIconInternalProps<IconName> & { svgIcon?: FC<CustomSVGProps> };
+  ButtonIconInternalProps<IconName>;
 
 const ButtonIconSizeToSdsIconSize = {
   large: "xl",
@@ -38,16 +38,15 @@ const ButtonIcon = forwardRef(function ButtonIcon<
   props: ButtonIconProps<IconName, ButtonIconSize>,
   ref: ForwardedRef<HTMLButtonElement | null>
 ): JSX.Element {
-  const { sdsIcon, sdsSize = "large", sdsIconProps } = props;
+  const { icon, sdsSize = "large", sdsIconProps } = props;
   const iconSize = ButtonIconSizeToSdsIconSize[sdsSize];
   return (
     <StyledButtonIcon {...props} ref={ref}>
       <Icon
         sdsType="iconButton"
         {...sdsIconProps}
-        sdsIcon={sdsIcon}
+        icon={icon}
         sdsSize={iconSize as IconNameToSizes[IconName]}
-        svgIcon={props.svgIcon}
       />
     </StyledButtonIcon>
   );

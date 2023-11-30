@@ -12,7 +12,7 @@ import {
 export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
   extends BannerExtraProps<ButtonIconSize> {
   children: React.ReactNode;
-  svgIcon?: FC<CustomSVGProps>;
+  icon?: FC<CustomSVGProps>;
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
@@ -26,11 +26,11 @@ const Banner = forwardRef(function Banner<
 ): JSX.Element | null {
   const {
     children,
-    svgIcon,
     dismissed,
     dismissible = true,
     onClose,
     sdsType,
+    icon,
     ...rest
   } = props;
 
@@ -50,12 +50,7 @@ const Banner = forwardRef(function Banner<
     <StyledBanner role="banner" sdsType={sdsType} ref={ref} {...rest}>
       <Centered>
         <IconWrapper>
-          <Icon
-            sdsIcon="infoCircle"
-            svgIcon={svgIcon}
-            sdsSize="l"
-            sdsType="static"
-          />
+          <Icon icon={icon ?? "infoCircle"} sdsSize="l" sdsType="static" />
         </IconWrapper>
         {children}
       </Centered>
@@ -66,7 +61,7 @@ const Banner = forwardRef(function Banner<
           sdsType="tertiary"
           sdsSize="small"
           onClick={handleClose}
-          sdsIcon="xMark"
+          icon={icon ?? "xMark"}
         />
       )}
     </StyledBanner>

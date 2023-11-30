@@ -52,10 +52,9 @@ export interface MenuItemExtraProps<
 > {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
-  sdsIcon?: IconName;
+  icon?: IconName | FC<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
-  svgIcon?: FC<CustomSVGProps>;
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
@@ -73,10 +72,9 @@ const MenuItem = forwardRef(function MenuItem<
     column = null,
     disabled,
     isMultiSelect = false,
-    sdsIcon,
+    icon,
     sdsIconProps,
     sdsStyle = "determinate",
-    svgIcon,
     ...originalMenuItemProps
   } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
@@ -116,14 +114,13 @@ const MenuItem = forwardRef(function MenuItem<
           className="primary-text"
           disabled={disabled}
         >
-          {sdsIcon && (
+          {icon && (
             <StyledMenuItemIcon disabled={disabled}>
               <Icon
                 {...sdsIconProps}
                 sdsType="static"
-                sdsIcon={sdsIcon}
+                icon={icon}
                 sdsSize="s"
-                svgIcon={svgIcon}
               />
             </StyledMenuItemIcon>
           )}

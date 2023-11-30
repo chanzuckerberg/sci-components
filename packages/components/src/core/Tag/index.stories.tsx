@@ -13,8 +13,8 @@ const Tag = (props: Args): JSX.Element => {
 
 const ICONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="checkCircle" key="checkCircle" sdsType="button" />,
-  <Icon sdsSize="l" sdsIcon="loading" key="loading" sdsType="button" />,
+  <Icon sdsSize="l" icon="checkCircle" key="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" icon="loading" key="loading" sdsType="button" />,
   <WbSunny key="WBSunny" />,
   <CheckCircleOutline key="CheckCircleOutline" />,
 ];
@@ -144,7 +144,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           {...props}
           color={color}
           icon={
-            icon || <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />
+            icon || <Icon sdsSize="l" icon="checkCircle" sdsType="button" />
           }
           label={label}
           sdsStyle="square"
@@ -179,7 +179,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
           {...props}
           color={color}
           icon={
-            icon || <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="button" />
+            icon || <Icon sdsSize="l" icon="checkCircle" sdsType="button" />
           }
           label={label}
           sdsStyle="rounded"

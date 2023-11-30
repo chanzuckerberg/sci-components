@@ -13,7 +13,7 @@ export type LoadingIndicatorProps = Omit<
 const LoadingIndicator = ({ sdsStyle }: LoadingIndicatorProps): JSX.Element => {
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle}>
-      <Icon sdsIcon="loading" sdsSize="l" sdsType="static" />
+      <Icon icon="loading" sdsSize="l" sdsType="static" />
       <StyledText>Loading</StyledText>
     </StyledLoadingIndicator>
   );

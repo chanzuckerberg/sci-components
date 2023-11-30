@@ -6,7 +6,7 @@ import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
 interface SingleButtonDefinition {
-  iconName: string;
+  icon: keyof IconNameToSizes | FC<CustomSVGProps>;
   tooltipText: string;
 }
 
@@ -25,7 +25,6 @@ interface SegmentedControlExtraProps
     | "info"
     | "warning"
     | undefined;
-  svgIcon?: FC<CustomSVGProps>;
 }
 
 /**
@@ -35,7 +34,7 @@ export type SegmentedControlProps = SegmentedControlExtraProps &
   ToggleButtonGroupProps;
 
 const SegmentedControl = (props: SegmentedControlProps) => {
-  const { buttonDefinition, svgIcon } = props;
+  const { buttonDefinition } = props;
   const leftmost = buttonDefinition[0]?.tooltipText;
   const [active, setActive] = React.useState<string | null>(leftmost);
 
@@ -58,7 +57,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {...props}
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
-        const { iconName, tooltipText } = button;
+        const { icon, tooltipText } = button;
         return (
           <ToggleButton
             aria-label={tooltipText}
@@ -68,12 +67,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
           >
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
               <span>
-                <Icon
-                  sdsIcon={iconName as keyof IconNameToSizes}
-                  sdsSize="s"
-                  sdsType="button"
-                  svgIcon={svgIcon}
-                />
+                <Icon icon={icon} sdsSize="s" sdsType="button" />
               </span>
             </Tooltip>
           </ToggleButton>

@@ -16,7 +16,7 @@ const Icon = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, sdsType, ...rest } = props;
 
   return (
-    <RawIcon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
+    <RawIcon icon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
   );
 };
 
@@ -224,7 +224,7 @@ const IconItem = (props: IconItemProps) => {
           color={color}
           shade={shade}
           sdsSize={sdsSize}
-          sdsIcon={sdsIcon as keyof IconNameToSizes}
+          icon={sdsIcon as keyof IconNameToSizes}
           sdsType="static"
         />
       </div>
@@ -249,7 +249,7 @@ const IconItem = (props: IconItemProps) => {
             color={color}
             shade={shade}
             sdsSize={sdsSize}
-            sdsIcon={sdsIcon as keyof IconNameToSizes}
+            icon={sdsIcon as keyof IconNameToSizes}
             sdsType="static"
           />
           <p>Copied!</p>
@@ -258,7 +258,7 @@ const IconItem = (props: IconItemProps) => {
               color={color}
               shade={shade}
               sdsSize="xs"
-              sdsIcon="check"
+              icon="check"
               sdsType="static"
             />
           </span>
@@ -312,7 +312,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
         <Callout
           intent="warning"
           icon={
-            <RawIcon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
+            <RawIcon sdsSize="l" icon="infoSpeechBubble" sdsType="static" />
           }
         >
           Sorry, there are no matches for your search!
@@ -347,7 +347,7 @@ export const Test = {
   },
   render: (args: Args) => (
     <RawIcon
-      sdsIcon="checkCircle"
+      icon="checkCircle"
       sdsSize="l"
       sdsType="static"
       color="success"
@@ -368,8 +368,7 @@ export const SvgIcon = {
   },
   render: (args: Args) => (
     <RawIcon
-      sdsIcon="checkCircle"
-      svgIcon={iconMap.bacteria.largeIcon ?? undefined}
+      icon="checkCircle"
       sdsSize="l"
       sdsType="static"
       color="success"

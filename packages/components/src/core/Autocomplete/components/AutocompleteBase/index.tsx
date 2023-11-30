@@ -227,7 +227,7 @@ const AutocompleteBase = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    sdsIcon="xMark"
+                    icon="xMark"
                   />
                 )}
                 <ButtonIcon
@@ -237,7 +237,7 @@ const AutocompleteBase = <
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
-                  sdsIcon="search"
+                  icon="search"
                 />
               </StyledInputAdornment>
             ),
@@ -339,7 +339,7 @@ const AutocompleteBase = <
       <MenuItem
         column={count}
         disabled={optionProps["aria-disabled"] === true}
-        sdsIcon={sdsIcon}
+        icon={sdsIcon}
         sdsIconProps={sdsIconProps}
         isMultiSelect={multiple}
         selected={selected}

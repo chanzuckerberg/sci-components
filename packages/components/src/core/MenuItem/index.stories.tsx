@@ -344,7 +344,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     data-testid="menu-item"
                     isMultiSelect={isMultiSelect}
                     column={column}
-                    sdsIcon={sdsIcon}
+                    icon={sdsIcon}
                     selected={selected}
                     sdsStyle={sdsStyle}
                     disabled={disabled}

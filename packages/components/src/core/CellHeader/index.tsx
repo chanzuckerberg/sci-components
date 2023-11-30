@@ -57,7 +57,7 @@ const CellHeaderContent = (
       sdsType="tertiary"
       sdsSize="small"
       active={active}
-      sdsIcon={sdsIconName}
+      icon={sdsIconName}
     />
   );
 

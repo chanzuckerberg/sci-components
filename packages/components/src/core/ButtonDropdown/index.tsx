@@ -31,7 +31,7 @@ const ButtonDropdown = React.forwardRef(
     return (
       <Button
         {...props}
-        endIcon={<Icon sdsIcon="chevronDown" sdsSize="s" sdsType="button" />}
+        endIcon={<Icon icon="chevronDown" sdsSize="s" sdsType="button" />}
         sdsStyle={sdsStyle}
         ref={ref}
         sdsType={sdsType}
