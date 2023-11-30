@@ -1,0 +1,50 @@
+name: Request new SDS component
+description: Request a component be added to SDS
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for requesting a new component in the SDS! Please fill out the following information about the requested component.
+  - type: input
+    id: component-name
+    attributes:
+      label: Component Name
+      description: A name for the desired component.
+    validations:
+      required: true
+  - type: markdown
+    id: component-requirements
+    attributes:
+      label: Component Requirements
+      description: A list of requirements for the component.
+    validations:
+      required: true
+  - type: input
+    id: mui-base-component
+    attributes:
+      label: MUI Base Component (if applicable)
+      description: If the component is based on a Material-UI component, please specify.
+      placeholder: e.g., MUI Button
+    validations:
+      required: false
+  - type: input
+    id: teams-requesting
+    attributes:
+      label: Team(s) Requesting
+      description: The team(s) that need this component.
+    validations:
+      required: true
+  - type: input
+    id: component-needed-by
+    attributes:
+      label: Component Needed By
+      description: The date by which the component is needed.
+    validations:
+      required: true
+  - type: markdown
+    id: component-screenshot
+    attributes:
+      label: Component Screenshot / Prototype
+      description: A link to a screenshot or prototype of the component.
+    validations:
+      required: false

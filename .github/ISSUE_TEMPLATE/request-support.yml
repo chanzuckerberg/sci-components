@@ -1,0 +1,21 @@
+name: Request support
+description: Request support for a SDS component
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the form below to request help with a SDS component.
+  - type: input
+    id: component-name
+    attributes:
+      label: Component Name
+      description: Component that help request is for.
+    validations:
+      required: true
+  - type: markdown
+    id: issue-description
+    attributes:
+      label: Issue description
+      description: Details about the issue with the component.
+    validations:
+      required: true
