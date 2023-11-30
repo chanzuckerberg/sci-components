@@ -1,5 +1,6 @@
 import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { FC } from "react";
 import {
   CommonThemeProps,
   fontBody,
@@ -12,6 +13,7 @@ import { defaultTheme } from "../styles/common/defaultTheme";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
+  svgicon?: FC<CustomSVGProps>;
 }
 
 type CalloutProps = AlertProps & CalloutExtraProps;

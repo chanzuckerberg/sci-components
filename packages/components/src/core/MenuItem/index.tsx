@@ -1,5 +1,5 @@
 import { MenuItemProps as RawMenuItemProps } from "@mui/material";
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { FC, ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ColumnWrapper,
@@ -55,6 +55,7 @@ export interface MenuItemExtraProps<
   sdsIcon?: IconName;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
+  svgIcon?: FC<CustomSVGProps>;
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
@@ -75,6 +76,7 @@ const MenuItem = forwardRef(function MenuItem<
     sdsIcon,
     sdsIconProps,
     sdsStyle = "determinate",
+    svgIcon,
     ...originalMenuItemProps
   } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
@@ -121,6 +123,7 @@ const MenuItem = forwardRef(function MenuItem<
                 sdsType="static"
                 sdsIcon={sdsIcon}
                 sdsSize="s"
+                svgIcon={svgIcon}
               />
             </StyledMenuItemIcon>
           )}

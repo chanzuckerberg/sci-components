@@ -1,6 +1,6 @@
 import { AlertProps } from "@mui/lab";
 import { Box, Slide } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
@@ -14,6 +14,7 @@ export interface NotificationProps {
   slideDirection: "left" | "right";
   extraContent?: boolean;
   intent: "info" | "error" | "success" | "warning";
+  svgIcon?: FC<CustomSVGProps>;
 }
 
 export type ExposedNotificationProps = Omit<
@@ -34,6 +35,7 @@ const Notification = ({
   onClose,
   buttonOnClick,
   buttonText,
+  svgIcon,
   ...rest
 }: ExposedNotificationProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
@@ -61,12 +63,31 @@ const Notification = ({
   const getIcon = () => {
     switch (intent) {
       case "success":
-        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+        return (
+          <Icon
+            sdsSize="l"
+            sdsIcon="checkCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
+        );
       case "info":
-        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+        return (
+          <Icon
+            sdsSize="l"
+            sdsIcon="infoCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
+        );
       default:
         return (
-          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+          <Icon
+            sdsSize="l"
+            sdsIcon="exclamationMarkCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
         );
     }
   };
@@ -91,6 +112,7 @@ const Notification = ({
                   sdsType="tertiary"
                   data-testid="notificationCloseButton"
                   sdsIcon="xMark"
+                  svgIcon={svgIcon}
                 />
               ) : null
             }

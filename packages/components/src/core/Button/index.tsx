@@ -1,5 +1,5 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
-import React, { ForwardedRef } from "react";
+import React, { FC, ForwardedRef } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -25,7 +25,7 @@ export type ButtonProps<C extends React.ElementType = "button"> = Omit<
   RawButtonProps<C, { component?: C }>,
   "nonce" | "rev" | "rel" | "autoFocus" | "content"
 > &
-  SdsProps;
+  SdsProps & { svgIcon?: FC<CustomSVGProps> };
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -62,6 +62,7 @@ const Button = React.forwardRef(
             ref={ref}
             variant="contained"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "rounded" && sdsType === "secondary":
@@ -71,6 +72,7 @@ const Button = React.forwardRef(
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "square" && sdsType === "primary":
@@ -80,6 +82,7 @@ const Button = React.forwardRef(
             ref={ref}
             variant="contained"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "square" && sdsType === "secondary":
@@ -89,6 +92,7 @@ const Button = React.forwardRef(
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "minimal" && sdsType === "primary":
@@ -98,6 +102,7 @@ const Button = React.forwardRef(
             ref={ref}
             variant="text"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "minimal" && sdsType === "secondary":
@@ -107,10 +112,17 @@ const Button = React.forwardRef(
             ref={ref}
             variant="text"
             {...propsWithDefault}
+            startIcon={props.svgIcon ?? null}
           />
         );
       default:
-        return <StyledButton {...propsWithDefault} ref={ref} />;
+        return (
+          <StyledButton
+            {...propsWithDefault}
+            ref={ref}
+            startIcon={props.svgIcon ?? null}
+          />
+        );
     }
   }
 );

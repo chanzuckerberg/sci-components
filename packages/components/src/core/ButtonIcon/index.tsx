@@ -1,5 +1,5 @@
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
-import { ForwardedRef, forwardRef } from "react";
+import { FC, ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ButtonIconExtraProps,
@@ -20,7 +20,7 @@ type ButtonIconProps<
   ButtonIconSize extends keyof ButtonIconSizeToTypes
 > = ButtonIconExtraProps<ButtonIconSize> &
   Omit<RawButtonIconProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> &
-  ButtonIconInternalProps<IconName>;
+  ButtonIconInternalProps<IconName> & { svgIcon?: FC<CustomSVGProps> };
 
 const ButtonIconSizeToSdsIconSize = {
   large: "xl",
@@ -47,6 +47,7 @@ const ButtonIcon = forwardRef(function ButtonIcon<
         {...sdsIconProps}
         sdsIcon={sdsIcon}
         sdsSize={iconSize as IconNameToSizes[IconName]}
+        svgIcon={props.svgIcon}
       />
     </StyledButtonIcon>
   );

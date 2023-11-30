@@ -1,6 +1,6 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
 import { StyledCallout } from "./style";
@@ -8,6 +8,7 @@ import { StyledCallout } from "./style";
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
 export interface CalloutProps {
+  svgIcon?: FC<CustomSVGProps>;
   autoDismiss?: boolean | number;
   dismissed?: boolean;
   expandable?: boolean;
@@ -34,6 +35,7 @@ const Callout = ({
   icon,
   intent,
   sdsStage,
+  svgIcon,
   ...rest
 }: ExposedCalloutProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
@@ -60,12 +62,31 @@ const Callout = ({
 
     switch (intent) {
       case "success":
-        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+        return (
+          <Icon
+            sdsSize="l"
+            sdsIcon="checkCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
+        );
       case "info":
-        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+        return (
+          <Icon
+            sdsSize="l"
+            sdsIcon="infoCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
+        );
       default:
         return (
-          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+          <Icon
+            sdsSize="l"
+            sdsIcon="exclamationMarkCircle"
+            sdsType="static"
+            svgIcon={svgIcon}
+          />
         );
     }
   };
@@ -81,6 +102,7 @@ const Callout = ({
           sdsSize="small"
           sdsType="tertiary"
           sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
+          svgIcon={svgIcon}
         />
       );
     }
@@ -92,6 +114,7 @@ const Callout = ({
         sdsType="tertiary"
         size="large"
         sdsIcon="xMark"
+        svgIcon={svgIcon}
       />
     ) : null;
   };
@@ -119,6 +142,7 @@ const Callout = ({
           severity={intent}
           collapsed={collapsed || false}
           {...rest}
+          svgicon={svgIcon}
         >
           {calloutTitle}
           {!collapsed && calloutContent}

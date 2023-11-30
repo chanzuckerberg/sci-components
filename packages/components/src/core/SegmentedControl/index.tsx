@@ -1,5 +1,5 @@
 import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
 import { StyledSegmentedControl } from "./style";
@@ -25,6 +25,7 @@ interface SegmentedControlExtraProps
     | "info"
     | "warning"
     | undefined;
+  svgIcon?: FC<CustomSVGProps>;
 }
 
 /**
@@ -34,7 +35,7 @@ export type SegmentedControlProps = SegmentedControlExtraProps &
   ToggleButtonGroupProps;
 
 const SegmentedControl = (props: SegmentedControlProps) => {
-  const { buttonDefinition } = props;
+  const { buttonDefinition, svgIcon } = props;
   const leftmost = buttonDefinition[0]?.tooltipText;
   const [active, setActive] = React.useState<string | null>(leftmost);
 
@@ -71,6 +72,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
                   sdsIcon={iconName as keyof IconNameToSizes}
                   sdsSize="s"
                   sdsType="button"
+                  svgIcon={svgIcon}
                 />
               </span>
             </Tooltip>
