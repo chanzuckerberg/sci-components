@@ -12,7 +12,7 @@ body:
       description: Component that help request is for.
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: issue-description
     attributes:
       label: Issue description
