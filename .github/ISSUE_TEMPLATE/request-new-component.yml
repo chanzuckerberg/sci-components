@@ -12,7 +12,7 @@ body:
       description: A name for the desired component.
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: component-requirements
     attributes:
       label: Component Requirements
@@ -41,7 +41,7 @@ body:
       description: The date by which the component is needed.
     validations:
       required: true
-  - type: markdown
+  - type: input
     id: component-screenshot
     attributes:
       label: Component Screenshot / Prototype
