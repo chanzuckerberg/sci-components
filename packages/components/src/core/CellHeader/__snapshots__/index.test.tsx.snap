@@ -17,7 +17,7 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-kqv049-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
