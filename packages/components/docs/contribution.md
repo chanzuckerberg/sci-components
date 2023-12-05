@@ -46,7 +46,7 @@ When it comes to styling Material UI's components, generally the following strat
    const StyledButton = styled(Button)`
      // This will change the text color to pink
      color: pink;
-   `
+   `;
    ```
 
    💡 You can find the full `@czi-sds/components` `<Button />` implementation [here](../src/core/Button/index.tsx)
@@ -64,7 +64,7 @@ When it comes to styling Material UI's components, generally the following strat
      .MuiChip-label {
        padding: 0;
      }
-   `
+   `;
    ```
 
    💡 You can find the full `@czi-sds/components` `<Chip />` implementation [here](../src/core/Chip/index.tsx)
@@ -102,7 +102,7 @@ When it comes to styling Material UI's components, generally the following strat
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
 
-1. If you are modifying or adding a new Base (colors, borders, typogrpahy, etc), be sure to add them to the [style-dictionary.json](src/common/styles-dictionary/style-dictionary.json) in addition to updating the [defaultheme.ts](src/core/styles/common/defaultTheme.ts). Run `sd-build` before committing your changes. `@czi-sds/components` uses [style-dictionary](https://amzn.github.io/style-dictionary/#/) to generate css and scss variable stylesheets. This allows projects that use css modules or scss to still benefit from our standard styles. The `style-dictionary.json` is the source of truth for these css & scss stylesheets.
+1. If you are modifying or adding a new Base (colors, borders, typogrpahy, etc), be sure to add them to the [style-dictionary.json](../src/common/styles-dictionary/style-dictionary.json) in addition to updating the [defaultheme.ts](../src/core/styles/common/defaultTheme.ts). Run `sd-build` before committing your changes. `@czi-sds/components` uses [style-dictionary](https://amzn.github.io/style-dictionary/#/) to generate css and scss variable stylesheets. This allows projects that use css modules or scss to still benefit from our standard styles. The `style-dictionary.json` is the source of truth for these css & scss stylesheets.
 
 New additions to the `style-dictionary.json` should be nested accordingly:
 
@@ -115,7 +115,7 @@ New additions to the `style-dictionary.json` should be nested accordingly:
 
 All tokens must have a `value` and can optionally have a `comment`, which can give insight into how the value should be used.
 
-To generate a stylesheet in a new language, update the [config.json](src/common/styles-dictionary/config.json) to include the new transformGroup(language) in the `platforms` object. See a list of possible languages [here](https://github.com/amzn/style-dictionary/blob/main/lib/common/formats.js), though custom ones can be built.
+To generate a stylesheet in a new language, update the [config.json](../src/common/styles-dictionary/config.json) to include the new transformGroup(language) in the `platforms` object. See a list of possible languages [here](https://github.com/amzn/style-dictionary/blob/main/lib/common/formats.js), though custom ones can be built.
 
 ```json
 {
@@ -135,7 +135,7 @@ To generate a stylesheet in a new language, update the [config.json](src/common/
 }
 ```
 
-Once the config has been updated, run `sd-build` to generate the new stylesheet. Import it at the top of [index.js](src/index.ts). Update and install any plugins needed by rollup to support the new file type. Set the output for new files to be `variables.language-format` where `language-format` is the file type. This will allow rollup to bundle the new stylesheet and make it available for import.
+Once the config has been updated, run `sd-build` to generate the new stylesheet. Import it at the top of [index.ts](../src/index.ts). Update and install any plugins needed by rollup to support the new file type. Set the output for new files to be `variables.language-format` where `language-format` is the file type. This will allow rollup to bundle the new stylesheet and make it available for import.
 
 ## Testing
 
