@@ -5,7 +5,12 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import { CommonThemeProps, getColors, getIconSizes } from "../styles";
+import {
+  CommonThemeProps,
+  focusVisibleA11yStyle,
+  getColors,
+  getIconSizes,
+} from "../styles";
 
 export interface ButtonIconSizeToTypes {
   small: "primary" | "secondary" | "tertiary";
@@ -174,11 +179,7 @@ export const StyledButtonIcon = styled(IconButton, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   padding: 0;
-
-  :focus-visible {
-    outline: 5px auto Highlight;
-    outline: 5px auto -webkit-focus-ring-color;
-  }
+  ${focusVisibleA11yStyle}
 
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconExtraProps<ButtonIconSize>

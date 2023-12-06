@@ -1,0 +1,17 @@
+{
+    "ignore": [".storybook/**"],
+    "include": ["packages/**/src/core/**/*.{tsx,ts}", "packages/**/src/index.ts"],
+    "tsconfigPath": "tsconfig.json",
+    "workspaces": {
+        "@czi-sds/components": {
+          "exports": {
+            ".": "./src/index.ts"
+          }
+        },
+        "@czi-sds/data-viz": {
+          "exports": {
+            ".": "./src/index.ts"
+          }
+        }
+      }
+  }

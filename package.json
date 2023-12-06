@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.132",
     "@mui/material": "^5.13.3",
+    "@omlet/cli": "^1.0.1-beta.39",
     "@rollup/plugin-typescript": "^8.3.1",
     "@rollup/plugin-url": "^6.1.0",
     "@storybook/addon-a11y": "^7.5.3",
