@@ -1,3 +1,10 @@
+// Redecalare forwardRef
+declare module "react" {
+  function forwardRef<T, P = {}>(
+    render: (props: P, ref: React.Ref<T>) => JSX.Element | null
+  ): (props: P & React.RefAttributes<T>) => JSX.Element | null;
+}
+
 /* eslint-disable import/export */
 import "./common/styles-dictionary/css/variables.css";
 import "./common/styles-dictionary/scss/_variables.scss";

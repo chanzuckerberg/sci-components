@@ -6,18 +6,19 @@ export interface TableHeaderProps {
   children: React.ReactNode;
 }
 
-const TableHeader = forwardRef<HTMLTableElement["tHead"], TableHeaderProps>(
-  (props: TableHeaderProps, ref): JSX.Element | null => {
-    const { children } = props;
+const TableHeader = forwardRef<
+  NonNullable<HTMLTableElement["tHead"]>,
+  TableHeaderProps
+>((props: TableHeaderProps, ref): JSX.Element | null => {
+  const { children } = props;
 
-    return (
-      <StyledTableHeader ref={ref} {...props}>
-        <TableRow hover={false} shouldShowTooltipOnHover={false}>
-          {children}
-        </TableRow>
-      </StyledTableHeader>
-    );
-  }
-);
+  return (
+    <StyledTableHeader ref={ref} {...props}>
+      <TableRow hover={false} shouldShowTooltipOnHover={false}>
+        {children}
+      </TableRow>
+    </StyledTableHeader>
+  );
+});
 
 export default TableHeader;
