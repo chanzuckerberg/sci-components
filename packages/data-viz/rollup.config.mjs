@@ -51,7 +51,7 @@ const config = [
        * NOTE: `rollup-plugin-ts` + Typescript@4.7.x will drop default generic
        * type in the d.ts file, so let's use typescript@4.6 until the issue above is resolved
        */
-      ts(),
+      ts({ compiler: "babel" }),
       css({ output: "variables.css" }),
       bundleScss({ output: "variables.scss" }),
       copy({

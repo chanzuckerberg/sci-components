@@ -21,7 +21,7 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
   onChange?: (value: number) => void;
 }
 
-const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
+const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
     const { items, indicatorColor, offsetTop = 0, onChange, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);

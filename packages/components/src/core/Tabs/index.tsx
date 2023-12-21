@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
-import { TabProps as RawTabProps, useTheme } from "@mui/material";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { TabProps as MUITabProps, useTheme } from "@mui/material";
 import React, { ReactNode, forwardRef, useContext, useMemo } from "react";
 import { SDSTheme } from "../styles/common/defaultTheme";
 import { getColors } from "../styles/common/selectors/theme";
@@ -22,7 +23,14 @@ const TabIndicator = (theme: SDSTheme) => {
   `;
 };
 
-const Tabs = forwardRef<HTMLButtonElement, TabsProps>(function Tabs(
+// Redecalare forwardRef
+declare module "react" {
+  function forwardRef<T, P = {}>(
+    render: (props: P, ref: React.Ref<T>) => ReactJSXElement | null
+  ): (props: P & React.RefAttributes<T>) => ReactJSXElement | null;
+}
+
+const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   props,
   ref
 ): React.ReactElement {
@@ -45,7 +53,7 @@ const Tabs = forwardRef<HTMLButtonElement, TabsProps>(function Tabs(
 export default Tabs;
 
 export interface TabProps
-  extends Omit<RawTabProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> {
+  extends Omit<MUITabProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> {
   count?: ReactNode;
 }
 

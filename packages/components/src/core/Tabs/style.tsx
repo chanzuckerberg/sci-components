@@ -1,8 +1,8 @@
 import { SerializedStyles } from "@emotion/react";
 import {
+  TabsProps as MUITabsProps,
   Tab as RawTab,
   Tabs as RawTabs,
-  TabsProps as RawTabsProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle, fontBodyS, fontBodyXs } from "../styles";
@@ -15,14 +15,14 @@ import {
 import { SdsSize } from "./components/common";
 
 export type TabsProps = Omit<
-  RawTabsProps,
+  MUITabsProps,
   "nonce" | "rev" | "rel" | "autoFocus" | "content"
 > & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
 };
 
-const TempTabs = (props: RawTabsProps) => <RawTabs {...props} />;
+const TempTabs = (props: MUITabsProps) => <RawTabs {...props} />;
 
 const TABS_DO_NOT_FORWARD_PROPS = ["underlined", "sdsSize"];
 

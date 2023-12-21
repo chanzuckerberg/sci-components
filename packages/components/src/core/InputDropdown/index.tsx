@@ -18,11 +18,12 @@ export type InputDropdownProps = SdsInputDropdownProps &
  * @see https://mui.com/material-ui/react-button/
  */
 const InputDropdown = (props: InputDropdownProps): JSX.Element => {
+  const { sdsType = "label", ...rest } = props;
+
   const {
     label,
     multiple = false,
     sdsStyle,
-    sdsType = "label",
     details,
     counter,
     shouldTruncateMinimalDetails,
@@ -40,7 +41,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
   return (
-    <StyledInputDropdown {...props}>
+    <StyledInputDropdown {...rest}>
       <LabelWrapper isMinimal={isMinimal}>
         <StyledLabel
           className="styled-label"

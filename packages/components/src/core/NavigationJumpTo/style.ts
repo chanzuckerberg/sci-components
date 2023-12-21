@@ -1,10 +1,10 @@
-import { Tab, Tabs, TabsProps } from "@mui/material";
+import { TabsProps as MUITabsProps, Tab, Tabs } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps, fontBodyXs, getColors, getSpaces } from "../styles";
 
 export interface NavigationJumpToExtraProps
   extends Omit<
-      TabsProps,
+      MUITabsProps,
       | "indicatorColor"
       | "nonce"
       | "rev"
