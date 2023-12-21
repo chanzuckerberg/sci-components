@@ -22,25 +22,24 @@ const TabIndicator = (theme: SDSTheme) => {
   `;
 };
 
-const Tabs = forwardRef<HTMLButtonElement, TabsProps>(function Tabs(
-  props,
-  ref
-): React.ReactElement {
-  const { sdsSize = "large", ...rest } = props;
-  const theme = useTheme();
+const Tabs = forwardRef<HTMLDivElement, TabsProps>(
+  function Tabs(props, ref): React.ReactElement {
+    const { sdsSize = "large", ...rest } = props;
+    const theme = useTheme();
 
-  const contextValue = React.useMemo(() => ({ sdsSize }), [sdsSize]);
+    const contextValue = React.useMemo(() => ({ sdsSize }), [sdsSize]);
 
-  const indicatorProps = useMemo(() => {
-    return { className: TabIndicator(theme) };
-  }, [theme]);
+    const indicatorProps = useMemo(() => {
+      return { className: TabIndicator(theme) };
+    }, [theme]);
 
-  return (
-    <TabsContext.Provider value={contextValue}>
-      <StyledTabs TabIndicatorProps={indicatorProps} ref={ref} {...rest} />
-    </TabsContext.Provider>
-  );
-});
+    return (
+      <TabsContext.Provider value={contextValue}>
+        <StyledTabs TabIndicatorProps={indicatorProps} ref={ref} {...rest} />
+      </TabsContext.Provider>
+    );
+  }
+);
 
 export default Tabs;
 
@@ -52,19 +51,18 @@ export interface TabProps
 /**
  * @see https://mui.com/material-ui/react-tabs/
  */
-export const Tab = forwardRef<HTMLDivElement, TabProps>(function Tab(
-  props,
-  ref
-) {
-  const { count, label, ...rest } = props;
-  const context = useContext(TabsContext);
-  const Label =
-    // (thuang): `count` can be 0, which is a valid count value.
-    count === undefined ? (
-      label
-    ) : (
-      <LabelWithCount label={label} count={count} />
-    );
+export const Tab = forwardRef<HTMLDivElement, TabProps>(
+  function Tab(props, ref) {
+    const { count, label, ...rest } = props;
+    const context = useContext(TabsContext);
+    const Label =
+      // (thuang): `count` can be 0, which is a valid count value.
+      count === undefined ? (
+        label
+      ) : (
+        <LabelWithCount label={label} count={count} />
+      );
 
-  return <StyledTab label={Label} ref={ref} {...rest} {...context} />;
-});
+    return <StyledTab label={Label} ref={ref} {...rest} {...context} />;
+  }
+);
