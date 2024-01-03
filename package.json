@@ -152,7 +152,5 @@
     "packages/*"
   ],
   "main": "index.js",
-  "dependencies": {
-    "loadash": "^1.0.0"
-  }
+  "dependencies": {}
 }

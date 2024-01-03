@@ -40,10 +40,9 @@ module.exports = {
     },
     ecmaVersion: 2020,
     // Allows for the use of imports
-    project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
+    project: "./tsconfig.json",
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module",
-    tsconfigRootDir: __dirname,
   },
   plugins: ["@typescript-eslint", "react", "sonarjs", "jest", "jsx-a11y"],
   rules: {

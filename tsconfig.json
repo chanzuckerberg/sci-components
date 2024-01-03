@@ -62,5 +62,13 @@
     "packages/*/src/**/*",
     ".eslintrc.js"
   ],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"],  
+  "references": [
+    {
+      "path": "packages/components"
+    },
+    {
+      "path": "packages/data-viz"
+    }
+  ]
 }
