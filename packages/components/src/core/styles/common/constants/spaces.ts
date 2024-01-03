@@ -1,5 +1,4 @@
 export enum Spaces {
-  DEFAULT = "10px",
   XXXS = "2px",
   XXS = "4px",
   XS = "6px",
@@ -8,4 +7,5 @@ export enum Spaces {
   L = "14px",
   XL = "22px",
   XXL = "38px",
+  DEFAULT = M,
 }

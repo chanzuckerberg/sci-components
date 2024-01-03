@@ -9,6 +9,7 @@ export interface SdsTagFilterProps
     "color" | "variant" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
   > {
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDelete: React.EventHandler<any>;
 }
 
