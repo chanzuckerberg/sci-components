@@ -31,7 +31,7 @@ export interface ExtraDropdownProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > {
   buttonPosition?: "left" | "right";
   buttons?: boolean;
@@ -57,17 +57,17 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
+  "renderInput"
 >;
 
 export type DropdownProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraDropdownProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -76,7 +76,7 @@ const Dropdown = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: DropdownProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
@@ -117,12 +117,8 @@ const Dropdown = <
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
 
-  const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
+  const [value, setValue] = useState(getInitialValue());
+  const [pendingValue, setPendingValue] = useState(getInitialValue());
 
   const shouldShowButtons =
     buttons && !isTriggerChangeOnOptionClick && multiple;

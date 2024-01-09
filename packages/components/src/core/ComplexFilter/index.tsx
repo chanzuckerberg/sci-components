@@ -20,7 +20,7 @@ export interface ComplexFilterProps<
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > {
   label: ReactNode;
   options: T[];
@@ -44,7 +44,7 @@ const ComplexFilter = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >({
   options,
   label = "",

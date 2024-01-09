@@ -1,10 +1,7 @@
 import { ListSubheaderProps as RawListSubheaderProps } from "@mui/material";
 import { StyledListSubheader } from "./style";
 
-export type ListSubheaderProps = Omit<
-  RawListSubheaderProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
->;
+export type ListSubheaderProps = RawListSubheaderProps;
 
 /**
  * @see https://mui.com/material-ui/react-list/

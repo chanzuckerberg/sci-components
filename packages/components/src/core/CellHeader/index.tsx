@@ -19,10 +19,7 @@ interface CellHeaderContentProps {
 }
 
 interface CellHeaderRawProps
-  extends Omit<
-    React.HTMLProps<HTMLTableCellElement>,
-    "as" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
-  > {
+  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
   tooltipText?: string;
   tooltipSubtitle?: string;
   shouldShowTooltipOnHover?: boolean;

@@ -43,8 +43,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 
 export default Tabs;
 
-export interface TabProps
-  extends Omit<RawTabProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> {
+export interface TabProps extends RawTabProps {
   count?: ReactNode;
 }
 

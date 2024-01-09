@@ -5,10 +5,7 @@ import {
   StyledText,
 } from "./style";
 
-export type LoadingIndicatorProps = Omit<
-  RawLoadingIndicatorProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> & {
+export type LoadingIndicatorProps = RawLoadingIndicatorProps & {
   "aria-label"?: string;
 };
 
