@@ -31,7 +31,7 @@ export type AutocompleteMultiColumnOption<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = {
   options: T[];
   props?: Partial<
@@ -46,7 +46,7 @@ export type SDSAutocompleteOptions<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > =
   | AutocompleteSingleColumnOption<T>[]
   | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
@@ -55,7 +55,7 @@ export type AutocompleteMultiColumnValue<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > =
   | Record<
       string | number | symbol,
@@ -67,14 +67,14 @@ export type AutocompleteSingleColumnValue<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
 
 export type SDSAutocompleteValue<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > =
   | AutocompleteSingleColumnValue<T, Multiple, DisableClearable, FreeSolo>
   | AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>;
@@ -83,7 +83,7 @@ export type AutocompleteSingleColumnOnChange<
   T,
   Multiple,
   DisableClearable,
-  FreeSolo
+  FreeSolo,
 > = (
   event: React.SyntheticEvent,
   value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
@@ -95,7 +95,7 @@ export type AutocompleteMultiColumnOnChange<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = (
   event: React.SyntheticEvent,
   value: AutocompleteMultiColumnValue<T, Multiple, DisableClearable, FreeSolo>,
@@ -107,7 +107,7 @@ export type SDSAutocompleteOnChange<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > =
   | AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo>
   | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>;
@@ -116,7 +116,7 @@ interface ExtraAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > {
   options: SDSAutocompleteOptions<T, Multiple, DisableClearable, FreeSolo>;
   PopperBaseProps?: Partial<PopperProps>;
@@ -132,7 +132,7 @@ export type AutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
   "options" | "value" | "onChange"
@@ -160,7 +160,7 @@ const Autocomplete = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {

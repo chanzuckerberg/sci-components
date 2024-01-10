@@ -41,7 +41,6 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
           <div
             class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-g8kzra-MuiInputAdornment-root"
           >
-            
             <button
               aria-label="search-button"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5z5hxc-MuiButtonBase-root-MuiIconButton-root"

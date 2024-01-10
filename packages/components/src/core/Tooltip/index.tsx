@@ -17,8 +17,7 @@ import {
   tooltipCss,
 } from "./style";
 
-type TooltipProps = TooltipExtraProps &
-  Omit<RawTooltipProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
+type TooltipProps = TooltipExtraProps & RawTooltipProps;
 
 export type { TooltipProps };
 

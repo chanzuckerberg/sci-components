@@ -16,50 +16,45 @@ interface DialogExtraProps {
   DialogComponent?: ComponentType<RawDialogProps>;
 }
 
-export type DialogProps = Omit<
-  RawDialogProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> &
-  DialogExtraProps;
+export type DialogProps = RawDialogProps & DialogExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-dialog/
  */
-const Dialog = forwardRef<HTMLDivElement, DialogProps>(function Dialog(
-  props,
-  ref
-): JSX.Element {
-  const {
-    canClickOutsideClose = true,
-    onClose,
-    sdsSize = "m",
-    PaperComponent = DialogPaper,
-    ...rest
-  } = props;
+const Dialog = forwardRef<HTMLDivElement, DialogProps>(
+  function Dialog(props, ref): JSX.Element {
+    const {
+      canClickOutsideClose = true,
+      onClose,
+      sdsSize = "m",
+      PaperComponent = DialogPaper,
+      ...rest
+    } = props;
 
-  const contextValue = useMemo(() => ({ sdsSize }), [sdsSize]);
+    const contextValue = useMemo(() => ({ sdsSize }), [sdsSize]);
 
-  return (
-    <DialogContext.Provider value={contextValue}>
-      <RawDialog
-        ref={ref}
-        PaperComponent={PaperComponent}
-        {...rest}
-        onClose={(
-          event: React.SyntheticEvent<Element, Event>,
-          reason: string
-        ) => {
-          if (
-            !canClickOutsideClose &&
-            reason &&
-            (reason === "backdropClick" || reason === "escapeKeyDown")
-          )
-            return;
-          if (onClose) onClose(event, reason);
-        }}
-      />
-    </DialogContext.Provider>
-  );
-});
+    return (
+      <DialogContext.Provider value={contextValue}>
+        <RawDialog
+          ref={ref}
+          PaperComponent={PaperComponent}
+          {...rest}
+          onClose={(
+            event: React.SyntheticEvent<Element, Event>,
+            reason: string
+          ) => {
+            if (
+              !canClickOutsideClose &&
+              reason &&
+              (reason === "backdropClick" || reason === "escapeKeyDown")
+            )
+              return;
+            if (onClose) onClose(event, reason);
+          }}
+        />
+      </DialogContext.Provider>
+    );
+  }
+);
 
 export default Dialog;
