@@ -43,6 +43,8 @@ jobs:
 
       # Step 7: Serve Storybook and run tests concurrently
       - name: Serve Storybook and run tests
+        # (Node version >= 18) it's now necessary to explicitly
+        # declare the IP address (127.0.0.1) in this context.
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server docs-build --port 6006 --silent" \
