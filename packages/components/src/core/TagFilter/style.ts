@@ -6,6 +6,7 @@ import Tag from "../Tag";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDelete: React.EventHandler<any>;
 }
 

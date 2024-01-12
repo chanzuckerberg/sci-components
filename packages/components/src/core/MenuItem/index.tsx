@@ -48,7 +48,7 @@ export type IconNameToSmallSizes = {
 };
 
 export interface MenuItemExtraProps<
-  IconName extends keyof IconNameToSmallSizes
+  IconName extends keyof IconNameToSmallSizes,
 > {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
@@ -58,14 +58,13 @@ export interface MenuItemExtraProps<
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
-  MenuItemExtraProps<IconName> &
-    Omit<RawMenuItemProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
+  MenuItemExtraProps<IconName> & RawMenuItemProps;
 
 /**
  * @see https://mui.com/material-ui/react-menu/
  */
 const MenuItem = forwardRef(function MenuItem<
-  IconName extends keyof IconNameToSmallSizes
+  IconName extends keyof IconNameToSmallSizes,
 >(props: MenuItemProps<IconName>, ref: ForwardedRef<HTMLLIElement | null>) {
   const {
     children,

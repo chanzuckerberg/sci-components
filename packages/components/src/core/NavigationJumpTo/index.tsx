@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useState } from "react";
 import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
@@ -21,7 +21,7 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
   onChange?: (value: number) => void;
 }
 
-const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
+const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
     const { items, indicatorColor, offsetTop = 0, onChange, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);
@@ -53,7 +53,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
             wrapper.appendChild(item.elementRef.current);
         }
       });
-    }, [offsetTop]);
+    }, [items, offsetTop]);
 
     const a11yProps = (title: string, elementId: string) => {
       return {
@@ -63,12 +63,15 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
     };
 
     // Emit changes only once
-    const handleOnChange = (value: number) => {
-      if (value !== emittedValue) {
-        onChange?.(value);
-        setEmittedValue(value);
-      }
-    };
+    const handleOnChange = useCallback(
+      (value: number) => {
+        if (value !== emittedValue) {
+          onChange?.(value);
+          setEmittedValue(value);
+        }
+      },
+      [emittedValue, onChange]
+    );
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       // Set navItemClicked to true to disable changing the tab value
@@ -96,7 +99,7 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       // Update the tab value to newValue to adjust the position of the tabsIndicator
       setFirstTabIndexInview(newValue);
 
-      // Envoke the custom onChange prop
+      // Invoke the custom onChange prop
       handleOnChange(newValue);
     };
 
@@ -114,10 +117,10 @@ const NavigationJumpTo = forwardRef<HTMLButtonElement, NavigationJumpToProps>(
       if (sectionInView > -1 && !navItemClicked) {
         setFirstTabIndexInview(sectionInView);
 
-        // Envoke the custom onChange prop
+        // Invoke the custom onChange prop
         handleOnChange(sectionInView);
       }
-    }, [sectionIsInView]);
+    }, [handleOnChange, navItemClicked, sectionIsInView]);
 
     // Set navItemClicked to false to re-enable the option
     // to update the tab value based on scroll.

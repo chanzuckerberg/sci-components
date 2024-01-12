@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/data-viz",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "author": "",
@@ -53,25 +53,25 @@
   },
   "peerDependencies": {
     "@emotion/core": "^11.0.0",
-    "@emotion/css": "^11.11.0",
-    "@emotion/react": "^11.11.0",
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/base": "^5.0.0-beta.3",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/lab": "^5.0.0-alpha.132",
-    "@mui/material": "^5.13.3",
-    "echarts": "^5.4.2",
+    "@mui/base": "^5.0.0-beta.30",
+    "@mui/icons-material": "^5.15.3",
+    "@mui/lab": "^5.0.0-alpha.159",
+    "@mui/material": "^5.15.3",
+    "echarts": "^5.4.3",
     "lodash": "^4.17.21",
     "react": ">=17.0.1",
     "react-dom": ">=17.0.1"
   },
   "devDependencies": {
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "jest-environment-jsdom": "^29.6.2"
   },
   "dependencies": {
-    "echarts": "^5.4.2",
+    "echarts": "^5.4.3",
     "lodash": "^4.17.21"
   }
 }

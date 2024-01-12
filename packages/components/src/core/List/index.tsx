@@ -1,8 +1,7 @@
 import { ListProps as RawListProps } from "@mui/material";
 import { ListExtraProps, StyledList } from "./style";
 
-export type ListProps = ListExtraProps &
-  Omit<RawListProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
+export type ListProps = ListExtraProps & RawListProps;
 
 /**
  * @see https://mui.com/material-ui/react-list/
