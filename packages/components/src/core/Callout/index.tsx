@@ -52,7 +52,7 @@ const Callout = ({
   };
 
   const getIcon = () => {
-    if (icon) return icon;
+    if (icon !== undefined) return icon; // (liaprins): Explicitly use `icon !== undefined` to fix bug; see ticket for context: https://github.com/chanzuckerberg/sci-components/issues/577
 
     switch (intent) {
       case "success":
