@@ -100,7 +100,9 @@ const Callout = ({
   let calloutContent;
 
   const firstChildIsCalloutTitle =
-    Array.isArray(children) && children[0]?.type?.name === "CalloutTitle";
+    Array.isArray(children) &&
+    children[0]?.type?.displayName === "CalloutTitle";
+
   if (firstChildIsCalloutTitle) {
     [calloutTitle, ...calloutContent] = children;
   }
