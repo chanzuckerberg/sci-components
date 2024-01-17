@@ -3,6 +3,7 @@ import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
+import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
 
 const SDS_STAGE_OPEN = "open";
@@ -100,7 +101,9 @@ const Callout = ({
   let calloutContent;
 
   const firstChildIsCalloutTitle =
-    Array.isArray(children) && children[0]?.type?.name === "CalloutTitle";
+    Array.isArray(children) &&
+    children[0]?.type?.displayName === CALLOUT_TITLE_DISPLAY_NAME;
+
   if (firstChildIsCalloutTitle) {
     [calloutTitle, ...calloutContent] = children;
   }
