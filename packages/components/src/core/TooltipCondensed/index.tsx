@@ -25,7 +25,7 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
     /* stylelint-disable property-no-unknown -- false positive */
     indicator,
     indicatorColor,
-    theme,
+    theme
     /* stylelint-enable property-no-unknown -- false positive */
   };
 

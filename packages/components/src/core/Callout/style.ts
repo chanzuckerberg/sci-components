@@ -38,7 +38,6 @@ export const StyledCallout = styled(Alert, {
     // any buttom margin
     const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
 
-    // TODO: Theme shouldn't be saying it might be null
     return `
       background-color: ${backgroundColor};
       width: 360px;

@@ -4,7 +4,6 @@ import {
   CommonThemeProps as DialogTitleExtraProps,
   fontBodyXs,
   fontHeaderXl,
-  getColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -23,20 +22,12 @@ export const StyledDialogTitle = styled(DialogTitle)`
 
 export const Title = styled(Typography)`
   ${fontHeaderXl}
-
-  ${(props) => {
-    return `
-      color: ${props.theme.palette.text.primary};
-    `;
-  }}
 `;
 
 export const Subtitle = styled(Typography)`
   ${fontBodyXs}
 
   ${(props) => {
-    const colors = getColors(props);
-
     return `
       color: ${props.theme.palette.text.secondary};
     `;

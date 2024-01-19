@@ -253,13 +253,13 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
 };
 
 const lightAppTheme: AppTheme = {
-  colors: lightThemeColors,
   ...sharedAppTheme,
+  colors: lightThemeColors,
 };
 
 const darkAppTheme: AppTheme = {
-  colors: darkThemeColors,
   ...sharedAppTheme,
+  colors: darkThemeColors,
 };
 
 // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
@@ -332,11 +332,11 @@ darkAppTheme.borders = {
 };
 
 const lightThemePalette = (appTheme: AppTheme): PaletteOptions => ({
-  divider: appTheme.colors.gray[200],
   background: {
     default: common.white,
     secondary: appTheme.colors.gray[100],
   },
+  divider: appTheme.colors.gray[200],
   error: {
     dark: appTheme.colors.error[600],
     light: appTheme.colors.error[200],
@@ -381,13 +381,13 @@ const lightThemePalette = (appTheme: AppTheme): PaletteOptions => ({
   },
 });
 
-// TODO: Colors
+// TODO: Dark mode colors
 const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
-  divider: appTheme.colors.gray[700],
   background: {
     default: appTheme.colors.gray[900],
     secondary: appTheme.colors.gray[800],
   },
+  divider: appTheme.colors.gray[700],
   error: {
     dark: appTheme.colors.error[600],
     light: appTheme.colors.error[200],
@@ -693,15 +693,6 @@ export interface Borders {
 }
 
 /**
- * Default theme, uses light mode with no option to change it.
- *
- * @deprecated Use the `theme` to get a flexible light/dark mode theme function
- */
-export const defaultTheme = createThemeAdaptor(
-  makeThemeOptions(chooseTheme("light"), "light")
-);
-
-/**
  * Theme adaptor with light/dark mode support.
  *
  * @param t The theme to use. Currently supports a light and dark variant.
@@ -709,3 +700,10 @@ export const defaultTheme = createThemeAdaptor(
  */
 export const theme = (t: PaletteMode) =>
   createThemeAdaptor(makeThemeOptions(chooseTheme(t), t));
+
+/**
+ * Default theme, uses light mode with no option to change it.
+ *
+ * Use the `theme` export to get a flexible light/dark mode theme function
+ */
+export const defaultTheme = theme("light");
