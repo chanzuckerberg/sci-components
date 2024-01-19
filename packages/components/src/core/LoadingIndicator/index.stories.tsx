@@ -28,6 +28,13 @@ export const Default = {
   },
 };
 
+export const CustomAriaLabel = {
+  args: {
+    "aria-label": "Loading cats list...",
+    sdsStyle: "minimal",
+  },
+};
+
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {

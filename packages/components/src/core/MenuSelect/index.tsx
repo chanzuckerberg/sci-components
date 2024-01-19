@@ -36,17 +36,17 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  FreeSolo extends boolean | undefined = undefined,
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput" | "nonce" | "rev" | "rel" | "content"
+  "renderInput"
 >;
 
 export type MenuSelectProps<
   T,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  FreeSolo extends boolean | undefined = undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   MenuSelectExtraProps;
 
@@ -57,7 +57,7 @@ const MenuSelect = <
   T extends DefaultMenuSelectOption,
   Multiple extends boolean | undefined = undefined,
   DisableClearable extends boolean | undefined = undefined,
-  FreeSolo extends boolean | undefined = undefined
+  FreeSolo extends boolean | undefined = undefined,
 >(
   props: MenuSelectProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {

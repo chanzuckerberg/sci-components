@@ -1,13 +1,12 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStory } from "@storybook/react";
+import { composeStories } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
-import * as snapshotTestStoryFile from "./index.stories";
-import Meta, { Test as TestStory } from "./index.stories";
+import * as stories from "./index.stories";
 
-const Test = composeStory(TestStory, Meta);
+const { Test } = composeStories(stories);
 
 describe("<ComplexFilter />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots(stories);
 
   it("renders ComplexFilter component", () => {
     render(<Test {...Test.args} />);

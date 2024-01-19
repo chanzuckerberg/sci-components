@@ -39,7 +39,7 @@ const Dropdown = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
@@ -247,7 +247,7 @@ export const InsideModal = {
     T extends DefaultAutocompleteOption,
     Multiple extends boolean | undefined,
     DisableClearable extends boolean | undefined,
-    FreeSolo extends boolean | undefined
+    FreeSolo extends boolean | undefined,
   >(props: Args): JSX.Element {
     return (
       <Dialog open disableEnforceFocus PaperComponent={StyledPaper}>
@@ -269,7 +269,7 @@ const ControlledDropdownDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
@@ -358,7 +358,7 @@ const TestDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {

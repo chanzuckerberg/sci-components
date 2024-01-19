@@ -2,7 +2,7 @@
 
 **Structural Element (Base, Gene, DNA, Chromosome or Cell)**
 Github issue: [#XXXX](link)
-Copy isuue descirption here
+Copy issue description here
 
 ## Checklist
 

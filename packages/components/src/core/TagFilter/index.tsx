@@ -4,11 +4,9 @@ import React from "react";
 import { StyledTag } from "./style";
 
 export interface SdsTagFilterProps
-  extends Omit<
-    ChipProps,
-    "color" | "variant" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
-  > {
+  extends Omit<ChipProps, "color" | "variant"> {
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDelete: React.EventHandler<any>;
 }
 

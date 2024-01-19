@@ -1,17 +1,16 @@
 import { generateSnapshots, wait } from "@chanzuckerberg/story-utils";
-import { composeStory } from "@storybook/react";
+import { composeStories } from "@storybook/react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LoadingIndicator from "../LoadingIndicator";
-import * as snapshotTestStoryFile from "./index.stories";
-import Meta, { Test as TestStory } from "./index.stories";
+import * as stories from "./index.stories";
 
-const Test = composeStory(TestStory, Meta);
+const { Test } = composeStories(stories);
 
 const STATUS_CANT_FIND_TEXT = "Status: can't reproduce";
 
 describe("<Dropdown />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots(stories);
 
   it("Dropdown component renders correctly", () => {
     render(<Test {...Test.args} />);
@@ -37,7 +36,7 @@ describe("<Dropdown />", () => {
     expect(menuItem).toEqual(null);
   });
 
-  it("Prop Test (loeading): Loading indicator correctly renders when loading state is true", () => {
+  it("Prop Test (loading): Loading indicator correctly renders when loading state is true", () => {
     const args = {
       ...Test.args,
       DropdownMenuProps: {
