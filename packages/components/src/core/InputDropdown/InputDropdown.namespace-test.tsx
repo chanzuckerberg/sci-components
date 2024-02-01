@@ -1,5 +1,4 @@
 import { InputDropdown, InputDropdownProps } from "@czi-sds/components";
-import React from "react";
 import { noop } from "src/common/utils";
 
 const InputDropdownNameSpaceTest = (props: InputDropdownProps) => {
@@ -10,7 +9,8 @@ const InputDropdownNameSpaceTest = (props: InputDropdownProps) => {
       onClick={noop}
       sdsStage="userInput"
       sdsStyle="minimal"
-      sdsType="singleSelect"
+      multiple={false}
+      sdsType="label"
       counter="2"
       details="Details"
       intent="warning"

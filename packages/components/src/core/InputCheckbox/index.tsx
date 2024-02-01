@@ -9,17 +9,7 @@ import {
 } from "./styles";
 
 interface CheckboxContentProps
-  extends Omit<
-    MUICheckboxProps,
-    | "color"
-    | "defaultChecked"
-    | "indeterminate"
-    | "nonce"
-    | "rev"
-    | "rel"
-    | "autoFocus"
-    | "content"
-  > {
+  extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
   checkboxProps?: Partial<MUICheckboxProps>;
   label?: string;
   stage?: "checked" | "unchecked" | "indeterminate";
@@ -34,60 +24,32 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   const { caption, checkboxProps, disabled, label, stage, value, ...rest } =
     props;
 
-  if (label === undefined || stage !== undefined) {
-    let newProps: MUICheckboxProps;
-    switch (stage) {
-      case "checked":
-        newProps = {
-          ...props,
-          checked: true,
-          color: "primary",
-        };
-        break;
-      case "unchecked":
-        newProps = {
-          ...props,
-          checked: false,
-          color: "default",
-        };
-        break;
-      case "indeterminate":
-        newProps = {
-          ...props,
-          checked: true,
-          color: "primary",
-          indeterminate: true,
-        };
-        break;
-      default:
-        newProps = props;
-    }
-    return (
-      <StyledCheckbox
-        {...newProps}
-        checkedIcon={
-          <SvgIcon
-            fillcontrast="white"
-            component={IconCheckboxChecked}
-            viewBox="0 0 16 16"
-          />
-        }
-        icon={
-          <SvgIcon
-            fillcontrast="white"
-            component={IconCheckboxUnchecked}
-            viewBox="0 0 16 16"
-          />
-        }
-        indeterminateIcon={
-          <SvgIcon
-            fillcontrast="white"
-            component={IconCheckboxIndeterminate}
-            viewBox="0 0 16 16"
-          />
-        }
-      />
-    );
+  let newProps: MUICheckboxProps;
+  switch (stage) {
+    case "checked":
+      newProps = {
+        ...rest,
+        checked: true,
+        color: "primary",
+      };
+      break;
+    case "unchecked":
+      newProps = {
+        ...rest,
+        checked: false,
+        color: "default",
+      };
+      break;
+    case "indeterminate":
+      newProps = {
+        ...rest,
+        checked: true,
+        color: "primary",
+        indeterminate: true,
+      };
+      break;
+    default:
+      newProps = rest;
   }
 
   return (
@@ -118,14 +80,12 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
             />
           }
           {...checkboxProps}
-          {...rest}
+          {...newProps}
         />
       }
       label={label}
       value={value}
-    >
-      <div>Content</div>
-    </StyledFormControlLabel>
+    />
   );
 };
 

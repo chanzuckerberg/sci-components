@@ -1,14 +1,13 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStory } from "@storybook/react";
+import { composeStories } from "@storybook/react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import * as snapshotTestStoryFile from "./index.stories";
-import Meta, { Test as TestStory } from "./index.stories";
+import * as stories from "./index.stories";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
-const Test = composeStory(TestStory, Meta);
+const { Test } = composeStories(stories);
 
 describe("<TableRow />", () => {
-  generateSnapshots(snapshotTestStoryFile);
+  generateSnapshots(stories);
 
   it("renders row component", () => {
     render(<Test />);

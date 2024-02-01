@@ -1,6 +1,5 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ButtonBase from "@mui/material/ButtonBase";
-import Popper from "@mui/material/Popper";
+import { ButtonBase, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   AutocompleteCloseReason,
@@ -8,7 +7,7 @@ import {
 } from "@mui/material/useAutocomplete";
 import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
-import { GITHUB_LABELS } from "../DropdownMenu/GITHUB_LABELS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import TagFilter from "../TagFilter";
 import { getColors, getCorners, getShadows } from "../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "./index";
@@ -82,7 +81,11 @@ const StyledButton = styled(ButtonBase)`
 // eslint-disable-next-line sonarjs/cognitive-complexity -- Demo code
 const MenuSelect = (props: Args): JSX.Element => {
   // eslint-disable-next-line react/prop-types -- Demo code
-  const { multiple, options = GITHUB_LABELS, search } = props;
+  const {
+    multiple,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+    search,
+  } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 

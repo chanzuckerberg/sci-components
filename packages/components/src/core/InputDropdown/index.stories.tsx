@@ -1,26 +1,83 @@
+import { AutocompleteValue } from "@mui/base";
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { noop } from "src/common/utils";
+import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
+import Callout from "../Callout";
+import CalloutTitle from "../Callout/components/CalloutTitle";
 import DropdownMenu from "../DropdownMenu";
-import RawInputDropdown from "./index";
+import RawInputDropdown, { InputDropdownProps } from "./index";
 
 const StyledInputDropdown = styled(RawInputDropdown)`
   ${({ width }: Args) => {
     return `
       width: fit-content;
-      max-width: ${width || 160}px;
+      max-width: ${width || 250}px;
     `;
   }}
 `;
 
-const InputDropdown = (props: Args): JSX.Element => {
-  const { disabled, fullWidth, label, sdsStyle, sdsType, multiple, ...rest } =
-    props;
+type DisableClearable = false;
+type FreeSolo = false;
+
+const InputDropdown = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+>(
+  props: Args
+): JSX.Element => {
+  const {
+    disabled,
+    label,
+    sdsStyle,
+    multiple,
+    value: propValue,
+    sdsType,
+    ...rest
+  } = props;
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [sdsStage, setSdsStage] =
+    useState<InputDropdownProps["sdsStage"]>("default");
+  const [details, setDetials] = useState<string>();
+  const [counter, setCounter] = useState<string>();
+  const [inputDropdownValue, setInputDropdownValue] = useState<string>();
+  const [invalid, setInvalid] = useState(false);
+  const [storybookLabel, setStorybookLabel] = useState("Label");
+
+  const [value, setValue] = useState<
+    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  >(null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+
+  const isControlled = propValue !== undefined;
+
+  useEffect(() => {
+    if (isControlled) {
+      setValue(propValue);
+    }
+  }, [propValue, isControlled]);
+
+  useEffect(() => {
+    if (sdsType === "value" && multiple) {
+      setInvalid(true);
+    } else {
+      setInvalid(false);
+    }
+  }, [multiple, sdsType]);
+
+  useEffect(() => {
+    if (sdsType === "value") {
+      setStorybookLabel("Value");
+    } else {
+      setStorybookLabel(label);
+    }
+  }, [label, sdsType]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setSdsStage("userInput");
+
     if (open) {
       setOpen(false);
 
@@ -35,9 +92,27 @@ const InputDropdown = (props: Args): JSX.Element => {
     }
   };
 
-  const handleChange = () => {
+  const handleChange = (
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
+  ) => {
     if (!multiple) {
       setOpen(false);
+      setValue(newValue);
+      setCounter(undefined);
+
+      if (newValue && !Array.isArray(newValue)) {
+        setInputDropdownValue(newValue.name);
+
+        if (newValue?.details) setDetials(newValue?.details);
+        else setDetials(undefined);
+      } else {
+        setDetials(undefined);
+        setInputDropdownValue(undefined);
+      }
+    } else {
+      setValue(newValue);
+      setCounter((newValue as T[])?.length.toString());
     }
   };
 
@@ -46,15 +121,19 @@ const InputDropdown = (props: Args): JSX.Element => {
   const handleClickAway = () => {
     if (open) {
       setOpen(false);
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        setSdsStage("default");
+      }
     }
   };
 
   const options = [
     {
-      details: "Details for menu item 1",
+      details: "Details",
       name: "Menu Item 1",
     },
     {
+      details: "A very long Details for the second Menu Item",
       name: "Menu Item 2",
     },
     {
@@ -63,26 +142,27 @@ const InputDropdown = (props: Args): JSX.Element => {
   ];
 
   return (
-    <>
-      {fullWidth ? (
-        <RawInputDropdown
-          disabled={disabled}
-          label={label}
-          onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
-          sdsStyle={sdsStyle}
-          sdsType={sdsType}
-          data-testid="InputDropdown"
-          {...rest}
-        />
+    <div>
+      {invalid ? (
+        <Callout autoDismiss={false} intent="error">
+          <CalloutTitle>Invalid props!</CalloutTitle>
+          When using the InputDropdown component, please note that the
+          combination of setting the sdsType prop to &quot;value&quot; and the
+          multiple prop to &quot;true&quot; is not allowed.
+        </Callout>
       ) : (
         <StyledInputDropdown
           disabled={disabled}
-          label={label}
+          label={storybookLabel}
           onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
+          state={open ? "open" : "default"}
+          sdsStage={sdsStage}
           sdsStyle={sdsStyle}
           sdsType={sdsType}
+          multiple={multiple}
+          details={details}
+          value={inputDropdownValue}
+          counter={counter}
           data-testid="InputDropdown"
           {...rest}
         />
@@ -96,10 +176,12 @@ const InputDropdown = (props: Args): JSX.Element => {
         search={false}
         multiple={multiple}
         disableCloseOnSelect={multiple}
-        options={options}
+        options={options as T[]}
+        value={value}
         onClickAway={handleClickAway}
+        width={300}
       />
-    </>
+    </div>
   );
 };
 
@@ -131,6 +213,11 @@ export default {
         type: "text",
       },
     },
+    multiple: {
+      control: {
+        type: "boolean",
+      },
+    },
     sdsStage: {
       control: {
         type: "radio",
@@ -147,7 +234,7 @@ export default {
       control: {
         type: "radio",
       },
-      options: ["singleSelect", "multiSelect"],
+      options: ["label", "value"],
     },
     shouldPutAColonAfterLabel: {
       control: {
@@ -176,7 +263,6 @@ export const Default = {
     disabled: false,
     label: "Label",
     sdsStyle: "square",
-    sdsType: "singleSelect",
   },
 };
 
@@ -185,38 +271,50 @@ export const Default = {
 const storyRow = {
   // lprins: This prevents InputDropdown component from stretching height in grid
   alignItems: "start",
-  display: "grid",
-  gridColumnGap: "24px",
-  gridTemplateColumns: "repeat(3, 160px)",
-  gridTemplateRows: "1fr",
+  display: "flex",
 };
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const { sdsStyle, ...rest } = props;
+  const { sdsStyle } = props;
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
+      <StyledInputDropdown
+        disabled={false}
         label="Label"
-        {...rest}
+        onClick={noop}
+        sdsStage="default"
+        sdsStyle={sdsStyle}
+        sdsType="label"
+        multiple={false}
+        data-testid="InputDropdown"
       />
 
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
+      <StyledInputDropdown
+        disabled={false}
         label="Label"
+        onClick={noop}
+        sdsStage="default"
+        sdsStyle={sdsStyle}
+        sdsType="value"
+        value="Value"
+        multiple={false}
+        data-testid="InputDropdown"
+        style={{ marginLeft: 80, marginRight: 16 }}
+      />
+
+      <StyledInputDropdown
+        disabled={false}
+        label="Label"
+        onClick={noop}
+        sdsStage="default"
+        sdsStyle={sdsStyle}
+        sdsType="value"
+        value="Value"
         details="Details"
-        {...rest}
-      />
-
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
-        label="Label"
-        multiple
-        {...rest}
+        shouldPutAColonAfterLabel={false}
+        multiple={false}
+        data-testid="InputDropdown"
       />
     </div>
   );
@@ -248,33 +346,31 @@ export const SquareLivePreview = {
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
-const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
-  const { sdsStyle, ...rest } = props;
-
+const MinimalLivePreviewDemo = (): JSX.Element => {
   return (
     <div style={storyRow as React.CSSProperties}>
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
+      <StyledInputDropdown
+        disabled={false}
         label="Label"
-        {...rest}
+        onClick={noop}
+        sdsStage="default"
+        sdsStyle="minimal"
+        sdsType="label"
+        multiple={false}
+        data-testid="InputDropdown"
       />
 
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
+      <StyledInputDropdown
+        disabled={false}
         label="Label"
-        details="Very looooooong details"
-        {...rest}
-      />
-
-      <InputDropdown
-        sdsType="singleSelect"
-        sdsStyle={sdsStyle}
-        label="Label"
-        details="Very looooooong details"
-        shouldTruncateMinimalDetails
-        {...rest}
+        onClick={noop}
+        sdsStage="default"
+        sdsStyle="minimal"
+        sdsType="value"
+        value="Value"
+        multiple={false}
+        data-testid="InputDropdown"
+        style={{ marginLeft: 80, marginRight: 16 }}
       />
     </div>
   );
@@ -298,8 +394,8 @@ export const Test = {
   args: {
     disabled: false,
     label: "Label",
+    multiple: false,
     sdsStyle: "square",
-    sdsType: "singleSelect",
   },
   parameters: {
     snapshot: {

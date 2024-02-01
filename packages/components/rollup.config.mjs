@@ -1,22 +1,28 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import svgr from "@svgr/rollup";
-import ts from "rollup-plugin-ts";
-import del from "rollup-plugin-delete";
 import url from "@rollup/plugin-url";
-import css from "rollup-plugin-css-only";
+import svgr from "@svgr/rollup";
 import bundleScss from "rollup-plugin-bundle-scss";
 import copy from "rollup-plugin-copy";
+import css from "rollup-plugin-css-only";
+import del from "rollup-plugin-delete";
+import ts from "rollup-plugin-ts";
 import pkg from "./package.json" assert { type: "json" };
 
 const config = [
   {
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
-      "@mui/material/Popper",
-      "@mui/material/ToggleButton",
+      /**
+       * (thuang): Do NOT import MUI components from their component directory directly, since
+       * it breaks the ts to js transpilation. Instead, import from "@mui/material"
+       * For example:
+       * BAD: import Autocomplete from "@mui/material/Autocomplete";
+       * GOOD: import { Autocomplete } from "@mui/material";
+       */
       "@mui/material/styles",
-      "@mui/material/Autocomplete",
-      "@mui/material/ToggleButtonGroup",
+      /**
+       * (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
+       */
+      "react/jsx-runtime",
     ],
     input: "src/index.ts",
     output: [

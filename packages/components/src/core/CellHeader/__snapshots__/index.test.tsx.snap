@@ -17,7 +17,7 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -27,8 +27,7 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"

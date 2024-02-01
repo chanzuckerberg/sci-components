@@ -2,7 +2,7 @@
 
 exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
   icon="[object Object]"
   tabindex="0"
   type="button"
@@ -16,8 +16,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
-        data-jest-file-name="IconDownloadLarge.svg"
-        data-jest-svg-name="IconDownloadLarge"
+        data-file-name="IconDownloadLarge"
         data-testid="IconDownloadLarge"
         fillcontrast="white"
         focusable="false"
@@ -35,8 +34,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
-        data-jest-file-name="IconChevronDownSmall.svg"
-        data-jest-svg-name="IconChevronDownSmall"
+        data-file-name="IconChevronDownSmall"
         data-testid="IconChevronDownSmall"
         fillcontrast="white"
         focusable="false"

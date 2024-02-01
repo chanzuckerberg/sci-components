@@ -2,7 +2,7 @@
 
 exports[`<Dialog /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-gsef57-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-10hgbk7-MuiButtonBase-root-MuiButton-root"
   tabindex="0"
   type="button"
 >
@@ -18,11 +18,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-2"
+  id=":r1:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1pznqzi-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1sghtpe-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -32,8 +32,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconXMarkSmall.svg"
-        data-jest-svg-name="IconXMarkSmall"
+        data-file-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
         fillcontrast="white"
         focusable="false"
@@ -68,11 +67,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 2`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
 <div
-  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  class="MuiDialogActions-root MuiDialogActions-spacing css-3tqi0u-MuiDialogActions-root"
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-11wkr3v-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -82,7 +81,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -98,11 +97,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-3"
+  id=":r2:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-11j1e9v-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-fre2k7-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -112,8 +111,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconXMarkLarge.svg"
-        data-jest-svg-name="IconXMarkLarge"
+        data-file-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
@@ -148,11 +146,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 5`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
 <div
-  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  class="MuiDialogActions-root MuiDialogActions-spacing css-3tqi0u-MuiDialogActions-root"
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-11wkr3v-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -162,7 +160,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -178,11 +176,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-4"
+  id=":r3:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1f22o7g-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -192,8 +190,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconXMarkLarge.svg"
-        data-jest-svg-name="IconXMarkLarge"
+        data-file-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
@@ -228,11 +225,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 8`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
 <div
-  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  class="MuiDialogActions-root MuiDialogActions-spacing css-3tqi0u-MuiDialogActions-root"
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-11wkr3v-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -242,7 +239,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -258,11 +255,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-5"
+  id=":r4:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y75vf0-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1f22o7g-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -272,8 +269,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconXMarkLarge.svg"
-        data-jest-svg-name="IconXMarkLarge"
+        data-file-name="IconXMarkLarge"
         data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
@@ -308,11 +304,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 11`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
 <div
-  class="MuiDialogActions-root MuiDialogActions-spacing css-z3x4od-MuiDialogActions-root"
+  class="MuiDialogActions-root MuiDialogActions-spacing css-3tqi0u-MuiDialogActions-root"
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-11wkr3v-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -322,7 +318,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -336,11 +332,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
 
 exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
 <div
-  class="MuiDialogActions-root MuiDialogActions-spacing css-1ordac3-MuiDialogActions-root"
+  class="MuiDialogActions-root MuiDialogActions-spacing css-1naj6t2-MuiDialogActions-root"
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-4j8oia-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-14ncid9-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -350,7 +346,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-39o5u-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-11wkr3v-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -366,7 +362,7 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="mui-6"
+  id=":r5:"
 >
   <p
     class="MuiTypography-root MuiTypography-body1 css-1c15p3u-MuiTypography-root"

@@ -2,7 +2,8 @@
 
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-150u2e1-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14u7bym-MuiButtonBase-root-MuiButton-root"
+  data-testid="dropdown"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -11,7 +12,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
     class="css-ae1gg6"
   >
     <span
-      class="styled-label css-1wq753n"
+      class="styled-label css-1ubkbz8"
     >
       Click Target
     </span>
@@ -24,8 +25,50 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
-          data-jest-file-name="IconChevronDownSmall.svg"
-          data-jest-svg-name="IconChevronDownSmall"
+          data-file-name="IconChevronDownSmall"
+          data-testid="IconChevronDownSmall"
+          fillcontrast="white"
+          focusable="false"
+          viewBox="0 0 14 14"
+        />
+      </div>
+    </span>
+  </span>
+  <div
+    class="css-z8cnb2"
+  />
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;
+
+exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
+<button
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14u7bym-MuiButtonBase-root-MuiButton-root"
+  data-testid="dropdown"
+  label="Click Target"
+  tabindex="0"
+  type="button"
+>
+  <span
+    class="css-ae1gg6"
+  >
+    <span
+      class="styled-label css-1ubkbz8"
+    >
+      Click Target
+    </span>
+    <span
+      class="css-1qt6g1x"
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+          data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
           focusable="false"

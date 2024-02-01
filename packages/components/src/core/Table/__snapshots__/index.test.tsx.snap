@@ -32,7 +32,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-uq52cw-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-qh2mmt-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -42,8 +42,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -67,7 +66,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -77,8 +76,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -102,7 +100,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
           <button
             aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8uz3p0-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -112,8 +110,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-jest-file-name="IconChevronDownSmall.svg"
-                data-jest-svg-name="IconChevronDownSmall"
+                data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
@@ -166,8 +163,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconFlaskLarge.svg"
-              data-jest-svg-name="IconFlaskLarge"
+              data-file-name="IconFlaskLarge"
               data-testid="IconFlaskLarge"
               fillcontrast="white"
               focusable="false"
@@ -175,7 +171,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -266,7 +262,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-1tllcjx"
       >
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -275,7 +271,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -284,7 +280,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -293,7 +289,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -302,7 +298,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -344,8 +340,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconDownloadLarge.svg"
-              data-jest-svg-name="IconDownloadLarge"
+              data-file-name="IconDownloadLarge"
               data-testid="IconDownloadLarge"
               fillcontrast="white"
               focusable="false"
@@ -353,7 +348,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -458,8 +453,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-jest-file-name="IconRadioUnchecked.svg"
-                data-jest-svg-name="IconRadioUnchecked"
+                data-file-name="IconRadioUnchecked"
                 data-testid="IconRadioUnchecked"
                 fillcontrast="white"
                 focusable="false"
@@ -492,8 +486,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               <svg
                 aria-hidden="true"
                 class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-jest-file-name="IconRadioChecked.svg"
-                data-jest-svg-name="IconRadioChecked"
+                data-file-name="IconRadioChecked"
                 data-testid="IconRadioChecked"
                 fillcontrast="white"
                 focusable="false"
@@ -556,8 +549,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <svg
               aria-hidden="true"
               class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-jest-file-name="IconBacteriaLarge.svg"
-              data-jest-svg-name="IconBacteriaLarge"
+              data-file-name="IconBacteriaLarge"
               data-testid="IconBacteriaLarge"
               fillcontrast="white"
               focusable="false"
@@ -565,7 +557,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -645,8 +637,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-            data-jest-file-name="IconVirusLarge.svg"
-            data-jest-svg-name="IconVirusLarge"
+            data-file-name="IconVirusLarge"
             data-testid="IconVirusLarge"
             fillcontrast="white"
             focusable="false"

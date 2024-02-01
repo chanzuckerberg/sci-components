@@ -1,9 +1,8 @@
 import {
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
   DropdownMenu,
   DropdownMenuProps,
 } from "@czi-sds/components";
-import React from "react";
 import { noop } from "src/common/utils";
 
 const OPTIONS = [
@@ -21,7 +20,7 @@ const OPTIONS = [
 
 const DropdownMenuNameSpaceTest = (
   props: DropdownMenuProps<
-    DefaultDropdownMenuOption,
+    DefaultAutocompleteOption,
     true,
     undefined,
     undefined

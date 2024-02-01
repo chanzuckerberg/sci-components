@@ -5,9 +5,10 @@ import {
   ColumnWrapper,
   ContentWrapper,
   StyledCheck,
-  StyledCheckIconWrapper,
+  StyledIconWrapper,
   StyledMenuItem,
   StyledMenuItemIcon,
+  StyledMinus,
   TextWrapper,
 } from "./style";
 
@@ -47,23 +48,23 @@ export type IconNameToSmallSizes = {
 };
 
 export interface MenuItemExtraProps<
-  IconName extends keyof IconNameToSmallSizes
+  IconName extends keyof IconNameToSmallSizes,
 > {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
   sdsIcon?: IconName;
   sdsIconProps?: Partial<IconProps<IconName>>;
+  sdsStyle?: "determinate" | "indeterminate";
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
-  MenuItemExtraProps<IconName> &
-    Omit<RawMenuItemProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
+  MenuItemExtraProps<IconName> & RawMenuItemProps;
 
 /**
  * @see https://mui.com/material-ui/react-menu/
  */
 const MenuItem = forwardRef(function MenuItem<
-  IconName extends keyof IconNameToSmallSizes
+  IconName extends keyof IconNameToSmallSizes,
 >(props: MenuItemProps<IconName>, ref: ForwardedRef<HTMLLIElement | null>) {
   const {
     children,
@@ -72,23 +73,39 @@ const MenuItem = forwardRef(function MenuItem<
     isMultiSelect = false,
     sdsIcon,
     sdsIconProps,
+    sdsStyle = "determinate",
     ...originalMenuItemProps
   } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
 
-  return (
-    <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
-      {isMultiSelect && (
-        // TODO (mlila): replace with sds InputCheckbox class once complete
-        <StyledCheckIconWrapper>
+  const selectionIcon = () => {
+    if (sdsStyle === "determinate") {
+      return (
+        <StyledIconWrapper>
           <StyledCheck
             className="check-icon"
             selected={selected}
             color="primary"
             disabled={disabled}
           />
-        </StyledCheckIconWrapper>
-      )}
+        </StyledIconWrapper>
+      );
+    }
+    return (
+      <StyledIconWrapper>
+        <StyledMinus
+          className="check-icon"
+          selected={selected}
+          color="primary"
+          disabled={disabled}
+        />
+      </StyledIconWrapper>
+    );
+  };
+
+  return (
+    <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
+      {isMultiSelect && selectionIcon()}
 
       <ContentWrapper>
         <TextWrapper

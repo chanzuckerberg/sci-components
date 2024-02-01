@@ -3,26 +3,21 @@
 exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
 <div>
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+    caption="Caption"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
   >
     <span
-      caption="Caption"
-      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-root MuiCheckbox-colorDefault css-1ptfvrq-MuiButtonBase-root-MuiCheckbox-root"
-      label="Label"
-      stage="unchecked"
+      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium css-pdae7e-MuiButtonBase-root-MuiCheckbox-root"
     >
       <input
         class="PrivateSwitchBase-input css-1m9pwf3"
         data-indeterminate="false"
-        id="test-story"
         type="checkbox"
-        value="Demo"
       />
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-jest-file-name="IconCheckboxUnchecked.svg"
-        data-jest-svg-name="IconCheckboxUnchecked"
+        data-file-name="IconCheckboxUnchecked"
         data-testid="IconCheckboxUnchecked"
         fillcontrast="white"
         focusable="false"

@@ -10,11 +10,8 @@ interface SdsProps {
   sdsType?: "primary" | "secondary";
 }
 
-export type ButtonDropdownProps<C extends React.ElementType = "button"> = Omit<
-  RawButtonProps<C, { component?: C }>,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> &
-  SdsProps;
+export type ButtonDropdownProps<C extends React.ElementType = "button"> =
+  RawButtonProps<C, { component?: C }> & SdsProps;
 
 /**
  * @see https://mui.com/material-ui/react-button/

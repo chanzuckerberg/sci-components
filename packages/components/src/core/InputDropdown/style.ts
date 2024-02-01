@@ -4,10 +4,12 @@ import { ReactNode } from "react";
 import Button from "../Button";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBody,
   getBorders,
   getColors,
   getCorners,
+  getFontWeights,
   getPalette,
   getSpaces,
 } from "../styles";
@@ -17,12 +19,14 @@ export interface InputDropdownProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
   label: ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
-  open?: boolean;
+  state?: "default" | "open";
   sdsStage: "default" | "userInput";
   sdsStyle?: "minimal" | "square" | "rounded";
-  sdsType?: "singleSelect" | "multiSelect";
-  details?: string;
-  counter?: string;
+  sdsType?: "label" | "value";
+  multiple?: boolean;
+  details?: ReactNode;
+  counter?: ReactNode;
+  value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
 }
@@ -37,6 +41,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
+    ${labelStyle(props)}
+
     border: ${borders?.gray[400]};
     color: ${palette?.text?.primary};
     cursor: pointer;
@@ -67,11 +73,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: unset;
-      border: ${borders?.gray[500]};
+      border-color: black;
       color: ${palette?.text?.primary};
 
       path {
-        fill: ${colors?.gray[600]};
+        fill: black;
       }
 
       .styled-label {
@@ -97,9 +103,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const spacings = getSpaces(props);
+  const palette = getPalette(props);
 
   return css`
     ${labelStyle(props)}
+    ${focusVisibleA11yStyle()}
 
     /* this is needed to left align the label text */
     align-items: flex-start;
@@ -125,6 +133,15 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     &:hover {
       background-color: ${colors?.gray[100]};
       border: none;
+      color: ${palette?.text?.primary};
+
+      path {
+        fill: black;
+      }
+
+      .styled-label {
+        color: #000;
+      }
     }
 
     &:active {
@@ -162,8 +179,6 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    ${labelStyle(props)}
-
     border-radius: ${corners?.l}px;
     height: 34px;
     min-width: 90px;
@@ -171,6 +186,22 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
+  const palette = getPalette(props);
+
+  return css`
+    & .styled-label {
+      color: ${palette?.text?.primary};
+    }
+
+    &.MuiButton-text {
+      .styled-label {
+        color: ${palette?.text?.primary};
+      }
+    }
+  `;
+};
+
+const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const palette = getPalette(props);
 
@@ -239,6 +270,12 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
       color: ${colors?.gray[300]};
     }
 
+    &.MuiButton-text {
+      .styled-label {
+        color: ${colors?.gray[300]};
+      }
+    }
+
     path {
       fill: ${colors?.gray[300]};
     }
@@ -247,8 +284,9 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
 const doNotForwardProps = [
   "intent",
-  "open",
+  "state",
   "sdsStage",
+  "sdsType",
   "isMinimal",
   "shouldTruncateMinimalDetails",
   "shouldPutAColonAfterLabel",
@@ -267,14 +305,14 @@ export const StyledInputDropdown = styled(Button, {
   justify-content: space-between;
 
   ${(props: InputDropdownProps) => {
-    const { disabled, intent, open, sdsStage, sdsStyle } = props;
+    const { disabled, intent, state, sdsStage, sdsStyle } = props;
 
     return css`
       ${inputDropdownStyles(props)}
       ${sdsStyle === "minimal" && minimal(props)}
       ${sdsStyle === "square" && square(props)}
       ${sdsStyle === "rounded" && rounded(props)}
-      ${open && userInput(props)}
+      ${state === "open" && isOpen(props)}
       ${sdsStage === "userInput" && userInput(props)}
       ${intent === "warning" && warning(props)}
       ${intent === "error" && error(props)}
@@ -301,23 +339,32 @@ export const StyledDetail = styled("span", {
 `;
 
 interface DetailsAndCounter extends CommonThemeProps {
-  details?: string;
-  counter?: string;
+  details?: InputDropdownProps["details"];
+  counter?: InputDropdownProps["counter"];
+  sdsType: InputDropdownProps["sdsType"];
 }
 
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: DetailsAndCounter) => {
-    const { details, counter } = props;
+    const { details, counter, sdsType } = props;
+
     const colors = getColors(props);
     const palette = getPalette(props);
+    const fontWeights = getFontWeights(props);
+
     const labelColor =
       details || counter !== undefined
         ? palette?.text?.primary
         : colors?.gray[500];
+
     return `
       color: ${labelColor};
+
+      font-weight: ${
+        sdsType === "label" ? fontWeights?.semibold : fontWeights?.regular
+      };
     `;
   }}
 `;
@@ -386,14 +433,12 @@ export const IconWrapper = styled("span", {
 function labelStyle(props: InputDropdownProps): SerializedStyles {
   const colors = getColors(props);
   const palette = getPalette(props);
-  const labelColor = props.disabled
-    ? colors?.gray[300]
-    : palette?.text?.primary;
+  const labelColor =
+    props.sdsType === "value" ? palette?.text?.primary : colors?.gray[500];
 
   return css`
     &.MuiButton-text {
       .styled-label {
-        font-weight: 600;
         color: ${labelColor};
       }
     }

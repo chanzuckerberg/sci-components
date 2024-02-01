@@ -17,8 +17,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-          data-jest-file-name="IconInfoCircleLarge.svg"
-          data-jest-svg-name="IconInfoCircleLarge"
+          data-file-name="IconInfoCircleLarge"
           data-testid="IconInfoCircleLarge"
           fillcontrast="white"
           focusable="false"
@@ -30,7 +29,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eusci7-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-co4rz1-MuiButtonBase-root-MuiIconButton-root"
     tabindex="0"
     type="button"
   >
@@ -40,8 +39,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-        data-jest-file-name="IconXMarkSmall.svg"
-        data-jest-svg-name="IconXMarkSmall"
+        data-file-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
         fillcontrast="white"
         focusable="false"

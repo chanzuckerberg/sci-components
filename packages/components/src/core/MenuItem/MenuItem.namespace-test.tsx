@@ -3,7 +3,6 @@ import {
   MenuItem,
   MenuItemProps,
 } from "@czi-sds/components";
-import React from "react";
 import { noop } from "src/common/utils";
 
 const MenuNameSpaceTest = (
@@ -18,6 +17,7 @@ const MenuNameSpaceTest = (
       isMultiSelect
       disabled={false}
       selected
+      sdsStyle="determinate"
     >
       Contact us
     </MenuItem>

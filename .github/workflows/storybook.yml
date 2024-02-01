@@ -1,28 +1,40 @@
-# Doc: https://dev.to/kouts/deploy-storybook-to-github-pages-3bij
 name: Build and Deploy
+
+# Triggers on pushes to the 'main' branch
 on:
   push:
     branches:
       - main
+
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Use the latest version of the Ubuntu runner environment
+
     steps:
-      - name: Checkout 🛎️
+      # Step 1: Check out the repository code
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false
-      - uses: actions/setup-node@v3
+          fetch-depth: 0
+
+      # Step 2: Set up Node.js environment and cache Yarn dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version-file: ".node-version"
-      - name: Install and Build 🔧
-        run: | # Install npm packages and build the Storybook files
-          yarn install
+          node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
+          cache: "yarn" # Cache Yarn dependencies for faster builds
+
+      # Step 3: Install npm packages and build the Storybook files
+      - name: Install and Build
+        run: |
+          yarn
           yarn build-storybook
-      - name: Deploy 🚀
+
+      # Step 4: Deploy to GitHub Pages using the 'github-pages-deploy-action'
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Authenticate using the GitHub token
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: docs-build # The folder that the build-storybook script generates files.
           CLEAN: true # Automatically remove deleted files from the deploy branch

@@ -10,17 +10,21 @@ import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCh
 import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
 import { ReactComponent as IconChevronDownLarge } from "../../common/svgs/IconChevronDownLarge.svg";
 import { ReactComponent as IconChevronDownSmall } from "../../common/svgs/IconChevronDownSmall.svg";
+import { ReactComponent as IconChevronLeft2Small } from "../../common/svgs/IconChevronLeft2Small.svg";
 import { ReactComponent as IconChevronLeftLarge } from "../../common/svgs/IconChevronLeftLarge.svg";
 import { ReactComponent as IconChevronLeftSmall } from "../../common/svgs/IconChevronLeftSmall.svg";
+import { ReactComponent as IconChevronRight2Small } from "../../common/svgs/IconChevronRight2Small.svg";
 import { ReactComponent as IconChevronRightLarge } from "../../common/svgs/IconChevronRightLarge.svg";
 import { ReactComponent as IconChevronRightSmall } from "../../common/svgs/IconChevronRightSmall.svg";
 import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChevronUpLarge.svg";
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
 import { ReactComponent as IconCirclesOverlapLarge } from "../../common/svgs/IconCirclesOverlapLarge.svg";
 import { ReactComponent as IconCirclesOverlapSmall } from "../../common/svgs/IconCirclesOverlapSmall.svg";
+import { ReactComponent as IconCodeLarge } from "../../common/svgs/IconCodeLarge.svg";
 import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
+import { ReactComponent as IconCubeLarge } from "../../common/svgs/IconCubeLarge.svg";
 import { ReactComponent as IconDnaLarge } from "../../common/svgs/IconDnaLarge.svg";
 import { ReactComponent as IconDocumentSmall } from "../../common/svgs/IconDocumentSmall.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
@@ -49,7 +53,6 @@ import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge
 import { ReactComponent as IconGridPrivateLarge } from "../../common/svgs/IconGridPrivateLarge.svg";
 import { ReactComponent as IconGridPublicLarge } from "../../common/svgs/IconGridPublicLarge.svg";
 import { ReactComponent as IconGridThreeDotsLarge } from "../../common/svgs/IconGridThreeDotsLarge.svg";
-import { ReactComponent as IconGridThreeDotsSmall } from "../../common/svgs/IconGridThreeDotsSmall.svg";
 import { ReactComponent as IconHouseSmall } from "../../common/svgs/IconHouseSmall.svg";
 import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInfoCircleLarge.svg";
 import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
@@ -83,12 +86,11 @@ import { ReactComponent as IconProjectPrivateLarge } from "../../common/svgs/Ico
 import { ReactComponent as IconProjectPublicLarge } from "../../common/svgs/IconProjectPublicLarge.svg";
 import { ReactComponent as IconPuzzlePieceSmall } from "../../common/svgs/IconPuzzlePieceSmall.svg";
 import { ReactComponent as IconQuestionMarkLarge } from "../../common/svgs/IconQuestionMarkLarge.svg";
+import { ReactComponent as IconQuoteLarge } from "../../common/svgs/IconQuoteLarge.svg";
 import { ReactComponent as IconReadLarge } from "../../common/svgs/IconReadLarge.svg";
-import { ReactComponent as IconReadSmall } from "../../common/svgs/IconReadSmall.svg";
 import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefreshLarge.svg";
 import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
 import { ReactComponent as IconRocketLarge } from "../../common/svgs/IconRocketLarge.svg";
-import { ReactComponent as IconRocketSmall } from "../../common/svgs/IconRocketSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
 import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
 import { ReactComponent as IconSearchLinesHorizontalLarge } from "../../common/svgs/IconSearchLinesHorizontalLarge.svg";
@@ -115,12 +117,11 @@ import { ReactComponent as IconTriangleLeftSmall } from "../../common/svgs/IconT
 import { ReactComponent as IconTriangleRightSmall } from "../../common/svgs/IconTriangleRightSmall.svg";
 import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTriangleUpSmall.svg";
 import { ReactComponent as IconUpdatedLarge } from "../../common/svgs/IconUpdatedLarge.svg";
-import { ReactComponent as IconUpdatedSmall } from "../../common/svgs/IconUpdatedSmall.svg";
 import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
 import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
+import { ReactComponent as IconVirusCircleSLarge } from "../../common/svgs/IconVirusCircleSLarge.svg";
 import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconWidgetLarge } from "../../common/svgs/IconWidgetLarge.svg";
-import { ReactComponent as IconWidgetSmall } from "../../common/svgs/IconWidgetSmall.svg";
 import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
 import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
@@ -134,12 +135,16 @@ export interface IconNameToSizes {
   check: "xs" | "s";
   checkCircle: "xs" | "s" | "l" | "xl";
   chevronDown: "xs" | "s" | "l" | "xl";
+  chevronLeft2: "xs" | "s";
   chevronLeft: "xs" | "s" | "l" | "xl";
+  chevronRight2: "xs" | "s";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
   circlesOverlap: "xs" | "s" | "l" | "xl";
+  code: "l" | "xl";
   compass: "l" | "xl";
   copy: "xs" | "s" | "l" | "xl";
+  cube: "l" | "xl";
   dna: "l" | "xl";
   document: "xs" | "s";
   dotsHorizontal: "xs" | "s" | "l" | "xl";
@@ -190,6 +195,7 @@ export interface IconNameToSizes {
   projectPublic: "l" | "xl";
   puzzlePiece: "xs" | "s";
   questionMark: "l" | "xl";
+  quote: "l" | "xl";
   read: "l" | "xl";
   refresh: "xs" | "s" | "l" | "xl";
   rocket: "l" | "xl";
@@ -217,6 +223,7 @@ export interface IconNameToSizes {
   updated: "l" | "xl";
   upload: "l" | "xl";
   virus: "l" | "xl";
+  virusCircleS: "l" | "xl";
   widget: "l" | "xl";
   xMark: "xs" | "s" | "l" | "xl";
   xMarkCircle: "xs" | "s";
@@ -267,9 +274,17 @@ export const iconMap: Props = {
     largeIcon: IconChevronLeftLarge,
     smallIcon: IconChevronLeftSmall,
   },
+  chevronLeft2: {
+    largeIcon: null,
+    smallIcon: IconChevronLeft2Small,
+  },
   chevronRight: {
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
+  },
+  chevronRight2: {
+    largeIcon: null,
+    smallIcon: IconChevronRight2Small,
   },
   chevronUp: {
     largeIcon: IconChevronUpLarge,
@@ -279,6 +294,10 @@ export const iconMap: Props = {
     largeIcon: IconCirclesOverlapLarge,
     smallIcon: IconCirclesOverlapSmall,
   },
+  code: {
+    largeIcon: IconCodeLarge,
+    smallIcon: null,
+  },
   compass: {
     largeIcon: IconCompassLarge,
     smallIcon: null,
@@ -286,6 +305,10 @@ export const iconMap: Props = {
   copy: {
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
+  },
+  cube: {
+    largeIcon: IconCubeLarge,
+    smallIcon: null,
   },
   dna: {
     largeIcon: IconDnaLarge,
@@ -381,7 +404,7 @@ export const iconMap: Props = {
   },
   gridThreeDots: {
     largeIcon: IconGridThreeDotsLarge,
-    smallIcon: IconGridThreeDotsSmall,
+    smallIcon: null,
   },
   house: {
     largeIcon: null,
@@ -487,9 +510,13 @@ export const iconMap: Props = {
     largeIcon: IconQuestionMarkLarge,
     smallIcon: null,
   },
+  quote: {
+    largeIcon: IconQuoteLarge,
+    smallIcon: null,
+  },
   read: {
     largeIcon: IconReadLarge,
-    smallIcon: IconReadSmall,
+    smallIcon: null,
   },
   refresh: {
     largeIcon: IconRefreshLarge,
@@ -497,7 +524,7 @@ export const iconMap: Props = {
   },
   rocket: {
     largeIcon: IconRocketLarge,
-    smallIcon: IconRocketSmall,
+    smallIcon: null,
   },
   save: {
     largeIcon: IconSaveLarge,
@@ -585,7 +612,7 @@ export const iconMap: Props = {
   },
   updated: {
     largeIcon: IconUpdatedLarge,
-    smallIcon: IconUpdatedSmall,
+    smallIcon: null,
   },
   upload: {
     largeIcon: IconUploadLarge,
@@ -595,9 +622,13 @@ export const iconMap: Props = {
     largeIcon: IconVirusLarge,
     smallIcon: null,
   },
+  virusCircleS: {
+    largeIcon: IconVirusCircleSLarge,
+    smallIcon: null,
+  },
   widget: {
     largeIcon: IconWidgetLarge,
-    smallIcon: IconWidgetSmall,
+    smallIcon: null,
   },
   xMark: {
     largeIcon: IconXMarkLarge,

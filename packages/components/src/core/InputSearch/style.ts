@@ -1,5 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import {
+  buttonBaseClasses,
+  InputAdornment,
   inputAdornmentClasses,
   inputBaseClasses,
   outlinedInputClasses,
@@ -21,6 +23,7 @@ export interface InputSearchExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
   sdsStyle?: "rounded" | "square";
   sdsStage?: "default" | "userInput";
+  value?: string;
 }
 
 const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
@@ -30,7 +33,7 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
-    .${outlinedInputClasses.notchedOutline} {
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
       border-radius: ${corners?.l}px;
       border: ${borders?.gray[400]};
     }
@@ -39,20 +42,88 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
 
 const error = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
+  const colors = getColors(props);
 
   return css`
-    .${outlinedInputClasses.notchedOutline} {
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.error[400]};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${borders?.error[400]};
+    }
+
+    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
+      .${outlinedInputClasses.notchedOutline} {
+        border: ${borders?.error[400]};
+      }
+
+      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+        cursor: default;
+        svg {
+          color: ${colors?.gray[500]};
+        }
+      }
     }
   `;
 };
 
 const warning = (props: InputSearchExtraProps): SerializedStyles => {
   const borders = getBorders(props);
+  const colors = getColors(props);
 
   return css`
-    .${outlinedInputClasses.notchedOutline} {
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
       border: ${borders?.warning[400]};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${borders?.warning[400]};
+    }
+
+    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
+      .${outlinedInputClasses.notchedOutline} {
+        border: ${borders?.warning[400]};
+      }
+
+      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+        cursor: default;
+        svg {
+          color: ${colors?.gray[500]};
+        }
+      }
+    }
+  `;
+};
+
+const userInput = (props: InputSearchExtraProps): SerializedStyles => {
+  const { intent } = props;
+  const colors = getColors(props);
+  const borders = getBorders(props);
+
+  const border =
+    intent === "error"
+      ? borders?.error[400]
+      : intent === "warning"
+        ? borders?.warning[400]
+        : borders?.primary[400];
+
+  const color = intent === "default" ? colors?.primary[400] : colors?.gray[500];
+
+  return css`
+    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
+      border: ${border};
+    }
+
+    .${outlinedInputClasses.root}:hover
+      .${outlinedInputClasses.notchedOutline} {
+      border: ${border};
+    }
+
+    .${inputAdornmentClasses.root} svg {
+      color: ${color};
     }
   `;
 };
@@ -62,17 +133,22 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   const colors = getColors(props);
 
   return css`
-    .Mui-disabled {
+    .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
       }
 
-      .MuiInputAdornment-root svg {
+      .${inputAdornmentClasses.root} svg {
         color: ${colors?.gray[300]};
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.gray[300]};
+      }
+
+      &::placeholder {
+        color: ${colors?.gray[300]};
+        opacity: 1;
       }
     }
   `;
@@ -83,6 +159,7 @@ export const StyledLabel = styled("label")`
   ${(props) => {
     const typography = getTypography(props);
     const spacings = getSpaces(props);
+
     return `
       font-family: ${typography?.fontFamily};
       margin-bottom: ${spacings?.xxs}px;
@@ -104,7 +181,7 @@ export const StyledSearchBase = styled(TextField, {
   },
 })`
   ${(props: InputSearchExtraProps) => {
-    const { intent, disabled, sdsStyle } = props;
+    const { intent, disabled, sdsStyle, sdsStage, value } = props;
     const spacings = getSpaces(props);
     const borders = getBorders(props);
     const colors = getColors(props);
@@ -116,14 +193,29 @@ export const StyledSearchBase = styled(TextField, {
       min-width: 120px;
       display: block;
 
+      [type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      & .input-search-clear-icon {
+        opacity: 0;
+        margin-right: ${spacings?.s}px;
+      }
+
       .${outlinedInputClasses.root} {
         .${outlinedInputClasses.notchedOutline} {
           border: ${borders?.gray[400]};
         }
+
+        &:hover .input-search-clear-icon,
+        &:focus-within .input-search-clear-icon {
+          opacity: ${value ? 1 : 0};
+        }
       }
 
       .${inputBaseClasses.inputSizeSmall} {
-        padding: ${spacings?.xs}px 0 ${spacings?.xs}px ${spacings?.l}px;
+        padding: ${spacings?.xs}px ${spacings?.l}px;
         height: 34px;
         box-sizing: border-box;
         background-color: #fff;
@@ -134,13 +226,16 @@ export const StyledSearchBase = styled(TextField, {
         border: ${borders?.gray[500]};
       }
 
-      .${outlinedInputClasses.root}.Mui-focused {
+      .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
         .${outlinedInputClasses.notchedOutline} {
           border: ${borders?.primary[400]};
         }
 
-        .${inputAdornmentClasses.root} svg {
-          color: ${colors?.primary[400]};
+        .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
+          cursor: default;
+          svg {
+            color: ${colors?.primary[400]};
+          }
         }
       }
 
@@ -148,6 +243,11 @@ export const StyledSearchBase = styled(TextField, {
       ${intent === "error" && error(props)}
       ${intent === "warning" && warning(props)}
       ${disabled && disabledStyled(props)}
+      ${sdsStage === "userInput" && userInput(props)}
     `;
   }}
+`;
+
+export const StyledInputAdornment = styled(InputAdornment)`
+  position: relative;
 `;

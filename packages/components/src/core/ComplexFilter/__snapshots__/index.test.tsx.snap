@@ -5,7 +5,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
   class="css-1x0reya"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-150u2e1-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-14u7bym-MuiButtonBase-root-MuiButton-root"
     label="Click Target"
     tabindex="0"
     type="button"
@@ -14,7 +14,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
       class="css-ae1gg6"
     >
       <span
-        class="styled-label css-1wq753n"
+        class="styled-label css-1ubkbz8"
       >
         Click Target
       </span>
@@ -27,8 +27,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
-            data-jest-file-name="IconChevronDownSmall.svg"
-            data-jest-svg-name="IconChevronDownSmall"
+            data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
             focusable="false"

@@ -11,10 +11,7 @@ const TRANSFORM_ORIGIN: PopoverOrigin = {
   vertical: "top",
 };
 
-export type MenuProps = Omit<
-  RawMenuProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
->;
+export type MenuProps = RawMenuProps;
 
 /**
  * @see https://mui.com/material-ui/react-menu/
