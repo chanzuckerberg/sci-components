@@ -33,6 +33,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-qh2mmt-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >
@@ -46,6 +47,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
+                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -67,6 +69,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >
@@ -80,6 +83,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
+                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -101,6 +105,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >
@@ -114,6 +119,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
+                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -167,11 +173,12 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconFlaskLarge"
               fillcontrast="white"
               focusable="false"
+              icon="flask"
               viewBox="0 0 22 22"
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -262,7 +269,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-1tllcjx"
       >
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -271,7 +278,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -280,7 +287,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -289,7 +296,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -298,7 +305,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -344,11 +351,12 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconDownloadLarge"
               fillcontrast="white"
               focusable="false"
+              icon="download"
               viewBox="0 0 22 22"
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -553,11 +561,12 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconBacteriaLarge"
               fillcontrast="white"
               focusable="false"
+              icon="bacteria"
               viewBox="0 0 22 22"
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1n15qie-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-gr6as5-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -641,6 +650,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             data-testid="IconVirusLarge"
             fillcontrast="white"
             focusable="false"
+            icon="virus"
             viewBox="0 0 22 22"
           />
         </div>

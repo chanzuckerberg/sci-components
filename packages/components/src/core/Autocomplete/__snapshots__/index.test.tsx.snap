@@ -41,10 +41,10 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
           <div
             class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-g8kzra-MuiInputAdornment-root"
           >
-            
             <button
               aria-label="search-button"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5z5hxc-MuiButtonBase-root-MuiIconButton-root"
+              icon="search"
               tabindex="0"
               type="button"
             >
@@ -58,6 +58,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
                   data-testid="IconSearchSmall"
                   fillcontrast="white"
                   focusable="false"
+                  icon="search"
                   viewBox="0 0 14 14"
                 />
               </div>

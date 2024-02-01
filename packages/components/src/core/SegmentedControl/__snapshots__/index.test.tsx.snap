@@ -27,6 +27,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
           data-testid="IconListSmall"
           fillcontrast="white"
           focusable="false"
+          icon="list"
           viewBox="0 0 14 14"
         />
       </div>
@@ -54,6 +55,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
           data-testid="IconListSmall"
           fillcontrast="white"
           focusable="false"
+          icon="list"
           viewBox="0 0 14 14"
         />
       </div>
@@ -81,6 +83,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
           data-testid="IconListSmall"
           fillcontrast="white"
           focusable="false"
+          icon="list"
           viewBox="0 0 14 14"
         />
       </div>
@@ -108,6 +111,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
           data-testid="IconListSmall"
           fillcontrast="white"
           focusable="false"
+          icon="list"
           viewBox="0 0 14 14"
         />
       </div>

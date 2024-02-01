@@ -3,10 +3,7 @@ import { forwardRef } from "react";
 import { DialogActionsExtraProps, StyledDialogActions } from "./style";
 
 export type DialogActionsProps = DialogActionsExtraProps &
-  Omit<
-    RawDialogActionsProps,
-    "nonce" | "rev" | "rel" | "autoFocus" | "content"
-  >;
+  RawDialogActionsProps;
 
 /**
  * @see https://mui.com/material-ui/react-dialog/

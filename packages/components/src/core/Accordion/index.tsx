@@ -6,11 +6,7 @@ import { AccordionExtraProps, StyledAccordion } from "./style";
 
 export { AccordionDetails, AccordionHeader };
 
-export type AccordionProps = Omit<
-  RawAccordionProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> &
-  AccordionExtraProps;
+export type AccordionProps = RawAccordionProps & AccordionExtraProps;
 
 /**
  * @see https://mui.com/material-ui/react-accordion/

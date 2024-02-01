@@ -29,6 +29,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
           focusable="false"
+          icon="chevronDown"
           viewBox="0 0 14 14"
         />
       </div>
@@ -72,6 +73,7 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
           focusable="false"
+          icon="chevronDown"
           viewBox="0 0 14 14"
         />
       </div>

@@ -12,6 +12,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
       class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1xga07g-MuiButtonBase-root-MuiIconButton-root"
       data-order="first"
       disabled=""
+      icon="chevronLeft"
       tabindex="-1"
       type="button"
     >
@@ -25,6 +26,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
           data-testid="IconChevronLeftSmall"
           fillcontrast="white"
           focusable="false"
+          icon="chevronLeft"
           viewBox="0 0 14 14"
         />
       </div>
@@ -61,6 +63,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     <button
       aria-label="Go to a page"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-nu4a6d-MuiButtonBase-root-MuiIconButton-root"
+      icon="dotsHorizontal"
       tabindex="0"
       type="button"
     >
@@ -74,6 +77,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
           data-testid="IconDotsHorizontal3Small"
           fillcontrast="white"
           focusable="false"
+          icon="dotsHorizontal"
           viewBox="0 0 14 14"
         />
       </div>
@@ -94,6 +98,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
       aria-label="Next page"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1vmnq6r-MuiButtonBase-root-MuiIconButton-root"
       data-order="last"
+      icon="chevronRight"
       tabindex="0"
       type="button"
     >
@@ -107,6 +112,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
           data-testid="IconChevronRightSmall"
           fillcontrast="white"
           focusable="false"
+          icon="chevronRight"
           viewBox="0 0 14 14"
         />
       </div>

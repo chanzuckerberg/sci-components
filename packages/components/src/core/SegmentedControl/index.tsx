@@ -11,10 +11,7 @@ interface SingleButtonDefinition {
 }
 
 interface SegmentedControlExtraProps
-  extends Omit<
-    ToggleButtonGroupProps,
-    "color" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
-  > {
+  extends Omit<ToggleButtonGroupProps, "color"> {
   buttonDefinition: SingleButtonDefinition[];
   color?:
     | "primary"

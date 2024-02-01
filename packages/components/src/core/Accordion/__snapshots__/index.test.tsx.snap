@@ -2,7 +2,7 @@
 
 exports[`<Accordion /> Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1x3fmw6-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1gtxzl5-MuiPaper-root-MuiAccordion-root"
 >
   <div
     aria-controls="undefined-header-panel-content"
@@ -30,6 +30,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
           focusable="false"
+          icon="chevronDown"
           viewBox="0 0 14 14"
         />
       </div>

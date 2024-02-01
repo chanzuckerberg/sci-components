@@ -14,6 +14,7 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
       data-testid="IconLoadingLarge"
       fillcontrast="white"
       focusable="false"
+      icon="loading"
       viewBox="0 0 22 22"
     />
   </div>
@@ -42,6 +43,7 @@ exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
       data-testid="IconLoadingLarge"
       fillcontrast="white"
       focusable="false"
+      icon="loading"
       viewBox="0 0 22 22"
     />
   </div>

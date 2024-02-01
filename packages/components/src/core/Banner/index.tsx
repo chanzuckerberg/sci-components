@@ -19,7 +19,7 @@ export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
 }
 
 const Banner = forwardRef(function Banner<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 >(
   props: BannerProps<ButtonIconSize>,
   ref: ForwardedRef<HTMLDivElement | null>

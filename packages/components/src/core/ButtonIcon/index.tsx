@@ -9,7 +9,7 @@ import {
 
 export type { ButtonIconProps, ButtonIconSizeToTypes };
 export interface ButtonIconInternalProps<
-  IconName extends keyof IconNameToSizes
+  IconName extends keyof IconNameToSizes,
 > {
   icon: IconName | FC<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
@@ -17,9 +17,9 @@ export interface ButtonIconInternalProps<
 
 type ButtonIconProps<
   IconName extends keyof IconNameToSizes,
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 > = ButtonIconExtraProps<ButtonIconSize> &
-  Omit<RawButtonIconProps, "nonce" | "rev" | "rel" | "autoFocus" | "content"> &
+  RawButtonIconProps &
   ButtonIconInternalProps<IconName>;
 
 const ButtonIconSizeToSdsIconSize = {
@@ -33,7 +33,7 @@ const ButtonIconSizeToSdsIconSize = {
  */
 const ButtonIcon = forwardRef(function ButtonIcon<
   IconName extends keyof IconNameToSizes,
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 >(
   props: ButtonIconProps<IconName, ButtonIconSize>,
   ref: ForwardedRef<HTMLButtonElement | null>

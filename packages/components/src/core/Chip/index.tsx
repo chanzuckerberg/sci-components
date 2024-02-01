@@ -6,8 +6,7 @@ import {
 } from "src/common/warnings";
 import { ChipExtraProps, StyledChip } from "./style";
 
-type ChipProps = ChipExtraProps &
-  Omit<RawChipProps, "nonce" | "rev" | "rel" | "autoFocus" | "content">;
+type ChipProps = ChipExtraProps & RawChipProps;
 
 export type { ChipProps };
 

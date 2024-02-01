@@ -31,7 +31,7 @@ const DropdownMenu = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
@@ -239,7 +239,7 @@ const LivePreviewDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(): JSX.Element => {
   const options = LIVE_PREVIEW_LABELS;
 
@@ -735,7 +735,7 @@ const TestDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {

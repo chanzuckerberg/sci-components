@@ -8,10 +8,7 @@ interface AccessibleInputTextProps {
   id: string;
 }
 
-export type InputTextProps = Omit<
-  RawTextFieldProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> &
+export type InputTextProps = RawTextFieldProps &
   InputTextExtraProps &
   AccessibleInputTextProps;
 

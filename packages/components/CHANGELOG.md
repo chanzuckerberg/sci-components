@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.0.0...@czi-sds/components@19.2.0) (2024-01-10)
+
+### Bug Fixes
+
+- add focused styling to tabs ([#714](https://github.com/chanzuckerberg/sci-components/issues/714)) ([eb6870f](https://github.com/chanzuckerberg/sci-components/commit/eb6870f6d8bfe213555a5e0c0040308833510ab9))
+- add live region to loading indicator ([#719](https://github.com/chanzuckerberg/sci-components/issues/719)) ([9126293](https://github.com/chanzuckerberg/sci-components/commit/9126293f2a4f8d68cb1a2a4994d8e008f1c37478))
+- checkbox accessibility ([#716](https://github.com/chanzuckerberg/sci-components/issues/716)) ([2289e3c](https://github.com/chanzuckerberg/sci-components/commit/2289e3ce971a4302f404b99dc439a02a29b067bc)), closes [#690](https://github.com/chanzuckerberg/sci-components/issues/690)
+
+### Features
+
+- **icon:** add cube icon ([#725](https://github.com/chanzuckerberg/sci-components/issues/725)) ([a534985](https://github.com/chanzuckerberg/sci-components/commit/a534985f12f0100e7ca2da29a80ea03bf457b2f8)), closes [#720](https://github.com/chanzuckerberg/sci-components/issues/720)
+- **icon:** add new code icon ([#724](https://github.com/chanzuckerberg/sci-components/issues/724)) ([850675f](https://github.com/chanzuckerberg/sci-components/commit/850675f49069f6bb422c22bb5903b120874a4fd0)), closes [#567](https://github.com/chanzuckerberg/sci-components/issues/567)
+
+# [19.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.0.0...@czi-sds/components@19.1.0) (2023-12-13)
+
+### Bug Fixes
+
+- add focused styling to tabs ([#714](https://github.com/chanzuckerberg/sci-components/issues/714)) ([eb6870f](https://github.com/chanzuckerberg/sci-components/commit/eb6870f6d8bfe213555a5e0c0040308833510ab9))
+- add live region to loading indicator ([#719](https://github.com/chanzuckerberg/sci-components/issues/719)) ([9126293](https://github.com/chanzuckerberg/sci-components/commit/9126293f2a4f8d68cb1a2a4994d8e008f1c37478))
+- checkbox accessibility ([#716](https://github.com/chanzuckerberg/sci-components/issues/716)) ([2289e3c](https://github.com/chanzuckerberg/sci-components/commit/2289e3ce971a4302f404b99dc439a02a29b067bc)), closes [#690](https://github.com/chanzuckerberg/sci-components/issues/690)
+
+### Features
+
+- **icon:** add cube icon ([#725](https://github.com/chanzuckerberg/sci-components/issues/725)) ([a534985](https://github.com/chanzuckerberg/sci-components/commit/a534985f12f0100e7ca2da29a80ea03bf457b2f8)), closes [#720](https://github.com/chanzuckerberg/sci-components/issues/720)
+- **icon:** add new code icon ([#724](https://github.com/chanzuckerberg/sci-components/issues/724)) ([850675f](https://github.com/chanzuckerberg/sci-components/commit/850675f49069f6bb422c22bb5903b120874a4fd0)), closes [#567](https://github.com/chanzuckerberg/sci-components/issues/567)
+
 # [19.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@18.1.2...@czi-sds/components@19.0.0) (2023-11-22)
 
 ### Bug Fixes

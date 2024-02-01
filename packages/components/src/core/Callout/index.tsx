@@ -3,6 +3,7 @@ import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
 import Icon from "../Icon";
+import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
 
 const SDS_STAGE_OPEN = "open";
@@ -16,11 +17,7 @@ export interface CalloutProps {
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
 
-export type ExposedCalloutProps = Omit<
-  AlertProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> &
-  CalloutProps;
+export type ExposedCalloutProps = AlertProps & CalloutProps;
 
 /**
  * @see https://mui.com/material-ui/react-alert/
@@ -56,7 +53,7 @@ const Callout = ({
   };
 
   const getIcon = () => {
-    if (icon) return icon;
+    if (icon !== undefined) return icon; // (liaprins): Explicitly use `icon !== undefined` to fix bug; see ticket for context: https://github.com/chanzuckerberg/sci-components/issues/577
 
     switch (intent) {
       case "success":
@@ -104,7 +101,9 @@ const Callout = ({
   let calloutContent;
 
   const firstChildIsCalloutTitle =
-    Array.isArray(children) && children[0]?.type?.name === "CalloutTitle";
+    Array.isArray(children) &&
+    children[0]?.type?.displayName === CALLOUT_TITLE_DISPLAY_NAME;
+
   if (firstChildIsCalloutTitle) {
     [calloutTitle, ...calloutContent] = children;
   }

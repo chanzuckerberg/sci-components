@@ -3,10 +3,7 @@ import { forwardRef } from "react";
 import { DialogContext } from "../Dialog/components/common";
 import { StyledPaper } from "./style";
 
-export type DialogPaperProps = Omit<
-  PaperProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
->;
+export type DialogPaperProps = PaperProps;
 
 /**
  * @see https://mui.com/material-ui/react-paper/

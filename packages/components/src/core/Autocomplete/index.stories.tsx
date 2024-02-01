@@ -41,7 +41,7 @@ const dataOptions = [
 
 const Autocomplete = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
@@ -325,7 +325,7 @@ export const Default = {
 
 const AutocompleteSingleColumnDemo = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
@@ -342,12 +342,8 @@ const AutocompleteSingleColumnDemo = <
   } = props;
 
   const isControlled = propValue !== undefined;
-  const [value, setValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
-  const [pendingValue, setPendingValue] = useState<
-    AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(getInitialValue());
+  const [value, setValue] = useState(getInitialValue());
+  const [pendingValue, setPendingValue] = useState(getInitialValue());
 
   const [selection, setSelection] = useState<string[]>([]);
 
@@ -491,7 +487,7 @@ export const SingleColumn = {
 
 const AutocompleteMultiColumnDemo = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {
