@@ -1,5 +1,6 @@
 import {
   DatasetComponentOption,
+  ECharts,
   EChartsOption,
   ScatterSeriesOption,
 } from "echarts";
@@ -11,6 +12,11 @@ const DEFAULT_ITEM_STYLE = {
 };
 
 export interface CreateChartOptionsProps {
+  /**
+   * Display reference line and axis value under mouse pointer
+   * https://echarts.apache.org/en/option.html#axisPointer
+   */
+  axisPointer?: EChartsOption["axisPointer"];
   /**
    * The data array to be visualized
    * The data point object shape can be whatever you like, but it must be consistent with the `encode` option
@@ -27,6 +33,31 @@ export interface CreateChartOptionsProps {
    * }
    */
   data: DatasetComponentOption["source"];
+  /**
+   * The `dataZoom` prop is utilized for implementing zoom functionality within a
+   * specific area of the chart. This feature empowers users to inspect data in
+   * granular detail, obtain an overview of the entire dataset, or eliminate
+   * outlier points.
+   * By applying the `dataZoom` prop while locking the zoom level, the chart
+   * efficiently renders a confined portion of the heatmap. This selective
+   * rendering strategy becomes especially advantageous when dealing with
+   * extensive datasets. Instead of rendering the entire heatmap at once,
+   * the chart dynamically loads and renders specific segments as the user
+   * scrolls through the data. This approach optimizes performance and enables
+   * the creation of heatmaps with large amounts of data.
+   * https://echarts.apache.org/en/option.html#dataZoom
+   */
+  dataZoom?: EChartsOption["dataZoom"];
+  camera?: {
+    active: boolean;
+    height: number;
+    width: number;
+  };
+  /**
+   * Customize the style of each cell item when mouse hovers on it, such as color, border, opacity, etc.
+   * https://echarts.apache.org/en/option.html#series-scatter.emphasis
+   */
+  emphasis?: ScatterSeriesOption["emphasis"];
   /**
    * The data for the x axis
    * For example:
@@ -66,6 +97,10 @@ export interface CreateChartOptionsProps {
    */
   itemStyle?: ScatterSeriesOption["itemStyle"];
   /**
+   * The shape of the symbol.
+   */
+  symbol?: "circle" | "rect" | "roundRect";
+  /**
    * `symbolSize` can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is 10.
    *
    * If size of symbols needs to be different, you can set with callback function in the following format:
@@ -82,19 +117,116 @@ export interface CreateChartOptionsProps {
   grid?:
     | EChartsOption["grid"]
     | ((defaultOption: EChartsOption["grid"]) => EChartsOption["grid"]);
+  /**
+   * The options object to be passed to echarts.setOption()
+   * https://echarts.apache.org/en/option.html
+   */
+  options?: EChartsOption;
+  /**
+   * Event listeners for the chart
+   * https://echarts.apache.org/en/api.html#events
+   */
+  onEvents?: Record<string, (event: unknown, chart: ECharts) => void>;
 }
 
-export function createChartOptions({
-  data,
-  xAxisData,
-  yAxisData,
-  width,
-  height,
-  encode,
-  itemStyle = DEFAULT_ITEM_STYLE,
-  symbolSize,
-  grid: gridProp,
-}: CreateChartOptionsProps): EChartsOption {
+export function createChartOptions(
+  props: CreateChartOptionsProps
+): EChartsOption {
+  const {
+    axisPointer,
+    camera,
+    data,
+    dataZoom,
+    emphasis,
+    encode,
+    grid: gridProp,
+    itemStyle = DEFAULT_ITEM_STYLE,
+    options,
+    symbolSize,
+    symbol = "rect",
+  } = props;
+
+  const {
+    defaultAxisPointer,
+    defaultDataZoom,
+    defaultEmphasis,
+    defaultGrid,
+    defaultXAxis,
+    defaultYAxis,
+  } = generateDefaultValues(props);
+
+  const customGrid =
+    typeof gridProp === "function" ? gridProp(defaultGrid) : gridProp;
+
+  const {
+    axisPointer: optionsAxisPointer,
+    dataZoom: optionsDataZoom,
+    series: optionsSeries,
+    xAxis: optionsXAxis,
+    yAxis: optionsYAxis,
+    ...optionsRest
+  } = options || {};
+
+  return {
+    animation: false,
+    axisPointer: Object.assign(
+      defaultAxisPointer,
+      axisPointer,
+      optionsAxisPointer
+    ),
+    dataZoom:
+      camera && camera.active
+        ? Object.assign(defaultDataZoom, dataZoom, optionsDataZoom)
+        : [],
+    dataset: {
+      source: data as DatasetComponentOption["source"],
+    },
+    grid: customGrid || defaultGrid,
+    series: [
+      Object.assign(
+        {
+          emphasis: Object.assign(defaultEmphasis, emphasis),
+          encode,
+          itemStyle,
+          legendHoverLink: false,
+          symbol,
+          symbolSize,
+        },
+        optionsSeries
+          ? Array.isArray(optionsSeries)
+            ? optionsSeries[0]
+            : optionsSeries
+          : [],
+        { symbol: symbol, type: "scatter" }
+      ),
+    ] as EChartsOption["series"],
+    xAxis: [
+      Object.assign(
+        defaultXAxis,
+        optionsXAxis
+          ? Array.isArray(optionsXAxis)
+            ? optionsXAxis[0]
+            : optionsXAxis
+          : {}
+      ),
+    ],
+    yAxis: [
+      Object.assign(
+        defaultYAxis,
+        optionsYAxis
+          ? Array.isArray(optionsYAxis)
+            ? optionsYAxis[0]
+            : optionsYAxis
+          : {}
+      ),
+    ],
+    ...optionsRest,
+  };
+}
+
+function generateDefaultValues(props: CreateChartOptionsProps) {
+  const { camera, height, symbol, width, xAxisData, yAxisData } = props;
+
   const defaultGrid = {
     height: `${height}px`,
     left: 0,
@@ -104,72 +236,100 @@ export function createChartOptions({
     width: `${width}px`,
   };
 
-  const customGrid =
-    typeof gridProp === "function" ? gridProp(defaultGrid) : gridProp;
+  const defaultAxisPointer = {
+    label: { show: false },
+    show: false,
+    triggerOn: "mousemove",
+  };
+
+  const defaultXAxis = {
+    axisLabel: { fontSize: 0, rotate: 90 },
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: false,
+    },
+    boundaryGap: true,
+    data: xAxisData,
+    splitLine: {
+      show: false,
+    },
+    type: "category",
+  };
+
+  const defaultYAxis = {
+    axisLabel: { fontSize: 0 },
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: false,
+    },
+    boundaryGap: true,
+    data: yAxisData,
+    splitLine: {
+      show: false,
+    },
+  };
+
+  const defaultEmphasis = {
+    itemStyle: {
+      borderColor: symbol === "circle" ? "black" : "white",
+      borderType: "solid",
+      borderWidth: symbol === "circle" ? 2 : 4,
+      opacity: 1,
+    },
+    scale: false,
+  };
+
+  const defaultCamera = {
+    height: camera && camera.height ? camera.height : 20,
+    width: camera && camera.width ? camera.width : 40,
+  };
+
+  const defaultDataZoom = [
+    {
+      // end index of the x axis window
+      endValue: defaultCamera.width - 1,
+      filterMode: "filter",
+      moveOnMouseMove: true,
+      // There's a PR to allow touchpad panning
+      // https://github.com/apache/echarts/pull/17288
+      moveOnMouseWheel: false,
+      orient: "horizontal",
+      preventDefaultMouseMove: true,
+      // start index of the x axis window
+      startValue: 0,
+      throttle: 0,
+      type: "inside",
+      xAxisIndex: 0,
+      zoomOnMouseWheel: false,
+    },
+    {
+      // end index of the y axis window
+      endValue: defaultCamera.height - 1,
+      filterMode: "filter",
+      moveOnMouseMove: true,
+      moveOnMouseWheel: true,
+      orient: "vertical",
+      preventDefaultMouseMove: true,
+      // start index of the y axis window
+      startValue: 0,
+      throttle: 0,
+      type: "inside",
+      yAxisIndex: 0,
+      zoomOnMouseWheel: false,
+    },
+  ];
 
   return {
-    animation: false,
-    /**
-     * Display reference line and axis value under mouse pointer
-     * https://echarts.apache.org/en/option.html#axisPointer
-     */
-    axisPointer: {
-      label: { show: false },
-      show: true,
-      triggerOn: "mousemove",
-    },
-    dataset: {
-      source: data as DatasetComponentOption["source"],
-    },
-    grid: customGrid || defaultGrid,
-    series: [
-      {
-        emphasis: {
-          itemStyle: {
-            color: "inherit",
-          },
-          scale: false,
-        },
-        encode,
-        itemStyle,
-        legendHoverLink: false,
-        symbolSize,
-        type: "scatter",
-      },
-    ],
-    xAxis: [
-      {
-        axisLabel: { fontSize: 0, rotate: 90 },
-        axisLine: {
-          show: false,
-        },
-        axisTick: {
-          show: false,
-        },
-        boundaryGap: true,
-        data: xAxisData,
-        splitLine: {
-          show: false,
-        },
-        type: "category",
-      },
-    ],
-    yAxis: [
-      {
-        axisLabel: { fontSize: 0 },
-        axisLine: {
-          show: false,
-        },
-        axisTick: {
-          show: false,
-        },
-        boundaryGap: true,
-        data: yAxisData,
-        splitLine: {
-          show: false,
-        },
-      },
-    ],
+    defaultAxisPointer,
+    defaultDataZoom,
+    defaultEmphasis,
+    defaultGrid,
+    defaultXAxis,
+    defaultYAxis,
   };
 }
 
@@ -178,14 +338,13 @@ type OrdinalRawValue = string | number;
 /**
  * (thuang): This copies echarts' CategoryAxisBaseOption["data"] type, since it's not exported
  */
-type CategoryAxisData =
-  | (
-      | OrdinalRawValue
-      | {
-          value: OrdinalRawValue;
-          /**
-           * (thuang): This should be echarts `TextCommonOption` type, but it's not exported
-           */
-          textStyle?: never;
-        }
-    )[];
+type CategoryAxisData = (
+  | OrdinalRawValue
+  | {
+      value: OrdinalRawValue;
+      /**
+       * (thuang): This should be echarts `TextCommonOption` type, but it's not exported
+       */
+      textStyle?: never;
+    }
+)[];

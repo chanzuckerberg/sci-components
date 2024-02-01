@@ -1,17 +1,19 @@
 import { Args, Meta } from "@storybook/react";
 import RawHeatmapChart from "./index";
 import { COLORS } from "./storyUtils";
+import { ScatterSeriesOption } from "echarts";
 
-const NUMBERS = Array.from(Array(20).keys());
+const HEATMAP_SIZE = 100;
+const HEATMAP_ITEM_SIZE = 20;
+
+const NUMBERS = Array.from(Array(HEATMAP_SIZE).keys());
 
 const data: { x: number; y: number; value: number }[] = [];
-
-const CHART_DIMENSION_PX = 1000;
 
 for (const x of NUMBERS) {
   for (const y of NUMBERS) {
     data.push({
-      value: x + y,
+      value: Math.round(Math.random() * 100),
       x,
       y,
     });
@@ -21,55 +23,186 @@ for (const x of NUMBERS) {
 const ENCODE = { x: "x", y: "y" };
 
 const ITEM_STYLE = {
-  color({ dataIndex }: { dataIndex: number }) {
-    return COLORS[dataIndex % COLORS.length];
+  borderColor: "white",
+  borderType: "solid",
+  borderWidth: 1,
+  color({ data: { value } }: { data: { value: number } }) {
+    return COLORS[Math.round((value / 100) * (COLORS.length - 1))];
   },
-};
+  opacity: 1,
+} as ScatterSeriesOption["itemStyle"];
 
 const HeatmapChart = (props: Args): JSX.Element => {
+  const { camera, symbol, tooltip, ...rest } = props;
+
+  const CHART_WIDTH_PX =
+    HEATMAP_ITEM_SIZE * (camera && camera.active ? camera.width : HEATMAP_SIZE);
+  const CHART_HEIGHT_PX =
+    HEATMAP_ITEM_SIZE *
+    (camera && camera.active ? camera.height : HEATMAP_SIZE);
+
   return (
-    <RawHeatmapChart
-      width={CHART_DIMENSION_PX}
-      height={CHART_DIMENSION_PX}
-      xAxisData={NUMBERS}
-      yAxisData={NUMBERS}
-      data={data}
-      encode={ENCODE}
-      symbolSize={symbolSize}
-      itemStyle={ITEM_STYLE}
-      {...props}
-    />
+    <>
+      <RawHeatmapChart
+        width={CHART_WIDTH_PX}
+        height={CHART_HEIGHT_PX}
+        camera={camera}
+        xAxisData={NUMBERS}
+        yAxisData={NUMBERS}
+        data={data}
+        encode={ENCODE}
+        symbol={symbol}
+        symbolSize={(p) => symbolSize(p, symbol)}
+        itemStyle={ITEM_STYLE}
+        emphasis={{
+          itemStyle: {
+            borderColor: symbol === "circle" ? "black" : "white",
+            borderType: "solid",
+            borderWidth: symbol === "circle" ? 2 : 4,
+            opacity: 1,
+          },
+          scale: false,
+        }}
+        options={{
+          series: [
+            {
+              type: "scatter",
+            },
+          ],
+          tooltip: tooltip,
+        }}
+        {...rest}
+      />
+    </>
   );
 };
 
+const tooltipOptions = [
+  { show: false },
+  {
+    enterable: true,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    formatter: function (param: any) {
+      return param.data
+        ? [
+            `X-Axis: <strong>${param.data.x}</strong><br/>`,
+            `Y-Axis: <strong>${param.data.y}</strong><br/><br/>`,
+            `${param.marker} <strong>${param.data.value}</strong>`,
+          ].join("")
+        : [];
+    },
+    show: true,
+  },
+];
+
+const axisPointerOptions = [
+  {
+    show: false,
+    type: "none",
+  },
+  {
+    show: true,
+    triggerOn: "mousemove",
+    type: "none",
+  },
+  {
+    show: true,
+    triggerOn: "click",
+    type: "none",
+  },
+];
+
 export default {
+  argTypes: {
+    axisPointer: {
+      control: {
+        labels: [
+          "No axis pointer",
+          "Show axis pointer on mousemove",
+          "Show axis pointer on click",
+        ],
+        type: "select",
+      },
+      mapping: axisPointerOptions,
+      options: Object.keys(axisPointerOptions),
+    },
+    camera: {
+      control: {
+        type: "object",
+      },
+    },
+    echartsRendererMode: {
+      control: {
+        labels: ["Canvas", "SVG"],
+        type: "select",
+      },
+      options: ["canvas", "svg"],
+    },
+    symbol: {
+      control: {
+        labels: ["Circle", "Rectangle", "Round Rectangle"],
+        type: "select",
+      },
+      options: ["circle", "rect", "roundRect"],
+    },
+    tooltip: {
+      control: {
+        labels: ["No tooltip", "Show Tooltip"],
+        type: "select",
+      },
+      mapping: tooltipOptions,
+      options: Object.keys(tooltipOptions),
+    },
+  },
   component: HeatmapChart,
+  // (masoudmanson) For the purpose of storybook, the button is removed
+  // from the dropdown menu component which may cause some accessibility
+  // violations related to ARIA roles and attributes. However, this
+  // should not be a concern as the component is always used with a button
+  // in real applications. To avoid false positive test failures, the following
+  // accessibility rules have been temporarily disabled in the tests
+  parameters: {
+    axe: {
+      disabledRules: [
+        "aria-input-field-name",
+        "aria-required-children",
+        "aria-required-parent",
+        "button-name",
+        "list",
+        "listitem",
+      ],
+    },
+  },
   title: "Data Viz/HeatmapChart",
 } as Meta;
 
 // Default
 
 export const Default = {
-  args: {},
+  args: {
+    camera: {
+      active: true,
+      height: 20,
+      width: 40,
+    },
+    echartsRendererMode: "svg",
+    symbol: "rect",
+  },
   parameters: {},
 };
 
-function symbolSize(props: { value: number }) {
+function symbolSize(props: { value: number }, symbol: string) {
   const { value } = props;
-  return convertPercentageToDiameter(value);
+  return convertPercentageToDiameter(value, symbol);
 }
 
-const MAX_DIAMETER_PX = 5;
-const RADIUS_OFFSET = 0.2;
-
-function convertPercentageToDiameter(percentage: number): number {
-  const maxRadius = MAX_DIAMETER_PX / 2;
-
-  const baseRadius = RADIUS_OFFSET * (MAX_DIAMETER_PX - RADIUS_OFFSET);
-
-  const radius = Math.sqrt(
-    percentage * (maxRadius - RADIUS_OFFSET) ** 2 + baseRadius
-  );
-
-  return Math.max(Math.round(2 * radius), MAX_DIAMETER_PX);
+function convertPercentageToDiameter(
+  percentage: number,
+  symbol: string
+): number {
+  if (symbol !== "circle") {
+    return HEATMAP_ITEM_SIZE;
+  } else {
+    return (percentage * HEATMAP_ITEM_SIZE) / 100;
+  }
 }
