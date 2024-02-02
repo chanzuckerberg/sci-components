@@ -5,6 +5,15 @@ import React from "react";
 import Button from "../Button";
 import CalloutTitle from "./components/CalloutTitle";
 import RawCallout from "./index";
+import CustomSdsIcon from "src/common/customSdsIcon";
+import CustomSvgIcon from "src/common/customSvgIcon";
+
+const iconOptions = [
+  <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
+  <CustomSdsIcon key="customSvgIcon" />,
+  "book",
+  "checkCircle",
+];
 
 const Callout = (props: Args): JSX.Element => {
   const { intent, onClose, calloutTitle, autoDismiss } = props;
@@ -50,6 +59,19 @@ export default {
       control: {
         type: "boolean",
       },
+    },
+    icon: {
+      control: {
+        labels: [
+          "Custom SVG Icon",
+          "Custom SDS Icon",
+          "SDS Icon: Book",
+          "SDS Icon: Check Circle",
+        ],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
     },
     intent: {
       control: { type: "radio" },

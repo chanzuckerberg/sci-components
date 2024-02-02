@@ -1,6 +1,6 @@
 import { AccordionSummaryProps as RawAccordionSummaryProps } from "@mui/material";
-import Icon from "src/core/Icon";
 import { StyledAccordionHeader, StyledSubtitle } from "./style";
+import Icon from "src/core/Icon";
 
 export interface SdsAccordionHeaderProps {
   subtitle?: string;
@@ -15,7 +15,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
     <StyledAccordionHeader
       aria-controls={`${id}-panel-content`}
       id={id}
-      expandIcon={<Icon icon="chevronDown" sdsSize="s" sdsType="static" />}
+      expandIcon={<Icon sdsIcon="chevronDown" sdsSize="s" sdsType="static" />}
     >
       {children}
       {subtitle && <StyledSubtitle>{subtitle}</StyledSubtitle>}

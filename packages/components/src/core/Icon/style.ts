@@ -8,7 +8,7 @@ import { IconNameToSizes } from "./map";
 export interface IconExtraProps<IconName extends keyof IconNameToSizes>
   extends CommonThemeProps {
   className?: string;
-  icon: IconName | FC<CustomSVGProps>;
+  sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];
   sdsType: "iconButton" | "interactive" | "static" | "button";
 }

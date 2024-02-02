@@ -1,5 +1,5 @@
 import { MenuItemProps as RawMenuItemProps } from "@mui/material";
-import React, { FC, ForwardedRef, forwardRef } from "react";
+import React, { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ColumnWrapper,
@@ -52,7 +52,7 @@ export interface MenuItemExtraProps<
 > {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
-  icon?: IconName | FC<CustomSVGProps>;
+  icon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
 }
@@ -103,6 +103,27 @@ const MenuItem = forwardRef(function MenuItem<
     );
   };
 
+  const iconItem = () => {
+    if (icon) {
+      if (typeof icon !== "string") {
+        return (
+          <StyledMenuItemIcon disabled={disabled}>{icon}</StyledMenuItemIcon>
+        );
+      } else {
+        return (
+          <StyledMenuItemIcon disabled={disabled}>
+            <Icon
+              {...sdsIconProps}
+              sdsType="static"
+              sdsIcon={icon}
+              sdsSize="s"
+            />
+          </StyledMenuItemIcon>
+        );
+      }
+    }
+  };
+
   return (
     <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
       {isMultiSelect && selectionIcon()}
@@ -113,16 +134,7 @@ const MenuItem = forwardRef(function MenuItem<
           className="primary-text"
           disabled={disabled}
         >
-          {icon && (
-            <StyledMenuItemIcon disabled={disabled}>
-              <Icon
-                {...sdsIconProps}
-                sdsType="static"
-                icon={icon}
-                sdsSize="s"
-              />
-            </StyledMenuItemIcon>
-          )}
+          {iconItem()}
           {children}
         </TextWrapper>
 

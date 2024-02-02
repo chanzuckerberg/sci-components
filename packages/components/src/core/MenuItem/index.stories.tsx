@@ -1,7 +1,14 @@
-/* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
 import RawMenuItem, { MenuItemProps } from "./index";
 import { DemoWrapper } from "./style";
+import CustomSdsIcon from "src/common/customSdsIcon";
+import CustomSvgIcon from "src/common/customSvgIcon";
+
+const iconOptions = [
+  "gear",
+  <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  <CustomSvgIcon key="customSvgIcon" sx={{ height: 14, width: 14 }} />,
+];
 
 const MenuItem = (props: Args): JSX.Element => {
   const { name } = props;
@@ -22,23 +29,21 @@ export default {
     disabled: {
       control: { type: "boolean" },
     },
+    icon: {
+      control: {
+        labels: ["SDS Icon: Gear", "Custom SDS Icon", "Custom SVG Icon"],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
+    },
     isMultiSelect: {
       control: { type: "boolean" },
     },
-    sdsIcon: {
-      control: {
-        type: "select",
-      },
-      options: [
-        "bacteria",
-        "barChartHorizontal3",
-        "checkCircle",
-        "gear",
-        "flagCheck",
-      ],
-    },
     sdsIconProps: {
-      control: { type: "object" },
+      control: {
+        type: "object",
+      },
     },
     sdsStyle: {
       control: {
@@ -67,7 +72,9 @@ export const Default = {
     disabled: false,
     isMultiSelect: false,
     name: "text here",
-    sdsIconProps: {},
+    sdsIconProps: {
+      color: "primary",
+    },
     sdsStyle: "determinate",
     selected: false,
   },
@@ -377,7 +384,7 @@ export const ScreenshotTest = {
         "column",
         "disabled",
         "isMultiSelect",
-        "sdsIcon",
+        "icon",
         "sdsIconProps",
         "sdsStyle",
         "selected",
@@ -404,7 +411,7 @@ export const Test = {
         "column",
         "disabled",
         "isMultiSelect",
-        "sdsIcon",
+        "icon",
         "sdsIconProps",
         "sdsStyle",
         "selected",

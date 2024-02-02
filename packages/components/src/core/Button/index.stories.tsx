@@ -8,7 +8,7 @@ const SDS_STYLES = ["rounded", "square", "minimal"];
 const SDS_TYPES = ["primary", "secondary"];
 const ICON_OPTIONS = [
   undefined,
-  <Icon key="download" sdsSize="l" icon="download" sdsType="button" />,
+  <Icon key="download" sdsSize="l" sdsIcon="download" sdsType="button" />,
 ];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
@@ -78,7 +78,7 @@ const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
       </RawButton>
       <RawButton
         {...props}
-        startIcon={<Icon icon="download" sdsSize="s" sdsType="button" />}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="rounded"
         sdsType="primary"
       >
@@ -89,7 +89,7 @@ const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
       </RawButton>
       <RawButton
         {...props}
-        startIcon={<Icon icon="download" sdsSize="s" sdsType="button" />}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="rounded"
         sdsType="secondary"
       >
@@ -121,7 +121,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       </RawButton>
       <RawButton
         {...props}
-        startIcon={<Icon icon="download" sdsSize="s" sdsType="button" />}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="square"
         sdsType="primary"
       >
@@ -132,7 +132,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       </RawButton>
       <RawButton
         {...props}
-        startIcon={<Icon icon="download" sdsSize="s" sdsType="button" />}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="square"
         sdsType="secondary"
       >
@@ -172,7 +172,7 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
       </RawButton>
       <RawButton
         {...props}
-        startIcon={<Icon icon="download" sdsSize="s" sdsType="button" />}
+        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
         sdsStyle="minimal"
         sdsType="primary"
       >

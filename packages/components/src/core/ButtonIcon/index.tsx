@@ -1,5 +1,5 @@
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
-import { FC, ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   ButtonIconExtraProps,
@@ -11,7 +11,7 @@ export type { ButtonIconProps, ButtonIconSizeToTypes };
 export interface ButtonIconInternalProps<
   IconName extends keyof IconNameToSizes,
 > {
-  icon: IconName | FC<CustomSVGProps>;
+  icon: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
 }
 
@@ -40,14 +40,27 @@ const ButtonIcon = forwardRef(function ButtonIcon<
 ): JSX.Element {
   const { icon, sdsSize = "large", sdsIconProps } = props;
   const iconSize = ButtonIconSizeToSdsIconSize[sdsSize];
+
+  const iconItem = () => {
+    if (icon) {
+      if (typeof icon !== "string") {
+        return icon;
+      } else {
+        return (
+          <Icon
+            sdsType="iconButton"
+            {...sdsIconProps}
+            sdsIcon={icon}
+            sdsSize={iconSize as IconNameToSizes[IconName]}
+          />
+        );
+      }
+    }
+  };
+
   return (
     <StyledButtonIcon {...props} ref={ref}>
-      <Icon
-        sdsType="iconButton"
-        {...sdsIconProps}
-        icon={icon}
-        sdsSize={iconSize as IconNameToSizes[IconName]}
-      />
+      {iconItem()}
     </StyledButtonIcon>
   );
 });

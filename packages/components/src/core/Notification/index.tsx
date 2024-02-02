@@ -3,7 +3,7 @@ import { Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
+import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import { StyledNotification } from "./style";
 
 export interface NotificationProps {
@@ -14,6 +14,8 @@ export interface NotificationProps {
   slideDirection: "left" | "right";
   extraContent?: boolean;
   intent: "info" | "error" | "success" | "warning";
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
 }
 
 export type ExposedNotificationProps = AlertProps & NotificationProps;
@@ -30,6 +32,8 @@ const Notification = ({
   onClose,
   buttonOnClick,
   buttonText,
+  icon,
+  sdsIconProps,
   ...rest
 }: ExposedNotificationProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
@@ -55,15 +59,34 @@ const Notification = ({
   };
 
   const getIcon = () => {
-    switch (intent) {
-      case "success":
-        return <Icon sdsSize="l" icon="checkCircle" sdsType="static" />;
-      case "info":
-        return <Icon sdsSize="l" icon="infoCircle" sdsType="static" />;
-      default:
+    if (icon !== undefined) {
+      if (typeof icon !== "string") {
+        return icon;
+      } else {
         return (
-          <Icon sdsSize="l" icon="exclamationMarkCircle" sdsType="static" />
+          <Icon
+            sdsSize="l"
+            sdsIcon={icon as keyof IconNameToSizes}
+            sdsType="static"
+            {...sdsIconProps}
+          />
         );
+      }
+    } else {
+      switch (intent) {
+        case "success":
+          return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+        case "info":
+          return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+        default:
+          return (
+            <Icon
+              sdsSize="l"
+              sdsIcon="exclamationMarkCircle"
+              sdsType="static"
+            />
+          );
+      }
     }
   };
 

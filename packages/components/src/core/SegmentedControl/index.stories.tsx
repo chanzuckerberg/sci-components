@@ -1,6 +1,8 @@
 import { Args, Meta } from "@storybook/react";
-import RawSegmentedControl, { SegmentedControlProps } from "./index";
-import { IconNameToSizes } from "../Icon";
+import RawSegmentedControl, {
+  SegmentedControlProps,
+  SingleButtonDefinition,
+} from "./index";
 
 const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
@@ -54,13 +56,13 @@ export default {
 } as Meta;
 
 interface SegmentedControlArgs extends SegmentedControlProps {
-  segmentOneIcon: keyof IconNameToSizes;
+  segmentOneIcon: SingleButtonDefinition["icon"];
   segmentOneTooltipText: string;
-  segmentTwoIcon: keyof IconNameToSizes;
+  segmentTwoIcon: SingleButtonDefinition["icon"];
   segmentTwoTooltipText: string;
-  segmentThreeIcon: keyof IconNameToSizes;
+  segmentThreeIcon: SingleButtonDefinition["icon"];
   segmentThreeTooltipText: string;
-  segmentFourIcon: keyof IconNameToSizes;
+  segmentFourIcon: SingleButtonDefinition["icon"];
   segmentFourTooltipText: string;
 }
 

@@ -47,7 +47,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
-                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -83,7 +82,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
-                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -119,7 +117,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
                 focusable="false"
-                icon="chevronDown"
                 viewBox="0 0 14 14"
               />
             </div>
@@ -173,7 +170,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconFlaskLarge"
               fillcontrast="white"
               focusable="false"
-              icon="flask"
               viewBox="0 0 22 22"
             />
           </div>
@@ -351,7 +347,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconDownloadLarge"
               fillcontrast="white"
               focusable="false"
-              icon="download"
               viewBox="0 0 22 22"
             />
           </div>
@@ -561,7 +556,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               data-testid="IconBacteriaLarge"
               fillcontrast="white"
               focusable="false"
-              icon="bacteria"
               viewBox="0 0 22 22"
             />
           </div>
@@ -650,7 +644,6 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             data-testid="IconVirusLarge"
             fillcontrast="white"
             focusable="false"
-            icon="virus"
             viewBox="0 0 22 22"
           />
         </div>

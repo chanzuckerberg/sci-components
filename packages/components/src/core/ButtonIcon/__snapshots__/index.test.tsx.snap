@@ -18,7 +18,6 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
       data-testid="IconDotsHorizontal3Large"
       fillcontrast="white"
       focusable="false"
-      icon="dotsHorizontal"
       viewBox="0 0 22 22"
     />
   </div>

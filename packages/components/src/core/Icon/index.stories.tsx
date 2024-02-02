@@ -13,10 +13,10 @@ import RawIcon, { SdsIconWithColor } from "./index";
 import { IconNameToSizes, iconMap } from "./map";
 
 const Icon = (props: Args): JSX.Element => {
-  const { sdsIcon, sdsSize, sdsType, ...rest } = props;
+  const { icon, sdsSize, sdsType, ...rest } = props;
 
   return (
-    <RawIcon icon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
+    <RawIcon sdsIcon={icon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
   );
 };
 
@@ -37,7 +37,7 @@ export default {
         "warning",
       ],
     },
-    sdsIcon: {
+    icon: {
       control: {
         type: "select",
       },
@@ -75,7 +75,7 @@ export default {
 export const Default = {
   args: {
     color: "primary",
-    sdsIcon: "checkCircle",
+    icon: "checkCircle",
     sdsSize: "xl",
     sdsType: "static",
     shade: 400,
@@ -161,7 +161,7 @@ const IconWrapper = styled("div")`
           fill: white;
         }
 
-        div.notif {
+        div.notification {
           display: flex;
         }
       }
@@ -172,7 +172,7 @@ const IconWrapper = styled("div")`
         align-items: center;
       }
 
-      div.notif {
+      div.notification {
         flex-direction: column;
         border-radius: 2px;
         display: none;
@@ -224,7 +224,7 @@ const IconItem = (props: IconItemProps) => {
           color={color}
           shade={shade}
           sdsSize={sdsSize}
-          icon={sdsIcon as keyof IconNameToSizes}
+          sdsIcon={sdsIcon as keyof IconNameToSizes}
           sdsType="static"
         />
       </div>
@@ -244,12 +244,12 @@ const IconItem = (props: IconItemProps) => {
         )}
       </span>
       {copied && (
-        <div className="notif">
+        <div className="notification">
           <RawIcon
             color={color}
             shade={shade}
             sdsSize={sdsSize}
-            icon={sdsIcon as keyof IconNameToSizes}
+            sdsIcon={sdsIcon as keyof IconNameToSizes}
             sdsType="static"
           />
           <p>Copied!</p>
@@ -258,7 +258,7 @@ const IconItem = (props: IconItemProps) => {
               color={color}
               shade={shade}
               sdsSize="xs"
-              icon="check"
+              sdsIcon="check"
               sdsType="static"
             />
           </span>
@@ -312,7 +312,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
         <Callout
           intent="warning"
           icon={
-            <RawIcon sdsSize="l" icon="infoSpeechBubble" sdsType="static" />
+            <RawIcon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
           }
         >
           Sorry, there are no matches for your search!
@@ -328,7 +328,7 @@ export const IconBank = {
   },
   parameters: {
     controls: {
-      exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
+      exclude: ["icon", "sdsSize", "sdsType", "shade"],
     },
   },
   render: (args: Args) => <IconBankDemo {...args} />,
@@ -339,7 +339,7 @@ export const IconBank = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
+      exclude: ["color", "icon", "sdsSize", "sdsType", "shade"],
     },
     snapshot: {
       skip: true,
@@ -347,28 +347,7 @@ export const Test = {
   },
   render: (args: Args) => (
     <RawIcon
-      icon="checkCircle"
-      sdsSize="l"
-      sdsType="static"
-      color="success"
-      data-testid="icon"
-      {...args}
-    />
-  ),
-};
-
-export const SvgIcon = {
-  parameters: {
-    controls: {
-      exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => (
-    <RawIcon
-      icon="checkCircle"
+      sdsIcon="checkCircle"
       sdsSize="l"
       sdsType="static"
       color="success"

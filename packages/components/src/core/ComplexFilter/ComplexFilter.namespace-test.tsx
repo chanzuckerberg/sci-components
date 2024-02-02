@@ -22,7 +22,7 @@ const ComplexFilterNameSpaceTest = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: ComplexFilterProps<T, Multiple, DisableClearable, FreeSolo>
 ) => {
@@ -33,7 +33,6 @@ const ComplexFilterNameSpaceTest = <
       multiple
       search
       options={OPTIONS}
-      isTriggerChangeOnOptionClick
     />
   );
 };

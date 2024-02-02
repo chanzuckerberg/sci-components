@@ -21,7 +21,6 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
           data-testid="IconInfoCircleLarge"
           fillcontrast="white"
           focusable="false"
-          icon="infoCircle"
           viewBox="0 0 22 22"
         />
       </div>
@@ -45,7 +44,6 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
         data-testid="IconXMarkSmall"
         fillcontrast="white"
         focusable="false"
-        icon="xMark"
         viewBox="0 0 14 14"
       />
     </div>

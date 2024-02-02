@@ -6,7 +6,7 @@ import { StyledButtonIcon } from "./style";
 
 const CloseButton = forwardRef(function CloseButton<
   IconName extends keyof IconNameToSizes,
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 >(
   props: ButtonIconProps<IconName, ButtonIconSize>,
   ref: ForwardedRef<HTMLButtonElement | null>

@@ -1,10 +1,12 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Icon from "../core/Icon";
+import CustomSdsIcon from "./customSdsIcon";
+import CustomSvgIcon from "./customSvgIcon";
 
 export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {
-    icon: <Icon icon="chevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
     name: "Column One",
     options: [
       {
@@ -33,7 +35,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
-    icon: <Icon icon="chevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
     name: "Column Two",
     options: [
       {
@@ -66,57 +68,60 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     name: "Column Three",
     options: [
       {
-        name: "Bacteria",
-        sdsIcon: "bacteria",
-        sdsIconProps: {
-          color: "gray",
-        },
+        icon: <CustomSdsIcon sdsSize="s" color="gray" />,
+        name: "Custom SDS Icon",
+        section: "With Icon",
       },
       {
+        icon: <CustomSvgIcon sx={{ color: "#999", height: 14, width: 14 }} />,
+        name: "Custom SVG Icon",
+        section: "With Icon",
+      },
+      {
+        icon: "puzzlePiece",
         name: "Puzzle Piece",
-        sdsIcon: "puzzlePiece",
         sdsIconProps: {
           color: "gray",
         },
       },
       {
         count: 10,
+        icon: "copy",
         name: "Copy",
-        sdsIcon: "copy",
         sdsIconProps: {
           color: "gray",
         },
       },
       {
+        icon: "lightBulb",
         name: "Light Bulb",
-        sdsIcon: "lightBulb",
         sdsIconProps: {
           color: "gray",
         },
       },
       {
         count: 6,
+        icon: "list",
         name: "List",
-        sdsIcon: "list",
         sdsIconProps: {
           color: "gray",
         },
       },
       {
+        icon: "treeVertical",
         name: "Vertical Tree",
-        sdsIcon: "treeVertical",
         sdsIconProps: {
           color: "gray",
         },
       },
       {
+        icon: "link",
         name: "Link",
-        sdsIcon: "link",
         sdsIconProps: {
           color: "gray",
         },
       },
     ],
-    width: 180,
+    width: 190,
   },
 ];

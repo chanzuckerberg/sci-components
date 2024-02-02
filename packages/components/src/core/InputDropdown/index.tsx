@@ -71,7 +71,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
         )}
         {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
         <IconWrapper>
-          <Icon icon="chevronDown" sdsSize="s" sdsType="interactive" />
+          <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
         </IconWrapper>
       </LabelWrapper>
 

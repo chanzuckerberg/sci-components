@@ -1,5 +1,5 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
-import React, { FC, ForwardedRef } from "react";
+import React, { ForwardedRef } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -22,8 +22,7 @@ export interface SdsProps {
 // (thuang): Support `component` prop
 // https://stackoverflow.com/a/66123108
 export type ButtonProps<C extends React.ElementType = "button"> =
-  RawButtonProps<C, { component?: C }> &
-    SdsProps & { svgIcon?: FC<CustomSVGProps> };
+  RawButtonProps<C, { component?: C }> & SdsProps;
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -60,7 +59,6 @@ const Button = React.forwardRef(
             ref={ref}
             variant="contained"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "rounded" && sdsType === "secondary":
@@ -70,7 +68,6 @@ const Button = React.forwardRef(
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "square" && sdsType === "primary":
@@ -80,7 +77,6 @@ const Button = React.forwardRef(
             ref={ref}
             variant="contained"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "square" && sdsType === "secondary":
@@ -90,7 +86,6 @@ const Button = React.forwardRef(
             ref={ref}
             variant="outlined"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "minimal" && sdsType === "primary":
@@ -100,7 +95,6 @@ const Button = React.forwardRef(
             ref={ref}
             variant="text"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       case sdsStyle === "minimal" && sdsType === "secondary":
@@ -110,17 +104,10 @@ const Button = React.forwardRef(
             ref={ref}
             variant="text"
             {...propsWithDefault}
-            startIcon={props.svgIcon ?? null}
           />
         );
       default:
-        return (
-          <StyledButton
-            {...propsWithDefault}
-            ref={ref}
-            startIcon={props.svgIcon ?? null}
-          />
-        );
+        return <StyledButton {...propsWithDefault} ref={ref} />;
     }
   }
 );

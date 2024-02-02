@@ -1,12 +1,12 @@
 import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
-import React, { FC } from "react";
+import React from "react";
 import Icon, { IconNameToSizes } from "../Icon";
 import Tooltip from "../Tooltip";
 import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
-interface SingleButtonDefinition {
-  icon: keyof IconNameToSizes | FC<CustomSVGProps>;
+export interface SingleButtonDefinition {
+  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   tooltipText: string;
 }
 
@@ -55,6 +55,17 @@ const SegmentedControl = (props: SegmentedControlProps) => {
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
         const { icon, tooltipText } = button;
+
+        const iconItem = () => {
+          if (icon) {
+            if (typeof icon !== "string") {
+              return icon;
+            } else {
+              return <Icon sdsIcon={icon} sdsSize="s" sdsType="button" />;
+            }
+          }
+        };
+
         return (
           <ToggleButton
             aria-label={tooltipText}
@@ -63,9 +74,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
             key={tooltipText}
           >
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
-              <span>
-                <Icon icon={icon} sdsSize="s" sdsType="button" />
-              </span>
+              <span>{iconItem()}</span>
             </Tooltip>
           </ToggleButton>
         );

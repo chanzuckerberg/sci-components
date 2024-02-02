@@ -15,7 +15,7 @@ interface ExtraAutocompleteGroupProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > {
   autocompleteProps: AutocompleteMultiColumnOption<
     T,
@@ -38,7 +38,7 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
   | "renderInput"
@@ -56,7 +56,7 @@ export type AutocompleteGroupProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraAutocompleteGroupProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -64,7 +64,7 @@ const AutocompleteGroup = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: AutocompleteGroupProps<T, Multiple, DisableClearable, FreeSolo>
 ) => {

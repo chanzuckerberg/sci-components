@@ -40,7 +40,7 @@ interface AutocompleteOptionGeneral {
 export interface AutocompleteOptionBasic extends AutocompleteOptionGeneral {
   count?: number; // An optional count associated with the option.
   details?: string; // An optional string for additional details.
-  sdsIcon?: keyof IconNameToSmallSizes; // An optional icon key.
+  icon?: keyof IconNameToSmallSizes | React.ReactElement<CustomSVGProps>; // An optional icon key.
   sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>; // Optional properties for the associated icon.
 }
 
@@ -80,7 +80,7 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   MuiAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
@@ -90,7 +90,7 @@ export type AutocompleteBaseProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -98,7 +98,7 @@ const AutocompleteBase = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
@@ -317,7 +317,7 @@ const AutocompleteBase = <
   ) {
     let MenuItemContent;
 
-    const { component, details, count, sdsIcon, sdsIconProps } = option;
+    const { component, details, count, icon, sdsIconProps } = option;
     const menuItemLabel = getOptionLabel(option);
 
     if (component) {
@@ -339,7 +339,7 @@ const AutocompleteBase = <
       <MenuItem
         column={count}
         disabled={optionProps["aria-disabled"] === true}
-        icon={sdsIcon}
+        icon={icon}
         sdsIconProps={sdsIconProps}
         isMultiSelect={multiple}
         selected={selected}

@@ -15,7 +15,7 @@ const LoadingIndicator = ({
 }: LoadingIndicatorProps): JSX.Element => {
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle}>
-      <Icon icon="loading" sdsSize="l" sdsType="static" />
+      <Icon sdsIcon="loading" sdsSize="l" sdsType="static" />
       <StyledText aria-label={ariaLabel} aria-live="polite" role="status">
         Loading
       </StyledText>

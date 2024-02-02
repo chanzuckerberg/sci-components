@@ -10,11 +10,40 @@ const actions = {
   onClick: action("onClick"),
 };
 
+const iconOptions = [
+  <Icon sdsIcon="download" sdsSize="l" sdsType="button" key="downloadIcon" />,
+  <Icon sdsIcon="copy" sdsSize="l" sdsType="button" key="copyIcon" />,
+  <Icon sdsIcon="bacteria" sdsSize="l" sdsType="button" key="bacteriaIcon" />,
+];
+
 const ButtonDropdown = (props: Args): JSX.Element => {
   return <RawButtonDropdown {...props}>{text}</RawButtonDropdown>;
 };
 
 export default {
+  argTypes: {
+    disabled: {
+      control: { type: "boolean" },
+    },
+    icon: {
+      control: {
+        labels: ["Download Icon", "Copy Icon", "Bacteria Icon"],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
+    },
+    sdsStyle: {
+      control: { type: "radio" },
+      options: ["rounded", "square"],
+      required: true,
+    },
+    sdsType: {
+      control: { type: "radio" },
+      options: ["primary", "secondary"],
+      required: true,
+    },
+  },
   component: ButtonDropdown,
   title: "ButtonDropdown",
 } as Meta;
@@ -24,7 +53,7 @@ export default {
 export const Default = {
   args: {
     disabled: false,
-    icon: <Icon icon="download" sdsSize="l" sdsType="button" />,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
     onClick: actions.onClick,
     sdsStyle: "square",
     sdsType: "primary",
@@ -48,7 +77,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         <ButtonDropdown
           sdsType="primary"
           sdsStyle="rounded"
-          icon={<Icon icon="download" sdsSize="l" sdsType="button" />}
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
           {...props}
         >
           {text}
@@ -59,7 +88,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         <ButtonDropdown
           sdsType="secondary"
           sdsStyle="rounded"
-          icon={<Icon icon="download" sdsSize="l" sdsType="button" />}
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
           {...props}
         >
           {text}
@@ -70,7 +99,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         <ButtonDropdown
           sdsType="primary"
           sdsStyle="square"
-          icon={<Icon icon="download" sdsSize="l" sdsType="button" />}
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
           {...props}
         >
           {text}
@@ -81,7 +110,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         <ButtonDropdown
           sdsType="secondary"
           sdsStyle="square"
-          icon={<Icon icon="download" sdsSize="l" sdsType="button" />}
+          icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
           {...props}
         >
           {text}
@@ -105,7 +134,7 @@ export const LivePreview = {
 export const Test = {
   args: {
     disabled: false,
-    icon: <Icon icon="download" sdsSize="l" sdsType="button" />,
+    icon: <Icon sdsIcon="download" sdsSize="l" sdsType="button" />,
     onClick: actions.onClick,
     sdsStyle: "rounded",
     sdsType: "primary",

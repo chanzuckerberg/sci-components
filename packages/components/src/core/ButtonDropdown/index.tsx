@@ -1,18 +1,16 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
-import React, { FC, ForwardedRef } from "react";
+import React, { ForwardedRef } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
 
 interface SdsProps {
   icon?: JSX.Element;
-  isRounded?: boolean;
   sdsStyle?: "rounded" | "square";
   sdsType?: "primary" | "secondary";
 }
 
 export type ButtonDropdownProps<C extends React.ElementType = "button"> =
-  RawButtonProps<C, { component?: C }> &
-    SdsProps & { svgIcon?: FC<CustomSVGProps> };
+  RawButtonProps<C, { component?: C }> & SdsProps;
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -29,11 +27,11 @@ const ButtonDropdown = React.forwardRef(
     return (
       <Button
         {...props}
-        endIcon={<Icon icon="chevronDown" sdsSize="s" sdsType="button" />}
+        endIcon={<Icon sdsIcon="chevronDown" sdsSize="s" sdsType="button" />}
         sdsStyle={sdsStyle}
         ref={ref}
         sdsType={sdsType}
-        startIcon={props.svgIcon ?? icon}
+        startIcon={icon}
       />
     );
   }

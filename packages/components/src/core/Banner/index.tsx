@@ -1,6 +1,6 @@
-import React, { FC, ForwardedRef, forwardRef, useState } from "react";
+import React, { ForwardedRef, forwardRef, useState } from "react";
 import { ButtonIconSizeToTypes } from "../ButtonIcon";
-import Icon from "../Icon";
+import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import {
   BannerExtraProps,
   Centered,
@@ -12,7 +12,8 @@ import {
 export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
   extends BannerExtraProps<ButtonIconSize> {
   children: React.ReactNode;
-  icon?: FC<CustomSVGProps>;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
@@ -31,6 +32,7 @@ const Banner = forwardRef(function Banner<
     onClose,
     sdsType,
     icon,
+    sdsIconProps,
     ...rest
   } = props;
 
@@ -46,12 +48,31 @@ const Banner = forwardRef(function Banner<
     if (onClose) onClose(e);
   };
 
+  const iconItem = () => {
+    if (icon) {
+      if (typeof icon !== "string") {
+        return icon;
+      } else {
+        return (
+          <Icon sdsIcon={icon} sdsSize="l" sdsType="static" {...sdsIconProps} />
+        );
+      }
+    } else {
+      return (
+        <Icon
+          sdsIcon={"infoCircle"}
+          sdsSize="l"
+          sdsType="static"
+          {...sdsIconProps}
+        />
+      );
+    }
+  };
+
   return (
     <StyledBanner role="banner" sdsType={sdsType} ref={ref} {...rest}>
       <Centered>
-        <IconWrapper>
-          <Icon icon={icon ?? "infoCircle"} sdsSize="l" sdsType="static" />
-        </IconWrapper>
+        <IconWrapper>{iconItem()}</IconWrapper>
         {children}
       </Centered>
       {dismissible && (
@@ -61,7 +82,7 @@ const Banner = forwardRef(function Banner<
           sdsType="tertiary"
           sdsSize="small"
           onClick={handleClose}
-          icon={icon ?? "xMark"}
+          icon={"xMark"}
         />
       )}
     </StyledBanner>

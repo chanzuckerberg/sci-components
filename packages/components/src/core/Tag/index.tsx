@@ -4,7 +4,6 @@ import { ExtraTagProps, SdsTagColorType, StyledTag } from "./style";
 export interface SdsTagProps extends Omit<ChipProps, "color"> {
   label: string;
   color?: SdsTagColorType;
-  icon?: JSX.Element;
 }
 
 export type TagProps = SdsTagProps & ExtraTagProps;
@@ -18,9 +17,9 @@ export type { SdsTagColorType };
  *               [string, string, string]   - applies custom colors for [font, background, icon]
  */
 const Tag = (props: TagProps): JSX.Element => {
-  const { color, icon } = props;
+  const { color } = props;
 
-  return <StyledTag tagColor={color} {...props} color="primary" icon={icon} />;
+  return <StyledTag tagColor={color} {...props} color="primary" />;
 };
 
 export default Tag;

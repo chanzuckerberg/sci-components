@@ -3,6 +3,8 @@ import React from "react";
 import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
+import CustomSvgIcon from "src/common/customSvgIcon";
+import CustomSdsIcon from "src/common/customSdsIcon";
 
 type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"small">["sdsType"]
@@ -17,6 +19,13 @@ const SDS_SIZES: SDSSizes = ["large", "medium", "small"];
 const ON_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
+const ICON_OPTIONS = [
+  "dotsHorizontal",
+  "virus",
+  "xMark",
+  <CustomSdsIcon key="customSdsIcon" />,
+  <CustomSvgIcon key="customIcon" />,
+];
 
 const ButtonIcon = (props: Args): JSX.Element => {
   const { sdsIcon, ...rest } = props;
@@ -50,18 +59,17 @@ export default {
     },
     sdsIcon: {
       control: {
+        labels: [
+          "SDS Icon: dotsHorizontal",
+          "SDS Icon: virus",
+          "SDS Icon: xMark",
+          "Custom SDS Icon",
+          "Custom Icon",
+        ],
         type: "select",
       },
-      options: [
-        "dotsHorizontal",
-        "copy",
-        "download",
-        "people",
-        "treeHorizontal",
-        "grid",
-        "virus",
-        "xMark",
-      ],
+      mapping: ICON_OPTIONS,
+      options: Object.keys(ICON_OPTIONS),
     },
     sdsSize: {
       control: {

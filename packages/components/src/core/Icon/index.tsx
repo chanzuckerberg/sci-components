@@ -1,4 +1,4 @@
-import { FC, ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { IconNameToSizes, iconMap } from "./map";
 import {
   IconExtraProps,
@@ -21,24 +21,13 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
  * @see https://mui.com/material-ui/icons/#icons
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
-  {
-    className,
-    color,
-    shade,
-    icon,
-    sdsSize,
-    sdsType,
-  }: IconProps<IconName>,
+  { className, color, shade, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
-  const iconItem = (): FC<CustomSVGProps> => {
-    if (typeof icon !== "string") return icon;
-    if (sdsSize === "xs" || sdsSize === "s")
-      return iconMap[icon].smallIcon as FC<CustomSVGProps>;
-    return iconMap[icon].largeIcon as FC<CustomSVGProps>;
-  };
+  const icon = iconMap[sdsIcon] ?? {};
+  const { largeIcon, smallIcon } = icon;
 
-  if (sdsSize === "xs" || sdsSize === "s") {
+  if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
       <StyledIcon ref={ref}>
         <StyledSvgIcon
@@ -47,15 +36,15 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 14 14"
-          component={iconItem()}
+          component={smallIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
-          icon={icon}
+          sdsIcon={sdsIcon}
         />
       </StyledIcon>
     );
   }
-  if (sdsSize === "l" || sdsSize === "xl") {
+  if ((sdsSize === "l" || sdsSize === "xl") && largeIcon) {
     return (
       <StyledIcon ref={ref}>
         <StyledSvgIcon
@@ -64,10 +53,10 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           className={className}
           fillcontrast="white"
           viewBox="0 0 22 22"
-          component={iconItem()}
+          component={largeIcon}
           sdsSize={sdsSize}
           sdsType={sdsType}
-          icon={icon}
+          sdsIcon={sdsIcon}
         />
       </StyledIcon>
     );
@@ -75,7 +64,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
 
   // eslint-disable-next-line no-console
   console.error(
-    `Error: Icon ${icon} not found for size ${sdsSize}. This is a @czi-sds/components problem.`
+    `Error: Icon ${sdsIcon} not found for size ${sdsSize}. This is a @czi-sds/components problem.`
   );
 
   return null;

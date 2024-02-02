@@ -58,7 +58,6 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
                   data-testid="IconSearchSmall"
                   fillcontrast="white"
                   focusable="false"
-                  icon="search"
                   viewBox="0 0 14 14"
                 />
               </div>
