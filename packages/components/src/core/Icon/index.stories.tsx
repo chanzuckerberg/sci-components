@@ -13,10 +13,10 @@ import RawIcon, { SdsIconWithColor } from "./index";
 import { IconNameToSizes, iconMap } from "./map";
 
 const Icon = (props: Args): JSX.Element => {
-  const { icon, sdsSize, sdsType, ...rest } = props;
+  const { sdsIcon, sdsSize, sdsType, ...rest } = props;
 
   return (
-    <RawIcon sdsIcon={icon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
+    <RawIcon sdsIcon={sdsIcon} sdsSize={sdsSize} sdsType={sdsType} {...rest} />
   );
 };
 
@@ -37,7 +37,7 @@ export default {
         "warning",
       ],
     },
-    icon: {
+    sdsIcon: {
       control: {
         type: "select",
       },
@@ -75,7 +75,7 @@ export default {
 export const Default = {
   args: {
     color: "primary",
-    icon: "checkCircle",
+    sdsIcon: "checkCircle",
     sdsSize: "xl",
     sdsType: "static",
     shade: 400,
@@ -328,7 +328,7 @@ export const IconBank = {
   },
   parameters: {
     controls: {
-      exclude: ["icon", "sdsSize", "sdsType", "shade"],
+      exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
     },
   },
   render: (args: Args) => <IconBankDemo {...args} />,
@@ -339,7 +339,7 @@ export const IconBank = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: ["color", "icon", "sdsSize", "sdsType", "shade"],
+      exclude: ["color", "sdsIcon", "sdsSize", "sdsType", "shade"],
     },
     snapshot: {
       skip: true,
