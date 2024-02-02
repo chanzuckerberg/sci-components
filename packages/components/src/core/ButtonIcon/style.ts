@@ -18,7 +18,7 @@ export interface ButtonIconSizeToTypes {
   large: "primary" | "secondary" | "tertiary";
 }
 export interface ButtonIconExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 > extends CommonThemeProps {
   on?: boolean;
   disabled?: boolean;

@@ -107,8 +107,8 @@ const userInput = (props: InputSearchExtraProps): SerializedStyles => {
     intent === "error"
       ? borders?.error[400]
       : intent === "warning"
-      ? borders?.warning[400]
-      : borders?.primary[400];
+        ? borders?.warning[400]
+        : borders?.primary[400];
 
   const color = intent === "default" ? colors?.primary[400] : colors?.gray[500];
 

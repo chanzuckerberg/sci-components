@@ -23,7 +23,7 @@ const DropdownNameSpaceTest = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: DropdownProps<T, Multiple, DisableClearable, FreeSolo>
 ) => {
