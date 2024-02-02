@@ -35,7 +35,7 @@ interface ExtraAutocompleteMultiColumnProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > extends StyleProps {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
@@ -76,7 +76,7 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>,
   | "renderInput"
@@ -94,7 +94,7 @@ export type AutocompleteMultiColumnProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraAutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -102,7 +102,7 @@ const AutocompleteMultiColumn = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: AutocompleteMultiColumnProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {

@@ -23,7 +23,7 @@ type FreeSolo = false;
 
 const InputDropdown = <
   T extends DefaultAutocompleteOption,
-  Multiple extends boolean | undefined
+  Multiple extends boolean | undefined,
 >(
   props: Args
 ): JSX.Element => {

@@ -80,7 +80,7 @@ type CustomAutocompleteProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = Omit<
   MuiAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
   "renderInput" | "nonce" | "rev" | "rel" | "autoFocus" | "content"
@@ -90,7 +90,7 @@ export type AutocompleteBaseProps<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 > = CustomAutocompleteProps<T, Multiple, DisableClearable, FreeSolo> &
   ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>;
 
@@ -98,7 +98,7 @@ const AutocompleteBase = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined
+  FreeSolo extends boolean | undefined,
 >(
   props: AutocompleteBaseProps<T, Multiple, DisableClearable, FreeSolo>
 ): JSX.Element => {
