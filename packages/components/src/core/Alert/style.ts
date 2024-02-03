@@ -1,7 +1,6 @@
 import { Alert } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { getColors, getShadows, getSpaces } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 export const StyledAlert = styled(Alert)`
   ${(props) => {
@@ -17,7 +16,7 @@ export const StyledAlert = styled(Alert)`
     return `
       background-color: ${backgroundColor};
       margin: ${spacings?.m}px 0;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${props.theme.palette.text.primary};
       padding: ${spacings?.l}px ${spacings?.l}px
         ${spacings?.l}px 9px;
       background-color: ${alertColor};

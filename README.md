@@ -94,7 +94,7 @@ export const Title - styled(Typography)`
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
 import { styled } from '@mui/material/styles';
-import { getColors, getCorners } from "@czi-sds/components";
+import { getColors, getSpaces } from "@czi-sds/components";
 
 export const Tag = styled("div")`
   // This is a callback function that returns more CSS rules, but the only way

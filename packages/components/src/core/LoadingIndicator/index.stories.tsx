@@ -1,6 +1,7 @@
+import { useTheme } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { defaultAppTheme } from "../styles";
+import { SDSTheme } from "../styles";
 import RawLoadingIndicator from "./index";
 
 const LoadingIndicator = (props: Args): JSX.Element => {
@@ -37,7 +38,8 @@ export const CustomAriaLabel = {
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const spacings = defaultAppTheme?.spacing;
+  const theme: SDSTheme = useTheme();
+  const spacings = theme.app?.spacing;
 
   const livePreviewStyles = {
     display: "grid",

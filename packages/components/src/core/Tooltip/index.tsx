@@ -67,7 +67,7 @@ const Tooltip = forwardRef(function Tooltip(
     inverted,
     sdsStyle,
     theme,
-    width,
+    width
     /* stylelint-enable property-no-unknown -- false positive */
   };
 

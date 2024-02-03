@@ -1,6 +1,7 @@
-import { colors } from "@mui/material";
+import { colors, PaletteMode } from "@mui/material";
 import {
   createTheme,
+  PaletteOptions,
   Theme,
   ThemeOptions,
   TypographyStyle,
@@ -18,7 +19,7 @@ enum FontWeight {
   semibold = 600,
 }
 
-const defaultThemeColors = {
+const lightThemeColors = {
   beta: {
     "100": "#F4F0F9",
     "200": "#F0EBF6",
@@ -37,9 +38,12 @@ const defaultThemeColors = {
     "100": "#F8F8F8",
     "200": "#EAEAEA",
     "300": "#CCCCCC",
-    "400": "#999999",
+    "400": "#959595",
     "500": "#767676",
     "600": "#545454",
+    "700": "#404040",
+    "800": "#1F1F1F",
+    "900": "#121212",
   },
   info: {
     "100": "#EFF2FC",
@@ -75,8 +79,17 @@ const defaultThemeColors = {
   },
 };
 
-export const defaultAppTheme: AppTheme = {
-  colors: defaultThemeColors,
+const darkThemeColors = lightThemeColors;
+
+/**
+ * Base app theme for properties shared between light and dark mode. Generally, if a theme
+ * property doesn't deal with colors it belongs here, otherwise it'll have its specific
+ * theme variant defined in `lightAppTheme` or `darkAppTheme`.
+ *
+ * `colors` and `mode` are ommitted because they must be defined by the `lightAppTheme` and
+ * `darkAppTheme` objects before use in the `makeThemeOptions` function.
+ */
+const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
   corners: {
     l: 20,
     m: 4,
@@ -239,44 +252,193 @@ export const defaultAppTheme: AppTheme = {
   },
 };
 
+const lightAppTheme: AppTheme = {
+  ...sharedAppTheme,
+  colors: lightThemeColors,
+};
+
+const darkAppTheme: AppTheme = {
+  ...sharedAppTheme,
+  colors: darkThemeColors,
+};
+
 // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
 // applications to override those colors using their own custom theme.
 // By defining borders using defaultAppTheme.colors instead of defaultThemeColors,
 // we allow other apps to specify their colors once, and have them apply
-// throughtout the application, such as in borders, etc without having to manually
+// throughout the application, such as in borders, etc without having to manually
 // override every theme property that makes use of colors.
-defaultAppTheme.borders = {
+lightAppTheme.borders = {
   error: {
-    "400": `1px solid ${defaultAppTheme.colors.error[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.error[400]}`,
   },
   gray: {
-    "100": `1px solid ${defaultAppTheme.colors.gray[100]}`,
-    "200": `1px solid ${defaultAppTheme.colors.gray[200]}`,
-    "300": `1px solid ${defaultAppTheme.colors.gray[300]}`,
-    "400": `1px solid ${defaultAppTheme.colors.gray[400]}`,
-    "500": `1px solid ${defaultAppTheme.colors.gray[500]}`,
-    dashed: `2px dashed ${defaultAppTheme.colors.gray[400]}`,
+    "100": `1px solid ${lightAppTheme.colors.gray[100]}`,
+    "200": `1px solid ${lightAppTheme.colors.gray[200]}`,
+    "300": `1px solid ${lightAppTheme.colors.gray[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.gray[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.gray[500]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.gray[400]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   primary: {
-    "300": `1px solid ${defaultAppTheme.colors.primary[300]}`,
-    "400": `1px solid ${defaultAppTheme.colors.primary[400]}`,
-    "500": `1px solid ${defaultAppTheme.colors.primary[500]}`,
-    "600": `1px solid${defaultAppTheme.colors.primary[600]}`,
-    dashed: `2px dashed ${defaultAppTheme.colors.primary[400]}`,
+    "300": `1px solid ${lightAppTheme.colors.primary[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.primary[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.primary[500]}`,
+    "600": `1px solid${lightAppTheme.colors.primary[600]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.primary[400]}`,
   },
   success: {
-    "400": `1px solid ${defaultAppTheme.colors.success[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.success[400]}`,
   },
   warning: {
-    "400": `1px solid ${defaultAppTheme.colors.warning[400]}`,
+    "400": `1px solid ${lightAppTheme.colors.warning[400]}`,
   },
 };
 
-export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
+// TODO: Dark mode colors
+darkAppTheme.borders = {
+  error: {
+    "400": `1px solid ${lightAppTheme.colors.error[400]}`,
+  },
+  gray: {
+    "100": `1px solid ${lightAppTheme.colors.gray[100]}`,
+    "200": `1px solid ${lightAppTheme.colors.gray[200]}`,
+    "300": `1px solid ${lightAppTheme.colors.gray[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.gray[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.gray[500]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.gray[400]}`,
+  },
+  link: {
+    dashed: `1px dashed`,
+    solid: `1px solid`,
+  },
+  primary: {
+    "300": `1px solid ${lightAppTheme.colors.primary[300]}`,
+    "400": `1px solid ${lightAppTheme.colors.primary[400]}`,
+    "500": `1px solid ${lightAppTheme.colors.primary[500]}`,
+    "600": `1px solid${lightAppTheme.colors.primary[600]}`,
+    dashed: `2px dashed ${lightAppTheme.colors.primary[400]}`,
+  },
+  success: {
+    "400": `1px solid ${lightAppTheme.colors.success[400]}`,
+  },
+  warning: {
+    "400": `1px solid ${lightAppTheme.colors.warning[400]}`,
+  },
+};
+
+const lightThemePalette = (appTheme: AppTheme): PaletteOptions => ({
+  background: {
+    default: common.white,
+    secondary: appTheme.colors.gray[100],
+  },
+  divider: appTheme.colors.gray[200],
+  error: {
+    dark: appTheme.colors.error[600],
+    light: appTheme.colors.error[200],
+    main: appTheme.colors.error[400],
+  },
+  grey: {
+    "100": appTheme.colors.gray[100],
+    "200": appTheme.colors.gray[200],
+    "300": appTheme.colors.gray[300],
+    "400": appTheme.colors.gray[400],
+    "500": appTheme.colors.gray[500],
+    "600": appTheme.colors.gray[600],
+  },
+  info: {
+    dark: appTheme.colors.info[600],
+    light: appTheme.colors.info[200],
+    main: appTheme.colors.info[400],
+  },
+  mode: "light",
+  primary: {
+    dark: appTheme.colors.primary[600],
+    light: appTheme.colors.primary[300],
+    main: appTheme.colors.primary[400],
+  },
+  secondary: {
+    main: appTheme.colors.secondary[400],
+  },
+  success: {
+    dark: appTheme.colors.success[600],
+    light: appTheme.colors.success[200],
+    main: appTheme.colors.success[400],
+  },
+  text: {
+    disabled: appTheme.colors.gray[300],
+    primary: common.black,
+    secondary: appTheme.colors.gray[500],
+  },
+  warning: {
+    dark: appTheme.colors.warning[600],
+    light: appTheme.colors.warning[200],
+    main: appTheme.colors.warning[400],
+  },
+});
+
+// TODO: Dark mode colors
+const darkThemePalette = (appTheme: AppTheme): PaletteOptions => ({
+  background: {
+    default: appTheme.colors.gray[900],
+    secondary: appTheme.colors.gray[800],
+  },
+  divider: appTheme.colors.gray[700],
+  error: {
+    dark: appTheme.colors.error[600],
+    light: appTheme.colors.error[200],
+    main: appTheme.colors.error[400],
+  },
+  grey: {
+    "100": appTheme.colors.gray[100],
+    "200": appTheme.colors.gray[200],
+    "300": appTheme.colors.gray[300],
+    "400": appTheme.colors.gray[400],
+    "500": appTheme.colors.gray[500],
+    "600": appTheme.colors.gray[600],
+    "700": appTheme.colors.gray[700],
+    "800": appTheme.colors.gray[800],
+    "900": appTheme.colors.gray[900],
+  },
+  info: {
+    dark: appTheme.colors.info[600],
+    light: appTheme.colors.info[200],
+    main: appTheme.colors.info[400],
+  },
+  mode: "dark",
+  primary: {
+    dark: appTheme.colors.primary[600],
+    light: appTheme.colors.primary[300],
+    main: appTheme.colors.primary[400],
+  },
+  secondary: {
+    main: appTheme.colors.secondary[400],
+  },
+  success: {
+    dark: appTheme.colors.success[600],
+    light: appTheme.colors.success[200],
+    main: appTheme.colors.success[400],
+  },
+  text: {
+    disabled: appTheme.colors.gray[700],
+    primary: appTheme.colors.gray[100],
+    secondary: appTheme.colors.gray[400],
+  },
+  warning: {
+    dark: appTheme.colors.warning[600],
+    light: appTheme.colors.warning[200],
+    main: appTheme.colors.warning[400],
+  },
+});
+
+export function makeThemeOptions(
+  appTheme: AppTheme,
+  mode: PaletteMode
+): SDSThemeOptions {
   return {
     app: appTheme,
     components: {
@@ -296,51 +458,10 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         },
       },
     },
-    palette: {
-      divider: appTheme.colors.gray[200],
-      error: {
-        dark: appTheme.colors.error[600],
-        light: appTheme.colors.error[200],
-        main: appTheme.colors.error[400],
-      },
-      grey: {
-        "100": appTheme.colors.gray[100],
-        "200": appTheme.colors.gray[200],
-        "300": appTheme.colors.gray[300],
-        "400": appTheme.colors.gray[400],
-        "500": appTheme.colors.gray[500],
-        "600": appTheme.colors.gray[600],
-      },
-      info: {
-        dark: appTheme.colors.info[600],
-        light: appTheme.colors.info[200],
-        main: appTheme.colors.info[400],
-      },
-      mode: "light",
-      primary: {
-        dark: appTheme.colors.primary[600],
-        light: appTheme.colors.primary[300],
-        main: appTheme.colors.primary[400],
-      },
-      secondary: {
-        main: appTheme.colors.secondary[400],
-      },
-      success: {
-        dark: appTheme.colors.success[600],
-        light: appTheme.colors.success[200],
-        main: appTheme.colors.success[400],
-      },
-      text: {
-        disabled: appTheme.colors.gray[300],
-        primary: common.black,
-        secondary: appTheme.colors.gray[500],
-      },
-      warning: {
-        dark: appTheme.colors.warning[600],
-        light: appTheme.colors.warning[200],
-        main: appTheme.colors.warning[400],
-      },
-    },
+    palette:
+      mode === "light"
+        ? lightThemePalette(appTheme)
+        : darkThemePalette(appTheme),
     shadows: [
       appTheme.shadows.none,
       appTheme.shadows.s,
@@ -418,7 +539,18 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
   };
 }
 
-const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(defaultAppTheme);
+/**
+ * Helper function to select the appropriate theme settings.
+ *
+ * @param theme The theme to choose from. Currently supports a light and dark variant.
+ * @returns The appropriate app theme for the variant.
+ */
+const chooseTheme = (theme: PaletteMode): AppTheme => {
+  if (theme === "dark") {
+    return darkAppTheme;
+  }
+  return lightAppTheme;
+};
 
 export interface SDSTheme extends Theme {
   app?: AppTheme;
@@ -505,6 +637,9 @@ export interface Spaces {
 export type Spacings = Spaces;
 
 export interface Color {
+  900?: string;
+  800?: string;
+  700?: string;
   600?: string;
   500?: string;
   400: string;
@@ -557,4 +692,18 @@ export interface Borders {
   warning: Border;
 }
 
-export const defaultTheme = createThemeAdaptor(defaultThemeOptions);
+/**
+ * Theme adaptor with light/dark mode support.
+ *
+ * @param t The theme to use. Currently supports a light and dark variant.
+ * @returns The selected theme object to be used in the ThemeProvider
+ */
+export const theme = (t: PaletteMode) =>
+  createThemeAdaptor(makeThemeOptions(chooseTheme(t), t));
+
+/**
+ * Default theme, uses light mode with no option to change it.
+ *
+ * Use the `theme` export to get a flexible light/dark mode theme function
+ */
+export const defaultTheme = theme("light");

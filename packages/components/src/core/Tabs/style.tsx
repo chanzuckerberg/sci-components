@@ -51,7 +51,9 @@ export const StyledTabs = styled(TempTabs, {
     return `
       margin-top: ${isLarge ? spaces?.l : spaces?.m}px;
       margin-bottom: ${isLarge ? spaces?.xl : spaces?.m}px;
-      border-bottom: ${underlined ? `2px solid ${colors?.gray[200]};` : "none"};
+      border-bottom: ${
+        underlined ? `2px solid ${props.theme.palette.divider};` : "none"
+      };
     `;
   }}
 `;
@@ -89,26 +91,26 @@ export const StyledTab = styled(RawTab, {
       // (thuang): Large Tab height is 30px, the offset is 4px
       height: ${isLarge ? 26 : 22}px;
 
-      color: ${colors?.gray[500]};
+      color: ${props.theme.palette.text.secondary};
 
       &:hover, :focus {
-        color: black;
+        color: ${props.theme.palette.text.primary};
       }
 
       &.Mui-selected {
-        color: black;
+        color: ${props.theme.palette.text.primary};
 
         &:hover {
-          color: black;
+          color: ${props.theme.palette.text.primary};
         }
       }
 
       &:active {
-        color: black;
+        color: ${props.theme.palette.text.primary};
       }
 
       &:disabled {
-        color: ${colors?.gray[200]};
+        color: ${props.theme.palette.text.disabled};
       }
     `;
   }}

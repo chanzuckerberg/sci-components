@@ -8,7 +8,6 @@ import {
   getIconSizes,
   getSpaces,
 } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
@@ -44,7 +43,7 @@ export const StyledCallout = styled(Alert, {
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${props.theme?.palette.text.primary};
       padding: ${spacings?.m}px;
       background-color: ${calloutColor};
 

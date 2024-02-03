@@ -8,7 +8,6 @@ import {
   getShadows,
   getSpaces,
 } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 const fontBodyXs = fontBody("xs");
 
@@ -33,7 +32,7 @@ export const StyledNotification = styled(Alert)`
       box-sizing: border-box;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${props.theme.palette.text.primary};
       padding: ${spacings?.l}px;
       align-items: flex-start;
       background-color: ${notificationColor};
