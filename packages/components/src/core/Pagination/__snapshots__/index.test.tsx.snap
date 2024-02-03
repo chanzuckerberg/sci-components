@@ -9,7 +9,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Previous page"
-      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1xga07g-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1q9mmco-MuiButtonBase-root-MuiIconButton-root"
       data-order="first"
       disabled=""
       tabindex="-1"

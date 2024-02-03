@@ -2,7 +2,7 @@
 
 exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 <div
-  class="MuiToggleButtonGroup-root css-9w2fqw-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root css-uqbc4z-MuiToggleButtonGroup-root"
   role="group"
 >
   <button

@@ -243,7 +243,7 @@ export const defaultAppTheme: AppTheme = {
 // applications to override those colors using their own custom theme.
 // By defining borders using defaultAppTheme.colors instead of defaultThemeColors,
 // we allow other apps to specify their colors once, and have them apply
-// throughtout the application, such as in borders, etc without having to manually
+// throughout the application, such as in borders, etc without having to manually
 // override every theme property that makes use of colors.
 defaultAppTheme.borders = {
   error: {
@@ -297,6 +297,10 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
       },
     },
     palette: {
+      action: {
+        disabled: appTheme.colors.gray[400],
+        disabledBackground: appTheme.colors.gray[300],
+      },
       divider: appTheme.colors.gray[200],
       error: {
         dark: appTheme.colors.error[600],
