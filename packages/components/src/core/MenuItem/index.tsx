@@ -53,6 +53,12 @@ export interface MenuItemExtraProps<
   column?: React.ReactNode;
   isMultiSelect?: boolean;
   icon?: IconName | React.ReactElement<CustomSVGProps>;
+  /**
+   * @deprecated Use `icon` instead.
+   * (masoudmanson): This prop is deprecated and will be removed in the next major version.
+   * Please replace instances of `sdsIcon` with `icon`.
+   */
+  sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
 }
@@ -71,7 +77,15 @@ const MenuItem = forwardRef(function MenuItem<
     column = null,
     disabled,
     isMultiSelect = false,
-    icon,
+    /**
+     * After deprecating the `sdsIcon` prop, the `icon` prop will be the only prop
+     * utilized for the icon, and there will be no need to alias it as `newIcon`.
+     */
+    icon: newIcon,
+    /**
+     * Following the deprecation of the `sdsIcon` prop, it should be excluded from the props object.
+     */
+    sdsIcon,
     sdsIconProps,
     sdsStyle = "determinate",
     ...originalMenuItemProps
@@ -102,6 +116,12 @@ const MenuItem = forwardRef(function MenuItem<
       </StyledIconWrapper>
     );
   };
+
+  /**
+   * Following the deprecation of the `sdsIcon` prop, the `icon` prop will serve as
+   * the exclusive property for representing the icon, making this line unnecessary.
+   */
+  const icon = newIcon || sdsIcon;
 
   const iconItem = () => {
     if (icon) {
