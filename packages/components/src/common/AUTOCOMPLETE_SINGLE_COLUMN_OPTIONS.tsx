@@ -1,6 +1,8 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Tag from "../core/Tag";
+import CustomSdsIcon from "./customSdsIcon";
+import CustomSvgIcon from "./customSvgIcon";
 
 export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   {
@@ -32,33 +34,36 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "name with details",
   },
   {
-    name: "Bacteria",
-    sdsIcon: "bacteria",
-    sdsIconProps: {
-      color: "gray",
-    },
+    icon: <CustomSdsIcon sdsSize="s" color="gray" />,
+    name: "Custom SDS Icon",
     section: "With Icon",
   },
   {
+    icon: <CustomSvgIcon sx={{ color: "#999", height: 14, width: 14 }} />,
+    name: "Custom SVG Icon",
+    section: "With Icon",
+  },
+  {
+    icon: "puzzlePiece",
     name: "Puzzle Piece",
-    sdsIcon: "puzzlePiece",
     sdsIconProps: {
       color: "gray",
+      sdsSize: "xl",
     },
     section: "With Icon",
   },
   {
     count: 10,
+    icon: "copy",
     name: "Copy",
-    sdsIcon: "copy",
     sdsIconProps: {
       color: "gray",
     },
     section: "With Icon",
   },
   {
+    icon: "lightBulb",
     name: "Light Bulb",
-    sdsIcon: "lightBulb",
     sdsIconProps: {
       color: "gray",
     },
@@ -66,24 +71,24 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   },
   {
     count: 6,
+    icon: "list",
     name: "List",
-    sdsIcon: "list",
     sdsIconProps: {
       color: "gray",
     },
     section: "With Icon",
   },
   {
+    icon: "treeVertical",
     name: "Vertical Tree",
-    sdsIcon: "treeVertical",
     sdsIconProps: {
       color: "gray",
     },
     section: "With Icon",
   },
   {
+    icon: "link",
     name: "Link",
-    sdsIcon: "link",
     sdsIconProps: {
       color: "gray",
     },

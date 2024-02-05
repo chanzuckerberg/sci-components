@@ -33,6 +33,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-qh2mmt-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >
@@ -67,6 +68,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >
@@ -101,6 +103,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <button
             aria-label="Change sort direction from descending to ascending"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tty7jy-MuiButtonBase-root-MuiIconButton-root"
+            icon="chevronDown"
             tabindex="0"
             type="button"
           >

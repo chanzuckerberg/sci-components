@@ -30,6 +30,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   <button
     aria-label="Close"
     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-co4rz1-MuiButtonBase-root-MuiIconButton-root"
+    icon="xMark"
     tabindex="0"
     type="button"
   >

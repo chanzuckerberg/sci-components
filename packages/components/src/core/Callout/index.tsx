@@ -2,7 +2,7 @@ import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon";
-import Icon from "../Icon";
+import Icon, { IconNameToSizes, IconProps } from "../Icon";
 import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
 
@@ -12,7 +12,8 @@ export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
   expandable?: boolean;
-  icon?: React.ReactNode;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
   intent: "info" | "error" | "success" | "warning";
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
@@ -29,6 +30,7 @@ const Callout = ({
   expandable,
   onClose,
   icon,
+  sdsIconProps,
   intent,
   sdsStage,
   ...rest
@@ -53,17 +55,34 @@ const Callout = ({
   };
 
   const getIcon = () => {
-    if (icon !== undefined) return icon; // (liaprins): Explicitly use `icon !== undefined` to fix bug; see ticket for context: https://github.com/chanzuckerberg/sci-components/issues/577
-
-    switch (intent) {
-      case "success":
-        return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
-      case "info":
-        return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
-      default:
+    if (icon !== undefined) {
+      if (typeof icon !== "string") {
+        return icon;
+      } else {
         return (
-          <Icon sdsSize="l" sdsIcon="exclamationMarkCircle" sdsType="static" />
+          <Icon
+            sdsSize="l"
+            sdsIcon={icon as keyof IconNameToSizes}
+            sdsType="static"
+            {...sdsIconProps}
+          />
         );
+      }
+    } else {
+      switch (intent) {
+        case "success":
+          return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+        case "info":
+          return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+        default:
+          return (
+            <Icon
+              sdsSize="l"
+              sdsIcon="exclamationMarkCircle"
+              sdsType="static"
+            />
+          );
+      }
     }
   };
 
@@ -77,7 +96,7 @@ const Callout = ({
           }}
           sdsSize="small"
           sdsType="tertiary"
-          sdsIcon={collapsed ? "chevronDown" : "chevronUp"}
+          icon={collapsed ? "chevronDown" : "chevronUp"}
         />
       );
     }
@@ -88,7 +107,7 @@ const Callout = ({
         sdsSize="small"
         sdsType="tertiary"
         size="large"
-        sdsIcon="xMark"
+        icon="xMark"
       />
     ) : null;
   };

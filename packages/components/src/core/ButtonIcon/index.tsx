@@ -11,7 +11,13 @@ export type { ButtonIconProps, ButtonIconSizeToTypes };
 export interface ButtonIconInternalProps<
   IconName extends keyof IconNameToSizes,
 > {
-  sdsIcon: IconName;
+  icon: IconName | React.ReactElement<CustomSVGProps>;
+  /**
+   * @deprecated
+   * (masoudmanson): This prop is deprecated and will be removed in the next major version.
+   * Please use `icon` instead.
+   */
+  sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
 }
 
@@ -38,16 +44,40 @@ const ButtonIcon = forwardRef(function ButtonIcon<
   props: ButtonIconProps<IconName, ButtonIconSize>,
   ref: ForwardedRef<HTMLButtonElement | null>
 ): JSX.Element {
-  const { sdsIcon, sdsSize = "large", sdsIconProps } = props;
+  /**
+   * After deprecating `sdsIcon` prop, we need to remove it from the props object
+   * and use `icon` prop instead. The icon prop won't need to be aliased to newIcon
+   * in the future.
+   */
+  const { icon: newIcon, sdsIcon, sdsIconProps, sdsSize = "large" } = props;
   const iconSize = ButtonIconSizeToSdsIconSize[sdsSize];
+
+  /**
+   * After deprecating the `sdsIcon` prop, the `icon` prop will be the only prop
+   * to be used for the icon.
+   */
+  const icon = newIcon || sdsIcon;
+
+  const iconItem = () => {
+    if (icon) {
+      if (typeof icon !== "string") {
+        return icon;
+      } else {
+        return (
+          <Icon
+            sdsType="iconButton"
+            {...sdsIconProps}
+            sdsIcon={icon}
+            sdsSize={iconSize as IconNameToSizes[IconName]}
+          />
+        );
+      }
+    }
+  };
+
   return (
     <StyledButtonIcon {...props} ref={ref}>
-      <Icon
-        sdsType="iconButton"
-        {...sdsIconProps}
-        sdsIcon={sdsIcon}
-        sdsSize={iconSize as IconNameToSizes[IconName]}
-      />
+      {iconItem()}
     </StyledButtonIcon>
   );
 });

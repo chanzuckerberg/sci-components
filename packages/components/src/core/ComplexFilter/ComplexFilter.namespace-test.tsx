@@ -33,7 +33,6 @@ const ComplexFilterNameSpaceTest = <
       multiple
       search
       options={OPTIONS}
-      isTriggerChangeOnOptionClick
     />
   );
 };

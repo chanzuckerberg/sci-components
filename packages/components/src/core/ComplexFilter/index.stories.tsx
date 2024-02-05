@@ -32,11 +32,6 @@ const onChangeOptions = [
 
 export default {
   argTypes: {
-    isTriggerChangeOnOptionClick: {
-      control: {
-        type: "boolean",
-      },
-    },
     label: {
       control: {
         type: "text",
@@ -69,7 +64,6 @@ export default {
 
 export const Default = {
   args: {
-    isTriggerChangeOnOptionClick: false,
     label: "Click Target",
     multiple: true,
     onChange: onChangeOptions[1],

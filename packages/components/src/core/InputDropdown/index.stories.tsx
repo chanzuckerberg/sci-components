@@ -41,7 +41,7 @@ const InputDropdown = <
   const [open, setOpen] = useState(false);
   const [sdsStage, setSdsStage] =
     useState<InputDropdownProps["sdsStage"]>("default");
-  const [details, setDetials] = useState<string>();
+  const [details, setDetails] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
   const [invalid, setInvalid] = useState(false);
@@ -104,10 +104,10 @@ const InputDropdown = <
       if (newValue && !Array.isArray(newValue)) {
         setInputDropdownValue(newValue.name);
 
-        if (newValue?.details) setDetials(newValue?.details);
-        else setDetials(undefined);
+        if (newValue?.details) setDetails(newValue?.details);
+        else setDetails(undefined);
       } else {
-        setDetials(undefined);
+        setDetails(undefined);
         setInputDropdownValue(undefined);
       }
     } else {
