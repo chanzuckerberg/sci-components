@@ -29,7 +29,7 @@ const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
       <StyledDialogTitle ref={ref} {...rest}>
         {children || (
           <>
-            {onClose && <CloseButton sdsIcon="xMark" onClick={onClose} />}
+            {onClose && <CloseButton icon="xMark" onClick={onClose} />}
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
           </>

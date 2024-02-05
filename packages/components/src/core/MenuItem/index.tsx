@@ -52,7 +52,13 @@ export interface MenuItemExtraProps<
 > {
   column?: React.ReactNode;
   isMultiSelect?: boolean;
-  sdsIcon?: IconName;
+  icon?: IconName | React.ReactElement<CustomSVGProps>;
+  /**
+   * @deprecated Use `icon` instead.
+   * (masoudmanson): This prop is deprecated and will be removed in the next major version.
+   * Please replace instances of `sdsIcon` with `icon`.
+   */
+  sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
 }
@@ -71,6 +77,14 @@ const MenuItem = forwardRef(function MenuItem<
     column = null,
     disabled,
     isMultiSelect = false,
+    /**
+     * After deprecating the `sdsIcon` prop, the `icon` prop will be the only prop
+     * utilized for the icon, and there will be no need to alias it as `newIcon`.
+     */
+    icon: newIcon,
+    /**
+     * Following the deprecation of the `sdsIcon` prop, it should be excluded from the props object.
+     */
     sdsIcon,
     sdsIconProps,
     sdsStyle = "determinate",
@@ -103,6 +117,33 @@ const MenuItem = forwardRef(function MenuItem<
     );
   };
 
+  /**
+   * Following the deprecation of the `sdsIcon` prop, the `icon` prop will serve as
+   * the exclusive property for representing the icon, making this line unnecessary.
+   */
+  const icon = newIcon || sdsIcon;
+
+  const iconItem = () => {
+    if (icon) {
+      if (typeof icon !== "string") {
+        return (
+          <StyledMenuItemIcon disabled={disabled}>{icon}</StyledMenuItemIcon>
+        );
+      } else {
+        return (
+          <StyledMenuItemIcon disabled={disabled}>
+            <Icon
+              {...sdsIconProps}
+              sdsType="static"
+              sdsIcon={icon}
+              sdsSize="s"
+            />
+          </StyledMenuItemIcon>
+        );
+      }
+    }
+  };
+
   return (
     <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
       {isMultiSelect && selectionIcon()}
@@ -113,16 +154,7 @@ const MenuItem = forwardRef(function MenuItem<
           className="primary-text"
           disabled={disabled}
         >
-          {sdsIcon && (
-            <StyledMenuItemIcon disabled={disabled}>
-              <Icon
-                {...sdsIconProps}
-                sdsType="static"
-                sdsIcon={sdsIcon}
-                sdsSize="s"
-              />
-            </StyledMenuItemIcon>
-          )}
+          {iconItem()}
           {children}
         </TextWrapper>
 

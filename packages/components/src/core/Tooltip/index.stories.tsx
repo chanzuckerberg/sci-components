@@ -110,7 +110,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           sdsType="secondary"
           sdsSize="large"
-          sdsIcon="infoSpeechBubble"
+          icon="infoSpeechBubble"
         />
       </RawTooltip>
       <RawTooltip

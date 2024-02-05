@@ -1,5 +1,8 @@
 import { Args, Meta } from "@storybook/react";
-import RawSegmentedControl, { SegmentedControlProps } from "./index";
+import RawSegmentedControl, {
+  SegmentedControlProps,
+  SingleButtonDefinition,
+} from "./index";
 
 const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
@@ -53,13 +56,13 @@ export default {
 } as Meta;
 
 interface SegmentedControlArgs extends SegmentedControlProps {
-  segmentOneIcon: string;
+  segmentOneIcon: SingleButtonDefinition["icon"];
   segmentOneTooltipText: string;
-  segmentTwoIcon: string;
+  segmentTwoIcon: SingleButtonDefinition["icon"];
   segmentTwoTooltipText: string;
-  segmentThreeIcon: string;
+  segmentThreeIcon: SingleButtonDefinition["icon"];
   segmentThreeTooltipText: string;
-  segmentFourIcon: string;
+  segmentFourIcon: SingleButtonDefinition["icon"];
   segmentFourTooltipText: string;
 }
 
@@ -76,10 +79,10 @@ const Template = (props: SegmentedControlArgs) => {
   } = props;
 
   const buttonDefinition = [
-    { iconName: segmentOneIcon, tooltipText: segmentOneTooltipText },
-    { iconName: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
-    { iconName: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
-    { iconName: segmentFourIcon, tooltipText: segmentFourTooltipText },
+    { icon: segmentOneIcon, tooltipText: segmentOneTooltipText },
+    { icon: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
+    { icon: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
+    { icon: segmentFourIcon, tooltipText: segmentFourTooltipText },
   ];
 
   return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
@@ -159,10 +162,10 @@ const TestDemo = (props: Args): JSX.Element => {
 export const Test = {
   args: {
     buttonDefinition: [
-      { iconName: "list", tooltipText: "List A" },
-      { iconName: "list", tooltipText: "List B" },
-      { iconName: "table", tooltipText: "Table" },
-      { iconName: "people", tooltipText: "People" },
+      { icon: "list", tooltipText: "List A" },
+      { icon: "list", tooltipText: "List B" },
+      { icon: "table", tooltipText: "Table" },
+      { icon: "people", tooltipText: "People" },
     ],
   },
   parameters: {

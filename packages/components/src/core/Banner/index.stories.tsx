@@ -1,8 +1,17 @@
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import RawBanner from "./index";
+import CustomSdsIcon from "src/common/customSdsIcon";
+import CustomSvgIcon from "src/common/customSvgIcon";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
+
+const iconOptions = [
+  "checkCircle",
+  "infoCircle",
+  <CustomSdsIcon key="customSdsIcon" sdsSize="l" />,
+  <CustomSvgIcon key="customSvgIcon" sx={{ height: 22, width: 22 }} />,
+];
 
 const Banner = (props: Args): JSX.Element => {
   const { sdsType, textChild } = props;
@@ -20,6 +29,24 @@ export default {
     },
     dismissible: {
       control: { type: "boolean" },
+    },
+    icon: {
+      control: {
+        labels: [
+          "SDS Icon: Check Circle",
+          "SDS Icon: Info Circle",
+          "Custom SDS Icon",
+          "Custom SVG Icon",
+        ],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
+    },
+    sdsIconProps: {
+      control: {
+        type: "object",
+      },
     },
     sdsType: {
       control: { type: "radio" },

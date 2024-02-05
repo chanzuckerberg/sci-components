@@ -4,6 +4,15 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import RawNotification, { NotificationProps } from "./index";
+import CustomSvgIcon from "src/common/customSvgIcon";
+import CustomSdsIcon from "src/common/customSdsIcon";
+
+const iconOptions = [
+  <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
+  <CustomSdsIcon key="customSvgIcon" />,
+  "book",
+  "checkCircle",
+];
 
 const Notification = (props: Args): JSX.Element => {
   const {
@@ -98,6 +107,19 @@ export default {
     extraContent: {
       control: { type: "boolean" },
     },
+    icon: {
+      control: {
+        labels: [
+          "Custom SVG Icon",
+          "Custom SDS Icon",
+          "SDS Icon: Book",
+          "SDS Icon: Check Circle",
+        ],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
+    },
     intent: {
       control: { type: "radio" },
       options: ["info", "error", "success", "warning"],
@@ -111,6 +133,9 @@ export default {
         type: "select",
       },
       options: [action("onClick"), undefined],
+    },
+    sdsIconProps: {
+      control: { type: "object" },
     },
     slideDirection: {
       control: { type: "radio" },
@@ -269,7 +294,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
         </p>
         {BUTTON_ON_CLICK_OPTIONS.map((buttonOnClick) => {
           return (
-            <>
+            <React.Fragment key={"parent" + String(buttonOnClick)}>
               <p style={BUTTON_ON_CLICK_LABEL_STYLE}>
                 Button: <b>{buttonOnClick ? "yes" : "no"}</b>
               </p>
@@ -291,7 +316,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
                   </div>
                 )}
               </RawNotification>
-            </>
+            </React.Fragment>
           );
         })}
       </div>

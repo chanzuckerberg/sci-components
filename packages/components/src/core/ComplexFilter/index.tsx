@@ -36,7 +36,6 @@ export interface ComplexFilterProps<
   className?: string;
   PopperComponent?: typeof StyledPopper;
   InputDropdownComponent?: typeof InputDropdown;
-  isTriggerChangeOnOptionClick?: boolean;
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
