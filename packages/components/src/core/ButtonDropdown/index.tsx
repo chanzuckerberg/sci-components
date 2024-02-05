@@ -5,7 +5,6 @@ import Icon from "../Icon";
 
 interface SdsProps {
   icon?: JSX.Element;
-  isRounded?: boolean;
   sdsStyle?: "rounded" | "square";
   sdsType?: "primary" | "secondary";
 }

@@ -63,7 +63,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             onClick={() => currentPage > 1 && onPreviousPage()}
             disabled={currentPage === 1}
             sdsSize="small"
-            sdsIcon="chevronLeft"
+            icon="chevronLeft"
             data-order="first"
           />
         </StyledPaginationChevronList>
@@ -85,7 +85,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
                 <StyledPaginationButtonIcon
                   aria-label="Go to a page"
                   disabled
-                  sdsIcon="dotsHorizontal"
+                  icon="dotsHorizontal"
                   sdsSize="small"
                 />
               </Page>
@@ -111,7 +111,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             disabled={currentPage === lastPage}
             sdsSize="small"
             data-order="last"
-            sdsIcon="chevronRight"
+            icon="chevronRight"
           />
         </StyledPaginationChevronList>
       </StyledPagination>

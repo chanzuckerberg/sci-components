@@ -5,8 +5,8 @@ import Tooltip from "../Tooltip";
 import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
-interface SingleButtonDefinition {
-  iconName: string;
+export interface SingleButtonDefinition {
+  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   tooltipText: string;
 }
 
@@ -54,7 +54,18 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {...props}
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
-        const { iconName, tooltipText } = button;
+        const { icon, tooltipText } = button;
+
+        const iconItem = () => {
+          if (icon) {
+            if (typeof icon !== "string") {
+              return icon;
+            } else {
+              return <Icon sdsIcon={icon} sdsSize="s" sdsType="button" />;
+            }
+          }
+        };
+
         return (
           <ToggleButton
             aria-label={tooltipText}
@@ -63,13 +74,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
             key={tooltipText}
           >
             <Tooltip title={tooltipText} sdsStyle="dark" arrow>
-              <span>
-                <Icon
-                  sdsIcon={iconName as keyof IconNameToSizes}
-                  sdsSize="s"
-                  sdsType="button"
-                />
-              </span>
+              <span>{iconItem()}</span>
             </Tooltip>
           </ToggleButton>
         );

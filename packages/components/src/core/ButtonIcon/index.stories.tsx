@@ -3,6 +3,8 @@ import React from "react";
 import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
+import CustomSvgIcon from "src/common/customSvgIcon";
+import CustomSdsIcon from "src/common/customSdsIcon";
 
 type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"small">["sdsType"]
@@ -17,9 +19,16 @@ const SDS_SIZES: SDSSizes = ["large", "medium", "small"];
 const ON_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
+const ICON_OPTIONS = [
+  "dotsHorizontal",
+  "virus",
+  "xMark",
+  <CustomSdsIcon key="customSdsIcon" />,
+  <CustomSvgIcon key="customIcon" />,
+];
 
 const ButtonIcon = (props: Args): JSX.Element => {
-  const { sdsIcon, ...rest } = props;
+  const { icon, ...rest } = props;
 
   const [on, setOn] = React.useState(false);
   const handleButtonClick = () => setOn(!on);
@@ -28,7 +37,7 @@ const ButtonIcon = (props: Args): JSX.Element => {
     <RawButtonIcon
       onClick={handleButtonClick}
       on={on}
-      sdsIcon={sdsIcon}
+      icon={icon}
       sdsSize="medium"
       sdsType="primary"
       {...rest}
@@ -43,25 +52,24 @@ export default {
         type: "boolean",
       },
     },
+    icon: {
+      control: {
+        labels: [
+          "SDS Icon: dotsHorizontal",
+          "SDS Icon: virus",
+          "SDS Icon: xMark",
+          "Custom SDS Icon",
+          "Custom Icon",
+        ],
+        type: "select",
+      },
+      mapping: ICON_OPTIONS,
+      options: Object.keys(ICON_OPTIONS),
+    },
     on: {
       control: {
         type: "boolean",
       },
-    },
-    sdsIcon: {
-      control: {
-        type: "select",
-      },
-      options: [
-        "dotsHorizontal",
-        "copy",
-        "download",
-        "people",
-        "treeHorizontal",
-        "grid",
-        "virus",
-        "xMark",
-      ],
     },
     sdsSize: {
       control: {
@@ -86,7 +94,7 @@ export const Default = {
   args: {
     "aria-label": "info",
     disabled: false,
-    sdsIcon: "dotsHorizontal",
+    icon: "dotsHorizontal",
     sdsSize: "large",
     sdsType: "primary",
   },
@@ -110,14 +118,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          sdsIcon="grid"
+          icon="grid"
           sdsSize="large"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spacings?.xxs }}
-          sdsIcon="grid"
+          icon="grid"
           sdsSize="large"
           sdsType="primary"
         />
@@ -126,14 +134,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          sdsIcon="infoSpeechBubble"
+          icon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spacings?.m }}
-          sdsIcon="infoSpeechBubble"
+          icon="infoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
@@ -142,7 +150,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          sdsIcon="xMark"
+          icon="xMark"
           sdsSize="large"
           sdsType="tertiary"
         />
@@ -151,7 +159,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.m }}
-          sdsIcon="xMark"
+          icon="xMark"
           sdsSize="medium"
           sdsType="tertiary"
         />
@@ -160,14 +168,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          sdsIcon="barChartVertical3"
+          icon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spacings?.s }}
-          sdsIcon="barChartVertical3"
+          icon="barChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
@@ -176,14 +184,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          sdsIcon="plusCircle"
+          icon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spacings?.s }}
-          sdsIcon="plusCircle"
+          icon="plusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
@@ -192,7 +200,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spacings?.s }}
-          sdsIcon="xMark"
+          icon="xMark"
           sdsSize="small"
           sdsType="tertiary"
         />
@@ -403,8 +411,8 @@ const ScreenshotTestDemo = (): JSX.Element => {
       <div style={DISABLED_LEVEL}>
         {PSEUDO_STATES.map((state) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore: invalid `sdsIcon` is skipped in <ButtonIconTypeOption />
-          const sdsIcon = SDS_ICONS[sdsType][sdsSize];
+          // @ts-ignore: invalid `icon` is skipped in <ButtonIconTypeOption />
+          const icon = SDS_ICONS[sdsType][sdsSize];
 
           return (
             <div style={PSEUDO_STATE_LEVEL} key={`div-${state}`}>
@@ -418,8 +426,8 @@ const ScreenshotTestDemo = (): JSX.Element => {
                     <b>{disabled === false ? state : "true"}</b>
                   </p>
                   <ButtonIcon
-                    aria-label={sdsIcon}
-                    sdsIcon={sdsIcon}
+                    aria-label={icon}
+                    icon={icon}
                     data-testid="button-icon"
                     sdsType={sdsType}
                     sdsSize={sdsSize}
@@ -443,7 +451,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: ["disabled", "on", "sdsIcon", "sdsSize", "sdsType"],
+      exclude: ["disabled", "on", "icon", "sdsSize", "sdsType"],
     },
     snapshot: {
       skip: true,
@@ -466,7 +474,7 @@ export const Test = {
         aria-label="dotsHorizontal"
         data-testid="iconButton"
         on
-        sdsIcon="dotsHorizontal"
+        icon="dotsHorizontal"
         sdsSize="medium"
         sdsType="primary"
       />
