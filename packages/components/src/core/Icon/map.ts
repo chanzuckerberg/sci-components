@@ -10,6 +10,7 @@ import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCh
 import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
 import { ReactComponent as IconChevronDownLarge } from "../../common/svgs/IconChevronDownLarge.svg";
 import { ReactComponent as IconChevronDownSmall } from "../../common/svgs/IconChevronDownSmall.svg";
+import { ReactComponent as IconChevronDown2Small } from "../../common/svgs/IconChevronDown2Small.svg";
 import { ReactComponent as IconChevronLeft2Small } from "../../common/svgs/IconChevronLeft2Small.svg";
 import { ReactComponent as IconChevronLeftLarge } from "../../common/svgs/IconChevronLeftLarge.svg";
 import { ReactComponent as IconChevronLeftSmall } from "../../common/svgs/IconChevronLeftSmall.svg";
@@ -18,6 +19,7 @@ import { ReactComponent as IconChevronRightLarge } from "../../common/svgs/IconC
 import { ReactComponent as IconChevronRightSmall } from "../../common/svgs/IconChevronRightSmall.svg";
 import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChevronUpLarge.svg";
 import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
+import { ReactComponent as IconChevronUp2Small } from "../../common/svgs/IconChevronUp2Small.svg";
 import { ReactComponent as IconCirclesOverlapLarge } from "../../common/svgs/IconCirclesOverlapLarge.svg";
 import { ReactComponent as IconCirclesOverlapSmall } from "../../common/svgs/IconCirclesOverlapSmall.svg";
 import { ReactComponent as IconCodeLarge } from "../../common/svgs/IconCodeLarge.svg";
@@ -33,6 +35,7 @@ import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownl
 import { ReactComponent as IconDownloadSmall } from "../../common/svgs/IconDownloadSmall.svg";
 import { ReactComponent as IconEditLarge } from "../../common/svgs/IconEditLarge.svg";
 import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
+import { ReactComponent as IconEnvelopeSmall } from "../../common/svgs/IconEnvelopeSmall.svg";
 import { ReactComponent as IconExclamationMarkCircleLarge } from "../../common/svgs/IconExclamationMarkCircleLarge.svg";
 import { ReactComponent as IconExclamationMarkCircleSmall } from "../../common/svgs/IconExclamationMarkCircleSmall.svg";
 import { ReactComponent as IconExclamationMarkSpeechBubbleLarge } from "../../common/svgs/IconExclamationmarkSpeechBubbleLarge.svg";
@@ -135,11 +138,13 @@ export interface IconNameToSizes {
   check: "xs" | "s";
   checkCircle: "xs" | "s" | "l" | "xl";
   chevronDown: "xs" | "s" | "l" | "xl";
+  chevronDown2: "xs" | "s";
   chevronLeft2: "xs" | "s";
   chevronLeft: "xs" | "s" | "l" | "xl";
   chevronRight2: "xs" | "s";
   chevronRight: "xs" | "s" | "l" | "xl";
   chevronUp: "xs" | "s" | "l" | "xl";
+  chevronUp2: "xs" | "s";
   circlesOverlap: "xs" | "s" | "l" | "xl";
   code: "l" | "xl";
   compass: "l" | "xl";
@@ -150,6 +155,7 @@ export interface IconNameToSizes {
   dotsHorizontal: "xs" | "s" | "l" | "xl";
   download: "xs" | "s" | "l" | "xl";
   edit: "xs" | "s" | "l" | "xl";
+  envelope: "xs" | "s";
   exclamationMarkCircle: "xs" | "s" | "l" | "xl";
   exclamationMarkSpeechBubble: "l" | "xl";
   eyeClosed: "xs" | "s";
@@ -270,6 +276,10 @@ export const iconMap: Props = {
     largeIcon: IconChevronDownLarge,
     smallIcon: IconChevronDownSmall,
   },
+  chevronDown2: {
+    largeIcon: null,
+    smallIcon: IconChevronDown2Small,
+  },
   chevronLeft: {
     largeIcon: IconChevronLeftLarge,
     smallIcon: IconChevronLeftSmall,
@@ -289,6 +299,10 @@ export const iconMap: Props = {
   chevronUp: {
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
+  },
+  chevronUp2: {
+    largeIcon: null,
+    smallIcon: IconChevronUp2Small,
   },
   circlesOverlap: {
     largeIcon: IconCirclesOverlapLarge,
@@ -329,6 +343,10 @@ export const iconMap: Props = {
   edit: {
     largeIcon: IconEditLarge,
     smallIcon: IconEditSmall,
+  },
+  envelope: {
+    largeIcon: null,
+    smallIcon: IconEnvelopeSmall,
   },
   exclamationMarkCircle: {
     largeIcon: IconExclamationMarkCircleLarge,
