@@ -154,9 +154,16 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "@storybook",
+      "**/@storybook",
+      "**/@storybook/**"
+    ]
+  },
   "main": "index.js",
   "packageManager": "yarn@4.1.0"
 }
