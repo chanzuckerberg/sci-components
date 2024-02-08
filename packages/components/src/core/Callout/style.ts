@@ -6,9 +6,9 @@ import {
   getColors,
   getCorners,
   getIconSizes,
+  getPalette,
   getSpaces,
 } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
@@ -33,10 +33,11 @@ export const StyledCallout = styled(Alert, {
     const iconColor = (colors && colors[severity][400]) || "black";
     const calloutColor = (colors && colors[severity][100]) || "white";
     const backgroundColor = colors && colors[severity][100];
+    const palette = getPalette(props);
 
     // when a title is present Mui's default styling has vertical margin,
     // but for an expandable callout that is collapsed, we do not want
-    // any buttom margin
+    // any bottom margin
     const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
 
     return `
@@ -44,7 +45,7 @@ export const StyledCallout = styled(Alert, {
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${palette?.text?.primary};
       padding: ${spacings?.m}px;
       background-color: ${calloutColor};
 

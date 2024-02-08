@@ -4,6 +4,7 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
 <button
   aria-label="info"
   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1dufxsi-MuiButtonBase-root-MuiIconButton-root"
+  icon="dotsHorizontal"
   tabindex="0"
   type="button"
 >

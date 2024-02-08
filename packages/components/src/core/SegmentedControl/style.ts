@@ -13,12 +13,10 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
     const corners = getCorners(props);
 
     return `
-    height: 26px;
-
     .Mui-selected.MuiToggleButton-root {
         background-color: ${colors?.gray[100]};
         color: ${colors?.primary[400]};
-        border-color: ${colors?.gray[300]};
+        border-color: ${colors?.gray[400]};
 
         &:hover {
           background-color: ${colors?.gray[100]};
@@ -26,13 +24,13 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
     }
 
     .MuiToggleButton-root {
-      border-color: ${colors?.gray[300]};
+      border-color: ${colors?.gray[400]};
       line-height: 0px;
       color: #000;
       padding: 0;
 
       &:hover {
-        border-color: ${colors?.gray[300]};
+        border-color: ${colors?.gray[400]};
         background-color: ${colors?.gray[100]};
       }
     }

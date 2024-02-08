@@ -49,13 +49,14 @@ export const StyledListItem = styled(ListItem, {
 
   &:before {
     display: inline-block;
-    font-weight: 600;
 
     ${(props) => {
       const spacings = getSpaces(props);
+      const fontWeights = getFontWeights(props);
       const { ordered } = props;
 
-      return `
+      return `        
+        font-weight: ${fontWeights?.semibold};
         content: ${ordered ? `counters(section, ".")"."` : `"•"`};
         margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
       `;

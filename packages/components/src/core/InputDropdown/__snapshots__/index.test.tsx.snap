@@ -3,7 +3,7 @@
 exports[`<InputDropdown /> Default story renders snapshot 1`] = `
 <div>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-16eadb0-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1vbittq-MuiButtonBase-root-MuiButton-root"
     data-testid="InputDropdown"
     label="Label"
     tabindex="0"
@@ -13,7 +13,7 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
       class="css-18dv0oe"
     >
       <span
-        class="styled-label css-1ubkbz8"
+        class="styled-label css-mxudk4"
       >
         Label
       </span>

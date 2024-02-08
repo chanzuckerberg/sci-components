@@ -4,6 +4,7 @@ import {
   CommonThemeProps,
   fontHeaderS,
   getColors,
+  getPalette,
   getSpaces,
   getTypography,
 } from "../styles";
@@ -58,9 +59,10 @@ export const StyledTableHeader = styled("th", {
     const spacings = getSpaces(props);
     const typography = getTypography(props);
     const colors = getColors(props);
+    const palette = getPalette(props);
 
     return `
-      color: ${active ? colors?.primary[400] : colors?.gray[600]};
+      color: ${active ? colors?.primary[400] : palette.text?.secondary};
       font-family: ${typography?.fontFamily};
       padding: ${spacings?.l}px ${spacings?.s}px;
       text-align: ${horizontalAlign};
@@ -74,10 +76,10 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? colors?.primary[500] : "black"};
+        color: ${active ? colors?.primary[500] : palette.text?.primary};
 
         & .MuiButtonBase-root {
-          color: ${active ? colors?.primary[500] : colors?.gray[500]};
+          color: ${active ? colors?.primary[500] : palette.text?.secondary};
           opacity: 1;
         }
       }

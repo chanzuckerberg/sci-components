@@ -10,6 +10,7 @@ import {
   focusVisibleA11yStyle,
   getColors,
   getIconSizes,
+  getPalette,
 } from "../styles";
 
 export interface ButtonIconSizeToTypes {
@@ -18,7 +19,7 @@ export interface ButtonIconSizeToTypes {
   large: "primary" | "secondary" | "tertiary";
 }
 export interface ButtonIconExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 > extends CommonThemeProps {
   on?: boolean;
   disabled?: boolean;
@@ -49,10 +50,12 @@ const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
-  const colors = getColors(props);
+  const palette = getPalette(props);
 
   return css`
-    color: ${colors?.gray[300]};
+    svg {
+      color: ${palette?.text?.disabled};
+    }
   `;
 };
 

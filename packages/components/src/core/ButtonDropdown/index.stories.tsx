@@ -10,11 +10,40 @@ const actions = {
   onClick: action("onClick"),
 };
 
+const iconOptions = [
+  <Icon sdsIcon="download" sdsSize="l" sdsType="button" key="downloadIcon" />,
+  <Icon sdsIcon="copy" sdsSize="l" sdsType="button" key="copyIcon" />,
+  <Icon sdsIcon="bacteria" sdsSize="l" sdsType="button" key="bacteriaIcon" />,
+];
+
 const ButtonDropdown = (props: Args): JSX.Element => {
   return <RawButtonDropdown {...props}>{text}</RawButtonDropdown>;
 };
 
 export default {
+  argTypes: {
+    disabled: {
+      control: { type: "boolean" },
+    },
+    icon: {
+      control: {
+        labels: ["Download Icon", "Copy Icon", "Bacteria Icon"],
+        type: "select",
+      },
+      mapping: iconOptions,
+      options: Object.keys(iconOptions),
+    },
+    sdsStyle: {
+      control: { type: "radio" },
+      options: ["rounded", "square"],
+      required: true,
+    },
+    sdsType: {
+      control: { type: "radio" },
+      options: ["primary", "secondary"],
+      required: true,
+    },
+  },
   component: ButtonDropdown,
   title: "ButtonDropdown",
 } as Meta;

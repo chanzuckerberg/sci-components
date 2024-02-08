@@ -1,6 +1,6 @@
 import { AccordionSummaryProps as RawAccordionSummaryProps } from "@mui/material";
-import Icon from "src/core/Icon";
 import { StyledAccordionHeader, StyledSubtitle } from "./style";
+import Icon from "src/core/Icon";
 
 export interface SdsAccordionHeaderProps {
   subtitle?: string;

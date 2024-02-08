@@ -129,8 +129,8 @@ const userInput = (props: InputTextExtraProps): SerializedStyles => {
     intent === "error"
       ? borders?.error[400]
       : intent === "warning"
-      ? borders?.warning[400]
-      : borders?.primary[400];
+        ? borders?.warning[400]
+        : borders?.primary[400];
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {

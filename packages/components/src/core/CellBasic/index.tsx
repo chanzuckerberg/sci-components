@@ -20,7 +20,7 @@ interface CellBasicContentProps
   tertiaryText?: string;
   tertiaryTextWrapLineCount?: number;
   shouldTextWrap?: boolean;
-  icon?: JSX.Element;
+  icon?: React.ReactElement<CustomSVGProps>;
   iconVerticalAlign?: "top" | "center" | "bottom";
 }
 

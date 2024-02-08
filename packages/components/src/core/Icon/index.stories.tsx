@@ -161,7 +161,7 @@ const IconWrapper = styled("div")`
           fill: white;
         }
 
-        div.notif {
+        div.notification {
           display: flex;
         }
       }
@@ -172,7 +172,7 @@ const IconWrapper = styled("div")`
         align-items: center;
       }
 
-      div.notif {
+      div.notification {
         flex-direction: column;
         border-radius: 2px;
         display: none;
@@ -244,7 +244,7 @@ const IconItem = (props: IconItemProps) => {
         )}
       </span>
       {copied && (
-        <div className="notif">
+        <div className="notification">
           <RawIcon
             color={color}
             shade={shade}
@@ -339,7 +339,7 @@ export const IconBank = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: ["color", "sdsIcon", "sdsSize", "sdsType"],
+      exclude: ["color", "sdsIcon", "sdsSize", "sdsType", "shade"],
     },
     snapshot: {
       skip: true,
