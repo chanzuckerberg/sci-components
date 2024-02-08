@@ -9,6 +9,12 @@ module.exports = ({ config }) => {
     ],
   };
 
+  config.resolve.fallback = {
+    "@czi-sds/components": [
+      path.resolve(__dirname, "../packages/data-viz/src"),
+    ],
+  };
+
   // remove svg from existing rule
   config.module.rules = config.module.rules.map((rule) => {
     if (
