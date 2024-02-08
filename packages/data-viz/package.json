@@ -73,7 +73,8 @@
     "d3-scale-chromatic": "^3.0.0",
     "jest-environment-jsdom": "^29.6.2",
     "react-redux": "^9.1.0",
-    "simplex-noise": "^4.0.1"
+    "simplex-noise": "^4.0.1",
+    "style-dictionary": "^3.9.2"
   },
   "dependencies": {
     "echarts": "^5.4.3",
