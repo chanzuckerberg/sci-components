@@ -2,6 +2,10 @@ import { Args, Meta } from "@storybook/react";
 import RawHeatmapChart from "./index";
 import { COLORS } from "./storyUtils";
 import { ScatterSeriesOption } from "echarts";
+import App from "./heatmapDemo/App";
+import { SnackbarProvider } from "notistack";
+import { Provider } from "react-redux";
+import { store } from "./heatmapDemo/store";
 
 const HEATMAP_SIZE = 100;
 const HEATMAP_ITEM_SIZE = 20;
@@ -74,6 +78,16 @@ const HeatmapChart = (props: Args): JSX.Element => {
         {...rest}
       />
     </>
+  );
+};
+
+export const HeatmapDemo = (): JSX.Element => {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </SnackbarProvider>
   );
 };
 
@@ -172,6 +186,9 @@ export default {
         "listitem",
       ],
     },
+    // This parameter is used to set the story's layout to fullscreen
+    // and remove the padding around the storybook root element
+    layout: "fullscreen",
   },
   title: "Data Viz/HeatmapChart",
 } as Meta;
