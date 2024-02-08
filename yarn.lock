@@ -1764,7 +1764,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@czi-sds/components@npm:^19.2.0, @czi-sds/components@workspace:^, @czi-sds/components@workspace:packages/components":
+"@czi-sds/components@workspace:^, @czi-sds/components@workspace:packages/components":
   version: 0.0.0-use.local
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
@@ -1789,7 +1789,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@czi-sds/data-viz@workspace:packages/data-viz"
   dependencies:
-    "@czi-sds/components": "npm:^19.2.0"
     "@reduxjs/toolkit": "npm:^2.1.0"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"

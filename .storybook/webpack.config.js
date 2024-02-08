@@ -9,7 +9,15 @@ module.exports = ({ config }) => {
     ],
   };
 
-  // Redirect module requests when normal resolving fails.
+  /**
+   * (masoudmanson): Due to a Storybook build issue in production mode, where importing
+   * cross-referenced workspace packages fails, this workaround involves falling back
+   * to the source code of the affected packages. This is a temporary solution until the
+   * underlying issue is resolved in Storybook.
+   * Resolving monorepo packages in this manner necessitates a custom SCSS loader for
+   * .sss files, as the src/index.ts file of each package includes an import link to the
+   * style-dictionary variable files.
+   */
   config.resolve.fallback = {
     "@czi-sds/components": path.resolve(
       __dirname,
@@ -45,13 +53,10 @@ module.exports = ({ config }) => {
     },
   });
 
-  // use css-loader for style-dictionary css files
-  // config.module.rules.push({
-  //   test: /\.css$/,
-  //   use: ["style-loader", "css-loader"],
-  // });
-
-  // use style-loader for style-dictionary scss files
+  /**
+   * (masoudmanson): Add a custom SCSS loader for .sss files, as the src/index.ts file of
+   * each package includes an import link to the style-dictionary variable files.
+   */
   config.module.rules.push({
     test: /\.scss$/,
     use: ["sass-loader"],

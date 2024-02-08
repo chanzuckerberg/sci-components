@@ -65,6 +65,7 @@ const Header = () => {
           arrow
         >
           <StyledButtonIcon
+            aria-label="Download Info"
             icon="infoCircle"
             sdsSize="large"
             sdsType="secondary"

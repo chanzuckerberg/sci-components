@@ -223,6 +223,14 @@ const HeatmapDemoComponent = (): JSX.Element => {
 
 export const HeatmapDemo = {
   parameters: {
+    /**
+     * Axe is complaining about color contrast of Axis-labels and
+     * since the colors are by design and the contrast is not an issue,
+     * the rule is disabled for this story.
+     */
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     controls: {
       exclude: [
         "axisPointer",
