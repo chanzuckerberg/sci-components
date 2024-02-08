@@ -11,8 +11,11 @@ module.exports = ({ config }) => {
 
   // Redirect module requests when normal resolving fails.
   config.resolve.fallback = {
-    "@czi-sds/components": path.resolve(__dirname, "../packages/components"),
-    "@czi-sds/data-viz": path.resolve(__dirname, "../packages/data-viz"),
+    "@czi-sds/components": path.resolve(
+      __dirname,
+      "../packages/components/src"
+    ),
+    "@czi-sds/data-viz": path.resolve(__dirname, "../packages/data-viz/src"),
   };
 
   // remove svg from existing rule
@@ -40,6 +43,12 @@ module.exports = ({ config }) => {
     issuer: {
       and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
     },
+  });
+
+  // use style-loader and css-loader for style-dictionary css/scss files
+  config.module.rules.push({
+    test: /\.(css|scss)$/,
+    use: ["style-loader", "css-loader"],
   });
 
   return config;
