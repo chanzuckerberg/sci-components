@@ -48,7 +48,7 @@ module.exports = ({ config }) => {
   // use css-loader for style-dictionary css files
   config.module.rules.push({
     test: /\.css$/,
-    use: ["css-loader"],
+    use: ["style-loader", "css-loader"],
   });
 
   // use style-loader for style-dictionary scss files
