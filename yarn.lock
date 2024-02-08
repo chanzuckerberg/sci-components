@@ -1764,7 +1764,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@czi-sds/components@npm:19.2.0, @czi-sds/components@workspace:packages/components":
+"@czi-sds/components@npm:*, @czi-sds/components@workspace:^, @czi-sds/components@workspace:packages/components":
   version: 0.0.0-use.local
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
@@ -1785,11 +1785,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@czi-sds/data-viz@npm:0.4.2, @czi-sds/data-viz@workspace:packages/data-viz":
+"@czi-sds/data-viz@workspace:^, @czi-sds/data-viz@workspace:packages/data-viz":
   version: 0.0.0-use.local
   resolution: "@czi-sds/data-viz@workspace:packages/data-viz"
   dependencies:
-    "@czi-sds/components": "npm:19.2.0"
+    "@czi-sds/components": "npm:*"
     "@reduxjs/toolkit": "npm:^2.1.0"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
@@ -1826,8 +1826,8 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.23.3"
     "@chanzuckerberg/axe-storybook-testing": "npm:^7.1.3"
     "@chanzuckerberg/story-utils": "npm:^4.0.0"
-    "@czi-sds/components": "npm:19.2.0"
-    "@czi-sds/data-viz": "npm:0.4.2"
+    "@czi-sds/components": "workspace:^"
+    "@czi-sds/data-viz": "workspace:^"
     "@emotion/core": "npm:^11.0.0"
     "@emotion/css": "npm:^11.11.2"
     "@emotion/react": "npm:^11.11.3"
