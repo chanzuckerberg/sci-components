@@ -123,7 +123,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     span {
-      color: ${colors?.gray[500]};
+      color: ${palette?.text?.secondary};
     }
 
     path {
@@ -170,7 +170,6 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    height: 34px;
     min-width: 90px;
   `;
 };
@@ -180,7 +179,6 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.l}px;
-    height: 34px;
     min-width: 90px;
   `;
 };
@@ -260,19 +258,19 @@ const error = (props: InputDropdownProps): SerializedStyles => {
 
 const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
-  const gray = colors?.gray[300];
+  const palette = getPalette(props);
 
   return css`
     cursor: default;
-    border-color: ${gray};
+    border-color: ${colors?.gray[300]};
 
     span {
-      color: ${colors?.gray[300]};
+      color: ${palette?.text?.disabled};
     }
 
     &.MuiButton-text {
       .styled-label {
-        color: ${colors?.gray[300]};
+        color: ${palette?.text?.disabled};
       }
     }
 
@@ -325,11 +323,11 @@ export const StyledDetail = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CommonThemeProps) => {
-    const colors = getColors(props);
+    const palette = getPalette(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: ${palette?.text?.secondary};
       margin-left: ${spaces?.xs}px;
       overflow: hidden;
       white-space: nowrap;
@@ -350,14 +348,13 @@ export const StyledLabel = styled("span", {
   ${(props: DetailsAndCounter) => {
     const { details, counter, sdsType } = props;
 
-    const colors = getColors(props);
     const palette = getPalette(props);
     const fontWeights = getFontWeights(props);
 
     const labelColor =
       details || counter !== undefined
         ? palette?.text?.primary
-        : colors?.gray[500];
+        : palette?.text?.secondary;
 
     return `
       color: ${labelColor};
@@ -431,10 +428,11 @@ export const IconWrapper = styled("span", {
 `;
 
 function labelStyle(props: InputDropdownProps): SerializedStyles {
-  const colors = getColors(props);
   const palette = getPalette(props);
   const labelColor =
-    props.sdsType === "value" ? palette?.text?.primary : colors?.gray[500];
+    props.sdsType === "value"
+      ? palette?.text?.primary
+      : palette?.text?.secondary;
 
   return css`
     &.MuiButton-text {

@@ -10,6 +10,7 @@ import {
   CommonThemeProps,
   getColors,
   getFontWeights,
+  getPalette,
   getSpaces,
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
@@ -77,19 +78,13 @@ export const StyledTab = styled(RawTab, {
     const colors = getColors(props);
     const spaces = getSpaces(props);
     const fontWeights = getFontWeights(props);
-
-    const { sdsSize } = props;
-
-    const isLarge = sdsSize === "large";
+    const palette = getPalette(props);
 
     return `
       font-weight: ${fontWeights?.semibold};
       margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
 
-      // (thuang): Large Tab height is 30px, the offset is 4px
-      height: ${isLarge ? 26 : 22}px;
-
-      color: ${colors?.gray[500]};
+      color: ${palette?.text?.secondary};
 
       &:hover, :focus {
         color: black;

@@ -11,7 +11,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-1nusez2"
     >
       <th
-        class="css-fg8hab"
+        class="css-1rmg044"
       >
         <div
           class="css-187gjam"
@@ -57,7 +57,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-x40omn"
+        class="css-cafzim"
       >
         <div
           class="css-rm9mvq"
@@ -92,7 +92,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-fg8hab"
+        class="css-1rmg044"
       >
         <div
           class="css-187gjam"
@@ -127,7 +127,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-x40omn"
+        class="css-cafzim"
       >
         <div
           class="css-rm9mvq"
@@ -138,7 +138,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-rcoqec"
+        class="css-1n46b0o"
       >
         <div
           class="css-wg04tn"
@@ -200,7 +200,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-102yezv"
+              class="css-q27ims"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
@@ -222,7 +222,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
@@ -249,7 +249,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
@@ -376,7 +376,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
@@ -403,7 +403,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
@@ -425,7 +425,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
@@ -522,7 +522,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               1,234
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               2,344,000
             </span>
@@ -585,7 +585,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               Primary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-13h2j63"
             >
               Secondary Text
             </span>
