@@ -5,6 +5,8 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.23.6",
+    "@babel/plugin-syntax-flow": "^7.23.3",
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
@@ -31,6 +33,10 @@
     "@storybook/addon-links": "^7.6.13",
     "@storybook/addon-storyshots": "^7.6.13",
     "@storybook/addons": "^7.6.13",
+    "@storybook/components": "^7.6.13",
+    "@storybook/core-events": "^7.6.13",
+    "@storybook/manager-api": "^7.6.13",
+    "@storybook/preview-api": "^7.6.13",
     "@storybook/react": "^7.6.13",
     "@storybook/react-webpack5": "^7.6.13",
     "@storybook/test-runner": "^0.16.0",
@@ -61,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "autoprefixer": "^10.4.16",
+    "axe-core": "^4.8.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^9.1.3",
     "chromatic": "^10.1.0",
@@ -70,6 +77,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "d3-scale-chromatic": "^3.0.0",
     "echarts": "^5.4.3",
+    "emotion-theming": "^11.0.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^9.1.0",
@@ -88,6 +96,7 @@
     "lerna": "^8.0.1",
     "lint-staged": "^15.2.0",
     "lodash": "^4.17.21",
+    "postcss": "^8.4.35",
     "postcss-flexbugs-fixes": "^5.0.2",
     "prettier": "^3.1.1",
     "prettier-plugin-organize-imports": "^3.2.4",
@@ -110,7 +119,8 @@
     "stylelint-config-standard": "20.0.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.3.3",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "webpack": "^5.90.1"
   },
   "scripts": {
     "start": "storybook dev -p 6006",
@@ -157,9 +167,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/*"
     ]
   },
   "main": "index.js",

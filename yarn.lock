@@ -1183,7 +1183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx@npm:^7.22.15, @babel/plugin-transform-react-jsx@npm:^7.22.5":
+"@babel/plugin-transform-react-jsx@npm:^7.22.15, @babel/plugin-transform-react-jsx@npm:^7.22.5, @babel/plugin-transform-react-jsx@npm:^7.23.4":
   version: 7.23.4
   resolution: "@babel/plugin-transform-react-jsx@npm:7.23.4"
   dependencies:
@@ -1764,7 +1764,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@czi-sds/components@npm:*, @czi-sds/components@workspace:^, @czi-sds/components@workspace:packages/components":
+"@czi-sds/components@workspace:^, @czi-sds/components@workspace:packages/components":
   version: 0.0.0-use.local
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
@@ -1789,7 +1789,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@czi-sds/data-viz@workspace:packages/data-viz"
   dependencies:
-    "@czi-sds/components": "npm:*"
+    "@czi-sds/components": "workspace:^"
     "@reduxjs/toolkit": "npm:^2.1.0"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
@@ -1821,6 +1821,8 @@ __metadata:
   resolution: "@czi-sds/monorepo@workspace:."
   dependencies:
     "@babel/core": "npm:^7.23.6"
+    "@babel/plugin-syntax-flow": "npm:^7.23.3"
+    "@babel/plugin-transform-react-jsx": "npm:^7.23.4"
     "@babel/preset-env": "npm:^7.23.6"
     "@babel/preset-react": "npm:^7.23.3"
     "@babel/preset-typescript": "npm:^7.23.3"
@@ -1847,6 +1849,10 @@ __metadata:
     "@storybook/addon-links": "npm:^7.6.13"
     "@storybook/addon-storyshots": "npm:^7.6.13"
     "@storybook/addons": "npm:^7.6.13"
+    "@storybook/components": "npm:^7.6.13"
+    "@storybook/core-events": "npm:^7.6.13"
+    "@storybook/manager-api": "npm:^7.6.13"
+    "@storybook/preview-api": "npm:^7.6.13"
     "@storybook/react": "npm:^7.6.13"
     "@storybook/react-webpack5": "npm:^7.6.13"
     "@storybook/test-runner": "npm:^0.16.0"
@@ -1877,6 +1883,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.15.0"
     "@typescript-eslint/parser": "npm:^6.15.0"
     autoprefixer: "npm:^10.4.16"
+    axe-core: "npm:^4.8.4"
     babel-eslint: "npm:^10.1.0"
     babel-loader: "npm:^9.1.3"
     chromatic: "npm:^10.1.0"
@@ -1886,6 +1893,7 @@ __metadata:
     cz-conventional-changelog: "npm:^3.3.0"
     d3-scale-chromatic: "npm:^3.0.0"
     echarts: "npm:^5.4.3"
+    emotion-theming: "npm:^11.0.0"
     eslint: "npm:^8.56.0"
     eslint-config-airbnb-typescript: "npm:^17.1.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -1904,6 +1912,7 @@ __metadata:
     lerna: "npm:^8.0.1"
     lint-staged: "npm:^15.2.0"
     lodash: "npm:^4.17.21"
+    postcss: "npm:^8.4.35"
     postcss-flexbugs-fixes: "npm:^5.0.2"
     prettier: "npm:^3.1.1"
     prettier-plugin-organize-imports: "npm:^3.2.4"
@@ -1927,6 +1936,7 @@ __metadata:
     ts-jest: "npm:^29.1.1"
     typescript: "npm:^5.3.3"
     url-loader: "npm:^4.1.1"
+    webpack: "npm:^5.90.1"
   languageName: unknown
   linkType: soft
 
@@ -2787,6 +2797,16 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10c0/0ea0b2675cf513ec44dc25605616a3c9b808b9832e74b5b63c44260d66b58558bba65764f81928fc1033ead911f8718dca1134049c3e7a93937faf436671df31
+  languageName: node
+  linkType: hard
+
+"@jridgewell/trace-mapping@npm:^0.3.20":
+  version: 0.3.22
+  resolution: "@jridgewell/trace-mapping@npm:0.3.22"
+  dependencies:
+    "@jridgewell/resolve-uri": "npm:^3.1.0"
+    "@jridgewell/sourcemap-codec": "npm:^1.4.14"
+  checksum: 10c0/18cf19f88e2792c1c91515f2b629aae05f3cdbb2e60c3886e16e80725234ce26dd10144c4981c05d9366e7094498c0b4fe5c1a89f4a730d7376a4ba4af448149
   languageName: node
   linkType: hard
 
@@ -5016,7 +5036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/components@npm:7.6.13":
+"@storybook/components@npm:7.6.13, @storybook/components@npm:^7.6.13":
   version: 7.6.13
   resolution: "@storybook/components@npm:7.6.13"
   dependencies:
@@ -5109,7 +5129,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/core-events@npm:7.6.13":
+"@storybook/core-events@npm:7.6.13, @storybook/core-events@npm:^7.6.13":
   version: 7.6.13
   resolution: "@storybook/core-events@npm:7.6.13"
   dependencies:
@@ -5280,7 +5300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/manager-api@npm:7.6.13":
+"@storybook/manager-api@npm:7.6.13, @storybook/manager-api@npm:^7.6.13":
   version: 7.6.13
   resolution: "@storybook/manager-api@npm:7.6.13"
   dependencies:
@@ -5371,7 +5391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/preview-api@npm:7.6.13":
+"@storybook/preview-api@npm:7.6.13, @storybook/preview-api@npm:^7.6.13":
   version: 7.6.13
   resolution: "@storybook/preview-api@npm:7.6.13"
   dependencies:
@@ -6282,7 +6302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.0":
+"@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.5":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
   checksum: 10c0/b3b0e334288ddb407c7b3357ca67dbee75ee22db242ca7c56fe27db4e1a31989cb8af48a84dd401deb787fe10cc6b2ab1ee82dc4783be87ededbe3d53c79c70d
@@ -7968,6 +7988,13 @@ __metadata:
   version: 4.8.3
   resolution: "axe-core@npm:4.8.3"
   checksum: 10c0/762392d03e49b5613e0d58c19bfe0bb0df253a56d6296b07d6d968729acef4ad25822e560f067c563368ac52a62c48cb341e6940b58252ca573334cd74cf8622
+  languageName: node
+  linkType: hard
+
+"axe-core@npm:^4.8.4":
+  version: 4.8.4
+  resolution: "axe-core@npm:4.8.4"
+  checksum: 10c0/1100ac42c4b8cde1fb7c428d2b76e5a14e20d9d41fe635c55048e4ba27f1eded729b838379a036b5ef9cf25ba7f7bedeef01ebd3b4accd2afee397b10b0265c4
   languageName: node
   linkType: hard
 
@@ -10674,6 +10701,13 @@ __metadata:
   version: 3.0.0
   resolution: "emojis-list@npm:3.0.0"
   checksum: 10c0/7dc4394b7b910444910ad64b812392159a21e1a7ecc637c775a440227dcb4f80eff7fe61f4453a7d7603fa23d23d30cc93fe9e4b5ed985b88d6441cd4a35117b
+  languageName: node
+  linkType: hard
+
+"emotion-theming@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "emotion-theming@npm:11.0.0"
+  checksum: 10c0/a37fd96b771316fe712540d7d6e74b72ea6b7e1e148666089191ee638e5f6591076fafce775af5598862565263061f9deaf9d0a4b2a14920c7a755febcb467ef
   languageName: node
   linkType: hard
 
@@ -18301,6 +18335,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:^8.4.35":
+  version: 8.4.35
+  resolution: "postcss@npm:8.4.35"
+  dependencies:
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 10c0/e8dd04e48001eb5857abc9475365bf08f4e508ddf9bc0b8525449a95d190f10d025acebc5b56ac2e94b3c7146790e4ae78989bb9633cb7ee20d1cc9b7dc909b2
+  languageName: node
+  linkType: hard
+
 "preact-render-to-string@npm:^5.1.19":
   version: 5.2.6
   resolution: "preact-render-to-string@npm:5.2.6"
@@ -21278,6 +21323,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"terser-webpack-plugin@npm:^5.3.10":
+  version: 5.3.10
+  resolution: "terser-webpack-plugin@npm:5.3.10"
+  dependencies:
+    "@jridgewell/trace-mapping": "npm:^0.3.20"
+    jest-worker: "npm:^27.4.5"
+    schema-utils: "npm:^3.1.1"
+    serialize-javascript: "npm:^6.0.1"
+    terser: "npm:^5.26.0"
+  peerDependencies:
+    webpack: ^5.1.0
+  peerDependenciesMeta:
+    "@swc/core":
+      optional: true
+    esbuild:
+      optional: true
+    uglify-js:
+      optional: true
+  checksum: 10c0/66d1ed3174542560911cf96f4716aeea8d60e7caab212291705d50072b6ba844c7391442541b13c848684044042bea9ec87512b8506528c12854943da05faf91
+  languageName: node
+  linkType: hard
+
 "terser@npm:^5.10.0, terser@npm:^5.16.8":
   version: 5.26.0
   resolution: "terser@npm:5.26.0"
@@ -21289,6 +21356,20 @@ __metadata:
   bin:
     terser: bin/terser
   checksum: 10c0/3906289c6bacd75804a47a583cdafefbd76c5edb39435369755c7b1592e57586fb2f4bddf6eb37a807d6e782171dbf0aa7bbdc80fd5b77b2f2b62196cac49b62
+  languageName: node
+  linkType: hard
+
+"terser@npm:^5.26.0":
+  version: 5.27.0
+  resolution: "terser@npm:5.27.0"
+  dependencies:
+    "@jridgewell/source-map": "npm:^0.3.3"
+    acorn: "npm:^8.8.2"
+    commander: "npm:^2.20.0"
+    source-map-support: "npm:~0.5.20"
+  bin:
+    terser: bin/terser
+  checksum: 10c0/bed0d39d9a7f2b82c87173e48081c46426a8820ba1dcb864bbfccd2df2b7fb8498a7ea4c8ef045ccce5713b23a6b4c3a784967f1b9f3115adaa7f51712f6e6ae
   languageName: node
   linkType: hard
 
@@ -22505,6 +22586,43 @@ __metadata:
   bin:
     webpack: bin/webpack.js
   checksum: 10c0/2562bf48788d651634fb7db6a5378c2fe3fce7f66831af38468da3944bd98756d68efea94a6909593993fb57b2d14cf802cbef2c83c6ef0047f7f606d59bec50
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.90.1":
+  version: 5.90.1
+  resolution: "webpack@npm:5.90.1"
+  dependencies:
+    "@types/eslint-scope": "npm:^3.7.3"
+    "@types/estree": "npm:^1.0.5"
+    "@webassemblyjs/ast": "npm:^1.11.5"
+    "@webassemblyjs/wasm-edit": "npm:^1.11.5"
+    "@webassemblyjs/wasm-parser": "npm:^1.11.5"
+    acorn: "npm:^8.7.1"
+    acorn-import-assertions: "npm:^1.9.0"
+    browserslist: "npm:^4.21.10"
+    chrome-trace-event: "npm:^1.0.2"
+    enhanced-resolve: "npm:^5.15.0"
+    es-module-lexer: "npm:^1.2.1"
+    eslint-scope: "npm:5.1.1"
+    events: "npm:^3.2.0"
+    glob-to-regexp: "npm:^0.4.1"
+    graceful-fs: "npm:^4.2.9"
+    json-parse-even-better-errors: "npm:^2.3.1"
+    loader-runner: "npm:^4.2.0"
+    mime-types: "npm:^2.1.27"
+    neo-async: "npm:^2.6.2"
+    schema-utils: "npm:^3.2.0"
+    tapable: "npm:^2.1.1"
+    terser-webpack-plugin: "npm:^5.3.10"
+    watchpack: "npm:^2.4.0"
+    webpack-sources: "npm:^3.2.3"
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: 10c0/c36b86e5aa42f07c865cc5221d88b84bc62267ca2e60edaf69e8fccebe284c8199d352701697546a0fa6599d648a05ea427607e854c61ccc269b9c230fb25efa
   languageName: node
   linkType: hard
 

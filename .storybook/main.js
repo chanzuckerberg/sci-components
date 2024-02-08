@@ -2,9 +2,6 @@ import { dirname, join } from "path";
 const path = require("path");
 const toPath = (filePath) => path.join(process.cwd(), filePath);
 module.exports = {
-  core: {
-    builder: "webpack5",
-  },
   // Storybook version 7 needs babel config
   babel: (config) => {
     return {
