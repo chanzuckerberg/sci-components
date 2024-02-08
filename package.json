@@ -110,6 +110,8 @@
     "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-ts": "^3.4.5",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
     "simplex-noise": "^4.0.1",
     "storybook": "^7.6.13",
     "storybook-addon-emotion-theme": "^2.1.1",
