@@ -31,6 +31,10 @@ const defaultStyle = (props: LinkProps) => {
     &:focus {
       color: ${theme?.app?.colors.primary[500]};
     }
+
+    &:active {
+      color: ${theme?.app?.colors.primary[600]};
+    }
   `;
 };
 

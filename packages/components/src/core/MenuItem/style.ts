@@ -121,10 +121,10 @@ const disabledStyles = (props: DisabledType) => {
   const { disabled } = props;
   if (!disabled) return ``;
 
-  const palette = getPalette(props);
+  const colors = getColors(props);
 
   return `
-    color: ${palette?.text?.disabled};
+    color: ${colors?.gray[300]};
     cursor: default;
   `;
 };

@@ -53,7 +53,9 @@ const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   const palette = getPalette(props);
 
   return css`
-    color: ${palette?.text?.disabled};
+    svg {
+      color: ${palette?.text?.disabled};
+    }
   `;
 };
 

@@ -335,7 +335,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         main: appTheme.colors.success[400],
       },
       text: {
-        disabled: appTheme.colors.gray[300],
+        disabled: appTheme.colors.gray[400],
         primary: common.black,
         secondary: appTheme.colors.gray[500],
       },
