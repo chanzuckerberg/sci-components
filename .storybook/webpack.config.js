@@ -45,10 +45,16 @@ module.exports = ({ config }) => {
     },
   });
 
-  // use style-loader and css-loader for style-dictionary css/scss files
+  // use css-loader for style-dictionary css files
   config.module.rules.push({
-    test: /\.(css|scss)$/,
-    use: ["style-loader", "css-loader"],
+    test: /\.css$/,
+    use: ["css-loader"],
+  });
+
+  // use style-loader for style-dictionary scss files
+  config.module.rules.push({
+    test: /\.scss$/,
+    use: ["style-loader"],
   });
 
   return config;
