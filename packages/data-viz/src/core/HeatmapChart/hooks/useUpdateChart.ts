@@ -58,6 +58,10 @@ export function useUpdateChart({
           replaceMerge: ["dataZoom", "tooltip"],
         });
 
+        /**
+         * We need to remove old event listeners and bind new ones to
+         * make sure that the event listeners are updated when the props change.
+         */
         if (onEvents) {
           for (const eventName in onEvents) {
             if (

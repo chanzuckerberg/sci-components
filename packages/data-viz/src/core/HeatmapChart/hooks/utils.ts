@@ -1,4 +1,5 @@
 import {
+  DataZoomComponentOption,
   DatasetComponentOption,
   ECharts,
   EChartsOption,
@@ -48,6 +49,19 @@ export interface CreateChartOptionsProps {
    * https://echarts.apache.org/en/option.html#dataZoom
    */
   dataZoom?: EChartsOption["dataZoom"];
+  /**
+   * The `camera` prop is utilized for implementing camera view port functionality
+   * within a specific area of the chart. This feature empowers users to render
+   * a confined portion of the heatmap. This selective rendering strategy becomes
+   * especially advantageous when dealing with extensive datasets. Instead of
+   * rendering the entire heatmap at once, the chart dynamically loads and renders
+   * specific segments as the user scrolls through the data. This approach optimizes
+   * performance and enables the creation of heatmaps with large amounts of data.
+   *
+   * The `height` and `width` properties are used to specify the dimensions of the
+   * camera view port. The `active` property is used to enable or disable the camera
+   * view port functionality.
+   */
   camera?: {
     active: boolean;
     height: number;
@@ -70,7 +84,13 @@ export interface CreateChartOptionsProps {
    * [{ value: "cellType1", textStyle: { color: "red" } }, "cellType2", "cellType3"]
    */
   yAxisData: CategoryAxisData;
+  /**
+   * The width of the chart in pixels
+   */
   width: number;
+  /**
+   * The height of the chart in pixels
+   */
   height: number;
   /**
    * Provide a mapping of data key to x/y axis encoding
@@ -174,10 +194,9 @@ export function createChartOptions(
       axisPointer,
       optionsAxisPointer
     ),
-    dataZoom:
-      camera && camera.active
-        ? Object.assign(defaultDataZoom, dataZoom, optionsDataZoom)
-        : [],
+    dataZoom: camera?.active
+      ? mergeDataZoom(defaultDataZoom, dataZoom, optionsDataZoom)
+      : [],
     dataset: {
       source: data as DatasetComponentOption["source"],
     },
@@ -222,6 +241,36 @@ export function createChartOptions(
     ],
     ...optionsRest,
   };
+}
+
+function mergeDataZoom(
+  defaultDataZoom: DataZoomComponentOption[],
+  dataZoom: EChartsOption["dataZoom"],
+  optionsDataZoom: EChartsOption["dataZoom"]
+): EChartsOption["dataZoom"] {
+  const finalDataZoom = Array.isArray(dataZoom)
+    ? dataZoom // if it's an array, assume that the user has [{...propsToChangeOnX}] OR [ , {...propsToChangeOnY}] OR [{...propsToChangeOnX}, {...propsToChangeOnY}]
+    : [dataZoom, dataZoom]; // else if the user only supplies one dataZoom object, we assume they want the props to apply to both x and y zoom objects
+
+  const finalOptionsDataZoom = Array.isArray(optionsDataZoom)
+    ? optionsDataZoom
+    : [optionsDataZoom, optionsDataZoom];
+
+  // merge x dataZoom options
+  const x = {
+    ...defaultDataZoom[0],
+    ...finalDataZoom[0],
+    ...finalOptionsDataZoom?.[0],
+  };
+
+  // merge y dataZoom options
+  const y = {
+    ...defaultDataZoom[1],
+    ...finalDataZoom[1],
+    ...finalOptionsDataZoom[1],
+  };
+
+  return [x, y] as EChartsOption["dataZoom"];
 }
 
 function generateDefaultValues(props: CreateChartOptionsProps) {
@@ -321,7 +370,7 @@ function generateDefaultValues(props: CreateChartOptionsProps) {
       yAxisIndex: 0,
       zoomOnMouseWheel: false,
     },
-  ];
+  ] as DataZoomComponentOption[];
 
   return {
     defaultAxisPointer,
