@@ -5,7 +5,7 @@ import {
   Dropdown,
   SDSAutocompleteValue,
   Tag,
-} from "../../../../../../../components";
+} from "@czi-sds/components";
 import { StyledControlPanelWrapper, StyledForm } from "./style";
 import {
   DataState,
