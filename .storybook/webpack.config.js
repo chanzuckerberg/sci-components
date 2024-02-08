@@ -3,7 +3,10 @@ const path = require("path");
 module.exports = ({ config }) => {
   config.resolve.alias = {
     ...config.resolve.alias,
-    src: path.resolve(__dirname, "../packages/components/src"),
+    src: [
+      path.resolve(__dirname, "../packages/components/src"),
+      path.resolve(__dirname, "../packages/data-viz/src"),
+    ],
   };
 
   // remove svg from existing rule
