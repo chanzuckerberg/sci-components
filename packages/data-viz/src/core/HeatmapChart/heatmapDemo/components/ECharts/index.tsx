@@ -18,7 +18,7 @@ import {
   ScatterSeriesOption,
   getInstanceByDom,
 } from "echarts";
-import HeatmapChart from "src/core/HeatmapChart";
+import HeatmapChart from "../../../index";
 
 type InterpolatorNames =
   | "Magma"
@@ -90,7 +90,16 @@ const ECharts = forwardRef(
           type: "downplay",
         });
       }
-    }, [data, size, color, emphasis, symbol, camera]);
+    }, [
+      data,
+      size,
+      color,
+      emphasis,
+      symbol,
+      camera,
+      onAxisChange,
+      onItemClicked,
+    ]);
 
     const xAxisLabelNames = GeneListGenerator(size).map((d) => d.name);
     const yAxisLabelNames = GeneListGenerator(size).map((d) => d.name);
@@ -115,7 +124,6 @@ const ECharts = forwardRef(
             scale: false,
           } as ScatterSeriesOption["emphasis"],
           name: "SDS Heatmap",
-          symbol: symbol.charAt(0).toLowerCase() + symbol.slice(1),
         },
       ],
       tooltip: camera
@@ -224,6 +232,7 @@ const ECharts = forwardRef(
           }}
           data={data}
           encode={{ x: "x", y: "y" }}
+          symbol={symbol}
           symbolSize={function (symbolProps: { value: number }) {
             switch (symbol) {
               case "circle":

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { StyledContainer, StyledHeatmapWrapper } from "./style";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { XAxisWrapper } from "../XAxisChart/style";
 import XAxisChart, { XAxisRefType } from "../XAxisChart";
 import {

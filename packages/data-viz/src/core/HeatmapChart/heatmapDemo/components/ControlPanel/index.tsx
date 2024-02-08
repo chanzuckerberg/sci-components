@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   Callout,
   DefaultAutocompleteOption,

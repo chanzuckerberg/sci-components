@@ -3,7 +3,6 @@ import RawHeatmapChart from "./index";
 import { COLORS } from "./storyUtils";
 import { ScatterSeriesOption } from "echarts";
 import App from "./heatmapDemo/App";
-import { SnackbarProvider } from "notistack";
 import { Provider } from "react-redux";
 import { store } from "./heatmapDemo/store";
 
@@ -78,16 +77,6 @@ const HeatmapChart = (props: Args): JSX.Element => {
         {...rest}
       />
     </>
-  );
-};
-
-export const HeatmapDemo = (): JSX.Element => {
-  return (
-    <SnackbarProvider maxSnack={3}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </SnackbarProvider>
   );
 };
 
@@ -223,3 +212,11 @@ function convertPercentageToDiameter(
     return (percentage * HEATMAP_ITEM_SIZE) / 100;
   }
 }
+
+export const HeatmapDemo = (): JSX.Element => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};

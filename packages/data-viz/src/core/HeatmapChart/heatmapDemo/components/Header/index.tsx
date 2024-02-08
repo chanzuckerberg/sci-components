@@ -6,7 +6,6 @@ import {
   StyledHeader,
 } from "./style";
 import { RootState } from "../../store";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Button, Icon, Tag, Tooltip } from "@czi-sds/components";
 import { useAppContext } from "../../store/useAppContext";
 
@@ -66,7 +65,7 @@ const Header = () => {
           arrow
         >
           <StyledButtonIcon
-            icon="infoCircle"
+            sdsIcon="infoCircle"
             sdsSize="large"
             sdsType="secondary"
           />

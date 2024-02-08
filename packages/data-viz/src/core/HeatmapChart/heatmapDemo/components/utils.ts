@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const EMPTY_ARRAY: any[] = [];
+export const EMPTY_ARRAY = [];
 export const HEATMAP_ITEM_SIZE = 24;
 export const HEATMAP_DEFAULT_SIZE = 50;
 export const Y_ITEM_COUNT = 20;

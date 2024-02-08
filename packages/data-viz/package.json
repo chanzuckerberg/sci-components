@@ -2,6 +2,7 @@
   "name": "@czi-sds/data-viz",
   "version": "0.4.2",
   "main": "dist/index.cjs.js",
+  "types": "dist/index.cjs.d.ts",
   "module": "dist/index.esm.js",
   "author": "",
   "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/sci-data-viz#readme",
@@ -66,13 +67,11 @@
     "react-dom": ">=17.0.1"
   },
   "devDependencies": {
-    "@czi-sds/components": "19.2.0",
     "@reduxjs/toolkit": "^2.1.0",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "d3-scale-chromatic": "^3.0.0",
     "jest-environment-jsdom": "^29.6.2",
-    "notistack": "^3.0.1",
     "react-redux": "^9.1.0",
     "simplex-noise": "^4.0.1"
   },
