@@ -10,9 +10,11 @@ module.exports = ({ config }) => {
   };
 
   config.resolve.fallback = {
-    "@czi-sds/components": [
-      path.resolve(__dirname, "../packages/data-viz/src"),
-    ],
+    "@czi-sds/components": path.resolve(
+      __dirname,
+      "../packages/components/src"
+    ),
+    "@czi-sds/data-viz": path.resolve(__dirname, "../packages/data-viz/src"),
   };
 
   // remove svg from existing rule
