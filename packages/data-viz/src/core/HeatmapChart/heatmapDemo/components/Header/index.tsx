@@ -6,7 +6,7 @@ import {
   StyledHeader,
 } from "./style";
 import { RootState } from "../../store";
-import { Button, Icon, Tag, Tooltip } from "@czi-sds/components";
+import { Button, Icon, Tag, Tooltip } from "../../../../../../../components";
 import { useAppContext } from "../../store/useAppContext";
 
 const TooltipTag = ({ label }: { label: string }) => {
