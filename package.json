@@ -159,9 +159,7 @@
       "packages/*"
     ],
     "nohoist": [
-      "@storybook",
-      "**/@storybook",
-      "**/@storybook/**"
+      "**/*"
     ]
   },
   "main": "index.js",
