@@ -5,6 +5,8 @@
   "license": "MIT",
   "private": "true",
   "devDependencies": {
+    "@czi-sds/components": "workspace:*",
+    "@czi-sds/data-viz": "workspace:*",
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",

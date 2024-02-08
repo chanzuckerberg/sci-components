@@ -213,10 +213,28 @@ function convertPercentageToDiameter(
   }
 }
 
-export const HeatmapDemo = (): JSX.Element => {
+const HeatmapDemoComponent = (): JSX.Element => {
   return (
     <Provider store={store}>
       <App />
     </Provider>
   );
+};
+
+export const HeatmapDemo = {
+  parameters: {
+    controls: {
+      exclude: [
+        "axisPointer",
+        "camera",
+        "echartsRendererMode",
+        "symbol",
+        "tooltip",
+      ],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <HeatmapDemoComponent {...args} />,
 };

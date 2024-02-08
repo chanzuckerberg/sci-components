@@ -25,7 +25,7 @@ export const StyledForm = styled("div")`
 `;
 
 export const StyledLabel = styled("span")`
-  font-family: Open Sans;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   margin-bottom: 2px;
   line-height: 18px;

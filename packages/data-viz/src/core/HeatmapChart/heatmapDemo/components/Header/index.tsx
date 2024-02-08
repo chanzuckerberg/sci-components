@@ -65,7 +65,7 @@ const Header = () => {
           arrow
         >
           <StyledButtonIcon
-            sdsIcon="infoCircle"
+            icon="infoCircle"
             sdsSize="large"
             sdsType="secondary"
           />
