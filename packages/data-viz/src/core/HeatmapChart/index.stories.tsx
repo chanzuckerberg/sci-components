@@ -159,9 +159,6 @@ export default {
   },
   component: HeatmapChart,
   parameters: {
-    // This parameter is used to set the story's layout to fullscreen
-    // and remove the padding around the storybook root element
-    layout: "fullscreen",
     snapshot: {
       skip: true,
     },
@@ -227,6 +224,9 @@ export const HeatmapDemo = {
         "tooltip",
       ],
     },
+    // This parameter is used to set the story's layout to fullscreen
+    // and remove the padding around the storybook root element
+    layout: "fullscreen",
     snapshot: {
       skip: true,
     },
