@@ -170,13 +170,15 @@ export default {
 
 export const Default = {
   args: {
+    axisPointer: axisPointerOptions[1],
     camera: {
       active: true,
       height: 20,
       width: 40,
     },
     echartsRendererMode: "svg",
-    symbol: "rect",
+    symbol: "circle",
+    tooltip: tooltipOptions[1],
   },
   parameters: {},
 };
