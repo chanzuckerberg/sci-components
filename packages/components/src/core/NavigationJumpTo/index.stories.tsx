@@ -25,7 +25,7 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
           backgroundColor: "#f4f4f4",
           color: "black",
           display: "flex",
-          fontFamily: "Open Sans, sans-serif",
+          fontFamily: "Inter, sans-serif",
           fontSize: "36px",
           fontWeight: 100,
           justifyContent: "center",
@@ -58,7 +58,7 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
     <Box>
       <Box
         sx={{
-          fontFamily: "Open Sans, sans-serif",
+          fontFamily: "Inter, sans-serif",
           margin: "0 0 30px 6px",
           width: 250,
         }}

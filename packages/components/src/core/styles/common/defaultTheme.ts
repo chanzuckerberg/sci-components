@@ -115,7 +115,7 @@ export const defaultAppTheme: AppTheme = {
     xxxs: 2,
   },
   typography: {
-    fontFamily: "Open Sans",
+    fontFamily: "Inter",
     styles: {
       body: {
         button: {

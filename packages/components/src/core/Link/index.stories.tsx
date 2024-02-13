@@ -38,7 +38,7 @@ export const Default = {
 
 const livePreviewStyles = {
   display: "grid",
-  fontFamily: "Open Sans",
+  fontFamily: "Inter",
   gridColumnGap: "24px",
   gridTemplateColumns: "repeat(2, 250px)",
 };
