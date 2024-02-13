@@ -1,5 +1,5 @@
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { BADGE } from "../../common/SDSBadges";
 
 const DesignTokens = (props: Args): JSX.Element => {
   return <p {...props}>Design Tokens go here</p>;
@@ -14,9 +14,9 @@ export default {
   },
   component: DesignTokens,
   parameters: {
-    badges: [BADGE.EXPERIMENTAL],
+    badges: [BADGE.WIP],
   },
-  title: "Foundations/Colors",
+  title: "Foundations/Colors [wip]",
 } as Meta;
 
 // Default

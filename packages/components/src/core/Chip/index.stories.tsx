@@ -2,7 +2,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import Chip from "./index";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { BADGE } from "../../common/SDSBadges";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;
@@ -27,9 +27,9 @@ const Demo = (props: Args): JSX.Element => {
 export default {
   component: Demo,
   parameters: {
-    badges: [BADGE.DEPRECATED, BADGE.OBSOLETE],
+    badges: [BADGE.DEPRECATED],
   },
-  title: "Deprecated/Chip",
+  title: "Deprecated/Chip [deprecated]",
 } as Meta;
 
 export const MediumSquareChip = {

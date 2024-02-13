@@ -11,7 +11,7 @@ import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SI
 import TagFilter from "../TagFilter";
 import { getColors, getCorners, getShadows } from "../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "./index";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { BADGE } from "../../common/SDSBadges";
 
 const StyledPopper = styled(Popper)`
   ${(props) => {
@@ -260,9 +260,9 @@ export default {
   },
   component: MenuSelect,
   parameters: {
-    badges: [BADGE.DEPRECATED, BADGE.OBSOLETE],
+    badges: [BADGE.DEPRECATED],
   },
-  title: "Deprecated/MenuSelect",
+  title: "Deprecated/MenuSelect [deprecated]",
 } as Meta;
 
 // Default

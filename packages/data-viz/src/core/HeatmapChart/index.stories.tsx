@@ -46,9 +46,9 @@ const HeatmapChart = (props: Args): JSX.Element => {
 export default {
   component: HeatmapChart,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.BETA],
   },
-  title: "Data Viz/HeatmapChart",
+  title: "Data Viz/HeatmapChart [beta]",
 } as Meta;
 
 // Default
