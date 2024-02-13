@@ -1,5 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import RawInputToggle from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const InputToggle = (props: Args): JSX.Element => {
   return <RawInputToggle {...props} />;
@@ -20,8 +21,9 @@ export default {
         "label",
       ],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Inputs/InputToggle",
+  title: "Components/Inputs/InputToggle",
 } as Meta;
 
 // Default

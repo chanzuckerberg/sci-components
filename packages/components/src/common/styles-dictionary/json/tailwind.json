@@ -1,12 +1,12 @@
 {
   "fontFamily": {
     "sds-regular": [
-      "Open Sans",
-      "OpenSans-Regular"
+      "Inter",
+      "Inter-Regular"
     ],
     "sds-semibold": [
-      "Open Sans",
-      "OpenSans-SemiBold"
+      "Inter",
+      "Inter-SemiBold"
     ]
   },
   "fontSize": {

@@ -1,6 +1,7 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawLink, { LinkProps } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Link = (props: LinkProps): JSX.Element => {
   const { sdsStyle } = props;
@@ -19,7 +20,10 @@ export default {
     },
   },
   component: Link,
-  title: "Link",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Link",
 } as Meta;
 
 // Default

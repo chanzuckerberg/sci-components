@@ -4,6 +4,7 @@ import React from "react";
 import Link from "../Link";
 import Tooltip from "../Tooltip";
 import RawTooltipTableContent from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const rows = [
   { label: "Label 1", value: 1 },
@@ -71,7 +72,10 @@ export default {
     },
   },
   component: TooltipTableContent,
-  title: "TooltipTable",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/TooltipTable",
 } as Meta;
 
 // Default

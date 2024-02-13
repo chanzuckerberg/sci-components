@@ -18,5 +18,13 @@ const preview = {
   globalTypes: {
     pseudo: {},
   },
+  parameters: {
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: ["Foundations", "Components", "Data Viz", "Deprecated"],
+      },
+    },
+  },
 };
 export default preview;

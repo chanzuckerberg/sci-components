@@ -6,6 +6,7 @@ import Button from "../Button";
 import RawNotification, { NotificationProps } from "./index";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import CustomSdsIcon from "src/common/customSdsIcon";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const iconOptions = [
   <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
@@ -143,7 +144,10 @@ export default {
     },
   },
   component: Notification,
-  title: "Notification",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Notification",
 } as Meta;
 
 // Default

@@ -3,6 +3,7 @@ import React from "react";
 import Button from "../Button";
 import MenuItem from "../MenuItem";
 import RawMenu from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Menu = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
@@ -43,7 +44,10 @@ const Menu = (props: Args): JSX.Element => {
 
 export default {
   component: Menu,
-  title: "Dropdowns/Menu",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Dropdowns/Menu",
 } as Meta;
 
 // Default

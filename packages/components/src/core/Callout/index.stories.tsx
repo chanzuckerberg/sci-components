@@ -7,6 +7,7 @@ import CalloutTitle from "./components/CalloutTitle";
 import RawCallout from "./index";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import CustomSvgIcon from "src/common/customSvgIcon";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const iconOptions = [
   <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
@@ -89,7 +90,10 @@ export default {
     },
   },
   component: Callout,
-  title: "Callout",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Callout",
 } as Meta;
 
 // Default

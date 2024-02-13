@@ -8,6 +8,7 @@ import { DefaultAutocompleteOption } from "../Autocomplete/components/Autocomple
 import Button from "../Button";
 import LoadingIndicator from "../LoadingIndicator";
 import RawDropdown from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const onChangeOptions = [
   noop,
@@ -143,7 +144,10 @@ export default {
     },
   },
   component: Dropdown,
-  title: "Dropdowns/Dropdown",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Dropdowns/Dropdown",
 } as Meta;
 
 // Default

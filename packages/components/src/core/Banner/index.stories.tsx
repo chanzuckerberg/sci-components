@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import RawBanner from "./index";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import CustomSvgIcon from "src/common/customSvgIcon";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
@@ -63,8 +64,9 @@ export default {
     axe: {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Banner",
+  title: "Components/Banner",
 } as Meta<Args>;
 
 // Default

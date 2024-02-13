@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawButtonDropdown from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const text = "Label";
 
@@ -45,7 +46,10 @@ export default {
     },
   },
   component: ButtonDropdown,
-  title: "ButtonDropdown",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/ButtonDropdown",
 } as Meta;
 
 // Default

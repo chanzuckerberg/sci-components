@@ -2,6 +2,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawTooltipCondensed from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const TooltipCondensed = (props: Args): JSX.Element => {
   const { title, indicator } = props;
@@ -31,7 +32,10 @@ export default {
     },
   },
   component: TooltipCondensed,
-  title: "TooltipCondensed",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/TooltipCondensed",
 } as Meta;
 
 // Default

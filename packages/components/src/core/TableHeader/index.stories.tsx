@@ -2,6 +2,7 @@
 import { Args, Meta } from "@storybook/react";
 import CellHeader from "../CellHeader";
 import RawTableHeader from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const TableHeader = (props: Args): JSX.Element => {
   return (
@@ -17,7 +18,10 @@ const TableHeader = (props: Args): JSX.Element => {
 
 export default {
   component: TableHeader,
-  title: "Table/TableHeader",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/TableHeader",
 } as Meta;
 
 export const Default = {};

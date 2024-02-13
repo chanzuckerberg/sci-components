@@ -5,6 +5,7 @@ import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
 import RawTooltip from "./index";
 import { TooltipExtraProps } from "./style";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Tooltip = (props: Args): JSX.Element => {
   const { title } = props;
@@ -68,10 +69,11 @@ export default {
   },
   component: Tooltip,
   parameters: {
+    badges: [BADGE.STABLE],
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     chromatic: { delay: 5000 },
   },
-  title: "Tooltip",
+  title: "Components/Tooltip",
 } as Meta;
 
 // Default

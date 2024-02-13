@@ -6,6 +6,7 @@ import * as React from "react";
 import { useState } from "react";
 import RawNavigationJumpTo from ".";
 import InputSlider from "../InputSlider";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 interface TabPanelPropsExtra extends TabPanelProps {
   sdsDemoHeight: number;
@@ -196,7 +197,10 @@ export default {
     },
   },
   component: NavigationJumpTo,
-  title: "NavigationJumpTo",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/NavigationJumpTo",
 } as Meta;
 
 // Default

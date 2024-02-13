@@ -2,6 +2,7 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import RawPagination from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Pagination = (props: Args): JSX.Element => {
   const { pageSize, totalCount, siblingCount, truncateDropdown, sdsStyle } =
@@ -44,7 +45,10 @@ export default {
     },
   },
   component: Pagination,
-  title: "Table/Pagination",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/Pagination",
 } as Meta;
 
 // Default

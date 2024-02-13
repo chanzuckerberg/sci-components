@@ -2,6 +2,7 @@
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import RawCellHeader, { CellHeaderDirection } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const CellHeader = (props: Args): JSX.Element => {
   const { direction, ...rest } = props;
@@ -57,7 +58,10 @@ export default {
     },
   },
   component: CellHeader,
-  title: "Table/CellHeader",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/CellHeader",
 } as Meta;
 
 // Default

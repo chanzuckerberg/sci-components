@@ -2,6 +2,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import { defaultAppTheme } from "../styles";
 import RawLoadingIndicator from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const LoadingIndicator = (props: Args): JSX.Element => {
   const { sdsStyle } = props;
@@ -16,7 +17,10 @@ export default {
     },
   },
   component: LoadingIndicator,
-  title: "LoadingIndicator",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/LoadingIndicator",
 } as Meta;
 
 // Default

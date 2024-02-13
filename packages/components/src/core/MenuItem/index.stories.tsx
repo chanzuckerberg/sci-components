@@ -3,6 +3,7 @@ import RawMenuItem, { MenuItemProps } from "./index";
 import { DemoWrapper } from "./style";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import CustomSvgIcon from "src/common/customSvgIcon";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const iconOptions = [
   "gear",
@@ -60,8 +61,9 @@ export default {
     axe: {
       disabledRules: ["aria-required-parent"],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Dropdowns/MenuItem",
+  title: "Components/Dropdowns/MenuItem",
 } as Meta;
 
 // Default

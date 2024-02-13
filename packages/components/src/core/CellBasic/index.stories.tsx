@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import Icon from "../Icon";
 import RawCellBasic from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const CellBasic = (props: Args): JSX.Element => {
   return (
@@ -91,7 +92,10 @@ export default {
     },
   },
   component: CellBasic,
-  title: "Table/CellBasic",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/CellBasic",
 } as Meta;
 
 // Default

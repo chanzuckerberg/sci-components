@@ -152,5 +152,7 @@
     "packages/*"
   ],
   "main": "index.js",
-  "dependencies": {}
+  "dependencies": {
+    "@geometricpanda/storybook-addon-badges": "^2.0.2"
+  }
 }

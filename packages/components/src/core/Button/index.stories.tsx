@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Icon from "../Icon";
 import RawButton from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const SDS_STYLES = ["rounded", "square", "minimal"];
 const SDS_TYPES = ["primary", "secondary"];
@@ -46,7 +47,10 @@ export default {
     },
   },
   component: Button,
-  title: "Button",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Button",
 } as Meta;
 
 // Default

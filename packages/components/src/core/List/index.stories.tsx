@@ -2,6 +2,7 @@ import { Args, Meta } from "@storybook/react";
 import ListItem from "../ListItem";
 import ListSubheader from "../ListSubheader";
 import RawList from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const List = (props: Args): JSX.Element => {
   return (
@@ -217,7 +218,10 @@ const List = (props: Args): JSX.Element => {
 
 export default {
   component: List,
-  title: "List",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/List",
 } as Meta;
 
 // Default

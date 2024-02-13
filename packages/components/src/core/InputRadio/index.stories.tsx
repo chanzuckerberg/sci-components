@@ -1,6 +1,7 @@
 import { RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import RawInputRadio from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const InputRadio = (props: Args): JSX.Element => {
   const { caption, label } = props;
@@ -18,7 +19,10 @@ const InputRadio = (props: Args): JSX.Element => {
 
 export default {
   component: InputRadio,
-  title: "Inputs/InputRadio",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Inputs/InputRadio",
 } as Meta;
 
 // Default

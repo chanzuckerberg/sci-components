@@ -5,6 +5,7 @@ import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import CustomSdsIcon from "src/common/customSdsIcon";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"small">["sdsType"]
@@ -85,7 +86,10 @@ export default {
     },
   },
   component: ButtonIcon,
-  title: "ButtonIcon",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/ButtonIcon",
 } as Meta;
 
 // Default

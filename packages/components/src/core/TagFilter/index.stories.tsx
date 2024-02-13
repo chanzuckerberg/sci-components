@@ -3,6 +3,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import RawTagFilter from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const StyledButton = styled(Button)`
   &:focus {
@@ -58,7 +59,10 @@ export default {
     },
   },
   component: TagFilter,
-  title: "TagFilter",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/TagFilter",
 } as Meta;
 
 // Default

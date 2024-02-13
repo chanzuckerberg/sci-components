@@ -4,6 +4,7 @@ import { noop } from "src/common/utils";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
 import RawComplexFilter from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const ComplexFilter = <T extends DefaultAutocompleteOption>(
   props: Args
@@ -57,7 +58,10 @@ export default {
     },
   },
   component: ComplexFilter,
-  title: "ComplexFilter",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Dropdowns/ComplexFilter",
 } as Meta;
 
 // Default

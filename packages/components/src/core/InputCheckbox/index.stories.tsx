@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawInputCheckbox from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const testId = "test-story";
 
@@ -39,7 +40,10 @@ export default {
     },
   },
   component: InputCheckbox,
-  title: "Inputs/InputCheckbox",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Inputs/InputCheckbox",
 } as Meta;
 
 // Default

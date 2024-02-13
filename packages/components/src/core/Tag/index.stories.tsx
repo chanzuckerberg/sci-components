@@ -5,6 +5,7 @@ import Icon from "../Icon";
 import RawTag from "./index";
 import { CommonScreenshotTestDemo, HOVER_OPTIONS } from "./index.testUtils";
 import { ExtraTagProps } from "./style";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Tag = (props: Args): JSX.Element => {
   const { label } = props;
@@ -88,7 +89,10 @@ export default {
     },
   },
   component: Tag,
-  title: "Tag",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Tag",
 } as Meta;
 
 // Default

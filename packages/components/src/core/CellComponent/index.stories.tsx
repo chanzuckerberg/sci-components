@@ -7,6 +7,7 @@ import TableRow from "../TableRow";
 import Tag from "../Tag";
 import RawCellComponent from "./index";
 import { StyledStoryBody, StyledStoryHeading } from "./style";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const CellComponent = (props: Args): JSX.Element => {
   const { horizontalAlign, verticalAlign, children } = props;
@@ -57,8 +58,9 @@ export default {
         "label",
       ],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Table/CellComponent",
+  title: "Components/Table/CellComponent",
 } as Meta;
 
 // Default

@@ -8,6 +8,7 @@ import ButtonIcon from "../ButtonIcon";
 import InputDropdown from "../InputDropdown";
 import Tag from "../Tag";
 import RawDropdownMenu from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const LABEL = "Github Labels";
 const POPPER_POSITION = "bottom-start";
@@ -140,8 +141,9 @@ export default {
         "listitem",
       ],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Dropdowns/DropdownMenu",
+  title: "Components/Dropdowns/DropdownMenu",
 } as Meta;
 
 // Default

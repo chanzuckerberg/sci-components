@@ -35,6 +35,7 @@ module.exports = {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/react"),
     getAbsolutePath("storybook-addon-pseudo-states"),
+    getAbsolutePath("@geometricpanda/storybook-addon-badges"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-webpack5"),

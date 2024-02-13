@@ -4,6 +4,7 @@ import React, { ReactNode, useState } from "react";
 import { noop } from "src/common/utils";
 import Tag from "../Tag";
 import RawTabs, { Tab, TabsProps } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 interface TabsArgs extends TabsProps {
   tabOneLabel: string;
@@ -53,12 +54,13 @@ export default {
   },
   component: Tabs,
   parameters: {
+    badges: [BADGE.STABLE],
     // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
     chromatic: { delay: 10000 },
   },
-  title: "Tabs",
+  title: "Components/Tabs",
 } as Meta;
 
 // Default

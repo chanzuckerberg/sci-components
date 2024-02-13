@@ -3,6 +3,7 @@ import React from "react";
 import AccordionDetails from "./components/AccordionDetails";
 import AccordionHeader from "./components/AccordionHeader";
 import RawAccordion from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Accordion = (props: Args): JSX.Element => {
   const { id, subtitle, useDivider, togglePosition } = props;
@@ -42,7 +43,10 @@ export default {
     },
   },
   component: Accordion,
-  title: "Accordion",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Accordion",
 } as Meta;
 
 // Default

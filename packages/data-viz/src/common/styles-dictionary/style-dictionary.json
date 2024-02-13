@@ -8,7 +8,7 @@
       "color": {
         "value": "black"
       },
-      "font-family": { "value": "'Open Sans', 'OpenSans-Regular'" },
+      "font-family": { "value": "'Inter', 'Inter-Regular'" },
       "body": {
         "xxxs": {
           "400": {
@@ -18,7 +18,7 @@
           },
           "600": {
             "font": {
-              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 11px/16px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -30,7 +30,7 @@
           },
           "600": {
             "font": {
-              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 12px/18px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -42,7 +42,7 @@
           },
           "600": {
             "font": {
-              "value": "600 13px/20px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 13px/20px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -54,7 +54,7 @@
           },
           "600": {
             "font": {
-              "value": "600 14px/24px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 14px/24px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -66,7 +66,7 @@
           },
           "600": {
             "font": {
-              "value": "600 16px/26px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 16px/26px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -78,7 +78,7 @@
           },
           "600": {
             "font": {
-              "value": "600 18px/28px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 18px/28px 'Inter', 'Inter-SemiBold'"
             }
           }
         }
@@ -87,7 +87,7 @@
         "xxxxs": {
           "600": {
             "font": {
-              "value": "600 10px/14px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 10px/14px 'Inter', 'Inter-SemiBold'"
             },
             "text-transform": { "value": " uppercase" }
           }
@@ -95,7 +95,7 @@
         "xxxs": {
           "600": {
             "font": {
-              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 11px/16px 'Inter', 'Inter-SemiBold'"
             },
             "text-transform": { "value": " uppercase" }
           }
@@ -103,7 +103,7 @@
         "xxs": {
           "600": {
             "font": {
-              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 12px/18px 'Inter', 'Inter-SemiBold'"
             },
             "text-transform": { "value": " uppercase" }
           }
@@ -113,42 +113,42 @@
         "xxxs": {
           "600": {
             "font": {
-              "value": "600 11px/16px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 11px/16px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "xxs": {
           "600": {
             "font": {
-              "value": "600 12px/18px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 12px/18px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "xs": {
           "600": {
             "font": {
-              "value": "600 13px/18px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 13px/18px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "s": {
           "600": {
             "font": {
-              "value": "600 14px/20px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 14px/20px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "m": {
           "600": {
             "font": {
-              "value": "600 16px/22px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 16px/22px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "l": {
           "600": {
             "font": {
-              "value": "600 18px/24px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 18px/24px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
@@ -156,14 +156,14 @@
         "xl": {
           "600": {
             "font": {
-              "value": "600 22px/30px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 22px/30px 'Inter', 'Inter-SemiBold'"
             }
           }
         },
         "xxl": {
           "600": {
             "font": {
-              "value": "600 26px/34px 'Open Sans', 'OpenSans-SemiBold'"
+              "value": "600 26px/34px 'Inter', 'Inter-SemiBold'"
             }
           }
         }

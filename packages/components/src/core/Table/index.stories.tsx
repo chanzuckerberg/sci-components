@@ -12,6 +12,7 @@ import TableRow from "../TableRow";
 import Tag from "../Tag";
 import { SdsTagColorType } from "../Tag/style";
 import RawTable from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const StyledIconCell = styled("div")`
   align-items: center;
@@ -190,7 +191,10 @@ const Table = (props: Args): JSX.Element => {
 
 export default {
   component: Table,
-  title: "Table/Table",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/Table",
 } as Meta;
 
 export const Default = {

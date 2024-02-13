@@ -16,6 +16,7 @@ import RawAutocomplete, {
   AutocompleteMultiColumnValue,
   SDSAutocompleteValue,
 } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const groupByOptions = [
   undefined,
@@ -300,8 +301,9 @@ export default {
         "listitem",
       ],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Dropdowns/Autocomplete",
+  title: "Components/Dropdowns/Autocomplete",
 } as Meta;
 
 // Default

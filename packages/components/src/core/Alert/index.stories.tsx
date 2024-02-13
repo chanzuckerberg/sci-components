@@ -6,6 +6,7 @@ import React from "react";
 import Button from "../Button";
 import { defaultTheme } from "../styles/common/defaultTheme";
 import Alert from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const DismissButton = styled(Button)`
   margin-left: -${defaultTheme.spacing(3)}px;
@@ -36,7 +37,10 @@ export default {
     },
   },
   component: Demo,
-  title: "Alert - To Be Depreciated",
+  parameters: {
+    badges: [BADGE.DEPRECATED, BADGE.OBSOLETE],
+  },
+  title: "Deprecated/Alert",
 } as Meta;
 
 export const Default = {

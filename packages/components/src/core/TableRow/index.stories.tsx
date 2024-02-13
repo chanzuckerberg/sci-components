@@ -2,6 +2,7 @@
 import { Args, Meta } from "@storybook/react";
 import CellBasic from "../CellBasic";
 import RawTableRow from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const TableRow = (props: Args): JSX.Element => {
   return (
@@ -50,7 +51,10 @@ export default {
     },
   },
   component: TableRow,
-  title: "Table/TableRow",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Table/TableRow",
 } as Meta;
 
 export const Default = {

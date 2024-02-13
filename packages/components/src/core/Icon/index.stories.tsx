@@ -11,6 +11,7 @@ import {
 } from "../styles";
 import RawIcon, { SdsIconWithColor } from "./index";
 import { IconNameToSizes, iconMap } from "./map";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const Icon = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, sdsType, ...rest } = props;
@@ -67,7 +68,10 @@ export default {
     },
   },
   component: Icon,
-  title: "Icon",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Icon",
 } as Meta;
 
 // Default

@@ -2,6 +2,7 @@ import { FormControl } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawInputText from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const InputText = (props: Args): JSX.Element => {
   const {
@@ -63,7 +64,10 @@ export default {
     },
   },
   component: InputText,
-  title: "Inputs/InputText",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Inputs/InputText",
 } as Meta;
 
 // Default

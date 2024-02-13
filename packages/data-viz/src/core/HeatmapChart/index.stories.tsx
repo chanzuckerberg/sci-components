@@ -1,6 +1,7 @@
 import { Args, Meta } from "@storybook/react";
 import RawHeatmapChart from "./index";
 import { COLORS } from "./storyUtils";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const NUMBERS = Array.from(Array(20).keys());
 
@@ -44,6 +45,9 @@ const HeatmapChart = (props: Args): JSX.Element => {
 
 export default {
   component: HeatmapChart,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
   title: "Data Viz/HeatmapChart",
 } as Meta;
 

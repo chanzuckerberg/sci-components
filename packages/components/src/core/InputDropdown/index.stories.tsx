@@ -8,6 +8,7 @@ import Callout from "../Callout";
 import CalloutTitle from "../Callout/components/CalloutTitle";
 import DropdownMenu from "../DropdownMenu";
 import RawInputDropdown, { InputDropdownProps } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const StyledInputDropdown = styled(RawInputDropdown)`
   ${({ width }: Args) => {
@@ -253,7 +254,10 @@ export default {
     },
   },
   component: InputDropdown,
-  title: "Inputs/InputDropdown",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Inputs/InputDropdown",
 } as Meta;
 
 // Default

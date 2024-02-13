@@ -1,6 +1,7 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawInputSlider from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const generateCustomMarks = (min: number, max: number) => {
   return [
@@ -90,8 +91,9 @@ export default {
         "label",
       ],
     },
+    badges: [BADGE.STABLE],
   },
-  title: "Inputs/InputSlider",
+  title: "Components/Inputs/InputSlider",
 } as Meta;
 
 // Default

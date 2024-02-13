@@ -3,6 +3,7 @@ import RawSegmentedControl, {
   SegmentedControlProps,
   SingleButtonDefinition,
 } from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
@@ -52,7 +53,10 @@ export default {
     },
   },
   component: SegmentedControl,
-  title: "SegmentedControl",
+  parameters: {
+    badges: [BADGE.NEEDS_REVISION],
+  },
+  title: "Components/SegmentedControl",
 } as Meta;
 
 interface SegmentedControlArgs extends SegmentedControlProps {

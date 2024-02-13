@@ -1,6 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import RawInputSearch from "./index";
+import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const InputSearch = (props: Args): JSX.Element => {
   const { id, placeholder, label, disabled, sdsStyle, sdsStage, intent } =
@@ -54,7 +55,10 @@ export default {
     },
   },
   component: InputSearch,
-  title: "Inputs/InputSearch",
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/Inputs/InputSearch",
 } as Meta;
 
 // Default
