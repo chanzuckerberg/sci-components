@@ -375,7 +375,7 @@ function generateDefaultValues(props: CreateChartOptionsProps) {
       filterMode: "filter",
       moveOnMouseMove: true,
       // There's a PR to allow touchpad panning
-      // https://github.com/apache/echarts/pull/17288
+      // https://github.com/apache/echarts/pull/19352
       moveOnMouseWheel: false,
       orient: "horizontal",
       preventDefaultMouseMove: true,
