@@ -251,7 +251,7 @@ function mergeAxisPointer(
 ): EChartsOption["axisPointer"] {
   const finalAxisPointer = Array.isArray(axisPointer)
     ? axisPointer // if it's an array, assume that the user has [{...propsToChangeOnX}] OR [ , {...propsToChangeOnY}] OR [{...propsToChangeOnX}, {...propsToChangeOnY}]
-    : [axisPointer, axisPointer]; // else if the user only supplies one dataZoom object, we assume they want the props to apply to both x and y zoom objects
+    : [axisPointer, axisPointer]; // else if the user only supplies one AxisPointer object, we assume they want the props to apply to both x and y axisPointer objects
 
   const finalOptionsAxisPointer = Array.isArray(optionsAxisPointer)
     ? optionsAxisPointer
