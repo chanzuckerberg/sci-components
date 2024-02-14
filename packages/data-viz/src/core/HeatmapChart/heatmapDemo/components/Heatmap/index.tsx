@@ -37,7 +37,7 @@ const Heatmap = () => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   return (
-    <StyledContainer camera={camera}>
+    <StyledContainer>
       <YAxisWrapper
         id="y-axis-wrapper"
         height={camera ? heatmapCanvasSize.height : HEATMAP_ITEM_SIZE * size}

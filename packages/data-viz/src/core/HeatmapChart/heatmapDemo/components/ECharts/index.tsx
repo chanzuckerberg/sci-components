@@ -319,10 +319,6 @@ const ECharts = forwardRef(
               type: "downplay",
             });
 
-          // const data = echartInstance
-          //   ? (echartInstance.getOption().series as any)[0].data
-          //   : [];
-
           const dataIndex = [];
 
           switch (emphasis) {
@@ -374,9 +370,6 @@ const ECharts = forwardRef(
               type: "downplay",
             });
 
-          // const data = echartInstance
-          //   ? (echartInstance.getOption().series as any)[0].data
-          //   : [];
           const dataIndex = [];
 
           for (let i = 0; i < size; i++) {
@@ -400,10 +393,6 @@ const ECharts = forwardRef(
               seriesIndex: [0],
               type: "downplay",
             });
-
-          // const data = echartInstance
-          //   ? (echartInstance.getOption().series as any)[0].data
-          //   : [];
 
           const dataIndex = [];
 

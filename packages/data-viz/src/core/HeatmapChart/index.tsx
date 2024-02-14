@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT } from "../../common/utils";
 import { useUpdateChart } from "./hooks/useUpdateChart";
 import { CreateChartOptionsProps } from "./hooks/utils";
 import { ChartContainer } from "./style";
@@ -107,7 +107,6 @@ const HeatmapChart = forwardRef(
           }
         }
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [chart, echartsRendererMode, isChartInitialized, onEvents]);
 
     // Initialize charts on component mount
@@ -115,12 +114,25 @@ const HeatmapChart = forwardRef(
       initChart();
     }, [initChart]);
 
-    // Reinitialize chart if renderer mode changes
+    // Reinitialize the chart when the renderer mode changes
     useEffect(() => {
+      // Dispose of the current chart
       chart?.dispose();
+
+      // Reset chart initialization state and set chart to null
       setIsChartInitialized(false);
       setChart(null);
+
+      // Initialize a new chart
       initChart();
+
+      /**
+       * (masoudmanson): We don't include the 'chart' dependency in the array because
+       * doing so would lead to an infinite loop of initializing and disposing the chart.
+       * We specifically want to reinitialize the chart only when the renderer mode changes.
+       * However, since we use the 'chart' state to dispose of the chart, we disable the
+       * eslint rule for exhaustive-deps to prevent warnings.
+       */
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [echartsRendererMode]);
 

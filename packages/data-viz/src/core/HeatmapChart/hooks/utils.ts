@@ -1,4 +1,5 @@
 import {
+  AxisPointerComponentOption,
   DataZoomComponentOption,
   DatasetComponentOption,
   ECharts,
@@ -189,7 +190,7 @@ export function createChartOptions(
 
   return {
     animation: false,
-    axisPointer: Object.assign(
+    axisPointer: mergeAxisPointer(
       defaultAxisPointer,
       axisPointer,
       optionsAxisPointer
@@ -243,6 +244,36 @@ export function createChartOptions(
   };
 }
 
+function mergeAxisPointer(
+  defaultAxisPointer: AxisPointerComponentOption,
+  axisPointer: EChartsOption["axisPointer"],
+  optionsAxisPointer: EChartsOption["axisPointer"]
+): EChartsOption["axisPointer"] {
+  const finalAxisPointer = Array.isArray(axisPointer)
+    ? axisPointer // if it's an array, assume that the user has [{...propsToChangeOnX}] OR [ , {...propsToChangeOnY}] OR [{...propsToChangeOnX}, {...propsToChangeOnY}]
+    : [axisPointer, axisPointer]; // else if the user only supplies one dataZoom object, we assume they want the props to apply to both x and y zoom objects
+
+  const finalOptionsAxisPointer = Array.isArray(optionsAxisPointer)
+    ? optionsAxisPointer
+    : [optionsAxisPointer, optionsAxisPointer];
+
+  // merge x axisPointer options
+  const x = {
+    ...defaultAxisPointer,
+    ...finalAxisPointer[0],
+    ...finalOptionsAxisPointer?.[0],
+  };
+
+  // merge y axisPointer options
+  const y = {
+    ...defaultAxisPointer,
+    ...finalAxisPointer[1],
+    ...finalOptionsAxisPointer[1],
+  };
+
+  return [x, y] as EChartsOption["axisPointer"];
+}
+
 function mergeDataZoom(
   defaultDataZoom: DataZoomComponentOption[],
   dataZoom: EChartsOption["dataZoom"],
@@ -289,7 +320,7 @@ function generateDefaultValues(props: CreateChartOptionsProps) {
     label: { show: false },
     show: false,
     triggerOn: "mousemove",
-  };
+  } as AxisPointerComponentOption;
 
   const defaultXAxis = {
     axisLabel: { fontSize: 0, rotate: 90 },
