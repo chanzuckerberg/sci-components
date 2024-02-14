@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 
-import { EMPTY_OBJECT } from "../../common/utils";
+import { EMPTY_OBJECT } from "src/common/utils";
 import { useUpdateChart } from "./hooks/useUpdateChart";
 import { CreateChartOptionsProps } from "./hooks/utils";
 import { ChartContainer } from "./style";
@@ -52,22 +52,42 @@ const HeatmapChart = forwardRef(
       throw Error("Chart must have width and height > 0");
     }
 
-    // State for chart initialization
-    const [isChartInitialized, setIsChartInitialized] = useState(false);
-
-    // State for ECharts instance
-    const [chart, setChart] = useState<ECharts | null>(null);
-
     // Ref for the chart container
     const innerRef = useRef<HTMLDivElement | null>(null);
 
+    /**
+     * (thuang): We need both a state and a ref to store the chart instance, so
+     * some hooks can opt out of re-rendering when the chart instance changes.
+     */
+    const [chart, setChart] = useState<ECharts | null>(null);
+    const chartRef = useRef(chart);
+
+    /**
+     * (thuang): Use this ref to store the onEvents prop to prevent
+     * unnecessary re-renders when the onEvents prop changes.
+     * NOTE: This implies that `onEvents` prop changes alone from the parent
+     * won't re-render the chart
+     */
+    const onEventsRef = useRef(onEvents);
+
+    /**
+     * (thuang): Use this function to dispose the chart instance for both
+     * the state and the ref. This is to prevent memory leaks.
+     */
+    const disposeChart = useCallback(() => {
+      chartRef.current?.dispose();
+      chartRef.current = null;
+      setChart(null);
+    }, []);
+
     // Function to initialize the chart
     const initChart = useCallback(() => {
+      const onEventsCurrent = onEventsRef.current;
       const { current } = innerRef;
 
       if (
         !current ||
-        isChartInitialized ||
+        chartRef.current ||
         // (thuang): echart's `init()` will throw error if the container has 0 width or height
         current?.getAttribute("height") === "0" ||
         current?.getAttribute("width") === "0"
@@ -81,60 +101,41 @@ const HeatmapChart = forwardRef(
         useDirtyRect: true,
       });
 
-      setIsChartInitialized(true);
-
       // Bind events if provided
-      if (onEvents) {
-        bindEvents(rawChart, onEvents);
+      if (onEventsCurrent) {
+        bindEvents(rawChart, onEventsCurrent);
       }
 
       setChart(rawChart);
+      chartRef.current = rawChart;
 
       // Cleanup function
       return () => {
-        chart?.dispose();
+        disposeChart();
 
         // Unbind events if provided
-        if (onEvents) {
-          for (const eventName in onEvents) {
+        if (onEventsCurrent) {
+          for (const eventName in onEventsCurrent) {
             if (
-              Object.prototype.hasOwnProperty.call(onEvents, eventName) &&
+              Object.prototype.hasOwnProperty.call(
+                onEventsCurrent,
+                eventName
+              ) &&
               typeof eventName === "string" &&
-              typeof onEvents[eventName] === "function"
+              typeof onEventsCurrent[eventName] === "function"
             ) {
-              rawChart.off(eventName, onEvents[eventName]);
+              rawChart.off(eventName, onEventsCurrent[eventName]);
             }
           }
         }
       };
-    }, [chart, echartsRendererMode, isChartInitialized, onEvents]);
+    }, [echartsRendererMode, disposeChart]);
 
     // Initialize charts on component mount
     useEffect(() => {
+      disposeChart();
       initChart();
-    }, [initChart]);
-
-    // Reinitialize the chart when the renderer mode changes
-    useEffect(() => {
-      // Dispose of the current chart
-      chart?.dispose();
-
-      // Reset chart initialization state and set chart to null
-      setIsChartInitialized(false);
-      setChart(null);
-
-      // Initialize a new chart
-      initChart();
-
-      /**
-       * (masoudmanson): We don't include the 'chart' dependency in the array because
-       * doing so would lead to an infinite loop of initializing and disposing the chart.
-       * We specifically want to reinitialize the chart only when the renderer mode changes.
-       * However, since we use the 'chart' state to dispose of the chart, we disable the
-       * eslint rule for exhaustive-deps to prevent warnings.
-       */
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [echartsRendererMode]);
+    }, [initChart, disposeChart]);
 
     // Hook to update chart data and options
     useUpdateChart({
