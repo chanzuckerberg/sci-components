@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
-          cache: "yarn" # Cache Yarn dependencies for faster builds
+          # cache: "yarn" # Cache Yarn dependencies for faster builds
 
       # Step 3: Set up npm and authentication
       - name: "Setup npm"
