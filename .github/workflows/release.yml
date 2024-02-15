@@ -44,7 +44,7 @@ jobs:
 
       # Step 5: Install project dependencies using Yarn
       - name: Install dependencies
-        run: yarn ci
+        run: yarn
 
       # Step 6: Build the component library in 'dist/' directory
       - name: Build component library in dist/
@@ -101,7 +101,7 @@ jobs:
             const [owner, repo] = ownerAndRepo.split('/');
             const head = "prod";
             const base = "main";
-            const title = "feat: Merge prod into main";
+            const title = "chore(release): Merge prod into main";
             const pr = await github.rest.pulls.list({owner, repo, base, head: `${owner}:${head}`})
             if (pr.data.length>0) {
               return pr.data[0].number;

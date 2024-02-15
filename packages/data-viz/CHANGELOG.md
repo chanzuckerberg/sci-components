@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.5.0...@czi-sds/data-viz@0.6.0) (2024-02-15)
+
+### Features
+
+- **heatmap:** Base Heatmap Built ([#737](https://github.com/chanzuckerberg/sci-components/issues/737)) ([90bab28](https://github.com/chanzuckerberg/sci-components/commit/90bab2809d560e5d8835b97f89a4f421c85ebed3))
+
+# [0.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.4.2...@czi-sds/data-viz@0.5.0) (2024-02-15)
+
+### Features
+
+- **icons:** adds hub icons ([#525](https://github.com/chanzuckerberg/sci-components/issues/525)) ([3fc888b](https://github.com/chanzuckerberg/sci-components/commit/3fc888b80f526adc38359eee7792fac133fa1944)), closes [#458](https://github.com/chanzuckerberg/sci-components/issues/458)
+
 ## [0.4.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.4.0...@czi-sds/data-viz@0.4.2) (2024-01-10)
 
 **Note:** Version bump only for package @czi-sds/data-viz

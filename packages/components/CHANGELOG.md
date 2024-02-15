@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.3.0...@czi-sds/components@19.4.0) (2024-02-15)
+
+### Features
+
+- **heatmap:** Base Heatmap Built ([#737](https://github.com/chanzuckerberg/sci-components/issues/737)) ([90bab28](https://github.com/chanzuckerberg/sci-components/commit/90bab2809d560e5d8835b97f89a4f421c85ebed3))
+
+# [19.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.2.0...@czi-sds/components@19.3.0) (2024-02-15)
+
+### Bug Fixes
+
+- **callout:** allow Callout component to not have an icon ([#717](https://github.com/chanzuckerberg/sci-components/issues/717)) ([4215898](https://github.com/chanzuckerberg/sci-components/commit/4215898e45d0102eccb25efb9924cc086681a652)), closes [#578](https://github.com/chanzuckerberg/sci-components/issues/578)
+- **callout:** fix callout expand in production ([#736](https://github.com/chanzuckerberg/sci-components/issues/736)) ([1a4decb](https://github.com/chanzuckerberg/sci-components/commit/1a4decbca90b2bb348465bdafbd29e5a66bc8e93))
+
+### Features
+
+- Add SVG Icon Props ([#726](https://github.com/chanzuckerberg/sci-components/issues/726)) ([f71236f](https://github.com/chanzuckerberg/sci-components/commit/f71236ffb37da248696680666d611b34b75c0da7))
+- **icons:** adds hub icons ([#525](https://github.com/chanzuckerberg/sci-components/issues/525)) ([3fc888b](https://github.com/chanzuckerberg/sci-components/commit/3fc888b80f526adc38359eee7792fac133fa1944)), closes [#458](https://github.com/chanzuckerberg/sci-components/issues/458)
+- **ions:** new icons added to the SDS library ([#740](https://github.com/chanzuckerberg/sci-components/issues/740)) ([838f888](https://github.com/chanzuckerberg/sci-components/commit/838f888a06de7295b07c7cf038f2103a75ae3ff7))
+
 # [19.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.0.0...@czi-sds/components@19.2.0) (2024-01-10)
 
 ### Bug Fixes
