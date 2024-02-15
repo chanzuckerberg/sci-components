@@ -138,7 +138,7 @@
     "prepare": "husky install",
     "lint": "lerna run lint",
     "build": "lerna run build",
-    "ci": "yarn install --immutable",
+    "ci": "yarn install",
     "version:ci": "HUSKY=0 lerna version --yes --conventional-commits",
     "publish:ci": "HUSKY=0 lerna publish from-package --yes"
   },

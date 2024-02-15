@@ -44,7 +44,7 @@ jobs:
 
       # Step 5: Install project dependencies using Yarn
       - name: Install dependencies
-        run: yarn ci
+        run: yarn
 
       # Step 6: Build the component library in 'dist/' directory
       - name: Build component library in dist/
