@@ -59,8 +59,12 @@
     "skipLibCheck": true
   },
   "include": [
-    "packages/*/src/**/*",
+    "./packages/*/src/**/*",
     ".eslintrc.js"
   ],
-  "exclude": ["node_modules", "packages/*/node_modules"],
+  "exclude": ["node_modules", "./packages/*/node_modules"],
+  "references": [
+    { "path": "./packages/components" },
+    { "path": "./packages/data-viz" }
+  ]
 }

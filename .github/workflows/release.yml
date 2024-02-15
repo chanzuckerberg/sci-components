@@ -101,7 +101,7 @@ jobs:
             const [owner, repo] = ownerAndRepo.split('/');
             const head = "prod";
             const base = "main";
-            const title = "feat: Merge prod into main";
+            const title = "chore(release): Merge prod into main";
             const pr = await github.rest.pulls.list({owner, repo, base, head: `${owner}:${head}`})
             if (pr.data.length>0) {
               return pr.data[0].number;
