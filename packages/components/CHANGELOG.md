@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.3.0...@czi-sds/components@19.4.0) (2024-02-15)
+
+### Features
+
+- **heatmap:** Base Heatmap Built ([#737](https://github.com/chanzuckerberg/sci-components/issues/737)) ([90bab28](https://github.com/chanzuckerberg/sci-components/commit/90bab2809d560e5d8835b97f89a4f421c85ebed3))
+
 # [19.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.2.0...@czi-sds/components@19.3.0) (2024-02-15)
 
 ### Bug Fixes
