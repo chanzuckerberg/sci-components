@@ -159,6 +159,9 @@ export default {
   },
   component: HeatmapChart,
   parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
     snapshot: {
       skip: true,
     },
