@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
-          # cache: "yarn" # Cache Yarn dependencies for faster builds
+          cache: "yarn" # Cache Yarn dependencies for faster builds
 
       # Step 3: Set up npm and authentication
       - name: "Setup npm"
@@ -44,7 +44,7 @@ jobs:
 
       # Step 5: Install project dependencies using Yarn
       - name: Install dependencies
-        run: yarn ci
+        run: yarn
 
       # Step 6: Build the component library in 'dist/' directory
       - name: Build component library in dist/
