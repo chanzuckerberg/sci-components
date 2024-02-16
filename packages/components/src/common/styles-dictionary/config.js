@@ -54,5 +54,5 @@ module.exports = {
       transformGroup: "scss",
     },
   },
-  source: ["src/common/styles-dictionary/*.json"],
+  source: ["src/common/styles-dictionary/design-tokens/*.json"],
 };

@@ -1,7 +1,9 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { TypographyStyle } from "@mui/material";
-import { Typography } from "../defaultTheme";
+import { Typography } from "../defaultThemeTypes";
 import { CommonThemeProps, getTypography } from "../selectors/theme";
+
+// Font Body
 
 type FontBodySize = keyof Typography["styles"]["body"];
 
@@ -26,6 +28,8 @@ export const fontBodyXs = fontBody("xs");
 export const fontBodyXxs = fontBody("xxs");
 export const fontBodyXxxs = fontBody("xxxs");
 
+// Font Caps
+
 type FontCapsSize = keyof Typography["styles"]["caps"];
 
 export const fontCaps = (fontSize: FontCapsSize) => {
@@ -48,6 +52,8 @@ export const fontCaps = (fontSize: FontCapsSize) => {
 export const fontCapsXxs = fontCaps("xxs");
 export const fontCapsXxxs = fontCaps("xxxs");
 export const fontCapsXxxxs = fontCaps("xxxxs");
+
+// Font Header
 
 type FontHeaderSize = keyof Typography["styles"]["header"];
 
@@ -73,6 +79,53 @@ export const fontHeaderS = fontHeader("s");
 export const fontHeaderXs = fontHeader("xs");
 export const fontHeaderXxs = fontHeader("xxs");
 export const fontHeaderXxxs = fontHeader("xxxs");
+
+// Font Code
+
+type FontCodeSize = keyof Typography["styles"]["code"];
+
+export const fontCode = (fontSize: FontCodeSize) => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
+    const typography = getTypography(props);
+
+    if (!typography) return null;
+
+    const {
+      styles: { code },
+    } = typography;
+
+    return css`
+      ${themeToCss(code[fontSize])}
+    `;
+  };
+};
+
+export const fontCodeXs = fontCode("xs");
+export const fontCodeS = fontCode("s");
+
+// Font Tabular
+
+type FontTabularSize = keyof Typography["styles"]["tabular"];
+
+export const fontTabular = (fontSize: FontTabularSize) => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
+    const typography = getTypography(props);
+
+    if (!typography) return null;
+
+    const {
+      styles: { tabular },
+    } = typography;
+
+    return css`
+      ${themeToCss(tabular[fontSize])}
+      font-variant-numeric: "tabular-nums",
+    `;
+  };
+};
+
+export const fontTabularXs = fontTabular("xs");
+export const fontTabularS = fontTabular("s");
 
 function themeToCss(fontTheme: TypographyStyle) {
   return css`

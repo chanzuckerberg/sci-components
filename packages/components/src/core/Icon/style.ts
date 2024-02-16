@@ -14,14 +14,12 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
 }
 
 export type SdsIconColorType =
-  | "beta"
+  | "purple"
   | "gray"
-  | "primary"
-  | "secondary"
-  | "info"
-  | "success"
-  | "warning"
-  | "error";
+  | "blue"
+  | "green"
+  | "yellow"
+  | "red";
 
 interface SdsIconWithColor {
   iconColor?: SdsIconColorType;
@@ -58,7 +56,7 @@ function buttonStyle(): SerializedStyles {
 function staticStyle<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const { iconColor = "primary", shade = 400 } = props;
+  const { iconColor = "blue", shade = 400 } = props;
   const colors = getColors(props);
 
   return css`
@@ -70,7 +68,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const colors = getColors(props);
-  const { iconColor = "primary", shade = 400 } = props;
+  const { iconColor = "blue", shade = 400 } = props;
 
   return css`
     color: ${colors?.gray[500]};

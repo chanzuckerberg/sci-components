@@ -1,14 +1,13 @@
 import { colors } from "@mui/material";
-import {
-  createTheme,
-  Theme,
-  ThemeOptions,
-  TypographyStyle,
-} from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
+import { AppTheme, SDSThemeOptions } from "./defaultThemeTypes";
 
 const createThemeAdaptor = createTheme;
 
 const { common } = colors;
+
+const fontFamilyCode = '"IBM Plex Mono", monospace';
+const tabularNums = "tabular-nums";
 
 enum FontWeight {
   bold = 700,
@@ -19,19 +18,13 @@ enum FontWeight {
 }
 
 const defaultThemeColors = {
-  beta: {
-    "100": "#F4F0F9",
-    "200": "#F0EBF6",
-    "400": "#7A41CE",
-    "500": "#703CBE",
-    "600": "#693BAC",
-  },
-  error: {
-    "100": "#FEF2F2",
-    "200": "#FBE8E8",
-    "400": "#DC132C",
-    "500": "#C61128",
-    "600": "#B70016",
+  blue: {
+    "100": "#F5F9FF",
+    "200": "#E9F1FF",
+    "300": "#A6C9FF",
+    "400": "#0B68F8",
+    "500": "#0142A4",
+    "600": "#002660",
   },
   gray: {
     "100": "#F8F8F8",
@@ -41,32 +34,28 @@ const defaultThemeColors = {
     "500": "#767676",
     "600": "#545454",
   },
-  info: {
-    "100": "#EFF2FC",
-    "200": "#EBEFFC",
-    "400": "#3867FA",
-    "500": "#2B52CD",
-    "600": "#223F9C",
-  },
-  primary: {
-    "100": "#F8F9FE",
-    "200": "#EFF2FC",
-    "300": "#A9BDFC",
-    "400": "#3867FA",
-    "500": "#2B52CD",
-    "600": "#223F9C",
-  },
-  secondary: {
-    "400": "#9BC74E",
-  },
-  success: {
+  green: {
     "100": "#ECF5F0",
     "200": "#E6F7ED",
     "400": "#3CB371",
     "500": "#349A61",
     "600": "#1C7F48",
   },
-  warning: {
+  purple: {
+    "100": "#F4F0F9",
+    "200": "#F0EBF6",
+    "400": "#7A41CE",
+    "500": "#703CBE",
+    "600": "#693BAC",
+  },
+  red: {
+    "100": "#FEF2F2",
+    "200": "#FBE8E8",
+    "400": "#DC132C",
+    "500": "#C61128",
+    "600": "#B70016",
+  },
+  yellow: {
     "100": "#FCF6EC",
     "200": "#FFF3E1",
     "400": "#F5A623",
@@ -84,18 +73,16 @@ export const defaultAppTheme: AppTheme = {
     s: 2,
   },
   fontWeights: {
-    bold: 700,
-    light: 300,
-    medium: 800,
     regular: 400,
     semibold: 600,
   },
   iconSizes: {
-    input: { height: 16, width: 16 }, // for use with input icons only (radio and checkbox)
-    l: { height: 22, width: 22 },
-    s: { height: 14, width: 14 },
+    // for use with input icons only (radio and checkbox)
+    input: { height: 16, width: 16 },
+    l: { height: 24, width: 24 },
+    s: { height: 16, width: 16 },
     xl: { height: 32, width: 32 },
-    xs: { height: 10, width: 10 },
+    xs: { height: 12, width: 12 },
   },
   shadows: {
     l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
@@ -104,135 +91,272 @@ export const defaultAppTheme: AppTheme = {
     s: "0 2px 4px 0 rgba(0,0,0, 0.25)",
   },
   spacing: {
-    default: 10,
-    l: 14,
-    m: 10,
+    default: 12,
+    l: 16,
+    m: 12,
     s: 8,
-    xl: 22,
+    xl: 24,
     xs: 6,
-    xxl: 38,
+    xxl: 40,
     xxs: 4,
     xxxs: 2,
   },
   typography: {
-    fontFamily: "Inter",
     styles: {
       body: {
         button: {
+          fontFamily: "Inter",
           fontSize: 13,
-          fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0.08px",
           lineHeight: "20px",
           textTransform: "none",
         },
         l: {
+          fontFamily: "Inter",
           fontSize: 18,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "28px",
         },
         m: {
+          fontFamily: "Inter",
           fontSize: 16,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "26px",
         },
         s: {
+          fontFamily: "Inter",
           fontSize: 14,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.08px",
           lineHeight: "24px",
         },
         xs: {
+          fontFamily: "Inter",
           fontSize: 13,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.08px",
           lineHeight: "20px",
         },
         xxs: {
+          fontFamily: "Inter",
           fontSize: 12,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.1px",
           lineHeight: "18px",
         },
         xxxs: {
+          fontFamily: "Inter",
           fontSize: 11,
           fontWeight: FontWeight.regular,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.1px",
+          lineHeight: "16px",
+        },
+      },
+      body2: {
+        button: {
+          fontFamily: "Inter",
+          fontSize: 13,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.08px",
+          lineHeight: "20px",
+          textTransform: "none",
+        },
+        l: {
+          fontFamily: "Inter",
+          fontSize: 18,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "28px",
+        },
+        m: {
+          fontFamily: "Inter",
+          fontSize: 16,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "26px",
+        },
+        s: {
+          fontFamily: "Inter",
+          fontSize: 14,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.08px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontFamily: "Inter",
+          fontSize: 13,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.08px",
+          lineHeight: "20px",
+        },
+        xxs: {
+          fontFamily: "Inter",
+          fontSize: 12,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.1px",
+          lineHeight: "18px",
+        },
+        xxxs: {
+          fontFamily: "Inter",
+          fontSize: 11,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0.1px",
           lineHeight: "16px",
         },
       },
       caps: {
         xxs: {
+          fontFamily: "Inter",
           fontSize: 12,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "1.0px",
+          letterSpacing: "0.5px",
           lineHeight: "18px",
           textTransform: "uppercase",
         },
         xxxs: {
+          fontFamily: "Inter",
           fontSize: 11,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "1.0px",
+          letterSpacing: "0.5px",
           lineHeight: "16px",
           textTransform: "uppercase",
         },
         xxxxs: {
+          fontFamily: "Inter",
           fontSize: 10,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "1.0px",
+          letterSpacing: "0.5px",
           lineHeight: "14px",
           textTransform: "uppercase",
         },
       },
+      code: {
+        s: {
+          fontFamily: fontFamilyCode,
+          fontSize: 14,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontFamily: fontFamilyCode,
+          fontSize: 13,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0px",
+          lineHeight: "20px",
+        },
+      },
+      code2: {
+        s: {
+          fontFamily: fontFamilyCode,
+          fontSize: 14,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontFamily: fontFamilyCode,
+          fontSize: 13,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "20px",
+        },
+      },
       header: {
         l: {
+          fontFamily: "Inter",
           fontSize: 18,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "24px",
         },
         m: {
+          fontFamily: "Inter",
           fontSize: 16,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "22px",
         },
         s: {
+          fontFamily: "Inter",
           fontSize: 14,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.08px",
           lineHeight: "20px",
         },
         xl: {
+          fontFamily: "Inter",
           fontSize: 22,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "30px",
         },
         xs: {
+          fontFamily: "Inter",
           fontSize: 13,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.08px",
           lineHeight: "18px",
         },
         xxl: {
+          fontFamily: "Inter",
           fontSize: 26,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0px",
           lineHeight: "34px",
         },
         xxs: {
+          fontFamily: "Inter",
           fontSize: 12,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.1px",
           lineHeight: "18px",
         },
         xxxs: {
+          fontFamily: "Inter",
           fontSize: 11,
           fontWeight: FontWeight.semibold,
-          letterSpacing: "0.3px",
+          letterSpacing: "0.1px",
           lineHeight: "16px",
+        },
+      },
+      tabular: {
+        s: {
+          fontFamily: "Inter",
+          fontSize: 14,
+          fontVariantNumeric: tabularNums,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontFamily: "Inter",
+          fontSize: 13,
+          fontVariantNumeric: tabularNums,
+          fontWeight: FontWeight.regular,
+          letterSpacing: "0px",
+          lineHeight: "20px",
+        },
+      },
+      tabular2: {
+        s: {
+          fontFamily: "Inter",
+          fontSize: 14,
+          fontVariantNumeric: tabularNums,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "24px",
+        },
+        xs: {
+          fontFamily: "Inter",
+          fontSize: 13,
+          fontVariantNumeric: tabularNums,
+          fontWeight: FontWeight.semibold,
+          letterSpacing: "0px",
+          lineHeight: "20px",
         },
       },
     },
@@ -247,7 +371,7 @@ export const defaultAppTheme: AppTheme = {
 // override every theme property that makes use of colors.
 defaultAppTheme.borders = {
   error: {
-    "400": `1px solid ${defaultAppTheme.colors.error[400]}`,
+    "400": `1px solid ${defaultAppTheme.colors.red[400]}`,
   },
   gray: {
     "100": `1px solid ${defaultAppTheme.colors.gray[100]}`,
@@ -262,17 +386,17 @@ defaultAppTheme.borders = {
     solid: `1px solid`,
   },
   primary: {
-    "300": `1px solid ${defaultAppTheme.colors.primary[300]}`,
-    "400": `1px solid ${defaultAppTheme.colors.primary[400]}`,
-    "500": `1px solid ${defaultAppTheme.colors.primary[500]}`,
-    "600": `1px solid${defaultAppTheme.colors.primary[600]}`,
-    dashed: `2px dashed ${defaultAppTheme.colors.primary[400]}`,
+    "300": `1px solid ${defaultAppTheme.colors.blue[300]}`,
+    "400": `1px solid ${defaultAppTheme.colors.blue[400]}`,
+    "500": `1px solid ${defaultAppTheme.colors.blue[500]}`,
+    "600": `1px solid${defaultAppTheme.colors.blue[600]}`,
+    dashed: `2px dashed ${defaultAppTheme.colors.blue[400]}`,
   },
   success: {
-    "400": `1px solid ${defaultAppTheme.colors.success[400]}`,
+    "400": `1px solid ${defaultAppTheme.colors.green[400]}`,
   },
   warning: {
-    "400": `1px solid ${defaultAppTheme.colors.warning[400]}`,
+    "400": `1px solid ${defaultAppTheme.colors.yellow[400]}`,
   },
 };
 
@@ -303,9 +427,9 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
       },
       divider: appTheme.colors.gray[200],
       error: {
-        dark: appTheme.colors.error[600],
-        light: appTheme.colors.error[200],
-        main: appTheme.colors.error[400],
+        dark: appTheme.colors.red[600],
+        light: appTheme.colors.red[200],
+        main: appTheme.colors.red[400],
       },
       grey: {
         "100": appTheme.colors.gray[100],
@@ -316,23 +440,23 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         "600": appTheme.colors.gray[600],
       },
       info: {
-        dark: appTheme.colors.info[600],
-        light: appTheme.colors.info[200],
-        main: appTheme.colors.info[400],
+        dark: appTheme.colors.blue[600],
+        light: appTheme.colors.blue[200],
+        main: appTheme.colors.blue[400],
       },
       mode: "light",
       primary: {
-        dark: appTheme.colors.primary[600],
-        light: appTheme.colors.primary[300],
-        main: appTheme.colors.primary[400],
+        dark: appTheme.colors.blue[600],
+        light: appTheme.colors.blue[300],
+        main: appTheme.colors.blue[400],
       },
       secondary: {
-        main: appTheme.colors.secondary[400],
+        main: appTheme.colors.green[400],
       },
       success: {
-        dark: appTheme.colors.success[600],
-        light: appTheme.colors.success[200],
-        main: appTheme.colors.success[400],
+        dark: appTheme.colors.green[600],
+        light: appTheme.colors.green[200],
+        main: appTheme.colors.green[400],
       },
       text: {
         disabled: appTheme.colors.gray[400],
@@ -340,9 +464,9 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
         secondary: appTheme.colors.gray[500],
       },
       warning: {
-        dark: appTheme.colors.warning[600],
-        light: appTheme.colors.warning[200],
-        main: appTheme.colors.warning[400],
+        dark: appTheme.colors.yellow[600],
+        light: appTheme.colors.yellow[200],
+        main: appTheme.colors.yellow[400],
       },
     },
     shadows: [
@@ -408,7 +532,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
       body2: appTheme.typography.styles.body.xxs,
       button: appTheme.typography.styles.body.button,
       caption: appTheme.typography.styles.body.xxxs,
-      fontFamily: `${appTheme.typography.fontFamily}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
+      fontFamily: `${appTheme.typography.styles.body.s.fontFamily}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif`,
       h1: appTheme.typography.styles.header.xxl,
       h2: appTheme.typography.styles.header.xl,
       h3: appTheme.typography.styles.header.l,
@@ -423,142 +547,5 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
 }
 
 const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(defaultAppTheme);
-
-export interface SDSTheme extends Theme {
-  app?: AppTheme;
-}
-
-export interface SDSThemeOptions extends ThemeOptions {
-  app?: AppTheme;
-}
-
-interface AppTheme {
-  borders?: Borders;
-  colors: Colors;
-  corners: Corners;
-  fontWeights: FontWeights;
-  iconSizes: IconSizes;
-  shadows: Shadows;
-  spacing: Spacings;
-  typography: Typography;
-}
-
-export interface Shadows {
-  none: "none";
-  s: string;
-  m: string;
-  l: string;
-}
-
-export interface Typography {
-  fontFamily: React.CSSProperties["fontFamily"];
-  styles: {
-    header: {
-      xxl: TypographyStyle;
-      xl: TypographyStyle;
-      l: TypographyStyle;
-      m: TypographyStyle;
-      s: TypographyStyle;
-      xs: TypographyStyle;
-      xxs: TypographyStyle;
-      xxxs: TypographyStyle;
-    };
-    body: {
-      button: TypographyStyle;
-      l: TypographyStyle;
-      m: TypographyStyle;
-      s: TypographyStyle;
-      xs: TypographyStyle;
-      xxs: TypographyStyle;
-      xxxs: TypographyStyle;
-    };
-    caps: {
-      xxs: TypographyStyle;
-      xxxs: TypographyStyle;
-      xxxxs: TypographyStyle;
-    };
-  };
-}
-
-export interface FontWeights {
-  bold: number;
-  light: number;
-  medium: number;
-  regular: number;
-  semibold: number;
-}
-
-export interface Corners {
-  none: number;
-  s: number;
-  m: number;
-  l: number;
-}
-
-export interface Spaces {
-  default: number;
-  xxxs: number;
-  xxs: number;
-  xs: number;
-  s: number;
-  m: number;
-  l: number;
-  xl: number;
-  xxl: number;
-}
-export type Spacings = Spaces;
-
-export interface Color {
-  600?: string;
-  500?: string;
-  400: string;
-  300?: string;
-  200?: string;
-  100?: string;
-}
-
-export interface Colors {
-  beta: Color;
-  primary: Color;
-  secondary: Color;
-  gray: Color;
-  info: Color;
-  success: Color;
-  warning: Color;
-  error: Color;
-}
-
-interface IconSize {
-  height: number;
-  width: number;
-}
-
-export interface IconSizes {
-  xs: IconSize;
-  s: IconSize;
-  l: IconSize;
-  xl: IconSize;
-  input: IconSize;
-}
-
-export interface Border {
-  600?: string;
-  500?: string;
-  400?: string;
-  300?: string;
-  200?: string;
-  100?: string;
-  dashed?: string;
-  solid?: string;
-}
-
-export interface Borders {
-  error: Border;
-  gray: Border;
-  link: Border;
-  primary: Border;
-  success: Border;
-  warning: Border;
-}
 
 export const defaultTheme = createThemeAdaptor(defaultThemeOptions);

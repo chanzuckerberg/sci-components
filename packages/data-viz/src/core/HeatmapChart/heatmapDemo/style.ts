@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 export const Container = styled("div")`
-  font-family: "Open Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   display: grid;
   grid-template-columns: 250px 1fr;
   grid-template-rows: 70px 1fr;

@@ -8,7 +8,7 @@
     "include": [
         "./src/**/*",
         "jest.setup.ts",
-        "../../.eslintrc.js",
+        "../../.eslintrc.js"
     ],
     "exclude": [
         "node_modules"

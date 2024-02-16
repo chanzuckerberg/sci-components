@@ -32,7 +32,7 @@ export const StyledAccordion = styled(Accordion, {
     return css`
       &.MuiAccordion-root {
         box-shadow: ${shadows?.none};
-        font-family: ${typography?.fontFamily};
+        font-family: ${typography?.styles?.body?.s?.fontFamily};
         border-bottom: ${useDivider ? border?.gray[300] : "none"};
         height: fit-content;
 

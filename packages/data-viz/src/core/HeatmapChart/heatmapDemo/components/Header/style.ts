@@ -16,6 +16,7 @@ export const StyledHeader = styled("div")`
 
   h3 {
     margin: 0;
+    line-height: 32px;
   }
 `;
 

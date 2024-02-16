@@ -11,16 +11,17 @@ const TypeToColor: Record<StatusType, string> = {
   wip: "#D8921F",
 };
 
-const TypeToBackGroundColor: Record<StatusType, string> = {
-  beta: "#F4F0F9",
-  deprecated: "#FEF2F2",
-  wip: "#FCF6EC",
+const TypeToBorderColor: Record<StatusType, string> = {
+  beta: "#7A41CE",
+  deprecated: "#DC132C",
+  wip: "#F5A623",
 };
 
 export const StyledLabel = styled("label")`
   ${(props: StyledLabelProps) => {
     const { type } = props;
     const color = TypeToColor[type];
+    const borderColor = TypeToBorderColor[type];
 
     return `
             margin: 0 16px 0 8px;
@@ -28,8 +29,7 @@ export const StyledLabel = styled("label")`
             font-size: 10px;
             font-weight: 600;
             color: ${color};
-            border: solid 1px transparent;
-            background-color: ${TypeToBackGroundColor[type]};
+            border: solid 1px ${borderColor};
             border-radius: 2px;
         `;
   }}
