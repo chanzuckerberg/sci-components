@@ -1,11 +1,11 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { defaultAppTheme } from "../styles";
 import RawButtonIcon from "./index";
 import { ButtonIconExtraProps, ButtonIconSizeToTypes } from "./style";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { SDSAppTheme } from "../styles";
 
 type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"small">["sdsType"]
@@ -107,7 +107,7 @@ export const Default = {
 // Live Preview
 
 const LivePreviewDemo = (): JSX.Element => {
-  const spacings = defaultAppTheme?.spacing;
+  const spacings = SDSAppTheme?.spacing;
 
   const livePreviewStyles: React.CSSProperties = {
     alignItems: "center",

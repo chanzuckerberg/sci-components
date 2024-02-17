@@ -10,7 +10,7 @@ import {
   Spaces,
   Spacings,
   Typography,
-} from "../defaultTheme";
+} from "../types";
 
 // (thuang): Somehow this namespace needs to be globally unique to prevent
 // namespace collisions.

@@ -1,8 +1,14 @@
 import { Args, Meta } from "@storybook/react";
 import { BADGE } from "../../common/SDSBadges";
+import { StyledDiv, StyledSpan } from "./style";
 
 const DesignTokens = (props: Args): JSX.Element => {
-  return <p {...props}>Design Tokens go here</p>;
+  return (
+    <StyledDiv {...props}>
+      <span>Design Tokens go here</span>
+      <StyledSpan>12343430032</StyledSpan>
+    </StyledDiv>
+  );
 };
 
 export default {

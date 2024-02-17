@@ -1,6 +1,6 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import { defaultAppTheme } from "../styles";
+import { SDSAppTheme } from "../styles";
 import RawLoadingIndicator from "./index";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
@@ -41,7 +41,7 @@ export const CustomAriaLabel = {
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const spacings = defaultAppTheme?.spacing;
+  const spacings = SDSAppTheme?.spacing;
 
   const livePreviewStyles = {
     display: "grid",
