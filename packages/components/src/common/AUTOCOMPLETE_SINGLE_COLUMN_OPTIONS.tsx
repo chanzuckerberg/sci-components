@@ -34,12 +34,12 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "name with details",
   },
   {
-    icon: <CustomSdsIcon sdsSize="s" color="gray" />,
+    icon: <CustomSdsIcon sdsSize="s" color="gray" shade={500} />,
     name: "Custom SDS Icon",
     section: "With Icon",
   },
   {
-    icon: <CustomSvgIcon sx={{ color: "#999", height: 14, width: 14 }} />,
+    icon: <CustomSvgIcon sx={{ color: "#767676", height: 16, width: 16 }} />,
     name: "Custom SVG Icon",
     section: "With Icon",
   },
@@ -48,7 +48,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "Puzzle Piece",
     sdsIconProps: {
       color: "gray",
-      sdsSize: "xl",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -58,6 +58,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "Copy",
     sdsIconProps: {
       color: "gray",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -66,6 +67,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "Light Bulb",
     sdsIconProps: {
       color: "gray",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -75,6 +77,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "List",
     sdsIconProps: {
       color: "gray",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -83,6 +86,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "Vertical Tree",
     sdsIconProps: {
       color: "gray",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -91,6 +95,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     name: "Link",
     sdsIconProps: {
       color: "gray",
+      shade: 500,
     },
     section: "With Icon",
   },
@@ -103,21 +108,21 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
             label="bug"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="error"
+            color="negative"
             hover={false}
           />
           <Tag
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="warning"
+            color="notice"
             hover={false}
           />
           <Tag
             label="refactor"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="gray"
+            color="neutral"
             hover={false}
           />
         </div>

@@ -14,6 +14,7 @@ export interface SDSComponentPalette {
     fillSelected: string;
     fillDisabled: string;
     onFillDisabled: string;
+    surface: string;
     surfacePrimary: string;
     surfaceSecondary: string;
     surfaceTertiary: string;
@@ -60,6 +61,15 @@ export interface SDSComponentPalette {
     icon: string;
   };
   negative: {
+    fill: string;
+    fillHover: string;
+    fillPressed: string;
+    fillOnFill: string;
+    surface: string;
+    border: string;
+    icon: string;
+  };
+  neutral: {
     fill: string;
     fillHover: string;
     fillPressed: string;
@@ -119,17 +129,25 @@ export interface SDSTextPalette {
  */
 declare module "@mui/material/styles" {
   // (masoudmanson): Extends the MUI TypeText to include the SDSTextPalette
-  export interface TypeText extends SDSTextPalette {}
+  // export interface TypeText extends SDSTextPalette {}
 
   // (masoudmanson): Extends the MUI Palette to include the SDSComponentPalette and the SDSTextPalette
   export interface Palette {
-    component: SDSComponentPalette;
-    text: TypeText;
+    sds: {
+      component: SDSComponentPalette;
+      text: SDSTextPalette;
+    };
+    // component: SDSComponentPalette;
+    // text: TypeText;
   }
 
   export interface PaletteOptions {
-    component?: SDSComponentPalette;
-    text?: Partial<TypeText>;
+    sds?: {
+      component?: SDSComponentPalette;
+      text?: SDSTextPalette;
+    };
+    // component?: SDSComponentPalette;
+    // text?: Partial<TypeText>;
   }
 }
 
@@ -284,6 +302,136 @@ export interface Colors {
   yellow: Color;
 }
 
+export interface AccentColor {
+  border: string;
+  borderDisabled: string;
+  borderFocus: string;
+  borderHover: string;
+  borderOpen: string;
+  borderSelected: string;
+  fill: string;
+  fillDisabled: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface BaseColor {
+  border: string;
+  borderDisabled: string;
+  borderHover: string;
+  divider: string;
+  fill: string;
+  fillDisabled: string;
+  fillHover: string;
+  fillOpen: string;
+  fillPressed: string;
+  fillSelected: string;
+  icon: string;
+  iconDisabled: string;
+  iconHover: string;
+  iconPressed: string;
+  onFillDisabled: string;
+  surface: string;
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  surfaceTertiary: string;
+}
+
+export interface BetaColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface InfoColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface NegativeColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface NeutralColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface NoticeColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface PositiveColor {
+  border: string;
+  fill: string;
+  fillHover: string;
+  fillOnFill: string;
+  fillPressed: string;
+  icon: string;
+  surface: string;
+}
+
+export interface SemanticComponentColors {
+  accent: AccentColor;
+  base: BaseColor;
+  beta: BetaColor;
+  info: InfoColor;
+  negative: NegativeColor;
+  notice: NoticeColor;
+  neutral: NeutralColor;
+  positive: PositiveColor;
+}
+
+export interface SemanticTextColors {
+  action: {
+    default?: string;
+    hover?: string;
+    pressed?: string;
+  };
+  base: {
+    accent?: string;
+    disabled?: string;
+    onFill?: string;
+    onFillDisabled?: string;
+    primary?: string;
+    secondary?: string;
+  };
+  beta: string;
+  info: string;
+  negative: string;
+  notice: string;
+  positive: string;
+}
+
 export interface IconSize {
   height: number;
   width: number;
@@ -304,6 +452,7 @@ export interface Border {
   300?: string;
   200?: string;
   100?: string;
+  black?: string;
   dashed?: string;
   solid?: string;
 }
@@ -315,6 +464,7 @@ export interface Borders {
   info: Border;
   link: Border;
   negative: Border;
+  none: string;
   notice: Border;
   positive: Border;
 }

@@ -6,9 +6,9 @@ import {
   fontHeaderXs,
   getBorders,
   getCorners,
+  getSemanticComponentColors,
   getShadows,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface StyleProps extends CommonThemeProps {
@@ -41,11 +41,9 @@ export const StyledHeaderTitle = styled("div", {
   ${(props) => {
     const { search } = props;
 
-    const typography = getTypography(props);
     const spacings = getSpaces(props);
 
     return `
-      font-family: ${typography?.fontFamily};
       padding-right: ${spacings?.m}px;
       margin-bottom: ${search ? spacings?.s : spacings?.m}px;
     `;
@@ -53,7 +51,8 @@ export const StyledHeaderTitle = styled("div", {
 `;
 
 export const StyledDropdownMenuAutocompleteWrapper = styled("div")`
-  & .${autocompleteClasses.popper}, & .MuiPopper-root {
+  & .${autocompleteClasses.popper}, & .MuiPopper-root,
+  .base-Popper-root {
     position: relative !important;
     transform: none !important;
     width: 100% !important;
@@ -79,10 +78,11 @@ export const StyledPopper = styled(Popper, {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
-      border: ${borders?.gray[100]};
+      background-color: ${semanticComponentColors?.base?.surface};
+      border: ${borders?.base[100]};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;
@@ -96,10 +96,12 @@ export const StyledPaper = styled(Paper, {
 })`
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
+    const borders = getBorders(props);
+    const shadows = getShadows(props);
 
     return `
-      box-shadow: none !important;
-      border: none !important;
+      box-shadow: ${shadows?.none} !important;
+      border: ${borders?.none} !important;
       border-radius: 0;
       margin: 0;
       padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;

@@ -2,7 +2,7 @@
 
 exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 <div
-  class="MuiToggleButtonGroup-root css-10j5ryy-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root css-k29a0u-MuiToggleButtonGroup-root"
   role="group"
 >
   <button
@@ -11,7 +11,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List A"
+    value="A"
   >
     <span
       class=""
@@ -38,7 +38,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-middleButton css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List B"
+    value="B"
   >
     <span
       class=""
@@ -65,7 +65,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-middleButton css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List C"
+    value="C"
   >
     <span
       class=""
@@ -92,7 +92,7 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton css-1x4vipr-MuiButtonBase-root-MuiToggleButton-root"
     tabindex="0"
     type="button"
-    value="List D"
+    value="D"
   >
     <span
       class=""

@@ -412,7 +412,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
             // exclude "wide" width option for dark-style Tooltip
             (sdsStyle === "light" ||
               (sdsStyle === "dark" && width === "default")) && (
-              <div>
+              <div key={String(sdsStyle) + String(width)}>
                 <>
                   {/* Show "Width" label for light-style Tooltip only */}
                   {sdsStyle === "light" && (

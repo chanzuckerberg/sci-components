@@ -119,7 +119,7 @@ function TagColor({
         // exclude gray primary from rendering in the main ScreenshotTest story (types.includes("secondary")), but allow gray primary to render in GrayPrimaryScreenshotTest story
         return types.includes("secondary") &&
           sdsType === "primary" &&
-          color === "gray" ? null : (
+          color === "neutral" ? null : (
           <TagType
             sdsStyle={sdsStyle}
             color={color}

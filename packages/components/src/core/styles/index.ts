@@ -1,3 +1,4 @@
+export * from "./common/types";
 export * from "./common/defaultTheme";
 export * from "./common/SDSAppTheme";
 export * from "./common/mixins/a11y";

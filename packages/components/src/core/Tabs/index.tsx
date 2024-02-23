@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import { TabProps as RawTabProps, useTheme } from "@mui/material";
 import React, { ReactNode, forwardRef, useContext, useMemo } from "react";
-import { SDSTheme } from "../styles/common/defaultTheme";
-import { getColors } from "../styles/common/selectors/theme";
+import { SDSTheme } from "../styles/common/types";
+import { getSemanticComponentColors } from "../styles/common/selectors/theme";
 import LabelWithCount from "./components/LabelWithCount";
 import { TabsContext } from "./components/common";
 import { StyledTab, StyledTabs, TabsProps } from "./style";
@@ -10,11 +10,11 @@ import { StyledTab, StyledTabs, TabsProps } from "./style";
 export type { TabsProps };
 
 const TabIndicator = (theme: SDSTheme) => {
-  const colors = getColors({ theme });
+  const semanticComponentColors = getSemanticComponentColors({ theme });
 
   return css`
     &.MuiTabs-indicator {
-      background-color: ${colors?.primary[400]};
+      background-color: ${semanticComponentColors?.accent?.border};
       height: 2px;
       bottom: -2px;
       z-index: 2;

@@ -5,6 +5,7 @@ import Callout from "../Callout";
 import InputSearch from "../InputSearch";
 import {
   CommonThemeProps,
+  fontBodyXs,
   getColors,
   getSpaces,
   getTypography,
@@ -27,16 +28,7 @@ export default {
       control: {
         type: "select",
       },
-      options: [
-        "beta",
-        "gray",
-        "primary",
-        "secondary",
-        "error",
-        "info",
-        "success",
-        "warning",
-      ],
+      options: ["blue", "gray", "green", "purple", "red", "yellow"],
     },
     sdsIcon: {
       control: {
@@ -78,7 +70,7 @@ export default {
 
 export const Default = {
   args: {
-    color: "primary",
+    color: "blue",
     sdsIcon: "checkCircle",
     sdsSize: "xl",
     sdsType: "static",
@@ -105,11 +97,13 @@ const IconBankWrapper = styled("div")`
 `;
 
 const IconWrapper = styled("div")`
+  ${fontBodyXs}
+
   ${(props: CommonThemeProps & SdsIconWithColor) => {
     const colors = getColors(props);
     const spacings = getSpaces(props);
 
-    const { color = "primary", shade = 400 } = props;
+    const { color = "blue", shade = 400 } = props;
 
     return `
       align-items: center;
@@ -145,8 +139,8 @@ const IconWrapper = styled("div")`
 
       &:hover {
         border-radius: 2px;
-        background-color: ${colors?.[color][shade]};
-        border-color: ${colors?.[color][shade]};
+        background-color: ${colors?.[color]?.[shade]};
+        border-color: ${colors?.[color]?.[shade]};
         color: white;
 
         p {
@@ -199,7 +193,7 @@ type IconItemProps = {
 } & SdsIconWithColor;
 
 const IconItem = (props: IconItemProps) => {
-  const { sdsIcon, innerIcon, color, shade } = props;
+  const { sdsIcon, innerIcon, color } = props;
 
   const [copied, setCopied] = useState(false);
 
@@ -219,14 +213,12 @@ const IconItem = (props: IconItemProps) => {
   return (
     <IconWrapper
       color={color}
-      shade={shade}
       key={sdsIcon + sdsSize}
       onClick={() => copyIconNameHandler(sdsIcon)}
     >
       <div className="icon">
         <RawIcon
           color={color}
-          shade={shade}
           sdsSize={sdsSize}
           sdsIcon={sdsIcon as keyof IconNameToSizes}
           sdsType="static"
@@ -251,7 +243,6 @@ const IconItem = (props: IconItemProps) => {
         <div className="notification">
           <RawIcon
             color={color}
-            shade={shade}
             sdsSize={sdsSize}
             sdsIcon={sdsIcon as keyof IconNameToSizes}
             sdsType="static"
@@ -260,7 +251,6 @@ const IconItem = (props: IconItemProps) => {
           <span>
             <RawIcon
               color={color}
-              shade={shade}
               sdsSize="xs"
               sdsIcon="check"
               sdsType="static"
@@ -273,7 +263,7 @@ const IconItem = (props: IconItemProps) => {
 };
 
 const IconBankDemo = (props: Args): JSX.Element => {
-  const { color, shade } = props;
+  const { color } = props;
 
   const initialIcons = Object.entries(iconMap);
 
@@ -304,7 +294,6 @@ const IconBankDemo = (props: Args): JSX.Element => {
             return Object.entries(icon).map((innerIcon) => (
               <IconItem
                 color={color}
-                shade={shade}
                 key={sdsIcon + innerIcon[0]}
                 innerIcon={innerIcon}
                 sdsIcon={sdsIcon}
@@ -314,7 +303,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
         </IconBankWrapper>
       ) : (
         <Callout
-          intent="warning"
+          intent="notice"
           icon={
             <RawIcon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
           }
@@ -328,7 +317,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
 
 export const IconBank = {
   args: {
-    color: "primary",
+    color: "blue",
   },
   parameters: {
     controls: {
@@ -354,7 +343,7 @@ export const Test = {
       sdsIcon="checkCircle"
       sdsSize="l"
       sdsType="static"
-      color="success"
+      color="blue"
       data-testid="icon"
       {...args}
     />

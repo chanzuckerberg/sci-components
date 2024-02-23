@@ -1,12 +1,16 @@
-import { Button } from "@mui/material";
+import { Button, buttonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  fontBodySemiboldXs,
   fontCapsXxxs,
-  getColors,
   getCorners,
-  getPalette,
+  getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
+  getShadows,
   getSpaces,
+  getSpacings,
 } from "../styles";
 import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 
@@ -15,50 +19,82 @@ const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
 })`
-  box-shadow: none;
+  ${fontBodySemiboldXs}
   ${focusVisibleA11yStyle}
   ${(props) => {
-    const { variant } = props;
-    const colors = getColors(props);
+    const { variant, startIcon, endIcon } = props;
     const spacings = getSpaces(props);
-    const palette = getPalette(props);
+    const shadows = getShadows(props);
+    const iconSizes = getIconSizes(props);
+    const semanticTextColors = getSemanticTextColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
-    const containedPadding = `${spacings?.xs}px ${spacings?.l}px`;
+    const hasIcon = !!startIcon || !!endIcon;
+
+    // (masoudmanson): The padding for the contained variant depends on the presence of an icon.
+    // If the component has either a startIcon or endIcon, the padding will be different.
+    // If the component doesn't have any icon at all, the padding will be different.
+    const containedPadding = hasIcon
+      ? `${spacings?.xxs}px ${spacings?.m}px`
+      : `${spacings?.xs}px ${spacings?.l}px`;
 
     // (thuang): outline variant has border 1px, so padding needs to be smaller
-    const outlinedPadding = `${(spacings?.xs || 0) - 1}px ${
-      (spacings?.l || 0) - 1
-    }px`;
+    const outlinedPadding = hasIcon
+      ? `${(spacings?.xxs || 0) - 1}px ${(spacings?.m || 0) - 1}px`
+      : `${(spacings?.xs || 0) - 1}px ${(spacings?.m || 0) - 1}px`;
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
+
     const outlineBorder =
-      variant === "outlined" ? `border-color: ${colors?.primary[400]};` : "";
+      variant === "outlined"
+        ? `border-color: ${semanticComponentColors?.accent?.border};`
+        : "";
 
     return `
       ${outlineBorder}
       padding: ${padding};
       min-width: 120px;
-      height: 34px;
+      box-shadow: ${shadows?.none};
+
       &:hover {
-        color: white;
-        background-color: ${colors?.primary[500]};
-        box-shadow: none;
+        color: ${semanticTextColors?.base?.onFill};
+        background-color: ${semanticComponentColors?.accent?.fillHover};
+        box-shadow: ${shadows?.none};
       }
+
       &:active {
-        color: white;
-        background-color: ${colors?.primary[600]};
-        box-shadow: none;
+        color: ${semanticTextColors?.base?.onFill};
+        background-color: ${semanticComponentColors?.accent?.fillPressed};
+        box-shadow: ${shadows?.none};
       }
+
       &:disabled {
-        color: ${palette?.action?.disabled};
-        background-color: ${palette?.action?.disabledBackground};
-        border-color: ${colors?.gray[300]};
+        color: ${semanticTextColors?.base?.onFillDisabled};
+        background-color: ${semanticComponentColors?.base?.fillDisabled};
+        border-color: ${semanticComponentColors?.base?.borderDisabled};
       }
-      .MuiButton-startIcon {
+
+      .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+        width: ${iconSizes?.l?.width}px;
+        height: ${iconSizes?.l?.width}px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          max-width: ${iconSizes?.l?.width}px;
+          max-height: ${iconSizes?.l?.width}px;
+        }
+      }
+
+      .${buttonClasses.startIcon} {
         margin-right: ${spacings?.m}px;
+        margin-left: 0;
       }
-      .MuiButton-endIcon {
+
+      .${buttonClasses.endIcon} {
         margin-left: ${spacings?.m}px;
+        margin-right: 0;
       }
     `;
   }}
@@ -107,23 +143,41 @@ const MinimalButton = styled(Button, {
 `;
 
 const minimal = (props: CommonThemeProps) => {
-  const colors = getColors(props);
-  const spaces = getSpaces(props);
-  const palette = getPalette(props);
+  const spacings = getSpacings(props);
+  const iconSizes = getIconSizes(props);
+  const semanticTextColors = getSemanticTextColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return `
     &:hover, &:focus-visible {
-      color: ${colors?.primary[500]};
+      color: ${semanticComponentColors?.accent?.fillHover};
     }
     &:active {
-      color: ${colors?.primary[600]};
+      color: ${semanticComponentColors?.accent?.fillPressed};
     }
     &:disabled {      
-      color: ${palette?.text?.disabled};
+      color: ${semanticTextColors?.base?.onFillDisabled};
     }
 
-    .MuiButton-startIcon {
-      margin-right: ${spaces?.xxs}px;
+    .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+      width: ${iconSizes?.s?.width}px;
+      height: ${iconSizes?.s?.width}px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        max-width: ${iconSizes?.s?.width}px;
+        max-height: ${iconSizes?.s?.width}px;
+      }
+    }
+
+    .${buttonClasses.startIcon} {
+      margin-right: ${spacings?.xxs}px;
+    }
+
+    .${buttonClasses.endIcon} {
+      margin-left: ${spacings?.xxs}px;
     }
   `;
 };
@@ -134,7 +188,13 @@ export const PrimaryMinimalButton = styled(MinimalButton)`
 
 export const SecondaryMinimalButton = styled(MinimalButton)`
   ${minimal}
-  color: #000;
+  ${(props: CommonThemeProps) => {
+    const semanticTextColors = getSemanticTextColors(props);
+
+    return `
+      color: ${semanticTextColors?.base?.primary};
+    `;
+  }}
 `;
 
 // Legacy support for backwards-compatible props
@@ -155,7 +215,6 @@ export const StyledButton = styled(Button, {
       border-radius: ${corners?.l}px;
       padding: ${spacings?.xs}px ${spacings?.l}px;
       min-width: 120px;
-      height: 34px;
     `;
   }}
 `;

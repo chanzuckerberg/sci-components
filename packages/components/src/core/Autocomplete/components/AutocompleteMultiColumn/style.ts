@@ -6,6 +6,7 @@ import {
   CommonThemeProps,
   getBorders,
   getCorners,
+  getSemanticComponentColors,
   getShadows,
   getSpaces,
 } from "../../../styles";
@@ -39,10 +40,11 @@ export const StyledPopper = styled(Popper, {
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const spacings = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
-      border: ${borders?.gray[100]};
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      border: ${borders?.base[100]};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
@@ -64,11 +66,17 @@ export const StyledPopper = styled(Popper, {
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  box-shadow: none;
-  margin: 0;
-  border-radius: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  ${(props: StyleProps) => {
+    const shadows = getShadows(props);
+
+    return `
+      box-shadow: ${shadows?.none};
+      margin: 0;
+      border-radius: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    `;
+  }}
 `;
 
 export const StyledAutocompleteGroupWrapper = styled("div")`

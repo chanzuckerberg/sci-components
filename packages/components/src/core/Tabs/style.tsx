@@ -5,20 +5,20 @@ import {
   TabsProps as RawTabsProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { focusVisibleA11yStyle, fontBodyS, fontBodyXs } from "../styles";
+import {
+  focusVisibleA11yStyle,
+  fontBodySemiboldS,
+  fontBodySemiboldXs,
+} from "../styles";
 import {
   CommonThemeProps,
   getColors,
-  getFontWeights,
-  getPalette,
+  getSemanticTextColors,
   getSpaces,
 } from "../styles/common/selectors/theme";
 import { SdsSize } from "./components/common";
 
-export type TabsProps = Omit<
-  RawTabsProps,
-  "nonce" | "rev" | "rel" | "autoFocus" | "content"
-> & {
+export type TabsProps = RawTabsProps & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
 };
@@ -75,35 +75,32 @@ export const StyledTab = styled(RawTab, {
   ${focusVisibleA11yStyle}
 
   ${(props) => {
-    const colors = getColors(props);
     const spaces = getSpaces(props);
-    const fontWeights = getFontWeights(props);
-    const palette = getPalette(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      font-weight: ${fontWeights?.semibold};
       margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
 
-      color: ${palette?.text?.secondary};
+      color: ${semanticTextColors?.base?.secondary};
 
       &:hover, :focus {
-        color: black;
+        color: ${semanticTextColors?.base?.primary};
       }
 
       &.Mui-selected {
-        color: black;
+        color: ${semanticTextColors?.base?.primary};
 
         &:hover {
-          color: black;
+          color: ${semanticTextColors?.base?.primary};
         }
       }
 
       &:active {
-        color: black;
+        color: ${semanticTextColors?.base?.primary};
       }
 
       &:disabled {
-        color: ${colors?.gray[200]};
+        color: ${semanticTextColors?.base?.disabled};
       }
     `;
   }}
@@ -113,5 +110,5 @@ function tabFontMixin(props: TabProps): SerializedStyles | null {
   const { sdsSize } = props;
   const isLarge = sdsSize === "large";
 
-  return isLarge ? fontBodyS(props) : fontBodyXs(props);
+  return isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props);
 }

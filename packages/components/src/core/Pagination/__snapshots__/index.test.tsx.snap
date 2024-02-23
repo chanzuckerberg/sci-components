@@ -2,14 +2,14 @@
 
 exports[`<Pagination /> Default story renders snapshot 1`] = `
 <ul
-  class="css-epcftv"
+  class="css-ijj3wz"
 >
   <li
     class="css-1hppjzv"
   >
     <button
       aria-label="Previous page"
-      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1q7gc9q-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1bxr55u-MuiButtonBase-root-MuiIconButton-root"
       data-order="first"
       disabled=""
       icon="chevronLeft"
@@ -32,36 +32,36 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-epqfwj"
+    class="css-16wopi5"
   >
     1
   </li>
   <li
-    class="css-1se3fy4"
+    class="css-194ctax"
   >
     2
   </li>
   <li
-    class="css-1se3fy4"
+    class="css-194ctax"
   >
     3
   </li>
   <li
-    class="css-1se3fy4"
+    class="css-194ctax"
   >
     4
   </li>
   <li
-    class="css-1se3fy4"
+    class="css-194ctax"
   >
     5
   </li>
   <li
-    class="css-bamrhj"
+    class="css-132ngps"
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-nu4a6d-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13t9fgn-MuiButtonBase-root-MuiIconButton-root"
       icon="dotsHorizontal"
       tabindex="0"
       type="button"
@@ -85,7 +85,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-1se3fy4"
+    class="css-194ctax"
   >
     20
   </li>
@@ -94,7 +94,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Next page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1vmnq6r-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1jwdl3f-MuiButtonBase-root-MuiIconButton-root"
       data-order="last"
       icon="chevronRight"
       tabindex="0"

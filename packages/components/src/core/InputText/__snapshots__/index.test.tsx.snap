@@ -2,7 +2,7 @@
 
 exports[`<InputText /> Default story renders snapshot 1`] = `
 <label
-  class="css-19c61dz"
+  class="css-1n9rsuo"
   for="Test"
 >
   Label

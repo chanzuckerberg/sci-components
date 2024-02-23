@@ -2,12 +2,12 @@
 
 exports[`<Accordion /> Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1gtxzl5-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-mnqvzr-MuiPaper-root-MuiAccordion-root"
 >
   <div
     aria-controls="undefined-header-panel-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-q39ari-MuiButtonBase-root-MuiAccordionSummary-root"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-12obwtz-MuiButtonBase-root-MuiAccordionSummary-root"
     id="undefined-header"
     role="button"
     tabindex="0"
@@ -51,7 +51,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root css-rnrgul-MuiAccordionDetails-root"
+            class="MuiAccordionDetails-root css-kcniag-MuiAccordionDetails-root"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </div>

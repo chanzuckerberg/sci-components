@@ -10,6 +10,7 @@ const indicatorCSS = (props: TooltipCondensedExtraProps): string => {
   const { indicatorColor } = props;
   const spaces = getSpaces(props);
   const corners = getCorners(props);
+
   return css`
     &::before {
       content: "";

@@ -17,12 +17,7 @@ const Menu = (props: Args): JSX.Element => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-around",
-      }}
-    >
+    <div>
       <Button sdsStyle="minimal" sdsType="secondary" onClick={handleClick}>
         Click me!
       </Button>

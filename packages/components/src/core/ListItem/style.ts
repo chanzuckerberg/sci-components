@@ -1,7 +1,6 @@
 import { SerializedStyles } from "@emotion/react";
 import { ListItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { TypographyOptions } from "@mui/material/styles/createTypography";
 import {
   CommonThemeProps,
   fontBody,
@@ -36,13 +35,8 @@ export const StyledListItem = styled(ListItem, {
   ${(props) => {
     const { ordered } = props;
 
-    const {
-      theme: { typography },
-    } = props;
-
     return `
       align-items: flex-start;
-      font-family: ${(typography as TypographyOptions)?.fontFamily};
       ${ordered ? "counter-increment: section;" : ""}
     `;
   }}

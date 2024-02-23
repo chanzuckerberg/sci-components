@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import { TabPanelProps } from "@mui/base";
 import { Box } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
@@ -11,6 +10,75 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 interface TabPanelPropsExtra extends TabPanelProps {
   sdsDemoHeight: number;
 }
+
+const NavigationJumpTo = (props: Args): JSX.Element => {
+  const { items, ...rest } = props;
+
+  return <RawNavigationJumpTo items={items} {...rest} />;
+};
+
+const availableColorOptions = [
+  "accent",
+  "beta",
+  "info",
+  "negative",
+  "notice",
+  "positive",
+];
+
+export default {
+  argTypes: {
+    indicatorColor: {
+      control: {
+        labels: ["accent", "beta", "info", "negative", "notice", "positive"],
+        type: "select",
+      },
+      defaultValue: { summary: "info" },
+      description: "Color of the tab indicator",
+      mapping: availableColorOptions,
+      options: Object.keys(availableColorOptions),
+    },
+    items: {
+      control: { require: true, type: "object" },
+      defaultValue: { summary: "-" },
+      description:
+        "An array of object containing a title for the Navigation Tab and a ref to the section div.",
+    },
+    offsetTop: {
+      control: { description: "wew", type: "number" },
+      defaultValue: { summary: "0" },
+      description:
+        "To apply the offsetTop to the component, please refresh the page.",
+    },
+  },
+  component: NavigationJumpTo,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
+  title: "Components/NavigationJumpTo",
+} as Meta;
+
+// Default
+
+export const Default = {
+  args: {
+    indicatorColor: "info",
+    items: [
+      { elementRef: { current: null }, title: "Item 1" },
+      { elementRef: { current: null }, title: "Item 2" },
+      { elementRef: { current: null }, title: "Item 3" },
+      { elementRef: { current: null }, title: "Item 4" },
+      { elementRef: { current: null }, title: "Item 5" },
+    ],
+    offsetTop: 0,
+  },
+  parameters: {
+    controls: { expanded: true },
+  },
+  render: (args: Args) => <NavigationJumpTo {...args} />,
+};
+
+// Demo
 
 const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
   (props, ref) => {
@@ -46,7 +114,7 @@ const TabPanel = React.forwardRef<HTMLDivElement, TabPanelPropsExtra>(
   }
 );
 
-const NavigationJumpTo = (props: Args): JSX.Element => {
+const NavigationJumpToDemo = (props: Args): JSX.Element => {
   const [navPanelHeight, setNavPanelHeight] = useState(100);
   const sectionRef0 = React.useRef(null);
   const sectionRef1 = React.useRef(null);
@@ -153,76 +221,22 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
   );
 };
 
-const availableColorOptions = [
-  "beta",
-  "error",
-  "gray",
-  "info",
-  "primary",
-  "success",
-  "warning",
-];
-
-export default {
-  argTypes: {
-    indicatorColor: {
-      control: {
-        labels: [
-          "beta",
-          "error",
-          "gray",
-          "info",
-          "primary",
-          "success",
-          "warning",
-        ],
-        type: "select",
-      },
-      defaultValue: { summary: "primary" },
-      description: "Color of the tab indicator",
-      mapping: availableColorOptions,
-      options: Object.keys(availableColorOptions),
-    },
-    items: {
-      control: { require: true, type: "object" },
-      defaultValue: { summary: "-" },
-      description:
-        "An array of object containing a title for the Navigation Tab and a ref to the section div.",
-    },
-    offsetTop: {
-      control: { description: "wew", type: "number" },
-      defaultValue: { summary: "0" },
-      description:
-        "To apply the offsetTop to the component, please refresh the page.",
-    },
-  },
-  component: NavigationJumpTo,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
-  title: "Components/NavigationJumpTo",
-} as Meta;
-
-// Default
-
-export const Default = {
+export const JumpToNavDemo = {
   args: {
     indicatorColor: "primary",
     items: [],
     offsetTop: 0,
   },
   parameters: {
-    controls: { expanded: true },
+    controls: {
+      exclude: ["items", "offsetTop"],
+      expanded: true,
+    },
   },
+  render: (args: Args) => <NavigationJumpToDemo {...args} />,
 };
 
 // Live Preview
-
-const LivePreviewDemo = (props: Args): JSX.Element => {
-  const { items, ...rest } = props;
-
-  return <RawNavigationJumpTo items={items} {...rest} />;
-};
 
 export const LivePreview = {
   args: {
@@ -238,11 +252,14 @@ export const LivePreview = {
     axe: {
       disabledRules: ["aria-valid-attr-value"],
     },
+    controls: {
+      exclude: ["items", "offsetTop", "indicatorColor"],
+    },
     snapshot: {
       skip: true,
     },
   },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
+  render: (args: Args) => <NavigationJumpTo {...args} />,
 };
 
 // Test
@@ -274,7 +291,7 @@ export const Test = {
       disabledRules: ["aria-valid-attr-value"],
     },
     controls: {
-      exclude: ["indicatorColor", "items"],
+      exclude: ["items", "offsetTop", "indicatorColor"],
     },
     snapshot: {
       skip: true,

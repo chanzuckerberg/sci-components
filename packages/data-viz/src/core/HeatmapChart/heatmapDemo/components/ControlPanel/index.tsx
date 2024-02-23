@@ -309,7 +309,7 @@ const ControlPanel = () => {
 
       <Callout
         autoDismiss={false}
-        intent="info"
+        intent="notice"
         dismissed={false}
         style={{
           margin: 0,
@@ -318,7 +318,7 @@ const ControlPanel = () => {
       >
         To scroll horizontally, hold down the{" "}
         <Tag
-          color="gray"
+          color="neutral"
           label="SHIFT"
           sdsStyle="square"
           sdsType="secondary"

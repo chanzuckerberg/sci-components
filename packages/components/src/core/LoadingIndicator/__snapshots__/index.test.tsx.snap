@@ -20,7 +20,7 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
   <span
     aria-label="Loading cats list..."
     aria-live="polite"
-    class="css-1xm9l9z"
+    class="css-q6tdx9"
     role="status"
   >
     Loading
@@ -47,7 +47,7 @@ exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
   </div>
   <span
     aria-live="polite"
-    class="css-1xm9l9z"
+    class="css-q6tdx9"
     role="status"
   >
     Loading

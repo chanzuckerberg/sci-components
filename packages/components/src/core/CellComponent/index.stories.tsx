@@ -123,16 +123,17 @@ const TestDemo = (props: Args): JSX.Element => {
             <StyledStoryHeading data-testid="Child">
               Lorem ipsum dolor
             </StyledStoryHeading>
-            <StyledStoryBody data-testid="Child" style={{ paddingBottom: 10 }}>
+            <StyledStoryBody data-testid="Child">
               Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor.
             </StyledStoryBody>
             <Tag
-              color="primary"
+              color="neutral"
               data-testid="Child"
               label="Tertiary"
               sdsStyle="rounded"
               sdsType="primary"
+              hover={false}
               {...props}
             />
           </div>

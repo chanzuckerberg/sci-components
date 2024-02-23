@@ -1,77 +1,69 @@
-import {
-  FormControlLabel as RawFormControlLabel,
-  Radio as RawRadio,
-} from "@mui/material";
+import { Radio as RawRadio, radioClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  fontBodyXxs,
-  getColors,
+  SemanticComponentColors,
   getIconSizes,
+  getSemanticComponentColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface RadioExtraProps extends CommonThemeProps {
-  caption?: string;
+  intent?: "default" | "error" | "warning";
 }
 
-export const StyledFormControlLabel = styled(RawFormControlLabel)`
-  ${(props: RadioExtraProps) => {
-    const { caption } = props;
-    const content = caption === undefined ? "" : caption;
-    const typography = getTypography(props);
-    const colors = getColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      position: relative;
-      z-index: 0;
-      padding-bottom: ${caption === undefined ? 0 : spaces?.xl}px;
-      
-      &:after {
-        ${fontBodyXxs}
-        font-size: 12px;
-        left: 34px;
-        position: absolute;
-        top: 30px;
-        z-index: -1;
-        content: "${content}";
-        font-family: ${typography?.fontFamily};
-        color: ${colors?.gray[500]}; 
-        
-      }
-    `;
-  }}
-`;
-
 export const StyledRadioButton = styled(RawRadio)`
-  ${(props) => {
-    const colors = getColors(props);
+  ${(props: RadioExtraProps) => {
+    const { intent = "default" } = props;
+
+    const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
+
+    const semanticComponentColors = getSemanticComponentColors(props);
+
+    const intentToColor = {
+      default: "base",
+      error: "negative",
+      warning: "notice",
+    };
+
+    const radioColor = intentToColor[intent] as keyof SemanticComponentColors;
+
     return `
-      color: ${colors?.gray[400]};
+    color: ${semanticComponentColors?.[radioColor]?.border};
+
       &:hover {
-        color: ${colors?.gray[500]};
+        color: ${semanticComponentColors?.base?.borderHover};
         background-color: transparent;
       }
-      &.Mui-disabled {
-        color: ${colors?.gray[300]};
+
+      &.${radioClasses.disabled} {
+        color: ${semanticComponentColors?.base?.borderDisabled};
       }
-      &.Mui-checked {
-        color: ${colors?.primary[400]};
+
+      &.${radioClasses.checked} {
+        color: ${semanticComponentColors?.accent?.border};
+
         &:hover {
-          color: ${colors?.primary[500]};
+          color: ${semanticComponentColors?.accent?.borderHover};
           background-color: transparent;
         }
-        &.Mui-disabled {
-          color: ${colors?.primary[300]}
+
+        &.${radioClasses.disabled} {
+          color: ${semanticComponentColors?.accent?.borderDisabled};
         }
+      }
+
+      &.${radioClasses.root} {
+        ${focusVisibleA11yStyle()}
+        padding: 0;
+        padding-right: ${spaces?.s}px;
       }
 
       .MuiSvgIcon-root {
-        height: ${iconSizes?.input.height}px;
-        width: ${iconSizes?.input.width}px;
+        height: ${iconSizes?.s.height}px;
+        width: ${iconSizes?.s.width}px;
       }
     `;
   }}

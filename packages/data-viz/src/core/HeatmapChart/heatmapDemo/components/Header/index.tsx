@@ -14,7 +14,7 @@ const TooltipTag = ({ label }: { label: string }) => {
     <Tag
       label={label}
       hover={false}
-      color="gray"
+      color="neutral"
       sdsType="secondary"
       style={{ margin: "-2px 4px 0 0" }}
     />

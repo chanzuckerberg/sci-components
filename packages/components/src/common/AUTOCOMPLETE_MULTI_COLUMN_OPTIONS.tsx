@@ -68,12 +68,14 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     name: "Column Three",
     options: [
       {
-        icon: <CustomSdsIcon sdsSize="s" color="gray" />,
+        icon: <CustomSdsIcon sdsSize="s" color="gray" shade={500} />,
         name: "Custom SDS Icon",
         section: "With Icon",
       },
       {
-        icon: <CustomSvgIcon sx={{ color: "#999", height: 14, width: 14 }} />,
+        icon: (
+          <CustomSvgIcon sx={{ color: "#767676", height: 16, width: 16 }} />
+        ),
         name: "Custom SVG Icon",
         section: "With Icon",
       },
@@ -82,6 +84,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "Puzzle Piece",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
       {
@@ -90,6 +93,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "Copy",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
       {
@@ -97,6 +101,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "Light Bulb",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
       {
@@ -105,6 +110,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "List",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
       {
@@ -112,6 +118,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "Vertical Tree",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
       {
@@ -119,6 +126,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         name: "Link",
         sdsIconProps: {
           color: "gray",
+          shade: 500,
         },
       },
     ],

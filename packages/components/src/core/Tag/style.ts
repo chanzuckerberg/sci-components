@@ -6,19 +6,21 @@ import {
   fontBodyXs,
   fontBodyXxxs,
   fontHeaderXs,
-  getColors,
   getCorners,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
+  SemanticComponentColors,
 } from "../styles";
 
 export type SdsTagColorType =
-  | "primary"
+  | "accent"
   | "info"
-  | "success"
-  | "warning"
-  | "error"
-  | "gray"
+  | "positive"
+  | "notice"
+  | "negative"
+  | "neutral"
   | "beta"
   | [string, string]
   | [string, string, string];
@@ -119,7 +121,9 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   `;
 };
 
-const withHover = (): SerializedStyles => {
+const withHover = (props: ExtraTagProps): SerializedStyles => {
+  const semanticTextColors = getSemanticTextColors(props);
+
   return css`
     &:hover {
       cursor: pointer;
@@ -127,7 +131,7 @@ const withHover = (): SerializedStyles => {
 
     &:hover,
     &:focus-visible {
-      color: white;
+      color: ${semanticTextColors?.base?.onFill};
     }
   `;
 };
@@ -140,42 +144,60 @@ const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "secondary");
 };
 
+function generatePrimaryTagColors(
+  intent: Extract<SdsTagColorType, string>,
+  colors: string[],
+  semanticColors: SemanticComponentColors | null
+) {
+  return {
+    background: colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
+    backgroundClicked:
+      colors.length >= 2
+        ? darken(colors[1], 0.3)
+        : semanticColors?.[intent].fillPressed,
+    backgroundHover:
+      colors.length >= 2
+        ? darken(colors[1], 0.15)
+        : semanticColors?.[intent].fillHover,
+    iconColor: colors.length > 2 ? colors[2] : "white",
+    label: colors.length ? colors[0] : "white",
+  };
+}
+
+function generateSecondaryTagColors(
+  intent: Extract<SdsTagColorType, string>,
+  colors: string[],
+  semanticColors: SemanticComponentColors | null
+) {
+  return {
+    background:
+      colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
+    backgroundClicked:
+      colors.length >= 2
+        ? darken(colors[1], 0.3)
+        : semanticColors?.[intent].fillPressed,
+    backgroundHover:
+      colors.length >= 2
+        ? darken(colors[1], 0.15)
+        : semanticColors?.[intent].fillHover,
+    iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
+    label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
+  };
+}
+
 function createTypeCss(
   props: ExtraTagProps,
   type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
-  const themeColors = getColors(props);
-  const intent =
-    typeof props.tagColor === "string" ? props.tagColor : "primary";
+  const semanticColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
+
+  const intent = typeof props.tagColor === "string" ? props.tagColor : "accent";
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
   const typeToColors = {
-    primary: {
-      background: colors.length >= 2 ? colors[1] : themeColors?.[intent][400],
-      backgroundClicked:
-        colors.length >= 2
-          ? darken(colors[1], 0.3)
-          : themeColors?.[intent][600],
-      backgroundHover:
-        colors.length >= 2
-          ? darken(colors[1], 0.15)
-          : themeColors?.[intent][500],
-      iconColor: colors.length > 2 ? colors[2] : "white",
-      label: colors.length ? colors[0] : "white",
-    },
-    secondary: {
-      background: colors.length >= 2 ? colors[1] : themeColors?.[intent][200],
-      backgroundClicked:
-        colors.length >= 2
-          ? darken(colors[1], 0.3)
-          : themeColors?.[intent][600],
-      backgroundHover:
-        colors.length >= 2
-          ? darken(colors[1], 0.15)
-          : themeColors?.[intent][500],
-      iconColor: colors.length > 2 ? colors[2] : themeColors?.[intent][400],
-      label: colors.length ? colors[0] : themeColors?.[intent][600],
-    },
+    primary: generatePrimaryTagColors(intent, colors, semanticColors),
+    secondary: generateSecondaryTagColors(intent, colors, semanticColors),
   };
 
   const typeColors = typeToColors[type];
@@ -196,11 +218,11 @@ function createTypeCss(
     &:active,
     &:focus {
       .MuiChip-label {
-        color: white;
+        color: ${semanticTextColors?.base?.onFill};
       }
 
       svg {
-        fill: white;
+        fill: ${semanticTextColors?.base?.onFill};
       }
     }
 
@@ -248,7 +270,7 @@ export const StyledTag = styled(Chip, {
       ${icon ? withIcon(props) : withoutIcon(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
-      ${hover ? withHover() : `pointer-events: none;`}
+      ${hover ? withHover(props) : `pointer-events: none;`}
     `;
   }}
 `;

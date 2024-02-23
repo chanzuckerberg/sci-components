@@ -4,9 +4,8 @@ import {
   fontBodyS,
   fontBodyXxs,
   fontHeaderS,
-  getColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface CellComponentExtraProps extends CommonThemeProps {
@@ -24,46 +23,36 @@ export const StyledCellComponentData = styled("td", {
   ${(props: CellComponentExtraProps) => {
     const spacings = getSpaces(props);
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
-    const typography = getTypography(props);
 
     return `
-        font-family: ${typography?.fontFamily};
-        align-items: center;
-        text-align: ${horizontalAlign};
-        vertical-align: ${verticalAlign};
-        overflow: hidden;
-        padding: ${spacings?.l}px ${spacings?.s}px;
+      align-items: center;
+      text-align: ${horizontalAlign};
+      vertical-align: ${verticalAlign};
+      overflow: hidden;
+      padding: ${spacings?.l}px ${spacings?.m}px;
     `;
   }}
 `;
-export const StyledStoryHeading = styled("span", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
+export const StyledStoryHeading = styled("span")`
   ${fontHeaderS}
-  ${(props) => {
-    const typography = getTypography(props);
 
-    return `
-        line-height: 24px;
-        font-family: ${typography?.fontFamily};
-        display: block;
-       
-    `;
-  }}
+  line-height: 24px;
+  display: block;
 `;
 
 export const StyledStoryBody = styled("span", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontBodyXxs}
+
   ${(props) => {
-    const typography = getTypography(props);
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
+    const spacings = getSpaces(props);
 
     return `
-          font-family: ${typography?.fontFamily};
-          display: block;
-          color: ${colors?.gray[600]}
-      `;
+      display: block;
+      color: ${semanticTextColors?.base?.secondary};
+      padding: ${spacings?.s}px 0;
+    `;
   }}
 `;

@@ -5,11 +5,10 @@ import {
   fontBodyXs,
   fontBodyXxs,
   fontCapsXxxxs,
+  fontTabularXs,
   getBorders,
-  getColors,
-  getPalette,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface TooltipTableExtraProps extends CommonThemeProps {
@@ -28,13 +27,14 @@ export interface TooltipTableExtraProps extends CommonThemeProps {
 const sdsPropNames = ["contentAlert", "itemAlign"];
 
 export const disabledStyle = (props: SectionProps): string => {
-  const colors = getColors(props);
   const { disabled } = props;
+
+  const semanticTextColors = getSemanticTextColors(props);
 
   if (!disabled) return "";
 
   return `
-    color: ${colors?.gray["300"]};
+    color: ${semanticTextColors?.base?.disabled};
   `;
 };
 
@@ -53,7 +53,7 @@ export const Section = styled("div")`
     return `
       &:not(:last-child) {
         padding-bottom: ${spacings?.l}px;
-        border-bottom: ${borders?.gray[200]};
+        border-bottom: ${borders?.base[200]};
       }
 
       &:not(:first-of-type) {
@@ -69,15 +69,13 @@ export const SectionLabel = styled("div")`
 
   ${(props: SectionProps) => {
     const spacings = getSpaces(props);
-    const palette = getPalette(props);
-    const typography = getTypography(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     if (!props.label) return "";
 
     return `
-      margin-bottom: ${spacings?.m}px;      
-      font-family: ${typography?.fontFamily};
-      color: ${palette?.text?.secondary};
+      margin-bottom: ${spacings?.s}px;      
+      color: ${semanticTextColors?.base?.secondary};
     `;
   }}
 `;
@@ -105,7 +103,7 @@ export const RowValue = styled(TableCell, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${fontBodyXs}
+  ${fontTabularXs}
   ${disabledStyle}
 
   padding-top: 0;

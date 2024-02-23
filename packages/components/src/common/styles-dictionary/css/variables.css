@@ -74,6 +74,7 @@
   --sds-color-semantic-component-base-fill-selected: #000000;
   --sds-color-semantic-component-base-fill-disabled: #cccccc;
   --sds-color-semantic-component-base-on-fill-disabled: #999999;
+  --sds-color-semantic-component-base-surface: #ffffff;
   --sds-color-semantic-component-base-surface-primary: #ffffff;
   --sds-color-semantic-component-base-surface-secondary: #f8f8f8;
   --sds-color-semantic-component-base-surface-tertiary: #eaeaea;
@@ -119,6 +120,13 @@
   --sds-color-semantic-component-negative-surface: #f8e8e8;
   --sds-color-semantic-component-negative-border: #dc132c;
   --sds-color-semantic-component-negative-icon: #dc132c;
+  --sds-color-semantic-component-neutral-fill: #999999;
+  --sds-color-semantic-component-neutral-fill-hover: #767676;
+  --sds-color-semantic-component-neutral-fill-pressed: #545454;
+  --sds-color-semantic-component-neutral-fill-on-fill: #ffffff;
+  --sds-color-semantic-component-neutral-surface: #eaeaea;
+  --sds-color-semantic-component-neutral-border: #999999;
+  --sds-color-semantic-component-neutral-icon: #999999;
   --sds-color-semantic-component-notice-fill: #f5a623;
   --sds-color-semantic-component-notice-fill-hover: #d8921f;
   --sds-color-semantic-component-notice-fill-pressed: #946314;

@@ -16,6 +16,8 @@ const iconOptions = [
   "checkCircle",
 ];
 
+const onCloseOptions = [action("onClick"), undefined];
+
 const Callout = (props: Args): JSX.Element => {
   const { intent, onClose, calloutTitle, autoDismiss } = props;
 
@@ -76,17 +78,15 @@ export default {
     },
     intent: {
       control: { type: "radio" },
-      options: ["info", "error", "success", "warning"],
+      options: ["info", "negative", "positive", "notice"],
     },
     onClose: {
       control: {
-        labels: {
-          "() => {}": true,
-          undefined,
-        },
+        labels: ["() => {}", "undefined"],
         type: "select",
       },
-      options: [action("onClick"), undefined],
+      mapping: onCloseOptions,
+      options: Object.keys(onCloseOptions),
     },
   },
   component: Callout,
@@ -102,7 +102,7 @@ export const Default = {
   args: {
     autoDismiss: false,
     calloutTitle: "this is a title",
-    intent: "success",
+    intent: "positive",
     onClose: false,
   },
 };

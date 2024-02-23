@@ -3,10 +3,8 @@ import {
   CommonThemeProps,
   fontBodyS,
   fontBodyXxs,
-  getColors,
-  getPalette,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
@@ -50,15 +48,15 @@ const verticalAlignToFlexMap = {
 export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
+  ${fontBodyS}
+
   ${(props: CellBasicExtraProps) => {
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     const spacings = getSpaces(props);
-    const typography = getTypography(props);
 
     return `
-        font-family: ${typography?.fontFamily};
-        padding: ${spacings?.l}px ${spacings?.s}px;
+        padding: ${spacings?.l}px ${spacings?.m}px;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         width: 96px;
@@ -118,7 +116,6 @@ export const PrimaryText = styled("span", {
 
     return `
       display: block;
-      line-height: 20px;
       ${
         props.shouldTextWrap
           ? ShouldWrap(primaryTextWrapLineCount)
@@ -137,11 +134,11 @@ export const SecondaryText = styled("span", {
     const { secondaryTextWrapLineCount = 1 } = props;
 
     const spaces = getSpaces(props);
-    const palette = getPalette(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
       display: block;
-      color: ${palette.text?.secondary};
+      color: ${semanticTextColors?.base?.secondary};
       padding-top: ${spaces?.xxxs}px;
 
       ${
@@ -161,12 +158,12 @@ export const TertiaryText = styled("span", {
   ${(props: CellBasicExtraProps) => {
     const { tertiaryTextWrapLineCount = 1 } = props;
 
-    const colors = getColors(props);
     const spaces = getSpaces(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
       display: block;
-      color: ${colors?.gray[500]};
+      color: ${semanticTextColors?.base?.secondary};
       padding-top: ${spaces?.s}px;
 
       ${

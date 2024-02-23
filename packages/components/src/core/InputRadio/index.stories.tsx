@@ -18,6 +18,27 @@ const InputRadio = (props: Args): JSX.Element => {
 };
 
 export default {
+  argTypes: {
+    caption: {
+      control: { type: "text" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "error", "warning"],
+    },
+    label: {
+      control: { type: "text" },
+    },
+    stage: {
+      control: {
+        type: "radio",
+      },
+      options: ["checked", "unchecked"],
+    },
+  },
   component: InputRadio,
   parameters: {
     badges: [BADGE.STABLE],
@@ -31,6 +52,7 @@ export const Default = {
   args: {
     caption: "Caption",
     disabled: false,
+    intent: "default",
     label: "Label",
   },
 };
@@ -47,6 +69,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         defaultValue="demo1"
         name="input-radio-group"
         data-testid="radioButtonGroup"
+        sx={{
+          gap: "10px",
+        }}
       >
         <RawInputRadio data-testid="inputRadio" label={label} value="demo1" />
         <RawInputRadio
@@ -71,6 +96,9 @@ export const LivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ["label", "caption", "disabled", "intent", "stage"],
+    },
     snapshot: {
       skip: true,
     },
@@ -85,6 +113,9 @@ export const Test = {
     label: "Test Label",
   },
   parameters: {
+    controls: {
+      exclude: ["label", "caption", "disabled", "intent", "stage"],
+    },
     snapshot: {
       skip: true,
     },

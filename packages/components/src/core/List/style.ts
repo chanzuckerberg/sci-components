@@ -9,7 +9,7 @@ export interface ListExtraProps extends CommonThemeProps {
 }
 
 // (thuang): Please keep this in sync with the props used in `ListExtraProps`
-const doNotForwardProps = ["marginBotton", "ordered"];
+const doNotForwardProps = ["marginBottom", "ordered"];
 
 export const StyledList = styled(List, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),

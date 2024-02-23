@@ -2,7 +2,12 @@ import { css, SerializedStyles } from "@emotion/react";
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { FC } from "react";
-import { CommonThemeProps, getColors, getIconSizes } from "../styles";
+import {
+  CommonThemeProps,
+  getColors,
+  getIconSizes,
+  getSemanticComponentColors,
+} from "../styles";
 import { IconNameToSizes } from "./map";
 
 export interface IconExtraProps<IconName extends keyof IconNameToSizes>
@@ -14,12 +19,12 @@ export interface IconExtraProps<IconName extends keyof IconNameToSizes>
 }
 
 export type SdsIconColorType =
-  | "purple"
-  | "gray"
   | "blue"
+  | "gray"
   | "green"
-  | "yellow"
-  | "red";
+  | "purple"
+  | "red"
+  | "yellow";
 
 interface SdsIconWithColor {
   iconColor?: SdsIconColorType;
@@ -57,32 +62,35 @@ function staticStyle<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
   const { iconColor = "blue", shade = 400 } = props;
+
   const colors = getColors(props);
 
   return css`
-    color: ${colors?.[iconColor][shade]};
+    color: ${colors?.[iconColor]?.[shade]};
   `;
 }
 
 function interactive<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const colors = getColors(props);
   const { iconColor = "blue", shade = 400 } = props;
 
+  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+
   return css`
-    color: ${colors?.gray[500]};
+    color: ${semanticComponentColors?.base?.icon};
 
     &:hover {
-      color: ${colors?.gray[600]};
+      color: ${semanticComponentColors?.base?.iconHover};
     }
 
     &:active {
-      color: ${colors?.[iconColor][shade]};
+      color: ${colors?.[iconColor]?.[shade]};
     }
 
     &:disabled {
-      color: ${colors?.gray[300]};
+      color: ${semanticComponentColors?.base?.iconDisabled};
     }
   `;
 }

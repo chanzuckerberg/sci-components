@@ -2,7 +2,7 @@
 
 exports[`<Banner /> Default story renders snapshot 1`] = `
 <div
-  class="css-1v66a8t"
+  class="css-14fnck2"
   role="banner"
 >
   <div
@@ -29,7 +29,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-co4rz1-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-15uz2c5-MuiButtonBase-root-MuiIconButton-root"
     icon="xMark"
     tabindex="0"
     type="button"

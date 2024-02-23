@@ -8,7 +8,7 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
     class="css-1h9lvka"
   >
     <div
-      class="css-b5werg"
+      class="css-1h5sc78"
       label="Section 1"
     >
       Section 1
@@ -96,7 +96,7 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
     class="css-1h9lvka"
   >
     <div
-      class="css-b5werg"
+      class="css-1h5sc78"
       label="Section 2"
     >
       Section 2
@@ -184,7 +184,7 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
     class="css-1h9lvka"
   >
     <div
-      class="css-b5werg"
+      class="css-1h5sc78"
       label="Section 3"
     >
       Section 3

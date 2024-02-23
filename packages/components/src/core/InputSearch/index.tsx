@@ -103,8 +103,12 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsIconProps={{
                     sdsType: "iconButton",
                   }}
-                  icon="xMark"
+                  icon="xMarkCircle"
                 />
+              </StyledInputAdornment>
+            ),
+            startAdornment: (
+              <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}

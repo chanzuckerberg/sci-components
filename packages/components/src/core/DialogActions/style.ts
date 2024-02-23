@@ -1,4 +1,4 @@
-import { DialogActions } from "@mui/material";
+import { DialogActions, dialogActionsClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getSpaces } from "../styles";
 
@@ -25,7 +25,7 @@ export const StyledDialogActions = styled(DialogActions, {
 
       margin-top: ${spaces?.xxl}px;
 
-      &.MuiDialogActions-spacing > :not(:first-of-type) {
+      &.${dialogActionsClasses.spacing} > :not(:first-of-type) {
         margin-left: ${spaces?.m}px;
       }
   `;

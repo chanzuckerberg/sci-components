@@ -6,11 +6,11 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
 >
   <tbody>
     <tr
-      class=" css-1te7wvi"
+      class=" css-1lvje81"
       data-mui-internal-clone-element="true"
     >
       <td
-        class="css-ms0or8"
+        class="css-10m17a9"
       >
         <div
           class="css-ov1ktg"
@@ -19,7 +19,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
             class="css-1ago99h"
           >
             <span
-              class="css-l4a0ln"
+              class="css-1asg04x"
             >
               Primary
             </span>
@@ -27,7 +27,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-ms0or8"
+        class="css-10m17a9"
       >
         <div
           class="css-ov1ktg"
@@ -36,7 +36,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
             class="css-1ago99h"
           >
             <span
-              class="css-l4a0ln"
+              class="css-1asg04x"
             >
               Primary
             </span>
@@ -44,7 +44,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-ms0or8"
+        class="css-10m17a9"
       >
         <div
           class="css-ov1ktg"
@@ -53,7 +53,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
             class="css-1ago99h"
           >
             <span
-              class="css-l4a0ln"
+              class="css-1asg04x"
             >
               Primary
             </span>
@@ -61,7 +61,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-ms0or8"
+        class="css-10m17a9"
       >
         <div
           class="css-ov1ktg"
@@ -70,7 +70,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
             class="css-1ago99h"
           >
             <span
-              class="css-l4a0ln"
+              class="css-1asg04x"
             >
               Primary
             </span>
@@ -78,7 +78,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-ms0or8"
+        class="css-10m17a9"
       >
         <div
           class="css-ov1ktg"
@@ -87,7 +87,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
             class="css-1ago99h"
           >
             <span
-              class="css-l4a0ln"
+              class="css-1asg04x"
             >
               Primary
             </span>

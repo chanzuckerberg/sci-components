@@ -4,9 +4,9 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
+  fontBodyXxs,
   fontHeaderXs,
-  fontHeaderXxs,
-  getColors,
+  getSemanticTextColors,
   getShadows,
   getSpaces,
 } from "../styles";
@@ -62,13 +62,13 @@ const tableStyles = (props: TooltipExtraProps): string => {
 };
 
 export const Subtitle = styled("div")`
-  ${fontHeaderXxs}
+  ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      color: ${colors?.gray["400"]};
+      color: ${semanticTextColors?.base?.disabled};
     `;
   }}
 `;
@@ -108,7 +108,7 @@ export const arrowCss = (props: TooltipExtraProps): string => {
 };
 
 /*
- * (masoudmanson): !importants are needed to override arrow's
+ * (masoudmanson): !important is needed to override arrow's
  * default placement which is calculated by javascript
  */
 export const StyledPopper = styled(Popper)`

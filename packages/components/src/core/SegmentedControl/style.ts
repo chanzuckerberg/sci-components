@@ -1,47 +1,42 @@
-import { ToggleButtonGroup } from "@mui/material";
+import { ToggleButtonGroup, toggleButtonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CommonThemeProps, getColors, getCorners, getSpaces } from "../styles";
+import {
+  CommonThemeProps,
+  getSemanticComponentColors,
+  getSpaces,
+} from "../styles";
 
-const doNotForwardProps = ["color", "buttonDefinition"];
+const doNotForwardProps = ["buttonDefinition"];
 
 export const StyledSegmentedControl = styled(ToggleButtonGroup, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CommonThemeProps) => {
-    const colors = getColors(props);
     const spacings = getSpaces(props);
-    const corners = getCorners(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-    .Mui-selected.MuiToggleButton-root {
-        background-color: ${colors?.gray[100]};
-        color: ${colors?.primary[400]};
-        border-color: ${colors?.gray[400]};
+    .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
+        background-color: ${semanticComponentColors?.base?.fillOpen};
+        color: ${semanticComponentColors?.accent?.icon};
+        border-color: ${semanticComponentColors?.base?.border};
 
         &:hover {
-          background-color: ${colors?.gray[100]};
+          background-color: ${semanticComponentColors?.base?.fillHover};
         }
-    }
-
-    .MuiToggleButton-root {
-      border-color: ${colors?.gray[400]};
-      line-height: 0px;
-      color: #000;
-      padding: 0;
-
-      &:hover {
-        border-color: ${colors?.gray[400]};
-        background-color: ${colors?.gray[100]};
       }
-    }
 
-    .MuiSvgIcon-root {
-      padding-right: ${spacings?.l}px;
-      padding-left: ${spacings?.l}px;
-      padding-bottom: ${spacings?.xs}px;
-      padding-top: ${spacings?.xs}px;
-      border-radius: ${corners?.m}px;
-    }
+      .${toggleButtonClasses.root} {
+        border-color: ${semanticComponentColors?.base?.border};
+        line-height: 0px;
+        color: ${semanticComponentColors?.base?.iconHover};
+        padding: ${(spacings?.xs ?? 6) - 1}px ${spacings?.l}px;
+
+        &:hover {
+          border-color: ${semanticComponentColors?.base?.border};
+          background-color: ${semanticComponentColors?.base?.fillHover};
+        }
+      }
     `;
   }}
 `;

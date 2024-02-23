@@ -3,10 +3,9 @@ import ButtonIcon from "../ButtonIcon";
 import {
   CommonThemeProps,
   fontHeaderS,
-  getColors,
-  getPalette,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
@@ -36,12 +35,12 @@ export const StyledSortingIcon = styled(ButtonIcon, {
     const { active = false } = props;
 
     const spacings = getSpaces(props);
-    const colors = getColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       margin-left: ${spacings?.s}px;
-      margin-bottom: 2px;
-      color: ${active ? colors?.primary[400] : colors?.gray[400]};
+      margin-bottom: ${spacings?.xxxs}px;
+      color: ${active ? semanticComponentColors?.accent?.icon : semanticComponentColors?.base?.icon};
       opacity: ${active ? 1 : 0};
       outline: none !important;
     `;
@@ -57,14 +56,12 @@ export const StyledTableHeader = styled("th", {
     const { active = false, horizontalAlign = "left" } = props;
 
     const spacings = getSpaces(props);
-    const typography = getTypography(props);
-    const colors = getColors(props);
-    const palette = getPalette(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      color: ${active ? colors?.primary[400] : palette.text?.secondary};
-      font-family: ${typography?.fontFamily};
-      padding: ${spacings?.l}px ${spacings?.s}px;
+      color: ${active ? semanticComponentColors?.accent?.fill : semanticTextColors?.base?.secondary};
+      padding: ${spacings?.l}px ${spacings?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
       width: 96px;
@@ -76,10 +73,10 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? colors?.primary[500] : palette.text?.primary};
+        color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
 
         & .MuiButtonBase-root {
-          color: ${active ? colors?.primary[500] : palette.text?.secondary};
+          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticComponentColors?.base?.iconHover};
           opacity: 1;
         }
       }

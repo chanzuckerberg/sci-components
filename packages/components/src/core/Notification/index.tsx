@@ -4,16 +4,23 @@ import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import ButtonIcon from "../ButtonIcon";
 import Icon, { IconNameToSizes, IconProps } from "../Icon";
-import { StyledNotification } from "./style";
+import { StyledButtonWrapper, StyledNotification } from "./style";
+
+export type NotificationIntentType =
+  | "info"
+  | "negative"
+  | "positive"
+  | "notice";
 
 export interface NotificationProps {
   autoDismiss?: boolean | number;
   buttonOnClick?: (event: React.SyntheticEvent) => void;
   buttonText?: string;
+  buttonPosition?: "left" | "right";
   dismissed?: boolean;
   slideDirection: "left" | "right";
   extraContent?: boolean;
-  intent: "info" | "error" | "success" | "warning";
+  intent: NotificationIntentType;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
 }
@@ -32,6 +39,7 @@ const Notification = ({
   onClose,
   buttonOnClick,
   buttonText,
+  buttonPosition,
   icon,
   sdsIconProps,
   ...rest
@@ -74,7 +82,7 @@ const Notification = ({
       }
     } else {
       switch (intent) {
-        case "success":
+        case "positive":
           return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
         case "info":
           return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
@@ -115,18 +123,21 @@ const Notification = ({
             }
             icon={getIcon()}
             className="elevated"
-            severity={intent}
+            intent={intent}
+            slideDirection={slideDirection}
             {...passedProps}
           >
             {children}
-            {buttonOnClick && (
-              <Button
-                sdsStyle="minimal"
-                sdsType="secondary"
-                onClick={buttonOnClick}
-              >
-                {buttonText}
-              </Button>
+            {buttonOnClick !== undefined && (
+              <StyledButtonWrapper buttonPosition={buttonPosition}>
+                <Button
+                  sdsStyle="minimal"
+                  sdsType="secondary"
+                  onClick={buttonOnClick}
+                >
+                  {buttonText}
+                </Button>
+              </StyledButtonWrapper>
             )}
           </StyledNotification>
         </Box>

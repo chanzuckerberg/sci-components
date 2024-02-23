@@ -4,16 +4,16 @@ exports[`<CellComponent /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      class="css-1te7wvi"
+      class="css-1lvje81"
       style="display: block; max-width: 280px;"
     >
       <td
-        class="cell-component css-1pxuqjo"
+        class="cell-component css-1ssa1s"
         data-testid="CellComponent"
         style="height: 100px; width: 100px;"
       >
         <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium css-1lu0c44-MuiSwitch-root"
+          class="MuiSwitch-root MuiSwitch-sizeMedium css-1r4ynxi-MuiSwitch-root"
         >
           <span
             class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"

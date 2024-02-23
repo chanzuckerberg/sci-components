@@ -2,7 +2,6 @@ import { FormControlLabel, Switch } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Button from "../Button";
 import RawNotification, { NotificationProps } from "./index";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import CustomSdsIcon from "src/common/customSdsIcon";
@@ -14,6 +13,8 @@ const iconOptions = [
   "book",
   "checkCircle",
 ];
+const buttonOnClickOptions = [action("onClick"), undefined];
+const onClickOptions = [action("onClick"), undefined];
 
 const Notification = (props: Args): JSX.Element => {
   const {
@@ -32,39 +33,6 @@ const Notification = (props: Args): JSX.Element => {
     setDismissed((prev) => !prev);
   };
 
-  if (buttonOnClick) {
-    return (
-      <>
-        {!autoDismiss && (
-          <FormControlLabel
-            control={<Switch checked={dismissed} onChange={handleChange} />}
-            label="Hide"
-          />
-        )}
-        <RawNotification
-          autoDismiss={autoDismiss}
-          dismissed={dismissed}
-          slideDirection={slideDirection}
-          intent={intent}
-          onClose={onClose}
-          buttonOnClick={action("onClick")}
-          buttonText={buttonText}
-          {...props}
-        >
-          This is a notification!
-          {extraContent && (
-            <div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet
-              eveniet sapiente, officiis aut possimus suscipit assumenda non?
-            </div>
-          )}
-        </RawNotification>
-        <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
-          Reset Notification
-        </Button>
-      </>
-    );
-  }
   return (
     <>
       {!autoDismiss && (
@@ -79,6 +47,8 @@ const Notification = (props: Args): JSX.Element => {
         slideDirection={slideDirection}
         intent={intent}
         onClose={onClose}
+        buttonOnClick={buttonOnClick}
+        buttonText={buttonText}
         {...props}
       >
         This is a notification!
@@ -89,9 +59,6 @@ const Notification = (props: Args): JSX.Element => {
           </div>
         )}
       </RawNotification>
-      <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
-        Reset Notification
-      </Button>
     </>
   );
 };
@@ -103,7 +70,16 @@ export default {
       options: [true, false, 4000, 12000, 20000],
     },
     buttonOnClick: {
-      control: { type: "boolean" },
+      control: {
+        labels: ["() => {}", "undefined"],
+        type: "select",
+      },
+      mapping: buttonOnClickOptions,
+      options: Object.keys(buttonOnClickOptions),
+    },
+    buttonPosition: {
+      control: { type: "radio" },
+      options: ["left", "right"],
     },
     extraContent: {
       control: { type: "boolean" },
@@ -123,17 +99,15 @@ export default {
     },
     intent: {
       control: { type: "radio" },
-      options: ["info", "error", "success", "warning"],
+      options: ["info", "negative", "positive", "notice"],
     },
     onClose: {
       control: {
-        labels: {
-          "() => {}": true,
-          undefined,
-        },
+        labels: ["() => {}", "undefined"],
         type: "select",
       },
-      options: [action("onClick"), undefined],
+      mapping: onClickOptions,
+      options: Object.keys(onClickOptions),
     },
     sdsIconProps: {
       control: { type: "object" },
@@ -155,10 +129,10 @@ export default {
 export const Default = {
   args: {
     autoDismiss: false,
-    buttonOnClick: false,
+    buttonPosition: "right",
     buttonText: "click me",
     extraContent: false,
-    intent: "success",
+    intent: "info",
     slideDirection: "left",
   },
 };
@@ -217,9 +191,9 @@ export const LivePreview = {
 const ScreenshotTestDemo = (): JSX.Element => {
   const INTENT_OPTIONS: NotificationProps["intent"][] = [
     "info",
-    "error",
-    "success",
-    "warning",
+    "negative",
+    "positive",
+    "notice",
   ];
   const EXTRA_CONTENT_OPTIONS = [false, true];
   const BUTTON_ON_CLICK_OPTIONS: NotificationProps["buttonOnClick"][] = [

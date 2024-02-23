@@ -87,9 +87,9 @@ export default {
   },
   component: ButtonIcon,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.NEEDS_REVISION],
   },
-  title: "Components/ButtonIcon",
+  title: "Components/ButtonIcon [wip]",
 } as Meta;
 
 // Default

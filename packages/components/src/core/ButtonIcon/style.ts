@@ -36,12 +36,10 @@ const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   return css`
     ${sdsType !== "tertiary" &&
     `
-      color: ${
-        sdsType === "primary" ? colors?.primary[600] : colors?.primary[400]
-      };
+      color: ${sdsType === "primary" ? colors?.blue[600] : colors?.blue[400]};
 
       &:hover {
-        color: ${colors?.primary[600]};
+        color: ${colors?.blue[600]};
       }
     `}
   `;
@@ -66,17 +64,15 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   const { sdsSize } = props;
 
   return css`
-    color: ${colors?.primary[400]};
+    color: ${colors?.blue[400]};
 
     &:hover {
       background: ${colors?.gray[200]};
-      color: ${sdsSize === "small"
-        ? colors?.primary[600]
-        : colors?.primary[400]};
+      color: ${sdsSize === "small" ? colors?.blue[600] : colors?.blue[400]};
     }
 
     &:active {
-      color: ${colors?.primary[600]};
+      color: ${colors?.blue[600]};
     }
   `;
 };
@@ -92,7 +88,7 @@ const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     &:hover,
     &:active {
       background: none;
-      color: ${colors?.primary[400]};
+      color: ${colors?.blue[400]};
     }
   `;
 };

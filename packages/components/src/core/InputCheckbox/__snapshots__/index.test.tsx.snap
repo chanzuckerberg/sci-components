@@ -1,13 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
-<div>
+<label
+  class="css-oh0h48"
+>
   <label
     caption="Caption"
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-n82mu-MuiFormControlLabel-root"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1huceqw-MuiFormControlLabel-root"
   >
     <span
-      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium css-pdae7e-MuiButtonBase-root-MuiCheckbox-root"
+      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium css-4qmxpf-MuiButtonBase-root-MuiCheckbox-root"
+      intent="default"
     >
       <input
         class="PrivateSwitchBase-input css-1m9pwf3"
@@ -33,5 +36,10 @@ exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
       Label
     </span>
   </label>
-</div>
+  <span
+    class="css-1g1knab"
+  >
+    Caption
+  </span>
+</label>
 `;

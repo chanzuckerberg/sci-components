@@ -13,14 +13,12 @@ const InputCheckbox = (props: Args): JSX.Element => {
   const handleChange = () => setChecked((prevState) => !prevState);
 
   return (
-    <div>
-      <RawInputCheckbox
-        disabled={disabled}
-        onChange={handleChange}
-        stage={checked ? "unchecked" : "checked"}
-        {...props}
-      />
-    </div>
+    <RawInputCheckbox
+      disabled={disabled}
+      onChange={handleChange}
+      stage={checked ? "unchecked" : "checked"}
+      {...props}
+    />
   );
 };
 
@@ -28,6 +26,13 @@ export default {
   argTypes: {
     caption: {
       control: { type: "text" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "error", "warning"],
     },
     label: {
       control: { type: "text" },
@@ -51,6 +56,7 @@ export default {
 export const Default = {
   args: {
     caption: "Caption",
+    intent: "default",
     label: "Label",
   },
 };
@@ -86,7 +92,14 @@ const IndeterminateDemo = (): JSX.Element => {
   };
 
   const children = (
-    <Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "10px",
+        margin: "10px 0 0 10px",
+      }}
+    >
       <RawInputCheckbox
         label="Child 1"
         checkboxProps={{
@@ -96,6 +109,7 @@ const IndeterminateDemo = (): JSX.Element => {
       />
       <RawInputCheckbox
         label="Child 2"
+        caption="Caption"
         checkboxProps={{
           checked: checked[1],
           onChange: handleChange3,
@@ -126,7 +140,7 @@ const LivePreviewDemo = (): JSX.Element => {
     display: "grid",
     gridColumnGap: "24px",
     gridRowGap: "0px",
-    gridTemplateColumns: "repeat(3, 70px)",
+    gridTemplateColumns: "repeat(3, 80px)",
     gridTemplateRows: "1fr",
   };
 
@@ -147,7 +161,7 @@ const LivePreviewDemo = (): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
-    controls: { exclude: ["caption", "label", "stage"] },
+    controls: { exclude: ["caption", "label", "stage", "disabled", "intent"] },
     snapshot: {
       skip: true,
     },
@@ -171,7 +185,7 @@ const TestDemo = (): JSX.Element => {
       <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
         <CheckboxLabelDemo
           caption="Caption"
-          label="Lable A"
+          label="Label A"
           disabled={false}
           data-testid="labelCheckbox"
         />
@@ -188,7 +202,9 @@ export const Test = {
     id: testId,
   },
   parameters: {
-    controls: { exclude: ["caption", "label", "id", "stage"] },
+    controls: {
+      exclude: ["caption", "label", "stage", "disabled", "intent", "id"],
+    },
     snapshot: {
       skip: true,
     },

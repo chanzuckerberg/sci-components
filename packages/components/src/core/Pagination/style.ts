@@ -3,11 +3,11 @@ import ButtonIcon from "../ButtonIcon";
 import {
   CommonThemeProps,
   fontBodyS,
-  getColors,
+  fontBodySemiboldS,
   getCorners,
-  getFontWeights,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface PaginationExtraProps extends CommonThemeProps {
@@ -36,18 +36,24 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
 })`
   ${(props: PaginationExtraProps) => {
     const { disabled } = props;
-    const colors = getColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       width: 32px;
       height: 32px;
       cursor: ${disabled ? "auto" : "pointer"};
-      &:hover {
-        background-color: ${disabled ? "transparent" : colors?.gray[200]};
-      }
+
       & .MuiSvgIcon-root {
         width: 10px;
-        color: ${colors?.gray[600]}
+        color: ${semanticComponentColors?.base?.icon}
+      }
+
+      &:hover {
+        background-color: ${disabled ? "transparent" : semanticComponentColors?.base?.fillHover};
+
+        & .MuiSvgIcon-root {
+          color: ${semanticComponentColors?.base?.iconHover}
+        }
       }
     `;
   }}
@@ -64,22 +70,38 @@ export const StyledPaginationChevronButton = styled(ButtonIcon, {
 })`
   ${(props: PaginationExtraProps) => {
     const { disabled } = props;
-    const colors = getColors(props);
     const spaces = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       &[data-order="first"] {
         margin-right: ${spaces?.xl}px;
       }
+
       &[data-order="last"] {
         margin-left: ${spaces?.xl}px;
       }
+
       cursor: ${disabled ? "auto" : "pointer"};
+
       &:hover {
         background-color: transparent;
       }
+
       & .MuiSvgIcon-root {
-        color: ${disabled ? colors?.gray[300] : "black"};
+        color: ${
+          disabled
+            ? semanticComponentColors?.base?.iconDisabled
+            : semanticComponentColors?.base?.icon
+        };
+
+        &:hover {
+          color: ${
+            disabled
+              ? semanticComponentColors?.base?.iconDisabled
+              : semanticComponentColors?.base?.iconHover
+          };
+        }
       }
     `;
   }}
@@ -89,30 +111,26 @@ export const StyledPagination = styled("ul", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontBodyS}
-
-  ${(props: PaginationExtraProps) => {
-    const typography = getTypography(props);
-
-    return `
-      font-family: ${typography?.fontFamily};
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-      & li {
-        list-style: none;
-      }
-    `;
-  }}
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  & li {
+    list-style: none;
+  }
 `;
 
-const selectedPageStyle = () => {
+const selectedPageStyle = (props: PaginationExtraProps) => {
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
+
   return `
-    background-color: black;
-    color: white;
+    background-color: ${semanticComponentColors?.base?.fillSelected};
+    color: ${semanticTextColors?.base?.onFill};
 
     &:hover {
-      background-color: black;
+      background-color: ${semanticComponentColors?.base?.fillSelected};
+      color: ${semanticTextColors?.base?.onFill};
     }
   `;
 };
@@ -120,17 +138,17 @@ const selectedPageStyle = () => {
 export const Page = styled("li", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontBodyS}
+  ${fontBodySemiboldS}
 
   ${(props: PaginationExtraProps) => {
     const { selected, sdsStyle } = props;
     const spaces = getSpaces(props);
     const corners = getCorners(props);
-    const colors = getColors(props);
-    const fontWeights = getFontWeights(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      font-weight: ${fontWeights?.semibold};
+      color: ${semanticTextColors?.base?.secondary};
       cursor: pointer;
       list-style: none;
       width: 32px;
@@ -142,14 +160,15 @@ export const Page = styled("li", {
       border-radius: ${sdsStyle === "round" ? corners?.l : corners?.m}px;
       user-select: none;
       &:hover {
-        background-color: ${colors?.gray[200]};
+        background-color: ${semanticComponentColors?.base?.fillHover};
+        color: ${semanticTextColors?.base?.primary};
       }
 
       &:nth-last-of-type(-n+2) {
         margin-right: 0;
       }
 
-      ${selected && selectedPageStyle()};
+      ${selected && selectedPageStyle(props)};
     `;
   }}
 `;

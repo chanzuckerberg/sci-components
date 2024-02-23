@@ -9,11 +9,12 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyS,
+  fontBodyXs,
   getBorders,
   getColors,
   getCorners,
+  getSemanticComponentColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface InputTextExtraProps extends CommonThemeProps {
@@ -28,27 +29,27 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
 
 const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.error[400]};
+      border: ${borders?.negative[400]};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.error[400]};
+      border: ${borders?.negative[400]};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.error[400]};
+        border: ${borders?.negative[400]};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${colors?.gray[500]};
+          color: ${semanticComponentColors?.base?.icon};
         }
       }
     }
@@ -57,27 +58,27 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
 const warning = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.warning[400]};
+      border: ${borders?.notice[400]};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.warning[400]};
+      border: ${borders?.notice[400]};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.warning[400]};
+        border: ${borders?.notice[400]};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${colors?.gray[500]};
+          color: ${semanticComponentColors?.base?.icon};
         }
       }
     }
@@ -91,11 +92,11 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[300]};
+        border: ${borders?.base[300]};
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[300]};
+        border: ${borders?.base[300]};
       }
 
       &::placeholder {
@@ -127,10 +128,10 @@ const userInput = (props: InputTextExtraProps): SerializedStyles => {
 
   const border =
     intent === "error"
-      ? borders?.error[400]
+      ? borders?.negative[400]
       : intent === "warning"
-        ? borders?.warning[400]
-        : borders?.primary[400];
+        ? borders?.notice[400]
+        : borders?.accent[400];
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -149,11 +150,9 @@ export const StyledLabel = styled("label")`
   ${fontBodyS}
 
   ${(props) => {
-    const typography = getTypography(props);
     const spacings = getSpaces(props);
 
     return `
-      font-family: ${typography?.fontFamily};
       margin-bottom: ${spacings?.xxs}px;
     `;
   }}
@@ -170,6 +169,7 @@ export const StyledInputBase = styled(TextField, {
     const spacings = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return css`
       margin-bottom: ${spacings?.l}px;
@@ -178,25 +178,26 @@ export const StyledInputBase = styled(TextField, {
       display: block;
 
       .${outlinedInputClasses.inputSizeSmall} {
-        padding: ${spacings?.xs}px ${spacings?.l}px;
-        height: 34px;
+        ${fontBodyXs(props)}
+        padding: ${spacings?.xs}px ${spacings?.m}px;
+        height: unset;
         box-sizing: border-box;
-        background-color: #fff;
+        background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      }
 
-        .${outlinedInputClasses.notchedOutline} {
-          border-radius: ${corners?.m}px;
-          border: ${borders?.gray[400]};
-        }
+      .${outlinedInputClasses.notchedOutline} {
+        border-radius: ${corners?.m}px;
+        border: ${borders?.base[400]};
       }
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[500]};
+        border-color: ${semanticComponentColors?.base?.borderHover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
         .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.primary[400]};
+        border: ${borders?.accent[400]};
       }
 
       ${sdsType === "textArea" && textArea(props)}

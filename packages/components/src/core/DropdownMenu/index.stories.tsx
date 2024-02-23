@@ -570,19 +570,19 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
             label="bug"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="error"
+            color="negative"
           />
           <Tag
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="warning"
+            color="notice"
           />
           <Tag
             label="refactor"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="gray"
+            color="neutral"
           />
         </div>
       </div>
@@ -607,8 +607,8 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
   // loop through all TITLE_OPTIONS
   return (
     <>
-      {TITLE_OPTIONS.map((title) => {
-        return <DropdownMenuTitle title={title} key={title} />;
+      {TITLE_OPTIONS.map((title, index) => {
+        return <DropdownMenuTitle title={title} key={String(title) + index} />;
       })}
     </>
   );
@@ -673,20 +673,20 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
         <p style={SEARCH_LABEL}>
           Search: <b>{search ? "yes" : "no"}</b>
         </p>
-        {GROUP_BY_OPTIONS.map((groupBy) => {
+        {GROUP_BY_OPTIONS.map((groupBy, index) => {
+          const groupByFinal = groupBy
+            ? (option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>
+                option.section as string
+            : undefined;
           return (
-            <div style={LEVEL_STYLE} key={`level-${String(groupBy)}`}>
+            <div style={LEVEL_STYLE} key={`level-${index})}`}>
               <>
                 <p style={GROUP_BY_LABEL}>
                   Grouped: <b>{groupBy ? "yes" : "no"}</b>
                 </p>
                 <DropdownMenu
                   {...props}
-                  groupBy={
-                    groupBy &&
-                    ((option: (typeof SCREENSHOT_TEST_OPTIONS)[number]) =>
-                      option.section as string)
-                  }
+                  groupBy={groupByFinal}
                   options={
                     SCREENSHOT_TEST_OPTIONS as DefaultAutocompleteOption[]
                   }

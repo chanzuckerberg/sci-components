@@ -6,6 +6,8 @@ import {
   FontWeights,
   IconSizes,
   SDSTheme,
+  SemanticComponentColors,
+  SemanticTextColors,
   Shadows,
   Spaces,
   Spacings,
@@ -42,6 +44,18 @@ export const getPalette = ({ theme }: CommonThemeProps): PaletteOptions => {
 
 export const getColors = ({ theme }: CommonThemeProps): Colors | null => {
   return theme?.app?.colors || null;
+};
+
+export const getSemanticComponentColors = ({
+  theme,
+}: CommonThemeProps): SemanticComponentColors | null => {
+  return theme?.palette?.sds?.component || null;
+};
+
+export const getSemanticTextColors = ({
+  theme,
+}: CommonThemeProps): SemanticTextColors | null => {
+  return theme?.palette?.sds?.text || null;
 };
 
 export const getShadows = ({ theme }: CommonThemeProps): Shadows | null => {

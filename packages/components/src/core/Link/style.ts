@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
   getBorders,
-  getTypography,
+  getSemanticTextColors,
 } from "../styles";
 
 // (thuang): Support `component` prop
@@ -20,31 +20,27 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
 const sdsPropNames = ["sdsStyle"];
 
 const defaultStyle = (props: LinkProps) => {
-  const { theme } = props;
-  const typography = getTypography(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return css`
-    color: ${theme?.app?.colors.primary[400]};
-    font-family: ${typography?.fontFamily};
+    color: ${semanticTextColors?.action?.default};
 
     &:hover,
     &:focus {
-      color: ${theme?.app?.colors.primary[500]};
+      color: ${semanticTextColors?.action?.hover};
     }
 
     &:active {
-      color: ${theme?.app?.colors.primary[600]};
+      color: ${semanticTextColors?.action?.pressed};
     }
   `;
 };
 
 const dashedStyle = (props: LinkProps) => {
   const border = getBorders(props);
-  const typography = getTypography(props);
 
   return css`
     color: inherit;
-    font-family: ${typography?.fontFamily};
     border-bottom: ${border?.link.dashed};
 
     &:hover,

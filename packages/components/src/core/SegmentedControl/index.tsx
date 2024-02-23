@@ -7,21 +7,12 @@ import { StyledSegmentedControl } from "./style";
 // first item in array first button, etc
 export interface SingleButtonDefinition {
   icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  tooltipText: string;
+  tooltipText?: string;
+  value: string;
 }
 
-interface SegmentedControlExtraProps
-  extends Omit<ToggleButtonGroupProps, "color"> {
+interface SegmentedControlExtraProps extends ToggleButtonGroupProps {
   buttonDefinition: SingleButtonDefinition[];
-  color?:
-    | "primary"
-    | "secondary"
-    | "standard"
-    | "success"
-    | "error"
-    | "info"
-    | "warning"
-    | undefined;
 }
 
 /**
@@ -32,7 +23,7 @@ export type SegmentedControlProps = SegmentedControlExtraProps &
 
 const SegmentedControl = (props: SegmentedControlProps) => {
   const { buttonDefinition } = props;
-  const leftmost = buttonDefinition[0]?.tooltipText;
+  const leftmost = buttonDefinition[0]?.value;
   const [active, setActive] = React.useState<string | null>(leftmost);
 
   const handleActive = (
@@ -46,7 +37,6 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
   return (
     <StyledSegmentedControl
-      color="primary"
       size="small"
       value={active}
       exclusive
@@ -54,7 +44,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {...props}
     >
       {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
-        const { icon, tooltipText } = button;
+        const { icon, tooltipText, value } = button;
 
         const iconItem = () => {
           if (icon) {
@@ -70,10 +60,10 @@ const SegmentedControl = (props: SegmentedControlProps) => {
           <ToggleButton
             aria-label={tooltipText}
             disableRipple
-            value={tooltipText}
-            key={tooltipText}
+            value={value}
+            key={value}
           >
-            <Tooltip title={tooltipText} sdsStyle="dark" arrow>
+            <Tooltip title={tooltipText ?? value} sdsStyle="dark" arrow>
               <span>{iconItem()}</span>
             </Tooltip>
           </ToggleButton>

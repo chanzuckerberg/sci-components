@@ -3,10 +3,11 @@ import { ReactElement } from "react";
 import {
   CommonThemeProps,
   fontCapsXxxs,
-  getColors,
+  getBorders,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
 } from "../../../styles";
 
 export interface StyleProps extends CommonThemeProps {
@@ -21,15 +22,15 @@ export const StyledColumn = styled("div")`
   ${(props: StyleProps) => {
     const { width = 280 } = props;
 
-    const colors = getColors(props);
     const spacings = getSpaces(props);
+    const borders = getBorders(props);
 
     return `
       position: relative;
       width: ${width}px;
 
       &:not(:last-child) {
-        border-right: solid 1px ${colors?.gray[200]};
+        border-right: ${borders?.base[200]};
         margin-right: ${spacings?.m}px;
       }
 
@@ -47,11 +48,10 @@ export const StyledColumnTitle = styled("p")`
   ${fontCapsXxxs}
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
-    const colors = getColors(props);
-    const typography = getTypography(props);
+    const semanticTextColors = getSemanticTextColors(props);
+
     return `
-      font-family: ${typography?.fontFamily};
-      color: ${colors?.gray[500]};
+      color: ${semanticTextColors?.base?.secondary};
       padding: 0 ${spacings?.s}px ${spacings?.xxs}px;
       margin: 0;
     `;
@@ -61,18 +61,18 @@ export const StyledColumnTitle = styled("p")`
 export const StyledColumnIcon = styled("span")`
   ${(props: StyleProps) => {
     const spacings = getSpaces(props);
-    const colors = getColors(props);
     const iconSizes = getIconSizes(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
       position: absolute;
       right: -${spacings?.xs}px;
       top: -2px;
       padding-bottom: 2px;
 
       svg {
-        color: ${colors?.gray[500]};
+        color: ${semanticComponentColors?.base?.icon};
         width: ${iconSizes?.xs.width}px;
         height: ${iconSizes?.xs.height}px;
       }

@@ -91,6 +91,9 @@
             "on-fill-disabled": {
               "value": "{sds.color.primitive.gray.400.value}"
             },
+            "surface": {
+              "value": "{sds.color.primitive.gray.white.value}"
+            },
             "surface-primary": {
               "value": "{sds.color.primitive.gray.white.value}"
             },
@@ -172,6 +175,19 @@
             "surface": { "value": "{sds.color.primitive.red.200.value}" },
             "border": { "value": "{sds.color.primitive.red.400.value}" },
             "icon": { "value": "{sds.color.primitive.red.400.value}" }
+          },
+          "neutral": {
+            "fill": { "value": "{sds.color.primitive.gray.400.value}" },
+            "fill-hover": { "value": "{sds.color.primitive.gray.500.value}" },
+            "fill-pressed": {
+              "value": "{sds.color.primitive.gray.600.value}"
+            },
+            "fill-on-fill": {
+              "value": "{sds.color.primitive.gray.white.value}"
+            },
+            "surface": { "value": "{sds.color.primitive.gray.200.value}" },
+            "border": { "value": "{sds.color.primitive.gray.400.value}" },
+            "icon": { "value": "{sds.color.primitive.gray.400.value}" }
           },
           "notice": {
             "fill": { "value": "{sds.color.primitive.yellow.400.value}" },

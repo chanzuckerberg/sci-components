@@ -9,7 +9,7 @@ type FontBodySize<T extends FontBodyWeight> =
 
 export const fontBody = (
   fontSize: FontBodySize<FontBodyWeight>,
-  fontWeight: FontBodyWeight
+  fontWeight: FontBodyWeight = "regular"
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -100,7 +100,7 @@ type FontCodeSize<T extends FontCodeWeight> =
 
 export const fontCode = (
   fontSize: FontCodeSize<FontCodeWeight>,
-  fontWeight: FontCodeWeight
+  fontWeight: FontCodeWeight = "regular"
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -131,7 +131,7 @@ type FontTabularSize<T extends FontTabularWeight> =
 
 export const fontTabular = (
   fontSize: FontTabularSize<FontTabularWeight>,
-  fontWeight: FontTabularWeight
+  fontWeight: FontTabularWeight = "regular"
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -145,7 +145,7 @@ export const fontTabular = (
 
     return css`
       ${themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
-      font-variant-numeric: "tabular-nums",
+      font-variant-numeric: tabular-nums;
     `;
   };
 };

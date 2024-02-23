@@ -22,12 +22,12 @@ const ICONS = [
 const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
 
 const PANEL_COLORS: ExtraTagProps["tagColor"][] = [
-  "primary",
+  "accent",
   "info",
-  "success",
-  "warning",
-  "error",
-  "gray",
+  "positive",
+  "notice",
+  "negative",
+  "neutral",
   "beta",
   ["#000000", "#C65FA7", "#FFD400"],
 ];
@@ -44,12 +44,12 @@ export default {
     color: {
       control: {
         labels: [
-          "primary",
+          "accent",
           "info",
-          "success",
-          "warning",
-          "error",
-          "gray",
+          "positive",
+          "notice",
+          "negative",
+          "neutral",
           "beta",
           "Custom colors for Label, Background, Icon",
         ],
@@ -258,7 +258,7 @@ export const ScreenshotTest = {
 // Gray Primary only
 // Tags with `color` of `gray` and `sdsType` of `primary` have their own story here because they do not currently pass the a11y tests. However, design has manually tested them with APCA, and they are accessible; our tests just do not use APCA yet. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
 
-const GRAY_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = ["gray"];
+const GRAY_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = ["neutral"];
 const GRAY_PRIMARY_TYPES: ExtraTagProps["sdsType"][] = ["primary"];
 
 function GrayPrimaryScreenshotTestDemo(props: Args): JSX.Element {
@@ -312,8 +312,8 @@ export const GrayPrimaryScreenshotTest = {
 // Tags with `color` of `success` or `warning` have their own story here because they do not currently pass the a11y tests. Design is aware of this and will be updating their colors. In the meantime, the a11y tests are currently disabled for this story, but enabled for the remaining colors in the ScreenshotTest story, so they can be tested properly.
 
 const SUCCESS_WARNING_PRIMARY_COLORS: ExtraTagProps["tagColor"][] = [
-  "success",
-  "warning",
+  "positive",
+  "notice",
 ];
 
 function SuccessWarningScreenshotTestDemo(props: Args): JSX.Element {

@@ -1,4 +1,4 @@
-import { Switch, SwitchProps } from "@mui/material";
+import { Switch, SwitchProps, switchClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
@@ -6,8 +6,10 @@ import {
   getBorders,
   getColors,
   getCorners,
+  getSemanticComponentColors,
+  getSemanticTextColors,
+  getShadows,
   getSpaces,
-  getTypography,
 } from "../styles";
 
 export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
@@ -20,6 +22,9 @@ const toggle = (props: InputToggleExtraProps) => {
   const { disabled } = props;
   const corners = getCorners(props);
   const spaces = getSpaces(props);
+  const shadows = getShadows(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+
   const TOGGLE_HEIGHT = 18;
 
   return `
@@ -30,7 +35,7 @@ const toggle = (props: InputToggleExtraProps) => {
     line-height: 18px;
     padding: ${spaces?.xxs}px;
 
-    .MuiSwitch-switchBase {
+    .${switchClasses.switchBase} {
       font: inherit;
       margin: ${spaces?.xxs}px;
       padding: 0;
@@ -41,14 +46,14 @@ const toggle = (props: InputToggleExtraProps) => {
       }
     }
 
-    .MuiSwitch-thumb {
+    .${switchClasses.thumb} {
       height: ${TOGGLE_HEIGHT}px;
       width: ${TOGGLE_HEIGHT}px;
-      box-shadow: none;
+      box-shadow: ${shadows?.none};
     }
 
-    .MuiSwitch-track {
-      background-color: white;
+    .${switchClasses.track} {
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
       width: unset;
     }
   `;
@@ -59,17 +64,18 @@ const toggleOn = (props: InputToggleExtraProps) => {
   const borders = getBorders(props);
   const colors = getColors(props);
   const spaces = getSpaces(props);
-  const typography = getTypography(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return `
-    outline: ${disabled ? borders?.primary[300] : borders?.primary[400]};
+    outline: ${disabled ? borders?.accent[300] : borders?.accent[400]};
 
-    .MuiSwitch-thumb {
-      color: ${disabled ? colors?.primary[300] : colors?.primary[400]};
+    .${switchClasses.thumb} {
+      color: ${disabled ? semanticComponentColors?.accent?.borderDisabled : semanticComponentColors?.accent?.border};
       margin-left: ${spaces?.s}px;
     }
 
-    .MuiSwitch-switchBase {
+    .${switchClasses.switchBase} {
       left: unset;
       right: 0;
       transform: unset;
@@ -79,20 +85,18 @@ const toggleOn = (props: InputToggleExtraProps) => {
       }
 
       &:before {
-        color: ${disabled ? colors?.gray[300] : colors?.gray[600]};
+        color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.primary};
         content: "${value}";
-        font: inherit;
-        font-family: ${typography?.fontFamily};
       }
     }
 
     ${
       !disabled &&
       `&:hover {
-        outline: ${borders?.primary[500]};
+        outline: ${borders?.accent[500]};
 
-        .MuiSwitch-thumb {
-          color: ${colors?.primary[500]};
+        .${switchClasses.thumb} {
+          color: ${colors?.blue[500]};
         }
       }`
     }
@@ -102,21 +106,25 @@ const toggleOn = (props: InputToggleExtraProps) => {
 const toggleOff = (props: InputToggleExtraProps) => {
   const { disabled, value } = props;
   const borders = getBorders(props);
-  const colors = getColors(props);
   const spaces = getSpaces(props);
-  const typography = getTypography(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return `
     & {
-      outline: ${disabled ? borders?.gray[300] : borders?.gray[400]};
+      outline: ${disabled ? borders?.base[300] : borders?.base[400]};
     }
 
-    .MuiSwitch-thumb {
-      color: ${disabled ? colors?.gray[300] : colors?.gray[400]};
+    .${switchClasses.thumb} {
+      color: ${
+        disabled
+          ? semanticComponentColors?.base?.borderDisabled
+          : semanticComponentColors?.base?.border
+      };
       margin-right: ${spaces?.s}px;
     }
 
-    .MuiSwitch-switchBase {
+    .${switchClasses.switchBase} {
       right: unset;
       left: 0;
       transform: unset;
@@ -126,20 +134,18 @@ const toggleOff = (props: InputToggleExtraProps) => {
       }
 
       &:after {
-        color: ${disabled ? colors?.gray[300] : colors?.gray[500]};
+        color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.primary};
         content: "${value}";
-        font: inherit;
-        font-family: ${typography?.fontFamily};
       }
     }
 
     ${
       !disabled &&
       `&:hover {
-        outline: ${borders?.gray[500]};
+        outline: ${borders?.base?.black};
 
-        .MuiSwitch-thumb {
-          color: ${colors?.gray[500]};
+        .${switchClasses.thumb} {
+          color: ${semanticComponentColors?.base?.iconHover};
         }
       }`
     }

@@ -44,10 +44,11 @@ const Table = (props: Args): JSX.Element => {
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="flask" sdsType="static" />
               <Tag
-                color="primary"
+                color="info"
                 label="Chemistry"
                 sdsStyle="rounded"
                 sdsType="secondary"
+                hover={false}
               />
             </StyledIconCell>
           </CellComponent>
@@ -71,13 +72,14 @@ const Table = (props: Args): JSX.Element => {
             shouldShowTooltipOnHover={false}
           />
           <CellComponent>
-            {["primary", "warning", "beta", "error", "success"].map((item) => (
+            {["info", "notice", "beta", "negative", "positive"].map((item) => (
               <Tag
                 key={item}
                 color={item as SdsTagColorType}
                 label={item as string}
                 sdsStyle="rounded"
                 sdsType="secondary"
+                hover={false}
               />
             ))}
           </CellComponent>
@@ -92,10 +94,11 @@ const Table = (props: Args): JSX.Element => {
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="download" sdsType="static" />
               <Tag
-                color="primary"
+                color="info"
                 label="Downloadable Content"
                 sdsStyle="rounded"
                 sdsType="secondary"
+                hover={false}
               />
             </StyledIconCell>
           </CellComponent>
@@ -149,10 +152,11 @@ const Table = (props: Args): JSX.Element => {
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="bacteria" sdsType="static" />
               <Tag
-                color="error"
+                color="negative"
                 label="Disease"
                 sdsStyle="rounded"
                 sdsType="secondary"
+                hover={false}
               />
             </StyledIconCell>
           </CellComponent>

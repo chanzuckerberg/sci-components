@@ -8,17 +8,19 @@ import { StyledCallout } from "./style";
 
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
+
+export type CalloutIntentType = "info" | "negative" | "notice" | "positive";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
   expandable?: boolean;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-  intent: "info" | "error" | "success" | "warning";
+  intent: CalloutIntentType;
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
 }
 
-export type ExposedCalloutProps = AlertProps & CalloutProps;
+export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
 
 /**
  * @see https://mui.com/material-ui/react-alert/
@@ -70,7 +72,7 @@ const Callout = ({
       }
     } else {
       switch (intent) {
-        case "success":
+        case "positive":
           return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
         case "info":
           return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
@@ -134,7 +136,7 @@ const Callout = ({
           onClose={onClose ? handleClose : undefined}
           action={getAction(collapsed)}
           icon={getIcon()}
-          severity={intent}
+          intent={intent}
           collapsed={collapsed || false}
           {...rest}
         >

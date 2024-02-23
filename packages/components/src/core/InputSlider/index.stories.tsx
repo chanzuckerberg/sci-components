@@ -64,12 +64,6 @@ export default {
         type: "number",
       },
     },
-    orientation: {
-      control: {
-        type: "radio",
-      },
-      options: ["horizontal", "vertical"],
-    },
     step: {
       control: {
         type: "number",
@@ -105,7 +99,6 @@ export const Default = {
     marks: true,
     max: 100,
     min: 0,
-    orientation: "horizontal",
     step: 5,
     valueLabelDisplay: "on",
   },

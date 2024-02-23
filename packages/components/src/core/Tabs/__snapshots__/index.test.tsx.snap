@@ -14,7 +14,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1gpp98k-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-to3gtv-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="0"
         type="button"
@@ -26,12 +26,12 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1gpp98k-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-to3gtv-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="-1"
         type="button"
       >
-        Upload from Basespace
+        Upload from Base Space
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />

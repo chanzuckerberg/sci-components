@@ -47,9 +47,9 @@ export default {
   },
   component: ButtonDropdown,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.NEEDS_REVISION],
   },
-  title: "Components/ButtonDropdown",
+  title: "Components/ButtonDropdown [wip]",
 } as Meta;
 
 // Default

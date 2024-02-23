@@ -1,84 +1,70 @@
-import {
-  Checkbox as RawCheckbox,
-  FormControlLabel as RawFormControlLabel,
-} from "@mui/material";
+import { Checkbox as RawCheckbox, checkboxClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { fontBodyXxs } from "../styles";
 import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  getColors,
-  getCorners,
   getIconSizes,
+  getSemanticComponentColors,
   getSpaces,
-  getTypography,
 } from "../styles/common/selectors/theme";
+import { SemanticComponentColors } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
-  caption?: string;
+  intent?: "default" | "error" | "warning";
 }
 
-export const StyledFormControlLabel = styled(RawFormControlLabel)`
-  position: relative;
-  z-index: 0;
-
-  &:after {
-    ${fontBodyXxs}
-    left:34px;
-    position: absolute;
-    top: 30px;
-    z-index: -1;
-
-    ${(props: CheckboxExtraProps) => {
-      const { caption } = props;
-      const content = caption !== undefined ? caption : "";
-      const typography = getTypography(props);
-      const colors = getColors(props);
-      return `
-        content: "${content}";
-        font-family: ${typography?.fontFamily};
-        color: ${colors?.gray[500]};
-      `;
-    }}
-  }
-`;
-
 export const StyledCheckbox = styled(RawCheckbox)`
-  ${(props) => {
-    const colors = getColors(props);
-    const corners = getCorners(props);
+  ${(props: CheckboxExtraProps) => {
+    const { intent = "default" } = props;
+
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+
+    const intentToColor = {
+      default: "base",
+      error: "negative",
+      warning: "notice",
+    };
+
+    const checkboxColor = intentToColor[
+      intent
+    ] as keyof SemanticComponentColors;
+
     return `
-      color: ${colors?.gray[400]};
+      color: ${semanticComponentColors?.[checkboxColor]?.border};
+
       &:hover {
-        color: ${colors?.gray[500]};
+        color: ${semanticComponentColors?.base?.borderHover};
         background-color: transparent;
       }
-      &.Mui-disabled {
-        color: ${colors?.gray[300]};
+
+      &.${checkboxClasses.disabled} {
+        color: ${semanticComponentColors?.base?.borderDisabled};
       }
-      &.Mui-checked {
-        color: ${colors?.primary[400]};
+
+      &.${checkboxClasses.checked} {
+        color: ${semanticComponentColors?.accent?.border};
+
         &:hover {
-          color: ${colors?.primary[500]};
+          color: ${semanticComponentColors?.accent?.borderHover};
           background-color: transparent;
         }
-        &.Mui-disabled {
-          color: ${colors?.primary[300]}
+
+        &.${checkboxClasses.disabled} {
+          color: ${semanticComponentColors?.accent?.borderDisabled};
         }
       }
 
-      &.MuiCheckbox-root {
+      &.${checkboxClasses.root} {
         ${focusVisibleA11yStyle()}
-        border-radius: ${corners?.s}px;        
-        padding: ${spaces?.xxs}px;
-        margin: 3px;
+        padding: 0;
+        padding-right: ${spaces?.s}px;
       }
 
       .MuiSvgIcon-root {
-        height: ${iconSizes?.input.height}px;
-        width: ${iconSizes?.input.width}px;
+        height: ${iconSizes?.s.height}px;
+        width: ${iconSizes?.s.width}px;
       }
     `;
   }}

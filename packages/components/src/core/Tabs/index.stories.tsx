@@ -69,7 +69,7 @@ export const Default = {
   args: {
     sdsSize: "large",
     tabOneLabel: "Upload from Your Computer",
-    tabTwoLabel: "Upload from Basespace",
+    tabTwoLabel: "Upload from Base Space",
     underlined: true,
   },
   parameters: {

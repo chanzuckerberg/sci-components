@@ -19,18 +19,84 @@ const actions = {
   onClick: action("onClick"),
 };
 
+const largeIconOptions = [
+  undefined,
+  <Icon sdsIcon="download" sdsType="button" sdsSize="l" key="download" />,
+  <Icon sdsIcon="share" sdsType="button" sdsSize="l" key="share" />,
+  <Icon
+    sdsIcon="speechBubbles"
+    sdsType="button"
+    sdsSize="l"
+    key="speechBubbles"
+  />,
+];
+
+const smallIconOptions = [
+  undefined,
+  <Icon sdsIcon="download" sdsType="button" sdsSize="s" key="downloadSmall" />,
+  <Icon sdsIcon="copy" sdsType="button" sdsSize="s" key="copy" />,
+  <Icon sdsIcon="lightBulb" sdsType="button" sdsSize="s" key="lightBulb" />,
+];
+
+const largeIconLabels = ["No icon", "Download", "Share", "Speech Bubbles"];
+
+const smallIconLabels = ["No icon", "Download", "Copy", "Light Bulb"];
+
 const Button = (props: Args): JSX.Element => {
-  const { sdsType, sdsStyle } = props;
+  const { sdsType, sdsStyle, text, startIcon, startIċon, endIcon, endIċon } =
+    props;
+
+  const startIconFinal = startIcon || startIċon;
+  const endIconFinal = endIcon || endIċon;
+
   return (
-    <RawButton sdsType={sdsType} sdsStyle={sdsStyle} {...props}>
-      {TEXT}
+    <RawButton
+      sdsType={sdsType}
+      sdsStyle={sdsStyle}
+      startIcon={startIconFinal}
+      endIcon={endIconFinal}
+      {...props}
+    >
+      {text}
     </RawButton>
   );
 };
 
 export default {
   argTypes: {
-    // https://storybook.js.org/docs/react/essentials/actions#action-argtype-annotation
+    /**
+     * (masoudmanson)
+     * Temporary workaround due to Storybook limitations in rendering conditional
+     * control options. To address the restriction of having identical keys, a distinct
+     * key is used for small icon options. This serves as a temporary solution until
+     * Storybook incorporates the feature for conditional control options rendering.
+     * When sdsType is "minimal," smallIconOptions and smallIconLabels are utilized for
+     * startIcon and endIcon. For sdsType other than "minimal," largeIconOptions and
+     * largeIconLabels are used. The variables startIċon and endIċon serve the same purpose
+     * as startIcon and endIcon specifically for sdsStyle "minimal." In the main story
+     * definition, conditional rendering for startIcon and endIcon is determined by the sdsStyle:
+     *
+     * const startIconFinal = startIcon || startIċon;
+     * const endIconFinal = endIcon || endIċon;
+     */
+    endIcon: {
+      control: {
+        labels: largeIconLabels,
+        type: "select",
+      },
+      if: { arg: "sdsStyle", neq: "minimal" },
+      mapping: largeIconOptions,
+      options: Object.keys(largeIconOptions),
+    },
+    endIċon: {
+      control: {
+        labels: smallIconLabels,
+        type: "select",
+      },
+      if: { arg: "sdsStyle", eq: "minimal" },
+      mapping: smallIconOptions,
+      options: Object.keys(smallIconOptions),
+    },
     onClick: { action: actions.onClick },
     sdsStyle: {
       control: { type: "select" },
@@ -40,6 +106,30 @@ export default {
       control: { type: "select" },
       options: SDS_TYPES,
     },
+    /**
+     * (masoudmanson)
+     * Temporary workaround due to Storybook limitations in rendering conditional
+     * control options. Same as the endIcon and endIċon, a distinct key is used for
+     * startIcon options.
+     */
+    startIcon: {
+      control: {
+        labels: largeIconLabels,
+        type: "select",
+      },
+      if: { arg: "sdsStyle", neq: "minimal" },
+      mapping: largeIconOptions,
+      options: Object.keys(largeIconOptions),
+    },
+    startIċon: {
+      control: {
+        labels: smallIconLabels,
+        type: "select",
+      },
+      if: { arg: "sdsStyle", eq: "minimal" },
+      mapping: smallIconOptions,
+      options: Object.keys(smallIconOptions),
+    },
     text: {
       control: {
         type: "text",
@@ -48,9 +138,9 @@ export default {
   },
   component: Button,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.NEEDS_REVISION],
   },
-  title: "Components/Button",
+  title: "Components/Button [wip]",
 } as Meta;
 
 // Default
@@ -77,28 +167,36 @@ const placementStyles: React.CSSProperties = {
 const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles}>
-      <RawButton {...props} sdsStyle="rounded" sdsType="primary">
-        {TEXT}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="rounded"
-        sdsType="primary"
-      >
-        {TEXT}
-      </RawButton>
-      <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
-        {TEXT}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="rounded"
-        sdsType="secondary"
-      >
-        {TEXT}
-      </RawButton>
+      <div>
+        <RawButton {...props} sdsStyle="rounded" sdsType="primary">
+          {TEXT}
+        </RawButton>
+      </div>
+      <div>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="xl" sdsType="button" />}
+          sdsStyle="rounded"
+          sdsType="primary"
+        >
+          {TEXT}
+        </RawButton>
+      </div>
+      <div>
+        <RawButton {...props} sdsStyle="rounded" sdsType="secondary">
+          {TEXT}
+        </RawButton>
+      </div>
+      <div>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="rounded"
+          sdsType="secondary"
+        >
+          {TEXT}
+        </RawButton>
+      </div>
     </div>
   );
 };
@@ -120,28 +218,39 @@ export const RoundedLivePreview = {
 const SquareLivePreviewDemo = (props: Args): JSX.Element => {
   return (
     <div style={placementStyles as React.CSSProperties}>
-      <RawButton {...props} sdsStyle="square" sdsType="primary">
-        {TEXT}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="square"
-        sdsType="primary"
-      >
-        {TEXT}
-      </RawButton>
-      <RawButton {...props} sdsStyle="square" sdsType="secondary">
-        {TEXT}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="square"
-        sdsType="secondary"
-      >
-        {TEXT}
-      </RawButton>
+      <div>
+        <RawButton {...props} sdsStyle="square" sdsType="primary">
+          {TEXT}
+        </RawButton>
+      </div>
+
+      <div>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          sdsStyle="square"
+          sdsType="primary"
+        >
+          {TEXT}
+        </RawButton>
+      </div>
+
+      <div>
+        <RawButton {...props} sdsStyle="square" sdsType="secondary">
+          {TEXT}
+        </RawButton>
+      </div>
+
+      <div>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          sdsStyle="square"
+          sdsType="secondary"
+        >
+          {TEXT}
+        </RawButton>
+      </div>
     </div>
   );
 };
@@ -171,20 +280,28 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={minimalPlacementStyles}>
-      <RawButton {...props} sdsStyle="minimal" sdsType="primary">
-        {TEXT}
-      </RawButton>
-      <RawButton
-        {...props}
-        startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
-        sdsStyle="minimal"
-        sdsType="primary"
-      >
-        {TEXT}
-      </RawButton>
-      <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
-        {TEXT}
-      </RawButton>
+      <div>
+        <RawButton {...props} sdsStyle="minimal" sdsType="primary">
+          {TEXT}
+        </RawButton>
+      </div>
+
+      <div>
+        <RawButton
+          {...props}
+          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          sdsStyle="minimal"
+          sdsType="primary"
+        >
+          {TEXT}
+        </RawButton>
+      </div>
+
+      <div>
+        <RawButton {...props} sdsStyle="minimal" sdsType="secondary">
+          {TEXT}
+        </RawButton>
+      </div>
     </div>
   );
 };

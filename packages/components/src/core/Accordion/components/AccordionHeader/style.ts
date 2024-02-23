@@ -1,11 +1,12 @@
 import { css } from "@emotion/react";
-import { AccordionSummary } from "@mui/material";
+import { AccordionSummary, accordionSummaryClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXxs,
   fontHeaderS,
-  getColors,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -13,33 +14,27 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
   ${fontHeaderS}
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const colors = getColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return css`
       padding: ${spaces?.m}px;
-      min-height: 40px;
       align-items: flex-start;
       box-sizing: border-box;
 
-      &.Mui-expanded {
-        min-height: 40px;
-      }
-
-      .MuiAccordionSummary-content {
+      .${accordionSummaryClasses.content} {
         margin: 0;
         flex-direction: column;
 
-        &.Mui-expanded {
+        &.${accordionSummaryClasses.expanded} {
           margin: 0;
         }
       }
 
-      .MuiAccordionSummary-expandIconWrapper {
-        padding: 0px;
-        margin-right: 0;
+      .${accordionSummaryClasses.expandIconWrapper} {
         margin-left: ${spaces?.m}px;
+        align-self: center;
         svg {
-          color: ${colors?.gray[500]};
+          color: ${semanticComponentColors?.base?.icon};
         }
       }
     `;
@@ -50,10 +45,10 @@ export const StyledSubtitle = styled("p")`
   ${fontBodyXxs}
 
   ${(props: CommonThemeProps) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return css`
-      color: ${colors?.gray[500]};
+      color: ${semanticTextColors?.base?.secondary};
       margin: 0;
     `;
   }}

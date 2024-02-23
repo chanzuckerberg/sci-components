@@ -207,10 +207,19 @@ const AutocompleteMultiColumn = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    icon="xMark"
+                    icon="xMarkCircle"
                     onClick={clearInput}
                   />
                 )}
+              </StyledInputAdornment>
+            ),
+            /**
+             * (thuang): Works with css caret-color: "transparent" to hide
+             * mobile keyboard
+             */
+            inputMode: "text",
+            startAdornment: (
+              <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
                   sdsType="secondary"
@@ -222,11 +231,6 @@ const AutocompleteMultiColumn = <
                 />
               </StyledInputAdornment>
             ),
-            /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: "text",
           }}
           {...InputBaseProps}
         />

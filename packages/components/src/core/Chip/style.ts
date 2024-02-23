@@ -38,14 +38,14 @@ const medium = (props: ChipExtraProps): SerializedStyles => {
     margin: 0 ${spacings?.s}px;
     height: 24px;
 
-    background-color: ${colors?.primary[400]};
+    background-color: ${colors?.blue[400]};
 
     &:hover {
-      background-color: ${colors?.primary[500]};
+      background-color: ${colors?.blue[500]};
     }
 
     &:active {
-      background-color: ${colors?.primary[600]};
+      background-color: ${colors?.blue[600]};
     }
 
     .MuiChip-label {
@@ -119,28 +119,28 @@ function createStatusCss(
 
   const statusToColors = {
     beta: {
-      dark: colors.beta[600],
-      light: colors.beta[200],
+      dark: colors.purple[600],
+      light: colors.purple[200],
     },
     error: {
-      dark: colors.error[600],
-      light: colors.error[200],
+      dark: colors.red[600],
+      light: colors.red[200],
     },
     info: {
-      dark: colors.info[600],
-      light: colors.info[200],
+      dark: colors.blue[600],
+      light: colors.blue[200],
     },
     pending: {
       dark: colors.gray[600],
       light: colors.gray[200],
     },
     success: {
-      dark: colors.success[600],
-      light: colors.success[200],
+      dark: colors.green[600],
+      light: colors.green[200],
     },
     warning: {
-      dark: colors.warning[600],
-      light: colors.warning[200],
+      dark: colors.yellow[600],
+      light: colors.yellow[200],
     },
   };
 

@@ -370,6 +370,7 @@ SDSAppTheme.borders = {
     "300": `1px solid ${SDSAppTheme.colors.gray[300]}`,
     "400": `1px solid ${SDSAppTheme.colors.gray[400]}`,
     "500": `1px solid ${SDSAppTheme.colors.gray[500]}`,
+    black: `1px solid ${SDSAppTheme.colors.common.black}`,
     dashed: `2px dashed ${SDSAppTheme.colors.gray[400]}`,
   },
   beta: {
@@ -385,6 +386,7 @@ SDSAppTheme.borders = {
   negative: {
     "400": `1px solid ${SDSAppTheme.colors.red[400]}`,
   },
+  none: "none",
   notice: {
     "400": `1px solid ${SDSAppTheme.colors.yellow[400]}`,
   },

@@ -1,6 +1,12 @@
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { CommonThemeProps, fontHeaderS, getColors } from "../styles";
+import {
+  CommonThemeProps,
+  fontHeaderS,
+  getBorders,
+  getSemanticComponentColors,
+  getSemanticTextColors,
+} from "../styles";
 
 export interface RowExtraProps
   extends CommonThemeProps,
@@ -23,15 +29,16 @@ const doNotForwardProps = [
 ];
 
 const disabledStyled = (props: RowExtraProps) => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return `
-    background-color: ${colors?.gray[100]};
-    color: ${colors?.gray[300]};
+    background-color: ${semanticComponentColors?.base?.surfaceSecondary};
+    color: ${semanticTextColors?.base?.disabled};
     user-select: none;
 
     & span, & div {
-      color: ${colors?.gray[300]};
+      color: ${semanticTextColors?.base?.disabled};
     }
 
     .cell-component {
@@ -53,11 +60,11 @@ const disabledStyled = (props: RowExtraProps) => {
 };
 
 const hoverStyled = (props: RowExtraProps) => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return `
     &:hover {
-      background-color: ${colors?.gray[200]};
+      background-color: ${semanticComponentColors?.base?.fillHover};
     }
   `;
 };
@@ -76,15 +83,16 @@ export const StyledTableRow = styled("tr", {
       hover = true,
     } = props;
 
-    const colors = getColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+    const borders = getBorders(props);
 
     return `
       align-items: center;
-      border-bottom: ${useDivider ? `solid 1px ${colors?.gray[300]}` : "none"};
+      border-bottom: ${useDivider ? borders?.base[300] : borders?.none};
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
 
-      ${selected ? `background-color: ${colors?.primary[200]};` : ""}
+      ${selected ? `background-color: ${semanticComponentColors?.accent?.surface};` : ""}
 
       ${hover && hoverStyled(props)};
 

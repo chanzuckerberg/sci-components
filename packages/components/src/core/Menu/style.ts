@@ -1,10 +1,10 @@
-import { Menu } from "@mui/material";
+import { Menu, menuClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { getSpaces } from "../styles";
 
 export const StyledMenu = styled(Menu)`
   & {
-    .MuiMenu-paper {
+    .${menuClasses.paper} {
       ${(props) => {
         const spacings = getSpaces(props);
 

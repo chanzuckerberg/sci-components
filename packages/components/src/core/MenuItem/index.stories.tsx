@@ -75,7 +75,7 @@ export const Default = {
     isMultiSelect: false,
     name: "text here",
     sdsIconProps: {
-      color: "primary",
+      color: "accent",
     },
     sdsStyle: "determinate",
     selected: false,

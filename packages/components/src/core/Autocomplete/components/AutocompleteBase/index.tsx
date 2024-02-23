@@ -213,10 +213,6 @@ const AutocompleteBase = <
             ...params.InputProps.ref,
             endAdornment: (
               <StyledInputAdornment position="end">
-                {/**
-                 * (masoudmanson): Because the Autocomplete component overrides the
-                 * InputSearch's endAdornment, we must also include the clear IconButton here.
-                 */}
                 {inputValue && (
                   <ButtonIcon
                     aria-label="clear-button"
@@ -227,11 +223,17 @@ const AutocompleteBase = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    icon="xMark"
+                    icon="xMarkCircle"
                   />
                 )}
+              </StyledInputAdornment>
+            ),
+            inputProps: params.inputProps,
+            startAdornment: (
+              <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
+                  onClick={clearInput}
                   sdsType="secondary"
                   sdsSize="small"
                   sdsIconProps={{
@@ -241,7 +243,6 @@ const AutocompleteBase = <
                 />
               </StyledInputAdornment>
             ),
-            inputProps: params.inputProps,
           }}
           {...InputBaseProps}
         />

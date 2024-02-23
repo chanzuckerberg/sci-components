@@ -1,30 +1,45 @@
 import { Alert } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
+  CommonThemeProps,
   fontBody,
-  getColors,
   getCorners,
   getIconSizes,
+  getSemanticComponentColors,
   getShadows,
   getSpaces,
 } from "../styles";
 import { defaultTheme } from "../styles/common/defaultTheme";
+import { ExposedNotificationProps } from ".";
+
+interface NotificationExtraProps
+  extends CommonThemeProps,
+    ExposedNotificationProps {}
+
+interface NotificationButtonWrapperProps extends CommonThemeProps {
+  buttonPosition?: "left" | "right";
+}
 
 const fontBodyXs = fontBody("xs");
+const doNotForwardProps = ["slideDirection"];
 
-export const StyledNotification = styled(Alert)`
+export const StyledNotification = styled(Alert, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontBodyXs}
-  ${(props) => {
-    const colors = getColors(props);
+  ${(props: NotificationExtraProps) => {
+    const { intent = "info" } = props;
+
     const spacings = getSpaces(props);
     const shadows = getShadows(props);
-    const { severity = "success" } = props;
-    const borderColor = (colors && colors[severity][400]) || "black";
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
-    const iconColor = (colors && colors[severity][400]) || "black";
-    const notificationColor = (colors && colors[severity][100]) || "white";
-    const backgroundColor = colors && colors[severity][100];
+    const semanticComponentColors = getSemanticComponentColors(props);
+
+    const borderColor = semanticComponentColors?.[intent]?.border ?? "black";
+    const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
+    const backgroundColor =
+      semanticComponentColors?.[intent]?.surface ?? "white";
 
     return `
       background-color: ${backgroundColor};
@@ -36,7 +51,6 @@ export const StyledNotification = styled(Alert)`
       color: ${defaultTheme.palette.text.primary};
       padding: ${spacings?.l}px;
       align-items: flex-start;
-      background-color: ${notificationColor};
       border-left: 5px solid;
       box-shadow: ${shadows?.s};
       border-color: ${borderColor};
@@ -52,8 +66,9 @@ export const StyledNotification = styled(Alert)`
       }
 
       .MuiAlert-message {
-        padding: 0;
+        padding: ${spacings?.xxxs}px 0px 0px;
         margin-right: ${spacings?.m}px;
+        width: 100%;
 
         > * {
           margin: ${spacings?.m}px 0px;
@@ -79,6 +94,17 @@ export const StyledNotification = styled(Alert)`
           }
         }
       }
+    `;
+  }}
+`;
+
+export const StyledButtonWrapper = styled("div")`
+  ${(props: NotificationButtonWrapperProps) => {
+    const { buttonPosition = "right" } = props;
+
+    return `
+      display: flex;
+      justify-content: ${buttonPosition === "left" ? "flex-start" : "flex-end"};
     `;
   }}
 `;

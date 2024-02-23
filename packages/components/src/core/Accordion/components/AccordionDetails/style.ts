@@ -10,8 +10,7 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
     const spaces = getSpaces(props);
 
     return css`
-      padding: ${spaces?.m}px;
-      padding-top: ${spaces?.xxs}px;
+      padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
     `;
   }}
 `;

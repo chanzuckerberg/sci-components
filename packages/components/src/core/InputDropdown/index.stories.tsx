@@ -145,7 +145,7 @@ const InputDropdown = <
   return (
     <div>
       {invalid ? (
-        <Callout autoDismiss={false} intent="error">
+        <Callout autoDismiss={false} intent="negative">
           <CalloutTitle>Invalid props!</CalloutTitle>
           When using the InputDropdown component, please note that the
           combination of setting the sdsType prop to &quot;value&quot; and the

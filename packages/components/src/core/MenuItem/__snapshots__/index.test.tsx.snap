@@ -15,12 +15,12 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
       class="css-bv5fko"
     >
       <span
-        class="primary-text css-hbz1qm"
+        class="primary-text css-1k1xg99"
       >
         text here
       </span>
       <span
-        class="css-x5dzyr"
+        class="css-y70h02"
       >
         column value here
       </span>

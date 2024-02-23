@@ -2,38 +2,40 @@ import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
-  fontBody,
-  getColors,
+  fontBodyXs,
   getCorners,
   getIconSizes,
   getPalette,
+  getSemanticComponentColors,
   getSpaces,
 } from "../styles";
+import { CalloutIntentType } from ".";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
+  intent?: CalloutIntentType;
 }
 
-type CalloutProps = AlertProps & CalloutExtraProps;
+type CalloutProps = Omit<AlertProps, "severity"> & CalloutExtraProps;
 
-const fontBodyXs = fontBody("xs");
-
-const doNotForwardProps = ["calloutTitle", "collapsed"];
+const doNotForwardProps = ["calloutTitle", "collapsed", "severity"];
 
 export const StyledCallout = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXs}
   ${(props: CalloutProps) => {
-    const colors = getColors(props);
+    const { intent = "positive" } = props;
+
     const spacings = getSpaces(props);
-    const { severity = "success" } = props;
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
-    const iconColor = (colors && colors[severity][400]) || "black";
-    const calloutColor = (colors && colors[severity][100]) || "white";
-    const backgroundColor = colors && colors[severity][100];
     const palette = getPalette(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+
+    const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
+    const backgroundColor =
+      semanticComponentColors?.[intent]?.surface ?? "white";
 
     // when a title is present Mui's default styling has vertical margin,
     // but for an expandable callout that is collapsed, we do not want
@@ -41,19 +43,19 @@ export const StyledCallout = styled(Alert, {
     const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
 
     return `
-      background-color: ${backgroundColor};
       width: 360px;
       margin: ${spacings?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${palette?.text?.primary};
       padding: ${spacings?.m}px;
-      background-color: ${calloutColor};
+      background-color: ${backgroundColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
-        margin-right: ${spacings?.m}px;
+        margin-right: ${spacings?.s}px;
         padding: 0;
+
         path {
           fill: ${iconColor};
         }

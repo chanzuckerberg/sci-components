@@ -8,86 +8,32 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition } = props;
 
-  return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
+  return (
+    <RawSegmentedControl buttonDefinition={buttonDefinition} color="error" />
+  );
 };
-
-const iconOptions = ["list", "infoCircle", "table", "globe", "people"];
 
 export default {
   argTypes: {
-    segmentFourIcon: {
-      control: { type: "select" },
-      options: iconOptions,
-    },
-    segmentFourTooltipText: {
+    buttonDefinition: {
       control: {
-        type: "text",
-      },
-    },
-    segmentOneIcon: {
-      control: { type: "select" },
-      options: iconOptions,
-    },
-    segmentOneTooltipText: {
-      control: {
-        type: "text",
-      },
-    },
-    segmentThreeIcon: {
-      control: { type: "select" },
-      options: iconOptions,
-    },
-    segmentThreeTooltipText: {
-      control: {
-        type: "text",
-      },
-    },
-    segmentTwoIcon: {
-      control: { type: "select" },
-      options: iconOptions,
-    },
-    segmentTwoTooltipText: {
-      control: {
-        type: "text",
+        type: "object",
       },
     },
   },
   component: SegmentedControl,
   parameters: {
-    badges: [BADGE.NEEDS_REVISION],
+    badges: [BADGE.STABLE],
   },
   title: "Components/SegmentedControl",
 } as Meta;
 
 interface SegmentedControlArgs extends SegmentedControlProps {
-  segmentOneIcon: SingleButtonDefinition["icon"];
-  segmentOneTooltipText: string;
-  segmentTwoIcon: SingleButtonDefinition["icon"];
-  segmentTwoTooltipText: string;
-  segmentThreeIcon: SingleButtonDefinition["icon"];
-  segmentThreeTooltipText: string;
-  segmentFourIcon: SingleButtonDefinition["icon"];
-  segmentFourTooltipText: string;
+  buttonDefinition: SingleButtonDefinition[];
 }
 
 const Template = (props: SegmentedControlArgs) => {
-  const {
-    segmentOneIcon,
-    segmentOneTooltipText,
-    segmentTwoIcon,
-    segmentTwoTooltipText,
-    segmentThreeIcon,
-    segmentThreeTooltipText,
-    segmentFourIcon,
-    segmentFourTooltipText,
-  } = props;
-
-  const buttonDefinition = [
-    { icon: segmentOneIcon, tooltipText: segmentOneTooltipText },
-    { icon: segmentTwoIcon, tooltipText: segmentTwoTooltipText },
-    { icon: segmentThreeIcon, tooltipText: segmentThreeTooltipText },
-    { icon: segmentFourIcon, tooltipText: segmentFourTooltipText },
-  ];
+  const { buttonDefinition } = props;
 
   return <RawSegmentedControl buttonDefinition={buttonDefinition} />;
 };
@@ -96,48 +42,28 @@ const Template = (props: SegmentedControlArgs) => {
 
 export const Default = {
   args: {
-    segmentFourIcon: "list",
-    segmentFourTooltipText: "List D",
-    segmentOneIcon: "list",
-    segmentOneTooltipText: "List A",
-    segmentThreeIcon: "list",
-    segmentThreeTooltipText: "List C",
-    segmentTwoIcon: "list",
-    segmentTwoTooltipText: "List B",
+    buttonDefinition: [
+      { icon: "list", tooltipText: "List A", value: "A" },
+      { icon: "list", tooltipText: "List B", value: "B" },
+      { icon: "list", tooltipText: "List C", value: "C" },
+      { icon: "list", tooltipText: "List D", value: "D" },
+    ],
   },
   render: Template,
 };
 
 // Live Preview
 
-const livePreviewStyles = {
-  columnGap: "24px",
-  display: "flex",
-};
-
-function LivePreviewDemo(props: Args): JSX.Element {
-  const finalProps = {
-    ...props,
-    style: { width: "250px" },
-  };
-
+function LivePreviewDemo(): JSX.Element {
   return (
-    <div style={livePreviewStyles}>
-      <div>
-        <Template
-          segmentOneIcon="list"
-          segmentOneTooltipText="List A"
-          segmentTwoIcon="list"
-          segmentTwoTooltipText="List B"
-          segmentThreeIcon="list"
-          segmentThreeTooltipText="List C"
-          segmentFourIcon="list"
-          segmentFourTooltipText="List D"
-          buttonDefinition={[]}
-          {...finalProps}
-        />
-      </div>
-    </div>
+    <Template
+      buttonDefinition={[
+        { icon: "list", tooltipText: "List A", value: "A" },
+        { icon: "list", tooltipText: "List B", value: "B" },
+        { icon: "list", tooltipText: "List C", value: "C" },
+        { icon: "list", tooltipText: "List D", value: "D" },
+      ]}
+    />
   );
 }
 
@@ -166,10 +92,10 @@ const TestDemo = (props: Args): JSX.Element => {
 export const Test = {
   args: {
     buttonDefinition: [
-      { icon: "list", tooltipText: "List A" },
-      { icon: "list", tooltipText: "List B" },
-      { icon: "table", tooltipText: "Table" },
-      { icon: "people", tooltipText: "People" },
+      { icon: "list", tooltipText: "List A", value: "A" },
+      { icon: "list", tooltipText: "List B", value: "B" },
+      { icon: "table", tooltipText: "Table", value: "Table" },
+      { icon: "people", tooltipText: "People", value: "People" },
     ],
   },
   parameters: {
