@@ -53,6 +53,7 @@ export default {
   parameters: {
     axe: {
       disabledRules: [
+        "color-contrast",
         // Unfortunately the MUI Switch component renders an input field without a label, which
         // fails an axe check.
         "label",

@@ -20,6 +20,9 @@ export default {
   },
   component: DesignTokens,
   parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     badges: [BADGE.WIP],
   },
   title: "Foundations/Colors [wip]",

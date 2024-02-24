@@ -452,6 +452,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 <span
                   class="MuiButtonBase-root MuiRadio-root MuiRadio-colorDefault PrivateSwitchBase-root MuiRadio-root MuiRadio-colorDefault MuiRadio-root MuiRadio-colorDefault css-1btqzpq-MuiButtonBase-root-MuiRadio-root"
                   intent="default"
+                  label="Option-1-radio"
                   stage="unchecked"
                 >
                   <input
@@ -473,6 +474,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                   />
                 </span>
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+                >
+                  Option-1-radio
+                </span>
               </label>
               <span
                 class="css-1g1knab"
@@ -481,7 +487,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <span
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
-              Option 1
+              Option-1
             </span>
           </label>
           <label
@@ -496,6 +502,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 <span
                   class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1f6sxpj-MuiButtonBase-root-MuiRadio-root"
                   intent="default"
+                  label="Option-2-radio"
                   stage="checked"
                 >
                   <input
@@ -518,6 +525,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                   />
                 </span>
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+                >
+                  Option-2-radio
+                </span>
               </label>
               <span
                 class="css-1g1knab"
@@ -526,7 +538,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             <span
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
-              Option 2
+              Option-2
             </span>
           </label>
         </div>

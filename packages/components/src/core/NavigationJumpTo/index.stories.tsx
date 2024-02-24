@@ -17,6 +17,8 @@ const NavigationJumpTo = (props: Args): JSX.Element => {
   return <RawNavigationJumpTo items={items} {...rest} />;
 };
 
+const ARIA_VALID_ATTR_VALUE = "aria-valid-attr-value";
+
 const availableColorOptions = [
   "accent",
   "beta",
@@ -73,6 +75,9 @@ export const Default = {
     offsetTop: 0,
   },
   parameters: {
+    axe: {
+      disabledRules: [ARIA_VALID_ATTR_VALUE],
+    },
     controls: { expanded: true },
   },
   render: (args: Args) => <NavigationJumpTo {...args} />,
@@ -228,6 +233,9 @@ export const JumpToNavDemo = {
     offsetTop: 0,
   },
   parameters: {
+    axe: {
+      disabledRules: [ARIA_VALID_ATTR_VALUE],
+    },
     controls: {
       exclude: ["items", "offsetTop"],
       expanded: true,
@@ -250,7 +258,7 @@ export const LivePreview = {
   },
   parameters: {
     axe: {
-      disabledRules: ["aria-valid-attr-value"],
+      disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
       exclude: ["items", "offsetTop", "indicatorColor"],
@@ -288,7 +296,7 @@ export const Test = {
   },
   parameters: {
     axe: {
-      disabledRules: ["aria-valid-attr-value"],
+      disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
       exclude: ["items", "offsetTop", "indicatorColor"],

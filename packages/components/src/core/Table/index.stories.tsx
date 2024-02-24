@@ -125,12 +125,14 @@ const Table = (props: Args): JSX.Element => {
               name="radio-buttons-group"
             >
               <FormControlLabel
-                control={<InputRadio stage="unchecked" />}
-                label="Option 1"
+                control={
+                  <InputRadio label="Option-1-radio" stage="unchecked" />
+                }
+                label="Option-1"
               />
               <FormControlLabel
-                control={<InputRadio stage="checked" />}
-                label="Option 2"
+                control={<InputRadio label="Option-2-radio" stage="checked" />}
+                label="Option-2"
               />
             </RadioGroup>
           </CellComponent>
