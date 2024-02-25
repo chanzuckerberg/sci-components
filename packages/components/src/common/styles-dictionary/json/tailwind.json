@@ -143,8 +143,9 @@
   },
   "boxShadow": {
     "sds-l": "0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3)",
-    "sds-m": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15),0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)",
-    "sds-s": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)"
+    "sds-m": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)",
+    "sds-s": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)",
+    "sds-shadownone": "none"
   },
   "colors": {
     "sds-color-primitive-common-black": "#000000",

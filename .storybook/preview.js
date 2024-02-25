@@ -70,7 +70,7 @@ const preview = {
     options: {
       storySort: {
         method: "alphabetical",
-        order: ["Foundations", "Components", "Data Viz", "Deprecated"],
+        order: ["Bases", "Components", "Data Viz", "Deprecated"],
       },
     },
   },

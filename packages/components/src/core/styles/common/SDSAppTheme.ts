@@ -361,7 +361,7 @@ SDSAppTheme.borders = {
     "300": `1px solid ${SDSAppTheme.colors.blue[300]}`,
     "400": `1px solid ${SDSAppTheme.colors.blue[400]}`,
     "500": `1px solid ${SDSAppTheme.colors.blue[500]}`,
-    "600": `1px solid${SDSAppTheme.colors.blue[600]}`,
+    "600": `1px solid ${SDSAppTheme.colors.blue[600]}`,
     dashed: `2px dashed ${SDSAppTheme.colors.blue[400]}`,
   },
   base: {

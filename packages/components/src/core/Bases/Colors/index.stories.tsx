@@ -15,7 +15,7 @@ export default {
     },
     badges: [BADGE.WIP],
   },
-  title: "Foundations/Colors",
+  title: "Bases/Colors",
 } as Meta;
 
 // Primitive

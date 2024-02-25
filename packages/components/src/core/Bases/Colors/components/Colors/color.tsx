@@ -7,7 +7,7 @@ import {
 import {
   convertToKebabCase,
   pickTextColorBasedOnBgColor,
-} from "src/core/Foundations/utils";
+} from "src/core/Bases/utils";
 
 interface ColorComponentProps {
   group: string;

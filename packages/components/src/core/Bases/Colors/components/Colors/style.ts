@@ -63,6 +63,7 @@ export const StyledColorCode = styled("span")`
 export const StyledColorVariable = styled("span")`
   ${fontCodeXs}
   font-size: 10px;
+  opacity: 0.5;
 `;
 
 interface IStyledColorsWrapperProps extends CommonThemeProps {

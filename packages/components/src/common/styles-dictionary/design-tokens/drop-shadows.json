@@ -5,10 +5,13 @@
         "value": "0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3)"
       },
       "shadowM": {
-        "value": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15),0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)"
+        "value": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)"
       },
       "shadowS": {
         "value": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)"
+      },
+      "shadowNone": {
+        "value": "none"
       }
     }
   }
