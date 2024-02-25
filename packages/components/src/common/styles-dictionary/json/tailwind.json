@@ -147,6 +147,8 @@
     "sds-s": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)"
   },
   "colors": {
+    "sds-color-primitive-common-black": "#000000",
+    "sds-color-primitive-common-white": "#FFFFFF",
     "sds-color-primitive-blue-100": "#F5F9FF",
     "sds-color-primitive-blue-200": "#E9F1FF",
     "sds-color-primitive-blue-300": "#A6C9FF",
@@ -159,8 +161,6 @@
     "sds-color-primitive-gray-400": "#999999",
     "sds-color-primitive-gray-500": "#767676",
     "sds-color-primitive-gray-600": "#545454",
-    "sds-color-primitive-gray-black": "#000000",
-    "sds-color-primitive-gray-white": "#FFFFFF",
     "sds-color-primitive-green-100": "#ECF5F0",
     "sds-color-primitive-green-200": "#E6F7ED",
     "sds-color-primitive-green-400": "#3CB371",

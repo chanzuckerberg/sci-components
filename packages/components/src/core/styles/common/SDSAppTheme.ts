@@ -1,4 +1,4 @@
-import { AppTheme } from "./types";
+import { AppTheme, Colors } from "./types";
 
 const fontFamily = '"Inter", sans-serif';
 const fontFamilyCode = '"IBM Plex Mono", monospace';
@@ -12,7 +12,7 @@ enum FontWeight {
   semibold = 600,
 }
 
-const SDSThemeColors = {
+const SDSThemeColors: Colors = {
   blue: {
     "100": "#F5F9FF",
     "200": "#E9F1FF",
