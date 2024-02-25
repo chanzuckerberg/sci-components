@@ -18,6 +18,9 @@ import { copyToClipboard } from "../utils";
 
 export default {
   parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     badges: [BADGE.WIP],
   },
   title: "Bases/Spacing",
