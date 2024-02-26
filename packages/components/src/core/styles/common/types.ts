@@ -166,7 +166,7 @@ export interface AppTheme {
   fontWeights: FontWeights;
   iconSizes: IconSizes;
   shadows: Shadows;
-  spacing: spaces;
+  spacing: Spaces;
   typography: Typography;
 }
 
@@ -275,10 +275,10 @@ export interface Spaces {
 /**
  * @deprecated
  *
- * (masoudmanson): The spaces type is an alias for the Spaces type and
+ * (masoudmanson): The Spacings type is an alias for the Spaces type and
  * is deprecated. It is recommended to use the Spaces type instead.
  */
-export type spaces = Spaces;
+export type Spacings = Spaces;
 
 export interface Color {
   600: string;
