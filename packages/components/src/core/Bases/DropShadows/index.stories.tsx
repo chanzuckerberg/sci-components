@@ -14,6 +14,7 @@ import TableRow from "src/core/TableRow";
 import CellComponent from "src/core/CellComponent";
 import CellBasic from "src/core/CellBasic";
 import { copyToClipboard } from "../utils";
+import { StyledVariable } from "../style";
 
 export default {
   parameters: {
@@ -43,7 +44,8 @@ const Template = () => {
   const shadows = getShadows({ theme });
 
   const RenderTableRow = (shadow: string, name: string) => {
-    const variable = "$sds-drop-shadows-shadow-" + name;
+    const sassVariable = "$sds-drop-shadow-" + name;
+    const cssVariable = "--sds-drop-shadow-" + name;
 
     return (
       <TableRow key={name}>
@@ -55,11 +57,19 @@ const Template = () => {
           verticalAlign="center"
           shouldShowTooltipOnHover={false}
         />
-        <CellComponent
-          verticalAlign="center"
-          onClick={() => copyToClipboard(variable)}
-        >
-          <StyledShadowVariable>{variable}</StyledShadowVariable>
+        <CellComponent verticalAlign="center">
+          <StyledVariable
+            onClick={() => copyToClipboard(sassVariable)}
+            type="sass"
+          >
+            {sassVariable}
+          </StyledVariable>
+          <StyledVariable
+            onClick={() => copyToClipboard(cssVariable)}
+            type="css"
+          >
+            {cssVariable}
+          </StyledVariable>
         </CellComponent>
         <CellComponent
           verticalAlign="center"
@@ -94,7 +104,7 @@ const Template = () => {
           <CellHeader hideSortIcon style={{ width: 40 }}>
             Shadow Type
           </CellHeader>
-          <CellHeader hideSortIcon>Variable</CellHeader>
+          <CellHeader hideSortIcon>Variables</CellHeader>
           <CellHeader hideSortIcon>Value</CellHeader>
           <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>

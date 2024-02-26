@@ -1,10 +1,10 @@
 {
   "sds": {
-    "corners": {
-      "cornerL": { "value": "20px" },
-      "cornerM": { "value": "4px" },
-      "cornerS": { "value": "2px" },
-      "cornerNone": { "value": "0px" }
+    "corner": {
+      "l": { "value": "20px" },
+      "m": { "value": "4px" },
+      "s": { "value": "2px" },
+      "none": { "value": "0px" }
     }
   }
 }

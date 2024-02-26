@@ -39,6 +39,10 @@ export const StyledColorWrapper = styled("div")`
       &:hover {
         border: solid 1px black;
         z-index: 10;
+
+        .color-title {
+          font-weight: bold;
+        }
       }
     `;
   }}
@@ -59,10 +63,15 @@ export const StyledColorCode = styled("span")`
   ${fontCodeXs}
 
   cursor: pointer;
+  font-size: 12px;
 
   &:hover {
     font-weight: bold;
   }
+`;
+
+export const StyledColorTitle = styled("span")`
+  ${fontBodyXs}
 `;
 
 export const StyledColorVariable = styled("span")`
@@ -70,7 +79,6 @@ export const StyledColorVariable = styled("span")`
 
   cursor: pointer;
   font-size: 10px;
-  opacity: 0.5;
 
   &:hover {
     font-weight: bold;

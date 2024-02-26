@@ -1,6 +1,6 @@
 {
   "sds": {
-    "spaces": {
+    "space": {
       "default": { "value": "12px" },
       "xxxs": { "value": "2px" },
       "xxs": { "value": "4px" },

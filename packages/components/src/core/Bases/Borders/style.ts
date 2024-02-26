@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { CommonThemeProps, fontCodeXs, getCorners } from "src/core/styles";
+import { CommonThemeProps, getCorners } from "src/core/styles";
 
 export const StyledBordersWrapper = styled("div")`
   max-width: 100%;
@@ -39,14 +39,4 @@ export const StyledBorderBox = styled("div")`
       }
     `;
   }}
-`;
-
-export const StyledBorderVariable = styled("p")`
-  ${fontCodeXs}
-  margin: 0;
-  cursor: pointer;
-
-  &:active {
-    font-weight: bold;
-  }
 `;

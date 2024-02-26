@@ -15,6 +15,7 @@ import CellHeader from "src/core/CellHeader";
 import TableRow from "src/core/TableRow";
 import CellComponent from "src/core/CellComponent";
 import { copyToClipboard } from "../utils";
+import { StyledVariable } from "../style";
 
 export default {
   parameters: {
@@ -33,7 +34,8 @@ const Template = () => {
   const spaces = getSpaces({ theme });
 
   const RenderTableRow = (size: number, name: string) => {
-    const variable = "$sds-spaces-" + name;
+    const sassVariable = "$sds-space-" + name;
+    const cssVariable = "--sds-space-" + name;
 
     return (
       <TableRow key={name} hover={false}>
@@ -49,11 +51,19 @@ const Template = () => {
           <StyledStackedSpacingBox size={size}>{name}</StyledStackedSpacingBox>
         </CellComponent>
 
-        <CellComponent
-          verticalAlign="center"
-          onClick={() => copyToClipboard(variable)}
-        >
-          <StyledSpacingVariable>{variable}</StyledSpacingVariable>
+        <CellComponent verticalAlign="center">
+          <StyledVariable
+            onClick={() => copyToClipboard(sassVariable)}
+            type="sass"
+          >
+            {sassVariable}
+          </StyledVariable>
+          <StyledVariable
+            onClick={() => copyToClipboard(cssVariable)}
+            type="css"
+          >
+            {cssVariable}
+          </StyledVariable>
         </CellComponent>
 
         <CellComponent verticalAlign="center">
@@ -82,7 +92,7 @@ const Template = () => {
           <CellHeader hideSortIcon style={{ width: 40 }}>
             Stacked Spacing
           </CellHeader>
-          <CellHeader hideSortIcon>Variable</CellHeader>
+          <CellHeader hideSortIcon>Variables</CellHeader>
           <CellHeader hideSortIcon style={{ width: 40 }}>
             Value
           </CellHeader>

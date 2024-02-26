@@ -1,16 +1,16 @@
 {
   "sds": {
-    "drop-shadows": {
-      "shadowL": {
+    "drop-shadow": {
+      "l": {
         "value": "0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3)"
       },
-      "shadowM": {
+      "m": {
         "value": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)"
       },
-      "shadowS": {
+      "s": {
         "value": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)"
       },
-      "shadowNone": {
+      "none": {
         "value": "none"
       }
     }

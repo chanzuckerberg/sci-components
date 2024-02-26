@@ -2,6 +2,7 @@ import {
   StyledColorWrapper,
   StyledColorCode,
   StyledColorVariable,
+  StyledColorTitle,
 } from "./style";
 import {
   convertToKebabCase,
@@ -19,9 +20,15 @@ interface ColorComponentProps {
 const Color = (props: ColorComponentProps) => {
   const { group, value, shade, prefix = "$" } = props;
 
-  const colorVariable = shade
-    ? prefix + "-" + group + "-" + convertToKebabCase(shade)
-    : prefix + "-" + group;
+  const sassVariable = shade
+    ? "$" + prefix + "-" + group + "-" + convertToKebabCase(shade)
+    : "$" + prefix + "-" + group;
+
+  const cssVariable = shade
+    ? "--" + prefix + "-" + group + "-" + convertToKebabCase(shade)
+    : "--" + prefix + "-" + group;
+
+  const title = shade || group;
 
   return (
     <StyledColorWrapper
@@ -30,14 +37,24 @@ const Color = (props: ColorComponentProps) => {
       textColor={pickTextColorBasedOnBgColor(value)}
     >
       <div>
-        <span>{shade || group}</span>
+        <StyledColorTitle className="color-title">
+          {title.charAt(0).toUpperCase() + title.slice(1)}
+        </StyledColorTitle>
+
+        <StyledColorVariable onClick={() => copyToClipboard(sassVariable)}>
+          {sassVariable}
+        </StyledColorVariable>
+      </div>
+
+      <div>
         <StyledColorCode onClick={() => copyToClipboard(value)}>
           {String(value)}
         </StyledColorCode>
+
+        <StyledColorVariable onClick={() => copyToClipboard(cssVariable)}>
+          {cssVariable}
+        </StyledColorVariable>
       </div>
-      <StyledColorVariable onClick={() => copyToClipboard(colorVariable)}>
-        {colorVariable}
-      </StyledColorVariable>
     </StyledColorWrapper>
   );
 };

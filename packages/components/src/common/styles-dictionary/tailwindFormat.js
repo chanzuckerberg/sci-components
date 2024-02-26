@@ -114,11 +114,11 @@ StyleDictionary.registerFormat({
         "tabular",
         "code",
       ]),
-      ...transformIconSizes(sds.iconSizes),
-      borderRadius: transformDictionary(sds.corners),
-      boxShadow: transformDictionary(sds["drop-shadows"]),
+      ...transformIconSizes(sds.iconSize),
+      borderRadius: transformDictionary(sds.corner),
+      boxShadow: transformDictionary(sds["drop-shadow"]),
       colors: transformColor(sds.color),
-      spacing: transformDictionary(sds.spaces),
+      spacing: transformDictionary(sds.space),
     };
 
     return JSON.stringify(tailwindConfig, null, 2);

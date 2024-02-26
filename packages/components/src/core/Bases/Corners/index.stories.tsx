@@ -14,6 +14,7 @@ import TableRow from "src/core/TableRow";
 import CellComponent from "src/core/CellComponent";
 import CellBasic from "src/core/CellBasic";
 import { copyToClipboard } from "../utils";
+import { StyledVariable } from "../style";
 
 export default {
   parameters: {
@@ -43,7 +44,8 @@ const Template = () => {
   const corners = getCorners({ theme });
 
   const RenderTableRow = (size: number, name: keyof Corners) => {
-    const variable = "$sds-corners-corner-" + name;
+    const sassVariable = "$sds-corner-" + name;
+    const cssVariable = "--sds-corner-" + name;
 
     return (
       <TableRow key={name}>
@@ -58,14 +60,22 @@ const Template = () => {
         />
 
         <CellComponent verticalAlign="center">
-          <StyledCornerVariable>{`${size}px`}</StyledCornerVariable>
+          <StyledVariable
+            onClick={() => copyToClipboard(sassVariable)}
+            type="sass"
+          >
+            {sassVariable}
+          </StyledVariable>
+          <StyledVariable
+            onClick={() => copyToClipboard(cssVariable)}
+            type="css"
+          >
+            {cssVariable}
+          </StyledVariable>
         </CellComponent>
 
-        <CellComponent
-          verticalAlign="center"
-          onClick={() => copyToClipboard(variable)}
-        >
-          <StyledCornerVariable>{variable}</StyledCornerVariable>
+        <CellComponent verticalAlign="center">
+          <StyledCornerVariable>{`${size}px`}</StyledCornerVariable>
         </CellComponent>
 
         <CellBasic
@@ -85,12 +95,16 @@ const Template = () => {
     return (
       <Table>
         <TableHeader>
-          <CellHeader hideSortIcon>Example</CellHeader>
-          <CellHeader hideSortIcon>Corner Type</CellHeader>
+          <CellHeader hideSortIcon style={{ width: 40 }}>
+            Example
+          </CellHeader>
+          <CellHeader hideSortIcon style={{ width: 40 }}>
+            Corner Type
+          </CellHeader>
+          <CellHeader hideSortIcon>Variables</CellHeader>
           <CellHeader hideSortIcon style={{ width: 40 }}>
             Value
           </CellHeader>
-          <CellHeader hideSortIcon>Variable</CellHeader>
           <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>
         <tbody>{TableBodyContent}</tbody>

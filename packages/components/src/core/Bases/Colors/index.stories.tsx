@@ -33,7 +33,7 @@ const PrimitiveColorsTemplate = () => {
       <Colors
         colors={{ common, ...rest }}
         type="primitive"
-        prefix="$sds-color-primitive"
+        prefix="sds-color-primitive"
       />
     );
   }
@@ -53,7 +53,7 @@ const SemanticComponentColorsTemplate = () => {
     semanticComponentColors && (
       <Colors
         colors={semanticComponentColors}
-        prefix="$sds-color-semantic-component"
+        prefix="sds-color-semantic-component"
       />
     )
   );
