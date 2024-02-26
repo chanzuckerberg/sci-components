@@ -65,7 +65,7 @@ export const StyledColorCode = styled("span")`
   cursor: pointer;
   font-size: 12px;
 
-  &:hover {
+  &:active {
     font-weight: bold;
   }
 `;
@@ -80,7 +80,7 @@ export const StyledColorVariable = styled("span")`
   cursor: pointer;
   font-size: 10px;
 
-  &:hover {
+  &:active {
     font-weight: bold;
   }
 `;
