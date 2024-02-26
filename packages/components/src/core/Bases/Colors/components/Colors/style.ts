@@ -30,7 +30,6 @@ export const StyledColorWrapper = styled("div")`
       border-radius: ${corners?.m}px;
       border: solid 1px ${backgroundColor};
       transition: transform 0.2s ease-in-out;
-      cursor: pointer;
 
       & > div {
         display: flex;
@@ -58,12 +57,24 @@ export const StyledColorGroupTitle = styled("h3")`
 
 export const StyledColorCode = styled("span")`
   ${fontCodeXs}
+
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+  }
 `;
 
 export const StyledColorVariable = styled("span")`
   ${fontCodeXs}
+
+  cursor: pointer;
   font-size: 10px;
   opacity: 0.5;
+
+  &:hover {
+    font-weight: bold;
+  }
 `;
 
 interface IStyledColorsWrapperProps extends CommonThemeProps {

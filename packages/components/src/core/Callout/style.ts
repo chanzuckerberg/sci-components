@@ -62,7 +62,7 @@ export const StyledCallout = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: 0;
+        padding: ${spacings?.xxxs}px 0 0 0;
         margin-right: ${spacings?.m}px;
 
         .MuiAlertTitle-root{

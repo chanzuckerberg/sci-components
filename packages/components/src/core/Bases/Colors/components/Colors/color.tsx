@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   StyledColorWrapper,
   StyledColorCode,
@@ -6,6 +5,7 @@ import {
 } from "./style";
 import {
   convertToKebabCase,
+  copyToClipboard,
   pickTextColorBasedOnBgColor,
 } from "src/core/Bases/utils";
 
@@ -19,7 +19,6 @@ interface ColorComponentProps {
 const Color = (props: ColorComponentProps) => {
   const { group, value, shade, prefix = "$" } = props;
 
-  const [text, setText] = useState(shade || group);
   const colorVariable = shade
     ? prefix + "-" + group + "-" + convertToKebabCase(shade)
     : prefix + "-" + group;
@@ -28,23 +27,17 @@ const Color = (props: ColorComponentProps) => {
     <StyledColorWrapper
       key={group + shade}
       backgroundColor={String(value)}
-      onClick={() => {
-        navigator.clipboard.writeText(colorVariable);
-        setText("Copied!");
-      }}
-      onMouseEnter={() => {
-        setText("Click to Copy");
-      }}
-      onMouseLeave={() => {
-        setText(shade || group);
-      }}
       textColor={pickTextColorBasedOnBgColor(value)}
     >
       <div>
-        <span>{text}</span>
-        <StyledColorCode>{String(value)}</StyledColorCode>
+        <span>{shade || group}</span>
+        <StyledColorCode onClick={() => copyToClipboard(value)}>
+          {String(value)}
+        </StyledColorCode>
       </div>
-      <StyledColorVariable>{colorVariable}</StyledColorVariable>
+      <StyledColorVariable onClick={() => copyToClipboard(colorVariable)}>
+        {colorVariable}
+      </StyledColorVariable>
     </StyledColorWrapper>
   );
 };

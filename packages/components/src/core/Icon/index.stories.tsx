@@ -107,7 +107,7 @@ const IconWrapper = styled("div")`
 
     return `
       align-items: center;
-      border: 1px solid #eee;
+      border: 1px solid ${colors?.gray[200]};
       border-radius: 2px;
       display: flex;
       flex-direction: column;
