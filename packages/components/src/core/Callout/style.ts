@@ -27,7 +27,7 @@ export const StyledCallout = styled(Alert, {
   ${(props: CalloutProps) => {
     const { intent = "positive" } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const palette = getPalette(props);
@@ -44,16 +44,16 @@ export const StyledCallout = styled(Alert, {
 
     return `
       width: 360px;
-      margin: ${spacings?.m}px 0;
+      margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${palette?.text?.primary};
-      padding: ${spacings?.m}px;
+      padding: ${spaces?.m}px;
       background-color: ${backgroundColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
-        margin-right: ${spacings?.s}px;
+        margin-right: ${spaces?.s}px;
         padding: 0;
 
         path {
@@ -62,8 +62,8 @@ export const StyledCallout = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: ${spacings?.xxxs}px 0 0 0;
-        margin-right: ${spacings?.m}px;
+        padding: ${spaces?.xxxs}px 0 0 0;
+        margin-right: ${spaces?.m}px;
 
         .MuiAlertTitle-root{
           margin-top: 0;
@@ -75,7 +75,7 @@ export const StyledCallout = styled(Alert, {
         margin-right: 0;
         padding: 0;
         align-items: flex-start;
-        margin-top: ${spacings?.xxs}px;
+        margin-top: ${spaces?.xxs}px;
 
         > button {
           padding: 0;

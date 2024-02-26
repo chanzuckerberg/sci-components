@@ -22,7 +22,7 @@ export interface TooltipExtraProps extends CommonThemeProps {
 }
 
 const dark = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     ${fontHeaderXs(props)}
@@ -30,12 +30,12 @@ const dark = (props: TooltipExtraProps): string => {
     color: white;
     text-align: center;
     max-width: 250px;
-    padding: ${spacings?.s}px ${spacings?.l}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
   `;
 };
 
 const light = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     ${fontBodyXs(props)}
@@ -43,7 +43,7 @@ const light = (props: TooltipExtraProps): string => {
     color: black;
     text-align: left;
     max-width: 250px;
-    padding: ${spacings?.xs}px ${spacings?.l}px;
+    padding: ${spaces?.xs}px ${spaces?.l}px;
   `;
 };
 
@@ -54,10 +54,10 @@ const wide = (): string => {
 };
 
 const tableStyles = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
-    padding: ${spacings?.m}px;
+    padding: ${spaces?.m}px;
   `;
 };
 

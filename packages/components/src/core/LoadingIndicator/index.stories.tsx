@@ -41,7 +41,7 @@ export const CustomAriaLabel = {
 // Live Preview
 
 const LivePreviewDemo = (props: Args): JSX.Element => {
-  const spacings = SDSAppTheme?.spacing;
+  const spaces = SDSAppTheme?.spacing;
 
   const livePreviewStyles = {
     display: "grid",
@@ -55,18 +55,18 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
     <div style={livePreviewStyles as React.CSSProperties}>
       <div
         style={{
-          marginBottom: spacings?.l,
-          marginRight: spacings?.l,
-          marginTop: spacings?.l,
+          marginBottom: spaces?.l,
+          marginRight: spaces?.l,
+          marginTop: spaces?.l,
         }}
       >
         <RawLoadingIndicator sdsStyle="minimal" {...props} />
       </div>
       <div
         style={{
-          marginBottom: spacings?.l,
-          marginRight: spacings?.l,
-          marginTop: spacings?.l,
+          marginBottom: spaces?.l,
+          marginRight: spaces?.l,
+          marginTop: spaces?.l,
         }}
       >
         <RawLoadingIndicator sdsStyle="tag" {...props} />

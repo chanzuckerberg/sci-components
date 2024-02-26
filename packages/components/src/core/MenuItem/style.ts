@@ -17,13 +17,13 @@ export const StyledMenuItem = styled(MenuItem)`
     const { selected } = props;
     const colors = getColors(props);
     const fontWeights = getFontWeights(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     const primary = colors?.blue[400];
 
     return `
-      padding: ${spacings?.xs}px ${spacings?.s}px !important;
+      padding: ${spaces?.xs}px ${spaces?.s}px !important;
       min-height: unset;
       opacity: 1;
 
@@ -157,13 +157,13 @@ interface MenuItemIconProps extends CommonThemeProps {
 export const StyledMenuItemIcon = styled("span")`
   ${(props: MenuItemIconProps) => {
     const { disabled } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      margin-right: ${spacings?.xs}px;
-      margin-top: ${spacings?.xxxs}px;
+      margin-right: ${spaces?.xs}px;
+      margin-top: ${spaces?.xxxs}px;
       height: ${iconSizes?.s.height}px;
 
       .MuiSvgIcon-root {
@@ -204,13 +204,13 @@ interface StyledIconType {
 
 export const StyledIconWrapper = styled("span")`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
 
     return `
       align-self: start;
-      margin-right: ${spacings?.m}px;
-      margin-top: ${spacings?.xxxs}px;
+      margin-right: ${spaces?.m}px;
+      margin-top: ${spaces?.xxxs}px;
       height: ${iconSizes?.s.height}px;
     `;
   }}

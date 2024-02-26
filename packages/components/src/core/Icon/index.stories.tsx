@@ -83,15 +83,15 @@ export const Default = {
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {
     const typography = getTypography(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
       font-family: ${typography?.fontFamily};
       display: grid;
-      grid-gap: ${spacings?.s}px;
+      grid-gap: ${spaces?.s}px;
       margin: 0 auto;
       grid-template-columns: repeat(auto-fit, 210px);
-      margin-top: ${spacings?.m}px;
+      margin-top: ${spaces?.m}px;
     `;
   }}
 `;
@@ -101,7 +101,7 @@ const IconWrapper = styled("div")`
 
   ${(props: CommonThemeProps & SdsIconWithColor) => {
     const colors = getColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     const { color = "blue", shade = 400 } = props;
 
@@ -118,7 +118,7 @@ const IconWrapper = styled("div")`
       transition: all .2s;
 
       p {
-        margin: ${spacings?.m}px 0 0 0;
+        margin: ${spaces?.m}px 0 0 0;
         text-align: center;
         font-size: 13px;
         background-color: transparent;

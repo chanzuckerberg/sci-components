@@ -40,7 +40,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
   ${(props: StyleProps) => {
     const { search } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
     const semanticTextColors = getSemanticTextColors(props);
     const semanticComponentColors = getSemanticComponentColors(props);
@@ -49,17 +49,17 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       ${!search && `height: 0`};
 
       .MuiOutlinedInput-root.MuiInputBase-formControl.MuiInputBase-adornedEnd {
-        padding: 0 ${spacings?.m}px;
+        padding: 0 ${spaces?.m}px;
 
         .MuiAutocomplete-input {
-          padding: ${spacings?.xs}px ${spacings?.s}px;
+          padding: ${spaces?.xs}px ${spaces?.s}px;
         }
       }
 
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
 
           .${autocompleteClasses.option} {
             min-height: unset;
@@ -91,14 +91,14 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${semanticTextColors?.base?.secondary};
-          padding: ${spacings?.xxs}px ${spacings?.s}px;
+          padding: ${spaces?.xxs}px ${spaces?.s}px;
         }
 
         .${autocompleteClasses.groupUl} {
           position: relative;
-          margin: 0 0 ${spacings?.m}px;
+          margin: 0 0 ${spaces?.m}px;
           border-bottom: ${borders?.base[200]};
-          padding-bottom: ${spacings?.xxs}px;
+          padding-bottom: ${spaces?.xxs}px;
 
           & li:last-of-type {
             position: relative;
@@ -106,12 +106,12 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
 
         .${autocompleteClasses.noOptions} {
-          padding: ${spacings?.xs}px ${spacings?.s}px;
-          margin-right: ${spacings?.l}px;
+          padding: ${spaces?.xs}px ${spaces?.s}px;
+          margin-right: ${spaces?.l}px;
         }
 
         .${autocompleteClasses.loading} {
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
         }
       }
     `;
@@ -154,14 +154,14 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 
 export const StyledPaper = styled(Paper)`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px ;
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
       background-color: ${semanticComponentColors?.base?.surfacePrimary};
       border: ${borders?.base[100]};
       border-radius: ${corners?.m}px;

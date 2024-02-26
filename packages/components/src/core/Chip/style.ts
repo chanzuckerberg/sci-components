@@ -17,11 +17,11 @@ export interface ChipExtraProps extends CommonThemeProps {
 }
 
 const small = (props: ChipExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
-    height: ${spacings?.l}px;
-    padding: ${spacings?.xxs}px ${spacings?.xs}px;
+    height: ${spaces?.l}px;
+    padding: ${spaces?.xxs}px ${spaces?.xs}px;
 
     .MuiChip-label {
       ${fontCapsXxxxs(props)}
@@ -31,11 +31,11 @@ const small = (props: ChipExtraProps): SerializedStyles => {
 };
 
 const medium = (props: ChipExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const colors = getColors(props);
 
   return css`
-    margin: 0 ${spacings?.s}px;
+    margin: 0 ${spaces?.s}px;
     height: 24px;
 
     background-color: ${colors?.blue[400]};
@@ -51,15 +51,15 @@ const medium = (props: ChipExtraProps): SerializedStyles => {
     .MuiChip-label {
       ${fontHeaderXs(props)}
       color: white;
-      padding-left: ${spacings?.s}px;
+      padding-left: ${spaces?.s}px;
     }
 
     .MuiChip-deleteIcon {
       color: white;
-      padding-right: ${spacings?.xxs}px;
-      margin: 0 0 0 -${spacings?.s}px;
-      height: ${spacings?.l}px;
-      width: ${spacings?.l}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.s}px;
+      height: ${spaces?.l}px;
+      width: ${spaces?.l}px;
 
       &:hover,
       &:focus-visible {

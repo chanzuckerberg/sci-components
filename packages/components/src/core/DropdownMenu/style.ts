@@ -41,11 +41,11 @@ export const StyledHeaderTitle = styled("div", {
   ${(props) => {
     const { search } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      padding-right: ${spacings?.m}px;
-      margin-bottom: ${search ? spacings?.s : spacings?.m}px;
+      padding-right: ${spaces?.m}px;
+      margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;
   }}
 `;
@@ -95,7 +95,7 @@ export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: StyleProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
     const shadows = getShadows(props);
 
@@ -104,11 +104,11 @@ export const StyledPaper = styled(Paper, {
       border: ${borders?.none} !important;
       border-radius: 0;
       margin: 0;
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
 
       .MuiFormControl-root.MuiTextField-root {
-        margin-bottom: ${spacings?.m}px;
-        margin-right: ${spacings?.m}px;
+        margin-bottom: ${spaces?.m}px;
+        margin-right: ${spaces?.m}px;
       }
     `;
   }}

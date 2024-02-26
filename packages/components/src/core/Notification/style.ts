@@ -30,7 +30,7 @@ export const StyledNotification = styled(Alert, {
   ${(props: NotificationExtraProps) => {
     const { intent = "info" } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
@@ -46,10 +46,10 @@ export const StyledNotification = styled(Alert, {
       max-width: 480px;
       min-width: 280px;
       box-sizing: border-box;
-      margin: ${spacings?.m}px 0;
+      margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${defaultTheme.palette.text.primary};
-      padding: ${spacings?.l}px;
+      padding: ${spaces?.l}px;
       align-items: flex-start;
       border-left: 5px solid;
       box-shadow: ${shadows?.s};
@@ -58,7 +58,7 @@ export const StyledNotification = styled(Alert, {
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
-        margin-right: ${spacings?.m}px;
+        margin-right: ${spaces?.m}px;
         padding: 0;
         path {
           fill: ${iconColor};
@@ -66,12 +66,12 @@ export const StyledNotification = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: ${spacings?.xxxs}px 0px 0px;
-        margin-right: ${spacings?.m}px;
+        padding: ${spaces?.xxxs}px 0px 0px;
+        margin-right: ${spaces?.m}px;
         width: 100%;
 
         > * {
-          margin: ${spacings?.m}px 0px;
+          margin: ${spaces?.m}px 0px;
 
           &:last-child {
             margin-bottom: 0;
@@ -87,7 +87,7 @@ export const StyledNotification = styled(Alert, {
         margin-right: 0;
         padding: 0;
         align-items: flex-start;
-        margin-top: ${spacings?.xxs}px;
+        margin-top: ${spaces?.xxs}px;
 
         > button {
             padding: 0;

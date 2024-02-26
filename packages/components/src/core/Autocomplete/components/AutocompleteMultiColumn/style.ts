@@ -39,7 +39,7 @@ export const StyledPopper = styled(Popper, {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
@@ -47,7 +47,7 @@ export const StyledPopper = styled(Popper, {
       border: ${borders?.base[100]};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
       box-sizing: border-box;
       z-index: 1400;
 
@@ -56,7 +56,7 @@ export const StyledPopper = styled(Popper, {
         transform: none !important;
       
         .MuiPaper-root .${autocompleteClasses.listbox} {
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
         }
       }
     `;

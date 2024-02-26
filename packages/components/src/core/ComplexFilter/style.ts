@@ -7,10 +7,10 @@ export const Wrapper = styled("div")`
 
 export const StyledChipsWrapper = styled("div")`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin-top: ${spacings?.s}px;
+      margin-top: ${spaces?.s}px;
     `;
   }}
 `;

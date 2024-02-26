@@ -37,11 +37,11 @@ export const StyledFormControlCaption = styled("span")`
 
     const semanticTextColors = getSemanticTextColors(props);
     const iconSizes = getIconSizes(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
       color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.secondary};
-      margin-left: ${(iconSizes?.s?.width ?? 16) + (spacings?.s ?? 8)}px;
+      margin-left: ${(iconSizes?.s?.width ?? 16) + (spaces?.s ?? 8)}px;
     `;
   }}
 `;

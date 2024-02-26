@@ -25,11 +25,11 @@ export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin-top: ${spacings?.l}px;
-      margin-right: ${spacings?.m}px;
+      margin-top: ${spaces?.l}px;
+      margin-right: ${spaces?.m}px;
     `;
   }}
 `;

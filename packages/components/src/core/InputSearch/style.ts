@@ -162,10 +162,10 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
 export const StyledLabel = styled("label")`
   ${fontBodyM}
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin-bottom: ${spacings?.xxs}px;
+      margin-bottom: ${spaces?.xxs}px;
       position: absolute;
       overflow: hidden;
       clip: rect(0 0 0 0);
@@ -186,14 +186,14 @@ export const StyledSearchBase = styled(TextField, {
   ${(props: InputSearchExtraProps) => {
     const { intent, disabled, sdsStyle, sdsStage, value } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return css`
-      margin-top: ${spacings?.m}px;
-      margin-bottom: ${spacings?.m}px;
-      margin-right: ${spacings?.xl}px;
+      margin-top: ${spaces?.m}px;
+      margin-bottom: ${spaces?.m}px;
+      margin-right: ${spaces?.xl}px;
       min-width: 120px;
       display: block;
 
@@ -213,7 +213,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.root} {
-        padding: 0 ${spacings?.m}px;
+        padding: 0 ${spaces?.m}px;
         background-color: ${semanticComponentColors?.base?.surface};
 
         .${outlinedInputClasses.notchedOutline} {
@@ -228,7 +228,7 @@ export const StyledSearchBase = styled(TextField, {
 
       .${inputBaseClasses.inputSizeSmall} {
         ${fontBodyXs(props)}
-        padding: ${spacings?.xs}px ${spacings?.s}px;
+        padding: ${spaces?.xs}px ${spaces?.s}px;
         height: unset;
         box-sizing: border-box;
         background-color: ${semanticComponentColors?.base?.surface};

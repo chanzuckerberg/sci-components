@@ -53,10 +53,10 @@ export const StyledTableData = styled("td", {
   ${(props: CellBasicExtraProps) => {
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-        padding: ${spacings?.l}px ${spacings?.m}px;
+        padding: ${spaces?.l}px ${spaces?.m}px;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         width: 96px;
@@ -95,10 +95,10 @@ export const StyledCellIconWrapper = styled("div", {
 })`
   ${(props: CellBasicExtraProps) => {
     const { iconVerticalAlign = "top" } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      padding-right: ${spacings?.l}px;
+      padding-right: ${spaces?.l}px;
       display: flex;
       flex-direction: column;
       justify-content: ${verticalAlignToFlexMap[iconVerticalAlign]};

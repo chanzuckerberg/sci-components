@@ -12,10 +12,10 @@ export interface TagFilterExtraProps extends CommonThemeProps {
 
 export const StyledTag = styled(Tag)`
   ${(props: TagFilterExtraProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return css`
-      padding: ${spacings?.xxs}px ${spacings?.s}px;
+      padding: ${spaces?.xxs}px ${spaces?.s}px;
 
       &:after {
         display: none;
@@ -27,7 +27,7 @@ export const StyledTag = styled(Tag)`
 
       .MuiChip-deleteIcon,
       .MuiSvgIcon-root {
-        margin-left: ${spacings?.s}px;
+        margin-left: ${spaces?.s}px;
       }
 
       .MuiChip-label,

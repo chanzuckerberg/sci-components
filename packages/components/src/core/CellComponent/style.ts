@@ -21,7 +21,7 @@ export const StyledCellComponentData = styled("td", {
   ${fontBodyS}
 
   ${(props: CellComponentExtraProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     return `
@@ -29,7 +29,7 @@ export const StyledCellComponentData = styled("td", {
       text-align: ${horizontalAlign};
       vertical-align: ${verticalAlign};
       overflow: hidden;
-      padding: ${spacings?.l}px ${spacings?.m}px;
+      padding: ${spaces?.l}px ${spaces?.m}px;
     `;
   }}
 `;
@@ -47,12 +47,12 @@ export const StyledStoryBody = styled("span", {
 
   ${(props) => {
     const semanticTextColors = getSemanticTextColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
       display: block;
       color: ${semanticTextColors?.base?.secondary};
-      padding: ${spacings?.s}px 0;
+      padding: ${spaces?.s}px 0;
     `;
   }}
 `;

@@ -34,12 +34,12 @@ export const StyledSortingIcon = styled(ButtonIcon, {
   ${(props: CellHeaderExtraProps) => {
     const { active = false } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      margin-left: ${spacings?.s}px;
-      margin-bottom: ${spacings?.xxxs}px;
+      margin-left: ${spaces?.s}px;
+      margin-bottom: ${spaces?.xxxs}px;
       color: ${active ? semanticComponentColors?.accent?.icon : semanticComponentColors?.base?.icon};
       opacity: ${active ? 1 : 0};
       outline: none !important;
@@ -55,13 +55,13 @@ export const StyledTableHeader = styled("th", {
   ${(props: CellHeaderExtraProps) => {
     const { active = false, horizontalAlign = "left" } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
     const semanticTextColors = getSemanticTextColors(props);
 
     return `
       color: ${active ? semanticComponentColors?.accent?.fill : semanticTextColors?.base?.secondary};
-      padding: ${spacings?.l}px ${spacings?.m}px;
+      padding: ${spaces?.l}px ${spaces?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
       width: 96px;

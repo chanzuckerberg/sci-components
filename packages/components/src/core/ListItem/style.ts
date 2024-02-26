@@ -45,14 +45,14 @@ export const StyledListItem = styled(ListItem, {
     display: inline-block;
 
     ${(props) => {
-      const spacings = getSpaces(props);
+      const spaces = getSpaces(props);
       const fontWeights = getFontWeights(props);
       const { ordered } = props;
 
       return `        
         font-weight: ${fontWeights?.semibold};
         content: ${ordered ? `counters(section, ".")"."` : `"•"`};
-        margin-right: ${ordered ? spacings?.xs : spacings?.s}px;
+        margin-right: ${ordered ? spaces?.xs : spaces?.s}px;
       `;
     }}
   }
@@ -77,15 +77,15 @@ function propsToFontBody(props: ListItemExtraProps) {
 }
 
 function propsToMarginBottom(props: ListItemExtraProps) {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
     NonNullable<ListItemExtraProps["marginBottom"]>,
     number | undefined
   > = {
-    s: spacings?.s,
-    xs: spacings?.xs,
-    xxs: spacings?.xxs,
+    s: spaces?.s,
+    xs: spaces?.xs,
+    xxs: spaces?.xxs,
   };
 
   const { marginBottom } = props;

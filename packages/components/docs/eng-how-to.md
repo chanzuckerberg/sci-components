@@ -87,13 +87,13 @@ export const Tag = styled("div")`
   ${(props) => {
     //  getColors() is a selector that picks out colors from the theme object
     const colors = getColors(props);
-    // getSpaces() is a selector that picks out spacings from the theme object
-    const spacings = getSpaces(props);
+    // getSpaces() is a selector that picks out spaces from the theme object
+    const spaces = getSpaces(props);
 
     return `
           background-color: ${colors?.gray[500]};
-          padding-bottom: ${spacings?.m}px;
-          margin-bottom: ${spacings?.xxl}px;
+          padding-bottom: ${spaces?.m}px;
+          margin-bottom: ${spaces?.xxl}px;
         `;
   }}
 `;

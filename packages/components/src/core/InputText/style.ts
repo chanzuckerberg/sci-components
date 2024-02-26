@@ -108,14 +108,14 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
 };
 
 const textArea = (props: InputTextExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     .${outlinedInputClasses.multiline} {
-      padding: ${spacings?.xxs}px;
+      padding: ${spaces?.xxs}px;
 
       > .${outlinedInputClasses.inputMultiline} {
-        padding: ${spacings?.xxs}px ${spacings?.m}px ${spacings?.m}px;
+        padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
     }
@@ -150,10 +150,10 @@ export const StyledLabel = styled("label")`
   ${fontBodyS}
 
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin-bottom: ${spacings?.xxs}px;
+      margin-bottom: ${spaces?.xxs}px;
     `;
   }}
 `;
@@ -166,20 +166,20 @@ export const StyledInputBase = styled(TextField, {
   ${(props: InputTextExtraProps) => {
     const { intent, sdsType, sdsStage, disabled } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return css`
-      margin-bottom: ${spacings?.l}px;
-      margin-right: ${spacings?.m}px;
+      margin-bottom: ${spaces?.l}px;
+      margin-right: ${spaces?.m}px;
       min-width: 160px;
       display: block;
 
       .${outlinedInputClasses.inputSizeSmall} {
         ${fontBodyXs(props)}
-        padding: ${spacings?.xs}px ${spacings?.m}px;
+        padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;
         box-sizing: border-box;
         background-color: ${semanticComponentColors?.base?.surfacePrimary};

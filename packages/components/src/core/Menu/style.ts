@@ -6,10 +6,10 @@ export const StyledMenu = styled(Menu)`
   & {
     .${menuClasses.paper} {
       ${(props) => {
-        const spacings = getSpaces(props);
+        const spaces = getSpaces(props);
 
         return `
-          padding: ${spacings?.xs}px;
+          padding: ${spaces?.xs}px;
         `;
       }}
     }

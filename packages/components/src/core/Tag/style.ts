@@ -33,12 +33,12 @@ export interface ExtraTagProps extends CommonThemeProps {
 }
 
 const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
+    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
@@ -48,7 +48,7 @@ const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
       color: white;
-      margin: 0 0 0 ${spacings?.xxs}px;
+      margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
     }
@@ -56,12 +56,12 @@ const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
 };
 
 const withIcon = (props: ExtraTagProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
+    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -71,14 +71,14 @@ const withIcon = (props: ExtraTagProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
-      padding-right: ${spacings?.xxs}px;
-      margin: 0 0 0 -${spacings?.xxxs}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.xxxs}px;
     }
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
       color: white;
-      margin: 0 0 0 ${spacings?.xxs}px;
+      margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
     }
@@ -87,15 +87,15 @@ const withIcon = (props: ExtraTagProps): SerializedStyles => {
 
 const rounded = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   const { icon } = props;
 
   return css`
     border-radius: ${corners?.l}px;
     padding: ${icon
-      ? `${spacings?.xxs}px ${spacings?.s}px ${spacings?.xxs}px ${spacings?.xs}px`
-      : `${spacings?.xxxs}px ${spacings?.s}px`};
+      ? `${spaces?.xxs}px ${spaces?.s}px ${spaces?.xxs}px ${spaces?.xs}px`
+      : `${spaces?.xxxs}px ${spaces?.s}px`};
 
     &:after {
       border-radius: ${corners?.l}px;
@@ -105,15 +105,15 @@ const rounded = (props: ExtraTagProps): SerializedStyles => {
 
 const square = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   const { icon } = props;
 
   return css`
     border-radius: ${corners?.m}px;
     padding: ${icon
-      ? `${spacings?.xxs}px ${spacings?.s}px`
-      : `${spacings?.xxxs}px ${spacings?.xs}px`};
+      ? `${spaces?.xxs}px ${spaces?.s}px`
+      : `${spaces?.xxxs}px ${spaces?.xs}px`};
 
     &:after {
       border-radius: ${corners?.m}px;

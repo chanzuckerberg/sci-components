@@ -28,18 +28,18 @@ export const StyledList = styled(List, {
 `;
 
 function propsToMarginBottom(props: ListExtraProps) {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
     NonNullable<ListExtraProps["marginBottom"]>,
     number | undefined
   > = {
-    l: spacings?.l,
-    m: spacings?.l,
-    s: spacings?.m,
-    xs: spacings?.m,
-    xxs: spacings?.m,
-    xxxs: spacings?.s,
+    l: spaces?.l,
+    m: spaces?.l,
+    s: spaces?.m,
+    xs: spaces?.m,
+    xxs: spaces?.m,
+    xxxs: spaces?.s,
   };
 
   const { marginBottom } = props;

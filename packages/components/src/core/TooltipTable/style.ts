@@ -47,17 +47,17 @@ export const Section = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
 
     return `
       &:not(:last-child) {
-        padding-bottom: ${spacings?.l}px;
+        padding-bottom: ${spaces?.l}px;
         border-bottom: ${borders?.base[200]};
       }
 
       &:not(:first-of-type) {
-        padding-top: ${spacings?.l}px;
+        padding-top: ${spaces?.l}px;
       }
     `;
   }}
@@ -68,13 +68,13 @@ export const SectionLabel = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticTextColors = getSemanticTextColors(props);
 
     if (!props.label) return "";
 
     return `
-      margin-bottom: ${spacings?.s}px;      
+      margin-bottom: ${spaces?.s}px;      
       color: ${semanticTextColors?.base?.secondary};
     `;
   }}
@@ -88,9 +88,9 @@ export const RowLabel = styled(TableCell, {
   ${fontBodyXs}
   ${disabledStyle}
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     return `
-      padding: 0 0 ${spacings?.xxs}px 0;
+      padding: 0 0 ${spaces?.xxs}px 0;
       width: 50%;
       border-bottom: none;
       font-weight: 600;

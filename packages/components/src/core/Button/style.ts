@@ -10,7 +10,6 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
-  getSpacings,
 } from "../styles";
 import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 
@@ -23,7 +22,7 @@ const ButtonBase = styled(Button, {
   ${focusVisibleA11yStyle}
   ${(props) => {
     const { variant, startIcon, endIcon } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const iconSizes = getIconSizes(props);
     const semanticTextColors = getSemanticTextColors(props);
@@ -35,13 +34,13 @@ const ButtonBase = styled(Button, {
     // If the component has either a startIcon or endIcon, the padding will be different.
     // If the component doesn't have any icon at all, the padding will be different.
     const containedPadding = hasIcon
-      ? `${spacings?.xxs}px ${spacings?.m}px`
-      : `${spacings?.xs}px ${spacings?.l}px`;
+      ? `${spaces?.xxs}px ${spaces?.m}px`
+      : `${spaces?.xs}px ${spaces?.l}px`;
 
     // (thuang): outline variant has border 1px, so padding needs to be smaller
     const outlinedPadding = hasIcon
-      ? `${(spacings?.xxs || 0) - 1}px ${(spacings?.m || 0) - 1}px`
-      : `${(spacings?.xs || 0) - 1}px ${(spacings?.m || 0) - 1}px`;
+      ? `${(spaces?.xxs || 0) - 1}px ${(spaces?.m || 0) - 1}px`
+      : `${(spaces?.xs || 0) - 1}px ${(spaces?.m || 0) - 1}px`;
 
     const padding = variant === "outlined" ? outlinedPadding : containedPadding;
 
@@ -88,12 +87,12 @@ const ButtonBase = styled(Button, {
       }
 
       .${buttonClasses.startIcon} {
-        margin-right: ${spacings?.m}px;
+        margin-right: ${spaces?.m}px;
         margin-left: 0;
       }
 
       .${buttonClasses.endIcon} {
-        margin-left: ${spacings?.m}px;
+        margin-left: ${spaces?.m}px;
         margin-right: 0;
       }
     `;
@@ -124,10 +123,10 @@ const MinimalButton = styled(Button, {
   ${focusVisibleA11yStyle}
 
   ${(props: IsAllCaps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      padding: ${spacings?.xxs}px 0;
+      padding: ${spaces?.xxs}px 0;
     `;
   }}
 
@@ -143,7 +142,7 @@ const MinimalButton = styled(Button, {
 `;
 
 const minimal = (props: CommonThemeProps) => {
-  const spacings = getSpacings(props);
+  const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticTextColors = getSemanticTextColors(props);
   const semanticComponentColors = getSemanticComponentColors(props);
@@ -173,11 +172,11 @@ const minimal = (props: CommonThemeProps) => {
     }
 
     .${buttonClasses.startIcon} {
-      margin-right: ${spacings?.xxs}px;
+      margin-right: ${spaces?.xxs}px;
     }
 
     .${buttonClasses.endIcon} {
-      margin-left: ${spacings?.xxs}px;
+      margin-left: ${spaces?.xxs}px;
     }
   `;
 };
@@ -209,11 +208,11 @@ export const StyledButton = styled(Button, {
     if (!props.isRounded) return ``;
 
     const corners = getCorners(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
       border-radius: ${corners?.l}px;
-      padding: ${spacings?.xs}px ${spacings?.l}px;
+      padding: ${spaces?.xs}px ${spaces?.l}px;
       min-width: 120px;
     `;
   }}

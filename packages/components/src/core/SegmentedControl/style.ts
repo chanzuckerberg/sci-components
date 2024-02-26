@@ -12,7 +12,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CommonThemeProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
@@ -30,7 +30,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
         border-color: ${semanticComponentColors?.base?.border};
         line-height: 0px;
         color: ${semanticComponentColors?.base?.iconHover};
-        padding: ${(spacings?.xs ?? 6) - 1}px ${spacings?.l}px;
+        padding: ${(spaces?.xs ?? 6) - 1}px ${spaces?.l}px;
 
         &:hover {
           border-color: ${semanticComponentColors?.base?.border};

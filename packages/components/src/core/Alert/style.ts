@@ -6,7 +6,7 @@ import { defaultTheme } from "../styles/common/defaultTheme";
 export const StyledAlert = styled(Alert)`
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const { severity = "success" } = props;
 
@@ -20,10 +20,10 @@ export const StyledAlert = styled(Alert)`
 
     return `
       background-color: ${backgroundColor};
-      margin: ${spacings?.m}px 0;
+      margin: ${spaces?.m}px 0;
       color: ${defaultTheme.palette.text.primary};
-      padding: ${spacings?.l}px ${spacings?.l}px
-        ${spacings?.l}px 9px;
+      padding: ${spaces?.l}px ${spaces?.l}px
+        ${spaces?.l}px 9px;
       background-color: ${alertColor};
       &.elevated {
         border-left: 5px solid;

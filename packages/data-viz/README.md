@@ -4,7 +4,7 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spaces`, `typography`, etc., so you can leverage the theme properly in your application.
 
 ![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
 
@@ -102,13 +102,13 @@ export const Tag = styled("div")`
   ${(props) => {
     // getColors() is a selector that picks out colors from the theme object
     const colors = getColors(props);
-    // getSpaces() is a selector that picks out spacings from the theme object
-    const spacings = getSpaces(props);
+    // getSpaces() is a selector that picks out spaces from the theme object
+    const spaces = getSpaces(props);
 
     return `
           background-color: ${colors?.gray[500]};
-          padding-bottom: ${spacings?.m}px;
-          margin-bottom: ${spacings?.xxl}px;
+          padding-bottom: ${spaces?.m}px;
+          margin-bottom: ${spaces?.xxl}px;
         `;
   }}
 `;

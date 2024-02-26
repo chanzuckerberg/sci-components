@@ -36,7 +36,7 @@ const labelFontBodyS = fontBody("s", "regular");
 const labelFontBodyXs = fontBody("xs", "regular");
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const borders = getBorders(props);
   const semanticTextColors = getSemanticTextColors(props);
   const semanticCommonColors = getSemanticComponentColors(props);
@@ -45,7 +45,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
    * (masoudmanson)
    * The top/bottom padding is set to 1px less than the actual value to account for the border.
    */
-  const padding = `${(spacings?.xs ?? 6) - 1}px ${spacings?.xs}px`;
+  const padding = `${(spaces?.xs ?? 6) - 1}px ${spaces?.xs}px`;
 
   return css`
     ${labelStyle(props)}
@@ -62,15 +62,15 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       }
 
       .styled-label {
-        margin-left: ${spacings?.s}px;
+        margin-left: ${spaces?.s}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
 
       svg {
-        margin-right: ${spacings?.s}px;
-        margin-left: ${spacings?.l}px;
+        margin-right: ${spaces?.s}px;
+        margin-left: ${spaces?.l}px;
       }
     }
 
@@ -108,7 +108,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const minimal = (props: InputDropdownProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const semanticTextColors = getSemanticTextColors(props);
   const semanticCommonColors = getSemanticComponentColors(props);
 
@@ -120,7 +120,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     align-items: flex-start;
     border: none;
     flex-direction: column;
-    padding: ${spacings?.xs}px ${spacings?.s}px;
+    padding: ${spaces?.xs}px ${spaces?.s}px;
 
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
@@ -166,7 +166,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &.MuiButton-root.MuiButton-text svg {
-      margin-left: ${spacings?.xs}px;
+      margin-left: ${spaces?.xs}px;
       margin-right: 0;
     }
   `;
@@ -381,7 +381,7 @@ export const StyledCounter = styled("span", {
 })`
   ${(props: CommonThemeProps) => {
     const corners = getCorners(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const semanticCommonColors = getSemanticComponentColors(props);
     const semanticTextColors = getSemanticTextColors(props);
 
@@ -389,8 +389,8 @@ export const StyledCounter = styled("span", {
       background-color: ${semanticCommonColors?.base?.surfaceTertiary};
       color: ${semanticTextColors?.base?.accent};
       border-radius: ${corners?.l}px;
-      padding: 0 ${spacings?.xs}px;
-      margin-left: ${spacings?.xs}px;
+      padding: 0 ${spaces?.xs}px;
+      margin-left: ${spaces?.xs}px;
     `;
   }}
 `;

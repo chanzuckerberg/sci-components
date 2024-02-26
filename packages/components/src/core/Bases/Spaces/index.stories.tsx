@@ -23,10 +23,10 @@ export default {
     },
     badges: [BADGE.WIP],
   },
-  title: "Bases/Spacing",
+  title: "Bases/Spaces",
 } as Meta;
 
-// Spacing
+// Spaces
 
 const Template = () => {
   const theme = useTheme();

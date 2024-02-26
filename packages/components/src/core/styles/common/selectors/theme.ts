@@ -10,7 +10,7 @@ import {
   SemanticTextColors,
   Shadows,
   Spaces,
-  Spacings,
+  spaces,
   Typography,
 } from "../types";
 
@@ -25,7 +25,7 @@ export const getSpaces = ({ theme }: CommonThemeProps): Spaces | null => {
   return theme?.app?.spacing || null;
 };
 
-export const getSpacings = ({ theme }: CommonThemeProps): Spacings | null => {
+export const getSpacings = ({ theme }: CommonThemeProps): spaces | null => {
   console.warn(
     "getSpacings() is deprecated and may be removed in a future release. Please use getSpaces()"
   );

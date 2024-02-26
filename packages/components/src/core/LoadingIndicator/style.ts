@@ -17,10 +17,10 @@ export interface LoadingIndicatorProps extends CommonThemeProps {
 
 export const StyledText = styled("span")`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin: 0 ${spacings?.xs}px;
+      margin: 0 ${spaces?.xs}px;
     `;
   }}
 `;
@@ -73,12 +73,12 @@ export const StyledLoadingIndicator = styled("div", {
 })`
   ${(props: LoadingIndicatorProps) => {
     const { sdsStyle } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     const style = css`
       display: inline-flex;
       align-items: center;
-      padding: ${spacings?.xxs}px;
+      padding: ${spaces?.xxs}px;
     `;
 
     return css`

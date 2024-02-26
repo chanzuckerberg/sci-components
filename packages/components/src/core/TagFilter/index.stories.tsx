@@ -109,7 +109,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     <>
       {PSEUDO_STATES.map((state) => {
         return (
-          <>
+          <React.Fragment key={state}>
             <p style={LABEL_STYLE}>
               State: <b>{state}</b>
             </p>
@@ -121,7 +121,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               key={state}
               {...props}
             />
-          </>
+          </React.Fragment>
         );
       })}
     </>

@@ -46,10 +46,10 @@ export const InputBaseWrapper = styled("div", {
       `;
     }
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin: ${spacings?.s}px;
+      margin: ${spaces?.s}px;
     `;
   }}
 `;

@@ -6,10 +6,10 @@ export const StyledCalloutTitle = styled(AlertTitle)`
   ${fontBodyXs}
 
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin: ${spacings?.xxxs}px 0 ${spacings?.xs}px;
+      margin: ${spaces?.xxxs}px 0 ${spaces?.xs}px;
     `;
   }}
 `;
