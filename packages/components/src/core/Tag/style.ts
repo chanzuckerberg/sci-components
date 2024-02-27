@@ -192,7 +192,7 @@ function createTypeCss(
   const semanticColors = getSemanticComponentColors(props);
   const semanticTextColors = getSemanticTextColors(props);
 
-  const intent = typeof props.tagColor === "string" ? props.tagColor : "accent";
+  const intent = typeof props.tagColor === "string" ? props.tagColor : "info";
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
   const typeToColors = {

@@ -137,7 +137,6 @@ export const Default = {
     buttonPosition: "right",
     buttonText: "click me",
     extraContent: false,
-    intent: "info",
     slideDirection: "left",
   },
 };

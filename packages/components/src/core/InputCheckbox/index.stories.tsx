@@ -151,7 +151,7 @@ const LivePreviewDemo = (): JSX.Element => {
     <div style={livePreviewStyles as React.CSSProperties}>
       <FormControl>
         <CustomFormLabel>No Labels or Captions</CustomFormLabel>
-        <FormGroup aria-labelledby="checkbox-group-no-labels">
+        <FormGroup>
           <RawInputCheckbox value="1" />
           <RawInputCheckbox value="2" intent="warning" />
           <RawInputCheckbox value="3" intent="error" />
@@ -203,6 +203,9 @@ const LivePreviewDemo = (): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    axe: {
+      disabledRules: ["label"],
+    },
     controls: { exclude: ["caption", "label", "stage", "disabled", "intent"] },
     snapshot: {
       skip: true,

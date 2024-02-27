@@ -77,11 +77,7 @@ const LivePreviewTemplate = (): JSX.Element => {
     <div style={livePreviewStyles as React.CSSProperties}>
       <FormControl>
         <CustomFormLabel>No Labels or Captions</CustomFormLabel>
-        <RadioGroup
-          aria-labelledby="demo-input-radio-group-no-labels"
-          name="input-radio-group-no-labels"
-          defaultValue={1}
-        >
+        <RadioGroup name="input-radio-group-no-labels" defaultValue={1}>
           <RawInputRadio value="1" />
           <RawInputRadio value="2" intent="warning" />
           <RawInputRadio value="3" intent="error" />
@@ -142,6 +138,9 @@ export const LivePreview = {
     label: "Label",
   },
   parameters: {
+    axe: {
+      disabledRules: ["label"],
+    },
     controls: {
       exclude: ["label", "caption", "disabled", "intent", "stage"],
     },
