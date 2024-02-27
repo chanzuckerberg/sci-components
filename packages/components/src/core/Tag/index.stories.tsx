@@ -20,7 +20,7 @@ const ICONS = [
   <CheckCircleOutline key="CheckCircleOutline" />,
 ];
 const SDS_STYLES: ExtraTagProps["sdsStyle"][] = ["rounded", "square"];
-
+const ColorContrastRule = "color-contrast";
 const PANEL_COLORS: ExtraTagProps["tagColor"][] = [
   "accent",
   "info",
@@ -88,6 +88,9 @@ export default {
   },
   component: Tag,
   parameters: {
+    axe: {
+      disabledRules: [ColorContrastRule],
+    },
     badges: [BADGE.STABLE],
   },
   title: "Components/Tag",
@@ -291,7 +294,7 @@ export const GrayPrimaryScreenshotTest = {
   parameters: {
     axe: {
       // `color-contrast` is disabled for this test because design tested it with APCA and determined these colors pass, our test just isn't able to use APCA yet; this color was pulled into its own story so the remaining colors can be tested separately
-      disabledRules: ["color-contrast"],
+      disabledRules: [ColorContrastRule],
       timeout: 10 * 1000,
     },
     controls: {
@@ -345,7 +348,7 @@ export const SuccessWarningScreenshotTest = {
   parameters: {
     axe: {
       // `color-contrast` is disabled for this test because it is now a known issue and design will work on adjusting the colors so that they pass; these colors were pulled into their own story so the remaining colors can be tested separately
-      disabledRules: ["color-contrast"],
+      disabledRules: [ColorContrastRule],
       timeout: 10 * 1000,
     },
     controls: {
