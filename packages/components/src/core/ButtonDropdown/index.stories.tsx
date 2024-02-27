@@ -70,14 +70,14 @@ const livePreviewWrapperStyle = {
   display: "grid",
   gridColumnGap: 10,
   gridRowGap: 24,
-  gridTemplateColumns: "repeat(4, min-content)",
+  gridTemplateColumns: "repeat(2, min-content)",
   gridTemplateRows: "repeat(2, auto)",
 };
 
 function LivePreviewDemo(props: Args): JSX.Element {
   return (
     <div style={livePreviewWrapperStyle as React.CSSProperties}>
-      <div style={{ gridArea: "1/1/2/2" }}>
+      <div>
         <ButtonDropdown
           sdsType="primary"
           sdsStyle="rounded"
@@ -88,7 +88,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         </ButtonDropdown>
       </div>
 
-      <div style={{ gridArea: "1/2/2/3" }}>
+      <div>
         <ButtonDropdown
           sdsType="secondary"
           sdsStyle="rounded"
@@ -99,7 +99,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         </ButtonDropdown>
       </div>
 
-      <div style={{ gridArea: "2/1/3/2" }}>
+      <div>
         <ButtonDropdown
           sdsType="primary"
           sdsStyle="square"
@@ -110,7 +110,7 @@ function LivePreviewDemo(props: Args): JSX.Element {
         </ButtonDropdown>
       </div>
 
-      <div style={{ gridArea: "2/2/3/3" }}>
+      <div>
         <ButtonDropdown
           sdsType="secondary"
           sdsStyle="square"

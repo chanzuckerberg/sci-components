@@ -3,6 +3,8 @@ import { Link, LinkProps as RawLinkProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
+  fontBodyS,
+  fontBodyXs,
   getBorders,
   getSemanticTextColors,
 } from "../styles";
@@ -15,6 +17,7 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
 > &
   StyleProps & {
     sdsStyle?: "default" | "dashed";
+    sdsSize?: "xs" | "s";
   };
 
 const sdsPropNames = ["sdsStyle"];
@@ -51,17 +54,27 @@ const dashedStyle = (props: LinkProps) => {
   `;
 };
 
+const smallStyle = (props: LinkProps) => {
+  return fontBodyS(props);
+};
+
+const extraSmallStyle = (props: LinkProps) => {
+  return fontBodyXs(props);
+};
+
 export const StyledLink = styled(Link, {
   shouldForwardProp: (prop) => {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
   ${(props: LinkProps) => {
-    const { sdsStyle } = props;
+    const { sdsStyle, sdsSize = "s" } = props;
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}
       ${sdsStyle === "dashed" && dashedStyle(props)}
+      ${sdsSize === "s" && smallStyle(props)}
+      ${sdsSize === "xs" && extraSmallStyle(props)}
     `;
   }}
 ` as typeof Link;

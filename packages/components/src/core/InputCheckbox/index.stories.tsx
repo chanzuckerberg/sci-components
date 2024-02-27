@@ -181,7 +181,7 @@ const LivePreviewDemo = (): JSX.Element => {
           />
           <RawInputCheckbox
             label="Error"
-            caption="Caption II"
+            caption="Caption III"
             value="3"
             intent="error"
           />
@@ -227,7 +227,7 @@ const TestDemo = (): JSX.Element => {
 
   return (
     <div style={testStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+      <div>
         <CheckboxLabelDemo
           caption="Caption"
           label="Label A"
@@ -235,7 +235,7 @@ const TestDemo = (): JSX.Element => {
           data-testid="labelCheckbox"
         />
       </div>
-      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
+      <div>
         <InputCheckbox data-testid="checkbox" label="Label" />
       </div>
     </div>

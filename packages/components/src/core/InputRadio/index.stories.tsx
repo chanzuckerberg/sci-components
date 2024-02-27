@@ -117,7 +117,7 @@ const LivePreviewTemplate = (): JSX.Element => {
           />
           <RawInputRadio
             label="Error"
-            caption="Caption II"
+            caption="Caption III"
             value="3"
             intent="error"
           />

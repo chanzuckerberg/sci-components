@@ -17,7 +17,7 @@ export type TagFilterProps = SdsTagFilterProps;
  */
 
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
-  return <StyledTag deleteIcon={<Clear />} {...props} />;
+  return <StyledTag deleteIcon={<Clear />} {...props} color="info" />;
 };
 
 export default TagFilter;

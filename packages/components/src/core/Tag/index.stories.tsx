@@ -27,7 +27,6 @@ const PANEL_COLORS: ExtraTagProps["tagColor"][] = [
   "positive",
   "notice",
   "negative",
-  "neutral",
   "beta",
   ["#000000", "#C65FA7", "#FFD400"],
 ];
@@ -49,7 +48,6 @@ export default {
           "positive",
           "notice",
           "negative",
-          "neutral",
           "beta",
           "Custom colors for Label, Background, Icon",
         ],
@@ -121,7 +119,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 2 / 2" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -132,7 +130,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "1 / 2 / 2 / 3" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -143,7 +141,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "1 / 3 / 2 / 4" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -156,7 +154,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "2 / 1 / 3 / 2" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -167,7 +165,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "2 / 2 / 3 / 3" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -178,7 +176,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "2 / 3 / 3 / 4" }}>
+      <div>
         <RawTag
           {...props}
           color={color}
@@ -196,6 +194,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   args: {
+    color: "info",
     label: "Label",
   },
   parameters: {

@@ -14,6 +14,10 @@ const Link = (props: LinkProps): JSX.Element => {
 
 export default {
   argTypes: {
+    sdsSize: {
+      control: { type: "select" },
+      options: ["s", "xs"],
+    },
     sdsStyle: {
       control: { type: "select" },
       options: ["default", "dashed"],
@@ -30,6 +34,7 @@ export default {
 
 export const Default = {
   args: {
+    sdsSize: "s",
     sdsStyle: "default",
   },
 };
@@ -72,6 +77,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ["sdsSize", "sdsStyle"],
+    },
     snapshot: {
       skip: true,
     },
@@ -81,20 +89,20 @@ export const LivePreview = {
 
 // Screenshot test
 const ScreenshotTestDemo = (): JSX.Element => {
+  const SDS_SIZES = ["xs", "s"];
   const SDS_STYLES = ["default", "dashed"];
   const PSEUDO_STATES = ["default", "hover", "active", "focus"];
 
-  // loop through all SDS_STYLES
+  // loop through all SDS_SIZES
   return (
     <>
-      {SDS_STYLES.map((sdsStyle) => {
-        return <LinkStyle sdsStyle={sdsStyle} key={sdsStyle} />;
+      {SDS_SIZES.map((sdsSize) => {
+        return <LinkSize sdsSize={sdsSize} key={sdsSize} />;
       })}
     </>
   );
 
-  // loop through all PSEUDO_STATES + create headers for SDS_STYLES, PSEUDO_STATES
-  function LinkStyle({ sdsStyle }: { sdsStyle: (typeof SDS_STYLES)[number] }) {
+  function LinkSize({ sdsSize }: { sdsSize: (typeof SDS_SIZES)[number] }) {
     const STYLE_LEVEL: React.CSSProperties = {
       columnGap: "20px",
       display: "inline-grid",
@@ -102,9 +110,45 @@ const ScreenshotTestDemo = (): JSX.Element => {
       marginRight: 50,
     };
     const STYLE_LABEL: React.CSSProperties = {
+      borderStyle: "none none solid none",
+      borderWidth: 2,
       fontSize: "2em",
       gridColumn: "1 / 5",
-      marginBottom: 10,
+      marginBottom: 0,
+      paddingBottom: "16px",
+    };
+    return (
+      <div style={STYLE_LEVEL}>
+        <p style={STYLE_LABEL}>
+          Size: <b>{sdsSize}</b>
+        </p>
+        {SDS_STYLES.map((sdsStyle) => {
+          return (
+            <LinkStyle sdsStyle={sdsStyle} sdsSize={sdsSize} key={sdsStyle} />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all PSEUDO_STATES + create headers for SDS_STYLES, PSEUDO_STATES
+  function LinkStyle({
+    sdsStyle,
+    sdsSize,
+  }: {
+    sdsStyle: (typeof SDS_STYLES)[number];
+    sdsSize: (typeof SDS_SIZES)[number];
+  }) {
+    const STYLE_LEVEL: React.CSSProperties = {
+      columnGap: "20px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginRight: 50,
+    };
+    const STYLE_LABEL: React.CSSProperties = {
+      fontSize: "1.17em",
+      gridColumn: "1 / 5",
+      margin: "20px 0",
     };
     const PSEUDO_STATE_LABEL: React.CSSProperties = {
       fontSize: "0.67em",
@@ -124,6 +168,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
               <RawLink
                 href="/"
                 sdsStyle={sdsStyle}
+                sdsSize={sdsSize}
                 className={`pseudo-${state}`}
                 key={state}
               >
@@ -140,7 +185,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: ["sdsStyle"],
+      exclude: ["sdsSize", "sdsStyle"],
     },
     snapshot: {
       skip: true,

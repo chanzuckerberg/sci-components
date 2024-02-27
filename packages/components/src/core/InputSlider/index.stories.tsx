@@ -120,7 +120,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <div style={{ gridArea: "1/1/2/2" }}>
+      <div>
         <RawInputSlider
           step={5}
           valueLabelDisplay="on"
@@ -131,7 +131,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         />
       </div>
 
-      <div style={{ gridArea: "1/2/2/3" }}>
+      <div>
         <RawInputSlider
           step={5}
           valueLabelDisplay="on"

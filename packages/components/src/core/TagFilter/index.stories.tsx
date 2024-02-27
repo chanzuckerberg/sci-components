@@ -29,7 +29,7 @@ const TagFilter = (props: Args): JSX.Element => {
 
   return (
     <div style={PreviewStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
+      <div>
         <StyledButton
           disabled={visible}
           onClick={handleShowChip}
@@ -42,7 +42,7 @@ const TagFilter = (props: Args): JSX.Element => {
         </StyledButton>
       </div>
 
-      <div style={{ gridArea: "2 / 1 / 2 / 2" }}>
+      <div>
         {visible && (
           <RawTagFilter label={label} onDelete={handleDismissChip} {...props} />
         )}

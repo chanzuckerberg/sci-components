@@ -271,7 +271,7 @@ const LivePreviewDemo = <
 
   return (
     <div style={storyRow as React.CSSProperties}>
-      <div style={{ alignSelf: "end", gridArea: "1/1/2/2" }}>
+      <div style={{ alignSelf: "end" }}>
         <StyledInputDropdownLive1
           aria-describedby="live1"
           onClick={handleClick1}
@@ -302,7 +302,7 @@ const LivePreviewDemo = <
         ) : null}
       </div>
 
-      <div style={{ gridArea: "1/2/2/3" }}>
+      <div>
         <ButtonIcon
           aria-describedby="live2"
           aria-label="Open menu"
@@ -334,7 +334,7 @@ const LivePreviewDemo = <
         ) : null}
       </div>
 
-      <div style={{ gridArea: "1/3/2/4" }}>
+      <div>
         <StyledInputDropdownLive3
           aria-describedby="live3"
           onClick={handleClick3}
@@ -365,7 +365,7 @@ const LivePreviewDemo = <
         ) : null}
       </div>
 
-      <div style={{ gridArea: "1/4/2/5" }}>
+      <div>
         <StyledInputDropdownLive3
           aria-describedby="live4"
           onClick={handleClick4}

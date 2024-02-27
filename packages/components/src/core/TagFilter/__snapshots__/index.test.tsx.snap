@@ -4,9 +4,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
 <div
   style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
 >
-  <div
-    style="grid-area: 1 / 1 / 1 / 2;"
-  >
+  <div>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-fznnno-MuiButtonBase-root-MuiButton-root"
       disabled=""
@@ -16,9 +14,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       Delete the tag by clicking on its icon
     </button>
   </div>
-  <div
-    style="grid-area: 2 / 1 / 2 / 2;"
-  >
+  <div>
     <div
       class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-p4eyde-MuiButtonBase-root-MuiChip-root"
       role="button"

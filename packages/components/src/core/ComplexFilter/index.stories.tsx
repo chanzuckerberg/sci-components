@@ -86,7 +86,7 @@ const livePreviewStyles = {
 const LivePreviewDemo = (): JSX.Element => {
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1/1/2/2" }}>
+      <div>
         <RawComplexFilter
           DropdownMenuProps={{
             PopperBaseProps: {
@@ -100,7 +100,7 @@ const LivePreviewDemo = (): JSX.Element => {
           options={LIVE_PREVIEW_OPTIONS}
         />
       </div>
-      <div style={{ gridArea: "1/2/2/3" }}>
+      <div>
         <RawComplexFilter
           DropdownMenuProps={{
             PopperBaseProps: {

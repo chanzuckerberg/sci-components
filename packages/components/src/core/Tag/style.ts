@@ -145,44 +145,65 @@ const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
 };
 
 function generatePrimaryTagColors(
-  intent: Extract<SdsTagColorType, string>,
+  intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
   semanticColors: SemanticComponentColors | null
 ) {
-  return {
-    background: colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
-    backgroundClicked:
-      colors.length >= 2
-        ? darken(colors[1], 0.3)
-        : semanticColors?.[intent].fillPressed,
-    backgroundHover:
-      colors.length >= 2
-        ? darken(colors[1], 0.15)
-        : semanticColors?.[intent].fillHover,
-    iconColor: colors.length > 2 ? colors[2] : "white",
-    label: colors.length ? colors[0] : "white",
-  };
+  if (intent) {
+    return {
+      background:
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
+      backgroundClicked:
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : semanticColors?.[intent].fillPressed,
+      backgroundHover:
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : semanticColors?.[intent].fillHover,
+      iconColor: colors.length > 2 ? colors[2] : "white",
+      label: colors.length ? colors[0] : "white",
+    };
+  } else {
+    return {
+      background: semanticColors?.neutral.fill,
+      backgroundClicked: semanticColors?.neutral.fillPressed,
+      backgroundHover: semanticColors?.neutral.fillHover,
+      iconColor: "white",
+      label: "white",
+    };
+  }
 }
 
 function generateSecondaryTagColors(
-  intent: Extract<SdsTagColorType, string>,
+  intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
   semanticColors: SemanticComponentColors | null
 ) {
-  return {
-    background:
-      colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
-    backgroundClicked:
-      colors.length >= 2
-        ? darken(colors[1], 0.3)
-        : semanticColors?.[intent].fillPressed,
-    backgroundHover:
-      colors.length >= 2
-        ? darken(colors[1], 0.15)
-        : semanticColors?.[intent].fillHover,
-    iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
-    label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
-  };
+  if (intent) {
+    return {
+      background:
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
+      backgroundClicked:
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : semanticColors?.[intent].fillPressed,
+      backgroundHover:
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : semanticColors?.[intent].fillHover,
+      iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
+      label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
+    };
+  } else {
+    return {
+      background: semanticColors?.neutral.surface,
+      backgroundClicked: semanticColors?.neutral.fillPressed,
+      backgroundHover: semanticColors?.neutral.fillHover,
+      iconColor: semanticColors?.neutral.icon,
+      label: semanticColors?.neutral.fillPressed,
+    };
+  }
 }
 
 function createTypeCss(
@@ -192,7 +213,7 @@ function createTypeCss(
   const semanticColors = getSemanticComponentColors(props);
   const semanticTextColors = getSemanticTextColors(props);
 
-  const intent = typeof props.tagColor === "string" ? props.tagColor : "info";
+  const intent = typeof props.tagColor === "string" ? props.tagColor : null;
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
   const typeToColors = {
