@@ -2,15 +2,21 @@ import { CheckboxProps as MUICheckboxProps, SvgIcon } from "@mui/material";
 import { ReactComponent as IconCheckboxChecked } from "../../common/svgs/IconCheckboxChecked.svg";
 import { ReactComponent as IconCheckboxIndeterminate } from "../../common/svgs/IconCheckboxIndeterminate.svg";
 import { ReactComponent as IconCheckboxUnchecked } from "../../common/svgs/IconCheckboxUnchecked.svg";
-import { CheckboxExtraProps, StyledCheckbox } from "./styles";
-import FormControlLabel from "./components/FormControlLabel";
+import {
+  CheckboxExtraProps,
+  StyledCheckbox,
+  StyledCheckboxCaption,
+  StyledCheckboxLabel,
+  StyledFormControlLabel,
+  StyledLabelContainer,
+} from "./styles";
 
 interface CheckboxContentProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
   caption?: string;
   checkboxProps?: Partial<MUICheckboxProps>;
   intent?: "default" | "error" | "warning";
-  label?: string;
+  label?: React.ReactNode;
   stage?: "checked" | "unchecked" | "indeterminate";
 }
 
@@ -59,8 +65,21 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
       newProps = rest;
   }
 
+  const finalLabel = caption ? (
+    <StyledLabelContainer>
+      <StyledCheckboxLabel>{label}</StyledCheckboxLabel>
+      <StyledCheckboxCaption disabled={disabled}>
+        {caption}
+      </StyledCheckboxCaption>
+    </StyledLabelContainer>
+  ) : (
+    <StyledLabelContainer>
+      <StyledCheckboxLabel>{label}</StyledCheckboxLabel>
+    </StyledLabelContainer>
+  );
+
   return (
-    <FormControlLabel
+    <StyledFormControlLabel
       control={
         <StyledCheckbox
           disabled={disabled}
@@ -91,8 +110,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
         />
       }
       disabled={disabled}
-      label={label}
-      caption={caption}
+      label={finalLabel}
       value={value}
     />
   );

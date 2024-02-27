@@ -1,14 +1,21 @@
 import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
 import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
 import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";
-import { RadioExtraProps, StyledRadioButton } from "./style";
-import FormControlLabel from "./components/FormControlLabel";
+import {
+  RadioExtraProps,
+  StyledFormControlLabel,
+  StyledLabelContainer,
+  StyledRadioButton,
+  StyledRadioCaption,
+  StyledRadioLabel,
+} from "./style";
+import React from "react";
 
 export interface RadioContentProps
   extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
   caption?: string;
   intent?: "default" | "error" | "warning";
-  label?: string;
+  label?: React.ReactNode;
   radioProps?: Partial<MUIRadioProps>;
   stage?: "checked" | "unchecked";
   value?: string;
@@ -50,8 +57,19 @@ const InputRadio = (props: RadioProps): JSX.Element => {
       newProps = props;
   }
 
+  const finalLabel = caption ? (
+    <StyledLabelContainer>
+      <StyledRadioLabel>{label}</StyledRadioLabel>
+      <StyledRadioCaption disabled={disabled}>{caption}</StyledRadioCaption>
+    </StyledLabelContainer>
+  ) : (
+    <StyledLabelContainer>
+      <StyledRadioLabel>{label}</StyledRadioLabel>
+    </StyledLabelContainer>
+  );
+
   return (
-    <FormControlLabel
+    <StyledFormControlLabel
       control={
         <StyledRadioButton
           disabled={disabled}
@@ -75,8 +93,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
         />
       }
       disabled={disabled}
-      label={label}
-      caption={caption}
+      label={finalLabel}
       value={value}
     />
   );

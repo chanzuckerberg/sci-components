@@ -133,6 +133,7 @@ const MenuItem = forwardRef(function MenuItem<
         return (
           <StyledMenuItemIcon disabled={disabled}>
             <Icon
+              color="blue"
               {...sdsIconProps}
               sdsType="static"
               sdsIcon={icon}

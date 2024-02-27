@@ -1,10 +1,10 @@
-import { RadioGroup } from "@mui/material";
+import { FormControl, FormLabel, RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import RawInputRadio from "./index";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const InputRadio = (props: Args): JSX.Element => {
-  const { caption, label } = props;
+  const { caption, label, ...rest } = props;
 
   return (
     <RadioGroup
@@ -12,7 +12,7 @@ const InputRadio = (props: Args): JSX.Element => {
       defaultValue="demo"
       name="radio-buttons-group"
     >
-      <RawInputRadio caption={caption} label={label} value="demo" {...props} />
+      <RawInputRadio caption={caption} label={label} value="demo" {...rest} />
     </RadioGroup>
   );
 };
@@ -41,9 +41,9 @@ export default {
   },
   component: InputRadio,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.BETA],
   },
-  title: "Components/Inputs/InputRadio",
+  title: "Components/Inputs/InputRadio [beta]",
 } as Meta;
 
 // Default
@@ -59,7 +59,102 @@ export const Default = {
 
 // Live Preview
 
-const LivePreviewDemo = (props: Args): JSX.Element => {
+const livePreviewStyles = {
+  display: "grid",
+  gridColumnGap: "24px",
+  gridRowGap: "50px",
+  gridTemplateColumns: "repeat(3, 180px)",
+};
+
+const CustomFormLabel = (props: Args): JSX.Element => {
+  const { children } = props;
+
+  return <FormLabel sx={{ mb: "12px" }}>{children}</FormLabel>;
+};
+
+const LivePreviewTemplate = (): JSX.Element => {
+  return (
+    <div style={livePreviewStyles as React.CSSProperties}>
+      <FormControl>
+        <CustomFormLabel>No Labels or Captions</CustomFormLabel>
+        <RadioGroup
+          aria-labelledby="demo-input-radio-group-no-labels"
+          name="input-radio-group-no-labels"
+          defaultValue={1}
+        >
+          <RawInputRadio value="1" />
+          <RawInputRadio value="2" intent="warning" />
+          <RawInputRadio value="3" intent="error" />
+          <RawInputRadio value="4" disabled />
+        </RadioGroup>
+      </FormControl>
+
+      <FormControl>
+        <CustomFormLabel>With Labels</CustomFormLabel>
+        <RadioGroup
+          title="With Labels/Captions"
+          aria-labelledby="demo-input-radio-group-labels"
+          defaultValue="demo1"
+          name="input-radio-group"
+        >
+          <RawInputRadio label="Default" value="1" />
+          <RawInputRadio label="Warning" value="2" intent="warning" />
+          <RawInputRadio label="Error" value="3" intent="error" />
+          <RawInputRadio label="Disabled" value="4" disabled />
+        </RadioGroup>
+      </FormControl>
+
+      <FormControl>
+        <CustomFormLabel>With Labels and Captions</CustomFormLabel>
+        <RadioGroup
+          title="With Labels/Captions"
+          aria-labelledby="demo-input-radio-group-labels-captions"
+          defaultValue="demo1"
+          name="input-radio-group"
+        >
+          <RawInputRadio label="Default" caption="Caption I" value="1" />
+          <RawInputRadio
+            label="Warning"
+            caption="Caption II"
+            value="2"
+            intent="warning"
+          />
+          <RawInputRadio
+            label="Error"
+            caption="Caption II"
+            value="3"
+            intent="error"
+          />
+          <RawInputRadio
+            disabled
+            label="Disabled"
+            caption="Caption IV"
+            value="4"
+          />
+        </RadioGroup>
+      </FormControl>
+    </div>
+  );
+};
+
+export const LivePreview = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    controls: {
+      exclude: ["label", "caption", "disabled", "intent", "stage"],
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <LivePreviewTemplate {...args} />,
+};
+
+// Test
+
+const TestTemplate = (props: Args): JSX.Element => {
   const { label } = props;
 
   return (
@@ -69,9 +164,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
         defaultValue="demo1"
         name="input-radio-group"
         data-testid="radioButtonGroup"
-        sx={{
-          gap: "10px",
-        }}
       >
         <RawInputRadio data-testid="inputRadio" label={label} value="demo1" />
         <RawInputRadio
@@ -91,23 +183,6 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
   );
 };
 
-export const LivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: ["label", "caption", "disabled", "intent", "stage"],
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
-};
-
-// Test
-
 export const Test = {
   args: {
     label: "Test Label",
@@ -120,5 +195,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
+  render: (args: Args) => <TestTemplate {...args} />,
 };

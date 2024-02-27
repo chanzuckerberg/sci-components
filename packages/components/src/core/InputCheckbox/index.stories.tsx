@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { FormControl, FormGroup, FormLabel } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
 import RawInputCheckbox from "./index";
@@ -46,9 +46,9 @@ export default {
   },
   component: InputCheckbox,
   parameters: {
-    badges: [BADGE.STABLE],
+    badges: [BADGE.BETA],
   },
-  title: "Components/Inputs/InputCheckbox",
+  title: "Components/Inputs/InputCheckbox [beta]",
 } as Meta;
 
 // Default
@@ -92,67 +92,109 @@ const IndeterminateDemo = (): JSX.Element => {
   };
 
   const children = (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        margin: "10px 0 0 10px",
-      }}
-    >
-      <RawInputCheckbox
-        label="Child 1"
-        checkboxProps={{
-          checked: checked[0],
-          onChange: handleChange2,
-        }}
-      />
-      <RawInputCheckbox
-        label="Child 2"
-        caption="Caption"
-        checkboxProps={{
-          checked: checked[1],
-          onChange: handleChange3,
-        }}
-      />
-    </Box>
+    <FormControl sx={{ ml: 5 }}>
+      <FormGroup aria-labelledby="indeterminate-checkboxes-children">
+        <RawInputCheckbox
+          label="Child 1"
+          checkboxProps={{
+            checked: checked[0],
+            onChange: handleChange2,
+          }}
+        />
+        <RawInputCheckbox
+          label="Child 2"
+          caption="Caption"
+          checkboxProps={{
+            checked: checked[1],
+            onChange: handleChange3,
+          }}
+        />
+      </FormGroup>
+    </FormControl>
   );
 
   return (
-    <div>
-      <RawInputCheckbox
-        label="Parent"
-        checkboxProps={{
-          checked: checked[0] && checked[1],
-          indeterminate: checked[0] !== checked[1],
-          onChange: handleChange1,
-        }}
-      />
-      {children}
-    </div>
+    <FormControl>
+      <CustomFormLabel>Indeterminate Checkboxes</CustomFormLabel>
+      <FormGroup aria-labelledby="indeterminate-checkboxes">
+        <RawInputCheckbox
+          label="Parent"
+          checkboxProps={{
+            checked: checked[0] && checked[1],
+            indeterminate: checked[0] !== checked[1],
+            onChange: handleChange1,
+          }}
+        />
+        {children}
+      </FormGroup>
+    </FormControl>
   );
 };
 
 // Live Preview
 
+const CustomFormLabel = (props: Args): JSX.Element => {
+  const { children } = props;
+
+  return <FormLabel sx={{ mb: "12px" }}>{children}</FormLabel>;
+};
+
 const LivePreviewDemo = (): JSX.Element => {
   const livePreviewStyles = {
     display: "grid",
     gridColumnGap: "24px",
-    gridRowGap: "0px",
-    gridTemplateColumns: "repeat(3, 80px)",
-    gridTemplateRows: "1fr",
+    gridRowGap: "50px",
+    gridTemplateColumns: "repeat(4, 180px)",
   };
 
   return (
     <div style={livePreviewStyles as React.CSSProperties}>
-      <div style={{ gridArea: "1 / 1 / 1 / 2" }}>
-        <CheckboxLabelDemo label="Label" disabled={false} />
-      </div>
-      <div style={{ gridArea: "1 / 2 / 1 / 2" }}>
-        <InputCheckbox disabled label="Label" />
-      </div>
-      <div style={{ gridArea: "1 / 3 / 1 / 3" }}>
+      <FormControl>
+        <CustomFormLabel>No Labels or Captions</CustomFormLabel>
+        <FormGroup aria-labelledby="checkbox-group-no-labels">
+          <RawInputCheckbox value="1" />
+          <RawInputCheckbox value="2" intent="warning" />
+          <RawInputCheckbox value="3" intent="error" />
+          <RawInputCheckbox value="4" disabled />
+        </FormGroup>
+      </FormControl>
+
+      <FormControl>
+        <CustomFormLabel>With Labels</CustomFormLabel>
+        <FormGroup aria-labelledby="checkbox-group-with-labels">
+          <RawInputCheckbox label="Default" value="1" />
+          <RawInputCheckbox label="Warning" value="2" intent="warning" />
+          <RawInputCheckbox label="Error" value="3" intent="error" />
+          <RawInputCheckbox label="Disabled" value="4" disabled />
+        </FormGroup>
+      </FormControl>
+
+      <FormControl>
+        <CustomFormLabel>With Labels and Captions</CustomFormLabel>
+        <FormGroup aria-labelledby="checkbox-group-with-labels-and-captions">
+          <RawInputCheckbox label="Default" caption="Caption I" value="1" />
+          <RawInputCheckbox
+            label="Warning"
+            caption="Caption II"
+            value="2"
+            intent="warning"
+          />
+          <RawInputCheckbox
+            label="Error"
+            caption="Caption II"
+            value="3"
+            intent="error"
+          />
+          <RawInputCheckbox
+            disabled
+            label="Disabled"
+            caption="Caption IV"
+            value="4"
+          />
+        </FormGroup>
+      </FormControl>
+
+      <div>
         <IndeterminateDemo />
       </div>
     </div>

@@ -1,16 +1,16 @@
-import { FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Button from "../Button";
 import CalloutTitle from "./components/CalloutTitle";
 import RawCallout from "./index";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import InputToggle from "../InputToggle";
 
 const iconOptions = [
-  <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
+  <CustomSvgIcon key="customSdsIcon" />,
   <CustomSdsIcon key="customSvgIcon" />,
   "book",
   "checkCircle",
@@ -19,7 +19,7 @@ const iconOptions = [
 const onCloseOptions = [action("onClick"), undefined];
 
 const Callout = (props: Args): JSX.Element => {
-  const { intent, onClose, calloutTitle, autoDismiss } = props;
+  const { intent, onClose, calloutTitle, autoDismiss, ...rest } = props;
 
   const [dismissed, setDismissed] = React.useState(false);
 
@@ -27,27 +27,32 @@ const Callout = (props: Args): JSX.Element => {
     setDismissed((prev) => !prev);
   };
 
+  const finalOnclose = !onClose ? undefined : () => setDismissed(true);
+
   return (
     <>
       {!autoDismiss && (
         <FormControlLabel
-          control={<Switch checked={dismissed} onChange={handleChange} />}
-          label="Hide"
+          control={<InputToggle checked={dismissed} onChange={handleChange} />}
+          label="Hide Callout"
+          sx={{
+            "& .MuiSwitch-root": {
+              mr: "12px",
+            },
+            margin: "0 0 16px 0",
+          }}
         />
       )}
       <RawCallout
         autoDismiss={autoDismiss}
         intent={intent}
         dismissed={dismissed}
-        onClose={onClose}
-        {...props}
+        onClose={finalOnclose}
+        {...rest}
       >
         {calloutTitle && <CalloutTitle>{calloutTitle}</CalloutTitle>}
-        This is a callout!
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit ...
       </RawCallout>
-      <Button onClick={handleChange} sdsType="primary" sdsStyle="rounded">
-        Reset Callout
-      </Button>
     </>
   );
 };
@@ -101,8 +106,7 @@ export default {
 export const Default = {
   args: {
     autoDismiss: false,
-    calloutTitle: "this is a title",
-    intent: "positive",
+    calloutTitle: "Callout title.",
     onClose: false,
   },
 };

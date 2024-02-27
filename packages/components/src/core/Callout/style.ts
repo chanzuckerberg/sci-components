@@ -25,7 +25,7 @@ export const StyledCallout = styled(Alert, {
 })`
   ${fontBodyXs}
   ${(props: CalloutProps) => {
-    const { intent = "positive" } = props;
+    const { intent = "info" } = props;
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
@@ -62,7 +62,7 @@ export const StyledCallout = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: ${spaces?.xxxs}px 0 0 0;
+        padding: 0;
         margin-right: ${spaces?.m}px;
 
         .MuiAlertTitle-root{

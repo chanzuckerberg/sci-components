@@ -1,16 +1,22 @@
-import { Checkbox as RawCheckbox, checkboxClasses } from "@mui/material";
+import {
+  FormControlLabel,
+  Checkbox as RawCheckbox,
+  checkboxClasses,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getIconSizes,
   getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
 } from "../styles/common/selectors/theme";
-import { SemanticComponentColors } from "../styles";
+import { SemanticComponentColors, fontBodyXs, fontBodyXxs } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
+  disabled?: boolean;
 }
 
 export const StyledCheckbox = styled(RawCheckbox)`
@@ -66,6 +72,51 @@ export const StyledCheckbox = styled(RawCheckbox)`
         height: ${iconSizes?.s.height}px;
         width: ${iconSizes?.s.width}px;
       }
+    `;
+  }}
+`;
+
+export const StyledFormControlLabel = styled(FormControlLabel)`
+  ${(props) => {
+    const spaces = getSpaces(props);
+
+    return `
+      align-items: start;
+      margin-bottom: ${spaces?.l}px;
+      margin-left: 0;
+      margin-right: 0;
+      width: fit-content;
+    `;
+  }}
+`;
+
+export const StyledLabelContainer = styled("span")`
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+`;
+
+export const StyledCheckboxLabel = styled("span")`
+  ${fontBodyXs}
+
+  ${(props: CheckboxExtraProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      margin-top: -${spaces?.xxxs}px !important;
+    `;
+  }}
+`;
+
+export const StyledCheckboxCaption = styled("span")`
+  ${fontBodyXxs}
+
+  ${(props: CheckboxExtraProps) => {
+    const { disabled } = props;
+    const semanticTextColors = getSemanticTextColors(props);
+
+    return `
+      color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.secondary};
     `;
   }}
 `;

@@ -1,4 +1,4 @@
-import { FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel } from "@mui/material";
 import { action } from "@storybook/addon-actions";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
@@ -6,9 +6,10 @@ import RawNotification, { NotificationProps } from "./index";
 import CustomSvgIcon from "src/common/customSvgIcon";
 import CustomSdsIcon from "src/common/customSdsIcon";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import InputToggle from "../InputToggle";
 
 const iconOptions = [
-  <CustomSvgIcon key="customSdsIcon" sx={{ height: 22, width: 22 }} />,
+  <CustomSvgIcon key="customSdsIcon" />,
   <CustomSdsIcon key="customSvgIcon" />,
   "book",
   "checkCircle",
@@ -35,12 +36,16 @@ const Notification = (props: Args): JSX.Element => {
 
   return (
     <>
-      {!autoDismiss && (
-        <FormControlLabel
-          control={<Switch checked={dismissed} onChange={handleChange} />}
-          label="Hide"
-        />
-      )}
+      <FormControlLabel
+        control={<InputToggle checked={dismissed} onChange={handleChange} />}
+        label="Hide Notification"
+        sx={{
+          "& .MuiSwitch-root": {
+            mr: "12px",
+          },
+          margin: "0 0 16px 0",
+        }}
+      />
       <RawNotification
         autoDismiss={autoDismiss}
         dismissed={dismissed}

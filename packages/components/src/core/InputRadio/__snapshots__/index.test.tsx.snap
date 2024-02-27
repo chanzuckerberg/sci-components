@@ -7,48 +7,51 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="css-oh0h48"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
   >
-    <label
-      caption="Caption"
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1huceqw-MuiFormControlLabel-root"
-    >
-      <span
-        caption="Caption"
-        class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1f6sxpj-MuiButtonBase-root-MuiRadio-root"
-        intent="default"
-        label="Label"
-      >
-        <input
-          checked=""
-          class="PrivateSwitchBase-input css-1m9pwf3"
-          name="radio-buttons-group"
-          type="radio"
-          value="demo"
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-          data-file-name="IconRadioChecked"
-          data-testid="IconRadioChecked"
-          fillcontrast="white"
-          focusable="false"
-          viewBox="0 0 16 16"
-        />
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </span>
-      <span
-        class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
-      >
-        Label
-      </span>
-    </label>
     <span
-      class="css-1g1knab"
+      caption="Caption"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-4m8g7g-MuiButtonBase-root-MuiRadio-root"
+      intent="default"
+      label="Label"
     >
-      Caption
+      <input
+        checked=""
+        class="PrivateSwitchBase-input css-1m9pwf3"
+        name="radio-buttons-group"
+        type="radio"
+        value="demo"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-file-name="IconRadioChecked"
+        data-testid="IconRadioChecked"
+        fillcontrast="white"
+        focusable="false"
+        viewBox="0 0 16 16"
+      />
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </span>
+    <span
+      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+    >
+      <span
+        class="css-1ddu512"
+      >
+        <span
+          class="css-1dr5e88"
+        >
+          Label
+        </span>
+        <span
+          class="css-1mg4zid"
+        >
+          Caption
+        </span>
+      </span>
     </span>
   </label>
 </div>

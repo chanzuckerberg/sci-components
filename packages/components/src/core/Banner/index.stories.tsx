@@ -11,7 +11,7 @@ const iconOptions = [
   "checkCircle",
   "infoCircle",
   <CustomSdsIcon key="customSdsIcon" sdsSize="l" />,
-  <CustomSvgIcon key="customSvgIcon" sx={{ height: 22, width: 22 }} />,
+  <CustomSvgIcon key="customSvgIcon" />,
 ];
 
 const Banner = (props: Args): JSX.Element => {
