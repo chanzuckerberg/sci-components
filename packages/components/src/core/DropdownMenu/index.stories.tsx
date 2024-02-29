@@ -310,7 +310,7 @@ const LivePreviewDemo = <
           on={false}
           sdsSize="large"
           sdsType="secondary"
-          icon="infoSpeechBubble"
+          icon="InfoSpeechBubble"
         />
 
         {anchorEl2 ? (

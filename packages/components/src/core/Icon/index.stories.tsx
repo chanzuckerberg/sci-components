@@ -252,7 +252,7 @@ const IconItem = (props: IconItemProps) => {
             <RawIcon
               color={color}
               sdsSize="xs"
-              sdsIcon="check"
+              sdsIcon="Check"
               sdsType="static"
             />
           </span>
@@ -305,7 +305,7 @@ const IconBankDemo = (props: Args): JSX.Element => {
         <Callout
           intent="notice"
           icon={
-            <RawIcon sdsSize="l" sdsIcon="infoSpeechBubble" sdsType="static" />
+            <RawIcon sdsSize="l" sdsIcon="InfoSpeechBubble" sdsType="static" />
           }
         >
           Sorry, there are no matches for your search!
@@ -340,7 +340,7 @@ export const Test = {
   },
   render: (args: Args) => (
     <RawIcon
-      sdsIcon="checkCircle"
+      sdsIcon="CheckCircle"
       sdsSize="l"
       sdsType="static"
       color="blue"

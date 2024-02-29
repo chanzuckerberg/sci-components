@@ -29,10 +29,10 @@ const CellBasic = (props: Args): JSX.Element => {
 
 const availableIconOptions = [
   undefined,
-  <Icon sdsSize="xs" sdsIcon="download" key="download" sdsType="static" />,
-  <Icon sdsSize="s" sdsIcon="lightBulb" key="lightBulb" sdsType="static" />,
-  <Icon sdsSize="l" sdsIcon="bacteria" key="bacteria" sdsType="static" />,
-  <Icon sdsSize="xl" sdsIcon="flask" key="flask" sdsType="static" />,
+  <Icon sdsSize="xs" sdsIcon="Download" key="download" sdsType="static" />,
+  <Icon sdsSize="s" sdsIcon="LightBulb" key="lightBulb" sdsType="static" />,
+  <Icon sdsSize="l" sdsIcon="Bacteria" key="bacteria" sdsType="static" />,
+  <Icon sdsSize="xl" sdsIcon="Flask" key="flask" sdsType="static" />,
 ];
 
 export default {
@@ -160,7 +160,7 @@ const TestDemo = (): JSX.Element => (
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           tertiaryText="Tertiary Text"
-          icon={<Icon sdsSize="l" sdsIcon="bacteria" sdsType="static" />}
+          icon={<Icon sdsSize="l" sdsIcon="Bacteria" sdsType="static" />}
           style={TableCellStyle as React.CSSProperties}
         />
       </tr>

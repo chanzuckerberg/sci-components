@@ -6,14 +6,14 @@ import Icon, { IconProps } from "../core/Icon";
  * allowing easy customization.
  */
 function CustomSdsIcon(props: {
-  sdsIcon?: IconProps<"bacteria">["sdsIcon"];
-  sdsSize?: IconProps<"bacteria">["sdsSize"];
-  sdsType?: IconProps<"bacteria">["sdsType"];
-  color?: IconProps<"bacteria">["color"];
-  shade?: IconProps<"bacteria">["shade"];
+  sdsIcon?: IconProps<"Bacteria">["sdsIcon"];
+  sdsSize?: IconProps<"Bacteria">["sdsSize"];
+  sdsType?: IconProps<"Bacteria">["sdsType"];
+  color?: IconProps<"Bacteria">["color"];
+  shade?: IconProps<"Bacteria">["shade"];
 }) {
   const {
-    sdsIcon = "bacteria",
+    sdsIcon = "Bacteria",
     sdsSize = "l",
     sdsType = "static",
     color = "blue",

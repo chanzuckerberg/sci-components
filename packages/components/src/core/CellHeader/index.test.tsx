@@ -33,7 +33,7 @@ describe("<CellHeader />", () => {
     render(<Test />);
     const headerCellElement = screen.getByTestId("CellHeader");
     const sortIcon =
-      headerCellElement.getElementsByClassName("MuiButtonBase-root")[0];
+      headerCellElement.getElementsByClassName("MuiSvgIcon-root")[0];
     expect(sortIcon).toBeTruthy();
   });
 });

@@ -1,5 +1,4 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "../ButtonIcon";
 import {
   CommonThemeProps,
   fontHeaderS,
@@ -7,6 +6,7 @@ import {
   getSemanticTextColors,
   getSpaces,
 } from "../styles";
+import Icon from "../Icon";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
@@ -28,7 +28,7 @@ const doNotForwardProps = [
   "hideSortIcon",
 ];
 
-export const StyledSortingIcon = styled(ButtonIcon, {
+export const StyledSortingIcon = styled(Icon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellHeaderExtraProps) => {
@@ -39,7 +39,7 @@ export const StyledSortingIcon = styled(ButtonIcon, {
 
     return `
       margin-left: ${spaces?.s}px;
-      margin-bottom: ${spaces?.xxxs}px;
+      margin-bottom: ${spaces?.xxs}px;
       color: ${active ? semanticComponentColors?.accent?.icon : semanticComponentColors?.base?.icon};
       opacity: ${active ? 1 : 0};
       outline: none !important;

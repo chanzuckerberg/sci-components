@@ -6,7 +6,7 @@ const ButtonDropdownNameSpaceTest = (props: ButtonDropdownProps) => {
     <ButtonDropdown
       sdsType="primary"
       sdsStyle="rounded"
-      icon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+      icon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
       {...props}
     >
       Button Dropdown

@@ -1,39 +1,39 @@
-<svg width="22" height="22" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg">
-	<defs></defs>
-	<path style="opacity: 0.01;" d="M 12.812 17.935 C 12.812 18.399 12.435 18.77 11.971 18.77 C 11.507 18.77 11.132 18.399 11.132 17.935 C 11.132 17.472 11.507 17.094 11.971 17.094 C 12.435 17.094 12.812 17.472 12.812 17.935 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0" />
-	</path>
-	<path style="opacity: 0.01;" d="M 9.44 17.29 C 9.44 17.889 8.956 18.369 8.36 18.369 C 7.762 18.369 7.276 17.889 7.276 17.29 C 7.276 16.692 7.762 16.204 8.36 16.204 C 8.956 16.204 9.44 16.692 9.44 17.29 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.1" />
-	</path>
-	<path style="opacity: 0.01;" d="M 6.56 14.858 C 6.56 15.517 6.027 16.048 5.374 16.048 C 4.715 16.048 4.185 15.517 4.185 14.858 C 4.185 14.201 4.715 13.668 5.374 13.668 C 6.027 13.668 6.56 14.201 6.56 14.858 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.2" />
-	</path>
-	<path style="opacity: 0.01;" d="M 5.559 10.854 C 5.559 11.589 4.964 12.183 4.231 12.183 C 3.495 12.183 2.901 11.589 2.901 10.854 C 2.901 10.12 3.495 9.526 4.231 9.526 C 4.964 9.526 5.559 10.12 5.559 10.854 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.3" />
-	</path>
-	<path style="opacity: 0.01;" d="M 7.529 6.408 C 7.529 7.219 6.869 7.873 6.057 7.873 C 5.248 7.873 4.592 7.219 4.592 6.408 C 4.592 5.598 5.248 4.936 6.057 4.936 C 6.869 4.936 7.529 5.598 7.529 6.408 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.4" />
-	</path>
-	<path style="opacity: 0.01;" d="M 12.19 4.375 C 12.19 5.227 11.505 5.912 10.653 5.912 C 9.802 5.912 9.118 5.227 9.118 4.375 C 9.118 3.527 9.802 2.84 10.653 2.84 C 11.505 2.84 12.19 3.527 12.19 4.375 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.5" />
-	</path>
-	<path style="opacity: 0.01;" d="M 17.357 6.308 C 17.357 7.191 16.641 7.914 15.749 7.914 C 14.865 7.914 14.142 7.191 14.142 6.308 C 14.142 5.415 14.865 4.7 15.749 4.7 C 16.641 4.7 17.357 5.415 17.357 6.308 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.6" />
-	</path>
-	<path style="opacity: 0.01;" d="M 19.467 11.05 C 19.467 11.975 18.713 12.729 17.788 12.729 C 16.861 12.729 16.112 11.975 16.112 11.05 C 16.112 10.123 16.861 9.374 17.788 9.374 C 18.713 9.374 19.467 10.123 19.467 11.05 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.7" />
-	</path>
-	<path style="opacity: 0.01;" d="M 17.371 15.878 C 17.371 16.879 16.558 17.693 15.551 17.693 C 14.55 17.693 13.736 16.879 13.736 15.878 C 13.736 14.874 14.55 14.062 15.551 14.062 C 16.558 14.062 17.371 14.874 17.371 15.878 Z">
-		<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 11 11" to="360 11 11" dur="2s" repeatCount="indefinite" />
-		<animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.8" />
-	</path>
+<svg width="24" height="24" viewBox="0 0 24 24" version="1.1">
+  <defs></defs>
+  <path style="opacity: 0.01;" d="M 13.867 20.178 C 13.867 20.71 13.436 21.136 12.904 21.136 C 12.372 21.136 11.94 20.71 11.94 20.178 C 11.94 19.647 12.372 19.213 12.904 19.213 C 13.436 19.213 13.867 19.647 13.867 20.178 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 10 19.438 C 10 20.125 9.446 20.675 8.762 20.675 C 8.075 20.675 7.518 20.125 7.518 19.438 C 7.518 18.752 8.075 18.193 8.762 18.193 C 9.446 18.193 10 18.752 10 19.438 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.1"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 6.697 16.648 C 6.697 17.404 6.086 18.013 5.336 18.013 C 4.582 18.013 3.974 17.404 3.974 16.648 C 3.974 15.895 4.582 15.284 5.336 15.284 C 6.086 15.284 6.697 15.895 6.697 16.648 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.2"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 5.548 12.057 C 5.548 12.899 4.867 13.581 4.025 13.581 C 3.181 13.581 2.5 12.899 2.5 12.057 C 2.5 11.214 3.181 10.534 4.025 10.534 C 4.867 10.534 5.548 11.214 5.548 12.057 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.3"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 7.808 6.957 C 7.808 7.887 7.052 8.638 6.121 8.638 C 5.192 8.638 4.439 7.887 4.439 6.957 C 4.439 6.03 5.192 5.27 6.121 5.27 C 7.052 5.27 7.808 6.03 7.808 6.957 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.4"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 13.154 4.626 C 13.154 5.603 12.368 6.388 11.391 6.388 C 10.415 6.388 9.63 5.603 9.63 4.626 C 9.63 3.652 10.415 2.865 11.391 2.865 C 12.368 2.865 13.154 3.652 13.154 4.626 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.5"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 19.08 6.842 C 19.08 7.856 18.258 8.684 17.236 8.684 C 16.222 8.684 15.393 7.856 15.393 6.842 C 15.393 5.818 16.222 4.998 17.236 4.998 C 18.258 4.998 19.08 5.818 19.08 6.842 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.6"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 21.5 12.282 C 21.5 13.342 20.637 14.207 19.575 14.207 C 18.511 14.207 17.654 13.342 17.654 12.282 C 17.654 11.218 18.511 10.359 19.575 10.359 C 20.637 10.359 21.5 11.218 21.5 12.282 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.7"></animate>
+  </path>
+  <path style="opacity: 0.01;" d="M 19.098 17.819 C 19.098 18.966 18.163 19.901 17.009 19.901 C 15.86 19.901 14.927 18.966 14.927 17.819 C 14.927 16.667 15.86 15.735 17.009 15.735 C 18.163 15.735 19.098 16.667 19.098 17.819 Z">
+    <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="2s" repeatCount="indefinite"></animateTransform>
+    <animate attributeName="opacity" dur="1.8s" values="1;1;1;1;0;0;0;0;0;" repeatCount="indefinite" begin="0.8"></animate>
+  </path>
 </svg>

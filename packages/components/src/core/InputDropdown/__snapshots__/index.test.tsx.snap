@@ -30,7 +30,9 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
             focusable="false"
-            viewBox="0 0 14 14"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
           />
         </div>
       </span>

@@ -17,30 +17,21 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           <span>
             Column 1
           </span>
-          <button
-            aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-xujl24-MuiButtonBase-root-MuiIconButton-root"
-            icon="chevronDown"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-1ft6wgl"
           >
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-file-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
             />
-          </button>
+          </div>
         </div>
       </th>
       <th
@@ -52,30 +43,21 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           <span>
             Column 2
           </span>
-          <button
-            aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-jmb6vl-MuiButtonBase-root-MuiIconButton-root"
-            icon="chevronDown"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-1ft6wgl"
           >
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-file-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
             />
-          </button>
+          </div>
         </div>
       </th>
       <th
@@ -87,30 +69,21 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           <span>
             Column 3
           </span>
-          <button
-            aria-label="Change sort direction from descending to ascending"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-jmb6vl-MuiButtonBase-root-MuiIconButton-root"
-            icon="chevronDown"
-            tabindex="0"
-            type="button"
+          <div
+            class="css-1ft6wgl"
           >
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-                data-file-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                viewBox="0 0 14 14"
-              />
-            </div>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
             />
-          </button>
+          </div>
         </div>
       </th>
     </tr>

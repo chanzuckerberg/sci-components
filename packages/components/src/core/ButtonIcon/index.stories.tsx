@@ -122,14 +122,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spaces?.xxs }}
-          icon="grid"
+          icon="Grid"
           sdsSize="large"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="grid"
           style={{ marginRight: spaces?.xxs }}
-          icon="grid"
+          icon="Grid"
           sdsSize="large"
           sdsType="primary"
         />
@@ -138,14 +138,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spaces?.m }}
-          icon="infoSpeechBubble"
+          icon="InfoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="infoSpeechBubble"
           style={{ marginRight: spaces?.m }}
-          icon="infoSpeechBubble"
+          icon="InfoSpeechBubble"
           sdsSize="large"
           sdsType="secondary"
         />
@@ -154,7 +154,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spaces?.m }}
-          icon="xMark"
+          icon="XMark"
           sdsSize="large"
           sdsType="tertiary"
         />
@@ -163,7 +163,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spaces?.m }}
-          icon="xMark"
+          icon="XMark"
           sdsSize="medium"
           sdsType="tertiary"
         />
@@ -172,14 +172,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spaces?.s }}
-          icon="barChartVertical3"
+          icon="BarChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
         <ButtonIcon
           aria-label="barChartVertical3"
           style={{ marginRight: spaces?.s }}
-          icon="barChartVertical3"
+          icon="BarChartVertical3"
           sdsSize="small"
           sdsType="primary"
         />
@@ -188,14 +188,14 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spaces?.s }}
-          icon="plusCircle"
+          icon="PlusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
         <ButtonIcon
           aria-label="plusCircle"
           style={{ marginRight: spaces?.s }}
-          icon="plusCircle"
+          icon="PlusCircle"
           sdsSize="small"
           sdsType="secondary"
         />
@@ -204,7 +204,7 @@ const LivePreviewDemo = (): JSX.Element => {
         <ButtonIcon
           aria-label="xMark"
           style={{ marginRight: spaces?.s }}
-          icon="xMark"
+          icon="XMark"
           sdsSize="small"
           sdsType="tertiary"
         />
@@ -478,7 +478,7 @@ export const Test = {
         aria-label="dotsHorizontal"
         data-testid="iconButton"
         on
-        icon="dotsHorizontal"
+        icon="DotsHorizontal"
         sdsSize="medium"
         sdsType="primary"
       />

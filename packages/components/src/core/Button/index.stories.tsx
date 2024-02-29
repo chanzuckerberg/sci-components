@@ -9,7 +9,7 @@ const SDS_STYLES = ["rounded", "square", "minimal"];
 const SDS_TYPES = ["primary", "secondary"];
 const ICON_OPTIONS = [
   undefined,
-  <Icon key="download" sdsSize="l" sdsIcon="download" sdsType="button" />,
+  <Icon key="download" sdsSize="l" sdsIcon="Download" sdsType="button" />,
 ];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus-visible"];
@@ -21,10 +21,10 @@ const actions = {
 
 const largeIconOptions = [
   undefined,
-  <Icon sdsIcon="download" sdsType="button" sdsSize="l" key="download" />,
-  <Icon sdsIcon="share" sdsType="button" sdsSize="l" key="share" />,
+  <Icon sdsIcon="Download" sdsType="button" sdsSize="l" key="download" />,
+  <Icon sdsIcon="Share" sdsType="button" sdsSize="l" key="share" />,
   <Icon
-    sdsIcon="speechBubbles"
+    sdsIcon="SpeechBubbles"
     sdsType="button"
     sdsSize="l"
     key="speechBubbles"
@@ -33,9 +33,9 @@ const largeIconOptions = [
 
 const smallIconOptions = [
   undefined,
-  <Icon sdsIcon="download" sdsType="button" sdsSize="s" key="downloadSmall" />,
-  <Icon sdsIcon="copy" sdsType="button" sdsSize="s" key="copy" />,
-  <Icon sdsIcon="lightBulb" sdsType="button" sdsSize="s" key="lightBulb" />,
+  <Icon sdsIcon="Download" sdsType="button" sdsSize="s" key="downloadSmall" />,
+  <Icon sdsIcon="Copy" sdsType="button" sdsSize="s" key="copy" />,
+  <Icon sdsIcon="LightBulb" sdsType="button" sdsSize="s" key="lightBulb" />,
 ];
 
 const largeIconLabels = ["No icon", "Download", "Share", "Speech Bubbles"];
@@ -175,7 +175,7 @@ const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <RawButton
           {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="xl" sdsType="button" />}
+          startIcon={<Icon sdsIcon="Download" sdsSize="xl" sdsType="button" />}
           sdsStyle="rounded"
           sdsType="primary"
         >
@@ -190,7 +190,7 @@ const RoundedLivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <RawButton
           {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          startIcon={<Icon sdsIcon="Download" sdsSize="s" sdsType="button" />}
           sdsStyle="rounded"
           sdsType="secondary"
         >
@@ -227,7 +227,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <RawButton
           {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          startIcon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
           sdsStyle="square"
           sdsType="primary"
         >
@@ -244,7 +244,7 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <RawButton
           {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          startIcon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
           sdsStyle="square"
           sdsType="secondary"
         >
@@ -289,7 +289,7 @@ const MinimalLivePreviewDemo = (props: Args): JSX.Element => {
       <div>
         <RawButton
           {...props}
-          startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}
+          startIcon={<Icon sdsIcon="Download" sdsSize="s" sdsType="button" />}
           sdsStyle="minimal"
           sdsType="primary"
         >

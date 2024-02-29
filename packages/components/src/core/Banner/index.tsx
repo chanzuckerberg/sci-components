@@ -60,7 +60,7 @@ const Banner = forwardRef(function Banner<
     } else {
       return (
         <Icon
-          sdsIcon={"infoCircle"}
+          sdsIcon="InfoCircle"
           sdsSize="l"
           sdsType="static"
           {...sdsIconProps}
@@ -82,7 +82,7 @@ const Banner = forwardRef(function Banner<
           sdsType="tertiary"
           sdsSize="small"
           onClick={handleClose}
-          icon={"xMark"}
+          icon="XMark"
         />
       )}
     </StyledBanner>

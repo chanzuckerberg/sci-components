@@ -6,7 +6,7 @@ import CustomSvgIcon from "./customSvgIcon";
 
 export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {
-    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" sdsType="static" />,
     name: "Column One",
     options: [
       {
@@ -35,7 +35,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
-    icon: <Icon sdsIcon="chevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" sdsType="static" />,
     name: "Column Two",
     options: [
       {

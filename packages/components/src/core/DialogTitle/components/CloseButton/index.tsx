@@ -32,7 +32,7 @@ const CloseButton = forwardRef(function CloseButton<
             sdsType="tertiary"
             sdsSize={size}
             {...props}
-            icon="xMark"
+            icon="XMark"
           />
         );
       }}

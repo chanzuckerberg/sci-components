@@ -83,14 +83,14 @@ const Notification = ({
     } else {
       switch (intent) {
         case "positive":
-          return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+          return <Icon sdsSize="l" sdsIcon="CheckCircle" sdsType="static" />;
         case "info":
-          return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+          return <Icon sdsSize="l" sdsIcon="InfoCircle" sdsType="static" />;
         default:
           return (
             <Icon
               sdsSize="l"
-              sdsIcon="exclamationMarkCircle"
+              sdsIcon="ExclamationMarkCircle"
               sdsType="static"
             />
           );
@@ -117,7 +117,7 @@ const Notification = ({
                   sdsSize="small"
                   sdsType="tertiary"
                   data-testid="notificationCloseButton"
-                  icon="xMark"
+                  icon="XMark"
                 />
               ) : null
             }

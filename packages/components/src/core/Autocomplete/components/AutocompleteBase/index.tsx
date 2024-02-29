@@ -223,7 +223,7 @@ const AutocompleteBase = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    icon="xMarkCircle"
+                    icon="XMarkCircle"
                   />
                 )}
               </StyledInputAdornment>
@@ -239,7 +239,7 @@ const AutocompleteBase = <
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
-                  icon="search"
+                  icon="Search"
                 />
               </StyledInputAdornment>
             ),

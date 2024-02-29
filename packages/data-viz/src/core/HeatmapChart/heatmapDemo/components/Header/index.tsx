@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <HeaderLeft>
-        <Icon sdsIcon="grid" sdsType="static" sdsSize="xl" color="gray" />
+        <Icon sdsIcon="Grid" sdsType="static" sdsSize="xl" color="gray" />
         <h3 style={{ marginLeft: 10 }}>
           Heatmap ({renderer === "svg" ? "SVG version" : "Canvas version"})
         </h3>
@@ -40,7 +40,7 @@ const Header = () => {
         <Button
           sdsType="primary"
           sdsStyle="rounded"
-          endIcon={<Icon sdsIcon="download" sdsSize="l" sdsType="button" />}
+          endIcon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
           onClick={() => saveAsImage("sds-heatmap")}
         >
           Download as {renderer === "svg" ? ".svg" : ".png"}
@@ -66,7 +66,7 @@ const Header = () => {
         >
           <StyledButtonIcon
             aria-label="Download Info"
-            icon="infoCircle"
+            icon="InfoCircle"
             sdsSize="large"
             sdsType="secondary"
           />

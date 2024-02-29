@@ -5,10 +5,10 @@ const SegmentedControlNameSpaceTest = (props: SegmentedControlProps) => {
   return (
     <SegmentedControl
       buttonDefinition={[
-        { icon: "list", tooltipText: "List A", value: "A" },
-        { icon: "list", tooltipText: "List B", value: "B" },
-        { icon: "table", tooltipText: "Table", value: "C" },
-        { icon: "people", tooltipText: "People", value: "D" },
+        { icon: "List", tooltipText: "List A", value: "A" },
+        { icon: "List", tooltipText: "List B", value: "B" },
+        { icon: "Table", tooltipText: "Table", value: "C" },
+        { icon: "People", tooltipText: "People", value: "D" },
       ]}
     />
   );

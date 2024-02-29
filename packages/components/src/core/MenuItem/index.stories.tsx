@@ -6,7 +6,7 @@ import CustomSvgIcon from "src/common/customSvgIcon";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 const iconOptions = [
-  "gear",
+  "Gear",
   <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
   <CustomSvgIcon key="customSvgIcon" sx={{ height: 14, width: 14 }} />,
 ];
@@ -91,7 +91,7 @@ const COLUMN_OPTIONS = [undefined, "Column"];
  * (thuang): Add `as const` to make sure the type is not widened to `string`
  * and cause type error in <RawMenuItem />
  */
-const ICON_OPTIONS = [undefined, "gear"] as const;
+const ICON_OPTIONS = [undefined, "Gear"] as const;
 const SELECTED_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
@@ -268,7 +268,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all SDS_STYLE_OPTIONS + create headers for DITERMINISTIC_OPTIONS
+  // loop through all SDS_STYLE_OPTIONS + create headers for DETERMINISTIC_OPTIONS
   function MenuItemStyles({
     isMultiSelect,
     column,
@@ -301,7 +301,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
               column={column}
               sdsIcon={sdsIcon}
               selected={selected}
-              sdsStyle={sdsStyle as MenuItemProps<"gear">["sdsStyle"]}
+              sdsStyle={sdsStyle as MenuItemProps<"Gear">["sdsStyle"]}
               disabled={disabled}
               key={String(disabled)}
             />
@@ -324,7 +324,7 @@ const ScreenshotTestDemo = (props: Args): JSX.Element => {
     column: (typeof COLUMN_OPTIONS)[number];
     sdsIcon: (typeof ICON_OPTIONS)[number];
     selected: (typeof SELECTED_OPTIONS)[number];
-    sdsStyle: MenuItemProps<"gear">["sdsStyle"];
+    sdsStyle: MenuItemProps<"Gear">["sdsStyle"];
     disabled: (typeof DISABLED_OPTIONS)[number];
   }) {
     const LEVEL_STYLE: React.CSSProperties = {

@@ -12,7 +12,7 @@ const MenuNameSpaceTest = (
     <MenuItem
       onClick={noop}
       column="Text"
-      icon="gear"
+      icon="Gear"
       sdsIconProps={{}}
       isMultiSelect
       disabled={false}

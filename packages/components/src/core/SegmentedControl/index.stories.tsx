@@ -58,10 +58,10 @@ function LivePreviewDemo(): JSX.Element {
   return (
     <Template
       buttonDefinition={[
-        { icon: "list", tooltipText: "List A", value: "A" },
-        { icon: "list", tooltipText: "List B", value: "B" },
-        { icon: "list", tooltipText: "List C", value: "C" },
-        { icon: "list", tooltipText: "List D", value: "D" },
+        { icon: "List", tooltipText: "List A", value: "A" },
+        { icon: "List", tooltipText: "List B", value: "B" },
+        { icon: "List", tooltipText: "List C", value: "C" },
+        { icon: "List", tooltipText: "List D", value: "D" },
       ]}
     />
   );
