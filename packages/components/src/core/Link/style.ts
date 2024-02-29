@@ -16,11 +16,12 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
   { component?: C }
 > &
   StyleProps & {
+    fontWeight?: "normal" | "bold";
     sdsStyle?: "default" | "dashed";
     sdsSize?: "xs" | "s";
   };
 
-const doNotForwardProps = ["sdsStyle", "sdsSize"];
+const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
   const semanticTextColors = getSemanticTextColors(props);
@@ -68,13 +69,15 @@ export const StyledLink = styled(Link, {
   },
 })`
   ${(props: LinkProps) => {
-    const { sdsStyle, sdsSize = "s" } = props;
+    const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}
       ${sdsStyle === "dashed" && dashedStyle(props)}
       ${sdsSize === "s" && smallStyle(props)}
       ${sdsSize === "xs" && extraSmallStyle(props)}
+
+      font-weight: ${fontWeight === "normal" ? "400" : "600"};
     `;
   }}
 ` as typeof Link;

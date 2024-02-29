@@ -2,6 +2,7 @@ import React, { ForwardedRef, forwardRef } from "react";
 import { LinkProps as RawLinkProps, StyledLink } from "./style";
 
 export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<C> & {
+  fontWeight?: "normal" | "bold";
   sdsSize?: "xs" | "s";
 };
 
