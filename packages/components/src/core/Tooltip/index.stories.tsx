@@ -76,6 +76,15 @@ export default {
   title: "Components/Tooltip",
 } as Meta;
 
+const ExcludedControls = [
+  "arrow",
+  "arrowOffset",
+  "placement",
+  "sdsStyle",
+  "title",
+  "width",
+];
+
 // Default
 
 export const Default = {
@@ -132,11 +141,14 @@ const LivePreviewDemo = (): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
   },
-  render: () => <LivePreviewDemo />,
+  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Placement Demo
@@ -223,11 +235,14 @@ const PlacementDemo = (): JSX.Element => {
 
 export const PlacementPreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
   },
-  render: () => <PlacementDemo />,
+  render: (args: Args) => <PlacementDemo {...args} />,
 };
 
 // Screenshot Test
@@ -451,14 +466,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: [
-        "arrow",
-        "arrowOffset",
-        "placement",
-        "sdsStyle",
-        "title",
-        "width",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -480,6 +488,9 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

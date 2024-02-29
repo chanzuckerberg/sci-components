@@ -70,6 +70,17 @@ export default {
   title: "Components/Inputs/InputText",
 } as Meta;
 
+const ExcludedControls = [
+  "disabled",
+  "hideLabel",
+  "id",
+  "intent",
+  "label",
+  "placeholder",
+  "sdsStage",
+  "sdsType",
+];
+
 // Default
 
 export const Default = {
@@ -120,6 +131,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -171,6 +185,9 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

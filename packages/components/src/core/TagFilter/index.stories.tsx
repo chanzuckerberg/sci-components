@@ -65,6 +65,8 @@ export default {
   title: "Components/TagFilter",
 } as Meta;
 
+const ExcludedControls = ["label"];
+
 // Default
 
 export const Default = {
@@ -86,6 +88,9 @@ export const LivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -134,7 +139,7 @@ export const ScreenshotTest = {
   },
   parameters: {
     controls: {
-      exclude: ["label"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -163,6 +168,9 @@ export const Test = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

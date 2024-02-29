@@ -143,6 +143,19 @@ export default {
   title: "Components/Button [wip]",
 } as Meta;
 
+const ExcludedControls = [
+  "endIcon",
+  "endIċon",
+  "startIcon",
+  "startIċon",
+  "onClick",
+  "sdsStyle",
+  "sdsType",
+  "text",
+  "label",
+  "disabled",
+];
+
 // Default
 
 export const Default = {
@@ -206,6 +219,9 @@ export const RoundedLivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -260,6 +276,9 @@ export const SquareLivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -311,6 +330,9 @@ export const MinimalLivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -520,7 +542,7 @@ export const ScreenshotTest = {
   },
   parameters: {
     controls: {
-      exclude: ["onClick", "sdsStyle", "sdsType", "text"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -539,6 +561,9 @@ export const Test = {
     text: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

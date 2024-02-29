@@ -14,7 +14,7 @@ const Tag = (props: Args): JSX.Element => {
 
 const ICONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="CheckCircle" key="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="CheckCircle" key="CheckCircle" sdsType="button" />,
   <Icon sdsSize="l" sdsIcon="Loading" key="loading" sdsType="button" />,
   <WbSunny key="WBSunny" />,
   <CheckCircleOutline key="CheckCircleOutline" />,
@@ -95,6 +95,15 @@ export default {
   },
   title: "Components/Tag",
 } as Meta;
+
+const ExcludedControls = [
+  "color",
+  "hover",
+  "label",
+  "sdsStyle",
+  "sdsType",
+  "icon",
+];
 
 // Default
 
@@ -201,6 +210,9 @@ export const LivePreview = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -247,7 +259,7 @@ export const ScreenshotTest = {
       timeout: 10 * 1000,
     },
     controls: {
-      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -298,7 +310,7 @@ export const GrayPrimaryScreenshotTest = {
       timeout: 10 * 1000,
     },
     controls: {
-      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -352,7 +364,7 @@ export const SuccessWarningScreenshotTest = {
       timeout: 10 * 1000,
     },
     controls: {
-      exclude: ["color", "hover", "label", "sdsStyle", "sdsType", "icon"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -376,6 +388,9 @@ export const Test = {
     label: "Label",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

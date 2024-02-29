@@ -63,6 +63,13 @@ export default {
   title: "Components/Tabs",
 } as Meta;
 
+const ExcludedControls = [
+  "sdsSize",
+  "tabOneLabel",
+  "tabTwoLabel",
+  "underlined",
+];
+
 // Default
 
 export const Default = {
@@ -148,6 +155,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
 export const LivePreview = {
   parameters: {
     chromatic: { delay: 5000 },
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -224,6 +234,9 @@ function TestDemo(props: Args): JSX.Element {
 export const Test = {
   parameters: {
     chromatic: { delay: 5000 },
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

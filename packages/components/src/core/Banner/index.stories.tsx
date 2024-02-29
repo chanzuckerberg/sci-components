@@ -8,8 +8,8 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
 const iconOptions = [
-  "checkCircle",
-  "infoCircle",
+  "CheckCircle",
+  "InfoCircle",
   <CustomSdsIcon key="customSdsIcon" sdsSize="l" />,
   <CustomSvgIcon key="customSvgIcon" />,
 ];
@@ -69,6 +69,15 @@ export default {
   title: "Components/Banner",
 } as Meta<Args>;
 
+const ExcludedControls = [
+  "dismissed",
+  "dismissible",
+  "icon",
+  "sdsIconProps",
+  "sdsType",
+  "textChild",
+];
+
 // Default
 
 export const Default = {
@@ -115,7 +124,7 @@ export const LivePreview = {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
     },
     controls: {
-      exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -134,7 +143,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["dismissible", "sdsType", "textChild", "dismissed"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

@@ -186,6 +186,22 @@ const InputDropdown = <
   );
 };
 
+const ExcludedControls = [
+  "fullWidth",
+  "counter",
+  "details",
+  "disabled",
+  "intent",
+  "label",
+  "multiple",
+  "sdsStage",
+  "sdsStyle",
+  "sdsType",
+  "shouldPutAColonAfterLabel",
+  "shouldTruncateMinimalDetails",
+  "width",
+];
+
 export default {
   argTypes: {
     counter: {
@@ -330,6 +346,9 @@ export const RoundLivePreview = {
     sdsStyle: "rounded",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -343,6 +362,9 @@ export const SquareLivePreview = {
     sdsStyle: "square",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -385,6 +407,9 @@ export const MinimalLivePreview = {
     sdsStyle: "minimal",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -402,6 +427,9 @@ export const Test = {
     sdsStyle: "square",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

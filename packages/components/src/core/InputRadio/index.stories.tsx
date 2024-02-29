@@ -46,6 +46,8 @@ export default {
   title: "Components/Inputs/InputRadio [beta]",
 } as Meta;
 
+const ExcludedControls = ["label", "caption", "disabled", "intent", "stage"];
+
 // Default
 
 export const Default = {
@@ -142,7 +144,7 @@ export const LivePreview = {
       disabledRules: ["label"],
     },
     controls: {
-      exclude: ["label", "caption", "disabled", "intent", "stage"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -188,7 +190,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["label", "caption", "disabled", "intent", "stage"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

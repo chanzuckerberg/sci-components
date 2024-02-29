@@ -98,6 +98,22 @@ export default {
   title: "Components/Table/CellBasic",
 } as Meta;
 
+const ExcludedControls = [
+  "icon",
+  "iconVerticalAlign",
+  "primaryText",
+  "primaryTextWrapLineCount",
+  "secondaryText",
+  "secondaryTextWrapLineCount",
+  "tertiaryText",
+  "tertiaryTextWrapLineCount",
+  "shouldShowTooltipOnHover",
+  "shouldTextWrap",
+  "tooltipProps",
+  "horizontalAlign",
+  "verticalAlign",
+];
+
 // Default
 
 export const Default = {
@@ -175,21 +191,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "icon",
-        "iconVerticalAlign",
-        "primaryText",
-        "primaryTextWrapLineCount",
-        "secondaryText",
-        "secondaryTextWrapLineCount",
-        "tertiaryText",
-        "tertiaryTextWrapLineCount",
-        "shouldShowTooltipOnHover",
-        "shouldTextWrap",
-        "tooltipProps",
-        "horizontalAlign",
-        "verticalAlign",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

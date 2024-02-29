@@ -25,6 +25,16 @@ const InputSearch = (props: Args): JSX.Element => {
   );
 };
 
+const ExcludedControls = [
+  "disabled",
+  "id",
+  "intent",
+  "label",
+  "placeholder",
+  "sdsStage",
+  "sdsStyle",
+];
+
 export default {
   argTypes: {
     disabled: {
@@ -90,6 +100,9 @@ const RoundLivePreviewDemo = (props: Args): JSX.Element => {
 
 export const RoundLivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -113,6 +126,9 @@ const SquareLivePreviewDemo = (props: Args): JSX.Element => {
 
 export const SquareLivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -159,6 +175,9 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

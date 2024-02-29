@@ -11,8 +11,8 @@ import InputToggle from "../InputToggle";
 const iconOptions = [
   <CustomSvgIcon key="customSdsIcon" />,
   <CustomSdsIcon key="customSvgIcon" />,
-  "book",
-  "checkCircle",
+  "Book",
+  "CheckCircle",
 ];
 const buttonOnClickOptions = [action("onClick"), undefined];
 const onClickOptions = [action("onClick"), undefined];
@@ -129,6 +129,19 @@ export default {
   title: "Components/Notification",
 } as Meta;
 
+const ExcludedControls = [
+  "autoDismiss",
+  "buttonOnClick",
+  "buttonPosition",
+  "extraContent",
+  "icon",
+  "intent",
+  "onClose",
+  "sdsIconProps",
+  "slideDirection",
+  "label",
+];
+
 // Default
 
 export const Default = {
@@ -184,6 +197,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -312,15 +328,7 @@ export const ScreenshotTest = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "label",
-        "autoDismiss",
-        "buttonOnClick",
-        "extraContent",
-        "intent",
-        "onClose",
-        "slideDirection",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -346,6 +354,9 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

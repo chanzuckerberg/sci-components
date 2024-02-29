@@ -78,6 +78,8 @@ export default {
   title: "Components/TooltipTable",
 } as Meta;
 
+const ExcludedControls = ["contentAlert", "itemAlign"];
+
 // Default
 
 export const Default = {
@@ -142,6 +144,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -163,6 +168,9 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

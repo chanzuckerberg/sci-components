@@ -43,6 +43,10 @@ export default {
   title: "Deprecated/Alert [deprecated]",
 } as Meta;
 
+const ExcludedControls = ["text"];
+
+// Default
+
 export const Default = {
   args: {
     text: "This is an alert!",
@@ -87,5 +91,10 @@ export const SnackbarAlert = () => {
 export const Test = {
   args: {
     text: "Test Alert!",
+  },
+  parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
   },
 };

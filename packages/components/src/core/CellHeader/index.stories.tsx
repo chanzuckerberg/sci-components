@@ -64,6 +64,16 @@ export default {
   title: "Components/Table/CellHeader",
 } as Meta;
 
+const ExcludedControls = [
+  "active",
+  "direction",
+  "hideSortIcon",
+  "horizontalAlign",
+  "shouldShowTooltipOnHover",
+  "tooltipProps",
+  "tooltipText",
+];
+
 // Default
 
 export const Default = {
@@ -100,15 +110,7 @@ const TestDemo = (): JSX.Element => (
 export const Test = {
   parameters: {
     controls: {
-      exclude: [
-        "active",
-        "direction",
-        "hideSortIcon",
-        "horizontalAlign",
-        "shouldShowTooltipOnHover",
-        "tooltipProps",
-        "tooltipText",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

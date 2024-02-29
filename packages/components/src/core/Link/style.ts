@@ -20,7 +20,7 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
     sdsSize?: "xs" | "s";
   };
 
-const sdsPropNames = ["sdsStyle"];
+const doNotForwardProps = ["sdsStyle", "sdsSize"];
 
 const defaultStyle = (props: LinkProps) => {
   const semanticTextColors = getSemanticTextColors(props);
@@ -64,7 +64,7 @@ const extraSmallStyle = (props: LinkProps) => {
 
 export const StyledLink = styled(Link, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(prop.toString());
   },
 })`
   ${(props: LinkProps) => {

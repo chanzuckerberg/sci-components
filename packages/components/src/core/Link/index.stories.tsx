@@ -30,6 +30,8 @@ export default {
   title: "Components/Link",
 } as Meta;
 
+const ExcludedControls = ["sdsSize", "sdsStyle"];
+
 // Default
 
 export const Default = {
@@ -78,7 +80,7 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 export const LivePreview = {
   parameters: {
     controls: {
-      exclude: ["sdsSize", "sdsStyle"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -185,7 +187,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: ["sdsSize", "sdsStyle"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

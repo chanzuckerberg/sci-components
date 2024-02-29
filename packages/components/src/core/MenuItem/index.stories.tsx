@@ -66,6 +66,17 @@ export default {
   title: "Components/Dropdowns/MenuItem",
 } as Meta;
 
+const ExcludedControls = [
+  "name",
+  "column",
+  "disabled",
+  "isMultiSelect",
+  "icon",
+  "sdsIconProps",
+  "sdsStyle",
+  "selected",
+];
+
 // Default
 
 export const Default = {
@@ -381,16 +392,7 @@ export const ScreenshotTest = {
       timeout: 10 * 1000,
     },
     controls: {
-      exclude: [
-        "name",
-        "column",
-        "disabled",
-        "isMultiSelect",
-        "icon",
-        "sdsIconProps",
-        "sdsStyle",
-        "selected",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -408,16 +410,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "name",
-        "column",
-        "disabled",
-        "isMultiSelect",
-        "icon",
-        "sdsIconProps",
-        "sdsStyle",
-        "selected",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

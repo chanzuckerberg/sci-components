@@ -51,6 +51,14 @@ export default {
   title: "Components/Table/Pagination",
 } as Meta;
 
+const ExcludedControls = [
+  "pageSize",
+  "sdsStyle",
+  "siblingCount",
+  "totalCount",
+  "truncateDropdown",
+];
+
 // Default
 
 export const Default = {
@@ -138,13 +146,7 @@ const TestDemo = (props: Args): JSX.Element => (
 export const Test = {
   parameters: {
     controls: {
-      exclude: [
-        "pageSize",
-        "sdsStyle",
-        "siblingCount",
-        "totalCount",
-        "truncateDropdown",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

@@ -150,6 +150,21 @@ export default {
   title: "Components/Dropdowns/Dropdown",
 } as Meta;
 
+const ExcludedControls = [
+  "buttonPosition",
+  "label",
+  "onChange",
+  "DropdownMenuProps",
+  "buttons",
+  "closeOnBlur",
+  "disabled",
+  "multiple",
+  "onClose",
+  "options",
+  "search",
+  "isTriggerChangeOnOptionClick",
+];
+
 // Default
 
 export const Default = {
@@ -180,6 +195,11 @@ export const MultiColumnWithButtons = {
     options: dataOptions[2],
     search: true,
   },
+  parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
+  },
   render: (args: Args) => <Dropdown {...args} />,
 };
 
@@ -196,19 +216,7 @@ export const LoadingResultsIndicator = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "buttonPosition",
-        "label",
-        "onChange",
-        "DropdownMenuProps",
-        "buttons",
-        "closeOnBlur",
-        "disabled",
-        "multiple",
-        "onClose",
-        "options",
-        "search",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -229,19 +237,7 @@ export const InsideModal = {
       disabledRules: ["aria-dialog-name"],
     },
     controls: {
-      exclude: [
-        "buttonPosition",
-        "label",
-        "onChange",
-        "DropdownMenuProps",
-        "buttons",
-        "closeOnBlur",
-        "disabled",
-        "multiple",
-        "onClose",
-        "options",
-        "search",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -335,19 +331,7 @@ export const ControlledDropdown = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "buttonPosition",
-        "label",
-        "onChange",
-        "DropdownMenuProps",
-        "buttons",
-        "closeOnBlur",
-        "disabled",
-        "multiple",
-        "onClose",
-        "options",
-        "search",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -386,19 +370,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "buttonPosition",
-        "label",
-        "onChange",
-        "DropdownMenuProps",
-        "buttons",
-        "closeOnBlur",
-        "disabled",
-        "multiple",
-        "onClose",
-        "options",
-        "search",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

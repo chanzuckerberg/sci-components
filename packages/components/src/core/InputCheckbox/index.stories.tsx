@@ -51,6 +51,8 @@ export default {
   title: "Components/Inputs/InputCheckbox [beta]",
 } as Meta;
 
+const ExcludedControls = ["caption", "label", "stage", "disabled", "intent"];
+
 // Default
 
 export const Default = {
@@ -206,7 +208,7 @@ export const LivePreview = {
     axe: {
       disabledRules: ["label"],
     },
-    controls: { exclude: ["caption", "label", "stage", "disabled", "intent"] },
+    controls: { exclude: ExcludedControls },
     snapshot: {
       skip: true,
     },
@@ -248,7 +250,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["caption", "label", "stage", "disabled", "intent", "id"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

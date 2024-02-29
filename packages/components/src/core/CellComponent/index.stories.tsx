@@ -1,4 +1,4 @@
-import { FormControlLabel, RadioGroup } from "@mui/material";
+import { RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import * as React from "react";
 import InputRadio from "../InputRadio";
@@ -37,9 +37,6 @@ const CellComponent = (props: Args): JSX.Element => {
 
 export default {
   argTypes: {
-    fitCellToComponent: {
-      control: { type: "boolean" },
-    },
     horizontalAlign: {
       control: { type: "select" },
       options: ["left", "center", "right"],
@@ -64,6 +61,8 @@ export default {
   title: "Components/Table/CellComponent",
 } as Meta;
 
+const ExcludedControls = ["verticalAlign", "horizontalAlign"];
+
 // Default
 
 export const Default = {
@@ -72,20 +71,7 @@ export const Default = {
     verticalAlign: "center",
   },
   render: (props: Args) => {
-    const { horizontalAlign, verticalAlign, fitCellToComponent } = props;
-
-    if (fitCellToComponent) {
-      return (
-        <CellComponent
-          horizontalAlign={horizontalAlign}
-          verticalAlign={verticalAlign}
-          data-testid="CellComponent"
-          {...props}
-        >
-          <InputToggle />
-        </CellComponent>
-      );
-    }
+    const { horizontalAlign, verticalAlign } = props;
 
     return (
       <CellComponent
@@ -108,7 +94,7 @@ const TestDemo = (props: Args): JSX.Element => {
     display: "grid",
     gridColumnGap: "14px",
     gridRowGap: "0px",
-    gridTemplateColumns: "112px 50px",
+    gridTemplateColumns: "repeat(2, 200px)",
     gridTemplateRows: "1fr",
   };
 
@@ -156,14 +142,12 @@ const TestDemo = (props: Args): JSX.Element => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               data-testid="Child"
-              defaultValue="demo"
+              defaultValue="1"
               name="radio-buttons-group"
             >
-              <FormControlLabel
-                control={<InputRadio stage="checked" {...props} />}
-                label="Label"
-                value="demo"
-              />
+              <InputRadio label="One" caption="Caption I" value="1" />
+              <InputRadio label="Two" caption="Caption II" value="2" />
+              <InputRadio label="Three" caption="Caption III" value="3" />
             </RadioGroup>
           </div>
         </CellComponent>
@@ -174,7 +158,7 @@ const TestDemo = (props: Args): JSX.Element => {
 
 export const Test = {
   parameters: {
-    controls: { exclude: ["verticalAlign", "horizontalAlign"] },
+    controls: { exclude: ExcludedControls },
     snapshot: {
       skip: true,
     },

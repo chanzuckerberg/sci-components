@@ -26,6 +26,8 @@ export default {
   title: "Components/Inputs/InputToggle",
 } as Meta;
 
+const ExcludedControls = ["disabled"];
+
 // Default
 
 export const Default = {};
@@ -38,6 +40,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -49,6 +54,9 @@ export const LivePreview = {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

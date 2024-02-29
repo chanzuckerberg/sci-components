@@ -44,7 +44,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: "puzzlePiece",
+    icon: "PuzzlePiece",
     name: "Puzzle Piece",
     sdsIconProps: {
       color: "gray",
@@ -54,7 +54,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   },
   {
     count: 10,
-    icon: "copy",
+    icon: "Copy",
     name: "Copy",
     sdsIconProps: {
       color: "gray",
@@ -63,7 +63,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: "lightBulb",
+    icon: "LightBulb",
     name: "Light Bulb",
     sdsIconProps: {
       color: "gray",
@@ -73,7 +73,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   },
   {
     count: 6,
-    icon: "list",
+    icon: "List",
     name: "List",
     sdsIconProps: {
       color: "gray",
@@ -82,7 +82,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: "treeVertical",
+    icon: "TreeVertical",
     name: "Vertical Tree",
     sdsIconProps: {
       color: "gray",
@@ -91,7 +91,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: "link",
+    icon: "Link",
     name: "Link",
     sdsIconProps: {
       color: "gray",

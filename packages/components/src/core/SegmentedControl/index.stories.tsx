@@ -28,6 +28,8 @@ export default {
   title: "Components/SegmentedControl",
 } as Meta;
 
+const ExcludedControls = ["buttonDefinition"];
+
 interface SegmentedControlArgs extends SegmentedControlProps {
   buttonDefinition: SingleButtonDefinition[];
 }
@@ -43,10 +45,10 @@ const Template = (props: SegmentedControlArgs) => {
 export const Default = {
   args: {
     buttonDefinition: [
-      { icon: "list", tooltipText: "List A", value: "A" },
-      { icon: "list", tooltipText: "List B", value: "B" },
-      { icon: "list", tooltipText: "List C", value: "C" },
-      { icon: "list", tooltipText: "List D", value: "D" },
+      { icon: "List", tooltipText: "List A", value: "A" },
+      { icon: "List", tooltipText: "List B", value: "B" },
+      { icon: "List", tooltipText: "List C", value: "C" },
+      { icon: "List", tooltipText: "List D", value: "D" },
     ],
   },
   render: Template,
@@ -69,6 +71,9 @@ function LivePreviewDemo(): JSX.Element {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -92,13 +97,16 @@ const TestDemo = (props: Args): JSX.Element => {
 export const Test = {
   args: {
     buttonDefinition: [
-      { icon: "list", tooltipText: "List A", value: "A" },
-      { icon: "list", tooltipText: "List B", value: "B" },
-      { icon: "table", tooltipText: "Table", value: "Table" },
-      { icon: "people", tooltipText: "People", value: "People" },
+      { icon: "List", tooltipText: "List A", value: "A" },
+      { icon: "List", tooltipText: "List B", value: "B" },
+      { icon: "Table", tooltipText: "Table", value: "Table" },
+      { icon: "People", tooltipText: "People", value: "People" },
     ],
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

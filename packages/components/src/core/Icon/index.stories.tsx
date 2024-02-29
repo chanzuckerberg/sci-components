@@ -35,13 +35,13 @@ export default {
         type: "select",
       },
       options: [
-        "checkCircle",
-        "copy",
-        "edit",
-        "lightBulb",
-        "linesHorizontal",
-        "loading",
-        "xMark",
+        "CheckCircle",
+        "Copy",
+        "Edit",
+        "LightBulb",
+        "LinesHorizontal",
+        "Loading",
+        "XMark",
       ],
     },
     sdsSize: {
@@ -71,7 +71,7 @@ export default {
 export const Default = {
   args: {
     color: "blue",
-    sdsIcon: "checkCircle",
+    sdsIcon: "CheckCircle",
     sdsSize: "xl",
     sdsType: "static",
     shade: 400,

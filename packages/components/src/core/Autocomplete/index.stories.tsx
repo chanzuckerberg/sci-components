@@ -306,6 +306,17 @@ export default {
   title: "Components/Dropdowns/Autocomplete",
 } as Meta;
 
+const ExcludedControls = [
+  "search",
+  "keepSearchOnSelect",
+  "multiple",
+  "blurOnSelect",
+  "clearOnBlur",
+  "groupBy",
+  "label",
+  "options",
+];
+
 // Default
 
 export const Default = {
@@ -476,7 +487,7 @@ export const SingleColumn = {
   },
   parameters: {
     controls: {
-      exclude: ["search", "options"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -636,7 +647,7 @@ export const MultiColumn = {
   },
   parameters: {
     controls: {
-      exclude: ["search", "options", "groupBy"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -680,16 +691,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "search",
-        "keepSearchOnSelect",
-        "multiple",
-        "blurOnSelect",
-        "clearOnBlur",
-        "groupBy",
-        "label",
-        "options",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

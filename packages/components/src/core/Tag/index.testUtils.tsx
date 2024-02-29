@@ -16,7 +16,7 @@ const MID_LABEL: React.CSSProperties = {
 };
 const ICON_OPTIONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="CheckCircle" key="checkCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="CheckCircle" key="CheckCircle" sdsType="button" />,
 ];
 export const HOVER_OPTIONS = [true, false];
 export function CommonScreenshotTestDemo({

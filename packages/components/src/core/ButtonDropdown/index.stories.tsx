@@ -52,6 +52,8 @@ export default {
   title: "Components/ButtonDropdown [wip]",
 } as Meta;
 
+const ExcludedControls = ["disabled", "icon", "sdsStyle", "sdsType", "onClick"];
+
 // Default
 
 export const Default = {
@@ -126,6 +128,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -144,6 +149,9 @@ export const Test = {
     sdsType: "primary",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

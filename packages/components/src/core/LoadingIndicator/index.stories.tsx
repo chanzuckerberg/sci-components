@@ -23,6 +23,8 @@ export default {
   title: "Components/LoadingIndicator",
 } as Meta;
 
+const ExcludedControls = ["sdsStyle"];
+
 // Default
 
 export const Default = {
@@ -35,6 +37,11 @@ export const CustomAriaLabel = {
   args: {
     "aria-label": "Loading cats list...",
     sdsStyle: "minimal",
+  },
+  parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
   },
 };
 
@@ -77,6 +84,9 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -88,6 +98,9 @@ export const LivePreview = {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

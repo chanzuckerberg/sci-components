@@ -146,6 +146,19 @@ export default {
   title: "Components/Dropdowns/DropdownMenu",
 } as Meta;
 
+const ExcludedControls = [
+  "keepSearchOnSelect",
+  "ClickAwayListenerProps",
+  "search",
+  "multiple",
+  "label",
+  "groupBy",
+  "open",
+  "options",
+  "title",
+  "width",
+];
+
 // Default
 
 export const Default = {
@@ -172,6 +185,11 @@ export const MultiColumn = {
     options: dataOptions[2],
     search: true,
     title: LABEL,
+  },
+  parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
   },
   render: (args: Args) => <DropdownMenu {...args} />,
 };
@@ -535,18 +553,7 @@ export const LivePreview = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "keepSearchOnSelect",
-        "ClickAwayListenerProps",
-        "search",
-        "multiple",
-        "label",
-        "groupBy",
-        "open",
-        "options",
-        "title",
-        "width",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -711,18 +718,7 @@ export const ScreenshotTest = {
       timeout: 10 * 1000,
     },
     controls: {
-      exclude: [
-        "keepSearchOnSelect",
-        "ClickAwayListenerProps",
-        "search",
-        "multiple",
-        "label",
-        "groupBy",
-        "open",
-        "options",
-        "title",
-        "width",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -827,18 +823,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: [
-        "keepSearchOnSelect",
-        "ClickAwayListenerProps",
-        "search",
-        "multiple",
-        "label",
-        "groupBy",
-        "open",
-        "options",
-        "title",
-        "width",
-      ],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

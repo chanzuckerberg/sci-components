@@ -38,6 +38,8 @@ export default {
   title: "Components/TooltipCondensed",
 } as Meta;
 
+const ExcludedControls = ["indicator", "indicatorColor", "title"];
+
 // Default
 
 export const Default = {
@@ -73,6 +75,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -87,6 +92,9 @@ export const Test = {
     title: "Test",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

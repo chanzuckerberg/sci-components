@@ -117,6 +117,14 @@ export default {
   title: "Components/Dialog",
 } as Meta;
 
+const ExcludedControls = [
+  "canClickOutsideClose",
+  "buttonPosition",
+  "longContent",
+  "titleOnClose",
+  "sdsSize",
+];
+
 // Default
 
 export const Default = {
@@ -146,6 +154,9 @@ export const LivePreview = {
     titleOnClose: false,
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -170,6 +181,9 @@ function TestDemo(props: Args): JSX.Element {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -185,6 +199,9 @@ function TestNoTitleOnCloseDemo(props: Args): JSX.Element {
 
 export const TestNoTitleOnClose = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -200,6 +217,9 @@ function TestButtonPositionLeftDemo(props: Args): JSX.Element {
 
 export const TestButtonPositionLeft = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

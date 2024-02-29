@@ -64,6 +64,14 @@ export default {
   title: "Components/Dropdowns/ComplexFilter",
 } as Meta;
 
+const ExcludedControls = [
+  "label",
+  "multiple",
+  "onChange",
+  "search",
+  "keepSearchOnSelect",
+];
+
 // Default
 
 export const Default = {
@@ -125,6 +133,9 @@ export const LivePreview = {
     search: false,
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -155,6 +166,9 @@ const TestDemo = <T extends DefaultAutocompleteOption>(
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

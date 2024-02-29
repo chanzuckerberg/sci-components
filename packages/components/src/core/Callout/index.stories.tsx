@@ -12,8 +12,8 @@ import InputToggle from "../InputToggle";
 const iconOptions = [
   <CustomSvgIcon key="customSdsIcon" />,
   <CustomSdsIcon key="customSvgIcon" />,
-  "book",
-  "checkCircle",
+  "Book",
+  "CheckCircle",
 ];
 
 const onCloseOptions = [action("onClick"), undefined];
@@ -101,6 +101,14 @@ export default {
   title: "Components/Callout",
 } as Meta;
 
+const ExcludedControls = [
+  "autoDismiss",
+  "expandable",
+  "icon",
+  "intent",
+  "onClose",
+];
+
 // Default
 
 export const Default = {
@@ -155,5 +163,10 @@ const LivePreviewDemo = (props: Args): JSX.Element => {
 };
 
 export const LivePreview = {
+  parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
+  },
   render: (args: Args) => <LivePreviewDemo {...args} />,
 };

@@ -21,9 +21,9 @@ const ON_OPTIONS = [false, true];
 const DISABLED_OPTIONS = [false, true];
 const PSEUDO_STATES = ["default", "hover", "active", "focus"];
 const ICON_OPTIONS = [
-  "dotsHorizontal",
-  "virus",
-  "xMark",
+  "DotsHorizontal",
+  "Virus",
+  "XMark",
   <CustomSdsIcon key="customSdsIcon" />,
   <CustomSvgIcon key="customIcon" />,
 ];
@@ -56,9 +56,9 @@ export default {
     icon: {
       control: {
         labels: [
-          "SDS Icon: dotsHorizontal",
-          "SDS Icon: virus",
-          "SDS Icon: xMark",
+          "SDS Icon: DotsHorizontal",
+          "SDS Icon: Virus",
+          "SDS Icon: XMark",
           "Custom SDS Icon",
           "Custom Icon",
         ],
@@ -92,13 +92,15 @@ export default {
   title: "Components/ButtonIcon [wip]",
 } as Meta;
 
+const ExcludedControls = ["disabled", "on", "icon", "sdsSize", "sdsType"];
+
 // Default
 
 export const Default = {
   args: {
     "aria-label": "info",
     disabled: false,
-    icon: "dotsHorizontal",
+    icon: "DotsHorizontal",
     sdsSize: "large",
     sdsType: "primary",
   },
@@ -215,6 +217,9 @@ const LivePreviewDemo = (): JSX.Element => {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -387,17 +392,17 @@ const ScreenshotTestDemo = (): JSX.Element => {
   }) {
     const SDS_ICONS = {
       primary: {
-        large: "grid",
-        small: "barChartVertical3",
+        large: "Grid",
+        small: "BarChartVertical3",
       },
       secondary: {
-        large: "infoSpeechBubble",
-        small: "plusCircle",
+        large: "InfoSpeechBubble",
+        small: "PlusCircle",
       },
       tertiary: {
-        large: "xMark",
-        medium: "xMark",
-        small: "xMark",
+        large: "XMark",
+        medium: "XMark",
+        small: "XMark",
       },
     };
     const DISABLED_LEVEL: React.CSSProperties = {
@@ -455,7 +460,7 @@ const ScreenshotTestDemo = (): JSX.Element => {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: ["disabled", "on", "icon", "sdsSize", "sdsType"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -468,6 +473,9 @@ export const ScreenshotTest = {
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

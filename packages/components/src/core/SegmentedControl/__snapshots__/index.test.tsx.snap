@@ -16,7 +16,23 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     <span
       class=""
       data-mui-internal-clone-element="true"
-    />
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-file-name="IconListSmall"
+          data-testid="IconListSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
   </button>
   <button
     aria-label="List B"
@@ -29,7 +45,23 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     <span
       class=""
       data-mui-internal-clone-element="true"
-    />
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-file-name="IconListSmall"
+          data-testid="IconListSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
   </button>
   <button
     aria-label="List C"
@@ -42,7 +74,23 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     <span
       class=""
       data-mui-internal-clone-element="true"
-    />
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-file-name="IconListSmall"
+          data-testid="IconListSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
   </button>
   <button
     aria-label="List D"
@@ -55,7 +103,23 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
     <span
       class=""
       data-mui-internal-clone-element="true"
-    />
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+          data-file-name="IconListSmall"
+          data-testid="IconListSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
   </button>
 </div>
 `;

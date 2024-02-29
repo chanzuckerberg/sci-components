@@ -60,6 +60,8 @@ export default {
   title: "Components/NavigationJumpTo",
 } as Meta;
 
+const ExcludedControls = ["items", "offsetTop", "indicatorColor"];
+
 // Default
 
 export const Default = {
@@ -237,7 +239,7 @@ export const JumpToNavDemo = {
       disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
-      exclude: ["items", "offsetTop"],
+      exclude: ExcludedControls,
       expanded: true,
     },
   },
@@ -261,7 +263,7 @@ export const LivePreview = {
       disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
-      exclude: ["items", "offsetTop", "indicatorColor"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,
@@ -299,7 +301,7 @@ export const Test = {
       disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
-      exclude: ["items", "offsetTop", "indicatorColor"],
+      exclude: ExcludedControls,
     },
     snapshot: {
       skip: true,

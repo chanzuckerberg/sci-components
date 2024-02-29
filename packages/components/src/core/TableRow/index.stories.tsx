@@ -57,6 +57,20 @@ export default {
   title: "Components/Table/TableRow",
 } as Meta;
 
+const ExcludedControls = [
+  "disabled",
+  "hover",
+  "rowHeight",
+  "selected",
+  "shouldShowTooltipOnHover",
+  "tooltipProps",
+  "tooltipSubtitle",
+  "tooltipText",
+  "useDivider",
+];
+
+// Default
+
 export const Default = {
   args: {
     disabled: false,
@@ -88,6 +102,9 @@ const TestDemo = (): JSX.Element => (
 
 export const Test = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

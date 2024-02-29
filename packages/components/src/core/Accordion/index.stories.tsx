@@ -49,6 +49,8 @@ export default {
   title: "Components/Accordion",
 } as Meta;
 
+const ExcludedControls = ["id", "subtitle", "useDivider", "togglePosition"];
+
 // Default
 
 export const Default = {
@@ -96,6 +98,9 @@ function LivePreviewDemo(props: Args): JSX.Element {
 
 export const LivePreview = {
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -111,6 +116,9 @@ export const Test = {
     togglePosition: "right",
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },

@@ -90,6 +90,16 @@ export default {
   title: "Components/Inputs/InputSlider",
 } as Meta;
 
+const ExcludedControls = [
+  "defaultValue",
+  "disabled",
+  "marks",
+  "max",
+  "min",
+  "step",
+  "valueLabelDisplay",
+];
+
 // Default
 
 export const Default = {
@@ -153,6 +163,9 @@ export const LivePreview = {
     min: 0,
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
@@ -185,6 +198,9 @@ export const Test = {
     min: 0,
   },
   parameters: {
+    controls: {
+      exclude: ExcludedControls,
+    },
     snapshot: {
       skip: true,
     },
