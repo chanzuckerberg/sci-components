@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import styled from "@emotion/styled";
-import { FormControlLabel, RadioGroup } from "@mui/material";
+import { RadioGroup } from "@mui/material";
 import { Args, Meta } from "@storybook/react";
 import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
@@ -123,17 +123,10 @@ const Table = (props: Args): JSX.Element => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
+              defaultValue="1"
             >
-              <FormControlLabel
-                control={
-                  <InputRadio label="Option-1-radio" stage="unchecked" />
-                }
-                label="Option-1"
-              />
-              <FormControlLabel
-                control={<InputRadio label="Option-2-radio" stage="checked" />}
-                label="Option-2"
-              />
+              <InputRadio label="Option I" caption="Caption I" value="1" />
+              <InputRadio label="Option II" caption="Caption II" value="2" />
             </RadioGroup>
           </CellComponent>
           <CellBasic

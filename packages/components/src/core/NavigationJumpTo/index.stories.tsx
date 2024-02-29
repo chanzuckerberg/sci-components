@@ -239,7 +239,7 @@ export const JumpToNavDemo = {
       disabledRules: [ARIA_VALID_ATTR_VALUE],
     },
     controls: {
-      exclude: ExcludedControls,
+      exclude: ["items"],
       expanded: true,
     },
   },
