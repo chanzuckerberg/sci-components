@@ -4,9 +4,11 @@ import {
   fontBodyXs,
   fontCodeXs,
   fontHeaderL,
+  getBorders,
   getCorners,
+  getFontWeights,
   getSpaces,
-} from "../../../../styles";
+} from "../../../../../styles";
 
 interface IStyledDivProps extends CommonThemeProps {
   backgroundColor: string;
@@ -21,6 +23,8 @@ export const StyledColorWrapper = styled("div")`
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
+    const borders = getBorders(props);
+    const fontWeights = getFontWeights(props);
 
     return `
       background-color: ${backgroundColor};
@@ -37,11 +41,11 @@ export const StyledColorWrapper = styled("div")`
       }
 
       &:hover {
-        border: solid 1px black;
+        border: ${borders?.base.black};
         z-index: 10;
 
         .color-title {
-          font-weight: bold;
+          font-weight: ${fontWeights?.semibold};
         }
       }
     `;
@@ -62,12 +66,18 @@ export const StyledColorGroupTitle = styled("h3")`
 export const StyledColorCode = styled("span")`
   ${fontCodeXs}
 
-  cursor: pointer;
-  font-size: 12px;
+  ${(props) => {
+    const fontWeights = getFontWeights(props);
 
-  &:active {
-    font-weight: bold;
-  }
+    return `
+      cursor: pointer;
+      font-size: 12px;
+
+      &:active {
+        font-weight: ${fontWeights?.semibold};
+      }
+    `;
+  }}
 `;
 
 export const StyledColorTitle = styled("span")`
@@ -77,12 +87,18 @@ export const StyledColorTitle = styled("span")`
 export const StyledColorVariable = styled("span")`
   ${fontCodeXs}
 
-  cursor: pointer;
-  font-size: 10px;
+  ${(props) => {
+    const fontWeights = getFontWeights(props);
 
-  &:active {
-    font-weight: bold;
-  }
+    return `
+      cursor: pointer;
+      font-size: 10px;
+
+      &:active {
+        font-weight: ${fontWeights?.semibold};
+      }
+    `;
+  }}
 `;
 
 interface IStyledColorsWrapperProps extends CommonThemeProps {

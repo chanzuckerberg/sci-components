@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
-import { BADGE } from "../../../common/SDSBadges";
-import Colors from "./components/Colors";
+import { BADGE } from "../../../common/storybookBadges";
+import Colors from "./storybook/components/Color";
 import { useTheme } from "@mui/material";
 import {
   getColors,

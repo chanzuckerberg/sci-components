@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/react";
-import { BADGE } from "../../../common/SDSBadges";
+import { BADGE } from "../../../common/storybookBadges";
 import { useTheme } from "@mui/material";
 import { getBorders } from "../../styles";
-import { StyledBorderBox, StyledBordersWrapper } from "./style";
+import { StyledBorderBox, StyledBordersWrapper } from "./storybook/style";
 import Table from "src/core/Table";
 import TableHeader from "src/core/TableHeader";
 import CellHeader from "src/core/CellHeader";

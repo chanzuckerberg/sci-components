@@ -6,7 +6,7 @@ import React from "react";
 import Button from "../Button";
 import { defaultTheme } from "../styles/common/defaultTheme";
 import Alert from "./index";
-import { BADGE } from "../../common/SDSBadges";
+import { BADGE } from "../../common/storybookBadges";
 
 const DismissButton = styled(Button)`
   margin-left: -${defaultTheme.spacing(3)}px;

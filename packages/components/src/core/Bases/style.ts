@@ -1,5 +1,10 @@
 import { styled } from "@mui/material";
-import { CommonThemeProps, fontCodeXs, getColors } from "../styles";
+import {
+  CommonThemeProps,
+  fontCodeXs,
+  getColors,
+  getFontWeights,
+} from "../styles";
 
 interface IStyledVariableProps extends CommonThemeProps {
   type?: "css" | "sass" | "none";
@@ -13,6 +18,7 @@ export const StyledVariable = styled("p")`
     const { type = "none", color } = props;
 
     const colors = getColors(props);
+    const fontWeights = getFontWeights(props);
 
     const textColor =
       type === "none"
@@ -27,7 +33,7 @@ export const StyledVariable = styled("p")`
       padding-left: ${type === "none" ? 0 : type === "css" ? 32 : 40}px;
 
       &:active {
-        font-weight: bold;
+        font-weight: ${fontWeights?.semibold};
 
         &::before {
           font-weight: normal;

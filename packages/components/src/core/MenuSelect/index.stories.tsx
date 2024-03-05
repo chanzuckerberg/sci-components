@@ -11,7 +11,7 @@ import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../common/AUTOCOMPLETE_SI
 import TagFilter from "../TagFilter";
 import { getColors, getCorners, getShadows } from "../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "./index";
-import { BADGE } from "../../common/SDSBadges";
+import { BADGE } from "../../common/storybookBadges";
 
 const StyledPopper = styled(Popper)`
   ${(props) => {

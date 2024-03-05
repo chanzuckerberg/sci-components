@@ -1,5 +1,12 @@
 import { styled } from "@mui/material";
-import { getColors, CommonThemeProps, fontCodeXs } from "src/core/styles";
+import {
+  getColors,
+  CommonThemeProps,
+  fontCodeXs,
+  getFontWeights,
+} from "src/core/styles";
+
+const SHADOW_BOX_BOX_SIZE_PX = 60;
 
 export const StyledShadowsWrapper = styled("div")`
   max-width: 100%;
@@ -14,13 +21,12 @@ export const StyledShadowBox = styled("div")`
     const { shadow } = props;
 
     const colors = getColors(props);
-    const BoxSize = 60;
 
     return `
       position: relative;
       margin-left: 10px;
-      width: ${BoxSize}px;
-      height: ${BoxSize}px;
+      width: ${SHADOW_BOX_BOX_SIZE_PX}px;
+      height: ${SHADOW_BOX_BOX_SIZE_PX}px;
       background-color: ${colors?.gray[100]};
       border-radius: 6px;
       box-shadow: ${shadow};
@@ -40,10 +46,17 @@ export const StyledShadowBox = styled("div")`
 
 export const StyledShadowVariable = styled("p")`
   ${fontCodeXs}
-  margin: 0;
-  cursor: pointer;
 
-  &:active {
-    font-weight: bold;
-  }
+  ${(props) => {
+    const fontWeights = getFontWeights(props);
+
+    return `
+      margin: 0;
+      cursor: pointer;
+    
+      &:active {
+        font-weight: ${fontWeights?.semibold};
+      }
+    `;
+  }}
 `;

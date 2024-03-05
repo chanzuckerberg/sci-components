@@ -30,9 +30,11 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         }
       }
 
-      .${accordionSummaryClasses.expandIconWrapper} {
+      & .${accordionSummaryClasses.expandIconWrapper} {
         margin-left: ${spaces?.m}px;
+        margin-top: ${spaces?.xxs}px !important;
         align-self: center;
+
         svg {
           color: ${semanticComponentColors?.base?.icon};
         }

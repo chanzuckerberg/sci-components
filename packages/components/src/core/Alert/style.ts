@@ -11,12 +11,12 @@ export const StyledAlert = styled(Alert)`
     const { severity = "success" } = props;
 
     const borderColor =
-      (colors && SeverityToColor(severity, colors)[400]) || "black";
+      (colors && severityToColor(severity, colors)[400]) || "black";
     const alertColor =
-      (colors && SeverityToColor(severity, colors)[100]) || "white";
+      (colors && severityToColor(severity, colors)[100]) || "white";
     const iconColor =
-      (colors && SeverityToColor(severity, colors)[400]) || "black";
-    const backgroundColor = colors && SeverityToColor(severity, colors)[100];
+      (colors && severityToColor(severity, colors)[400]) || "black";
+    const backgroundColor = colors && severityToColor(severity, colors)[100];
 
     return `
       background-color: ${backgroundColor};
@@ -39,7 +39,7 @@ export const StyledAlert = styled(Alert)`
   }}
 `;
 
-function SeverityToColor(
+function severityToColor(
   alertSeverity: AlertProps["severity"],
   colors: Colors
 ) {

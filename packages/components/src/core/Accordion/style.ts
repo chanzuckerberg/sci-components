@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   getBorders,
+  getIconSizes,
   getShadows,
   getSpaces,
   getTypography,
@@ -78,6 +79,7 @@ export const StyledAccordion = styled(Accordion, {
 
 const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
+  const iconSizes = getIconSizes(props);
 
   return css`
     &.${accordionClasses.root} {
@@ -100,8 +102,16 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
         }
       }
 
+      /** This is to adjust the padding of the AccordionDetails when the togglePosition is left
+        * The padding-left is the sum of the
+        * left padding of the AccordionButton = spaces?.m
+        * the width of the expandIcon = iconSizes?.xs.width
+        * and the left padding of the AccordionSummary = spaces?.s 
+        */
       & .${accordionDetailsClasses.root} {
-        padding-left: 36px;
+        padding-left: ${(spaces?.m ?? 12) +
+        (iconSizes?.xs.width ?? 12) +
+        (spaces?.s ?? 8)}px;
       }
     }
   `;

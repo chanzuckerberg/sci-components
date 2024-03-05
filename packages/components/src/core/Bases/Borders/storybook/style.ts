@@ -1,6 +1,9 @@
 import { styled } from "@mui/material";
 import { CommonThemeProps, getCorners } from "src/core/styles";
 
+const BORDER_BOX_BORDER_WIDTH_PX = 1,
+  BORDER_BOX_BOX_SIZE_PX = 60;
+
 export const StyledBordersWrapper = styled("div")`
   max-width: 100%;
 `;
@@ -15,16 +18,13 @@ export const StyledBorderBox = styled("div")`
 
     const corners = getCorners(props);
 
-    const BorderWidth = 1;
-    const BoxSize = 60;
-
     return `
       position: relative;
       margin-left: 10px;
-      width: ${BoxSize}px;
-      height: ${BoxSize}px;
+      width: ${BORDER_BOX_BOX_SIZE_PX}px;
+      height: ${BORDER_BOX_BOX_SIZE_PX}px;
       background-color: transparent;
-      border-radius: ${BorderWidth}px;
+      border-radius: ${BORDER_BOX_BORDER_WIDTH_PX}px;
       border: ${border};
       border-radius: ${corners?.l}px;
 

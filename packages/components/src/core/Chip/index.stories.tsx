@@ -2,7 +2,7 @@ import { Args, Meta } from "@storybook/react";
 import React from "react";
 import Button from "../Button";
 import Chip from "./index";
-import { BADGE } from "../../common/SDSBadges";
+import { BADGE } from "../../common/storybookBadges";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;

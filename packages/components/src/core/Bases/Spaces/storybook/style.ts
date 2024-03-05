@@ -1,5 +1,10 @@
 import { styled } from "@mui/material";
-import { getColors, CommonThemeProps, fontCodeXs } from "src/core/styles";
+import {
+  getColors,
+  CommonThemeProps,
+  fontCodeXs,
+  getFontWeights,
+} from "src/core/styles";
 
 export const StyledSpacingWrapper = styled("div")`
   max-width: 100%;
@@ -82,10 +87,17 @@ export const StyledStackedSpacingBox = styled("div")`
 
 export const StyledSpacingVariable = styled("p")`
   ${fontCodeXs}
-  margin: 0;
-  cursor: pointer;
 
-  &:active {
-    font-weight: bold;
-  }
+  ${(props) => {
+    const fontWeights = getFontWeights(props);
+
+    return `
+      margin: 0;
+      cursor: pointer;
+    
+      &:active {
+        font-weight: ${fontWeights?.semibold};
+      }
+    `;
+  }}
 `;

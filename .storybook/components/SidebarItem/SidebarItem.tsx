@@ -9,11 +9,11 @@ interface SidebarItemProps {
   status: StatusType;
 }
 
-const SidebarItem = (props: SidebarItemProps) => {
+const SidebarItem = ({ children, status }: SidebarItemProps) => {
   return (
     <StyledSidebarItem>
-      <div>{props.children}</div>
-      <StatusTag type={props.status}>{props.status}</StatusTag>
+      <div>{children}</div>
+      <StatusTag type={status}>{status}</StatusTag>
     </StyledSidebarItem>
   );
 };
