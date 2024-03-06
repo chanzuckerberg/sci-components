@@ -9,7 +9,7 @@ import {
   getBorders,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface TooltipTableExtraProps extends CommonThemeProps {
   data?: Array<{

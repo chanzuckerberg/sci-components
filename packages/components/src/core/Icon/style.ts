@@ -7,7 +7,7 @@ import {
   getColors,
   getIconSizes,
   getSemanticComponentColors,
-} from "../styles";
+} from "src/core/styles";
 import { IconNameToSizes } from "./map";
 
 export interface IconExtraProps<IconName extends keyof IconNameToSizes>

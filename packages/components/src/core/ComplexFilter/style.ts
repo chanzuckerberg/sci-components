@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { getSpaces } from "../styles";
+import { getSpaces } from "src/core/styles";
 
 export const Wrapper = styled("div")`
   min-width: 150px;

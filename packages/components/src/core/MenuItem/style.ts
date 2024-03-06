@@ -1,16 +1,16 @@
 import { Check, Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CommonThemeProps } from "../styles";
-import { fontBodyXs } from "../styles/common/mixins/fonts";
+import { fontBodyXs } from "src/core/styles/common/mixins/fonts";
 import {
+  CommonThemeProps,
   getColors,
   getFontWeights,
   getIconSizes,
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles/common/selectors/theme";
+} from "src/core/styles";
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
@@ -191,10 +191,6 @@ export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   }}
 
   ${disabledStyles}
-`;
-
-export const DemoWrapper = styled("div")`
-  width: 250px;
 `;
 
 interface StyledIconType {

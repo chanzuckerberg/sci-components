@@ -1,7 +1,7 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
-import Button from "../Button";
-import Icon from "../Icon";
+import Button from "src/core/Button";
+import Icon from "src/core/Icon";
 
 interface SdsProps {
   icon?: JSX.Element;

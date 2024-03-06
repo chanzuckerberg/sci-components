@@ -10,8 +10,8 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../styles";
-import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
+} from "src/core/styles";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
 

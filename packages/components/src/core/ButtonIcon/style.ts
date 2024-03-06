@@ -11,7 +11,7 @@ import {
   getColors,
   getIconSizes,
   getPalette,
-} from "../styles";
+} from "src/core/styles";
 
 export interface ButtonIconSizeToTypes {
   small: "primary" | "secondary" | "tertiary";

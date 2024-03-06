@@ -1,7 +1,7 @@
 import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
-import Icon, { IconNameToSizes } from "../Icon";
-import Tooltip from "../Tooltip";
+import Icon, { IconNameToSizes } from "src/core/Icon";
+import Tooltip from "src/core/Tooltip";
 import { StyledSegmentedControl } from "./style";
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc

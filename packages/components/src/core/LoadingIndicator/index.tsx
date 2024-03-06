@@ -1,4 +1,4 @@
-import Icon from "../Icon";
+import Icon from "src/core/Icon";
 import {
   LoadingIndicatorProps as RawLoadingIndicatorProps,
   StyledLoadingIndicator,

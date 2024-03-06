@@ -7,7 +7,7 @@ import {
   fontBodyXs,
   getBorders,
   getSemanticTextColors,
-} from "../styles";
+} from "src/core/styles";
 
 // (thuang): Support `component` prop
 // https://stackoverflow.com/a/66123108

@@ -1,6 +1,6 @@
 import { Menu, menuClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getSpaces } from "../styles";
+import { getSpaces } from "src/core/styles";
 
 export const StyledMenu = styled(Menu)`
   & {

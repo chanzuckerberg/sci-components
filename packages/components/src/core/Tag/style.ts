@@ -12,7 +12,7 @@ import {
   getSemanticTextColors,
   getSpaces,
   SemanticComponentColors,
-} from "../styles";
+} from "src/core/styles";
 
 export type SdsTagColorType =
   | "accent"

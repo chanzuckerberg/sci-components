@@ -1,9 +1,9 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "../ButtonIcon";
+import ButtonIcon from "src/core/ButtonIcon";
 import {
   ButtonIconExtraProps,
   ButtonIconSizeToTypes,
-} from "../ButtonIcon/style";
+} from "src/core/ButtonIcon/style";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -11,7 +11,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface BannerExtraProps<
   ButtonIconSize extends keyof ButtonIconSizeToTypes,

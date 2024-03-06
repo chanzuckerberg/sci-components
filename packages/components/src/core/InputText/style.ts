@@ -15,7 +15,7 @@ import {
   getCorners,
   getSemanticComponentColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;

@@ -4,14 +4,14 @@ import {
   checkboxClasses,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getIconSizes,
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles/common/selectors/theme";
+} from "src/core/styles";
 import { SemanticComponentColors, fontBodyXs, fontBodyXxs } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {

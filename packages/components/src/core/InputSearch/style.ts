@@ -17,7 +17,7 @@ import {
   getIconSizes,
   getSemanticComponentColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputSearchExtraProps extends CommonThemeProps {
   disabled?: boolean;

@@ -4,7 +4,7 @@ import {
   radioClasses,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { focusVisibleA11yStyle } from "../styles/common/mixins/a11y";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   SemanticComponentColors,
@@ -14,7 +14,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface RadioExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";

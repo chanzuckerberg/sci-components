@@ -8,7 +8,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getShadows,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputSliderExtraProps extends SliderProps, CommonThemeProps {}
 

@@ -8,8 +8,8 @@ import {
   getPalette,
   getSemanticComponentColors,
   getSpaces,
-} from "../styles";
-import { CalloutIntentType } from ".";
+} from "src/core/styles";
+import { CalloutIntentType } from "src/core/Callout";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;

@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import { ReactNode } from "react";
-import Button from "../Button";
+import Button from "src/core/Button";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -13,7 +13,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputDropdownProps extends CommonThemeProps {
   disabled?: boolean;

@@ -10,7 +10,7 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
   offLabel?: string;

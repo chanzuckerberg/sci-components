@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "../ButtonIcon";
+import ButtonIcon from "src/core/ButtonIcon";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -8,7 +8,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface PaginationExtraProps extends CommonThemeProps {
   sdsStyle?: "round" | "square";

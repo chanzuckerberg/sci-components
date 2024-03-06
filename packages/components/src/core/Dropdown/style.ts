@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
-import Button from "../Button";
-import { CommonThemeProps, getSpaces } from "../styles";
+import Button from "src/core/Button";
+import { CommonThemeProps, getSpaces } from "src/core/styles";
 
 interface StyleProps extends CommonThemeProps {
   buttonPosition: "left" | "right";

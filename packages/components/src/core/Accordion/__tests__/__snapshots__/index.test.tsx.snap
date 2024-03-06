@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> Default story renders snapshot 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-mnqvzr-MuiPaper-root-MuiAccordion-root"
+>
+  <div
+    aria-controls="undefined-header-panel-content"
+    aria-expanded="false"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1qm0oyu-MuiButtonBase-root-MuiAccordionSummary-root"
+    id="undefined-header"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+    >
+      Accordion Header
+    </div>
+    <div
+      class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          data-file-name="IconChevronDownSmall"
+          data-testid="IconChevronDownSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+    style="min-height: 0px;"
+  >
+    <div
+      class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+    >
+      <div
+        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+      >
+        <div
+          aria-labelledby="undefined-header"
+          class="MuiAccordion-region"
+          role="region"
+        >
+          <div
+            class="MuiAccordionDetails-root css-kcniag-MuiAccordionDetails-root"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

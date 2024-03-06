@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { CommonThemeProps, fontHeaderXs, getSpaces } from "../styles";
-import Tag from "../Tag";
+import { CommonThemeProps, fontHeaderXs, getSpaces } from "src/core/styles";
+import Tag from "src/core/Tag";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;

@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
-import { ButtonIconSizeToTypes } from "../ButtonIcon";
-import Icon, { IconNameToSizes, IconProps } from "../Icon";
+import { ButtonIconSizeToTypes } from "src/core/ButtonIcon";
+import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {
   BannerExtraProps,
   Centered,

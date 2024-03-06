@@ -5,7 +5,7 @@ import {
   fontBodyXs,
   getSemanticComponentColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface NavigationJumpToExtraProps
   extends Omit<TabsProps, "indicatorColor" | "onChange">,

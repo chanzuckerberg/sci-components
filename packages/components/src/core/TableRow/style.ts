@@ -6,7 +6,7 @@ import {
   getBorders,
   getSemanticComponentColors,
   getSemanticTextColors,
-} from "../styles";
+} from "src/core/styles";
 
 export interface RowExtraProps
   extends CommonThemeProps,

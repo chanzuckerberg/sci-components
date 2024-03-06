@@ -8,7 +8,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../../../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;

@@ -6,10 +6,10 @@ import {
   getCorners,
   getIconSizes,
   getSemanticComponentColors,
+  getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
+} from "src/core/styles";
 import { ExposedNotificationProps } from ".";
 
 interface NotificationExtraProps
@@ -27,6 +27,7 @@ export const StyledNotification = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXs}
+
   ${(props: NotificationExtraProps) => {
     const { intent = "info" } = props;
 
@@ -35,6 +36,7 @@ export const StyledNotification = styled(Alert, {
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     const borderColor = semanticComponentColors?.[intent]?.border ?? "black";
     const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
@@ -48,7 +50,7 @@ export const StyledNotification = styled(Alert, {
       box-sizing: border-box;
       margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${semanticTextColors?.base?.primary};
       padding: ${spaces?.l}px;
       align-items: flex-start;
       border-left: 5px solid;

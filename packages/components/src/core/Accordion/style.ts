@@ -13,7 +13,7 @@ import {
   getShadows,
   getSpaces,
   getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;

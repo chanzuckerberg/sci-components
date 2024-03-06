@@ -1,7 +1,7 @@
 import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
-import InputSearch from "../../../InputSearch";
+import InputSearch from "src/core/InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
@@ -12,7 +12,7 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../../../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;

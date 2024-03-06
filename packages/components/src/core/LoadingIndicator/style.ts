@@ -9,7 +9,7 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface LoadingIndicatorProps extends CommonThemeProps {
   sdsStyle: "minimal" | "tag";

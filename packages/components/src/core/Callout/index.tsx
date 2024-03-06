@@ -1,8 +1,8 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ButtonIcon from "../ButtonIcon";
-import Icon, { IconNameToSizes, IconProps } from "../Icon";
+import ButtonIcon from "src/core/ButtonIcon";
+import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
 

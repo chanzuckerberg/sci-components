@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import Tooltip, { TooltipProps } from "../Tooltip";
+import Tooltip, { TooltipProps } from "src/core/Tooltip";
 import { RowExtraProps, StyledTableRow } from "./style";
 
 interface RowRawProps {

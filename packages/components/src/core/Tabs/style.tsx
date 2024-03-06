@@ -9,13 +9,11 @@ import {
   focusVisibleA11yStyle,
   fontBodySemiboldS,
   fontBodySemiboldXs,
-} from "../styles";
-import {
   CommonThemeProps,
   getColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles/common/selectors/theme";
+} from "src/core/styles";
 import { SdsSize } from "./components/common";
 
 export type TabsProps = RawTabsProps & {

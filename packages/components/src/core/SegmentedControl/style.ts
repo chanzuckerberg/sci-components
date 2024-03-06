@@ -4,7 +4,7 @@ import {
   CommonThemeProps,
   getSemanticComponentColors,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 const doNotForwardProps = ["buttonDefinition"];
 

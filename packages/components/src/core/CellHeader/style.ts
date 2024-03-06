@@ -5,8 +5,8 @@ import {
   getSemanticComponentColors,
   getSemanticTextColors,
   getSpaces,
-} from "../styles";
-import Icon from "../Icon";
+} from "src/core/styles";
+import Icon from "src/core/Icon";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;

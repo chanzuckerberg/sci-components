@@ -1,6 +1,6 @@
 import { defaultTheme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
-import { BADGE } from "../packages/components/src/common/storybookBadges";
+import { BADGE } from "../packages/components/src/common/storybook/storybookBadges";
 
 export const decorators = [
   (Story) => (

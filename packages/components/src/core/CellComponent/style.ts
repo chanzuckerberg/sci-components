@@ -1,12 +1,5 @@
 import { styled } from "@mui/material/styles";
-import {
-  CommonThemeProps,
-  fontBodyS,
-  fontBodyXxs,
-  fontHeaderS,
-  getSemanticTextColors,
-  getSpaces,
-} from "../styles";
+import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
 
 export interface CellComponentExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
@@ -30,29 +23,6 @@ export const StyledCellComponentData = styled("td", {
       vertical-align: ${verticalAlign};
       overflow: hidden;
       padding: ${spaces?.l}px ${spaces?.m}px;
-    `;
-  }}
-`;
-export const StyledStoryHeading = styled("span")`
-  ${fontHeaderS}
-
-  line-height: 24px;
-  display: block;
-`;
-
-export const StyledStoryBody = styled("span", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${fontBodyXxs}
-
-  ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      display: block;
-      color: ${semanticTextColors?.base?.secondary};
-      padding: ${spaces?.s}px 0;
     `;
   }}
 `;

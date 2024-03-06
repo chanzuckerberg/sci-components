@@ -9,7 +9,7 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
