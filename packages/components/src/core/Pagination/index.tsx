@@ -5,10 +5,10 @@ import {
   PaginationExtraProps,
   StyledPagination,
   StyledPaginationButtonIcon,
-  StyledPaginationChevronButton,
   StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
+import Icon from "src/core/Icon";
 
 export interface PaginationInternalProps {
   onPageChange: (page: number) => void;
@@ -57,14 +57,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
 
     return (
       <StyledPagination ref={ref} {...props}>
-        <StyledPaginationChevronList key="prevPage">
-          <StyledPaginationChevronButton
+        <StyledPaginationChevronList
+          data-order="first"
+          key="prevPage"
+          disabled={currentPage === 1}
+          onClick={() => currentPage > 1 && onPreviousPage()}
+        >
+          <Icon
             aria-label="Previous page"
-            onClick={() => currentPage > 1 && onPreviousPage()}
-            disabled={currentPage === 1}
-            sdsSize="small"
-            icon="ChevronLeft"
-            data-order="first"
+            sdsIcon="ChevronLeft"
+            sdsSize="xs"
+            sdsType="button"
           />
         </StyledPaginationChevronList>
 
@@ -103,15 +106,17 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             </Page>
           );
         })}
-
-        <StyledPaginationChevronList key="onNextPage">
-          <StyledPaginationChevronButton
+        <StyledPaginationChevronList
+          data-order="last"
+          key="onNextPage"
+          disabled={currentPage === lastPage}
+          onClick={() => currentPage !== lastPage && onNextPage()}
+        >
+          <Icon
             aria-label="Next page"
-            onClick={() => currentPage !== lastPage && onNextPage()}
-            disabled={currentPage === lastPage}
-            sdsSize="small"
-            data-order="last"
-            icon="ChevronRight"
+            sdsIcon="ChevronRight"
+            sdsSize="xs"
+            sdsType="button"
           />
         </StyledPaginationChevronList>
       </StyledPagination>

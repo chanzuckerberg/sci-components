@@ -182,11 +182,12 @@ export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
 
   ${(props) => {
     const semanticTextColors = getSemanticTextColors(props);
+    const spaces = getSpaces(props);
 
     return `
       text-align: right;
       color: ${semanticTextColors?.base?.primary};
-      margin-left: 10px;
+      margin-left: ${spaces?.m}px;
     `;
   }}
 

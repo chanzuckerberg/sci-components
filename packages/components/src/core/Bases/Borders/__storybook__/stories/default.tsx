@@ -4,7 +4,7 @@ import CellHeader from "src/core/CellHeader";
 import Table from "src/core/Table";
 import TableHeader from "src/core/TableHeader";
 import TableRow from "src/core/TableRow";
-import { getBorders } from "src/core/styles";
+import { Borders, getBorders } from "src/core/styles";
 import { StyledBorderBox } from "../style";
 import { StyledVariable } from "src/core/Bases/style";
 import { copyToClipboard } from "src/core/Bases/utils";
@@ -17,19 +17,19 @@ export const Template = () => {
 
   const RenderTableRow = (
     border: string,
-    group: string | null,
-    name: string
+    parentKey: string | null,
+    currentKey: string
   ) => {
-    const sassVariable = group
-      ? "$sds-border-" + group + "-" + name
-      : "$sds-border-" + name;
+    const sassVariable = parentKey
+      ? "$sds-border-" + parentKey + "-" + currentKey
+      : "$sds-border-" + currentKey;
 
-    const cssVariable = group
-      ? "--sds-border-" + group + "-" + name
-      : "--sds-border-" + name;
+    const cssVariable = parentKey
+      ? "--sds-border-" + parentKey + "-" + currentKey
+      : "--sds-border-" + currentKey;
 
     return (
-      <TableRow key={name}>
+      <TableRow key={cssVariable}>
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledBorderBox border={border} />
         </CellComponent>
@@ -68,18 +68,28 @@ export const Template = () => {
   if (borders) {
     const { none, link, base, ...rest } = borders;
 
-    // eslint-disable-next-line sort-keys
-    const TableBodyContent = Object.entries({ none, link, base, ...rest }).map(
-      ([key, value]) => {
+    const generateTableBodyContent = (
+      border: Borders,
+      parentKey: string | null = null
+    ): JSX.Element[] => {
+      return Object.entries(border).flatMap(([key, value]) => {
+        const currentKey = parentKey ? `${parentKey}-${key}` : key;
+
         if (typeof value === "object") {
-          return Object.entries(value).map(([k, v]) => {
-            return RenderTableRow(v as string, key, k);
-          });
+          return generateTableBodyContent(value, currentKey);
         } else {
-          return RenderTableRow(value, null, key);
+          return RenderTableRow(value, parentKey, key);
         }
-      }
-    );
+      });
+    };
+
+    // eslint-disable-next-line sort-keys, prettier/prettier
+    const TableBodyContent = generateTableBodyContent({
+      none,
+      link,
+      base,
+      ...rest,
+    });
 
     return (
       <Table>

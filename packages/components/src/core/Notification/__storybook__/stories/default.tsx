@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import InputToggle from "src/core/InputToggle";
 import RawNotification from "src/core/Notification";
+import { TooltipTableContent } from "src/core/TooltipTable/__storybook__/stories/default";
 
 export const Notification = (props: Args): JSX.Element => {
   const {
@@ -45,7 +46,24 @@ export const Notification = (props: Args): JSX.Element => {
         {...props}
       >
         This is a notification!
-        {extraContent && <div>{SHORT_LOREM_IPSUM}</div>}
+        {extraContent && (
+          <div>
+            {SHORT_LOREM_IPSUM}
+            <div style={{ marginTop: 10 }}>
+              <TooltipTableContent
+                data={[
+                  {
+                    dataRows: [
+                      { label: "Lorem ipsum", value: 14.03 },
+                      { label: "Dollor", value: 432.53 },
+                      { label: "Sit amet", value: "7,776.05" },
+                    ],
+                  },
+                ]}
+              />
+            </div>
+          </div>
+        )}
       </RawNotification>
     </>
   );

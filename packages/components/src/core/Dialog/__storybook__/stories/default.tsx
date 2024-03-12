@@ -26,7 +26,8 @@ export const Dialog = (props: Args): JSX.Element => {
       <RawDialog onClose={handleClose} open={isOpen} {...rest}>
         <DialogTitle
           title="Title"
-          subtitle="Optional subtitle"
+          subtitle="Optional Subtitle"
+          overline="Optional Overline"
           onClose={titleOnClose ? handleClose : undefined}
           data-testid="dialog-title"
         />

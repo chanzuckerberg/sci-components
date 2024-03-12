@@ -18,7 +18,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         Search by label
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root css-1rzda9w-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-1opgyxy-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"

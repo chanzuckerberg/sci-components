@@ -9,6 +9,7 @@ import {
   getSemanticTextColors,
   getShadows,
   getSpaces,
+  getTypography,
 } from "src/core/styles";
 import { ExposedNotificationProps } from ".";
 
@@ -37,11 +38,23 @@ export const StyledNotification = styled(Alert, {
     const iconSizes = getIconSizes(props);
     const semanticComponentColors = getSemanticComponentColors(props);
     const semanticTextColors = getSemanticTextColors(props);
+    const typography = getTypography(props);
 
     const borderColor = semanticComponentColors?.[intent]?.border ?? "black";
     const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
     const backgroundColor =
       semanticComponentColors?.[intent]?.surface ?? "white";
+
+    // (masoudmanson): The Notification Icon should be vertically centered with the Notification
+    // Title. The padding-top of the Notification Title is calculated based on the difference
+    // between the height of the Icon and the line-height of the Notification Title.
+    const alertMessagePaddingTop = Math.abs(
+      ((iconSizes?.l.height ?? 0) -
+        parseInt(
+          String(typography?.styles?.body?.regular?.xs?.lineHeight ?? "0")
+        )) /
+        2
+    );
 
     return `
       background-color: ${backgroundColor};
@@ -68,7 +81,7 @@ export const StyledNotification = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: ${spaces?.xxxs}px 0px 0px;
+        padding: ${alertMessagePaddingTop}px 0px 0px;
         margin-right: ${spaces?.m}px;
         width: 100%;
 

@@ -18,8 +18,8 @@ describe("<Pagination />", () => {
   it("go to previous page is disabled if currentPage === 1", () => {
     render(<Test />);
     const element = screen.getByTestId("Pagination-disabled-left-arrow");
-    const button = element.getElementsByTagName("button")[0];
-    expect(button.disabled).toBeTruthy();
+    const goPrevious = element.getElementsByTagName("li")[0];
+    expect(goPrevious).toHaveAttribute("disabled");
   });
 
   it("should have a dropdown for left hidden pages list", () => {

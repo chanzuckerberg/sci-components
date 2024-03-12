@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXxs,
+  fontBodyXxxs,
   getColors,
   getCorners,
   getSemanticComponentColors,
@@ -90,7 +91,8 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.markLabel} {
-      color: ${colors?.gray[500]}
+      ${fontBodyXxxs(props)?.styles}
+      color: ${colors?.gray[500]};
     }
 
     .${sliderClasses.markLabelActive} {

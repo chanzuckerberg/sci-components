@@ -1,4 +1,9 @@
-import { Alert, AlertProps } from "@mui/material";
+import {
+  Alert,
+  AlertProps,
+  alertClasses,
+  alertTitleClasses,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
@@ -8,6 +13,7 @@ import {
   getPalette,
   getSemanticComponentColors,
   getSpaces,
+  getTypography,
 } from "src/core/styles";
 import { CalloutIntentType } from "src/core/Callout";
 
@@ -31,6 +37,7 @@ export const StyledCallout = styled(Alert, {
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const palette = getPalette(props);
+    const typography = getTypography(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
@@ -42,6 +49,17 @@ export const StyledCallout = styled(Alert, {
     // any bottom margin
     const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
 
+    // (masoudmanson): The Callout Icon should be vertically centered with the Callout
+    // Title. The padding-top of the Callout Message is calculated based on the difference
+    // between the height of the Icon and the line-height of the Callout Title.
+    const alertMessagePaddingTop = Math.abs(
+      ((iconSizes?.l.height ?? 0) -
+        parseInt(
+          String(typography?.styles?.body?.regular?.xs?.lineHeight ?? "0")
+        )) /
+        2
+    );
+
     return `
       width: 360px;
       margin: ${spaces?.m}px 0;
@@ -50,7 +68,7 @@ export const StyledCallout = styled(Alert, {
       padding: ${spaces?.m}px;
       background-color: ${backgroundColor};
 
-      .MuiAlert-icon {
+      .${alertClasses.icon} {
         height: ${iconSizes?.l.height}px;
         width: ${iconSizes?.l.width}px;
         margin-right: ${spaces?.s}px;
@@ -61,17 +79,17 @@ export const StyledCallout = styled(Alert, {
         }
       }
 
-      .MuiAlert-message {
-        padding: 0;
+      .${alertClasses.message} {
+        padding: ${alertMessagePaddingTop}px 0 0;
         margin-right: ${spaces?.m}px;
 
-        .MuiAlertTitle-root{
+        .${alertTitleClasses.root} {
           margin-top: 0;
           ${titleBottomMargin}
         }
       }
 
-      .MuiAlert-action {
+      .${alertClasses.action} {
         margin-right: 0;
         padding: 0;
         align-items: flex-start;

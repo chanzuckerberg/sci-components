@@ -14,30 +14,19 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-to3gtv-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1885o31-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="0"
         type="button"
       >
-        <span
-          class="css-1p2o9he"
-        >
-          <span
-            class="css-zht1rf"
-          >
-            Upload from Your Computer
-          </span>
-          <span
-            class="css-1eudu0v"
-          />
-        </span>
+        Upload from Your Computer
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-to3gtv-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1885o31-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="-1"
         type="button"

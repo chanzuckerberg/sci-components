@@ -453,7 +453,7 @@ export interface Border {
   200?: string;
   100?: string;
   black?: string;
-  dashed?: string;
+  dashed?: string | { 400?: string };
   solid?: string;
 }
 

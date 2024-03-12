@@ -9,7 +9,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
       class="css-2l3m6x"
     >
       <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"
@@ -35,7 +35,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"
@@ -61,7 +61,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"

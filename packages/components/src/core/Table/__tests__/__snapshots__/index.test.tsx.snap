@@ -11,7 +11,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-2l3m6x"
     >
       <th
-        class="css-12ecyp9"
+        class="css-19ju8um"
       >
         <div
           class="css-187gjam"
@@ -22,7 +22,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"
@@ -48,7 +48,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"
@@ -74,33 +74,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-12ecyp9"
-      >
-        <div
-          class="css-187gjam"
-        >
-          <span>
-            Centered
-          </span>
-          <div
-            class="css-1ft6wgl"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
-        </div>
-      </th>
-      <th
-        class="css-1ybzgbm"
+        class="css-5bfdy4"
       >
         <div
           class="css-rm9mvq"
@@ -111,7 +85,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-ji1u7u"
+        class="css-vnxybn"
       >
         <div
           class="css-wg04tn"
@@ -160,7 +134,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class=" css-10m17a9"
+        class=" css-p6nomj"
         data-mui-internal-clone-element="true"
       >
         <div
@@ -169,11 +143,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-102yezv"
             >
@@ -183,7 +161,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10m17a9"
+        class="css-p6nomj"
       >
         <div
           class="css-ov1ktg"
@@ -191,38 +169,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Secondary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Tertiary Text
-            </span>
-          </div>
-        </div>
-      </td>
-      <td
-        class="css-1ek40pm"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-1asg04x"
-            >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >
@@ -286,7 +241,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1wgtehh"
+        class="css-ebdvcw"
       >
         <div
           class="css-ov1ktg"
@@ -294,11 +249,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-bikrfl"
             >
-              356
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                356
+              </div>
+            </div>
           </div>
         </div>
       </td>
@@ -339,7 +298,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10m17a9"
+        class="css-p6nomj"
       >
         <div
           class="css-ov1ktg"
@@ -347,11 +306,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >
@@ -366,7 +329,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10m17a9"
+        class="css-p6nomj"
       >
         <div
           class="css-ov1ktg"
@@ -374,33 +337,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
-            <span
-              class="css-1xqvcqn"
-            >
-              Secondary Text
-            </span>
-          </div>
-        </div>
-      </td>
-      <td
-        class="css-1ek40pm"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-1asg04x"
-            >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >
@@ -515,7 +460,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1wgtehh"
+        class="css-ebdvcw"
       >
         <div
           class="css-ov1ktg"
@@ -523,11 +468,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-bikrfl"
             >
-              1,234
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                1,234
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >
@@ -580,7 +529,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-7wkr0a"
+        class="css-1h7dd7c"
       >
         <div
           class="css-ov1ktg"
@@ -588,11 +537,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >
@@ -607,7 +560,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-7wkr0a"
+        class="css-1h7dd7c"
       >
         <div
           class="css-ov1ktg"
@@ -615,28 +568,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
-          </div>
-        </div>
-      </td>
-      <td
-        class="css-151sgxq"
-      >
-        <div
-          class="css-ov1ktg"
-        >
-          <div
-            class="css-1ago99h"
-          >
-            <span
-              class="css-1asg04x"
-            >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
           </div>
         </div>
       </td>
@@ -660,7 +600,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1fo1bm8"
+        class="css-ab4j8e"
       >
         <div
           class="css-ov1ktg"
@@ -668,11 +608,15 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-bikrfl"
             >
-              0.4
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                0.4
+              </div>
+            </div>
           </div>
         </div>
       </td>

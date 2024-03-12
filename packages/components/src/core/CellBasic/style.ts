@@ -8,7 +8,7 @@ import {
 } from "src/core/styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
-  horizontalAlign?: "left" | "center" | "right";
+  horizontalAlign?: "left" | "right";
   verticalAlign?: "top" | "center" | "bottom";
   iconVerticalAlign?: "top" | "center" | "bottom";
   shouldTextWrap?: boolean;
@@ -31,6 +31,8 @@ const doNotForwardProps = [
   "primaryTextWrapLineCount",
   "secondaryTextWrapLineCount",
   "tertiaryTextWrapLineCount",
+  "primaryTextComponentSlotBottom",
+  "primaryTextComponentSlotRight",
 ];
 
 const verticalAlignCSSMap = {
@@ -59,7 +61,7 @@ export const StyledTableData = styled("td", {
         padding: ${spaces?.l}px ${spaces?.m}px;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
-        width: 96px;
+        // width: 96px;
         overflow: hidden;
     `;
   }}
@@ -106,7 +108,18 @@ export const StyledCellIconWrapper = styled("div", {
   }}
 `;
 
-export const PrimaryText = styled("span", {
+export const PrimaryTextWrapper = styled("div")`
+  ${(props: CellBasicExtraProps) => {
+    const { horizontalAlign } = props;
+
+    return `
+      display: flex;
+      justify-content: ${horizontalAlign === "left" ? "flex-start" : "flex-end"};
+    `;
+  }}
+`;
+
+export const PrimaryText = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontBodyS}
@@ -171,6 +184,26 @@ export const TertiaryText = styled("span", {
           ? ShouldWrap(tertiaryTextWrapLineCount)
           : ShouldTruncate()
       }
+    `;
+  }}
+`;
+
+export const PrimaryTextComponentSlotBottomWrapper = styled("div")`
+  ${(props) => {
+    const spaces = getSpaces(props);
+
+    return `
+      margin-top: ${spaces?.xxs}px;
+    `;
+  }}
+`;
+
+export const PrimaryTextComponentSlotRightWrapper = styled("div")`
+  ${(props) => {
+    const spaces = getSpaces(props);
+
+    return `
+      margin-left: ${spaces?.xs}px;
     `;
   }}
 `;

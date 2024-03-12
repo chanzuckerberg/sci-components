@@ -47,6 +47,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     />
   </button>
   <p
+    class="MuiTypography-root MuiTypography-body1 css-lr0kx2-MuiTypography-root"
+  >
+    Optional Overline
+  </p>
+  <p
     class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
@@ -54,7 +59,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
-    Optional subtitle
+    Optional Subtitle
   </p>
 </h2>
 `;
@@ -129,6 +134,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     />
   </button>
   <p
+    class="MuiTypography-root MuiTypography-body1 css-lr0kx2-MuiTypography-root"
+  >
+    Optional Overline
+  </p>
+  <p
     class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
@@ -136,7 +146,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
-    Optional subtitle
+    Optional Subtitle
   </p>
 </h2>
 `;
@@ -211,6 +221,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     />
   </button>
   <p
+    class="MuiTypography-root MuiTypography-body1 css-lr0kx2-MuiTypography-root"
+  >
+    Optional Overline
+  </p>
+  <p
     class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
@@ -218,7 +233,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
-    Optional subtitle
+    Optional Subtitle
   </p>
 </h2>
 `;
@@ -293,6 +308,11 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     />
   </button>
   <p
+    class="MuiTypography-root MuiTypography-body1 css-lr0kx2-MuiTypography-root"
+  >
+    Optional Overline
+  </p>
+  <p
     class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
@@ -300,7 +320,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
-    Optional subtitle
+    Optional Subtitle
   </p>
 </h2>
 `;
@@ -377,6 +397,11 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
   id=":r5:"
 >
   <p
+    class="MuiTypography-root MuiTypography-body1 css-lr0kx2-MuiTypography-root"
+  >
+    Optional Overline
+  </p>
+  <p
     class="MuiTypography-root MuiTypography-body1 css-1s4wytx-MuiTypography-root"
   >
     Title
@@ -384,7 +409,7 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 css-mqftut-MuiTypography-root"
   >
-    Optional subtitle
+    Optional Subtitle
   </p>
 </h2>
 `;

@@ -8,6 +8,7 @@ import {
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  fontBodyXs,
   getBorders,
   getIconSizes,
   getShadows,
@@ -40,7 +41,7 @@ export const StyledAccordion = styled(Accordion, {
       &.${accordionClasses.root} {
         box-shadow: ${shadows?.none};
         font-family: ${typography?.fontFamily?.body};
-        border-bottom: ${useDivider ? border?.base[300] : "none"};
+        border-bottom: ${useDivider ? border?.base[200] : "none"};
         height: fit-content;
 
         & .${accordionSummaryClasses.root} {
@@ -59,6 +60,7 @@ export const StyledAccordion = styled(Accordion, {
         }
 
         .${accordionDetailsClasses.root} {
+          ${fontBodyXs(props)}
           padding: ${spaces?.m}px;
           padding-top: ${spaces?.xxs}px;
         }

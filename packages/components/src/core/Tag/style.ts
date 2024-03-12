@@ -112,8 +112,8 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   return css`
     border-radius: ${corners?.m}px;
     padding: ${icon
-      ? `${spaces?.xxs}px ${spaces?.s}px`
-      : `${spaces?.xxxs}px ${spaces?.xs}px`};
+      ? `${spaces?.xxs}px ${spaces?.s}px ${spaces?.xxs}px ${spaces?.xs}px`
+      : `${spaces?.xxxs}px ${spaces?.s}px`};
 
     &:after {
       border-radius: ${corners?.m}px;

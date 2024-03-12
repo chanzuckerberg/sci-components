@@ -6,15 +6,21 @@ import {
   StyledDialogTitle,
   Subtitle,
   Title,
+  Overline,
 } from "./style";
 
-export { Subtitle as DialogTitleSubtitle, Title as DialogTitleTitle };
+export {
+  Subtitle as DialogTitleSubtitle,
+  Title as DialogTitleTitle,
+  Overline as DialogTitleOverline,
+};
 
 export interface DialogTitleProps
   extends DialogTitleExtraProps,
     RawDialogTitleProps {
   title?: string;
   subtitle?: string;
+  overline?: string;
   onClose?: () => void;
 }
 
@@ -23,13 +29,14 @@ export interface DialogTitleProps
  */
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
-    const { children, title, subtitle, onClose, ...rest } = props;
+    const { children, title, subtitle, overline, onClose, ...rest } = props;
 
     return (
       <StyledDialogTitle ref={ref} {...rest}>
         {children || (
           <>
             {onClose && <CloseButton icon="XMark" onClick={onClose} />}
+            <Overline>{overline}</Overline>
             <Title>{title}</Title>
             <Subtitle>{subtitle}</Subtitle>
           </>

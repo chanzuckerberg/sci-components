@@ -23,7 +23,7 @@ describe("<Tooltip />", () => {
 
   it("renders children even when it does not render a tooltip", () => {
     render(<Test {...Test.args} title="" />);
-    const child = screen.getByText("I am a tooltip child element");
+    const child = screen.getByText("I am a tooltip child element.");
     expect(child).not.toBeNull();
   });
 });

@@ -52,12 +52,12 @@ export const Section = styled("div")`
 
     return `
       &:not(:last-child) {
-        padding-bottom: ${spaces?.l}px;
+        padding-bottom: ${spaces?.m}px;
         border-bottom: ${borders?.base[200]};
       }
 
       &:not(:first-of-type) {
-        padding-top: ${spaces?.l}px;
+        padding-top: ${spaces?.m}px;
       }
     `;
   }}

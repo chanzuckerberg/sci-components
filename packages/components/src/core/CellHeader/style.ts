@@ -79,6 +79,10 @@ export const StyledTableHeader = styled("th", {
           color: ${active ? semanticComponentColors?.accent?.fillHover : semanticComponentColors?.base?.iconHover};
           opacity: 1;
         }
+
+        & svg {
+          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
+        }
       }
     `;
   }}

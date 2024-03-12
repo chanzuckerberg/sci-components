@@ -23,7 +23,6 @@ export default {
     },
     label: {
       control: { type: "text" },
-      required: true,
     },
     placeholder: {
       control: { type: "text" },

@@ -43,7 +43,7 @@ const light = (props: TooltipExtraProps): string => {
     color: black;
     text-align: left;
     max-width: 250px;
-    padding: ${spaces?.xs}px ${spaces?.l}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
   `;
 };
 

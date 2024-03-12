@@ -1,12 +1,11 @@
+import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import RawCellBasic from "src/core/CellBasic";
 import Icon from "src/core/Icon";
-
-const TableCellStyle = {
-  border: "dashed 1px #eee",
-  height: 100,
-  maxWidth: 160,
-  width: 160,
-};
+import {
+  CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS,
+  CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,
+  CELL_BASIC_TEST_TABLE_CELL_STYLE,
+} from "../constants";
 
 export const TestDemo = (): JSX.Element => (
   <table>
@@ -15,21 +14,19 @@ export const TestDemo = (): JSX.Element => (
         <RawCellBasic
           data-testid="CellBasicVerticalAlignTest"
           primaryText="Primary Text"
-          secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          secondaryText={SHORT_LOREM_IPSUM}
           secondaryTextWrapLineCount={2}
-          shouldTextWrap
           verticalAlign="bottom"
+          shouldTextWrap
           shouldShowTooltipOnHover={false}
-          style={TableCellStyle as React.CSSProperties}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
         />
         <RawCellBasic
-          data-testid="CellBasicCenterAlignTest"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
-          verticalAlign="center"
-          horizontalAlign="center"
+          horizontalAlign="left"
           shouldShowTooltipOnHover={false}
-          style={TableCellStyle as React.CSSProperties}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
         />
         <RawCellBasic
           data-testid="CellBasic"
@@ -38,15 +35,67 @@ export const TestDemo = (): JSX.Element => (
           tertiaryText="Tertiary Text"
           horizontalAlign="right"
           tooltipProps={{ sdsStyle: "dark", title: "testTooltipTitle" }}
-          style={TableCellStyle as React.CSSProperties}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
         />
+      </tr>
+      <tr>
         <RawCellBasic
           data-testid="CellBasicWithIcon"
           primaryText="Primary Text"
           secondaryText="Secondary Text"
           tertiaryText="Tertiary Text"
+          shouldShowTooltipOnHover={false}
           icon={<Icon sdsSize="l" sdsIcon="Bacteria" sdsType="static" />}
-          style={TableCellStyle as React.CSSProperties}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
+        />
+        <RawCellBasic
+          primaryText="Primary Text"
+          primaryTextComponentSlotRight={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[2]
+          }
+          secondaryText="Secondary Text"
+          tertiaryText="Tertiary Text"
+          shouldShowTooltipOnHover={false}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
+        />
+        <RawCellBasic
+          primaryText="Primary Text"
+          primaryTextComponentSlotRight={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[3]
+          }
+          shouldShowTooltipOnHover={false}
+          secondaryText="Secondary Text"
+          tertiaryText="Tertiary Text"
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
+        />
+      </tr>
+      <tr>
+        <RawCellBasic
+          primaryText="Primary Text"
+          primaryTextComponentSlotBottom={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[2]
+          }
+          shouldShowTooltipOnHover={false}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
+        />
+        <RawCellBasic
+          primaryText="Primary Text"
+          primaryTextComponentSlotBottom={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[3]
+          }
+          shouldShowTooltipOnHover={false}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
+        />
+        <RawCellBasic
+          primaryText="Primary Text"
+          primaryTextComponentSlotBottom={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[2]
+          }
+          primaryTextComponentSlotRight={
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[3]
+          }
+          shouldShowTooltipOnHover={false}
+          style={CELL_BASIC_TEST_TABLE_CELL_STYLE as React.CSSProperties}
         />
       </tr>
     </tbody>

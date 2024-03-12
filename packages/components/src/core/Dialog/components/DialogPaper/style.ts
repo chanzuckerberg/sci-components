@@ -63,5 +63,6 @@ function paperDimensions(props: StyledPaperProps) {
     width: ${width};
     min-height: ${minHeight};
     max-width: revert;
+    box-sizing: border-box;
   `;
 }

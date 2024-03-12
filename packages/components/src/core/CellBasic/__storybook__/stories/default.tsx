@@ -8,7 +8,7 @@ export const CellBasic = (props: Args): JSX.Element => {
         <tr
           style={{
             display: "block",
-            maxWidth: "200px",
+            maxWidth: "400px",
           }}
         >
           <RawCellBasic

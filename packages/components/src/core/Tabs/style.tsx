@@ -13,6 +13,7 @@ import {
   getColors,
   getSemanticTextColors,
   getSpaces,
+  getSemanticComponentColors,
 } from "src/core/styles";
 import { SdsSize } from "./components/common";
 
@@ -75,13 +76,16 @@ export const StyledTab = styled(RawTab, {
   ${(props) => {
     const spaces = getSpaces(props);
     const semanticTextColors = getSemanticTextColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      margin: 0 ${spaces?.xl}px ${spaces?.xxs}px 0;
+      margin-right: ${spaces?.xl}px;
+      padding-bottom: ${spaces?.xxs}px;
 
       color: ${semanticTextColors?.base?.secondary};
 
       &:hover, :focus {
+        box-shadow: 0 2px 0 0 ${semanticComponentColors?.base?.borderHover};
         color: ${semanticTextColors?.base?.primary};
       }
 

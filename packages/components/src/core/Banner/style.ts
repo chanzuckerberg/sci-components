@@ -7,6 +7,7 @@ import {
 import {
   CommonThemeProps,
   fontBodyS,
+  getColors,
   getIconSizes,
   getSemanticComponentColors,
   getSemanticTextColors,
@@ -48,28 +49,20 @@ export const StyledButtonIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsButtonIcon.includes(prop),
 })`
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconType<ButtonIconSize>
-  ) => {
-    const spaces = getSpaces(props);
-
-    return `
-      flex: 0 0 auto;
-      margin: ${spaces?.m}px ${spaces?.l}px;
-    `;
-  }}
+  flex: 0 0 auto;
 
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconType<ButtonIconSize>
   ) => {
     const { bannerType } = props;
-    const semanticComponentColors = getSemanticComponentColors(props);
+
+    const colors = getColors(props);
 
     if (bannerType !== "primary") return "";
 
     return `
       svg:hover {
-        fill: ${semanticComponentColors?.accent?.fillOnFill};
+        fill: ${colors?.blue[300]};
       }
     `;
   }}
@@ -111,10 +104,6 @@ const doNotForwardProps = ["sdsType", "textChild"];
 export const StyledBanner = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  display: flex;
-  align-items: center;
-  width: 100%;
-
   ${fontBodyS}
 
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
@@ -122,7 +111,13 @@ export const StyledBanner = styled("div", {
   ) => {
     const { sdsType } = props;
 
+    const spaces = getSpaces(props);
+
     return `
+      display: flex;
+      align-items: center;
+      padding: ${spaces?.s}px ${spaces?.l}px;
+  
       ${sdsType === "primary" ? primary(props) : ""}
       ${sdsType === "secondary" ? secondary(props) : ""}
     `;

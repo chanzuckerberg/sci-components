@@ -4,7 +4,7 @@ export const BORDER_USAGE: Record<string, string> = {
     "Secondary buttons, active states of input containers",
   "$sds-border-accent-500": "Hover rounded and square buttons",
   "$sds-border-accent-600": "Active rounded and square buttons",
-  "$sds-border-accent-dashed":
+  "$sds-border-accent-dashed-400":
     "Hover states for containers with dashed borders",
   "$sds-border-base-100": "Modals and dropdown Menus",
   "$sds-border-base-200": "-",
@@ -13,7 +13,7 @@ export const BORDER_USAGE: Record<string, string> = {
   "$sds-border-base-400": "Input borders (default states)",
   "$sds-border-base-500": "-",
   "$sds-border-base-black": "Input and dropdown hover states",
-  "$sds-border-base-dashed": "File upload/drag and drop containers",
+  "$sds-border-base-dashed-400": "File upload/drag and drop containers",
   "$sds-border-beta-400": "-",
   "$sds-border-info-400": "-",
   "$sds-border-link-dashed":

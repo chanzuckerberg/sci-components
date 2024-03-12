@@ -5,7 +5,6 @@ import {
   CommonThemeProps as StyleProps,
   fontBodyS,
   fontBodyXs,
-  getBorders,
   getSemanticTextColors,
 } from "src/core/styles";
 
@@ -41,16 +40,29 @@ const defaultStyle = (props: LinkProps) => {
 };
 
 const dashedStyle = (props: LinkProps) => {
-  const border = getBorders(props);
+  const { sdsSize = "s" } = props;
 
   return css`
     color: inherit;
-    border-bottom: ${border?.link.dashed};
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      margin-top: ${sdsSize === "s" ? -4 : -3}px;
+      width: 100%;
+      background-image: linear-gradient(to right, black 60%, transparent 60%);
+      background-size: 5px 100%;
+    }
 
     &:hover,
     &:focus {
       text-decoration: none;
-      border-bottom: ${border?.link.solid};
+      &::after {
+        background-image: linear-gradient(to right, black 60%, black 60%);
+      }
     }
   `;
 };
@@ -68,6 +80,8 @@ export const StyledLink = styled(Link, {
     return !doNotForwardProps.includes(prop.toString());
   },
 })`
+  all: unset;
+
   ${(props: LinkProps) => {
     const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
 
@@ -78,6 +92,8 @@ export const StyledLink = styled(Link, {
       ${sdsSize === "xs" && extraSmallStyle(props)}
 
       font-weight: ${fontWeight === "normal" ? "400" : "600"};
+      display: inline-block;
+      cursor: pointer;
     `;
   }}
 ` as typeof Link;

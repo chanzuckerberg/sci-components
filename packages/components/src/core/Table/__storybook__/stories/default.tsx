@@ -23,7 +23,6 @@ export const Table = (props: Args): JSX.Element => {
         <CellHeader>
           A very long table header title to test sort icon positioning
         </CellHeader>
-        <CellHeader horizontalAlign="center">Centered</CellHeader>
         <CellHeader hideSortIcon>Component</CellHeader>
         <CellHeader horizontalAlign="right" hideSortIcon>
           Right Aligned and Not sortable
@@ -55,13 +54,6 @@ export const Table = (props: Args): JSX.Element => {
             tertiaryText="Tertiary Text"
             shouldShowTooltipOnHover={false}
           />
-          <CellBasic
-            primaryText="Primary Text"
-            secondaryText="Secondary Text"
-            tertiaryText="Tertiary Text"
-            horizontalAlign="center"
-            shouldShowTooltipOnHover={false}
-          />
           <CellComponent>
             {["info", "notice", "beta", "negative", "positive"].map((item) => (
               <Tag
@@ -80,6 +72,7 @@ export const Table = (props: Args): JSX.Element => {
             shouldShowTooltipOnHover={false}
           />
         </TableRow>
+
         <TableRow>
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
@@ -104,12 +97,6 @@ export const Table = (props: Args): JSX.Element => {
             secondaryText="Secondary Text"
             shouldShowTooltipOnHover={false}
           />
-          <CellBasic
-            primaryText="Primary Text"
-            secondaryText="Secondary Text"
-            horizontalAlign="center"
-            shouldShowTooltipOnHover={false}
-          />
           <CellComponent>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
@@ -128,6 +115,7 @@ export const Table = (props: Args): JSX.Element => {
             shouldShowTooltipOnHover={false}
           />
         </TableRow>
+
         <TableRow
           disabled
           shouldShowTooltipOnHover
@@ -157,12 +145,6 @@ export const Table = (props: Args): JSX.Element => {
             primaryText="Primary Text"
             shouldShowTooltipOnHover={false}
             verticalAlign="center"
-          />
-          <CellBasic
-            primaryText="Primary Text"
-            horizontalAlign="center"
-            verticalAlign="center"
-            shouldShowTooltipOnHover={false}
           />
           <CellComponent verticalAlign="center">
             <Icon sdsSize="l" sdsIcon="Virus" sdsType="static" />

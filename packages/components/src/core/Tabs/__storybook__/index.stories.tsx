@@ -44,7 +44,7 @@ export default {
 export const Default = {
   args: {
     items: [
-      { count: null, label: "Upload from Your Computer" },
+      { label: "Upload from Your Computer" },
       { count: 0, label: "Upload from Base Space" },
     ],
     sdsSize: "large",

@@ -25,17 +25,21 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       >
         TagFilter
       </span>
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-i4bv87-MuiSvgIcon-root"
-        data-testid="ClearIcon"
-        focusable="false"
-        viewBox="0 0 24 24"
+      <div
+        class="css-1ft6wgl"
       >
-        <path
-          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-25m3b5-MuiSvgIcon-root"
+          data-file-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
         />
-      </svg>
+      </div>
     </div>
   </div>
 </div>

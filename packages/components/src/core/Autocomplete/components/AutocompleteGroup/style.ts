@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import {
   CommonThemeProps,
-  fontCapsXxxs,
+  fontCapsXxxxs,
   getBorders,
   getIconSizes,
   getSemanticComponentColors,
@@ -45,7 +45,7 @@ export const StyledColumn = styled("div")`
 `;
 
 export const StyledColumnTitle = styled("p")`
-  ${fontCapsXxxs}
+  ${fontCapsXxxxs}
   ${(props: StyleProps) => {
     const spaces = getSpaces(props);
     const semanticTextColors = getSemanticTextColors(props);

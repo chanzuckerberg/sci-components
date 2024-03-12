@@ -59,48 +59,41 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
   }}
 `;
 
-export const StyledPaginationChevronList = styled("li")`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const StyledPaginationChevronButton = styled(ButtonIcon, {
+export const StyledPaginationChevronList = styled("li", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: PaginationExtraProps) => {
     const { disabled } = props;
+
     const spaces = getSpaces(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
+      width: 32px;
+      height: 32px;
+      cursor: ${disabled ? "auto" : "pointer"};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 32px;
+
       &[data-order="first"] {
-        margin-right: ${spaces?.xl}px;
+        margin-right: ${spaces?.l}px;
       }
 
       &[data-order="last"] {
-        margin-left: ${spaces?.xl}px;
-      }
-
-      cursor: ${disabled ? "auto" : "pointer"};
-
-      &:hover {
-        background-color: transparent;
+        margin-left: ${spaces?.l}px;
       }
 
       & .MuiSvgIcon-root {
-        color: ${
-          disabled
-            ? semanticComponentColors?.base?.iconDisabled
-            : semanticComponentColors?.base?.icon
-        };
+        color: ${disabled ? semanticComponentColors?.base?.iconDisabled : semanticComponentColors?.base?.icon};
+      }
 
-        &:hover {
-          color: ${
-            disabled
-              ? semanticComponentColors?.base?.iconDisabled
-              : semanticComponentColors?.base?.iconHover
-          };
+      &:hover {
+        background-color: ${disabled ? "transparent" : semanticComponentColors?.base?.fillHover};
+
+        & .MuiSvgIcon-root {
+          color: ${disabled ? semanticComponentColors?.base?.iconDisabled : semanticComponentColors?.base?.iconHover}
         }
       }
     `;

@@ -4,10 +4,10 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      style="display: block; max-width: 200px;"
+      style="display: block; max-width: 400px;"
     >
       <td
-        class=" css-10m17a9"
+        class=" css-p6nomj"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
       >
@@ -17,11 +17,15 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
           <div
             class="css-1ago99h"
           >
-            <span
-              class="css-1asg04x"
+            <div
+              class="css-7m17a9"
             >
-              Primary Text
-            </span>
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
             <span
               class="css-1xqvcqn"
             >

@@ -104,6 +104,10 @@ const Tooltip = forwardRef(function Tooltip(
       PopperComponent={PopperComponent}
       ref={ref}
       {...rest}
+      // (masoudmanson): SDS Tooltips should always have an arrow
+      // and by setting the arrow prop to true, we ensure that
+      // the arrow is always rendered.
+      arrow={true}
     />
   );
 });

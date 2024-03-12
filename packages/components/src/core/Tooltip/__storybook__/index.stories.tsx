@@ -9,9 +9,6 @@ import { TestDemo } from "./stories/test";
 
 export default {
   argTypes: {
-    arrow: {
-      control: { type: "boolean" },
-    },
     arrowOffset: {
       control: { type: "number" },
     },
@@ -57,7 +54,6 @@ export default {
 
 export const Default = {
   args: {
-    arrow: true,
     placement: "top",
     sdsStyle: "dark",
     subtitle: "dolor sit amet",

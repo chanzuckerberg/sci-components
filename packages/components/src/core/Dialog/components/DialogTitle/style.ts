@@ -2,6 +2,7 @@ import { DialogTitle, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as DialogTitleExtraProps,
+  fontBodyS,
   fontBodyXs,
   fontHeaderXl,
   getPalette,
@@ -41,6 +42,20 @@ export const Subtitle = styled(Typography)`
 
     return `
       color: ${palette?.text?.secondary};
+    `;
+  }}
+`;
+
+export const Overline = styled(Typography)`
+  ${fontBodyS}
+
+  ${(props) => {
+    const palette = getPalette(props);
+    const spaces = getSpaces(props);
+
+    return `
+      color: ${palette?.text?.secondary};
+      padding-bottom: ${spaces?.xxxs}px;
     `;
   }}
 `;

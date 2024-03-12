@@ -223,6 +223,22 @@ export const StyledSearchBase = styled(TextField, {
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
           opacity: ${value ? 1 : 0};
+
+          svg {
+            color: ${semanticComponentColors?.base?.icon} !important;
+          }
+
+          &:hover {
+            svg {
+              color: ${semanticComponentColors?.accent?.fillHover} !important;
+            }
+          }
+
+          &:active {
+            svg {
+              color: ${semanticComponentColors?.accent?.fillPressed} !important;
+            }
+          }
         }
       }
 
