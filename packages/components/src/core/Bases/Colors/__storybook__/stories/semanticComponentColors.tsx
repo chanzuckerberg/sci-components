@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { getSemanticComponentColors } from "src/core/styles";
-import Colors from "../components/Color";
+import Colors from "../components/Colors";
 
 export const SemanticComponentColorsTemplate = () => {
   const theme = useTheme();

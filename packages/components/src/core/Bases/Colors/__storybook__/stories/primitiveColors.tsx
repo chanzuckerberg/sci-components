@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { getColors } from "src/core/styles";
-import Colors from "../components/Color";
+import Colors from "../components/Colors";
 
 export const PrimitiveColorsTemplate = () => {
   const theme = useTheme();

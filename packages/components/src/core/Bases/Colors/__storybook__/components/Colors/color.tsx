@@ -15,10 +15,11 @@ interface ColorComponentProps {
   value: string;
   shade?: string;
   prefix?: string;
+  semanticName?: string;
 }
 
 const Color = (props: ColorComponentProps) => {
-  const { group, value, shade, prefix = "$" } = props;
+  const { group, value, shade, prefix = "$", semanticName } = props;
 
   const sassVariable = shade
     ? "$" + prefix + "-" + group + "-" + convertToKebabCase(shade)
@@ -48,7 +49,7 @@ const Color = (props: ColorComponentProps) => {
 
       <div>
         <StyledColorCode onClick={() => copyToClipboard(value)}>
-          {String(value)}
+          {String(semanticName)}
         </StyledColorCode>
 
         <StyledColorVariable onClick={() => copyToClipboard(cssVariable)}>
