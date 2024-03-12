@@ -22,8 +22,8 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
   "tooltipProps",
   "horizontalAlign",
   "verticalAlign",
-  "PrimaryTextComponentSlotBottomWrapper",
-  "PrimaryTextComponentSlotRightWrapper",
+  "primaryTextComponentSlotBottom",
+  "primaryTextComponentSlotRight",
 ];
 
 export const CELL_BASIC_ICON_OPTIONS = [
