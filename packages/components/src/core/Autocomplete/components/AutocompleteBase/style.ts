@@ -5,7 +5,7 @@ import InputSearch from "src/core/InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
-  fontCapsXxxs,
+  fontCapsXxxxs,
   getBorders,
   getCorners,
   getSemanticComponentColors,
@@ -35,7 +35,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
   + .${autocompleteClasses.popper}
     > .${autocompleteClasses.paper}
     .${autocompleteClasses.groupLabel} {
-    ${fontCapsXxxs}
+    ${fontCapsXxxxs}
   }
 
   ${(props: StyleProps) => {

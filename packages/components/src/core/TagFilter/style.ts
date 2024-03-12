@@ -1,7 +1,12 @@
 import { css } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { CommonThemeProps, fontHeaderXs, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  fontHeaderXs,
+  getIconSizes,
+  getSpaces,
+} from "src/core/styles";
 import Tag from "src/core/Tag";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
@@ -13,6 +18,7 @@ export interface TagFilterExtraProps extends CommonThemeProps {
 export const StyledTag = styled(Tag)`
   ${(props: TagFilterExtraProps) => {
     const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
 
     return css`
       padding: ${spaces?.xxs}px ${(spaces?.s ?? 0) - 2}px ${spaces?.xxs}px
@@ -29,6 +35,8 @@ export const StyledTag = styled(Tag)`
       .MuiChip-deleteIcon,
       .MuiSvgIcon-root {
         margin-left: ${spaces?.s}px;
+        width: ${iconSizes?.xs?.width}px;
+        height: ${iconSizes?.xs?.height}px;
       }
 
       .MuiChip-label,
