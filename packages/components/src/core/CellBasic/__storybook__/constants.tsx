@@ -55,18 +55,35 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = [
   />,
   <ButtonIconsGroupRight key="componentSlotRight-2">
     <StyledButtonIcon
+      aria-label="Bar Chart Vertical 4"
       icon="BarChartVertical4"
       sdsSize="small"
       sdsType="primary"
     />
-    <StyledButtonIcon icon="Copy" sdsSize="small" sdsType="primary" />
     <StyledButtonIcon
+      aria-label="Copy"
+      icon="Copy"
+      sdsSize="small"
+      sdsType="primary"
+    />
+    <StyledButtonIcon
+      aria-label="Search Lines Horizontal 3"
       icon="SearchLinesHorizontal3"
       sdsSize="small"
       sdsType="primary"
     />
-    <StyledButtonIcon icon="TreeHorizontal" sdsSize="small" sdsType="primary" />
-    <StyledButtonIcon icon="Download" sdsSize="small" sdsType="primary" />
+    <StyledButtonIcon
+      aria-label="Tree Horizontal"
+      icon="TreeHorizontal"
+      sdsSize="small"
+      sdsType="primary"
+    />
+    <StyledButtonIcon
+      aria-label="Download"
+      icon="Download"
+      sdsSize="small"
+      sdsType="primary"
+    />
   </ButtonIconsGroupRight>,
 ];
 
@@ -97,22 +114,35 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
   </div>,
   <ButtonIconsGroupBottom key="componentSlotBottom-2">
     <StyledButtonIcon
+      aria-label="Bar Chart Vertical 4"
       icon="BarChartVertical4"
       sdsSize="small"
       sdsType="tertiary"
     />
-    <StyledButtonIcon icon="Copy" sdsSize="small" sdsType="tertiary" />
     <StyledButtonIcon
+      aria-label="Copy"
+      icon="Copy"
+      sdsSize="small"
+      sdsType="tertiary"
+    />
+    <StyledButtonIcon
+      aria-label="Search Lines Horizontal 3"
       icon="SearchLinesHorizontal3"
       sdsSize="small"
       sdsType="tertiary"
     />
     <StyledButtonIcon
+      aria-label="Tree Horizontal"
       icon="TreeHorizontal"
       sdsSize="small"
       sdsType="tertiary"
     />
-    <StyledButtonIcon icon="Download" sdsSize="small" sdsType="tertiary" />
+    <StyledButtonIcon
+      aria-label="Download"
+      icon="Download"
+      sdsSize="small"
+      sdsType="tertiary"
+    />
   </ButtonIconsGroupBottom>,
 ];
 

@@ -7,7 +7,7 @@ const CellBasicNameSpaceTest = (props: CellBasicProps) => {
       <tbody>
         <tr>
           <CellBasic
-            horizontalAlign="center"
+            horizontalAlign="left"
             verticalAlign="center"
             icon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
             iconVerticalAlign="center"
