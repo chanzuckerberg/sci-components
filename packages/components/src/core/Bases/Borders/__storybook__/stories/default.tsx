@@ -83,10 +83,11 @@ export const Template = () => {
       });
     };
 
-    // eslint-disable-next-line sort-keys, prettier/prettier
     const TableBodyContent = generateTableBodyContent({
       none,
+      // eslint-disable-next-line sort-keys, prettier/prettier
       link,
+      // eslint-disable-next-line sort-keys, prettier/prettier
       base,
       ...rest,
     });
