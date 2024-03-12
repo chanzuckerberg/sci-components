@@ -15,7 +15,8 @@ export const StyledTag = styled(Tag)`
     const spaces = getSpaces(props);
 
     return css`
-      padding: ${spaces?.xxs}px ${spaces?.s}px;
+      padding: ${spaces?.xxs}px ${(spaces?.s ?? 0) - 2}px ${spaces?.xxs}px
+        ${spaces?.s}px;
 
       &:after {
         display: none;

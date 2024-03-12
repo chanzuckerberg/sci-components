@@ -33,17 +33,17 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.negative[400]};
+      border: ${borders?.negative?.default};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.negative[400]};
+      border: ${borders?.negative?.default};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.negative[400]};
+        border: ${borders?.negative?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
@@ -62,17 +62,17 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.notice[400]};
+      border: ${borders?.notice?.default};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.notice[400]};
+      border: ${borders?.notice?.default};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.notice[400]};
+        border: ${borders?.notice?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
@@ -92,11 +92,11 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.base[300]};
+        border: ${borders?.base?.disabled};
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.base[300]};
+        border: ${borders?.base?.disabled};
       }
 
       &::placeholder {
@@ -128,10 +128,10 @@ const userInput = (props: InputTextExtraProps): SerializedStyles => {
 
   const border =
     intent === "error"
-      ? borders?.negative[400]
+      ? borders?.negative?.default
       : intent === "warning"
-        ? borders?.notice[400]
-        : borders?.accent[400];
+        ? borders?.notice?.default
+        : borders?.accent?.default;
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -187,7 +187,7 @@ export const StyledInputBase = styled(TextField, {
 
       .${outlinedInputClasses.notchedOutline} {
         border-radius: ${corners?.m}px;
-        border: ${borders?.base[400]};
+        border: ${borders?.base?.default};
       }
 
       .${outlinedInputClasses.root}:hover
@@ -197,7 +197,7 @@ export const StyledInputBase = styled(TextField, {
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
         .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.accent[400]};
+        border: ${borders?.accent?.default};
       }
 
       ${sdsType === "textArea" && textArea(props)}

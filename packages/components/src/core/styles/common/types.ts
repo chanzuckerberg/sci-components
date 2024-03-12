@@ -446,15 +446,14 @@ export interface IconSizes {
 }
 
 export interface Border {
-  600?: string;
-  500?: string;
-  400?: string;
-  300?: string;
-  200?: string;
-  100?: string;
+  default?: string;
+  divider?: string;
   black?: string;
-  dashed?: string | { 400?: string };
   solid?: string;
+  dashed?: string;
+  hover?: string;
+  disabled?: string;
+  table?: string;
 }
 
 export interface Borders {

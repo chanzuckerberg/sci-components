@@ -88,7 +88,7 @@ export const StyledTableRow = styled("tr", {
 
     return `
       align-items: center;
-      border-bottom: ${useDivider ? borders?.base[300] : borders?.none};
+      border-bottom: ${useDivider ? borders?.base?.table : borders?.none};
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
 

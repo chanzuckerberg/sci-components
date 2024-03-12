@@ -36,15 +36,15 @@ export const StyledPopper = styled(Popper, {
     !doNotForwardProps.includes(prop) || prop === "anchorEl",
 })`
   ${(props: StyleProps) => {
-    const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const spaces = getSpaces(props);
+    const borders = getBorders(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       background-color: ${semanticComponentColors?.base?.surfacePrimary};
-      border: ${borders?.base[100]};
+      border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;

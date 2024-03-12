@@ -41,7 +41,7 @@ export const StyledColorWrapper = styled("div")`
       }
 
       &:hover {
-        border: ${borders?.base.black};
+        border: ${borders?.base?.hover};
         z-index: 10;
 
         .color-title {

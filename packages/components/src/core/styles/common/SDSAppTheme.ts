@@ -386,43 +386,38 @@ export const SDSAppTheme: AppTheme = {
 // override every theme property that makes use of colors.
 SDSAppTheme.borders = {
   accent: {
-    "300": `1px solid ${SDSAppTheme.colors.blue[300]}`,
-    "400": `1px solid ${SDSAppTheme.colors.blue[400]}`,
-    "500": `1px solid ${SDSAppTheme.colors.blue[500]}`,
-    "600": `1px solid ${SDSAppTheme.colors.blue[600]}`,
-    dashed: {
-      "400": `2px dashed ${SDSAppTheme.colors.blue[400]}`,
-    },
+    dashed: `2px dashed ${SDSAppTheme.colors.blue[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.blue[400]}`,
+    disabled: `1px solid ${SDSAppTheme.colors.blue[300]}`,
+    hover: `1px solid ${SDSAppTheme.colors.blue[500]}`,
   },
   base: {
-    "100": `1px solid ${SDSAppTheme.colors.gray[100]}`,
-    "200": `1px solid ${SDSAppTheme.colors.gray[200]}`,
-    "300": `1px solid ${SDSAppTheme.colors.gray[300]}`,
-    "400": `1px solid ${SDSAppTheme.colors.gray[400]}`,
-    "500": `1px solid ${SDSAppTheme.colors.gray[500]}`,
     black: `1px solid ${SDSAppTheme.colors.common.black}`,
-    dashed: {
-      "400": `2px dashed ${SDSAppTheme.colors.gray[400]}`,
-    },
+    dashed: `2px dashed ${SDSAppTheme.colors.gray[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.gray[400]}`,
+    disabled: `1px solid ${SDSAppTheme.colors.gray[300]}`,
+    divider: `1px solid ${SDSAppTheme.colors.gray[200]}`,
+    hover: `1px solid ${SDSAppTheme.colors.common.black}`,
+    table: `1px solid ${SDSAppTheme.colors.gray[300]}`,
   },
   beta: {
-    "400": `1px solid ${SDSAppTheme.colors.purple[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.purple[400]}`,
   },
   info: {
-    "400": `1px solid ${SDSAppTheme.colors.blue[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.blue[400]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   negative: {
-    "400": `1px solid ${SDSAppTheme.colors.red[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.red[400]}`,
   },
   none: "none",
   notice: {
-    "400": `1px solid ${SDSAppTheme.colors.yellow[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.yellow[400]}`,
   },
   positive: {
-    "400": `1px solid ${SDSAppTheme.colors.green[400]}`,
+    default: `1px solid ${SDSAppTheme.colors.green[400]}`,
   },
 };

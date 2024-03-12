@@ -2,43 +2,38 @@
   "sds": {
     "border": {
       "negative": {
-        "400": { "value": "1px solid {sds.color.primitive.red.400.value}" }
+        "default": { "value": "1px solid {sds.color.primitive.red.400.value}" }
       },
       "base": {
-        "100": { "value": "1px solid {sds.color.primitive.gray.100.value}" },
-        "200": { "value": "1px solid {sds.color.primitive.gray.200.value}" },
-        "300": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
-        "400": { "value": "1px solid {sds.color.primitive.gray.400.value}" },
-        "500": { "value": "1px solid {sds.color.primitive.gray.500.value}" },
+        "divider": { "value": "1px solid {sds.color.primitive.gray.200.value}" },
+        "table": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
+        "disabled": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
+        "default": { "value": "1px solid {sds.color.primitive.gray.400.value}" },
         "black": { "value": "2px dashed {sds.color.primitive.common.black.value}" },
-        "dashed": {
-          "400": { "value": "2px dashed {sds.color.primitive.gray.400.value}" }
-        }
+        "hover": { "value": "2px dashed {sds.color.primitive.common.black.value}" },
+        "dashed": { "value": "2px dashed {sds.color.primitive.gray.400.value}" }
       },
       "link": {
         "dashed": { "value": "1px dashed" },
         "solid": { "value": "1px solid" }
       },
       "accent": {
-        "300": { "value": "1px solid {sds.color.primitive.blue.300.value}" },
-        "400": { "value": "1px solid {sds.color.primitive.blue.400.value}" },
-        "500": { "value": "1px solid {sds.color.primitive.blue.500.value}" },
-        "600": { "value": "1px solid {sds.color.primitive.blue.600.value}" },
-        "dashed": {
-          "400": { "value": "2px dashed {sds.color.primitive.blue.400.value}" }
-        }
+        "disabled": { "value": "1px solid {sds.color.primitive.blue.300.value}" },
+        "default": { "value": "1px solid {sds.color.primitive.blue.400.value}" },
+        "hover": { "value": "1px solid {sds.color.primitive.blue.500.value}" },
+        "dashed": { "value": "2px dashed {sds.color.primitive.blue.400.value}" }
       },
       "info": {
-        "400": { "value": "1px solid {sds.color.primitive.blue.400.value}" }
+        "default": { "value": "1px solid {sds.color.primitive.blue.400.value}" }
       },
       "beta": {
-        "400": { "value": "1px solid {sds.color.primitive.purple.400.value}" }
+        "default": { "value": "1px solid {sds.color.primitive.purple.400.value}" }
       },
       "positive": {
-        "400": { "value": "1px solid {sds.color.primitive.green.400.value}" }
+        "default": { "value": "1px solid {sds.color.primitive.green.400.value}" }
       },
       "notice": {
-        "400": { "value": "1px solid {sds.color.primitive.yellow.400.value}" }
+        "default": { "value": "1px solid {sds.color.primitive.yellow.400.value}" }
       },
       "none": {
         "value": "none"

@@ -34,14 +34,14 @@ export const StyledAccordion = styled(Accordion, {
 
     const shadows = getShadows(props);
     const typography = getTypography(props);
-    const border = getBorders(props);
+    const borders = getBorders(props);
     const spaces = getSpaces(props);
 
     return css`
       &.${accordionClasses.root} {
         box-shadow: ${shadows?.none};
         font-family: ${typography?.fontFamily?.body};
-        border-bottom: ${useDivider ? border?.base[200] : "none"};
+        border-bottom: ${useDivider ? borders?.base?.divider : "none"};
         height: fit-content;
 
         & .${accordionSummaryClasses.root} {

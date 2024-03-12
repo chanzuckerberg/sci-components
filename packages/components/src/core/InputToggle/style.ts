@@ -68,7 +68,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
   const semanticTextColors = getSemanticTextColors(props);
 
   return `
-    outline: ${disabled ? borders?.accent[300] : borders?.accent[400]};
+    outline: ${disabled ? borders?.accent?.disabled : borders?.accent?.default};
 
     .${switchClasses.thumb} {
       color: ${disabled ? semanticComponentColors?.accent?.borderDisabled : semanticComponentColors?.accent?.border};
@@ -93,7 +93,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
     ${
       !disabled &&
       `&:hover {
-        outline: ${borders?.accent[500]};
+        outline: ${borders?.accent?.hover};
 
         .${switchClasses.thumb} {
           color: ${colors?.blue[500]};
@@ -112,7 +112,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
 
   return `
     & {
-      outline: ${disabled ? borders?.base[300] : borders?.base[400]};
+      outline: ${disabled ? borders?.base?.disabled : borders?.base?.default};
     }
 
     .${switchClasses.thumb} {

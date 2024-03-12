@@ -53,7 +53,7 @@ export const Section = styled("div")`
     return `
       &:not(:last-child) {
         padding-bottom: ${spaces?.m}px;
-        border-bottom: ${borders?.base[200]};
+        border-bottom: ${borders?.base?.divider};
       }
 
       &:not(:first-of-type) {

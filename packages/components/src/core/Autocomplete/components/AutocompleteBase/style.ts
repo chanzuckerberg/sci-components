@@ -97,7 +97,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .${autocompleteClasses.groupUl} {
           position: relative;
           margin: 0 0 ${spaces?.m}px;
-          border-bottom: ${borders?.base[200]};
+          border-bottom: ${borders?.base?.divider};
           padding-bottom: ${spaces?.xxs}px;
 
           & li:last-of-type {
@@ -155,15 +155,15 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 export const StyledPaper = styled(Paper)`
   ${(props) => {
     const spaces = getSpaces(props);
-    const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const borders = getBorders(props);
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
       background-color: ${semanticComponentColors?.base?.surfacePrimary};
-      border: ${borders?.base[100]};
+      border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;

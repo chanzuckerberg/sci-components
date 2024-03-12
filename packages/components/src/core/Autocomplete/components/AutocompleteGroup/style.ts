@@ -30,7 +30,7 @@ export const StyledColumn = styled("div")`
       width: ${width}px;
 
       &:not(:last-child) {
-        border-right: ${borders?.base[200]};
+        border-right: ${borders?.base?.divider};
         margin-right: ${spaces?.m}px;
       }
 

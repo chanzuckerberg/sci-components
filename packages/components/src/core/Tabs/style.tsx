@@ -85,7 +85,7 @@ export const StyledTab = styled(RawTab, {
       color: ${semanticTextColors?.base?.secondary};
 
       &:hover, :focus {
-        box-shadow: 0 2px 0 0 ${semanticComponentColors?.base?.borderHover};
+        box-shadow: 0 2px 0 0 ${semanticComponentColors?.base?.border};
         color: ${semanticTextColors?.base?.primary};
       }
 

@@ -50,7 +50,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
-    border: ${borders?.base[400]};
+    border: ${borders?.base?.default};
     color: ${semanticTextColors?.base?.primary};
     cursor: pointer;
     padding: ${padding};
@@ -93,7 +93,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      border: ${borders?.accent[400]};
+      border: ${borders?.accent?.default};
       color: ${semanticTextColors?.base?.primary};
 
       path {
