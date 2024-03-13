@@ -6,6 +6,7 @@ import {
   TAG_EXCLUDED_CONTROLS,
   TAG_HOVER_OPTIONS,
   TAG_ICONS,
+  TAG_ICONS_LABELS,
   TAG_PANEL_COLORS,
   TAG_SDS_STYLES,
   TAG_SDS_TYPES,
@@ -40,13 +41,7 @@ export default {
     },
     icon: {
       control: {
-        labels: [
-          "No Icon",
-          "SDS Check Circle",
-          "SDS Loading",
-          "MUI WbSunny",
-          "MUI Check Circle",
-        ],
+        labels: TAG_ICONS_LABELS,
         type: "select",
       },
       mapping: TAG_ICONS,
@@ -55,6 +50,10 @@ export default {
     label: {
       control: { type: "text" },
       required: true,
+    },
+    sdsSize: {
+      control: { type: "radio" },
+      options: ["s", "l"],
     },
     sdsStyle: {
       control: { type: "radio" },
@@ -81,6 +80,7 @@ export const Default = {
   args: {
     hover: true,
     label: "Label",
+    sdsSize: "s",
     sdsStyle: "square",
     sdsType: "primary",
   },

@@ -24,15 +24,26 @@ export type SdsTagColorType =
   | "beta"
   | [string, string]
   | [string, string, string];
-export interface ExtraTagProps extends CommonThemeProps {
+
+interface ExtraSmallTagProps extends CommonThemeProps {
   hover?: boolean;
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
+  sdsSize?: "s";
   tagColor?: SdsTagColorType;
   icon?: JSX.Element;
 }
+interface ExtraLargeTagProps extends CommonThemeProps {
+  hover?: boolean;
+  sdsType?: "primary" | "secondary";
+  sdsStyle?: "square" | "rounded";
+  sdsSize?: "l";
+  tagColor?: SdsTagColorType;
+  icon: JSX.Element;
+}
+export type ExtraTagProps = ExtraSmallTagProps | ExtraLargeTagProps;
 
-const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
+const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
@@ -45,6 +56,13 @@ const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
       padding: 0;
     }
 
+    .MuiSvgIcon-root {
+      height: ${iconSizes?.xs.height}px;
+      width: ${iconSizes?.xs.width}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.xxxs}px;
+    }
+
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
       color: white;
@@ -55,7 +73,7 @@ const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
   `;
 };
 
-const withIcon = (props: ExtraTagProps): SerializedStyles => {
+const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
@@ -89,13 +107,14 @@ const rounded = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spaces = getSpaces(props);
 
-  const { icon } = props;
+  const { sdsSize = "s", icon } = props;
+
+  const topBottomPadding =
+    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
 
   return css`
     border-radius: ${corners?.l}px;
-    padding: ${icon
-      ? `${spaces?.xxs}px ${spaces?.s}px ${spaces?.xxs}px ${spaces?.xs}px`
-      : `${spaces?.xxxs}px ${spaces?.s}px`};
+    padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
       border-radius: ${corners?.l}px;
@@ -107,13 +126,14 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
   const spaces = getSpaces(props);
 
-  const { icon } = props;
+  const { sdsSize = "s", icon } = props;
+
+  const topBottomPadding =
+    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
 
   return css`
     border-radius: ${corners?.m}px;
-    padding: ${icon
-      ? `${spaces?.xxs}px ${spaces?.s}px ${spaces?.xxs}px ${spaces?.xs}px`
-      : `${spaces?.xxxs}px ${spaces?.s}px`};
+    padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
       border-radius: ${corners?.m}px;
@@ -274,7 +294,13 @@ const typeToCss = {
   secondary,
 };
 
-const doNotForwardProps = ["sdsType", "sdsStyle", "tagColor", "hover"];
+const doNotForwardProps = [
+  "sdsType",
+  "sdsStyle",
+  "sdsSize",
+  "tagColor",
+  "hover",
+];
 
 export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -282,13 +308,13 @@ export const StyledTag = styled(Chip, {
   border: none;
 
   ${(props: ExtraTagProps) => {
-    const { hover = true, sdsType, sdsStyle, icon } = props;
+    const { hover = true, sdsType, sdsStyle, sdsSize = "s" } = props;
 
     const isRounded = sdsStyle === "rounded";
     const type = sdsType || "primary";
 
     return css`
-      ${icon ? withIcon(props) : withoutIcon(props)}
+      ${sdsSize === "l" ? tagSizeL(props) : tagSizeS(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
       ${hover ? withHover(props) : `pointer-events: none;`}

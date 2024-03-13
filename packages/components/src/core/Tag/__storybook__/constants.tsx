@@ -1,11 +1,12 @@
 import Icon from "src/core/Icon";
 import { ExtraTagProps } from "../style";
-import { CheckCircleOutline, WbSunny } from "@mui/icons-material";
+import { WbSunny } from "@mui/icons-material";
 
 export const TAG_EXCLUDED_CONTROLS = [
   "color",
   "hover",
   "label",
+  "sdsSize",
   "sdsStyle",
   "sdsType",
   "icon",
@@ -13,10 +14,21 @@ export const TAG_EXCLUDED_CONTROLS = [
 
 export const TAG_ICONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="CheckCircle" key="CheckCircle" sdsType="button" />,
+  <Icon
+    sdsSize="xs"
+    sdsIcon="CheckCircle"
+    key="CheckCircle"
+    sdsType="button"
+  />,
   <Icon sdsSize="l" sdsIcon="Loading" key="loading" sdsType="button" />,
   <WbSunny key="WBSunny" />,
-  <CheckCircleOutline key="CheckCircleOutline" />,
+];
+
+export const TAG_ICONS_LABELS = [
+  "No Icon",
+  "SDS Check Circle",
+  "SDS Loading",
+  "MUI WbSunny",
 ];
 
 export const TAG_SDS_STYLES: ExtraTagProps["sdsStyle"][] = [
@@ -54,7 +66,7 @@ export const TAG_LIVE_PREVIEW_STYLES = {
   display: "inline-grid",
   gridColumnGap: 24,
   gridRowGap: 24,
-  gridTemplateColumns: "repeat(3, auto)",
+  gridTemplateColumns: "repeat(6, auto)",
   gridTemplateRows: "repeat(2, auto)",
 };
 

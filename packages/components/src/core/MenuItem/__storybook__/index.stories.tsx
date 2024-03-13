@@ -55,10 +55,10 @@ export default {
 
 export const Default = {
   args: {
-    column: "column value here",
+    column: "123,456",
     disabled: false,
     isMultiSelect: false,
-    name: "text here",
+    name: "Text here",
     sdsIconProps: {
       color: "blue",
     },
@@ -71,7 +71,7 @@ export const Default = {
 
 export const ScreenshotTest = {
   args: {
-    name: "text here",
+    name: "Text here",
   },
   parameters: {
     axe: {
@@ -91,8 +91,8 @@ export const ScreenshotTest = {
 
 export const Test = {
   args: {
-    column: "test column",
-    name: "test text",
+    column: "123",
+    name: "Test text",
   },
   parameters: {
     controls: {

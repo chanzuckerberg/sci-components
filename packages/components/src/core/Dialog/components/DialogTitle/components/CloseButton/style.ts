@@ -9,8 +9,7 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     const spaces = getSpaces(props);
 
     return `
-      top: ${spaces?.xl || 0}px;
-      right: ${spaces?.xl || 0}px;
+      right: ${spaces?.xxl}px;
     `;
   }}
 `;

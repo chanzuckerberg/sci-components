@@ -7,7 +7,7 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
   <li
     class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
-    name="text here"
+    name="Text here"
     role="menuitem"
     tabindex="-1"
   >
@@ -17,12 +17,12 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
       <span
         class="primary-text css-1k1xg99"
       >
-        text here
+        Text here
       </span>
       <span
         class="css-1o15svb"
       >
-        column value here
+        123,456
       </span>
     </span>
     <span

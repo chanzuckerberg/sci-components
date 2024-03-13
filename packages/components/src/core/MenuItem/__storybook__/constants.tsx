@@ -20,7 +20,7 @@ export const MENU_ITEM_ICON_OPTIONS = [
 
 export const MENU_ITEM_MULTI_SELECT_OPTIONS = [false, true];
 export const MENU_ITEM_SDS_STYLE_OPTIONS = ["determinate", "indeterminate"];
-export const MENU_ITEM_COLUMN_OPTIONS = [undefined, "Column"];
+export const MENU_ITEM_COLUMN_OPTIONS = [undefined, "123"];
 /**
  * (thuang): Add `as const` to make sure the type is not widened to `string`
  * and cause type error in <RawMenuItem />
