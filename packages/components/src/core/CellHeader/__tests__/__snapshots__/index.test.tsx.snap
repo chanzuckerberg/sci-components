@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CellHeader /> Default story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <th
+        class=" css-5bfdy4"
+        data-mui-internal-clone-element="true"
+        direction="desc"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Header
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+    </tr>
+  </tbody>
+</table>
+`;

@@ -9,12 +9,13 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyS,
+  fontBodyXs,
   getBorders,
   getColors,
   getCorners,
+  getSemanticComponentColors,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
@@ -28,27 +29,27 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
 
 const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.error[400]};
+      border: ${borders?.negative?.default};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.error[400]};
+      border: ${borders?.negative?.default};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.error[400]};
+        border: ${borders?.negative?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${colors?.gray[500]};
+          color: ${semanticComponentColors?.base?.icon};
         }
       }
     }
@@ -57,27 +58,27 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
 const warning = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.warning[400]};
+      border: ${borders?.notice?.default};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.warning[400]};
+      border: ${borders?.notice?.default};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.warning[400]};
+        border: ${borders?.notice?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${colors?.gray[500]};
+          color: ${semanticComponentColors?.base?.icon};
         }
       }
     }
@@ -91,11 +92,11 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[300]};
+        border: ${borders?.base?.disabled};
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[300]};
+        border: ${borders?.base?.disabled};
       }
 
       &::placeholder {
@@ -107,14 +108,14 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
 };
 
 const textArea = (props: InputTextExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     .${outlinedInputClasses.multiline} {
-      padding: ${spacings?.xxs}px;
+      padding: ${spaces?.xxs}px;
 
       > .${outlinedInputClasses.inputMultiline} {
-        padding: ${spacings?.xxs}px ${spacings?.m}px ${spacings?.m}px;
+        padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
     }
@@ -127,10 +128,10 @@ const userInput = (props: InputTextExtraProps): SerializedStyles => {
 
   const border =
     intent === "error"
-      ? borders?.error[400]
+      ? borders?.negative?.default
       : intent === "warning"
-        ? borders?.warning[400]
-        : borders?.primary[400];
+        ? borders?.notice?.default
+        : borders?.accent?.default;
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -149,12 +150,10 @@ export const StyledLabel = styled("label")`
   ${fontBodyS}
 
   ${(props) => {
-    const typography = getTypography(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      font-family: ${typography?.fontFamily};
-      margin-bottom: ${spacings?.xxs}px;
+      margin-bottom: ${spaces?.xxs}px;
     `;
   }}
 `;
@@ -167,36 +166,38 @@ export const StyledInputBase = styled(TextField, {
   ${(props: InputTextExtraProps) => {
     const { intent, sdsType, sdsStage, disabled } = props;
 
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return css`
-      margin-bottom: ${spacings?.l}px;
-      margin-right: ${spacings?.m}px;
+      margin-bottom: ${spaces?.l}px;
+      margin-right: ${spaces?.m}px;
       min-width: 160px;
       display: block;
 
       .${outlinedInputClasses.inputSizeSmall} {
-        padding: ${spacings?.xs}px ${spacings?.l}px;
-        height: 34px;
+        ${fontBodyXs(props)}
+        padding: ${spaces?.xs}px ${spaces?.m}px;
+        height: unset;
         box-sizing: border-box;
-        background-color: #fff;
+        background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      }
 
-        .${outlinedInputClasses.notchedOutline} {
-          border-radius: ${corners?.m}px;
-          border: ${borders?.gray[400]};
-        }
+      .${outlinedInputClasses.notchedOutline} {
+        border-radius: ${corners?.m}px;
+        border: ${borders?.base?.default};
       }
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.gray[500]};
+        border-color: ${semanticComponentColors?.base?.borderHover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
         .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.primary[400]};
+        border: ${borders?.accent?.default};
       }
 
       ${sdsType === "textArea" && textArea(props)}

@@ -17,6 +17,14 @@ StyleDictionary.registerFormat({
       return result.toLowerCase().replace(" ", "-");
     }
 
+    function convertToKebabCase(inputString) {
+      return inputString
+        .replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
+        .replace(/\d+/g, (match) => `-${match}`)
+        .replace(/^-/, "")
+        .replace(/-+/g, "-");
+    }
+
     function transformDictionary(tokens, keys) {
       const result = {};
 
@@ -32,15 +40,17 @@ StyleDictionary.registerFormat({
     function transformColor(tokens) {
       const colors = {};
 
-      for (const [name, colorTokens] of Object.entries(tokens)) {
-        const color = {};
-
-        for (const [colorName, token] of Object.entries(colorTokens)) {
-          color[colorName.toLowerCase().replace(" ", "-")] = token.value;
+      function getColor(theToken) {
+        for (const [, iToken] of Object.entries(theToken)) {
+          if ("value" in iToken && "name" in iToken) {
+            colors[convertToKebabCase(iToken.name)] = iToken.value;
+          } else {
+            getColor(iToken);
+          }
         }
-
-        colors[getName(name)] = color;
       }
+
+      getColor(tokens);
 
       return colors;
     }
@@ -58,40 +68,56 @@ StyleDictionary.registerFormat({
     }
 
     function transformFonts(tokens, keys) {
-      const fontFamily = {};
       const fontSize = {};
       const lineHeight = {};
-      const boldNameMap = {
-        400: "regular",
-        600: "semibold",
-      };
+      const letterSpacing = {};
+      const fontVariantNumeric = {};
+      const textTransform = {};
 
       for (const key of keys) {
         for (const [size, fonts] of Object.entries(tokens[key])) {
-          for (const [boldSize, { font }] of Object.entries(fonts)) {
-            const parsed = cssFont.parse(font.value);
-            fontFamily[getName(boldNameMap[boldSize])] = parsed.family;
+          for (const [, fontValue] of Object.entries(fonts)) {
+            const parsed = cssFont.parse(fontValue.font.value);
             fontSize[getName([key, size])] = parsed.size;
             lineHeight[getName([key, size])] = parsed.size;
+
+            letterSpacing[getName([key, size])] =
+              fontValue["letter-spacing"].value;
+            textTransform[getName([key, size])] = fontValue["text-transform"]
+              ? fontValue["text-transform"].value
+              : "none";
+            fontVariantNumeric[getName([key, size])] = fontValue[
+              "font-variant-numeric"
+            ]
+              ? fontValue["font-variant-numeric"].value
+              : "normal";
           }
         }
       }
 
       return {
-        fontFamily,
         fontSize,
+        fontVariantNumeric,
+        letterSpacing,
         lineHeight,
+        textTransform,
       };
     }
 
     const { sds } = dictionary.tokens;
     const tailwindConfig = {
-      ...transformFonts(sds.font, ["body", "caps", "header"]),
+      fontFamily: transformDictionary(sds.font["font-family"]),
+      ...transformFonts(sds.font, [
+        "body",
+        "caps",
+        "header",
+        "tabular",
+        "code",
+      ]),
       ...transformIconSizes(sds.iconSizes),
       borderRadius: transformDictionary(sds.corners),
       boxShadow: transformDictionary(sds["drop-shadows"]),
       colors: transformColor(sds.color),
-      letterSpacing: transformDictionary(sds.font["letter-spacing"]),
       spacing: transformDictionary(sds.spaces),
     };
 

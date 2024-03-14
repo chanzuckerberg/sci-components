@@ -1,26 +1,21 @@
 import { Tab, Tabs, TabsProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CommonThemeProps, fontBodyXs, getColors, getSpaces } from "../styles";
+import {
+  CommonThemeProps,
+  fontBodyXs,
+  getSemanticComponentColors,
+  getSpaces,
+} from "src/core/styles";
 
 export interface NavigationJumpToExtraProps
-  extends Omit<
-      TabsProps,
-      | "indicatorColor"
-      | "nonce"
-      | "rev"
-      | "rel"
-      | "autoFocus"
-      | "content"
-      | "onChange"
-    >,
+  extends Omit<TabsProps, "indicatorColor" | "onChange">,
     CommonThemeProps {
   sdsIndicatorColor?:
-    | "primary"
-    | "error"
+    | "accent"
+    | "negative"
     | "info"
-    | "success"
-    | "warning"
-    | "gray"
+    | "positive"
+    | "notice"
     | "beta";
 }
 
@@ -30,13 +25,13 @@ export const StyledTabs = styled(Tabs, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: NavigationJumpToExtraProps) => {
-    const { sdsIndicatorColor = "primary" } = props;
-    const colors = getColors(props);
+    const { sdsIndicatorColor = "info" } = props;
     const spaces = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       &:before {
-        background-color: ${colors?.gray[200]};
+        background-color: ${semanticComponentColors?.base?.surfaceTertiary};
         border-radius: ${spaces?.xxxs}px;
         content: "";
         height: 100%;
@@ -51,7 +46,7 @@ export const StyledTabs = styled(Tabs, {
       margin-right: ${spaces?.m}px;
       position: sticky;
       .MuiTabs-indicator {
-        background-color: ${colors?.[sdsIndicatorColor][400]} !important;
+        background-color: ${semanticComponentColors?.[sdsIndicatorColor]?.fill} !important;
         border-radius: 2px;
         left: 0;
         width: 2px;
@@ -67,7 +62,7 @@ export const StyledTab = styled(Tab, {
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const colors = getColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       box-sizing: border-box;
@@ -87,7 +82,7 @@ export const StyledTab = styled(Tab, {
         left: -${spaces?.l}px;
         width: ${spaces?.xxxs}px;
         height: 100%;
-        background-color: ${colors?.gray[400]};
+        background-color: ${semanticComponentColors?.base?.border};
         display: none;
         border-radius: ${spaces?.xxxs}px;
       }
@@ -102,7 +97,7 @@ export const StyledTab = styled(Tab, {
         font-weight: 600;
       }
       &.MuiTabs-indicator {
-        backgroundColor: ${colors?.gray[200]};
+        backgroundColor: ${semanticComponentColors?.base?.surfaceTertiary};
         width: ${spaces?.xxxs}px;
       }
       &.MuiButtonBase-root {

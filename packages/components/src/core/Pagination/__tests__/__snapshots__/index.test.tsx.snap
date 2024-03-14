@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> Default story renders snapshot 1`] = `
+<ul
+  class="css-ijj3wz"
+>
+  <li
+    class="css-cpsr28"
+    data-order="first"
+    disabled=""
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        data-file-name="IconChevronLeftSmall"
+        data-testid="IconChevronLeftSmall"
+        fillcontrast="white"
+        focusable="false"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      />
+    </div>
+  </li>
+  <li
+    class="css-16wopi5"
+  >
+    1
+  </li>
+  <li
+    class="css-194ctax"
+  >
+    2
+  </li>
+  <li
+    class="css-194ctax"
+  >
+    3
+  </li>
+  <li
+    class="css-194ctax"
+  >
+    4
+  </li>
+  <li
+    class="css-194ctax"
+  >
+    5
+  </li>
+  <li
+    class="css-132ngps"
+  >
+    <button
+      aria-label="Go to a page"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13t9fgn-MuiButtonBase-root-MuiIconButton-root"
+      icon="DotsHorizontal"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          data-file-name="IconDotsHorizontal3Small"
+          data-testid="IconDotsHorizontal3Small"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </li>
+  <li
+    class="css-194ctax"
+  >
+    20
+  </li>
+  <li
+    class="css-rrich5"
+    data-order="last"
+  >
+    <div
+      class="css-1ft6wgl"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        data-file-name="IconChevronRightSmall"
+        data-testid="IconChevronRightSmall"
+        fillcontrast="white"
+        focusable="false"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+      />
+    </div>
+  </li>
+</ul>
+`;

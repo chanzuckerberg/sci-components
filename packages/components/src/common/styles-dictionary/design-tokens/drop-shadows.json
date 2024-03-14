@@ -1,0 +1,18 @@
+{
+  "sds": {
+    "drop-shadow": {
+      "l": {
+        "value": "0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3)"
+      },
+      "m": {
+        "value": "0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15)"
+      },
+      "s": {
+        "value": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)"
+      },
+      "none": {
+        "value": "none"
+      }
+    }
+  }
+}

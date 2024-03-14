@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import Menu from "../../../Menu";
+import Menu from "src/core/Menu";
 
 export const StyledPaginationDropdownMenu = styled(Menu)`
   & .MuiPaper-root {

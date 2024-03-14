@@ -6,10 +6,10 @@ import {
   fontHeaderXs,
   getBorders,
   getCorners,
+  getSemanticComponentColors,
   getShadows,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -41,19 +41,18 @@ export const StyledHeaderTitle = styled("div", {
   ${(props) => {
     const { search } = props;
 
-    const typography = getTypography(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      font-family: ${typography?.fontFamily};
-      padding-right: ${spacings?.m}px;
-      margin-bottom: ${search ? spacings?.s : spacings?.m}px;
+      padding-right: ${spaces?.m}px;
+      margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;
   }}
 `;
 
 export const StyledDropdownMenuAutocompleteWrapper = styled("div")`
-  & .${autocompleteClasses.popper}, & .MuiPopper-root {
+  & .${autocompleteClasses.popper}, & .MuiPopper-root,
+  .base-Popper-root {
     position: relative !important;
     transform: none !important;
     width: 100% !important;
@@ -79,10 +78,11 @@ export const StyledPopper = styled(Popper, {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
-      border: ${borders?.gray[100]};
+      background-color: ${semanticComponentColors?.base?.surface};
+      border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;
@@ -95,18 +95,19 @@ export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: StyleProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
+    const borders = getBorders(props);
+    const shadows = getShadows(props);
 
     return `
-      box-shadow: none !important;
-      border: none !important;
-      border-radius: 0;
+      box-shadow: ${shadows?.none} !important;
+      border: ${borders?.none};
       margin: 0;
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
 
       .MuiFormControl-root.MuiTextField-root {
-        margin-bottom: ${spacings?.m}px;
-        margin-right: ${spacings?.m}px;
+        margin-bottom: ${spaces?.m}px;
+        margin-right: ${spaces?.m}px;
       }
     `;
   }}

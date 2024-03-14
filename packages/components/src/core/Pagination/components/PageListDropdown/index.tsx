@@ -27,7 +27,7 @@ const PageListDropdown = (props: PageListDropdownProps) => {
       <StyledPaginationButtonIcon
         aria-label="Go to a page"
         onClick={handleClick}
-        icon="dotsHorizontal"
+        icon="DotsHorizontal"
         sdsSize="small"
       />
       <StyledPaginationDropdownMenu

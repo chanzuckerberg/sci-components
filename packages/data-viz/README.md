@@ -4,7 +4,7 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spacings`, `typography`, etc., so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spaces`, `typography`, etc., so you can leverage the theme properly in your application.
 
 ![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
 
@@ -93,24 +93,24 @@ export const Title - styled(Typography)`
 
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import { getColors, getCorners } from "@czi-sds/components";
 
 export const Tag = styled("div")`
   // This is a callback function that returns more CSS rules, but the only way
   // to access the custom theme object
-      ${(props) => {
-        // getColors() is a selector that picks out colors from the theme object
-        const colors = getColors(props);
-        // getSpaces() is a selector that picks out spacings from the theme object
-        const spacings = getSpaces(props);
+  ${(props) => {
+    // getColors() is a selector that picks out colors from the theme object
+    const colors = getColors(props);
+    // getSpaces() is a selector that picks out spaces from the theme object
+    const spaces = getSpaces(props);
 
-        return `
+    return `
           background-color: ${colors?.gray[500]};
-          padding-bottom: ${spacings?.m}px;
-          margin-bottom: ${spacings?.xxl}px;
+          padding-bottom: ${spaces?.m}px;
+          margin-bottom: ${spaces?.xxl}px;
         `;
-      }}
+  }}
 `;
 ```
 
@@ -199,9 +199,14 @@ To use the default theme in your React application, complete the following:
 
 ```html
 // installs the sds font from google fonts
-<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
   rel="stylesheet"
 />
 ```

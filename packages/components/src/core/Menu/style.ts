@@ -1,15 +1,15 @@
-import { Menu } from "@mui/material";
+import { Menu, menuClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getSpaces } from "../styles";
+import { getSpaces } from "src/core/styles";
 
 export const StyledMenu = styled(Menu)`
   & {
-    .MuiMenu-paper {
+    .${menuClasses.paper} {
       ${(props) => {
-        const spacings = getSpaces(props);
+        const spaces = getSpaces(props);
 
         return `
-          padding: ${spacings?.xs}px;
+          padding: ${spaces?.xs}px;
         `;
       }}
     }

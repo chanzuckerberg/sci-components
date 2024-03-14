@@ -8,7 +8,7 @@ export type InputSliderProps = InputSliderExtraProps;
  */
 const InputSlider = forwardRef<HTMLSpanElement, InputSliderExtraProps>(
   (props, ref) => {
-    return <StyledSlider ref={ref} {...props} />;
+    return <StyledSlider ref={ref} {...props} orientation="horizontal" />;
   }
 );
 

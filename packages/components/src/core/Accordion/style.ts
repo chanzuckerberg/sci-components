@@ -1,13 +1,20 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { Accordion } from "@mui/material";
+import {
+  Accordion,
+  accordionClasses,
+  accordionSummaryClasses,
+  accordionDetailsClasses,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  fontBodyXs,
   getBorders,
+  getIconSizes,
   getShadows,
   getSpaces,
   getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
@@ -27,42 +34,45 @@ export const StyledAccordion = styled(Accordion, {
 
     const shadows = getShadows(props);
     const typography = getTypography(props);
-    const border = getBorders(props);
+    const borders = getBorders(props);
+    const spaces = getSpaces(props);
 
     return css`
-      &.MuiAccordion-root {
+      &.${accordionClasses.root} {
         box-shadow: ${shadows?.none};
-        font-family: ${typography?.fontFamily};
-        border-bottom: ${useDivider ? border?.gray[300] : "none"};
+        font-family: ${typography?.fontFamily?.body};
+        border-bottom: ${useDivider ? borders?.base?.divider : "none"};
         height: fit-content;
 
-        & .MuiAccordionSummary-root {
-          padding: 10px;
-          min-height: 40px;
+        & .${accordionSummaryClasses.root} {
+          min-height: 44px;
 
-          &.Mui-expanded {
+          &.${accordionSummaryClasses.expanded} {
             min-height: unset;
           }
 
           & .MuiAccordionSummary-expandIcon,
-          & .MuiAccordionSummary-expandIconWrapper {
+          & .${accordionSummaryClasses.expandIconWrapper} {
             padding: 0;
             align-self: flex-start;
+            margin-top: ${spaces?.xxxs}px;
           }
         }
 
-        .MuiAccordionDetails-root {
-          padding: 10px;
-          padding-top: 4px;
+        .${accordionDetailsClasses.root} {
+          ${fontBodyXs(props)}
+          padding: ${spaces?.m}px;
+          padding-top: ${spaces?.xxs}px;
         }
 
         &:before {
           opacity: 0;
         }
 
-        &.Mui-expanded {
+        &.${accordionClasses.expanded} {
           margin: 0;
         }
+
         ${togglePosition === "left" && leftPosition(props)}
       }
     `;
@@ -71,30 +81,39 @@ export const StyledAccordion = styled(Accordion, {
 
 const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
+  const iconSizes = getIconSizes(props);
 
   return css`
-    &.MuiAccordion-root {
-      & .MuiAccordionSummary-root {
+    &.${accordionClasses.root} {
+      & .${accordionSummaryClasses.root} {
         flex-direction: row-reverse;
 
-        .MuiAccordionSummary-content {
-          padding-left: ${spaces?.xs}px;
+        .${accordionSummaryClasses.content} {
+          padding-left: ${spaces?.s}px;
         }
 
-        .MuiAccordionSummary-expandIconWrapper {
+        .${accordionSummaryClasses.expandIconWrapper} {
           margin: 0;
           transform: rotate(-90deg);
           align-self: flex-start;
-          margin-top: ${spaces?.xxs}px;
+          margin-top: ${spaces?.xxxs}px;
 
-          &.Mui-expanded {
+          &.${accordionSummaryClasses.expanded} {
             transform: rotate(0deg);
           }
         }
       }
 
-      & .MuiAccordionDetails-root {
-        padding-left: 30px;
+      /** This is to adjust the padding of the AccordionDetails when the togglePosition is left
+        * The padding-left is the sum of the
+        * left padding of the AccordionButton = spaces?.m
+        * the width of the expandIcon = iconSizes?.xs.width
+        * and the left padding of the AccordionSummary = spaces?.s 
+        */
+      & .${accordionDetailsClasses.root} {
+        padding-left: ${(spaces?.m ?? 12) +
+        (iconSizes?.xs.width ?? 12) +
+        (spaces?.s ?? 8)}px;
       }
     }
   `;

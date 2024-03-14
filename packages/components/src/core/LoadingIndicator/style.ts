@@ -2,67 +2,65 @@ import { css, SerializedStyles } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
-  fontBody,
+  fontBodyS,
   fontCapsXxxxs,
-  getColors,
   getCorners,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface LoadingIndicatorProps extends CommonThemeProps {
   sdsStyle: "minimal" | "tag";
 }
 
-const fontBodyS = fontBody("s");
-
 export const StyledText = styled("span")`
   ${(props) => {
-    const spacings = getSpaces(props);
-    const typography = getTypography(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin: 0 ${spacings?.xs}px;
-      font-family: ${typography?.fontFamily};
+      margin: 0 ${spaces?.xs}px;
     `;
   }}
 `;
 
 const minimal = (props: CommonThemeProps): SerializedStyles => {
-  const colors = getColors(props);
   const iconSizes = getIconSizes(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return css`
     ${fontBodyS(props)}
 
-    color: ${colors?.gray[500]};
+    color: ${semanticTextColors?.base?.secondary};
 
     svg {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
 
       path {
-        fill: ${colors?.gray[500]};
+        fill: ${semanticComponentColors?.base?.icon};
       }
     }
   `;
 };
 
 const tag = (props: CommonThemeProps): SerializedStyles => {
-  const colors = getColors(props);
   const corners = getCorners(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return css`
     ${fontCapsXxxxs(props)}
 
-    background-color: ${colors?.info[200]};
+    background-color: ${semanticComponentColors?.accent?.surface};
     border-radius: ${corners?.l}px;
-    color: ${colors?.info[600]};
+    color: ${semanticTextColors?.base?.accent};
 
     svg {
       path {
-        fill: ${colors?.info[400]};
+        fill: ${semanticComponentColors?.accent?.icon};
       }
     }
   `;
@@ -75,12 +73,12 @@ export const StyledLoadingIndicator = styled("div", {
 })`
   ${(props: LoadingIndicatorProps) => {
     const { sdsStyle } = props;
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     const style = css`
       display: inline-flex;
       align-items: center;
-      padding: ${spacings?.xxs}px;
+      padding: ${spaces?.xxs}px;
     `;
 
     return css`

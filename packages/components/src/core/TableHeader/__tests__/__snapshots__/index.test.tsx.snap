@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableHeader /> Default story renders snapshot 1`] = `
+<table>
+  <thead
+    class="css-1426k2b"
+  >
+    <tr
+      class="css-2l3m6x"
+    >
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 1
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 2
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Column 3
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+</table>
+`;

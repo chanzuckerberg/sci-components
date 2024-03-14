@@ -13,12 +13,12 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
-import ButtonIcon from "../../../ButtonIcon";
-import { IconProps } from "../../../Icon";
-import { InputSearchProps } from "../../../InputSearch";
-import { StyledInputAdornment } from "../../../InputSearch/style";
-import MenuItem, { IconNameToSmallSizes } from "../../../MenuItem";
-import { SDSTheme } from "../../../styles";
+import ButtonIcon from "src/core/ButtonIcon";
+import { IconProps } from "src/core/Icon";
+import { InputSearchProps } from "src/core/InputSearch";
+import { StyledInputAdornment } from "src/core/InputSearch/style";
+import MenuItem, { IconNameToSmallSizes } from "src/core/MenuItem";
+import { SDSTheme } from "src/core/styles";
 import {
   InputBaseWrapper,
   StyleProps,
@@ -213,10 +213,6 @@ const AutocompleteBase = <
             ...params.InputProps.ref,
             endAdornment: (
               <StyledInputAdornment position="end">
-                {/**
-                 * (masoudmanson): Because the Autocomplete component overrides the
-                 * InputSearch's endAdornment, we must also include the clear IconButton here.
-                 */}
                 {inputValue && (
                   <ButtonIcon
                     aria-label="clear-button"
@@ -227,21 +223,26 @@ const AutocompleteBase = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    icon="xMark"
+                    icon="XMarkCircle"
                   />
                 )}
+              </StyledInputAdornment>
+            ),
+            inputProps: params.inputProps,
+            startAdornment: (
+              <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
+                  onClick={clearInput}
                   sdsType="secondary"
                   sdsSize="small"
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
-                  icon="search"
+                  icon="Search"
                 />
               </StyledInputAdornment>
             ),
-            inputProps: params.inputProps,
           }}
           {...InputBaseProps}
         />

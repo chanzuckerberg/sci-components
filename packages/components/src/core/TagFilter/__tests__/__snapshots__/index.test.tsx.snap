@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TagFilter /> Default story renders snapshot 1`] = `
+<div
+  style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
+>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-fznnno-MuiButtonBase-root-MuiButton-root"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      Delete the tag by clicking on its icon
+    </button>
+  </div>
+  <div>
+    <div
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-6vrjla-MuiButtonBase-root-MuiChip-root"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+      >
+        TagFilter
+      </span>
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-25m3b5-MuiSvgIcon-root"
+          data-file-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

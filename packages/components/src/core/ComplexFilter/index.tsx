@@ -3,12 +3,12 @@ import {
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
-import DropdownMenu from "../DropdownMenu";
-import { StyledPopper } from "../DropdownMenu/style";
+import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
+import DropdownMenu from "src/core/DropdownMenu";
+import { StyledPopper } from "src/core/DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
-} from "../InputDropdown";
+} from "src/core/InputDropdown";
 import Chips from "./components/Chips";
 import { StyledChipsWrapper, Wrapper } from "./style";
 

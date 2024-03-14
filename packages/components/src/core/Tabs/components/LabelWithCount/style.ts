@@ -1,26 +1,26 @@
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
-  fontBodyS,
+  fontBodySemiboldS,
+  fontBodySemiboldXs,
   fontBodyXs,
   fontBodyXxs,
-  getColors,
-  getFontWeights,
+  getSemanticTextColors,
   getSpaces,
 } from "src/core/styles";
 import { SdsSize } from "../common";
 
 export const Wrapper = styled("span")`
   ${(props) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
       &:active {
-        color: black;
+        color: ${semanticTextColors?.base?.primary};
       }
 
       &:disabled {
-        color: ${colors?.gray[200]};
+        color: ${semanticTextColors?.base?.disabled};
       }
     `;
   }}
@@ -41,11 +41,10 @@ export const Label = styled("span", {
 
     const isLarge = sdsSize === "large";
 
-    return isLarge ? fontBodyS(props) : fontBodyXs(props);
+    return isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props);
   }}
 
   ${(props: Props) => {
-    const fontWeights = getFontWeights(props);
     const spaces = getSpaces(props);
 
     const { sdsSize } = props;
@@ -54,7 +53,6 @@ export const Label = styled("span", {
 
     return `
       margin-right: ${isLarge ? spaces?.l : spaces?.m}px;
-      font-weight: ${fontWeights?.semibold};
   `;
   }}
 `;
@@ -74,10 +72,15 @@ export const Count = styled("span", {
   }}
 
   ${(props: Props) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
+    const spaces = getSpaces(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: ${semanticTextColors?.base?.secondary};
+
+      .MuiChip-root {
+        margin: 0 0 ${spaces?.xxxs}px 0;
+      }
     `;
   }}
 `;

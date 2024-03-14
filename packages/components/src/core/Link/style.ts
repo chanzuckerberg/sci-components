@@ -3,9 +3,10 @@ import { Link, LinkProps as RawLinkProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
-  getBorders,
-  getTypography,
-} from "../styles";
+  fontBodyS,
+  fontBodyXs,
+  getSemanticTextColors,
+} from "src/core/styles";
 
 // (thuang): Support `component` prop
 // https://stackoverflow.com/a/66123108
@@ -14,58 +15,85 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
   { component?: C }
 > &
   StyleProps & {
+    fontWeight?: "normal" | "bold";
     sdsStyle?: "default" | "dashed";
+    sdsSize?: "xs" | "s";
   };
 
-const sdsPropNames = ["sdsStyle"];
+const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
-  const { theme } = props;
-  const typography = getTypography(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return css`
-    color: ${theme?.app?.colors.primary[400]};
-    font-family: ${typography?.fontFamily};
+    color: ${semanticTextColors?.action?.default};
 
     &:hover,
     &:focus {
-      color: ${theme?.app?.colors.primary[500]};
+      color: ${semanticTextColors?.action?.hover};
     }
 
     &:active {
-      color: ${theme?.app?.colors.primary[600]};
+      color: ${semanticTextColors?.action?.pressed};
     }
   `;
 };
 
 const dashedStyle = (props: LinkProps) => {
-  const border = getBorders(props);
-  const typography = getTypography(props);
+  const { sdsSize = "s" } = props;
 
   return css`
     color: inherit;
-    font-family: ${typography?.fontFamily};
-    border-bottom: ${border?.link.dashed};
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      margin-top: ${sdsSize === "s" ? -4 : -3}px;
+      width: 100%;
+      background-image: linear-gradient(to right, black 60%, transparent 60%);
+      background-size: 5px 100%;
+    }
 
     &:hover,
     &:focus {
       text-decoration: none;
-      border-bottom: ${border?.link.solid};
+      &::after {
+        background-image: linear-gradient(to right, black 60%, black 60%);
+      }
     }
   `;
 };
 
+const smallStyle = (props: LinkProps) => {
+  return fontBodyS(props);
+};
+
+const extraSmallStyle = (props: LinkProps) => {
+  return fontBodyXs(props);
+};
+
 export const StyledLink = styled(Link, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(prop.toString());
   },
 })`
+  all: unset;
+
   ${(props: LinkProps) => {
-    const { sdsStyle } = props;
+    const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}
       ${sdsStyle === "dashed" && dashedStyle(props)}
+      ${sdsSize === "s" && smallStyle(props)}
+      ${sdsSize === "xs" && extraSmallStyle(props)}
+
+      font-weight: ${fontWeight === "normal" ? "400" : "600"};
+      display: inline-block;
+      cursor: pointer;
     `;
   }}
 ` as typeof Link;

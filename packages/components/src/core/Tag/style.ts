@@ -6,60 +6,80 @@ import {
   fontBodyXs,
   fontBodyXxxs,
   fontHeaderXs,
-  getColors,
   getCorners,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-} from "../styles";
+  SemanticComponentColors,
+} from "src/core/styles";
 
 export type SdsTagColorType =
-  | "primary"
+  | "accent"
   | "info"
-  | "success"
-  | "warning"
-  | "error"
-  | "gray"
+  | "positive"
+  | "notice"
+  | "negative"
+  | "neutral"
   | "beta"
   | [string, string]
   | [string, string, string];
-export interface ExtraTagProps extends CommonThemeProps {
+
+interface ExtraSmallTagProps extends CommonThemeProps {
   hover?: boolean;
   sdsType?: "primary" | "secondary";
   sdsStyle?: "square" | "rounded";
+  sdsSize?: "s";
   tagColor?: SdsTagColorType;
   icon?: JSX.Element;
 }
+interface ExtraLargeTagProps extends CommonThemeProps {
+  hover?: boolean;
+  sdsType?: "primary" | "secondary";
+  sdsStyle?: "square" | "rounded";
+  sdsSize?: "l";
+  tagColor?: SdsTagColorType;
+  icon: JSX.Element;
+}
+export type ExtraTagProps = ExtraSmallTagProps | ExtraLargeTagProps;
 
-const withoutIcon = (props: ExtraTagProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
+  const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
+    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
       padding: 0;
     }
 
+    .MuiSvgIcon-root {
+      height: ${iconSizes?.xs.height}px;
+      width: ${iconSizes?.xs.width}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.xxxs}px;
+    }
+
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
       color: white;
-      margin: 0 0 0 ${spacings?.xxs}px;
+      margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
     }
   `;
 };
 
-const withIcon = (props: ExtraTagProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
+  const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
   return css`
     height: unset;
-    margin: 0 ${spacings?.xxs}px ${spacings?.xs}px 0;
+    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -69,14 +89,14 @@ const withIcon = (props: ExtraTagProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
-      padding-right: ${spacings?.xxs}px;
-      margin: 0 0 0 -${spacings?.xxxs}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.xxxs}px;
     }
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
       color: white;
-      margin: 0 0 0 ${spacings?.xxs}px;
+      margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
     }
@@ -85,15 +105,16 @@ const withIcon = (props: ExtraTagProps): SerializedStyles => {
 
 const rounded = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
-  const { icon } = props;
+  const { sdsSize = "s", icon } = props;
+
+  const topBottomPadding =
+    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
 
   return css`
     border-radius: ${corners?.l}px;
-    padding: ${icon
-      ? `${spacings?.xxs}px ${spacings?.s}px ${spacings?.xxs}px ${spacings?.xs}px`
-      : `${spacings?.xxxs}px ${spacings?.s}px`};
+    padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
       border-radius: ${corners?.l}px;
@@ -103,15 +124,16 @@ const rounded = (props: ExtraTagProps): SerializedStyles => {
 
 const square = (props: ExtraTagProps): SerializedStyles => {
   const corners = getCorners(props);
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
-  const { icon } = props;
+  const { sdsSize = "s", icon } = props;
+
+  const topBottomPadding =
+    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
 
   return css`
     border-radius: ${corners?.m}px;
-    padding: ${icon
-      ? `${spacings?.xxs}px ${spacings?.s}px`
-      : `${spacings?.xxxs}px ${spacings?.xs}px`};
+    padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
       border-radius: ${corners?.m}px;
@@ -119,7 +141,9 @@ const square = (props: ExtraTagProps): SerializedStyles => {
   `;
 };
 
-const withHover = (): SerializedStyles => {
+const withHover = (props: ExtraTagProps): SerializedStyles => {
+  const semanticTextColors = getSemanticTextColors(props);
+
   return css`
     &:hover {
       cursor: pointer;
@@ -127,7 +151,7 @@ const withHover = (): SerializedStyles => {
 
     &:hover,
     &:focus-visible {
-      color: white;
+      color: ${semanticTextColors?.base?.onFill};
     }
   `;
 };
@@ -140,42 +164,81 @@ const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
   return createTypeCss(props, "secondary");
 };
 
+function generatePrimaryTagColors(
+  intent: Extract<SdsTagColorType, string> | null,
+  colors: string[],
+  semanticColors: SemanticComponentColors | null
+) {
+  if (intent) {
+    return {
+      background:
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
+      backgroundClicked:
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : semanticColors?.[intent].fillPressed,
+      backgroundHover:
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : semanticColors?.[intent].fillHover,
+      iconColor: colors.length > 2 ? colors[2] : "white",
+      label: colors.length ? colors[0] : "white",
+    };
+  } else {
+    return {
+      background: semanticColors?.neutral.fill,
+      backgroundClicked: semanticColors?.neutral.fillPressed,
+      backgroundHover: semanticColors?.neutral.fillHover,
+      iconColor: "white",
+      label: "white",
+    };
+  }
+}
+
+function generateSecondaryTagColors(
+  intent: Extract<SdsTagColorType, string> | null,
+  colors: string[],
+  semanticColors: SemanticComponentColors | null
+) {
+  if (intent) {
+    return {
+      background:
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
+      backgroundClicked:
+        colors.length >= 2
+          ? darken(colors[1], 0.3)
+          : semanticColors?.[intent].fillPressed,
+      backgroundHover:
+        colors.length >= 2
+          ? darken(colors[1], 0.15)
+          : semanticColors?.[intent].fillHover,
+      iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
+      label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
+    };
+  } else {
+    return {
+      background: semanticColors?.neutral.surface,
+      backgroundClicked: semanticColors?.neutral.fillPressed,
+      backgroundHover: semanticColors?.neutral.fillHover,
+      iconColor: semanticColors?.neutral.icon,
+      label: semanticColors?.neutral.fillPressed,
+    };
+  }
+}
+
 function createTypeCss(
   props: ExtraTagProps,
   type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
-  const themeColors = getColors(props);
-  const intent =
-    typeof props.tagColor === "string" ? props.tagColor : "primary";
+  const semanticColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
+
+  const intent = typeof props.tagColor === "string" ? props.tagColor : null;
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
 
   const typeToColors = {
-    primary: {
-      background: colors.length >= 2 ? colors[1] : themeColors?.[intent][400],
-      backgroundClicked:
-        colors.length >= 2
-          ? darken(colors[1], 0.3)
-          : themeColors?.[intent][600],
-      backgroundHover:
-        colors.length >= 2
-          ? darken(colors[1], 0.15)
-          : themeColors?.[intent][500],
-      iconColor: colors.length > 2 ? colors[2] : "white",
-      label: colors.length ? colors[0] : "white",
-    },
-    secondary: {
-      background: colors.length >= 2 ? colors[1] : themeColors?.[intent][200],
-      backgroundClicked:
-        colors.length >= 2
-          ? darken(colors[1], 0.3)
-          : themeColors?.[intent][600],
-      backgroundHover:
-        colors.length >= 2
-          ? darken(colors[1], 0.15)
-          : themeColors?.[intent][500],
-      iconColor: colors.length > 2 ? colors[2] : themeColors?.[intent][400],
-      label: colors.length ? colors[0] : themeColors?.[intent][600],
-    },
+    primary: generatePrimaryTagColors(intent, colors, semanticColors),
+    secondary: generateSecondaryTagColors(intent, colors, semanticColors),
   };
 
   const typeColors = typeToColors[type];
@@ -196,11 +259,11 @@ function createTypeCss(
     &:active,
     &:focus {
       .MuiChip-label {
-        color: white;
+        color: ${semanticTextColors?.base?.onFill};
       }
 
       svg {
-        fill: white;
+        fill: ${semanticTextColors?.base?.onFill};
       }
     }
 
@@ -231,7 +294,13 @@ const typeToCss = {
   secondary,
 };
 
-const doNotForwardProps = ["sdsType", "sdsStyle", "tagColor", "hover"];
+const doNotForwardProps = [
+  "sdsType",
+  "sdsStyle",
+  "sdsSize",
+  "tagColor",
+  "hover",
+];
 
 export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -239,16 +308,16 @@ export const StyledTag = styled(Chip, {
   border: none;
 
   ${(props: ExtraTagProps) => {
-    const { hover = true, sdsType, sdsStyle, icon } = props;
+    const { hover = true, sdsType, sdsStyle, sdsSize = "s" } = props;
 
     const isRounded = sdsStyle === "rounded";
     const type = sdsType || "primary";
 
     return css`
-      ${icon ? withIcon(props) : withoutIcon(props)}
+      ${sdsSize === "l" ? tagSizeL(props) : tagSizeS(props)}
       ${typeToCss[type](props)}
       ${isRounded ? rounded(props) : square(props)}
-      ${hover ? withHover() : `pointer-events: none;`}
+      ${hover ? withHover(props) : `pointer-events: none;`}
     `;
   }}
 `;

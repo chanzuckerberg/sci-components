@@ -3,7 +3,7 @@ import { forwardRef, useState } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 
 interface AccessibleInputTextProps {
-  label: string;
+  label: React.ReactNode;
   placeholder?: string;
   id: string;
 }
@@ -49,9 +49,16 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       return <></>;
     }
 
+    const finalLabel =
+      typeof label === "string" ? (
+        <StyledLabel htmlFor={id}>{label}</StyledLabel>
+      ) : (
+        label
+      );
+
     return (
       <>
-        {!hideLabel && <StyledLabel htmlFor={id}>{label}</StyledLabel>}
+        {!hideLabel && finalLabel}
         <StyledInputBase
           ref={ref}
           inputProps={inputProps}

@@ -6,12 +6,11 @@ import useInView from "./useIntersection";
 
 export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
   indicatorColor?:
-    | "primary"
-    | "error"
+    | "accent"
+    | "negative"
     | "info"
-    | "success"
-    | "warning"
-    | "gray"
+    | "positive"
+    | "notice"
     | "beta";
   items: Array<{
     title: string;

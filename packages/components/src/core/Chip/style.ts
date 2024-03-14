@@ -8,7 +8,7 @@ import {
   getColors,
   getCorners,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface ChipExtraProps extends CommonThemeProps {
   size?: "small" | "medium";
@@ -17,11 +17,11 @@ export interface ChipExtraProps extends CommonThemeProps {
 }
 
 const small = (props: ChipExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
-    height: ${spacings?.l}px;
-    padding: ${spacings?.xxs}px ${spacings?.xs}px;
+    height: ${spaces?.l}px;
+    padding: ${spaces?.xxs}px ${spaces?.xs}px;
 
     .MuiChip-label {
       ${fontCapsXxxxs(props)}
@@ -31,35 +31,35 @@ const small = (props: ChipExtraProps): SerializedStyles => {
 };
 
 const medium = (props: ChipExtraProps): SerializedStyles => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
   const colors = getColors(props);
 
   return css`
-    margin: 0 ${spacings?.s}px;
+    margin: 0 ${spaces?.s}px;
     height: 24px;
 
-    background-color: ${colors?.primary[400]};
+    background-color: ${colors?.blue[400]};
 
     &:hover {
-      background-color: ${colors?.primary[500]};
+      background-color: ${colors?.blue[500]};
     }
 
     &:active {
-      background-color: ${colors?.primary[600]};
+      background-color: ${colors?.blue[600]};
     }
 
     .MuiChip-label {
       ${fontHeaderXs(props)}
       color: white;
-      padding-left: ${spacings?.s}px;
+      padding-left: ${spaces?.s}px;
     }
 
     .MuiChip-deleteIcon {
       color: white;
-      padding-right: ${spacings?.xxs}px;
-      margin: 0 0 0 -${spacings?.s}px;
-      height: ${spacings?.l}px;
-      width: ${spacings?.l}px;
+      padding-right: ${spaces?.xxs}px;
+      margin: 0 0 0 -${spaces?.s}px;
+      height: ${spaces?.l}px;
+      width: ${spaces?.l}px;
 
       &:hover,
       &:focus-visible {
@@ -119,28 +119,28 @@ function createStatusCss(
 
   const statusToColors = {
     beta: {
-      dark: colors.beta[600],
-      light: colors.beta[200],
+      dark: colors.purple[600],
+      light: colors.purple[200],
     },
     error: {
-      dark: colors.error[600],
-      light: colors.error[200],
+      dark: colors.red[600],
+      light: colors.red[200],
     },
     info: {
-      dark: colors.info[600],
-      light: colors.info[200],
+      dark: colors.blue[600],
+      light: colors.blue[200],
     },
     pending: {
       dark: colors.gray[600],
       light: colors.gray[200],
     },
     success: {
-      dark: colors.success[600],
-      light: colors.success[200],
+      dark: colors.green[600],
+      light: colors.green[200],
     },
     warning: {
-      dark: colors.warning[600],
-      light: colors.warning[200],
+      dark: colors.yellow[600],
+      light: colors.yellow[200],
     },
   };
 

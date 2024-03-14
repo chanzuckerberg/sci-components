@@ -1,6 +1,6 @@
 import { MenuItemProps as RawMenuItemProps } from "@mui/material";
 import React, { ForwardedRef, forwardRef } from "react";
-import Icon, { IconNameToSizes, IconProps } from "../Icon";
+import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {
   ColumnWrapper,
   ContentWrapper,
@@ -133,6 +133,7 @@ const MenuItem = forwardRef(function MenuItem<
         return (
           <StyledMenuItemIcon disabled={disabled}>
             <Icon
+              color="blue"
               {...sdsIconProps}
               sdsType="static"
               sdsIcon={icon}

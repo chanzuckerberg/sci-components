@@ -3,9 +3,9 @@ export enum Spaces {
   XXS = "4px",
   XS = "6px",
   S = "8px",
-  M = "10px",
-  L = "14px",
-  XL = "22px",
-  XXL = "38px",
+  M = "12px",
+  L = "16px",
+  XL = "24px",
+  XXL = "40px",
   DEFAULT = M,
 }

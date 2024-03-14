@@ -1,0 +1,249 @@
+import { styled } from "@mui/material";
+import { Args } from "@storybook/react";
+import { FC, useState } from "react";
+import Callout from "src/core/Callout";
+import RawIcon, { IconNameToSizes, SdsIconWithColor } from "src/core/Icon";
+import {
+  CommonThemeProps,
+  fontBodyXs,
+  getColors,
+  getSpaces,
+  getTypography,
+} from "src/core/styles";
+import { iconMap } from "src/core/Icon/map";
+import InputSearch from "src/core/InputSearch";
+
+const IconBankWrapper = styled("div")`
+  ${(props: CommonThemeProps) => {
+    const typography = getTypography(props);
+    const spaces = getSpaces(props);
+
+    return `
+      font-family: ${typography?.fontFamily};
+      display: grid;
+      grid-gap: ${spaces?.s}px;
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, 210px);
+      margin-top: ${spaces?.m}px;
+    `;
+  }}
+`;
+
+const IconWrapper = styled("div")`
+  ${fontBodyXs}
+
+  ${(props: CommonThemeProps & SdsIconWithColor) => {
+    const colors = getColors(props);
+    const spaces = getSpaces(props);
+
+    const { color = "blue", shade = 400 } = props;
+
+    return `
+      align-items: center;
+      border: 1px solid ${colors?.gray[200]};
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8px;
+      position: relative;
+      cursor: pointer;
+      transition: all .2s;
+
+      p {
+        margin: ${spaces?.m}px 0 0 0;
+        text-align: center;
+        font-size: 13px;
+        background-color: transparent;
+      }
+
+      span {
+        color: ${colors?.gray[600]};
+        font-size: 11px;
+      }
+
+      span.size-tag {
+        background-color: rgba(0, 0, 0, 0.05);
+        font-size: 10px;
+        padding: 0 4px;
+        margin: 0 2px;
+        border-radius: 2px;
+      }
+
+      &:hover {
+        border-radius: 2px;
+        background-color: ${colors?.[color]?.[shade]};
+        border-color: ${colors?.[color]?.[shade]};
+        color: white;
+
+        p {
+          color: white;
+        }
+
+        span {
+          color: white;
+        }
+
+        span.size-tag {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        svg {
+          fill: white;
+        }
+
+        div.notification {
+          display: flex;
+        }
+      }
+
+      div.icon {
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+      }
+
+      div.notification {
+        flex-direction: column;
+        border-radius: 2px;
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(3px);
+        color: white;
+        align-items: center;
+        justify-content: center;
+      }
+    `;
+  }}
+`;
+
+type IconItemProps = {
+  sdsIcon: string;
+  innerIcon: [string, FC<CustomSVGProps> | null];
+} & SdsIconWithColor;
+
+const IconItem = (props: IconItemProps) => {
+  const { sdsIcon, innerIcon, color } = props;
+
+  const [copied, setCopied] = useState(false);
+
+  if (!innerIcon[1]) return null;
+
+  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+
+  const copyIconNameHandler = (iconName: string) => {
+    navigator.clipboard.writeText(iconName);
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 1500);
+  };
+
+  return (
+    <IconWrapper
+      color={color}
+      key={sdsIcon + sdsSize}
+      onClick={() => copyIconNameHandler(sdsIcon)}
+    >
+      <div className="icon">
+        <RawIcon
+          color={color}
+          sdsSize={sdsSize}
+          sdsIcon={sdsIcon as keyof IconNameToSizes}
+          sdsType="static"
+        />
+      </div>
+      <p>{sdsIcon}</p>
+      <span>
+        Available sizes{" "}
+        {sdsSize === "s" ? (
+          <>
+            <span className="size-tag">xs</span>
+            <span className="size-tag">s</span>
+          </>
+        ) : (
+          <>
+            <span className="size-tag">l</span>
+            <span className="size-tag">xl</span>
+          </>
+        )}
+      </span>
+      {copied && (
+        <div className="notification">
+          <RawIcon
+            color={color}
+            sdsSize={sdsSize}
+            sdsIcon={sdsIcon as keyof IconNameToSizes}
+            sdsType="static"
+          />
+          <p>Copied!</p>
+          <span>
+            <RawIcon
+              color={color}
+              sdsSize="xs"
+              sdsIcon="Check"
+              sdsType="static"
+            />
+          </span>
+        </div>
+      )}
+    </IconWrapper>
+  );
+};
+
+export const IconBankDemo = (props: Args): JSX.Element => {
+  const { color } = props;
+
+  const initialIcons = Object.entries(iconMap);
+
+  const [icons, setIcons] = useState(initialIcons);
+
+  const searchIconHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    const regex = new RegExp(query, "gi");
+    const newIcons = initialIcons.filter((icon) => {
+      return icon[0].match(regex);
+    });
+    setIcons(newIcons);
+  };
+
+  return (
+    <>
+      <InputSearch
+        id="squareSearchPreview"
+        label="Search"
+        sdsStyle="square"
+        placeholder="Search icons"
+        name="square-input-search"
+        onChange={searchIconHandler}
+      />
+      {icons.length ? (
+        <IconBankWrapper>
+          {icons.map(([sdsIcon, icon]) => {
+            return Object.entries(icon).map((innerIcon) => (
+              <IconItem
+                color={color}
+                key={sdsIcon + innerIcon[0]}
+                innerIcon={innerIcon}
+                sdsIcon={sdsIcon}
+              />
+            ));
+          })}
+        </IconBankWrapper>
+      ) : (
+        <Callout
+          intent="notice"
+          icon={
+            <RawIcon sdsSize="l" sdsIcon="InfoSpeechBubble" sdsType="static" />
+          }
+        >
+          Sorry, there are no matches for your search!
+        </Callout>
+      )}
+    </>
+  );
+};

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CellComponent /> Default story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr
+      class="css-1lvje81"
+      style="display: block; max-width: 280px;"
+    >
+      <td
+        class="cell-component css-1ssa1s"
+        data-testid="CellComponent"
+        style="height: 100px; width: 100px;"
+      >
+        <span
+          class="MuiSwitch-root MuiSwitch-sizeMedium css-1r4ynxi-MuiSwitch-root"
+        >
+          <span
+            class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+          >
+            <input
+              class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+              type="checkbox"
+              value="Off"
+            />
+            <span
+              class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+            />
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+          />
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

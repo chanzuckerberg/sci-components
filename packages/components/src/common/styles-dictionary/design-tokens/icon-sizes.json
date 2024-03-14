@@ -1,0 +1,30 @@
+{
+  "sds": {
+    "iconSize": {
+      "input": {
+        "height": {
+          "value": "16px"
+        },
+        "width": {
+          "value": "16px"
+        }
+      },
+      "xs": {
+        "height": { "value": "12px" },
+        "width": { "value": "12px" }
+      },
+      "s": {
+        "height": { "value": "16px" },
+        "width": { "value": "16px" }
+      },
+      "l": {
+        "height": { "value": "24px" },
+        "width": { "value": "24px" }
+      },
+      "xl": {
+        "height": { "value": "32px" },
+        "width": { "value": "32px" }
+      }
+    }
+  }
+}

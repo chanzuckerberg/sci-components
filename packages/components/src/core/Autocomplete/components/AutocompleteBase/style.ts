@@ -1,17 +1,18 @@
 import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
-import InputSearch from "../../../InputSearch";
+import InputSearch from "src/core/InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
-  fontCapsXxxs,
+  fontCapsXxxxs,
   getBorders,
-  getColors,
   getCorners,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../../../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -34,40 +35,41 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
   + .${autocompleteClasses.popper}
     > .${autocompleteClasses.paper}
     .${autocompleteClasses.groupLabel} {
-    ${fontCapsXxxs}
+    ${fontCapsXxxxs}
   }
 
   ${(props: StyleProps) => {
     const { search } = props;
-    const spacings = getSpaces(props);
-    const colors = getColors(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
+    const semanticTextColors = getSemanticTextColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       ${!search && `height: 0`};
 
       .MuiOutlinedInput-root.MuiInputBase-formControl.MuiInputBase-adornedEnd {
-        padding: 0 ${spacings?.l}px 0 0;
+        padding: 0 ${spaces?.m}px;
 
         .MuiAutocomplete-input {
-          padding: ${spacings?.xs}px ${spacings?.l}px;
+          padding: ${spaces?.xs}px ${spaces?.s}px;
         }
       }
 
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
 
           .${autocompleteClasses.option} {
             min-height: unset;
 
             &.${autocompleteClasses.focused} {
-              background-color: ${colors?.gray[100]};
+              background-color: ${semanticComponentColors?.base?.surfaceSecondary};
             }
 
             &[aria-selected="true"] {
-              background-color: white;
+              background-color: ${semanticComponentColors?.base?.surfacePrimary};
             }
 
             &[aria-disabled="true"] {
@@ -75,7 +77,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             }
 
             &[aria-selected="true"].${autocompleteClasses.focused} {
-              background-color: ${colors?.gray[100]};
+              background-color: ${semanticComponentColors?.base?.surfaceSecondary};
             }
           }
 
@@ -88,15 +90,15 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
         .${autocompleteClasses.groupLabel} {
           top: 0;
-          color: ${colors?.gray[500]};
-          padding: ${spacings?.xxs}px ${spacings?.s}px;
+          color: ${semanticTextColors?.base?.secondary};
+          padding: ${spaces?.xxs}px ${spaces?.s}px;
         }
 
         .${autocompleteClasses.groupUl} {
           position: relative;
-          margin: 0 0 ${spacings?.m}px;
-          border-bottom: ${borders?.gray[200]};
-          padding-bottom: ${spacings?.xxs}px;
+          margin: 0 0 ${spaces?.m}px;
+          border-bottom: ${borders?.base?.divider};
+          padding-bottom: ${spaces?.xxs}px;
 
           & li:last-of-type {
             position: relative;
@@ -104,12 +106,12 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
 
         .${autocompleteClasses.noOptions} {
-          padding: ${spacings?.xs}px ${spacings?.s}px;
-          margin-right: ${spacings?.l}px;
+          padding: ${spaces?.xs}px ${spaces?.s}px;
+          margin-right: ${spaces?.l}px;
         }
 
         .${autocompleteClasses.loading} {
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
         }
       }
     `;
@@ -152,15 +154,16 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 
 export const StyledPaper = styled(Paper)`
   ${(props) => {
-    const spacings = getSpaces(props);
-    const borders = getBorders(props);
+    const spaces = getSpaces(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const borders = getBorders(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px ;
-      background-color: white;
-      border: ${borders?.gray[100]};
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;
@@ -171,10 +174,10 @@ export const StyledPaper = styled(Paper)`
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
   ${(props) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      color: ${colors?.gray[500]};
+      color: ${semanticTextColors?.base?.secondary};
       white-space: pre-wrap;
     `;
   }}

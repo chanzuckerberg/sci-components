@@ -1,0 +1,626 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> Default story renders snapshot 1`] = `
+<table
+  class="css-mpwjyz"
+>
+  <thead
+    class="css-1426k2b"
+  >
+    <tr
+      class="css-2l3m6x"
+    >
+      <th
+        class="css-19ju8um"
+      >
+        <div
+          class="css-187gjam"
+        >
+          <span>
+            Category
+          </span>
+        </div>
+      </th>
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Active Header
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            A very long table header title to test sort icon positioning
+          </span>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </div>
+      </th>
+      <th
+        class="css-5bfdy4"
+      >
+        <div
+          class="css-rm9mvq"
+        >
+          <span>
+            Component
+          </span>
+        </div>
+      </th>
+      <th
+        class="css-vnxybn"
+      >
+        <div
+          class="css-wg04tn"
+        >
+          <span>
+            Right Aligned and Not sortable
+          </span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class="css-1lvje81"
+    >
+      <td
+        class="cell-component css-4zu111"
+      >
+        <div
+          class="css-9lvjku"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+              data-file-name="IconFlaskLarge"
+              data-testid="IconFlaskLarge"
+              fillcontrast="white"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            />
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Chemistry
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class=" css-p6nomj"
+        data-mui-internal-clone-element="true"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-102yezv"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-p6nomj"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Tertiary Text
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="cell-component css-4umyx6"
+      >
+        <div
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          >
+            info
+          </span>
+        </div>
+        <div
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          >
+            notice
+          </span>
+        </div>
+        <div
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          >
+            beta
+          </span>
+        </div>
+        <div
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          >
+            negative
+          </span>
+        </div>
+        <div
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+        >
+          <span
+            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          >
+            positive
+          </span>
+        </div>
+      </td>
+      <td
+        class="css-ebdvcw"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-bikrfl"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                356
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr
+      class="css-1lvje81"
+    >
+      <td
+        class="cell-component css-4zu111"
+      >
+        <div
+          class="css-9lvjku"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+              data-file-name="IconDownloadLarge"
+              data-testid="IconDownloadLarge"
+              fillcontrast="white"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            />
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Downloadable Content
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-p6nomj"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Tertiary Text
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-p6nomj"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="cell-component css-4umyx6"
+      >
+        <div
+          aria-labelledby="demo-radio-buttons-group-label"
+          class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+          role="radiogroup"
+        >
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
+          >
+            <span
+              caption="Caption I"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-4m8g7g-MuiButtonBase-root-MuiRadio-root"
+              intent="default"
+              label="Option I"
+            >
+              <input
+                checked=""
+                class="PrivateSwitchBase-input css-1m9pwf3"
+                name="radio-buttons-group"
+                type="radio"
+                value="1"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-file-name="IconRadioChecked"
+                data-testid="IconRadioChecked"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 16 16"
+              />
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+            >
+              <span
+                class="css-1ddu512"
+              >
+                <span
+                  class="css-1dr5e88"
+                >
+                  Option I
+                </span>
+                <span
+                  class="css-1mg4zid"
+                >
+                  Caption I
+                </span>
+              </span>
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
+          >
+            <span
+              caption="Caption II"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-4m8g7g-MuiButtonBase-root-MuiRadio-root"
+              intent="default"
+              label="Option II"
+            >
+              <input
+                class="PrivateSwitchBase-input css-1m9pwf3"
+                name="radio-buttons-group"
+                type="radio"
+                value="2"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-file-name="IconRadioUnchecked"
+                data-testid="IconRadioUnchecked"
+                fillcontrast="white"
+                focusable="false"
+                viewBox="0 0 16 16"
+              />
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+            >
+              <span
+                class="css-1ddu512"
+              >
+                <span
+                  class="css-1dr5e88"
+                >
+                  Option II
+                </span>
+                <span
+                  class="css-1mg4zid"
+                >
+                  Caption II
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </td>
+      <td
+        class="css-ebdvcw"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-bikrfl"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                1,234
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              2,344,000
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              12.5%
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr
+      class=" css-szib4e"
+      data-mui-internal-clone-element="true"
+      disabled=""
+    >
+      <td
+        class="cell-component css-4zu111"
+      >
+        <div
+          class="css-9lvjku"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+              data-file-name="IconBacteriaLarge"
+              data-testid="IconBacteriaLarge"
+              fillcontrast="white"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            />
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Disease
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-1h7dd7c"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Tertiary Text
+            </span>
+          </div>
+        </div>
+      </td>
+      <td
+        class="css-1h7dd7c"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td
+        class="cell-component css-1ssa1s"
+      >
+        <div
+          class="css-1ft6wgl"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+            data-file-name="IconVirusLarge"
+            data-testid="IconVirusLarge"
+            fillcontrast="white"
+            focusable="false"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          />
+        </div>
+      </td>
+      <td
+        class="css-ab4j8e"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-bikrfl"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                0.4
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

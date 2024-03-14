@@ -1,0 +1,271 @@
+{
+  "sds": {
+    "font": {
+      "color": {
+        "value": "black"
+      },
+      "font-family": {
+        "body": {
+          "value": "\"Inter\", sans-serif"
+        },
+        "caps": {
+          "value": "\"Inter\", sans-serif"
+        },
+        "code": {
+          "value": "\"IBM Plex Mono\", monospace"
+        },
+        "header": {
+          "value": "\"Inter\", sans-serif"
+        },
+        "tabular": {
+          "value": "\"Inter\", sans-serif"
+        }
+      },
+      "body": {
+        "xxxs": {
+          "400": {
+            "font": {
+              "value": "400 11px/16px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 11px/16px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font": {
+              "value": "400 12px/18px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 12px/18px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          }
+        },
+        "xs": {
+          "400": {
+            "font": {
+              "value": "400 13px/20px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 13px/20px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          }
+        },
+        "s": {
+          "400": {
+            "font": {
+              "value": "400 14px/24px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 14px/24px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          }
+        },
+        "m": {
+          "400": {
+            "font": {
+              "value": "400 16px/26px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 16px/26px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "l": {
+          "400": {
+            "font": {
+              "value": "400 18px/28px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 18px/28px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        }
+      },
+      "caps": {
+        "xxxxs": {
+          "600": {
+            "font": {
+              "value": "600 10px/14px {sds.font.font-family.caps.value}"
+            },
+            "letter-spacing": { "value": "0.5px" },
+            "text-transform": { "value": " uppercase" }
+          }
+        },
+        "xxxs": {
+          "600": {
+            "font": {
+              "value": "600 11px/16px {sds.font.font-family.caps.value}"
+            },
+            "letter-spacing": { "value": "0.5px" },
+            "text-transform": { "value": " uppercase" }
+          }
+        },
+        "xxs": {
+          "600": {
+            "font": {
+              "value": "600 12px/18px {sds.font.font-family.caps.value}"
+            },
+            "letter-spacing": { "value": "0.5px" },
+            "text-transform": { "value": " uppercase" }
+          }
+        }
+      },
+      "header": {
+        "xxxs": {
+          "600": {
+            "font": {
+              "value": "600 11px/16px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          }
+        },
+        "xxs": {
+          "600": {
+            "font": {
+              "value": "600 12px/18px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0.1px" }
+          }
+        },
+        "xs": {
+          "600": {
+            "font": {
+              "value": "600 13px/18px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          }
+        },
+        "s": {
+          "600": {
+            "font": {
+              "value": "600 14px/20px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0.08px" }
+          }
+        },
+        "m": {
+          "600": {
+            "font": {
+              "value": "600 16px/22px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "l": {
+          "600": {
+            "font": {
+              "value": "600 18px/24px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "xl": {
+          "600": {
+            "font": {
+              "value": "600 22px/30px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "xxl": {
+          "600": {
+            "font": {
+              "value": "600 26px/34px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        }
+      },
+      "tabular": {
+        "xs": {
+          "400": {
+            "font": {
+              "value": "400 13px/20px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": { "value": "tabular-nums" },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 13px/20px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": { "value": "tabular-nums" },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "s": {
+          "400": {
+            "font": {
+              "value": "400 14px/24px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": { "value": "tabular-nums" },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 14px/24px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": { "value": "tabular-nums" },
+            "letter-spacing": { "value": "0px" }
+          }
+        }
+      },
+      "code": {
+        "xs": {
+          "400": {
+            "font": {
+              "value": "400 13px/20px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 13px/20px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        },
+        "s": {
+          "400": {
+            "font": {
+              "value": "400 14px/24px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          },
+          "600": {
+            "font": {
+              "value": "600 14px/24px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": { "value": "0px" }
+          }
+        }
+      }
+    }
+  }
+}

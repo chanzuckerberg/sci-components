@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { CommonThemeProps, getCorners, getSpaces } from "../styles";
+import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
 
 export interface TooltipCondensedExtraProps extends CommonThemeProps {
   indicator?: boolean;
@@ -10,6 +10,7 @@ const indicatorCSS = (props: TooltipCondensedExtraProps): string => {
   const { indicatorColor } = props;
   const spaces = getSpaces(props);
   const corners = getCorners(props);
+
   return css`
     &::before {
       content: "";

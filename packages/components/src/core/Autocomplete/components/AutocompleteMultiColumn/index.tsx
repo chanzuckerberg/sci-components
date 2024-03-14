@@ -13,11 +13,11 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
-} from "../..";
-import ButtonIcon from "../../../ButtonIcon";
-import { InputSearchProps } from "../../../InputSearch";
-import { StyledInputAdornment } from "../../../InputSearch/style";
-import { SDSTheme } from "../../../styles";
+} from "src/core/Autocomplete";
+import ButtonIcon from "src/core/ButtonIcon";
+import { InputSearchProps } from "src/core/InputSearch";
+import { StyledInputAdornment } from "src/core/InputSearch/style";
+import { SDSTheme } from "src/core/styles";
 import {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
@@ -207,19 +207,10 @@ const AutocompleteMultiColumn = <
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
-                    icon="xMark"
+                    icon="XMarkCircle"
                     onClick={clearInput}
                   />
                 )}
-                <ButtonIcon
-                  aria-label="search-button"
-                  sdsType="secondary"
-                  sdsSize="small"
-                  sdsIconProps={{
-                    sdsType: "interactive",
-                  }}
-                  icon="search"
-                />
               </StyledInputAdornment>
             ),
             /**
@@ -227,6 +218,19 @@ const AutocompleteMultiColumn = <
              * mobile keyboard
              */
             inputMode: "text",
+            startAdornment: (
+              <StyledInputAdornment position="start">
+                <ButtonIcon
+                  aria-label="search-button"
+                  sdsType="secondary"
+                  sdsSize="small"
+                  sdsIconProps={{
+                    sdsType: "interactive",
+                  }}
+                  icon="Search"
+                />
+              </StyledInputAdornment>
+            ),
           }}
           {...InputBaseProps}
         />
