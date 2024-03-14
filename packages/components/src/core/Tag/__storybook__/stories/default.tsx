@@ -1,10 +1,22 @@
 import { Args } from "@storybook/react";
 import Callout from "src/core/Callout";
 import CalloutTitle from "src/core/Callout/components/CalloutTitle";
+import Icon, { IconNameToSizes } from "src/core/Icon";
 import RawTag from "src/core/Tag";
 
 export const Tag = (props: Args): JSX.Element => {
   const { label, sdsSize, icon } = props;
+
+  const finalIcon =
+    typeof icon === "string" ? (
+      <Icon
+        sdsSize={sdsSize}
+        sdsIcon={icon as keyof IconNameToSizes}
+        sdsType="static"
+      />
+    ) : (
+      icon
+    );
 
   if (sdsSize === "l" && !icon) {
     return (
@@ -18,5 +30,5 @@ export const Tag = (props: Args): JSX.Element => {
     );
   }
 
-  return <RawTag label={label} {...props} sdsSize={sdsSize} icon={icon} />;
+  return <RawTag label={label} {...props} sdsSize={sdsSize} icon={finalIcon} />;
 };

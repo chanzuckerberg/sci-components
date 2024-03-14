@@ -1,6 +1,7 @@
 import Icon from "src/core/Icon";
 import { ExtraTagProps } from "../style";
 import { WbSunny } from "@mui/icons-material";
+import CustomSvgIcon from "src/common/storybook/customSvgIcon";
 
 export const TAG_EXCLUDED_CONTROLS = [
   "color",
@@ -14,21 +15,22 @@ export const TAG_EXCLUDED_CONTROLS = [
 
 export const TAG_ICONS = [
   undefined,
-  <Icon
-    sdsSize="xs"
-    sdsIcon="CheckCircle"
-    key="CheckCircle"
-    sdsType="button"
-  />,
-  <Icon sdsSize="l" sdsIcon="Loading" key="loading" sdsType="button" />,
+  "CheckCircle",
+  "Loading",
+  "ExclamationMarkCircle",
+  "Person",
   <WbSunny key="WBSunny" />,
+  <CustomSvgIcon key="CustomSvgIcon" />,
 ];
 
 export const TAG_ICONS_LABELS = [
   "No Icon",
   "SDS Check Circle",
   "SDS Loading",
-  "MUI WbSunny",
+  "SDS Exclamation Mark",
+  "SDS Person",
+  "MUI Wb Sunny",
+  "Custom SVG Icon",
 ];
 
 export const TAG_SDS_STYLES: ExtraTagProps["sdsStyle"][] = [
