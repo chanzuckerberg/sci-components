@@ -27,6 +27,7 @@ import { ReactComponent as IconCompassLarge } from "src/common/svgs/IconCompassL
 import { ReactComponent as IconCopyLarge } from "src/common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "src/common/svgs/IconCopySmall.svg";
 import { ReactComponent as IconCubeLarge } from "src/common/svgs/IconCubeLarge.svg";
+import { ReactComponent as IconCubeSmall } from "src/common/svgs/IconCubeSmall.svg";
 import { ReactComponent as IconDNALarge } from "src/common/svgs/IconDNALarge.svg";
 import { ReactComponent as IconDocumentSmall } from "src/common/svgs/IconDocumentSmall.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "src/common/svgs/IconDotsHorizontal3Large.svg";
@@ -150,7 +151,7 @@ export interface IconNameToSizes {
   Code: "l" | "xl";
   Compass: "l" | "xl";
   Copy: "xs" | "s" | "l" | "xl";
-  Cube: "l" | "xl";
+  Cube: "xs" | "s" | "l" | "xl";
   DNA: "l" | "xl";
   Document: "xs" | "s";
   DotsHorizontal: "xs" | "s" | "l" | "xl";
@@ -324,7 +325,7 @@ export const iconMap: Props = {
   },
   Cube: {
     largeIcon: IconCubeLarge,
-    smallIcon: null,
+    smallIcon: IconCubeSmall,
   },
   DNA: {
     largeIcon: IconDNALarge,
