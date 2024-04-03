@@ -17,7 +17,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
   <div>
     <div
       class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-18fqwks-MuiButtonBase-root-MuiChip-root"
-      role="button"
+      role="none presentation"
       tabindex="0"
     >
       <span
@@ -26,6 +26,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
         TagFilter
       </span>
       <button
+        aria-label="Delete Tag"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-1wnv1p6-MuiButtonBase-root-MuiIconButton-root"
         icon="XMark"
         tabindex="0"
