@@ -21,8 +21,7 @@ export const StyledTag = styled(Tag)`
     const iconSizes = getIconSizes(props);
 
     return css`
-      padding: ${spaces?.xxs}px ${(spaces?.s ?? 0) - 2}px ${spaces?.xxs}px
-        ${spaces?.s}px;
+      padding: ${spaces?.xxs}px ${spaces?.s}px;
 
       &:after {
         display: none;
@@ -35,8 +34,8 @@ export const StyledTag = styled(Tag)`
       .MuiChip-deleteIcon,
       .MuiSvgIcon-root {
         margin-left: ${spaces?.s}px;
-        width: ${iconSizes?.xs?.width}px;
-        height: ${iconSizes?.xs?.height}px;
+        width: ${iconSizes?.xs?.width}px !important;
+        height: ${iconSizes?.xs?.height}px !important;
       }
 
       .MuiChip-label,
