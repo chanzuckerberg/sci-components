@@ -19,9 +19,15 @@ export type TagFilterProps = SdsTagFilterProps;
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
   return (
     <StyledTag
+      role="none presentation"
       {...props}
       deleteIcon={
-        <ButtonIcon icon="XMark" sdsSize="small" sdsType="tertiary" />
+        <ButtonIcon
+          aria-label="Delete Tag"
+          icon="XMark"
+          sdsSize="small"
+          sdsType="tertiary"
+        />
       }
       color="info"
     />
