@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
+<div
+  class="css-1o5w4es"
+>
+  <div
+    class="css-1ft6wgl"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+      data-file-name="IconLoadingLarge"
+      data-testid="IconLoadingLarge"
+      fillcontrast="white"
+      focusable="false"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    />
+  </div>
+  <span
+    aria-label="Loading cats list..."
+    aria-live="polite"
+    class="css-q6tdx9"
+    role="status"
+  >
+    Loading
+  </span>
+</div>
+`;
+
+exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
+<div
+  class="css-1o5w4es"
+>
+  <div
+    class="css-1ft6wgl"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+      data-file-name="IconLoadingLarge"
+      data-testid="IconLoadingLarge"
+      fillcontrast="white"
+      focusable="false"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    />
+  </div>
+  <span
+    aria-live="polite"
+    class="css-q6tdx9"
+    role="status"
+  >
+    Loading
+  </span>
+</div>
+`;

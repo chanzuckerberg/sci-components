@@ -9,10 +9,10 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React, { SyntheticEvent, useMemo } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
-import Autocomplete, { AutocompleteProps } from "../Autocomplete";
-import { DefaultAutocompleteOption } from "../Autocomplete/components/AutocompleteBase";
-import { InputSearchProps } from "../InputSearch";
-import { SDSTheme } from "../styles";
+import Autocomplete, { AutocompleteProps } from "src/core/Autocomplete";
+import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
+import { InputSearchProps } from "src/core/InputSearch";
+import { SDSTheme } from "src/core/styles";
 import {
   StyleProps,
   StyledDropdownMenuAutocompleteWrapper,

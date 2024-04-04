@@ -5,12 +5,11 @@ import {
   fontBodyXs,
   fontBodyXxs,
   fontCapsXxxxs,
+  fontTabularXs,
   getBorders,
-  getColors,
-  getPalette,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface TooltipTableExtraProps extends CommonThemeProps {
   data?: Array<{
@@ -28,13 +27,14 @@ export interface TooltipTableExtraProps extends CommonThemeProps {
 const sdsPropNames = ["contentAlert", "itemAlign"];
 
 export const disabledStyle = (props: SectionProps): string => {
-  const colors = getColors(props);
   const { disabled } = props;
+
+  const semanticTextColors = getSemanticTextColors(props);
 
   if (!disabled) return "";
 
   return `
-    color: ${colors?.gray["300"]};
+    color: ${semanticTextColors?.base?.disabled};
   `;
 };
 
@@ -47,17 +47,17 @@ export const Section = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const borders = getBorders(props);
 
     return `
       &:not(:last-child) {
-        padding-bottom: ${spacings?.l}px;
-        border-bottom: ${borders?.gray[200]};
+        padding-bottom: ${spaces?.m}px;
+        border-bottom: ${borders?.base?.divider};
       }
 
       &:not(:first-of-type) {
-        padding-top: ${spacings?.l}px;
+        padding-top: ${spaces?.m}px;
       }
     `;
   }}
@@ -68,16 +68,14 @@ export const SectionLabel = styled("div")`
   ${disabledStyle}
 
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
-    const palette = getPalette(props);
-    const typography = getTypography(props);
+    const spaces = getSpaces(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     if (!props.label) return "";
 
     return `
-      margin-bottom: ${spacings?.m}px;      
-      font-family: ${typography?.fontFamily};
-      color: ${palette?.text?.secondary};
+      margin-bottom: ${spaces?.s}px;      
+      color: ${semanticTextColors?.base?.secondary};
     `;
   }}
 `;
@@ -90,9 +88,9 @@ export const RowLabel = styled(TableCell, {
   ${fontBodyXs}
   ${disabledStyle}
   ${(props: SectionProps) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     return `
-      padding: 0 0 ${spacings?.xxs}px 0;
+      padding: 0 0 ${spaces?.xxs}px 0;
       width: 50%;
       border-bottom: none;
       font-weight: 600;
@@ -105,7 +103,7 @@ export const RowValue = styled(TableCell, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${fontBodyXs}
+  ${fontTabularXs}
   ${disabledStyle}
 
   padding-top: 0;

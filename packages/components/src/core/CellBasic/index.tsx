@@ -1,8 +1,11 @@
 import React, { forwardRef } from "react";
-import Tooltip, { TooltipProps } from "../Tooltip";
+import Tooltip, { TooltipProps } from "src/core/Tooltip";
 import {
   CellBasicExtraProps,
   PrimaryText,
+  PrimaryTextComponentSlotBottomWrapper,
+  PrimaryTextComponentSlotRightWrapper,
+  PrimaryTextWrapper,
   SecondaryText,
   StyledCellContent,
   StyledCellContentWrapper,
@@ -22,6 +25,9 @@ interface CellBasicContentProps
   shouldTextWrap?: boolean;
   icon?: React.ReactElement<CustomSVGProps>;
   iconVerticalAlign?: "top" | "center" | "bottom";
+  primaryTextComponentSlotRight?: React.ReactNode;
+  primaryTextComponentSlotBottom?: React.ReactNode;
+  horizontalAlign?: "left" | "right";
 }
 
 export interface CellBasicRawProps {
@@ -44,6 +50,9 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     shouldTextWrap = true,
     icon,
     iconVerticalAlign,
+    primaryTextComponentSlotRight,
+    primaryTextComponentSlotBottom,
+    horizontalAlign = "left",
   } = props;
 
   return (
@@ -54,12 +63,25 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
         </StyledCellIconWrapper>
       )}
       <StyledCellContentWrapper>
-        <PrimaryText
-          shouldTextWrap={shouldTextWrap}
-          primaryTextWrapLineCount={primaryTextWrapLineCount}
-        >
-          {primaryText}
-        </PrimaryText>
+        <PrimaryTextWrapper horizontalAlign={horizontalAlign}>
+          <PrimaryText
+            shouldTextWrap={shouldTextWrap}
+            primaryTextWrapLineCount={primaryTextWrapLineCount}
+          >
+            {primaryText}
+          </PrimaryText>
+          {primaryTextComponentSlotRight && (
+            <PrimaryTextComponentSlotRightWrapper>
+              {primaryTextComponentSlotRight}
+            </PrimaryTextComponentSlotRightWrapper>
+          )}
+        </PrimaryTextWrapper>
+
+        {!secondaryText && !tertiaryText && primaryTextComponentSlotBottom && (
+          <PrimaryTextComponentSlotBottomWrapper>
+            {primaryTextComponentSlotBottom}
+          </PrimaryTextComponentSlotBottomWrapper>
+        )}
 
         {secondaryText && (
           <SecondaryText

@@ -1,4 +1,4 @@
-import Icon from "../Icon";
+import Icon from "src/core/Icon";
 import {
   LoadingIndicatorProps as RawLoadingIndicatorProps,
   StyledLoadingIndicator,
@@ -15,7 +15,7 @@ const LoadingIndicator = ({
 }: LoadingIndicatorProps): JSX.Element => {
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle}>
-      <Icon sdsIcon="loading" sdsSize="l" sdsType="static" />
+      <Icon sdsIcon="Loading" sdsSize="l" sdsType="static" />
       <StyledText aria-label={ariaLabel} aria-live="polite" role="status">
         Loading
       </StyledText>

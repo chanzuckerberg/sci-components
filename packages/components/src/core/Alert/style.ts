@@ -1,25 +1,29 @@
-import { Alert } from "@mui/material";
+import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { getColors, getShadows, getSpaces } from "../styles";
-import { defaultTheme } from "../styles/common/defaultTheme";
+import { Colors, getColors, getShadows, getSpaces } from "../styles";
+import { defaultTheme } from "src/core/styles/common/defaultTheme";
 
 export const StyledAlert = styled(Alert)`
   ${(props) => {
     const colors = getColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const { severity = "success" } = props;
-    const borderColor = (colors && colors[severity][400]) || "black";
-    const alertColor = (colors && colors[severity][100]) || "white";
-    const iconColor = (colors && colors[severity][400]) || "black";
-    const backgroundColor = colors && colors[severity][100];
+
+    const borderColor =
+      (colors && severityToColor(severity, colors)[400]) || "black";
+    const alertColor =
+      (colors && severityToColor(severity, colors)[100]) || "white";
+    const iconColor =
+      (colors && severityToColor(severity, colors)[400]) || "black";
+    const backgroundColor = colors && severityToColor(severity, colors)[100];
 
     return `
       background-color: ${backgroundColor};
-      margin: ${spacings?.m}px 0;
+      margin: ${spaces?.m}px 0;
       color: ${defaultTheme.palette.text.primary};
-      padding: ${spacings?.l}px ${spacings?.l}px
-        ${spacings?.l}px 9px;
+      padding: ${spaces?.l}px ${spaces?.l}px
+        ${spaces?.l}px 9px;
       background-color: ${alertColor};
       &.elevated {
         border-left: 5px solid;
@@ -34,3 +38,21 @@ export const StyledAlert = styled(Alert)`
     `;
   }}
 `;
+
+function severityToColor(
+  alertSeverity: AlertProps["severity"],
+  colors: Colors
+) {
+  switch (alertSeverity) {
+    case "error":
+      return colors?.red;
+    case "warning":
+      return colors?.yellow;
+    case "info":
+      return colors?.blue;
+    case "success":
+      return colors?.green;
+    default:
+      return colors?.green;
+  }
+}

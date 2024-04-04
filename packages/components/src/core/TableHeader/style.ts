@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { getColors } from "../styles";
+import { getColors } from "src/core/styles";
 
 export const StyledTableHeader = styled("thead")`
   ${(props) => {

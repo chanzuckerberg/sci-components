@@ -1,19 +1,26 @@
 import { AlertProps } from "@mui/lab";
 import { Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Button from "../Button";
-import ButtonIcon from "../ButtonIcon";
-import Icon, { IconNameToSizes, IconProps } from "../Icon";
-import { StyledNotification } from "./style";
+import Button from "src/core/Button";
+import ButtonIcon from "src/core/ButtonIcon";
+import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+import { StyledButtonWrapper, StyledNotification } from "./style";
+
+export type NotificationIntentType =
+  | "info"
+  | "negative"
+  | "positive"
+  | "notice";
 
 export interface NotificationProps {
   autoDismiss?: boolean | number;
   buttonOnClick?: (event: React.SyntheticEvent) => void;
   buttonText?: string;
+  buttonPosition?: "left" | "right";
   dismissed?: boolean;
   slideDirection: "left" | "right";
   extraContent?: boolean;
-  intent: "info" | "error" | "success" | "warning";
+  intent: NotificationIntentType;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
 }
@@ -32,6 +39,7 @@ const Notification = ({
   onClose,
   buttonOnClick,
   buttonText,
+  buttonPosition,
   icon,
   sdsIconProps,
   ...rest
@@ -74,15 +82,15 @@ const Notification = ({
       }
     } else {
       switch (intent) {
-        case "success":
-          return <Icon sdsSize="l" sdsIcon="checkCircle" sdsType="static" />;
+        case "positive":
+          return <Icon sdsSize="l" sdsIcon="CheckCircle" sdsType="static" />;
         case "info":
-          return <Icon sdsSize="l" sdsIcon="infoCircle" sdsType="static" />;
+          return <Icon sdsSize="l" sdsIcon="InfoCircle" sdsType="static" />;
         default:
           return (
             <Icon
               sdsSize="l"
-              sdsIcon="exclamationMarkCircle"
+              sdsIcon="ExclamationMarkCircle"
               sdsType="static"
             />
           );
@@ -109,24 +117,27 @@ const Notification = ({
                   sdsSize="small"
                   sdsType="tertiary"
                   data-testid="notificationCloseButton"
-                  icon="xMark"
+                  icon="XMark"
                 />
               ) : null
             }
             icon={getIcon()}
             className="elevated"
-            severity={intent}
+            intent={intent}
+            slideDirection={slideDirection}
             {...passedProps}
           >
             {children}
-            {buttonOnClick && (
-              <Button
-                sdsStyle="minimal"
-                sdsType="secondary"
-                onClick={buttonOnClick}
-              >
-                {buttonText}
-              </Button>
+            {buttonOnClick !== undefined && (
+              <StyledButtonWrapper buttonPosition={buttonPosition}>
+                <Button
+                  sdsStyle="minimal"
+                  sdsType="secondary"
+                  onClick={buttonOnClick}
+                >
+                  {buttonText}
+                </Button>
+              </StyledButtonWrapper>
             )}
           </StyledNotification>
         </Box>

@@ -1,13 +1,12 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "../ButtonIcon";
 import {
   CommonThemeProps,
   fontHeaderS,
-  getColors,
-  getPalette,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
+import Icon from "src/core/Icon";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
@@ -29,19 +28,19 @@ const doNotForwardProps = [
   "hideSortIcon",
 ];
 
-export const StyledSortingIcon = styled(ButtonIcon, {
+export const StyledSortingIcon = styled(Icon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellHeaderExtraProps) => {
     const { active = false } = props;
 
-    const spacings = getSpaces(props);
-    const colors = getColors(props);
+    const spaces = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      margin-left: ${spacings?.s}px;
-      margin-bottom: 2px;
-      color: ${active ? colors?.primary[400] : colors?.gray[400]};
+      margin-left: ${spaces?.s}px;
+      margin-bottom: ${spaces?.xxs}px;
+      color: ${active ? semanticComponentColors?.accent?.icon : semanticComponentColors?.base?.icon};
       opacity: ${active ? 1 : 0};
       outline: none !important;
     `;
@@ -56,15 +55,13 @@ export const StyledTableHeader = styled("th", {
   ${(props: CellHeaderExtraProps) => {
     const { active = false, horizontalAlign = "left" } = props;
 
-    const spacings = getSpaces(props);
-    const typography = getTypography(props);
-    const colors = getColors(props);
-    const palette = getPalette(props);
+    const spaces = getSpaces(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      color: ${active ? colors?.primary[400] : palette.text?.secondary};
-      font-family: ${typography?.fontFamily};
-      padding: ${spacings?.l}px ${spacings?.s}px;
+      color: ${active ? semanticComponentColors?.accent?.fill : semanticTextColors?.base?.secondary};
+      padding: ${spaces?.l}px ${spaces?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
       width: 96px;
@@ -76,11 +73,15 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? colors?.primary[500] : palette.text?.primary};
+        color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
 
         & .MuiButtonBase-root {
-          color: ${active ? colors?.primary[500] : palette.text?.secondary};
+          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticComponentColors?.base?.iconHover};
           opacity: 1;
+        }
+
+        & svg {
+          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
         }
       }
     `;
