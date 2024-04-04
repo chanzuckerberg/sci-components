@@ -50,31 +50,36 @@
     
     <link href="./sb-addons/pseudo-states-10/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storybook-11/manager-bundle.js" rel="modulepreload" />
-      <meta property="og:description" content="SDS design system by CZI" />
-<meta property="og:title" content="Vibe Design System" />
+    <link href="./sb-addons/geometricpanda-badges-11/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-12/manager-bundle.js" rel="modulepreload" />
+      <meta property="og:description" content="Science Design System by CZI" />
+<meta property="og:title" content="Science Design System" />
 <link
   rel="icon"
   type="image/png"
   href="https://user-images.githubusercontent.com/927990/204130290-897628ee-e89a-4911-89df-0956c9edf940.png"
   sizes="48x48"
 />
-<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
   rel="stylesheet"
-  crossorigin="anonymous"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+  rel="stylesheet"
 />
 <title>SDS Design System</title>
 <style>
   body {
-    font-family: "Open Sans", sans-serif !important;
+    font-family: "Inter", sans-serif !important;
     font-size: 14px;
   }
 
   #storybook-explorer-menu svg {
     color: #555;
-    margin-top: 4px;
   }
 
   #storybook-explorer-menu button:focus,
@@ -115,17 +120,14 @@
     background-color: transparent !important;
   }
 
-  #storybook-explorer-menu button.sidebar-item {
-    font-size: 14px;
-    padding: 5px 3px 5px 2px;
-  }
-
+  #storybook-explorer-menu button.sidebar-item,
   #storybook-explorer-menu a.sidebar-item {
     font-size: 14px;
-    padding: 5px 3px 5px 34px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
-  #storybook-explorer-menu .sidebar-item > span {
+  #storybook-explorer-menu .sidebar-item > div > span {
     display: inline-block;
     position: relative;
     border-style: solid;
@@ -143,11 +145,13 @@
     margin-right: 6px;
   }
 
-  #storybook-explorer-menu .sidebar-item > span {
-    margin-top: 7px;
+  #storybook-explorer-menu .sidebar-item[data-selected="true"] {
+    background-color: #eaeaea;
+    color: black;
+    font-weight: 600;
   }
 
-  #storybook-explorer-menu .sidebar-item[aria-expanded="true"] > span,
+  #storybook-explorer-menu .sidebar-item[aria-expanded="true"] > div > span,
   #storybook-explorer-menu
     .sidebar-subheading[aria-expanded="true"]
     > button
@@ -158,7 +162,7 @@
 <script>
   //workaround to increase the left panel width just enough to show even the longer story names
   //based on https://github.com/storybookjs/storybook/issues/9682#issuecomment-983356523
-  const DEFAULT_MINIMUM_LEFT_PANEL_WIDTH = 260; // original default is 230
+  const DEFAULT_MINIMUM_LEFT_PANEL_WIDTH = 280; // original default is 230
   let storybookConfig = JSON.parse(localStorage.getItem("storybook-layout"));
 
   // we only resize the left panel if it is set to a value lower than DEFAULT_MINIMUM_LEFT_PANEL_WIDTH
@@ -185,7 +189,7 @@
     ).firstChild;
     bookmarkHollowIcon.setAttribute(
       "d",
-      "M 13.762 6.202 C 13.87 6.452 13.927 6.724 13.927 7.001 C 13.927 7.275 13.87 7.548 13.762 7.799 C 13.656 8.049 13.498 8.272 13.303 8.451 L 8.873 12.502 C 8.711 12.65 8.504 12.731 8.29 12.731 L 0.968 12.731 C 0.731 12.731 0.503 12.631 0.336 12.452 C 0.168 12.273 0.073 12.03 0.073 11.775 L 0.073 2.224 C 0.073 1.971 0.168 1.727 0.336 1.548 C 0.503 1.369 0.731 1.269 0.968 1.269 L 8.29 1.269 C 8.504 1.269 8.711 1.35 8.873 1.499 L 13.303 5.55 C 13.498 5.729 13.656 5.952 13.762 6.202 Z M 11.862 7.553 C 11.929 7.492 11.988 7.412 12.029 7.315 C 12.071 7.219 12.093 7.11 12.093 7.001 C 12.093 6.889 12.071 6.782 12.029 6.684 C 11.988 6.589 11.929 6.508 11.862 6.447 L 7.885 2.809 L 1.594 2.809 L 1.594 11.191 L 7.885 11.191 L 11.862 7.553 Z"
+      "M 13.762 6.202 C 13.87 6.452 13.927 6.724 13.927 7.001 C 13.927 7.275 13.87 7.548 13.762 7.799 C 13.656 8.049 13.498 8.272 13.303 8.451 L 8.873 12.502 C 8.711 12.65 8.504 12.731 8.29 12.731 L 0.968 12.731 C 0.731 12.731 0.503 12.631 0.336 12.452 C 0.168 12.273 0.073 12.03 0.073 11.775 L 0.073 2.224 C 0.073 1.971 0.168 1.727 0.336 1.548 C 0.503 1.369 0.731 1.269 0.968 1.269 L 8.29 1.269 C 8.504 1.269 8.711 1.35 8.873 1.499 L 13.303 5.55 C 13.498 5.729 13.656 5.952 13.762 6.202 Z M 12.508 7.538 C 12.575 7.477 12.634 7.397 12.675 7.3 C 12.717 7.204 12.739 7.095 12.739 6.986 C 12.739 6.874 12.717 6.767 12.675 6.669 C 12.634 6.574 12.575 6.493 12.508 6.432 L 8.161 2.346 L 1.085 2.34 L 1.106 11.659 L 8.28 11.628 L 12.508 7.538 Z"
     );
     bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
   });
@@ -270,7 +274,9 @@
       
       import './sb-addons/pseudo-states-10/manager-bundle.js';
       
-      import './sb-addons/storybook-11/manager-bundle.js';
+      import './sb-addons/geometricpanda-badges-11/manager-bundle.js';
+      
+      import './sb-addons/storybook-12/manager-bundle.js';
       
     </script>
 
