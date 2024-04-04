@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
-import Button from "../Button";
-import { CommonThemeProps, getSpaces } from "../styles";
+import Button from "src/core/Button";
+import { CommonThemeProps, getSpaces } from "src/core/styles";
 
 interface StyleProps extends CommonThemeProps {
   buttonPosition: "left" | "right";
@@ -25,11 +25,11 @@ export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-      margin-top: ${spacings?.l}px;
-      margin-right: ${spacings?.m}px;
+      margin-top: ${spaces?.l}px;
+      margin-right: ${spaces?.m}px;
     `;
   }}
 `;

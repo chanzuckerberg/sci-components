@@ -312,7 +312,7 @@ function generateDefaultValues(props: CreateChartOptionsProps) {
     left: 0,
     top: 0,
     // (atarashansky): this is the key change to align x and y axis
-    // labels to fixed spacings
+    // labels to fixed spaces
     width: `${width}px`,
   };
 

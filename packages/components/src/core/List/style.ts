@@ -1,6 +1,6 @@
 import { List } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { CommonThemeProps, getSpaces } from "../styles";
+import { CommonThemeProps, getSpaces } from "src/core/styles";
 
 export interface ListExtraProps extends CommonThemeProps {
   component?: unknown;
@@ -9,7 +9,7 @@ export interface ListExtraProps extends CommonThemeProps {
 }
 
 // (thuang): Please keep this in sync with the props used in `ListExtraProps`
-const doNotForwardProps = ["marginBotton", "ordered"];
+const doNotForwardProps = ["marginBottom", "ordered"];
 
 export const StyledList = styled(List, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -28,18 +28,18 @@ export const StyledList = styled(List, {
 `;
 
 function propsToMarginBottom(props: ListExtraProps) {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   const propsToMarginBottomMap: Record<
     NonNullable<ListExtraProps["marginBottom"]>,
     number | undefined
   > = {
-    l: spacings?.l,
-    m: spacings?.l,
-    s: spacings?.m,
-    xs: spacings?.m,
-    xxs: spacings?.m,
-    xxxs: spacings?.s,
+    l: spaces?.l,
+    m: spaces?.l,
+    s: spaces?.m,
+    xs: spaces?.m,
+    xxs: spaces?.m,
+    xxxs: spaces?.s,
   };
 
   const { marginBottom } = props;

@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
-import { ButtonIconSizeToTypes } from "../ButtonIcon";
-import Icon, { IconNameToSizes, IconProps } from "../Icon";
+import { ButtonIconSizeToTypes } from "src/core/ButtonIcon";
+import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {
   BannerExtraProps,
   Centered,
@@ -60,7 +60,7 @@ const Banner = forwardRef(function Banner<
     } else {
       return (
         <Icon
-          sdsIcon={"infoCircle"}
+          sdsIcon="InfoCircle"
           sdsSize="l"
           sdsType="static"
           {...sdsIconProps}
@@ -82,7 +82,7 @@ const Banner = forwardRef(function Banner<
           sdsType="tertiary"
           sdsSize="small"
           onClick={handleClose}
-          icon={"xMark"}
+          icon="XMark"
         />
       )}
     </StyledBanner>

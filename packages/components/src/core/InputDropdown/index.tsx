@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../Icon";
+import Icon from "src/core/Icon";
 import {
   IconWrapper,
   LabelWrapper,
@@ -71,7 +71,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
         )}
         {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
         <IconWrapper>
-          <Icon sdsIcon="chevronDown" sdsSize="s" sdsType="interactive" />
+          <Icon sdsIcon="ChevronDown" sdsSize="xs" sdsType="interactive" />
         </IconWrapper>
       </LabelWrapper>
 

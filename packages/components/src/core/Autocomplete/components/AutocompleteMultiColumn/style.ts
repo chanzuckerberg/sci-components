@@ -1,14 +1,15 @@
 import { autocompleteClasses, Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
-import InputSearch from "../../../InputSearch";
+import InputSearch from "src/core/InputSearch";
 import {
   CommonThemeProps,
   getBorders,
   getCorners,
+  getSemanticComponentColors,
   getShadows,
   getSpaces,
-} from "../../../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -35,17 +36,18 @@ export const StyledPopper = styled(Popper, {
     !doNotForwardProps.includes(prop) || prop === "anchorEl",
 })`
   ${(props: StyleProps) => {
-    const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
+    const borders = getBorders(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
-      border: ${borders?.gray[100]};
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
-      padding: ${spacings?.l}px ${spacings?.xxs}px ${spacings?.l}px ${spacings?.l}px;
+      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
       box-sizing: border-box;
       z-index: 1400;
 
@@ -54,7 +56,7 @@ export const StyledPopper = styled(Popper, {
         transform: none !important;
       
         .MuiPaper-root .${autocompleteClasses.listbox} {
-          padding: 0 ${spacings?.m}px 0 0;
+          padding: 0 ${spaces?.m}px 0 0;
         }
       }
     `;
@@ -64,11 +66,17 @@ export const StyledPopper = styled(Popper, {
 export const StyledPaper = styled(Paper, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  box-shadow: none;
-  margin: 0;
-  border-radius: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  ${(props: StyleProps) => {
+    const shadows = getShadows(props);
+
+    return `
+      box-shadow: ${shadows?.none};
+      margin: 0;
+      border-radius: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    `;
+  }}
 `;
 
 export const StyledAutocompleteGroupWrapper = styled("div")`

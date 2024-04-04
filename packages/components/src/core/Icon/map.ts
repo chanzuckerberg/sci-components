@@ -1,238 +1,241 @@
 import { FC } from "react";
-import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
-import { ReactComponent as IconBacteriaSmall } from "../../common/svgs/IconBacteriaSmall.svg";
-import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
-import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
-import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
-import { ReactComponent as IconBookLarge } from "../../common/svgs/IconBookLarge.svg";
-import { ReactComponent as IconCheckCircleLarge } from "../../common/svgs/IconCheckCircleLarge.svg";
-import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCheckCircleSmall.svg";
-import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
-import { ReactComponent as IconChevronDownLarge } from "../../common/svgs/IconChevronDownLarge.svg";
-import { ReactComponent as IconChevronDownSmall } from "../../common/svgs/IconChevronDownSmall.svg";
-import { ReactComponent as IconChevronDown2Small } from "../../common/svgs/IconChevronDown2Small.svg";
-import { ReactComponent as IconChevronLeft2Small } from "../../common/svgs/IconChevronLeft2Small.svg";
-import { ReactComponent as IconChevronLeftLarge } from "../../common/svgs/IconChevronLeftLarge.svg";
-import { ReactComponent as IconChevronLeftSmall } from "../../common/svgs/IconChevronLeftSmall.svg";
-import { ReactComponent as IconChevronRight2Small } from "../../common/svgs/IconChevronRight2Small.svg";
-import { ReactComponent as IconChevronRightLarge } from "../../common/svgs/IconChevronRightLarge.svg";
-import { ReactComponent as IconChevronRightSmall } from "../../common/svgs/IconChevronRightSmall.svg";
-import { ReactComponent as IconChevronUpLarge } from "../../common/svgs/IconChevronUpLarge.svg";
-import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChevronUpSmall.svg";
-import { ReactComponent as IconChevronUp2Small } from "../../common/svgs/IconChevronUp2Small.svg";
-import { ReactComponent as IconCirclesOverlapLarge } from "../../common/svgs/IconCirclesOverlapLarge.svg";
-import { ReactComponent as IconCirclesOverlapSmall } from "../../common/svgs/IconCirclesOverlapSmall.svg";
-import { ReactComponent as IconCodeLarge } from "../../common/svgs/IconCodeLarge.svg";
-import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
-import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
-import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
-import { ReactComponent as IconCubeLarge } from "../../common/svgs/IconCubeLarge.svg";
-import { ReactComponent as IconDnaLarge } from "../../common/svgs/IconDnaLarge.svg";
-import { ReactComponent as IconDocumentSmall } from "../../common/svgs/IconDocumentSmall.svg";
-import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
-import { ReactComponent as IconDotsHorizontal3Small } from "../../common/svgs/IconDotsHorizontal3Small.svg";
-import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
-import { ReactComponent as IconDownloadSmall } from "../../common/svgs/IconDownloadSmall.svg";
-import { ReactComponent as IconEditLarge } from "../../common/svgs/IconEditLarge.svg";
-import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
-import { ReactComponent as IconEnvelopeSmall } from "../../common/svgs/IconEnvelopeSmall.svg";
-import { ReactComponent as IconExclamationMarkCircleLarge } from "../../common/svgs/IconExclamationMarkCircleLarge.svg";
-import { ReactComponent as IconExclamationMarkCircleSmall } from "../../common/svgs/IconExclamationMarkCircleSmall.svg";
-import { ReactComponent as IconExclamationMarkSpeechBubbleLarge } from "../../common/svgs/IconExclamationmarkSpeechBubbleLarge.svg";
-import { ReactComponent as IconEyeClosedSmall } from "../../common/svgs/IconEyeClosedSmall.svg";
-import { ReactComponent as IconEyeOpenSmall } from "../../common/svgs/IconEyeOpenSmall.svg";
-import { ReactComponent as IconFilterSmall } from "../../common/svgs/IconFilterSmall.svg";
-import { ReactComponent as IconFlagCheckSmall } from "../../common/svgs/IconFlagCheckSmall.svg";
-import { ReactComponent as IconFlagOutlineSmall } from "../../common/svgs/IconFlagOutlineSmall.svg";
-import { ReactComponent as IconFlagQuestionmarkSmall } from "../../common/svgs/IconFlagQuestionmarkSmall.svg";
-import { ReactComponent as IconFlagXmarkSmall } from "../../common/svgs/IconFlagXmarkSmall.svg";
-import { ReactComponent as IconFlaskLarge } from "../../common/svgs/IconFlaskLarge.svg";
-import { ReactComponent as IconFlaskPrivateLarge } from "../../common/svgs/IconFlaskPrivateLarge.svg";
-import { ReactComponent as IconFlaskPublicLarge } from "../../common/svgs/IconFlaskPublicLarge.svg";
-import { ReactComponent as IconGearSmall } from "../../common/svgs/IconGearSmall.svg";
-import { ReactComponent as IconGlobeBasicLarge } from "../../common/svgs/IconGlobeBasicLarge.svg";
-import { ReactComponent as IconGlobeSmall } from "../../common/svgs/IconGlobeSmall.svg";
-import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge.svg";
-import { ReactComponent as IconGridPrivateLarge } from "../../common/svgs/IconGridPrivateLarge.svg";
-import { ReactComponent as IconGridPublicLarge } from "../../common/svgs/IconGridPublicLarge.svg";
-import { ReactComponent as IconGridThreeDotsLarge } from "../../common/svgs/IconGridThreeDotsLarge.svg";
-import { ReactComponent as IconHouseSmall } from "../../common/svgs/IconHouseSmall.svg";
-import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInfoCircleLarge.svg";
-import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
-import { ReactComponent as IconInfoSpeechBubbleLarge } from "../../common/svgs/IconInfoSpeechBubbleLarge.svg";
-import { ReactComponent as IconLifeRingSmall } from "../../common/svgs/IconLifeRingSmall.svg";
-import { ReactComponent as IconLightBulbLarge } from "../../common/svgs/IconLightBulbLarge.svg";
-import { ReactComponent as IconLightBulbSmall } from "../../common/svgs/IconLightBulbSmall.svg";
-import { ReactComponent as IconLinesDashed3Solid1Small } from "../../common/svgs/IconLinesDashed3Solid1Small.svg";
-import { ReactComponent as IconLinesHorizontalLarge } from "../../common/svgs/IconLinesHorizontalLarge.svg";
-import { ReactComponent as IconLinesHorizontalSmall } from "../../common/svgs/IconLinesHorizontalSmall.svg";
-import { ReactComponent as IconLinkSmall } from "../../common/svgs/IconLinkSmall.svg";
-import { ReactComponent as IconListSmall } from "../../common/svgs/IconListSmall.svg";
-import { ReactComponent as IconLoadingLarge } from "../../common/svgs/IconLoadingLarge.svg";
-import { ReactComponent as IconLoadingSmall } from "../../common/svgs/IconLoadingSmall.svg";
-import { ReactComponent as IconLockCircleSmall } from "../../common/svgs/IconLockCircleSmall.svg";
-import { ReactComponent as IconLockLarge } from "../../common/svgs/IconLockLarge.svg";
-import { ReactComponent as IconLockSmall } from "../../common/svgs/IconLockSmall.svg";
-import { ReactComponent as IconMinusSmall } from "../../common/svgs/IconMinusSmall.svg";
-import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall.svg";
-import { ReactComponent as IconPeopleLarge } from "../../common/svgs/IconPeopleLarge.svg";
-import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleSmall.svg";
-import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
-import { ReactComponent as IconPersonLarge } from "../../common/svgs/IconPersonLarge.svg";
-import { ReactComponent as IconPersonSmall } from "../../common/svgs/IconPersonSmall.svg";
-import { ReactComponent as IconPinLocationSmall } from "../../common/svgs/IconPinLocationSmall.svg";
-import { ReactComponent as IconPinSmall } from "../../common/svgs/IconPinSmall.svg";
-import { ReactComponent as IconPlayLarge } from "../../common/svgs/IconPlayLarge.svg";
-import { ReactComponent as IconPlusCircleSmall } from "../../common/svgs/IconPlusCircleSmall.svg";
-import { ReactComponent as IconPlusSmall } from "../../common/svgs/IconPlusSmall.svg";
-import { ReactComponent as IconProjectPrivateLarge } from "../../common/svgs/IconProjectPrivateLarge.svg";
-import { ReactComponent as IconProjectPublicLarge } from "../../common/svgs/IconProjectPublicLarge.svg";
-import { ReactComponent as IconPuzzlePieceSmall } from "../../common/svgs/IconPuzzlePieceSmall.svg";
-import { ReactComponent as IconQuestionMarkLarge } from "../../common/svgs/IconQuestionMarkLarge.svg";
-import { ReactComponent as IconQuoteLarge } from "../../common/svgs/IconQuoteLarge.svg";
-import { ReactComponent as IconReadLarge } from "../../common/svgs/IconReadLarge.svg";
-import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefreshLarge.svg";
-import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
-import { ReactComponent as IconRocketLarge } from "../../common/svgs/IconRocketLarge.svg";
-import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
-import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
-import { ReactComponent as IconSearchLinesHorizontalLarge } from "../../common/svgs/IconSearchLinesHorizontalLarge.svg";
-import { ReactComponent as IconSearchLinesHorizontalSmall } from "../../common/svgs/IconSearchLinesHorizontalSmall.svg";
-import { ReactComponent as IconSearchSmall } from "../../common/svgs/IconSearchSmall.svg";
-import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLarge.svg";
-import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
-import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
-import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
-import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
-import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
-import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
-import { ReactComponent as IconTrashCanLarge } from "../../common/svgs/IconTrashCanLarge.svg";
-import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";
-import { ReactComponent as IconTreeDendogramLarge } from "../../common/svgs/IconTreeDendogramLarge.svg";
-import { ReactComponent as IconTreeHorizontalLarge } from "../../common/svgs/IconTreeHorizontalLarge.svg";
-import { ReactComponent as IconTreeHorizontalPrivateLarge } from "../../common/svgs/IconTreeHorizontalPrivateLarge.svg";
-import { ReactComponent as IconTreeHorizontalPublicLarge } from "../../common/svgs/IconTreeHorizontalPublicLarge.svg";
-import { ReactComponent as IconTreeHorizontalSmall } from "../../common/svgs/IconTreeHorizontalSmall.svg";
-import { ReactComponent as IconTreeHorizontalTopRightFilledLarge } from "../../common/svgs/IconTreeHorizontalTopRightFilledLarge.svg";
-import { ReactComponent as IconTreeVerticalSmall } from "../../common/svgs/IconTreeVerticalSmall.svg";
-import { ReactComponent as IconTriangleDownSmall } from "../../common/svgs/IconTriangleDownSmall.svg";
-import { ReactComponent as IconTriangleLeftSmall } from "../../common/svgs/IconTriangleLeftSmall.svg";
-import { ReactComponent as IconTriangleRightSmall } from "../../common/svgs/IconTriangleRightSmall.svg";
-import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTriangleUpSmall.svg";
-import { ReactComponent as IconUpdatedLarge } from "../../common/svgs/IconUpdatedLarge.svg";
-import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
-import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
-import { ReactComponent as IconVirusCircleSLarge } from "../../common/svgs/IconVirusCircleSLarge.svg";
-import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
-import { ReactComponent as IconWidgetLarge } from "../../common/svgs/IconWidgetLarge.svg";
-import { ReactComponent as IconXMarkCircleSmall } from "../../common/svgs/IconXMarkCircleSmall.svg";
-import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLarge.svg";
-import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
+import { ReactComponent as IconBacteriaLarge } from "src/common/svgs/IconBacteriaLarge.svg";
+import { ReactComponent as IconBacteriaSmall } from "src/common/svgs/IconBacteriaSmall.svg";
+import { ReactComponent as IconBarChartHorizontal3Small } from "src/common/svgs/IconBarChartHorizontal3Small.svg";
+import { ReactComponent as IconBarChartVertical3Small } from "src/common/svgs/IconBarChartVertical3Small.svg";
+import { ReactComponent as IconBarChartVertical4Small } from "src/common/svgs/IconBarChartVertical4Small.svg";
+import { ReactComponent as IconBookLarge } from "src/common/svgs/IconBookLarge.svg";
+import { ReactComponent as IconCheckCircleLarge } from "src/common/svgs/IconCheckCircleLarge.svg";
+import { ReactComponent as IconCheckCircleSmall } from "src/common/svgs/IconCheckCircleSmall.svg";
+import { ReactComponent as IconCheckSmall } from "src/common/svgs/IconCheckSmall.svg";
+import { ReactComponent as IconChevronDownLarge } from "src/common/svgs/IconChevronDownLarge.svg";
+import { ReactComponent as IconChevronDownSmall } from "src/common/svgs/IconChevronDownSmall.svg";
+import { ReactComponent as IconChevronDown2Small } from "src/common/svgs/IconChevronDown2Small.svg";
+import { ReactComponent as IconChevronLeft2Small } from "src/common/svgs/IconChevronLeft2Small.svg";
+import { ReactComponent as IconChevronLeftLarge } from "src/common/svgs/IconChevronLeftLarge.svg";
+import { ReactComponent as IconChevronLeftSmall } from "src/common/svgs/IconChevronLeftSmall.svg";
+import { ReactComponent as IconChevronRight2Small } from "src/common/svgs/IconChevronRight2Small.svg";
+import { ReactComponent as IconChevronRightLarge } from "src/common/svgs/IconChevronRightLarge.svg";
+import { ReactComponent as IconChevronRightSmall } from "src/common/svgs/IconChevronRightSmall.svg";
+import { ReactComponent as IconChevronUpLarge } from "src/common/svgs/IconChevronUpLarge.svg";
+import { ReactComponent as IconChevronUpSmall } from "src/common/svgs/IconChevronUpSmall.svg";
+import { ReactComponent as IconChevronUp2Small } from "src/common/svgs/IconChevronUp2Small.svg";
+import { ReactComponent as IconCirclesOverlap2Large } from "src/common/svgs/IconCirclesOverlap2Large.svg";
+import { ReactComponent as IconCirclesOverlap2Small } from "src/common/svgs/IconCirclesOverlap2Small.svg";
+import { ReactComponent as IconCodeLarge } from "src/common/svgs/IconCodeLarge.svg";
+import { ReactComponent as IconCompassLarge } from "src/common/svgs/IconCompassLarge.svg";
+import { ReactComponent as IconCopyLarge } from "src/common/svgs/IconCopyLarge.svg";
+import { ReactComponent as IconCopySmall } from "src/common/svgs/IconCopySmall.svg";
+import { ReactComponent as IconCubeLarge } from "src/common/svgs/IconCubeLarge.svg";
+import { ReactComponent as IconCubeSmall } from "src/common/svgs/IconCubeSmall.svg";
+import { ReactComponent as IconDNALarge } from "src/common/svgs/IconDNALarge.svg";
+import { ReactComponent as IconDocumentSmall } from "src/common/svgs/IconDocumentSmall.svg";
+import { ReactComponent as IconDotsHorizontal3Large } from "src/common/svgs/IconDotsHorizontal3Large.svg";
+import { ReactComponent as IconDotsHorizontal3Small } from "src/common/svgs/IconDotsHorizontal3Small.svg";
+import { ReactComponent as IconDownloadLarge } from "src/common/svgs/IconDownloadLarge.svg";
+import { ReactComponent as IconDownloadSmall } from "src/common/svgs/IconDownloadSmall.svg";
+import { ReactComponent as IconEditLarge } from "src/common/svgs/IconEditLarge.svg";
+import { ReactComponent as IconEditSmall } from "src/common/svgs/IconEditSmall.svg";
+import { ReactComponent as IconEnvelopeSmall } from "src/common/svgs/IconEnvelopeSmall.svg";
+import { ReactComponent as IconExclamationMarkCircleLarge } from "src/common/svgs/IconExclamationMarkCircleLarge.svg";
+import { ReactComponent as IconExclamationMarkCircleSmall } from "src/common/svgs/IconExclamationMarkCircleSmall.svg";
+import { ReactComponent as IconExclamationMarkSpeechBubbleLarge } from "src/common/svgs/IconExclamationMarkSpeechBubbleLarge.svg";
+import { ReactComponent as IconEyeClosedSmall } from "src/common/svgs/IconEyeClosedSmall.svg";
+import { ReactComponent as IconEyeOpenSmall } from "src/common/svgs/IconEyeOpenSmall.svg";
+import { ReactComponent as IconFilterSmall } from "src/common/svgs/IconFilterSmall.svg";
+import { ReactComponent as IconFlagCheckSmall } from "src/common/svgs/IconFlagCheckSmall.svg";
+import { ReactComponent as IconFlagOutlineSmall } from "src/common/svgs/IconFlagOutlineSmall.svg";
+import { ReactComponent as IconFlagQuestionMarkSmall } from "src/common/svgs/IconFlagQuestionMarkSmall.svg";
+import { ReactComponent as IconFlagXMarkSmall } from "src/common/svgs/IconFlagXMarkSmall.svg";
+import { ReactComponent as IconFlaskLarge } from "src/common/svgs/IconFlaskLarge.svg";
+import { ReactComponent as IconFlaskPrivateLarge } from "src/common/svgs/IconFlaskPrivateLarge.svg";
+import { ReactComponent as IconFlaskPublicLarge } from "src/common/svgs/IconFlaskPublicLarge.svg";
+import { ReactComponent as IconGearSmall } from "src/common/svgs/IconGearSmall.svg";
+import { ReactComponent as IconGlobeBasicLarge } from "src/common/svgs/IconGlobeBasicLarge.svg";
+import { ReactComponent as IconGlobeSmall } from "src/common/svgs/IconGlobeSmall.svg";
+import { ReactComponent as IconGridLarge } from "src/common/svgs/IconGridLarge.svg";
+import { ReactComponent as IconGridPrivateLarge } from "src/common/svgs/IconGridPrivateLarge.svg";
+import { ReactComponent as IconGridPublicLarge } from "src/common/svgs/IconGridPublicLarge.svg";
+import { ReactComponent as IconGridDots3Large } from "src/common/svgs/IconGridDots3Large.svg";
+import { ReactComponent as IconHouseSmall } from "src/common/svgs/IconHouseSmall.svg";
+import { ReactComponent as IconInfoCircleLarge } from "src/common/svgs/IconInfoCircleLarge.svg";
+import { ReactComponent as IconInfoCircleSmall } from "src/common/svgs/IconInfoCircleSmall.svg";
+import { ReactComponent as IconInfoSpeechBubbleLarge } from "src/common/svgs/IconInfoSpeechBubbleLarge.svg";
+import { ReactComponent as IconLifeRingSmall } from "src/common/svgs/IconLifeRingSmall.svg";
+import { ReactComponent as IconLightBulbLarge } from "src/common/svgs/IconLightBulbLarge.svg";
+import { ReactComponent as IconLightBulbSmall } from "src/common/svgs/IconLightBulbSmall.svg";
+import { ReactComponent as IconLinesDashed3Solid1Small } from "src/common/svgs/IconLinesDashed3Solid1Small.svg";
+import { ReactComponent as IconLinesHorizontal3Large } from "src/common/svgs/IconLinesHorizontal3Large.svg";
+import { ReactComponent as IconLinesHorizontal3Small } from "src/common/svgs/IconLinesHorizontal3Small.svg";
+import { ReactComponent as IconLinkSmall } from "src/common/svgs/IconLinkSmall.svg";
+import { ReactComponent as IconListSmall } from "src/common/svgs/IconListSmall.svg";
+import { ReactComponent as IconLoadingLarge } from "src/common/svgs/IconLoadingLarge.svg";
+import { ReactComponent as IconLoadingSmall } from "src/common/svgs/IconLoadingSmall.svg";
+import { ReactComponent as IconLockCircleSmall } from "src/common/svgs/IconLockCircleSmall.svg";
+import { ReactComponent as IconLockLarge } from "src/common/svgs/IconLockLarge.svg";
+import { ReactComponent as IconLockSmall } from "src/common/svgs/IconLockSmall.svg";
+import { ReactComponent as IconMinusSmall } from "src/common/svgs/IconMinusSmall.svg";
+import { ReactComponent as IconOpenSmall } from "src/common/svgs/IconOpenSmall.svg";
+import { ReactComponent as IconPeopleLarge } from "src/common/svgs/IconPeopleLarge.svg";
+import { ReactComponent as IconPeopleSmall } from "src/common/svgs/IconPeopleSmall.svg";
+import { ReactComponent as IconPercentageSmall } from "src/common/svgs/IconPercentageSmall.svg";
+import { ReactComponent as IconPersonLarge } from "src/common/svgs/IconPersonLarge.svg";
+import { ReactComponent as IconPersonSmall } from "src/common/svgs/IconPersonSmall.svg";
+import { ReactComponent as IconPinLocationSmall } from "src/common/svgs/IconPinLocationSmall.svg";
+import { ReactComponent as IconPinSmall } from "src/common/svgs/IconPinSmall.svg";
+import { ReactComponent as IconPlayLarge } from "src/common/svgs/IconPlayLarge.svg";
+import { ReactComponent as IconPlusCircleSmall } from "src/common/svgs/IconPlusCircleSmall.svg";
+import { ReactComponent as IconPlusSmall } from "src/common/svgs/IconPlusSmall.svg";
+import { ReactComponent as IconProjectPrivateLarge } from "src/common/svgs/IconProjectPrivateLarge.svg";
+import { ReactComponent as IconProjectPublicLarge } from "src/common/svgs/IconProjectPublicLarge.svg";
+import { ReactComponent as IconPuzzlePieceSmall } from "src/common/svgs/IconPuzzlePieceSmall.svg";
+import { ReactComponent as IconQuestionMarkLarge } from "src/common/svgs/IconQuestionMarkLarge.svg";
+import { ReactComponent as IconQuoteLarge } from "src/common/svgs/IconQuoteLarge.svg";
+import { ReactComponent as IconReadLarge } from "src/common/svgs/IconReadLarge.svg";
+import { ReactComponent as IconRefreshLarge } from "src/common/svgs/IconRefreshLarge.svg";
+import { ReactComponent as IconRefreshSmall } from "src/common/svgs/IconRefreshSmall.svg";
+import { ReactComponent as IconReportLarge } from "src/common/svgs/IconReportLarge.svg";
+import { ReactComponent as IconRocketLarge } from "src/common/svgs/IconRocketLarge.svg";
+import { ReactComponent as IconSaveLarge } from "src/common/svgs/IconSaveLarge.svg";
+import { ReactComponent as IconSearchLarge } from "src/common/svgs/IconSearchLarge.svg";
+import { ReactComponent as IconSearchLinesHorizontal3Large } from "src/common/svgs/IconSearchLinesHorizontal3Large.svg";
+import { ReactComponent as IconSearchLinesHorizontal3Small } from "src/common/svgs/IconSearchLinesHorizontal3Small.svg";
+import { ReactComponent as IconSearchSmall } from "src/common/svgs/IconSearchSmall.svg";
+import { ReactComponent as IconShareLarge } from "src/common/svgs/IconShareLarge.svg";
+import { ReactComponent as IconSlidersHorizontalLarge } from "src/common/svgs/IconSlidersHorizontalLarge.svg";
+import { ReactComponent as IconSpeechBubblesLarge } from "src/common/svgs/IconSpeechBubblesLarge.svg";
+import { ReactComponent as IconSquareOnDashedSquareLarge } from "src/common/svgs/IconSquareOnDashedSquareLarge.svg";
+import { ReactComponent as IconStarburstSmall } from "src/common/svgs/IconStarburstSmall.svg";
+import { ReactComponent as IconStarLarge } from "src/common/svgs/IconStarLarge.svg";
+import { ReactComponent as IconTableSmall } from "src/common/svgs/IconTableSmall.svg";
+import { ReactComponent as IconTrashCanLarge } from "src/common/svgs/IconTrashCanLarge.svg";
+import { ReactComponent as IconTrashCanSmall } from "src/common/svgs/IconTrashCanSmall.svg";
+import { ReactComponent as IconTreeDendogramLarge } from "src/common/svgs/IconTreeDendogramLarge.svg";
+import { ReactComponent as IconTreeHorizontalLarge } from "src/common/svgs/IconTreeHorizontalLarge.svg";
+import { ReactComponent as IconTreeHorizontalPrivateLarge } from "src/common/svgs/IconTreeHorizontalPrivateLarge.svg";
+import { ReactComponent as IconTreeHorizontalPublicLarge } from "src/common/svgs/IconTreeHorizontalPublicLarge.svg";
+import { ReactComponent as IconTreeHorizontalSmall } from "src/common/svgs/IconTreeHorizontalSmall.svg";
+import { ReactComponent as IconTreeHorizontalTopRightFilledLarge } from "src/common/svgs/IconTreeHorizontalTopRightFilledLarge.svg";
+import { ReactComponent as IconTreeVerticalSmall } from "src/common/svgs/IconTreeVerticalSmall.svg";
+import { ReactComponent as IconTriangleDownSmall } from "src/common/svgs/IconTriangleDownSmall.svg";
+import { ReactComponent as IconTriangleLeftSmall } from "src/common/svgs/IconTriangleLeftSmall.svg";
+import { ReactComponent as IconTriangleRightSmall } from "src/common/svgs/IconTriangleRightSmall.svg";
+import { ReactComponent as IconTriangleUpSmall } from "src/common/svgs/IconTriangleUpSmall.svg";
+import { ReactComponent as IconUpdateLarge } from "src/common/svgs/IconUpdateLarge.svg";
+import { ReactComponent as IconUploadLarge } from "src/common/svgs/IconUploadLarge.svg";
+import { ReactComponent as IconUploadSmall } from "src/common/svgs/IconUploadSmall.svg";
+import { ReactComponent as IconVirusCircleSLarge } from "src/common/svgs/IconVirusCircleSLarge.svg";
+import { ReactComponent as IconVirusLarge } from "src/common/svgs/IconVirusLarge.svg";
+import { ReactComponent as IconWidgetLarge } from "src/common/svgs/IconWidgetLarge.svg";
+import { ReactComponent as IconXMarkCircleSmall } from "src/common/svgs/IconXMarkCircleSmall.svg";
+import { ReactComponent as IconXMarkLarge } from "src/common/svgs/IconXMarkLarge.svg";
+import { ReactComponent as IconXMarkSmall } from "src/common/svgs/IconXMarkSmall.svg";
 
 export interface IconNameToSizes {
-  bacteria: "xs" | "s" | "l" | "xl";
-  barChartHorizontal3: "xs" | "s";
-  barChartVertical3: "xs" | "s";
-  barChartVertical4: "xs" | "s";
-  book: "l" | "xl";
-  check: "xs" | "s";
-  checkCircle: "xs" | "s" | "l" | "xl";
-  chevronDown: "xs" | "s" | "l" | "xl";
-  chevronDown2: "xs" | "s";
-  chevronLeft2: "xs" | "s";
-  chevronLeft: "xs" | "s" | "l" | "xl";
-  chevronRight2: "xs" | "s";
-  chevronRight: "xs" | "s" | "l" | "xl";
-  chevronUp: "xs" | "s" | "l" | "xl";
-  chevronUp2: "xs" | "s";
-  circlesOverlap: "xs" | "s" | "l" | "xl";
-  code: "l" | "xl";
-  compass: "l" | "xl";
-  copy: "xs" | "s" | "l" | "xl";
-  cube: "l" | "xl";
-  dna: "l" | "xl";
-  document: "xs" | "s";
-  dotsHorizontal: "xs" | "s" | "l" | "xl";
-  download: "xs" | "s" | "l" | "xl";
-  edit: "xs" | "s" | "l" | "xl";
-  envelope: "xs" | "s";
-  exclamationMarkCircle: "xs" | "s" | "l" | "xl";
-  exclamationMarkSpeechBubble: "l" | "xl";
-  eyeClosed: "xs" | "s";
-  eyeOpen: "xs" | "s";
-  filter: "xs" | "s";
-  flagCheck: "xs" | "s";
-  flagOutline: "xs" | "s";
-  flagQuestionmark: "xs" | "s";
-  flagXmark: "xs" | "s";
-  flask: "l" | "xl";
-  flaskPrivate: "l" | "xl";
-  flaskPublic: "l" | "xl";
-  gear: "xs" | "s";
-  globe: "xs" | "s";
-  globeBasic: "l" | "xl";
-  grid: "l" | "xl";
-  gridPrivate: "l" | "xl";
-  gridPublic: "l" | "xl";
-  gridThreeDots: "l" | "xl";
-  house: "xs" | "s";
-  infoCircle: "xs" | "s" | "l" | "xl";
-  infoSpeechBubble: "l" | "xl";
-  lifeRing: "xs" | "s";
-  lightBulb: "xs" | "s" | "l" | "xl";
-  linesDashed3Solid1: "xs" | "s";
-  linesHorizontal: "xs" | "s" | "l" | "xl";
-  link: "xs" | "s";
-  list: "xs" | "s";
-  loading: "xs" | "s" | "l" | "xl";
-  lock: "xs" | "s" | "l" | "xl";
-  lockCircle: "xs" | "s";
-  minus: "xs" | "s";
-  open: "xs" | "s";
-  people: "xs" | "s" | "l" | "xl";
-  percentage: "xs" | "s";
-  person: "xs" | "s" | "l" | "xl";
-  pin: "xs" | "s";
-  pinLocation: "xs" | "s";
-  play: "l" | "xl";
-  plus: "xs" | "s";
-  plusCircle: "xs" | "s";
-  projectPrivate: "l" | "xl";
-  projectPublic: "l" | "xl";
-  puzzlePiece: "xs" | "s";
-  questionMark: "l" | "xl";
-  quote: "l" | "xl";
-  read: "l" | "xl";
-  refresh: "xs" | "s" | "l" | "xl";
-  rocket: "l" | "xl";
-  save: "l" | "xl";
-  search: "xs" | "s" | "l" | "xl";
-  searchLinesHorizontal: "xs" | "s" | "l" | "xl";
-  share: "l" | "xl";
-  slidersHorizontal: "l" | "xl";
-  speechBubbles: "l" | "xl";
-  squareOnDashedSquare: "l" | "xl";
-  starburst: "xs" | "s";
-  star: "l" | "xl";
-  table: "xs" | "s";
-  trashCan: "xs" | "s" | "l" | "xl";
-  treeDendogram: "l" | "xl";
-  treeHorizontal: "xs" | "s" | "l" | "xl";
-  treeHorizontalPrivate: "l" | "xl";
-  treeHorizontalPublic: "l" | "xl";
-  treeHorizontalTopRightFilled: "l" | "xl";
-  treeVertical: "xs" | "s";
-  triangleDown: "xs" | "s";
-  triangleLeft: "xs" | "s";
-  triangleRight: "xs" | "s";
-  triangleUp: "xs" | "s";
-  updated: "l" | "xl";
-  upload: "l" | "xl";
-  virus: "l" | "xl";
-  virusCircleS: "l" | "xl";
-  widget: "l" | "xl";
-  xMark: "xs" | "s" | "l" | "xl";
-  xMarkCircle: "xs" | "s";
+  Bacteria: "xs" | "s" | "l" | "xl";
+  BarChartHorizontal3: "xs" | "s";
+  BarChartVertical3: "xs" | "s";
+  BarChartVertical4: "xs" | "s";
+  Book: "l" | "xl";
+  Check: "xs" | "s";
+  CheckCircle: "xs" | "s" | "l" | "xl";
+  ChevronDown: "xs" | "s" | "l" | "xl";
+  ChevronDown2: "xs" | "s";
+  ChevronLeft2: "xs" | "s";
+  ChevronLeft: "xs" | "s" | "l" | "xl";
+  ChevronRight2: "xs" | "s";
+  ChevronRight: "xs" | "s" | "l" | "xl";
+  ChevronUp: "xs" | "s" | "l" | "xl";
+  ChevronUp2: "xs" | "s";
+  CirclesOverlap2: "xs" | "s" | "l" | "xl";
+  Code: "l" | "xl";
+  Compass: "l" | "xl";
+  Copy: "xs" | "s" | "l" | "xl";
+  Cube: "xs" | "s" | "l" | "xl";
+  DNA: "l" | "xl";
+  Document: "xs" | "s";
+  DotsHorizontal: "xs" | "s" | "l" | "xl";
+  Download: "xs" | "s" | "l" | "xl";
+  Edit: "xs" | "s" | "l" | "xl";
+  Envelope: "xs" | "s";
+  ExclamationMarkCircle: "xs" | "s" | "l" | "xl";
+  ExclamationMarkSpeechBubble: "l" | "xl";
+  EyeClosed: "xs" | "s";
+  EyeOpen: "xs" | "s";
+  Filter: "xs" | "s";
+  FlagCheck: "xs" | "s";
+  FlagOutline: "xs" | "s";
+  FlagQuestionMark: "xs" | "s";
+  FlagXMark: "xs" | "s";
+  Flask: "l" | "xl";
+  FlaskPrivate: "l" | "xl";
+  FlaskPublic: "l" | "xl";
+  Gear: "xs" | "s";
+  Globe: "xs" | "s";
+  GlobeBasic: "l" | "xl";
+  Grid: "l" | "xl";
+  GridDots3: "l" | "xl";
+  GridPrivate: "l" | "xl";
+  GridPublic: "l" | "xl";
+  House: "xs" | "s";
+  InfoCircle: "xs" | "s" | "l" | "xl";
+  InfoSpeechBubble: "l" | "xl";
+  LifeRing: "xs" | "s";
+  LightBulb: "xs" | "s" | "l" | "xl";
+  LinesDashed3Solid1: "xs" | "s";
+  LinesHorizontal3: "xs" | "s" | "l" | "xl";
+  Link: "xs" | "s";
+  List: "xs" | "s";
+  Loading: "xs" | "s" | "l" | "xl";
+  Lock: "xs" | "s" | "l" | "xl";
+  LockCircle: "xs" | "s";
+  Minus: "xs" | "s";
+  Open: "xs" | "s";
+  People: "xs" | "s" | "l" | "xl";
+  Percentage: "xs" | "s";
+  Person: "xs" | "s" | "l" | "xl";
+  Pin: "xs" | "s";
+  PinLocation: "xs" | "s";
+  Play: "l" | "xl";
+  Plus: "xs" | "s";
+  PlusCircle: "xs" | "s";
+  ProjectPrivate: "l" | "xl";
+  ProjectPublic: "l" | "xl";
+  PuzzlePiece: "xs" | "s";
+  QuestionMark: "l" | "xl";
+  Quote: "l" | "xl";
+  Read: "l" | "xl";
+  Refresh: "xs" | "s" | "l" | "xl";
+  Report: "l" | "xl";
+  Rocket: "l" | "xl";
+  Save: "l" | "xl";
+  Search: "xs" | "s" | "l" | "xl";
+  SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
+  Share: "l" | "xl";
+  SlidersHorizontal: "l" | "xl";
+  SpeechBubbles: "l" | "xl";
+  SquareOnDashedSquare: "l" | "xl";
+  Starburst: "xs" | "s";
+  Star: "l" | "xl";
+  Table: "xs" | "s";
+  TrashCan: "xs" | "s" | "l" | "xl";
+  TreeDendogram: "l" | "xl";
+  TreeHorizontal: "xs" | "s" | "l" | "xl";
+  TreeHorizontalPrivate: "l" | "xl";
+  TreeHorizontalPublic: "l" | "xl";
+  TreeHorizontalTopRightFilled: "l" | "xl";
+  TreeVertical: "xs" | "s";
+  TriangleDown: "xs" | "s";
+  TriangleLeft: "xs" | "s";
+  TriangleRight: "xs" | "s";
+  TriangleUp: "xs" | "s";
+  Update: "l" | "xl";
+  Upload: "l" | "xl";
+  Virus: "l" | "xl";
+  VirusCircleS: "l" | "xl";
+  Widget: "l" | "xl";
+  XMark: "xs" | "s" | "l" | "xl";
+  XMarkCircle: "xs" | "s";
 }
 
 type Props = Record<
@@ -244,415 +247,419 @@ type Props = Record<
 >;
 
 export const iconMap: Props = {
-  bacteria: {
+  Bacteria: {
     largeIcon: IconBacteriaLarge,
     smallIcon: IconBacteriaSmall,
   },
-  barChartHorizontal3: {
+  BarChartHorizontal3: {
     largeIcon: null,
     smallIcon: IconBarChartHorizontal3Small,
   },
-  barChartVertical3: {
+  BarChartVertical3: {
     largeIcon: null,
     smallIcon: IconBarChartVertical3Small,
   },
-  barChartVertical4: {
+  BarChartVertical4: {
     largeIcon: null,
     smallIcon: IconBarChartVertical4Small,
   },
-  book: {
+  Book: {
     largeIcon: IconBookLarge,
     smallIcon: null,
   },
-  check: {
+  Check: {
     largeIcon: null,
     smallIcon: IconCheckSmall,
   },
-  checkCircle: {
+  CheckCircle: {
     largeIcon: IconCheckCircleLarge,
     smallIcon: IconCheckCircleSmall,
   },
-  chevronDown: {
+  ChevronDown: {
     largeIcon: IconChevronDownLarge,
     smallIcon: IconChevronDownSmall,
   },
-  chevronDown2: {
+  ChevronDown2: {
     largeIcon: null,
     smallIcon: IconChevronDown2Small,
   },
-  chevronLeft: {
+  ChevronLeft: {
     largeIcon: IconChevronLeftLarge,
     smallIcon: IconChevronLeftSmall,
   },
-  chevronLeft2: {
+  ChevronLeft2: {
     largeIcon: null,
     smallIcon: IconChevronLeft2Small,
   },
-  chevronRight: {
+  ChevronRight: {
     largeIcon: IconChevronRightLarge,
     smallIcon: IconChevronRightSmall,
   },
-  chevronRight2: {
+  ChevronRight2: {
     largeIcon: null,
     smallIcon: IconChevronRight2Small,
   },
-  chevronUp: {
+  ChevronUp: {
     largeIcon: IconChevronUpLarge,
     smallIcon: IconChevronUpSmall,
   },
-  chevronUp2: {
+  ChevronUp2: {
     largeIcon: null,
     smallIcon: IconChevronUp2Small,
   },
-  circlesOverlap: {
-    largeIcon: IconCirclesOverlapLarge,
-    smallIcon: IconCirclesOverlapSmall,
+  CirclesOverlap2: {
+    largeIcon: IconCirclesOverlap2Large,
+    smallIcon: IconCirclesOverlap2Small,
   },
-  code: {
+  Code: {
     largeIcon: IconCodeLarge,
     smallIcon: null,
   },
-  compass: {
+  Compass: {
     largeIcon: IconCompassLarge,
     smallIcon: null,
   },
-  copy: {
+  Copy: {
     largeIcon: IconCopyLarge,
     smallIcon: IconCopySmall,
   },
-  cube: {
+  Cube: {
     largeIcon: IconCubeLarge,
+    smallIcon: IconCubeSmall,
+  },
+  DNA: {
+    largeIcon: IconDNALarge,
     smallIcon: null,
   },
-  dna: {
-    largeIcon: IconDnaLarge,
-    smallIcon: null,
-  },
-  document: {
+  Document: {
     largeIcon: null,
     smallIcon: IconDocumentSmall,
   },
-  dotsHorizontal: {
+  DotsHorizontal: {
     largeIcon: IconDotsHorizontal3Large,
     smallIcon: IconDotsHorizontal3Small,
   },
-  download: {
+  Download: {
     largeIcon: IconDownloadLarge,
     smallIcon: IconDownloadSmall,
   },
-  edit: {
+  Edit: {
     largeIcon: IconEditLarge,
     smallIcon: IconEditSmall,
   },
-  envelope: {
+  Envelope: {
     largeIcon: null,
     smallIcon: IconEnvelopeSmall,
   },
-  exclamationMarkCircle: {
+  ExclamationMarkCircle: {
     largeIcon: IconExclamationMarkCircleLarge,
     smallIcon: IconExclamationMarkCircleSmall,
   },
-  exclamationMarkSpeechBubble: {
+  ExclamationMarkSpeechBubble: {
     largeIcon: IconExclamationMarkSpeechBubbleLarge,
     smallIcon: null,
   },
-  eyeClosed: {
+  EyeClosed: {
     largeIcon: null,
     smallIcon: IconEyeClosedSmall,
   },
-  eyeOpen: {
+  EyeOpen: {
     largeIcon: null,
     smallIcon: IconEyeOpenSmall,
   },
-  filter: {
+  Filter: {
     largeIcon: null,
     smallIcon: IconFilterSmall,
   },
-  flagCheck: {
+  FlagCheck: {
     largeIcon: null,
     smallIcon: IconFlagCheckSmall,
   },
-  flagOutline: {
+  FlagOutline: {
     largeIcon: null,
     smallIcon: IconFlagOutlineSmall,
   },
-  flagQuestionmark: {
+  FlagQuestionMark: {
     largeIcon: null,
-    smallIcon: IconFlagQuestionmarkSmall,
+    smallIcon: IconFlagQuestionMarkSmall,
   },
-  flagXmark: {
+  FlagXMark: {
     largeIcon: null,
-    smallIcon: IconFlagXmarkSmall,
+    smallIcon: IconFlagXMarkSmall,
   },
-  flask: {
+  Flask: {
     largeIcon: IconFlaskLarge,
     smallIcon: null,
   },
-  flaskPrivate: {
+  FlaskPrivate: {
     largeIcon: IconFlaskPrivateLarge,
     smallIcon: null,
   },
-  flaskPublic: {
+  FlaskPublic: {
     largeIcon: IconFlaskPublicLarge,
     smallIcon: null,
   },
-  gear: {
+  Gear: {
     largeIcon: null,
     smallIcon: IconGearSmall,
   },
-  globe: {
+  Globe: {
     largeIcon: null,
     smallIcon: IconGlobeSmall,
   },
-  globeBasic: {
+  GlobeBasic: {
     largeIcon: IconGlobeBasicLarge,
     smallIcon: null,
   },
-  grid: {
+  Grid: {
     largeIcon: IconGridLarge,
     smallIcon: null,
   },
-  gridPrivate: {
+  GridDots3: {
+    largeIcon: IconGridDots3Large,
+    smallIcon: null,
+  },
+  GridPrivate: {
     largeIcon: IconGridPrivateLarge,
     smallIcon: null,
   },
-  gridPublic: {
+  GridPublic: {
     largeIcon: IconGridPublicLarge,
     smallIcon: null,
   },
-  gridThreeDots: {
-    largeIcon: IconGridThreeDotsLarge,
-    smallIcon: null,
-  },
-  house: {
+  House: {
     largeIcon: null,
     smallIcon: IconHouseSmall,
   },
-  infoCircle: {
+  InfoCircle: {
     largeIcon: IconInfoCircleLarge,
     smallIcon: IconInfoCircleSmall,
   },
-  infoSpeechBubble: {
+  InfoSpeechBubble: {
     largeIcon: IconInfoSpeechBubbleLarge,
     smallIcon: null,
   },
-  lifeRing: {
+  LifeRing: {
     largeIcon: null,
     smallIcon: IconLifeRingSmall,
   },
-  lightBulb: {
+  LightBulb: {
     largeIcon: IconLightBulbLarge,
     smallIcon: IconLightBulbSmall,
   },
-  linesDashed3Solid1: {
+  LinesDashed3Solid1: {
     largeIcon: null,
     smallIcon: IconLinesDashed3Solid1Small,
   },
-  linesHorizontal: {
-    largeIcon: IconLinesHorizontalLarge,
-    smallIcon: IconLinesHorizontalSmall,
+  LinesHorizontal3: {
+    largeIcon: IconLinesHorizontal3Large,
+    smallIcon: IconLinesHorizontal3Small,
   },
-  link: {
+  Link: {
     largeIcon: null,
     smallIcon: IconLinkSmall,
   },
-  list: {
+  List: {
     largeIcon: null,
     smallIcon: IconListSmall,
   },
-  loading: {
+  Loading: {
     largeIcon: IconLoadingLarge,
     smallIcon: IconLoadingSmall,
   },
-  lock: {
+  Lock: {
     largeIcon: IconLockLarge,
     smallIcon: IconLockSmall,
   },
-  lockCircle: {
+  LockCircle: {
     largeIcon: null,
     smallIcon: IconLockCircleSmall,
   },
-  minus: {
+  Minus: {
     largeIcon: null,
     smallIcon: IconMinusSmall,
   },
-  open: {
+  Open: {
     largeIcon: null,
     smallIcon: IconOpenSmall,
   },
-  people: {
+  People: {
     largeIcon: IconPeopleLarge,
     smallIcon: IconPeopleSmall,
   },
-  percentage: {
+  Percentage: {
     largeIcon: null,
     smallIcon: IconPercentageSmall,
   },
-  person: {
+  Person: {
     largeIcon: IconPersonLarge,
     smallIcon: IconPersonSmall,
   },
-  pin: {
+  Pin: {
     largeIcon: null,
     smallIcon: IconPinSmall,
   },
-  pinLocation: {
+  PinLocation: {
     largeIcon: null,
     smallIcon: IconPinLocationSmall,
   },
-  play: {
+  Play: {
     largeIcon: IconPlayLarge,
     smallIcon: null,
   },
-  plus: {
+  Plus: {
     largeIcon: null,
     smallIcon: IconPlusSmall,
   },
-  plusCircle: {
+  PlusCircle: {
     largeIcon: null,
     smallIcon: IconPlusCircleSmall,
   },
-  projectPrivate: {
+  ProjectPrivate: {
     largeIcon: IconProjectPrivateLarge,
     smallIcon: null,
   },
-  projectPublic: {
+  ProjectPublic: {
     largeIcon: IconProjectPublicLarge,
     smallIcon: null,
   },
-  puzzlePiece: {
+  PuzzlePiece: {
     largeIcon: null,
     smallIcon: IconPuzzlePieceSmall,
   },
-  questionMark: {
+  QuestionMark: {
     largeIcon: IconQuestionMarkLarge,
     smallIcon: null,
   },
-  quote: {
+  Quote: {
     largeIcon: IconQuoteLarge,
     smallIcon: null,
   },
-  read: {
+  Read: {
     largeIcon: IconReadLarge,
     smallIcon: null,
   },
-  refresh: {
+  Refresh: {
     largeIcon: IconRefreshLarge,
     smallIcon: IconRefreshSmall,
   },
-  rocket: {
+  Report: {
+    largeIcon: IconReportLarge,
+    smallIcon: null,
+  },
+  Rocket: {
     largeIcon: IconRocketLarge,
     smallIcon: null,
   },
-  save: {
+  Save: {
     largeIcon: IconSaveLarge,
     smallIcon: null,
   },
-  search: {
+  Search: {
     largeIcon: IconSearchLarge,
     smallIcon: IconSearchSmall,
   },
-  searchLinesHorizontal: {
-    largeIcon: IconSearchLinesHorizontalLarge,
-    smallIcon: IconSearchLinesHorizontalSmall,
+  SearchLinesHorizontal3: {
+    largeIcon: IconSearchLinesHorizontal3Large,
+    smallIcon: IconSearchLinesHorizontal3Small,
   },
-  share: {
+  Share: {
     largeIcon: IconShareLarge,
     smallIcon: null,
   },
-  slidersHorizontal: {
+  SlidersHorizontal: {
     largeIcon: IconSlidersHorizontalLarge,
     smallIcon: null,
   },
-  speechBubbles: {
+  SpeechBubbles: {
     largeIcon: IconSpeechBubblesLarge,
     smallIcon: null,
   },
-  squareOnDashedSquare: {
+  SquareOnDashedSquare: {
     largeIcon: IconSquareOnDashedSquareLarge,
     smallIcon: null,
   },
-  star: {
+  Star: {
     largeIcon: IconStarLarge,
     smallIcon: null,
   },
-  starburst: {
+  Starburst: {
     largeIcon: null,
     smallIcon: IconStarburstSmall,
   },
-  table: {
+  Table: {
     largeIcon: null,
     smallIcon: IconTableSmall,
   },
-  trashCan: {
+  TrashCan: {
     largeIcon: IconTrashCanLarge,
     smallIcon: IconTrashCanSmall,
   },
-  treeDendogram: {
+  TreeDendogram: {
     largeIcon: IconTreeDendogramLarge,
     smallIcon: null,
   },
-  treeHorizontal: {
+  TreeHorizontal: {
     largeIcon: IconTreeHorizontalLarge,
     smallIcon: IconTreeHorizontalSmall,
   },
-  treeHorizontalPrivate: {
+  TreeHorizontalPrivate: {
     largeIcon: IconTreeHorizontalPrivateLarge,
     smallIcon: null,
   },
-  treeHorizontalPublic: {
+  TreeHorizontalPublic: {
     largeIcon: IconTreeHorizontalPublicLarge,
     smallIcon: null,
   },
-  treeHorizontalTopRightFilled: {
+  TreeHorizontalTopRightFilled: {
     largeIcon: IconTreeHorizontalTopRightFilledLarge,
     smallIcon: null,
   },
-  treeVertical: {
+  TreeVertical: {
     largeIcon: null,
     smallIcon: IconTreeVerticalSmall,
   },
-  triangleDown: {
+  TriangleDown: {
     largeIcon: null,
     smallIcon: IconTriangleDownSmall,
   },
-  triangleLeft: {
+  TriangleLeft: {
     largeIcon: null,
     smallIcon: IconTriangleLeftSmall,
   },
-  triangleRight: {
+  TriangleRight: {
     largeIcon: null,
     smallIcon: IconTriangleRightSmall,
   },
-  triangleUp: {
+  TriangleUp: {
     largeIcon: null,
     smallIcon: IconTriangleUpSmall,
   },
-  updated: {
-    largeIcon: IconUpdatedLarge,
+  Update: {
+    largeIcon: IconUpdateLarge,
     smallIcon: null,
   },
-  upload: {
+  Upload: {
     largeIcon: IconUploadLarge,
     smallIcon: IconUploadSmall,
   },
-  virus: {
+  Virus: {
     largeIcon: IconVirusLarge,
     smallIcon: null,
   },
-  virusCircleS: {
+  VirusCircleS: {
     largeIcon: IconVirusCircleSLarge,
     smallIcon: null,
   },
-  widget: {
+  Widget: {
     largeIcon: IconWidgetLarge,
     smallIcon: null,
   },
-  xMark: {
+  XMark: {
     largeIcon: IconXMarkLarge,
     smallIcon: IconXMarkSmall,
   },
-  xMarkCircle: {
+  XMarkCircle: {
     largeIcon: null,
     smallIcon: IconXMarkCircleSmall,
   },

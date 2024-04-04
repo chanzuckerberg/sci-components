@@ -11,14 +11,14 @@ import {
   AutocompleteMultiColumnOption,
   AutocompleteSingleColumnOption,
   DefaultAutocompleteOption,
-} from "../Autocomplete";
+} from "src/core/Autocomplete";
 import DropdownMenu, {
   DropdownMenuProps as SdsDropdownMenuProps,
-} from "../DropdownMenu";
-import { StyledPaper, StyledPopper } from "../DropdownMenu/style";
+} from "src/core/DropdownMenu";
+import { StyledPaper, StyledPopper } from "src/core/DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
-} from "../InputDropdown";
+} from "src/core/InputDropdown";
 import { StyledButton, StyledButtonsWrapper } from "./style";
 
 export {

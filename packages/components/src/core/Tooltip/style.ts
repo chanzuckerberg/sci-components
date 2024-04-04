@@ -4,12 +4,12 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
+  fontBodyXxs,
   fontHeaderXs,
-  fontHeaderXxs,
-  getColors,
+  getSemanticTextColors,
   getShadows,
   getSpaces,
-} from "../styles";
+} from "src/core/styles";
 
 export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
@@ -22,7 +22,7 @@ export interface TooltipExtraProps extends CommonThemeProps {
 }
 
 const dark = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     ${fontHeaderXs(props)}
@@ -30,12 +30,12 @@ const dark = (props: TooltipExtraProps): string => {
     color: white;
     text-align: center;
     max-width: 250px;
-    padding: ${spacings?.s}px ${spacings?.l}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
   `;
 };
 
 const light = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
     ${fontBodyXs(props)}
@@ -43,7 +43,7 @@ const light = (props: TooltipExtraProps): string => {
     color: black;
     text-align: left;
     max-width: 250px;
-    padding: ${spacings?.xs}px ${spacings?.l}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
   `;
 };
 
@@ -54,21 +54,21 @@ const wide = (): string => {
 };
 
 const tableStyles = (props: TooltipExtraProps): string => {
-  const spacings = getSpaces(props);
+  const spaces = getSpaces(props);
 
   return css`
-    padding: ${spacings?.m}px;
+    padding: ${spaces?.m}px;
   `;
 };
 
 export const Subtitle = styled("div")`
-  ${fontHeaderXxs}
+  ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
-    const colors = getColors(props);
+    const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      color: ${colors?.gray["400"]};
+      color: ${semanticTextColors?.base?.disabled};
     `;
   }}
 `;
@@ -108,7 +108,7 @@ export const arrowCss = (props: TooltipExtraProps): string => {
 };
 
 /*
- * (masoudmanson): !importants are needed to override arrow's
+ * (masoudmanson): !important is needed to override arrow's
  * default placement which is calculated by javascript
  */
 export const StyledPopper = styled(Popper)`

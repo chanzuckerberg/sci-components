@@ -1,6 +1,6 @@
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useState } from "react";
-import ButtonIcon from "../ButtonIcon";
+import ButtonIcon from "src/core/ButtonIcon";
 import {
   InputSearchExtraProps,
   StyledInputAdornment,
@@ -103,8 +103,12 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsIconProps={{
                     sdsType: "iconButton",
                   }}
-                  icon="xMark"
+                  icon="XMarkCircle"
                 />
+              </StyledInputAdornment>
+            ),
+            startAdornment: (
+              <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}
@@ -113,7 +117,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
-                  icon="search"
+                  icon="Search"
                 />
               </StyledInputAdornment>
             ),

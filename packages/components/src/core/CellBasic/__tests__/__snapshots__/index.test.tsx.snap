@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CellBasic /> Default story renders snapshot 1`] = `
+<table>
+  <tbody>
+    <tr
+      style="display: block; max-width: 400px;"
+    >
+      <td
+        class=" css-p6nomj"
+        data-mui-internal-clone-element="true"
+        data-testid="CellBasic"
+      >
+        <div
+          class="css-ov1ktg"
+        >
+          <div
+            class="css-1ago99h"
+          >
+            <div
+              class="css-7m17a9"
+            >
+              <div
+                class="css-1asg04x"
+              >
+                Primary Text
+              </div>
+            </div>
+            <span
+              class="css-1xqvcqn"
+            >
+              Secondary Text
+            </span>
+            <span
+              class="css-1xqvcqn"
+            >
+              Tertiary Text
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

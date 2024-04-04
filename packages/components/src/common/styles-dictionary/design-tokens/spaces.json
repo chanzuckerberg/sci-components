@@ -1,0 +1,15 @@
+{
+  "sds": {
+    "space": {
+      "default": { "value": "12px" },
+      "xxxs": { "value": "2px" },
+      "xxs": { "value": "4px" },
+      "xs": { "value": "6px" },
+      "s": { "value": "8px" },
+      "m": { "value": "12px" },
+      "l": { "value": "16px" },
+      "xl": { "value": "24px" },
+      "xxl": { "value": "40px" }
+    }
+  }
+}

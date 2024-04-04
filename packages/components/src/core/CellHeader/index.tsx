@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
-import { IconNameToSizes } from "../Icon";
-import Tooltip, { TooltipProps } from "../Tooltip";
+import { IconNameToSizes } from "src/core/Icon";
+import Tooltip, { TooltipProps } from "src/core/Tooltip";
 import {
   CellHeaderExtraProps,
   StyledCellHeaderContainer,
@@ -42,7 +42,7 @@ const CellHeaderContent = (
   } = props;
 
   const sdsIconName: keyof IconNameToSizes =
-    direction === "asc" ? "chevronUp" : "chevronDown";
+    direction === "asc" ? "ChevronUp" : "ChevronDown";
 
   const sortIcon = (
     <StyledSortingIcon
@@ -51,10 +51,10 @@ const CellHeaderContent = (
           ? "Change sort direction from ascending to descending"
           : "Change sort direction from descending to ascending"
       }
-      sdsType="tertiary"
-      sdsSize="small"
+      sdsIcon={sdsIconName}
+      sdsType="static"
+      sdsSize="xs"
       active={active}
-      icon={sdsIconName}
     />
   );
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tag /> Default story renders snapshot 1`] = `
+<div
+  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-9gm3k1-MuiChip-root"
+>
+  <span
+    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+  >
+    Label
+  </span>
+</div>
+`;

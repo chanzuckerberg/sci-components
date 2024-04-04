@@ -2,12 +2,13 @@ import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";
 import {
   CommonThemeProps,
-  fontCapsXxxs,
-  getColors,
+  fontCapsXxxxs,
+  getBorders,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
-} from "../../../styles";
+} from "src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -21,16 +22,16 @@ export const StyledColumn = styled("div")`
   ${(props: StyleProps) => {
     const { width = 280 } = props;
 
-    const colors = getColors(props);
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
+    const borders = getBorders(props);
 
     return `
       position: relative;
       width: ${width}px;
 
       &:not(:last-child) {
-        border-right: solid 1px ${colors?.gray[200]};
-        margin-right: ${spacings?.m}px;
+        border-right: ${borders?.base?.divider};
+        margin-right: ${spaces?.m}px;
       }
 
       // (masoudmanson): This code hides the relation icon of the last column
@@ -44,15 +45,14 @@ export const StyledColumn = styled("div")`
 `;
 
 export const StyledColumnTitle = styled("p")`
-  ${fontCapsXxxs}
+  ${fontCapsXxxxs}
   ${(props: StyleProps) => {
-    const spacings = getSpaces(props);
-    const colors = getColors(props);
-    const typography = getTypography(props);
+    const spaces = getSpaces(props);
+    const semanticTextColors = getSemanticTextColors(props);
+
     return `
-      font-family: ${typography?.fontFamily};
-      color: ${colors?.gray[500]};
-      padding: 0 ${spacings?.s}px ${spacings?.xxs}px;
+      color: ${semanticTextColors?.base?.secondary};
+      padding: 0 ${spaces?.s}px ${spaces?.xxs}px;
       margin: 0;
     `;
   }}
@@ -60,19 +60,19 @@ export const StyledColumnTitle = styled("p")`
 
 export const StyledColumnIcon = styled("span")`
   ${(props: StyleProps) => {
-    const spacings = getSpaces(props);
-    const colors = getColors(props);
+    const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-      background-color: white;
+      background-color: ${semanticComponentColors?.base?.surfacePrimary};
       position: absolute;
-      right: -${spacings?.xs}px;
+      right: -${spaces?.xs}px;
       top: -2px;
       padding-bottom: 2px;
 
       svg {
-        color: ${colors?.gray[500]};
+        color: ${semanticComponentColors?.base?.icon};
         width: ${iconSizes?.xs.width}px;
         height: ${iconSizes?.xs.height}px;
       }

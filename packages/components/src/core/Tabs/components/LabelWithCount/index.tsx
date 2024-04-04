@@ -7,17 +7,16 @@ interface Props {
   count: ReactNode;
 }
 
-export default forwardRef<HTMLSpanElement, Props>(function LabelWithCount(
-  props,
-  ref
-): JSX.Element {
-  const { sdsSize = "large" } = useContext(TabsContext);
-  const { label, count } = props;
+export default forwardRef<HTMLSpanElement, Props>(
+  function LabelWithCount(props, ref): JSX.Element {
+    const { sdsSize = "large" } = useContext(TabsContext);
+    const { label, count } = props;
 
-  return (
-    <Wrapper ref={ref}>
-      <Label sdsSize={sdsSize}>{label}</Label>
-      <Count sdsSize={sdsSize}>{count}</Count>
-    </Wrapper>
-  );
-});
+    return (
+      <Wrapper ref={ref}>
+        <Label sdsSize={sdsSize}>{label}</Label>
+        <Count sdsSize={sdsSize}>{count}</Count>
+      </Wrapper>
+    );
+  }
+);

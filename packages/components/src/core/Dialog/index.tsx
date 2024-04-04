@@ -3,7 +3,7 @@ import {
   DialogProps as RawDialogProps,
 } from "@mui/material";
 import React, { ComponentType, forwardRef, useMemo } from "react";
-import DialogPaper, { DialogPaperProps } from "../DialogPaper";
+import DialogPaper, { DialogPaperProps } from "./components/DialogPaper";
 import { DialogContext } from "./components/common";
 
 export { DialogContext };

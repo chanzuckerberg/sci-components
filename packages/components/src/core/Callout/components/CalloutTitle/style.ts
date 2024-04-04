@@ -1,17 +1,15 @@
 import { AlertTitle } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { fontBody, getSpaces } from "src/core/styles";
-
-const fontBodyXs = fontBody("xs");
+import { fontBodyXs, getSpaces } from "src/core/styles";
 
 export const StyledCalloutTitle = styled(AlertTitle)`
   ${fontBodyXs}
 
   ${(props) => {
-    const spacings = getSpaces(props);
+    const spaces = getSpaces(props);
 
     return `
-    margin: ${spacings?.xxxs}px 0 ${spacings?.xs}px;
-  `;
+      margin: ${spaces?.xxxs}px 0 ${spaces?.xs}px;
+    `;
   }}
 `;

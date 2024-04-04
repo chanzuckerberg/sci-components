@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TagFilter /> Default story renders snapshot 1`] = `
+<div
+  style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
+>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-fznnno-MuiButtonBase-root-MuiButton-root"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      Delete the tag by clicking on its icon
+    </button>
+  </div>
+  <div>
+    <div
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-18fqwks-MuiButtonBase-root-MuiChip-root"
+      role="none presentation"
+      tabindex="0"
+    >
+      <span
+        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+      >
+        TagFilter
+      </span>
+      <button
+        aria-label="Delete Tag"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-1wnv1p6-MuiButtonBase-root-MuiIconButton-root"
+        icon="XMark"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-1ft6wgl"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+            data-file-name="IconXMarkSmall"
+            data-testid="IconXMarkSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

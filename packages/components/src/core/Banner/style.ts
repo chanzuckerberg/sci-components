@@ -1,20 +1,21 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "../ButtonIcon";
+import ButtonIcon from "src/core/ButtonIcon";
 import {
   ButtonIconExtraProps,
   ButtonIconSizeToTypes,
-} from "../ButtonIcon/style";
+} from "src/core/ButtonIcon/style";
 import {
   CommonThemeProps,
   fontBodyS,
   getColors,
   getIconSizes,
+  getSemanticComponentColors,
+  getSemanticTextColors,
   getSpaces,
-  getTypography,
-} from "../styles";
+} from "src/core/styles";
 
 export interface BannerExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes
+  ButtonIconSize extends keyof ButtonIconSizeToTypes,
 > extends CommonThemeProps {
   sdsType: ButtonIconSizeToTypes[ButtonIconSize];
 }
@@ -48,28 +49,20 @@ export const StyledButtonIcon = styled(ButtonIcon, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsButtonIcon.includes(prop),
 })`
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconType<ButtonIconSize>
-  ) => {
-    const spaces = getSpaces(props);
-
-    return `
-      flex: 0 0 auto;
-      margin: ${spaces?.l}px;
-    `;
-  }}
+  flex: 0 0 auto;
 
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconType<ButtonIconSize>
   ) => {
     const { bannerType } = props;
+
     const colors = getColors(props);
 
     if (bannerType !== "primary") return "";
 
     return `
       svg:hover {
-        fill: ${colors?.primary[300]};
+        fill: ${colors?.blue[300]};
       }
     `;
   }}
@@ -77,25 +70,19 @@ export const StyledButtonIcon = styled(ButtonIcon, {
 
 export const Text = styled("div")`
   ${fontBodyS}
-  ${(props) => {
-    const typography = getTypography(props);
-
-    return `
-      font-family: ${typography?.fontFamily};
-    `;
-  }}
 `;
 
 const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: BannerExtraProps<ButtonIconSize>
 ) => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return `
-    background-color: ${colors?.info[400]};
-    color: white;
+    background-color: ${semanticComponentColors?.accent?.fill};
+    color: ${semanticTextColors?.base?.onFill};
     svg {
-      fill: white;
+      fill: ${semanticComponentColors?.accent?.fillOnFill};
     }
   `;
 };
@@ -103,11 +90,12 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: BannerExtraProps<ButtonIconSize>
 ) => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticTextColors = getSemanticTextColors(props);
 
   return `
-    background-color: ${colors?.info[100]};
-    color: black;
+    background-color: ${semanticComponentColors?.accent?.surface};
+    color: ${semanticTextColors?.base?.primary};
   `;
 };
 
@@ -116,23 +104,22 @@ const doNotForwardProps = ["sdsType", "textChild"];
 export const StyledBanner = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  display: flex;
-  align-items: center;
-  height: 40px;
-  width: 100%;
-
   ${fontBodyS}
 
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: BannerExtraProps<ButtonIconSize>
   ) => {
     const { sdsType } = props;
-    const typography = getTypography(props);
+
+    const spaces = getSpaces(props);
 
     return `
+      display: flex;
+      align-items: center;
+      padding: ${spaces?.s}px ${spaces?.l}px;
+  
       ${sdsType === "primary" ? primary(props) : ""}
       ${sdsType === "secondary" ? secondary(props) : ""}
-      font-family: ${typography?.fontFamily};
     `;
   }}
 `;

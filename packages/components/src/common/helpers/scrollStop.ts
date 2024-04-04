@@ -54,7 +54,7 @@ const useScrollStopListener = (callback: () => void, timeout = 50) => {
       }
     }, timeout);
     return () => destroyListener();
-  }, []);
+  }, [timeout]);
 };
 
 export default useScrollStopListener;

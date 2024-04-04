@@ -23,15 +23,6 @@ module.exports = {
           format: "tailwind",
           options: {
             prefix: "sds",
-            remapNames: {
-              cornerL: "L",
-              cornerM: "M",
-              cornerNone: "none",
-              cornerS: "S",
-              shadowL: "L",
-              shadowM: "M",
-              shadowS: "S",
-            },
           },
         },
       ],
@@ -54,5 +45,5 @@ module.exports = {
       transformGroup: "scss",
     },
   },
-  source: ["src/common/styles-dictionary/*.json"],
+  source: ["src/common/styles-dictionary/design-tokens/*.json"],
 };
