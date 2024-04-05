@@ -5,19 +5,25 @@ import { InputToggleExtraProps, Toggle } from "./style";
  * @see https://mui.com/material-ui/react-switch/
  */
 const InputToggle = (props: InputToggleExtraProps) => {
+  const isControlled = props.checked !== undefined;
+
   const [checked, setChecked] = useState<boolean>(false);
 
+  const finalChecked = isControlled ? props.checked : checked;
+
   const { offLabel = "Off", onChange, onLabel = "On", ...rest } = props;
-  const labelValue = checked ? onLabel : offLabel;
+
+  const labelValue = finalChecked ? onLabel : offLabel;
 
   const handleChange = (e: React.ChangeEvent) => {
-    setChecked(!checked);
-    if (onChange) onChange(e);
+    setChecked((currentChecked) => !currentChecked);
+
+    onChange?.(e);
   };
 
   return (
     <Toggle
-      checked={checked}
+      checked={finalChecked}
       color="primary"
       onChange={handleChange}
       value={labelValue}

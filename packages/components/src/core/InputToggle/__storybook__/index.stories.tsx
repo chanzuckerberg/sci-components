@@ -4,6 +4,7 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { InputToggle } from "./stories/default";
 import { INPUT_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
 import { LivePreviewDemo } from "./stories/livePreview";
+import { ControlledDemo } from "./stories/controlled";
 
 export default {
   argTypes: {
@@ -41,6 +42,23 @@ export const LivePreview = {
     },
   },
   render: (args: Args) => <LivePreviewDemo {...args} />,
+};
+
+// Controlled
+
+export const Controlled = {
+  parameters: {
+    controls: {
+      exclude: INPUT_TOGGLE_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      /**
+       * (thuang): Take snapshot to ensure the controlled demo is working as expected.
+       */
+      skip: false,
+    },
+  },
+  render: (args: Args) => <ControlledDemo {...args} />,
 };
 
 // Test
