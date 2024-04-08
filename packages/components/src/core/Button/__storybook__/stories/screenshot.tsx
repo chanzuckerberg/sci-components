@@ -2,7 +2,7 @@ import { Args } from "@storybook/react";
 import RawButton from "src/core/Button";
 import {
   BUTTON_DISABLED_OPTIONS,
-  BUTTON_ICON_OPTIONS,
+  BUTTON_ICON_OPTIONS_2,
   BUTTON_PSEUDO_STATES,
   BUTTON_SDS_STYLES,
   BUTTON_SDS_TYPES,
@@ -88,7 +88,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all BUTTON_ICON_OPTIONS + create headers for BUTTON_SDS_TYPES
+  // loop through all BUTTON_ICON_OPTIONS_2 + create headers for BUTTON_SDS_TYPES
   function ButtonTypeOption({
     sdsStyle,
     type,
@@ -106,11 +106,11 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
           <ButtonIconOption
             sdsStyle={sdsStyle}
             type={type}
-            icon={BUTTON_ICON_OPTIONS[0]}
-            key={String(BUTTON_ICON_OPTIONS[0])}
+            icon={BUTTON_ICON_OPTIONS_2[0]}
+            key={String(BUTTON_ICON_OPTIONS_2[0])}
           />
         ) : (
-          BUTTON_ICON_OPTIONS.map((icon) => {
+          BUTTON_ICON_OPTIONS_2.map((icon) => {
             return (
               <ButtonIconOption
                 sdsStyle={sdsStyle}
@@ -125,7 +125,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all BUTTON_DISABLED_OPTIONS + create headers for BUTTON_ICON_OPTIONS
+  // loop through all BUTTON_DISABLED_OPTIONS + create headers for BUTTON_ICON_OPTIONS_2
   function ButtonIconOption({
     sdsStyle,
     type,
@@ -133,7 +133,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }: {
     sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
     type: (typeof BUTTON_SDS_TYPES)[number];
-    icon: (typeof BUTTON_ICON_OPTIONS)[number];
+    icon: (typeof BUTTON_ICON_OPTIONS_2)[number];
   }) {
     return (
       <div style={displayContents}>
@@ -164,7 +164,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }: {
     sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
     type: (typeof BUTTON_SDS_TYPES)[number];
-    icon: (typeof BUTTON_ICON_OPTIONS)[number];
+    icon: (typeof BUTTON_ICON_OPTIONS_2)[number];
     disabled: (typeof BUTTON_DISABLED_OPTIONS)[number];
   }) {
     return (

@@ -8,8 +8,11 @@ import {
   BUTTON_LARGE_ICON_OPTIONS,
   BUTTON_SDS_STYLES,
   BUTTON_SDS_TYPES,
+  BUTTON_SDS_SIZE,
   BUTTON_SMALL_ICON_LABELS,
   BUTTON_SMALL_ICON_OPTIONS,
+  BUTTON_ICON_LABELS,
+  BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
 import {
@@ -53,7 +56,24 @@ export default {
       mapping: BUTTON_SMALL_ICON_OPTIONS,
       options: Object.keys(BUTTON_SMALL_ICON_OPTIONS),
     },
+    icon: {
+      control: {
+        labels: BUTTON_ICON_LABELS,
+        type: "select",
+      },
+      if: { arg: "sdsStyle", eq: "icon" },
+      mapping: BUTTON_ICON_OPTIONS,
+      options: Object.keys(BUTTON_ICON_OPTIONS),
+    },
     onClick: { action: BUTTON_ACTIONS.onClick },
+    sdsSize: {
+      control: {
+        labels: BUTTON_SDS_SIZE,
+        type: "select",
+      },
+      mapping: BUTTON_SDS_SIZE,
+      options: Object.keys(BUTTON_SDS_SIZE),
+    },
     sdsStyle: {
       control: { type: "select" },
       options: BUTTON_SDS_STYLES,

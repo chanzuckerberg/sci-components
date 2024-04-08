@@ -1,4 +1,6 @@
 import { action } from "@storybook/addon-actions";
+import CustomSdsIcon from "src/common/storybook/customSdsIcon";
+import CustomSvgIcon from "src/common/storybook/customSvgIcon";
 import Icon from "src/core/Icon";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
@@ -12,15 +14,20 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "text",
   "label",
   "disabled",
+  "sdsSize",
+  "icon",
+  "sdsIconProps",
 ];
 
-export const BUTTON_SDS_STYLES = ["rounded", "square", "minimal"];
+export const BUTTON_SDS_STYLES = ["rounded", "square", "minimal", "icon"];
 
-export const BUTTON_SDS_TYPES = ["primary", "secondary"];
+export const BUTTON_SDS_SIZE = ["small", "medium", "large"];
+
+export const BUTTON_SDS_TYPES = ["primary", "secondary", "tertiary"];
 
 export const BUTTON_TEXT = "Label";
 
-export const BUTTON_ICON_OPTIONS = [
+export const BUTTON_ICON_OPTIONS_2 = [
   undefined,
   <Icon key="download" sdsSize="l" sdsIcon="Download" sdsType="button" />,
 ];
@@ -69,6 +76,22 @@ export const BUTTON_SMALL_ICON_LABELS = [
   "Download",
   "Copy",
   "Light Bulb",
+];
+
+export const BUTTON_ICON_OPTIONS = [
+  "DotsHorizontal",
+  "Grid",
+  "XMark",
+  <CustomSdsIcon key="customSdsIcon" />,
+  <CustomSvgIcon key="customIcon" />,
+];
+
+export const BUTTON_ICON_LABELS = [
+  "SDS Icon: DotsHorizontal",
+  "SDS Icon: Grid",
+  "SDS Icon: XMark",
+  "Custom SDS Icon",
+  "Custom SVG Icon",
 ];
 
 export const DEFAULT_PLACEMENT_STYLES: React.CSSProperties = {

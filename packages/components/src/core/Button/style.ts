@@ -13,7 +13,13 @@ import {
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
-const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+const sdsPropNames = [
+  "isAllCaps",
+  "isRounded",
+  "sdsStyle",
+  "sdsType",
+  "sdsSize",
+];
 
 const ButtonBase = styled(Button, {
   shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
@@ -194,6 +200,12 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
       color: ${semanticTextColors?.base?.primary};
     `;
   }}
+`;
+
+export const PrimaryIconButton = styled(Button, {
+  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
+})`
+  ${minimal}
 `;
 
 // Legacy support for backwards-compatible props

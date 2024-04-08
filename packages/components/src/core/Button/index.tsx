@@ -11,29 +11,41 @@ import {
   SquareButton,
   StyledButton,
 } from "./style";
+import ButtonIcon from "../ButtonIcon";
+import { IconNameToSizes, IconProps } from "../Icon";
 
-export interface SdsProps {
+type SDSStyleTypeMapping = {
+  minimal: "primary" | "secondary";
+  rounded: "primary" | "secondary";
+  square: "primary" | "secondary";
+  icon: "primary" | "secondary" | "tertiary";
+};
+export interface SdsProps<IconName extends keyof IconNameToSizes> {
   isAllCaps?: boolean;
   isRounded?: boolean;
-  sdsStyle?: "minimal" | "rounded" | "square";
-  sdsType?: "primary" | "secondary";
+  sdsStyle?: keyof SDSStyleTypeMapping;
+  sdsType?: SDSStyleTypeMapping[keyof SDSStyleTypeMapping];
+  sdsSize?: "small" | "medium" | "large";
+  icon?: IconName | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<IconName>>;
 }
 
 // (thuang): Support `component` prop
 // https://stackoverflow.com/a/66123108
-export type ButtonProps<C extends React.ElementType = "button"> =
-  RawButtonProps<C, { component?: C }> & SdsProps;
+export type ButtonProps<
+  IconName extends keyof IconNameToSizes,
+  C extends React.ElementType = "button",
+> = RawButtonProps<C, { component?: C }> & SdsProps<IconName>;
 
 /**
  * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
-  <C extends React.ElementType>(
-    props: ButtonProps<C>,
+  <IconName extends keyof IconNameToSizes, C extends React.ElementType>(
+    props: ButtonProps<IconName, C>,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const sdsStyle = props?.sdsStyle;
-    const sdsType = props?.sdsType;
+    const { sdsStyle, sdsType, icon } = props;
 
     if (!sdsStyle || !sdsType) {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
@@ -106,6 +118,21 @@ const Button = React.forwardRef(
             {...propsWithDefault}
           />
         );
+      case sdsStyle === "icon" && icon !== undefined: {
+        // (masoudmanson): We need to remove the props that are not supported by
+        // the ButtonIcon component.
+        const doNotForwardProps = [
+          "startIcon",
+          "endIcon",
+          "sdsStyle",
+          "isAllCaps",
+        ];
+        const finalProps = { ...propsWithDefault };
+        doNotForwardProps.forEach((prop) => {
+          delete finalProps[prop];
+        });
+        return <ButtonIcon icon={icon} {...finalProps} />;
+      }
       default:
         return <StyledButton {...propsWithDefault} ref={ref} />;
     }
