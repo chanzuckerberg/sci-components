@@ -28,11 +28,18 @@ export default {
 
 // Default
 
-export const Default = {};
+export const Default = {
+  args: {
+    disabled: false,
+  },
+};
 
 // Live Preview
 
 export const LivePreview = {
+  args: {
+    disabled: false,
+  },
   parameters: {
     controls: {
       exclude: INPUT_TOGGLE_EXCLUDED_CONTROLS,
@@ -64,6 +71,9 @@ export const Controlled = {
 // Test
 
 export const Test = {
+  args: {
+    disabled: false,
+  },
   parameters: {
     controls: {
       exclude: INPUT_TOGGLE_EXCLUDED_CONTROLS,
