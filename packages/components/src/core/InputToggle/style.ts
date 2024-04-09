@@ -41,6 +41,10 @@ const toggle = (props: InputToggleExtraProps) => {
       padding: 0;
       transform: unset;
 
+      &.${switchClasses.checked} {
+        transform: unset;
+      }
+
       &:hover {
         background-color: transparent;
       }
