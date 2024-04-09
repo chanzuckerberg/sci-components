@@ -1,8 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
+<span
+  class="MuiSwitch-root MuiSwitch-sizeMedium css-qbo3sj-MuiSwitch-root"
+>
+  <span
+    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+  >
+    <input
+      checked=""
+      class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+      type="checkbox"
+      value="On"
+    />
+    <span
+      class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+    />
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </span>
+  <span
+    class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+  />
+</span>
+`;
+
 exports[`<InputToggle /> Default story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium css-1r4ynxi-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium css-qb4azl-MuiSwitch-root"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"

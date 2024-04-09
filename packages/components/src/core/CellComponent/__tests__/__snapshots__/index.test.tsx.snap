@@ -13,7 +13,7 @@ exports[`<CellComponent /> Default story renders snapshot 1`] = `
         style="height: 100px; width: 100px;"
       >
         <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium css-1r4ynxi-MuiSwitch-root"
+          class="MuiSwitch-root MuiSwitch-sizeMedium css-qb4azl-MuiSwitch-root"
         >
           <span
             class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
