@@ -3,6 +3,395 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.4.0...@czi-sds/components@20.0.0) (2024-04-11)
+
+### DefaultTheme and Design Tokens
+
+All design tokens have been updated to the latest values based on the Figma Refactor outputs. Token names have been changed to reflect the new semantic structure. DefaultTheme has been created based on new design tokens, and it's ready to implement a multi-theme approach.
+
+<details><summary>Borders</summary>
+<p>
+
+| CSS Variable                  | SASS Variable                | Value                |
+| ----------------------------- | ---------------------------- | -------------------- |
+| --sds-border-negative-default | $sds-border-negative-default | `1px solid #dc132c`  |
+| --sds-border-base-divider     | $sds-border-base-divider     | `1px solid #eaeaea`  |
+| --sds-border-base-table       | $sds-border-base-table       | `1px solid #cccccc`  |
+| --sds-border-base-disabled    | $sds-border-base-disabled    | `1px solid #cccccc`  |
+| --sds-border-base-default     | $sds-border-base-default     | `1px solid #999999`  |
+| --sds-border-base-black       | $sds-border-base-black       | `2px dashed #000000` |
+| --sds-border-base-hover       | $sds-border-base-hover       | `2px dashed #000000` |
+| --sds-border-base-dashed      | $sds-border-base-dashed      | `2px dashed #999999` |
+| --sds-border-link-dashed      | $sds-border-link-dashed      | `1px dashed`         |
+| --sds-border-link-solid       | $sds-border-link-solid       | `1px solid`          |
+| --sds-border-accent-disabled  | $sds-border-accent-disabled  | `1px solid #a6c9ff`  |
+| --sds-border-accent-default   | $sds-border-accent-default   | `1px solid #0b68f8`  |
+| --sds-border-accent-hover     | $sds-border-accent-hover     | `1px solid #0142a4`  |
+| --sds-border-accent-dashed    | $sds-border-accent-dashed    | `2px dashed #0b68f8` |
+| --sds-border-info-default     | $sds-border-info-default     | `1px solid #0b68f8`  |
+| --sds-border-beta-default     | $sds-border-beta-default     | `1px solid #7a41ce`  |
+| --sds-border-positive-default | $sds-border-positive-default | `1px solid #3cb371`  |
+| --sds-border-notice-default   | $sds-border-notice-default   | `1px solid #f5a623`  |
+| --sds-border-none             | $sds-border-none             | `none`               |
+
+</p>
+</details>
+
+<details><summary>Primitive Colors</summary>
+<p>
+
+| CSS Variable                       | SASS Variable                     | Value                 |
+| ---------------------------------- | --------------------------------- | --------------------- |
+| --sds-color-primitive-common-black | $sds-color-primitive-common-black | `#000000`             |
+| --sds-color-primitive-common-white | $sds-color-primitive-common-white | `#ffffff`             |
+| --sds-color-primitive-blue-100     | $sds-color-primitive-blue-100     | `#f5f9ff`             |
+| --sds-color-primitive-blue-200     | $sds-color-primitive-blue-200     | `#e9f1ff`             |
+| --sds-color-primitive-blue-300     | $sds-color-primitive-blue-300     | `#a6c9ff`             |
+| --sds-color-primitive-blue-400     | $sds-color-primitive-blue-400     | `#0b68f8`             |
+| --sds-color-primitive-blue-500     | $sds-color-primitive-blue-500     | `#0142a4`             |
+| --sds-color-primitive-blue-600     | $sds-color-primitive-blue-600     | `#002660`             |
+| --sds-color-primitive-gray-100     | $sds-color-primitive-gray-100     | `#f8f8f8`             |
+| --sds-color-primitive-gray-200     | $sds-color-primitive-gray-200     | `#eaeaea`             |
+| --sds-color-primitive-gray-300     | $sds-color-primitive-gray-300     | `#cccccc`             |
+| --sds-color-primitive-gray-400     | $sds-color-primitive-gray-400     | `#999999`             |
+| --sds-color-primitive-gray-500     | $sds-color-primitive-gray-500     | `#767676`             |
+| --sds-color-primitive-gray-600     | $sds-color-primitive-gray-600     | `#545454`             |
+| --sds-color-primitive-green-100    | $sds-color-primitive-green-100    | `#ecf5f0`             |
+| --sds-color-primitive-green-200    | $sds-color-primitive-green-200    | `#e6f7ed`             |
+| --sds-color-primitive-green-400    | $sds-color-primitive-green-400    | `#3cb371`             |
+| --sds-color-primitive-green-500    | $sds-color-primitive-green-500    | `#349a61`             |
+| --sds-color-primitive-green-600    | $sds-color-primitive-green-600    | `#1c7f48`             |
+| --sds-color-primitive-purple-100   | $sds-color-primitive-purple-100   | `#f4f0f9`             |
+| --sds-color-primitive-purple-200   | $sds-color-primitive-purple-200   | `#f0ebf6`             |
+| --sds-color-primitive-purple-400   | $sds-color-primitive-purple-400   | `#7a41ce`             |
+| --sds-color-primitive-purple-500   | $sds-color-primitive-purple-500   | `#703cbe`             |
+| --sds-color-primitive-purple-600   | $sds-color-primitive-purple-600   | `#693bac`             |
+| --sds-color-primitive-red-100      | $sds-color-primitive-red-100      | `#fef2f2`             |
+| --sds-color-primitive-red-200      | $sds-color-primitive-red-200      | `#f8e8e8`             |
+| --sds-color-primitive-red-400      | $sds-color-primitive-red-400      | `#dc132c`             |
+| --sds-color-primitive-red-500      | $sds-color-primitive-red-500      | `#c61128`             |
+| --sds-color-primitive-red-600      | $sds-color-primitive-red-600      | `#b70016`             |
+| --sds-color-primitive-yellow-100   | $sds-color-primitive-yellow-100   | `#fcf6ec`             |
+| --sds-color-primitive-yellow-200   | $sds-color-primitive-yellow-200   | `#fff3e1`             |
+| --sds-color-primitive-yellow-400   | $sds-color-primitive-yellow-400   | `#f5a623`             |
+| --sds-color-primitive-yellow-500   | $sds-color-primitive-yellow-500   | `#d8921f`             |
+| --sds-color-primitive-yellow-600   | $sds-color-primitive-yellow-600   | `#946314`             |
+| --sds-color-primitive-overlay-100  | $sds-color-primitive-overlay-100  | `rgba(0, 0, 0, 0.08)` |
+| --sds-color-primitive-overlay-200  | $sds-color-primitive-overlay-200  | `rgba(0, 0, 0, 0.03)` |
+
+</p>
+</details>
+
+<details><summary>Semantic Colors</summary>
+<p>
+
+| CSS Variable                                          | SASS Variable                                        | Value     |
+| ----------------------------------------------------- | ---------------------------------------------------- | --------- |
+| --sds-color-semantic-text-base-primary                | $sds-color-semantic-text-base-primary                | `#000000` |
+| --sds-color-semantic-text-base-secondary              | $sds-color-semantic-text-base-secondary              | `#767676` |
+| --sds-color-semantic-text-base-disabled               | $sds-color-semantic-text-base-disabled               | `#cccccc` |
+| --sds-color-semantic-text-base-on-fill                | $sds-color-semantic-text-base-on-fill                | `#ffffff` |
+| --sds-color-semantic-text-base-on-fill-disabled       | $sds-color-semantic-text-base-on-fill-disabled       | `#999999` |
+| --sds-color-semantic-text-base-accent                 | $sds-color-semantic-text-base-accent                 | `#002660` |
+| --sds-color-semantic-text-action-default              | $sds-color-semantic-text-action-default              | `#0b68f8` |
+| --sds-color-semantic-text-action-hover                | $sds-color-semantic-text-action-hover                | `#0142a4` |
+| --sds-color-semantic-text-action-pressed              | $sds-color-semantic-text-action-pressed              | `#002660` |
+| --sds-color-semantic-text-beta                        | $sds-color-semantic-text-beta                        | `#693bac` |
+| --sds-color-semantic-text-info                        | $sds-color-semantic-text-info                        | `#002660` |
+| --sds-color-semantic-text-negative                    | $sds-color-semantic-text-negative                    | `#b70016` |
+| --sds-color-semantic-text-notice                      | $sds-color-semantic-text-notice                      | `#946314` |
+| --sds-color-semantic-text-positive                    | $sds-color-semantic-text-positive                    | `#1c7f48` |
+| --sds-color-semantic-component-base-fill              | $sds-color-semantic-component-base-fill              | `#ffffff` |
+| --sds-color-semantic-component-base-fill-hover        | $sds-color-semantic-component-base-fill-hover        | `#f8f8f8` |
+| --sds-color-semantic-component-base-fill-pressed      | $sds-color-semantic-component-base-fill-pressed      | `#f8f8f8` |
+| --sds-color-semantic-component-base-fill-open         | $sds-color-semantic-component-base-fill-open         | `#f8f8f8` |
+| --sds-color-semantic-component-base-fill-selected     | $sds-color-semantic-component-base-fill-selected     | `#000000` |
+| --sds-color-semantic-component-base-fill-disabled     | $sds-color-semantic-component-base-fill-disabled     | `#cccccc` |
+| --sds-color-semantic-component-base-on-fill-disabled  | $sds-color-semantic-component-base-on-fill-disabled  | `#999999` |
+| --sds-color-semantic-component-base-surface           | $sds-color-semantic-component-base-surface           | `#ffffff` |
+| --sds-color-semantic-component-base-surface-primary   | $sds-color-semantic-component-base-surface-primary   | `#ffffff` |
+| --sds-color-semantic-component-base-surface-secondary | $sds-color-semantic-component-base-surface-secondary | `#f8f8f8` |
+| --sds-color-semantic-component-base-surface-tertiary  | $sds-color-semantic-component-base-surface-tertiary  | `#eaeaea` |
+| --sds-color-semantic-component-base-divider           | $sds-color-semantic-component-base-divider           | `#eaeaea` |
+| --sds-color-semantic-component-base-border            | $sds-color-semantic-component-base-border            | `#999999` |
+| --sds-color-semantic-component-base-border-hover      | $sds-color-semantic-component-base-border-hover      | `#000000` |
+| --sds-color-semantic-component-base-border-disabled   | $sds-color-semantic-component-base-border-disabled   | `#cccccc` |
+| --sds-color-semantic-component-base-icon              | $sds-color-semantic-component-base-icon              | `#767676` |
+| --sds-color-semantic-component-base-icon-hover        | $sds-color-semantic-component-base-icon-hover        | `#000000` |
+| --sds-color-semantic-component-base-icon-pressed      | $sds-color-semantic-component-base-icon-pressed      | `#000000` |
+| --sds-color-semantic-component-base-icon-disabled     | $sds-color-semantic-component-base-icon-disabled     | `#cccccc` |
+| --sds-color-semantic-component-accent-fill            | $sds-color-semantic-component-accent-fill            | `#0b68f8` |
+| --sds-color-semantic-component-accent-fill-hover      | $sds-color-semantic-component-accent-fill-hover      | `#0142a4` |
+| --sds-color-semantic-component-accent-fill-pressed    | $sds-color-semantic-component-accent-fill-pressed    | `#002660` |
+| --sds-color-semantic-component-accent-fill-on-fill    | $sds-color-semantic-component-accent-fill-on-fill    | `#ffffff` |
+| --sds-color-semantic-component-accent-fill-disabled   | $sds-color-semantic-component-accent-fill-disabled   | `#a6c9ff` |
+| --sds-color-semantic-component-accent-surface         | $sds-color-semantic-component-accent-surface         | `#e9f1ff` |
+| --sds-color-semantic-component-accent-border          | $sds-color-semantic-component-accent-border          | `#0b68f8` |
+| --sds-color-semantic-component-accent-border-hover    | $sds-color-semantic-component-accent-border-hover    | `#0142a4` |
+| --sds-color-semantic-component-accent-border-open     | $sds-color-semantic-component-accent-border-open     | `#0b68f8` |
+| --sds-color-semantic-component-accent-border-focus    | $sds-color-semantic-component-accent-border-focus    | `#0b68f8` |
+| --sds-color-semantic-component-accent-border-selected | $sds-color-semantic-component-accent-border-selected | `#0b68f8` |
+| --sds-color-semantic-component-accent-border-disabled | $sds-color-semantic-component-accent-border-disabled | `#a6c9ff` |
+| --sds-color-semantic-component-accent-icon            | $sds-color-semantic-component-accent-icon            | `#0b68f8` |
+| --sds-color-semantic-component-beta-fill              | $sds-color-semantic-component-beta-fill              | `#7a41ce` |
+| --sds-color-semantic-component-beta-fill-hover        | $sds-color-semantic-component-beta-fill-hover        | `#703cbe` |
+| --sds-color-semantic-component-beta-fill-pressed      | $sds-color-semantic-component-beta-fill-pressed      | `#693bac` |
+| --sds-color-semantic-component-beta-fill-on-fill      | $sds-color-semantic-component-beta-fill-on-fill      | `#ffffff` |
+| --sds-color-semantic-component-beta-surface           | $sds-color-semantic-component-beta-surface           | `#f0ebf6` |
+| --sds-color-semantic-component-beta-border            | $sds-color-semantic-component-beta-border            | `#7a41ce` |
+| --sds-color-semantic-component-beta-icon              | $sds-color-semantic-component-beta-icon              | `#7a41ce` |
+| --sds-color-semantic-component-info-fill              | $sds-color-semantic-component-info-fill              | `#0b68f8` |
+| --sds-color-semantic-component-info-fill-hover        | $sds-color-semantic-component-info-fill-hover        | `#0142a4` |
+| --sds-color-semantic-component-info-fill-pressed      | $sds-color-semantic-component-info-fill-pressed      | `#002660` |
+| --sds-color-semantic-component-info-fill-on-fill      | $sds-color-semantic-component-info-fill-on-fill      | `#ffffff` |
+| --sds-color-semantic-component-info-surface           | $sds-color-semantic-component-info-surface           | `#e9f1ff` |
+| --sds-color-semantic-component-info-border            | $sds-color-semantic-component-info-border            | `#0b68f8` |
+| --sds-color-semantic-component-info-icon              | $sds-color-semantic-component-info-icon              | `#0b68f8` |
+| --sds-color-semantic-component-negative-fill          | $sds-color-semantic-component-negative-fill          | `#dc132c` |
+| --sds-color-semantic-component-negative-fill-hover    | $sds-color-semantic-component-negative-fill-hover    | `#c61128` |
+| --sds-color-semantic-component-negative-fill-pressed  | $sds-color-semantic-component-negative-fill-pressed  | `#b70016` |
+| --sds-color-semantic-component-negative-fill-on-fill  | $sds-color-semantic-component-negative-fill-on-fill  | `#ffffff` |
+| --sds-color-semantic-component-negative-surface       | $sds-color-semantic-component-negative-surface       | `#f8e8e8` |
+| --sds-color-semantic-component-negative-border        | $sds-color-semantic-component-negative-border        | `#dc132c` |
+| --sds-color-semantic-component-negative-icon          | $sds-color-semantic-component-negative-icon          | `#dc132c` |
+| --sds-color-semantic-component-neutral-fill           | $sds-color-semantic-component-neutral-fill           | `#999999` |
+| --sds-color-semantic-component-neutral-fill-hover     | $sds-color-semantic-component-neutral-fill-hover     | `#767676` |
+| --sds-color-semantic-component-neutral-fill-pressed   | $sds-color-semantic-component-neutral-fill-pressed   | `#545454` |
+| --sds-color-semantic-component-neutral-fill-on-fill   | $sds-color-semantic-component-neutral-fill-on-fill   | `#ffffff` |
+| --sds-color-semantic-component-neutral-surface        | $sds-color-semantic-component-neutral-surface        | `#eaeaea` |
+| --sds-color-semantic-component-neutral-border         | $sds-color-semantic-component-neutral-border         | `#999999` |
+| --sds-color-semantic-component-neutral-icon           | $sds-color-semantic-component-neutral-icon           | `#999999` |
+| --sds-color-semantic-component-notice-fill            | $sds-color-semantic-component-notice-fill            | `#f5a623` |
+| --sds-color-semantic-component-notice-fill-hover      | $sds-color-semantic-component-notice-fill-hover      | `#d8921f` |
+| --sds-color-semantic-component-notice-fill-pressed    | $sds-color-semantic-component-notice-fill-pressed    | `#946314` |
+| --sds-color-semantic-component-notice-fill-on-fill    | $sds-color-semantic-component-notice-fill-on-fill    | `#ffffff` |
+| --sds-color-semantic-component-notice-surface         | $sds-color-semantic-component-notice-surface         | `#fff3e1` |
+| --sds-color-semantic-component-notice-border          | $sds-color-semantic-component-notice-border          | `#f5a623` |
+| --sds-color-semantic-component-notice-icon            | $sds-color-semantic-component-notice-icon            | `#f5a623` |
+| --sds-color-semantic-component-positive-fill          | $sds-color-semantic-component-positive-fill          | `#3cb371` |
+| --sds-color-semantic-component-positive-fill-hover    | $sds-color-semantic-component-positive-fill-hover    | `#349a61` |
+| --sds-color-semantic-component-positive-fill-pressed  | $sds-color-semantic-component-positive-fill-pressed  | `#1c7f48` |
+| --sds-color-semantic-component-positive-fill-on-fill  | $sds-color-semantic-component-positive-fill-on-fill  | `#ffffff` |
+| --sds-color-semantic-component-positive-surface       | $sds-color-semantic-component-positive-surface       | `#e6f7ed` |
+| --sds-color-semantic-component-positive-border        | $sds-color-semantic-component-positive-border        | `#3cb371` |
+| --sds-color-semantic-component-positive-icon          | $sds-color-semantic-component-positive-icon          | `#3cb371` |
+
+</p>
+</details>
+
+<details><summary>Corners</summary>
+<p>
+
+| CSS Variable      | SASS Variable    | Value  |
+| ----------------- | ---------------- | ------ |
+| --sds-corner-l    | $sds-corner-l    | `20px` |
+| --sds-corner-m    | $sds-corner-m    | `4px`  |
+| --sds-corner-s    | $sds-corner-s    | `2px`  |
+| --sds-corner-none | $sds-corner-none | `0px`  |
+
+</p>
+</details>
+
+<details><summary>Shadows</summary>
+<p>
+
+| CSS Variable           | SASS Variable         | Value                                                                       |
+| ---------------------- | --------------------- | --------------------------------------------------------------------------- |
+| --sds-drop-shadow-l    | $sds-drop-shadow-l    | `0px 2px 12px 0px rgba(0, 0, 0, 0.3)`                                       |
+| --sds-drop-shadow-m    | $sds-drop-shadow-m    | `0px 2px 10px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.15)` |
+| --sds-drop-shadow-s    | $sds-drop-shadow-s    | `0px 2px 4px 0px rgba(0, 0, 0, 0.25)`                                       |
+| --sds-drop-shadow-none | $sds-drop-shadow-none | `none`                                                                      |
+
+</p>
+</details>
+
+<details><summary>Fonts</summary>
+<p>
+
+| CSS Variable                                   | SASS Variable                                 | Value                                      |
+| ---------------------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| --sds-font-color                               | $sds-font-color                               | `black`                                    |
+| --sds-font-font-family-body                    | $sds-font-font-family-body                    | `"Inter", sans-serif`                      |
+| --sds-font-font-family-caps                    | $sds-font-font-family-caps                    | `"Inter", sans-serif`                      |
+| --sds-font-font-family-code                    | $sds-font-font-family-code                    | `"IBM Plex Mono", monospace`               |
+| --sds-font-font-family-header                  | $sds-font-font-family-header                  | `"Inter", sans-serif`                      |
+| --sds-font-font-family-tabular                 | $sds-font-font-family-tabular                 | `"Inter", sans-serif`                      |
+| --sds-font-body-xxxs-400-font                  | $sds-font-body-xxxs-400-font                  | `400 11px/16px "Inter", sans-serif`        |
+| --sds-font-body-xxxs-400-letter-spacing        | $sds-font-body-xxxs-400-letter-spacing        | `0.1px`                                    |
+| --sds-font-body-xxxs-600-font                  | $sds-font-body-xxxs-600-font                  | `600 11px/16px "Inter", sans-serif`        |
+| --sds-font-body-xxxs-600-letter-spacing        | $sds-font-body-xxxs-600-letter-spacing        | `0.1px`                                    |
+| --sds-font-body-xxs-400-font                   | $sds-font-body-xxs-400-font                   | `400 12px/18px "Inter", sans-serif`        |
+| --sds-font-body-xxs-400-letter-spacing         | $sds-font-body-xxs-400-letter-spacing         | `0.1px`                                    |
+| --sds-font-body-xxs-600-font                   | $sds-font-body-xxs-600-font                   | `600 12px/18px "Inter", sans-serif`        |
+| --sds-font-body-xxs-600-letter-spacing         | $sds-font-body-xxs-600-letter-spacing         | `0.1px`                                    |
+| --sds-font-body-xs-400-font                    | $sds-font-body-xs-400-font                    | `400 13px/20px "Inter", sans-serif`        |
+| --sds-font-body-xs-400-letter-spacing          | $sds-font-body-xs-400-letter-spacing          | `0.08px`                                   |
+| --sds-font-body-xs-600-font                    | $sds-font-body-xs-600-font                    | `600 13px/20px "Inter", sans-serif`        |
+| --sds-font-body-xs-600-letter-spacing          | $sds-font-body-xs-600-letter-spacing          | `0.08px`                                   |
+| --sds-font-body-s-400-font                     | $sds-font-body-s-400-font                     | `400 14px/24px "Inter", sans-serif`        |
+| --sds-font-body-s-400-letter-spacing           | $sds-font-body-s-400-letter-spacing           | `0.08px`                                   |
+| --sds-font-body-s-600-font                     | $sds-font-body-s-600-font                     | `600 14px/24px "Inter", sans-serif`        |
+| --sds-font-body-s-600-letter-spacing           | $sds-font-body-s-600-letter-spacing           | `0.08px`                                   |
+| --sds-font-body-m-400-font                     | $sds-font-body-m-400-font                     | `400 16px/26px "Inter", sans-serif`        |
+| --sds-font-body-m-400-letter-spacing           | $sds-font-body-m-400-letter-spacing           | `0px`                                      |
+| --sds-font-body-m-600-font                     | $sds-font-body-m-600-font                     | `600 16px/26px "Inter", sans-serif`        |
+| --sds-font-body-m-600-letter-spacing           | $sds-font-body-m-600-letter-spacing           | `0px`                                      |
+| --sds-font-body-l-400-font                     | $sds-font-body-l-400-font                     | `400 18px/28px "Inter", sans-serif`        |
+| --sds-font-body-l-400-letter-spacing           | $sds-font-body-l-400-letter-spacing           | `0px`                                      |
+| --sds-font-body-l-600-font                     | $sds-font-body-l-600-font                     | `600 18px/28px "Inter", sans-serif`        |
+| --sds-font-body-l-600-letter-spacing           | $sds-font-body-l-600-letter-spacing           | `0px`                                      |
+| --sds-font-caps-xxxxs-600-font                 | $sds-font-caps-xxxxs-600-font                 | `600 10px/14px "Inter", sans-serif`        |
+| --sds-font-caps-xxxxs-600-letter-spacing       | $sds-font-caps-xxxxs-600-letter-spacing       | `0.5px`                                    |
+| --sds-font-caps-xxxxs-600-text-transform       | $sds-font-caps-xxxxs-600-text-transform       | `uppercase`                                |
+| --sds-font-caps-xxxs-600-font                  | $sds-font-caps-xxxs-600-font                  | `600 11px/16px "Inter", sans-serif`        |
+| --sds-font-caps-xxxs-600-letter-spacing        | $sds-font-caps-xxxs-600-letter-spacing        | `0.5px`                                    |
+| --sds-font-caps-xxxs-600-text-transform        | $sds-font-caps-xxxs-600-text-transform        | `uppercase`                                |
+| --sds-font-caps-xxs-600-font                   | $sds-font-caps-xxs-600-font                   | `600 12px/18px "Inter", sans-serif`        |
+| --sds-font-caps-xxs-600-letter-spacing         | $sds-font-caps-xxs-600-letter-spacing         | `0.5px`                                    |
+| --sds-font-caps-xxs-600-text-transform         | $sds-font-caps-xxs-600-text-transform         | `uppercase`                                |
+| --sds-font-header-xxxs-600-font                | $sds-font-header-xxxs-600-font                | `600 11px/16px "Inter", sans-serif`        |
+| --sds-font-header-xxxs-600-letter-spacing      | $sds-font-header-xxxs-600-letter-spacing      | `0.1px`                                    |
+| --sds-font-header-xxs-600-font                 | $sds-font-header-xxs-600-font                 | `600 12px/18px "Inter", sans-serif`        |
+| --sds-font-header-xxs-600-letter-spacing       | $sds-font-header-xxs-600-letter-spacing       | `0.1px`                                    |
+| --sds-font-header-xs-600-font                  | $sds-font-header-xs-600-font                  | `600 13px/18px "Inter", sans-serif`        |
+| --sds-font-header-xs-600-letter-spacing        | $sds-font-header-xs-600-letter-spacing        | `0.08px`                                   |
+| --sds-font-header-s-600-font                   | $sds-font-header-s-600-font                   | `600 14px/20px "Inter", sans-serif`        |
+| --sds-font-header-s-600-letter-spacing         | $sds-font-header-s-600-letter-spacing         | `0.08px`                                   |
+| --sds-font-header-m-600-font                   | $sds-font-header-m-600-font                   | `600 16px/22px "Inter", sans-serif`        |
+| --sds-font-header-m-600-letter-spacing         | $sds-font-header-m-600-letter-spacing         | `0px`                                      |
+| --sds-font-header-l-600-font                   | $sds-font-header-l-600-font                   | `600 18px/24px "Inter", sans-serif`        |
+| --sds-font-header-l-600-letter-spacing         | $sds-font-header-l-600-letter-spacing         | `0px`                                      |
+| --sds-font-header-xl-600-font                  | $sds-font-header-xl-600-font                  | `600 22px/30px "Inter", sans-serif`        |
+| --sds-font-header-xl-600-letter-spacing        | $sds-font-header-xl-600-letter-spacing        | `0px`                                      |
+| --sds-font-header-xxl-600-font                 | $sds-font-header-xxl-600-font                 | `600 26px/34px "Inter", sans-serif`        |
+| --sds-font-header-xxl-600-letter-spacing       | $sds-font-header-xxl-600-letter-spacing       | `0px`                                      |
+| --sds-font-tabular-xs-400-font                 | $sds-font-tabular-xs-400-font                 | `400 13px/20px "Inter", sans-serif`        |
+| --sds-font-tabular-xs-400-font-variant-numeric | $sds-font-tabular-xs-400-font-variant-numeric | `tabular-nums`                             |
+| --sds-font-tabular-xs-400-letter-spacing       | $sds-font-tabular-xs-400-letter-spacing       | `0px`                                      |
+| --sds-font-tabular-xs-600-font                 | $sds-font-tabular-xs-600-font                 | `600 13px/20px "Inter", sans-serif`        |
+| --sds-font-tabular-xs-600-font-variant-numeric | $sds-font-tabular-xs-600-font-variant-numeric | `tabular-nums`                             |
+| --sds-font-tabular-xs-600-letter-spacing       | $sds-font-tabular-xs-600-letter-spacing       | `0px`                                      |
+| --sds-font-tabular-s-400-font                  | $sds-font-tabular-s-400-font                  | `400 14px/24px "Inter", sans-serif`        |
+| --sds-font-tabular-s-400-font-variant-numeric  | $sds-font-tabular-s-400-font-variant-numeric  | `tabular-nums`                             |
+| --sds-font-tabular-s-400-letter-spacing        | $sds-font-tabular-s-400-letter-spacing        | `0px`                                      |
+| --sds-font-tabular-s-600-font                  | $sds-font-tabular-s-600-font                  | `600 14px/24px "Inter", sans-serif`        |
+| --sds-font-tabular-s-600-font-variant-numeric  | $sds-font-tabular-s-600-font-variant-numeric  | `tabular-nums`                             |
+| --sds-font-tabular-s-600-letter-spacing        | $sds-font-tabular-s-600-letter-spacing        | `0px`                                      |
+| --sds-font-code-xs-400-font                    | $sds-font-code-xs-400-font                    | `400 13px/20px "IBM Plex Mono", monospace` |
+| --sds-font-code-xs-400-letter-spacing          | $sds-font-code-xs-400-letter-spacing          | `0px`                                      |
+| --sds-font-code-xs-600-font                    | $sds-font-code-xs-600-font                    | `600 13px/20px "IBM Plex Mono", monospace` |
+| --sds-font-code-xs-600-letter-spacing          | $sds-font-code-xs-600-letter-spacing          | `0px`                                      |
+| --sds-font-code-s-400-font                     | $sds-font-code-s-400-font                     | `400 14px/24px "IBM Plex Mono", monospace` |
+| --sds-font-code-s-400-letter-spacing           | $sds-font-code-s-400-letter-spacing           | `0px`                                      |
+| --sds-font-code-s-600-font                     | $sds-font-code-s-600-font                     | `600 14px/24px "IBM Plex Mono", monospace` |
+| --sds-font-code-s-600-letter-spacing           | $sds-font-code-s-600-letter-spacing           | `0px`                                      |
+
+</p>
+</details>
+
+<details><summary>Icon Sizes</summary>
+<p>
+
+| CSS Variable                 | SASS Variable               | Value  |
+| ---------------------------- | --------------------------- | ------ |
+| --sds-icon-size-input-height | $sds-icon-size-input-height | `16px` |
+| --sds-icon-size-input-width  | $sds-icon-size-input-width  | `16px` |
+| --sds-icon-size-xs-height    | $sds-icon-size-xs-height    | `12px` |
+| --sds-icon-size-xs-width     | $sds-icon-size-xs-width     | `12px` |
+| --sds-icon-size-s-height     | $sds-icon-size-s-height     | `16px` |
+| --sds-icon-size-s-width      | $sds-icon-size-s-width      | `16px` |
+| --sds-icon-size-l-height     | $sds-icon-size-l-height     | `24px` |
+| --sds-icon-size-l-width      | $sds-icon-size-l-width      | `24px` |
+| --sds-icon-size-xl-height    | $sds-icon-size-xl-height    | `32px` |
+| --sds-icon-size-xl-width     | $sds-icon-size-xl-width     | `32px` |
+
+</p>
+</details>
+
+<details><summary>Spaces</summary>
+<p>
+
+| CSS Variable        | SASS Variable      | Value  |
+| ------------------- | ------------------ | ------ |
+| --sds-space-default | $sds-space-default | `12px` |
+| --sds-space-xxxs    | $sds-space-xxxs    | `2px`  |
+| --sds-space-xxs     | $sds-space-xxs     | `4px`  |
+| --sds-space-xs      | $sds-space-xs      | `6px`  |
+| --sds-space-s       | $sds-space-s       | `8px`  |
+| --sds-space-m       | $sds-space-m       | `12px` |
+| --sds-space-l       | $sds-space-l       | `16px` |
+| --sds-space-xl      | $sds-space-xl      | `24px` |
+| --sds-space-xxl     | $sds-space-xxl     | `40px` |
+
+</p>
+</details>
+
+### Component Styles
+
+All components have been refactored and are now using the latest design tokens from the palette. All hardcoded spacings, colors, borders, etc., have been replaced with corresponding values from the theme Palette, making the whole design system dynamic and ready to use different theme files.
+
+### Icons
+
+- All SDS icons have been replaced with newly re-exported icons with larger 16 x 16 and 24 x 24 sizes.
+- Loading icons have been re worked to show the animation.
+- Icon names are now PascalCase instead of camelCase
+- Some icon names have changed as below
+
+| Old Name              | New Name               |
+| --------------------- | ---------------------- |
+| flagQuestionmark      | FlagQuestionMark       |
+| flagXmark             | FlagXMark              |
+| gridThreeDots         | GridDots3              |
+| linesHorizontal       | LinesHorizontal3       |
+| searchLinesHorizontal | SearchLinesHorizontal3 |
+
+### Updated Icon sizes for some components
+
+Since the icons are a bit larger by default now, the s size chevron icon in some components has been replaced with xs size for better visuals.
+
+- Accordion
+- ButtonDropdown
+- InputDropdown
+
+### Updated `intent` and `color` props
+
+The accepted values for `intent` / `color` props in SDS components has changed to semantic alternates
+
+- `primary` => `accent`
+- `info` => `info`
+- `error` => `negative`
+- `warning` => `notice`
+- `success` => `positive`
+- `beta` => `beta`
+
+### Reworked Components
+
+- `CellBasic`: Introducing two additional properties to the CellBasic component, enabling the inclusion of elements either to the right or at the bottom of the primary text (https://github.com/chanzuckerberg/sci-components/issues/758).
+
+```js
+// New props
+
+primaryTextComponentSlotRight?: React.ReactNode;
+primaryTextComponentSlotBottom?: React.ReactNode;
+```
+
+- `InputSlider`: Vertical orientated sliders are no longer available.
+- `InputText`: the `label` prop now accept ReactNode instead of string.
+- `Link`: The Link component now accepts two new props, `sdsSize` and `fontWeight`
+- `Tag`: The `color` prop is now optional for the Tag component. If no colors are provided, the Tag will be rendered as a neutral tag. Additionally, a new prop `sdsSize` has been introduced to control the size of the tag.
+- `InputToggle`: Added Controlled InputToggle story and fixed component state.
+
+### Storybook
+
+- New story Badges in the preview header (`Stable`, `Beta`, `Needs Revision`, `Work in progress`)
+- New story Badges in the sidebar list (`Stable`, `Beta`, `Needs Revision`, `Work in progress`)
+- New categorization for stories (Bases, Components, Data Viz, Deprecated)
+- Added Bases category to Storybook to cover Borders, Colors, Corners, Shadows and Spaces
+
+### Storybook Stories
+
+Component props are excluded from all stories except for the default story.
+
 # [19.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.3.0...@czi-sds/components@19.4.0) (2024-02-15)
 
 ### Features

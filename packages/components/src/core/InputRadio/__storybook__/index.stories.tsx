@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { InputRadio } from "./stories/default";
 import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
@@ -28,10 +27,7 @@ export default {
     },
   },
   component: InputRadio,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/Inputs/InputRadio [beta]",
+  title: "Components/Inputs/InputRadio",
 } as Meta;
 
 // Default
