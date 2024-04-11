@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { InputCheckbox } from "./stories/default";
 import {
   INPUT_CHECKBOX_EXCLUDED_CONTROLS,
@@ -31,10 +30,7 @@ export default {
     },
   },
   component: InputCheckbox,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/Inputs/InputCheckbox [beta]",
+  title: "Components/Inputs/InputCheckbox",
 } as Meta;
 
 // Default
