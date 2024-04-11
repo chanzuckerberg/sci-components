@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.4.0...@czi-sds/components@20.0.0) (2024-04-11)
+
+### Bug Fixes
+
+- **colors:** fix semanticTextColors prefix ([4ddf02d](https://github.com/chanzuckerberg/sci-components/commit/4ddf02d64829b043e9fbb77b11bf678c4a786d85))
+
+### Features
+
+- Controlled InputToggle ([#760](https://github.com/chanzuckerberg/sci-components/issues/760)) ([3f79600](https://github.com/chanzuckerberg/sci-components/commit/3f7960086d369cf505f42838553561c10ad50593))
+- **theme:** Update design tokens and defaultTheme ([#748](https://github.com/chanzuckerberg/sci-components/issues/748)) ([c86af1d](https://github.com/chanzuckerberg/sci-components/commit/c86af1da3cd2fedf68e5ece961338980d97d5bf7))
+
+### BREAKING CHANGES
+
+- **theme:** All SDS Icon names have been converted from camelCase to PascalCase. Some Icon
+  names has changed and the full list will be available on the migration documentation
+
+- fix(icons): add xml schema to svg icons + Add ExcludedControls to all stories
+
+- fix(icons): fix case-sensitive icon names
+
+- feat(link): add fontWeight prop to the link component
+
+- fix(inputcheckbox): fix checkbox icon
+
+- fix(inputcheckbox): fix icon fill
+
+- fix(checkbox): fix fill
+
+- fix(table): fix table demo
+
+fix navigationJumpTo demo
+
+- fix(refactor): fix code review bugs
+
+- chore(snapshots): update test snapshots
+
+- refactor(stories): organize storybook files and breakdown large stories into smaller files
+
+- fix(components): fix design review bugs in all components
+
+- fix(a11y): fix a11y errors
+
+- fix(linter): fix lint errors
+
+- refactor(cellbasic): exclude new props form non-default stories
+
+- refactor(colors): show semantic names in color component
+
+- fix(borders): change borders semantic names
+
+- fix(autocomplete): fix Autocomplete section titles + tagFilter deleteIcon size
+
+- refactor(tag): add sdsSize to tag and fix Dialog close button styles
+
+- fix(tag): fix icon sizes in the storybook default demo
+
+- feat(icon): add IconCubeSmall
+
+- fix(cube icon): fix icon fill
+
+- fix(filtertag): fix onDelete
+
+- fix(filtertag): fix a11y errors
+
+- fix(tagfilter): update test snapshots
+
 # [19.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.3.0...@czi-sds/components@19.4.0) (2024-02-15)
 
 ### Features
