@@ -8,7 +8,7 @@ export const SemanticTextColorsTemplate = () => {
 
   return (
     semanticTextColors && (
-      <Colors colors={semanticTextColors} prefix="$sds-color-semantic-text" />
+      <Colors colors={semanticTextColors} prefix="sds-color-semantic-text" />
     )
   );
 };
