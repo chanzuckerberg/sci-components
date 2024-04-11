@@ -4,13 +4,9 @@ import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,
   BUTTON_EXCLUDED_CONTROLS,
-  BUTTON_LARGE_ICON_LABELS,
-  BUTTON_LARGE_ICON_OPTIONS,
   BUTTON_SDS_STYLES,
   BUTTON_SDS_TYPES,
   BUTTON_SDS_SIZE,
-  BUTTON_SMALL_ICON_LABELS,
-  BUTTON_SMALL_ICON_OPTIONS,
   BUTTON_ICON_LABELS,
   BUTTON_ICON_OPTIONS,
 } from "./constants";
@@ -23,38 +19,14 @@ import {
 
 export default {
   argTypes: {
-    /**
-     * (masoudmanson)
-     * Temporary workaround due to Storybook limitations in rendering conditional
-     * control options. To address the restriction of having identical keys, a distinct
-     * key is used for small icon options. This serves as a temporary solution until
-     * Storybook incorporates the feature for conditional control options rendering.
-     * When sdsType is "minimal," BUTTON_SMALL_ICON_OPTIONS and BUTTON_SMALL_ICON_LABELS are utilized for
-     * startIcon and endIcon. For sdsType other than "minimal," BUTTON_LARGE_ICON_OPTIONS and
-     * BUTTON_LARGE_ICON_LABELS are used. The variables startIċon and endIċon serve the same purpose
-     * as startIcon and endIcon specifically for sdsStyle "minimal." In the main story
-     * definition, conditional rendering for startIcon and endIcon is determined by the sdsStyle:
-     *
-     * const startIconFinal = startIcon || startIċon;
-     * const endIconFinal = endIcon || endIċon;
-     */
     endIcon: {
       control: {
-        labels: BUTTON_LARGE_ICON_LABELS,
+        labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "minimal" },
-      mapping: BUTTON_LARGE_ICON_OPTIONS,
-      options: Object.keys(BUTTON_LARGE_ICON_OPTIONS),
-    },
-    endIċon: {
-      control: {
-        labels: BUTTON_SMALL_ICON_LABELS,
-        type: "select",
-      },
-      if: { arg: "sdsStyle", eq: "minimal" },
-      mapping: BUTTON_SMALL_ICON_OPTIONS,
-      options: Object.keys(BUTTON_SMALL_ICON_OPTIONS),
+      if: { arg: "sdsStyle", neq: "icon" },
+      mapping: BUTTON_ICON_OPTIONS,
+      options: Object.keys(BUTTON_ICON_OPTIONS),
     },
     icon: {
       control: {
@@ -71,6 +43,7 @@ export default {
         labels: BUTTON_SDS_SIZE,
         type: "select",
       },
+      if: { arg: "sdsStyle", eq: "icon" },
       mapping: BUTTON_SDS_SIZE,
       options: Object.keys(BUTTON_SDS_SIZE),
     },
@@ -82,34 +55,20 @@ export default {
       control: { type: "select" },
       options: BUTTON_SDS_TYPES,
     },
-    /**
-     * (masoudmanson)
-     * Temporary workaround due to Storybook limitations in rendering conditional
-     * control options. Same as the endIcon and endIċon, a distinct key is used for
-     * startIcon options.
-     */
     startIcon: {
       control: {
-        labels: BUTTON_LARGE_ICON_LABELS,
+        labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "minimal" },
-      mapping: BUTTON_LARGE_ICON_OPTIONS,
-      options: Object.keys(BUTTON_LARGE_ICON_OPTIONS),
-    },
-    startIċon: {
-      control: {
-        labels: BUTTON_SMALL_ICON_LABELS,
-        type: "select",
-      },
-      if: { arg: "sdsStyle", eq: "minimal" },
-      mapping: BUTTON_SMALL_ICON_OPTIONS,
-      options: Object.keys(BUTTON_SMALL_ICON_OPTIONS),
+      if: { arg: "sdsStyle", neq: "icon" },
+      mapping: BUTTON_ICON_OPTIONS,
+      options: Object.keys(BUTTON_ICON_OPTIONS),
     },
     text: {
       control: {
         type: "text",
       },
+      if: { arg: "sdsStyle", neq: "icon" },
     },
   },
   component: Button,
@@ -124,6 +83,7 @@ export default {
 export const Default = {
   args: {
     disabled: false,
+    icon: "Cube",
     sdsStyle: "rounded",
     sdsType: "primary",
     text: "Label",

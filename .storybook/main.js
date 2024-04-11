@@ -41,21 +41,6 @@ module.exports = {
     name: getAbsolutePath("@storybook/react-webpack5"),
     options: {},
   },
-  webpackFinal: async (config) => {
-    return {
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          // (thuang): Temp fix for Github issue:
-          // https://github.com/storybookjs/storybook/issues/10231#issuecomment-728038867
-          ...config.resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        },
-      },
-    };
-  },
   // (masoudmanson): The latest update of Storybook version 7 now features
   // a new Docs tab, in addition to the Default, Live Preview, and Test Stories.
   // In order to align with our project requirements, we have set the auto Docs

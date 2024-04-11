@@ -5,9 +5,7 @@ import Icon from "src/core/Icon";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
   "endIcon",
-  "endIċon",
   "startIcon",
-  "startIċon",
   "onClick",
   "sdsStyle",
   "sdsType",
@@ -45,51 +43,24 @@ export const BUTTON_ACTIONS = {
   onClick: action("onClick"),
 };
 
-export const BUTTON_LARGE_ICON_OPTIONS = [
+export const BUTTON_ICON_OPTIONS = [
   undefined,
-  <Icon sdsIcon="Download" sdsType="button" sdsSize="l" key="download" />,
-  <Icon sdsIcon="Share" sdsType="button" sdsSize="l" key="share" />,
-  <Icon
-    sdsIcon="SpeechBubbles"
-    sdsType="button"
-    sdsSize="l"
-    key="speechBubbles"
-  />,
-];
-
-export const BUTTON_SMALL_ICON_OPTIONS = [
-  undefined,
-  <Icon sdsIcon="Download" sdsType="button" sdsSize="s" key="downloadSmall" />,
-  <Icon sdsIcon="Copy" sdsType="button" sdsSize="s" key="copy" />,
-  <Icon sdsIcon="LightBulb" sdsType="button" sdsSize="s" key="lightBulb" />,
-];
-
-export const BUTTON_LARGE_ICON_LABELS = [
-  "No icon",
-  "Download",
-  "Share",
-  "Speech Bubbles",
-];
-
-export const BUTTON_SMALL_ICON_LABELS = [
-  "No icon",
+  "XMark",
   "Download",
   "Copy",
-  "Light Bulb",
-];
-
-export const BUTTON_ICON_OPTIONS = [
   "DotsHorizontal",
-  "Grid",
-  "XMark",
+  "Cube",
   <CustomSdsIcon key="customSdsIcon" />,
   <CustomSvgIcon key="customIcon" />,
 ];
 
 export const BUTTON_ICON_LABELS = [
-  "SDS Icon: DotsHorizontal",
-  "SDS Icon: Grid",
+  "No Icon",
   "SDS Icon: XMark",
+  "SDS Icon: Download",
+  "SDS Icon: Copy",
+  "SDS Icon: DotsHorizontal",
+  "SDS Icon: Cube",
   "Custom SDS Icon",
   "Custom SVG Icon",
 ];

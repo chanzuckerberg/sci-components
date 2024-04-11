@@ -30,6 +30,7 @@ export const BUTTON_ICON_PSEUDO_STATES = [
 ];
 
 export const BUTTON_ICON_ICON_OPTIONS = [
+  "InfoCircle",
   "DotsHorizontal",
   "Virus",
   "XMark",
@@ -38,6 +39,7 @@ export const BUTTON_ICON_ICON_OPTIONS = [
 ];
 
 export const BUTTON_ICON_ICON_LABELS = [
+  "SDS Icon: InfoCircle",
   "SDS Icon: DotsHorizontal",
   "SDS Icon: Virus",
   "SDS Icon: XMark",

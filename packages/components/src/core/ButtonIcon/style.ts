@@ -2,15 +2,11 @@ import { css, SerializedStyles } from "@emotion/react";
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
-  SDSWarningTypes,
-  showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   getColors,
   getIconSizes,
-  getPalette,
+  getSemanticComponentColors,
 } from "src/core/styles";
 
 export interface ButtonIconSizeToTypes {
@@ -48,11 +44,13 @@ const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
-  const palette = getPalette(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
+    color: ${semanticComponentColors?.base?.fillDisabled};
+
     svg {
-      color: ${palette?.text?.disabled};
+      color: ${semanticComponentColors?.base?.fillDisabled};
     }
   `;
 };
@@ -60,19 +58,31 @@ const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
-  const colors = getColors(props);
-  const { sdsSize } = props;
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.blue[400]};
+    color: ${semanticComponentColors?.accent?.fill};
+
+    svg {
+      color: ${semanticComponentColors?.accent?.fill};
+    }
 
     &:hover {
-      background: ${colors?.gray[200]};
-      color: ${sdsSize === "small" ? colors?.blue[600] : colors?.blue[400]};
+      background: ${semanticComponentColors?.base?.fillHover};
+      color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
     }
 
     &:active {
-      color: ${colors?.blue[600]};
+      background: ${semanticComponentColors?.base?.fillPressed};
+      color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
   `;
 };
@@ -80,15 +90,31 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.gray[500]};
+    color: ${semanticComponentColors?.base?.icon};
 
-    &:hover,
+    svg {
+      color: ${semanticComponentColors?.base?.icon};
+    }
+
+    &:hover {
+      background: ${semanticComponentColors?.base?.fillHover};
+      color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
+    }
+
     &:active {
-      background: none;
-      color: ${colors?.blue[400]};
+      background: ${semanticComponentColors?.base?.fillPressed};
+      color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
   `;
 };
@@ -96,18 +122,31 @@ const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
-  const colors = getColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.gray[500]};
+    color: ${semanticComponentColors?.base?.icon};
+
+    svg {
+      color: ${semanticComponentColors?.base?.icon};
+    }
 
     &:hover {
       background: none;
-      color: black;
+      color: ${semanticComponentColors?.base?.iconHover};
+
+      svg {
+        color: ${semanticComponentColors?.base?.iconHover};
+      }
     }
 
     &:active {
-      color: black;
+      background: none;
+      color: ${semanticComponentColors?.base?.iconPressed};
+
+      svg {
+        color: ${semanticComponentColors?.base?.iconPressed};
+      }
     }
   `;
 };
@@ -115,16 +154,14 @@ const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
 const small = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
 ): SerializedStyles => {
+  const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
   return css`
-    &:hover {
-      background: none;
-    }
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
+      ${sdsType !== "tertiary" ? `margin: 6px;` : ""}
     }
   `;
 };
@@ -135,18 +172,11 @@ const medium = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
-  if (sdsType === "primary" || sdsType === "secondary") {
-    showWarningIfFirstOccurence(SDSWarningTypes.ButtonIconMediumSize);
-  }
-
   return css`
-    &:hover {
-      background: none;
-    }
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
+      ${sdsType !== "tertiary" ? `margin: 6px;` : ""}
     }
   `;
 };
@@ -161,7 +191,7 @@ const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
-      ${sdsType === "primary" ? `margin: 5px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: 5px;` : ""}
     }
   `;
 };
@@ -183,7 +213,7 @@ export const StyledButtonIcon = styled(IconButton, {
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconExtraProps<ButtonIconSize>
   ) => {
-    const { on, disabled, sdsSize, sdsType } = props;
+    const { on, disabled, sdsSize = "medium", sdsType = "primary" } = props;
 
     return css`
       ${sdsType === "primary" && primary(props)}

@@ -36,47 +36,59 @@ const ButtonBase = styled(Button, {
 
     const hasIcon = !!startIcon || !!endIcon;
 
-    // (masoudmanson): The padding for the contained variant depends on the presence of an icon.
+    // (masoudmanson): The padding depends on the presence of an icon.
     // If the component has either a startIcon or endIcon, the padding will be different.
     // If the component doesn't have any icon at all, the padding will be different.
-    const containedPadding = hasIcon
+    const padding = hasIcon
       ? `${spaces?.xxs}px ${spaces?.m}px`
       : `${spaces?.xs}px ${spaces?.l}px`;
 
-    // (thuang): outline variant has border 1px, so padding needs to be smaller
-    const outlinedPadding = hasIcon
-      ? `${(spaces?.xxs || 0) - 1}px ${(spaces?.m || 0) - 1}px`
-      : `${(spaces?.xs || 0) - 1}px ${(spaces?.m || 0) - 1}px`;
-
-    const padding = variant === "outlined" ? outlinedPadding : containedPadding;
-
-    const outlineBorder =
+    const contentColor =
       variant === "outlined"
-        ? `border-color: ${semanticComponentColors?.accent?.border};`
-        : "";
+        ? semanticTextColors?.action?.default
+        : semanticTextColors?.base?.onFill;
 
     return `
-      ${outlineBorder}
+      border: solid 1px ${semanticComponentColors?.accent?.border};
       padding: ${padding};
       min-width: 120px;
       box-shadow: ${shadows?.none};
+      color: ${contentColor};
+
+      svg {
+        color: ${contentColor};
+      }
 
       &:hover {
         color: ${semanticTextColors?.base?.onFill};
         background-color: ${semanticComponentColors?.accent?.fillHover};
         box-shadow: ${shadows?.none};
+        border: solid 1px ${semanticComponentColors?.accent?.borderHover};
+
+        svg {
+          color: ${semanticComponentColors?.base?.fill};
+        }
       }
 
       &:active {
         color: ${semanticTextColors?.base?.onFill};
         background-color: ${semanticComponentColors?.accent?.fillPressed};
         box-shadow: ${shadows?.none};
+        border: solid 1px ${semanticComponentColors?.accent?.fillPressed};
+
+        svg {
+          color: ${semanticComponentColors?.base?.fill};
+        }
       }
 
       &:disabled {
         color: ${semanticTextColors?.base?.onFillDisabled};
         background-color: ${semanticComponentColors?.base?.fillDisabled};
         border-color: ${semanticComponentColors?.base?.borderDisabled};
+
+        svg {
+          color: ${semanticComponentColors?.base?.onFillDisabled};
+        }
       }
 
       .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
@@ -156,12 +168,24 @@ const minimal = (props: CommonThemeProps) => {
   return `
     &:hover, &:focus-visible {
       color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
     }
     &:active {
       color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
     &:disabled {      
       color: ${semanticTextColors?.base?.onFillDisabled};
+
+      svg {
+        color: ${semanticTextColors?.base?.onFillDisabled};
+      }
     }
 
     .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
@@ -200,12 +224,6 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
       color: ${semanticTextColors?.base?.primary};
     `;
   }}
-`;
-
-export const PrimaryIconButton = styled(Button, {
-  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
-})`
-  ${minimal}
 `;
 
 // Legacy support for backwards-compatible props

@@ -56,7 +56,7 @@ export const Default = {
   args: {
     "aria-label": "info",
     disabled: false,
-    icon: "DotsHorizontal",
+    icon: "InfoCircle",
     sdsSize: "large",
     sdsType: "primary",
   },

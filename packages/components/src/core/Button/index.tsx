@@ -13,36 +13,44 @@ import {
 } from "./style";
 import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
+import { filterProps } from "src/common/utils";
 
-type SDSStyleTypeMapping = {
-  minimal: "primary" | "secondary";
-  rounded: "primary" | "secondary";
-  square: "primary" | "secondary";
-  icon: "primary" | "secondary" | "tertiary";
-};
-export interface SdsProps<IconName extends keyof IconNameToSizes> {
+/**
+ * (masoudmanson): When sdsStyle="icon", sdsType can be any ButtonType.
+ * For other sdsStyle values, sdsType is restricted to "primary" or "secondary".
+ * To enforce this, we utilized a union type for the sdsStyle and sdsType props.
+ */
+
+type ButtonStyle = "rounded" | "square" | "minimal" | "icon";
+type ButtonType = "primary" | "secondary" | "tertiary";
+type ButtonSize = "small" | "medium" | "large";
+
+type SdsProps<IconName extends keyof IconNameToSizes> = (
+  | {
+      sdsStyle?: Exclude<ButtonStyle, "icon">;
+      sdsType?: Exclude<ButtonType, "tertiary">;
+    }
+  | {
+      sdsStyle?: "icon";
+      sdsType?: ButtonType;
+    }
+) & {
   isAllCaps?: boolean;
   isRounded?: boolean;
-  sdsStyle?: keyof SDSStyleTypeMapping;
-  sdsType?: SDSStyleTypeMapping[keyof SDSStyleTypeMapping];
-  sdsSize?: "small" | "medium" | "large";
+  sdsSize?: ButtonSize;
   icon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
-}
+};
 
-// (thuang): Support `component` prop
-// https://stackoverflow.com/a/66123108
-export type ButtonProps<
-  IconName extends keyof IconNameToSizes,
-  C extends React.ElementType = "button",
-> = RawButtonProps<C, { component?: C }> & SdsProps<IconName>;
+export type ButtonProps<IconName extends keyof IconNameToSizes> =
+  RawButtonProps & SdsProps<IconName>;
 
 /**
  * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
-  <IconName extends keyof IconNameToSizes, C extends React.ElementType>(
-    props: ButtonProps<IconName, C>,
+  <IconName extends keyof IconNameToSizes>(
+    props: ButtonProps<IconName>,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
     const { sdsStyle, sdsType, icon } = props;
@@ -52,10 +60,7 @@ const Button = React.forwardRef(
     }
 
     if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'."
-      );
+      showWarningIfFirstOccurence(SDSWarningTypes.ButtonMinimalIsAllCaps);
     }
 
     // isAllCaps is only used for the Minimal Button.  It defaults to true.
@@ -118,20 +123,25 @@ const Button = React.forwardRef(
             {...propsWithDefault}
           />
         );
-      case sdsStyle === "icon" && icon !== undefined: {
-        // (masoudmanson): We need to remove the props that are not supported by
-        // the ButtonIcon component.
-        const doNotForwardProps = [
-          "startIcon",
-          "endIcon",
-          "sdsStyle",
-          "isAllCaps",
-        ];
-        const finalProps = { ...propsWithDefault };
-        doNotForwardProps.forEach((prop) => {
-          delete finalProps[prop];
-        });
-        return <ButtonIcon icon={icon} {...finalProps} />;
+      case sdsStyle === "icon": {
+        if (icon !== undefined) {
+          // (masoudmanson): We need to remove the props that are not supported by
+          // the ButtonIcon component.
+          const excludedProps = [
+            "startIcon",
+            "endIcon",
+            "sdsStyle",
+            "isAllCaps",
+          ];
+          const finalProps = filterProps(propsWithDefault, excludedProps);
+
+          return <ButtonIcon icon={icon} {...finalProps} ref={ref} />;
+        } else {
+          showWarningIfFirstOccurence(
+            SDSWarningTypes.ButtonIconMissingIconProp
+          );
+          return null;
+        }
       }
       default:
         return <StyledButton {...propsWithDefault} ref={ref} />;

@@ -3,8 +3,8 @@
 exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
 <button
   aria-label="info"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1dufxsi-MuiButtonBase-root-MuiIconButton-root"
-  icon="DotsHorizontal"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5247qr-MuiButtonBase-root-MuiIconButton-root"
+  icon="InfoCircle"
   tabindex="0"
   type="button"
 >
@@ -14,8 +14,8 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
     <svg
       aria-hidden="true"
       class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
-      data-file-name="IconDotsHorizontal3Large"
-      data-testid="IconDotsHorizontal3Large"
+      data-file-name="IconInfoCircleLarge"
+      data-testid="IconInfoCircleLarge"
       fillcontrast="white"
       focusable="false"
       height="24"
