@@ -16,7 +16,7 @@ export const ButtonIconsGroupRight = styled("div")`
     return `
       align-items: center;
       display: inline-flex;
-      gap: ${spaces?.xs}px;
+      gap: ${spaces?.xxxs}px;
       height: 100%;
       border-left: solid 1px ${semanticComponentColors?.base?.divider};
       padding-left: ${spaces?.xs}px;
