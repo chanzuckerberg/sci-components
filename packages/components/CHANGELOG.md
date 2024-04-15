@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.0.0...@czi-sds/components@20.0.1) (2024-04-15)
+
+### Bug Fixes
+
+- **icons:** fix icons' relative paths ([b84bb0e](https://github.com/chanzuckerberg/sci-components/commit/b84bb0e625754a5c02f910c0c40b8ff2502a8ae9))
+
 # [20.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.4.0...@czi-sds/components@20.0.0) (2024-04-11)
 
 ### DefaultTheme and Design Tokens
