@@ -1,7 +1,7 @@
 import { CheckboxProps as MUICheckboxProps, SvgIcon } from "@mui/material";
-import { ReactComponent as IconCheckboxChecked } from "src/common/svgs/IconCheckboxChecked.svg";
-import { ReactComponent as IconCheckboxIndeterminate } from "src/common/svgs/IconCheckboxIndeterminate.svg";
-import { ReactComponent as IconCheckboxUnchecked } from "src/common/svgs/IconCheckboxUnchecked.svg";
+import { ReactComponent as IconCheckboxChecked } from "../../common/svgs/IconCheckboxChecked.svg";
+import { ReactComponent as IconCheckboxIndeterminate } from "../../common/svgs/IconCheckboxIndeterminate.svg";
+import { ReactComponent as IconCheckboxUnchecked } from "../../common/svgs/IconCheckboxUnchecked.svg";
 import {
   CheckboxExtraProps,
   StyledCheckbox,

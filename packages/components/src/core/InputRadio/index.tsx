@@ -1,6 +1,6 @@
 import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
-import { ReactComponent as IconRadioChecked } from "src/common/svgs/IconRadioChecked.svg";
-import { ReactComponent as IconRadioUnChecked } from "src/common/svgs/IconRadioUnchecked.svg";
+import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
+import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";
 import {
   RadioExtraProps,
   StyledFormControlLabel,
