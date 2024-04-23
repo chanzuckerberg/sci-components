@@ -25,11 +25,6 @@ export default {
       mapping: BUTTON_ICON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_ICON_OPTIONS),
     },
-    on: {
-      control: {
-        type: "boolean",
-      },
-    },
     sdsSize: {
       control: {
         type: "select",
@@ -106,7 +101,6 @@ export const Test = {
       <RawButtonIcon
         aria-label="dotsHorizontal"
         data-testid="iconButton"
-        on
         icon="DotsHorizontal"
         sdsSize="medium"
         sdsType="primary"

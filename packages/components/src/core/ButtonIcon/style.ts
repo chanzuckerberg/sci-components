@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
-  getColors,
   getIconSizes,
   getSemanticComponentColors,
 } from "src/core/styles";
@@ -17,29 +16,10 @@ export interface ButtonIconSizeToTypes {
 export interface ButtonIconExtraProps<
   ButtonIconSize extends keyof ButtonIconSizeToTypes,
 > extends CommonThemeProps {
-  on?: boolean;
   disabled?: boolean;
   sdsSize?: ButtonIconSize;
   sdsType?: ButtonIconSizeToTypes[ButtonIconSize];
 }
-
-const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const { sdsType } = props;
-  const colors = getColors(props);
-
-  return css`
-    ${sdsType !== "tertiary" &&
-    `
-      color: ${sdsType === "primary" ? colors?.blue[600] : colors?.blue[400]};
-
-      &:hover {
-        color: ${colors?.blue[600]};
-      }
-    `}
-  `;
-};
 
 const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   props: ButtonIconExtraProps<ButtonIconSize>
@@ -213,13 +193,12 @@ export const StyledButtonIcon = styled(IconButton, {
   ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     props: ButtonIconExtraProps<ButtonIconSize>
   ) => {
-    const { on, disabled, sdsSize = "medium", sdsType = "primary" } = props;
+    const { disabled, sdsSize = "medium", sdsType = "primary" } = props;
 
     return css`
       ${sdsType === "primary" && primary(props)}
       ${sdsType === "secondary" && secondary(props)}
       ${sdsType === "tertiary" && tertiary(props)}
-      ${on && isOn(props)}
       ${disabled && isDisabled(props)}
       ${sdsSize === "small" && small(props)}
       ${sdsSize === "medium" && medium(props)}

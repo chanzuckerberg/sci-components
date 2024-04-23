@@ -11,11 +11,10 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
-import {
-  MinimalLivePreviewDemo,
-  RoundedLivePreviewDemo,
-  SquareLivePreviewDemo,
-} from "./stories/livePreview";
+import { MinimalLivePreviewDemo } from "./stories/minimalLivePreview";
+import { RoundedLivePreviewDemo } from "./stories/roundedLivePreview";
+import { SquareLivePreviewDemo } from "./stories/squareLivePreview";
+import { IconLivePreviewDemo } from "./stories/iconLivePreview";
 
 export default {
   argTypes: {
@@ -84,6 +83,7 @@ export const Default = {
   args: {
     disabled: false,
     icon: "Cube",
+    sdsSize: "medium",
     sdsStyle: "rounded",
     sdsType: "primary",
     text: "Label",
@@ -139,6 +139,23 @@ export const MinimalLivePreview = {
     },
   },
   render: (args: Args) => <MinimalLivePreviewDemo {...args} />,
+};
+
+// Icon Live Preview
+
+export const IconLivePreview = {
+  args: {
+    label: "Label",
+  },
+  parameters: {
+    controls: {
+      exclude: BUTTON_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <IconLivePreviewDemo {...args} />,
 };
 
 // Screenshot Test

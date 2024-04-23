@@ -2,12 +2,18 @@ import { Args } from "@storybook/react";
 import RawButton from "src/core/Button";
 import {
   BUTTON_DISABLED_OPTIONS,
-  BUTTON_ICON_OPTIONS_2,
+  SCREENSHOT_BUTTON_ICON_OPTIONS,
   BUTTON_PSEUDO_STATES,
-  BUTTON_SDS_STYLES,
-  BUTTON_SDS_TYPES,
+  SCREENSHOT_BUTTON_SDS_STYLES,
+  SCREENSHOT_BUTTON_SDS_TYPES,
   BUTTON_TEXT,
+  BUTTON_ICON_DISABLED_OPTIONS,
+  BUTTON_ICON_PSEUDO_STATES,
+  BUTTON_ICON_SDS_SIZES,
+  BUTTON_ICON_SDS_TYPES,
 } from "../constants";
+import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
+import { IconNameToSizes } from "src/core/Icon";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const topLevel: React.CSSProperties = {
@@ -58,28 +64,43 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     ...fontWeightNormal,
     margin: "10px 0",
   };
+  const MID_LABEL: React.CSSProperties = {
+    borderStyle: "solid none none none",
+    gridColumn: "1 / 6",
+    justifySelf: "stretch",
+    paddingTop: 10,
+  };
+  const DISPLAY_CONTENTS: React.CSSProperties = {
+    display: "contents",
+  };
 
-  // loop through all BUTTON_SDS_STYLES
+  // loop through all SCREENSHOT_BUTTON_SDS_STYLES
   return (
     <>
-      {BUTTON_SDS_STYLES.map((sdsStyle) => {
+      {SCREENSHOT_BUTTON_SDS_STYLES.map((sdsStyle) => {
         return <ButtonStyleOption sdsStyle={sdsStyle} key={sdsStyle} />;
       })}
+
+      <div>
+        {BUTTON_ICON_SDS_TYPES.map((sdsType) => {
+          return <ButtonIconTypeOption sdsType={sdsType} key={sdsType} />;
+        })}
+      </div>
     </>
   );
 
-  // loop through all BUTTON_SDS_TYPES + create headers for BUTTON_SDS_STYLES
+  // loop through all SCREENSHOT_BUTTON_SDS_TYPES + create headers for SCREENSHOT_BUTTON_SDS_STYLES
   function ButtonStyleOption({
     sdsStyle,
   }: {
-    sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
+    sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
   }) {
     return (
       <div style={topLevel}>
         <h3 style={topLabel}>
           Style: <b>{sdsStyle}</b>
         </h3>
-        {BUTTON_SDS_TYPES.map((type) => {
+        {SCREENSHOT_BUTTON_SDS_TYPES.map((type) => {
           return (
             <ButtonTypeOption sdsStyle={sdsStyle} type={type} key={type} />
           );
@@ -88,13 +109,13 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all BUTTON_ICON_OPTIONS_2 + create headers for BUTTON_SDS_TYPES
+  // loop through all BUTTON_ICON_OPTIONS_2 + create headers for SCREENSHOT_BUTTON_SDS_TYPES
   function ButtonTypeOption({
     sdsStyle,
     type,
   }: {
-    sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
-    type: (typeof BUTTON_SDS_TYPES)[number];
+    sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
+    type: (typeof SCREENSHOT_BUTTON_SDS_TYPES)[number];
   }) {
     return (
       <div style={displayContents}>
@@ -106,11 +127,11 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
           <ButtonIconOption
             sdsStyle={sdsStyle}
             type={type}
-            icon={BUTTON_ICON_OPTIONS_2[0]}
-            key={String(BUTTON_ICON_OPTIONS_2[0])}
+            icon={SCREENSHOT_BUTTON_ICON_OPTIONS[0]}
+            key={String(SCREENSHOT_BUTTON_ICON_OPTIONS[0])}
           />
         ) : (
-          BUTTON_ICON_OPTIONS_2.map((icon) => {
+          SCREENSHOT_BUTTON_ICON_OPTIONS.map((icon) => {
             return (
               <ButtonIconOption
                 sdsStyle={sdsStyle}
@@ -131,9 +152,9 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     type,
     icon,
   }: {
-    sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
-    type: (typeof BUTTON_SDS_TYPES)[number];
-    icon: (typeof BUTTON_ICON_OPTIONS_2)[number];
+    sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
+    type: (typeof SCREENSHOT_BUTTON_SDS_TYPES)[number];
+    icon: (typeof SCREENSHOT_BUTTON_ICON_OPTIONS)[number];
   }) {
     return (
       <div style={displayContents}>
@@ -162,9 +183,9 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     icon,
     disabled,
   }: {
-    sdsStyle: (typeof BUTTON_SDS_STYLES)[number];
-    type: (typeof BUTTON_SDS_TYPES)[number];
-    icon: (typeof BUTTON_ICON_OPTIONS_2)[number];
+    sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
+    type: (typeof SCREENSHOT_BUTTON_SDS_TYPES)[number];
+    icon: (typeof SCREENSHOT_BUTTON_ICON_OPTIONS)[number];
     disabled: (typeof BUTTON_DISABLED_OPTIONS)[number];
   }) {
     return (
@@ -185,7 +206,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     {...props}
                     data-testid="button"
                     sdsStyle={sdsStyle}
-                    sdsType={type}
+                    sdsType={type as SDSTypes[number]}
                     startIcon={icon}
                     disabled={disabled}
                     className={`pseudo-${state}`}
@@ -193,6 +214,149 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                   >
                     {BUTTON_TEXT}
                   </RawButton>
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // Icon Style
+
+  // loop through all SDS_SIZES + create headers for SDS_TYPES
+  function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
+    const LEVEL_STYLE: React.CSSProperties = {
+      columnGap: "20px",
+      display: "inline-grid",
+      fontFamily: "sans-serif",
+      marginRight: "50px",
+    };
+    const LABEL_STYLE: React.CSSProperties = {
+      fontSize: "2em",
+      gridColumn: "1 / 6",
+      marginBottom: 0,
+    };
+    return (
+      <div style={LEVEL_STYLE}>
+        <p style={LABEL_STYLE}>
+          Type: <b>{sdsType}</b>
+        </p>
+        {BUTTON_ICON_SDS_SIZES.map((sdsSize) => {
+          return (
+            <ButtonIconSizeOption
+              sdsType={sdsType}
+              sdsSize={sdsSize}
+              key={sdsSize}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all ON_OPTIONS + create headers for SDS_SIZES
+  function ButtonIconSizeOption({
+    sdsType,
+    sdsSize,
+  }: {
+    sdsType: SDSTypes[number];
+    sdsSize: SDSSizes[number];
+  }) {
+    const LABEL_STYLE: React.CSSProperties = {
+      ...MID_LABEL,
+      borderWidth: "2px",
+      fontSize: "1.17em",
+      margin: "20px 0",
+    };
+
+    return (
+      <div style={DISPLAY_CONTENTS}>
+        <p style={LABEL_STYLE}>
+          Size: <b>{sdsSize}</b>
+        </p>
+        {BUTTON_ICON_DISABLED_OPTIONS.map((disabled) => {
+          return (
+            <ButtonIconDisabledOption
+              sdsType={sdsType}
+              sdsSize={sdsSize}
+              disabled={disabled}
+              key={String(disabled)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
+  // loop through all PSEUDO_STATES + create headers for DISABLED_OPTIONS, PSEUDO_STATES
+  function ButtonIconDisabledOption({
+    sdsType,
+    sdsSize,
+    disabled,
+  }: {
+    sdsType: SDSTypes[number];
+    sdsSize: SDSSizes[number];
+    disabled: (typeof BUTTON_ICON_DISABLED_OPTIONS)[number];
+  }) {
+    const SDS_ICONS = {
+      primary: {
+        large: "Cube",
+        medium: "Cube",
+        small: "Cube",
+      },
+      secondary: {
+        large: "ExclamationMarkCircle",
+        medium: "ExclamationMarkCircle",
+        small: "ExclamationMarkCircle",
+      },
+      tertiary: {
+        large: "XMark",
+        medium: "XMark",
+        small: "XMark",
+      },
+    };
+    const DISABLED_LEVEL: React.CSSProperties = {
+      display: "contents",
+    };
+    const PSEUDO_STATE_LEVEL: React.CSSProperties = {
+      marginBottom: 10,
+    };
+    const PSEUDO_STATE_LABEL: React.CSSProperties = {
+      fontSize: "0.67em",
+      margin: "10px 0",
+    };
+
+    return (
+      <div style={DISABLED_LEVEL}>
+        {BUTTON_ICON_PSEUDO_STATES.map((state) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore: invalid `icon` is skipped in <ButtonIconTypeOption />
+          const icon = SDS_ICONS[sdsType][sdsSize];
+
+          return (
+            <div style={PSEUDO_STATE_LEVEL} key={`div-${state}`}>
+              {/* remove irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
+              {(disabled === false ||
+                (disabled === true && state === "default")) && (
+                <>
+                  <p style={PSEUDO_STATE_LABEL}>
+                    {disabled === false ? "State: " : "Disabled: "}
+                    <br />
+                    <b>{disabled === false ? state : "true"}</b>
+                  </p>
+                  <RawButton
+                    aria-label={icon}
+                    icon={icon as keyof IconNameToSizes}
+                    data-testid="button-icon"
+                    sdsStyle="icon"
+                    sdsType={sdsType}
+                    sdsSize={sdsSize}
+                    disabled={disabled}
+                    className={`pseudo-${state}`}
+                    key={state}
+                  />
                 </>
               )}
             </div>

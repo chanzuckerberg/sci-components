@@ -1,6 +1,5 @@
 import {
   BUTTON_ICON_DISABLED_OPTIONS,
-  BUTTON_ICON_ON_OPTIONS,
   BUTTON_ICON_PSEUDO_STATES,
   BUTTON_ICON_SDS_SIZES,
   BUTTON_ICON_SDS_TYPES,
@@ -47,14 +46,6 @@ export const ScreenshotTestDemo = (): JSX.Element => {
           Type: <b>{sdsType}</b>
         </p>
         {BUTTON_ICON_SDS_SIZES.map((sdsSize) => {
-          // primary and secondary types don't have medium size
-          if (
-            (sdsType === "primary" || sdsType === "secondary") &&
-            sdsSize === "medium"
-          ) {
-            return null;
-          }
-
           return (
             <ButtonIconSizeOption
               sdsType={sdsType}
@@ -75,10 +66,6 @@ export const ScreenshotTestDemo = (): JSX.Element => {
     sdsType: SDSTypes[number];
     sdsSize: SDSSizes[number];
   }) {
-    // establish which combinations have `on` as a prop (used below and passed to next loop)
-    const ON_LABEL_NEEDED =
-      (sdsType === "primary" && sdsSize === "large") ||
-      (sdsType === "secondary" && sdsSize === "small");
     const LABEL_STYLE: React.CSSProperties = {
       ...MID_LABEL,
       borderWidth: "2px",
@@ -91,63 +78,11 @@ export const ScreenshotTestDemo = (): JSX.Element => {
         <p style={LABEL_STYLE}>
           Size: <b>{sdsSize}</b>
         </p>
-        {BUTTON_ICON_ON_OPTIONS.map((on) => {
-          return (
-            // for the combinations with `on` as a prop, loop through all values for `on`(true, false)
-            // for the combinations without `on` as a prop, loop through only once
-            (ON_LABEL_NEEDED ||
-              ((sdsType === "tertiary" ||
-                (sdsType === "primary" && sdsSize === "small") ||
-                (sdsType === "secondary" && sdsSize === "large")) &&
-                on === false)) && (
-              <ButtonIconOnOption
-                sdsType={sdsType}
-                sdsSize={sdsSize}
-                on={on}
-                key={String(on)}
-                onLabelNeeded={ON_LABEL_NEEDED}
-              />
-            )
-          );
-        })}
-      </div>
-    );
-  }
-
-  // loop through all DISABLED_OPTIONS + create headers for ON_OPTIONS
-  function ButtonIconOnOption({
-    sdsType,
-    sdsSize,
-    on,
-    onLabelNeeded,
-  }: {
-    sdsType: SDSTypes[number];
-    sdsSize: SDSSizes[number];
-    on: (typeof BUTTON_ICON_ON_OPTIONS)[number];
-    onLabelNeeded: boolean;
-  }) {
-    const LABEL_STYLE: React.CSSProperties = {
-      ...MID_LABEL,
-      alignSelf: "end",
-      borderWidth: "1px",
-      fontSize: "0.83em",
-      fontWeight: "normal",
-      margin: "0 0 5px 0",
-    };
-    return (
-      <div style={DISPLAY_CONTENTS}>
-        {/* only show the "On: ..." label for combinations that have `on` as a prop */}
-        {onLabelNeeded && (
-          <p style={LABEL_STYLE}>
-            On: <b>{on ? "true" : "false"}</b>
-          </p>
-        )}
         {BUTTON_ICON_DISABLED_OPTIONS.map((disabled) => {
           return (
             <ButtonIconDisabledOption
               sdsType={sdsType}
               sdsSize={sdsSize}
-              on={on}
               disabled={disabled}
               key={String(disabled)}
             />
@@ -161,22 +96,22 @@ export const ScreenshotTestDemo = (): JSX.Element => {
   function ButtonIconDisabledOption({
     sdsType,
     sdsSize,
-    on,
     disabled,
   }: {
     sdsType: SDSTypes[number];
     sdsSize: SDSSizes[number];
-    on: (typeof BUTTON_ICON_ON_OPTIONS)[number];
     disabled: (typeof BUTTON_ICON_DISABLED_OPTIONS)[number];
   }) {
     const SDS_ICONS = {
       primary: {
-        large: "Grid",
-        small: "BarChartVertical3",
+        large: "Cube",
+        medium: "Cube",
+        small: "Cube",
       },
       secondary: {
-        large: "InfoSpeechBubble",
-        small: "PlusCircle",
+        large: "ExclamationMarkCircle",
+        medium: "ExclamationMarkCircle",
+        small: "ExclamationMarkCircle",
       },
       tertiary: {
         large: "XMark",
@@ -219,7 +154,6 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                     data-testid="button-icon"
                     sdsType={sdsType}
                     sdsSize={sdsSize}
-                    on={on}
                     disabled={disabled}
                     className={`pseudo-${state}`}
                     key={state}
@@ -232,6 +166,4 @@ export const ScreenshotTestDemo = (): JSX.Element => {
       </div>
     );
   }
-
-  // }, // close render
 };
