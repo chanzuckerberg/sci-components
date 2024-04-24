@@ -3,7 +3,7 @@
 exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
 <button
   aria-label="info"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-5247qr-MuiButtonBase-root-MuiIconButton-root"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1tnzpjc-MuiButtonBase-root-MuiIconButton-root"
   icon="InfoCircle"
   tabindex="0"
   type="button"

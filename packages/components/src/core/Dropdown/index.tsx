@@ -159,7 +159,7 @@ const Dropdown = <
             {buttonPosition === "left" ? (
               <div>
                 <StyledButton
-                  onClick={handleClose}
+                  onClick={(event) => handleClose(event, "selectOption")}
                   sdsStyle="square"
                   sdsType="primary"
                 >
@@ -183,7 +183,7 @@ const Dropdown = <
                   Cancel
                 </StyledButton>
                 <StyledButton
-                  onClick={handleClose}
+                  onClick={(event) => handleClose(event, "selectOption")}
                   sdsStyle="square"
                   sdsType="primary"
                 >

@@ -9,4 +9,6 @@ export type SDSTypes = NonNullable<
   | ButtonIconExtraProps<"large">["sdsType"]
 >[];
 
+export type SDSStyles = NonNullable<"icon">[];
+
 export type SDSSizes = (keyof ButtonIconSizeToTypes)[];

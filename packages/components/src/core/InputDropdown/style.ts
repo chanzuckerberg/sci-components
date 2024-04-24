@@ -16,9 +16,21 @@ import {
   getSpaces,
 } from "src/core/styles";
 
+const doNotForwardProps = [
+  "intent",
+  "state",
+  "sdsStage",
+  "sdsType",
+  "isMinimal",
+  "shouldTruncateMinimalDetails",
+  "shouldPutAColonAfterLabel",
+  "value",
+  "sdsStyle",
+];
+
 export interface InputDropdownProps
   extends CommonThemeProps,
-    Omit<ButtonProps, "value" | "sdsType" | "sdsStyle"> {
+    Omit<ButtonProps, (typeof doNotForwardProps)[number]> {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   label: ReactNode;
@@ -33,22 +45,11 @@ export interface InputDropdownProps
   value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
+  style?: React.CSSProperties;
 }
 
 const labelFontBodyS = fontBody("s", "regular");
 const labelFontBodyXs = fontBody("xs", "regular");
-
-const doNotForwardProps = [
-  "intent",
-  "state",
-  "sdsStage",
-  "sdsType",
-  "isMinimal",
-  "shouldTruncateMinimalDetails",
-  "shouldPutAColonAfterLabel",
-  "value",
-  "sdsStyle",
-];
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const spaces = getSpaces(props);
@@ -305,9 +306,12 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-export const StyledInputDropdown = styled(Button, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
+export const StyledInputDropdown = styled(
+  Button as React.ComponentType<InputDropdownProps>,
+  {
+    shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  }
+)`
   ${labelFontBodyXs}
 
   /* (thuang): in Minimal it's a different value */

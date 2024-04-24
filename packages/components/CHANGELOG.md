@@ -25,8 +25,8 @@ All design tokens have been updated to the latest values based on the Figma Refa
 | --sds-border-base-table       | $sds-border-base-table       | `1px solid #cccccc`  |
 | --sds-border-base-disabled    | $sds-border-base-disabled    | `1px solid #cccccc`  |
 | --sds-border-base-default     | $sds-border-base-default     | `1px solid #999999`  |
-| --sds-border-base-black       | $sds-border-base-black       | `2px dashed #000000` |
-| --sds-border-base-hover       | $sds-border-base-hover       | `2px dashed #000000` |
+| --sds-border-base-black       | $sds-border-base-black       | `1px dashed #000000` |
+| --sds-border-base-hover       | $sds-border-base-hover       | `1px dashed #000000` |
 | --sds-border-base-dashed      | $sds-border-base-dashed      | `2px dashed #999999` |
 | --sds-border-link-dashed      | $sds-border-link-dashed      | `1px dashed`         |
 | --sds-border-link-solid       | $sds-border-link-solid       | `1px solid`          |

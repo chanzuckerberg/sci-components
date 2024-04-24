@@ -12,7 +12,11 @@ import {
   BUTTON_ICON_SDS_SIZES,
   BUTTON_ICON_SDS_TYPES,
 } from "../constants";
-import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
+import {
+  SDSSizes,
+  SDSStyles,
+  SDSTypes,
+} from "src/core/ButtonIcon/__storybook__/types";
 import { IconNameToSizes } from "src/core/Icon";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
@@ -205,7 +209,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                   <RawButton
                     {...props}
                     data-testid="button"
-                    sdsStyle={sdsStyle}
+                    sdsStyle={sdsStyle as SDSStyles[number]}
                     sdsType={type as SDSTypes[number]}
                     startIcon={icon}
                     disabled={disabled}

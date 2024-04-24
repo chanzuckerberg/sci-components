@@ -1,7 +1,5 @@
 import { SDSAppTheme } from "src/core/styles";
 import RawButton from "src/core/Button";
-// import { BUTTON_TEXT, DEFAULT_PLACEMENT_STYLES } from "../constants";
-// import Icon from "src/core/Icon";
 
 // Icon Live Preview Demo
 

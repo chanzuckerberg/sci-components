@@ -81,7 +81,6 @@ export const LivePreviewDemo = <
           aria-describedby="live2"
           aria-label="Open menu"
           onClick={handleClick2}
-          on={false}
           sdsSize="large"
           sdsType="secondary"
           icon="InfoSpeechBubble"
