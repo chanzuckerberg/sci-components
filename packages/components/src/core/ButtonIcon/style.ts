@@ -8,22 +8,13 @@ import {
   getSemanticComponentColors,
 } from "src/core/styles";
 
-export interface ButtonIconSizeToTypes {
-  small: "primary" | "secondary" | "tertiary";
-  medium: "tertiary";
-  large: "primary" | "secondary" | "tertiary";
-}
-export interface ButtonIconExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
-> extends CommonThemeProps {
+export interface ButtonIconExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  sdsSize?: ButtonIconSize;
-  sdsType?: ButtonIconSizeToTypes[ButtonIconSize];
+  sdsSize?: "small" | "medium" | "large";
+  sdsType?: "primary" | "secondary" | "tertiary";
 }
 
-const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
@@ -35,9 +26,7 @@ const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
@@ -67,9 +56,7 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
@@ -99,9 +86,7 @@ const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
@@ -131,9 +116,7 @@ const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const small = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const small = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
@@ -146,9 +129,7 @@ const small = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const medium = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
@@ -161,9 +142,7 @@ const medium = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const large = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
@@ -190,9 +169,7 @@ export const StyledButtonIcon = styled(IconButton, {
   padding: 0;
   ${focusVisibleA11yStyle}
 
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconExtraProps<ButtonIconSize>
-  ) => {
+  ${(props: ButtonIconExtraProps) => {
     const { disabled, sdsSize = "medium", sdsType = "primary" } = props;
 
     return css`

@@ -25,32 +25,34 @@ type ButtonStyle = "rounded" | "square" | "minimal" | "icon";
 type ButtonType = "primary" | "secondary" | "tertiary";
 type ButtonSize = "small" | "medium" | "large";
 
-type SdsProps<IconName extends keyof IconNameToSizes> = (
+type SdsProps =
   | {
       sdsStyle?: Exclude<ButtonStyle, "icon">;
       sdsType?: Exclude<ButtonType, "tertiary">;
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+      sdsSize?: ButtonSize;
+      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
     }
   | {
       sdsStyle?: "icon";
       sdsType?: ButtonType;
-    }
-) & {
-  isAllCaps?: boolean;
-  isRounded?: boolean;
-  sdsSize?: ButtonSize;
-  icon?: IconName | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<IconName>>;
-};
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+      sdsSize?: ButtonSize;
+      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+    };
 
-export type ButtonProps<IconName extends keyof IconNameToSizes> =
-  RawButtonProps & SdsProps<IconName>;
+export type ButtonProps = RawButtonProps & SdsProps;
 
 /**
  * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
-  <IconName extends keyof IconNameToSizes>(
-    props: ButtonProps<IconName>,
+  (
+    props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
     const { sdsStyle, sdsType, icon } = props;

@@ -1,5 +1,4 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
-import { ButtonIconSizeToTypes } from "src/core/ButtonIcon";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {
   BannerExtraProps,
@@ -9,8 +8,7 @@ import {
   StyledButtonIcon,
 } from "./style";
 
-export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
-  extends BannerExtraProps<ButtonIconSize> {
+export interface BannerProps extends BannerExtraProps {
   children: React.ReactNode;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
@@ -19,10 +17,8 @@ export interface BannerProps<ButtonIconSize extends keyof ButtonIconSizeToTypes>
   onClose?: (e: React.MouseEvent) => void;
 }
 
-const Banner = forwardRef(function Banner<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
->(
-  props: BannerProps<ButtonIconSize>,
+const Banner = forwardRef(function Banner(
+  props: BannerProps,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
   const {
