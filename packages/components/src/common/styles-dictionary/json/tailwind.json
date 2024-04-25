@@ -196,6 +196,7 @@
     "sds-color-semantic-text-beta": "#693BAC",
     "sds-color-semantic-text-info": "#002660",
     "sds-color-semantic-text-negative": "#B70016",
+    "sds-color-semantic-text-neutral": "#545454",
     "sds-color-semantic-text-notice": "#946314",
     "sds-color-semantic-text-positive": "#1C7F48",
     "sds-color-semantic-component-base-fill": "#FFFFFF",

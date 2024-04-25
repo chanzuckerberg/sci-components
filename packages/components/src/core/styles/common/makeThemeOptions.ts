@@ -187,6 +187,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
           beta: appTheme.colors.purple[600],
           info: appTheme.colors.blue[600],
           negative: appTheme.colors.red[600],
+          neutral: appTheme.colors.gray[600],
           notice: appTheme.colors.yellow[600],
           positive: appTheme.colors.green[600],
         },

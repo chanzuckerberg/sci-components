@@ -75,6 +75,7 @@
           "beta": { "value": "{sds.color.primitive.purple.600.value}" },
           "info": { "value": "{sds.color.primitive.blue.600.value}" },
           "negative": { "value": "{sds.color.primitive.red.600.value}" },
+          "neutral": { "value": "{sds.color.primitive.gray.600.value}" },
           "notice": { "value": "{sds.color.primitive.yellow.600.value}" },
           "positive": { "value": "{sds.color.primitive.green.600.value}" }
         },

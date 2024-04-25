@@ -27,17 +27,18 @@ All design tokens have been updated to the latest values based on the Figma Refa
 | --sds-border-base-default     | $sds-border-base-default     | `1px solid #999999`  |
 | --sds-border-base-black       | $sds-border-base-black       | `1px dashed #000000` |
 | --sds-border-base-hover       | $sds-border-base-hover       | `1px dashed #000000` |
-| --sds-border-base-dashed      | $sds-border-base-dashed      | `2px dashed #999999` |
+| --sds-border-base-dashed      | $sds-border-base-dashed      | `1px dashed #999999` |
 | --sds-border-link-dashed      | $sds-border-link-dashed      | `1px dashed`         |
 | --sds-border-link-solid       | $sds-border-link-solid       | `1px solid`          |
 | --sds-border-accent-disabled  | $sds-border-accent-disabled  | `1px solid #a6c9ff`  |
 | --sds-border-accent-default   | $sds-border-accent-default   | `1px solid #0b68f8`  |
 | --sds-border-accent-hover     | $sds-border-accent-hover     | `1px solid #0142a4`  |
-| --sds-border-accent-dashed    | $sds-border-accent-dashed    | `2px dashed #0b68f8` |
+| --sds-border-accent-dashed    | $sds-border-accent-dashed    | `1px dashed #0b68f8` |
 | --sds-border-info-default     | $sds-border-info-default     | `1px solid #0b68f8`  |
 | --sds-border-beta-default     | $sds-border-beta-default     | `1px solid #7a41ce`  |
 | --sds-border-positive-default | $sds-border-positive-default | `1px solid #3cb371`  |
 | --sds-border-notice-default   | $sds-border-notice-default   | `1px solid #f5a623`  |
+| --sds-border-neutral-default  | $sds-border-neutral-default  | `1px solid #999999`  |
 | --sds-border-none             | $sds-border-none             | `none`               |
 
 </p>
@@ -105,6 +106,7 @@ All design tokens have been updated to the latest values based on the Figma Refa
 | --sds-color-semantic-text-beta                        | $sds-color-semantic-text-beta                        | `#693bac` |
 | --sds-color-semantic-text-info                        | $sds-color-semantic-text-info                        | `#002660` |
 | --sds-color-semantic-text-negative                    | $sds-color-semantic-text-negative                    | `#b70016` |
+| --sds-color-semantic-text-neutral                     | $sds-color-semantic-text-neutral                     | `#545454` |
 | --sds-color-semantic-text-notice                      | $sds-color-semantic-text-notice                      | `#946314` |
 | --sds-color-semantic-text-positive                    | $sds-color-semantic-text-positive                    | `#1c7f48` |
 | --sds-color-semantic-component-base-fill              | $sds-color-semantic-component-base-fill              | `#ffffff` |
