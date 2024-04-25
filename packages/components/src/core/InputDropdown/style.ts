@@ -45,6 +45,10 @@ export interface InputDropdownProps
   value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
+  // (masoudmanson): This is a temporary fix for the issue where the style prop
+  // is not correctly passed to the underlying Button component when asserting as
+  // a React.ComponentType<InputDropdownProps>. This is a workaround until a more
+  // permanent solution is implemented.
   style?: React.CSSProperties;
 }
 
@@ -306,6 +310,13 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
+/**
+ * (masoudmanson): This is a temporary fix for the issue where the props
+ * are not correctly passed to the underlying Button component. This is
+ * a workaround until a more permanent solution is implemented. As a result
+ * of this fix, the style prop is not passed to the underlying Button component.
+ * So we have added the style prop to the InputDropdownProps interface.
+ */
 export const StyledInputDropdown = styled(
   Button as React.ComponentType<InputDropdownProps>,
   {
