@@ -37,8 +37,8 @@ const ButtonBase = styled(Button, {
     const hasIcon = !!startIcon || !!endIcon;
 
     // (masoudmanson): The padding depends on the presence of an icon.
-    // If the component has either a startIcon or endIcon, the padding will be different.
-    // If the component doesn't have any icon at all, the padding will be different.
+    // If the component has either a startIcon or endIcon, the padding will be spaces?.m pixels.
+    // If the component doesn't have any icon at all, the padding will be spaces?.l pixels.
     const padding = hasIcon
       ? `${spaces?.xxs}px ${spaces?.m}px`
       : `${spaces?.xs}px ${spaces?.l}px`;
@@ -49,10 +49,10 @@ const ButtonBase = styled(Button, {
         : semanticTextColors?.base?.onFill;
 
     return `
-      border: solid 1px ${semanticComponentColors?.accent?.border};
+      border: none;
+      box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.border};
       padding: ${padding};
       min-width: 120px;
-      box-shadow: ${shadows?.none};
       color: ${contentColor};
 
       svg {
@@ -62,8 +62,8 @@ const ButtonBase = styled(Button, {
       &:hover {
         color: ${semanticTextColors?.base?.onFill};
         background-color: ${semanticComponentColors?.accent?.fillHover};
-        box-shadow: ${shadows?.none};
-        border: solid 1px ${semanticComponentColors?.accent?.borderHover};
+        border: none;
+        box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.borderHover};
 
         svg {
           color: ${semanticComponentColors?.base?.fill};
@@ -73,8 +73,8 @@ const ButtonBase = styled(Button, {
       &:active {
         color: ${semanticTextColors?.base?.onFill};
         background-color: ${semanticComponentColors?.accent?.fillPressed};
-        box-shadow: ${shadows?.none};
-        border: solid 1px ${semanticComponentColors?.accent?.fillPressed};
+        border: none;
+        box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.fillPressed};
 
         svg {
           color: ${semanticComponentColors?.base?.fill};
@@ -84,7 +84,8 @@ const ButtonBase = styled(Button, {
       &:disabled {
         color: ${semanticTextColors?.base?.onFillDisabled};
         background-color: ${semanticComponentColors?.base?.fillDisabled};
-        border-color: ${semanticComponentColors?.base?.borderDisabled};
+        border: none;
+        box-shadow: ${shadows?.none};
 
         svg {
           color: ${semanticComponentColors?.base?.onFillDisabled};
