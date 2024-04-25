@@ -1,12 +1,12 @@
-import { ButtonDropdown, ButtonDropdownProps, Icon } from "@czi-sds/components";
 import React from "react";
+import { ButtonDropdown, ButtonDropdownProps, Icon } from "@czi-sds/components";
 
 const ButtonDropdownNameSpaceTest = (props: ButtonDropdownProps) => {
   return (
     <ButtonDropdown
       sdsType="primary"
       sdsStyle="rounded"
-      icon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
+      icon="Download"
       {...props}
     >
       Button Dropdown

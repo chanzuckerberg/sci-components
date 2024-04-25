@@ -3,7 +3,7 @@
 exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
 <button
   class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-9hk05s-MuiButtonBase-root-MuiButton-root"
-  icon="[object Object]"
+  icon="Download"
   tabindex="0"
   type="button"
 >
@@ -15,7 +15,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
         data-file-name="IconDownloadLarge"
         data-testid="IconDownloadLarge"
         fillcontrast="white"

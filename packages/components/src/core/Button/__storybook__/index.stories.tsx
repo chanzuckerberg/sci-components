@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,
@@ -71,10 +70,7 @@ export default {
     },
   },
   component: Button,
-  parameters: {
-    badges: [BADGE.NEEDS_REVISION],
-  },
-  title: "Components/Button [wip]",
+  title: "Components/Button",
 } as Meta;
 
 // Default

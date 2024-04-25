@@ -40,9 +40,9 @@ export default {
   },
   component: ButtonIcon,
   parameters: {
-    badges: [BADGE.NEEDS_REVISION],
+    badges: [BADGE.DEPRECATED],
   },
-  title: "Components/ButtonIcon [wip]",
+  title: "Deprecated/ButtonIcon [deprecated]",
 } as Meta;
 
 // Default
