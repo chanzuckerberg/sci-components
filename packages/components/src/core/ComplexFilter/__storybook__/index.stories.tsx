@@ -5,7 +5,6 @@ import {
   COMPLEX_FILTER_ON_CHANGE_OPTIONS,
 } from "./constants";
 import { ComplexFilter } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 
 export default {
@@ -50,25 +49,6 @@ export const Default = {
     onChange: COMPLEX_FILTER_ON_CHANGE_OPTIONS[1],
     search: true,
   },
-};
-
-// Live preview
-
-export const LivePreview = {
-  args: {
-    keepSearchOnSelect: true,
-    multiple: false,
-    search: false,
-  },
-  parameters: {
-    controls: {
-      exclude: COMPLEX_FILTER_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

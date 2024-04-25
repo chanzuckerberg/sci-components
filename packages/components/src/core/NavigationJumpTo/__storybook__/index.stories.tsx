@@ -85,32 +85,6 @@ export const JumpToNavDemo = {
   render: (args: Args) => <NavigationJumpToDemo {...args} />,
 };
 
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    items: [
-      { elementRef: { current: null }, title: "Item 1" },
-      { elementRef: { current: null }, title: "Item 2" },
-      { elementRef: { current: null }, title: "Item 3" },
-      { elementRef: { current: null }, title: "Item 4" },
-      { elementRef: { current: null }, title: "Item 5" },
-    ],
-  },
-  parameters: {
-    axe: {
-      disabledRules: [NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE],
-    },
-    controls: {
-      exclude: NAVIGATION_JUMP_TO_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <NavigationJumpTo {...args} />,
-};
-
 // Test
 
 export const Test = {

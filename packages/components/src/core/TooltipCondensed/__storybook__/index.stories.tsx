@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TooltipCondensed } from "./stories/default";
 import { TOOLTIP_CONDENSED_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -26,20 +25,6 @@ export const Default = {
   args: {
     title: "Label",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: TOOLTIP_CONDENSED_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

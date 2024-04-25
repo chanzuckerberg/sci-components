@@ -3,7 +3,6 @@ import RawInputToggle from "../index";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { InputToggle } from "./stories/default";
 import { INPUT_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ControlledDemo } from "./stories/controlled";
 
 export default {
@@ -32,23 +31,6 @@ export const Default = {
   args: {
     disabled: false,
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    disabled: false,
-  },
-  parameters: {
-    controls: {
-      exclude: INPUT_TOGGLE_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Controlled

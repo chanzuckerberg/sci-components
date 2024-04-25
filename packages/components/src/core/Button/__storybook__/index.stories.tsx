@@ -10,10 +10,6 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
-import { MinimalLivePreviewDemo } from "./stories/minimalLivePreview";
-import { RoundedLivePreviewDemo } from "./stories/roundedLivePreview";
-import { SquareLivePreviewDemo } from "./stories/squareLivePreview";
-import { IconLivePreviewDemo } from "./stories/iconLivePreview";
 
 export default {
   argTypes: {
@@ -84,74 +80,6 @@ export const Default = {
     sdsType: "primary",
     text: "Label",
   },
-};
-
-// Rounded Live Preview
-
-export const RoundedLivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <RoundedLivePreviewDemo {...args} />,
-};
-
-// Square Live Preview
-
-export const SquareLivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <SquareLivePreviewDemo {...args} />,
-};
-
-// Minimal Live Preview
-
-export const MinimalLivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <MinimalLivePreviewDemo {...args} />,
-};
-
-// Icon Live Preview
-
-export const IconLivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <IconLivePreviewDemo {...args} />,
 };
 
 // Screenshot Test

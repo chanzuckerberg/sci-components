@@ -1,12 +1,7 @@
-import { Args, Meta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
-import {
-  CALLOUT_EXCLUDED_CONTROLS,
-  CALLOUT_ICON_OPTIONS,
-  CALLOUT_ON_CLOSE_OPTIONS,
-} from "./constants";
+import { CALLOUT_ICON_OPTIONS, CALLOUT_ON_CLOSE_OPTIONS } from "./constants";
 import { Callout } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -60,15 +55,4 @@ export const Default = {
     calloutTitle: "Callout title.",
     onClose: false,
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: CALLOUT_EXCLUDED_CONTROLS,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };

@@ -8,7 +8,6 @@ import {
   BUTTON_DROPDOWN_TEXT,
 } from "./constants";
 import { ButtonDropdown } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -56,20 +55,6 @@ export const Default = {
     sdsStyle: "square",
     sdsType: "primary",
   },
-};
-
-// LivePreview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: BUTTON_DROPDOWN_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

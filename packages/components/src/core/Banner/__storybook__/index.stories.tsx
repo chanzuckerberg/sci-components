@@ -6,7 +6,6 @@ import {
   BANNER_TEXT,
 } from "./constants";
 import { Banner } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -63,28 +62,6 @@ export const Default = {
     sdsType: "primary",
     textChild: BANNER_TEXT,
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    dismissible: true,
-    sdsType: "primary",
-    textChild: "test text",
-  },
-  parameters: {
-    axe: {
-      disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
-    },
-    controls: {
-      exclude: BANNER_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

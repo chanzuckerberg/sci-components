@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Tooltip } from "./stories/default";
 import { TOOLTIP_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { PlacementDemo } from "./stories/placementDemo";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
@@ -60,20 +59,6 @@ export const Default = {
     title: "Lorem ipsum",
     width: "default",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: TOOLTIP_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Placement Demo

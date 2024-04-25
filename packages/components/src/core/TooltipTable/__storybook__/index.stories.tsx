@@ -5,7 +5,6 @@ import {
   TOOLTIP_TABLE_EXCLUDED_CONTROLS,
 } from "./constants";
 import { TooltipTableContent } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 
 export default {
@@ -34,20 +33,6 @@ export const Default = {
     data: TOOLTIP_TABLE_DATA,
     itemAlign: "right",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: TOOLTIP_TABLE_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

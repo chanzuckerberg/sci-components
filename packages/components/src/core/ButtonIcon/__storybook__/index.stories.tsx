@@ -7,7 +7,6 @@ import {
   BUTTON_ICON_ICON_LABELS,
   BUTTON_ICON_ICON_OPTIONS,
 } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/screenshots";
 
 export default {
@@ -55,20 +54,6 @@ export const Default = {
     sdsSize: "large",
     sdsType: "primary",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: BUTTON_ICON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot test
