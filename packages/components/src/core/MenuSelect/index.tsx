@@ -52,6 +52,10 @@ export type MenuSelectProps<
 
 /**
  * @see https://mui.com/material-ui/react-autocomplete/
+ *
+ * @deprecated
+ * This component is deprecated and will be removed in the next major version.
+ * Please use `Autocomplete` or `Dropdown` instead.
  */
 const MenuSelect = <
   T extends DefaultMenuSelectOption,

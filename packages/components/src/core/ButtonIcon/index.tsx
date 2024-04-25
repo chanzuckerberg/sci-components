@@ -28,6 +28,10 @@ const ButtonIconSizeToSdsIconSize = {
 
 /**
  * @see https://mui.com/material-ui/react-button/#icon-buttons
+ *
+ * @deprecated
+ * This component is deprecated and will be removed in the next major version.
+ * Please use `Button` or `ButtonDropdown` with `sdsStyle: icon` instead.
  */
 const ButtonIcon = forwardRef(function ButtonIcon(
   props: ButtonIconProps,
