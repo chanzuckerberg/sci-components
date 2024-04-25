@@ -120,7 +120,7 @@ const MenuSelect = <
               endAdornment: (
                 <InputAdornment position="end">
                   <ButtonIcon
-                    sdsType="secondary"
+                    sdsType="tertiary"
                     sdsSize="small"
                     sdsIconProps={{
                       sdsType: "interactive",

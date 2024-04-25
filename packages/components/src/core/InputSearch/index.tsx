@@ -98,7 +98,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   aria-label="clear-button"
                   className="input-search-clear-icon"
                   onClick={clearInput}
-                  sdsType="primary"
+                  sdsType="tertiary"
                   sdsSize="small"
                   sdsIconProps={{
                     sdsType: "iconButton",
@@ -112,7 +112,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={localHandleSubmit}
-                  sdsType="secondary"
+                  sdsType="tertiary"
                   sdsSize="small"
                   sdsIconProps={{
                     sdsType: "interactive",

@@ -218,7 +218,7 @@ const AutocompleteBase = <
                     aria-label="clear-button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
-                    sdsType="primary"
+                    sdsType="tertiary"
                     sdsSize="small"
                     sdsIconProps={{
                       sdsType: "iconButton",
@@ -234,7 +234,7 @@ const AutocompleteBase = <
                 <ButtonIcon
                   aria-label="search-button"
                   onClick={clearInput}
-                  sdsType="secondary"
+                  sdsType="tertiary"
                   sdsSize="small"
                   sdsIconProps={{
                     sdsType: "interactive",

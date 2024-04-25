@@ -202,7 +202,7 @@ const AutocompleteMultiColumn = <
                   <ButtonIcon
                     aria-label="clear-button"
                     className="input-search-clear-icon"
-                    sdsType="primary"
+                    sdsType="tertiary"
                     sdsSize="small"
                     sdsIconProps={{
                       sdsType: "iconButton",
@@ -222,7 +222,7 @@ const AutocompleteMultiColumn = <
               <StyledInputAdornment position="start">
                 <ButtonIcon
                   aria-label="search-button"
-                  sdsType="secondary"
+                  sdsType="tertiary"
                   sdsSize="small"
                   sdsIconProps={{
                     sdsType: "interactive",
