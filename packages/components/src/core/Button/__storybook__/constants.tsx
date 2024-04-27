@@ -21,7 +21,12 @@ export const BUTTON_SDS_STYLES = ["rounded", "square", "minimal", "icon"];
 
 export const BUTTON_SDS_SIZE = ["small", "medium", "large"];
 
-export const BUTTON_SDS_TYPES = ["primary", "secondary", "tertiary"];
+export const BUTTON_SDS_TYPES = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "destructive",
+];
 
 export const BUTTON_TEXT = "Label";
 

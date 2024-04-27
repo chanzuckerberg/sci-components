@@ -4,48 +4,36 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import {
-  PrimaryMinimalButton,
-  RoundedButton,
-  SecondaryMinimalButton,
-  SquareButton,
-  StyledButton,
-} from "./style";
+import { StyledButton, StyledButtonLegacy, StyledMinimalButton } from "./style";
 import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
 import { filterProps } from "src/common/utils";
 
-/**
- * (masoudmanson): When sdsStyle="icon", sdsType can be any ButtonType.
- * For other sdsStyle values, sdsType is restricted to "primary" or "secondary".
- * To enforce this, we utilized a union type for the sdsStyle and sdsType props.
- */
-
 type ButtonStyle = "rounded" | "square" | "minimal" | "icon";
-type ButtonType = "primary" | "secondary" | "tertiary";
+type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
 type ButtonSize = "small" | "medium" | "large";
 
-type SdsProps =
-  | {
-      sdsStyle?: Exclude<ButtonStyle, "icon">;
-      sdsType?: Exclude<ButtonType, "tertiary">;
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-      sdsSize?: ButtonSize;
-      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-    }
-  | {
-      sdsStyle?: "icon";
-      sdsType?: ButtonType;
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-      sdsSize?: ButtonSize;
-      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-    };
+type SdsProps = {
+  sdsStyle?: ButtonStyle;
+  sdsType?: ButtonType;
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+  sdsSize?: ButtonSize;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+};
 
 export type ButtonProps = RawButtonProps & SdsProps;
+
+/**
+ * (masoudmanson): The MUI variant prop is determined by the sdsType prop.
+ */
+const MUI_VARIANT_MAP: { [key in ButtonType]: ButtonProps["variant"] } = {
+  destructive: "contained",
+  primary: "contained",
+  secondary: "outlined",
+  tertiary: "text",
+};
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -73,61 +61,7 @@ const Button = React.forwardRef(
     const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
-      case sdsStyle === "rounded" && sdsType === "primary":
-        return (
-          <RoundedButton
-            color="primary"
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "rounded" && sdsType === "secondary":
-        return (
-          <RoundedButton
-            color="primary"
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "square" && sdsType === "primary":
-        return (
-          <SquareButton
-            color="primary"
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "square" && sdsType === "secondary":
-        return (
-          <SquareButton
-            color="primary"
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "minimal" && sdsType === "primary":
-        return (
-          <PrimaryMinimalButton
-            color="primary"
-            ref={ref}
-            variant="text"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "minimal" && sdsType === "secondary":
-        return (
-          <SecondaryMinimalButton
-            color="primary"
-            ref={ref}
-            variant="text"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "icon": {
+      case sdsStyle === "icon":
         if (icon !== undefined) {
           // (masoudmanson): We need to remove the props that are not supported by
           // the ButtonIcon component.
@@ -136,19 +70,48 @@ const Button = React.forwardRef(
             "endIcon",
             "sdsStyle",
             "isAllCaps",
+            "sdsType",
           ];
           const finalProps = filterProps(propsWithDefault, excludedProps);
 
-          return <ButtonIcon icon={icon} {...finalProps} ref={ref} />;
+          return (
+            <ButtonIcon
+              icon={icon}
+              {...finalProps}
+              sdsType={sdsType as Exclude<ButtonType, "destructive">}
+              ref={ref}
+            />
+          );
         } else {
           showWarningIfFirstOccurence(
             SDSWarningTypes.ButtonIconMissingIconProp
           );
           return null;
         }
-      }
+
+      case sdsStyle === "minimal":
+        return (
+          <StyledMinimalButton
+            color="primary"
+            variant="text"
+            {...propsWithDefault}
+            ref={ref}
+          />
+        );
+
+      case sdsStyle === "rounded":
+      case sdsStyle === "square":
+        return (
+          <StyledButton
+            color="primary"
+            variant={sdsType ? MUI_VARIANT_MAP[sdsType] : "text"}
+            {...propsWithDefault}
+            ref={ref}
+          />
+        );
+
       default:
-        return <StyledButton {...propsWithDefault} ref={ref} />;
+        return <StyledButtonLegacy {...propsWithDefault} ref={ref} />;
     }
   }
 );

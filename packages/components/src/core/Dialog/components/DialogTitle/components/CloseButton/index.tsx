@@ -25,11 +25,11 @@ const CloseButton = forwardRef(function CloseButton(
           <StyledButton
             aria-label="Close"
             ref={ref}
-            sdsType="tertiary"
             sdsSize={size}
             {...props}
             icon="XMark"
             sdsStyle="icon"
+            sdsType="tertiary"
           />
         );
       }}

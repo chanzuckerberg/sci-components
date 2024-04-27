@@ -21,12 +21,23 @@ const InvalidIconButtonPropsError = (
   </Callout>
 );
 
-const InvalidSdsTypeError = (
+const InvalidSdsTypeTertiaryError = (
   <Callout intent="negative">
     <CalloutTitle>Invalid Props!</CalloutTitle>
     <p>
       Only buttons with the icon style can have the tertiary type. Please select
       another type, either primary or secondary.
+    </p>
+  </Callout>
+);
+
+const InvalidSdsTypeDestructiveError = (
+  <Callout intent="negative">
+    <CalloutTitle>Invalid Props!</CalloutTitle>
+    <p>
+      Buttons with the &apos;icon&apos; style cannot have the
+      &apos;destructive&apos; type. Please choose another type, such as
+      &apos;square&apos;, &apos;rounded&apos;, or &apos;minimal&apos;.
     </p>
   </Callout>
 );
@@ -41,6 +52,7 @@ const FinalIconSize = (sdsStyle: string, sdsSize: string) => {
       : "l";
 };
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const Button = (props: Args): JSX.Element => {
   const { sdsType, sdsStyle, sdsSize, text, startIcon, endIcon, icon } = props;
 
@@ -86,7 +98,11 @@ export const Button = (props: Args): JSX.Element => {
   }
 
   if (sdsStyle !== "icon" && sdsType === "tertiary") {
-    return InvalidSdsTypeError;
+    return InvalidSdsTypeTertiaryError;
+  }
+
+  if (sdsStyle === "icon" && sdsType === "destructive") {
+    return InvalidSdsTypeDestructiveError;
   }
 
   return (
