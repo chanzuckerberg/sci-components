@@ -71,7 +71,11 @@ export const SCREENSHOT_BUTTON_SDS_STYLES = ["rounded", "square", "minimal"];
 
 export const SCREENSHOT_BUTTON_SDS_SIZE = ["small", "medium", "large"];
 
-export const SCREENSHOT_BUTTON_SDS_TYPES = ["primary", "secondary"];
+export const SCREENSHOT_BUTTON_SDS_TYPES = [
+  "primary",
+  "secondary",
+  "destructive",
+];
 
 export const DEFAULT_PLACEMENT_STYLES: React.CSSProperties = {
   display: "grid",
