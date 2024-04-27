@@ -6,14 +6,19 @@ export const toKebabCase = (str: string) =>
 export const EMPTY_OBJECT = {};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type PropsObject = Record<string, any>;
+type Props = { [key: string]: any };
 
-export const filterProps = <T extends PropsObject>(
-  obj: T,
-  excludedProps: string[]
-): T => {
-  const filteredEntries = Object.entries(obj).filter(
-    ([key]) => !excludedProps.includes(key)
-  );
-  return Object.fromEntries(filteredEntries) as T;
-};
+export function filterProps<T extends Props, K extends keyof T>(
+  props: T,
+  excludeProps: K[]
+): Partial<T> {
+  const result: Partial<T> = {};
+
+  for (const key of Object.keys(props) as (keyof T)[]) {
+    if (!excludeProps.includes(key as K)) {
+      result[key] = props[key];
+    }
+  }
+
+  return result;
+}

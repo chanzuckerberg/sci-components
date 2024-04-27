@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyXxxs,
@@ -35,7 +35,7 @@ export const ButtonIconsGroupBottom = styled("div")`
   }}
 `;
 
-export const StyledButtonIcon = styled(ButtonIcon)`
+export const StyledButton = styled(Button)`
   svg {
     width: 12px;
     height: 12px;

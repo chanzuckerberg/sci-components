@@ -41,7 +41,7 @@ const ButtonBase = styled(Button, {
     // If the component doesn't have any icon at all, the padding will be spaces?.l pixels.
     const padding = hasIcon
       ? `${spaces?.xxs}px ${spaces?.m}px`
-      : `${spaces?.xs}px ${spaces?.l}px`;
+      : `${spaces?.xs}px ${spaces?.m}px`;
 
     const contentColor =
       variant === "outlined"
@@ -52,7 +52,6 @@ const ButtonBase = styled(Button, {
       border: none;
       box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.border};
       padding: ${padding};
-      min-width: 120px;
       color: ${contentColor};
 
       svg {
@@ -93,7 +92,6 @@ const ButtonBase = styled(Button, {
       }
 
       .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
-        width: ${iconSizes?.l?.width}px;
         height: ${iconSizes?.l?.width}px;
         display: flex;
         align-items: center;
@@ -106,12 +104,12 @@ const ButtonBase = styled(Button, {
       }
 
       .${buttonClasses.startIcon} {
-        margin-right: ${spaces?.m}px;
+        margin-right: ${spaces?.s}px;
         margin-left: 0;
       }
 
       .${buttonClasses.endIcon} {
-        margin-left: ${spaces?.m}px;
+        margin-left: ${spaces?.s}px;
         margin-right: 0;
       }
     `;
@@ -167,6 +165,7 @@ const minimal = (props: CommonThemeProps) => {
   const semanticComponentColors = getSemanticComponentColors(props);
 
   return `
+    min-width: unset;
     &:hover, &:focus-visible {
       color: ${semanticComponentColors?.accent?.fillHover};
 
@@ -190,7 +189,6 @@ const minimal = (props: CommonThemeProps) => {
     }
 
     .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
-      width: ${iconSizes?.s?.width}px;
       height: ${iconSizes?.s?.width}px;
       display: flex;
       align-items: center;
@@ -204,10 +202,12 @@ const minimal = (props: CommonThemeProps) => {
 
     .${buttonClasses.startIcon} {
       margin-right: ${spaces?.xxs}px;
+      margin-left: 0;
     }
 
     .${buttonClasses.endIcon} {
       margin-left: ${spaces?.xxs}px;
+      margin-right: 0;
     }
   `;
 };
@@ -243,8 +243,7 @@ export const StyledButton = styled(Button, {
 
     return `
       border-radius: ${corners?.l}px;
-      padding: ${spaces?.xs}px ${spaces?.l}px;
-      min-width: 120px;
+      padding: ${spaces?.xs}px ${spaces?.m}px;
     `;
   }}
 `;

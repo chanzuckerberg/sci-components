@@ -17,23 +17,19 @@ export const BUTTON_DROPDOWN_ACTIONS = {
 };
 
 export const BUTTON_DROPDOWN_ICON_OPTIONS = [
-  undefined,
-  "XMark",
   "Download",
   "Copy",
-  "DotsHorizontal",
-  "Cube",
+  "CirclesOverlap2",
+  "TrashCan",
   <CustomSdsIcon key="customSdsIcon" />,
   <CustomSvgIcon key="customIcon" />,
 ];
 
 export const BUTTON_DROPDOWN_ICON_LABELS = [
-  "No Icon",
-  "SDS Icon: XMark",
   "SDS Icon: Download",
   "SDS Icon: Copy",
-  "SDS Icon: DotsHorizontal",
-  "SDS Icon: Cube",
+  "SDS Icon: CirclesOverlap2",
+  "SDS Icon: TrashCan",
   "Custom SDS Icon",
   "Custom SVG Icon",
 ];

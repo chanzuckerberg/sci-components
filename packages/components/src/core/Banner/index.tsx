@@ -5,7 +5,7 @@ import {
   Centered,
   IconWrapper,
   StyledBanner,
-  StyledButtonIcon,
+  StyledButton,
 } from "./style";
 
 export interface BannerProps extends BannerExtraProps {
@@ -72,11 +72,12 @@ const Banner = forwardRef(function Banner(
         {children}
       </Centered>
       {dismissible && (
-        <StyledButtonIcon
+        <StyledButton
           aria-label="Close"
           bannerType={sdsType}
           sdsType="tertiary"
           sdsSize="small"
+          sdsStyle="icon"
           onClick={handleClose}
           icon="XMark"
         />

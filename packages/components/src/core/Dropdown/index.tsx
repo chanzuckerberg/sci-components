@@ -159,7 +159,7 @@ const Dropdown = <
             {buttonPosition === "left" ? (
               <div>
                 <StyledButton
-                  onClick={(event) => handleClose(event, "selectOption")}
+                  onClick={handleButtonClose}
                   sdsStyle="square"
                   sdsType="primary"
                 >
@@ -183,7 +183,7 @@ const Dropdown = <
                   Cancel
                 </StyledButton>
                 <StyledButton
-                  onClick={(event) => handleClose(event, "selectOption")}
+                  onClick={handleButtonClose}
                   sdsStyle="square"
                   sdsType="primary"
                 >
@@ -302,6 +302,12 @@ const Dropdown = <
       onClose?.(event, reason);
       setOpen(false);
     }
+  }
+
+  function handleButtonClose(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    handleClose(event, "selectOption");
   }
 
   function handleCancel() {

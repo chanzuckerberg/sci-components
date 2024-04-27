@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "src/core/ButtonIcon";
-import { ButtonIconExtraProps } from "src/core/ButtonIcon/style";
+import Button, { ButtonProps } from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -15,6 +14,8 @@ export interface BannerExtraProps extends CommonThemeProps {
   sdsType: "primary" | "secondary" | "tertiary";
 }
 
+type ButtonType = ButtonProps & { bannerType: string } & BannerExtraProps;
+
 export const Centered = styled("div")`
   flex: 1 1 auto;
   display: flex;
@@ -23,7 +24,7 @@ export const Centered = styled("div")`
 `;
 
 export const IconWrapper = styled("div")`
-  ${(props: ButtonIconExtraProps) => {
+  ${(props: CommonThemeProps) => {
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
 
@@ -34,16 +35,15 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
-type ButtonIconType = ButtonIconExtraProps & { bannerType: string };
 const doNotForwardPropsButtonIcon = ["bannerType", "textChild"];
 
-export const StyledButtonIcon = styled(ButtonIcon, {
+export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsButtonIcon.includes(prop),
 })`
   flex: 0 0 auto;
 
-  ${(props: ButtonIconType) => {
+  ${(props: ButtonType) => {
     const { bannerType } = props;
 
     const colors = getColors(props);

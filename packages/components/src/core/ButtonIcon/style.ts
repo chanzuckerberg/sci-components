@@ -124,7 +124,7 @@ const small = (props: ButtonIconExtraProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-      ${sdsType !== "tertiary" ? `margin: 6px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
     }
   `;
 };
@@ -137,7 +137,7 @@ const medium = (props: ButtonIconExtraProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
-      ${sdsType !== "tertiary" ? `margin: 6px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
     }
   `;
 };

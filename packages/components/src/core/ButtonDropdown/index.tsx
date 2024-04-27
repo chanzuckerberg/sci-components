@@ -21,7 +21,7 @@ export type ButtonDropdownProps<C extends React.ElementType = "button"> =
 
 type IconSizeType = "xs" | "s" | "l" | "xl";
 
-const ButtonIconSizeToSdsIconSize = {
+const BUTTON_ICON_SIZE_TO_SDS_ICON_SIZE = {
   large: "xl",
   medium: "l",
   small: "s",
@@ -36,7 +36,7 @@ const ButtonDropdown = React.forwardRef(
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
     const { icon, sdsStyle, sdsType, sdsSize = "medium", sdsIconProps } = props;
-    const iconSize = ButtonIconSizeToSdsIconSize[sdsSize];
+    const iconSize = BUTTON_ICON_SIZE_TO_SDS_ICON_SIZE[sdsSize];
 
     const iconItem = () => {
       if (icon) {

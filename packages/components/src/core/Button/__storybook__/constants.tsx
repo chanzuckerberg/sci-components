@@ -2,7 +2,6 @@ import { action } from "@storybook/addon-actions";
 import CustomSdsIcon from "src/common/storybook/customSdsIcon";
 import CustomSvgIcon from "src/common/storybook/customSvgIcon";
 import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
-import Icon from "src/core/Icon";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
   "endIcon",
@@ -61,10 +60,7 @@ export const BUTTON_ACTIONS = {
   onClick: action("onClick"),
 };
 
-export const SCREENSHOT_BUTTON_ICON_OPTIONS = [
-  undefined,
-  <Icon key="download" sdsSize="l" sdsIcon="Download" sdsType="button" />,
-];
+export const SCREENSHOT_BUTTON_ICON_OPTIONS = [undefined, "Download"];
 
 export const SCREENSHOT_BUTTON_SDS_STYLES = ["rounded", "square", "minimal"];
 

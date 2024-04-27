@@ -12,7 +12,7 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import { InputSearchProps } from "src/core/InputSearch";
 import {
   InputBaseWrapper,
@@ -123,9 +123,10 @@ const MenuSelect = <
               ...params.InputProps.ref,
               endAdornment: (
                 <InputAdornment position="end">
-                  <ButtonIcon
+                  <Button
                     sdsType="tertiary"
                     sdsSize="small"
+                    sdsStyle="icon"
                     sdsIconProps={{
                       sdsType: "interactive",
                     }}

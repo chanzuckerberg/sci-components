@@ -17,7 +17,7 @@ import {
   SDSStyles,
   SDSTypes,
 } from "src/core/ButtonIcon/__storybook__/types";
-import { IconNameToSizes } from "src/core/Icon";
+import Icon, { IconNameToSizes } from "src/core/Icon";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const topLevel: React.CSSProperties = {
@@ -126,26 +126,44 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
         <h4 style={secondLabel}>
           Type: <b>{type}</b>
         </h4>
-        {/* Minimal Secondary doesn't have icon button option */}
-        {sdsStyle === "minimal" && type === "secondary" ? (
-          <ButtonIconOption
-            sdsStyle={sdsStyle}
-            type={type}
-            icon={SCREENSHOT_BUTTON_ICON_OPTIONS[0]}
-            key={String(SCREENSHOT_BUTTON_ICON_OPTIONS[0])}
-          />
-        ) : (
-          SCREENSHOT_BUTTON_ICON_OPTIONS.map((icon) => {
-            return (
+        {SCREENSHOT_BUTTON_ICON_OPTIONS.map((icon) => {
+          return icon !== undefined ? (
+            sdsStyle === "minimal" ? (
               <ButtonIconOption
                 sdsStyle={sdsStyle}
                 type={type}
-                icon={icon}
+                icon={
+                  <Icon
+                    sdsIcon={icon as keyof IconNameToSizes}
+                    sdsType="button"
+                    sdsSize="s"
+                  />
+                }
                 key={String(icon)}
               />
-            );
-          })
-        )}
+            ) : (
+              <ButtonIconOption
+                sdsStyle={sdsStyle}
+                type={type}
+                icon={
+                  <Icon
+                    sdsIcon={icon as keyof IconNameToSizes}
+                    sdsType="button"
+                    sdsSize="l"
+                  />
+                }
+                key={String(icon)}
+              />
+            )
+          ) : (
+            <ButtonIconOption
+              sdsStyle={sdsStyle}
+              type={type}
+              icon={undefined}
+              key={String(icon)}
+            />
+          );
+        })}
       </div>
     );
   }
@@ -158,7 +176,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }: {
     sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
     type: (typeof SCREENSHOT_BUTTON_SDS_TYPES)[number];
-    icon: (typeof SCREENSHOT_BUTTON_ICON_OPTIONS)[number];
+    icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   }) {
     return (
       <div style={displayContents}>
@@ -189,7 +207,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   }: {
     sdsStyle: (typeof SCREENSHOT_BUTTON_SDS_STYLES)[number];
     type: (typeof SCREENSHOT_BUTTON_SDS_TYPES)[number];
-    icon: (typeof SCREENSHOT_BUTTON_ICON_OPTIONS)[number];
+    icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
     disabled: (typeof BUTTON_DISABLED_OPTIONS)[number];
   }) {
     return (

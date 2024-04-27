@@ -68,7 +68,9 @@ const Button = React.forwardRef(
     // isAllCaps is only used for the Minimal Button.  It defaults to true.
     const isAllCaps =
       typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
-    const propsWithDefault = { ...props, isAllCaps };
+
+    type PropsWithDefaultsType = ButtonProps & { isAllCaps: boolean };
+    const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
       case sdsStyle === "rounded" && sdsType === "primary":
@@ -129,7 +131,7 @@ const Button = React.forwardRef(
         if (icon !== undefined) {
           // (masoudmanson): We need to remove the props that are not supported by
           // the ButtonIcon component.
-          const excludedProps = [
+          const excludedProps: (keyof PropsWithDefaultsType)[] = [
             "startIcon",
             "endIcon",
             "sdsStyle",

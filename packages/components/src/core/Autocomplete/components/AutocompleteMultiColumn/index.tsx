@@ -14,7 +14,7 @@ import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
 } from "src/core/Autocomplete";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
 import { SDSTheme } from "src/core/styles";
@@ -199,11 +199,12 @@ const AutocompleteMultiColumn = <
                  * InputSearch's endAdornment, we must also include the clear IconButton here.
                  */}
                 {inputValue && (
-                  <ButtonIcon
+                  <Button
                     aria-label="clear-button"
                     className="input-search-clear-icon"
                     sdsType="tertiary"
                     sdsSize="small"
+                    sdsStyle="icon"
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
@@ -220,10 +221,11 @@ const AutocompleteMultiColumn = <
             inputMode: "text",
             startAdornment: (
               <StyledInputAdornment position="start">
-                <ButtonIcon
+                <Button
                   aria-label="search-button"
                   sdsType="tertiary"
                   sdsSize="small"
+                  sdsStyle="icon"
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}

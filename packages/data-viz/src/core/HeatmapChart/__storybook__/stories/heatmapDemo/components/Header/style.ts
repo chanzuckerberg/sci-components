@@ -1,4 +1,4 @@
-import { ButtonIcon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
 import { styled } from "@mui/material";
 
 export const StyledHeader = styled("div")`
@@ -28,6 +28,6 @@ export const HeaderRight = styled("div")`
   display: flex;
 `;
 
-export const StyledButtonIcon = styled(ButtonIcon)`
+export const StyledButton = styled(Button)`
   margin: 0 10px;
 `;
