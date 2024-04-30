@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Dialog } from "./stories/default";
 import { DIALOG_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 import { TestNoTitleOnCloseDemo } from "./stories/testNoTitleOnClose";
 import { TestButtonPositionLeftDemo } from "./stories/testButtonPositionLeft";
@@ -53,23 +52,6 @@ export const Default = {
     sdsSize: "m",
     titleOnClose: false,
   },
-};
-
-// LivePreview
-
-export const LivePreview = {
-  args: {
-    titleOnClose: false,
-  },
-  parameters: {
-    controls: {
-      exclude: DIALOG_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

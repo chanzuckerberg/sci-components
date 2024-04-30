@@ -1,32 +1,24 @@
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
 import { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import {
-  ButtonIconExtraProps,
-  ButtonIconSizeToTypes,
-  StyledButtonIcon,
-} from "./style";
+import { ButtonIconExtraProps, StyledButtonIcon } from "./style";
 
-export type { ButtonIconProps, ButtonIconSizeToTypes };
-export interface ButtonIconInternalProps<
-  IconName extends keyof IconNameToSizes,
-> {
-  icon: IconName | React.ReactElement<CustomSVGProps>;
+export interface ButtonIconInternalProps {
+  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   /**
    * @deprecated
    * (masoudmanson): This prop is deprecated and will be removed in the next major version.
    * Please use `icon` instead.
    */
-  sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<IconName>>;
+  sdsIcon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
 }
 
-type ButtonIconProps<
-  IconName extends keyof IconNameToSizes,
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
-> = ButtonIconExtraProps<ButtonIconSize> &
+export type ButtonIconProps = ButtonIconExtraProps &
   RawButtonIconProps &
-  ButtonIconInternalProps<IconName>;
+  ButtonIconInternalProps;
+
+type IconSizeType = "xs" | "s" | "l" | "xl";
 
 const ButtonIconSizeToSdsIconSize = {
   large: "xl",
@@ -36,12 +28,13 @@ const ButtonIconSizeToSdsIconSize = {
 
 /**
  * @see https://mui.com/material-ui/react-button/#icon-buttons
+ *
+ * @deprecated
+ * This component is deprecated and will be removed in the next major version.
+ * Please use `Button` or `ButtonDropdown` with `sdsStyle: icon` instead.
  */
-const ButtonIcon = forwardRef(function ButtonIcon<
-  IconName extends keyof IconNameToSizes,
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
->(
-  props: ButtonIconProps<IconName, ButtonIconSize>,
+const ButtonIcon = forwardRef(function ButtonIcon(
+  props: ButtonIconProps,
   ref: ForwardedRef<HTMLButtonElement | null>
 ): JSX.Element {
   /**
@@ -68,7 +61,7 @@ const ButtonIcon = forwardRef(function ButtonIcon<
             sdsType="iconButton"
             {...sdsIconProps}
             sdsIcon={icon}
-            sdsSize={iconSize as IconNameToSizes[IconName]}
+            sdsSize={iconSize as IconSizeType}
           />
         );
       }

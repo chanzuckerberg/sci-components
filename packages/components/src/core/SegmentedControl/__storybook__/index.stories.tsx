@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { SegmentedControl } from "./stories/default";
 import { SEGMENTED_CONTROL_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 
 export default {
@@ -32,20 +31,6 @@ export const Default = {
     ],
   },
   render: SegmentedControl,
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: SEGMENTED_CONTROL_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

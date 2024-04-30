@@ -386,14 +386,14 @@ export const SDSAppTheme: AppTheme = {
 // override every theme property that makes use of colors.
 SDSAppTheme.borders = {
   accent: {
-    dashed: `2px dashed ${SDSAppTheme.colors.blue[400]}`,
+    dashed: `1px dashed ${SDSAppTheme.colors.blue[400]}`,
     default: `1px solid ${SDSAppTheme.colors.blue[400]}`,
     disabled: `1px solid ${SDSAppTheme.colors.blue[300]}`,
     hover: `1px solid ${SDSAppTheme.colors.blue[500]}`,
   },
   base: {
     black: `1px solid ${SDSAppTheme.colors.common.black}`,
-    dashed: `2px dashed ${SDSAppTheme.colors.gray[400]}`,
+    dashed: `1px dashed ${SDSAppTheme.colors.gray[400]}`,
     default: `1px solid ${SDSAppTheme.colors.gray[400]}`,
     disabled: `1px solid ${SDSAppTheme.colors.gray[300]}`,
     divider: `1px solid ${SDSAppTheme.colors.gray[200]}`,
@@ -412,6 +412,9 @@ SDSAppTheme.borders = {
   },
   negative: {
     default: `1px solid ${SDSAppTheme.colors.red[400]}`,
+  },
+  neutral: {
+    default: `1px solid ${SDSAppTheme.colors.gray[400]}`,
   },
   none: "none",
   notice: {

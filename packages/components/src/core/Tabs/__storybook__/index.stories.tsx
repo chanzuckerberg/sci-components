@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Tabs } from "./stories/default";
 import { TABS_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 
 export default {
@@ -56,21 +55,6 @@ export const Default = {
     // https://github.cwom/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
     chromatic: { delay: 5000 },
   },
-};
-
-// LivePreview
-
-export const LivePreview = {
-  parameters: {
-    chromatic: { delay: 5000 },
-    controls: {
-      exclude: TABS_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

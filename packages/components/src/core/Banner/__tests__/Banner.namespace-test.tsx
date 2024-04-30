@@ -1,7 +1,7 @@
-import { Banner, BannerProps } from "@czi-sds/components";
 import React from "react";
+import { Banner, BannerProps } from "@czi-sds/components";
 
-const BannerNameSpaceTest = (props: BannerProps<"medium">) => {
+const BannerNameSpaceTest = (props: BannerProps) => {
   return (
     <Banner {...props} dismissible sdsType="primary">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aliquid

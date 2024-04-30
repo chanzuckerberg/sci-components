@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -31,17 +31,14 @@ const doNotForwardProps = [
   "truncateDropdown",
 ];
 
-export const StyledPaginationButtonIcon = styled(ButtonIcon, {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${(props: PaginationExtraProps) => {
-    const { disabled } = props;
+export const StyledPaginationButton = styled(Button)`
+  ${(props: CommonThemeProps) => {
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
       width: 32px;
       height: 32px;
-      cursor: ${disabled ? "auto" : "pointer"};
+      cursor: "pointer";
 
       & .MuiSvgIcon-root {
         width: 10px;
@@ -49,7 +46,7 @@ export const StyledPaginationButtonIcon = styled(ButtonIcon, {
       }
 
       &:hover {
-        background-color: ${disabled ? "transparent" : semanticComponentColors?.base?.fillHover};
+        background-color: ${semanticComponentColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
           color: ${semanticComponentColors?.base?.iconHover}

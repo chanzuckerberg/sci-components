@@ -1,4 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
+import { ButtonProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactNode } from "react";
 import Button from "src/core/Button";
@@ -15,7 +16,21 @@ import {
   getSpaces,
 } from "src/core/styles";
 
-export interface InputDropdownProps extends CommonThemeProps {
+const doNotForwardProps = [
+  "intent",
+  "state",
+  "sdsStage",
+  "sdsType",
+  "isMinimal",
+  "shouldTruncateMinimalDetails",
+  "shouldPutAColonAfterLabel",
+  "value",
+  "sdsStyle",
+];
+
+export interface InputDropdownProps
+  extends CommonThemeProps,
+    Omit<ButtonProps, (typeof doNotForwardProps)[number]> {
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   label: ReactNode;
@@ -30,6 +45,11 @@ export interface InputDropdownProps extends CommonThemeProps {
   value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
+  // (masoudmanson): This is a temporary fix for the issue where the style prop
+  // is not correctly passed to the underlying Button component when asserting as
+  // a React.ComponentType<InputDropdownProps>. This is a workaround until a more
+  // permanent solution is implemented.
+  style?: React.CSSProperties;
 }
 
 const labelFontBodyS = fontBody("s", "regular");
@@ -290,19 +310,20 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const doNotForwardProps = [
-  "intent",
-  "state",
-  "sdsStage",
-  "sdsType",
-  "isMinimal",
-  "shouldTruncateMinimalDetails",
-  "shouldPutAColonAfterLabel",
-];
-
-export const StyledInputDropdown = styled(Button, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
+/**
+ * (masoudmanson): `Button as React.ComponentType<InputDropdownProps>` is a
+ * temporary fix for the issue where the props are not correctly passed to
+ * the underlying Button component. This is a workaround until a more permanent
+ * solution is implemented. As a result of this fix, the style prop is not
+ * passed to the underlying Button component. So we have added the style prop
+ * to the InputDropdownProps interface.
+ */
+export const StyledInputDropdown = styled(
+  Button as React.ComponentType<InputDropdownProps>,
+  {
+    shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  }
+)`
   ${labelFontBodyXs}
 
   /* (thuang): in Minimal it's a different value */

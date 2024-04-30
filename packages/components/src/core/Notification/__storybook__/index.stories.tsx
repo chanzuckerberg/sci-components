@@ -7,7 +7,6 @@ import {
   NOTIFICATION_ICON_OPTIONS,
   NOTIFICATION_ON_CLICK_OPTIONS,
 } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
 
@@ -82,20 +81,6 @@ export const Default = {
     extraContent: false,
     slideDirection: "left",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: NOTIFICATION_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot test

@@ -40,20 +40,6 @@ export const CustomAriaLabel = {
   },
 };
 
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: LIST_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
-};
-
 // Test
 
 export const Test = {

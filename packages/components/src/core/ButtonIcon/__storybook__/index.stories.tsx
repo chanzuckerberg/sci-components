@@ -7,7 +7,6 @@ import {
   BUTTON_ICON_ICON_LABELS,
   BUTTON_ICON_ICON_OPTIONS,
 } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/screenshots";
 
 export default {
@@ -25,11 +24,6 @@ export default {
       mapping: BUTTON_ICON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_ICON_OPTIONS),
     },
-    on: {
-      control: {
-        type: "boolean",
-      },
-    },
     sdsSize: {
       control: {
         type: "select",
@@ -45,9 +39,9 @@ export default {
   },
   component: ButtonIcon,
   parameters: {
-    badges: [BADGE.NEEDS_REVISION],
+    badges: [BADGE.DEPRECATED],
   },
-  title: "Components/ButtonIcon [wip]",
+  title: "Deprecated/ButtonIcon [deprecated]",
 } as Meta;
 
 // Default
@@ -56,24 +50,10 @@ export const Default = {
   args: {
     "aria-label": "info",
     disabled: false,
-    icon: "DotsHorizontal",
+    icon: "InfoCircle",
     sdsSize: "large",
     sdsType: "primary",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: BUTTON_ICON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot test
@@ -106,7 +86,6 @@ export const Test = {
       <RawButtonIcon
         aria-label="dotsHorizontal"
         data-testid="iconButton"
-        on
         icon="DotsHorizontal"
         sdsSize="medium"
         sdsType="primary"

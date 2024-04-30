@@ -4,7 +4,7 @@ import {
   Page,
   PaginationExtraProps,
   StyledPagination,
-  StyledPaginationButtonIcon,
+  StyledPaginationButton,
   StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
@@ -85,11 +85,13 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
             }
             return (
               <Page sdsStyle={sdsStyle} key={pageNumber.join("-")}>
-                <StyledPaginationButtonIcon
+                <StyledPaginationButton
                   aria-label="Go to a page"
                   disabled
                   icon="DotsHorizontal"
                   sdsSize="small"
+                  sdsStyle="icon"
+                  sdsType="tertiary"
                 />
               </Page>
             );

@@ -1,6 +1,5 @@
 import { Args, Meta } from "@storybook/react";
 import { InputSlider } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { INPUT_SLIDER_EXCLUDED_CONTROLS } from "./constants";
@@ -68,27 +67,6 @@ export const Default = {
     step: 5,
     valueLabelDisplay: "on",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    defaultValue: [15, 85],
-    disabled: false,
-    marks: true,
-    max: 100,
-    min: 0,
-  },
-  parameters: {
-    controls: {
-      exclude: INPUT_SLIDER_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

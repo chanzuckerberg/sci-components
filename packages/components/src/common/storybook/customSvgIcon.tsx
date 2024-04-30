@@ -4,6 +4,7 @@ import { SvgIcon, SvgIconProps } from "@mui/material";
  * CustomSvgIcon is a component that extends the SvgIcon component from the Material-UI library.
  * It allows easy usage of custom SVG icons with in the storybook demos.
  */
+
 function CustomSvgIcon(props: SvgIconProps) {
   return (
     <SvgIcon color="primary" viewBox="2 2 20 20" {...props}>

@@ -7,7 +7,6 @@ import {
   DROPDOWN_MENU_LABEL,
 } from "./constants";
 import { DropdownMenu } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
 
@@ -113,25 +112,6 @@ export const MultiColumn = {
     },
   },
   render: (args: Args) => <DropdownMenu {...args} />,
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    keepSearchOnSelect: true,
-    multiple: false,
-    search: false,
-  },
-  parameters: {
-    controls: {
-      exclude: DROPDOWN_MENU_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot test

@@ -1,6 +1,5 @@
 import { Args, Meta } from "@storybook/react";
 import { InputRadio } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { TestDemo } from "./stories/test";
 import { INPUT_RADIO_EXCLUDED_CONTROLS } from "./constants";
 
@@ -39,26 +38,6 @@ export const Default = {
     intent: "default",
     label: "Label",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    axe: {
-      disabledRules: ["label"],
-    },
-    controls: {
-      exclude: INPUT_RADIO_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

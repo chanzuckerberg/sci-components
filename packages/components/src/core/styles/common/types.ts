@@ -119,6 +119,7 @@ export interface SDSTextPalette {
   beta: string;
   info: string;
   negative: string;
+  neutral: string;
   notice: string;
   positive: string;
 }
@@ -146,8 +147,6 @@ declare module "@mui/material/styles" {
       component?: SDSComponentPalette;
       text?: SDSTextPalette;
     };
-    // component?: SDSComponentPalette;
-    // text?: Partial<TypeText>;
   }
 }
 
@@ -463,6 +462,7 @@ export interface Borders {
   info: Border;
   link: Border;
   negative: Border;
+  neutral: Border;
   none: string;
   notice: Border;
   positive: Border;

@@ -35,6 +35,9 @@
       "notice": {
         "default": { "value": "1px solid {sds.color.primitive.yellow.400.value}" }
       },
+      "neutral": {
+        "default": { "value": "1px solid {sds.color.primitive.gray.400.value}" }
+      },
       "none": {
         "value": "none"
       }

@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { CellBasic } from "./stories/default";
 import {
   CELL_BASIC_EXCLUDED_CONTROLS,
@@ -115,12 +114,11 @@ export default {
   },
   component: CellBasic,
   parameters: {
-    badges: [BADGE.BETA],
     controls: {
       expanded: true,
     },
   },
-  title: "Components/Table/CellBasic [beta]",
+  title: "Components/Table/CellBasic",
 } as Meta;
 
 // Default

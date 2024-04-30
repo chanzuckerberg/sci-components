@@ -1,5 +1,6 @@
 import { Button, buttonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { css, SerializedStyles } from "@emotion/react";
 import {
   CommonThemeProps,
   fontBodySemiboldXs,
@@ -12,154 +13,239 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+import { ButtonProps } from ".";
 
-const sdsPropNames = ["isAllCaps", "isRounded", "sdsStyle", "sdsType"];
+const doNotForwardProps = [
+  "isAllCaps",
+  "isRounded",
+  "sdsStyle",
+  "sdsType",
+  "sdsSize",
+];
 
-const ButtonBase = styled(Button, {
-  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
+type ButtonExtraProps = ButtonProps & CommonThemeProps;
+
+// Rounded + Square Button Styles
+
+const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
+  const { variant, startIcon, endIcon } = props;
+  const spaces = getSpaces(props);
+  const shadows = getShadows(props);
+  const iconSizes = getIconSizes(props);
+  const semanticTextColors = getSemanticTextColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+
+  const hasIcon = !!startIcon || !!endIcon;
+
+  // (masoudmanson): The padding depends on the presence of an icon.
+  // If the component has either a startIcon or endIcon, the padding will be spaces?.m pixels.
+  // If the component doesn't have any icon at all, the padding will be spaces?.l pixels.
+  const padding = hasIcon
+    ? `${spaces?.xxs}px ${spaces?.m}px`
+    : `${spaces?.xs}px ${spaces?.m}px`;
+
+  const contentColor =
+    variant === "outlined"
+      ? semanticTextColors?.action?.default
+      : semanticTextColors?.base?.onFill;
+
+  return css`
+    border: none;
+    box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.border};
+    padding: ${padding};
+    color: ${contentColor};
+
+    svg {
+      color: ${contentColor};
+    }
+
+    &:hover {
+      color: ${semanticTextColors?.base?.onFill};
+      background-color: ${semanticComponentColors?.accent?.fillHover};
+      border: none;
+      box-shadow: inset 0 0 0 1px
+        ${semanticComponentColors?.accent?.borderHover};
+
+      svg {
+        color: ${semanticComponentColors?.base?.fill};
+      }
+    }
+
+    &:active {
+      color: ${semanticTextColors?.base?.onFill};
+      background-color: ${semanticComponentColors?.accent?.fillPressed};
+      border: none;
+      box-shadow: inset 0 0 0 1px
+        ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.base?.fill};
+      }
+    }
+
+    &:disabled {
+      color: ${semanticTextColors?.base?.onFillDisabled};
+      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      border: none;
+      box-shadow: ${shadows?.none};
+
+      svg {
+        color: ${semanticComponentColors?.base?.onFillDisabled};
+      }
+    }
+
+    .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+      height: ${iconSizes?.l?.width}px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        max-width: ${iconSizes?.l?.width}px;
+        max-height: ${iconSizes?.l?.width}px;
+      }
+    }
+
+    .${buttonClasses.startIcon} {
+      margin-right: ${spaces?.s}px;
+      margin-left: 0;
+    }
+
+    .${buttonClasses.endIcon} {
+      margin-left: ${spaces?.s}px;
+      margin-right: 0;
+    }
+  `;
+};
+
+const Rounded = (props: ButtonExtraProps): SerializedStyles => {
+  const corners = getCorners(props);
+
+  return css`
+    border-radius: ${corners?.l}px;
+  `;
+};
+
+const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
+  const { variant } = props;
+  const shadows = getShadows(props);
+  const semanticTextColors = getSemanticTextColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
+
+  const contentColor =
+    variant === "outlined"
+      ? semanticComponentColors?.negative?.icon
+      : semanticTextColors?.base?.onFill;
+
+  const backgroundColor =
+    variant === "outlined"
+      ? "transparent"
+      : semanticComponentColors?.negative?.fill;
+
+  return css`
+    border: none;
+    box-shadow: inset 0 0 0 1px ${semanticComponentColors?.negative?.border};
+    color: ${contentColor};
+    background-color: ${backgroundColor};
+
+    svg {
+      color: ${contentColor};
+    }
+
+    &:hover {
+      color: ${semanticTextColors?.base?.onFill};
+      background-color: ${semanticComponentColors?.negative?.fillHover};
+      border: none;
+      box-shadow: inset 0 0 0 1px
+        ${semanticComponentColors?.negative?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.base?.fill};
+      }
+    }
+
+    &:active {
+      color: ${semanticTextColors?.base?.onFill};
+      background-color: ${semanticComponentColors?.negative?.fillPressed};
+      border: none;
+      box-shadow: inset 0 0 0 1px
+        ${semanticComponentColors?.negative?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.base?.fill};
+      }
+    }
+
+    &:disabled {
+      color: ${semanticTextColors?.base?.onFillDisabled};
+      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      border: none;
+      box-shadow: ${shadows?.none};
+
+      svg {
+        color: ${semanticComponentColors?.base?.onFillDisabled};
+      }
+    }
+  `;
+};
+
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodySemiboldXs}
   ${focusVisibleA11yStyle}
-  ${(props) => {
-    const { variant, startIcon, endIcon } = props;
-    const spaces = getSpaces(props);
-    const shadows = getShadows(props);
-    const iconSizes = getIconSizes(props);
-    const semanticTextColors = getSemanticTextColors(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
 
-    const hasIcon = !!startIcon || !!endIcon;
+  ${(props: ButtonExtraProps) => {
+    const { sdsStyle, sdsType } = props;
 
-    // (masoudmanson): The padding for the contained variant depends on the presence of an icon.
-    // If the component has either a startIcon or endIcon, the padding will be different.
-    // If the component doesn't have any icon at all, the padding will be different.
-    const containedPadding = hasIcon
-      ? `${spaces?.xxs}px ${spaces?.m}px`
-      : `${spaces?.xs}px ${spaces?.l}px`;
-
-    // (thuang): outline variant has border 1px, so padding needs to be smaller
-    const outlinedPadding = hasIcon
-      ? `${(spaces?.xxs || 0) - 1}px ${(spaces?.m || 0) - 1}px`
-      : `${(spaces?.xs || 0) - 1}px ${(spaces?.m || 0) - 1}px`;
-
-    const padding = variant === "outlined" ? outlinedPadding : containedPadding;
-
-    const outlineBorder =
-      variant === "outlined"
-        ? `border-color: ${semanticComponentColors?.accent?.border};`
-        : "";
-
-    return `
-      ${outlineBorder}
-      padding: ${padding};
-      min-width: 120px;
-      box-shadow: ${shadows?.none};
-
-      &:hover {
-        color: ${semanticTextColors?.base?.onFill};
-        background-color: ${semanticComponentColors?.accent?.fillHover};
-        box-shadow: ${shadows?.none};
-      }
-
-      &:active {
-        color: ${semanticTextColors?.base?.onFill};
-        background-color: ${semanticComponentColors?.accent?.fillPressed};
-        box-shadow: ${shadows?.none};
-      }
-
-      &:disabled {
-        color: ${semanticTextColors?.base?.onFillDisabled};
-        background-color: ${semanticComponentColors?.base?.fillDisabled};
-        border-color: ${semanticComponentColors?.base?.borderDisabled};
-      }
-
-      .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
-        width: ${iconSizes?.l?.width}px;
-        height: ${iconSizes?.l?.width}px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        svg {
-          max-width: ${iconSizes?.l?.width}px;
-          max-height: ${iconSizes?.l?.width}px;
-        }
-      }
-
-      .${buttonClasses.startIcon} {
-        margin-right: ${spaces?.m}px;
-        margin-left: 0;
-      }
-
-      .${buttonClasses.endIcon} {
-        margin-left: ${spaces?.m}px;
-        margin-right: 0;
-      }
+    return css`
+      ${ButtonStyles(props)}
+      ${sdsStyle === "rounded" && Rounded(props)}
+      ${sdsType === "destructive" && DestructiveButton(props)}
     `;
   }}
 `;
 
-export const RoundedButton = styled(ButtonBase, {
-  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
-})`
-  ${(props) => {
-    const corners = getCorners(props);
+// Minimal Button Styles
 
-    return `
-      border-radius: ${corners?.l}px;
-    `;
-  }}
-`;
-
-export const SquareButton = ButtonBase;
-
-interface IsAllCaps extends CommonThemeProps {
-  isAllCaps?: boolean;
-}
-
-const MinimalButton = styled(Button, {
-  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
-})`
-  ${focusVisibleA11yStyle}
-
-  ${(props: IsAllCaps) => {
-    const spaces = getSpaces(props);
-
-    return `
-      padding: ${spaces?.xxs}px 0;
-    `;
-  }}
-
-  ${(props: IsAllCaps) => {
-    if (props?.isAllCaps) {
-      return fontCapsXxxs;
-    }
-    return ``;
-  }}
-  &:hover, &:focus-visible {
-    background-color: transparent;
-  }
-`;
-
-const minimal = (props: CommonThemeProps) => {
+const Minimal = (props: CommonThemeProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticTextColors = getSemanticTextColors(props);
   const semanticComponentColors = getSemanticComponentColors(props);
 
-  return `
-    &:hover, &:focus-visible {
+  return css`
+    ${focusVisibleA11yStyle()}
+    ${fontCapsXxxs(props)}
+
+    min-width: unset;
+    padding: ${spaces?.xxs}px 0;
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
       color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
     }
     &:active {
       color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
-    &:disabled {      
+    &:disabled {
       color: ${semanticTextColors?.base?.onFillDisabled};
+
+      svg {
+        color: ${semanticTextColors?.base?.onFillDisabled};
+      }
     }
 
     .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
-      width: ${iconSizes?.s?.width}px;
       height: ${iconSizes?.s?.width}px;
       display: flex;
       align-items: center;
@@ -173,25 +259,43 @@ const minimal = (props: CommonThemeProps) => {
 
     .${buttonClasses.startIcon} {
       margin-right: ${spaces?.xxs}px;
+      margin-left: 0;
     }
 
     .${buttonClasses.endIcon} {
       margin-left: ${spaces?.xxs}px;
+      margin-right: 0;
     }
   `;
 };
 
-export const PrimaryMinimalButton = styled(MinimalButton)`
-  ${minimal}
-`;
+const PrimaryMinimalButton = (props: ButtonExtraProps): SerializedStyles => {
+  const semanticTextColors = getSemanticTextColors(props);
 
-export const SecondaryMinimalButton = styled(MinimalButton)`
-  ${minimal}
-  ${(props: CommonThemeProps) => {
-    const semanticTextColors = getSemanticTextColors(props);
+  return css`
+    ${Minimal(props)}
+    color: ${semanticTextColors?.action?.default};
+  `;
+};
 
-    return `
-      color: ${semanticTextColors?.base?.primary};
+const SecondaryMinimalButton = (props: ButtonExtraProps): SerializedStyles => {
+  const semanticTextColors = getSemanticTextColors(props);
+
+  return css`
+    ${Minimal(props)}
+    color: ${semanticTextColors?.base?.primary};
+  `;
+};
+
+export const StyledMinimalButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ButtonExtraProps) => {
+    const { sdsType } = props;
+
+    return css`
+      ${sdsType === "primary" && PrimaryMinimalButton(props)}
+      ${sdsType === "secondary" && SecondaryMinimalButton(props)}
     `;
   }}
 `;
@@ -200,8 +304,9 @@ export const SecondaryMinimalButton = styled(MinimalButton)`
 interface IsRounded extends CommonThemeProps {
   isRounded?: boolean;
 }
-export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop) => !sdsPropNames.includes(prop as string),
+
+export const StyledButtonLegacy = styled(Button, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${focusVisibleA11yStyle}
   ${(props: IsRounded) => {
@@ -212,8 +317,7 @@ export const StyledButton = styled(Button, {
 
     return `
       border-radius: ${corners?.l}px;
-      padding: ${spaces?.xs}px ${spaces?.l}px;
-      min-width: 120px;
+      padding: ${spaces?.xs}px ${spaces?.m}px;
     `;
   }}
 `;

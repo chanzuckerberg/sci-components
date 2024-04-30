@@ -5,7 +5,6 @@ import {
   INPUT_CHECKBOX_TEST_ID,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -41,21 +40,6 @@ export const Default = {
     intent: "default",
     label: "Label",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  parameters: {
-    axe: {
-      disabledRules: ["label"],
-    },
-    controls: { exclude: INPUT_CHECKBOX_EXCLUDED_CONTROLS },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

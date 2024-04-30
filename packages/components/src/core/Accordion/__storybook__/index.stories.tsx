@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Accordion } from "./stories/default";
 import { ACCORDION_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -34,20 +33,6 @@ export const Default = {
   args: {
     togglePosition: "right",
   },
-};
-
-// LivePreview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: ACCORDION_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

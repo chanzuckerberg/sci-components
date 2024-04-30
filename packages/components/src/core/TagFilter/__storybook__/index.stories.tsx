@@ -2,7 +2,6 @@ import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TagFilter } from "./stories/default";
 import { TAG_FILTER_EXCLUDED_CONTROLS } from "./constants";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
 
@@ -26,23 +25,6 @@ export const Default = {
   args: {
     label: "TagFilter",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: TAG_FILTER_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot Test

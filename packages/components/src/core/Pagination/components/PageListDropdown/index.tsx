@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MenuItem from "src/core/MenuItem";
-import { Page, StyledPaginationButtonIcon } from "../../style";
+import { Page, StyledPaginationButton } from "../../style";
 import { StyledPaginationDropdownMenu } from "./style";
 
 interface PageListDropdownProps {
@@ -24,11 +24,13 @@ const PageListDropdown = (props: PageListDropdownProps) => {
 
   return (
     <Page sdsStyle={sdsStyle}>
-      <StyledPaginationButtonIcon
+      <StyledPaginationButton
         aria-label="Go to a page"
         onClick={handleClick}
         icon="DotsHorizontal"
         sdsSize="small"
+        sdsStyle="icon"
+        sdsType="tertiary"
       />
       <StyledPaginationDropdownMenu
         anchorEl={anchorEl}

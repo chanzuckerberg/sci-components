@@ -1,14 +1,13 @@
 import { Args, Meta } from "@storybook/react";
 import Icon from "src/core/Icon";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import {
   BUTTON_DROPDOWN_ACTIONS,
   BUTTON_DROPDOWN_EXCLUDED_CONTROLS,
+  BUTTON_DROPDOWN_ICON_LABELS,
   BUTTON_DROPDOWN_ICON_OPTIONS,
   BUTTON_DROPDOWN_TEXT,
 } from "./constants";
 import { ButtonDropdown } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 
 export default {
   argTypes: {
@@ -17,15 +16,22 @@ export default {
     },
     icon: {
       control: {
-        labels: ["Download Icon", "Copy Icon", "Bacteria Icon"],
+        labels: BUTTON_DROPDOWN_ICON_LABELS,
         type: "select",
       },
       mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
       options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
+    sdsSize: {
+      control: {
+        type: "radio",
+      },
+      if: { arg: "sdsStyle", eq: "icon" },
+      options: ["small", "medium", "large"],
+    },
     sdsStyle: {
       control: { type: "radio" },
-      options: ["rounded", "square"],
+      options: ["rounded", "square", "icon"],
       required: true,
     },
     sdsType: {
@@ -35,10 +41,7 @@ export default {
     },
   },
   component: ButtonDropdown,
-  parameters: {
-    badges: [BADGE.NEEDS_REVISION],
-  },
-  title: "Components/ButtonDropdown [wip]",
+  title: "Components/ButtonDropdown",
 } as Meta;
 
 // Default
@@ -46,25 +49,12 @@ export default {
 export const Default = {
   args: {
     disabled: false,
-    icon: <Icon sdsIcon="Download" sdsSize="l" sdsType="button" />,
+    icon: "Download",
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
+    sdsSize: "medium",
     sdsStyle: "square",
     sdsType: "primary",
   },
-};
-
-// LivePreview
-
-export const LivePreview = {
-  parameters: {
-    controls: {
-      exclude: BUTTON_DROPDOWN_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Test

@@ -13,7 +13,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import { IconProps } from "src/core/Icon";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
@@ -214,12 +214,13 @@ const AutocompleteBase = <
             endAdornment: (
               <StyledInputAdornment position="end">
                 {inputValue && (
-                  <ButtonIcon
+                  <Button
                     aria-label="clear-button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
-                    sdsType="primary"
+                    sdsType="tertiary"
                     sdsSize="small"
+                    sdsStyle="icon"
                     sdsIconProps={{
                       sdsType: "iconButton",
                     }}
@@ -231,11 +232,12 @@ const AutocompleteBase = <
             inputProps: params.inputProps,
             startAdornment: (
               <StyledInputAdornment position="start">
-                <ButtonIcon
+                <Button
                   aria-label="search-button"
                   onClick={clearInput}
-                  sdsType="secondary"
+                  sdsType="tertiary"
                   sdsSize="small"
+                  sdsStyle="icon"
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}

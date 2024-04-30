@@ -1,18 +1,29 @@
 export enum SDSWarningTypes {
+  ButtonMinimalIsAllCaps = "buttonMinimalIsAllCaps",
   ButtonMissingSDSProps = "buttonMissingProps",
+  ButtonIconMissingIconProp = "buttonIconMissingIconProp",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
-  ButtonIconMediumSize = "buttonIconMediumSize",
   TooltipSubtitle = "tooltipSubtitle",
   TooltipWidth = "tooltipWidth",
   TooltipInverted = "tooltipInverted",
 }
 
 const SDS_WARNINGS = {
+  [SDSWarningTypes.ButtonMinimalIsAllCaps]: {
+    hasWarned: false,
+    message:
+      "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'.",
+  },
   [SDSWarningTypes.ButtonMissingSDSProps]: {
     hasWarned: false,
     message:
       "Warning: Buttons without sdsStyle or sdsType props will be deprecated.",
+  },
+  [SDSWarningTypes.ButtonIconMissingIconProp]: {
+    hasWarned: false,
+    message:
+      "Warning: Buttons with an SDS type of icon require an icon prop to be provided.",
   },
   [SDSWarningTypes.ChipDeprecated]: {
     hasWarned: false,
@@ -22,10 +33,6 @@ const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />",
-  },
-  [SDSWarningTypes.ButtonIconMediumSize]: {
-    hasWarned: false,
-    message: "Warning: A medium size ButtonIcon can only be of type tertiary!",
   },
   [SDSWarningTypes.TooltipSubtitle]: {
     hasWarned: false,
