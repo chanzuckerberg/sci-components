@@ -105,6 +105,9 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
           Style: <b>{sdsStyle}</b>
         </h3>
         {SCREENSHOT_BUTTON_SDS_TYPES.map((type) => {
+          // (masoudmanson): The minimal style does not have the destructive type.
+          if (sdsStyle === "minimal" && type === "destructive") return null;
+
           return (
             <ButtonTypeOption sdsStyle={sdsStyle} type={type} key={type} />
           );
@@ -113,7 +116,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all BUTTON_ICON_OPTIONS_2 + create headers for SCREENSHOT_BUTTON_SDS_TYPES
+  // loop through all SCREENSHOT_BUTTON_ICON_OPTIONS + create headers for button types
   function ButtonTypeOption({
     sdsStyle,
     type,
@@ -168,7 +171,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all BUTTON_DISABLED_OPTIONS + create headers for BUTTON_ICON_OPTIONS_2
+  // loop through all BUTTON_DISABLED_OPTIONS + create headers for BUTTON_ICON_OPTIONS
   function ButtonIconOption({
     sdsStyle,
     type,
@@ -247,7 +250,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
 
   // Icon Style
 
-  // loop through all SDS_SIZES + create headers for SDS_TYPES
+  // loop through all BUTTON_ICON_SDS_SIZES + create headers for SDS_TYPES
   function ButtonIconTypeOption({ sdsType }: { sdsType: SDSTypes[number] }) {
     const LEVEL_STYLE: React.CSSProperties = {
       columnGap: "20px",
@@ -278,7 +281,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     );
   }
 
-  // loop through all ON_OPTIONS + create headers for SDS_SIZES
+  // loop through all BUTTON_ICON_DISABLED_OPTIONS + create headers for SDS_SIZES
   function ButtonIconSizeOption({
     sdsType,
     sdsSize,

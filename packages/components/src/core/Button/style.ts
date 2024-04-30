@@ -287,42 +287,6 @@ const SecondaryMinimalButton = (props: ButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const DestructiveMinimalButton = (
-  props: ButtonExtraProps
-): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-
-  return css`
-    ${Minimal(props)}
-    color: ${semanticComponentColors?.negative?.fill};
-
-    &:hover,
-    &:focus-visible {
-      background-color: transparent;
-      color: ${semanticComponentColors?.negative?.fillHover};
-
-      svg {
-        color: ${semanticComponentColors?.negative?.fillHover};
-      }
-    }
-    &:active {
-      color: ${semanticComponentColors?.negative?.fillPressed};
-
-      svg {
-        color: ${semanticComponentColors?.negative?.fillPressed};
-      }
-    }
-    &:disabled {
-      color: ${semanticTextColors?.base?.onFillDisabled};
-
-      svg {
-        color: ${semanticTextColors?.base?.onFillDisabled};
-      }
-    }
-  `;
-};
-
 export const StyledMinimalButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -332,7 +296,6 @@ export const StyledMinimalButton = styled(Button, {
     return css`
       ${sdsType === "primary" && PrimaryMinimalButton(props)}
       ${sdsType === "secondary" && SecondaryMinimalButton(props)}
-      ${sdsType === "destructive" && DestructiveMinimalButton(props)}
     `;
   }}
 `;

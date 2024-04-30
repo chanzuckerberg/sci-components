@@ -9,19 +9,31 @@ import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
 import { filterProps } from "src/common/utils";
 
-type ButtonStyle = "rounded" | "square" | "minimal" | "icon";
 type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
 type ButtonSize = "small" | "medium" | "large";
 
-type SdsProps = {
-  sdsStyle?: ButtonStyle;
-  sdsType?: ButtonType;
-  isAllCaps?: boolean;
-  isRounded?: boolean;
-  sdsSize?: ButtonSize;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-};
+type SdsProps =
+  | {
+      sdsStyle?: "icon";
+      sdsType?: "primary" | "secondary" | "tertiary";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+      sdsSize?: ButtonSize;
+      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+    }
+  | {
+      sdsStyle?: "minimal";
+      sdsType?: "primary" | "secondary";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+    }
+  | {
+      sdsStyle?: "rounded" | "square";
+      sdsType?: "primary" | "secondary" | "destructive";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+    };
 
 export type ButtonProps = RawButtonProps & SdsProps;
 
@@ -43,7 +55,7 @@ const Button = React.forwardRef(
     props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { sdsStyle, sdsType, icon } = props;
+    const { sdsStyle, sdsType } = props;
 
     if (!sdsStyle || !sdsType) {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
@@ -62,7 +74,7 @@ const Button = React.forwardRef(
 
     switch (true) {
       case sdsStyle === "icon":
-        if (icon !== undefined) {
+        if (props?.icon !== undefined) {
           // (masoudmanson): We need to remove the props that are not supported by
           // the ButtonIcon component.
           const excludedProps: (keyof PropsWithDefaultsType)[] = [
@@ -76,7 +88,7 @@ const Button = React.forwardRef(
 
           return (
             <ButtonIcon
-              icon={icon}
+              icon={props?.icon}
               {...finalProps}
               sdsType={sdsType as Exclude<ButtonType, "destructive">}
               ref={ref}

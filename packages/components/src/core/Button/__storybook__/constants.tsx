@@ -107,5 +107,5 @@ export const BUTTON_ICON_PSEUDO_STATES = [
   "default",
   "hover",
   "active",
-  "focus",
+  "focus-visible",
 ];

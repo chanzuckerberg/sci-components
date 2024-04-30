@@ -15,8 +15,8 @@ const InvalidIconButtonPropsError = (
   <Callout intent="negative">
     <CalloutTitle>Invalid Props!</CalloutTitle>
     <p>
-      The icon styled Button must include an icon. Please choose an icon from
-      from the controls section.
+      The <strong>icon</strong> styled Button must include an icon. Please
+      choose an icon from from the controls section.
     </p>
   </Callout>
 );
@@ -25,8 +25,9 @@ const InvalidSdsTypeTertiaryError = (
   <Callout intent="negative">
     <CalloutTitle>Invalid Props!</CalloutTitle>
     <p>
-      Only buttons with the icon style can have the tertiary type. Please select
-      another type, either primary or secondary.
+      Only buttons with the <strong>icon</strong> style can have the{" "}
+      <strong>tertiary</strong> type. Please select another type, either{" "}
+      <strong>primary</strong> or <strong>secondary</strong>.
     </p>
   </Callout>
 );
@@ -35,9 +36,9 @@ const InvalidSdsTypeDestructiveError = (
   <Callout intent="negative">
     <CalloutTitle>Invalid Props!</CalloutTitle>
     <p>
-      Buttons with the &apos;icon&apos; style cannot have the
-      &apos;destructive&apos; type. Please choose another type, such as
-      &apos;square&apos;, &apos;rounded&apos;, or &apos;minimal&apos;.
+      Buttons with the <strong>icon</strong> or <strong>minimal</strong> styles
+      cannot have the <strong>destructive</strong> type. Please choose another
+      type, such as <strong>square</strong> or <strong>rounded</strong>.
     </p>
   </Callout>
 );
@@ -101,19 +102,15 @@ export const Button = (props: Args): JSX.Element => {
     return InvalidSdsTypeTertiaryError;
   }
 
-  if (sdsStyle === "icon" && sdsType === "destructive") {
+  if (
+    (sdsStyle === "icon" || sdsStyle === "minimal") &&
+    sdsType === "destructive"
+  ) {
     return InvalidSdsTypeDestructiveError;
   }
 
   return (
-    <RawButton
-      sdsType={sdsType}
-      sdsStyle={sdsStyle}
-      sdsSize={sdsSize}
-      {...props}
-      startIcon={startIconFinal}
-      endIcon={endIconFinal}
-    >
+    <RawButton {...props} startIcon={startIconFinal} endIcon={endIconFinal}>
       {text}
     </RawButton>
   );

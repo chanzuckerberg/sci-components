@@ -25,7 +25,7 @@ export const HeaderLeft = styled("div")`
 `;
 
 export const HeaderRight = styled("div")`
-  display: flex;
+  display: block;
 `;
 
 export const StyledButton = styled(Button)`
