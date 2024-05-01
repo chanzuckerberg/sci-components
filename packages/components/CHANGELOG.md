@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.0.1...@czi-sds/components@20.1.0) (2024-05-01)
+
+### Bug Fixes
+
+- **build:** fix variables file ([364a774](https://github.com/chanzuckerberg/sci-components/commit/364a774131d14daf5fe603a983155373defde212))
+- **designtokens:** fix sds border design tokens ([0bb69bd](https://github.com/chanzuckerberg/sci-components/commit/0bb69bd91bae8ab5e0722b2cc25188ba6d5cda09))
+- **styles:** remove style-dictionary files ([129dcf1](https://github.com/chanzuckerberg/sci-components/commit/129dcf16507cdaf9da04190fbad1a1ae01e989a4))
+
+### Features
+
+- **Button:** figma refactor button ([#761](https://github.com/chanzuckerberg/sci-components/issues/761)) ([199bc4c](https://github.com/chanzuckerberg/sci-components/commit/199bc4c03f7366e0e6bff79575bc727708f9ac57))
+
 ## [20.0.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.0.0...@czi-sds/components@20.0.1) (2024-04-15)
 
 ### Bug Fixes
