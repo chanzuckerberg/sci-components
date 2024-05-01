@@ -7,4 +7,7 @@ const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(SDSAppTheme);
 
 export const defaultTheme = createTheme(defaultThemeOptions);
 
+/**
+ * (masoudmanson): This is to keep the old defaultAppTheme export for backward compatibility.
+ */
 export const defaultAppTheme = defaultTheme;

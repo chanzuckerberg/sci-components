@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.7.0...@czi-sds/data-viz@0.8.0) (2024-05-01)
+
+### Features
+
+- **Button:** figma refactor button ([#761](https://github.com/chanzuckerberg/sci-components/issues/761)) ([199bc4c](https://github.com/chanzuckerberg/sci-components/commit/199bc4c03f7366e0e6bff79575bc727708f9ac57))
+
 # [0.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.6.0...@czi-sds/data-viz@0.7.0) (2024-04-11)
 
 ### Features
