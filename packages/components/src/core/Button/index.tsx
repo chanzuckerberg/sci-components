@@ -4,110 +4,126 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import {
-  PrimaryMinimalButton,
-  RoundedButton,
-  SecondaryMinimalButton,
-  SquareButton,
-  StyledButton,
-} from "./style";
+import { StyledButton, StyledButtonLegacy, StyledMinimalButton } from "./style";
+import ButtonIcon from "../ButtonIcon";
+import { IconNameToSizes, IconProps } from "../Icon";
+import { filterProps } from "src/common/utils";
 
-export interface SdsProps {
-  isAllCaps?: boolean;
-  isRounded?: boolean;
-  sdsStyle?: "minimal" | "rounded" | "square";
-  sdsType?: "primary" | "secondary";
-}
+type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
+type ButtonSize = "small" | "medium" | "large";
 
-// (thuang): Support `component` prop
-// https://stackoverflow.com/a/66123108
-export type ButtonProps<C extends React.ElementType = "button"> =
-  RawButtonProps<C, { component?: C }> & SdsProps;
+type SdsProps =
+  | {
+      sdsStyle?: "icon";
+      sdsType?: "primary" | "secondary" | "tertiary";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+      sdsSize?: ButtonSize;
+      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+    }
+  | {
+      sdsStyle?: "minimal";
+      sdsType?: "primary" | "secondary";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+    }
+  | {
+      sdsStyle?: "rounded" | "square";
+      sdsType?: "primary" | "secondary" | "destructive";
+      isAllCaps?: boolean;
+      isRounded?: boolean;
+    };
+
+export type ButtonProps = RawButtonProps & SdsProps;
+
+/**
+ * (masoudmanson): The MUI variant prop is determined by the sdsType prop.
+ */
+const MUI_VARIANT_MAP: { [key in ButtonType]: ButtonProps["variant"] } = {
+  destructive: "contained",
+  primary: "contained",
+  secondary: "outlined",
+  tertiary: "text",
+};
 
 /**
  * @see https://mui.com/material-ui/react-button/
  */
 const Button = React.forwardRef(
-  <C extends React.ElementType>(
-    props: ButtonProps<C>,
+  (
+    props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const sdsStyle = props?.sdsStyle;
-    const sdsType = props?.sdsType;
+    const { sdsStyle, sdsType } = props;
 
     if (!sdsStyle || !sdsType) {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
     }
 
     if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
-      // eslint-disable-next-line no-console
-      console.warn(
-        "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'."
-      );
+      showWarningIfFirstOccurence(SDSWarningTypes.ButtonMinimalIsAllCaps);
     }
 
     // isAllCaps is only used for the Minimal Button.  It defaults to true.
     const isAllCaps =
       typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
-    const propsWithDefault = { ...props, isAllCaps };
+
+    type PropsWithDefaultsType = ButtonProps & { isAllCaps: boolean };
+    const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
-      case sdsStyle === "rounded" && sdsType === "primary":
+      case sdsStyle === "icon":
+        if (props?.icon !== undefined) {
+          // (masoudmanson): We need to remove the props that are not supported by
+          // the ButtonIcon component.
+          const excludedProps: (keyof PropsWithDefaultsType)[] = [
+            "startIcon",
+            "endIcon",
+            "sdsStyle",
+            "isAllCaps",
+            "sdsType",
+          ];
+          const finalProps = filterProps(propsWithDefault, excludedProps);
+
+          return (
+            <ButtonIcon
+              icon={props?.icon}
+              {...finalProps}
+              sdsType={sdsType as Exclude<ButtonType, "destructive">}
+              ref={ref}
+            />
+          );
+        } else {
+          showWarningIfFirstOccurence(
+            SDSWarningTypes.ButtonIconMissingIconProp
+          );
+          return null;
+        }
+
+      case sdsStyle === "minimal":
         return (
-          <RoundedButton
+          <StyledMinimalButton
             color="primary"
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "rounded" && sdsType === "secondary":
-        return (
-          <RoundedButton
-            color="primary"
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "square" && sdsType === "primary":
-        return (
-          <SquareButton
-            color="primary"
-            ref={ref}
-            variant="contained"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "square" && sdsType === "secondary":
-        return (
-          <SquareButton
-            color="primary"
-            ref={ref}
-            variant="outlined"
-            {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "minimal" && sdsType === "primary":
-        return (
-          <PrimaryMinimalButton
-            color="primary"
-            ref={ref}
             variant="text"
             {...propsWithDefault}
-          />
-        );
-      case sdsStyle === "minimal" && sdsType === "secondary":
-        return (
-          <SecondaryMinimalButton
-            color="primary"
             ref={ref}
-            variant="text"
-            {...propsWithDefault}
           />
         );
+
+      case sdsStyle === "rounded":
+      case sdsStyle === "square":
+        return (
+          <StyledButton
+            color="primary"
+            variant={sdsType ? MUI_VARIANT_MAP[sdsType] : "text"}
+            {...propsWithDefault}
+            ref={ref}
+          />
+        );
+
       default:
-        return <StyledButton {...propsWithDefault} ref={ref} />;
+        return <StyledButtonLegacy {...propsWithDefault} ref={ref} />;
     }
   }
 );

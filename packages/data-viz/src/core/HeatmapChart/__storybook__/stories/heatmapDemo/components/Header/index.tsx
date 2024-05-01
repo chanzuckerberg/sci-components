@@ -1,10 +1,5 @@
 import { useSelector } from "react-redux";
-import {
-  HeaderLeft,
-  HeaderRight,
-  StyledButtonIcon,
-  StyledHeader,
-} from "./style";
+import { HeaderLeft, HeaderRight, StyledButton, StyledHeader } from "./style";
 import { RootState } from "../../store";
 import { Button, Icon, Tag, Tooltip } from "@czi-sds/components";
 import { useAppContext } from "../../store/useAppContext";
@@ -64,11 +59,12 @@ const Header = () => {
           placement="bottom-end"
           arrow
         >
-          <StyledButtonIcon
+          <StyledButton
             aria-label="Download Info"
             icon="InfoCircle"
             sdsSize="large"
             sdsType="secondary"
+            sdsStyle="icon"
           />
         </Tooltip>
       </HeaderRight>

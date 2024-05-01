@@ -12,6 +12,10 @@ export type { ChipProps };
 
 /**
  * @see https://mui.com/material-ui/react-chip/
+ *
+ * @deprecated
+ * This component is deprecated and will be removed in the next major version.
+ * Please use `Tag` or `TagFilter` instead.
  */
 const Chip = (props: ChipProps): JSX.Element => {
   showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);

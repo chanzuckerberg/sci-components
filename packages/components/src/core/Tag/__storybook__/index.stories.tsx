@@ -12,7 +12,6 @@ import {
   TAG_SDS_TYPES,
 } from "./constants";
 import { Tag } from "./stories/default";
-import { LivePreviewDemo } from "./stories/livePreview";
 import { ScreenshotTestDemo } from "./stories/mainScreenshot";
 import { GrayPrimaryScreenshotTestDemo } from "./stories/grayPrimaryScreenshot";
 import { SuccessWarningScreenshotTestDemo } from "./stories/successWarningScreenshot";
@@ -84,24 +83,6 @@ export const Default = {
     sdsStyle: "square",
     sdsType: "primary",
   },
-};
-
-// Live Preview
-
-export const LivePreview = {
-  args: {
-    color: "info",
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: TAG_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <LivePreviewDemo {...args} />,
 };
 
 // Screenshot tests

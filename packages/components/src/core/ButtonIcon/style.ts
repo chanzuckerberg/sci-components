@@ -2,158 +2,147 @@ import { css, SerializedStyles } from "@emotion/react";
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
-  SDSWarningTypes,
-  showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import {
   CommonThemeProps,
   focusVisibleA11yStyle,
-  getColors,
   getIconSizes,
-  getPalette,
+  getSemanticComponentColors,
 } from "src/core/styles";
 
-export interface ButtonIconSizeToTypes {
-  small: "primary" | "secondary" | "tertiary";
-  medium: "tertiary";
-  large: "primary" | "secondary" | "tertiary";
-}
-export interface ButtonIconExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
-> extends CommonThemeProps {
-  on?: boolean;
+export interface ButtonIconExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  sdsSize?: ButtonIconSize;
-  sdsType?: ButtonIconSizeToTypes[ButtonIconSize];
+  sdsSize?: "small" | "medium" | "large";
+  sdsType?: "primary" | "secondary" | "tertiary";
 }
 
-const isOn = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const { sdsType } = props;
-  const colors = getColors(props);
+const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    ${sdsType !== "tertiary" &&
-    `
-      color: ${sdsType === "primary" ? colors?.blue[600] : colors?.blue[400]};
+    color: ${semanticComponentColors?.base?.fillDisabled};
 
-      &:hover {
-        color: ${colors?.blue[600]};
-      }
-    `}
-  `;
-};
-
-const isDisabled = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const palette = getPalette(props);
-
-  return css`
     svg {
-      color: ${palette?.text?.disabled};
+      color: ${semanticComponentColors?.base?.fillDisabled};
     }
   `;
 };
 
-const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const colors = getColors(props);
-  const { sdsSize } = props;
+const primary = (props: ButtonIconExtraProps): SerializedStyles => {
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.blue[400]};
+    color: ${semanticComponentColors?.accent?.fill};
+
+    svg {
+      color: ${semanticComponentColors?.accent?.fill};
+    }
 
     &:hover {
-      background: ${colors?.gray[200]};
-      color: ${sdsSize === "small" ? colors?.blue[600] : colors?.blue[400]};
+      background: ${semanticComponentColors?.base?.fillHover};
+      color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
     }
 
     &:active {
-      color: ${colors?.blue[600]};
+      background: ${semanticComponentColors?.base?.fillPressed};
+      color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
   `;
 };
 
-const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const colors = getColors(props);
+const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.gray[500]};
+    color: ${semanticComponentColors?.base?.icon};
 
-    &:hover,
+    svg {
+      color: ${semanticComponentColors?.base?.icon};
+    }
+
+    &:hover {
+      background: ${semanticComponentColors?.base?.fillHover};
+      color: ${semanticComponentColors?.accent?.fillHover};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillHover};
+      }
+    }
+
     &:active {
-      background: none;
-      color: ${colors?.blue[400]};
+      background: ${semanticComponentColors?.base?.fillPressed};
+      color: ${semanticComponentColors?.accent?.fillPressed};
+
+      svg {
+        color: ${semanticComponentColors?.accent?.fillPressed};
+      }
     }
   `;
 };
 
-const tertiary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
-  const colors = getColors(props);
+const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
-    color: ${colors?.gray[500]};
+    color: ${semanticComponentColors?.base?.icon};
+
+    svg {
+      color: ${semanticComponentColors?.base?.icon};
+    }
 
     &:hover {
       background: none;
-      color: black;
+      color: ${semanticComponentColors?.base?.iconHover};
+
+      svg {
+        color: ${semanticComponentColors?.base?.iconHover};
+      }
     }
 
     &:active {
-      color: black;
+      background: none;
+      color: ${semanticComponentColors?.base?.iconPressed};
+
+      svg {
+        color: ${semanticComponentColors?.base?.iconPressed};
+      }
     }
   `;
 };
 
-const small = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const small = (props: ButtonIconExtraProps): SerializedStyles => {
+  const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
   return css`
-    &:hover {
-      background: none;
-    }
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
+      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
     }
   `;
 };
 
-const medium = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
-  if (sdsType === "primary" || sdsType === "secondary") {
-    showWarningIfFirstOccurence(SDSWarningTypes.ButtonIconMediumSize);
-  }
-
   return css`
-    &:hover {
-      background: none;
-    }
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
+      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
     }
   `;
 };
 
-const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: ButtonIconExtraProps<ButtonIconSize>
-): SerializedStyles => {
+const large = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
 
@@ -161,7 +150,7 @@ const large = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
-      ${sdsType === "primary" ? `margin: 5px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: 5px;` : ""}
     }
   `;
 };
@@ -180,16 +169,13 @@ export const StyledButtonIcon = styled(IconButton, {
   padding: 0;
   ${focusVisibleA11yStyle}
 
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconExtraProps<ButtonIconSize>
-  ) => {
-    const { on, disabled, sdsSize, sdsType } = props;
+  ${(props: ButtonIconExtraProps) => {
+    const { disabled, sdsSize = "medium", sdsType = "primary" } = props;
 
     return css`
       ${sdsType === "primary" && primary(props)}
       ${sdsType === "secondary" && secondary(props)}
       ${sdsType === "tertiary" && tertiary(props)}
-      ${on && isOn(props)}
       ${disabled && isDisabled(props)}
       ${sdsSize === "small" && small(props)}
       ${sdsSize === "medium" && medium(props)}

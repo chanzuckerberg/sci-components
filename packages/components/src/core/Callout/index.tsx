@@ -1,7 +1,7 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ButtonIcon from "src/core/ButtonIcon";
+import Button from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
@@ -91,23 +91,25 @@ const Callout = ({
   const getAction = (collapsed: boolean) => {
     if (expandable) {
       return (
-        <ButtonIcon
+        <Button
           aria-label={collapsed ? "open" : "close"}
           onClick={() => {
             setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
           }}
           sdsSize="small"
           sdsType="tertiary"
+          sdsStyle="icon"
           icon={collapsed ? "ChevronDown" : "ChevronUp"}
         />
       );
     }
     return onClose ? (
-      <ButtonIcon
+      <Button
         aria-label="Dismiss"
         onClick={handleClose}
         sdsSize="small"
         sdsType="tertiary"
+        sdsStyle="icon"
         size="large"
         icon="XMark"
       />

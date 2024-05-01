@@ -1,5 +1,5 @@
 import { CheckCircleOutline } from "@mui/icons-material";
-import { Snackbar } from "@mui/material";
+import { Snackbar, Button as MUIButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Args, Meta } from "@storybook/react";
 import React from "react";
@@ -8,7 +8,7 @@ import { defaultTheme } from "src/core/styles/common/defaultTheme";
 import Alert from "../index";
 import { BADGE } from "src/common/storybook/storybookBadges";
 
-const DismissButton = styled(Button)`
+const DismissButton = styled(MUIButton)`
   margin-left: -${defaultTheme.spacing(3)}px;
   padding-bottom: 0;
   font-size: 12px;

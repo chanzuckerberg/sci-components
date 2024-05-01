@@ -1,9 +1,5 @@
 import { styled } from "@mui/material/styles";
-import ButtonIcon from "src/core/ButtonIcon";
-import {
-  ButtonIconExtraProps,
-  ButtonIconSizeToTypes,
-} from "src/core/ButtonIcon/style";
+import Button, { ButtonProps } from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -14,11 +10,11 @@ import {
   getSpaces,
 } from "src/core/styles";
 
-export interface BannerExtraProps<
-  ButtonIconSize extends keyof ButtonIconSizeToTypes,
-> extends CommonThemeProps {
-  sdsType: ButtonIconSizeToTypes[ButtonIconSize];
+export interface BannerExtraProps extends CommonThemeProps {
+  sdsType: "primary" | "secondary" | "tertiary";
 }
+
+type ButtonType = ButtonProps & { bannerType: string } & BannerExtraProps;
 
 export const Centered = styled("div")`
   flex: 1 1 auto;
@@ -28,9 +24,7 @@ export const Centered = styled("div")`
 `;
 
 export const IconWrapper = styled("div")`
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconExtraProps<ButtonIconSize>
-  ) => {
+  ${(props: CommonThemeProps) => {
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
 
@@ -41,19 +35,15 @@ export const IconWrapper = styled("div")`
   }}
 `;
 
-type ButtonIconType<ButtonIconSize extends keyof ButtonIconSizeToTypes> =
-  ButtonIconExtraProps<ButtonIconSize> & { bannerType: string };
 const doNotForwardPropsButtonIcon = ["bannerType", "textChild"];
 
-export const StyledButtonIcon = styled(ButtonIcon, {
+export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsButtonIcon.includes(prop),
 })`
   flex: 0 0 auto;
 
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: ButtonIconType<ButtonIconSize>
-  ) => {
+  ${(props: ButtonType) => {
     const { bannerType } = props;
 
     const colors = getColors(props);
@@ -72,9 +62,7 @@ export const Text = styled("div")`
   ${fontBodyS}
 `;
 
-const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: BannerExtraProps<ButtonIconSize>
-) => {
+const primary = (props: BannerExtraProps) => {
   const semanticComponentColors = getSemanticComponentColors(props);
   const semanticTextColors = getSemanticTextColors(props);
 
@@ -87,9 +75,7 @@ const primary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
   `;
 };
 
-const secondary = <ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-  props: BannerExtraProps<ButtonIconSize>
-) => {
+const secondary = (props: BannerExtraProps) => {
   const semanticComponentColors = getSemanticComponentColors(props);
   const semanticTextColors = getSemanticTextColors(props);
 
@@ -106,9 +92,7 @@ export const StyledBanner = styled("div", {
 })`
   ${fontBodyS}
 
-  ${<ButtonIconSize extends keyof ButtonIconSizeToTypes>(
-    props: BannerExtraProps<ButtonIconSize>
-  ) => {
+  ${(props: BannerExtraProps) => {
     const { sdsType } = props;
 
     const spaces = getSpaces(props);

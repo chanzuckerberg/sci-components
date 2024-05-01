@@ -4,7 +4,6 @@ import { SDSSizes, SDSTypes } from "./types";
 
 export const BUTTON_ICON_EXCLUDED_CONTROLS = [
   "disabled",
-  "on",
   "icon",
   "sdsSize",
   "sdsType",
@@ -18,8 +17,6 @@ export const BUTTON_ICON_SDS_TYPES: SDSTypes = [
 
 export const BUTTON_ICON_SDS_SIZES: SDSSizes = ["large", "medium", "small"];
 
-export const BUTTON_ICON_ON_OPTIONS = [false, true];
-
 export const BUTTON_ICON_DISABLED_OPTIONS = [false, true];
 
 export const BUTTON_ICON_PSEUDO_STATES = [
@@ -30,6 +27,7 @@ export const BUTTON_ICON_PSEUDO_STATES = [
 ];
 
 export const BUTTON_ICON_ICON_OPTIONS = [
+  "InfoCircle",
   "DotsHorizontal",
   "Virus",
   "XMark",
@@ -38,6 +36,7 @@ export const BUTTON_ICON_ICON_OPTIONS = [
 ];
 
 export const BUTTON_ICON_ICON_LABELS = [
+  "SDS Icon: InfoCircle",
   "SDS Icon: DotsHorizontal",
   "SDS Icon: Virus",
   "SDS Icon: XMark",

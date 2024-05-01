@@ -9,6 +9,7 @@ import pkg from "./package.json" assert { type: "json" };
 
 const config = [
   {
+    // (masoudmanson): External packages that should not be bundled into SDS library.
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
       /**
@@ -19,9 +20,7 @@ const config = [
        * GOOD: import { Autocomplete } from "@mui/material";
        */
       "@mui/material/styles",
-      /**
-       * (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
-       */
+      // (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
       "react/jsx-runtime",
     ],
     input: "src/index.ts",
