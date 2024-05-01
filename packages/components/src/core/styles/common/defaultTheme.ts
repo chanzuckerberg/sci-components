@@ -6,3 +6,5 @@ import { makeThemeOptions } from "./makeThemeOptions";
 const defaultThemeOptions: SDSThemeOptions = makeThemeOptions(SDSAppTheme);
 
 export const defaultTheme = createTheme(defaultThemeOptions);
+
+export const defaultAppTheme = defaultTheme;
