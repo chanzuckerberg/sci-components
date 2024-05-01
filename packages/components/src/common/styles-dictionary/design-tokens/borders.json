@@ -9,9 +9,9 @@
         "table": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
         "disabled": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
         "default": { "value": "1px solid {sds.color.primitive.gray.400.value}" },
-        "black": { "value": "2px dashed {sds.color.primitive.common.black.value}" },
-        "hover": { "value": "2px dashed {sds.color.primitive.common.black.value}" },
-        "dashed": { "value": "2px dashed {sds.color.primitive.gray.400.value}" }
+        "black": { "value": "1px dashed {sds.color.primitive.common.black.value}" },
+        "hover": { "value": "1px dashed {sds.color.primitive.common.black.value}" },
+        "dashed": { "value": "1px dashed {sds.color.primitive.gray.400.value}" }
       },
       "link": {
         "dashed": { "value": "1px dashed" },
