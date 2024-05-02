@@ -10,6 +10,7 @@ import { Autocomplete } from "./stories/default";
 import { AutocompleteSingleColumnDemo } from "./stories/singleColumn";
 import { AutocompleteMultiColumnDemo } from "./stories/multiColumn";
 import { TestDemo } from "./stories/test";
+import { ControlledOpenDemo } from "./stories/controlledOpen";
 
 export default {
   argTypes: {
@@ -119,6 +120,25 @@ export const MultiColumn = {
     },
   },
   render: (args: Args) => <AutocompleteMultiColumnDemo {...args} />,
+};
+
+// Controlled Open
+
+export const ControlledOpen = {
+  args: {
+    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS[1],
+    keepSearchOnSelect: true,
+    label: AUTOCOMPLETE_LABEL,
+    multiple: true,
+    options: AUTOCOMPLETE_DATA_OPTIONS[1],
+    search: true,
+  },
+  parameters: {
+    controls: {
+      exclude: ["search"],
+    },
+  },
+  render: (args: Args) => <ControlledOpenDemo {...args} />,
 };
 
 // Test
