@@ -1,6 +1,7 @@
 import {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
+  AutocompleteCloseReason,
   AutocompleteFreeSoloValueMapping,
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
@@ -74,6 +75,11 @@ interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
   label?: string;
+  onClickAway?: (
+    event?: MouseEvent | TouchEvent,
+    reason?: AutocompleteCloseReason
+  ) => void;
+  onClick?: (event?: TouchEvent | MouseEvent) => void;
 }
 
 type CustomAutocompleteProps<
@@ -119,6 +125,10 @@ const AutocompleteBase = <
     search = false,
     clearOnBlur = false,
     blurOnSelect = !multiple,
+    onClickAway,
+    onClick,
+    onOpen,
+    onClose,
   } = props;
   const theme: SDSTheme = useTheme();
 
@@ -141,22 +151,35 @@ const AutocompleteBase = <
       inputValue={inputValue}
       renderInput={defaultRenderInput}
       multiple={multiple}
+      /**
+       * (masoudmanson): Overrides the onOpen and onClose handlers to ensure that
+       * the onClick and onClickAway handlers are triggered when a controlled dropdown
+       * is opened or closed, respectively.
+       */
+      onOpen={defaultOnOpen}
+      onClose={defaultOnClose}
       {...props}
-      // (masoudmanson): For multiple options (multiple = true), setting blurOnSelect to false
-      // keeps the dropdown open after selecting an option. This feature enhances user experience
-      // by preventing the dropdown from closing, enabling users to select multiple options
-      // without having to reopen the menu repeatedly.
+      /**
+       * (masoudmanson): For multiple options (multiple = true), setting blurOnSelect to false
+       * keeps the dropdown open after selecting an option. This feature enhances user experience
+       * by preventing the dropdown from closing, enabling users to select multiple options
+       * without having to reopen the menu repeatedly.
+       */
       blurOnSelect={multiple ? false : blurOnSelect}
-      // (masoudmanson): Given the necessity of maintaining consistent onBlur functionality,
-      // and clearing the input value on blur, it's crucial to include the onBlur handler
-      // after spreading other props. Furthermore, within the defaultOnBlur function, the
-      // actual onBlur function is invoked for completeness.
+      /**
+       * (masoudmanson): Given the necessity of maintaining consistent onBlur functionality,
+       * and clearing the input value on blur, it's crucial to include the onBlur handler
+       * after spreading other props. Furthermore, within the defaultOnBlur function, the
+       * actual onBlur function is invoked for completeness.
+       */
       onBlur={defaultOnBlur}
-      // (masoudmanson): To ensure component-level actions (changing the input field value)
-      // trigger upon input changes, it's crucial to position the onInputChange handler after
-      // spreading the other props. Furthermore, within the defaultOnInputChange function,
-      // the provided onInputChange from props is called at the end to emit the input changes
-      // to the user.
+      /**
+       * (masoudmanson): To ensure component-level actions (changing the input field value)
+       * trigger upon input changes, it's crucial to position the onInputChange handler after
+       * spreading the other props. Furthermore, within the defaultOnInputChange function,
+       * the provided onInputChange from props is called at the end to emit the input changes
+       * to the user.
+       */
       onInputChange={defaultOnInputChange}
     />
   );
@@ -255,6 +278,29 @@ const AutocompleteBase = <
   function defaultOnBlur(event: React.FocusEvent<HTMLInputElement>) {
     if (clearOnBlur) setInputValue("");
     props.onBlur?.(event);
+  }
+
+  /**
+   * (masoudmanson): The default onOpen handler is the Callback fired when the popup
+   * requests to be opened. This function is responsible for invoking the onOpen and onClick
+   * handlers when a controlled dropdown is opening.
+   */
+  function defaultOnOpen(event: React.SyntheticEvent<Element, Event>) {
+    onOpen?.(event);
+    onClick?.(event as unknown as TouchEvent | MouseEvent);
+  }
+
+  /**
+   * (masoudmanson): The default onClose handler is the callback fired when the popup
+   * requests to be closed. This function is responsible for invoking the onClose and onClickAway
+   * handlers when a controlled dropdown is closing.
+   */
+  function defaultOnClose(
+    event: React.SyntheticEvent<Element, Event>,
+    reason: AutocompleteCloseReason
+  ) {
+    onClose?.(event, reason);
+    onClickAway?.(event as unknown as TouchEvent | MouseEvent, reason);
   }
 
   function defaultOnInputChange(

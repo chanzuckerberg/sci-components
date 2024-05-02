@@ -1,6 +1,7 @@
 import {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
+  AutocompleteCloseReason,
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
   AutocompleteValue,
@@ -50,7 +51,11 @@ interface ExtraAutocompleteMultiColumnProps<
   PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
   children?: JSX.Element | null;
-  onClickAway?: (event: MouseEvent | TouchEvent) => void;
+  onClickAway?: (
+    event?: MouseEvent | TouchEvent,
+    reason?: AutocompleteCloseReason
+  ) => void;
+  onClick?: (event?: TouchEvent | MouseEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
   options: AutocompleteMultiColumnOption<
     T,
@@ -108,12 +113,13 @@ const AutocompleteMultiColumn = <
 ): JSX.Element => {
   const {
     InputBaseProps,
-    open = false,
+    open,
     PopperPlacement = "bottom-start",
     PopperBaseProps,
     search = false,
     label = "Search",
-    onClickAway = defaultOnClickAway,
+    onClickAway,
+    onClick,
     ClickAwayListenerProps,
     options,
     onInputChange,
@@ -124,9 +130,24 @@ const AutocompleteMultiColumn = <
     PopperComponent = StyledPopper,
     ...rest
   } = props;
+
   const theme: SDSTheme = useTheme();
+
+  const isOpenControlled = open !== undefined;
   const [inputValue, setInputValue] = useState("");
-  const [popperOpen, setPopperOpen] = useState<boolean>(open);
+  const [popperOpen, setPopperOpen] = useState<boolean>(
+    isOpenControlled ? open : false
+  );
+
+  /**
+   * (masoudmanson): This useEffect is used to update the popperOpen state
+   * when the open prop is controlled.
+   */
+  useEffect(() => {
+    if (isOpenControlled) {
+      setPopperOpen(open);
+    }
+  }, [isOpenControlled, open]);
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -172,7 +193,10 @@ const AutocompleteMultiColumn = <
   };
 
   return (
-    <ClickAwayListener onClickAway={onClickAway} {...ClickAwayListenerProps}>
+    <ClickAwayListener
+      onClickAway={defaultOnClickAway}
+      {...ClickAwayListenerProps}
+    >
       <div>
         <StyledAutocompleteInput
           id="location-search"
@@ -293,7 +317,24 @@ const AutocompleteMultiColumn = <
     );
   }
 
-  function handleInputClick(_: React.SyntheticEvent) {
+  function handleInputClick(event: React.MouseEvent<HTMLInputElement>) {
+    /**
+     * (masoudmanson): Because the Autocomplete component overrides the
+     * InputSearch's onClick, we must also include the parent onClick here.
+     */
+    onClick?.(event);
+
+    /**
+     * (masoudmanson): If the dropdown is controlled, we call the onClick prop to allow the parent
+     * to handle the opening and closing of the dropdown.
+     */
+    if (isOpenControlled) {
+      return;
+    }
+
+    /**
+     * (masoudmanson): If the dropdown is not controlled, we toggle the dropdown open and closed.
+     */
     if (popperOpen) {
       setPopperOpen(false);
     } else {
@@ -317,14 +358,57 @@ const AutocompleteMultiColumn = <
     onBlur?.(event);
   }
 
-  function defaultOnClickAway() {
-    setPopperOpen(false);
+  /**
+   * (masoudmanson): This is the default onClickAway handler for the Autocomplete component.
+   * It is used to close the dropdown when the user clicks away from the dropdown. It also
+   * calls the parent onClickAway prop if it is provided.
+   */
+  function defaultOnClickAway(event: MouseEvent | TouchEvent) {
+    /**
+     * (masoudmanson): We only want to close the dropdown if it is open.
+     * This may sound unnecessary, but it is to prevent the dropdown from
+     * calling the parent onClickAway prop when the dropdown is closed.
+     */
+    if (popperOpen) {
+      onClickAway?.(event, "blur");
+
+      /**
+       * (masoudmanson): If the dropdown is controlled, we call the onClickAway prop to allow the parent
+       * to handle the closing of the dropdown.
+       */
+      if (isOpenControlled) return;
+
+      // (masoudmanson): If the dropdown is not controlled, we close the dropdown.
+      setPopperOpen(false);
+    }
   }
 
   function handleInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
-    if (event.key === "Backspace") {
-      event.stopPropagation();
+    /**
+     * (masoudmanson): Because the Autocomplete component overrides the
+     * InputSearch's onKeyDown, we must also include the user defined onKeyDown here.
+     */
+    if (props?.onKeyDown) {
+      props?.onKeyDown?.(event);
+    } else {
+      // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
+      if (event.key === "Backspace") {
+        event.stopPropagation();
+      }
+
+      /**
+       * (masoudmanson): This is to handle the Escape key to close the dropdown.
+       * If the dropdown is controlled, we call the onClick prop to allow the parent
+       * to handle the closing of the dropdown.
+       */
+      if (event.key === "Escape") {
+        if (isOpenControlled) {
+          onClick?.();
+          return;
+        }
+
+        setPopperOpen(false);
+      }
     }
   }
 };
