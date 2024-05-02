@@ -243,21 +243,6 @@ const AutocompleteMultiColumn = <
              * mobile keyboard
              */
             inputMode: "text",
-            /**
-             * (masoudmanson): This is to handle the Escape key to close the dropdown.
-             * If the dropdown is controlled, we call the onClick prop to allow the parent
-             * to handle the closing of the dropdown.
-             */
-            onKeyDown: (event: React.KeyboardEvent) => {
-              if (event.key === "Escape") {
-                if (isOpenControlled) {
-                  onClick?.();
-                  return;
-                }
-
-                setPopperOpen(false);
-              }
-            },
             startAdornment: (
               <StyledInputAdornment position="start">
                 <Button
@@ -399,9 +384,31 @@ const AutocompleteMultiColumn = <
   }
 
   function handleInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
-    if (event.key === "Backspace") {
-      event.stopPropagation();
+    /**
+     * (masoudmanson): Because the Autocomplete component overrides the
+     * InputSearch's onKeyDown, we must also include the user defined onKeyDown here.
+     */
+    if (props?.onKeyDown) {
+      props?.onKeyDown?.(event);
+    } else {
+      // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
+      if (event.key === "Backspace") {
+        event.stopPropagation();
+      }
+
+      /**
+       * (masoudmanson): This is to handle the Escape key to close the dropdown.
+       * If the dropdown is controlled, we call the onClick prop to allow the parent
+       * to handle the closing of the dropdown.
+       */
+      if (event.key === "Escape") {
+        if (isOpenControlled) {
+          onClick?.();
+          return;
+        }
+
+        setPopperOpen(false);
+      }
     }
   }
 };
