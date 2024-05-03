@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.4.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.4.1...@czi-sds/components@19.4.2) (2024-05-03)
+
+**Note:** Version bump only for package @czi-sds/components
+
 ## [19.4.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@19.4.0...@czi-sds/components@19.4.1) (2024-05-03)
 
 ### Bug Fixes
