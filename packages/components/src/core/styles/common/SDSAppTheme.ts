@@ -76,6 +76,9 @@ export const SDSAppTheme: AppTheme = {
     s: 2,
   },
   fontWeights: {
+    bold: 700,
+    light: 300,
+    medium: 800,
     regular: 400,
     semibold: 600,
   },
@@ -377,6 +380,15 @@ export const SDSAppTheme: AppTheme = {
     },
   },
 };
+
+/**
+ * (masoudmanson): This is to make sure that the old defaultAppTheme
+ * export is still available for backward compatibility.
+ *
+ * @deprecated
+ * Please use `SDSAppTheme` instead. This export will be removed in the future.
+ */
+export const defaultAppTheme = SDSAppTheme;
 
 // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
 // applications to override those colors using their own custom theme.
