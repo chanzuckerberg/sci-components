@@ -69,5 +69,6 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "style-dictionary": "^3.9.2"
-  }
+  },
+  "gitHead": "89776a26f004128ac39ae8d879844d5c9712f820"
 }
