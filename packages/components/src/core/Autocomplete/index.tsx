@@ -1,6 +1,7 @@
 import {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
+  AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/base";
 import { PopperProps } from "@mui/material";
@@ -121,7 +122,11 @@ interface ExtraAutocompleteProps<
   options: SDSAutocompleteOptions<T, Multiple, DisableClearable, FreeSolo>;
   PopperBaseProps?: Partial<PopperProps>;
   value?: SDSAutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
-  onClickAway?: (event: MouseEvent | TouchEvent) => void;
+  onClickAway?: (
+    event?: MouseEvent | TouchEvent,
+    reason?: AutocompleteCloseReason
+  ) => void;
+  onClick?: (event?: TouchEvent | MouseEvent) => void;
   onChange?: SDSAutocompleteOnChange<T, Multiple, DisableClearable, FreeSolo>;
   count?: number;
   icon?: ReactElement;
@@ -198,7 +203,6 @@ const Autocomplete = <
           {...rest}
           // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns
           groupBy={undefined}
-          open
         />
       );
     } else {

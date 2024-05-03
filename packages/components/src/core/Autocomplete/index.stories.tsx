@@ -93,6 +93,7 @@ const Autocomplete = <
     <>
       <div style={WRAPPER_STYLES}>
         <RawAutocomplete
+          open
           id="autocomplete-demo"
           disableCloseOnSelect={multiple}
           label={label}

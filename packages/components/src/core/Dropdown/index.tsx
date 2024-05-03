@@ -101,6 +101,7 @@ const Dropdown = <
     isTriggerChangeOnOptionClick = false,
     disabled = false,
     value: propValue,
+    onClick,
     ...rest
   } = props;
 
@@ -251,6 +252,8 @@ const Dropdown = <
   }
 
   function handleClick(event: React.MouseEvent<HTMLElement>) {
+    onClick?.(event as React.MouseEvent<HTMLDivElement, MouseEvent>);
+
     if (open) {
       if (!shouldShowButtons) {
         if (multiple) {

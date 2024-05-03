@@ -169,6 +169,7 @@ const DropdownMenu = <
                 PopperBaseProps={DEFAULT_POPPER_BASE_PROPS}
                 disablePortal
                 onClickAway={noop}
+                onClick={noop}
                 {...rest}
                 InputBaseProps={DefaultInputBaseProps}
               />
