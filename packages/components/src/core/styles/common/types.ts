@@ -248,6 +248,9 @@ export interface Typography {
 }
 
 export interface FontWeights {
+  bold: number;
+  light: number;
+  medium: number;
   regular: number;
   semibold: number;
 }
