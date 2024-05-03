@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.0...@czi-sds/components@20.1.2) (2024-05-03)
+
+### Bug Fixes
+
+- **autocomplete:** fix controlled open state ([#767](https://github.com/chanzuckerberg/sci-components/issues/767)) ([6a77a3d](https://github.com/chanzuckerberg/sci-components/commit/6a77a3d49f2313ed569d1916ad58b1abfa68b935))
+- **sdstheme:** fix SDS Theme backward compatibility ([#770](https://github.com/chanzuckerberg/sci-components/issues/770)) ([860283f](https://github.com/chanzuckerberg/sci-components/commit/860283fefda3664b34685c5d0e52e9c87d3f069d))
+
 ## [20.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.0...@czi-sds/components@20.1.1) (2024-05-02)
 
 ### Bug Fixes
