@@ -290,7 +290,12 @@ const AutocompleteMultiColumn = <
                   }
                   multiple={multiple}
                   label={label}
-                  InputBaseProps={InputBaseProps}
+                  /**
+                   * (masoudmanson): In a multi-column autocomplete, the search input for
+                   * inner autocompletes should remain hidden and unfocused when the parent
+                   * input is focused. This prevents blurring of the main search input.
+                   */
+                  InputBaseProps={{ ...InputBaseProps, autoFocus: false }}
                   popperOpen={popperOpen}
                   inputValue={inputValue}
                   PaperComponent={StyledPaper}

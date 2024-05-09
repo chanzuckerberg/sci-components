@@ -126,6 +126,7 @@ const DropdownMenu = <
   const DefaultInputBaseProps = useMemo(() => {
     return {
       ...InputBaseProps,
+      autoFocus: true,
       onClick: noop,
     };
   }, [InputBaseProps]);
