@@ -15,6 +15,7 @@ export const ComplexFilter = <T extends DefaultAutocompleteOption>(
       DropdownMenuProps={{
         groupBy: (option: DefaultAutocompleteOption) =>
           option.section as string,
+        width: 400,
       }}
       {...props}
     />

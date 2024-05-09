@@ -59,8 +59,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.xs.height}px;
       width: ${iconSizes?.xs.width}px;
-      padding-right: ${spaces?.xxs}px;
-      margin: 0 0 0 -${spaces?.xxxs}px;
+      margin: 0 ${spaces?.xxs}px 0 -${spaces?.xxxs}px;
     }
 
     .MuiChip-deleteIcon {
@@ -89,8 +88,7 @@ const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
-      padding-right: ${spaces?.xxs}px;
-      margin: 0 0 0 -${spaces?.xxxs}px;
+      margin: 0 ${spaces?.xxs}px 0 -${spaces?.xxxs}px;
     }
 
     .MuiChip-deleteIcon {

@@ -9,6 +9,11 @@ import { TestDemo } from "./stories/test";
 
 export default {
   argTypes: {
+    isTriggerChangeOnOptionClick: {
+      control: {
+        type: "boolean",
+      },
+    },
     label: {
       control: {
         type: "text",
@@ -44,6 +49,7 @@ export default {
 
 export const Default = {
   args: {
+    isTriggerChangeOnOptionClick: false,
     label: "Click Target",
     multiple: true,
     onChange: COMPLEX_FILTER_ON_CHANGE_OPTIONS[1],

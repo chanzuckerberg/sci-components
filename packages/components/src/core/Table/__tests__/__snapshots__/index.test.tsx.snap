@@ -123,7 +123,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -195,7 +195,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-4umyx6"
       >
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -204,7 +204,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -213,7 +213,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -222,7 +222,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -231,7 +231,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -287,7 +287,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -518,7 +518,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1npxd44-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-elc81v-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
