@@ -138,7 +138,7 @@ const Dropdown = <
         onClick={handleClick}
         sdsStage={open ? "userInput" : "default"}
         {...InputDropdownProps}
-        data-testid="dropdown"
+        {...rest}
       />
       <DropdownMenu<T, Multiple, DisableClearable, FreeSolo>
         anchorEl={anchorEl}
