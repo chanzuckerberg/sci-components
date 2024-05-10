@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.4.0) (2024-05-10)
+
+### Bug Fixes
+
+- **complexfilter:** fix prop propagation ([7530284](https://github.com/chanzuckerberg/sci-components/commit/7530284831aec9d62c67b938303eb7f88f775158))
+- **dropdown:** fix props propagating ([#774](https://github.com/chanzuckerberg/sci-components/issues/774)) ([c42970a](https://github.com/chanzuckerberg/sci-components/commit/c42970a2270c5c6c1dda40422cb7eeee9b4b2f5e))
+
+### Features
+
+- **complexfilter:** add shouldisTriggerChangeOnOptionClick to complexFilter and ([#772](https://github.com/chanzuckerberg/sci-components/issues/772)) ([038ad54](https://github.com/chanzuckerberg/sci-components/commit/038ad542a91b05b06af5b77dff0a644a509f0cc0))
+
 # [20.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.3.0) (2024-05-10)
 
 ### Bug Fixes
