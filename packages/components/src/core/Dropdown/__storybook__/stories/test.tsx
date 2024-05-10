@@ -14,6 +14,7 @@ export const TestDemo = <
 ): JSX.Element => {
   return (
     <RawDropdown<T, Multiple, DisableClearable, FreeSolo>
+      data-testid="dropdown"
       label="Click Target"
       onChange={noop}
       options={AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS as T[]}
