@@ -88,13 +88,12 @@ const ComplexFilter = <
   // * such as sliders for ranges, inline multi selects, etc.
   return (
     <>
-      <Wrapper>
+      <Wrapper {...rest}>
         <InputDropdownComponent
           label={label}
           onClick={handleClick}
           sdsStage={open ? "userInput" : "default"}
           {...InputDropdownProps}
-          {...rest}
         />
 
         <StyledChipsWrapper>
