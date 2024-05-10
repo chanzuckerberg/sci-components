@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.2.0) (2024-05-09)
+
+### Features
+
+- **complexfilter:** add shouldisTriggerChangeOnOptionClick to complexFilter and ([#772](https://github.com/chanzuckerberg/sci-components/issues/772)) ([038ad54](https://github.com/chanzuckerberg/sci-components/commit/038ad542a91b05b06af5b77dff0a644a509f0cc0))
+
 ## [20.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.0...@czi-sds/components@20.1.2) (2024-05-03)
 
 ### Bug Fixes
