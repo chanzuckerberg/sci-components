@@ -9,18 +9,32 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
   <div
     style="margin: 135px 300px;"
   >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-1ha43wd-MuiButtonBase-root-MuiIconButton-root"
       data-mui-internal-clone-element="true"
-      data-testid="InfoOutlinedIcon"
-      focusable="false"
-      viewBox="0 0 24 24"
+      icon="[object Object]"
+      tabindex="0"
+      type="button"
     >
-      <path
-        d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8"
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+          data-file-name="IconExclamationMarkCircleLarge"
+          data-testid="IconExclamationMarkCircleLarge"
+          fillcontrast="white"
+          focusable="false"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        />
+      </div>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
-    </svg>
+    </button>
   </div>
 </div>
 `;

@@ -38,7 +38,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
   return (
-    <StyledInputDropdown {...props}>
+    <StyledInputDropdown {...props} aria-label="Dropdown input">
       <LabelWrapper isMinimal={isMinimal}>
         <StyledLabel
           className="styled-label"

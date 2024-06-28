@@ -10,6 +10,18 @@ export default {
     disabled: {
       control: { type: "boolean" },
     },
+    offLabel: {
+      control: { type: "text" },
+      defaultValue: "Off",
+    },
+    onLabel: {
+      control: { type: "text" },
+      defaultValue: "On",
+    },
+    width: {
+      control: { type: "number" },
+      defaultValue: 62,
+    },
   },
   component: InputToggle,
   parameters: {
@@ -30,6 +42,7 @@ export default {
 export const Default = {
   args: {
     disabled: false,
+    width: 62,
   },
 };
 

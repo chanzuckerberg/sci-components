@@ -1,4 +1,4 @@
-import { Tab, Tabs, TabsProps } from "@mui/material";
+import { Tab, Tabs, TabsProps, tabsClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
@@ -6,6 +6,7 @@ import {
   getSemanticComponentColors,
   getSpaces,
 } from "src/core/styles";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface NavigationJumpToExtraProps
   extends Omit<TabsProps, "indicatorColor" | "onChange">,
@@ -40,16 +41,23 @@ export const StyledTabs = styled(Tabs, {
         top: 0;
         width: ${spaces?.xxxs}px;
       }
+
       max-width: 180px;
       top: ${spaces?.xl}px;
       margin-bottom: ${spaces?.l}px;
       margin-right: ${spaces?.m}px;
       position: sticky;
-      .MuiTabs-indicator {
+      overflow: visible;
+
+      .${tabsClasses.indicator} {
         background-color: ${semanticComponentColors?.[sdsIndicatorColor]?.fill} !important;
         border-radius: 2px;
         left: 0;
         width: 2px;
+      }
+
+      .${tabsClasses.scroller} {
+        overflow: visible !important;
       }
     `;
   }}
@@ -65,6 +73,7 @@ export const StyledTab = styled(Tab, {
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
+      ${focusVisibleA11yStyle()}
       box-sizing: border-box;
       max-width: 180px;
       padding-left: ${spaces?.l}px;

@@ -48,7 +48,22 @@ interface ExtraDropdownMenuProps extends StyleProps {
   anchorEl: HTMLElement | null;
   PopperComponent?: React.JSXElementConstructor<PopperProps>;
   PaperComponent?: React.JSXElementConstructor<PaperProps>;
-  PopperPlacement?: "bottom-start" | "top-start" | "bottom-end" | "top-end";
+  PopperPlacement?:
+    | "auto-end"
+    | "auto-start"
+    | "auto"
+    | "bottom-end"
+    | "bottom-start"
+    | "bottom"
+    | "left-end"
+    | "left-start"
+    | "left"
+    | "right-end"
+    | "right-start"
+    | "right"
+    | "top-end"
+    | "top-start"
+    | "top";
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
@@ -138,7 +153,7 @@ const DropdownMenu = <
         {
           name: "offset",
           options: {
-            offset: [0, theme.app?.spacing.s],
+            offset: [0, theme?.app?.spacing?.s],
           },
         },
       ]}

@@ -2,6 +2,7 @@ import Icon from "src/core/Icon";
 import { ExtraTagProps } from "../style";
 import { WbSunny } from "@mui/icons-material";
 import CustomSvgIcon from "src/common/storybook/customSvgIcon";
+import { action } from "@storybook/addon-actions";
 
 export const TAG_EXCLUDED_CONTROLS = [
   "color",
@@ -42,6 +43,8 @@ export const TAG_SDS_TYPES: ExtraTagProps["sdsType"][] = [
   "primary",
   "secondary",
 ];
+
+export const TAG_ON_CLICK_OPTIONS = [action("onClick"), undefined];
 
 export const TAG_COLOR_CONTRAST_RULE = "color-contrast";
 

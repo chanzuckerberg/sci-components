@@ -18,6 +18,7 @@ import {
   getSemanticComponentColors,
   getSpaces,
 } from "src/core/styles";
+import { focusA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface InputSearchExtraProps extends CommonThemeProps {
   disabled?: boolean;
@@ -140,7 +141,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.base?.borderDisabled};
+        border: 1px solid ${semanticComponentColors?.base?.borderDisabled} !important;
       }
 
       .${inputAdornmentClasses.root} svg {
@@ -240,6 +241,8 @@ export const StyledSearchBase = styled(TextField, {
             }
           }
         }
+
+        ${focusA11yStyle()}
       }
 
       .${inputBaseClasses.inputSizeSmall} {

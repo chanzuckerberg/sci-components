@@ -3,8 +3,10 @@ import { Link, LinkProps as RawLinkProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps as StyleProps,
+  focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXs,
+  getSemanticComponentColors,
   getSemanticTextColors,
 } from "src/core/styles";
 
@@ -23,18 +25,45 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
 const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
+  const { sdsSize = "s" } = props;
   const semanticTextColors = getSemanticTextColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     color: ${semanticTextColors?.action?.default};
+    position: relative;
 
-    &:hover,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      margin-top: ${sdsSize === "s" ? -4 : -3}px;
+      width: 100%;
+    }
+
+    &:hover {
+      color: ${semanticTextColors?.action?.hover};
+
+      &::after {
+        background-color: ${semanticComponentColors?.accent?.borderHover};
+      }
+    }
+
     &:focus {
       color: ${semanticTextColors?.action?.hover};
+
+      &::after {
+        background-color: ${semanticComponentColors?.accent?.borderHover};
+      }
     }
 
     &:active {
       color: ${semanticTextColors?.action?.pressed};
+
+      &::after {
+        background-color: ${semanticComponentColors?.accent?.borderPressed};
+      }
     }
   `;
 };
@@ -81,7 +110,7 @@ export const StyledLink = styled(Link, {
   },
 })`
   all: unset;
-
+  ${focusVisibleA11yStyle()}
   ${(props: LinkProps) => {
     const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
 

@@ -1,5 +1,6 @@
-import { InfoOutlined } from "@mui/icons-material";
 import { Args } from "@storybook/react";
+import Button from "src/core/Button";
+import Icon from "src/core/Icon";
 import RawTooltip from "src/core/Tooltip";
 
 export const Tooltip = (props: Args): JSX.Element => {
@@ -18,7 +19,17 @@ export const Tooltip = (props: Args): JSX.Element => {
         }}
       >
         <RawTooltip title={title} {...props}>
-          <InfoOutlined />
+          <Button
+            sdsStyle="icon"
+            sdsSize="large"
+            icon={
+              <Icon
+                sdsIcon="ExclamationMarkCircle"
+                sdsSize="xl"
+                sdsType="interactive"
+              />
+            }
+          />
         </RawTooltip>
       </div>
     </div>

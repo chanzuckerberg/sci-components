@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import Button from "src/core/Button";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBodyS,
   fontBodySemiboldS,
   getCorners,
@@ -93,6 +94,8 @@ export const StyledPaginationChevronList = styled("li", {
           color: ${disabled ? semanticComponentColors?.base?.iconDisabled : semanticComponentColors?.base?.iconHover}
         }
       }
+
+      ${focusVisibleA11yStyle()}
     `;
   }}
 `;
@@ -159,6 +162,7 @@ export const Page = styled("li", {
       }
 
       ${selected && selectedPageStyle(props)};
+      ${focusVisibleA11yStyle()}
     `;
   }}
 `;

@@ -102,6 +102,9 @@ const Tooltip = forwardRef(function Tooltip(
       leaveDelay={leaveDelay}
       title={content}
       PopperComponent={PopperComponent}
+      // (masoudmanson): Setting tabIndex to 0 makes the tooltip component
+      // focusable and allows keyboard navigation.
+      tabIndex={0}
       ref={ref}
       {...rest}
       // (masoudmanson): SDS Tooltips should always have an arrow

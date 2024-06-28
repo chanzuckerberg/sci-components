@@ -33,6 +33,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       intent = "default",
       handleSubmit,
       onChange,
+      disabled,
       ...rest
     } = props;
 
@@ -89,6 +90,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       <>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
         <StyledSearchBase
+          id={id}
           ref={ref}
           // passed to mui Input
           InputProps={{
@@ -101,6 +103,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsType="tertiary"
                   sdsSize="small"
                   sdsStyle="icon"
+                  disabled={disabled}
                   sdsIconProps={{
                     sdsType: "iconButton",
                   }}
@@ -116,6 +119,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsType="tertiary"
                   sdsSize="small"
                   sdsStyle="icon"
+                  disabled={disabled}
                   sdsIconProps={{
                     sdsType: "interactive",
                   }}
@@ -125,7 +129,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
             ),
           }}
           type="search"
-          id={id}
           variant="outlined"
           size="small"
           placeholder={placeholder}
@@ -135,6 +138,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           onChange={handleChange}
           onKeyDown={handleKeyPress}
           intent={intent}
+          disabled={disabled}
           /**
            * (masoudmanson): This prevents the browser's default auto completion
            * menu from being displayed for the InputSearch.

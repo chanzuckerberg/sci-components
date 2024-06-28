@@ -129,6 +129,7 @@ const AutocompleteBase = <
     onClick,
     onOpen,
     onClose,
+    disabled,
   } = props;
   const theme: SDSTheme = useTheme();
 
@@ -181,6 +182,7 @@ const AutocompleteBase = <
        * to the user.
        */
       onInputChange={defaultOnInputChange}
+      disabled={disabled || !search}
     />
   );
 
@@ -212,6 +214,11 @@ const AutocompleteBase = <
       <InputBaseWrapper search={search}>
         <StyledMenuInputSearch
           id="location-search"
+          aria-label="Search Input"
+          // (masoudmanson): This is to ensure that the input field won't be focusable
+          // when the search prop is set to false.
+          tabIndex={search ? 0 : -1}
+          aria-hidden={!search}
           label={label}
           placeholder={label}
           ref={params.InputProps.ref}
@@ -224,21 +231,22 @@ const AutocompleteBase = <
           }}
           InputProps={{
             /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: search ? "text" : "none",
-            /**
              * (mmoore): passing only the ref along to InputProps to prevent
              * default MUI arrow from rendering in search input.
              * renderInput strips InputProps, so we explicitly pass end adornment here
              */
             ...params.InputProps.ref,
+            "aria-hidden": !search,
             endAdornment: (
               <StyledInputAdornment position="end">
                 {inputValue && (
                   <Button
-                    aria-label="clear-button"
+                    // (masoudmanson): This is to ensure that the clear button won't be focusable
+                    // when the search prop is set to false.
+                    tabIndex={search ? 0 : -1}
+                    aria-hidden={!search}
+                    disabled={!search}
+                    aria-label="Clear Button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
                     sdsType="tertiary"
@@ -252,11 +260,21 @@ const AutocompleteBase = <
                 )}
               </StyledInputAdornment>
             ),
+            /**
+             * (thuang): Works with css caret-color: "transparent" to hide
+             * mobile keyboard
+             */
+            inputMode: search ? "text" : "none",
             inputProps: params.inputProps,
             startAdornment: (
               <StyledInputAdornment position="start">
                 <Button
-                  aria-label="search-button"
+                  aria-label="Search Button"
+                  // (masoudmanson): This is to ensure that the search button won't be focusable
+                  // when the search prop is set to false.
+                  tabIndex={search ? 0 : -1}
+                  aria-hidden={!search}
+                  disabled={!search}
                   onClick={clearInput}
                   sdsType="tertiary"
                   sdsSize="small"

@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontHeaderS,
   getSemanticComponentColors,
   getSemanticTextColors,
@@ -51,6 +52,7 @@ export const StyledTableHeader = styled("th", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontHeaderS}
+  ${focusVisibleA11yStyle()}
 
   ${(props: CellHeaderExtraProps) => {
     const { active = false, horizontalAlign = "left" } = props;

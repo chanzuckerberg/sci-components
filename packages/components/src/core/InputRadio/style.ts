@@ -65,7 +65,8 @@ export const StyledRadioButton = styled(RawRadio)`
 
       &.${radioClasses.root} {
         ${focusVisibleA11yStyle()}
-        padding: 0 ${spaces?.s}px 0 0;
+        margin: 0 ${spaces?.s}px 0 0;
+        padding: 0;
       }
 
       .MuiSvgIcon-root {

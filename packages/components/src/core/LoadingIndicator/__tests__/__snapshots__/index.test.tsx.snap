@@ -2,6 +2,7 @@
 
 exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
 <div
+  aria-label="Loading"
   class="css-1o5w4es"
 >
   <div
@@ -32,6 +33,7 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
 
 exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
 <div
+  aria-label="Loading"
   class="css-1o5w4es"
 >
   <div

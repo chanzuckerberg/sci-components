@@ -1,32 +1,31 @@
-import { RadioGroup } from "@mui/material";
-import { Args } from "@storybook/react";
+import { FormControl, FormLabel, RadioGroup } from "@mui/material";
 import RawInputRadio from "src/core/InputRadio";
 
-export const TestDemo = (props: Args): JSX.Element => {
-  const { label } = props;
-
+export const TestDemo = (): JSX.Element => {
   return (
-    <div>
+    <FormControl>
+      <FormLabel id="demo-radio-buttons-group-label">Ticket Status</FormLabel>
       <RadioGroup
-        aria-labelledby="demo-input-radio-group-label"
+        aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="demo1"
         name="input-radio-group"
         data-testid="radioButtonGroup"
+        sx={{ mt: 5 }}
       >
-        <RawInputRadio data-testid="inputRadio" label={label} value="demo1" />
+        <RawInputRadio data-testid="inputRadio" label="Blocked" value="demo1" />
         <RawInputRadio
           caption="Caption"
           data-testid="inputRadio"
-          label={label}
+          label="In Progress"
           value="demo2"
         />
         <RawInputRadio
           caption="Caption"
           data-testid="inputRadio"
-          label={label}
+          label="Completed"
           value="demo3"
         />
       </RadioGroup>
-    </div>
+    </FormControl>
   );
 };
