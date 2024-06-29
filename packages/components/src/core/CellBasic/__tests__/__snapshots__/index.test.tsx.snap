@@ -7,9 +7,10 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
       style="display: block; max-width: 400px;"
     >
       <td
-        class=" css-p6nomj"
+        class=" css-wat3w6"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
+        tabindex="0"
       >
         <div
           class="css-ov1ktg"

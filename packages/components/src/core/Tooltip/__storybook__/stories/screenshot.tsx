@@ -1,4 +1,3 @@
-import { InfoOutlined } from "@mui/icons-material";
 import {
   TOOLTIP_MID_LABEL,
   TOOLTIP_ARROW_OFFSET_OPTIONS,
@@ -9,6 +8,7 @@ import {
   TOOLTIP_WIDTH_OPTIONS,
 } from "../constants";
 import RawTooltip from "src/core/Tooltip";
+import Button from "src/core/Button";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all SDS_STYLES
@@ -198,7 +198,14 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                     key={String(width)}
                     open
                   >
-                    <InfoOutlined />
+                    <Button
+                      aria-label="tooltip test button"
+                      sdsStyle="icon"
+                      sdsSize="medium"
+                      icon="ExclamationMarkCircle"
+                      sdsType="tertiary"
+                      tabIndex={0}
+                    ></Button>
                   </RawTooltip>
                 </>
               </div>

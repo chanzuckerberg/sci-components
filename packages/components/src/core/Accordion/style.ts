@@ -15,6 +15,7 @@ import {
   getSpaces,
   getTypography,
 } from "src/core/styles";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
@@ -45,7 +46,12 @@ export const StyledAccordion = styled(Accordion, {
         height: fit-content;
 
         & .${accordionSummaryClasses.root} {
+          ${focusVisibleA11yStyle()}
           min-height: 44px;
+
+          &.${accordionSummaryClasses.focusVisible} {
+            background-color: unset;
+          }
 
           &.${accordionSummaryClasses.expanded} {
             min-height: unset;

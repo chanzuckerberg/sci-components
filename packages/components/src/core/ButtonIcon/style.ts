@@ -6,6 +6,7 @@ import {
   focusVisibleA11yStyle,
   getIconSizes,
   getSemanticComponentColors,
+  getSpaces,
 } from "src/core/styles";
 
 export interface ButtonIconExtraProps extends CommonThemeProps {
@@ -119,12 +120,13 @@ const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
 const small = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
+  const spaces = getSpaces(props);
 
   return css`
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: ${spaces?.xs}px;` : ""}
     }
   `;
 };
@@ -132,12 +134,13 @@ const small = (props: ButtonIconExtraProps): SerializedStyles => {
 const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
+  const spaces = getSpaces(props);
 
   return css`
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
-      ${sdsType !== "tertiary" ? `margin: 7px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: ${spaces?.xs}px;` : ""}
     }
   `;
 };
@@ -145,12 +148,13 @@ const medium = (props: ButtonIconExtraProps): SerializedStyles => {
 const large = (props: ButtonIconExtraProps): SerializedStyles => {
   const { sdsType } = props;
   const iconSizes = getIconSizes(props);
+  const spaces = getSpaces(props);
 
   return css`
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
-      ${sdsType !== "tertiary" ? `margin: 5px;` : ""}
+      ${sdsType !== "tertiary" ? `margin: ${spaces?.xxs}px;` : ""}
     }
   `;
 };

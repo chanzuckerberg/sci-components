@@ -8,7 +8,17 @@ export type InputSliderProps = InputSliderExtraProps;
  */
 const InputSlider = forwardRef<HTMLSpanElement, InputSliderExtraProps>(
   (props, ref) => {
-    return <StyledSlider ref={ref} {...props} orientation="horizontal" />;
+    const { min, max, ...rest } = props;
+    return (
+      <StyledSlider
+        ref={ref}
+        min={min}
+        max={max}
+        {...rest}
+        orientation="horizontal"
+        aria-label={`Slider - min ${min} to max ${max}`}
+      />
+    );
   }
 );
 

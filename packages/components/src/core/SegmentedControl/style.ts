@@ -1,5 +1,6 @@
 import { ToggleButtonGroup, toggleButtonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getSemanticComponentColors,
@@ -16,7 +17,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
     const semanticComponentColors = getSemanticComponentColors(props);
 
     return `
-    .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
+      .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
         background-color: ${semanticComponentColors?.base?.fillOpen};
         color: ${semanticComponentColors?.accent?.icon};
         border-color: ${semanticComponentColors?.base?.border};
@@ -27,6 +28,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       }
 
       .${toggleButtonClasses.root} {
+        ${focusVisibleA11yStyle()}
         border-color: ${semanticComponentColors?.base?.border};
         line-height: 0px;
         color: ${semanticComponentColors?.base?.iconHover};

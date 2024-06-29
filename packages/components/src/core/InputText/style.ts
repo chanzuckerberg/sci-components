@@ -16,6 +16,7 @@ import {
   getSemanticComponentColors,
   getSpaces,
 } from "src/core/styles";
+import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
@@ -188,6 +189,11 @@ export const StyledInputBase = styled(TextField, {
       .${outlinedInputClasses.notchedOutline} {
         border-radius: ${corners?.m}px;
         border: ${borders?.base?.default};
+      }
+
+      .${outlinedInputClasses.input} {
+        ${focusVisibleA11yStyle()}
+        border-radius: 4px;
       }
 
       .${outlinedInputClasses.root}:hover

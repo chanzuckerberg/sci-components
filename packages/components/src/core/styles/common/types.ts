@@ -22,6 +22,7 @@ export interface SDSComponentPalette {
     border: string;
     borderHover: string;
     borderDisabled: string;
+    borderPressed: string;
     icon: string;
     iconHover: string;
     iconPressed: string;
@@ -38,6 +39,7 @@ export interface SDSComponentPalette {
     borderHover: string;
     borderOpen: string;
     borderFocus: string;
+    borderPressed: string;
     borderSelected: string;
     borderDisabled: string;
     icon: string;
@@ -311,6 +313,7 @@ export interface AccentColor {
   borderHover: string;
   borderOpen: string;
   borderSelected: string;
+  borderPressed?: string;
   fill: string;
   fillDisabled: string;
   fillHover: string;
@@ -324,6 +327,7 @@ export interface BaseColor {
   border: string;
   borderDisabled: string;
   borderHover: string;
+  borderPressed?: string;
   divider: string;
   fill: string;
   fillDisabled: string;

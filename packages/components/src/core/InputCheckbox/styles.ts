@@ -65,7 +65,8 @@ export const StyledCheckbox = styled(RawCheckbox)`
       &.${checkboxClasses.root} {
         ${focusVisibleA11yStyle()}
         padding: 0;
-        padding-right: ${spaces?.s}px;
+        margin-right: ${spaces?.s}px;
+        border-radius: 0;
       }
 
       .MuiSvgIcon-root {

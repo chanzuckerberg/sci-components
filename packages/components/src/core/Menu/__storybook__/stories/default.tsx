@@ -6,7 +6,7 @@ import RawMenu from "src/core/Menu";
 
 export const Menu = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
-
+  const open = Boolean(anchorEl);
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -17,14 +17,27 @@ export const Menu = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <Button sdsStyle="minimal" sdsType="secondary" onClick={handleClick}>
+      <Button
+        id="basic-button"
+        sdsStyle="minimal"
+        sdsType="secondary"
+        onClick={handleClick}
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? true : undefined}
+      >
         Click me!
       </Button>
       <RawMenu
+        id="basic-menu"
         anchorEl={anchorEl}
         keepMounted
-        open={Boolean(anchorEl)}
+        open={open}
         onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+        role="listbox"
         {...props}
       >
         <MenuItem onClick={handleClose}>Contact us</MenuItem>

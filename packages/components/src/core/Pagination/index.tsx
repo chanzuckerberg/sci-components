@@ -23,6 +23,60 @@ export interface PaginationInternalProps {
 
 export type PaginationProps = PaginationExtraProps & PaginationInternalProps;
 
+const PaginationPageList = (
+  paginationRange: (number | number[])[],
+  truncateDropdown: boolean,
+  sdsStyle: "round" | "square",
+  onPageChange: (page: number) => void,
+  currentPage: number
+) => {
+  function handlePageKeyDown(event: React.KeyboardEvent, pageNumber: number) {
+    if (event.key === "Enter" || event.code === "Space") {
+      onPageChange(pageNumber);
+    }
+  }
+
+  return paginationRange.map((pageNumber) => {
+    if (Array.isArray(pageNumber)) {
+      if (truncateDropdown) {
+        return (
+          <PageListDropdown
+            pageList={pageNumber}
+            onPageChange={onPageChange}
+            key={pageNumber.join("-")}
+            sdsStyle={sdsStyle}
+          />
+        );
+      }
+      return (
+        <Page sdsStyle={sdsStyle} key={pageNumber.join("-")}>
+          <StyledPaginationButton
+            aria-label="Go to a page"
+            disabled
+            icon="DotsHorizontal"
+            sdsSize="small"
+            sdsStyle="icon"
+            sdsType="tertiary"
+          />
+        </Page>
+      );
+    }
+
+    return (
+      <Page
+        key={pageNumber}
+        onClick={() => onPageChange(pageNumber)}
+        onKeyDown={(event) => handlePageKeyDown(event, pageNumber)}
+        selected={pageNumber === currentPage}
+        sdsStyle={sdsStyle}
+        tabIndex={0}
+      >
+        {pageNumber}
+      </Page>
+    );
+  });
+};
+
 const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
   (props: PaginationProps, ref): JSX.Element | null => {
     const {
@@ -62,6 +116,8 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           key="prevPage"
           disabled={currentPage === 1}
           onClick={() => currentPage > 1 && onPreviousPage()}
+          onKeyDown={handleGoBackButtonKeyDown}
+          tabIndex={0}
         >
           <Icon
             aria-label="Previous page"
@@ -71,48 +127,21 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           />
         </StyledPaginationChevronList>
 
-        {paginationRange.map((pageNumber) => {
-          if (Array.isArray(pageNumber)) {
-            if (truncateDropdown) {
-              return (
-                <PageListDropdown
-                  pageList={pageNumber}
-                  onPageChange={onPageChange}
-                  key={pageNumber.join("-")}
-                  sdsStyle={sdsStyle}
-                />
-              );
-            }
-            return (
-              <Page sdsStyle={sdsStyle} key={pageNumber.join("-")}>
-                <StyledPaginationButton
-                  aria-label="Go to a page"
-                  disabled
-                  icon="DotsHorizontal"
-                  sdsSize="small"
-                  sdsStyle="icon"
-                  sdsType="tertiary"
-                />
-              </Page>
-            );
-          }
+        {PaginationPageList(
+          paginationRange,
+          truncateDropdown,
+          sdsStyle,
+          onPageChange,
+          currentPage
+        )}
 
-          return (
-            <Page
-              key={pageNumber}
-              onClick={() => onPageChange(pageNumber)}
-              selected={pageNumber === currentPage}
-              sdsStyle={sdsStyle}
-            >
-              {pageNumber}
-            </Page>
-          );
-        })}
         <StyledPaginationChevronList
           data-order="last"
           key="onNextPage"
           disabled={currentPage === lastPage}
           onClick={() => currentPage !== lastPage && onNextPage()}
+          onKeyDown={handleGoNextButtonKeyDown}
+          tabIndex={0}
         >
           <Icon
             aria-label="Next page"
@@ -123,6 +152,24 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
         </StyledPaginationChevronList>
       </StyledPagination>
     );
+
+    function handleGoBackButtonKeyDown(event: React.KeyboardEvent) {
+      if (
+        (event.key === "Enter" || event.code === "Space") &&
+        currentPage > 1
+      ) {
+        onPreviousPage();
+      }
+    }
+
+    function handleGoNextButtonKeyDown(event: React.KeyboardEvent) {
+      if (
+        (event.key === "Enter" || event.code === "Space") &&
+        currentPage !== lastPage
+      ) {
+        onNextPage();
+      }
+    }
   }
 );
 

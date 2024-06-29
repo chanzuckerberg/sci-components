@@ -31,6 +31,7 @@ const doNotForwardProps = [
 export interface InputDropdownProps
   extends CommonThemeProps,
     Omit<ButtonProps, (typeof doNotForwardProps)[number]> {
+  children?: ReactNode;
   disabled?: boolean;
   intent?: "default" | "error" | "warning";
   label: ReactNode;
@@ -59,7 +60,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const borders = getBorders(props);
   const semanticTextColors = getSemanticTextColors(props);
-  const semanticCommonColors = getSemanticComponentColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   /**
    * (masoudmanson)
@@ -95,7 +96,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticCommonColors?.base?.icon};
+      fill: ${semanticComponentColors?.base?.icon};
     }
 
     &:hover {
@@ -104,7 +105,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${semanticTextColors?.base?.primary};
 
       path {
-        fill: ${semanticCommonColors?.base?.iconHover};
+        fill: ${semanticComponentColors?.base?.iconHover};
       }
 
       .styled-label {
@@ -117,7 +118,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${semanticTextColors?.base?.primary};
 
       path {
-        fill: ${semanticCommonColors?.accent?.icon};
+        fill: ${semanticComponentColors?.accent?.icon};
       }
     }
 
@@ -130,7 +131,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const semanticTextColors = getSemanticTextColors(props);
-  const semanticCommonColors = getSemanticComponentColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     ${labelStyle(props)}
@@ -154,16 +155,16 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticCommonColors?.base?.icon};
+      fill: ${semanticComponentColors?.base?.icon};
     }
 
     &:hover {
-      background-color: ${semanticCommonColors?.base?.fillHover};
+      background-color: ${semanticComponentColors?.base?.fillHover};
       border: none;
       color: ${semanticTextColors?.base?.primary};
 
       path {
-        fill: ${semanticCommonColors?.base?.iconHover};
+        fill: ${semanticComponentColors?.base?.iconHover};
       }
 
       .styled-label {
@@ -172,12 +173,8 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      background-color: ${semanticCommonColors?.base?.fillHover};
+      background-color: ${semanticComponentColors?.base?.fillHover};
       border: none;
-    }
-
-    &:focus {
-      outline: none;
     }
 
     &.MuiButton-root.MuiButton-text > span {
@@ -211,7 +208,9 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
+  const { sdsStyle } = props;
   const semanticTextColors = getSemanticTextColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     & .styled-label {
@@ -223,13 +222,29 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
         color: ${semanticTextColors?.base?.primary};
       }
     }
+
+    ${sdsStyle === "minimal"
+      ? `
+        background-color: ${semanticComponentColors?.base?.fillHover};
+        border: none;
+        color: ${semanticTextColors?.base?.primary};
+
+        path {
+          fill: ${semanticComponentColors?.base?.iconHover};
+        }
+
+        .styled-label {
+          color: ${semanticTextColors?.base?.primary};
+        }
+      `
+      : ""}
   `;
 };
 
 const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
   const semanticTextColors = getSemanticTextColors(props);
-  const semanticCommonColors = getSemanticComponentColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     ${props.sdsStyle === "minimal"
@@ -237,7 +252,7 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : ""}
 
     path {
-      fill: ${semanticCommonColors?.accent?.icon};
+      fill: ${semanticComponentColors?.accent?.icon};
     }
 
     border-color: ${colors?.blue[400]};
@@ -288,11 +303,11 @@ const error = (props: InputDropdownProps): SerializedStyles => {
 
 const isDisabled = (props: InputDropdownProps): SerializedStyles => {
   const semanticTextColors = getSemanticTextColors(props);
-  const semanticCommonColors = getSemanticComponentColors(props);
+  const semanticComponentColors = getSemanticComponentColors(props);
 
   return css`
     cursor: default;
-    border-color: ${semanticCommonColors?.base?.borderDisabled};
+    border-color: ${semanticComponentColors?.base?.borderDisabled};
 
     span {
       color: ${semanticTextColors?.base?.disabled};
@@ -305,7 +320,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticCommonColors?.base?.fillDisabled};
+      fill: ${semanticComponentColors?.base?.fillDisabled};
     }
   `;
 };
@@ -325,6 +340,8 @@ export const StyledInputDropdown = styled(
   }
 )`
   ${labelFontBodyXs}
+  ${focusVisibleA11yStyle()}
+  outline-offset: 1px !important;
 
   /* (thuang): in Minimal it's a different value */
   align-items: center;
@@ -403,11 +420,11 @@ export const StyledCounter = styled("span", {
   ${(props: CommonThemeProps) => {
     const corners = getCorners(props);
     const spaces = getSpaces(props);
-    const semanticCommonColors = getSemanticComponentColors(props);
+    const semanticComponentColors = getSemanticComponentColors(props);
     const semanticTextColors = getSemanticTextColors(props);
 
     return `
-      background-color: ${semanticCommonColors?.base?.surfaceTertiary};
+      background-color: ${semanticComponentColors?.base?.surfaceTertiary};
       color: ${semanticTextColors?.base?.accent};
       border-radius: ${corners?.l}px;
       padding: 0 ${spaces?.xs}px;

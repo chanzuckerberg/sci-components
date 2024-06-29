@@ -28,7 +28,6 @@ export type RadioProps = RadioContentProps & RadioExtraProps;
  */
 const InputRadio = (props: RadioProps): JSX.Element => {
   const {
-    label,
     caption,
     disabled,
     intent = "default",
@@ -37,34 +36,45 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     value,
   } = props;
 
+  // (masoudmanson): We don't need to pass the label prop to the radio component
+  // so we are destructuring it here.
+  const { label, ...restProps } = props;
+
   let newProps: MUIRadioProps;
   switch (stage) {
     case "checked":
       newProps = {
-        ...props,
+        ...restProps,
         checked: true,
         color: "primary",
       };
       break;
     case "unchecked":
       newProps = {
-        ...props,
+        ...restProps,
         checked: false,
         color: "default",
       };
       break;
     default:
-      newProps = props;
+      newProps = restProps;
   }
+
+  // (masoudmanson): The id for the label and caption is required for accessibility.
+  // Otherwise, the screen reader will read the label twice!
+  const labelId = `${value}-label`;
+  const captionId = caption ? `${value}-caption` : undefined;
 
   const finalLabel = caption ? (
     <StyledLabelContainer>
-      <StyledRadioLabel>{label}</StyledRadioLabel>
-      <StyledRadioCaption disabled={disabled}>{caption}</StyledRadioCaption>
+      <StyledRadioLabel id={labelId}>{label}</StyledRadioLabel>
+      <StyledRadioCaption disabled={disabled} id={captionId}>
+        {caption}
+      </StyledRadioCaption>
     </StyledLabelContainer>
   ) : (
     <StyledLabelContainer>
-      <StyledRadioLabel>{label}</StyledRadioLabel>
+      <StyledRadioLabel id={labelId}>{label}</StyledRadioLabel>
     </StyledLabelContainer>
   );
 

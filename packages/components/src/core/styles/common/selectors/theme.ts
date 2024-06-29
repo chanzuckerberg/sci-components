@@ -24,6 +24,9 @@ export const getSpaces = ({ theme }: CommonThemeProps): Spaces | null => {
   return theme?.app?.spacing || null;
 };
 
+/**
+ * @deprecated getSpacings() is deprecated and may be removed in a future release. Please use getSpaces()
+ */
 export const getSpacings = ({ theme }: CommonThemeProps): Spaces | null => {
   console.warn(
     "getSpacings() is deprecated and may be removed in a future release. Please use getSpaces()"

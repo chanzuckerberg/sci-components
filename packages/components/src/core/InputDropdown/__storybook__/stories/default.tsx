@@ -5,7 +5,6 @@ import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Callout from "src/core/Callout";
 import CalloutTitle from "src/core/Callout/components/CalloutTitle";
 import DropdownMenu from "src/core/DropdownMenu";
-import { InputDropdownProps } from "src/core/InputDropdown";
 import { StyledInputDropdown } from "../style";
 
 type DisableClearable = false;
@@ -29,8 +28,6 @@ export const InputDropdown = <
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [sdsStage, setSdsStage] =
-    useState<InputDropdownProps["sdsStage"]>("default");
   const [details, setDetails] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
@@ -66,8 +63,6 @@ export const InputDropdown = <
   }, [label, sdsType]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setSdsStage("userInput");
-
     if (open) {
       setOpen(false);
 
@@ -111,9 +106,6 @@ export const InputDropdown = <
   const handleClickAway = () => {
     if (open) {
       setOpen(false);
-      if (!value || (Array.isArray(value) && value.length === 0)) {
-        setSdsStage("default");
-      }
     }
   };
 
@@ -146,7 +138,6 @@ export const InputDropdown = <
           label={storybookLabel}
           onClick={handleClick}
           state={open ? "open" : "default"}
-          sdsStage={sdsStage}
           sdsStyle={sdsStyle}
           sdsType={sdsType}
           multiple={multiple}
@@ -154,6 +145,7 @@ export const InputDropdown = <
           value={inputDropdownValue}
           counter={counter}
           data-testid="InputDropdown"
+          sdsStage={open ? "userInput" : "default"}
           {...rest}
         />
       )}

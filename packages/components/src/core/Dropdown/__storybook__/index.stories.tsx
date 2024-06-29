@@ -13,6 +13,7 @@ import {
 import { ControlledDropdownDemo } from "./stories/controlledDropdown";
 import { TestDemo } from "./stories/test";
 import { InsideModalDemo } from "./stories/insideModal";
+import { PopperPlacementDemo } from "./stories/popperPlacement";
 
 export default {
   argTypes: {
@@ -88,6 +89,9 @@ export default {
 
 export const Default = {
   args: {
+    DropdownMenuProps: {
+      PopperPlacement: "bottom-start",
+    },
     buttonPosition: "left",
     buttons: false,
     closeOnBlur: true,
@@ -175,6 +179,23 @@ export const ControlledDropdown = {
     },
   },
   render: (args: Args) => <ControlledDropdownDemo {...args} />,
+};
+
+// Popper Placement
+
+export const PopperPlacement = {
+  args: {
+    label: DROPDOWN_LABEL,
+  },
+  parameters: {
+    controls: {
+      exclude: DROPDOWN_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <PopperPlacementDemo {...args} />,
 };
 
 // Test

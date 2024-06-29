@@ -48,6 +48,10 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
     return `
       ${!search && `height: 0`};
 
+      .MuiFormControl-root {
+        outline: none;
+      }
+
       .MuiOutlinedInput-root.MuiInputBase-formControl.MuiInputBase-adornedEnd {
         padding: 0 ${spaces?.m}px;
 
@@ -136,6 +140,7 @@ export const InputBaseWrapper = styled("div", {
         clip: rect(0 0 0 0);
         overflow: hidden;
         margin: 0;
+        speak: none;
       `;
     }
   }}
