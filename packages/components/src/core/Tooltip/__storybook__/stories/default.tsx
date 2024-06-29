@@ -20,6 +20,7 @@ export const Tooltip = (props: Args): JSX.Element => {
       >
         <RawTooltip title={title} {...props}>
           <Button
+            aria-label="tooltip test button"
             sdsStyle="icon"
             sdsSize="large"
             icon={

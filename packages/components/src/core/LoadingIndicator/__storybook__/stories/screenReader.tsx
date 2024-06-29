@@ -22,18 +22,20 @@ export const ScreenReaderDemo = (): JSX.Element => {
           margin: "0 0 16px 0",
         }}
       />
-      <fieldset role="region" id="loading-indicator" aria-live="polite">
+      <fieldset>
         <legend>aria-live region</legend>
-        {loading ? (
-          <>
-            <p>The content is being loaded!</p>
-            <RawLoadingIndicator sdsStyle="tag" />
-          </>
-        ) : (
-          <>
-            <p>Loading has finished!</p>
-          </>
-        )}
+        <div role="region" id="loading-indicator" aria-live="polite">
+          {loading ? (
+            <>
+              <p>The content is being loaded!</p>
+              <RawLoadingIndicator sdsStyle="tag" />
+            </>
+          ) : (
+            <>
+              <p>Loading has finished!</p>
+            </>
+          )}
+        </div>
       </fieldset>
     </>
   );

@@ -17,6 +17,7 @@ export const TooltipCondensed = (props: Args): JSX.Element => {
       >
         <RawTooltipCondensed indicator={indicator} title={title} {...props}>
           <Button
+            aria-label="tooltip condensed test button"
             data-testid="tooltip-hover"
             icon="ExclamationMarkCircle"
             sdsSize="large"
