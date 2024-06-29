@@ -10,6 +10,7 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
     style="margin: 135px 300px;"
   >
     <button
+      aria-label="tooltip test button"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-1ha43wd-MuiButtonBase-root-MuiIconButton-root"
       data-mui-internal-clone-element="true"
       icon="[object Object]"
