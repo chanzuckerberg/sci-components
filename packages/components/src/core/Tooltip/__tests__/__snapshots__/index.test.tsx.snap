@@ -13,7 +13,7 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
       aria-label="tooltip test button"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium  css-1ha43wd-MuiButtonBase-root-MuiIconButton-root"
       data-mui-internal-clone-element="true"
-      icon="[object Object]"
+      icon="ExclamationMarkCircle"
       tabindex="0"
       type="button"
     >
@@ -22,7 +22,7 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
           data-file-name="IconExclamationMarkCircleLarge"
           data-testid="IconExclamationMarkCircleLarge"
           fillcontrast="white"

@@ -34,6 +34,9 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         />
       </div>
     </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
   </button>
   <button
     aria-label="List B"
@@ -63,6 +66,9 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         />
       </div>
     </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
   </button>
   <button
     aria-label="List C"
@@ -92,6 +98,9 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         />
       </div>
     </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
   </button>
   <button
     aria-label="List D"
@@ -121,6 +130,9 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         />
       </div>
     </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
   </button>
 </div>
 `;

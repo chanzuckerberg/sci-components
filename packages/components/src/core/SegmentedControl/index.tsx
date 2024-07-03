@@ -64,7 +64,7 @@ const SegmentedControl = (props: SegmentedControlProps) => {
             arrow
             key={value}
           >
-            <ToggleButton aria-label={tooltipText} disableRipple value={value}>
+            <ToggleButton aria-label={tooltipText} value={value}>
               <span tabIndex={-1}>{iconItem()}</span>
             </ToggleButton>
           </Tooltip>
