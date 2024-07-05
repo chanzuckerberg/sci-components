@@ -192,8 +192,12 @@ export const StyledInputBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.input} {
-        ${focusVisibleA11yStyle()}
+        outline: none;
         border-radius: 4px;
+      }
+
+      &.user-is-tabbing .${outlinedInputClasses.input} {
+        ${focusVisibleA11yStyle()}
       }
 
       .${outlinedInputClasses.root}:hover

@@ -215,6 +215,7 @@
     "sds-color-semantic-component-base-border-hover": "#000000",
     "sds-color-semantic-component-base-border-disabled": "#CCCCCC",
     "sds-color-semantic-component-base-border-pressed": "#000000",
+    "sds-color-semantic-component-base-border-table": "#CCCCCC",
     "sds-color-semantic-component-base-icon": "#767676",
     "sds-color-semantic-component-base-icon-hover": "#000000",
     "sds-color-semantic-component-base-icon-pressed": "#000000",

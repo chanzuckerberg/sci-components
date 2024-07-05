@@ -12,7 +12,13 @@ import {
   PopperProps,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
+import React, {
+  ReactNode,
+  SyntheticEvent,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Button from "src/core/Button";
 import { IconProps } from "src/core/Icon";
@@ -29,6 +35,7 @@ import {
   StyledMenuItemText,
   StyledPaper,
 } from "./style";
+import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
 // (thuang): This requires option to have a `name` property.
 // (masoudmanson): Represents a generic autocomplete option with common properties.
@@ -133,10 +140,14 @@ const AutocompleteBase = <
   } = props;
   const theme: SDSTheme = useTheme();
 
+  const ref = useRef(null);
   const [inputValue, setInputValue] = useState("");
+
+  useDetectUserTabbing(ref);
 
   return (
     <StyledAutocompleteBase
+      ref={ref}
       clearOnBlur={clearOnBlur}
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal

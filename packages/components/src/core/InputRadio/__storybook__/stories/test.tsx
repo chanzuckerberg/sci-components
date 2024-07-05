@@ -4,7 +4,9 @@ import RawInputRadio from "src/core/InputRadio";
 export const TestDemo = (): JSX.Element => {
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Ticket Status</FormLabel>
+      <FormLabel id="demo-radio-buttons-group-label" style={{ color: "black" }}>
+        Ticket Status
+      </FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="demo1"

@@ -31,6 +31,7 @@ import {
   StyledPaper,
   StyledPopper,
 } from "./style";
+import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -151,6 +152,8 @@ const AutocompleteMultiColumn = <
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  useDetectUserTabbing(anchorRef);
 
   useEffect(() => {
     setAnchorEl(anchorRef?.current);

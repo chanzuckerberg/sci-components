@@ -100,6 +100,7 @@ export function makeThemeOptions(appTheme: AppTheme): SDSThemeOptions {
             borderDisabled: appTheme.colors.gray[300],
             borderHover: appTheme.colors.common.black,
             borderPressed: appTheme.colors.common.black,
+            borderTable: appTheme.colors.gray[300],
             divider: appTheme.colors.gray[200],
             fill: appTheme.colors.common.white,
             fillDisabled: appTheme.colors.gray[300],

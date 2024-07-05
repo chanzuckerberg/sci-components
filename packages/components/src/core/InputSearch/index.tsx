@@ -1,5 +1,5 @@
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import Button from "src/core/Button";
 import {
   InputSearchExtraProps,
@@ -7,6 +7,7 @@ import {
   StyledLabel,
   StyledSearchBase,
 } from "./style";
+import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -36,6 +37,23 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       disabled,
       ...rest
     } = props;
+
+    /**
+     * (masoudmanson): In case that the ref is not provided, we will create a new one.
+     */
+    const inputRef = useRef(null);
+
+    /**
+     * (masoudmanson): This is a custom hook that listens for keyboard and mouse events
+     * and adds a 'user-is-tabbing' class to the body element when the user starts
+     * navigating with the keyboard. Unlike button elements which have both :focus
+     * and :focus-visible states available to style separately, input elements have
+     * identical styles for :focus and :focus-visible states. By detecting when the
+     * user is tabbing, we can apply different styles for :focus and :focus-visible states.
+     */
+    useDetectUserTabbing(
+      (ref ? ref : inputRef) as React.RefObject<HTMLElement>
+    );
 
     const [hasValue, setHasValue] = useState<boolean>(false);
     const [value, setValue] = useState<string>("");
@@ -91,7 +109,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
         <StyledSearchBase
           id={id}
-          ref={ref}
+          ref={ref ? ref : inputRef}
           // passed to mui Input
           InputProps={{
             endAdornment: (
