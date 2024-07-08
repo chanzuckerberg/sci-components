@@ -110,7 +110,9 @@ export const StyledLink = styled(Link, {
   },
 })`
   all: unset;
-  ${focusVisibleA11yStyle()}
+
+  ${focusVisibleA11yStyle}
+
   ${(props: LinkProps) => {
     const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
 

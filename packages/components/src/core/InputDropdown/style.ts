@@ -340,7 +340,7 @@ export const StyledInputDropdown = styled(
   }
 )`
   ${labelFontBodyXs}
-  ${focusVisibleA11yStyle()}
+  ${focusVisibleA11yStyle}
   outline-offset: 1px !important;
 
   /* (thuang): in Minimal it's a different value */
