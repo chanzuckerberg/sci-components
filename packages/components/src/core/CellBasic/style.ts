@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
-  focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXxs,
   getSemanticTextColors,
@@ -52,7 +51,6 @@ export const StyledTableData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontBodyS}
-  ${focusVisibleA11yStyle()}
 
   ${(props: CellBasicExtraProps) => {
     const { horizontalAlign = "left", verticalAlign = "top" } = props;

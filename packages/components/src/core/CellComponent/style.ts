@@ -1,10 +1,5 @@
 import { styled } from "@mui/material/styles";
-import {
-  CommonThemeProps,
-  focusVisibleA11yStyle,
-  fontBodyS,
-  getSpaces,
-} from "src/core/styles";
+import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
 
 export interface CellComponentExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
@@ -17,7 +12,6 @@ export const StyledCellComponentData = styled("td", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontBodyS}
-  ${focusVisibleA11yStyle()}
 
   ${(props: CellComponentExtraProps) => {
     const spaces = getSpaces(props);

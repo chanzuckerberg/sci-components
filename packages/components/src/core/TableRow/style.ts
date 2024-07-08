@@ -2,7 +2,6 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 import {
   CommonThemeProps,
-  focusVisibleA11yStyle,
   fontHeaderS,
   getBorders,
   getSemanticComponentColors,
@@ -74,7 +73,6 @@ export const StyledTableRow = styled("tr", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${fontHeaderS}
-  ${focusVisibleA11yStyle()}
 
   ${(props: RowExtraProps) => {
     const {

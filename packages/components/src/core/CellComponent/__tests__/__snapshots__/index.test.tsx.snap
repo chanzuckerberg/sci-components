@@ -4,11 +4,11 @@ exports[`<CellComponent /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr
-      class="css-kwwmxh"
+      class="css-1lvje81"
       style="display: block; max-width: 280px;"
     >
       <td
-        class="cell-component css-17ztf96"
+        class="cell-component css-1ssa1s"
         data-testid="CellComponent"
         style="height: 100px; width: 100px;"
       >
