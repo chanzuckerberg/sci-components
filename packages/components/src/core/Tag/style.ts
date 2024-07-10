@@ -3,6 +3,7 @@ import { Chip, darken } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBodyXs,
   fontBodyXxxs,
   fontHeaderXs,
@@ -242,6 +243,8 @@ function createTypeCss(
   const typeColors = typeToColors[type];
 
   return css`
+    ${focusVisibleA11yStyle()}
+
     background-color: ${typeColors.background};
     position: relative;
 
@@ -254,8 +257,7 @@ function createTypeCss(
     }
 
     &:hover,
-    &:active,
-    &:focus {
+    &:active {
       .MuiChip-label {
         color: ${semanticTextColors?.base?.onFill};
       }
@@ -273,17 +275,9 @@ function createTypeCss(
       background-color: ${typeColors.backgroundClicked};
     }
 
-    &:focus {
-      background-color: ${typeColors.background};
-    }
-
-    &:focus:hover {
+    &.Mui-focusVisible {
       background-color: ${typeColors.backgroundHover};
-    }
-
-    &:focus:active {
-      background-color: ${typeColors.backgroundClicked};
-    }
+    }x
   `;
 }
 

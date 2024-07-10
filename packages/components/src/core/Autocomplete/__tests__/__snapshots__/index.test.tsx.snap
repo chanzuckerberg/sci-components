@@ -12,7 +12,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       Search by label
     </label>
     <div
-      class="MuiFormControl-root MuiTextField-root css-1crfn7w-MuiFormControl-root-MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root css-yr5j37-MuiFormControl-root-MuiTextField-root"
     >
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
@@ -28,7 +28,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </span>
           <button
             aria-label="search-button"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1owsdxw-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1712r78-MuiButtonBase-root-MuiIconButton-root"
             icon="Search"
             tabindex="0"
             type="button"
@@ -126,11 +126,11 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1r9rja7-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-zy6bts-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
-              class="css-12r08e9"
+              class="css-tiqrog"
             >
               <label
                 class="css-l5xdrx"
@@ -139,9 +139,13 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 Search by label
               </label>
               <div
-                class="MuiFormControl-root MuiTextField-root css-5o0g6q-MuiFormControl-root-MuiTextField-root"
+                aria-hidden="true"
+                aria-label="Search Input"
+                class="MuiFormControl-root MuiTextField-root css-153gv8-MuiFormControl-root-MuiTextField-root"
+                tabindex="-1"
               >
                 <div
+                  aria-hidden="true"
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
                   inputmode="none"
                 >
@@ -154,10 +158,12 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                       ​
                     </span>
                     <button
-                      aria-label="search-button"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1owsdxw-MuiButtonBase-root-MuiIconButton-root"
+                      aria-hidden="true"
+                      aria-label="Search Button"
+                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-8wmzo9-MuiButtonBase-root-MuiIconButton-root"
+                      disabled=""
                       icon="Search"
-                      tabindex="0"
+                      tabindex="-1"
                       type="button"
                     >
                       <div
@@ -175,9 +181,6 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                           width="16"
                         />
                       </div>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
                     </button>
                   </div>
                   <input
@@ -188,6 +191,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                     autocapitalize="none"
                     autocomplete="off"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-16slxrv-MuiInputBase-input-MuiOutlinedInput-input"
+                    disabled=""
                     id="autocomplete-demo"
                     placeholder="Search by label"
                     role="combobox"
@@ -537,11 +541,11 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1r9rja7-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-zy6bts-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
-              class="css-12r08e9"
+              class="css-tiqrog"
             >
               <label
                 class="css-l5xdrx"
@@ -550,9 +554,13 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 Search by label
               </label>
               <div
-                class="MuiFormControl-root MuiTextField-root css-5o0g6q-MuiFormControl-root-MuiTextField-root"
+                aria-hidden="true"
+                aria-label="Search Input"
+                class="MuiFormControl-root MuiTextField-root css-153gv8-MuiFormControl-root-MuiTextField-root"
+                tabindex="-1"
               >
                 <div
+                  aria-hidden="true"
                   class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
                   inputmode="none"
                 >
@@ -565,10 +573,12 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                       ​
                     </span>
                     <button
-                      aria-label="search-button"
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1owsdxw-MuiButtonBase-root-MuiIconButton-root"
+                      aria-hidden="true"
+                      aria-label="Search Button"
+                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-8wmzo9-MuiButtonBase-root-MuiIconButton-root"
+                      disabled=""
                       icon="Search"
-                      tabindex="0"
+                      tabindex="-1"
                       type="button"
                     >
                       <div
@@ -586,9 +596,6 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                           width="16"
                         />
                       </div>
-                      <span
-                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                      />
                     </button>
                   </div>
                   <input
@@ -599,6 +606,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                     autocapitalize="none"
                     autocomplete="off"
                     class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-16slxrv-MuiInputBase-input-MuiOutlinedInput-input"
+                    disabled=""
                     id="autocomplete-demo"
                     placeholder="Search by label"
                     role="combobox"
@@ -959,7 +967,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-varg9y-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-72nxdm-MuiAutocomplete-root"
     label="Search by label"
   >
     <div
@@ -972,9 +980,13 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         Search by label
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root css-1opgyxy-MuiFormControl-root-MuiTextField-root"
+        aria-hidden="false"
+        aria-label="Search Input"
+        class="MuiFormControl-root MuiTextField-root css-mowpb0-MuiFormControl-root-MuiTextField-root"
+        tabindex="0"
       >
         <div
+          aria-hidden="false"
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
           inputmode="text"
         >
@@ -987,8 +999,9 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               ​
             </span>
             <button
-              aria-label="search-button"
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1owsdxw-MuiButtonBase-root-MuiIconButton-root"
+              aria-hidden="false"
+              aria-label="Search Button"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1712r78-MuiButtonBase-root-MuiIconButton-root"
               icon="Search"
               tabindex="0"
               type="button"

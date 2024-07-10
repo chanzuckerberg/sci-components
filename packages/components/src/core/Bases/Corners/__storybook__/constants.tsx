@@ -10,6 +10,6 @@ export const CORNERS_USAGE: Record<keyof Corners, string> = {
 export const CORNERS_TITLE: Record<keyof Corners, string> = {
   l: "Large Corner",
   m: "Medium Corner",
-  none: "No Set Corner",
+  none: "No Corner",
   s: "Small Corner",
 };

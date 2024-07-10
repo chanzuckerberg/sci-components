@@ -32,7 +32,7 @@ export const TOOLTIP_SUBTITLE_OPTIONS = [
   "Lorem ipsum dolor sit amet",
   undefined,
 ];
-export const TOOLTIP_ARROW_OPTIONS = [false, true];
+export const TOOLTIP_ARROW_OPTIONS = [true];
 export const TOOLTIP_ARROW_OFFSET_OPTIONS = [undefined, -120, -60, 0, 60, 120];
 export const TOOLTIP_WIDTH_OPTIONS: TooltipExtraProps["width"][] = [
   "default",

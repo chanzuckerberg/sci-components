@@ -7,6 +7,7 @@ import {
   TAG_HOVER_OPTIONS,
   TAG_ICONS,
   TAG_ICONS_LABELS,
+  TAG_ON_CLICK_OPTIONS,
   TAG_PANEL_COLORS,
   TAG_SDS_STYLES,
   TAG_SDS_TYPES,
@@ -49,6 +50,14 @@ export default {
     label: {
       control: { type: "text" },
       required: true,
+    },
+    onClick: {
+      control: {
+        labels: ["() => {}", "undefined"],
+        type: "select",
+      },
+      mapping: TAG_ON_CLICK_OPTIONS,
+      options: Object.keys(TAG_ON_CLICK_OPTIONS),
     },
     sdsSize: {
       control: { type: "radio" },

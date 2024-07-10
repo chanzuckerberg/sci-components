@@ -2,10 +2,12 @@ import { Switch, SwitchProps, switchClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBodyXs,
   getBorders,
   getColors,
   getCorners,
+  getIconSizes,
   getSemanticComponentColors,
   getSemanticTextColors,
   getShadows,
@@ -16,30 +18,40 @@ export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
   offLabel?: string;
   onChange?(e: React.ChangeEvent): void;
   onLabel?: string;
+  width?: number;
 }
 
 const toggle = (props: InputToggleExtraProps) => {
-  const { disabled } = props;
+  const { disabled, width = 62 } = props;
   const corners = getCorners(props);
-  const spaces = getSpaces(props);
   const shadows = getShadows(props);
+  const iconSizes = getIconSizes(props);
   const semanticComponentColors = getSemanticComponentColors(props);
-
-  const TOGGLE_HEIGHT = 18;
 
   return `
     cursor: ${disabled ? "default" : "pointer"};
     border-radius: ${corners?.l}px;
-    height: 26px;
-    width: 62px;
+    height: 24px;
+    width: ${width}px;
     line-height: 18px;
-    padding: ${spaces?.xxs}px;
+    padding: 0;
+    overflow: visible;
 
     .${switchClasses.switchBase} {
+      ${focusVisibleA11yStyle()}
+      outline-offset: 2px !important;
+      width: 100%;
+      height: 100%;
+      border-radius: ${corners?.l}px;
       font: inherit;
-      margin: ${spaces?.xxs}px;
-      padding: 0;
       transform: unset;
+      justify-content: space-between;
+
+      .${switchClasses.input} {
+        width: 100%;
+        height: 100%;
+        left: 0;
+      }
 
       &.${switchClasses.checked} {
         transform: unset;
@@ -51,8 +63,9 @@ const toggle = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.thumb} {
-      height: ${TOGGLE_HEIGHT}px;
-      width: ${TOGGLE_HEIGHT}px;
+      height: ${iconSizes?.s?.height}px;
+      width: ${iconSizes?.s?.width}px;
+      min-width: ${iconSizes?.s?.width}px;
       box-shadow: ${shadows?.none};
     }
 
@@ -76,13 +89,14 @@ const toggleOn = (props: InputToggleExtraProps) => {
 
     .${switchClasses.thumb} {
       color: ${disabled ? semanticComponentColors?.accent?.borderDisabled : semanticComponentColors?.accent?.border};
-      margin-left: ${spaces?.s}px;
+      margin-left: ${spaces?.m}px;
     }
 
     .${switchClasses.switchBase} {
       left: unset;
       right: 0;
       transform: unset;
+      padding: 0 ${spaces?.xxs}px 0 ${spaces?.xs}px;
 
       .MuiIconButton-label {
         margin-left: ${spaces?.s}px;
@@ -125,13 +139,14 @@ const toggleOff = (props: InputToggleExtraProps) => {
           ? semanticComponentColors?.base?.borderDisabled
           : semanticComponentColors?.base?.border
       };
-      margin-right: ${spaces?.s}px;
+      margin-right: ${spaces?.m}px;
     }
 
     .${switchClasses.switchBase} {
       right: unset;
       left: 0;
       transform: unset;
+      padding: 0 ${spaces?.xs}px 0 ${spaces?.xxs}px;
 
       .MuiIconButton-label {
         margin-right: ${spaces?.s}px;

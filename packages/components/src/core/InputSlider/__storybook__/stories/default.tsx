@@ -12,7 +12,11 @@ export const InputSlider = (props: Args): JSX.Element => {
 
   return (
     <div style={INPUT_SLIDER_DEMO_WRAPPER_STYLES as React.CSSProperties}>
-      <RawInputSlider {...props} marks={marks ? customMarks : false} />
+      <RawInputSlider
+        {...props}
+        marks={marks ? customMarks : false}
+        aria-label="Input slider demo"
+      />
     </div>
   );
 };

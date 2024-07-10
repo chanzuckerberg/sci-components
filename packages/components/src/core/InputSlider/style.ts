@@ -2,6 +2,7 @@ import { Slider, SliderProps, sliderClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
+  focusVisibleA11yStyle,
   fontBodyXxs,
   fontBodyXxxs,
   getColors,
@@ -37,6 +38,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.thumb} {
+      ${focusVisibleA11yStyle()}
       height: 14px;
       width: 14px;
       background-color: ${semanticComponentColors?.accent?.fill};
