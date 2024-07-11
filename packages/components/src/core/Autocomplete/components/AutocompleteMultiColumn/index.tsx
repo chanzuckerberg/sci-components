@@ -31,6 +31,7 @@ import {
   StyledPaper,
   StyledPopper,
 } from "./style";
+import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -151,6 +152,8 @@ const AutocompleteMultiColumn = <
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  useDetectUserTabbing(anchorRef);
 
   useEffect(() => {
     setAnchorEl(anchorRef?.current);
@@ -295,7 +298,11 @@ const AutocompleteMultiColumn = <
                    * inner autocompletes should remain hidden and unfocused when the parent
                    * input is focused. This prevents blurring of the main search input.
                    */
-                  InputBaseProps={{ ...InputBaseProps, autoFocus: false }}
+                  InputBaseProps={{
+                    ...InputBaseProps,
+                    autoFocus: false,
+                    tabIndex: -1,
+                  }}
                   popperOpen={popperOpen}
                   inputValue={inputValue}
                   PaperComponent={StyledPaper}
@@ -413,6 +420,10 @@ const AutocompleteMultiColumn = <
         }
 
         setPopperOpen(false);
+      } else {
+        // (masoudmanson): This is to open the dropdown when the user types in the search input.
+        // especially when the user is tabbing through the input.
+        setPopperOpen(true);
       }
     }
   }

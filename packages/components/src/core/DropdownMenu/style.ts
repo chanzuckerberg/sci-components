@@ -105,9 +105,17 @@ export const StyledPaper = styled(Paper, {
       margin: 0;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
 
+      .MuiAutocomplete-root,
       .MuiFormControl-root.MuiTextField-root {
         margin-bottom: ${spaces?.m}px;
         margin-right: ${spaces?.m}px;
+      }
+
+      // (masoudmanson): Remove margin-right and margin-bottom for the single column autocomplete
+      // as it has been added to the parent container
+      .MuiAutocomplete-root .MuiFormControl-root.MuiTextField-root {
+        margin-right: 0;
+        margin-bottom: 0;  
       }
     `;
   }}

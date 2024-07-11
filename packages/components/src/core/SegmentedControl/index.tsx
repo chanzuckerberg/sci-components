@@ -37,13 +37,14 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
   return (
     <StyledSegmentedControl
+      aria-label="Segmented Control"
       size="small"
       value={active}
       exclusive
       onChange={handleActive}
       {...props}
     >
-      {(buttonDefinition as SingleButtonDefinition[]).map((button) => {
+      {buttonDefinition.map((button: SingleButtonDefinition) => {
         const { icon, tooltipText, value } = button;
 
         const iconItem = () => {
@@ -57,16 +58,16 @@ const SegmentedControl = (props: SegmentedControlProps) => {
         };
 
         return (
-          <ToggleButton
-            aria-label={tooltipText}
-            disableRipple
-            value={value}
+          <Tooltip
+            title={tooltipText ?? value}
+            sdsStyle="dark"
+            arrow
             key={value}
           >
-            <Tooltip title={tooltipText ?? value} sdsStyle="dark" arrow>
-              <span>{iconItem()}</span>
-            </Tooltip>
-          </ToggleButton>
+            <ToggleButton aria-label={tooltipText} value={value}>
+              <span tabIndex={-1}>{iconItem()}</span>
+            </ToggleButton>
+          </Tooltip>
         );
       })}
       ;

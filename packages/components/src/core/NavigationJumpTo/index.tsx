@@ -142,6 +142,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
           <StyledTab
             key={toKebabCase(title)}
             label={title}
+            tabIndex={0}
             {...a11yProps(
               toKebabCase(title),
               elementRef.current?.getAttribute("id") ||

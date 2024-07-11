@@ -47,6 +47,19 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
     return `
       ${!search && `height: 0`};
+      
+      // (masoudmanson): We need to apply the focus styles to the input element
+      // when the user is tabbing through the options. To find out more, take a
+      // look at the useDetectUserTabbing hook.
+      &[data-user-is-tabbing="true"]:focus-within {
+        border-radius: 4px;
+        outline: 2px solid black;
+        outline-offset: 1px;
+      }
+
+      .MuiFormControl-root {
+        outline: none;
+      }
 
       .MuiOutlinedInput-root.MuiInputBase-formControl.MuiInputBase-adornedEnd {
         padding: 0 ${spaces?.m}px;
@@ -136,6 +149,7 @@ export const InputBaseWrapper = styled("div", {
         clip: rect(0 0 0 0);
         overflow: hidden;
         margin: 0;
+        speak: none;
       `;
     }
   }}

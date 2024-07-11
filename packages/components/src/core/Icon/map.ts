@@ -96,6 +96,8 @@ import { ReactComponent as IconRefreshLarge } from "../../common/svgs/IconRefres
 import { ReactComponent as IconRefreshSmall } from "../../common/svgs/IconRefreshSmall.svg";
 import { ReactComponent as IconReportLarge } from "../../common/svgs/IconReportLarge.svg";
 import { ReactComponent as IconRocketLarge } from "../../common/svgs/IconRocketLarge.svg";
+import { ReactComponent as IconRotateLeftSmall } from "../../common/svgs/IconRotateLeftSmall.svg";
+import { ReactComponent as IconRotateRightSmall } from "../../common/svgs/IconRotateRightSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
 import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Large } from "../../common/svgs/IconSearchLinesHorizontal3Large.svg";
@@ -208,6 +210,8 @@ export interface IconNameToSizes {
   Refresh: "xs" | "s" | "l" | "xl";
   Report: "l" | "xl";
   Rocket: "l" | "xl";
+  RotateLeft: "xs" | "s";
+  RotateRight: "xs" | "s";
   Save: "l" | "xl";
   Search: "xs" | "s" | "l" | "xl";
   SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
@@ -550,6 +554,14 @@ export const iconMap: Props = {
   Rocket: {
     largeIcon: IconRocketLarge,
     smallIcon: null,
+  },
+  RotateLeft: {
+    largeIcon: null,
+    smallIcon: IconRotateLeftSmall,
+  },
+  RotateRight: {
+    largeIcon: null,
+    smallIcon: IconRotateRightSmall,
   },
   Save: {
     largeIcon: IconSaveLarge,

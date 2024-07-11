@@ -12,7 +12,13 @@ import {
   PopperProps,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { ReactNode, SyntheticEvent, useCallback, useState } from "react";
+import React, {
+  ReactNode,
+  SyntheticEvent,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Button from "src/core/Button";
 import { IconProps } from "src/core/Icon";
@@ -29,6 +35,7 @@ import {
   StyledMenuItemText,
   StyledPaper,
 } from "./style";
+import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
 // (thuang): This requires option to have a `name` property.
 // (masoudmanson): Represents a generic autocomplete option with common properties.
@@ -129,13 +136,18 @@ const AutocompleteBase = <
     onClick,
     onOpen,
     onClose,
+    disabled,
   } = props;
   const theme: SDSTheme = useTheme();
 
+  const ref = useRef(null);
   const [inputValue, setInputValue] = useState("");
+
+  useDetectUserTabbing(ref);
 
   return (
     <StyledAutocompleteBase
+      ref={ref}
       clearOnBlur={clearOnBlur}
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
@@ -181,6 +193,7 @@ const AutocompleteBase = <
        * to the user.
        */
       onInputChange={defaultOnInputChange}
+      disabled={disabled || !search}
     />
   );
 
@@ -212,6 +225,11 @@ const AutocompleteBase = <
       <InputBaseWrapper search={search}>
         <StyledMenuInputSearch
           id="location-search"
+          aria-label="Search Input"
+          // (masoudmanson): This is to ensure that the input field won't be focusable
+          // when the search prop is set to false.
+          tabIndex={search ? 0 : -1}
+          aria-hidden={!search}
           label={label}
           placeholder={label}
           ref={params.InputProps.ref}
@@ -224,21 +242,22 @@ const AutocompleteBase = <
           }}
           InputProps={{
             /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: search ? "text" : "none",
-            /**
              * (mmoore): passing only the ref along to InputProps to prevent
              * default MUI arrow from rendering in search input.
              * renderInput strips InputProps, so we explicitly pass end adornment here
              */
             ...params.InputProps.ref,
+            "aria-hidden": !search,
             endAdornment: (
               <StyledInputAdornment position="end">
                 {inputValue && (
                   <Button
-                    aria-label="clear-button"
+                    // (masoudmanson): This is to ensure that the clear button won't be focusable
+                    // when the search prop is set to false.
+                    tabIndex={search ? 0 : -1}
+                    aria-hidden={!search}
+                    disabled={!search}
+                    aria-label="Clear Button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
                     sdsType="tertiary"
@@ -252,11 +271,21 @@ const AutocompleteBase = <
                 )}
               </StyledInputAdornment>
             ),
+            /**
+             * (thuang): Works with css caret-color: "transparent" to hide
+             * mobile keyboard
+             */
+            inputMode: search ? "text" : "none",
             inputProps: params.inputProps,
             startAdornment: (
               <StyledInputAdornment position="start">
                 <Button
-                  aria-label="search-button"
+                  aria-label="Search Button"
+                  // (masoudmanson): This is to ensure that the search button won't be focusable
+                  // when the search prop is set to false.
+                  tabIndex={search ? 0 : -1}
+                  aria-hidden={!search}
+                  disabled={!search}
                   onClick={clearInput}
                   sdsType="tertiary"
                   sdsSize="small"

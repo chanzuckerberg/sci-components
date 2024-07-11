@@ -140,7 +140,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.base?.borderDisabled};
+        border: 1px solid ${semanticComponentColors?.base?.borderDisabled} !important;
       }
 
       .${inputAdornmentClasses.root} svg {
@@ -184,7 +184,7 @@ export const StyledSearchBase = styled(TextField, {
   },
 })`
   ${(props: InputSearchExtraProps) => {
-    const { intent, disabled, sdsStyle, sdsStage, value } = props;
+    const { intent, disabled, sdsStyle, sdsStage } = props;
 
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
@@ -222,7 +222,7 @@ export const StyledSearchBase = styled(TextField, {
 
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
-          opacity: ${value ? 1 : 0};
+          opacity: 1;
 
           svg {
             color: ${semanticComponentColors?.base?.icon} !important;
@@ -256,6 +256,8 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
+        outline: none;
+
         .${outlinedInputClasses.notchedOutline} {
           border: 1px solid ${semanticComponentColors?.accent?.border};
         }
@@ -266,6 +268,11 @@ export const StyledSearchBase = styled(TextField, {
             color: ${semanticComponentColors?.accent?.icon};
           }
         }
+      }
+
+      &.user-is-tabbing .${outlinedInputClasses.root}:focus-within {
+        outline: 2px solid black;
+        outline-offset: 1px;
       }
 
       ${sdsStyle === "rounded" && rounded(props)}

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.0.1...@czi-sds/components@20.5.0) (2024-06-17)
+
+### Bug Fixes
+
+- **autocomplete:** fix controlled open state ([#767](https://github.com/chanzuckerberg/sci-components/issues/767)) ([6a77a3d](https://github.com/chanzuckerberg/sci-components/commit/6a77a3d49f2313ed569d1916ad58b1abfa68b935))
+- **complexfilter:** fix prop propagation ([7530284](https://github.com/chanzuckerberg/sci-components/commit/7530284831aec9d62c67b938303eb7f88f775158))
+- **dropdown:** fix props propagating ([#774](https://github.com/chanzuckerberg/sci-components/issues/774)) ([c42970a](https://github.com/chanzuckerberg/sci-components/commit/c42970a2270c5c6c1dda40422cb7eeee9b4b2f5e))
+- **sdstheme:** fix SDS Theme backward compatibility ([#770](https://github.com/chanzuckerberg/sci-components/issues/770)) ([860283f](https://github.com/chanzuckerberg/sci-components/commit/860283fefda3664b34685c5d0e52e9c87d3f069d))
+
+### Features
+
+- **Button:** figma refactor button ([#761](https://github.com/chanzuckerberg/sci-components/issues/761)) ([199bc4c](https://github.com/chanzuckerberg/sci-components/commit/199bc4c03f7366e0e6bff79575bc727708f9ac57))
+- **complexfilter:** add shouldisTriggerChangeOnOptionClick to complexFilter and ([#772](https://github.com/chanzuckerberg/sci-components/issues/772)) ([038ad54](https://github.com/chanzuckerberg/sci-components/commit/038ad542a91b05b06af5b77dff0a644a509f0cc0))
+- **rotateleft and rotateright:** add small icons for RotateLeft and RotateRight ([#781](https://github.com/chanzuckerberg/sci-components/issues/781)) ([96a2af1](https://github.com/chanzuckerberg/sci-components/commit/96a2af14747a5413c1bbd45ad45c35a10d52f76d))
+
+# [20.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.4.0) (2024-05-10)
+
+### Bug Fixes
+
+- **complexfilter:** fix prop propagation ([7530284](https://github.com/chanzuckerberg/sci-components/commit/7530284831aec9d62c67b938303eb7f88f775158))
+- **dropdown:** fix props propagating ([#774](https://github.com/chanzuckerberg/sci-components/issues/774)) ([c42970a](https://github.com/chanzuckerberg/sci-components/commit/c42970a2270c5c6c1dda40422cb7eeee9b4b2f5e))
+
+### Features
+
+- **complexfilter:** add shouldisTriggerChangeOnOptionClick to complexFilter and ([#772](https://github.com/chanzuckerberg/sci-components/issues/772)) ([038ad54](https://github.com/chanzuckerberg/sci-components/commit/038ad542a91b05b06af5b77dff0a644a509f0cc0))
+
 # [20.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.3.0) (2024-05-10)
 
 ### Bug Fixes
