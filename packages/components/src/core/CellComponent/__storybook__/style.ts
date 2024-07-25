@@ -2,7 +2,7 @@ import { styled } from "@mui/material";
 import {
   fontBodyXxs,
   fontHeaderS,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -21,12 +21,12 @@ export const StyledStoryBody = styled("span", {
   ${fontBodyXxs}
 
   ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
       display: block;
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       padding: ${spaces?.s}px 0;
     `;
   }}

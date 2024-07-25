@@ -1,13 +1,20 @@
-import { defaultTheme } from "../packages/components/src/core/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Theme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { BADGE } from "../packages/components/src/common/storybook/storybookBadges";
 
 export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={defaultTheme}>
-      <Story />
-    </ThemeProvider>
-  ),
+  (Story, context) => {
+    const { theme: storybookTheme } = context.globals;
+
+    return (
+      <ThemeProvider theme={Theme(storybookTheme)}>
+        {/* CssBaseline provides light/dark background MUI theme for all stories */}
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    );
+  },
 ];
 
 /**
@@ -20,6 +27,8 @@ const preview = {
     pseudo: {},
   },
   parameters: {
+    // Removes the change background button since it's controlled by the theme toggle
+    backgrounds: { disable: true },
     badgesConfig: {
       [BADGE.BETA]: {
         styles: {
@@ -71,6 +80,21 @@ const preview = {
       storySort: {
         method: "alphabetical",
         order: ["Bases", "Components", "Data Viz", "Deprecated"],
+      },
+    },
+  },
+  globalTypes: {
+    pseudo: {},
+    theme: {
+      description: "Global theme for components",
+      defaultValue: "light",
+      toolbar: {
+        title: "Theme",
+        dynamicTitle: true,
+        items: [
+          { value: "light", icon: "sun", title: "Light" },
+          { value: "dark", icon: "moon", title: "Dark" },
+        ],
       },
     },
   },

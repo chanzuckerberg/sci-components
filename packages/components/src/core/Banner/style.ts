@@ -5,8 +5,7 @@ import {
   fontBodyS,
   getColors,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -63,25 +62,23 @@ export const Text = styled("div")`
 `;
 
 const primary = (props: BannerExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticComponentColors?.accent?.fill};
-    color: ${semanticTextColors?.base?.onFill};
+    background-color: ${semanticColors?.accent?.fill};
+    color: ${semanticColors?.base?.textPrimaryInverse};
     svg {
-      fill: ${semanticComponentColors?.accent?.fillOnFill};
+      fill: ${semanticColors?.base?.iconPrimaryInverse};
     }
   `;
 };
 
 const secondary = (props: BannerExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticComponentColors?.accent?.surface};
-    color: ${semanticTextColors?.base?.primary};
+    background-color: ${semanticColors?.accent?.surfacePrimary};
+    color: ${semanticColors?.base?.textPrimary};
   `;
 };
 

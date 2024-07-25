@@ -5,7 +5,7 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
   style="height: 180px; margin-left: 20px; margin-top: 15px; width: 180px;"
 >
   <span
-    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-7w4qx7-MuiSlider-root"
+    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-1mfzmn7-MuiSlider-root"
   >
     <span
       class="MuiSlider-rail css-14pt78w-MuiSlider-rail"

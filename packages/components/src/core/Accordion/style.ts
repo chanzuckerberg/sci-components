@@ -46,7 +46,7 @@ export const StyledAccordion = styled(Accordion, {
         height: fit-content;
 
         & .${accordionSummaryClasses.root} {
-          ${focusVisibleA11yStyle()}
+          ${focusVisibleA11yStyle(props)}
           min-height: 44px;
 
           &.${accordionSummaryClasses.focusVisible} {

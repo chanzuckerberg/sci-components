@@ -8,10 +8,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
     class="css-1426k2b"
   >
     <tr
-      class="css-1oebn4v"
+      class="css-fitsu2"
     >
       <th
-        class="css-1x614u6"
+        class="css-r3ynn5"
       >
         <div
           class="css-187gjam"
@@ -22,7 +22,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-begtbq"
+        class="css-1szfosj"
       >
         <div
           class="css-rm9mvq"
@@ -48,7 +48,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-begtbq"
+        class="css-1szfosj"
       >
         <div
           class="css-rm9mvq"
@@ -74,7 +74,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-begtbq"
+        class="css-1szfosj"
       >
         <div
           class="css-rm9mvq"
@@ -85,7 +85,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-7jn9q2"
+        class="css-1s2bcfv"
       >
         <div
           class="css-wg04tn"
@@ -99,10 +99,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="css-kwwmxh"
+      class="css-e9lq1t"
     >
       <td
-        class="cell-component css-1jmh88u"
+        class="cell-component css-ypxbz3"
       >
         <div
           class="css-9lvjku"
@@ -123,7 +123,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -134,7 +134,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class=" css-wat3w6"
+        class=" css-11b4fo2"
         data-mui-internal-clone-element="true"
         tabindex="0"
       >
@@ -162,7 +162,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-wat3w6"
+        class="css-11b4fo2"
       >
         <div
           class="css-ov1ktg"
@@ -193,10 +193,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-13rz330"
+        class="cell-component css-8waqyz"
       >
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -205,7 +205,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -214,7 +214,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -223,7 +223,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -232,7 +232,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           </span>
         </div>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -242,7 +242,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-kdqett"
+        class="css-xz08c4"
       >
         <div
           class="css-ov1ktg"
@@ -264,10 +264,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-kwwmxh"
+      class="css-e9lq1t"
     >
       <td
-        class="cell-component css-1jmh88u"
+        class="cell-component css-ypxbz3"
       >
         <div
           class="css-9lvjku"
@@ -288,7 +288,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -299,7 +299,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-wat3w6"
+        class="css-11b4fo2"
       >
         <div
           class="css-ov1ktg"
@@ -330,7 +330,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-wat3w6"
+        class="css-11b4fo2"
       >
         <div
           class="css-ov1ktg"
@@ -356,7 +356,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-13rz330"
+        class="cell-component css-8waqyz"
       >
         <div
           aria-labelledby="demo-radio-buttons-group-label"
@@ -368,7 +368,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <span
               caption="Caption I"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-137750e-MuiButtonBase-root-MuiRadio-root"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1i09rga-MuiButtonBase-root-MuiRadio-root"
               intent="default"
             >
               <input
@@ -417,7 +417,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <span
               caption="Caption II"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-137750e-MuiButtonBase-root-MuiRadio-root"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1i09rga-MuiButtonBase-root-MuiRadio-root"
               intent="default"
             >
               <input
@@ -463,7 +463,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-kdqett"
+        class="css-xz08c4"
       >
         <div
           class="css-ov1ktg"
@@ -495,13 +495,13 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class=" css-1ybdjrl"
+      class=" css-t8tkd6"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
     >
       <td
-        class="cell-component css-1jmh88u"
+        class="cell-component css-ypxbz3"
       >
         <div
           class="css-9lvjku"
@@ -522,7 +522,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1aejx5q-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mb8wgf-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -533,7 +533,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-w6wsxk"
+        class="css-1rkv7da"
       >
         <div
           class="css-ov1ktg"
@@ -564,7 +564,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-w6wsxk"
+        class="css-1rkv7da"
       >
         <div
           class="css-ov1ktg"
@@ -585,7 +585,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-17ztf96"
+        class="cell-component css-c6mry2"
       >
         <div
           class="css-1ft6wgl"
@@ -604,7 +604,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-3wzr2j"
+        class="css-rhqpuq"
       >
         <div
           class="css-ov1ktg"

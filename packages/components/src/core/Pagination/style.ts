@@ -6,8 +6,7 @@ import {
   fontBodyS,
   fontBodySemiboldS,
   getCorners,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -34,7 +33,7 @@ const doNotForwardProps = [
 
 export const StyledPaginationButton = styled(Button)`
   ${(props: CommonThemeProps) => {
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       width: 32px;
@@ -43,14 +42,14 @@ export const StyledPaginationButton = styled(Button)`
 
       & .MuiSvgIcon-root {
         width: 10px;
-        color: ${semanticComponentColors?.base?.icon}
+        color: ${semanticColors?.base?.iconPrimary}
       }
 
       &:hover {
-        background-color: ${semanticComponentColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
-          color: ${semanticComponentColors?.base?.iconHover}
+          color: ${semanticColors?.base?.iconPrimaryHover}
         }
       }
     `;
@@ -64,7 +63,7 @@ export const StyledPaginationChevronList = styled("li", {
     const { disabled } = props;
 
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       width: 32px;
@@ -84,18 +83,18 @@ export const StyledPaginationChevronList = styled("li", {
       }
 
       & .MuiSvgIcon-root {
-        color: ${disabled ? semanticComponentColors?.base?.iconDisabled : semanticComponentColors?.base?.icon};
+        color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.base?.iconPrimary};
       }
 
       &:hover {
-        background-color: ${disabled ? "transparent" : semanticComponentColors?.base?.fillHover};
+        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
-          color: ${disabled ? semanticComponentColors?.base?.iconDisabled : semanticComponentColors?.base?.iconHover}
+          color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.base?.iconPrimaryHover}
         }
       }
 
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle(props)}
     `;
   }}
 `;
@@ -114,16 +113,15 @@ export const StyledPagination = styled("ul", {
 `;
 
 const selectedPageStyle = (props: PaginationExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticComponentColors?.base?.fillSelected};
-    color: ${semanticTextColors?.base?.onFill};
+    background-color: ${semanticColors?.base?.fillSelected};
+    color: ${semanticColors?.base?.textPrimaryInverse};
 
     &:hover {
-      background-color: ${semanticComponentColors?.base?.fillSelected};
-      color: ${semanticTextColors?.base?.onFill};
+      background-color: ${semanticColors?.base?.fillSelected};
+      color: ${semanticColors?.base?.textPrimaryInverse};
     }
   `;
 };
@@ -137,11 +135,10 @@ export const Page = styled("li", {
     const { selected, sdsStyle } = props;
     const spaces = getSpaces(props);
     const corners = getCorners(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       cursor: pointer;
       list-style: none;
       width: 32px;
@@ -153,8 +150,8 @@ export const Page = styled("li", {
       border-radius: ${sdsStyle === "round" ? corners?.l : corners?.m}px;
       user-select: none;
       &:hover {
-        background-color: ${semanticComponentColors?.base?.fillHover};
-        color: ${semanticTextColors?.base?.primary};
+        background-color: ${semanticColors?.base?.fillHover};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &:nth-last-of-type(-n+2) {
@@ -162,7 +159,7 @@ export const Page = styled("li", {
       }
 
       ${selected && selectedPageStyle(props)};
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle(props)}
     `;
   }}
 `;

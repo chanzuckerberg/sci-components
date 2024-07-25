@@ -9,10 +9,9 @@ import {
   fontHeaderXs,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
-  SemanticComponentColors,
+  SDSPalette,
 } from "src/core/styles";
 
 export type SdsTagColorType =
@@ -141,7 +140,7 @@ const square = (props: ExtraTagProps): SerializedStyles => {
 };
 
 const withHover = (props: ExtraTagProps): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     &:hover {
@@ -150,7 +149,7 @@ const withHover = (props: ExtraTagProps): SerializedStyles => {
 
     &:hover,
     &:focus-visible {
-      color: ${semanticTextColors?.base?.onFill};
+      color: ${semanticColors?.base?.textPrimaryInverse};
     }
   `;
 };
@@ -166,7 +165,7 @@ const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
 function generatePrimaryTagColors(
   intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
-  semanticColors: SemanticComponentColors | null
+  semanticColors: SDSPalette | null
 ) {
   if (intent) {
     return {
@@ -197,12 +196,14 @@ function generatePrimaryTagColors(
 function generateSecondaryTagColors(
   intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
-  semanticColors: SemanticComponentColors | null
+  semanticColors: SDSPalette | null
 ) {
   if (intent) {
     return {
       background:
-        colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
+        colors.length >= 2
+          ? colors[1]
+          : semanticColors?.[intent].surfacePrimary,
       backgroundClicked:
         colors.length >= 2
           ? darken(colors[1], 0.3)
@@ -216,7 +217,7 @@ function generateSecondaryTagColors(
     };
   } else {
     return {
-      background: semanticColors?.neutral.surface,
+      background: semanticColors?.neutral.surfacePrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
       iconColor: semanticColors?.neutral.icon,
@@ -229,8 +230,7 @@ function createTypeCss(
   props: ExtraTagProps,
   type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
-  const semanticColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const intent = typeof props.tagColor === "string" ? props.tagColor : null;
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
@@ -243,7 +243,7 @@ function createTypeCss(
   const typeColors = typeToColors[type];
 
   return css`
-    ${focusVisibleA11yStyle()}
+    ${focusVisibleA11yStyle(props)}
 
     background-color: ${typeColors.background};
     position: relative;
@@ -259,11 +259,11 @@ function createTypeCss(
     &:hover,
     &:active {
       .MuiChip-label {
-        color: ${semanticTextColors?.base?.onFill};
+        color: ${semanticColors?.base?.textPrimaryInverse};
       }
 
       svg {
-        fill: ${semanticTextColors?.base?.onFill};
+        fill: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 

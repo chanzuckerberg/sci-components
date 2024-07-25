@@ -6,7 +6,7 @@ import {
   fontBodyXs,
   fontBodyXxs,
   fontHeaderXs,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -65,10 +65,10 @@ export const Subtitle = styled("div")`
   ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
     `;
   }}
 `;

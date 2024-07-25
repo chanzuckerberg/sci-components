@@ -7,12 +7,11 @@ import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  SemanticComponentColors,
+  SemanticColors,
   fontBodyXs,
   fontBodyXxs,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -28,7 +27,7 @@ export const StyledRadioButton = styled(RawRadio)`
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
 
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     const intentToColor = {
       default: "base",
@@ -36,35 +35,35 @@ export const StyledRadioButton = styled(RawRadio)`
       warning: "notice",
     };
 
-    const radioColor = intentToColor[intent] as keyof SemanticComponentColors;
+    const radioColor = intentToColor[intent] as keyof SemanticColors;
 
     return `
-      color: ${semanticComponentColors?.[radioColor]?.border};
+      color: ${semanticColors?.[radioColor]?.border};
 
       &:hover {
-        color: ${semanticComponentColors?.base?.borderHover};
+        color: ${semanticColors?.base?.borderHover};
         background-color: transparent;
       }
 
       &.${radioClasses.disabled} {
-        color: ${semanticComponentColors?.base?.borderDisabled};
+        color: ${semanticColors?.base?.borderDisabled};
       }
 
       &.${radioClasses.checked} {
-        color: ${semanticComponentColors?.accent?.border};
+        color: ${semanticColors?.accent?.border};
 
         &:hover {
-          color: ${semanticComponentColors?.accent?.borderHover};
+          color: ${semanticColors?.accent?.borderHover};
           background-color: transparent;
         }
 
         &.${radioClasses.disabled} {
-          color: ${semanticComponentColors?.accent?.borderDisabled};
+          color: ${semanticColors?.base?.borderDisabled};
         }
       }
 
       &.${radioClasses.root} {
-        ${focusVisibleA11yStyle()}
+        ${focusVisibleA11yStyle(props)}
         margin: 0 ${spaces?.s}px 0 0;
         padding: 0;
       }
@@ -114,10 +113,10 @@ export const StyledRadioCaption = styled("span")`
 
   ${(props: RadioExtraProps) => {
     const { disabled } = props;
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.secondary};
+      color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
     `;
   }}
 `;

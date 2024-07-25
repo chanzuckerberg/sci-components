@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   fontBodyXs,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
@@ -28,11 +28,11 @@ export const StyledTabs = styled(Tabs, {
   ${(props: NavigationJumpToExtraProps) => {
     const { sdsIndicatorColor = "info" } = props;
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       &:before {
-        background-color: ${semanticComponentColors?.base?.surfaceTertiary};
+        background-color: ${semanticColors?.base?.surfaceTertiary};
         border-radius: ${spaces?.xxxs}px;
         content: "";
         height: 100%;
@@ -50,7 +50,7 @@ export const StyledTabs = styled(Tabs, {
       overflow: visible;
 
       .${tabsClasses.indicator} {
-        background-color: ${semanticComponentColors?.[sdsIndicatorColor]?.fill} !important;
+        background-color: ${semanticColors?.[sdsIndicatorColor]?.fill} !important;
         border-radius: 2px;
         left: 0;
         width: 2px;
@@ -70,10 +70,10 @@ export const StyledTab = styled(Tab, {
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle(props)}
       box-sizing: border-box;
       max-width: 180px;
       padding-left: ${spaces?.l}px;
@@ -91,7 +91,7 @@ export const StyledTab = styled(Tab, {
         left: -${spaces?.l}px;
         width: ${spaces?.xxxs}px;
         height: 100%;
-        background-color: ${semanticComponentColors?.base?.border};
+        background-color: ${semanticColors?.base?.border};
         display: none;
         border-radius: ${spaces?.xxxs}px;
       }
@@ -106,7 +106,7 @@ export const StyledTab = styled(Tab, {
         font-weight: 600;
       }
       &.MuiTabs-indicator {
-        backgroundColor: ${semanticComponentColors?.base?.surfaceTertiary};
+        backgroundColor: ${semanticColors?.base?.surfaceTertiary};
         width: ${spaces?.xxxs}px;
       }
       &.MuiButtonBase-root {

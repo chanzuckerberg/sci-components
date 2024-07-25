@@ -7,7 +7,7 @@ import {
   fontCapsXxxxs,
   fontTabularXs,
   getBorders,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -29,12 +29,12 @@ const sdsPropNames = ["contentAlert", "itemAlign"];
 export const disabledStyle = (props: SectionProps): string => {
   const { disabled } = props;
 
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   if (!disabled) return "";
 
   return `
-    color: ${semanticTextColors?.base?.disabled};
+    color: ${semanticColors?.base?.textDisabled};
   `;
 };
 
@@ -69,13 +69,13 @@ export const SectionLabel = styled("div")`
 
   ${(props: SectionProps) => {
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     if (!props.label) return "";
 
     return `
       margin-bottom: ${spaces?.s}px;      
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
     `;
   }}
 `;

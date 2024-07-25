@@ -11,9 +11,8 @@ import {
   fontBodySemiboldXs,
   CommonThemeProps,
   getColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
-  getSemanticComponentColors,
 } from "src/core/styles";
 import { SdsSize } from "./components/common";
 
@@ -75,34 +74,33 @@ export const StyledTab = styled(RawTab, {
 
   ${(props) => {
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       margin-right: ${spaces?.xl}px;
       padding-bottom: ${spaces?.xxs}px;
 
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
 
       &:hover, :focus {
-        box-shadow: 0 2px 0 0 ${semanticComponentColors?.base?.border};
-        color: ${semanticTextColors?.base?.primary};
+        box-shadow: 0 2px 0 0 ${semanticColors?.base?.border};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &.Mui-selected {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
 
         &:hover {
-          color: ${semanticTextColors?.base?.primary};
+          color: ${semanticColors?.base?.textPrimary};
         }
       }
 
       &:active {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &:disabled {
-        color: ${semanticTextColors?.base?.disabled};
+        color: ${semanticColors?.base?.textDisabled};
       }
     `;
   }}

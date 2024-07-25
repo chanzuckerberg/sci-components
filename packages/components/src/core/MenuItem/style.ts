@@ -7,8 +7,7 @@ import {
   getColors,
   getFontWeights,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -18,7 +17,7 @@ export const StyledMenuItem = styled(MenuItem)`
     const colors = getColors(props);
     const fontWeights = getFontWeights(props);
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     const primary = colors?.blue[400];
 
@@ -40,10 +39,10 @@ export const StyledMenuItem = styled(MenuItem)`
         opacity: 1;
 
         &:hover, &.${menuItemClasses.focusVisible} {
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          background-color: ${semanticColors?.base?.fillHover};
 
           &[aria-selected="true"] {
-            background-color: ${semanticComponentColors?.base?.fillHover};
+            background-color: ${semanticColors?.base?.fillHover};
           }
         }
       }
@@ -58,11 +57,11 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiAutocomplete-option[aria-selected="true"] {
         &:hover {
-          background-color: ${semanticComponentColors?.base?.fillHover} !important;
+          background-color: ${semanticColors?.base?.fillHover} !important;
         }
 
         svg.check-icon {
-          color: ${selected ? primary : semanticComponentColors?.base?.icon};
+          color: ${selected ? primary : semanticColors?.base?.iconPrimary};
         }
       }
 
@@ -71,16 +70,16 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:hover {
-        background-color: ${semanticComponentColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillHover};
         svg.check-icon {
-          color: ${selected ? primary : semanticComponentColors?.base?.icon};
+          color: ${selected ? primary : semanticColors?.base?.iconPrimary};
         }
       }
 
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
         background-color: white;
         &:hover {
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          background-color: ${semanticColors?.base?.fillHover};
         }
         .primary-text {
           font-weight: ${fontWeights?.semibold};
@@ -121,10 +120,10 @@ const disabledStyles = (props: DisabledType) => {
   const { disabled } = props;
   if (!disabled) return ``;
 
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    color: ${semanticComponentColors?.base?.iconDisabled};
+    color: ${semanticColors?.base?.iconDisabled};
     cursor: default;
   `;
 };
@@ -138,10 +137,10 @@ export const TextWrapper = styled("span")<TextWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
       display: flex;
       white-space: pre-wrap;
     `;
@@ -159,7 +158,7 @@ export const StyledMenuItemIcon = styled("span")`
     const { disabled } = props;
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       margin-right: ${spaces?.xs}px;
@@ -167,7 +166,7 @@ export const StyledMenuItemIcon = styled("span")`
       height: ${iconSizes?.s.height}px;
 
       .MuiSvgIcon-root {
-        ${disabled ? `color: ${semanticComponentColors?.base?.iconDisabled};` : null}
+        ${disabled ? `color: ${semanticColors?.base?.iconDisabled};` : null}
       }
     `;
   }}
@@ -181,12 +180,12 @@ export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${fontBodyXs}
 
   ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
       text-align: right;
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
       margin-left: ${spaces?.m}px;
     `;
   }}
@@ -220,11 +219,11 @@ export const StyledCheck = styled(Check, {
     const { selected, disabled } = props;
 
     const iconSizes = getIconSizes(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     const selectedColor = disabled
-      ? semanticComponentColors?.base?.iconDisabled
-      : semanticComponentColors?.accent?.icon;
+      ? semanticColors?.base?.iconDisabled
+      : semanticColors?.accent?.icon;
 
     return `
       color: ${selected ? selectedColor : "transparent"};
@@ -245,12 +244,12 @@ export const StyledMinus = styled(Remove, {
   ${(props) => {
     const { selected, disabled } = props;
 
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
     const iconSizes = getIconSizes(props);
 
     const selectedColor = disabled
-      ? semanticComponentColors?.base?.iconDisabled
-      : semanticComponentColors?.accent?.icon;
+      ? semanticColors?.base?.iconDisabled
+      : semanticColors?.accent?.icon;
 
     return `
       color: ${selected ? selectedColor : "transparent"};

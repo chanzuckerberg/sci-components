@@ -8,11 +8,10 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
-import { SemanticComponentColors, fontBodyXs, fontBodyXxs } from "../styles";
+import { SemanticColors, fontBodyXs, fontBodyXxs } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
@@ -25,7 +24,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
 
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     const intentToColor = {
       default: "base",
@@ -33,37 +32,35 @@ export const StyledCheckbox = styled(RawCheckbox)`
       warning: "notice",
     };
 
-    const checkboxColor = intentToColor[
-      intent
-    ] as keyof SemanticComponentColors;
+    const checkboxColor = intentToColor[intent] as keyof SemanticColors;
 
     return `
-      color: ${semanticComponentColors?.[checkboxColor]?.border};
+      color: ${semanticColors?.[checkboxColor]?.border};
 
       &:hover {
-        color: ${semanticComponentColors?.base?.borderHover};
+        color: ${semanticColors?.base?.borderHover};
         background-color: transparent;
       }
 
       &.${checkboxClasses.disabled} {
-        color: ${semanticComponentColors?.base?.borderDisabled};
+        color: ${semanticColors?.base?.borderDisabled};
       }
 
       &.${checkboxClasses.checked} {
-        color: ${semanticComponentColors?.accent?.border};
+        color: ${semanticColors?.accent?.border};
 
         &:hover {
-          color: ${semanticComponentColors?.accent?.borderHover};
+          color: ${semanticColors?.accent?.borderHover};
           background-color: transparent;
         }
 
         &.${checkboxClasses.disabled} {
-          color: ${semanticComponentColors?.accent?.borderDisabled};
+          color: ${semanticColors?.base?.borderDisabled};
         }
       }
 
       &.${checkboxClasses.root} {
-        ${focusVisibleA11yStyle()}
+        ${focusVisibleA11yStyle(props)}
         padding: 0;
         margin-right: ${spaces?.s}px;
         border-radius: 0;
@@ -114,10 +111,10 @@ export const StyledCheckboxCaption = styled("span")`
 
   ${(props: CheckboxExtraProps) => {
     const { disabled } = props;
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.secondary};
+      color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
     `;
   }}
 `;

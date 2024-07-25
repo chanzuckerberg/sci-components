@@ -3,8 +3,7 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontHeaderS,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import Icon from "src/core/Icon";
@@ -36,12 +35,12 @@ export const StyledSortingIcon = styled(Icon, {
     const { active = false } = props;
 
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       margin-left: ${spaces?.s}px;
       margin-bottom: ${spaces?.xxs}px;
-      color: ${active ? semanticComponentColors?.accent?.icon : semanticComponentColors?.base?.icon};
+      color: ${active ? semanticColors?.accent?.icon : semanticColors?.base?.iconPrimary};
       opacity: ${active ? 1 : 0};
       outline: none !important;
     `;
@@ -58,11 +57,10 @@ export const StyledTableHeader = styled("th", {
     const { active = false, horizontalAlign = "left" } = props;
 
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${active ? semanticComponentColors?.accent?.fill : semanticTextColors?.base?.secondary};
+      color: ${active ? semanticColors?.accent?.textAction : semanticColors?.base?.textSecondary};
       padding: ${spaces?.l}px ${spaces?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
@@ -75,15 +73,15 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
+        color: ${active ? semanticColors?.accent?.textActionHover : semanticColors?.base?.textPrimary};
 
         & .MuiButtonBase-root {
-          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticComponentColors?.base?.iconHover};
+          color: ${active ? semanticColors?.accent?.textActionHover : semanticColors?.base?.textPrimary};
           opacity: 1;
         }
 
         & svg {
-          color: ${active ? semanticComponentColors?.accent?.fillHover : semanticTextColors?.base?.primary};
+          color: ${active ? semanticColors?.accent?.iconHover : semanticColors?.base?.iconPrimaryHover};
         }
       }
     `;

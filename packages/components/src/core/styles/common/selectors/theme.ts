@@ -5,9 +5,8 @@ import {
   Corners,
   FontWeights,
   IconSizes,
+  SDSPalette,
   SDSTheme,
-  SemanticComponentColors,
-  SemanticTextColors,
   Shadows,
   Spaces,
   Typography,
@@ -40,6 +39,10 @@ export const getTypography = ({
   return theme?.app?.typography || null;
 };
 
+export const getMode = ({ theme }: CommonThemeProps): "light" | "dark" => {
+  return theme?.palette?.mode || "light";
+};
+
 export const getPalette = ({ theme }: CommonThemeProps): PaletteOptions => {
   return theme?.palette as PaletteOptions;
 };
@@ -48,16 +51,10 @@ export const getColors = ({ theme }: CommonThemeProps): Colors | null => {
   return theme?.app?.colors || null;
 };
 
-export const getSemanticComponentColors = ({
+export const getSemanticColors = ({
   theme,
-}: CommonThemeProps): SemanticComponentColors | null => {
-  return theme?.palette?.sds?.component || null;
-};
-
-export const getSemanticTextColors = ({
-  theme,
-}: CommonThemeProps): SemanticTextColors | null => {
-  return theme?.palette?.sds?.text || null;
+}: CommonThemeProps): SDSPalette | null => {
+  return theme?.palette?.sds || null;
 };
 
 export const getShadows = ({ theme }: CommonThemeProps): Shadows | null => {

@@ -11,8 +11,7 @@ import {
   getColors,
   getCorners,
   getFontWeights,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -59,8 +58,7 @@ const labelFontBodyXs = fontBody("xs", "regular");
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const borders = getBorders(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   /**
    * (masoudmanson)
@@ -72,14 +70,14 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     ${labelStyle(props)}
 
     border: ${borders?.base?.default};
-    color: ${semanticTextColors?.base?.primary};
+    color: ${semanticColors?.base?.textPrimary};
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
 
     &.MuiButton-text {
       &:hover {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       .styled-label {
@@ -96,29 +94,29 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticComponentColors?.base?.icon};
+      fill: ${semanticColors?.base?.iconPrimary};
     }
 
     &:hover {
       background-color: unset;
       border-color: black;
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticComponentColors?.base?.iconHover};
+        fill: ${semanticColors?.base?.iconPrimaryHover};
       }
 
       .styled-label {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
     }
 
     &:active {
       border: ${borders?.accent?.default};
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticComponentColors?.accent?.icon};
+        fill: ${semanticColors?.accent?.icon};
       }
     }
 
@@ -130,12 +128,11 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
 const minimal = (props: InputDropdownProps): SerializedStyles => {
   const spaces = getSpaces(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${labelStyle(props)}
-    ${focusVisibleA11yStyle()}
+    ${focusVisibleA11yStyle(props)}
 
     /* this is needed to left align the label text */
     align-items: flex-start;
@@ -151,29 +148,29 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     span {
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
     }
 
     path {
-      fill: ${semanticComponentColors?.base?.icon};
+      fill: ${semanticColors?.base?.iconPrimary};
     }
 
     &:hover {
-      background-color: ${semanticComponentColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillHover};
       border: none;
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticComponentColors?.base?.iconHover};
+        fill: ${semanticColors?.base?.iconPrimaryHover};
       }
 
       .styled-label {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
     }
 
     &:active {
-      background-color: ${semanticComponentColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillHover};
       border: none;
     }
 
@@ -209,32 +206,31 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
   const { sdsStyle } = props;
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     & .styled-label {
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
     }
 
     &.MuiButton-text {
       .styled-label {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
     }
 
     ${sdsStyle === "minimal"
       ? `
-        background-color: ${semanticComponentColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillHover};
         border: none;
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
 
         path {
-          fill: ${semanticComponentColors?.base?.iconHover};
+          fill: ${semanticColors?.base?.iconPrimaryHover};
         }
 
         .styled-label {
-          color: ${semanticTextColors?.base?.primary};
+          color: ${semanticColors?.base?.textPrimary};
         }
       `
       : ""}
@@ -243,16 +239,15 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 
 const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const colors = getColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${props.sdsStyle === "minimal"
-      ? `& > span, &:hover > span { color: ${semanticTextColors?.base?.primary}; }`
+      ? `& > span, &:hover > span { color: ${semanticColors?.base?.textPrimary}; }`
       : ""}
 
     path {
-      fill: ${semanticComponentColors?.accent?.icon};
+      fill: ${semanticColors?.accent?.icon};
     }
 
     border-color: ${colors?.blue[400]};
@@ -302,25 +297,24 @@ const error = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const isDisabled = (props: InputDropdownProps): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     cursor: default;
-    border-color: ${semanticComponentColors?.base?.borderDisabled};
+    border-color: ${semanticColors?.base?.borderDisabled};
 
     span {
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
     }
 
     &.MuiButton-text {
       .styled-label {
-        color: ${semanticTextColors?.base?.disabled};
+        color: ${semanticColors?.base?.textDisabled};
       }
     }
 
     path {
-      fill: ${semanticComponentColors?.base?.fillDisabled};
+      fill: ${semanticColors?.base?.iconDisabled};
     }
   `;
 };
@@ -372,10 +366,10 @@ export const StyledDetail = styled("span", {
 })`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       margin-left: ${spaces?.xs}px;
       overflow: hidden;
       white-space: nowrap;
@@ -397,12 +391,12 @@ export const StyledLabel = styled("span", {
     const { details, counter, sdsType } = props;
 
     const fontWeights = getFontWeights(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     const labelColor =
       details || counter !== undefined
-        ? semanticTextColors?.base?.primary
-        : semanticTextColors?.base?.secondary;
+        ? semanticColors?.base?.textPrimary
+        : semanticColors?.base?.textSecondary;
 
     return `
       color: ${labelColor};
@@ -420,12 +414,11 @@ export const StyledCounter = styled("span", {
   ${(props: CommonThemeProps) => {
     const corners = getCorners(props);
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticComponentColors?.base?.surfaceTertiary};
-      color: ${semanticTextColors?.base?.accent};
+      background-color: ${semanticColors?.base?.surfaceTertiary};
+      color: ${semanticColors?.accent?.textAction};
       border-radius: ${corners?.l}px;
       padding: 0 ${spaces?.xs}px;
       margin-left: ${spaces?.xs}px;
@@ -477,11 +470,11 @@ export const IconWrapper = styled("span", {
 `;
 
 function labelStyle(props: InputDropdownProps): SerializedStyles {
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
   const labelColor =
     props.sdsType === "value"
-      ? semanticTextColors?.base?.primary
-      : semanticTextColors?.base?.secondary;
+      ? semanticColors?.base?.textPrimary
+      : semanticColors?.base?.textSecondary;
 
   return css`
     &.MuiButton-text {

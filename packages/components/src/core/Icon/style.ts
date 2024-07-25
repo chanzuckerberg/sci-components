@@ -6,7 +6,7 @@ import {
   CommonThemeProps,
   getColors,
   getIconSizes,
-  getSemanticComponentColors,
+  getSemanticColors,
 } from "src/core/styles";
 import { IconNameToSizes } from "./map";
 
@@ -76,13 +76,13 @@ function interactive<IconName extends keyof IconNameToSizes>(
   const { iconColor = "blue", shade = 400 } = props;
 
   const colors = getColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.base?.icon};
+    color: ${semanticColors?.base?.iconPrimary};
 
     &:hover {
-      color: ${semanticComponentColors?.base?.iconHover};
+      color: ${semanticColors?.base?.iconPrimaryHover};
     }
 
     &:active {
@@ -90,7 +90,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:disabled {
-      color: ${semanticComponentColors?.base?.iconDisabled};
+      color: ${semanticColors?.base?.iconDisabled};
     }
   `;
 }

@@ -3,22 +3,21 @@ import Button from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyXxxs,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
 export const ButtonIconsGroupRight = styled("div")`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       align-items: center;
       display: inline-flex;
       gap: ${spaces?.xxxs}px;
       height: 100%;
-      border-left: solid 1px ${semanticComponentColors?.base?.divider};
+      border-left: solid 1px ${semanticColors?.base?.divider};
       padding-left: ${spaces?.xs}px;
     `;
   }}
@@ -47,20 +46,19 @@ export const EmptySlotRight = styled("div")`
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       height: 100%;
       min-width: 100px;
-      box-shadow: inset 0 0 0 1px ${semanticComponentColors?.base?.divider};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.divider};
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0 ${spaces?.l}px;
       box-sizing: border-box;
       border-radius: 4px;
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
       user-select: none;
     `;
   }}
@@ -71,20 +69,19 @@ export const EmptySlotBottom = styled("div")`
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       min-height: 20px;
       width: 100%;
-      box-shadow: inset 0 0 0 1px ${semanticComponentColors?.base?.divider};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.divider};
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0 ${spaces?.l}px;
       box-sizing: border-box;
       border-radius: 4px;
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
       user-select: none;
     `;
   }}

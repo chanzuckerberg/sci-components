@@ -2,100 +2,121 @@ import { Theme, ThemeOptions, TypographyStyle } from "@mui/material/styles";
 import { CSSProperties } from "react";
 
 /**
- * (masoudmanson): The SDSComponentPalette is a custom palette based on
+ * (masoudmanson): The SDSPalette is a custom palette based on
  * the semantic design tokens for the SDS components.
  */
-export interface SDSComponentPalette {
+export interface SDSPalette {
   base: {
+    surfaceBackground: string;
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    surfaceTertiary: string;
+    surfacePrimaryInverse: string;
+    textPrimary: string;
+    textPrimaryInverse: string;
+    textSecondary: string;
+    textSecondaryInverse: string;
+    textDisabled: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
     fillOpen: string;
     fillSelected: string;
     fillDisabled: string;
-    onFillDisabled: string;
-    surface: string;
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    surfaceTertiary: string;
     divider: string;
     border: string;
     borderHover: string;
-    borderDisabled: string;
     borderPressed: string;
+    borderDisabled: string;
     borderTable: string;
-    icon: string;
-    iconHover: string;
-    iconPressed: string;
+    iconPrimary: string;
+    iconPrimaryHover: string;
+    iconPrimaryPressed: string;
+    iconSecondary: string;
+    iconPrimaryInverse: string;
+    iconPrimaryInverseHover: string;
+    iconPrimaryInversePressed: string;
     iconDisabled: string;
   };
   accent: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    textAction: string;
+    textActionHover: string;
+    textActionPressed: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    fillDisabled: string;
-    surface: string;
     border: string;
     borderHover: string;
+    borderPressed: string;
     borderOpen: string;
     borderFocus: string;
-    borderPressed: string;
     borderSelected: string;
-    borderDisabled: string;
     icon: string;
+    iconHover: string;
+    iconPressed: string;
+    iconOpen: string;
+    iconFocus: string;
+    iconSelected: string;
   };
   beta: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
   info: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
   negative: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
   neutral: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
   notice: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
   positive: {
+    surfacePrimary: string;
+    surfaceSecondary: string;
+    text: string;
     fill: string;
     fillHover: string;
     fillPressed: string;
-    fillOnFill: string;
-    surface: string;
     border: string;
     icon: string;
   };
@@ -108,16 +129,15 @@ export interface SDSComponentPalette {
 export interface SDSTextPalette {
   base: {
     primary: string;
+    primaryInverse: string;
     secondary: string;
+    secondaryInverse: string;
     disabled: string;
-    onFill: string;
-    onFillDisabled: string;
-    accent: string;
   };
-  action: {
-    default: string;
-    hover: string;
-    pressed: string;
+  accent: {
+    action: string;
+    actionHover: string;
+    actionPressed: string;
   };
   beta: string;
   info: string;
@@ -135,21 +155,13 @@ declare module "@mui/material/styles" {
   // (masoudmanson): Extends the MUI TypeText to include the SDSTextPalette
   // export interface TypeText extends SDSTextPalette {}
 
-  // (masoudmanson): Extends the MUI Palette to include the SDSComponentPalette and the SDSTextPalette
+  // (masoudmanson): Extends the MUI Palette to include the SDSPalette and the SDSTextPalette
   export interface Palette {
-    sds: {
-      component: SDSComponentPalette;
-      text: SDSTextPalette;
-    };
-    // component: SDSComponentPalette;
-    // text: TypeText;
+    sds: SDSPalette;
   }
 
   export interface PaletteOptions {
-    sds?: {
-      component?: SDSComponentPalette;
-      text?: SDSTextPalette;
-    };
+    sds?: SDSPalette;
   }
 }
 
@@ -286,19 +298,20 @@ export interface Spaces {
 export type Spacings = Spaces;
 
 export interface Color {
+  900?: string;
+  800: string;
+  700: string;
   600: string;
   500: string;
   400: string;
   300: string;
   200: string;
   100: string;
+  75?: string;
+  50?: string;
 }
 
 export interface Colors {
-  common: {
-    white: string;
-    black: string;
-  };
   blue: Color;
   gray: Color;
   green: Color;
@@ -408,7 +421,7 @@ export interface PositiveColor {
   surface: string;
 }
 
-export interface SemanticComponentColors {
+export interface SemanticColors {
   accent: AccentColor;
   base: BaseColor;
   beta: BetaColor;
@@ -417,27 +430,6 @@ export interface SemanticComponentColors {
   notice: NoticeColor;
   neutral: NeutralColor;
   positive: PositiveColor;
-}
-
-export interface SemanticTextColors {
-  action: {
-    default?: string;
-    hover?: string;
-    pressed?: string;
-  };
-  base: {
-    accent?: string;
-    disabled?: string;
-    onFill?: string;
-    onFillDisabled?: string;
-    primary?: string;
-    secondary?: string;
-  };
-  beta: string;
-  info: string;
-  negative: string;
-  notice: string;
-  positive: string;
 }
 
 export interface IconSize {

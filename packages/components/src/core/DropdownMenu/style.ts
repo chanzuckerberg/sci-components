@@ -6,7 +6,7 @@ import {
   fontHeaderXs,
   getBorders,
   getCorners,
-  getSemanticComponentColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -78,10 +78,10 @@ export const StyledPopper = styled(Popper, {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticComponentColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
