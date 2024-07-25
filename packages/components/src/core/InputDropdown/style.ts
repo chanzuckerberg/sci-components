@@ -99,7 +99,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: unset;
-      border-color: black;
+      border-color: ${semanticColors?.base?.borderHover};
       color: ${semanticColors?.base?.textPrimary};
 
       path {

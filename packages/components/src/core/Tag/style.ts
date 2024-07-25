@@ -46,6 +46,7 @@ export type ExtraTagProps = ExtraSmallTagProps | ExtraLargeTagProps;
 const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     height: unset;
@@ -64,7 +65,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: white;
+      color: ${semanticColors?.base?.iconPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -75,6 +76,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     height: unset;
@@ -93,7 +95,7 @@ const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: white;
+      color: ${semanticColors?.base?.iconPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -179,16 +181,21 @@ function generatePrimaryTagColors(
         colors.length >= 2
           ? darken(colors[1], 0.15)
           : semanticColors?.[intent].fillHover,
-      iconColor: colors.length > 2 ? colors[2] : "white",
-      label: colors.length ? colors[0] : "white",
+      iconColor:
+        colors.length > 2
+          ? colors[2]
+          : semanticColors?.base?.iconPrimaryInverse,
+      label: colors.length
+        ? colors[0]
+        : semanticColors?.base?.textPrimaryInverse,
     };
   } else {
     return {
       background: semanticColors?.neutral.fill,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
-      iconColor: "white",
-      label: "white",
+      iconColor: semanticColors?.base?.iconPrimaryInverse,
+      label: semanticColors?.base?.textPrimaryInverse,
     };
   }
 }

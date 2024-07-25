@@ -41,19 +41,19 @@ const disabledStyled = (props: RowExtraProps) => {
     }
 
     .cell-component {
-      color: black;
+      color: ${semanticColors?.base?.textDisabled};
       pointer-events: none;
       user-select: none;
       & span, & div {
-        color: black;
+        color: ${semanticColors?.base?.textDisabled};
+        background-color: ${semanticColors?.base?.surfaceSecondary};
       }
 
       svg {
-        fill: black;
+        fill: ${semanticColors?.base?.iconDisabled};
       }
 
       filter: grayscale(100%);
-      opacity: 0.2;
     }
   `;
 };

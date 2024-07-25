@@ -86,7 +86,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="base-Popper-root css-1hqzuq8-MuiPopper-root"
+      class="base-Popper-root css-v2msuu-MuiPopper-root"
       data-popper-escaped=""
       data-popper-placement="bottom-start"
       data-popper-reference-hidden=""
@@ -126,7 +126,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-zy6bts-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1dvimkq-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -233,7 +233,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             style="width: 0px; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-100c8gn-MuiPaper-root-MuiAutocomplete-paper"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-1bqrqoq-MuiPaper-root-MuiAutocomplete-paper"
             >
               <ul
                 aria-labelledby="autocomplete-demo-label"
@@ -244,7 +244,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
                   role="option"
@@ -285,7 +285,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
                   role="option"
@@ -326,7 +326,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
                   role="option"
@@ -372,7 +372,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
                   role="option"
@@ -418,7 +418,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
                   role="option"
@@ -464,7 +464,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
                   role="option"
@@ -541,7 +541,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-zy6bts-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1dvimkq-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -648,7 +648,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             style="width: 0px; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-100c8gn-MuiPaper-root-MuiAutocomplete-paper"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-1bqrqoq-MuiPaper-root-MuiAutocomplete-paper"
             >
               <ul
                 aria-labelledby="autocomplete-demo-label"
@@ -659,7 +659,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
                   role="option"
@@ -705,7 +705,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
                   role="option"
@@ -751,7 +751,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
                   role="option"
@@ -792,7 +792,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
                   role="option"
@@ -833,7 +833,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
                   role="option"
@@ -874,7 +874,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="true"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root Mui-disabled MuiMenuItem-gutters Mui-disabled MuiMenuItem-root Mui-disabled MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root Mui-disabled MuiMenuItem-gutters Mui-disabled MuiMenuItem-root Mui-disabled MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
                   role="option"
@@ -914,7 +914,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-pelx1i-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="6"
                   id="autocomplete-demo-option-6"
                   role="option"
@@ -967,7 +967,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-72nxdm-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1os64xc-MuiAutocomplete-root"
     label="Search by label"
   >
     <div

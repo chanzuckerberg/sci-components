@@ -47,7 +47,11 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       ? semanticColors?.accent?.textAction
       : semanticColors?.base?.textPrimaryInverse;
 
+  const backgroundColor =
+    variant === "outlined" ? "transparent" : semanticColors?.accent?.fill;
+
   return css`
+    background-color: ${backgroundColor};
     border: none;
     box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.border};
     padding: ${padding};
@@ -86,7 +90,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: ${shadows?.none};
 
       svg {
-        color: ${semanticColors?.base?.iconPrimaryInverse};
+        color: ${semanticColors?.base?.iconDisabled};
       }
     }
 

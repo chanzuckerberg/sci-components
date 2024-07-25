@@ -62,7 +62,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.valueLabel} {
       padding: 2px 4px;
-      color: black;
+      color: ${semanticColors?.base?.textPrimary};
       background-color: ${semanticColors?.accent?.surfacePrimary};
       border-radius: ${corners?.m}px;
       left: unset; 

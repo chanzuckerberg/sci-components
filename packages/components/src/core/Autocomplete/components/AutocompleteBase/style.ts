@@ -44,14 +44,14 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
     const semanticColors = getSemanticColors(props);
 
     return `
-      ${!search && `height: 0`};
+      ${!search && `height: 0; margin: 0 !important;`};
       
       // (masoudmanson): We need to apply the focus styles to the input element
       // when the user is tabbing through the options. To find out more, take a
       // look at the useDetectUserTabbing hook.
       &[data-user-is-tabbing="true"]:focus-within {
         border-radius: 4px;
-        outline: 2px solid black;
+        outline: 2px solid ${semanticColors?.base?.borderHover};
         outline-offset: 1px;
       }
 
@@ -102,6 +102,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
+          background-color: ${semanticColors?.base?.surfacePrimary};
           padding: ${spaces?.xxs}px ${spaces?.s}px;
         }
 
@@ -173,6 +174,7 @@ export const StyledPaper = styled(Paper)`
     const semanticColors = getSemanticColors(props);
 
     return `
+      background-image: none;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
       background-color: ${semanticColors?.base?.surfacePrimary};
       border: ${borders?.none};

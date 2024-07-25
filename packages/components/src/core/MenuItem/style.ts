@@ -77,7 +77,7 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
-        background-color: white;
+        background-color: ${semanticColors?.base?.surfacePrimary};
         &:hover {
           background-color: ${semanticColors?.base?.fillHover};
         }

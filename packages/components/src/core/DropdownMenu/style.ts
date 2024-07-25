@@ -82,6 +82,7 @@ export const StyledPopper = styled(Popper, {
 
     return `
       background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
@@ -98,10 +99,13 @@ export const StyledPaper = styled(Paper, {
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const shadows = getShadows(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       box-shadow: ${shadows?.none} !important;
       border: ${borders?.none};
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       margin: 0;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
 

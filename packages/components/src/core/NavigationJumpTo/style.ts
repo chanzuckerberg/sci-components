@@ -96,13 +96,13 @@ export const StyledTab = styled(Tab, {
         border-radius: ${spaces?.xxxs}px;
       }
       &:hover {
-        color: black;
+        color: ${semanticColors?.base?.textPrimary};
         &:before {
           display: block;
         }
       }
       &.Mui-selected {
-        color: black;
+        color: ${semanticColors?.base?.textPrimary};
         font-weight: 600;
       }
       &.MuiTabs-indicator {
