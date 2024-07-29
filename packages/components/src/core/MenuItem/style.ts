@@ -39,10 +39,11 @@ export const StyledMenuItem = styled(MenuItem)`
         opacity: 1;
 
         &:hover, &.${menuItemClasses.focusVisible} {
-          background-color: ${semanticColors?.base?.fillHover};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
 
           &[aria-selected="true"] {
-            background-color: ${semanticColors?.base?.fillHover};
+            background-color: ${semanticColors?.base?.fillHover}47;
           }
         }
       }
@@ -57,7 +58,8 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiAutocomplete-option[aria-selected="true"] {
         &:hover {
-          background-color: ${semanticColors?.base?.fillHover} !important;
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47 !important;
         }
 
         svg.check-icon {
@@ -70,7 +72,8 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:hover {
-        background-color: ${semanticColors?.base?.fillHover};
+        /* the number 47 is the opacity of the color, which is equal to 28% */
+        background-color: ${semanticColors?.base?.fillHover}47;
         svg.check-icon {
           color: ${selected ? primary : semanticColors?.base?.iconPrimary};
         }
@@ -79,7 +82,8 @@ export const StyledMenuItem = styled(MenuItem)`
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
         background-color: ${semanticColors?.base?.surfacePrimary};
         &:hover {
-          background-color: ${semanticColors?.base?.fillHover};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
         }
         .primary-text {
           font-weight: ${fontWeights?.semibold};

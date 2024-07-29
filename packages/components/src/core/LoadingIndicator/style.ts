@@ -51,9 +51,9 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
   return css`
     ${fontCapsXxxxs(props)}
 
-    background-color: ${semanticColors?.accent?.surfacePrimary};
+    background-color: ${semanticColors?.info?.surfacePrimary};
     border-radius: ${corners?.l}px;
-    color: ${semanticColors?.accent?.textAction};
+    color: ${semanticColors?.info?.text};
 
     svg {
       path {

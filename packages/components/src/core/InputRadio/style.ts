@@ -7,7 +7,7 @@ import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  SemanticColors,
+  SDSPalette,
   fontBodyXs,
   fontBodyXxs,
   getIconSizes,
@@ -35,7 +35,7 @@ export const StyledRadioButton = styled(RawRadio)`
       warning: "notice",
     };
 
-    const radioColor = intentToColor[intent] as keyof SemanticColors;
+    const radioColor = intentToColor[intent] as keyof SDSPalette;
 
     return `
       color: ${semanticColors?.[radioColor]?.border};

@@ -18,12 +18,14 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
     return `
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
-        background-color: ${semanticColors?.base?.fillOpen};
+        /* the number 47 is the opacity of the color, which is equal to 28% */
+        background-color: ${semanticColors?.base?.fillOpen}47;
         color: ${semanticColors?.accent?.icon};
         border-color: ${semanticColors?.base?.border};
 
         &:hover {
-          background-color: ${semanticColors?.base?.fillHover};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
         }
       }
 
@@ -36,7 +38,8 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
         &:hover {
           border-color: ${semanticColors?.base?.border};
-          background-color: ${semanticColors?.base?.fillHover};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
         }
       }
     `;

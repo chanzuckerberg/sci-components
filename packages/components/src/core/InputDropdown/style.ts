@@ -156,7 +156,8 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
+      /* the number 47 is the opacity of the color, which is equal to 28% */
+      background-color: ${semanticColors?.base?.fillHover}47;
       border: none;
       color: ${semanticColors?.base?.textPrimary};
 
@@ -170,7 +171,8 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      background-color: ${semanticColors?.base?.fillHover};
+      /* the number 47 is the opacity of the color, which is equal to 28% */
+      background-color: ${semanticColors?.base?.fillHover}47;
       border: none;
     }
 
@@ -221,7 +223,8 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 
     ${sdsStyle === "minimal"
       ? `
-        background-color: ${semanticColors?.base?.fillHover};
+        /* the number 47 is the opacity of the color, which is equal to 28% */
+        background-color: ${semanticColors?.base?.fillHover}47;
         border: none;
         color: ${semanticColors?.base?.textPrimary};
 

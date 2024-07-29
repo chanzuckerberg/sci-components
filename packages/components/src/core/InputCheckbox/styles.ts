@@ -11,7 +11,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
-import { SemanticColors, fontBodyXs, fontBodyXxs } from "../styles";
+import { SDSPalette, fontBodyXs, fontBodyXxs } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "error" | "warning";
@@ -32,7 +32,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
       warning: "notice",
     };
 
-    const checkboxColor = intentToColor[intent] as keyof SemanticColors;
+    const checkboxColor = intentToColor[intent] as keyof SDSPalette;
 
     return `
       color: ${semanticColors?.[checkboxColor]?.border};

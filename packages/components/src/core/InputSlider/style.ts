@@ -32,14 +32,14 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
     
     .${sliderClasses.track} {
-      background-color: ${semanticColors?.accent?.fill};
+      background-color: ${semanticColors?.accent?.fillPrimary};
     }
 
     .${sliderClasses.thumb} {
       ${focusVisibleA11yStyle(props)}
       height: 14px;
       width: 14px;
-      background-color: ${semanticColors?.accent?.fill};
+      background-color: ${semanticColors?.accent?.fillPrimary};
 
       &.${sliderClasses.focusVisible}, &:hover, &:focus, &:active {
         box-shadow: ${shadows?.none};
@@ -92,7 +92,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.markLabel} {
       ${fontBodyXxxs(props)?.styles}
-      color: ${colors?.gray[500]};
+      color: ${semanticColors?.base?.textSecondary};
     }
 
     .${sliderClasses.markLabelActive} {

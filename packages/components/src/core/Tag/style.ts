@@ -15,7 +15,6 @@ import {
 } from "src/core/styles";
 
 export type SdsTagColorType =
-  | "accent"
   | "info"
   | "positive"
   | "notice"
@@ -172,7 +171,7 @@ function generatePrimaryTagColors(
   if (intent) {
     return {
       background:
-        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillPrimary,
       backgroundClicked:
         colors.length >= 2
           ? darken(colors[1], 0.3)
@@ -191,7 +190,7 @@ function generatePrimaryTagColors(
     };
   } else {
     return {
-      background: semanticColors?.neutral.fill,
+      background: semanticColors?.neutral.fillPrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
       iconColor: semanticColors?.base?.iconPrimaryInverse,
@@ -219,7 +218,8 @@ function generateSecondaryTagColors(
         colors.length >= 2
           ? darken(colors[1], 0.15)
           : semanticColors?.[intent].fillHover,
-      iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
+      iconColor:
+        colors.length > 2 ? colors[2] : semanticColors?.[intent].ornament,
       label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
     };
   } else {
@@ -227,7 +227,7 @@ function generateSecondaryTagColors(
       background: semanticColors?.neutral.surfacePrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
-      iconColor: semanticColors?.neutral.icon,
+      iconColor: semanticColors?.neutral.ornament,
       label: semanticColors?.neutral.fillPressed,
     };
   }

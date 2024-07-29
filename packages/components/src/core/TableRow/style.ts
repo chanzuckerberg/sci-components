@@ -63,7 +63,8 @@ const hoverStyled = (props: RowExtraProps) => {
 
   return `
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
+      /* the number 47 is the opacity of the color, which is equal to 28% */
+      background-color: ${semanticColors?.base?.fillHover}47;
     }
   `;
 };

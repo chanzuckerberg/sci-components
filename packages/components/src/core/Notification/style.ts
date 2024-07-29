@@ -39,7 +39,7 @@ export const StyledNotification = styled(Alert, {
     const typography = getTypography(props);
 
     const borderColor = semanticColors?.[intent]?.border ?? "black";
-    const iconColor = semanticColors?.[intent]?.icon ?? "black";
+    const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
 
     // (masoudmanson): The Notification Icon should be vertically centered with the Notification

@@ -65,7 +65,7 @@ const primary = (props: BannerExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.accent?.fill};
+    background-color: ${semanticColors?.accent?.fillPrimary};
     color: ${semanticColors?.base?.textPrimaryInverse};
     svg {
       fill: ${semanticColors?.base?.iconPrimaryInverse};

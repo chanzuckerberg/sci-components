@@ -1,45 +1,149 @@
 {
   "sds": {
     "border": {
-      "negative": {
-        "default": { "value": "1px solid {sds.color.primitive.red.400.value}" }
+      "dark": {
+        "negative": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.red.400.value}"
+          }
+        },
+        "base": {
+          "divider": {
+            "value": "1px solid {sds.color.dark.primitive.gray.200.value}"
+          },
+          "table": {
+            "value": "1px solid {sds.color.dark.primitive.gray.300.value}"
+          },
+          "disabled": {
+            "value": "1px solid {sds.color.dark.primitive.gray.300.value}"
+          },
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.gray.400.value}"
+          },
+          "black": { "value": "1px dashed black" },
+          "hover": { "value": "1px dashed black" },
+          "dashed": {
+            "value": "1px dashed {sds.color.dark.primitive.gray.400.value}"
+          }
+        },
+        "link": {
+          "dashed": { "value": "1px dashed" },
+          "solid": { "value": "1px solid" }
+        },
+        "accent": {
+          "disabled": {
+            "value": "1px solid {sds.color.dark.primitive.blue.300.value}"
+          },
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.blue.400.value}"
+          },
+          "hover": {
+            "value": "1px solid {sds.color.dark.primitive.blue.500.value}"
+          },
+          "dashed": {
+            "value": "2px dashed {sds.color.dark.primitive.blue.400.value}"
+          }
+        },
+        "info": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.blue.400.value}"
+          }
+        },
+        "beta": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.purple.400.value}"
+          }
+        },
+        "positive": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.green.400.value}"
+          }
+        },
+        "notice": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.yellow.400.value}"
+          }
+        },
+        "neutral": {
+          "default": {
+            "value": "1px solid {sds.color.dark.primitive.gray.400.value}"
+          }
+        },
+        "none": {
+          "value": "none"
+        }
       },
-      "base": {
-        "divider": { "value": "1px solid {sds.color.primitive.gray.200.value}" },
-        "table": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
-        "disabled": { "value": "1px solid {sds.color.primitive.gray.300.value}" },
-        "default": { "value": "1px solid {sds.color.primitive.gray.400.value}" },
-        "black": { "value": "1px dashed {sds.color.primitive.common.black.value}" },
-        "hover": { "value": "1px dashed {sds.color.primitive.common.black.value}" },
-        "dashed": { "value": "1px dashed {sds.color.primitive.gray.400.value}" }
-      },
-      "link": {
-        "dashed": { "value": "1px dashed" },
-        "solid": { "value": "1px solid" }
-      },
-      "accent": {
-        "disabled": { "value": "1px solid {sds.color.primitive.blue.300.value}" },
-        "default": { "value": "1px solid {sds.color.primitive.blue.400.value}" },
-        "hover": { "value": "1px solid {sds.color.primitive.blue.500.value}" },
-        "dashed": { "value": "2px dashed {sds.color.primitive.blue.400.value}" }
-      },
-      "info": {
-        "default": { "value": "1px solid {sds.color.primitive.blue.400.value}" }
-      },
-      "beta": {
-        "default": { "value": "1px solid {sds.color.primitive.purple.400.value}" }
-      },
-      "positive": {
-        "default": { "value": "1px solid {sds.color.primitive.green.400.value}" }
-      },
-      "notice": {
-        "default": { "value": "1px solid {sds.color.primitive.yellow.400.value}" }
-      },
-      "neutral": {
-        "default": { "value": "1px solid {sds.color.primitive.gray.400.value}" }
-      },
-      "none": {
-        "value": "none"
+      "light": {
+        "negative": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.red.400.value}"
+          }
+        },
+        "base": {
+          "divider": {
+            "value": "1px solid {sds.color.light.primitive.gray.200.value}"
+          },
+          "table": {
+            "value": "1px solid {sds.color.light.primitive.gray.300.value}"
+          },
+          "disabled": {
+            "value": "1px solid {sds.color.light.primitive.gray.300.value}"
+          },
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.gray.400.value}"
+          },
+          "black": { "value": "1px dashed black" },
+          "hover": { "value": "1px dashed black" },
+          "dashed": {
+            "value": "1px dashed {sds.color.light.primitive.gray.400.value}"
+          }
+        },
+        "link": {
+          "dashed": { "value": "1px dashed" },
+          "solid": { "value": "1px solid" }
+        },
+        "accent": {
+          "disabled": {
+            "value": "1px solid {sds.color.light.primitive.blue.300.value}"
+          },
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.blue.400.value}"
+          },
+          "hover": {
+            "value": "1px solid {sds.color.light.primitive.blue.500.value}"
+          },
+          "dashed": {
+            "value": "2px dashed {sds.color.light.primitive.blue.400.value}"
+          }
+        },
+        "info": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.blue.400.value}"
+          }
+        },
+        "beta": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.purple.400.value}"
+          }
+        },
+        "positive": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.green.400.value}"
+          }
+        },
+        "notice": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.yellow.400.value}"
+          }
+        },
+        "neutral": {
+          "default": {
+            "value": "1px solid {sds.color.light.primitive.gray.400.value}"
+          }
+        },
+        "none": {
+          "value": "none"
+        }
       }
     }
   }

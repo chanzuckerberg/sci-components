@@ -48,7 +48,9 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       : semanticColors?.base?.textPrimaryInverse;
 
   const backgroundColor =
-    variant === "outlined" ? "transparent" : semanticColors?.accent?.fill;
+    variant === "outlined"
+      ? "transparent"
+      : semanticColors?.accent?.fillPrimary;
 
   return css`
     background-color: ${backgroundColor};
@@ -68,7 +70,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.borderHover};
 
       svg {
-        color: ${semanticColors?.base?.fill};
+        color: ${semanticColors?.base?.fillPrimary};
       }
     }
 
@@ -79,7 +81,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillPressed};
 
       svg {
-        color: ${semanticColors?.base?.fill};
+        color: ${semanticColors?.base?.fillPrimary};
       }
     }
 
@@ -133,11 +135,13 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
 
   const contentColor =
     variant === "outlined"
-      ? semanticColors?.negative?.icon
+      ? semanticColors?.negative?.ornament
       : semanticColors?.base?.textPrimaryInverse;
 
   const backgroundColor =
-    variant === "outlined" ? "transparent" : semanticColors?.negative?.fill;
+    variant === "outlined"
+      ? "transparent"
+      : semanticColors?.negative?.fillPrimary;
 
   return css`
     border: none;
@@ -156,7 +160,7 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillHover};
 
       svg {
-        color: ${semanticColors?.base?.fill};
+        color: ${semanticColors?.base?.fillPrimary};
       }
     }
 
@@ -167,7 +171,7 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillPressed};
 
       svg {
-        color: ${semanticColors?.base?.fill};
+        color: ${semanticColors?.base?.fillPrimary};
       }
     }
 

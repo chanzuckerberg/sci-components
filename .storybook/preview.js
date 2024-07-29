@@ -87,7 +87,7 @@ const preview = {
     pseudo: {},
     theme: {
       description: "Global theme for components",
-      defaultValue: "dark",
+      defaultValue: "light",
       toolbar: {
         title: "Theme",
         dynamicTitle: true,

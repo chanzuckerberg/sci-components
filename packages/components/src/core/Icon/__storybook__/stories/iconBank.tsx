@@ -61,7 +61,7 @@ const IconWrapper = styled("div")`
       }
 
       span {
-        color: ${colors?.gray[600]};
+        color: ${semanticColors?.base?.textPrimary};
         font-size: 11px;
       }
 

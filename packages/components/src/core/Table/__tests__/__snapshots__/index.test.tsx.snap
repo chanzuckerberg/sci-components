@@ -99,7 +99,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="css-e9lq1t"
+      class="css-415cw5"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -264,7 +264,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-e9lq1t"
+      class="css-415cw5"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -495,7 +495,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class=" css-jbitro"
+      class=" css-1gr8eym"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"

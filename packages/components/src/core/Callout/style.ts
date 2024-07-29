@@ -40,7 +40,7 @@ export const StyledCallout = styled(Alert, {
     const typography = getTypography(props);
     const semanticColors = getSemanticColors(props);
 
-    const iconColor = semanticColors?.[intent]?.icon ?? "black";
+    const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
 
     // when a title is present Mui's default styling has vertical margin,

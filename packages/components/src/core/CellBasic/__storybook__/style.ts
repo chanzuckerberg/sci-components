@@ -6,6 +6,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import CellBasic from "..";
 
 export const ButtonIconsGroupRight = styled("div")`
   ${(props: CommonThemeProps) => {
@@ -83,6 +84,19 @@ export const EmptySlotBottom = styled("div")`
       border-radius: 4px;
       color: ${semanticColors?.base?.textDisabled};
       user-select: none;
+    `;
+  }}
+`;
+
+export const StyledCellBasic = styled(CellBasic)`
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      border: dashed 1px ${semanticColors?.base?.divider};
+      height: 70px;
+      maxWidth: 250px;
+      width: 250px;
     `;
   }}
 `;

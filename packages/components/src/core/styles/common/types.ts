@@ -1,150 +1,87 @@
 import { Theme, ThemeOptions, TypographyStyle } from "@mui/material/styles";
 import { CSSProperties } from "react";
 
+export interface AccentColor {
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  textAction: string;
+  textActionHover: string;
+  textActionPressed: string;
+  fillHover: string;
+  fillPressed: string;
+  fillPrimary: string;
+  border: string;
+  borderHover: string;
+  borderPressed: string;
+  borderOpen: string;
+  borderFocus: string;
+  borderSelected: string;
+  icon: string;
+  iconHover: string;
+  iconPressed: string;
+  iconOpen: string;
+  iconFocus: string;
+  iconSelected: string;
+}
+
+export interface BaseColor {
+  surfaceBackground: string;
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  surfaceTertiary: string;
+  surfacePrimaryInverse: string;
+  textPrimary: string;
+  textPrimaryInverse: string;
+  textSecondary: string;
+  textSecondaryInverse: string;
+  textDisabled: string;
+  fillHover: string;
+  fillPressed: string;
+  fillPrimary: string;
+  fillOpen: string;
+  fillSelected: string;
+  fillDisabled: string;
+  divider: string;
+  border: string;
+  borderHover: string;
+  borderPressed: string;
+  borderDisabled: string;
+  borderTable: string;
+  iconPrimary: string;
+  iconPrimaryHover: string;
+  iconPrimaryPressed: string;
+  iconSecondary: string;
+  iconPrimaryInverse: string;
+  iconPrimaryInverseHover: string;
+  iconPrimaryInversePressed: string;
+  iconDisabled: string;
+}
+
+export interface IntentColor {
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  text: string;
+  fillPrimary: string;
+  fillSecondary: string;
+  fillHover: string;
+  fillPressed: string;
+  border: string;
+  ornament: string;
+}
+
 /**
  * (masoudmanson): The SDSPalette is a custom palette based on
  * the semantic design tokens for the SDS components.
  */
 export interface SDSPalette {
-  base: {
-    surfaceBackground: string;
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    surfaceTertiary: string;
-    surfacePrimaryInverse: string;
-    textPrimary: string;
-    textPrimaryInverse: string;
-    textSecondary: string;
-    textSecondaryInverse: string;
-    textDisabled: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    fillOpen: string;
-    fillSelected: string;
-    fillDisabled: string;
-    divider: string;
-    border: string;
-    borderHover: string;
-    borderPressed: string;
-    borderDisabled: string;
-    borderTable: string;
-    iconPrimary: string;
-    iconPrimaryHover: string;
-    iconPrimaryPressed: string;
-    iconSecondary: string;
-    iconPrimaryInverse: string;
-    iconPrimaryInverseHover: string;
-    iconPrimaryInversePressed: string;
-    iconDisabled: string;
-  };
-  accent: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    textAction: string;
-    textActionHover: string;
-    textActionPressed: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    borderHover: string;
-    borderPressed: string;
-    borderOpen: string;
-    borderFocus: string;
-    borderSelected: string;
-    icon: string;
-    iconHover: string;
-    iconPressed: string;
-    iconOpen: string;
-    iconFocus: string;
-    iconSelected: string;
-  };
-  beta: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-  info: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-  negative: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-  neutral: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-  notice: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-  positive: {
-    surfacePrimary: string;
-    surfaceSecondary: string;
-    text: string;
-    fill: string;
-    fillHover: string;
-    fillPressed: string;
-    border: string;
-    icon: string;
-  };
-}
-
-/**
- * (masoudmanson): The SDSTextPalette is a custom palette based on the
- * semantic design tokens for the SDS text based components.
- */
-export interface SDSTextPalette {
-  base: {
-    primary: string;
-    primaryInverse: string;
-    secondary: string;
-    secondaryInverse: string;
-    disabled: string;
-  };
-  accent: {
-    action: string;
-    actionHover: string;
-    actionPressed: string;
-  };
-  beta: string;
-  info: string;
-  negative: string;
-  neutral: string;
-  notice: string;
-  positive: string;
+  accent: AccentColor;
+  base: BaseColor;
+  beta: IntentColor;
+  info: IntentColor;
+  negative: IntentColor;
+  notice: IntentColor;
+  neutral: IntentColor;
+  positive: IntentColor;
 }
 
 /**
@@ -152,9 +89,6 @@ export interface SDSTextPalette {
  * https://mui.com/material-ui/customization/palette/#typescript
  */
 declare module "@mui/material/styles" {
-  // (masoudmanson): Extends the MUI TypeText to include the SDSTextPalette
-  // export interface TypeText extends SDSTextPalette {}
-
   // (masoudmanson): Extends the MUI Palette to include the SDSPalette and the SDSTextPalette
   export interface Palette {
     sds: SDSPalette;
@@ -318,118 +252,6 @@ export interface Colors {
   purple: Color;
   red: Color;
   yellow: Color;
-}
-
-export interface AccentColor {
-  border: string;
-  borderDisabled: string;
-  borderFocus: string;
-  borderHover: string;
-  borderOpen: string;
-  borderSelected: string;
-  borderPressed: string;
-  fill: string;
-  fillDisabled: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface BaseColor {
-  border: string;
-  borderDisabled: string;
-  borderHover: string;
-  borderPressed: string;
-  borderTable: string;
-  divider: string;
-  fill: string;
-  fillDisabled: string;
-  fillHover: string;
-  fillOpen: string;
-  fillPressed: string;
-  fillSelected: string;
-  icon: string;
-  iconDisabled: string;
-  iconHover: string;
-  iconPressed: string;
-  onFillDisabled: string;
-  surface: string;
-  surfacePrimary: string;
-  surfaceSecondary: string;
-  surfaceTertiary: string;
-}
-
-export interface BetaColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface InfoColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface NegativeColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface NeutralColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface NoticeColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface PositiveColor {
-  border: string;
-  fill: string;
-  fillHover: string;
-  fillOnFill: string;
-  fillPressed: string;
-  icon: string;
-  surface: string;
-}
-
-export interface SemanticColors {
-  accent: AccentColor;
-  base: BaseColor;
-  beta: BetaColor;
-  info: InfoColor;
-  negative: NegativeColor;
-  notice: NoticeColor;
-  neutral: NeutralColor;
-  positive: PositiveColor;
 }
 
 export interface IconSize {

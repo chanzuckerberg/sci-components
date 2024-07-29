@@ -50,7 +50,7 @@ export const StyledTabs = styled(Tabs, {
       overflow: visible;
 
       .${tabsClasses.indicator} {
-        background-color: ${semanticColors?.[sdsIndicatorColor]?.fill} !important;
+        background-color: ${semanticColors?.[sdsIndicatorColor]?.fillPrimary} !important;
         border-radius: 2px;
         left: 0;
         width: 2px;
