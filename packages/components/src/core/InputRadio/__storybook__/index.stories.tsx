@@ -2,6 +2,7 @@ import { Args, Meta } from "@storybook/react";
 import { InputRadio } from "./stories/default";
 import { TestDemo } from "./stories/test";
 import { INPUT_RADIO_EXCLUDED_CONTROLS } from "./constants";
+import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -26,6 +27,9 @@ export default {
     },
   },
   component: InputRadio,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
   title: "Components/Inputs/InputRadio",
 } as Meta;
 

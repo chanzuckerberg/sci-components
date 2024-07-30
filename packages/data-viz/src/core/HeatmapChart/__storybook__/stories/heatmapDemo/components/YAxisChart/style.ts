@@ -15,7 +15,6 @@ interface YAxisWrapperProps {
 
 export const YAxisWrapper = styled.div<YAxisWrapperProps>`
   ${yAxisWidthAndOffset}
-  background-color: white;
   height: ${(props) => props.height}px;
   position: absolute;
   overflow: hidden;
@@ -31,7 +30,6 @@ interface YAxisContainerProps {
 
 export const YAxisContainer = styled.div<YAxisContainerProps>`
   ${yAxisWidth}
-  background-color: white;
   left: 0px;
   position: absolute;
   display: flex;
@@ -53,13 +51,13 @@ export const YAxisLabel = styled.div`
     align-items: center;
     padding-right: ${index < 100 ? 25 : index < 1000 ? 35 : 40}px;
     &::before {
-        content: "";
-        position: absolute;
-        height: 1px;
-        width: 5px;
-        background-color: #666;
-        right: 0;
-        ${Y_AXIS_REVERSE ? `margin-bottom: 25px;` : `margin-top: 25px;`}
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 5px;
+      background-color: #666;
+      right: 0;
+      ${Y_AXIS_REVERSE ? `margin-bottom: 25px;` : `margin-top: 25px;`}
     }`;
   }}
 `;
@@ -85,20 +83,19 @@ interface GeneButtonProps {
 export const GeneButtonStyle = styled.div<GeneButtonProps>`
   ${(props) => {
     return `
-        background-color: white;
-        border: none;
-        z-index: 2;
-        display: inline-flex;
-        justify-content: space-between;
-        white-space: nowrap;
-        flex-direction: row;
-        align-items: center;
+      border: none;
+      z-index: 2;
+      display: inline-flex;
+      justify-content: space-between;
+      white-space: nowrap;
+      flex-direction: row;
+      align-items: center;
 
-        &:hover {
-            ${activeStyle()}
-        }
+      &:hover {
+          ${activeStyle()}
+      }
 
-        ${props.active ? activeStyle() : null}
+      ${props.active ? activeStyle() : null}
     `;
   }}
 `;
@@ -134,9 +131,8 @@ function yAxisWidth({ width }: { width: number }) {
 
 function selectedStyle({ font }: { font: string }) {
   return `
-      font: ${font};
-      background-color: "white";
-    `;
+    font: ${font};
+  `;
 }
 
 function activeStyle() {
@@ -145,12 +141,15 @@ function activeStyle() {
     #gene-hover-container {
       visibility: visible;
     }
-    background-color: #f3f3f3;
+    background-color: #c3c3c340;
+    .gene-label-container {
+      color: unset;
+    }
     .gene-label-container span {
-        color: black;
-        font-weight: 600;
+      font-weight: 600;
     }
     .y-axis-hover-container {
       opacity: 1;
-    }`;
+    }
+  `;
 }

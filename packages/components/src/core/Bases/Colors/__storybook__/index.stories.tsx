@@ -8,7 +8,7 @@ export default {
     axe: {
       disabledRules: ["color-contrast"],
     },
-    badges: [BADGE.WIP],
+    badges: [BADGE.STABLE],
   },
   title: "Bases/Colors",
 } as Meta;

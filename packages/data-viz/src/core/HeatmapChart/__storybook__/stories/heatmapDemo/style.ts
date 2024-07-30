@@ -18,14 +18,13 @@ export const Container = styled("div")`
 
 export const Sidebar = styled("div")`
   grid-area: 2 / 1 / 6 / 2;
-  border-right: solid 1px #eee;
+  border-right: solid 1px #c3c3c347;
   padding: 20px 15px;
-  height: calc(100vh - 110px);
+  height: calc(100vh - 70px);
   position: sticky;
   top: 70px;
   left: 0;
   z-index: 100;
-  background-color: white;
 `;
 
 export const Main = styled("div")`

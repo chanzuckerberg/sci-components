@@ -3,11 +3,10 @@ import { styled } from "@mui/material";
 
 export const StyledHeader = styled("div")`
   grid-area: 1 / 1 / 2 / 6;
-  border-bottom: solid 1px #eee;
-  width: calc(100% - 15px);
+  border-bottom: solid 1px #c3c3c347;
+  width: 100%;
   padding: 0 15px;
   height: 70px;
-  background-color: white;
   position: fixed;
   z-index: 200;
   display: flex;

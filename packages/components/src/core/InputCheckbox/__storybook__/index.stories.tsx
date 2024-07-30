@@ -5,6 +5,7 @@ import {
   INPUT_CHECKBOX_TEST_ID,
 } from "./constants";
 import { TestDemo } from "./stories/test";
+import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -29,6 +30,9 @@ export default {
     },
   },
   component: InputCheckbox,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
   title: "Components/Inputs/InputCheckbox",
 } as Meta;
 
