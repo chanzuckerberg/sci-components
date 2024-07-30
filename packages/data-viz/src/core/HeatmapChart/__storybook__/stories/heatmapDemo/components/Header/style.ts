@@ -1,7 +1,16 @@
-import { Button } from "@czi-sds/components";
+import { Button, SDSTheme } from "@czi-sds/components";
+import { ThemeContext } from "@emotion/react";
 import { styled } from "@mui/material";
+import { useContext } from "react";
 
 export const StyledHeader = styled("div")`
+  ${() => {
+    const theme = useContext(ThemeContext) as SDSTheme;
+
+    return `
+      background-color: ${theme?.palette?.sds?.base?.surfaceBackground};
+    `;
+  }}
   grid-area: 1 / 1 / 2 / 6;
   border-bottom: solid 1px #c3c3c347;
   width: 100%;

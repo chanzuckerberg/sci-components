@@ -1,4 +1,7 @@
+import { SDSTheme } from "@czi-sds/components";
+import { ThemeContext } from "@emotion/react";
 import { styled } from "@mui/material";
+import { useContext } from "react";
 
 export const Container = styled("div")`
   font-family: "Inter", sans-serif;
@@ -17,6 +20,13 @@ export const Container = styled("div")`
 `;
 
 export const Sidebar = styled("div")`
+  ${() => {
+    const theme = useContext(ThemeContext) as SDSTheme;
+
+    return `
+      background-color: ${theme?.palette?.sds?.base?.surfaceBackground};
+    `;
+  }}
   grid-area: 2 / 1 / 6 / 2;
   border-right: solid 1px #c3c3c347;
   padding: 20px 15px;
