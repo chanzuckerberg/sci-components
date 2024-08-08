@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertProps } from "@mui/lab";
 import { StyledAlert } from "./style";
 

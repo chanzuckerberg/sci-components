@@ -1,3 +1,5 @@
+"use client";
+
 import { styled } from "@mui/material/styles";
 import Button, { ButtonProps } from "src/core/Button";
 import {

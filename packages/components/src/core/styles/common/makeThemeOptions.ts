@@ -1,3 +1,5 @@
+"use client";
+
 import { colors } from "@mui/material";
 import { AppTheme, SDSThemeOptions } from "./types";
 

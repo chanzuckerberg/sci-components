@@ -1,3 +1,5 @@
+"use client";
+
 import { ListSubheaderProps as RawListSubheaderProps } from "@mui/material";
 import { StyledListSubheader } from "./style";
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { Check, Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";

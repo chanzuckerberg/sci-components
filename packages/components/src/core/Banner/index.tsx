@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ForwardedRef, forwardRef, useState } from "react";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {

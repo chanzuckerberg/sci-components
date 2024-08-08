@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Tooltip as RawTooltip,
   TooltipProps as RawTooltipProps,

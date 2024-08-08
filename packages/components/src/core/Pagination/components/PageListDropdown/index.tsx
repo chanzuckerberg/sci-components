@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import MenuItem from "src/core/MenuItem";
 import { Page, StyledPaginationButton } from "../../style";

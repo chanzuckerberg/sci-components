@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ForwardedRef, forwardRef } from "react";
 import { StyledTable } from "./style";
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { Alert } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {

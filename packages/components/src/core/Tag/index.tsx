@@ -1,3 +1,5 @@
+"use client";
+
 import { ChipProps } from "@mui/material";
 import { ExtraTagProps, SdsTagColorType, StyledTag } from "./style";
 

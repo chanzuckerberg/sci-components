@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";

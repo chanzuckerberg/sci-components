@@ -1,3 +1,5 @@
+"use client";
+
 // Extra Short Lorem Ipsum = 1 sentence
 
 export const EXTRA_SHORT_LOREM_IPSUM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`;

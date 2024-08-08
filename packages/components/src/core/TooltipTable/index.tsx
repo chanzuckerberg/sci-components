@@ -1,3 +1,5 @@
+"use client";
+
 import { Table, TableBody, TableContainer, TableRow } from "@mui/material";
 import {
   Alert,

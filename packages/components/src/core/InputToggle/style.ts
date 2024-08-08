@@ -1,3 +1,5 @@
+"use client";
+
 import { Switch, SwitchProps, switchClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {

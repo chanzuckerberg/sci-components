@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog as RawDialog,
   DialogProps as RawDialogProps,

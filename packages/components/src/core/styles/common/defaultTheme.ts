@@ -1,3 +1,5 @@
+"use client";
+
 import { createTheme } from "@mui/material/styles";
 import { SDSThemeOptions } from "./types";
 import { SDSAppTheme } from "./SDSAppTheme";

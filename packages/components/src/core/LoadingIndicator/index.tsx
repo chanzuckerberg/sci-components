@@ -1,3 +1,5 @@
+"use client";
+
 import Icon from "src/core/Icon";
 import {
   LoadingIndicatorProps as RawLoadingIndicatorProps,

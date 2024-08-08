@@ -1,3 +1,5 @@
+"use client";
+
 import { Theme, ThemeOptions, TypographyStyle } from "@mui/material/styles";
 import { CSSProperties } from "react";
 

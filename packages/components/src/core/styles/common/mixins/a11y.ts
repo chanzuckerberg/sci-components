@@ -1,3 +1,5 @@
+"use client";
+
 export function focusVisibleA11yStyle() {
   return `
       &.Mui-focusVisible, &:focus-visible {

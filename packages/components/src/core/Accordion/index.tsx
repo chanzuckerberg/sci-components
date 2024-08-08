@@ -1,3 +1,5 @@
+"use client";
+
 import { AccordionProps as RawAccordionProps } from "@mui/material";
 import React from "react";
 import AccordionDetails from "./components/AccordionDetails";

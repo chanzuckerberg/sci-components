@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable import/export */
 import "./common/styles-dictionary/css/variables.css";
 import "./common/styles-dictionary/scss/_variables.scss";

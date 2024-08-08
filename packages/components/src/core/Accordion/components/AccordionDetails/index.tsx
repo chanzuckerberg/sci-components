@@ -1,3 +1,5 @@
+"use client";
+
 import { AccordionDetailsProps } from "@mui/material";
 import { StyledAccordionDetails } from "./style";
 

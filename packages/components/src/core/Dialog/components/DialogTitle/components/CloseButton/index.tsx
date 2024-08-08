@@ -1,3 +1,5 @@
+"use client";
+
 import { ForwardedRef, forwardRef } from "react";
 import { ButtonProps } from "src/core/Button";
 import { DialogContext } from "src/core/Dialog/components/common";

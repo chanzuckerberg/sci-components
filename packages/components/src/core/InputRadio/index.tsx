@@ -1,3 +1,5 @@
+"use client";
+
 import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
 import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
 import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";

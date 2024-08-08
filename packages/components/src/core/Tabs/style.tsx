@@ -1,3 +1,5 @@
+"use client";
+
 import { SerializedStyles } from "@emotion/react";
 import {
   Tab as RawTab,

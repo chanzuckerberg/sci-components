@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import React from "react";

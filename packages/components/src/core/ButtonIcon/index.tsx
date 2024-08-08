@@ -1,3 +1,5 @@
+"use client";
+
 import { IconButtonProps as RawButtonIconProps } from "@mui/material";
 import { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";

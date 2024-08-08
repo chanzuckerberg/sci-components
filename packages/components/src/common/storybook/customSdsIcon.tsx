@@ -1,3 +1,5 @@
+"use client";
+
 import Icon, { IconProps } from "../../core/Icon";
 
 /**

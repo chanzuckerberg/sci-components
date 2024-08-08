@@ -1,3 +1,5 @@
+"use client";
+
 import { DialogContentProps as RawDialogContentProps } from "@mui/material";
 import { forwardRef } from "react";
 import { StyledDialogContent } from "./style";

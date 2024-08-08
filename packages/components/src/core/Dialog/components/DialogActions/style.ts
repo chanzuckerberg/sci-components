@@ -1,3 +1,5 @@
+"use client";
+
 import { DialogActions, dialogActionsClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CommonThemeProps, getSpaces } from "src/core/styles";

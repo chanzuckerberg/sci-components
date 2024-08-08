@@ -1,3 +1,5 @@
+"use client";
+
 import { DialogContent } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { fontBodyS } from "src/core/styles";

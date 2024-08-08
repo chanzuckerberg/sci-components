@@ -1,3 +1,5 @@
+"use client";
+
 import { css, SerializedStyles } from "@emotion/react";
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import { styled } from "@mui/material/styles";

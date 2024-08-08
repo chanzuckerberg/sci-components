@@ -1,3 +1,5 @@
+"use client";
+
 import { AppTheme, Colors } from "./types";
 
 const fontFamily = '"Inter", sans-serif';

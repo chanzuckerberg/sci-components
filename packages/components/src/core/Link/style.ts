@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "@emotion/react";
 import { Link, LinkProps as RawLinkProps } from "@mui/material";
 import { styled } from "@mui/material/styles";

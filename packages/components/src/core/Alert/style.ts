@@ -1,3 +1,5 @@
+"use client";
+
 import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors, getColors, getShadows, getSpaces } from "../styles";
