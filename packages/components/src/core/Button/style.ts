@@ -29,7 +29,6 @@ type ButtonExtraProps = ButtonProps & CommonThemeProps;
 const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   const { variant, startIcon, endIcon } = props;
   const spaces = getSpaces(props);
-  const shadows = getShadows(props);
   const iconSizes = getIconSizes(props);
   const semanticColors = getSemanticColors(props);
 
@@ -47,10 +46,23 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       ? semanticColors?.accent?.textAction
       : semanticColors?.base?.textPrimaryInverse;
 
+  const ornamentColor =
+    variant === "outlined"
+      ? semanticColors?.accent?.icon
+      : semanticColors?.base?.iconPrimaryInverse;
+
   const backgroundColor =
     variant === "outlined"
       ? "transparent"
       : semanticColors?.accent?.fillPrimary;
+
+  const disabledBackgroundColor =
+    variant === "outlined" ? "transparent" : semanticColors?.base?.fillDisabled;
+
+  const disabledBorder =
+    variant === "outlined"
+      ? `inset 0 0 0 1px ${semanticColors?.base?.borderDisabled}`
+      : "none";
 
   return css`
     background-color: ${backgroundColor};
@@ -60,7 +72,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     color: ${contentColor};
 
     svg {
-      color: ${contentColor};
+      color: ${ornamentColor};
     }
 
     &:hover {
@@ -70,7 +82,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.borderHover};
 
       svg {
-        color: ${semanticColors?.base?.fillPrimary};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
@@ -81,15 +93,15 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillPressed};
 
       svg {
-        color: ${semanticColors?.base?.fillPrimary};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
     &:disabled {
       color: ${semanticColors?.base?.textDisabled};
-      background-color: ${semanticColors?.base?.fillDisabled};
+      background-color: ${disabledBackgroundColor};
+      box-shadow: ${disabledBorder};
       border: none;
-      box-shadow: ${shadows?.none};
 
       svg {
         color: ${semanticColors?.base?.iconDisabled};
@@ -135,8 +147,13 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
 
   const contentColor =
     variant === "outlined"
-      ? semanticColors?.negative?.ornament
+      ? semanticColors?.negative?.text
       : semanticColors?.base?.textPrimaryInverse;
+
+  const ornamentColor =
+    variant === "outlined"
+      ? semanticColors?.negative?.ornament
+      : semanticColors?.base?.iconPrimaryInverse;
 
   const backgroundColor =
     variant === "outlined"
@@ -150,7 +167,7 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
     background-color: ${backgroundColor};
 
     svg {
-      color: ${contentColor};
+      color: ${ornamentColor};
     }
 
     &:hover {
@@ -160,7 +177,7 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillHover};
 
       svg {
-        color: ${semanticColors?.base?.fillPrimary};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
@@ -171,7 +188,7 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillPressed};
 
       svg {
-        color: ${semanticColors?.base?.fillPrimary};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
@@ -222,17 +239,17 @@ const Minimal = (props: CommonThemeProps): SerializedStyles => {
     &:hover,
     &:focus-visible {
       background-color: transparent;
-      color: ${semanticColors?.accent?.fillHover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       svg {
-        color: ${semanticColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
     &:active {
-      color: ${semanticColors?.accent?.fillPressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       svg {
-        color: ${semanticColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
     &:disabled {

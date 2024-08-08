@@ -176,23 +176,15 @@ const ComplexFilter = <
       if (isTriggerChangeOnOptionClick) {
         setPendingValue(newValue);
 
-        return setValueAndCallOnChange(event, newValue);
+        return setValue(newValue);
       }
 
       return setPendingValue(newValue);
     }
 
-    setValueAndCallOnChange(event, newValue);
+    setValue(newValue);
 
     if (!multiple) setOpen(false);
-  }
-
-  function setValueAndCallOnChange(
-    event: React.SyntheticEvent,
-    newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  ) {
-    setValue(newValue);
-    onChange?.(newValue);
   }
 
   function handleDelete(option: DefaultAutocompleteOption) {

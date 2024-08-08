@@ -11,6 +11,7 @@ import {
   fontBodyXs,
   getBorders,
   getIconSizes,
+  getSemanticColors,
   getShadows,
   getSpaces,
   getTypography,
@@ -37,9 +38,12 @@ export const StyledAccordion = styled(Accordion, {
     const typography = getTypography(props);
     const borders = getBorders(props);
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       &.${accordionClasses.root} {
+        background-color: ${semanticColors?.base?.surfaceBackground};
+        background-image: none;
         box-shadow: ${shadows?.none};
         font-family: ${typography?.fontFamily?.body};
         border-bottom: ${useDivider ? borders?.base?.divider : "none"};

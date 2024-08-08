@@ -19,10 +19,10 @@ const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.base?.fillDisabled};
+    color: ${semanticColors?.base?.iconDisabled};
 
     svg {
-      color: ${semanticColors?.base?.fillDisabled};
+      color: ${semanticColors?.base?.iconDisabled};
     }
   `;
 };
@@ -31,29 +31,29 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.accent?.fillPrimary};
+    color: ${semanticColors?.accent?.textAction};
 
     svg {
-      color: ${semanticColors?.accent?.fillPrimary};
+      color: ${semanticColors?.accent?.icon};
     }
 
     &:hover {
       /* the number 47 is the opacity of the color, which is equal to 28% */
       background: ${semanticColors?.base?.fillHover}47;
-      color: ${semanticColors?.accent?.fillHover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       svg {
-        color: ${semanticColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
 
     &:active {
       /* the number 47 is the opacity of the color, which is equal to 28% */
       background: ${semanticColors?.base?.fillPressed}47;
-      color: ${semanticColors?.accent?.fillPressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       svg {
-        color: ${semanticColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
   `;
@@ -72,20 +72,20 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
     &:hover {
       /* the number 47 is the opacity of the color, which is equal to 28% */
       background: ${semanticColors?.base?.fillHover}47;
-      color: ${semanticColors?.accent?.fillHover};
+      color: ${semanticColors?.accent?.iconHover};
 
       svg {
-        color: ${semanticColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
 
     &:active {
       /* the number 47 is the opacity of the color, which is equal to 28% */
       background: ${semanticColors?.base?.fillPressed}47;
-      color: ${semanticColors?.accent?.fillPressed};
+      color: ${semanticColors?.accent?.iconPressed};
 
       svg {
-        color: ${semanticColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
   `;

@@ -282,6 +282,10 @@ export function makeThemeOptions(
         disabled: appTheme.colors.gray[400],
         disabledBackground: appTheme.colors.gray[300],
       },
+      background: {
+        default:
+          mode === "dark" ? appTheme.colors.gray[75] : appTheme.colors.gray[50],
+      },
       divider: appTheme.colors.gray[200],
       error: {
         "100": appTheme.colors.red[100],
