@@ -1,3 +1,5 @@
+"use client";
+
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useRef, useState } from "react";
 import Button from "src/core/Button";

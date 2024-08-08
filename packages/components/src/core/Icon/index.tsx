@@ -1,3 +1,5 @@
+"use client";
+
 import { ForwardedRef, forwardRef } from "react";
 import { IconNameToSizes, iconMap } from "./map";
 import {

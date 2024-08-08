@@ -1,3 +1,5 @@
+"use client";
+
 import { PaletteOptions } from "@mui/material/styles";
 import {
   Borders,

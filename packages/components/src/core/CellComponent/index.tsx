@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, ReactNode } from "react";
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 

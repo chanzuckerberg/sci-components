@@ -1,3 +1,5 @@
+"use client";
+
 import { DialogTitleProps as RawDialogTitleProps } from "@mui/material";
 import { forwardRef } from "react";
 import CloseButton from "./components/CloseButton";

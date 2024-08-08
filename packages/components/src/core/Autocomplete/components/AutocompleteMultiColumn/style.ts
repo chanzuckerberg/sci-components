@@ -1,3 +1,5 @@
+"use client";
+
 import { autocompleteClasses, Paper, Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { ReactElement } from "react";

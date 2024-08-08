@@ -1,3 +1,5 @@
+"use client";
+
 export const noop = (): void => {};
 
 export const toKebabCase = (str: string) =>

@@ -1,3 +1,5 @@
+"use client";
+
 import { css, SerializedStyles } from "@emotion/react";
 import {
   buttonBaseClasses,

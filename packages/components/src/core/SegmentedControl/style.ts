@@ -1,3 +1,5 @@
+"use client";
+
 import { ToggleButtonGroup, toggleButtonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";

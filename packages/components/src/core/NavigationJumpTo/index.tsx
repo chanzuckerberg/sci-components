@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, useCallback, useEffect, useState } from "react";
 import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";

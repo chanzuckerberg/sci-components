@@ -1,3 +1,5 @@
+"use client";
+
 import { PaperProps } from "@mui/material";
 import { forwardRef } from "react";
 import { DialogContext } from "../common";

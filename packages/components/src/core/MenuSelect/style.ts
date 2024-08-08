@@ -1,3 +1,5 @@
+"use client";
+
 import { Autocomplete, inputBaseClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import InputSearch from "src/core/InputSearch";

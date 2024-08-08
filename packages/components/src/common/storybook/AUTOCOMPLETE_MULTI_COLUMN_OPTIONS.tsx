@@ -1,3 +1,5 @@
+"use client";
+
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Icon from "../../core/Icon";

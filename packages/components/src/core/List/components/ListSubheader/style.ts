@@ -1,3 +1,5 @@
+"use client";
+
 import { ListSubheader } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { fontHeader, getSpaces } from "src/core/styles";

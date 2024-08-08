@@ -1,3 +1,5 @@
+"use client";
+
 import { SerializedStyles } from "@emotion/react";
 import { ListItem } from "@mui/material";
 import { styled } from "@mui/material/styles";

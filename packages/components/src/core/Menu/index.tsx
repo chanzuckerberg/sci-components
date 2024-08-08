@@ -1,3 +1,5 @@
+"use client";
+
 import { PopoverOrigin, MenuProps as RawMenuProps } from "@mui/material";
 import { StyledMenu } from "./style";
 

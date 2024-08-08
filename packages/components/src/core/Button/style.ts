@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, buttonClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { css, SerializedStyles } from "@emotion/react";

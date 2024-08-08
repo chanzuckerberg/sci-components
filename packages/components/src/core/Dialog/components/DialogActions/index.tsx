@@ -1,3 +1,5 @@
+"use client";
+
 import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
 import { forwardRef } from "react";
 import { DialogActionsExtraProps, StyledDialogActions } from "./style";

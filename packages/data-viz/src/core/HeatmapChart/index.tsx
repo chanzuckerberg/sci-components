@@ -1,3 +1,5 @@
+"use client";
+
 import { ECharts, init } from "echarts";
 import {
   ForwardedRef,

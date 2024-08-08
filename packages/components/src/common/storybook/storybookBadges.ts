@@ -1,3 +1,5 @@
+"use client";
+
 import { BADGE as addonBadge } from "@geometricpanda/storybook-addon-badges";
 
 export const BADGE = {

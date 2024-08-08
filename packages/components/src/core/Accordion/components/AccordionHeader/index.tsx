@@ -1,3 +1,5 @@
+"use client";
+
 import { AccordionSummaryProps as RawAccordionSummaryProps } from "@mui/material";
 import { StyledAccordionHeader, StyledSubtitle } from "./style";
 import Icon from "src/core/Icon";

@@ -1,3 +1,5 @@
+"use client";
+
 import { MenuItemProps as RawMenuItemProps } from "@mui/material";
 import React, { ForwardedRef, forwardRef } from "react";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";

@@ -1,3 +1,5 @@
+"use client";
+
 import { styled } from "@mui/material/styles";
 import Button from "src/core/Button";
 import { CommonThemeProps, getSpaces } from "src/core/styles";

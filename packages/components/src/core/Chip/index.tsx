@@ -1,3 +1,5 @@
+"use client";
+
 import { Clear } from "@mui/icons-material";
 import { ChipProps as RawChipProps } from "@mui/material";
 import {

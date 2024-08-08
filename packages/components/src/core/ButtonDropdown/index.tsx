@@ -1,3 +1,5 @@
+"use client";
+
 import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
 import Button from "src/core/Button";

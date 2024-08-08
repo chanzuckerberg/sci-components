@@ -1,3 +1,5 @@
+"use client";
+
 import { ChipProps } from "@mui/material";
 import React from "react";
 import { StyledTag } from "./style";

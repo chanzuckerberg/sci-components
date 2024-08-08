@@ -1,3 +1,5 @@
+"use client";
+
 export enum SDSWarningTypes {
   ButtonMinimalIsAllCaps = "buttonMinimalIsAllCaps",
   ButtonMissingSDSProps = "buttonMissingProps",

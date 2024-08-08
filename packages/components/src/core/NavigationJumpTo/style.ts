@@ -1,3 +1,5 @@
+"use client";
+
 import { Tab, Tabs, TabsProps, tabsClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import {

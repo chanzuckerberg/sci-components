@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "@emotion/react";
 import { AccordionSummary, accordionSummaryClasses } from "@mui/material";
 import { styled } from "@mui/material/styles";

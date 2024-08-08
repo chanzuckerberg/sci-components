@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef } from "react";
 import TableRow from "src/core/TableRow";
 import { StyledTableHeader } from "./style";

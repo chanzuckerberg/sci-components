@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
 import { ReactComponent as IconBacteriaSmall } from "../../common/svgs/IconBacteriaSmall.svg";

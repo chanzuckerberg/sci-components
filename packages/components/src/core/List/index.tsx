@@ -1,3 +1,5 @@
+"use client";
+
 import { ListProps as RawListProps } from "@mui/material";
 import { ListExtraProps, StyledList } from "./style";
 

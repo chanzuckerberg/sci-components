@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext } from "react";
 
 type SdsSize = "xs" | "s" | "m" | "l";

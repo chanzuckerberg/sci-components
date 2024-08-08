@@ -1,3 +1,5 @@
+"use client";
+
 import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
 import Icon, { IconNameToSizes } from "src/core/Icon";

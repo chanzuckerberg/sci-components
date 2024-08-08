@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef } from "react";
 import Tooltip, { TooltipProps } from "src/core/Tooltip";
 import {

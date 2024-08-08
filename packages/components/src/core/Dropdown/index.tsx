@@ -1,3 +1,5 @@
+"use client";
+
 import { AutocompleteProps } from "@mui/material";
 import {
   AutocompleteChangeDetails,

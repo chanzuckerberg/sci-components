@@ -1,3 +1,5 @@
+"use client";
+
 import { css } from "@emotion/css";
 import { Popper } from "@mui/material";
 import { styled } from "@mui/material/styles";

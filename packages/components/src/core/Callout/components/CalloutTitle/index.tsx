@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertTitleProps } from "@mui/material/AlertTitle";
 import { CALLOUT_TITLE_DISPLAY_NAME } from "src/core/Callout/constants";
 import { StyledCalloutTitle } from "./style";

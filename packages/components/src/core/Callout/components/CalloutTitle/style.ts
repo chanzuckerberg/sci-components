@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertTitle } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { fontBodyXs, getSpaces } from "src/core/styles";

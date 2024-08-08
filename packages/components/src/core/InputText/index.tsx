@@ -1,3 +1,5 @@
+"use client";
+
 import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import { forwardRef, useRef, useState } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
