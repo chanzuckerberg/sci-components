@@ -5,8 +5,7 @@ import {
   focusVisibleA11yStyle,
   fontHeaderS,
   getBorders,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
 } from "src/core/styles";
 
 export interface RowExtraProps
@@ -30,42 +29,42 @@ const doNotForwardProps = [
 ];
 
 const disabledStyled = (props: RowExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticComponentColors?.base?.surfaceSecondary};
-    color: ${semanticTextColors?.base?.disabled};
+    background-color: ${semanticColors?.base?.surfaceSecondary};
+    color: ${semanticColors?.base?.textDisabled};
     user-select: none;
 
     & span, & div {
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
     }
 
     .cell-component {
-      color: black;
+      color: ${semanticColors?.base?.textDisabled};
       pointer-events: none;
       user-select: none;
       & span, & div {
-        color: black;
+        color: ${semanticColors?.base?.textDisabled};
+        background-color: ${semanticColors?.base?.surfaceSecondary};
       }
 
       svg {
-        fill: black;
+        fill: ${semanticColors?.base?.iconDisabled};
       }
 
       filter: grayscale(100%);
-      opacity: 0.2;
     }
   `;
 };
 
 const hoverStyled = (props: RowExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     &:hover {
-      background-color: ${semanticComponentColors?.base?.fillHover};
+      /* the number 47 is the opacity of the color, which is equal to 28% */
+      background-color: ${semanticColors?.base?.fillHover}47;
     }
   `;
 };
@@ -85,7 +84,7 @@ export const StyledTableRow = styled("tr", {
       hover = true,
     } = props;
 
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
     const borders = getBorders(props);
 
     return `
@@ -94,7 +93,7 @@ export const StyledTableRow = styled("tr", {
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
 
-      ${selected ? `background-color: ${semanticComponentColors?.accent?.surface};` : ""}
+      ${selected ? `background-color: ${semanticColors?.accent?.surfacePrimary};` : ""}
 
       ${hover && hoverStyled(props)};
 

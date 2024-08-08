@@ -6,7 +6,7 @@ import {
   CommonThemeProps,
   getBorders,
   getCorners,
-  getSemanticComponentColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -40,10 +40,11 @@ export const StyledPopper = styled(Popper, {
     const shadows = getShadows(props);
     const spaces = getSpaces(props);
     const borders = getBorders(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
@@ -68,8 +69,11 @@ export const StyledPaper = styled(Paper, {
 })`
   ${(props: StyleProps) => {
     const shadows = getShadows(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       box-shadow: ${shadows?.none};
       margin: 0;
       border-radius: 0;
@@ -86,7 +90,8 @@ export const StyledAutocompleteGroupWrapper = styled("div")`
 export const StyledAutocompleteInput = styled(InputSearch, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<{ search: boolean }>`
-  ${({ search }) => !search && "height: 0; display: none;"}
+  ${({ search }) =>
+    !search && "height: 0; display: none; margin: 0 !important;"}
 
   margin: 0;
   .MuiInputBase-root {

@@ -15,7 +15,7 @@ import {
   getColors,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -31,7 +31,7 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "intent", "handleSubmit"];
 
 const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const corners = getCorners(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} {
@@ -39,34 +39,34 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
 
       .${outlinedInputClasses.notchedOutline} {
         border-radius: ${corners?.l}px;
-        border: 1px solid ${semanticComponentColors?.base?.border};
+        border: 1px solid ${semanticColors?.base?.border};
       }
     }
   `;
 };
 
 const error = (props: InputSearchExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticComponentColors?.negative?.border};
+      border: 1px solid ${semanticColors?.negative?.border};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticComponentColors?.negative?.border};
+      border: 1px solid ${semanticColors?.negative?.border};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.negative?.border};
+        border: 1px solid ${semanticColors?.negative?.border};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
@@ -74,27 +74,27 @@ const error = (props: InputSearchExtraProps): SerializedStyles => {
 };
 
 const warning = (props: InputSearchExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticComponentColors?.notice?.border};
+      border: 1px solid ${semanticColors?.notice?.border};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticComponentColors?.notice?.border};
+      border: 1px solid ${semanticColors?.notice?.border};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.notice?.border};
+        border: 1px solid ${semanticColors?.notice?.border};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
@@ -103,19 +103,19 @@ const warning = (props: InputSearchExtraProps): SerializedStyles => {
 
 const userInput = (props: InputSearchExtraProps): SerializedStyles => {
   const { intent } = props;
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const border =
     intent === "error"
-      ? semanticComponentColors?.negative?.border
+      ? semanticColors?.negative?.border
       : intent === "warning"
-        ? semanticComponentColors?.notice?.border
-        : semanticComponentColors?.accent?.border;
+        ? semanticColors?.notice?.border
+        : semanticColors?.accent?.border;
 
   const color =
     intent === "default"
-      ? semanticComponentColors?.accent?.icon
-      : semanticComponentColors?.base?.icon;
+      ? semanticColors?.accent?.icon
+      : semanticColors?.base?.iconPrimary;
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -135,20 +135,20 @@ const userInput = (props: InputSearchExtraProps): SerializedStyles => {
 
 const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   const colors = getColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.base?.borderDisabled} !important;
+        border: 1px solid ${semanticColors?.base?.borderDisabled} !important;
       }
 
       .${inputAdornmentClasses.root} svg {
-        color: ${semanticComponentColors?.base?.iconDisabled};
+        color: ${semanticColors?.base?.iconDisabled};
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.base?.borderDisabled};
+        border: 1px solid ${semanticColors?.base?.borderDisabled};
       }
 
       &::placeholder {
@@ -188,7 +188,7 @@ export const StyledSearchBase = styled(TextField, {
 
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       margin-top: ${spaces?.m}px;
@@ -214,10 +214,10 @@ export const StyledSearchBase = styled(TextField, {
 
       .${outlinedInputClasses.root} {
         padding: 0 ${spaces?.m}px;
-        background-color: ${semanticComponentColors?.base?.surface};
+        background-color: ${semanticColors?.base?.surfacePrimary};
 
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticComponentColors?.base?.border};
+          border: 1px solid ${semanticColors?.base?.border};
         }
 
         &:hover .input-search-clear-icon,
@@ -225,18 +225,18 @@ export const StyledSearchBase = styled(TextField, {
           opacity: 1;
 
           svg {
-            color: ${semanticComponentColors?.base?.icon} !important;
+            color: ${semanticColors?.base?.iconPrimary} !important;
           }
 
           &:hover {
             svg {
-              color: ${semanticComponentColors?.accent?.fillHover} !important;
+              color: ${semanticColors?.accent?.fillHover} !important;
             }
           }
 
           &:active {
             svg {
-              color: ${semanticComponentColors?.accent?.fillPressed} !important;
+              color: ${semanticColors?.accent?.fillPressed} !important;
             }
           }
         }
@@ -247,25 +247,25 @@ export const StyledSearchBase = styled(TextField, {
         padding: ${spaces?.xs}px ${spaces?.s}px;
         height: unset;
         box-sizing: border-box;
-        background-color: ${semanticComponentColors?.base?.surface};
+        background-color: ${semanticColors?.base?.surfacePrimary};
       }
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticComponentColors?.base?.borderHover};
+        border: 1px solid ${semanticColors?.base?.borderHover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
         outline: none;
 
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticComponentColors?.accent?.border};
+          border: 1px solid ${semanticColors?.accent?.border};
         }
 
         .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
           cursor: default;
           svg {
-            color: ${semanticComponentColors?.accent?.icon};
+            color: ${semanticColors?.accent?.icon};
           }
         }
       }

@@ -5,8 +5,7 @@ import {
   CommonThemeProps,
   fontBodyXxs,
   fontHeaderS,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -14,7 +13,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
   ${fontHeaderS}
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       padding: ${spaces?.m}px;
@@ -36,7 +35,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         align-self: center;
 
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     `;
@@ -47,10 +46,10 @@ export const StyledSubtitle = styled("p")`
   ${fontBodyXxs}
 
   ${(props: CommonThemeProps) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       margin: 0;
     `;
   }}

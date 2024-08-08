@@ -6,8 +6,7 @@ import {
   focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXs,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
 } from "src/core/styles";
 
 // (thuang): Support `component` prop
@@ -26,11 +25,10 @@ const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
   const { sdsSize = "s" } = props;
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticTextColors?.action?.default};
+    color: ${semanticColors?.accent?.textAction};
     position: relative;
 
     &::after {
@@ -43,26 +41,26 @@ const defaultStyle = (props: LinkProps) => {
     }
 
     &:hover {
-      color: ${semanticTextColors?.action?.hover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderHover};
+        background-color: ${semanticColors?.accent?.borderHover};
       }
     }
 
     &:focus {
-      color: ${semanticTextColors?.action?.hover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderHover};
+        background-color: ${semanticColors?.accent?.borderHover};
       }
     }
 
     &:active {
-      color: ${semanticTextColors?.action?.pressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderPressed};
+        background-color: ${semanticColors?.accent?.borderPressed};
       }
     }
   `;

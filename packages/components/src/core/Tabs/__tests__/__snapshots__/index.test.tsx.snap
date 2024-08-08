@@ -14,7 +14,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-eqqtsc-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-5mfhnp-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="0"
         type="button"
@@ -26,7 +26,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-eqqtsc-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-5mfhnp-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="-1"
         type="button"

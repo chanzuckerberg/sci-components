@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -14,29 +14,32 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 })`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
-        background-color: ${semanticComponentColors?.base?.fillOpen};
-        color: ${semanticComponentColors?.accent?.icon};
-        border-color: ${semanticComponentColors?.base?.border};
+        /* the number 47 is the opacity of the color, which is equal to 28% */
+        background-color: ${semanticColors?.base?.fillOpen}47;
+        color: ${semanticColors?.accent?.icon};
+        border-color: ${semanticColors?.base?.border};
 
         &:hover {
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
         }
       }
 
       .${toggleButtonClasses.root} {
-        ${focusVisibleA11yStyle()}
-        border-color: ${semanticComponentColors?.base?.border};
+        ${focusVisibleA11yStyle(props)}
+        border-color: ${semanticColors?.base?.border};
         line-height: 0px;
-        color: ${semanticComponentColors?.base?.iconHover};
+        color: ${semanticColors?.base?.iconPrimaryHover};
         padding: ${(spaces?.xs ?? 6) - 1}px ${spaces?.l}px;
 
         &:hover {
-          border-color: ${semanticComponentColors?.base?.border};
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          border-color: ${semanticColors?.base?.border};
+          /* the number 47 is the opacity of the color, which is equal to 28% */
+          background-color: ${semanticColors?.base?.fillHover}47;
         }
       }
     `;

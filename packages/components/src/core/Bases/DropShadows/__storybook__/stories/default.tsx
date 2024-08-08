@@ -20,7 +20,7 @@ export const Template = () => {
     const cssVariable = "--sds-drop-shadow-" + name;
 
     return (
-      <TableRow key={name}>
+      <TableRow key={name} hover={false}>
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledShadowBox shadow={shadow} />
         </CellComponent>

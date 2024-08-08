@@ -20,7 +20,7 @@ export const Template = () => {
     const cssVariable = "--sds-corner-" + name;
 
     return (
-      <TableRow key={name}>
+      <TableRow key={name} hover={false}>
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledCornerBox size={size} />
         </CellComponent>

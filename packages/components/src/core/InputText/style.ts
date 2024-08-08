@@ -13,7 +13,7 @@ import {
   getBorders,
   getColors,
   getCorners,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
@@ -30,7 +30,7 @@ const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
 
 const error = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -50,7 +50,7 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
@@ -59,7 +59,7 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
 const warning = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -79,7 +79,7 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
@@ -170,7 +170,7 @@ export const StyledInputBase = styled(TextField, {
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       margin-bottom: ${spaces?.l}px;
@@ -183,7 +183,7 @@ export const StyledInputBase = styled(TextField, {
         padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;
         box-sizing: border-box;
-        background-color: ${semanticComponentColors?.base?.surfacePrimary};
+        background-color: ${semanticColors?.base?.surfacePrimary};
       }
 
       .${outlinedInputClasses.notchedOutline} {
@@ -197,12 +197,12 @@ export const StyledInputBase = styled(TextField, {
       }
 
       &.user-is-tabbing .${outlinedInputClasses.input} {
-        ${focusVisibleA11yStyle()}
+        ${focusVisibleA11yStyle(props)}
       }
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border-color: ${semanticComponentColors?.base?.borderHover};
+        border-color: ${semanticColors?.base?.borderHover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}

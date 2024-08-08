@@ -8,8 +8,7 @@ import {
   fontCapsXxxxs,
   getBorders,
   getCorners,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -42,18 +41,17 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
     const { search } = props;
     const spaces = getSpaces(props);
     const borders = getBorders(props);
-    const semanticTextColors = getSemanticTextColors(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      ${!search && `height: 0`};
+      ${!search && `height: 0; margin: 0 !important;`};
       
       // (masoudmanson): We need to apply the focus styles to the input element
       // when the user is tabbing through the options. To find out more, take a
       // look at the useDetectUserTabbing hook.
       &[data-user-is-tabbing="true"]:focus-within {
         border-radius: 4px;
-        outline: 2px solid black;
+        outline: 2px solid ${semanticColors?.base?.borderHover};
         outline-offset: 1px;
       }
 
@@ -78,11 +76,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             min-height: unset;
 
             &.${autocompleteClasses.focused} {
-              background-color: ${semanticComponentColors?.base?.surfaceSecondary};
+              background-color: ${semanticColors?.base?.surfaceSecondary};
             }
 
             &[aria-selected="true"] {
-              background-color: ${semanticComponentColors?.base?.surfacePrimary};
+              background-color: ${semanticColors?.base?.surfacePrimary};
             }
 
             &[aria-disabled="true"] {
@@ -90,7 +88,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             }
 
             &[aria-selected="true"].${autocompleteClasses.focused} {
-              background-color: ${semanticComponentColors?.base?.surfaceSecondary};
+              background-color: ${semanticColors?.base?.surfaceSecondary};
             }
           }
 
@@ -103,7 +101,8 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
         .${autocompleteClasses.groupLabel} {
           top: 0;
-          color: ${semanticTextColors?.base?.secondary};
+          color: ${semanticColors?.base?.textSecondary};
+          background-color: ${semanticColors?.base?.surfacePrimary};
           padding: ${spaces?.xxs}px ${spaces?.s}px;
         }
 
@@ -172,11 +171,12 @@ export const StyledPaper = styled(Paper)`
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const borders = getBorders(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
+      background-image: none;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
-      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
@@ -188,10 +188,10 @@ export const StyledPaper = styled(Paper)`
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
   ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       white-space: pre-wrap;
     `;
   }}

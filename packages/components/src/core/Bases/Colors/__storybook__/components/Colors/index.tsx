@@ -64,7 +64,7 @@ const Colors = (props: SemanticColorsProps): JSX.Element => {
   };
 
   return (
-    <StyledColorsWrapper type={type}>
+    <StyledColorsWrapper>
       {colors && renderColorGroups(colors)}
     </StyledColorsWrapper>
   );

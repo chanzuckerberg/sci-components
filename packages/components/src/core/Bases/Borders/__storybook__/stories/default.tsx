@@ -29,7 +29,7 @@ export const Template = () => {
       : "--sds-border-" + currentKey;
 
     return (
-      <TableRow key={cssVariable}>
+      <TableRow key={cssVariable} hover={false}>
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledBorderBox border={border} />
         </CellComponent>

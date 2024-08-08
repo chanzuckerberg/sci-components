@@ -5,7 +5,7 @@ import { Template } from "./stories/default";
 
 export default {
   parameters: {
-    badges: [BADGE.WIP],
+    badges: [BADGE.STABLE],
   },
   title: "Bases/Drop Shadows",
 } as Meta;

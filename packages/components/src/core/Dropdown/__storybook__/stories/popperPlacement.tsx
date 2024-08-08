@@ -30,7 +30,7 @@ export const PopperPlacementDemo = <
         </p>
         <pre
           style={{
-            backgroundColor: "#f9f9f9",
+            backgroundColor: "#c3c3c347",
             borderRadius: 4,
             padding: "0px 20px",
           }}

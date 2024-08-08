@@ -6,7 +6,7 @@ import {
   CommonThemeProps,
   getColors,
   getIconSizes,
-  getSemanticComponentColors,
+  getSemanticColors,
 } from "src/core/styles";
 import { IconNameToSizes } from "./map";
 
@@ -28,7 +28,7 @@ export type SdsIconColorType =
 
 interface SdsIconWithColor {
   iconColor?: SdsIconColorType;
-  shade?: 100 | 200 | 300 | 400 | 500 | 600;
+  shade?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
 }
 
 export type StyledSvgIconProps<IconName extends keyof IconNameToSizes> =
@@ -61,7 +61,7 @@ function buttonStyle(): SerializedStyles {
 function staticStyle<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const { iconColor = "blue", shade = 400 } = props;
+  const { iconColor = "blue", shade = 500 } = props;
 
   const colors = getColors(props);
 
@@ -73,16 +73,16 @@ function staticStyle<IconName extends keyof IconNameToSizes>(
 function interactive<IconName extends keyof IconNameToSizes>(
   props: StyledSvgIconProps<IconName>
 ): SerializedStyles {
-  const { iconColor = "blue", shade = 400 } = props;
+  const { iconColor = "blue", shade = 500 } = props;
 
   const colors = getColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.base?.icon};
+    color: ${semanticColors?.base?.iconPrimary};
 
     &:hover {
-      color: ${semanticComponentColors?.base?.iconHover};
+      color: ${semanticColors?.base?.iconPrimaryHover};
     }
 
     &:active {
@@ -90,7 +90,7 @@ function interactive<IconName extends keyof IconNameToSizes>(
     }
 
     &:disabled {
-      color: ${semanticComponentColors?.base?.iconDisabled};
+      color: ${semanticColors?.base?.iconDisabled};
     }
   `;
 }

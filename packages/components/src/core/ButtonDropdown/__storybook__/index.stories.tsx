@@ -8,6 +8,7 @@ import {
   BUTTON_DROPDOWN_TEXT,
 } from "./constants";
 import { ButtonDropdown } from "./stories/default";
+import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -41,6 +42,9 @@ export default {
     },
   },
   component: ButtonDropdown,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
   title: "Components/ButtonDropdown",
 } as Meta;
 

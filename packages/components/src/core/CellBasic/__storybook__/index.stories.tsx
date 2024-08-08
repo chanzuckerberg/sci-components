@@ -11,6 +11,7 @@ import {
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
+import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -114,6 +115,7 @@ export default {
   },
   component: CellBasic,
   parameters: {
+    badges: [BADGE.STABLE],
     controls: {
       expanded: true,
     },

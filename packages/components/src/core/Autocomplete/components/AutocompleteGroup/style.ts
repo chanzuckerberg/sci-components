@@ -5,8 +5,7 @@ import {
   fontCapsXxxxs,
   getBorders,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -48,10 +47,10 @@ export const StyledColumnTitle = styled("p")`
   ${fontCapsXxxxs}
   ${(props: StyleProps) => {
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       padding: 0 ${spaces?.s}px ${spaces?.xxs}px;
       margin: 0;
     `;
@@ -62,17 +61,17 @@ export const StyledColumnIcon = styled("span")`
   ${(props: StyleProps) => {
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticComponentColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       position: absolute;
       right: -${spaces?.xs}px;
       top: -2px;
       padding-bottom: 2px;
 
       svg {
-        color: ${semanticComponentColors?.base?.icon};
+        color: ${semanticColors?.base?.iconPrimary};
         width: ${iconSizes?.xs.width}px;
         height: ${iconSizes?.xs.height}px;
       }

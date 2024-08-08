@@ -49,7 +49,6 @@ export const TAG_ON_CLICK_OPTIONS = [action("onClick"), undefined];
 export const TAG_COLOR_CONTRAST_RULE = "color-contrast";
 
 export const TAG_PANEL_COLORS: ExtraTagProps["tagColor"][] = [
-  "accent",
   "info",
   "positive",
   "notice",
