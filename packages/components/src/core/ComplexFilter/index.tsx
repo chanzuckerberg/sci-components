@@ -2,7 +2,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useCallback, useEffect, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import DropdownMenu from "src/core/DropdownMenu";
 import { StyledPopper } from "src/core/DropdownMenu/style";
@@ -69,19 +69,23 @@ const ComplexFilter = <
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const [value, setValue] = useState(getInitialValue());
+  const [value, setValueState] = useState(getInitialValue());
   const [pendingValue, setPendingValue] = useState(getInitialValue());
 
-  useEffect(() => {
-    onChange(value);
-    setPendingValue(value);
-  }, [onChange, value]);
+  const setValue = useCallback(
+    (nextValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => {
+      setValueState(nextValue);
+      onChange(value);
+      setPendingValue(nextValue);
+    },
+    [onChange, value]
+  );
 
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
     }
-  }, [isControlled, propValue]);
+  }, [isControlled, propValue, setValue]);
 
   // * (mlila): likely, this portion on ComplexFilter will need to be replaced with Dropdown (or a
   // * new DropdownFilter) component. As ComplexFilter evolves, there will be more types added,
