@@ -208,13 +208,15 @@ const ComplexFilter = <
     FreeSolo
   > {
     return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+      ? propValue ??
+          ([] as unknown as AutocompleteValue<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >)
+      : propValue ??
+          (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
