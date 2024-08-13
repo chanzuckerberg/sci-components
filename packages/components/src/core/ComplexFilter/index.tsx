@@ -79,18 +79,17 @@ const ComplexFilter = <
       return;
     }
 
-    prevValueRef.current = value;
-
     onChange(value);
     setPendingValue(value);
+    prevValueRef.current = value;
   }, [onChange, value]);
 
   const prevPropValueRef = useRef(propValue);
 
   useEffect(() => {
     if (isControlled && prevPropValueRef.current !== propValue) {
-      prevPropValueRef.current = propValue;
       setValue(propValue);
+      prevPropValueRef.current = propValue;
     }
   }, [isControlled, propValue]);
 
