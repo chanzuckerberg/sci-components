@@ -2,7 +2,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import DropdownMenu from "src/core/DropdownMenu";
 import { StyledPopper } from "src/core/DropdownMenu/style";
@@ -72,13 +72,24 @@ const ComplexFilter = <
   const [value, setValue] = useState(getInitialValue());
   const [pendingValue, setPendingValue] = useState(getInitialValue());
 
+  const prevValueRef = useRef(value);
+
   useEffect(() => {
+    if (prevValueRef.current === value) {
+      return;
+    }
+
+    prevValueRef.current = value;
+
     onChange(value);
     setPendingValue(value);
   }, [onChange, value]);
 
+  const prevPropValueRef = useRef(propValue);
+
   useEffect(() => {
-    if (isControlled) {
+    if (isControlled && prevPropValueRef.current !== propValue) {
+      prevPropValueRef.current = propValue;
       setValue(propValue);
     }
   }, [isControlled, propValue]);
