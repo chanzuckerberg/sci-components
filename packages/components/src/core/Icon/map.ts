@@ -103,6 +103,7 @@ import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchL
 import { ReactComponent as IconSearchLinesHorizontal3Large } from "../../common/svgs/IconSearchLinesHorizontal3Large.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Small } from "../../common/svgs/IconSearchLinesHorizontal3Small.svg";
 import { ReactComponent as IconSearchSmall } from "../../common/svgs/IconSearchSmall.svg";
+import { ReactComponent as IconSendLarge } from "../../common/svgs/IconSendLarge.svg";
 import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLarge.svg";
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
@@ -110,6 +111,8 @@ import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/sv
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
 import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
+import { ReactComponent as IconThumbsDownSmall } from "../../common/svgs/IconThumbsDownSmall.svg";
+import { ReactComponent as IconThumbsUpSmall } from "../../common/svgs/IconThumbsUpSmall.svg";
 import { ReactComponent as IconTrashCanLarge } from "../../common/svgs/IconTrashCanLarge.svg";
 import { ReactComponent as IconTrashCanSmall } from "../../common/svgs/IconTrashCanSmall.svg";
 import { ReactComponent as IconTreeDendogramLarge } from "../../common/svgs/IconTreeDendogramLarge.svg";
@@ -215,6 +218,7 @@ export interface IconNameToSizes {
   Save: "l" | "xl";
   Search: "xs" | "s" | "l" | "xl";
   SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
+  Send: "l";
   Share: "l" | "xl";
   SlidersHorizontal: "l" | "xl";
   SpeechBubbles: "l" | "xl";
@@ -222,6 +226,8 @@ export interface IconNameToSizes {
   Starburst: "xs" | "s";
   Star: "l" | "xl";
   Table: "xs" | "s";
+  ThumbsDown: "s";
+  ThumbsUp: "s";
   TrashCan: "xs" | "s" | "l" | "xl";
   TreeDendogram: "l" | "xl";
   TreeHorizontal: "xs" | "s" | "l" | "xl";
@@ -575,6 +581,10 @@ export const iconMap: Props = {
     largeIcon: IconSearchLinesHorizontal3Large,
     smallIcon: IconSearchLinesHorizontal3Small,
   },
+  Send: {
+    largeIcon: IconSendLarge,
+    smallIcon: null,
+  },
   Share: {
     largeIcon: IconShareLarge,
     smallIcon: null,
@@ -602,6 +612,14 @@ export const iconMap: Props = {
   Table: {
     largeIcon: null,
     smallIcon: IconTableSmall,
+  },
+  ThumbsDown: {
+    largeIcon: null,
+    smallIcon: IconThumbsDownSmall,
+  },
+  ThumbsUp: {
+    largeIcon: null,
+    smallIcon: IconThumbsUpSmall,
   },
   TrashCan: {
     largeIcon: IconTrashCanLarge,
