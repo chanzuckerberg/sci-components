@@ -115,7 +115,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="notice"
+            color="positive"
             hover={false}
           />
           <Tag
