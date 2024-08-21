@@ -242,7 +242,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       &.user-is-tabbing .${outlinedInputClasses.root}:focus-within {
-        outline: 2px solid black;
+        outline: 2px solid ${semanticColors?.base?.borderHover};
         outline-offset: 1px;
       }
 
