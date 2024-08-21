@@ -26,10 +26,12 @@ const config = [
     input: "src/index.ts",
     output: [
       {
+        banner: "'use client';",
         file: pkg.main,
         format: "cjs",
       },
       {
+        banner: "'use client';",
         file: pkg.module,
         format: "esm",
       },
