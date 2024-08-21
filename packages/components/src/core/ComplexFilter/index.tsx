@@ -2,7 +2,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteValue,
 } from "@mui/material/useAutocomplete";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import DropdownMenu from "src/core/DropdownMenu";
 import { StyledPopper } from "src/core/DropdownMenu/style";
@@ -72,14 +72,24 @@ const ComplexFilter = <
   const [value, setValue] = useState(getInitialValue());
   const [pendingValue, setPendingValue] = useState(getInitialValue());
 
-  useEffect(() => {
-    onChange(value);
-    setPendingValue(value);
-  }, [onChange, value]);
+  const prevValueRef = useRef(value);
 
   useEffect(() => {
-    if (isControlled) {
+    if (prevValueRef.current === value) {
+      return;
+    }
+
+    onChange(value);
+    setPendingValue(value);
+    prevValueRef.current = value;
+  }, [onChange, value]);
+
+  const prevPropValueRef = useRef(propValue);
+
+  useEffect(() => {
+    if (isControlled && prevPropValueRef.current !== propValue) {
       setValue(propValue);
+      prevPropValueRef.current = propValue;
     }
   }, [isControlled, propValue]);
 
@@ -207,13 +217,15 @@ const ComplexFilter = <
     FreeSolo
   > {
     return multiple
-      ? ([] as unknown as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >)
-      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+      ? propValue ??
+          ([] as unknown as AutocompleteValue<
+            T,
+            Multiple,
+            DisableClearable,
+            FreeSolo
+          >)
+      : propValue ??
+          (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
   }
 };
 
