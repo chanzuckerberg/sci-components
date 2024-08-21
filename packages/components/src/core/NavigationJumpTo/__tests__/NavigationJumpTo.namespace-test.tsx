@@ -3,7 +3,6 @@ import { NavigationJumpTo, NavigationJumpToProps } from "@czi-sds/components";
 const NavigationJumpToNameSpaceTest = (props: NavigationJumpToProps) => {
   return (
     <NavigationJumpTo
-      indicatorColor="info"
       items={[
         { elementRef: { current: null }, title: "Item 1" },
         { elementRef: { current: null }, title: "Item 2" },
