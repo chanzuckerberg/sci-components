@@ -9,16 +9,8 @@ import {
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface NavigationJumpToExtraProps
-  extends Omit<TabsProps, "indicatorColor" | "onChange">,
-    CommonThemeProps {
-  sdsIndicatorColor?:
-    | "accent"
-    | "negative"
-    | "info"
-    | "positive"
-    | "notice"
-    | "beta";
-}
+  extends Omit<TabsProps, "onChange">,
+    CommonThemeProps {}
 
 const doNotForwardProps = ["items", "sdsIndicatorColor"];
 
@@ -26,13 +18,12 @@ export const StyledTabs = styled(Tabs, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: NavigationJumpToExtraProps) => {
-    const { sdsIndicatorColor = "info" } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       &:before {
-        background-color: ${semanticColors?.base?.surfaceTertiary};
+        background-color: ${semanticColors?.base?.divider};
         border-radius: ${spaces?.xxxs}px;
         content: "";
         height: 100%;
@@ -50,7 +41,7 @@ export const StyledTabs = styled(Tabs, {
       overflow: visible;
 
       .${tabsClasses.indicator} {
-        background-color: ${semanticColors?.[sdsIndicatorColor]?.fillPrimary} !important;
+        background-color: ${semanticColors?.accent?.borderSelected} !important;
         border-radius: 2px;
         left: 0;
         width: 2px;

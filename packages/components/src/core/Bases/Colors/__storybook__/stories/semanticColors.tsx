@@ -10,10 +10,7 @@ export const SemanticColorsTemplate = () => {
 
   return (
     semanticColors && (
-      <Colors
-        colors={{ base, ...rest }}
-        prefix="sds-color-semantic-component"
-      />
+      <Colors colors={{ base, ...rest }} prefix="sds-color-semantic" />
     )
   );
 };

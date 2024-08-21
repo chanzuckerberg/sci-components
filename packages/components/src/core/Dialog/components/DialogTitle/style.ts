@@ -5,7 +5,7 @@ import {
   fontBodyS,
   fontBodyXs,
   fontHeaderXl,
-  getPalette,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -26,10 +26,10 @@ export const Title = styled(Typography)`
   ${fontHeaderXl}
 
   ${(props) => {
-    const palette = getPalette(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${palette?.text?.primary};
+      color: ${semanticColors?.base?.textPrimary};
     `;
   }}
 `;
@@ -38,10 +38,10 @@ export const Subtitle = styled(Typography)`
   ${fontBodyXs}
 
   ${(props) => {
-    const palette = getPalette(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${palette?.text?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
     `;
   }}
 `;
@@ -50,11 +50,11 @@ export const Overline = styled(Typography)`
   ${fontBodyS}
 
   ${(props) => {
-    const palette = getPalette(props);
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${palette?.text?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       padding-bottom: ${spaces?.xxxs}px;
     `;
   }}

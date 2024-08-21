@@ -38,7 +38,7 @@ export const StyledNotification = styled(Alert, {
     const semanticColors = getSemanticColors(props);
     const typography = getTypography(props);
 
-    const borderColor = semanticColors?.[intent]?.border ?? "black";
+    const borderColor = semanticColors?.[intent]?.ornament ?? "black";
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
 

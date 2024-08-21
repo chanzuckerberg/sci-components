@@ -38,12 +38,16 @@ StyleDictionary.registerFormat({
     }
 
     function transformColor(tokens) {
-      const colors = {};
+      const colors = {
+        dark: {},
+        light: {},
+      };
 
       function getColor(theToken) {
         for (const [, iToken] of Object.entries(theToken)) {
           if ("value" in iToken && "name" in iToken) {
-            colors[convertToKebabCase(iToken.name)] = iToken.value;
+            colors.light[convertToKebabCase(iToken.name)] = iToken.value;
+            colors.dark[convertToKebabCase(iToken.name)] = iToken.darkValue;
           } else {
             getColor(iToken);
           }
@@ -123,5 +127,5 @@ StyleDictionary.registerFormat({
 
     return JSON.stringify(tailwindConfig, null, 2);
   },
-  name: "tailwind",
+  name: "sds/tailwind",
 });

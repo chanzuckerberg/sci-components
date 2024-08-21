@@ -3,17 +3,17 @@ import Button, { ButtonProps } from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
-  getColors,
   getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
 export interface BannerExtraProps extends CommonThemeProps {
-  sdsType: "primary" | "secondary" | "tertiary";
+  sdsType: "primary" | "secondary";
 }
 
-type ButtonType = ButtonProps & { bannerType: string } & BannerExtraProps;
+type ButtonType = ButtonProps & { bannerType: string } & CommonThemeProps;
+type IconWrapperType = CommonThemeProps & { bannerType: string };
 
 export const Centered = styled("div")`
   flex: 1 1 auto;
@@ -22,14 +22,25 @@ export const Centered = styled("div")`
   align-items: center;
 `;
 
-export const IconWrapper = styled("div")`
-  ${(props: CommonThemeProps) => {
+const doNotForwardPropsIconWrapper = ["bannerType"];
+
+export const IconWrapper = styled("div", {
+  shouldForwardProp: (prop: string) =>
+    !doNotForwardPropsIconWrapper.includes(prop),
+})`
+  ${(props: IconWrapperType) => {
+    const { bannerType } = props;
+
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       height: ${iconSizes?.l.height}px;
       margin-right: ${spaces?.m}px;
+      svg {
+        fill: ${bannerType === "primary" ? semanticColors?.base?.iconPrimaryInverse : semanticColors?.info?.ornament};
+      }
     `;
   }}
 `;
@@ -45,13 +56,17 @@ export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
   ${(props: ButtonType) => {
     const { bannerType } = props;
 
-    const colors = getColors(props);
+    const semanticColors = getSemanticColors(props);
 
     if (bannerType !== "primary") return "";
 
     return `
+      svg {
+        fill: ${semanticColors?.base?.iconPrimaryInverse};
+      }
+
       svg:hover {
-        fill: ${colors?.blue[300]};
+        fill: ${semanticColors?.base?.iconPrimaryInverseHover};
       }
     `;
   }}
@@ -67,9 +82,6 @@ const primary = (props: BannerExtraProps) => {
   return `
     background-color: ${semanticColors?.info?.surfaceSecondary};
     color: ${semanticColors?.base?.textPrimaryInverse};
-    svg {
-      fill: ${semanticColors?.base?.iconPrimaryInverse};
-    }
   `;
 };
 
@@ -79,9 +91,6 @@ const secondary = (props: BannerExtraProps) => {
   return `
     background-color: ${semanticColors?.info?.surfacePrimary};
     color: ${semanticColors?.base?.textPrimary};
-    svg {
-      fill: ${semanticColors?.info?.ornament};
-    }
   `;
 };
 

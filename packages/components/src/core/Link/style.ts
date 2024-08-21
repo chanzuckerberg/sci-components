@@ -68,6 +68,7 @@ const defaultStyle = (props: LinkProps) => {
 
 const dashedStyle = (props: LinkProps) => {
   const { sdsSize = "s" } = props;
+  const semanticColors = getSemanticColors(props);
 
   return css`
     color: inherit;
@@ -79,8 +80,13 @@ const dashedStyle = (props: LinkProps) => {
       position: absolute;
       height: 1px;
       margin-top: ${sdsSize === "s" ? -4 : -3}px;
+      margin-left: 1px;
       width: 100%;
-      background-image: linear-gradient(to right, black 60%, transparent 60%);
+      background-image: linear-gradient(
+        to right,
+        ${semanticColors?.base?.borderHover} 60%,
+        transparent 60%
+      );
       background-size: 5px 100%;
     }
 
@@ -88,7 +94,11 @@ const dashedStyle = (props: LinkProps) => {
     &:focus {
       text-decoration: none;
       &::after {
-        background-image: linear-gradient(to right, black 60%, black 60%);
+        background-image: linear-gradient(
+          to right,
+          ${semanticColors?.base?.borderHover} 60%,
+          ${semanticColors?.base?.borderHover} 60%
+        );
       }
     }
   `;

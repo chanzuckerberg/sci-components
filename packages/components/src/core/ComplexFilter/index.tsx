@@ -92,7 +92,6 @@ const ComplexFilter = <
         <InputDropdownComponent
           label={label}
           onClick={handleClick}
-          sdsStage={open ? "userInput" : "default"}
           {...InputDropdownProps}
         />
 

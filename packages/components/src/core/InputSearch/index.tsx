@@ -55,22 +55,15 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       (ref ? ref : inputRef) as React.RefObject<HTMLElement>
     );
 
-    const [hasValue, setHasValue] = useState<boolean>(false);
     const [value, setValue] = useState<string>("");
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.value) {
-        setHasValue(true);
-      } else {
-        setHasValue(false);
-      }
       setValue(event.target.value);
       if (onChange) onChange(event);
     };
 
     const clearInput = () => {
       setValue("");
-      setHasValue(false);
 
       if (handleSubmit) handleSubmit("");
 
@@ -112,7 +105,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           ref={ref ? ref : inputRef}
           // passed to mui Input
           InputProps={{
-            endAdornment: (
+            endAdornment: value ? (
               <StyledInputAdornment position="end">
                 <Button
                   aria-label="clear-button"
@@ -128,7 +121,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   icon="XMarkCircle"
                 />
               </StyledInputAdornment>
-            ),
+            ) : null,
             startAdornment: (
               <StyledInputAdornment position="start">
                 <Button
@@ -152,7 +145,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           placeholder={placeholder}
           value={value}
           sdsStyle={sdsStyle}
-          sdsStage={hasValue ? "userInput" : "default"}
           onChange={handleChange}
           onKeyDown={handleKeyPress}
           intent={intent}

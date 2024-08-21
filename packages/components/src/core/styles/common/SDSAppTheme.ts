@@ -480,42 +480,43 @@ export const SDSLightAppTheme: AppTheme = {
 
 SDSLightAppTheme.borders = {
   accent: {
-    dashed: `1px dashed ${SDSLightAppTheme.colors.blue[400]}`,
-    default: `1px solid ${SDSLightAppTheme.colors.blue[400]}`,
-    disabled: `1px solid ${SDSLightAppTheme.colors.blue[300]}`,
-    hover: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
+    focused: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
+    hover: `1px solid ${SDSLightAppTheme.colors.blue[600]}`,
+    open: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
+    pressed: `1px solid ${SDSLightAppTheme.colors.blue[700]}`,
+    selected: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
   },
   base: {
-    black: `1px solid ${SDSLightAppTheme.colors.gray[900]}`,
-    dashed: `1px dashed ${SDSLightAppTheme.colors.gray[400]}`,
-    default: `1px solid ${SDSLightAppTheme.colors.gray[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.gray[500]}`,
     disabled: `1px solid ${SDSLightAppTheme.colors.gray[300]}`,
     divider: `1px solid ${SDSLightAppTheme.colors.gray[200]}`,
     hover: `1px solid ${SDSLightAppTheme.colors.gray[900]}`,
+    pressed: `1px solid ${SDSLightAppTheme.colors.gray[900]}`,
     table: `1px solid ${SDSLightAppTheme.colors.gray[300]}`,
   },
   beta: {
-    default: `1px solid ${SDSLightAppTheme.colors.purple[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.purple[500]}`,
   },
   info: {
-    default: `1px solid ${SDSLightAppTheme.colors.blue[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   negative: {
-    default: `1px solid ${SDSLightAppTheme.colors.red[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.red[500]}`,
   },
   neutral: {
-    default: `1px solid ${SDSLightAppTheme.colors.gray[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.gray[500]}`,
   },
   none: "none",
   notice: {
-    default: `1px solid ${SDSLightAppTheme.colors.yellow[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.yellow[500]}`,
   },
   positive: {
-    default: `1px solid ${SDSLightAppTheme.colors.green[400]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.green[500]}`,
   },
 };
 
@@ -526,42 +527,43 @@ export const SDSDarkAppTheme: AppTheme = {
 
 SDSDarkAppTheme.borders = {
   accent: {
-    dashed: `1px dashed ${SDSDarkAppTheme.colors.blue[400]}`,
-    default: `1px solid ${SDSDarkAppTheme.colors.blue[400]}`,
-    disabled: `1px solid ${SDSDarkAppTheme.colors.blue[300]}`,
-    hover: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
+    focused: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
+    hover: `1px solid ${SDSDarkAppTheme.colors.blue[600]}`,
+    open: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
+    pressed: `1px solid ${SDSDarkAppTheme.colors.blue[700]}`,
+    selected: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
   },
   base: {
-    black: `1px solid ${SDSDarkAppTheme.colors.gray[900]}`,
-    dashed: `1px dashed ${SDSDarkAppTheme.colors.gray[400]}`,
-    default: `1px solid ${SDSDarkAppTheme.colors.gray[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.gray[500]}`,
     disabled: `1px solid ${SDSDarkAppTheme.colors.gray[300]}`,
     divider: `1px solid ${SDSDarkAppTheme.colors.gray[200]}`,
     hover: `1px solid ${SDSDarkAppTheme.colors.gray[900]}`,
+    pressed: `1px solid ${SDSDarkAppTheme.colors.gray[900]}`,
     table: `1px solid ${SDSDarkAppTheme.colors.gray[300]}`,
   },
   beta: {
-    default: `1px solid ${SDSDarkAppTheme.colors.purple[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.purple[500]}`,
   },
   info: {
-    default: `1px solid ${SDSDarkAppTheme.colors.blue[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   negative: {
-    default: `1px solid ${SDSDarkAppTheme.colors.red[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.red[500]}`,
   },
   neutral: {
-    default: `1px solid ${SDSDarkAppTheme.colors.gray[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.gray[500]}`,
   },
   none: "none",
   notice: {
-    default: `1px solid ${SDSDarkAppTheme.colors.yellow[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.yellow[500]}`,
   },
   positive: {
-    default: `1px solid ${SDSDarkAppTheme.colors.green[400]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.green[500]}`,
   },
 };
 

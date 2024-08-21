@@ -2,14 +2,14 @@
 
 exports[`<Banner /> Default story renders snapshot 1`] = `
 <div
-  class="css-1hsqpe0"
+  class="css-1fd36s4"
   role="banner"
 >
   <div
     class="css-1879pua"
   >
     <div
-      class="css-1f3aume"
+      class="css-1fhtzit"
     >
       <div
         class="css-1ft6wgl"
@@ -31,7 +31,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-8ipale-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-72jt6e-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"

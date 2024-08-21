@@ -3,8 +3,6 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { NavigationJumpTo } from "./stories/default";
 import {
   NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE,
-  NAVIGATION_JUMP_TO_COLOR_LABELS,
-  NAVIGATION_JUMP_TO_COLOR_OPTIONS,
   NAVIGATION_JUMP_TO_EXCLUDED_CONTROLS,
 } from "./constants";
 import { NavigationJumpToDemo } from "./stories/demo";
@@ -12,16 +10,6 @@ import { TestDemo } from "./stories/test";
 
 export default {
   argTypes: {
-    indicatorColor: {
-      control: {
-        labels: NAVIGATION_JUMP_TO_COLOR_LABELS,
-        type: "select",
-      },
-      defaultValue: { summary: "info" },
-      description: "Color of the tab indicator",
-      mapping: NAVIGATION_JUMP_TO_COLOR_OPTIONS,
-      options: Object.keys(NAVIGATION_JUMP_TO_COLOR_OPTIONS),
-    },
     items: {
       control: { require: true, type: "object" },
       defaultValue: { summary: "-" },
@@ -46,7 +34,6 @@ export default {
 
 export const Default = {
   args: {
-    indicatorColor: "info",
     items: [
       { elementRef: { current: null }, title: "Item 1" },
       { elementRef: { current: null }, title: "Item 2" },
@@ -69,7 +56,6 @@ export const Default = {
 
 export const JumpToNavDemo = {
   args: {
-    indicatorColor: "primary",
     items: [],
     offsetTop: 0,
   },

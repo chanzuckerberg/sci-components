@@ -70,7 +70,7 @@ export const Subtitle = styled("div")`
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticColors?.base?.textDisabled};
+      color: ${semanticColors?.base?.textSecondaryInverse};
     `;
   }}
 `;

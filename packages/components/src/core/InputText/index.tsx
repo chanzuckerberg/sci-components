@@ -1,5 +1,5 @@
 import { TextFieldProps as RawTextFieldProps } from "@mui/material";
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useRef } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
 
@@ -45,16 +45,6 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       (ref ? ref : inputRef) as React.RefObject<HTMLElement>
     );
 
-    const [hasValue, setHasValue] = useState<boolean>(false);
-
-    const handleChange = (event: { target: { value: string } }) => {
-      if (event.target.value) {
-        setHasValue(true);
-      } else {
-        setHasValue(false);
-      }
-    };
-
     const inputProps = {
       "aria-label": `${label}`,
     };
@@ -88,9 +78,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
           variant="outlined"
           size="small"
           placeholder={placeholder}
-          sdsStage={hasValue ? "userInput" : "default"}
           sdsType={sdsType}
-          onChange={handleChange}
           {...rest}
         />
       </>

@@ -1,148 +1,106 @@
 {
   "sds": {
     "border": {
-      "dark": {
-        "negative": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.red.400.value}"
-          }
+      "accent": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.blue.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
         },
-        "base": {
-          "divider": {
-            "value": "1px solid {sds.color.dark.primitive.gray.200.value}"
-          },
-          "table": {
-            "value": "1px solid {sds.color.dark.primitive.gray.300.value}"
-          },
-          "disabled": {
-            "value": "1px solid {sds.color.dark.primitive.gray.300.value}"
-          },
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.gray.400.value}"
-          },
-          "black": { "value": "1px dashed black" },
-          "hover": { "value": "1px dashed black" },
-          "dashed": {
-            "value": "1px dashed {sds.color.dark.primitive.gray.400.value}"
-          }
+        "focused": {
+          "value": "1px solid {sds.color.primitive.blue.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
         },
-        "link": {
-          "dashed": { "value": "1px dashed" },
-          "solid": { "value": "1px solid" }
+        "open": {
+          "value": "1px solid {sds.color.primitive.blue.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
         },
-        "accent": {
-          "disabled": {
-            "value": "1px solid {sds.color.dark.primitive.blue.300.value}"
-          },
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.blue.400.value}"
-          },
-          "hover": {
-            "value": "1px solid {sds.color.dark.primitive.blue.500.value}"
-          },
-          "dashed": {
-            "value": "2px dashed {sds.color.dark.primitive.blue.400.value}"
-          }
+        "selected": {
+          "value": "1px solid {sds.color.primitive.blue.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
         },
-        "info": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.blue.400.value}"
-          }
+        "hover": {
+          "value": "1px solid {sds.color.primitive.blue.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
         },
-        "beta": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.purple.400.value}"
-          }
-        },
-        "positive": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.green.400.value}"
-          }
-        },
-        "notice": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.yellow.400.value}"
-          }
-        },
-        "neutral": {
-          "default": {
-            "value": "1px solid {sds.color.dark.primitive.gray.400.value}"
-          }
-        },
-        "none": {
-          "value": "none"
+        "pressed": {
+          "value": "1px solid {sds.color.primitive.blue.700.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.700.darkValue}"
         }
       },
-      "light": {
-        "negative": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.red.400.value}"
-          }
+      "base": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.gray.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.500.darkValue}"
         },
-        "base": {
-          "divider": {
-            "value": "1px solid {sds.color.light.primitive.gray.200.value}"
-          },
-          "table": {
-            "value": "1px solid {sds.color.light.primitive.gray.300.value}"
-          },
-          "disabled": {
-            "value": "1px solid {sds.color.light.primitive.gray.300.value}"
-          },
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.gray.400.value}"
-          },
-          "black": { "value": "1px dashed black" },
-          "hover": { "value": "1px dashed black" },
-          "dashed": {
-            "value": "1px dashed {sds.color.light.primitive.gray.400.value}"
-          }
+        "disabled": {
+          "value": "1px solid {sds.color.primitive.gray.300.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.300.darkValue}"
         },
-        "link": {
-          "dashed": { "value": "1px dashed" },
-          "solid": { "value": "1px solid" }
+        "divider": {
+          "value": "1px solid {sds.color.primitive.gray.200.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.200.darkValue}"
         },
-        "accent": {
-          "disabled": {
-            "value": "1px solid {sds.color.light.primitive.blue.300.value}"
-          },
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.blue.400.value}"
-          },
-          "hover": {
-            "value": "1px solid {sds.color.light.primitive.blue.500.value}"
-          },
-          "dashed": {
-            "value": "2px dashed {sds.color.light.primitive.blue.400.value}"
-          }
+        "hover": {
+          "value": "1px dashed {sds.color.primitive.gray.900.value}",
+          "darkValue": "1px dashed {sds.color.primitive.gray.900.darkValue}"
         },
-        "info": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.blue.400.value}"
-          }
+        "pressed": {
+          "value": "1px dashed {sds.color.primitive.gray.900.value}",
+          "darkValue": "1px dashed {sds.color.primitive.gray.900.darkValue}"
         },
-        "beta": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.purple.400.value}"
-          }
+        "table": {
+          "value": "1px solid {sds.color.primitive.gray.300.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.300.darkValue}"
+        }
+      },
+      "beta": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.purple.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.purple.500.darkValue}"
+        }
+      },
+      "info": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.blue.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+        }
+      },
+      "link": {
+        "dashed": {
+          "value": "1px dashed",
+          "darkValue": "1px dashed"
         },
-        "positive": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.green.400.value}"
-          }
-        },
-        "notice": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.yellow.400.value}"
-          }
-        },
-        "neutral": {
-          "default": {
-            "value": "1px solid {sds.color.light.primitive.gray.400.value}"
-          }
-        },
-        "none": {
-          "value": "none"
+        "solid": {
+          "value": "1px solid",
+          "darkValue": "1px solid"
+        }
+      },
+      "negative": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.red.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.red.500.darkValue}"
+        }
+      },
+      "neutral": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.gray.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.500.darkValue}"
+        }
+      },
+      "none": {
+        "value": "none",
+        "darkValue": "none"
+      },
+      "notice": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.yellow.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.yellow.500.darkValue}"
+        }
+      },
+      "positive": {
+        "default": {
+          "value": "1px solid {sds.color.primitive.green.500.value}",
+          "darkValue": "1px solid {sds.color.primitive.green.500.darkValue}"
         }
       }
     }

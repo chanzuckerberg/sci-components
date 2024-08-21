@@ -42,8 +42,10 @@ export const StyledHeaderTitle = styled("div", {
     const { search } = props;
 
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
+      color: ${semanticColors?.base?.textPrimary};
       padding-right: ${spaces?.m}px;
       margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;

@@ -207,9 +207,7 @@ function generateSecondaryTagColors(
   if (intent) {
     return {
       background:
-        colors.length >= 2
-          ? colors[1]
-          : semanticColors?.[intent].surfacePrimary,
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillSecondary,
       backgroundClicked:
         colors.length >= 2
           ? darken(colors[1], 0.3)
@@ -220,7 +218,7 @@ function generateSecondaryTagColors(
           : semanticColors?.[intent].fillHover,
       iconColor:
         colors.length > 2 ? colors[2] : semanticColors?.[intent].ornament,
-      label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
+      label: colors.length ? colors[0] : semanticColors?.[intent].text,
     };
   } else {
     return {

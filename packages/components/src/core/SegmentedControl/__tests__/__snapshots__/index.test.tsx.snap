@@ -3,7 +3,7 @@
 exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root css-1ows8pv-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root css-khnnxt-MuiToggleButtonGroup-root"
   role="group"
 >
   <button

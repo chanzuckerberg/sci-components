@@ -49,6 +49,19 @@ const Colors = (props: SemanticColorsProps): JSX.Element => {
       return Object.entries(sdsColors).map(([k, v]) => {
         if (v === "transparent") return;
 
+        if (type === "semantic" && v.length > 7) {
+          return (
+            <Color
+              key={k}
+              group={groupName}
+              value={v}
+              semanticName={`${flattenColors[v.slice(0, -2)]} (28% opacity)`}
+              shade={k}
+              prefix={prefix}
+            />
+          );
+        }
+
         return (
           <Color
             key={k}

@@ -5,13 +5,6 @@ import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
 
 export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
-  indicatorColor?:
-    | "accent"
-    | "negative"
-    | "info"
-    | "positive"
-    | "notice"
-    | "beta";
   items: Array<{
     title: string;
     elementRef: React.MutableRefObject<HTMLElement | null>;
@@ -22,7 +15,7 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
 
 const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
-    const { items, indicatorColor, offsetTop = 0, onChange, ...rest } = props;
+    const { items, offsetTop = 0, onChange, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const [emittedValue, setEmittedValue] = useState(-1);
@@ -135,7 +128,6 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         value={firstTabIndexInview}
         onChange={handleChange}
         aria-label="navigation-jump-to"
-        sdsIndicatorColor={indicatorColor}
         {...rest}
       >
         {items.map(({ title, elementRef }, index) => (

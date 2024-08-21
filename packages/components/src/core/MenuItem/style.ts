@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import { fontBodyXs } from "src/core/styles/common/mixins/fonts";
 import {
   CommonThemeProps,
-  getColors,
   getFontWeights,
   getIconSizes,
   getSemanticColors,
@@ -14,12 +13,9 @@ import {
 export const StyledMenuItem = styled(MenuItem)`
   ${(props) => {
     const { selected } = props;
-    const colors = getColors(props);
     const fontWeights = getFontWeights(props);
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
-
-    const primary = colors?.blue[400];
 
     return `
       padding: ${spaces?.xs}px ${spaces?.s}px !important;
@@ -39,11 +35,10 @@ export const StyledMenuItem = styled(MenuItem)`
         opacity: 1;
 
         &:hover, &.${menuItemClasses.focusVisible} {
-          /* the number 47 is the opacity of the color, which is equal to 28% */
-          background-color: ${semanticColors?.base?.fillHover}47;
+          background-color: ${semanticColors?.base?.fillHover};
 
           &[aria-selected="true"] {
-            background-color: ${semanticColors?.base?.fillHover}47;
+            background-color: ${semanticColors?.base?.fillHover};
           }
         }
       }
@@ -58,12 +53,11 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &.MuiAutocomplete-option[aria-selected="true"] {
         &:hover {
-          /* the number 47 is the opacity of the color, which is equal to 28% */
-          background-color: ${semanticColors?.base?.fillHover}47 !important;
+          background-color: ${semanticColors?.base?.fillHover} !important;
         }
 
         svg.check-icon {
-          color: ${selected ? primary : semanticColors?.base?.iconPrimary};
+          color: ${selected ? semanticColors?.accent?.iconSelected : semanticColors?.base?.iconPrimary};
         }
       }
 
@@ -72,18 +66,16 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:hover {
-        /* the number 47 is the opacity of the color, which is equal to 28% */
-        background-color: ${semanticColors?.base?.fillHover}47;
+        background-color: ${semanticColors?.base?.fillHover};
         svg.check-icon {
-          color: ${selected ? primary : semanticColors?.base?.iconPrimary};
+          color: ${selected ? semanticColors?.accent?.iconHover : semanticColors?.base?.iconPrimary};
         }
       }
 
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
         background-color: ${semanticColors?.base?.surfacePrimary};
         &:hover {
-          /* the number 47 is the opacity of the color, which is equal to 28% */
-          background-color: ${semanticColors?.base?.fillHover}47;
+          background-color: ${semanticColors?.base?.fillHover};
         }
         .primary-text {
           font-weight: ${fontWeights?.semibold};
@@ -92,12 +84,12 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:active {
         svg.check-icon {
-          color: ${primary};
+          color: ${semanticColors?.accent?.iconPressed};
         }
 
         &:active {
           svg.check-icon {
-            color: ${primary};
+            color: ${semanticColors?.accent?.iconPressed};
           }
 
           .primary-text {
@@ -127,7 +119,7 @@ const disabledStyles = (props: DisabledType) => {
   const semanticColors = getSemanticColors(props);
 
   return `
-    color: ${semanticColors?.base?.iconDisabled};
+    color: ${semanticColors?.base?.textDisabled};
     cursor: default;
   `;
 };

@@ -11,7 +11,6 @@ import {
   fontBodyS,
   fontBodyXs,
   getBorders,
-  getColors,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -20,15 +19,14 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  intent?: "default" | "error" | "warning";
+  intent?: "default" | "negative" | "notice";
   sdsType?: "textField" | "textArea";
-  sdsStage?: "default" | "userInput";
   hideLabel?: boolean;
 }
 
-const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
+const sdsPropNames = ["sdsStyle", "sdsType", "intent", "hideLabel"];
 
-const error = (props: InputTextExtraProps): SerializedStyles => {
+const negative = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
 
@@ -39,12 +37,12 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.negative?.default};
+      border: ${borders?.base?.hover};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.negative?.default};
+        border: ${borders?.base?.hover};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
@@ -57,7 +55,7 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
   `;
 };
 
-const warning = (props: InputTextExtraProps): SerializedStyles => {
+const notice = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
 
@@ -68,12 +66,12 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.notice?.default};
+      border: ${borders?.base?.hover};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.notice?.default};
+        border: ${borders?.base?.hover};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
@@ -88,7 +86,7 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
 
 const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.disabled} {
@@ -101,7 +99,7 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
       }
 
       &::placeholder {
-        color: ${colors?.gray[300]};
+        color: ${semanticColors?.base?.textDisabled};
         opacity: 1;
       }
     }
@@ -119,29 +117,6 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
         padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
-    }
-  `;
-};
-
-const userInput = (props: InputTextExtraProps): SerializedStyles => {
-  const { intent } = props;
-  const borders = getBorders(props);
-
-  const border =
-    intent === "error"
-      ? borders?.negative?.default
-      : intent === "warning"
-        ? borders?.notice?.default
-        : borders?.accent?.default;
-
-  return css`
-    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${border};
-    }
-
-    .${outlinedInputClasses.root}:hover
-      .${outlinedInputClasses.notchedOutline} {
-      border: ${border};
     }
   `;
 };
@@ -165,7 +140,7 @@ export const StyledInputBase = styled(TextField, {
   },
 })`
   ${(props: InputTextExtraProps) => {
-    const { intent, sdsType, sdsStage, disabled } = props;
+    const { intent, sdsType, disabled } = props;
 
     const spaces = getSpaces(props);
     const borders = getBorders(props);
@@ -202,7 +177,7 @@ export const StyledInputBase = styled(TextField, {
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border-color: ${semanticColors?.base?.borderHover};
+        border: ${borders?.base?.hover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
@@ -211,10 +186,9 @@ export const StyledInputBase = styled(TextField, {
       }
 
       ${sdsType === "textArea" && textArea(props)}
-      ${intent === "error" && error(props)}
-      ${intent === "warning" && warning(props)}
+      ${intent === "negative" && negative(props)}
+      ${intent === "notice" && notice(props)}
       ${disabled && disabledStyled(props)}
-      ${sdsStage === "userInput" && userInput(props)}
     `;
   }}
 `;

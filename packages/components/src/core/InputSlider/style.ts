@@ -7,6 +7,7 @@ import {
   fontBodyXxxs,
   getColors,
   getCorners,
+  getMode,
   getSemanticColors,
   getShadows,
 } from "src/core/styles";
@@ -15,7 +16,6 @@ export interface InputSliderExtraProps extends SliderProps, CommonThemeProps {}
 
 const inputSlider = (props: InputSliderExtraProps) => {
   const corners = getCorners(props);
-  const colors = getColors(props);
   const shadows = getShadows(props);
   const semanticColors = getSemanticColors(props);
 
@@ -28,7 +28,8 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.rail} {
-      background-color: ${semanticColors?.base?.surfaceTertiary};
+      background-color: ${semanticColors?.base?.divider};
+      opacity:1;
     }
     
     .${sliderClasses.track} {
@@ -82,7 +83,9 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.mark} {
-      background-color: ${colors?.gray[400]};
+      // (masoudmanson): Although the mark is not a icon, but since we don't have 
+      // a specific color for the mark, we use the iconDisabled color for it.
+      background-color: ${semanticColors?.base?.iconDisabled};
       opacity: 1;
     }
 
@@ -135,6 +138,7 @@ const horizontal = (props: InputSliderExtraProps) => {
 const disabledSlider = (props: InputSliderExtraProps) => {
   const colors = getColors(props);
   const semanticColors = getSemanticColors(props);
+  const mode = getMode(props);
 
   return `
     .${sliderClasses.track} {
@@ -147,7 +151,7 @@ const disabledSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.valueLabel} {
       color: ${colors?.gray[300]};
-      background-color: ${semanticColors?.base?.surfaceSecondary};
+      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
       
       & * {
         color: ${semanticColors?.base?.textDisabled};
@@ -159,7 +163,7 @@ const disabledSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.mark} {
-      background-color: ${semanticColors?.base?.fillDisabled};
+      background-color: ${semanticColors?.base?.fillPrimary};
     }
   `;
 };

@@ -10,7 +10,6 @@ import {
   fontBodySemiboldS,
   fontBodySemiboldXs,
   CommonThemeProps,
-  getColors,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
@@ -42,15 +41,15 @@ export const StyledTabs = styled(TempTabs, {
 
   ${(props) => {
     const { underlined, sdsSize = "large" } = props;
-    const colors = getColors(props);
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     const isLarge = sdsSize === "large";
 
     return `
       margin-top: ${isLarge ? spaces?.l : spaces?.m}px;
       margin-bottom: ${isLarge ? spaces?.xl : spaces?.m}px;
-      border-bottom: ${underlined ? `2px solid ${colors?.gray[200]};` : "none"};
+      border-bottom: ${underlined ? `2px solid ${semanticColors?.base?.divider};` : "none"};
     `;
   }}
 `;

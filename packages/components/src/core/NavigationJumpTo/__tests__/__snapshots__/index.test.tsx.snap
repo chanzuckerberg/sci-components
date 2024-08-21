@@ -107,7 +107,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
       Section panel height:
     </p>
     <span
-      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-dvyfyw-MuiSlider-root"
+      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-11urd0a-MuiSlider-root"
     >
       <span
         class="MuiSlider-rail css-14pt78w-MuiSlider-rail"

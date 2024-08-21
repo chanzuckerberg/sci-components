@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 import {
   CommonThemeProps,
   getCorners,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -24,8 +25,11 @@ export const StyledPaper = styled(Paper, {
       const spaces = getSpaces(props);
       const corners = getCorners(props);
       const shadows = getShadows(props);
+      const semanticColors = getSemanticColors(props);
 
       return `
+        background-color: ${semanticColors?.base?.surfacePrimary};
+        background-image: none;
         box-shadow: ${shadows?.l};
         max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
         border-radius: ${corners?.m || 0}px;

@@ -38,7 +38,7 @@ export default {
       control: {
         type: "select",
       },
-      options: [100, 200, 300, 400, 500, 600],
+      options: [100, 200, 300, 400, 500, 600, 700, 800],
     },
   },
   component: Icon,
@@ -56,7 +56,7 @@ export const Default = {
     sdsIcon: "CheckCircle",
     sdsSize: "xl",
     sdsType: "static",
-    shade: 400,
+    shade: 500,
   },
 };
 

@@ -38,8 +38,7 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      background: ${semanticColors?.base?.fillHover}47;
+      background: ${semanticColors?.base?.fillHover};
       color: ${semanticColors?.accent?.textActionHover};
 
       svg {
@@ -48,8 +47,7 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:active {
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      background: ${semanticColors?.base?.fillPressed}47;
+      background: ${semanticColors?.base?.fillPressed};
       color: ${semanticColors?.accent?.textActionPressed};
 
       svg {
@@ -70,8 +68,7 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      background: ${semanticColors?.base?.fillHover}47;
+      background: ${semanticColors?.base?.fillHover};
       color: ${semanticColors?.accent?.iconHover};
 
       svg {
@@ -80,8 +77,7 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:active {
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      background: ${semanticColors?.base?.fillPressed}47;
+      background: ${semanticColors?.base?.fillPressed};
       color: ${semanticColors?.accent?.iconPressed};
 
       svg {

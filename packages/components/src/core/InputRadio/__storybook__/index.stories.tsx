@@ -14,7 +14,7 @@ export default {
     },
     intent: {
       control: { type: "radio" },
-      options: ["default", "error", "warning"],
+      options: ["default", "negative", "notice"],
     },
     label: {
       control: { type: "text" },

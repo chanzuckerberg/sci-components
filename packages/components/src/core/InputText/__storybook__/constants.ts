@@ -5,7 +5,6 @@ export const INPUT_TEXT_EXCLUDED_CONTROLS = [
   "intent",
   "label",
   "placeholder",
-  "sdsStage",
   "sdsType",
 ];
 

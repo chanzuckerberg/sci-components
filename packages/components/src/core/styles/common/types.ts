@@ -276,6 +276,10 @@ export interface Border {
   hover?: string;
   disabled?: string;
   table?: string;
+  pressed?: string;
+  open?: string;
+  focused?: string;
+  selected?: string;
 }
 
 export interface Borders {

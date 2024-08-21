@@ -38,6 +38,14 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
           color: ${semanticColors?.base?.iconPrimary};
         }
       }
+
+      &:hover {
+        & .${accordionSummaryClasses.expandIconWrapper} {
+          svg {
+            color: ${semanticColors?.base?.iconPrimaryHover};
+          }
+        }
+      }
     `;
   }}
 `;

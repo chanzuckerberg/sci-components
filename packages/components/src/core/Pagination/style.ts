@@ -46,8 +46,7 @@ export const StyledPaginationButton = styled(Button)`
       }
 
       &:hover {
-        /* the number 47 is the opacity of the color, which is equal to 28% */
-        background-color: ${semanticColors?.base?.fillHover}47;
+        background-color: ${semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
           color: ${semanticColors?.base?.iconPrimaryHover}
@@ -88,8 +87,7 @@ export const StyledPaginationChevronList = styled("li", {
       }
 
       &:hover {
-        /* the number 47 is the opacity of the color, which is equal to 28% */
-        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover}47;
+        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
           color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.base?.iconPrimaryHover}
@@ -152,8 +150,7 @@ export const Page = styled("li", {
       border-radius: ${sdsStyle === "round" ? corners?.l : corners?.m}px;
       user-select: none;
       &:hover {
-        /* the number 47 is the opacity of the color, which is equal to 28% */
-        background-color: ${semanticColors?.base?.fillHover}47;
+        background-color: ${semanticColors?.base?.fillHover};
         color: ${semanticColors?.base?.textPrimary};
       }
 

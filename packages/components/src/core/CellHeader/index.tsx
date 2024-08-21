@@ -55,13 +55,14 @@ const CellHeaderContent = (
       sdsType="static"
       sdsSize="xs"
       active={active}
+      hideSortIcon={hideSortIcon}
     />
   );
 
   return (
     <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
       <span>{children}</span>
-      {!hideSortIcon && sortIcon}
+      {(!hideSortIcon || active) && sortIcon}
     </StyledCellHeaderContainer>
   );
 };

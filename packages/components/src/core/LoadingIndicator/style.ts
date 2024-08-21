@@ -57,7 +57,7 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
 
     svg {
       path {
-        fill: ${semanticColors?.accent?.icon};
+        fill: ${semanticColors?.info?.ornament};
       }
     }
   `;

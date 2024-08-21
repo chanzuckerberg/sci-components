@@ -10,6 +10,7 @@ import Icon from "src/core/Icon";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
+  hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
 }
 
@@ -32,7 +33,7 @@ export const StyledSortingIcon = styled(Icon, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: CellHeaderExtraProps) => {
-    const { active = false } = props;
+    const { active = false, hideSortIcon } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -41,7 +42,7 @@ export const StyledSortingIcon = styled(Icon, {
       margin-left: ${spaces?.s}px;
       margin-bottom: ${spaces?.xxs}px;
       color: ${active ? semanticColors?.accent?.icon : semanticColors?.base?.iconPrimary};
-      opacity: ${active ? 1 : 0};
+      opacity: ${hideSortIcon ? (active ? 1 : 0) : 1};
       outline: none !important;
     `;
   }}

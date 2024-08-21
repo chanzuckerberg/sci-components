@@ -10,11 +10,6 @@ export default {
         type: "number",
       },
     },
-    details: {
-      control: {
-        type: "text",
-      },
-    },
     disabled: {
       control: {
         type: "boolean",
@@ -24,7 +19,7 @@ export default {
       control: {
         type: "radio",
       },
-      options: ["default", "error", "warning"],
+      options: ["default", "negative", "notice"],
     },
     label: {
       control: {
@@ -35,12 +30,6 @@ export default {
       control: {
         type: "boolean",
       },
-    },
-    sdsStage: {
-      control: {
-        type: "radio",
-      },
-      options: ["default", "userInput"],
     },
     sdsStyle: {
       control: {

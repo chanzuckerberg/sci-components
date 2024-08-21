@@ -5,6 +5,7 @@ import {
   focusVisibleA11yStyle,
   fontHeaderS,
   getBorders,
+  getMode,
   getSemanticColors,
 } from "src/core/styles";
 
@@ -30,11 +31,18 @@ const doNotForwardProps = [
 
 const disabledStyled = (props: RowExtraProps) => {
   const semanticColors = getSemanticColors(props);
+  const mode = getMode(props);
 
   return `
-    background-color: ${semanticColors?.base?.surfaceSecondary};
+    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+    background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
     color: ${semanticColors?.base?.textDisabled};
     user-select: none;
+
+    &:hover {
+      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+      color: ${semanticColors?.base?.textDisabled};
+    }
 
     & span, & div {
       color: ${semanticColors?.base?.textDisabled};
@@ -46,7 +54,7 @@ const disabledStyled = (props: RowExtraProps) => {
       user-select: none;
       & span, & div {
         color: ${semanticColors?.base?.textDisabled};
-        background-color: ${semanticColors?.base?.surfaceSecondary};
+        background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
       }
 
       svg {
@@ -63,8 +71,7 @@ const hoverStyled = (props: RowExtraProps) => {
 
   return `
     &:hover {
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      background-color: ${semanticColors?.base?.fillHover}47;
+      background-color: ${semanticColors?.base?.fillHover};
     }
   `;
 };

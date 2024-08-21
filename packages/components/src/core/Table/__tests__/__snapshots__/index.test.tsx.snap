@@ -61,7 +61,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-12jh8eh-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -99,7 +99,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="css-415cw5"
+      class="css-e9lq1t"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -264,7 +264,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-415cw5"
+      class="css-e9lq1t"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -495,7 +495,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class=" css-1gr8eym"
+      class=" css-1gmh0ks"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
