@@ -5,11 +5,13 @@ import {
   CommonThemeProps,
   fontBodySemiboldXs,
   fontCapsXxxs,
+  fontCapsXxs,
   getCorners,
   getIconSizes,
   getSemanticColors,
   getShadows,
   getSpaces,
+  fontBodySemiboldXxs,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonProps } from ".";
@@ -27,7 +29,7 @@ type ButtonExtraProps = ButtonProps & CommonThemeProps;
 // Rounded + Square Button Styles
 
 const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
-  const { variant, startIcon, endIcon } = props;
+  const { variant, startIcon, endIcon, isAllCaps } = props;
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticColors = getSemanticColors(props);
@@ -70,6 +72,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.border};
     padding: ${padding};
     color: ${contentColor};
+    line-height: ${isAllCaps ? "20px" : "unset"};
 
     svg {
       color: ${ornamentColor};
@@ -208,13 +211,14 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontBodySemiboldXs}
   ${focusVisibleA11yStyle}
 
   ${(props: ButtonExtraProps) => {
-    const { sdsStyle, sdsType } = props;
+    const { sdsStyle, sdsType, isAllCaps } = props;
 
     return css`
+      ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
+
       ${ButtonStyles(props)}
       ${sdsStyle === "rounded" && Rounded(props)}
       ${sdsType === "destructive" && DestructiveButton(props)}
@@ -224,27 +228,33 @@ export const StyledButton = styled(Button, {
 
 // Minimal Button Styles
 
-const Minimal = (props: CommonThemeProps): SerializedStyles => {
+const Minimal = (props: ButtonExtraProps): SerializedStyles => {
+  const { isAllCaps } = props;
+
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticColors = getSemanticColors(props);
 
   return css`
     ${focusVisibleA11yStyle(props)}
-    ${fontCapsXxxs(props)}
+    ${isAllCaps ? fontCapsXxxs(props) : fontBodySemiboldXxs(props)}
 
     min-width: unset;
-    padding: ${spaces?.xxs}px 0;
+    padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
 
     &:hover,
     &:focus-visible {
-      background-color: transparent;
       color: ${semanticColors?.accent?.textActionHover};
 
       svg {
         color: ${semanticColors?.accent?.iconHover};
       }
     }
+
+    &:hover {
+      background-color: ${semanticColors?.base?.fillHover};
+    }
+
     &:active {
       color: ${semanticColors?.accent?.textActionPressed};
 

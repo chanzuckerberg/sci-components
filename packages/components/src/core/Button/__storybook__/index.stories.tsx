@@ -32,6 +32,9 @@ export default {
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },
+    isAllCaps: {
+      control: { type: "boolean" },
+    },
     onClick: { action: BUTTON_ACTIONS.onClick },
     sdsSize: {
       control: {
