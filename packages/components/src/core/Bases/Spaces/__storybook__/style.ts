@@ -1,9 +1,9 @@
 import { styled } from "@mui/material";
 import {
-  getColors,
   CommonThemeProps,
   fontCodeXs,
   getFontWeights,
+  getSemanticColors,
 } from "src/core/styles";
 
 export const StyledSpacingWrapper = styled("div")`
@@ -20,7 +20,7 @@ export const StyledInsetSpacingBox = styled("div")`
   ${(props: IProps) => {
     const { size } = props;
 
-    const colors = getColors(props);
+    const semanticColors = getSemanticColors(props);
     const BoxSize = 100;
 
     return `
@@ -28,8 +28,8 @@ export const StyledInsetSpacingBox = styled("div")`
       box-sizing: border-box;
       width: ${BoxSize}px;
       height: ${BoxSize}px;
-      border: solid ${size}px rgb(205, 225, 195);
-      color: ${colors?.green[600]};
+      border: solid ${size}px ${semanticColors?.positive.surfacePrimary};
+      color: ${semanticColors?.positive?.text};
       font-size: 10px;
       display: flex;
       align-items: center;
@@ -44,7 +44,7 @@ export const StyledInlineSpacingBox = styled("div")`
   ${(props: IProps) => {
     const { size } = props;
 
-    const colors = getColors(props);
+    const semanticColors = getSemanticColors(props);
     const BoxSize = 100;
 
     return `
@@ -52,8 +52,8 @@ export const StyledInlineSpacingBox = styled("div")`
       margin-left: 30px;
       width: ${size}px;
       height: ${BoxSize}px;
-      background-color: rgb(250, 230, 210);
-      color: ${colors?.yellow[600]};
+      background-color: ${semanticColors?.notice.surfacePrimary};
+      color: ${semanticColors?.notice?.text};
       font-size: 10px;
       display: flex;
       align-items: center;
@@ -68,15 +68,15 @@ export const StyledStackedSpacingBox = styled("div")`
   ${(props: IProps) => {
     const { size } = props;
 
-    const colors = getColors(props);
+    const semanticColors = getSemanticColors(props);
     const BoxSize = 120;
 
     return `
       position: relative;
       height: ${size}px;
       width: ${BoxSize}px;
-      background-color: rgb(250, 230, 210);
-      color: ${colors?.yellow[600]};
+      background-color: ${semanticColors?.notice.surfacePrimary};
+      color: ${semanticColors?.notice?.text};
       font-size: 10px;
       display: flex;
       align-items: center;

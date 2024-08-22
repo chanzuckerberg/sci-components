@@ -5,11 +5,9 @@ import {
   focusVisibleA11yStyle,
   fontBodyXs,
   getBorders,
-  getColors,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -26,7 +24,7 @@ const toggle = (props: InputToggleExtraProps) => {
   const corners = getCorners(props);
   const shadows = getShadows(props);
   const iconSizes = getIconSizes(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     cursor: ${disabled ? "default" : "pointer"};
@@ -38,7 +36,7 @@ const toggle = (props: InputToggleExtraProps) => {
     overflow: visible;
 
     .${switchClasses.switchBase} {
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle(props)}
       outline-offset: 2px !important;
       width: 100%;
       height: 100%;
@@ -70,8 +68,9 @@ const toggle = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      background-color: ${semanticComponentColors?.base?.surfacePrimary};
-      width: unset;
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      opacity: 1;
+      border-radius: ${corners?.l}px;
     }
   `;
 };
@@ -79,16 +78,16 @@ const toggle = (props: InputToggleExtraProps) => {
 const toggleOn = (props: InputToggleExtraProps) => {
   const { disabled, value } = props;
   const borders = getBorders(props);
-  const colors = getColors(props);
   const spaces = getSpaces(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
-    outline: ${disabled ? borders?.accent?.disabled : borders?.accent?.default};
+    & {
+      outline: ${disabled ? borders?.base?.disabled : borders?.accent?.default};
+    }
 
     .${switchClasses.thumb} {
-      color: ${disabled ? semanticComponentColors?.accent?.borderDisabled : semanticComponentColors?.accent?.border};
+      color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.accent?.icon};
       margin-left: ${spaces?.m}px;
     }
 
@@ -103,9 +102,14 @@ const toggleOn = (props: InputToggleExtraProps) => {
       }
 
       &:before {
-        color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.primary};
+        color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textPrimary};
         content: "${value}";
       }
+    }
+
+    .${switchClasses.track} {
+      background-color: ${semanticColors?.base?.fillPrimary} !important;
+      opacity: 1 !important;
     }
 
     ${
@@ -114,7 +118,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
         outline: ${borders?.accent?.hover};
 
         .${switchClasses.thumb} {
-          color: ${colors?.blue[500]};
+          color: ${semanticColors?.accent?.iconHover};
         }
       }`
     }
@@ -125,8 +129,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
   const { disabled, value } = props;
   const borders = getBorders(props);
   const spaces = getSpaces(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     & {
@@ -136,8 +139,8 @@ const toggleOff = (props: InputToggleExtraProps) => {
     .${switchClasses.thumb} {
       color: ${
         disabled
-          ? semanticComponentColors?.base?.borderDisabled
-          : semanticComponentColors?.base?.border
+          ? semanticColors?.base?.iconDisabled
+          : semanticColors?.base?.iconPrimary
       };
       margin-right: ${spaces?.m}px;
     }
@@ -153,18 +156,31 @@ const toggleOff = (props: InputToggleExtraProps) => {
       }
 
       &:after {
-        color: ${disabled ? semanticTextColors?.base?.disabled : semanticTextColors?.base?.primary};
+        color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
         content: "${value}";
       }
+    }
+
+    &:hover {
+      .${switchClasses.switchBase} {
+        &:after {
+          color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textPrimary};
+        }
+      }
+    }
+
+    .${switchClasses.track} {
+      background-color: ${semanticColors?.base?.fillPrimary} !important;
+      opacity: 1 !important;
     }
 
     ${
       !disabled &&
       `&:hover {
-        outline: ${borders?.base?.black};
+        outline: ${borders?.base?.hover};
 
         .${switchClasses.thumb} {
-          color: ${semanticComponentColors?.base?.iconHover};
+          color: ${semanticColors?.base?.iconPrimaryHover};
         }
       }`
     }

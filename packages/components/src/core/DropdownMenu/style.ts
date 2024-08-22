@@ -6,7 +6,7 @@ import {
   fontHeaderXs,
   getBorders,
   getCorners,
-  getSemanticComponentColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -42,8 +42,10 @@ export const StyledHeaderTitle = styled("div", {
     const { search } = props;
 
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
+      color: ${semanticColors?.base?.textPrimary};
       padding-right: ${spaces?.m}px;
       margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;
@@ -78,10 +80,11 @@ export const StyledPopper = styled(Popper, {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticComponentColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};
@@ -98,10 +101,13 @@ export const StyledPaper = styled(Paper, {
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const shadows = getShadows(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       box-shadow: ${shadows?.none} !important;
       border: ${borders?.none};
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-image: none;
       margin: 0;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
 

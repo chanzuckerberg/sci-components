@@ -160,6 +160,8 @@ const RENDERER = [
   },
 ];
 
+const POPPER_PLACEMENT = "right-start";
+
 const ControlPanel = () => {
   const dispatch = useDispatch();
 
@@ -193,6 +195,7 @@ const ControlPanel = () => {
             value: color,
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             groupBy: (option: DropdownOption) => option.section as string,
             width: 220,
           }}
@@ -212,6 +215,7 @@ const ControlPanel = () => {
             value: `${size} x ${size}`,
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />
@@ -230,6 +234,7 @@ const ControlPanel = () => {
             value: camera ? "On" : "Off",
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />
@@ -248,6 +253,7 @@ const ControlPanel = () => {
             value: toPascalCase(renderer),
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />
@@ -266,6 +272,7 @@ const ControlPanel = () => {
             value: toPascalCase(type),
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />
@@ -284,6 +291,7 @@ const ControlPanel = () => {
             value: toPascalCase(symbol),
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />
@@ -302,6 +310,7 @@ const ControlPanel = () => {
             value: toPascalCase(emphasis),
           }}
           DropdownMenuProps={{
+            PopperPlacement: POPPER_PLACEMENT,
             width: 220,
           }}
         />

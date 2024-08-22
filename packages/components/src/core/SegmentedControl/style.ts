@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -14,29 +14,30 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 })`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
-        background-color: ${semanticComponentColors?.base?.fillOpen};
-        color: ${semanticComponentColors?.accent?.icon};
-        border-color: ${semanticComponentColors?.base?.border};
+        background-color: ${semanticColors?.base?.fillOpen};
+        color: ${semanticColors?.accent?.iconSelected};
+        border-color: ${semanticColors?.base?.border};
 
         &:hover {
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          background-color: ${semanticColors?.base?.fillHover};
         }
       }
 
       .${toggleButtonClasses.root} {
-        ${focusVisibleA11yStyle()}
-        border-color: ${semanticComponentColors?.base?.border};
+        ${focusVisibleA11yStyle(props)}
+        background-color: ${semanticColors?.base?.fillPrimary};
+        border-color: ${semanticColors?.base?.border};
         line-height: 0px;
-        color: ${semanticComponentColors?.base?.iconHover};
+        color: ${semanticColors?.base?.iconSecondary};
         padding: ${(spaces?.xs ?? 6) - 1}px ${spaces?.l}px;
 
         &:hover {
-          border-color: ${semanticComponentColors?.base?.border};
-          background-color: ${semanticComponentColors?.base?.fillHover};
+          border-color: ${semanticColors?.base?.border};
+          background-color: ${semanticColors?.base?.fillHover};
         }
       }
     `;

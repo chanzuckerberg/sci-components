@@ -5,7 +5,7 @@ exports[`<Notification /> Default story renders snapshot 1`] = `
   class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1xe61c-MuiFormControlLabel-root"
 >
   <span
-    class="MuiSwitch-root MuiSwitch-sizeMedium css-14pzrb3-MuiSwitch-root"
+    class="MuiSwitch-root MuiSwitch-sizeMedium css-ovovto-MuiSwitch-root"
   >
     <span
       class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"

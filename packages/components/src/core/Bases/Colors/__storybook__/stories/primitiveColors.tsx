@@ -7,13 +7,13 @@ export const PrimitiveColorsTemplate = () => {
   const colors = getColors({ theme });
 
   if (colors) {
-    // Prioritizing the common color to be passed as the initial color to
+    // Prioritizing the gray color to be passed as the initial color to
     // the SemanticColors component.
-    const { common, ...rest } = colors;
+    const { gray, ...rest } = colors;
 
     return (
       <Colors
-        colors={{ common, ...rest }}
+        colors={{ gray, ...rest }}
         type="primitive"
         prefix="sds-color-primitive"
       />

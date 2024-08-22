@@ -1,12 +1,10 @@
 export const INPUT_DROPDOWN_EXCLUDED_CONTROLS = [
   "fullWidth",
   "counter",
-  "details",
   "disabled",
   "intent",
   "label",
   "multiple",
-  "sdsStage",
   "sdsStyle",
   "sdsType",
   "shouldPutAColonAfterLabel",

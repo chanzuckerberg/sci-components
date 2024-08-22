@@ -5,7 +5,7 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   getIconSizes,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -16,102 +16,102 @@ export interface ButtonIconExtraProps extends CommonThemeProps {
 }
 
 const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.base?.fillDisabled};
+    color: ${semanticColors?.base?.iconDisabled};
 
     svg {
-      color: ${semanticComponentColors?.base?.fillDisabled};
+      color: ${semanticColors?.base?.iconDisabled};
     }
   `;
 };
 
 const primary = (props: ButtonIconExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.accent?.fill};
+    color: ${semanticColors?.accent?.textAction};
 
     svg {
-      color: ${semanticComponentColors?.accent?.fill};
+      color: ${semanticColors?.accent?.icon};
     }
 
     &:hover {
-      background: ${semanticComponentColors?.base?.fillHover};
-      color: ${semanticComponentColors?.accent?.fillHover};
+      background: ${semanticColors?.base?.fillHover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
 
     &:active {
-      background: ${semanticComponentColors?.base?.fillPressed};
-      color: ${semanticComponentColors?.accent?.fillPressed};
+      background: ${semanticColors?.base?.fillPressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
   `;
 };
 
 const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.base?.icon};
+    color: ${semanticColors?.base?.iconPrimary};
 
     svg {
-      color: ${semanticComponentColors?.base?.icon};
+      color: ${semanticColors?.base?.iconPrimary};
     }
 
     &:hover {
-      background: ${semanticComponentColors?.base?.fillHover};
-      color: ${semanticComponentColors?.accent?.fillHover};
+      background: ${semanticColors?.base?.fillHover};
+      color: ${semanticColors?.accent?.iconHover};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
 
     &:active {
-      background: ${semanticComponentColors?.base?.fillPressed};
-      color: ${semanticComponentColors?.accent?.fillPressed};
+      background: ${semanticColors?.base?.fillPressed};
+      color: ${semanticColors?.accent?.iconPressed};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
   `;
 };
 
 const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticComponentColors?.base?.icon};
+    color: ${semanticColors?.base?.iconPrimary};
 
     svg {
-      color: ${semanticComponentColors?.base?.icon};
+      color: ${semanticColors?.base?.iconPrimary};
     }
 
     &:hover {
       background: none;
-      color: ${semanticComponentColors?.base?.iconHover};
+      color: ${semanticColors?.base?.iconPrimaryHover};
 
       svg {
-        color: ${semanticComponentColors?.base?.iconHover};
+        color: ${semanticColors?.base?.iconPrimaryHover};
       }
     }
 
     &:active {
       background: none;
-      color: ${semanticComponentColors?.base?.iconPressed};
+      color: ${semanticColors?.base?.iconPrimaryPressed};
 
       svg {
-        color: ${semanticComponentColors?.base?.iconPressed};
+        color: ${semanticColors?.base?.iconPrimaryPressed};
       }
     }
   `;

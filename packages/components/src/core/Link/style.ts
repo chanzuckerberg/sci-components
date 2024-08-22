@@ -6,8 +6,7 @@ import {
   focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXs,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
 } from "src/core/styles";
 
 // (thuang): Support `component` prop
@@ -26,11 +25,10 @@ const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
   const { sdsSize = "s" } = props;
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticTextColors?.action?.default};
+    color: ${semanticColors?.accent?.textAction};
     position: relative;
 
     &::after {
@@ -43,26 +41,26 @@ const defaultStyle = (props: LinkProps) => {
     }
 
     &:hover {
-      color: ${semanticTextColors?.action?.hover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderHover};
+        background-color: ${semanticColors?.accent?.borderHover};
       }
     }
 
     &:focus {
-      color: ${semanticTextColors?.action?.hover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderHover};
+        background-color: ${semanticColors?.accent?.borderHover};
       }
     }
 
     &:active {
-      color: ${semanticTextColors?.action?.pressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       &::after {
-        background-color: ${semanticComponentColors?.accent?.borderPressed};
+        background-color: ${semanticColors?.accent?.borderPressed};
       }
     }
   `;
@@ -70,6 +68,7 @@ const defaultStyle = (props: LinkProps) => {
 
 const dashedStyle = (props: LinkProps) => {
   const { sdsSize = "s" } = props;
+  const semanticColors = getSemanticColors(props);
 
   return css`
     color: inherit;
@@ -81,8 +80,13 @@ const dashedStyle = (props: LinkProps) => {
       position: absolute;
       height: 1px;
       margin-top: ${sdsSize === "s" ? -4 : -3}px;
+      margin-left: 1px;
       width: 100%;
-      background-image: linear-gradient(to right, black 60%, transparent 60%);
+      background-image: linear-gradient(
+        to right,
+        ${semanticColors?.base?.borderHover} 60%,
+        transparent 60%
+      );
       background-size: 5px 100%;
     }
 
@@ -90,7 +94,11 @@ const dashedStyle = (props: LinkProps) => {
     &:focus {
       text-decoration: none;
       &::after {
-        background-image: linear-gradient(to right, black 60%, black 60%);
+        background-image: linear-gradient(
+          to right,
+          ${semanticColors?.base?.borderHover} 60%,
+          ${semanticColors?.base?.borderHover} 60%
+        );
       }
     }
   `;

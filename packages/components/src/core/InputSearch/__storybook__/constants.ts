@@ -4,6 +4,5 @@ export const INPUT_SEARCH_EXCLUDED_CONTROLS = [
   "intent",
   "label",
   "placeholder",
-  "sdsStage",
   "sdsStyle",
 ];

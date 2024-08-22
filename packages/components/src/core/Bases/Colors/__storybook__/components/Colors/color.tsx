@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import {
   StyledColorWrapper,
   StyledColorCode,
@@ -9,6 +10,7 @@ import {
   copyToClipboard,
   pickTextColorBasedOnBgColor,
 } from "src/core/Bases/utils";
+import { getMode } from "src/core/styles";
 
 interface ColorComponentProps {
   group: string;
@@ -21,9 +23,12 @@ interface ColorComponentProps {
 const Color = (props: ColorComponentProps) => {
   const { group, value, shade, prefix = "$", semanticName } = props;
 
+  const theme = useTheme();
+  const mode = getMode({ theme });
+
   const sassVariable = shade
-    ? "$" + prefix + "-" + group + "-" + convertToKebabCase(shade)
-    : "$" + prefix + "-" + group;
+    ? `$${prefix}-${group}-${convertToKebabCase(shade)}${mode === "dark" ? "-dark" : ""}`
+    : `$${prefix}-${group}${mode === "dark" ? "-dark" : ""}`;
 
   const cssVariable = shade
     ? "--" + prefix + "-" + group + "-" + convertToKebabCase(shade)

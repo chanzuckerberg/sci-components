@@ -7,8 +7,8 @@ import {
   fontBodyXxxs,
   getColors,
   getCorners,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getMode,
+  getSemanticColors,
   getShadows,
 } from "src/core/styles";
 
@@ -16,10 +16,8 @@ export interface InputSliderExtraProps extends SliderProps, CommonThemeProps {}
 
 const inputSlider = (props: InputSliderExtraProps) => {
   const corners = getCorners(props);
-  const colors = getColors(props);
   const shadows = getShadows(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     position: relative;
@@ -30,18 +28,19 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.rail} {
-      background-color: ${semanticComponentColors?.base?.surfaceTertiary};
+      background-color: ${semanticColors?.base?.divider};
+      opacity:1;
     }
     
     .${sliderClasses.track} {
-      background-color: ${semanticComponentColors?.accent?.fill};
+      background-color: ${semanticColors?.accent?.fillPrimary};
     }
 
     .${sliderClasses.thumb} {
-      ${focusVisibleA11yStyle()}
+      ${focusVisibleA11yStyle(props)}
       height: 14px;
       width: 14px;
-      background-color: ${semanticComponentColors?.accent?.fill};
+      background-color: ${semanticColors?.accent?.fillPrimary};
 
       &.${sliderClasses.focusVisible}, &:hover, &:focus, &:active {
         box-shadow: ${shadows?.none};
@@ -53,7 +52,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.thumb}::after {
-      background-color: ${semanticComponentColors?.base?.surface} !important;
+      background-color: ${semanticColors?.base?.surfacePrimary} !important;
       height: 6px !important;
       width: 6px !important;
       position: absolute;
@@ -64,8 +63,8 @@ const inputSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.valueLabel} {
       padding: 2px 4px;
-      color: black;
-      background-color: ${semanticComponentColors?.accent?.surface};
+      color: ${semanticColors?.base?.textPrimary};
+      background-color: ${semanticColors?.accent?.surfacePrimary};
       border-radius: ${corners?.m}px;
       left: unset; 
       top: -3px;
@@ -76,7 +75,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
 
       & * {
         background: transparent;
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
         transform: none;
         width: unset;
         height: unset;
@@ -84,21 +83,23 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.mark} {
-      background-color: ${colors?.gray[400]};
+      // (masoudmanson): Although the mark is not a icon, but since we don't have 
+      // a specific color for the mark, we use the iconDisabled color for it.
+      background-color: ${semanticColors?.base?.iconDisabled};
       opacity: 1;
     }
 
     .${sliderClasses.mark}.${sliderClasses.markActive} {
-      background-color: ${semanticComponentColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
     }
 
     .${sliderClasses.markLabel} {
       ${fontBodyXxxs(props)?.styles}
-      color: ${colors?.gray[500]};
+      color: ${semanticColors?.base?.textSecondary};
     }
 
     .${sliderClasses.markLabelActive} {
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
     }
   `;
 };
@@ -136,33 +137,33 @@ const horizontal = (props: InputSliderExtraProps) => {
 
 const disabledSlider = (props: InputSliderExtraProps) => {
   const colors = getColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
+  const mode = getMode(props);
 
   return `
     .${sliderClasses.track} {
-      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      background-color: ${semanticColors?.base?.fillDisabled};
     }
 
     .${sliderClasses.thumb}.${sliderClasses.disabled} {
-      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      background-color: ${semanticColors?.base?.fillDisabled};
     }
 
     .${sliderClasses.valueLabel} {
       color: ${colors?.gray[300]};
-      background-color: ${semanticComponentColors?.base?.surfaceSecondary};
+      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
       
       & * {
-        color: ${semanticTextColors?.base?.disabled};
+        color: ${semanticColors?.base?.textDisabled};
       }
     }
 
     .${sliderClasses.markLabel} {
-      color: ${semanticTextColors?.base?.disabled}
+      color: ${semanticColors?.base?.textDisabled}
     }
 
     .${sliderClasses.mark} {
-      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      background-color: ${semanticColors?.base?.fillPrimary};
     }
   `;
 };

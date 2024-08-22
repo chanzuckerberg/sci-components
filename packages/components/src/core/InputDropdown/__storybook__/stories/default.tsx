@@ -28,9 +28,9 @@ export const InputDropdown = <
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [details, setDetails] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
+  const [inputDropdownDetails, setInputDropdownDetails] = useState<string>();
   const [invalid, setInvalid] = useState(false);
   const [storybookLabel, setStorybookLabel] = useState("Label");
 
@@ -88,12 +88,11 @@ export const InputDropdown = <
 
       if (newValue && !Array.isArray(newValue)) {
         setInputDropdownValue(newValue.name);
-
-        if (newValue?.details) setDetails(newValue?.details);
-        else setDetails(undefined);
+        if (newValue?.details) setInputDropdownDetails(newValue.details);
+        else setInputDropdownDetails(undefined);
       } else {
-        setDetails(undefined);
         setInputDropdownValue(undefined);
+        setInputDropdownDetails(undefined);
       }
     } else {
       setValue(newValue);
@@ -141,11 +140,10 @@ export const InputDropdown = <
           sdsStyle={sdsStyle}
           sdsType={sdsType}
           multiple={multiple}
-          details={details}
+          details={inputDropdownDetails}
           value={inputDropdownValue}
           counter={counter}
           data-testid="InputDropdown"
-          sdsStage={open ? "userInput" : "default"}
           {...rest}
         />
       )}

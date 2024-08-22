@@ -10,10 +10,8 @@ import {
   fontBodySemiboldS,
   fontBodySemiboldXs,
   CommonThemeProps,
-  getColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
-  getSemanticComponentColors,
 } from "src/core/styles";
 import { SdsSize } from "./components/common";
 
@@ -43,15 +41,15 @@ export const StyledTabs = styled(TempTabs, {
 
   ${(props) => {
     const { underlined, sdsSize = "large" } = props;
-    const colors = getColors(props);
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     const isLarge = sdsSize === "large";
 
     return `
       margin-top: ${isLarge ? spaces?.l : spaces?.m}px;
       margin-bottom: ${isLarge ? spaces?.xl : spaces?.m}px;
-      border-bottom: ${underlined ? `2px solid ${colors?.gray[200]};` : "none"};
+      border-bottom: ${underlined ? `2px solid ${semanticColors?.base?.divider};` : "none"};
     `;
   }}
 `;
@@ -75,34 +73,33 @@ export const StyledTab = styled(RawTab, {
 
   ${(props) => {
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       margin-right: ${spaces?.xl}px;
       padding-bottom: ${spaces?.xxs}px;
 
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
 
       &:hover, :focus {
-        box-shadow: 0 2px 0 0 ${semanticComponentColors?.base?.border};
-        color: ${semanticTextColors?.base?.primary};
+        box-shadow: 0 2px 0 0 ${semanticColors?.base?.border};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &.Mui-selected {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
 
         &:hover {
-          color: ${semanticTextColors?.base?.primary};
+          color: ${semanticColors?.base?.textPrimary};
         }
       }
 
       &:active {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &:disabled {
-        color: ${semanticTextColors?.base?.disabled};
+        color: ${semanticColors?.base?.textDisabled};
       }
     `;
   }}

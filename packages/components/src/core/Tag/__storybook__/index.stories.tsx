@@ -23,7 +23,6 @@ export default {
     color: {
       control: {
         labels: [
-          "accent",
           "info",
           "positive",
           "notice",

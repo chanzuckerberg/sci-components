@@ -7,6 +7,8 @@ import {
   CommonThemeProps,
   fontBodyXs,
   getColors,
+  getMode,
+  getSemanticColors,
   getSpaces,
   getTypography,
 } from "src/core/styles";
@@ -35,13 +37,14 @@ const IconWrapper = styled("div")`
   ${(props: CommonThemeProps & SdsIconWithColor) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+    const mode = getMode(props);
 
-    const { color = "blue", shade = 400 } = props;
+    const { color = "blue", shade = 500 } = props;
 
     return `
       align-items: center;
-      border: 1px solid ${colors?.gray[200]};
-      border-radius: 2px;
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -58,12 +61,12 @@ const IconWrapper = styled("div")`
       }
 
       span {
-        color: ${colors?.gray[600]};
+        color: ${semanticColors?.base?.textPrimary};
         font-size: 11px;
       }
 
       span.size-tag {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: ${semanticColors?.base?.surfaceSecondary};
         font-size: 10px;
         padding: 0 4px;
         margin: 0 2px;
@@ -71,25 +74,25 @@ const IconWrapper = styled("div")`
       }
 
       &:hover {
-        border-radius: 2px;
+        border-radius: 4px;
         background-color: ${colors?.[color]?.[shade]};
         border-color: ${colors?.[color]?.[shade]};
-        color: white;
+        color: ${semanticColors?.base?.textPrimaryInverse};
 
         p {
-          color: white;
+          color: ${semanticColors?.base?.textPrimaryInverse};
         }
 
         span {
-          color: white;
+          color: ${semanticColors?.base?.textPrimaryInverse};
         }
 
         span.size-tag {
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: ${mode === "dark" ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.2)"};
         }
 
         svg {
-          fill: white;
+          fill: ${semanticColors?.base?.iconPrimaryInverse};
         }
 
         div.notification {

@@ -5,22 +5,22 @@ import {
   fontBodySemiboldXs,
   fontBodyXs,
   fontBodyXxs,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import { SdsSize } from "../common";
 
 export const Wrapper = styled("span")`
   ${(props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       &:active {
-        color: ${semanticTextColors?.base?.primary};
+        color: ${semanticColors?.base?.textPrimary};
       }
 
       &:disabled {
-        color: ${semanticTextColors?.base?.disabled};
+        color: ${semanticColors?.base?.textDisabled};
       }
     `;
   }}
@@ -72,11 +72,11 @@ export const Count = styled("span", {
   }}
 
   ${(props: Props) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
 
       .MuiChip-root {
         margin: 0 0 ${spaces?.xxxs}px 0;

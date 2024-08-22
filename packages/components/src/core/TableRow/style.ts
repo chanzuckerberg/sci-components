@@ -5,8 +5,8 @@ import {
   focusVisibleA11yStyle,
   fontHeaderS,
   getBorders,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getMode,
+  getSemanticColors,
 } from "src/core/styles";
 
 export interface RowExtraProps
@@ -30,42 +30,48 @@ const doNotForwardProps = [
 ];
 
 const disabledStyled = (props: RowExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
+  const mode = getMode(props);
 
   return `
-    background-color: ${semanticComponentColors?.base?.surfaceSecondary};
-    color: ${semanticTextColors?.base?.disabled};
+    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+    background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+    color: ${semanticColors?.base?.textDisabled};
     user-select: none;
 
+    &:hover {
+      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+      color: ${semanticColors?.base?.textDisabled};
+    }
+
     & span, & div {
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textDisabled};
     }
 
     .cell-component {
-      color: black;
+      color: ${semanticColors?.base?.textDisabled};
       pointer-events: none;
       user-select: none;
       & span, & div {
-        color: black;
+        color: ${semanticColors?.base?.textDisabled};
+        background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
       }
 
       svg {
-        fill: black;
+        fill: ${semanticColors?.base?.iconDisabled};
       }
 
       filter: grayscale(100%);
-      opacity: 0.2;
     }
   `;
 };
 
 const hoverStyled = (props: RowExtraProps) => {
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     &:hover {
-      background-color: ${semanticComponentColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillHover};
     }
   `;
 };
@@ -85,7 +91,7 @@ export const StyledTableRow = styled("tr", {
       hover = true,
     } = props;
 
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
     const borders = getBorders(props);
 
     return `
@@ -94,7 +100,7 @@ export const StyledTableRow = styled("tr", {
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
 
-      ${selected ? `background-color: ${semanticComponentColors?.accent?.surface};` : ""}
+      ${selected ? `background-color: ${semanticColors?.accent?.surfacePrimary};` : ""}
 
       ${hover && hoverStyled(props)};
 

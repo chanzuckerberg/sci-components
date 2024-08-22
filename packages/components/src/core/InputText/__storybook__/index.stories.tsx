@@ -18,17 +18,13 @@ export default {
     },
     intent: {
       control: { type: "radio" },
-      options: ["default", "error", "warning"],
+      options: ["default", "negative", "notice"],
     },
     label: {
       control: { type: "text" },
     },
     placeholder: {
       control: { type: "text" },
-    },
-    sdsStage: {
-      control: { type: "radio" },
-      options: ["default", "userInput"],
     },
     sdsType: {
       control: { type: "radio" },

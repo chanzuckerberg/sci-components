@@ -4,16 +4,15 @@ import CellHeader from "src/core/CellHeader";
 import Table from "src/core/Table";
 import TableHeader from "src/core/TableHeader";
 import TableRow from "src/core/TableRow";
-import { Borders, getBorders } from "src/core/styles";
+import { Borders, getBorders, getMode } from "src/core/styles";
 import { StyledBorderBox } from "../style";
 import { StyledVariable } from "src/core/Bases/style";
 import { copyToClipboard } from "src/core/Bases/utils";
-import CellBasic from "src/core/CellBasic";
-import { BORDER_USAGE } from "../constants";
 
 export const Template = () => {
   const theme = useTheme();
   const borders = getBorders({ theme });
+  const mode = getMode({ theme });
 
   const RenderTableRow = (
     border: string,
@@ -21,15 +20,15 @@ export const Template = () => {
     currentKey: string
   ) => {
     const sassVariable = parentKey
-      ? "$sds-border-" + parentKey + "-" + currentKey
-      : "$sds-border-" + currentKey;
+      ? `$sds-border-${parentKey}-${currentKey}${mode === "dark" ? "-dark" : ""}`
+      : `$sds-border-${currentKey}${mode === "dark" ? "-dark" : ""}`;
 
     const cssVariable = parentKey
       ? "--sds-border-" + parentKey + "-" + currentKey
       : "--sds-border-" + currentKey;
 
     return (
-      <TableRow key={cssVariable}>
+      <TableRow key={cssVariable} hover={false}>
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledBorderBox border={border} />
         </CellComponent>
@@ -55,12 +54,6 @@ export const Template = () => {
         >
           <StyledVariable>border: {border};</StyledVariable>
         </CellComponent>
-
-        <CellBasic
-          verticalAlign="center"
-          primaryText={BORDER_USAGE[sassVariable]}
-          shouldShowTooltipOnHover={false}
-        />
       </TableRow>
     );
   };
@@ -100,7 +93,6 @@ export const Template = () => {
           </CellHeader>
           <CellHeader hideSortIcon>Variables</CellHeader>
           <CellHeader hideSortIcon>Value</CellHeader>
-          <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>
         <tbody>{TableBodyContent}</tbody>
       </Table>
