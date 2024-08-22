@@ -25,6 +25,18 @@ export const decorators = [
 const preview = {
   globalTypes: {
     pseudo: {},
+    theme: {
+      description: "Global theme for components",
+      defaultValue: "light",
+      toolbar: {
+        title: "Theme",
+        dynamicTitle: true,
+        items: [
+          { value: "light", icon: "sun", title: "Light" },
+          { value: "dark", icon: "moon", title: "Dark" },
+        ],
+      },
+    },
   },
   parameters: {
     // Removes the change background button since it's controlled by the theme toggle
@@ -80,21 +92,6 @@ const preview = {
       storySort: {
         method: "alphabetical",
         order: ["Bases", "Components", "Data Viz", "Deprecated"],
-      },
-    },
-  },
-  globalTypes: {
-    pseudo: {},
-    theme: {
-      description: "Global theme for components",
-      defaultValue: "light",
-      toolbar: {
-        title: "Theme",
-        dynamicTitle: true,
-        items: [
-          { value: "light", icon: "sun", title: "Light" },
-          { value: "dark", icon: "moon", title: "Dark" },
-        ],
       },
     },
   },
