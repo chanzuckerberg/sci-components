@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.7.0...@czi-sds/components@20.8.0) (2024-08-22)
+
+### Bug Fixes
+
+- **complexfilter:** fixes infinite re-render issue for SSR hydration ([#828](https://github.com/chanzuckerberg/sci-components/issues/828)) ([67494ef](https://github.com/chanzuckerberg/sci-components/commit/67494ef835c1a72268d5c7535680e1c56570b199))
+- **rollup:** add "use client;" banner on top of rollup outputs to fix the sds error with nextjs ([#831](https://github.com/chanzuckerberg/sci-components/issues/831)) ([70844df](https://github.com/chanzuckerberg/sci-components/commit/70844df01919e27c8dba29a988da379ff5b9e70a))
+
+### Features
+
+- Add icons ([#830](https://github.com/chanzuckerberg/sci-components/issues/830)) ([ec6f65b](https://github.com/chanzuckerberg/sci-components/commit/ec6f65bd88a8f8734bd96eb5d26995d20b687e52))
+
 # [20.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.1.2...@czi-sds/components@20.7.0) (2024-08-08)
 
 ### Bug Fixes
