@@ -242,6 +242,12 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
+    &.MuiButton-text {
+      .styled-label {
+        color: ${semanticColors?.base?.textPrimary};
+      }
+    }
+
     ${sdsStyle === "minimal"
       ? `
         & > span, 
