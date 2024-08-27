@@ -39,7 +39,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     name: "Column Two",
     options: [
       {
-        details: "This will be worked on",
+        details: "This will be worked on!",
         name: "Type: bug",
       },
       {
