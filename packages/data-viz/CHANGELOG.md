@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.9.2...@czi-sds/data-viz@0.10.0) (2024-08-27)
+
+### Features
+
+- **dark mode:** Implementation ([#815](https://github.com/chanzuckerberg/sci-components/issues/815)) ([252c86c](https://github.com/chanzuckerberg/sci-components/commit/252c86cbffa7c38b901ac501be5ef72d9998bb45))
+
+### BREAKING CHANGES
+
+- **dark mode:** Style varibales have changed
+
+- fix(dark mode): fix component styles
+
+- refactor(dark mode): apply final changes for the dark mode colors and variable names
+
+- refactor(heatmap): fix heatmap styles in dark mode + fix storybook badges
+
+- refactor(dropdown): fix code block background color
+
+- refactor(heatmap): fix sidebar and header backgrounds
+
+- fix(dark mode): fix gray colors, accordion bg, button styles, complexfilter
+
+- refactor(darkmode): apply design review changes on dark mode implementation
+
+- fix(icons): fix new icons sizes
+
+- fix(tests): fix linter errors and build process
+
+- fix(dropdownmenu): fix a11y color contrast error
+
+- fix(inputsearch): fix focus-within border color
+
+- feat(button): add isAllCaps prop to all button variants
+
+- fix(storybook): fix preview.js file
+
+- fix(inputdropdown): fix label color on open state
+
 ## [0.9.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.8.0...@czi-sds/data-viz@0.9.2) (2024-08-08)
 
 **Note:** Version bump only for package @czi-sds/data-viz
