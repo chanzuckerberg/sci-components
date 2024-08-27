@@ -693,7 +693,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                         <div
                           class="menuItem-details css-3gjguy"
                         >
-                          This will be worked on
+                          This will be worked on!
                         </div>
                       </div>
                     </span>
