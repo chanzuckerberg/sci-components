@@ -1,3 +1,5 @@
+require("./cssFormat");
+require("./scssFormat");
 require("./tailwindFormat");
 
 module.exports = {
@@ -7,7 +9,7 @@ module.exports = {
       files: [
         {
           destination: "variables.css",
-          format: "css/variables",
+          format: "sds/css",
         },
       ],
       options: {
@@ -20,7 +22,7 @@ module.exports = {
       files: [
         {
           destination: "tailwind.json",
-          format: "tailwind",
+          format: "sds/tailwind",
           options: {
             prefix: "sds",
           },
@@ -36,7 +38,7 @@ module.exports = {
       files: [
         {
           destination: "_variables.scss",
-          format: "scss/variables",
+          format: "sds/scss",
         },
       ],
       options: {

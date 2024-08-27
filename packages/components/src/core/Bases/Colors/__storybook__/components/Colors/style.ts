@@ -101,29 +101,8 @@ export const StyledColorVariable = styled("span")`
   }}
 `;
 
-interface IStyledColorsWrapperProps extends CommonThemeProps {
-  type: "primitive" | "semantic";
-}
-
 export const StyledColorsWrapper = styled("div")`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, auto);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-
-  ${(props: IStyledColorsWrapperProps) => {
-    const { type } = props;
-
-    return `
-      ${
-        type === "primitive" &&
-        `
-          & > div:nth-of-type(1) {
-            grid-area: 1 / 1 / 2 / 3;
-          }
-        `
-      }
-    `;
-  }}
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: 30px;
 `;

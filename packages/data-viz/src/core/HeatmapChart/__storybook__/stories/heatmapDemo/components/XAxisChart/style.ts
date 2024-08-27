@@ -11,7 +11,6 @@ interface XAxisWrapperProps {
 
 export const XAxisWrapper = styled.div<XAxisWrapperProps>`
   ${xAxisWidthAndOffset}
-  background-color: white;
   height: ${(props) => props.height}px;
   position: absolute;
   overflow: hidden;
@@ -27,7 +26,6 @@ interface XAxisContainerProps {
 
 export const XAxisContainer = styled.div<XAxisContainerProps>`
   ${xAxisWidth}
-  background-color: white;
   height: ${(props) => props.height}px;
   top: 0px;
   position: absolute;
@@ -51,13 +49,13 @@ export const XAxisLabel = styled.div`
       align-items: center;
       padding-bottom: 25px;
       &::before {
-          content: "";
-          position: absolute;
-          width: 1px;
-          height: 5px;
-          background-color: #666;
-          margin-left: -25px;
-          bottom: 0;
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 5px;
+        background-color: #666;
+        margin-left: -25px;
+        bottom: 0;
       }
     `;
   }}
@@ -85,20 +83,19 @@ interface GeneButtonProps {
 export const GeneButtonStyle = styled.div<GeneButtonProps>`
   ${(props) => {
     return `
-        background-color: white;
-        border: none;
-        z-index: 2;
-        display: inline-flex;
-        justify-content: space-between;
-        white-space: nowrap;
-        flex-direction: column;
-        align-items: center;
+      border: none;
+      z-index: 2;
+      display: inline-flex;
+      justify-content: space-between;
+      white-space: nowrap;
+      flex-direction: column;
+      align-items: center;
 
-        &:hover {
-            ${activeStyle()}
-        }
+      &:hover {
+        ${activeStyle()}
+      }
 
-        ${props.active ? activeStyle() : null}
+      ${props.active ? activeStyle() : null}
     `;
   }}
 `;
@@ -127,9 +124,8 @@ function xAxisWidth({ width }: { width: number }) {
 
 function selectedStyle({ font }: { font: string }) {
   return `
-      font: ${font};
-      background-color: "white";
-    `;
+    font: ${font};
+  `;
 }
 
 function activeStyle() {
@@ -138,12 +134,15 @@ function activeStyle() {
     #gene-hover-container {
       visibility: visible;
     }
-    background-color: #f3f3f3;
+    background-color: #c3c3c340;
+    .gene-label-container {
+      color: unset;
+    }
     .gene-label-container span {
-        color: black;
-        font-weight: 600;
+      font-weight: 600;
     }
     .x-axis-hover-container {
       opacity: 1;
-    }`;
+    }
+  `;
 }

@@ -68,7 +68,7 @@ const Banner = forwardRef(function Banner(
   return (
     <StyledBanner role="banner" sdsType={sdsType} ref={ref} {...rest}>
       <Centered>
-        <IconWrapper>{iconItem()}</IconWrapper>
+        <IconWrapper bannerType={sdsType}>{iconItem()}</IconWrapper>
         {children}
       </Centered>
       {dismissible && (

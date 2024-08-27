@@ -11,26 +11,24 @@ import {
   fontBodyS,
   fontBodyXs,
   getBorders,
-  getColors,
   getCorners,
-  getSemanticComponentColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  intent?: "default" | "error" | "warning";
+  intent?: "default" | "negative" | "notice";
   sdsType?: "textField" | "textArea";
-  sdsStage?: "default" | "userInput";
   hideLabel?: boolean;
 }
 
-const sdsPropNames = ["sdsStyle", "sdsStage", "sdsType", "intent", "hideLabel"];
+const sdsPropNames = ["sdsStyle", "sdsType", "intent", "hideLabel"];
 
-const error = (props: InputTextExtraProps): SerializedStyles => {
+const negative = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -39,27 +37,27 @@ const error = (props: InputTextExtraProps): SerializedStyles => {
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.negative?.default};
+      border: ${borders?.base?.hover};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.negative?.default};
+        border: ${borders?.base?.hover};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
   `;
 };
 
-const warning = (props: InputTextExtraProps): SerializedStyles => {
+const notice = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
@@ -68,18 +66,18 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.notice?.default};
+      border: ${borders?.base?.hover};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.notice?.default};
+        border: ${borders?.base?.hover};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticComponentColors?.base?.icon};
+          color: ${semanticColors?.base?.iconPrimary};
         }
       }
     }
@@ -88,7 +86,7 @@ const warning = (props: InputTextExtraProps): SerializedStyles => {
 
 const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
   const borders = getBorders(props);
-  const colors = getColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.disabled} {
@@ -101,7 +99,7 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
       }
 
       &::placeholder {
-        color: ${colors?.gray[300]};
+        color: ${semanticColors?.base?.textDisabled};
         opacity: 1;
       }
     }
@@ -119,29 +117,6 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
         padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
-    }
-  `;
-};
-
-const userInput = (props: InputTextExtraProps): SerializedStyles => {
-  const { intent } = props;
-  const borders = getBorders(props);
-
-  const border =
-    intent === "error"
-      ? borders?.negative?.default
-      : intent === "warning"
-        ? borders?.notice?.default
-        : borders?.accent?.default;
-
-  return css`
-    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${border};
-    }
-
-    .${outlinedInputClasses.root}:hover
-      .${outlinedInputClasses.notchedOutline} {
-      border: ${border};
     }
   `;
 };
@@ -165,12 +140,12 @@ export const StyledInputBase = styled(TextField, {
   },
 })`
   ${(props: InputTextExtraProps) => {
-    const { intent, sdsType, sdsStage, disabled } = props;
+    const { intent, sdsType, disabled } = props;
 
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       margin-bottom: ${spaces?.l}px;
@@ -183,7 +158,7 @@ export const StyledInputBase = styled(TextField, {
         padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;
         box-sizing: border-box;
-        background-color: ${semanticComponentColors?.base?.surfacePrimary};
+        background-color: ${semanticColors?.base?.surfacePrimary};
       }
 
       .${outlinedInputClasses.notchedOutline} {
@@ -197,12 +172,12 @@ export const StyledInputBase = styled(TextField, {
       }
 
       &.user-is-tabbing .${outlinedInputClasses.input} {
-        ${focusVisibleA11yStyle()}
+        ${focusVisibleA11yStyle(props)}
       }
 
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
-        border-color: ${semanticComponentColors?.base?.borderHover};
+        border: ${borders?.base?.hover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}
@@ -211,10 +186,9 @@ export const StyledInputBase = styled(TextField, {
       }
 
       ${sdsType === "textArea" && textArea(props)}
-      ${intent === "error" && error(props)}
-      ${intent === "warning" && warning(props)}
+      ${intent === "negative" && negative(props)}
+      ${intent === "notice" && notice(props)}
       ${disabled && disabledStyled(props)}
-      ${sdsStage === "userInput" && userInput(props)}
     `;
   }}
 `;

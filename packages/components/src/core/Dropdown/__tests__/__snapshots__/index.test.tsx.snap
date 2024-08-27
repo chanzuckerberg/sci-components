@@ -3,7 +3,7 @@
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1emwbad-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-l94e07-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -37,7 +37,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
     </span>
   </span>
   <div
-    class="css-z8cnb2"
+    class="css-fty5ct"
   />
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -48,7 +48,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
 exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1emwbad-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-l94e07-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -82,7 +82,7 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
     </span>
   </span>
   <div
-    class="css-z8cnb2"
+    class="css-fty5ct"
   />
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"

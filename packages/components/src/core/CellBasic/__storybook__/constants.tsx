@@ -155,10 +155,3 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_LABELS = [
   "Tag Group",
   "Icon Group",
 ];
-
-export const CELL_BASIC_TEST_TABLE_CELL_STYLE = {
-  border: "dashed 1px #eee",
-  height: 70,
-  maxWidth: 250,
-  width: 250,
-};

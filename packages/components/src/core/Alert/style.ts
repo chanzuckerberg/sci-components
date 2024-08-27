@@ -1,13 +1,19 @@
 import { Alert, AlertProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Colors, getColors, getShadows, getSpaces } from "../styles";
-import { defaultTheme } from "src/core/styles/common/defaultTheme";
+import {
+  Colors,
+  getColors,
+  getSemanticColors,
+  getShadows,
+  getSpaces,
+} from "../styles";
 
 export const StyledAlert = styled(Alert)`
   ${(props) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
     const shadows = getShadows(props);
+    const semanticColors = getSemanticColors(props);
     const { severity = "success" } = props;
 
     const borderColor =
@@ -21,7 +27,7 @@ export const StyledAlert = styled(Alert)`
     return `
       background-color: ${backgroundColor};
       margin: ${spaces?.m}px 0;
-      color: ${defaultTheme.palette.text.primary};
+      color: ${semanticColors?.base?.textPrimary};
       padding: ${spaces?.l}px ${spaces?.l}px
         ${spaces?.l}px 9px;
       background-color: ${alertColor};

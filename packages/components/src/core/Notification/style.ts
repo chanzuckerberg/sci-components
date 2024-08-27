@@ -5,8 +5,7 @@ import {
   fontBody,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
   getTypography,
@@ -36,14 +35,12 @@ export const StyledNotification = styled(Alert, {
     const shadows = getShadows(props);
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
-    const semanticComponentColors = getSemanticComponentColors(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
     const typography = getTypography(props);
 
-    const borderColor = semanticComponentColors?.[intent]?.border ?? "black";
-    const iconColor = semanticComponentColors?.[intent]?.icon ?? "black";
-    const backgroundColor =
-      semanticComponentColors?.[intent]?.surface ?? "white";
+    const borderColor = semanticColors?.[intent]?.ornament ?? "black";
+    const iconColor = semanticColors?.[intent]?.ornament ?? "black";
+    const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
 
     // (masoudmanson): The Notification Icon should be vertically centered with the Notification
     // Title. The padding-top of the Notification Title is calculated based on the difference
@@ -63,7 +60,7 @@ export const StyledNotification = styled(Alert, {
       box-sizing: border-box;
       margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
-      color: ${semanticTextColors?.base?.primary};
+      color: ${semanticColors?.base?.textPrimary};
       padding: ${spaces?.l}px;
       align-items: flex-start;
       border-left: 5px solid;

@@ -4,7 +4,7 @@ import {
   focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXxs,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -148,11 +148,11 @@ export const SecondaryText = styled("span", {
     const { secondaryTextWrapLineCount = 1 } = props;
 
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       display: block;
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       padding-top: ${spaces?.xxxs}px;
 
       ${
@@ -173,11 +173,11 @@ export const TertiaryText = styled("span", {
     const { tertiaryTextWrapLineCount = 1 } = props;
 
     const spaces = getSpaces(props);
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       display: block;
-      color: ${semanticTextColors?.base?.secondary};
+      color: ${semanticColors?.base?.textSecondary};
       padding-top: ${spaces?.s}px;
 
       ${

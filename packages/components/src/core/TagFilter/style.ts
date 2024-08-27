@@ -5,6 +5,7 @@ import {
   CommonThemeProps,
   fontHeaderXs,
   getIconSizes,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 import Tag from "src/core/Tag";
@@ -19,9 +20,20 @@ export const StyledTag = styled(Tag)`
   ${(props: TagFilterExtraProps) => {
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       padding: ${spaces?.xxs}px ${spaces?.s}px;
+      background-color: ${semanticColors?.accent?.fillPrimary};
+
+      &:hover,
+      &:focus {
+        background-color: ${semanticColors?.accent?.fillHover};
+      }
+
+      &:active {
+        background-color: ${semanticColors?.accent?.fillPressed};
+      }
 
       &:after {
         display: none;

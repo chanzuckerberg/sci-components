@@ -2,12 +2,12 @@
 
 exports[`<Accordion /> Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1tts8n1-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-1b3fwwo-MuiPaper-root-MuiAccordion-root"
 >
   <div
     aria-controls="undefined-header-panel-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1qm0oyu-MuiButtonBase-root-MuiAccordionSummary-root"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-13li27m-MuiButtonBase-root-MuiAccordionSummary-root"
     id="undefined-header"
     role="button"
     tabindex="0"

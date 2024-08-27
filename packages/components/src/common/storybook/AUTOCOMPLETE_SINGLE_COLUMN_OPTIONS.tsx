@@ -39,7 +39,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: <CustomSvgIcon sx={{ color: "#767676", height: 16, width: 16 }} />,
+    icon: <CustomSvgIcon sx={{ color: "#969696", height: 16, width: 16 }} />,
     name: "Custom SVG Icon",
     section: "With Icon",
   },
@@ -115,7 +115,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
             label="feature"
             sdsStyle="rounded"
             sdsType="secondary"
-            color="notice"
+            color="positive"
             hover={false}
           />
           <Tag

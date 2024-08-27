@@ -6,7 +6,7 @@ import {
   fontBodyXs,
   fontBodyXxs,
   fontHeaderXs,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
@@ -23,11 +23,12 @@ export interface TooltipExtraProps extends CommonThemeProps {
 
 const dark = (props: TooltipExtraProps): string => {
   const spaces = getSpaces(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${fontHeaderXs(props)}
-    background-color: black;
-    color: white;
+    background-color: ${semanticColors?.base?.surfacePrimaryInverse};
+    color: ${semanticColors?.base?.textPrimaryInverse};
     text-align: center;
     max-width: 250px;
     padding: ${spaces?.s}px ${spaces?.l}px;
@@ -36,11 +37,12 @@ const dark = (props: TooltipExtraProps): string => {
 
 const light = (props: TooltipExtraProps): string => {
   const spaces = getSpaces(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${fontBodyXs(props)}
-    background-color: white;
-    color: black;
+    background-color: ${semanticColors?.base?.surfacePrimary};
+    color: ${semanticColors?.base?.textPrimary};
     text-align: left;
     max-width: 250px;
     padding: ${spaces?.s}px ${spaces?.l}px;
@@ -65,10 +67,10 @@ export const Subtitle = styled("div")`
   ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
-    const semanticTextColors = getSemanticTextColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticTextColors?.base?.disabled};
+      color: ${semanticColors?.base?.textSecondaryInverse};
     `;
   }}
 `;
@@ -93,11 +95,15 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 export const arrowCss = (props: TooltipExtraProps): string => {
   const { inverted, sdsStyle, arrowOffset } = props;
 
+  const semanticColors = getSemanticColors(props);
+
   return css`
     &.MuiTooltip-arrow {
       /* (bethbertozzi): !important is needed to fight inline style */
       left: ${arrowOffset}px !important;
-      color: ${inverted || sdsStyle === "dark" ? "black" : "white"};
+      color: ${inverted || sdsStyle === "dark"
+        ? semanticColors?.base?.surfacePrimaryInverse
+        : semanticColors?.base?.surfacePrimary};
       &:before {
         box-sizing: border-box;
         width: 12px;

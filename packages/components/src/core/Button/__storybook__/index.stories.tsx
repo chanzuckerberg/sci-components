@@ -10,6 +10,7 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
+import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -30,6 +31,9 @@ export default {
       if: { arg: "sdsStyle", eq: "icon" },
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
+    },
+    isAllCaps: {
+      control: { type: "boolean" },
     },
     onClick: { action: BUTTON_ACTIONS.onClick },
     sdsSize: {
@@ -66,6 +70,9 @@ export default {
     },
   },
   component: Button,
+  parameters: {
+    badges: [BADGE.STABLE],
+  },
   title: "Components/Button",
 } as Meta;
 

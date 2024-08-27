@@ -15,6 +15,7 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "sdsSize",
   "icon",
   "sdsIconProps",
+  "isAllCaps",
 ];
 
 export const BUTTON_SDS_STYLES = ["rounded", "square", "minimal", "icon"];

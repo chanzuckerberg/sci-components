@@ -117,7 +117,7 @@
     "storybook": "^7.6.17",
     "storybook-addon-emotion-theme": "^2.1.1",
     "storybook-addon-pseudo-states": "^2.1.2",
-    "style-dictionary": "^3.9.2",
+    "style-dictionary": "^4.0.1",
     "style-loader": "^3.3.4",
     "stylelint": "13.11.0",
     "stylelint-config-recommended": "3.0.0",

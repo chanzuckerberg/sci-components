@@ -136,7 +136,6 @@ const Dropdown = <
         disabled={disabled}
         label={label}
         onClick={handleClick}
-        sdsStage={open ? "userInput" : "default"}
         {...InputDropdownProps}
         {...rest}
       />

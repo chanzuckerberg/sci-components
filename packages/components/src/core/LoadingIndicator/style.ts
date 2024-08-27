@@ -6,8 +6,7 @@ import {
   fontCapsXxxxs,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -27,20 +26,19 @@ export const StyledText = styled("span")`
 
 const minimal = (props: CommonThemeProps): SerializedStyles => {
   const iconSizes = getIconSizes(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${fontBodyS(props)}
 
-    color: ${semanticTextColors?.base?.secondary};
+    color: ${semanticColors?.base?.textSecondary};
 
     svg {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
 
       path {
-        fill: ${semanticComponentColors?.base?.icon};
+        fill: ${semanticColors?.base?.iconPrimary};
       }
     }
   `;
@@ -48,19 +46,18 @@ const minimal = (props: CommonThemeProps): SerializedStyles => {
 
 const tag = (props: CommonThemeProps): SerializedStyles => {
   const corners = getCorners(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${fontCapsXxxxs(props)}
 
-    background-color: ${semanticComponentColors?.accent?.surface};
+    background-color: ${semanticColors?.info?.surfacePrimary};
     border-radius: ${corners?.l}px;
-    color: ${semanticTextColors?.base?.accent};
+    color: ${semanticColors?.info?.text};
 
     svg {
       path {
-        fill: ${semanticComponentColors?.accent?.icon};
+        fill: ${semanticColors?.info?.ornament};
       }
     }
   `;

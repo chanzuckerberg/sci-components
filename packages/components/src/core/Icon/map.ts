@@ -218,7 +218,7 @@ export interface IconNameToSizes {
   Save: "l" | "xl";
   Search: "xs" | "s" | "l" | "xl";
   SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
-  Send: "l";
+  Send: "l" | "xl";
   Share: "l" | "xl";
   SlidersHorizontal: "l" | "xl";
   SpeechBubbles: "l" | "xl";
@@ -226,8 +226,8 @@ export interface IconNameToSizes {
   Starburst: "xs" | "s";
   Star: "l" | "xl";
   Table: "xs" | "s";
-  ThumbsDown: "s";
-  ThumbsUp: "s";
+  ThumbsDown: "xs" | "s";
+  ThumbsUp: "xs" | "s";
   TrashCan: "xs" | "s" | "l" | "xl";
   TreeDendogram: "l" | "xl";
   TreeHorizontal: "xs" | "s" | "l" | "xl";

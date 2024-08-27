@@ -7,13 +7,12 @@ const InputDropdownNameSpaceTest = (props: InputDropdownProps) => {
       disabled={false}
       label="Label"
       onClick={noop}
-      sdsStage="userInput"
       sdsStyle="minimal"
       multiple={false}
       sdsType="label"
       counter="2"
       details="Details"
-      intent="warning"
+      intent="notice"
       shouldPutAColonAfterLabel
     />
   );

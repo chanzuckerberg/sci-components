@@ -9,14 +9,12 @@ import {
   fontHeaderXs,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getSpaces,
-  SemanticComponentColors,
+  SDSPalette,
 } from "src/core/styles";
 
 export type SdsTagColorType =
-  | "accent"
   | "info"
   | "positive"
   | "notice"
@@ -47,6 +45,7 @@ export type ExtraTagProps = ExtraSmallTagProps | ExtraLargeTagProps;
 const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     height: unset;
@@ -65,7 +64,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: white;
+      color: ${semanticColors?.base?.iconPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -76,6 +75,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     height: unset;
@@ -94,7 +94,7 @@ const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: white;
+      color: ${semanticColors?.base?.iconPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -141,7 +141,7 @@ const square = (props: ExtraTagProps): SerializedStyles => {
 };
 
 const withHover = (props: ExtraTagProps): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     &:hover {
@@ -150,7 +150,7 @@ const withHover = (props: ExtraTagProps): SerializedStyles => {
 
     &:hover,
     &:focus-visible {
-      color: ${semanticTextColors?.base?.onFill};
+      color: ${semanticColors?.base?.textPrimaryInverse};
     }
   `;
 };
@@ -166,12 +166,12 @@ const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
 function generatePrimaryTagColors(
   intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
-  semanticColors: SemanticComponentColors | null
+  semanticColors: SDSPalette | null
 ) {
   if (intent) {
     return {
       background:
-        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fill,
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillPrimary,
       backgroundClicked:
         colors.length >= 2
           ? darken(colors[1], 0.3)
@@ -180,16 +180,21 @@ function generatePrimaryTagColors(
         colors.length >= 2
           ? darken(colors[1], 0.15)
           : semanticColors?.[intent].fillHover,
-      iconColor: colors.length > 2 ? colors[2] : "white",
-      label: colors.length ? colors[0] : "white",
+      iconColor:
+        colors.length > 2
+          ? colors[2]
+          : semanticColors?.base?.iconPrimaryInverse,
+      label: colors.length
+        ? colors[0]
+        : semanticColors?.base?.textPrimaryInverse,
     };
   } else {
     return {
-      background: semanticColors?.neutral.fill,
+      background: semanticColors?.neutral.fillPrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
-      iconColor: "white",
-      label: "white",
+      iconColor: semanticColors?.base?.iconPrimaryInverse,
+      label: semanticColors?.base?.textPrimaryInverse,
     };
   }
 }
@@ -197,12 +202,12 @@ function generatePrimaryTagColors(
 function generateSecondaryTagColors(
   intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
-  semanticColors: SemanticComponentColors | null
+  semanticColors: SDSPalette | null
 ) {
   if (intent) {
     return {
       background:
-        colors.length >= 2 ? colors[1] : semanticColors?.[intent].surface,
+        colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillSecondary,
       backgroundClicked:
         colors.length >= 2
           ? darken(colors[1], 0.3)
@@ -211,15 +216,16 @@ function generateSecondaryTagColors(
         colors.length >= 2
           ? darken(colors[1], 0.15)
           : semanticColors?.[intent].fillHover,
-      iconColor: colors.length > 2 ? colors[2] : semanticColors?.[intent].icon,
-      label: colors.length ? colors[0] : semanticColors?.[intent].fillPressed,
+      iconColor:
+        colors.length > 2 ? colors[2] : semanticColors?.[intent].ornament,
+      label: colors.length ? colors[0] : semanticColors?.[intent].text,
     };
   } else {
     return {
-      background: semanticColors?.neutral.surface,
+      background: semanticColors?.neutral.surfacePrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
-      iconColor: semanticColors?.neutral.icon,
+      iconColor: semanticColors?.neutral.ornament,
       label: semanticColors?.neutral.fillPressed,
     };
   }
@@ -229,8 +235,7 @@ function createTypeCss(
   props: ExtraTagProps,
   type: NonNullable<ExtraTagProps["sdsType"]>
 ): SerializedStyles | undefined {
-  const semanticColors = getSemanticComponentColors(props);
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const intent = typeof props.tagColor === "string" ? props.tagColor : null;
   const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
@@ -243,7 +248,7 @@ function createTypeCss(
   const typeColors = typeToColors[type];
 
   return css`
-    ${focusVisibleA11yStyle()}
+    ${focusVisibleA11yStyle(props)}
 
     background-color: ${typeColors.background};
     position: relative;
@@ -259,11 +264,11 @@ function createTypeCss(
     &:hover,
     &:active {
       .MuiChip-label {
-        color: ${semanticTextColors?.base?.onFill};
+        color: ${semanticColors?.base?.textPrimaryInverse};
       }
 
       svg {
-        fill: ${semanticTextColors?.base?.onFill};
+        fill: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 

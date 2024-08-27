@@ -7,6 +7,7 @@ import {
   fontHeaderXs,
   getColors,
   getCorners,
+  getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
@@ -114,33 +115,34 @@ function createStatusCss(
   status: NonNullable<ChipExtraProps["status"]>
 ): SerializedStyles | undefined {
   const colors = getColors(props);
+  const semanticColors = getSemanticColors(props);
 
   if (!colors) return;
 
   const statusToColors = {
     beta: {
-      dark: colors.purple[600],
-      light: colors.purple[200],
+      dark: semanticColors?.beta?.text,
+      light: semanticColors?.beta?.surfacePrimary,
     },
     error: {
-      dark: colors.red[600],
-      light: colors.red[200],
+      dark: semanticColors?.negative?.text,
+      light: semanticColors?.negative?.surfacePrimary,
     },
     info: {
-      dark: colors.blue[600],
-      light: colors.blue[200],
+      dark: semanticColors?.info?.text,
+      light: semanticColors?.info?.surfacePrimary,
     },
     pending: {
-      dark: colors.gray[600],
-      light: colors.gray[200],
+      dark: semanticColors?.neutral?.text,
+      light: semanticColors?.neutral?.surfacePrimary,
     },
     success: {
-      dark: colors.green[600],
-      light: colors.green[200],
+      dark: semanticColors?.positive?.text,
+      light: semanticColors?.positive?.surfacePrimary,
     },
     warning: {
-      dark: colors.yellow[600],
-      light: colors.yellow[200],
+      dark: colors?.yellow[700],
+      light: semanticColors?.notice?.surfacePrimary,
     },
   };
 

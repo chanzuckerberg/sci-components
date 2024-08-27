@@ -74,7 +74,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
       },
       {
         icon: (
-          <CustomSvgIcon sx={{ color: "#767676", height: 16, width: 16 }} />
+          <CustomSvgIcon sx={{ color: "#969696", height: 16, width: 16 }} />
         ),
         name: "Custom SVG Icon",
         section: "With Icon",

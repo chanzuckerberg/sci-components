@@ -6,7 +6,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-16bbilo-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1getf6h-MuiButtonBase-root-MuiButton-root"
       disabled=""
       tabindex="-1"
       type="button"
@@ -16,7 +16,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-1ber1wc-MuiButtonBase-root-MuiChip-root"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary css-18jn3px-MuiButtonBase-root-MuiChip-root"
       role="none presentation"
       tabindex="0"
     >
@@ -27,7 +27,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-1712r78-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary css-1b01nn3-MuiButtonBase-root-MuiIconButton-root"
         icon="XMark"
         tabindex="0"
         type="button"

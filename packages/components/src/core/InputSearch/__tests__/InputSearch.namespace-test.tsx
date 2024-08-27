@@ -10,7 +10,6 @@ const InputSearchNameSpaceTest = (props: InputSearchProps) => {
       label="Search Label"
       disabled={false}
       sdsStyle="rounded"
-      sdsStage="default"
       intent="default"
       handleSubmit={noop}
       name="input-search-name"

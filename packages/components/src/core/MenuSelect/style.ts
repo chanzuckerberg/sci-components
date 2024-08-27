@@ -19,7 +19,7 @@ const doNotForwardProps = ["search", "InputBaseProps", "keepSearchOnSelect"];
 export const StyledAutocomplete = styled(Autocomplete, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${({ search }: StyleProps) => !search && "height: 0;"}
+  ${({ search }: StyleProps) => !search && "height: 0; margin: 0 !important;"}
   width: 100%;
 ` as typeof Autocomplete;
 

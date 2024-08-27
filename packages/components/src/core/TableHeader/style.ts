@@ -1,12 +1,12 @@
 import { styled } from "@mui/material/styles";
-import { getColors } from "src/core/styles";
+import { getSemanticColors } from "src/core/styles";
 
 export const StyledTableHeader = styled("thead")`
   ${(props) => {
-    const colors = getColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      border-bottom: solid 2px ${colors?.gray[300]};
+      border-bottom: solid 2px ${semanticColors?.base?.borderTable};
     `;
   }}
 `;

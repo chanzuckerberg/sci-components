@@ -5,12 +5,13 @@ import {
   CommonThemeProps,
   fontBodySemiboldXs,
   fontCapsXxxs,
+  fontCapsXxs,
   getCorners,
   getIconSizes,
-  getSemanticComponentColors,
-  getSemanticTextColors,
+  getSemanticColors,
   getShadows,
   getSpaces,
+  fontBodySemiboldXxs,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonProps } from ".";
@@ -28,12 +29,10 @@ type ButtonExtraProps = ButtonProps & CommonThemeProps;
 // Rounded + Square Button Styles
 
 const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
-  const { variant, startIcon, endIcon } = props;
+  const { variant, startIcon, endIcon, isAllCaps } = props;
   const spaces = getSpaces(props);
-  const shadows = getShadows(props);
   const iconSizes = getIconSizes(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const hasIcon = !!startIcon || !!endIcon;
 
@@ -46,51 +45,69 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const contentColor =
     variant === "outlined"
-      ? semanticTextColors?.action?.default
-      : semanticTextColors?.base?.onFill;
+      ? semanticColors?.accent?.textAction
+      : semanticColors?.base?.textPrimaryInverse;
+
+  const ornamentColor =
+    variant === "outlined"
+      ? semanticColors?.accent?.icon
+      : semanticColors?.base?.iconPrimaryInverse;
+
+  const backgroundColor =
+    variant === "outlined"
+      ? "transparent"
+      : semanticColors?.accent?.fillPrimary;
+
+  const disabledBackgroundColor =
+    variant === "outlined" ? "transparent" : semanticColors?.base?.fillDisabled;
+
+  const disabledBorder =
+    variant === "outlined"
+      ? `inset 0 0 0 1px ${semanticColors?.base?.borderDisabled}`
+      : "none";
 
   return css`
+    background-color: ${backgroundColor};
     border: none;
-    box-shadow: inset 0 0 0 1px ${semanticComponentColors?.accent?.border};
+    box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.border};
     padding: ${padding};
     color: ${contentColor};
+    line-height: ${isAllCaps ? "20px" : "unset"};
 
     svg {
-      color: ${contentColor};
+      color: ${ornamentColor};
     }
 
     &:hover {
-      color: ${semanticTextColors?.base?.onFill};
-      background-color: ${semanticComponentColors?.accent?.fillHover};
+      color: ${semanticColors?.base?.textPrimaryInverse};
+      background-color: ${semanticColors?.accent?.fillHover};
       border: none;
-      box-shadow: inset 0 0 0 1px
-        ${semanticComponentColors?.accent?.borderHover};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.borderHover};
 
       svg {
-        color: ${semanticComponentColors?.base?.fill};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
     &:active {
-      color: ${semanticTextColors?.base?.onFill};
-      background-color: ${semanticComponentColors?.accent?.fillPressed};
+      color: ${semanticColors?.base?.textPrimaryInverse};
+      background-color: ${semanticColors?.accent?.fillPressed};
       border: none;
-      box-shadow: inset 0 0 0 1px
-        ${semanticComponentColors?.accent?.fillPressed};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillPressed};
 
       svg {
-        color: ${semanticComponentColors?.base?.fill};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
     &:disabled {
-      color: ${semanticTextColors?.base?.onFillDisabled};
-      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      color: ${semanticColors?.base?.textDisabled};
+      background-color: ${disabledBackgroundColor};
+      box-shadow: ${disabledBorder};
       border: none;
-      box-shadow: ${shadows?.none};
 
       svg {
-        color: ${semanticComponentColors?.base?.onFillDisabled};
+        color: ${semanticColors?.base?.iconDisabled};
       }
     }
 
@@ -129,61 +146,63 @@ const Rounded = (props: ButtonExtraProps): SerializedStyles => {
 const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
   const { variant } = props;
   const shadows = getShadows(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const contentColor =
     variant === "outlined"
-      ? semanticComponentColors?.negative?.icon
-      : semanticTextColors?.base?.onFill;
+      ? semanticColors?.negative?.text
+      : semanticColors?.base?.textPrimaryInverse;
+
+  const ornamentColor =
+    variant === "outlined"
+      ? semanticColors?.negative?.ornament
+      : semanticColors?.base?.iconPrimaryInverse;
 
   const backgroundColor =
     variant === "outlined"
       ? "transparent"
-      : semanticComponentColors?.negative?.fill;
+      : semanticColors?.negative?.fillPrimary;
 
   return css`
     border: none;
-    box-shadow: inset 0 0 0 1px ${semanticComponentColors?.negative?.border};
+    box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.border};
     color: ${contentColor};
     background-color: ${backgroundColor};
 
     svg {
-      color: ${contentColor};
+      color: ${ornamentColor};
     }
 
     &:hover {
-      color: ${semanticTextColors?.base?.onFill};
-      background-color: ${semanticComponentColors?.negative?.fillHover};
+      color: ${semanticColors?.base?.textPrimaryInverse};
+      background-color: ${semanticColors?.negative?.fillHover};
       border: none;
-      box-shadow: inset 0 0 0 1px
-        ${semanticComponentColors?.negative?.fillHover};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillHover};
 
       svg {
-        color: ${semanticComponentColors?.base?.fill};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
     &:active {
-      color: ${semanticTextColors?.base?.onFill};
-      background-color: ${semanticComponentColors?.negative?.fillPressed};
+      color: ${semanticColors?.base?.textPrimaryInverse};
+      background-color: ${semanticColors?.negative?.fillPressed};
       border: none;
-      box-shadow: inset 0 0 0 1px
-        ${semanticComponentColors?.negative?.fillPressed};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.negative?.fillPressed};
 
       svg {
-        color: ${semanticComponentColors?.base?.fill};
+        color: ${semanticColors?.base?.iconPrimaryInverse};
       }
     }
 
     &:disabled {
-      color: ${semanticTextColors?.base?.onFillDisabled};
-      background-color: ${semanticComponentColors?.base?.fillDisabled};
+      color: ${semanticColors?.base?.textDisabled};
+      background-color: ${semanticColors?.base?.fillDisabled};
       border: none;
       box-shadow: ${shadows?.none};
 
       svg {
-        color: ${semanticComponentColors?.base?.onFillDisabled};
+        color: ${semanticColors?.base?.iconDisabled};
       }
     }
   `;
@@ -192,13 +211,14 @@ const DestructiveButton = (props: ButtonExtraProps): SerializedStyles => {
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontBodySemiboldXs}
   ${focusVisibleA11yStyle}
 
   ${(props: ButtonExtraProps) => {
-    const { sdsStyle, sdsType } = props;
+    const { sdsStyle, sdsType, isAllCaps } = props;
 
     return css`
+      ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
+
       ${ButtonStyles(props)}
       ${sdsStyle === "rounded" && Rounded(props)}
       ${sdsType === "destructive" && DestructiveButton(props)}
@@ -208,40 +228,45 @@ export const StyledButton = styled(Button, {
 
 // Minimal Button Styles
 
-const Minimal = (props: CommonThemeProps): SerializedStyles => {
+const Minimal = (props: ButtonExtraProps): SerializedStyles => {
+  const { isAllCaps } = props;
+
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
-  const semanticTextColors = getSemanticTextColors(props);
-  const semanticComponentColors = getSemanticComponentColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    ${focusVisibleA11yStyle()}
-    ${fontCapsXxxs(props)}
+    ${focusVisibleA11yStyle(props)}
+    ${isAllCaps ? fontCapsXxxs(props) : fontBodySemiboldXxs(props)}
 
     min-width: unset;
-    padding: ${spaces?.xxs}px 0;
+    padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
 
     &:hover,
     &:focus-visible {
-      background-color: transparent;
-      color: ${semanticComponentColors?.accent?.fillHover};
+      color: ${semanticColors?.accent?.textActionHover};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillHover};
+        color: ${semanticColors?.accent?.iconHover};
       }
     }
+
+    &:hover {
+      background-color: ${semanticColors?.base?.fillHover};
+    }
+
     &:active {
-      color: ${semanticComponentColors?.accent?.fillPressed};
+      color: ${semanticColors?.accent?.textActionPressed};
 
       svg {
-        color: ${semanticComponentColors?.accent?.fillPressed};
+        color: ${semanticColors?.accent?.iconPressed};
       }
     }
     &:disabled {
-      color: ${semanticTextColors?.base?.onFillDisabled};
+      color: ${semanticColors?.base?.textDisabled};
 
       svg {
-        color: ${semanticTextColors?.base?.onFillDisabled};
+        color: ${semanticColors?.base?.iconDisabled};
       }
     }
 
@@ -270,20 +295,20 @@ const Minimal = (props: CommonThemeProps): SerializedStyles => {
 };
 
 const PrimaryMinimalButton = (props: ButtonExtraProps): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${Minimal(props)}
-    color: ${semanticTextColors?.action?.default};
+    color: ${semanticColors?.accent?.textAction};
   `;
 };
 
 const SecondaryMinimalButton = (props: ButtonExtraProps): SerializedStyles => {
-  const semanticTextColors = getSemanticTextColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     ${Minimal(props)}
-    color: ${semanticTextColors?.base?.primary};
+    color: ${semanticColors?.base?.textPrimary};
   `;
 };
 

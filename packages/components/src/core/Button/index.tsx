@@ -65,11 +65,15 @@ const Button = React.forwardRef(
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMinimalIsAllCaps);
     }
 
-    // isAllCaps is only used for the Minimal Button.  It defaults to true.
+    // isAllCaps is only used for the Minimal Button.
+    // It defaults to true for the Minimal Button.
+    // It defaults to false for all other buttons.
     const isAllCaps =
-      typeof props?.isAllCaps === "boolean" ? props?.isAllCaps : true;
+      typeof props?.isAllCaps === "boolean"
+        ? props?.isAllCaps
+        : sdsStyle === "minimal";
 
-    type PropsWithDefaultsType = ButtonProps & { isAllCaps: boolean };
+    type PropsWithDefaultsType = ButtonProps & { isAllCaps?: boolean };
     const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
