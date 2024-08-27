@@ -13,37 +13,43 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **dark mode:** Implementation ([#815](https://github.com/chanzuckerberg/sci-components/issues/815)) ([252c86c](https://github.com/chanzuckerberg/sci-components/commit/252c86cbffa7c38b901ac501be5ef72d9998bb45))
 
-### BREAKING CHANGES
+### CHANGES
 
-- **dark mode:** Style varibales have changed
+- **Added support for Dark Mode!**
 
-- fix(dark mode): fix component styles
+  - Implemented dark mode support across all components and styles.
+  - Updated design tokens to include dual Light and Dark Mode values, ensuring seamless theme transitions.
+    - Full list of CSS variables can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/css/variables.css).
+    - Full list of SCSS variables is available [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/scss/_variables.scss)
+    - Full list of Tailwind variables can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/json/tailwind.json)
+  - Integrated a theme switcher to toggle between Light and Dark Mode in the storybook.
 
-- refactor(dark mode): apply final changes for the dark mode colors and variable names
+- **Updated Button component:**
 
-- refactor(heatmap): fix heatmap styles in dark mode + fix storybook badges
+  - Introduced isAllCaps prop for toggling All Caps in Button labels.
+  - Refined hover and pressed states for the minimal variant to align with Dark Mode standards.
 
-- refactor(dropdown): fix code block background color
+- **Updated CellHeader component:**
 
-- refactor(heatmap): fix sidebar and header backgrounds
+  - When active is set to true, the sortIcon will always be displayed and cannot be hidden with the hideSortIcon prop.
 
-- fix(dark mode): fix gray colors, accordion bg, button styles, complexfilter
+- **Updated InputDropdown component:**
 
-- refactor(darkmode): apply design review changes on dark mode implementation
+  - Removed sdsStage prop.
+  - userInput stage is now automatically set if the InputDropdown has a value.
 
-- fix(icons): fix new icons sizes
+- **Updated Intent Prop on Input Components (InputCheckbox, InputRadio, InputText, InputSearch)**
 
-- fix(tests): fix linter errors and build process
+  - Changed intent prop values from "error" and "warning" to "negative" and "notice".
 
-- fix(dropdownmenu): fix a11y color contrast error
+- **Updated InputSearch component:**
 
-- fix(inputsearch): fix focus-within border color
+  - Removed sdsStage prop.
+  - userInput stage is now automatically set if the InputSearch has a value.
 
-- feat(button): add isAllCaps prop to all button variants
-
-- fix(storybook): fix preview.js file
-
-- fix(inputdropdown): fix label color on open state
+- **Updated NavigationJumpTo component:**
+  - Removed IndicatorColor prop.
+  - The indicator color is now hardcoded to accent?.borderSelected.
 
 # [20.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.7.0...@czi-sds/components@20.8.0) (2024-08-22)
 
