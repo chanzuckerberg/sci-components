@@ -13,8 +13,16 @@ export type AccordionProps = RawAccordionProps & AccordionExtraProps;
  */
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
-    const { children, useDivider, togglePosition = "right", id } = props;
-    const [expanded, setExpanded] = React.useState<string | false>(false);
+    const {
+      children,
+      useDivider,
+      togglePosition = "right",
+      id,
+      defaultExpanded = false,
+    } = props;
+    const [expanded, setExpanded] = React.useState<string | false>(
+      defaultExpanded ? id : false
+    );
 
     const handleChange =
       (panel: string) =>
