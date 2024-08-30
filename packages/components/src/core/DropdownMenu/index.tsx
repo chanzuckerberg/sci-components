@@ -44,6 +44,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   title?: string;
+  titleElement?: JSX.Element;
   label?: string;
   anchorEl: HTMLElement | null;
   PopperComponent?: React.JSXElementConstructor<PopperProps>;
@@ -113,6 +114,7 @@ const DropdownMenu = <
     PopperBaseProps = {},
     search = false,
     title,
+    titleElement,
     label = "Search",
     children,
     options,
@@ -171,9 +173,10 @@ const DropdownMenu = <
           {...ClickAwayListenerProps}
         >
           <StyledDropdownMenuAutocompleteWrapper>
-            {title && (
+            {title && !titleElement && (
               <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
             )}
+            {titleElement ?? null}
 
             {anchorEl && (
               <Autocomplete
