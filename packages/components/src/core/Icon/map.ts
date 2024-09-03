@@ -23,6 +23,7 @@ import { ReactComponent as IconChevronUp2Small } from "../../common/svgs/IconChe
 import { ReactComponent as IconCirclesOverlap2Large } from "../../common/svgs/IconCirclesOverlap2Large.svg";
 import { ReactComponent as IconCirclesOverlap2Small } from "../../common/svgs/IconCirclesOverlap2Small.svg";
 import { ReactComponent as IconCodeLarge } from "../../common/svgs/IconCodeLarge.svg";
+import { ReactComponent as IconCodeSmall } from "../../common/svgs/IconCodeSmall.svg";
 import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
 import { ReactComponent as IconCopyLarge } from "../../common/svgs/IconCopyLarge.svg";
 import { ReactComponent as IconCopySmall } from "../../common/svgs/IconCopySmall.svg";
@@ -76,6 +77,7 @@ import { ReactComponent as IconLockLarge } from "../../common/svgs/IconLockLarge
 import { ReactComponent as IconLockSmall } from "../../common/svgs/IconLockSmall.svg";
 import { ReactComponent as IconMinusSmall } from "../../common/svgs/IconMinusSmall.svg";
 import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall.svg";
+import { ReactComponent as IconPauseLarge } from "../../common/svgs/IconPauseLarge.svg";
 import { ReactComponent as IconPeopleLarge } from "../../common/svgs/IconPeopleLarge.svg";
 import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleSmall.svg";
 import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
@@ -99,6 +101,7 @@ import { ReactComponent as IconRocketLarge } from "../../common/svgs/IconRocketL
 import { ReactComponent as IconRotateLeftSmall } from "../../common/svgs/IconRotateLeftSmall.svg";
 import { ReactComponent as IconRotateRightSmall } from "../../common/svgs/IconRotateRightSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
+import { ReactComponent as IconScaleSmall } from "../../common/svgs/IconScaleSmall.svg";
 import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Large } from "../../common/svgs/IconSearchLinesHorizontal3Large.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Small } from "../../common/svgs/IconSearchLinesHorizontal3Small.svg";
@@ -153,7 +156,7 @@ export interface IconNameToSizes {
   ChevronUp: "xs" | "s" | "l" | "xl";
   ChevronUp2: "xs" | "s";
   CirclesOverlap2: "xs" | "s" | "l" | "xl";
-  Code: "l" | "xl";
+  Code: "xs" | "s" | "l" | "xl";
   Compass: "l" | "xl";
   Copy: "xs" | "s" | "l" | "xl";
   Cube: "xs" | "s" | "l" | "xl";
@@ -196,6 +199,7 @@ export interface IconNameToSizes {
   LockCircle: "xs" | "s";
   Minus: "xs" | "s";
   Open: "xs" | "s";
+  Pause: "l" | "xl";
   People: "xs" | "s" | "l" | "xl";
   Percentage: "xs" | "s";
   Person: "xs" | "s" | "l" | "xl";
@@ -216,6 +220,7 @@ export interface IconNameToSizes {
   RotateLeft: "xs" | "s";
   RotateRight: "xs" | "s";
   Save: "l" | "xl";
+  Scale: "xs" | "s";
   Search: "xs" | "s" | "l" | "xl";
   SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
   Send: "l" | "xl";
@@ -323,7 +328,7 @@ export const iconMap: Props = {
   },
   Code: {
     largeIcon: IconCodeLarge,
-    smallIcon: null,
+    smallIcon: IconCodeSmall,
   },
   Compass: {
     largeIcon: IconCompassLarge,
@@ -493,6 +498,10 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconOpenSmall,
   },
+  Pause: {
+    largeIcon: IconPauseLarge,
+    smallIcon: null,
+  },
   People: {
     largeIcon: IconPeopleLarge,
     smallIcon: IconPeopleSmall,
@@ -572,6 +581,10 @@ export const iconMap: Props = {
   Save: {
     largeIcon: IconSaveLarge,
     smallIcon: null,
+  },
+  Scale: {
+    largeIcon: null,
+    smallIcon: IconScaleSmall,
   },
   Search: {
     largeIcon: IconSearchLarge,
