@@ -1,5 +1,6 @@
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
+  CommonThemeProps,
   CommonThemeProps as StyleProps,
   fontBodySemiboldS,
   fontBodySemiboldXs,
@@ -11,7 +12,7 @@ import {
 import { SdsSize } from "../common";
 
 export const Wrapper = styled("span")`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
 
     return `

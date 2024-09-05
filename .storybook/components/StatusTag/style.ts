@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { StatusType } from "../SidebarItem/SidebarItem";
 
 interface StyledLabelProps {

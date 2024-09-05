@@ -1,6 +1,6 @@
 import { Check, Remove } from "@mui/icons-material";
-import { MenuItem, menuItemClasses } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { MenuItem, menuItemClasses, MenuItemProps } from "@mui/material";
+import styled from "@emotion/styled";
 import { fontBodyXs } from "src/core/styles/common/mixins/fonts";
 import {
   CommonThemeProps,
@@ -10,8 +10,10 @@ import {
   getSpaces,
 } from "src/core/styles";
 
+export interface MenuItemExtraProps extends CommonThemeProps, MenuItemProps {}
+
 export const StyledMenuItem = styled(MenuItem)`
-  ${(props) => {
+  ${(props: MenuItemExtraProps) => {
     const { selected } = props;
     const fontWeights = getFontWeights(props);
     const spaces = getSpaces(props);
@@ -124,15 +126,15 @@ const disabledStyles = (props: DisabledType) => {
   `;
 };
 
-interface TextWrapperProps {
+interface TextWrapperProps extends CommonThemeProps {
   disabled?: boolean;
   selected: boolean;
 }
 
-export const TextWrapper = styled("span")<TextWrapperProps>`
+export const TextWrapper = styled("span")`
   ${fontBodyXs}
 
-  ${(props) => {
+  ${(props: TextWrapperProps) => {
     const semanticColors = getSemanticColors(props);
 
     return `
@@ -168,14 +170,14 @@ export const StyledMenuItemIcon = styled("span")`
   }}
 `;
 
-interface ColumnWrapperProps {
+interface ColumnWrapperProps extends CommonThemeProps {
   disabled?: boolean;
 }
 
-export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
+export const ColumnWrapper = styled("span")`
   ${fontBodyXs}
 
-  ${(props) => {
+  ${(props: ColumnWrapperProps) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
@@ -189,13 +191,13 @@ export const ColumnWrapper = styled("span")<ColumnWrapperProps>`
   ${disabledStyles}
 `;
 
-interface StyledIconType {
+interface StyledIconType extends CommonThemeProps {
   selected?: boolean;
   disabled?: boolean;
 }
 
 export const StyledIconWrapper = styled("span")`
-  ${(props) => {
+  ${(props: StyledIconType) => {
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
 

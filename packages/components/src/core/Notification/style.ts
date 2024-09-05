@@ -1,5 +1,5 @@
 import { Alert } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontBody,

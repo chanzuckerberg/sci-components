@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Link, LinkProps as RawLinkProps } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   CommonThemeProps as StyleProps,
   focusVisibleA11yStyle,

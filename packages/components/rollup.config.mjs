@@ -19,7 +19,6 @@ const config = [
        * BAD: import Autocomplete from "@mui/material/Autocomplete";
        * GOOD: import { Autocomplete } from "@mui/material";
        */
-      "@mui/material/styles",
       // (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
       "react/jsx-runtime",
     ],

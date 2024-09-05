@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -190,7 +190,7 @@ export const TertiaryText = styled("span", {
 `;
 
 export const PrimaryTextComponentSlotBottomWrapper = styled("div")`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `
@@ -200,7 +200,7 @@ export const PrimaryTextComponentSlotBottomWrapper = styled("div")`
 `;
 
 export const PrimaryTextComponentSlotRightWrapper = styled("div")`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `

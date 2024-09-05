@@ -93,7 +93,7 @@ export const Title - styled(Typography)`
 
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { getColors, getCorners } from "@czi-sds/components";
 
 export const Tag = styled("div")`
