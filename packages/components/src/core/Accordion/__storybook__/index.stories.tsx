@@ -5,6 +5,9 @@ import { ACCORDION_EXCLUDED_CONTROLS } from "./constants";
 
 export default {
   argTypes: {
+    defaultExpanded: {
+      control: { type: "boolean" },
+    },
     id: {
       control: { type: "text" },
       required: true,
