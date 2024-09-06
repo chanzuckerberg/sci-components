@@ -1,3 +1,5 @@
+const { plugins } = require("axe-core");
+
 module.exports = {
   stories: [
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
@@ -31,6 +33,19 @@ module.exports = {
 
   swc: () => ({
     jsc: {
+      /**
+       * (masoudmanson): This is needed to enable emotion plugin for swc
+       * for use cases like component selectors in styled components
+       *
+       * for example:
+       *
+       * const StyledChild = styled.div` color: red; `;
+       *
+       * const StyledParent = styled.div` ${StyledChild} { color: green; } `;
+       */
+      experimental: {
+        plugins: [["@swc/plugin-emotion", {}]],
+      },
       transform: {
         react: {
           runtime: "automatic",

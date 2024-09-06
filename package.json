@@ -38,6 +38,7 @@
     "@storybook/theming": "^8.2.9",
     "@svgr/rollup": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
+    "@swc/plugin-emotion": "^4.0.1",
     "@testing-library/dom": "^9.3.3",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
