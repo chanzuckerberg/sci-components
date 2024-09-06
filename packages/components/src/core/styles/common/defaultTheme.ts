@@ -1,7 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, PaletteMode } from "@mui/material";
 import { SDSChooseTheme } from "./SDSAppTheme";
 import { makeThemeOptions } from "./makeThemeOptions";
-import { PaletteMode } from "@mui/material";
 
 /**
  * Theme adaptor with light/dark mode support.

@@ -1,12 +1,69 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable import/no-extraneous-dependencies */
+// eslint-disable-next-line import/no-unresolved
+import StyleDictionary from "style-dictionary";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import cssFont from "css-font";
 
-const StyleDictionary = require("style-dictionary");
-const cssFont = require("css-font");
+const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
+// REGISTER THE CUSTOM FORMATTERS
+
+/**
+ * (masoudmanson): This is a custom format for generating CSS variables for light and dark modes.
+ * The CSS variables are generated based on the value and darkValue attributes of each token.
+ */
 StyleDictionary.registerFormat({
-  formatter({ dictionary, options }) {
+  format: ({ dictionary }) => {
+    const lightMode = dictionary.allTokens
+      .map((token) => `    --${token.name}: ${token.value};`)
+      .join("\n");
+
+    const darkMode = dictionary.allTokens
+      .map((token) => {
+        return ["color", "border"].includes(token.attributes.type)
+          ? `    --${token.name}: ${token.darkValue};`
+          : `    --${token.name}: ${token.value};`;
+      })
+      .join("\n");
+
+    return `@media (prefers-color-scheme: light) {
+  :root {
+${lightMode}
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+${darkMode}
+  }
+}`;
+  },
+  name: "sds/css",
+});
+
+/**
+ * (masoudmanson): This is a custom format for generating SCSS variables for light and dark modes.
+ */
+StyleDictionary.registerFormat({
+  format: ({ dictionary }) => {
+    return dictionary.allTokens
+      .map((token) => {
+        if (token.darkValue) {
+          return `$${token.name}: ${token.value};\n$${token.name}-dark: ${token.darkValue};`;
+        } else {
+          return `$${token.name}: ${token.value};\n$${token.name}-dark: ${token.value};`;
+        }
+      })
+      .join("\n");
+  },
+  name: "sds/scss",
+});
+
+/**
+ * (masoudmanson): This is a custom format for generating Tailwind variables for light and dark modes.
+ */
+StyleDictionary.registerFormat({
+  format: ({ dictionary, options }) => {
     function getName(name) {
       const joinedName = typeof name === "string" ? name : name.join("-");
       const mappedName = options.remapNames?.[joinedName] ?? joinedName;
@@ -129,3 +186,11 @@ StyleDictionary.registerFormat({
   },
   name: "sds/tailwind",
 });
+
+// APPLY THE CONFIGURATION
+// IMPORTANT: the registration of custom formatters
+// needs to be done _before_ applying the configuration
+const sd = new StyleDictionary(DIRNAME + "/config.mjs");
+
+// FINALLY, BUILD ALL THE PLATFORMS
+await sd.buildAllPlatforms();

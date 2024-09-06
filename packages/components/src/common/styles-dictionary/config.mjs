@@ -1,13 +1,11 @@
-require("./tailwindFormat");
-
-module.exports = {
+const config = {
   platforms: {
     css: {
       buildPath: "src/common/styles-dictionary/css/",
       files: [
         {
           destination: "variables.css",
-          format: "css/variables",
+          format: "sds/css",
         },
       ],
       options: {
@@ -20,18 +18,9 @@ module.exports = {
       files: [
         {
           destination: "tailwind.json",
-          format: "tailwind",
+          format: "sds/tailwind",
           options: {
             prefix: "sds",
-            remapNames: {
-              cornerL: "L",
-              cornerM: "M",
-              cornerNone: "none",
-              cornerS: "S",
-              shadowL: "L",
-              shadowM: "M",
-              shadowS: "S",
-            },
           },
         },
       ],
@@ -45,7 +34,7 @@ module.exports = {
       files: [
         {
           destination: "_variables.scss",
-          format: "scss/variables",
+          format: "sds/scss",
         },
       ],
       options: {
@@ -54,5 +43,7 @@ module.exports = {
       transformGroup: "scss",
     },
   },
-  source: ["src/common/styles-dictionary/*.json"],
+  source: ["src/common/styles-dictionary/design-tokens/*.json"],
 };
+
+export default config;
