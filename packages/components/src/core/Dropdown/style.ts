@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import Button from "src/core/Button";
 import { CommonThemeProps, getSpaces } from "src/core/styles";
 
@@ -24,7 +24,7 @@ export const StyledButtonsWrapper = styled("div", {
 export const StyledButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `

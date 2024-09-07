@@ -1,8 +1,8 @@
-import { styled } from "@mui/material/styles";
-import { getSemanticColors } from "src/core/styles";
+import styled from "@emotion/styled";
+import { CommonThemeProps, getSemanticColors } from "src/core/styles";
 
 export const StyledTableHeader = styled("thead")`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
 
     return `

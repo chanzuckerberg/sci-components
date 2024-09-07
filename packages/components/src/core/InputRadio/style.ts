@@ -3,7 +3,7 @@ import {
   Radio as RawRadio,
   radioClasses,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
@@ -77,7 +77,7 @@ export const StyledRadioButton = styled(RawRadio)`
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `

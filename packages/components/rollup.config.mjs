@@ -5,55 +5,61 @@ import copy from "rollup-plugin-copy";
 import css from "rollup-plugin-css-only";
 import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 import pkg from "./package.json" assert { type: "json" };
 
 const config = [
   {
-    // (masoudmanson): External packages that should not be bundled into SDS library.
+    // External dependencies that should not be bundled into the output to reduce bundle size.
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
-      /**
-       * (thuang): Do NOT import MUI components from their component directory directly, since
-       * it breaks the ts to js transpilation. Instead, import from "@mui/material"
-       * For example:
-       * BAD: import Autocomplete from "@mui/material/Autocomplete";
-       * GOOD: import { Autocomplete } from "@mui/material";
-       */
-      "@mui/material/styles",
-      // (masoudmanson): Fixes the (!) Unresolved dependencies warning on build process
-      "react/jsx-runtime",
+      "react/jsx-runtime"
     ],
+
+    // Entry point for the library
     input: "src/index.ts",
+
+    // Output configuration for the CommonJS (CJS) and ESModule (ESM) formats.
     output: [
       {
-        banner: "'use client';",
+        // Ensures "use client" is added at the top of each output file.
+        banner: "\"use client\";",
         file: pkg.main,
         format: "cjs",
       },
       {
-        banner: "'use client';",
+        // Ensures "use client" is added at the top of each output file.
+        banner: "\"use client\";",
         file: pkg.module,
         format: "esm",
       },
     ],
     plugins: [
+      // Handles resolving external dependencies from `node_modules`.
+      resolve(),
+
+      // Convert CommonJS modules (especially from `node_modules`) to ES6.
+      commonjs(),
+
+      // Clean up the `dist` folder and any other specified paths before building.
       del({
         targets: ["dist/*", "playground/src/components"],
       }),
+
+      // Allow imports for assets like images, fonts, etc., and handle them properly.
       url(),
+
+      // Transform imported SVGs into React components.
       svgr(),
-      /**
-       * (thuang): https://github.com/wessberg/rollup-plugin-ts/issues/186
-       * Please make sure complied d.ts file has default generic type as we have in the
-       * source code.
-       * e.g., the "button" should be in type ButtonProps<C extends React.ElementType = "button"> =
-       * RawButtonProps<C, {component?: C;}> & SdsProps;
-       * NOTE: `rollup-plugin-ts` + Typescript@4.7.x will drop default generic
-       * type in the d.ts file, so let's use typescript@4.6 until the issue above is resolved
-       */
-      ts(),
+
+      // Extract CSS into a single file (variables.css).
       css({ output: "variables.css" }),
+
+      // Bundle SCSS into a single output file (variables.scss).
       bundleScss({ output: "variables.scss" }),
+
+      // Copy tailwind variables into the `dist` folder.
       copy({
         targets: [
           {
@@ -61,6 +67,15 @@ const config = [
             src: "./src/common/styles-dictionary/json/tailwind.json",
           },
         ],
+      }),
+
+      // Handle TypeScript compilation with custom configurations.
+      ts({
+        tsconfig: (resolvedConfig) => ({
+          ...resolvedConfig,
+          // Exclude SCSS and CSS files from TypeScript's scope.
+          exclude: ["**/*.scss", "**/*.css"]
+        })
       }),
     ],
   },

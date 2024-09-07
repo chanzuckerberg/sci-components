@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import InputDropdown from "src/core/InputDropdown";
 
 export const StyledInputDropdownLive1 = styled(InputDropdown)`

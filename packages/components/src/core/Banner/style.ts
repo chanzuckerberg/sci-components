@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import Button, { ButtonProps } from "src/core/Button";
 import {
   CommonThemeProps,

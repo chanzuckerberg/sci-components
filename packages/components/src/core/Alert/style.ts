@@ -1,15 +1,18 @@
 import { Alert, AlertProps } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   Colors,
+  CommonThemeProps,
   getColors,
   getSemanticColors,
   getShadows,
   getSpaces,
 } from "../styles";
 
+export interface AlertExtraProps extends CommonThemeProps, AlertProps {}
+
 export const StyledAlert = styled(Alert)`
-  ${(props) => {
+  ${(props: AlertExtraProps) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
     const shadows = getShadows(props);

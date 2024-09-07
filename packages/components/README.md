@@ -74,7 +74,7 @@ import { Button } from "@czi-sds/components";
 2. Mixins - Grouped styles defined by the design system
 
 ```javascript
-import { styled } from '@mui/material/styles';
+import { styled } from '@emotion/styled';
 import { Typography } from "@mui/material";
 import { fontHeaderXL } from "@czi-sds/components";
 
@@ -93,7 +93,7 @@ export const Title - styled(Typography)`
 
 ```ts
 import { css, SerializedStyles } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { getColors, getCorners } from "@czi-sds/components";
 
 export const Tag = styled("div")`

@@ -5,8 +5,8 @@ import {
   ClickAwayListenerProps as MUIClickAwayListenerProps,
   PaperProps,
   PopperProps,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import React, { SyntheticEvent, useMemo } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Autocomplete, { AutocompleteProps } from "src/core/Autocomplete";

@@ -1,5 +1,5 @@
 import { Autocomplete, inputBaseClasses } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import InputSearch from "src/core/InputSearch";
 import MenuItem from "src/core/MenuItem";
 import { CommonThemeProps, getSpaces } from "src/core/styles";

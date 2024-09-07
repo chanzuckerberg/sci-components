@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { CommonThemeProps, getCorners } from "src/core/styles";
 
 const BORDER_BOX_BORDER_WIDTH_PX = 1,
