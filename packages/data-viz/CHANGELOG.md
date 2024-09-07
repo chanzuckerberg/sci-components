@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.10.0...@czi-sds/data-viz@0.10.1) (2024-09-07)
+
+### Bug Fixes
+
+- **swc:** upgrade storybook to v8 and migrate to SWC from babel ([#841](https://github.com/chanzuckerberg/sci-components/issues/841)) ([bcab32f](https://github.com/chanzuckerberg/sci-components/commit/bcab32f178dfbbf1660fddb42fa546abc75bab12))
+
 # [0.10.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.9.2...@czi-sds/data-viz@0.10.0) (2024-08-27)
 
 ### Features

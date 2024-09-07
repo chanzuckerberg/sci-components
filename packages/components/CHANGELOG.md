@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.0.0...@czi-sds/components@21.1.0) (2024-09-07)
+
+### Bug Fixes
+
+- **accordion:** defaultExpanded now works as expected ([#838](https://github.com/chanzuckerberg/sci-components/issues/838)) ([73a7837](https://github.com/chanzuckerberg/sci-components/commit/73a7837ce9066ce3ac50899c5fde6fbc176e6f96))
+- **swc:** upgrade storybook to v8 and migrate to SWC from babel ([#841](https://github.com/chanzuckerberg/sci-components/issues/841)) ([bcab32f](https://github.com/chanzuckerberg/sci-components/commit/bcab32f178dfbbf1660fddb42fa546abc75bab12))
+
+### Features
+
+- **icons:** added new icons (Pause, Scale, Code) ([#837](https://github.com/chanzuckerberg/sci-components/issues/837)) ([488b50d](https://github.com/chanzuckerberg/sci-components/commit/488b50dd796525611781b99ae95e2d1277c61043))
+
 # [21.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.8.0...@czi-sds/components@21.0.0) (2024-08-27)
 
 ### Bug Fixes
