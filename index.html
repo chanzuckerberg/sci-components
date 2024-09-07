@@ -3,56 +3,78 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>@storybook/cli - Storybook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>storybook - Storybook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     
-    <link
-      rel="prefetch"
-      href="./sb-common-assets/nunito-sans-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="prefetch"
-      href="./sb-common-assets/nunito-sans-bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="stylesheet" href="./sb-common-assets/fonts.css" />
+    <style>
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-regular.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-italic.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold-italic.woff2') format('woff2');
+      }
+    </style>
 
     <link href="./sb-manager/runtime.js" rel="modulepreload" />
 
     
-    <link href="./sb-addons/links-0/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-controls-1/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/links-1/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-actions-2/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-controls-2/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-backgrounds-3/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-actions-3/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-viewport-4/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-backgrounds-4/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-toolbars-5/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-viewport-5/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-measure-6/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-toolbars-6/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-outline-7/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-measure-7/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/interactions-8/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/essentials-outline-8/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/a11y-9/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/interactions-9/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/pseudo-states-10/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/a11y-10/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/geometricpanda-badges-11/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/pseudo-states-11/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storybook-12/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/geometricpanda-badges-12/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/chromatic-com-storybook-13/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-14/manager-bundle.js" rel="modulepreload" />
       <meta property="og:description" content="Science Design System by CZI" />
 <meta property="og:title" content="Science Design System" />
 <link
@@ -170,42 +192,25 @@
   #list-item-dark svg path {
     fill: black !important;
   }
-</style>
-<script>
-  //workaround to increase the left panel width just enough to show even the longer story names
-  //based on https://github.com/storybookjs/storybook/issues/9682#issuecomment-983356523
-  const DEFAULT_MINIMUM_LEFT_PANEL_WIDTH = 280; // original default is 230
-  let storybookConfig = JSON.parse(localStorage.getItem("storybook-layout"));
 
-  // we only resize the left panel if it is set to a value lower than DEFAULT_MINIMUM_LEFT_PANEL_WIDTH
-  if (
-    typeof storybookConfig === "object" &&
-    storybookConfig !== null &&
-    storybookConfig.resizerNav.x < DEFAULT_MINIMUM_LEFT_PANEL_WIDTH
-  ) {
-    storybookConfig.resizerNav.x = DEFAULT_MINIMUM_LEFT_PANEL_WIDTH;
-    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
-    document.location.reload();
-  } else if (storybookConfig === null) {
-    storybookConfig = {
-      resizerNav: { x: DEFAULT_MINIMUM_LEFT_PANEL_WIDTH, y: 0 },
-    };
-    localStorage.setItem("storybook-layout", JSON.stringify(storybookConfig));
-    document.location.reload();
+  /* 
+   * (masoudmanson): The below styles are to hide the default bookmark icon and
+   * replace it with SDS flag outline icon.
+   */
+  div[data-nodetype="story"] svg,
+  [data-nodetype="story"] a svg {
+    display: none !important;
   }
 
-  // Change bookmark icon to SDS designed icon
-  document.addEventListener("DOMContentLoaded", function () {
-    let bookmarkHollowIcon = document.getElementById(
-      "icon--bookmarkhollow"
-    ).firstChild;
-    bookmarkHollowIcon.setAttribute(
-      "d",
-      "M 13.762 6.202 C 13.87 6.452 13.927 6.724 13.927 7.001 C 13.927 7.275 13.87 7.548 13.762 7.799 C 13.656 8.049 13.498 8.272 13.303 8.451 L 8.873 12.502 C 8.711 12.65 8.504 12.731 8.29 12.731 L 0.968 12.731 C 0.731 12.731 0.503 12.631 0.336 12.452 C 0.168 12.273 0.073 12.03 0.073 11.775 L 0.073 2.224 C 0.073 1.971 0.168 1.727 0.336 1.548 C 0.503 1.369 0.731 1.269 0.968 1.269 L 8.29 1.269 C 8.504 1.269 8.711 1.35 8.873 1.499 L 13.303 5.55 C 13.498 5.729 13.656 5.952 13.762 6.202 Z M 12.508 7.538 C 12.575 7.477 12.634 7.397 12.675 7.3 C 12.717 7.204 12.739 7.095 12.739 6.986 C 12.739 6.874 12.717 6.767 12.675 6.669 C 12.634 6.574 12.575 6.493 12.508 6.432 L 8.161 2.346 L 1.085 2.34 L 1.106 11.659 L 8.28 11.628 L 12.508 7.538 Z"
-    );
-    bookmarkHollowIcon.setAttribute("fill-rule", "evenodd");
-  });
-</script>
+  div[data-nodetype="story"] a::before {
+    content: "";
+    width: 15px;
+    aspect-ratio: 1 / 1;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz48L2RlZnM+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNIDE1LjM3NiA2LjU1NCBMIDEwLjk1OSAyLjUxNSBDIDEwLjgwMSAyLjM2OCAxMC41OTQgMi4yODYgMTAuMzc5IDIuMjg1IEwgMC44OTEgMi4yODUgQyAwLjY1MSAyLjI4NyAwLjQyMiAyLjM4OCAwLjI1OSAyLjU2NSBDIDAuMDkgMi43NDggLTAuMDAyIDIuOTg5IC0wLjAwMSAzLjIzOCBMIC0wLjAwMSAxMi43NjIgQyAtMC4wMDEgMTMuMDE0IDAuMDkzIDEzLjI1NyAwLjI2IDEzLjQzNSBDIDAuNDIzIDEzLjYxMiAwLjY1MiAxMy43MTQgMC44OTIgMTMuNzE1IEwgMTAuMzc5IDEzLjcxNSBDIDEwLjU5NCAxMy43MTQgMTAuODAxIDEzLjYzMiAxMC45NTkgMTMuNDg1IEwgMTUuMzc2IDkuNDQ2IEMgMTUuNTcxIDkuMjY3IDE1LjcyOCA5LjA0NiAxNS44MzYgOC43OTYgQyAxNi4wNTUgOC4yODggMTYuMDU1IDcuNzEyIDE1LjgzNiA3LjIwNCBDIDE1LjczIDYuOTU3IDE1LjU3NCA2LjczNiAxNS4zNzYgNi41NTQgWiBNIDE0Ljg4NiA4LjU5MiBDIDE0Ljk2NCA4LjUxOSAxNS4wMjYgOC40MzEgMTUuMDY4IDguMzMyIEMgMTUuMTYyIDguMTEzIDE1LjE2MiA3Ljg2NCAxNS4wNjggNy42NDUgQyAxNS4wMjYgNy41NDcgMTQuOTY0IDcuNDU5IDE0Ljg4NiA3LjM4NiBMIDEwLjM1IDMuMTU2IEwgMC45MTIgMy4xNjMgTCAwLjg4NyAxMi43NiBMIDEwLjM2IDEyLjgxNiBMIDE0Ljg4NyA4LjU5MyBMIDE0Ljg4NiA4LjU5MiBaIj48L3BhdGg+Cjwvc3ZnPg==");
+    background-size: cover;
+    margin-top: 1px;
+  }
+</style>
  
 
     <style>
@@ -224,13 +229,9 @@
       
         
           window['FEATURES'] = {
-  "warnOnLegacyHierarchySeparator": true,
-  "buildStoriesJson": true,
-  "storyStoreV7": true,
   "argTypeTargetsV7": true,
   "legacyDecoratorFileOrder": false,
-  "disallowImplicitActionsInRenderV8": false,
-  "emotionAlias": false
+  "disallowImplicitActionsInRenderV8": true
 };
         
       
@@ -245,7 +246,7 @@
         
           window['DOCS_OPTIONS'] = {
   "defaultName": "Docs",
-  "autodocs": false
+  "autodocs": "tag"
 };
         
       
@@ -257,41 +258,76 @@
       
         
       
+        
+          window['TAGS_OPTIONS'] = {
+  "dev-only": {
+    "excludeFromDocsStories": true
+  },
+  "docs-only": {
+    "excludeFromSidebar": true
+  },
+  "test-only": {
+    "excludeFromSidebar": true,
+    "excludeFromDocsStories": true
+  }
+};
+        
+      
+        
+          window['STORYBOOK_RENDERER'] = "react";
+        
+      
+        
+          window['STORYBOOK_BUILDER'] = "@storybook/builder-webpack5";
+        
+      
+        
+          window['STORYBOOK_FRAMEWORK'] = "@storybook/react-webpack5";
+        
+      
     </script>
     
 
     <script type="module">
+      import './sb-manager/globals-runtime.js';
+      
+      
+        import './sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js';
+      
+        import './sb-addons/links-1/manager-bundle.js';
+      
+        import './sb-addons/essentials-controls-2/manager-bundle.js';
+      
+        import './sb-addons/essentials-actions-3/manager-bundle.js';
+      
+        import './sb-addons/essentials-backgrounds-4/manager-bundle.js';
+      
+        import './sb-addons/essentials-viewport-5/manager-bundle.js';
+      
+        import './sb-addons/essentials-toolbars-6/manager-bundle.js';
+      
+        import './sb-addons/essentials-measure-7/manager-bundle.js';
+      
+        import './sb-addons/essentials-outline-8/manager-bundle.js';
+      
+        import './sb-addons/interactions-9/manager-bundle.js';
+      
+        import './sb-addons/a11y-10/manager-bundle.js';
+      
+        import './sb-addons/pseudo-states-11/manager-bundle.js';
+      
+        import './sb-addons/geometricpanda-badges-12/manager-bundle.js';
+      
+        import './sb-addons/chromatic-com-storybook-13/manager-bundle.js';
+      
+        import './sb-addons/storybook-14/manager-bundle.js';
+      
+      
       import './sb-manager/runtime.js';
-
-      
-      import './sb-addons/links-0/manager-bundle.js';
-      
-      import './sb-addons/essentials-controls-1/manager-bundle.js';
-      
-      import './sb-addons/essentials-actions-2/manager-bundle.js';
-      
-      import './sb-addons/essentials-backgrounds-3/manager-bundle.js';
-      
-      import './sb-addons/essentials-viewport-4/manager-bundle.js';
-      
-      import './sb-addons/essentials-toolbars-5/manager-bundle.js';
-      
-      import './sb-addons/essentials-measure-6/manager-bundle.js';
-      
-      import './sb-addons/essentials-outline-7/manager-bundle.js';
-      
-      import './sb-addons/interactions-8/manager-bundle.js';
-      
-      import './sb-addons/a11y-9/manager-bundle.js';
-      
-      import './sb-addons/pseudo-states-10/manager-bundle.js';
-      
-      import './sb-addons/geometricpanda-badges-11/manager-bundle.js';
-      
-      import './sb-addons/storybook-12/manager-bundle.js';
-      
     </script>
 
+    
     <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
+    
   </body>
 </html>
