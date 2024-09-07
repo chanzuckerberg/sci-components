@@ -40,7 +40,7 @@
       "@czi-sds/components": ["./packages/components/src/*"],
       "@czi-sds/data-viz": ["./packages/data-viz/src/*"],
       "src/*": ["./src/*"],
-      "react": [ "./node_modules/@types/react" ],
+      "react": ["./node_modules/@types/react"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
@@ -58,9 +58,11 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     "skipLibCheck": true
   },
-  "include": [
-    "./packages/**/src/**/*",
-    ".eslintrc.js"
-  ],
-  "exclude": ["node_modules", "./packages/*/node_modules"],
+  "include": ["./packages/**/src/**/*", ".eslintrc.js"],
+  "exclude": [
+    "node_modules",
+    "./packages/*/node_modules",
+    "**/*.scss",
+    "**/*.css"
+  ]
 }

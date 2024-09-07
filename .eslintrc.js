@@ -6,6 +6,8 @@ module.exports = {
     jest: true,
     node: true,
   },
+  // Excludes config files from linting
+  ignorePatterns: ["rollup.config.mjs"],
   // Specifies the ESLint parser
   extends: [
     "plugin:import/recommended",
