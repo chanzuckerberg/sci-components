@@ -1,11 +1,15 @@
 import { Menu, menuClasses } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { getSemanticColors, getSpaces } from "src/core/styles";
+import styled from "@emotion/styled";
+import {
+  CommonThemeProps,
+  getSemanticColors,
+  getSpaces,
+} from "src/core/styles";
 
 export const StyledMenu = styled(Menu)`
   & {
     .${menuClasses.paper} {
-      ${(props) => {
+      ${(props: CommonThemeProps) => {
         const spaces = getSpaces(props);
         const semanticColors = getSemanticColors(props);
 

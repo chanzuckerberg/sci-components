@@ -1,6 +1,6 @@
 // .storybook/manager.js
 import React from "react";
-import { addons } from "@storybook/addons";
+import { addons } from "@storybook/manager-api";
 import sdsTheme from "./sds-theme";
 import SidebarItem from "./components/SidebarItem/SidebarItem";
 

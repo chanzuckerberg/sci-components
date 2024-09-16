@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import React from "react";
 import {
   CommonThemeProps,

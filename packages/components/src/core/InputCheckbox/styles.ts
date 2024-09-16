@@ -3,7 +3,7 @@ import {
   Checkbox as RawCheckbox,
   checkboxClasses,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
@@ -75,7 +75,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `

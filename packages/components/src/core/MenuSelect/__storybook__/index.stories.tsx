@@ -1,6 +1,6 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { ButtonBase, Popper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   AutocompleteCloseReason,
   AutocompleteInputChangeReason,
@@ -9,12 +9,17 @@ import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../../common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import TagFilter from "../../TagFilter";
-import { getColors, getCorners, getShadows } from "../../styles";
+import {
+  CommonThemeProps,
+  getColors,
+  getCorners,
+  getShadows,
+} from "../../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
 import { BADGE } from "../../../common/storybook/storybookBadges";
 
 const StyledPopper = styled(Popper)`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const colors = getColors(props);
     const shadows = getShadows(props);
     const corners = getCorners(props);

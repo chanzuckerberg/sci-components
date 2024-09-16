@@ -1,6 +1,6 @@
 import { Button, SDSTheme } from "@czi-sds/components";
 import { ThemeContext } from "@emotion/react";
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { useContext } from "react";
 
 export const StyledHeader = styled("div")`

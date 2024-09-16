@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { Args } from "@storybook/react";
 import RawInputDropdown from "src/core/InputDropdown";
 

@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import Menu from "src/core/Menu";
 
 export const StyledPaginationDropdownMenu = styled(Menu)`

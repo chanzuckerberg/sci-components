@@ -4,7 +4,7 @@ import {
   Tabs as RawTabs,
   TabsProps as RawTabsProps,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   focusVisibleA11yStyle,
   fontBodySemiboldS,
@@ -18,7 +18,7 @@ import { SdsSize } from "./components/common";
 export type TabsProps = RawTabsProps & {
   underlined?: boolean;
   sdsSize?: "small" | "large";
-};
+} & CommonThemeProps;
 
 const TempTabs = (props: RawTabsProps) => <RawTabs {...props} />;
 
@@ -27,7 +27,7 @@ const TABS_DO_NOT_FORWARD_PROPS = ["underlined", "sdsSize"];
 export const StyledTabs = styled(TempTabs, {
   shouldForwardProp: (prop) =>
     !TABS_DO_NOT_FORWARD_PROPS.includes(String(prop)),
-})<TabsProps>`
+})`
   box-sizing: border-box;
   padding-bottom: 0px;
   min-height: unset;
@@ -39,7 +39,7 @@ export const StyledTabs = styled(TempTabs, {
     overflow: inherit !important;
   }
 
-  ${(props) => {
+  ${(props: TabsProps) => {
     const { underlined, sdsSize = "large" } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);

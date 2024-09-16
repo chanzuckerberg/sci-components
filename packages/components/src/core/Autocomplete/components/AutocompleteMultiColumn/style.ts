@@ -1,5 +1,5 @@
 import { autocompleteClasses, Paper, Popper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import InputSearch from "src/core/InputSearch";
 import {

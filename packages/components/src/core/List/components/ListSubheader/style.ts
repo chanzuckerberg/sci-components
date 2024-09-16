@@ -1,5 +1,5 @@
 import { ListSubheader } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { fontHeader, getSpaces } from "src/core/styles";
 
 const fontHeaderM = fontHeader("m");

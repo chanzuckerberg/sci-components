@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { X_AXIS_WIDTH, Y_AXIS_WIDTH } from "../utils";
 
 const doNotForwardProps = ["camera"];

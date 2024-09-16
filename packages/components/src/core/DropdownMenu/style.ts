@@ -1,5 +1,5 @@
 import { autocompleteClasses, Paper, Popper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import {
   CommonThemeProps,
@@ -33,12 +33,16 @@ const doNotForwardProps = [
   "isMultiColumn",
 ];
 
+interface StyledHeaderTitleProps extends CommonThemeProps {
+  search: boolean;
+}
+
 export const StyledHeaderTitle = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<{ search: boolean }>`
+})`
   ${fontHeaderXs}
 
-  ${(props) => {
+  ${(props: StyledHeaderTitleProps) => {
     const { search } = props;
 
     const spaces = getSpaces(props);
@@ -76,7 +80,7 @@ export const StyledPopper = styled(Popper, {
   shouldForwardProp: (prop: string) =>
     !doNotForwardProps.includes(prop) || prop === "anchorEl",
 })`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const borders = getBorders(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);

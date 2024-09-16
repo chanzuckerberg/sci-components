@@ -10,8 +10,8 @@ import {
   AutocompleteProps as MuiAutocompleteProps,
   Popper,
   PopperProps,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import React, {
   ReactNode,
   SyntheticEvent,

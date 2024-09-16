@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "21.0.0",
+  "version": "21.1.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.cjs.d.ts",
@@ -21,7 +21,7 @@
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "test": "jest",
-    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
+    "sd-build": "node ./src/common/styles-dictionary/build.mjs",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
@@ -54,7 +54,6 @@
     }
   },
   "peerDependencies": {
-    "@emotion/core": "^11.0.0",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -68,6 +67,6 @@
   "devDependencies": {
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
-    "style-dictionary": "^3.9.2"
+    "style-dictionary": "^4.1.0"
   }
 }

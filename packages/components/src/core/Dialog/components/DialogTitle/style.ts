@@ -1,5 +1,5 @@
 import { DialogTitle, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   CommonThemeProps as DialogTitleExtraProps,
   fontBodyS,
@@ -13,7 +13,7 @@ export type { DialogTitleExtraProps };
 
 export const StyledDialogTitle = styled(DialogTitle)`
   padding: 0;
-  ${(props) => {
+  ${(props: DialogTitleExtraProps) => {
     const spaces = getSpaces(props);
 
     return `

@@ -1,5 +1,5 @@
 import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import InputSearch from "src/core/InputSearch";
 import {
@@ -166,7 +166,7 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 `;
 
 export const StyledPaper = styled(Paper)`
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);

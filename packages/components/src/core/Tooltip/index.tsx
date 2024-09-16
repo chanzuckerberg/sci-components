@@ -2,8 +2,8 @@ import {
   Tooltip as RawTooltip,
   TooltipProps as RawTooltipProps,
   TooltipClassKey,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { forwardRef } from "react";
 import {
   SDSWarningTypes,

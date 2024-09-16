@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/data-viz",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "main": "dist/index.cjs.js",
   "types": "dist/index.cjs.d.ts",
   "module": "dist/index.esm.js",
@@ -43,17 +43,15 @@
     }
   },
   "scripts": {
-    "build": "yarn sd-build && rollup -c",
+    "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "test": "jest --passWithNoTests",
-    "sd-build": "yarn style-dictionary build --config src/common/styles-dictionary/config.js",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
   },
   "peerDependencies": {
-    "@emotion/core": "^11.0.0",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -75,7 +73,7 @@
     "jest-environment-jsdom": "^29.6.2",
     "react-redux": "^9.1.0",
     "simplex-noise": "^4.0.1",
-    "style-dictionary": "^3.9.2"
+    "style-dictionary": "^4.1.0"
   },
   "dependencies": {
     "echarts": "^5.4.3",

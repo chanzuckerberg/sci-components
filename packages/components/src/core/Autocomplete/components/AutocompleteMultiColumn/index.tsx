@@ -8,8 +8,8 @@ import {
   ClickAwayListener,
   ClickAwayListenerProps as MUIClickAwayListenerProps,
   PopperProps,
+  useTheme,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import {
   AutocompleteMultiColumnOption,

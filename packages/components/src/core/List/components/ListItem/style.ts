@@ -1,6 +1,6 @@
 import { SerializedStyles } from "@emotion/react";
 import { ListItem } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontBody,
@@ -98,7 +98,7 @@ function propsToMarginBottom(props: ListItemExtraProps) {
 export const ListItemLabel = styled("span")`
   margin-right: 5px;
 
-  ${(props) => {
+  ${(props: CommonThemeProps) => {
     const fontWeights = getFontWeights(props);
 
     return `

@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { Args } from "@storybook/react";
 import { FC, useState } from "react";
 import Callout from "src/core/Callout";

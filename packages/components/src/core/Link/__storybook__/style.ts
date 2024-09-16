@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import styled from "@emotion/styled";
 import { fontBodyS } from "src/core/styles";
 
 export const StyledWrapper = styled("div")`
