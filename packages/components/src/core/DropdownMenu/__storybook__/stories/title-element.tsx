@@ -59,7 +59,7 @@ export const TitleElementDemo = <
           open
           search={search}
           multiple={multiple}
-          titleElement={CustomTitle()}
+          headerComponentSlot={CustomTitle()}
           value={multiple ? pendingValue : value}
           onChange={handleChange}
           disableCloseOnSelect={multiple}
