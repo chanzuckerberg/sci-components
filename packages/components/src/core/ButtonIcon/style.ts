@@ -163,6 +163,7 @@ const doNotForwardProps = [
   "on",
   "sdsSize",
   "sdsType",
+  "sdsStyle",
   "sdsIcon",
   "sdsIconProps",
 ];
