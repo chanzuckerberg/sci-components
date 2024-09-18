@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.1.0...@czi-sds/components@21.2.0) (2024-09-18)
+
+### Bug Fixes
+
+- **ButtonIcon:** add sdsStyle to doNotForwardProps ([#847](https://github.com/chanzuckerberg/sci-components/issues/847)) ([a29ce17](https://github.com/chanzuckerberg/sci-components/commit/a29ce17707f084768a0f267a10ef53002ac78c0e))
+
+### Features
+
+- **DropdownMenu:** Adds `titleElement` to `DropdownMenu` ([#840](https://github.com/chanzuckerberg/sci-components/issues/840)) ([f96cb8d](https://github.com/chanzuckerberg/sci-components/commit/f96cb8d3dbef928c24272580fb32323a963a4299))
+
 # [21.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.0.0...@czi-sds/components@21.1.0) (2024-09-07)
 
 ### Bug Fixes
