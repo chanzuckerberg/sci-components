@@ -82,12 +82,12 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 
   return css`
     &.MuiTooltip-tooltip {
+      box-shadow: ${shadows?.m};
+
       ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
       ${width === "wide" && sdsStyle === "light" && wide()}
 
       ${followCursor === true && tableStyles(props)}
-
-      box-shadow: ${shadows?.m};
     }
   `;
 };

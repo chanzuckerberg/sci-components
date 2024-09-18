@@ -9,6 +9,7 @@ import {
 import { DropdownMenu } from "./stories/default";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
+import { TitleElementDemo } from "./stories/titleElement";
 
 export default {
   argTypes: {
@@ -149,4 +150,26 @@ export const Test = {
     },
   },
   render: (args: Args) => <TestDemo data-testid="dropdown-menu" {...args} />,
+};
+
+export const TitleElement = {
+  args: {
+    keepSearchOnSelect: false,
+    multiple: true,
+    search: true,
+    title: DROPDOWN_MENU_LABEL,
+  },
+  parameters: {
+    controls: {
+      exclude: DROPDOWN_MENU_EXCLUDED_CONTROLS.filter(
+        (control) => control !== "search" && control !== "title"
+      ),
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <TitleElementDemo data-testid="dropdown-menu" {...args} />
+  ),
 };
