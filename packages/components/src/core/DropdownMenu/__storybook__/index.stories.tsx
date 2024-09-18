@@ -9,7 +9,7 @@ import {
 import { DropdownMenu } from "./stories/default";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
-import { TitleElementDemo } from "./stories/titleElement";
+import { WithHeaderComponentDemo } from "./stories/withHeaderComponent";
 
 export default {
   argTypes: {
@@ -152,7 +152,9 @@ export const Test = {
   render: (args: Args) => <TestDemo data-testid="dropdown-menu" {...args} />,
 };
 
-export const TitleElement = {
+// With a minimal button at the headerComponentSlot
+
+export const WithHeaderComponent = {
   args: {
     keepSearchOnSelect: false,
     multiple: true,
@@ -169,7 +171,5 @@ export const TitleElement = {
       skip: true,
     },
   },
-  render: (args: Args) => (
-    <TitleElementDemo data-testid="dropdown-menu" {...args} />
-  ),
+  render: (args: Args) => <WithHeaderComponentDemo {...args} />,
 };
