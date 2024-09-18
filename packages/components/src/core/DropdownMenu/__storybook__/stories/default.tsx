@@ -33,6 +33,7 @@ export const DropdownMenu = <
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       {anchorEl ? (
         <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+          {...props}
           label={label}
           anchorEl={anchorEl}
           disableCloseOnSelect={false}
@@ -47,7 +48,6 @@ export const DropdownMenu = <
           getOptionDisabled={(option: T) => {
             return option.name === "Type: feature request";
           }}
-          {...props}
         />
       ) : null}
     </div>
