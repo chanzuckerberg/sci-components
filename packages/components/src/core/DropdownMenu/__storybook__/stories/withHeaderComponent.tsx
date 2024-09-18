@@ -6,7 +6,7 @@ import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Button from "src/core/Button";
 import RawDropdownMenu from "src/core/DropdownMenu";
 
-export const TitleElementDemo = <
+export const WithHeaderComponentDemo = <
   T extends DefaultAutocompleteOption,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
