@@ -1,6 +1,4 @@
 import { AutocompleteValue } from "@mui/base";
-import Box from "@mui/material/Box/Box";
-import Typography from "@mui/material/Typography";
 import { Args } from "@storybook/react";
 import { useEffect, useRef, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
@@ -19,7 +17,7 @@ export const TitleElementDemo = <
   const {
     multiple,
     options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
-    search,
+    search = false,
   } = props;
 
   const anchorRef = useRef(null);
@@ -37,29 +35,23 @@ export const TitleElementDemo = <
     setAnchorEl(anchorRef.current);
   }, []);
 
-  const CustomTitle = () => (
-    <Box
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      paddingBottom="4px"
-    >
-      <Typography>Test Title</Typography>
-      <Button>Click Me!</Button>
-    </Box>
+  const CustomHeaderComponent = () => (
+    <Button sdsStyle="minimal" sdsType="primary">
+      Click Me!
+    </Button>
   );
 
   return (
     <div style={{ margin: "16px 0 0 24px" }} ref={anchorRef}>
       {anchorEl ? (
         <RawDropdownMenu<T, Multiple, DisableClearable, FreeSolo>
+          {...props}
           label="Search"
           anchorEl={anchorEl}
           open
           search={search}
           multiple={multiple}
-          headerComponentSlot={CustomTitle()}
+          headerComponentSlot={CustomHeaderComponent()}
           value={multiple ? pendingValue : value}
           onChange={handleChange}
           disableCloseOnSelect={multiple}
@@ -67,7 +59,6 @@ export const TitleElementDemo = <
           onClickAway={handleClickAway}
           groupBy={(option: T) => option.section as string}
           width={300}
-          {...props}
         />
       ) : null}
     </div>

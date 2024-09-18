@@ -33,25 +33,18 @@ const doNotForwardProps = [
   "isMultiColumn",
 ];
 
-interface StyledHeaderTitleProps extends CommonThemeProps {
-  search: boolean;
-}
-
 export const StyledHeaderTitle = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontHeaderXs}
 
-  ${(props: StyledHeaderTitleProps) => {
-    const { search } = props;
-
+  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       color: ${semanticColors?.base?.textPrimary};
       padding-right: ${spaces?.m}px;
-      margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;
   }}
 `;
@@ -127,6 +120,25 @@ export const StyledPaper = styled(Paper, {
         margin-right: 0;
         margin-bottom: 0;  
       }
+    `;
+  }}
+`;
+
+interface StyledDropdownMenuHeaderProps extends CommonThemeProps {
+  search: boolean;
+}
+
+export const StyledDropdownMenuHeader = styled("div")`
+  ${(props: StyledDropdownMenuHeaderProps) => {
+    const { search } = props;
+    const spaces = getSpaces(props);
+
+    return `
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: ${spaces?.m}px;
+      margin-bottom: ${search ? spaces?.s : spaces?.m}px;
     `;
   }}
 `;

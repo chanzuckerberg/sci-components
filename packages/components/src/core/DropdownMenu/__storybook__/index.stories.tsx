@@ -9,7 +9,7 @@ import {
 import { DropdownMenu } from "./stories/default";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
-import { TitleElementDemo } from "./stories/title-element";
+import { TitleElementDemo } from "./stories/titleElement";
 
 export default {
   argTypes: {
@@ -161,7 +161,9 @@ export const TitleElement = {
   },
   parameters: {
     controls: {
-      exclude: DROPDOWN_MENU_EXCLUDED_CONTROLS,
+      exclude: DROPDOWN_MENU_EXCLUDED_CONTROLS.filter(
+        (control) => control !== "search" && control !== "title"
+      ),
     },
     snapshot: {
       skip: true,

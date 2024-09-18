@@ -16,6 +16,7 @@ import { SDSTheme } from "src/core/styles";
 import {
   StyleProps,
   StyledDropdownMenuAutocompleteWrapper,
+  StyledDropdownMenuHeader,
   StyledHeaderTitle,
   StyledPaper,
   StyledPopper,
@@ -173,10 +174,10 @@ const DropdownMenu = <
           {...ClickAwayListenerProps}
         >
           <StyledDropdownMenuAutocompleteWrapper>
-            {title && (
-              <StyledHeaderTitle search={search}>{title}</StyledHeaderTitle>
-            )}
-            {headerComponentSlot}
+            <StyledDropdownMenuHeader search={search}>
+              {title && <StyledHeaderTitle>{title}</StyledHeaderTitle>}
+              {headerComponentSlot && <>{headerComponentSlot}</>}
+            </StyledDropdownMenuHeader>
             {anchorEl && (
               <Autocomplete
                 label={label}
