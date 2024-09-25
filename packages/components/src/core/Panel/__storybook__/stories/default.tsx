@@ -113,6 +113,7 @@ export const Panel = (props: Args): JSX.Element => {
           sdsStyle="icon"
           icon="InfoCircle"
           onClick={() => setOpen((prev) => !prev)}
+          aria-label="Panel Toggle"
         >
           Toggle Panel
         </Button>
