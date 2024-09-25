@@ -23,17 +23,14 @@ const Main = (
 ) => {
   const { open, sdsType, position, children, width } = props;
 
-  let margin;
-
-  if (sdsType === "overlay") {
-    margin = "none";
-  } else {
-    if (position === "left") {
-      margin = `0 0 0 ${width}`;
-    } else if (position === "right") {
-      margin = `0 ${width} 0 0`;
-    }
-  }
+  const margin =
+    sdsType === "basic"
+      ? position === "left"
+        ? `0 0 0 ${width}`
+        : position === "right"
+          ? `0 ${width} 0 0`
+          : "0" // Default to 0 if neither left nor right
+      : "0"; // Default to 0 for non-basic panels
 
   return (
     <Box
