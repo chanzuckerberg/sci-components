@@ -3,6 +3,7 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Panel } from "./stories/default";
 import { PANEL_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
+import { CustomHeaderAndCloseButtonDemo } from "./stories/customCloseButton";
 
 export default {
   argTypes: {
@@ -41,12 +42,23 @@ export const Default = {
   },
 };
 
+// With Custom Close Button and Header
+
+export const CustomHeaderAndCloseButton = {
+  parameters: {
+    controls: {
+      exclude: PANEL_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <CustomHeaderAndCloseButtonDemo {...args} />,
+};
+
 // Test
 
 export const Test = {
-  args: {
-    label: "Label",
-  },
   parameters: {
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,

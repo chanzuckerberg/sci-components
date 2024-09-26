@@ -6,8 +6,10 @@ import {
   getShadows,
   getSpaces,
 } from "../styles";
-import { PanelProps } from ".";
+import { PANEL_BASIC_MIN_WIDTH, PANEL_OVERLAY_MIN_WIDTH, PanelProps } from ".";
 import { css, SerializedStyles } from "@emotion/react";
+
+type PanelExtraProps = PanelProps & CommonThemeProps;
 
 const doNotForwardProps = [
   "sdsType",
@@ -16,9 +18,9 @@ const doNotForwardProps = [
   "headerComponent",
   "onClick",
   "disableScrollLock",
+  "closeButtonOnClick",
+  "CloseButtonComponent",
 ];
-
-type PanelExtraProps = PanelProps & CommonThemeProps;
 
 const BasicPanel = (props: PanelExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
@@ -28,8 +30,8 @@ const BasicPanel = (props: PanelExtraProps): SerializedStyles => {
     .${drawerClasses.paper} {
       background-color: ${semanticColors?.base?.surfacePrimary};
       padding: ${spaces?.l}px;
-      min-width: 240px;
-      min-height: 240px;
+      min-width: ${PANEL_BASIC_MIN_WIDTH}px;
+      min-height: ${PANEL_BASIC_MIN_WIDTH}px;
     }
   `;
 };
@@ -43,8 +45,8 @@ const OverlayPanel = (props: PanelExtraProps): SerializedStyles => {
     .${drawerClasses.paper} {
       background-color: ${semanticColors?.base?.surfacePrimary};
       padding: ${spaces?.xl}px;
-      min-width: 320px;
-      min-height: 320px;
+      min-width: ${PANEL_OVERLAY_MIN_WIDTH}px;
+      min-height: ${PANEL_OVERLAY_MIN_WIDTH}px;
       box-shadow: ${shadows?.l};
       background-image: none;
     }
@@ -55,14 +57,14 @@ export const StyledDrawer = styled(Drawer, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: PanelExtraProps) => {
-    const { sdsType, position, width } = props;
+    const { sdsType = "basic", anchor = "left", width } = props;
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     const WidthString = typeof width === "number" ? `${width}px` : width;
 
-    const PanelWidth = position !== "bottom" ? WidthString : "100%";
-    const PanelHeight = position !== "bottom" ? "100%" : WidthString;
+    const PanelWidth = anchor !== "bottom" ? WidthString : "100%";
+    const PanelHeight = anchor !== "bottom" ? "100%" : WidthString;
 
     return css`
       .${drawerClasses.root} {

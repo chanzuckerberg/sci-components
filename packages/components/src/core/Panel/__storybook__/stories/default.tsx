@@ -70,23 +70,21 @@ export const Panel = (props: Args): JSX.Element => {
     </Box>
   );
 
-  const HeaderComponent = () => {
-    return (
-      <Box
-        sx={{
-          alignItems: "center",
-          border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
-          color: theme?.palette?.sds?.base?.textSecondary,
-          display: "flex",
-          height: "100%",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        [Panel Header]
-      </Box>
-    );
-  };
+  const HeaderComponent = (
+    <Box
+      sx={{
+        alignItems: "center",
+        border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
+        color: theme?.palette?.sds?.base?.textSecondary,
+        display: "flex",
+        height: "100%",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      [Panel Header]
+    </Box>
+  );
 
   if (sdsType === "basic" && position === "bottom") {
     return InvalidBasicPanelPropsError;
@@ -97,9 +95,8 @@ export const Panel = (props: Args): JSX.Element => {
       <RawPanel
         sdsType={sdsType}
         open={open}
-        onClose={toggleDrawer(false)}
-        headerComponent={<HeaderComponent />}
-        onClick={() => setOpen(false)}
+        closeButtonOnClick={toggleDrawer(false)}
+        headerComponent={HeaderComponent}
         disableScrollLock={true}
         ModalProps={{ disableScrollLock: true }}
         {...props}
