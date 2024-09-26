@@ -26,7 +26,7 @@ describe("<Panel />", () => {
       <Test
         sdsType="overlay"
         headerComponent={<p>Header</p>}
-        CloseButtonComponent={
+        closeButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"
@@ -84,7 +84,7 @@ describe("<Panel />", () => {
         sdsType="overlay"
         closeButtonOnClick={handleClose}
         headerComponent={<div>Header</div>}
-        CloseButtonComponent={
+        closeButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"

@@ -1,10 +1,17 @@
-import { Panel, PanelProps } from "@czi-sds/components";
 import React from "react";
+import { Panel, PanelProps } from "@czi-sds/components";
 import { noop } from "src/common/utils";
 
-const NotificationNameSpaceTest = (props: PanelProps) => {
+const PanelNameSpaceTest = (props: PanelProps) => {
   return (
-    <Panel sdsType="basic" width="400px" position="left">
+    <Panel
+      sdsType="overlay"
+      width="400px"
+      position="left"
+      headerComponent={<p>Header</p>}
+      closeButtonComponent={<button>Close</button>}
+      closeButtonOnClick={noop}
+    >
       This is a Basic Panel!
     </Panel>
   );
