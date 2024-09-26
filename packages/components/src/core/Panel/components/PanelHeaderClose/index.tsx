@@ -14,7 +14,12 @@ const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
       {CloseButtonComponent ? (
         CloseButtonComponent
       ) : (
-        <Button sdsStyle="icon" sdsType="tertiary" icon="XMark" />
+        <Button
+          sdsStyle="icon"
+          sdsType="tertiary"
+          icon="XMark"
+          aria-label="Panel Toggle"
+        />
       )}
     </StyledPanelHeaderClose>
   );

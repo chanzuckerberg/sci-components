@@ -44,6 +44,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
             sdsType="secondary"
             icon="ChevronLeft"
             data-testid="panel-close-button"
+            aria-label="Panel Toggle"
           />
         }
         data-testid="panel"
