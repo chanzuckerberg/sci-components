@@ -17,51 +17,26 @@ import {
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
+type IntentType = "negative" | "notice" | "positive";
 export interface InputTextExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  intent?: "default" | "negative" | "notice";
+  intent?: "default" | IntentType;
   sdsType?: "textField" | "textArea";
   hideLabel?: boolean;
 }
 
 const sdsPropNames = ["sdsStyle", "sdsType", "intent", "hideLabel"];
 
-const negative = (props: InputTextExtraProps): SerializedStyles => {
+const applyIntentColor = (
+  props: InputTextExtraProps,
+  intent: IntentType
+): SerializedStyles => {
   const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.negative?.default};
-    }
-
-    .${outlinedInputClasses.root}:hover
-      .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.base?.hover};
-    }
-
-    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
-      .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.base?.hover};
-      }
-
-      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
-        cursor: default;
-        svg {
-          color: ${semanticColors?.base?.iconPrimary};
-        }
-      }
-    }
-  `;
-};
-
-const notice = (props: InputTextExtraProps): SerializedStyles => {
-  const borders = getBorders(props);
-  const semanticColors = getSemanticColors(props);
-
-  return css`
-    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: ${borders?.notice?.default};
+      border: ${borders?.[intent]?.default};
     }
 
     .${outlinedInputClasses.root}:hover
@@ -186,8 +161,9 @@ export const StyledInputBase = styled(TextField, {
       }
 
       ${sdsType === "textArea" && textArea(props)}
-      ${intent === "negative" && negative(props)}
-      ${intent === "notice" && notice(props)}
+      ${intent === "negative" && applyIntentColor(props, "negative")}
+      ${intent === "notice" && applyIntentColor(props, "notice")}
+      ${intent === "positive" && applyIntentColor(props, "positive")}
       ${disabled && disabledStyled(props)}
     `;
   }}
