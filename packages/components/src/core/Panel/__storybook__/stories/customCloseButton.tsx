@@ -25,7 +25,6 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
       <RawPanel
         sdsType="overlay"
         open={open}
-        // width="50vw"
         closeButtonOnClick={() => {
           setOpen(false);
         }}
@@ -37,7 +36,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
             Panel Header
           </Typography>
         }
-        CloseButtonComponent={
+        closeButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"

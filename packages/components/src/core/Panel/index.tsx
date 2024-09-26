@@ -18,7 +18,7 @@ export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
   width?: number | string;
   headerComponent?: React.ReactNode;
   closeButtonOnClick?: PanelHeaderCloseProps["onClick"];
-  CloseButtonComponent?: PanelHeaderCloseProps["CloseButtonComponent"];
+  closeButtonComponent?: PanelHeaderCloseProps["closeButtonComponent"];
 }
 
 // Discriminated Union
@@ -71,7 +71,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
           {
             <PanelHeaderClose
               onClick={props?.closeButtonOnClick}
-              CloseButtonComponent={props?.CloseButtonComponent}
+              closeButtonComponent={props?.closeButtonComponent}
             />
           }
         </StyledHeaderComponent>
