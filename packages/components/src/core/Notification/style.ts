@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontBody,
+  getBorders,
   getCorners,
   getIconSizes,
   getSemanticColors,
@@ -37,8 +38,8 @@ export const StyledNotification = styled(Alert, {
     const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
     const typography = getTypography(props);
+    const borders = getBorders(props);
 
-    const borderColor = semanticColors?.[intent]?.ornament ?? "black";
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
 
@@ -63,9 +64,8 @@ export const StyledNotification = styled(Alert, {
       color: ${semanticColors?.base?.textPrimary};
       padding: ${spaces?.l}px;
       align-items: flex-start;
-      border-left: 5px solid;
+      border-left: ${borders?.[intent]?.extraThick};
       box-shadow: ${shadows?.s};
-      border-color: ${borderColor};
 
       .MuiAlert-icon {
         height: ${iconSizes?.l.height}px;
