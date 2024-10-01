@@ -268,6 +268,11 @@ export function makeThemeOptions(
           disableRipple: true,
         },
       },
+      MuiDrawer: {
+        defaultProps: {
+          hideBackdrop: true,
+        },
+      },
       MuiLink: {
         defaultProps: {
           underline: "hover",
