@@ -19,7 +19,7 @@ export default {
       control: {
         type: "radio",
       },
-      options: ["default", "negative", "notice"],
+      options: ["default", "negative", "notice", "positive"],
     },
     label: {
       control: {
