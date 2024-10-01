@@ -16,7 +16,7 @@ import {
 } from "src/core/styles";
 
 export interface RadioExtraProps extends CommonThemeProps {
-  intent?: "default" | "negative" | "notice";
+  intent?: "default" | "negative" | "notice" | "positive";
   disabled?: boolean;
 }
 
@@ -33,6 +33,7 @@ export const StyledRadioButton = styled(RawRadio)`
       default: "base",
       negative: "negative",
       notice: "notice",
+      positive: "positive",
     };
 
     const radioColor = intentToColor[intent] as keyof SDSPalette;

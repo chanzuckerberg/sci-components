@@ -14,7 +14,7 @@ import {
 import { SDSPalette, fontBodyXs, fontBodyXxs } from "../styles";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
-  intent?: "default" | "negative" | "notice";
+  intent?: "default" | "negative" | "notice" | "positive";
   disabled?: boolean;
 }
 
@@ -30,6 +30,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
       default: "base",
       negative: "negative",
       notice: "notice",
+      positive: "positive",
     };
 
     const checkboxColor = intentToColor[intent] as keyof SDSPalette;

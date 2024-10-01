@@ -25,12 +25,14 @@ const doNotForwardProps = [
   "sdsStyle",
 ];
 
+type IntentType = "negative" | "notice" | "positive";
+
 export interface InputDropdownProps
   extends CommonThemeProps,
     Omit<ButtonProps, (typeof doNotForwardProps)[number]> {
   children?: ReactNode;
   disabled?: boolean;
-  intent?: "default" | "negative" | "notice";
+  intent?: "default" | IntentType;
   label: ReactNode;
   onClick: (event: React.MouseEvent<HTMLElement>) => void;
   state?: "default" | "open";
@@ -278,27 +280,14 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
   `;
 };
 
-const notice = (props: InputDropdownProps): SerializedStyles => {
+const applyIntentColor = (
+  props: InputDropdownProps,
+  intent: IntentType
+): SerializedStyles => {
   const borders = getBorders(props);
 
   return css`
-    border: ${borders?.notice?.default};
-
-    &:hover {
-      border: ${borders?.base?.hover};
-    }
-
-    &:active {
-      border: ${borders?.base?.pressed};
-    }
-  `;
-};
-
-const negative = (props: InputDropdownProps): SerializedStyles => {
-  const borders = getBorders(props);
-
-  return css`
-    border: ${borders?.negative?.default};
+    border: ${borders?.[intent]?.default};
 
     &:hover {
       border: ${borders?.base?.hover};
@@ -367,8 +356,15 @@ export const StyledInputDropdown = styled(
       ${sdsStyle === "square" && square(props)}
       ${sdsStyle === "rounded" && rounded(props)}
       ${value && userInput(props)}
-      ${intent === "notice" && sdsStyle !== "minimal" && notice(props)}
-      ${intent === "negative" && sdsStyle !== "minimal" && negative(props)}
+      ${intent === "notice" &&
+      sdsStyle !== "minimal" &&
+      applyIntentColor(props, "notice")}
+      ${intent === "negative" &&
+      sdsStyle !== "minimal" &&
+      applyIntentColor(props, "negative")}
+      ${intent === "positive" &&
+      sdsStyle !== "minimal" &&
+      applyIntentColor(props, "positive")}
       ${state === "open" && isOpen(props)}
       ${disabled && isDisabled(props)}
     `;
@@ -461,8 +457,8 @@ export const MinimalDetails = styled("div", {
       ${
         shouldTruncateMinimalDetails &&
         `overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;`
+          text-overflow: ellipsis;
+          white-space: nowrap;`
       }
     `;
   }}
