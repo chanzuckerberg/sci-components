@@ -280,6 +280,8 @@ export interface Border {
   open?: string;
   focused?: string;
   selected?: string;
+  thick?: string;
+  extraThick?: string;
 }
 
 export interface Borders {

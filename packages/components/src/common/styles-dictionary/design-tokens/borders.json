@@ -55,14 +55,30 @@
       },
       "beta": {
         "default": {
-          "value": "1px solid {sds.color.primitive.purple.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.purple.500.darkValue}"
+          "value": "1px solid {sds.color.primitive.purple.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.purple.600.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.purple.600.value}",
+          "darkValue": "4px solid {sds.color.primitive.purple.600.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.purple.600.value}",
+          "darkValue": "2px solid {sds.color.primitive.purple.600.darkValue}"
         }
       },
       "info": {
         "default": {
-          "value": "1px solid {sds.color.primitive.blue.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+          "value": "1px solid {sds.color.primitive.blue.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.blue.600.value}",
+          "darkValue": "4px solid {sds.color.primitive.blue.600.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.blue.600.value}",
+          "darkValue": "2px solid {sds.color.primitive.blue.600.darkValue}"
         }
       },
       "link": {
@@ -77,14 +93,30 @@
       },
       "negative": {
         "default": {
-          "value": "1px solid {sds.color.primitive.red.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.red.500.darkValue}"
+          "value": "1px solid {sds.color.primitive.red.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.red.600.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.red.600.value}",
+          "darkValue": "4px solid {sds.color.primitive.red.600.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.red.600.value}",
+          "darkValue": "2px solid {sds.color.primitive.red.600.darkValue}"
         }
       },
       "neutral": {
         "default": {
           "value": "1px solid {sds.color.primitive.gray.500.value}",
           "darkValue": "1px solid {sds.color.primitive.gray.500.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.gray.500.value}",
+          "darkValue": "4px solid {sds.color.primitive.gray.500.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.gray.500.value}",
+          "darkValue": "2px solid {sds.color.primitive.gray.500.darkValue}"
         }
       },
       "none": {
@@ -93,14 +125,30 @@
       },
       "notice": {
         "default": {
-          "value": "1px solid {sds.color.primitive.yellow.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.yellow.500.darkValue}"
+          "value": "1px solid {sds.color.primitive.yellow.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.yellow.600.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.yellow.600.value}",
+          "darkValue": "4px solid {sds.color.primitive.yellow.600.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.yellow.600.value}",
+          "darkValue": "2px solid {sds.color.primitive.yellow.600.darkValue}"
         }
       },
       "positive": {
         "default": {
-          "value": "1px solid {sds.color.primitive.green.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.green.500.darkValue}"
+          "value": "1px solid {sds.color.primitive.green.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.green.600.darkValue}"
+        },
+        "extraThick": {
+          "value": "4px solid {sds.color.primitive.green.600.value}",
+          "darkValue": "4px solid {sds.color.primitive.green.600.darkValue}"
+        },
+        "thick": {
+          "value": "2px solid {sds.color.primitive.green.600.value}",
+          "darkValue": "2px solid {sds.color.primitive.green.600.darkValue}"
         }
       }
     }

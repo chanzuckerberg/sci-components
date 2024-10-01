@@ -496,27 +496,39 @@ SDSLightAppTheme.borders = {
     table: `1px solid ${SDSLightAppTheme.colors.gray[300]}`,
   },
   beta: {
-    default: `1px solid ${SDSLightAppTheme.colors.purple[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.purple[600]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.purple[600]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.purple[600]}`,
   },
   info: {
-    default: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.blue[600]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.blue[600]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.blue[600]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   negative: {
-    default: `1px solid ${SDSLightAppTheme.colors.red[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.red[600]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.red[600]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.red[600]}`,
   },
   neutral: {
     default: `1px solid ${SDSLightAppTheme.colors.gray[500]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.gray[500]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.gray[500]}`,
   },
   none: "none",
   notice: {
-    default: `1px solid ${SDSLightAppTheme.colors.yellow[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.yellow[600]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.yellow[600]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.yellow[600]}`,
   },
   positive: {
-    default: `1px solid ${SDSLightAppTheme.colors.green[500]}`,
+    default: `1px solid ${SDSLightAppTheme.colors.green[600]}`,
+    extraThick: `4px solid ${SDSLightAppTheme.colors.green[600]}`,
+    thick: `2px solid ${SDSLightAppTheme.colors.green[600]}`,
   },
 };
 
@@ -543,27 +555,39 @@ SDSDarkAppTheme.borders = {
     table: `1px solid ${SDSDarkAppTheme.colors.gray[300]}`,
   },
   beta: {
-    default: `1px solid ${SDSDarkAppTheme.colors.purple[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.purple[600]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.purple[600]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.purple[600]}`,
   },
   info: {
-    default: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.blue[600]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.blue[600]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.blue[600]}`,
   },
   link: {
     dashed: `1px dashed`,
     solid: `1px solid`,
   },
   negative: {
-    default: `1px solid ${SDSDarkAppTheme.colors.red[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.red[600]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.red[600]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.red[600]}`,
   },
   neutral: {
     default: `1px solid ${SDSDarkAppTheme.colors.gray[500]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.gray[500]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.gray[500]}`,
   },
   none: "none",
   notice: {
-    default: `1px solid ${SDSDarkAppTheme.colors.yellow[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
   },
   positive: {
-    default: `1px solid ${SDSDarkAppTheme.colors.green[500]}`,
+    default: `1px solid ${SDSDarkAppTheme.colors.green[600]}`,
+    extraThick: `4px solid ${SDSDarkAppTheme.colors.green[600]}`,
+    thick: `2px solid ${SDSDarkAppTheme.colors.green[600]}`,
   },
 };
 
