@@ -3,6 +3,7 @@
 exports[`<Panel /> Default story renders snapshot 1`] = `
 <div
   class="MuiDrawer-root MuiDrawer-docked css-1mn3xem-MuiDrawer-docked"
+  headercomponent="[object Object]"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"

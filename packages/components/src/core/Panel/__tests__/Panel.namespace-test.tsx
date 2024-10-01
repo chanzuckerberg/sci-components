@@ -8,8 +8,8 @@ const PanelNameSpaceTest = (props: PanelProps) => {
       sdsType="overlay"
       width="400px"
       position="left"
-      headerComponent={<p>Header</p>}
-      closeButtonComponent={<button>Close</button>}
+      HeaderComponent={<p>Header</p>}
+      CloseButtonComponent={<button>Close</button>}
       closeButtonOnClick={noop}
     >
       This is a Basic Panel!

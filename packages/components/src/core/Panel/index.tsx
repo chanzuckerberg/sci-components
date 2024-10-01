@@ -16,9 +16,9 @@ export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
   sdsType?: "overlay"; // Discriminator
   position?: "left" | "right" | "bottom";
   width?: number | string;
-  headerComponent?: React.ReactNode;
+  HeaderComponent?: React.ReactNode;
   closeButtonOnClick?: PanelHeaderCloseProps["onClick"];
-  closeButtonComponent?: PanelHeaderCloseProps["closeButtonComponent"];
+  CloseButtonComponent?: PanelHeaderCloseProps["CloseButtonComponent"];
 }
 
 // Discriminated Union
@@ -29,8 +29,8 @@ function isOverlayPanelProps(props: PanelProps): props is OverlayPanelProps {
   return props.sdsType === "overlay";
 }
 
-export const PANEL_BASIC_MIN_WIDTH = 240;
-export const PANEL_OVERLAY_MIN_WIDTH = 320;
+export const PANEL_BASIC_MIN_WIDTH_PX = 240;
+export const PANEL_OVERLAY_MIN_WIDTH_PX = 320;
 
 /**
  * @see https://mui.com/material-ui/react-drawer/
@@ -39,16 +39,16 @@ export const PANEL_OVERLAY_MIN_WIDTH = 320;
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { children, sdsType = "basic", position = "left", width } = props;
 
-  const DrawerWidth = width
+  const drawerWidth = width
     ? width
     : sdsType === "basic"
-      ? PANEL_BASIC_MIN_WIDTH
-      : PANEL_OVERLAY_MIN_WIDTH;
-  const DrawerVariant = sdsType === "basic" ? "persistent" : "temporary";
+      ? PANEL_BASIC_MIN_WIDTH_PX
+      : PANEL_OVERLAY_MIN_WIDTH_PX;
+  const drawerVariant = sdsType === "basic" ? "persistent" : "temporary";
 
   // (masoudmanson): The basic Panel only supports "left" or "right" positions.
   // If a "bottom" position is provided for a basic Panel, it defaults to "left".
-  const DrawerAnchor =
+  const drawerAnchor =
     sdsType === "overlay"
       ? position
       : position === "bottom"
@@ -56,22 +56,31 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
         : position;
 
   return (
+    /**
+     * (masoudmanson): We need the props after {...props} to override any
+     * user-defined values. Placing them afterward ensures that our values
+     * take priority.
+     *
+     * For example, the SDS design specifies that a BasicPanel should only be anchored
+     * to the left or right. To prevent users from positioning it at the bottom,
+     * the 'anchor' prop must always be set to our predefined value.
+     */
     <StyledDrawer
       {...props}
       ref={ref}
-      anchor={DrawerAnchor}
-      variant={DrawerVariant}
-      width={DrawerWidth}
+      anchor={drawerAnchor}
+      variant={drawerVariant}
+      width={drawerWidth}
     >
       {isOverlayPanelProps(props) && (
         <StyledHeaderComponent>
-          {props?.headerComponent && (
-            <PanelHeader>{props?.headerComponent}</PanelHeader>
+          {props?.HeaderComponent && (
+            <PanelHeader>{props?.HeaderComponent}</PanelHeader>
           )}
           {
             <PanelHeaderClose
               onClick={props?.closeButtonOnClick}
-              closeButtonComponent={props?.closeButtonComponent}
+              CloseButtonComponent={props?.CloseButtonComponent}
             />
           }
         </StyledHeaderComponent>

@@ -3,16 +3,16 @@ import { StyledPanelHeaderClose } from "./style";
 
 export interface PanelHeaderCloseProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
-  closeButtonComponent?: React.ReactNode;
+  CloseButtonComponent?: React.ReactNode;
 }
 
 const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
-  const { onClick, closeButtonComponent } = props;
+  const { onClick, CloseButtonComponent } = props;
 
   return (
     <StyledPanelHeaderClose onClick={onClick}>
-      {closeButtonComponent ? (
-        closeButtonComponent
+      {CloseButtonComponent ? (
+        CloseButtonComponent
       ) : (
         <Button
           sdsStyle="icon"

@@ -96,7 +96,7 @@ export const Panel = (props: Args): JSX.Element => {
         sdsType={sdsType}
         open={open}
         closeButtonOnClick={toggleDrawer(false)}
-        headerComponent={HeaderComponent}
+        HeaderComponent={HeaderComponent}
         disableScrollLock={true}
         ModalProps={{ disableScrollLock: true }}
         {...props}

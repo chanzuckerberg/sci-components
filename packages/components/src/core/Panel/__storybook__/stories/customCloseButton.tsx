@@ -28,7 +28,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
         closeButtonOnClick={() => {
           setOpen(false);
         }}
-        headerComponent={
+        HeaderComponent={
           <Typography
             variant="h3"
             sx={{ margin: "0 !important", padding: "6px 0 !important" }}
@@ -36,7 +36,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
             Panel Header
           </Typography>
         }
-        closeButtonComponent={
+        CloseButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"

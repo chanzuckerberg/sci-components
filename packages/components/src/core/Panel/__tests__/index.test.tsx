@@ -7,10 +7,10 @@ import Button from "src/core/Button";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
 
-const PaperRootClassName = "MuiPaper-root";
-const MuiDrawerAnchorLeftClass = "MuiDrawer-paperAnchorLeft";
-const MuiDrawerAnchorRightClass = "MuiDrawer-paperAnchorRight";
-const MuiDrawerAnchorBottomClass = "MuiDrawer-paperAnchorBottom";
+const PAPER_ROOT_CLASS_NAME = "MuiPaper-root";
+const MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME = "MuiDrawer-paperAnchorLeft";
+const MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME = "MuiDrawer-paperAnchorRight";
+const MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME = "MuiDrawer-paperAnchorBottom";
 
 describe("<Panel />", () => {
   generateSnapshots(stories);
@@ -25,8 +25,8 @@ describe("<Panel />", () => {
     render(
       <Test
         sdsType="overlay"
-        headerComponent={<p>Header</p>}
-        closeButtonComponent={
+        HeaderComponent={<p>Header</p>}
+        CloseButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"
@@ -38,7 +38,7 @@ describe("<Panel />", () => {
       />
     );
 
-    // Check if headerComponent is rendered
+    // Check if HeaderComponent is rendered
     const headerElement = screen.getByText("Header");
     expect(headerElement).toBeInTheDocument();
 
@@ -60,20 +60,20 @@ describe("<Panel />", () => {
 
     let panelElementPaper = screen
       .getByTestId("panel")
-      .getElementsByClassName(PaperRootClassName)[0];
-    expect(panelElementPaper).toHaveClass(MuiDrawerAnchorLeftClass);
+      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
+    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
 
     rerender(<Test position="right" />);
     panelElementPaper = screen
       .getByTestId("panel")
-      .getElementsByClassName(PaperRootClassName)[0];
-    expect(panelElementPaper).toHaveClass(MuiDrawerAnchorRightClass);
+      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
+    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME);
 
     rerender(<Test sdsType="overlay" position="bottom" />);
     panelElementPaper = screen
       .getByTestId("panel")
-      .getElementsByClassName(PaperRootClassName)[0];
-    expect(panelElementPaper).toHaveClass(MuiDrawerAnchorBottomClass);
+      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
+    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME);
   });
 
   it("calls the onClick handler when close button is clicked", () => {
@@ -83,8 +83,8 @@ describe("<Panel />", () => {
       <Test
         sdsType="overlay"
         closeButtonOnClick={handleClose}
-        headerComponent={<div>Header</div>}
-        closeButtonComponent={
+        HeaderComponent={<div>Header</div>}
+        CloseButtonComponent={
           <Button
             sdsStyle="icon"
             sdsSize="medium"
@@ -107,10 +107,10 @@ describe("<Panel />", () => {
 
     const panelElementPaper = screen
       .getByTestId("panel")
-      .getElementsByClassName(PaperRootClassName)[0];
+      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
 
     // Default props: sdsType should be 'basic' and position should be 'left'
-    expect(panelElementPaper).toHaveClass(MuiDrawerAnchorLeftClass);
+    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
   });
 
   it("does not accept position='bottom' for sdsType='basic', should default to position='left'", () => {
@@ -119,6 +119,6 @@ describe("<Panel />", () => {
 
     const panelElement = screen.getByTestId("panel");
 
-    expect(panelElement).not.toHaveClass(MuiDrawerAnchorBottomClass);
+    expect(panelElement).not.toHaveClass(MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME);
   });
 });

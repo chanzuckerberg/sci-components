@@ -6,7 +6,11 @@ import {
   getShadows,
   getSpaces,
 } from "../styles";
-import { PANEL_BASIC_MIN_WIDTH, PANEL_OVERLAY_MIN_WIDTH, PanelProps } from ".";
+import {
+  PANEL_BASIC_MIN_WIDTH_PX,
+  PANEL_OVERLAY_MIN_WIDTH_PX,
+  PanelProps,
+} from ".";
 import { css, SerializedStyles } from "@emotion/react";
 
 type PanelExtraProps = PanelProps & CommonThemeProps;
@@ -22,7 +26,7 @@ const doNotForwardProps = [
   "CloseButtonComponent",
 ];
 
-const BasicPanel = (props: PanelExtraProps): SerializedStyles => {
+const basicPanelStyles = (props: PanelExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
   const spaces = getSpaces(props);
 
@@ -30,13 +34,13 @@ const BasicPanel = (props: PanelExtraProps): SerializedStyles => {
     .${drawerClasses.paper} {
       background-color: ${semanticColors?.base?.surfacePrimary};
       padding: ${spaces?.l}px;
-      min-width: ${PANEL_BASIC_MIN_WIDTH}px;
-      min-height: ${PANEL_BASIC_MIN_WIDTH}px;
+      min-width: ${PANEL_BASIC_MIN_WIDTH_PX}px;
+      min-height: ${PANEL_BASIC_MIN_WIDTH_PX}px;
     }
   `;
 };
 
-const OverlayPanel = (props: PanelExtraProps): SerializedStyles => {
+const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
   const spaces = getSpaces(props);
   const shadows = getShadows(props);
@@ -45,8 +49,8 @@ const OverlayPanel = (props: PanelExtraProps): SerializedStyles => {
     .${drawerClasses.paper} {
       background-color: ${semanticColors?.base?.surfacePrimary};
       padding: ${spaces?.xl}px;
-      min-width: ${PANEL_OVERLAY_MIN_WIDTH}px;
-      min-height: ${PANEL_OVERLAY_MIN_WIDTH}px;
+      min-width: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;
+      min-height: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;
       box-shadow: ${shadows?.l};
       background-image: none;
     }
@@ -61,26 +65,26 @@ export const StyledDrawer = styled(Drawer, {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    const WidthString = typeof width === "number" ? `${width}px` : width;
+    const widthString = typeof width === "number" ? `${width}px` : width;
 
-    const PanelWidth = anchor !== "bottom" ? WidthString : "100%";
-    const PanelHeight = anchor !== "bottom" ? "100%" : WidthString;
+    const panelWidth = anchor !== "bottom" ? widthString : "100%";
+    const panelHeight = anchor !== "bottom" ? "100%" : widthString;
 
     return css`
       .${drawerClasses.root} {
         border-color: ${semanticColors?.base?.divider};
         border-width: ${spaces?.xxxs}px;
-        height: ${PanelHeight};
-        width: ${PanelWidth};
+        height: ${panelHeight};
+        width: ${panelWidth};
       }
 
       .${drawerClasses.paper} {
-        height: ${PanelHeight};
-        width: ${PanelWidth};
+        height: ${panelHeight};
+        width: ${panelWidth};
       }
 
-      ${sdsType === "basic" && BasicPanel(props)}
-      ${sdsType === "overlay" && OverlayPanel(props)}
+      ${sdsType === "basic" && basicPanelStyles(props)}
+      ${sdsType === "overlay" && overlayPanelStyles(props)}
     `;
   }}
 `;
