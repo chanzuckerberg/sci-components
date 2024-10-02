@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.2.0...@czi-sds/components@21.3.0) (2024-10-02)
+
+### Bug Fixes
+
+- **dropdownmenu:** fix header visibility and extra margin issue ([#855](https://github.com/chanzuckerberg/sci-components/issues/855)) ([c1b736c](https://github.com/chanzuckerberg/sci-components/commit/c1b736c91f4571baf4d248de30dd736a4027a211))
+- **inputtext:** remove min-width from InputText and InputSearch ([#858](https://github.com/chanzuckerberg/sci-components/issues/858)) ([0efb03c](https://github.com/chanzuckerberg/sci-components/commit/0efb03c1b1e1f68036146d9406f5fae1c5b7ca29))
+
+### Features
+
+- **borders:** adds new border variables to support thick and extraThick intent borders ([#856](https://github.com/chanzuckerberg/sci-components/issues/856)) ([40afdc6](https://github.com/chanzuckerberg/sci-components/commit/40afdc67d5cdc0e80b9e19828268e0b779b0cd75))
+- **inputs:** add positive intent to input compoennts to accomodate form validation components ([#857](https://github.com/chanzuckerberg/sci-components/issues/857)) ([6cfec93](https://github.com/chanzuckerberg/sci-components/commit/6cfec93ddcd879493ba384df02c6856a7b5085c2))
+- **Panel:** implement panel component ([#850](https://github.com/chanzuckerberg/sci-components/issues/850)) ([486b2e7](https://github.com/chanzuckerberg/sci-components/commit/486b2e740ad0f1fc9f23df856ae11eae26d710e4))
+
 # [21.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.1.0...@czi-sds/components@21.2.0) (2024-09-18)
 
 ### Bug Fixes
