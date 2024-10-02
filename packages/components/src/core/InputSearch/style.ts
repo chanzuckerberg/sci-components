@@ -18,9 +18,10 @@ import {
   getSpaces,
 } from "src/core/styles";
 
+type IntentType = "negative" | "notice" | "positive";
 export interface InputSearchExtraProps extends CommonThemeProps {
   disabled?: boolean;
-  intent?: "default" | "negative" | "notice";
+  intent?: IntentType | "default";
   sdsStyle?: "rounded" | "square";
   value?: string;
 }
@@ -43,40 +44,15 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   `;
 };
 
-const error = (props: InputSearchExtraProps): SerializedStyles => {
+const applyIntentColor = (
+  props: InputSearchExtraProps,
+  intent: IntentType
+): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticColors?.negative?.border};
-    }
-
-    .${outlinedInputClasses.root}:hover
-      .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticColors?.base?.borderHover};
-    }
-
-    .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
-      .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticColors?.base?.borderHover};
-      }
-
-      .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
-        cursor: default;
-        svg {
-          color: ${semanticColors?.base?.iconPrimaryHover};
-        }
-      }
-    }
-  `;
-};
-
-const warning = (props: InputSearchExtraProps): SerializedStyles => {
-  const semanticColors = getSemanticColors(props);
-
-  return css`
-    .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticColors?.notice?.border};
+      border: 1px solid ${semanticColors?.[intent]?.border};
     }
 
     .${outlinedInputClasses.root}:hover
@@ -180,6 +156,16 @@ export const StyledSearchBase = styled(TextField, {
       .${outlinedInputClasses.root} {
         padding: 0 ${spaces?.m}px;
         background-color: ${semanticColors?.base?.surfacePrimary};
+        width: 100%;
+
+        .${outlinedInputClasses.input} {
+          padding-right: ${spaces?.l}px;
+        }
+
+        .MuiInputAdornment-positionEnd {
+          position: absolute;
+          right: ${spaces?.m}px;
+        }
 
         .${outlinedInputClasses.notchedOutline} {
           border: 1px solid ${semanticColors?.base?.border};
@@ -247,8 +233,9 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       ${sdsStyle === "rounded" && rounded(props)}
-      ${intent === "negative" && error(props)}
-      ${intent === "notice" && warning(props)}
+      ${intent === "negative" && applyIntentColor(props, "negative")}
+      ${intent === "notice" && applyIntentColor(props, "notice")}
+      ${intent === "positive" && applyIntentColor(props, "positive")}
       ${disabled && disabledStyled(props)}
     `;
   }}

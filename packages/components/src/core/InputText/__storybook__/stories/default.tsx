@@ -15,6 +15,7 @@ export const InputText = (props: Args): JSX.Element => {
       disabled={disabled}
       name="input-text-name"
       autoComplete="off"
+      sx={{ width: "200px" }}
     />
   );
 };

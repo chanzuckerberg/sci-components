@@ -13,6 +13,7 @@ export const TestDemo = (props: Args): JSX.Element => {
         data-testid="inputSearchRound"
         handleSubmit={action("onSubmit")}
         name="round-search"
+        sx={{ width: "200px" }}
         {...props}
       />
       <RawInputSearch
@@ -23,6 +24,7 @@ export const TestDemo = (props: Args): JSX.Element => {
         data-testid="inputSearchSquare"
         handleSubmit={action("onSubmit")}
         name="square-search"
+        sx={{ width: "200px" }}
         {...props}
       />
       {/* @ts-expect-error testing fail state */}

@@ -174,10 +174,12 @@ const DropdownMenu = <
           {...ClickAwayListenerProps}
         >
           <StyledDropdownMenuAutocompleteWrapper>
-            <StyledDropdownMenuHeader search={search}>
-              {title && <StyledHeaderTitle>{title}</StyledHeaderTitle>}
-              {headerComponentSlot && <>{headerComponentSlot}</>}
-            </StyledDropdownMenuHeader>
+            {(title || headerComponentSlot) && (
+              <StyledDropdownMenuHeader search={search}>
+                {title && <StyledHeaderTitle>{title}</StyledHeaderTitle>}
+                {headerComponentSlot && <>{headerComponentSlot}</>}
+              </StyledDropdownMenuHeader>
+            )}
             {anchorEl && (
               <Autocomplete
                 label={label}
