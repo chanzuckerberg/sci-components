@@ -125,8 +125,11 @@ export const StyledInputBase = styled(TextField, {
     return css`
       margin-bottom: ${spaces?.l}px;
       margin-right: ${spaces?.m}px;
-      min-width: 160px;
       display: block;
+
+      .${outlinedInputClasses.root} {
+        width: 100%;
+      }
 
       .${outlinedInputClasses.inputSizeSmall} {
         ${fontBodyXs(props)}
@@ -144,6 +147,7 @@ export const StyledInputBase = styled(TextField, {
       .${outlinedInputClasses.input} {
         outline: none;
         border-radius: 4px;
+        width: 100%;
       }
 
       &.user-is-tabbing .${outlinedInputClasses.input} {
