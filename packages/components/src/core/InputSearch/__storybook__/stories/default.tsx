@@ -17,6 +17,7 @@ export const InputSearch = (props: Args): JSX.Element => {
       intent={intent}
       handleSubmit={handleSubmit}
       name="input-search-name"
+      sx={{ width: "200px" }}
     />
   );
 };

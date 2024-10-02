@@ -156,6 +156,16 @@ export const StyledSearchBase = styled(TextField, {
       .${outlinedInputClasses.root} {
         padding: 0 ${spaces?.m}px;
         background-color: ${semanticColors?.base?.surfacePrimary};
+        width: 100%;
+
+        .${outlinedInputClasses.input} {
+          padding-right: ${spaces?.l}px;
+        }
+
+        .MuiInputAdornment-positionEnd {
+          position: absolute;
+          right: ${spaces?.m}px;
+        }
 
         .${outlinedInputClasses.notchedOutline} {
           border: 1px solid ${semanticColors?.base?.border};

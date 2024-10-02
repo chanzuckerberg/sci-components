@@ -223,6 +223,7 @@ export const IconBankDemo = (props: Args): JSX.Element => {
         placeholder="Search icons"
         name="square-input-search"
         onChange={searchIconHandler}
+        sx={{ width: "210px" }}
       />
       {icons.length ? (
         <IconBankWrapper>
