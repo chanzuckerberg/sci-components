@@ -10,7 +10,7 @@ export enum SDSWarningTypes {
   TooltipInverted = "tooltipInverted",
 }
 
-const SDS_WARNINGS = {
+export const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonMinimalIsAllCaps]: {
     hasWarned: false,
     message:

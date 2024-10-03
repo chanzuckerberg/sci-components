@@ -1,124 +1,90 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import Button from "src/core/Button";
+import { SDS_WARNINGS, SDSWarningTypes } from "src/common/warnings";
 
-// Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
 
-const PAPER_ROOT_CLASS_NAME = "MuiPaper-root";
-const MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME = "MuiDrawer-paperAnchorLeft";
-const MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME = "MuiDrawer-paperAnchorRight";
-const MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME = "MuiDrawer-paperAnchorBottom";
+const BUTTON_TOGGLE_TEST_ID = "button-toggle";
 
 describe("<ButtonToggle />", () => {
   generateSnapshots(stories);
 
   it("renders ButtonToggle component", () => {
     render(<Test {...Test.args} />);
-    const panelElement = screen.getByTestId("panel");
+    const panelElement = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
     expect(panelElement).not.toBeNull();
   });
 
-  it("renders with overlay header and close button when sdsType is 'overlay'", () => {
-    render(
-      <Test
-        sdsType="overlay"
-        HeaderComponent={<p>Header</p>}
-        CloseButtonComponent={
-          <Button
-            sdsStyle="icon"
-            sdsSize="medium"
-            sdsType="secondary"
-            icon="ChevronLeft"
-            data-testid="panel-close-button"
-          />
-        }
-      />
+  it("renders with different sdsSize values", () => {
+    render(<Test {...Test.args} sdsSize="small" />);
+    const smallButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(smallButton).toBeInTheDocument();
+
+    // (masoudmanson): cleanup is necessary to avoid having
+    // multiple elements with the same test id in the DOM
+    cleanup();
+
+    render(<Test {...Test.args} sdsSize="large" />);
+    const largeButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(largeButton).toBeInTheDocument();
+  });
+
+  it("renders with different sdsStage values", () => {
+    render(<Test {...Test.args} sdsStage="on" />);
+    const onStageButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(onStageButton).toBeInTheDocument();
+
+    cleanup();
+
+    render(<Test {...Test.args} sdsStage="off" />);
+    const offStageButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(offStageButton).toBeInTheDocument();
+  });
+
+  it("renders with different sdsType values", () => {
+    render(<Test {...Test.args} sdsType="primary" />);
+    const primaryButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(primaryButton).toBeInTheDocument();
+
+    cleanup();
+
+    render(<Test {...Test.args} sdsType="secondary" />);
+    const secondaryButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(secondaryButton).toBeInTheDocument();
+  });
+
+  it("displays warning when icon is missing", () => {
+    const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
+    render(<Test {...Test.args} icon={undefined} />);
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        SDS_WARNINGS[SDSWarningTypes.ButtonToggleMissingIconProp].message
+      )
     );
-
-    // Check if HeaderComponent is rendered
-    const headerElement = screen.getByText("Header");
-    expect(headerElement).toBeInTheDocument();
-
-    // Check if close button is rendered
-    const closeButton = screen.getByTestId("panel-close-button");
-    expect(closeButton).toBeInTheDocument();
+    warnSpy.mockRestore();
   });
 
-  it("renders without header when sdsType is 'basic'", () => {
-    render(<Test sdsType="basic" />);
-
-    // The header component should not be rendered for 'basic' panels
-    const headerElement = screen.queryByText("Header");
-    expect(headerElement).not.toBeInTheDocument();
-  });
-
-  it("applies the correct position based on the 'position' prop", () => {
-    const { rerender } = render(<Test position="left" />);
-
-    let panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
-
-    rerender(<Test position="right" />);
-    panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME);
-
-    rerender(<Test sdsType="overlay" position="bottom" />);
-    panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME);
-  });
-
-  it("calls the onClick handler when close button is clicked", () => {
-    const handleClose = jest.fn();
-
+  it("displays an error when an icon doesn't support the ButtonToggle size", () => {
+    const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    // (masoudmanson): SlidersHorizontal icon doesn't support the small size
+    // make sure to change this to another icon if the SlidersHorizontal icon is updated
+    const SdsIconWithoutSmallSize = "SlidersHorizontal";
     render(
-      <Test
-        sdsType="overlay"
-        closeButtonOnClick={handleClose}
-        HeaderComponent={<div>Header</div>}
-        CloseButtonComponent={
-          <Button
-            sdsStyle="icon"
-            sdsSize="medium"
-            sdsType="secondary"
-            icon="ChevronLeft"
-            data-testid="panel-close-button"
-          />
-        }
-      />
+      <Test {...Test.args} sdsSize="small" icon={SdsIconWithoutSmallSize} />
     );
-
-    const closeButton = screen.getByTestId("panel-close-button");
-    fireEvent.click(closeButton);
-
-    expect(handleClose).toHaveBeenCalledTimes(1);
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining(
+        `Error: Icon ${SdsIconWithoutSmallSize} not found for size s. This is a @czi-sds/components problem.`
+      )
+    );
+    errorSpy.mockRestore();
   });
 
-  it("renders with default 'sdsType' and 'position' props", () => {
-    render(<Test />);
-
-    const panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-
-    // Default props: sdsType should be 'basic' and position should be 'left'
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
-  });
-
-  it("does not accept position='bottom' for sdsType='basic', should default to position='left'", () => {
-    // Render the BasicPanel with an invalid position 'bottom'
-    render(<Test sdsType="basic" position="bottom" />);
-
-    const panelElement = screen.getByTestId("panel");
-
-    expect(panelElement).not.toHaveClass(MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME);
+  it("renders with disabled state", () => {
+    render(<Test {...Test.args} disabled={true} />);
+    const disabledButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(disabledButton).toBeDisabled();
   });
 });
