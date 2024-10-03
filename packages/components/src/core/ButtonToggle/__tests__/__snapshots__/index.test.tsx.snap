@@ -2,6 +2,7 @@
 
 exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
 <button
+  aria-label="button-toggle"
   class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
   icon="InfoCircle"
   tabindex="0"

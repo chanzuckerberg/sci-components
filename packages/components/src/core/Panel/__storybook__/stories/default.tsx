@@ -106,6 +106,7 @@ export const Panel = (props: Args): JSX.Element => {
 
       <Main open={open} {...props}>
         <ButtonToggle
+          aria-label="button-toggle"
           icon="InfoCircle"
           sdsSize="medium"
           sdsType="primary"
