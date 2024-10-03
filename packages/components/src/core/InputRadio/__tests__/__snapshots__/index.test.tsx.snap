@@ -3,7 +3,7 @@
 exports[`<InputRadio /> Default story renders snapshot 1`] = `
 <div
   aria-labelledby="demo-radio-buttons-group-label"
-  class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+  class="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
   role="radiogroup"
 >
   <label
