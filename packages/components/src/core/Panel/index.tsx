@@ -7,13 +7,13 @@ import PanelHeaderClose, {
 } from "./components/PanelHeaderClose";
 
 export interface BasicPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType?: "basic"; // Discriminator
+  sdsType: "basic"; // Discriminator
   position?: "left" | "right";
   width?: number | string;
 }
 
 export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType?: "overlay"; // Discriminator
+  sdsType: "overlay"; // Discriminator
   position?: "left" | "right" | "bottom";
   width?: number | string;
   HeaderComponent?: React.ReactNode;
@@ -39,11 +39,12 @@ export const PANEL_OVERLAY_MIN_WIDTH_PX = 320;
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const { children, sdsType = "basic", position = "left", width } = props;
 
-  const drawerWidth = width
-    ? width
-    : sdsType === "basic"
+  const drawerWidth =
+    width ??
+    (sdsType === "basic"
       ? PANEL_BASIC_MIN_WIDTH_PX
-      : PANEL_OVERLAY_MIN_WIDTH_PX;
+      : PANEL_OVERLAY_MIN_WIDTH_PX);
+
   const drawerVariant = sdsType === "basic" ? "persistent" : "temporary";
 
   // (masoudmanson): The basic Panel only supports "left" or "right" positions.

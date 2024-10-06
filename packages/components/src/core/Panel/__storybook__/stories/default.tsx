@@ -19,23 +19,28 @@ const InvalidBasicPanelPropsError = (
 );
 
 const Main = (
-  props: PanelProps & { open: boolean; children?: React.ReactNode }
+  props: Pick<PanelProps, "width" | "sdsType" | "position"> & {
+    open: boolean;
+    children?: React.ReactNode;
+  }
 ) => {
-  const { open, sdsType, position, children, width } = props;
+  const { open, sdsType, position = "left", children, width } = props;
 
-  const margin =
-    sdsType === "basic"
-      ? position === "left"
-        ? `0 0 0 ${width}`
-        : position === "right"
-          ? `0 ${width} 0 0`
-          : "0" // Default to 0 if neither left nor right
-      : "0"; // Default to 0 for non-basic panels
+  const positionMarginMap = {
+    bottom: "0",
+    left: `0 0 0 ${width}`,
+    right: `0 ${width} 0 0`,
+  };
+
+  /**
+   * (masoudmanson): Default to 0 for non-basic panels.
+   */
+  const margin = sdsType === "basic" ? positionMarginMap[position] : "0";
 
   return (
     <Box
       sx={{
-        margin: open ? margin : "none",
+        margin: open ? margin : "0",
       }}
     >
       {children}
@@ -44,47 +49,28 @@ const Main = (
 };
 
 export const Panel = (props: Args): JSX.Element => {
-  const { sdsType, position } = props;
+  const { sdsType = "basic", position = "left" } = props;
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
+  const commonBoxStyles = {
+    alignItems: "center",
+    border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
+    color: theme?.palette?.sds?.base?.textSecondary,
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    width: "100%",
   };
 
   const DrawerList = (
-    <Box
-      sx={{
-        alignItems: "center",
-        border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
-        color: theme?.palette?.sds?.base?.textSecondary,
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        width: "100%",
-      }}
-      role="presentation"
-    >
+    <Box sx={commonBoxStyles} role="presentation">
       [Panel Content]
     </Box>
   );
 
-  const HeaderComponent = (
-    <Box
-      sx={{
-        alignItems: "center",
-        border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
-        color: theme?.palette?.sds?.base?.textSecondary,
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        width: "100%",
-      }}
-    >
-      [Panel Header]
-    </Box>
-  );
+  const HeaderComponent = <Box sx={commonBoxStyles}>[Panel Header]</Box>;
 
   if (sdsType === "basic" && position === "bottom") {
     return InvalidBasicPanelPropsError;
@@ -95,7 +81,7 @@ export const Panel = (props: Args): JSX.Element => {
       <RawPanel
         sdsType={sdsType}
         open={open}
-        closeButtonOnClick={toggleDrawer(false)}
+        closeButtonOnClick={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
         disableScrollLock={true}
         ModalProps={{ disableScrollLock: true }}
@@ -104,7 +90,7 @@ export const Panel = (props: Args): JSX.Element => {
         {DrawerList}
       </RawPanel>
 
-      <Main open={open} {...props}>
+      <Main open={open} sdsType={sdsType} {...props}>
         <Button
           sdsType="primary"
           sdsStyle="icon"
