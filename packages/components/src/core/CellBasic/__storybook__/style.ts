@@ -16,7 +16,6 @@ export const ButtonIconsGroupRight = styled("div")`
     return `
       align-items: center;
       display: inline-flex;
-      gap: ${spaces?.xxxs}px;
       height: 100%;
       border-left: solid 1px ${semanticColors?.base?.divider};
       padding-left: ${spaces?.xs}px;
@@ -25,14 +24,7 @@ export const ButtonIconsGroupRight = styled("div")`
 `;
 
 export const ButtonIconsGroupBottom = styled("div")`
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
-
-    return `
-      display: inline-flex;
-      gap: ${spaces?.xs}px;
-    `;
-  }}
+  display: inline-flex;
 `;
 
 export const StyledButton = styled(Button)`
@@ -95,8 +87,8 @@ export const StyledCellBasic = styled(CellBasic)`
     return `
       border: dashed 1px ${semanticColors?.base?.divider};
       height: 70px;
-      maxWidth: 250px;
-      width: 250px;
+      max-width: 300px;
+      width: 300px;
     `;
   }}
 `;

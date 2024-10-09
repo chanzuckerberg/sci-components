@@ -3,4 +3,7 @@ export const PANEL_EXCLUDED_CONTROLS = [
   "position",
   "width",
   "disableScrollLock",
+  "HeaderComponent",
+  "CloseButtonComponent",
+  "closeButtonOnClick",
 ];

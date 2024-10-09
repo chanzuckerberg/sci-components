@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
+exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
 <button
-  aria-label="info"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1sh3t66-MuiButtonBase-root-MuiIconButton-root"
+  aria-label="button-toggle"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
   icon="InfoCircle"
   tabindex="0"
   type="button"

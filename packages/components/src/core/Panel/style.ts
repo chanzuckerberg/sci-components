@@ -19,7 +19,7 @@ const doNotForwardProps = [
   "sdsType",
   "position",
   "width",
-  "headerComponent",
+  "HeaderComponent",
   "onClick",
   "disableScrollLock",
   "closeButtonOnClick",

@@ -45,7 +45,7 @@ export default {
   parameters: {
     badges: [BADGE.STABLE],
   },
-  title: "Components/ButtonDropdown",
+  title: "Components/Buttons/ButtonDropdown",
 } as Meta;
 
 // Default
