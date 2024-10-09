@@ -17,6 +17,10 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
     const semanticColors = getSemanticColors(props);
 
     return `
+      .${toggleButtonClasses.root}.${toggleButtonClasses.disabled} {
+        border-color: ${semanticColors?.base?.border};
+      }
+
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
         background-color: ${semanticColors?.base?.fillOpen};
         color: ${semanticColors?.accent?.iconSelected};
