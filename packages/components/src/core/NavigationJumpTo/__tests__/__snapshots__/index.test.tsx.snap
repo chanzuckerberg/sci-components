@@ -107,95 +107,95 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
       Section panel height:
     </p>
     <span
-      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-11urd0a-MuiSlider-root"
+      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-ush1oe-MuiSlider-root"
     >
       <span
-        class="MuiSlider-rail css-14pt78w-MuiSlider-rail"
+        class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
       />
       <span
-        class="MuiSlider-track css-1gv0vcd-MuiSlider-track"
+        class="MuiSlider-track css-ttgsjq-MuiSlider-track"
         style="left: 0%; width: 80%;"
       />
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
         data-index="0"
         style="left: 0%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
         data-index="0"
         style="left: 0%;"
       >
         20
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
         data-index="1"
         style="left: 20%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
         data-index="1"
         style="left: 20%;"
       >
         40
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
         data-index="2"
         style="left: 40%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
         data-index="2"
         style="left: 40%;"
       >
         60
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
         data-index="3"
         style="left: 60%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
         data-index="3"
         style="left: 60%;"
       >
         80
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
         data-index="4"
         style="left: 80%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
         data-index="4"
         style="left: 80%;"
       >
         100
       </span>
       <span
-        class="MuiSlider-mark css-1tfve6q-MuiSlider-mark"
+        class="MuiSlider-mark css-hzp7sc-MuiSlider-mark"
         data-index="5"
         style="left: 100%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel css-yafthl-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel css-1bvr8oc-MuiSlider-markLabel"
         data-index="5"
         style="left: 100%;"
       >
         120
       </span>
       <span
-        class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-jx1sa5-MuiSlider-thumb"
+        class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-cp2j25-MuiSlider-thumb"
         data-index="0"
         style="left: 80%;"
       >

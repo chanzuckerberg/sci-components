@@ -5,56 +5,56 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
   style="height: 180px; margin-left: 20px; margin-top: 15px; width: 180px;"
 >
   <span
-    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-1op5hnp-MuiSlider-root"
+    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium css-xebjg-MuiSlider-root"
   >
     <span
-      class="MuiSlider-rail css-14pt78w-MuiSlider-rail"
+      class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
     />
     <span
-      class="MuiSlider-track css-1gv0vcd-MuiSlider-track"
+      class="MuiSlider-track css-ttgsjq-MuiSlider-track"
       style="left: 15%; width: 70%;"
     />
     <span
-      class="MuiSlider-mark css-1tfve6q-MuiSlider-mark"
+      class="MuiSlider-mark css-hzp7sc-MuiSlider-mark"
       data-index="0"
       style="left: 0%;"
     />
     <span
       aria-hidden="true"
-      class="MuiSlider-markLabel MuiSlider-markLabel css-yafthl-MuiSlider-markLabel"
+      class="MuiSlider-markLabel MuiSlider-markLabel css-1bvr8oc-MuiSlider-markLabel"
       data-index="0"
       style="left: 0%;"
     >
       0
     </span>
     <span
-      class="MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark"
+      class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
       data-index="1"
       style="left: 50%;"
     />
     <span
       aria-hidden="true"
-      class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1eoe787-MuiSlider-markLabel"
+      class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
       data-index="1"
       style="left: 50%;"
     >
       50
     </span>
     <span
-      class="MuiSlider-mark css-1tfve6q-MuiSlider-mark"
+      class="MuiSlider-mark css-hzp7sc-MuiSlider-mark"
       data-index="2"
       style="left: 100%;"
     />
     <span
       aria-hidden="true"
-      class="MuiSlider-markLabel MuiSlider-markLabel css-yafthl-MuiSlider-markLabel"
+      class="MuiSlider-markLabel MuiSlider-markLabel css-1bvr8oc-MuiSlider-markLabel"
       data-index="2"
       style="left: 100%;"
     >
       100
     </span>
     <span
-      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-jx1sa5-MuiSlider-thumb"
+      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-cp2j25-MuiSlider-thumb"
       data-index="0"
       style="left: 15%;"
     >
@@ -74,7 +74,7 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-valueLabelOpen MuiSlider-valueLabel css-7d61z1-MuiSlider-valueLabel"
+        class="MuiSlider-valueLabelOpen MuiSlider-valueLabel css-14gyywz-MuiSlider-valueLabel"
       >
         <span
           class="MuiSlider-valueLabelCircle"
@@ -88,7 +88,7 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
       </span>
     </span>
     <span
-      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-jx1sa5-MuiSlider-thumb"
+      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-cp2j25-MuiSlider-thumb"
       data-index="1"
       style="left: 85%;"
     >
@@ -108,7 +108,7 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-valueLabelOpen MuiSlider-valueLabel css-7d61z1-MuiSlider-valueLabel"
+        class="MuiSlider-valueLabelOpen MuiSlider-valueLabel css-14gyywz-MuiSlider-valueLabel"
       >
         <span
           class="MuiSlider-valueLabelCircle"

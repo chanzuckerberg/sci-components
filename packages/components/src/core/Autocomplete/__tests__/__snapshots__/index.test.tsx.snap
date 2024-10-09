@@ -86,7 +86,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="base-Popper-root css-v2msuu-MuiPopper-root"
+      class="MuiPopper-root css-v2msuu-MuiPopper-root"
       data-popper-escaped=""
       data-popper-placement="bottom-start"
       data-popper-reference-hidden=""
@@ -126,7 +126,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1dvimkq-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1nl9kkd-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -225,7 +225,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             </div>
           </div>
           <div
-            class="base-Popper-root MuiAutocomplete-popper MuiAutocomplete-popperDisablePortal css-1rndd9j-MuiPopper-root-MuiAutocomplete-popper"
+            class="MuiPopper-root MuiAutocomplete-popper MuiAutocomplete-popperDisablePortal css-1gsu57t-MuiPopper-root-MuiAutocomplete-popper"
             data-popper-escaped=""
             data-popper-placement="bottom"
             data-popper-reference-hidden=""
@@ -541,7 +541,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1dvimkq-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1nl9kkd-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -640,7 +640,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             </div>
           </div>
           <div
-            class="base-Popper-root MuiAutocomplete-popper MuiAutocomplete-popperDisablePortal css-1rndd9j-MuiPopper-root-MuiAutocomplete-popper"
+            class="MuiPopper-root MuiAutocomplete-popper MuiAutocomplete-popperDisablePortal css-1gsu57t-MuiPopper-root-MuiAutocomplete-popper"
             data-popper-escaped=""
             data-popper-placement="bottom"
             data-popper-reference-hidden=""
@@ -967,7 +967,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1os64xc-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-41z5h3-MuiAutocomplete-root"
     label="Search by label"
   >
     <div

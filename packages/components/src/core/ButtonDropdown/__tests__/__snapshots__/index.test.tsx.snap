@@ -2,13 +2,13 @@
 
 exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-cv2bs4-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-cv2bs4-MuiButtonBase-root-MuiButton-root"
   icon="Download"
   tabindex="0"
   type="button"
 >
   <span
-    class="MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+    class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
   >
     <div
       class="css-1ft6wgl"
@@ -28,7 +28,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
   </span>
   Label
   <span
-    class="MuiButton-endIcon MuiButton-iconSizeMedium css-9tj150-MuiButton-endIcon"
+    class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-9tj150-MuiButton-endIcon"
   >
     <div
       class="css-1ft6wgl"
