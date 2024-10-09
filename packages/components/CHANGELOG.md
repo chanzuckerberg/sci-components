@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.4.0...@czi-sds/components@21.5.0) (2024-10-09)
+
+### Features
+
+- **icons:** add new s and xs sizes for the Book icon ([#873](https://github.com/chanzuckerberg/sci-components/issues/873)) ([a256f8c](https://github.com/chanzuckerberg/sci-components/commit/a256f8cc45d7f895130d9b326bace180f6a717e9))
+
 # [21.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.3.0...@czi-sds/components@21.4.0) (2024-10-09)
 
 ### Features
