@@ -7,13 +7,13 @@ import PanelHeaderClose, {
 } from "./components/PanelHeaderClose";
 
 export interface BasicPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType?: "basic"; // Discriminator
+  sdsType: "basic"; // Discriminator
   position?: "left" | "right";
   width?: number | string;
 }
 
 export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType?: "overlay"; // Discriminator
+  sdsType: "overlay"; // Discriminator
   position?: "left" | "right" | "bottom";
   width?: number | string;
   HeaderComponent?: React.ReactNode;
@@ -37,13 +37,20 @@ export const PANEL_OVERLAY_MIN_WIDTH_PX = 320;
  */
 
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
-  const { children, sdsType = "basic", position = "left", width } = props;
+  const {
+    children,
+    sdsType = "basic",
+    position = "left",
+    width,
+    ModalProps,
+  } = props;
 
-  const drawerWidth = width
-    ? width
-    : sdsType === "basic"
+  const drawerWidth =
+    width ??
+    (sdsType === "basic"
       ? PANEL_BASIC_MIN_WIDTH_PX
-      : PANEL_OVERLAY_MIN_WIDTH_PX;
+      : PANEL_OVERLAY_MIN_WIDTH_PX);
+
   const drawerVariant = sdsType === "basic" ? "persistent" : "temporary";
 
   // (masoudmanson): The basic Panel only supports "left" or "right" positions.
@@ -71,6 +78,21 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
       anchor={drawerAnchor}
       variant={drawerVariant}
       width={drawerWidth}
+      ModalProps={{
+        ...ModalProps,
+        // (masoudmanson): Set disableEnforceFocus: true to prevent the Drawer from forcing
+        // focus on itself. This is necessary for the SDS Panel, as it should not trap focus
+        // within itself; users should be able to interact with the rest of the page.
+        // However, this prop is not working correctly in MUI v5, causing accessibility (a11y) issues.
+        // The issue has been reported to the MUI team, and we are awaiting a fix.
+        // In the meantime, the a11y errors can be ignored.
+        disableEnforceFocus: true,
+        // (masoudmanson): Set disableScrollLock: true to prevent the Drawer from locking
+        // the page scroll when it is open. This is necessary for the SDS Panel, as it should
+        // not lock the page scroll when it is open.
+        disableScrollLock: true,
+      }}
+      hideBackdrop={true}
     >
       {isOverlayPanelProps(props) && (
         <StyledHeaderComponent>
