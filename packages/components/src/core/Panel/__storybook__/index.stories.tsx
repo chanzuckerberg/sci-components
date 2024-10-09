@@ -4,6 +4,7 @@ import { Panel } from "./stories/default";
 import { PANEL_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import { CustomHeaderAndCloseButtonDemo } from "./stories/customCloseButton";
+import { ScrollBehaviorDemo } from "./stories/scrollBehavior";
 
 export default {
   argTypes: {
@@ -40,6 +41,20 @@ export const Default = {
     sdsType: "basic",
     width: "320px",
   },
+};
+
+// With Custom Close Button and Header
+
+export const ScrollBehavior = {
+  parameters: {
+    controls: {
+      exclude: PANEL_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScrollBehaviorDemo {...args} />,
 };
 
 // With Custom Close Button and Header
