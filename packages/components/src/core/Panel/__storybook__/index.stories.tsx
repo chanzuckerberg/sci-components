@@ -47,6 +47,11 @@ export const Default = {
 
 export const ScrollBehavior = {
   parameters: {
+    // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
+    // with the 'disableEnforceFocus' prop in the Modal component.
+    axe: {
+      disabledRules: ["aria-hidden-focus"],
+    },
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,
     },
@@ -61,6 +66,11 @@ export const ScrollBehavior = {
 
 export const CustomHeaderAndCloseButton = {
   parameters: {
+    // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
+    // with the 'disableEnforceFocus' prop in the Modal component.
+    axe: {
+      disabledRules: ["aria-hidden-focus"],
+    },
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,
     },

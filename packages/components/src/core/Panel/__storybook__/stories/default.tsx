@@ -83,8 +83,6 @@ export const Panel = (props: Args): JSX.Element => {
         open={open}
         closeButtonOnClick={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
-        disableScrollLock={true}
-        ModalProps={{ disableScrollLock: true }}
         {...props}
       >
         {DrawerList}

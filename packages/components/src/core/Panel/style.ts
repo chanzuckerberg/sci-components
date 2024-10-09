@@ -48,7 +48,9 @@ const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
   return css`
     /**
      * (masoudmanson): This prevents the Panel from taking up the full width of the screen,
-     * so that the ToggleButton can be clicked to close the Panel.
+     * allowing the ToggleButton to be clicked to close the Panel. Due to an issue with
+     * MUI v5, the following styles cause the Panel to generate accessibility (a11y) errors.
+     * In the meantime, we are ignoring the a11y errors within Storybook.
      */
     width: fit-content;
     height: fit-content;

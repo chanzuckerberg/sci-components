@@ -37,7 +37,6 @@ export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
           </Typography>
         }
         position="right"
-        ModalProps={{ disableScrollLock: true }}
         {...props}
       >
         {LONG_LOREM_IPSUM}
