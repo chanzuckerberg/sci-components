@@ -73,7 +73,7 @@ export default {
   parameters: {
     badges: [BADGE.STABLE],
   },
-  title: "Components/Button",
+  title: "Components/Buttons/Button",
 } as Meta;
 
 // Default
