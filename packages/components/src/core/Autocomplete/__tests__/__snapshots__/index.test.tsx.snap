@@ -28,7 +28,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </span>
           <button
             aria-label="search-button"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1b01nn3-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-3px3eh-MuiButtonBase-root-MuiIconButton-root"
             icon="Search"
             tabindex="0"
             type="button"
@@ -160,7 +160,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                     <button
                       aria-hidden="true"
                       aria-label="Search Button"
-                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-9z0etm-MuiButtonBase-root-MuiIconButton-root"
+                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-l19ret-MuiButtonBase-root-MuiIconButton-root"
                       disabled=""
                       icon="Search"
                       tabindex="-1"
@@ -575,7 +575,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                     <button
                       aria-hidden="true"
                       aria-label="Search Button"
-                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-9z0etm-MuiButtonBase-root-MuiIconButton-root"
+                      class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-l19ret-MuiButtonBase-root-MuiIconButton-root"
                       disabled=""
                       icon="Search"
                       tabindex="-1"
@@ -1001,7 +1001,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
             <button
               aria-hidden="false"
               aria-label="Search Button"
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1b01nn3-MuiButtonBase-root-MuiIconButton-root"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-3px3eh-MuiButtonBase-root-MuiIconButton-root"
               icon="Search"
               tabindex="0"
               type="button"

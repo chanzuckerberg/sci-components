@@ -2,7 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import { Args } from "@storybook/react";
 import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
+import ButtonToggle from "src/core/ButtonToggle";
 import Callout from "src/core/Callout";
 import CalloutTitle from "src/core/Callout/components/CalloutTitle";
 import RawPanel, { PanelProps } from "src/core/Panel";
@@ -88,16 +88,15 @@ export const Panel = (props: Args): JSX.Element => {
         {DrawerList}
       </RawPanel>
 
-      <Main open={open} sdsType={sdsType} {...props}>
-        <Button
-          sdsType="primary"
-          sdsStyle="icon"
+      <Main sdsType={sdsType} open={open} {...props}>
+        <ButtonToggle
+          aria-label="button-toggle"
           icon="InfoCircle"
+          sdsSize="medium"
+          sdsType="primary"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label="Panel Toggle"
-        >
-          Toggle Panel
-        </Button>
+          sdsStage={open ? "on" : "off"}
+        />
 
         <p>{LONG_LOREM_IPSUM}</p>
         <p>{LONG_LOREM_IPSUM}</p>

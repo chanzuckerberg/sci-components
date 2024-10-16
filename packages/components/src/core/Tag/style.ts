@@ -168,7 +168,9 @@ function generatePrimaryTagColors(
   colors: string[],
   semanticColors: SDSPalette | null
 ) {
-  if (intent) {
+  if (intent || colors.length) {
+    intent = intent || "neutral";
+
     return {
       background:
         colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillPrimary,
@@ -204,7 +206,9 @@ function generateSecondaryTagColors(
   colors: string[],
   semanticColors: SDSPalette | null
 ) {
-  if (intent) {
+  if (intent || colors.length) {
+    intent = intent || "neutral";
+
     return {
       background:
         colors.length >= 2 ? colors[1] : semanticColors?.[intent].fillSecondary,
