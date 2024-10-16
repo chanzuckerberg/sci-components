@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.5.0...@czi-sds/components@21.6.0) (2024-10-16)
+
+### Bug Fixes
+
+- **tag:** fix custom coloring of Tag component ([#866](https://github.com/chanzuckerberg/sci-components/issues/866)) ([268cdda](https://github.com/chanzuckerberg/sci-components/commit/268cddab07a92acf446e53170528d18e03108b17))
+
+### Features
+
+- **ButtonToggle:** implement new icon variant of toggle ([#860](https://github.com/chanzuckerberg/sci-components/issues/860)) ([3f532ad](https://github.com/chanzuckerberg/sci-components/commit/3f532ad20c6b872990c5122d93774ab6c87ee667))
+
 # [21.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.4.0...@czi-sds/components@21.5.0) (2024-10-09)
 
 ### Features

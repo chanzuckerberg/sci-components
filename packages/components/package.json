@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "21.5.0",
+  "version": "21.6.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.cjs.d.ts",
