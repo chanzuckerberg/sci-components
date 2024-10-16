@@ -2,6 +2,7 @@ export enum SDSWarningTypes {
   ButtonMinimalIsAllCaps = "buttonMinimalIsAllCaps",
   ButtonMissingSDSProps = "buttonMissingProps",
   ButtonIconMissingIconProp = "buttonIconMissingIconProp",
+  ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
   TooltipSubtitle = "tooltipSubtitle",
@@ -9,7 +10,7 @@ export enum SDSWarningTypes {
   TooltipInverted = "tooltipInverted",
 }
 
-const SDS_WARNINGS = {
+export const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonMinimalIsAllCaps]: {
     hasWarned: false,
     message:
@@ -24,6 +25,10 @@ const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Buttons with an SDS type of icon require an icon prop to be provided.",
+  },
+  [SDSWarningTypes.ButtonToggleMissingIconProp]: {
+    hasWarned: false,
+    message: "Warning: Button Toggles require an icon prop to be provided.",
   },
   [SDSWarningTypes.ChipDeprecated]: {
     hasWarned: false,

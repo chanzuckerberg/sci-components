@@ -5,6 +5,7 @@ import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svg
 import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
 import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
 import { ReactComponent as IconBookLarge } from "../../common/svgs/IconBookLarge.svg";
+import { ReactComponent as IconBookSmall } from "../../common/svgs/IconBookSmall.svg";
 import { ReactComponent as IconCheckCircleLarge } from "../../common/svgs/IconCheckCircleLarge.svg";
 import { ReactComponent as IconCheckCircleSmall } from "../../common/svgs/IconCheckCircleSmall.svg";
 import { ReactComponent as IconCheckSmall } from "../../common/svgs/IconCheckSmall.svg";
@@ -144,7 +145,7 @@ export interface IconNameToSizes {
   BarChartHorizontal3: "xs" | "s";
   BarChartVertical3: "xs" | "s";
   BarChartVertical4: "xs" | "s";
-  Book: "l" | "xl";
+  Book: "xs" | "s" | "l" | "xl";
   Check: "xs" | "s";
   CheckCircle: "xs" | "s" | "l" | "xl";
   ChevronDown: "xs" | "s" | "l" | "xl";
@@ -280,7 +281,7 @@ export const iconMap: Props = {
   },
   Book: {
     largeIcon: IconBookLarge,
-    smallIcon: null,
+    smallIcon: IconBookSmall,
   },
   Check: {
     largeIcon: null,
