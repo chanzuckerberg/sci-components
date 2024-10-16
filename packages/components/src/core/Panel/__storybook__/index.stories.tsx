@@ -4,6 +4,7 @@ import { Panel } from "./stories/default";
 import { PANEL_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import { CustomHeaderAndCloseButtonDemo } from "./stories/customCloseButton";
+import { ScrollBehaviorDemo } from "./stories/scrollBehavior";
 
 export default {
   argTypes: {
@@ -44,8 +45,32 @@ export const Default = {
 
 // With Custom Close Button and Header
 
+export const ScrollBehavior = {
+  parameters: {
+    // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
+    // with the 'disableEnforceFocus' prop in the Modal component.
+    axe: {
+      disabledRules: ["aria-hidden-focus"],
+    },
+    controls: {
+      exclude: PANEL_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScrollBehaviorDemo {...args} />,
+};
+
+// With Custom Close Button and Header
+
 export const CustomHeaderAndCloseButton = {
   parameters: {
+    // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
+    // with the 'disableEnforceFocus' prop in the Modal component.
+    axe: {
+      disabledRules: ["aria-hidden-focus"],
+    },
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,
     },
