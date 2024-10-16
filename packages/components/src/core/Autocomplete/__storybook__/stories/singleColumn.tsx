@@ -48,7 +48,7 @@ export const AutocompleteSingleColumnDemo = <
   return (
     <>
       <div style={AUTOCOMPLETE_WRAPPER_STYLES}>
-        <AutocompleteBase
+        <AutocompleteBase<T, Multiple, FreeSolo, DisableClearable>
           id="autocomplete-base-demo"
           disableCloseOnSelect={multiple}
           label={label}
