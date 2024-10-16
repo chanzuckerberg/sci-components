@@ -16,6 +16,8 @@ export * from "./core/ButtonDropdown";
 export { default as ButtonDropdown } from "./core/ButtonDropdown";
 export * from "./core/ButtonIcon";
 export { default as ButtonIcon } from "./core/ButtonIcon";
+export * from "./core/ButtonToggle";
+export { default as ButtonToggle } from "./core/ButtonToggle";
 export * from "./core/Callout";
 export { default as Callout } from "./core/Callout";
 export { default as CalloutTitle } from "./core/Callout/components/CalloutTitle";

@@ -123,6 +123,10 @@ const small = (props: ButtonIconExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`
+    ${sdsType !== "tertiary"
+      ? `margin: 0 ${spaces?.xxs}px ${spaces?.xxs}px 0;`
+      : ""}
+
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -137,6 +141,10 @@ const medium = (props: ButtonIconExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`
+    ${sdsType !== "tertiary"
+      ? `margin: 0 ${spaces?.xxs}px ${spaces?.xxs}px 0;`
+      : ""}
+
     .MuiSvgIcon-root {
       height: ${iconSizes?.l.height}px;
       width: ${iconSizes?.l.width}px;
@@ -151,6 +159,10 @@ const large = (props: ButtonIconExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`
+    ${sdsType !== "tertiary"
+      ? `margin: 0 ${spaces?.s}px ${spaces?.s}px 0;`
+      : ""}
+
     .MuiSvgIcon-root {
       height: ${iconSizes?.xl.height}px;
       width: ${iconSizes?.xl.height}px;
