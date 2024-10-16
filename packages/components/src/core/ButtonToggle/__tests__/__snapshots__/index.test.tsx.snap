@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
+<button
+  aria-label="button-toggle"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
+  icon="InfoCircle"
+  tabindex="0"
+  type="button"
+>
+  <div
+    class="css-1ft6wgl"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+      data-file-name="IconInfoCircleLarge"
+      data-testid="IconInfoCircleLarge"
+      fillcontrast="white"
+      focusable="false"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    />
+  </div>
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+  />
+</button>
+`;

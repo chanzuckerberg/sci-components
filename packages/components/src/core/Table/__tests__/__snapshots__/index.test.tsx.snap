@@ -134,7 +134,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class=" css-11b4fo2"
+        class="css-11b4fo2"
         data-mui-internal-clone-element="true"
         tabindex="0"
       >
@@ -360,7 +360,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       >
         <div
           aria-labelledby="demo-radio-buttons-group-label"
-          class="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+          class="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
           role="radiogroup"
         >
           <label
@@ -495,7 +495,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class=" css-1gmh0ks"
+      class="css-1gmh0ks"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"

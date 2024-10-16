@@ -19,7 +19,7 @@ const doNotForwardProps = [
   "sdsType",
   "position",
   "width",
-  "headerComponent",
+  "HeaderComponent",
   "onClick",
   "disableScrollLock",
   "closeButtonOnClick",
@@ -46,6 +46,19 @@ const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
   const shadows = getShadows(props);
 
   return css`
+    /**
+     * (masoudmanson): This prevents the Panel from taking up the full width of the screen,
+     * allowing the ToggleButton to be clicked to close the Panel. Due to an issue with
+     * MUI v5, the following styles cause the Panel to generate accessibility (a11y) errors.
+     * In the meantime, we are ignoring the a11y errors within Storybook.
+     */
+    width: fit-content;
+    height: fit-content;
+    div[data-testid="sentinelStart"],
+    div[data-testid="sentinelEnd"] {
+      width: fit-content;
+    }
+
     .${drawerClasses.paper} {
       background-color: ${semanticColors?.base?.surfacePrimary};
       padding: ${spaces?.xl}px;
@@ -62,8 +75,6 @@ export const StyledDrawer = styled(Drawer, {
 })`
   ${(props: PanelExtraProps) => {
     const { sdsType = "basic", anchor = "left", width } = props;
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
 
     const widthString = typeof width === "number" ? `${width}px` : width;
 
@@ -71,13 +82,6 @@ export const StyledDrawer = styled(Drawer, {
     const panelHeight = anchor !== "bottom" ? "100%" : widthString;
 
     return css`
-      .${drawerClasses.root} {
-        border-color: ${semanticColors?.base?.divider};
-        border-width: ${spaces?.xxxs}px;
-        height: ${panelHeight};
-        width: ${panelWidth};
-      }
-
       .${drawerClasses.paper} {
         height: ${panelHeight};
         width: ${panelWidth};

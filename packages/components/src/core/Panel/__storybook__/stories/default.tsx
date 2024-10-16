@@ -2,7 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import { Args } from "@storybook/react";
 import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
+import ButtonToggle from "src/core/ButtonToggle";
 import Callout from "src/core/Callout";
 import CalloutTitle from "src/core/Callout/components/CalloutTitle";
 import RawPanel, { PanelProps } from "src/core/Panel";
@@ -19,23 +19,28 @@ const InvalidBasicPanelPropsError = (
 );
 
 const Main = (
-  props: PanelProps & { open: boolean; children?: React.ReactNode }
+  props: Pick<PanelProps, "width" | "sdsType" | "position"> & {
+    open: boolean;
+    children?: React.ReactNode;
+  }
 ) => {
-  const { open, sdsType, position, children, width } = props;
+  const { open, sdsType, position = "left", children, width } = props;
 
-  const margin =
-    sdsType === "basic"
-      ? position === "left"
-        ? `0 0 0 ${width}`
-        : position === "right"
-          ? `0 ${width} 0 0`
-          : "0" // Default to 0 if neither left nor right
-      : "0"; // Default to 0 for non-basic panels
+  const positionMarginMap = {
+    bottom: "0",
+    left: `0 0 0 ${width}`,
+    right: `0 ${width} 0 0`,
+  };
+
+  /**
+   * (masoudmanson): Default to 0 for non-basic panels.
+   */
+  const margin = sdsType === "basic" ? positionMarginMap[position] : "0";
 
   return (
     <Box
       sx={{
-        margin: open ? margin : "none",
+        margin: open ? margin : "0",
       }}
     >
       {children}
@@ -44,47 +49,28 @@ const Main = (
 };
 
 export const Panel = (props: Args): JSX.Element => {
-  const { sdsType, position } = props;
+  const { sdsType = "basic", position = "left" } = props;
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
+  const commonBoxStyles = {
+    alignItems: "center",
+    border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
+    color: theme?.palette?.sds?.base?.textSecondary,
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    width: "100%",
   };
 
   const DrawerList = (
-    <Box
-      sx={{
-        alignItems: "center",
-        border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
-        color: theme?.palette?.sds?.base?.textSecondary,
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        width: "100%",
-      }}
-      role="presentation"
-    >
+    <Box sx={commonBoxStyles} role="presentation">
       [Panel Content]
     </Box>
   );
 
-  const HeaderComponent = (
-    <Box
-      sx={{
-        alignItems: "center",
-        border: `dashed 1px ${theme?.palette?.sds?.base?.divider}`,
-        color: theme?.palette?.sds?.base?.textSecondary,
-        display: "flex",
-        height: "100%",
-        justifyContent: "center",
-        width: "100%",
-      }}
-    >
-      [Panel Header]
-    </Box>
-  );
+  const HeaderComponent = <Box sx={commonBoxStyles}>[Panel Header]</Box>;
 
   if (sdsType === "basic" && position === "bottom") {
     return InvalidBasicPanelPropsError;
@@ -95,25 +81,22 @@ export const Panel = (props: Args): JSX.Element => {
       <RawPanel
         sdsType={sdsType}
         open={open}
-        closeButtonOnClick={toggleDrawer(false)}
+        closeButtonOnClick={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
-        disableScrollLock={true}
-        ModalProps={{ disableScrollLock: true }}
         {...props}
       >
         {DrawerList}
       </RawPanel>
 
-      <Main open={open} {...props}>
-        <Button
-          sdsType="primary"
-          sdsStyle="icon"
+      <Main sdsType={sdsType} open={open} {...props}>
+        <ButtonToggle
+          aria-label="button-toggle"
           icon="InfoCircle"
+          sdsSize="medium"
+          sdsType="primary"
           onClick={() => setOpen((prev) => !prev)}
-          aria-label="Panel Toggle"
-        >
-          Toggle Panel
-        </Button>
+          sdsStage={open ? "on" : "off"}
+        />
 
         <p>{LONG_LOREM_IPSUM}</p>
         <p>{LONG_LOREM_IPSUM}</p>
