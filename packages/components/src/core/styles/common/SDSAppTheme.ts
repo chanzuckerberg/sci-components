@@ -466,130 +466,77 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
   },
 };
 
-export const SDSLightAppTheme: AppTheme = {
+/**
+ * Create a SDS App Theme with custom colors that follows the SDS color model.
+ */
+export const makeSdsSemanticAppTheme = (colors: Colors): AppTheme => ({
   ...sharedAppTheme,
-  colors: SDSLightThemeColors,
-};
+  colors,
+  // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
+  // applications to override those colors using their own custom theme.
+  // By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
+  // we allow other apps to specify their colors once, and have them apply
+  // throughout the application, such as in borders, etc without having to manually
+  // override every theme property that makes use of colors.
+  borders: {
+    accent: {
+      default: `1px solid ${colors.blue[500]}`,
+      focused: `1px solid ${colors.blue[500]}`,
+      hover: `1px solid ${colors.blue[600]}`,
+      open: `1px solid ${colors.blue[500]}`,
+      pressed: `1px solid ${colors.blue[700]}`,
+      selected: `1px solid ${colors.blue[500]}`,
+    },
+    base: {
+      default: `1px solid ${colors.gray[500]}`,
+      disabled: `1px solid ${colors.gray[300]}`,
+      divider: `1px solid ${colors.gray[200]}`,
+      hover: `1px solid ${colors.gray[900]}`,
+      pressed: `1px solid ${colors.gray[900]}`,
+      table: `1px solid ${colors.gray[300]}`,
+    },
+    beta: {
+      default: `1px solid ${colors.purple[600]}`,
+      extraThick: `4px solid ${colors.purple[600]}`,
+      thick: `2px solid ${colors.purple[600]}`,
+    },
+    info: {
+      default: `1px solid ${colors.blue[600]}`,
+      extraThick: `4px solid ${colors.blue[600]}`,
+      thick: `2px solid ${colors.blue[600]}`,
+    },
+    link: {
+      dashed: `1px dashed`,
+      solid: `1px solid`,
+    },
+    negative: {
+      default: `1px solid ${colors.red[600]}`,
+      extraThick: `4px solid ${colors.red[600]}`,
+      thick: `2px solid ${colors.red[600]}`,
+    },
+    neutral: {
+      default: `1px solid ${colors.gray[500]}`,
+      extraThick: `4px solid ${colors.gray[500]}`,
+      thick: `2px solid ${colors.gray[500]}`,
+    },
+    none: "none",
+    notice: {
+      default: `1px solid ${colors.yellow[600]}`,
+      extraThick: `4px solid ${colors.yellow[600]}`,
+      thick: `2px solid ${colors.yellow[600]}`,
+    },
+    positive: {
+      default: `1px solid ${colors.green[600]}`,
+      extraThick: `4px solid ${colors.green[600]}`,
+      thick: `2px solid ${colors.green[600]}`,
+    },
+  },
+});
 
-// (mlila) whenever our theme uses colors, we need to make sure we allow consuming
-// applications to override those colors using their own custom theme.
-// By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
-// we allow other apps to specify their colors once, and have them apply
-// throughout the application, such as in borders, etc without having to manually
-// override every theme property that makes use of colors.
-
-SDSLightAppTheme.borders = {
-  accent: {
-    default: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
-    focused: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
-    hover: `1px solid ${SDSLightAppTheme.colors.blue[600]}`,
-    open: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
-    pressed: `1px solid ${SDSLightAppTheme.colors.blue[700]}`,
-    selected: `1px solid ${SDSLightAppTheme.colors.blue[500]}`,
-  },
-  base: {
-    default: `1px solid ${SDSLightAppTheme.colors.gray[500]}`,
-    disabled: `1px solid ${SDSLightAppTheme.colors.gray[300]}`,
-    divider: `1px solid ${SDSLightAppTheme.colors.gray[200]}`,
-    hover: `1px solid ${SDSLightAppTheme.colors.gray[900]}`,
-    pressed: `1px solid ${SDSLightAppTheme.colors.gray[900]}`,
-    table: `1px solid ${SDSLightAppTheme.colors.gray[300]}`,
-  },
-  beta: {
-    default: `1px solid ${SDSLightAppTheme.colors.purple[600]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.purple[600]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.purple[600]}`,
-  },
-  info: {
-    default: `1px solid ${SDSLightAppTheme.colors.blue[600]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.blue[600]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.blue[600]}`,
-  },
-  link: {
-    dashed: `1px dashed`,
-    solid: `1px solid`,
-  },
-  negative: {
-    default: `1px solid ${SDSLightAppTheme.colors.red[600]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.red[600]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.red[600]}`,
-  },
-  neutral: {
-    default: `1px solid ${SDSLightAppTheme.colors.gray[500]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.gray[500]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.gray[500]}`,
-  },
-  none: "none",
-  notice: {
-    default: `1px solid ${SDSLightAppTheme.colors.yellow[600]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.yellow[600]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.yellow[600]}`,
-  },
-  positive: {
-    default: `1px solid ${SDSLightAppTheme.colors.green[600]}`,
-    extraThick: `4px solid ${SDSLightAppTheme.colors.green[600]}`,
-    thick: `2px solid ${SDSLightAppTheme.colors.green[600]}`,
-  },
-};
-
-export const SDSDarkAppTheme: AppTheme = {
-  ...sharedAppTheme,
-  colors: SDSDarkThemeColors,
-};
-
-SDSDarkAppTheme.borders = {
-  accent: {
-    default: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
-    focused: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
-    hover: `1px solid ${SDSDarkAppTheme.colors.blue[600]}`,
-    open: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
-    pressed: `1px solid ${SDSDarkAppTheme.colors.blue[700]}`,
-    selected: `1px solid ${SDSDarkAppTheme.colors.blue[500]}`,
-  },
-  base: {
-    default: `1px solid ${SDSDarkAppTheme.colors.gray[500]}`,
-    disabled: `1px solid ${SDSDarkAppTheme.colors.gray[300]}`,
-    divider: `1px solid ${SDSDarkAppTheme.colors.gray[200]}`,
-    hover: `1px solid ${SDSDarkAppTheme.colors.gray[900]}`,
-    pressed: `1px solid ${SDSDarkAppTheme.colors.gray[900]}`,
-    table: `1px solid ${SDSDarkAppTheme.colors.gray[300]}`,
-  },
-  beta: {
-    default: `1px solid ${SDSDarkAppTheme.colors.purple[600]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.purple[600]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.purple[600]}`,
-  },
-  info: {
-    default: `1px solid ${SDSDarkAppTheme.colors.blue[600]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.blue[600]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.blue[600]}`,
-  },
-  link: {
-    dashed: `1px dashed`,
-    solid: `1px solid`,
-  },
-  negative: {
-    default: `1px solid ${SDSDarkAppTheme.colors.red[600]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.red[600]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.red[600]}`,
-  },
-  neutral: {
-    default: `1px solid ${SDSDarkAppTheme.colors.gray[500]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.gray[500]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.gray[500]}`,
-  },
-  none: "none",
-  notice: {
-    default: `1px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.yellow[600]}`,
-  },
-  positive: {
-    default: `1px solid ${SDSDarkAppTheme.colors.green[600]}`,
-    extraThick: `4px solid ${SDSDarkAppTheme.colors.green[600]}`,
-    thick: `2px solid ${SDSDarkAppTheme.colors.green[600]}`,
-  },
-};
+export const SDSLightAppTheme: AppTheme =
+  makeSdsSemanticAppTheme(SDSLightThemeColors);
+export const SDSDarkAppTheme: AppTheme =
+  makeSdsSemanticAppTheme(SDSDarkThemeColors);
 
 /**
  * Helper function to select the appropriate theme settings.
