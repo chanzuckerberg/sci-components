@@ -254,6 +254,33 @@ const theme = createTheme(appTheme)
 </StyledEngineProvider>
 ```
 
+To apply custom colors that align with your branding while maintaining the SDS design configurations, use the `makeSdsSemanticAppTheme`. Provide it with a Colors object that follows the SDS model.
+
+```tsx
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { makeSdsSemanticAppTheme, makeThemeOptions, type Colors } from "@czi-sds/components";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import createTheme from "@mui/material/styles/createTheme";
+
+const CustomColors: Colors = {
+  ...
+}
+
+const customColorAppTheme = makeSdsSemanticAppTheme(CustomColors);
+
+const appTheme = makeThemeOptions(customColorAppTheme)
+
+const theme = createTheme(appTheme)
+
+<StyledEngineProvider injectFirst>
+  <ThemeProvider theme={theme}>
+    <EmotionThemeProvider theme={theme}>
+      <YourApp />
+    </EmotionThemeProvider>
+  </ThemeProvider>
+</StyledEngineProvider>
+```
+
 💡 CZGE example available [here](https://github.com/chanzuckerberg/czgenepi/blob/trunk/src/frontend/src/common/styles/theme.ts).
 
 💡 Material UI docs for custom theming available [here](https://mui.com/material-ui/customization/theming/).
