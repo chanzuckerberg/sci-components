@@ -471,7 +471,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
  */
 export const makeSdsSemanticAppTheme = (colors: Colors): AppTheme => ({
   ...sharedAppTheme,
-  colors,
   // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
   // applications to override those colors using their own custom theme.
   // By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
@@ -531,6 +530,7 @@ export const makeSdsSemanticAppTheme = (colors: Colors): AppTheme => ({
       thick: `2px solid ${colors.green[600]}`,
     },
   },
+  colors,
 });
 
 export const SDSLightAppTheme: AppTheme =
