@@ -3,6 +3,7 @@ import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Link } from "./stories/default";
 import { LINK_EXCLUDED_CONTROLS } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";
+import { LongerTextDemo } from "./stories/longText";
 
 export default {
   argTypes: {
@@ -36,6 +37,12 @@ export const Default = {
     sdsSize: "s",
     sdsStyle: "default",
   },
+};
+
+// Longer Text
+
+export const LongerText = {
+  render: () => LongerTextDemo(),
 };
 
 // Screenshot test
