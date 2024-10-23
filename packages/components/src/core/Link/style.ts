@@ -24,82 +24,43 @@ export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
 const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
 const defaultStyle = (props: LinkProps) => {
-  const { sdsSize = "s" } = props;
   const semanticColors = getSemanticColors(props);
 
   return css`
     color: ${semanticColors?.accent?.textAction};
     position: relative;
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      height: 1px;
-      margin-top: ${sdsSize === "s" ? -4 : -3}px;
-      width: 100%;
-    }
+    text-decoration: none;
+    text-underline-offset: 2.5px;
 
     &:hover {
       color: ${semanticColors?.accent?.textActionHover};
-
-      &::after {
-        background-color: ${semanticColors?.accent?.borderHover};
-      }
+      text-decoration: underline;
     }
 
     &:focus {
       color: ${semanticColors?.accent?.textActionHover};
-
-      &::after {
-        background-color: ${semanticColors?.accent?.borderHover};
-      }
+      text-decoration: underline;
     }
 
     &:active {
       color: ${semanticColors?.accent?.textActionPressed};
-
-      &::after {
-        background-color: ${semanticColors?.accent?.borderPressed};
-      }
+      text-decoration: underline;
     }
   `;
 };
 
-const dashedStyle = (props: LinkProps) => {
-  const { sdsSize = "s" } = props;
-  const semanticColors = getSemanticColors(props);
-
+const dashedStyle = () => {
   return css`
     color: inherit;
     position: relative;
-
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      height: 1px;
-      margin-top: ${sdsSize === "s" ? -4 : -3}px;
-      margin-left: 1px;
-      width: 100%;
-      background-image: linear-gradient(
-        to right,
-        ${semanticColors?.base?.borderHover} 60%,
-        transparent 60%
-      );
-      background-size: 5px 100%;
-    }
+    text-decoration: underline dashed;
+    text-underline-offset: 2.5px;
 
     &:hover,
-    &:focus {
-      text-decoration: none;
-      &::after {
-        background-image: linear-gradient(
-          to right,
-          ${semanticColors?.base?.borderHover} 60%,
-          ${semanticColors?.base?.borderHover} 60%
-        );
-      }
+    &:focus,
+    &:active,
+    &:focus-visible {
+      text-decoration-style: solid;
     }
   `;
 };
@@ -126,7 +87,7 @@ export const StyledLink = styled(Link, {
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}
-      ${sdsStyle === "dashed" && dashedStyle(props)}
+      ${sdsStyle === "dashed" && dashedStyle()}
       ${sdsSize === "s" && smallStyle(props)}
       ${sdsSize === "xs" && extraSmallStyle(props)}
 
