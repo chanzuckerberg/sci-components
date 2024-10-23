@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.6.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.0...@czi-sds/components@21.6.1) (2024-10-23)
+
+### Bug Fixes
+
+- **link:** fix multi-line link text-decorations ([#880](https://github.com/chanzuckerberg/sci-components/issues/880)) ([0f3ed1d](https://github.com/chanzuckerberg/sci-components/commit/0f3ed1da867df27408f16df4151139dfd913678b))
+
 # [21.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.5.0...@czi-sds/components@21.6.0) (2024-10-16)
 
 ### Bug Fixes
