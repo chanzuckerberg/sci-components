@@ -27,12 +27,14 @@ const config = [
         banner: "\"use client\";",
         file: pkg.main,
         format: "cjs",
+        interop: "auto"
       },
       {
         // Ensures "use client" is added at the top of each output file.
         banner: "\"use client\";",
         file: pkg.module,
         format: "esm",
+        interop: "auto"
       },
     ],
     plugins: [
