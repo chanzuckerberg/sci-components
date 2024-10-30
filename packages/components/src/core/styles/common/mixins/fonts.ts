@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { TypographyStyle } from "@mui/material";
+import { Breakpoint, TypographyStyle } from "@mui/material";
 import { Typography } from "../types";
 import { CommonThemeProps, getTypography } from "../selectors/theme";
 
@@ -9,7 +9,8 @@ type FontBodySize<T extends FontBodyWeight> =
 
 export const fontBody = (
   fontSize: FontBodySize<FontBodyWeight>,
-  fontWeight: FontBodyWeight = "regular"
+  fontWeight: FontBodyWeight = "regular",
+  isMobile: boolean = false
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -18,8 +19,17 @@ export const fontBody = (
 
     const {
       styles: { body },
+      mobileStyles: { body: mobileBody },
       fontFamily: { body: bodyFontFamily },
     } = typography;
+
+    if (isMobile) {
+      return css`
+        ${props.theme?.breakpoints.down("md")} {
+          ${themeToCss(mobileBody[fontWeight][fontSize], bodyFontFamily)}
+        }
+      `;
+    }
 
     return themeToCss(body[fontWeight][fontSize], bodyFontFamily);
   };
@@ -42,7 +52,7 @@ export const fontBodySemiboldXxxs = fontBody("xxxs", "semibold");
 
 type FontCapsSize = keyof Typography["styles"]["caps"]["semibold"];
 
-export const fontCaps = (fontSize: FontCapsSize) => {
+export const fontCaps = (fontSize: FontCapsSize, isMobile: boolean = false) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
 
@@ -50,12 +60,20 @@ export const fontCaps = (fontSize: FontCapsSize) => {
 
     const {
       styles: { caps },
+      mobileStyles: { caps: mobileCaps },
       fontFamily: { caps: capsFontFamily },
     } = typography;
 
     return css`
-      ${themeToCss(caps.semibold[fontSize], capsFontFamily)}
       text-transform: uppercase;
+
+      ${isMobile
+        ? css`
+            ${props.theme?.breakpoints.down("md")} {
+              ${themeToCss(mobileCaps.semibold[fontSize], capsFontFamily)}
+            }
+          `
+        : themeToCss(caps.semibold[fontSize], capsFontFamily)}
     `;
   };
 };
@@ -68,7 +86,10 @@ export const fontCapsXxxxs = fontCaps("xxxxs");
 
 type FontHeaderSize = keyof Typography["styles"]["header"]["semibold"];
 
-export const fontHeader = (fontSize: FontHeaderSize) => {
+export const fontHeader = (
+  fontSize: FontHeaderSize,
+  isMobile: boolean = false
+) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
 
@@ -76,8 +97,17 @@ export const fontHeader = (fontSize: FontHeaderSize) => {
 
     const {
       styles: { header },
+      mobileStyles: { header: mobileHeader },
       fontFamily: { header: headerFontFamily },
     } = typography;
+
+    if (isMobile) {
+      return css`
+        ${props.theme?.breakpoints.down("md")} {
+          ${themeToCss(mobileHeader.semibold[fontSize], headerFontFamily)}
+        }
+      `;
+    }
 
     return themeToCss(header.semibold[fontSize], headerFontFamily);
   };
@@ -100,7 +130,8 @@ type FontCodeSize<T extends FontCodeWeight> =
 
 export const fontCode = (
   fontSize: FontCodeSize<FontCodeWeight>,
-  fontWeight: FontCodeWeight = "regular"
+  fontWeight: FontCodeWeight = "regular",
+  isMobile: boolean = false
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -109,12 +140,19 @@ export const fontCode = (
 
     const {
       styles: { code },
+      mobileStyles: { code: mobileCode },
       fontFamily: { code: codeFontFamily },
     } = typography;
 
-    return css`
-      ${themeToCss(code[fontWeight][fontSize], codeFontFamily)}
-    `;
+    if (isMobile) {
+      return css`
+        ${props.theme?.breakpoints.down("md")} {
+          ${themeToCss(mobileCode[fontWeight][fontSize], codeFontFamily)}
+        }
+      `;
+    }
+
+    return themeToCss(code[fontWeight][fontSize], codeFontFamily);
   };
 };
 
@@ -131,7 +169,8 @@ type FontTabularSize<T extends FontTabularWeight> =
 
 export const fontTabular = (
   fontSize: FontTabularSize<FontTabularWeight>,
-  fontWeight: FontTabularWeight = "regular"
+  fontWeight: FontTabularWeight = "regular",
+  isMobile: boolean = false
 ) => {
   return (props: CommonThemeProps): SerializedStyles | null => {
     const typography = getTypography(props);
@@ -140,12 +179,23 @@ export const fontTabular = (
 
     const {
       styles: { tabular },
+      mobileStyles: { tabular: mobileTabular },
       fontFamily: { tabular: tabularFontFamily },
     } = typography;
 
     return css`
-      ${themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
       font-variant-numeric: tabular-nums;
+
+      ${isMobile
+        ? css`
+            ${props.theme?.breakpoints.down("md")} {
+              ${themeToCss(
+                mobileTabular[fontWeight][fontSize],
+                tabularFontFamily
+              )}
+            }
+          `
+        : themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
     `;
   };
 };
