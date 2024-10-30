@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { Breakpoint, TypographyStyle } from "@mui/material";
+import { TypographyStyle } from "@mui/material";
 import { Typography } from "../types";
 import { CommonThemeProps, getTypography } from "../selectors/theme";
 
