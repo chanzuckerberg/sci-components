@@ -178,6 +178,7 @@ StyleDictionary.registerFormat({
       ...transformIconSizes(sds.iconSize),
       borderRadius: transformDictionary(sds.corner),
       boxShadow: transformDictionary(sds["drop-shadow"]),
+      breakpoints: transformDictionary(sds.breakpoint),
       colors: transformColor(sds.color),
       spacing: transformDictionary(sds.space),
     };

@@ -147,6 +147,11 @@
     "sds-s": "0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25)",
     "sds-none": "none"
   },
+  "breakpoints": {
+    "sds-sm": "0px",
+    "sds-md": "512px",
+    "sds-lg": "1024px"
+  },
   "colors": {
     "dark": {
       "sds-color-primitive-blue-100": "#002573",

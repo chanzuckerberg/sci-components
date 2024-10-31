@@ -97,6 +97,20 @@ declare module "@mui/material/styles" {
   export interface PaletteOptions {
     sds?: SDSPalette;
   }
+
+  /**
+   * @see https://mui.com/material-ui/customization/breakpoints/#custom-breakpoints
+   * (masoudmanson): ModuleAugmentation is required for TypeScript to recognize the
+   * custom breakpoints added to the theme.
+   */
+  export interface BreakpointOverrides {
+    // remove the xs and xl breakpoints since SDS does not support them
+    xs: false;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: false;
+  }
 }
 
 export interface SDSTheme extends Theme {

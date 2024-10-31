@@ -262,6 +262,13 @@ export function makeThemeOptions(
 ): SDSThemeOptions {
   return {
     app: appTheme,
+    breakpoints: {
+      values: {
+        lg: 1024,
+        md: 512,
+        sm: 0,
+      },
+    },
     components: {
       MuiButtonBase: {
         defaultProps: {
