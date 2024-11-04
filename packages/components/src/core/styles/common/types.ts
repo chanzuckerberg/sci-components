@@ -195,8 +195,8 @@ export interface Typography {
     header?: CSSProperties["fontFamily"];
     tabular?: CSSProperties["fontFamily"];
   };
-  styles: TypographyStyles;
-  mobileStyles: TypographyStyles;
+  wideStyles: TypographyStyles;
+  narrowStyles: TypographyStyles;
 }
 
 export interface FontWeights {

@@ -200,7 +200,7 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
       header: fontFamily,
       tabular: fontFamily,
     },
-    mobileStyles: {
+    narrowStyles: {
       body: {
         regular: {
           button: {
@@ -463,7 +463,7 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
         },
       },
     },
-    styles: {
+    wideStyles: {
       body: {
         regular: {
           button: {
