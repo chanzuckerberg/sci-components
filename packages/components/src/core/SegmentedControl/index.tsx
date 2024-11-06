@@ -42,13 +42,11 @@ const SegmentedControl = (props: SegmentedControlProps) => {
     event: React.MouseEvent<HTMLElement>,
     newActive: string | null
   ) => {
-    if (newActive !== null) {
-      if (!isControlled) {
-        setActive(newActive);
-      }
-      if (onChangeProp) {
-        onChangeProp(event, newActive);
-      }
+    if (!isControlled) {
+      setActive(newActive);
+    }
+    if (onChangeProp) {
+      onChangeProp(event, newActive);
     }
   };
 
