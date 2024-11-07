@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.6.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.1...@czi-sds/components@21.6.2) (2024-10-30)
+
+**Note:** Version bump only for package @czi-sds/components
+
 ## [21.6.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.0...@czi-sds/components@21.6.1) (2024-10-23)
 
 ### Bug Fixes
