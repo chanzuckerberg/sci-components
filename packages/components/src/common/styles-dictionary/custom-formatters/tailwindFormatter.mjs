@@ -7,8 +7,12 @@ export function tailwindFormatter({ dictionary, options }) {
   const { sds } = dictionary.tokens;
   const tailwindConfig = {
     fontFamily: transformDictionary(sds.font["font-family"], null, options),
-    ...transformFonts(sds.font, ["body", "caps", "header", "tabular", "code"]),
-    ...transformIconSizes(sds.iconSize),
+    ...transformFonts(
+      sds.font,
+      ["body", "caps", "header", "tabular", "code"],
+      options
+    ),
+    ...transformIconSizes(sds.iconSize, options),
     borderRadius: transformDictionary(sds.corner, null, options),
     boxShadow: transformDictionary(sds["drop-shadow"], null, options),
     colors: transformColor(sds.color),
@@ -70,19 +74,19 @@ function transformColor(tokens) {
   return colors;
 }
 
-function transformIconSizes(tokens) {
+function transformIconSizes(tokens, options = {}) {
   const width = {};
   const height = {};
 
   for (const [iconSize, token] of Object.entries(tokens)) {
-    width[getName(`icon-${iconSize}`)] = token.height.value;
-    height[getName(`icon-${iconSize}`)] = token.width.value;
+    width[getName(`icon-${iconSize}`, options)] = token.height.value;
+    height[getName(`icon-${iconSize}`, options)] = token.width.value;
   }
 
   return { height, width };
 }
 
-function transformFonts(tokens, keys) {
+function transformFonts(tokens, keys, options = {}) {
   const fontSize = { narrow: {}, wide: {} };
   const lineHeight = { narrow: {}, wide: {} };
   const letterSpacing = { narrow: {}, wide: {} };
@@ -122,7 +126,7 @@ function transformFonts(tokens, keys) {
   for (const key of keys) {
     for (const [size, fonts] of Object.entries(tokens[key])) {
       for (const [, fontValue] of Object.entries(fonts)) {
-        makeFontValue(fontValue, getName([key, size]));
+        makeFontValue(fontValue, getName([key, size], options));
       }
     }
   }
