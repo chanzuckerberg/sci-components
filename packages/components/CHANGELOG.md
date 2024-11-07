@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.6.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.2...@czi-sds/components@21.6.3) (2024-11-07)
+
+### Bug Fixes
+
+- **segmentedcontrol:** allow all buttons to be deselected y removing a condition in handleActive ([#891](https://github.com/chanzuckerberg/sci-components/issues/891)) ([5ef9167](https://github.com/chanzuckerberg/sci-components/commit/5ef91677a230f408b9fba974e3b801e2f41fc581))
+
 ## [21.6.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.1...@czi-sds/components@21.6.2) (2024-10-30)
 
 **Note:** Version bump only for package @czi-sds/components
