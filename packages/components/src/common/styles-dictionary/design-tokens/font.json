@@ -1,10 +1,6 @@
 {
   "sds": {
     "font": {
-      "color": {
-        "value": "black",
-        "narrowValue": "black"
-      },
       "font-family": {
         "body": {
           "value": "\"Inter\", sans-serif",
@@ -173,8 +169,8 @@
               "narrowValue": "0.5px"
             },
             "text-transform": { 
-              "value": " uppercase", 
-              "narrowValue": " uppercase" 
+              "value": "uppercase", 
+              "narrowValue": "uppercase" 
             }
           }
         },
@@ -189,8 +185,8 @@
               "narrowValue": "0.5px"
             },
             "text-transform": { 
-              "value": " uppercase", 
-              "narrowValue": " uppercase" 
+              "value": "uppercase", 
+              "narrowValue": "uppercase" 
             }
           }
         },
@@ -205,8 +201,8 @@
               "narrowValue": "0.5px"
             },
             "text-transform": { 
-              "value": " uppercase", 
-              "narrowValue": " uppercase" 
+              "value": "uppercase", 
+              "narrowValue": "uppercase" 
             }
           }
         }

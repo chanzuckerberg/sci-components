@@ -1,3 +1,19 @@
+const CssTokensTemplate = (
+  lightVariables,
+  darkVariables
+) => `@media (prefers-color-scheme: light) {
+  :root {
+${lightVariables}
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+${darkVariables}
+  }
+}
+`;
+
 /**
  * (masoudmanson): This is a custom format for generating CSS variables for light and dark modes.
  * The CSS variables are generated based on the value and darkValue attributes of each token.
@@ -28,15 +44,5 @@ export function cssFormatter({ dictionary }) {
     .map((token) => printCssVariable(token, true))
     .join("\n");
 
-  return `@media (prefers-color-scheme: light) {
-:root {
-${lightMode}
-}
-}
-
-@media (prefers-color-scheme: dark) {
-:root {
-${darkMode}
-}
-}`;
+  return CssTokensTemplate(lightMode, darkMode);
 }

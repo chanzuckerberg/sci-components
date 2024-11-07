@@ -199,8 +199,6 @@
       0px 2px 4px 0px rgba(0, 0, 0, 0.15);
     --sds-drop-shadow-s: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
     --sds-drop-shadow-none: none;
-    --sds-font-color: black;
-    --sds-font-color-narrow: black;
     --sds-font-font-family-body: "Inter", sans-serif;
     --sds-font-font-family-body-narrow: "Inter", sans-serif;
     --sds-font-font-family-caps: "Inter", sans-serif;
@@ -572,8 +570,6 @@
       0px 2px 4px 0px rgba(0, 0, 0, 0.15);
     --sds-drop-shadow-s: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
     --sds-drop-shadow-none: none;
-    --sds-font-color: black;
-    --sds-font-color-narrow: black;
     --sds-font-font-family-body: "Inter", sans-serif;
     --sds-font-font-family-body-narrow: "Inter", sans-serif;
     --sds-font-font-family-caps: "Inter", sans-serif;
