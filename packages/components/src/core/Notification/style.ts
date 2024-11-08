@@ -49,7 +49,7 @@ export const StyledNotification = styled(Alert, {
     const alertMessagePaddingTop = Math.abs(
       ((iconSizes?.l.height ?? 0) -
         parseInt(
-          String(typography?.styles?.body?.regular?.xs?.lineHeight ?? "0")
+          String(typography?.wideStyles?.body?.regular?.xs?.lineHeight ?? "0")
         )) /
         2
     );
