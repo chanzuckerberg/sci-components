@@ -7,15 +7,14 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-scrxa8-MuiFormControlLabel-root"
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary css-1i09rga-MuiButtonBase-root-MuiRadio-root"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1i09rga-MuiButtonBase-root-MuiRadio-root"
       intent="default"
     >
       <input
-        checked=""
         class="PrivateSwitchBase-input css-1m9pwf3"
         name="radio-buttons-group"
         type="radio"
@@ -24,8 +23,8 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-file-name="IconRadioChecked"
-        data-testid="IconRadioChecked"
+        data-file-name="IconRadioUnchecked"
+        data-testid="IconRadioUnchecked"
         fillcontrast="white"
         focusable="false"
         viewBox="0 0 16 16"

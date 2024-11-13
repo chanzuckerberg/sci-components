@@ -12,6 +12,7 @@ import {
   getFontWeights,
   getSemanticColors,
   getSpaces,
+  SDSPalette,
 } from "src/core/styles";
 
 const doNotForwardProps = [
@@ -26,6 +27,13 @@ const doNotForwardProps = [
 ];
 
 type IntentType = "negative" | "notice" | "positive";
+
+const intentToColor = {
+  default: "accent",
+  negative: "negative",
+  notice: "notice",
+  positive: "positive",
+};
 
 export interface InputDropdownProps
   extends CommonThemeProps,
@@ -239,9 +247,15 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const isOpen = (props: InputDropdownProps): SerializedStyles => {
-  const { sdsStyle } = props;
+  const { sdsStyle, intent = "default" } = props;
+
   const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
+
+  const inputColor = intentToColor[intent] as keyof Pick<
+    SDSPalette,
+    "negative" | "notice" | "positive" | "accent"
+  >;
 
   return css`
     &.MuiButton-text {
@@ -262,10 +276,14 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : ""}
 
     path {
-      fill: ${semanticColors?.accent?.iconOpen};
+      fill: ${inputColor === "accent"
+        ? semanticColors?.accent?.iconOpen
+        : semanticColors?.[inputColor]?.ornament};
     }
 
-    border: ${sdsStyle === "minimal" ? borders?.none : borders?.accent?.open};
+    border: ${sdsStyle === "minimal"
+      ? borders?.none
+      : borders?.[inputColor]?.open};
     background-color: ${sdsStyle === "minimal"
       ? semanticColors?.base?.fillHover + "47"
       : "transparent"};

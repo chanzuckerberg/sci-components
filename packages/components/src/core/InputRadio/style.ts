@@ -20,21 +20,20 @@ export interface RadioExtraProps extends CommonThemeProps {
   disabled?: boolean;
 }
 
+const intentToColor = {
+  default: "base",
+  negative: "negative",
+  notice: "notice",
+  positive: "positive",
+};
+
 export const StyledRadioButton = styled(RawRadio)`
   ${(props: RadioExtraProps) => {
     const { intent = "default" } = props;
 
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
-
     const semanticColors = getSemanticColors(props);
-
-    const intentToColor = {
-      default: "base",
-      negative: "negative",
-      notice: "notice",
-      positive: "positive",
-    };
 
     const radioColor = intentToColor[intent] as keyof SDSPalette;
 
@@ -78,15 +77,38 @@ export const StyledRadioButton = styled(RawRadio)`
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
-  ${(props: CommonThemeProps) => {
+  ${(props: RadioExtraProps) => {
+    const { disabled } = props;
+
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       align-items: start;
       margin-bottom: ${spaces?.l}px;
       margin-left: 0;
       margin-right: 0;
-      width: fit-content;
+      width: fit-content;user-select: 
+      ${disabled ? "none" : "auto"};
+
+      &:hover {
+        ${StyledRadioButton} {
+          color: ${semanticColors?.base?.borderHover};
+
+          &.${radioClasses.disabled} {
+            color: ${semanticColors?.base?.borderDisabled};
+          }
+
+          &.${radioClasses.checked} {
+            color: ${semanticColors?.accent?.borderHover};
+            background-color: transparent;
+
+            &.${radioClasses.disabled} {
+              color: ${semanticColors?.base?.borderDisabled};
+            }
+          }
+        }
+      }
     `;
   }}
 `;
