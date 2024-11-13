@@ -146,7 +146,6 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       & .input-search-clear-icon {
-        opacity: 0;
         cursor: pointer;
 
         svg {
@@ -175,8 +174,6 @@ export const StyledSearchBase = styled(TextField, {
 
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
-          opacity: 1;
-
           svg {
             color: ${semanticColors?.base?.iconPrimary} !important;
           }
