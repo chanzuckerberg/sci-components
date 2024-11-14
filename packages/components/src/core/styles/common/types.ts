@@ -97,6 +97,20 @@ declare module "@mui/material/styles" {
   export interface PaletteOptions {
     sds?: SDSPalette;
   }
+
+  /**
+   * @see https://mui.com/material-ui/customization/breakpoints/#custom-breakpoints
+   * (masoudmanson): ModuleAugmentation is required for TypeScript to recognize the
+   * custom breakpoints added to the theme.
+   */
+  export interface BreakpointOverrides {
+    // remove the xs and xl breakpoints since SDS does not support them
+    xs: false;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: false;
+  }
 }
 
 export interface SDSTheme extends Theme {
@@ -125,6 +139,68 @@ export interface Shadows {
   l: string;
 }
 
+export interface TypographyStyles {
+  body: {
+    regular: {
+      button: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    semibold: {
+      button: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+  };
+  caps: {
+    semibold: {
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
+    };
+  };
+  code: {
+    regular: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+    };
+    semibold: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+    };
+  };
+  header: {
+    semibold: {
+      xxl: TypographyStyle;
+      xl: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+  };
+  tabular: {
+    regular: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+    };
+    semibold: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+    };
+  };
+}
+
 export interface Typography {
   fontFamily: {
     body: CSSProperties["fontFamily"];
@@ -133,67 +209,8 @@ export interface Typography {
     header?: CSSProperties["fontFamily"];
     tabular?: CSSProperties["fontFamily"];
   };
-  styles: {
-    body: {
-      regular: {
-        button: TypographyStyle;
-        l: TypographyStyle;
-        m: TypographyStyle;
-        s: TypographyStyle;
-        xs: TypographyStyle;
-        xxs: TypographyStyle;
-        xxxs: TypographyStyle;
-      };
-      semibold: {
-        button: TypographyStyle;
-        l: TypographyStyle;
-        m: TypographyStyle;
-        s: TypographyStyle;
-        xs: TypographyStyle;
-        xxs: TypographyStyle;
-        xxxs: TypographyStyle;
-      };
-    };
-    caps: {
-      semibold: {
-        xxs: TypographyStyle;
-        xxxs: TypographyStyle;
-        xxxxs: TypographyStyle;
-      };
-    };
-    code: {
-      regular: {
-        s: TypographyStyle;
-        xs: TypographyStyle;
-      };
-      semibold: {
-        s: TypographyStyle;
-        xs: TypographyStyle;
-      };
-    };
-    header: {
-      semibold: {
-        xxl: TypographyStyle;
-        xl: TypographyStyle;
-        l: TypographyStyle;
-        m: TypographyStyle;
-        s: TypographyStyle;
-        xs: TypographyStyle;
-        xxs: TypographyStyle;
-        xxxs: TypographyStyle;
-      };
-    };
-    tabular: {
-      regular: {
-        s: TypographyStyle;
-        xs: TypographyStyle;
-      };
-      semibold: {
-        s: TypographyStyle;
-        xs: TypographyStyle;
-      };
-    };
-  };
+  wideStyles: TypographyStyles;
+  narrowStyles: TypographyStyles;
 }
 
 export interface FontWeights {

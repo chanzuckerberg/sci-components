@@ -46,13 +46,13 @@ const applyIntentColor = (
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: ${borders?.base?.hover};
+        border: ${borders?.[intent]?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticColors?.base?.iconPrimary};
+          color: ${semanticColors?.[intent]?.ornament};
         }
       }
     }

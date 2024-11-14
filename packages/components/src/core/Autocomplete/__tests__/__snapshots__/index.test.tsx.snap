@@ -12,7 +12,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       Search by label
     </label>
     <div
-      class="MuiFormControl-root MuiTextField-root css-1dk6d19-MuiFormControl-root-MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root css-1fp04lp-MuiFormControl-root-MuiTextField-root"
     >
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
@@ -141,7 +141,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
               <div
                 aria-hidden="true"
                 aria-label="Search Input"
-                class="MuiFormControl-root MuiTextField-root css-undfwx-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-ubyh96-MuiFormControl-root-MuiTextField-root"
                 tabindex="-1"
               >
                 <div
@@ -556,7 +556,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
               <div
                 aria-hidden="true"
                 aria-label="Search Input"
-                class="MuiFormControl-root MuiTextField-root css-undfwx-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-ubyh96-MuiFormControl-root-MuiTextField-root"
                 tabindex="-1"
               >
                 <div
@@ -982,7 +982,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
       <div
         aria-hidden="false"
         aria-label="Search Input"
-        class="MuiFormControl-root MuiTextField-root css-hmaycg-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-q18d0e-MuiFormControl-root-MuiTextField-root"
         tabindex="0"
       >
         <div

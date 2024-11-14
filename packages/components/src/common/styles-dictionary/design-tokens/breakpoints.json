@@ -1,0 +1,9 @@
+{
+  "sds": {
+    "breakpoint": {
+      "sm": { "value": "0px" },
+      "md": { "value": "512px" },
+      "lg": { "value": "1024px" }
+    }
+  }
+}

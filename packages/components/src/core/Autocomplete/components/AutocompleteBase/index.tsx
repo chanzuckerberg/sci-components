@@ -82,6 +82,7 @@ interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
   label?: string;
+  intent?: InputSearchProps["intent"];
   onClickAway?: (
     event?: MouseEvent | TouchEvent,
     reason?: AutocompleteCloseReason
@@ -137,6 +138,7 @@ const AutocompleteBase = <
     onOpen,
     onClose,
     disabled,
+    intent = "default",
   } = props;
   const theme: SDSTheme = useTheme();
 
@@ -298,6 +300,7 @@ const AutocompleteBase = <
               </StyledInputAdornment>
             ),
           }}
+          intent={intent}
           {...InputBaseProps}
         />
       </InputBaseWrapper>

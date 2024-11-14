@@ -22,6 +22,10 @@ export default {
       mapping: AUTOCOMPLETE_GROUP_BY_OPTIONS,
       options: Object.keys(AUTOCOMPLETE_GROUP_BY_OPTIONS),
     },
+    intent: {
+      control: { type: "radio" },
+      options: ["default", "negative", "notice", "positive"],
+    },
     keepSearchOnSelect: {
       control: { type: "boolean" },
     },

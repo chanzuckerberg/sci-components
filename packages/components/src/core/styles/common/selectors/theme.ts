@@ -1,4 +1,4 @@
-import { PaletteOptions } from "@mui/material/styles";
+import { Breakpoints, PaletteOptions } from "@mui/material/styles";
 import {
   Borders,
   Colors,
@@ -77,4 +77,10 @@ export const getIconSizes = ({ theme }: CommonThemeProps): IconSizes | null => {
 
 export const getBorders = ({ theme }: CommonThemeProps): Borders | null => {
   return theme?.app?.borders || null;
+};
+
+export const getBreakpoints = ({
+  theme,
+}: CommonThemeProps): Breakpoints | null => {
+  return theme?.breakpoints || null;
 };

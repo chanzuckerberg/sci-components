@@ -364,7 +364,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           role="radiogroup"
         >
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-scrxa8-MuiFormControlLabel-root"
           >
             <span
               caption="Caption I"
@@ -413,7 +413,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             </span>
           </label>
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-c4vnp1-MuiFormControlLabel-root"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-scrxa8-MuiFormControlLabel-root"
           >
             <span
               caption="Caption II"

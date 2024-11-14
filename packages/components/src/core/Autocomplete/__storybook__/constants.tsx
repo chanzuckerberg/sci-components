@@ -11,6 +11,7 @@ export const AUTOCOMPLETE_EXCLUDED_CONTROLS = [
   "groupBy",
   "label",
   "options",
+  "intent",
 ];
 
 export const AUTOCOMPLETE_GROUP_BY_OPTIONS = [

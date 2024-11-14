@@ -262,6 +262,13 @@ export function makeThemeOptions(
 ): SDSThemeOptions {
   return {
     app: appTheme,
+    breakpoints: {
+      values: {
+        lg: 1024,
+        md: 512,
+        sm: 0,
+      },
+    },
     components: {
       MuiButtonBase: {
         defaultProps: {
@@ -442,20 +449,20 @@ export function makeThemeOptions(
       },
     },
     typography: {
-      body1: appTheme.typography.styles.body.regular.xs,
-      body2: appTheme.typography.styles.body.regular.xxs,
-      button: appTheme.typography.styles.body.regular.button,
-      caption: appTheme.typography.styles.body.regular.xxxs,
+      body1: appTheme.typography.wideStyles.body.regular.xs,
+      body2: appTheme.typography.wideStyles.body.regular.xxs,
+      button: appTheme.typography.wideStyles.body.regular.button,
+      caption: appTheme.typography.wideStyles.body.regular.xxxs,
       fontFamily: `${appTheme.typography.fontFamily.body}, sans-serif`,
-      h1: appTheme.typography.styles.header.semibold.xxl,
-      h2: appTheme.typography.styles.header.semibold.xl,
-      h3: appTheme.typography.styles.header.semibold.l,
-      h4: appTheme.typography.styles.header.semibold.m,
-      h5: appTheme.typography.styles.header.semibold.s,
-      h6: appTheme.typography.styles.header.semibold.xs,
-      overline: appTheme.typography.styles.caps.semibold.xxxs,
-      subtitle1: appTheme.typography.styles.body.regular.xs,
-      subtitle2: appTheme.typography.styles.header.semibold.xxs,
+      h1: appTheme.typography.wideStyles.header.semibold.xxl,
+      h2: appTheme.typography.wideStyles.header.semibold.xl,
+      h3: appTheme.typography.wideStyles.header.semibold.l,
+      h4: appTheme.typography.wideStyles.header.semibold.m,
+      h5: appTheme.typography.wideStyles.header.semibold.s,
+      h6: appTheme.typography.wideStyles.header.semibold.xs,
+      overline: appTheme.typography.wideStyles.caps.semibold.xxxs,
+      subtitle1: appTheme.typography.wideStyles.body.regular.xs,
+      subtitle2: appTheme.typography.wideStyles.header.semibold.xxs,
     },
   };
 }
