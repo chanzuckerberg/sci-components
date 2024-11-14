@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.3...@czi-sds/components@21.7.0) (2024-11-14)
+
+### Bug Fixes
+
+- **build:** build new css vvariables ([91a3874](https://github.com/chanzuckerberg/sci-components/commit/91a3874230a836ed803dafc9138c9708e1b4f80f))
+- **inputs:** fix border color of inputs based on intent prop ([#895](https://github.com/chanzuckerberg/sci-components/issues/895)) ([8810c07](https://github.com/chanzuckerberg/sci-components/commit/8810c07dc24560bb353e231a63c456d6acccc1a8))
+
+### Features
+
+- **breakpoints:** added new SDS breakpoints ([#888](https://github.com/chanzuckerberg/sci-components/issues/888)) ([a809c01](https://github.com/chanzuckerberg/sci-components/commit/a809c018e3b7de62c457db6c21047b256ed6f959))
+- **designtokens:** add narrow fonts to design tokens ([#892](https://github.com/chanzuckerberg/sci-components/issues/892)) ([dcbe4f7](https://github.com/chanzuckerberg/sci-components/commit/dcbe4f7246fbd5f51af3de12e9b9ccc2978c2a05))
+- **styles/common:** mobile font styles ([#884](https://github.com/chanzuckerberg/sci-components/issues/884)) ([75375d3](https://github.com/chanzuckerberg/sci-components/commit/75375d3feb795a1bf1fbd24268e0a0a52fbb6bac))
+
 ## [21.6.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.2...@czi-sds/components@21.6.3) (2024-11-07)
 
 ### Bug Fixes
