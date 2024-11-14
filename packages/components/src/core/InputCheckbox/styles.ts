@@ -18,6 +18,13 @@ export interface CheckboxExtraProps extends CommonThemeProps {
   disabled?: boolean;
 }
 
+const intentToColor = {
+  default: "base",
+  negative: "negative",
+  notice: "notice",
+  positive: "positive",
+};
+
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props: CheckboxExtraProps) => {
     const { intent = "default" } = props;
@@ -25,13 +32,6 @@ export const StyledCheckbox = styled(RawCheckbox)`
     const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
-
-    const intentToColor = {
-      default: "base",
-      negative: "negative",
-      notice: "notice",
-      positive: "positive",
-    };
 
     const checkboxColor = intentToColor[intent] as keyof SDSPalette;
 
@@ -76,8 +76,11 @@ export const StyledCheckbox = styled(RawCheckbox)`
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
-  ${(props: CommonThemeProps) => {
+  ${(props: CheckboxExtraProps) => {
+    const { disabled } = props;
+
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       align-items: start;
@@ -85,6 +88,26 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       margin-left: 0;
       margin-right: 0;
       width: fit-content;
+      user-select: ${disabled ? "none" : "auto"};
+
+      &:hover {
+        ${StyledCheckbox} {
+          color: ${semanticColors?.base?.borderHover};
+
+          &.${checkboxClasses.disabled} {
+            color: ${semanticColors?.base?.borderDisabled};
+          }
+
+          &.${checkboxClasses.checked} {
+            color: ${semanticColors?.accent?.borderHover};
+            background-color: transparent;
+
+            &.${checkboxClasses.disabled} {
+              color: ${semanticColors?.base?.borderDisabled};
+            }
+          }
+        }
+      }
     `;
   }}
 `;

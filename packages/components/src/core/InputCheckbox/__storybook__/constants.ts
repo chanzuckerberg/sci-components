@@ -4,6 +4,7 @@ export const INPUT_CHECKBOX_EXCLUDED_CONTROLS = [
   "stage",
   "disabled",
   "intent",
+  "id",
 ];
 
 export const INPUT_CHECKBOX_TEST_ID = "test-story";

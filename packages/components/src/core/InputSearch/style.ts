@@ -12,6 +12,7 @@ import {
   CommonThemeProps,
   fontBodyM,
   fontBodyXs,
+  getBorders,
   getCorners,
   getIconSizes,
   getSemanticColors,
@@ -49,26 +50,27 @@ const applyIntentColor = (
   intent: IntentType
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
+  const borders = getBorders(props);
 
   return css`
     .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticColors?.[intent]?.border};
+      border: ${borders?.[intent]?.default};
     }
 
     .${outlinedInputClasses.root}:hover
       .${outlinedInputClasses.notchedOutline} {
-      border: 1px solid ${semanticColors?.base?.borderHover};
+      border: ${borders?.base?.hover};
     }
 
     .${outlinedInputClasses.root}.${outlinedInputClasses.focused} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticColors?.base?.borderHover};
+        border: ${borders?.[intent]?.default};
       }
 
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticColors?.base?.iconPrimaryHover};
+          color: ${semanticColors?.[intent]?.ornament};
         }
       }
     }
@@ -144,7 +146,6 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       & .input-search-clear-icon {
-        opacity: 0;
         cursor: pointer;
 
         svg {
@@ -173,8 +174,6 @@ export const StyledSearchBase = styled(TextField, {
 
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
-          opacity: 1;
-
           svg {
             color: ${semanticColors?.base?.iconPrimary} !important;
           }

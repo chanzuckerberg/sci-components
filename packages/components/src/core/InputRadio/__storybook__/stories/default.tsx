@@ -8,7 +8,6 @@ export const InputRadio = (props: Args): JSX.Element => {
   return (
     <RadioGroup
       aria-labelledby="demo-radio-buttons-group-label"
-      defaultValue="demo"
       name="radio-buttons-group"
     >
       <RawInputRadio caption={caption} label={label} value="demo" {...rest} />
