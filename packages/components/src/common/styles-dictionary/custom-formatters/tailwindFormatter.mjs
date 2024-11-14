@@ -15,6 +15,7 @@ export function tailwindFormatter({ dictionary, options }) {
     ...transformIconSizes(sds.iconSize, options),
     borderRadius: transformDictionary(sds.corner, null, options),
     boxShadow: transformDictionary(sds["drop-shadow"], null, options),
+    breakpoints: transformDictionary(sds.breakpoint, null, options),
     colors: transformColor(sds.color),
     spacing: transformDictionary(sds.space, null, options),
   };

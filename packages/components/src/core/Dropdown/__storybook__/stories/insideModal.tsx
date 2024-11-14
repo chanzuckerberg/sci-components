@@ -6,7 +6,8 @@ import { Dropdown } from "./default";
 import { Paper, styled } from "@mui/material";
 
 const StyledPaper = styled(Paper)`
-  width: 200px;
+  width: 300px;
+  max-width: unset !important;
   padding: 50px;
 `;
 

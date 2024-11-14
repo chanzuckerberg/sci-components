@@ -33,6 +33,9 @@
     --sds-border-positive-default: 1px solid #105b2b;
     --sds-border-positive-extra-thick: 4px solid #105b2b;
     --sds-border-positive-thick: 2px solid #105b2b;
+    --sds-breakpoint-sm: 0px;
+    --sds-breakpoint-md: 512px;
+    --sds-breakpoint-lg: 1024px;
     --sds-color-primitive-blue-100: #e2eeff;
     --sds-color-primitive-blue-200: #cce1ff;
     --sds-color-primitive-blue-300: #9dc6ff;
@@ -404,6 +407,9 @@
     --sds-border-positive-default: 1px solid #bcecc5;
     --sds-border-positive-extra-thick: 4px solid #bcecc5;
     --sds-border-positive-thick: 2px solid #bcecc5;
+    --sds-breakpoint-sm: 0px;
+    --sds-breakpoint-md: 512px;
+    --sds-breakpoint-lg: 1024px;
     --sds-color-primitive-blue-100: #002573;
     --sds-color-primitive-blue-200: #0048c5;
     --sds-color-primitive-blue-300: #2573f4;
