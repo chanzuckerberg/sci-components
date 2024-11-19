@@ -11,6 +11,9 @@ export default {
     arrowOffset: {
       control: { type: "number" },
     },
+    invertStyle: {
+      control: { type: "boolean" },
+    },
     placement: {
       control: { type: "select" },
       options: [
@@ -27,10 +30,6 @@ export default {
         "top",
         "top-end",
       ],
-    },
-    sdsStyle: {
-      control: { type: "radio" },
-      options: ["dark", "light"],
     },
     title: {
       control: { type: "text" },
@@ -53,8 +52,8 @@ export default {
 
 export const Default = {
   args: {
+    invertStyle: true,
     placement: "top",
-    sdsStyle: "dark",
     subtitle: "dolor sit amet",
     title: "Lorem ipsum",
     width: "default",

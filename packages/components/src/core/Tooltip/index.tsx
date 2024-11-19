@@ -35,8 +35,9 @@ const Tooltip = forwardRef(function Tooltip(
   const {
     arrowOffset,
     classes,
+    invertStyle,
     inverted,
-    sdsStyle = "light",
+    sdsStyle = "dark",
     subtitle,
     title,
     width = "default",
@@ -46,15 +47,15 @@ const Tooltip = forwardRef(function Tooltip(
 
   const { children } = rest;
 
-  if (inverted) {
-    showWarningIfFirstOccurence(SDSWarningTypes.TooltipInverted);
+  if (inverted || sdsStyle) {
+    showWarningIfFirstOccurence(SDSWarningTypes.TooltipInvertStyle);
   }
 
-  if (width === "wide" && sdsStyle === "dark") {
+  if (width === "wide" && (sdsStyle === "dark" || invertStyle)) {
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipWidth);
   }
 
-  if (subtitle && sdsStyle === "light") {
+  if (subtitle && (sdsStyle === "light" || !invertStyle)) {
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipSubtitle);
   }
 
@@ -64,8 +65,7 @@ const Tooltip = forwardRef(function Tooltip(
     /* stylelint-disable property-no-unknown -- false positive */
     arrowOffset,
     classes,
-    inverted,
-    sdsStyle,
+    invertStyle: invertStyleValue(inverted, sdsStyle, invertStyle),
     theme,
     width,
     /* stylelint-enable property-no-unknown -- false positive */
@@ -90,11 +90,11 @@ const Tooltip = forwardRef(function Tooltip(
   const content = (
     <>
       {title}
-      {sdsStyle === "dark" && subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {invertStyle && subtitle && <Subtitle>{subtitle}</Subtitle>}
     </>
   );
 
-  const leaveDelay = inverted || sdsStyle === "dark" ? 0 : 500;
+  const leaveDelay = invertStyle || inverted || sdsStyle === "dark" ? 0 : 500;
 
   return (
     <RawTooltip
@@ -114,6 +114,26 @@ const Tooltip = forwardRef(function Tooltip(
     />
   );
 });
+
+/**
+ * (masoudmanson): Temporary function to handle the inversion of the tooltip
+ * based on the sdsStyle, invert and invertStyle props.
+ * Once the sdsStyle and invert props are completely removed,
+ * this function will be removed as well.
+ */
+function invertStyleValue(
+  inverted: boolean | undefined,
+  sdsStyle: "light" | "dark" | undefined,
+  invertStyle: boolean | undefined
+) {
+  return invertStyle !== undefined
+    ? invertStyle
+    : sdsStyle === "dark"
+      ? true
+      : sdsStyle === "light"
+        ? false
+        : inverted;
+}
 
 function mergeClass({
   props,

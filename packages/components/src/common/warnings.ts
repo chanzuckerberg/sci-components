@@ -7,7 +7,7 @@ export enum SDSWarningTypes {
   MenuSelectDeprecated = "menuSelectDeprecated",
   TooltipSubtitle = "tooltipSubtitle",
   TooltipWidth = "tooltipWidth",
-  TooltipInverted = "tooltipInverted",
+  TooltipInvertStyle = "tooltipInvertStyle",
 }
 
 export const SDS_WARNINGS = {
@@ -48,10 +48,10 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message: "Warning: The 'wide' width is only available for light tooltips!",
   },
-  [SDSWarningTypes.TooltipInverted]: {
+  [SDSWarningTypes.TooltipInvertStyle]: {
     hasWarned: false,
     message:
-      "Warning: Tooltips using the inverted prop will be deprecated. Please use sdsStyle: 'dark' | 'light' instead!",
+      "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use invertStyle instead!",
   },
 };
 
