@@ -35,7 +35,7 @@ const Tooltip = forwardRef(function Tooltip(
   const {
     arrowOffset,
     classes,
-    hasInvertedStyle,
+    hasInvertedStyle = true,
     inverted,
     sdsStyle = "dark",
     subtitle,
