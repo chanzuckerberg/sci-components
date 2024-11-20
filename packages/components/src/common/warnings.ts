@@ -51,7 +51,7 @@ export const SDS_WARNINGS = {
   [SDSWarningTypes.TooltipInvertStyle]: {
     hasWarned: false,
     message:
-      "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use invertStyle instead!",
+      "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use hasInvertedStyle instead!",
   },
 };
 

@@ -35,7 +35,7 @@ const Tooltip = forwardRef(function Tooltip(
   const {
     arrowOffset,
     classes,
-    invertStyle,
+    hasInvertedStyle,
     inverted,
     sdsStyle = "dark",
     subtitle,
@@ -51,11 +51,11 @@ const Tooltip = forwardRef(function Tooltip(
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipInvertStyle);
   }
 
-  if (width === "wide" && (sdsStyle === "dark" || invertStyle)) {
+  if (width === "wide" && (sdsStyle === "dark" || hasInvertedStyle)) {
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipWidth);
   }
 
-  if (subtitle && (sdsStyle === "light" || !invertStyle)) {
+  if (subtitle && (sdsStyle === "light" || !hasInvertedStyle)) {
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipSubtitle);
   }
 
@@ -65,7 +65,7 @@ const Tooltip = forwardRef(function Tooltip(
     /* stylelint-disable property-no-unknown -- false positive */
     arrowOffset,
     classes,
-    invertStyle: invertStyleValue(inverted, sdsStyle, invertStyle),
+    hasInvertedStyle: invertStyleValue(inverted, sdsStyle, hasInvertedStyle),
     theme,
     width,
     /* stylelint-enable property-no-unknown -- false positive */
@@ -90,11 +90,12 @@ const Tooltip = forwardRef(function Tooltip(
   const content = (
     <>
       {title}
-      {invertStyle && subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {hasInvertedStyle && subtitle && <Subtitle>{subtitle}</Subtitle>}
     </>
   );
 
-  const leaveDelay = invertStyle || inverted || sdsStyle === "dark" ? 0 : 500;
+  const leaveDelay =
+    hasInvertedStyle || inverted || sdsStyle === "dark" ? 0 : 500;
 
   return (
     <RawTooltip
@@ -117,17 +118,17 @@ const Tooltip = forwardRef(function Tooltip(
 
 /**
  * (masoudmanson): Temporary function to handle the inversion of the tooltip
- * based on the sdsStyle, invert and invertStyle props.
+ * based on the sdsStyle, invert and hasInvertedStyle props.
  * Once the sdsStyle and invert props are completely removed,
  * this function will be removed as well.
  */
 function invertStyleValue(
   inverted: boolean | undefined,
   sdsStyle: "light" | "dark" | undefined,
-  invertStyle: boolean | undefined
+  hasInvertedStyle: boolean | undefined
 ) {
-  return invertStyle !== undefined
-    ? invertStyle
+  return hasInvertedStyle !== undefined
+    ? hasInvertedStyle
     : sdsStyle === "dark"
       ? true
       : sdsStyle === "light"

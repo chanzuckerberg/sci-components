@@ -11,7 +11,7 @@ export default {
     arrowOffset: {
       control: { type: "number" },
     },
-    invertStyle: {
+    hasInvertedStyle: {
       control: { type: "boolean" },
     },
     placement: {
@@ -52,7 +52,6 @@ export default {
 
 export const Default = {
   args: {
-    invertStyle: true,
     placement: "top",
     subtitle: "dolor sit amet",
     title: "Lorem ipsum",
