@@ -30,7 +30,7 @@ const dark = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontHeaderXs(props)}
-    background-color: ${semanticColors?.base?.surfacePrimaryInverse};
+    background-color: ${semanticColors?.base?.surfaceInverse};
     color: ${semanticColors?.base?.textPrimaryInverse};
     text-align: center;
     max-width: 250px;
@@ -44,7 +44,7 @@ const light = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontBodyXs(props)}
-    background-color: ${semanticColors?.base?.surfacePrimary};
+    background-color: ${semanticColors?.base?.surface};
     color: ${semanticColors?.base?.textPrimary};
     text-align: left;
     max-width: 250px;
@@ -70,10 +70,12 @@ export const Subtitle = styled("div")`
   ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
+    const { hasInvertedStyle } = props;
+
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticColors?.base?.textSecondaryInverse};
+      color: ${hasInvertedStyle ? semanticColors?.base?.textSecondaryInverse : semanticColors?.base?.textSecondary};
     `;
   }}
 `;
@@ -113,8 +115,8 @@ export const arrowCss = (props: TooltipExtraProps): string => {
       /* (bethbertozzi): !important is needed to fight inline style */
       left: ${arrowOffset}px !important;
       color: ${hasInvertedStyle || inverted || sdsStyle === "dark"
-        ? semanticColors?.base?.surfacePrimaryInverse
-        : semanticColors?.base?.surfacePrimary};
+        ? semanticColors?.base?.surfaceInverse
+        : semanticColors?.base?.surface};
       &:before {
         box-sizing: border-box;
         width: 12px;

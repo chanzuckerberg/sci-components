@@ -49,19 +49,10 @@ const Banner = forwardRef(function Banner(
       if (typeof icon !== "string") {
         return icon;
       } else {
-        return (
-          <Icon sdsIcon={icon} sdsSize="l" sdsType="static" {...sdsIconProps} />
-        );
+        return <Icon sdsIcon={icon} sdsSize="l" {...sdsIconProps} />;
       }
     } else {
-      return (
-        <Icon
-          sdsIcon="InfoCircle"
-          sdsSize="l"
-          sdsType="static"
-          {...sdsIconProps}
-        />
-      );
+      return <Icon sdsIcon="InfoCircle" sdsSize="l" {...sdsIconProps} />;
     }
   };
 

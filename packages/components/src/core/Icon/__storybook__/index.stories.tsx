@@ -62,7 +62,7 @@ export const IconBank = {
   },
   parameters: {
     controls: {
-      exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
+      exclude: ["sdsIcon", "sdsSize", "shade"],
     },
   },
   render: (args: Args) => <IconBankDemo {...args} />,
@@ -73,7 +73,7 @@ export const IconBank = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: ["color", "sdsIcon", "sdsSize", "sdsType", "shade"],
+      exclude: ["color", "sdsIcon", "sdsSize", "shade"],
     },
     snapshot: {
       skip: true,

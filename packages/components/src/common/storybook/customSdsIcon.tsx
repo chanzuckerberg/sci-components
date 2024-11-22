@@ -8,14 +8,12 @@ import Icon, { IconProps } from "../../core/Icon";
 function CustomSdsIcon(props: {
   sdsIcon?: IconProps<"Bacteria">["sdsIcon"];
   sdsSize?: IconProps<"Bacteria">["sdsSize"];
-  sdsType?: IconProps<"Bacteria">["sdsType"];
   color?: IconProps<"Bacteria">["color"];
   shade?: IconProps<"Bacteria">["shade"];
 }) {
   const {
     sdsIcon = "Bacteria",
     sdsSize = "l",
-    sdsType = "static",
     color = "blue",
     shade = 400,
     ...rest
@@ -24,7 +22,6 @@ function CustomSdsIcon(props: {
     <Icon
       sdsIcon={sdsIcon}
       sdsSize={sdsSize}
-      sdsType={sdsType}
       color={color}
       shade={shade}
       {...rest}

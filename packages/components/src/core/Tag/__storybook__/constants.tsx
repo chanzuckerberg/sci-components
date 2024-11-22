@@ -87,7 +87,7 @@ export const TAG_MID_LABEL_STYLES = {
 
 export const TAG_SCREENSHOT_ICON_OPTIONS = [
   undefined,
-  <Icon sdsSize="l" sdsIcon="CheckCircle" key="CheckCircle" sdsType="button" />,
+  <Icon sdsSize="l" sdsIcon="CheckCircle" key="CheckCircle" />,
 ];
 
 export const TAG_HOVER_OPTIONS = [true, false];

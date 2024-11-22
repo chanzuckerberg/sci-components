@@ -66,7 +66,7 @@ export const Default = {
 export const Test = {
   args: {
     disabled: false,
-    icon: <Icon sdsIcon="Download" sdsSize="l" sdsType="button" />,
+    icon: <Icon sdsIcon="Download" sdsSize="l" />,
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
     sdsStyle: "rounded",
     sdsType: "primary",

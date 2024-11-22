@@ -147,7 +147,7 @@ const disabledSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.valueLabel} {
       color: ${semanticColors?.base?.textDisabled};
-      background-color: ${semanticColors?.base?.backgroundTertiary};
+      background-color: ${semanticColors?.base?.backgroundSecondary};
       
       & * {
         color: ${semanticColors?.base?.textDisabled};

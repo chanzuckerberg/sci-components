@@ -1,8 +1,5 @@
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
-import bundleScss from "rollup-plugin-bundle-scss";
-import copy from "rollup-plugin-copy";
-import css from "rollup-plugin-css-only";
 import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
@@ -46,7 +43,7 @@ const config = [
 
       // Clean up the `dist` folder and any other specified paths before building.
       del({
-        targets: ["dist/*", "playground/src/components"],
+        targets: ["dist/*", "playground/src/data-viz"],
       }),
 
       // Allow imports for assets like images, fonts, etc., and handle them properly.

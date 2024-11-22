@@ -26,6 +26,27 @@ export const StyledTag = styled(Tag)`
       padding: ${spaces?.xxs}px ${spaces?.s}px;
       background-color: ${semanticColors?.accent?.fillPrimary};
 
+      .MuiChip-label {
+        ${fontHeaderXs(props)}
+        z-index: auto;
+      }
+
+      .MuiChip-deleteIcon {
+        margin: 0 0 0 ${spaces?.s}px;
+        width: ${iconSizes?.xs?.width}px !important;
+        height: ${iconSizes?.xs?.height}px !important;
+      }
+
+      .MuiSvgIcon-root {
+        margin: 0;
+        width: ${iconSizes?.xs?.width}px !important;
+        height: ${iconSizes?.xs?.height}px !important;
+      }
+
+      svg {
+        z-index: auto;
+      }
+
       &:hover,
       &:focus,
       &:focus-within {
@@ -46,27 +67,6 @@ export const StyledTag = styled(Tag)`
 
       &:after {
         display: none;
-      }
-
-      .MuiChip-label {
-        ${fontHeaderXs(props)}
-      }
-
-      .MuiChip-deleteIcon {
-        margin: 0 0 0 ${spaces?.s}px;
-        width: ${iconSizes?.xs?.width}px !important;
-        height: ${iconSizes?.xs?.height}px !important;
-      }
-
-      .MuiSvgIcon-root {
-        margin: 0;
-        width: ${iconSizes?.xs?.width}px !important;
-        height: ${iconSizes?.xs?.height}px !important;
-      }
-
-      .MuiChip-label,
-      svg {
-        z-index: auto;
       }
     `;
   }}

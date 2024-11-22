@@ -71,7 +71,6 @@ export const Button = (props: Args): JSX.Element => {
       startIconFinal = (
         <Icon
           sdsIcon={startIcon as keyof IconNameToSizes}
-          sdsType="button"
           sdsSize={finalIconSize as typeof sdsSize}
         />
       );
@@ -87,7 +86,6 @@ export const Button = (props: Args): JSX.Element => {
       endIconFinal = (
         <Icon
           sdsIcon={endIcon as keyof IconNameToSizes}
-          sdsType="button"
           sdsSize={finalIconSize as typeof sdsSize}
         />
       );

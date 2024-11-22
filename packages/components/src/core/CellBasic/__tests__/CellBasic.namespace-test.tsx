@@ -9,7 +9,7 @@ const CellBasicNameSpaceTest = (props: CellBasicProps) => {
           <CellBasic
             horizontalAlign="left"
             verticalAlign="center"
-            icon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
+            icon={<Icon sdsIcon="Download" sdsSize="l" />}
             iconVerticalAlign="center"
             primaryText="Primary Text"
             primaryTextWrapLineCount={2}

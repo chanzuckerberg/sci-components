@@ -232,9 +232,6 @@ const AutocompleteMultiColumn = <
                     sdsType="tertiary"
                     sdsSize="small"
                     sdsStyle="icon"
-                    sdsIconProps={{
-                      sdsType: "iconButton",
-                    }}
                     icon="XMarkCircle"
                     onClick={clearInput}
                   />

@@ -16,7 +16,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
           data-file-name="IconInfoCircleLarge"
           data-testid="IconInfoCircleLarge"
           fillcontrast="white"
@@ -31,7 +31,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14btmof-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-f0g2hw-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
@@ -41,7 +41,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
         data-file-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
         fillcontrast="white"
