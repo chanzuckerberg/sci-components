@@ -15,8 +15,11 @@ export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
   arrowOffset?: number;
   followCursor?: boolean;
+  // @deprecated Use `hasInvertedStyle` instead
   inverted?: boolean;
+  // @deprecated Use `hasInvertedStyle` instead
   sdsStyle?: "dark" | "light";
+  hasInvertedStyle?: boolean;
   subtitle?: string;
   width?: "default" | "wide";
 }
@@ -76,7 +79,13 @@ export const Subtitle = styled("div")`
 `;
 
 export const tooltipCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, width, followCursor } = props;
+  const {
+    hasInvertedStyle = true,
+    inverted,
+    sdsStyle,
+    width,
+    followCursor,
+  } = props;
 
   const shadows = getShadows(props);
 
@@ -84,7 +93,9 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
     &.MuiTooltip-tooltip {
       box-shadow: ${shadows?.m};
 
-      ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
+      ${sdsStyle === "dark" || inverted || hasInvertedStyle
+        ? dark(props)
+        : light(props)}
       ${width === "wide" && sdsStyle === "light" && wide()}
 
       ${followCursor === true && tableStyles(props)}
@@ -93,7 +104,7 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 };
 
 export const arrowCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, arrowOffset } = props;
+  const { hasInvertedStyle, inverted, sdsStyle, arrowOffset } = props;
 
   const semanticColors = getSemanticColors(props);
 
@@ -101,7 +112,7 @@ export const arrowCss = (props: TooltipExtraProps): string => {
     &.MuiTooltip-arrow {
       /* (bethbertozzi): !important is needed to fight inline style */
       left: ${arrowOffset}px !important;
-      color: ${inverted || sdsStyle === "dark"
+      color: ${hasInvertedStyle || inverted || sdsStyle === "dark"
         ? semanticColors?.base?.surfacePrimaryInverse
         : semanticColors?.base?.surfacePrimary};
       &:before {
