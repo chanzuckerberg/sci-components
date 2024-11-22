@@ -27,8 +27,17 @@ export const StyledTag = styled(Tag)`
       background-color: ${semanticColors?.accent?.fillPrimary};
 
       &:hover,
-      &:focus {
+      &:focus,
+      &:focus-within {
         background-color: ${semanticColors?.accent?.fillHover};
+
+        .MuiChip-label {
+          color: ${semanticColors?.base?.textPrimaryInverse} !important;
+        }
+
+        .MuiChip-deleteIcon svg {
+          fill: ${semanticColors?.base?.ornamentPrimaryInverse} !important;
+        }
       }
 
       &:active {

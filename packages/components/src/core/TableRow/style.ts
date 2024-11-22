@@ -5,7 +5,6 @@ import {
   focusVisibleA11yStyle,
   fontHeaderS,
   getBorders,
-  getMode,
   getSemanticColors,
 } from "src/core/styles";
 
@@ -31,16 +30,14 @@ const doNotForwardProps = [
 
 const disabledStyled = (props: RowExtraProps) => {
   const semanticColors = getSemanticColors(props);
-  const mode = getMode(props);
 
   return `
-    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
-    background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+    background-color: ${semanticColors?.base?.backgroundSecondary};
     color: ${semanticColors?.base?.textDisabled};
     user-select: none;
 
     &:hover {
-      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.backgroundSecondary};
       color: ${semanticColors?.base?.textDisabled};
     }
 
@@ -52,9 +49,17 @@ const disabledStyled = (props: RowExtraProps) => {
       color: ${semanticColors?.base?.textDisabled};
       pointer-events: none;
       user-select: none;
-      & span, & div {
+      & div {
         color: ${semanticColors?.base?.textDisabled};
-        background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+        background-color: ${semanticColors?.base?.backgroundSecondary};
+      }
+
+      & .MuiChip-root {
+        background-color: ${semanticColors?.base?.fillDisabled};
+
+        & span {
+          color: ${semanticColors?.base?.textDisabled} !important;
+        }
       }
 
       svg {

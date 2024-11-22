@@ -58,15 +58,11 @@ export const Template = () => {
     return (
       <Table>
         <TableHeader>
-          <CellHeader hideSortIcon style={{ width: 30 }}>
+          <CellHeader hideSortIcon style={{ width: 100 }}>
             Breakpoint
           </CellHeader>
-          <CellHeader hideSortIcon style={{ width: 50 }}>
-            Variables
-          </CellHeader>
-          <CellHeader hideSortIcon style={{ width: 30 }}>
-            Value
-          </CellHeader>
+          <CellHeader hideSortIcon>Variables</CellHeader>
+          <CellHeader hideSortIcon>Value</CellHeader>
           <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>
         <tbody>{TableBodyContent}</tbody>
