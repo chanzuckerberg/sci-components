@@ -253,9 +253,6 @@ const AutocompleteMultiColumn = <
                   sdsType="tertiary"
                   sdsSize="small"
                   sdsStyle="icon"
-                  sdsIconProps={{
-                    sdsType: "interactive",
-                  }}
                   icon="Search"
                 />
               </StyledInputAdornment>

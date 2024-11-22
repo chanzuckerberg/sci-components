@@ -58,7 +58,7 @@ const disabledStyled = (props: RowExtraProps) => {
       }
 
       svg {
-        fill: ${semanticColors?.base?.iconDisabled};
+        fill: ${semanticColors?.base?.ornamentDisabled};
       }
 
       filter: grayscale(100%);

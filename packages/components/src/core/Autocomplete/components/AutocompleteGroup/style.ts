@@ -64,14 +64,14 @@ export const StyledColumnIcon = styled("span")`
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surface};
       position: absolute;
       right: -${spaces?.xs}px;
       top: -2px;
       padding-bottom: 2px;
 
       svg {
-        color: ${semanticColors?.base?.iconPrimary};
+        color: ${semanticColors?.base?.ornamentSecondary};
         width: ${iconSizes?.xs.width}px;
         height: ${iconSizes?.xs.height}px;
       }

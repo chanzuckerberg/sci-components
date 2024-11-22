@@ -1,8 +1,8 @@
-import { ToggleButton, ToggleButtonGroupProps } from "@mui/material";
+import { ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
 import Icon, { IconNameToSizes } from "src/core/Icon";
 import Tooltip from "src/core/Tooltip";
-import { StyledSegmentedControl } from "./style";
+import { StyledSegmentedControl, StyledToggleButton } from "./style";
 
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
@@ -71,19 +71,19 @@ const SegmentedControl = (props: SegmentedControlProps) => {
           typeof icon !== "string" ? (
             icon
           ) : (
-            <Icon sdsIcon={icon} sdsSize="s" sdsType="button" />
+            <Icon sdsIcon={icon} sdsSize="s" />
           )
         ) : null;
 
         const toggleButton = (
-          <ToggleButton
+          <StyledToggleButton
             aria-label={tooltipText ?? buttonValue}
             value={buttonValue}
             disabled={disabled}
             key={buttonValue}
           >
             <span tabIndex={-1}>{iconItem}</span>
-          </ToggleButton>
+          </StyledToggleButton>
         );
 
         // (masoudmanson): If the button is disabled, we don't want to show the tooltip.

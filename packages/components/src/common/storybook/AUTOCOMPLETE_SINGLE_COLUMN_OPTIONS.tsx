@@ -34,12 +34,12 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "name with details",
   },
   {
-    icon: <CustomSdsIcon sdsSize="s" color="gray" shade={500} />,
+    icon: <CustomSdsIcon sdsSize="s" color="green" shade={600} />,
     name: "Custom SDS Icon",
     section: "With Icon",
   },
   {
-    icon: <CustomSvgIcon sx={{ color: "#969696", height: 16, width: 16 }} />,
+    icon: <CustomSvgIcon sx={{ color: "orange", height: 16, width: 16 }} />,
     name: "Custom SVG Icon",
     section: "With Icon",
   },

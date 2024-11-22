@@ -265,9 +265,6 @@ const AutocompleteBase = <
                     sdsType="tertiary"
                     sdsSize="small"
                     sdsStyle="icon"
-                    sdsIconProps={{
-                      sdsType: "iconButton",
-                    }}
                     icon="XMarkCircle"
                   />
                 )}
@@ -288,13 +285,9 @@ const AutocompleteBase = <
                   tabIndex={search ? 0 : -1}
                   aria-hidden={!search}
                   disabled={!search}
-                  onClick={clearInput}
                   sdsType="tertiary"
                   sdsSize="small"
                   sdsStyle="icon"
-                  sdsIconProps={{
-                    sdsType: "interactive",
-                  }}
                   icon="Search"
                 />
               </StyledInputAdornment>
@@ -425,6 +418,7 @@ const AutocompleteBase = <
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
+        key={option.name}
       >
         {MenuItemContent}
       </MenuItem>

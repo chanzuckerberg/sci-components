@@ -52,7 +52,6 @@ const CellHeaderContent = (
           : "Change sort direction from descending to ascending"
       }
       sdsIcon={sdsIconName}
-      sdsType="static"
       sdsSize="xs"
       active={active}
       hideSortIcon={hideSortIcon}

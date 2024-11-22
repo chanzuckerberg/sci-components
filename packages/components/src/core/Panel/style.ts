@@ -32,7 +32,7 @@ const basicPanelStyles = (props: PanelExtraProps): SerializedStyles => {
 
   return css`
     .${drawerClasses.paper} {
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.backgroundPrimary};
       padding: ${spaces?.l}px;
       min-width: ${PANEL_BASIC_MIN_WIDTH_PX}px;
       min-height: ${PANEL_BASIC_MIN_WIDTH_PX}px;
@@ -60,7 +60,7 @@ const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
     }
 
     .${drawerClasses.paper} {
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surface};
       padding: ${spaces?.xl}px;
       min-width: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;
       min-height: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;

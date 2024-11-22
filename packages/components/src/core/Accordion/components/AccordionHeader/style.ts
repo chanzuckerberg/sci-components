@@ -35,14 +35,14 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
         align-self: center;
 
         svg {
-          color: ${semanticColors?.base?.iconPrimary};
+          color: ${semanticColors?.base?.ornamentSecondary};
         }
       }
 
       &:hover {
         & .${accordionSummaryClasses.expandIconWrapper} {
           svg {
-            color: ${semanticColors?.base?.iconPrimaryHover};
+            color: ${semanticColors?.base?.ornamentSecondaryHover};
           }
         }
       }

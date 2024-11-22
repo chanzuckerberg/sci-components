@@ -38,7 +38,7 @@ const minimal = (props: CommonThemeProps): SerializedStyles => {
       width: ${iconSizes?.s.width}px;
 
       path {
-        fill: ${semanticColors?.base?.iconPrimary};
+        fill: ${semanticColors?.base?.ornamentSecondary};
       }
     }
   `;
@@ -51,7 +51,7 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
   return css`
     ${fontCapsXxxxs(props)}
 
-    background-color: ${semanticColors?.info?.surfacePrimary};
+    background-color: ${semanticColors?.info?.surfaceSecondary};
     border-radius: ${corners?.l}px;
     color: ${semanticColors?.info?.text};
 

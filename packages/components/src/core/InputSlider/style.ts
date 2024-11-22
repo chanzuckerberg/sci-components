@@ -5,9 +5,7 @@ import {
   focusVisibleA11yStyle,
   fontBodyXxs,
   fontBodyXxxs,
-  getColors,
   getCorners,
-  getMode,
   getSemanticColors,
   getShadows,
 } from "src/core/styles";
@@ -52,7 +50,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.thumb}::after {
-      background-color: ${semanticColors?.base?.surfacePrimary} !important;
+      background-color: ${semanticColors?.base?.backgroundPrimary} !important;
       height: 6px !important;
       width: 6px !important;
       position: absolute;
@@ -64,7 +62,7 @@ const inputSlider = (props: InputSliderExtraProps) => {
     .${sliderClasses.valueLabel} {
       padding: 2px 4px;
       color: ${semanticColors?.base?.textPrimary};
-      background-color: ${semanticColors?.accent?.surfacePrimary};
+      background-color: ${semanticColors?.accent?.surfaceSecondary};
       border-radius: ${corners?.m}px;
       left: unset; 
       top: -3px;
@@ -84,13 +82,13 @@ const inputSlider = (props: InputSliderExtraProps) => {
 
     .${sliderClasses.mark} {
       // (masoudmanson): Although the mark is not a icon, but since we don't have 
-      // a specific color for the mark, we use the iconDisabled color for it.
-      background-color: ${semanticColors?.base?.iconDisabled};
+      // a specific color for the mark, we use the ornamentDisabled color for it.
+      background-color: ${semanticColors?.base?.ornamentDisabled};
       opacity: 1;
     }
 
     .${sliderClasses.mark}.${sliderClasses.markActive} {
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.backgroundPrimary};
     }
 
     .${sliderClasses.markLabel} {
@@ -136,9 +134,7 @@ const horizontal = (props: InputSliderExtraProps) => {
 };
 
 const disabledSlider = (props: InputSliderExtraProps) => {
-  const colors = getColors(props);
   const semanticColors = getSemanticColors(props);
-  const mode = getMode(props);
 
   return `
     .${sliderClasses.track} {
@@ -150,8 +146,8 @@ const disabledSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.valueLabel} {
-      color: ${colors?.gray[300]};
-      background-color: ${mode === "light" ? semanticColors?.base?.surfaceSecondary : semanticColors?.base?.surfacePrimary};
+      color: ${semanticColors?.base?.textDisabled};
+      background-color: ${semanticColors?.base?.backgroundTertiary};
       
       & * {
         color: ${semanticColors?.base?.textDisabled};
