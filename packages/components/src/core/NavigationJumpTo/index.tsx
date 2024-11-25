@@ -4,13 +4,19 @@ import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
 
+type Item = {
+  title: string;
+  elementRef: React.MutableRefObject<HTMLElement | null>;
+};
+
 export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
-  items: Array<{
-    title: string;
-    elementRef: React.MutableRefObject<HTMLElement | null>;
-  }>;
+  items: Array<Item>;
   offsetTop?: number;
-  onChange?: (value: number) => void;
+  onChange?: (
+    value: number,
+    type?: "click" | "scroll",
+    event?: React.SyntheticEvent
+  ) => void;
 }
 
 const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
@@ -56,9 +62,13 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
 
     // Emit changes only once
     const handleOnChange = useCallback(
-      (value: number) => {
+      (
+        event: React.SyntheticEvent,
+        value: number,
+        type: "click" | "scroll"
+      ) => {
         if (value !== emittedValue) {
-          onChange?.(value);
+          onChange?.(value, type, event);
           setEmittedValue(value);
         }
       },
@@ -92,7 +102,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       setFirstTabIndexInview(newValue);
 
       // Invoke the custom onChange prop
-      handleOnChange(newValue);
+      handleOnChange(event, newValue, "click");
     };
 
     // Observe changes in the sectionIsInView object to update the tabs value
@@ -110,7 +120,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         setFirstTabIndexInview(sectionInView);
 
         // Invoke the custom onChange prop
-        handleOnChange(sectionInView);
+        handleOnChange({} as React.SyntheticEvent, sectionInView, "scroll");
       }
     }, [handleOnChange, navItemClicked, sectionIsInView]);
 
