@@ -267,11 +267,13 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
 
     &:active {
       color: ${semanticColors?.accent?.textActionPressed};
+      background-color: ${semanticColors?.base?.fillHover};
 
       svg {
         color: ${semanticColors?.accent?.ornamentPressed};
       }
     }
+
     &:disabled {
       color: ${semanticColors?.base?.textDisabled};
 
