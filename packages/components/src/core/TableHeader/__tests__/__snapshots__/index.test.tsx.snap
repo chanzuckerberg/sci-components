@@ -9,7 +9,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
       class="css-fitsu2"
     >
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -22,7 +22,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-136pauu-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -35,7 +35,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -48,7 +48,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -61,7 +61,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -74,7 +74,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

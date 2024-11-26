@@ -19,10 +19,10 @@ const isDisabled = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.base?.iconDisabled};
+    color: ${semanticColors?.base?.ornamentDisabled};
 
     svg {
-      color: ${semanticColors?.base?.iconDisabled};
+      color: ${semanticColors?.base?.ornamentDisabled};
     }
   `;
 };
@@ -31,27 +31,27 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.accent?.textAction};
+    color: ${semanticColors?.accent?.ornament};
 
     svg {
-      color: ${semanticColors?.accent?.icon};
+      color: ${semanticColors?.accent?.ornament};
     }
 
     &:hover {
       background: ${semanticColors?.base?.fillHover};
-      color: ${semanticColors?.accent?.textActionHover};
+      color: ${semanticColors?.accent?.ornamentHover};
 
       svg {
-        color: ${semanticColors?.accent?.iconHover};
+        color: ${semanticColors?.accent?.ornamentHover};
       }
     }
 
     &:active {
       background: ${semanticColors?.base?.fillPressed};
-      color: ${semanticColors?.accent?.textActionPressed};
+      color: ${semanticColors?.accent?.ornamentPressed};
 
       svg {
-        color: ${semanticColors?.accent?.iconPressed};
+        color: ${semanticColors?.accent?.ornamentPressed};
       }
     }
   `;
@@ -61,27 +61,27 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.base?.iconPrimary};
+    color: ${semanticColors?.base?.ornamentSecondary};
 
     svg {
-      color: ${semanticColors?.base?.iconPrimary};
+      color: ${semanticColors?.base?.ornamentSecondary};
     }
 
     &:hover {
       background: ${semanticColors?.base?.fillHover};
-      color: ${semanticColors?.accent?.iconHover};
+      color: ${semanticColors?.accent?.ornamentHover};
 
       svg {
-        color: ${semanticColors?.accent?.iconHover};
+        color: ${semanticColors?.accent?.ornamentHover};
       }
     }
 
     &:active {
       background: ${semanticColors?.base?.fillPressed};
-      color: ${semanticColors?.accent?.iconPressed};
+      color: ${semanticColors?.accent?.ornamentPressed};
 
       svg {
-        color: ${semanticColors?.accent?.iconPressed};
+        color: ${semanticColors?.accent?.ornamentPressed};
       }
     }
   `;
@@ -91,27 +91,27 @@ const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.base?.iconPrimary};
+    color: ${semanticColors?.base?.ornamentSecondary};
 
     svg {
-      color: ${semanticColors?.base?.iconPrimary};
+      color: ${semanticColors?.base?.ornamentSecondary};
     }
 
     &:hover {
       background: none;
-      color: ${semanticColors?.base?.iconPrimaryHover};
+      color: ${semanticColors?.base?.ornamentSecondaryHover};
 
       svg {
-        color: ${semanticColors?.base?.iconPrimaryHover};
+        color: ${semanticColors?.base?.ornamentSecondaryHover};
       }
     }
 
     &:active {
       background: none;
-      color: ${semanticColors?.base?.iconPrimaryPressed};
+      color: ${semanticColors?.base?.ornamentSecondaryPressed};
 
       svg {
-        color: ${semanticColors?.base?.iconPrimaryPressed};
+        color: ${semanticColors?.base?.ornamentSecondaryPressed};
       }
     }
   `;

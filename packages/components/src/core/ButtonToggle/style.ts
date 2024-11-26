@@ -24,7 +24,7 @@ export const StyledButtonToggle = styled(ButtonIcon, {
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${sdsStage === "on" ? semanticColors?.base?.fillHover : "transparent"};
+      background-color: ${sdsStage === "on" ? semanticColors?.base?.fillOpen : "transparent"};
     `;
   }}
 `;

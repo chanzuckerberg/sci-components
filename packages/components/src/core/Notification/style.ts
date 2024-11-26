@@ -41,7 +41,8 @@ export const StyledNotification = styled(Alert, {
     const borders = getBorders(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
-    const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
+    const backgroundColor =
+      semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
     // (masoudmanson): The Notification Icon should be vertically centered with the Notification
     // Title. The padding-top of the Notification Title is calculated based on the difference

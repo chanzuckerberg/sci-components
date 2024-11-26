@@ -28,7 +28,7 @@ export const StyledInsetSpacingBox = styled("div")`
       box-sizing: border-box;
       width: ${BoxSize}px;
       height: ${BoxSize}px;
-      border: solid ${size}px ${semanticColors?.positive.surfacePrimary};
+      border: solid ${size}px ${semanticColors?.positive.surfaceSecondary};
       color: ${semanticColors?.positive?.text};
       font-size: 10px;
       display: flex;
@@ -52,7 +52,7 @@ export const StyledInlineSpacingBox = styled("div")`
       margin-left: 30px;
       width: ${size}px;
       height: ${BoxSize}px;
-      background-color: ${semanticColors?.notice.surfacePrimary};
+      background-color: ${semanticColors?.notice.surfaceSecondary};
       color: ${semanticColors?.notice?.text};
       font-size: 10px;
       display: flex;
@@ -75,7 +75,7 @@ export const StyledStackedSpacingBox = styled("div")`
       position: relative;
       height: ${size}px;
       width: ${BoxSize}px;
-      background-color: ${semanticColors?.notice.surfacePrimary};
+      background-color: ${semanticColors?.notice.surfaceSecondary};
       color: ${semanticColors?.notice?.text};
       font-size: 10px;
       display: flex;

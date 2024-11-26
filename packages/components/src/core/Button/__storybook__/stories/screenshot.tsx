@@ -136,11 +136,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 sdsStyle={sdsStyle}
                 type={type}
                 icon={
-                  <Icon
-                    sdsIcon={icon as keyof IconNameToSizes}
-                    sdsType="button"
-                    sdsSize="s"
-                  />
+                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="s" />
                 }
                 key={String(icon)}
               />
@@ -149,11 +145,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 sdsStyle={sdsStyle}
                 type={type}
                 icon={
-                  <Icon
-                    sdsIcon={icon as keyof IconNameToSizes}
-                    sdsType="button"
-                    sdsSize="l"
-                  />
+                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="l" />
                 }
                 key={String(icon)}
               />

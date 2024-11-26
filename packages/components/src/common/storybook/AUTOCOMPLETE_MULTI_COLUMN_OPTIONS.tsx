@@ -6,7 +6,7 @@ import CustomSvgIcon from "./customSvgIcon";
 
 export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
     name: "Column One",
     options: [
       {
@@ -35,7 +35,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" sdsType="static" />,
+    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
     name: "Column Two",
     options: [
       {
@@ -68,14 +68,12 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     name: "Column Three",
     options: [
       {
-        icon: <CustomSdsIcon sdsSize="s" color="gray" shade={500} />,
+        icon: <CustomSdsIcon sdsSize="s" color="green" shade={600} />,
         name: "Custom SDS Icon",
         section: "With Icon",
       },
       {
-        icon: (
-          <CustomSvgIcon sx={{ color: "#969696", height: 16, width: 16 }} />
-        ),
+        icon: <CustomSvgIcon sx={{ color: "orange", height: 16, width: 16 }} />,
         name: "Custom SVG Icon",
         section: "With Icon",
       },

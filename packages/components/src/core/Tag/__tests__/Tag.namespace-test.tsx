@@ -5,7 +5,7 @@ const TagNameSpaceTest = (props: TagProps) => {
   return (
     <Tag
       color="beta"
-      icon={<Icon sdsIcon="Download" sdsSize="l" sdsType="button" />}
+      icon={<Icon sdsIcon="Download" sdsSize="l" />}
       label="Label"
       sdsStyle="rounded"
       sdsType="primary"

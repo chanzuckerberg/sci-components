@@ -76,11 +76,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             min-height: unset;
 
             &.${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.surfaceSecondary};
+              background-color: ${semanticColors?.base?.fillHover};
             }
 
             &[aria-selected="true"] {
-              background-color: ${semanticColors?.base?.surfacePrimary};
+              background-color: ${semanticColors?.base?.surface};
             }
 
             &[aria-disabled="true"] {
@@ -88,7 +88,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             }
 
             &[aria-selected="true"].${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.surfaceSecondary};
+              background-color: ${semanticColors?.base?.fillHover};
             }
           }
 
@@ -102,7 +102,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
-          background-color: ${semanticColors?.base?.surfacePrimary};
+          background-color: ${semanticColors?.base?.surface};
           padding: ${spaces?.xxs}px ${spaces?.s}px;
         }
 
@@ -176,7 +176,7 @@ export const StyledPaper = styled(Paper)`
     return `
       background-image: none;
       padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${semanticColors?.base?.surface};
       border: ${borders?.none};
       border-radius: ${corners?.m}px;
       box-shadow: ${shadows?.m};

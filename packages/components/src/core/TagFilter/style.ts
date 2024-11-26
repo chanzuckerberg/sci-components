@@ -26,21 +26,9 @@ export const StyledTag = styled(Tag)`
       padding: ${spaces?.xxs}px ${spaces?.s}px;
       background-color: ${semanticColors?.accent?.fillPrimary};
 
-      &:hover,
-      &:focus {
-        background-color: ${semanticColors?.accent?.fillHover};
-      }
-
-      &:active {
-        background-color: ${semanticColors?.accent?.fillPressed};
-      }
-
-      &:after {
-        display: none;
-      }
-
       .MuiChip-label {
         ${fontHeaderXs(props)}
+        z-index: auto;
       }
 
       .MuiChip-deleteIcon {
@@ -55,9 +43,30 @@ export const StyledTag = styled(Tag)`
         height: ${iconSizes?.xs?.height}px !important;
       }
 
-      .MuiChip-label,
       svg {
         z-index: auto;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        background-color: ${semanticColors?.accent?.fillHover};
+
+        .MuiChip-label {
+          color: ${semanticColors?.base?.textPrimaryInverse} !important;
+        }
+
+        .MuiChip-deleteIcon svg {
+          fill: ${semanticColors?.base?.ornamentPrimaryInverse} !important;
+        }
+      }
+
+      &:active {
+        background-color: ${semanticColors?.accent?.fillPressed};
+      }
+
+      &:after {
+        display: none;
       }
     `;
   }}

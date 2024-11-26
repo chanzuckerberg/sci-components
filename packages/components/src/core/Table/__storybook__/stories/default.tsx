@@ -32,7 +32,7 @@ export const Table = (props: Args): JSX.Element => {
         <TableRow>
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Flask" sdsType="static" />
+              <Icon sdsSize="xl" sdsIcon="Flask" />
               <Tag
                 color="info"
                 label="Chemistry"
@@ -76,7 +76,7 @@ export const Table = (props: Args): JSX.Element => {
         <TableRow>
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Download" sdsType="static" />
+              <Icon sdsSize="xl" sdsIcon="Download" />
               <Tag
                 color="info"
                 label="Downloadable Content"
@@ -124,7 +124,7 @@ export const Table = (props: Args): JSX.Element => {
         >
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Bacteria" sdsType="static" />
+              <Icon sdsSize="xl" sdsIcon="Virus" />
               <Tag
                 color="negative"
                 label="Disease"
@@ -147,7 +147,7 @@ export const Table = (props: Args): JSX.Element => {
             verticalAlign="center"
           />
           <CellComponent verticalAlign="center">
-            <Icon sdsSize="l" sdsIcon="Virus" sdsType="static" />
+            <Icon sdsSize="l" sdsIcon="Bacteria" />
           </CellComponent>
           <CellBasic
             primaryText="0.4"

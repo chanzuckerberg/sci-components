@@ -42,14 +42,14 @@ export const StyledPaginationButton = styled(Button)`
 
       & .MuiSvgIcon-root {
         width: 10px;
-        color: ${semanticColors?.base?.iconPrimary}
+        color: ${semanticColors?.base?.ornamentSecondary};
       }
 
       &:hover {
         background-color: ${semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
-          color: ${semanticColors?.base?.iconPrimaryHover}
+          color: ${semanticColors?.base?.ornamentSecondaryHover}
         }
       }
     `;
@@ -83,14 +83,14 @@ export const StyledPaginationChevronList = styled("li", {
       }
 
       & .MuiSvgIcon-root {
-        color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.base?.iconPrimary};
+        color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.base?.ornamentSecondary};
       }
 
       &:hover {
         background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
 
         & .MuiSvgIcon-root {
-          color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.base?.iconPrimaryHover}
+          color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.base?.ornamentSecondaryHover}
         }
       }
 

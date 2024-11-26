@@ -8,7 +8,7 @@ export const StyledHeader = styled("div")`
     const theme = useContext(ThemeContext) as SDSTheme;
 
     return `
-      background-color: ${theme?.palette?.sds?.base?.surfaceBackground};
+      background-color: ${theme?.palette?.sds?.base?.backgroundPrimary};
     `;
   }}
   grid-area: 1 / 1 / 2 / 6;
