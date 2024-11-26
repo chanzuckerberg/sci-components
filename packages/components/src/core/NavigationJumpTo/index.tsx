@@ -14,8 +14,8 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
   offsetTop?: number;
   onChange?: (
     value: number,
-    type?: "click" | "scroll",
-    event?: React.SyntheticEvent
+    event?: React.SyntheticEvent,
+    type?: "click" | "scroll"
   ) => void;
 }
 
@@ -63,12 +63,12 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
     // Emit changes only once
     const handleOnChange = useCallback(
       (
-        event: React.SyntheticEvent,
         value: number,
+        event: React.SyntheticEvent,
         type: "click" | "scroll"
       ) => {
         if (value !== emittedValue) {
-          onChange?.(value, type, event);
+          onChange?.(value, event, type);
           setEmittedValue(value);
         }
       },
@@ -102,7 +102,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       setFirstTabIndexInview(newValue);
 
       // Invoke the custom onChange prop
-      handleOnChange(event, newValue, "click");
+      handleOnChange(newValue, event, "click");
     };
 
     // Observe changes in the sectionIsInView object to update the tabs value
@@ -120,9 +120,16 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         setFirstTabIndexInview(sectionInView);
 
         // Invoke the custom onChange prop
-        handleOnChange({} as React.SyntheticEvent, sectionInView, "scroll");
+        handleOnChange(
+          sectionInView,
+          {
+            target: items[sectionInView],
+            type: "scroll",
+          } as unknown as React.SyntheticEvent,
+          "scroll"
+        );
       }
-    }, [handleOnChange, navItemClicked, sectionIsInView]);
+    }, [handleOnChange, items, navItemClicked, sectionIsInView]);
 
     // Set navItemClicked to false to re-enable the option
     // to update the tab value based on scroll.

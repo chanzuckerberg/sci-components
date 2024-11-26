@@ -101,10 +101,6 @@ export const NavigationJumpToDemo = (props: Args): JSX.Element => {
               { elementRef: sectionRef3, title: "Section 4" },
               { elementRef: sectionRef4, title: "Section 5" },
             ]}
-            onChange={(value, type, event) => {
-              console.log("On Change");
-              console.log(value, type, event);
-            }}
           />
         </Box>
         <Box
