@@ -13,7 +13,6 @@ import {
   getPalette,
   getSemanticColors,
   getSpaces,
-  getTypography,
 } from "src/core/styles";
 import { CalloutIntentType } from "src/core/Callout";
 
@@ -37,30 +36,14 @@ export const StyledCallout = styled(Alert, {
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const palette = getPalette(props);
-    const typography = getTypography(props);
     const semanticColors = getSemanticColors(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor =
       semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
-    // when a title is present Mui's default styling has vertical margin,
-    // but for an expandable callout that is collapsed, we do not want
-    // any bottom margin
-    const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
-
-    // (masoudmanson): The Callout Icon should be vertically centered with the Callout
-    // Title. The padding-top of the Callout Message is calculated based on the difference
-    // between the height of the Icon and the line-height of the Callout Title.
-    const alertMessagePaddingTop = Math.abs(
-      ((iconSizes?.l.height ?? 0) -
-        parseInt(
-          String(typography?.wideStyles?.body?.regular?.xs?.lineHeight ?? "0")
-        )) /
-        2
-    );
-
     return `
+      position: relative;
       width: 360px;
       margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
@@ -80,16 +63,18 @@ export const StyledCallout = styled(Alert, {
       }
 
       .${alertClasses.message} {
-        padding: ${alertMessagePaddingTop}px 0 0;
+        padding: 0;
         margin-right: ${spaces?.m}px;
 
         .${alertTitleClasses.root} {
-          margin-top: 0;
-          ${titleBottomMargin}
+          margin: 0;
         }
       }
 
       .${alertClasses.action} {
+        position: absolute;
+        right: ${spaces?.m}px;
+        top: ${spaces?.m}px;
         margin-right: 0;
         padding: 0;
         align-items: flex-start;

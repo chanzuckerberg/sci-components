@@ -3,8 +3,10 @@ import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
+import CalloutTitle from "./components/CalloutTitle";
+import CalloutBody from "./components/CalloutBody";
+import CalloutExtraContent from "./components/CalloutExtraContent";
 
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
@@ -13,11 +15,16 @@ export type CalloutIntentType = "info" | "negative" | "notice" | "positive";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
-  expandable?: boolean;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
   intent: CalloutIntentType;
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
+  title?: string;
+  hideTitle?: boolean;
+  body?: string;
+  hideBody?: boolean;
+  extraContent?: React.ReactNode;
+  expandable?: boolean;
 }
 
 export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
@@ -27,7 +34,6 @@ export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
  */
 const Callout = ({
   autoDismiss,
-  children,
   dismissed,
   expandable,
   onClose,
@@ -35,6 +41,11 @@ const Callout = ({
   sdsIconProps,
   intent,
   sdsStage,
+  title,
+  body,
+  hideTitle = false,
+  hideBody = false,
+  children,
   ...rest
 }: ExposedCalloutProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
@@ -111,19 +122,6 @@ const Callout = ({
 
   const collapsed = (expandable && stage === SDS_STAGE_CLOSED) || false;
 
-  // when there is no CalloutTitlecomponent, or there is a single child element
-  // the contents of children will be used as the title
-  let calloutTitle = children;
-  let calloutContent;
-
-  const firstChildIsCalloutTitle =
-    Array.isArray(children) &&
-    children[0]?.type?.displayName === CALLOUT_TITLE_DISPLAY_NAME;
-
-  if (firstChildIsCalloutTitle) {
-    [calloutTitle, ...calloutContent] = children;
-  }
-
   return (
     <>
       <Grow in={!hide}>
@@ -135,8 +133,13 @@ const Callout = ({
           collapsed={collapsed || false}
           {...rest}
         >
-          {calloutTitle}
-          {!collapsed && calloutContent}
+          {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
+          {!hideBody && <CalloutBody hideTitle={hideTitle}>{body}</CalloutBody>}
+          {!collapsed && (
+            <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
+              {children}
+            </CalloutExtraContent>
+          )}
         </StyledCallout>
       </Grow>
     </>
