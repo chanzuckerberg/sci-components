@@ -59,7 +59,6 @@ export const StyledCheckboxDefaultIcon = styled("span")`
 export const StyledCheckboxCheckedIcon = styled("div")`
   ${(props: CheckboxExtraProps) => {
     const iconSizes = getIconSizes(props);
-    const borders = getBorders(props);
     const semanticColors = getSemanticColors(props);
 
     return `
@@ -68,12 +67,15 @@ export const StyledCheckboxCheckedIcon = styled("div")`
       justify-content: center;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
-      border: ${borders?.accent?.default};
       border-radius: 2px;
       background-color: ${semanticColors?.accent?.fillPrimary};
 
       ${StyledIcon} {
         fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+      }
+
+      &:hover {
+        background-color: red;
       }
     `;
   }}
@@ -86,9 +88,14 @@ export const StyledCheckbox = styled(RawCheckbox)`
     return `
       &.${checkboxClasses.root} {
         ${focusVisibleA11yStyle(props)}
+        
         padding: 0;
         margin-right: ${spaces?.s}px;
         border-radius: 0;
+
+        &:hover {
+          background-color: transparent;
+        }
       }
     `;
   }}
@@ -136,7 +143,6 @@ const disabledStyles = (props: CheckboxExtraProps) => {
     }
 
     ${StyledCheckboxCheckedIcon} {
-      border: ${borders?.base?.disabled};
       background-color: ${semanticColors?.base?.ornamentDisabled};
     }
 
@@ -150,7 +156,6 @@ const disabledStyles = (props: CheckboxExtraProps) => {
       }
 
       ${StyledCheckboxCheckedIcon} {
-        border: ${borders?.base?.disabled};
         background-color: ${semanticColors?.base?.ornamentDisabled};
       }
     }
@@ -178,7 +183,6 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
         }
 
         ${StyledCheckboxCheckedIcon} {
-          border: ${borders?.accent?.hover};
           background-color: ${semanticColors?.accent?.fillHover};
         }
       }
@@ -189,7 +193,6 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
         }
 
         ${StyledCheckboxCheckedIcon} {
-          border: ${borders?.accent?.pressed};
           background-color: ${semanticColors?.accent?.fillPressed};
         }
       }
