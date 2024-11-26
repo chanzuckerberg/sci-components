@@ -28,7 +28,7 @@ export const StyledPaper = styled(Paper, {
       const semanticColors = getSemanticColors(props);
 
       return `
-        background-color: ${semanticColors?.base?.surfacePrimary};
+        background-color: ${semanticColors?.base?.surface};
         background-image: none;
         box-shadow: ${shadows?.l};
         max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);

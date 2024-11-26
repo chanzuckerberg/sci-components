@@ -41,7 +41,7 @@ export const TestDemo = (): JSX.Element => (
           secondaryText="Secondary Text"
           tertiaryText="Tertiary Text"
           shouldShowTooltipOnHover={false}
-          icon={<Icon sdsSize="l" sdsIcon="Bacteria" sdsType="static" />}
+          icon={<Icon sdsSize="l" sdsIcon="Bacteria" />}
         />
         <StyledCellBasic
           primaryText="Primary Text"

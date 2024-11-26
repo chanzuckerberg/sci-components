@@ -11,7 +11,7 @@ export type { IconNameToSizes };
 
 export interface SdsIconWithColor {
   color?: SdsIconColorType;
-  shade?: 100 | 200 | 300 | 400 | 500 | 600;
+  shade?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
 }
 
 export type IconProps<IconName extends keyof IconNameToSizes> =
@@ -21,7 +21,7 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
  * @see https://mui.com/material-ui/icons/#icons
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
-  { className, color, shade, sdsIcon, sdsSize, sdsType }: IconProps<IconName>,
+  { className, color, shade, sdsIcon, sdsSize }: IconProps<IconName>,
   ref: ForwardedRef<HTMLDivElement | null>
 ): JSX.Element | null {
   const icon = iconMap[sdsIcon] ?? {};
@@ -40,7 +40,6 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           height={16}
           component={smallIcon}
           sdsSize={sdsSize}
-          sdsType={sdsType}
           sdsIcon={sdsIcon}
         />
       </StyledIcon>
@@ -59,7 +58,6 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
           height={24}
           component={largeIcon}
           sdsSize={sdsSize}
-          sdsType={sdsType}
           sdsIcon={sdsIcon}
         />
       </StyledIcon>

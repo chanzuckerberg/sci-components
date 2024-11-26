@@ -3,7 +3,6 @@ import {
   CommonThemeProps,
   fontCodeXs,
   getFontWeights,
-  getMode,
   getSemanticColors,
 } from "src/core/styles";
 
@@ -19,7 +18,6 @@ export const StyledCornerBox = styled("div")`
   ${(props: IStyledCornerBoxProps) => {
     const { size } = props;
 
-    const mode = getMode(props);
     const semanticColors = getSemanticColors(props);
     const BorderWidth = 2;
     const BoxSize = 60;
@@ -45,7 +43,7 @@ export const StyledCornerBox = styled("div")`
       &::after {
         content: "";
         position: absolute;
-        background-color: ${mode === "dark" ? semanticColors?.base.surfacePrimary : semanticColors?.base.surfaceSecondary};
+        background-color: ${semanticColors?.base?.backgroundSecondary};
         width: ${BoxSize - 2 * BorderWidth}px;
         height: ${BoxSize - 2 * BorderWidth}px;
         top: ${BorderWidth}px;

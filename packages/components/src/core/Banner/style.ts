@@ -39,7 +39,7 @@ export const IconWrapper = styled("div", {
       height: ${iconSizes?.l.height}px;
       margin-right: ${spaces?.m}px;
       svg {
-        fill: ${bannerType === "primary" ? semanticColors?.base?.iconPrimaryInverse : semanticColors?.info?.ornament};
+        fill: ${bannerType === "primary" ? semanticColors?.base?.ornamentOnFill : semanticColors?.info?.ornament};
       }
     `;
   }}
@@ -58,15 +58,26 @@ export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
 
     const semanticColors = getSemanticColors(props);
 
-    if (bannerType !== "primary") return "";
+    if (bannerType === "primary")
+      return `
+        svg {
+          fill: ${semanticColors?.base?.ornamentOnFill};
+          opacity: .65;
+        }
+
+        svg:hover {
+          opacity: 1;
+        }
+      `;
 
     return `
       svg {
-        fill: ${semanticColors?.base?.iconPrimaryInverse};
+        fill: ${semanticColors?.base?.ornamentPrimary};
+        opacity: .55;
       }
 
       svg:hover {
-        fill: ${semanticColors?.base?.iconPrimaryInverseHover};
+        opacity: 1;
       }
     `;
   }}
@@ -80,8 +91,8 @@ const primary = (props: BannerExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.info?.surfaceSecondary};
-    color: ${semanticColors?.base?.textPrimaryInverse};
+    background-color: ${semanticColors?.info?.surfacePrimary};
+    color: ${semanticColors?.base?.textOnFill};
   `;
 };
 
@@ -89,7 +100,7 @@ const secondary = (props: BannerExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.info?.surfacePrimary};
+    background-color: ${semanticColors?.info?.surfaceSecondary};
     color: ${semanticColors?.base?.textPrimary};
   `;
 };

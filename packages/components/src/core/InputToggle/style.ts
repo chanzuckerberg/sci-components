@@ -68,7 +68,7 @@ const toggle = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      // background-color: ${semanticColors?.base?.backgroundPrimary};
       opacity: 1;
       border-radius: ${corners?.l}px;
     }
@@ -87,7 +87,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.thumb} {
-      color: ${disabled ? semanticColors?.base?.iconDisabled : semanticColors?.accent?.icon};
+      color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.accent?.ornament};
       margin-left: ${spaces?.m}px;
     }
 
@@ -108,7 +108,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      background-color: ${semanticColors?.base?.fillPrimary} !important;
+      background-color: transparent !important;
       opacity: 1 !important;
     }
 
@@ -118,7 +118,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
         outline: ${borders?.accent?.hover};
 
         .${switchClasses.thumb} {
-          color: ${semanticColors?.accent?.iconHover};
+          color: ${semanticColors?.accent?.ornamentHover};
         }
       }`
     }
@@ -139,8 +139,8 @@ const toggleOff = (props: InputToggleExtraProps) => {
     .${switchClasses.thumb} {
       color: ${
         disabled
-          ? semanticColors?.base?.iconDisabled
-          : semanticColors?.base?.iconPrimary
+          ? semanticColors?.base?.ornamentDisabled
+          : semanticColors?.base?.ornamentSecondary
       };
       margin-right: ${spaces?.m}px;
     }
@@ -170,7 +170,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      background-color: ${semanticColors?.base?.fillPrimary} !important;
+      background-color: transparent !important;
       opacity: 1 !important;
     }
 
@@ -180,7 +180,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
         outline: ${borders?.base?.hover};
 
         .${switchClasses.thumb} {
-          color: ${semanticColors?.base?.iconPrimaryHover};
+          color: ${semanticColors?.base?.ornamentSecondaryHover};
         }
       }`
     }

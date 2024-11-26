@@ -15,7 +15,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
         data-file-name="IconChevronLeftSmall"
         data-testid="IconChevronLeftSmall"
         fillcontrast="white"
@@ -61,7 +61,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-navga8-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1br45xa-MuiButtonBase-root-MuiIconButton-root"
       icon="DotsHorizontal"
       tabindex="0"
       type="button"
@@ -71,7 +71,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
           data-file-name="IconDotsHorizontal3Small"
           data-testid="IconDotsHorizontal3Small"
           fillcontrast="white"
@@ -102,7 +102,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-8icru1-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
         data-file-name="IconChevronRightSmall"
         data-testid="IconChevronRightSmall"
         fillcontrast="white"

@@ -88,7 +88,7 @@ export const Template = () => {
     return (
       <Table>
         <TableHeader>
-          <CellHeader hideSortIcon style={{ width: 40 }}>
+          <CellHeader hideSortIcon style={{ width: 120 }}>
             Example
           </CellHeader>
           <CellHeader hideSortIcon>Variables</CellHeader>

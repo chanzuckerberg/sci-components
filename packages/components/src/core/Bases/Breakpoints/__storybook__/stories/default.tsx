@@ -6,7 +6,7 @@ import CellComponent from "src/core/CellComponent";
 import CellBasic from "src/core/CellBasic";
 import { copyToClipboard } from "src/core/Bases/utils";
 import { StyledVariable } from "src/core/Bases/style";
-import { BREAKPOINTS_USAGE } from "../constants";
+import { BREAKPOINTS_RANGE, BREAKPOINTS_USAGE } from "../constants";
 import { Breakpoint, useTheme } from "@mui/material";
 import { getBreakpoints } from "src/core/styles";
 
@@ -43,6 +43,12 @@ export const Template = () => {
 
         <CellBasic
           verticalAlign="center"
+          primaryText={BREAKPOINTS_RANGE[name]}
+          shouldShowTooltipOnHover={false}
+        />
+
+        <CellBasic
+          verticalAlign="center"
           primaryText={BREAKPOINTS_USAGE[name]}
           shouldShowTooltipOnHover={false}
         />
@@ -58,15 +64,12 @@ export const Template = () => {
     return (
       <Table>
         <TableHeader>
-          <CellHeader hideSortIcon style={{ width: 30 }}>
+          <CellHeader hideSortIcon style={{ width: 100 }}>
             Breakpoint
           </CellHeader>
-          <CellHeader hideSortIcon style={{ width: 50 }}>
-            Variables
-          </CellHeader>
-          <CellHeader hideSortIcon style={{ width: 30 }}>
-            Value
-          </CellHeader>
+          <CellHeader hideSortIcon>Variables</CellHeader>
+          <CellHeader hideSortIcon>Value</CellHeader>
+          <CellHeader hideSortIcon>Range</CellHeader>
           <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>
         <tbody>{TableBodyContent}</tbody>

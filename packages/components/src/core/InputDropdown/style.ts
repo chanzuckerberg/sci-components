@@ -77,7 +77,6 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     ${labelStyle(props)}
 
     border: ${borders?.base?.default};
-    background-color: ${semanticColors?.base?.surfacePrimary};
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
@@ -101,16 +100,16 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticColors?.base?.iconPrimary};
+      fill: ${semanticColors?.base?.ornamentSecondary};
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: transparent;
       border-color: ${semanticColors?.base?.borderHover};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.iconPrimaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryHover};
       }
 
       .styled-label {
@@ -123,7 +122,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.iconPrimaryPressed};
+        fill: ${semanticColors?.base?.ornamentSecondaryPressed};
       }
     }
 
@@ -160,7 +159,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticColors?.base?.iconPrimary};
+      fill: ${semanticColors?.base?.ornamentSecondary};
     }
 
     &:hover {
@@ -169,7 +168,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.iconPrimaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryHover};
       }
 
       .styled-label {
@@ -229,14 +228,8 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 
     ${sdsStyle === "minimal"
       ? `
-        
-        background-color: ${semanticColors?.base?.fillHover}47;
         border: none;
         color: ${semanticColors?.base?.textPrimary};
-
-        path {
-          fill: ${semanticColors?.base?.iconPrimaryHover};
-        }
 
         .styled-label {
           color: ${semanticColors?.base?.textPrimary};
@@ -277,23 +270,24 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
 
     path {
       fill: ${inputColor === "accent"
-        ? semanticColors?.accent?.iconOpen
+        ? semanticColors?.accent?.ornamentOpen
         : semanticColors?.[inputColor]?.ornament};
     }
 
     border: ${sdsStyle === "minimal"
       ? borders?.none
       : borders?.[inputColor]?.open};
+
     background-color: ${sdsStyle === "minimal"
-      ? semanticColors?.base?.fillHover + "47"
+      ? semanticColors?.base?.fillOpen
       : "transparent"};
 
     &:hover {
       path {
-        fill: ${semanticColors?.base?.iconPrimaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryHover};
       }
 
-      border-color: ${borders?.accent?.hover};
+      border-color: ${semanticColors?.base?.borderHover};
     }
   `;
 };
@@ -335,7 +329,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
     }
 
     path {
-      fill: ${semanticColors?.base?.iconDisabled};
+      fill: ${semanticColors?.base?.ornamentDisabled};
     }
   `;
 };
@@ -445,7 +439,7 @@ export const StyledCounter = styled("span", {
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticColors?.base?.surfaceTertiary};
+      background-color: ${semanticColors?.base?.backgroundTertiary};
       color: ${semanticColors?.accent?.textAction};
       border-radius: ${corners?.l}px;
       padding: 0 ${spaces?.xs}px;

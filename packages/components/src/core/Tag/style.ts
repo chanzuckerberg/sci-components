@@ -64,7 +64,7 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: ${semanticColors?.base?.iconPrimaryInverse};
+      color: ${semanticColors?.base?.ornamentPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -94,7 +94,7 @@ const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
 
     .MuiChip-deleteIcon {
       ${fontHeaderXs(props)}
-      color: ${semanticColors?.base?.iconPrimaryInverse};
+      color: ${semanticColors?.base?.ornamentPrimaryInverse};
       margin: 0 0 0 ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
@@ -183,20 +183,16 @@ function generatePrimaryTagColors(
           ? darken(colors[1], 0.15)
           : semanticColors?.[intent].fillHover,
       iconColor:
-        colors.length > 2
-          ? colors[2]
-          : semanticColors?.base?.iconPrimaryInverse,
-      label: colors.length
-        ? colors[0]
-        : semanticColors?.base?.textPrimaryInverse,
+        colors.length > 2 ? colors[2] : semanticColors?.base?.ornamentOnFill,
+      label: colors.length ? colors[0] : semanticColors?.base?.textOnFill,
     };
   } else {
     return {
       background: semanticColors?.neutral.fillPrimary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
-      iconColor: semanticColors?.base?.iconPrimaryInverse,
-      label: semanticColors?.base?.textPrimaryInverse,
+      iconColor: semanticColors?.base?.ornamentOnFill,
+      label: semanticColors?.base?.textOnFill,
     };
   }
 }
@@ -226,7 +222,7 @@ function generateSecondaryTagColors(
     };
   } else {
     return {
-      background: semanticColors?.neutral.surfacePrimary,
+      background: semanticColors?.neutral.fillSecondary,
       backgroundClicked: semanticColors?.neutral.fillPressed,
       backgroundHover: semanticColors?.neutral.fillHover,
       iconColor: semanticColors?.neutral.ornament,
@@ -272,7 +268,7 @@ function createTypeCss(
       }
 
       svg {
-        fill: ${semanticColors?.base?.iconPrimaryInverse};
+        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
       }
     }
 

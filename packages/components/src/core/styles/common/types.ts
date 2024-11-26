@@ -16,25 +16,28 @@ export interface AccentColor {
   borderOpen: string;
   borderFocus: string;
   borderSelected: string;
-  icon: string;
-  iconHover: string;
-  iconPressed: string;
-  iconOpen: string;
-  iconFocus: string;
-  iconSelected: string;
+  ornament: string;
+  ornamentHover: string;
+  ornamentPressed: string;
+  ornamentOpen: string;
+  ornamentFocus: string;
+  ornamentSelected: string;
 }
 
 export interface BaseColor {
-  surfaceBackground: string;
-  surfacePrimary: string;
-  surfaceSecondary: string;
-  surfaceTertiary: string;
-  surfacePrimaryInverse: string;
+  backgroundPrimary: string;
+  backgroundPrimaryInverse: string;
+  backgroundSecondary: string;
+  backgroundSecondaryInverse: string;
+  backgroundTertiary: string;
+  surface: string;
+  surfaceInverse: string;
   textPrimary: string;
   textPrimaryInverse: string;
   textSecondary: string;
   textSecondaryInverse: string;
   textDisabled: string;
+  textOnFill: string;
   fillHover: string;
   fillPressed: string;
   fillPrimary: string;
@@ -42,19 +45,20 @@ export interface BaseColor {
   fillSelected: string;
   fillDisabled: string;
   divider: string;
+  dividerInverse: string;
   border: string;
+  borderInverse: string;
   borderHover: string;
   borderPressed: string;
   borderDisabled: string;
   borderTable: string;
-  iconPrimary: string;
-  iconPrimaryHover: string;
-  iconPrimaryPressed: string;
-  iconSecondary: string;
-  iconPrimaryInverse: string;
-  iconPrimaryInverseHover: string;
-  iconPrimaryInversePressed: string;
-  iconDisabled: string;
+  ornamentDisabled: string;
+  ornamentOnFill: string;
+  ornamentPrimary: string;
+  ornamentPrimaryInverse: string;
+  ornamentSecondary: string;
+  ornamentSecondaryHover: string;
+  ornamentSecondaryPressed: string;
 }
 
 export interface IntentColor {
@@ -287,10 +291,12 @@ export interface IconSizes {
 export interface Border {
   default?: string;
   divider?: string;
+  dividerInverse?: string;
   black?: string;
   solid?: string;
   dashed?: string;
   hover?: string;
+  inverse?: string;
   disabled?: string;
   table?: string;
   pressed?: string;

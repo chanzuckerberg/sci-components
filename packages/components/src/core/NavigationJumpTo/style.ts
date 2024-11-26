@@ -96,10 +96,6 @@ export const StyledTab = styled(Tab, {
         color: ${semanticColors?.base?.textPrimary};
         font-weight: 600;
       }
-      &.MuiTabs-indicator {
-        backgroundColor: ${semanticColors?.base?.surfaceTertiary};
-        width: ${spaces?.xxxs}px;
-      }
       &.MuiButtonBase-root {
         white-space: nowrap;
         padding: 0;

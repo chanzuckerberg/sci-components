@@ -9,11 +9,7 @@ export const Tag = (props: Args): JSX.Element => {
 
   const finalIcon =
     typeof icon === "string" ? (
-      <Icon
-        sdsSize={sdsSize}
-        sdsIcon={icon as keyof IconNameToSizes}
-        sdsType="static"
-      />
+      <Icon sdsSize={sdsSize} sdsIcon={icon as keyof IconNameToSizes} />
     ) : (
       icon
     );

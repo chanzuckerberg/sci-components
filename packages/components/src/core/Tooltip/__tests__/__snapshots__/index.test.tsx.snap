@@ -22,7 +22,7 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1q6hio5-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
           data-file-name="IconExclamationMarkCircleLarge"
           data-testid="IconExclamationMarkCircleLarge"
           fillcontrast="white"

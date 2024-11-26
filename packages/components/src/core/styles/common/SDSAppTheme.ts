@@ -50,12 +50,12 @@ const SDSLightThemeColors: Colors = {
   purple: {
     "100": "#efeafe",
     "200": "#e4dbfc",
-    "300": "#cbbaf8",
+    "300": "#cbbaF8",
     "400": "#b296f2",
     "500": "#8b54e2",
     "600": "#6526b5",
     "700": "#490092",
-    "800": "#1a004c",
+    "800": "#26004c",
   },
   red: {
     "100": "#ffe8e6",
@@ -63,17 +63,17 @@ const SDSLightThemeColors: Colors = {
     "300": "#ffafa8",
     "400": "#ff7e78",
     "500": "#db2131",
-    "600": "#980013",
+    "600": "#980017",
     "700": "#6f0008",
     "800": "#340000",
   },
   yellow: {
-    "100": "#ffefcf",
+    "100": "#fff3db",
     "200": "#ffdb97",
     "300": "#ffca5c",
     "400": "#fab700",
     "500": "#da9900",
-    "600": "#b77800",
+    "600": "#b07300",
     "700": "#7c3e00",
     "800": "#541700",
   },
@@ -81,14 +81,14 @@ const SDSLightThemeColors: Colors = {
 
 const SDSDarkThemeColors: Colors = {
   blue: {
-    "100": "#002573",
-    "200": "#0048c5",
-    "300": "#2573f4",
-    "400": "#5b9aff",
-    "500": "#a2c9ff",
-    "600": "#cde3ff",
-    "700": "#e2eeff",
-    "800": "#f7faff",
+    "100": "#0f1d4a",
+    "200": "#0a216e",
+    "300": "#0647b8",
+    "400": "#2573f4",
+    "500": "#5b9aff",
+    "600": "#a2c9ff",
+    "700": "#cde3ff",
+    "800": "#e2eeff",
   },
   gray: {
     "100": "#333333",
@@ -104,44 +104,44 @@ const SDSDarkThemeColors: Colors = {
     "900": "#ffffff",
   },
   green: {
-    "100": "#053918",
-    "200": "#12612e",
-    "300": "#288b49",
-    "400": "#43ae63",
-    "500": "#85d898",
-    "600": "#bcecc5",
-    "700": "#daf4de",
-    "800": "#f7fbf6",
+    "100": "#082608",
+    "200": "#063617",
+    "300": "#10632e",
+    "400": "#278b48",
+    "500": "#4bae68",
+    "600": "#85d898",
+    "700": "#bcecc5",
+    "800": "#daf4de",
   },
   purple: {
-    "100": "#4b0190",
-    "200": "#6b2ebc",
-    "300": "#905de6",
-    "400": "#aa89ef",
-    "500": "#cebef8",
-    "600": "#e4dcfc",
-    "700": "#f0ebfe",
-    "800": "#fbf9ff",
+    "100": "#331252",
+    "200": "#410f70",
+    "300": "#6429b2",
+    "400": "#905de6",
+    "500": "#aa89ef",
+    "600": "#cebef8",
+    "700": "#e4dcfc",
+    "800": "#f0ebfe",
   },
   red: {
-    "100": "#630008",
-    "200": "#A30000",
-    "300": "#E52722",
-    "400": "#FF695B",
-    "500": "#FF9385",
-    "600": "#FFBDB3",
-    "700": "#FFD8D1",
-    "800": "#FFF1EE",
+    "100": "#330603",
+    "200": "#660a12",
+    "300": "#9e1c1c",
+    "400": "#c73028",
+    "500": "#e05043",
+    "600": "#ff988a",
+    "700": "#ffbdb3",
+    "800": "#ffd8d1",
   },
   yellow: {
-    "100": "#552300",
-    "200": "#834500",
-    "300": "#985a00",
-    "400": "#ac6c00",
-    "500": "#cf8e00",
-    "600": "#efad00",
-    "700": "#ffdc9a",
-    "800": "#fcf2e3",
+    "100": "#361b07",
+    "200": "#52270a",
+    "300": "#965a0b",
+    "400": "#bd8804",
+    "500": "#d9a943",
+    "600": "#e5bc63",
+    "700": "#f5d789",
+    "800": "#ffe6a8",
   },
 };
 
@@ -734,72 +734,135 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
  */
 export const makeSdsSemanticAppTheme = (colors: Colors): AppTheme => ({
   ...sharedAppTheme,
-  // (mlila) whenever our theme uses colors, we need to make sure we allow consuming
-  // applications to override those colors using their own custom theme.
-  // By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
-  // we allow other apps to specify their colors once, and have them apply
-  // throughout the application, such as in borders, etc without having to manually
-  // override every theme property that makes use of colors.
-  borders: {
-    accent: {
-      default: `1px solid ${colors.blue[500]}`,
-      focused: `1px solid ${colors.blue[500]}`,
-      hover: `1px solid ${colors.blue[600]}`,
-      open: `1px solid ${colors.blue[500]}`,
-      pressed: `1px solid ${colors.blue[700]}`,
-      selected: `1px solid ${colors.blue[500]}`,
-    },
-    base: {
-      default: `1px solid ${colors.gray[500]}`,
-      disabled: `1px solid ${colors.gray[300]}`,
-      divider: `1px solid ${colors.gray[200]}`,
-      hover: `1px solid ${colors.gray[900]}`,
-      pressed: `1px solid ${colors.gray[900]}`,
-      table: `1px solid ${colors.gray[300]}`,
-    },
-    beta: {
-      default: `1px solid ${colors.purple[600]}`,
-      extraThick: `4px solid ${colors.purple[600]}`,
-      thick: `2px solid ${colors.purple[600]}`,
-    },
-    info: {
-      default: `1px solid ${colors.blue[600]}`,
-      extraThick: `4px solid ${colors.blue[600]}`,
-      thick: `2px solid ${colors.blue[600]}`,
-    },
-    link: {
-      dashed: `1px dashed`,
-      solid: `1px solid`,
-    },
-    negative: {
-      default: `1px solid ${colors.red[600]}`,
-      extraThick: `4px solid ${colors.red[600]}`,
-      thick: `2px solid ${colors.red[600]}`,
-    },
-    neutral: {
-      default: `1px solid ${colors.gray[500]}`,
-      extraThick: `4px solid ${colors.gray[500]}`,
-      thick: `2px solid ${colors.gray[500]}`,
-    },
-    none: "none",
-    notice: {
-      default: `1px solid ${colors.yellow[600]}`,
-      extraThick: `4px solid ${colors.yellow[600]}`,
-      thick: `2px solid ${colors.yellow[600]}`,
-    },
-    positive: {
-      default: `1px solid ${colors.green[600]}`,
-      extraThick: `4px solid ${colors.green[600]}`,
-      thick: `2px solid ${colors.green[600]}`,
-    },
-  },
   colors,
 });
 
 export const SDSLightAppTheme: AppTheme =
   makeSdsSemanticAppTheme(SDSLightThemeColors);
+
 export const SDSDarkAppTheme: AppTheme =
   makeSdsSemanticAppTheme(SDSDarkThemeColors);
+
+// (mlila) whenever our theme uses colors, we need to make sure we allow consuming
+// applications to override those colors using their own custom theme.
+// By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
+// we allow other apps to specify their colors once, and have them apply
+// throughout the application, such as in borders, etc without having to manually
+// override every theme property that makes use of colors.
+//
+// (masoudmanson): We need to define borders separately for light and dark themes
+// because the border colors are different for each theme.
+SDSLightAppTheme.borders = {
+  accent: {
+    default: `1px solid ${SDSLightThemeColors.blue[500]}`,
+    focused: `1px solid ${SDSLightThemeColors.blue[500]}`,
+    hover: `1px solid ${SDSLightThemeColors.blue[600]}`,
+    open: `1px solid ${SDSLightThemeColors.blue[500]}`,
+    pressed: `1px solid ${SDSLightThemeColors.blue[700]}`,
+    selected: `1px solid ${SDSLightThemeColors.blue[500]}`,
+  },
+  base: {
+    default: `1px solid ${SDSLightThemeColors.gray[500]}`,
+    disabled: `1px solid ${SDSLightThemeColors.gray[300]}`,
+    divider: `1px solid ${SDSLightThemeColors.gray[200]}`,
+    dividerInverse: `1px solid ${SDSLightThemeColors.gray[600]}`,
+    hover: `1px solid ${SDSLightThemeColors.gray[900]}`,
+    inverse: `1px solid ${SDSLightThemeColors.gray[50]}`,
+    pressed: `1px solid ${SDSLightThemeColors.gray[900]}`,
+    table: `1px solid ${SDSLightThemeColors.gray[300]}`,
+  },
+  beta: {
+    default: `1px solid ${SDSLightThemeColors.purple[600]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.purple[600]}`,
+    thick: `2px solid ${SDSLightThemeColors.purple[600]}`,
+  },
+  info: {
+    default: `1px solid ${SDSLightThemeColors.blue[600]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.blue[600]}`,
+    thick: `2px solid ${SDSLightThemeColors.blue[600]}`,
+  },
+  link: {
+    dashed: `1px dashed`,
+    solid: `1px solid`,
+  },
+  negative: {
+    default: `1px solid ${SDSLightThemeColors.red[600]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.red[600]}`,
+    thick: `2px solid ${SDSLightThemeColors.red[600]}`,
+  },
+  neutral: {
+    default: `1px solid ${SDSLightThemeColors.gray[500]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.gray[500]}`,
+    thick: `2px solid ${SDSLightThemeColors.gray[500]}`,
+  },
+  none: "none",
+  notice: {
+    default: `1px solid ${SDSLightThemeColors.yellow[600]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.yellow[600]}`,
+    thick: `2px solid ${SDSLightThemeColors.yellow[600]}`,
+  },
+  positive: {
+    default: `1px solid ${SDSLightThemeColors.green[600]}`,
+    extraThick: `4px solid ${SDSLightThemeColors.green[600]}`,
+    thick: `2px solid ${SDSLightThemeColors.green[600]}`,
+  },
+};
+
+SDSDarkAppTheme.borders = {
+  accent: {
+    default: `1px solid ${SDSDarkThemeColors.blue[600]}`,
+    focused: `1px solid ${SDSDarkThemeColors.blue[600]}`,
+    hover: `1px solid ${SDSDarkThemeColors.blue[700]}`,
+    open: `1px solid ${SDSDarkThemeColors.blue[600]}`,
+    pressed: `1px solid ${SDSDarkThemeColors.blue[800]}`,
+    selected: `1px solid ${SDSDarkThemeColors.blue[600]}`,
+  },
+  base: {
+    default: `1px solid ${SDSDarkThemeColors.gray[500]}`,
+    disabled: `1px solid ${SDSDarkThemeColors.gray[300]}`,
+    divider: `1px solid ${SDSDarkThemeColors.gray[200]}`,
+    dividerInverse: `1px solid ${SDSDarkThemeColors.gray[600]}`,
+    hover: `1px solid ${SDSDarkThemeColors.gray[900]}`,
+    inverse: `1px solid ${SDSDarkThemeColors.gray[50]}`,
+    pressed: `1px solid ${SDSDarkThemeColors.gray[900]}`,
+    table: `1px solid ${SDSDarkThemeColors.gray[300]}`,
+  },
+  beta: {
+    default: `1px solid ${SDSDarkThemeColors.purple[600]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.purple[600]}`,
+    thick: `2px solid ${SDSDarkThemeColors.purple[600]}`,
+  },
+  info: {
+    default: `1px solid ${SDSDarkThemeColors.blue[600]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.blue[600]}`,
+    thick: `2px solid ${SDSDarkThemeColors.blue[600]}`,
+  },
+  link: {
+    dashed: `1px dashed`,
+    solid: `1px solid`,
+  },
+  negative: {
+    default: `1px solid ${SDSDarkThemeColors.red[600]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.red[600]}`,
+    thick: `2px solid ${SDSDarkThemeColors.red[600]}`,
+  },
+  neutral: {
+    default: `1px solid ${SDSDarkThemeColors.gray[500]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.gray[500]}`,
+    thick: `2px solid ${SDSDarkThemeColors.gray[500]}`,
+  },
+  none: "none",
+  notice: {
+    default: `1px solid ${SDSDarkThemeColors.yellow[600]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.yellow[600]}`,
+    thick: `2px solid ${SDSDarkThemeColors.yellow[600]}`,
+  },
+  positive: {
+    default: `1px solid ${SDSDarkThemeColors.green[600]}`,
+    extraThick: `4px solid ${SDSDarkThemeColors.green[600]}`,
+    thick: `2px solid ${SDSDarkThemeColors.green[600]}`,
+  },
+};
 
 /**
  * Helper function to select the appropriate theme settings.

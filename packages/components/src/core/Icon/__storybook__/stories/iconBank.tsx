@@ -40,7 +40,7 @@ const IconWrapper = styled("div")`
     const semanticColors = getSemanticColors(props);
     const mode = getMode(props);
 
-    const { color = "blue", shade = 500 } = props;
+    const { color = "blue", shade = mode === "dark" ? 600 : 500 } = props;
 
     return `
       align-items: center;
@@ -66,7 +66,7 @@ const IconWrapper = styled("div")`
       }
 
       span.size-tag {
-        background-color: ${semanticColors?.base?.surfaceSecondary};
+        background-color: ${mode === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)"};
         font-size: 10px;
         padding: 0 4px;
         margin: 0 2px;
@@ -92,7 +92,7 @@ const IconWrapper = styled("div")`
         }
 
         svg {
-          fill: ${semanticColors?.base?.iconPrimaryInverse};
+          fill: ${semanticColors?.base?.ornamentPrimaryInverse};
         }
 
         div.notification {
@@ -157,7 +157,6 @@ const IconItem = (props: IconItemProps) => {
           color={color}
           sdsSize={sdsSize}
           sdsIcon={sdsIcon as keyof IconNameToSizes}
-          sdsType="static"
         />
       </div>
       <p>{sdsIcon}</p>
@@ -181,16 +180,10 @@ const IconItem = (props: IconItemProps) => {
             color={color}
             sdsSize={sdsSize}
             sdsIcon={sdsIcon as keyof IconNameToSizes}
-            sdsType="static"
           />
           <p>Copied!</p>
           <span>
-            <RawIcon
-              color={color}
-              sdsSize="xs"
-              sdsIcon="Check"
-              sdsType="static"
-            />
+            <RawIcon color={color} sdsSize="xs" sdsIcon="Check" />
           </span>
         </div>
       )}
@@ -241,9 +234,7 @@ export const IconBankDemo = (props: Args): JSX.Element => {
       ) : (
         <Callout
           intent="notice"
-          icon={
-            <RawIcon sdsSize="l" sdsIcon="InfoSpeechBubble" sdsType="static" />
-          }
+          icon={<RawIcon sdsSize="l" sdsIcon="InfoSpeechBubble" />}
         >
           Sorry, there are no matches for your search!
         </Callout>

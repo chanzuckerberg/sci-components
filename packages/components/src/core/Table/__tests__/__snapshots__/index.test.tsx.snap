@@ -11,7 +11,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-fitsu2"
     >
       <th
-        class="css-r3ynn5"
+        class="css-13v2ecb"
       >
         <div
           class="css-187gjam"
@@ -22,7 +22,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -35,7 +35,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-136pauu-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -48,7 +48,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -61,7 +61,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tlyfhc-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -74,7 +74,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1szfosj"
+        class="css-bony3j"
       >
         <div
           class="css-rm9mvq"
@@ -85,7 +85,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1s2bcfv"
+        class="css-148k9j7"
       >
         <div
           class="css-wg04tn"
@@ -112,7 +112,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
               data-file-name="IconFlaskLarge"
               data-testid="IconFlaskLarge"
               fillcontrast="white"
@@ -277,7 +277,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
               data-file-name="IconDownloadLarge"
               data-testid="IconDownloadLarge"
               fillcontrast="white"
@@ -495,7 +495,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-1gmh0ks"
+      class="css-9fq7hl"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
@@ -511,9 +511,9 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-              data-file-name="IconBacteriaLarge"
-              data-testid="IconBacteriaLarge"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+              data-file-name="IconVirusLarge"
+              data-testid="IconVirusLarge"
               fillcontrast="white"
               focusable="false"
               height="24"
@@ -592,9 +592,9 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
-            data-file-name="IconVirusLarge"
-            data-testid="IconVirusLarge"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+            data-file-name="IconBacteriaLarge"
+            data-testid="IconBacteriaLarge"
             fillcontrast="white"
             focusable="false"
             height="24"

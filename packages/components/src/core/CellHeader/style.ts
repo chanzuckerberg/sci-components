@@ -41,8 +41,8 @@ export const StyledSortingIcon = styled(Icon, {
     return `
       margin-left: ${spaces?.s}px;
       margin-bottom: ${spaces?.xxs}px;
-      color: ${active ? semanticColors?.accent?.icon : semanticColors?.base?.iconPrimary};
-      opacity: ${hideSortIcon ? (active ? 1 : 0) : 1};
+      color: ${active ? semanticColors?.accent?.ornament : "transparent"};
+      display: ${hideSortIcon ? (active ? "block" : "none") : "block"};
       outline: none !important;
     `;
   }}
@@ -65,7 +65,6 @@ export const StyledTableHeader = styled("th", {
       padding: ${spaces?.l}px ${spaces?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
-      width: 96px;
       cursor: pointer;
       vertical-align: bottom;
 
@@ -82,7 +81,7 @@ export const StyledTableHeader = styled("th", {
         }
 
         & svg {
-          color: ${active ? semanticColors?.accent?.iconHover : semanticColors?.base?.iconPrimaryHover};
+          color: ${active ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondaryHover};
         }
       }
     `;

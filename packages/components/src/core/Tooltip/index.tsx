@@ -55,10 +55,6 @@ const Tooltip = forwardRef(function Tooltip(
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipWidth);
   }
 
-  if (subtitle && (sdsStyle === "light" || !hasInvertedStyle)) {
-    showWarningIfFirstOccurence(SDSWarningTypes.TooltipSubtitle);
-  }
-
   const theme = useTheme();
 
   const extraProps = {
@@ -90,7 +86,9 @@ const Tooltip = forwardRef(function Tooltip(
   const content = (
     <>
       {title}
-      {hasInvertedStyle && subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {subtitle && (
+        <Subtitle hasInvertedStyle={hasInvertedStyle}>{subtitle}</Subtitle>
+      )}
     </>
   );
 

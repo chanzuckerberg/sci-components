@@ -87,11 +87,17 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
       }
 
       .${inputAdornmentClasses.root} svg {
-        color: ${semanticColors?.base?.iconDisabled};
+        color: ${semanticColors?.base?.ornamentDisabled};
       }
 
-      &:hover .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticColors?.base?.borderDisabled};
+      &:hover {
+        .${outlinedInputClasses.notchedOutline} {
+          border: 1px solid ${semanticColors?.base?.borderDisabled};
+        }
+
+        .${inputAdornmentClasses.root} svg {
+          color: ${semanticColors?.base?.ornamentDisabled} !important;
+        }
       }
 
       &::placeholder {
@@ -156,7 +162,6 @@ export const StyledSearchBase = styled(TextField, {
 
       .${outlinedInputClasses.root} {
         padding: 0 ${spaces?.m}px;
-        background-color: ${semanticColors?.base?.surfacePrimary};
         width: 100%;
 
         .${outlinedInputClasses.input} {
@@ -175,12 +180,12 @@ export const StyledSearchBase = styled(TextField, {
         &:hover .input-search-clear-icon,
         &:focus-within .input-search-clear-icon {
           svg {
-            color: ${semanticColors?.base?.iconPrimary} !important;
+            color: ${semanticColors?.base?.ornamentSecondary} !important;
           }
 
           &:hover {
             svg {
-              color: ${semanticColors?.base?.iconPrimaryHover} !important;
+              color: ${semanticColors?.base?.ornamentSecondaryHover} !important;
             }
           }
 
@@ -197,13 +202,12 @@ export const StyledSearchBase = styled(TextField, {
         padding: ${spaces?.xs}px ${spaces?.s}px;
         height: unset;
         box-sizing: border-box;
-        background-color: ${semanticColors?.base?.surfacePrimary};
       }
 
       .${outlinedInputClasses.root}:hover {
         & .${buttonBaseClasses.root}:last-of-type {
           svg {
-            color: ${semanticColors?.base?.iconPrimaryHover};
+            color: ${semanticColors?.base?.ornamentSecondaryHover};
           }
         }
         .${outlinedInputClasses.notchedOutline} {
@@ -221,7 +225,7 @@ export const StyledSearchBase = styled(TextField, {
         .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
           cursor: default;
           svg {
-            color: ${semanticColors?.accent?.icon};
+            color: ${semanticColors?.accent?.ornamentFocus};
           }
         }
       }
