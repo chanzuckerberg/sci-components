@@ -4,27 +4,27 @@
       "accent": {
         "default": {
           "value": "1px solid {sds.color.primitive.blue.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
         },
         "focused": {
           "value": "1px solid {sds.color.primitive.blue.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
         },
         "open": {
           "value": "1px solid {sds.color.primitive.blue.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
         },
         "selected": {
           "value": "1px solid {sds.color.primitive.blue.500.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
         },
         "hover": {
           "value": "1px solid {sds.color.primitive.blue.600.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.600.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.700.darkValue}"
         },
         "pressed": {
           "value": "1px solid {sds.color.primitive.blue.700.value}",
-          "darkValue": "1px solid {sds.color.primitive.blue.700.darkValue}"
+          "darkValue": "1px solid {sds.color.primitive.blue.800.darkValue}"
         }
       },
       "base": {
@@ -40,9 +40,17 @@
           "value": "1px solid {sds.color.primitive.gray.200.value}",
           "darkValue": "1px solid {sds.color.primitive.gray.200.darkValue}"
         },
+        "dividerInverse": {
+          "value": "1px solid {sds.color.primitive.gray.600.value}",
+          "darkValue": "1px solid {sds.color.primitive.gray.600.darkValue}"
+        },
         "hover": {
           "value": "1px dashed {sds.color.primitive.gray.900.value}",
           "darkValue": "1px dashed {sds.color.primitive.gray.900.darkValue}"
+        },
+        "inverse": {
+          "value": "1px dashed {sds.color.primitive.gray.50.value}",
+          "darkValue": "1px dashed {sds.color.primitive.gray.50.darkValue}"
         },
         "pressed": {
           "value": "1px dashed {sds.color.primitive.gray.900.value}",

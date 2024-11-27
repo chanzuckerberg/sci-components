@@ -15,8 +15,11 @@ export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
   arrowOffset?: number;
   followCursor?: boolean;
+  // @deprecated Use `hasInvertedStyle` instead
   inverted?: boolean;
+  // @deprecated Use `hasInvertedStyle` instead
   sdsStyle?: "dark" | "light";
+  hasInvertedStyle?: boolean;
   subtitle?: string;
   width?: "default" | "wide";
 }
@@ -27,7 +30,7 @@ const dark = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontHeaderXs(props)}
-    background-color: ${semanticColors?.base?.surfacePrimaryInverse};
+    background-color: ${semanticColors?.base?.surfaceInverse};
     color: ${semanticColors?.base?.textPrimaryInverse};
     text-align: center;
     max-width: 250px;
@@ -41,7 +44,7 @@ const light = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontBodyXs(props)}
-    background-color: ${semanticColors?.base?.surfacePrimary};
+    background-color: ${semanticColors?.base?.surface};
     color: ${semanticColors?.base?.textPrimary};
     text-align: left;
     max-width: 250px;
@@ -67,16 +70,24 @@ export const Subtitle = styled("div")`
   ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
+    const { hasInvertedStyle } = props;
+
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticColors?.base?.textSecondaryInverse};
+      color: ${hasInvertedStyle ? semanticColors?.base?.textSecondaryInverse : semanticColors?.base?.textSecondary};
     `;
   }}
 `;
 
 export const tooltipCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, width, followCursor } = props;
+  const {
+    hasInvertedStyle = true,
+    inverted,
+    sdsStyle,
+    width,
+    followCursor,
+  } = props;
 
   const shadows = getShadows(props);
 
@@ -84,7 +95,9 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
     &.MuiTooltip-tooltip {
       box-shadow: ${shadows?.m};
 
-      ${sdsStyle === "dark" || inverted ? dark(props) : light(props)}
+      ${sdsStyle === "dark" || inverted || hasInvertedStyle
+        ? dark(props)
+        : light(props)}
       ${width === "wide" && sdsStyle === "light" && wide()}
 
       ${followCursor === true && tableStyles(props)}
@@ -93,7 +106,7 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 };
 
 export const arrowCss = (props: TooltipExtraProps): string => {
-  const { inverted, sdsStyle, arrowOffset } = props;
+  const { hasInvertedStyle, inverted, sdsStyle, arrowOffset } = props;
 
   const semanticColors = getSemanticColors(props);
 
@@ -101,9 +114,9 @@ export const arrowCss = (props: TooltipExtraProps): string => {
     &.MuiTooltip-arrow {
       /* (bethbertozzi): !important is needed to fight inline style */
       left: ${arrowOffset}px !important;
-      color: ${inverted || sdsStyle === "dark"
-        ? semanticColors?.base?.surfacePrimaryInverse
-        : semanticColors?.base?.surfacePrimary};
+      color: ${hasInvertedStyle || inverted || sdsStyle === "dark"
+        ? semanticColors?.base?.surfaceInverse
+        : semanticColors?.base?.surface};
       &:before {
         box-sizing: border-box;
         width: 12px;

@@ -14,7 +14,7 @@ export const StyledMenu = styled(Menu)`
         const semanticColors = getSemanticColors(props);
 
         return `
-          background-color: ${semanticColors?.base?.surfacePrimary};
+          background-color: ${semanticColors?.base?.surface};
           background-image: none;
           padding: ${spaces?.xs}px;
         `;

@@ -115,9 +115,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsSize="small"
                   sdsStyle="icon"
                   disabled={disabled}
-                  sdsIconProps={{
-                    sdsType: "iconButton",
-                  }}
                   icon="XMarkCircle"
                 />
               </StyledInputAdornment>
@@ -131,9 +128,6 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsSize="small"
                   sdsStyle="icon"
                   disabled={disabled}
-                  sdsIconProps={{
-                    sdsType: "interactive",
-                  }}
                   icon="Search"
                 />
               </StyledInputAdornment>

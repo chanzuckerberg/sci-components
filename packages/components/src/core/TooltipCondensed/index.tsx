@@ -44,6 +44,7 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
       ref={ref}
       classes={{ tooltip }}
       arrow={false}
+      hasInvertedStyle={false}
     >
       {children}
     </Tooltip>

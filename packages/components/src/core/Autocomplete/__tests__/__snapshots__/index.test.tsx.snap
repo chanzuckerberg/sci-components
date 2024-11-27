@@ -12,7 +12,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       Search by label
     </label>
     <div
-      class="MuiFormControl-root MuiTextField-root css-1fp04lp-MuiFormControl-root-MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root css-y1vhlm-MuiFormControl-root-MuiTextField-root"
     >
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root"
@@ -38,7 +38,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                 data-file-name="IconSearchSmall"
                 data-testid="IconSearchSmall"
                 fillcontrast="white"
@@ -108,7 +108,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                 data-file-name="IconChevronRightSmall"
                 data-testid="IconChevronRightSmall"
                 fillcontrast="white"
@@ -141,7 +141,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
               <div
                 aria-hidden="true"
                 aria-label="Search Input"
-                class="MuiFormControl-root MuiTextField-root css-ubyh96-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-n4omgz-MuiFormControl-root-MuiTextField-root"
                 tabindex="-1"
               >
                 <div
@@ -171,7 +171,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                           data-file-name="IconSearchSmall"
                           data-testid="IconSearchSmall"
                           fillcontrast="white"
@@ -523,7 +523,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-25m3b5-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                 data-file-name="IconChevronRightSmall"
                 data-testid="IconChevronRightSmall"
                 fillcontrast="white"
@@ -556,7 +556,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
               <div
                 aria-hidden="true"
                 aria-label="Search Input"
-                class="MuiFormControl-root MuiTextField-root css-ubyh96-MuiFormControl-root-MuiTextField-root"
+                class="MuiFormControl-root MuiTextField-root css-n4omgz-MuiFormControl-root-MuiTextField-root"
                 tabindex="-1"
               >
                 <div
@@ -586,7 +586,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                           data-file-name="IconSearchSmall"
                           data-testid="IconSearchSmall"
                           fillcontrast="white"
@@ -982,7 +982,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
       <div
         aria-hidden="false"
         aria-label="Search Input"
-        class="MuiFormControl-root MuiTextField-root css-q18d0e-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-gl2zcs-MuiFormControl-root-MuiTextField-root"
         tabindex="0"
       >
         <div
@@ -1011,7 +1011,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tr2xv3-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
                   data-file-name="IconSearchSmall"
                   data-testid="IconSearchSmall"
                   fillcontrast="white"

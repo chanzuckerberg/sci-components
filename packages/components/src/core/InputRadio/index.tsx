@@ -14,7 +14,7 @@ import React from "react";
 export interface RadioContentProps
   extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
   caption?: string;
-  intent?: "default" | "error" | "warning";
+  intent?: "default" | "negative" | "notice" | "positive";
   label?: React.ReactNode;
   radioProps?: Partial<MUIRadioProps>;
   stage?: "checked" | "unchecked";

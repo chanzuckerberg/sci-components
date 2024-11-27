@@ -28,10 +28,10 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
 
 export const CELL_BASIC_ICON_OPTIONS = [
   undefined,
-  <Icon sdsSize="xs" sdsIcon="Download" key="download" sdsType="static" />,
-  <Icon sdsSize="s" sdsIcon="LightBulb" key="lightBulb" sdsType="static" />,
-  <Icon sdsSize="l" sdsIcon="Bacteria" key="bacteria" sdsType="static" />,
-  <Icon sdsSize="xl" sdsIcon="Flask" key="flask" sdsType="static" />,
+  <Icon sdsSize="xs" sdsIcon="Download" key="download" />,
+  <Icon sdsSize="s" sdsIcon="LightBulb" key="lightBulb" />,
+  <Icon sdsSize="l" sdsIcon="Bacteria" key="bacteria" />,
+  <Icon sdsSize="xl" sdsIcon="Flask" key="flask" />,
 ];
 
 export const CELL_BASIC_ICON_LABELS = [

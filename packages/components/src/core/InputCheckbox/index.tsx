@@ -15,7 +15,7 @@ interface CheckboxContentProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
   caption?: string;
   checkboxProps?: Partial<MUICheckboxProps>;
-  intent?: "default" | "error" | "warning";
+  intent?: "default" | "negative" | "notice" | "positive";
   label?: React.ReactNode;
   stage?: "checked" | "unchecked" | "indeterminate";
 }

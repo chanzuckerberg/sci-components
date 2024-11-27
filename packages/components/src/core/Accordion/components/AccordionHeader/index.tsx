@@ -15,7 +15,7 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
     <StyledAccordionHeader
       aria-controls={`${id}-panel-content`}
       id={id}
-      expandIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" sdsType="static" />}
+      expandIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
     >
       {children}
       {subtitle && <StyledSubtitle>{subtitle}</StyledSubtitle>}

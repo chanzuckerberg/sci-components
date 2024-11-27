@@ -21,7 +21,7 @@ export const TOOLTIP_PLACEMENT_STYLES = {
   display: "grid",
   gridColumnGap: "50px",
   gridRowGap: "50px",
-  gridTemplateColumns: "repeat(3, 130px",
+  gridTemplateColumns: "repeat(3, 130px)",
   gridTemplateRows: "repeat(5, 60px)",
   justifyContent: "center",
   padding: "100px",
@@ -33,7 +33,7 @@ export const TOOLTIP_SUBTITLE_OPTIONS = [
   undefined,
 ];
 export const TOOLTIP_ARROW_OPTIONS = [true];
-export const TOOLTIP_ARROW_OFFSET_OPTIONS = [undefined, -120, -60, 0, 60, 120];
+export const TOOLTIP_ARROW_OFFSET_OPTIONS = [undefined, -112, -60, 0, 60, 112];
 export const TOOLTIP_WIDTH_OPTIONS: TooltipExtraProps["width"][] = [
   "default",
   "wide",

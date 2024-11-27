@@ -58,7 +58,6 @@ const ButtonIcon = forwardRef(function ButtonIcon(
       } else {
         return (
           <Icon
-            sdsType="iconButton"
             {...sdsIconProps}
             sdsIcon={icon}
             sdsSize={iconSize as IconSizeType}

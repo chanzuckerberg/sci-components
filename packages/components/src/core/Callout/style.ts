@@ -41,7 +41,8 @@ export const StyledCallout = styled(Alert, {
     const semanticColors = getSemanticColors(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
-    const backgroundColor = semanticColors?.[intent]?.surfacePrimary ?? "white";
+    const backgroundColor =
+      semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
     // when a title is present Mui's default styling has vertical margin,
     // but for an expandable callout that is collapsed, we do not want

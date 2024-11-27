@@ -59,7 +59,7 @@ export const StyledMenuItem = styled(MenuItem)`
         }
 
         svg.check-icon {
-          color: ${selected ? semanticColors?.accent?.iconSelected : semanticColors?.base?.iconPrimary};
+          color: ${selected ? semanticColors?.accent?.ornamentSelected : semanticColors?.base?.ornamentSecondary};
         }
       }
 
@@ -70,12 +70,12 @@ export const StyledMenuItem = styled(MenuItem)`
       &:hover {
         background-color: ${semanticColors?.base?.fillHover};
         svg.check-icon {
-          color: ${selected ? semanticColors?.accent?.iconHover : semanticColors?.base?.iconPrimary};
+          color: ${selected ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondary};
         }
       }
 
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
-        background-color: ${semanticColors?.base?.surfacePrimary};
+        background-color: ${semanticColors?.base?.surface};
         &:hover {
           background-color: ${semanticColors?.base?.fillHover};
         }
@@ -86,12 +86,12 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:active {
         svg.check-icon {
-          color: ${semanticColors?.accent?.iconPressed};
+          color: ${semanticColors?.accent?.ornamentPressed};
         }
 
         &:active {
           svg.check-icon {
-            color: ${semanticColors?.accent?.iconPressed};
+            color: ${semanticColors?.accent?.ornamentPressed};
           }
 
           .primary-text {
@@ -164,7 +164,7 @@ export const StyledMenuItemIcon = styled("span")`
       height: ${iconSizes?.s.height}px;
 
       .MuiSvgIcon-root {
-        ${disabled ? `color: ${semanticColors?.base?.iconDisabled};` : null}
+        ${disabled ? `color: ${semanticColors?.base?.ornamentDisabled};` : null};
       }
     `;
   }}
@@ -220,8 +220,8 @@ export const StyledCheck = styled(Check, {
     const semanticColors = getSemanticColors(props);
 
     const selectedColor = disabled
-      ? semanticColors?.base?.iconDisabled
-      : semanticColors?.accent?.icon;
+      ? semanticColors?.base?.ornamentDisabled
+      : semanticColors?.accent?.ornamentSelected;
 
     return `
       color: ${selected ? selectedColor : "transparent"};
@@ -246,8 +246,8 @@ export const StyledMinus = styled(Remove, {
     const iconSizes = getIconSizes(props);
 
     const selectedColor = disabled
-      ? semanticColors?.base?.iconDisabled
-      : semanticColors?.accent?.icon;
+      ? semanticColors?.base?.ornamentDisabled
+      : semanticColors?.accent?.ornamentSelected;
 
     return `
       color: ${selected ? selectedColor : "transparent"};

@@ -67,10 +67,12 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.disabled};
+        opacity: 1;
       }
 
       &:hover .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.disabled};
+        opacity: 1;
       }
 
       &::placeholder {
@@ -120,7 +122,6 @@ export const StyledInputBase = styled(TextField, {
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
-    const semanticColors = getSemanticColors(props);
 
     return css`
       margin-bottom: ${spaces?.l}px;
@@ -136,7 +137,6 @@ export const StyledInputBase = styled(TextField, {
         padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;
         box-sizing: border-box;
-        background-color: ${semanticColors?.base?.surfacePrimary};
       }
 
       .${outlinedInputClasses.notchedOutline} {

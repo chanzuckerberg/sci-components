@@ -30,10 +30,6 @@ export default {
       control: { type: "select" },
       options: ["xs", "s", "l", "xl"],
     },
-    sdsType: {
-      control: { type: "select" },
-      options: ["iconButton", "interactive", "static", "button"],
-    },
     shade: {
       control: {
         type: "select",
@@ -55,8 +51,6 @@ export const Default = {
     color: "blue",
     sdsIcon: "CheckCircle",
     sdsSize: "xl",
-    sdsType: "static",
-    shade: 500,
   },
 };
 
@@ -68,7 +62,7 @@ export const IconBank = {
   },
   parameters: {
     controls: {
-      exclude: ["sdsIcon", "sdsSize", "sdsType", "shade"],
+      exclude: ["sdsIcon", "sdsSize", "shade"],
     },
   },
   render: (args: Args) => <IconBankDemo {...args} />,
@@ -79,7 +73,7 @@ export const IconBank = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: ["color", "sdsIcon", "sdsSize", "sdsType", "shade"],
+      exclude: ["color", "sdsIcon", "sdsSize", "shade"],
     },
     snapshot: {
       skip: true,
@@ -89,7 +83,6 @@ export const Test = {
     <RawIcon
       sdsIcon="CheckCircle"
       sdsSize="l"
-      sdsType="static"
       color="blue"
       data-testid="icon"
       {...args}

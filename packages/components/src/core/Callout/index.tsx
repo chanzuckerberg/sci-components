@@ -65,7 +65,6 @@ const Callout = ({
           <Icon
             sdsSize="l"
             sdsIcon={icon as keyof IconNameToSizes}
-            sdsType="static"
             {...sdsIconProps}
           />
         );
@@ -73,17 +72,11 @@ const Callout = ({
     } else {
       switch (intent) {
         case "positive":
-          return <Icon sdsSize="l" sdsIcon="CheckCircle" sdsType="static" />;
+          return <Icon sdsSize="l" sdsIcon="CheckCircle" />;
         case "info":
-          return <Icon sdsSize="l" sdsIcon="InfoCircle" sdsType="static" />;
+          return <Icon sdsSize="l" sdsIcon="InfoCircle" />;
         default:
-          return (
-            <Icon
-              sdsSize="l"
-              sdsIcon="ExclamationMarkCircle"
-              sdsType="static"
-            />
-          );
+          return <Icon sdsSize="l" sdsIcon="ExclamationMarkCircle" />;
       }
     }
   };

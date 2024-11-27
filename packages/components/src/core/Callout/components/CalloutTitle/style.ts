@@ -1,9 +1,9 @@
 import { AlertTitle } from "@mui/material";
 import styled from "@emotion/styled";
-import { fontBodyXs, getSpaces } from "src/core/styles";
+import { fontBodySemiboldXs, getSpaces } from "src/core/styles";
 
 export const StyledCalloutTitle = styled(AlertTitle)`
-  ${fontBodyXs}
+  ${fontBodySemiboldXs}
 
   ${(props) => {
     const spaces = getSpaces(props);
