@@ -14,23 +14,25 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
-import { CalloutIntentType } from "src/core/Callout";
+import { CalloutIntentType, CalloutSdsStyleType } from "src/core/Callout";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
   intent?: CalloutIntentType;
+  sdsStyle?: CalloutSdsStyleType;
 }
 
 type CalloutProps = Omit<AlertProps, "severity"> & CalloutExtraProps;
 
-const doNotForwardProps = ["calloutTitle", "collapsed", "severity"];
+const doNotForwardProps = ["calloutTitle", "collapsed", "severity", "sdsStyle"];
 
 export const StyledCallout = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXs}
+
   ${(props: CalloutProps) => {
-    const { intent = "info" } = props;
+    const { intent = "info", sdsStyle } = props;
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
@@ -43,8 +45,6 @@ export const StyledCallout = styled(Alert, {
       semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
     return `
-      position: relative;
-      width: 360px;
       margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${palette?.text?.primary};
@@ -63,8 +63,9 @@ export const StyledCallout = styled(Alert, {
       }
 
       .${alertClasses.message} {
+        width: 100%;
         padding: 0;
-        margin-right: ${spaces?.m}px;
+        margin: 0;
 
         .${alertTitleClasses.root} {
           margin: 0;
@@ -72,13 +73,10 @@ export const StyledCallout = styled(Alert, {
       }
 
       .${alertClasses.action} {
-        position: absolute;
-        right: ${spaces?.m}px;
-        top: ${spaces?.m}px;
-        margin-right: 0;
+        display: ${sdsStyle === "persistent" ? "none" : "block"};
+        margin: 0 0 0 ${spaces?.s}px;
         padding: 0;
         align-items: flex-start;
-        margin-top: ${spaces?.xxs}px;
 
         > button {
           padding: 0;

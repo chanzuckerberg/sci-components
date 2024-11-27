@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
-import { CALLOUT_ICON_OPTIONS, CALLOUT_ON_CLOSE_OPTIONS } from "./constants";
+import { CALLOUT_ICON_OPTIONS, CALLOUT_SDS_STYLE_OPTIONS } from "./constants";
 import { Callout } from "./stories/default";
 
 export default {
@@ -16,17 +16,6 @@ export default {
       control: { type: "text" },
       defaultValue: { summary: "-" },
       description: "The body text of the callout.",
-    },
-    expandable: {
-      control: { type: "boolean" },
-      defaultValue: { summary: "false" },
-      description: "If true, the callout will be expandable.",
-    },
-    extraContent: {
-      control: { type: "boolean" },
-      defaultValue: { summary: "-" },
-      description:
-        "The extra content in the Callout is passed as children to the component, allowing you to add custom content to it. For Storybook purposes, a predefined example of extra content has been added to the Callout component. You can toggle this boolean to test it out. Note that this is not an actual prop on the Callout component.",
     },
     hideBody: {
       control: { type: "boolean" },
@@ -60,16 +49,16 @@ export default {
       description: "The intent of the callout.",
       options: ["info", "negative", "positive", "notice"],
     },
-    onClose: {
+    sdsStyle: {
       control: {
-        labels: ["() => {}", "undefined"],
+        labels: ["persistent", "expandable", "dismissible"],
         type: "select",
       },
-      defaultValue: { summary: "-" },
+      defaultValue: { summary: "persistent" },
       description:
-        "If set to a function, the callout will have a close button.",
-      mapping: CALLOUT_ON_CLOSE_OPTIONS,
-      options: Object.keys(CALLOUT_ON_CLOSE_OPTIONS),
+        "The style of the Callout determines its behavior: Persistent Callouts are always visible, Expandable Callouts can be toggled to show or hide extra content, and Dismissible Callouts can be closed by the user.",
+      mapping: CALLOUT_SDS_STYLE_OPTIONS,
+      options: Object.keys(CALLOUT_SDS_STYLE_OPTIONS),
     },
     title: {
       control: { type: "text" },
@@ -92,9 +81,7 @@ export default {
 export const Default = {
   args: {
     autoDismiss: false,
-    body: "Callout text—replace the content here and the height of the component will adjust automatically.",
-    expandable: false,
-    onClose: false,
-    title: "Title",
+    body: "Callout text — replace the content here and the height of the component will adjust automatically.",
+    title: "The callout title goes here",
   },
 };

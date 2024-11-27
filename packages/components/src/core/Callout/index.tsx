@@ -12,6 +12,7 @@ const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
 
 export type CalloutIntentType = "info" | "negative" | "notice" | "positive";
+export type CalloutSdsStyleType = "persistent" | "expandable" | "dismissible";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
@@ -24,7 +25,7 @@ export interface CalloutProps {
   body?: string;
   hideBody?: boolean;
   extraContent?: React.ReactNode;
-  expandable?: boolean;
+  sdsStyle?: CalloutSdsStyleType;
 }
 
 export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
@@ -32,22 +33,22 @@ export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
 /**
  * @see https://mui.com/material-ui/react-alert/
  */
-const Callout = ({
-  autoDismiss,
-  dismissed,
-  expandable,
-  onClose,
-  icon,
-  sdsIconProps,
-  intent,
-  sdsStage,
-  title,
-  body,
-  hideTitle = false,
-  hideBody = false,
-  children,
-  ...rest
-}: ExposedCalloutProps): JSX.Element => {
+const Callout = (props: ExposedCalloutProps): JSX.Element => {
+  const {
+    autoDismiss,
+    dismissed,
+    icon,
+    sdsIconProps,
+    intent,
+    sdsStage,
+    title,
+    body,
+    hideTitle = false,
+    hideBody = false,
+    sdsStyle = "persistent",
+    children,
+    ...rest
+  } = props;
   const [hide, setHide] = useState(dismissed);
   const [stage, setStage] = useState(sdsStage || SDS_STAGE_CLOSED);
 
@@ -64,7 +65,7 @@ const Callout = ({
 
   const handleClose = (event: React.SyntheticEvent<Element, Event>) => {
     setHide(true);
-    if (onClose) onClose(event);
+    if (props?.onClose) props?.onClose(event);
   };
 
   const getIcon = () => {
@@ -93,7 +94,7 @@ const Callout = ({
   };
 
   const getAction = (collapsed: boolean) => {
-    if (expandable) {
+    if (sdsStyle === "expandable") {
       return (
         <Button
           aria-label={collapsed ? "open" : "close"}
@@ -106,36 +107,41 @@ const Callout = ({
           icon={collapsed ? "ChevronDown" : "ChevronUp"}
         />
       );
+    } else if (sdsStyle === "dismissible") {
+      return (
+        <Button
+          aria-label="Dismiss"
+          onClick={handleClose}
+          sdsSize="small"
+          sdsType="tertiary"
+          sdsStyle="icon"
+          size="large"
+          icon="XMark"
+        />
+      );
     }
-    return onClose ? (
-      <Button
-        aria-label="Dismiss"
-        onClick={handleClose}
-        sdsSize="small"
-        sdsType="tertiary"
-        sdsStyle="icon"
-        size="large"
-        icon="XMark"
-      />
-    ) : null;
+
+    return null;
   };
 
-  const collapsed = (expandable && stage === SDS_STAGE_CLOSED) || false;
+  const collapsed =
+    (sdsStyle === "expandable" && stage === SDS_STAGE_CLOSED) || false;
 
   return (
     <>
       <Grow in={!hide}>
         <StyledCallout
-          onClose={onClose ? handleClose : undefined}
+          onClose={handleClose}
           action={getAction(collapsed)}
           icon={getIcon()}
           intent={intent}
           collapsed={collapsed || false}
+          sdsStyle={sdsStyle}
           {...rest}
         >
           {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
           {!hideBody && <CalloutBody hideTitle={hideTitle}>{body}</CalloutBody>}
-          {!collapsed && (
+          {sdsStyle === "expandable" && !collapsed && (
             <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
               {children}
             </CalloutExtraContent>

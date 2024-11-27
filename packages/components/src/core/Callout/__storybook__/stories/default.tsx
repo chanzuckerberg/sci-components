@@ -1,4 +1,4 @@
-import { FormControlLabel } from "@mui/material";
+import { Box, FormControlLabel } from "@mui/material";
 import { Args } from "@storybook/react";
 import { useState } from "react";
 import RawCallout from "src/core/Callout";
@@ -7,7 +7,7 @@ import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import TooltipTableContent from "src/core/TooltipTable";
 
 export const Callout = (props: Args): JSX.Element => {
-  const { intent, onClose, autoDismiss, extraContent, ...rest } = props;
+  const { intent, autoDismiss, ...rest } = props;
 
   const [dismissed, setDismissed] = useState(false);
 
@@ -15,10 +15,10 @@ export const Callout = (props: Args): JSX.Element => {
     setDismissed((prev) => !prev);
   };
 
-  const finalOnclose = !onClose ? undefined : () => setDismissed(true);
+  const finalOnclose = (_: React.SyntheticEvent) => setDismissed(true);
 
   return (
-    <>
+    <Box sx={{ width: 600 }}>
       {!autoDismiss && (
         <FormControlLabel
           control={<InputToggle checked={dismissed} onChange={handleChange} />}
@@ -38,7 +38,7 @@ export const Callout = (props: Args): JSX.Element => {
         onClose={finalOnclose}
         {...rest}
       >
-        {extraContent && (
+        {
           <div>
             {SHORT_LOREM_IPSUM}
             <div style={{ marginTop: 10 }}>
@@ -55,8 +55,8 @@ export const Callout = (props: Args): JSX.Element => {
               />
             </div>
           </div>
-        )}
+        }
       </RawCallout>
-    </>
+    </Box>
   );
 };
