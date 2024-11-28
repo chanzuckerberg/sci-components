@@ -8,17 +8,21 @@ import {
 } from "../styles";
 import Link from "../Link";
 
+interface ExtraFooterProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+}
+
 export const StyledFooter = styled.footer`
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
     return `
-      background: ${colors?.base.surface};
+      background: ${props.hasInvertedStyle ? colors?.base.surfaceInverse : colors?.base.surface};
       padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.xxl}px;
 
       ${props.theme?.breakpoints.down("md")} {
-        border-top: 1px solid ${colors?.base.divider};
+        border-top: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider};
       padding: ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
       }
     `;
@@ -37,12 +41,12 @@ export const StyledLogoWrapper = styled.div`
     ${fontHeader("l")}
     ${fontHeader("l", /* isNarrow */ true)}
 
-    ${(props: CommonThemeProps) => {
+    ${(props: ExtraFooterProps) => {
       const spaces = getSpaces(props);
       const colors = getSemanticColors(props);
 
       return `
-        color: ${colors?.base.textPrimary};
+        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
         margin: 0 ${spaces?.xs}px 0 ${spaces?.l}px;
 
         ${props.theme?.breakpoints.down("md")} {
@@ -81,11 +85,11 @@ export const StyledNavItemLink = styled(Link)`
   ${fontHeader("l")}
   ${fontBody("s", "regular", /* isNarrow */ true)}
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
     const colors = getSemanticColors(props);
 
     return `
-      color: ${colors?.base.textPrimary};
+      color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
 
       &:hover {
         color: ${colors?.accent.textAction};
@@ -101,8 +105,8 @@ export const StyledNavItemLink = styled(Link)`
         justify-content: center;
 
         &:hover {
-          color: ${colors?.base.textPrimary};
-          background: ${colors?.base.backgroundSecondary};
+          color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
         }
       }
     `;
@@ -119,15 +123,15 @@ export const StyledTopSection = styled.div`
     text-decoration: none;
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${colors?.base.textSecondary};
+      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
 
       &:hover {
-        color: ${colors?.base.textPrimary};
+        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
         text-decoration: none;
       }
 
@@ -142,14 +146,14 @@ export const StyledTopSection = styled.div`
 export const StyledLinkItemLink = styled(Link)`
   ${fontBody("xxs", "regular")}
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
     const colors = getSemanticColors(props);
 
     return `
-      color: ${colors?.base.textSecondary};
+      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
 
       &:hover {
-        color: ${colors?.base.textPrimary};
+        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
         text-decoration: none;
       }
     `;

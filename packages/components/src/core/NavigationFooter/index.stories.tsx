@@ -41,6 +41,8 @@ function ExampleLogo({
 
 export default {
   args: {
+    hasInvertedStyle: false,
+
     images: [
       {
         image: (
