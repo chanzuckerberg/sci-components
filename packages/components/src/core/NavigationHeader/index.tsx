@@ -140,6 +140,7 @@ export default function NavigationHeader<T extends string = string>({
               sdsStyle="icon"
               sdsType="secondary"
               icon={buttonProps.icon}
+              aria-label={String(buttonProps.children)}
             />
           );
         }
