@@ -21,15 +21,19 @@ interface DropdownHeaderSecondaryNavItem extends BaseHeaderSecondaryNavItem {
   items: Pick<TextHeaderSecondaryNavItem, "label" | "onClick">[];
 }
 
-export type HeaderSecondaryNavItem =
+export type NavigationHeaderSecondaryNavItem =
   | TextHeaderSecondaryNavItem
   | DropdownHeaderSecondaryNavItem;
 
-export interface HeaderSecondaryNavProps {
-  items: HeaderSecondaryNavItem[];
+export interface NavigationHeaderSecondaryNavProps {
+  items: NavigationHeaderSecondaryNavItem[];
 }
 
-function SecondaryNavItem({ item }: { item: HeaderSecondaryNavItem }) {
+function SecondaryNavItem({
+  item,
+}: {
+  item: NavigationHeaderSecondaryNavItem;
+}) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
 
   const open = Boolean(anchorEl);
@@ -112,7 +116,9 @@ function SecondaryNavItem({ item }: { item: HeaderSecondaryNavItem }) {
   );
 }
 
-export default function HeaderSecondaryNav({ items }: HeaderSecondaryNavProps) {
+export default function NavigationHeaderSecondaryNav({
+  items,
+}: NavigationHeaderSecondaryNavProps) {
   return (
     <StyledSection>
       {items.map((item) => (

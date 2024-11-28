@@ -13,14 +13,14 @@ import {
   StyledTitleContainer,
   StyledToolbar,
 } from "./style";
-import HeaderPrimaryNav from "./components/HeaderPrimaryNav";
+import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import { InputSearchProps } from "../InputSearch";
-import HeaderSecondaryNav from "./components/HeaderSecondaryNav";
+import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
 import Button from "../Button";
 
-export { HeaderPrimaryNav, HeaderSecondaryNav };
+export { NavigationHeaderPrimaryNav, NavigationHeaderSecondaryNav };
 
-export interface HeaderProps {
+export interface NavigationHeaderProps {
   children?: ReactNode;
   logo?: ReactNode;
   primaryNav?: ReactNode;
@@ -33,7 +33,7 @@ export interface HeaderProps {
   title: string;
 }
 
-export default function Header({
+export default function NavigationHeader({
   children,
   logo,
   primaryNav,
@@ -44,7 +44,7 @@ export default function Header({
   tag,
   tagColor,
   title,
-}: HeaderProps) {
+}: NavigationHeaderProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(true);
