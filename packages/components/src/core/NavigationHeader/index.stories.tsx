@@ -1,20 +1,12 @@
 import { Meta } from "@storybook/react";
-import NavigationHeader, {
-  NavigationHeaderProps,
-  NavigationHeaderPrimaryNav,
-  NavigationHeaderSecondaryNav,
-} from "./index";
+import NavigationHeader, { NavigationHeaderProps } from "./index";
 import { useState } from "react";
-import Button from "../Button";
-import Icon from "../Icon";
-import { useMediaQuery, useTheme } from "@mui/material";
-import { getSemanticColors, getTypography } from "../styles";
+import { useTheme } from "@mui/material";
+import { getSemanticColors } from "../styles";
 
 function NavigationHeaderWrapper(props: NavigationHeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
   const theme = useTheme();
-  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
-  const typography = getTypography({ theme });
   const colors = getSemanticColors({ theme });
 
   return (
@@ -37,66 +29,42 @@ function NavigationHeaderWrapper(props: NavigationHeaderProps) {
           Logo slot
         </div>
       }
-      primaryNav={
-        <NavigationHeaderPrimaryNav
-          onChange={setActivePrimaryNavKey}
-          value={activePrimaryNavKey}
-          items={[
-            {
-              key: "1",
-              label: "Primary",
-            },
-            {
-              key: "2",
-              label: "Primary",
-              tag: "BETA",
-              tagColor: "beta",
-            },
-          ]}
-        />
-      }
-      secondaryNav={
-        <NavigationHeaderSecondaryNav
-          items={[
-            {
-              items: [
-                { label: "Item 1", onClick: () => alert("clicked on item 1") },
-                { label: "Item 2", onClick: () => alert("clicked on item 2") },
-              ],
-              label: "Secondary",
-              type: "dropdown",
-            },
+      activePrimaryNavKey={activePrimaryNavKey}
+      setActivePrimaryNavKey={setActivePrimaryNavKey}
+      primaryNavItems={[
+        {
+          key: "1",
+          label: "Primary",
+        },
+        {
+          key: "2",
+          label: "Primary",
+          tag: "BETA",
+          tagColor: "beta",
+        },
+      ]}
+      secondaryNavItems={[
+        {
+          items: [
+            { label: "Item 1", onClick: () => alert("clicked on item 1") },
+            { label: "Item 2", onClick: () => alert("clicked on item 2") },
+          ],
+          label: "Secondary",
+          type: "dropdown",
+        },
 
-            {
-              label: "Secondary",
-              onClick: () => alert("clicked on secondary"),
-              type: "text",
-            },
-          ]}
-        />
-      }
-    >
-      <Button sdsStyle="rounded" sdsType="primary">
-        Primary
-      </Button>
-
-      <Button sdsStyle="rounded" sdsType="secondary">
-        Secondary
-      </Button>
-
-      {isNarrow ? (
-        <Button
-          startIcon={<Icon sdsIcon="Person" sdsSize="l" sdsType="button" />}
-          sdsStyle="minimal"
-          sdsType="secondary"
-          sx={typography?.narrowStyles.body.semibold.m}
-        >
-          My Profile
-        </Button>
-      ) : (
-        <Button startIcon="Person" sdsStyle="minimal" sdsType="secondary" />
-      )}
-    </NavigationHeader>
+        {
+          label: "Secondary",
+          onClick: () => alert("clicked on secondary"),
+          type: "text",
+        },
+      ]}
+      buttons={[
+        { children: "Primary", sdsType: "primary" },
+        { children: "Secondary", sdsType: "secondary" },
+        { children: "My Profile", icon: "Person" },
+      ]}
+    />
   );
 }
 

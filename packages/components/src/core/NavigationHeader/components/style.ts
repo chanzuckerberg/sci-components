@@ -1,20 +1,19 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { CommonThemeProps, getSpaces, Spaces } from "src/core/styles";
 
 export const StyledSection = styled.section`
   display: flex;
   align-items: center;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: CommonThemeProps & { gap?: keyof Spaces }) => {
     const spaces = getSpaces(props);
 
     return `
-      gap-x: ${spaces?.xl}px;
+      column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
 
       ${props.theme?.breakpoints.down("md")} {
         align-items: start;
         flex-direction: column;
-        gap-y: ${spaces?.m}px;
       }
     `;
   }}
