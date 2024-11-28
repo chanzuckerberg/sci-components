@@ -13,6 +13,9 @@ export const StyledTextItem = styled(Button)`
   ${fontHeaderS}
 
   background: none;
+  justify-content: flex-start;
+  min-height: 44px;
+  width: 100%;
 
   &:hover {
     background: none;
@@ -32,6 +35,10 @@ export const StyledTextItem = styled(Button)`
 
       ${props.theme?.breakpoints.down("md")} {
         padding-left: ${spaces?.xl}px;
+
+        &:hover {
+          background: ${colors?.base.surfaceSecondary};
+        }
       }
     `;
   }}
@@ -55,6 +62,10 @@ export const StyledAccordion = styled(Accordion)`
 
         &:hover {
           color: ${colors?.base.textPrimary};
+
+          ${props.theme?.breakpoints.down("md")} {
+            background: ${colors?.base.surfaceSecondary};
+          }
         }
       }
 

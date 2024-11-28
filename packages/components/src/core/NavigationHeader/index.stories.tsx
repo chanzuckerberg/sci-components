@@ -8,24 +8,27 @@ import { useState } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
 import { useMediaQuery, useTheme } from "@mui/material";
-import { getTypography } from "../styles";
+import { getSemanticColors, getTypography } from "../styles";
 
 function NavigationHeaderWrapper(props: NavigationHeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
   const theme = useTheme();
   const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const typography = getTypography({ theme });
+  const colors = getSemanticColors({ theme });
 
   return (
     <NavigationHeader
       {...props}
+      logoUrl="http://example.com"
       logo={
         <div
           style={{
             alignItems: "center",
-            border: "1px dashed black",
+            border: `1px dashed ${colors?.base.border}`,
             display: "flex",
             fontSize: 10,
+            fontWeight: "normal",
             height: 24,
             justifyContent: "center",
             width: 50,
@@ -86,7 +89,7 @@ function NavigationHeaderWrapper(props: NavigationHeaderProps) {
           startIcon={<Icon sdsIcon="Person" sdsSize="l" sdsType="button" />}
           sdsStyle="minimal"
           sdsType="secondary"
-          sx={typography?.mobileStyles.body.semibold.m}
+          sx={typography?.narrowStyles.body.semibold.m}
         >
           My Profile
         </Button>
@@ -106,7 +109,7 @@ export default {
   },
 
   args: {
-    tag: "BETA",
+    tag: "Beta",
     tagColor: "beta",
     title: "Logo Name",
   } satisfies NavigationHeaderProps,

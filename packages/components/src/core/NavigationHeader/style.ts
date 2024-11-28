@@ -7,9 +7,10 @@ import {
   getSemanticColors,
   getSpaces,
 } from "../styles";
-import Tag from "../Tag";
+import Tag, { TagProps } from "../Tag";
 import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
+import Link from "../Link";
 
 export const StyledHeader = styled(AppBar)`
   ${(props: CommonThemeProps) => {
@@ -35,6 +36,19 @@ export const StyledToolbar = styled(Toolbar)`
         ${props.theme?.breakpoints.down("md")} {
           border-bottom: 1px solid ${colors?.base.divider}
         }
+      }
+    `;
+  }}
+`;
+
+export const StyledLogoLinkWrapper = styled(Link)`
+  align-items: center;
+  display: flex;
+
+  ${(props: CommonThemeProps) => {
+    return `
+      ${props.theme?.breakpoints.down("md")} {
+        width: 100%;
       }
     `;
   }}
@@ -70,9 +84,6 @@ export const StyledTitleContainer = styled.div`
       }
 
       ${props.theme?.breakpoints.down("md")} {
-        width: 100%;
-        margin-right: 0;
-
         p {
           margin-left: ${spaces?.xs}px;
         }
@@ -87,6 +98,10 @@ export const StyledTag = styled(Tag)`
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
     ${fontBody("xxxs", "regular", /* isNarrow */ true)}
+  }
+
+  &:hover {
+    text-decoration: none;
   }
 `;
 
