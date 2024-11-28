@@ -13,7 +13,7 @@ import { getTypography } from "../styles";
 function NavigationHeaderWrapper(props: NavigationHeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const typography = getTypography({ theme });
 
   return (
@@ -81,7 +81,7 @@ function NavigationHeaderWrapper(props: NavigationHeaderProps) {
         Secondary
       </Button>
 
-      {isMobile ? (
+      {isNarrow ? (
         <Button
           startIcon={<Icon sdsIcon="Person" sdsSize="l" sdsType="button" />}
           sdsStyle="minimal"

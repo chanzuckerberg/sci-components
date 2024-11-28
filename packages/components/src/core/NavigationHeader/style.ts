@@ -47,7 +47,7 @@ export const StyledLogoWrapper = styled.div`
 
 export const StyledTitleContainer = styled.div`
   ${fontHeader("l")}
-  ${fontHeader("l", /* isMobile */ true)}
+  ${fontHeader("l", /* isNarrow */ true)}
 
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@ export const StyledTag = styled(Tag)`
 
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
-    ${fontBody("xxxs", "regular", /* isMobile */ true)}
+    ${fontBody("xxxs", "regular", /* isNarrow */ true)}
   }
 `;
 
@@ -121,7 +121,7 @@ export const StyledSearch = styled(InputSearch)`
 
   .MuiInputBase-input {
     ${fontBody("xs", "regular")}
-    ${fontBody("m", "regular", /* isMobile */ true)}
+    ${fontBody("m", "regular", /* isNarrow */ true)}
   }
 
   ${(props: CommonThemeProps) => {
@@ -141,11 +141,11 @@ export const StyledButtonSection = styled.section`
   align-items: center;
 
   .MuiButtonBase-root {
-    ${fontBody("l", "regular", /* isMobile */ true)}
+    ${fontBody("l", "regular", /* isNarrow */ true)}
   }
 
   [data-style="minimal"] {
-    ${fontBody("m", "regular", /* isMobile */ true)}
+    ${fontBody("m", "regular", /* isNarrow */ true)}
   }
 
   ${(props: CommonThemeProps) => {

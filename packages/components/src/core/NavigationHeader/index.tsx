@@ -46,7 +46,7 @@ export default function NavigationHeader({
   title,
 }: NavigationHeaderProps) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(true);
 
   const search = showSearch && (
@@ -73,7 +73,7 @@ export default function NavigationHeader({
         {tag && <StyledTag color={tagColor} label={tag} />}
       </StyledTitleContainer>
 
-      {!isMobile && (
+      {!isNarrow && (
         <>
           <StyledPrimaryNavContainer primaryNavPosition={primaryNavPosition}>
             {primaryNavPosition === "left" ? (
@@ -94,7 +94,7 @@ export default function NavigationHeader({
         </>
       )}
 
-      {isMobile && (
+      {isNarrow && (
         <Button
           sdsType="secondary"
           sdsStyle="icon"
@@ -109,7 +109,7 @@ export default function NavigationHeader({
     <>
       <StyledHeader position="static">{headerContent}</StyledHeader>
 
-      {isMobile && drawerOpen && (
+      {isNarrow && drawerOpen && (
         <StyledDrawer
           anchor="right"
           open={drawerOpen}
