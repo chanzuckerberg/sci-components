@@ -10,7 +10,7 @@ import Icon from "../Icon";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getTypography } from "../styles";
 
-function HeaderWrapper(props: NavigationHeaderProps) {
+function NavigationHeaderWrapper(props: NavigationHeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -56,18 +56,18 @@ function HeaderWrapper(props: NavigationHeaderProps) {
         <NavigationHeaderSecondaryNav
           items={[
             {
-              type: "dropdown",
-              label: "Secondary",
               items: [
                 { label: "Item 1", onClick: () => alert("clicked on item 1") },
                 { label: "Item 2", onClick: () => alert("clicked on item 2") },
               ],
+              label: "Secondary",
+              type: "dropdown",
             },
 
             {
-              type: "text",
               label: "Secondary",
               onClick: () => alert("clicked on secondary"),
+              type: "text",
             },
           ]}
         />
@@ -98,19 +98,21 @@ function HeaderWrapper(props: NavigationHeaderProps) {
 }
 
 export default {
-  component: HeaderWrapper,
-  title: "Components/Header",
   argTypes: {
     primaryNavPosition: {
       control: { type: "select" },
       options: ["left", "right"],
     },
   },
+
   args: {
-    title: "Logo Name",
     tag: "BETA",
     tagColor: "beta",
+    title: "Logo Name",
   } satisfies NavigationHeaderProps,
+
+  component: NavigationHeaderWrapper,
+  title: "Components/Header",
 } as Meta;
 
 export const Default = {};

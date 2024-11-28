@@ -138,7 +138,7 @@ export const StyledSearch = styled(InputSearch)`
 
 export const StyledButtonSection = styled.section`
   display: flex;
-  items-align: center;
+  align-items: center;
 
   .MuiButtonBase-root {
     ${fontBody("l", "regular", /* isMobile */ true)}
