@@ -1,9 +1,10 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { SdsTagColorType } from "src/core/Tag";
 import {
   StyledButtonSection,
+  StyledDrawer,
   StyledHeader,
   StyledLogoWrapper,
   StyledPrimaryNavContainer,
@@ -15,6 +16,7 @@ import {
 import HeaderPrimaryNav from "./components/HeaderPrimaryNav";
 import { InputSearchProps } from "../InputSearch";
 import HeaderSecondaryNav from "./components/HeaderSecondaryNav";
+import Button from "../Button";
 
 export { HeaderPrimaryNav, HeaderSecondaryNav };
 
@@ -45,16 +47,7 @@ export default function Header({
 }: HeaderProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
-
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   const search = showSearch && (
     <StyledSearch
@@ -66,35 +59,70 @@ export default function Header({
     />
   );
 
-  return (
-    <StyledHeader position="static">
-      <StyledToolbar>
+  const buttons = children && (
+    <StyledButtonSection>{children}</StyledButtonSection>
+  );
+
+  const headerContent = (
+    <StyledToolbar>
+      <StyledTitleContainer>
         <StyledLogoWrapper>{logo}</StyledLogoWrapper>
 
-        <StyledTitleContainer>
-          <p>{title}</p>
+        <p>{title}</p>
 
-          {tag && <StyledTag color={tagColor} label={tag} />}
-        </StyledTitleContainer>
+        {tag && <StyledTag color={tagColor} label={tag} />}
+      </StyledTitleContainer>
 
-        <StyledPrimaryNavContainer primaryNavPosition={primaryNavPosition}>
-          {primaryNavPosition === "left" ? (
-            <>
-              {primaryNav}
-              {search}
-            </>
-          ) : (
-            <>
-              {search}
-              {primaryNav}
-            </>
-          )}
-        </StyledPrimaryNavContainer>
+      {!isMobile && (
+        <>
+          <StyledPrimaryNavContainer primaryNavPosition={primaryNavPosition}>
+            {primaryNavPosition === "left" ? (
+              <>
+                {primaryNav}
+                {search}
+              </>
+            ) : (
+              <>
+                {search}
+                {primaryNav}
+              </>
+            )}
+          </StyledPrimaryNavContainer>
 
-        {secondaryNav}
+          {secondaryNav}
+          {buttons}
+        </>
+      )}
 
-        {children && <StyledButtonSection>{children}</StyledButtonSection>}
-      </StyledToolbar>
-    </StyledHeader>
+      {isMobile && (
+        <Button
+          sdsType="secondary"
+          sdsStyle="icon"
+          icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
+          onClick={() => setDrawerOpen((prev) => !prev)}
+        />
+      )}
+    </StyledToolbar>
+  );
+
+  return (
+    <>
+      <StyledHeader position="static">{headerContent}</StyledHeader>
+
+      {isMobile && drawerOpen && (
+        <StyledDrawer
+          anchor="right"
+          open={drawerOpen}
+          onClose={() => setDrawerOpen(false)}
+        >
+          {headerContent}
+
+          {search}
+          {primaryNav}
+          {secondaryNav}
+          {buttons}
+        </StyledDrawer>
+      )}
+    </>
   );
 }

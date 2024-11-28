@@ -1,9 +1,11 @@
-import { AppBar, Toolbar } from "@mui/material";
+import { AppBar, Drawer, Toolbar } from "@mui/material";
 import {
   CommonThemeProps,
+  fontBody,
+  fontHeader,
+  getIconSizes,
   getSemanticColors,
   getSpaces,
-  getTypography,
 } from "../styles";
 import Tag from "../Tag";
 import InputSearch from "../InputSearch";
@@ -24,26 +26,29 @@ export const StyledHeader = styled(AppBar)`
 export const StyledToolbar = styled(Toolbar)`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
+    const colors = getSemanticColors(props);
 
     return `
       &.MuiToolbar-root {
         padding: ${spaces?.m}px ${spaces?.xl}px;
+
+        ${props.theme?.breakpoints.down("md")} {
+          border-bottom: 1px solid ${colors?.base.divider}
+        }
       }
     `;
   }}
 `;
 
 export const StyledLogoWrapper = styled.div`
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
-
-    return `
-      margin-right: ${spaces?.l}px;
-    `;
-  }}
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledTitleContainer = styled.div`
+  ${fontHeader("l")}
+  ${fontHeader("l", /* isMobile */ true)}
+
   display: flex;
   align-items: center;
 
@@ -54,22 +59,35 @@ export const StyledTitleContainer = styled.div`
   ${(props: CommonThemeProps) => {
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
-    const typography = getTypography(props);
-    const font = typography?.styles.header.semibold.l;
 
     return `
       color: ${colors?.base.textPrimary};
-      font-size: ${font?.fontSize}px;
-      font-weight: ${font?.fontWeight};
-      gap: ${spaces?.xs}px;
-      line-height: ${font?.lineHeight};
       margin-right: ${spaces?.xxl}px;
+
+      p {
+        margin-left: ${spaces?.l}px;
+        margin-right: ${spaces?.xs}px;
+      }
+
+      ${props.theme?.breakpoints.down("md")} {
+        width: 100%;
+        margin-right: 0;
+
+        p {
+          margin-left: ${spaces?.xs}px;
+        }
+      }
     `;
   }}
 `;
 
 export const StyledTag = styled(Tag)`
   margin: 0;
+
+  .MuiChip-label {
+    ${fontBody("xxxs", "regular")}
+    ${fontBody("xxxs", "regular", /* isMobile */ true)}
+  }
 `;
 
 interface StyledPrimaryNavContainerProps extends CommonThemeProps {
@@ -88,6 +106,10 @@ export const StyledPrimaryNavContainer = styled.div`
       gap: ${spaces?.xxl}px;
       margin-right: ${spaces?.xxl}px;
       justify-content: ${props.primaryNavPosition === "left" ? "flex-start" : "space-between"};
+
+      ${props.theme?.breakpoints.down("md")} {
+        flex-direction: column;
+      }
     `;
   }}
 `;
@@ -96,18 +118,61 @@ export const StyledSearch = styled(InputSearch)`
   margin: 0;
   max-width: 320px;
   width: 100%;
+
+  .MuiInputBase-input {
+    ${fontBody("xs", "regular")}
+    ${fontBody("m", "regular", /* isMobile */ true)}
+  }
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      ${props.theme?.breakpoints.down("md")} {
+        max-width: unset;
+        padding: ${spaces?.m}px ${spaces?.xl}px;
+      }
+    `;
+  }}
 `;
 
 export const StyledButtonSection = styled.section`
   display: flex;
   items-align: center;
 
+  .MuiButtonBase-root {
+    ${fontBody("l", "regular", /* isMobile */ true)}
+  }
+
+  [data-style="minimal"] {
+    ${fontBody("m", "regular", /* isMobile */ true)}
+  }
+
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
+    const sizes = getIconSizes(props);
 
     return `
       gap: ${spaces?.m}px;
       margin-left: ${spaces?.xl}px;
+
+      ${props.theme?.breakpoints.down("md")} {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: ${spaces?.xxl}px;
+        padding: 0 ${spaces?.xl}px;
+
+        .MuiButton-icon .MuiSvgIcon-root {
+          width: ${sizes?.l.width}px;
+          height: ${sizes?.l.height}px;
+        }
+      }
     `;
   }}
+`;
+
+export const StyledDrawer = styled(Drawer)`
+  .MuiDrawer-paper {
+    width: 100%;
+  }
 `;

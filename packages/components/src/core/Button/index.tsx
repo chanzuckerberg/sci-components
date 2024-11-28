@@ -112,6 +112,7 @@ const Button = React.forwardRef(
             variant="text"
             {...propsWithDefault}
             ref={ref}
+            data-style={sdsStyle}
           />
         );
 
