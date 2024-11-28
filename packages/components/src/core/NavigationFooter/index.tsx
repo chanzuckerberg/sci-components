@@ -15,15 +15,22 @@ import {
 } from "./style";
 import { Divider, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import Link from "../Link";
 
 export interface NavigationFooterNavItem {
   label: string;
   url: string;
 }
 
+export interface FooterImage {
+  image: ReactNode;
+  url: string;
+}
+
 export interface NavigationFooterProps {
+  images?: FooterImage[];
   logo?: ReactNode;
-  images?: ReactNode[];
+  logoUrl?: string;
   navItems?: NavigationFooterNavItem[];
   navLinks?: NavigationFooterNavItem[];
   tag?: string;
@@ -42,8 +49,9 @@ function groupArray<T>(array: T[], groupSize: number): T[][] {
 }
 
 export default function NavigationFooter({
-  logo,
   images,
+  logo,
+  logoUrl,
   navItems,
   navLinks,
   tag,
@@ -59,11 +67,21 @@ export default function NavigationFooter({
     }
 
     if (!isNarrow) {
-      return images;
+      return images.map(({ image, url }) => (
+        <Link key={url} href={url}>
+          {image}
+        </Link>
+      ));
     }
 
     return groupArray(images, 2).map((imageGroup, index) => (
-      <StyledMobileImageRow key={index}>{imageGroup}</StyledMobileImageRow>
+      <StyledMobileImageRow key={index}>
+        {imageGroup.map(({ image, url }) => (
+          <Link key={url} href={url}>
+            {image}
+          </Link>
+        ))}
+      </StyledMobileImageRow>
     ));
   }
 
@@ -99,16 +117,24 @@ export default function NavigationFooter({
     ));
   }
 
+  let logoNode = (
+    <StyledLogoWrapper>
+      {logo}
+
+      <p>{title}</p>
+
+      {tag && <Tag tagColor={tagColor} label={tag} hover={false} />}
+    </StyledLogoWrapper>
+  );
+
+  if (logoUrl) {
+    logoNode = <Link href={logoUrl}>{logoNode}</Link>;
+  }
+
   return (
     <StyledFooter>
       <StyledTopSection>
-        <StyledLogoWrapper>
-          {logo}
-
-          <p>{title}</p>
-
-          {tag && <Tag tagColor={tagColor} label={tag} />}
-        </StyledLogoWrapper>
+        {logoNode}
 
         {navItems && navItems.length > 0 && (
           <StyledNavSection>

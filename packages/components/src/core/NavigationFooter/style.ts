@@ -29,6 +29,10 @@ export const StyledLogoWrapper = styled.div`
   display: flex;
   align-items: center;
 
+  a {
+    text-decoration: none;
+  }
+
   p {
     ${fontHeader("l")}
     ${fontHeader("l", /* isNarrow */ true)}
@@ -110,6 +114,10 @@ export const StyledTopSection = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 60px;
+
+  a:hover {
+    text-decoration: none;
+  }
 
   ${(props: CommonThemeProps) => {
     const colors = getSemanticColors(props);
@@ -223,6 +231,10 @@ export const StyledBottomSection = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  a:hover {
+    text-decoration: none;
+  }
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
