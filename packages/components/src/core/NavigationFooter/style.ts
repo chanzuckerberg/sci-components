@@ -14,7 +14,7 @@ export const StyledFooter = styled.footer`
     const colors = getSemanticColors(props);
 
     return `
-      background: ${colors?.base.surfacePrimary};
+      background: ${colors?.base.surface};
       padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.xxl}px;
 
       ${props.theme?.breakpoints.down("md")} {
@@ -102,7 +102,7 @@ export const StyledNavItemLink = styled(Link)`
 
         &:hover {
           color: ${colors?.base.textPrimary};
-          background: ${colors?.base.surfaceSecondary};
+          background: ${colors?.base.backgroundSecondary};
         }
       }
     `;
