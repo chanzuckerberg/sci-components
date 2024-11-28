@@ -17,7 +17,7 @@ export const StyledHeader = styled(AppBar)`
     const colors = getSemanticColors(props);
 
     return `
-      background: ${colors?.base.surfacePrimary};
+      background: ${colors?.base.surface};
       max-width: 100%;
       overflow-x: auto;
     `;

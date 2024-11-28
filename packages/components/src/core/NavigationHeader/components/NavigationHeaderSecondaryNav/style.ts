@@ -37,7 +37,7 @@ export const StyledTextItem = styled(Button)`
         padding-left: ${spaces?.xl}px;
 
         &:hover {
-          background: ${colors?.base.surfaceSecondary};
+          background: ${colors?.base.backgroundSecondary};
         }
       }
     `;
@@ -64,7 +64,7 @@ export const StyledAccordion = styled(Accordion)`
           color: ${colors?.base.textPrimary};
 
           ${props.theme?.breakpoints.down("md")} {
-            background: ${colors?.base.surfaceSecondary};
+            background: ${colors?.base.backgroundSecondary};
           }
         }
       }
