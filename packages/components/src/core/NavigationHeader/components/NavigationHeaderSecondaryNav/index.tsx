@@ -6,6 +6,7 @@ import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
+import { hasIn } from "lodash";
 
 interface BaseHeaderSecondaryNavItem {
   label: string;
@@ -27,12 +28,15 @@ export type NavigationHeaderSecondaryNavItem =
 
 export interface NavigationHeaderSecondaryNavProps {
   items: NavigationHeaderSecondaryNavItem[];
+  hasInverseStyle?: boolean;
 }
 
 function SecondaryNavItem({
   item,
+  hasInverseStyle,
 }: {
   item: NavigationHeaderSecondaryNavItem;
+  hasInverseStyle?: boolean;
 }) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
 
@@ -59,7 +63,12 @@ function SecondaryNavItem({
   return (
     <Fragment key={item.label}>
       {item.type === "text" && (
-        <StyledTextItem onClick={item.onClick}>{item.label}</StyledTextItem>
+        <StyledTextItem
+          onClick={item.onClick}
+          hasInvertedStyle={hasInverseStyle}
+        >
+          {item.label}
+        </StyledTextItem>
       )}
 
       {item.type === "dropdown" && !isNarrow && (
@@ -67,6 +76,7 @@ function SecondaryNavItem({
           <StyledTextItem
             ref={buttonRef}
             onClick={(event) => setAnchorEl(event.currentTarget)}
+            hasInvertedStyle={hasInverseStyle}
           >
             <span>{item.label}</span>
             <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />
@@ -90,7 +100,10 @@ function SecondaryNavItem({
       )}
 
       {item.type === "dropdown" && isNarrow && (
-        <StyledAccordion id={`${item.label}-dropdown`}>
+        <StyledAccordion
+          id={`${item.label}-dropdown`}
+          hasInvertedStyle={hasInverseStyle}
+        >
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
             {item.items.map((subItem) => (
@@ -114,11 +127,16 @@ function SecondaryNavItem({
 
 export default function NavigationHeaderSecondaryNav({
   items,
+  hasInverseStyle,
 }: NavigationHeaderSecondaryNavProps) {
   return (
     <StyledSection gap="l">
       {items.map((item) => (
-        <SecondaryNavItem key={`${item.label}-${item.type}`} item={item} />
+        <SecondaryNavItem
+          key={`${item.label}-${item.type}`}
+          item={item}
+          hasInverseStyle={hasInverseStyle}
+        />
       ))}
     </StyledSection>
   );

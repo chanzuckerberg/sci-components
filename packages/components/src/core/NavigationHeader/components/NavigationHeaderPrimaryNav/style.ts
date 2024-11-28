@@ -1,13 +1,9 @@
 import styled from "@emotion/styled";
 import Button from "src/core/Button";
-import {
-  CommonThemeProps,
-  fontHeader,
-  getSemanticColors,
-  getSpaces,
-} from "src/core/styles";
+import { fontHeader, getSemanticColors, getSpaces } from "src/core/styles";
+import { ExtraHeaderProps } from "../../style";
 
-interface PrimaryNavItemProps extends CommonThemeProps {
+interface PrimaryNavItemProps extends ExtraHeaderProps {
   active?: boolean;
 }
 
@@ -33,11 +29,11 @@ export const PrimaryNavItem = styled(Button)`
         border-radius: 0;
         justify-content: start;
         padding: ${spaces?.m}px 0 ${spaces?.m}px ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
-        background: ${props.active ? colors?.base.backgroundSecondary : "transparent"};
+        background: ${props.active ? (props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary) : "transparent"};
         width: 100%;
 
         &:hover {
-          background: ${colors?.base.backgroundSecondary};
+          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
           border-left-color: ${props.active ? "initial" : colors?.neutral.fillPrimary};
         }
       }
@@ -49,19 +45,19 @@ export const StyledLabel = styled.span`
   ${fontHeader("m")}
 
   ${(props: PrimaryNavItemProps) => {
-    const semanticColors = getSemanticColors(props);
+    const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${props.active ? semanticColors?.base.textPrimary : semanticColors?.base.textSecondary};
+      color: ${props.active ? colors?.base[props.hasInvertedStyle ? "textPrimaryInverse" : "textPrimary"] : colors?.base[props.hasInvertedStyle ? "textSecondaryInverse" : "textSecondary"]};
 
       ${props.theme?.breakpoints.up("md")} {
         border-bottom: solid 2px transparent;
-        border-bottom-color: ${props.active ? semanticColors?.accent.border : "transparent"};
+        border-bottom-color: ${props.active ? colors?.accent.border : "transparent"};
         padding-bottom: ${spaces?.xxxs}px;
 
         &:hover {
-          border-bottom-color: ${semanticColors?.base.border};
+          border-bottom-color: ${props.hasInvertedStyle ? colors?.base.borderInverse : colors?.base.border};
         }
       }
     `;

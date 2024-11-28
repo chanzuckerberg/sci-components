@@ -8,6 +8,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import { ExtraHeaderProps } from "../../style";
 
 export const StyledTextItem = styled(Button)`
   ${fontHeaderS}
@@ -21,23 +22,23 @@ export const StyledTextItem = styled(Button)`
     background: none;
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
       gap: ${spaces?.xs}px;
-      color: ${colors?.base.textSecondary};
+      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
 
       &:hover {
-        color: ${colors?.base.textPrimary};
+        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
       }
 
       ${props.theme?.breakpoints.down("md")} {
         padding-left: ${spaces?.xl}px;
 
         &:hover {
-          background: ${colors?.base.backgroundSecondary};
+          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
         }
       }
     `;
@@ -51,20 +52,20 @@ export const StyledAccordion = styled(Accordion)`
     ${fontBodyS}
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
     return `
       .MuiButtonBase-root {
         padding: ${spaces?.m}px ${spaces?.xl}px;
-        color: ${colors?.base.textSecondary};
+        color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
 
         &:hover {
-          color: ${colors?.base.textPrimary};
+          color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
 
           ${props.theme?.breakpoints.down("md")} {
-            background: ${colors?.base.backgroundSecondary};
+            background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
           }
         }
       }
@@ -76,10 +77,10 @@ export const StyledAccordion = styled(Accordion)`
           padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
 
           .primary-text {
-            color: ${colors?.base.textSecondary} !important;
+            color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary} !important;
 
             &:hover {
-              color: ${colors?.base.textPrimary} !important;
+              color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary} !important;
             }
           }
         }
