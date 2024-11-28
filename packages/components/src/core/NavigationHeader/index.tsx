@@ -27,7 +27,6 @@ import Button, {
   SdsMinimalButtonProps,
 } from "../Button";
 import Icon from "../Icon";
-import { hasIn } from "lodash";
 
 export interface NavigationHeaderProps<T extends string = string> {
   activePrimaryNavKey?: string;

@@ -6,7 +6,6 @@ import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
-import { hasIn } from "lodash";
 
 interface BaseHeaderSecondaryNavItem {
   label: string;
