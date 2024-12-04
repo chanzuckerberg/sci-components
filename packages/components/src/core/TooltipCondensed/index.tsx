@@ -16,7 +16,7 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
   props: TooltipCondensedProps,
   ref
 ): JSX.Element {
-  const { children, title, indicator, indicatorColor } = props;
+  const { children, title, indicator, indicatorColor, ...rest } = props;
 
   const theme = useTheme();
 
@@ -36,6 +36,10 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
 
   return (
     <Tooltip
+      {...rest}
+      // (masoudmanson): The following props must be passed to the Tooltip component
+      // exactly as defined below. To ensure they aren't overridden by the spread operator,
+      // we pass them after the spread operator.
       followCursor
       placement="right-end"
       enterDelay={50}
@@ -44,7 +48,6 @@ const TooltipCondensed = forwardRef(function TooltipCondensed(
       ref={ref}
       classes={{ tooltip }}
       arrow={false}
-      hasInvertedStyle={false}
     >
       {children}
     </Tooltip>

@@ -5,6 +5,9 @@ import { TOOLTIP_CONDENSED_EXCLUDED_CONTROLS } from "./constants";
 
 export default {
   argTypes: {
+    hasInvertedStyle: {
+      control: { type: "boolean" },
+    },
     indicator: {
       control: { type: "boolean" },
     },
@@ -23,6 +26,7 @@ export default {
 
 export const Default = {
   args: {
+    hasInvertedStyle: false,
     title: "Label",
   },
 };
