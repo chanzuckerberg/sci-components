@@ -1,13 +1,13 @@
-import { CheckboxProps as MUICheckboxProps, SvgIcon } from "@mui/material";
-import { ReactComponent as IconCheckboxChecked } from "../../common/svgs/IconCheckboxChecked.svg";
-import { ReactComponent as IconCheckboxIndeterminate } from "../../common/svgs/IconCheckboxIndeterminate.svg";
-import { ReactComponent as IconCheckboxUnchecked } from "../../common/svgs/IconCheckboxUnchecked.svg";
+import { CheckboxProps as MUICheckboxProps } from "@mui/material";
 import {
   CheckboxExtraProps,
   StyledCheckbox,
   StyledCheckboxCaption,
+  StyledCheckboxCheckedIcon,
+  StyledCheckboxDefaultIcon,
   StyledCheckboxLabel,
   StyledFormControlLabel,
+  StyledIcon,
   StyledLabelContainer,
 } from "./styles";
 
@@ -68,9 +68,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   const finalLabel = caption ? (
     <StyledLabelContainer>
       <StyledCheckboxLabel>{label}</StyledCheckboxLabel>
-      <StyledCheckboxCaption disabled={disabled}>
-        {caption}
-      </StyledCheckboxCaption>
+      <StyledCheckboxCaption>{caption}</StyledCheckboxCaption>
     </StyledLabelContainer>
   ) : (
     <StyledLabelContainer>
@@ -82,27 +80,17 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledCheckbox
-          disabled={disabled}
+          // disabled={disabled}
           checkedIcon={
-            <SvgIcon
-              fillcontrast="white"
-              component={IconCheckboxChecked}
-              viewBox="0 0 16 16"
-            />
+            <StyledCheckboxCheckedIcon>
+              <StyledIcon sdsIcon="Check" sdsSize="xs" />
+            </StyledCheckboxCheckedIcon>
           }
-          icon={
-            <SvgIcon
-              fillcontrast="white"
-              component={IconCheckboxUnchecked}
-              viewBox="0 0 16 16"
-            />
-          }
+          icon={<StyledCheckboxDefaultIcon intent={intent} />}
           indeterminateIcon={
-            <SvgIcon
-              fillcontrast="white"
-              component={IconCheckboxIndeterminate}
-              viewBox="0 0 16 16"
-            />
+            <StyledCheckboxCheckedIcon>
+              <StyledIcon sdsIcon="Minus" sdsSize="xs" />
+            </StyledCheckboxCheckedIcon>
           }
           intent={intent}
           {...checkboxProps}

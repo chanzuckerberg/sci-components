@@ -10,6 +10,7 @@ import {
   SDSPalette,
   fontBodyXs,
   fontBodyXxs,
+  getBorders,
   getIconSizes,
   getSemanticColors,
   getSpaces,
@@ -27,87 +28,63 @@ const intentToColor = {
   positive: "positive",
 };
 
-export const StyledRadioButton = styled(RawRadio)`
+export const StyledRadioDot = styled("span")`
   ${(props: RadioExtraProps) => {
-    const { intent = "default" } = props;
-
-    const spaces = getSpaces(props);
-    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
 
-    const radioColor = intentToColor[intent] as keyof SDSPalette;
-
     return `
-      color: ${semanticColors?.[radioColor]?.border};
-
-      &:hover {
-        color: ${semanticColors?.base?.borderHover};
-        background-color: transparent;
-      }
-
-      &.${radioClasses.disabled} {
-        color: ${semanticColors?.base?.borderDisabled};
-      }
-
-      &.${radioClasses.checked} {
-        color: ${semanticColors?.accent?.border};
-
-        &:hover {
-          color: ${semanticColors?.accent?.borderHover};
-          background-color: transparent;
-        }
-
-        &.${radioClasses.disabled} {
-          color: ${semanticColors?.base?.borderDisabled};
-        }
-      }
-
-      &.${radioClasses.root} {
-        ${focusVisibleA11yStyle(props)}
-        margin: 0 ${spaces?.s}px 0 0;
-        padding: 0;
-      }
-
-      .MuiSvgIcon-root {
-        height: ${iconSizes?.s.height}px;
-        width: ${iconSizes?.s.width}px;
-      }
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background-color: ${semanticColors?.base?.ornamentPrimaryInverse};
     `;
   }}
 `;
 
-export const StyledFormControlLabel = styled(FormControlLabel)`
+export const StyledRadioDefaultIcon = styled("span")`
   ${(props: RadioExtraProps) => {
-    const { disabled } = props;
+    const { intent = "default" } = props;
 
-    const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
+    const borders = getBorders(props);
+
+    const borderColor = intentToColor[intent] as keyof SDSPalette;
+
+    return `
+      height: ${iconSizes?.s.height}px;
+      width: ${iconSizes?.s.width}px;
+      border: ${borders?.[borderColor]?.default};
+      border-radius: 50%;
+    `;
+  }}
+`;
+
+export const StyledRadioCheckedIcon = styled("div")`
+  ${(props: RadioExtraProps) => {
+    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
 
     return `
-      align-items: start;
-      margin-bottom: ${spaces?.l}px;
-      margin-left: 0;
-      margin-right: 0;
-      width: fit-content;user-select: 
-      ${disabled ? "none" : "auto"};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: ${iconSizes?.s.height}px;
+      width: ${iconSizes?.s.width}px;
+      border-radius: 50%;
+      background-color: ${semanticColors?.accent?.fillPrimary};
+    `;
+  }}
+`;
 
-      &:hover {
-        ${StyledRadioButton} {
-          color: ${semanticColors?.base?.borderHover};
+export const StyledRadioButton = styled(RawRadio)`
+  ${(props: RadioExtraProps) => {
+    const spaces = getSpaces(props);
 
-          &.${radioClasses.disabled} {
-            color: ${semanticColors?.base?.borderDisabled};
-          }
-
-          &.${radioClasses.checked} {
-            color: ${semanticColors?.accent?.borderHover};
-            background-color: transparent;
-
-            &.${radioClasses.disabled} {
-              color: ${semanticColors?.base?.borderDisabled};
-            }
-          }
-        }
+    return `
+      &.${radioClasses.root} {
+        ${focusVisibleA11yStyle(props)}
+        margin: 0 ${spaces?.s}px 0 0;
+        padding: 0;
       }
     `;
   }}
@@ -135,11 +112,79 @@ export const StyledRadioCaption = styled("span")`
   ${fontBodyXxs}
 
   ${(props: RadioExtraProps) => {
-    const { disabled } = props;
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
+      color: ${semanticColors?.base?.textSecondary};
+    `;
+  }}
+`;
+
+const disabledStyles = (props: RadioExtraProps) => {
+  const semanticColors = getSemanticColors(props);
+
+  return `
+    user-select: none;
+
+    ${StyledRadioCaption} {
+      color: ${semanticColors?.base?.textDisabled};
+    }
+
+    ${StyledRadioDefaultIcon} {
+      border: 1px solid ${semanticColors?.base?.borderDisabled};
+    }
+
+    ${StyledRadioCheckedIcon} {
+      background-color: ${semanticColors?.base?.ornamentDisabled};
+    }
+
+    &:hover, &:active {
+      ${StyledRadioDefaultIcon} {
+        border: 1px solid ${semanticColors?.base?.borderDisabled};
+      }
+
+      ${StyledRadioCheckedIcon} {
+        background-color: ${semanticColors?.base?.ornamentDisabled};
+      }
+    }
+  `;
+};
+
+export const StyledFormControlLabel = styled(FormControlLabel)`
+  ${(props: RadioExtraProps) => {
+    const { disabled } = props;
+
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      align-items: start;
+      margin-bottom: ${spaces?.l}px;
+      margin-left: 0;
+      margin-right: 0;
+      width: fit-content;
+
+      &:hover {
+        ${StyledRadioDefaultIcon} {
+          border: 1px solid ${semanticColors?.base?.borderHover};
+        }
+
+        ${StyledRadioCheckedIcon} {
+          background-color: ${semanticColors?.accent?.fillHover};
+        }
+      }
+
+      &:active {
+        ${StyledRadioDefaultIcon} {
+          border: 1px solid ${semanticColors?.base?.borderPressed};
+        }
+
+        ${StyledRadioCheckedIcon} {
+          background-color: ${semanticColors?.accent?.fillPressed};
+        }
+      }
+
+      ${disabled && disabledStyles(props)}
     `;
   }}
 `;

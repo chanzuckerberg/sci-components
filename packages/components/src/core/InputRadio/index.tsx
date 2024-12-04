@@ -1,12 +1,13 @@
-import { RadioProps as MUIRadioProps, SvgIcon } from "@mui/material";
-import { ReactComponent as IconRadioChecked } from "../../common/svgs/IconRadioChecked.svg";
-import { ReactComponent as IconRadioUnChecked } from "../../common/svgs/IconRadioUnchecked.svg";
+import { RadioProps as MUIRadioProps } from "@mui/material";
 import {
   RadioExtraProps,
   StyledFormControlLabel,
   StyledLabelContainer,
   StyledRadioButton,
   StyledRadioCaption,
+  StyledRadioCheckedIcon,
+  StyledRadioDefaultIcon,
+  StyledRadioDot,
   StyledRadioLabel,
 } from "./style";
 import React from "react";
@@ -68,9 +69,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
   const finalLabel = caption ? (
     <StyledLabelContainer>
       <StyledRadioLabel id={labelId}>{label}</StyledRadioLabel>
-      <StyledRadioCaption disabled={disabled} id={captionId}>
-        {caption}
-      </StyledRadioCaption>
+      <StyledRadioCaption id={captionId}>{caption}</StyledRadioCaption>
     </StyledLabelContainer>
   ) : (
     <StyledLabelContainer>
@@ -82,21 +81,12 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledRadioButton
-          disabled={disabled}
           checkedIcon={
-            <SvgIcon
-              fillcontrast="white"
-              component={IconRadioChecked}
-              viewBox="0 0 16 16"
-            />
+            <StyledRadioCheckedIcon>
+              <StyledRadioDot />
+            </StyledRadioCheckedIcon>
           }
-          icon={
-            <SvgIcon
-              fillcontrast="white"
-              component={IconRadioUnChecked}
-              viewBox="0 0 16 16"
-            />
-          }
+          icon={<StyledRadioDefaultIcon intent={intent} />}
           intent={intent}
           {...radioProps}
           {...newProps}
