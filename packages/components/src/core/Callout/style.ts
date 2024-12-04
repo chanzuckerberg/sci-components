@@ -13,55 +13,38 @@ import {
   getPalette,
   getSemanticColors,
   getSpaces,
-  getTypography,
 } from "src/core/styles";
-import { CalloutIntentType } from "src/core/Callout";
+import { CalloutIntentType, CalloutSdsStyleType } from "src/core/Callout";
 
 interface CalloutExtraProps extends CommonThemeProps {
   collapsed?: boolean;
   intent?: CalloutIntentType;
+  sdsStyle?: CalloutSdsStyleType;
 }
 
 type CalloutProps = Omit<AlertProps, "severity"> & CalloutExtraProps;
 
-const doNotForwardProps = ["calloutTitle", "collapsed", "severity"];
+const doNotForwardProps = ["calloutTitle", "collapsed", "severity", "sdsStyle"];
 
 export const StyledCallout = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXs}
+
   ${(props: CalloutProps) => {
-    const { intent = "info" } = props;
+    const { intent = "info", sdsStyle } = props;
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
     const iconSizes = getIconSizes(props);
     const palette = getPalette(props);
-    const typography = getTypography(props);
     const semanticColors = getSemanticColors(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor =
       semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
-    // when a title is present Mui's default styling has vertical margin,
-    // but for an expandable callout that is collapsed, we do not want
-    // any bottom margin
-    const titleBottomMargin = props.collapsed ? "margin-bottom: 0;" : "";
-
-    // (masoudmanson): The Callout Icon should be vertically centered with the Callout
-    // Title. The padding-top of the Callout Message is calculated based on the difference
-    // between the height of the Icon and the line-height of the Callout Title.
-    const alertMessagePaddingTop = Math.abs(
-      ((iconSizes?.l.height ?? 0) -
-        parseInt(
-          String(typography?.wideStyles?.body?.regular?.xs?.lineHeight ?? "0")
-        )) /
-        2
-    );
-
     return `
-      width: 360px;
       margin: ${spaces?.m}px 0;
       border-radius: ${corners?.m}px;
       color: ${palette?.text?.primary};
@@ -80,20 +63,20 @@ export const StyledCallout = styled(Alert, {
       }
 
       .${alertClasses.message} {
-        padding: ${alertMessagePaddingTop}px 0 0;
-        margin-right: ${spaces?.m}px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
 
         .${alertTitleClasses.root} {
-          margin-top: 0;
-          ${titleBottomMargin}
+          margin: 0;
         }
       }
 
       .${alertClasses.action} {
-        margin-right: 0;
+        display: ${sdsStyle === "persistent" ? "none" : "block"};
+        margin: 0 0 0 ${spaces?.s}px;
         padding: 0;
         align-items: flex-start;
-        margin-top: ${spaces?.xxs}px;
 
         > button {
           padding: 0;

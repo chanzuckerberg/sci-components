@@ -1,13 +1,16 @@
-import { action } from "@storybook/addon-actions";
 import CustomSdsIcon from "src/common/storybook/customSdsIcon";
 import CustomSvgIcon from "src/common/storybook/customSvgIcon";
 
 export const CALLOUT_EXCLUDED_CONTROLS = [
   "autoDismiss",
-  "expandable",
   "icon",
   "intent",
   "onClose",
+  "sdsStyle",
+  "hideTitle",
+  "hideBody",
+  "title",
+  "body",
 ];
 
 export const CALLOUT_ICON_OPTIONS = [
@@ -17,4 +20,8 @@ export const CALLOUT_ICON_OPTIONS = [
   "CheckCircle",
 ];
 
-export const CALLOUT_ON_CLOSE_OPTIONS = [action("onClick"), undefined];
+export const CALLOUT_SDS_STYLE_OPTIONS = [
+  "persistent",
+  "expandable",
+  "dismissible",
+];
