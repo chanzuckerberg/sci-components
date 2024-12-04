@@ -7,243 +7,1069 @@
     "sds-tabular": "\"Inter\", sans-serif"
   },
   "fontSize": {
-    "narrow": {
-      "sds-body-xxxs": "12px",
-      "sds-body-xxs": "12px",
-      "sds-body-xs": "13px",
-      "sds-body-s": "14px",
-      "sds-body-m": "14px",
-      "sds-body-l": "16px",
-      "sds-caps-xxxxs": "11px",
-      "sds-caps-xxxs": "11px",
-      "sds-caps-xxs": "12px",
-      "sds-header-xxxs": "12px",
-      "sds-header-xxs": "12px",
-      "sds-header-xs": "13px",
-      "sds-header-s": "14px",
-      "sds-header-m": "14px",
-      "sds-header-l": "16px",
-      "sds-header-xl": "18px",
-      "sds-header-xxl": "22px",
-      "sds-tabular-xs": "13px",
-      "sds-tabular-s": "14px",
-      "sds-code-xs": "13px",
-      "sds-code-s": "14px"
-    },
-    "wide": {
-      "sds-body-xxxs": "11px",
-      "sds-body-xxs": "12px",
-      "sds-body-xs": "13px",
-      "sds-body-s": "14px",
-      "sds-body-m": "16px",
-      "sds-body-l": "18px",
-      "sds-caps-xxxxs": "10px",
-      "sds-caps-xxxs": "11px",
-      "sds-caps-xxs": "12px",
-      "sds-header-xxxs": "11px",
-      "sds-header-xxs": "12px",
-      "sds-header-xs": "13px",
-      "sds-header-s": "14px",
-      "sds-header-m": "16px",
-      "sds-header-l": "18px",
-      "sds-header-xl": "22px",
-      "sds-header-xxl": "26px",
-      "sds-tabular-xs": "13px",
-      "sds-tabular-s": "14px",
-      "sds-code-xs": "13px",
-      "sds-code-s": "14px"
-    }
+    "sds-body-xxxs-400-narrow": "12px",
+    "sds-body-xxxs-400-wide": "11px",
+    "sds-body-xxxs-600-narrow": "12px",
+    "sds-body-xxxs-600-wide": "11px",
+    "sds-body-xxs-400-narrow": "12px",
+    "sds-body-xxs-400-wide": "12px",
+    "sds-body-xxs-600-narrow": "12px",
+    "sds-body-xxs-600-wide": "12px",
+    "sds-body-xs-400-narrow": "13px",
+    "sds-body-xs-400-wide": "13px",
+    "sds-body-xs-600-narrow": "13px",
+    "sds-body-xs-600-wide": "13px",
+    "sds-body-s-400-narrow": "14px",
+    "sds-body-s-400-wide": "14px",
+    "sds-body-s-600-narrow": "14px",
+    "sds-body-s-600-wide": "14px",
+    "sds-body-m-400-narrow": "14px",
+    "sds-body-m-400-wide": "16px",
+    "sds-body-m-600-narrow": "14px",
+    "sds-body-m-600-wide": "16px",
+    "sds-body-l-400-narrow": "16px",
+    "sds-body-l-400-wide": "18px",
+    "sds-body-l-600-narrow": "16px",
+    "sds-body-l-600-wide": "18px",
+    "sds-caps-xxxxs-600-narrow": "11px",
+    "sds-caps-xxxxs-600-wide": "10px",
+    "sds-caps-xxxs-600-narrow": "11px",
+    "sds-caps-xxxs-600-wide": "11px",
+    "sds-caps-xxs-600-narrow": "12px",
+    "sds-caps-xxs-600-wide": "12px",
+    "sds-header-xxxs-600-narrow": "12px",
+    "sds-header-xxxs-600-wide": "11px",
+    "sds-header-xxs-600-narrow": "12px",
+    "sds-header-xxs-600-wide": "12px",
+    "sds-header-xs-600-narrow": "13px",
+    "sds-header-xs-600-wide": "13px",
+    "sds-header-s-600-narrow": "14px",
+    "sds-header-s-600-wide": "14px",
+    "sds-header-m-600-narrow": "14px",
+    "sds-header-m-600-wide": "16px",
+    "sds-header-l-600-narrow": "16px",
+    "sds-header-l-600-wide": "18px",
+    "sds-header-xl-600-narrow": "18px",
+    "sds-header-xl-600-wide": "22px",
+    "sds-header-xxl-600-narrow": "22px",
+    "sds-header-xxl-600-wide": "26px",
+    "sds-tabular-xs-400-narrow": "13px",
+    "sds-tabular-xs-400-wide": "13px",
+    "sds-tabular-xs-600-narrow": "13px",
+    "sds-tabular-xs-600-wide": "13px",
+    "sds-tabular-s-400-narrow": "14px",
+    "sds-tabular-s-400-wide": "14px",
+    "sds-tabular-s-600-narrow": "14px",
+    "sds-tabular-s-600-wide": "14px",
+    "sds-code-xs-400-narrow": "13px",
+    "sds-code-xs-400-wide": "13px",
+    "sds-code-xs-600-narrow": "13px",
+    "sds-code-xs-600-wide": "13px",
+    "sds-code-s-400-narrow": "14px",
+    "sds-code-s-400-wide": "14px",
+    "sds-code-s-600-narrow": "14px",
+    "sds-code-s-600-wide": "14px"
   },
   "fontVariantNumeric": {
-    "narrow": {
-      "sds-body-xxxs": "normal",
-      "sds-body-xxs": "normal",
-      "sds-body-xs": "normal",
-      "sds-body-s": "normal",
-      "sds-body-m": "normal",
-      "sds-body-l": "normal",
-      "sds-caps-xxxxs": "normal",
-      "sds-caps-xxxs": "normal",
-      "sds-caps-xxs": "normal",
-      "sds-header-xxxs": "normal",
-      "sds-header-xxs": "normal",
-      "sds-header-xs": "normal",
-      "sds-header-s": "normal",
-      "sds-header-m": "normal",
-      "sds-header-l": "normal",
-      "sds-header-xl": "normal",
-      "sds-header-xxl": "normal",
-      "sds-tabular-xs": "tabular-nums",
-      "sds-tabular-s": "tabular-nums",
-      "sds-code-xs": "normal",
-      "sds-code-s": "normal"
-    },
-    "wide": {
-      "sds-body-xxxs": "normal",
-      "sds-body-xxs": "normal",
-      "sds-body-xs": "normal",
-      "sds-body-s": "normal",
-      "sds-body-m": "normal",
-      "sds-body-l": "normal",
-      "sds-caps-xxxxs": "normal",
-      "sds-caps-xxxs": "normal",
-      "sds-caps-xxs": "normal",
-      "sds-header-xxxs": "normal",
-      "sds-header-xxs": "normal",
-      "sds-header-xs": "normal",
-      "sds-header-s": "normal",
-      "sds-header-m": "normal",
-      "sds-header-l": "normal",
-      "sds-header-xl": "normal",
-      "sds-header-xxl": "normal",
-      "sds-tabular-xs": "tabular-nums",
-      "sds-tabular-s": "tabular-nums",
-      "sds-code-xs": "normal",
-      "sds-code-s": "normal"
-    }
+    "sds-body-xxxs-400-narrow": "normal",
+    "sds-body-xxxs-400-wide": "normal",
+    "sds-body-xxxs-600-narrow": "normal",
+    "sds-body-xxxs-600-wide": "normal",
+    "sds-body-xxs-400-narrow": "normal",
+    "sds-body-xxs-400-wide": "normal",
+    "sds-body-xxs-600-narrow": "normal",
+    "sds-body-xxs-600-wide": "normal",
+    "sds-body-xs-400-narrow": "normal",
+    "sds-body-xs-400-wide": "normal",
+    "sds-body-xs-600-narrow": "normal",
+    "sds-body-xs-600-wide": "normal",
+    "sds-body-s-400-narrow": "normal",
+    "sds-body-s-400-wide": "normal",
+    "sds-body-s-600-narrow": "normal",
+    "sds-body-s-600-wide": "normal",
+    "sds-body-m-400-narrow": "normal",
+    "sds-body-m-400-wide": "normal",
+    "sds-body-m-600-narrow": "normal",
+    "sds-body-m-600-wide": "normal",
+    "sds-body-l-400-narrow": "normal",
+    "sds-body-l-400-wide": "normal",
+    "sds-body-l-600-narrow": "normal",
+    "sds-body-l-600-wide": "normal",
+    "sds-caps-xxxxs-600-narrow": "normal",
+    "sds-caps-xxxxs-600-wide": "normal",
+    "sds-caps-xxxs-600-narrow": "normal",
+    "sds-caps-xxxs-600-wide": "normal",
+    "sds-caps-xxs-600-narrow": "normal",
+    "sds-caps-xxs-600-wide": "normal",
+    "sds-header-xxxs-600-narrow": "normal",
+    "sds-header-xxxs-600-wide": "normal",
+    "sds-header-xxs-600-narrow": "normal",
+    "sds-header-xxs-600-wide": "normal",
+    "sds-header-xs-600-narrow": "normal",
+    "sds-header-xs-600-wide": "normal",
+    "sds-header-s-600-narrow": "normal",
+    "sds-header-s-600-wide": "normal",
+    "sds-header-m-600-narrow": "normal",
+    "sds-header-m-600-wide": "normal",
+    "sds-header-l-600-narrow": "normal",
+    "sds-header-l-600-wide": "normal",
+    "sds-header-xl-600-narrow": "normal",
+    "sds-header-xl-600-wide": "normal",
+    "sds-header-xxl-600-narrow": "normal",
+    "sds-header-xxl-600-wide": "normal",
+    "sds-tabular-xs-400-narrow": "tabular-nums",
+    "sds-tabular-xs-400-wide": "tabular-nums",
+    "sds-tabular-xs-600-narrow": "tabular-nums",
+    "sds-tabular-xs-600-wide": "tabular-nums",
+    "sds-tabular-s-400-narrow": "tabular-nums",
+    "sds-tabular-s-400-wide": "tabular-nums",
+    "sds-tabular-s-600-narrow": "tabular-nums",
+    "sds-tabular-s-600-wide": "tabular-nums",
+    "sds-code-xs-400-narrow": "normal",
+    "sds-code-xs-400-wide": "normal",
+    "sds-code-xs-600-narrow": "normal",
+    "sds-code-xs-600-wide": "normal",
+    "sds-code-s-400-narrow": "normal",
+    "sds-code-s-400-wide": "normal",
+    "sds-code-s-600-narrow": "normal",
+    "sds-code-s-600-wide": "normal"
   },
   "letterSpacing": {
-    "narrow": {
-      "sds-body-xxxs": "0.1px",
-      "sds-body-xxs": "0.1px",
-      "sds-body-xs": "0.08px",
-      "sds-body-s": "0.08px",
-      "sds-body-m": "0px",
-      "sds-body-l": "0px",
-      "sds-caps-xxxxs": "0.5px",
-      "sds-caps-xxxs": "0.5px",
-      "sds-caps-xxs": "0.5px",
-      "sds-header-xxxs": "0.1px",
-      "sds-header-xxs": "0.1px",
-      "sds-header-xs": "0.08px",
-      "sds-header-s": "0.08px",
-      "sds-header-m": "0.08px",
-      "sds-header-l": "0px",
-      "sds-header-xl": "0px",
-      "sds-header-xxl": "0px",
-      "sds-tabular-xs": "0px",
-      "sds-tabular-s": "0px",
-      "sds-code-xs": "0px",
-      "sds-code-s": "0px"
-    },
-    "wide": {
-      "sds-body-xxxs": "0.1px",
-      "sds-body-xxs": "0.1px",
-      "sds-body-xs": "0.08px",
-      "sds-body-s": "0.08px",
-      "sds-body-m": "0px",
-      "sds-body-l": "0px",
-      "sds-caps-xxxxs": "0.5px",
-      "sds-caps-xxxs": "0.5px",
-      "sds-caps-xxs": "0.5px",
-      "sds-header-xxxs": "0.1px",
-      "sds-header-xxs": "0.1px",
-      "sds-header-xs": "0.08px",
-      "sds-header-s": "0.08px",
-      "sds-header-m": "0px",
-      "sds-header-l": "0px",
-      "sds-header-xl": "0px",
-      "sds-header-xxl": "0px",
-      "sds-tabular-xs": "0px",
-      "sds-tabular-s": "0px",
-      "sds-code-xs": "0px",
-      "sds-code-s": "0px"
-    }
+    "sds-body-xxxs-400-narrow": "0.1px",
+    "sds-body-xxxs-400-wide": "0.1px",
+    "sds-body-xxxs-600-narrow": "0.1px",
+    "sds-body-xxxs-600-wide": "0.1px",
+    "sds-body-xxs-400-narrow": "0.1px",
+    "sds-body-xxs-400-wide": "0.1px",
+    "sds-body-xxs-600-narrow": "0.1px",
+    "sds-body-xxs-600-wide": "0.1px",
+    "sds-body-xs-400-narrow": "0.08px",
+    "sds-body-xs-400-wide": "0.08px",
+    "sds-body-xs-600-narrow": "0.08px",
+    "sds-body-xs-600-wide": "0.08px",
+    "sds-body-s-400-narrow": "0.08px",
+    "sds-body-s-400-wide": "0.08px",
+    "sds-body-s-600-narrow": "0.08px",
+    "sds-body-s-600-wide": "0.08px",
+    "sds-body-m-400-narrow": "0px",
+    "sds-body-m-400-wide": "0px",
+    "sds-body-m-600-narrow": "0px",
+    "sds-body-m-600-wide": "0px",
+    "sds-body-l-400-narrow": "0px",
+    "sds-body-l-400-wide": "0px",
+    "sds-body-l-600-narrow": "0px",
+    "sds-body-l-600-wide": "0px",
+    "sds-caps-xxxxs-600-narrow": "0.5px",
+    "sds-caps-xxxxs-600-wide": "0.5px",
+    "sds-caps-xxxs-600-narrow": "0.5px",
+    "sds-caps-xxxs-600-wide": "0.5px",
+    "sds-caps-xxs-600-narrow": "0.5px",
+    "sds-caps-xxs-600-wide": "0.5px",
+    "sds-header-xxxs-600-narrow": "0.1px",
+    "sds-header-xxxs-600-wide": "0.1px",
+    "sds-header-xxs-600-narrow": "0.1px",
+    "sds-header-xxs-600-wide": "0.1px",
+    "sds-header-xs-600-narrow": "0.08px",
+    "sds-header-xs-600-wide": "0.08px",
+    "sds-header-s-600-narrow": "0.08px",
+    "sds-header-s-600-wide": "0.08px",
+    "sds-header-m-600-narrow": "0px",
+    "sds-header-m-600-wide": "0px",
+    "sds-header-l-600-narrow": "0px",
+    "sds-header-l-600-wide": "0px",
+    "sds-header-xl-600-narrow": "0px",
+    "sds-header-xl-600-wide": "0px",
+    "sds-header-xxl-600-narrow": "0px",
+    "sds-header-xxl-600-wide": "0px",
+    "sds-tabular-xs-400-narrow": "0px",
+    "sds-tabular-xs-400-wide": "0px",
+    "sds-tabular-xs-600-narrow": "0px",
+    "sds-tabular-xs-600-wide": "0px",
+    "sds-tabular-s-400-narrow": "0px",
+    "sds-tabular-s-400-wide": "0px",
+    "sds-tabular-s-600-narrow": "0px",
+    "sds-tabular-s-600-wide": "0px",
+    "sds-code-xs-400-narrow": "0px",
+    "sds-code-xs-400-wide": "0px",
+    "sds-code-xs-600-narrow": "0px",
+    "sds-code-xs-600-wide": "0px",
+    "sds-code-s-400-narrow": "0px",
+    "sds-code-s-400-wide": "0px",
+    "sds-code-s-600-narrow": "0px",
+    "sds-code-s-600-wide": "0px"
   },
   "lineHeight": {
-    "narrow": {
-      "sds-body-xxxs": "12px",
-      "sds-body-xxs": "12px",
-      "sds-body-xs": "13px",
-      "sds-body-s": "14px",
-      "sds-body-m": "14px",
-      "sds-body-l": "16px",
-      "sds-caps-xxxxs": "11px",
-      "sds-caps-xxxs": "11px",
-      "sds-caps-xxs": "12px",
-      "sds-header-xxxs": "12px",
-      "sds-header-xxs": "12px",
-      "sds-header-xs": "13px",
-      "sds-header-s": "14px",
-      "sds-header-m": "14px",
-      "sds-header-l": "16px",
-      "sds-header-xl": "18px",
-      "sds-header-xxl": "22px",
-      "sds-tabular-xs": "13px",
-      "sds-tabular-s": "14px",
-      "sds-code-xs": "13px",
-      "sds-code-s": "14px"
-    },
-    "wide": {
-      "sds-body-xxxs": "11px",
-      "sds-body-xxs": "12px",
-      "sds-body-xs": "13px",
-      "sds-body-s": "14px",
-      "sds-body-m": "16px",
-      "sds-body-l": "18px",
-      "sds-caps-xxxxs": "10px",
-      "sds-caps-xxxs": "11px",
-      "sds-caps-xxs": "12px",
-      "sds-header-xxxs": "11px",
-      "sds-header-xxs": "12px",
-      "sds-header-xs": "13px",
-      "sds-header-s": "14px",
-      "sds-header-m": "16px",
-      "sds-header-l": "18px",
-      "sds-header-xl": "22px",
-      "sds-header-xxl": "26px",
-      "sds-tabular-xs": "13px",
-      "sds-tabular-s": "14px",
-      "sds-code-xs": "13px",
-      "sds-code-s": "14px"
-    }
+    "sds-body-xxxs-400-narrow": "18px",
+    "sds-body-xxxs-400-wide": "16px",
+    "sds-body-xxxs-600-narrow": "18px",
+    "sds-body-xxxs-600-wide": "16px",
+    "sds-body-xxs-400-narrow": "18px",
+    "sds-body-xxs-400-wide": "18px",
+    "sds-body-xxs-600-narrow": "18px",
+    "sds-body-xxs-600-wide": "18px",
+    "sds-body-xs-400-narrow": "20px",
+    "sds-body-xs-400-wide": "20px",
+    "sds-body-xs-600-narrow": "20px",
+    "sds-body-xs-600-wide": "20px",
+    "sds-body-s-400-narrow": "24px",
+    "sds-body-s-400-wide": "24px",
+    "sds-body-s-600-narrow": "24px",
+    "sds-body-s-600-wide": "24px",
+    "sds-body-m-400-narrow": "24px",
+    "sds-body-m-400-wide": "26px",
+    "sds-body-m-600-narrow": "24px",
+    "sds-body-m-600-wide": "26px",
+    "sds-body-l-400-narrow": "26px",
+    "sds-body-l-400-wide": "28px",
+    "sds-body-l-600-narrow": "26px",
+    "sds-body-l-600-wide": "28px",
+    "sds-caps-xxxxs-600-narrow": "16px",
+    "sds-caps-xxxxs-600-wide": "14px",
+    "sds-caps-xxxs-600-narrow": "16px",
+    "sds-caps-xxxs-600-wide": "16px",
+    "sds-caps-xxs-600-narrow": "18px",
+    "sds-caps-xxs-600-wide": "18px",
+    "sds-header-xxxs-600-narrow": "18px",
+    "sds-header-xxxs-600-wide": "16px",
+    "sds-header-xxs-600-narrow": "18px",
+    "sds-header-xxs-600-wide": "18px",
+    "sds-header-xs-600-narrow": "18px",
+    "sds-header-xs-600-wide": "18px",
+    "sds-header-s-600-narrow": "20px",
+    "sds-header-s-600-wide": "20px",
+    "sds-header-m-600-narrow": "20px",
+    "sds-header-m-600-wide": "22px",
+    "sds-header-l-600-narrow": "22px",
+    "sds-header-l-600-wide": "24px",
+    "sds-header-xl-600-narrow": "24px",
+    "sds-header-xl-600-wide": "30px",
+    "sds-header-xxl-600-narrow": "30px",
+    "sds-header-xxl-600-wide": "34px",
+    "sds-tabular-xs-400-narrow": "20px",
+    "sds-tabular-xs-400-wide": "20px",
+    "sds-tabular-xs-600-narrow": "20px",
+    "sds-tabular-xs-600-wide": "20px",
+    "sds-tabular-s-400-narrow": "24px",
+    "sds-tabular-s-400-wide": "24px",
+    "sds-tabular-s-600-narrow": "24px",
+    "sds-tabular-s-600-wide": "24px",
+    "sds-code-xs-400-narrow": "20px",
+    "sds-code-xs-400-wide": "20px",
+    "sds-code-xs-600-narrow": "20px",
+    "sds-code-xs-600-wide": "20px",
+    "sds-code-s-400-narrow": "24px",
+    "sds-code-s-400-wide": "24px",
+    "sds-code-s-600-narrow": "24px",
+    "sds-code-s-600-wide": "24px"
   },
   "textTransform": {
-    "narrow": {
-      "sds-body-xxxs": "none",
-      "sds-body-xxs": "none",
-      "sds-body-xs": "none",
-      "sds-body-s": "none",
-      "sds-body-m": "none",
-      "sds-body-l": "none",
-      "sds-caps-xxxxs": "uppercase",
-      "sds-caps-xxxs": "uppercase",
-      "sds-caps-xxs": "uppercase",
-      "sds-header-xxxs": "none",
-      "sds-header-xxs": "none",
-      "sds-header-xs": "none",
-      "sds-header-s": "none",
-      "sds-header-m": "none",
-      "sds-header-l": "none",
-      "sds-header-xl": "none",
-      "sds-header-xxl": "none",
-      "sds-tabular-xs": "none",
-      "sds-tabular-s": "none",
-      "sds-code-xs": "none",
-      "sds-code-s": "none"
+    "sds-body-xxxs-400-narrow": "none",
+    "sds-body-xxxs-400-wide": "none",
+    "sds-body-xxxs-600-narrow": "none",
+    "sds-body-xxxs-600-wide": "none",
+    "sds-body-xxs-400-narrow": "none",
+    "sds-body-xxs-400-wide": "none",
+    "sds-body-xxs-600-narrow": "none",
+    "sds-body-xxs-600-wide": "none",
+    "sds-body-xs-400-narrow": "none",
+    "sds-body-xs-400-wide": "none",
+    "sds-body-xs-600-narrow": "none",
+    "sds-body-xs-600-wide": "none",
+    "sds-body-s-400-narrow": "none",
+    "sds-body-s-400-wide": "none",
+    "sds-body-s-600-narrow": "none",
+    "sds-body-s-600-wide": "none",
+    "sds-body-m-400-narrow": "none",
+    "sds-body-m-400-wide": "none",
+    "sds-body-m-600-narrow": "none",
+    "sds-body-m-600-wide": "none",
+    "sds-body-l-400-narrow": "none",
+    "sds-body-l-400-wide": "none",
+    "sds-body-l-600-narrow": "none",
+    "sds-body-l-600-wide": "none",
+    "sds-caps-xxxxs-600-narrow": "uppercase",
+    "sds-caps-xxxxs-600-wide": "uppercase",
+    "sds-caps-xxxs-600-narrow": "uppercase",
+    "sds-caps-xxxs-600-wide": "uppercase",
+    "sds-caps-xxs-600-narrow": "uppercase",
+    "sds-caps-xxs-600-wide": "uppercase",
+    "sds-header-xxxs-600-narrow": "none",
+    "sds-header-xxxs-600-wide": "none",
+    "sds-header-xxs-600-narrow": "none",
+    "sds-header-xxs-600-wide": "none",
+    "sds-header-xs-600-narrow": "none",
+    "sds-header-xs-600-wide": "none",
+    "sds-header-s-600-narrow": "none",
+    "sds-header-s-600-wide": "none",
+    "sds-header-m-600-narrow": "none",
+    "sds-header-m-600-wide": "none",
+    "sds-header-l-600-narrow": "none",
+    "sds-header-l-600-wide": "none",
+    "sds-header-xl-600-narrow": "none",
+    "sds-header-xl-600-wide": "none",
+    "sds-header-xxl-600-narrow": "none",
+    "sds-header-xxl-600-wide": "none",
+    "sds-tabular-xs-400-narrow": "none",
+    "sds-tabular-xs-400-wide": "none",
+    "sds-tabular-xs-600-narrow": "none",
+    "sds-tabular-xs-600-wide": "none",
+    "sds-tabular-s-400-narrow": "none",
+    "sds-tabular-s-400-wide": "none",
+    "sds-tabular-s-600-narrow": "none",
+    "sds-tabular-s-600-wide": "none",
+    "sds-code-xs-400-narrow": "none",
+    "sds-code-xs-400-wide": "none",
+    "sds-code-xs-600-narrow": "none",
+    "sds-code-xs-600-wide": "none",
+    "sds-code-s-400-narrow": "none",
+    "sds-code-s-400-wide": "none",
+    "sds-code-s-600-narrow": "none",
+    "sds-code-s-600-wide": "none"
+  },
+  "typography": {
+    "sds-body-xxxs-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
     },
-    "wide": {
-      "sds-body-xxxs": "none",
-      "sds-body-xxs": "none",
-      "sds-body-xs": "none",
-      "sds-body-s": "none",
-      "sds-body-m": "none",
-      "sds-body-l": "none",
-      "sds-caps-xxxxs": "uppercase",
-      "sds-caps-xxxs": "uppercase",
-      "sds-caps-xxs": "uppercase",
-      "sds-header-xxxs": "none",
-      "sds-header-xxs": "none",
-      "sds-header-xs": "none",
-      "sds-header-s": "none",
-      "sds-header-m": "none",
-      "sds-header-l": "none",
-      "sds-header-xl": "none",
-      "sds-header-xxl": "none",
-      "sds-tabular-xs": "none",
-      "sds-tabular-s": "none",
-      "sds-code-xs": "none",
-      "sds-code-s": "none"
+    "sds-body-xxxs-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.1px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.08px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.08px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-l-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-l-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-l-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-l-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textTransform": "none"
+      }
+    },
+    "sds-caps-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "16px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-caps-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "14px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-caps-xxxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "16px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-caps-xxxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "16px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-caps-xxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "18px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-caps-xxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.5px",
+        "lineHeight": "18px",
+        "textTransform": "uppercase"
+      }
+    },
+    "sds-header-xxxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xxxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xxs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xxs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-s-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-s-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.08px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-m-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-m-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "22px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-l-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "22px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-l-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xl-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xl-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "22px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "30px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xxl-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "22px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "30px",
+        "textTransform": "none"
+      }
+    },
+    "sds-header-xxl-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "26px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "34px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-400-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-600-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-600-wide": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-400-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-400-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-600-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-600-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-400-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-400-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-600-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-600-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
     }
   },
   "height": {

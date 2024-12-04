@@ -88,55 +88,84 @@ function transformIconSizes(tokens, options = {}) {
 }
 
 function transformFonts(tokens, keys, options = {}) {
-  const fontSize = { narrow: {}, wide: {} };
-  const lineHeight = { narrow: {}, wide: {} };
-  const letterSpacing = { narrow: {}, wide: {} };
-  const fontVariantNumeric = { narrow: {}, wide: {} };
-  const textTransform = { narrow: {}, wide: {} };
+  /**
+   * (masoudmanson): This will be used for generating the font
+   * specific tailwind config.
+   */
+  const fontData = {
+    fontSize: {},
+    fontVariantNumeric: {},
+    letterSpacing: {},
+    lineHeight: {},
+    textTransform: {},
+  };
 
-  const TEXT_TRANSFORM = "text-transform";
-  const FONT_VARIANT_NUMERIC = "font-variant-numeric";
+  /**
+   * (masoudmanson): Generates a typography object compatible with Tailwind's typography plugin.
+   * Example usage in a Tailwind config file:
+   *
+   * const typography = require('@tailwindcss/typography')
+   * const sdsTailwindConfig = require("@czi-sds/components/dist/tailwind.json");
+   *
+   * module.exports = {
+   *  mode: 'jit',
+   *  content: [...],
+   *  theme: {
+   *    extend: {
+   *      ...sdsTailwindConfig
+   *    }
+   *  },
+   *  plugins: [typography],
+   *}
+   *
+   * And it can be used in the html like:
+   *
+   * <p class="prose prose-sds-header-xs-600-wide">...</p>
+   */
+  const typography = {};
 
-  function makeFontValue(fontValue, name) {
-    const parsedWideFont = cssFont.parse(fontValue.font.value);
-    const parsedNarrowFont = cssFont.parse(fontValue.font.narrowValue);
-
-    // Wide Style Fonts
-    fontSize.wide[name] = parsedWideFont.size;
-    lineHeight.wide[name] = parsedWideFont.size;
-    letterSpacing.wide[name] = fontValue["letter-spacing"].value;
-    textTransform.wide[name] = fontValue[TEXT_TRANSFORM]
-      ? fontValue[TEXT_TRANSFORM].value
-      : "none";
-    fontVariantNumeric.wide[name] = fontValue[FONT_VARIANT_NUMERIC]
-      ? fontValue[FONT_VARIANT_NUMERIC].value
-      : "normal";
-
-    // Narrow Style Fonts
-    fontSize.narrow[name] = parsedNarrowFont.size;
-    lineHeight.narrow[name] = parsedNarrowFont.size;
-    letterSpacing.narrow[name] = fontValue["letter-spacing"].narrowValue;
-    textTransform.narrow[name] = fontValue[TEXT_TRANSFORM]
-      ? fontValue[TEXT_TRANSFORM].narrowValue
-      : "none";
-    fontVariantNumeric.narrow[name] = fontValue[FONT_VARIANT_NUMERIC]
-      ? fontValue[FONT_VARIANT_NUMERIC].narrowValue
-      : "normal";
-  }
-
-  for (const key of keys) {
-    for (const [size, fonts] of Object.entries(tokens[key])) {
-      for (const [, fontValue] of Object.entries(fonts)) {
-        makeFontValue(fontValue, getName([key, size], options));
-      }
-    }
-  }
+  keys.forEach((key) => {
+    Object.entries(tokens[key]).forEach(([size, fontVariants]) => {
+      Object.entries(fontVariants).forEach(([_, fontValue]) => {
+        const name = getName([key, size], options);
+        addFontData(typography, fontData, fontValue, name);
+      });
+    });
+  });
 
   return {
-    fontSize,
-    fontVariantNumeric,
-    letterSpacing,
-    lineHeight,
-    textTransform,
+    ...fontData,
+    typography,
   };
+}
+
+function addFontData(typography, data, fontValue, name) {
+  const fontTypes = {
+    narrow: cssFont.parse(fontValue.font.narrowValue),
+    wide: cssFont.parse(fontValue.font.value),
+  };
+
+  Object.entries(fontTypes).forEach(([type, parsedFont]) => {
+    const key = `${name}-${parsedFont.weight}-${type}`;
+    const sharedStyles = {
+      fontFamily: parsedFont.family.join(", "),
+      fontSize: parsedFont.size,
+      fontStyle: parsedFont.style,
+      fontVariantNumeric: fontValue["font-variant-numeric"]?.value || "normal",
+      fontWeight: parsedFont.weight,
+      letterSpacing: fontValue["letter-spacing"].value || "0px",
+      lineHeight: parsedFont.lineHeight,
+      textTransform: fontValue["text-transform"]?.value || "none",
+    };
+
+    // Add to typography
+    typography[key] = { css: sharedStyles };
+
+    // Add to font data
+    data.fontSize[key] = parsedFont.size;
+    data.lineHeight[key] = parsedFont.lineHeight;
+    data.letterSpacing[key] = sharedStyles.letterSpacing;
+    data.textTransform[key] = sharedStyles.textTransform;
+    data.fontVariantNumeric[key] = sharedStyles.fontVariantNumeric;
+  });
 }
