@@ -14,17 +14,21 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
-import { CalloutIntentType, CalloutSdsStyleType } from "src/core/Callout";
+import { CalloutProps as MainCalloutProps } from "src/core/Callout";
 
-interface CalloutExtraProps extends CommonThemeProps {
+interface CalloutExtraProps extends CommonThemeProps, MainCalloutProps {
   collapsed?: boolean;
-  intent?: CalloutIntentType;
-  sdsStyle?: CalloutSdsStyleType;
 }
 
 type CalloutProps = Omit<AlertProps, "severity"> & CalloutExtraProps;
 
-const doNotForwardProps = ["calloutTitle", "collapsed", "severity", "sdsStyle"];
+const doNotForwardProps = [
+  "calloutTitle",
+  "collapsed",
+  "severity",
+  "sdsStyle",
+  "hideBody",
+];
 
 export const StyledCallout = styled(Alert, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -32,7 +36,7 @@ export const StyledCallout = styled(Alert, {
   ${fontBodyXs}
 
   ${(props: CalloutProps) => {
-    const { intent = "info", sdsStyle } = props;
+    const { intent = "info", sdsStyle, hideBody, collapsed } = props;
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
@@ -50,6 +54,7 @@ export const StyledCallout = styled(Alert, {
       color: ${palette?.text?.primary};
       padding: ${spaces?.m}px;
       background-color: ${backgroundColor};
+      align-items: ${(hideBody && sdsStyle === "expandable" && collapsed) || (hideBody && sdsStyle !== "expandable") ? "center" : "flex-start"};
 
       .${alertClasses.icon} {
         height: ${iconSizes?.l.height}px;

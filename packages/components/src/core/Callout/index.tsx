@@ -137,6 +137,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
           intent={intent}
           collapsed={collapsed || false}
           sdsStyle={sdsStyle}
+          hideBody={hideBody}
           {...rest}
         >
           {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
