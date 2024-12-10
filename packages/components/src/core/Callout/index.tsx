@@ -3,21 +3,29 @@ import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import { CALLOUT_TITLE_DISPLAY_NAME } from "./constants";
 import { StyledCallout } from "./style";
+import CalloutTitle from "./components/CalloutTitle";
+import CalloutBody from "./components/CalloutBody";
+import CalloutExtraContent from "./components/CalloutExtraContent";
 
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
 
 export type CalloutIntentType = "info" | "negative" | "notice" | "positive";
+export type CalloutSdsStyleType = "persistent" | "expandable" | "dismissible";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
-  expandable?: boolean;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
   intent: CalloutIntentType;
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
+  title?: string;
+  hideTitle?: boolean;
+  body?: string;
+  hideBody?: boolean;
+  extraContent?: React.ReactNode;
+  sdsStyle?: CalloutSdsStyleType;
 }
 
 export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
@@ -25,18 +33,22 @@ export type ExposedCalloutProps = Omit<AlertProps, "severity"> & CalloutProps;
 /**
  * @see https://mui.com/material-ui/react-alert/
  */
-const Callout = ({
-  autoDismiss,
-  children,
-  dismissed,
-  expandable,
-  onClose,
-  icon,
-  sdsIconProps,
-  intent,
-  sdsStage,
-  ...rest
-}: ExposedCalloutProps): JSX.Element => {
+const Callout = (props: ExposedCalloutProps): JSX.Element => {
+  const {
+    autoDismiss,
+    dismissed,
+    icon,
+    sdsIconProps,
+    intent,
+    sdsStage,
+    title,
+    body,
+    hideTitle = false,
+    hideBody = false,
+    sdsStyle = "persistent",
+    children,
+    ...rest
+  } = props;
   const [hide, setHide] = useState(dismissed);
   const [stage, setStage] = useState(sdsStage || SDS_STAGE_CLOSED);
 
@@ -53,7 +65,7 @@ const Callout = ({
 
   const handleClose = (event: React.SyntheticEvent<Element, Event>) => {
     setHide(true);
-    if (onClose) onClose(event);
+    if (props?.onClose) props?.onClose(event);
   };
 
   const getIcon = () => {
@@ -82,7 +94,7 @@ const Callout = ({
   };
 
   const getAction = (collapsed: boolean) => {
-    if (expandable) {
+    if (sdsStyle === "expandable") {
       return (
         <Button
           aria-label={collapsed ? "open" : "close"}
@@ -95,48 +107,46 @@ const Callout = ({
           icon={collapsed ? "ChevronDown" : "ChevronUp"}
         />
       );
+    } else if (sdsStyle === "dismissible") {
+      return (
+        <Button
+          aria-label="Dismiss"
+          onClick={handleClose}
+          sdsSize="small"
+          sdsType="tertiary"
+          sdsStyle="icon"
+          size="large"
+          icon="XMark"
+        />
+      );
     }
-    return onClose ? (
-      <Button
-        aria-label="Dismiss"
-        onClick={handleClose}
-        sdsSize="small"
-        sdsType="tertiary"
-        sdsStyle="icon"
-        size="large"
-        icon="XMark"
-      />
-    ) : null;
+
+    return null;
   };
 
-  const collapsed = (expandable && stage === SDS_STAGE_CLOSED) || false;
-
-  // when there is no CalloutTitlecomponent, or there is a single child element
-  // the contents of children will be used as the title
-  let calloutTitle = children;
-  let calloutContent;
-
-  const firstChildIsCalloutTitle =
-    Array.isArray(children) &&
-    children[0]?.type?.displayName === CALLOUT_TITLE_DISPLAY_NAME;
-
-  if (firstChildIsCalloutTitle) {
-    [calloutTitle, ...calloutContent] = children;
-  }
+  const collapsed =
+    (sdsStyle === "expandable" && stage === SDS_STAGE_CLOSED) || false;
 
   return (
     <>
       <Grow in={!hide}>
         <StyledCallout
-          onClose={onClose ? handleClose : undefined}
+          onClose={handleClose}
           action={getAction(collapsed)}
           icon={getIcon()}
           intent={intent}
           collapsed={collapsed || false}
+          sdsStyle={sdsStyle}
+          hideBody={hideBody}
           {...rest}
         >
-          {calloutTitle}
-          {!collapsed && calloutContent}
+          {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
+          {!hideBody && <CalloutBody hideTitle={hideTitle}>{body}</CalloutBody>}
+          {sdsStyle === "expandable" && !collapsed && (
+            <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
+              {children}
+            </CalloutExtraContent>
+          )}
         </StyledCallout>
       </Grow>
     </>
