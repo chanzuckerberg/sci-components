@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.7.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.7.0...@czi-sds/components@21.7.1) (2024-11-27)
+
+### Bug Fixes
+
+- **inputs:** fix intent prop type ([#899](https://github.com/chanzuckerberg/sci-components/issues/899)) ([064f1b4](https://github.com/chanzuckerberg/sci-components/commit/064f1b46072e26af7fd55af081e9f475d28cf053))
+- **variables:** fix design token variables ([2c1aff5](https://github.com/chanzuckerberg/sci-components/commit/2c1aff5816484ca1a74fa09407044468324f0490))
+
 # [21.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.6.3...@czi-sds/components@21.7.0) (2024-11-14)
 
 ### Bug Fixes
