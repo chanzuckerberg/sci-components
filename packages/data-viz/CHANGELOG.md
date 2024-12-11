@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.10.3...@czi-sds/data-viz@0.10.4) (2024-11-27)
+
+**Note:** Version bump only for package @czi-sds/data-viz
+
 ## [0.10.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.10.2...@czi-sds/data-viz@0.10.3) (2024-10-30)
 
 **Note:** Version bump only for package @czi-sds/data-viz
