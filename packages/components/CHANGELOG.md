@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.7.1...@czi-sds/components@22.0.0) (2024-12-04)
+
+### Bug Fixes
+
+- **tailwind:** new typography config for tailwind to use with typography plugin + fixed font vars ([#914](https://github.com/chanzuckerberg/sci-components/issues/914)) ([cc895e8](https://github.com/chanzuckerberg/sci-components/commit/cc895e8a8d3f625af05f4b6a32456282c90d1af5))
+
+### BREAKING CHANGES
+
+- **tailwind:** More info on this can be found in the ZeroHeight docs under Tailwind configuration.
+
 ## [21.7.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.7.0...@czi-sds/components@21.7.1) (2024-11-27)
 
 ### Bug Fixes
