@@ -7,11 +7,11 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-scrxa8-MuiFormControlLabel-root"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-1ajqy5l-MuiFormControlLabel-root"
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1i09rga-MuiButtonBase-root-MuiRadio-root"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1h62c7l-MuiButtonBase-root-MuiRadio-root"
       intent="default"
     >
       <input
@@ -20,14 +20,9 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
         type="radio"
         value="demo"
       />
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-        data-file-name="IconRadioUnchecked"
-        data-testid="IconRadioUnchecked"
-        fillcontrast="white"
-        focusable="false"
-        viewBox="0 0 16 16"
+      <span
+        class="css-16izi73"
+        font-size="medium"
       />
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
