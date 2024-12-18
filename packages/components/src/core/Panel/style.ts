@@ -6,12 +6,12 @@ import {
   getShadows,
   getSpaces,
 } from "../styles";
+import { css, SerializedStyles } from "@emotion/react";
 import {
   PANEL_BASIC_MIN_WIDTH_PX,
   PANEL_OVERLAY_MIN_WIDTH_PX,
   PanelProps,
-} from ".";
-import { css, SerializedStyles } from "@emotion/react";
+} from "./Panel.types";
 
 type PanelExtraProps = PanelProps & CommonThemeProps;
 

@@ -49,7 +49,7 @@ const HeatmapChart = forwardRef(
 
     // Validate width and height
     if (!width || !height) {
-      throw Error("Chart must have width and height > 0");
+      throw Error("Heatmap must have width and height bigger than Zero!");
     }
 
     // Ref for the chart container

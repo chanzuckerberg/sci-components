@@ -5,7 +5,8 @@ import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import ButtonToggle from "src/core/ButtonToggle";
 import Callout from "src/core/Callout";
 import CalloutTitle from "src/core/Callout/components/CalloutTitle";
-import RawPanel, { PanelProps } from "src/core/Panel";
+import RawPanel from "src/core/Panel";
+import { PanelProps } from "../../Panel.types";
 
 const InvalidBasicPanelPropsError = (
   <Callout intent="negative">

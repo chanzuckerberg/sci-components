@@ -1,36 +1,21 @@
 import React from "react";
 import { StyledDrawer, StyledHeaderComponent } from "./style";
-import { DrawerProps } from "@mui/material";
 import PanelHeader from "./components/PanelHeader";
-import PanelHeaderClose, {
-  PanelHeaderCloseProps,
-} from "./components/PanelHeaderClose";
+import PanelHeaderClose from "./components/PanelHeaderClose";
+import {
+  OverlayPanelProps,
+  BasicPanelProps,
+  PANEL_BASIC_MIN_WIDTH_PX,
+  PANEL_OVERLAY_MIN_WIDTH_PX,
+  PanelProps,
+} from "./Panel.types";
 
-export interface BasicPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType: "basic"; // Discriminator
-  position?: "left" | "right";
-  width?: number | string;
-}
-
-export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
-  sdsType: "overlay"; // Discriminator
-  position?: "left" | "right" | "bottom";
-  width?: number | string;
-  HeaderComponent?: React.ReactNode;
-  closeButtonOnClick?: PanelHeaderCloseProps["onClick"];
-  CloseButtonComponent?: PanelHeaderCloseProps["CloseButtonComponent"];
-}
-
-// Discriminated Union
-export type PanelProps = BasicPanelProps | OverlayPanelProps;
+export type { PanelProps, BasicPanelProps, OverlayPanelProps };
 
 // Type guard to narrow the type
 function isOverlayPanelProps(props: PanelProps): props is OverlayPanelProps {
   return props.sdsType === "overlay";
 }
-
-export const PANEL_BASIC_MIN_WIDTH_PX = 240;
-export const PANEL_OVERLAY_MIN_WIDTH_PX = 320;
 
 /**
  * @see https://mui.com/material-ui/react-drawer/
