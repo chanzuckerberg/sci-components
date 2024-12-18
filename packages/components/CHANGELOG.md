@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.0.0...@czi-sds/components@22.1.0) (2024-12-18)
+
+### Bug Fixes
+
+- **panel:** fix circular dependency error ([d818901](https://github.com/chanzuckerberg/sci-components/commit/d8189012762c0e2c32325e29813a25f1faf9e55f))
+
+### Features
+
+- **InputCheckbox:** refactor `InputCheckbox` and `InputRadio` ([#904](https://github.com/chanzuckerberg/sci-components/issues/904)) ([74fec41](https://github.com/chanzuckerberg/sci-components/commit/74fec4189426782661f28e56bd77a3f912a5cdd1))
+
 # [22.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@21.7.1...@czi-sds/components@22.0.0) (2024-12-04)
 
 ### Bug Fixes

@@ -56,14 +56,18 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-      # Step 8: Lerna Version
+      # Step 8: Reset working directory
+      - name: Reset working directory
+        run: git checkout -- .
+
+      # Step 9: Lerna Version
       - name: Lerna Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn version:ci
 
-      # Step 9: Commit changes
+      # Step 10: Commit changes
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,13 +76,13 @@ jobs:
           commit_message: "chore(release): Publish"
           branch: ${{ github.head_ref }}
 
-      # Step 10: Publish NPM packages
+      # Step 11: Publish NPM packages
       - name: Lerna Publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
-      # Step 11: Post breaking changes to a Slack channel
+      # Step 12: Post breaking changes to a Slack channel
       - name: Post breaking changes to a Slack channel
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
@@ -89,7 +93,7 @@ jobs:
           config: .github/config/slack.yml
         if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
 
-      # Step 12: Merge prod branch into main
+      # Step 13: Merge prod branch into main
       - name: Create PR to merge prod into main
         id: createpr
         env:
