@@ -12,7 +12,7 @@ export const StyledCalloutExtraContent = styled("div")`
     const spaces = getSpaces(props);
 
     return `
-      margin: ${!hideTitle || !hideBody ? spaces?.m : 0}px 0 0 0;
+      margin: ${hideTitle && hideBody ? 0 : spaces?.m}px 0 0 0;
     `;
   }}
 `;
