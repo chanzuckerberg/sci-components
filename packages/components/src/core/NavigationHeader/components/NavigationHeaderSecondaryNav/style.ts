@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import Accordion from "src/core/Accordion";
 import Button from "src/core/Button";
 import {
-  CommonThemeProps,
   fontBodyS,
   fontHeaderS,
   getSemanticColors,
