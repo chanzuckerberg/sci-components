@@ -3,7 +3,6 @@ import Tag, { TagProps } from "../Tag";
 import {
   StyledBottomSection,
   StyledFooter,
-  StyledLinkItemButton,
   StyledLinkItemLink,
   StyledLinkSection,
   StyledImageSection,
@@ -17,16 +16,16 @@ import {
 import { Divider, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-export interface FooterNavItem {
+export interface NavigationFooterNavItem {
   label: string;
   url: string;
 }
 
-export interface FooterProps {
+export interface NavigationFooterProps {
   logo?: ReactNode;
   images?: ReactNode[];
-  navItems?: FooterNavItem[];
-  navLinks?: FooterNavItem[];
+  navItems?: NavigationFooterNavItem[];
+  navLinks?: NavigationFooterNavItem[];
   tag?: string;
   tagColor?: TagProps["tagColor"];
   title: string;
@@ -42,7 +41,7 @@ function groupArray<T>(array: T[], groupSize: number): T[][] {
   return groups;
 }
 
-export default function Footer({
+export default function NavigationFooter({
   logo,
   images,
   navItems,
@@ -50,7 +49,7 @@ export default function Footer({
   tag,
   tagColor,
   title,
-}: FooterProps) {
+}: NavigationFooterProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -68,7 +67,7 @@ export default function Footer({
     ));
   }
 
-  function renderLink(link: FooterNavItem, showDivider: boolean) {
+  function renderLink(link: NavigationFooterNavItem, showDivider: boolean) {
     return (
       <>
         <StyledLinkItemLink key={link.label} href={link.url}>
