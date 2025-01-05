@@ -69,11 +69,7 @@ function SecondaryNavItem({
             onClick={(event) => setAnchorEl(event.currentTarget)}
           >
             <span>{item.label}</span>
-            <Icon
-              sdsIcon={open ? "ChevronUp" : "ChevronDown"}
-              sdsType="button"
-              sdsSize="xs"
-            />
+            <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />
           </StyledTextItem>
 
           <Menu anchorEl={anchorEl} open={open} onClose={onClose}>
