@@ -45,6 +45,8 @@ export * from "./core/Dropdown";
 export { default as Dropdown } from "./core/Dropdown";
 export * from "./core/DropdownMenu";
 export { default as DropdownMenu } from "./core/DropdownMenu";
+export * from "./core/Footer";
+export { default as Footer } from "./core/Footer";
 export * from "./core/Icon";
 export { default as Icon } from "./core/Icon";
 export * from "./core/InputCheckbox";

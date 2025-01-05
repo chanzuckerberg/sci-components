@@ -38,18 +38,12 @@ export default {
     tag: "BETA",
     tagColor: "beta",
 
-    navItems: [
-      {
-        label: "Nav Item 1",
-        url: "https://example.com/1",
-      },
-      {
-        label: "Nav Item 2",
-        url: "https://example.com/2",
-      },
-    ],
+    navItems: Array.from(Array(5)).map<FooterNavItem>((_, idx) => ({
+      label: `Nav Item ${idx + 1}`,
+      url: `https://example.com/nav/${idx + 1}`,
+    })),
 
-    navLinks: Array.from(Array(6)).map<FooterNavItem>((_, idx) => ({
+    navLinks: Array.from(Array(5)).map<FooterNavItem>((_, idx) => ({
       label: `Link Item ${idx + 1}`,
       url: `https://example.com/nav/${idx + 1}`,
     })),
@@ -60,21 +54,19 @@ export default {
       </ExampleLogo>
     ),
 
-    images: (
-      <>
-        <ExampleLogo width={100} height={40}>
-          Image Slot
-        </ExampleLogo>
+    images: [
+      <ExampleLogo width={100} height={40}>
+        Image Slot
+      </ExampleLogo>,
 
-        <ExampleLogo width={100} height={40}>
-          Image Slot
-        </ExampleLogo>
+      <ExampleLogo width={100} height={40}>
+        Image Slot
+      </ExampleLogo>,
 
-        <ExampleLogo width={100} height={40}>
-          Image Slot
-        </ExampleLogo>
-      </>
-    ),
+      <ExampleLogo width={100} height={40}>
+        Image Slot
+      </ExampleLogo>,
+    ],
   } satisfies FooterProps,
 } as Meta;
 
