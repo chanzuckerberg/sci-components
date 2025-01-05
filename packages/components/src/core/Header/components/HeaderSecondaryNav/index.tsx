@@ -1,10 +1,11 @@
-import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { StyledSection } from "../style";
-import { StyledTextItem } from "./style";
-import Dropdown from "src/core/Dropdown";
+import { StyledAccordion, StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 
 interface BaseHeaderSecondaryNavItem {
   label: string;
@@ -48,13 +49,16 @@ function SecondaryNavItem({ item }: { item: HeaderSecondaryNavItem }) {
     setMenuWidth(button.offsetWidth);
   }, []);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Fragment key={item.label}>
       {item.type === "text" && (
         <StyledTextItem onClick={item.onClick}>{item.label}</StyledTextItem>
       )}
 
-      {item.type === "dropdown" && (
+      {item.type === "dropdown" && !isMobile && (
         <>
           <StyledTextItem
             ref={buttonRef}
@@ -83,6 +87,26 @@ function SecondaryNavItem({ item }: { item: HeaderSecondaryNavItem }) {
             ))}
           </Menu>
         </>
+      )}
+
+      {item.type === "dropdown" && isMobile && (
+        <StyledAccordion id={`${item.label}-dropdown`}>
+          <AccordionHeader>{item.label}</AccordionHeader>
+          <AccordionDetails>
+            {item.items.map((subItem) => (
+              <MenuItem
+                key={subItem.label}
+                onClick={() => {
+                  subItem.onClick?.();
+                  onClose();
+                }}
+                sx={{ width: menuWidth }}
+              >
+                {subItem.label}
+              </MenuItem>
+            ))}
+          </AccordionDetails>
+        </StyledAccordion>
       )}
     </Fragment>
   );

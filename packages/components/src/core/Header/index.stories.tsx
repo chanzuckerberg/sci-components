@@ -7,14 +7,33 @@ import Header, {
 import { useState } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
+import { useMediaQuery, useTheme } from "@mui/material";
+import { getTypography } from "../styles";
 
 function HeaderWrapper(props: HeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const typography = getTypography({ theme });
 
   return (
     <Header
       {...props}
-      logo={<Icon sdsIcon="Bacteria" sdsSize="xl" sdsType="static" />}
+      logo={
+        <div
+          style={{
+            alignItems: "center",
+            border: "1px dashed black",
+            display: "flex",
+            fontSize: 10,
+            height: 24,
+            justifyContent: "center",
+            width: 50,
+          }}
+        >
+          Logo slot
+        </div>
+      }
       primaryNav={
         <HeaderPrimaryNav
           onChange={setActivePrimaryNavKey}
@@ -30,10 +49,6 @@ function HeaderWrapper(props: HeaderProps) {
               tag: "BETA",
               tagColor: "beta",
             },
-            // {
-            //   key: "3",
-            //   label: "Primary Link 3",
-            // },
           ]}
         />
       }
@@ -66,14 +81,18 @@ function HeaderWrapper(props: HeaderProps) {
         Secondary
       </Button>
 
-      <Button
-        icon="Person"
-        sdsStyle="icon"
-        sdsType="secondary"
-        sdsIconProps={{
-          sdsSize: "s",
-        }}
-      />
+      {isMobile ? (
+        <Button
+          startIcon={<Icon sdsIcon="Person" sdsSize="l" sdsType="button" />}
+          sdsStyle="minimal"
+          sdsType="secondary"
+          sx={typography?.mobileStyles.body.semibold.m}
+        >
+          My Profile
+        </Button>
+      ) : (
+        <Button startIcon="Person" sdsStyle="minimal" sdsType="secondary" />
+      )}
     </Header>
   );
 }

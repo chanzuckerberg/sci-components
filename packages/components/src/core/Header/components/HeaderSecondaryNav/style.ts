@@ -1,13 +1,17 @@
 import styled from "@emotion/styled";
+import Accordion from "src/core/Accordion";
 import Button from "src/core/Button";
 import {
   CommonThemeProps,
+  fontBodyS,
+  fontHeaderS,
   getSemanticColors,
   getSpaces,
-  getTypography,
 } from "src/core/styles";
 
 export const StyledTextItem = styled(Button)`
+  ${fontHeaderS}
+
   background: none;
 
   &:hover {
@@ -16,19 +20,58 @@ export const StyledTextItem = styled(Button)`
 
   ${(props: CommonThemeProps) => {
     const colors = getSemanticColors(props);
-    const typography = getTypography(props);
-    const font = typography?.styles.header.semibold.s;
     const spaces = getSpaces(props);
 
     return `
       gap: ${spaces?.xs}px;
       color: ${colors?.base.textSecondary};
-      font-size: ${font?.fontSize}px;
-      font-weight: ${font?.fontWeight};
-      line-height: ${font?.lineHeight};
 
       &:hover {
         color: ${colors?.base.textPrimary};
+      }
+
+      ${props.theme?.breakpoints.down("md")} {
+        padding-left: ${spaces?.xl}px;
+      }
+    `;
+  }}
+`;
+
+export const StyledAccordion = styled(Accordion)`
+  width: 100%;
+
+  .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {
+    ${fontBodyS}
+  }
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+    const colors = getSemanticColors(props);
+
+    return `
+      .MuiButtonBase-root {
+        padding: ${spaces?.m}px ${spaces?.xl}px;
+        color: ${colors?.base.textSecondary};
+
+        &:hover {
+          color: ${colors?.base.textPrimary};
+        }
+      }
+
+      .MuiCollapse-root .MuiAccordionDetails-root  {
+        padding: 0;
+
+        .MuiButtonBase-root {
+          padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
+
+          .primary-text {
+            color: ${colors?.base.textSecondary} !important;
+
+            &:hover {
+              color: ${colors?.base.textPrimary} !important;
+            }
+          }
+        }
       }
     `;
   }}
