@@ -6,6 +6,7 @@ import {
   StyledButtonSection,
   StyledDrawer,
   StyledHeader,
+  StyledLogoLinkWrapper,
   StyledLogoWrapper,
   StyledPrimaryNavContainer,
   StyledSearch,
@@ -17,12 +18,14 @@ import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav"
 import { InputSearchProps } from "../InputSearch";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
 import Button from "../Button";
+import Link from "../Link";
 
 export { NavigationHeaderPrimaryNav, NavigationHeaderSecondaryNav };
 
 export interface NavigationHeaderProps {
   children?: ReactNode;
   logo?: ReactNode;
+  logoUrl?: string;
   primaryNav?: ReactNode;
   primaryNavPosition?: "left" | "right";
   searchProps?: Partial<InputSearchProps>;
@@ -36,6 +39,7 @@ export interface NavigationHeaderProps {
 export default function NavigationHeader({
   children,
   logo,
+  logoUrl,
   primaryNav,
   primaryNavPosition = "left",
   searchProps,
@@ -63,15 +67,25 @@ export default function NavigationHeader({
     <StyledButtonSection>{children}</StyledButtonSection>
   );
 
+  let logoNode = (
+    <StyledTitleContainer>
+      <StyledLogoWrapper>{logo}</StyledLogoWrapper>
+
+      <p>{title}</p>
+
+      {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
+    </StyledTitleContainer>
+  );
+
+  if (logoUrl) {
+    logoNode = (
+      <StyledLogoLinkWrapper href={logoUrl}>{logoNode}</StyledLogoLinkWrapper>
+    );
+  }
+
   const headerContent = (
     <StyledToolbar>
-      <StyledTitleContainer>
-        <StyledLogoWrapper>{logo}</StyledLogoWrapper>
-
-        <p>{title}</p>
-
-        {tag && <StyledTag color={tagColor} label={tag} />}
-      </StyledTitleContainer>
+      {logoNode}
 
       {!isNarrow && (
         <>
@@ -107,7 +121,9 @@ export default function NavigationHeader({
 
   return (
     <>
-      <StyledHeader position="static">{headerContent}</StyledHeader>
+      <StyledHeader elevation={0} position="static">
+        {headerContent}
+      </StyledHeader>
 
       {isNarrow && drawerOpen && (
         <StyledDrawer
