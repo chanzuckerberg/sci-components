@@ -51,14 +51,14 @@ export default function NavigationFooter({
   title,
 }: NavigationFooterProps) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
 
   function renderImages() {
     if (!images || images.length === 0) {
       return null;
     }
 
-    if (!isMobile) {
+    if (!isNarrow) {
       return images;
     }
 
@@ -84,7 +84,7 @@ export default function NavigationFooter({
       return null;
     }
 
-    if (!isMobile) {
+    if (!isNarrow) {
       return navLinks.map((link, index) =>
         renderLink(link, index < navLinks.length - 1)
       );

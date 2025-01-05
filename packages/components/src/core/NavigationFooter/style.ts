@@ -31,7 +31,7 @@ export const StyledLogoWrapper = styled.div`
 
   p {
     ${fontHeader("l")}
-    ${fontHeader("l", /* isMobile */ true)}
+    ${fontHeader("l", /* isNarrow */ true)}
 
     ${(props: CommonThemeProps) => {
       const spaces = getSpaces(props);
@@ -75,7 +75,7 @@ export const StyledNavSection = styled.div`
 
 export const StyledNavItemLink = styled(Link)`
   ${fontHeader("l")}
-  ${fontBody("s", "regular", /* isMobile */ true)}
+  ${fontBody("s", "regular", /* isNarrow */ true)}
 
   ${(props: CommonThemeProps) => {
     const colors = getSemanticColors(props);
