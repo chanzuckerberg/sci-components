@@ -112,7 +112,7 @@ export default {
   } satisfies NavigationHeaderProps,
 
   component: NavigationHeaderWrapper,
-  title: "Components/Header",
+  title: "Components/NavigationHeader",
 } as Meta;
 
 export const Default = {};
