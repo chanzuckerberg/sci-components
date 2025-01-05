@@ -1,3 +1,4 @@
+import { ButtonProps as RawButtonProps } from "@mui/base";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { ReactNode, useState } from "react";
@@ -14,42 +15,54 @@ import {
   StyledTitleContainer,
   StyledToolbar,
 } from "./style";
-import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
+import NavigationHeaderPrimaryNav, {
+  NavigationHeaderPrimaryNavItem,
+} from "./components/NavigationHeaderPrimaryNav";
 import { InputSearchProps } from "../InputSearch";
-import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
-import Button from "../Button";
-import Link from "../Link";
+import NavigationHeaderSecondaryNav, {
+  NavigationHeaderSecondaryNavItem,
+} from "./components/NavigationHeaderSecondaryNav";
+import Button, {
+  ButtonProps,
+  SdsButtonProps,
+  SdsMinimalButtonProps,
+} from "../Button";
+import { getFontWeights } from "../styles";
+import Icon from "../Icon";
 
-export { NavigationHeaderPrimaryNav, NavigationHeaderSecondaryNav };
-
-export interface NavigationHeaderProps {
-  children?: ReactNode;
+export interface NavigationHeaderProps<T extends string = string> {
+  activePrimaryNavKey?: string;
+  buttons?: ButtonProps[];
   logo?: ReactNode;
   logoUrl?: string;
-  primaryNav?: ReactNode;
+  primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
   primaryNavPosition?: "left" | "right";
   searchProps?: Partial<InputSearchProps>;
-  secondaryNav?: ReactNode;
+  secondaryNavItems?: NavigationHeaderSecondaryNavItem[];
+  setActivePrimaryNavKey?(key: string): void;
   showSearch?: boolean;
   tag?: string;
   tagColor?: SdsTagColorType;
   title: string;
 }
 
-export default function NavigationHeader({
-  children,
+export default function NavigationHeader<T extends string = string>({
+  activePrimaryNavKey,
+  buttons,
   logo,
   logoUrl,
-  primaryNav,
+  primaryNavItems,
   primaryNavPosition = "left",
   searchProps,
-  secondaryNav,
+  secondaryNavItems,
+  setActivePrimaryNavKey,
   showSearch = true,
   tag,
   tagColor,
   title,
-}: NavigationHeaderProps) {
+}: NavigationHeaderProps<T>) {
   const theme = useTheme();
+  const fontWeights = getFontWeights({ theme });
   const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(true);
 
@@ -61,10 +74,6 @@ export default function NavigationHeader({
       sdsStyle="rounded"
       {...searchProps}
     />
-  );
-
-  const buttons = children && (
-    <StyledButtonSection>{children}</StyledButtonSection>
   );
 
   let logoNode = (
@@ -82,6 +91,69 @@ export default function NavigationHeader({
       <StyledLogoLinkWrapper href={logoUrl}>{logoNode}</StyledLogoLinkWrapper>
     );
   }
+
+  const primaryNav = activePrimaryNavKey &&
+    setActivePrimaryNavKey &&
+    primaryNavItems &&
+    primaryNavItems.length > 0 && (
+      <NavigationHeaderPrimaryNav
+        items={primaryNavItems}
+        value={activePrimaryNavKey}
+        onChange={setActivePrimaryNavKey}
+      />
+    );
+
+  const secondaryNav = secondaryNavItems && secondaryNavItems.length > 0 && (
+    <NavigationHeaderSecondaryNav items={secondaryNavItems} />
+  );
+
+  const buttonsNode = buttons && buttons.length > 0 && (
+    <StyledButtonSection>
+      {buttons.map((buttonProps, idx) => {
+        const isIconButton = "icon" in buttonProps;
+        const key = `button-${idx}`;
+        const fullWidth = isNarrow ? { width: "100%" } : undefined;
+
+        if (isIconButton && isNarrow && buttonProps.icon) {
+          return (
+            <Button
+              key={key}
+              sx={fullWidth}
+              sdsStyle="minimal"
+              sdsType="secondary"
+              isAllCaps={false}
+              startIcon={
+                <Icon sdsSize="l" sdsIcon="Person" sdsType="iconButton" />
+              }
+            >
+              {buttonProps.children}
+            </Button>
+          );
+        }
+
+        if (isIconButton && !isNarrow) {
+          return (
+            <Button
+              key={key}
+              sdsIconProps={{ sdsSize: "l" }}
+              sdsStyle="icon"
+              sdsType="secondary"
+              icon={buttonProps.icon}
+            />
+          );
+        }
+
+        return (
+          <Button
+            key={key}
+            sx={fullWidth}
+            sdsStyle="rounded"
+            {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+          />
+        );
+      })}
+    </StyledButtonSection>
+  );
 
   const headerContent = (
     <StyledToolbar>
@@ -104,7 +176,7 @@ export default function NavigationHeader({
           </StyledPrimaryNavContainer>
 
           {secondaryNav}
-          {buttons}
+          {buttonsNode}
         </>
       )}
 
@@ -136,7 +208,7 @@ export default function NavigationHeader({
           {search}
           {primaryNav}
           {secondaryNav}
-          {buttons}
+          {buttonsNode}
         </StyledDrawer>
       )}
     </>

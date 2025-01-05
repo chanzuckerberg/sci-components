@@ -12,28 +12,31 @@ import { filterProps } from "src/common/utils";
 type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
 type ButtonSize = "small" | "medium" | "large";
 
-type SdsProps =
-  | {
-      sdsStyle?: "icon";
-      sdsType?: "primary" | "secondary" | "tertiary";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-      sdsSize?: ButtonSize;
-      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-    }
-  | {
-      sdsStyle?: "minimal";
-      sdsType?: "primary" | "secondary";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-    }
-  | {
-      sdsStyle?: "rounded" | "square";
-      sdsType?: "primary" | "secondary" | "destructive";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-    };
+export interface SdsIconButtonProps {
+  sdsStyle?: "icon";
+  sdsType?: "primary" | "secondary" | "tertiary";
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+  sdsSize?: ButtonSize;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+}
+
+export interface SdsMinimalButtonProps {
+  sdsStyle?: "minimal";
+  sdsType?: "primary" | "secondary";
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+}
+
+export interface SdsButtonProps {
+  sdsStyle?: "rounded" | "square";
+  sdsType?: "primary" | "secondary" | "destructive";
+  isAllCaps?: boolean;
+  isRounded?: boolean;
+}
+
+type SdsProps = SdsIconButtonProps | SdsMinimalButtonProps | SdsButtonProps;
 
 export type ButtonProps = RawButtonProps & SdsProps;
 

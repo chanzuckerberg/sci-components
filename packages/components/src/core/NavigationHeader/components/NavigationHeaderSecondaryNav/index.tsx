@@ -120,7 +120,7 @@ export default function NavigationHeaderSecondaryNav({
   items,
 }: NavigationHeaderSecondaryNavProps) {
   return (
-    <StyledSection>
+    <StyledSection gap="l">
       {items.map((item) => (
         <SecondaryNavItem key={`${item.label}-${item.type}`} item={item} />
       ))}
