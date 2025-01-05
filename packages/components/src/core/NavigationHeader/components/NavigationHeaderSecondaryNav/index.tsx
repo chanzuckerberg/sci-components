@@ -54,7 +54,7 @@ function SecondaryNavItem({
   }, []);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Fragment key={item.label}>
@@ -62,7 +62,7 @@ function SecondaryNavItem({
         <StyledTextItem onClick={item.onClick}>{item.label}</StyledTextItem>
       )}
 
-      {item.type === "dropdown" && !isMobile && (
+      {item.type === "dropdown" && !isNarrow && (
         <>
           <StyledTextItem
             ref={buttonRef}
@@ -93,7 +93,7 @@ function SecondaryNavItem({
         </>
       )}
 
-      {item.type === "dropdown" && isMobile && (
+      {item.type === "dropdown" && isNarrow && (
         <StyledAccordion id={`${item.label}-dropdown`}>
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
