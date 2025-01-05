@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from "react";
+import { ReactNode } from "react";
 import Tag, { TagProps } from "../Tag";
 import {
   StyledBottomSection,
@@ -14,7 +14,7 @@ import {
   StyledMobileLinkRow,
   StyledDivider,
 } from "./style";
-import { Divider, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Link from "../Link";
 
