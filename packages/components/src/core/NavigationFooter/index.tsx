@@ -28,6 +28,7 @@ export interface FooterImage {
 }
 
 export interface NavigationFooterProps {
+  hasInvertedStyle?: boolean;
   images?: FooterImage[];
   logo?: ReactNode;
   logoUrl?: string;
@@ -49,6 +50,7 @@ function groupArray<T>(array: T[], groupSize: number): T[][] {
 }
 
 export default function NavigationFooter({
+  hasInvertedStyle,
   images,
   logo,
   logoUrl,
@@ -88,7 +90,11 @@ export default function NavigationFooter({
   function renderLink(link: NavigationFooterNavItem, showDivider: boolean) {
     return (
       <>
-        <StyledLinkItemLink key={link.label} href={link.url}>
+        <StyledLinkItemLink
+          key={link.label}
+          href={link.url}
+          hasInvertedStyle={hasInvertedStyle}
+        >
           {link.label}
         </StyledLinkItemLink>
 
@@ -118,7 +124,7 @@ export default function NavigationFooter({
   }
 
   let logoNode = (
-    <StyledLogoWrapper>
+    <StyledLogoWrapper hasInvertedStyle={hasInvertedStyle}>
       {logo}
 
       <p>{title}</p>
@@ -132,14 +138,18 @@ export default function NavigationFooter({
   }
 
   return (
-    <StyledFooter>
-      <StyledTopSection>
+    <StyledFooter hasInvertedStyle={hasInvertedStyle}>
+      <StyledTopSection hasInvertedStyle={hasInvertedStyle}>
         {logoNode}
 
         {navItems && navItems.length > 0 && (
           <StyledNavSection>
             {navItems.map((item) => (
-              <StyledNavItemLink key={item.label} href={item.url}>
+              <StyledNavItemLink
+                key={item.label}
+                href={item.url}
+                hasInvertedStyle={hasInvertedStyle}
+              >
                 {item.label}
               </StyledNavItemLink>
             ))}
