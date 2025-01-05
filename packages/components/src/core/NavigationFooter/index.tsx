@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { forwardRef, ReactNode } from "react";
 import Tag, { TagProps } from "../Tag";
 import {
   StyledBottomSection,
@@ -12,6 +12,7 @@ import {
   StyledTopSection,
   StyledMobileImageRow,
   StyledMobileLinkRow,
+  StyledDivider,
 } from "./style";
 import { Divider, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -98,7 +99,13 @@ export default function NavigationFooter({
           {link.label}
         </StyledLinkItemLink>
 
-        {showDivider && <Divider orientation="vertical" flexItem />}
+        {showDivider && (
+          <StyledDivider
+            orientation="vertical"
+            flexItem
+            hasInvertedStyle={hasInvertedStyle}
+          />
+        )}
       </>
     );
   }
@@ -157,7 +164,7 @@ export default function NavigationFooter({
         )}
       </StyledTopSection>
 
-      <Divider />
+      <StyledDivider hasInvertedStyle={hasInvertedStyle} />
 
       <StyledBottomSection>
         <StyledLinkSection>{renderLinks()}</StyledLinkSection>

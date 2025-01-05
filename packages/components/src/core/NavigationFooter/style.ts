@@ -7,6 +7,7 @@ import {
   getSpaces,
 } from "../styles";
 import Link from "../Link";
+import { Divider } from "@mui/material";
 
 interface ExtraFooterProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -73,7 +74,7 @@ export const StyledNavSection = styled.div`
 
       ${props.theme?.breakpoints.down("md")} {
         flex-direction: column;
-        gap: ${spaces?.xl}px;
+        gap: 0;
         margin-top: ${spaces?.xl}px;
         width: 100%;
       }
@@ -82,7 +83,7 @@ export const StyledNavSection = styled.div`
 `;
 
 export const StyledNavItemLink = styled(Link)`
-  ${fontHeader("l")}
+  ${fontHeader("m")}
   ${fontBody("s", "regular", /* isNarrow */ true)}
 
   ${(props: ExtraFooterProps) => {
@@ -94,6 +95,7 @@ export const StyledNavItemLink = styled(Link)`
       &:hover {
         color: ${colors?.accent.textAction};
         text-decoration: none;
+        font-weight: 600;
       }
 
       ${props.theme?.breakpoints.down("md")} {
@@ -175,6 +177,7 @@ export const StyledLinkSection = styled.div`
       gap: ${spaces?.xxs}px ${spaces?.m}px;
 
       ${props.theme?.breakpoints.down("md")} {
+        gap: ${spaces?.m}px;
         margin-top: ${spaces?.xl}px;
         flex-direction: column;
       }
@@ -191,9 +194,6 @@ export const StyledMobileLinkRow = styled.div`
 
     return `
       gap: ${spaces?.xxs}px;
-
-      ${props.theme?.breakpoints.down("md")} {
-      }
     `;
   }}
 `;
@@ -209,7 +209,6 @@ export const StyledImageSection = styled.div`
       gap: ${spaces?.xl}px;
 
       ${props.theme?.breakpoints.down("md")} {
-        margin-top:
         gap: ${spaces?.m}px;
         flex-direction: column;
         justify-content: center;
@@ -248,7 +247,22 @@ export const StyledBottomSection = styled.div`
 
       ${props.theme?.breakpoints.down("md")} {
         flex-direction: column-reverse;
+        margin-top: ${spaces?.xl}px;
       }
+    `;
+  }}
+`;
+
+export const StyledDivider = styled(Divider)`
+  ${(props: ExtraFooterProps) => {
+    const colors = getSemanticColors(props);
+
+    return `
+      border-color: ${
+        props.hasInvertedStyle
+          ? colors?.base.dividerInverse
+          : colors?.base.divider
+      };
     `;
   }}
 `;
