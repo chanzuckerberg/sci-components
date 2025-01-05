@@ -4,24 +4,24 @@ import { ReactNode } from "react";
 import { StyledTag } from "../../style";
 import { StyledSection } from "../style";
 
-export interface HeaderPrimaryNavItem<T extends string> {
+export interface NavigationHeaderPrimaryNavItem<T extends string> {
   key: T;
   label: ReactNode;
   tag?: string;
   tagColor?: SdsTagColorType;
 }
 
-export interface HeaderPrimaryNavProps<T extends string> {
-  items: HeaderPrimaryNavItem<T>[];
+export interface NavigationHeaderPrimaryNavProps<T extends string> {
+  items: NavigationHeaderPrimaryNavItem<T>[];
   value: T;
   onChange(value: T): void;
 }
 
-export default function HeaderPrimaryNav<T extends string>({
+export default function NavigationHeaderPrimaryNav<T extends string>({
   items,
   value,
   onChange,
-}: HeaderPrimaryNavProps<T>) {
+}: NavigationHeaderPrimaryNavProps<T>) {
   return (
     <StyledSection>
       {items.map((item) => {

@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/react";
-import Header, {
-  HeaderProps,
-  HeaderPrimaryNav,
-  HeaderSecondaryNav,
+import NavigationHeader, {
+  NavigationHeaderProps,
+  NavigationHeaderPrimaryNav,
+  NavigationHeaderSecondaryNav,
 } from "./index";
 import { useState } from "react";
 import Button from "../Button";
@@ -10,14 +10,14 @@ import Icon from "../Icon";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getTypography } from "../styles";
 
-function HeaderWrapper(props: HeaderProps) {
+function HeaderWrapper(props: NavigationHeaderProps) {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const typography = getTypography({ theme });
 
   return (
-    <Header
+    <NavigationHeader
       {...props}
       logo={
         <div
@@ -35,7 +35,7 @@ function HeaderWrapper(props: HeaderProps) {
         </div>
       }
       primaryNav={
-        <HeaderPrimaryNav
+        <NavigationHeaderPrimaryNav
           onChange={setActivePrimaryNavKey}
           value={activePrimaryNavKey}
           items={[
@@ -53,7 +53,7 @@ function HeaderWrapper(props: HeaderProps) {
         />
       }
       secondaryNav={
-        <HeaderSecondaryNav
+        <NavigationHeaderSecondaryNav
           items={[
             {
               type: "dropdown",
@@ -93,7 +93,7 @@ function HeaderWrapper(props: HeaderProps) {
       ) : (
         <Button startIcon="Person" sdsStyle="minimal" sdsType="secondary" />
       )}
-    </Header>
+    </NavigationHeader>
   );
 }
 
@@ -110,7 +110,7 @@ export default {
     title: "Logo Name",
     tag: "BETA",
     tagColor: "beta",
-  } satisfies HeaderProps,
+  } satisfies NavigationHeaderProps,
 } as Meta;
 
 export const Default = {};
