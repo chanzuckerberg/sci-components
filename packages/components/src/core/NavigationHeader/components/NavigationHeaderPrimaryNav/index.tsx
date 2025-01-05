@@ -40,7 +40,9 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               {item.label}
             </StyledLabel>
 
-            {item.tag && <StyledTag label={item.tag} color={item.tagColor} />}
+            {item.tag && (
+              <StyledTag label={item.tag} color={item.tagColor} hover={false} />
+            )}
           </PrimaryNavItem>
         );
       })}

@@ -39,7 +39,7 @@ function NavigationHeaderWrapper(props: NavigationHeaderProps) {
         {
           key: "2",
           label: "Primary",
-          tag: "BETA",
+          tag: "Beta",
           tagColor: "beta",
         },
       ]}

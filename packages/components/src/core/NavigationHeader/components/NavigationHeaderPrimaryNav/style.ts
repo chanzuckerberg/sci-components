@@ -20,21 +20,34 @@ export const PrimaryNavItem = styled(Button)`
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
+    const activeBackgroundColor = props.hasInvertedStyle
+      ? colors?.base.backgroundSecondaryInverse
+      : colors?.base.backgroundSecondary;
+
     return `
       gap: ${spaces?.xs}px;
 
+      &:hover {
+        > span {
+          color: ${
+            props.hasInvertedStyle
+              ? colors?.base.textPrimaryInverse
+              : colors?.base.textPrimary
+          };
+        }
+      }
 
       ${props.theme?.breakpoints.down("md")} {
-        border-left: ${spaces?.xs}px solid ${props.active ? colors?.accent.border : "transparent"};
+        border-left: ${spaces?.xs}px solid ${props.active ? colors?.accent.borderSelected : "transparent"};
         border-radius: 0;
         justify-content: start;
         padding: ${spaces?.m}px 0 ${spaces?.m}px ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
-        background: ${props.active ? (props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary) : "transparent"};
+        background: ${props.active ? activeBackgroundColor : "transparent"};
         width: 100%;
 
         &:hover {
           background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
-          border-left-color: ${props.active ? "initial" : colors?.neutral.fillPrimary};
+          border-left-color: ${props.active ? colors?.accent.borderSelected : colors?.neutral.fillPrimary};
         }
       }
     `;
@@ -48,8 +61,16 @@ export const StyledLabel = styled.span`
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
+    const activeColor = props.hasInvertedStyle
+      ? colors?.base.textPrimaryInverse
+      : colors?.base.textPrimary;
+
+    const inactiveColor = props.hasInvertedStyle
+      ? colors?.base.textSecondaryInverse
+      : colors?.base.textSecondary;
+
     return `
-      color: ${props.active ? colors?.base[props.hasInvertedStyle ? "textPrimaryInverse" : "textPrimary"] : colors?.base[props.hasInvertedStyle ? "textSecondaryInverse" : "textSecondary"]};
+      color: ${props.active ? activeColor : inactiveColor};
 
       ${props.theme?.breakpoints.up("md")} {
         border-bottom: solid 2px transparent;
@@ -57,7 +78,13 @@ export const StyledLabel = styled.span`
         padding-bottom: ${spaces?.xxxs}px;
 
         &:hover {
-          border-bottom-color: ${props.hasInvertedStyle ? colors?.base.borderInverse : colors?.base.border};
+          border-bottom-color: ${
+            props.active
+              ? colors?.accent.border
+              : props.hasInvertedStyle
+                ? colors?.base.borderInverse
+                : colors?.base.border
+          };
         }
       }
     `;

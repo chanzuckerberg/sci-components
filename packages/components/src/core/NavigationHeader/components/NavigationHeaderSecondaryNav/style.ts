@@ -8,6 +8,11 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
+import MenuItem from "src/core/MenuItem";
+
+interface StyledTextItemProps extends ExtraHeaderProps {
+  open: boolean;
+}
 
 export const StyledTextItem = styled(Button)`
   ${fontHeaderS}
@@ -21,7 +26,7 @@ export const StyledTextItem = styled(Button)`
     background: none;
   }
 
-  ${(props: ExtraHeaderProps) => {
+  ${(props: StyledTextItemProps) => {
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
@@ -29,8 +34,16 @@ export const StyledTextItem = styled(Button)`
       gap: ${spaces?.xs}px;
       color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
 
+      svg {
+        color: ${props.open ? colors?.accent.ornamentOpen : colors?.base.ornamentSecondary};
+      }
+
       &:hover {
         color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+
+        svg {
+          color: ${colors?.base.ornamentSecondaryHover};
+        }
       }
 
       ${props.theme?.breakpoints.down("md")} {
@@ -86,4 +99,12 @@ export const StyledAccordion = styled(Accordion)`
       }
     `;
   }}
+`;
+
+export const StyledSubItem = styled(MenuItem)`
+  &.MuiButtonBase-root.MuiMenuItem-root:hover {
+    span.primary-text {
+      font-weight: 600;
+    }
+  }
 `;

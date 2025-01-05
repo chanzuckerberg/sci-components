@@ -8,6 +8,7 @@ import {
   StyledHeader,
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
+  StyledNarrowButton,
   StyledPrimaryNavContainer,
   StyledSearch,
   StyledTag,
@@ -125,7 +126,7 @@ export default function NavigationHeader<T extends string = string>({
               sdsStyle="minimal"
               sdsType="secondary"
               isAllCaps={false}
-              startIcon={<Icon sdsSize="l" sdsIcon="Person" />}
+              startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
             >
               {buttonProps.children}
             </Button>
@@ -183,7 +184,7 @@ export default function NavigationHeader<T extends string = string>({
       )}
 
       {isNarrow && (
-        <Button
+        <StyledNarrowButton
           sdsType="secondary"
           sdsStyle="icon"
           icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
@@ -208,6 +209,7 @@ export default function NavigationHeader<T extends string = string>({
           anchor="right"
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
+          hasInvertedStyle={hasInvertedStyle}
         >
           {headerContent}
 

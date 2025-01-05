@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { StyledSection } from "../style";
-import { StyledAccordion, StyledTextItem } from "./style";
+import { StyledAccordion, StyledSubItem, StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
@@ -65,6 +65,7 @@ function SecondaryNavItem({
         <StyledTextItem
           onClick={item.onClick}
           hasInvertedStyle={hasInverseStyle}
+          open={open}
         >
           {item.label}
         </StyledTextItem>
@@ -76,6 +77,7 @@ function SecondaryNavItem({
             ref={buttonRef}
             onClick={(event) => setAnchorEl(event.currentTarget)}
             hasInvertedStyle={hasInverseStyle}
+            open={open}
           >
             <span>{item.label}</span>
             <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />
@@ -89,7 +91,7 @@ function SecondaryNavItem({
                   subItem.onClick?.();
                   onClose();
                 }}
-                sx={{ width: menuWidth }}
+                sx={{ background: "red", width: menuWidth }}
               >
                 {subItem.label}
               </MenuItem>
@@ -106,7 +108,7 @@ function SecondaryNavItem({
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
             {item.items.map((subItem) => (
-              <MenuItem
+              <StyledSubItem
                 key={subItem.label}
                 onClick={() => {
                   subItem.onClick?.();
@@ -115,7 +117,7 @@ function SecondaryNavItem({
                 sx={{ width: menuWidth }}
               >
                 {subItem.label}
-              </MenuItem>
+              </StyledSubItem>
             ))}
           </AccordionDetails>
         </StyledAccordion>

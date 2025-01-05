@@ -11,6 +11,7 @@ import Tag from "../Tag";
 import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
+import Button from "../Button";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -21,8 +22,9 @@ export const StyledHeader = styled(AppBar)`
     const colors = getSemanticColors(props);
 
     return `
-      background: ${props.hasInvertedStyle ? colors?.base.surfaceInverse : colors?.base.surface};
+      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
       max-width: 100%;
+      max-height: 56px;
       overflow-x: auto;
     `;
   }}
@@ -35,6 +37,8 @@ export const StyledToolbar = styled(Toolbar)`
 
     return `
       &.MuiToolbar-root {
+        min-height: 56px;
+        max-height: 56px;
         padding: ${spaces?.m}px ${spaces?.xl}px;
 
         ${props.theme?.breakpoints.down("md")} {
@@ -48,6 +52,7 @@ export const StyledToolbar = styled(Toolbar)`
 export const StyledLogoLinkWrapper = styled(Link)`
   align-items: center;
   display: flex;
+  text-decoration: none !important;
 
   ${(props: CommonThemeProps) => {
     return `
@@ -160,11 +165,11 @@ export const StyledButtonSection = styled.section`
   align-items: center;
 
   .MuiButtonBase-root {
-    ${fontBody("l", "regular", /* isNarrow */ true)}
+    ${fontBody("l", "semibold", /* isNarrow */ true)}
   }
 
   [data-style="minimal"] {
-    ${fontBody("m", "regular", /* isNarrow */ true)}
+    ${fontBody("m", "semibold", /* isNarrow */ true)}
   }
 
   ${(props: CommonThemeProps) => {
@@ -176,6 +181,7 @@ export const StyledButtonSection = styled.section`
       margin-left: ${spaces?.xl}px;
 
       ${props.theme?.breakpoints.down("md")} {
+        gap: ${spaces?.l}px;
         flex-direction: column;
         margin-left: 0;
         margin-top: ${spaces?.xxl}px;
@@ -191,7 +197,24 @@ export const StyledButtonSection = styled.section`
 `;
 
 export const StyledDrawer = styled(Drawer)`
-  .MuiDrawer-paper {
-    width: 100%;
+  ${(props: ExtraHeaderProps) => {
+    const colors = getSemanticColors(props);
+
+    return `
+      .MuiDrawer-paper {
+        background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+        width: 100%;
+      }
+    `;
+  }}
+`;
+
+export const StyledNarrowButton = styled(Button)`
+  & {
+    margin: 0;
+  }
+
+  svg.MuiSvgIcon-root {
+    margin: 0;
   }
 `;
