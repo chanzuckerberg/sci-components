@@ -77,6 +77,7 @@ export default {
   },
 
   args: {
+    hasInvertedStyle: false,
     tag: "Beta",
     tagColor: "beta",
     title: "Logo Name",

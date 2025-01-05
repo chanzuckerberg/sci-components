@@ -12,12 +12,16 @@ import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
 
+export interface ExtraHeaderProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+}
+
 export const StyledHeader = styled(AppBar)`
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
 
     return `
-      background: ${colors?.base.surface};
+      background: ${props.hasInvertedStyle ? colors?.base.surfaceInverse : colors?.base.surface};
       max-width: 100%;
       overflow-x: auto;
     `;
@@ -25,7 +29,7 @@ export const StyledHeader = styled(AppBar)`
 `;
 
 export const StyledToolbar = styled(Toolbar)`
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
@@ -34,7 +38,7 @@ export const StyledToolbar = styled(Toolbar)`
         padding: ${spaces?.m}px ${spaces?.xl}px;
 
         ${props.theme?.breakpoints.down("md")} {
-          border-bottom: 1px solid ${colors?.base.divider}
+          border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider}
         }
       }
     `;
@@ -70,12 +74,12 @@ export const StyledTitleContainer = styled.div`
     margin: 0;
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
-      color: ${colors?.base.textPrimary};
+      color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
       margin-right: ${spaces?.xxl}px;
 
       p {

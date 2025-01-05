@@ -1,4 +1,3 @@
-import { ButtonProps as RawButtonProps } from "@mui/base";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { ReactNode, useState } from "react";
@@ -27,12 +26,13 @@ import Button, {
   SdsButtonProps,
   SdsMinimalButtonProps,
 } from "../Button";
-import { getFontWeights } from "../styles";
 import Icon from "../Icon";
+import { hasIn } from "lodash";
 
 export interface NavigationHeaderProps<T extends string = string> {
   activePrimaryNavKey?: string;
   buttons?: ButtonProps[];
+  hasInvertedStyle?: boolean;
   logo?: ReactNode;
   logoUrl?: string;
   primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
@@ -49,6 +49,7 @@ export interface NavigationHeaderProps<T extends string = string> {
 export default function NavigationHeader<T extends string = string>({
   activePrimaryNavKey,
   buttons,
+  hasInvertedStyle,
   logo,
   logoUrl,
   primaryNavItems,
@@ -62,7 +63,6 @@ export default function NavigationHeader<T extends string = string>({
   title,
 }: NavigationHeaderProps<T>) {
   const theme = useTheme();
-  const fontWeights = getFontWeights({ theme });
   const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(true);
 
@@ -77,7 +77,7 @@ export default function NavigationHeader<T extends string = string>({
   );
 
   let logoNode = (
-    <StyledTitleContainer>
+    <StyledTitleContainer hasInvertedStyle={hasInvertedStyle}>
       <StyledLogoWrapper>{logo}</StyledLogoWrapper>
 
       <p>{title}</p>
@@ -100,11 +100,15 @@ export default function NavigationHeader<T extends string = string>({
         items={primaryNavItems}
         value={activePrimaryNavKey}
         onChange={setActivePrimaryNavKey}
+        hasInvertedStyle={hasInvertedStyle}
       />
     );
 
   const secondaryNav = secondaryNavItems && secondaryNavItems.length > 0 && (
-    <NavigationHeaderSecondaryNav items={secondaryNavItems} />
+    <NavigationHeaderSecondaryNav
+      items={secondaryNavItems}
+      hasInverseStyle={hasInvertedStyle}
+    />
   );
 
   const buttonsNode = buttons && buttons.length > 0 && (
@@ -122,9 +126,7 @@ export default function NavigationHeader<T extends string = string>({
               sdsStyle="minimal"
               sdsType="secondary"
               isAllCaps={false}
-              startIcon={
-                <Icon sdsSize="l" sdsIcon="Person" sdsType="iconButton" />
-              }
+              startIcon={<Icon sdsSize="l" sdsIcon="Person" />}
             >
               {buttonProps.children}
             </Button>
@@ -156,7 +158,7 @@ export default function NavigationHeader<T extends string = string>({
   );
 
   const headerContent = (
-    <StyledToolbar>
+    <StyledToolbar hasInvertedStyle={hasInvertedStyle}>
       {logoNode}
 
       {!isNarrow && (
@@ -193,7 +195,11 @@ export default function NavigationHeader<T extends string = string>({
 
   return (
     <>
-      <StyledHeader elevation={0} position="static">
+      <StyledHeader
+        elevation={0}
+        position="static"
+        hasInvertedStyle={hasInvertedStyle}
+      >
         {headerContent}
       </StyledHeader>
 
