@@ -7,7 +7,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "../styles";
-import Tag, { TagProps } from "../Tag";
+import Tag from "../Tag";
 import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
