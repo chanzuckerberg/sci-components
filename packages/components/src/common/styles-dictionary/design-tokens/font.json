@@ -1,26 +1,27 @@
 {
   "sds": {
     "font": {
+      "inter-font": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
       "font-family": {
         "body": {
-          "value": "\"Inter\", sans-serif",
-          "narrowValue": "\"Inter\", sans-serif"
+          "value": "{sds.font.inter-font}",
+          "narrowValue": "{sds.font.inter-font}"
         },
         "caps": {
-          "value": "\"Inter\", sans-serif",
-          "narrowValue": "\"Inter\", sans-serif"
+          "value": "{sds.font.inter-font}",
+          "narrowValue": "{sds.font.inter-font}"
         },
         "code": {
           "value": "\"IBM Plex Mono\", monospace",
           "narrowValue": "\"IBM Plex Mono\", monospace"
         },
         "header": {
-          "value": "\"Inter\", sans-serif",
-          "narrowValue": "\"Inter\", sans-serif"
+          "value": "{sds.font.inter-font}",
+          "narrowValue": "{sds.font.inter-font}"
         },
         "tabular": {
-          "value": "\"Inter\", sans-serif",
-          "narrowValue": "\"Inter\", sans-serif"
+          "value": "{sds.font.inter-font}",
+          "narrowValue": "{sds.font.inter-font}"
         }
       },
       "body": {
