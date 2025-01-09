@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.0...@czi-sds/components@22.1.1) (2025-01-09)
+
+### Bug Fixes
+
+- **design-tokens:** fixed font family ([#921](https://github.com/chanzuckerberg/sci-components/issues/921)) ([551de94](https://github.com/chanzuckerberg/sci-components/commit/551de9439426b78703ffaad7b5a6a0c9066b4e40))
+
 # [22.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.0.0...@czi-sds/components@22.1.0) (2024-12-18)
 
 ### Bug Fixes
