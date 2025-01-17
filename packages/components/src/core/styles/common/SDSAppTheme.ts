@@ -738,75 +738,76 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
 //
 // (masoudmanson): We need to define borders separately for light and dark themes
 // because the border colors are different for each theme.
+const BorderThickness = {
+  default: 1,
+  thick: 2,
+  extraThick: 4,
+} as const;
+
 export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
-  let borderStyles = {
+  const createSolidBorder = (
+      color: keyof Colors,
+      level: keyof Colors[keyof Colors],
+      thickness: keyof typeof BorderThickness
+  ) => `${BorderThickness[thickness]}px solid ${colors[color][level]}`;
+
+  const createDashedBorder = () => `1px dashed`;
+
+  return {
       accent: {
-          default: `1px solid ${colors.blue[500]}`,
-          focused: `1px solid ${colors.blue[500]}`,
-          hover: `1px solid ${colors.blue[600]}`,
-          open: `1px solid ${colors.blue[500]}`,
-          pressed: `1px solid ${colors.blue[700]}`,
-          selected: `1px solid ${colors.blue[500]}`,
+          default: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
+          focused: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
+          hover: createSolidBorder('blue', isDarkMode ? 700 : 600, 'default'),
+          open: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
+          pressed: createSolidBorder('blue', isDarkMode ? 800 : 700, 'default'),
+          selected: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
       },
       base: {
-          default: `1px solid ${colors.gray[500]}`,
-          disabled: `1px solid ${colors.gray[300]}`,
-          divider: `1px solid ${colors.gray[200]}`,
-          dividerInverse: `1px solid ${colors.gray[600]}`,
-          hover: `1px solid ${colors.gray[900]}`,
-          inverse: `1px solid ${colors.gray[50]}`,
-          pressed: `1px solid ${colors.gray[900]}`,
-          table: `1px solid ${colors.gray[300]}`,
+          default: createSolidBorder('gray', 500, 'default'),
+          disabled: createSolidBorder('gray', 300, 'default'),
+          divider: createSolidBorder('gray', 200, 'default'),
+          dividerInverse: createSolidBorder('gray', 600, 'default'),
+          hover: createSolidBorder('gray', 900, 'default'),
+          inverse: createSolidBorder('gray', 50, 'default'),
+          pressed: createSolidBorder('gray', 900, 'default'),
+          table: createSolidBorder('gray', 300, 'default'),
       },
       beta: {
-          default: `1px solid ${colors.purple[600]}`,
-          extraThick: `4px solid ${colors.purple[600]}`,
-          thick: `2px solid ${colors.purple[600]}`,
+          default: createSolidBorder('purple', 600, 'default'),
+          extraThick: createSolidBorder('purple', 600, 'extraThick'),
+          thick: createSolidBorder('purple', 600, 'thick'),
       },
       info: {
-          default: `1px solid ${colors.blue[600]}`,
-          extraThick: `4px solid ${colors.blue[600]}`,
-          thick: `2px solid ${colors.blue[600]}`,
+          default: createSolidBorder('blue', 600, 'default'),
+          extraThick: createSolidBorder('blue', 600, 'extraThick'),
+          thick: createSolidBorder('blue', 600, 'thick'),
       },
       link: {
-          dashed: `1px dashed`,
-          solid: `1px solid`,
+          dashed: createDashedBorder(),
+          solid: createSolidBorder('blue', 500, 'default'),
       },
       negative: {
-          default: `1px solid ${colors.red[600]}`,
-          extraThick: `4px solid ${colors.red[600]}`,
-          thick: `2px solid ${colors.red[600]}`,
+          default: createSolidBorder('red', 600, 'default'),
+          extraThick: createSolidBorder('red', 600, 'extraThick'),
+          thick: createSolidBorder('red', 600, 'thick'),
       },
       neutral: {
-          default: `1px solid ${colors.gray[500]}`,
-          extraThick: `4px solid ${colors.gray[500]}`,
-          thick: `2px solid ${colors.gray[500]}`,
+          default: createSolidBorder('gray', 500, 'default'),
+          extraThick: createSolidBorder('gray', 500, 'extraThick'),
+          thick: createSolidBorder('gray', 500, 'thick'),
       },
       none: 'none',
       notice: {
-          default: `1px solid ${colors.yellow[600]}`,
-          extraThick: `4px solid ${colors.yellow[600]}`,
-          thick: `2px solid ${colors.yellow[600]}`,
+          default: createSolidBorder('yellow', 600, 'default'),
+          extraThick: createSolidBorder('yellow', 600, 'extraThick'),
+          thick: createSolidBorder('yellow', 600, 'thick'),
       },
       positive: {
-          default: `1px solid ${colors.green[600]}`,
-          extraThick: `4px solid ${colors.green[600]}`,
-          thick: `2px solid ${colors.green[600]}`,
+          default: createSolidBorder('green', 600, 'default'),
+          extraThick: createSolidBorder('green', 600, 'extraThick'),
+          thick: createSolidBorder('green', 600, 'thick'),
       },
   };
-  // Dark theme specific changes to border colors
-  if (isDarkMode) {
-      borderStyles.accent = {
-          default: `1px solid ${colors.blue[600]}`,
-          focused: `1px solid ${colors.blue[600]}`,
-          hover: `1px solid ${colors.blue[700]}`,
-          open: `1px solid ${colors.blue[600]}`,
-          pressed: `1px solid ${colors.blue[800]}`,
-          selected: `1px solid ${colors.blue[600]}`,
-      };
-  }
-
-  return borderStyles;
 };
 
 
