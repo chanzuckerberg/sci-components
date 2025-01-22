@@ -5,6 +5,10 @@ export const StyledSection = styled.section`
   display: flex;
   align-items: center;
 
+  button {
+    align-items: start;
+  }
+
   ${(props: CommonThemeProps & { gap?: keyof Spaces }) => {
     const spaces = getSpaces(props);
 

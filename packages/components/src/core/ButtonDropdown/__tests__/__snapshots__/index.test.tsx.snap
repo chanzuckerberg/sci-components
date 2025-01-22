@@ -2,7 +2,7 @@
 
 exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1cs60p5-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1xvf0xn-MuiButtonBase-root-MuiButton-root"
   icon="Download"
   tabindex="0"
   type="button"
@@ -15,7 +15,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-zwwmfn-MuiSvgIcon-root"
         data-file-name="IconDownloadLarge"
         data-testid="IconDownloadLarge"
         fillcontrast="white"
@@ -35,7 +35,7 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d0pkyw-MuiSvgIcon-root"
         data-file-name="IconChevronDownSmall"
         data-testid="IconChevronDownSmall"
         fillcontrast="white"
@@ -46,8 +46,5 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
       />
     </div>
   </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
 </button>
 `;

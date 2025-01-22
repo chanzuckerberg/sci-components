@@ -27,22 +27,40 @@ export const StyledTextItem = styled(Button)`
   }
 
   ${(props: StyledTextItemProps) => {
-    const colors = getSemanticColors(props);
+    const { hasInvertedStyle, open } = props;
+
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
+
+    const textDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.textSecondary;
+
+    const textOpenColor = hasInvertedStyle
+      ? semanticColors?.base.textPrimaryInverse
+      : semanticColors?.base.textPrimary;
+
+    const ChevronDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.ornamentSecondary;
+
+    const ChevronOpenColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentPrimaryInverse
+      : semanticColors?.accent.ornamentOpen;
 
     return `
       gap: ${spaces?.xs}px;
-      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
+      color: ${open ? textOpenColor : textDefaultColor};
 
       svg {
-        color: ${props.open ? colors?.accent.ornamentOpen : colors?.base.ornamentSecondary};
+        color: ${open ? ChevronOpenColor : ChevronDefaultColor};
       }
 
       &:hover {
-        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+        color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary};
 
         svg {
-          color: ${colors?.base.ornamentSecondaryHover};
+          color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : semanticColors?.base.ornamentSecondaryHover};
         }
       }
 
@@ -50,7 +68,7 @@ export const StyledTextItem = styled(Button)`
         padding-left: ${spaces?.xl}px;
 
         &:hover {
-          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
+          background: ${hasInvertedStyle ? semanticColors?.base.backgroundSecondaryInverse : semanticColors?.base.backgroundSecondary};
         }
       }
     `;
@@ -65,19 +83,53 @@ export const StyledAccordion = styled(Accordion)`
   }
 
   ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+
     const spaces = getSpaces(props);
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
+
+    const textDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.textSecondary;
+
+    const textOpenColor = hasInvertedStyle
+      ? semanticColors?.base.textPrimaryInverse
+      : semanticColors?.base.textPrimary;
+
+    const ChevronDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.ornamentSecondary;
+
+    const ChevronOpenColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentPrimaryInverse
+      : semanticColors?.accent.ornamentOpen;
 
     return `
       .MuiButtonBase-root {
         padding: ${spaces?.m}px ${spaces?.xl}px;
-        color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
+        color: ${textDefaultColor};
 
+        svg {
+          color: ${ChevronDefaultColor};
+        }
+
+        &[aria-expanded="true"] {
+          color: ${textOpenColor};
+
+          svg {
+            color: ${ChevronOpenColor} !important;
+          }
+        }
+  
         &:hover {
-          color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+          color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary};
+
+          svg {
+            color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : semanticColors?.base.ornamentSecondaryHover} !important; 
+          }
 
           ${props.theme?.breakpoints.down("md")} {
-            background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
+            background: ${hasInvertedStyle ? semanticColors?.base.backgroundSecondaryInverse : semanticColors?.base.backgroundSecondary};
           }
         }
       }
@@ -89,10 +141,10 @@ export const StyledAccordion = styled(Accordion)`
           padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
 
           .primary-text {
-            color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary} !important;
+            color: ${hasInvertedStyle ? semanticColors?.base.textSecondaryInverse : semanticColors?.base.textSecondary} !important;
 
             &:hover {
-              color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary} !important;
+              color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary} !important;
             }
           }
         }

@@ -17,12 +17,22 @@ export const PrimaryNavItem = styled(Button)`
   }
 
   ${(props: PrimaryNavItemProps) => {
+    const { active, hasInvertedStyle } = props;
+
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
-    const activeBackgroundColor = props.hasInvertedStyle
+    const activeBackgroundColor = hasInvertedStyle
       ? colors?.base.backgroundSecondaryInverse
       : colors?.base.backgroundSecondary;
+
+    const activeBorderColor = hasInvertedStyle
+      ? colors?.base?.borderInverse
+      : colors?.accent?.border;
+
+    const inactiveBorderColor = hasInvertedStyle
+      ? colors?.neutral?.fillPrimary
+      : colors?.base.border;
 
     return `
       gap: ${spaces?.xs}px;
@@ -30,7 +40,7 @@ export const PrimaryNavItem = styled(Button)`
       &:hover {
         > span {
           color: ${
-            props.hasInvertedStyle
+            hasInvertedStyle
               ? colors?.base.textPrimaryInverse
               : colors?.base.textPrimary
           };
@@ -38,16 +48,16 @@ export const PrimaryNavItem = styled(Button)`
       }
 
       ${props.theme?.breakpoints.down("md")} {
-        border-left: ${spaces?.xs}px solid ${props.active ? colors?.accent.borderSelected : "transparent"};
+        border-left: ${spaces?.xs}px solid ${active ? activeBorderColor : "transparent"};
         border-radius: 0;
         justify-content: start;
         padding: ${spaces?.m}px 0 ${spaces?.m}px ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
-        background: ${props.active ? activeBackgroundColor : "transparent"};
+        background: ${active ? activeBackgroundColor : "transparent"};
         width: 100%;
 
         &:hover {
-          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
-          border-left-color: ${props.active ? colors?.accent.borderSelected : colors?.neutral.fillPrimary};
+          background: ${hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
+          border-left-color: ${active ? activeBorderColor : inactiveBorderColor};
         }
       }
     `;
@@ -58,32 +68,37 @@ export const StyledLabel = styled.span`
   ${fontHeader("m")}
 
   ${(props: PrimaryNavItemProps) => {
+    const { hasInvertedStyle, active } = props;
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    const activeColor = props.hasInvertedStyle
+    const activeColor = hasInvertedStyle
       ? colors?.base.textPrimaryInverse
       : colors?.base.textPrimary;
 
-    const inactiveColor = props.hasInvertedStyle
+    const inactiveColor = hasInvertedStyle
       ? colors?.base.textSecondaryInverse
       : colors?.base.textSecondary;
 
+    const activeBorderColor = hasInvertedStyle
+      ? colors?.base?.borderInverse
+      : colors?.accent?.border;
+
+    const inactiveBorderColor = hasInvertedStyle
+      ? colors?.base.borderInverse
+      : colors?.base.border;
+
     return `
-      color: ${props.active ? activeColor : inactiveColor};
+      color: ${active ? activeColor : inactiveColor};
 
       ${props.theme?.breakpoints.up("md")} {
         border-bottom: solid 2px transparent;
-        border-bottom-color: ${props.active ? colors?.accent.border : "transparent"};
+        border-bottom-color: ${active ? activeBorderColor : "transparent"};
         padding-bottom: ${spaces?.xxxs}px;
 
         &:hover {
           border-bottom-color: ${
-            props.active
-              ? colors?.accent.border
-              : props.hasInvertedStyle
-                ? colors?.base.borderInverse
-                : colors?.base.border
+            active ? activeBorderColor : inactiveBorderColor
           };
         }
       }

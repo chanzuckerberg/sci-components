@@ -6,6 +6,7 @@ import {
   StyledButtonSection,
   StyledDrawer,
   StyledHeader,
+  StyledHeaderButton,
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
   StyledNarrowButton,
@@ -63,6 +64,8 @@ export default function NavigationHeader<T extends string = string>({
   title,
 }: NavigationHeaderProps<T>) {
   const theme = useTheme();
+  const mode = theme?.palette?.mode || "light";
+
   const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(true);
 
@@ -72,6 +75,10 @@ export default function NavigationHeader<T extends string = string>({
       label="Search"
       placeholder="Search"
       sdsStyle="rounded"
+      customTheme={
+        hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
+      }
+      hasInvertedStyle={hasInvertedStyle}
       {...searchProps}
     />
   );
@@ -127,6 +134,13 @@ export default function NavigationHeader<T extends string = string>({
               sdsType="secondary"
               isAllCaps={false}
               startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
+              customTheme={
+                hasInvertedStyle
+                  ? mode === "light"
+                    ? "dark"
+                    : "light"
+                  : "auto"
+              }
             >
               {buttonProps.children}
             </Button>
@@ -142,16 +156,24 @@ export default function NavigationHeader<T extends string = string>({
               sdsType="secondary"
               icon={buttonProps.icon}
               aria-label={String(buttonProps.children)}
+              customTheme={
+                hasInvertedStyle
+                  ? mode === "light"
+                    ? "dark"
+                    : "light"
+                  : "auto"
+              }
             />
           );
         }
 
         return (
-          <Button
+          <StyledHeaderButton
             key={key}
             sx={fullWidth}
             sdsStyle="rounded"
             {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+            hasInvertedStyle={hasInvertedStyle}
           />
         );
       })}
@@ -189,6 +211,9 @@ export default function NavigationHeader<T extends string = string>({
           sdsStyle="icon"
           icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
           onClick={() => setDrawerOpen((prev) => !prev)}
+          customTheme={
+            hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
+          }
         />
       )}
     </StyledToolbar>

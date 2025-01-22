@@ -1,4 +1,8 @@
-import { ButtonProps as RawButtonProps } from "@mui/material";
+import {
+  ButtonProps as RawButtonProps,
+  ThemeProvider,
+  useTheme,
+} from "@mui/material";
 import React, { ForwardedRef } from "react";
 import {
   SDSWarningTypes,
@@ -8,6 +12,7 @@ import { StyledButton, StyledButtonLegacy, StyledMinimalButton } from "./style";
 import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
 import { filterProps } from "src/common/utils";
+import { Theme } from "../styles";
 
 type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
 type ButtonSize = "small" | "medium" | "large";
@@ -38,7 +43,10 @@ export interface SdsButtonProps {
 
 type SdsProps = SdsIconButtonProps | SdsMinimalButtonProps | SdsButtonProps;
 
-export type ButtonProps = RawButtonProps & SdsProps;
+export type ButtonProps = RawButtonProps &
+  SdsProps & {
+    customTheme?: "light" | "dark" | "auto";
+  };
 
 /**
  * (masoudmanson): The MUI variant prop is determined by the sdsType prop.
@@ -58,7 +66,11 @@ const Button = React.forwardRef(
     props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { sdsStyle, sdsType } = props;
+    const { sdsStyle, sdsType, customTheme = "auto" } = props;
+
+    const muiTheme = useTheme();
+    const mode = muiTheme?.palette?.mode || "light";
+    const componentTheme = customTheme !== "auto" ? customTheme : mode;
 
     if (!sdsStyle || !sdsType) {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
@@ -94,12 +106,14 @@ const Button = React.forwardRef(
           const finalProps = filterProps(propsWithDefault, excludedProps);
 
           return (
-            <ButtonIcon
-              icon={props?.icon}
-              {...finalProps}
-              sdsType={sdsType as Exclude<ButtonType, "destructive">}
-              ref={ref}
-            />
+            <ThemeProvider theme={Theme(componentTheme)}>
+              <ButtonIcon
+                icon={props?.icon}
+                {...finalProps}
+                sdsType={sdsType as Exclude<ButtonType, "destructive">}
+                ref={ref}
+              />
+            </ThemeProvider>
           );
         } else {
           showWarningIfFirstOccurence(
@@ -110,28 +124,36 @@ const Button = React.forwardRef(
 
       case sdsStyle === "minimal":
         return (
-          <StyledMinimalButton
-            color="primary"
-            variant="text"
-            {...propsWithDefault}
-            ref={ref}
-            data-style={sdsStyle}
-          />
+          <ThemeProvider theme={Theme(componentTheme)}>
+            <StyledMinimalButton
+              color="primary"
+              variant="text"
+              {...propsWithDefault}
+              ref={ref}
+              data-style={sdsStyle}
+            />
+          </ThemeProvider>
         );
 
       case sdsStyle === "rounded":
       case sdsStyle === "square":
         return (
-          <StyledButton
-            color="primary"
-            variant={sdsType ? MUI_VARIANT_MAP[sdsType] : "text"}
-            {...propsWithDefault}
-            ref={ref}
-          />
+          <ThemeProvider theme={Theme(componentTheme)}>
+            <StyledButton
+              color="primary"
+              variant={sdsType ? MUI_VARIANT_MAP[sdsType] : "text"}
+              {...propsWithDefault}
+              ref={ref}
+            />
+          </ThemeProvider>
         );
 
       default:
-        return <StyledButtonLegacy {...propsWithDefault} ref={ref} />;
+        return (
+          <ThemeProvider theme={Theme(componentTheme)}>
+            <StyledButtonLegacy {...propsWithDefault} ref={ref} />
+          </ThemeProvider>
+        );
     }
   }
 );

@@ -11,7 +11,7 @@ import Tag from "../Tag";
 import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
-import Button from "../Button";
+import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -45,6 +45,29 @@ export const StyledToolbar = styled(Toolbar)`
           border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider}
         }
       }
+    `;
+  }}
+`;
+
+export interface ExtraButtonProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+}
+
+export const StyledHeaderButton = styled(Button)<
+  ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
+>`
+  ${(props) => {
+    const { sdsType, hasInvertedStyle } = props;
+    const mode = props?.theme?.palette?.mode || "light";
+    const semanticColors = getSemanticColors(props);
+
+    const secondaryButtonStyles = `
+      box-shadow: inset 0 0 0 1px ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
+      color: ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
+    `;
+
+    return `
+      ${sdsType === "secondary" && hasInvertedStyle ? secondaryButtonStyles : ""}
     `;
   }}
 `;
@@ -102,8 +125,7 @@ export const StyledTitleContainer = styled.div`
 `;
 
 export const StyledTag = styled(Tag)`
-  margin: 0;
-
+  margin: 1px 0 0 0;
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
     ${fontBody("xxxs", "regular", /* isNarrow */ true)}
@@ -138,6 +160,10 @@ export const StyledPrimaryNavContainer = styled.div`
   }}
 `;
 
+interface ExtraSearchProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+}
+
 export const StyledSearch = styled(InputSearch)`
   margin: 0;
   max-width: 320px;
@@ -148,10 +174,29 @@ export const StyledSearch = styled(InputSearch)`
     ${fontBody("m", "regular", /* isNarrow */ true)}
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraSearchProps) => {
+    const { hasInvertedStyle } = props;
+
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
+      .MuiInputBase-root {
+        &.Mui-focused {
+          fieldset {
+            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderInverse : ""} !important;
+          }
+
+          .MuiInputAdornment-root {
+            .MuiButtonBase-root:last-of-type {
+              svg {
+                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : ""};
+              }
+            }
+          }
+        }
+      }
+
       ${props.theme?.breakpoints.down("md")} {
         max-width: unset;
         padding: ${spaces?.m}px ${spaces?.xl}px;
@@ -211,10 +256,6 @@ export const StyledDrawer = styled(Drawer)`
 
 export const StyledNarrowButton = styled(Button)`
   & {
-    margin: 0;
-  }
-
-  svg.MuiSvgIcon-root {
     margin: 0;
   }
 `;

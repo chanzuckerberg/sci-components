@@ -1,4 +1,8 @@
-import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
+import {
+  TextFieldProps as RawTextFieldSearchProps,
+  ThemeProvider,
+  useTheme,
+} from "@mui/material";
 import React, { forwardRef, useRef, useState } from "react";
 import Button from "src/core/Button";
 import {
@@ -8,6 +12,7 @@ import {
   StyledSearchBase,
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import { Theme } from "../styles";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -15,6 +20,7 @@ export interface AccessibleInputSearchProps {
   id: string;
   handleSubmit?: (value: string) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  customTheme?: "light" | "dark" | "auto";
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
@@ -35,8 +41,13 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       handleSubmit,
       onChange,
       disabled,
+      customTheme = "auto",
       ...rest
     } = props;
+
+    const muiTheme = useTheme();
+    const mode = muiTheme?.palette?.mode || "light";
+    const componentTheme = customTheme !== "auto" ? customTheme : mode;
 
     /**
      * (masoudmanson): In case that the ref is not provided, we will create a new one.
@@ -98,7 +109,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
     }
 
     return (
-      <>
+      <ThemeProvider theme={Theme(componentTheme)}>
         <StyledLabel htmlFor={id}>{label}</StyledLabel>
         <StyledSearchBase
           id={id}
@@ -150,7 +161,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           autoComplete="one-time-code"
           {...rest}
         />
-      </>
+      </ThemeProvider>
     );
   }
 );
