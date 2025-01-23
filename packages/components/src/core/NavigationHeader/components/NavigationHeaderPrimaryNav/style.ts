@@ -9,7 +9,7 @@ interface PrimaryNavItemProps extends ExtraHeaderProps {
 
 export const PrimaryNavItem = styled(Button)`
   display: flex;
-  align-items: center;
+  align-items: start;
   background: none;
 
   &:hover {
