@@ -93,7 +93,6 @@ export const Default = {
         label: "Secondary",
         type: "dropdown",
       },
-
       {
         label: "Secondary",
         onClick: () => alert("clicked on secondary"),

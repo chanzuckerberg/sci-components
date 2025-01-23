@@ -75,7 +75,11 @@ export const StyledTextItem = styled(Button)`
   }}
 `;
 
-export const StyledAccordion = styled(Accordion)`
+const doNotForwardProps = ["hasInvertedStyle"];
+
+export const StyledAccordion = styled(Accordion, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   width: 100%;
 
   .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {

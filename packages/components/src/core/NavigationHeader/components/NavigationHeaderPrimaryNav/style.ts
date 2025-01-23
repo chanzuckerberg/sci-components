@@ -7,7 +7,11 @@ interface PrimaryNavItemProps extends ExtraHeaderProps {
   active?: boolean;
 }
 
-export const PrimaryNavItem = styled(Button)`
+const doNotForwardProps = ["active", "hasInvertedStyle"];
+
+export const PrimaryNavItem = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   display: flex;
   align-items: start;
   background: none;
@@ -64,7 +68,9 @@ export const PrimaryNavItem = styled(Button)`
   }}
 `;
 
-export const StyledLabel = styled.span`
+export const StyledLabel = styled("span", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontHeader("m")}
 
   ${(props: PrimaryNavItemProps) => {

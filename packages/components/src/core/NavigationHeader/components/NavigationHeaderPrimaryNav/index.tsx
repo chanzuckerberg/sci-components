@@ -4,11 +4,13 @@ import { ReactNode } from "react";
 import { StyledTag } from "../../style";
 import { StyledSection } from "../style";
 
-export interface NavigationHeaderPrimaryNavItem<T extends string> {
+export interface NavigationHeaderPrimaryNavItem<T extends string>
+  extends Record<string, unknown> {
   key: T;
   label: ReactNode;
   tag?: string;
   tagColor?: SdsTagColorType;
+  onClick?: (e: React.SyntheticEvent) => void;
 }
 
 export interface NavigationHeaderPrimaryNavProps<T extends string> {
@@ -27,22 +29,25 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   return (
     <StyledSection>
       {items.map((item) => {
-        const isActive = item.key === value;
+        const { key, label, tag, tagColor, ...rest } = item;
+        const isActive = key === value;
 
         return (
           <PrimaryNavItem
+            key={key}
+            {...rest}
             active={isActive}
-            key={item.key}
-            onClick={() => onChange(item.key)}
+            onClick={(e) => {
+              onChange(key);
+              item.onClick?.(e);
+            }}
             hasInvertedStyle={hasInvertedStyle}
           >
             <StyledLabel active={isActive} hasInvertedStyle={hasInvertedStyle}>
-              {item.label}
+              {label}
             </StyledLabel>
 
-            {item.tag && (
-              <StyledTag label={item.tag} color={item.tagColor} hover={false} />
-            )}
+            {tag && <StyledTag label={tag} color={tagColor} hover={false} />}
           </PrimaryNavItem>
         );
       })}

@@ -17,7 +17,11 @@ export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
 }
 
-export const StyledHeader = styled(AppBar)`
+const doNotForwardProps = ["hasInvertedStyle"];
+
+export const StyledHeader = styled(AppBar, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
 
@@ -30,7 +34,9 @@ export const StyledHeader = styled(AppBar)`
   }}
 `;
 
-export const StyledToolbar = styled(Toolbar)`
+export const StyledToolbar = styled(Toolbar, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
@@ -91,7 +97,9 @@ export const StyledLogoWrapper = styled.div`
   align-items: center;
 `;
 
-export const StyledTitleContainer = styled.div`
+export const StyledTitleContainer = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontHeader("l")}
   ${fontHeader("l", /* isNarrow */ true)}
 
@@ -241,7 +249,9 @@ export const StyledButtonSection = styled.section`
   }}
 `;
 
-export const StyledDrawer = styled(Drawer)`
+export const StyledDrawer = styled(Drawer, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
 
