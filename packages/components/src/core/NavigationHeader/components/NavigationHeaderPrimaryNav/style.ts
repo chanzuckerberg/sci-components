@@ -27,7 +27,7 @@ export const PrimaryNavItem = styled(Button)`
       : colors?.base.backgroundSecondary;
 
     const activeBorderColor = hasInvertedStyle
-      ? colors?.base?.borderInverse
+      ? colors?.base?.borderOnFill
       : colors?.accent?.border;
 
     const inactiveBorderColor = hasInvertedStyle
@@ -81,11 +81,11 @@ export const StyledLabel = styled.span`
       : colors?.base.textSecondary;
 
     const activeBorderColor = hasInvertedStyle
-      ? colors?.base?.borderInverse
+      ? colors?.base?.borderOnFill
       : colors?.accent?.border;
 
     const inactiveBorderColor = hasInvertedStyle
-      ? colors?.base.borderInverse
+      ? colors?.base.borderOnFill
       : colors?.base.border;
 
     return `

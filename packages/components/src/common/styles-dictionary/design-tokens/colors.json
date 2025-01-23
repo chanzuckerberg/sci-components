@@ -106,17 +106,33 @@
             "value": "{sds.color.primitive.gray.300.value}",
             "darkValue": "{sds.color.primitive.gray.300.darkValue}"
           },
+          "border-disabled-inverse": {
+            "value": "{sds.color.primitive.gray.600.value}",
+            "darkValue": "{sds.color.primitive.gray.600.darkValue}"
+          },
           "border-hover": {
             "value": "{sds.color.primitive.gray.900.value}",
             "darkValue": "{sds.color.primitive.gray.900.darkValue}"
           },
+          "border-hover-inverse": {
+            "value": "{sds.color.primitive.gray.50.value}",
+            "darkValue": "{sds.color.primitive.gray.50.darkValue}"
+          },
           "border-inverse": {
+            "value": "{sds.color.primitive.gray.300.value}",
+            "darkValue": "{sds.color.primitive.gray.300.darkValue}"
+          },
+          "border-on-fill": {
             "value": "{sds.color.primitive.gray.50.value}",
             "darkValue": "{sds.color.primitive.gray.50.darkValue}"
           },
           "border-pressed": {
             "value": "{sds.color.primitive.gray.900.value}",
             "darkValue": "{sds.color.primitive.gray.900.darkValue}"
+          },
+          "border-pressed-inverse": {
+            "value": "{sds.color.primitive.gray.50.value}",
+            "darkValue": "{sds.color.primitive.gray.50.darkValue}"
           },
           "border-table": {
             "value": "{sds.color.primitive.gray.300.value}",
@@ -158,6 +174,10 @@
             "value": "{sds.color.primitive.gray.300.value}",
             "darkValue": "{sds.color.primitive.gray.300.darkValue}"
           },
+          "ornament-disabled-inverse": {
+            "value": "{sds.color.primitive.gray.600.value}",
+            "darkValue": "{sds.color.primitive.gray.600.darkValue}"
+          },
           "ornament-on-fill": {
             "value": "{sds.color.primitive.gray.50.value}",
             "darkValue": "{sds.color.primitive.gray.50.darkValue}"
@@ -193,6 +213,10 @@
           "text-disabled": {
             "value": "{sds.color.primitive.gray.300.value}",
             "darkValue": "{sds.color.primitive.gray.300.darkValue}"
+          },
+          "text-disabled-inverse": {
+            "value": "{sds.color.primitive.gray.600.value}",
+            "darkValue": "{sds.color.primitive.gray.600.darkValue}"
           },
           "text-primary": {
             "value": "{sds.color.primitive.gray.900.value}",

@@ -184,7 +184,7 @@ export const StyledSearch = styled(InputSearch)`
       .MuiInputBase-root {
         &.Mui-focused {
           fieldset {
-            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderInverse : ""} !important;
+            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderOnFill : ""} !important;
           }
 
           .MuiInputAdornment-root {
