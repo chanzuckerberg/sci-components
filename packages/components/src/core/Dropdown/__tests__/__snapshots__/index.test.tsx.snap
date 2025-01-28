@@ -3,8 +3,7 @@
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ocgsj9-MuiButtonBase-root-MuiButton-root"
-  data-style="minimal"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-e5aiuf-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -14,7 +13,6 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
   >
     <span
       class="styled-label css-bnltsj"
-      sdstype="label"
     >
       Click Target
     </span>
@@ -47,8 +45,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
 exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ocgsj9-MuiButtonBase-root-MuiButton-root"
-  data-style="minimal"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-e5aiuf-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -58,7 +55,6 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
   >
     <span
       class="styled-label css-bnltsj"
-      sdstype="label"
     >
       Click Target
     </span>

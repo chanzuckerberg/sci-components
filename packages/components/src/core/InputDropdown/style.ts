@@ -17,13 +17,13 @@ import {
 
 const doNotForwardProps = [
   "intent",
-  // "state",
-  // "sdsType",
-  // "isMinimal",
-  // "shouldTruncateMinimalDetails",
-  // "shouldPutAColonAfterLabel",
-  // "value",
-  // "sdsStyle",
+  "state",
+  "sdsType",
+  "isMinimal",
+  "shouldTruncateMinimalDetails",
+  "shouldPutAColonAfterLabel",
+  "value",
+  "sdsStyle",
 ];
 
 type IntentType = "negative" | "notice" | "positive";
@@ -76,9 +76,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
-    border: ${borders?.base?.default} !important;
+    border: ${borders?.base?.default};
     box-shadow: none !important;
-    background-color: none !important;
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
@@ -107,7 +106,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: transparent;
-      border-color: ${semanticColors?.base?.borderHover};
+      border: ${borders?.base?.hover};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
@@ -120,6 +119,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
+      background-color: transparent;
       border: ${borders?.base?.pressed};
       color: ${semanticColors?.base?.textPrimary};
 
@@ -129,6 +129,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:focus {
+      background-color: transparent;
       outline-offset: -1px;
     }
   `;
@@ -144,7 +145,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     /* this is needed to left align the label text */
     align-items: flex-start;
-    border: none;
+    border: none !important;
     flex-direction: column;
     padding: ${spaces?.xs}px ${spaces?.s}px;
     background-color: transparent;
@@ -201,6 +202,7 @@ const square = (props: InputDropdownProps): SerializedStyles => {
   return css`
     border-radius: ${corners?.m}px;
     min-width: 90px;
+    background-color: transparent;
   `;
 };
 
@@ -210,6 +212,7 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   return css`
     border-radius: ${corners?.l}px;
     min-width: 90px;
+    background-color: transparent;
   `;
 };
 

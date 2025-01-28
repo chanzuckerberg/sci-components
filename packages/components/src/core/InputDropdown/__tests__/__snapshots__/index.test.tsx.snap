@@ -4,10 +4,9 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
 <div>
   <button
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1wees1q-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-pwfnai-MuiButtonBase-root-MuiButton-root"
     data-testid="InputDropdown"
     label="Label"
-    state="default"
     tabindex="0"
     type="button"
   >
@@ -16,7 +15,6 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
     >
       <span
         class="styled-label css-bnltsj"
-        sdstype="label"
       >
         Label
       </span>
