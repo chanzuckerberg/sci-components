@@ -17,13 +17,13 @@ import {
 
 const doNotForwardProps = [
   "intent",
-  "state",
-  "sdsType",
-  "isMinimal",
-  "shouldTruncateMinimalDetails",
-  "shouldPutAColonAfterLabel",
-  "value",
-  "sdsStyle",
+  // "state",
+  // "sdsType",
+  // "isMinimal",
+  // "shouldTruncateMinimalDetails",
+  // "shouldPutAColonAfterLabel",
+  // "value",
+  // "sdsStyle",
 ];
 
 type IntentType = "negative" | "notice" | "positive";
@@ -76,7 +76,9 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
-    border: ${borders?.base?.default};
+    border: ${borders?.base?.default} !important;
+    box-shadow: none !important;
+    background-color: none !important;
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
