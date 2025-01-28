@@ -12,6 +12,7 @@ const CellBasicNameSpaceTest = (props: CellHeaderProps) => {
             direction="asc"
             active
             hideSortIcon
+            hover
             horizontalAlign="center"
             shouldShowTooltipOnHover
             tooltipProps={{ sdsStyle: "light" }}

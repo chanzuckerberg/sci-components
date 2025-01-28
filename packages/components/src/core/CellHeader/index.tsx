@@ -16,6 +16,7 @@ interface CellHeaderContentProps {
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
   children: React.ReactNode;
+  hover?: boolean;
 }
 
 interface CellHeaderRawProps
@@ -39,6 +40,7 @@ const CellHeaderContent = (
     direction = "desc",
     hideSortIcon = false,
     horizontalAlign,
+    hover,
   } = props;
 
   const sdsIconName: keyof IconNameToSizes =
@@ -61,7 +63,7 @@ const CellHeaderContent = (
   return (
     <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
       <span>{children}</span>
-      {(!hideSortIcon || active) && sortIcon}
+      {(!hideSortIcon || active) && hover && sortIcon}
     </StyledCellHeaderContainer>
   );
 };
@@ -74,10 +76,11 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
       tooltipProps,
       tooltipText = "",
       tooltipSubtitle,
+      hover = true,
       ...rest
     } = props;
 
-    if (shouldShowTooltipOnHover) {
+    if (shouldShowTooltipOnHover && hover) {
       return (
         <Tooltip
           arrow
@@ -87,15 +90,19 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
           title={tooltipText}
           {...tooltipProps}
         >
-          <StyledTableHeader ref={ref} {...rest}>
-            <CellHeaderContent {...props}>{children}</CellHeaderContent>
+          <StyledTableHeader ref={ref} hover={hover} {...rest}>
+            <CellHeaderContent {...props} hover={hover}>
+              {children}
+            </CellHeaderContent>
           </StyledTableHeader>
         </Tooltip>
       );
     }
     return (
-      <StyledTableHeader ref={ref} {...rest}>
-        <CellHeaderContent {...props}>{children}</CellHeaderContent>
+      <StyledTableHeader ref={ref} hover={hover} {...rest}>
+        <CellHeaderContent hover={hover} {...props}>
+          {children}
+        </CellHeaderContent>
       </StyledTableHeader>
     );
   }
