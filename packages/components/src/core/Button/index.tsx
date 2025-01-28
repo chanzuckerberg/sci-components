@@ -15,38 +15,49 @@ import { filterProps } from "src/common/utils";
 import { Theme } from "../styles";
 
 type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
+
+type ButtonTypeMap = {
+  icon: "primary" | "secondary" | "tertiary";
+  minimal: "primary" | "secondary";
+  rounded: "primary" | "secondary" | "destructive";
+  square: "primary" | "secondary" | "destructive";
+};
+
 type ButtonSize = "small" | "medium" | "large";
 
-export interface SdsIconButtonProps {
-  sdsStyle?: "icon";
-  sdsType?: "primary" | "secondary" | "tertiary";
+interface BaseButtonProps {
+  customTheme?: "light" | "dark" | "auto";
+  children?: React.ReactNode;
   isAllCaps?: boolean;
-  isRounded?: boolean;
+}
+
+export interface SdsIconButtonProps extends BaseButtonProps {
+  sdsStyle: "icon";
+  sdsType?: ButtonTypeMap["icon"];
   sdsSize?: ButtonSize;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
 }
 
-export interface SdsMinimalButtonProps {
-  sdsStyle?: "minimal";
-  sdsType?: "primary" | "secondary";
-  isAllCaps?: boolean;
-  isRounded?: boolean;
+export interface SdsMinimalButtonProps extends BaseButtonProps {
+  sdsStyle: "minimal";
+  sdsType?: ButtonTypeMap["minimal"];
+  children: React.ReactNode;
 }
 
-export interface SdsButtonProps {
-  sdsStyle?: "rounded" | "square";
-  sdsType?: "primary" | "secondary" | "destructive";
-  isAllCaps?: boolean;
+export interface SdsButtonProps extends BaseButtonProps {
+  sdsStyle: "rounded" | "square";
   isRounded?: boolean;
+  sdsType?: ButtonTypeMap["rounded" | "square"];
+  children: React.ReactNode;
 }
 
-type SdsProps = SdsIconButtonProps | SdsMinimalButtonProps | SdsButtonProps;
+export type SdsProps =
+  | SdsIconButtonProps
+  | SdsMinimalButtonProps
+  | SdsButtonProps;
 
-export type ButtonProps = RawButtonProps &
-  SdsProps & {
-    customTheme?: "light" | "dark" | "auto";
-  };
+export type ButtonProps = RawButtonProps & SdsProps;
 
 /**
  * (masoudmanson): The MUI variant prop is determined by the sdsType prop.
@@ -66,7 +77,7 @@ const Button = React.forwardRef(
     props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { sdsStyle, sdsType, customTheme = "auto" } = props;
+    const { sdsStyle = "square", sdsType, customTheme = "auto" } = props;
 
     const muiTheme = useTheme();
     const mode = muiTheme?.palette?.mode || "light";
@@ -76,7 +87,7 @@ const Button = React.forwardRef(
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
     }
 
-    if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
+    if (sdsStyle === "icon" && typeof props?.isAllCaps === "boolean") {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMinimalIsAllCaps);
     }
 
@@ -92,8 +103,9 @@ const Button = React.forwardRef(
     const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
-      case sdsStyle === "icon":
-        if (props?.icon !== undefined) {
+      case sdsStyle === "icon": {
+        const iconProps = props as SdsIconButtonProps;
+        if (iconProps?.icon !== undefined) {
           // (masoudmanson): We need to remove the props that are not supported by
           // the ButtonIcon component.
           const excludedProps: (keyof PropsWithDefaultsType)[] = [
@@ -108,7 +120,7 @@ const Button = React.forwardRef(
           return (
             <ThemeProvider theme={Theme(componentTheme)}>
               <ButtonIcon
-                icon={props?.icon}
+                icon={iconProps?.icon}
                 {...finalProps}
                 sdsType={sdsType as Exclude<ButtonType, "destructive">}
                 ref={ref}
@@ -121,6 +133,7 @@ const Button = React.forwardRef(
           );
           return null;
         }
+      }
 
       case sdsStyle === "minimal":
         return (

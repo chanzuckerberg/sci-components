@@ -24,6 +24,7 @@ export const StyledTextItem = styled(Button)`
 
   &:hover {
     background: none;
+    box-shadow: none;
   }
 
   ${(props: StyledTextItemProps) => {
@@ -64,7 +65,7 @@ export const StyledTextItem = styled(Button)`
         }
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         padding-left: ${spaces?.xl}px;
 
         &:hover {
@@ -132,7 +133,7 @@ export const StyledAccordion = styled(Accordion, {
             color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : semanticColors?.base.ornamentSecondaryHover} !important; 
           }
 
-          ${props.theme?.breakpoints.down("md")} {
+          ${props.theme?.breakpoints?.down("md")} {
             background: ${hasInvertedStyle ? semanticColors?.base.backgroundSecondaryInverse : semanticColors?.base.backgroundSecondary};
           }
         }

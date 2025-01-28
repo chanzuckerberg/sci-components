@@ -194,6 +194,10 @@
             "value": "{sds.color.primitive.gray.600.value}",
             "darkValue": "{sds.color.primitive.gray.600.darkValue}"
           },
+          "ornament-secondary-inverse": {
+            "value": "{sds.color.primitive.gray.300.value}",
+            "darkValue": "{sds.color.primitive.gray.300.darkValue}"
+          },
           "ornament-secondary-hover": {
             "value": "{sds.color.primitive.gray.900.value}",
             "darkValue": "{sds.color.primitive.gray.900.darkValue}"

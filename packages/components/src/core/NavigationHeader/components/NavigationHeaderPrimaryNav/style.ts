@@ -18,6 +18,7 @@ export const PrimaryNavItem = styled(Button, {
 
   &:hover {
     background: none;
+    box-shadow: none;
   }
 
   ${(props: PrimaryNavItemProps) => {
@@ -51,7 +52,7 @@ export const PrimaryNavItem = styled(Button, {
         }
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         border-left: ${spaces?.xs}px solid ${active ? activeBorderColor : "transparent"};
         border-radius: 0;
         justify-content: start;

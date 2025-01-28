@@ -36,6 +36,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           <PrimaryNavItem
             key={key}
             {...rest}
+            sdsStyle="square"
             active={isActive}
             onClick={(e) => {
               onChange(key);

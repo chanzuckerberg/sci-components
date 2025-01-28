@@ -1,12 +1,18 @@
-import { Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react";
 import { NavigationHeader } from "./stories/default";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
-import { NAVIGATION_HEADER_LOGO_OPTIONS } from "./constants";
+import {
+  NAVIGATION_HEADER_EXCLUDED_CONTROLS,
+  NAVIGATION_HEADER_LOGO_OPTIONS,
+} from "./constants";
+import { TestDemo } from "./stories/test";
+import { Theme } from "src/core/styles";
+import { ThemeProvider } from "@mui/material";
 
 export default {
   argTypes: {
-    button: {
+    buttons: {
       control: { type: "object" },
     },
     hasInvertedStyle: {
@@ -23,12 +29,15 @@ export default {
     logoUrl: {
       control: { type: "text" },
     },
-    primaryNavItem: {
+    primaryNavItems: {
       control: { type: "object" },
     },
     primaryNavPosition: {
       control: { type: "select" },
       options: ["left", "right"],
+    },
+    searchProps: {
+      control: { type: "object" },
     },
     secondaryNavItems: {
       control: { type: "object" },
@@ -104,4 +113,22 @@ export const Default = {
     tagColor: "beta",
     title: "Logo Name",
   },
+};
+
+// Test
+
+export const Test = {
+  parameters: {
+    controls: {
+      exclude: NAVIGATION_HEADER_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => (
+    <ThemeProvider theme={Theme("light")}>
+      <TestDemo {...args} />
+    </ThemeProvider>
+  ),
 };

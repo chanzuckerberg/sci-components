@@ -57,6 +57,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       ornamentPrimaryInverse: appTheme.colors.gray[50]!,
       ornamentSecondary: appTheme.colors.gray[600],
       ornamentSecondaryHover: appTheme.colors.gray[900]!,
+      ornamentSecondaryInverse: appTheme.colors.gray[300],
       ornamentSecondaryPressed: appTheme.colors.gray[900]!,
       surface: appTheme.colors.gray[50]!,
       surfaceInverse: appTheme.colors.gray[900]!,
@@ -193,6 +194,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       ornamentPrimaryInverse: appTheme.colors.gray[50]!,
       ornamentSecondary: appTheme.colors.gray[600],
       ornamentSecondaryHover: appTheme.colors.gray[900]!,
+      ornamentSecondaryInverse: appTheme.colors.gray[300],
       ornamentSecondaryPressed: appTheme.colors.gray[900]!,
       surface: appTheme.colors.gray[100],
       surfaceInverse: appTheme.colors.gray[900]!,
@@ -294,6 +296,13 @@ export function makeThemeOptions(
         defaultProps: {
           disableRipple: true,
         },
+        // styleOverrides: {
+        //   root: {
+        //     "&:hover": {
+        //       boxShadow: "none",
+        //     },
+        //   },
+        // },
       },
       MuiDrawer: {
         defaultProps: {

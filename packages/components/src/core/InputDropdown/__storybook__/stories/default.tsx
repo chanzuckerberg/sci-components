@@ -3,7 +3,6 @@ import { Args } from "@storybook/react";
 import { useEffect, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Callout from "src/core/Callout";
-import CalloutTitle from "src/core/Callout/components/CalloutTitle";
 import DropdownMenu from "src/core/DropdownMenu";
 import { StyledInputDropdown } from "../style";
 
@@ -125,12 +124,12 @@ export const InputDropdown = <
   return (
     <div>
       {invalid ? (
-        <Callout autoDismiss={false} intent="negative">
-          <CalloutTitle>Invalid props!</CalloutTitle>
-          When using the InputDropdown component, please note that the
-          combination of setting the sdsType prop to &quot;value&quot; and the
-          multiple prop to &quot;true&quot; is not allowed.
-        </Callout>
+        <Callout
+          autoDismiss={false}
+          intent="negative"
+          title="Invalid props!"
+          body='When using the InputDropdown component, please note that the combination of setting the sdsType prop to "value" and the multiple prop to "true" is not allowed.'
+        />
       ) : (
         <StyledInputDropdown
           disabled={disabled}

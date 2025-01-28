@@ -63,6 +63,7 @@ export interface BaseColor {
   ornamentPrimary: string;
   ornamentPrimaryInverse: string;
   ornamentSecondary: string;
+  ornamentSecondaryInverse: string;
   ornamentSecondaryHover: string;
   ornamentSecondaryPressed: string;
 }

@@ -47,7 +47,7 @@ export const StyledToolbar = styled(Toolbar, {
         max-height: 56px;
         padding: ${spaces?.m}px ${spaces?.xl}px;
 
-        ${props.theme?.breakpoints.down("md")} {
+        ${props.theme?.breakpoints?.down("md")} {
           border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider}
         }
       }
@@ -85,7 +85,7 @@ export const StyledLogoLinkWrapper = styled(Link)`
 
   ${(props: CommonThemeProps) => {
     return `
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         width: 100%;
       }
     `;
@@ -123,7 +123,7 @@ export const StyledTitleContainer = styled("div", {
         margin-right: ${spaces?.xs}px;
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         p {
           margin-left: ${spaces?.xs}px;
         }
@@ -161,7 +161,7 @@ export const StyledPrimaryNavContainer = styled.div`
       margin-right: ${spaces?.xxl}px;
       justify-content: ${props.primaryNavPosition === "left" ? "flex-start" : "space-between"};
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         flex-direction: column;
       }
     `;
@@ -190,9 +190,21 @@ export const StyledSearch = styled(InputSearch)`
 
     return `
       .MuiInputBase-root {
-        &.Mui-focused {
+        fieldset {
+          border-color: ${hasInvertedStyle ? semanticColors?.base?.borderInverse : ""};
+        }
+
+        .MuiInputAdornment-root {
+          .MuiButtonBase-root:last-of-type {
+            svg {
+              color: ${hasInvertedStyle ? semanticColors?.base?.ornamentSecondaryInverse : ""};
+            }
+          }
+        }
+        
+        &:hover {
           fieldset {
-            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderOnFill : ""} !important;
+            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderHoverInverse : ""} !important;
           }
 
           .MuiInputAdornment-root {
@@ -203,9 +215,37 @@ export const StyledSearch = styled(InputSearch)`
             }
           }
         }
+
+        &.Mui-focused {
+          fieldset {
+            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderPressedInverse : ""} !important;
+          }
+
+          .MuiInputAdornment-root {
+            .MuiButtonBase-root:last-of-type {
+              svg {
+                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : ""};
+              }
+            }
+          }
+        }
+
+        &.Mui-disabled {
+          fieldset {
+            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderDisabledInverse : ""} !important;
+          }
+
+          .MuiInputAdornment-root {
+            .MuiButtonBase-root:last-of-type {
+              svg {
+                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentDisabledInverse : ""};
+              }
+            }
+          }
+        }
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         max-width: unset;
         padding: ${spaces?.m}px ${spaces?.xl}px;
       }
@@ -233,7 +273,7 @@ export const StyledButtonSection = styled.section`
       gap: ${spaces?.m}px;
       margin-left: ${spaces?.xl}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         gap: ${spaces?.l}px;
         flex-direction: column;
         margin-left: 0;

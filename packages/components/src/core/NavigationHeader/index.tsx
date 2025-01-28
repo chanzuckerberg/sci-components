@@ -24,15 +24,17 @@ import NavigationHeaderSecondaryNav, {
   NavigationHeaderSecondaryNavItem,
 } from "./components/NavigationHeaderSecondaryNav";
 import Button, {
+  SdsProps,
   ButtonProps,
   SdsButtonProps,
+  SdsIconButtonProps,
   SdsMinimalButtonProps,
 } from "../Button";
 import Icon from "../Icon";
 
 export interface NavigationHeaderProps<T extends string = string> {
   activePrimaryNavKey?: string;
-  buttons?: ButtonProps[];
+  buttons?: (SdsProps & ButtonProps)[];
   hasInvertedStyle?: boolean;
   logo?: ReactNode;
   logoUrl?: string;
@@ -46,6 +48,8 @@ export interface NavigationHeaderProps<T extends string = string> {
   tagColor?: SdsTagColorType;
   title: string;
 }
+
+type IconButtonProps = SdsIconButtonProps & { children: string };
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
@@ -67,6 +71,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       tag,
       tagColor,
       title,
+      ...rest
     } = props;
 
     const theme = useTheme();
@@ -144,71 +149,81 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderButtonsNode = () => {
+      if (!buttons || buttons.length === 0) return null;
+
       return (
-        buttons &&
-        buttons.length > 0 && (
-          <StyledButtonSection>
-            {buttons.map((buttonProps, idx) => {
-              const isIconButton = "icon" in buttonProps;
-              const key = `button-${idx}`;
-              const fullWidth = isNarrow ? { width: "100%" } : undefined;
-
-              if (isIconButton && isNarrow && buttonProps.icon) {
-                return (
-                  <Button
-                    key={key}
-                    sx={fullWidth}
-                    sdsStyle="minimal"
-                    sdsType="secondary"
-                    isAllCaps={false}
-                    startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
-                    customTheme={
-                      hasInvertedStyle
-                        ? mode === "light"
-                          ? "dark"
-                          : "light"
-                        : "auto"
-                    }
-                  >
-                    {buttonProps.children}
-                  </Button>
-                );
-              }
-
-              if (isIconButton && !isNarrow) {
-                return (
-                  <Button
-                    key={key}
-                    sdsIconProps={{ sdsSize: "l" }}
-                    sdsStyle="icon"
-                    sdsType="secondary"
-                    icon={buttonProps.icon}
-                    aria-label={String(buttonProps.children)}
-                    customTheme={
-                      hasInvertedStyle
-                        ? mode === "light"
-                          ? "dark"
-                          : "light"
-                        : "auto"
-                    }
-                  />
-                );
-              }
-
-              return (
-                <StyledHeaderButton
-                  key={key}
-                  sx={fullWidth}
-                  sdsStyle="rounded"
-                  {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
-                  hasInvertedStyle={hasInvertedStyle}
-                />
-              );
-            })}
-          </StyledButtonSection>
-        )
+        <StyledButtonSection>
+          {buttons.map((buttonProps, idx) => renderButton(buttonProps, idx))}
+        </StyledButtonSection>
       );
     };
+
+    const renderButton = (buttonProps: ButtonProps, idx: number) => {
+      const isIconButton = "icon" in buttonProps;
+      const key = `button-${idx}`;
+      const fullWidth = isNarrow ? { width: "100%" } : undefined;
+
+      if (isIconButton && isNarrow && buttonProps.icon) {
+        return renderNarrowIconButton(buttonProps, key, fullWidth);
+      }
+
+      if (isIconButton && !isNarrow) {
+        return renderWideIconButton(buttonProps as IconButtonProps, key);
+      }
+
+      return renderDefaultButton(buttonProps, key, fullWidth);
+    };
+
+    const renderNarrowIconButton = (
+      buttonProps: ButtonProps,
+      key: string,
+      fullWidth: { width: string } | undefined
+    ) => (
+      <Button
+        key={key}
+        sx={fullWidth}
+        sdsStyle="minimal"
+        sdsType="secondary"
+        isAllCaps={false}
+        startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
+        customTheme={
+          hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
+        }
+      >
+        {buttonProps.children}
+      </Button>
+    );
+
+    const renderWideIconButton = (
+      buttonProps: IconButtonProps,
+      key: string
+    ) => (
+      <Button
+        key={key}
+        sdsIconProps={{ sdsSize: "l" }}
+        sdsStyle="icon"
+        sdsType="secondary"
+        icon={buttonProps.icon}
+        aria-label={String(buttonProps.children)}
+        customTheme={
+          hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
+        }
+      />
+    );
+
+    const renderDefaultButton = (
+      buttonProps: ButtonProps,
+      key: string,
+      fullWidth: { width: string } | undefined
+    ) => (
+      <StyledHeaderButton
+        key={key}
+        sx={fullWidth}
+        {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+        sdsStyle="rounded"
+        hasInvertedStyle={hasInvertedStyle}
+      />
+    );
 
     const renderHeaderContent = () => {
       const logoNode = renderLogoNode();
@@ -264,13 +279,19 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const headerContent = renderHeaderContent();
+    const search = renderSearch();
+    const primaryNav = renderPrimaryNav();
+    const secondaryNav = renderSecondaryNav();
+    const buttonsNode = renderButtonsNode();
 
     return (
-      <div ref={ref}>
+      <>
         <StyledHeader
           elevation={0}
           position="static"
           hasInvertedStyle={hasInvertedStyle}
+          ref={ref}
+          {...rest}
         >
           {headerContent}
         </StyledHeader>
@@ -281,11 +302,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             hasInvertedStyle={hasInvertedStyle}
+            ref={ref}
+            {...rest}
           >
             {headerContent}
+
+            {search}
+            {primaryNav}
+            {secondaryNav}
+            {buttonsNode}
           </StyledDrawer>
         )}
-      </div>
+      </>
     );
   }
 );

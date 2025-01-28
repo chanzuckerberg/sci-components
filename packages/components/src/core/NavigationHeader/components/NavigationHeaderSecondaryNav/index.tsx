@@ -63,6 +63,7 @@ function SecondaryNavItem({
     <Fragment key={item.label}>
       {item.type === "text" && (
         <StyledTextItem
+          sdsStyle="minimal"
           onClick={item.onClick}
           hasInvertedStyle={hasInverseStyle}
           open={open}
@@ -74,6 +75,7 @@ function SecondaryNavItem({
       {item.type === "dropdown" && !isNarrow && (
         <>
           <StyledTextItem
+            sdsStyle="minimal"
             ref={buttonRef}
             onClick={(event) => setAnchorEl(event.currentTarget)}
             hasInvertedStyle={hasInverseStyle}

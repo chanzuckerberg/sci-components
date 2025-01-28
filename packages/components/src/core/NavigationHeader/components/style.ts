@@ -11,7 +11,7 @@ export const StyledSection = styled.section`
     return `
       column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${props.theme?.breakpoints?.down("md")} {
         align-items: start;
         flex-direction: column;
       }
