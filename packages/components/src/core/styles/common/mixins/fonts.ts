@@ -25,7 +25,7 @@ export const fontBody = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints.down("md")} {
+        ${props.theme?.breakpoints?.down("md")} {
           ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
         }
       `;
@@ -69,7 +69,7 @@ export const fontCaps = (fontSize: FontCapsSize, isNarrow: boolean = false) => {
 
       ${isNarrow
         ? css`
-            ${props.theme?.breakpoints.down("md")} {
+            ${props.theme?.breakpoints?.down("md")} {
               ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
             }
           `
@@ -103,7 +103,7 @@ export const fontHeader = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints.down("md")} {
+        ${props.theme?.breakpoints?.down("md")} {
           ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
         }
       `;
@@ -146,7 +146,7 @@ export const fontCode = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints.down("md")} {
+        ${props.theme?.breakpoints?.down("md")} {
           ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
         }
       `;
@@ -188,7 +188,7 @@ export const fontTabular = (
 
       ${isNarrow
         ? css`
-            ${props.theme?.breakpoints.down("md")} {
+            ${props.theme?.breakpoints?.down("md")} {
               ${themeToCss(
                 narrowTabular[fontWeight][fontSize],
                 tabularFontFamily

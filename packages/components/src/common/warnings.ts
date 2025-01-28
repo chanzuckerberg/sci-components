@@ -2,6 +2,7 @@ export enum SDSWarningTypes {
   ButtonMinimalIsAllCaps = "buttonMinimalIsAllCaps",
   ButtonMissingSDSProps = "buttonMissingProps",
   ButtonIconMissingIconProp = "buttonIconMissingIconProp",
+  ButtonDropdownMinimal = "buttonDropdownMinimal",
   ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
@@ -14,7 +15,7 @@ export const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonMinimalIsAllCaps]: {
     hasWarned: false,
     message:
-      "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'.",
+      "Warning: isAllCaps can not be applied to buttons with sdsStyle='icon'.",
   },
   [SDSWarningTypes.ButtonMissingSDSProps]: {
     hasWarned: false,
@@ -25,6 +26,10 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Buttons with an SDS type of icon require an icon prop to be provided.",
+  },
+  [SDSWarningTypes.ButtonDropdownMinimal]: {
+    hasWarned: false,
+    message: "Warning: Button Dropdowns can not be of type minimal!",
   },
   [SDSWarningTypes.ButtonToggleMissingIconProp]: {
     hasWarned: false,

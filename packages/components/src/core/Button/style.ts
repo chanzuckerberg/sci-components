@@ -22,6 +22,8 @@ const doNotForwardProps = [
   "sdsStyle",
   "sdsType",
   "sdsSize",
+  "hasInvertedStyle",
+  "customTheme",
 ];
 
 type ButtonExtraProps = ButtonProps & CommonThemeProps;

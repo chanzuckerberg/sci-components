@@ -4,19 +4,21 @@ import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import ButtonToggle from "src/core/ButtonToggle";
 import Callout from "src/core/Callout";
-import CalloutTitle from "src/core/Callout/components/CalloutTitle";
 import RawPanel from "src/core/Panel";
 import { PanelProps } from "../../Panel.types";
 
 const InvalidBasicPanelPropsError = (
-  <Callout intent="negative">
-    <CalloutTitle>Invalid Props!</CalloutTitle>
-    <p>
-      The <strong>Basic</strong> Panel only supports <strong>left</strong> or{" "}
-      <strong>right</strong> positions. Please update the{" "}
-      <strong>position</strong> prop to one of these valid values.
-    </p>
-  </Callout>
+  <Callout
+    intent="negative"
+    title="Invalid Props!"
+    body={
+      <>
+        The <strong>Basic</strong> Panel only supports <strong>left</strong> or{" "}
+        <strong>right</strong> positions. Please update the{" "}
+        <strong>position</strong> prop to one of these valid values.
+      </>
+    }
+  />
 );
 
 const Main = (

@@ -1,6 +1,5 @@
-import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
-import Button from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import ButtonIcon from "../ButtonIcon";
 import {
@@ -8,71 +7,69 @@ import {
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 
-type SdsProps = {
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsStyle?: "rounded" | "square" | "icon";
-  sdsType?: "primary" | "secondary";
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-  sdsSize?: "small" | "medium" | "large";
-};
+type SDSButtonDropdownSizes = "small" | "medium" | "large";
 
-export type ButtonDropdownProps<C extends React.ElementType = "button"> =
-  RawButtonProps<C, { component?: C }> & SdsProps;
+type SdsProps =
+  | {
+      sdsStyle: "icon";
+      sdsType?: "primary" | "secondary" | "tertiary";
+      icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+      sdsSize?: SDSButtonDropdownSizes;
+    }
+  | {
+      sdsStyle: "rounded" | "square";
+      sdsType?: "primary" | "secondary" | "destructive";
+      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+      sdsSize?: SDSButtonDropdownSizes;
+    };
 
-type IconSizeType = "xs" | "s" | "l" | "xl";
-
-const BUTTON_ICON_SIZE_TO_SDS_ICON_SIZE = {
-  large: "xl",
-  medium: "l",
-  small: "s",
-};
+export type ButtonDropdownProps = ButtonProps & SdsProps;
 
 /**
  * @see https://mui.com/material-ui/react-button/
  */
 const ButtonDropdown = React.forwardRef(
-  <C extends React.ElementType>(
-    props: ButtonDropdownProps<C>,
+  (
+    props: ButtonDropdownProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { icon, sdsStyle, sdsType, sdsSize = "medium", sdsIconProps } = props;
-    const iconSize = BUTTON_ICON_SIZE_TO_SDS_ICON_SIZE[sdsSize];
-
-    const iconItem = () => {
-      if (icon) {
-        if (typeof icon !== "string") {
-          return icon;
-        } else {
-          return (
-            <Icon
-              {...sdsIconProps}
-              sdsIcon={icon}
-              sdsSize={iconSize as IconSizeType}
-            />
-          );
-        }
-      }
-    };
+    const { sdsStyle } = props;
 
     if (sdsStyle === "icon") {
-      if (icon !== undefined) {
-        return <ButtonIcon icon={icon} {...props} ref={ref} />;
-      } else {
+      if (!props.icon) {
         showWarningIfFirstOccurence(SDSWarningTypes.ButtonIconMissingIconProp);
         return null;
       }
-    } else {
+      return <ButtonIcon {...props} ref={ref} />;
+    }
+
+    if (sdsStyle === "square" || sdsStyle === "rounded") {
+      const iconItem = () => {
+        if (props?.icon) {
+          return typeof props?.icon === "string" ? (
+            <Icon {...props?.sdsIconProps} sdsIcon={props?.icon} sdsSize="xl" />
+          ) : (
+            props?.icon
+          );
+        }
+        return null;
+      };
+
       return (
         <Button
           {...props}
           endIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
           sdsStyle={sdsStyle}
           ref={ref}
-          sdsType={sdsType}
           startIcon={iconItem()}
         />
       );
     }
+
+    showWarningIfFirstOccurence(SDSWarningTypes.ButtonDropdownMinimal);
+    return null;
   }
 );
 

@@ -66,7 +66,11 @@ const tableStyles = (props: TooltipExtraProps): string => {
   `;
 };
 
-export const Subtitle = styled("div")`
+const doNotForwardProps = ["hasInvertedStyle"];
+
+export const Subtitle = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${fontBodyXxs}
 
   ${(props: TooltipExtraProps) => {
