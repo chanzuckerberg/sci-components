@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.1...@czi-sds/components@22.1.2) (2025-01-30)
+
+### Bug Fixes
+
+- **headercell:** added new hover prop to control component hover state ([#928](https://github.com/chanzuckerberg/sci-components/issues/928)) ([6a31635](https://github.com/chanzuckerberg/sci-components/commit/6a31635c1064fafa4f26d75d7304fc4c19815a0b))
+
 ## [22.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.0...@czi-sds/components@22.1.1) (2025-01-09)
 
 ### Bug Fixes
