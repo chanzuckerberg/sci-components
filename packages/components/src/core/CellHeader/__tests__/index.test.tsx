@@ -16,7 +16,7 @@ describe("<CellHeader />", () => {
   });
 
   it("renders tooltip on hover", async () => {
-    render(<Test />);
+    render(<Test hover={true} />);
     const headerCellElement = screen.getByTestId("CellHeader");
     fireEvent.mouseOver(headerCellElement);
     await screen.findByText("testTooltipTitle");
@@ -29,8 +29,8 @@ describe("<CellHeader />", () => {
     expect(style.textAlign).toBe("right");
   });
 
-  it("renders a sort icon when header is active", async () => {
-    render(<Test />);
+  it("renders a sort icon when header is active and hover is true", async () => {
+    render(<Test hover={true} />);
     const headerCellElement = screen.getByTestId("CellHeader");
     const sortIcon =
       headerCellElement.getElementsByClassName("MuiSvgIcon-root")[0];
