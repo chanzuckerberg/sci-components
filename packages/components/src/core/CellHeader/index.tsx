@@ -76,7 +76,7 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
       tooltipProps,
       tooltipText = "",
       tooltipSubtitle,
-      hover = true,
+      hover = false,
       ...rest
     } = props;
 

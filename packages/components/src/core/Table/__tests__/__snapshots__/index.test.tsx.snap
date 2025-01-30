@@ -11,7 +11,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-fitsu2"
     >
       <th
-        class="css-13v2ecb"
+        class="css-t4gp9z"
       >
         <div
           class="css-187gjam"
@@ -22,7 +22,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-ezzkc2"
       >
         <div
           class="css-rm9mvq"
@@ -30,25 +30,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <span>
             Active Header
           </span>
-          <div
-            class="css-1ft6wgl"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-136pauu-MuiSvgIcon-root"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-ezzkc2"
       >
         <div
           class="css-rm9mvq"
@@ -56,25 +41,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           <span>
             A very long table header title to test sort icon positioning
           </span>
-          <div
-            class="css-1ft6wgl"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-ezzkc2"
       >
         <div
           class="css-rm9mvq"
@@ -85,7 +55,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-148k9j7"
+        class="css-1scpxyh"
       >
         <div
           class="css-wg04tn"
