@@ -11,6 +11,7 @@ export const TestDemo = (props: Args): JSX.Element => (
           shouldShowTooltipOnHover
           active
           tooltipText="testTooltipTitle"
+          hover
           {...props}
         >
           Header
