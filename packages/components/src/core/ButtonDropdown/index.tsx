@@ -1,6 +1,6 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
-import Button from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import ButtonIcon from "../ButtonIcon";
 import {
@@ -10,8 +10,8 @@ import {
 
 type SdsProps = {
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsStyle?: "rounded" | "square" | "icon";
-  sdsType?: "primary" | "secondary";
+  sdsStyle?: ButtonProps['sdsStyle'];
+  sdsType?: ButtonProps['sdsType'];
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
   sdsSize?: "small" | "medium" | "large";
 };
