@@ -62,7 +62,7 @@ export const PrimaryNavItem = styled(Button, {
 
         &:hover {
           background: ${hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
-          border-left-color: ${active ? activeBorderColor : inactiveBorderColor};
+          border-left: ${spaces?.xs}px solid ${active ? activeBorderColor : inactiveBorderColor};
         }
       }
     `;

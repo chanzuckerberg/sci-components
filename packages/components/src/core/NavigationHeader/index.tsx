@@ -12,6 +12,8 @@ import {
   StyledNarrowButton,
   StyledPrimaryNavContainer,
   StyledSearch,
+  StyledShadowCoverElement,
+  StyledShadowElement,
   StyledTag,
   StyledTitleContainer,
   StyledToolbar,
@@ -142,7 +144,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         secondaryNavItems.length > 0 && (
           <NavigationHeaderSecondaryNav
             items={secondaryNavItems}
-            hasInverseStyle={hasInvertedStyle}
+            hasInvertedStyle={hasInvertedStyle}
           />
         )
       );
@@ -152,7 +154,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       if (!buttons || buttons.length === 0) return null;
 
       return (
-        <StyledButtonSection>
+        <StyledButtonSection hasInvertedStyle={hasInvertedStyle}>
           {buttons.map((buttonProps, idx) => renderButton(buttonProps, idx))}
         </StyledButtonSection>
       );
@@ -240,6 +242,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             <>
               <StyledPrimaryNavContainer
                 primaryNavPosition={primaryNavPosition}
+                showSearch={showSearch}
               >
                 {primaryNavPosition === "left" ? (
                   <>
@@ -305,11 +308,15 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             ref={ref}
             {...rest}
           >
-            {headerContent}
+            <div>
+              {headerContent}
+              <StyledShadowElement />
+              <StyledShadowCoverElement hasInvertedStyle={hasInvertedStyle} />
+              {search}
+              {primaryNav}
+              {secondaryNav}
+            </div>
 
-            {search}
-            {primaryNav}
-            {secondaryNav}
             {buttonsNode}
           </StyledDrawer>
         )}

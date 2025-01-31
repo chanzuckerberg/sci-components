@@ -27,15 +27,15 @@ export type NavigationHeaderSecondaryNavItem =
 
 export interface NavigationHeaderSecondaryNavProps {
   items: NavigationHeaderSecondaryNavItem[];
-  hasInverseStyle?: boolean;
+  hasInvertedStyle?: boolean;
 }
 
 function SecondaryNavItem({
   item,
-  hasInverseStyle,
+  hasInvertedStyle,
 }: {
   item: NavigationHeaderSecondaryNavItem;
-  hasInverseStyle?: boolean;
+  hasInvertedStyle?: boolean;
 }) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
 
@@ -65,7 +65,7 @@ function SecondaryNavItem({
         <StyledTextItem
           sdsStyle="minimal"
           onClick={item.onClick}
-          hasInvertedStyle={hasInverseStyle}
+          hasInvertedStyle={hasInvertedStyle}
           open={open}
         >
           {item.label}
@@ -78,7 +78,7 @@ function SecondaryNavItem({
             sdsStyle="minimal"
             ref={buttonRef}
             onClick={(event) => setAnchorEl(event.currentTarget)}
-            hasInvertedStyle={hasInverseStyle}
+            hasInvertedStyle={hasInvertedStyle}
             open={open}
           >
             <span>{item.label}</span>
@@ -105,7 +105,7 @@ function SecondaryNavItem({
       {item.type === "dropdown" && isNarrow && (
         <StyledAccordion
           id={`${item.label}-dropdown`}
-          hasInvertedStyle={hasInverseStyle}
+          hasInvertedStyle={hasInvertedStyle}
         >
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
@@ -130,7 +130,7 @@ function SecondaryNavItem({
 
 export default function NavigationHeaderSecondaryNav({
   items,
-  hasInverseStyle,
+  hasInvertedStyle,
 }: NavigationHeaderSecondaryNavProps) {
   return (
     <StyledSection gap="l">
@@ -138,7 +138,7 @@ export default function NavigationHeaderSecondaryNav({
         <SecondaryNavItem
           key={`${item.label}-${item.type}`}
           item={item}
-          hasInverseStyle={hasInverseStyle}
+          hasInvertedStyle={hasInvertedStyle}
         />
       ))}
     </StyledSection>

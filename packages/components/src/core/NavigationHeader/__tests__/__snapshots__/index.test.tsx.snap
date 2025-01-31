@@ -5,14 +5,14 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
   class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-12jyxgf-MuiPaper-root-MuiAppBar-root"
 >
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-s2m7q0-MuiToolbar-root"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-10abyyf-MuiToolbar-root"
   >
     <a
       class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1smz25p-MuiTypography-root-MuiLink-root"
       href="https://chanzuckerberg.com"
     >
       <div
-        class="css-qfr629"
+        class="css-kgsho0"
       >
         <div
           class="css-1sg2lsz"
@@ -38,13 +38,13 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
       </div>
     </a>
     <div
-      class="css-46a7jo"
+      class="css-1ngofu8"
     >
       <section
         class="css-60sfsx"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-eb639v-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-xahcvd-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -55,7 +55,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           </span>
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-btp41p-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1hw4anf-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -183,7 +183,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
       </button>
     </section>
     <section
-      class="css-1t2kbn7"
+      class="css-89v7iu"
     >
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-145gz50-MuiButtonBase-root-MuiButton-root"
@@ -233,14 +233,14 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-12jyxgf-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-s2m7q0-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-10abyyf-MuiToolbar-root"
     >
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1smz25p-MuiTypography-root-MuiLink-root"
         href="https://chanzuckerberg.com"
       >
         <div
-          class="css-qfr629"
+          class="css-kgsho0"
         >
           <div
             class="css-1sg2lsz"
@@ -266,13 +266,13 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
         </div>
       </a>
       <div
-        class="css-46a7jo"
+        class="css-1ngofu8"
       >
         <section
           class="css-60sfsx"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-eb639v-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-xahcvd-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -283,7 +283,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             </span>
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-btp41p-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1hw4anf-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -411,7 +411,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
         </button>
       </section>
       <section
-        class="css-1t2kbn7"
+        class="css-89v7iu"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-145gz50-MuiButtonBase-root-MuiButton-root"

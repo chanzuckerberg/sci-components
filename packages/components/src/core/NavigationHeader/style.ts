@@ -5,6 +5,7 @@ import {
   fontHeader,
   getIconSizes,
   getSemanticColors,
+  getShadows,
   getSpaces,
 } from "../styles";
 import Tag from "../Tag";
@@ -48,9 +49,47 @@ export const StyledToolbar = styled(Toolbar, {
         padding: ${spaces?.m}px ${spaces?.xl}px;
 
         ${props.theme?.breakpoints?.down("md")} {
-          border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider}
+          border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider};
+          background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+          position: sticky !important;
+          top: 0;
+          z-index: 1000;
         }
       }
+    `;
+  }}
+`;
+
+export const StyledShadowElement = styled.div`
+  ${(props: ExtraHeaderProps) => {
+    const shadows = getShadows(props);
+
+    return `
+      box-shadow: ${shadows?.m};
+      height: 10px;
+      display: block;
+      position: fixed;
+      width: 100%;
+      top: 46px;
+      left: 0;
+      z-index: 100;
+    `;
+  }}
+`;
+
+export const StyledShadowCoverElement = styled.div`
+  ${(props: ExtraHeaderProps) => {
+    const colors = getSemanticColors(props);
+
+    return `
+      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+      height: 10px;
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 56px;
+      left: 0;
+      z-index: 100;
     `;
   }}
 `;
@@ -117,6 +156,7 @@ export const StyledTitleContainer = styled("div", {
     return `
       color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
       margin-right: ${spaces?.xxl}px;
+      width: 100%;
 
       p {
         margin-left: ${spaces?.l}px;
@@ -146,6 +186,7 @@ export const StyledTag = styled(Tag)`
 
 interface StyledPrimaryNavContainerProps extends CommonThemeProps {
   primaryNavPosition?: "left" | "right";
+  showSearch?: boolean;
 }
 
 export const StyledPrimaryNavContainer = styled.div`
@@ -154,12 +195,19 @@ export const StyledPrimaryNavContainer = styled.div`
   flex-grow: 1;
 
   ${(props: StyledPrimaryNavContainerProps) => {
+    const { showSearch, primaryNavPosition } = props;
     const spaces = getSpaces(props);
+
+    const primaryNavPositionWithSearch =
+      primaryNavPosition === "left" ? "flex-start" : "space-between";
+    const primaryNavPositionWithoutSearch =
+      primaryNavPosition === "left" ? "flex-start" : "flex-end";
 
     return `
       gap: ${spaces?.xxl}px;
       margin-right: ${spaces?.xxl}px;
-      justify-content: ${props.primaryNavPosition === "left" ? "flex-start" : "space-between"};
+      flex: 1;
+      justify-content: ${showSearch ? primaryNavPositionWithSearch : primaryNavPositionWithoutSearch};
 
       ${props.theme?.breakpoints?.down("md")} {
         flex-direction: column;
@@ -265,20 +313,37 @@ export const StyledButtonSection = styled.section`
     ${fontBody("m", "semibold", /* isNarrow */ true)}
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
     const sizes = getIconSizes(props);
+    const colors = getSemanticColors(props);
+
+    const backgroundColor = props.hasInvertedStyle
+      ? colors?.base.backgroundPrimaryInverse
+      : colors?.base.backgroundPrimary;
 
     return `
       gap: ${spaces?.m}px;
       margin-left: ${spaces?.xl}px;
 
       ${props.theme?.breakpoints?.down("md")} {
+        background: ${backgroundColor};  
         gap: ${spaces?.l}px;
         flex-direction: column;
         margin-left: 0;
         margin-top: ${spaces?.xxl}px;
-        padding: 0 ${spaces?.xl}px;
+        padding: ${spaces?.xl}px;
+        position: sticky;
+        bottom: 0;
+
+        &::before {
+          content: "";
+          position: absolute;
+          height: ${spaces?.xxl}px;
+          width: 100%;
+          background: linear-gradient(to top, ${backgroundColor} 0%, ${backgroundColor}00 100%);
+          top: -${spaces?.xxl}px;
+        }
 
         .MuiButton-icon .MuiSvgIcon-root {
           width: ${sizes?.l.width}px;
@@ -299,6 +364,10 @@ export const StyledDrawer = styled(Drawer, {
       .MuiDrawer-paper {
         background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        justify-content: space-between;
       }
     `;
   }}

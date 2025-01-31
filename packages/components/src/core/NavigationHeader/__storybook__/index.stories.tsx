@@ -33,7 +33,7 @@ export default {
       control: { type: "object" },
     },
     primaryNavPosition: {
-      control: { type: "select" },
+      control: { type: "radio" },
       options: ["left", "right"],
     },
     searchProps: {
@@ -113,6 +113,7 @@ export const Default = {
     tagColor: "beta",
     title: "Logo Name",
   },
+  parameters: { layout: "fullscreen" },
 };
 
 // Test
@@ -122,6 +123,7 @@ export const Test = {
     controls: {
       exclude: NAVIGATION_HEADER_EXCLUDED_CONTROLS,
     },
+    layout: "fullscreen",
     snapshot: {
       skip: true,
     },
