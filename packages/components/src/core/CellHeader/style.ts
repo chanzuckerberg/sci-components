@@ -12,6 +12,7 @@ export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
+  hover?: boolean;
 }
 
 const contentPositionMapping = {
@@ -27,6 +28,7 @@ const doNotForwardProps = [
   "tooltipProps",
   "tooltipText",
   "hideSortIcon",
+  "hover",
 ];
 
 export const StyledSortingIcon = styled(Icon, {
@@ -55,17 +57,25 @@ export const StyledTableHeader = styled("th", {
   ${focusVisibleA11yStyle}
 
   ${(props: CellHeaderExtraProps) => {
-    const { active = false, horizontalAlign = "left" } = props;
+    const { active = false, horizontalAlign = "left", hover = true } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
+    const defaultColor = active
+      ? semanticColors?.accent?.textAction
+      : semanticColors?.base?.textSecondary;
+
+    const hoverColor = active
+      ? semanticColors?.accent?.textActionHover
+      : semanticColors?.base?.textPrimary;
+
     return `
-      color: ${active ? semanticColors?.accent?.textAction : semanticColors?.base?.textSecondary};
+      color: ${defaultColor};
       padding: ${spaces?.l}px ${spaces?.m}px;
       text-align: ${horizontalAlign};
       min-width: 96px;
-      cursor: pointer;
+      cursor: ${hover ? "pointer" : "default"};
       vertical-align: bottom;
 
       & .MuiButtonBase-root {
@@ -73,10 +83,10 @@ export const StyledTableHeader = styled("th", {
       }
 
       &:hover {
-        color: ${active ? semanticColors?.accent?.textActionHover : semanticColors?.base?.textPrimary};
+        color: ${hover ? hoverColor : defaultColor};
 
         & .MuiButtonBase-root {
-          color: ${active ? semanticColors?.accent?.textActionHover : semanticColors?.base?.textPrimary};
+          color: ${hoverColor};
           opacity: 1;
         }
 
