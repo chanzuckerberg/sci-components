@@ -69,7 +69,7 @@ export const PrimaryNavItem = styled(Button, {
         background: none;
         box-shadow: none;
 
-        > span {
+        & > span {
           color: ${hasInvertedStyle
             ? colors?.base.textPrimaryInverse
             : colors?.base.textPrimary};
@@ -81,6 +81,31 @@ export const PrimaryNavItem = styled(Button, {
   }}
 `;
 
+const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
+  const { hasInvertedStyle, active } = props;
+
+  const colors = getSemanticColors(props);
+  const spaces = getSpaces(props);
+
+  const activeBorderColor = hasInvertedStyle
+    ? colors?.base?.borderOnFill
+    : colors?.accent?.border;
+
+  const inactiveBorderColor = hasInvertedStyle
+    ? colors?.base.borderOnFill
+    : colors?.base.border;
+
+  return css`
+    border-bottom: solid 2px transparent;
+    border-bottom-color: ${active ? activeBorderColor : "transparent"};
+    padding-bottom: ${spaces?.xxxs}px;
+
+    &:hover {
+      border-bottom-color: ${active ? activeBorderColor : inactiveBorderColor};
+    }
+  `;
+};
+
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -89,7 +114,6 @@ export const StyledLabel = styled("span", {
   ${(props: PrimaryNavItemProps) => {
     const { hasInvertedStyle, active, isNarrow } = props;
     const colors = getSemanticColors(props);
-    const spaces = getSpaces(props);
 
     const activeColor = hasInvertedStyle
       ? colors?.base.textPrimaryInverse
@@ -99,31 +123,10 @@ export const StyledLabel = styled("span", {
       ? colors?.base.textSecondaryInverse
       : colors?.base.textSecondary;
 
-    const activeBorderColor = hasInvertedStyle
-      ? colors?.base?.borderOnFill
-      : colors?.accent?.border;
-
-    const inactiveBorderColor = hasInvertedStyle
-      ? colors?.base.borderOnFill
-      : colors?.base.border;
-
-    return `
+    return css`
       color: ${active ? activeColor : inactiveColor};
 
-      ${
-        !isNarrow &&
-        css`
-          border-bottom: solid 2px transparent;
-          border-bottom-color: ${active ? activeBorderColor : "transparent"};
-          padding-bottom: ${spaces?.xxxs}px;
-
-          &:hover {
-            border-bottom-color: ${active
-              ? activeBorderColor
-              : inactiveBorderColor};
-          }
-        `
-      }
+      ${!isNarrow && WideStyledLabel(props)}
     `;
   }}
 `;
