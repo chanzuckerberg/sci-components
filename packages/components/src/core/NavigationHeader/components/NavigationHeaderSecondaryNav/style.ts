@@ -9,12 +9,17 @@ import {
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import MenuItem from "src/core/MenuItem";
+import { css } from "@emotion/react";
 
 interface StyledTextItemProps extends ExtraHeaderProps {
   open: boolean;
 }
 
-export const StyledTextItem = styled(Button)`
+const ButtonDoNotForwardProps = ["isNarrow"];
+
+export const StyledTextItem = styled(Button, {
+  shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
+})`
   ${fontHeaderS}
 
   background: none;
@@ -28,7 +33,7 @@ export const StyledTextItem = styled(Button)`
   }
 
   ${(props: StyledTextItemProps) => {
-    const { hasInvertedStyle, open } = props;
+    const { hasInvertedStyle, open, isNarrow } = props;
 
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
@@ -49,7 +54,17 @@ export const StyledTextItem = styled(Button)`
       ? semanticColors?.base?.ornamentPrimaryInverse
       : semanticColors?.accent.ornamentOpen;
 
-    return `
+    const isNarrowStyles = () => css`
+      padding-left: ${spaces?.xl}px;
+
+      &:hover {
+        background: ${hasInvertedStyle
+          ? semanticColors?.base.backgroundSecondaryInverse
+          : semanticColors?.base.backgroundSecondary};
+      }
+    `;
+
+    return css`
       gap: ${spaces?.xs}px;
       color: ${open ? textOpenColor : textDefaultColor};
 
@@ -58,25 +73,23 @@ export const StyledTextItem = styled(Button)`
       }
 
       &:hover {
-        color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary};
+        color: ${hasInvertedStyle
+          ? semanticColors?.base.textPrimaryInverse
+          : semanticColors?.base.textPrimary};
 
         svg {
-          color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : semanticColors?.base.ornamentSecondaryHover};
+          color: ${hasInvertedStyle
+            ? semanticColors?.base?.ornamentPrimaryInverse
+            : semanticColors?.base.ornamentSecondaryHover};
         }
       }
 
-      ${props.theme?.breakpoints?.down("md")} {
-        padding-left: ${spaces?.xl}px;
-
-        &:hover {
-          background: ${hasInvertedStyle ? semanticColors?.base.backgroundSecondaryInverse : semanticColors?.base.backgroundSecondary};
-        }
-      }
+      ${isNarrow && isNarrowStyles()}
     `;
   }}
 `;
 
-const doNotForwardProps = ["hasInvertedStyle"];
+const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
 
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -88,7 +101,7 @@ export const StyledAccordion = styled(Accordion, {
   }
 
   ${(props: ExtraHeaderProps) => {
-    const { hasInvertedStyle } = props;
+    const { hasInvertedStyle, isNarrow } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -109,7 +122,13 @@ export const StyledAccordion = styled(Accordion, {
       ? semanticColors?.base?.ornamentPrimaryInverse
       : semanticColors?.accent.ornamentOpen;
 
-    return `
+    const isNarrowStyles = () => css`
+      background: ${hasInvertedStyle
+        ? semanticColors?.base.backgroundSecondaryInverse
+        : semanticColors?.base.backgroundSecondary};
+    `;
+
+    return css`
       .MuiButtonBase-root {
         padding: ${spaces?.m}px ${spaces?.xl}px;
         color: ${textDefaultColor};
@@ -125,31 +144,37 @@ export const StyledAccordion = styled(Accordion, {
             color: ${ChevronOpenColor} !important;
           }
         }
-  
+
         &:hover {
-          color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary};
+          color: ${hasInvertedStyle
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
 
           svg {
-            color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : semanticColors?.base.ornamentSecondaryHover} !important; 
+            color: ${hasInvertedStyle
+              ? semanticColors?.base?.ornamentPrimaryInverse
+              : semanticColors?.base.ornamentSecondaryHover} !important;
           }
 
-          ${props.theme?.breakpoints?.down("md")} {
-            background: ${hasInvertedStyle ? semanticColors?.base.backgroundSecondaryInverse : semanticColors?.base.backgroundSecondary};
-          }
+          ${isNarrow && isNarrowStyles()}
         }
       }
 
-      .MuiCollapse-root .MuiAccordionDetails-root  {
+      .MuiCollapse-root .MuiAccordionDetails-root {
         padding: 0;
 
         .MuiButtonBase-root {
           padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
 
           .primary-text {
-            color: ${hasInvertedStyle ? semanticColors?.base.textSecondaryInverse : semanticColors?.base.textSecondary} !important;
+            color: ${hasInvertedStyle
+              ? semanticColors?.base.textSecondaryInverse
+              : semanticColors?.base.textSecondary} !important;
 
             &:hover {
-              color: ${hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary} !important;
+              color: ${hasInvertedStyle
+                ? semanticColors?.base.textPrimaryInverse
+                : semanticColors?.base.textPrimary} !important;
             }
           }
         }

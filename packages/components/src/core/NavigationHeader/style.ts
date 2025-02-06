@@ -1,4 +1,4 @@
-import { AppBar, Drawer, Toolbar } from "@mui/material";
+import { AppBar, Drawer, Toolbar, css } from "@mui/material";
 import {
   CommonThemeProps,
   fontBody,
@@ -13,12 +13,19 @@ import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
 import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
+import { SerializedStyles } from "@emotion/react";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
 }
 
-const doNotForwardProps = ["hasInvertedStyle"];
+const doNotForwardProps = [
+  "hasInvertedStyle",
+  "isNarrow",
+  "primaryNavPosition",
+  "showSearch",
+];
 
 export const StyledHeader = styled(AppBar, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -35,26 +42,39 @@ export const StyledHeader = styled(AppBar, {
   }}
 `;
 
+const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
+  const semanticColors = getSemanticColors(props);
+
+  return css`
+    border-bottom: 1px solid
+      ${props.hasInvertedStyle
+        ? semanticColors?.base.dividerInverse
+        : semanticColors?.base.divider};
+    background: ${props.hasInvertedStyle
+      ? semanticColors?.base.backgroundPrimaryInverse
+      : semanticColors?.base.backgroundPrimary};
+    position: sticky !important;
+    top: 0;
+    z-index: 1000;
+    justify-content: space-between;
+  `;
+};
+
 export const StyledToolbar = styled(Toolbar, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
-    const spaces = getSpaces(props);
-    const colors = getSemanticColors(props);
+    const { isNarrow } = props;
 
-    return `
+    const spaces = getSpaces(props);
+
+    return css`
       &.MuiToolbar-root {
         min-height: 56px;
         max-height: 56px;
         padding: ${spaces?.m}px ${spaces?.xl}px;
 
-        ${props.theme?.breakpoints?.down("md")} {
-          border-bottom: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider};
-          background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
-          position: sticky !important;
-          top: 0;
-          z-index: 1000;
-        }
+        ${isNarrow && NarrowToolbar(props)}
       }
     `;
   }}
@@ -117,16 +137,18 @@ export const StyledHeaderButton = styled(Button)<
   }}
 `;
 
-export const StyledLogoLinkWrapper = styled(Link)`
+export const StyledLogoLinkWrapper = styled(Link, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   align-items: center;
   display: flex;
   text-decoration: none !important;
 
-  ${(props: CommonThemeProps) => {
-    return `
-      ${props.theme?.breakpoints?.down("md")} {
-        width: 100%;
-      }
+  ${(props: ExtraHeaderProps) => {
+    const { isNarrow } = props;
+
+    return css`
+      width: ${isNarrow ? "100%" : "auto"};
     `;
   }}
 `;
@@ -136,38 +158,43 @@ export const StyledLogoWrapper = styled.div`
   align-items: center;
 `;
 
+const NarrowTitleContainer = (props: ExtraHeaderProps): SerializedStyles => {
+  const spaces = getSpaces(props);
+
+  return css`
+    p {
+      margin-left: ${spaces?.xs}px;
+    }
+  `;
+};
+
 export const StyledTitleContainer = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontHeader("l")}
-  ${fontHeader("l", /* isNarrow */ true)}
+  ${fontHeader("l", true)}
 
   display: flex;
   align-items: center;
 
-  p {
-    margin: 0;
-  }
-
   ${(props: ExtraHeaderProps) => {
+    const { isNarrow } = props;
+
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    return `
-      color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+    return css`
+      color: ${props.hasInvertedStyle
+        ? colors?.base.textPrimaryInverse
+        : colors?.base.textPrimary};
       margin-right: ${spaces?.xxl}px;
       width: 100%;
 
       p {
-        margin-left: ${spaces?.l}px;
-        margin-right: ${spaces?.xs}px;
+        margin: 0 ${spaces?.xs}px 0 ${spaces?.l}px;
       }
 
-      ${props.theme?.breakpoints?.down("md")} {
-        p {
-          margin-left: ${spaces?.xs}px;
-        }
-      }
+      ${isNarrow && NarrowTitleContainer(props)}
     `;
   }}
 `;
@@ -187,15 +214,18 @@ export const StyledTag = styled(Tag)`
 interface StyledPrimaryNavContainerProps extends CommonThemeProps {
   primaryNavPosition?: "left" | "right";
   showSearch?: boolean;
+  isNarrow?: boolean;
 }
 
-export const StyledPrimaryNavContainer = styled.div`
+export const StyledPrimaryNavContainer = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   align-items: center;
   display: flex;
   flex-grow: 1;
 
   ${(props: StyledPrimaryNavContainerProps) => {
-    const { showSearch, primaryNavPosition } = props;
+    const { showSearch, primaryNavPosition, isNarrow } = props;
     const spaces = getSpaces(props);
 
     const primaryNavPositionWithSearch =
@@ -203,26 +233,27 @@ export const StyledPrimaryNavContainer = styled.div`
     const primaryNavPositionWithoutSearch =
       primaryNavPosition === "left" ? "flex-start" : "flex-end";
 
-    return `
+    return css`
+      flex-direction: ${isNarrow ? "column" : "row"};
       gap: ${spaces?.xxl}px;
       margin-right: ${spaces?.xxl}px;
       flex: 1;
-      justify-content: ${showSearch ? primaryNavPositionWithSearch : primaryNavPositionWithoutSearch};
-
-      ${props.theme?.breakpoints?.down("md")} {
-        flex-direction: column;
-      }
+      justify-content: ${showSearch
+        ? primaryNavPositionWithSearch
+        : primaryNavPositionWithoutSearch};
     `;
   }}
 `;
 
 interface ExtraSearchProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
 }
 
-export const StyledSearch = styled(InputSearch)`
+export const StyledSearch = styled(InputSearch, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   margin: 0;
-  max-width: 320px;
   width: 100%;
 
   .MuiInputBase-input {
@@ -231,34 +262,44 @@ export const StyledSearch = styled(InputSearch)`
   }
 
   ${(props: ExtraSearchProps) => {
-    const { hasInvertedStyle } = props;
+    const { hasInvertedStyle, isNarrow } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
-    return `
+    return css`
+      max-width: ${isNarrow ? "100%" : "320px"};
+      padding: ${isNarrow ? `${spaces?.m}px ${spaces?.xl}px` : ""};
       .MuiInputBase-root {
         fieldset {
-          border-color: ${hasInvertedStyle ? semanticColors?.base?.borderInverse : ""};
+          border-color: ${hasInvertedStyle
+            ? semanticColors?.base?.borderInverse
+            : ""};
         }
 
         .MuiInputAdornment-root {
           .MuiButtonBase-root:last-of-type {
             svg {
-              color: ${hasInvertedStyle ? semanticColors?.base?.ornamentSecondaryInverse : ""};
+              color: ${hasInvertedStyle
+                ? semanticColors?.base?.ornamentSecondaryInverse
+                : ""};
             }
           }
         }
-        
+
         &:hover {
           fieldset {
-            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderHoverInverse : ""} !important;
+            border-color: ${hasInvertedStyle
+              ? semanticColors?.base?.borderHoverInverse
+              : ""} !important;
           }
 
           .MuiInputAdornment-root {
             .MuiButtonBase-root:last-of-type {
               svg {
-                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : ""};
+                color: ${hasInvertedStyle
+                  ? semanticColors?.base?.ornamentPrimaryInverse
+                  : ""};
               }
             }
           }
@@ -266,13 +307,17 @@ export const StyledSearch = styled(InputSearch)`
 
         &.Mui-focused {
           fieldset {
-            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderPressedInverse : ""} !important;
+            border-color: ${hasInvertedStyle
+              ? semanticColors?.base?.borderPressedInverse
+              : ""} !important;
           }
 
           .MuiInputAdornment-root {
             .MuiButtonBase-root:last-of-type {
               svg {
-                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentPrimaryInverse : ""};
+                color: ${hasInvertedStyle
+                  ? semanticColors?.base?.ornamentPrimaryInverse
+                  : ""};
               }
             }
           }
@@ -280,28 +325,68 @@ export const StyledSearch = styled(InputSearch)`
 
         &.Mui-disabled {
           fieldset {
-            border-color: ${hasInvertedStyle ? semanticColors?.base?.borderDisabledInverse : ""} !important;
+            border-color: ${hasInvertedStyle
+              ? semanticColors?.base?.borderDisabledInverse
+              : ""} !important;
           }
 
           .MuiInputAdornment-root {
             .MuiButtonBase-root:last-of-type {
               svg {
-                color: ${hasInvertedStyle ? semanticColors?.base?.ornamentDisabledInverse : ""};
+                color: ${hasInvertedStyle
+                  ? semanticColors?.base?.ornamentDisabledInverse
+                  : ""};
               }
             }
           }
         }
       }
-
-      ${props.theme?.breakpoints?.down("md")} {
-        max-width: unset;
-        padding: ${spaces?.m}px ${spaces?.xl}px;
-      }
     `;
   }}
 `;
 
-export const StyledButtonSection = styled.section`
+const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
+  const spaces = getSpaces(props);
+  const sizes = getIconSizes(props);
+  const colors = getSemanticColors(props);
+
+  const backgroundColor = props.hasInvertedStyle
+    ? colors?.base.backgroundPrimaryInverse
+    : colors?.base.backgroundPrimary;
+
+  return css`
+    background: ${backgroundColor};
+    gap: ${spaces?.l}px;
+    flex-direction: column;
+    margin-left: 0;
+    margin-top: ${spaces?.xxl}px;
+    padding: ${spaces?.xl}px;
+    position: sticky;
+    bottom: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: ${spaces?.xxl}px;
+      width: 100%;
+      background: linear-gradient(
+        to top,
+        ${backgroundColor} 0%,
+        ${backgroundColor}00 100%
+      );
+      top: -${spaces?.xxl}px;
+    }
+
+    .MuiButton-icon .MuiSvgIcon-root {
+      width: ${sizes?.l.width}px;
+      height: ${sizes?.l.height}px;
+    }
+  `;
+};
+
+export const StyledButtonSection = styled("section", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   display: flex;
   align-items: center;
 
@@ -314,42 +399,15 @@ export const StyledButtonSection = styled.section`
   }
 
   ${(props: ExtraHeaderProps) => {
+    const { isNarrow } = props;
+
     const spaces = getSpaces(props);
-    const sizes = getIconSizes(props);
-    const colors = getSemanticColors(props);
 
-    const backgroundColor = props.hasInvertedStyle
-      ? colors?.base.backgroundPrimaryInverse
-      : colors?.base.backgroundPrimary;
-
-    return `
+    return css`
       gap: ${spaces?.m}px;
       margin-left: ${spaces?.xl}px;
 
-      ${props.theme?.breakpoints?.down("md")} {
-        background: ${backgroundColor};  
-        gap: ${spaces?.l}px;
-        flex-direction: column;
-        margin-left: 0;
-        margin-top: ${spaces?.xxl}px;
-        padding: ${spaces?.xl}px;
-        position: sticky;
-        bottom: 0;
-
-        &::before {
-          content: "";
-          position: absolute;
-          height: ${spaces?.xxl}px;
-          width: 100%;
-          background: linear-gradient(to top, ${backgroundColor} 0%, ${backgroundColor}00 100%);
-          top: -${spaces?.xxl}px;
-        }
-
-        .MuiButton-icon .MuiSvgIcon-root {
-          width: ${sizes?.l.width}px;
-          height: ${sizes?.l.height}px;
-        }
-      }
+      ${isNarrow && NarrowButtonStyles(props)}
     `;
   }}
 `;

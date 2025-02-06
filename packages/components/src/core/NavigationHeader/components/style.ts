@@ -1,20 +1,30 @@
 import styled from "@emotion/styled";
 import { CommonThemeProps, getSpaces, Spaces } from "src/core/styles";
+import { css, SerializedStyles } from "@emotion/react";
 
-export const StyledSection = styled.section`
+const doNotForwardProps = ["isNarrow"];
+
+const NarrowStyledSection = (): SerializedStyles => {
+  return css`
+    align-items: start;
+    flex-direction: column;
+  `;
+};
+
+export const StyledSection = styled("section", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   display: flex;
   align-items: center;
 
-  ${(props: CommonThemeProps & { gap?: keyof Spaces }) => {
+  ${(props: CommonThemeProps & { gap?: keyof Spaces; isNarrow?: boolean }) => {
+    const { isNarrow } = props;
     const spaces = getSpaces(props);
 
-    return `
+    return css`
       column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
 
-      ${props.theme?.breakpoints?.down("md")} {
-        align-items: start;
-        flex-direction: column;
-      }
+      ${isNarrow && NarrowStyledSection()}
     `;
   }}
 `;

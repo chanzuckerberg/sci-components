@@ -3,6 +3,14 @@ import { composeStories } from "@storybook/react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 
+global.ResizeObserver = class {
+  observe() {}
+
+  unobserve() {}
+
+  disconnect() {}
+};
+
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test, Default } = composeStories(stories);
 
@@ -11,7 +19,9 @@ describe("<NavigationHeder />", () => {
 
   it("renders navigation header component", () => {
     render(<Test />);
-    expect(screen.getByTestId("navigation-header")).toBeInTheDocument();
+    expect(screen.getAllByTestId("navigation-header").length).toBeGreaterThan(
+      0
+    );
   });
 
   it("displays the logo and title correctly", () => {
@@ -22,8 +32,8 @@ describe("<NavigationHeder />", () => {
       />
     );
 
-    expect(screen.getByAltText("Company Logo")).toBeInTheDocument();
-    expect(screen.getByText("Test Title")).toBeInTheDocument();
+    expect(screen.getAllByAltText("Company Logo").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Test Title").length).toBeGreaterThan(0);
   });
 
   it("renders the logo link if logoUrl is provided", () => {

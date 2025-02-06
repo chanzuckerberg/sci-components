@@ -4,7 +4,6 @@ import { StyledAccordion, StyledSubItem, StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
-import { useMediaQuery, useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 
 interface BaseHeaderSecondaryNavItem {
@@ -28,14 +27,17 @@ export type NavigationHeaderSecondaryNavItem =
 export interface NavigationHeaderSecondaryNavProps {
   items: NavigationHeaderSecondaryNavItem[];
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
 }
 
 function SecondaryNavItem({
   item,
   hasInvertedStyle,
+  isNarrow,
 }: {
   item: NavigationHeaderSecondaryNavItem;
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
 }) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
 
@@ -56,9 +58,6 @@ function SecondaryNavItem({
     setMenuWidth(button.offsetWidth);
   }, []);
 
-  const theme = useTheme();
-  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
-
   return (
     <Fragment key={item.label}>
       {item.type === "text" && (
@@ -67,6 +66,7 @@ function SecondaryNavItem({
           onClick={item.onClick}
           hasInvertedStyle={hasInvertedStyle}
           open={open}
+          isNarrow={isNarrow}
         >
           {item.label}
         </StyledTextItem>
@@ -80,6 +80,7 @@ function SecondaryNavItem({
             onClick={(event) => setAnchorEl(event.currentTarget)}
             hasInvertedStyle={hasInvertedStyle}
             open={open}
+            isNarrow={isNarrow}
           >
             <span>{item.label}</span>
             <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />
@@ -106,6 +107,7 @@ function SecondaryNavItem({
         <StyledAccordion
           id={`${item.label}-dropdown`}
           hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
         >
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
@@ -131,14 +133,16 @@ function SecondaryNavItem({
 export default function NavigationHeaderSecondaryNav({
   items,
   hasInvertedStyle,
+  isNarrow,
 }: NavigationHeaderSecondaryNavProps) {
   return (
-    <StyledSection gap="l">
+    <StyledSection gap="l" isNarrow={isNarrow}>
       {items.map((item) => (
         <SecondaryNavItem
           key={`${item.label}-${item.type}`}
           item={item}
           hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
         />
       ))}
     </StyledSection>

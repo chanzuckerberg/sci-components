@@ -1,6 +1,13 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { forwardRef, ReactNode, useState } from "react";
+import {
+  forwardRef,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { SdsTagColorType } from "src/core/Tag";
 import {
   StyledButtonSection,
@@ -75,12 +82,45 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       title,
       ...rest
     } = props;
+    const navRef = useRef<HTMLDivElement>(null);
 
     const theme = useTheme();
     const mode = theme?.palette?.mode || "light";
+    const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-    const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
+    useEffect(() => {
+      setIsNarrow(isMdScreen);
+    }, [isMdScreen]);
+
     const [drawerOpen, setDrawerOpen] = useState(true);
+    const [isNarrow, setIsNarrow] = useState(isMdScreen);
+    const [breakpoint, setBreakpoint] = useState(0);
+
+    const checkScrollable = useCallback(() => {
+      if (!navRef.current) return;
+
+      const clientWidth = navRef.current.clientWidth;
+      const scrollWidth = navRef.current.scrollWidth;
+      const needsScroll = scrollWidth > clientWidth;
+
+      if (needsScroll && !isNarrow) {
+        setBreakpoint((prev) => (prev > clientWidth ? prev : clientWidth));
+      }
+
+      setIsNarrow(clientWidth <= breakpoint);
+    }, [breakpoint, isNarrow]);
+
+    useEffect(() => {
+      checkScrollable();
+
+      const resizeObserver = new ResizeObserver(checkScrollable);
+
+      if (navRef.current) {
+        resizeObserver.observe(navRef.current);
+      }
+
+      return () => resizeObserver.disconnect();
+    }, [breakpoint, checkScrollable, isMdScreen, isNarrow]);
 
     const renderSearch = () => {
       return (
@@ -94,6 +134,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
               hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
             }
             hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
             {...searchProps}
           />
         )
@@ -102,7 +143,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
     const renderLogoNode = () => {
       let logoNode = (
-        <StyledTitleContainer hasInvertedStyle={hasInvertedStyle}>
+        <StyledTitleContainer
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
+        >
           <StyledLogoWrapper>{logo}</StyledLogoWrapper>
 
           <p>{title}</p>
@@ -113,7 +157,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
       if (logoUrl) {
         logoNode = (
-          <StyledLogoLinkWrapper href={logoUrl}>
+          <StyledLogoLinkWrapper href={logoUrl} isNarrow={isNarrow}>
             {logoNode}
           </StyledLogoLinkWrapper>
         );
@@ -133,6 +177,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             value={activePrimaryNavKey}
             onChange={setActivePrimaryNavKey}
             hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
           />
         )
       );
@@ -145,6 +190,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           <NavigationHeaderSecondaryNav
             items={secondaryNavItems}
             hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
           />
         )
       );
@@ -154,7 +200,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       if (!buttons || buttons.length === 0) return null;
 
       return (
-        <StyledButtonSection hasInvertedStyle={hasInvertedStyle}>
+        <StyledButtonSection
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
+        >
           {buttons.map((buttonProps, idx) => renderButton(buttonProps, idx))}
         </StyledButtonSection>
       );
@@ -235,7 +284,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       const buttonsNode = renderButtonsNode();
 
       return (
-        <StyledToolbar hasInvertedStyle={hasInvertedStyle}>
+        <StyledToolbar hasInvertedStyle={hasInvertedStyle} isNarrow={isNarrow}>
           {logoNode}
 
           {!isNarrow && (
@@ -243,6 +292,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
               <StyledPrimaryNavContainer
                 primaryNavPosition={primaryNavPosition}
                 showSearch={showSearch}
+                isNarrow={isNarrow}
               >
                 {primaryNavPosition === "left" ? (
                   <>
@@ -288,12 +338,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const buttonsNode = renderButtonsNode();
 
     return (
-      <>
+      <div ref={ref}>
         <StyledHeader
           elevation={0}
           position="static"
           hasInvertedStyle={hasInvertedStyle}
-          ref={ref}
+          ref={navRef}
           {...rest}
         >
           {headerContent}
@@ -320,7 +370,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             {buttonsNode}
           </StyledDrawer>
         )}
-      </>
+      </div>
     );
   }
 );

@@ -15,6 +15,7 @@ export interface NavigationHeaderPrimaryNavItem<T extends string>
 
 export interface NavigationHeaderPrimaryNavProps<T extends string> {
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
   items: NavigationHeaderPrimaryNavItem<T>[];
   onChange(value: T): void;
   value: T;
@@ -22,12 +23,13 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
   hasInvertedStyle,
+  isNarrow,
   items,
   onChange,
   value,
 }: NavigationHeaderPrimaryNavProps<T>) {
   return (
-    <StyledSection>
+    <StyledSection isNarrow={isNarrow}>
       {items.map((item) => {
         const { key, label, tag, tagColor, ...rest } = item;
         const isActive = key === value;
@@ -43,8 +45,13 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               item.onClick?.(e);
             }}
             hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
           >
-            <StyledLabel active={isActive} hasInvertedStyle={hasInvertedStyle}>
+            <StyledLabel
+              active={isActive}
+              hasInvertedStyle={hasInvertedStyle}
+              isNarrow={isNarrow}
+            >
               {label}
             </StyledLabel>
 
