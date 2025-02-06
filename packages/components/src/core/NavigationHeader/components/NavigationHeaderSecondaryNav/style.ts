@@ -9,13 +9,31 @@ import {
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import MenuItem from "src/core/MenuItem";
-import { css } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 
 interface StyledTextItemProps extends ExtraHeaderProps {
   open: boolean;
 }
 
 const ButtonDoNotForwardProps = ["isNarrow"];
+
+const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
+  const { hasInvertedStyle } = props;
+
+  const semanticColors = getSemanticColors(props);
+  const spaces = getSpaces(props);
+
+  return css`
+    padding-left: ${spaces?.xl}px;
+
+    &:hover {
+      box-shadow: none;
+      background: ${hasInvertedStyle
+        ? semanticColors?.base.backgroundSecondaryInverse
+        : semanticColors?.base.backgroundSecondary};
+    }
+  `;
+};
 
 export const StyledTextItem = styled(Button, {
   shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
@@ -26,11 +44,6 @@ export const StyledTextItem = styled(Button, {
   justify-content: flex-start;
   min-height: 44px;
   width: 100%;
-
-  &:hover {
-    background: none;
-    box-shadow: none;
-  }
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
@@ -54,16 +67,6 @@ export const StyledTextItem = styled(Button, {
       ? semanticColors?.base?.ornamentPrimaryInverse
       : semanticColors?.accent.ornamentOpen;
 
-    const isNarrowStyles = () => css`
-      padding-left: ${spaces?.xl}px;
-
-      &:hover {
-        background: ${hasInvertedStyle
-          ? semanticColors?.base.backgroundSecondaryInverse
-          : semanticColors?.base.backgroundSecondary};
-      }
-    `;
-
     return css`
       gap: ${spaces?.xs}px;
       color: ${open ? textOpenColor : textDefaultColor};
@@ -73,6 +76,8 @@ export const StyledTextItem = styled(Button, {
       }
 
       &:hover {
+        background: none;
+        box-shadow: none;
         color: ${hasInvertedStyle
           ? semanticColors?.base.textPrimaryInverse
           : semanticColors?.base.textPrimary};
@@ -84,7 +89,7 @@ export const StyledTextItem = styled(Button, {
         }
       }
 
-      ${isNarrow && isNarrowStyles()}
+      ${isNarrow && NarrowStyledTextItem(props)}
     `;
   }}
 `;

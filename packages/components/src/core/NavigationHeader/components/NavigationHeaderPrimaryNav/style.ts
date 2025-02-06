@@ -2,13 +2,52 @@ import styled from "@emotion/styled";
 import Button from "src/core/Button";
 import { fontHeader, getSemanticColors, getSpaces } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
-import { css } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 
 interface PrimaryNavItemProps extends ExtraHeaderProps {
   active?: boolean;
 }
 
 const doNotForwardProps = ["active", "hasInvertedStyle", "isNarrow"];
+
+const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
+  const { active, hasInvertedStyle } = props;
+
+  const spaces = getSpaces(props);
+  const colors = getSemanticColors(props);
+
+  const activeBackgroundColor = hasInvertedStyle
+    ? colors?.base.backgroundSecondaryInverse
+    : colors?.base.backgroundSecondary;
+
+  const activeBorderColor = hasInvertedStyle
+    ? colors?.base?.borderOnFill
+    : colors?.accent?.border;
+
+  const inactiveBorderColor = hasInvertedStyle
+    ? colors?.neutral?.fillPrimary
+    : colors?.base.border;
+
+  return css`
+    border-left: ${spaces?.xs}px solid
+      ${active ? activeBorderColor : "transparent"};
+    border-radius: 0;
+    justify-content: start;
+    padding: ${spaces?.m}px 0 ${spaces?.m}px
+      ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
+    background: ${active ? activeBackgroundColor : "transparent"};
+    width: 100%;
+
+    &:hover {
+      box-shadow: none;
+      background: ${hasInvertedStyle
+        ? colors?.base.backgroundSecondaryInverse
+        : colors?.base.backgroundSecondary};
+      border-left: ${spaces?.xs}px solid
+        ${active ? activeBorderColor : inactiveBorderColor};
+    }
+  `;
+};
 
 export const PrimaryNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -17,52 +56,19 @@ export const PrimaryNavItem = styled(Button, {
   align-items: start;
   background: none;
 
-  &:hover {
-    background: none;
-    box-shadow: none;
-  }
-
   ${(props: PrimaryNavItemProps) => {
-    const { active, hasInvertedStyle, isNarrow } = props;
+    const { hasInvertedStyle, isNarrow } = props;
 
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
-
-    const activeBackgroundColor = hasInvertedStyle
-      ? colors?.base.backgroundSecondaryInverse
-      : colors?.base.backgroundSecondary;
-
-    const activeBorderColor = hasInvertedStyle
-      ? colors?.base?.borderOnFill
-      : colors?.accent?.border;
-
-    const inactiveBorderColor = hasInvertedStyle
-      ? colors?.neutral?.fillPrimary
-      : colors?.base.border;
-
-    const isNarrowStyles = () => css`
-      border-left: ${spaces?.xs}px solid
-        ${active ? activeBorderColor : "transparent"};
-      border-radius: 0;
-      justify-content: start;
-      padding: ${spaces?.m}px 0 ${spaces?.m}px
-        ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
-      background: ${active ? activeBackgroundColor : "transparent"};
-      width: 100%;
-
-      &:hover {
-        background: ${hasInvertedStyle
-          ? colors?.base.backgroundSecondaryInverse
-          : colors?.base.backgroundSecondary};
-        border-left: ${spaces?.xs}px solid
-          ${active ? activeBorderColor : inactiveBorderColor};
-      }
-    `;
 
     return css`
       gap: ${spaces?.xs}px;
 
       &:hover {
+        background: none;
+        box-shadow: none;
+
         > span {
           color: ${hasInvertedStyle
             ? colors?.base.textPrimaryInverse
@@ -70,7 +76,7 @@ export const PrimaryNavItem = styled(Button, {
         }
       }
 
-      ${isNarrow && isNarrowStyles()}
+      ${isNarrow && NarrowPrimaryNavItem(props)}
     `;
   }}
 `;
