@@ -2,7 +2,7 @@
 
 exports[`<InputSearch /> Default story renders snapshot 1`] = `
 <label
-  class="css-l5xdrx"
+  class="css-nnobme"
   for="Test"
 >
   Search

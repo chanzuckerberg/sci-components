@@ -225,6 +225,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     sdsStyle={sdsStyle as SDSStyles[number]}
                     sdsType={type as SDSTypes[number]}
                     startIcon={icon}
+                    icon="Download"
                     disabled={disabled}
                     className={`pseudo-${state}`}
                     key={state}
