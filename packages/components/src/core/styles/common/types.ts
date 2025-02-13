@@ -37,6 +37,7 @@ export interface BaseColor {
   textSecondary: string;
   textSecondaryInverse: string;
   textDisabled: string;
+  textDisabledInverse: string;
   textOnFill: string;
   fillHover: string;
   fillPressed: string;
@@ -49,14 +50,20 @@ export interface BaseColor {
   border: string;
   borderInverse: string;
   borderHover: string;
+  borderHoverInverse: string;
+  borderOnFill: string;
   borderPressed: string;
+  borderPressedInverse: string;
   borderDisabled: string;
+  borderDisabledInverse: string;
   borderTable: string;
   ornamentDisabled: string;
+  ornamentDisabledInverse: string;
   ornamentOnFill: string;
   ornamentPrimary: string;
   ornamentPrimaryInverse: string;
   ornamentSecondary: string;
+  ornamentSecondaryInverse: string;
   ornamentSecondaryHover: string;
   ornamentSecondaryPressed: string;
 }
