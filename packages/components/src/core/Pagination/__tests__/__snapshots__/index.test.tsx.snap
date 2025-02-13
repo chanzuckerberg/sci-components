@@ -61,7 +61,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1br45xa-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1fenqgv-MuiButtonBase-root-MuiIconButton-root"
       icon="DotsHorizontal"
       tabindex="0"
       type="button"
@@ -71,7 +71,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-m01104-MuiSvgIcon-root"
           data-file-name="IconDotsHorizontal3Small"
           data-testid="IconDotsHorizontal3Small"
           fillcontrast="white"
@@ -81,9 +81,6 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
           width="16"
         />
       </div>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </li>
   <li
