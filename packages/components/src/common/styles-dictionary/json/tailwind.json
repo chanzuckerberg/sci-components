@@ -1,10 +1,10 @@
 {
   "fontFamily": {
-    "sds-body": "\"Inter\", sans-serif",
-    "sds-caps": "\"Inter\", sans-serif",
+    "sds-body": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-caps": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
     "sds-code": "\"IBM Plex Mono\", monospace",
-    "sds-header": "\"Inter\", sans-serif",
-    "sds-tabular": "\"Inter\", sans-serif"
+    "sds-header": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
   },
   "fontSize": {
     "sds-body-xxxs-400-narrow": "12px",
@@ -329,7 +329,7 @@
   "typography": {
     "sds-body-xxxs-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -341,7 +341,7 @@
     },
     "sds-body-xxxs-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -353,7 +353,7 @@
     },
     "sds-body-xxxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -365,7 +365,7 @@
     },
     "sds-body-xxxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -377,7 +377,7 @@
     },
     "sds-body-xxs-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -389,7 +389,7 @@
     },
     "sds-body-xxs-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -401,7 +401,7 @@
     },
     "sds-body-xxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -413,7 +413,7 @@
     },
     "sds-body-xxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -425,7 +425,7 @@
     },
     "sds-body-xs-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -437,7 +437,7 @@
     },
     "sds-body-xs-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -449,7 +449,7 @@
     },
     "sds-body-xs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -461,7 +461,7 @@
     },
     "sds-body-xs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -473,7 +473,7 @@
     },
     "sds-body-s-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -485,7 +485,7 @@
     },
     "sds-body-s-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -497,7 +497,7 @@
     },
     "sds-body-s-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -509,7 +509,7 @@
     },
     "sds-body-s-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -521,7 +521,7 @@
     },
     "sds-body-m-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -533,7 +533,7 @@
     },
     "sds-body-m-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -545,7 +545,7 @@
     },
     "sds-body-m-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -557,7 +557,7 @@
     },
     "sds-body-m-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -569,7 +569,7 @@
     },
     "sds-body-l-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -581,7 +581,7 @@
     },
     "sds-body-l-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "18px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -593,7 +593,7 @@
     },
     "sds-body-l-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -605,7 +605,7 @@
     },
     "sds-body-l-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "18px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -617,7 +617,7 @@
     },
     "sds-caps-xxxxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -629,7 +629,7 @@
     },
     "sds-caps-xxxxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "10px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -641,7 +641,7 @@
     },
     "sds-caps-xxxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -653,7 +653,7 @@
     },
     "sds-caps-xxxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -665,7 +665,7 @@
     },
     "sds-caps-xxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -677,7 +677,7 @@
     },
     "sds-caps-xxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -689,7 +689,7 @@
     },
     "sds-header-xxxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -701,7 +701,7 @@
     },
     "sds-header-xxxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "11px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -713,7 +713,7 @@
     },
     "sds-header-xxs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -725,7 +725,7 @@
     },
     "sds-header-xxs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "12px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -737,7 +737,7 @@
     },
     "sds-header-xs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -749,7 +749,7 @@
     },
     "sds-header-xs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -761,7 +761,7 @@
     },
     "sds-header-s-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -773,7 +773,7 @@
     },
     "sds-header-s-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -785,7 +785,7 @@
     },
     "sds-header-m-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -797,7 +797,7 @@
     },
     "sds-header-m-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -809,7 +809,7 @@
     },
     "sds-header-l-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "16px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -821,7 +821,7 @@
     },
     "sds-header-l-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "18px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -833,7 +833,7 @@
     },
     "sds-header-xl-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "18px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -845,7 +845,7 @@
     },
     "sds-header-xl-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "22px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -857,7 +857,7 @@
     },
     "sds-header-xxl-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "22px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -869,7 +869,7 @@
     },
     "sds-header-xxl-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "26px",
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
@@ -881,7 +881,7 @@
     },
     "sds-tabular-xs-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -893,7 +893,7 @@
     },
     "sds-tabular-xs-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -905,7 +905,7 @@
     },
     "sds-tabular-xs-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -917,7 +917,7 @@
     },
     "sds-tabular-xs-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "13px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -929,7 +929,7 @@
     },
     "sds-tabular-s-400-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -941,7 +941,7 @@
     },
     "sds-tabular-s-400-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -953,7 +953,7 @@
     },
     "sds-tabular-s-600-narrow": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -965,7 +965,7 @@
     },
     "sds-tabular-s-600-wide": {
       "css": {
-        "fontFamily": "Inter, sans-serif",
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
         "fontSize": "14px",
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
@@ -1165,9 +1165,13 @@
       "sds-color-semantic-base-background-tertiary": "#494949",
       "sds-color-semantic-base-border": "#cdcdcd",
       "sds-color-semantic-base-border-disabled": "#696969",
+      "sds-color-semantic-base-border-disabled-inverse": "#cdcdcd",
       "sds-color-semantic-base-border-hover": "#ffffff",
-      "sds-color-semantic-base-border-inverse": "#000000",
+      "sds-color-semantic-base-border-hover-inverse": "#000000",
+      "sds-color-semantic-base-border-inverse": "#696969",
+      "sds-color-semantic-base-border-on-fill": "#000000",
       "sds-color-semantic-base-border-pressed": "#ffffff",
+      "sds-color-semantic-base-border-pressed-inverse": "#000000",
       "sds-color-semantic-base-border-table": "#696969",
       "sds-color-semantic-base-divider": "#494949",
       "sds-color-semantic-base-divider-inverse": "#cdcdcd",
@@ -1178,15 +1182,18 @@
       "sds-color-semantic-base-fill-primary": "#000000",
       "sds-color-semantic-base-fill-selected": "#ffffff",
       "sds-color-semantic-base-ornament-disabled": "#696969",
+      "sds-color-semantic-base-ornament-disabled-inverse": "#cdcdcd",
       "sds-color-semantic-base-ornament-on-fill": "#000000",
       "sds-color-semantic-base-ornament-primary": "#ffffff",
       "sds-color-semantic-base-ornament-primary-inverse": "#000000",
       "sds-color-semantic-base-ornament-secondary": "#cdcdcd",
+      "sds-color-semantic-base-ornament-secondary-inverse": "#696969",
       "sds-color-semantic-base-ornament-secondary-hover": "#ffffff",
       "sds-color-semantic-base-ornament-secondary-pressed": "#ffffff",
       "sds-color-semantic-base-surface": "#000000",
       "sds-color-semantic-base-surface-inverse": "#ffffff",
       "sds-color-semantic-base-text-disabled": "#696969",
+      "sds-color-semantic-base-text-disabled-inverse": "#cdcdcd",
       "sds-color-semantic-base-text-primary": "#ffffff",
       "sds-color-semantic-base-text-primary-inverse": "#000000",
       "sds-color-semantic-base-text-secondary": "#cdcdcd",
@@ -1327,9 +1334,13 @@
       "sds-color-semantic-base-background-tertiary": "#dfdfdf",
       "sds-color-semantic-base-border": "#6c6c6c",
       "sds-color-semantic-base-border-disabled": "#c3c3c3",
+      "sds-color-semantic-base-border-disabled-inverse": "#6c6c6c",
       "sds-color-semantic-base-border-hover": "#000000",
-      "sds-color-semantic-base-border-inverse": "#ffffff",
+      "sds-color-semantic-base-border-hover-inverse": "#ffffff",
+      "sds-color-semantic-base-border-inverse": "#c3c3c3",
+      "sds-color-semantic-base-border-on-fill": "#ffffff",
       "sds-color-semantic-base-border-pressed": "#000000",
+      "sds-color-semantic-base-border-pressed-inverse": "#ffffff",
       "sds-color-semantic-base-border-table": "#c3c3c3",
       "sds-color-semantic-base-divider": "#dfdfdf",
       "sds-color-semantic-base-divider-inverse": "#6c6c6c",
@@ -1340,15 +1351,18 @@
       "sds-color-semantic-base-fill-primary": "#ffffff",
       "sds-color-semantic-base-fill-selected": "#000000",
       "sds-color-semantic-base-ornament-disabled": "#c3c3c3",
+      "sds-color-semantic-base-ornament-disabled-inverse": "#6c6c6c",
       "sds-color-semantic-base-ornament-on-fill": "#ffffff",
       "sds-color-semantic-base-ornament-primary": "#000000",
       "sds-color-semantic-base-ornament-primary-inverse": "#ffffff",
       "sds-color-semantic-base-ornament-secondary": "#6c6c6c",
+      "sds-color-semantic-base-ornament-secondary-inverse": "#c3c3c3",
       "sds-color-semantic-base-ornament-secondary-hover": "#000000",
       "sds-color-semantic-base-ornament-secondary-pressed": "#000000",
       "sds-color-semantic-base-surface": "#ffffff",
       "sds-color-semantic-base-surface-inverse": "#000000",
       "sds-color-semantic-base-text-disabled": "#c3c3c3",
+      "sds-color-semantic-base-text-disabled-inverse": "#6c6c6c",
       "sds-color-semantic-base-text-primary": "#000000",
       "sds-color-semantic-base-text-primary-inverse": "#ffffff",
       "sds-color-semantic-base-text-secondary": "#6c6c6c",

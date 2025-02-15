@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
+<div>
+  <header
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-12jyxgf-MuiPaper-root-MuiAppBar-root"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-t2jvv-MuiToolbar-root"
+    >
+      <a
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-ro3zhg-MuiTypography-root-MuiLink-root"
+        href="https://chanzuckerberg.com"
+      >
+        <div
+          class="css-wpz1oh"
+        >
+          <div
+            class="css-1sg2lsz"
+          >
+            <div
+              style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; width: 50px;"
+            >
+              Logo slot
+            </div>
+          </div>
+          <p>
+            Logo Name
+          </p>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1wz7rg2-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Beta
+            </span>
+          </div>
+        </div>
+      </a>
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pzgwa3-MuiButtonBase-root-MuiIconButton-root"
+        icon="XMark"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-1ft6wgl"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-18ki404-MuiSvgIcon-root"
+            data-file-name="IconXMarkLarge"
+            data-testid="IconXMarkLarge"
+            fillcontrast="white"
+            focusable="false"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          />
+        </div>
+      </button>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`<NavigationHeder /> matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-12jyxgf-MuiPaper-root-MuiAppBar-root"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-t2jvv-MuiToolbar-root"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-ro3zhg-MuiTypography-root-MuiLink-root"
+          href="https://chanzuckerberg.com"
+        >
+          <div
+            class="css-wpz1oh"
+          >
+            <div
+              class="css-1sg2lsz"
+            >
+              <div
+                style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; width: 50px;"
+              >
+                Logo slot
+              </div>
+            </div>
+            <p>
+              Logo Name
+            </p>
+            <div
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1wz7rg2-MuiChip-root"
+            >
+              <span
+                class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+              >
+                Beta
+              </span>
+            </div>
+          </div>
+        </a>
+        <button
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pzgwa3-MuiButtonBase-root-MuiIconButton-root"
+          icon="XMark"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-18ki404-MuiSvgIcon-root"
+              data-file-name="IconXMarkLarge"
+              data-testid="IconXMarkLarge"
+              fillcontrast="white"
+              focusable="false"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+            />
+          </div>
+        </button>
+      </div>
+    </header>
+  </div>
+</DocumentFragment>
+`;

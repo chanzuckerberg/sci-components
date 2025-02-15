@@ -178,6 +178,7 @@ const doNotForwardProps = [
   "sdsStyle",
   "sdsIcon",
   "sdsIconProps",
+  "customTheme",
 ];
 
 export const StyledButtonIcon = styled(IconButton, {

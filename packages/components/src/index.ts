@@ -79,6 +79,8 @@ export * from "./core/MenuSelect";
 export { default as MenuSelect } from "./core/MenuSelect";
 export * from "./core/NavigationFooter";
 export { default as Footer } from "./core/NavigationFooter";
+export * from "./core/NavigationHeader";
+export { default as NavigationHeader } from "./core/NavigationHeader";
 export * from "./core/NavigationJumpTo";
 export { default as NavigationJumpTo } from "./core/NavigationJumpTo";
 export * from "./core/Notification";

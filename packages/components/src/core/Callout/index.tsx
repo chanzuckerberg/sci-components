@@ -22,7 +22,7 @@ export interface CalloutProps {
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
   title?: string;
   hideTitle?: boolean;
-  body?: string;
+  body?: React.ReactNode;
   hideBody?: boolean;
   extraContent?: React.ReactNode;
   sdsStyle?: CalloutSdsStyleType;
@@ -40,7 +40,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     icon,
     sdsIconProps,
     intent,
-    sdsStage,
+    sdsStage = SDS_STAGE_OPEN,
     title,
     body,
     hideTitle = false,
@@ -50,7 +50,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     ...rest
   } = props;
   const [hide, setHide] = useState(dismissed);
-  const [stage, setStage] = useState(sdsStage || SDS_STAGE_CLOSED);
+  const [stage, setStage] = useState(sdsStage);
 
   useEffect(() => {
     setHide(dismissed);
@@ -128,28 +128,26 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     (sdsStyle === "expandable" && stage === SDS_STAGE_CLOSED) || false;
 
   return (
-    <>
-      <Grow in={!hide}>
-        <StyledCallout
-          onClose={handleClose}
-          action={getAction(collapsed)}
-          icon={getIcon()}
-          intent={intent}
-          collapsed={collapsed || false}
-          sdsStyle={sdsStyle}
-          hideBody={hideBody}
-          {...rest}
-        >
-          {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
-          {!hideBody && <CalloutBody hideTitle={hideTitle}>{body}</CalloutBody>}
-          {sdsStyle === "expandable" && !collapsed && (
-            <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
-              {children}
-            </CalloutExtraContent>
-          )}
-        </StyledCallout>
-      </Grow>
-    </>
+    <Grow in={!hide}>
+      <StyledCallout
+        onClose={handleClose}
+        action={getAction(collapsed)}
+        icon={getIcon()}
+        intent={intent}
+        collapsed={collapsed || false}
+        sdsStyle={sdsStyle}
+        hideBody={hideBody}
+        {...rest}
+      >
+        {!hideTitle && <CalloutTitle>{title}</CalloutTitle>}
+        {!hideBody && <CalloutBody hideTitle={hideTitle}>{body}</CalloutBody>}
+        {sdsStyle === "expandable" && !collapsed && (
+          <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
+            {children}
+          </CalloutExtraContent>
+        )}
+      </StyledCallout>
+    </Grow>
   );
 };
 

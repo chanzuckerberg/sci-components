@@ -37,7 +37,7 @@ export default {
     },
     sdsType: {
       control: { type: "radio" },
-      options: ["primary", "secondary"],
+      options: ["primary", "secondary", "tertiary", "destructive"],
       required: true,
     },
   },

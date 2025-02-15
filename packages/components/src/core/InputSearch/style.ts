@@ -27,7 +27,13 @@ export interface InputSearchExtraProps extends CommonThemeProps {
   value?: string;
 }
 
-const sdsPropNames = ["sdsStyle", "intent", "handleSubmit"];
+const doNotForwardProps = [
+  "sdsStyle",
+  "intent",
+  "handleSubmit",
+  "customTheme",
+  "hasInvertedStyle",
+];
 
 const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const corners = getCorners(props);
@@ -129,7 +135,7 @@ export const StyledLabel = styled("label")`
 
 export const StyledSearchBase = styled(TextField, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(prop.toString());
   },
 })`
   ${(props: InputSearchExtraProps) => {
