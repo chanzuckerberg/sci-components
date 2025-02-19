@@ -17,6 +17,7 @@ import {
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
   StyledNarrowButton,
+  StyledNarrowIconButton,
   StyledPrimaryNavContainer,
   StyledSearch,
   StyledShadowCoverElement,
@@ -24,6 +25,7 @@ import {
   StyledTag,
   StyledTitleContainer,
   StyledToolbar,
+  StyledWideIconButton,
 } from "./style";
 import NavigationHeaderPrimaryNav, {
   NavigationHeaderPrimaryNavItem,
@@ -32,7 +34,7 @@ import { InputSearchProps } from "../InputSearch";
 import NavigationHeaderSecondaryNav, {
   NavigationHeaderSecondaryNavItem,
 } from "./components/NavigationHeaderSecondaryNav";
-import Button, {
+import {
   SdsProps,
   ButtonProps,
   SdsButtonProps,
@@ -58,7 +60,7 @@ export interface NavigationHeaderProps<T extends string = string> {
   title: string;
 }
 
-type IconButtonProps = SdsIconButtonProps & { children: string };
+export type IconButtonProps = SdsIconButtonProps & { children?: string };
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
@@ -85,7 +87,6 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const navRef = useRef<HTMLDivElement>(null);
 
     const theme = useTheme();
-    const mode = theme?.palette?.mode || "light";
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
     useEffect(() => {
@@ -130,9 +131,6 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             label="Search"
             placeholder="Search"
             sdsStyle="rounded"
-            customTheme={
-              hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
-            }
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
             {...searchProps}
@@ -230,35 +228,31 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       key: string,
       fullWidth: { width: string } | undefined
     ) => (
-      <Button
+      <StyledNarrowIconButton
         key={key}
         sx={fullWidth}
         sdsStyle="minimal"
         sdsType="secondary"
         isAllCaps={false}
         startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
-        customTheme={
-          hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
-        }
+        hasInvertedStyle={hasInvertedStyle}
       >
         {buttonProps.children}
-      </Button>
+      </StyledNarrowIconButton>
     );
 
     const renderWideIconButton = (
       buttonProps: IconButtonProps,
       key: string
     ) => (
-      <Button
+      <StyledWideIconButton
         key={key}
         sdsIconProps={{ sdsSize: "l" }}
         sdsStyle="icon"
         sdsType="secondary"
         icon={buttonProps.icon}
         aria-label={String(buttonProps.children)}
-        customTheme={
-          hasInvertedStyle ? (mode === "light" ? "dark" : "light") : "auto"
-        }
+        hasInvertedStyle={hasInvertedStyle}
       />
     );
 
@@ -318,13 +312,6 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
               sdsStyle="icon"
               icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
               onClick={() => setDrawerOpen((prev) => !prev)}
-              customTheme={
-                hasInvertedStyle
-                  ? mode === "light"
-                    ? "dark"
-                    : "light"
-                  : "auto"
-              }
             />
           )}
         </StyledToolbar>
