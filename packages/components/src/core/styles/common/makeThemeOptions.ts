@@ -292,21 +292,35 @@ export function makeThemeOptions(
       },
     },
     components: {
+      MuiButton: {
+        defaultProps: {
+          disableFocusRipple: true,
+          disableRipple: true,
+          disableTouchRipple: true,
+        },
+      },
       MuiButtonBase: {
         defaultProps: {
           disableRipple: true,
+          disableTouchRipple: true,
         },
-        // styleOverrides: {
-        //   root: {
-        //     "&:hover": {
-        //       boxShadow: "none",
-        //     },
-        //   },
-        // },
+      },
+      MuiButtonGroup: {
+        defaultProps: {
+          disableFocusRipple: true,
+          disableRipple: true,
+        },
       },
       MuiDrawer: {
         defaultProps: {
           hideBackdrop: true,
+        },
+      },
+      MuiIconButton: {
+        defaultProps: {
+          disableFocusRipple: true,
+          disableRipple: true,
+          disableTouchRipple: true,
         },
       },
       MuiLink: {
@@ -316,7 +330,16 @@ export function makeThemeOptions(
       },
       MuiTab: {
         defaultProps: {
+          disableFocusRipple: true,
           disableRipple: true,
+          disableTouchRipple: true,
+        },
+      },
+      MuiToggleButton: {
+        defaultProps: {
+          disableFocusRipple: true,
+          disableRipple: true,
+          disableTouchRipple: true,
         },
       },
     },
