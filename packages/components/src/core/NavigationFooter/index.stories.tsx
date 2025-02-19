@@ -94,8 +94,8 @@ export default {
     tagColor: "beta",
     title: "Logo Name",
   } satisfies NavigationFooterProps,
-
   component: NavigationFooter,
+  parameters: { layout: "fullscreen" },
   title: "Components/NavigationFooter",
 } as Meta;
 
