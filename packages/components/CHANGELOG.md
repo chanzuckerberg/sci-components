@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.2.0...@czi-sds/components@22.2.1) (2025-02-19)
+
+### Bug Fixes
+
+- **styles:** Inverted styles on Button and InputSearch ignore custom themes. ([#931](https://github.com/chanzuckerberg/sci-components/issues/931)) ([04d1dca](https://github.com/chanzuckerberg/sci-components/commit/04d1dca00134961f31a22226fc1aac7255fefebf))
+
 # [22.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.2...@czi-sds/components@22.2.0) (2025-02-13)
 
 ### Features
