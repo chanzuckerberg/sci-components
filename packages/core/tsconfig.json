@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.json",
+  "target": "ES2020", // Or at least "ES2015"
+  "downlevelIteration": true,
+  "lib": [
+    "ES2020",
+    "DOM",
+    "DOM.Iterable"
+  ],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "composite": true
+  },
+  "include": [
+    "./src/**/*",
+    "jest.setup.ts",
+    "../../.eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.scss",
+    "**/*.css"
+  ],
+  "references": []
+}

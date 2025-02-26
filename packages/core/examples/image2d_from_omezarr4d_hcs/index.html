@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Viewer</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      }
+      #main {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+      }
+      #canvas {
+        flex: 1;
+        min-width: 0;
+      }
+      #options {
+        flex: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      #well-div,
+      #image-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="options">
+        <div id="well-div">
+          <label for="well">Well:</label>
+          <select id="well"></select>
+        </div>
+        <div id="image-div">
+          <label for="image">Image:</label>
+          <select id="image"></select>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
