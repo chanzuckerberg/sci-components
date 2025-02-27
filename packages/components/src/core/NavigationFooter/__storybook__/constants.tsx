@@ -19,7 +19,7 @@ export function ExampleLogo({
       style={{
         alignItems: "center",
         border: `1px dashed ${colors?.base.border}`,
-        color: colors?.base.textPrimary,
+        color: colors?.base.textSecondary,
         display: "flex",
         fontSize: 10,
         fontWeight: "normal",

@@ -21,12 +21,12 @@ export const StyledFooter = styled("footer", {
     const { isNarrow } = props;
 
     const spaces = getSpaces(props);
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       background: ${props.hasInvertedStyle
-        ? colors?.base.surfaceInverse
-        : colors?.base.surface};
+        ? semanticColors?.base.backgroundPrimaryInverse
+        : semanticColors?.base.backgroundPrimary};
       padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px
         ${spaces?.xxl}px;
 
@@ -34,8 +34,8 @@ export const StyledFooter = styled("footer", {
       css`
         border-top: 1px solid
           ${props.hasInvertedStyle
-            ? colors?.base.dividerInverse
-            : colors?.base.divider};
+            ? semanticColors?.base.dividerInverse
+            : semanticColors?.base.divider};
         padding: ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
       `}
     `;
@@ -45,40 +45,38 @@ export const StyledFooter = styled("footer", {
 export const StyledLogoWrapper = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  display: flex;
-  align-items: center;
+  ${(props: ExtraFooterProps) => {
+    const spaces = getSpaces(props);
 
-  a {
-    text-decoration: none;
-  }
+    return css`
+      display: flex;
+      align-items: center;
+      gap: ${spaces?.s}px;
+
+      a {
+        text-decoration: none;
+      }
+
+      .MuiChip-root {
+        margin: 0;
+      }
+    `;
+  }}
 
   p {
     ${fontHeader("l")}
     ${fontHeader("l", /* isNarrow */ true)}
 
     ${(props: ExtraFooterProps) => {
-      const { isNarrow } = props;
-
-      const spaces = getSpaces(props);
-      const colors = getSemanticColors(props);
+      const semanticColors = getSemanticColors(props);
 
       return css`
         color: ${props.hasInvertedStyle
-          ? colors?.base.textPrimaryInverse
-          : colors?.base.textPrimary};
-        margin: 0 ${spaces?.xs}px 0 ${spaces?.l}px;
+          ? semanticColors?.base.textPrimaryInverse
+          : semanticColors?.base.textPrimary};
         white-space: nowrap;
-
-        ${isNarrow &&
-        css`
-          margin-left: ${spaces?.xs}px;
-        `}
       `;
     }}
-  }
-
-  .MuiChip-root {
-    margin: 0;
   }
 `;
 
@@ -114,7 +112,7 @@ export const StyledTopSection = styled("div", {
   ${(props: ExtraFooterProps) => {
     const { isNarrow } = props;
 
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return css`
@@ -128,13 +126,13 @@ export const StyledTopSection = styled("div", {
       }
 
       color: ${props.hasInvertedStyle
-        ? colors?.base.textSecondaryInverse
-        : colors?.base.textSecondary};
+        ? semanticColors?.base.textSecondaryInverse
+        : semanticColors?.base.textSecondary};
 
       &:hover {
         color: ${props.hasInvertedStyle
-          ? colors?.base.textPrimaryInverse
-          : colors?.base.textPrimary};
+          ? semanticColors?.base.textPrimaryInverse
+          : semanticColors?.base.textPrimary};
         text-decoration: none;
       }
 
@@ -163,11 +161,10 @@ export const StyledLinkSection = styled("div", {
     const spaces = getSpaces(props);
 
     return css`
-      gap: ${spaces?.xxs}px ${spaces?.m}px;
+      gap: ${spaces?.s}px;
 
       ${isNarrow &&
       css`
-        gap: ${spaces?.m}px;
         margin-top: ${spaces?.xl}px;
         flex-direction: column;
       `}
@@ -201,12 +198,12 @@ export const StyledImageSection = styled("div", {
 
     return css`
       padding-left: ${spaces?.l}px;
-      gap: ${spaces?.xl}px;
+      gap: ${spaces?.xxl}px;
 
       ${isNarrow &&
       css`
         padding-left: 0;
-        gap: ${spaces?.m}px;
+        gap: ${spaces?.xl}px;
         flex-direction: column;
         justify-content: center;
       `}

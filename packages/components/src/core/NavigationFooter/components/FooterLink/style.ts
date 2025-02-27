@@ -15,14 +15,14 @@ export const StyledLinkItemLink = styled(Link, {
   ${fontBody("xxs", "regular")}
 
   ${(props: FooterLinkStyleProps) => {
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
+      color: ${props.hasInvertedStyle ? semanticColors?.base.textSecondaryInverse : semanticColors?.base.textSecondary};
       white-space: nowrap;
 
       &:hover {
-        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+        color: ${props.hasInvertedStyle ? semanticColors?.base.textPrimaryInverse : semanticColors?.base.textPrimary};
         text-decoration: none;
       }
     `;
@@ -33,13 +33,13 @@ export const StyledDivider = styled(Divider, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: FooterLinkStyleProps) => {
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       border-color: ${
         props.hasInvertedStyle
-          ? colors?.base.dividerInverse
-          : colors?.base.divider
+          ? semanticColors?.base.dividerInverse
+          : semanticColors?.base.divider
       };
     `;
   }}

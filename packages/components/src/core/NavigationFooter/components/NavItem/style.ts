@@ -19,7 +19,7 @@ const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
 const NarrowNavItemLinkStyles = (
   props: NavItemStyleProps
 ): SerializedStyles => {
-  const colors = getSemanticColors(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     min-height: 48px;
@@ -31,11 +31,11 @@ const NarrowNavItemLinkStyles = (
 
     &:hover {
       color: ${props.hasInvertedStyle
-        ? colors?.base.textPrimaryInverse
-        : colors?.base.textPrimary};
+        ? semanticColors?.base.textPrimaryInverse
+        : semanticColors?.base.textPrimary};
       background: ${props.hasInvertedStyle
-        ? colors?.base.backgroundSecondaryInverse
-        : colors?.base.backgroundSecondary};
+        ? semanticColors?.base.backgroundSecondaryInverse
+        : semanticColors?.base.backgroundSecondary};
     }
   `;
 };
@@ -49,16 +49,18 @@ export const StyledNavItemLink = styled(Link, {
   ${(props: NavItemStyleProps) => {
     const { isNarrow } = props;
 
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       color: ${props.hasInvertedStyle
-        ? colors?.base.textPrimaryInverse
-        : colors?.base.textPrimary};
+        ? semanticColors?.base.textSecondaryInverse
+        : semanticColors?.base.textSecondary};
       white-space: nowrap;
 
       &:hover {
-        color: ${colors?.accent.textAction};
+        color: ${props.hasInvertedStyle
+          ? semanticColors?.base.textPrimaryInverse
+          : semanticColors?.base.textPrimary};
         text-decoration: none;
         font-weight: 600;
       }
