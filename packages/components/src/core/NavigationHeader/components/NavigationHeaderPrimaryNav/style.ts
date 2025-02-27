@@ -26,7 +26,7 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
 
   const inactiveBorderColor = hasInvertedStyle
     ? colors?.neutral?.fillPrimary
-    : colors?.base.border;
+    : colors?.base.borderPrimary;
 
   return css`
     border-left: ${spaces?.xs}px solid
@@ -93,7 +93,7 @@ const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
 
   const inactiveBorderColor = hasInvertedStyle
     ? colors?.base.borderOnFill
-    : colors?.base.border;
+    : colors?.base.borderPrimary;
 
   return css`
     border-bottom: solid 2px transparent;

@@ -9,6 +9,8 @@ export enum SDSWarningTypes {
   TooltipSubtitle = "tooltipSubtitle",
   TooltipWidth = "tooltipWidth",
   TooltipInvertStyle = "tooltipInvertStyle",
+  ContentCardActionsOnlyButtons = "contentCardActionsOnlyButtons",
+  ClickableContentCardNumberOfButtons = "clickableContentCardNumberOfButtons",
 }
 
 export const SDS_WARNINGS = {
@@ -57,6 +59,16 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use hasInvertedStyle instead!",
+  },
+  [SDSWarningTypes.ContentCardActionsOnlyButtons]: {
+    hasWarned: false,
+    message:
+      "Warning: Only SDS buttons could be used within ContentCard Actions component slot!",
+  },
+  [SDSWarningTypes.ClickableContentCardNumberOfButtons]: {
+    hasWarned: false,
+    message:
+      "Warning: Clickable Content Cards can only have one or no buttons!",
   },
 };
 
