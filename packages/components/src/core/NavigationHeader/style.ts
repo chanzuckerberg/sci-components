@@ -81,7 +81,9 @@ export const StyledToolbar = styled(Toolbar, {
   }}
 `;
 
-export const StyledShadowElement = styled.div`
+export const StyledShadowElement = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraHeaderProps) => {
     const shadows = getShadows(props);
 
@@ -98,7 +100,9 @@ export const StyledShadowElement = styled.div`
   }}
 `;
 
-export const StyledShadowCoverElement = styled.div`
+export const StyledShadowCoverElement = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
 
@@ -119,9 +123,9 @@ export interface ExtraButtonProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
 }
 
-export const StyledHeaderButton = styled(Button)<
-  ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
->`
+export const StyledHeaderButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)>`
   ${(props) => {
     const { sdsType, hasInvertedStyle } = props;
     const mode = props?.theme?.palette?.mode || "light";
@@ -161,9 +165,9 @@ const invertedNarrowButtonStyles = (
   `;
 };
 
-export const StyledNarrowIconButton = styled(Button)<
-  ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
->`
+export const StyledNarrowIconButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)>`
   ${(props) => {
     const { hasInvertedStyle } = props;
 
@@ -194,9 +198,9 @@ const invertedWideButtonStyles = (
   `;
 };
 
-export const StyledWideIconButton = styled(Button)<
-  ExtraButtonProps & IconButtonProps
->`
+export const StyledWideIconButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraButtonProps & IconButtonProps>`
   ${(props) => {
     const { hasInvertedStyle } = props;
 

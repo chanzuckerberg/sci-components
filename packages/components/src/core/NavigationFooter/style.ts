@@ -1,20 +1,22 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBody,
   fontHeader,
   getSemanticColors,
   getSpaces,
 } from "../styles";
-import Link from "../Link";
-import { css, Divider } from "@mui/material";
+import { css } from "@mui/material";
 
 interface ExtraFooterProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
 }
 
-export const StyledFooter = styled.footer`
+const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
+
+export const StyledFooter = styled("footer", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: ExtraFooterProps) => {
     const { isNarrow } = props;
 
@@ -40,7 +42,9 @@ export const StyledFooter = styled.footer`
   }}
 `;
 
-export const StyledLogoWrapper = styled.div`
+export const StyledLogoWrapper = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   display: flex;
   align-items: center;
 
@@ -78,7 +82,9 @@ export const StyledLogoWrapper = styled.div`
   }
 `;
 
-export const StyledNavSection = styled.div`
+export const StyledNavSection = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: ExtraFooterProps) => {
     const { isNarrow } = props;
 
@@ -102,50 +108,9 @@ export const StyledNavSection = styled.div`
   }}
 `;
 
-export const StyledNavItemLink = styled(Link)`
-  ${fontHeader("m")}
-  ${fontBody("s", "regular", /* isNarrow */ true)}
-
-  ${(props: ExtraFooterProps) => {
-    const { isNarrow } = props;
-
-    const colors = getSemanticColors(props);
-
-    return css`
-      color: ${props.hasInvertedStyle
-        ? colors?.base.textPrimaryInverse
-        : colors?.base.textPrimary};
-      white-space: nowrap;
-
-      &:hover {
-        color: ${colors?.accent.textAction};
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      ${isNarrow &&
-      css`
-        min-height: 48px;
-        text-align: center;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        &:hover {
-          color: ${props.hasInvertedStyle
-            ? colors?.base.textPrimaryInverse
-            : colors?.base.textPrimary};
-          background: ${props.hasInvertedStyle
-            ? colors?.base.backgroundSecondaryInverse
-            : colors?.base.backgroundSecondary};
-        }
-      `}
-    `;
-  }}
-`;
-
-export const StyledTopSection = styled.div`
+export const StyledTopSection = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: ExtraFooterProps) => {
     const { isNarrow } = props;
 
@@ -182,25 +147,9 @@ export const StyledTopSection = styled.div`
   }}
 `;
 
-export const StyledLinkItemLink = styled(Link)`
-  ${fontBody("xxs", "regular")}
-
-  ${(props: ExtraFooterProps) => {
-    const colors = getSemanticColors(props);
-
-    return `
-      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
-      white-space: nowrap;
-
-      &:hover {
-        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
-        text-decoration: none;
-      }
-    `;
-  }}
-`;
-
-export const StyledLinkSection = styled.div`
+export const StyledLinkSection = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   align-items: center;
   display: flex;
 
@@ -239,7 +188,9 @@ export const StyledMobileLinkRow = styled.div`
   }}
 `;
 
-export const StyledImageSection = styled.div`
+export const StyledImageSection = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   align-items: center;
   display: flex;
 
@@ -276,7 +227,9 @@ export const StyledMobileImageRow = styled.div`
   }}
 `;
 
-export const StyledBottomSection = styled.div`
+export const StyledBottomSection = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -298,20 +251,6 @@ export const StyledBottomSection = styled.div`
         flex-direction: column-reverse;
         margin-top: ${spaces?.xl}px;
       `}
-    `;
-  }}
-`;
-
-export const StyledDivider = styled(Divider)`
-  ${(props: ExtraFooterProps) => {
-    const colors = getSemanticColors(props);
-
-    return `
-      border-color: ${
-        props.hasInvertedStyle
-          ? colors?.base.dividerInverse
-          : colors?.base.divider
-      };
     `;
   }}
 `;

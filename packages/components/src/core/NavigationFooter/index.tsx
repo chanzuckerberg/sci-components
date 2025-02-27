@@ -1,53 +1,23 @@
-import {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  ElementType,
-} from "react";
-import Tag, { TagProps } from "../Tag";
+import { useCallback, useEffect, useRef, useState, useMemo, memo } from "react";
+import Tag from "../Tag";
 import {
   StyledBottomSection,
   StyledFooter,
-  StyledLinkItemLink,
   StyledLinkSection,
   StyledImageSection,
   StyledLogoWrapper,
-  StyledNavItemLink,
   StyledNavSection,
   StyledTopSection,
   StyledMobileImageRow,
   StyledMobileLinkRow,
-  StyledDivider,
 } from "./style";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Link from "../Link";
-
-export interface NavigationFooterNavItem {
-  label: string;
-  url: string;
-  component?: ElementType;
-  linkProps?: Record<string, unknown>;
-}
-
-export interface FooterImage {
-  image: ReactNode;
-  url: string;
-}
-
-export interface NavigationFooterProps {
-  hasInvertedStyle?: boolean;
-  images?: FooterImage[];
-  logo?: ReactNode;
-  logoUrl?: string;
-  navItems?: NavigationFooterNavItem[];
-  navLinks?: NavigationFooterNavItem[];
-  tag?: string;
-  tagColor?: TagProps["tagColor"];
-  title: string;
-}
+import NavItem from "./components/NavItem";
+import FooterLink from "./components/FooterLink";
+import { NavigationFooterProps } from "./NavigationFooter.types";
+import { StyledDivider } from "./components/FooterLink/style";
 
 function groupArray<T>(array: T[], groupSize: number): T[][] {
   const groups: T[][] = [];
@@ -59,7 +29,9 @@ function groupArray<T>(array: T[], groupSize: number): T[][] {
   return groups;
 }
 
-export default function NavigationFooter({
+const MemoizedStyledDivider = memo(StyledDivider);
+
+function NavigationFooter({
   hasInvertedStyle,
   images,
   logo,
@@ -69,18 +41,20 @@ export default function NavigationFooter({
   tag,
   tagColor,
   title,
+  ...rest
 }: NavigationFooterProps) {
   const footerRef = useRef<HTMLDivElement>(null);
-
   const theme = useTheme();
   const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-  useEffect(() => {
-    setIsNarrow(isMdScreen);
-  }, [isMdScreen]);
+  const [dimensions, setDimensions] = useState({
+    breakpoint: 0,
+    isNarrow: isMdScreen,
+  });
 
-  const [isNarrow, setIsNarrow] = useState(isMdScreen);
-  const [breakpoint, setBreakpoint] = useState(0);
+  useEffect(() => {
+    setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
+  }, [isMdScreen]);
 
   const checkScrollable = useCallback(() => {
     if (!footerRef.current) return;
@@ -89,16 +63,21 @@ export default function NavigationFooter({
     const scrollWidth = footerRef.current.scrollWidth;
     const needsScroll = scrollWidth > clientWidth;
 
-    if (needsScroll && !isNarrow) {
-      setBreakpoint((prev) => (prev > clientWidth ? prev : clientWidth));
-    }
+    setDimensions((prev) => {
+      const newBreakpoint =
+        needsScroll && !prev.isNarrow
+          ? Math.max(prev.breakpoint, clientWidth)
+          : prev.breakpoint;
 
-    setIsNarrow(clientWidth <= breakpoint);
-  }, [breakpoint, isNarrow]);
+      return {
+        breakpoint: newBreakpoint,
+        isNarrow: clientWidth <= newBreakpoint,
+      };
+    });
+  }, []);
 
   useEffect(() => {
     checkScrollable();
-
     const resizeObserver = new ResizeObserver(checkScrollable);
 
     if (footerRef.current) {
@@ -106,14 +85,12 @@ export default function NavigationFooter({
     }
 
     return () => resizeObserver.disconnect();
-  }, [breakpoint, checkScrollable, isMdScreen, isNarrow]);
+  }, [checkScrollable]);
 
-  function renderImages() {
-    if (!images || images.length === 0) {
-      return null;
-    }
+  const renderImages = useCallback(() => {
+    if (!images?.length) return null;
 
-    if (!isNarrow) {
+    if (!dimensions.isNarrow) {
       return images.map(({ image, url }) => (
         <Link key={url} href={url}>
           {image}
@@ -130,103 +107,105 @@ export default function NavigationFooter({
         ))}
       </StyledMobileImageRow>
     ));
-  }
+  }, [images, dimensions.isNarrow]);
 
-  function renderLink(link: NavigationFooterNavItem, showDivider: boolean) {
-    return (
-      <>
-        <StyledLinkItemLink
+  const renderLinks = useCallback(() => {
+    if (!navLinks?.length) return null;
+
+    if (!dimensions.isNarrow) {
+      return navLinks.map((link, index) => (
+        <FooterLink
           key={link.label}
-          href={link.url}
+          link={link}
+          showDivider={index < navLinks.length - 1}
           hasInvertedStyle={hasInvertedStyle}
-          component={link.component}
-          {...link.linkProps}
-        >
-          {link.label}
-        </StyledLinkItemLink>
-
-        {showDivider && (
-          <StyledDivider
-            orientation="vertical"
-            flexItem
-            hasInvertedStyle={hasInvertedStyle}
-          />
-        )}
-      </>
-    );
-  }
-
-  function renderLinks() {
-    if (!navLinks || navLinks.length === 0) {
-      return null;
-    }
-
-    if (!isNarrow) {
-      return navLinks.map((link, index) =>
-        renderLink(link, index < navLinks.length - 1)
-      );
+        />
+      ));
     }
 
     return groupArray(navLinks, 3).map((linkGroup, index) => (
       <StyledMobileLinkRow key={index}>
-        {linkGroup.map((link, linkIndex) =>
-          renderLink(link, linkIndex < linkGroup.length - 1)
-        )}
+        {linkGroup.map((link, linkIndex) => (
+          <FooterLink
+            key={link.label}
+            link={link}
+            showDivider={linkIndex < linkGroup.length - 1}
+            hasInvertedStyle={hasInvertedStyle}
+          />
+        ))}
       </StyledMobileLinkRow>
     ));
-  }
+  }, [navLinks, dimensions.isNarrow, hasInvertedStyle]);
 
-  let logoNode = (
-    <StyledLogoWrapper isNarrow={isNarrow} hasInvertedStyle={hasInvertedStyle}>
-      {logo}
+  const logoNode = useMemo(() => {
+    const node = (
+      <StyledLogoWrapper
+        isNarrow={dimensions.isNarrow}
+        hasInvertedStyle={hasInvertedStyle}
+      >
+        {logo}
+        <p>{title}</p>
+        {tag && <Tag tagColor={tagColor} label={tag} hover={false} />}
+      </StyledLogoWrapper>
+    );
 
-      <p>{title}</p>
+    return logoUrl ? <Link href={logoUrl}>{node}</Link> : node;
+  }, [
+    logo,
+    title,
+    tag,
+    tagColor,
+    logoUrl,
+    dimensions.isNarrow,
+    hasInvertedStyle,
+  ]);
 
-      {tag && <Tag tagColor={tagColor} label={tag} hover={false} />}
-    </StyledLogoWrapper>
-  );
+  const navItemsSection = useMemo(() => {
+    if (!navItems?.length) return null;
 
-  if (logoUrl) {
-    logoNode = <Link href={logoUrl}>{logoNode}</Link>;
-  }
+    return (
+      <StyledNavSection isNarrow={dimensions.isNarrow}>
+        {navItems.map((item) => (
+          <NavItem
+            key={item.label}
+            item={item}
+            hasInvertedStyle={hasInvertedStyle}
+            isNarrow={dimensions.isNarrow}
+          />
+        ))}
+      </StyledNavSection>
+    );
+  }, [navItems, hasInvertedStyle, dimensions.isNarrow]);
 
   return (
     <StyledFooter
       ref={footerRef}
       hasInvertedStyle={hasInvertedStyle}
-      isNarrow={isNarrow}
+      isNarrow={dimensions.isNarrow}
+      {...rest}
     >
-      <StyledTopSection isNarrow={isNarrow} hasInvertedStyle={hasInvertedStyle}>
+      <StyledTopSection
+        isNarrow={dimensions.isNarrow}
+        hasInvertedStyle={hasInvertedStyle}
+      >
         {logoNode}
-
-        {navItems && navItems.length > 0 && (
-          <StyledNavSection isNarrow={isNarrow}>
-            {navItems.map((item) => (
-              <StyledNavItemLink
-                key={item.label}
-                href={item.url}
-                hasInvertedStyle={hasInvertedStyle}
-                isNarrow={isNarrow}
-                component={item.component}
-                {...item.linkProps}
-              >
-                {item.label}
-              </StyledNavItemLink>
-            ))}
-          </StyledNavSection>
-        )}
+        {navItemsSection}
       </StyledTopSection>
 
-      <StyledDivider hasInvertedStyle={hasInvertedStyle} />
+      <MemoizedStyledDivider hasInvertedStyle={hasInvertedStyle} />
 
-      <StyledBottomSection isNarrow={isNarrow}>
-        <StyledLinkSection isNarrow={isNarrow}>
+      <StyledBottomSection isNarrow={dimensions.isNarrow}>
+        <StyledLinkSection isNarrow={dimensions.isNarrow}>
           {renderLinks()}
         </StyledLinkSection>
-        <StyledImageSection isNarrow={isNarrow}>
+        <StyledImageSection isNarrow={dimensions.isNarrow}>
           {renderImages()}
         </StyledImageSection>
       </StyledBottomSection>
     </StyledFooter>
   );
 }
+
+export * from "./NavigationFooter.types";
+
+export default NavigationFooter;
