@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.2.1...@czi-sds/components@22.3.0) (2025-02-27)
+
+### Features
+
+- **contentcard:** first implementation ([#935](https://github.com/chanzuckerberg/sci-components/issues/935)) ([82f4f94](https://github.com/chanzuckerberg/sci-components/commit/82f4f94c34956c88154bbf6dda71947a070566a8))
+- **NavigationFooter:** implement NavigationFooter component ([#886](https://github.com/chanzuckerberg/sci-components/issues/886)) ([44e6252](https://github.com/chanzuckerberg/sci-components/commit/44e6252685b3bede24e415712c559142fa7dbab2))
+
 ## [22.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.2.0...@czi-sds/components@22.2.1) (2025-02-19)
 
 ### Bug Fixes
