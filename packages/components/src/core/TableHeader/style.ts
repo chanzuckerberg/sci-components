@@ -6,7 +6,7 @@ export const StyledTableHeader = styled("thead")`
     const semanticColors = getSemanticColors(props);
 
     return `
-      border-bottom: solid 2px ${semanticColors?.base?.borderTable};
+      border-bottom: solid 2px ${semanticColors?.base?.borderSecondary};
     `;
   }}
 `;

@@ -22,7 +22,7 @@ export const CustomNavigationLogo = (): JSX.Element => {
     <div
       style={{
         alignItems: "center",
-        border: `1px dashed ${colors?.base.border}`,
+        border: `1px dashed ${colors?.base.borderPrimary}`,
         display: "flex",
         fontSize: 10,
         fontWeight: "normal",

@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentCard Default story renders snapshot 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-hu9jj8-MuiPaper-root-MuiCard-root"
+>
+  <div
+    class="css-20z69m"
+  >
+    <img
+      alt="Content Card Media"
+      class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-fq4hyx-MuiCardMedia-root"
+      src="https://picsum.photos/1000"
+    />
+  </div>
+  <div
+    class="css-u4mrcz"
+  >
+    <div>
+      <div
+        class="css-1jlejkr"
+      >
+        <p
+          class="css-5sjq7l"
+        >
+          Overline Text
+        </p>
+        <p
+          class="css-5sjq7l"
+        >
+          Title Text
+        </p>
+        <p
+          class="css-5sjq7l"
+        >
+          Subtitle Text
+        </p>
+      </div>
+      <p
+        class="css-16dysem"
+      >
+        Metadata Text
+      </p>
+    </div>
+    <div
+      class="css-6kyaea"
+    >
+      <div
+        class="MuiCardContent-root css-1ybx2ee-MuiCardContent-root"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Urna duis convallis convallis tellus id interdum velit laoreet id. Donec ultrices tincidunt arcu non sodales. Aliquam eleifend mi in nulla posuere.
+      </div>
+      <div
+        class="MuiCardActions-root MuiCardActions-spacing css-1w4zes7-MuiCardActions-root"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1cs60p5-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Primary Button
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-jrswey-MuiButtonBase-root-MuiButton-root"
+          data-style="minimal"
+          tabindex="0"
+          type="button"
+        >
+          Minimal Button
+          <span
+            class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-9tj150-MuiButton-endIcon"
+          >
+            <div
+              class="css-1ft6wgl"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                data-file-name="IconChevronRightSmall"
+                data-testid="IconChevronRightSmall"
+                fillcontrast="white"
+                focusable="false"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              />
+            </div>
+          </span>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
