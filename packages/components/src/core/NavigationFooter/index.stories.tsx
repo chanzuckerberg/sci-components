@@ -61,15 +61,6 @@ export default {
         ),
         url: "https://example.com/2",
       },
-
-      {
-        image: (
-          <ExampleLogo width={100} height={40}>
-            Image Slot
-          </ExampleLogo>
-        ),
-        url: "https://example.com/3",
-      },
     ],
 
     logo: (
@@ -80,12 +71,12 @@ export default {
 
     logoUrl: "https://example.com",
 
-    navItems: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
+    navItems: Array.from(Array(6)).map<NavigationFooterNavItem>((_, idx) => ({
       label: `Nav Item ${idx + 1}`,
       url: `https://example.com/nav/${idx + 1}`,
     })),
 
-    navLinks: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
+    navLinks: Array.from(Array(6)).map<NavigationFooterNavItem>((_, idx) => ({
       label: `Link Item ${idx + 1}`,
       url: `https://example.com/nav/${idx + 1}`,
     })),

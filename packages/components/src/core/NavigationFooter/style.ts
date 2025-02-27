@@ -7,25 +7,35 @@ import {
   getSpaces,
 } from "../styles";
 import Link from "../Link";
-import { Divider } from "@mui/material";
+import { css, Divider } from "@mui/material";
 
 interface ExtraFooterProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
 }
 
 export const StyledFooter = styled.footer`
   ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
-    return `
-      background: ${props.hasInvertedStyle ? colors?.base.surfaceInverse : colors?.base.surface};
-      padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.xxl}px;
+    return css`
+      background: ${props.hasInvertedStyle
+        ? colors?.base.surfaceInverse
+        : colors?.base.surface};
+      padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px
+        ${spaces?.xxl}px;
 
-      ${props.theme?.breakpoints.down("md")} {
-        border-top: 1px solid ${props.hasInvertedStyle ? colors?.base.dividerInverse : colors?.base.divider};
-      padding: ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
-      }
+      ${isNarrow &&
+      css`
+        border-top: 1px solid
+          ${props.hasInvertedStyle
+            ? colors?.base.dividerInverse
+            : colors?.base.divider};
+        padding: ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
+      `}
     `;
   }}
 `;
@@ -43,16 +53,22 @@ export const StyledLogoWrapper = styled.div`
     ${fontHeader("l", /* isNarrow */ true)}
 
     ${(props: ExtraFooterProps) => {
+      const { isNarrow } = props;
+
       const spaces = getSpaces(props);
       const colors = getSemanticColors(props);
 
-      return `
-        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+      return css`
+        color: ${props.hasInvertedStyle
+          ? colors?.base.textPrimaryInverse
+          : colors?.base.textPrimary};
         margin: 0 ${spaces?.xs}px 0 ${spaces?.l}px;
+        white-space: nowrap;
 
-        ${props.theme?.breakpoints.down("md")} {
+        ${isNarrow &&
+        css`
           margin-left: ${spaces?.xs}px;
-        }
+        `}
       `;
     }}
   }
@@ -63,21 +79,25 @@ export const StyledLogoWrapper = styled.div`
 `;
 
 export const StyledNavSection = styled.div`
-  display: flex;
-  align-items: center;
+  ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
 
-  ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
-    return `
+    return css`
+      display: flex;
+      align-items: center;
+      padding-left: ${spaces?.l}px;
       gap: ${spaces?.xxl}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${isNarrow &&
+      css`
         flex-direction: column;
         gap: 0;
         margin-top: ${spaces?.xl}px;
         width: 100%;
-      }
+        padding-left: 0;
+      `}
     `;
   }}
 `;
@@ -87,10 +107,15 @@ export const StyledNavItemLink = styled(Link)`
   ${fontBody("s", "regular", /* isNarrow */ true)}
 
   ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const colors = getSemanticColors(props);
 
-    return `
-      color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+    return css`
+      color: ${props.hasInvertedStyle
+        ? colors?.base.textPrimaryInverse
+        : colors?.base.textPrimary};
+      white-space: nowrap;
 
       &:hover {
         color: ${colors?.accent.textAction};
@@ -98,7 +123,8 @@ export const StyledNavItemLink = styled(Link)`
         font-weight: 600;
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${isNarrow &&
+      css`
         min-height: 48px;
         text-align: center;
         width: 100%;
@@ -107,40 +133,51 @@ export const StyledNavItemLink = styled(Link)`
         justify-content: center;
 
         &:hover {
-          color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
-          background: ${props.hasInvertedStyle ? colors?.base.backgroundSecondaryInverse : colors?.base.backgroundSecondary};
+          color: ${props.hasInvertedStyle
+            ? colors?.base.textPrimaryInverse
+            : colors?.base.textPrimary};
+          background: ${props.hasInvertedStyle
+            ? colors?.base.backgroundSecondaryInverse
+            : colors?.base.backgroundSecondary};
         }
-      }
+      `}
     `;
   }}
 `;
 
 export const StyledTopSection = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 60px;
-
-  a:hover {
-    text-decoration: none;
-  }
-
   ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const colors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    return `
-      color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
+    return css`
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: ${spaces?.xl}px;
 
-      &:hover {
-        color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
+      a:hover {
         text-decoration: none;
       }
 
-      ${props.theme?.breakpoints.down("md")} {
+      color: ${props.hasInvertedStyle
+        ? colors?.base.textSecondaryInverse
+        : colors?.base.textSecondary};
+
+      &:hover {
+        color: ${props.hasInvertedStyle
+          ? colors?.base.textPrimaryInverse
+          : colors?.base.textPrimary};
+        text-decoration: none;
+      }
+
+      ${isNarrow &&
+      css`
         flex-direction: column;
         margin-bottom: ${spaces?.xl}px;
-      }
+      `}
     `;
   }}
 `;
@@ -153,6 +190,7 @@ export const StyledLinkItemLink = styled(Link)`
 
     return `
       color: ${props.hasInvertedStyle ? colors?.base.textSecondaryInverse : colors?.base.textSecondary};
+      white-space: nowrap;
 
       &:hover {
         color: ${props.hasInvertedStyle ? colors?.base.textPrimaryInverse : colors?.base.textPrimary};
@@ -170,17 +208,20 @@ export const StyledLinkSection = styled.div`
     height: 18px;
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const spaces = getSpaces(props);
 
-    return `
+    return css`
       gap: ${spaces?.xxs}px ${spaces?.m}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${isNarrow &&
+      css`
         gap: ${spaces?.m}px;
         margin-top: ${spaces?.xl}px;
         flex-direction: column;
-      }
+      `}
     `;
   }}
 `;
@@ -202,17 +243,22 @@ export const StyledImageSection = styled.div`
   align-items: center;
   display: flex;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const spaces = getSpaces(props);
 
-    return `
+    return css`
+      padding-left: ${spaces?.l}px;
       gap: ${spaces?.xl}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${isNarrow &&
+      css`
+        padding-left: 0;
         gap: ${spaces?.m}px;
         flex-direction: column;
         justify-content: center;
-      }
+      `}
     `;
   }}
 `;
@@ -239,16 +285,19 @@ export const StyledBottomSection = styled.div`
     text-decoration: none;
   }
 
-  ${(props: CommonThemeProps) => {
+  ${(props: ExtraFooterProps) => {
+    const { isNarrow } = props;
+
     const spaces = getSpaces(props);
 
-    return `
+    return css`
       margin-top: ${spaces?.l}px;
 
-      ${props.theme?.breakpoints.down("md")} {
+      ${isNarrow &&
+      css`
         flex-direction: column-reverse;
         margin-top: ${spaces?.xl}px;
-      }
+      `}
     `;
   }}
 `;

@@ -1,4 +1,11 @@
-import { ReactNode } from "react";
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  ElementType,
+} from "react";
 import Tag, { TagProps } from "../Tag";
 import {
   StyledBottomSection,
@@ -21,6 +28,8 @@ import Link from "../Link";
 export interface NavigationFooterNavItem {
   label: string;
   url: string;
+  component?: ElementType;
+  linkProps?: Record<string, unknown>;
 }
 
 export interface FooterImage {
@@ -61,8 +70,43 @@ export default function NavigationFooter({
   tagColor,
   title,
 }: NavigationFooterProps) {
+  const footerRef = useRef<HTMLDivElement>(null);
+
   const theme = useTheme();
-  const isNarrow = useMediaQuery(theme.breakpoints.down("md"));
+  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(() => {
+    setIsNarrow(isMdScreen);
+  }, [isMdScreen]);
+
+  const [isNarrow, setIsNarrow] = useState(isMdScreen);
+  const [breakpoint, setBreakpoint] = useState(0);
+
+  const checkScrollable = useCallback(() => {
+    if (!footerRef.current) return;
+
+    const clientWidth = footerRef.current.clientWidth;
+    const scrollWidth = footerRef.current.scrollWidth;
+    const needsScroll = scrollWidth > clientWidth;
+
+    if (needsScroll && !isNarrow) {
+      setBreakpoint((prev) => (prev > clientWidth ? prev : clientWidth));
+    }
+
+    setIsNarrow(clientWidth <= breakpoint);
+  }, [breakpoint, isNarrow]);
+
+  useEffect(() => {
+    checkScrollable();
+
+    const resizeObserver = new ResizeObserver(checkScrollable);
+
+    if (footerRef.current) {
+      resizeObserver.observe(footerRef.current);
+    }
+
+    return () => resizeObserver.disconnect();
+  }, [breakpoint, checkScrollable, isMdScreen, isNarrow]);
 
   function renderImages() {
     if (!images || images.length === 0) {
@@ -95,6 +139,8 @@ export default function NavigationFooter({
           key={link.label}
           href={link.url}
           hasInvertedStyle={hasInvertedStyle}
+          component={link.component}
+          {...link.linkProps}
         >
           {link.label}
         </StyledLinkItemLink>
@@ -131,7 +177,7 @@ export default function NavigationFooter({
   }
 
   let logoNode = (
-    <StyledLogoWrapper hasInvertedStyle={hasInvertedStyle}>
+    <StyledLogoWrapper isNarrow={isNarrow} hasInvertedStyle={hasInvertedStyle}>
       {logo}
 
       <p>{title}</p>
@@ -145,17 +191,24 @@ export default function NavigationFooter({
   }
 
   return (
-    <StyledFooter hasInvertedStyle={hasInvertedStyle}>
-      <StyledTopSection hasInvertedStyle={hasInvertedStyle}>
+    <StyledFooter
+      ref={footerRef}
+      hasInvertedStyle={hasInvertedStyle}
+      isNarrow={isNarrow}
+    >
+      <StyledTopSection isNarrow={isNarrow} hasInvertedStyle={hasInvertedStyle}>
         {logoNode}
 
         {navItems && navItems.length > 0 && (
-          <StyledNavSection>
+          <StyledNavSection isNarrow={isNarrow}>
             {navItems.map((item) => (
               <StyledNavItemLink
                 key={item.label}
                 href={item.url}
                 hasInvertedStyle={hasInvertedStyle}
+                isNarrow={isNarrow}
+                component={item.component}
+                {...item.linkProps}
               >
                 {item.label}
               </StyledNavItemLink>
@@ -166,9 +219,13 @@ export default function NavigationFooter({
 
       <StyledDivider hasInvertedStyle={hasInvertedStyle} />
 
-      <StyledBottomSection>
-        <StyledLinkSection>{renderLinks()}</StyledLinkSection>
-        <StyledImageSection>{renderImages()}</StyledImageSection>
+      <StyledBottomSection isNarrow={isNarrow}>
+        <StyledLinkSection isNarrow={isNarrow}>
+          {renderLinks()}
+        </StyledLinkSection>
+        <StyledImageSection isNarrow={isNarrow}>
+          {renderImages()}
+        </StyledImageSection>
       </StyledBottomSection>
     </StyledFooter>
   );
