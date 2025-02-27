@@ -39,7 +39,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         </div>
       </a>
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pzgwa3-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1xn5g0w-MuiButtonBase-root-MuiIconButton-root"
         icon="XMark"
         tabindex="0"
         type="button"
@@ -49,7 +49,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-18ki404-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
             data-file-name="IconXMarkLarge"
             data-testid="IconXMarkLarge"
             fillcontrast="white"
@@ -59,6 +59,9 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
             width="24"
           />
         </div>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
       </button>
     </div>
   </header>
@@ -105,7 +108,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           </div>
         </a>
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-pzgwa3-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1xn5g0w-MuiButtonBase-root-MuiIconButton-root"
           icon="XMark"
           tabindex="0"
           type="button"
@@ -115,7 +118,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-18ki404-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
               data-file-name="IconXMarkLarge"
               data-testid="IconXMarkLarge"
               fillcontrast="white"
@@ -125,6 +128,9 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
               width="24"
             />
           </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
         </button>
       </div>
     </header>

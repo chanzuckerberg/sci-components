@@ -3,7 +3,7 @@
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-e5aiuf-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-yhozbn-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -12,7 +12,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
     class="css-ae1gg6"
   >
     <span
-      class="styled-label css-bnltsj"
+      class="styled-label css-1ubkbz8"
     >
       Click Target
     </span>
@@ -24,7 +24,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d0pkyw-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -37,7 +37,10 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
     </span>
   </span>
   <div
-    class="css-1c29ot9"
+    class="css-fty5ct"
+  />
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
   />
 </button>
 `;
@@ -45,7 +48,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
 exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-e5aiuf-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-yhozbn-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -54,7 +57,7 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
     class="css-ae1gg6"
   >
     <span
-      class="styled-label css-bnltsj"
+      class="styled-label css-1ubkbz8"
     >
       Click Target
     </span>
@@ -66,7 +69,7 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d0pkyw-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -79,7 +82,10 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
     </span>
   </span>
   <div
-    class="css-1c29ot9"
+    class="css-fty5ct"
+  />
+  <span
+    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
   />
 </button>
 `;

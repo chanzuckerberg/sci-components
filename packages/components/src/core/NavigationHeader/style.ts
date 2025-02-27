@@ -14,6 +14,7 @@ import styled from "@emotion/styled";
 import Link from "../Link";
 import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import { SerializedStyles } from "@emotion/react";
+import { IconButtonProps } from ".";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -133,6 +134,74 @@ export const StyledHeaderButton = styled(Button)<
 
     return `
       ${sdsType === "secondary" && hasInvertedStyle ? secondaryButtonStyles : ""}
+    `;
+  }}
+`;
+
+const invertedNarrowButtonStyles = (
+  props: ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
+): SerializedStyles => {
+  const semanticColors = getSemanticColors(props);
+
+  return css`
+    color: ${semanticColors?.base?.textPrimaryInverse};
+    svg {
+      fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus-within {
+      color: ${semanticColors?.base?.textPrimaryInverse};
+      svg {
+        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+      }
+    }
+  `;
+};
+
+export const StyledNarrowIconButton = styled(Button)<
+  ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
+>`
+  ${(props) => {
+    const { hasInvertedStyle } = props;
+
+    return css`
+      ${hasInvertedStyle && invertedNarrowButtonStyles(props)}
+    `;
+  }}
+`;
+
+const invertedWideButtonStyles = (
+  props: ExtraButtonProps & IconButtonProps
+): SerializedStyles => {
+  const semanticColors = getSemanticColors(props);
+
+  return css`
+    svg {
+      fill: ${semanticColors?.base?.ornamentSecondaryInverse};
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus-within {
+      svg {
+        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+      }
+    }
+  `;
+};
+
+export const StyledWideIconButton = styled(Button)<
+  ExtraButtonProps & IconButtonProps
+>`
+  ${(props) => {
+    const { hasInvertedStyle } = props;
+
+    return css`
+      ${hasInvertedStyle && invertedWideButtonStyles(props)}
     `;
   }}
 `;
@@ -271,6 +340,9 @@ export const StyledSearch = styled(InputSearch, {
       max-width: ${isNarrow ? "100%" : "320px"};
       padding: ${isNarrow ? `${spaces?.m}px ${spaces?.xl}px` : ""};
       .MuiInputBase-root {
+        color: ${hasInvertedStyle
+          ? semanticColors?.base.textPrimaryInverse
+          : semanticColors?.base.textPrimary};
         fieldset {
           border-color: ${hasInvertedStyle
             ? semanticColors?.base?.borderInverse
