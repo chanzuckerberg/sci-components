@@ -36,7 +36,7 @@ export const StyledFooter = styled("footer", {
           ${props.hasInvertedStyle
             ? semanticColors?.base.dividerInverse
             : semanticColors?.base.divider};
-        padding: ${spaces?.xxl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
+        padding: ${spaces?.xl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
       `}
     `;
   }}
@@ -180,7 +180,7 @@ export const StyledMobileLinkRow = styled.div`
     const spaces = getSpaces(props);
 
     return `
-      gap: ${spaces?.xxs}px;
+      gap: ${spaces?.s}px;
     `;
   }}
 `;
