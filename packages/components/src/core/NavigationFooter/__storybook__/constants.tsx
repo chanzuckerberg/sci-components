@@ -18,7 +18,7 @@ export function ExampleLogo({
     <div
       style={{
         alignItems: "center",
-        border: `1px dashed ${colors?.base.border}`,
+        border: `1px dashed ${colors?.base.borderPrimary}`,
         color: colors?.base.textSecondary,
         display: "flex",
         fontSize: 10,
