@@ -31,6 +31,8 @@ export * from "./core/Chip";
 export { default as Chip } from "./core/Chip";
 export * from "./core/ComplexFilter";
 export { default as ComplexFilter } from "./core/ComplexFilter";
+export * from "./core/ContentCard";
+export { default as ContentCard } from "./core/ContentCard";
 export * from "./core/Dialog";
 export { default as Dialog } from "./core/Dialog";
 export * from "./core/Dialog/components/DialogActions";

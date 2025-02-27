@@ -292,7 +292,7 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
         fill: ${semanticColors?.base?.ornamentSecondaryHover};
       }
 
-      border-color: ${semanticColors?.base?.borderHover};
+      border-color: ${semanticColors?.base?.borderPrimaryHover};
     }
   `;
 };
@@ -321,7 +321,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     cursor: default;
-    border-color: ${semanticColors?.base?.borderDisabled};
+    border-color: ${semanticColors?.base?.borderPrimaryDisabled};
 
     span {
       color: ${semanticColors?.base?.textDisabled};

@@ -12,6 +12,7 @@ import {
   getShadows,
   getSpaces,
   fontBodySemiboldXxs,
+  fontBody,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonProps } from ".";
@@ -65,13 +66,15 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const disabledBorder =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.base?.borderDisabled}`
+      ? `inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryDisabled}`
       : "none";
 
   const boxshadow =
     variant === "outlined"
       ? `inset 0 0 0 1px ${semanticColors?.accent?.border}`
       : "none";
+
+  fontBody("xs", "semibold");
 
   return css`
     background-color: ${backgroundColor};

@@ -5,7 +5,7 @@ export function focusVisibleA11yStyle(props: CommonThemeProps) {
 
   return `
       &.Mui-focusVisible, &:focus-visible {
-        outline: 2px solid ${semanticColors?.base?.borderHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
         outline-offset: 1px;
       }
   `;

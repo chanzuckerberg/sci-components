@@ -23,13 +23,13 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
     return `
       .${toggleButtonClasses.root}.${toggleButtonClasses.disabled} {
-        border-color: ${semanticColors?.base?.border};
+        border-color: ${semanticColors?.base?.borderPrimary};
       }
 
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
         background-color: ${semanticColors?.base?.fillOpen};
         color: ${semanticColors?.accent?.ornamentSelected};
-        border-color: ${semanticColors?.base?.border};
+        border-color: ${semanticColors?.base?.borderPrimary};
 
         &:hover {
           background-color: ${semanticColors?.base?.fillHover};
@@ -40,13 +40,13 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       .${toggleButtonClasses.root} {
         ${focusVisibleA11yStyle(props)}
         background-color: transparent;
-        border-color: ${semanticColors?.base?.border};
+        border-color: ${semanticColors?.base?.borderPrimary};
         line-height: 0px;
         color: ${semanticColors?.base?.ornamentPrimary};
         padding: ${(spaces?.xs ?? 6) - 1}px ${spaces?.l}px;
 
         &:hover {
-          border-color: ${semanticColors?.base?.border};
+          border-color: ${semanticColors?.base?.borderPrimary};
           background-color: ${semanticColors?.base?.fillHover};
         }
       }

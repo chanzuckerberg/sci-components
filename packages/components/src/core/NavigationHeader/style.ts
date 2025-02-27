@@ -349,7 +349,7 @@ export const StyledSearch = styled(InputSearch, {
           : semanticColors?.base.textPrimary};
         fieldset {
           border-color: ${hasInvertedStyle
-            ? semanticColors?.base?.borderInverse
+            ? semanticColors?.base?.borderPrimaryInverse
             : ""};
         }
 
@@ -366,7 +366,7 @@ export const StyledSearch = styled(InputSearch, {
         &:hover {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderHoverInverse
+              ? semanticColors?.base?.borderPrimaryHoverInverse
               : ""} !important;
           }
 
@@ -384,7 +384,7 @@ export const StyledSearch = styled(InputSearch, {
         &.Mui-focused {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPressedInverse
+              ? semanticColors?.base?.borderPrimaryPressedInverse
               : ""} !important;
           }
 
@@ -402,7 +402,7 @@ export const StyledSearch = styled(InputSearch, {
         &.Mui-disabled {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderDisabledInverse
+              ? semanticColors?.base?.borderPrimaryDisabledInverse
               : ""} !important;
           }
 
