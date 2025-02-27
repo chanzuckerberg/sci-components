@@ -2,7 +2,28 @@ import { CardMedia } from "@mui/material";
 import Icon from "src/core/Icon";
 import Button from "src/core/Button";
 
-export const PANEL_EXCLUDED_CONTROLS = ["visualElement"];
+export const CONTENT_CARD_EXCLUDED_CONTROLS = [
+  "visualElement",
+  "sdsType",
+  "imagePosition",
+  "imagePadding",
+  "overlineText",
+  "titleText",
+  "subtitleText",
+  "metadataText",
+  "contentBlock",
+  "decorativeBorder",
+  "boundingBox",
+  "buttons",
+  "visualElementType",
+  "image",
+  "icon",
+  "buttonsPosition",
+  "clickableCard",
+  "imageSize",
+  "imagePadding",
+  "imagePosition",
+];
 
 // Buttons
 

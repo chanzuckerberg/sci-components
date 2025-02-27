@@ -108,6 +108,7 @@
     --sds-color-semantic-base-border-secondary: #c3c3c3;
     --sds-color-semantic-base-border-secondary-hover: #969696;
     --sds-color-semantic-base-border-secondary-pressed: #3b3b3b;
+    --sds-color-semantic-base-border-secondary-disabled: #dfdfdf;
     --sds-color-semantic-base-divider: #dfdfdf;
     --sds-color-semantic-base-divider-inverse: #6c6c6c;
     --sds-color-semantic-base-fill-disabled: #dfdfdf;
@@ -620,6 +621,7 @@
     --sds-color-semantic-base-border-secondary: #696969;
     --sds-color-semantic-base-border-secondary-hover: #aaaaaa;
     --sds-color-semantic-base-border-secondary-pressed: #ededed;
+    --sds-color-semantic-base-border-secondary-disabled: #494949;
     --sds-color-semantic-base-divider: #494949;
     --sds-color-semantic-base-divider-inverse: #cdcdcd;
     --sds-color-semantic-base-fill-disabled: #494949;

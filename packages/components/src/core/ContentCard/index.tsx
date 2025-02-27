@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { CardMedia, CardMediaProps } from "@mui/material";
 import {
   StyledCard,
   StyledCardActionArea,
@@ -7,8 +8,12 @@ import {
   StyledContentCardBody,
   StyledIconMediaWrapper,
 } from "./style";
-import ContentCardTitle from "./components/ContentCardTitle";
-import ContentCardActions from "./components/ContentCardActions";
+import ContentCardTitle, {
+  ContentCardTitleProps,
+} from "./components/ContentCardTitle";
+import ContentCardActions, {
+  ContentCardActionsProps,
+} from "./components/ContentCardActions";
 import { mergeRefs } from "src/common/utils";
 import ContentCardImageMedia from "./components/ContentCardImageMedia";
 import {
@@ -18,11 +23,20 @@ import {
   ContentCardProps,
 } from "./ContentCard.types";
 
-export { ContentCardActions, StyledContentCardBody as ContentCardBody };
+export {
+  ContentCardActions,
+  StyledContentCardBody as ContentCardBody,
+  CardMedia as ContentCardMedia,
+};
 
-export type { ContentCardProps };
+export type {
+  ContentCardProps,
+  CardMediaProps as ContentCardMediaProps,
+  ContentCardActionsProps,
+  ContentCardTitleProps,
+};
 
-const useResponsiveWidth = (initialSdsType: "wide" | "narrow") => {
+const useResponsiveWidth = (initialSdsType: ContentCardProps["sdsType"]) => {
   const [isNarrow, setIsNarrow] = useState(false);
 
   const handleResize = (width: number) => {

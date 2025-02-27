@@ -4,11 +4,11 @@ import { ContentCard } from "./stories/default";
 import {
   CONTENT_CARD_BUTTONS_LABELS,
   CONTENT_CARD_BUTTONS_OPTIONS,
+  CONTENT_CARD_EXCLUDED_CONTROLS,
   CONTENT_CARD_ICON_LABELS,
   CONTENT_CARD_ICON_OPTIONS,
   CONTENT_CARD_IMAGE_LABELS,
   CONTENT_CARD_IMAGE_OPTIONS,
-  PANEL_EXCLUDED_CONTROLS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
 
@@ -211,7 +211,7 @@ export const Default = {
 export const Test = {
   parameters: {
     controls: {
-      exclude: PANEL_EXCLUDED_CONTROLS,
+      exclude: CONTENT_CARD_EXCLUDED_CONTROLS,
     },
     snapshot: {
       skip: true,
