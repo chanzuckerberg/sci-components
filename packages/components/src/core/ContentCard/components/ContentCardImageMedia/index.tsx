@@ -33,7 +33,7 @@ const ContentCardImageMedia = forwardRef<
     maxHeight: sdsType === "narrow" ? imageSize : "100%",
     maxWidth: sdsType === "narrow" ? "100%" : imageSize,
     minHeight: imageSize,
-    minWidth: imageSize,
+    minWidth: sdsType === "narrow" ? "unset" : imageSize,
     width: "100%",
   };
 

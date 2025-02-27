@@ -52,14 +52,11 @@ export interface BaseColor {
   borderSecondary: string;
   borderPrimaryHover: string;
   borderPrimaryHoverInverse: string;
-  borderSecondaryHover: string;
-  borderPrimaryOnFill: string;
+  borderOnFill: string;
   borderPrimaryPressed: string;
   borderPrimaryPressedInverse: string;
-  borderSecondaryPressed: string;
   borderPrimaryDisabled: string;
   borderPrimaryDisabledInverse: string;
-  borderSecondaryDisabled: string;
   ornamentDisabled: string;
   ornamentDisabledInverse: string;
   ornamentOnFill: string;

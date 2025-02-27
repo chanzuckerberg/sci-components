@@ -122,7 +122,7 @@
             "value": "{sds.color.primitive.gray.300.value}",
             "darkValue": "{sds.color.primitive.gray.300.darkValue}"
           },
-          "border-primary-on-fill": {
+          "border-on-fill": {
             "value": "{sds.color.primitive.gray.50.value}",
             "darkValue": "{sds.color.primitive.gray.50.darkValue}"
           },
@@ -137,18 +137,6 @@
           "border-secondary": {
             "value": "{sds.color.primitive.gray.300.value}",
             "darkValue": "{sds.color.primitive.gray.300.darkValue}"
-          },
-          "border-secondary-hover": {
-            "value": "{sds.color.primitive.gray.500.value}",
-            "darkValue": "{sds.color.primitive.gray.500.darkValue}"
-          },
-          "border-secondary-pressed": {
-            "value": "{sds.color.primitive.gray.700.value}",
-            "darkValue": "{sds.color.primitive.gray.700.darkValue}"
-          },
-          "border-secondary-disabled": {
-            "value": "{sds.color.primitive.gray.200.value}",
-            "darkValue": "{sds.color.primitive.gray.200.darkValue}"
           },
           "divider": {
             "value": "{sds.color.primitive.gray.200.value}",
