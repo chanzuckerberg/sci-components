@@ -1,7 +1,21 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/common/utils.ts",
-    "src/core/**/*.namespace-test.tsx",
-  ]
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/common/**/*",
+    "src/core/**/*",
+    "jest.setup.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    },
+    "types": [
+      "jest",
+      "@testing-library/jest-dom"
+    ]
+  }
 }

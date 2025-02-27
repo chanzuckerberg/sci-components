@@ -45,7 +45,7 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
 
       .${outlinedInputClasses.notchedOutline} {
         border-radius: ${corners?.l}px;
-        border: 1px solid ${semanticColors?.base?.border};
+        border: 1px solid ${semanticColors?.base?.borderPrimary};
       }
     }
   `;
@@ -89,7 +89,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticColors?.base?.borderDisabled} !important;
+        border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled} !important;
       }
 
       .${inputAdornmentClasses.root} svg {
@@ -98,7 +98,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
 
       &:hover {
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.borderDisabled};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled};
         }
 
         .${inputAdornmentClasses.root} svg {
@@ -180,7 +180,7 @@ export const StyledSearchBase = styled(TextField, {
         }
 
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.border};
+          border: 1px solid ${semanticColors?.base?.borderPrimary};
         }
 
         &:hover .input-search-clear-icon,
@@ -217,7 +217,7 @@ export const StyledSearchBase = styled(TextField, {
           }
         }
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.borderHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};
         }
       }
 
@@ -237,7 +237,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       &.user-is-tabbing .${outlinedInputClasses.root}:focus-within {
-        outline: 2px solid ${semanticColors?.base?.borderHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
         outline-offset: 1px;
       }
 

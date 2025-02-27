@@ -131,7 +131,7 @@ const disabledStyles = (props: RadioExtraProps) => {
     }
 
     ${StyledRadioDefaultIcon} {
-      border: 1px solid ${semanticColors?.base?.borderDisabled};
+      border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled};
     }
 
     ${StyledRadioCheckedIcon} {
@@ -140,7 +140,7 @@ const disabledStyles = (props: RadioExtraProps) => {
 
     &:hover, &:active {
       ${StyledRadioDefaultIcon} {
-        border: 1px solid ${semanticColors?.base?.borderDisabled};
+        border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled};
       }
 
       ${StyledRadioCheckedIcon} {
@@ -166,7 +166,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
       &:hover {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};
         }
 
         ${StyledRadioCheckedIcon} {
@@ -176,7 +176,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
       &:active {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderPressed};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryPressed};
         }
 
         ${StyledRadioCheckedIcon} {

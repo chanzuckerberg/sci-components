@@ -212,7 +212,7 @@ function themeToCss(
   return css`
     font-family: ${fontFamily};
     font-size: ${fontTheme.fontSize}px;
-    line-height: ${fontTheme.lineHeight};
+    line-height: ${fontTheme.lineHeight} !important;
     letter-spacing: ${fontTheme.letterSpacing};
     font-weight: ${fontTheme.fontWeight};
     text-transform: ${fontTheme.textTransform};
