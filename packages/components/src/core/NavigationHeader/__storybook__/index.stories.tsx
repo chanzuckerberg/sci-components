@@ -95,17 +95,20 @@ export const Default = {
     ],
     secondaryNavItems: [
       {
+        itemType: "dropdown",
         items: [
-          { label: "Item 1", onClick: () => alert("clicked on item 1") },
+          {
+            label: "Item 1",
+            onClick: () => alert("clicked on item 1"),
+          },
           { label: "Item 2", onClick: () => alert("clicked on item 2") },
         ],
         label: "Secondary",
-        type: "dropdown",
       },
       {
+        itemType: "text",
         label: "Secondary",
         onClick: () => alert("clicked on secondary"),
-        type: "text",
       },
     ],
     showSearch: true,

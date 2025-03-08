@@ -176,6 +176,9 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             sdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}
+            onClick={() => {
+              alert("clicked");
+            }}
           >
             {cardInnerContent}
           </StyledCardActionArea>

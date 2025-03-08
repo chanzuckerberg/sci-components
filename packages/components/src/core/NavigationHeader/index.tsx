@@ -1,6 +1,7 @@
-import { useMediaQuery } from "@mui/material";
+import { LinkProps, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import {
+  ElementType,
   forwardRef,
   ReactNode,
   useCallback,
@@ -43,12 +44,16 @@ import {
 } from "../Button";
 import Icon from "../Icon";
 
+export type { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
+
 export interface NavigationHeaderProps<T extends string = string> {
   activePrimaryNavKey?: string;
   buttons?: (SdsProps & ButtonProps)[];
   hasInvertedStyle?: boolean;
   logo?: ReactNode;
   logoUrl?: string;
+  logoLinkComponent?: ElementType;
+  logoLinkProps?: LinkProps;
   primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
   primaryNavPosition?: "left" | "right";
   searchProps?: Partial<InputSearchProps>;
@@ -73,6 +78,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       hasInvertedStyle,
       logo,
       logoUrl,
+      logoLinkComponent = "a",
+      logoLinkProps,
       primaryNavItems,
       primaryNavPosition = "left",
       searchProps,
@@ -153,9 +160,14 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         </StyledTitleContainer>
       );
 
-      if (logoUrl) {
+      if (logoLinkComponent || logoUrl) {
         logoNode = (
-          <StyledLogoLinkWrapper href={logoUrl} isNarrow={isNarrow}>
+          <StyledLogoLinkWrapper
+            component={logoLinkComponent}
+            href={logoUrl}
+            {...logoLinkProps}
+            isNarrow={isNarrow}
+          >
             {logoNode}
           </StyledLogoLinkWrapper>
         );

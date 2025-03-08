@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Accordion from "src/core/Accordion";
-import Button from "src/core/Button";
+import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
   fontBodyS,
   fontHeaderS,
@@ -11,9 +11,8 @@ import { ExtraHeaderProps } from "../../style";
 import MenuItem from "src/core/MenuItem";
 import { css, SerializedStyles } from "@emotion/react";
 
-interface StyledTextItemProps extends ExtraHeaderProps {
-  open: boolean;
-}
+export type StyledTextItemProps = ExtraHeaderProps &
+  SdsMinimalButtonProps & { open: boolean };
 
 const ButtonDoNotForwardProps = ["isNarrow"];
 
