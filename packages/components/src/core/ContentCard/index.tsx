@@ -14,7 +14,7 @@ import ContentCardTitle, {
 import ContentCardActions, {
   ContentCardActionsProps,
 } from "./components/ContentCardActions";
-import { mergeRefs } from "src/common/utils";
+import { EMPTY_OBJECT, mergeRefs } from "src/common/utils";
 import ContentCardImageMedia from "./components/ContentCardImageMedia";
 import {
   CONTENT_CARD_DEFAULT_IMAGE_MEDIA_SIZE,
@@ -104,8 +104,21 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
       imagePosition = "left",
       buttonsPosition = "left",
       clickableCardProps,
-      classes,
+      classes = EMPTY_OBJECT,
     } = props;
+
+    const {
+      cardMedia,
+      cardContent,
+      cardHeader,
+      cardMetadata,
+      cardOverline,
+      cardSubtitle,
+      cardTitle,
+      cardActions,
+      cardPaper,
+      clickableCardButton,
+    }: ContentCardProps["classes"] = classes;
 
     // Force boundingBox to be true when clickableCard is true
     const boundingBox = clickableCard ? true : propsBoundingBox;
@@ -139,13 +152,10 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
           imageSize={imageSize}
           image={image}
           imagePosition={imagePosition}
-          className={classes?.cardMedia}
+          className={cardMedia}
         />
       ) : visualElementType === "icon" && icon ? (
-        <StyledIconMediaWrapper
-          boundingBox={boundingBox}
-          className={classes?.cardMedia}
-        >
+        <StyledIconMediaWrapper boundingBox={boundingBox} className={cardMedia}>
           {icon}
         </StyledIconMediaWrapper>
       ) : null;
@@ -156,7 +166,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         <StyledCardContent
           boundingBox={boundingBox}
           clickableCard={clickableCard}
-          className={classes?.cardContent}
+          className={cardContent}
         >
           <ContentCardTitle
             overlineText={overlineText}
@@ -164,11 +174,11 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             subtitleText={subtitleText}
             metadataText={metadataText}
             classes={{
-              cardHeader: classes?.cardHeader,
-              metadataText: classes?.cardMetadata,
-              overlineText: classes?.cardOverline,
-              subtitleText: classes?.cardSubtitle,
-              titleText: classes?.cardTitle,
+              cardHeader: cardHeader,
+              metadataText: cardMetadata,
+              overlineText: cardOverline,
+              subtitleText: cardSubtitle,
+              titleText: cardTitle,
             }}
           />
           <StyledCardContentAligner>
@@ -177,7 +187,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
               clickableCard,
               buttonsPosition,
               {
-                cardActions: classes?.cardActions,
+                cardActions: cardActions,
               }
             )}
           </StyledCardContentAligner>
@@ -191,7 +201,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         {...props}
         sdsType={dynamicSdsType}
         boundingBox={boundingBox}
-        className={classes?.cardPaper}
+        className={cardPaper}
       >
         {clickableCard ? (
           <StyledCardActionArea
@@ -199,7 +209,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}
-            className={classes?.clickableCardButton}
+            className={clickableCardButton}
             {...clickableCardProps}
           >
             {cardInnerContent}

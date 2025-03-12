@@ -24,7 +24,7 @@ interface BaseContentCardProps extends CardProps {
     cardMetadata?: string;
     cardActions?: string;
     clickableCardButton?: string;
-  }
+  };
 }
 
 export interface ImageContentCardProps extends BaseContentCardProps {

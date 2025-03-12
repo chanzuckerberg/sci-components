@@ -133,6 +133,7 @@ export const StyledCardActionArea = styled(Button, {
       padding: 0;
       margin: 0;
       overflow: scroll;
+      text-align: unset;
 
       background-color: ${semanticColors?.base?.backgroundPrimary};
 
@@ -173,14 +174,13 @@ export const StyledCardContent = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CardExtraProps) => {
-    const { boundingBox = true, clickableCard = false } = props;
+    const { boundingBox = true } = props;
 
     const spaces = getSpaces(props);
 
     return css`
       display: flex;
       flex-direction: column;
-      height: ${clickableCard ? "100%" : "auto"};
       min-width: 100px;
       width: 100%;
 
