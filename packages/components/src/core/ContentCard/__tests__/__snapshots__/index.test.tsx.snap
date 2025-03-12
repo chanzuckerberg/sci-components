@@ -2,7 +2,7 @@
 
 exports[`ContentCard Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-hu9jj8-MuiPaper-root-MuiCard-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-ok5j5u-MuiPaper-root-MuiCard-root"
 >
   <div
     class="css-20z69m"
@@ -14,7 +14,7 @@ exports[`ContentCard Default story renders snapshot 1`] = `
     />
   </div>
   <div
-    class="css-u4mrcz"
+    class="css-15wqe76"
   >
     <div>
       <div

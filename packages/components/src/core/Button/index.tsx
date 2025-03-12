@@ -20,7 +20,7 @@ type ButtonTypeMap = {
 
 type ButtonSize = "small" | "medium" | "large";
 
-interface BaseButtonProps {
+interface BaseButtonProps extends RawButtonProps {
   children?: React.ReactNode;
   isAllCaps?: boolean;
 }
@@ -51,7 +51,7 @@ export type SdsProps =
   | SdsMinimalButtonProps
   | SdsButtonProps;
 
-export type ButtonProps = RawButtonProps & SdsProps;
+export type ButtonProps = SdsProps;
 
 /**
  * (masoudmanson): The MUI variant prop is determined by the sdsType prop.

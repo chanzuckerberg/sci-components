@@ -10,6 +10,7 @@ export interface ContentCardImageMediaProps {
   sdsType: ContentCardProps["sdsType"];
   imageSize: ContentCardProps["imageSize"];
   image?: ContentCardProps["image"];
+  className?: string;
 }
 
 /**
@@ -21,8 +22,8 @@ const ContentCardImageMedia = forwardRef<
 >(function ContentCardImageMedia(
   props: ContentCardImageMediaProps,
   ref
-): JSX.Element {
-  const { image, imageSize, sdsType } = props;
+): JSX.Element | null {
+  const { image, imageSize, sdsType, className } = props;
 
   /**
    * (masoudmanson): These styles makes the image responsive and
@@ -41,6 +42,8 @@ const ContentCardImageMedia = forwardRef<
    * (masoudmanson): We need to make sure the image is wrapped in a CardMedia component.
    * - If it's a string, wrap it in CardMedia with proper styles.
    * - If it's already a CardMedia component, clone it and apply the styles.
+   * - If it's a valid element, clone it and apply the styles.
+   * - If it's null, return null.
    */
   const imageElement =
     typeof image === "string" ? (
@@ -58,10 +61,18 @@ const ContentCardImageMedia = forwardRef<
           ...imageMediaStyles,
         },
       })
+    ) : React.isValidElement(image) ? (
+      React.cloneElement(image as React.ReactElement, {
+        style: {
+          ...imageMediaStyles,
+          objectFit: "cover",
+          objectPosition: "center",
+        },
+      })
     ) : null;
 
   return (
-    <StyledImageMediaWrapper ref={ref} {...props}>
+    <StyledImageMediaWrapper ref={ref} {...props} className={className}>
       {imageElement}
     </StyledImageMediaWrapper>
   );

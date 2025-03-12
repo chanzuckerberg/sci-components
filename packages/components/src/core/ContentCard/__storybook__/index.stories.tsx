@@ -47,6 +47,16 @@ export default {
         defaultValue: { summary: "left" },
       },
     },
+    classes: {
+      control: {
+        type: "object",
+      },
+      description:
+        "Defines the css classes to be applied to the card components.",
+      table: {
+        type: { summary: "Experimental" },
+      },
+    },
     clickableCard: {
       control: {
         type: "boolean",
@@ -55,6 +65,16 @@ export default {
         "If set to true, the entire card becomes a clickable button. Note that enabling this prop automatically sets boundingBox to true, and only the first button in the action area will be visible.",
       table: {
         defaultValue: { summary: "false" },
+      },
+    },
+    clickableCardProps: {
+      control: {
+        type: "object",
+      },
+      description:
+        "If clickableCard is set to true, this prop accepts a ButtonProps object to be passed to the button.",
+      table: {
+        type: { summary: "ButtonProps" },
       },
     },
     decorativeBorder: {
@@ -187,6 +207,10 @@ export const Default = {
     buttons: [CONTENT_CARD_BUTTONS_OPTIONS[2], CONTENT_CARD_BUTTONS_OPTIONS[5]],
     buttonsPosition: "left",
     clickableCard: false,
+    clickableCardProps: {
+      component: "a",
+      href: "https://chanzuckerberg.com",
+    },
     decorativeBorder: false,
     icon: CONTENT_CARD_ICON_OPTIONS[1],
     image: CONTENT_CARD_IMAGE_OPTIONS[4],

@@ -26,6 +26,8 @@ const doNotForwardProps = [
   "isNarrow",
   "primaryNavPosition",
   "showSearch",
+  "logoLinkComponent",
+  "logoLinkProps",
 ];
 
 export const StyledHeader = styled(AppBar, {

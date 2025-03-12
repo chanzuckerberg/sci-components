@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Accordion from "src/core/Accordion";
-import Button from "src/core/Button";
+import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
   fontBodyS,
   fontHeaderS,
@@ -11,9 +11,8 @@ import { ExtraHeaderProps } from "../../style";
 import MenuItem from "src/core/MenuItem";
 import { css, SerializedStyles } from "@emotion/react";
 
-interface StyledTextItemProps extends ExtraHeaderProps {
-  open: boolean;
-}
+export type StyledTextItemProps = ExtraHeaderProps &
+  SdsMinimalButtonProps & { open: boolean };
 
 const ButtonDoNotForwardProps = ["isNarrow"];
 
@@ -43,7 +42,8 @@ export const StyledTextItem = styled(Button, {
   background: none;
   justify-content: flex-start;
   min-height: 44px;
-  width: 100%;
+  width: fit-content;
+  min-width: unset;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
@@ -99,7 +99,8 @@ const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  width: 100%;
+  width: fit-content;
+  min-width: unset;
 
   .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {
     ${fontBodyS}

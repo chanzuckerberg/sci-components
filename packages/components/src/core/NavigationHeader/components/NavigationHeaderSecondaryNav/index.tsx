@@ -5,19 +5,23 @@ import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
+import { SdsMinimalButtonProps } from "src/core/Button";
 
-interface BaseHeaderSecondaryNavItem {
+interface BaseHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
 }
 
 interface TextHeaderSecondaryNavItem extends BaseHeaderSecondaryNavItem {
   onClick?(): void;
-  type: "text";
+  itemType: "text";
 }
 
 interface DropdownHeaderSecondaryNavItem extends BaseHeaderSecondaryNavItem {
-  type: "dropdown";
-  items: Pick<TextHeaderSecondaryNavItem, "label" | "onClick">[];
+  itemType: "dropdown";
+  items: Pick<
+    TextHeaderSecondaryNavItem,
+    "label" | "onClick" | "component" | "href"
+  >[];
 }
 
 export type NavigationHeaderSecondaryNavItem =
@@ -34,6 +38,7 @@ function SecondaryNavItem({
   item,
   hasInvertedStyle,
   isNarrow,
+  ...rest
 }: {
   item: NavigationHeaderSecondaryNavItem;
   hasInvertedStyle?: boolean;
@@ -60,19 +65,20 @@ function SecondaryNavItem({
 
   return (
     <Fragment key={item.label}>
-      {item.type === "text" && (
+      {item.itemType === "text" && (
         <StyledTextItem
           sdsStyle="minimal"
           onClick={item.onClick}
           hasInvertedStyle={hasInvertedStyle}
           open={open}
           isNarrow={isNarrow}
+          {...rest}
         >
           {item.label}
         </StyledTextItem>
       )}
 
-      {item.type === "dropdown" && !isNarrow && (
+      {item.itemType === "dropdown" && !isNarrow && (
         <>
           <StyledTextItem
             sdsStyle="minimal"
@@ -87,23 +93,26 @@ function SecondaryNavItem({
           </StyledTextItem>
 
           <Menu anchorEl={anchorEl} open={open} onClose={onClose}>
-            {item.items.map((subItem) => (
-              <MenuItem
-                key={subItem.label}
-                onClick={() => {
-                  subItem.onClick?.();
-                  onClose();
-                }}
-                sx={{ background: "red", width: menuWidth }}
-              >
-                {subItem.label}
-              </MenuItem>
-            ))}
+            {item.items.map((subItem) => {
+              const { label, onClick, ...subItemRest } = subItem;
+              return (
+                <MenuItem
+                  key={label}
+                  onClick={() => {
+                    onClick?.();
+                    onClose();
+                  }}
+                  {...subItemRest}
+                >
+                  {label}
+                </MenuItem>
+              );
+            })}
           </Menu>
         </>
       )}
 
-      {item.type === "dropdown" && isNarrow && (
+      {item.itemType === "dropdown" && isNarrow && (
         <StyledAccordion
           id={`${item.label}-dropdown`}
           hasInvertedStyle={hasInvertedStyle}
@@ -111,18 +120,23 @@ function SecondaryNavItem({
         >
           <AccordionHeader>{item.label}</AccordionHeader>
           <AccordionDetails>
-            {item.items.map((subItem) => (
-              <StyledSubItem
-                key={subItem.label}
-                onClick={() => {
-                  subItem.onClick?.();
-                  onClose();
-                }}
-                sx={{ width: menuWidth }}
-              >
-                {subItem.label}
-              </StyledSubItem>
-            ))}
+            {item.items.map((subItem) => {
+              const { label, onClick, ...accordionSubItemRest } = subItem;
+
+              return (
+                <StyledSubItem
+                  key={label}
+                  onClick={() => {
+                    onClick?.();
+                    onClose();
+                  }}
+                  sx={{ width: menuWidth }}
+                  {...accordionSubItemRest}
+                >
+                  {label}
+                </StyledSubItem>
+              );
+            })}
           </AccordionDetails>
         </StyledAccordion>
       )}
@@ -137,14 +151,18 @@ export default function NavigationHeaderSecondaryNav({
 }: NavigationHeaderSecondaryNavProps) {
   return (
     <StyledSection gap="l" isNarrow={isNarrow}>
-      {items.map((item) => (
-        <SecondaryNavItem
-          key={`${item.label}-${item.type}`}
-          item={item}
-          hasInvertedStyle={hasInvertedStyle}
-          isNarrow={isNarrow}
-        />
-      ))}
+      {items.map((item) => {
+        const { itemType, label, ...rest } = item;
+        return (
+          <SecondaryNavItem
+            key={`${label}-${itemType}`}
+            item={item}
+            hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
+            {...rest}
+          />
+        );
+      })}
     </StyledSection>
   );
 }
