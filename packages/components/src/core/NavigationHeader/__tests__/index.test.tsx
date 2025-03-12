@@ -91,8 +91,8 @@ describe("<NavigationHeder />", () => {
     render(
       <Test
         secondaryNavItems={[
-          { label: "Profile", type: "text" },
-          { label: "Settings", type: "text" },
+          { itemType: "text", label: "Profile" },
+          { itemType: "text", label: "Settings" },
         ]}
       />
     );

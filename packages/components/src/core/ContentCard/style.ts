@@ -51,7 +51,6 @@ export const StyledCard = styled(Card, {
     } = props;
 
     const semanticColors = getSemanticColors(props);
-    const shadows = getShadows(props);
 
     const flexDirection =
       sdsType === "wide" && visualElementType === "image"
