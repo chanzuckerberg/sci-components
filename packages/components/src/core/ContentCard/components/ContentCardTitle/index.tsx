@@ -6,6 +6,7 @@ import {
   StyledMetadataText,
   StyledTitleWrapper,
 } from "./style";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 export interface ContentCardTitleProps {
   overlineText?: string;
@@ -14,10 +15,10 @@ export interface ContentCardTitleProps {
   metadataText?: string;
   classes?: {
     cardHeader?: string;
-    overlineText?: string;
-    titleText?: string;
-    subtitleText?: string;
-    metadataText?: string;
+    cardOverline?: string;
+    cardTitle?: string;
+    cardSubtitle?: string;
+    cardMetadata?: string;
   };
 }
 
@@ -26,30 +27,41 @@ export interface ContentCardTitleProps {
  */
 const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
   function ContentCardTitle(props: ContentCardTitleProps, ref): JSX.Element {
-    const { overlineText, titleText, subtitleText, metadataText, classes } =
-      props;
+    const {
+      overlineText,
+      titleText,
+      subtitleText,
+      metadataText,
+      classes = EMPTY_OBJECT,
+    } = props;
+
+    const {
+      cardHeader,
+      cardOverline,
+      cardTitle,
+      cardSubtitle,
+      cardMetadata,
+    }: ContentCardTitleProps["classes"] = classes;
 
     return (
       <div ref={ref}>
-        <StyledTitleWrapper className={classes?.cardHeader}>
+        <StyledTitleWrapper className={cardHeader}>
           {overlineText && (
-            <StyledOverlineText className={classes?.overlineText}>
+            <StyledOverlineText className={cardOverline}>
               {overlineText}
             </StyledOverlineText>
           )}
           {titleText && (
-            <StyledTitleText className={classes?.titleText}>
-              {titleText}
-            </StyledTitleText>
+            <StyledTitleText className={cardTitle}>{titleText}</StyledTitleText>
           )}
           {subtitleText && (
-            <StyledSubtitleText className={classes?.subtitleText}>
+            <StyledSubtitleText className={cardSubtitle}>
               {subtitleText}
             </StyledSubtitleText>
           )}
         </StyledTitleWrapper>
         {metadataText && (
-          <StyledMetadataText className={classes?.metadataText}>
+          <StyledMetadataText className={cardMetadata}>
             {metadataText}
           </StyledMetadataText>
         )}

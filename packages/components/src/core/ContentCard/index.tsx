@@ -174,11 +174,11 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             subtitleText={subtitleText}
             metadataText={metadataText}
             classes={{
-              cardHeader: cardHeader,
-              metadataText: cardMetadata,
-              overlineText: cardOverline,
-              subtitleText: cardSubtitle,
-              titleText: cardTitle,
+              cardHeader,
+              cardMetadata,
+              cardOverline,
+              cardSubtitle,
+              cardTitle,
             }}
           />
           <StyledCardContentAligner>
