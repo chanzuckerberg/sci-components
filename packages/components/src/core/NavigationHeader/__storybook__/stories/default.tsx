@@ -1,18 +1,8 @@
 import { useTheme } from "@mui/material";
 import { Args } from "@storybook/react";
 import { useState } from "react";
-import RawMenuItem from "src/core/MenuItem";
 import { getSemanticColors } from "src/core/styles";
 import RawNavigationHeader from "src/core/NavigationHeader";
-
-export const MenuItem = (props: Args): JSX.Element => {
-  const { name } = props;
-  return (
-    <RawMenuItem data-testid="MenuItem" {...props}>
-      {name}
-    </RawMenuItem>
-  );
-};
 
 export const CustomNavigationLogo = (): JSX.Element => {
   const theme = useTheme();

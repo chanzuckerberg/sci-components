@@ -6,10 +6,14 @@ import {
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 import { ContentCardProps } from "../..";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 export interface ContentCardActionsProps {
   buttonsPosition?: "left" | "right";
   clickableCard?: ContentCardProps["clickableCard"];
+  classes?: {
+    cardActions?: string;
+  };
   children:
     | React.ReactElement<ButtonProps>
     | Array<React.ReactElement<ButtonProps>>;
@@ -34,7 +38,14 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
     props: ContentCardActionsProps,
     ref
   ): JSX.Element | null {
-    const { buttonsPosition, clickableCard, children } = props;
+    const {
+      buttonsPosition,
+      clickableCard,
+      children,
+      classes = EMPTY_OBJECT,
+    } = props;
+
+    const { cardActions }: ContentCardActionsProps["classes"] = classes;
 
     /**
      * (masoudmanson):
@@ -72,12 +83,16 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
       }
 
       return (
-        <StyledCardActions ref={ref} buttonsPosition={buttonsPosition}>
+        <StyledCardActions
+          ref={ref}
+          buttonsPosition={buttonsPosition}
+          className={cardActions}
+        >
           {[
             React.cloneElement(
               clickableCardButton as React.ReactElement<ButtonProps>,
               {
-                component: "a",
+                component: "div",
                 ...(clickableCardButton?.props as ButtonProps),
               }
             ),
@@ -87,7 +102,11 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
     }
 
     return (
-      <StyledCardActions ref={ref} buttonsPosition={buttonsPosition}>
+      <StyledCardActions
+        ref={ref}
+        buttonsPosition={buttonsPosition}
+        className={cardActions}
+      >
         {validChildren}
       </StyledCardActions>
     );

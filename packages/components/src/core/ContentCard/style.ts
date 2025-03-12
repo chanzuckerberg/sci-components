@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
-import { Card, CardActionArea, CardContent } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyS,
   getSemanticColors,
+  getShadows,
   getSpaces,
 } from "../styles";
 import { css } from "@emotion/react";
 import { ContentCardProps } from "./index";
+import Button from "../Button";
 
 type CardExtraProps = Partial<ContentCardProps> & CommonThemeProps;
 
@@ -30,6 +32,9 @@ const doNotForwardProps = [
   "buttonsPosition",
   "clickableCard",
   "imageSize",
+  "clickableCardProps",
+  "cardSdsType",
+  "classes",
 ];
 
 export const StyledCard = styled(Card, {
@@ -66,6 +71,7 @@ export const StyledCard = styled(Card, {
       background-color: ${semanticColors?.base?.backgroundPrimary};
       flex-direction: ${flexDirection};
       box-shadow: none;
+      overflow: visible;
 
       .MuiCardActionArea-focusHighlight {
         background: transparent;
@@ -93,24 +99,25 @@ export const StyledCard = styled(Card, {
 
 type CardActionAreaExtraProps = {
   imagePosition?: ContentCardProps["imagePosition"];
-  sdsType?: ContentCardProps["sdsType"];
+  cardSdsType?: ContentCardProps["sdsType"];
   visualElementType?: ContentCardProps["visualElementType"];
 } & CommonThemeProps;
 
-export const StyledCardActionArea = styled(CardActionArea, {
+export const StyledCardActionArea = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CardActionAreaExtraProps) => {
     const {
       imagePosition = "left",
-      sdsType = "wide",
+      cardSdsType = "wide",
       visualElementType,
     } = props;
 
     const semanticColors = getSemanticColors(props);
+    const shadows = getShadows(props);
 
     const flexDirection =
-      sdsType === "wide"
+      cardSdsType === "wide"
         ? imagePosition === "left"
           ? "row"
           : "row-reverse"
@@ -122,12 +129,18 @@ export const StyledCardActionArea = styled(CardActionArea, {
       display: flex;
       flex-direction: ${flexDirection};
       align-items: unset;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: scroll;
+      text-align: unset;
 
       background-color: ${semanticColors?.base?.backgroundPrimary};
 
       &:hover,
       &:active {
-        background-color: ${semanticColors?.base?.backgroundSecondary};
+        background-color: ${semanticColors?.base?.surface};
+        box-shadow: ${shadows?.l} !important;
       }
     `;
   }}
@@ -161,14 +174,13 @@ export const StyledCardContent = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CardExtraProps) => {
-    const { boundingBox = true, clickableCard = false } = props;
+    const { boundingBox = true } = props;
 
     const spaces = getSpaces(props);
 
     return css`
       display: flex;
       flex-direction: column;
-      height: ${clickableCard ? "100%" : "auto"};
       min-width: 100px;
       width: 100%;
 

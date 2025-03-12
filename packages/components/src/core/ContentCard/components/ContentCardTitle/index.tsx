@@ -6,12 +6,20 @@ import {
   StyledMetadataText,
   StyledTitleWrapper,
 } from "./style";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 export interface ContentCardTitleProps {
   overlineText?: string;
   titleText?: string;
   subtitleText?: string;
   metadataText?: string;
+  classes?: {
+    cardHeader?: string;
+    cardOverline?: string;
+    cardTitle?: string;
+    cardSubtitle?: string;
+    cardMetadata?: string;
+  };
 }
 
 /**
@@ -19,21 +27,43 @@ export interface ContentCardTitleProps {
  */
 const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
   function ContentCardTitle(props: ContentCardTitleProps, ref): JSX.Element {
-    const { overlineText, titleText, subtitleText, metadataText } = props;
+    const {
+      overlineText,
+      titleText,
+      subtitleText,
+      metadataText,
+      classes = EMPTY_OBJECT,
+    } = props;
+
+    const {
+      cardHeader,
+      cardOverline,
+      cardTitle,
+      cardSubtitle,
+      cardMetadata,
+    }: ContentCardTitleProps["classes"] = classes;
 
     return (
       <div ref={ref}>
-        <StyledTitleWrapper>
+        <StyledTitleWrapper className={cardHeader}>
           {overlineText && (
-            <StyledOverlineText>{overlineText}</StyledOverlineText>
+            <StyledOverlineText className={cardOverline}>
+              {overlineText}
+            </StyledOverlineText>
           )}
-          {titleText && <StyledTitleText>{titleText}</StyledTitleText>}
+          {titleText && (
+            <StyledTitleText className={cardTitle}>{titleText}</StyledTitleText>
+          )}
           {subtitleText && (
-            <StyledSubtitleText>{subtitleText}</StyledSubtitleText>
+            <StyledSubtitleText className={cardSubtitle}>
+              {subtitleText}
+            </StyledSubtitleText>
           )}
         </StyledTitleWrapper>
         {metadataText && (
-          <StyledMetadataText>{metadataText}</StyledMetadataText>
+          <StyledMetadataText className={cardMetadata}>
+            {metadataText}
+          </StyledMetadataText>
         )}
       </div>
     );
