@@ -1,4 +1,5 @@
 import { CardProps } from "@mui/material";
+import { ButtonProps } from "../Button";
 
 interface BaseContentCardProps extends CardProps {
   sdsType?: "wide" | "narrow";
@@ -10,7 +11,20 @@ interface BaseContentCardProps extends CardProps {
   decorativeBorder?: boolean;
   children?: React.ReactNode;
   clickableCard?: boolean;
+  clickableCardProps?: ButtonProps;
   buttonsPosition?: "left" | "right";
+  classes?: {
+    cardPaper?: string;
+    cardContent?: string;
+    cardHeader?: string;
+    cardMedia?: string;
+    cardOverline?: string;
+    cardTitle?: string;
+    cardSubtitle?: string;
+    cardMetadata?: string;
+    cardActions?: string;
+    clickableCardButton?: string;
+  }
 }
 
 export interface ImageContentCardProps extends BaseContentCardProps {

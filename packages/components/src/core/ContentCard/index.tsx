@@ -64,13 +64,17 @@ const useResponsiveWidth = (initialSdsType: ContentCardProps["sdsType"]) => {
 const enhanceChildrenWithCardActionsProps = (
   children: React.ReactNode,
   clickableCard: boolean,
-  buttonsPosition: ContentCardProps["buttonsPosition"]
+  buttonsPosition: ContentCardProps["buttonsPosition"],
+  classes?: {
+    cardActions?: string;
+  }
 ) => {
   return React.Children.map(children, (child) => {
     if (React.isValidElement(child) && child.type === ContentCardActions) {
       return React.cloneElement(child, {
         ...child.props,
         buttonsPosition,
+        classes,
         clickableCard,
       });
     }
@@ -99,6 +103,8 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
       clickableCard = false,
       imagePosition = "left",
       buttonsPosition = "left",
+      clickableCardProps,
+      classes,
     } = props;
 
     // Force boundingBox to be true when clickableCard is true
@@ -133,9 +139,13 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
           imageSize={imageSize}
           image={image}
           imagePosition={imagePosition}
+          className={classes?.cardMedia}
         />
       ) : visualElementType === "icon" && icon ? (
-        <StyledIconMediaWrapper boundingBox={boundingBox}>
+        <StyledIconMediaWrapper
+          boundingBox={boundingBox}
+          className={classes?.cardMedia}
+        >
           {icon}
         </StyledIconMediaWrapper>
       ) : null;
@@ -146,18 +156,29 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         <StyledCardContent
           boundingBox={boundingBox}
           clickableCard={clickableCard}
+          className={classes?.cardContent}
         >
           <ContentCardTitle
             overlineText={overlineText}
             titleText={titleText}
             subtitleText={subtitleText}
             metadataText={metadataText}
+            classes={{
+              cardHeader: classes?.cardHeader,
+              metadataText: classes?.cardMetadata,
+              overlineText: classes?.cardOverline,
+              subtitleText: classes?.cardSubtitle,
+              titleText: classes?.cardTitle,
+            }}
           />
           <StyledCardContentAligner>
             {enhanceChildrenWithCardActionsProps(
               children,
               clickableCard,
-              buttonsPosition
+              buttonsPosition,
+              {
+                cardActions: classes?.cardActions,
+              }
             )}
           </StyledCardContentAligner>
         </StyledCardContent>
@@ -170,15 +191,16 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         {...props}
         sdsType={dynamicSdsType}
         boundingBox={boundingBox}
+        className={classes?.cardPaper}
       >
         {clickableCard ? (
           <StyledCardActionArea
-            sdsType={dynamicSdsType}
+            sdsStyle="minimal"
+            cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}
-            onClick={() => {
-              alert("clicked");
-            }}
+            className={classes?.clickableCardButton}
+            {...clickableCardProps}
           >
             {cardInnerContent}
           </StyledCardActionArea>

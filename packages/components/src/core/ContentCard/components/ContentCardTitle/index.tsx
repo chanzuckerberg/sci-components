@@ -12,6 +12,13 @@ export interface ContentCardTitleProps {
   titleText?: string;
   subtitleText?: string;
   metadataText?: string;
+  classes?: {
+    cardHeader?: string;
+    overlineText?: string;
+    titleText?: string;
+    subtitleText?: string;
+    metadataText?: string;
+  };
 }
 
 /**
@@ -19,21 +26,32 @@ export interface ContentCardTitleProps {
  */
 const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
   function ContentCardTitle(props: ContentCardTitleProps, ref): JSX.Element {
-    const { overlineText, titleText, subtitleText, metadataText } = props;
+    const { overlineText, titleText, subtitleText, metadataText, classes } =
+      props;
 
     return (
       <div ref={ref}>
-        <StyledTitleWrapper>
+        <StyledTitleWrapper className={classes?.cardHeader}>
           {overlineText && (
-            <StyledOverlineText>{overlineText}</StyledOverlineText>
+            <StyledOverlineText className={classes?.overlineText}>
+              {overlineText}
+            </StyledOverlineText>
           )}
-          {titleText && <StyledTitleText>{titleText}</StyledTitleText>}
+          {titleText && (
+            <StyledTitleText className={classes?.titleText}>
+              {titleText}
+            </StyledTitleText>
+          )}
           {subtitleText && (
-            <StyledSubtitleText>{subtitleText}</StyledSubtitleText>
+            <StyledSubtitleText className={classes?.subtitleText}>
+              {subtitleText}
+            </StyledSubtitleText>
           )}
         </StyledTitleWrapper>
         {metadataText && (
-          <StyledMetadataText>{metadataText}</StyledMetadataText>
+          <StyledMetadataText className={classes?.metadataText}>
+            {metadataText}
+          </StyledMetadataText>
         )}
       </div>
     );

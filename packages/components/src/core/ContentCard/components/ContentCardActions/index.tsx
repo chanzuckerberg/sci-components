@@ -10,6 +10,9 @@ import { ContentCardProps } from "../..";
 export interface ContentCardActionsProps {
   buttonsPosition?: "left" | "right";
   clickableCard?: ContentCardProps["clickableCard"];
+  classes?: {
+    cardActions?: string;
+  };
   children:
     | React.ReactElement<ButtonProps>
     | Array<React.ReactElement<ButtonProps>>;
@@ -34,7 +37,7 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
     props: ContentCardActionsProps,
     ref
   ): JSX.Element | null {
-    const { buttonsPosition, clickableCard, children } = props;
+    const { buttonsPosition, clickableCard, children, classes } = props;
 
     /**
      * (masoudmanson):
@@ -72,12 +75,16 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
       }
 
       return (
-        <StyledCardActions ref={ref} buttonsPosition={buttonsPosition}>
+        <StyledCardActions
+          ref={ref}
+          buttonsPosition={buttonsPosition}
+          className={classes?.cardActions}
+        >
           {[
             React.cloneElement(
               clickableCardButton as React.ReactElement<ButtonProps>,
               {
-                component: "a",
+                component: "div",
                 ...(clickableCardButton?.props as ButtonProps),
               }
             ),
@@ -87,7 +94,11 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
     }
 
     return (
-      <StyledCardActions ref={ref} buttonsPosition={buttonsPosition}>
+      <StyledCardActions
+        ref={ref}
+        buttonsPosition={buttonsPosition}
+        className={classes?.cardActions}
+      >
         {validChildren}
       </StyledCardActions>
     );

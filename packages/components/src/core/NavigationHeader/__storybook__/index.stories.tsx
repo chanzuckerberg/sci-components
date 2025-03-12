@@ -26,6 +26,11 @@ export default {
       mapping: NAVIGATION_HEADER_LOGO_OPTIONS,
       options: Object.keys(NAVIGATION_HEADER_LOGO_OPTIONS),
     },
+    logoLinkComponent: {
+      control: {
+        type: "text",
+      },
+    },
     logoUrl: {
       control: { type: "text" },
     },

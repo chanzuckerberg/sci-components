@@ -42,7 +42,8 @@ export const StyledTextItem = styled(Button, {
   background: none;
   justify-content: flex-start;
   min-height: 44px;
-  width: 100%;
+  width: fit-content;
+  min-width: unset;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
@@ -98,7 +99,8 @@ const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  width: 100%;
+  width: fit-content;
+  min-width: unset;
 
   .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {
     ${fontBodyS}
