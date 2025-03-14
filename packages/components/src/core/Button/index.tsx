@@ -23,6 +23,7 @@ type ButtonSize = "small" | "medium" | "large";
 interface BaseButtonProps extends RawButtonProps {
   children?: React.ReactNode;
   isAllCaps?: boolean;
+  target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
 }
 
 export interface SdsIconButtonProps extends BaseButtonProps {
@@ -31,14 +32,12 @@ export interface SdsIconButtonProps extends BaseButtonProps {
   sdsSize?: ButtonSize;
   icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-  target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
 }
 
 export interface SdsMinimalButtonProps extends BaseButtonProps {
   sdsStyle: "minimal";
   sdsType?: ButtonTypeMap["minimal"];
   children: React.ReactNode;
-  target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
 }
 
 export interface SdsButtonProps extends BaseButtonProps {
@@ -46,7 +45,6 @@ export interface SdsButtonProps extends BaseButtonProps {
   isRounded?: boolean;
   sdsType?: ButtonTypeMap["rounded" | "square"];
   children: React.ReactNode;
-  target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
 }
 
 export type SdsProps =
