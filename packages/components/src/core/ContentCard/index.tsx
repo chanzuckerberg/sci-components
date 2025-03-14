@@ -205,12 +205,12 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
       >
         {clickableCard ? (
           <StyledCardActionArea
+            {...clickableCardProps}
             sdsStyle="minimal"
             cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}
             className={clickableCardButton}
-            {...clickableCardProps}
           >
             {cardInnerContent}
           </StyledCardActionArea>
