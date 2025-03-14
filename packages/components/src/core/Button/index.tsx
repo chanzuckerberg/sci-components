@@ -1,5 +1,5 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
-import React, { ForwardedRef } from "react";
+import React, { ForwardedRef, HTMLAttributeAnchorTarget } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -23,7 +23,7 @@ type ButtonSize = "small" | "medium" | "large";
 interface BaseButtonProps extends RawButtonProps {
   children?: React.ReactNode;
   isAllCaps?: boolean;
-  target?: "_blank" | "_self" | "_parent" | "_top" | "framename";
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export interface SdsIconButtonProps extends BaseButtonProps {

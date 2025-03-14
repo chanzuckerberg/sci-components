@@ -206,6 +206,9 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         {clickableCard ? (
           <StyledCardActionArea
             {...clickableCardProps}
+            // (masoudmanson): The following props are for internal use only and should not be user editable.
+            // To prevent users from overriding them, we use the spread operator to pass user provided props
+            // to the StyledCardActionArea component on top while hardcoding the rest after it.
             sdsStyle="minimal"
             cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
