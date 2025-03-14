@@ -9,7 +9,7 @@ import {
 } from "../styles";
 import { css } from "@emotion/react";
 import { ContentCardProps } from "./index";
-import Button from "../Button";
+import Button, { SdsMinimalButtonProps } from "../Button";
 
 type CardExtraProps = Partial<ContentCardProps> & CommonThemeProps;
 
@@ -101,7 +101,8 @@ type CardActionAreaExtraProps = {
   imagePosition?: ContentCardProps["imagePosition"];
   cardSdsType?: ContentCardProps["sdsType"];
   visualElementType?: ContentCardProps["visualElementType"];
-} & CommonThemeProps;
+} & SdsMinimalButtonProps &
+  CommonThemeProps;
 
 export const StyledCardActionArea = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -132,7 +133,7 @@ export const StyledCardActionArea = styled(Button, {
       height: 100%;
       padding: 0;
       margin: 0;
-      overflow: scroll;
+      overflow: auto;
       text-align: unset;
 
       background-color: ${semanticColors?.base?.backgroundPrimary};
@@ -183,6 +184,7 @@ export const StyledCardContent = styled("div", {
       flex-direction: column;
       min-width: 100px;
       width: 100%;
+      height: 100%;
 
       ${boundingBox &&
       css`

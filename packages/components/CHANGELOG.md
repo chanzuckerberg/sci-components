@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.3.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.1...@czi-sds/components@22.3.2) (2025-03-14)
+
+### Bug Fixes
+
+- **ContentCard:** Fixed ContentCard content height + Fixed TS types on CC ([#939](https://github.com/chanzuckerberg/sci-components/issues/939)) ([de02cd2](https://github.com/chanzuckerberg/sci-components/commit/de02cd21ca3ef26f9e0e26c36fe19634963f4302))
+
 ## [22.3.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.0...@czi-sds/components@22.3.1) (2025-03-12)
 
 **Note:** Version bump only for package @czi-sds/components
