@@ -1,0 +1,28 @@
+import { ButtonProps, LinkProps } from "@mui/material";
+import { ReactNode, ElementType } from "react";
+import { SdsProps, SdsIconButtonProps } from "../Button";
+import { InputSearchProps } from "../InputSearch";
+import { SdsTagColorType } from "../Tag";
+import { NavigationHeaderPrimaryNavItem } from "./components/NavigationHeaderPrimaryNav";
+import { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
+
+export interface NavigationHeaderProps<T extends string = string> {
+  activePrimaryNavKey?: string;
+  buttons?: (SdsProps & ButtonProps)[];
+  hasInvertedStyle?: boolean;
+  logo?: ReactNode;
+  logoUrl?: string;
+  logoLinkComponent?: ElementType;
+  logoLinkProps?: LinkProps;
+  primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
+  primaryNavPosition?: "left" | "right";
+  searchProps?: Partial<InputSearchProps>;
+  secondaryNavItems?: NavigationHeaderSecondaryNavItem[];
+  setActivePrimaryNavKey?(key: string): void;
+  showSearch?: boolean;
+  tag?: string;
+  tagColor?: SdsTagColorType;
+  title: string;
+}
+
+export type IconButtonProps = SdsIconButtonProps & { children?: string };

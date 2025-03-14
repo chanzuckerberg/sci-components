@@ -1,15 +1,6 @@
-import { LinkProps, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import {
-  ElementType,
-  forwardRef,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { SdsTagColorType } from "src/core/Tag";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import {
   StyledButtonSection,
   StyledDrawer,
@@ -28,44 +19,14 @@ import {
   StyledToolbar,
   StyledWideIconButton,
 } from "./style";
-import NavigationHeaderPrimaryNav, {
-  NavigationHeaderPrimaryNavItem,
-} from "./components/NavigationHeaderPrimaryNav";
-import { InputSearchProps } from "../InputSearch";
-import NavigationHeaderSecondaryNav, {
-  NavigationHeaderSecondaryNavItem,
-} from "./components/NavigationHeaderSecondaryNav";
-import {
-  SdsProps,
-  ButtonProps,
-  SdsButtonProps,
-  SdsIconButtonProps,
-  SdsMinimalButtonProps,
-} from "../Button";
+import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
+import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
+import { ButtonProps, SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import Icon from "../Icon";
-
-export type { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
-
-export interface NavigationHeaderProps<T extends string = string> {
-  activePrimaryNavKey?: string;
-  buttons?: (SdsProps & ButtonProps)[];
-  hasInvertedStyle?: boolean;
-  logo?: ReactNode;
-  logoUrl?: string;
-  logoLinkComponent?: ElementType;
-  logoLinkProps?: LinkProps;
-  primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
-  primaryNavPosition?: "left" | "right";
-  searchProps?: Partial<InputSearchProps>;
-  secondaryNavItems?: NavigationHeaderSecondaryNavItem[];
-  setActivePrimaryNavKey?(key: string): void;
-  showSearch?: boolean;
-  tag?: string;
-  tagColor?: SdsTagColorType;
-  title: string;
-}
-
-export type IconButtonProps = SdsIconButtonProps & { children?: string };
+import {
+  IconButtonProps,
+  NavigationHeaderProps,
+} from "./NavigationHeader.types";
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
