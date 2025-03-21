@@ -356,6 +356,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             elevation={0}
             hasInvertedStyle={hasInvertedStyle}
             ref={mergeRefs([ref, navRef])}
+            aria-label="Main navigation"
+            tabIndex={0}
             {...rest}
           >
             {headerContent}
@@ -368,6 +370,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             hasInvertedStyle={hasInvertedStyle}
+            role="dialog"
+            aria-label="Navigation menu"
           >
             <div>
               <ElevationScroll {...props} shouldElevate={scrollElevation}>
@@ -375,8 +379,9 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
                   elevation={10}
                   hasInvertedStyle={hasInvertedStyle}
                   ref={mergeRefs([ref, navRef])}
+                  aria-label="Main navigation"
+                  tabIndex={0}
                   {...rest}
-                  // (masoudmanson): in narrow version, the app bar should be sticky
                   position="sticky"
                 >
                   {headerContent}
@@ -394,5 +399,20 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     );
   }
 );
+
+export type {
+  NavigationHeaderProps,
+  IconButtonProps,
+} from "./NavigationHeader.types";
+
+export type {
+  NavigationHeaderPrimaryNavItem,
+  NavigationHeaderPrimaryNavProps,
+} from "./components/NavigationHeaderPrimaryNav";
+
+export type {
+  NavigationHeaderSecondaryNavItem,
+  NavigationHeaderSecondaryNavProps,
+} from "./components/NavigationHeaderSecondaryNav";
 
 export default NavigationHeader;
