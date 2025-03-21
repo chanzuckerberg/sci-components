@@ -14,7 +14,7 @@ import styled from "@emotion/styled";
 import Link from "../Link";
 import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import { SerializedStyles } from "@emotion/react";
-import { IconButtonProps } from ".";
+import { IconButtonProps } from "./NavigationHeader.types";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -30,7 +30,7 @@ const doNotForwardProps = [
   "logoLinkProps",
 ];
 
-export const StyledHeader = styled(AppBar, {
+export const StyledAppBar = styled(AppBar, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
@@ -208,6 +208,7 @@ export const StyledWideIconButton = styled(Button, {
 
     return css`
       ${hasInvertedStyle && invertedWideButtonStyles(props)}
+      margin: 0;
     `;
   }}
 `;
@@ -246,9 +247,6 @@ const NarrowTitleContainer = (props: ExtraHeaderProps): SerializedStyles => {
 export const StyledTitleContainer = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontHeader("l")}
-  ${fontHeader("l", true)}
-
   display: flex;
   align-items: center;
 
@@ -259,23 +257,42 @@ export const StyledTitleContainer = styled("div", {
     const spaces = getSpaces(props);
 
     return css`
+      gap: ${spaces?.l}px;
       color: ${props.hasInvertedStyle
         ? colors?.base.textPrimaryInverse
         : colors?.base.textPrimary};
       margin-right: ${spaces?.xxl}px;
       width: 100%;
 
-      p {
-        margin: 0 ${spaces?.xs}px 0 ${spaces?.l}px;
-      }
-
       ${isNarrow && NarrowTitleContainer(props)}
     `;
   }}
 `;
 
+export const StyledTitleTagWrapper = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${fontHeader("l")}
+  ${fontHeader("l", true)}
+
+  ${(props: ExtraHeaderProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      display: flex;
+      align-items: center;
+      gap: ${spaces?.xs}px;
+
+      p {
+        white-space: nowrap;
+      }
+  `;
+  }}
+`;
+
 export const StyledTag = styled(Tag)`
   margin: 1px 0 0 0;
+
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
     ${fontBody("xxxs", "regular", /* isNarrow */ true)}
@@ -483,7 +500,7 @@ export const StyledButtonSection = styled("section", {
 
     return css`
       gap: ${spaces?.m}px;
-      margin-left: ${spaces?.xl}px;
+      margin-left: ${spaces?.xxl}px;
 
       ${isNarrow && NarrowButtonStyles(props)}
     `;
@@ -510,7 +527,12 @@ export const StyledDrawer = styled(Drawer, {
 `;
 
 export const StyledNarrowButton = styled(Button)`
-  & {
-    margin: 0;
-  }
+  ${(props: ExtraButtonProps & IconButtonProps) => {
+    const { hasInvertedStyle } = props;
+
+    return css`
+      ${hasInvertedStyle && invertedWideButtonStyles(props)}
+      margin: 0;
+    `;
+  }}
 `;

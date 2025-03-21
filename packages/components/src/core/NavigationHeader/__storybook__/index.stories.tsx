@@ -7,13 +7,17 @@ import {
   NAVIGATION_HEADER_LOGO_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { Theme } from "src/core/styles";
-import { ThemeProvider } from "@mui/material";
 
 export default {
   argTypes: {
     buttons: {
       control: { type: "object" },
+      description: "List of buttons to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     hasInvertedStyle: {
       control: { type: "boolean" },
@@ -34,12 +38,23 @@ export default {
     logoUrl: {
       control: { type: "text" },
     },
+    position: {
+      control: { type: "select" },
+      options: ["absolute", "fixed", "relative", "static", "sticky"],
+    },
     primaryNavItems: {
       control: { type: "object" },
     },
     primaryNavPosition: {
       control: { type: "radio" },
       options: ["left", "right"],
+    },
+    scrollElevation: {
+      control: { type: "boolean" },
+      description: "Elevate the navigation header when the user scrolls.",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     searchProps: {
       control: { type: "object" },
@@ -68,6 +83,9 @@ export default {
       mapping: TAG_PANEL_COLORS,
       options: Object.keys(TAG_PANEL_COLORS),
     },
+    title: {
+      control: { type: "text" },
+    },
   },
   component: NavigationHeader,
   parameters: {
@@ -80,12 +98,20 @@ export const Default = {
   args: {
     buttons: [
       { children: "Primary", sdsType: "primary" },
-      { children: "Secondary", sdsType: "secondary" },
-      { children: "My Profile", icon: "Person" },
+      {
+        children: "Secondary",
+        sdsType: "secondary",
+      },
+      {
+        children: "My Profile",
+        icon: "Person",
+        onClick: () => alert("clicked on my profile"),
+      },
     ],
     hasInvertedStyle: false,
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
+    position: "sticky",
     primaryNavItems: [
       {
         key: "1",
@@ -98,6 +124,7 @@ export const Default = {
         tagColor: "beta",
       },
     ],
+    scrollElevation: true,
     secondaryNavItems: [
       {
         itemType: "dropdown",
@@ -119,9 +146,13 @@ export const Default = {
     showSearch: true,
     tag: "Beta",
     tagColor: "beta",
-    title: "Logo Name",
   },
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    controls: {
+      expanded: true,
+    },
+    layout: "fullscreen",
+  },
 };
 
 // Test
@@ -136,9 +167,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => (
-    <ThemeProvider theme={Theme("light")}>
-      <TestDemo {...args} />
-    </ThemeProvider>
-  ),
+  render: (args: Args) => <TestDemo {...args} />,
 };

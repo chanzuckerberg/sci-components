@@ -83,6 +83,8 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${padding};
     color: ${contentColor};
     line-height: ${isAllCaps ? "20px" : "unset"};
+    white-space: nowrap;
+    min-width: fit-content;
 
     svg {
       color: ${ornamentColor};

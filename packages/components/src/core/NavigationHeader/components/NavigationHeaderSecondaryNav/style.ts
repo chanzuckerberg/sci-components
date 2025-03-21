@@ -44,6 +44,7 @@ export const StyledTextItem = styled(Button, {
   min-height: 44px;
   width: fit-content;
   min-width: unset;
+  padding: 0;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;

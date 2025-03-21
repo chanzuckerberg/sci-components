@@ -64,14 +64,21 @@ function NavigationFooter({
     const needsScroll = scrollWidth > clientWidth;
 
     setDimensions((prev) => {
-      const newBreakpoint =
-        needsScroll && !prev.isNarrow
-          ? Math.max(prev.breakpoint, clientWidth)
-          : prev.breakpoint;
+      const newBreakpoint = needsScroll
+        ? prev.breakpoint > scrollWidth
+          ? prev.breakpoint
+          : scrollWidth
+        : prev.breakpoint;
+
+      const newIsNarrow = prev.isNarrow
+        ? clientWidth < newBreakpoint
+          ? true
+          : false
+        : needsScroll;
 
       return {
         breakpoint: newBreakpoint,
-        isNarrow: clientWidth <= newBreakpoint,
+        isNarrow: newIsNarrow,
       };
     });
   }, []);
