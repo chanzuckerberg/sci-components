@@ -3,7 +3,7 @@
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-5x4d2e-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-2w1ecs-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -48,7 +48,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
 exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-5x4d2e-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-2w1ecs-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"

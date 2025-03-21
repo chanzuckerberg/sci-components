@@ -56,6 +56,7 @@ export const PrimaryNavItem = styled(Button, {
   align-items: start;
   background: none;
   padding: 0;
+  min-width: fit-content;
 
   ${(props: PrimaryNavItemProps) => {
     const { hasInvertedStyle, isNarrow } = props;
