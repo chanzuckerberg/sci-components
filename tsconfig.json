@@ -61,7 +61,7 @@
   "include": ["./packages/**/src/**/*", ".eslintrc.js"],
   "exclude": [
     "node_modules",
-    "./packages/*/node_modules",
+    "./packages/**/node_modules",
     "**/*.scss",
     "**/*.css"
   ]

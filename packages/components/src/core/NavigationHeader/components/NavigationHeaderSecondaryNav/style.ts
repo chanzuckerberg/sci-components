@@ -24,6 +24,8 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
 
   return css`
     padding-left: ${spaces?.xl}px;
+    border-radius: 0;
+    width: 100%;
 
     &:hover {
       box-shadow: none;
@@ -44,6 +46,7 @@ export const StyledTextItem = styled(Button, {
   min-height: 44px;
   width: fit-content;
   min-width: unset;
+  padding: 0;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
@@ -99,7 +102,7 @@ const doNotForwardProps = ["hasInvertedStyle", "isNarrow"];
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  width: fit-content;
+  width: 100%;
   min-width: unset;
 
   .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {

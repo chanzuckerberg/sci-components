@@ -83,6 +83,8 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${padding};
     color: ${contentColor};
     line-height: ${isAllCaps ? "20px" : "unset"};
+    white-space: nowrap;
+    min-width: 120px;
 
     svg {
       color: ${ornamentColor};
@@ -254,7 +256,7 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
     ${focusVisibleA11yStyle(props)}
     ${isAllCaps ? fontCapsXxxs(props) : fontBodySemiboldXxs(props)}
 
-    min-width: unset;
+    min-width: fit-content;
     padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
 
     &:hover,

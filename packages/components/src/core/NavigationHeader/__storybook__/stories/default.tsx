@@ -1,8 +1,9 @@
-import { useTheme } from "@mui/material";
+import { Box, Container, useTheme } from "@mui/material";
 import { Args } from "@storybook/react";
 import { useState } from "react";
 import { getSemanticColors } from "src/core/styles";
 import RawNavigationHeader from "src/core/NavigationHeader";
+import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 
 export const CustomNavigationLogo = (): JSX.Element => {
   const theme = useTheme();
@@ -28,14 +29,23 @@ export const CustomNavigationLogo = (): JSX.Element => {
 
 export const NavigationHeader = (props: Args): JSX.Element => {
   const { title, ...rest } = props;
-  const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
+  const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("");
 
   return (
-    <RawNavigationHeader
-      {...rest}
-      title={title}
-      activePrimaryNavKey={activePrimaryNavKey}
-      setActivePrimaryNavKey={setActivePrimaryNavKey}
-    />
+    <>
+      <RawNavigationHeader
+        {...rest}
+        title={title}
+        activePrimaryNavKey={activePrimaryNavKey}
+        setActivePrimaryNavKey={setActivePrimaryNavKey}
+      />
+      <Container>
+        <Box>
+          {[...new Array(10)].map((_, idx) => (
+            <p key={idx}>{EXTRA_LONG_LOREM_IPSUM}</p>
+          ))}
+        </Box>
+      </Container>
+    </>
   );
 };
