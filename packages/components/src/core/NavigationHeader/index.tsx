@@ -358,6 +358,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             ref={mergeRefs([ref, navRef])}
             aria-label="Main navigation"
             tabIndex={0}
+            position="sticky"
             {...rest}
           >
             {headerContent}

@@ -21,33 +21,76 @@ export default {
     },
     hasInvertedStyle: {
       control: { type: "boolean" },
+      description: "Invert the colors of the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "false",
+        },
+      },
     },
     logo: {
       control: {
         labels: ["Logo Placeholder", "Empty"],
         type: "select",
       },
+      description: "The logo to display in the navigation header.",
       mapping: NAVIGATION_HEADER_LOGO_OPTIONS,
       options: Object.keys(NAVIGATION_HEADER_LOGO_OPTIONS),
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     logoLinkComponent: {
       control: {
         type: "text",
       },
+      description: "The link component to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "a",
+        },
+      },
     },
     logoUrl: {
       control: { type: "text" },
+      description: "The URL of the logo.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     position: {
       control: { type: "select" },
+      description: "Position of the navigation header.",
       options: ["absolute", "fixed", "relative", "static", "sticky"],
+      table: {
+        defaultValue: {
+          summary: "sticky",
+        },
+      },
     },
     primaryNavItems: {
       control: { type: "object" },
+      description:
+        "List of primary navigation items to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     primaryNavPosition: {
       control: { type: "radio" },
+      description: "Position of the primary navigation items.",
       options: ["left", "right"],
+      table: {
+        defaultValue: {
+          summary: "left",
+        },
+      },
     },
     scrollElevation: {
       control: { type: "boolean" },
@@ -58,15 +101,41 @@ export default {
     },
     searchProps: {
       control: { type: "object" },
+      description: "Search props for the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     secondaryNavItems: {
       control: { type: "object" },
+      description:
+        "List of secondary navigation items to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     showSearch: {
       control: { type: "boolean" },
+      description: "Show the search input in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "true",
+        },
+      },
     },
     tag: {
       control: { type: "text" },
+      description:
+        "The tag to display in the navigation header next to the logo.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     tagColor: {
       control: {
@@ -80,11 +149,23 @@ export default {
         ],
         type: "select",
       },
+      description: "Color of the tag.",
       mapping: TAG_PANEL_COLORS,
       options: Object.keys(TAG_PANEL_COLORS),
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
     title: {
       control: { type: "text" },
+      description: "Title to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
     },
   },
   component: NavigationHeader,
