@@ -68,6 +68,8 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       textPrimaryInverse: appTheme.colors.gray[50]!,
       textSecondary: appTheme.colors.gray[600],
       textSecondaryInverse: appTheme.colors.gray[300],
+      textTertiary: appTheme.colors.gray[400],
+      textTertiaryInverse: appTheme.colors.gray[500],
     },
     beta: {
       border: appTheme.colors.purple[600],
@@ -205,6 +207,8 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       textPrimaryInverse: appTheme.colors.gray[50]!,
       textSecondary: appTheme.colors.gray[600],
       textSecondaryInverse: appTheme.colors.gray[300],
+      textTertiary: appTheme.colors.gray[400],
+      textTertiaryInverse: appTheme.colors.gray[500],
     },
     beta: {
       border: appTheme.colors.purple[600],

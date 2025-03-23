@@ -84,7 +84,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     color: ${contentColor};
     line-height: ${isAllCaps ? "20px" : "unset"};
     white-space: nowrap;
-    min-width: 120px;
+    min-width: fit-content;
 
     svg {
       color: ${ornamentColor};
@@ -147,11 +147,9 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const Rounded = (props: ButtonExtraProps): SerializedStyles => {
-  const corners = getCorners(props);
-
+const Rounded = (): SerializedStyles => {
   return css`
-    border-radius: ${corners?.l}px;
+    border-radius: 100px;
   `;
 };
 
@@ -237,7 +235,7 @@ export const StyledButton = styled(Button, {
       ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
 
       ${ButtonStyles(props)}
-      ${sdsStyle === "rounded" && Rounded(props)}
+      ${sdsStyle === "rounded" && Rounded()}
       ${sdsType === "destructive" && DestructiveButton(props)}
     `;
   }}

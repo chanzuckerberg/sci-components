@@ -37,7 +37,9 @@ export const StyledAppBar = styled(AppBar, {
     const colors = getSemanticColors(props);
 
     return `
-      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+      background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+      background-image: none;
+      box-shadow: none;
       max-width: 100%;
       max-height: 56px;
       overflow-x: auto;
@@ -53,9 +55,11 @@ const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
       ${props.hasInvertedStyle
         ? semanticColors?.base.dividerInverse
         : semanticColors?.base.divider};
-    background: ${props.hasInvertedStyle
+    background-color: ${props.hasInvertedStyle
       ? semanticColors?.base.backgroundPrimaryInverse
       : semanticColors?.base.backgroundPrimary};
+    background-image: none;
+    box-shadow: none;
     position: sticky !important;
     top: 0;
     z-index: 1000;
@@ -234,12 +238,11 @@ export const StyledLogoWrapper = styled.div`
   align-items: center;
 `;
 
-const NarrowTitleContainer = (props: ExtraHeaderProps): SerializedStyles => {
-  const spaces = getSpaces(props);
-
+const NarrowTitleContainer = (): SerializedStyles => {
   return css`
     p {
-      margin-left: ${spaces?.xs}px;
+      margin: 0px;
+      margin-block: 0px;
     }
   `;
 };
@@ -264,7 +267,7 @@ export const StyledTitleContainer = styled("div", {
       margin-right: ${spaces?.xxl}px;
       width: 100%;
 
-      ${isNarrow && NarrowTitleContainer(props)}
+      ${isNarrow && NarrowTitleContainer()}
     `;
   }}
 `;

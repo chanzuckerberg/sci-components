@@ -58,6 +58,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       tag,
       tagColor,
       title,
+      drawerOpen: controlledDrawerOpen,
+      setDrawerOpen: onDrawerOpenChange,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
@@ -65,7 +67,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const theme = useTheme();
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    // Use controlled or uncontrolled drawer state
+    const [internalDrawerOpen, setInternalDrawerOpen] = useState(false);
+    const drawerOpen = controlledDrawerOpen ?? internalDrawerOpen;
+    const setDrawerOpen = (open: boolean | ((prev: boolean) => boolean)) => {
+      const newOpen = typeof open === "function" ? open(drawerOpen) : open;
+      if (onDrawerOpenChange) {
+        onDrawerOpenChange(newOpen);
+      } else {
+        setInternalDrawerOpen(newOpen);
+      }
+    };
+
     const [dimensions, setDimensions] = useState({
       breakpoint: 0,
       isNarrow: isMdScreen,
@@ -136,7 +149,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={dimensions.isNarrow}
         >
-          <StyledLogoWrapper>{logo}</StyledLogoWrapper>
+          {logo && <StyledLogoWrapper>{logo}</StyledLogoWrapper>}
 
           <StyledTitleTagWrapper>
             {title && <p>{title}</p>}
@@ -205,7 +218,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderButton = (
-      buttonProps: ButtonProps | React.ReactNode,
+      buttonProps: Partial<ButtonProps> | React.ReactNode,
       idx: number
     ) => {
       const key = `button-${idx}`;

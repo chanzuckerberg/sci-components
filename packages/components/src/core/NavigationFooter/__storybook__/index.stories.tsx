@@ -88,7 +88,11 @@ export const Default = {
     logo: NAVIGATION_FOOTER_LOGO_OPTIONS[0],
     logoUrl: "https://example.com",
     navItems: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
+      component: "a",
       label: `Nav Item ${idx + 1}`,
+      linkProps: {
+        target: "_blank",
+      },
       url: `https://example.com/nav/${idx + 1}`,
     })),
     navLinks: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({

@@ -195,6 +195,7 @@ export const Default = {
     position: "sticky",
     primaryNavItems: [
       {
+        component: "a",
         key: "1",
         label: "Primary",
       },

@@ -9,7 +9,7 @@ import { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderS
 export interface NavigationHeaderProps<T extends string = string>
   extends AppBarProps {
   activePrimaryNavKey?: string;
-  buttons?: (SdsProps & ButtonProps)[] | React.ReactNode[];
+  buttons?: Partial<SdsProps & ButtonProps>[] | React.ReactNode[];
   hasInvertedStyle?: boolean;
   logo?: ReactNode;
   logoUrl?: string;
@@ -25,6 +25,8 @@ export interface NavigationHeaderProps<T extends string = string>
   tag?: string;
   tagColor?: SdsTagColorType;
   title: string;
+  drawerOpen?: boolean;
+  setDrawerOpen?: (open: boolean) => void;
 }
 
 export type IconButtonProps = SdsIconButtonProps & { children?: string };
