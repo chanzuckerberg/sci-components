@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { ContentCard } from "./stories/default";
 import {
   CONTENT_CARD_BUTTONS_LABELS,
@@ -193,10 +192,7 @@ export default {
     },
   },
   component: ContentCard,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/ContentCard [beta]",
+  title: "Components/ContentCard",
 } as Meta;
 
 // Default

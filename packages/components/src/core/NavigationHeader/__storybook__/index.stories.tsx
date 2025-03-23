@@ -1,6 +1,5 @@
 import { Args, Meta } from "@storybook/react";
 import { NavigationHeader } from "./stories/default";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
@@ -169,10 +168,7 @@ export default {
     },
   },
   component: NavigationHeader,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/NavigationHeader [beta]",
+  title: "Components/NavigationHeader",
 } as Meta;
 
 export const Default = {

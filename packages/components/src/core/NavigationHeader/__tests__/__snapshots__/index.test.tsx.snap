@@ -91,7 +91,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         Search
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root css-nfbxxw-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root css-1wq56pb-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -348,7 +348,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           Search
         </label>
         <div
-          class="MuiFormControl-root MuiTextField-root css-nfbxxw-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-1wq56pb-MuiFormControl-root-MuiTextField-root"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"

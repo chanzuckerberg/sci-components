@@ -375,6 +375,15 @@ export const StyledSearch = styled(InputSearch, {
             : ""};
         }
 
+        .MuiInputBase-input {
+          &::placeholder {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base?.textTertiaryInverse
+              : semanticColors?.base?.textTertiary};
+            opacity: 1;
+          }
+        }
+
         .MuiInputAdornment-root {
           .MuiButtonBase-root:last-of-type {
             svg {

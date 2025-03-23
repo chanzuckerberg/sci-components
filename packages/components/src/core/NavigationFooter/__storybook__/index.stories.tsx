@@ -6,7 +6,6 @@ import {
   NAVIGATION_FOOTER_LOGO_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import { NavigationFooterNavItem } from "../NavigationFooter.types";
 
@@ -58,10 +57,7 @@ export default {
     },
   },
   component: NavigationFooter,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/NavigationFooter [beta]",
+  title: "Components/NavigationFooter",
 } as Meta;
 
 export const Default = {
