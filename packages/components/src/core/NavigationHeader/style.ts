@@ -538,7 +538,9 @@ export const StyledDrawer = styled(Drawer, {
   }}
 `;
 
-export const StyledNarrowButton = styled(Button)`
+export const StyledNarrowButton = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: ExtraButtonProps & IconButtonProps) => {
     const { hasInvertedStyle } = props;
 
