@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.11.2...@czi-sds/data-viz@0.11.3) (2025-03-24)
+
+### Bug Fixes
+
+- **NavHeader, NavFooter:** VCP dark mode changes ([#941](https://github.com/chanzuckerberg/sci-components/issues/941)) ([5f55b95](https://github.com/chanzuckerberg/sci-components/commit/5f55b9519626429b6fe3c0c1fde3d3b81697966e))
+
 ## [0.11.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.11.1...@czi-sds/data-viz@0.11.2) (2025-02-19)
 
 **Note:** Version bump only for package @czi-sds/data-viz
