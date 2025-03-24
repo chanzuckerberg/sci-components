@@ -9,25 +9,15 @@ import {
   StyledNavSection,
   StyledTopSection,
   StyledMobileImageRow,
-  StyledMobileLinkRow,
 } from "./style";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Link from "../Link";
 import NavItem from "./components/NavItem";
 import FooterLink from "./components/FooterLink";
+import MobileLinkRow from "./components/MobileLinkRow";
 import { NavigationFooterProps } from "./NavigationFooter.types";
 import { StyledDivider } from "./components/FooterLink/style";
-
-function groupArray<T>(array: T[], groupSize: number): T[][] {
-  const groups: T[][] = [];
-
-  for (let i = 0; i < array.length; i += groupSize) {
-    groups.push(array.slice(i, i + groupSize));
-  }
-
-  return groups;
-}
 
 const MemoizedStyledDivider = memo(StyledDivider);
 
@@ -36,6 +26,8 @@ function NavigationFooter({
   images,
   logo,
   logoUrl,
+  logoComponent,
+  logoLinkProps,
   navItems,
   navLinks,
   tag,
@@ -64,14 +56,21 @@ function NavigationFooter({
     const needsScroll = scrollWidth > clientWidth;
 
     setDimensions((prev) => {
-      const newBreakpoint =
-        needsScroll && !prev.isNarrow
-          ? Math.max(prev.breakpoint, clientWidth)
-          : prev.breakpoint;
+      const newBreakpoint = needsScroll
+        ? prev.breakpoint > scrollWidth
+          ? prev.breakpoint
+          : scrollWidth
+        : prev.breakpoint;
+
+      const newIsNarrow = prev.isNarrow
+        ? clientWidth < newBreakpoint
+          ? true
+          : false
+        : needsScroll;
 
       return {
         breakpoint: newBreakpoint,
-        isNarrow: clientWidth <= newBreakpoint,
+        isNarrow: newIsNarrow,
       };
     });
   }, []);
@@ -90,23 +89,17 @@ function NavigationFooter({
   const renderImages = useCallback(() => {
     if (!images?.length) return null;
 
-    if (!dimensions.isNarrow) {
-      return images.map(({ image, url }) => (
-        <Link key={url} href={url}>
-          {image}
-        </Link>
-      ));
-    }
-
-    return groupArray(images, 2).map((imageGroup, index) => (
-      <StyledMobileImageRow key={index}>
-        {imageGroup.map(({ image, url }) => (
-          <Link key={url} href={url}>
-            {image}
-          </Link>
-        ))}
-      </StyledMobileImageRow>
+    const imageElements = images.map(({ image, url, component, linkProps }) => (
+      <Link key={url} href={url} component={component} {...linkProps}>
+        {image}
+      </Link>
     ));
+
+    return dimensions.isNarrow ? (
+      <StyledMobileImageRow>{imageElements}</StyledMobileImageRow>
+    ) : (
+      imageElements
+    );
   }, [images, dimensions.isNarrow]);
 
   const renderLinks = useCallback(() => {
@@ -123,18 +116,9 @@ function NavigationFooter({
       ));
     }
 
-    return groupArray(navLinks, 3).map((linkGroup, index) => (
-      <StyledMobileLinkRow key={index}>
-        {linkGroup.map((link, linkIndex) => (
-          <FooterLink
-            key={link.label}
-            link={link}
-            showDivider={linkIndex < linkGroup.length - 1}
-            hasInvertedStyle={hasInvertedStyle}
-          />
-        ))}
-      </StyledMobileLinkRow>
-    ));
+    return (
+      <MobileLinkRow links={navLinks} hasInvertedStyle={hasInvertedStyle} />
+    );
   }, [navLinks, dimensions.isNarrow, hasInvertedStyle]);
 
   const logoNode = useMemo(() => {
@@ -149,15 +133,23 @@ function NavigationFooter({
       </StyledLogoWrapper>
     );
 
-    return logoUrl ? <Link href={logoUrl}>{node}</Link> : node;
+    return logoUrl ? (
+      <Link href={logoUrl} component={logoComponent} {...logoLinkProps}>
+        {node}
+      </Link>
+    ) : (
+      node
+    );
   }, [
+    dimensions.isNarrow,
+    hasInvertedStyle,
     logo,
     title,
     tag,
     tagColor,
     logoUrl,
-    dimensions.isNarrow,
-    hasInvertedStyle,
+    logoComponent,
+    logoLinkProps,
   ]);
 
   const navItemsSection = useMemo(() => {

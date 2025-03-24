@@ -6,7 +6,6 @@ import {
   NAVIGATION_FOOTER_LOGO_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import { NavigationFooterNavItem } from "../NavigationFooter.types";
 
@@ -58,10 +57,7 @@ export default {
     },
   },
   component: NavigationFooter,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/NavigationFooter [beta]",
+  title: "Components/NavigationFooter",
 } as Meta;
 
 export const Default = {
@@ -88,7 +84,11 @@ export const Default = {
     logo: NAVIGATION_FOOTER_LOGO_OPTIONS[0],
     logoUrl: "https://example.com",
     navItems: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
+      component: "a",
       label: `Nav Item ${idx + 1}`,
+      linkProps: {
+        target: "_blank",
+      },
       url: `https://example.com/nav/${idx + 1}`,
     })),
     navLinks: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({

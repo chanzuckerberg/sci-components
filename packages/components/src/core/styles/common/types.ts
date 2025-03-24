@@ -36,6 +36,8 @@ export interface BaseColor {
   textPrimaryInverse: string;
   textSecondary: string;
   textSecondaryInverse: string;
+  textTertiary: string;
+  textTertiaryInverse: string;
   textDisabled: string;
   textDisabledInverse: string;
   textOnFill: string;

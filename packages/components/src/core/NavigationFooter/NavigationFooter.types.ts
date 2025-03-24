@@ -3,14 +3,16 @@ import { TagProps } from "../Tag";
 
 export interface NavigationFooterNavItem {
   label: string;
-  url: string;
+  url?: string;
   component?: ElementType;
   linkProps?: Record<string, unknown>;
 }
 
 export interface FooterImage {
   image: ReactNode;
-  url: string;
+  url?: string;
+  component?: ElementType;
+  linkProps?: Record<string, unknown>;
 }
 
 export interface NavigationFooterProps {
@@ -18,6 +20,8 @@ export interface NavigationFooterProps {
   images?: FooterImage[];
   logo?: ReactNode;
   logoUrl?: string;
+  logoComponent?: ElementType;
+  logoLinkProps?: Record<string, unknown>;
   navItems?: NavigationFooterNavItem[];
   navLinks?: NavigationFooterNavItem[];
   tag?: string;

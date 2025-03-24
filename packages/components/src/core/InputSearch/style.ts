@@ -172,6 +172,11 @@ export const StyledSearchBase = styled(TextField, {
 
         .${outlinedInputClasses.input} {
           padding-right: ${spaces?.l}px;
+
+          &::placeholder {
+            color: ${semanticColors?.base?.textTertiary};
+            opacity: 1;
+          }
         }
 
         .MuiInputAdornment-positionEnd {

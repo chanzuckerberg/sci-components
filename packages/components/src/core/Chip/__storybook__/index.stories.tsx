@@ -3,6 +3,8 @@ import React from "react";
 import Button from "../../Button";
 import Chip from "../index";
 import { BADGE } from "../../../common/storybook/storybookBadges";
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;
@@ -14,6 +16,22 @@ const Demo = (props: Args): JSX.Element => {
   if (size === "medium" && !isRounded) {
     return (
       <>
+        <Callout
+          intent="negative"
+          title="Deprecated!"
+          sdsStyle="persistent"
+          icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+          body={
+            <>
+              The <strong>Chip</strong> component is deprecated!
+              <br />
+              Please use <strong>Tag</strong> or <strong>TagFilter</strong>{" "}
+              component instead.
+            </>
+          }
+        >
+          The <strong>Alert</strong> component is deprecated!
+        </Callout>
         <Button onClick={handleShowChip} sdsType="secondary" sdsStyle="square">
           Click me!
         </Button>
@@ -21,7 +39,27 @@ const Demo = (props: Args): JSX.Element => {
       </>
     );
   }
-  return <Chip {...props} />;
+  return (
+    <>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        body={
+          <>
+            The <strong>Chip</strong> component is deprecated!
+            <br />
+            Please use <strong>Tag</strong> or <strong>TagFilter</strong>{" "}
+            component instead.
+          </>
+        }
+      >
+        The <strong>Alert</strong> component is deprecated!
+      </Callout>
+      <Chip {...props} />
+    </>
+  );
 };
 
 export default {

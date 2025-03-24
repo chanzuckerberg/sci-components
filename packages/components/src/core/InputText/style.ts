@@ -122,7 +122,7 @@ export const StyledInputBase = styled(TextField, {
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const corners = getCorners(props);
-
+    const semanticColors = getSemanticColors(props);
     return css`
       margin-bottom: ${spaces?.l}px;
       margin-right: ${spaces?.m}px;
@@ -148,6 +148,11 @@ export const StyledInputBase = styled(TextField, {
         outline: none;
         border-radius: 4px;
         width: 100%;
+
+        &::placeholder {
+          color: ${semanticColors?.base?.textTertiary};
+          opacity: 1;
+        }
       }
 
       &.user-is-tabbing .${outlinedInputClasses.input} {

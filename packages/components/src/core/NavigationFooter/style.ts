@@ -161,7 +161,7 @@ export const StyledLinkSection = styled("div", {
     const spaces = getSpaces(props);
 
     return css`
-      gap: ${spaces?.s}px;
+      gap: ${spaces?.l}px;
 
       ${isNarrow &&
       css`
@@ -175,12 +175,14 @@ export const StyledLinkSection = styled("div", {
 export const StyledMobileLinkRow = styled.div`
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
     return `
-      gap: ${spaces?.s}px;
+      gap: ${spaces?.l}px;
     `;
   }}
 `;
@@ -214,6 +216,8 @@ export const StyledImageSection = styled("div", {
 export const StyledMobileImageRow = styled.div`
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);

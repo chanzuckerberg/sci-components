@@ -1,28 +1,24 @@
-import { memo } from "react";
+import { forwardRef, memo } from "react";
 import { FooterLinkProps } from "../../NavigationFooter.types";
-import { StyledLinkItemLink, StyledDivider } from "./style";
+import { StyledLinkItemLink } from "./style";
 
 const FooterLink = memo(
-  ({ link, showDivider, hasInvertedStyle }: FooterLinkProps) => (
-    <>
-      <StyledLinkItemLink
-        key={link.label}
-        href={link.url}
-        hasInvertedStyle={hasInvertedStyle}
-        component={link.component}
-        {...link.linkProps}
-      >
-        {link.label}
-      </StyledLinkItemLink>
-
-      {showDivider && (
-        <StyledDivider
-          orientation="vertical"
-          flexItem
+  forwardRef<HTMLAnchorElement, FooterLinkProps>(
+    ({ link, showDivider, hasInvertedStyle }, ref) => (
+      <>
+        <StyledLinkItemLink
+          ref={ref}
+          key={link.label}
+          href={link.url}
           hasInvertedStyle={hasInvertedStyle}
-        />
-      )}
-    </>
+          component={link.component}
+          showDivider={showDivider}
+          {...link.linkProps}
+        >
+          {link.label}
+        </StyledLinkItemLink>
+      </>
+    )
   )
 );
 
