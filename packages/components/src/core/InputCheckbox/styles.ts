@@ -68,7 +68,7 @@ export const StyledCheckboxCheckedIcon = styled("div")`
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
       border-radius: 2px;
-      background-color: ${semanticColors?.accent?.fillPrimary};
+      background-color: ${semanticColors?.accent?.ornament};
 
       ${StyledIcon} {
         fill: ${semanticColors?.base?.ornamentPrimaryInverse};

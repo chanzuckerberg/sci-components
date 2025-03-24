@@ -20,7 +20,7 @@ interface DropdownHeaderSecondaryNavItem extends BaseHeaderSecondaryNavItem {
   itemType: "dropdown";
   items: Pick<
     TextHeaderSecondaryNavItem,
-    "label" | "onClick" | "component" | "href"
+    "label" | "onClick" | "component" | "href" | "rel" | "target"
   >[];
 }
 
@@ -83,10 +83,14 @@ function SecondaryNavItem({
           <StyledTextItem
             sdsStyle="minimal"
             ref={buttonRef}
-            onClick={(event) => setAnchorEl(event.currentTarget)}
             hasInvertedStyle={hasInvertedStyle}
             open={open}
             isNarrow={isNarrow}
+            {...rest}
+            onClick={(event) => {
+              setAnchorEl(event.currentTarget);
+              item.onClick?.(event);
+            }}
           >
             <span>{item.label}</span>
             <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />

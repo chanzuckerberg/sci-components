@@ -68,7 +68,8 @@ export const StyledCard = styled(Card, {
 
     return css`
       display: flex;
-      background-color: ${semanticColors?.base?.backgroundPrimary};
+      background-color: transparent;
+      background-image: none;
       flex-direction: ${flexDirection};
       box-shadow: none;
       overflow: visible;
@@ -80,6 +81,7 @@ export const StyledCard = styled(Card, {
       ${boundingBox &&
       css`
         border: 1px solid ${semanticColors?.base?.borderSecondary};
+        background-color: ${semanticColors?.base?.backgroundPrimary};
       `}
 
       ${sdsType === "wide" &&

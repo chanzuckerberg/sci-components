@@ -7,6 +7,8 @@ import Button from "src/core/Button";
 import { defaultTheme } from "src/core/styles/common/defaultTheme";
 import Alert from "../index";
 import { BADGE } from "src/common/storybook/storybookBadges";
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
 
 const DismissButton = styled(MUIButton)`
   margin-left: -${defaultTheme.spacing(3)}px;
@@ -23,9 +25,27 @@ const DismissButton = styled(MUIButton)`
 const Demo = (props: Args): JSX.Element => {
   const { text } = props;
   return (
-    <Alert icon={<CheckCircleOutline />} onClose={() => {}} {...props}>
-      {text}
-    </Alert>
+    <>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        body={
+          <>
+            The <strong>Alert</strong> component is deprecated!
+            <br />
+            Please use <strong>Callout</strong> or <strong>Notification</strong>{" "}
+            instead.
+          </>
+        }
+      >
+        The <strong>Alert</strong> component is deprecated!
+      </Callout>
+      <Alert icon={<CheckCircleOutline />} onClose={() => {}} {...props}>
+        {text}
+      </Alert>
+    </>
   );
 };
 
@@ -66,6 +86,22 @@ export const SnackbarAlert = () => {
 
   return (
     <div>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        body={
+          <>
+            The <strong>Alert</strong> component is deprecated!
+            <br />
+            Please use <strong>Callout</strong> or <strong>Notification</strong>{" "}
+            instead.
+          </>
+        }
+      >
+        The <strong>Alert</strong> component is deprecated!
+      </Callout>
       <Button sdsType="primary" sdsStyle="square" onClick={handleOpen}>
         Open alert
       </Button>

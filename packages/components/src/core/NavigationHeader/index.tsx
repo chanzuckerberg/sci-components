@@ -1,19 +1,16 @@
-import { LinkProps, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import {
-  ElementType,
+import React, {
   forwardRef,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { SdsTagColorType } from "src/core/Tag";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import {
   StyledButtonSection,
   StyledDrawer,
-  StyledHeader,
+  StyledAppBar,
   StyledHeaderButton,
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
@@ -21,51 +18,22 @@ import {
   StyledNarrowIconButton,
   StyledPrimaryNavContainer,
   StyledSearch,
-  StyledShadowCoverElement,
-  StyledShadowElement,
   StyledTag,
   StyledTitleContainer,
+  StyledTitleTagWrapper,
   StyledToolbar,
   StyledWideIconButton,
 } from "./style";
-import NavigationHeaderPrimaryNav, {
-  NavigationHeaderPrimaryNavItem,
-} from "./components/NavigationHeaderPrimaryNav";
-import { InputSearchProps } from "../InputSearch";
-import NavigationHeaderSecondaryNav, {
-  NavigationHeaderSecondaryNavItem,
-} from "./components/NavigationHeaderSecondaryNav";
-import {
-  SdsProps,
-  ButtonProps,
-  SdsButtonProps,
-  SdsIconButtonProps,
-  SdsMinimalButtonProps,
-} from "../Button";
+import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
+import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
+import { ButtonProps, SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import Icon from "../Icon";
-
-export type { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
-
-export interface NavigationHeaderProps<T extends string = string> {
-  activePrimaryNavKey?: string;
-  buttons?: (SdsProps & ButtonProps)[];
-  hasInvertedStyle?: boolean;
-  logo?: ReactNode;
-  logoUrl?: string;
-  logoLinkComponent?: ElementType;
-  logoLinkProps?: LinkProps;
-  primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
-  primaryNavPosition?: "left" | "right";
-  searchProps?: Partial<InputSearchProps>;
-  secondaryNavItems?: NavigationHeaderSecondaryNavItem[];
-  setActivePrimaryNavKey?(key: string): void;
-  showSearch?: boolean;
-  tag?: string;
-  tagColor?: SdsTagColorType;
-  title: string;
-}
-
-export type IconButtonProps = SdsIconButtonProps & { children?: string };
+import {
+  IconButtonProps,
+  NavigationHeaderProps,
+} from "./NavigationHeader.types";
+import { mergeRefs } from "src/common/utils";
+import ElevationScroll from "./components/ElevationScroll";
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
@@ -73,13 +41,14 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     ref: React.Ref<HTMLDivElement>
   ) => {
     const {
-      activePrimaryNavKey,
+      activePrimaryNavKey = "",
       buttons,
       hasInvertedStyle,
       logo,
       logoUrl,
       logoLinkComponent = "a",
       logoLinkProps,
+      scrollElevation = true,
       primaryNavItems,
       primaryNavPosition = "left",
       searchProps,
@@ -89,6 +58,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       tag,
       tagColor,
       title,
+      drawerOpen: controlledDrawerOpen,
+      setDrawerOpen: onDrawerOpenChange,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
@@ -96,13 +67,26 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const theme = useTheme();
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-    useEffect(() => {
-      setIsNarrow(isMdScreen);
-    }, [isMdScreen]);
+    // Use controlled or uncontrolled drawer state
+    const [internalDrawerOpen, setInternalDrawerOpen] = useState(false);
+    const drawerOpen = controlledDrawerOpen ?? internalDrawerOpen;
+    const setDrawerOpen = (open: boolean | ((prev: boolean) => boolean)) => {
+      const newOpen = typeof open === "function" ? open(drawerOpen) : open;
+      if (onDrawerOpenChange) {
+        onDrawerOpenChange(newOpen);
+      } else {
+        setInternalDrawerOpen(newOpen);
+      }
+    };
 
-    const [drawerOpen, setDrawerOpen] = useState(true);
-    const [isNarrow, setIsNarrow] = useState(isMdScreen);
-    const [breakpoint, setBreakpoint] = useState(0);
+    const [dimensions, setDimensions] = useState({
+      breakpoint: 0,
+      isNarrow: isMdScreen,
+    });
+
+    useEffect(() => {
+      setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
+    }, [isMdScreen]);
 
     const checkScrollable = useCallback(() => {
       if (!navRef.current) return;
@@ -111,12 +95,25 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       const scrollWidth = navRef.current.scrollWidth;
       const needsScroll = scrollWidth > clientWidth;
 
-      if (needsScroll && !isNarrow) {
-        setBreakpoint((prev) => (prev > clientWidth ? prev : clientWidth));
-      }
+      setDimensions((prev) => {
+        const newBreakpoint = needsScroll
+          ? prev.breakpoint > scrollWidth
+            ? prev.breakpoint
+            : scrollWidth
+          : prev.breakpoint;
 
-      setIsNarrow(clientWidth <= breakpoint);
-    }, [breakpoint, isNarrow]);
+        const newIsNarrow = prev.isNarrow
+          ? clientWidth < newBreakpoint
+            ? true
+            : false
+          : needsScroll;
+
+        return {
+          breakpoint: newBreakpoint,
+          isNarrow: newIsNarrow,
+        };
+      });
+    }, []);
 
     useEffect(() => {
       checkScrollable();
@@ -128,7 +125,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       }
 
       return () => resizeObserver.disconnect();
-    }, [breakpoint, checkScrollable, isMdScreen, isNarrow]);
+    }, [checkScrollable]);
 
     const renderSearch = () => {
       return (
@@ -139,7 +136,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             placeholder="Search"
             sdsStyle="rounded"
             hasInvertedStyle={hasInvertedStyle}
-            isNarrow={isNarrow}
+            isNarrow={dimensions.isNarrow}
             {...searchProps}
           />
         )
@@ -150,13 +147,15 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       let logoNode = (
         <StyledTitleContainer
           hasInvertedStyle={hasInvertedStyle}
-          isNarrow={isNarrow}
+          isNarrow={dimensions.isNarrow}
         >
-          <StyledLogoWrapper>{logo}</StyledLogoWrapper>
+          {logo && <StyledLogoWrapper>{logo}</StyledLogoWrapper>}
 
-          <p>{title}</p>
+          <StyledTitleTagWrapper>
+            {title && <p>{title}</p>}
 
-          {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
+            {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
+          </StyledTitleTagWrapper>
         </StyledTitleContainer>
       );
 
@@ -166,7 +165,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             component={logoLinkComponent}
             href={logoUrl}
             {...logoLinkProps}
-            isNarrow={isNarrow}
+            isNarrow={dimensions.isNarrow}
           >
             {logoNode}
           </StyledLogoLinkWrapper>
@@ -178,7 +177,6 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
     const renderPrimaryNav = () => {
       return (
-        activePrimaryNavKey &&
         setActivePrimaryNavKey &&
         primaryNavItems &&
         primaryNavItems.length > 0 && (
@@ -187,7 +185,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             value={activePrimaryNavKey}
             onChange={setActivePrimaryNavKey}
             hasInvertedStyle={hasInvertedStyle}
-            isNarrow={isNarrow}
+            isNarrow={dimensions.isNarrow}
           />
         )
       );
@@ -200,7 +198,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           <NavigationHeaderSecondaryNav
             items={secondaryNavItems}
             hasInvertedStyle={hasInvertedStyle}
-            isNarrow={isNarrow}
+            isNarrow={dimensions.isNarrow}
           />
         )
       );
@@ -212,27 +210,47 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       return (
         <StyledButtonSection
           hasInvertedStyle={hasInvertedStyle}
-          isNarrow={isNarrow}
+          isNarrow={dimensions.isNarrow}
         >
           {buttons.map((buttonProps, idx) => renderButton(buttonProps, idx))}
         </StyledButtonSection>
       );
     };
 
-    const renderButton = (buttonProps: ButtonProps, idx: number) => {
-      const isIconButton = "icon" in buttonProps;
+    const renderButton = (
+      buttonProps: Partial<ButtonProps> | React.ReactNode,
+      idx: number
+    ) => {
       const key = `button-${idx}`;
-      const fullWidth = isNarrow ? { width: "100%" } : undefined;
+      const fullWidth = dimensions.isNarrow ? { width: "100%" } : undefined;
 
-      if (isIconButton && isNarrow && buttonProps.icon) {
-        return renderNarrowIconButton(buttonProps, key, fullWidth);
+      if (React.isValidElement(buttonProps)) {
+        return React.cloneElement(buttonProps as React.ReactElement, {
+          hasInvertedStyle,
+          key,
+          sx: {
+            ...(buttonProps.props?.sx || {}),
+            ...fullWidth,
+          },
+        });
       }
 
-      if (isIconButton && !isNarrow) {
-        return renderWideIconButton(buttonProps as IconButtonProps, key);
+      if (typeof buttonProps === "object" && buttonProps !== null) {
+        const buttonPropsObj = buttonProps as ButtonProps;
+        const isIconButton = "icon" in buttonPropsObj;
+
+        if (isIconButton && dimensions.isNarrow && buttonPropsObj.icon) {
+          return renderNarrowIconButton(buttonPropsObj, key, fullWidth);
+        }
+
+        if (isIconButton && !dimensions.isNarrow) {
+          return renderWideIconButton(buttonPropsObj as IconButtonProps, key);
+        }
+
+        return renderDefaultButton(buttonPropsObj, key, fullWidth);
       }
 
-      return renderDefaultButton(buttonProps, key, fullWidth);
+      return null;
     };
 
     const renderNarrowIconButton = (
@@ -243,11 +261,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       <StyledNarrowIconButton
         key={key}
         sx={fullWidth}
-        sdsStyle="minimal"
-        sdsType="secondary"
         isAllCaps={false}
         startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
         hasInvertedStyle={hasInvertedStyle}
+        {...buttonProps}
+        sdsStyle="minimal"
+        sdsType="secondary"
       >
         {buttonProps.children}
       </StyledNarrowIconButton>
@@ -256,17 +275,20 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const renderWideIconButton = (
       buttonProps: IconButtonProps,
       key: string
-    ) => (
-      <StyledWideIconButton
-        key={key}
-        sdsIconProps={{ sdsSize: "l" }}
-        sdsStyle="icon"
-        sdsType="secondary"
-        icon={buttonProps.icon}
-        aria-label={String(buttonProps.children)}
-        hasInvertedStyle={hasInvertedStyle}
-      />
-    );
+    ) => {
+      return (
+        <StyledWideIconButton
+          key={key}
+          sdsIconProps={{ sdsSize: "l" }}
+          aria-label={String(buttonProps.children)}
+          hasInvertedStyle={hasInvertedStyle}
+          {...buttonProps}
+          sdsStyle="icon"
+          sdsType="secondary"
+          icon={buttonProps.icon}
+        />
+      );
+    };
 
     const renderDefaultButton = (
       buttonProps: ButtonProps,
@@ -290,15 +312,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       const buttonsNode = renderButtonsNode();
 
       return (
-        <StyledToolbar hasInvertedStyle={hasInvertedStyle} isNarrow={isNarrow}>
+        <StyledToolbar
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={dimensions.isNarrow}
+        >
           {logoNode}
 
-          {!isNarrow && (
+          {!dimensions.isNarrow && (
             <>
               <StyledPrimaryNavContainer
                 primaryNavPosition={primaryNavPosition}
                 showSearch={showSearch}
-                isNarrow={isNarrow}
+                isNarrow={dimensions.isNarrow}
               >
                 {primaryNavPosition === "left" ? (
                   <>
@@ -318,12 +343,13 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             </>
           )}
 
-          {isNarrow && (
+          {dimensions.isNarrow && (
             <StyledNarrowButton
               sdsType="secondary"
               sdsStyle="icon"
               icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
               onClick={() => setDrawerOpen((prev) => !prev)}
+              hasInvertedStyle={hasInvertedStyle}
             />
           )}
         </StyledToolbar>
@@ -337,30 +363,44 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const buttonsNode = renderButtonsNode();
 
     return (
-      <div ref={ref}>
-        <StyledHeader
-          elevation={0}
-          position="static"
-          hasInvertedStyle={hasInvertedStyle}
-          ref={navRef}
-          {...rest}
-        >
-          {headerContent}
-        </StyledHeader>
+      <>
+        <ElevationScroll {...props} shouldElevate={scrollElevation}>
+          <StyledAppBar
+            elevation={0}
+            hasInvertedStyle={hasInvertedStyle}
+            ref={mergeRefs([ref, navRef])}
+            aria-label="Main navigation"
+            tabIndex={0}
+            position="sticky"
+            {...rest}
+          >
+            {headerContent}
+          </StyledAppBar>
+        </ElevationScroll>
 
-        {isNarrow && drawerOpen && (
+        {dimensions.isNarrow && drawerOpen && (
           <StyledDrawer
             anchor="right"
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             hasInvertedStyle={hasInvertedStyle}
-            ref={ref}
-            {...rest}
+            role="dialog"
+            aria-label="Navigation menu"
           >
             <div>
-              {headerContent}
-              <StyledShadowElement />
-              <StyledShadowCoverElement hasInvertedStyle={hasInvertedStyle} />
+              <ElevationScroll {...props} shouldElevate={scrollElevation}>
+                <StyledAppBar
+                  elevation={10}
+                  hasInvertedStyle={hasInvertedStyle}
+                  ref={mergeRefs([ref, navRef])}
+                  aria-label="Main navigation"
+                  tabIndex={0}
+                  {...rest}
+                  position="sticky"
+                >
+                  {headerContent}
+                </StyledAppBar>
+              </ElevationScroll>
               {search}
               {primaryNav}
               {secondaryNav}
@@ -369,9 +409,24 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             {buttonsNode}
           </StyledDrawer>
         )}
-      </div>
+      </>
     );
   }
 );
+
+export type {
+  NavigationHeaderProps,
+  IconButtonProps,
+} from "./NavigationHeader.types";
+
+export type {
+  NavigationHeaderPrimaryNavItem,
+  NavigationHeaderPrimaryNavProps,
+} from "./components/NavigationHeaderPrimaryNav";
+
+export type {
+  NavigationHeaderSecondaryNavItem,
+  NavigationHeaderSecondaryNavProps,
+} from "./components/NavigationHeaderSecondaryNav";
 
 export default NavigationHeader;

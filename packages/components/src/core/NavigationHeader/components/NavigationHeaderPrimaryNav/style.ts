@@ -55,6 +55,8 @@ export const PrimaryNavItem = styled(Button, {
   display: flex;
   align-items: start;
   background: none;
+  padding: 0;
+  min-width: fit-content;
 
   ${(props: PrimaryNavItemProps) => {
     const { hasInvertedStyle, isNarrow } = props;
@@ -85,7 +87,6 @@ const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
   const { hasInvertedStyle, active } = props;
 
   const colors = getSemanticColors(props);
-  const spaces = getSpaces(props);
 
   const activeBorderColor = hasInvertedStyle
     ? colors?.base?.borderOnFill
@@ -98,7 +99,6 @@ const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
   return css`
     border-bottom: solid 2px transparent;
     border-bottom-color: ${active ? activeBorderColor : "transparent"};
-    padding-bottom: ${spaces?.xxxs}px;
 
     &:hover {
       border-bottom-color: ${active ? activeBorderColor : inactiveBorderColor};

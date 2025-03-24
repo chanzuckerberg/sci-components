@@ -17,6 +17,8 @@ import {
 } from "../../styles";
 import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
 import { BADGE } from "../../../common/storybook/storybookBadges";
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
 
 const StyledPopper = styled(Popper)`
   ${(props: CommonThemeProps) => {
@@ -120,6 +122,22 @@ const MenuSelect = (props: Args): JSX.Element => {
 
   return (
     <>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        body={
+          <>
+            The <strong>MenuSelect</strong> component is deprecated!
+            <br />
+            Please use <strong>Dropdown</strong> or{" "}
+            <strong>Autocomplete</strong> component instead.
+          </>
+        }
+      >
+        The <strong>Alert</strong> component is deprecated!
+      </Callout>
       <div
         style={{
           width: 221,

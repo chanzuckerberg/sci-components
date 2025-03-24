@@ -149,7 +149,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     flex-direction: column;
     padding: ${spaces?.xs}px ${spaces?.s}px;
     background-color: transparent;
-
+    min-width: fit-content;
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
       .styled-label {
@@ -201,7 +201,7 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    min-width: 90px;
+    min-width: fit-content;
     background-color: transparent;
   `;
 };
@@ -211,7 +211,7 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.l}px;
-    min-width: 90px;
+    min-width: fit-content;
     background-color: transparent;
   `;
 };
