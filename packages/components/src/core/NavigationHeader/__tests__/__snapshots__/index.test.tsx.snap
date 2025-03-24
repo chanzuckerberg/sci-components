@@ -3,7 +3,7 @@
 exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1748ygs-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1kawunn-MuiPaper-root-MuiAppBar-root"
   tabindex="0"
 >
   <div
@@ -260,7 +260,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
 <DocumentFragment>
   <header
     aria-label="Main navigation"
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1748ygs-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1kawunn-MuiPaper-root-MuiAppBar-root"
     tabindex="0"
   >
     <div

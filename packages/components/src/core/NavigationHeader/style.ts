@@ -39,7 +39,6 @@ export const StyledAppBar = styled(AppBar, {
     return `
       background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
       background-image: none;
-      box-shadow: none;
       max-width: 100%;
       max-height: 56px;
       overflow-x: auto;

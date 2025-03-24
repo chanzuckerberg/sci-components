@@ -36,7 +36,7 @@ function ElevationScroll(elevationProps: ElevationScrollProps) {
    */
   return children
     ? React.cloneElement(children, {
-        elevation: trigger && shouldElevate ? 10 : 0,
+        elevation: trigger && shouldElevate ? 14 : 0,
         sx:
           trigger && shouldElevate
             ? {
