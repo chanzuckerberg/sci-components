@@ -6,6 +6,8 @@ import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { SdsMinimalButtonProps } from "src/core/Button";
+import { SDSTheme } from "src/core/styles";
+import { useTheme } from "@mui/material";
 
 interface BaseHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -45,6 +47,7 @@ function SecondaryNavItem({
   isNarrow?: boolean;
 }) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const theme: SDSTheme = useTheme();
 
   const open = Boolean(anchorEl);
   function onClose() {
@@ -96,7 +99,26 @@ function SecondaryNavItem({
             <Icon sdsIcon={open ? "ChevronUp" : "ChevronDown"} sdsSize="xs" />
           </StyledTextItem>
 
-          <Menu anchorEl={anchorEl} open={open} onClose={onClose}>
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={onClose}
+            slotProps={{
+              paper: {
+                style: {
+                  marginTop: theme?.app?.spacing?.s,
+                },
+              },
+            }}
+            anchorOrigin={{
+              horizontal: "left",
+              vertical: "bottom",
+            }}
+            transformOrigin={{
+              horizontal: "left",
+              vertical: "top",
+            }}
+          >
             {item.items.map((subItem) => {
               const { label, onClick, ...subItemRest } = subItem;
               return (
@@ -106,6 +128,7 @@ function SecondaryNavItem({
                     onClick?.();
                     onClose();
                   }}
+                  sx={{ minWidth: menuWidth }}
                   {...subItemRest}
                 >
                   {label}
@@ -134,7 +157,6 @@ function SecondaryNavItem({
                     onClick?.();
                     onClose();
                   }}
-                  sx={{ width: menuWidth }}
                   {...accordionSubItemRest}
                 >
                   {label}

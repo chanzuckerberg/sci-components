@@ -1,11 +1,22 @@
 import styled from "@emotion/styled";
 import Button from "src/core/Button";
-import { fontHeader, getSemanticColors, getSpaces } from "src/core/styles";
+import {
+  fontBodyS,
+  fontHeader,
+  getSemanticColors,
+  getSpaces,
+  fontBodySemiboldM,
+  fontBody,
+} from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
+import Accordion from "src/core/Accordion";
+import MenuItem from "src/core/MenuItem";
+import Tag from "src/core/Tag";
 
 interface PrimaryNavItemProps extends ExtraHeaderProps {
   active?: boolean;
+  itemType?: "dropdown" | "text";
 }
 
 const doNotForwardProps = ["active", "hasInvertedStyle", "isNarrow"];
@@ -53,7 +64,7 @@ export const PrimaryNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   display: flex;
-  align-items: start;
+  align-items: center;
   background: none;
   padding: 0;
   min-width: fit-content;
@@ -62,10 +73,18 @@ export const PrimaryNavItem = styled(Button, {
     const { hasInvertedStyle, isNarrow } = props;
 
     const spaces = getSpaces(props);
-    const colors = getSemanticColors(props);
+    const semanticColors = getSemanticColors(props);
+
+    const ChevronDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.ornamentSecondary;
 
     return css`
       gap: ${spaces?.xs}px;
+
+      svg {
+        color: ${ChevronDefaultColor};
+      }
 
       &:hover {
         background: none;
@@ -73,8 +92,14 @@ export const PrimaryNavItem = styled(Button, {
 
         & > span {
           color: ${hasInvertedStyle
-            ? colors?.base.textPrimaryInverse
-            : colors?.base.textPrimary};
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
+        }
+
+        svg {
+          color: ${hasInvertedStyle
+            ? semanticColors?.base?.ornamentPrimaryInverse
+            : semanticColors?.base.ornamentSecondaryHover} !important;
         }
       }
 
@@ -84,27 +109,54 @@ export const PrimaryNavItem = styled(Button, {
 `;
 
 const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
-  const { hasInvertedStyle, active } = props;
+  const { hasInvertedStyle, active, itemType = "text" } = props;
 
-  const colors = getSemanticColors(props);
+  const semanticColors = getSemanticColors(props);
 
   const activeBorderColor = hasInvertedStyle
-    ? colors?.base?.borderOnFill
-    : colors?.accent?.border;
+    ? semanticColors?.base?.borderOnFill
+    : semanticColors?.accent?.border;
 
   const inactiveBorderColor = hasInvertedStyle
-    ? colors?.base.borderOnFill
-    : colors?.base.borderPrimary;
+    ? semanticColors?.base.borderOnFill
+    : semanticColors?.base.borderPrimary;
+
+  const ChevronDefaultColor = hasInvertedStyle
+    ? semanticColors?.base.textSecondaryInverse
+    : semanticColors?.base.ornamentSecondary;
+
+  const ChevronOpenColor = hasInvertedStyle
+    ? semanticColors?.base?.ornamentPrimaryInverse
+    : semanticColors?.accent.ornamentOpen;
 
   return css`
     border-bottom: solid 2px transparent;
-    border-bottom-color: ${active ? activeBorderColor : "transparent"};
+    border-bottom-color: ${active && itemType === "text"
+      ? activeBorderColor
+      : "transparent"};
+
+    svg {
+      color: ${active ? ChevronOpenColor : ChevronDefaultColor};
+    }
 
     &:hover {
       border-bottom-color: ${active ? activeBorderColor : inactiveBorderColor};
     }
   `;
 };
+
+export const StyledTag = styled(Tag)`
+  margin: 0;
+
+  .MuiChip-label {
+    ${fontBody("xxxs", "regular")}
+    ${fontBody("xxxs", "regular", /* isNarrow */ true)}
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
 
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -113,6 +165,8 @@ export const StyledLabel = styled("span", {
 
   ${(props: PrimaryNavItemProps) => {
     const { hasInvertedStyle, active, isNarrow } = props;
+
+    const spaces = getSpaces(props);
     const colors = getSemanticColors(props);
 
     const activeColor = hasInvertedStyle
@@ -124,9 +178,139 @@ export const StyledLabel = styled("span", {
       : colors?.base.textSecondary;
 
     return css`
+      display: flex;
+      align-items: center;
+      gap: ${spaces?.xs}px;
       color: ${active ? activeColor : inactiveColor};
+
+      ${StyledTag} {
+        margin-top: -${spaces?.xxxs}px;
+      }
 
       ${!isNarrow && WideStyledLabel(props)}
     `;
   }}
+`;
+
+export const StyledAccordion = styled(Accordion, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  width: 100%;
+  min-width: unset;
+
+  .MuiAccordionSummary-content {
+    ${fontBodySemiboldM}
+  }
+
+  .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {
+    ${fontBodyS}
+  }
+
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle, isNarrow } = props;
+
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+
+    const textDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.textSecondary;
+
+    const textOpenColor = hasInvertedStyle
+      ? semanticColors?.base.textPrimaryInverse
+      : semanticColors?.base.textPrimary;
+
+    const ChevronDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.ornamentSecondary;
+
+    const ChevronOpenColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentPrimaryInverse
+      : semanticColors?.accent.ornamentOpen;
+
+    const isNarrowStyles = () => css`
+      background: ${hasInvertedStyle
+        ? semanticColors?.base.backgroundSecondaryInverse
+        : semanticColors?.base.backgroundSecondary};
+    `;
+
+    return css`
+      .MuiButtonBase-root {
+        padding: ${spaces?.m}px ${spaces?.xl}px;
+        color: ${textDefaultColor};
+
+        .MuiAccordionSummary-expandIconWrapper {
+          margin-top: ${spaces?.s}px !important;
+        }
+
+        svg {
+          color: ${ChevronDefaultColor};
+        }
+
+        &[aria-expanded="true"] {
+          color: ${textOpenColor};
+
+          svg {
+            color: ${ChevronOpenColor} !important;
+          }
+        }
+
+        &:hover {
+          padding: ${spaces?.m}px ${spaces?.xl}px ${spaces?.m}px
+            ${(spaces?.l ?? 0) + (spaces?.xxxs ?? 0)}px;
+          width: 100%;
+          box-shadow: none;
+          background: ${hasInvertedStyle
+            ? semanticColors?.base.backgroundSecondaryInverse
+            : semanticColors?.base.backgroundSecondary};
+          border-left: ${spaces?.xs}px solid
+            ${semanticColors?.base.borderPrimary};
+          color: ${hasInvertedStyle
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
+
+          svg {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base?.ornamentPrimaryInverse
+              : semanticColors?.base.ornamentSecondaryHover} !important;
+          }
+
+          ${isNarrow && isNarrowStyles()}
+        }
+      }
+
+      .MuiCollapse-root .MuiAccordionDetails-root {
+        padding: 0;
+
+        .MuiButtonBase-root {
+          padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
+
+          .primary-text {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base.textSecondaryInverse
+              : semanticColors?.base.textSecondary} !important;
+          }
+
+          &:hover {
+            padding: ${spaces?.m}px 0 ${spaces?.m}px
+              calc(34px - ${spaces?.xs}px) !important;
+
+            .primary-text {
+              color: ${hasInvertedStyle
+                ? semanticColors?.base.textPrimaryInverse
+                : semanticColors?.base.textPrimary} !important;
+            }
+          }
+        }
+      }
+    `;
+  }}
+`;
+
+export const StyledSubItem = styled(MenuItem)`
+  &.MuiButtonBase-root.MuiMenuItem-root:hover {
+    span.primary-text {
+      font-weight: 600;
+    }
+  }
 `;
