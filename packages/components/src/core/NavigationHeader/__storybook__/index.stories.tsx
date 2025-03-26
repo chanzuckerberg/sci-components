@@ -207,7 +207,7 @@ export const Default = {
           {
             component: "a",
             href: "https://www.chanzuckerberg.com",
-            label: "Go to home page",
+            label: "Go to CZI home page",
           },
           {
             label: "Show an Alert!",
@@ -226,7 +226,7 @@ export const Default = {
           {
             component: "a",
             href: "https://www.chanzuckerberg.com",
-            label: "Go to home page",
+            label: "Go to CZI home page",
           },
           {
             label: "Show an Alert!",
