@@ -70,7 +70,7 @@ export default function NavigationHeaderSecondaryNav({
       {items.map((item) => {
         const { itemType, label, ...rest } = item;
 
-        if ("itemType" in item && itemType === "dropdown" && !isNarrow) {
+        if (itemType === "dropdown" && !isNarrow) {
           return (
             <Fragment key={`${label}-dropdown`}>
               <StyledTextItem
@@ -133,7 +133,7 @@ export default function NavigationHeaderSecondaryNav({
           );
         }
 
-        if ("itemType" in item && itemType === "dropdown" && isNarrow) {
+        if (itemType === "dropdown" && isNarrow) {
           return (
             <StyledAccordion
               key={`${label}-dropdown`}

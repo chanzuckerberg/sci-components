@@ -150,7 +150,6 @@ export const StyledTag = styled(Tag)`
 
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
-    ${fontBody("xxxs", "regular", /* isNarrow */ true)}
   }
 
   &:hover {

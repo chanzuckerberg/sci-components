@@ -23,6 +23,7 @@ interface BaseNavigationHeaderPrimaryNavItem<T extends string>
 
 export interface TextNavigationHeaderPrimaryNavItem<T extends string>
   extends BaseNavigationHeaderPrimaryNavItem<T> {
+  itemType: "text";
   tag?: string;
   tagColor?: SdsTagColorType;
   onClick?: (e: React.SyntheticEvent) => void;
@@ -87,7 +88,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         const { key, label, tag, tagColor, ...rest } = item;
         const isActive = key === value;
 
-        if ("itemType" in item && item.itemType === "dropdown" && !isNarrow) {
+        if (item.itemType === "dropdown" && !isNarrow) {
           const dropdownItem =
             item as DropdownNavigationHeaderPrimaryNavItem<T>;
           return (
@@ -160,7 +161,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           );
         }
 
-        if ("itemType" in item && item.itemType === "dropdown" && isNarrow) {
+        if (item.itemType === "dropdown" && isNarrow) {
           const dropdownItem =
             item as DropdownNavigationHeaderPrimaryNavItem<T>;
           return (
