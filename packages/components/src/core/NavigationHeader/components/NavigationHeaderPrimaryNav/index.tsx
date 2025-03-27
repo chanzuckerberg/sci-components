@@ -93,9 +93,10 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           return (
             <Fragment key={key}>
               <PrimaryNavItem
+                {...rest}
                 itemType={item.itemType}
                 ref={buttonRef}
-                sdsStyle="square"
+                sdsStyle="minimal"
                 active={open}
                 onClick={(e) => {
                   setAnchorEl(e.currentTarget);
@@ -200,13 +201,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           <PrimaryNavItem
             key={key}
             {...rest}
-            sdsStyle="square"
+            sdsStyle="minimal"
             active={isActive}
             onClick={(e) => {
               onChange(key);
-              if ("onClick" in item) {
-                (item as TextNavigationHeaderPrimaryNavItem<T>).onClick?.(e);
-              }
+              (item as TextNavigationHeaderPrimaryNavItem<T>).onClick?.(e);
             }}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}

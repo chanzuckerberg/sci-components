@@ -9,7 +9,7 @@ import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
 
-interface TextHeaderSecondaryNavItem extends SdsMinimalButtonProps {
+interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
   itemType: "text";
 }
@@ -23,7 +23,8 @@ interface DropdownItem {
   target?: string;
 }
 
-interface DropdownHeaderSecondaryNavItem extends SdsMinimalButtonProps {
+interface DropdownHeaderSecondaryNavItem
+  extends Partial<SdsMinimalButtonProps> {
   label: string;
   itemType: "dropdown";
   items: DropdownItem[];
@@ -73,11 +74,12 @@ export default function NavigationHeaderSecondaryNav({
           return (
             <Fragment key={`${label}-dropdown`}>
               <StyledTextItem
+                {...rest}
                 ref={buttonRef}
                 hasInvertedStyle={hasInvertedStyle}
                 open={open}
                 isNarrow={isNarrow}
-                {...rest}
+                sdsStyle="minimal"
                 onClick={(event) => {
                   setAnchorEl(event.currentTarget);
                   item.onClick?.(event);
@@ -169,11 +171,12 @@ export default function NavigationHeaderSecondaryNav({
         return (
           <StyledTextItem
             key={`${label}-${itemType}`}
+            {...rest}
             onClick={item.onClick}
             hasInvertedStyle={hasInvertedStyle}
             open={open}
             isNarrow={isNarrow}
-            {...rest}
+            sdsStyle="minimal"
           >
             {item.label}
           </StyledTextItem>
