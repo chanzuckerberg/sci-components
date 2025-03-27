@@ -26,6 +26,7 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     padding-left: ${spaces?.xl}px;
     border-radius: 0;
     width: 100%;
+    min-height: 44px;
 
     &:hover {
       box-shadow: none;
@@ -43,7 +44,6 @@ export const StyledTextItem = styled(Button, {
 
   background: none;
   justify-content: flex-start;
-  min-height: 44px;
   width: fit-content;
   min-width: unset;
   padding: 0;
@@ -172,15 +172,23 @@ export const StyledAccordion = styled(Accordion, {
       .MuiCollapse-root .MuiAccordionDetails-root {
         padding: 0;
 
+        .primary-text {
+          color: ${hasInvertedStyle
+            ? semanticColors?.base.textSecondaryInverse
+            : semanticColors?.base.textSecondary} !important;
+
+          &:hover {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base.textPrimaryInverse
+              : semanticColors?.base.textPrimary} !important;
+          }
+        }
+
         .MuiButtonBase-root {
           padding: ${spaces?.m}px 0 ${spaces?.m}px 34px !important;
 
-          .primary-text {
-            color: ${hasInvertedStyle
-              ? semanticColors?.base.textSecondaryInverse
-              : semanticColors?.base.textSecondary} !important;
-
-            &:hover {
+          &:hover {
+            .primary-text {
               color: ${hasInvertedStyle
                 ? semanticColors?.base.textPrimaryInverse
                 : semanticColors?.base.textPrimary} !important;

@@ -201,6 +201,22 @@ export const Default = {
         tag: "Beta",
         tagColor: "beta",
       },
+      {
+        itemType: "dropdown",
+        items: [
+          {
+            component: "a",
+            href: "https://www.chanzuckerberg.com",
+            label: "Go to CZI home page",
+          },
+          {
+            label: "Show an Alert!",
+            onClick: () => alert("You clicked on a dropdown item!"),
+          },
+        ],
+        key: "3",
+        label: "Primary",
+      },
     ],
     scrollElevation: true,
     secondaryNavItems: [
@@ -208,10 +224,15 @@ export const Default = {
         itemType: "dropdown",
         items: [
           {
-            label: "Item 1",
-            onClick: () => alert("clicked on item 1"),
+            component: "a",
+            href: "https://www.chanzuckerberg.com",
+            label: "Go to CZI home page",
+            target: "_blank",
           },
-          { label: "Item 2", onClick: () => alert("clicked on item 2") },
+          {
+            label: "Show an Alert!",
+            onClick: () => alert("You clicked on a dropdown item!"),
+          },
         ],
         label: "Secondary",
       },

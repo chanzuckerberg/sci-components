@@ -293,7 +293,7 @@ export const StyledTitleTagWrapper = styled("div", {
 `;
 
 export const StyledTag = styled(Tag)`
-  margin: 1px 0 0 0;
+  margin: 0;
 
   .MuiChip-label {
     ${fontBody("xxxs", "regular")}
