@@ -31,10 +31,12 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       logoUrl="https://chanzuckerberg.com"
       primaryNavItems={[
         {
+          itemType: "text",
           key: "1",
           label: "Primary",
         },
         {
+          itemType: "text",
           key: "2",
           label: "Primary",
           tag: "Beta",
