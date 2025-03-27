@@ -227,6 +227,7 @@ export const Default = {
             component: "a",
             href: "https://www.chanzuckerberg.com",
             label: "Go to CZI home page",
+            target: "_blank",
           },
           {
             label: "Show an Alert!",

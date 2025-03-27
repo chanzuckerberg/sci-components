@@ -142,7 +142,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                   const { label: subLabel, onClick, ...subItemRest } = subItem;
                   return (
                     <MenuItem
-                      key={subLabel as string}
+                      key={`menu-item-${subLabel}`}
                       onClick={() => {
                         onClick?.();
                         onClose();
