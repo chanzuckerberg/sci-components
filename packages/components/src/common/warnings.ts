@@ -2,19 +2,22 @@ export enum SDSWarningTypes {
   ButtonMinimalIsAllCaps = "buttonMinimalIsAllCaps",
   ButtonMissingSDSProps = "buttonMissingProps",
   ButtonIconMissingIconProp = "buttonIconMissingIconProp",
+  ButtonDropdownMinimal = "buttonDropdownMinimal",
   ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
   TooltipSubtitle = "tooltipSubtitle",
   TooltipWidth = "tooltipWidth",
   TooltipInvertStyle = "tooltipInvertStyle",
+  ContentCardActionsOnlyButtons = "contentCardActionsOnlyButtons",
+  ClickableContentCardNumberOfButtons = "clickableContentCardNumberOfButtons",
 }
 
 export const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonMinimalIsAllCaps]: {
     hasWarned: false,
     message:
-      "Warning: isAllCaps is only applied to buttons with sdsStyle='minimal'.",
+      "Warning: isAllCaps can not be applied to buttons with sdsStyle='icon'.",
   },
   [SDSWarningTypes.ButtonMissingSDSProps]: {
     hasWarned: false,
@@ -25,6 +28,10 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Buttons with an SDS type of icon require an icon prop to be provided.",
+  },
+  [SDSWarningTypes.ButtonDropdownMinimal]: {
+    hasWarned: false,
+    message: "Warning: Button Dropdowns can not be of type minimal!",
   },
   [SDSWarningTypes.ButtonToggleMissingIconProp]: {
     hasWarned: false,
@@ -52,6 +59,16 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use hasInvertedStyle instead!",
+  },
+  [SDSWarningTypes.ContentCardActionsOnlyButtons]: {
+    hasWarned: false,
+    message:
+      "Warning: Only SDS buttons could be used within ContentCard Actions component slot!",
+  },
+  [SDSWarningTypes.ClickableContentCardNumberOfButtons]: {
+    hasWarned: false,
+    message:
+      "Warning: Clickable Content Cards can only have one or no buttons!",
   },
 };
 

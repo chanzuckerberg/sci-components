@@ -19,8 +19,10 @@ export const Table = (props: Args): JSX.Element => {
         <CellHeader horizontalAlign="center" hideSortIcon>
           Category
         </CellHeader>
-        <CellHeader active>Active Header</CellHeader>
-        <CellHeader>
+        <CellHeader active hover>
+          Active Header
+        </CellHeader>
+        <CellHeader hover>
           A very long table header title to test sort icon positioning
         </CellHeader>
         <CellHeader hideSortIcon>Component</CellHeader>

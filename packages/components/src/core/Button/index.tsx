@@ -1,5 +1,5 @@
 import { ButtonProps as RawButtonProps } from "@mui/material";
-import React, { ForwardedRef } from "react";
+import React, { ForwardedRef, HTMLAttributeAnchorTarget } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -10,32 +10,49 @@ import { IconNameToSizes, IconProps } from "../Icon";
 import { filterProps } from "src/common/utils";
 
 type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
+
+type ButtonTypeMap = {
+  icon: "primary" | "secondary" | "tertiary";
+  minimal: "primary" | "secondary";
+  rounded: "primary" | "secondary" | "destructive";
+  square: "primary" | "secondary" | "destructive";
+};
+
 type ButtonSize = "small" | "medium" | "large";
 
-type SdsProps =
-  | {
-      sdsStyle?: "icon";
-      sdsType?: "primary" | "secondary" | "tertiary";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-      sdsSize?: ButtonSize;
-      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-    }
-  | {
-      sdsStyle?: "minimal";
-      sdsType?: "primary" | "secondary";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-    }
-  | {
-      sdsStyle?: "rounded" | "square";
-      sdsType?: "primary" | "secondary" | "destructive";
-      isAllCaps?: boolean;
-      isRounded?: boolean;
-    };
+interface BaseButtonProps extends RawButtonProps {
+  children?: React.ReactNode;
+  isAllCaps?: boolean;
+  target?: HTMLAttributeAnchorTarget;
+}
 
-export type ButtonProps = RawButtonProps & SdsProps;
+export interface SdsIconButtonProps extends BaseButtonProps {
+  sdsStyle: "icon";
+  sdsType?: ButtonTypeMap["icon"];
+  sdsSize?: ButtonSize;
+  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+}
+
+export interface SdsMinimalButtonProps extends BaseButtonProps {
+  sdsStyle: "minimal";
+  sdsType?: ButtonTypeMap["minimal"];
+  children: React.ReactNode;
+}
+
+export interface SdsButtonProps extends BaseButtonProps {
+  sdsStyle: "rounded" | "square";
+  isRounded?: boolean;
+  sdsType?: ButtonTypeMap["rounded" | "square"];
+  children: React.ReactNode;
+}
+
+export type SdsProps =
+  | SdsIconButtonProps
+  | SdsMinimalButtonProps
+  | SdsButtonProps;
+
+export type ButtonProps = SdsProps;
 
 /**
  * (masoudmanson): The MUI variant prop is determined by the sdsType prop.
@@ -55,13 +72,13 @@ const Button = React.forwardRef(
     props: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { sdsStyle, sdsType } = props;
+    const { sdsStyle = "square", sdsType } = props;
 
     if (!sdsStyle || !sdsType) {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMissingSDSProps);
     }
 
-    if (typeof props?.isAllCaps === "boolean" && sdsStyle !== "minimal") {
+    if (sdsStyle === "icon" && typeof props?.isAllCaps === "boolean") {
       showWarningIfFirstOccurence(SDSWarningTypes.ButtonMinimalIsAllCaps);
     }
 
@@ -77,8 +94,9 @@ const Button = React.forwardRef(
     const propsWithDefault: PropsWithDefaultsType = { ...props, isAllCaps };
 
     switch (true) {
-      case sdsStyle === "icon":
-        if (props?.icon !== undefined) {
+      case sdsStyle === "icon": {
+        const iconProps = props as SdsIconButtonProps;
+        if (iconProps?.icon !== undefined) {
           // (masoudmanson): We need to remove the props that are not supported by
           // the ButtonIcon component.
           const excludedProps: (keyof PropsWithDefaultsType)[] = [
@@ -92,7 +110,7 @@ const Button = React.forwardRef(
 
           return (
             <ButtonIcon
-              icon={props?.icon}
+              icon={iconProps?.icon}
               {...finalProps}
               sdsType={sdsType as Exclude<ButtonType, "destructive">}
               ref={ref}
@@ -104,6 +122,7 @@ const Button = React.forwardRef(
           );
           return null;
         }
+      }
 
       case sdsStyle === "minimal":
         return (
@@ -112,6 +131,7 @@ const Button = React.forwardRef(
             variant="text"
             {...propsWithDefault}
             ref={ref}
+            data-style={sdsStyle}
           />
         );
 

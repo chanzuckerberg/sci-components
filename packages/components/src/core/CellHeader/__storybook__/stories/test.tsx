@@ -1,6 +1,7 @@
+import { Args } from "@storybook/types";
 import RawCellHeader from "src/core/CellHeader";
 
-export const TestDemo = (): JSX.Element => (
+export const TestDemo = (props: Args): JSX.Element => (
   <table>
     <tbody>
       <tr>
@@ -10,6 +11,8 @@ export const TestDemo = (): JSX.Element => (
           shouldShowTooltipOnHover
           active
           tooltipText="testTooltipTitle"
+          hover
+          {...props}
         >
           Header
         </RawCellHeader>

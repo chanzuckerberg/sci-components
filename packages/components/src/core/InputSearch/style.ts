@@ -27,7 +27,13 @@ export interface InputSearchExtraProps extends CommonThemeProps {
   value?: string;
 }
 
-const sdsPropNames = ["sdsStyle", "intent", "handleSubmit"];
+const doNotForwardProps = [
+  "sdsStyle",
+  "intent",
+  "handleSubmit",
+  "customTheme",
+  "hasInvertedStyle",
+];
 
 const rounded = (props: InputSearchExtraProps): SerializedStyles => {
   const corners = getCorners(props);
@@ -39,7 +45,7 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
 
       .${outlinedInputClasses.notchedOutline} {
         border-radius: ${corners?.l}px;
-        border: 1px solid ${semanticColors?.base?.border};
+        border: 1px solid ${semanticColors?.base?.borderPrimary};
       }
     }
   `;
@@ -83,7 +89,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
   return css`
     .${outlinedInputClasses.disabled} {
       .${outlinedInputClasses.notchedOutline} {
-        border: 1px solid ${semanticColors?.base?.borderDisabled} !important;
+        border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled} !important;
       }
 
       .${inputAdornmentClasses.root} svg {
@@ -92,7 +98,7 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
 
       &:hover {
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.borderDisabled};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled};
         }
 
         .${inputAdornmentClasses.root} svg {
@@ -129,7 +135,7 @@ export const StyledLabel = styled("label")`
 
 export const StyledSearchBase = styled(TextField, {
   shouldForwardProp: (prop) => {
-    return !sdsPropNames.includes(prop.toString());
+    return !doNotForwardProps.includes(prop.toString());
   },
 })`
   ${(props: InputSearchExtraProps) => {
@@ -166,6 +172,11 @@ export const StyledSearchBase = styled(TextField, {
 
         .${outlinedInputClasses.input} {
           padding-right: ${spaces?.l}px;
+
+          &::placeholder {
+            color: ${semanticColors?.base?.textTertiary};
+            opacity: 1;
+          }
         }
 
         .MuiInputAdornment-positionEnd {
@@ -174,7 +185,7 @@ export const StyledSearchBase = styled(TextField, {
         }
 
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.border};
+          border: 1px solid ${semanticColors?.base?.borderPrimary};
         }
 
         &:hover .input-search-clear-icon,
@@ -211,7 +222,7 @@ export const StyledSearchBase = styled(TextField, {
           }
         }
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.borderHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};
         }
       }
 
@@ -231,7 +242,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       &.user-is-tabbing .${outlinedInputClasses.root}:focus-within {
-        outline: 2px solid ${semanticColors?.base?.borderHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
         outline-offset: 1px;
       }
 

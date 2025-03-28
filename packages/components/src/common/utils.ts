@@ -22,3 +22,17 @@ export function filterProps<T extends Props, K extends keyof T>(
 
   return result;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const mergeRefs = (refs: any[]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (element: any) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(element);
+      } else if (ref != null) {
+        ref.current = element;
+      }
+    });
+  };
+};
