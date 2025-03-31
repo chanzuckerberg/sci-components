@@ -740,91 +740,95 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
 // because the border colors are different for each theme.
 const BorderThickness = {
   default: 1,
-  thick: 2,
   extraThick: 4,
+  thick: 2,
 } as const;
 
 export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
   const createSolidBorder = (
-      color: keyof Colors,
-      level: keyof Colors[keyof Colors],
-      thickness: keyof typeof BorderThickness
+    color: keyof Colors,
+    level: keyof Colors[keyof Colors],
+    thickness: keyof typeof BorderThickness
   ) => `${BorderThickness[thickness]}px solid ${colors[color][level]}`;
 
   const createDashedBorder = () => `1px dashed`;
 
   return {
-      accent: {
-          default: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
-          focused: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
-          hover: createSolidBorder('blue', isDarkMode ? 700 : 600, 'default'),
-          open: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
-          pressed: createSolidBorder('blue', isDarkMode ? 800 : 700, 'default'),
-          selected: createSolidBorder('blue', isDarkMode ? 600 : 500, 'default'),
-      },
-      base: {
-          default: createSolidBorder('gray', 500, 'default'),
-          disabled: createSolidBorder('gray', 300, 'default'),
-          divider: createSolidBorder('gray', 200, 'default'),
-          dividerInverse: createSolidBorder('gray', 600, 'default'),
-          hover: createSolidBorder('gray', 900, 'default'),
-          inverse: createSolidBorder('gray', 50, 'default'),
-          pressed: createSolidBorder('gray', 900, 'default'),
-          table: createSolidBorder('gray', 300, 'default'),
-      },
-      beta: {
-          default: createSolidBorder('purple', 600, 'default'),
-          extraThick: createSolidBorder('purple', 600, 'extraThick'),
-          thick: createSolidBorder('purple', 600, 'thick'),
-      },
-      info: {
-          default: createSolidBorder('blue', 600, 'default'),
-          extraThick: createSolidBorder('blue', 600, 'extraThick'),
-          thick: createSolidBorder('blue', 600, 'thick'),
-      },
-      link: {
-          dashed: createDashedBorder(),
-          solid: createSolidBorder('blue', 500, 'default'),
-      },
-      negative: {
-          default: createSolidBorder('red', 600, 'default'),
-          extraThick: createSolidBorder('red', 600, 'extraThick'),
-          thick: createSolidBorder('red', 600, 'thick'),
-      },
-      neutral: {
-          default: createSolidBorder('gray', 500, 'default'),
-          extraThick: createSolidBorder('gray', 500, 'extraThick'),
-          thick: createSolidBorder('gray', 500, 'thick'),
-      },
-      none: 'none',
-      notice: {
-          default: createSolidBorder('yellow', 600, 'default'),
-          extraThick: createSolidBorder('yellow', 600, 'extraThick'),
-          thick: createSolidBorder('yellow', 600, 'thick'),
-      },
-      positive: {
-          default: createSolidBorder('green', 600, 'default'),
-          extraThick: createSolidBorder('green', 600, 'extraThick'),
-          thick: createSolidBorder('green', 600, 'thick'),
-      },
+    accent: {
+      default: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
+      focused: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
+      hover: createSolidBorder("blue", isDarkMode ? 700 : 600, "default"),
+      open: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
+      pressed: createSolidBorder("blue", isDarkMode ? 800 : 700, "default"),
+      selected: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
+    },
+    base: {
+      default: createSolidBorder("gray", 500, "default"),
+      disabled: createSolidBorder("gray", 300, "default"),
+      divider: createSolidBorder("gray", 200, "default"),
+      dividerInverse: createSolidBorder("gray", 600, "default"),
+      hover: createSolidBorder("gray", 900, "default"),
+      inverse: createSolidBorder("gray", 50, "default"),
+      pressed: createSolidBorder("gray", 900, "default"),
+      table: createSolidBorder("gray", 300, "default"),
+    },
+    beta: {
+      default: createSolidBorder("purple", 600, "default"),
+      extraThick: createSolidBorder("purple", 600, "extraThick"),
+      thick: createSolidBorder("purple", 600, "thick"),
+    },
+    info: {
+      default: createSolidBorder("blue", 600, "default"),
+      extraThick: createSolidBorder("blue", 600, "extraThick"),
+      thick: createSolidBorder("blue", 600, "thick"),
+    },
+    link: {
+      dashed: createDashedBorder(),
+      solid: createSolidBorder("blue", 500, "default"),
+    },
+    negative: {
+      default: createSolidBorder("red", 600, "default"),
+      extraThick: createSolidBorder("red", 600, "extraThick"),
+      thick: createSolidBorder("red", 600, "thick"),
+    },
+    neutral: {
+      default: createSolidBorder("gray", 500, "default"),
+      extraThick: createSolidBorder("gray", 500, "extraThick"),
+      thick: createSolidBorder("gray", 500, "thick"),
+    },
+    none: "none",
+    notice: {
+      default: createSolidBorder("yellow", 600, "default"),
+      extraThick: createSolidBorder("yellow", 600, "extraThick"),
+      thick: createSolidBorder("yellow", 600, "thick"),
+    },
+    positive: {
+      default: createSolidBorder("green", 600, "default"),
+      extraThick: createSolidBorder("green", 600, "extraThick"),
+      thick: createSolidBorder("green", 600, "thick"),
+    },
   };
 };
-
 
 /**
  * Create a SDS App Theme with custom colors that follows the SDS color model.
  */
-export const makeSdsSemanticAppTheme = (colors: Colors, isDarkTheme = false): AppTheme => ({
+export const makeSdsSemanticAppTheme = (
+  colors: Colors,
+  isDarkTheme = false
+): AppTheme => ({
   ...sharedAppTheme,
-  colors,
   borders: createAppThemeBorders(colors, isDarkTheme),
+  colors,
 });
 
 export const SDSLightAppTheme: AppTheme =
   makeSdsSemanticAppTheme(SDSLightThemeColors);
 
-export const SDSDarkAppTheme: AppTheme =
-  makeSdsSemanticAppTheme(SDSDarkThemeColors, true);
+export const SDSDarkAppTheme: AppTheme = makeSdsSemanticAppTheme(
+  SDSDarkThemeColors,
+  true
+);
 
 /**
  * Helper function to select the appropriate theme settings.
