@@ -1,5 +1,9 @@
 import React, { ForwardedRef } from "react";
-import Button, { ButtonProps } from "src/core/Button";
+import Button, {
+  ButtonProps,
+  ButtonSize,
+  ButtonTypeMap,
+} from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import ButtonIcon from "../ButtonIcon";
 import {
@@ -7,22 +11,20 @@ import {
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 
-type SDSButtonDropdownSizes = "small" | "medium" | "large";
-
 type SdsProps =
   | {
       sdsStyle: "icon";
-      sdsType?: "primary" | "secondary" | "tertiary";
+      sdsType?: ButtonTypeMap["icon"];
       icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
       sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-      sdsSize?: SDSButtonDropdownSizes;
+      sdsSize?: ButtonSize;
     }
   | {
       sdsStyle: "rounded" | "square";
-      sdsType?: "primary" | "secondary" | "destructive";
+      sdsType?: ButtonTypeMap["rounded"];
       icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
       sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-      sdsSize?: SDSButtonDropdownSizes;
+      sdsSize?: ButtonSize;
     };
 
 export type ButtonDropdownProps = ButtonProps & SdsProps;
