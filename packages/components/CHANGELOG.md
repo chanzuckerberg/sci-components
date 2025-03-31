@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.3...@czi-sds/components@22.4.0) (2025-03-27)
+
+### Features
+
+- **NavigationHeader:** Added dropdown variant to primary nav items ([#943](https://github.com/chanzuckerberg/sci-components/issues/943)) ([7037a43](https://github.com/chanzuckerberg/sci-components/commit/7037a437bf15d1f6e47f08bcce1ba0eb11fc1fb1))
+
+## [22.3.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.2...@czi-sds/components@22.3.3) (2025-03-24)
+
+### Bug Fixes
+
+- **NavHeader, NavFooter:** VCP dark mode changes ([#941](https://github.com/chanzuckerberg/sci-components/issues/941)) ([5f55b95](https://github.com/chanzuckerberg/sci-components/commit/5f55b9519626429b6fe3c0c1fde3d3b81697966e))
+
+## [22.3.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.1...@czi-sds/components@22.3.2) (2025-03-14)
+
+### Bug Fixes
+
+- **ContentCard:** Fixed ContentCard content height + Fixed TS types on CC ([#939](https://github.com/chanzuckerberg/sci-components/issues/939)) ([de02cd2](https://github.com/chanzuckerberg/sci-components/commit/de02cd21ca3ef26f9e0e26c36fe19634963f4302))
+
+## [22.3.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.0...@czi-sds/components@22.3.1) (2025-03-12)
+
+**Note:** Version bump only for package @czi-sds/components
+
+# [22.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.2.1...@czi-sds/components@22.3.0) (2025-02-27)
+
+### Features
+
+- **contentcard:** first implementation ([#935](https://github.com/chanzuckerberg/sci-components/issues/935)) ([82f4f94](https://github.com/chanzuckerberg/sci-components/commit/82f4f94c34956c88154bbf6dda71947a070566a8))
+- **NavigationFooter:** implement NavigationFooter component ([#886](https://github.com/chanzuckerberg/sci-components/issues/886)) ([44e6252](https://github.com/chanzuckerberg/sci-components/commit/44e6252685b3bede24e415712c559142fa7dbab2))
+
+## [22.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.2.0...@czi-sds/components@22.2.1) (2025-02-19)
+
+### Bug Fixes
+
+- **styles:** Inverted styles on Button and InputSearch ignore custom themes. ([#931](https://github.com/chanzuckerberg/sci-components/issues/931)) ([04d1dca](https://github.com/chanzuckerberg/sci-components/commit/04d1dca00134961f31a22226fc1aac7255fefebf))
+
+# [22.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.2...@czi-sds/components@22.2.0) (2025-02-13)
+
+### Features
+
+- **NavigationHeader:** implement NavigationHeader component ([#885](https://github.com/chanzuckerberg/sci-components/issues/885)) ([97ba7f5](https://github.com/chanzuckerberg/sci-components/commit/97ba7f58efee4754aafef6bb4b597b8f88a18e02)), closes [#728](https://github.com/chanzuckerberg/sci-components/issues/728)
+
+## [22.1.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.1...@czi-sds/components@22.1.2) (2025-01-30)
+
+### Bug Fixes
+
+- **headercell:** added new hover prop to control component hover state ([#928](https://github.com/chanzuckerberg/sci-components/issues/928)) ([6a31635](https://github.com/chanzuckerberg/sci-components/commit/6a31635c1064fafa4f26d75d7304fc4c19815a0b))
+
+## [22.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.1.0...@czi-sds/components@22.1.1) (2025-01-09)
+
+### Bug Fixes
+
+- **design-tokens:** fixed font family ([#921](https://github.com/chanzuckerberg/sci-components/issues/921)) ([551de94](https://github.com/chanzuckerberg/sci-components/commit/551de9439426b78703ffaad7b5a6a0c9066b4e40))
+
 # [22.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.0.0...@czi-sds/components@22.1.0) (2024-12-18)
 
 ### Bug Fixes

@@ -15,6 +15,7 @@ export interface AccessibleInputSearchProps {
   id: string;
   handleSubmit?: (value: string) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  customTheme?: "light" | "dark" | "auto";
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &

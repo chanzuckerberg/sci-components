@@ -77,6 +77,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     ${labelStyle(props)}
 
     border: ${borders?.base?.default};
+    box-shadow: none !important;
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
@@ -105,7 +106,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:hover {
       background-color: transparent;
-      border-color: ${semanticColors?.base?.borderHover};
+      border: ${borders?.base?.hover};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
@@ -118,6 +119,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
+      background-color: transparent;
       border: ${borders?.base?.pressed};
       color: ${semanticColors?.base?.textPrimary};
 
@@ -127,6 +129,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:focus {
+      background-color: transparent;
       outline-offset: -1px;
     }
   `;
@@ -142,11 +145,11 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
 
     /* this is needed to left align the label text */
     align-items: flex-start;
-    border: none;
+    border: none !important;
     flex-direction: column;
     padding: ${spaces?.xs}px ${spaces?.s}px;
     background-color: transparent;
-
+    min-width: fit-content;
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
       .styled-label {
@@ -198,7 +201,8 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    min-width: 90px;
+    min-width: fit-content;
+    background-color: transparent;
   `;
 };
 
@@ -207,7 +211,8 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.l}px;
-    min-width: 90px;
+    min-width: fit-content;
+    background-color: transparent;
   `;
 };
 
@@ -287,7 +292,7 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
         fill: ${semanticColors?.base?.ornamentSecondaryHover};
       }
 
-      border-color: ${semanticColors?.base?.borderHover};
+      border-color: ${semanticColors?.base?.borderPrimaryHover};
     }
   `;
 };
@@ -316,7 +321,7 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     cursor: default;
-    border-color: ${semanticColors?.base?.borderDisabled};
+    border-color: ${semanticColors?.base?.borderPrimaryDisabled};
 
     span {
       color: ${semanticColors?.base?.textDisabled};

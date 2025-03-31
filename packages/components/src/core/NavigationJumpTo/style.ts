@@ -82,7 +82,7 @@ export const StyledTab = styled(Tab, {
         left: -${spaces?.l}px;
         width: ${spaces?.xxxs}px;
         height: 100%;
-        background-color: ${semanticColors?.base?.border};
+        background-color: ${semanticColors?.base?.borderPrimary};
         display: none;
         border-radius: ${spaces?.xxxs}px;
       }

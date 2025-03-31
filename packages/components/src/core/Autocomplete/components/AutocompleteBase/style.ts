@@ -51,7 +51,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       // look at the useDetectUserTabbing hook.
       &[data-user-is-tabbing="true"]:focus-within {
         border-radius: 4px;
-        outline: 2px solid ${semanticColors?.base?.borderHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
         outline-offset: 1px;
       }
 

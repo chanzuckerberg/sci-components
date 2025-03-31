@@ -1,3 +1,5 @@
+import { IconNameToSizes } from "src/core/Icon";
+import ButtonIcon from "../..";
 import {
   BUTTON_ICON_DISABLED_OPTIONS,
   BUTTON_ICON_PSEUDO_STATES,
@@ -5,7 +7,6 @@ import {
   BUTTON_ICON_SDS_TYPES,
 } from "../constants";
 import { SDSSizes, SDSTypes } from "../types";
-import { ButtonIcon } from "./default";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   const DISPLAY_CONTENTS: React.CSSProperties = {
@@ -150,7 +151,7 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                   </p>
                   <ButtonIcon
                     aria-label={icon}
-                    icon={icon}
+                    icon={icon as keyof IconNameToSizes}
                     data-testid="button-icon"
                     sdsType={sdsType}
                     sdsSize={sdsSize}

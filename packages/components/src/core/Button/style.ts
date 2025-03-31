@@ -12,6 +12,7 @@ import {
   getShadows,
   getSpaces,
   fontBodySemiboldXxs,
+  fontBody,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonProps } from ".";
@@ -22,6 +23,8 @@ const doNotForwardProps = [
   "sdsStyle",
   "sdsType",
   "sdsSize",
+  "hasInvertedStyle",
+  "customTheme",
 ];
 
 type ButtonExtraProps = ButtonProps & CommonThemeProps;
@@ -63,13 +66,15 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const disabledBorder =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.base?.borderDisabled}`
+      ? `inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryDisabled}`
       : "none";
 
   const boxshadow =
     variant === "outlined"
       ? `inset 0 0 0 1px ${semanticColors?.accent?.border}`
       : "none";
+
+  fontBody("xs", "semibold");
 
   return css`
     background-color: ${backgroundColor};
@@ -78,6 +83,8 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${padding};
     color: ${contentColor};
     line-height: ${isAllCaps ? "20px" : "unset"};
+    white-space: nowrap;
+    min-width: fit-content;
 
     svg {
       color: ${ornamentColor};
@@ -140,11 +147,9 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const Rounded = (props: ButtonExtraProps): SerializedStyles => {
-  const corners = getCorners(props);
-
+const Rounded = (): SerializedStyles => {
   return css`
-    border-radius: ${corners?.l}px;
+    border-radius: 100px;
   `;
 };
 
@@ -230,7 +235,7 @@ export const StyledButton = styled(Button, {
       ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
 
       ${ButtonStyles(props)}
-      ${sdsStyle === "rounded" && Rounded(props)}
+      ${sdsStyle === "rounded" && Rounded()}
       ${sdsType === "destructive" && DestructiveButton(props)}
     `;
   }}
@@ -249,7 +254,7 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
     ${focusVisibleA11yStyle(props)}
     ${isAllCaps ? fontCapsXxxs(props) : fontBodySemiboldXxs(props)}
 
-    min-width: unset;
+    min-width: fit-content;
     padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
 
     &:hover,
