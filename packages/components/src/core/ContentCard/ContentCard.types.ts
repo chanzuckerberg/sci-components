@@ -4,10 +4,10 @@ import { ReactNode } from "react";
 
 export interface BaseContentCardProps extends CardProps {
   sdsType?: "wide" | "narrow";
-  overlineText?: string | ReactNode;
-  titleText?: string | ReactNode;
-  subtitleText?: string | ReactNode;
-  metadataText?: string | ReactNode;
+  overlineText?: ReactNode;
+  titleText?: ReactNode;
+  subtitleText?: ReactNode;
+  metadataText?: ReactNode;
   boundingBox?: boolean;
   decorativeBorder?: boolean;
   children?: ReactNode;
