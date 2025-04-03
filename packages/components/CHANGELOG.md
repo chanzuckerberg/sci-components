@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.4.0...@czi-sds/components@22.5.0) (2025-04-03)
+
+### Features
+
+- **ContentCard:** Add ReactNode Support to ContentCard Title Components ([#945](https://github.com/chanzuckerberg/sci-components/issues/945)) ([c737057](https://github.com/chanzuckerberg/sci-components/commit/c73705790950046484e1fb233f6d1f95d595b850))
+
 # [22.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.3.3...@czi-sds/components@22.4.0) (2025-03-27)
 
 ### Features
