@@ -9,16 +9,16 @@ import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
 import { filterProps } from "src/common/utils";
 
-type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
+export type ButtonType = "primary" | "secondary" | "tertiary" | "destructive";
 
-type ButtonTypeMap = {
+export type ButtonTypeMap = {
   icon: "primary" | "secondary" | "tertiary";
   minimal: "primary" | "secondary";
   rounded: "primary" | "secondary" | "destructive";
   square: "primary" | "secondary" | "destructive";
 };
 
-type ButtonSize = "small" | "medium" | "large";
+export type ButtonSize = "small" | "medium" | "large";
 
 interface BaseButtonProps extends RawButtonProps {
   children?: React.ReactNode;
