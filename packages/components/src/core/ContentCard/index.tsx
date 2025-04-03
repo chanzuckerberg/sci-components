@@ -22,11 +22,21 @@ import {
   CONTENT_CARD_WIDE_TYPE_MIN_WIDTH_LOW_BOUNDARY,
   ContentCardProps,
 } from "./ContentCard.types";
+import {
+  StyledTitleText,
+  StyledSubtitleText,
+  StyledMetadataText,
+  StyledOverlineText,
+} from "./components/ContentCardTitle/style";
 
 export {
   ContentCardActions,
   StyledContentCardBody as ContentCardBody,
   CardMedia as ContentCardMedia,
+  StyledTitleText as ContentCardTitle,
+  StyledSubtitleText as ContentCardSubtitle,
+  StyledMetadataText as ContentCardMetadata,
+  StyledOverlineText as ContentCardOverline,
 };
 
 export type {
