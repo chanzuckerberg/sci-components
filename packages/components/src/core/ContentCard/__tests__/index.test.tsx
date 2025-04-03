@@ -128,4 +128,13 @@ describe("ContentCard", () => {
     render(<Test sdsType="narrow" />);
     expect(screen.getByTestId(CONTENT_CARD_TEST_ID)).toBeInTheDocument();
   });
+
+  it("renders content card with ReactNode as titleText", () => {
+    const CustomTitle = () => (
+      <span data-testid="custom-title">Custom Title</span>
+    );
+    render(<Test titleText={<CustomTitle />} />);
+    expect(screen.getByTestId("custom-title")).toBeInTheDocument();
+    expect(screen.getByText("Custom Title")).toBeInTheDocument();
+  });
 });

@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
 import {
   StyledOverlineText,
   StyledTitleText,
@@ -7,12 +7,13 @@ import {
   StyledTitleWrapper,
 } from "./style";
 import { EMPTY_OBJECT } from "src/common/utils";
+import { BaseContentCardProps } from "../../ContentCard.types";
 
-export interface ContentCardTitleProps {
-  overlineText?: string;
-  titleText?: string;
-  subtitleText?: string;
-  metadataText?: string;
+export interface ContentCardTitleProps
+  extends Pick<
+    BaseContentCardProps,
+    "overlineText" | "titleText" | "subtitleText" | "metadataText"
+  > {
   classes?: {
     cardHeader?: string;
     cardOverline?: string;
@@ -22,9 +23,35 @@ export interface ContentCardTitleProps {
   };
 }
 
-/**
- * @see https://mui.com/material-ui/react-dialog/
- */
+interface TextComponentProps {
+  text: string | ReactNode;
+  className?: string;
+}
+
+type StyledTextComponentProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+const createTextComponent = (
+  StyledComponent: React.ComponentType<StyledTextComponentProps>
+) => {
+  return ({ text, className }: TextComponentProps) => {
+    if (!text) return null;
+
+    return typeof text === "string" ? (
+      <StyledComponent className={className}>{text}</StyledComponent>
+    ) : (
+      text
+    );
+  };
+};
+
+const OverlineText = createTextComponent(StyledOverlineText);
+const TitleText = createTextComponent(StyledTitleText);
+const SubtitleText = createTextComponent(StyledSubtitleText);
+const MetadataText = createTextComponent(StyledMetadataText);
+
 const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
   function ContentCardTitle(props: ContentCardTitleProps, ref): JSX.Element {
     const {
@@ -46,25 +73,11 @@ const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
     return (
       <div ref={ref}>
         <StyledTitleWrapper className={cardHeader}>
-          {overlineText && (
-            <StyledOverlineText className={cardOverline}>
-              {overlineText}
-            </StyledOverlineText>
-          )}
-          {titleText && (
-            <StyledTitleText className={cardTitle}>{titleText}</StyledTitleText>
-          )}
-          {subtitleText && (
-            <StyledSubtitleText className={cardSubtitle}>
-              {subtitleText}
-            </StyledSubtitleText>
-          )}
+          <OverlineText text={overlineText} className={cardOverline} />
+          <TitleText text={titleText} className={cardTitle} />
+          <SubtitleText text={subtitleText} className={cardSubtitle} />
         </StyledTitleWrapper>
-        {metadataText && (
-          <StyledMetadataText className={cardMetadata}>
-            {metadataText}
-          </StyledMetadataText>
-        )}
+        <MetadataText text={metadataText} className={cardMetadata} />
       </div>
     );
   }
