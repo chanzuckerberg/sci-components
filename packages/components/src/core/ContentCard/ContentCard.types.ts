@@ -1,15 +1,16 @@
 import { CardProps } from "@mui/material";
 import { SdsMinimalButtonProps } from "../Button";
+import { ReactNode } from "react";
 
-interface BaseContentCardProps extends CardProps {
+export interface BaseContentCardProps extends CardProps {
   sdsType?: "wide" | "narrow";
-  overlineText?: string;
-  titleText?: string;
-  subtitleText?: string;
-  metadataText?: string;
+  overlineText?: string | ReactNode;
+  titleText?: string | ReactNode;
+  subtitleText?: string | ReactNode;
+  metadataText?: string | ReactNode;
   boundingBox?: boolean;
   decorativeBorder?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   clickableCard?: boolean;
   clickableCardProps?: Partial<SdsMinimalButtonProps>;
   buttonsPosition?: "left" | "right";
@@ -29,7 +30,7 @@ interface BaseContentCardProps extends CardProps {
 
 export interface ImageContentCardProps extends BaseContentCardProps {
   visualElementType: "image";
-  image?: React.ReactNode;
+  image?: ReactNode;
   imagePosition?: "left" | "right";
   imagePadding?: boolean;
   imageSize?: number;
@@ -38,7 +39,7 @@ export interface ImageContentCardProps extends BaseContentCardProps {
 
 export interface IconContentCardProps extends BaseContentCardProps {
   visualElementType: "icon";
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   image?: never;
   imageSize?: never;
   imagePosition?: never;
