@@ -54,7 +54,7 @@ export default {
       control: { type: "text" },
     },
     width: {
-      control: { type: "number" },
+      control: { type: "text" },
     },
   },
   component: DropdownMenu,

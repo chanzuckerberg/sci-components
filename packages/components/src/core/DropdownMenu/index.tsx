@@ -7,7 +7,7 @@ import {
   PopperProps,
   useTheme,
 } from "@mui/material";
-import React, { SyntheticEvent, useMemo } from "react";
+import React, { SyntheticEvent, useMemo, CSSProperties } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Autocomplete, { AutocompleteProps } from "src/core/Autocomplete";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
@@ -69,7 +69,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   children?: JSX.Element | null;
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
-  width?: number;
+  width?: number | CSSProperties["width"];
 }
 
 type CustomAutocompleteProps<
@@ -133,11 +133,9 @@ const DropdownMenu = <
   // the width should be set to 'auto' to accommodate the expanded layout.
   const dropdownMenuPopperSx = useMemo(() => {
     return {
+      minWidth: MINIMUM_DROPDOWN_MENU_POPPER_WIDTH,
+      width: isMultiColumn ? "auto" : width,
       ...PopperBaseProps?.sx,
-      width:
-        isMultiColumn || width < MINIMUM_DROPDOWN_MENU_POPPER_WIDTH
-          ? "auto"
-          : width,
     };
   }, [PopperBaseProps?.sx, isMultiColumn, width]);
 
