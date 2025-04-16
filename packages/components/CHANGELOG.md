@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.0...@czi-sds/components@22.5.1) (2025-04-16)
+
+### Bug Fixes
+
+- dropdown and DropdownMenu props ([#947](https://github.com/chanzuckerberg/sci-components/issues/947)) ([7e7a416](https://github.com/chanzuckerberg/sci-components/commit/7e7a416a90e35d435998fb51f02ed68a3a75c61c))
+
 # [22.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.4.0...@czi-sds/components@22.5.0) (2025-04-03)
 
 ### Features
