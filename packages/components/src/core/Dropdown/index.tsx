@@ -127,8 +127,11 @@ const Dropdown = <
   useEffect(() => {
     if (isControlled) {
       setValue(propValue);
+      if (multiple) {
+        setPendingValue(propValue);
+      }
     }
-  }, [isControlled, propValue]);
+  }, [isControlled, propValue, multiple]);
 
   return (
     <>

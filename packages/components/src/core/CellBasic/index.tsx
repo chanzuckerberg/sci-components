@@ -28,6 +28,7 @@ interface CellBasicContentProps
   primaryTextComponentSlotRight?: React.ReactNode;
   primaryTextComponentSlotBottom?: React.ReactNode;
   horizontalAlign?: "left" | "right";
+  tabularNums?: boolean;
 }
 
 export interface CellBasicRawProps {
@@ -53,6 +54,7 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
     primaryTextComponentSlotRight,
     primaryTextComponentSlotBottom,
     horizontalAlign = "left",
+    tabularNums = false,
   } = props;
 
   return (
@@ -67,6 +69,7 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
           <PrimaryText
             shouldTextWrap={shouldTextWrap}
             primaryTextWrapLineCount={primaryTextWrapLineCount}
+            tabularNums={tabularNums}
           >
             {primaryText}
           </PrimaryText>
@@ -87,6 +90,7 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
           <SecondaryText
             shouldTextWrap={shouldTextWrap}
             secondaryTextWrapLineCount={secondaryTextWrapLineCount}
+            tabularNums={tabularNums}
           >
             {secondaryText}
           </SecondaryText>
@@ -96,6 +100,7 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
           <TertiaryText
             shouldTextWrap={shouldTextWrap}
             tertiaryTextWrapLineCount={tertiaryTextWrapLineCount}
+            tabularNums={tabularNums}
           >
             {tertiaryText}
           </TertiaryText>

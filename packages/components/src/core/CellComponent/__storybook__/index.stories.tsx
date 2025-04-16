@@ -15,6 +15,9 @@ export default {
       control: { type: "select" },
       options: ["top", "center", "bottom"],
     },
+    width: {
+      control: { type: "text" },
+    },
   },
   component: CellComponent,
   parameters: {
@@ -46,9 +49,9 @@ export const Default = {
         horizontalAlign={horizontalAlign}
         verticalAlign={verticalAlign}
         data-testid="CellComponent"
-        style={{ height: 100, width: 100 }}
         {...props}
       >
+        <p>This is a Cell Component with a toggle!</p>
         <InputToggle />
       </CellComponent>
     );

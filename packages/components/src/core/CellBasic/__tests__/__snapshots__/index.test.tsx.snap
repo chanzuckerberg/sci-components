@@ -3,14 +3,13 @@
 exports[`<CellBasic /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
-    <tr
-      style="display: block; max-width: 400px;"
-    >
+    <tr>
       <td
         class="css-11b4fo2"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
         tabindex="0"
+        width="300px"
       >
         <div
           class="css-ov1ktg"
@@ -22,18 +21,18 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Secondary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Tertiary Text
             </span>

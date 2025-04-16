@@ -6,4 +6,6 @@ export const CELL_HEADER_EXCLUDED_CONTROLS = [
   "shouldShowTooltipOnHover",
   "tooltipProps",
   "tooltipText",
+  "width",
+  "hover",
 ];

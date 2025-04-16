@@ -11,9 +11,11 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Header
-          </span>
+          </div>
         </div>
       </th>
     </tr>

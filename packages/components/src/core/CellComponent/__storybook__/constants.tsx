@@ -1,6 +1,7 @@
 export const CELL_COMPONENT_EXCLUDED_CONTROLS = [
   "verticalAlign",
   "horizontalAlign",
+  "width",
 ];
 
 export const CELL_COMPONENT_TEST_PLACEMENT_STYLES = {
