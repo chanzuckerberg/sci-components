@@ -32,6 +32,9 @@ export default {
     tooltipText: {
       control: { type: "text" },
     },
+    width: {
+      control: { type: "text" },
+    },
   },
   component: CellHeader,
   parameters: {

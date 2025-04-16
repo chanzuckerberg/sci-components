@@ -16,9 +16,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         <div
           class="css-187gjam"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Category
-          </span>
+          </div>
         </div>
       </th>
       <th
@@ -27,9 +29,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Active Header
-          </span>
+          </div>
           <div
             class="css-1ft6wgl"
           >
@@ -53,9 +57,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             A very long table header title to test sort icon positioning
-          </span>
+          </div>
           <div
             class="css-1ft6wgl"
           >
@@ -79,9 +85,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Component
-          </span>
+          </div>
         </div>
       </th>
       <th
@@ -90,9 +98,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         <div
           class="css-wg04tn"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Right Aligned and Not sortable
-          </span>
+          </div>
         </div>
       </th>
     </tr>
@@ -148,13 +158,13 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-102yezv"
+              class="css-ld07s0"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
@@ -174,18 +184,18 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Secondary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Tertiary Text
             </span>
@@ -254,7 +264,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-bikrfl"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 356
               </div>
@@ -311,18 +321,18 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Secondary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Tertiary Text
             </span>
@@ -342,13 +352,13 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Secondary Text
             </span>
@@ -469,18 +479,18 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-bikrfl"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 1,234
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               2,344,000
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               12.5%
             </span>
@@ -539,18 +549,18 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Secondary Text
             </span>
             <span
-              class="css-1xqvcqn"
+              class="css-7ykbdx"
             >
               Tertiary Text
             </span>
@@ -570,7 +580,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-7m17a9"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 Primary Text
               </div>
@@ -610,7 +620,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="css-bikrfl"
             >
               <div
-                class="css-1asg04x"
+                class="css-lljn4l"
               >
                 0.4
               </div>

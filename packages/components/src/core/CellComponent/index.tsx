@@ -11,10 +11,10 @@ export type CellComponentProps = CellComponentContentProps &
 
 const CellComponent = forwardRef(
   (props: CellComponentProps, _): JSX.Element | null => {
-    const { children } = props;
+    const { children, ...rest } = props;
 
     return (
-      <StyledCellComponentData className="cell-component" {...props}>
+      <StyledCellComponentData className="cell-component" {...rest}>
         {children}
       </StyledCellComponentData>
     );

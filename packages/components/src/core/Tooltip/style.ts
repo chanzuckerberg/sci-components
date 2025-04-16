@@ -20,7 +20,7 @@ export interface TooltipExtraProps extends CommonThemeProps {
   // @deprecated Use `hasInvertedStyle` instead
   sdsStyle?: "dark" | "light";
   hasInvertedStyle?: boolean;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   width?: "default" | "wide";
 }
 

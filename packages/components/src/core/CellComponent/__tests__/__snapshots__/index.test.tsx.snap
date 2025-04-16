@@ -3,15 +3,14 @@
 exports[`<CellComponent /> Default story renders snapshot 1`] = `
 <table>
   <tbody>
-    <tr
-      class="css-e9lq1t"
-      style="display: block; max-width: 280px;"
-    >
+    <tr>
       <td
         class="cell-component css-c6mry2"
         data-testid="CellComponent"
-        style="height: 100px; width: 100px;"
       >
+        <p>
+          This is a Cell Component with a toggle!
+        </p>
         <span
           class="MuiSwitch-root MuiSwitch-sizeMedium css-hcrspq-MuiSwitch-root"
         >
