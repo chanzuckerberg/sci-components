@@ -16,6 +16,7 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   primaryTextWrapLineCount?: number;
   secondaryTextWrapLineCount?: number;
   tertiaryTextWrapLineCount?: number;
+  tabularNums?: boolean;
 }
 
 const doNotForwardProps = [
@@ -34,7 +35,10 @@ const doNotForwardProps = [
   "tertiaryTextWrapLineCount",
   "primaryTextComponentSlotBottom",
   "primaryTextComponentSlotRight",
+  "tabularNums",
 ];
+
+const TABULAR_NUMS = "tabular-nums";
 
 const verticalAlignCSSMap = {
   bottom: "bottom",
@@ -74,6 +78,7 @@ const ShouldWrap = (lineCount: number) => {
     display: -webkit-box;
     -webkit-line-clamp: ${lineCount};
     -webkit-box-orient: vertical; 
+    word-break: break-all;
   `;
 };
 
@@ -82,6 +87,7 @@ const ShouldTruncate = () => {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    word-break: break-all;
   `;
 };
 
@@ -126,10 +132,12 @@ export const PrimaryText = styled("div", {
   ${fontBodyS}
 
   ${(props: CellBasicExtraProps) => {
-    const { primaryTextWrapLineCount = 3 } = props;
+    const { primaryTextWrapLineCount = 3, tabularNums = false } = props;
 
     return `
       display: block;
+      font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
+      
       ${
         props.shouldTextWrap
           ? ShouldWrap(primaryTextWrapLineCount)
@@ -145,7 +153,7 @@ export const SecondaryText = styled("span", {
   ${fontBodyXxs}
 
   ${(props: CellBasicExtraProps) => {
-    const { secondaryTextWrapLineCount = 1 } = props;
+    const { secondaryTextWrapLineCount = 1, tabularNums = false } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -154,6 +162,7 @@ export const SecondaryText = styled("span", {
       display: block;
       color: ${semanticColors?.base?.textSecondary};
       padding-top: ${spaces?.xxxs}px;
+      font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
         props.shouldTextWrap
@@ -170,7 +179,7 @@ export const TertiaryText = styled("span", {
   ${fontBodyXxs}
 
   ${(props: CellBasicExtraProps) => {
-    const { tertiaryTextWrapLineCount = 1 } = props;
+    const { tertiaryTextWrapLineCount = 1, tabularNums = false } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -179,6 +188,7 @@ export const TertiaryText = styled("span", {
       display: block;
       color: ${semanticColors?.base?.textSecondary};
       padding-top: ${spaces?.s}px;
+      font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
         props.shouldTextWrap

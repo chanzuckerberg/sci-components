@@ -24,6 +24,7 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
   "verticalAlign",
   "primaryTextComponentSlotBottom",
   "primaryTextComponentSlotRight",
+  "width",
 ];
 
 export const CELL_BASIC_ICON_OPTIONS = [

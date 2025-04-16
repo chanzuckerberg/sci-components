@@ -14,9 +14,11 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Column 1
-          </span>
+          </div>
           <div
             class="css-1ft6wgl"
           >
@@ -40,9 +42,11 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Column 2
-          </span>
+          </div>
           <div
             class="css-1ft6wgl"
           >
@@ -66,9 +70,11 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         <div
           class="css-rm9mvq"
         >
-          <span>
+          <div
+            class="css-1epiyn2"
+          >
             Column 3
-          </span>
+          </div>
           <div
             class="css-1ft6wgl"
           >

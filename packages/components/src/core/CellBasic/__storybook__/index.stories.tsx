@@ -91,6 +91,11 @@ export default {
       defaultValue: { summary: "true" },
       description: "Wrap text",
     },
+    tabularNums: {
+      control: { type: "boolean" },
+      defaultValue: { summary: "true" },
+      description: "Whether to display the primary text in tabular numbers",
+    },
     tertiaryText: {
       control: { type: "text" },
       defaultValue: { summary: "null" },
@@ -111,6 +116,11 @@ export default {
       defaultValue: { summary: "top" },
       description: "Vertical alignment of the cell",
       options: ["top", "center", "bottom"],
+    },
+    width: {
+      control: { type: "text" },
+      defaultValue: { summary: "auto" },
+      description: "Width of the cell",
     },
   },
   component: CellBasic,
@@ -133,9 +143,11 @@ export const Default = {
     secondaryTextWrapLineCount: 1,
     shouldShowTooltipOnHover: true,
     shouldTextWrap: true,
+    tabularNums: false,
     tertiaryText: "Tertiary Text",
     tertiaryTextWrapLineCount: 1,
     tooltipProps: { sdsStyle: "dark" },
+    width: "300px",
   },
 };
 

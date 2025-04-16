@@ -53,6 +53,7 @@ import { ReactComponent as IconFlaskLarge } from "../../common/svgs/IconFlaskLar
 import { ReactComponent as IconFlaskPrivateLarge } from "../../common/svgs/IconFlaskPrivateLarge.svg";
 import { ReactComponent as IconFlaskPublicLarge } from "../../common/svgs/IconFlaskPublicLarge.svg";
 import { ReactComponent as IconGearSmall } from "../../common/svgs/IconGearSmall.svg";
+import { ReactComponent as IconGithubSmall } from "../../common/svgs/IconGithubSmall.svg";
 import { ReactComponent as IconGlobeBasicLarge } from "../../common/svgs/IconGlobeBasicLarge.svg";
 import { ReactComponent as IconGlobeSmall } from "../../common/svgs/IconGlobeSmall.svg";
 import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge.svg";
@@ -103,6 +104,7 @@ import { ReactComponent as IconRotateLeftSmall } from "../../common/svgs/IconRot
 import { ReactComponent as IconRotateRightSmall } from "../../common/svgs/IconRotateRightSmall.svg";
 import { ReactComponent as IconSaveLarge } from "../../common/svgs/IconSaveLarge.svg";
 import { ReactComponent as IconScaleSmall } from "../../common/svgs/IconScaleSmall.svg";
+import { ReactComponent as IconScatterPlotSmall } from "../../common/svgs/IconScatterPlotSmall.svg";
 import { ReactComponent as IconSearchLarge } from "../../common/svgs/IconSearchLarge.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Large } from "../../common/svgs/IconSearchLinesHorizontal3Large.svg";
 import { ReactComponent as IconSearchLinesHorizontal3Small } from "../../common/svgs/IconSearchLinesHorizontal3Small.svg";
@@ -180,6 +182,7 @@ export interface IconNameToSizes {
   FlaskPrivate: "l" | "xl";
   FlaskPublic: "l" | "xl";
   Gear: "xs" | "s";
+  Github: "xs" | "s";
   Globe: "xs" | "s";
   GlobeBasic: "l" | "xl";
   Grid: "l" | "xl";
@@ -222,6 +225,7 @@ export interface IconNameToSizes {
   RotateRight: "xs" | "s";
   Save: "l" | "xl";
   Scale: "xs" | "s";
+  ScatterPlot: "xs" | "s";
   Search: "xs" | "s" | "l" | "xl";
   SearchLinesHorizontal3: "xs" | "s" | "l" | "xl";
   Send: "l" | "xl";
@@ -419,6 +423,10 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconGearSmall,
   },
+  Github: {
+    largeIcon: null,
+    smallIcon: IconGithubSmall,
+  },
   Globe: {
     largeIcon: null,
     smallIcon: IconGlobeSmall,
@@ -586,6 +594,10 @@ export const iconMap: Props = {
   Scale: {
     largeIcon: null,
     smallIcon: IconScaleSmall,
+  },
+  ScatterPlot: {
+    largeIcon: null,
+    smallIcon: IconScatterPlotSmall,
   },
   Search: {
     largeIcon: IconSearchLarge,

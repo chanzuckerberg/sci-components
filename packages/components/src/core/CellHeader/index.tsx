@@ -4,6 +4,7 @@ import Tooltip, { TooltipProps } from "src/core/Tooltip";
 import {
   CellHeaderExtraProps,
   StyledCellHeaderContainer,
+  StyledCellHeaderText,
   StyledSortingIcon,
   StyledTableHeader,
 } from "./style";
@@ -17,6 +18,7 @@ interface CellHeaderContentProps {
   horizontalAlign?: "left" | "center" | "right";
   children: React.ReactNode;
   hover?: boolean;
+  shouldTruncate?: boolean;
 }
 
 interface CellHeaderRawProps
@@ -41,6 +43,7 @@ const CellHeaderContent = (
     hideSortIcon = false,
     horizontalAlign,
     hover,
+    shouldTruncate = false,
   } = props;
 
   const sdsIconName: keyof IconNameToSizes =
@@ -62,7 +65,9 @@ const CellHeaderContent = (
 
   return (
     <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
-      <span>{children}</span>
+      <StyledCellHeaderText shouldTruncate={shouldTruncate}>
+        {children}
+      </StyledCellHeaderText>
       {(!hideSortIcon || active) && hover && sortIcon}
     </StyledCellHeaderContainer>
   );

@@ -13,6 +13,7 @@ export interface CellHeaderExtraProps extends CommonThemeProps {
   hideSortIcon?: boolean;
   horizontalAlign?: "left" | "center" | "right";
   hover?: boolean;
+  shouldTruncate?: boolean;
 }
 
 const contentPositionMapping = {
@@ -29,6 +30,7 @@ const doNotForwardProps = [
   "tooltipText",
   "hideSortIcon",
   "hover",
+  "shouldTruncate",
 ];
 
 export const StyledSortingIcon = styled(Icon, {
@@ -49,6 +51,15 @@ export const StyledSortingIcon = styled(Icon, {
     `;
   }}
 `;
+
+const ShouldTruncate = () => {
+  return `
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    word-break: break-all;
+  `;
+};
 
 export const StyledTableHeader = styled("th", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
@@ -94,6 +105,19 @@ export const StyledTableHeader = styled("th", {
           color: ${active ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondaryHover};
         }
       }
+    `;
+  }}
+`;
+
+export const StyledCellHeaderText = styled("div", {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${fontHeaderS}
+  ${(props: CellHeaderExtraProps) => {
+    const { shouldTruncate = false } = props;
+
+    return `
+      ${shouldTruncate && ShouldTruncate()}
     `;
   }}
 `;
