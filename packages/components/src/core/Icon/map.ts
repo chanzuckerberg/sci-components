@@ -53,6 +53,7 @@ import { ReactComponent as IconFlaskLarge } from "../../common/svgs/IconFlaskLar
 import { ReactComponent as IconFlaskPrivateLarge } from "../../common/svgs/IconFlaskPrivateLarge.svg";
 import { ReactComponent as IconFlaskPublicLarge } from "../../common/svgs/IconFlaskPublicLarge.svg";
 import { ReactComponent as IconGearSmall } from "../../common/svgs/IconGearSmall.svg";
+import { ReactComponent as IconGithubSmall } from "../../common/svgs/IconGithubSmall.svg";
 import { ReactComponent as IconGlobeBasicLarge } from "../../common/svgs/IconGlobeBasicLarge.svg";
 import { ReactComponent as IconGlobeSmall } from "../../common/svgs/IconGlobeSmall.svg";
 import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge.svg";
@@ -181,6 +182,7 @@ export interface IconNameToSizes {
   FlaskPrivate: "l" | "xl";
   FlaskPublic: "l" | "xl";
   Gear: "xs" | "s";
+  Github: "xs" | "s";
   Globe: "xs" | "s";
   GlobeBasic: "l" | "xl";
   Grid: "l" | "xl";
@@ -420,6 +422,10 @@ export const iconMap: Props = {
   Gear: {
     largeIcon: null,
     smallIcon: IconGearSmall,
+  },
+  Github: {
+    largeIcon: null,
+    smallIcon: IconGithubSmall,
   },
   Globe: {
     largeIcon: null,
