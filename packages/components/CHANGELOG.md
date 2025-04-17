@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.1...@czi-sds/components@22.5.2) (2025-04-17)
+
+### Bug Fixes
+
+- Add showSectionHeader prop to TooltipTable ([#950](https://github.com/chanzuckerberg/sci-components/issues/950)) ([8bdd45a](https://github.com/chanzuckerberg/sci-components/commit/8bdd45ab3d0cd4ef6795bed6540eccd5fd62e6fd))
+
 ## [22.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.0...@czi-sds/components@22.5.1) (2025-04-16)
 
 ### Bug Fixes
