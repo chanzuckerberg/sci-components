@@ -17,6 +17,9 @@ export default {
       control: { type: "radio" },
       options: ["right", "left"],
     },
+    showSectionHeader: {
+      control: { type: "boolean" },
+    },
   },
   component: TooltipTableContent,
   parameters: {
@@ -32,6 +35,7 @@ export const Default = {
     contentAlert: "None",
     data: TOOLTIP_TABLE_DATA,
     itemAlign: "right",
+    showSectionHeader: true,
   },
 };
 

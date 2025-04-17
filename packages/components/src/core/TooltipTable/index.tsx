@@ -16,7 +16,13 @@ export type { TooltipTableContentProps };
  * @see https://mui.com/material-ui/react-table/
  */
 const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
-  const { contentAlert, data, itemAlign = "right", ...rest } = props;
+  const {
+    contentAlert,
+    data,
+    itemAlign = "right",
+    showSectionHeader = true,
+    ...rest
+  } = props;
 
   return (
     <TableContainer {...rest}>
@@ -26,9 +32,11 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
           disabled={section.disabled}
           key={`${section.label + String(index)}`}
         >
-          <SectionLabel disabled={section.disabled} label={section.label}>
-            {section.label}
-          </SectionLabel>
+          {showSectionHeader && (
+            <SectionLabel disabled={section.disabled} label={section.label}>
+              {section.label}
+            </SectionLabel>
+          )}
           <Table size="small">
             <TableBody>
               {section.dataRows.map((row, rowIndex) => (
