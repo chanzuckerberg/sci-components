@@ -22,6 +22,7 @@ export interface TooltipTableExtraProps extends CommonThemeProps {
   }>;
   contentAlert?: string | JSX.Element;
   itemAlign?: "left" | "right";
+  showSectionHeader?: boolean;
 }
 
 const sdsPropNames = ["contentAlert", "itemAlign"];
