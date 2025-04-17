@@ -52,6 +52,8 @@ export interface InputDropdownProps
   value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
+  width?: number;
+  className?: string;
   // (masoudmanson): This is a temporary fix for the issue where the style prop
   // is not correctly passed to the underlying Button component when asserting as
   // a React.ComponentType<InputDropdownProps>. This is a workaround until a more
@@ -63,6 +65,8 @@ const labelFontBodyS = fontBody("s", "regular");
 const labelFontBodyXs = fontBody("xs", "regular");
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
+  const { width = "auto" } = props;
+
   const spaces = getSpaces(props);
   const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
@@ -81,6 +85,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     cursor: pointer;
     padding: ${padding};
     justify-content: start;
+    width: ${width}px;
 
     &.MuiButton-text {
       &:hover {
@@ -149,7 +154,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     flex-direction: column;
     padding: ${spaces?.xs}px ${spaces?.s}px;
     background-color: transparent;
-    min-width: fit-content;
+    min-width: auto;
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
       .styled-label {
@@ -201,7 +206,7 @@ const square = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.m}px;
-    min-width: fit-content;
+    min-width: auto;
     background-color: transparent;
   `;
 };
@@ -211,7 +216,7 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     border-radius: ${corners?.l}px;
-    min-width: fit-content;
+    min-width: auto;
     background-color: transparent;
   `;
 };

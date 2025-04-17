@@ -53,6 +53,11 @@ export default {
         type: "boolean",
       },
     },
+    style: {
+      control: {
+        type: "object",
+      },
+    },
     width: {
       control: {
         type: "number",

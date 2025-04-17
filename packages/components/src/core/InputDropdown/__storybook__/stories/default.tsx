@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Callout from "src/core/Callout";
 import DropdownMenu from "src/core/DropdownMenu";
-import { StyledInputDropdown } from "../style";
+import RawInputDropdown from "src/core/InputDropdown";
 
 type DisableClearable = false;
 type FreeSolo = false;
@@ -131,7 +131,7 @@ export const InputDropdown = <
           body='When using the InputDropdown component, please note that the combination of setting the sdsType prop to "value" and the multiple prop to "true" is not allowed.'
         />
       ) : (
-        <StyledInputDropdown
+        <RawInputDropdown
           disabled={disabled}
           label={storybookLabel}
           onClick={handleClick}
