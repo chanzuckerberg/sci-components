@@ -53,6 +53,7 @@ export interface InputDropdownProps
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
   width?: number;
+  className?: string;
   // (masoudmanson): This is a temporary fix for the issue where the style prop
   // is not correctly passed to the underlying Button component when asserting as
   // a React.ComponentType<InputDropdownProps>. This is a workaround until a more
