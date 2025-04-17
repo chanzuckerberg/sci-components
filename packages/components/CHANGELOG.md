@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.2...@czi-sds/components@22.5.3) (2025-04-17)
+
+### Bug Fixes
+
+- **InputDropdown:** fixed width prop ([#952](https://github.com/chanzuckerberg/sci-components/issues/952)) ([5338d4c](https://github.com/chanzuckerberg/sci-components/commit/5338d4cc544f86703ae4220ce95a33f5e2b1c48d))
+
 ## [22.5.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.1...@czi-sds/components@22.5.2) (2025-04-17)
 
 ### Bug Fixes
