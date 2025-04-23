@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.5](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.4...@czi-sds/components@22.5.5) (2025-04-23)
+
+### Bug Fixes
+
+- **NavigationJumpTo:** Refactored querySelector to getElementById and changed default width to 100% ([d72fbe2](https://github.com/chanzuckerberg/sci-components/commit/d72fbe298fae46857aeebfe1f21fd900ae3d6baa))
+
 ## [22.5.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.3...@czi-sds/components@22.5.4) (2025-04-23)
 
 ### Bug Fixes
