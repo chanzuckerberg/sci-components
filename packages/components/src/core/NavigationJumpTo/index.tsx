@@ -26,8 +26,8 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
   width?: CSSProperties["width"];
 }
 
-const scrollIntoViewWithOffset = (selector: string, offset: number) => {
-  const element = document.querySelector(selector);
+const scrollIntoViewWithOffset = (id: string, offset: number) => {
+  const element = document.getElementById(id);
   if (!element) return;
 
   window.scrollTo({
@@ -77,7 +77,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       // Smoothly scroll to the section of the page referenced by the clicked nav item
       if (offsetTop) {
         scrollIntoViewWithOffset(
-          `#${items[newValue]?.elementRef?.current?.getAttribute("id")}`,
+          `${items[newValue]?.elementRef?.current?.getAttribute("id")}`,
           offsetTop
         );
       } else {
