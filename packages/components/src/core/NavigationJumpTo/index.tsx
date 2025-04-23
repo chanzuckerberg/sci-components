@@ -45,7 +45,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
     const [navItemClicked, setNavItemClicked] = useState(false);
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const [emittedValue, setEmittedValue] = useState(-1);
-    const sectionIsInView = useInView(items, offsetTop + 20);
+    const sectionIsInView = useInView(items, offsetTop);
 
     const a11yProps = (title: string, elementId: string) => {
       return {
