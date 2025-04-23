@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.3...@czi-sds/components@22.5.4) (2025-04-23)
+
+### Bug Fixes
+
+- **NavigationJumpTo:** Fixed NavigationJumpTo Scroll and whiteSpace styles ([#957](https://github.com/chanzuckerberg/sci-components/issues/957)) ([f9ce5f3](https://github.com/chanzuckerberg/sci-components/commit/f9ce5f37c5e31d1fff865c5720fb5ebedaca8870))
+
 ## [22.5.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.2...@czi-sds/components@22.5.3) (2025-04-17)
 
 ### Bug Fixes
