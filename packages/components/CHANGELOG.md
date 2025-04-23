@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.6](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.5...@czi-sds/components@22.5.6) (2025-04-23)
+
+### Bug Fixes
+
+- **NavigationHeader:** Use dynamic height for nav header ([#960](https://github.com/chanzuckerberg/sci-components/issues/960)) ([20222a1](https://github.com/chanzuckerberg/sci-components/commit/20222a1285c2656d756c8e02fcf87971a814867a))
+
 ## [22.5.5](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.4...@czi-sds/components@22.5.5) (2025-04-23)
 
 ### Bug Fixes
