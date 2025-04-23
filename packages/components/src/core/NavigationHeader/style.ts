@@ -530,7 +530,7 @@ export const StyledDrawer = styled(Drawer, {
         width: 100%;
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 100dvh;
         justify-content: space-between;
       }
     `;
