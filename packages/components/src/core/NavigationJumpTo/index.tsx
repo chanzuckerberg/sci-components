@@ -1,4 +1,10 @@
-import React, { forwardRef, useCallback, useEffect, useState } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useState,
+  CSSProperties,
+} from "react";
 import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
@@ -17,41 +23,29 @@ export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
     event?: React.SyntheticEvent,
     type?: "click" | "scroll"
   ) => void;
+  width?: CSSProperties["width"];
 }
+
+const scrollIntoViewWithOffset = (selector: string, offset: number) => {
+  const element = document.querySelector(selector);
+  if (!element) return;
+
+  window.scrollTo({
+    behavior: "smooth",
+    top:
+      element.getBoundingClientRect().top -
+      document.body.getBoundingClientRect().top -
+      offset,
+  });
+};
 
 const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
   (props, ref): JSX.Element | null => {
-    const { items, offsetTop = 0, onChange, ...rest } = props;
+    const { items, offsetTop = 0, onChange, width, ...rest } = props;
     const [navItemClicked, setNavItemClicked] = useState(false);
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const [emittedValue, setEmittedValue] = useState(-1);
-    const sectionIsInView = useInView(items);
-
-    useEffect(() => {
-      items.forEach((item) => {
-        if (offsetTop) {
-          const wrapper = document.createElement("div");
-          wrapper.style.position = "relative";
-
-          const hiddenDiv = document.createElement("div");
-          hiddenDiv.style.height = `${offsetTop}px`;
-          hiddenDiv.style.top = `-${offsetTop}px`;
-          hiddenDiv.style.position = `absolute`;
-          hiddenDiv.style.pointerEvents = `none`;
-          hiddenDiv.setAttribute(
-            "id",
-            `${item.elementRef.current?.getAttribute("id")}-hiddenDiv`
-          );
-
-          wrapper.appendChild(hiddenDiv);
-
-          item.elementRef.current?.before(wrapper);
-
-          if (item.elementRef.current)
-            wrapper.appendChild(item.elementRef.current);
-        }
-      });
-    }, [items, offsetTop]);
+    const sectionIsInView = useInView(items, offsetTop + 20);
 
     const a11yProps = (title: string, elementId: string) => {
       return {
@@ -82,15 +76,10 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
 
       // Smoothly scroll to the section of the page referenced by the clicked nav item
       if (offsetTop) {
-        const hiddenDiv = document.getElementById(
-          `${items[newValue]?.elementRef?.current?.getAttribute(
-            "id"
-          )}-hiddenDiv`
+        scrollIntoViewWithOffset(
+          `#${items[newValue]?.elementRef?.current?.getAttribute("id")}`,
+          offsetTop
         );
-        hiddenDiv?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
       } else {
         items[newValue]?.elementRef?.current?.scrollIntoView({
           behavior: "smooth",
@@ -129,7 +118,8 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
           "scroll"
         );
       }
-    }, [handleOnChange, items, navItemClicked, sectionIsInView]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [handleOnChange, items, sectionIsInView]);
 
     // Set navItemClicked to false to re-enable the option
     // to update the tab value based on scroll.
@@ -145,6 +135,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         value={firstTabIndexInview}
         onChange={handleChange}
         aria-label="navigation-jump-to"
+        width={width}
         {...rest}
       >
         {items.map(({ title, elementRef }, index) => (
@@ -152,6 +143,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
             key={toKebabCase(title)}
             label={title}
             tabIndex={0}
+            width={width}
             {...a11yProps(
               toKebabCase(title),
               elementRef.current?.getAttribute("id") ||

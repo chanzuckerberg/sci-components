@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
  * Custom hook that observes elements to determine if they are in the viewport.
  *
  * @param items - Array of items to observe.
+ * @param offsetTop - Offset from the top of the viewport to consider when determining if an element is in view.
  * @returns Object containing the visibility status of each observed item.
  */
 export default function useInView(
   items: Array<{
     title: string;
     elementRef: React.MutableRefObject<HTMLElement | null>;
-  }>
+  }>,
+  offsetTop: number = 0
 ) {
   const [elements, setElements] = useState<{
     [key: string]: {
@@ -42,7 +44,9 @@ export default function useInView(
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback);
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: `-${offsetTop}px 0px 0px 0px`,
+    });
 
     // Observe each item's element
     items.forEach((item) => {
@@ -55,7 +59,7 @@ export default function useInView(
     return () => {
       observer.disconnect();
     };
-  }, [items]);
+  }, [items, offsetTop]);
 
   // If the window object is not available (e.g., in a node environment) or
   // If the IntersectionObserver is not available (e.g., in a test environment),

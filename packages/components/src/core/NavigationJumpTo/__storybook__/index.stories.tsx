@@ -22,6 +22,11 @@ export default {
       description:
         "To apply the offsetTop to the component, please refresh the page.",
     },
+    width: {
+      control: { type: "text" },
+      defaultValue: { summary: "180px" },
+      description: "The width of the component.",
+    },
   },
   component: NavigationJumpTo,
   parameters: {
@@ -35,13 +40,18 @@ export default {
 export const Default = {
   args: {
     items: [
-      { elementRef: { current: null }, title: "Item 1" },
+      {
+        elementRef: { current: null },
+        title:
+          "A long title for this item that will wrap to the next line if the component width is not enough.",
+      },
       { elementRef: { current: null }, title: "Item 2" },
       { elementRef: { current: null }, title: "Item 3" },
       { elementRef: { current: null }, title: "Item 4" },
       { elementRef: { current: null }, title: "Item 5" },
     ],
     offsetTop: 0,
+    width: "180px",
   },
   parameters: {
     axe: {
