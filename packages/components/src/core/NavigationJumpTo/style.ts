@@ -7,17 +7,21 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+import { CSSProperties } from "react";
 
 export interface NavigationJumpToExtraProps
   extends Omit<TabsProps, "onChange">,
-    CommonThemeProps {}
+    CommonThemeProps {
+  width?: CSSProperties["width"];
+}
 
-const doNotForwardProps = ["items", "sdsIndicatorColor"];
+const doNotForwardProps = ["items", "sdsIndicatorColor", "width"];
 
 export const StyledTabs = styled(Tabs, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: NavigationJumpToExtraProps) => {
+    const { width = "180px" } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
@@ -33,7 +37,7 @@ export const StyledTabs = styled(Tabs, {
         width: ${spaces?.xxxs}px;
       }
 
-      max-width: 180px;
+      width: ${width};
       top: ${spaces?.xl}px;
       margin-bottom: ${spaces?.l}px;
       margin-right: ${spaces?.m}px;
@@ -59,14 +63,13 @@ export const StyledTab = styled(Tab, {
 })`
   ${fontBodyXs}
 
-  ${(props: CommonThemeProps) => {
+  ${(props: NavigationJumpToExtraProps) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       ${focusVisibleA11yStyle(props)}
       box-sizing: border-box;
-      max-width: 180px;
       padding-left: ${spaces?.l}px;
       margin: 0 ${spaces?.l}px ${spaces?.m}px ${spaces?.l}px;
       align-items: start;
@@ -97,7 +100,7 @@ export const StyledTab = styled(Tab, {
         font-weight: 600;
       }
       &.MuiButtonBase-root {
-        white-space: nowrap;
+        text-align: left;
         padding: 0;
         overflow: visible;
       }
