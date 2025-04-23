@@ -2,7 +2,7 @@
 
 exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root MuiTabs-vertical css-1h239uw-MuiTabs-root"
+  class="MuiTabs-root MuiTabs-vertical css-1w9953g-MuiTabs-root"
 >
   <div
     class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -224,7 +224,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
       class="MuiBox-root css-1nbic85"
     >
       <div
-        class="MuiTabs-root MuiTabs-vertical css-1h239uw-MuiTabs-root"
+        class="MuiTabs-root MuiTabs-vertical css-19e5b2q-MuiTabs-root"
       >
         <div
           class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"

@@ -21,7 +21,7 @@ export const StyledTabs = styled(Tabs, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: NavigationJumpToExtraProps) => {
-    const { width = "180px" } = props;
+    const { width = "100%" } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 

@@ -24,7 +24,7 @@ export default {
     },
     width: {
       control: { type: "text" },
-      defaultValue: { summary: "180px" },
+      defaultValue: { summary: "100%" },
       description: "The width of the component.",
     },
   },
@@ -51,7 +51,7 @@ export const Default = {
       { elementRef: { current: null }, title: "Item 5" },
     ],
     offsetTop: 0,
-    width: "180px",
+    width: "200px",
   },
   parameters: {
     axe: {
