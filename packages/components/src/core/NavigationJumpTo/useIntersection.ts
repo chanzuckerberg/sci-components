@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
  * Custom hook that observes elements to determine if they are in the viewport.
  *
  * @param items - Array of items to observe.
- * @param offsetTop - Offset from the top of the viewport to consider when determining if an element is in view.
+ * @param offsetTop - Offset from the top of the viewport to consider when
+ * determining if an element is in view. The default is 0.
  * @returns Object containing the visibility status of each observed item.
  */
 export default function useInView(
