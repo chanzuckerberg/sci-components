@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.5.7](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.6...@czi-sds/components@22.5.7) (2025-04-24)
+
+### Bug Fixes
+
+- **MenuItem:** Add display flex to icon wrapper to fix the check icon position ([#962](https://github.com/chanzuckerberg/sci-components/issues/962)) ([2d27f2c](https://github.com/chanzuckerberg/sci-components/commit/2d27f2c3cafe59fa9d9691f800ef79cd7caa7a97))
+
 ## [22.5.6](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.5...@czi-sds/components@22.5.6) (2025-04-23)
 
 ### Bug Fixes
