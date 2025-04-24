@@ -202,6 +202,7 @@ export const StyledIconWrapper = styled("span")`
     const iconSizes = getIconSizes(props);
 
     return `
+      display: flex;
       align-self: start;
       margin-right: ${spaces?.m}px;
       margin-top: ${spaces?.xxxs}px;
