@@ -25,6 +25,7 @@ export const HistogramChart = (props: Args): JSX.Element => {
           },
           series: [
             {
+              barCategoryGap: 0,
               data: HISTOGRAM_DATA,
               type: "bar",
             },
