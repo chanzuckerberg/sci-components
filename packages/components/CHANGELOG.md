@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.7...@czi-sds/components@22.6.0) (2025-05-05)
+
+### Features
+
+- New QuestionMarkCircleSmall icon ([#965](https://github.com/chanzuckerberg/sci-components/issues/965)) ([f77991c](https://github.com/chanzuckerberg/sci-components/commit/f77991c87a303cab4f3bbbe32b77c341ebd5b6fc))
+
 ## [22.5.7](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.6...@czi-sds/components@22.5.7) (2025-04-24)
 
 ### Bug Fixes
