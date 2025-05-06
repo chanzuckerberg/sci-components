@@ -1,6 +1,30 @@
+import { useTheme } from "@mui/material";
 import { Args } from "@storybook/react";
 import Button from "src/core/Button";
+import { getSemanticColors } from "src/core/styles";
 import RawTooltip from "src/core/Tooltip";
+
+export const CustomComponentSlot = (): JSX.Element => {
+  const theme = useTheme();
+  const colors = getSemanticColors({ theme });
+
+  return (
+    <div
+      style={{
+        alignItems: "center",
+        border: `1px dashed ${colors?.base.borderPrimary}`,
+        display: "flex",
+        fontSize: 10,
+        fontWeight: "normal",
+        height: 50,
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      Component slot
+    </div>
+  );
+};
 
 export const Tooltip = (props: Args): JSX.Element => {
   const { title } = props;
