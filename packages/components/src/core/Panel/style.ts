@@ -98,7 +98,7 @@ export const StyledHeaderComponent = styled("div")`
     const spaces = getSpaces(props);
 
     return css`
-      margin-bottom: ${spaces?.xxl}px;
+      margin-bottom: ${spaces?.xl}px;
       display: flex;
       justify-content: space-between;
       align-items: start;
