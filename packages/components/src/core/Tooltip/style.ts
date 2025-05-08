@@ -22,6 +22,8 @@ export interface TooltipExtraProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
   subtitle?: React.ReactNode;
   width?: "default" | "wide";
+  textAlign?: "left" | "center" | "right";
+  componentSlot?: React.ReactNode;
 }
 
 const dark = (props: TooltipExtraProps): string => {
@@ -32,8 +34,6 @@ const dark = (props: TooltipExtraProps): string => {
     ${fontHeaderXs(props)}
     background-color: ${semanticColors?.base?.surfaceInverse};
     color: ${semanticColors?.base?.textPrimaryInverse};
-    text-align: center;
-    max-width: 250px;
     padding: ${spaces?.s}px ${spaces?.l}px;
   `;
 };
@@ -46,15 +46,7 @@ const light = (props: TooltipExtraProps): string => {
     ${fontBodyXs(props)}
     background-color: ${semanticColors?.base?.surface};
     color: ${semanticColors?.base?.textPrimary};
-    text-align: left;
-    max-width: 250px;
     padding: ${spaces?.s}px ${spaces?.l}px;
-  `;
-};
-
-const wide = (): string => {
-  return css`
-    max-width: 550px;
   `;
 };
 
@@ -66,9 +58,26 @@ const tableStyles = (props: TooltipExtraProps): string => {
   `;
 };
 
-const doNotForwardProps = ["hasInvertedStyle"];
+const doNotForwardProps = ["hasInvertedStyle", "textAlign"];
 
-export const Subtitle = styled("div", {
+export const StyledTitle = styled("p", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${fontHeaderXs}
+
+  ${(props: TooltipExtraProps) => {
+    const { hasInvertedStyle } = props;
+
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      margin: 0;
+      color: ${hasInvertedStyle ? semanticColors?.base?.textPrimaryInverse : semanticColors?.base?.textPrimary};
+    `;
+  }}
+`;
+
+export const StyledSubtitle = styled("p", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontBodyXxs}
@@ -79,6 +88,7 @@ export const Subtitle = styled("div", {
     const semanticColors = getSemanticColors(props);
 
     return `
+      margin: 0;
       color: ${hasInvertedStyle ? semanticColors?.base?.textSecondaryInverse : semanticColors?.base?.textSecondary};
     `;
   }}
@@ -91,18 +101,23 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
     sdsStyle,
     width,
     followCursor,
+    textAlign,
   } = props;
-
   const shadows = getShadows(props);
 
   return css`
     &.MuiTooltip-tooltip {
       box-shadow: ${shadows?.m};
+      max-width: ${width === "wide" ? "550px" : "250px"} !important;
+      text-align: ${textAlign
+        ? textAlign
+        : width === "wide"
+          ? "left"
+          : "center"} !important;
 
       ${sdsStyle === "dark" || inverted || hasInvertedStyle
         ? dark(props)
         : light(props)}
-      ${width === "wide" && sdsStyle === "light" && wide()}
 
       ${followCursor === true && tableStyles(props)}
     }
@@ -178,4 +193,14 @@ export const StyledPopper = styled(Popper)`
       box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
     }
   }
+`;
+
+export const StyledComponentSlotWrapper = styled("div")`
+  ${(props: TooltipExtraProps) => {
+    const spaces = getSpaces(props);
+    return `
+      margin-top: ${spaces?.m}px;
+      margin-bottom: ${spaces?.xxxs}px;
+    `;
+  }}
 `;
