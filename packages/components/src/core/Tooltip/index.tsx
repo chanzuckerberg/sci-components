@@ -10,8 +10,10 @@ import {
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 import {
+  StyledComponentSlotWrapper,
   StyledPopper,
-  Subtitle,
+  StyledSubtitle,
+  StyledTitle,
   TooltipExtraProps,
   arrowCss,
   tooltipCss,
@@ -42,6 +44,8 @@ const Tooltip = forwardRef(function Tooltip(
     title,
     width = "default",
     PopperComponent = StyledPopper,
+    textAlign,
+    componentSlot,
     ...rest
   } = props;
 
@@ -62,6 +66,7 @@ const Tooltip = forwardRef(function Tooltip(
     arrowOffset,
     classes,
     hasInvertedStyle: invertStyleValue(inverted, sdsStyle, hasInvertedStyle),
+    textAlign,
     theme,
     width,
     /* stylelint-enable property-no-unknown -- false positive */
@@ -85,9 +90,17 @@ const Tooltip = forwardRef(function Tooltip(
 
   const content = (
     <>
-      {title}
+      {title && (
+        <StyledTitle hasInvertedStyle={hasInvertedStyle}>{title}</StyledTitle>
+      )}
       {subtitle && (
-        <Subtitle hasInvertedStyle={hasInvertedStyle}>{subtitle}</Subtitle>
+        <StyledSubtitle hasInvertedStyle={hasInvertedStyle}>
+          {subtitle}
+        </StyledSubtitle>
+      )}
+
+      {componentSlot && (
+        <StyledComponentSlotWrapper>{componentSlot}</StyledComponentSlotWrapper>
       )}
     </>
   );
