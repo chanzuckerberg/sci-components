@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.6.0...@czi-sds/components@22.7.0) (2025-05-08)
+
+### Bug Fixes
+
+- Update panel header margin-bottom to use spaces.xl instead of spaces.xxl ([#967](https://github.com/chanzuckerberg/sci-components/issues/967)) ([a6de6c7](https://github.com/chanzuckerberg/sci-components/commit/a6de6c705e9bb214b2fc9e4d088f0ed56d73fd8b))
+
+### Features
+
+- Added new component slot prop to tooltips and fixed width prop ([#968](https://github.com/chanzuckerberg/sci-components/issues/968)) ([c7a9586](https://github.com/chanzuckerberg/sci-components/commit/c7a95861fe3fdc6d53e5c542ccb78181eb18658c))
+
 # [22.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.7...@czi-sds/components@22.6.0) (2025-05-05)
 
 ### Features
