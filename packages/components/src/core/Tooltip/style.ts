@@ -200,6 +200,7 @@ export const StyledComponentSlotWrapper = styled("div")`
     const spaces = getSpaces(props);
     return `
       margin-top: ${spaces?.m}px;
+      margin-bottom: ${spaces?.xxxs}px;
     `;
   }}
 `;
