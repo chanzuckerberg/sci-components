@@ -42,6 +42,7 @@ export interface ExtraDropdownProps<
     | AutocompleteSingleColumnOption<T>[]
     | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[];
   search?: boolean;
+  isSearchAutoFocus?: boolean;
   DropdownMenuProps?: Partial<
     SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>
   >;
@@ -85,6 +86,7 @@ const Dropdown = <
     label = "",
     multiple = false,
     search = false,
+    isSearchAutoFocus = true,
     buttonPosition = "right",
     buttons = false,
     // By default, most dropdowns will close when the user clicks outside the dropdown.
@@ -154,7 +156,10 @@ const Dropdown = <
         width={250}
         onChange={handleChange}
         value={isMultiColumn ? value : multiple ? pendingValue : value}
-        {...DropdownMenuProps}
+        {...{
+          isSearchAutoFocus,
+          ...DropdownMenuProps,
+        }}
         {...rest}
       >
         {shouldShowButtons ? (

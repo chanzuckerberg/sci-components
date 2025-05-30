@@ -17,7 +17,11 @@ import { PopperPlacementDemo } from "./stories/popperPlacement";
 
 export default {
   argTypes: {
-    DropdownMenuProps: { control: { type: "object" } },
+    DropdownMenuProps: {
+      control: {
+        type: "object",
+      },
+    },
     buttonPosition: {
       control: {
         labels: ["left", "right"],
@@ -41,7 +45,17 @@ export default {
         type: "boolean",
       },
     },
-    label: { control: { type: "text" } },
+    isSearchAutoFocus: {
+      control: {
+        type: "boolean",
+      },
+      defaultValue: true,
+    },
+    label: {
+      control: {
+        type: "text",
+      },
+    },
     multiple: {
       control: {
         type: "boolean",
@@ -96,6 +110,7 @@ export const Default = {
     buttons: false,
     closeOnBlur: true,
     disabled: false,
+    isSearchAutoFocus: true,
     isTriggerChangeOnOptionClick: false,
     label: DROPDOWN_LABEL,
     multiple: true,
