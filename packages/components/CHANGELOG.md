@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.7.0...@czi-sds/components@22.8.0) (2025-05-30)
+
+### Features
+
+- **Dropdown:** Add optional prop - isSearchAutoFocus ([#971](https://github.com/chanzuckerberg/sci-components/issues/971)) ([5c3b9f2](https://github.com/chanzuckerberg/sci-components/commit/5c3b9f2e4f98017d5a8829a215ae2e53d89eff07))
+
 # [22.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.6.0...@czi-sds/components@22.7.0) (2025-05-08)
 
 ### Bug Fixes
