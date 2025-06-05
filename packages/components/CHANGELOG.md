@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.9.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.8.0...@czi-sds/components@22.9.0) (2025-06-05)
+
+### Features
+
+- **Panel:** add isBackdropClickEnabled prop ([#973](https://github.com/chanzuckerberg/sci-components/issues/973)) ([9a81dcc](https://github.com/chanzuckerberg/sci-components/commit/9a81dcc894b75265c069998d3ad5085d6cb2c554))
+
 # [22.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.7.0...@czi-sds/components@22.8.0) (2025-05-30)
 
 ### Features
