@@ -8,6 +8,13 @@ import { ScrollBehaviorDemo } from "./stories/scrollBehavior";
 
 export default {
   argTypes: {
+    isBackdropClickEnabled: {
+      control: {
+        type: "boolean",
+      },
+      description:
+        "If true, clicking on the backdrop will close the panel. Only applies to overlay panels.",
+    },
     position: {
       control: {
         type: "select",
