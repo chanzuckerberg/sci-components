@@ -5,6 +5,7 @@ export interface BasicPanelProps extends Omit<DrawerProps, "variant"> {
   sdsType: "basic"; // Discriminator
   position?: "left" | "right";
   width?: number | string;
+  isBackdropClickEnabled?: boolean;
 }
 
 export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
@@ -14,6 +15,7 @@ export interface OverlayPanelProps extends Omit<DrawerProps, "variant"> {
   HeaderComponent?: React.ReactNode;
   closeButtonOnClick?: PanelHeaderCloseProps["onClick"];
   CloseButtonComponent?: PanelHeaderCloseProps["CloseButtonComponent"];
+  isBackdropClickEnabled?: boolean;
 }
 
 // Discriminated Union
