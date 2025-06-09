@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.9.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.8.0...@czi-sds/components@22.9.0) (2025-06-05)
+
+### Features
+
+- **Panel:** add isBackdropClickEnabled prop ([#973](https://github.com/chanzuckerberg/sci-components/issues/973)) ([9a81dcc](https://github.com/chanzuckerberg/sci-components/commit/9a81dcc894b75265c069998d3ad5085d6cb2c554))
+
+# [22.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.7.0...@czi-sds/components@22.8.0) (2025-05-30)
+
+### Features
+
+- **Dropdown:** Add optional prop - isSearchAutoFocus ([#971](https://github.com/chanzuckerberg/sci-components/issues/971)) ([5c3b9f2](https://github.com/chanzuckerberg/sci-components/commit/5c3b9f2e4f98017d5a8829a215ae2e53d89eff07))
+
+# [22.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.6.0...@czi-sds/components@22.7.0) (2025-05-08)
+
+### Bug Fixes
+
+- Update panel header margin-bottom to use spaces.xl instead of spaces.xxl ([#967](https://github.com/chanzuckerberg/sci-components/issues/967)) ([a6de6c7](https://github.com/chanzuckerberg/sci-components/commit/a6de6c705e9bb214b2fc9e4d088f0ed56d73fd8b))
+
+### Features
+
+- Added new component slot prop to tooltips and fixed width prop ([#968](https://github.com/chanzuckerberg/sci-components/issues/968)) ([c7a9586](https://github.com/chanzuckerberg/sci-components/commit/c7a95861fe3fdc6d53e5c542ccb78181eb18658c))
+
+# [22.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.7...@czi-sds/components@22.6.0) (2025-05-05)
+
+### Features
+
+- New QuestionMarkCircleSmall icon ([#965](https://github.com/chanzuckerberg/sci-components/issues/965)) ([f77991c](https://github.com/chanzuckerberg/sci-components/commit/f77991c87a303cab4f3bbbe32b77c341ebd5b6fc))
+
 ## [22.5.7](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.5.6...@czi-sds/components@22.5.7) (2025-04-24)
 
 ### Bug Fixes

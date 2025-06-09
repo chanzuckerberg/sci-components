@@ -1,7 +1,10 @@
 import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Tooltip } from "./stories/default";
-import { TOOLTIP_EXCLUDED_CONTROLS } from "./constants";
+import {
+  TOOLTIP_COMPONENT_SLOT_OPTIONS,
+  TOOLTIP_EXCLUDED_CONTROLS,
+} from "./constants";
 import { PlacementDemo } from "./stories/placementDemo";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
@@ -10,6 +13,14 @@ export default {
   argTypes: {
     arrowOffset: {
       control: { type: "number" },
+    },
+    componentSlot: {
+      control: {
+        labels: ["Component Placeholder", "Sample Link", "Empty"],
+        type: "select",
+      },
+      mapping: TOOLTIP_COMPONENT_SLOT_OPTIONS,
+      options: Object.keys(TOOLTIP_COMPONENT_SLOT_OPTIONS),
     },
     hasInvertedStyle: {
       control: { type: "boolean" },
@@ -30,6 +41,10 @@ export default {
         "top",
         "top-end",
       ],
+    },
+    textAlign: {
+      control: { type: "radio" },
+      options: ["left", "center", "right"],
     },
     title: {
       control: { type: "text" },

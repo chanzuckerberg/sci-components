@@ -24,6 +24,7 @@ const doNotForwardProps = [
   "disableScrollLock",
   "closeButtonOnClick",
   "CloseButtonComponent",
+  "isBackdropClickEnabled",
 ];
 
 const basicPanelStyles = (props: PanelExtraProps): SerializedStyles => {
@@ -98,7 +99,7 @@ export const StyledHeaderComponent = styled("div")`
     const spaces = getSpaces(props);
 
     return css`
-      margin-bottom: ${spaces?.xxl}px;
+      margin-bottom: ${spaces?.xl}px;
       display: flex;
       justify-content: space-between;
       align-items: start;

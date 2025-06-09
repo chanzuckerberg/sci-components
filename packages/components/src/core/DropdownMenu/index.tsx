@@ -113,6 +113,7 @@ const DropdownMenu = <
     PaperComponent = StyledPaper,
     PopperPlacement = "bottom-start",
     PopperBaseProps = {},
+    isSearchAutoFocus = true,
     search = false,
     title,
     headerComponentSlot,
@@ -142,10 +143,10 @@ const DropdownMenu = <
   const DefaultInputBaseProps = useMemo(() => {
     return {
       ...InputBaseProps,
-      autoFocus: true,
+      autoFocus: isSearchAutoFocus,
       onClick: noop,
     };
-  }, [InputBaseProps]);
+  }, [InputBaseProps, isSearchAutoFocus]);
 
   return (
     <PopperComponent

@@ -15,6 +15,7 @@ export interface StyleProps extends CommonThemeProps {
   count?: number;
   icon?: ReactElement;
   search?: boolean;
+  isSearchAutoFocus?: boolean;
   title?: string;
   isMultiColumn?: boolean;
 }
@@ -118,7 +119,7 @@ export const StyledPaper = styled(Paper, {
       // as it has been added to the parent container
       .MuiAutocomplete-root .MuiFormControl-root.MuiTextField-root {
         margin-right: 0;
-        margin-bottom: 0;  
+        margin-bottom: 0;
       }
     `;
   }}
