@@ -17,10 +17,15 @@ function isOverlayPanelProps(props: PanelProps): props is OverlayPanelProps {
   return props.sdsType === "overlay";
 }
 
+const SLOT_PROPS = {
+  backdrop: {
+    invisible: true,
+  },
+};
+
 /**
  * @see https://mui.com/material-ui/react-drawer/
  */
-
 const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
   const {
     children,
@@ -28,6 +33,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     position = "left",
     width,
     ModalProps,
+    isBackdropClickEnabled = false,
   } = props;
 
   const drawerWidth =
@@ -77,7 +83,8 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
         // not lock the page scroll when it is open.
         disableScrollLock: true,
       }}
-      hideBackdrop={true}
+      slotProps={SLOT_PROPS}
+      hideBackdrop={!isBackdropClickEnabled}
     >
       {isOverlayPanelProps(props) && (
         <StyledHeaderComponent>
