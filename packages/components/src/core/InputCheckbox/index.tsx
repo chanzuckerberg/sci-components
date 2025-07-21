@@ -11,7 +11,7 @@ import {
   StyledLabelContainer,
 } from "./styles";
 
-interface CheckboxContentProps
+export interface CheckboxContentProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
   caption?: string;
   checkboxProps?: Partial<MUICheckboxProps>;
@@ -80,7 +80,6 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledCheckbox
-          // disabled={disabled}
           checkedIcon={
             <StyledCheckboxCheckedIcon>
               <StyledIcon sdsIcon="Check" sdsSize="xs" />
@@ -98,7 +97,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
         />
       }
       disabled={disabled}
-      label={finalLabel}
+      label={label ? finalLabel : null}
       value={value}
     />
   );

@@ -18,6 +18,7 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
   "tertiaryText",
   "tertiaryTextWrapLineCount",
   "shouldShowTooltipOnHover",
+  "shouldShowUndelineOnHover",
   "shouldTextWrap",
   "tooltipProps",
   "horizontalAlign",

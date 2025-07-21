@@ -102,13 +102,21 @@ export const StyledTableRow = styled("tr", {
     return `
       align-items: center;
       border-bottom: ${useDivider ? borders?.base?.table : borders?.none};
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: ${selected ? semanticColors?.accent?.surfaceSecondary : semanticColors?.base?.backgroundPrimary};
+      }
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
-
-      ${selected ? `background-color: ${semanticColors?.accent?.surfacePrimary};` : ""}
-
       ${hover && hoverStyled(props)};
-
       ${disabled && disabledStyled(props)}
     `;
   }}

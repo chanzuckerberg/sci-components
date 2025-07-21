@@ -15,6 +15,12 @@ import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
+    component: {
+      control: { type: "select" },
+      defaultValue: { summary: "td" },
+      description: "The HTML element to render as (defaults to 'td')",
+      options: ["td", "div", "th", "span"],
+    },
     horizontalAlign: {
       control: { type: "select" },
       defaultValue: { summary: "left" },
@@ -86,6 +92,11 @@ export default {
       defaultValue: { summary: "true" },
       description: "Show tooltip on hover",
     },
+    shouldShowUndelineOnHover: {
+      control: { type: "boolean" },
+      defaultValue: { summary: "false" },
+      description: "Show underline for the primary text on hover",
+    },
     shouldTextWrap: {
       control: { type: "boolean" },
       defaultValue: { summary: "true" },
@@ -142,6 +153,7 @@ export const Default = {
     secondaryText: "Secondary Text",
     secondaryTextWrapLineCount: 1,
     shouldShowTooltipOnHover: true,
+    shouldShowUndelineOnHover: false,
     shouldTextWrap: true,
     tabularNums: false,
     tertiaryText: "Tertiary Text",

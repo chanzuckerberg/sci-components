@@ -17,6 +17,7 @@ import Icon from "../Icon";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "negative" | "notice" | "positive";
+  label?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -83,6 +84,8 @@ export const StyledCheckboxCheckedIcon = styled("div")`
 
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props: CheckboxExtraProps) => {
+    const { label } = props;
+
     const spaces = getSpaces(props);
 
     return `
@@ -90,7 +93,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
         ${focusVisibleA11yStyle(props)}
         
         padding: 0;
-        margin-right: ${spaces?.s}px;
+        margin-right: ${label ? spaces?.s : 0}px;
         border-radius: 0;
 
         &:hover {
@@ -164,7 +167,7 @@ const disabledStyles = (props: CheckboxExtraProps) => {
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
   ${(props: CheckboxExtraProps) => {
-    const { disabled } = props;
+    const { disabled, label } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -172,7 +175,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
     return `
       align-items: start;
-      margin-bottom: ${spaces?.l}px;
+      margin-bottom: ${label ? spaces?.l : 0}px;
       margin-left: 0;
       margin-right: 0;
       width: fit-content;

@@ -165,5 +165,8 @@
     ]
   },
   "main": "index.js",
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@4.1.0",
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3"
+  }
 }

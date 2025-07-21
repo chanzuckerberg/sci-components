@@ -2,19 +2,25 @@ import React, { forwardRef, ReactNode } from "react";
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 
 interface CellComponentContentProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
   children?: ReactNode;
+  as?: React.ElementType;
 }
 
 export type CellComponentProps = CellComponentContentProps &
   CellComponentExtraProps;
 
-const CellComponent = forwardRef(
-  (props: CellComponentProps, _): JSX.Element | null => {
-    const { children, ...rest } = props;
+const CellComponent = forwardRef<HTMLDivElement, CellComponentProps>(
+  (props: CellComponentProps, ref): JSX.Element | null => {
+    const { children, as = "td", ...rest } = props;
 
     return (
-      <StyledCellComponentData className="cell-component" {...rest}>
+      <StyledCellComponentData
+        ref={ref}
+        className="cell-component"
+        as={as}
+        {...rest}
+      >
         {children}
       </StyledCellComponentData>
     );

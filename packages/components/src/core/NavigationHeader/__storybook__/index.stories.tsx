@@ -216,6 +216,7 @@ export const Default = {
         ],
         key: "3",
         label: "Primary",
+        onClick: () => alert("You clicked on a dropdown item!"),
       },
     ],
     scrollElevation: true,
