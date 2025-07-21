@@ -198,6 +198,7 @@ export const Default = {
       {
         key: "2",
         label: "Primary",
+        onClick: () => console.log("You clicked on a Text PrimaryNavItem!"),
         tag: "Beta",
         tagColor: "beta",
       },
@@ -211,11 +212,12 @@ export const Default = {
           },
           {
             label: "Show an Alert!",
-            onClick: () => alert("You clicked on a dropdown item!"),
+            onClick: () => alert("You clicked on a dropdown menu item!"),
           },
         ],
         key: "3",
         label: "Primary",
+        onClick: () => console.log("You clicked on a Dropdown PrimaryNavItem!"),
       },
     ],
     scrollElevation: true,
