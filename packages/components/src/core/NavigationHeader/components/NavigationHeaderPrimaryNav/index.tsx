@@ -19,6 +19,7 @@ interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
   key: T;
   label: ReactNode;
+  onClick?: (e: React.SyntheticEvent) => void;
 }
 
 export interface TextNavigationHeaderPrimaryNavItem<T extends string>
@@ -26,7 +27,6 @@ export interface TextNavigationHeaderPrimaryNavItem<T extends string>
   itemType: "text";
   tag?: string;
   tagColor?: SdsTagColorType;
-  onClick?: (e: React.SyntheticEvent) => void;
 }
 
 interface DropdownItem {
@@ -69,6 +69,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");
 
   const open = Boolean(anchorEl);
+
   function onClose() {
     setAnchorEl(null);
   }
@@ -85,7 +86,14 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   return (
     <StyledSection isNarrow={isNarrow}>
       {items.map((item) => {
-        const { key, label, tag, tagColor, ...rest } = item;
+        const {
+          key,
+          label,
+          tag,
+          tagColor,
+          onClick: parentOnClick,
+          ...rest
+        } = item;
         const isActive = key === value;
 
         if (item.itemType === "dropdown" && !isNarrow) {
@@ -102,6 +110,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                 onClick={(e) => {
                   setAnchorEl(e.currentTarget);
                   onChange(key);
+                  parentOnClick?.(e);
                 }}
                 hasInvertedStyle={hasInvertedStyle}
                 isNarrow={isNarrow}
