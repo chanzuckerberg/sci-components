@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.9.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.9.0...@czi-sds/components@22.9.1) (2025-07-21)
+
+### Bug Fixes
+
+- **navigationheader:** add onClick for PrimaryNavItems of type dropdown ([#975](https://github.com/chanzuckerberg/sci-components/issues/975)) ([f6e669e](https://github.com/chanzuckerberg/sci-components/commit/f6e669e1c95d229ed9a1acd6f80a58495615c764))
+
 # [22.9.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.8.0...@czi-sds/components@22.9.0) (2025-06-05)
 
 ### Features
