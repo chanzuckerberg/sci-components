@@ -268,5 +268,81 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo {...args} />,
+  render:(args: Args) => <TestDemo {...args} />
+};
+
+// Dropdown with Sections Demo
+
+export const DropdownWithSections = {
+  args: {
+    logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
+    title: "My App", 
+    primaryNavItems: [
+      {
+        key: "home",
+        label: "Home",
+        itemType: "text",
+        onClick: () => console.log("Home clicked"),
+      },
+      {
+        key: "products", 
+        label: "Products",
+        itemType: "dropdown",
+        onClick: () => console.log("Products dropdown clicked"),
+        items: [
+          {
+            label: "Data Analysis Tools",
+            section: "Analytics",
+            onClick: () => alert("Data Analysis Tools clicked"),
+          },
+          {
+            label: "Visualization Suite", 
+            section: "Analytics",
+            onClick: () => alert("Visualization Suite clicked"),
+          },
+          {
+            label: "Report Generator",
+            section: "Analytics", 
+            onClick: () => alert("Report Generator clicked"),
+          },
+          {
+            label: "Cloud Storage",
+            section: "Infrastructure",
+            onClick: () => alert("Cloud Storage clicked"),
+          },
+          {
+            label: "API Gateway",
+            section: "Infrastructure", 
+            onClick: () => alert("API Gateway clicked"),
+          },
+          {
+            label: "Authentication",
+            section: "Infrastructure",
+            onClick: () => alert("Authentication clicked"),
+          },
+          {
+            label: "Documentation",
+            onClick: () => alert("Documentation clicked"),
+          },
+          {
+            label: "Help Center", 
+            onClick: () => alert("Help Center clicked"),
+          },
+        ],
+      },
+      {
+        key: "about",
+        label: "About", 
+        itemType: "text",
+        onClick: () => console.log("About clicked"),
+      },
+    ],
+    showSearch: true,
+  },
+  parameters: {
+    controls: {
+      expanded: true,
+    },
+    layout: "fullscreen",
+  },
 };
