@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.10.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.9.1...@czi-sds/components@22.10.0) (2025-07-28)
+
+### Features
+
+- add sections to dropdown menus in navs ([#978](https://github.com/chanzuckerberg/sci-components/issues/978)) ([b2b4079](https://github.com/chanzuckerberg/sci-components/commit/b2b40795da95b33619b9a2f7bbcf84e807c93345))
+
 ## [22.9.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.9.0...@czi-sds/components@22.9.1) (2025-07-21)
 
 ### Bug Fixes
