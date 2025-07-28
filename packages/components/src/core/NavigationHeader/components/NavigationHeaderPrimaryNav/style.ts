@@ -19,7 +19,12 @@ interface PrimaryNavItemProps extends ExtraHeaderProps {
   itemType?: "dropdown" | "text";
 }
 
-const doNotForwardProps = ["active", "hasInvertedStyle", "isNarrow"];
+const doNotForwardProps = [
+  "active",
+  "hasInvertedStyle",
+  "isNarrow",
+  "hasSection",
+];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   const { active, hasInvertedStyle } = props;

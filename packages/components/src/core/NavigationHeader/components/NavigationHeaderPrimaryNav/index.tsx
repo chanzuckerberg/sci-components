@@ -7,13 +7,14 @@ import {
   StyledTag,
 } from "./style";
 import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
-import { StyledSection } from "../style";
+import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
 import Menu from "src/core/Menu";
 import MenuItem from "src/core/MenuItem";
 import Icon from "src/core/Icon";
 import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
+import { groupItemsBySection } from "../../utils";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -29,9 +30,10 @@ export interface TextNavigationHeaderPrimaryNavItem<T extends string>
   tagColor?: SdsTagColorType;
 }
 
-interface DropdownItem {
+export interface DropdownItem {
   label: ReactNode;
-  onClick?: () => void;
+  section?: string;
+  onClick?: (event: React.MouseEvent) => void;
   component?: React.ElementType;
   href?: string;
   rel?: string;
@@ -149,22 +151,54 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                   vertical: "top",
                 }}
               >
-                {dropdownItem.items.map((subItem: DropdownItem) => {
-                  const { label: subLabel, onClick, ...subItemRest } = subItem;
-                  return (
-                    <MenuItem
-                      key={`menu-item-${subLabel}`}
-                      onClick={() => {
-                        onClick?.();
-                        onClose();
-                      }}
-                      sx={{ minWidth: menuWidth }}
-                      {...subItemRest}
-                    >
-                      {subLabel}
-                    </MenuItem>
-                  );
-                })}
+                {(() => {
+                  const groupedItems = groupItemsBySection(dropdownItem.items);
+                  const sections = Object.keys(groupedItems);
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
+
+                  return sections.map((section, sectionIndex) => {
+                    const sectionItems = groupedItems[section];
+                    const showDivider = hasMultipleSections && sectionIndex > 0;
+
+                    return (
+                      <div key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
+                            isNarrow={isNarrow}
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
+                            {section}
+                          </StyledSectionHeader>
+                        )}
+                        {sectionItems.map((subItem: DropdownItem) => {
+                          const {
+                            label: subLabel,
+                            onClick,
+                            ...subItemRest
+                          } = subItem;
+                          return (
+                            <MenuItem
+                              key={`menu-item-${subLabel}`}
+                              onClick={(e) => {
+                                onClick?.(e);
+                                onClose();
+                              }}
+                              sx={{ minWidth: menuWidth }}
+                              {...subItemRest}
+                            >
+                              {subLabel}
+                            </MenuItem>
+                          );
+                        })}
+                      </div>
+                    );
+                  });
+                })()}
               </Menu>
             </Fragment>
           );
@@ -182,26 +216,54 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             >
               <AccordionHeader>{item.label}</AccordionHeader>
               <AccordionDetails>
-                {dropdownItem.items.map((subItem) => {
-                  const {
-                    label: dropdownItemLabel,
-                    onClick,
-                    ...accordionSubItemRest
-                  } = subItem;
+                {(() => {
+                  const groupedItems = groupItemsBySection(dropdownItem.items);
+                  const sections = Object.keys(groupedItems);
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
 
-                  return (
-                    <StyledSubItem
-                      key={`primary-nav-item-${dropdownItemLabel}`}
-                      onClick={() => {
-                        onClick?.();
-                        onClose();
-                      }}
-                      {...accordionSubItemRest}
-                    >
-                      {dropdownItemLabel}
-                    </StyledSubItem>
-                  );
-                })}
+                  return sections.map((section, sectionIndex) => {
+                    const sectionItems = groupedItems[section];
+                    const showDivider = hasMultipleSections && sectionIndex > 0;
+
+                    return (
+                      <Fragment key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
+                            isNarrow={isNarrow}
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
+                            {section}
+                          </StyledSectionHeader>
+                        )}
+                        {sectionItems.map((subItem) => {
+                          const {
+                            label: dropdownItemLabel,
+                            onClick,
+                            ...accordionSubItemRest
+                          } = subItem;
+
+                          return (
+                            <StyledSubItem
+                              key={`primary-nav-item-${dropdownItemLabel}`}
+                              onClick={(e) => {
+                                onClick?.(e);
+                                onClose();
+                              }}
+                              {...accordionSubItemRest}
+                            >
+                              {dropdownItemLabel}
+                            </StyledSubItem>
+                          );
+                        })}
+                      </Fragment>
+                    );
+                  });
+                })()}
               </AccordionDetails>
             </StyledAccordion>
           );
