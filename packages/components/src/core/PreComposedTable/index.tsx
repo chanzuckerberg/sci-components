@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect, createContext } from "react";
-import { useTheme } from "@mui/material/styles";
 import {
   useReactTable,
   getCoreRowModel,
@@ -29,11 +28,9 @@ import CellHeader from "../CellHeader";
 import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
 import Pagination, { PaginationProps } from "src/core/Pagination";
-import { getSemanticColors } from "src/core/styles";
 import {
   StyledInputSearch,
   StyledPaginationWrapper,
-  StyledPinnedCell,
   StyledTableContainer,
   StyledTableWrapper,
 } from "./style";
@@ -90,7 +87,6 @@ const PreComposedTable = <TData extends RowData>({
   onRowSelect,
   tableRowProps,
 }: PreComposedTableProps<TData>) => {
-  const theme = useTheme();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -115,11 +111,7 @@ const PreComposedTable = <TData extends RowData>({
           accessorFn: () => null,
           cell: (props: CellContext<TData, unknown>) => {
             const { row, cell } = props;
-            const pinnedStyle = getCommonPinningStyles(
-              cell.column,
-              false,
-              false
-            );
+            const pinnedStyle = getCommonPinningStyles(cell.column);
 
             return (
               <CellComponent
@@ -150,11 +142,7 @@ const PreComposedTable = <TData extends RowData>({
             table: TanstackTable<TData>;
             header: Header<TData, unknown>;
           }) => {
-            const pinnedStyle = getCommonPinningStyles(
-              header.column,
-              false,
-              false
-            );
+            const pinnedStyle = getCommonPinningStyles(header.column);
             let stage: "checked" | "unchecked" | "indeterminate" = "unchecked";
             if (table.getIsAllPageRowsSelected()) {
               stage = "checked";
@@ -295,9 +283,7 @@ const PreComposedTable = <TData extends RowData>({
   };
 
   const getCommonPinningStyles = (
-    column: Column<TData, unknown>,
-    isRowHovered = false,
-    isRowSelected = false
+    column: Column<TData, unknown>
   ): React.CSSProperties => {
     const columnWithPinning = column.columnDef as ColumnDef<TData>;
     const shouldPin = columnWithPinning.meta?.pinning;
@@ -314,34 +300,19 @@ const PreComposedTable = <TData extends RowData>({
     const rightPosition =
       shouldPin === "right" ? calculateRightPosition(column) : 0;
 
-    // Get semantic colors for consistent theming
-    const semanticColors = getSemanticColors({ theme });
-    const hoverColor = semanticColors?.base?.fillHover;
-    const defaultColor = semanticColors?.base?.backgroundPrimary;
-    const selectedColor = semanticColors?.accent?.surfaceSecondary;
-
     return {
-      backgroundColor: isRowSelected
-        ? selectedColor
-        : isRowHovered
-          ? hoverColor
-          : defaultColor,
       left: shouldPin === "left" ? `${leftPosition}px` : undefined,
       position: "sticky" as const,
       right: shouldPin === "right" ? `${rightPosition}px` : undefined,
       width: column.getSize(),
-      zIndex: 100,
+      zIndex: 1,
     };
   };
 
   const renderCell = (cell: Cell<TData, unknown>, row: Row<TData>) => {
     const isRowHovered = hoveredRowId === row.id;
     const isPinned = cell.column.columnDef.meta?.pinning;
-    const pinnedStyle = getCommonPinningStyles(
-      cell.column,
-      isRowHovered,
-      row.getIsSelected()
-    );
+    const pinnedStyle = getCommonPinningStyles(cell.column);
 
     let cellContent;
 
@@ -383,13 +354,9 @@ const PreComposedTable = <TData extends RowData>({
     if (isPinned) {
       return (
         <RowHoverContext.Provider key={cell.id} value={{ isRowHovered }}>
-          <StyledPinnedCell
-            selected={row.getIsSelected()}
-            hover={isRowHovered}
-            style={{ ...pinnedStyle, width: `${cell.column.getSize()}px` }}
-          >
+          <td style={{ ...pinnedStyle, width: `${cell.column.getSize()}px` }}>
             {cellContent}
-          </StyledPinnedCell>
+          </td>
         </RowHoverContext.Provider>
       );
     }
@@ -413,7 +380,7 @@ const PreComposedTable = <TData extends RowData>({
     const isSorted = header.column.getIsSorted();
     const sortDirection = header.column.getIsSorted() as "asc" | "desc";
     const isPinned = header.column.columnDef.meta?.pinning;
-    const pinnedStyle = getCommonPinningStyles(header.column, false, false);
+    const pinnedStyle = getCommonPinningStyles(header.column);
 
     if (typeof header.column.columnDef.header === "string") {
       return (

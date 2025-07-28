@@ -5,6 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import CellBasic from "src/core/CellBasic";
 import Link from "src/core/Link";
 import CellHeader from "src/core/CellHeader";
+import { TABLE_ON_ROW_SELECT_OPTIONS } from "./constants";
 
 const meta: Meta<typeof PreComposedTable> = {
   argTypes: {
@@ -27,6 +28,15 @@ const meta: Meta<typeof PreComposedTable> = {
     enableSorting: {
       control: "boolean",
       description: "Enable column sorting",
+    },
+    onRowSelect: {
+      control: {
+        labels: ["log selected rows", "none"],
+        type: "select",
+      },
+      description: "Callback function when rows are selected",
+      mapping: TABLE_ON_ROW_SELECT_OPTIONS,
+      options: Object.keys(TABLE_ON_ROW_SELECT_OPTIONS),
     },
     paginationConfig: {
       control: "object",
@@ -144,7 +154,7 @@ const columns: ColumnDef<DataType>[] = [
         shouldShowTooltipOnHover={false}
         shouldShowUndelineOnHover={true}
         link="https://www.google.com"
-        // linkComponent={Link}
+        linkComponent="a"
         linkProps={{
           target: "_blank",
         }}
@@ -318,19 +328,13 @@ export const Default: Story = {
     enablePagination: true,
     enableRowSelection: true,
     enableSorting: true,
+    onRowSelect: undefined,
     paginationConfig: { pageSize: 10 },
     shouldPinSelectRowToLeft: true,
     tableWidth: "100%",
   },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
-    <PreComposedTable
-      data={_data}
-      columns={_columns}
-      {...args}
-      onRowSelect={(selectedRows) => {
-        console.log(selectedRows);
-      }}
-    />
+    <PreComposedTable data={_data} columns={_columns} {...args} />
   ),
 };
 

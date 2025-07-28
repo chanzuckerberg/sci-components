@@ -72,11 +72,33 @@ const disabledStyled = (props: RowExtraProps) => {
 };
 
 const hoverStyled = (props: RowExtraProps) => {
+  const { selected } = props;
   const semanticColors = getSemanticColors(props);
 
   return `
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
+      td, th {
+        position: relative;
+        background-color: ${selected ? semanticColors?.accent?.surfaceSecondary : semanticColors?.base?.backgroundPrimary};
+
+        &:before {
+          background-color: ${semanticColors?.base?.fillHover};
+        }
+      }
+    }
+  `;
+};
+
+const selectedStyled = (props: RowExtraProps) => {
+  const semanticColors = getSemanticColors(props);
+
+  return `
+    td, th {
+      &:before {
+        background-color: ${semanticColors?.accent?.surfaceSecondary};
+      }
+
+      background-color: ${semanticColors?.accent?.surfaceSecondary};
     }
   `;
 };
@@ -104,19 +126,25 @@ export const StyledTableRow = styled("tr", {
       border-bottom: ${useDivider ? borders?.base?.table : borders?.none};
       position: relative;
 
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: ${selected ? semanticColors?.accent?.surfaceSecondary : semanticColors?.base?.backgroundPrimary};
+      td, th {
+        position: sticky !important;
+        background-color: ${semanticColors?.base?.backgroundPrimary};
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-color: ${semanticColors?.base?.backgroundPrimary};
+        }
       }
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
       ${hover && hoverStyled(props)};
+      ${selected && selectedStyled(props)};
       ${disabled && disabledStyled(props)}
     `;
   }}

@@ -245,9 +245,6 @@ export const StyledCellBasicLink = styled("a")`
     return `
       text-decoration: none;
       color: ${semanticColors?.base?.textPrimary};
-      &:hover {
-        color: red !important;
-      }
     `;
   }}
 `;
