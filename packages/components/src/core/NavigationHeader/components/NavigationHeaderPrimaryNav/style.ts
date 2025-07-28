@@ -7,21 +7,24 @@ import {
   getSpaces,
   fontBodySemiboldM,
   fontBody,
-  fontCapsXxxxs,
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Accordion from "src/core/Accordion";
 import MenuItem from "src/core/MenuItem";
 import Tag from "src/core/Tag";
-import ListSubheader from "src/core/List/components/ListSubheader";
 
 interface PrimaryNavItemProps extends ExtraHeaderProps {
   active?: boolean;
   itemType?: "dropdown" | "text";
 }
 
-const doNotForwardProps = ["active", "hasInvertedStyle", "isNarrow"];
+const doNotForwardProps = [
+  "active",
+  "hasInvertedStyle",
+  "isNarrow",
+  "hasSection",
+];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   const { active, hasInvertedStyle } = props;
@@ -314,25 +317,4 @@ export const StyledSubItem = styled(MenuItem)`
       font-weight: 600;
     }
   }
-`;
-
-export const StyledSectionHeader = styled(ListSubheader)`
-  &.MuiListSubheader-root& {
-    ${fontCapsXxxxs} 
-  }
-  
-  ${(props: ExtraHeaderProps) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return css`
-      &.MuiListSubheader-root& {
-        top: 0;
-        color: ${semanticColors?.base?.textSecondary};
-        background-color: ${semanticColors?.base?.surface};
-        padding: ${spaces?.xxs}px ${spaces?.s}px;
-        margin-bottom: 0px;
-      }
-    `;
-  }}
 `;

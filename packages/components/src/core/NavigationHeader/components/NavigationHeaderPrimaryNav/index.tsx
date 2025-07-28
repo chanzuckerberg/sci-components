@@ -5,16 +5,16 @@ import {
   StyledLabel,
   StyledSubItem,
   StyledTag,
-  StyledSectionHeader,
 } from "./style";
 import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
-import { StyledSection } from "../style";
+import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
 import Menu from "src/core/Menu";
 import MenuItem from "src/core/MenuItem";
 import Icon from "src/core/Icon";
 import { SDSTheme } from "src/core/styles";
-import { useTheme, Divider } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
+import { groupItemsBySection } from "../../utils";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -30,10 +30,10 @@ export interface TextNavigationHeaderPrimaryNavItem<T extends string>
   tagColor?: SdsTagColorType;
 }
 
-interface DropdownItem {
+export interface DropdownItem {
   label: ReactNode;
   section?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
   component?: React.ElementType;
   href?: string;
   rel?: string;
@@ -56,17 +56,6 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   items: NavigationHeaderPrimaryNavItem<T>[];
   onChange(value: T): void;
   value: T;
-}
-
-// Helper function to group dropdown items by section
-function groupItemsBySection(items: DropdownItem[]): Record<string, DropdownItem[]> {
-  return items.reduce((groups, item) => {
-    const section = item.section || "";
-    return {
-      ...groups,
-      [section]: [...(groups[section] || []), item],
-    };
-  }, {} as Record<string, DropdownItem[]>);
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -165,30 +154,38 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                 {(() => {
                   const groupedItems = groupItemsBySection(dropdownItem.items);
                   const sections = Object.keys(groupedItems);
-                  const hasMultipleSections = sections.length > 1 || sections.some(section => section !== "");
-                  
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
+
                   return sections.map((section, sectionIndex) => {
                     const sectionItems = groupedItems[section];
                     const showDivider = hasMultipleSections && sectionIndex > 0;
-                    
+
                     return (
-                      <Fragment key={`section-${section || 'default'}`}>
-                        {showDivider && <Divider />}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader 
-                            hasInvertedStyle={hasInvertedStyle}
+                      <div key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
                             isNarrow={isNarrow}
-                          >
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
                             {section}
                           </StyledSectionHeader>
                         )}
                         {sectionItems.map((subItem: DropdownItem) => {
-                          const { label: subLabel, onClick, section: _, ...subItemRest } = subItem;
+                          const {
+                            label: subLabel,
+                            onClick,
+                            ...subItemRest
+                          } = subItem;
                           return (
                             <MenuItem
                               key={`menu-item-${subLabel}`}
-                              onClick={() => {
-                                onClick?.();
+                              onClick={(e) => {
+                                onClick?.(e);
                                 onClose();
                               }}
                               sx={{ minWidth: menuWidth }}
@@ -198,7 +195,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                             </MenuItem>
                           );
                         })}
-                      </Fragment>
+                      </div>
                     );
                   });
                 })()}
@@ -222,20 +219,24 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                 {(() => {
                   const groupedItems = groupItemsBySection(dropdownItem.items);
                   const sections = Object.keys(groupedItems);
-                  const hasMultipleSections = sections.length > 1 || sections.some(section => section !== "");
-                  
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
+
                   return sections.map((section, sectionIndex) => {
                     const sectionItems = groupedItems[section];
                     const showDivider = hasMultipleSections && sectionIndex > 0;
-                    
+
                     return (
-                      <Fragment key={`section-${section || 'default'}`}>
-                        {showDivider && <Divider sx={{ my: 1 }} />}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader 
-                            hasInvertedStyle={hasInvertedStyle}
+                      <Fragment key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
                             isNarrow={isNarrow}
-                          >
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
                             {section}
                           </StyledSectionHeader>
                         )}
@@ -243,15 +244,14 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                           const {
                             label: dropdownItemLabel,
                             onClick,
-                            section: _,
                             ...accordionSubItemRest
                           } = subItem;
 
                           return (
                             <StyledSubItem
                               key={`primary-nav-item-${dropdownItemLabel}`}
-                              onClick={() => {
-                                onClick?.();
+                              onClick={(e) => {
+                                onClick?.(e);
                                 onClose();
                               }}
                               {...accordionSubItemRest}
