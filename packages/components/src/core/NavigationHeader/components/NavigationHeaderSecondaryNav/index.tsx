@@ -1,5 +1,5 @@
-import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
-import { StyledSection } from "../style";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
 import { StyledAccordion, StyledSubItem, StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
@@ -8,19 +8,12 @@ import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
+import { DropdownItem } from "../NavigationHeaderPrimaryNav";
+import { groupItemsBySection } from "../../utils";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
   itemType: "text";
-}
-
-interface DropdownItem {
-  label: ReactNode;
-  onClick?: (event: React.MouseEvent) => void;
-  component?: React.ElementType;
-  href?: string;
-  rel?: string;
-  target?: string;
 }
 
 interface DropdownHeaderSecondaryNavItem
@@ -68,11 +61,11 @@ export default function NavigationHeaderSecondaryNav({
   return (
     <StyledSection gap="l" isNarrow={isNarrow}>
       {items.map((item) => {
-        const { itemType, label, ...rest } = item;
+        const { itemType, label, key, ...rest } = item;
 
         if (itemType === "dropdown" && !isNarrow) {
           return (
-            <Fragment key={`${label}-dropdown`}>
+            <Fragment key={`${key}-${label}-dropdown`}>
               <StyledTextItem
                 {...rest}
                 ref={buttonRef}
@@ -112,22 +105,54 @@ export default function NavigationHeaderSecondaryNav({
                   vertical: "top",
                 }}
               >
-                {item.items.map((subItem) => {
-                  const { label: menuLabel, onClick, ...subItemRest } = subItem;
-                  return (
-                    <MenuItem
-                      key={`menu-item-${menuLabel}`}
-                      onClick={(event) => {
-                        onClick?.(event);
-                        onClose();
-                      }}
-                      sx={{ minWidth: menuWidth }}
-                      {...subItemRest}
-                    >
-                      {menuLabel}
-                    </MenuItem>
-                  );
-                })}
+                {(() => {
+                  const groupedItems = groupItemsBySection(item.items);
+                  const sections = Object.keys(groupedItems);
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
+
+                  return sections.map((section, sectionIndex) => {
+                    const sectionItems = groupedItems[section];
+                    const showDivider = hasMultipleSections && sectionIndex > 0;
+
+                    return (
+                      <div key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
+                            isNarrow={isNarrow}
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
+                            {section}
+                          </StyledSectionHeader>
+                        )}
+                        {sectionItems.map((subItem: DropdownItem) => {
+                          const {
+                            label: subLabel,
+                            onClick,
+                            ...subItemRest
+                          } = subItem;
+                          return (
+                            <MenuItem
+                              key={`menu-item-${subLabel}`}
+                              onClick={(e) => {
+                                onClick?.(e);
+                                onClose();
+                              }}
+                              sx={{ minWidth: menuWidth }}
+                              {...subItemRest}
+                            >
+                              {subLabel}
+                            </MenuItem>
+                          );
+                        })}
+                      </div>
+                    );
+                  });
+                })()}
               </Menu>
             </Fragment>
           );
@@ -143,26 +168,54 @@ export default function NavigationHeaderSecondaryNav({
             >
               <AccordionHeader>{label}</AccordionHeader>
               <AccordionDetails>
-                {item.items.map((subItem) => {
-                  const {
-                    label: accordionLabel,
-                    onClick,
-                    ...accordionSubItemRest
-                  } = subItem;
+                {(() => {
+                  const groupedItems = groupItemsBySection(item.items);
+                  const sections = Object.keys(groupedItems);
+                  const hasMultipleSections =
+                    sections.length > 1 ||
+                    sections.some((section) => section !== "");
 
-                  return (
-                    <StyledSubItem
-                      key={`accordion-item-${accordionLabel}`}
-                      onClick={(event) => {
-                        onClick?.(event);
-                        onClose();
-                      }}
-                      {...accordionSubItemRest}
-                    >
-                      {accordionLabel}
-                    </StyledSubItem>
-                  );
-                })}
+                  return sections.map((section, sectionIndex) => {
+                    const sectionItems = groupedItems[section];
+                    const showDivider = hasMultipleSections && sectionIndex > 0;
+
+                    return (
+                      <Fragment key={`section-${section || "default"}`}>
+                        {showDivider && (
+                          <StyledDivider
+                            hasSection={!!section}
+                            isNarrow={isNarrow}
+                          />
+                        )}
+                        {section && hasMultipleSections && (
+                          <StyledSectionHeader isNarrow={isNarrow}>
+                            {section}
+                          </StyledSectionHeader>
+                        )}
+                        {sectionItems.map((subItem) => {
+                          const {
+                            label: dropdownItemLabel,
+                            onClick,
+                            ...accordionSubItemRest
+                          } = subItem;
+
+                          return (
+                            <StyledSubItem
+                              key={`primary-nav-item-${dropdownItemLabel}`}
+                              onClick={(e) => {
+                                onClick?.(e);
+                                onClose();
+                              }}
+                              {...accordionSubItemRest}
+                            >
+                              {dropdownItemLabel}
+                            </StyledSubItem>
+                          );
+                        })}
+                      </Fragment>
+                    );
+                  });
+                })()}
               </AccordionDetails>
             </StyledAccordion>
           );

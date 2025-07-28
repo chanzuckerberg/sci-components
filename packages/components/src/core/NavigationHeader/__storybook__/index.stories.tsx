@@ -4,6 +4,7 @@ import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
   NAVIGATION_HEADER_LOGO_OPTIONS,
+  SECTIONED_NAV_ITEMS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
 
@@ -247,6 +248,63 @@ export const Default = {
     showSearch: true,
     tag: "Beta",
     tagColor: "beta",
+  },
+  parameters: {
+    controls: {
+      expanded: true,
+    },
+    layout: "fullscreen",
+  },
+};
+
+// Dropdown with Sections Demo
+
+export const DropdownWithSections = {
+  args: {
+    buttons: [
+      {
+        children: "Sing in",
+        sdsType: "secondary",
+      },
+      {
+        children: "My Profile",
+        icon: "Person",
+        onClick: () => alert("clicked on my profile"),
+      },
+    ],
+    primaryNavItems: [
+      {
+        itemType: "text",
+        key: "home",
+        label: "Home",
+        onClick: () => console.log("Home clicked"),
+      },
+      {
+        itemType: "dropdown",
+        items: SECTIONED_NAV_ITEMS,
+        key: "products",
+        label: "Products",
+        onClick: () => console.log("Products dropdown clicked"),
+      },
+      {
+        itemType: "text",
+        key: "about",
+        label: "About",
+        onClick: () => console.log("About clicked"),
+      },
+    ],
+    scrollElevation: true,
+    secondaryNavItems: [
+      {
+        itemType: "dropdown",
+        items: SECTIONED_NAV_ITEMS,
+        key: "products",
+        label: "New Products",
+        onClick: () => console.log("New Products dropdown clicked"),
+      },
+    ],
+    showSearch: true,
+    title: "My App",
   },
   parameters: {
     controls: {
