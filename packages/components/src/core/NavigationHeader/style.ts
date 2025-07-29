@@ -495,6 +495,7 @@ export const StyledButtonSection = styled("section", {
 })`
   display: flex;
   align-items: center;
+  z-index: 10;
 
   .MuiButtonBase-root {
     ${fontBody("l", "semibold", /* isNarrow */ true)}

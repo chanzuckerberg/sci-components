@@ -238,7 +238,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
       </button>
     </section>
     <section
-      class="css-cfbgjd"
+      class="css-1yzs9wj"
     >
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1o8pmhx-MuiButtonBase-root-MuiButton-root"
@@ -495,7 +495,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
       </button>
     </section>
     <section
-      class="css-cfbgjd"
+      class="css-1yzs9wj"
     >
       <button
         class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-9jgpsg-MuiButtonBase-root-MuiButton-root"
@@ -777,7 +777,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
         </button>
       </section>
       <section
-        class="css-cfbgjd"
+        class="css-1yzs9wj"
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1o8pmhx-MuiButtonBase-root-MuiButton-root"
