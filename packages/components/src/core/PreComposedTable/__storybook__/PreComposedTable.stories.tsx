@@ -165,8 +165,8 @@ const columns: ColumnDef<DataType>[] = [
     header: ({ header: _header, ...props }) => (
       <CellHeader
         hideSortIcon={true}
-        hover={true}
-        shouldShowTooltipOnHover={false}
+        hover
+        shouldShowTooltipOnHover={true}
         tooltipProps={{
           componentSlot: (
             <Link href="https://www.google.com" sdsStyle="dashed" sdsSize="xs">
@@ -187,6 +187,7 @@ const columns: ColumnDef<DataType>[] = [
       </CellHeader>
     ),
     meta: {
+      isGrow: true,
       pinning: "left",
     },
     minSize: 150,
@@ -208,7 +209,10 @@ const columns: ColumnDef<DataType>[] = [
       />
     ),
     header: "Email",
-    size: 200,
+    meta: {
+      isGrow: true,
+    },
+    minSize: 200,
   },
   {
     accessorKey: "role",
@@ -221,9 +225,9 @@ const columns: ColumnDef<DataType>[] = [
     ),
     header: "Role",
     meta: {
-      verticalAlign: "top",
+      verticalAlign: "middle",
     },
-    size: 150,
+    minSize: 150,
   },
   {
     accessorKey: "department",
@@ -235,7 +239,7 @@ const columns: ColumnDef<DataType>[] = [
       />
     ),
     header: "Department",
-    size: 120,
+    minSize: 120,
   },
   {
     accessorKey: "status",
@@ -250,7 +254,7 @@ const columns: ColumnDef<DataType>[] = [
       />
     ),
     header: "Status",
-    size: 100,
+    minSize: 100,
   },
   {
     accessorKey: "lastActive",
@@ -259,11 +263,18 @@ const columns: ColumnDef<DataType>[] = [
         primaryText={getValue() as string}
         tabularNums
         shouldShowTooltipOnHover={false}
+        horizontalAlign="right"
+        extraRightPadding={20}
         {...props}
       />
     ),
     header: "Last Active",
-    size: 120,
+    meta: {
+      headerCellProps: {
+        horizontalAlign: "right",
+      },
+    },
+    minSize: 120,
   },
   {
     accessorKey: "projects",
@@ -272,11 +283,18 @@ const columns: ColumnDef<DataType>[] = [
         primaryText={getValue() as string}
         tabularNums
         shouldShowTooltipOnHover={false}
+        horizontalAlign="right"
+        extraRightPadding={20}
         {...props}
       />
     ),
     header: "Projects",
-    size: 100,
+    meta: {
+      headerCellProps: {
+        horizontalAlign: "right",
+      },
+    },
+    minSize: 100,
   },
   {
     accessorKey: "salary",
@@ -284,11 +302,18 @@ const columns: ColumnDef<DataType>[] = [
       <CellBasic
         primaryText={`$${(getValue() as number).toLocaleString()}`}
         tabularNums
+        extraRightPadding={20}
+        horizontalAlign="right"
         {...props}
       />
     ),
     header: "Salary",
-    size: 120,
+    meta: {
+      headerCellProps: {
+        horizontalAlign: "right",
+      },
+    },
+    minSize: 120,
   },
   {
     accessorKey: "location",
@@ -296,11 +321,12 @@ const columns: ColumnDef<DataType>[] = [
       <CellBasic
         primaryText={getValue() as string}
         shouldShowTooltipOnHover={false}
+        tabularNums
         {...props}
       />
     ),
     header: "Location",
-    size: 150,
+    minSize: 150,
   },
   {
     accessorKey: "startDate",
@@ -309,14 +335,19 @@ const columns: ColumnDef<DataType>[] = [
         primaryText={getValue() as string}
         tabularNums
         shouldShowTooltipOnHover={false}
+        horizontalAlign="right"
+        extraRightPadding={20}
         {...props}
       />
     ),
     header: "Start Date",
     meta: {
+      headerCellProps: {
+        horizontalAlign: "right",
+      },
       pinning: "right",
     },
-    size: 120,
+    minSize: 120,
   },
 ];
 

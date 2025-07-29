@@ -21,6 +21,7 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   shouldShowUndelineOnHover?: boolean;
   isRowHovered?: boolean;
   component?: React.ElementType;
+  extraRightPadding?: number;
 }
 
 const doNotForwardProps = [
@@ -215,12 +216,12 @@ export const StyledTableData = styled.div`
       verticalAlign = "top",
       shouldShowUndelineOnHover = false,
       isRowHovered = false,
+      extraRightPadding = 0,
     } = props;
 
     const spaces = getSpaces(props);
-
     return `
-        padding: ${spaces?.l}px ${spaces?.m}px;
+        padding: ${spaces?.l}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.l}px ${spaces?.m}px;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         overflow: hidden;

@@ -1,4 +1,10 @@
-import React, { useState, useMemo, useEffect, createContext } from "react";
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  createContext,
+  useRef,
+} from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -15,7 +21,6 @@ import {
   Header,
   Row,
   Cell,
-  Column,
   Table as TanstackTable,
   RowData,
   CellContext,
@@ -24,7 +29,7 @@ import {
 import Table from "../Table";
 import TableHeader from "../TableHeader";
 import TableRow, { TableRowProps } from "../TableRow";
-import CellHeader from "../CellHeader";
+import CellHeader, { CellHeaderProps } from "../CellHeader";
 import CellBasic from "../CellBasic";
 import CellComponent from "../CellComponent";
 import Pagination, { PaginationProps } from "src/core/Pagination";
@@ -35,6 +40,11 @@ import {
   StyledTableWrapper,
 } from "./style";
 import InputCheckbox from "../InputCheckbox";
+import {
+  calculateTableSizing,
+  getCommonPinningStyles,
+  SELECT_COLUMN_ID,
+} from "./utils";
 
 // Declaration merging to add pinning to ColumnDef.meta
 declare module "@tanstack/react-table" {
@@ -42,6 +52,9 @@ declare module "@tanstack/react-table" {
   interface ColumnMeta<TData extends RowData, TValue> {
     pinning?: "left" | "right";
     verticalAlign?: "top" | "middle" | "bottom";
+    isGrow?: boolean;
+    widthPercentage?: number;
+    headerCellProps?: Partial<CellHeaderProps>;
   }
 }
 
@@ -63,8 +76,6 @@ export interface PreComposedTableProps<TData> {
   tableRowProps?: Partial<TableRowProps>;
   onRowSelect?: (selectedRows: TData[]) => void;
 }
-
-const SELECT_COLUMN_ID = "SdsTableSelectColumn";
 
 // Create context for row hover state
 export const RowHoverContext = createContext<{ isRowHovered: boolean }>({
@@ -97,6 +108,7 @@ const PreComposedTable = <TData extends RowData>({
   });
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({});
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null);
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   // Add selection column if enabled and doesn't already exist
   const tableColumns = useMemo(() => {
@@ -111,7 +123,7 @@ const PreComposedTable = <TData extends RowData>({
           accessorFn: () => null,
           cell: (props: CellContext<TData, unknown>) => {
             const { row, cell } = props;
-            const pinnedStyle = getCommonPinningStyles(cell.column);
+            const pinnedStyle = getCommonPinningStyles(cell.column, table);
 
             return (
               <CellComponent
@@ -142,7 +154,7 @@ const PreComposedTable = <TData extends RowData>({
             table: TanstackTable<TData>;
             header: Header<TData, unknown>;
           }) => {
-            const pinnedStyle = getCommonPinningStyles(header.column);
+            const pinnedStyle = getCommonPinningStyles(header.column, table);
             let stage: "checked" | "unchecked" | "indeterminate" = "unchecked";
             if (table.getIsAllPageRowsSelected()) {
               stage = "checked";
@@ -247,72 +259,30 @@ const PreComposedTable = <TData extends RowData>({
     });
   }, [paginationConfig]);
 
-  const calculateLeftPosition = (column: Column<TData, unknown>) => {
-    if (column.id === SELECT_COLUMN_ID) return 0;
+  const headers = table.getFlatHeaders();
 
-    const allColumns = table.getAllColumns();
-    const currentIndex = allColumns.findIndex((col) => col.id === column.id);
-    let leftPosition = 0;
-
-    // Add widths of other left-pinned columns before this one
-    for (let i = 0; i < currentIndex; i++) {
-      const col = allColumns[i];
-      const colDef = col.columnDef as ColumnDef<TData>;
-      if (colDef.meta?.pinning === "left") {
-        leftPosition += col.getSize();
+  React.useLayoutEffect(() => {
+    if (!tableContainerRef.current) return;
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (entry) {
+        const initialColumnSizing = calculateTableSizing(
+          headers,
+          entry.contentRect.width
+        );
+        table.setColumnSizing(initialColumnSizing);
       }
-    }
-
-    return leftPosition;
-  };
-
-  const calculateRightPosition = (column: Column<TData, unknown>) => {
-    const allColumns = table.getAllColumns();
-    const currentIndex = allColumns.findIndex((col) => col.id === column.id);
-    let rightPosition = 0;
-
-    for (let i = currentIndex + 1; i < allColumns.length; i++) {
-      const col = allColumns[i];
-      const colDef = col.columnDef as ColumnDef<TData>;
-      if (colDef.meta?.pinning === "right") {
-        rightPosition += col.getSize();
-      }
-    }
-
-    return rightPosition;
-  };
-
-  const getCommonPinningStyles = (
-    column: Column<TData, unknown>
-  ): React.CSSProperties => {
-    const columnWithPinning = column.columnDef as ColumnDef<TData>;
-    const shouldPin = columnWithPinning.meta?.pinning;
-
-    if (!shouldPin) {
-      return {
-        position: "relative" as const,
-        width: column.getSize(),
-      };
-    }
-
-    const leftPosition =
-      shouldPin === "left" ? calculateLeftPosition(column) : 0;
-    const rightPosition =
-      shouldPin === "right" ? calculateRightPosition(column) : 0;
-
-    return {
-      left: shouldPin === "left" ? `${leftPosition}px` : undefined,
-      position: "sticky" as const,
-      right: shouldPin === "right" ? `${rightPosition}px` : undefined,
-      width: column.getSize(),
-      zIndex: 1,
+    });
+    resizeObserver.observe(tableContainerRef.current);
+    return () => {
+      resizeObserver.disconnect();
     };
-  };
+  }, [headers, table]);
 
   const renderCell = (cell: Cell<TData, unknown>, row: Row<TData>) => {
     const isRowHovered = hoveredRowId === row.id;
     const isPinned = cell.column.columnDef.meta?.pinning;
-    const pinnedStyle = getCommonPinningStyles(cell.column);
+    const pinnedStyle = getCommonPinningStyles(cell.column, table);
 
     let cellContent;
 
@@ -380,7 +350,10 @@ const PreComposedTable = <TData extends RowData>({
     const isSorted = header.column.getIsSorted();
     const sortDirection = header.column.getIsSorted() as "asc" | "desc";
     const isPinned = header.column.columnDef.meta?.pinning;
-    const pinnedStyle = getCommonPinningStyles(header.column);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { ref, ...headerCellProps } =
+      header.column.columnDef.meta?.headerCellProps || {};
+    const pinnedStyle = getCommonPinningStyles(header.column, table);
 
     if (typeof header.column.columnDef.header === "string") {
       return (
@@ -395,6 +368,7 @@ const PreComposedTable = <TData extends RowData>({
           direction={sortDirection || undefined}
           hover={isSortable}
           onClick={header.column.getToggleSortingHandler()}
+          {...headerCellProps}
         >
           {header.isPlaceholder ? null : header.column.columnDef.header}
         </CellHeader>
@@ -431,6 +405,7 @@ const PreComposedTable = <TData extends RowData>({
 
   return (
     <StyledTableContainer
+      ref={tableContainerRef}
       className={className}
       style={{ width: tableWidth, ...style }}
       key={`table-${columns.length}-${columns.map((col) => col.id || "col").join("-")}`}
