@@ -122,10 +122,14 @@ export default function NavigationHeaderSecondaryNav({
                           <StyledDivider
                             hasSection={!!section}
                             isNarrow={isNarrow}
+                            hasInvertedStyle={hasInvertedStyle}
                           />
                         )}
                         {section && hasMultipleSections && (
-                          <StyledSectionHeader isNarrow={isNarrow}>
+                          <StyledSectionHeader
+                            isNarrow={isNarrow}
+                            hasInvertedStyle={hasInvertedStyle}
+                          >
                             {section}
                           </StyledSectionHeader>
                         )}
@@ -185,10 +189,14 @@ export default function NavigationHeaderSecondaryNav({
                           <StyledDivider
                             hasSection={!!section}
                             isNarrow={isNarrow}
+                            hasInvertedStyle={hasInvertedStyle}
                           />
                         )}
                         {section && hasMultipleSections && (
-                          <StyledSectionHeader isNarrow={isNarrow}>
+                          <StyledSectionHeader
+                            isNarrow={isNarrow}
+                            hasInvertedStyle={hasInvertedStyle}
+                          >
                             {section}
                           </StyledSectionHeader>
                         )}
