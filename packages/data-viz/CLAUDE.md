@@ -2,26 +2,15 @@
 
 This file provides specific guidance for working with the `@czi-sds/data-viz` package.
 
-## Package-Specific Commands
-
-Run from the data-viz package directory (`packages/data-viz/`) or use Lerna scope:
-
-- `yarn build` - Build the data visualization library using Rollup
-- `yarn build-watch` - Build in watch mode for development
-- `yarn lint` - Run ESLint, Stylelint, and TypeScript type checking
-- `yarn type-check` - Run TypeScript type checking only
-- `yarn test` - Run Jest tests (currently passes with no tests)
-- `yarn namespace-check` - Validate TypeScript namespace exports
-
 ## Architecture Overview
 
 ### ECharts-Based Visualization Library
 
-This package provides React components that wrap [Apache ECharts](https://echarts.apache.org/) for scientific data visualization. Currently focused on heatmap visualization with plans for additional chart types.
+This package provides React components that wrap [Apache ECharts](https://echarts.apache.org/) for scientific data visualization.
 
 ### Core Dependencies
 
-- **ECharts 5.4.3** - Core charting library
+- **ECharts 5.6.** - Core charting library
 - **Lodash** - Utility functions (especially throttling)
 - **@czi-sds/components** - Shared design system components and theme
 - **React** - Component framework
@@ -194,13 +183,12 @@ __storybook__/
 
 Simpler than the components package, focused on ECharts integration:
 
-```javascript
-// Key differences from components package:
-// - No Style Dictionary build step
-// - No SCSS/CSS processing
-// - Focused on TypeScript compilation and SVG handling
-// - ECharts and lodash as bundled dependencies (not peer deps)
-```
+### Key differences from components package:
+
+- No Style Dictionary build step
+- No SCSS/CSS processing
+- Focused on TypeScript compilation and SVG handling
+- ECharts and lodash as bundled dependencies (not peer deps)
 
 ### External Dependencies
 
@@ -260,14 +248,6 @@ const onEvents = {
 - Namespace validation tests ensure proper exports
 - No component tests yet (marked with `--passWithNoTests`)
 - Visual testing through Storybook stories
-
-### Recommended Testing Additions
-
-- Unit tests for chart option generation
-- Integration tests for chart lifecycle
-- Performance tests for large datasets
-- Event handling tests
-- Memory leak detection tests
 
 ## Integration Guidelines
 
