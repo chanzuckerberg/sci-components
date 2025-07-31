@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontCapsXxxxs,
-  getBorders,
   getSemanticColors,
   getSpaces,
   Spaces,
@@ -43,17 +42,37 @@ export const StyledSectionHeader = styled(ListSubheader, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
-    const { isNarrow } = props;
+    const { isNarrow, hasInvertedStyle } = props;
 
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
+
+    function getBackgroundColor() {
+      if (isNarrow) {
+        return hasInvertedStyle
+          ? semanticColors?.base.backgroundPrimaryInverse
+          : semanticColors?.base.backgroundPrimary;
+      }
+
+      return semanticColors?.base?.surface;
+    }
+
+    function getTextColor() {
+      if (isNarrow) {
+        return hasInvertedStyle
+          ? semanticColors?.base.textSecondaryInverse
+          : semanticColors?.base.textSecondary;
+      }
+
+      return semanticColors?.base?.textSecondary;
+    }
 
     return css`
       &.MuiListSubheader-root {
         ${fontCapsXxxxs(props)}
         top: 0;
-        color: ${semanticColors?.base?.textSecondary};
-        background-color: ${semanticColors?.base?.surface};
+        color: ${getTextColor()};
+        background-color: ${getBackgroundColor()};
         padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.s}px;
         margin-bottom: 0;
       }
@@ -64,27 +83,38 @@ export const StyledSectionHeader = styled(ListSubheader, {
 interface StyledDividerProps extends CommonThemeProps {
   hasSection?: boolean;
   isNarrow?: boolean;
+  hasInvertedStyle?: boolean;
 }
 
 export const StyledDivider = styled(Divider, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: StyledDividerProps) => {
-    const { hasSection, isNarrow } = props;
+    const { hasSection, isNarrow, hasInvertedStyle } = props;
 
     const spaces = getSpaces(props);
-    const borders = getBorders(props);
+    const semanticColors = getSemanticColors(props);
 
     // Calculate margin based on section and narrow state
     const getMarginBottom = () => {
       return hasSection ? spaces?.s : isNarrow ? 0 : spaces?.xxs;
     };
 
+    const getBorderColor = () => {
+      if (isNarrow) {
+        return hasInvertedStyle
+          ? semanticColors?.base?.dividerInverse
+          : semanticColors?.base?.divider;
+      }
+
+      return semanticColors?.base?.divider;
+    };
+
     return css`
       &.MuiDivider-root {
         position: relative;
         margin: 0 0 ${getMarginBottom()}px;
-        border-bottom: ${borders?.base?.divider};
+        border-bottom: solid 1px ${getBorderColor()};
         padding-bottom: ${isNarrow ? 0 : spaces?.xxs}px;
       }
     `;

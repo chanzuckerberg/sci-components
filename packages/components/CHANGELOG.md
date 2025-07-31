@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.10.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.10.0...@czi-sds/components@22.10.1) (2025-07-29)
+
+### Bug Fixes
+
+- **navigationheader:** fixed dark mode and inverted mode styles ([#980](https://github.com/chanzuckerberg/sci-components/issues/980)) ([5275126](https://github.com/chanzuckerberg/sci-components/commit/527512679f22982c21d39a182db986553f2b2627))
+
 # [22.10.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.9.1...@czi-sds/components@22.10.0) (2025-07-28)
 
 ### Features
