@@ -1,4 +1,6 @@
 // https://robertcooper.me/post/using-eslint-and-prettier-in-a-typescript-project
+const path = require("path");
+
 module.exports = {
   env: {
     browser: true,
@@ -83,9 +85,14 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        // Dependencies must be specified in `devDependencies` in the monorepo root
+        // Dependencies must be specified in `devDependencies` or `peerDependencies` in the monorepo root or individual packages
         devDependencies: true,
-        packageDir: [__dirname, "./packages/components", "./packages/data-viz"],
+        includeInternal: true,
+        packageDir: [
+          __dirname,
+          path.resolve(__dirname, "./packages/components"),
+          path.resolve(__dirname, "./packages/data-viz"),
+        ],
         peerDependencies: true,
       },
     ],
