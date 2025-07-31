@@ -1617,7 +1617,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
-    "@tanstack/react-table": "npm:^8.0.0"
+    "@tanstack/react-table": "npm:^8.21.3"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     style-dictionary: "npm:^4.1.0"
@@ -1629,6 +1629,7 @@ __metadata:
     "@mui/icons-material": ^5.15.3
     "@mui/lab": ^5.0.0-alpha.159
     "@mui/material": ^5.15.3
+    "@tanstack/react-table": ^8.21.3
     react: ">=17.0.1"
     react-dom: ">=17.0.1"
   languageName: unknown
@@ -1642,9 +1643,7 @@ __metadata:
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     d3-scale-chromatic: "npm:^3.0.0"
-    echarts: "npm:^5.4.3"
     jest-environment-jsdom: "npm:^29.6.2"
-    lodash: "npm:^4.17.21"
     react-redux: "npm:^9.1.0"
     simplex-noise: "npm:^4.0.1"
     style-dictionary: "npm:^4.1.0"
@@ -1705,7 +1704,6 @@ __metadata:
     "@svgr/rollup": "npm:^8.1.0"
     "@svgr/webpack": "npm:^8.1.0"
     "@swc/plugin-emotion": "npm:^4.0.1"
-    "@tanstack/react-table": "npm:^8.21.3"
     "@testing-library/dom": "npm:^9.3.3"
     "@testing-library/jest-dom": "npm:^6.1.5"
     "@testing-library/react": "npm:^14.1.2"
@@ -5166,7 +5164,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-table@npm:^8.0.0, @tanstack/react-table@npm:^8.21.3":
+"@tanstack/react-table@npm:^8.21.3":
   version: 8.21.3
   resolution: "@tanstack/react-table@npm:8.21.3"
   dependencies:

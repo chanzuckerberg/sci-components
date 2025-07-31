@@ -73,9 +73,5 @@
     "react-redux": "^9.1.0",
     "simplex-noise": "^4.0.1",
     "style-dictionary": "^4.1.0"
-  },
-  "dependencies": {
-    "echarts": "^5.4.3",
-    "lodash": "^4.17.21"
   }
 }

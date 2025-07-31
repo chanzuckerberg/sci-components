@@ -58,7 +58,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
     "skipLibCheck": true
   },
-  "include": ["./packages/**/src/**/*", ".eslintrc.js"],
+  "include": ["./packages/**/*", ".eslintrc.js"],
   "exclude": [
     "node_modules",
     "./packages/**/node_modules",

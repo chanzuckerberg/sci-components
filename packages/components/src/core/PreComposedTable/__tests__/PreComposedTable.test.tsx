@@ -6,16 +6,16 @@ import PreComposedTable from "../index";
 // Sample data for testing
 const sampleData = [
   {
+    age: 30,
+    email: "john.doe@example.com",
     id: 1,
     name: "John Doe",
-    email: "john.doe@example.com",
-    age: 30,
   },
   {
+    age: 28,
+    email: "jane.smith@example.com",
     id: 2,
     name: "Jane Smith",
-    email: "jane.smith@example.com",
-    age: 28,
   },
 ];
 
@@ -67,10 +67,14 @@ describe("PreComposedTable", () => {
         data={sampleData}
         columns={sampleColumns}
         enablePagination={true}
-        pageSize={1}
+        paginationConfig={{
+          pageSize: 1,
+        }}
       />
     );
-    expect(screen.getByText("Page 1 of 2")).toBeInTheDocument();
+    // Check that pagination elements are present
+    expect(screen.getByText("1")).toBeInTheDocument(); // Current page number
+    expect(screen.getByText("2")).toBeInTheDocument(); // Next page number
   });
 
   it("shows row selection checkboxes when enabled", () => {

@@ -6,8 +6,6 @@ module.exports = {
     jest: true,
     node: true,
   },
-  // Excludes config files from linting
-  ignorePatterns: ["rollup.config.mjs"],
   // Specifies the ESLint parser
   extends: [
     "plugin:import/recommended",
@@ -21,6 +19,8 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
   ],
+  // Excludes config files from linting
+  ignorePatterns: ["rollup.config.mjs"],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier
   // rules in all ComponentName.namespace.tsx files
@@ -85,7 +85,8 @@ module.exports = {
       {
         // Dependencies must be specified in `devDependencies` in the monorepo root
         devDependencies: true,
-        packageDir: __dirname,
+        packageDir: [__dirname, "./packages/components", "./packages/data-viz"],
+        peerDependencies: true,
       },
     ],
     "import/prefer-default-export": "off",
