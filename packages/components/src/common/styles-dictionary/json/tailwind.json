@@ -4,31 +4,44 @@
     "sds-caps": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
     "sds-code": "\"IBM Plex Mono\", monospace",
     "sds-header": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+    "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-title": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
   },
   "fontSize": {
     "sds-body-xxxs-400-narrow": "12px",
     "sds-body-xxxs-400-wide": "11px",
+    "sds-body-xxxs-500-narrow": "12px",
+    "sds-body-xxxs-500-wide": "11px",
     "sds-body-xxxs-600-narrow": "12px",
     "sds-body-xxxs-600-wide": "11px",
     "sds-body-xxs-400-narrow": "12px",
     "sds-body-xxs-400-wide": "12px",
+    "sds-body-xxs-500-narrow": "12px",
+    "sds-body-xxs-500-wide": "12px",
     "sds-body-xxs-600-narrow": "12px",
     "sds-body-xxs-600-wide": "12px",
     "sds-body-xs-400-narrow": "13px",
     "sds-body-xs-400-wide": "13px",
+    "sds-body-xs-500-narrow": "13px",
+    "sds-body-xs-500-wide": "13px",
     "sds-body-xs-600-narrow": "13px",
     "sds-body-xs-600-wide": "13px",
     "sds-body-s-400-narrow": "14px",
     "sds-body-s-400-wide": "14px",
+    "sds-body-s-500-narrow": "14px",
+    "sds-body-s-500-wide": "14px",
     "sds-body-s-600-narrow": "14px",
     "sds-body-s-600-wide": "14px",
     "sds-body-m-400-narrow": "14px",
     "sds-body-m-400-wide": "16px",
+    "sds-body-m-500-narrow": "14px",
+    "sds-body-m-500-wide": "16px",
     "sds-body-m-600-narrow": "14px",
     "sds-body-m-600-wide": "16px",
     "sds-body-l-400-narrow": "16px",
     "sds-body-l-400-wide": "18px",
+    "sds-body-l-500-narrow": "16px",
+    "sds-body-l-500-wide": "18px",
     "sds-body-l-600-narrow": "16px",
     "sds-body-l-600-wide": "18px",
     "sds-caps-xxxxs-600-narrow": "11px",
@@ -53,46 +66,78 @@
     "sds-header-xl-600-wide": "22px",
     "sds-header-xxl-600-narrow": "22px",
     "sds-header-xxl-600-wide": "26px",
+    "sds-tabular-xxxs-400-narrow": "11px",
+    "sds-tabular-xxxs-400-wide": "11px",
+    "sds-tabular-xxxs-500-narrow": "11px",
+    "sds-tabular-xxxs-500-wide": "11px",
+    "sds-tabular-xxxs-600-narrow": "11px",
+    "sds-tabular-xxxs-600-wide": "11px",
+    "sds-tabular-xxs-400-narrow": "12px",
+    "sds-tabular-xxs-400-wide": "12px",
+    "sds-tabular-xxs-500-narrow": "12px",
+    "sds-tabular-xxs-500-wide": "12px",
+    "sds-tabular-xxs-600-narrow": "12px",
+    "sds-tabular-xxs-600-wide": "12px",
     "sds-tabular-xs-400-narrow": "13px",
     "sds-tabular-xs-400-wide": "13px",
+    "sds-tabular-xs-500-narrow": "13px",
+    "sds-tabular-xs-500-wide": "13px",
     "sds-tabular-xs-600-narrow": "13px",
     "sds-tabular-xs-600-wide": "13px",
     "sds-tabular-s-400-narrow": "14px",
     "sds-tabular-s-400-wide": "14px",
+    "sds-tabular-s-500-narrow": "14px",
+    "sds-tabular-s-500-wide": "14px",
     "sds-tabular-s-600-narrow": "14px",
     "sds-tabular-s-600-wide": "14px",
     "sds-code-xs-400-narrow": "13px",
     "sds-code-xs-400-wide": "13px",
+    "sds-code-xs-500-narrow": "13px",
+    "sds-code-xs-500-wide": "13px",
     "sds-code-xs-600-narrow": "13px",
     "sds-code-xs-600-wide": "13px",
     "sds-code-s-400-narrow": "14px",
     "sds-code-s-400-wide": "14px",
+    "sds-code-s-500-narrow": "14px",
+    "sds-code-s-500-wide": "14px",
     "sds-code-s-600-narrow": "14px",
     "sds-code-s-600-wide": "14px"
   },
   "fontVariantNumeric": {
     "sds-body-xxxs-400-narrow": "normal",
     "sds-body-xxxs-400-wide": "normal",
+    "sds-body-xxxs-500-narrow": "normal",
+    "sds-body-xxxs-500-wide": "normal",
     "sds-body-xxxs-600-narrow": "normal",
     "sds-body-xxxs-600-wide": "normal",
     "sds-body-xxs-400-narrow": "normal",
     "sds-body-xxs-400-wide": "normal",
+    "sds-body-xxs-500-narrow": "normal",
+    "sds-body-xxs-500-wide": "normal",
     "sds-body-xxs-600-narrow": "normal",
     "sds-body-xxs-600-wide": "normal",
     "sds-body-xs-400-narrow": "normal",
     "sds-body-xs-400-wide": "normal",
+    "sds-body-xs-500-narrow": "normal",
+    "sds-body-xs-500-wide": "normal",
     "sds-body-xs-600-narrow": "normal",
     "sds-body-xs-600-wide": "normal",
     "sds-body-s-400-narrow": "normal",
     "sds-body-s-400-wide": "normal",
+    "sds-body-s-500-narrow": "normal",
+    "sds-body-s-500-wide": "normal",
     "sds-body-s-600-narrow": "normal",
     "sds-body-s-600-wide": "normal",
     "sds-body-m-400-narrow": "normal",
     "sds-body-m-400-wide": "normal",
+    "sds-body-m-500-narrow": "normal",
+    "sds-body-m-500-wide": "normal",
     "sds-body-m-600-narrow": "normal",
     "sds-body-m-600-wide": "normal",
     "sds-body-l-400-narrow": "normal",
     "sds-body-l-400-wide": "normal",
+    "sds-body-l-500-narrow": "normal",
+    "sds-body-l-500-wide": "normal",
     "sds-body-l-600-narrow": "normal",
     "sds-body-l-600-wide": "normal",
     "sds-caps-xxxxs-600-narrow": "normal",
@@ -117,54 +162,86 @@
     "sds-header-xl-600-wide": "normal",
     "sds-header-xxl-600-narrow": "normal",
     "sds-header-xxl-600-wide": "normal",
+    "sds-tabular-xxxs-400-narrow": "tabular-nums",
+    "sds-tabular-xxxs-400-wide": "tabular-nums",
+    "sds-tabular-xxxs-500-narrow": "tabular-nums",
+    "sds-tabular-xxxs-500-wide": "tabular-nums",
+    "sds-tabular-xxxs-600-narrow": "tabular-nums",
+    "sds-tabular-xxxs-600-wide": "tabular-nums",
+    "sds-tabular-xxs-400-narrow": "tabular-nums",
+    "sds-tabular-xxs-400-wide": "tabular-nums",
+    "sds-tabular-xxs-500-narrow": "tabular-nums",
+    "sds-tabular-xxs-500-wide": "tabular-nums",
+    "sds-tabular-xxs-600-narrow": "tabular-nums",
+    "sds-tabular-xxs-600-wide": "tabular-nums",
     "sds-tabular-xs-400-narrow": "tabular-nums",
     "sds-tabular-xs-400-wide": "tabular-nums",
+    "sds-tabular-xs-500-narrow": "tabular-nums",
+    "sds-tabular-xs-500-wide": "tabular-nums",
     "sds-tabular-xs-600-narrow": "tabular-nums",
     "sds-tabular-xs-600-wide": "tabular-nums",
     "sds-tabular-s-400-narrow": "tabular-nums",
     "sds-tabular-s-400-wide": "tabular-nums",
+    "sds-tabular-s-500-narrow": "tabular-nums",
+    "sds-tabular-s-500-wide": "tabular-nums",
     "sds-tabular-s-600-narrow": "tabular-nums",
     "sds-tabular-s-600-wide": "tabular-nums",
     "sds-code-xs-400-narrow": "normal",
     "sds-code-xs-400-wide": "normal",
+    "sds-code-xs-500-narrow": "normal",
+    "sds-code-xs-500-wide": "normal",
     "sds-code-xs-600-narrow": "normal",
     "sds-code-xs-600-wide": "normal",
     "sds-code-s-400-narrow": "normal",
     "sds-code-s-400-wide": "normal",
+    "sds-code-s-500-narrow": "normal",
+    "sds-code-s-500-wide": "normal",
     "sds-code-s-600-narrow": "normal",
     "sds-code-s-600-wide": "normal"
   },
   "letterSpacing": {
-    "sds-body-xxxs-400-narrow": "0.1px",
-    "sds-body-xxxs-400-wide": "0.1px",
-    "sds-body-xxxs-600-narrow": "0.1px",
-    "sds-body-xxxs-600-wide": "0.1px",
-    "sds-body-xxs-400-narrow": "0.1px",
-    "sds-body-xxs-400-wide": "0.1px",
-    "sds-body-xxs-600-narrow": "0.1px",
-    "sds-body-xxs-600-wide": "0.1px",
-    "sds-body-xs-400-narrow": "0.08px",
-    "sds-body-xs-400-wide": "0.08px",
-    "sds-body-xs-600-narrow": "0.08px",
-    "sds-body-xs-600-wide": "0.08px",
-    "sds-body-s-400-narrow": "0.08px",
-    "sds-body-s-400-wide": "0.08px",
-    "sds-body-s-600-narrow": "0.08px",
-    "sds-body-s-600-wide": "0.08px",
+    "sds-body-xxxs-400-narrow": "0.06px",
+    "sds-body-xxxs-400-wide": "0.06px",
+    "sds-body-xxxs-500-narrow": "0.06px",
+    "sds-body-xxxs-500-wide": "0.06px",
+    "sds-body-xxxs-600-narrow": "0.06px",
+    "sds-body-xxxs-600-wide": "0.06px",
+    "sds-body-xxs-400-narrow": "0.06px",
+    "sds-body-xxs-400-wide": "0.06px",
+    "sds-body-xxs-500-narrow": "0.06px",
+    "sds-body-xxs-500-wide": "0.06px",
+    "sds-body-xxs-600-narrow": "0.06px",
+    "sds-body-xxs-600-wide": "0.06px",
+    "sds-body-xs-400-narrow": "0px",
+    "sds-body-xs-400-wide": "0px",
+    "sds-body-xs-500-narrow": "0px",
+    "sds-body-xs-500-wide": "0px",
+    "sds-body-xs-600-narrow": "0px",
+    "sds-body-xs-600-wide": "0px",
+    "sds-body-s-400-narrow": "0px",
+    "sds-body-s-400-wide": "0px",
+    "sds-body-s-500-narrow": "0px",
+    "sds-body-s-500-wide": "0px",
+    "sds-body-s-600-narrow": "0px",
+    "sds-body-s-600-wide": "0px",
     "sds-body-m-400-narrow": "0px",
     "sds-body-m-400-wide": "0px",
+    "sds-body-m-500-narrow": "0px",
+    "sds-body-m-500-wide": "0px",
     "sds-body-m-600-narrow": "0px",
     "sds-body-m-600-wide": "0px",
     "sds-body-l-400-narrow": "0px",
     "sds-body-l-400-wide": "0px",
+    "sds-body-l-500-narrow": "0px",
+    "sds-body-l-500-wide": "0px",
     "sds-body-l-600-narrow": "0px",
     "sds-body-l-600-wide": "0px",
-    "sds-caps-xxxxs-600-narrow": "0.5px",
-    "sds-caps-xxxxs-600-wide": "0.5px",
-    "sds-caps-xxxs-600-narrow": "0.5px",
-    "sds-caps-xxxs-600-wide": "0.5px",
-    "sds-caps-xxs-600-narrow": "0.5px",
-    "sds-caps-xxs-600-wide": "0.5px",
+    "sds-caps-xxxxs-600-narrow": "0.4px",
+    "sds-caps-xxxxs-600-wide": "0.4px",
+    "sds-caps-xxxs-600-narrow": "0.4px",
+    "sds-caps-xxxs-600-wide": "0.4px",
+    "sds-caps-xxs-600-narrow": "0.4px",
+    "sds-caps-xxs-600-wide": "0.4px",
     "sds-header-xxxs-600-narrow": "0.1px",
     "sds-header-xxxs-600-wide": "0.1px",
     "sds-header-xxs-600-narrow": "0.1px",
@@ -181,46 +258,78 @@
     "sds-header-xl-600-wide": "0px",
     "sds-header-xxl-600-narrow": "0px",
     "sds-header-xxl-600-wide": "0px",
-    "sds-tabular-xs-400-narrow": "0px",
-    "sds-tabular-xs-400-wide": "0px",
-    "sds-tabular-xs-600-narrow": "0px",
-    "sds-tabular-xs-600-wide": "0px",
-    "sds-tabular-s-400-narrow": "0px",
-    "sds-tabular-s-400-wide": "0px",
-    "sds-tabular-s-600-narrow": "0px",
-    "sds-tabular-s-600-wide": "0px",
+    "sds-tabular-xxxs-400-narrow": "-0.25px",
+    "sds-tabular-xxxs-400-wide": "-0.25px",
+    "sds-tabular-xxxs-500-narrow": "-0.25px",
+    "sds-tabular-xxxs-500-wide": "-0.25px",
+    "sds-tabular-xxxs-600-narrow": "-0.25px",
+    "sds-tabular-xxxs-600-wide": "-0.25px",
+    "sds-tabular-xxs-400-narrow": "-0.25px",
+    "sds-tabular-xxs-400-wide": "-0.25px",
+    "sds-tabular-xxs-500-narrow": "-0.25px",
+    "sds-tabular-xxs-500-wide": "-0.25px",
+    "sds-tabular-xxs-600-narrow": "-0.25px",
+    "sds-tabular-xxs-600-wide": "-0.25px",
+    "sds-tabular-xs-400-narrow": "-0.3px",
+    "sds-tabular-xs-400-wide": "-0.3px",
+    "sds-tabular-xs-500-narrow": "-0.3px",
+    "sds-tabular-xs-500-wide": "-0.3px",
+    "sds-tabular-xs-600-narrow": "-0.3px",
+    "sds-tabular-xs-600-wide": "-0.3px",
+    "sds-tabular-s-400-narrow": "-0.3px",
+    "sds-tabular-s-400-wide": "-0.3px",
+    "sds-tabular-s-500-narrow": "-0.3px",
+    "sds-tabular-s-500-wide": "-0.3px",
+    "sds-tabular-s-600-narrow": "-0.3px",
+    "sds-tabular-s-600-wide": "-0.3px",
     "sds-code-xs-400-narrow": "0px",
     "sds-code-xs-400-wide": "0px",
+    "sds-code-xs-500-narrow": "0px",
+    "sds-code-xs-500-wide": "0px",
     "sds-code-xs-600-narrow": "0px",
     "sds-code-xs-600-wide": "0px",
     "sds-code-s-400-narrow": "0px",
     "sds-code-s-400-wide": "0px",
+    "sds-code-s-500-narrow": "0px",
+    "sds-code-s-500-wide": "0px",
     "sds-code-s-600-narrow": "0px",
     "sds-code-s-600-wide": "0px"
   },
   "lineHeight": {
     "sds-body-xxxs-400-narrow": "18px",
     "sds-body-xxxs-400-wide": "16px",
+    "sds-body-xxxs-500-narrow": "18px",
+    "sds-body-xxxs-500-wide": "16px",
     "sds-body-xxxs-600-narrow": "18px",
     "sds-body-xxxs-600-wide": "16px",
     "sds-body-xxs-400-narrow": "18px",
     "sds-body-xxs-400-wide": "18px",
+    "sds-body-xxs-500-narrow": "18px",
+    "sds-body-xxs-500-wide": "18px",
     "sds-body-xxs-600-narrow": "18px",
     "sds-body-xxs-600-wide": "18px",
     "sds-body-xs-400-narrow": "20px",
     "sds-body-xs-400-wide": "20px",
+    "sds-body-xs-500-narrow": "20px",
+    "sds-body-xs-500-wide": "20px",
     "sds-body-xs-600-narrow": "20px",
     "sds-body-xs-600-wide": "20px",
     "sds-body-s-400-narrow": "24px",
     "sds-body-s-400-wide": "24px",
+    "sds-body-s-500-narrow": "24px",
+    "sds-body-s-500-wide": "24px",
     "sds-body-s-600-narrow": "24px",
     "sds-body-s-600-wide": "24px",
     "sds-body-m-400-narrow": "24px",
     "sds-body-m-400-wide": "26px",
+    "sds-body-m-500-narrow": "24px",
+    "sds-body-m-500-wide": "26px",
     "sds-body-m-600-narrow": "24px",
     "sds-body-m-600-wide": "26px",
     "sds-body-l-400-narrow": "26px",
     "sds-body-l-400-wide": "28px",
+    "sds-body-l-500-narrow": "26px",
+    "sds-body-l-500-wide": "28px",
     "sds-body-l-600-narrow": "26px",
     "sds-body-l-600-wide": "28px",
     "sds-caps-xxxxs-600-narrow": "16px",
@@ -245,46 +354,78 @@
     "sds-header-xl-600-wide": "30px",
     "sds-header-xxl-600-narrow": "30px",
     "sds-header-xxl-600-wide": "34px",
+    "sds-tabular-xxxs-400-narrow": "16px",
+    "sds-tabular-xxxs-400-wide": "16px",
+    "sds-tabular-xxxs-500-narrow": "16px",
+    "sds-tabular-xxxs-500-wide": "16px",
+    "sds-tabular-xxxs-600-narrow": "16px",
+    "sds-tabular-xxxs-600-wide": "16px",
+    "sds-tabular-xxs-400-narrow": "18px",
+    "sds-tabular-xxs-400-wide": "18px",
+    "sds-tabular-xxs-500-narrow": "18px",
+    "sds-tabular-xxs-500-wide": "18px",
+    "sds-tabular-xxs-600-narrow": "18px",
+    "sds-tabular-xxs-600-wide": "18px",
     "sds-tabular-xs-400-narrow": "20px",
     "sds-tabular-xs-400-wide": "20px",
+    "sds-tabular-xs-500-narrow": "20px",
+    "sds-tabular-xs-500-wide": "20px",
     "sds-tabular-xs-600-narrow": "20px",
     "sds-tabular-xs-600-wide": "20px",
     "sds-tabular-s-400-narrow": "24px",
     "sds-tabular-s-400-wide": "24px",
+    "sds-tabular-s-500-narrow": "24px",
+    "sds-tabular-s-500-wide": "24px",
     "sds-tabular-s-600-narrow": "24px",
     "sds-tabular-s-600-wide": "24px",
     "sds-code-xs-400-narrow": "20px",
     "sds-code-xs-400-wide": "20px",
+    "sds-code-xs-500-narrow": "20px",
+    "sds-code-xs-500-wide": "20px",
     "sds-code-xs-600-narrow": "20px",
     "sds-code-xs-600-wide": "20px",
     "sds-code-s-400-narrow": "24px",
     "sds-code-s-400-wide": "24px",
+    "sds-code-s-500-narrow": "24px",
+    "sds-code-s-500-wide": "24px",
     "sds-code-s-600-narrow": "24px",
     "sds-code-s-600-wide": "24px"
   },
   "textTransform": {
     "sds-body-xxxs-400-narrow": "none",
     "sds-body-xxxs-400-wide": "none",
+    "sds-body-xxxs-500-narrow": "none",
+    "sds-body-xxxs-500-wide": "none",
     "sds-body-xxxs-600-narrow": "none",
     "sds-body-xxxs-600-wide": "none",
     "sds-body-xxs-400-narrow": "none",
     "sds-body-xxs-400-wide": "none",
+    "sds-body-xxs-500-narrow": "none",
+    "sds-body-xxs-500-wide": "none",
     "sds-body-xxs-600-narrow": "none",
     "sds-body-xxs-600-wide": "none",
     "sds-body-xs-400-narrow": "none",
     "sds-body-xs-400-wide": "none",
+    "sds-body-xs-500-narrow": "none",
+    "sds-body-xs-500-wide": "none",
     "sds-body-xs-600-narrow": "none",
     "sds-body-xs-600-wide": "none",
     "sds-body-s-400-narrow": "none",
     "sds-body-s-400-wide": "none",
+    "sds-body-s-500-narrow": "none",
+    "sds-body-s-500-wide": "none",
     "sds-body-s-600-narrow": "none",
     "sds-body-s-600-wide": "none",
     "sds-body-m-400-narrow": "none",
     "sds-body-m-400-wide": "none",
+    "sds-body-m-500-narrow": "none",
+    "sds-body-m-500-wide": "none",
     "sds-body-m-600-narrow": "none",
     "sds-body-m-600-wide": "none",
     "sds-body-l-400-narrow": "none",
     "sds-body-l-400-wide": "none",
+    "sds-body-l-500-narrow": "none",
+    "sds-body-l-500-wide": "none",
     "sds-body-l-600-narrow": "none",
     "sds-body-l-600-wide": "none",
     "sds-caps-xxxxs-600-narrow": "uppercase",
@@ -309,20 +450,40 @@
     "sds-header-xl-600-wide": "none",
     "sds-header-xxl-600-narrow": "none",
     "sds-header-xxl-600-wide": "none",
+    "sds-tabular-xxxs-400-narrow": "none",
+    "sds-tabular-xxxs-400-wide": "none",
+    "sds-tabular-xxxs-500-narrow": "none",
+    "sds-tabular-xxxs-500-wide": "none",
+    "sds-tabular-xxxs-600-narrow": "none",
+    "sds-tabular-xxxs-600-wide": "none",
+    "sds-tabular-xxs-400-narrow": "none",
+    "sds-tabular-xxs-400-wide": "none",
+    "sds-tabular-xxs-500-narrow": "none",
+    "sds-tabular-xxs-500-wide": "none",
+    "sds-tabular-xxs-600-narrow": "none",
+    "sds-tabular-xxs-600-wide": "none",
     "sds-tabular-xs-400-narrow": "none",
     "sds-tabular-xs-400-wide": "none",
+    "sds-tabular-xs-500-narrow": "none",
+    "sds-tabular-xs-500-wide": "none",
     "sds-tabular-xs-600-narrow": "none",
     "sds-tabular-xs-600-wide": "none",
     "sds-tabular-s-400-narrow": "none",
     "sds-tabular-s-400-wide": "none",
+    "sds-tabular-s-500-narrow": "none",
+    "sds-tabular-s-500-wide": "none",
     "sds-tabular-s-600-narrow": "none",
     "sds-tabular-s-600-wide": "none",
     "sds-code-xs-400-narrow": "none",
     "sds-code-xs-400-wide": "none",
+    "sds-code-xs-500-narrow": "none",
+    "sds-code-xs-500-wide": "none",
     "sds-code-xs-600-narrow": "none",
     "sds-code-xs-600-wide": "none",
     "sds-code-s-400-narrow": "none",
     "sds-code-s-400-wide": "none",
+    "sds-code-s-500-narrow": "none",
+    "sds-code-s-500-wide": "none",
     "sds-code-s-600-narrow": "none",
     "sds-code-s-600-wide": "none"
   },
@@ -334,7 +495,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -346,7 +507,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
         "lineHeight": "16px",
         "textTransform": "none"
       }
@@ -358,7 +543,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -370,7 +555,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "16px",
         "textTransform": "none"
       }
@@ -382,7 +567,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -394,7 +579,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -406,7 +615,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -418,7 +627,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.1px",
+        "letterSpacing": "0.06px",
         "lineHeight": "18px",
         "textTransform": "none"
       }
@@ -430,7 +639,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -442,7 +651,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-xs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -454,7 +687,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -466,7 +699,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -478,7 +711,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -490,7 +723,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-s-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -502,7 +759,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -514,7 +771,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.08px",
+        "letterSpacing": "0px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -538,6 +795,30 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-m-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "26px",
         "textTransform": "none"
@@ -591,6 +872,30 @@
         "textTransform": "none"
       }
     },
+    "sds-body-l-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textTransform": "none"
+      }
+    },
+    "sds-body-l-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textTransform": "none"
+      }
+    },
     "sds-body-l-600-narrow": {
       "css": {
         "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
@@ -622,7 +927,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "16px",
         "textTransform": "uppercase"
       }
@@ -634,7 +939,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "14px",
         "textTransform": "uppercase"
       }
@@ -646,7 +951,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "16px",
         "textTransform": "uppercase"
       }
@@ -658,7 +963,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "16px",
         "textTransform": "uppercase"
       }
@@ -670,7 +975,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "18px",
         "textTransform": "uppercase"
       }
@@ -682,7 +987,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
-        "letterSpacing": "0.5px",
+        "letterSpacing": "0.4px",
         "lineHeight": "18px",
         "textTransform": "uppercase"
       }
@@ -879,6 +1184,150 @@
         "textTransform": "none"
       }
     },
+    "sds-tabular-xxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "16px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
     "sds-tabular-xs-400-narrow": {
       "css": {
         "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
@@ -886,7 +1335,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -898,7 +1347,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.3px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-xs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.3px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -910,7 +1383,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -922,7 +1395,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "20px",
         "textTransform": "none"
       }
@@ -934,7 +1407,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -946,7 +1419,31 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.3px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-tabular-s-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.3px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -958,7 +1455,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -970,7 +1467,7 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
-        "letterSpacing": "0px",
+        "letterSpacing": "-0.3px",
         "lineHeight": "24px",
         "textTransform": "none"
       }
@@ -994,6 +1491,30 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-500-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-xs-500-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
         "textTransform": "none"
@@ -1042,6 +1563,30 @@
         "fontStyle": "normal",
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-500-narrow": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textTransform": "none"
+      }
+    },
+    "sds-code-s-500-wide": {
+      "css": {
+        "fontFamily": "IBM Plex Mono, monospace",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
         "textTransform": "none"
