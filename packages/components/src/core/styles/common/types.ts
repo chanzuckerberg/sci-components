@@ -155,7 +155,6 @@ export interface Shadows {
 export interface TypographyStyles {
   body: {
     regular: {
-      button: TypographyStyle;
       l: TypographyStyle;
       m: TypographyStyle;
       s: TypographyStyle;
@@ -164,7 +163,6 @@ export interface TypographyStyles {
       xxxs: TypographyStyle;
     };
     semibold: {
-      button: TypographyStyle;
       l: TypographyStyle;
       m: TypographyStyle;
       s: TypographyStyle;

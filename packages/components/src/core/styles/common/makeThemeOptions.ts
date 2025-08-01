@@ -507,7 +507,7 @@ export function makeThemeOptions(
     typography: {
       body1: appTheme.typography.wideStyles.body.regular.xs,
       body2: appTheme.typography.wideStyles.body.regular.xxs,
-      button: appTheme.typography.wideStyles.body.regular.button,
+      button: appTheme.typography.wideStyles.body.regular.xs,
       caption: appTheme.typography.wideStyles.body.regular.xxxs,
       fontFamily: `${appTheme.typography.fontFamily.body}, sans-serif`,
       h1: appTheme.typography.wideStyles.header.semibold.xxl,

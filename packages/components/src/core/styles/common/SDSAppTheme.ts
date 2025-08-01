@@ -203,13 +203,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
     narrowStyles: {
       body: {
         regular: {
-          button: {
-            fontSize: 13,
-            fontWeight: FontWeight.regular,
-            letterSpacing: "0.08px",
-            lineHeight: "20px",
-            textTransform: "none",
-          },
           l: {
             fontSize: 16,
             fontWeight: FontWeight.regular,
@@ -254,13 +247,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
           },
         },
         semibold: {
-          button: {
-            fontSize: 13,
-            fontWeight: FontWeight.semibold,
-            letterSpacing: "0.08px",
-            lineHeight: "20px",
-            textTransform: "none",
-          },
           l: {
             fontSize: 16,
             fontWeight: FontWeight.semibold,
@@ -466,13 +452,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
     wideStyles: {
       body: {
         regular: {
-          button: {
-            fontSize: 13,
-            fontWeight: FontWeight.regular,
-            letterSpacing: "0.08px",
-            lineHeight: "20px",
-            textTransform: "none",
-          },
           l: {
             fontSize: 18,
             fontWeight: FontWeight.regular,
@@ -517,13 +496,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
           },
         },
         semibold: {
-          button: {
-            fontSize: 13,
-            fontWeight: FontWeight.semibold,
-            letterSpacing: "0.08px",
-            lineHeight: "20px",
-            textTransform: "none",
-          },
           l: {
             fontSize: 18,
             fontWeight: FontWeight.semibold,
