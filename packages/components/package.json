@@ -22,6 +22,7 @@
     "type-check": "tsc --noEmit",
     "test": "jest",
     "sd-build": "node ./src/common/styles-dictionary/build.mjs",
+    "sd-generate-fonts": "tsx ./src/common/styles-dictionary/scripts/generate-font-tokens.ts",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
@@ -67,6 +68,8 @@
   "devDependencies": {
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
-    "style-dictionary": "^4.1.0"
+    "style-dictionary": "^4.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3"
   }
 }

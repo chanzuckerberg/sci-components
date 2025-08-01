@@ -1,288 +1,18 @@
-/* eslint-disable sort-keys */
+import {
+  FONT_SIZE_VALUES,
+  LINE_HEIGHT_VALUES,
+  LETTER_SPACING_VALUES,
+  TYPOGRAPHY_CATEGORIES,
+  FontWeight,
+} from "./typography-constants";
 
-const FONT_SIZE_VALUES = {
-  wide: {
-    body: {
-      xxxs: 11,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-      m: 16,
-      l: 18,
-    },
-    header: {
-      xxxs: 11,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-      m: 16,
-      l: 18,
-      xl: 22,
-      xxl: 26,
-    },
-    code: {
-      xs: 13,
-      s: 14,
-    },
-    caps: {
-      xxs: 12,
-      xxxs: 11,
-      xxxxs: 10,
-    },
-    tabular: {
-      xxxs: 11,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-    },
-    title: {
-      s: 32,
-      m: 40,
-      l: 52,
-    },
-  },
-  narrow: {
-    body: {
-      xxxs: 12,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-      m: 14,
-      l: 16,
-    },
-    header: {
-      xxxs: 12,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-      m: 14,
-      l: 16,
-      xl: 18,
-      xxl: 22,
-    },
-    code: {
-      xs: 13,
-      s: 14,
-    },
-    caps: {
-      xxs: 12,
-      xxxs: 11,
-      xxxxs: 11,
-    },
-    tabular: {
-      xxxs: 11,
-      xxs: 12,
-      xs: 13,
-      s: 14,
-    },
-    title: {
-      s: 26,
-      m: 32,
-      l: 40,
-    },
-  },
-} as const;
-
-const LINE_HEIGHT_VALUES = {
-  wide: {
-    body: {
-      xxxs: 16,
-      xxs: 18,
-      xs: 20,
-      s: 24,
-      m: 26,
-      l: 28,
-    },
-    header: {
-      xxxs: 16,
-      xxs: 18,
-      xs: 18,
-      s: 20,
-      m: 22,
-      l: 24,
-      xl: 30,
-      xxl: 34,
-    },
-    code: {
-      xs: 20,
-      s: 24,
-    },
-    caps: {
-      xxs: 18,
-      xxxs: 16,
-      xxxxs: 14,
-    },
-    tabular: {
-      xxxs: 16,
-      xxs: 18,
-      xs: 20,
-      s: 24,
-    },
-    title: {
-      s: 40,
-      m: 50,
-      l: 64,
-    },
-  },
-  narrow: {
-    body: {
-      xxxs: 18,
-      xxs: 18,
-      xs: 20,
-      s: 24,
-      m: 24,
-      l: 26,
-    },
-    header: {
-      xxxs: 18,
-      xxs: 18,
-      xs: 18,
-      s: 20,
-      m: 20,
-      l: 22,
-      xl: 24,
-      xxl: 30,
-    },
-    code: {
-      xs: 20,
-      s: 24,
-    },
-    caps: {
-      xxs: 18,
-      xxxs: 16,
-      xxxxs: 16,
-    },
-    tabular: {
-      xxxs: 16,
-      xxs: 18,
-      xs: 20,
-      s: 24,
-    },
-    title: {
-      s: 34,
-      m: 40,
-      l: 50,
-    },
-  },
-} as const;
-
-const LETTER_SPACING_VALUES = {
-  wide: {
-    body: {
-      xxxs: "0.06px",
-      xxs: "0.06px",
-      xs: "0px",
-      s: "0px",
-      m: "0px",
-      l: "0px",
-    },
-    header: {
-      xxxs: "0.1px",
-      xxs: "0.1px",
-      xs: "0.08px",
-      s: "0.08px",
-      m: "0px",
-      l: "0px",
-      xl: "0px",
-      xxl: "0px",
-    },
-    code: {
-      xs: "0px",
-      s: "0px",
-    },
-    caps: {
-      xxs: "0.4px",
-      xxxs: "0.4px",
-      xxxxs: "0.4px",
-    },
-    tabular: {
-      xxxs: "-0.25px",
-      xxs: "-0.25px",
-      xs: "-0.3px",
-      s: "-0.3px",
-    },
-    title: {
-      s: "0px",
-      m: "0px",
-      l: "0px",
-    },
-  },
-  narrow: {
-    body: {
-      xxxs: "0.06px",
-      xxs: "0.06px",
-      xs: "0px",
-      s: "0px",
-      m: "0px",
-      l: "0px",
-    },
-    header: {
-      xxxs: "0.1px",
-      xxs: "0.1px",
-      xs: "0.08px",
-      s: "0.08px",
-      m: "0.08px",
-      l: "0px",
-      xl: "0px",
-      xxl: "0px",
-    },
-    code: {
-      xs: "0px",
-      s: "0px",
-    },
-    caps: {
-      xxs: "0.4px",
-      xxxs: "0.4px",
-      xxxxs: "0.4px",
-    },
-    tabular: {
-      xxxs: "-0.25px",
-      xxs: "-0.25px",
-      xs: "-0.3px",
-      s: "-0.3px",
-    },
-    title: {
-      s: "0px",
-      m: "0px",
-      l: "0px",
-    },
-  },
-} as const;
-
-const TYPOGRAPHY_CATEGORIES = {
-  body: {
-    weights: ["regular", "medium", "semibold"] as const,
-    sizes: ["l", "m", "s", "xs", "xxs", "xxxs"] as const,
-  },
-  header: {
-    weights: ["semibold"] as const,
-    sizes: ["xxl", "xl", "l", "m", "s", "xs", "xxs", "xxxs"] as const,
-  },
-  code: {
-    weights: ["regular", "medium", "semibold"] as const,
-    sizes: ["s", "xs"] as const,
-  },
-  caps: {
-    weights: ["semibold"] as const,
-    sizes: ["xxs", "xxxs", "xxxxs"] as const,
-  },
-  tabular: {
-    weights: ["regular", "medium", "semibold"] as const,
-    sizes: ["s", "xs", "xxs", "xxxs"] as const,
-  },
-  title: {
-    weights: ["bold"] as const,
-    sizes: ["s", "m", "l"] as const,
-  },
-} as const;
-
-export const FontWeight = {
-  light: 300,
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-} as const;
+export {
+  FONT_SIZE_VALUES,
+  LINE_HEIGHT_VALUES,
+  LETTER_SPACING_VALUES,
+  TYPOGRAPHY_CATEGORIES,
+  FontWeight,
+};
 
 function generateTypographyStyle(
   category: keyof typeof TYPOGRAPHY_CATEGORIES,
@@ -343,9 +73,9 @@ function generateCategoryStyles(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const categoryStyles: any = {};
 
-  config.weights.forEach((weight) => {
+  config.weights.forEach((weight: string) => {
     categoryStyles[weight] = {};
-    config.sizes.forEach((size) => {
+    config.sizes.forEach((size: string) => {
       categoryStyles[weight][size] = generateTypographyStyle(
         category,
         size,
@@ -365,9 +95,9 @@ export function generateTypographyStyles(
 ) {
   return {
     body: generateCategoryStyles("body", isNarrow),
-    header: generateCategoryStyles("header", isNarrow),
-    code: generateCategoryStyles("code", isNarrow),
     caps: generateCategoryStyles("caps", isNarrow),
+    code: generateCategoryStyles("code", isNarrow),
+    header: generateCategoryStyles("header", isNarrow),
     tabular: generateCategoryStyles("tabular", isNarrow, tabularNums),
     title: generateCategoryStyles("title", isNarrow),
   };

@@ -2,11 +2,32 @@
 import StyleDictionary from "style-dictionary";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { spawn } from "child_process";
 import { cssFormatter } from "./custom-formatters/cssFormatter.mjs";
 import { scssFormatter } from "./custom-formatters/scssFormatter.mjs";
 import { tailwindFormatter } from "./custom-formatters/tailwindFormatter.mjs";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
+
+console.log("Generating font tokens from typography theme...");
+
+// Run TypeScript directly with tsx
+const fontGenProcess = spawn(
+  "tsx",
+  [DIRNAME + "/scripts/generate-font-tokens.ts"],
+  { stdio: "inherit" }
+);
+
+await new Promise((resolve, reject) => {
+  fontGenProcess.on("close", (code) => {
+    if (code !== 0) {
+      reject(new Error(`Font token generation failed with code ${code}`));
+    } else {
+      resolve();
+    }
+  });
+  fontGenProcess.on("error", reject);
+});
 
 // REGISTER THE CUSTOM FORMATTERS
 

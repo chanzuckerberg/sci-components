@@ -9,7 +9,7 @@ export function tailwindFormatter({ dictionary, options }) {
     fontFamily: transformDictionary(sds.font["font-family"], null, options),
     ...transformFonts(
       sds.font,
-      ["body", "caps", "header", "tabular", "code"],
+      ["body", "caps", "header", "tabular", "code", "title"],
       options
     ),
     ...transformIconSizes(sds.iconSize, options),
