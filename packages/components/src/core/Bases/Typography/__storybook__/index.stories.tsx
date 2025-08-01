@@ -9,16 +9,22 @@ export default {
   title: "Bases/Typography",
 } as Meta;
 
-// Body Typography
+// Title Typography
 
-export const BodyTypography = {
-  render: () => <Typography categories={["body"]} />,
+export const TitleTypography = {
+  render: () => <Typography categories={["title"]} />,
 };
 
 // Header Typography
 
 export const HeaderTypography = {
   render: () => <Typography categories={["header"]} />,
+};
+
+// Body Typography
+
+export const BodyTypography = {
+  render: () => <Typography categories={["body"]} />,
 };
 
 // Code Typography

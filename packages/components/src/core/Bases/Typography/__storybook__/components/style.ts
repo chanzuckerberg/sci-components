@@ -1,42 +1,17 @@
 /* eslint-disable sort-keys */
 import styled from "@emotion/styled";
-import { SerializedStyles } from "@emotion/react";
 import {
   CommonThemeProps,
   getSemanticColors,
   fontCodeXs,
   getBorders,
   getSpaces,
-  fontBodyL,
-  fontBodyM,
-  fontBodyS,
-  fontBodyXs,
-  fontBodyXxs,
-  fontBodyXxxs,
-  fontBodySemiboldL,
-  fontBodySemiboldM,
-  fontBodySemiboldS,
-  fontBodySemiboldXs,
-  fontBodySemiboldXxs,
-  fontBodySemiboldXxxs,
-  fontCapsXxs,
-  fontCapsXxxs,
-  fontCapsXxxxs,
-  fontCodeS,
-  fontCodeSemiboldS,
-  fontCodeSemiboldXs,
-  fontHeaderXxl,
-  fontHeaderXl,
-  fontHeaderL,
-  fontHeaderM,
-  fontHeaderS,
-  fontHeaderXs,
-  fontHeaderXxs,
-  fontHeaderXxxs,
-  fontTabularS,
-  fontTabularSemiboldS,
-  fontTabularSemiboldXs,
-  fontTabularXs,
+  fontBody,
+  fontHeader,
+  fontCode,
+  fontCaps,
+  fontTabular,
+  fontTitle,
 } from "src/core/styles";
 
 interface StyledSampleTextProps extends CommonThemeProps {
@@ -44,62 +19,38 @@ interface StyledSampleTextProps extends CommonThemeProps {
   category: string;
   weight: string;
   size: string;
+  isNarrow?: boolean;
 }
-
-const getMixinFunction = (mixinName: string) => {
-  const mixinMap: Record<
-    string,
-    (props: CommonThemeProps) => SerializedStyles | null
-  > = {
-    // Body mixins
-    fontBodyL,
-    fontBodyM,
-    fontBodyS,
-    fontBodyXs,
-    fontBodyXxs,
-    fontBodyXxxs,
-    fontBodySemiboldL,
-    fontBodySemiboldM,
-    fontBodySemiboldS,
-    fontBodySemiboldXs,
-    fontBodySemiboldXxs,
-    fontBodySemiboldXxxs,
-    // Caps mixins
-    fontCapsXxs,
-    fontCapsXxxs,
-    fontCapsXxxxs,
-    // Code mixins
-    fontCodeS,
-    fontCodeSemiboldS,
-    fontCodeSemiboldXs,
-    fontCodeXs,
-    // Header mixins
-    fontHeaderXxl,
-    fontHeaderXl,
-    fontHeaderL,
-    fontHeaderM,
-    fontHeaderS,
-    fontHeaderXs,
-    fontHeaderXxs,
-    fontHeaderXxxs,
-    // Tabular mixins
-    fontTabularS,
-    fontTabularSemiboldS,
-    fontTabularSemiboldXs,
-    fontTabularXs,
-  };
-
-  return mixinMap[mixinName] || (() => () => null);
-};
 
 export const StyledSampleText = styled.div<StyledSampleTextProps>`
   ${(props) => {
-    const { mixinName, category } = props;
+    const { category, weight, size, isNarrow } = props;
     const semanticColors = getSemanticColors(props);
-    const mixinFunction = getMixinFunction(mixinName);
+
+    const getMixinFunction = () => {
+      switch (category) {
+        case "body":
+          return fontBody;
+        case "header":
+          return fontHeader;
+        case "code":
+          return fontCode;
+        case "caps":
+          return fontCaps;
+        case "tabular":
+          return fontTabular;
+        case "title":
+          return fontTitle;
+        default:
+          return fontBody;
+      }
+    };
+
+    const mixinFun = getMixinFunction();
 
     return [
-      mixinFunction(props),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (mixinFun as any)(size, weight, isNarrow),
       `
         color: ${semanticColors?.base?.textPrimary};
         word-break: break-word;

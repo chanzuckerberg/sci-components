@@ -25,11 +25,11 @@ import {
 import Accordion, { AccordionHeader } from "src/core/Accordion";
 
 interface TypographyProps {
-  categories?: Array<"body" | "header" | "code" | "caps" | "tabular">;
+  categories?: Array<"title" | "body" | "header" | "code" | "caps" | "tabular">;
 }
 
 const Typography = ({
-  categories = ["body", "header", "code", "caps", "tabular"],
+  categories = ["title", "header", "body", "code", "caps", "tabular"],
 }: TypographyProps): JSX.Element => {
   const theme = useTheme();
   const typography = getTypography({ theme } as CommonThemeProps);
@@ -192,6 +192,31 @@ const Typography = ({
     return items;
   };
 
+  const generateTitleTypography = (
+    styles: typeof wideStyles
+  ): TypographyItemData[] => {
+    const items: TypographyItemData[] = [];
+    const titleWeights = Object.keys(styles.title) as Array<
+      keyof typeof styles.title
+    >;
+
+    titleWeights.forEach((weight) => {
+      const titleSizes = Object.keys(styles.title[weight]) as Array<
+        keyof (typeof styles.title)[typeof weight]
+      >;
+      titleSizes.forEach((size) => {
+        const typographyStyle = styles.title[weight][size];
+        if (typographyStyle) {
+          items.push(
+            createTypographyItem("title", weight, size, typographyStyle)
+          );
+        }
+      });
+    });
+
+    return items;
+  };
+
   const generateTypographyData = (
     styles: typeof wideStyles
   ): TypographyItemData[] => {
@@ -211,6 +236,9 @@ const Typography = ({
     }
     if (categories.includes("tabular")) {
       items.push(...generateTabularTypography(styles));
+    }
+    if (categories.includes("title")) {
+      items.push(...generateTitleTypography(styles));
     }
 
     return items;
@@ -251,6 +279,7 @@ const Typography = ({
             category={item.category}
             weight={item.weight}
             size={item.size}
+            isNarrow={isNarrow}
           >
             {item.sampleText}
           </StyledSampleText>
@@ -309,12 +338,8 @@ const Typography = ({
         <Table>
           <TableHeader>
             <CellHeader hideSortIcon>Sample Text</CellHeader>
-            <CellHeader hideSortIcon width={200}>
-              Mixin Names
-            </CellHeader>
-            <CellHeader hideSortIcon width={350}>
-              Variables
-            </CellHeader>
+            <CellHeader hideSortIcon>Mixin Names</CellHeader>
+            <CellHeader hideSortIcon>Variables</CellHeader>
             <CellHeader hideSortIcon>CSS Properties</CellHeader>
           </TableHeader>
           <tbody>{tableRows}</tbody>
@@ -326,7 +351,7 @@ const Typography = ({
   return (
     <>
       <Accordion
-        id="typography-styles"
+        id="wide-screen-typography-accordion"
         useDivider
         togglePosition="right"
         defaultExpanded
@@ -341,7 +366,11 @@ const Typography = ({
         </AccordionDetails>
       </Accordion>
 
-      <Accordion id="typography-styles" useDivider togglePosition="right">
+      <Accordion
+        id="narrow-screen-typography-accordion"
+        useDivider
+        togglePosition="right"
+      >
         <AccordionHeader
           subtitle={`For Screens below sds-breakpoint-md ( screen width <= 512px )`}
         >

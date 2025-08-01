@@ -2,8 +2,8 @@ import { TypographyStyle } from "@mui/material";
 import { copyToClipboard, convertToKebabCase } from "src/core/Bases/utils";
 
 export interface TypographyItemData {
-  category: "body" | "header" | "code" | "caps" | "tabular";
-  weight: "regular" | "semibold";
+  category: "body" | "header" | "code" | "caps" | "tabular" | "title";
+  weight: "light" | "regular" | "medium" | "semibold" | "bold";
   size: string;
   displayName: string;
   mixinName: string;
@@ -25,6 +25,8 @@ export const getSampleText = (category: string): string => {
       return "SCIENCE DESIGN SYSTEM";
     case "tabular":
       return `10,234.56\n9,876.54\n537.00\n11.03`;
+    case "title":
+      return "Page Title Text";
     default:
       return "Sample Text";
   }
@@ -56,8 +58,20 @@ export const generateMixinName = (
     return `${basePrefix}${capitalizedSize}`;
   }
 
+  if (weight === "light") {
+    return `${basePrefix}Light${capitalizedSize}`;
+  }
+
+  if (weight === "medium") {
+    return `${basePrefix}Medium${capitalizedSize}`;
+  }
+
   if (weight === "semibold") {
     return `${basePrefix}Semibold${capitalizedSize}`;
+  }
+
+  if (weight === "bold") {
+    return `${basePrefix}Bold${capitalizedSize}`;
   }
 
   return `${basePrefix}${capitalizedSize}`;
@@ -127,6 +141,9 @@ export const formatCssProperties = (
 // Define size order from largest to smallest
 const SIZE_ORDER = ["xxl", "xl", "l", "m", "s", "xs", "xxs", "xxxs", "xxxxs"];
 
+// Define weight order from lightest to boldest
+const WEIGHT_ORDER = ["light", "regular", "medium", "semibold", "bold"];
+
 export const sortTypographyItems = (
   items: TypographyItemData[]
 ): TypographyItemData[] => {
@@ -136,10 +153,18 @@ export const sortTypographyItems = (
       return a.category.localeCompare(b.category);
     }
 
-    // Then sort by weight (regular first, then semibold)
+    // Then sort by weight (light->regular->medium->semibold->bold)
     if (a.weight !== b.weight) {
-      if (a.weight === "regular" && b.weight === "semibold") return -1;
-      if (a.weight === "semibold" && b.weight === "regular") return 1;
+      const aWeightIndex = WEIGHT_ORDER.indexOf(a.weight);
+      const bWeightIndex = WEIGHT_ORDER.indexOf(b.weight);
+
+      // If weight not found in WEIGHT_ORDER, put it at the end
+      if (aWeightIndex === -1 && bWeightIndex === -1)
+        return a.weight.localeCompare(b.weight);
+      if (aWeightIndex === -1) return 1;
+      if (bWeightIndex === -1) return -1;
+
+      return aWeightIndex - bWeightIndex;
     }
 
     // Finally sort by size (largest first)

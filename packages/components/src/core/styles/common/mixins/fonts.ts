@@ -25,13 +25,17 @@ export const fontBody = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints?.down("md")} {
-          ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
-        }
+        ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
       `;
     }
 
-    return themeToCss(body[fontWeight][fontSize], bodyFontFamily);
+    return css`
+      ${themeToCss(body[fontWeight][fontSize], bodyFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
+      }
+    `;
   };
 };
 
@@ -41,6 +45,12 @@ export const fontBodyS = fontBody("s", "regular");
 export const fontBodyXs = fontBody("xs", "regular");
 export const fontBodyXxs = fontBody("xxs", "regular");
 export const fontBodyXxxs = fontBody("xxxs", "regular");
+export const fontBodyMediumL = fontBody("l", "medium");
+export const fontBodyMediumM = fontBody("m", "medium");
+export const fontBodyMediumS = fontBody("s", "medium");
+export const fontBodyMediumXs = fontBody("xs", "medium");
+export const fontBodyMediumXxs = fontBody("xxs", "medium");
+export const fontBodyMediumXxxs = fontBody("xxxs", "medium");
 export const fontBodySemiboldL = fontBody("l", "semibold");
 export const fontBodySemiboldM = fontBody("m", "semibold");
 export const fontBodySemiboldS = fontBody("s", "semibold");
@@ -64,16 +74,22 @@ export const fontCaps = (fontSize: FontCapsSize, isNarrow: boolean = false) => {
       fontFamily: { caps: capsFontFamily },
     } = typography;
 
+    if (isNarrow) {
+      return css`
+        text-transform: uppercase;
+
+        ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
+      `;
+    }
+
     return css`
       text-transform: uppercase;
 
-      ${isNarrow
-        ? css`
-            ${props.theme?.breakpoints?.down("md")} {
-              ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
-            }
-          `
-        : themeToCss(caps.semibold[fontSize], capsFontFamily)}
+      ${themeToCss(caps.semibold[fontSize], capsFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
+      }
     `;
   };
 };
@@ -103,13 +119,17 @@ export const fontHeader = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints?.down("md")} {
-          ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
-        }
+        ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
       `;
     }
 
-    return themeToCss(header.semibold[fontSize], headerFontFamily);
+    return css`
+      ${themeToCss(header.semibold[fontSize], headerFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
+      }
+    `;
   };
 };
 
@@ -146,18 +166,24 @@ export const fontCode = (
 
     if (isNarrow) {
       return css`
-        ${props.theme?.breakpoints?.down("md")} {
-          ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
-        }
+        ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
       `;
     }
 
-    return themeToCss(code[fontWeight][fontSize], codeFontFamily);
+    return css`
+      ${themeToCss(code[fontWeight][fontSize], codeFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
+      }
+    `;
   };
 };
 
 export const fontCodeXs = fontCode("xs", "regular");
 export const fontCodeS = fontCode("s", "regular");
+export const fontCodeMediumXs = fontCode("xs", "medium");
+export const fontCodeMediumS = fontCode("s", "medium");
 export const fontCodeSemiboldXs = fontCode("xs", "semibold");
 export const fontCodeSemiboldS = fontCode("s", "semibold");
 
@@ -183,27 +209,80 @@ export const fontTabular = (
       fontFamily: { tabular: tabularFontFamily },
     } = typography;
 
+    if (isNarrow) {
+      return css`
+        font-variant-numeric: tabular-nums;
+
+        ${themeToCss(narrowTabular[fontWeight][fontSize], tabularFontFamily)}
+      `;
+    }
+
     return css`
       font-variant-numeric: tabular-nums;
 
-      ${isNarrow
-        ? css`
-            ${props.theme?.breakpoints?.down("md")} {
-              ${themeToCss(
-                narrowTabular[fontWeight][fontSize],
-                tabularFontFamily
-              )}
-            }
-          `
-        : themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
+      ${themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowTabular[fontWeight][fontSize], tabularFontFamily)}
+      }
     `;
   };
 };
 
+export const fontTabularXxxs = fontTabular("xxxs", "regular");
+export const fontTabularXxs = fontTabular("xxs", "regular");
 export const fontTabularXs = fontTabular("xs", "regular");
 export const fontTabularS = fontTabular("s", "regular");
+export const fontTabularMediumXxxs = fontTabular("xxxs", "medium");
+export const fontTabularMediumXxs = fontTabular("xxs", "medium");
+export const fontTabularMediumXs = fontTabular("xs", "medium");
+export const fontTabularMediumS = fontTabular("s", "medium");
+export const fontTabularSemiboldXxxs = fontTabular("xxxs", "semibold");
+export const fontTabularSemiboldXxs = fontTabular("xxs", "semibold");
 export const fontTabularSemiboldXs = fontTabular("xs", "semibold");
 export const fontTabularSemiboldS = fontTabular("s", "semibold");
+
+// Font Title
+
+type FontTitleWeight = keyof Typography["wideStyles"]["title"];
+type FontTitleSize<T extends FontTitleWeight> =
+  keyof Typography["wideStyles"]["title"][T];
+
+export const fontTitle = (
+  fontSize: FontTitleSize<FontTitleWeight>,
+  fontWeight: FontTitleWeight = "bold",
+  isNarrow: boolean = false
+) => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
+    const typography = getTypography(props);
+
+    if (!typography) return null;
+
+    const {
+      wideStyles: { title },
+      narrowStyles: { title: narrowTitle },
+      fontFamily: { title: titleFontFamily },
+    } = typography;
+
+    if (isNarrow) {
+      return css`
+        ${themeToCss(narrowTitle[fontWeight][fontSize], titleFontFamily)}
+      `;
+    }
+
+    return css`
+      ${themeToCss(title[fontWeight][fontSize], titleFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowTitle[fontWeight][fontSize], titleFontFamily)}
+      }
+    `;
+  };
+};
+
+export const fontTitleBoldS = fontTitle("s", "bold");
+export const fontTitleBoldM = fontTitle("m", "bold");
+export const fontTitleBoldL = fontTitle("l", "bold");
 
 function themeToCss(
   fontTheme: TypographyStyle,
