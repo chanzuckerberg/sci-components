@@ -3,41 +3,68 @@ import { TypographyStyle } from "@mui/material";
 import { Typography } from "../types";
 import { CommonThemeProps, getTypography } from "../selectors/theme";
 
-type FontBodyWeight = keyof Typography["wideStyles"]["body"];
-type FontBodySize<T extends FontBodyWeight> =
-  keyof Typography["wideStyles"]["body"][T];
-
-export const fontBody = (
-  fontSize: FontBodySize<FontBodyWeight>,
-  fontWeight: FontBodyWeight = "regular",
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { body },
-      narrowStyles: { body: narrowBody },
-      fontFamily: { body: bodyFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
-      `;
-    }
-
-    return css`
-      ${themeToCss(body[fontWeight][fontSize], bodyFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowBody[fontWeight][fontSize], bodyFontFamily)}
-      }
-    `;
-  };
+type FontType = keyof Typography["wideStyles"];
+type FontConfig<T extends FontType> = {
+  type: T;
+  defaultWeight?: keyof Typography["wideStyles"][T];
+  additionalCss?: string;
 };
+
+function createFontFunction<T extends FontType>(config: FontConfig<T>) {
+  return <W extends keyof Typography["wideStyles"][T]>(
+    fontSize: keyof Typography["wideStyles"][T][W],
+    fontWeight?: W,
+    isNarrow: boolean = false
+  ) => {
+    return (props: CommonThemeProps): SerializedStyles | null => {
+      const typography = getTypography(props);
+
+      if (!typography) return null;
+
+      const weight = fontWeight ?? (config.defaultWeight as W);
+      const styleType = config.type;
+      const wideStyles = typography.wideStyles[
+        styleType
+      ] as Typography["wideStyles"][T];
+      const narrowStyles = typography.narrowStyles[
+        styleType
+      ] as Typography["narrowStyles"][T];
+      const fontFamily = typography.fontFamily[styleType];
+
+      const additionalCss = config.additionalCss || "";
+
+      if (isNarrow) {
+        return css`
+          ${additionalCss}
+          ${themeToCss(
+            narrowStyles[weight][fontSize] as TypographyStyle,
+            fontFamily
+          )}
+        `;
+      }
+
+      return css`
+        ${additionalCss}
+        ${themeToCss(
+          wideStyles[weight][fontSize] as TypographyStyle,
+          fontFamily
+        )}
+
+        ${props.theme?.breakpoints?.down("md")} {
+          ${themeToCss(
+            narrowStyles[weight][fontSize] as TypographyStyle,
+            fontFamily
+          )}
+        }
+      `;
+    };
+  };
+}
+
+export const fontBody = createFontFunction({
+  defaultWeight: "regular",
+  type: "body",
+});
 
 export const fontBodyL = fontBody("l", "regular");
 export const fontBodyM = fontBody("m", "regular");
@@ -58,80 +85,20 @@ export const fontBodySemiboldXs = fontBody("xs", "semibold");
 export const fontBodySemiboldXxs = fontBody("xxs", "semibold");
 export const fontBodySemiboldXxxs = fontBody("xxxs", "semibold");
 
-// Font Caps
-
-type FontCapsSize = keyof Typography["wideStyles"]["caps"]["semibold"];
-
-export const fontCaps = (fontSize: FontCapsSize, isNarrow: boolean = false) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { caps },
-      narrowStyles: { caps: narrowCaps },
-      fontFamily: { caps: capsFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        text-transform: uppercase;
-
-        ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
-      `;
-    }
-
-    return css`
-      text-transform: uppercase;
-
-      ${themeToCss(caps.semibold[fontSize], capsFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowCaps.semibold[fontSize], capsFontFamily)}
-      }
-    `;
-  };
-};
+export const fontCaps = createFontFunction({
+  additionalCss: "text-transform: uppercase;",
+  defaultWeight: "semibold",
+  type: "caps",
+});
 
 export const fontCapsXxs = fontCaps("xxs");
 export const fontCapsXxxs = fontCaps("xxxs");
 export const fontCapsXxxxs = fontCaps("xxxxs");
 
-// Font Header
-
-type FontHeaderSize = keyof Typography["wideStyles"]["header"]["semibold"];
-
-export const fontHeader = (
-  fontSize: FontHeaderSize,
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { header },
-      narrowStyles: { header: narrowHeader },
-      fontFamily: { header: headerFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
-      `;
-    }
-
-    return css`
-      ${themeToCss(header.semibold[fontSize], headerFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowHeader.semibold[fontSize], headerFontFamily)}
-      }
-    `;
-  };
-};
+export const fontHeader = createFontFunction({
+  defaultWeight: "semibold",
+  type: "header",
+});
 
 export const fontHeaderXxl = fontHeader("xxl");
 export const fontHeaderXl = fontHeader("xl");
@@ -142,43 +109,10 @@ export const fontHeaderXs = fontHeader("xs");
 export const fontHeaderXxs = fontHeader("xxs");
 export const fontHeaderXxxs = fontHeader("xxxs");
 
-// Font Code
-
-type FontCodeWeight = keyof Typography["wideStyles"]["code"];
-type FontCodeSize<T extends FontCodeWeight> =
-  keyof Typography["wideStyles"]["code"][T];
-
-export const fontCode = (
-  fontSize: FontCodeSize<FontCodeWeight>,
-  fontWeight: FontCodeWeight = "regular",
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { code },
-      narrowStyles: { code: narrowCode },
-      fontFamily: { code: codeFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
-      `;
-    }
-
-    return css`
-      ${themeToCss(code[fontWeight][fontSize], codeFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowCode[fontWeight][fontSize], codeFontFamily)}
-      }
-    `;
-  };
-};
+export const fontCode = createFontFunction({
+  defaultWeight: "regular",
+  type: "code",
+});
 
 export const fontCodeXs = fontCode("xs", "regular");
 export const fontCodeS = fontCode("s", "regular");
@@ -187,47 +121,11 @@ export const fontCodeMediumS = fontCode("s", "medium");
 export const fontCodeSemiboldXs = fontCode("xs", "semibold");
 export const fontCodeSemiboldS = fontCode("s", "semibold");
 
-// Font Tabular
-
-type FontTabularWeight = keyof Typography["wideStyles"]["tabular"];
-type FontTabularSize<T extends FontTabularWeight> =
-  keyof Typography["wideStyles"]["tabular"][T];
-
-export const fontTabular = (
-  fontSize: FontTabularSize<FontTabularWeight>,
-  fontWeight: FontTabularWeight = "regular",
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { tabular },
-      narrowStyles: { tabular: narrowTabular },
-      fontFamily: { tabular: tabularFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        font-variant-numeric: tabular-nums;
-
-        ${themeToCss(narrowTabular[fontWeight][fontSize], tabularFontFamily)}
-      `;
-    }
-
-    return css`
-      font-variant-numeric: tabular-nums;
-
-      ${themeToCss(tabular[fontWeight][fontSize], tabularFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowTabular[fontWeight][fontSize], tabularFontFamily)}
-      }
-    `;
-  };
-};
+export const fontTabular = createFontFunction({
+  additionalCss: "font-variant-numeric: tabular-nums;",
+  defaultWeight: "regular",
+  type: "tabular",
+});
 
 export const fontTabularXxxs = fontTabular("xxxs", "regular");
 export const fontTabularXxs = fontTabular("xxs", "regular");
@@ -242,85 +140,19 @@ export const fontTabularSemiboldXxs = fontTabular("xxs", "semibold");
 export const fontTabularSemiboldXs = fontTabular("xs", "semibold");
 export const fontTabularSemiboldS = fontTabular("s", "semibold");
 
-// Font Title
-
-type FontTitleWeight = keyof Typography["wideStyles"]["title"];
-type FontTitleSize<T extends FontTitleWeight> =
-  keyof Typography["wideStyles"]["title"][T];
-
-export const fontTitle = (
-  fontSize: FontTitleSize<FontTitleWeight>,
-  fontWeight: FontTitleWeight = "bold",
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { title },
-      narrowStyles: { title: narrowTitle },
-      fontFamily: { title: titleFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        ${themeToCss(narrowTitle[fontWeight][fontSize], titleFontFamily)}
-      `;
-    }
-
-    return css`
-      ${themeToCss(title[fontWeight][fontSize], titleFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowTitle[fontWeight][fontSize], titleFontFamily)}
-      }
-    `;
-  };
-};
+export const fontTitle = createFontFunction({
+  defaultWeight: "bold",
+  type: "title",
+});
 
 export const fontTitleBoldS = fontTitle("s", "bold");
 export const fontTitleBoldM = fontTitle("m", "bold");
 export const fontTitleBoldL = fontTitle("l", "bold");
 
-// Font Link
-
-type FontLinkWeight = keyof Typography["wideStyles"]["link"];
-type FontLinkSize<T extends FontLinkWeight> =
-  keyof Typography["wideStyles"]["link"][T];
-
-export const fontLink = (
-  fontSize: FontLinkSize<FontLinkWeight>,
-  fontWeight: FontLinkWeight = "regular",
-  isNarrow: boolean = false
-) => {
-  return (props: CommonThemeProps): SerializedStyles | null => {
-    const typography = getTypography(props);
-
-    if (!typography) return null;
-
-    const {
-      wideStyles: { link },
-      narrowStyles: { link: narrowLink },
-      fontFamily: { link: linkFontFamily },
-    } = typography;
-
-    if (isNarrow) {
-      return css`
-        ${themeToCss(narrowLink[fontWeight][fontSize], linkFontFamily)}
-      `;
-    }
-
-    return css`
-      ${themeToCss(link[fontWeight][fontSize], linkFontFamily)}
-
-      ${props.theme?.breakpoints?.down("md")} {
-        ${themeToCss(narrowLink[fontWeight][fontSize], linkFontFamily)}
-      }
-    `;
-  };
-};
+export const fontLink = createFontFunction({
+  defaultWeight: "regular",
+  type: "link",
+});
 
 export const fontLinkL = fontLink("l", "regular");
 export const fontLinkM = fontLink("m", "regular");
