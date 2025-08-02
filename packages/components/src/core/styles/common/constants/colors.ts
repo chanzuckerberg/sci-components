@@ -2,7 +2,7 @@ import { Colors } from "../types";
 
 export const SDSLightThemeColors: Colors = {
   blue: {
-    "100": "#e2eeff",
+    "100": "#edf3fd",
     "200": "#cce1ff",
     "300": "#9dc6ff",
     "400": "#6ca6ff",
@@ -12,20 +12,20 @@ export const SDSLightThemeColors: Colors = {
     "800": "#00114a",
   },
   gray: {
-    "100": "#f3f3f3",
+    "100": "#ededed",
     "200": "#dfdfdf",
     "300": "#c3c3c3",
     "400": "#a5a5a5",
     "50": "#ffffff",
     "500": "#969696",
-    "600": "#6c6c6c",
+    "600": "#7a7a7a",
     "700": "#3b3b3b",
-    "75": "#fafafa",
+    "75": "#f8f8f8",
     "800": "#1b1b1b",
     "900": "#000000",
   },
   green: {
-    "100": "#daf4de",
+    "100": "#ebf9ed",
     "200": "#b9ecc3",
     "300": "#7fd693",
     "400": "#50b96d",

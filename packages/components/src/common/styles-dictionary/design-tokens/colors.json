@@ -5,7 +5,7 @@
         "blue": {
           "100": {
             "darkValue": "#0f1d4a",
-            "value": "#e2eeff"
+            "value": "#edf3fd"
           },
           "200": {
             "darkValue": "#0a216e",
@@ -43,11 +43,11 @@
           },
           "75": {
             "darkValue": "#101010",
-            "value": "#fafafa"
+            "value": "#f8f8f8"
           },
           "100": {
             "darkValue": "#333333",
-            "value": "#f3f3f3"
+            "value": "#ededed"
           },
           "200": {
             "darkValue": "#494949",
@@ -67,7 +67,7 @@
           },
           "600": {
             "darkValue": "#cdcdcd",
-            "value": "#6c6c6c"
+            "value": "#7a7a7a"
           },
           "700": {
             "darkValue": "#ededed",
@@ -85,7 +85,7 @@
         "green": {
           "100": {
             "darkValue": "#082608",
-            "value": "#daf4de"
+            "value": "#ebf9ed"
           },
           "200": {
             "darkValue": "#063617",
@@ -323,7 +323,7 @@
           },
           "background-secondary": {
             "darkValue": "{sds.color.primitive.gray.100.darkValue}",
-            "value": "{sds.color.primitive.gray.100.value}"
+            "value": "{sds.color.primitive.gray.75.value}"
           },
           "background-secondary-inverse": {
             "darkValue": "{sds.color.primitive.gray.700.darkValue}",
@@ -331,7 +331,7 @@
           },
           "background-tertiary": {
             "darkValue": "{sds.color.primitive.gray.200.darkValue}",
-            "value": "{sds.color.primitive.gray.200.value}"
+            "value": "{sds.color.primitive.gray.100.value}"
           },
           "border-on-fill": {
             "darkValue": "{sds.color.primitive.gray.50.darkValue}",
@@ -386,16 +386,28 @@
             "value": "{sds.color.primitive.gray.200.value}"
           },
           "fill-hover": {
-            "darkValue": "{sds.color.primitive.gray.300.darkValue}47",
-            "value": "{sds.color.primitive.gray.300.value}47"
+            "darkValue": "#69696994",
+            "value": "#c3c3c333"
+          },
+          "fill-hover-inverse": {
+            "darkValue": "#69696914",
+            "value": "#c3c3c357"
           },
           "fill-open": {
-            "darkValue": "{sds.color.primitive.gray.300.darkValue}47",
-            "value": "{sds.color.primitive.gray.300.value}47"
+            "darkValue": "#69696994",
+            "value": "#c3c3c333"
+          },
+          "fill-open-inverse": {
+            "darkValue": "#69696914",
+            "value": "#c3c3c357"
           },
           "fill-pressed": {
-            "darkValue": "{sds.color.primitive.gray.300.darkValue}47",
-            "value": "{sds.color.primitive.gray.300.value}47"
+            "darkValue": "#69696994",
+            "value": "#c3c3c333"
+          },
+          "fill-pressed-inverse": {
+            "darkValue": "#69696914",
+            "value": "#c3c3c357"
           },
           "fill-primary": {
             "darkValue": "{sds.color.primitive.gray.100.darkValue}",
@@ -433,6 +445,10 @@
             "darkValue": "{sds.color.primitive.gray.900.darkValue}",
             "value": "{sds.color.primitive.gray.900.value}"
           },
+          "ornament-secondary-hover-inverse": {
+            "darkValue": "{sds.color.primitive.gray.50.darkValue}",
+            "value": "{sds.color.primitive.gray.50.value}"
+          },
           "ornament-secondary-inverse": {
             "darkValue": "{sds.color.primitive.gray.300.darkValue}",
             "value": "{sds.color.primitive.gray.300.value}"
@@ -441,12 +457,16 @@
             "darkValue": "{sds.color.primitive.gray.900.darkValue}",
             "value": "{sds.color.primitive.gray.900.value}"
           },
+          "ornament-secondary-pressed-inverse": {
+            "darkValue": "{sds.color.primitive.gray.50.darkValue}",
+            "value": "{sds.color.primitive.gray.50.value}"
+          },
           "surface": {
             "darkValue": "{sds.color.primitive.gray.100.darkValue}",
             "value": "{sds.color.primitive.gray.50.value}"
           },
           "surface-inverse": {
-            "darkValue": "{sds.color.primitive.gray.900.darkValue}",
+            "darkValue": "{sds.color.primitive.gray.700.darkValue}",
             "value": "{sds.color.primitive.gray.900.value}"
           },
           "text-disabled": {

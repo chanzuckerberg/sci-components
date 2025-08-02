@@ -1,6 +1,7 @@
 import { PaletteMode } from "@mui/material";
 import { AppTheme, SDSPalette, SDSThemeOptions } from "./types";
 import { Breakpoints } from "./constants/breakpoints";
+import { addOpacityToHex } from "./utils/opacity";
 
 export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
   return {
@@ -29,9 +30,9 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
     base: {
       backgroundPrimary: appTheme.colors.gray[50]!,
       backgroundPrimaryInverse: appTheme.colors.gray[900]!,
-      backgroundSecondary: appTheme.colors.gray[100],
+      backgroundSecondary: appTheme.colors.gray[75]!,
       backgroundSecondaryInverse: appTheme.colors.gray[700],
-      backgroundTertiary: appTheme.colors.gray[200],
+      backgroundTertiary: appTheme.colors.gray[100],
       borderOnFill: appTheme.colors.gray[50]!,
       borderPrimary: appTheme.colors.gray[600],
       borderPrimaryDisabled: appTheme.colors.gray[300],
@@ -45,10 +46,12 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       divider: appTheme.colors.gray[200],
       dividerInverse: appTheme.colors.gray[600],
       fillDisabled: appTheme.colors.gray[200],
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      fillHover: appTheme.colors.gray[300] + "47",
-      fillOpen: appTheme.colors.gray[300] + "47",
-      fillPressed: appTheme.colors.gray[300] + "47",
+      fillHover: addOpacityToHex(appTheme.colors.gray[300], 20),
+      fillHoverInverse: addOpacityToHex(appTheme.colors.gray[300], 34),
+      fillOpen: addOpacityToHex(appTheme.colors.gray[300], 20),
+      fillOpenInverse: addOpacityToHex(appTheme.colors.gray[300], 34),
+      fillPressed: addOpacityToHex(appTheme.colors.gray[300], 20),
+      fillPressedInverse: addOpacityToHex(appTheme.colors.gray[300], 34),
       fillPrimary: appTheme.colors.gray[50]!,
       fillSelected: appTheme.colors.gray[900]!,
       ornamentDisabled: appTheme.colors.gray[300],
@@ -58,8 +61,10 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       ornamentPrimaryInverse: appTheme.colors.gray[50]!,
       ornamentSecondary: appTheme.colors.gray[600],
       ornamentSecondaryHover: appTheme.colors.gray[900]!,
+      ornamentSecondaryHoverInverse: appTheme.colors.gray[50]!,
       ornamentSecondaryInverse: appTheme.colors.gray[300],
       ornamentSecondaryPressed: appTheme.colors.gray[900]!,
+      ornamentSecondaryPressedInverse: appTheme.colors.gray[50]!,
       surface: appTheme.colors.gray[50]!,
       surfaceInverse: appTheme.colors.gray[900]!,
       textDisabled: appTheme.colors.gray[300],
@@ -184,10 +189,12 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       divider: appTheme.colors.gray[200],
       dividerInverse: appTheme.colors.gray[600],
       fillDisabled: appTheme.colors.gray[200],
-      /* the number 47 is the opacity of the color, which is equal to 28% */
-      fillHover: appTheme.colors.gray[300] + "47",
-      fillOpen: appTheme.colors.gray[300] + "47",
-      fillPressed: appTheme.colors.gray[300] + "47",
+      fillHover: addOpacityToHex(appTheme.colors.gray[300], 58),
+      fillHoverInverse: addOpacityToHex(appTheme.colors.gray[300], 8),
+      fillOpen: addOpacityToHex(appTheme.colors.gray[300], 58),
+      fillOpenInverse: addOpacityToHex(appTheme.colors.gray[300], 8),
+      fillPressed: addOpacityToHex(appTheme.colors.gray[300], 58),
+      fillPressedInverse: addOpacityToHex(appTheme.colors.gray[300], 8),
       fillPrimary: appTheme.colors.gray[100],
       fillSelected: appTheme.colors.gray[900]!,
       ornamentDisabled: appTheme.colors.gray[300],
@@ -197,10 +204,12 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       ornamentPrimaryInverse: appTheme.colors.gray[50]!,
       ornamentSecondary: appTheme.colors.gray[600],
       ornamentSecondaryHover: appTheme.colors.gray[900]!,
+      ornamentSecondaryHoverInverse: appTheme.colors.gray[50]!,
       ornamentSecondaryInverse: appTheme.colors.gray[300],
       ornamentSecondaryPressed: appTheme.colors.gray[900]!,
+      ornamentSecondaryPressedInverse: appTheme.colors.gray[50]!,
       surface: appTheme.colors.gray[100],
-      surfaceInverse: appTheme.colors.gray[900]!,
+      surfaceInverse: appTheme.colors.gray[700],
       textDisabled: appTheme.colors.gray[300],
       textDisabledInverse: appTheme.colors.gray[600],
       textOnFill: appTheme.colors.gray[900]!,

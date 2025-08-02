@@ -91,12 +91,12 @@
       },
       "link": {
         "dashed": {
-          "darkValue": "1px dashed",
-          "value": "1px dashed"
+          "darkValue": "1px dashed {sds.color.primitive.gray.900.darkValue}",
+          "value": "1px dashed {sds.color.primitive.gray.900.value}"
         },
         "solid": {
-          "darkValue": "1px solid {sds.color.primitive.blue.500.darkValue}",
-          "value": "1px solid {sds.color.primitive.blue.500.value}"
+          "darkValue": "1px solid {sds.color.primitive.gray.900.darkValue}",
+          "value": "1px solid {sds.color.primitive.gray.900.value}"
         }
       },
       "negative": {

@@ -42,9 +42,12 @@ export interface BaseColor {
   textDisabledInverse: string;
   textOnFill: string;
   fillHover: string;
+  fillHoverInverse: string;
   fillPressed: string;
+  fillPressedInverse: string;
   fillPrimary: string;
   fillOpen: string;
+  fillOpenInverse: string;
   fillSelected: string;
   fillDisabled: string;
   divider: string;
@@ -67,7 +70,9 @@ export interface BaseColor {
   ornamentSecondary: string;
   ornamentSecondaryInverse: string;
   ornamentSecondaryHover: string;
+  ornamentSecondaryHoverInverse: string;
   ornamentSecondaryPressed: string;
+  ornamentSecondaryPressedInverse: string;
 }
 
 export interface IntentColor {
