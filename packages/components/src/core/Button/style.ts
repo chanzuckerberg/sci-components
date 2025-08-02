@@ -4,14 +4,12 @@ import { css, SerializedStyles } from "@emotion/react";
 import {
   CommonThemeProps,
   fontBodySemiboldXs,
-  fontCapsXxxs,
   fontCapsXxs,
   getCorners,
   getIconSizes,
   getSemanticColors,
   getShadows,
   getSpaces,
-  fontBodySemiboldXxs,
   fontBody,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
@@ -252,7 +250,7 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
 
   return css`
     ${focusVisibleA11yStyle(props)}
-    ${isAllCaps ? fontCapsXxxs(props) : fontBodySemiboldXxs(props)}
+    ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
 
     min-width: fit-content;
     padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
@@ -300,12 +298,12 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
     }
 
     .${buttonClasses.startIcon} {
-      margin-right: ${spaces?.xxs}px;
+      margin-right: ${spaces?.xs}px;
       margin-left: 0;
     }
 
     .${buttonClasses.endIcon} {
-      margin-left: ${spaces?.xxs}px;
+      margin-left: ${spaces?.xs}px;
       margin-right: 0;
     }
   `;
