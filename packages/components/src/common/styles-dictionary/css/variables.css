@@ -2,17 +2,17 @@
   :root {
     --sds-border-accent-default: 1px solid #1a6cef;
     --sds-border-accent-focused: 1px solid #1a6cef;
-    --sds-border-accent-open: 1px solid #1a6cef;
-    --sds-border-accent-selected: 1px solid #1a6cef;
     --sds-border-accent-hover: 1px solid #0041b9;
+    --sds-border-accent-open: 1px solid #1a6cef;
     --sds-border-accent-pressed: 1px solid #002d90;
+    --sds-border-accent-selected: 1px solid #1a6cef;
     --sds-border-base-default: 1px solid #969696;
     --sds-border-base-disabled: 1px solid #c3c3c3;
     --sds-border-base-divider: 1px solid #dfdfdf;
     --sds-border-base-divider-inverse: 1px solid #6c6c6c;
-    --sds-border-base-hover: 1px dashed #000000;
-    --sds-border-base-inverse: 1px dashed #ffffff;
-    --sds-border-base-pressed: 1px dashed #000000;
+    --sds-border-base-hover: 1px solid #000000;
+    --sds-border-base-inverse: 1px solid #ffffff;
+    --sds-border-base-pressed: 1px solid #000000;
     --sds-border-base-table: 1px solid #c3c3c3;
     --sds-border-beta-default: 1px solid #6526b5;
     --sds-border-beta-extra-thick: 4px solid #6526b5;
@@ -21,7 +21,7 @@
     --sds-border-info-extra-thick: 4px solid #0041b9;
     --sds-border-info-thick: 2px solid #0041b9;
     --sds-border-link-dashed: 1px dashed;
-    --sds-border-link-solid: 1px solid;
+    --sds-border-link-solid: 1px solid #1a6cef;
     --sds-border-negative-default: 1px solid #980017;
     --sds-border-negative-extra-thick: 4px solid #980017;
     --sds-border-negative-thick: 2px solid #980017;
@@ -867,17 +867,17 @@
   :root {
     --sds-border-accent-default: 1px solid #a2c9ff;
     --sds-border-accent-focused: 1px solid #a2c9ff;
-    --sds-border-accent-open: 1px solid #a2c9ff;
-    --sds-border-accent-selected: 1px solid #a2c9ff;
     --sds-border-accent-hover: 1px solid #cde3ff;
+    --sds-border-accent-open: 1px solid #a2c9ff;
     --sds-border-accent-pressed: 1px solid #e2eeff;
+    --sds-border-accent-selected: 1px solid #a2c9ff;
     --sds-border-base-default: 1px solid #aaaaaa;
     --sds-border-base-disabled: 1px solid #696969;
     --sds-border-base-divider: 1px solid #494949;
     --sds-border-base-divider-inverse: 1px solid #cdcdcd;
-    --sds-border-base-hover: 1px dashed #ffffff;
-    --sds-border-base-inverse: 1px dashed #000000;
-    --sds-border-base-pressed: 1px dashed #ffffff;
+    --sds-border-base-hover: 1px solid #ffffff;
+    --sds-border-base-inverse: 1px solid #000000;
+    --sds-border-base-pressed: 1px solid #ffffff;
     --sds-border-base-table: 1px solid #696969;
     --sds-border-beta-default: 1px solid #cebef8;
     --sds-border-beta-extra-thick: 4px solid #cebef8;
@@ -886,7 +886,7 @@
     --sds-border-info-extra-thick: 4px solid #a2c9ff;
     --sds-border-info-thick: 2px solid #a2c9ff;
     --sds-border-link-dashed: 1px dashed;
-    --sds-border-link-solid: 1px solid;
+    --sds-border-link-solid: 1px solid #5b9aff;
     --sds-border-negative-default: 1px solid #ff988a;
     --sds-border-negative-extra-thick: 4px solid #ff988a;
     --sds-border-negative-thick: 2px solid #ff988a;
