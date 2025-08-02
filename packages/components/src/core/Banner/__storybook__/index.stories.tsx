@@ -28,13 +28,17 @@ export default {
       mapping: BANNER_ICON_OPTIONS,
       options: Object.keys(BANNER_ICON_OPTIONS),
     },
+    intent: {
+      control: { type: "inline-radio" },
+      options: ["info", "negative", "positive", "notice"],
+    },
     sdsIconProps: {
       control: {
         type: "object",
       },
     },
     sdsType: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["primary", "secondary"],
       required: true,
     },
@@ -59,6 +63,7 @@ export const Default = {
   args: {
     dismissed: false,
     dismissible: true,
+    intent: "info",
     sdsType: "primary",
     textChild: BANNER_TEXT,
   },
@@ -69,6 +74,7 @@ export const Default = {
 export const Test = {
   args: {
     dismissible: true,
+    intent: "info",
     sdsType: "primary",
     textChild: "test text",
   },
