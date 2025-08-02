@@ -3,6 +3,7 @@ import { Card, CardContent } from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyS,
+  getCorners,
   getSemanticColors,
   getShadows,
   getSpaces,
@@ -51,6 +52,7 @@ export const StyledCard = styled(Card, {
     } = props;
 
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     const flexDirection =
       sdsType === "wide" && visualElementType === "image"
@@ -72,7 +74,8 @@ export const StyledCard = styled(Card, {
       background-image: none;
       flex-direction: ${flexDirection};
       box-shadow: none;
-      overflow: visible;
+      overflow: none;
+      border-radius: ${corners?.xl}px;
 
       .MuiCardActionArea-focusHighlight {
         background: transparent;
