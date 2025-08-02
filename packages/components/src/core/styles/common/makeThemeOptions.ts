@@ -1,5 +1,6 @@
 import { PaletteMode } from "@mui/material";
 import { AppTheme, SDSPalette, SDSThemeOptions } from "./types";
+import { Breakpoints } from "./constants/breakpoints";
 
 export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
   return {
@@ -289,11 +290,7 @@ export function makeThemeOptions(
   return {
     app: appTheme,
     breakpoints: {
-      values: {
-        lg: 1024,
-        md: 512,
-        sm: 0,
-      },
+      values: Breakpoints,
     },
     components: {
       MuiButton: {

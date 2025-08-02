@@ -2633,9 +2633,9 @@
     "sds-s": "0 2px 4px 0 rgba(0,0,0, 0.25)"
   },
   "breakpoints": {
-    "sds-sm": "0px",
+    "sds-lg": "1024px",
     "sds-md": "512px",
-    "sds-lg": "1024px"
+    "sds-sm": "0px"
   },
   "colors": {
     "dark": {
