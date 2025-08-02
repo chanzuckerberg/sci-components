@@ -49,6 +49,63 @@ const createColorToReferenceMap = () => {
   return { darkColorMap, lightColorMap };
 };
 
+// Helper function to handle border colors with opacity
+const handleBorderOpacityColor = (
+  colorValue: string,
+  targetMap: Map<string, string>,
+  isDark: boolean
+): string | null => {
+  if (colorValue.length < 8) {
+    return null;
+  }
+
+  const potentialOpacity = colorValue.slice(-2);
+  // Check if the last 2 characters are valid hex
+  if (!/^[0-9A-Fa-f]{2}$/.test(potentialOpacity)) {
+    return null;
+  }
+
+  const baseColor = colorValue.slice(0, -2);
+  const baseReference = targetMap.get(baseColor);
+  if (!baseReference) {
+    return null;
+  }
+
+  return baseReference.replace(
+    isDark ? ".darkValue}" : ".value}",
+    isDark ? `.darkValue}${potentialOpacity}` : `.value}${potentialOpacity}`
+  );
+};
+
+// Helper function to extract and convert color from border string
+const extractAndConvertBorderColor = (
+  borderValue: string,
+  targetMap: Map<string, string>,
+  isDark: boolean
+): string | null => {
+  // Extract color from border string (e.g., "1px solid #1976d2" or "1px solid #1976d233")
+  const colorMatch = borderValue.match(/(#[a-fA-F0-9]{6,8})/);
+  if (!colorMatch) {
+    return null;
+  }
+
+  const colorValue = colorMatch[1];
+
+  // Try to handle colors with opacity first
+  const opacityResult = handleBorderOpacityColor(colorValue, targetMap, isDark);
+  if (opacityResult) {
+    return borderValue.replace(colorValue, opacityResult);
+  }
+
+  // Handle regular colors (6 characters)
+  const colorReference = targetMap.get(colorValue);
+  if (colorReference) {
+    return borderValue.replace(colorValue, colorReference);
+  }
+
+  return null;
+};
+
 // Convert a border value to use primitive token references
 const convertBorderToReference = (
   borderValue: string,
@@ -64,14 +121,14 @@ const convertBorderToReference = (
 
   const targetMap = isDark ? colorMaps.darkColorMap : colorMaps.lightColorMap;
 
-  // Extract color from border string (e.g., "1px solid #1976d2" -> "#1976d2")
-  const colorMatch = borderValue.match(/(#[a-fA-F0-9]{6})/);
-  if (colorMatch) {
-    const colorValue = colorMatch[1];
-    const colorReference = targetMap.get(colorValue);
-    if (colorReference) {
-      return borderValue.replace(colorValue, colorReference);
-    }
+  // Try to extract and convert the color
+  const convertedBorder = extractAndConvertBorderColor(
+    borderValue,
+    targetMap,
+    isDark
+  );
+  if (convertedBorder) {
+    return convertedBorder;
   }
 
   // If no color reference found, return the original value

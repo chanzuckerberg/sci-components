@@ -97,6 +97,34 @@ const createColorToReferenceMap = (
   return { darkColorMap, lightColorMap };
 };
 
+// Helper function to handle colors with opacity
+const handleOpacityColor = (
+  colorValue: string,
+  targetMap: Map<string, string>,
+  isDark: boolean
+): string | null => {
+  if (colorValue.length < 8) {
+    return null;
+  }
+
+  const potentialOpacity = colorValue.slice(-2);
+  // Check if the last 2 characters are valid hex
+  if (!/^[0-9A-Fa-f]{2}$/.test(potentialOpacity)) {
+    return null;
+  }
+
+  const baseColor = colorValue.slice(0, -2);
+  const baseReference = targetMap.get(baseColor);
+  if (!baseReference) {
+    return null;
+  }
+
+  return baseReference.replace(
+    isDark ? ".darkValue}" : ".value}",
+    isDark ? `.darkValue}${potentialOpacity}` : `.value}${potentialOpacity}`
+  );
+};
+
 // Convert a color value to a primitive token reference
 const convertColorToReference = (
   colorValue: string,
@@ -108,16 +136,10 @@ const convertColorToReference = (
 ): string => {
   const targetMap = isDark ? colorMaps.darkColorMap : colorMaps.lightColorMap;
 
-  // Handle opacity modifiers (e.g., "#c3c3c3" + "47")
-  if (colorValue.includes("47")) {
-    const baseColor = colorValue.replace("47", "");
-    const baseReference = targetMap.get(baseColor);
-    if (baseReference) {
-      return baseReference.replace(
-        isDark ? ".darkValue}" : ".value}",
-        isDark ? ".darkValue}47" : ".value}47"
-      );
-    }
+  // Try to handle opacity colors first
+  const opacityResult = handleOpacityColor(colorValue, targetMap, isDark);
+  if (opacityResult) {
+    return opacityResult;
   }
 
   // Direct color lookup
