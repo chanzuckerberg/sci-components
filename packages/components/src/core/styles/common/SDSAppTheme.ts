@@ -1,6 +1,7 @@
 import { PaletteMode } from "@mui/material";
 import { AppTheme, Colors } from "./types";
-import { generateTypographyTheme } from "./typography-generator";
+import { generateTypographyTheme } from "./generators/typography-generator";
+import { createAppThemeBorders } from "./generators/borders-generator";
 import { Corners } from "./constants/corners";
 import { FontWeight } from "./constants/typography";
 import { IconSizes } from "./constants/iconSizes";
@@ -29,87 +30,6 @@ const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
   shadows: Shadows,
   spacing: Spaces,
   typography: generateTypographyTheme(fontFamily, fontFamilyCode, tabularNums),
-};
-
-// (mlila) whenever our theme uses colors, we need to make sure we allow consuming
-// applications to override those colors using their own custom theme.
-// By defining borders using SDSAppTheme.colors instead of defaultThemeColors,
-// we allow other apps to specify their colors once, and have them apply
-// throughout the application, such as in borders, etc without having to manually
-// override every theme property that makes use of colors.
-//
-// (masoudmanson): We need to define borders separately for light and dark themes
-// because the border colors are different for each theme.
-const BorderThickness = {
-  default: 1,
-  extraThick: 4,
-  thick: 2,
-} as const;
-
-export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
-  const createSolidBorder = (
-    color: keyof Colors,
-    level: keyof Colors[keyof Colors],
-    thickness: keyof typeof BorderThickness
-  ) => `${BorderThickness[thickness]}px solid ${colors[color][level]}`;
-
-  const createDashedBorder = () => `1px dashed`;
-
-  return {
-    accent: {
-      default: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
-      focused: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
-      hover: createSolidBorder("blue", isDarkMode ? 700 : 600, "default"),
-      open: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
-      pressed: createSolidBorder("blue", isDarkMode ? 800 : 700, "default"),
-      selected: createSolidBorder("blue", isDarkMode ? 600 : 500, "default"),
-    },
-    base: {
-      default: createSolidBorder("gray", 500, "default"),
-      disabled: createSolidBorder("gray", 300, "default"),
-      divider: createSolidBorder("gray", 200, "default"),
-      dividerInverse: createSolidBorder("gray", 600, "default"),
-      hover: createSolidBorder("gray", 900, "default"),
-      inverse: createSolidBorder("gray", 50, "default"),
-      pressed: createSolidBorder("gray", 900, "default"),
-      table: createSolidBorder("gray", 300, "default"),
-    },
-    beta: {
-      default: createSolidBorder("purple", 600, "default"),
-      extraThick: createSolidBorder("purple", 600, "extraThick"),
-      thick: createSolidBorder("purple", 600, "thick"),
-    },
-    info: {
-      default: createSolidBorder("blue", 600, "default"),
-      extraThick: createSolidBorder("blue", 600, "extraThick"),
-      thick: createSolidBorder("blue", 600, "thick"),
-    },
-    link: {
-      dashed: createDashedBorder(),
-      solid: createSolidBorder("blue", 500, "default"),
-    },
-    negative: {
-      default: createSolidBorder("red", 600, "default"),
-      extraThick: createSolidBorder("red", 600, "extraThick"),
-      thick: createSolidBorder("red", 600, "thick"),
-    },
-    neutral: {
-      default: createSolidBorder("gray", 500, "default"),
-      extraThick: createSolidBorder("gray", 500, "extraThick"),
-      thick: createSolidBorder("gray", 500, "thick"),
-    },
-    none: "none",
-    notice: {
-      default: createSolidBorder("yellow", 600, "default"),
-      extraThick: createSolidBorder("yellow", 600, "extraThick"),
-      thick: createSolidBorder("yellow", 600, "thick"),
-    },
-    positive: {
-      default: createSolidBorder("green", 600, "default"),
-      extraThick: createSolidBorder("green", 600, "extraThick"),
-      thick: createSolidBorder("green", 600, "thick"),
-    },
-  };
 };
 
 /**

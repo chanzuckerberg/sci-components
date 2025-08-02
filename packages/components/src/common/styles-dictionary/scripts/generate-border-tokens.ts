@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { createAppThemeBorders } from "../../../core/styles/common/SDSAppTheme";
+import { createAppThemeBorders } from "../../../core/styles/common/generators/borders-generator";
 import {
   SDSDarkThemeColors,
   SDSLightThemeColors,

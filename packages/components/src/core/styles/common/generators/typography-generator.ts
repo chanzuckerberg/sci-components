@@ -4,7 +4,7 @@ import {
   LetterSpacingValues,
   TypographyCategories,
   FontWeight,
-} from "./constants/typography";
+} from "../constants/typography";
 
 function generateTypographyStyle(
   category: keyof typeof TypographyCategories,
