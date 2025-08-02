@@ -12,7 +12,7 @@ exports[`<CellComponent /> Default story renders snapshot 1`] = `
           This is a Cell Component with a toggle!
         </p>
         <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium css-hcrspq-MuiSwitch-root"
+          class="MuiSwitch-root MuiSwitch-sizeMedium css-1gpsmyk-MuiSwitch-root"
         >
           <span
             class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase"

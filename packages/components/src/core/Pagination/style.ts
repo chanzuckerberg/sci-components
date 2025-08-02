@@ -147,7 +147,7 @@ export const Page = styled("li", {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: ${sdsStyle === "round" ? corners?.l : corners?.m}px;
+      border-radius: ${sdsStyle === "round" ? corners?.rounded : corners?.m}px;
       user-select: none;
       &:hover {
         background-color: ${semanticColors?.base?.fillHover};

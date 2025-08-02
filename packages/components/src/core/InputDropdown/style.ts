@@ -215,7 +215,7 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
     min-width: auto;
     background-color: transparent;
   `;
@@ -451,7 +451,7 @@ export const StyledCounter = styled("span", {
     return `
       background-color: ${semanticColors?.base?.backgroundTertiary};
       color: ${semanticColors?.accent?.textAction};
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
       padding: 0 ${spaces?.xs}px;
       margin-left: ${spaces?.xs}px;
     `;

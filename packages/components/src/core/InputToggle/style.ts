@@ -28,7 +28,7 @@ const toggle = (props: InputToggleExtraProps) => {
 
   return `
     cursor: ${disabled ? "default" : "pointer"};
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
     height: 24px;
     width: ${width}px;
     line-height: 18px;
@@ -40,7 +40,7 @@ const toggle = (props: InputToggleExtraProps) => {
       outline-offset: 2px !important;
       width: 100%;
       height: 100%;
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
       font: inherit;
       transform: unset;
       justify-content: space-between;
@@ -68,9 +68,8 @@ const toggle = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      // background-color: ${semanticColors?.base?.backgroundPrimary};
       opacity: 1;
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
     }
   `;
 };

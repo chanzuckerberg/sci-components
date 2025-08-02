@@ -366,7 +366,7 @@ export const StyledButtonLegacy = styled(Button, {
     const spaces = getSpaces(props);
 
     return `
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
       padding: ${spaces?.xs}px ${spaces?.m}px;
     `;
   }}

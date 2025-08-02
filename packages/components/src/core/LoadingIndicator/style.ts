@@ -52,7 +52,7 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
     ${fontCapsXxxxs(props)}
 
     background-color: ${semanticColors?.info?.surfaceSecondary};
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
     color: ${semanticColors?.info?.text};
 
     svg {

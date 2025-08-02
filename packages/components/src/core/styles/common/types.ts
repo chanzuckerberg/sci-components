@@ -299,6 +299,8 @@ export interface Corners {
   s: number;
   m: number;
   l: number;
+  xl: number;
+  rounded: number;
 }
 
 export interface Spaces {
