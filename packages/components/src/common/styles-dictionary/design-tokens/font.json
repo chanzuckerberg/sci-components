@@ -328,6 +328,10 @@
           "narrowValue": "{sds.font.inter-font}",
           "value": "{sds.font.inter-font}"
         },
+        "link": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        },
         "tabular": {
           "narrowValue": "{sds.font.inter-font}",
           "value": "{sds.font.inter-font}"
@@ -436,6 +440,272 @@
         }
       },
       "inter-font": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+      "link": {
+        "l": {
+          "400": {
+            "font": {
+              "narrowValue": "400 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "400 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "500 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "600 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "m": {
+          "400": {
+            "font": {
+              "narrowValue": "400 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "400 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "500 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "600 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "s": {
+          "400": {
+            "font": {
+              "narrowValue": "400 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "400 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "500 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "600 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "400 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "500 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "600 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "400 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "500 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "400 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "500 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        }
+      },
       "tabular": {
         "s": {
           "400": {

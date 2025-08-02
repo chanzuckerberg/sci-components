@@ -274,6 +274,10 @@ export const TYPOGRAPHY_CATEGORIES = {
     weights: ["bold"],
     sizes: ["s", "m", "l"],
   },
+  link: {
+    weights: ["regular", "medium", "semibold"],
+    sizes: ["l", "m", "s", "xs", "xxs", "xxxs"],
+  },
 } as const;
 
 export const FontWeight = {

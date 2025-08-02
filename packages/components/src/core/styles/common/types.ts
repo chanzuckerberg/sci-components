@@ -212,6 +212,32 @@ export interface TypographyStyles {
       xxxs: TypographyStyle;
     };
   };
+  link: {
+    regular: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    medium: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    semibold: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+  };
   tabular: {
     regular: {
       s: TypographyStyle;
@@ -247,6 +273,7 @@ export interface Typography {
     caps?: CSSProperties["fontFamily"];
     code?: CSSProperties["fontFamily"];
     header?: CSSProperties["fontFamily"];
+    link?: CSSProperties["fontFamily"];
     tabular?: CSSProperties["fontFamily"];
     title?: CSSProperties["fontFamily"];
   };

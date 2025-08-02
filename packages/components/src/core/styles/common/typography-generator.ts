@@ -22,20 +22,22 @@ function generateTypographyStyle(
   tabularNums?: string
 ) {
   const screenType = isNarrow ? "narrow" : "wide";
+  // Use body values for link category
+  const sourceCategory = category === "link" ? "body" : category;
   const baseFontSize =
-    FONT_SIZE_VALUES[screenType]?.[category]?.[
-      size as keyof (typeof FONT_SIZE_VALUES)[typeof screenType][typeof category]
+    FONT_SIZE_VALUES[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof FONT_SIZE_VALUES)[typeof screenType][typeof sourceCategory]
     ] || 14;
   const fontSize = baseFontSize;
 
   const lineHeight =
-    LINE_HEIGHT_VALUES[screenType]?.[category]?.[
-      size as keyof (typeof LINE_HEIGHT_VALUES)[typeof screenType][typeof category]
+    LINE_HEIGHT_VALUES[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof LINE_HEIGHT_VALUES)[typeof screenType][typeof sourceCategory]
     ] || 24;
 
   const letterSpacing =
-    LETTER_SPACING_VALUES[screenType]?.[category]?.[
-      size as keyof (typeof LETTER_SPACING_VALUES)[typeof screenType][typeof category]
+    LETTER_SPACING_VALUES[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof LETTER_SPACING_VALUES)[typeof screenType][typeof sourceCategory]
     ] || "0px";
 
   const fontWeight =
@@ -48,6 +50,7 @@ function generateTypographyStyle(
     lineHeight: string;
     textTransform: "uppercase" | "none";
     fontVariantNumeric?: string;
+    textDecoration?: "underline" | "none";
   } = {
     fontSize,
     fontWeight,
@@ -59,6 +62,10 @@ function generateTypographyStyle(
 
   if (category === "tabular" && tabularNums) {
     baseStyle.fontVariantNumeric = tabularNums;
+  }
+
+  if (category === "link") {
+    baseStyle.textDecoration = "underline";
   }
 
   return baseStyle;
@@ -98,6 +105,7 @@ export function generateTypographyStyles(
     caps: generateCategoryStyles("caps", isNarrow),
     code: generateCategoryStyles("code", isNarrow),
     header: generateCategoryStyles("header", isNarrow),
+    link: generateCategoryStyles("link", isNarrow),
     tabular: generateCategoryStyles("tabular", isNarrow, tabularNums),
     title: generateCategoryStyles("title", isNarrow),
   };
@@ -114,6 +122,7 @@ export function generateTypographyTheme(
       caps: fontFamily,
       code: fontFamilyCode,
       header: fontFamily,
+      link: fontFamily,
       tabular: fontFamily,
       title: fontFamily,
     },

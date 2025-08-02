@@ -12,6 +12,7 @@ import {
   fontCaps,
   fontTabular,
   fontTitle,
+  fontLink,
 } from "src/core/styles";
 
 interface StyledSampleTextProps extends CommonThemeProps {
@@ -41,6 +42,8 @@ export const StyledSampleText = styled.div<StyledSampleTextProps>`
           return fontTabular;
         case "title":
           return fontTitle;
+        case "link":
+          return fontLink;
         default:
           return fontBody;
       }

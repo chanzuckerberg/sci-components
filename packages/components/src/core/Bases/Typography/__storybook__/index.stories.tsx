@@ -44,3 +44,9 @@ export const CapsTypography = {
 export const TabularTypography = {
   render: () => <Typography categories={["tabular"]} />,
 };
+
+// Link Typography
+
+export const LinkTypography = {
+  render: () => <Typography categories={["link"]} />,
+};

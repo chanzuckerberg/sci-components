@@ -284,6 +284,63 @@ export const fontTitleBoldS = fontTitle("s", "bold");
 export const fontTitleBoldM = fontTitle("m", "bold");
 export const fontTitleBoldL = fontTitle("l", "bold");
 
+// Font Link
+
+type FontLinkWeight = keyof Typography["wideStyles"]["link"];
+type FontLinkSize<T extends FontLinkWeight> =
+  keyof Typography["wideStyles"]["link"][T];
+
+export const fontLink = (
+  fontSize: FontLinkSize<FontLinkWeight>,
+  fontWeight: FontLinkWeight = "regular",
+  isNarrow: boolean = false
+) => {
+  return (props: CommonThemeProps): SerializedStyles | null => {
+    const typography = getTypography(props);
+
+    if (!typography) return null;
+
+    const {
+      wideStyles: { link },
+      narrowStyles: { link: narrowLink },
+      fontFamily: { link: linkFontFamily },
+    } = typography;
+
+    if (isNarrow) {
+      return css`
+        ${themeToCss(narrowLink[fontWeight][fontSize], linkFontFamily)}
+      `;
+    }
+
+    return css`
+      ${themeToCss(link[fontWeight][fontSize], linkFontFamily)}
+
+      ${props.theme?.breakpoints?.down("md")} {
+        ${themeToCss(narrowLink[fontWeight][fontSize], linkFontFamily)}
+      }
+    `;
+  };
+};
+
+export const fontLinkL = fontLink("l", "regular");
+export const fontLinkM = fontLink("m", "regular");
+export const fontLinkS = fontLink("s", "regular");
+export const fontLinkXs = fontLink("xs", "regular");
+export const fontLinkXxs = fontLink("xxs", "regular");
+export const fontLinkXxxs = fontLink("xxxs", "regular");
+export const fontLinkMediumL = fontLink("l", "medium");
+export const fontLinkMediumM = fontLink("m", "medium");
+export const fontLinkMediumS = fontLink("s", "medium");
+export const fontLinkMediumXs = fontLink("xs", "medium");
+export const fontLinkMediumXxs = fontLink("xxs", "medium");
+export const fontLinkMediumXxxs = fontLink("xxxs", "medium");
+export const fontLinkSemiboldL = fontLink("l", "semibold");
+export const fontLinkSemiboldM = fontLink("m", "semibold");
+export const fontLinkSemiboldS = fontLink("s", "semibold");
+export const fontLinkSemiboldXs = fontLink("xs", "semibold");
+export const fontLinkSemiboldXxs = fontLink("xxs", "semibold");
+export const fontLinkSemiboldXxxs = fontLink("xxxs", "semibold");
+
 function themeToCss(
   fontTheme: TypographyStyle,
   fontFamily: React.CSSProperties["fontFamily"] = "inherit"
@@ -295,5 +352,8 @@ function themeToCss(
     letter-spacing: ${fontTheme.letterSpacing};
     font-weight: ${fontTheme.fontWeight};
     text-transform: ${fontTheme.textTransform};
+    ${fontTheme.textDecoration
+      ? `text-decoration: ${fontTheme.textDecoration};`
+      : ""}
   `;
 }

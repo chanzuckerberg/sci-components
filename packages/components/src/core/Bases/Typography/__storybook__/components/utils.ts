@@ -2,7 +2,7 @@ import { TypographyStyle } from "@mui/material";
 import { copyToClipboard, convertToKebabCase } from "src/core/Bases/utils";
 
 export interface TypographyItemData {
-  category: "body" | "header" | "code" | "caps" | "tabular" | "title";
+  category: "body" | "header" | "code" | "caps" | "tabular" | "title" | "link";
   weight: "light" | "regular" | "medium" | "semibold" | "bold";
   size: string;
   displayName: string;
@@ -12,6 +12,7 @@ export interface TypographyItemData {
   fontFamily: string;
   hasTextTransform?: boolean;
   hasFontVariantNumeric?: boolean;
+  hasTextDecoration?: boolean;
 }
 
 export const getSampleText = (category: string): string => {
@@ -27,6 +28,8 @@ export const getSampleText = (category: string): string => {
       return `10,234.56\n9,876.54\n537.00\n11.03`;
     case "title":
       return "Page Title Text";
+    case "link":
+      return "Visit our homepage";
     default:
       return "Sample Text";
   }
@@ -109,7 +112,8 @@ export const formatCssProperties = (
   properties: TypographyStyle,
   fontFamily?: string,
   hasTextTransform?: boolean,
-  hasFontVariantNumeric?: boolean
+  hasFontVariantNumeric?: boolean,
+  hasTextDecoration?: boolean
 ): string => {
   const lines: string[] = [];
 
@@ -133,6 +137,9 @@ export const formatCssProperties = (
   }
   if (hasTextTransform) {
     lines.push(`text-transform: uppercase;`);
+  }
+  if (hasTextDecoration) {
+    lines.push(`text-decoration: underline;`);
   }
 
   return lines.join("\n");
@@ -185,14 +192,16 @@ export const copyTypographyData = {
     properties: TypographyStyle,
     fontFamily?: string,
     hasTextTransform?: boolean,
-    hasFontVariantNumeric?: boolean
+    hasFontVariantNumeric?: boolean,
+    hasTextDecoration?: boolean
   ) =>
     copyToClipboard(
       formatCssProperties(
         properties,
         fontFamily,
         hasTextTransform,
-        hasFontVariantNumeric
+        hasFontVariantNumeric,
+        hasTextDecoration
       )
     ),
   cssVariable: (cssVar: string) => copyToClipboard(cssVar),

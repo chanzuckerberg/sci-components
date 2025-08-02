@@ -4,6 +4,7 @@
     "sds-caps": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
     "sds-code": "\"IBM Plex Mono\", monospace",
     "sds-header": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-link": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
     "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
     "sds-title": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
   },
@@ -107,7 +108,43 @@
     "sds-title-m-700-narrow": "32px",
     "sds-title-m-700-wide": "40px",
     "sds-title-l-700-narrow": "40px",
-    "sds-title-l-700-wide": "52px"
+    "sds-title-l-700-wide": "52px",
+    "sds-link-l-400-narrow": "16px",
+    "sds-link-l-400-wide": "18px",
+    "sds-link-l-500-narrow": "16px",
+    "sds-link-l-500-wide": "18px",
+    "sds-link-l-600-narrow": "16px",
+    "sds-link-l-600-wide": "18px",
+    "sds-link-m-400-narrow": "14px",
+    "sds-link-m-400-wide": "16px",
+    "sds-link-m-500-narrow": "14px",
+    "sds-link-m-500-wide": "16px",
+    "sds-link-m-600-narrow": "14px",
+    "sds-link-m-600-wide": "16px",
+    "sds-link-s-400-narrow": "14px",
+    "sds-link-s-400-wide": "14px",
+    "sds-link-s-500-narrow": "14px",
+    "sds-link-s-500-wide": "14px",
+    "sds-link-s-600-narrow": "14px",
+    "sds-link-s-600-wide": "14px",
+    "sds-link-xs-400-narrow": "13px",
+    "sds-link-xs-400-wide": "13px",
+    "sds-link-xs-500-narrow": "13px",
+    "sds-link-xs-500-wide": "13px",
+    "sds-link-xs-600-narrow": "13px",
+    "sds-link-xs-600-wide": "13px",
+    "sds-link-xxs-400-narrow": "12px",
+    "sds-link-xxs-400-wide": "12px",
+    "sds-link-xxs-500-narrow": "12px",
+    "sds-link-xxs-500-wide": "12px",
+    "sds-link-xxs-600-narrow": "12px",
+    "sds-link-xxs-600-wide": "12px",
+    "sds-link-xxxs-400-narrow": "12px",
+    "sds-link-xxxs-400-wide": "11px",
+    "sds-link-xxxs-500-narrow": "12px",
+    "sds-link-xxxs-500-wide": "11px",
+    "sds-link-xxxs-600-narrow": "12px",
+    "sds-link-xxxs-600-wide": "11px"
   },
   "fontVariantNumeric": {
     "sds-body-l-400-narrow": "normal",
@@ -209,7 +246,43 @@
     "sds-title-m-700-narrow": "normal",
     "sds-title-m-700-wide": "normal",
     "sds-title-l-700-narrow": "normal",
-    "sds-title-l-700-wide": "normal"
+    "sds-title-l-700-wide": "normal",
+    "sds-link-l-400-narrow": "normal",
+    "sds-link-l-400-wide": "normal",
+    "sds-link-l-500-narrow": "normal",
+    "sds-link-l-500-wide": "normal",
+    "sds-link-l-600-narrow": "normal",
+    "sds-link-l-600-wide": "normal",
+    "sds-link-m-400-narrow": "normal",
+    "sds-link-m-400-wide": "normal",
+    "sds-link-m-500-narrow": "normal",
+    "sds-link-m-500-wide": "normal",
+    "sds-link-m-600-narrow": "normal",
+    "sds-link-m-600-wide": "normal",
+    "sds-link-s-400-narrow": "normal",
+    "sds-link-s-400-wide": "normal",
+    "sds-link-s-500-narrow": "normal",
+    "sds-link-s-500-wide": "normal",
+    "sds-link-s-600-narrow": "normal",
+    "sds-link-s-600-wide": "normal",
+    "sds-link-xs-400-narrow": "normal",
+    "sds-link-xs-400-wide": "normal",
+    "sds-link-xs-500-narrow": "normal",
+    "sds-link-xs-500-wide": "normal",
+    "sds-link-xs-600-narrow": "normal",
+    "sds-link-xs-600-wide": "normal",
+    "sds-link-xxs-400-narrow": "normal",
+    "sds-link-xxs-400-wide": "normal",
+    "sds-link-xxs-500-narrow": "normal",
+    "sds-link-xxs-500-wide": "normal",
+    "sds-link-xxs-600-narrow": "normal",
+    "sds-link-xxs-600-wide": "normal",
+    "sds-link-xxxs-400-narrow": "normal",
+    "sds-link-xxxs-400-wide": "normal",
+    "sds-link-xxxs-500-narrow": "normal",
+    "sds-link-xxxs-500-wide": "normal",
+    "sds-link-xxxs-600-narrow": "normal",
+    "sds-link-xxxs-600-wide": "normal"
   },
   "letterSpacing": {
     "sds-body-l-400-narrow": "0px",
@@ -311,7 +384,43 @@
     "sds-title-m-700-narrow": "0px",
     "sds-title-m-700-wide": "0px",
     "sds-title-l-700-narrow": "0px",
-    "sds-title-l-700-wide": "0px"
+    "sds-title-l-700-wide": "0px",
+    "sds-link-l-400-narrow": "0px",
+    "sds-link-l-400-wide": "0px",
+    "sds-link-l-500-narrow": "0px",
+    "sds-link-l-500-wide": "0px",
+    "sds-link-l-600-narrow": "0px",
+    "sds-link-l-600-wide": "0px",
+    "sds-link-m-400-narrow": "0px",
+    "sds-link-m-400-wide": "0px",
+    "sds-link-m-500-narrow": "0px",
+    "sds-link-m-500-wide": "0px",
+    "sds-link-m-600-narrow": "0px",
+    "sds-link-m-600-wide": "0px",
+    "sds-link-s-400-narrow": "0px",
+    "sds-link-s-400-wide": "0px",
+    "sds-link-s-500-narrow": "0px",
+    "sds-link-s-500-wide": "0px",
+    "sds-link-s-600-narrow": "0px",
+    "sds-link-s-600-wide": "0px",
+    "sds-link-xs-400-narrow": "0px",
+    "sds-link-xs-400-wide": "0px",
+    "sds-link-xs-500-narrow": "0px",
+    "sds-link-xs-500-wide": "0px",
+    "sds-link-xs-600-narrow": "0px",
+    "sds-link-xs-600-wide": "0px",
+    "sds-link-xxs-400-narrow": "0.06px",
+    "sds-link-xxs-400-wide": "0.06px",
+    "sds-link-xxs-500-narrow": "0.06px",
+    "sds-link-xxs-500-wide": "0.06px",
+    "sds-link-xxs-600-narrow": "0.06px",
+    "sds-link-xxs-600-wide": "0.06px",
+    "sds-link-xxxs-400-narrow": "0.06px",
+    "sds-link-xxxs-400-wide": "0.06px",
+    "sds-link-xxxs-500-narrow": "0.06px",
+    "sds-link-xxxs-500-wide": "0.06px",
+    "sds-link-xxxs-600-narrow": "0.06px",
+    "sds-link-xxxs-600-wide": "0.06px"
   },
   "lineHeight": {
     "sds-body-l-400-narrow": "26px",
@@ -413,7 +522,181 @@
     "sds-title-m-700-narrow": "40px",
     "sds-title-m-700-wide": "50px",
     "sds-title-l-700-narrow": "50px",
-    "sds-title-l-700-wide": "64px"
+    "sds-title-l-700-wide": "64px",
+    "sds-link-l-400-narrow": "26px",
+    "sds-link-l-400-wide": "28px",
+    "sds-link-l-500-narrow": "26px",
+    "sds-link-l-500-wide": "28px",
+    "sds-link-l-600-narrow": "26px",
+    "sds-link-l-600-wide": "28px",
+    "sds-link-m-400-narrow": "24px",
+    "sds-link-m-400-wide": "26px",
+    "sds-link-m-500-narrow": "24px",
+    "sds-link-m-500-wide": "26px",
+    "sds-link-m-600-narrow": "24px",
+    "sds-link-m-600-wide": "26px",
+    "sds-link-s-400-narrow": "24px",
+    "sds-link-s-400-wide": "24px",
+    "sds-link-s-500-narrow": "24px",
+    "sds-link-s-500-wide": "24px",
+    "sds-link-s-600-narrow": "24px",
+    "sds-link-s-600-wide": "24px",
+    "sds-link-xs-400-narrow": "20px",
+    "sds-link-xs-400-wide": "20px",
+    "sds-link-xs-500-narrow": "20px",
+    "sds-link-xs-500-wide": "20px",
+    "sds-link-xs-600-narrow": "20px",
+    "sds-link-xs-600-wide": "20px",
+    "sds-link-xxs-400-narrow": "18px",
+    "sds-link-xxs-400-wide": "18px",
+    "sds-link-xxs-500-narrow": "18px",
+    "sds-link-xxs-500-wide": "18px",
+    "sds-link-xxs-600-narrow": "18px",
+    "sds-link-xxs-600-wide": "18px",
+    "sds-link-xxxs-400-narrow": "18px",
+    "sds-link-xxxs-400-wide": "16px",
+    "sds-link-xxxs-500-narrow": "18px",
+    "sds-link-xxxs-500-wide": "16px",
+    "sds-link-xxxs-600-narrow": "18px",
+    "sds-link-xxxs-600-wide": "16px"
+  },
+  "textDecoration": {
+    "sds-body-l-400-narrow": "none",
+    "sds-body-l-400-wide": "none",
+    "sds-body-l-500-narrow": "none",
+    "sds-body-l-500-wide": "none",
+    "sds-body-l-600-narrow": "none",
+    "sds-body-l-600-wide": "none",
+    "sds-body-m-400-narrow": "none",
+    "sds-body-m-400-wide": "none",
+    "sds-body-m-500-narrow": "none",
+    "sds-body-m-500-wide": "none",
+    "sds-body-m-600-narrow": "none",
+    "sds-body-m-600-wide": "none",
+    "sds-body-s-400-narrow": "none",
+    "sds-body-s-400-wide": "none",
+    "sds-body-s-500-narrow": "none",
+    "sds-body-s-500-wide": "none",
+    "sds-body-s-600-narrow": "none",
+    "sds-body-s-600-wide": "none",
+    "sds-body-xs-400-narrow": "none",
+    "sds-body-xs-400-wide": "none",
+    "sds-body-xs-500-narrow": "none",
+    "sds-body-xs-500-wide": "none",
+    "sds-body-xs-600-narrow": "none",
+    "sds-body-xs-600-wide": "none",
+    "sds-body-xxs-400-narrow": "none",
+    "sds-body-xxs-400-wide": "none",
+    "sds-body-xxs-500-narrow": "none",
+    "sds-body-xxs-500-wide": "none",
+    "sds-body-xxs-600-narrow": "none",
+    "sds-body-xxs-600-wide": "none",
+    "sds-body-xxxs-400-narrow": "none",
+    "sds-body-xxxs-400-wide": "none",
+    "sds-body-xxxs-500-narrow": "none",
+    "sds-body-xxxs-500-wide": "none",
+    "sds-body-xxxs-600-narrow": "none",
+    "sds-body-xxxs-600-wide": "none",
+    "sds-caps-xxs-600-narrow": "none",
+    "sds-caps-xxs-600-wide": "none",
+    "sds-caps-xxxs-600-narrow": "none",
+    "sds-caps-xxxs-600-wide": "none",
+    "sds-caps-xxxxs-600-narrow": "none",
+    "sds-caps-xxxxs-600-wide": "none",
+    "sds-header-xxl-600-narrow": "none",
+    "sds-header-xxl-600-wide": "none",
+    "sds-header-xl-600-narrow": "none",
+    "sds-header-xl-600-wide": "none",
+    "sds-header-l-600-narrow": "none",
+    "sds-header-l-600-wide": "none",
+    "sds-header-m-600-narrow": "none",
+    "sds-header-m-600-wide": "none",
+    "sds-header-s-600-narrow": "none",
+    "sds-header-s-600-wide": "none",
+    "sds-header-xs-600-narrow": "none",
+    "sds-header-xs-600-wide": "none",
+    "sds-header-xxs-600-narrow": "none",
+    "sds-header-xxs-600-wide": "none",
+    "sds-header-xxxs-600-narrow": "none",
+    "sds-header-xxxs-600-wide": "none",
+    "sds-tabular-s-400-narrow": "none",
+    "sds-tabular-s-400-wide": "none",
+    "sds-tabular-s-500-narrow": "none",
+    "sds-tabular-s-500-wide": "none",
+    "sds-tabular-s-600-narrow": "none",
+    "sds-tabular-s-600-wide": "none",
+    "sds-tabular-xs-400-narrow": "none",
+    "sds-tabular-xs-400-wide": "none",
+    "sds-tabular-xs-500-narrow": "none",
+    "sds-tabular-xs-500-wide": "none",
+    "sds-tabular-xs-600-narrow": "none",
+    "sds-tabular-xs-600-wide": "none",
+    "sds-tabular-xxs-400-narrow": "none",
+    "sds-tabular-xxs-400-wide": "none",
+    "sds-tabular-xxs-500-narrow": "none",
+    "sds-tabular-xxs-500-wide": "none",
+    "sds-tabular-xxs-600-narrow": "none",
+    "sds-tabular-xxs-600-wide": "none",
+    "sds-tabular-xxxs-400-narrow": "none",
+    "sds-tabular-xxxs-400-wide": "none",
+    "sds-tabular-xxxs-500-narrow": "none",
+    "sds-tabular-xxxs-500-wide": "none",
+    "sds-tabular-xxxs-600-narrow": "none",
+    "sds-tabular-xxxs-600-wide": "none",
+    "sds-code-s-400-narrow": "none",
+    "sds-code-s-400-wide": "none",
+    "sds-code-s-500-narrow": "none",
+    "sds-code-s-500-wide": "none",
+    "sds-code-s-600-narrow": "none",
+    "sds-code-s-600-wide": "none",
+    "sds-code-xs-400-narrow": "none",
+    "sds-code-xs-400-wide": "none",
+    "sds-code-xs-500-narrow": "none",
+    "sds-code-xs-500-wide": "none",
+    "sds-code-xs-600-narrow": "none",
+    "sds-code-xs-600-wide": "none",
+    "sds-title-s-700-narrow": "none",
+    "sds-title-s-700-wide": "none",
+    "sds-title-m-700-narrow": "none",
+    "sds-title-m-700-wide": "none",
+    "sds-title-l-700-narrow": "none",
+    "sds-title-l-700-wide": "none",
+    "sds-link-l-400-narrow": "underline",
+    "sds-link-l-400-wide": "underline",
+    "sds-link-l-500-narrow": "underline",
+    "sds-link-l-500-wide": "underline",
+    "sds-link-l-600-narrow": "underline",
+    "sds-link-l-600-wide": "underline",
+    "sds-link-m-400-narrow": "underline",
+    "sds-link-m-400-wide": "underline",
+    "sds-link-m-500-narrow": "underline",
+    "sds-link-m-500-wide": "underline",
+    "sds-link-m-600-narrow": "underline",
+    "sds-link-m-600-wide": "underline",
+    "sds-link-s-400-narrow": "underline",
+    "sds-link-s-400-wide": "underline",
+    "sds-link-s-500-narrow": "underline",
+    "sds-link-s-500-wide": "underline",
+    "sds-link-s-600-narrow": "underline",
+    "sds-link-s-600-wide": "underline",
+    "sds-link-xs-400-narrow": "underline",
+    "sds-link-xs-400-wide": "underline",
+    "sds-link-xs-500-narrow": "underline",
+    "sds-link-xs-500-wide": "underline",
+    "sds-link-xs-600-narrow": "underline",
+    "sds-link-xs-600-wide": "underline",
+    "sds-link-xxs-400-narrow": "underline",
+    "sds-link-xxs-400-wide": "underline",
+    "sds-link-xxs-500-narrow": "underline",
+    "sds-link-xxs-500-wide": "underline",
+    "sds-link-xxs-600-narrow": "underline",
+    "sds-link-xxs-600-wide": "underline",
+    "sds-link-xxxs-400-narrow": "underline",
+    "sds-link-xxxs-400-wide": "underline",
+    "sds-link-xxxs-500-narrow": "underline",
+    "sds-link-xxxs-500-wide": "underline",
+    "sds-link-xxxs-600-narrow": "underline",
+    "sds-link-xxxs-600-wide": "underline"
   },
   "textTransform": {
     "sds-body-l-400-narrow": "none",
@@ -515,7 +798,43 @@
     "sds-title-m-700-narrow": "none",
     "sds-title-m-700-wide": "none",
     "sds-title-l-700-narrow": "none",
-    "sds-title-l-700-wide": "none"
+    "sds-title-l-700-wide": "none",
+    "sds-link-l-400-narrow": "none",
+    "sds-link-l-400-wide": "none",
+    "sds-link-l-500-narrow": "none",
+    "sds-link-l-500-wide": "none",
+    "sds-link-l-600-narrow": "none",
+    "sds-link-l-600-wide": "none",
+    "sds-link-m-400-narrow": "none",
+    "sds-link-m-400-wide": "none",
+    "sds-link-m-500-narrow": "none",
+    "sds-link-m-500-wide": "none",
+    "sds-link-m-600-narrow": "none",
+    "sds-link-m-600-wide": "none",
+    "sds-link-s-400-narrow": "none",
+    "sds-link-s-400-wide": "none",
+    "sds-link-s-500-narrow": "none",
+    "sds-link-s-500-wide": "none",
+    "sds-link-s-600-narrow": "none",
+    "sds-link-s-600-wide": "none",
+    "sds-link-xs-400-narrow": "none",
+    "sds-link-xs-400-wide": "none",
+    "sds-link-xs-500-narrow": "none",
+    "sds-link-xs-500-wide": "none",
+    "sds-link-xs-600-narrow": "none",
+    "sds-link-xs-600-wide": "none",
+    "sds-link-xxs-400-narrow": "none",
+    "sds-link-xxs-400-wide": "none",
+    "sds-link-xxs-500-narrow": "none",
+    "sds-link-xxs-500-wide": "none",
+    "sds-link-xxs-600-narrow": "none",
+    "sds-link-xxs-600-wide": "none",
+    "sds-link-xxxs-400-narrow": "none",
+    "sds-link-xxxs-400-wide": "none",
+    "sds-link-xxxs-500-narrow": "none",
+    "sds-link-xxxs-500-wide": "none",
+    "sds-link-xxxs-600-narrow": "none",
+    "sds-link-xxxs-600-wide": "none"
   },
   "typography": {
     "sds-body-l-400-narrow": {
@@ -527,6 +846,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -539,6 +859,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "28px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -551,6 +872,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -563,6 +885,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "28px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -575,6 +898,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -587,6 +911,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "28px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -599,6 +924,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -611,6 +937,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -623,6 +950,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -635,6 +963,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -647,6 +976,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -659,6 +989,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "26px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -671,6 +1002,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -683,6 +1015,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -695,6 +1028,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -707,6 +1041,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -719,6 +1054,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -731,6 +1067,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -743,6 +1080,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -755,6 +1093,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -767,6 +1106,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -779,6 +1119,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -791,6 +1132,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -803,6 +1145,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -815,6 +1158,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -827,6 +1171,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -839,6 +1184,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -851,6 +1197,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -863,6 +1210,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -875,6 +1223,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -887,6 +1236,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -899,6 +1249,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -911,6 +1262,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -923,6 +1275,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -935,6 +1288,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -947,6 +1301,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -959,6 +1314,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -971,6 +1327,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -983,6 +1340,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -995,6 +1353,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1007,6 +1366,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1019,6 +1379,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "14px",
+        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1031,6 +1392,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "30px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1043,6 +1405,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "34px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1055,6 +1418,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1067,6 +1431,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "30px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1079,6 +1444,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "22px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1091,6 +1457,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1103,6 +1470,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1115,6 +1483,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "22px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1127,6 +1496,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.08px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1139,6 +1509,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.08px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1151,6 +1522,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.08px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1163,6 +1535,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.08px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1175,6 +1548,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.1px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1187,6 +1561,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.1px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1199,6 +1574,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.1px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1211,6 +1587,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.1px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1223,6 +1600,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1235,6 +1613,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1247,6 +1626,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1259,6 +1639,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1271,6 +1652,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1283,6 +1665,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1295,6 +1678,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1307,6 +1691,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1319,6 +1704,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1331,6 +1717,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1343,6 +1730,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1355,6 +1743,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1367,6 +1756,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1379,6 +1769,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1391,6 +1782,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1403,6 +1795,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1415,6 +1808,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1427,6 +1821,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
         "lineHeight": "18px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1439,6 +1834,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1451,6 +1847,7 @@
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1463,6 +1860,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1475,6 +1873,7 @@
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1487,6 +1886,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1499,6 +1899,7 @@
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1511,6 +1912,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1523,6 +1925,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1535,6 +1938,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1547,6 +1951,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1559,6 +1964,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1571,6 +1977,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1583,6 +1990,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1595,6 +2003,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1607,6 +2016,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1619,6 +2029,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1631,6 +2042,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1643,6 +2055,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1655,6 +2068,7 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "34px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1667,6 +2081,7 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "40px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1679,6 +2094,7 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "40px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1691,6 +2107,7 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "50px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1703,6 +2120,7 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "50px",
+        "textDecoration": "none",
         "textTransform": "none"
       }
     },
@@ -1715,6 +2133,475 @@
         "fontWeight": "700",
         "letterSpacing": "0px",
         "lineHeight": "64px",
+        "textDecoration": "none",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-l-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "18px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "28px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-m-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "26px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-s-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "14px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "24px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "13px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0px",
+        "lineHeight": "20px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "16px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "16px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "18px",
+        "textDecoration": "underline",
+        "textTransform": "none"
+      }
+    },
+    "sds-link-xxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "11px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "16px",
+        "textDecoration": "underline",
         "textTransform": "none"
       }
     }

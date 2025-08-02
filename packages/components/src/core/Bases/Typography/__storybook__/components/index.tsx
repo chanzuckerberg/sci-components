@@ -25,11 +25,13 @@ import {
 import Accordion, { AccordionHeader } from "src/core/Accordion";
 
 interface TypographyProps {
-  categories?: Array<"title" | "body" | "header" | "code" | "caps" | "tabular">;
+  categories?: Array<
+    "title" | "body" | "header" | "code" | "caps" | "tabular" | "link"
+  >;
 }
 
 const Typography = ({
-  categories = ["title", "header", "body", "code", "caps", "tabular"],
+  categories = ["title", "header", "body", "code", "caps", "tabular", "link"],
 }: TypographyProps): JSX.Element => {
   const theme = useTheme();
   const typography = getTypography({ theme } as CommonThemeProps);
@@ -217,6 +219,33 @@ const Typography = ({
     return items;
   };
 
+  const generateLinkTypography = (
+    styles: typeof wideStyles
+  ): TypographyItemData[] => {
+    const items: TypographyItemData[] = [];
+    const linkWeights = Object.keys(styles.link) as Array<
+      keyof typeof styles.link
+    >;
+
+    linkWeights.forEach((weight) => {
+      const linkSizes = Object.keys(styles.link[weight]) as Array<
+        keyof (typeof styles.link)[typeof weight]
+      >;
+      linkSizes.forEach((size) => {
+        const typographyStyle = styles.link[weight][size];
+        if (typographyStyle) {
+          items.push(
+            createTypographyItem("link", weight, size, typographyStyle, {
+              hasTextDecoration: true,
+            })
+          );
+        }
+      });
+    });
+
+    return items;
+  };
+
   const generateTypographyData = (
     styles: typeof wideStyles
   ): TypographyItemData[] => {
@@ -239,6 +268,9 @@ const Typography = ({
     }
     if (categories.includes("title")) {
       items.push(...generateTitleTypography(styles));
+    }
+    if (categories.includes("link")) {
+      items.push(...generateLinkTypography(styles));
     }
 
     return items;
@@ -265,7 +297,8 @@ const Typography = ({
       item.cssProperties,
       item.fontFamily,
       item.hasTextTransform,
-      item.hasFontVariantNumeric
+      item.hasFontVariantNumeric,
+      item.hasTextDecoration
     );
 
     return (
