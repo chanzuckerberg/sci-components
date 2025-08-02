@@ -10,7 +10,7 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-  fontBody,
+  fontBodyMediumXs,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonProps } from ".";
@@ -34,6 +34,7 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticColors = getSemanticColors(props);
+  const corners = getCorners(props);
 
   const hasIcon = !!startIcon || !!endIcon;
 
@@ -72,11 +73,11 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       ? `inset 0 0 0 1px ${semanticColors?.accent?.border}`
       : "none";
 
-  fontBody("xs", "semibold");
-
   return css`
+    ${fontBodyMediumXs(props)}
     background-color: ${backgroundColor};
     border: none;
+    border-radius: ${corners?.l}px;
     box-shadow: ${boxshadow};
     padding: ${padding};
     color: ${contentColor};
@@ -89,24 +90,36 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      color: ${semanticColors?.base?.textPrimaryInverse};
-      background-color: ${semanticColors?.accent?.fillHover};
+      color: ${variant === "outlined"
+        ? semanticColors?.accent?.textActionHover
+        : semanticColors?.base?.textPrimaryInverse};
+      background-color: ${variant === "outlined"
+        ? semanticColors?.accent?.surfaceSecondary
+        : semanticColors?.accent?.fillHover};
       border: none;
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.borderHover};
 
       svg {
-        color: ${semanticColors?.base?.ornamentPrimaryInverse};
+        color: ${variant === "outlined"
+          ? semanticColors?.accent?.ornamentHover
+          : semanticColors?.base?.ornamentPrimaryInverse};
       }
     }
 
     &:active {
-      color: ${semanticColors?.base?.textPrimaryInverse};
-      background-color: ${semanticColors?.accent?.fillPressed};
+      color: ${variant === "outlined"
+        ? semanticColors?.accent?.textActionPressed
+        : semanticColors?.base?.textPrimaryInverse};
+      background-color: ${variant === "outlined"
+        ? semanticColors?.accent?.surfaceSecondary
+        : semanticColors?.accent?.fillPressed};
       border: none;
       box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillPressed};
 
       svg {
-        color: ${semanticColors?.base?.ornamentPrimaryInverse};
+        color: ${variant === "outlined"
+          ? semanticColors?.accent?.ornamentPressed
+          : semanticColors?.base?.ornamentPrimaryInverse};
       }
     }
 
@@ -145,9 +158,10 @@ const ButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   `;
 };
 
-const Rounded = (): SerializedStyles => {
+const Rounded = (props: ButtonExtraProps): SerializedStyles => {
+  const corners = getCorners(props);
   return css`
-    border-radius: 100px;
+    border-radius: ${corners?.rounded}px;
   `;
 };
 
@@ -233,7 +247,7 @@ export const StyledButton = styled(Button, {
       ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
 
       ${ButtonStyles(props)}
-      ${sdsStyle === "rounded" && Rounded()}
+      ${sdsStyle === "rounded" && Rounded(props)}
       ${sdsType === "destructive" && DestructiveButton(props)}
     `;
   }}
@@ -247,13 +261,15 @@ const Minimal = (props: ButtonExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
   const semanticColors = getSemanticColors(props);
+  const corners = getCorners(props);
 
   return css`
     ${focusVisibleA11yStyle(props)}
-    ${isAllCaps ? fontCapsXxs(props) : fontBodySemiboldXs(props)}
+    ${isAllCaps ? fontCapsXxs(props) : fontBodyMediumXs(props)}
 
     min-width: fit-content;
     padding: ${isAllCaps ? spaces?.s : 7}px ${spaces?.s}px;
+    border-radius: ${corners?.l}px;
 
     &:hover,
     &:focus-visible {
