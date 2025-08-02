@@ -1,21 +1,13 @@
 import {
-  FONT_SIZE_VALUES,
-  LINE_HEIGHT_VALUES,
-  LETTER_SPACING_VALUES,
-  TYPOGRAPHY_CATEGORIES,
+  FontSizeValues,
+  LineHeightValues,
+  LetterSpacingValues,
+  TypographyCategories,
   FontWeight,
-} from "./typography-constants";
-
-export {
-  FONT_SIZE_VALUES,
-  LINE_HEIGHT_VALUES,
-  LETTER_SPACING_VALUES,
-  TYPOGRAPHY_CATEGORIES,
-  FontWeight,
-};
+} from "./constants/typography";
 
 function generateTypographyStyle(
-  category: keyof typeof TYPOGRAPHY_CATEGORIES,
+  category: keyof typeof TypographyCategories,
   size: string,
   weight: string,
   isNarrow: boolean = false,
@@ -25,19 +17,19 @@ function generateTypographyStyle(
   // Use body values for link category
   const sourceCategory = category === "link" ? "body" : category;
   const baseFontSize =
-    FONT_SIZE_VALUES[screenType]?.[sourceCategory]?.[
-      size as keyof (typeof FONT_SIZE_VALUES)[typeof screenType][typeof sourceCategory]
+    FontSizeValues[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof FontSizeValues)[typeof screenType][typeof sourceCategory]
     ] || 14;
   const fontSize = baseFontSize;
 
   const lineHeight =
-    LINE_HEIGHT_VALUES[screenType]?.[sourceCategory]?.[
-      size as keyof (typeof LINE_HEIGHT_VALUES)[typeof screenType][typeof sourceCategory]
+    LineHeightValues[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof LineHeightValues)[typeof screenType][typeof sourceCategory]
     ] || 24;
 
   const letterSpacing =
-    LETTER_SPACING_VALUES[screenType]?.[sourceCategory]?.[
-      size as keyof (typeof LETTER_SPACING_VALUES)[typeof screenType][typeof sourceCategory]
+    LetterSpacingValues[screenType]?.[sourceCategory]?.[
+      size as keyof (typeof LetterSpacingValues)[typeof screenType][typeof sourceCategory]
     ] || "0px";
 
   const fontWeight =
@@ -72,11 +64,11 @@ function generateTypographyStyle(
 }
 
 function generateCategoryStyles(
-  category: keyof typeof TYPOGRAPHY_CATEGORIES,
+  category: keyof typeof TypographyCategories,
   isNarrow: boolean = false,
   tabularNums?: string
 ) {
-  const config = TYPOGRAPHY_CATEGORIES[category];
+  const config = TypographyCategories[category];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const categoryStyles: any = {};
 

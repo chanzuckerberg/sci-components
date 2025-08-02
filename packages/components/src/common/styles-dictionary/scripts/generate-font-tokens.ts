@@ -3,16 +3,27 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 import {
-  FONT_SIZE_VALUES,
-  LINE_HEIGHT_VALUES,
-  LETTER_SPACING_VALUES,
-  TYPOGRAPHY_CATEGORIES,
-} from "../../../core/styles/common/typography-constants";
+  FontSizeValues,
+  LineHeightValues,
+  LetterSpacingValues,
+  TypographyCategories,
+} from "../../../core/styles/common/constants/typography";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
-// Font family constants (matching the current font.json structure)
+/* Font family constants
+   The following font stack is designed to provide compatibility across multiple operating systems:
+   - var(--font-inter): Custom Inter font defined by Next.js.
+   - Inter: Standard Inter font fallback.
+   - -apple-system, BlinkMacSystemFont: macOS-specific system fonts.
+   - Segoe UI: Default system font for Windows.
+   - Roboto: Default system font for most Linux distributions.
+   - Helvetica Neue, Helvetica, Arial, sans-serif: General fallbacks to ensure compatibility.
+   Reference:
+   An article explaining how platforms like GitHub and Medium use similar fallback font stacks.
+   Link: https://css-tricks.com/snippets/css/system-font-stack/
+*/
 const INTER_FONT =
   'var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif';
 const CODE_FONT = '"IBM Plex Mono", monospace';
@@ -62,7 +73,7 @@ const generateFontFamilyDefinitions = () => {
 
 // Generate font shorthand (weight fontSize/lineHeight fontFamily)
 const generateFontShorthand = (
-  category: keyof typeof TYPOGRAPHY_CATEGORIES,
+  category: keyof typeof TypographyCategories,
   size: string,
   weight: number,
   isNarrow: boolean = false
@@ -71,12 +82,12 @@ const generateFontShorthand = (
   // Use body values for link category
   const sourceCategory = category === "link" ? "body" : category;
   const fontSize =
-    FONT_SIZE_VALUES[screenType][sourceCategory][
-      size as keyof (typeof FONT_SIZE_VALUES)[typeof screenType][typeof sourceCategory]
+    FontSizeValues[screenType][sourceCategory][
+      size as keyof (typeof FontSizeValues)[typeof screenType][typeof sourceCategory]
     ];
   const lineHeight =
-    LINE_HEIGHT_VALUES[screenType][sourceCategory][
-      size as keyof (typeof LINE_HEIGHT_VALUES)[typeof screenType][typeof sourceCategory]
+    LineHeightValues[screenType][sourceCategory][
+      size as keyof (typeof LineHeightValues)[typeof screenType][typeof sourceCategory]
     ];
   const fontFamilyRef = isNarrow
     ? `{sds.font.font-family.${String(category)}.narrowValue}`
@@ -87,23 +98,23 @@ const generateFontShorthand = (
 
 // Generate letter spacing
 const getLetterSpacing = (
-  category: keyof typeof TYPOGRAPHY_CATEGORIES,
+  category: keyof typeof TypographyCategories,
   size: string,
   isNarrow: boolean = false
 ): string => {
   const screenType = isNarrow ? "narrow" : "wide";
   // Use body values for link category
   const sourceCategory = category === "link" ? "body" : category;
-  return LETTER_SPACING_VALUES[screenType][sourceCategory][
-    size as keyof (typeof LETTER_SPACING_VALUES)[typeof screenType][typeof sourceCategory]
+  return LetterSpacingValues[screenType][sourceCategory][
+    size as keyof (typeof LetterSpacingValues)[typeof screenType][typeof sourceCategory]
   ];
 };
 
 // Generate typography styles for a category
 const generateCategoryStyles = (
-  category: keyof typeof TYPOGRAPHY_CATEGORIES
+  category: keyof typeof TypographyCategories
 ) => {
-  const categoryConfig = TYPOGRAPHY_CATEGORIES[category];
+  const categoryConfig = TypographyCategories[category];
   const styles: Record<string, Record<string, unknown>> = {};
 
   // Process each size

@@ -1,6 +1,11 @@
 import { PaletteMode } from "@mui/material";
 import { AppTheme, Colors } from "./types";
 import { generateTypographyTheme } from "./typography-generator";
+import { Corners } from "./constants/corners";
+import { FontWeight } from "./constants/typography";
+import { IconSizes } from "./constants/iconSizes";
+import { Shadows } from "./constants/shadows";
+import { Spaces } from "./constants/spaces";
 
 const fontFamily = '"Inter", sans-serif';
 const fontFamilyCode = '"IBM Plex Mono", monospace';
@@ -149,44 +154,11 @@ export const SDSDarkThemeColors: Colors = {
  * `darkAppTheme` objects before use in the `makeThemeOptions` function.
  */
 const sharedAppTheme: Omit<AppTheme, "colors" | "mode"> = {
-  corners: {
-    l: 20,
-    m: 4,
-    none: 0,
-    s: 2,
-  },
-  fontWeights: {
-    bold: 700,
-    light: 300,
-    medium: 500,
-    regular: 400,
-    semibold: 600,
-  },
-  iconSizes: {
-    // for use with input icons only (radio and checkbox)
-    input: { height: 16, width: 16 },
-    l: { height: 24, width: 24 },
-    s: { height: 16, width: 16 },
-    xl: { height: 32, width: 32 },
-    xs: { height: 12, width: 12 },
-  },
-  shadows: {
-    l: "0 2px 12px 0 rgba(0,0,0, 0.3)",
-    m: "0 2px 4px 0 rgba(0,0,0, 0.15), 0 2px 10px 0 rgba(0,0,0, 0.15)",
-    none: "none",
-    s: "0 2px 4px 0 rgba(0,0,0, 0.25)",
-  },
-  spacing: {
-    default: 12,
-    l: 16,
-    m: 12,
-    s: 8,
-    xl: 24,
-    xs: 6,
-    xxl: 40,
-    xxs: 4,
-    xxxs: 2,
-  },
+  corners: Corners,
+  fontWeights: FontWeight,
+  iconSizes: IconSizes,
+  shadows: Shadows,
+  spacing: Spaces,
   typography: generateTypographyTheme(fontFamily, fontFamilyCode, tabularNums),
 };
 

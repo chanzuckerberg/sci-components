@@ -1,11 +1,11 @@
-export enum Spaces {
-  XXXS = "2px",
-  XXS = "4px",
-  XS = "6px",
-  S = "8px",
-  M = "12px",
-  L = "16px",
-  XL = "24px",
-  XXL = "40px",
-  DEFAULT = M,
-}
+export const Spaces = {
+  default: 12,
+  l: 16,
+  m: 12,
+  s: 8,
+  xl: 24,
+  xs: 6,
+  xxl: 40,
+  xxs: 4,
+  xxxs: 2,
+} as const;

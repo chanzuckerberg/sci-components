@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 
-export const FONT_SIZE_VALUES = {
+export const FontSizeValues = {
   wide: {
     body: {
       xxxs: 11,
@@ -83,7 +83,7 @@ export const FONT_SIZE_VALUES = {
   },
 } as const;
 
-export const LINE_HEIGHT_VALUES = {
+export const LineHeightValues = {
   wide: {
     body: {
       xxxs: 16,
@@ -166,7 +166,7 @@ export const LINE_HEIGHT_VALUES = {
   },
 } as const;
 
-export const LETTER_SPACING_VALUES = {
+export const LetterSpacingValues = {
   wide: {
     body: {
       xxxs: "0.06px",
@@ -249,7 +249,7 @@ export const LETTER_SPACING_VALUES = {
   },
 } as const;
 
-export const TYPOGRAPHY_CATEGORIES = {
+export const TypographyCategories = {
   body: {
     weights: ["regular", "medium", "semibold"],
     sizes: ["l", "m", "s", "xs", "xxs", "xxxs"],
