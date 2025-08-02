@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import {
   SDSLightThemeColors,
   SDSDarkThemeColors,
-} from "../../../core/styles/common/SDSAppTheme";
+} from "../../../core/styles/common/constants/colors";
 import {
   SDSPaletteLight,
   SDSPaletteDark,

@@ -2,11 +2,11 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
+import { createAppThemeBorders } from "../../../core/styles/common/SDSAppTheme";
 import {
-  createAppThemeBorders,
-  SDSLightThemeColors,
   SDSDarkThemeColors,
-} from "../../../core/styles/common/SDSAppTheme";
+  SDSLightThemeColors,
+} from "src/core/styles/common/constants/colors";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
