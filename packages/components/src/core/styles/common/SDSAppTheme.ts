@@ -8,7 +8,7 @@ const tabularNums = "tabular-nums";
 
 // FontWeight enum moved to typography-generator.ts
 
-const SDSLightThemeColors: Colors = {
+export const SDSLightThemeColors: Colors = {
   blue: {
     "100": "#e2eeff",
     "200": "#cce1ff",
@@ -74,7 +74,7 @@ const SDSLightThemeColors: Colors = {
   },
 };
 
-const SDSDarkThemeColors: Colors = {
+export const SDSDarkThemeColors: Colors = {
   blue: {
     "100": "#0f1d4a",
     "200": "#0a216e",
