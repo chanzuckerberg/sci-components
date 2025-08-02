@@ -53,10 +53,6 @@ const toggle = (props: InputToggleExtraProps) => {
       &.${switchClasses.checked} {
         transform: unset;
       }
-
-      &:hover {
-        background-color: transparent;
-      }
     }
 
     .${switchClasses.thumb} {
@@ -102,6 +98,10 @@ const toggleOn = (props: InputToggleExtraProps) => {
       &:before {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textPrimary};
         content: "${value}";
+      }
+
+      &:hover {
+        background-color: ${semanticColors?.accent?.surfaceSecondary};
       }
     }
 
@@ -156,6 +156,10 @@ const toggleOff = (props: InputToggleExtraProps) => {
       &:after {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
         content: "${value}";
+      }
+
+      &:hover {
+        background-color: ${semanticColors?.base?.fillHover};
       }
     }
 
