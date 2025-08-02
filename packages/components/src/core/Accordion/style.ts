@@ -13,7 +13,7 @@ import {
   getIconSizes,
   getShadows,
   getSpaces,
-  getTypography,
+  fontBodyMediumS,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
@@ -34,7 +34,6 @@ export const StyledAccordion = styled(Accordion, {
     const { useDivider, togglePosition } = props;
 
     const shadows = getShadows(props);
-    const typography = getTypography(props);
     const borders = getBorders(props);
     const spaces = getSpaces(props);
 
@@ -43,12 +42,12 @@ export const StyledAccordion = styled(Accordion, {
         background-color: transparent;
         background-image: none;
         box-shadow: ${shadows?.none};
-        font-family: ${typography?.fontFamily?.body};
         border-bottom: ${useDivider ? borders?.base?.divider : "none"};
         height: fit-content;
         padding: ${spaces?.s}px;
 
         & .${accordionSummaryClasses.root} {
+          ${fontBodyMediumS(props)}
           ${focusVisibleA11yStyle(props)}
           padding: 0;
           min-height: unset;
