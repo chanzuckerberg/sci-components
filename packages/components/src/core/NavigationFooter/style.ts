@@ -65,7 +65,7 @@ export const StyledLogoWrapper = styled("div", {
 
   p {
     ${fontHeader("l")}
-    ${fontHeader("l", /* isNarrow */ true)}
+    ${fontHeader("l", "semibold", /* isNarrow */ true)}
 
     ${(props: ExtraFooterProps) => {
       const semanticColors = getSemanticColors(props);

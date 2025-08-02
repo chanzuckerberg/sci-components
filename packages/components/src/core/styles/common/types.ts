@@ -42,9 +42,12 @@ export interface BaseColor {
   textDisabledInverse: string;
   textOnFill: string;
   fillHover: string;
+  fillHoverInverse: string;
   fillPressed: string;
+  fillPressedInverse: string;
   fillPrimary: string;
   fillOpen: string;
+  fillOpenInverse: string;
   fillSelected: string;
   fillDisabled: string;
   divider: string;
@@ -67,7 +70,9 @@ export interface BaseColor {
   ornamentSecondary: string;
   ornamentSecondaryInverse: string;
   ornamentSecondaryHover: string;
+  ornamentSecondaryHoverInverse: string;
   ornamentSecondaryPressed: string;
+  ornamentSecondaryPressedInverse: string;
 }
 
 export interface IntentColor {
@@ -155,7 +160,14 @@ export interface Shadows {
 export interface TypographyStyles {
   body: {
     regular: {
-      button: TypographyStyle;
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    medium: {
       l: TypographyStyle;
       m: TypographyStyle;
       s: TypographyStyle;
@@ -164,7 +176,6 @@ export interface TypographyStyles {
       xxxs: TypographyStyle;
     };
     semibold: {
-      button: TypographyStyle;
       l: TypographyStyle;
       m: TypographyStyle;
       s: TypographyStyle;
@@ -185,6 +196,10 @@ export interface TypographyStyles {
       s: TypographyStyle;
       xs: TypographyStyle;
     };
+    medium: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+    };
     semibold: {
       s: TypographyStyle;
       xs: TypographyStyle;
@@ -202,14 +217,57 @@ export interface TypographyStyles {
       xxxs: TypographyStyle;
     };
   };
+  link: {
+    regular: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    medium: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    semibold: {
+      l: TypographyStyle;
+      m: TypographyStyle;
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+  };
   tabular: {
     regular: {
       s: TypographyStyle;
       xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+    medium: {
+      s: TypographyStyle;
+      xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
     };
     semibold: {
       s: TypographyStyle;
       xs: TypographyStyle;
+      xxs: TypographyStyle;
+      xxxs: TypographyStyle;
+    };
+  };
+  title: {
+    bold: {
+      s: TypographyStyle;
+      m: TypographyStyle;
+      l: TypographyStyle;
     };
   };
 }
@@ -220,7 +278,9 @@ export interface Typography {
     caps?: CSSProperties["fontFamily"];
     code?: CSSProperties["fontFamily"];
     header?: CSSProperties["fontFamily"];
+    link?: CSSProperties["fontFamily"];
     tabular?: CSSProperties["fontFamily"];
+    title?: CSSProperties["fontFamily"];
   };
   wideStyles: TypographyStyles;
   narrowStyles: TypographyStyles;
@@ -239,6 +299,8 @@ export interface Corners {
   s: number;
   m: number;
   l: number;
+  xl: number;
+  rounded: number;
 }
 
 export interface Spaces {

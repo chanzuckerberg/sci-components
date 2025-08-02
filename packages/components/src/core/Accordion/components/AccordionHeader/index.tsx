@@ -10,11 +10,10 @@ export type AccordionHeaderProps = RawAccordionSummaryProps &
   SdsAccordionHeaderProps;
 
 const AccordionHeader = (props: AccordionHeaderProps) => {
-  const { children, id, subtitle } = props;
+  const { children, subtitle } = props;
+
   return (
     <StyledAccordionHeader
-      aria-controls={`${id}-panel-content`}
-      id={id}
       expandIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
     >
       {children}

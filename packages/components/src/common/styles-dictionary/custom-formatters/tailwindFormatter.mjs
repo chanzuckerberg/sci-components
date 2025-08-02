@@ -9,7 +9,7 @@ export function tailwindFormatter({ dictionary, options }) {
     fontFamily: transformDictionary(sds.font["font-family"], null, options),
     ...transformFonts(
       sds.font,
-      ["body", "caps", "header", "tabular", "code"],
+      ["body", "caps", "header", "tabular", "code", "title", "link"],
       options
     ),
     ...transformIconSizes(sds.iconSize, options),
@@ -97,6 +97,7 @@ function transformFonts(tokens, keys, options = {}) {
     fontVariantNumeric: {},
     letterSpacing: {},
     lineHeight: {},
+    textDecoration: {},
     textTransform: {},
   };
 
@@ -155,6 +156,7 @@ function addFontData(typography, data, fontValue, name) {
       fontWeight: parsedFont.weight,
       letterSpacing: fontValue["letter-spacing"].value || "0px",
       lineHeight: parsedFont.lineHeight,
+      textDecoration: fontValue["text-decoration"]?.value || "none",
       textTransform: fontValue["text-transform"]?.value || "none",
     };
 
@@ -165,6 +167,7 @@ function addFontData(typography, data, fontValue, name) {
     data.fontSize[key] = parsedFont.size;
     data.lineHeight[key] = parsedFont.lineHeight;
     data.letterSpacing[key] = sharedStyles.letterSpacing;
+    data.textDecoration[key] = sharedStyles.textDecoration;
     data.textTransform[key] = sharedStyles.textTransform;
     data.fontVariantNumeric[key] = sharedStyles.fontVariantNumeric;
   });

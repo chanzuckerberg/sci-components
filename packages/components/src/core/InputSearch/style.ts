@@ -41,10 +41,10 @@ const rounded = (props: InputSearchExtraProps): SerializedStyles => {
 
   return css`
     .${outlinedInputClasses.root} {
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
 
       .${outlinedInputClasses.notchedOutline} {
-        border-radius: ${corners?.l}px;
+        border-radius: ${corners?.rounded}px;
         border: 1px solid ${semanticColors?.base?.borderPrimary};
       }
     }

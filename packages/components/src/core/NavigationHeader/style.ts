@@ -275,7 +275,7 @@ export const StyledTitleTagWrapper = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${fontHeader("l")}
-  ${fontHeader("l", true)}
+  ${fontHeader("l", "semibold", true)}
 
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);

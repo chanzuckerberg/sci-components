@@ -9,21 +9,37 @@
           "value": "16px"
         }
       },
-      "xs": {
-        "height": { "value": "12px" },
-        "width": { "value": "12px" }
+      "l": {
+        "height": {
+          "value": "24px"
+        },
+        "width": {
+          "value": "24px"
+        }
       },
       "s": {
-        "height": { "value": "16px" },
-        "width": { "value": "16px" }
-      },
-      "l": {
-        "height": { "value": "24px" },
-        "width": { "value": "24px" }
+        "height": {
+          "value": "16px"
+        },
+        "width": {
+          "value": "16px"
+        }
       },
       "xl": {
-        "height": { "value": "32px" },
-        "width": { "value": "32px" }
+        "height": {
+          "value": "32px"
+        },
+        "width": {
+          "value": "32px"
+        }
+      },
+      "xs": {
+        "height": {
+          "value": "12px"
+        },
+        "width": {
+          "value": "12px"
+        }
       }
     }
   }
