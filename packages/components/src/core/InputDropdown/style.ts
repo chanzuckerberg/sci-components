@@ -7,7 +7,6 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontBody,
-  getBorders,
   getCorners,
   getFontWeights,
   getSemanticColors,
@@ -68,22 +67,15 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   const { width = "auto" } = props;
 
   const spaces = getSpaces(props);
-  const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
-
-  /**
-   * (masoudmanson)
-   * The top/bottom padding is set to 1px less than the actual value to account for the border.
-   */
-  const padding = `${(spaces?.xs ?? 6) - 1}px ${spaces?.xs}px`;
 
   return css`
     ${labelStyle(props)}
 
-    border: ${borders?.base?.default};
-    box-shadow: none !important;
+    border: none;
+    box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimary};
     cursor: pointer;
-    padding: ${padding};
+    padding: ${spaces?.xs}px ${spaces?.l}px;
     justify-content: start;
     width: ${width}px;
 
@@ -93,15 +85,13 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       }
 
       .styled-label {
-        margin-left: ${spaces?.s}px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
 
-      svg {
-        margin-right: ${spaces?.s}px;
-        margin-left: ${spaces?.l}px;
+      ${IconWrapper} {
+        margin-left: ${spaces?.m}px;
       }
     }
 
@@ -110,8 +100,8 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: transparent;
-      border: ${borders?.base?.hover};
+      background-color: ${semanticColors?.base?.fillHover};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryHover};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
@@ -125,7 +115,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:active {
       background-color: transparent;
-      border: ${borders?.base?.pressed};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.border};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
@@ -152,13 +142,25 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     align-items: flex-start;
     border: none !important;
     flex-direction: column;
-    padding: ${spaces?.xs}px ${spaces?.s}px;
+    padding: ${spaces?.xxs}px ${spaces?.s}px;
+    box-shadow: none !important;
     background-color: transparent;
     min-width: auto;
+
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
       .styled-label {
         margin: 0;
+      }
+
+      & > span {
+        ${labelFontBodyS(props)}
+        margin-left: 0;
+      }
+
+      ${IconWrapper} {
+        margin-left: ${spaces?.xs}px;
+        margin-right: 0;
       }
     }
 
@@ -188,16 +190,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
       background-color: ${semanticColors?.base?.fillHover};
       border: none;
     }
-
-    &.MuiButton-root.MuiButton-text > span {
-      ${labelFontBodyS(props)}
-      margin-left: 0;
-    }
-
-    &.MuiButton-root.MuiButton-text svg {
-      margin-left: ${spaces?.xs}px;
-      margin-right: 0;
-    }
   `;
 };
 
@@ -205,7 +197,7 @@ const square = (props: InputDropdownProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    border-radius: ${corners?.m}px;
+    border-radius: ${corners?.l}px;
     min-width: auto;
     background-color: transparent;
   `;
@@ -252,7 +244,6 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 const isOpen = (props: InputDropdownProps): SerializedStyles => {
   const { sdsStyle, intent = "default" } = props;
 
-  const borders = getBorders(props);
   const semanticColors = getSemanticColors(props);
 
   const inputColor = intentToColor[intent] as keyof Pick<
@@ -279,14 +270,12 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : ""}
 
     path {
-      fill: ${inputColor === "accent"
-        ? semanticColors?.accent?.ornamentOpen
-        : semanticColors?.[inputColor]?.ornament};
+      fill: ${semanticColors?.base?.ornamentSecondaryPressed};
     }
 
-    border: ${sdsStyle === "minimal"
-      ? borders?.none
-      : borders?.[inputColor]?.open};
+    box-shadow: ${sdsStyle === "minimal"
+      ? "none"
+      : `inset 0 0 0 1px ${semanticColors?.[inputColor]?.border}`};
 
     background-color: ${sdsStyle === "minimal"
       ? semanticColors?.base?.fillOpen
@@ -306,17 +295,17 @@ const applyIntentColor = (
   props: InputDropdownProps,
   intent: IntentType
 ): SerializedStyles => {
-  const borders = getBorders(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
-    border: ${borders?.[intent]?.default};
+    box-shadow: inset 0 0 0 1px ${semanticColors?.[intent]?.border};
 
     &:hover {
-      border: ${borders?.base?.hover};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryHover};
     }
 
     &:active {
-      border: ${borders?.base?.pressed};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryPressed};
     }
   `;
 };
@@ -326,14 +315,20 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
 
   return css`
     cursor: default;
-    border-color: ${semanticColors?.base?.borderPrimaryDisabled};
+    box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryDisabled};
 
     span {
       color: ${semanticColors?.base?.textDisabled};
     }
 
     &.MuiButton-text {
-      .styled-label {
+      .styled-label,
+      ${MinimalDetails}, ${StyledDetail} {
+        color: ${semanticColors?.base?.textDisabled};
+      }
+
+      ${StyledCounter} {
+        background-color: ${semanticColors?.base?.backgroundTertiary};
         color: ${semanticColors?.base?.textDisabled};
       }
     }

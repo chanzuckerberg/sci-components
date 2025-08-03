@@ -32,7 +32,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
 
   const shouldRenderDetails = !multiple && (details || value) && !isMinimal;
   const shouldRenderInlineMinimalDetails =
-    isMinimal && sdsType === "value" && !multiple;
+    isMinimal && sdsType === "value" && !multiple && details;
   const shouldRenderMinimalDetails = isMinimal && sdsType === "label";
   const shouldRenderCounter =
     multiple && counter !== undefined && counter !== "0" && !isMinimal;
