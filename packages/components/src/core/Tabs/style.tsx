@@ -7,13 +7,15 @@ import {
 import styled from "@emotion/styled";
 import {
   focusVisibleA11yStyle,
-  fontBodySemiboldS,
-  fontBodySemiboldXs,
   CommonThemeProps,
   getSemanticColors,
   getSpaces,
+  fontBodyS,
+  fontBodyXs,
+  getCorners,
 } from "src/core/styles";
 import { SdsSize } from "./components/common";
+import { Count, Label } from "./components/LabelWithCount/style";
 
 export type TabsProps = RawTabsProps & {
   underlined?: boolean;
@@ -49,7 +51,7 @@ export const StyledTabs = styled(TempTabs, {
     return `
       margin-top: ${isLarge ? spaces?.l : spaces?.m}px;
       margin-bottom: ${isLarge ? spaces?.xl : spaces?.m}px;
-      border-bottom: ${underlined ? `2px solid ${semanticColors?.base?.divider};` : "none"};
+      ${underlined ? `box-shadow: inset 0 -1px 0 0 ${semanticColors?.base?.divider}` : ""}
     `;
   }}
 `;
@@ -63,31 +65,41 @@ interface TabProps extends CommonThemeProps {
 export const StyledTab = styled(RawTab, {
   shouldForwardProp: (prop) => !TAB_DO_NOT_FORWARD_PROPS.includes(String(prop)),
 })<TabProps>`
-  min-height: unset;
-  padding: 0;
-  min-width: 32px;
-  opacity: 1 !important;
-
   ${tabFontMixin}
   ${focusVisibleA11yStyle}
 
   ${(props) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     return `
-      margin-right: ${spaces?.xl}px;
-      padding-bottom: ${spaces?.xxs}px;
+      min-height: unset;
+      padding: ${spaces?.xxxs}px ${spaces?.m}px ${spaces?.xxs}px;
+      min-width: 32px;
 
       color: ${semanticColors?.base?.textSecondary};
 
-      &:hover, :focus {
-        box-shadow: 0 2px 0 0 ${semanticColors?.base?.borderPrimary};
+      &:hover {
+        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryHover};
         color: ${semanticColors?.base?.textPrimary};
+        background-color: ${semanticColors?.base?.fillOpen};
+        border-top-right-radius: ${corners?.l}px;
+        border-top-left-radius: ${corners?.l}px;
       }
 
       &.Mui-selected {
         color: ${semanticColors?.base?.textPrimary};
+        font-weight: 500;
+
+        ${Label} {
+          font-weight: 500;
+          color: ${semanticColors?.base?.textPrimary};
+        }
+
+        ${Count} {
+          color: ${semanticColors?.base?.textPrimary};
+        }
 
         &:hover {
           color: ${semanticColors?.base?.textPrimary};
@@ -109,5 +121,5 @@ function tabFontMixin(props: TabProps): SerializedStyles | null {
   const { sdsSize } = props;
   const isLarge = sdsSize === "large";
 
-  return isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props);
+  return isLarge ? fontBodyS(props) : fontBodyXs(props);
 }
