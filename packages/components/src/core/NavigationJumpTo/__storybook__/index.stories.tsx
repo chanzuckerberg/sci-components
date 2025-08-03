@@ -42,13 +42,24 @@ export const Default = {
     items: [
       {
         elementRef: { current: null },
+        subItems: [
+          { elementRef: { current: null }, title: "Subnav Item 1.1" },
+          { elementRef: { current: null }, title: "Subnav Item 1.2" },
+        ],
+        title: "Nav Item 1",
+      },
+      { elementRef: { current: null }, title: "Nav Item 2" },
+      {
+        elementRef: { current: null },
+        subItems: [{ elementRef: { current: null }, title: "Subnav Item 3.1" }],
+        title: "Nav Item 3",
+      },
+      { elementRef: { current: null }, title: "Nav Item 4" },
+      {
+        elementRef: { current: null },
         title:
           "A long title for this item that will wrap to the next line if the component width is not enough.",
       },
-      { elementRef: { current: null }, title: "Item 2" },
-      { elementRef: { current: null }, title: "Item 3" },
-      { elementRef: { current: null }, title: "Item 4" },
-      { elementRef: { current: null }, title: "Item 5" },
     ],
     offsetTop: 0,
     width: "200px",
@@ -86,7 +97,11 @@ export const JumpToNavDemo = {
 export const Test = {
   args: {
     items: [
-      { elementRef: { current: null }, title: "Item 1" },
+      {
+        elementRef: { current: null },
+        subItems: [{ elementRef: { current: null }, title: "Sub Item 1.1" }],
+        title: "Item 1",
+      },
       { elementRef: { current: null }, title: "Item 2" },
       { elementRef: { current: null }, title: "Item 3" },
       { elementRef: { current: null }, title: "Item 4" },

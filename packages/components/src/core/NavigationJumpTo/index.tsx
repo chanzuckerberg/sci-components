@@ -10,9 +10,15 @@ import { toKebabCase } from "src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
 
+type SubItem = {
+  title: string;
+  elementRef: React.MutableRefObject<HTMLElement | null>;
+};
+
 type Item = {
   title: string;
   elementRef: React.MutableRefObject<HTMLElement | null>;
+  subItems?: SubItem[];
 };
 
 export interface NavigationJumpToProps extends NavigationJumpToExtraProps {
@@ -45,7 +51,44 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
     const [navItemClicked, setNavItemClicked] = useState(false);
     const [firstTabIndexInview, setFirstTabIndexInview] = useState(0);
     const [emittedValue, setEmittedValue] = useState(-1);
-    const sectionIsInView = useInView(items, offsetTop);
+
+    // Flatten items for intersection observer
+    const flattenedItems = items.reduce<
+      Array<{
+        title: string;
+        elementRef: React.MutableRefObject<HTMLElement | null>;
+      }>
+    >((acc, item) => {
+      acc.push({ elementRef: item.elementRef, title: item.title });
+      if (item.subItems) {
+        acc.push(...item.subItems);
+      }
+      return acc;
+    }, []);
+
+    const sectionIsInView = useInView(flattenedItems, offsetTop);
+
+    // Create mapping between rendered tab index and flattened item index
+    const tabToFlattenedIndexMap: number[] = [];
+    items.forEach((item) => {
+      const flattenedIndex = flattenedItems.findIndex(
+        (flatItem) =>
+          flatItem.title === item.title &&
+          flatItem.elementRef === item.elementRef
+      );
+      tabToFlattenedIndexMap.push(flattenedIndex);
+
+      if (item.subItems) {
+        item.subItems.forEach((subItem) => {
+          const subFlattenedIndex = flattenedItems.findIndex(
+            (flatItem) =>
+              flatItem.title === subItem.title &&
+              flatItem.elementRef === subItem.elementRef
+          );
+          tabToFlattenedIndexMap.push(subFlattenedIndex);
+        });
+      }
+    });
 
     const a11yProps = (title: string, elementId: string) => {
       return {
@@ -74,14 +117,18 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       // while scrolling. Once the scrolling ends, it is changed back to false.
       setNavItemClicked(true);
 
+      // Get the flattened item index from the tab index
+      const flattenedIndex = tabToFlattenedIndexMap[newValue];
+      const targetItem = flattenedItems[flattenedIndex];
+
       // Smoothly scroll to the section of the page referenced by the clicked nav item
       if (offsetTop) {
         scrollIntoViewWithOffset(
-          `${items[newValue]?.elementRef?.current?.getAttribute("id")}`,
+          `${targetItem?.elementRef?.current?.getAttribute("id")}`,
           offsetTop
         );
       } else {
-        items[newValue]?.elementRef?.current?.scrollIntoView({
+        targetItem?.elementRef?.current?.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
@@ -98,28 +145,38 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
     // based on the index of the visible sections in the viewport.
     useEffect(() => {
       // Retrieve the index of the first section that is intersecting with the viewport.
-      const sectionInView = Object.values(sectionIsInView).findIndex(
+      const flattenedSectionInView = Object.values(sectionIsInView).findIndex(
         (section) => section.isInView
+      );
+
+      // Convert flattened index back to tab index
+      const tabSectionInView = tabToFlattenedIndexMap.findIndex(
+        (flatIndex) => flatIndex === flattenedSectionInView
       );
 
       // Update the tabs value only if a section is present in the viewport
       // and no navigation item has been clicked, preventing updates during window scroll
       // and unnecessary movement of the tabs indicator.
-      if (sectionInView > -1 && !navItemClicked) {
-        setFirstTabIndexInview(sectionInView);
+      if (tabSectionInView > -1 && !navItemClicked) {
+        setFirstTabIndexInview(tabSectionInView);
 
         // Invoke the custom onChange prop
         handleOnChange(
-          sectionInView,
+          tabSectionInView,
           {
-            target: items[sectionInView],
+            target: flattenedItems[flattenedSectionInView],
             type: "scroll",
           } as unknown as React.SyntheticEvent,
           "scroll"
         );
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [handleOnChange, items, sectionIsInView]);
+    }, [
+      handleOnChange,
+      flattenedItems,
+      sectionIsInView,
+      tabToFlattenedIndexMap,
+    ]);
 
     // Set navItemClicked to false to re-enable the option
     // to update the tab value based on scroll.
@@ -138,19 +195,42 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         width={width}
         {...rest}
       >
-        {items.map(({ title, elementRef }, index) => (
-          <StyledTab
-            key={toKebabCase(title)}
-            label={title}
-            tabIndex={0}
-            width={width}
-            {...a11yProps(
-              toKebabCase(title),
-              elementRef.current?.getAttribute("id") ||
-                `navigation-panel-${index + 1}`
-            )}
-          />
-        ))}
+        {items.map(({ title, elementRef, subItems }, itemIndex) => {
+          const tabs = [
+            <StyledTab
+              key={toKebabCase(title)}
+              label={title}
+              tabIndex={0}
+              width={width}
+              {...a11yProps(
+                toKebabCase(title),
+                elementRef.current?.getAttribute("id") ||
+                  `navigation-panel-${itemIndex + 1}`
+              )}
+            />,
+          ];
+
+          if (subItems) {
+            subItems.forEach((subItem, subIndex) => {
+              tabs.push(
+                <StyledTab
+                  key={`${toKebabCase(title)}-${toKebabCase(subItem.title)}`}
+                  label={subItem.title}
+                  tabIndex={0}
+                  width={width}
+                  isSubItem={true}
+                  {...a11yProps(
+                    toKebabCase(subItem.title),
+                    subItem.elementRef.current?.getAttribute("id") ||
+                      `navigation-panel-${itemIndex + 1}-${subIndex + 1}`
+                  )}
+                />
+              );
+            });
+          }
+
+          return tabs;
+        })}
       </StyledTabs>
     );
   }
