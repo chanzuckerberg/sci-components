@@ -147,6 +147,10 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     background-color: transparent;
     min-width: auto;
 
+    span {
+      color: ${semanticColors?.base?.textSecondary};
+    }
+
     /* Nesting to increase CSS specificity for style override */
     &.MuiButton-text {
       .styled-label {
@@ -162,10 +166,6 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
         margin-left: ${spaces?.xs}px;
         margin-right: 0;
       }
-    }
-
-    span {
-      color: ${semanticColors?.base?.textSecondary};
     }
 
     path {
