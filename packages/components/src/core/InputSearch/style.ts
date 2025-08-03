@@ -76,7 +76,7 @@ const applyIntentColor = (
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticColors?.[intent]?.ornament};
+          color: ${semanticColors?.base?.ornamentSecondaryPressed};
         }
       }
     }
@@ -97,6 +97,8 @@ const disabledStyled = (props: InputSearchExtraProps): SerializedStyles => {
       }
 
       &:hover {
+        background-color: unset;
+
         .${outlinedInputClasses.notchedOutline} {
           border: 1px solid ${semanticColors?.base?.borderPrimaryDisabled};
         }
@@ -144,6 +146,7 @@ export const StyledSearchBase = styled(TextField, {
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     return css`
       margin-top: ${spaces?.m}px;
@@ -168,6 +171,7 @@ export const StyledSearchBase = styled(TextField, {
 
       .${outlinedInputClasses.root} {
         padding: 0 ${spaces?.m}px;
+        border-radius: ${corners?.l}px;
         width: 100%;
 
         .${outlinedInputClasses.input} {
@@ -216,9 +220,11 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.root}:hover {
+        background-color: ${semanticColors?.base?.fillHover};
+
         & .${buttonBaseClasses.root}:last-of-type {
           svg {
-            color: ${semanticColors?.base?.ornamentSecondaryHover};
+            color: ${semanticColors?.base?.ornamentSecondary};
           }
         }
         .${outlinedInputClasses.notchedOutline} {
@@ -236,7 +242,7 @@ export const StyledSearchBase = styled(TextField, {
         .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
           cursor: default;
           svg {
-            color: ${semanticColors?.accent?.ornamentFocus};
+            color: ${semanticColors?.base?.ornamentSecondaryPressed};
           }
         }
       }
