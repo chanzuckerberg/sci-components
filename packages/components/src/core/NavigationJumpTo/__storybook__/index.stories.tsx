@@ -43,22 +43,24 @@ export const Default = {
       {
         elementRef: { current: null },
         subItems: [
-          { elementRef: { current: null }, title: "Subnav Item 1.1" },
-          { elementRef: { current: null }, title: "Subnav Item 1.2" },
+          { elementRef: { current: null }, title: "1.1. Subnav Item" },
+          { elementRef: { current: null }, title: "1.2. Subnav Item" },
         ],
-        title: "Nav Item 1",
+        title: "1. Nav Item",
       },
-      { elementRef: { current: null }, title: "Nav Item 2" },
+      { elementRef: { current: null }, title: "2. Nav Item" },
       {
         elementRef: { current: null },
-        subItems: [{ elementRef: { current: null }, title: "Subnav Item 3.1" }],
-        title: "Nav Item 3",
+        subItems: [
+          { elementRef: { current: null }, title: "3.1. Subnav Item" },
+        ],
+        title: "3. Nav Item",
       },
-      { elementRef: { current: null }, title: "Nav Item 4" },
+      { elementRef: { current: null }, title: "4. Nav Item" },
       {
         elementRef: { current: null },
         title:
-          "A long title for this item that will wrap to the next line if the component width is not enough.",
+          "5. A long title for this item that will wrap to the next line if the component width is not enough.",
       },
     ],
     offsetTop: 0,

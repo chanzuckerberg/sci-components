@@ -18,12 +18,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-1"
         aria-selected="true"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-nav-item-1"
+        id="navigation-tab-1.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Nav Item 1
+        1. Nav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -32,12 +32,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-1-1"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-subnav-item-1.1"
+        id="navigation-tab-1.1.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Subnav Item 1.1
+        1.1. Subnav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -46,12 +46,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-1-2"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-subnav-item-1.2"
+        id="navigation-tab-1.2.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Subnav Item 1.2
+        1.2. Subnav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -60,12 +60,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-2"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-nav-item-2"
+        id="navigation-tab-2.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Nav Item 2
+        2. Nav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -74,12 +74,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-3"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-nav-item-3"
+        id="navigation-tab-3.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Nav Item 3
+        3. Nav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -88,12 +88,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-3-1"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-subnav-item-3.1"
+        id="navigation-tab-3.1.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Subnav Item 3.1
+        3.1. Subnav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -102,12 +102,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-4"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-nav-item-4"
+        id="navigation-tab-4.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
-        Nav Item 4
+        4. Nav Item
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -116,12 +116,12 @@ exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
         aria-controls="navigation-panel-5"
         aria-selected="false"
         class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth css-1cdwa9-MuiButtonBase-root-MuiTab-root"
-        id="navigation-tab-a-long-title-for-this-item-that-will-wrap-to-the-next-line-if-the-component-width-is-not-enough."
+        id="navigation-tab-5.-a-long-title-for-this-item-that-will-wrap-to-the-next-line-if-the-component-width-is-not-enough."
         role="tab"
         tabindex="0"
         type="button"
       >
-        A long title for this item that will wrap to the next line if the component width is not enough.
+        5. A long title for this item that will wrap to the next line if the component width is not enough.
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
