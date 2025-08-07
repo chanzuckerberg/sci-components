@@ -12,7 +12,7 @@ exports[`<NavigationFooter /> Default story renders snapshot 1`] = `
       href="https://example.com"
     >
       <div
-        class="css-vvbz7v"
+        class="css-1u330x6"
       >
         <div
           style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; white-space: nowrap; width: 64px;"
@@ -154,7 +154,7 @@ exports[`<NavigationFooter /> matches the snapshot 1`] = `
         href="https://example.com"
       >
         <div
-          class="css-vvbz7v"
+          class="css-1u330x6"
         >
           <div
             style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; white-space: nowrap; width: 64px;"

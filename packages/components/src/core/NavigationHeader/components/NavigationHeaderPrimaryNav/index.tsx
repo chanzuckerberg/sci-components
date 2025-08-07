@@ -67,6 +67,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const [activeDropdownKey, setActiveDropdownKey] = useState<T | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");
 
@@ -74,6 +75,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
   function onClose() {
     setAnchorEl(null);
+    setActiveDropdownKey(null);
   }
 
   useEffect(() => {
@@ -97,6 +99,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           ...rest
         } = item;
         const isActive = key === value;
+        const isDropdownOpen = open && activeDropdownKey === key;
 
         if (item.itemType === "dropdown" && !isNarrow) {
           const dropdownItem =
@@ -108,9 +111,10 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                 itemType={item.itemType}
                 ref={buttonRef}
                 sdsStyle="minimal"
-                active={open}
+                active={isDropdownOpen}
                 onClick={(e) => {
                   setAnchorEl(e.currentTarget);
+                  setActiveDropdownKey(key);
                   onChange(key);
                   parentOnClick?.(e);
                 }}
@@ -119,13 +123,13 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               >
                 <StyledLabel
                   itemType={item.itemType}
-                  active={open}
+                  active={isDropdownOpen}
                   hasInvertedStyle={hasInvertedStyle}
                   isNarrow={isNarrow}
                 >
                   {label as ReactNode}
                   <Icon
-                    sdsIcon={open ? "ChevronUp" : "ChevronDown"}
+                    sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                     sdsSize="xs"
                   />
                 </StyledLabel>
@@ -133,7 +137,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
               <Menu
                 anchorEl={anchorEl}
-                open={open}
+                open={isDropdownOpen}
                 onClose={onClose}
                 slotProps={{
                   paper: {

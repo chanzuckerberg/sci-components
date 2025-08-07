@@ -156,10 +156,10 @@ export const StyledLabel = styled("span", {
         gap: ${spaces?.xs}px;
         color: ${active ? activeColor : inactiveColor};
 
-        // TODO: Double check with Connor!
-        // ${StyledTag} {
-        //   margin-right: -${spaces?.s}px;
-        // }
+        /* TODO: Double check with Connor! */
+        /* ${StyledTag} {
+           margin-right: -${spaces?.s}px;margin-right
+        } */
       `,
     ];
   }}

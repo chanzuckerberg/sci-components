@@ -2,7 +2,9 @@ import { AppBar, Drawer, Toolbar, css } from "@mui/material";
 import {
   CommonThemeProps,
   fontBody,
+  fontBodyXxxs,
   fontHeader,
+  fontHeaderL,
   getIconSizes,
   getSemanticColors,
   getShadows,
@@ -279,35 +281,25 @@ export const StyledTitleContainer = styled("div", {
 export const StyledTitleTagWrapper = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontHeader("l")}
-  ${fontHeader("l", "semibold", true)}
-
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
 
-    return `
+    return css`
       display: flex;
       align-items: center;
       gap: ${spaces?.xs}px;
 
       p {
+        ${fontHeaderL(props)}
+        margin: 0;
         white-space: nowrap;
       }
-  `;
+    `;
   }}
 `;
 
 export const StyledTag = styled(Tag)`
   margin: 0;
-
-  .MuiChip-label {
-    ${fontBody("xxxs", "regular")}
-    ${fontBody("xxxs", "regular", /* isNarrow */ true)}
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
 `;
 
 interface StyledPrimaryNavContainerProps extends CommonThemeProps {

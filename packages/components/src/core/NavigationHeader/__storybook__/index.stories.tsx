@@ -245,10 +245,10 @@ export const Default = {
         onClick: () => alert("clicked on secondary"),
       },
     ],
-    title: "Title",
     showSearch: true,
     tag: "Tag",
     tagColor: "beta",
+    title: "Title",
   },
   parameters: {
     controls: {

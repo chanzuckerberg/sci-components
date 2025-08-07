@@ -39,11 +39,15 @@ export default function NavigationHeaderSecondaryNav({
   isNarrow,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
+    null
+  );
   const theme: SDSTheme = useTheme();
 
   const open = Boolean(anchorEl);
   function onClose() {
     setAnchorEl(null);
+    setActiveDropdownKey(null);
   }
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -60,34 +64,37 @@ export default function NavigationHeaderSecondaryNav({
 
   return (
     <StyledSection isNarrow={isNarrow}>
-      {items.map((item) => {
+      {items.map((item, index) => {
         const { itemType, label, key, ...rest } = item;
+        const itemKey = String(key || `${label}-${index}`);
+        const isDropdownOpen = open && activeDropdownKey === itemKey;
 
         if (itemType === "dropdown" && !isNarrow) {
           return (
-            <Fragment key={`${key}-${label}-dropdown`}>
+            <Fragment key={`${itemKey}-${label}-dropdown`}>
               <StyledTextItem
                 {...rest}
                 ref={buttonRef}
                 hasInvertedStyle={hasInvertedStyle}
-                open={open}
+                open={isDropdownOpen}
                 isNarrow={isNarrow}
                 sdsStyle="minimal"
                 onClick={(event) => {
                   setAnchorEl(event.currentTarget);
+                  setActiveDropdownKey(itemKey);
                   item.onClick?.(event);
                 }}
               >
                 <span>{label}</span>
                 <Icon
-                  sdsIcon={open ? "ChevronUp" : "ChevronDown"}
+                  sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                   sdsSize="xs"
                 />
               </StyledTextItem>
 
               <Menu
                 anchorEl={anchorEl}
-                open={open}
+                open={isDropdownOpen}
                 onClose={onClose}
                 slotProps={{
                   paper: {
@@ -235,7 +242,7 @@ export default function NavigationHeaderSecondaryNav({
             {...rest}
             onClick={item.onClick}
             hasInvertedStyle={hasInvertedStyle}
-            open={open}
+            open={false}
             isNarrow={isNarrow}
             sdsStyle="minimal"
           >

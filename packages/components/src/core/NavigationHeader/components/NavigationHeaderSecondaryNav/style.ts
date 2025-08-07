@@ -4,6 +4,7 @@ import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
   fontBodyMediumS,
   fontBodyS,
+  fontBodySemiboldS,
   fontHeaderS,
   getCorners,
   getSemanticColors,
@@ -75,39 +76,42 @@ export const StyledTextItem = styled(Button, {
       ? semanticColors?.base?.ornamentSecondaryPressedInverse
       : semanticColors?.base.ornamentSecondaryPressed;
 
-    return css`
-      padding: ${spaces?.xxxs}px ${spaces?.m}px;
-      border-radius: ${corners?.l}px;
-      background-color: ${open
-        ? hasInvertedStyle
-          ? semanticColors?.base?.fillPressedInverse
-          : semanticColors?.base?.fillPressed
-        : "transparent"};
+    return [
+      open ? fontBodySemiboldS(props) : fontBodyMediumS(props),
+      css`
+        padding: ${spaces?.xxxs}px ${spaces?.m}px;
+        border-radius: ${corners?.l}px;
+        background-color: ${open
+          ? hasInvertedStyle
+            ? semanticColors?.base?.fillPressedInverse
+            : semanticColors?.base?.fillPressed
+          : "transparent"};
 
-      gap: ${spaces?.xs}px;
-      color: ${open ? textOpenColor : textDefaultColor};
-
-      svg {
-        color: ${open ? ChevronOpenColor : ChevronDefaultColor};
-      }
-
-      &:hover {
-        background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverInverse
-          : semanticColors?.base.fillHover};
-        box-shadow: none;
-
-        color: ${hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
-          : semanticColors?.base.textPrimary};
+        gap: ${spaces?.xs}px;
+        color: ${open ? textOpenColor : textDefaultColor};
 
         svg {
-          color: ${ChevronHoverColor};
+          color: ${open ? ChevronOpenColor : ChevronDefaultColor};
         }
-      }
 
-      ${isNarrow && NarrowStyledTextItem(props)}
-    `;
+        &:hover {
+          background: ${hasInvertedStyle
+            ? semanticColors?.base.fillHoverInverse
+            : semanticColors?.base.fillHover};
+          box-shadow: none;
+
+          color: ${hasInvertedStyle
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
+
+          svg {
+            color: ${ChevronHoverColor};
+          }
+        }
+
+        ${isNarrow && NarrowStyledTextItem(props)}
+      `,
+    ];
   }}
 `;
 
