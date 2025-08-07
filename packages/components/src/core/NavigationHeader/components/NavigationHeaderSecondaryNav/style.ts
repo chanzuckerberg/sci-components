@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 import Accordion from "src/core/Accordion";
 import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
+  fontBodyMediumS,
   fontBodyS,
   fontHeaderS,
+  getCorners,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
@@ -40,19 +42,18 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
 export const StyledTextItem = styled(Button, {
   shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
 })`
-  ${fontHeaderS}
+  ${fontBodyMediumS}
 
-  background: none;
   justify-content: flex-start;
   width: fit-content;
   min-width: unset;
-  padding: 0;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
 
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
 
     const textDefaultColor = hasInvertedStyle
       ? semanticColors?.base.textSecondaryInverse
@@ -63,14 +64,26 @@ export const StyledTextItem = styled(Button, {
       : semanticColors?.base.textPrimary;
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.textSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryInverse
       : semanticColors?.base.ornamentSecondary;
 
+    const ChevronHoverColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentSecondaryHoverInverse
+      : semanticColors?.base.ornamentSecondaryHover;
+
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentPrimaryInverse
-      : semanticColors?.accent.ornamentOpen;
+      ? semanticColors?.base?.ornamentSecondaryPressedInverse
+      : semanticColors?.base.ornamentSecondaryPressed;
 
     return css`
+      padding: ${spaces?.xxxs}px ${spaces?.m}px;
+      border-radius: ${corners?.l}px;
+      background-color: ${open
+        ? hasInvertedStyle
+          ? semanticColors?.base?.fillPressedInverse
+          : semanticColors?.base?.fillPressed
+        : "transparent"};
+
       gap: ${spaces?.xs}px;
       color: ${open ? textOpenColor : textDefaultColor};
 
@@ -79,16 +92,17 @@ export const StyledTextItem = styled(Button, {
       }
 
       &:hover {
-        background: none;
+        background: ${hasInvertedStyle
+          ? semanticColors?.base.fillHoverInverse
+          : semanticColors?.base.fillHover};
         box-shadow: none;
+
         color: ${hasInvertedStyle
           ? semanticColors?.base.textPrimaryInverse
           : semanticColors?.base.textPrimary};
 
         svg {
-          color: ${hasInvertedStyle
-            ? semanticColors?.base?.ornamentPrimaryInverse
-            : semanticColors?.base.ornamentSecondaryHover};
+          color: ${ChevronHoverColor};
         }
       }
 

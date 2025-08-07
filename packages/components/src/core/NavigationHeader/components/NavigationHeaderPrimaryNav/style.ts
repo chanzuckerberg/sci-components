@@ -2,11 +2,12 @@ import styled from "@emotion/styled";
 import Button from "src/core/Button";
 import {
   fontBodyS,
-  fontHeader,
   getSemanticColors,
   getSpaces,
   fontBodySemiboldM,
-  fontBody,
+  getCorners,
+  fontBodyMediumS,
+  fontBodySemiboldS,
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
@@ -70,41 +71,54 @@ export const PrimaryNavItem = styled(Button, {
 })`
   display: flex;
   align-items: center;
-  background: none;
-  padding: 0;
   min-width: fit-content;
 
   ${(props: PrimaryNavItemProps) => {
-    const { hasInvertedStyle, isNarrow } = props;
+    const { hasInvertedStyle, isNarrow, active } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.textSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryInverse
       : semanticColors?.base.ornamentSecondary;
 
+    const ChevronHoverColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentSecondaryHoverInverse
+      : semanticColors?.base.ornamentSecondaryHover;
+
+    const ChevronOpenColor = hasInvertedStyle
+      ? semanticColors?.base.ornamentSecondaryPressedInverse
+      : semanticColors?.base.ornamentSecondaryPressed;
+
     return css`
-      gap: ${spaces?.xs}px;
+      padding: ${spaces?.xxxs}px ${spaces?.m}px;
+      border-radius: ${corners?.l}px;
+      background-color: ${active
+        ? hasInvertedStyle
+          ? semanticColors?.base?.fillPressedInverse
+          : semanticColors?.base?.fillPressed
+        : "transparent"};
 
       svg {
-        color: ${ChevronDefaultColor};
+        color: ${active ? ChevronOpenColor : ChevronDefaultColor};
       }
 
       &:hover {
-        background: none;
+        background: ${hasInvertedStyle
+          ? semanticColors?.base.fillHoverInverse
+          : semanticColors?.base.fillHover};
         box-shadow: none;
 
-        & > span {
+        ${StyledLabel} {
           color: ${hasInvertedStyle
             ? semanticColors?.base.textPrimaryInverse
             : semanticColors?.base.textPrimary};
         }
 
         svg {
-          color: ${hasInvertedStyle
-            ? semanticColors?.base?.ornamentPrimaryInverse
-            : semanticColors?.base.ornamentSecondaryHover} !important;
+          color: ${ChevronHoverColor} !important;
         }
       }
 
@@ -113,60 +127,13 @@ export const PrimaryNavItem = styled(Button, {
   }}
 `;
 
-const WideStyledLabel = (props: PrimaryNavItemProps): SerializedStyles => {
-  const { hasInvertedStyle, active, itemType = "text" } = props;
-
-  const semanticColors = getSemanticColors(props);
-
-  const activeBorderColor = hasInvertedStyle
-    ? semanticColors?.base?.borderOnFill
-    : semanticColors?.accent?.border;
-
-  const inactiveBorderColor = hasInvertedStyle
-    ? semanticColors?.base.borderOnFill
-    : semanticColors?.base.borderPrimary;
-
-  const ChevronDefaultColor = hasInvertedStyle
-    ? semanticColors?.base.textSecondaryInverse
-    : semanticColors?.base.ornamentSecondary;
-
-  const ChevronOpenColor = hasInvertedStyle
-    ? semanticColors?.base?.ornamentPrimaryInverse
-    : semanticColors?.accent.ornamentOpen;
-
-  return css`
-    border-bottom: solid 2px transparent;
-    border-bottom-color: ${active && itemType === "text"
-      ? activeBorderColor
-      : "transparent"};
-
-    svg {
-      color: ${active ? ChevronOpenColor : ChevronDefaultColor};
-    }
-
-    &:hover {
-      border-bottom-color: ${active ? activeBorderColor : inactiveBorderColor};
-    }
-  `;
-};
-
 export const StyledTag = styled(Tag)`
   margin: 0;
-
-  .MuiChip-label {
-    ${fontBody("xxxs", "regular")}
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
 `;
 
 export const StyledLabel = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontHeader("m")}
-
   ${(props: PrimaryNavItemProps) => {
     const { hasInvertedStyle, active, isNarrow } = props;
 
@@ -181,18 +148,20 @@ export const StyledLabel = styled("span", {
       ? colors?.base.textSecondaryInverse
       : colors?.base.textSecondary;
 
-    return css`
-      display: flex;
-      align-items: center;
-      gap: ${spaces?.xs}px;
-      color: ${active ? activeColor : inactiveColor};
+    return [
+      active ? fontBodySemiboldS(props) : fontBodyMediumS(props),
+      css`
+        display: flex;
+        align-items: center;
+        gap: ${spaces?.xs}px;
+        color: ${active ? activeColor : inactiveColor};
 
-      ${StyledTag} {
-        margin-top: -${spaces?.xxxs}px;
-      }
-
-      ${!isNarrow && WideStyledLabel(props)}
-    `;
+        // TODO: Double check with Connor!
+        // ${StyledTag} {
+        //   margin-right: -${spaces?.s}px;
+        // }
+      `,
+    ];
   }}
 `;
 

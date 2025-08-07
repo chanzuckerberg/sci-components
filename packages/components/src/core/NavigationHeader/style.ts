@@ -139,6 +139,11 @@ export const StyledHeaderButton = styled(Button, {
     const secondaryButtonStyles = `
       box-shadow: inset 0 0 0 1px ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
       color: ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
+      &:hover {
+        background-color: ${semanticColors?.accent?.fillHover};
+        box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillHover};
+        color: ${semanticColors?.base?.textPrimaryInverse};
+      }
     `;
 
     return `
@@ -350,11 +355,6 @@ export const StyledSearch = styled(InputSearch, {
   margin: 0;
   width: 100%;
 
-  .MuiInputBase-input {
-    ${fontBody("xs", "regular")}
-    ${fontBody("m", "regular", /* isNarrow */ true)}
-  }
-
   ${(props: ExtraSearchProps) => {
     const { hasInvertedStyle, isNarrow } = props;
 
@@ -496,14 +496,6 @@ export const StyledButtonSection = styled("section", {
   display: flex;
   align-items: center;
   z-index: 10;
-
-  .MuiButtonBase-root {
-    ${fontBody("l", "semibold", /* isNarrow */ true)}
-  }
-
-  [data-style="minimal"] {
-    ${fontBody("m", "semibold", /* isNarrow */ true)}
-  }
 
   ${(props: ExtraHeaderProps) => {
     const { isNarrow } = props;

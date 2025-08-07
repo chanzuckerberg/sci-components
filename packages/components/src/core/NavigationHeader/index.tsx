@@ -279,12 +279,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       return (
         <StyledWideIconButton
           key={key}
-          sdsIconProps={{ sdsSize: "l" }}
           aria-label={String(buttonProps.children)}
           hasInvertedStyle={hasInvertedStyle}
           {...buttonProps}
           sdsStyle="icon"
           sdsType="secondary"
+          sdsSize="small"
           icon={buttonProps.icon}
         />
       );

@@ -26,12 +26,12 @@ export const StyledSection = styled("section", {
   display: flex;
   align-items: center;
 
-  ${(props: CommonThemeProps & { gap?: keyof Spaces; isNarrow?: boolean }) => {
+  ${(props: CommonThemeProps & { isNarrow?: boolean }) => {
     const { isNarrow } = props;
     const spaces = getSpaces(props);
 
     return css`
-      column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
+      column-gap: ${spaces?.m}px;
 
       ${isNarrow && NarrowStyledSection()}
     `;

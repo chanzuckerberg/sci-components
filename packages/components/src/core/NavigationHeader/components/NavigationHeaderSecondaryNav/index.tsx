@@ -59,7 +59,7 @@ export default function NavigationHeaderSecondaryNav({
   }, []);
 
   return (
-    <StyledSection gap="l" isNarrow={isNarrow}>
+    <StyledSection isNarrow={isNarrow}>
       {items.map((item) => {
         const { itemType, label, key, ...rest } = item;
 
