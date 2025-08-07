@@ -50,7 +50,7 @@ export const Default = {
     active: false,
     direction: "desc",
     hideSortIcon: false,
-    hover: false,
+    hover: true,
     shouldShowTooltipOnHover: true,
     tooltipProps: { sdsStyle: "dark" },
     tooltipText: "This is a header cell",
