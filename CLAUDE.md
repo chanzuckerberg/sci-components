@@ -15,7 +15,7 @@ This is a Lerna monorepo with two packages: `@czi-sds/components` and `@czi-sds/
 - `yarn test-storybook` - Run Storybook tests
 - `yarn storybook:axe` - Build Storybook and run accessibility tests
 - `yarn storybook:axeOnly` - Run accessibility tests without building storybook
-- `yarn namespace-check` - Validate TypeScript namespace exports acroos all packages
+- `yarn namespace-check` - Validate TypeScript namespace exports across all packages
 
 ### Package-specific commands:
 

@@ -375,3 +375,9 @@ Please note: If you believe you have found a security issue, please responsibly 
 ## 2022 Plans
 
 [2022 Plans](https://docs.google.com/presentation/d/1pKAY6Wl3-EHInvOZuf0L3yEDFt2xVvMlO7ZWefQbgjA/edit?usp=sharing)
+
+## Code of Conduct
+
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/chanzuckerberg/.github/blob/master/CODE_OF_CONDUCT.md).
+By participating, you are expected to uphold this code. 
+Please report unacceptable behavior to [opensource@chanzuckerberg.com](mailto:opensource@chanzuckerberg.com).

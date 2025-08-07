@@ -10,7 +10,7 @@ This package provides React components that wrap [Apache ECharts](https://echart
 
 ### Core Dependencies
 
-- **ECharts 5.6.** - Core charting library
+- **ECharts 5.6.0** - Core charting library
 - **Lodash** - Utility functions (especially throttling)
 - **@czi-sds/components** - Shared design system components and theme
 - **React** - Component framework
