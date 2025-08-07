@@ -126,7 +126,7 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
 
       ${sdsStyle === "dark" || inverted || hasInvertedStyle
         ? dark(props)
-        : light(props)};
+        : light(props)}
 
       ${followCursor === true && tableStyles(props)}
     }

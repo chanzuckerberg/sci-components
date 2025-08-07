@@ -19,7 +19,7 @@ const MobileLinkRow = memo(
       <StyledMobileLinkRow ref={containerRef}>
         {links.map((link, index) => (
           <FooterLink
-            key={link.label}
+            key={link.label + index}
             link={link}
             showDivider={!noDividerIndices.has(index)}
             hasInvertedStyle={hasInvertedStyle}

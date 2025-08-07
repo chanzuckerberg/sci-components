@@ -35,7 +35,7 @@ export function ExampleLogo({
 }
 
 export const NAVIGATION_FOOTER_LOGO_OPTIONS = [
-  <ExampleLogo key="logo" width={50} height={24}>
+  <ExampleLogo key="logo" width={64} height={24}>
     Logo Slot
   </ExampleLogo>,
   null,
