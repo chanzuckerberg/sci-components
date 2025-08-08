@@ -1,11 +1,5 @@
 import { SdsTagColorType } from "src/core/Tag";
-import {
-  PrimaryNavItem,
-  StyledAccordion,
-  StyledLabel,
-  StyledSubItem,
-  StyledTag,
-} from "./style";
+import { PrimaryNavItem, StyledLabel, StyledTag } from "./style";
 import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
 import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
 import Menu from "src/core/Menu";
@@ -15,6 +9,7 @@ import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { groupItemsBySection } from "../../utils";
+import { StyledAccordion } from "../../style";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -222,7 +217,9 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              <AccordionHeader>{item.label}</AccordionHeader>
+              <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
+                {item.label}
+              </AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(dropdownItem.items);
@@ -260,7 +257,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                           } = subItem;
 
                           return (
-                            <StyledSubItem
+                            <MenuItem
                               key={`primary-nav-item-${dropdownItemLabel}`}
                               onClick={(e) => {
                                 onClick?.(e);
@@ -269,7 +266,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                               {...accordionSubItemRest}
                             >
                               {dropdownItemLabel}
-                            </StyledSubItem>
+                            </MenuItem>
                           );
                         })}
                       </Fragment>

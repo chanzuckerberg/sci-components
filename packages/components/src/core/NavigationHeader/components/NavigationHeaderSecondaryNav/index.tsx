@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
-import { StyledAccordion, StyledSubItem, StyledTextItem } from "./style";
+import { StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
@@ -10,6 +10,7 @@ import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
 import { DropdownItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
+import { StyledAccordion } from "../../style";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -175,9 +176,8 @@ export default function NavigationHeaderSecondaryNav({
               key={`${label}-dropdown`}
               id={`${label}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
-              isNarrow={isNarrow}
             >
-              <AccordionHeader>{label}</AccordionHeader>
+              <AccordionHeader chevronSize="s">{label}</AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);
@@ -215,7 +215,7 @@ export default function NavigationHeaderSecondaryNav({
                           } = subItem;
 
                           return (
-                            <StyledSubItem
+                            <MenuItem
                               key={`primary-nav-item-${dropdownItemLabel}`}
                               onClick={(e) => {
                                 onClick?.(e);
@@ -224,7 +224,7 @@ export default function NavigationHeaderSecondaryNav({
                               {...accordionSubItemRest}
                             >
                               {dropdownItemLabel}
-                            </StyledSubItem>
+                            </MenuItem>
                           );
                         })}
                       </Fragment>

@@ -1,10 +1,11 @@
-import { AppBar, Drawer, Toolbar, css } from "@mui/material";
+import { AppBar, Divider, Drawer, Toolbar, css } from "@mui/material";
 import {
   CommonThemeProps,
-  fontBody,
-  fontBodyXxxs,
-  fontHeader,
+  fontBodyMediumL,
+  fontBodyS,
+  fontBodySemiboldL,
   fontHeaderL,
+  getCorners,
   getIconSizes,
   getSemanticColors,
   getShadows,
@@ -17,6 +18,7 @@ import Link from "../Link";
 import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import { SerializedStyles } from "@emotion/react";
 import { IconButtonProps } from "./NavigationHeader.types";
+import Accordion from "../Accordion";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -355,7 +357,7 @@ export const StyledSearch = styled(InputSearch, {
 
     return css`
       max-width: ${isNarrow ? "100%" : "320px"};
-      padding: ${isNarrow ? `${spaces?.m}px ${spaces?.xl}px` : ""};
+      padding: ${isNarrow ? `${spaces?.m}px 0 ${spaces?.l}px` : ""};
       .MuiInputBase-root {
         color: ${hasInvertedStyle
           ? semanticColors?.base.textPrimaryInverse
@@ -458,7 +460,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
     flex-direction: column;
     margin-left: 0;
     margin-top: ${spaces?.xxl}px;
-    padding: ${spaces?.xl}px;
+    padding: ${spaces?.xl}px 0;
     position: sticky;
     bottom: 0;
 
@@ -522,6 +524,22 @@ export const StyledDrawer = styled(Drawer, {
   }}
 `;
 
+export const StyledDrawerContent = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const spaces = getSpaces(props);
+
+    return css`
+      padding: 0 ${spaces?.xl}px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    `;
+  }}
+`;
+
 export const StyledNarrowButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -531,6 +549,134 @@ export const StyledNarrowButton = styled(Button, {
     return css`
       ${hasInvertedStyle && invertedWideButtonStyles(props)}
       margin: 0;
+    `;
+  }}
+`;
+
+export const StyledAccordion = styled(Accordion, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  padding: 0 !important;
+  width: 100%;
+  min-width: unset;
+
+  .MuiAccordionSummary-content {
+    ${fontBodyMediumL}
+  }
+
+  .MuiAccordionDetails-root .MuiButtonBase-root .primary-text {
+    ${fontBodyS}
+  }
+
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+
+    const textDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.textSecondaryInverse
+      : semanticColors?.base.textSecondary;
+
+    const textOpenColor = hasInvertedStyle
+      ? semanticColors?.base.textPrimaryInverse
+      : semanticColors?.base.textPrimary;
+
+    const ChevronDefaultColor = hasInvertedStyle
+      ? semanticColors?.base.ornamentSecondaryInverse
+      : semanticColors?.base.ornamentSecondary;
+
+    const ChevronOpenColor = hasInvertedStyle
+      ? semanticColors?.base?.ornamentSecondaryPressedInverse
+      : semanticColors?.base.ornamentSecondaryPressed;
+
+    return css`
+      .MuiButtonBase-root {
+        padding: ${spaces?.s}px ${spaces?.m}px !important;
+        border-radius: ${corners?.l}px;
+        color: ${textDefaultColor};
+
+        svg {
+          color: ${ChevronDefaultColor};
+        }
+
+        &[aria-expanded="true"] {
+          .MuiAccordionSummary-content {
+            ${fontBodySemiboldL(props)}
+          }
+          color: ${textOpenColor};
+
+          background-color: ${hasInvertedStyle
+            ? semanticColors?.base?.fillPressedInverse
+            : semanticColors?.base?.fillPressed};
+
+          svg {
+            color: ${ChevronOpenColor} !important;
+          }
+        }
+
+        &:hover {
+          width: 100%;
+          box-shadow: none;
+          background: ${hasInvertedStyle
+            ? semanticColors?.base.fillHoverInverse
+            : semanticColors?.base.fillHover};
+          color: ${hasInvertedStyle
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
+
+          svg {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base?.ornamentSecondaryHoverInverse
+              : semanticColors?.base.ornamentSecondaryHover} !important;
+          }
+        }
+      }
+
+      .MuiCollapse-root .MuiAccordionDetails-root {
+        padding: 0;
+
+        .MuiButtonBase-root {
+          padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px ${spaces?.xl}px !important;
+
+          .primary-text {
+            color: ${hasInvertedStyle
+              ? semanticColors?.base.textSecondaryInverse
+              : semanticColors?.base.textSecondary} !important;
+          }
+
+          &:hover {
+            .primary-text {
+              color: ${hasInvertedStyle
+                ? semanticColors?.base.textPrimaryInverse
+                : semanticColors?.base.textPrimary} !important;
+            }
+          }
+        }
+      }
+    `;
+  }}
+`;
+
+interface StyledSectionDividerProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+}
+
+export const StyledSectionDivider = styled(Divider, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: StyledSectionDividerProps) => {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return `
+      margin: ${spaces?.m}px 0;
+      border-color: ${
+        props.hasInvertedStyle
+          ? semanticColors?.base.dividerInverse
+          : semanticColors?.base.divider
+      };
     `;
   }}
 `;

@@ -20,10 +20,11 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
   togglePosition?: "right" | "left";
+  chevronSize?: "xs" | "s" | "l" | "xl";
   id: string;
 }
 
-const sdsPropNames = ["useDivider", "togglePosition"];
+const sdsPropNames = ["useDivider", "togglePosition", "chevronSize"];
 
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop) => {
@@ -64,7 +65,6 @@ export const StyledAccordion = styled(Accordion, {
           & .${accordionSummaryClasses.expandIconWrapper} {
             padding: 0;
             align-self: flex-start;
-            margin-top: ${spaces?.xxxs}px;
           }
         }
 
@@ -105,7 +105,6 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
           margin: 0;
           transform: rotate(-90deg);
           align-self: flex-start;
-          margin-top: ${spaces?.xxxs}px;
 
           &.${accordionSummaryClasses.expanded} {
             transform: rotate(0deg);

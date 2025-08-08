@@ -4,7 +4,6 @@ import {
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
-  Spaces,
 } from "src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
 import ListSubheader from "src/core/List/components/ListSubheader";

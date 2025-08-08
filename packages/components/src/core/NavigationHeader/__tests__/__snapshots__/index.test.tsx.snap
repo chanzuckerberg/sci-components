@@ -26,7 +26,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           </div>
         </div>
         <div
-          class="css-1tgtv7z"
+          class="css-f5tbfj"
         >
           <p>
             Title
@@ -56,7 +56,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
           >
             Primary
           </span>
@@ -71,7 +71,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
           >
             Primary
             <div
@@ -97,7 +97,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
             itemtype="dropdown"
           >
             Primary
@@ -199,7 +199,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
       class="css-1ts23ap"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1vms147-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1na4mnu-MuiButtonBase-root-MuiButton-root"
         data-style="minimal"
         items="[object Object],[object Object]"
         tabindex="0"
@@ -228,7 +228,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1vms147-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1na4mnu-MuiButtonBase-root-MuiButton-root"
         data-style="minimal"
         tabindex="0"
         type="button"
@@ -309,7 +309,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
         class="css-iiwtu0"
       >
         <div
-          class="css-1tgtv7z"
+          class="css-f5tbfj"
         >
           <p>
             My App
@@ -331,7 +331,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
           >
             Home
           </span>
@@ -348,7 +348,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
             itemtype="dropdown"
           >
             Products
@@ -380,7 +380,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-r94h9o"
+            class="css-rv3fo8"
           >
             About
           </span>
@@ -466,7 +466,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
       class="css-1ts23ap"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1vms147-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1na4mnu-MuiButtonBase-root-MuiButton-root"
         data-style="minimal"
         items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
         tabindex="0"
@@ -566,7 +566,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            class="css-1tgtv7z"
+            class="css-f5tbfj"
           >
             <p>
               Title
@@ -596,7 +596,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             tabindex="0"
           >
             <span
-              class="css-r94h9o"
+              class="css-rv3fo8"
             >
               Primary
             </span>
@@ -611,7 +611,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             type="button"
           >
             <span
-              class="css-r94h9o"
+              class="css-rv3fo8"
             >
               Primary
               <div
@@ -637,7 +637,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             type="button"
           >
             <span
-              class="css-r94h9o"
+              class="css-rv3fo8"
               itemtype="dropdown"
             >
               Primary
@@ -739,7 +739,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
         class="css-1ts23ap"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1vms147-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1na4mnu-MuiButtonBase-root-MuiButton-root"
           data-style="minimal"
           items="[object Object],[object Object]"
           tabindex="0"
@@ -768,7 +768,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1vms147-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1na4mnu-MuiButtonBase-root-MuiButton-root"
           data-style="minimal"
           tabindex="0"
           type="button"
