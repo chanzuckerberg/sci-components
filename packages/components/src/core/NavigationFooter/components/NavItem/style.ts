@@ -4,9 +4,7 @@ import { css } from "@mui/material";
 import Link from "src/core/Link";
 import {
   CommonThemeProps,
-  fontBody,
   fontBodyMediumS,
-  fontHeader,
   getCorners,
   getSemanticColors,
   getSpaces,
