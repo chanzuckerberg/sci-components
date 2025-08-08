@@ -5,12 +5,30 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
   class="css-1m75yyh"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
+    <span
+      class="css-17socgo"
+    >
+      <svg
+        class="css-1a4ncsk"
+        fill="currentColor"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="6"
+          cy="6"
+          r="2"
+        />
+      </svg>
+    </span>
     <span
       class="css-bv5fko"
     >

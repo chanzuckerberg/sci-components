@@ -12,6 +12,7 @@ import {
   getShadows,
   getSpaces,
 } from "src/core/styles";
+import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
@@ -39,6 +40,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
 
   ${(props: StyleProps) => {
     const { search } = props;
+
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const semanticColors = getSemanticColors(props);
@@ -70,7 +72,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding: 0 ${spaces?.m}px 0 0;
+          padding: 0 ${spaces?.xs}px;
 
           .${autocompleteClasses.option} {
             min-height: unset;
@@ -103,14 +105,14 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
           background-color: ${semanticColors?.base?.surface};
-          padding: ${spaces?.xxs}px ${spaces?.s}px;
+          padding: 0 ${spaces?.xs}px;
         }
 
         .${autocompleteClasses.groupUl} {
           position: relative;
-          margin: 0 0 ${spaces?.m}px;
+          margin: 0 0 ${spaces?.s}px;
           border-bottom: ${borders?.base?.divider};
-          padding-bottom: ${spaces?.xxs}px;
+          padding: ${spaces?.xxs}px 0px;
 
           & li:last-of-type {
             position: relative;
@@ -167,18 +169,19 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 
 export const StyledPaper = styled(Paper)`
   ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const borders = getBorders(props);
+    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       background-image: none;
-      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
+      padding: ${spaces?.xs}px 0;
       background-color: ${semanticColors?.base?.surface};
       border: ${borders?.none};
-      border-radius: ${corners?.m}px;
+      outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000", 15)};
+      border-radius: ${corners?.l}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;
     `;

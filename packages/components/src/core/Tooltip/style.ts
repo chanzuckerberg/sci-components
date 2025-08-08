@@ -122,7 +122,7 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
           : "center"} !important;
 
       ${!hasInvertedStyle &&
-      `border: solid 1px ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)} !important;`}
+      `outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};`}
 
       ${sdsStyle === "dark" || inverted || hasInvertedStyle
         ? dark(props)

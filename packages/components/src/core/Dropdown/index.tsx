@@ -19,7 +19,8 @@ import { StyledPaper, StyledPopper } from "src/core/DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
 } from "src/core/InputDropdown";
-import { StyledButton, StyledButtonsWrapper } from "./style";
+import { StyledButtonsWrapper } from "./style";
+import Button from "../Button";
 
 export {
   InputDropdown as DropdownInputDropdown,
@@ -166,37 +167,37 @@ const Dropdown = <
           <StyledButtonsWrapper buttonPosition={buttonPosition}>
             {buttonPosition === "left" ? (
               <div>
-                <StyledButton
+                <Button
                   onClick={handleButtonClose}
                   sdsStyle="square"
                   sdsType="primary"
                 >
                   Apply
-                </StyledButton>
-                <StyledButton
+                </Button>
+                <Button
                   onClick={handleCancel}
                   sdsStyle="square"
                   sdsType="secondary"
                 >
                   Cancel
-                </StyledButton>
+                </Button>
               </div>
             ) : (
               <div>
-                <StyledButton
+                <Button
                   onClick={handleCancel}
                   sdsStyle="square"
                   sdsType="secondary"
                 >
                   Cancel
-                </StyledButton>
-                <StyledButton
+                </Button>
+                <Button
                   onClick={handleButtonClose}
                   sdsStyle="square"
                   sdsType="primary"
                 >
                   Apply
-                </StyledButton>
+                </Button>
               </div>
             )}
           </StyledButtonsWrapper>

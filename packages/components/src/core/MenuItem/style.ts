@@ -1,35 +1,33 @@
-import { Check, Remove } from "@mui/icons-material";
+import { Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses, MenuItemProps } from "@mui/material";
 import styled from "@emotion/styled";
 import { fontBodyXs } from "src/core/styles/common/mixins/fonts";
 import {
   CommonThemeProps,
-  getFontWeights,
+  getCorners,
   getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import Icon from "../Icon";
 
 export interface MenuItemExtraProps extends CommonThemeProps, MenuItemProps {}
 
 export const StyledMenuItem = styled(MenuItem)`
   ${(props: MenuItemExtraProps) => {
     const { selected } = props;
-    const fontWeights = getFontWeights(props);
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
     const semanticColors = getSemanticColors(props);
 
     return `
-      padding: ${spaces?.xs}px ${spaces?.s}px !important;
+      padding: ${spaces?.xxs}px ${spaces?.xs}px !important;
+      border-radius: ${corners?.m}px;
       min-height: unset;
       opacity: 1;
 
       &.MuiAutocomplete-option {
         min-height: unset;
-      }
-      
-      .primary-text {
-        font-weight: ${selected ? fontWeights?.semibold : fontWeights?.regular};
       }
 
       &.MuiButtonBase-root {
@@ -58,8 +56,8 @@ export const StyledMenuItem = styled(MenuItem)`
           background-color: ${semanticColors?.base?.fillHover} !important;
         }
 
-        svg.check-icon {
-          color: ${selected ? semanticColors?.accent?.ornamentSelected : semanticColors?.base?.ornamentSecondary};
+        ${StyledIcon}, ${DotIcon} {
+          color: ${selected ? semanticColors?.base?.ornamentPrimary : semanticColors?.base?.ornamentSecondary};
         }
       }
 
@@ -69,8 +67,8 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:hover {
         background-color: ${semanticColors?.base?.fillHover};
-        svg.check-icon {
-          color: ${selected ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondary};
+        ${StyledIcon}, ${DotIcon} {
+          color: ${selected ? semanticColors?.base?.ornamentPrimary : semanticColors?.base?.ornamentSecondary};
         }
       }
 
@@ -79,23 +77,16 @@ export const StyledMenuItem = styled(MenuItem)`
         &:hover {
           background-color: ${semanticColors?.base?.fillHover};
         }
-        .primary-text {
-          font-weight: ${fontWeights?.semibold};
-        }
       }
 
       &:active {
-        svg.check-icon {
-          color: ${semanticColors?.accent?.ornamentPressed};
+        ${StyledIcon}, ${DotIcon} {
+          color: ${semanticColors?.base?.ornamentPrimary};
         }
 
         &:active {
-          svg.check-icon {
-            color: ${semanticColors?.accent?.ornamentPressed};
-          }
-
-          .primary-text {
-            font-weight: ${fontWeights?.semibold};
+          ${StyledIcon}, ${DotIcon} {
+            color: ${semanticColors?.base?.ornamentPrimary};
           }
         }
       }
@@ -204,35 +195,44 @@ export const StyledIconWrapper = styled("span")`
     return `
       display: flex;
       align-self: start;
-      margin-right: ${spaces?.m}px;
-      margin-top: ${spaces?.xxxs}px;
+      margin-right: ${spaces?.xs}px;
+      margin-top: ${spaces?.xxs}px;
       height: ${iconSizes?.s.height}px;
     `;
   }}
 `;
 
-export const StyledCheck = styled(Check, {
-  shouldForwardProp: (prop) => prop !== "selected",
-})<StyledIconType>`
-  ${(props) => {
-    const { selected, disabled } = props;
+interface StyledIconProps extends CommonThemeProps {
+  selected?: boolean;
+  disabled?: boolean;
+}
 
-    const iconSizes = getIconSizes(props);
+export const StyledIcon = styled(Icon)`
+  ${(props: StyledIconProps) => {
+    const { selected, disabled } = props;
     const semanticColors = getSemanticColors(props);
 
     const selectedColor = disabled
       ? semanticColors?.base?.ornamentDisabled
-      : semanticColors?.accent?.ornamentSelected;
+      : semanticColors?.base?.ornamentPrimary;
 
     return `
       color: ${selected ? selectedColor : "transparent"};
-      padding: 0;
-      height: ${iconSizes?.s.height}px;
-      width: ${iconSizes?.s.width}px;
+    `;
+  }}
+`;
 
-      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
-        background-color: transparent;
-      }
+export const DotIcon = styled("svg")`
+  ${(props: StyledIconProps) => {
+    const { selected, disabled } = props;
+    const semanticColors = getSemanticColors(props);
+
+    const selectedColor = disabled
+      ? semanticColors?.base?.ornamentDisabled
+      : semanticColors?.base?.ornamentPrimary;
+
+    return `
+      color: ${selected ? selectedColor : "transparent"};
     `;
   }}
 `;
@@ -248,7 +248,7 @@ export const StyledMinus = styled(Remove, {
 
     const selectedColor = disabled
       ? semanticColors?.base?.ornamentDisabled
-      : semanticColors?.accent?.ornamentSelected;
+      : semanticColors?.base?.ornamentPrimary;
 
     return `
       color: ${selected ? selectedColor : "transparent"};

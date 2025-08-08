@@ -86,7 +86,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiPopper-root css-v2msuu-MuiPopper-root"
+      class="MuiPopper-root css-11uxa4h-MuiPopper-root"
       data-popper-escaped=""
       data-popper-placement="bottom-start"
       data-popper-reference-hidden=""
@@ -94,31 +94,12 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
       style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="SdsAutocompleteMultiColumn-wrapper css-ov1ktg"
+        class="SdsAutocompleteMultiColumn-wrapper css-9l7n8s"
       >
         <div
-          class="SdsAutocompleteMultiColumn-column-root css-1451ohq"
+          class="SdsAutocompleteMultiColumn-column-root css-2dc8e1"
           width="260"
         >
-          <span
-            class="SdsAutocompleteMultiColumn-column-relation-icon css-19gs2ff"
-          >
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                data-file-name="IconChevronRightSmall"
-                data-testid="IconChevronRightSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              />
-            </div>
-          </span>
           <p
             class="SdsAutocompleteMultiColumn-column-title css-ederv3"
           >
@@ -126,7 +107,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1nl9kkd-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-114pfxp-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -244,7 +225,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
                   role="option"
@@ -253,17 +234,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -285,7 +270,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
                   role="option"
@@ -294,17 +279,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -326,7 +315,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
                   role="option"
@@ -335,17 +324,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -372,7 +365,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
                   role="option"
@@ -381,17 +374,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -418,7 +415,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
                   role="option"
@@ -427,17 +424,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -464,7 +465,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
                   role="option"
@@ -473,17 +474,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -512,11 +517,10 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </div>
         </div>
         <div
-          class="SdsAutocompleteMultiColumn-column-root css-1451ohq"
-          width="260"
+          class="css-qr5blw"
         >
           <span
-            class="SdsAutocompleteMultiColumn-column-relation-icon css-19gs2ff"
+            class="css-1jn0usc"
           >
             <div
               class="css-1ft6wgl"
@@ -534,6 +538,11 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
               />
             </div>
           </span>
+        </div>
+        <div
+          class="SdsAutocompleteMultiColumn-column-root css-2dc8e1"
+          width="260"
+        >
           <p
             class="SdsAutocompleteMultiColumn-column-title css-ederv3"
           >
@@ -541,7 +550,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
           </p>
           <div
             aria-owns="autocomplete-demo-listbox"
-            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-1nl9kkd-MuiAutocomplete-root"
+            class="MuiAutocomplete-root Mui-expanded MuiAutocomplete-hasPopupIcon css-114pfxp-MuiAutocomplete-root"
             label="Search by label"
           >
             <div
@@ -659,7 +668,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
                   role="option"
@@ -668,17 +677,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -705,7 +718,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
                   role="option"
@@ -714,17 +727,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -751,7 +768,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
                   role="option"
@@ -760,17 +777,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -792,7 +813,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
                   role="option"
@@ -801,17 +822,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -833,7 +858,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
                   role="option"
@@ -842,17 +867,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -874,7 +903,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="true"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root Mui-disabled MuiMenuItem-gutters Mui-disabled MuiMenuItem-root Mui-disabled MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root Mui-disabled MuiMenuItem-gutters Mui-disabled MuiMenuItem-root Mui-disabled MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
                   role="option"
@@ -883,18 +912,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      disabled=""
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -914,7 +946,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                 <li
                   aria-disabled="false"
                   aria-selected="false"
-                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-ugxpj7-MuiButtonBase-root-MuiMenuItem-root"
+                  class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="6"
                   id="autocomplete-demo-option-6"
                   role="option"
@@ -923,17 +955,21 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   <span
                     class="css-17socgo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium check-icon css-4wl0oy-MuiSvgIcon-root"
-                      data-testid="CheckIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
+                    <div
+                      class="css-1ft6wgl"
                     >
-                      <path
-                        d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ilyinl-MuiSvgIcon-root"
+                        data-file-name="IconCheckSmall"
+                        data-testid="IconCheckSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
                       />
-                    </svg>
+                    </div>
                   </span>
                   <span
                     class="css-bv5fko"
@@ -967,7 +1003,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="margin: 16px 0px 0px 24px; width: 274px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-41z5h3-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-sjw092-MuiAutocomplete-root"
     label="Search by label"
   >
     <div
