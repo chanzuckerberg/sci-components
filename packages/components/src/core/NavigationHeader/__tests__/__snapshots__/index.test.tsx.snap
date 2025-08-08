@@ -3,11 +3,11 @@
 exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1kawunn-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1652jnx-MuiPaper-root-MuiAppBar-root"
   tabindex="0"
 >
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-xwmz02-MuiToolbar-root"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-b9jdvl-MuiToolbar-root"
   >
     <a
       class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1187q18-MuiTypography-root-MuiLink-root"
@@ -296,11 +296,11 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
 exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1kawunn-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1652jnx-MuiPaper-root-MuiAppBar-root"
   tabindex="0"
 >
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-xwmz02-MuiToolbar-root"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-b9jdvl-MuiToolbar-root"
   >
     <a
       class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1187q18-MuiTypography-root-MuiLink-root"
@@ -543,11 +543,11 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
 <DocumentFragment>
   <header
     aria-label="Main navigation"
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1kawunn-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1652jnx-MuiPaper-root-MuiAppBar-root"
     tabindex="0"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-xwmz02-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-b9jdvl-MuiToolbar-root"
     >
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1187q18-MuiTypography-root-MuiLink-root"

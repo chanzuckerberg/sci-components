@@ -44,7 +44,6 @@ export const StyledAppBar = styled(AppBar, {
       background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
       background-image: none;
       max-width: 100%;
-      max-height: 56px;
       overflow-x: auto;
     `;
   }}
@@ -80,9 +79,9 @@ export const StyledToolbar = styled(Toolbar, {
 
     return css`
       &.MuiToolbar-root {
-        min-height: 56px;
-        max-height: 56px;
-        padding: ${spaces?.m}px ${spaces?.xl}px;
+        min-height: 48px;
+        max-height: 48px;
+        padding: ${spaces?.s}px ${spaces?.xl}px;
 
         ${isNarrow && NarrowToolbar(props)}
       }
