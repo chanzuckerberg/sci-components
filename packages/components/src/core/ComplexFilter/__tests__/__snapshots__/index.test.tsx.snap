@@ -12,15 +12,17 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     type="button"
   >
     <span
-      class="css-ae1gg6"
+      class="css-16ol63b"
     >
+      <div>
+        <span
+          class="styled-label css-1ubkbz8"
+        >
+          Click Target
+        </span>
+      </div>
       <span
-        class="styled-label css-1ubkbz8"
-      >
-        Click Target
-      </span>
-      <span
-        class="css-1qt6g1x"
+        class="css-1pp8466"
       >
         <div
           class="css-1ft6wgl"

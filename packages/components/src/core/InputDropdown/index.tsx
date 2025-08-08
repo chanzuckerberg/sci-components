@@ -39,35 +39,37 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
 
   return (
     <StyledInputDropdown {...props} aria-label="Dropdown input">
-      <LabelWrapper isMinimal={isMinimal}>
-        <StyledLabel
-          className="styled-label"
-          details={details}
-          counter={counter}
-          sdsType={sdsType}
-        >
-          {renderLabelText({
-            counter,
-            details,
-            isMinimal,
-            label,
-            multiple,
-            sdsType,
-            shouldPutAColonAfterLabel,
-            value,
-          })}
-        </StyledLabel>
-        {shouldRenderDetails && (
-          <StyledDetail>
-            {renderDetailsText({ details, sdsType, value })}
-          </StyledDetail>
-        )}
-        {shouldRenderInlineMinimalDetails && (
-          <StyledDetail>
-            {renderDetailsText({ details, sdsType, value })}
-          </StyledDetail>
-        )}
-        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+      <LabelWrapper>
+        <div>
+          <StyledLabel
+            className="styled-label"
+            details={details}
+            counter={counter}
+            sdsType={sdsType}
+          >
+            {renderLabelText({
+              counter,
+              details,
+              isMinimal,
+              label,
+              multiple,
+              sdsType,
+              shouldPutAColonAfterLabel,
+              value,
+            })}
+          </StyledLabel>
+          {shouldRenderDetails && (
+            <StyledDetail>
+              {renderDetailsText({ details, sdsType, value })}
+            </StyledDetail>
+          )}
+          {shouldRenderInlineMinimalDetails && (
+            <StyledDetail>
+              {renderDetailsText({ details, sdsType, value })}
+            </StyledDetail>
+          )}
+          {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        </div>
         <IconWrapper>
           <Icon sdsIcon="ChevronDown" sdsSize="xs" />
         </IconWrapper>

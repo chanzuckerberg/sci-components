@@ -484,14 +484,17 @@ export const MinimalDetails = styled("div", {
 export const LabelWrapper = styled("span", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${({ isMinimal }: { isMinimal: boolean }) => {
-    return `
-      align-items: ${isMinimal ? "center" : undefined};
-      display: ${isMinimal ? "inline-flex" : "contents"};
-      justify-content: ${isMinimal ? "space-between" : undefined};
-      width: 100%;
-    `;
-  }}
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+
+  & > div {
+    align-items: center;
+    display: inline-flex;
+    justify-content: start;
+    width: calc(100% - 24px); /* 24px is the width of the icon */
+  }
 `;
 
 export const IconWrapper = styled("span", {
@@ -500,6 +503,7 @@ export const IconWrapper = styled("span", {
   margin-left: auto;
   display: flex;
   align-items: center;
+  justify-self: end;
 `;
 
 function labelStyle(props: InputDropdownProps): SerializedStyles {
