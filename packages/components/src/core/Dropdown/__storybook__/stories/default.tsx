@@ -1,6 +1,6 @@
 import { AutocompleteValue } from "@mui/material";
 import { Args } from "@storybook/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import RawDropdown from "src/core/Dropdown";
@@ -30,6 +30,17 @@ export const Dropdown = <
     >
   );
 
+  // Reset value when multiple or options props change
+  useEffect(() => {
+    const initialValue = (multiple ? [] : null) as AutocompleteValue<
+      T,
+      Multiple,
+      DisableClearable,
+      FreeSolo
+    >;
+    setValue(initialValue);
+  }, [multiple, options]);
+
   return (
     <RawDropdown<T, Multiple, DisableClearable, FreeSolo>
       label="Click Target"
@@ -52,5 +63,6 @@ export const Dropdown = <
     newValue: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   ) {
     setValue(newValue);
+    console.log("Dropdown Value:", newValue);
   }
 };

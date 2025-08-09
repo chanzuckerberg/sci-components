@@ -41,7 +41,6 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     shouldPutAColonAfterLabel = true,
     value,
   } = props;
-
   const sdsStyle = validateSdsStyle(rawSdsStyle);
 
   const isMinimal = sdsStyle === "minimal";
@@ -155,12 +154,12 @@ function renderValueTypeLabelText({
   if (!value || multiple) {
     if (isMinimal) return label;
 
-    return counter && shouldPutAColonAfterLabel ? `${label}:` : label;
+    return !!counter && shouldPutAColonAfterLabel ? `${label}:` : label;
   }
 
   if (isMinimal) return value;
 
-  return (counter || details) && shouldPutAColonAfterLabel
+  return (!!counter || !!details) && shouldPutAColonAfterLabel
     ? `${value}:`
     : value;
 }

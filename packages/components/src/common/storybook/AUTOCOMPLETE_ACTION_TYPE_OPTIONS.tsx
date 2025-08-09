@@ -45,7 +45,7 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
     section: "With Icon",
   },
   {
-    count: "⌘⌥P",
+    count: "⌘ ⌥ P",
     name: "Pin",
     onClick: () => {
       console.log("Pinned Successfully!");
@@ -54,7 +54,7 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
     section: "With Shortcut",
   },
   {
-    count: "⌘⇧D",
+    count: "⌘ ⌥ D",
     name: "Download",
     onClick: () => {
       console.log("Download Started!");
@@ -63,7 +63,7 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
     section: "With Shortcut",
   },
   {
-    count: "⌘⌥P",
+    count: "⌘ ⌥ P",
     icon: "Pin",
     name: "Pin",
     onClick: () => {
@@ -77,7 +77,7 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
     section: "With Icon and Shortcut",
   },
   {
-    count: "⌘⇧D",
+    count: "⌘ ⌥ D",
     icon: "Download",
     name: "Download",
     onClick: () => {

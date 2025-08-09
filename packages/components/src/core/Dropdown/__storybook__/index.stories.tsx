@@ -97,6 +97,11 @@ export default {
       },
       defaultValue: true,
     },
+    title: {
+      control: {
+        type: "text",
+      },
+    },
   },
   component: Dropdown,
   parameters: {
@@ -122,6 +127,7 @@ export const Default = {
     multiple: true,
     options: DROPDOWN_DATA_OPTIONS[0],
     search: true,
+    title: "Dropdown Title",
   },
 };
 
@@ -138,6 +144,7 @@ export const MultiColumnWithButtons = {
     multiple: true,
     options: DROPDOWN_DATA_OPTIONS[2],
     search: true,
+    title: "Multi-Column Dropdown Title",
   },
   parameters: {
     controls: {

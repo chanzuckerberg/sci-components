@@ -44,7 +44,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   ) => void;
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
-  title?: string;
+  title?: React.ReactNode;
   headerComponentSlot?: JSX.Element;
   label?: string;
   anchorEl: HTMLElement | null;

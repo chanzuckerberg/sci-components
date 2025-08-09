@@ -52,6 +52,8 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &.MuiAutocomplete-option[aria-selected="true"] {
+        background-color: unset !important;
+
         &:hover {
           background-color: ${semanticColors?.base?.fillHover} !important;
         }

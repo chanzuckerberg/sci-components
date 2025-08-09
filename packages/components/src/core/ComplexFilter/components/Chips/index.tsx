@@ -10,8 +10,63 @@ interface Props<
 > {
   value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>;
   multiple?: boolean;
-  onDelete: (option: DefaultAutocompleteOption) => void;
+  onDelete: (tag: string) => void;
 }
+
+// Helper functions to reduce cognitive complexity
+const getSingleColumnLabels = <T extends DefaultAutocompleteOption>(
+  value: unknown,
+  multiple: boolean
+): string[] => {
+  const labels: string[] = [];
+
+  if (multiple && Array.isArray(value)) {
+    value.forEach((item) => {
+      const typedItem = item as T;
+      if (typedItem?.name) labels.push(typedItem.name);
+    });
+  } else if (!Array.isArray(value) && value) {
+    const typedValue = value as T;
+    if (typedValue.name) labels.push(typedValue.name);
+  }
+
+  return labels;
+};
+
+const getMultiColumnLabels = <T extends DefaultAutocompleteOption>(
+  value: unknown,
+  multiple: boolean
+): string[] => {
+  const labels: string[] = [];
+
+  if (!value || typeof value !== "object") return labels;
+
+  if (multiple) {
+    Object.values(value).forEach((items) => {
+      if (Array.isArray(items)) {
+        (items as T[]).forEach((item) => {
+          if (item?.name) labels.push(item.name);
+        });
+      }
+    });
+  } else {
+    Object.values(value).forEach((item) => {
+      const typedItem = item as T;
+      if (typedItem?.name) labels.push(typedItem.name);
+    });
+  }
+
+  return labels;
+};
+
+const checkIfSingleColumn = <T extends DefaultAutocompleteOption>(
+  value: unknown
+): boolean => {
+  return ((value && (value as T).name) ||
+    (Array.isArray(value) &&
+      value.length > 0 &&
+      (value as T[])[0].name)) as boolean;
+};
 
 const Chips = <
   T extends DefaultAutocompleteOption,
@@ -25,32 +80,23 @@ const Chips = <
 }: Props<T, Multiple, DisableClearable, FreeSolo>): JSX.Element | null => {
   if (!value) return null;
 
-  if (!multiple) {
-    const { name } = value as never;
+  const isSingleColumn = checkIfSingleColumn<T>(value);
+  const chipLabels = isSingleColumn
+    ? getSingleColumnLabels<T>(value, multiple)
+    : getMultiColumnLabels<T>(value, multiple);
 
-    return (
-      <TagFilter
-        label={name}
-        onDelete={onDelete}
-        onClick={() => onDelete(name)}
-      />
-    );
-  }
+  if (chipLabels.length === 0) return null;
 
   return (
     <>
-      {(value as DefaultAutocompleteOption[]).map((item) => {
-        const { name } = item;
-
-        return (
-          <TagFilter
-            key={name}
-            label={name}
-            onDelete={() => onDelete(item)}
-            onClick={() => onDelete(item)}
-          />
-        );
-      })}
+      {chipLabels.map((label) => (
+        <TagFilter
+          key={label}
+          label={label}
+          onDelete={() => onDelete(label)}
+          onClick={() => onDelete(label)}
+        />
+      ))}
     </>
   );
 };

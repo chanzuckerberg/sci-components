@@ -65,10 +65,11 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
+    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
     name: "Column Three",
     options: [
       {
-        icon: <CustomSdsIcon sdsSize="s" color="green" shade={600} />,
+        icon: <CustomSdsIcon sdsSize="s" color="green" shade={400} />,
         name: "Custom SDS Icon",
         section: "With Icon",
       },
@@ -128,6 +129,6 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         },
       },
     ],
-    width: 190,
+    width: 200,
   },
 ];

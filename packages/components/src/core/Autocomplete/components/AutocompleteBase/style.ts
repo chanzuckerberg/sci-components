@@ -120,12 +120,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
 
         .${autocompleteClasses.noOptions} {
-          padding: ${spaces?.xs}px ${spaces?.s}px;
-          margin-right: ${spaces?.l}px;
+          padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.xs}px;
         }
 
         .${autocompleteClasses.loading} {
-          padding: 0 ${spaces?.m}px 0 0;
+          padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.xs}px ;
         }
       }
     `;

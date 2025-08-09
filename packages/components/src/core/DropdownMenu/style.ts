@@ -17,7 +17,7 @@ export interface StyleProps extends CommonThemeProps {
   icon?: ReactElement;
   search?: boolean;
   isSearchAutoFocus?: boolean;
-  title?: string;
+  title?: React.ReactNode;
   isMultiColumn?: boolean;
 }
 

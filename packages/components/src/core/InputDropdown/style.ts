@@ -78,6 +78,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     padding: ${spaces?.xs}px ${spaces?.m}px;
     justify-content: start;
     width: ${width}px;
+    min-width: 90px !important;
 
     &.MuiButton-text {
       &:hover {
@@ -447,8 +448,13 @@ export const StyledCounter = styled("span", {
       background-color: ${semanticColors?.base?.backgroundTertiary};
       color: ${semanticColors?.accent?.textAction};
       border-radius: ${corners?.rounded}px;
-      padding: 0 ${spaces?.xs}px;
+      padding: 0 ${spaces?.xxs}px;
       margin-left: ${spaces?.xs}px;
+      height: 18px;
+      min-width: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     `;
   }}
 `;
@@ -494,6 +500,7 @@ export const LabelWrapper = styled("span", {
     display: inline-flex;
     justify-content: start;
     width: calc(100% - 24px); /* 24px is the width of the icon */
+    overflow: hidden;
   }
 `;
 
