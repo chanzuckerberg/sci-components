@@ -35,7 +35,16 @@ export const InputDropdown = <
 
   const [value, setValue] = useState<
     AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
-  >(null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>);
+  >(
+    multiple
+      ? ([] as unknown as AutocompleteValue<
+          T,
+          Multiple,
+          DisableClearable,
+          FreeSolo
+        >)
+      : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>)
+  );
 
   const isControlled = propValue !== undefined;
 
@@ -44,6 +53,21 @@ export const InputDropdown = <
       setValue(propValue);
     }
   }, [propValue, isControlled]);
+
+  useEffect(() => {
+    if (!isControlled) {
+      setValue(
+        multiple
+          ? ([] as unknown as AutocompleteValue<
+              T,
+              Multiple,
+              DisableClearable,
+              FreeSolo
+            >)
+          : (null as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>)
+      );
+    }
+  }, [multiple, isControlled]);
 
   useEffect(() => {
     if (sdsType === "value" && multiple) {

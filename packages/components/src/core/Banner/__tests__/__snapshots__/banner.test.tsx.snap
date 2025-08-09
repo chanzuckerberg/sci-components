@@ -9,7 +9,7 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
     class="css-1879pua"
   >
     <div
-      class="css-1fhtzit"
+      class="css-dolx02"
     >
       <div
         class="css-1ft6wgl"
@@ -17,13 +17,13 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
         <svg
           aria-hidden="true"
           class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-          data-file-name="IconInfoCircleLarge"
-          data-testid="IconInfoCircleLarge"
+          data-file-name="IconInfoCircleSmall"
+          data-testid="IconInfoCircleSmall"
           fillcontrast="white"
           focusable="false"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
         />
       </div>
     </div>

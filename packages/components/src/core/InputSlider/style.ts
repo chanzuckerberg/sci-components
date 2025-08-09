@@ -81,8 +81,10 @@ const inputSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.mark} {
-      // (masoudmanson): Although the mark is not a icon, but since we don't have 
-      // a specific color for the mark, we use the ornamentDisabled color for it.
+      /*
+       * (masoudmanson): Although the mark is not an icon, but since we don't have
+       * a specific color for the mark, we use the ornamentDisabled color for it.
+       */
       background-color: ${semanticColors?.base?.ornamentDisabled};
       opacity: 1;
     }
@@ -113,12 +115,12 @@ const horizontal = (props: InputSliderExtraProps) => {
       height: 4px;
     }
 
-    // Adjust the position of the first mark by moving it 2px to the right to fit it inside the track
+    /* Adjust the position of the first mark by moving it 2px to the right to fit it inside the track */
     span[data-index="0"].${sliderClasses.mark} {
       left: 2px !important;
     }
 
-    // Adjust the position of the last mark by moving it 2px to the left to fit it inside the track
+    /* Adjust the position of the last mark by moving it 2px to the left to fit it inside the track */
     span[data-index="${lastMarkIndex}"].${sliderClasses.mark} {
       left: calc(100% - 2px) !important;
     }
@@ -155,7 +157,7 @@ const disabledSlider = (props: InputSliderExtraProps) => {
     }
 
     .${sliderClasses.markLabel} {
-      color: ${semanticColors?.base?.textDisabled}
+      color: ${semanticColors?.base?.textDisabled};
     }
 
     .${sliderClasses.mark} {

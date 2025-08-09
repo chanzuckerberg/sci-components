@@ -90,7 +90,7 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                   intent={intent}
                   extraContent={extraContent}
                   buttonOnClick={buttonOnClick}
-                  buttonText="click me"
+                  buttonText="Click here"
                   key={String(buttonOnClick)}
                 >
                   Notification test text

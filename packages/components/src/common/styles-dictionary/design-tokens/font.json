@@ -1,415 +1,923 @@
 {
   "sds": {
     "font": {
-      "inter-font": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-      "font-family": {
-        "body": {
-          "value": "{sds.font.inter-font}",
-          "narrowValue": "{sds.font.inter-font}"
-        },
-        "caps": {
-          "value": "{sds.font.inter-font}",
-          "narrowValue": "{sds.font.inter-font}"
-        },
-        "code": {
-          "value": "\"IBM Plex Mono\", monospace",
-          "narrowValue": "\"IBM Plex Mono\", monospace"
-        },
-        "header": {
-          "value": "{sds.font.inter-font}",
-          "narrowValue": "{sds.font.inter-font}"
-        },
-        "tabular": {
-          "value": "{sds.font.inter-font}",
-          "narrowValue": "{sds.font.inter-font}"
-        }
-      },
       "body": {
-        "xxxs": {
+        "l": {
           "400": {
             "font": {
-              "value": "400 11px/16px {sds.font.font-family.body.value}",
-              "narrowValue": "400 12px/18px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "400 16px/26px {sds.font.font-family.body.narrowValue}",
+              "value": "400 18px/28px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 16px/26px {sds.font.font-family.body.narrowValue}",
+              "value": "500 18px/28px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
             }
           },
           "600": {
             "font": {
-              "value": "600 11px/16px {sds.font.font-family.body.value}",
-              "narrowValue": "600 12px/18px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "600 16px/26px {sds.font.font-family.body.narrowValue}",
+              "value": "600 18px/28px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
-            }
-          }
-        },
-        "xxs": {
-          "400": {
-            "font": {
-              "value": "400 12px/18px {sds.font.font-family.body.value}",
-              "narrowValue": "400 12px/18px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
-            }
-          },
-          "600": {
-            "font": {
-              "value": "600 12px/18px {sds.font.font-family.body.value}",
-              "narrowValue": "600 12px/18px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
-            }
-          }
-        },
-        "xs": {
-          "400": {
-            "font": {
-              "value": "400 13px/20px {sds.font.font-family.body.value}",
-              "narrowValue": "400 13px/20px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
-            }
-          },
-          "600": {
-            "font": {
-              "value": "600 13px/20px {sds.font.font-family.body.value}",
-              "narrowValue": "600 13px/20px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
-            }
-          }
-        },
-        "s": {
-          "400": {
-            "font": {
-              "value": "400 14px/24px {sds.font.font-family.body.value}",
-              "narrowValue": "400 14px/24px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
-            }
-          },
-          "600": {
-            "font": {
-              "value": "600 14px/24px {sds.font.font-family.body.value}",
-              "narrowValue": "600 14px/24px {sds.font.font-family.body.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
         "m": {
           "400": {
             "font": {
-              "value": "400 16px/26px {sds.font.font-family.body.value}",
-              "narrowValue": "400 14px/24px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "400 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "400 16px/26px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "500 16px/26px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
             }
           },
           "600": {
             "font": {
-              "value": "600 16px/26px {sds.font.font-family.body.value}",
-              "narrowValue": "600 14px/24px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "600 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "600 16px/26px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
-        "l": {
+        "s": {
           "400": {
             "font": {
-              "value": "400 18px/28px {sds.font.font-family.body.value}",
-              "narrowValue": "400 16px/26px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "400 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "400 14px/24px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "500 14px/24px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
             }
           },
           "600": {
             "font": {
-              "value": "600 18px/28px {sds.font.font-family.body.value}",
-              "narrowValue": "600 16px/26px {sds.font.font-family.body.narrowValue}"
+              "narrowValue": "600 14px/24px {sds.font.font-family.body.narrowValue}",
+              "value": "600 14px/24px {sds.font.font-family.body.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          }
+        },
+        "xs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 13px/20px {sds.font.font-family.body.narrowValue}",
+              "value": "400 13px/20px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 13px/20px {sds.font.font-family.body.narrowValue}",
+              "value": "500 13px/20px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/20px {sds.font.font-family.body.narrowValue}",
+              "value": "600 13px/20px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "400 12px/18px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "500 12px/18px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          }
+        },
+        "xxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "400 11px/16px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "500 11px/16px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.body.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
             }
           }
         }
       },
       "caps": {
-        "xxxxs": {
+        "xxs": {
           "600": {
             "font": {
-              "value": "600 10px/14px {sds.font.font-family.caps.value}",
-              "narrowValue": "600 11px/16px {sds.font.font-family.caps.narrowValue}"
+              "narrowValue": "600 12px/18px {sds.font.font-family.caps.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.caps.value}"
             },
             "letter-spacing": {
-              "value": "0.5px",
-              "narrowValue": "0.5px"
+              "narrowValue": "0.4px",
+              "value": "0.4px"
             },
-            "text-transform": { 
-              "value": "uppercase", 
-              "narrowValue": "uppercase" 
+            "text-transform": {
+              "narrowValue": "uppercase",
+              "value": "uppercase"
             }
           }
         },
         "xxxs": {
           "600": {
             "font": {
-              "value": "600 11px/16px {sds.font.font-family.caps.value}",
-              "narrowValue": "600 11px/16px {sds.font.font-family.caps.narrowValue}"
+              "narrowValue": "600 11px/16px {sds.font.font-family.caps.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.caps.value}"
             },
             "letter-spacing": {
-              "value": "0.5px",
-              "narrowValue": "0.5px"
+              "narrowValue": "0.4px",
+              "value": "0.4px"
             },
-            "text-transform": { 
-              "value": "uppercase", 
-              "narrowValue": "uppercase" 
+            "text-transform": {
+              "narrowValue": "uppercase",
+              "value": "uppercase"
             }
           }
         },
-        "xxs": {
+        "xxxxs": {
           "600": {
             "font": {
-              "value": "600 12px/18px {sds.font.font-family.caps.value}",
-              "narrowValue": "600 12px/18px {sds.font.font-family.caps.narrowValue}"
+              "narrowValue": "600 11px/16px {sds.font.font-family.caps.narrowValue}",
+              "value": "600 10px/14px {sds.font.font-family.caps.value}"
             },
             "letter-spacing": {
-              "value": "0.5px",
-              "narrowValue": "0.5px"
+              "narrowValue": "0.4px",
+              "value": "0.4px"
             },
-            "text-transform": { 
-              "value": "uppercase", 
-              "narrowValue": "uppercase" 
+            "text-transform": {
+              "narrowValue": "uppercase",
+              "value": "uppercase"
             }
           }
         }
       },
-      "header": {
-        "xxxs": {
-          "600": {
+      "code": {
+        "s": {
+          "400": {
             "font": {
-              "value": "600 11px/16px {sds.font.font-family.header.value}",
-              "narrowValue": "600 12px/18px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "400 14px/24px {sds.font.font-family.code.narrowValue}",
+              "value": "400 14px/24px {sds.font.font-family.code.value}"
             },
             "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
-          }
-        },
-        "xxs": {
-          "600": {
+          },
+          "500": {
             "font": {
-              "value": "600 12px/18px {sds.font.font-family.header.value}",
-              "narrowValue": "600 12px/18px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "500 14px/24px {sds.font.font-family.code.narrowValue}",
+              "value": "500 14px/24px {sds.font.font-family.code.value}"
             },
             "letter-spacing": {
-              "value": "0.1px",
-              "narrowValue": "0.1px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/24px {sds.font.font-family.code.narrowValue}",
+              "value": "600 14px/24px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
         "xs": {
-          "600": {
+          "400": {
             "font": {
-              "value": "600 13px/18px {sds.font.font-family.header.value}",
-              "narrowValue": "600 13px/18px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "400 13px/20px {sds.font.font-family.code.narrowValue}",
+              "value": "400 13px/20px {sds.font.font-family.code.value}"
             },
             "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 13px/20px {sds.font.font-family.code.narrowValue}",
+              "value": "500 13px/20px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/20px {sds.font.font-family.code.narrowValue}",
+              "value": "600 13px/20px {sds.font.font-family.code.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
+        }
+      },
+      "font-family": {
+        "body": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
         },
-        "s": {
+        "caps": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        },
+        "code": {
+          "narrowValue": "\"IBM Plex Mono\", monospace",
+          "value": "\"IBM Plex Mono\", monospace"
+        },
+        "header": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        },
+        "link": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        },
+        "tabular": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        },
+        "title": {
+          "narrowValue": "{sds.font.inter-font}",
+          "value": "{sds.font.inter-font}"
+        }
+      },
+      "header": {
+        "xxl": {
           "600": {
             "font": {
-              "value": "600 14px/20px {sds.font.font-family.header.value}",
-              "narrowValue": "600 14px/20px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "600 22px/30px {sds.font.font-family.header.narrowValue}",
+              "value": "600 26px/34px {sds.font.font-family.header.value}"
             },
             "letter-spacing": {
-              "value": "0.08px",
-              "narrowValue": "0.08px"
-            }
-          }
-        },
-        "m": {
-          "600": {
-            "font": {
-              "value": "600 16px/22px {sds.font.font-family.header.value}",
-              "narrowValue": "600 14px/20px {sds.font.font-family.header.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0.08px"
-            }
-          }
-        },
-        "l": {
-          "600": {
-            "font": {
-              "value": "600 18px/24px {sds.font.font-family.header.value}",
-              "narrowValue": "600 16px/22px {sds.font.font-family.header.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
         "xl": {
           "600": {
             "font": {
-              "value": "600 22px/30px {sds.font.font-family.header.value}",
-              "narrowValue": "600 18px/24px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "600 18px/24px {sds.font.font-family.header.narrowValue}",
+              "value": "600 22px/30px {sds.font.font-family.header.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
-        "xxl": {
+        "l": {
           "600": {
             "font": {
-              "value": "600 26px/34px {sds.font.font-family.header.value}",
-              "narrowValue": "600 22px/30px {sds.font.font-family.header.narrowValue}"
+              "narrowValue": "600 16px/22px {sds.font.font-family.header.narrowValue}",
+              "value": "600 18px/24px {sds.font.font-family.header.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
+            }
+          }
+        },
+        "m": {
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/20px {sds.font.font-family.header.narrowValue}",
+              "value": "600 16px/22px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.08px",
+              "value": "0px"
+            }
+          }
+        },
+        "s": {
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/20px {sds.font.font-family.header.narrowValue}",
+              "value": "600 14px/20px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.08px",
+              "value": "0.08px"
+            }
+          }
+        },
+        "xs": {
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/18px {sds.font.font-family.header.narrowValue}",
+              "value": "600 13px/18px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.08px",
+              "value": "0.08px"
+            }
+          }
+        },
+        "xxs": {
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.header.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.1px",
+              "value": "0.1px"
+            }
+          }
+        },
+        "xxxs": {
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.header.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.header.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.1px",
+              "value": "0.1px"
+            }
+          }
+        }
+      },
+      "inter-font": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+      "link": {
+        "l": {
+          "400": {
+            "font": {
+              "narrowValue": "400 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "400 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "500 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 16px/26px {sds.font.font-family.link.narrowValue}",
+              "value": "600 18px/28px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "m": {
+          "400": {
+            "font": {
+              "narrowValue": "400 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "400 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "500 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "600 16px/26px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "s": {
+          "400": {
+            "font": {
+              "narrowValue": "400 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "400 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "500 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 14px/24px {sds.font.font-family.link.narrowValue}",
+              "value": "600 14px/24px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "400 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "500 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/20px {sds.font.font-family.link.narrowValue}",
+              "value": "600 13px/20px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0px",
+              "value": "0px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "400 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "500 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
+        },
+        "xxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "400 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "500 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.link.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
             }
           }
         }
       },
       "tabular": {
-        "xs": {
-          "400": {
-            "font": {
-              "value": "400 13px/20px {sds.font.font-family.tabular.value}",
-              "narrowValue": "400 13px/20px {sds.font.font-family.tabular.narrowValue}"
-            },
-            "font-variant-numeric": { 
-              "value": "tabular-nums",
-              "narrowValue": "tabular-nums"
-            },
-            "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
-            }
-          },
-          "600": {
-            "font": {
-              "value": "600 13px/20px {sds.font.font-family.tabular.value}",
-              "narrowValue": "600 13px/20px {sds.font.font-family.tabular.narrowValue}"
-            },
-            "font-variant-numeric": { 
-              "value": "tabular-nums",
-              "narrowValue": "tabular-nums"
-            },
-            "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
-            }
-          }
-        },
         "s": {
           "400": {
             "font": {
-              "value": "400 14px/24px {sds.font.font-family.tabular.value}",
-              "narrowValue": "400 14px/24px {sds.font.font-family.tabular.narrowValue}"
+              "narrowValue": "400 14px/24px {sds.font.font-family.tabular.narrowValue}",
+              "value": "400 14px/24px {sds.font.font-family.tabular.value}"
             },
-            "font-variant-numeric": { 
-              "value": "tabular-nums",
-              "narrowValue": "tabular-nums"
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 14px/24px {sds.font.font-family.tabular.narrowValue}",
+              "value": "500 14px/24px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
             }
           },
           "600": {
             "font": {
-              "value": "600 14px/24px {sds.font.font-family.tabular.value}",
-              "narrowValue": "600 14px/24px {sds.font.font-family.tabular.narrowValue}"
+              "narrowValue": "600 14px/24px {sds.font.font-family.tabular.narrowValue}",
+              "value": "600 14px/24px {sds.font.font-family.tabular.value}"
             },
-            "font-variant-numeric": { 
-              "value": "tabular-nums",
-              "narrowValue": "tabular-nums"
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
+            }
+          }
+        },
+        "xs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 13px/20px {sds.font.font-family.tabular.narrowValue}",
+              "value": "400 13px/20px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 13px/20px {sds.font.font-family.tabular.narrowValue}",
+              "value": "500 13px/20px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 13px/20px {sds.font.font-family.tabular.narrowValue}",
+              "value": "600 13px/20px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.3px",
+              "value": "-0.3px"
+            }
+          }
+        },
+        "xxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 12px/18px {sds.font.font-family.tabular.narrowValue}",
+              "value": "400 12px/18px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 12px/18px {sds.font.font-family.tabular.narrowValue}",
+              "value": "500 12px/18px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 12px/18px {sds.font.font-family.tabular.narrowValue}",
+              "value": "600 12px/18px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          }
+        },
+        "xxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 11px/16px {sds.font.font-family.tabular.narrowValue}",
+              "value": "400 11px/16px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 11px/16px {sds.font.font-family.tabular.narrowValue}",
+              "value": "500 11px/16px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 11px/16px {sds.font.font-family.tabular.narrowValue}",
+              "value": "600 11px/16px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
             }
           }
         }
       },
-      "code": {
-        "xs": {
-          "400": {
+      "title": {
+        "s": {
+          "700": {
             "font": {
-              "value": "400 13px/20px {sds.font.font-family.code.value}",
-              "narrowValue": "400 13px/20px {sds.font.font-family.code.narrowValue}"
+              "narrowValue": "700 26px/34px {sds.font.font-family.title.narrowValue}",
+              "value": "700 32px/40px {sds.font.font-family.title.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
-            }
-          },
-          "600": {
-            "font": {
-              "value": "600 13px/20px {sds.font.font-family.code.value}",
-              "narrowValue": "600 13px/20px {sds.font.font-family.code.narrowValue}"
-            },
-            "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         },
-        "s": {
-          "400": {
+        "m": {
+          "700": {
             "font": {
-              "value": "400 14px/24px {sds.font.font-family.code.value}",
-              "narrowValue": "400 14px/24px {sds.font.font-family.code.narrowValue}"
+              "narrowValue": "700 32px/40px {sds.font.font-family.title.narrowValue}",
+              "value": "700 40px/50px {sds.font.font-family.title.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
-          },
-          "600": {
+          }
+        },
+        "l": {
+          "700": {
             "font": {
-              "value": "600 14px/24px {sds.font.font-family.code.value}",
-              "narrowValue": "600 14px/24px {sds.font.font-family.code.narrowValue}"
+              "narrowValue": "700 40px/50px {sds.font.font-family.title.narrowValue}",
+              "value": "700 52px/64px {sds.font.font-family.title.value}"
             },
             "letter-spacing": {
-              "value": "0px",
-              "narrowValue": "0px"
+              "narrowValue": "0px",
+              "value": "0px"
             }
           }
         }

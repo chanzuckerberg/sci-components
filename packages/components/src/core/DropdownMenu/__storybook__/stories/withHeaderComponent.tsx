@@ -36,9 +36,20 @@ export const WithHeaderComponentDemo = <
   }, []);
 
   const CustomHeaderComponent = () => (
-    <Button sdsStyle="minimal" sdsType="primary">
-      Click Me!
-    </Button>
+    <div style={{ alignItems: "center", display: "flex", gap: 8 }}>
+      <Button
+        sdsStyle="icon"
+        sdsSize="small"
+        icon="InfoCircle"
+        sdsType="tertiary"
+      />
+      <Button
+        sdsStyle="icon"
+        sdsSize="small"
+        icon="Download"
+        sdsType="tertiary"
+      />
+    </div>
   );
 
   return (

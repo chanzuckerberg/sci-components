@@ -16,7 +16,7 @@ const TabIndicator = (theme: SDSTheme) => {
     &.MuiTabs-indicator {
       background-color: ${semanticColors?.accent?.border};
       height: 2px;
-      bottom: -2px;
+      bottom: 0;
       z-index: 2;
     }
   `;

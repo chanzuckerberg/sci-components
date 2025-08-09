@@ -26,12 +26,17 @@ export const ControlledDropdownDemo = <
       outline: none;
     }
 
-    margin: 0 0 24px 8px;
+    margin: 0 0 24px 0;
   `;
 
   return (
     <>
-      <StyledButton onClick={handleClick} sdsStyle="minimal" sdsType="primary">
+      <StyledButton
+        onClick={handleClick}
+        sdsStyle="minimal"
+        isAllCaps={false}
+        sdsType="secondary"
+      >
         Click here to select the first three options
       </StyledButton>
       <br />

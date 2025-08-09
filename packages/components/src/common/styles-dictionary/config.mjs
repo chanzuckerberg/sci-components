@@ -1,16 +1,3 @@
-/* Font-family explanation:
-   The following font stack is designed to provide compatibility across multiple operating systems:
-   - var(--font-inter): Custom Inter font defined by Next.js.
-   - Inter: Standard Inter font fallback.
-   - -apple-system, BlinkMacSystemFont: macOS-specific system fonts.
-   - Segoe UI: Default system font for Windows.
-   - Roboto: Default system font for most Linux distributions.
-   - Helvetica Neue, Helvetica, Arial, sans-serif: General fallbacks to ensure compatibility.
-   Reference:
-   An article explaining how platforms like GitHub and Medium use similar fallback font stacks.
-   Link: https://css-tricks.com/snippets/css/system-font-stack/
-*/
-
 const config = {
   platforms: {
     css: {

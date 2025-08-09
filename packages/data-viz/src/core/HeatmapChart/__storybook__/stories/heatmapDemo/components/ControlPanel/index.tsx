@@ -324,18 +324,22 @@ const ControlPanel = () => {
           margin: 0,
           width: "unset",
         }}
-      >
-        To scroll horizontally, hold down the{" "}
-        <Tag
-          color="neutral"
-          label="SHIFT"
-          sdsStyle="square"
-          sdsType="secondary"
-          hover={false}
-          style={{ marginTop: 5 }}
-        />{" "}
-        key!
-      </Callout>
+        hideTitle
+        body={
+          <>
+            To scroll horizontally, hold down the{" "}
+            <Tag
+              color="neutral"
+              label="SHIFT"
+              sdsStyle="square"
+              sdsType="secondary"
+              hover={false}
+              style={{ marginTop: 5 }}
+            />{" "}
+            key!
+          </>
+        }
+      />
     </StyledControlPanelWrapper>
   );
 

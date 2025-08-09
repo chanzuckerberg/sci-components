@@ -1,8 +1,9 @@
 import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
+import { DialogContext } from "src/core/Dialog/components/common";
 import { DialogActionsExtraProps, StyledDialogActions } from "./style";
 
-export type DialogActionsProps = DialogActionsExtraProps &
+export type DialogActionsProps = Omit<DialogActionsExtraProps, "sdsSize"> &
   RawDialogActionsProps;
 
 /**
@@ -10,7 +11,8 @@ export type DialogActionsProps = DialogActionsExtraProps &
  */
 const DialogActions = forwardRef<HTMLDivElement, DialogActionsProps>(
   function DialogActions(props, ref) {
-    return <StyledDialogActions ref={ref} {...props} />;
+    const { sdsSize } = useContext(DialogContext);
+    return <StyledDialogActions ref={ref} {...props} sdsSize={sdsSize} />;
   }
 );
 

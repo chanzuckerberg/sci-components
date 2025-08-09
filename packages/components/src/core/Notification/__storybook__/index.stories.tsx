@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Notification } from "./stories/default";
@@ -25,7 +26,7 @@ export default {
       options: Object.keys(NOTIFICATION_BUTTON_ON_CLICK_OPTIONS),
     },
     buttonPosition: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["left", "right"],
     },
     extraContent: {
@@ -45,7 +46,7 @@ export default {
       options: Object.keys(NOTIFICATION_ICON_OPTIONS),
     },
     intent: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["info", "negative", "positive", "notice"],
     },
     onClose: {
@@ -60,7 +61,7 @@ export default {
       control: { type: "object" },
     },
     slideDirection: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["left", "right"],
     },
   },
@@ -77,7 +78,7 @@ export const Default = {
   args: {
     autoDismiss: false,
     buttonPosition: "right",
-    buttonText: "click me",
+    buttonText: "Click me",
     extraContent: false,
     slideDirection: "left",
   },

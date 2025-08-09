@@ -4,14 +4,13 @@ import {
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
-  Spaces,
 } from "src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
 import ListSubheader from "src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
 
-const doNotForwardProps = ["isNarrow", "hasSection"];
+const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
 
 const NarrowStyledSection = (): SerializedStyles => {
   return css`
@@ -26,12 +25,12 @@ export const StyledSection = styled("section", {
   display: flex;
   align-items: center;
 
-  ${(props: CommonThemeProps & { gap?: keyof Spaces; isNarrow?: boolean }) => {
+  ${(props: CommonThemeProps & { isNarrow?: boolean }) => {
     const { isNarrow } = props;
     const spaces = getSpaces(props);
 
     return css`
-      column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
+      column-gap: ${spaces?.m}px;
 
       ${isNarrow && NarrowStyledSection()}
     `;

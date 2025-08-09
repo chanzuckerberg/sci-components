@@ -89,11 +89,18 @@ function NavigationFooter({
   const renderImages = useCallback(() => {
     if (!images?.length) return null;
 
-    const imageElements = images.map(({ image, url, component, linkProps }) => (
-      <Link key={url} href={url} component={component} {...linkProps}>
-        {image}
-      </Link>
-    ));
+    const imageElements = images.map(
+      ({ image, url, component, linkProps }, index) => (
+        <Link
+          key={url ? url + index : index}
+          href={url}
+          component={component}
+          {...linkProps}
+        >
+          {image}
+        </Link>
+      )
+    );
 
     return dimensions.isNarrow ? (
       <StyledMobileImageRow>{imageElements}</StyledMobileImageRow>
@@ -108,7 +115,7 @@ function NavigationFooter({
     if (!dimensions.isNarrow) {
       return navLinks.map((link, index) => (
         <FooterLink
-          key={link.label}
+          key={link.label + index}
           link={link}
           showDivider={index < navLinks.length - 1}
           hasInvertedStyle={hasInvertedStyle}
@@ -157,9 +164,9 @@ function NavigationFooter({
 
     return (
       <StyledNavSection isNarrow={dimensions.isNarrow}>
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <NavItem
-            key={item.label}
+            key={item.label + index}
             item={item}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}

@@ -3,15 +3,21 @@ import { AccordionSummary, accordionSummaryClasses } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
+  fontBodySemiboldL,
   fontBodyXxs,
-  fontHeaderS,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
-export const StyledAccordionHeader = styled(AccordionSummary)`
-  ${fontHeaderS}
-  ${(props: CommonThemeProps) => {
+const doNotForwardProps = ["chevronSize", "hasInvertedStyle"];
+
+export const StyledAccordionHeader = styled(AccordionSummary, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop),
+})`
+  ${fontBodySemiboldL}
+  ${(props: CommonThemeProps & { chevronSize: "xs" | "s" }) => {
+    const { chevronSize } = props;
+
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
@@ -23,6 +29,7 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
       .${accordionSummaryClasses.content} {
         margin: 0;
         flex-direction: column;
+        padding-right: ${spaces?.s}px;
 
         &.${accordionSummaryClasses.expanded} {
           margin: 0;
@@ -30,9 +37,9 @@ export const StyledAccordionHeader = styled(AccordionSummary)`
       }
 
       & .${accordionSummaryClasses.expandIconWrapper} {
-        margin-left: ${spaces?.m}px;
-        margin-top: ${spaces?.xxs}px !important;
-        align-self: center;
+        margin-top: ${chevronSize === "xs"
+          ? spaces?.xs
+          : spaces?.xxs}px !important;
 
         svg {
           color: ${semanticColors?.base?.ornamentSecondary};

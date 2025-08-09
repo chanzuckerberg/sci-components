@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { CommonThemeProps, fontBodyXs, getSpaces } from "src/core/styles";
 
-export const StyledCalloutBody = styled("p")`
+export const StyledCalloutBody = styled("div")`
   ${fontBodyXs}
 
   ${(props: CommonThemeProps & { hideTitle?: boolean }) => {

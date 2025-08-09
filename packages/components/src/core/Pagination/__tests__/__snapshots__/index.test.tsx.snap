@@ -5,7 +5,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   class="css-ijj3wz"
 >
   <li
-    class="css-pokbru"
+    class="css-mo0uzp"
     data-order="first"
     disabled=""
     tabindex="0"
@@ -27,41 +27,41 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </div>
   </li>
   <li
-    class="css-8otbx5"
+    class="css-1bzx7gy"
     tabindex="0"
   >
     1
   </li>
   <li
-    class="css-1pkfobx"
+    class="css-caq3nx"
     tabindex="0"
   >
     2
   </li>
   <li
-    class="css-1pkfobx"
+    class="css-caq3nx"
     tabindex="0"
   >
     3
   </li>
   <li
-    class="css-1pkfobx"
+    class="css-caq3nx"
     tabindex="0"
   >
     4
   </li>
   <li
-    class="css-1pkfobx"
+    class="css-caq3nx"
     tabindex="0"
   >
     5
   </li>
   <li
-    class="css-4gpof1"
+    class="css-1ulrafu"
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1br45xa-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1nlgj80-MuiButtonBase-root-MuiIconButton-root"
       icon="DotsHorizontal"
       tabindex="0"
       type="button"
@@ -87,13 +87,13 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-1pkfobx"
+    class="css-caq3nx"
     tabindex="0"
   >
     20
   </li>
   <li
-    class="css-4vqyql"
+    class="css-107opme"
     data-order="last"
     tabindex="0"
   >

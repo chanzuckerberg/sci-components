@@ -1,5 +1,5 @@
 import { DialogTitleProps as RawDialogTitleProps } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, useContext } from "react";
 import CloseButton from "./components/CloseButton";
 import {
   DialogTitleExtraProps,
@@ -8,6 +8,7 @@ import {
   Title,
   Overline,
 } from "./style";
+import { DialogContext } from "../common";
 
 export {
   Subtitle as DialogTitleSubtitle,
@@ -16,7 +17,7 @@ export {
 };
 
 export interface DialogTitleProps
-  extends DialogTitleExtraProps,
+  extends Omit<DialogTitleExtraProps, "sdsSize">,
     RawDialogTitleProps {
   title?: string;
   subtitle?: string;
@@ -30,17 +31,18 @@ export interface DialogTitleProps
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
     const { children, title, subtitle, overline, onClose, ...rest } = props;
+    const { sdsSize } = useContext(DialogContext);
 
     return (
-      <StyledDialogTitle ref={ref} {...rest}>
+      <StyledDialogTitle ref={ref} {...rest} sdsSize={sdsSize}>
         {children || (
           <>
             {onClose && (
               <CloseButton sdsStyle="icon" icon="XMark" onClick={onClose} />
             )}
-            <Overline>{overline}</Overline>
-            <Title>{title}</Title>
-            <Subtitle>{subtitle}</Subtitle>
+            <Overline sdsSize={sdsSize}>{overline}</Overline>
+            <Title sdsSize={sdsSize}>{title}</Title>
+            <Subtitle sdsSize={sdsSize}>{subtitle}</Subtitle>
           </>
         )}
       </StyledDialogTitle>

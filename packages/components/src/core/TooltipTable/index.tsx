@@ -1,10 +1,11 @@
-import { Table, TableBody, TableContainer, TableRow } from "@mui/material";
+import { Table, TableBody, TableRow } from "@mui/material";
 import {
   Alert,
   RowLabel,
   RowValue,
   Section,
   SectionLabel,
+  StyledTableContainer,
   TooltipTableExtraProps,
 } from "./style";
 
@@ -25,7 +26,7 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
   } = props;
 
   return (
-    <TableContainer {...rest}>
+    <StyledTableContainer {...rest}>
       {contentAlert && <Alert>{contentAlert}</Alert>}
       {data?.map((section, index) => (
         <Section
@@ -53,7 +54,7 @@ const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
           </Table>
         </Section>
       ))}
-    </TableContainer>
+    </StyledTableContainer>
   );
 };
 

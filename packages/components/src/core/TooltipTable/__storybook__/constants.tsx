@@ -20,15 +20,15 @@ const TOOLTIP_TABLE_ROWS = [
 
 export const TOOLTIP_TABLE_DATA = [
   {
-    dataRows: TOOLTIP_TABLE_ROWS.slice(0, 5),
+    dataRows: TOOLTIP_TABLE_ROWS.slice(0, 3),
     label: "Section 1",
   },
   {
-    dataRows: TOOLTIP_TABLE_ROWS.slice(5, 10),
+    dataRows: TOOLTIP_TABLE_ROWS.slice(3, 7),
     label: "Section 2",
   },
   {
-    dataRows: TOOLTIP_TABLE_ROWS.slice(10, 15),
+    dataRows: TOOLTIP_TABLE_ROWS.slice(7, 10),
     label: "Section 3",
   },
 ];

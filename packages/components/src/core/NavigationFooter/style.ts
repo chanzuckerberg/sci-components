@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontHeader,
+  fontHeaderL,
   getSemanticColors,
   getSpaces,
 } from "../styles";
@@ -27,8 +28,7 @@ export const StyledFooter = styled("footer", {
       background: ${props.hasInvertedStyle
         ? semanticColors?.base.backgroundPrimaryInverse
         : semanticColors?.base.backgroundPrimary};
-      padding: ${spaces?.xxl}px ${spaces?.xxl}px ${spaces?.xl}px
-        ${spaces?.xxl}px;
+      padding: ${spaces?.l}px ${spaces?.xl}px;
 
       ${isNarrow &&
       css`
@@ -44,7 +44,7 @@ export const StyledFooter = styled("footer", {
 
 export const StyledLogoWrapper = styled("div", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
+})<ExtraFooterProps>`
   ${(props: ExtraFooterProps) => {
     const spaces = getSpaces(props);
 
@@ -64,18 +64,21 @@ export const StyledLogoWrapper = styled("div", {
   }}
 
   p {
-    ${fontHeader("l")}
-    ${fontHeader("l", /* isNarrow */ true)}
-
+    margin: 0;
+    padding: 0;
     ${(props: ExtraFooterProps) => {
+      const { isNarrow } = props;
       const semanticColors = getSemanticColors(props);
 
-      return css`
-        color: ${props.hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
-          : semanticColors?.base.textPrimary};
-        white-space: nowrap;
-      `;
+      return [
+        isNarrow ? fontHeader("l", "semibold", true) : fontHeaderL,
+        css`
+          color: ${props.hasInvertedStyle
+            ? semanticColors?.base.textPrimaryInverse
+            : semanticColors?.base.textPrimary};
+          white-space: nowrap;
+        `,
+      ];
     }}
   }
 `;
@@ -92,13 +95,13 @@ export const StyledNavSection = styled("div", {
       display: flex;
       align-items: center;
       padding-left: ${spaces?.l}px;
-      gap: ${spaces?.xxl}px;
+      gap: ${spaces?.l}px;
 
       ${isNarrow &&
       css`
         flex-direction: column;
         gap: 0;
-        margin-top: ${spaces?.xl}px;
+        margin-top: ${spaces?.l}px;
         width: 100%;
         padding-left: 0;
       `}
@@ -119,7 +122,7 @@ export const StyledTopSection = styled("div", {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      margin-bottom: ${spaces?.xl}px;
+      margin-bottom: ${spaces?.l}px;
 
       a:hover {
         text-decoration: none;
@@ -139,7 +142,6 @@ export const StyledTopSection = styled("div", {
       ${isNarrow &&
       css`
         flex-direction: column;
-        margin-bottom: ${spaces?.xl}px;
       `}
     `;
   }}
@@ -165,7 +167,7 @@ export const StyledLinkSection = styled("div", {
 
       ${isNarrow &&
       css`
-        margin-top: ${spaces?.xl}px;
+        margin-top: ${spaces?.l}px;
         flex-direction: column;
       `}
     `;
@@ -200,7 +202,7 @@ export const StyledImageSection = styled("div", {
 
     return css`
       padding-left: ${spaces?.l}px;
-      gap: ${spaces?.xxl}px;
+      gap: ${spaces?.xl}px;
 
       ${isNarrow &&
       css`
@@ -250,7 +252,6 @@ export const StyledBottomSection = styled("div", {
       ${isNarrow &&
       css`
         flex-direction: column-reverse;
-        margin-top: ${spaces?.xl}px;
       `}
     `;
   }}

@@ -75,7 +75,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
       } else {
         return (
           <Icon
-            sdsSize="l"
+            sdsSize="s"
             sdsIcon={icon as keyof IconNameToSizes}
             {...sdsIconProps}
           />
@@ -84,11 +84,11 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     } else {
       switch (intent) {
         case "positive":
-          return <Icon sdsSize="l" sdsIcon="CheckCircle" />;
+          return <Icon sdsSize="s" sdsIcon="CheckCircle" />;
         case "info":
-          return <Icon sdsSize="l" sdsIcon="InfoCircle" />;
+          return <Icon sdsSize="s" sdsIcon="InfoCircle" />;
         default:
-          return <Icon sdsSize="l" sdsIcon="ExclamationMarkCircle" />;
+          return <Icon sdsSize="s" sdsIcon="ExclamationMarkCircle" />;
       }
     }
   };

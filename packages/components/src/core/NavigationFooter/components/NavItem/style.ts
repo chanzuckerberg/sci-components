@@ -4,9 +4,10 @@ import { css } from "@mui/material";
 import Link from "src/core/Link";
 import {
   CommonThemeProps,
-  fontBody,
-  fontHeader,
+  fontBodyMediumS,
+  getCorners,
   getSemanticColors,
+  getSpaces,
 } from "src/core/styles";
 
 interface NavItemStyleProps extends CommonThemeProps {
@@ -20,14 +21,15 @@ const NarrowNavItemLinkStyles = (
   props: NavItemStyleProps
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
+  const spaces = getSpaces(props);
 
   return css`
-    min-height: 48px;
     text-align: center;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: ${spaces?.s}px;
 
     &:hover {
       color: ${props.hasInvertedStyle
@@ -43,26 +45,32 @@ const NarrowNavItemLinkStyles = (
 export const StyledNavItemLink = styled(Link, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontHeader("m")}
-  ${fontBody("s", "regular", /* isNarrow */ true)}
+  ${fontBodyMediumS}
 
   ${(props: NavItemStyleProps) => {
     const { isNarrow } = props;
 
     const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+    const corners = getCorners(props);
 
     return css`
       color: ${props.hasInvertedStyle
         ? semanticColors?.base.textSecondaryInverse
         : semanticColors?.base.textSecondary};
+      background-color: transparent;
       white-space: nowrap;
+      padding: ${spaces?.xxxs}px ${spaces?.m}px;
+      border-radius: ${corners?.l}px;
 
       &:hover {
         color: ${props.hasInvertedStyle
           ? semanticColors?.base.textPrimaryInverse
           : semanticColors?.base.textPrimary};
+        background-color: ${props.hasInvertedStyle
+          ? semanticColors?.base.fillHoverInverse
+          : semanticColors?.base.fillHover};
         text-decoration: none;
-        font-weight: 600;
       }
 
       ${isNarrow && NarrowNavItemLinkStyles(props)}

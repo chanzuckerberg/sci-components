@@ -24,11 +24,10 @@ const toggle = (props: InputToggleExtraProps) => {
   const corners = getCorners(props);
   const shadows = getShadows(props);
   const iconSizes = getIconSizes(props);
-  const semanticColors = getSemanticColors(props);
 
   return `
     cursor: ${disabled ? "default" : "pointer"};
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
     height: 24px;
     width: ${width}px;
     line-height: 18px;
@@ -40,7 +39,7 @@ const toggle = (props: InputToggleExtraProps) => {
       outline-offset: 2px !important;
       width: 100%;
       height: 100%;
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
       font: inherit;
       transform: unset;
       justify-content: space-between;
@@ -54,10 +53,6 @@ const toggle = (props: InputToggleExtraProps) => {
       &.${switchClasses.checked} {
         transform: unset;
       }
-
-      &:hover {
-        background-color: transparent;
-      }
     }
 
     .${switchClasses.thumb} {
@@ -68,9 +63,8 @@ const toggle = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.track} {
-      // background-color: ${semanticColors?.base?.backgroundPrimary};
       opacity: 1;
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
     }
   `;
 };
@@ -103,7 +97,11 @@ const toggleOn = (props: InputToggleExtraProps) => {
 
       &:before {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textPrimary};
-        content: "${value}";
+        content: ${JSON.stringify(value)};
+      }
+
+      &:hover {
+        background-color: ${semanticColors?.accent?.surfaceSecondary};
       }
     }
 
@@ -157,7 +155,11 @@ const toggleOff = (props: InputToggleExtraProps) => {
 
       &:after {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
-        content: "${value}";
+        content: ${JSON.stringify(value)};
+      }
+
+      &:hover {
+        background-color: ${semanticColors?.base?.fillHover};
       }
     }
 

@@ -2,7 +2,7 @@
 
 exports[`<Tabs /> Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root css-11fro2b-MuiTabs-root"
+  class="MuiTabs-root css-edivr4-MuiTabs-root"
 >
   <div
     class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -14,7 +14,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-5mfhnp-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-12nf3i5-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="0"
         type="button"
@@ -26,7 +26,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-5mfhnp-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-12nf3i5-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="-1"
         type="button"
@@ -35,12 +35,12 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
           class="css-1p2o9he"
         >
           <span
-            class="css-zht1rf"
+            class="css-1hwd1cz"
           >
             Upload from Base Space
           </span>
           <span
-            class="css-1eudu0v"
+            class="css-1cj3ej"
           >
             0
           </span>
@@ -51,7 +51,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-o80iit css-1aquho2-MuiTabs-indicator"
+      class="MuiTabs-indicator css-sadiwf css-1aquho2-MuiTabs-indicator"
       style="left: 0px; width: 0px;"
     />
   </div>

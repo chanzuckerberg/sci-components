@@ -13,7 +13,12 @@ export const Dropdown = <
 >(
   props: Args
 ): JSX.Element => {
-  const { multiple, options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } = props;
+  const {
+    multiple,
+    options = AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+    DropdownMenuProps,
+    ...rest
+  } = props;
   const [value, setValue] = useState<
     AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   >(
@@ -36,8 +41,9 @@ export const Dropdown = <
       DropdownMenuProps={{
         groupBy: (option: T) => option.section as string,
         width: 300,
+        ...DropdownMenuProps,
       }}
-      {...props}
+      {...rest}
     />
   );
 

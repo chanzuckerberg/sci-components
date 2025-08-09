@@ -72,7 +72,7 @@ const Notification = ({
       } else {
         return (
           <Icon
-            sdsSize="l"
+            sdsSize="s"
             sdsIcon={icon as keyof IconNameToSizes}
             {...sdsIconProps}
           />
@@ -81,11 +81,11 @@ const Notification = ({
     } else {
       switch (intent) {
         case "positive":
-          return <Icon sdsSize="l" sdsIcon="CheckCircle" />;
+          return <Icon sdsSize="s" sdsIcon="CheckCircle" />;
         case "info":
-          return <Icon sdsSize="l" sdsIcon="InfoCircle" />;
+          return <Icon sdsSize="s" sdsIcon="InfoCircle" />;
         default:
-          return <Icon sdsSize="l" sdsIcon="ExclamationMarkCircle" />;
+          return <Icon sdsSize="s" sdsIcon="ExclamationMarkCircle" />;
       }
     }
   };
@@ -127,6 +127,7 @@ const Notification = ({
                   sdsStyle="minimal"
                   sdsType="secondary"
                   onClick={buttonOnClick}
+                  isAllCaps={false}
                 >
                   {buttonText}
                 </Button>

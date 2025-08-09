@@ -66,7 +66,7 @@ export const Default = {
     images: [
       {
         image: (
-          <ExampleLogo width={100} height={40}>
+          <ExampleLogo width={64} height={24}>
             Image Slot
           </ExampleLogo>
         ),
@@ -74,7 +74,7 @@ export const Default = {
       },
       {
         image: (
-          <ExampleLogo width={100} height={40}>
+          <ExampleLogo width={64} height={24}>
             Image Slot
           </ExampleLogo>
         ),
@@ -85,14 +85,14 @@ export const Default = {
     logoUrl: "https://example.com",
     navItems: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
       component: "a",
-      label: `Nav Item ${idx + 1}`,
+      label: `Nav Item`,
       linkProps: {
         target: "_blank",
       },
       url: `https://example.com/nav/${idx + 1}`,
     })),
     navLinks: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
-      label: `Link Item ${idx + 1}`,
+      label: `Link Item`,
       url: `https://example.com/nav/${idx + 1}`,
     })),
     tag: "Beta",

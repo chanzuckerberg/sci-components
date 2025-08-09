@@ -74,7 +74,7 @@ const rounded = (props: ChipExtraProps): SerializedStyles => {
   const corners = getCorners(props);
 
   return css`
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
   `;
 };
 

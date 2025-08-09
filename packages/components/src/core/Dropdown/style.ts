@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
 import { CommonThemeProps, getSpaces } from "src/core/styles";
 
 interface StyleProps extends CommonThemeProps {
@@ -13,23 +12,25 @@ export const StyledButtonsWrapper = styled("div", {
 })`
   ${(props: StyleProps) => {
     const { buttonPosition } = props;
+    const spaces = getSpaces(props);
 
     return `
       display: flex;
       justify-content: ${buttonPosition === "left" ? "start" : "end"};
-    `;
-  }}
-`;
+      width: 100%;
 
-export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
+      & > div {
+        gap: ${spaces?.xs}px;
+        padding: ${spaces?.xs}px ${spaces?.xs}px 0;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
 
-    return `
-      margin-top: ${spaces?.l}px;
-      margin-right: ${spaces?.m}px;
+        & > button {
+          width: 100%;
+        }
+      }
     `;
   }}
 `;

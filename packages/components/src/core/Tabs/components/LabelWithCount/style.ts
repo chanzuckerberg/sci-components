@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   CommonThemeProps as StyleProps,
-  fontBodySemiboldS,
-  fontBodySemiboldXs,
+  fontBodyS,
   fontBodyXs,
   fontBodyXxs,
   getSemanticColors,
@@ -40,21 +39,16 @@ export const Label = styled("span", {
   ${(props: Props) => {
     const { sdsSize } = props;
 
-    const isLarge = sdsSize === "large";
-
-    return isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props);
-  }}
-
-  ${(props: Props) => {
     const spaces = getSpaces(props);
 
-    const { sdsSize } = props;
-
     const isLarge = sdsSize === "large";
 
-    return `
-      margin-right: ${isLarge ? spaces?.l : spaces?.m}px;
-  `;
+    return [
+      isLarge ? fontBodyS(props) : fontBodyXs(props),
+      `
+        margin-right: ${spaces?.m}px;
+      `,
+    ];
   }}
 `;
 
@@ -67,21 +61,20 @@ export const Count = styled("span", {
   ${(props: Props) => {
     const { sdsSize } = props;
 
-    const isLarge = sdsSize === "large";
-
-    return isLarge ? fontBodyXs(props) : fontBodyXxs(props);
-  }}
-
-  ${(props: Props) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    return `
-      color: ${semanticColors?.base?.textSecondary};
+    const isLarge = sdsSize === "large";
 
-      .MuiChip-root {
-        margin: 0 0 ${spaces?.xxxs}px 0;
-      }
-    `;
+    return [
+      isLarge ? fontBodyXs(props) : fontBodyXxs(props),
+      `
+        color: ${semanticColors?.base?.textSecondary};
+
+        .MuiChip-root {
+          margin: 0 0 ${spaces?.xxxs}px 0;
+        }
+      `,
+    ];
   }}
 `;

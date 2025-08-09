@@ -6,11 +6,6 @@ import { INPUT_SLIDER_EXCLUDED_CONTROLS } from "./constants";
 
 export default {
   argTypes: {
-    defaultValue: {
-      control: {
-        type: "number",
-      },
-    },
     disabled: {
       control: { type: "boolean" },
     },
@@ -58,6 +53,20 @@ export default {
 // Default
 
 export const Default = {
+  args: {
+    defaultValue: 75,
+    disabled: false,
+    marks: true,
+    max: 100,
+    min: 0,
+    step: 5,
+    valueLabelDisplay: "on",
+  },
+};
+
+// Range Slider
+
+export const RangeSlider = {
   args: {
     defaultValue: [15, 85],
     disabled: false,

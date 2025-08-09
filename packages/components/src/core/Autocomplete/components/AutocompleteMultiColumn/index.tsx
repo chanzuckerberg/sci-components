@@ -32,6 +32,7 @@ import {
   StyledPopper,
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import { VerticalDivider } from "./components/VerticalDivider";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -275,33 +276,38 @@ const AutocompleteMultiColumn = <
             {...PopperBaseProps}
           >
             <StyledAutocompleteGroupWrapper className="SdsAutocompleteMultiColumn-wrapper">
-              {options.map((autocompleteOptions) => (
-                <AutocompleteGroup
-                  autocompleteProps={autocompleteOptions}
-                  key={autocompleteOptions.name}
-                  onValueChange={defaultOnValueChange}
-                  value={
-                    autocompleteMultiColumnValue
-                      ? autocompleteMultiColumnValue[autocompleteOptions.name]
-                      : undefined
-                  }
-                  multiple={multiple}
-                  label={label}
-                  /**
-                   * (masoudmanson): In a multi-column autocomplete, the search input for
-                   * inner autocompletes should remain hidden and unfocused when the parent
-                   * input is focused. This prevents blurring of the main search input.
-                   */
-                  InputBaseProps={{
-                    ...InputBaseProps,
-                    autoFocus: false,
-                    tabIndex: -1,
-                  }}
-                  popperOpen={popperOpen}
-                  inputValue={inputValue}
-                  PaperComponent={StyledPaper}
-                  {...rest}
-                />
+              {options.map((autocompleteOptions, index) => (
+                <React.Fragment key={autocompleteOptions.name + index}>
+                  <AutocompleteGroup
+                    autocompleteProps={autocompleteOptions}
+                    key={autocompleteOptions.name}
+                    onValueChange={defaultOnValueChange}
+                    value={
+                      autocompleteMultiColumnValue
+                        ? autocompleteMultiColumnValue[autocompleteOptions.name]
+                        : undefined
+                    }
+                    multiple={multiple}
+                    label={label}
+                    /**
+                     * (masoudmanson): In a multi-column autocomplete, the search input for
+                     * inner autocompletes should remain hidden and unfocused when the parent
+                     * input is focused. This prevents blurring of the main search input.
+                     */
+                    InputBaseProps={{
+                      ...InputBaseProps,
+                      autoFocus: false,
+                      tabIndex: -1,
+                    }}
+                    popperOpen={popperOpen}
+                    inputValue={inputValue}
+                    PaperComponent={StyledPaper}
+                    {...rest}
+                  />
+                  {index < options.length - 1 && (
+                    <VerticalDivider icon={autocompleteOptions.icon} />
+                  )}
+                </React.Fragment>
               ))}
             </StyledAutocompleteGroupWrapper>
           </PopperComponent>
