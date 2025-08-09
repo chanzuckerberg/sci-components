@@ -23,6 +23,7 @@ export interface TooltipExtraProps extends CommonThemeProps {
   // @deprecated Use `hasInvertedStyle` instead
   sdsStyle?: "dark" | "light";
   hasInvertedStyle?: boolean;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   width?: "default" | "wide";
   textAlign?: "left" | "center" | "right";
@@ -205,10 +206,11 @@ export const StyledPopper = styled(Popper)`
 `;
 
 export const StyledComponentSlotWrapper = styled("div")`
-  ${(props: TooltipExtraProps) => {
+  ${(props: TooltipExtraProps & { shouldAddMargin: boolean }) => {
+    const { shouldAddMargin } = props;
     const spaces = getSpaces(props);
     return `
-      margin-top: ${spaces?.s}px;
+      margin-top: ${shouldAddMargin ? spaces?.s : 0}px;
     `;
   }}
 `;

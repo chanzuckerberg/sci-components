@@ -61,6 +61,7 @@ export interface MenuItemExtraProps<
   sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
+  sdsType?: "default" | "action";
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
@@ -88,9 +89,13 @@ const MenuItem = forwardRef(function MenuItem<
     sdsIcon,
     sdsIconProps,
     sdsStyle = "determinate",
+    sdsType = "default",
     ...originalMenuItemProps
   } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
+
+  // Determine if this is an action-type MenuItem based on onClick presence
+  const isActionType = sdsType === "action";
 
   const selectionIcon = () => {
     if (isMultiSelect) {
@@ -159,7 +164,7 @@ const MenuItem = forwardRef(function MenuItem<
 
   return (
     <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
-      {selectionIcon()}
+      {!isActionType && selectionIcon()}
 
       <ContentWrapper>
         <TextWrapper

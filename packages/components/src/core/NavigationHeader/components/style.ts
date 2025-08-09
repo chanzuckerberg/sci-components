@@ -10,7 +10,7 @@ import ListSubheader from "src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
 
-const doNotForwardProps = ["isNarrow", "hasSection"];
+const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
 
 const NarrowStyledSection = (): SerializedStyles => {
   return css`

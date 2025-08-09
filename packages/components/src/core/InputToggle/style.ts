@@ -97,7 +97,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
 
       &:before {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textPrimary};
-        content: "${value}";
+        content: ${JSON.stringify(value)};
       }
 
       &:hover {
@@ -155,7 +155,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
 
       &:after {
         color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
-        content: "${value}";
+        content: ${JSON.stringify(value)};
       }
 
       &:hover {

@@ -67,7 +67,7 @@
           },
           "600": {
             "darkValue": "#cdcdcd",
-            "value": "#7a7a7a"
+            "value": "#6C6C6C"
           },
           "700": {
             "darkValue": "#ededed",
@@ -173,7 +173,7 @@
           },
           "600": {
             "darkValue": "#ff988a",
-            "value": "#980017"
+            "value": "#b80017"
           },
           "700": {
             "darkValue": "#ffbdb3",

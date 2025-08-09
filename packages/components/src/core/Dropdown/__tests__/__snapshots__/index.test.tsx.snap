@@ -3,7 +3,7 @@
 exports[`<Dropdown /> Default story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-4zqn2g-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1sbnr79-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -38,9 +38,6 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
       </div>
     </span>
   </span>
-  <div
-    class="css-fty5ct"
-  />
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
   />
@@ -50,7 +47,7 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
 exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
 <button
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-4zqn2g-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1sbnr79-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
@@ -85,9 +82,6 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
       </div>
     </span>
   </span>
-  <div
-    class="css-fty5ct"
-  />
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
   />

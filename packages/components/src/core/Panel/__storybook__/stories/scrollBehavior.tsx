@@ -28,10 +28,11 @@ export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
         closeButtonOnClick={() => {
           setOpen(false);
         }}
+        onClose={() => setOpen(false)}
         HeaderComponent={
           <Typography
             variant="h3"
-            sx={{ margin: "0 !important", padding: "6px 0 !important" }}
+            sx={{ margin: "0 !important", padding: "0 !important" }}
           >
             Scrollable Panel
           </Typography>

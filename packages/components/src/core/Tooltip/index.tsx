@@ -86,10 +86,10 @@ const Tooltip = forwardRef(function Tooltip(
 
   // (mlila) if no content is passed into the tooltip, don't render
   // a tooltip. this matches with the native MUI behavior.
-  if (!title && !subtitle) return <>{children}</>;
+  if (!title && !subtitle && !componentSlot) return <>{children}</>;
 
   const content = (
-    <>
+    <div>
       {title && (
         <StyledTitle hasInvertedStyle={hasInvertedStyle}>{title}</StyledTitle>
       )}
@@ -100,9 +100,11 @@ const Tooltip = forwardRef(function Tooltip(
       )}
 
       {componentSlot && (
-        <StyledComponentSlotWrapper>{componentSlot}</StyledComponentSlotWrapper>
+        <StyledComponentSlotWrapper shouldAddMargin={!!title || !!subtitle}>
+          {componentSlot}
+        </StyledComponentSlotWrapper>
       )}
-    </>
+    </div>
   );
 
   const leaveDelay =

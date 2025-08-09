@@ -33,9 +33,15 @@ export default {
     },
     sdsStyle: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["determinate", "indeterminate"],
+    },
+    sdsType: {
+      control: {
+        type: "inline-radio",
+      },
+      options: ["default", "action"],
     },
     selected: {
       control: { type: "boolean" },
@@ -63,6 +69,24 @@ export const Default = {
       color: "blue",
     },
     sdsStyle: "determinate",
+    sdsType: "default",
+    selected: false,
+  },
+};
+
+// ActionType
+
+export const ActionType = {
+  args: {
+    column: "123,456",
+    disabled: false,
+    isMultiSelect: false,
+    name: "Text here",
+    sdsIconProps: {
+      color: "blue",
+    },
+    sdsStyle: "determinate",
+    sdsType: "action",
     selected: false,
   },
 };

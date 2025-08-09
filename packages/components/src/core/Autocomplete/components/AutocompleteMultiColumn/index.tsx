@@ -277,7 +277,7 @@ const AutocompleteMultiColumn = <
           >
             <StyledAutocompleteGroupWrapper className="SdsAutocompleteMultiColumn-wrapper">
               {options.map((autocompleteOptions, index) => (
-                <>
+                <React.Fragment key={autocompleteOptions.name + index}>
                   <AutocompleteGroup
                     autocompleteProps={autocompleteOptions}
                     key={autocompleteOptions.name}
@@ -307,7 +307,7 @@ const AutocompleteMultiColumn = <
                   {index < options.length - 1 && (
                     <VerticalDivider icon={autocompleteOptions.icon} />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </StyledAutocompleteGroupWrapper>
           </PopperComponent>

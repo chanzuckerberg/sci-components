@@ -34,7 +34,7 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
     >
       Deprecated!
     </div>
-    <p
+    <div
       class="css-1gwsrfo"
     >
       The 
@@ -53,7 +53,7 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
         Icon
       </strong>
        style instead.
-    </p>
+    </div>
   </div>
   <div
     class="MuiAlert-action css-ki1hdl-MuiAlert-action"

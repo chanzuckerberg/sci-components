@@ -43,7 +43,7 @@ export const StyledVariable = styled("p")`
       }
 
       &::before {
-        content: "${type === "none" ? "" : type}";
+        content: ${JSON.stringify(type === "none" ? "" : type)};
         color: ${color || textColor};
         position: absolute;
         padding: 0 5px;

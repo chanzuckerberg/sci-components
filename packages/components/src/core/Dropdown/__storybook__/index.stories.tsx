@@ -14,10 +14,16 @@ import { ControlledDropdownDemo } from "./stories/controlledDropdown";
 import { TestDemo } from "./stories/test";
 import { InsideModalDemo } from "./stories/insideModal";
 import { PopperPlacementDemo } from "./stories/popperPlacement";
+import { AUTOCOMPLETE_ACTION_TYPE_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_ACTION_TYPE_OPTIONS";
 
 export default {
   argTypes: {
     DropdownMenuProps: {
+      control: {
+        type: "object",
+      },
+    },
+    InputDropdownProps: {
       control: {
         type: "object",
       },
@@ -153,6 +159,31 @@ export const LoadingResultsIndicator = {
     options: [],
   },
   parameters: {
+    controls: {
+      exclude: DROPDOWN_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+};
+
+// Action Type Menu Items
+
+export const ActionTypeMenuItems = {
+  args: {
+    DropdownMenuProps: {
+      width: 200,
+    },
+    InputDropdownProps: {
+      width: 200,
+    },
+    options: AUTOCOMPLETE_ACTION_TYPE_OPTIONS,
+  },
+  parameters: {
+    axe: {
+      disabledRules: ["aria-dialog-name"],
+    },
     controls: {
       exclude: DROPDOWN_EXCLUDED_CONTROLS,
     },

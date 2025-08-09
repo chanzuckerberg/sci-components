@@ -75,7 +75,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     border: none;
     box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimary};
     cursor: pointer;
-    padding: ${spaces?.xs}px ${spaces?.l}px;
+    padding: ${spaces?.xs}px ${spaces?.m}px;
     justify-content: start;
     width: ${width}px;
 
@@ -214,7 +214,7 @@ const rounded = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const userInput = (props: InputDropdownProps): SerializedStyles => {
-  const { sdsStyle } = props;
+  const { sdsStyle = "square" } = props;
   const semanticColors = getSemanticColors(props);
 
   return css`
@@ -242,7 +242,7 @@ const userInput = (props: InputDropdownProps): SerializedStyles => {
 };
 
 const isOpen = (props: InputDropdownProps): SerializedStyles => {
-  const { sdsStyle, intent = "default" } = props;
+  const { sdsStyle = "square", intent = "default" } = props;
 
   const semanticColors = getSemanticColors(props);
 
@@ -365,7 +365,7 @@ export const StyledInputDropdown = styled(
   justify-content: space-between;
 
   ${(props: InputDropdownProps) => {
-    const { disabled, intent, state, value, sdsStyle } = props;
+    const { disabled, intent, state, value, sdsStyle = "square" } = props;
 
     return css`
       ${inputDropdownStyles(props)}

@@ -9,7 +9,7 @@ export interface DialogActionsExtraProps extends CommonThemeProps {
 }
 
 // (thuang): Please keep this in sync with the props used in `DialogActionsExtraProps`
-const doNotForwardProps = ["buttonPosition"];
+const doNotForwardProps = ["buttonPosition", "sdsSize"];
 
 export const StyledDialogActions = styled(DialogActions, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),

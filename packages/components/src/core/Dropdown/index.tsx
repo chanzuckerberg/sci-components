@@ -99,7 +99,7 @@ const Dropdown = <
     onClose,
     onChange,
     DropdownMenuProps = {},
-    InputDropdownProps = { sdsStyle: "minimal" },
+    InputDropdownProps,
     InputDropdownComponent = InputDropdown,
     isTriggerChangeOnOptionClick = false,
     disabled = false,

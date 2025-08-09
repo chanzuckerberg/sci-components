@@ -2,7 +2,11 @@ import styled from "@emotion/styled";
 import Button from "src/core/Button";
 import { CommonThemeProps, getSpaces } from "src/core/styles";
 
-export const StyledButton = styled(Button)`
+const doNotForwardProps = ["sdsSize"];
+
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   position: absolute;
 
   ${(props: CommonThemeProps & { sdsSize: "small" | "medium" | "large" }) => {

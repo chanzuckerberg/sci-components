@@ -12,6 +12,20 @@ import {
 
 export type InputDropdownProps = SdsInputDropdownProps;
 
+const VALID_SDS_STYLES = ["minimal", "square", "rounded"] as const;
+
+const validateSdsStyle = (
+  sdsStyle: string | undefined
+): "minimal" | "square" | "rounded" => {
+  if (
+    sdsStyle &&
+    VALID_SDS_STYLES.includes(sdsStyle as (typeof VALID_SDS_STYLES)[number])
+  ) {
+    return sdsStyle as "minimal" | "square" | "rounded";
+  }
+  return "square";
+};
+
 /**
  * @see https://mui.com/material-ui/react-button/
  */
@@ -19,7 +33,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const {
     label,
     multiple = false,
-    sdsStyle,
+    sdsStyle: rawSdsStyle = "square",
     sdsType = "label",
     details,
     counter,
@@ -27,6 +41,8 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     shouldPutAColonAfterLabel = true,
     value,
   } = props;
+
+  const sdsStyle = validateSdsStyle(rawSdsStyle);
 
   const isMinimal = sdsStyle === "minimal";
 
@@ -38,7 +54,11 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
   return (
-    <StyledInputDropdown {...props} aria-label="Dropdown input">
+    <StyledInputDropdown
+      {...props}
+      sdsStyle={sdsStyle}
+      aria-label="Dropdown input"
+    >
       <LabelWrapper>
         <div>
           <StyledLabel

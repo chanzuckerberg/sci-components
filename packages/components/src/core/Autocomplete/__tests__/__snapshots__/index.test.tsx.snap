@@ -228,6 +228,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
+                  name="Status: can't reproduce"
                   role="option"
                   tabindex="-1"
                 >
@@ -273,6 +274,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
+                  name="Status: confirmed"
                   role="option"
                   tabindex="-1"
                 >
@@ -318,6 +320,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
+                  name="Status: duplicate"
                   role="option"
                   tabindex="-1"
                 >
@@ -368,6 +371,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
+                  name="Status: needs information"
                   role="option"
                   tabindex="-1"
                 >
@@ -418,6 +422,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
+                  name="Status: wont do/fix"
                   role="option"
                   tabindex="-1"
                 >
@@ -468,6 +473,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
+                  name="Status: work in progress"
                   role="option"
                   tabindex="-1"
                 >
@@ -671,6 +677,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="0"
                   id="autocomplete-demo-option-0"
+                  name="Type: bug"
                   role="option"
                   tabindex="-1"
                 >
@@ -721,6 +728,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="1"
                   id="autocomplete-demo-option-1"
+                  name="Type: discussion"
                   role="option"
                   tabindex="-1"
                 >
@@ -771,6 +779,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="2"
                   id="autocomplete-demo-option-2"
+                  name="Type: documentation"
                   role="option"
                   tabindex="-1"
                 >
@@ -816,6 +825,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="3"
                   id="autocomplete-demo-option-3"
+                  name="Type: enhancement"
                   role="option"
                   tabindex="-1"
                 >
@@ -861,6 +871,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="4"
                   id="autocomplete-demo-option-4"
+                  name="Type: epic"
                   role="option"
                   tabindex="-1"
                 >
@@ -906,6 +917,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root Mui-disabled MuiMenuItem-gutters Mui-disabled MuiMenuItem-root Mui-disabled MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="5"
                   id="autocomplete-demo-option-5"
+                  name="Type: feature request"
                   role="option"
                   tabindex="-1"
                 >
@@ -949,6 +961,7 @@ exports[`<Autocomplete /> ControlledOpen story renders snapshot 1`] = `
                   class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiAutocomplete-option css-x37xxh-MuiButtonBase-root-MuiMenuItem-root"
                   data-option-index="6"
                   id="autocomplete-demo-option-6"
+                  name="Type: question"
                   role="option"
                   tabindex="-1"
                 >

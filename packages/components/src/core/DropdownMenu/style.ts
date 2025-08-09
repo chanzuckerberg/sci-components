@@ -33,6 +33,7 @@ const doNotForwardProps = [
   "ClickAwayListenerProps",
   "forceOpen",
   "isMultiColumn",
+  "titleValue",
 ];
 
 export const StyledHeaderTitle = styled("div", {
@@ -58,7 +59,7 @@ interface StyledDropdownMenuAutocompleteWrapperProps extends CommonThemeProps {
 }
 
 export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
-  shouldForwardProp: (prop: string) => prop !== "title" && prop !== "search",
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: StyledDropdownMenuAutocompleteWrapperProps) => {
     const { search, titleValue } = props;

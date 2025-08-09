@@ -154,6 +154,7 @@ export default function NavigationHeaderSecondaryNav({
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               sx={{ minWidth: menuWidth }}
                               {...subItemRest}
                             >
@@ -221,6 +222,7 @@ export default function NavigationHeaderSecondaryNav({
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               {...accordionSubItemRest}
                             >
                               {dropdownItemLabel}

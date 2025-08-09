@@ -391,7 +391,14 @@ const AutocompleteBase = <
   ) {
     let MenuItemContent;
 
-    const { component, details, count, icon, sdsIconProps } = option;
+    const {
+      component,
+      details,
+      count,
+      icon,
+      sdsIconProps,
+      ...restOptionProps
+    } = option;
     const menuItemLabel = getOptionLabel(option);
 
     if (component) {
@@ -418,6 +425,7 @@ const AutocompleteBase = <
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
+        {...restOptionProps}
         key={option.name}
       >
         {MenuItemContent}

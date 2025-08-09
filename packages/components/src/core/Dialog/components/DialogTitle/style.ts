@@ -15,7 +15,11 @@ export interface DialogTitleExtraProps extends CommonThemeProps {
   sdsSize: "xs" | "s" | "m" | "l";
 }
 
-export const StyledDialogTitle = styled(DialogTitle)`
+const doNotForwardProps = ["sdsSize"];
+
+export const StyledDialogTitle = styled(DialogTitle, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   padding: 0;
   ${(props: DialogTitleExtraProps) => {
     const { sdsSize } = props;
@@ -29,7 +33,9 @@ export const StyledDialogTitle = styled(DialogTitle)`
   }}
 `;
 
-export const Title = styled(Typography)`
+export const Title = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: DialogTitleExtraProps) => {
     const { sdsSize } = props;
     const isSmall = sdsSize === "xs" || sdsSize === "s";
@@ -43,7 +49,9 @@ export const Title = styled(Typography)`
   }}
 `;
 
-export const Subtitle = styled(Typography)`
+export const Subtitle = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: DialogTitleExtraProps) => {
     const { sdsSize } = props;
     const isSmall = sdsSize === "xs" || sdsSize === "s";
@@ -61,7 +69,9 @@ export const Subtitle = styled(Typography)`
   }}
 `;
 
-export const Overline = styled(Typography)`
+export const Overline = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   ${(props: DialogTitleExtraProps) => {
     const { sdsSize } = props;
     const isSmall = sdsSize === "xs" || sdsSize === "s";
