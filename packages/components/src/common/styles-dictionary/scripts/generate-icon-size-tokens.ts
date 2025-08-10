@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { IconSizes } from "../../../core/styles/common/constants/iconSizes";
+import { IconSizes } from "src/core/styles/common/constants/iconSizes";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));

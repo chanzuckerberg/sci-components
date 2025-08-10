@@ -5,16 +5,12 @@ import { fileURLToPath } from "url";
 import {
   SDSLightThemeColors,
   SDSDarkThemeColors,
-} from "../../../core/styles/common/constants/colors";
+} from "src/core/styles/common/constants/colors";
 import {
   SDSPaletteLight,
   SDSPaletteDark,
-} from "../../../core/styles/common/makeThemeOptions";
-import {
-  Colors,
-  SDSPalette,
-  AppTheme,
-} from "../../../core/styles/common/types";
+} from "src/core/styles/common/makeThemeOptions";
+import { Colors, SDSPalette, AppTheme } from "src/core/styles/common/types";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));

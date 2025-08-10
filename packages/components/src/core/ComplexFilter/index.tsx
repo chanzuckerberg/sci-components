@@ -296,6 +296,7 @@ const ComplexFilter = <
         InputDropdownProps={{
           ...InputDropdownProps,
         }}
+        buttons
         {...rest}
       />
 

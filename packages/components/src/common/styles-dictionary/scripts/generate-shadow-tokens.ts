@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { Shadows } from "../../../core/styles/common/constants/shadows";
+import { Shadows } from "src/core/styles/common/constants/shadows";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));

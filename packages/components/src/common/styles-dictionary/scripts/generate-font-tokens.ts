@@ -7,7 +7,7 @@ import {
   LineHeightValues,
   LetterSpacingValues,
   TypographyCategories,
-} from "../../../core/styles/common/constants/typography";
+} from "src/core/styles/common/constants/typography";
 
 // @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
