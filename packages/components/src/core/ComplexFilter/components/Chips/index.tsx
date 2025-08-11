@@ -1,6 +1,7 @@
 import { AutocompleteValue } from "@mui/base";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import TagFilter from "src/core/TagFilter";
+import { checkIfSingleColumn } from "../../utils";
 
 interface Props<
   T extends DefaultAutocompleteOption,
@@ -13,28 +14,40 @@ interface Props<
   onDelete: (tag: string) => void;
 }
 
-// Helper functions to reduce cognitive complexity
-const getSingleColumnLabels = <T extends DefaultAutocompleteOption>(
-  value: unknown,
+const getSingleColumnLabels = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined,
+>(
+  value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
   multiple: boolean
 ): string[] => {
   const labels: string[] = [];
 
   if (multiple && Array.isArray(value)) {
     value.forEach((item) => {
-      const typedItem = item as T;
-      if (typedItem?.name) labels.push(typedItem.name);
+      if ((item as T)?.name) labels.push((item as T).name);
     });
-  } else if (!Array.isArray(value) && value) {
-    const typedValue = value as T;
-    if (typedValue.name) labels.push(typedValue.name);
+  } else if (
+    !Array.isArray(value) &&
+    value &&
+    typeof value === "object" &&
+    "name" in value
+  ) {
+    labels.push(value.name);
   }
 
   return labels;
 };
 
-const getMultiColumnLabels = <T extends DefaultAutocompleteOption>(
-  value: unknown,
+const getMultiColumnLabels = <
+  T extends DefaultAutocompleteOption,
+  Multiple extends boolean | undefined,
+  DisableClearable extends boolean | undefined,
+  FreeSolo extends boolean | undefined,
+>(
+  value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
   multiple: boolean
 ): string[] => {
   const labels: string[] = [];
@@ -51,21 +64,11 @@ const getMultiColumnLabels = <T extends DefaultAutocompleteOption>(
     });
   } else {
     Object.values(value).forEach((item) => {
-      const typedItem = item as T;
-      if (typedItem?.name) labels.push(typedItem.name);
+      if (item?.name) labels.push(item.name);
     });
   }
 
   return labels;
-};
-
-const checkIfSingleColumn = <T extends DefaultAutocompleteOption>(
-  value: unknown
-): boolean => {
-  return ((value && (value as T).name) ||
-    (Array.isArray(value) &&
-      value.length > 0 &&
-      (value as T[])[0].name)) as boolean;
 };
 
 const Chips = <
@@ -82,8 +85,14 @@ const Chips = <
 
   const isSingleColumn = checkIfSingleColumn<T>(value);
   const chipLabels = isSingleColumn
-    ? getSingleColumnLabels<T>(value, multiple)
-    : getMultiColumnLabels<T>(value, multiple);
+    ? getSingleColumnLabels<T, Multiple, DisableClearable, FreeSolo>(
+        value,
+        multiple
+      )
+    : getMultiColumnLabels<T, Multiple, DisableClearable, FreeSolo>(
+        value,
+        multiple
+      );
 
   if (chipLabels.length === 0) return null;
 

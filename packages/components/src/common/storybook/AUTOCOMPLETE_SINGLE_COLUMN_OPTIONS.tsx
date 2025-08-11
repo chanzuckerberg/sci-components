@@ -1,6 +1,6 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
-import Tag from "../../core/Tag";
+import Tag from "src/core/Tag";
 import CustomSdsIcon from "./customSdsIcon";
 import CustomSvgIcon from "./customSvgIcon";
 

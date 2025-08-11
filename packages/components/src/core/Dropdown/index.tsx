@@ -123,25 +123,15 @@ function useDropdownState<
   // Always reset when options change, unless the component is controlled
   useEffect(() => {
     if (!isControlled) {
-      const initialValue = multiple ? [] : null;
-      setValue(
-        initialValue as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >
-      );
-      setPendingValue(
-        initialValue as AutocompleteValue<
-          T,
-          Multiple,
-          DisableClearable,
-          FreeSolo
-        >
-      );
+      const initialValue = (multiple ? [] : null) as AutocompleteValue<
+        T,
+        Multiple,
+        DisableClearable,
+        FreeSolo
+      >;
+      setValue(initialValue);
+      setPendingValue(initialValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options, isControlled, multiple]);
 
   return {
@@ -270,7 +260,6 @@ const Dropdown = <
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
 
-  // Memoize expensive computations
   const isMultiColumn = useMemo(
     () => "options" in (options?.[0] || EMPTY_OBJECT),
     [options]
@@ -281,14 +270,12 @@ const Dropdown = <
     [buttons, isTriggerChangeOnOptionClick, multiple]
   );
 
-  // Use custom hook for state management
   const { value, setValue, pendingValue, setPendingValue } = useDropdownState(
     propValue,
     multiple as Multiple,
     options
   );
 
-  // Memoized callback functions with proper return types
   const setValueAndCallOnChange = useCallback(
     (
       event: React.SyntheticEvent,

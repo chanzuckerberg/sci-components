@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import Link from "../../../Link";
 import { css, Divider } from "@mui/material";
+import Link from "src/core/Link";
 import {
   CommonThemeProps,
   fontBodyXxs,

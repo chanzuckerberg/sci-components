@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { getSemanticColors } from "../../styles";
 import { useTheme } from "@mui/material";
+import { getSemanticColors } from "src/core/styles";
 
 export function ExampleLogo({
   children,

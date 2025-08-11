@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { NavItemProps } from "../../NavigationFooter.types";
+import { NavItemProps } from "src/core/NavigationFooter/NavigationFooter.types";
 import { StyledNavItemLink } from "./style";
 
 const NavItem = memo(({ item, hasInvertedStyle, isNarrow }: NavItemProps) => (

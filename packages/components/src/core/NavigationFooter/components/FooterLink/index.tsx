@@ -1,5 +1,5 @@
 import { forwardRef, memo } from "react";
-import { FooterLinkProps } from "../../NavigationFooter.types";
+import { FooterLinkProps } from "src/core/NavigationFooter/NavigationFooter.types";
 import { StyledLinkItemLink } from "./style";
 
 const FooterLink = memo(

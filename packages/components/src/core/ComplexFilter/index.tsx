@@ -9,6 +9,7 @@ import Dropdown, {
 import { InputDropdownProps as InputDropdownPropsType } from "src/core/InputDropdown";
 import Chips from "./components/Chips";
 import { StyledChipsWrapper, Wrapper } from "./style";
+import { checkIfSingleColumn } from "./utils";
 
 export {
   DropdownInputDropdown as ComplexFilterInputDropdown,
@@ -26,16 +27,6 @@ const removeItemFromArray = <T extends DefaultAutocompleteOption>(
     return true;
   }
   return false;
-};
-
-// Helper functions for chip deletion
-const checkIfSingleColumn = <T extends DefaultAutocompleteOption>(
-  checkValue: unknown
-): boolean => {
-  return ((checkValue && (checkValue as T).name) ||
-    (Array.isArray(checkValue) &&
-      checkValue.length > 0 &&
-      (checkValue as T[])[0].name)) as boolean;
 };
 
 export interface ComplexFilterProps<

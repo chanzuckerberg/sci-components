@@ -18,7 +18,7 @@ import {
   ScatterSeriesOption,
   getInstanceByDom,
 } from "echarts";
-import HeatmapChart from "../../../../../index";
+import HeatmapChart from "src/core/HeatmapChart";
 
 type InterpolatorNames =
   | "Magma"
