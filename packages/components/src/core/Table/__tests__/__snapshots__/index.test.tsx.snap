@@ -8,10 +8,10 @@ exports[`<Table /> Default story renders snapshot 1`] = `
     class="css-1426k2b"
   >
     <tr
-      class="css-fitsu2"
+      class="css-18e0zku"
     >
       <th
-        class="css-t4gp9z"
+        class="css-ou80oy"
       >
         <div
           class="css-187gjam"
@@ -24,7 +24,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-1qkrocy"
       >
         <div
           class="css-rm9mvq"
@@ -52,7 +52,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-1qkrocy"
       >
         <div
           class="css-rm9mvq"
@@ -80,7 +80,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-ezzkc2"
+        class="css-nebodi"
       >
         <div
           class="css-rm9mvq"
@@ -93,7 +93,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1scpxyh"
+        class="css-fbrjm0"
       >
         <div
           class="css-wg04tn"
@@ -109,7 +109,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="css-e9lq1t"
+      class="css-8h6hwo"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -144,7 +144,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-11b4fo2"
+        class="css-1oy0dpy"
         data-mui-internal-clone-element="true"
         tabindex="0"
       >
@@ -172,7 +172,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-11b4fo2"
+        class="css-1oy0dpy"
       >
         <div
           class="css-ov1ktg"
@@ -252,7 +252,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-xz08c4"
+        class="css-46kqah"
       >
         <div
           class="css-ov1ktg"
@@ -274,7 +274,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-e9lq1t"
+      class="css-8h6hwo"
     >
       <td
         class="cell-component css-ypxbz3"
@@ -309,7 +309,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-11b4fo2"
+        class="css-1oy0dpy"
       >
         <div
           class="css-ov1ktg"
@@ -340,7 +340,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-11b4fo2"
+        class="css-1oy0dpy"
       >
         <div
           class="css-ov1ktg"
@@ -467,7 +467,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-xz08c4"
+        class="css-46kqah"
       >
         <div
           class="css-ov1ktg"
@@ -499,7 +499,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-9fq7hl"
+      class="css-17pkcx1"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
@@ -537,7 +537,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1rkv7da"
+        class="css-13wn4u"
       >
         <div
           class="css-ov1ktg"
@@ -568,7 +568,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1rkv7da"
+        class="css-13wn4u"
       >
         <div
           class="css-ov1ktg"
@@ -608,7 +608,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-rhqpuq"
+        class="css-1694d6x"
       >
         <div
           class="css-ov1ktg"

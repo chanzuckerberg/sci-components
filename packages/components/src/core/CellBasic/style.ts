@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import React from "react";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -17,6 +18,10 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   secondaryTextWrapLineCount?: number;
   tertiaryTextWrapLineCount?: number;
   tabularNums?: boolean;
+  shouldShowUndelineOnHover?: boolean;
+  isRowHovered?: boolean;
+  component?: React.ElementType;
+  extraRightPadding?: number;
 }
 
 const doNotForwardProps = [
@@ -29,6 +34,8 @@ const doNotForwardProps = [
   "tertiaryText",
   "shouldTextWrap",
   "shouldShowTooltipOnHover",
+  "shouldShowUndelineOnHover",
+  "isRowHovered",
   "tooltipProps",
   "primaryTextWrapLineCount",
   "secondaryTextWrapLineCount",
@@ -51,26 +58,6 @@ const verticalAlignToFlexMap = {
   center: "center",
   top: "flex-start",
 };
-
-export const StyledTableData = styled("td", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${fontBodyS}
-  ${focusVisibleA11yStyle}
-
-  ${(props: CellBasicExtraProps) => {
-    const { horizontalAlign = "left", verticalAlign = "top" } = props;
-
-    const spaces = getSpaces(props);
-
-    return `
-        padding: ${spaces?.l}px ${spaces?.m}px;
-        text-align: ${horizontalAlign};
-        vertical-align: ${verticalAlignCSSMap[verticalAlign]};
-        overflow: hidden;
-    `;
-  }}
-`;
 
 const ShouldWrap = (lineCount: number) => {
   return `
@@ -215,6 +202,50 @@ export const PrimaryTextComponentSlotRightWrapper = styled("div")`
 
     return `
       margin-left: ${spaces?.xs}px;
+    `;
+  }}
+`;
+
+export const StyledTableData = styled.div`
+  ${fontBodyS}
+  ${focusVisibleA11yStyle}
+
+  ${(props: CellBasicExtraProps) => {
+    const {
+      horizontalAlign = "left",
+      verticalAlign = "top",
+      shouldShowUndelineOnHover = false,
+      isRowHovered = false,
+      extraRightPadding = 0,
+    } = props;
+
+    const spaces = getSpaces(props);
+    return `
+        padding: ${spaces?.l}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.l}px ${spaces?.m}px;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlignCSSMap[verticalAlign]};
+        overflow: hidden;
+
+        &:hover {
+          ${PrimaryText} {
+            ${shouldShowUndelineOnHover ? "text-decoration: underline;" : ""}
+          }
+        }
+
+        ${PrimaryText} {
+          ${isRowHovered && shouldShowUndelineOnHover ? "text-decoration: underline;" : ""}
+        }
+    `;
+  }}
+`;
+
+export const StyledCellBasicLink = styled("a")`
+  ${(props: CellBasicExtraProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      text-decoration: none;
+      color: ${semanticColors?.base?.textPrimary};
     `;
   }}
 `;
