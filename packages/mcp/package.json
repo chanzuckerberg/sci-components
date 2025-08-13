@@ -1,0 +1,59 @@
+{
+  "name": "@czi-sds/mcp",
+  "description": "The official MCP server for SDS",
+  "version": "0.1.0",
+  "main": "dist/stdio.js",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "homepage": "https://sds.czi.design",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chanzuckerberg/sci-components",
+    "directory": "packages/mcp"
+  },
+  "scripts": {
+    "build": "tsup && chmod 755 dist/stdio.js",
+    "dev": "tsup --watch",
+    "inspect": "node scripts/inspect.js",
+    "serve": "tsx --watch src/http.ts",
+    "release": "scripts/release.sh"
+  },
+  "bin": {
+    "sds-mcp": "./dist/stdio.js"
+  },
+  "keywords": [
+    "sds",
+    "mcp-server",
+    "chat",
+    "chatgpt",
+    "mcp"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "express": "^5.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "7.0.0",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/express": "^5.0.3",
+    "@types/fs-extra": "^11.0.4",
+    "release-it": "19.0.4",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "5.8.3"
+  }
+}

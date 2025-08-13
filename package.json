@@ -131,7 +131,16 @@
     "build": "lerna run build",
     "ci": "yarn install",
     "version:ci": "HUSKY=0 lerna version --yes --conventional-commits",
-    "publish:ci": "HUSKY=0 lerna publish from-package --yes"
+    "publish:ci": "HUSKY=0 lerna publish from-package --yes",
+    "publish:dry-run": "lerna publish from-package --no-git-tag-version --no-push --registry http://localhost:4873 --yes",
+    "publish:canary": "lerna publish --canary --preid test --registry http://localhost:4873 --yes",
+    "verdaccio:start": "npx verdaccio",
+    "test:publish": "echo 'Run yarn verdaccio:start in another terminal, then run yarn publish:dry-run'",
+    "mcp:build": "yarn workspace @czi-sds/mcp build",
+    "mcp:dev": "yarn workspace @czi-sds/mcp dev",
+    "mcp:inspect": "yarn workspace @czi-sds/mcp inspect",
+    "mcp:serve": "yarn workspace @czi-sds/mcp serve",
+    "mcp:release": "yarn workspace @czi-sds/mcp release"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
