@@ -84,14 +84,7 @@ export const StyledPaper = styled(Paper, {
 `;
 
 export const StyledAutocompleteGroupWrapper = styled("div")`
-  ${(props: StyleProps) => {
-    const spaces = getSpaces(props);
-
-    return `
-      display: flex;
-      padding: 0 ${spaces?.xs}px;
-    `;
-  }}
+  display: flex;
 `;
 
 export const StyledAutocompleteInput = styled(InputSearch, {

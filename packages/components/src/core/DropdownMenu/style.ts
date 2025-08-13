@@ -66,6 +66,10 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
     const spaces = getSpaces(props);
 
     return `
+      & .SdsAutocompleteMultiColumn-wrapper {
+        padding: 0 ${spaces?.xs}px;
+      }
+
       & .${autocompleteClasses.popper}, & .MuiPopper-root,
       .base-Popper-root {
         position: relative !important;
@@ -74,6 +78,11 @@ export const StyledDropdownMenuAutocompleteWrapper = styled("div", {
         box-shadow: none;
         padding: ${!search && !titleValue ? spaces?.xs : 0}px 0 0;
         border: none;
+        outline: none !important;
+
+        .MuiAutocomplete-listbox {
+          outline: none !important;
+        }
 
         .${autocompleteClasses.paper}, .MuiPaper-root {
           box-shadow: none !important;
