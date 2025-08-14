@@ -10,7 +10,8 @@ async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
 
-  console.info("SDS MCP Server running on stdio");
+  // Don't log to stdout as it interferes with the JSON-RPC protocol
+  // console.info("SDS MCP Server running on stdio");
 }
 
 main().catch((error) => {

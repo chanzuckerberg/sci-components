@@ -3,7 +3,7 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { Tool, ToolConfig } from "../lib/types.js";
 // import { customizeThemeTool } from "./customize-theme.js";
 // import { getComponentExampleTool } from "./get-component-example.js";
-// import { getComponentPropsTool } from "./get-component-props.js";
+import { getComponentPropsTool } from "./get-component-props.js";
 // import { getComponentTemplatesTool } from "./get-component-templates.js";
 // import { getThemeTool } from "./get-theme.js";
 // import { installationTool } from "./installation.js";
@@ -13,7 +13,7 @@ import { listComponentsTool } from "./list-components.js";
 
 const tools: Tool[] = [
   // getComponentExampleTool,
-  // getComponentPropsTool,
+  getComponentPropsTool,
   // getThemeTool,
   listComponentsTool,
   // customizeThemeTool,

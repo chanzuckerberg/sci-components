@@ -1,0 +1,107 @@
+{
+  "Dropdown": {
+    "props": {
+      "onChange": {
+        "type": "(event: SyntheticEvent",
+        "isRequired": false,
+        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "This prop is used to help implement the accessibility logic.\nIf you don't provide an id it will fall back to a randomly generated one."
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "fullWidth": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the input will take up the full width of its container.",
+        "defaultValue": false
+      },
+      "loading": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is in a loading state.\nThis shows the `loadingText` in place of suggestions (only if there are no suggestions to show, for example `options` are empty).",
+        "defaultValue": false
+      },
+      "size": {
+        "type": "\"small\" | \"medium\"",
+        "isRequired": false,
+        "description": "The size of the component.",
+        "defaultValue": "medium"
+      },
+      "onClose": {
+        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void",
+        "isRequired": false,
+        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
+      },
+      "open": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is shown."
+      },
+      "value": {
+        "type": "any",
+        "isRequired": false,
+        "description": "The value of the autocomplete.\n\nThe value must have reference equality with the option in order to be selected.\nYou can customize the equality behavior with the `isOptionEqualToValue` prop."
+      },
+      "buttonPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "buttons": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "closeOnBlur": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": true
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "isSearchAutoFocus": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "DropdownMenuProps": {
+        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>",
+        "isRequired": false
+      },
+      "InputDropdownProps": {
+        "type": "InputDropdownPropsType",
+        "isRequired": false
+      },
+      "InputDropdownComponent": {
+        "type": "any",
+        "isRequired": false
+      },
+      "isTriggerChangeOnOptionClick": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

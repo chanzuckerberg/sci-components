@@ -1,0 +1,46 @@
+{
+  "CellComponent": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false
+      },
+      "value": {
+        "type": "\"string\" | \"number\" | \"readonly string[]\"",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLTableCellElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "horizontalAlign": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false
+      },
+      "verticalAlign": {
+        "type": "\"center\" | \"top\" | \"bottom\"",
+        "isRequired": false
+      }
+    }
+  }
+}

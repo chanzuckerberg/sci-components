@@ -1,0 +1,63 @@
+{
+  "ComplexFilter": {
+    "props": {
+      "label": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "options": {
+        "type": "T[]",
+        "isRequired": true
+      },
+      "multiple": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "onChange": {
+        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void",
+        "isRequired": true
+      },
+      "DropdownMenuProps": {
+        "type": "any",
+        "isRequired": false,
+        "defaultValue": {}
+      },
+      "InputDropdownProps": {
+        "type": "InputDropdownPropsType",
+        "isRequired": false,
+        "defaultValue": "{ sdsStyle: minimal }"
+      },
+      "value": {
+        "type": "any",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "PopperComponent": {
+        "type": "any",
+        "isRequired": false
+      },
+      "InputDropdownComponent": {
+        "type": "any",
+        "isRequired": false
+      },
+      "isTriggerChangeOnOptionClick": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      }
+    }
+  }
+}

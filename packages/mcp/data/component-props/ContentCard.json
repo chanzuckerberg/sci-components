@@ -1,0 +1,18 @@
+{
+  "ContentCard": {
+    "props": {
+      "buttonsPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "clickableCard": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "classes": {
+        "type": "{ cardActions?: string; }",
+        "isRequired": false
+      }
+    }
+  }
+}
