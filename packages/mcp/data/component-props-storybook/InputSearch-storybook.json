@@ -3,13 +3,11 @@
     "props": {
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "id": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": true
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -19,18 +17,15 @@
           "negative",
           "notice",
           "positive"
-        ],
-        "control": "radio"
+        ]
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": true
       },
       "placeholder": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "sdsStyle": {
         "type": "\"rounded\" | \"square\"",
@@ -38,8 +33,7 @@
         "options": [
           "rounded",
           "square"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

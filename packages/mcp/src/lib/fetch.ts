@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -76,6 +77,56 @@ export async function fetchComponentProps(
       path.join(dirname, `../../data/component-props/${component}.json`), // From src/lib in dev
       path.join(dirname, `../data/component-props/${component}.json`), // From dist in prod
       path.join(process.cwd(), `data/component-props/${component}.json`), // From current working directory
+    ];
+
+    let propsPath = "";
+    for (const p of propsPaths) {
+      if (fs.existsSync(p)) {
+        propsPath = p;
+        break;
+      }
+    }
+
+    if (!propsPath) {
+      // Return a message if props file doesn't exist
+      return {
+        [component]: {
+          message:
+            "Props information not available for this component. Run 'yarn generate:component-props' to generate props data.",
+          props: {},
+        },
+      };
+    }
+
+    const fileContent = fs.readFileSync(propsPath, "utf-8");
+    return JSON.parse(fileContent);
+  } catch (error) {
+    throw new Error(
+      `Failed to load props for ${component}: ${
+        error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
+  }
+}
+
+export async function fetchComponentPropsStorybook(
+  component: string
+): Promise<ComponentPropsResult> {
+  try {
+    // Try multiple paths for component props
+    const propsPaths = [
+      path.join(
+        dirname,
+        `../../data/component-props-storybook/${component}-storybook.json`
+      ), // From src/lib in dev
+      path.join(
+        dirname,
+        `../data/component-props-storybook/${component}-storybook.json`
+      ), // From dist in prod
+      path.join(
+        process.cwd(),
+        `data/component-props-storybook/${component}-storybook.json`
+      ), // From current working directory
     ];
 
     let propsPath = "";

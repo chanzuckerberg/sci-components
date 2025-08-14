@@ -3,8 +3,7 @@
     "props": {
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\"",
@@ -17,8 +16,7 @@
           "4",
           "5",
           "6"
-        ],
-        "control": "select"
+        ]
       },
       "sdsSize": {
         "type": "\"small\" | \"medium\" | \"large\"",
@@ -27,8 +25,7 @@
           "small",
           "medium",
           "large"
-        ],
-        "control": "select"
+        ]
       },
       "sdsStage": {
         "type": "\"on\" | \"off\"",
@@ -36,8 +33,7 @@
         "options": [
           "on",
           "off"
-        ],
-        "control": "radio"
+        ]
       },
       "sdsType": {
         "type": "\"primary\" | \"secondary\"",
@@ -45,8 +41,7 @@
         "options": [
           "primary",
           "secondary"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

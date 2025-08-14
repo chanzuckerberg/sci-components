@@ -3,8 +3,7 @@
     "props": {
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": true
       },
       "className": {
         "type": "string",

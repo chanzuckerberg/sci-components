@@ -10,8 +10,7 @@
           4000,
           12000,
           20000
-        ],
-        "control": "select"
+        ]
       },
       "buttonOnClick": {
         "type": "unknown",
@@ -23,13 +22,11 @@
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "extraContent": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\"",
@@ -39,8 +36,7 @@
           "1",
           "2",
           "3"
-        ],
-        "control": "select"
+        ]
       },
       "intent": {
         "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
@@ -50,8 +46,7 @@
           "negative",
           "positive",
           "notice"
-        ],
-        "control": "radio"
+        ]
       },
       "onClose": {
         "type": "unknown",
@@ -59,8 +54,7 @@
       },
       "sdsIconProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "slideDirection": {
         "type": "\"left\" | \"right\"",
@@ -68,8 +62,7 @@
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

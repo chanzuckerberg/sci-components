@@ -3,13 +3,11 @@
     "props": {
       "caption": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -19,13 +17,11 @@
           "negative",
           "notice",
           "positive"
-        ],
-        "control": "radio"
+        ]
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "stage": {
         "type": "\"checked\" | \"unchecked\" | \"indeterminate\"",
@@ -34,8 +30,7 @@
           "checked",
           "unchecked",
           "indeterminate"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

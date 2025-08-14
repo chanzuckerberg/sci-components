@@ -3,8 +3,7 @@
     "props": {
       "DropdownMenuProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "buttonPosition": {
         "type": "\"0\" | \"1\"",
@@ -12,48 +11,39 @@
         "options": [
           "0",
           "1"
-        ],
-        "control": "select"
+        ]
       },
       "buttons": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "closeOnBlur": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "isSearchAutoFocus": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "multiple": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "onChange": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "onClose": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "options": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
@@ -64,13 +54,11 @@
           "2",
           "3",
           "4"
-        ],
-        "control": "select"
+        ]
       },
       "search": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

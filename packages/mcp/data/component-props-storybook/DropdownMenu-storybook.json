@@ -3,33 +3,27 @@
     "props": {
       "ClickAwayListenerProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "groupBy": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "keepSearchOnSelect": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "multiple": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "open": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "options": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
@@ -40,23 +34,19 @@
           "2",
           "3",
           "4"
-        ],
-        "control": "select"
+        ]
       },
       "search": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "title": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "width": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

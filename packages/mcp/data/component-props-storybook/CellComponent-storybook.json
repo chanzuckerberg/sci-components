@@ -8,8 +8,7 @@
           "left",
           "center",
           "right"
-        ],
-        "control": "select"
+        ]
       },
       "verticalAlign": {
         "type": "\"top\" | \"center\" | \"bottom\"",
@@ -18,13 +17,11 @@
           "top",
           "center",
           "bottom"
-        ],
-        "control": "select"
+        ]
       },
       "width": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

@@ -3,8 +3,7 @@
     "props": {
       "groupBy": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -14,23 +13,19 @@
           "negative",
           "notice",
           "positive"
-        ],
-        "control": "radio"
+        ]
       },
       "keepSearchOnSelect": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "multiple": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "options": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
@@ -41,8 +36,7 @@
           "2",
           "3",
           "4"
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

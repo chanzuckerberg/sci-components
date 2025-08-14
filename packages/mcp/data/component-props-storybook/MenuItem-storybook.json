@@ -3,13 +3,11 @@
     "props": {
       "column": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
@@ -21,18 +19,15 @@
           "3",
           "4",
           "5"
-        ],
-        "control": "select"
+        ]
       },
       "isMultiSelect": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "sdsIconProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "sdsStyle": {
         "type": "\"determinate\" | \"indeterminate\"",
@@ -40,13 +35,11 @@
         "options": [
           "determinate",
           "indeterminate"
-        ],
-        "control": "radio"
+        ]
       },
       "selected": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

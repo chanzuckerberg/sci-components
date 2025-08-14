@@ -3,18 +3,15 @@
     "props": {
       "hasInvertedStyle": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "indicator": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "indicatorColor": {
         "type": "unknown",
-        "isRequired": false,
-        "control": "color"
+        "isRequired": false
       },
       "className": {
         "type": "string",

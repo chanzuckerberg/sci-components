@@ -3,48 +3,39 @@
     "props": {
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "hover": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "rowHeight": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "selected": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "shouldShowTooltipOnHover": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "tooltipProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "tooltipSubtitle": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "tooltipText": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "useDivider": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

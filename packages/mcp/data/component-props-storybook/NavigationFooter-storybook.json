@@ -3,13 +3,11 @@
     "props": {
       "hasInvertedStyle": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "images": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "logo": {
         "type": "\"0\" | \"1\" | \"2\"",
@@ -18,38 +16,31 @@
           "0",
           "1",
           "2"
-        ],
-        "control": "select"
+        ]
       },
       "logoUrl": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "navItems": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "navLinks": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "tag": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "tagColor": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "title": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

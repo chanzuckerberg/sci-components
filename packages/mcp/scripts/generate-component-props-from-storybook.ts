@@ -9,18 +9,12 @@ const dirname = path.dirname(filename);
 interface ArgType {
   control?: {
     type?: string;
-    labels?: Record<string, string>;
   };
   options?: (string | number)[] | string;
   mapping?: Record<string, unknown>;
-  if?: Record<string, unknown>;
   action?: string;
   description?: string;
-  defaultValue?: unknown;
-  type?: {
-    name?: string;
-    required?: boolean;
-  };
+  required?: boolean;
 }
 
 interface StorybookMeta {
@@ -58,21 +52,25 @@ function extractConstantsFromFile(filePath: string): Record<string, unknown> {
       const [, name, value] = match;
       try {
         // Try to parse simple arrays and strings
-        if (value.trim().startsWith("[") && value.trim().endsWith("]")) {
-          // Extract array values - handle multiline arrays
-          const arrayContent = value.trim().slice(1, -1);
+        const trimmedValue = value.trim();
+        if (trimmedValue.startsWith("[") && trimmedValue.endsWith("]")) {
+          // Extract array values
+          const arrayContent = trimmedValue.slice(1, -1);
           const items = arrayContent.match(/"[^"]+"|'[^']+'|\d+/g) || [];
           constants[name] = items.map((item) =>
             item.replace(/^["']|["']$/g, "")
           );
-        } else if (value.startsWith('"') || value.startsWith("'")) {
-          constants[name] = value.slice(1, -1);
-        } else if (value === "true" || value === "false") {
-          constants[name] = value === "true";
-        } else if (!isNaN(Number(value))) {
-          constants[name] = Number(value);
+        } else if (
+          trimmedValue.startsWith('"') ||
+          trimmedValue.startsWith("'")
+        ) {
+          constants[name] = trimmedValue.slice(1, -1);
+        } else if (trimmedValue === "true" || trimmedValue === "false") {
+          constants[name] = trimmedValue === "true";
+        } else if (!isNaN(Number(trimmedValue))) {
+          constants[name] = Number(trimmedValue);
         }
-      } catch (e) {
+      } catch {
         // Skip complex values
       }
     }
@@ -82,6 +80,116 @@ function extractConstantsFromFile(filePath: string): Record<string, unknown> {
     console.log(`    ⚠️  Could not extract constants: ${error}`);
     return {};
   }
+}
+
+function extractOptions(
+  propContent: string
+): string | (string | number)[] | undefined {
+  const optionsMatch = propContent.match(/options:\s*(\[[^\]]+\]|[\w.()]+)/);
+  if (!optionsMatch) {
+    return undefined;
+  }
+
+  const optionsValue = optionsMatch[1];
+  if (optionsValue.startsWith("[")) {
+    // Direct array
+    try {
+      const items =
+        optionsValue.slice(1, -1).match(/"[^"]+"|'[^']+'|\w+/g) || [];
+      return items.map((item) => {
+        const cleaned = item.replace(/^["']|["']$/g, "");
+        return isNaN(Number(cleaned)) ? cleaned : Number(cleaned);
+      });
+    } catch {
+      // Keep as is if parsing fails
+    }
+  } else if (optionsValue.includes("Object.keys")) {
+    // Object.keys(CONSTANT) pattern - mark for later resolution
+    const keyMatch = optionsValue.match(/Object\.keys\((\w+)\)/);
+    if (keyMatch) {
+      return `Object.keys(${keyMatch[1]})`;
+    }
+  } else {
+    // Reference to constant - we'll resolve this later
+    return optionsValue;
+  }
+  return undefined;
+}
+
+function parseArgType(propContent: string): ArgType {
+  const argType: ArgType = {};
+
+  // Extract control type
+  const controlMatch = propContent.match(
+    /control:\s*{[^}]*type:\s*["'](\w+)["']/
+  );
+  if (controlMatch) {
+    argType.control = { type: controlMatch[1] };
+  }
+
+  // Extract required
+  const requiredMatch = propContent.match(/required:\s*(true|false)/);
+  if (requiredMatch) {
+    argType.required = requiredMatch[1] === "true";
+  }
+
+  // Extract options
+  const options = extractOptions(propContent);
+  if (options !== undefined) {
+    argType.options = options;
+  }
+
+  // Extract action
+  const actionMatch = propContent.match(/action:\s*(\w+\.\w+|\w+)/);
+  if (actionMatch) {
+    argType.action = actionMatch[1];
+  }
+
+  // Extract description
+  const descMatch = propContent.match(/description:\s*["']([^"']+)["']/);
+  if (descMatch) {
+    argType.description = descMatch[1];
+  }
+
+  return argType;
+}
+
+function parseArgTypes(argTypesContent: string): Record<string, ArgType> {
+  const argTypes: Record<string, ArgType> = {};
+
+  // Parse each argType - handle nested objects
+  const propPattern = /(\w+):\s*{((?:[^{}]|{[^}]*})*?)},/gs;
+  let propMatch;
+
+  while ((propMatch = propPattern.exec(argTypesContent)) !== null) {
+    const [, propName, propContent] = propMatch;
+    argTypes[propName] = parseArgType(propContent);
+  }
+
+  return argTypes;
+}
+
+function parseArgs(argsContent: string): Record<string, unknown> {
+  const args: Record<string, unknown> = {};
+  const argPattern = /(\w+):\s*([^,\n]+)/g;
+  let argMatch;
+
+  while ((argMatch = argPattern.exec(argsContent)) !== null) {
+    const [, key, value] = argMatch;
+    const cleanValue = value.trim();
+
+    if (cleanValue === "true" || cleanValue === "false") {
+      args[key] = cleanValue === "true";
+    } else if (cleanValue.startsWith('"') || cleanValue.startsWith("'")) {
+      args[key] = cleanValue.slice(1, -1);
+    } else if (!isNaN(Number(cleanValue))) {
+      args[key] = Number(cleanValue);
+    } else {
+      args[key] = cleanValue;
+    }
+  }
+
+  return args;
 }
 
 function parseStorybookFile(filePath: string): StorybookMeta | null {
@@ -107,91 +215,12 @@ function parseStorybookFile(filePath: string): StorybookMeta | null {
     const argTypesMatch = exportContent.match(
       /argTypes:\s*{([\s\S]*?)^ {2}},/m
     );
-    const argTypes: Record<string, ArgType> = {};
 
-    if (argTypesMatch) {
-      const argTypesContent = argTypesMatch[1];
-
-      // Parse each argType - Updated regex to better handle nested objects
-      const propPattern = /(\w+):\s*{((?:[^{}]|{[^}]*})*?)},/gs;
-      let propMatch;
-
-      while ((propMatch = propPattern.exec(argTypesContent)) !== null) {
-        const [, propName, propContent] = propMatch;
-        const argType: ArgType = {};
-
-        // Extract control type
-        const controlMatch = propContent.match(
-          /control:\s*{[^}]*type:\s*["'](\w+)["']/
-        );
-        if (controlMatch) {
-          argType.control = { type: controlMatch[1] };
-        }
-
-        // Extract options
-        const optionsMatch = propContent.match(
-          /options:\s*(\[[^\]]+\]|[\w.()]+)/
-        );
-        if (optionsMatch) {
-          const optionsValue = optionsMatch[1];
-          if (optionsValue.startsWith("[")) {
-            // Direct array
-            try {
-              const items =
-                optionsValue.slice(1, -1).match(/"[^"]+"|'[^']+'|\w+/g) || [];
-              argType.options = items.map((item) => {
-                const cleaned = item.replace(/^["']|["']$/g, "");
-                return isNaN(Number(cleaned)) ? cleaned : Number(cleaned);
-              });
-            } catch {
-              // Keep as is if parsing fails
-            }
-          } else if (optionsValue.includes("Object.keys")) {
-            // Object.keys(CONSTANT) pattern - mark for later resolution
-            const keyMatch = optionsValue.match(/Object\.keys\((\w+)\)/);
-            if (keyMatch) {
-              argType.options = `Object.keys(${keyMatch[1]})`;
-            }
-          } else {
-            // Reference to constant - we'll resolve this later
-            argType.options = optionsValue;
-          }
-        }
-
-        // Extract action
-        const actionMatch = propContent.match(/action:\s*["'](\w+)["']/);
-        if (actionMatch) {
-          argType.action = actionMatch[1];
-        }
-
-        argTypes[propName] = argType;
-      }
-    }
+    const argTypes = argTypesMatch ? parseArgTypes(argTypesMatch[1]) : {};
 
     // Extract default args
     const argsMatch = exportContent.match(/args:\s*{([^}]*)}/);
-    const args: Record<string, unknown> = {};
-
-    if (argsMatch) {
-      const argsContent = argsMatch[1];
-      const argPattern = /(\w+):\s*([^,\n]+)/g;
-      let argMatch;
-
-      while ((argMatch = argPattern.exec(argsContent)) !== null) {
-        const [, key, value] = argMatch;
-        const cleanValue = value.trim();
-
-        if (cleanValue === "true" || cleanValue === "false") {
-          args[key] = cleanValue === "true";
-        } else if (cleanValue.startsWith('"') || cleanValue.startsWith("'")) {
-          args[key] = cleanValue.slice(1, -1);
-        } else if (!isNaN(Number(cleanValue))) {
-          args[key] = Number(cleanValue);
-        } else {
-          args[key] = cleanValue;
-        }
-      }
-    }
+    const args = argsMatch ? parseArgs(argsMatch[1]) : {};
 
     return { argTypes, args };
   } catch (error) {
@@ -200,27 +229,41 @@ function parseStorybookFile(filePath: string): StorybookMeta | null {
   }
 }
 
+function resolveOptions(
+  options: string | (string | number)[],
+  constants: Record<string, unknown>
+): (string | number)[] | string {
+  if (typeof options !== "string") {
+    return options;
+  }
+
+  // Handle Object.keys(CONSTANT) pattern
+  if (options.startsWith("Object.keys(")) {
+    const constantName = options.match(/Object\.keys\((\w+)\)/)?.[1];
+    if (constantName && constants[constantName]) {
+      const constantValue = constants[constantName];
+      if (typeof constantValue === "object" && constantValue !== null) {
+        return Object.keys(constantValue);
+      }
+    }
+  } else if (constants[options]) {
+    // Direct constant reference
+    return constants[options] as (string | number)[];
+  }
+
+  return options;
+}
+
 function resolveConstantReferences(
   argTypes: Record<string, ArgType>,
   constants: Record<string, unknown>
 ): void {
-  for (const [, argType] of Object.entries(argTypes)) {
+  for (const argType of Object.values(argTypes)) {
     // Resolve options that are references to constants
-    if (typeof argType.options === "string") {
-      // Handle Object.keys(CONSTANT) pattern
-      if (argType.options.startsWith("Object.keys(")) {
-        const constantName = argType.options.match(
-          /Object\.keys\((\w+)\)/
-        )?.[1];
-        if (constantName && constants[constantName]) {
-          const constantValue = constants[constantName];
-          if (typeof constantValue === "object" && constantValue !== null) {
-            argType.options = Object.keys(constantValue);
-          }
-        }
-      } else if (constants[argType.options]) {
-        // Direct constant reference
-        argType.options = constants[argType.options] as (string | number)[];
+    if (argType.options) {
+      const resolved = resolveOptions(argType.options, constants);
+      if (resolved !== argType.options) {
+        argType.options = resolved;
       }
     }
 
@@ -231,31 +274,39 @@ function resolveConstantReferences(
   }
 }
 
+function getTypeFromControl(
+  controlType: string,
+  options?: (string | number)[]
+): string {
+  switch (controlType) {
+    case "boolean":
+      return "boolean";
+    case "text":
+      return "string";
+    case "number":
+      return "number";
+    case "select":
+    case "radio":
+      if (options && Array.isArray(options) && options.length > 0) {
+        return options.map((opt) => `"${opt}"`).join(" | ");
+      }
+      return "string";
+    case "object":
+      return "object";
+    case "array":
+      return "array";
+    default:
+      return "unknown";
+  }
+}
+
 function inferTypeFromArgType(argType: ArgType): string {
   // Check control type
   if (argType.control?.type) {
-    switch (argType.control.type) {
-      case "boolean":
-        return "boolean";
-      case "text":
-        return "string";
-      case "number":
-        return "number";
-      case "select":
-      case "radio":
-        if (
-          argType.options &&
-          Array.isArray(argType.options) &&
-          argType.options.length > 0
-        ) {
-          return argType.options.map((opt) => `"${opt}"`).join(" | ");
-        }
-        return "string";
-      case "object":
-        return "object";
-      case "array":
-        return "array";
-    }
+    return getTypeFromControl(
+      argType.control.type,
+      argType.options as (string | number)[]
+    );
   }
 
   // Check if it's an action
@@ -278,6 +329,60 @@ function inferTypeFromArgType(argType: ArgType): string {
 
   // Default
   return "unknown";
+}
+
+function createProp(argType: ArgType, defaultValue?: unknown): SimplifiedProp {
+  const prop: SimplifiedProp = {
+    type: inferTypeFromArgType(argType),
+    isRequired: argType.required || false,
+    description: argType.description,
+  };
+
+  // Add default value from args
+  if (defaultValue !== undefined) {
+    prop.defaultValue = defaultValue;
+  }
+
+  // Add options if available
+  if (
+    argType.options &&
+    Array.isArray(argType.options) &&
+    argType.options.length > 0
+  ) {
+    prop.options = argType.options;
+
+    // Also update the type to be a union of the options
+    if (prop.options.length > 0) {
+      const sample = prop.options[0];
+      if (typeof sample === "number") {
+        prop.type = prop.options.join(" | ");
+      } else {
+        prop.type = prop.options
+          .map((opt: string | number) => `"${opt}"`)
+          .join(" | ");
+      }
+    }
+  }
+
+  return prop;
+}
+
+function addCommonProps(props: Record<string, SimplifiedProp>): void {
+  const commonProps = ["className", "style", "children", "id"];
+  for (const propName of commonProps) {
+    if (!props[propName]) {
+      props[propName] = {
+        type:
+          propName === "children"
+            ? "ReactNode"
+            : propName === "style"
+              ? "CSSProperties"
+              : "string",
+        isRequired: false,
+        description: `Standard React ${propName} prop`,
+      };
+    }
+  }
 }
 
 function extractPropsFromStorybook(
@@ -304,62 +409,11 @@ function extractPropsFromStorybook(
   const props: Record<string, SimplifiedProp> = {};
 
   for (const [propName, argType] of Object.entries(meta.argTypes)) {
-    const prop: SimplifiedProp = {
-      type: inferTypeFromArgType(argType),
-      isRequired: argType.type?.required || false,
-      description: argType.description,
-    };
-
-    // Add default value from args
-    if (meta.args && meta.args[propName] !== undefined) {
-      prop.defaultValue = meta.args[propName];
-    }
-
-    // Add options if available
-    if (
-      argType.options &&
-      Array.isArray(argType.options) &&
-      argType.options.length > 0
-    ) {
-      prop.options = argType.options;
-
-      // Also update the type to be a union of the options
-      if (prop.options.length > 0) {
-        const sample = prop.options[0];
-        if (typeof sample === "number") {
-          prop.type = prop.options.join(" | ");
-        } else {
-          prop.type = prop.options
-            .map((opt: string | number) => `"${opt}"`)
-            .join(" | ");
-        }
-      }
-    }
-
-    // Add control type
-    if (argType.control?.type) {
-      prop.control = argType.control.type;
-    }
-
-    props[propName] = prop;
+    props[propName] = createProp(argType, meta.args?.[propName]);
   }
 
   // Add common props that might not be in argTypes but are standard
-  const commonProps = ["className", "style", "children", "id"];
-  for (const propName of commonProps) {
-    if (!props[propName]) {
-      props[propName] = {
-        type:
-          propName === "children"
-            ? "ReactNode"
-            : propName === "style"
-              ? "CSSProperties"
-              : "string",
-        isRequired: false,
-        description: `Standard React ${propName} prop`,
-      };
-    }
-  }
+  addCommonProps(props);
 
   console.log(`    ✅ Found ${Object.keys(props).length} props`);
   return { props };

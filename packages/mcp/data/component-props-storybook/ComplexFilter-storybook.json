@@ -3,28 +3,23 @@
     "props": {
       "isTriggerChangeOnOptionClick": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "multiple": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "onChange": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "search": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

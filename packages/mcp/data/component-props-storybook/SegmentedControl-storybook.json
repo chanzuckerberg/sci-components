@@ -3,8 +3,7 @@
     "props": {
       "buttonDefinition": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "className": {
         "type": "string",

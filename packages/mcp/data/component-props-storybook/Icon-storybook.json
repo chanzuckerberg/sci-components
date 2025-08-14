@@ -11,8 +11,7 @@
           "purple",
           "red",
           "yellow"
-        ],
-        "control": "select"
+        ]
       },
       "sdsIcon": {
         "type": "\"CheckCircle\" | \"Copy\" | \"Edit\" | \"LightBulb\" | \"LinesHorizontal\" | \"Loading\" | \"XMark\"",
@@ -25,8 +24,7 @@
           "LinesHorizontal",
           "Loading",
           "XMark"
-        ],
-        "control": "select"
+        ]
       },
       "sdsSize": {
         "type": "\"xs\" | \"s\" | \"l\" | \"xl\"",
@@ -36,8 +34,7 @@
           "s",
           "l",
           "xl"
-        ],
-        "control": "select"
+        ]
       },
       "shade": {
         "type": "100 | 200 | 300 | 400 | 500 | 600 | 700 | 800",
@@ -51,8 +48,7 @@
           600,
           700,
           800
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

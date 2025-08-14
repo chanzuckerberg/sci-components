@@ -4,15 +4,16 @@
       "horizontalAlign": {
         "type": "\"left\" | \"right\"",
         "isRequired": false,
+        "description": "Horizontal alignment of the cell",
         "options": [
           "left",
           "right"
-        ],
-        "control": "select"
+        ]
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\"",
         "isRequired": false,
+        "description": "Icon to be displayed",
         "options": [
           "0",
           "1",
@@ -26,93 +27,91 @@
           "9",
           "10",
           "11"
-        ],
-        "control": "select"
+        ]
       },
       "iconVerticalAlign": {
         "type": "\"top\" | \"center\" | \"bottom\"",
         "isRequired": false,
+        "description": "Vertical alignment of the icon",
         "options": [
           "top",
           "center",
           "bottom"
-        ],
-        "control": "select"
+        ]
       },
       "primaryText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "Primary text to be displayed"
       },
       "primaryTextComponentSlotBottom": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "primaryTextComponentSlotRight": {
         "type": "string",
         "isRequired": false,
-        "control": "select"
+        "description": "Component slot to the right of primary text"
       },
       "primaryTextWrapLineCount": {
         "type": "number",
         "isRequired": false,
-        "control": "number"
+        "description": "Number of lines to wrap the primary text"
       },
       "secondaryText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "Secondary text to be displayed"
       },
       "secondaryTextWrapLineCount": {
         "type": "number",
         "isRequired": false,
-        "control": "number"
+        "description": "Number of lines to wrap the secondary text"
       },
       "shouldShowTooltipOnHover": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Show tooltip on hover"
       },
       "shouldTextWrap": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Wrap text"
       },
       "tabularNums": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Whether to display the primary text in tabular numbers"
       },
       "tertiaryText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "Tertiary text to be displayed"
       },
       "tertiaryTextWrapLineCount": {
         "type": "number",
         "isRequired": false,
-        "control": "number"
+        "description": "Number of lines to wrap the tertiary text"
       },
       "tooltipProps": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "Props for the tooltip"
       },
       "verticalAlign": {
         "type": "\"top\" | \"center\" | \"bottom\"",
         "isRequired": false,
+        "description": "Vertical alignment of the cell",
         "options": [
           "top",
           "center",
           "bottom"
-        ],
-        "control": "select"
+        ]
       },
       "width": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "Width of the cell"
       },
       "className": {
         "type": "string",

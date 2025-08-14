@@ -3,23 +3,19 @@
     "props": {
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "offLabel": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "onLabel": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "width": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "className": {
         "type": "string",

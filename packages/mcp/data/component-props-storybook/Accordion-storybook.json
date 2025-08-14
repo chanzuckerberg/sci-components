@@ -3,18 +3,15 @@
     "props": {
       "defaultExpanded": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "id": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": true
       },
       "subtitle": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "togglePosition": {
         "type": "\"right\" | \"left\"",
@@ -22,13 +19,11 @@
         "options": [
           "right",
           "left"
-        ],
-        "control": "select"
+        ]
       },
       "useDivider": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

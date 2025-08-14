@@ -8,8 +8,7 @@
           "String",
           "Element",
           "None"
-        ],
-        "control": "select"
+        ]
       },
       "itemAlign": {
         "type": "\"right\" | \"left\"",
@@ -17,13 +16,11 @@
         "options": [
           "right",
           "left"
-        ],
-        "control": "radio"
+        ]
       },
       "showSectionHeader": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

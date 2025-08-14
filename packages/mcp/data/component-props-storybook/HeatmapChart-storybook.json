@@ -3,13 +3,11 @@
     "props": {
       "axisPointer": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "camera": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "echartsRendererMode": {
         "type": "\"canvas\" | \"svg\"",
@@ -17,8 +15,7 @@
         "options": [
           "canvas",
           "svg"
-        ],
-        "control": "select"
+        ]
       },
       "symbol": {
         "type": "\"circle\" | \"rect\" | \"roundRect\"",
@@ -27,13 +24,11 @@
           "circle",
           "rect",
           "roundRect"
-        ],
-        "control": "select"
+        ]
       },
       "tooltip": {
         "type": "string",
-        "isRequired": false,
-        "control": "select"
+        "isRequired": false
       },
       "className": {
         "type": "string",

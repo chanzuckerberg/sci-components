@@ -3,8 +3,7 @@
     "props": {
       "arrowOffset": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "componentSlot": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
@@ -16,13 +15,11 @@
           "3",
           "4",
           "5"
-        ],
-        "control": "select"
+        ]
       },
       "hasInvertedStyle": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "placement": {
         "type": "\"bottom-start\" | \"bottom\" | \"bottom-end\" | \"left-start\" | \"left\" | \"left-end\" | \"right-start\" | \"right\" | \"right-end\" | \"top-start\" | \"top\" | \"top-end\"",
@@ -40,8 +37,7 @@
           "top-start",
           "top",
           "top-end"
-        ],
-        "control": "select"
+        ]
       },
       "textAlign": {
         "type": "\"left\" | \"center\" | \"right\"",
@@ -50,13 +46,11 @@
           "left",
           "center",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "title": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "width": {
         "type": "\"default\" | \"wide\"",
@@ -64,8 +58,7 @@
         "options": [
           "default",
           "wide"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

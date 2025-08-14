@@ -4,14 +4,12 @@
       "dismissed": {
         "type": "boolean",
         "isRequired": false,
-        "defaultValue": false,
-        "control": "boolean"
+        "defaultValue": false
       },
       "dismissible": {
         "type": "boolean",
         "isRequired": false,
-        "defaultValue": true,
-        "control": "boolean"
+        "defaultValue": true
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
@@ -22,29 +20,25 @@
           "2",
           "3",
           "4"
-        ],
-        "control": "select"
+        ]
       },
       "sdsIconProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "sdsType": {
         "type": "\"primary\" | \"secondary\"",
-        "isRequired": false,
+        "isRequired": true,
         "defaultValue": "primary",
         "options": [
           "primary",
           "secondary"
-        ],
-        "control": "radio"
+        ]
       },
       "textChild": {
         "type": "string",
-        "isRequired": false,
-        "defaultValue": "BANNER_TEXT",
-        "control": "text"
+        "isRequired": true,
+        "defaultValue": "BANNER_TEXT"
       },
       "className": {
         "type": "string",

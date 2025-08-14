@@ -9,11 +9,13 @@ import { getComponentPropsTool } from "./get-component-props.js";
 // import { installationTool } from "./installation.js";
 // import { listComponentTemplatesTool } from "./list-component-templates.js";
 import { listComponentsTool } from "./list-components.js";
+import { getComponentPropsStorybookTool } from "./get-component-props-storybook.js";
 // import { v2ToV3MigrationTool } from "./v2-to-v3-migration.js";
 
 const tools: Tool[] = [
   // getComponentExampleTool,
   getComponentPropsTool,
+  getComponentPropsStorybookTool,
   // getThemeTool,
   listComponentsTool,
   // customizeThemeTool,

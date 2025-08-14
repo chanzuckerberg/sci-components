@@ -7,18 +7,15 @@
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "canClickOutsideClose": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "longContent": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "sdsSize": {
         "type": "\"xs\" | \"s\" | \"m\" | \"l\"",
@@ -28,13 +25,11 @@
           "s",
           "m",
           "l"
-        ],
-        "control": "radio"
+        ]
       },
       "titleOnClose": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

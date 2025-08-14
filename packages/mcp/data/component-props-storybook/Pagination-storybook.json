@@ -3,8 +3,7 @@
     "props": {
       "pageSize": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "sdsStyle": {
         "type": "\"round\" | \"square\"",
@@ -12,23 +11,19 @@
         "options": [
           "round",
           "square"
-        ],
-        "control": "select"
+        ]
       },
       "siblingCount": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "totalCount": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "truncateDropdown": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "className": {
         "type": "string",

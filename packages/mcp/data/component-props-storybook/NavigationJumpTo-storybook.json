@@ -4,17 +4,17 @@
       "items": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "An array of object containing a title for the Navigation Tab and a ref to the section div."
       },
       "offsetTop": {
         "type": "number",
         "isRequired": false,
-        "control": "number"
+        "description": "wew"
       },
       "width": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The width of the component."
       },
       "className": {
         "type": "string",

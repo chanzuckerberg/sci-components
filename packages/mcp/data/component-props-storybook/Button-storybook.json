@@ -12,8 +12,7 @@
           "4",
           "5",
           "6"
-        ],
-        "control": "select"
+        ]
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\"",
@@ -26,16 +25,14 @@
           "4",
           "5",
           "6"
-        ],
-        "control": "select"
+        ]
       },
       "isAllCaps": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "onClick": {
-        "type": "unknown",
+        "type": "function",
         "isRequired": false
       },
       "sdsSize": {
@@ -45,8 +42,7 @@
           "0",
           "1",
           "2"
-        ],
-        "control": "select"
+        ]
       },
       "sdsStyle": {
         "type": "\"rounded\" | \"square\" | \"minimal\" | \"icon\"",
@@ -56,8 +52,7 @@
           "square",
           "minimal",
           "icon"
-        ],
-        "control": "select"
+        ]
       },
       "sdsType": {
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
@@ -67,8 +62,7 @@
           "secondary",
           "tertiary",
           "destructive"
-        ],
-        "control": "select"
+        ]
       },
       "startIcon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\"",
@@ -81,13 +75,11 @@
           "4",
           "5",
           "6"
-        ],
-        "control": "select"
+        ]
       },
       "text": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

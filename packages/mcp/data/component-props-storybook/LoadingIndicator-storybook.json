@@ -7,8 +7,7 @@
         "options": [
           "minimal",
           "tag"
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

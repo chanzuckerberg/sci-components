@@ -3,33 +3,27 @@
     "props": {
       "defaultValue": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "marks": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "max": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "min": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "step": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "valueLabelDisplay": {
         "type": "\"auto\" | \"off\" | \"on\"",
@@ -38,8 +32,7 @@
           "auto",
           "off",
           "on"
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

@@ -4,7 +4,7 @@
       "isBackdropClickEnabled": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "If true, clicking on the backdrop will close the panel. Only applies to overlay panels."
       },
       "position": {
         "type": "\"left\" | \"right\" | \"bottom\"",
@@ -13,8 +13,7 @@
           "left",
           "right",
           "bottom"
-        ],
-        "control": "select"
+        ]
       },
       "sdsType": {
         "type": "\"basic\" | \"overlay\"",
@@ -22,13 +21,11 @@
         "options": [
           "basic",
           "overlay"
-        ],
-        "control": "select"
+        ]
       },
       "width": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

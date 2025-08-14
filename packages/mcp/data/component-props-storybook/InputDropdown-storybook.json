@@ -3,13 +3,11 @@
     "props": {
       "counter": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -19,18 +17,15 @@
           "negative",
           "notice",
           "positive"
-        ],
-        "control": "radio"
+        ]
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "multiple": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "sdsStyle": {
         "type": "\"square\" | \"rounded\" | \"minimal\"",
@@ -39,8 +34,7 @@
           "square",
           "rounded",
           "minimal"
-        ],
-        "control": "select"
+        ]
       },
       "sdsType": {
         "type": "\"label\" | \"value\"",
@@ -48,28 +42,23 @@
         "options": [
           "label",
           "value"
-        ],
-        "control": "radio"
+        ]
       },
       "shouldPutAColonAfterLabel": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "shouldTruncateMinimalDetails": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "style": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "width": {
         "type": "number",
-        "isRequired": false,
-        "control": "number"
+        "isRequired": false
       },
       "className": {
         "type": "string",

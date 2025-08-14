@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys */
 import { z } from "zod";
 import { fetchComponentProps, getAllComponentNames } from "../lib/fetch.js";
 import { type Tool } from "../lib/types.js";

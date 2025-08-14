@@ -3,8 +3,7 @@
     "props": {
       "active": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "direction": {
         "type": "\"asc\" | \"desc\"",
@@ -12,13 +11,11 @@
         "options": [
           "asc",
           "desc"
-        ],
-        "control": "select"
+        ]
       },
       "hideSortIcon": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "horizontalAlign": {
         "type": "\"left\" | \"center\" | \"right\"",
@@ -27,33 +24,27 @@
           "left",
           "center",
           "right"
-        ],
-        "control": "select"
+        ]
       },
       "hover": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "shouldShowTooltipOnHover": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "tooltipProps": {
         "type": "object",
-        "isRequired": false,
-        "control": "object"
+        "isRequired": false
       },
       "tooltipText": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "width": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "className": {
         "type": "string",

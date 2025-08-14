@@ -7,8 +7,7 @@
         "options": [
           "normal",
           "bold"
-        ],
-        "control": "radio"
+        ]
       },
       "sdsSize": {
         "type": "\"s\" | \"xs\"",
@@ -16,8 +15,7 @@
         "options": [
           "s",
           "xs"
-        ],
-        "control": "select"
+        ]
       },
       "sdsStyle": {
         "type": "\"default\" | \"dashed\"",
@@ -25,8 +23,7 @@
         "options": [
           "default",
           "dashed"
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

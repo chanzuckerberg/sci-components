@@ -4,11 +4,12 @@
       "boundingBox": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "If true, the card will include a bounding box; otherwise, it will not."
       },
       "buttons": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\" | \"12\" | \"13\" | \"14\" | \"15\" | \"16\" | \"17\" | \"18\" | \"19\"",
         "isRequired": false,
+        "description": "Select the buttons to display. This is a multi-select field, and you can hold the Cmd (Mac) or Ctrl (Windows) key to select multiple options.",
         "options": [
           "0",
           "1",
@@ -35,35 +36,36 @@
       "buttonsPosition": {
         "type": "\"left\" | \"right\"",
         "isRequired": false,
+        "description": "Defines the position of the buttons.",
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "classes": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "Defines the css classes to be applied to the card components."
       },
       "clickableCard": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "If set to true, the entire card becomes a clickable button. Note that enabling this prop automatically sets boundingBox to true, and only the first button in the action area will be visible."
       },
       "clickableCardProps": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "If clickableCard is set to true, this prop accepts a ButtonProps object to be passed to the button."
       },
       "decorativeBorder": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "If true, and imagePadding is also true, the card will display a decorative border on the left for wide cards and on the top for narrow cards."
       },
       "icon": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
         "isRequired": false,
+        "description": "If visualElementType is set to `icon`, this prop accepts an icon to be displayed in the card’s media section.",
         "options": [
           "0",
           "1",
@@ -71,12 +73,12 @@
           "3",
           "4",
           "5"
-        ],
-        "control": "select"
+        ]
       },
       "image": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
         "isRequired": false,
+        "description": "If visualElementType is set to `image`, this prop accepts an image to be displayed in the card’s media section.",
         "options": [
           "0",
           "1",
@@ -88,66 +90,65 @@
           "7",
           "8",
           "9"
-        ],
-        "control": "select"
+        ]
       },
       "imagePadding": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "If true, the card will include a padding to the image; otherwise, it will not."
       },
       "imagePosition": {
         "type": "\"left\" | \"right\"",
         "isRequired": false,
+        "description": "Defines the position of the image. If the image is not set, this prop will have no effect.",
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "imageSize": {
         "type": "number",
         "isRequired": false,
-        "control": "number"
+        "description": "Defines the size of the image in pixels, serving as the maximum and minimum boundary for the visual element."
       },
       "metadataText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The text to display in the metadata section of the card title."
       },
       "overlineText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The text to display in the overline section of the card title."
       },
       "sdsType": {
         "type": "\"wide\" | \"narrow\"",
         "isRequired": false,
+        "description": "Defines the type of card to display.",
         "options": [
           "wide",
           "narrow"
-        ],
-        "control": "radio"
+        ]
       },
       "subtitleText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The text to display in the subtitle section of the card title."
       },
       "titleText": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The text to display in the title section of the card."
       },
       "visualElementType": {
         "type": "\"image\" | \"icon\" | \"none\"",
         "isRequired": false,
+        "description": "The type of media to display in the card.",
         "options": [
           "image",
           "icon",
           "none"
-        ],
-        "control": "select"
+        ]
       },
       "className": {
         "type": "string",

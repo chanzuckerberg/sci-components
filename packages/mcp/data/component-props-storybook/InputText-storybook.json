@@ -3,18 +3,15 @@
     "props": {
       "disabled": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "hideLabel": {
         "type": "boolean",
-        "isRequired": false,
-        "control": "boolean"
+        "isRequired": false
       },
       "id": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": true
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -24,18 +21,15 @@
           "negative",
           "notice",
           "positive"
-        ],
-        "control": "radio"
+        ]
       },
       "label": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "placeholder": {
         "type": "string",
-        "isRequired": false,
-        "control": "text"
+        "isRequired": false
       },
       "sdsType": {
         "type": "\"textField\" | \"textArea\"",
@@ -43,8 +37,7 @@
         "options": [
           "textField",
           "textArea"
-        ],
-        "control": "radio"
+        ]
       },
       "className": {
         "type": "string",

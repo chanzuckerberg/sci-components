@@ -4,91 +4,91 @@
       "buttons": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "List of buttons to display in the navigation header."
       },
       "hasInvertedStyle": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Invert the colors of the navigation header."
       },
       "logo": {
         "type": "\"0\"",
         "isRequired": false,
+        "description": "The logo to display in the navigation header.",
         "options": [
           "0"
-        ],
-        "control": "select"
+        ]
       },
       "logoLinkComponent": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The link component to display in the navigation header."
       },
       "logoUrl": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The URL of the logo."
       },
       "position": {
         "type": "\"absolute\" | \"fixed\" | \"relative\" | \"static\" | \"sticky\"",
         "isRequired": false,
+        "description": "Position of the navigation header.",
         "options": [
           "absolute",
           "fixed",
           "relative",
           "static",
           "sticky"
-        ],
-        "control": "select"
+        ]
       },
       "primaryNavItems": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "List of primary navigation items to display in the navigation header."
       },
       "primaryNavPosition": {
         "type": "\"left\" | \"right\"",
         "isRequired": false,
+        "description": "Position of the primary navigation items.",
         "options": [
           "left",
           "right"
-        ],
-        "control": "radio"
+        ]
       },
       "scrollElevation": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Elevate the navigation header when the user scrolls."
       },
       "searchProps": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "Search props for the navigation header."
       },
       "secondaryNavItems": {
         "type": "object",
         "isRequired": false,
-        "control": "object"
+        "description": "List of secondary navigation items to display in the navigation header."
       },
       "showSearch": {
         "type": "boolean",
         "isRequired": false,
-        "control": "boolean"
+        "description": "Show the search input in the navigation header."
       },
       "tag": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "The tag to display in the navigation header next to the logo."
       },
       "tagColor": {
         "type": "string",
         "isRequired": false,
-        "control": "select"
+        "description": "Color of the tag."
       },
       "title": {
         "type": "string",
         "isRequired": false,
-        "control": "text"
+        "description": "Title to display in the navigation header."
       },
       "className": {
         "type": "string",
