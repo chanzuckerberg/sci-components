@@ -25,8 +25,8 @@
     "inspect:dev": "npx @modelcontextprotocol/inspector npx tsx src/stdio.ts",
     "serve": "tsx --watch src/http.ts",
     "generate:components-list": "tsx scripts/generate-component-list.ts",
-    "generate:component-props": "tsx scripts/generate-component-props-advanced.ts",
-    "generate:props-docgen": "tsx scripts/generate-props-docgen.ts"
+    "generate:component-props": "tsx scripts/generate-component-props.ts",
+    "generate:all": "yarn generate:components-list && yarn generate:component-props"
   },
   "bin": {
     "sds-mcp": "./dist/stdio.js"
@@ -48,7 +48,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.15.0",
     "express": "^5.1.0",
-    "zod": "3.24.4"
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",

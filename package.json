@@ -138,6 +138,7 @@
     "test:publish": "echo 'Run yarn verdaccio:start in another terminal, then run yarn verdaccio:login to authenticate, then yarn publish:local'",
     "mcp:build": "yarn workspace @czi-sds/mcp build",
     "mcp:dev": "yarn workspace @czi-sds/mcp dev",
+    "mcp:generate": "yarn workspace @czi-sds/mcp generate:all",
     "mcp:inspect": "yarn workspace @czi-sds/mcp inspect",
     "mcp:serve": "yarn workspace @czi-sds/mcp serve",
     "mcp:release": "yarn workspace @czi-sds/mcp release"
@@ -172,6 +173,9 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "resolutions": {
+    "browserslist-generator": "^3.0.0"
   },
   "engines": {
     "node": ">=22.0.0",

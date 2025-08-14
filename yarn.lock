@@ -1671,9 +1671,10 @@ __metadata:
     "@types/express": "npm:^5.0.3"
     "@types/fs-extra": "npm:^11.0.4"
     express: "npm:^5.1.0"
+    react-docgen-typescript: "npm:^2.4.0"
     tsup: "npm:^8.5.0"
     tsx: "npm:^4.20.3"
-    typescript: "npm:5.8.3"
+    typescript: "npm:^5.9.2"
     zod: "npm:^3.24.4"
   bin:
     sds-mcp: ./dist/stdio.js
@@ -1731,7 +1732,6 @@ __metadata:
     "@types/eslint": "npm:^8.56.0"
     "@types/eslint-config-prettier": "npm:^6.11.3"
     "@types/eslint-plugin-prettier": "npm:^3.1.3"
-    "@types/express": "npm:^5.0.3"
     "@types/jest": "npm:^29.5.11"
     "@types/lint-staged": "npm:^13.3.0"
     "@types/postcss-flexbugs-fixes": "npm:^5.0.3"
@@ -1765,7 +1765,6 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-sonarjs: "npm:^0.23.0"
     eslint-plugin-storybook: "npm:^0.9.0"
-    express: "npm:^5.1.0"
     husky: "npm:^8.0.3"
     jest: "npm:^29.7.0"
     lerna: "npm:^8.0.1"
@@ -2959,10 +2958,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdn/browser-compat-data@npm:^5.5.49":
-  version: 5.6.7
-  resolution: "@mdn/browser-compat-data@npm:5.6.7"
-  checksum: 10c0/aaf0f8e4480406e9c0a0017c306b74fb718ae59945a64170c3ac4fa0fb27ebab40f11ea118ec2ade4a0a7f24f2d4b4f74c2f6b63811c718a28fbb78217d04952
+"@mdn/browser-compat-data@npm:^5.6.2":
+  version: 5.7.6
+  resolution: "@mdn/browser-compat-data@npm:5.7.6"
+  checksum: 10c0/918df768e734115bee0a43fb2eceaf6438cb9b294c27e13d0ac8a19ab9f00f59e4f306fc38c498b62bdec2d726d4f3874826fa2afccd2a29d50d306f687bfdff
   languageName: node
   linkType: hard
 
@@ -7866,21 +7865,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist-generator@npm:^2.1.0":
-  version: 2.3.0
-  resolution: "browserslist-generator@npm:2.3.0"
+"browserslist-generator@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "browserslist-generator@npm:3.0.0"
   dependencies:
-    "@mdn/browser-compat-data": "npm:^5.5.49"
+    "@mdn/browser-compat-data": "npm:^5.6.2"
     "@types/object-path": "npm:^0.11.4"
     "@types/semver": "npm:^7.5.8"
     "@types/ua-parser-js": "npm:^0.7.39"
     browserslist: "npm:^4.23.3"
-    caniuse-lite: "npm:^1.0.30001653"
-    isbot: "npm:^3.6.13"
+    caniuse-lite: "npm:^1.0.30001663"
+    isbot: "npm:^5.1.17"
     object-path: "npm:^0.11.8"
     semver: "npm:^7.6.3"
-    ua-parser-js: "npm:^1.0.38"
-  checksum: 10c0/4b9a65d5667fd907be8fe3afc622bdfc8096ac2b6f044d313e27313ecb90622cb3b877280c47f3115b3176df7ffc05399217d17131ef01aa3d94af9fb876f423
+    ua-parser-js: "npm:^1.0.39"
+  checksum: 10c0/d0cccec8069e1738ec2fcd0ed9938fb5bb6ea4480f532dfd5fd09a3c1ec0b569124554e4e00cdac04de8e6c4a0f62eae6c28cd93f166c636cd5f30aaa273e918
   languageName: node
   linkType: hard
 
@@ -8104,7 +8103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001653, caniuse-lite@npm:^1.0.30001663":
+"caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001646, caniuse-lite@npm:^1.0.30001663":
   version: 1.0.30001669
   resolution: "caniuse-lite@npm:1.0.30001669"
   checksum: 10c0/f125f23440d3dbb6c25ffb8d55f4ce48af36a84d0932b152b3b74f143a4170cbe92e02b0a9676209c86609bf7bf34119ff10cc2bc7c1b7ea40e936cc16598408
@@ -13945,10 +13944,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbot@npm:^3.6.13":
-  version: 3.8.0
-  resolution: "isbot@npm:3.8.0"
-  checksum: 10c0/3e9daa907212db8e8e339fe0c7eacff7814de0db0aeef9ab379376b245f35058c6bdd2de0849442a791bc3d9587d749071e7d7e90aea00bf9f834f40c69ea16f
+"isbot@npm:^5.1.17":
+  version: 5.1.29
+  resolution: "isbot@npm:5.1.29"
+  checksum: 10c0/a230429cf6de4b551c129aee8a52b65a6f298a440301537072ddfe94e1eeb481d55bbab1a743084d079c23c71e72ebd89a421d6f7e897f9807493a2f4900319d
   languageName: node
   linkType: hard
 
@@ -18269,6 +18268,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-docgen-typescript@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "react-docgen-typescript@npm:2.4.0"
+  peerDependencies:
+    typescript: ">= 4.3.x"
+  checksum: 10c0/18e3e1c80d28abcdd72e62261d2f70b0904d9b088f9c2ebe485ffee5e46f5735208bc174a20ed2772112b3ca6432b5f3d5f0ac345872fe76e541f84543e49e50
+  languageName: node
+  linkType: hard
+
 "react-docgen@npm:^7.0.0":
   version: 7.0.3
   resolution: "react-docgen@npm:7.0.3"
@@ -21395,16 +21403,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.8.3":
-  version: 5.8.3
-  resolution: "typescript@npm:5.8.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/5f8bb01196e542e64d44db3d16ee0e4063ce4f3e3966df6005f2588e86d91c03e1fb131c2581baf0fb65ee79669eea6e161cd448178986587e9f6844446dbb48
-  languageName: node
-  linkType: hard
-
 "typescript@npm:>=3 < 6":
   version: 5.6.3
   resolution: "typescript@npm:5.6.3"
@@ -21412,6 +21410,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/44f61d3fb15c35359bc60399cb8127c30bae554cd555b8e2b46d68fa79d680354b83320ad419ff1b81a0bdf324197b29affe6cc28988cd6a74d4ac60c94f9799
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^5.9.2":
+  version: 5.9.2
+  resolution: "typescript@npm:5.9.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/cd635d50f02d6cf98ed42de2f76289701c1ec587a363369255f01ed15aaf22be0813226bff3c53e99d971f9b540e0b3cc7583dbe05faded49b1b0bed2f638a18
   languageName: node
   linkType: hard
 
@@ -21425,16 +21433,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>":
-  version: 5.8.3
-  resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=d69c25"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/92ea03509e06598948559ddcdd8a4ae5a7ab475766d5589f1b796f5731b3d631a4c7ddfb86a3bd44d58d10102b132cd4b4994dda9b63e6273c66d77d6a271dbd
-  languageName: node
-  linkType: hard
-
 "typescript@patch:typescript@npm%3A>=3 < 6#optional!builtin<compat/typescript>":
   version: 5.6.3
   resolution: "typescript@patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=d69c25"
@@ -21445,12 +21443,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ua-parser-js@npm:^1.0.38":
-  version: 1.0.39
-  resolution: "ua-parser-js@npm:1.0.39"
+"typescript@patch:typescript@npm%3A^5.9.2#optional!builtin<compat/typescript>":
+  version: 5.9.2
+  resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=d69c25"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/66fc07779427a7c3fa97da0cf2e62595eaff2cea4594d45497d294bfa7cb514d164f0b6ce7a5121652cf44c0822af74e29ee579c771c405e002d1f23cf06bfde
+  languageName: node
+  linkType: hard
+
+"ua-parser-js@npm:^1.0.39":
+  version: 1.0.40
+  resolution: "ua-parser-js@npm:1.0.40"
   bin:
     ua-parser-js: script/cli.js
-  checksum: 10c0/c6452b0c683000f10975cb0a7e74cb1119ea95d4522ae85f396fa53b0b17884358a24ffdd86a66030c6b2981bdc502109a618c79fdaa217ee9032c9e46fcc78a
+  checksum: 10c0/2b6ac642c74323957dae142c31f72287f2420c12dced9603d989b96c132b80232779c429b296d7de4012ef8b64e0d8fadc53c639ef06633ce13d785a78b5be6c
   languageName: node
   linkType: hard
 

@@ -6,8 +6,6 @@ module.exports = {
     jest: true,
     node: true,
   },
-  // Excludes config files from linting
-  ignorePatterns: ["rollup.config.mjs"],
   // Specifies the ESLint parser
   extends: [
     "plugin:import/recommended",
@@ -21,6 +19,8 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
   ],
+  // Excludes config files from linting
+  ignorePatterns: ["rollup.config.mjs"],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier
   // rules in all ComponentName.namespace.tsx files
@@ -103,15 +103,15 @@ module.exports = {
     "react/require-default-props": "off",
     // (thuang): We use nested template literals in @emotion extensively
     "sonarjs/no-nested-template-literals": "off",
-    "sort-keys": [
-      "error",
-      "asc",
-      {
-        caseSensitive: true,
-        minKeys: 2,
-        natural: false,
-      },
-    ],
+    // "sort-keys": [
+    //   "error",
+    //   "asc",
+    //   {
+    //     caseSensitive: true,
+    //     minKeys: 2,
+    //     natural: false,
+    //   },
+    // ],
   },
   settings: {
     react: {

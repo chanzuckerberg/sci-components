@@ -11,7 +11,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 interface SimplifiedProp {
-  defaultValue?: any;
+  defaultValue?: string | number | boolean | null;
   type: string;
   isRequired: boolean;
   description?: string;
@@ -25,8 +25,8 @@ interface ComponentProps {
 const parserOptions: ParserOptions = {
   savePropValueAsString: true,
   shouldExtractLiteralValuesFromEnum: true,
-  shouldRemoveUndefinedFromOptional: true,
   shouldExtractValuesFromUnion: true,
+  shouldRemoveUndefinedFromOptional: true,
   // Filter out HTML props and internal React props
   propFilter: (prop: PropItem) => {
     // Skip HTML attributes unless they're explicitly defined
@@ -147,6 +147,60 @@ function simplifyType(type: string): string {
   return type;
 }
 
+function parseDefaultValue(value: string): string | number | boolean | null {
+  // Try to parse as JSON first
+  try {
+    return JSON.parse(value);
+  } catch {
+    // If not JSON, use as string but clean it up
+    const cleanValue = value.replace(/['"]/g, "");
+    if (cleanValue === "true") return true;
+    if (cleanValue === "false") return false;
+    if (!isNaN(Number(cleanValue))) return Number(cleanValue);
+    return cleanValue;
+  }
+}
+
+function extractEnumValues(typeValue: PropItem["type"]): string {
+  if (typeValue.name !== "enum" || !typeValue.value) {
+    return typeValue.raw || typeValue.name;
+  }
+
+  const values = typeValue.value
+    .map((v: { value?: unknown } | string | number) => {
+      if (typeof v === "object" && v !== null && v.value) {
+        const val = String(v.value);
+        if (val.startsWith('"') && val.endsWith('"')) {
+          return val.slice(1, -1);
+        }
+        return val;
+      }
+      return v;
+    })
+    .filter(
+      (v: unknown): v is string | number =>
+        v !== undefined && v !== "" && v !== "|"
+    );
+
+  if (values.length > 0) {
+    return values.map((v: string | number) => `"${v}"`).join(" | ");
+  }
+
+  return typeValue.raw || typeValue.name;
+}
+
+function addSDSPropDescriptions(props: Record<string, SimplifiedProp>): void {
+  if (props.sdsStyle && !props.sdsStyle.description) {
+    props.sdsStyle.description = "The visual style variant of the component";
+  }
+  if (props.sdsType && !props.sdsType.description) {
+    props.sdsType.description = "The type/variant of the component";
+  }
+  if (props.sdsSize && !props.sdsSize.description) {
+    props.sdsSize.description = "The size of the component";
+  }
+}
+
 function extractPropsFromComponent(
   componentPath: string,
   componentName: string
@@ -154,66 +208,21 @@ function extractPropsFromComponent(
   try {
     console.log(`  🔍 Parsing ${componentName}...`);
 
-    // Parse the component file
     const docs = parser.parse(componentPath);
-
     if (docs.length === 0) {
       console.log(`    ⚠️  No documentation found`);
       return null;
     }
 
-    // Use the first component found (usually the default export)
     const componentDoc = docs[0];
     const props: Record<string, SimplifiedProp> = {};
 
-    // Process each prop
     for (const [propName, propInfo] of Object.entries(componentDoc.props)) {
-      // Parse default value
-      let defaultValue: any = undefined;
-      if (propInfo.defaultValue?.value) {
-        const value = propInfo.defaultValue.value;
-        // Try to parse as JSON first
-        try {
-          defaultValue = JSON.parse(value);
-        } catch {
-          // If not JSON, use as string but clean it up
-          defaultValue = value.replace(/['"]/g, "");
-          if (defaultValue === "true") defaultValue = true;
-          else if (defaultValue === "false") defaultValue = false;
-          else if (!isNaN(Number(defaultValue)))
-            defaultValue = Number(defaultValue);
-        }
-      }
+      const defaultValue = propInfo.defaultValue?.value
+        ? parseDefaultValue(propInfo.defaultValue.value)
+        : undefined;
 
-      // Extract the actual type values for enums/unions
-      let typeValue = propInfo.type.name;
-
-      // If it's a union type, try to get the actual values
-      if (propInfo.type.name === "enum" && propInfo.type.value) {
-        // The type.value array contains the actual union values
-        const values = propInfo.type.value
-          .map((v: any) => {
-            // Extract the value, handling different structures
-            if (typeof v === "object" && v !== null && v.value) {
-              // Remove surrounding quotes if they exist
-              const val = v.value.toString();
-              if (val.startsWith('"') && val.endsWith('"')) {
-                return val.slice(1, -1);
-              }
-              return val;
-            }
-            return v;
-          })
-          .filter((v: any) => v !== undefined && v !== "" && v !== "|");
-
-        if (values.length > 0) {
-          // Format as TypeScript union type
-          typeValue = values.map((v: any) => `"${v}"`).join(" | ");
-        }
-      } else if (propInfo.type.raw) {
-        // Sometimes the raw type string is more accurate
-        typeValue = propInfo.type.raw;
-      }
+      const typeValue = extractEnumValues(propInfo.type);
 
       props[propName] = {
         type: simplifyType(typeValue),
@@ -223,17 +232,7 @@ function extractPropsFromComponent(
       };
     }
 
-    // Add common SDS prop descriptions if missing
-    if (props.sdsStyle && !props.sdsStyle.description) {
-      props.sdsStyle.description = "The visual style variant of the component";
-    }
-    if (props.sdsType && !props.sdsType.description) {
-      props.sdsType.description = "The type/variant of the component";
-    }
-    if (props.sdsSize && !props.sdsSize.description) {
-      props.sdsSize.description = "The size of the component";
-    }
-
+    addSDSPropDescriptions(props);
     console.log(`    ✅ Found ${Object.keys(props).length} props`);
 
     return { props };
@@ -245,99 +244,75 @@ function extractPropsFromComponent(
   }
 }
 
-function generatePropsWithDocgen() {
-  console.log("🚀 Generating component props using react-docgen-typescript\n");
+interface ProcessResult {
+  successCount: number;
+  failCount: number;
+  propsCount: Record<string, number>;
+}
 
-  // Read component list
-  const componentListPath = path.join(dirname, "../data/component-list.json");
-  if (!fs.existsSync(componentListPath)) {
-    console.error(
-      "Component list not found. Please run 'yarn generate:components-list' first."
-    );
-    return;
+function processComponent(
+  componentName: string,
+  componentPath: string,
+  outputDir: string
+): { success: boolean; propCount?: number } {
+  if (!fs.existsSync(componentPath)) {
+    console.log(`❌ ${componentName} - File not found`);
+    return { success: false };
   }
 
-  const componentList = JSON.parse(fs.readFileSync(componentListPath, "utf-8"));
-  const outputDir = path.join(dirname, "../data/component-props");
+  const props = extractPropsFromComponent(componentPath, componentName);
 
-  // Create output directory
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  if (props && Object.keys(props.props).length > 0) {
+    const outputPath = path.join(outputDir, `${componentName}.json`);
+    const output = { [componentName]: props };
+    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+    return { success: true, propCount: Object.keys(props.props).length };
   }
+
+  console.log(`⚠️  ${componentName} - No props extracted`);
+  return { success: false };
+}
+
+function processPackageComponents(
+  packageName: string,
+  components: string[],
+  corePath: string,
+  outputDir: string
+): ProcessResult {
+  console.log(`📦 Processing ${packageName}...\n`);
 
   let successCount = 0;
   let failCount = 0;
   const propsCount: Record<string, number> = {};
 
-  // Process components from @czi-sds/components
-  console.log("📦 Processing @czi-sds/components...\n");
-
-  for (const componentName of componentList.components) {
+  for (const componentName of components) {
     const componentPath = path.join(
       dirname,
-      "../../components/src/core",
+      corePath,
       componentName,
       "index.tsx"
     );
+    const result = processComponent(componentName, componentPath, outputDir);
 
-    if (!fs.existsSync(componentPath)) {
-      console.log(`❌ ${componentName} - File not found`);
-      failCount++;
-      continue;
-    }
-
-    const props = extractPropsFromComponent(componentPath, componentName);
-
-    if (props && Object.keys(props.props).length > 0) {
-      const outputPath = path.join(outputDir, `${componentName}.json`);
-      const output = {
-        [componentName]: props,
-      };
-
-      fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-      propsCount[componentName] = Object.keys(props.props).length;
+    if (result.success) {
       successCount++;
+      if (result.propCount) {
+        propsCount[componentName] = result.propCount;
+      }
     } else {
-      console.log(`⚠️  ${componentName} - No props extracted`);
       failCount++;
     }
   }
 
-  // Process components from @czi-sds/data-viz
-  console.log("\n📦 Processing @czi-sds/data-viz...\n");
+  return { successCount, failCount, propsCount };
+}
 
-  for (const componentName of componentList["data-viz"]) {
-    const componentPath = path.join(
-      dirname,
-      "../../data-viz/src/core",
-      componentName,
-      "index.tsx"
-    );
-
-    if (!fs.existsSync(componentPath)) {
-      console.log(`❌ ${componentName} - File not found`);
-      failCount++;
-      continue;
-    }
-
-    const props = extractPropsFromComponent(componentPath, componentName);
-
-    if (props && Object.keys(props.props).length > 0) {
-      const outputPath = path.join(outputDir, `${componentName}.json`);
-      const output = {
-        [componentName]: props,
-      };
-
-      fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-      propsCount[componentName] = Object.keys(props.props).length;
-      successCount++;
-    } else {
-      console.log(`⚠️  ${componentName} - No props extracted`);
-      failCount++;
-    }
-  }
-
-  // Print summary
+function printSummary(
+  successCount: number,
+  failCount: number,
+  propsCount: Record<string, number>,
+  outputDir: string
+): void {
   console.log("\n" + "=".repeat(50));
   console.log("📊 SUMMARY");
   console.log("=".repeat(50));
@@ -355,6 +330,53 @@ function generatePropsWithDocgen() {
       console.log(`   ${name}: ${count} props`);
     }
   }
+}
+
+function generatePropsWithDocgen() {
+  console.log("🚀 Generating component props using react-docgen-typescript\n");
+
+  const componentListPath = path.join(dirname, "../data/component-list.json");
+  if (!fs.existsSync(componentListPath)) {
+    console.error(
+      "Component list not found. Please run 'yarn generate:components-list' first."
+    );
+    return;
+  }
+
+  const componentList = JSON.parse(fs.readFileSync(componentListPath, "utf-8"));
+  const outputDir = path.join(dirname, "../data/component-props");
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  // Process @czi-sds/components
+  const componentsResult = processPackageComponents(
+    "@czi-sds/components",
+    componentList.components,
+    "../../components/src/core",
+    outputDir
+  );
+
+  // Process @czi-sds/data-viz
+  console.log("\n");
+  const dataVizResult = processPackageComponents(
+    "@czi-sds/data-viz",
+    componentList["data-viz"],
+    "../../data-viz/src/core",
+    outputDir
+  );
+
+  // Combine results
+  const totalSuccess =
+    componentsResult.successCount + dataVizResult.successCount;
+  const totalFail = componentsResult.failCount + dataVizResult.failCount;
+  const allPropsCount = {
+    ...componentsResult.propsCount,
+    ...dataVizResult.propsCount,
+  };
+
+  printSummary(totalSuccess, totalFail, allPropsCount, outputDir);
 }
 
 // Run the script
