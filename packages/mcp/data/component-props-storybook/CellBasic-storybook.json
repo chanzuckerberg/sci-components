@@ -1,0 +1,139 @@
+{
+  "CellBasic": {
+    "props": {
+      "horizontalAlign": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ],
+        "control": "select"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "control": "select"
+      },
+      "iconVerticalAlign": {
+        "type": "\"top\" | \"center\" | \"bottom\"",
+        "isRequired": false,
+        "options": [
+          "top",
+          "center",
+          "bottom"
+        ],
+        "control": "select"
+      },
+      "primaryText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "primaryTextComponentSlotBottom": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "primaryTextComponentSlotRight": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "primaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "secondaryText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "secondaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "shouldTextWrap": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "tabularNums": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "tertiaryText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "tertiaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "tooltipProps": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "verticalAlign": {
+        "type": "\"top\" | \"center\" | \"bottom\"",
+        "isRequired": false,
+        "options": [
+          "top",
+          "center",
+          "bottom"
+        ],
+        "control": "select"
+      },
+      "width": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

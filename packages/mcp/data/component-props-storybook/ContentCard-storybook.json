@@ -1,0 +1,174 @@
+{
+  "ContentCard": {
+    "props": {
+      "boundingBox": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "buttons": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\" | \"12\" | \"13\" | \"14\" | \"15\" | \"16\" | \"17\" | \"18\" | \"19\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19"
+        ]
+      },
+      "buttonsPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ],
+        "control": "radio"
+      },
+      "classes": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "clickableCard": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "clickableCardProps": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "decorativeBorder": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "control": "select"
+      },
+      "image": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "control": "select"
+      },
+      "imagePadding": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "imagePosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ],
+        "control": "radio"
+      },
+      "imageSize": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "metadataText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "overlineText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "sdsType": {
+        "type": "\"wide\" | \"narrow\"",
+        "isRequired": false,
+        "options": [
+          "wide",
+          "narrow"
+        ],
+        "control": "radio"
+      },
+      "subtitleText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "titleText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "visualElementType": {
+        "type": "\"image\" | \"icon\" | \"none\"",
+        "isRequired": false,
+        "options": [
+          "image",
+          "icon",
+          "none"
+        ],
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "NavigationJumpTo": {
+    "props": {
+      "items": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "offsetTop": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "width": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

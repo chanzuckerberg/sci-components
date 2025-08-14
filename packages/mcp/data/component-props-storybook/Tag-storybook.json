@@ -1,0 +1,85 @@
+{
+  "Tag": {
+    "props": {
+      "color": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "hover": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "control": "select"
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "onClick": {
+        "type": "unknown",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "\"s\" | \"l\"",
+        "isRequired": false,
+        "options": [
+          "s",
+          "l"
+        ],
+        "control": "radio"
+      },
+      "sdsStyle": {
+        "type": "\"rounded\" | \"square\"",
+        "isRequired": false,
+        "options": [
+          "rounded",
+          "square"
+        ],
+        "control": "radio"
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
+        "isRequired": false,
+        "options": [
+          "primary",
+          "secondary"
+        ],
+        "control": "radio"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

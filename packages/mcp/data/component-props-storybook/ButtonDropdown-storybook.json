@@ -1,0 +1,75 @@
+{
+  "ButtonDropdown": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "control": "select"
+      },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false,
+        "options": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "control": "radio"
+      },
+      "sdsStyle": {
+        "type": "\"rounded\" | \"square\" | \"icon\"",
+        "isRequired": false,
+        "options": [
+          "rounded",
+          "square",
+          "icon"
+        ],
+        "control": "radio"
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
+        "isRequired": false,
+        "options": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "destructive"
+        ],
+        "control": "radio"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

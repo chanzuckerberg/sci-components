@@ -1,0 +1,66 @@
+{
+  "InputSlider": {
+    "props": {
+      "defaultValue": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "marks": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "max": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "min": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "step": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "valueLabelDisplay": {
+        "type": "\"auto\" | \"off\" | \"on\"",
+        "isRequired": false,
+        "options": [
+          "auto",
+          "off",
+          "on"
+        ],
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

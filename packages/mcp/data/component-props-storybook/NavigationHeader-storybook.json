@@ -1,0 +1,115 @@
+{
+  "NavigationHeader": {
+    "props": {
+      "buttons": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "hasInvertedStyle": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "logo": {
+        "type": "\"0\"",
+        "isRequired": false,
+        "options": [
+          "0"
+        ],
+        "control": "select"
+      },
+      "logoLinkComponent": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "logoUrl": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "position": {
+        "type": "\"absolute\" | \"fixed\" | \"relative\" | \"static\" | \"sticky\"",
+        "isRequired": false,
+        "options": [
+          "absolute",
+          "fixed",
+          "relative",
+          "static",
+          "sticky"
+        ],
+        "control": "select"
+      },
+      "primaryNavItems": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "primaryNavPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ],
+        "control": "radio"
+      },
+      "scrollElevation": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "searchProps": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "secondaryNavItems": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "showSearch": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "tag": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "tagColor": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

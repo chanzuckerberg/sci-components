@@ -1,0 +1,64 @@
+{
+  "ButtonIcon": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "control": "select"
+      },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false,
+        "options": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "control": "select"
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"tertiary\"",
+        "isRequired": false,
+        "options": [
+          "primary",
+          "secondary",
+          "tertiary"
+        ],
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

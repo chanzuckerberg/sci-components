@@ -1,0 +1,46 @@
+{
+  "InputToggle": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "offLabel": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "onLabel": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

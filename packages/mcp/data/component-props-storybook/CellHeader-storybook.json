@@ -1,0 +1,80 @@
+{
+  "CellHeader": {
+    "props": {
+      "active": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "direction": {
+        "type": "\"asc\" | \"desc\"",
+        "isRequired": false,
+        "options": [
+          "asc",
+          "desc"
+        ],
+        "control": "select"
+      },
+      "hideSortIcon": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "horizontalAlign": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "center",
+          "right"
+        ],
+        "control": "select"
+      },
+      "hover": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "tooltipProps": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "width": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "HeatmapChart": {
+    "props": {
+      "axisPointer": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "camera": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "echartsRendererMode": {
+        "type": "\"canvas\" | \"svg\"",
+        "isRequired": false,
+        "options": [
+          "canvas",
+          "svg"
+        ],
+        "control": "select"
+      },
+      "symbol": {
+        "type": "\"circle\" | \"rect\" | \"roundRect\"",
+        "isRequired": false,
+        "options": [
+          "circle",
+          "rect",
+          "roundRect"
+        ],
+        "control": "select"
+      },
+      "tooltip": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

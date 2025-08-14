@@ -1,0 +1,83 @@
+{
+  "DropdownMenu": {
+    "props": {
+      "ClickAwayListenerProps": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "groupBy": {
+        "type": "string",
+        "isRequired": false,
+        "control": "select"
+      },
+      "keepSearchOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "options": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "control": "select"
+      },
+      "search": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "width": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

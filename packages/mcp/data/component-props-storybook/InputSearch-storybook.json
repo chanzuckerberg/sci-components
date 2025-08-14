@@ -1,0 +1,61 @@
+{
+  "InputSearch": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "negative",
+          "notice",
+          "positive"
+        ],
+        "control": "radio"
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "sdsStyle": {
+        "type": "\"rounded\" | \"square\"",
+        "isRequired": false,
+        "options": [
+          "rounded",
+          "square"
+        ],
+        "control": "radio"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      }
+    }
+  }
+}

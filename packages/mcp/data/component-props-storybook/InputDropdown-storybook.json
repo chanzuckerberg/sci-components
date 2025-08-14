@@ -1,0 +1,91 @@
+{
+  "InputDropdown": {
+    "props": {
+      "counter": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "negative",
+          "notice",
+          "positive"
+        ],
+        "control": "radio"
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "sdsStyle": {
+        "type": "\"square\" | \"rounded\" | \"minimal\"",
+        "isRequired": false,
+        "options": [
+          "square",
+          "rounded",
+          "minimal"
+        ],
+        "control": "select"
+      },
+      "sdsType": {
+        "type": "\"label\" | \"value\"",
+        "isRequired": false,
+        "options": [
+          "label",
+          "value"
+        ],
+        "control": "radio"
+      },
+      "shouldPutAColonAfterLabel": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "shouldTruncateMinimalDetails": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "style": {
+        "type": "object",
+        "isRequired": false,
+        "control": "object"
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false,
+        "control": "number"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "Icon": {
+    "props": {
+      "color": {
+        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+        "isRequired": false,
+        "options": [
+          "blue",
+          "gray",
+          "green",
+          "purple",
+          "red",
+          "yellow"
+        ],
+        "control": "select"
+      },
+      "sdsIcon": {
+        "type": "\"CheckCircle\" | \"Copy\" | \"Edit\" | \"LightBulb\" | \"LinesHorizontal\" | \"Loading\" | \"XMark\"",
+        "isRequired": false,
+        "options": [
+          "CheckCircle",
+          "Copy",
+          "Edit",
+          "LightBulb",
+          "LinesHorizontal",
+          "Loading",
+          "XMark"
+        ],
+        "control": "select"
+      },
+      "sdsSize": {
+        "type": "\"xs\" | \"s\" | \"l\" | \"xl\"",
+        "isRequired": false,
+        "options": [
+          "xs",
+          "s",
+          "l",
+          "xl"
+        ],
+        "control": "select"
+      },
+      "shade": {
+        "type": "100 | 200 | 300 | 400 | 500 | 600 | 700 | 800",
+        "isRequired": false,
+        "options": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800
+        ],
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

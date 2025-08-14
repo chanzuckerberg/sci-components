@@ -1,0 +1,50 @@
+{
+  "Accordion": {
+    "props": {
+      "defaultExpanded": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "subtitle": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "togglePosition": {
+        "type": "\"right\" | \"left\"",
+        "isRequired": false,
+        "options": [
+          "right",
+          "left"
+        ],
+        "control": "select"
+      },
+      "useDivider": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "Callout": {
+    "props": {
+      "autoDismiss": {
+        "type": "\"true\" | \"false\" | \"4000\" | \"12000\" | \"20000\"",
+        "isRequired": false,
+        "options": [
+          "true",
+          "false",
+          4000,
+          12000,
+          20000
+        ],
+        "control": "select"
+      },
+      "body": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "hideBody": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "hideTitle": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "control": "select"
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
+        "isRequired": false,
+        "options": [
+          "info",
+          "negative",
+          "positive",
+          "notice"
+        ],
+        "control": "radio"
+      },
+      "sdsStyle": {
+        "type": "\"0\" | \"1\" | \"2\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2"
+        ],
+        "control": "select"
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false,
+        "control": "text"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

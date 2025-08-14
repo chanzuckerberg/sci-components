@@ -1,0 +1,61 @@
+{
+  "Dialog": {
+    "props": {
+      "buttonPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ],
+        "control": "radio"
+      },
+      "canClickOutsideClose": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "longContent": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "sdsSize": {
+        "type": "\"xs\" | \"s\" | \"m\" | \"l\"",
+        "isRequired": false,
+        "options": [
+          "xs",
+          "s",
+          "m",
+          "l"
+        ],
+        "control": "radio"
+      },
+      "titleOnClose": {
+        "type": "boolean",
+        "isRequired": false,
+        "control": "boolean"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "Link": {
+    "props": {
+      "fontWeight": {
+        "type": "\"normal\" | \"bold\"",
+        "isRequired": false,
+        "options": [
+          "normal",
+          "bold"
+        ],
+        "control": "radio"
+      },
+      "sdsSize": {
+        "type": "\"s\" | \"xs\"",
+        "isRequired": false,
+        "options": [
+          "s",
+          "xs"
+        ],
+        "control": "select"
+      },
+      "sdsStyle": {
+        "type": "\"default\" | \"dashed\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "dashed"
+        ],
+        "control": "select"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}
