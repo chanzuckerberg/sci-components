@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
@@ -11,14 +12,13 @@ app.use(express.json());
 
 // Store transports for each session type
 const transports = {
-  streamable: {} as Record<string, StreamableHTTPServerTransport>,
   sse: {} as Record<string, SSEServerTransport>,
+  streamable: {} as Record<string, StreamableHTTPServerTransport>,
 };
 
 // Modern Streamable HTTP endpoint
 app.post("/mcp", async (req, res) => {
   // Check for existing session ID
-  const apiKey = req.headers["x-api-key"] as string | undefined;
   const sessionId = req.headers["mcp-session-id"] as string | undefined;
   let transport: StreamableHTTPServerTransport;
 
@@ -28,11 +28,11 @@ app.post("/mcp", async (req, res) => {
   } else if (!sessionId && isInitializeRequest(req.body)) {
     // New initialization request
     transport = new StreamableHTTPServerTransport({
-      sessionIdGenerator: () => randomUUID(),
-      onsessioninitialized: (sessionId) => {
+      onsessioninitialized: (newSessionId) => {
         // Store the transport by session ID
-        transports.streamable[sessionId] = transport;
+        transports.streamable[newSessionId] = transport;
       },
+      sessionIdGenerator: () => randomUUID(),
     });
 
     // Clean up transport when closed
@@ -42,7 +42,7 @@ app.post("/mcp", async (req, res) => {
       }
     };
 
-    await initializeTools(server, { apiKey });
+    await initializeTools(server, {});
 
     // Connect to the MCP server
     await server.connect(transport);
@@ -53,12 +53,12 @@ app.post("/mcp", async (req, res) => {
       JSON.stringify(req.body, null, 2)
     );
     res.status(400).json({
-      jsonrpc: "2.0",
       error: {
         code: -32000,
         message: "Bad Request: No valid session ID provided",
       },
       id: null,
+      jsonrpc: "2.0",
     });
     return;
   }
@@ -94,7 +94,6 @@ app.delete("/mcp", handleSessionRequest);
 // Legacy SSE endpoint for older clients
 app.get("/sse", async (req, res) => {
   // Create SSE transport for legacy clients
-  const apiKey = req.headers["x-api-key"] as string | undefined;
   const transport = new SSEServerTransport("/messages", res);
   transports.sse[transport.sessionId] = transport;
 
@@ -102,7 +101,7 @@ app.get("/sse", async (req, res) => {
     delete transports.sse[transport.sessionId];
   });
 
-  await initializeTools(server, { apiKey });
+  await initializeTools(server, {});
   await server.connect(transport);
 });
 
@@ -121,15 +120,15 @@ app.post("/messages", async (req, res) => {
 // Root endpoint
 app.get("/", (req, res) => {
   res.json({
-    name: "Chakra UI MCP Server",
-    version: "2.0.3",
-    description: "The official MCP server for Chakra UI",
+    description: "The official MCP server for SDS",
     endpoints: {
-      "/mcp": "Modern Streamable HTTP endpoint",
-      "/sse": "Legacy SSE endpoint",
-      "/messages": "Legacy message endpoint",
       "/health": "Health check endpoint",
+      "/mcp": "Modern Streamable HTTP endpoint",
+      "/messages": "Legacy message endpoint",
+      "/sse": "Legacy SSE endpoint",
     },
+    name: "SDS MCP Server",
+    version: "0.1.0",
   });
 });
 
@@ -147,7 +146,7 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 // For local development
 if (process.env.NODE_ENV !== "production") {
   app.listen(port, () => {
-    console.info(`Chakra MCP SSE Server running on http://localhost:${port}`);
+    console.info(`SDS MCP SSE Server running on http://localhost:${port}`);
   });
 }
 

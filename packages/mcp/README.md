@@ -25,7 +25,7 @@ examples, design tokens and migration patterns.
 ```json
 {
   "mcpServers": {
-    "chakra-ui": {
+    "sds-mcp": {
       "command": "npx",
       "args": ["-y", "@czi-sds/mcp"]
     }

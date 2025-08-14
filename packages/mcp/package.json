@@ -47,9 +47,12 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
+    "@tsconfig/node22": "^22.0.1",
     "@types/express": "^5.0.3",
+    "@types/fs-extra": "^11.0.4",
     "tsup": "^8.5.0",
-    "tsx": "^4.20.3"
+    "tsx": "^4.20.3",
+    "typescript": "5.8.3"
   },
   "gitHead": "140d4b30975015cb8588cb735d5f9dd77318c065"
 }

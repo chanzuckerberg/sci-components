@@ -1,10 +1,11 @@
+/* eslint-disable sort-keys */
 import { getAllComponentNames } from "../lib/fetch.js";
 import type { Tool } from "../lib/types.js";
 
 export const listComponentsTool: Tool<{ componentList: string[] }> = {
   name: "list_components",
   description:
-    "List all available components in Chakra UI. This tool retrieves the names of all available Chakra UI components.",
+    "List all available components in SDS. This tool retrieves the names of all available SDS components.",
   async ctx() {
     try {
       const componentList = await getAllComponentNames();

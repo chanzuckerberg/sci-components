@@ -1,16 +1,16 @@
 #!/usr/bin/env node
+/* eslint-disable import/extensions */
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { server } from "./server.js";
 import { initializeTools } from "./tools/index.js";
 
 async function main() {
-  await initializeTools(server, {
-    apiKey: process.env.CHAKRA_PRO_API_KEY,
-  });
+  await initializeTools(server, {});
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.info("Chakra UI MCP Server running on stdio");
+
+  console.info("SDS MCP Server running on stdio");
 }
 
 main().catch((error) => {

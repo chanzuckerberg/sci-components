@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 export interface ToolConfig {
