@@ -1,11 +1,12 @@
 /* eslint-disable sort-keys */
+import { ComponentList } from "../../scripts/generate-component-list.js";
 import { getAllComponentNames } from "../lib/fetch.js";
 import type { Tool } from "../lib/types.js";
 
-export const listComponentsTool: Tool<{ componentList: string[] }> = {
+export const listComponentsTool: Tool<{ componentList: ComponentList }> = {
   name: "list_components",
   description:
-    "List all available components in SDS. This tool retrieves the names of all available SDS components.",
+    "List all available components in SDS. This tool retrieves the names of all SDS components from both the @czi-sds/components package and the @czi-sds/data-viz package.",
   async ctx() {
     try {
       const componentList = await getAllComponentNames();

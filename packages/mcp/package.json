@@ -22,7 +22,7 @@
     "dev": "tsup --watch",
     "inspect": "node scripts/inspect.js",
     "serve": "tsx --watch src/http.ts",
-    "release": "scripts/release.sh"
+    "generate:components-list": "tsx scripts/generate-component-list.ts"
   },
   "bin": {
     "sds-mcp": "./dist/stdio.js"
