@@ -1,28 +1,14 @@
 /* eslint-disable import/extensions */
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { Tool, ToolConfig } from "../lib/types.js";
-// import { customizeThemeTool } from "./customize-theme.js";
-// import { getComponentExampleTool } from "./get-component-example.js";
 import { getComponentPropsTool } from "./get-component-props.js";
-// import { getComponentTemplatesTool } from "./get-component-templates.js";
-// import { getThemeTool } from "./get-theme.js";
-// import { installationTool } from "./installation.js";
-// import { listComponentTemplatesTool } from "./list-component-templates.js";
 import { listComponentsTool } from "./list-components.js";
 import { getComponentPropsStorybookTool } from "./get-component-props-storybook.js";
-// import { v2ToV3MigrationTool } from "./v2-to-v3-migration.js";
 
 const tools: Tool[] = [
-  // getComponentExampleTool,
   getComponentPropsTool,
   getComponentPropsStorybookTool,
-  // getThemeTool,
   listComponentsTool,
-  // customizeThemeTool,
-  // v2ToV3MigrationTool,
-  // listComponentTemplatesTool,
-  // getComponentTemplatesTool,
-  // installationTool,
 ];
 
 const registeredToolCache = new Map<string, Tool>();
