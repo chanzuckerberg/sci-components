@@ -1,0 +1,22 @@
+{
+  "TooltipTable": {
+    "props": {
+      "data": {
+        "type": "{ label?: string; dataRows: { label: string; value: string | number; }[]; disabled?: boolean; }[]",
+        "isRequired": false
+      },
+      "contentAlert": {
+        "type": "\"string\" | \"Element\"",
+        "isRequired": false
+      },
+      "itemAlign": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "showSectionHeader": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

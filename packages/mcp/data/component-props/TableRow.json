@@ -1,0 +1,70 @@
+{
+  "TableRow": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false
+      },
+      "selected": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "value": {
+        "type": "\"string\" | \"number\" | \"readonly string[]\"",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLTableRowElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tooltipSubtitle": {
+        "type": "string",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "TooltipProps",
+        "isRequired": false
+      },
+      "rowHeight": {
+        "type": "number",
+        "isRequired": false
+      },
+      "useDivider": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

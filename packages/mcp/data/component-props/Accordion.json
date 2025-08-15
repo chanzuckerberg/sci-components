@@ -1,0 +1,31 @@
+{
+  "Accordion": {
+    "props": {
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      }
+    }
+  }
+}

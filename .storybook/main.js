@@ -47,6 +47,11 @@ module.exports = {
       experimental: {
         plugins: [["@swc/plugin-emotion", {}]],
       },
+      parser: {
+        syntax: "typescript",
+        tsx: true,
+        jsx: true,
+      },
       transform: {
         react: {
           runtime: "automatic",

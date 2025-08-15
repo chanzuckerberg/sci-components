@@ -1,0 +1,110 @@
+{
+  "HeatmapChart": {
+    "props": {
+      "echartsRendererMode": {
+        "type": "\"svg\" | \"canvas\"",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "axisPointer": {
+        "type": "\"AxisPointerOption\" | \"AxisPointerOption[]\"",
+        "isRequired": false,
+        "description": "Display reference line and axis value under mouse pointer\nhttps://echarts.apache.org/en/option.html#axisPointer"
+      },
+      "data": {
+        "type": "\"OptionSourceDataTypedArray\" | \"OptionSourceDataOriginal<OptionDataValue, OptionDataItemOriginal<OptionDataValue>>\" | \"OptionSourceDataObjectRows<OptionDataValue>\" | \"OptionSourceDataArrayRows<OptionDataValue>\" | \"OptionSourceDataKeyedColumns<OptionDataValue>\"",
+        "isRequired": true,
+        "description": "The data array to be visualized\nThe data point object shape can be whatever you like, but it must be consistent with the `encode` option\nFor example, if the data point shape is:\n{\n  geneIndex: 0,\n  cellTypeIndex: 0,\n  percentage: 0.5\n}\nand you want geneIndex to be encoded to x axis and cellTypeIndex to be encoded to y axis, then make sure your encode option is:\nencode: {\n  x: 'geneIndex',\n  y: 'cellTypeIndex'\n}"
+      },
+      "dataZoom": {
+        "type": "\"SliderDataZoomOption\" | \"InsideDataZoomOption\" | \"DataZoomComponentOption[]\"",
+        "isRequired": false,
+        "description": "The `dataZoom` prop is utilized for implementing zoom functionality within a\nspecific area of the chart. This feature empowers users to inspect data in\ngranular detail, obtain an overview of the entire dataset, or eliminate\noutlier points.\nBy applying the `dataZoom` prop while locking the zoom level, the chart\nefficiently renders a confined portion of the heatmap. This selective\nrendering strategy becomes especially advantageous when dealing with\nextensive datasets. Instead of rendering the entire heatmap at once,\nthe chart dynamically loads and renders specific segments as the user\nscrolls through the data. This approach optimizes performance and enables\nthe creation of heatmaps with large amounts of data.\nhttps://echarts.apache.org/en/option.html#dataZoom"
+      },
+      "camera": {
+        "type": "{ active: boolean; height: number; width: number; }",
+        "isRequired": false,
+        "description": "The `camera` prop is utilized for implementing camera view port functionality\nwithin a specific area of the chart. This feature empowers users to render\na confined portion of the heatmap. This selective rendering strategy becomes\nespecially advantageous when dealing with extensive datasets. Instead of\nrendering the entire heatmap at once, the chart dynamically loads and renders\nspecific segments as the user scrolls through the data. This approach optimizes\nperformance and enables the creation of heatmaps with large amounts of data.\n\nThe `height` and `width` properties are used to specify the dimensions of the\ncamera view port. The `active` property is used to enable or disable the camera\nview port functionality."
+      },
+      "emphasis": {
+        "type": "ScatterStateOption",
+        "isRequired": false,
+        "description": "Customize the style of each cell item when mouse hovers on it, such as color, border, opacity, etc.\nhttps://echarts.apache.org/en/option.html#series-scatter.emphasis"
+      },
+      "xAxisData": {
+        "type": "CategoryAxisData",
+        "isRequired": true,
+        "description": "The data for the x axis\nFor example:\n[{ value: \"gene1\", textStyle: { color: \"red\" } }, \"gene2\", \"gene3\"]"
+      },
+      "yAxisData": {
+        "type": "CategoryAxisData",
+        "isRequired": true,
+        "description": "The data for the y axis\nFor example:\n[{ value: \"cellType1\", textStyle: { color: \"red\" } }, \"cellType2\", \"cellType3\"]"
+      },
+      "width": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The width of the chart in pixels"
+      },
+      "height": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The height of the chart in pixels"
+      },
+      "encode": {
+        "type": "{ x: string; y: string; }",
+        "isRequired": false,
+        "description": "Provide a mapping of data key to x/y axis encoding\nFor example, if the data is:\n{\n  geneIndex: 0,\n  cellTypeIndex: 0,\n  percentage: 0.5\n}\nand we want to encode `geneIndex` to x axis and `cellTypeIndex` to y axis, then\nencode: {\n x: 'geneIndex',\n y: 'cellTypeIndex'\n}\nhttps://echarts.apache.org/en/option.html#series-scatter.encode"
+      },
+      "itemStyle": {
+        "type": "ItemStyleOption<CallbackDataParams>",
+        "isRequired": false,
+        "description": "Customize the style of each cell item, such as color, border, opacity, etc.\nhttps://echarts.apache.org/en/option.html#series-scatter.itemStyle"
+      },
+      "symbol": {
+        "type": "\"circle\" | \"rect\" | \"roundRect\"",
+        "isRequired": false,
+        "description": "The shape of the symbol."
+      },
+      "symbolSize": {
+        "type": "\"number\" | \"number[]\" | \"SymbolSizeCallback<CallbackDataParams>\"",
+        "isRequired": false,
+        "description": "`symbolSize` can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is 10.\n\nIf size of symbols needs to be different, you can set with callback function in the following format:\n\n(value: Array|number, params: Object) => number|Array\n\nThe first parameter value is the value in data, and the second parameter params is the rest parameters of data item.\nhttps://echarts.apache.org/en/option.html#series-scatter.symbolSize"
+      },
+      "grid": {
+        "type": "\"GridOption\" | \"GridOption[]\" | \"(defaultOption: GridOption | GridOption[]) => GridOption | GridOption[]\"",
+        "isRequired": false,
+        "description": "https://echarts.apache.org/en/option.html#grid"
+      },
+      "options": {
+        "type": "EChartsOption",
+        "isRequired": false,
+        "description": "The options object to be passed to echarts.setOption()\nhttps://echarts.apache.org/en/option.html"
+      },
+      "onEvents": {
+        "type": "Record<string, (event: unknown, chart: EChartsType) => void>",
+        "isRequired": false,
+        "description": "Event listeners for the chart\nhttps://echarts.apache.org/en/api.html#events"
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "Button": {
+    "props": {
+      "endIcon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ]
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ]
+      },
+      "isAllCaps": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "\"0\" | \"1\" | \"2\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "sdsStyle": {
+        "type": "\"rounded\" | \"square\" | \"minimal\" | \"icon\"",
+        "isRequired": false,
+        "options": [
+          "rounded",
+          "square",
+          "minimal",
+          "icon"
+        ]
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
+        "isRequired": false,
+        "options": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "destructive"
+        ]
+      },
+      "startIcon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ]
+      },
+      "text": {
+        "type": "string",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

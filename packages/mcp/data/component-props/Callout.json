@@ -1,0 +1,93 @@
+{
+  "Callout": {
+    "props": {
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "variant": {
+        "type": "\"standard\" | \"filled\" | \"outlined\"",
+        "isRequired": false,
+        "description": "The variant to use.",
+        "defaultValue": "standard"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "color": {
+        "type": "\"success\" | \"info\" | \"warning\" | \"error\"",
+        "isRequired": false,
+        "description": "The color of the component. Unless provided, the value is taken from the `severity` prop.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors)."
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
+      },
+      "onClose": {
+        "type": "(event: SyntheticEvent<Element, Event>) => void",
+        "isRequired": false,
+        "description": "Callback fired when the component requests to be closed.\nWhen provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.\n@param event The event source of the callback."
+      },
+      "autoDismiss": {
+        "type": "\"number\" | \"false\" | \"true\"",
+        "isRequired": false
+      },
+      "dismissed": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "IconProps<string | number | symbol>",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": true
+      },
+      "sdsStage": {
+        "type": "\"closed\" | \"open\"",
+        "isRequired": false
+      },
+      "hideTitle": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "body": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "hideBody": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "extraContent": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"persistent\" | \"expandable\" | \"dismissible\"",
+        "isRequired": false,
+        "description": "The visual style variant of the component"
+      }
+    }
+  }
+}

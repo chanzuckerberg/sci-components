@@ -1,0 +1,52 @@
+{
+  "Panel": {
+    "props": {
+      "isBackdropClickEnabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If true, clicking on the backdrop will close the panel. Only applies to overlay panels."
+      },
+      "position": {
+        "type": "\"left\" | \"right\" | \"bottom\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right",
+          "bottom"
+        ]
+      },
+      "sdsType": {
+        "type": "\"basic\" | \"overlay\"",
+        "isRequired": false,
+        "options": [
+          "basic",
+          "overlay"
+        ]
+      },
+      "width": {
+        "type": "string",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

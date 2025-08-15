@@ -1,0 +1,73 @@
+{
+  "Chip": {
+    "props": {
+      "size": {
+        "type": "\"small\" | \"medium\"",
+        "isRequired": false,
+        "description": "The size of the component.",
+        "defaultValue": "medium"
+      },
+      "status": {
+        "type": "\"success\" | \"error\" | \"warning\" | \"info\" | \"pending\" | \"beta\"",
+        "isRequired": false
+      },
+      "isRounded": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "children": {
+        "type": "null",
+        "isRequired": false,
+        "description": "This prop isn't supported.\nUse the `component` prop if you need to change the children structure."
+      },
+      "color": {
+        "type": "\"success\" | \"error\" | \"warning\" | \"info\" | \"default\" | \"primary\" | \"secondary\"",
+        "isRequired": false,
+        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
+        "defaultValue": "default"
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false,
+        "description": "Icon element."
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "variant": {
+        "type": "\"filled\" | \"outlined\"",
+        "isRequired": false,
+        "description": "The variant to use.",
+        "defaultValue": "filled"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      }
+    }
+  }
+}

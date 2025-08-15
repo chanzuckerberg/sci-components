@@ -1,0 +1,72 @@
+{
+  "Panel": {
+    "props": {
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "@ignore"
+      },
+      "onClose": {
+        "type": "\"backdropClick\" | \"escapeKeyDown\"",
+        "isRequired": false,
+        "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`.\n@param event The event source of the callback.\n@param reason Can be: `\"escapeKeyDown\"`, `\"backdropClick\"`."
+      },
+      "open": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is shown.",
+        "defaultValue": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"overlay\" | \"basic\"",
+        "isRequired": true,
+        "description": "The type/variant of the component"
+      },
+      "position": {
+        "type": "\"bottom\" | \"left\" | \"right\"",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"string\" | \"number\"",
+        "isRequired": false
+      },
+      "isBackdropClickEnabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "HeaderComponent": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "closeButtonOnClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "CloseButtonComponent": {
+        "type": "ReactNode",
+        "isRequired": false
+      }
+    }
+  }
+}

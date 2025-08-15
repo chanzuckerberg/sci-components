@@ -1,0 +1,59 @@
+{
+  "InputText": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "hideLabel": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": true
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "negative",
+          "notice",
+          "positive"
+        ]
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"textField\" | \"textArea\"",
+        "isRequired": false,
+        "options": [
+          "textField",
+          "textArea"
+        ]
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      }
+    }
+  }
+}

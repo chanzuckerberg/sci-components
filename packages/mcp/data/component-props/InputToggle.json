@@ -1,0 +1,72 @@
+{
+  "InputToggle": {
+    "props": {
+      "offLabel": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "function",
+        "isRequired": false,
+        "description": "Callback fired when the state is changed."
+      },
+      "onLabel": {
+        "type": "string",
+        "isRequired": false
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false
+      },
+      "color": {
+        "type": "\"primary\" | \"secondary\" | \"error\" | \"info\" | \"success\" | \"warning\" | \"default\"",
+        "isRequired": false,
+        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
+        "defaultValue": "primary"
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled."
+      },
+      "icon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The icon to display when the component is unchecked."
+      },
+      "size": {
+        "type": "\"small\" | \"medium\"",
+        "isRequired": false,
+        "description": "The size of the component.\n`small` is equivalent to the dense switch styling.",
+        "defaultValue": "medium"
+      },
+      "value": {
+        "type": "unknown",
+        "isRequired": false,
+        "description": "The value of the component. The DOM API casts this to a string.\nThe browser uses \"on\" as the default value."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Name attribute of the `input` element."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the `input` element."
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      }
+    }
+  }
+}

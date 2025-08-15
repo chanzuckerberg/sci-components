@@ -1,0 +1,52 @@
+{
+  "Autocomplete": {
+    "props": {
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Popper render function or node."
+      },
+      "open": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": true,
+        "description": "If `true`, the component is shown."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false
+      }
+    }
+  }
+}

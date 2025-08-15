@@ -1,0 +1,62 @@
+{
+  "TableRow": {
+    "props": {
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "rowHeight": {
+        "type": "number",
+        "isRequired": false
+      },
+      "selected": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "object",
+        "isRequired": false
+      },
+      "tooltipSubtitle": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "useDivider": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

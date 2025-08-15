@@ -1,0 +1,93 @@
+{
+  "Dropdown": {
+    "props": {
+      "DropdownMenuProps": {
+        "type": "object",
+        "isRequired": false
+      },
+      "InputDropdownProps": {
+        "type": "object",
+        "isRequired": false
+      },
+      "buttonPosition": {
+        "type": "\"0\" | \"1\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1"
+        ]
+      },
+      "buttons": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "closeOnBlur": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "isSearchAutoFocus": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onClose": {
+        "type": "string",
+        "isRequired": false
+      },
+      "options": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "search": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

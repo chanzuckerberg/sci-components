@@ -1,0 +1,50 @@
+{
+  "Pagination": {
+    "props": {
+      "pageSize": {
+        "type": "number",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"round\" | \"square\"",
+        "isRequired": false,
+        "options": [
+          "round",
+          "square"
+        ]
+      },
+      "siblingCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "totalCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "truncateDropdown": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

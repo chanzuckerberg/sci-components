@@ -1,0 +1,47 @@
+{
+  "TooltipTable": {
+    "props": {
+      "contentAlert": {
+        "type": "\"String\" | \"Element\" | \"None\"",
+        "isRequired": false,
+        "options": [
+          "String",
+          "Element",
+          "None"
+        ]
+      },
+      "itemAlign": {
+        "type": "\"right\" | \"left\"",
+        "isRequired": false,
+        "options": [
+          "right",
+          "left"
+        ]
+      },
+      "showSectionHeader": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

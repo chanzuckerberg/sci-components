@@ -1,0 +1,72 @@
+{
+  "MenuItem": {
+    "props": {
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": "false\nfalse"
+      },
+      "value": {
+        "type": "\"string\" | \"number\" | \"readonly string[]\"",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLLIElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "column": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "isMultiSelect": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsIcon": {
+        "type": "any",
+        "isRequired": false,
+        "description": "@deprecated Use `icon` instead.\n(masoudmanson): This prop is deprecated and will be removed in the next major version.\nPlease replace instances of `sdsIcon` with `icon`."
+      },
+      "sdsIconProps": {
+        "type": "IconProps<IconName>",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"determinate\" | \"indeterminate\"",
+        "isRequired": false,
+        "description": "The visual style variant of the component"
+      },
+      "sdsType": {
+        "type": "\"action\" | \"default\"",
+        "isRequired": false,
+        "description": "The type/variant of the component"
+      }
+    }
+  }
+}

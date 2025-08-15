@@ -1,0 +1,78 @@
+{
+  "CellHeader": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false
+      },
+      "value": {
+        "type": "\"string\" | \"number\" | \"readonly string[]\"",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLTableCellElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tooltipSubtitle": {
+        "type": "string",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "TooltipProps",
+        "isRequired": false
+      },
+      "active": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "hideSortIcon": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "horizontalAlign": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "shouldTruncate": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "direction": {
+        "type": "\"asc\" | \"desc\"",
+        "isRequired": false
+      }
+    }
+  }
+}
