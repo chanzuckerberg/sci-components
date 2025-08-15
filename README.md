@@ -202,11 +202,11 @@ SDS provides comprehensive light/dark theme support. To use the theme system in 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
   rel="stylesheet"
 />
 ```
@@ -372,12 +372,8 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
 
-## 2022 Plans
-
-[2022 Plans](https://docs.google.com/presentation/d/1pKAY6Wl3-EHInvOZuf0L3yEDFt2xVvMlO7ZWefQbgjA/edit?usp=sharing)
-
 ## Code of Conduct
 
 This project adheres to the Contributor Covenant [code of conduct](https://github.com/chanzuckerberg/.github/blob/master/CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code. 
+By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [opensource@chanzuckerberg.com](mailto:opensource@chanzuckerberg.com).
