@@ -4,11 +4,13 @@ import type { Tool, ToolConfig } from "../lib/types.js";
 import { getComponentPropsTool } from "./get-component-props.js";
 import { listComponentsTool } from "./list-components.js";
 import { getComponentPropsStorybookTool } from "./get-component-props-storybook.js";
+import { getTailwindTokensTool } from "./get-tailwind-tokens.js";
 
 const tools: Tool[] = [
   getComponentPropsTool,
   getComponentPropsStorybookTool,
   listComponentsTool,
+  getTailwindTokensTool,
 ];
 
 const registeredToolCache = new Map<string, Tool>();

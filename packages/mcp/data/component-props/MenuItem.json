@@ -61,6 +61,11 @@
         "type": "\"determinate\" | \"indeterminate\"",
         "isRequired": false,
         "description": "The visual style variant of the component"
+      },
+      "sdsType": {
+        "type": "\"action\" | \"default\"",
+        "isRequired": false,
+        "description": "The type/variant of the component"
       }
     }
   }

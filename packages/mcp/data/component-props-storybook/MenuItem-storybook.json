@@ -37,6 +37,14 @@
           "indeterminate"
         ]
       },
+      "sdsType": {
+        "type": "\"default\" | \"action\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "action"
+        ]
+      },
       "selected": {
         "type": "boolean",
         "isRequired": false

@@ -21,6 +21,10 @@
         "type": "function",
         "isRequired": false
       },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
       "sdsType": {
         "type": "\"primary\" | \"secondary\"",
         "isRequired": true,

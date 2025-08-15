@@ -1,10 +1,6 @@
 {
   "InputSlider": {
     "props": {
-      "defaultValue": {
-        "type": "number",
-        "isRequired": false
-      },
       "disabled": {
         "type": "boolean",
         "isRequired": false

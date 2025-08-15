@@ -5,6 +5,10 @@
         "type": "object",
         "isRequired": false
       },
+      "InputDropdownProps": {
+        "type": "object",
+        "isRequired": false
+      },
       "buttonPosition": {
         "type": "\"0\" | \"1\"",
         "isRequired": false,
@@ -58,6 +62,10 @@
       },
       "search": {
         "type": "boolean",
+        "isRequired": false
+      },
+      "title": {
+        "type": "string",
         "isRequired": false
       },
       "className": {

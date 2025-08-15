@@ -1,6 +1,16 @@
 {
   "ComplexFilter": {
     "props": {
+      "DropdownMenuProps": {
+        "type": "object",
+        "isRequired": false,
+        "description": "Props to pass to the underlying DropdownMenu component"
+      },
+      "InputDropdownProps": {
+        "type": "object",
+        "isRequired": false,
+        "description": "Props to pass to the underlying InputDropdown component"
+      },
       "isTriggerChangeOnOptionClick": {
         "type": "boolean",
         "isRequired": false
@@ -14,6 +24,10 @@
         "isRequired": false
       },
       "onChange": {
+        "type": "string",
+        "isRequired": false
+      },
+      "options": {
         "type": "string",
         "isRequired": false
       },

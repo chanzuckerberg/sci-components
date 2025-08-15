@@ -48,6 +48,10 @@
       "width": {
         "type": "\"string\" | \"number\" | \"string & {}\"",
         "isRequired": false
+      },
+      "isSubItem": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
       }
     }
   }

@@ -22,7 +22,7 @@
         "isRequired": false
       },
       "title": {
-        "type": "string",
+        "type": "ReactNode",
         "isRequired": false
       },
       "headerComponentSlot": {

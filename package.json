@@ -133,7 +133,7 @@
     "namespace-check": "lerna run namespace-check",
     "prepare": "husky install",
     "lint": "lerna run lint",
-    "build": "lerna run build",
+    "build": "lerna run build --scope=@czi-sds/components && lerna run build --ignore=@czi-sds/components",
     "ci": "yarn install",
     "version:ci": "HUSKY=0 lerna version --yes --conventional-commits",
     "publish:ci": "HUSKY=0 lerna publish from-package --yes",

@@ -3,7 +3,7 @@
     "props": {
       "title": {
         "type": "ReactNode",
-        "isRequired": true,
+        "isRequired": false,
         "description": "Tooltip title. Zero-length titles string, undefined, null and false are never displayed."
       },
       "className": {

@@ -27,6 +27,10 @@
         "type": "boolean",
         "isRequired": false
       },
+      "onChange": {
+        "type": "string",
+        "isRequired": false
+      },
       "options": {
         "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
         "isRequired": false,
