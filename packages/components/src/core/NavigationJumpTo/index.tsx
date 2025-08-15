@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
   CSSProperties,
+  useMemo,
 } from "react";
 import useScrollStopListener from "src/common/helpers/scrollStop";
 import { toKebabCase } from "src/common/utils";
@@ -53,42 +54,48 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
     const [emittedValue, setEmittedValue] = useState(-1);
 
     // Flatten items for intersection observer
-    const flattenedItems = items.reduce<
-      Array<{
-        title: string;
-        elementRef: React.MutableRefObject<HTMLElement | null>;
-      }>
-    >((acc, item) => {
-      acc.push({ elementRef: item.elementRef, title: item.title });
-      if (item.subItems) {
-        acc.push(...item.subItems);
-      }
-      return acc;
-    }, []);
+    const flattenedItems = useMemo(
+      () =>
+        items.reduce<
+          Array<{
+            title: string;
+            elementRef: React.MutableRefObject<HTMLElement | null>;
+          }>
+        >((acc, item) => {
+          acc.push({ elementRef: item.elementRef, title: item.title });
+          if (item.subItems) {
+            acc.push(...item.subItems);
+          }
+          return acc;
+        }, []),
+      [items]
+    );
 
     const sectionIsInView = useInView(flattenedItems, offsetTop);
 
     // Create mapping between rendered tab index and flattened item index
-    const tabToFlattenedIndexMap: number[] = [];
-    items.forEach((item) => {
-      const flattenedIndex = flattenedItems.findIndex(
-        (flatItem) =>
-          flatItem.title === item.title &&
-          flatItem.elementRef === item.elementRef
-      );
-      tabToFlattenedIndexMap.push(flattenedIndex);
-
-      if (item.subItems) {
-        item.subItems.forEach((subItem) => {
-          const subFlattenedIndex = flattenedItems.findIndex(
-            (flatItem) =>
-              flatItem.title === subItem.title &&
-              flatItem.elementRef === subItem.elementRef
-          );
-          tabToFlattenedIndexMap.push(subFlattenedIndex);
-        });
-      }
-    });
+    const tabToFlattenedIndexMap = React.useMemo(() => {
+      const map: number[] = [];
+      items.forEach((item) => {
+        const flattenedIndex = flattenedItems.findIndex(
+          (flatItem) =>
+            flatItem.title === item.title &&
+            flatItem.elementRef === item.elementRef
+        );
+        map.push(flattenedIndex);
+        if (item.subItems) {
+          item.subItems.forEach((subItem) => {
+            const subFlattenedIndex = flattenedItems.findIndex(
+              (flatItem) =>
+                flatItem.title === subItem.title &&
+                flatItem.elementRef === subItem.elementRef
+            );
+            map.push(subFlattenedIndex);
+          });
+        }
+      });
+      return map;
+    }, [items, flattenedItems]);
 
     const a11yProps = (title: string, elementId: string) => {
       return {

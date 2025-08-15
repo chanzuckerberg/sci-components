@@ -8,6 +8,10 @@ import {
 } from "../constants/typography";
 import { Typography, TypographyStyles } from "../types";
 
+const DEFAULT_FONT_SIZE = 14;
+const DEFAULT_LINE_HEIGHT = 24;
+const DEFAULT_LETTER_SPACING = "0px";
+
 function generateTypographyStyle(
   category: keyof typeof TypographyCategories,
   size: string,
@@ -21,18 +25,18 @@ function generateTypographyStyle(
   const baseFontSize =
     FontSizeValues[screenType]?.[sourceCategory]?.[
       size as keyof (typeof FontSizeValues)[typeof screenType][typeof sourceCategory]
-    ] || 14;
+    ] || DEFAULT_FONT_SIZE;
   const fontSize = baseFontSize;
 
   const lineHeight =
     LineHeightValues[screenType]?.[sourceCategory]?.[
       size as keyof (typeof LineHeightValues)[typeof screenType][typeof sourceCategory]
-    ] || 24;
+    ] || DEFAULT_LINE_HEIGHT;
 
   const letterSpacing =
     LetterSpacingValues[screenType]?.[sourceCategory]?.[
       size as keyof (typeof LetterSpacingValues)[typeof screenType][typeof sourceCategory]
-    ] || "0px";
+    ] || DEFAULT_LETTER_SPACING;
 
   const fontWeight =
     FontWeight[weight as keyof typeof FontWeight] || FontWeight.regular;
