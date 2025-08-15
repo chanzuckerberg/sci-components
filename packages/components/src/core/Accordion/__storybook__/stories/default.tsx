@@ -14,7 +14,9 @@ export const Accordion = (props: Args): JSX.Element => {
       togglePosition={togglePosition}
       {...props}
     >
-      <AccordionHeader subtitle={subtitle}>Accordion Header</AccordionHeader>
+      <AccordionHeader id="panel1-header" subtitle={subtitle}>
+        Accordion Header
+      </AccordionHeader>
       <AccordionDetails>{EXTRA_SHORT_LOREM_IPSUM}</AccordionDetails>
     </RawAccordion>
   );

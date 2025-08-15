@@ -225,14 +225,21 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         if (item.itemType === "dropdown" && isNarrow) {
           const dropdownItem =
             item as DropdownNavigationHeaderPrimaryNavItem<T>;
+          const labelKebabCase = item.label
+            ?.toString()
+            .toLowerCase()
+            .replace(" ", "-");
           return (
             <StyledAccordion
-              key={`${item.label}-dropdown`}
-              id={`${item.label}-dropdown`}
+              key={`${labelKebabCase}-dropdown`}
+              id={`${labelKebabCase}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
+              <AccordionHeader
+                id={labelKebabCase || "default-label"}
+                chevronSize={isNarrow ? "s" : "xs"}
+              >
                 {item.label}
               </AccordionHeader>
               <AccordionDetails>

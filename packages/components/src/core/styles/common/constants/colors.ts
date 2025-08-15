@@ -18,7 +18,7 @@ export const SDSLightThemeColors: Colors = {
     "400": "#a5a5a5",
     "50": "#ffffff",
     "500": "#969696",
-    "600": "#7A7A7A",
+    "600": "#767676",
     "700": "#3b3b3b",
     "75": "#f8f8f8",
     "800": "#1b1b1b",

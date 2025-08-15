@@ -73,7 +73,11 @@ export default function NavigationHeaderSecondaryNav({
     <StyledSection isNarrow={isNarrow}>
       {items.map((item, index) => {
         const { itemType, label, key, ...rest } = item;
-        const itemKey = String(key || `${label}-${index}`);
+        const labelKebabCase = label
+          ?.toString()
+          .toLowerCase()
+          .replace(" ", "-");
+        const itemKey = String(key || `${labelKebabCase}-${index}`);
         const isDropdownOpen = open && activeDropdownKey === itemKey;
 
         if (itemType === "dropdown" && !isNarrow) {
@@ -191,11 +195,13 @@ export default function NavigationHeaderSecondaryNav({
         if (itemType === "dropdown" && isNarrow) {
           return (
             <StyledAccordion
-              key={`${label}-dropdown`}
-              id={`${label}-dropdown`}
+              key={`${labelKebabCase}-dropdown`}
+              id={`${labelKebabCase}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
             >
-              <AccordionHeader chevronSize="s">{label}</AccordionHeader>
+              <AccordionHeader id={labelKebabCase} chevronSize="s">
+                {label}
+              </AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);

@@ -5,8 +5,10 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
   class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-y89ilr-MuiPaper-root-MuiAccordion-root"
 >
   <div
+    aria-controls="panel1-header-content"
     aria-expanded="false"
     class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1c7vmp3-MuiButtonBase-root-MuiAccordionSummary-root"
+    id="panel1-header-header"
     role="button"
     tabindex="0"
   >
@@ -46,6 +48,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
         class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
         <div
+          aria-labelledby="panel1-header"
           class="MuiAccordion-region"
           role="region"
         >

@@ -21,7 +21,6 @@ export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
   togglePosition?: "right" | "left";
   chevronSize?: "xs" | "s" | "l" | "xl";
-  id: string;
 }
 
 const sdsPropNames = ["useDivider", "togglePosition", "chevronSize"];

@@ -390,6 +390,7 @@ const Typography = ({
         defaultExpanded
       >
         <AccordionHeader
+          id="wide-screen-typography-accordion-header"
           subtitle={`For Screens above sds-breakpoint-md ( screen width > 512px )`}
         >
           Wide Screen Font Styles
@@ -405,6 +406,7 @@ const Typography = ({
         togglePosition="right"
       >
         <AccordionHeader
+          id="narrow-screen-typography-accordion-header"
           subtitle={`For Screens below sds-breakpoint-md ( screen width <= 512px )`}
         >
           Narrow Screen Font Styles

@@ -9,7 +9,7 @@
     --sds-border-base-default: 1px solid #969696;
     --sds-border-base-disabled: 1px solid #c3c3c3;
     --sds-border-base-divider: 1px solid #dfdfdf;
-    --sds-border-base-divider-inverse: 1px solid #7a7a7a;
+    --sds-border-base-divider-inverse: 1px solid #767676;
     --sds-border-base-hover: 1px solid #000000;
     --sds-border-base-inverse: 1px solid #ffffff;
     --sds-border-base-pressed: 1px solid #000000;
@@ -53,7 +53,7 @@
     --sds-color-primitive-gray-300: #c3c3c3;
     --sds-color-primitive-gray-400: #a5a5a5;
     --sds-color-primitive-gray-500: #969696;
-    --sds-color-primitive-gray-600: #7a7a7a;
+    --sds-color-primitive-gray-600: #767676;
     --sds-color-primitive-gray-700: #3b3b3b;
     --sds-color-primitive-gray-800: #1b1b1b;
     --sds-color-primitive-gray-900: #000000;
@@ -117,9 +117,9 @@
     --sds-color-semantic-base-background-secondary-inverse: #3b3b3b;
     --sds-color-semantic-base-background-tertiary: #ededed;
     --sds-color-semantic-base-border-on-fill: #ffffff;
-    --sds-color-semantic-base-border-primary: #7a7a7a;
+    --sds-color-semantic-base-border-primary: #767676;
     --sds-color-semantic-base-border-primary-disabled: #c3c3c3;
-    --sds-color-semantic-base-border-primary-disabled-inverse: #7a7a7a;
+    --sds-color-semantic-base-border-primary-disabled-inverse: #767676;
     --sds-color-semantic-base-border-primary-hover: #000000;
     --sds-color-semantic-base-border-primary-hover-inverse: #ffffff;
     --sds-color-semantic-base-border-primary-inverse: #c3c3c3;
@@ -127,7 +127,7 @@
     --sds-color-semantic-base-border-primary-pressed-inverse: #ffffff;
     --sds-color-semantic-base-border-secondary: #c3c3c3;
     --sds-color-semantic-base-divider: #dfdfdf;
-    --sds-color-semantic-base-divider-inverse: #7a7a7a;
+    --sds-color-semantic-base-divider-inverse: #767676;
     --sds-color-semantic-base-fill-disabled: #dfdfdf;
     --sds-color-semantic-base-fill-hover: #c3c3c333;
     --sds-color-semantic-base-fill-hover-inverse: #c3c3c357;
@@ -138,11 +138,11 @@
     --sds-color-semantic-base-fill-primary: #ffffff;
     --sds-color-semantic-base-fill-selected: #000000;
     --sds-color-semantic-base-ornament-disabled: #c3c3c3;
-    --sds-color-semantic-base-ornament-disabled-inverse: #7a7a7a;
+    --sds-color-semantic-base-ornament-disabled-inverse: #767676;
     --sds-color-semantic-base-ornament-on-fill: #ffffff;
     --sds-color-semantic-base-ornament-primary: #000000;
     --sds-color-semantic-base-ornament-primary-inverse: #ffffff;
-    --sds-color-semantic-base-ornament-secondary: #7a7a7a;
+    --sds-color-semantic-base-ornament-secondary: #767676;
     --sds-color-semantic-base-ornament-secondary-hover: #000000;
     --sds-color-semantic-base-ornament-secondary-hover-inverse: #ffffff;
     --sds-color-semantic-base-ornament-secondary-inverse: #c3c3c3;
@@ -151,11 +151,11 @@
     --sds-color-semantic-base-surface: #ffffff;
     --sds-color-semantic-base-surface-inverse: #000000;
     --sds-color-semantic-base-text-disabled: #c3c3c3;
-    --sds-color-semantic-base-text-disabled-inverse: #7a7a7a;
+    --sds-color-semantic-base-text-disabled-inverse: #767676;
     --sds-color-semantic-base-text-on-fill: #ffffff;
     --sds-color-semantic-base-text-primary: #000000;
     --sds-color-semantic-base-text-primary-inverse: #ffffff;
-    --sds-color-semantic-base-text-secondary: #7a7a7a;
+    --sds-color-semantic-base-text-secondary: #767676;
     --sds-color-semantic-base-text-secondary-inverse: #c3c3c3;
     --sds-color-semantic-base-text-tertiary: #a5a5a5;
     --sds-color-semantic-base-text-tertiary-inverse: #969696;
@@ -187,7 +187,7 @@
     --sds-color-semantic-negative-surface-secondary: #ffe8e6;
     --sds-color-semantic-negative-text: #b80017;
     --sds-color-semantic-neutral-border: #969696;
-    --sds-color-semantic-neutral-fill-hover: #7a7a7a;
+    --sds-color-semantic-neutral-fill-hover: #767676;
     --sds-color-semantic-neutral-fill-pressed: #3b3b3b;
     --sds-color-semantic-neutral-fill-primary: #969696;
     --sds-color-semantic-neutral-fill-secondary: #dfdfdf;
