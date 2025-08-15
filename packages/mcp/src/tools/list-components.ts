@@ -1,7 +1,6 @@
 /* eslint-disable sort-keys */
-import { ComponentList } from "../../scripts/generate-component-list.js";
 import { getAllComponentNames } from "../lib/fetch.js";
-import type { Tool } from "../lib/types.js";
+import type { ComponentList, Tool } from "../lib/types.js";
 
 export const listComponentsTool: Tool<{ componentList: ComponentList }> = {
   name: "list_components",

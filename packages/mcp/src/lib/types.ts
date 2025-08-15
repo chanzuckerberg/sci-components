@@ -15,3 +15,8 @@ export interface Tool<T = unknown> {
     opts: { ctx: T; name: string; description: string; config: ToolConfig }
   ): Promise<void> | void;
 }
+
+export interface ComponentList {
+  components: string[];
+  "data-viz": string[];
+}

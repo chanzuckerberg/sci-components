@@ -4,10 +4,10 @@ import { spawn } from "child_process";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const FILENAME = fileURLToPath(import.meta.url);
+const DIRNAME = dirname(FILENAME);
 
-const serverPath = join(__dirname, "..", "dist", "stdio.js");
+const serverPath = join(DIRNAME, "..", "dist", "stdio.js");
 
 const inspector = spawn(
   "npx",

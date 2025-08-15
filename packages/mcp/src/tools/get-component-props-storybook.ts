@@ -9,7 +9,7 @@ export const getComponentPropsStorybookTool: Tool<{ componentList: string[] }> =
   {
     name: "get_component_props_storybook",
     description:
-      "Get detailed properties of a specific SDS component. This tool retrieves the properties, attributes, design related props for a component, like sdsStyle, sdsType, sdsSize, etc. and configuration options available for a given SDS component.",
+      "Get detailed properties of a specific SDS component using Storybook analysis. Unlike the regular get-component-props tool, which uses TypeScript analysis, this tool retrieves the properties, attributes, design related props for a component (like sdsStyle, sdsType, sdsSize, etc.), and configuration options available for a given SDS component from Storybook.",
     async ctx() {
       try {
         const componentList = await getAllComponentNames();

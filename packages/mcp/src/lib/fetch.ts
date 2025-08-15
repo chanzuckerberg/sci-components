@@ -1,15 +1,10 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { ComponentList } from "./types.js";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-
-interface ComponentList {
-  components: string[];
-  "data-viz": string[];
-}
 
 /**
  * Gets all component names from both packages
@@ -44,7 +39,7 @@ export async function getAllComponentNames(): Promise<ComponentList> {
   } catch (error) {
     throw new Error(
       `Failed to load component list: ${
-        error instanceof Error ? error.message : "Unknown error"
+        error instanceof Error ? error.message : `Unknown error ${error}`
       }`
     );
   }
