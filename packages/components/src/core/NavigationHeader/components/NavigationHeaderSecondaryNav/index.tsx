@@ -199,9 +199,7 @@ export default function NavigationHeaderSecondaryNav({
               id={`${labelKebabCase}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
             >
-              <AccordionHeader id={labelKebabCase} chevronSize="s">
-                {label}
-              </AccordionHeader>
+              <AccordionHeader chevronSize="s">{label}</AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);

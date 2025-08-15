@@ -35,6 +35,29 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         setExpanded(isExpanded ? panel : false);
       };
 
+    // Clone children and add props based on component type
+    const enhancedChildren =
+      React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          // Check if child is AccordionHeader
+          if (child.type === AccordionHeader) {
+            return React.cloneElement(child, {
+              ...child.props,
+              "aria-controls": `${id}-content`,
+              id: `${id}-header`,
+            });
+          }
+          // Check if child is AccordionDetails
+          if (child.type === AccordionDetails) {
+            return React.cloneElement(child, {
+              ...child.props,
+              id: `${id}-content`,
+            });
+          }
+        }
+        return child;
+      }) || children;
+
     return (
       <StyledAccordion
         square
@@ -45,7 +68,7 @@ const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
         onChange={handleChange(id)}
         {...rest}
       >
-        {children}
+        {enhancedChildren}
       </StyledAccordion>
     );
   }

@@ -236,10 +236,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              <AccordionHeader
-                id={labelKebabCase || "default-label"}
-                chevronSize={isNarrow ? "s" : "xs"}
-              >
+              <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
                 {item.label}
               </AccordionHeader>
               <AccordionDetails>
