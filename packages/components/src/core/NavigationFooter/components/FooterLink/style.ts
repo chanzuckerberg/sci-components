@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import Link from "../../../Link";
 import { css, Divider } from "@mui/material";
+import Link from "src/core/Link";
 import {
   CommonThemeProps,
-  fontBody,
+  fontBodyXxs,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
@@ -18,7 +18,7 @@ const doNotForwardProps = ["hasInvertedStyle", "showDivider"];
 export const StyledLinkItemLink = styled(Link, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontBody("xxs", "regular")}
+  ${fontBodyXxs}
 
   ${(props: FooterLinkStyleProps) => {
     const { showDivider, hasInvertedStyle } = props;

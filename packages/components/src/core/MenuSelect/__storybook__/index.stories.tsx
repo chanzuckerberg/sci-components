@@ -7,18 +7,18 @@ import {
 } from "@mui/material/useAutocomplete";
 import { Args, Meta } from "@storybook/react";
 import React, { SyntheticEvent, useState } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../../common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import TagFilter from "../../TagFilter";
+import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { BADGE } from "src/common/storybook/storybookBadges";
 import {
   CommonThemeProps,
   getColors,
   getCorners,
   getShadows,
-} from "../../styles";
-import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
-import { BADGE } from "../../../common/storybook/storybookBadges";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
+} from "src/core/styles";
+import TagFilter from "src/core/TagFilter";
 
 const StyledPopper = styled(Popper)`
   ${(props: CommonThemeProps) => {

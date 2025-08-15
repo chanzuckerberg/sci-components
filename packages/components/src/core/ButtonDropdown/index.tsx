@@ -51,7 +51,7 @@ const ButtonDropdown = React.forwardRef(
       const iconItem = () => {
         if (props?.icon) {
           return typeof props?.icon === "string" ? (
-            <Icon {...props?.sdsIconProps} sdsIcon={props?.icon} sdsSize="xl" />
+            <Icon {...props?.sdsIconProps} sdsIcon={props?.icon} sdsSize="s" />
           ) : (
             props?.icon
           );

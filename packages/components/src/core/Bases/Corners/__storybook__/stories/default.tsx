@@ -3,10 +3,8 @@ import TableHeader from "src/core/TableHeader";
 import CellHeader from "src/core/CellHeader";
 import TableRow from "src/core/TableRow";
 import CellComponent from "src/core/CellComponent";
-import CellBasic from "src/core/CellBasic";
 import { copyToClipboard } from "src/core/Bases/utils";
 import { StyledVariable } from "src/core/Bases/style";
-import { CORNERS_TITLE, CORNERS_USAGE } from "../constants";
 import { useTheme } from "@mui/material";
 import { Corners, getCorners } from "src/core/styles";
 import { StyledCornerBox, StyledCornerVariable } from "../style";
@@ -24,12 +22,6 @@ export const Template = () => {
         <CellComponent verticalAlign="center" horizontalAlign="center">
           <StyledCornerBox size={size} />
         </CellComponent>
-
-        <CellBasic
-          primaryText={CORNERS_TITLE[name]}
-          verticalAlign="center"
-          shouldShowTooltipOnHover={false}
-        />
 
         <CellComponent verticalAlign="center">
           <StyledVariable
@@ -49,12 +41,6 @@ export const Template = () => {
         <CellComponent verticalAlign="center">
           <StyledCornerVariable>{`${size}px`}</StyledCornerVariable>
         </CellComponent>
-
-        <CellBasic
-          verticalAlign="center"
-          primaryText={CORNERS_USAGE[name]}
-          shouldShowTooltipOnHover={false}
-        />
       </TableRow>
     );
   };
@@ -67,13 +53,9 @@ export const Template = () => {
     return (
       <Table>
         <TableHeader>
-          <CellHeader hideSortIcon style={{ width: 120 }}>
-            Example
-          </CellHeader>
-          <CellHeader hideSortIcon>Corner Type</CellHeader>
+          <CellHeader hideSortIcon>Example</CellHeader>
           <CellHeader hideSortIcon>Variables</CellHeader>
           <CellHeader hideSortIcon>Value</CellHeader>
-          <CellHeader hideSortIcon>Usage</CellHeader>
         </TableHeader>
         <tbody>{TableBodyContent}</tbody>
       </Table>

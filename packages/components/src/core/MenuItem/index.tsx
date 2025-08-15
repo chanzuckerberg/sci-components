@@ -4,11 +4,11 @@ import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import {
   ColumnWrapper,
   ContentWrapper,
-  StyledCheck,
+  DotIcon,
+  StyledIcon,
   StyledIconWrapper,
   StyledMenuItem,
   StyledMenuItemIcon,
-  StyledMinus,
   TextWrapper,
 } from "./style";
 
@@ -61,6 +61,7 @@ export interface MenuItemExtraProps<
   sdsIcon?: IconName | React.ReactElement<CustomSVGProps>;
   sdsIconProps?: Partial<IconProps<IconName>>;
   sdsStyle?: "determinate" | "indeterminate";
+  sdsType?: "default" | "action";
 }
 
 export type MenuItemProps<IconName extends keyof IconNameToSmallSizes> =
@@ -88,33 +89,55 @@ const MenuItem = forwardRef(function MenuItem<
     sdsIcon,
     sdsIconProps,
     sdsStyle = "determinate",
+    sdsType = "default",
     ...originalMenuItemProps
   } = props;
   const { selected = false } = originalMenuItemProps as MenuItemProps<IconName>;
 
+  // Determine if this is an action-type MenuItem based on onClick presence
+  const isActionType = sdsType === "action";
+
   const selectionIcon = () => {
-    if (sdsStyle === "determinate") {
+    if (isMultiSelect) {
+      if (sdsStyle === "determinate") {
+        return (
+          <StyledIconWrapper>
+            <StyledIcon
+              sdsIcon="Check"
+              sdsSize="xs"
+              selected={selected}
+              disabled={disabled}
+            />
+          </StyledIconWrapper>
+        );
+      }
       return (
         <StyledIconWrapper>
-          <StyledCheck
-            className="check-icon"
+          <StyledIcon
+            sdsIcon="Minus"
+            sdsSize="xs"
             selected={selected}
-            color="primary"
             disabled={disabled}
           />
         </StyledIconWrapper>
       );
+    } else {
+      return (
+        <StyledIconWrapper>
+          <DotIcon
+            viewBox="0 0 12 12"
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            fill="currentColor"
+            selected={selected}
+            disabled={disabled}
+          >
+            <circle cx="6" cy="6" r="2" />
+          </DotIcon>
+        </StyledIconWrapper>
+      );
     }
-    return (
-      <StyledIconWrapper>
-        <StyledMinus
-          className="check-icon"
-          selected={selected}
-          color="primary"
-          disabled={disabled}
-        />
-      </StyledIconWrapper>
-    );
   };
 
   /**
@@ -141,7 +164,7 @@ const MenuItem = forwardRef(function MenuItem<
 
   return (
     <StyledMenuItem {...originalMenuItemProps} disabled={disabled} ref={ref}>
-      {isMultiSelect && selectionIcon()}
+      {!isActionType && selectionIcon()}
 
       <ContentWrapper>
         <TextWrapper

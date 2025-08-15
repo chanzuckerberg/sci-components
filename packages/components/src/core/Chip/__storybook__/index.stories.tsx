@@ -1,10 +1,10 @@
 import { Args, Meta } from "@storybook/react";
 import React from "react";
-import Button from "../../Button";
 import Chip from "../index";
-import { BADGE } from "../../../common/storybook/storybookBadges";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";
+import { BADGE } from "src/common/storybook/storybookBadges";
+import Button from "src/core/Button";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;

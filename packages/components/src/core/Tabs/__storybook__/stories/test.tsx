@@ -73,7 +73,8 @@ function BetaTagWithCount() {
         hover={false}
         color="beta"
         sdsStyle="rounded"
-        sdsType="secondary"
+        sdsType="primary"
+        style={{ margin: "0 0 2px 0" }}
       />
     </>
   );

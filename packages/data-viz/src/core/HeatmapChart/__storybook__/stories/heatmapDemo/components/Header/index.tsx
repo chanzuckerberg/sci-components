@@ -42,7 +42,8 @@ const Header = () => {
         </Button>
 
         <Tooltip
-          title={
+          title={null}
+          componentSlot={
             <div>
               To modify the renderer for the heatmap, navigate to the control
               Within the control panel, you have the option to toggle between
@@ -55,6 +56,7 @@ const Header = () => {
               format.
             </div>
           }
+          textAlign="left"
           hasInvertedStyle={false}
           placement="bottom-end"
           arrow

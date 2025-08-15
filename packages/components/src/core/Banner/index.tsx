@@ -8,6 +8,8 @@ import {
   StyledButton,
 } from "./style";
 
+export type BannerIntentType = "info" | "negative" | "notice" | "positive";
+
 export interface BannerProps extends BannerExtraProps {
   children: React.ReactNode;
   icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
@@ -15,6 +17,7 @@ export interface BannerProps extends BannerExtraProps {
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
+  intent?: BannerIntentType;
 }
 
 const Banner = forwardRef(function Banner(
@@ -29,6 +32,7 @@ const Banner = forwardRef(function Banner(
     sdsType,
     icon,
     sdsIconProps,
+    intent = "info",
     ...rest
   } = props;
 
@@ -49,17 +53,40 @@ const Banner = forwardRef(function Banner(
       if (typeof icon !== "string") {
         return icon;
       } else {
-        return <Icon sdsIcon={icon} sdsSize="l" {...sdsIconProps} />;
+        return <Icon sdsIcon={icon} sdsSize="s" {...sdsIconProps} />;
       }
     } else {
-      return <Icon sdsIcon="InfoCircle" sdsSize="l" {...sdsIconProps} />;
+      switch (intent) {
+        case "positive":
+          return <Icon sdsIcon="CheckCircle" sdsSize="s" {...sdsIconProps} />;
+        case "negative":
+        case "notice":
+          return (
+            <Icon
+              sdsIcon="ExclamationMarkCircle"
+              sdsSize="s"
+              {...sdsIconProps}
+            />
+          );
+        case "info":
+        default:
+          return <Icon sdsIcon="InfoCircle" sdsSize="s" {...sdsIconProps} />;
+      }
     }
   };
 
   return (
-    <StyledBanner role="banner" sdsType={sdsType} ref={ref} {...rest}>
+    <StyledBanner
+      role="banner"
+      sdsType={sdsType}
+      intent={intent}
+      ref={ref}
+      {...rest}
+    >
       <Centered>
-        <IconWrapper bannerType={sdsType}>{iconItem()}</IconWrapper>
+        <IconWrapper bannerType={sdsType} intent={intent}>
+          {iconItem()}
+        </IconWrapper>
         {children}
       </Centered>
       {dismissible && (

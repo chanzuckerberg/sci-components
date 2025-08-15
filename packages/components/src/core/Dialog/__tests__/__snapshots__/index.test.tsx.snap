@@ -2,7 +2,7 @@
 
 exports[`<Dialog /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-2b16iw-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1pji6vx-MuiButtonBase-root-MuiButton-root"
   data-style="minimal"
   tabindex="0"
   type="button"
@@ -17,13 +17,13 @@ exports[`<Dialog /> Default story renders snapshot 1`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 <h2
-  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
   id=":r1:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y737h3-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eu9ld9-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
@@ -34,13 +34,13 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-        data-file-name="IconXMarkSmall"
-        data-testid="IconXMarkSmall"
+        data-file-name="IconXMarkLarge"
+        data-testid="IconXMarkLarge"
         fillcontrast="white"
         focusable="false"
-        height="16"
-        viewBox="0 0 16 16"
-        width="16"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
       />
     </div>
     <span
@@ -48,17 +48,17 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1qnp4ei-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
   >
     Optional Overline
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1rtz4lg-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>
@@ -80,7 +80,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1gxyc37-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -90,7 +90,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -104,7 +104,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 <h2
-  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
   id=":r2:"
 >
@@ -135,17 +135,17 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1qnp4ei-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
   >
     Optional Overline
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1rtz4lg-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>
@@ -167,7 +167,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1gxyc37-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -177,7 +177,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -191,13 +191,13 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 <h2
-  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
   id=":r3:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-48ut0w-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eu9ld9-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
@@ -222,17 +222,17 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1qnp4ei-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
   >
     Optional Overline
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1rtz4lg-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>
@@ -254,7 +254,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1gxyc37-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -264,7 +264,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -278,13 +278,13 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
 
 exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 <h2
-  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
   id=":r4:"
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-48ut0w-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-eu9ld9-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
@@ -309,17 +309,17 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     />
   </button>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1qnp4ei-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
   >
     Optional Overline
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1rtz4lg-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>
@@ -341,7 +341,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1gxyc37-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -351,7 +351,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -369,7 +369,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -379,7 +379,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
     />
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1gxyc37-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -393,22 +393,22 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
 
 exports[`<Dialog /> renders Dialog without title X button 1`] = `
 <h2
-  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-uq0kkp-MuiTypography-root-MuiDialogTitle-root"
+  class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
   id=":r5:"
 >
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1qnp4ei-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
   >
     Optional Overline
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-1rtz4lg-MuiTypography-root"
   >
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-l7o1a2-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>

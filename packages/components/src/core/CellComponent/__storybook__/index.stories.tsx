@@ -1,9 +1,9 @@
 import { Args, Meta } from "@storybook/react";
-import InputToggle from "../../InputToggle";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { CellComponent } from "./stories/default";
 import { CELL_COMPONENT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
+import InputToggle from "src/core/InputToggle";
 
 export default {
   argTypes: {

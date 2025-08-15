@@ -85,6 +85,7 @@ export const Panel = (props: Args): JSX.Element => {
         sdsType={sdsType}
         open={open}
         closeButtonOnClick={() => setOpen(false)}
+        onClose={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
         {...props}
       >

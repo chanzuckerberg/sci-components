@@ -23,6 +23,8 @@ import {
   StyledTitleTagWrapper,
   StyledToolbar,
   StyledWideIconButton,
+  StyledDrawerContent,
+  StyledSectionDivider,
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
@@ -267,6 +269,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         {...buttonProps}
         sdsStyle="minimal"
         sdsType="secondary"
+        isNarrow={dimensions.isNarrow}
       >
         {buttonProps.children}
       </StyledNarrowIconButton>
@@ -279,12 +282,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       return (
         <StyledWideIconButton
           key={key}
-          sdsIconProps={{ sdsSize: "l" }}
           aria-label={String(buttonProps.children)}
           hasInvertedStyle={hasInvertedStyle}
           {...buttonProps}
           sdsStyle="icon"
           sdsType="secondary"
+          sdsSize="small"
           icon={buttonProps.icon}
         />
       );
@@ -301,6 +304,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
         sdsStyle="rounded"
         hasInvertedStyle={hasInvertedStyle}
+        isNarrow={dimensions.isNarrow}
       />
     );
 
@@ -345,7 +349,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
           {dimensions.isNarrow && (
             <StyledNarrowButton
-              sdsType="secondary"
+              sdsType="tertiary"
               sdsStyle="icon"
               icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
               onClick={() => setDrawerOpen((prev) => !prev)}
@@ -387,26 +391,31 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             role="dialog"
             aria-label="Navigation menu"
           >
-            <div>
-              <ElevationScroll {...props} shouldElevate={scrollElevation}>
-                <StyledAppBar
-                  elevation={10}
-                  hasInvertedStyle={hasInvertedStyle}
-                  ref={mergeRefs([ref, navRef])}
-                  aria-label="Main navigation"
-                  tabIndex={0}
-                  {...rest}
-                  position="sticky"
-                >
-                  {headerContent}
-                </StyledAppBar>
-              </ElevationScroll>
-              {search}
-              {primaryNav}
-              {secondaryNav}
-            </div>
+            <ElevationScroll {...props} shouldElevate={scrollElevation}>
+              <StyledAppBar
+                elevation={10}
+                hasInvertedStyle={hasInvertedStyle}
+                ref={mergeRefs([ref, navRef])}
+                aria-label="Main navigation"
+                tabIndex={0}
+                {...rest}
+                position="sticky"
+              >
+                {headerContent}
+              </StyledAppBar>
+            </ElevationScroll>
+            <StyledDrawerContent>
+              <div>
+                {search}
+                {primaryNav}
+                {primaryNav && secondaryNav && (
+                  <StyledSectionDivider hasInvertedStyle={hasInvertedStyle} />
+                )}
+                {secondaryNav}
+              </div>
 
-            {buttonsNode}
+              {buttonsNode}
+            </StyledDrawerContent>
           </StyledDrawer>
         )}
       </>
