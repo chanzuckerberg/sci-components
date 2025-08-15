@@ -14,7 +14,7 @@ global.ResizeObserver = class {
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test, Default } = composeStories(stories);
 
-describe("<NavigationHeder />", () => {
+describe("<NavigationHeader />", () => {
   generateSnapshots(stories);
 
   it("renders navigation header component", () => {
@@ -59,8 +59,8 @@ describe("<NavigationHeder />", () => {
       />
     );
 
-    expect(screen.getByText("Home")).toBeInTheDocument();
-    expect(screen.getByText("About")).toBeInTheDocument();
+    expect(screen.getAllByText("Home")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("About")[0]).toBeInTheDocument();
   });
 
   it("changes the active primary navigation item when clicked", () => {
@@ -77,7 +77,7 @@ describe("<NavigationHeder />", () => {
       />
     );
 
-    fireEvent.click(screen.getByText("About"));
+    fireEvent.click(screen.getAllByText("About")[0]);
     expect(setActivePrimaryNavKey).toHaveBeenCalledWith("about");
   });
 
@@ -97,8 +97,8 @@ describe("<NavigationHeder />", () => {
       />
     );
 
-    expect(screen.getByText("Profile")).toBeInTheDocument();
-    expect(screen.getByText("Settings")).toBeInTheDocument();
+    expect(screen.getAllByText("Profile")[0]).toBeInTheDocument();
+    expect(screen.getAllByText("Settings")[0]).toBeInTheDocument();
   });
 
   it("renders buttons and handles button clicks correctly", () => {

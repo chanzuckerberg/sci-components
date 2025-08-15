@@ -25,6 +25,7 @@ const doNotForwardProps = [
   "closeButtonOnClick",
   "CloseButtonComponent",
   "isBackdropClickEnabled",
+  "slotProps",
 ];
 
 const basicPanelStyles = (props: PanelExtraProps): SerializedStyles => {
@@ -61,8 +62,8 @@ const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
     }
 
     .${drawerClasses.paper} {
-      background-color: ${semanticColors?.base?.surface};
-      padding: ${spaces?.xl}px;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      padding: 0 ${spaces?.xl}px ${spaces?.xl}px;
       min-width: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;
       min-height: ${PANEL_OVERLAY_MIN_WIDTH_PX}px;
       box-shadow: ${shadows?.l};
@@ -97,9 +98,15 @@ export const StyledDrawer = styled(Drawer, {
 export const StyledHeaderComponent = styled("div")`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
-      margin-bottom: ${spaces?.xl}px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      padding-bottom: ${spaces?.xl}px;
+      padding-top: ${spaces?.xl}px;
       display: flex;
       justify-content: space-between;
       align-items: start;

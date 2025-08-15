@@ -1,6 +1,7 @@
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { noop } from "src/common/utils";
 
 export const AUTOCOMPLETE_EXCLUDED_CONTROLS = [
   "search",
@@ -12,6 +13,15 @@ export const AUTOCOMPLETE_EXCLUDED_CONTROLS = [
   "label",
   "options",
   "intent",
+  "onChange",
+];
+
+export const AUTOCOMPLETE_ON_CHANGE_OPTIONS = [
+  noop,
+  (event: unknown, value: unknown) => {
+    // eslint-disable-next-line no-console
+    console.log(value);
+  },
 ];
 
 export const AUTOCOMPLETE_GROUP_BY_OPTIONS = [
@@ -20,11 +30,10 @@ export const AUTOCOMPLETE_GROUP_BY_OPTIONS = [
 ];
 
 export const AUTOCOMPLETE_WRAPPER_STYLES = {
-  margin: "16px 0 0 24px",
-  width: 274,
+  width: 280,
 };
 
-export const AUTOCOMPLETE_DIV_MARGIN = "10px 0 0 24px";
+export const AUTOCOMPLETE_DIV_MARGIN = "10px 0 0 0";
 
 export const AUTOCOMPLETE_LABEL = "Search by label";
 

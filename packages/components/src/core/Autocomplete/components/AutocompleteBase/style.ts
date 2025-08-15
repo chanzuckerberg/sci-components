@@ -1,4 +1,9 @@
-import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
+import {
+  Autocomplete,
+  autocompleteClasses,
+  AutocompleteProps,
+  Paper,
+} from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import InputSearch from "src/core/InputSearch";
@@ -12,11 +17,19 @@ import {
   getShadows,
   getSpaces,
 } from "src/core/styles";
+import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+import { DefaultAutocompleteOption } from ".";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
   icon?: ReactElement;
   search?: boolean;
+  groupBy?: AutocompleteProps<
+    DefaultAutocompleteOption,
+    boolean,
+    boolean,
+    boolean
+  >["groupBy"];
 }
 
 const doNotForwardProps = [
@@ -26,6 +39,7 @@ const doNotForwardProps = [
   "InputBaseProps",
   "PopperBaseProps",
   "onClickAway",
+  "hasGroupBy",
 ];
 
 export const StyledAutocompleteBase = styled(Autocomplete, {
@@ -38,7 +52,8 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { search } = props;
+    const { search, groupBy } = props;
+
     const spaces = getSpaces(props);
     const borders = getBorders(props);
     const semanticColors = getSemanticColors(props);
@@ -70,7 +85,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding: 0 ${spaces?.m}px 0 0;
+          padding: 0 ${groupBy ? 0 : spaces?.xs}px;
 
           .${autocompleteClasses.option} {
             min-height: unset;
@@ -103,14 +118,14 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
           background-color: ${semanticColors?.base?.surface};
-          padding: ${spaces?.xxs}px ${spaces?.s}px;
+          padding: 0 ${spaces?.m}px;
         }
 
         .${autocompleteClasses.groupUl} {
           position: relative;
-          margin: 0 0 ${spaces?.m}px;
+          margin: 0 0 ${spaces?.s}px;
           border-bottom: ${borders?.base?.divider};
-          padding-bottom: ${spaces?.xxs}px;
+          padding: ${spaces?.xxs}px ${spaces?.xs}px;
 
           & li:last-of-type {
             position: relative;
@@ -118,12 +133,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
 
         .${autocompleteClasses.noOptions} {
-          padding: ${spaces?.xs}px ${spaces?.s}px;
-          margin-right: ${spaces?.l}px;
+          padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.xs}px;
         }
 
         .${autocompleteClasses.loading} {
-          padding: 0 ${spaces?.m}px 0 0;
+          padding: 0 ${spaces?.xs}px;
         }
       }
     `;
@@ -167,18 +181,19 @@ export const StyledMenuInputSearch = styled(InputSearch, {
 
 export const StyledPaper = styled(Paper)`
   ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
     const borders = getBorders(props);
+    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       background-image: none;
-      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px ;
+      padding: ${spaces?.xs}px 0;
       background-color: ${semanticColors?.base?.surface};
       border: ${borders?.none};
-      border-radius: ${corners?.m}px;
+      outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000", 15)};
+      border-radius: ${corners?.l}px;
       box-shadow: ${shadows?.m};
       box-sizing: border-box;
     `;

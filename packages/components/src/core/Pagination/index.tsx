@@ -118,6 +118,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           onClick={() => currentPage > 1 && onPreviousPage()}
           onKeyDown={handleGoBackButtonKeyDown}
           tabIndex={0}
+          sdsStyle={sdsStyle}
         >
           <Icon aria-label="Previous page" sdsIcon="ChevronLeft" sdsSize="xs" />
         </StyledPaginationChevronList>
@@ -137,6 +138,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           onClick={() => currentPage !== lastPage && onNextPage()}
           onKeyDown={handleGoNextButtonKeyDown}
           tabIndex={0}
+          sdsStyle={sdsStyle}
         >
           <Icon aria-label="Next page" sdsIcon="ChevronRight" sdsSize="xs" />
         </StyledPaginationChevronList>

@@ -46,9 +46,9 @@ export const StyledPopper = styled(Popper, {
       background-color: ${semanticColors?.base?.surface};
       background-image: none;
       border: ${borders?.none};
-      border-radius: ${corners?.m}px;
+      border-radius: ${corners?.l}px;
       box-shadow: ${shadows?.m};
-      padding: ${spaces?.l}px ${spaces?.xxs}px ${spaces?.l}px ${spaces?.l}px;
+      padding: ${spaces?.s}px ${spaces?.xs}px ${spaces?.xs}px;
       box-sizing: border-box;
       z-index: 1400;
 
@@ -57,7 +57,7 @@ export const StyledPopper = styled(Popper, {
         transform: none !important;
       
         .MuiPaper-root .${autocompleteClasses.listbox} {
-          padding: 0 ${spaces?.m}px 0 0;
+          padding: 0;
         }
       }
     `;

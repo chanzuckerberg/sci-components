@@ -15,6 +15,9 @@ export const DROPDOWN_EXCLUDED_CONTROLS = [
   "options",
   "search",
   "isTriggerChangeOnOptionClick",
+  "InputDropdownProps",
+  "title",
+  "isSearchAutoFocus",
 ];
 
 export const DROPDOWN_ON_CHANGE_OPTIONS = [

@@ -4,7 +4,7 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontBodyS,
-  fontBodySemiboldS,
+  fontTabularS,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -36,18 +36,16 @@ export const StyledPaginationButton = styled(Button)`
     const semanticColors = getSemanticColors(props);
 
     return `
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       cursor: "pointer";
 
       & .MuiSvgIcon-root {
-        width: 10px;
+        width: 12px;
         color: ${semanticColors?.base?.ornamentSecondary};
       }
 
       &:hover {
-        background-color: ${semanticColors?.base?.fillHover};
-
         & .MuiSvgIcon-root {
           color: ${semanticColors?.base?.ornamentSecondaryHover}
         }
@@ -60,26 +58,27 @@ export const StyledPaginationChevronList = styled("li", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
   ${(props: PaginationExtraProps) => {
-    const { disabled } = props;
+    const { disabled, sdsStyle } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     return `
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       cursor: ${disabled ? "auto" : "pointer"};
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 32px;
+      border-radius: ${sdsStyle === "round" ? corners?.rounded : corners?.m}px;
 
       &[data-order="first"] {
-        margin-right: ${spaces?.l}px;
+        margin-right: ${spaces?.m}px;
       }
 
       &[data-order="last"] {
-        margin-left: ${spaces?.l}px;
+        margin-left: ${spaces?.m}px;
       }
 
       & .MuiSvgIcon-root {
@@ -116,12 +115,13 @@ const selectedPageStyle = (props: PaginationExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.base?.fillSelected};
-    color: ${semanticColors?.base?.textPrimaryInverse};
+    background-color: ${semanticColors?.base?.fillOpen};
+    color: ${semanticColors?.base?.textPrimary};
+    font-weight: 500;
+    box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillSelected};
-      color: ${semanticColors?.base?.textPrimaryInverse};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
     }
   `;
 };
@@ -129,7 +129,7 @@ const selectedPageStyle = (props: PaginationExtraProps) => {
 export const Page = styled("li", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontBodySemiboldS}
+  ${fontTabularS}
 
   ${(props: PaginationExtraProps) => {
     const { selected, sdsStyle } = props;
@@ -141,13 +141,14 @@ export const Page = styled("li", {
       color: ${semanticColors?.base?.textSecondary};
       cursor: pointer;
       list-style: none;
-      width: 32px;
-      height: 32px;
-      margin-right: ${spaces?.l}px;
+      padding: 0 ${spaces?.s}px;
+      min-width: 28px;
+      height: 28px;
+      margin-right: ${spaces?.s}px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: ${sdsStyle === "round" ? corners?.l : corners?.m}px;
+      border-radius: ${sdsStyle === "round" ? corners?.rounded : corners?.l}px;
       user-select: none;
       &:hover {
         background-color: ${semanticColors?.base?.fillHover};
@@ -162,4 +163,9 @@ export const Page = styled("li", {
       ${focusVisibleA11yStyle(props)}
     `;
   }}
+`;
+
+export const StyledPage = styled(Page)`
+  width: 28px;
+  max-width: 28px;
 `;

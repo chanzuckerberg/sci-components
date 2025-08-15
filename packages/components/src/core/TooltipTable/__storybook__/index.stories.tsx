@@ -6,6 +6,7 @@ import {
 } from "./constants";
 import { TooltipTableContent } from "./stories/default";
 import { TestDemo } from "./stories/test";
+import { WithinTooltipDemo } from "./stories/withTooltip";
 
 export default {
   argTypes: {
@@ -37,6 +38,18 @@ export const Default = {
     itemAlign: "right",
     showSectionHeader: true,
   },
+};
+
+// Within Tooltip
+
+export const WithinTooltip = {
+  args: {
+    contentAlert: "None",
+    data: TOOLTIP_TABLE_DATA,
+    itemAlign: "right",
+    showSectionHeader: true,
+  },
+  render: (args: Args) => <WithinTooltipDemo {...args} />,
 };
 
 // Test

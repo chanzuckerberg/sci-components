@@ -1,13 +1,13 @@
 import { SdsTagColorType } from "src/core/Tag";
-import {
-  PrimaryNavItem,
-  StyledAccordion,
-  StyledLabel,
-  StyledSubItem,
-  StyledTag,
-} from "./style";
+import { PrimaryNavItem, StyledLabel, StyledTag } from "./style";
 import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
-import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
+import {
+  StyledDivider,
+  StyledLabelTextWrapper,
+  StyledLabelTextWrapperShadow,
+  StyledSection,
+  StyledSectionHeader,
+} from "../style";
 import Menu from "src/core/Menu";
 import MenuItem from "src/core/MenuItem";
 import Icon from "src/core/Icon";
@@ -15,6 +15,7 @@ import { SDSTheme } from "src/core/styles";
 import { useTheme } from "@mui/material";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { groupItemsBySection } from "../../utils";
+import { StyledAccordion } from "../../style";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -67,6 +68,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const [activeDropdownKey, setActiveDropdownKey] = useState<T | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");
 
@@ -74,6 +76,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
   function onClose() {
     setAnchorEl(null);
+    setActiveDropdownKey(null);
   }
 
   useEffect(() => {
@@ -97,6 +100,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           ...rest
         } = item;
         const isActive = key === value;
+        const isDropdownOpen = open && activeDropdownKey === key;
 
         if (item.itemType === "dropdown" && !isNarrow) {
           const dropdownItem =
@@ -108,9 +112,10 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                 itemType={item.itemType}
                 ref={buttonRef}
                 sdsStyle="minimal"
-                active={open}
+                active={isDropdownOpen}
                 onClick={(e) => {
                   setAnchorEl(e.currentTarget);
+                  setActiveDropdownKey(key);
                   onChange(key);
                   parentOnClick?.(e);
                 }}
@@ -119,13 +124,21 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               >
                 <StyledLabel
                   itemType={item.itemType}
-                  active={open}
+                  active={isDropdownOpen}
                   hasInvertedStyle={hasInvertedStyle}
                   isNarrow={isNarrow}
                 >
-                  {label as ReactNode}
+                  <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+                    {label as ReactNode}
+                  </StyledLabelTextWrapper>
+                  <StyledLabelTextWrapperShadow
+                    aria-hidden="true"
+                    isNarrow={isNarrow}
+                  >
+                    {label as ReactNode}
+                  </StyledLabelTextWrapperShadow>
                   <Icon
-                    sdsIcon={open ? "ChevronUp" : "ChevronDown"}
+                    sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                     sdsSize="xs"
                   />
                 </StyledLabel>
@@ -133,7 +146,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
               <Menu
                 anchorEl={anchorEl}
-                open={open}
+                open={isDropdownOpen}
                 onClose={onClose}
                 slotProps={{
                   paper: {
@@ -192,6 +205,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               sx={{ minWidth: menuWidth }}
                               {...subItemRest}
                             >
@@ -211,14 +225,20 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         if (item.itemType === "dropdown" && isNarrow) {
           const dropdownItem =
             item as DropdownNavigationHeaderPrimaryNavItem<T>;
+          const labelKebabCase = item.label
+            ?.toString()
+            .toLowerCase()
+            .replace(" ", "-");
           return (
             <StyledAccordion
-              key={`${item.label}-dropdown`}
-              id={`${item.label}-dropdown`}
+              key={`${labelKebabCase}-dropdown`}
+              id={`${labelKebabCase}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              <AccordionHeader>{item.label}</AccordionHeader>
+              <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
+                {item.label}
+              </AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(dropdownItem.items);
@@ -256,16 +276,17 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                           } = subItem;
 
                           return (
-                            <StyledSubItem
+                            <MenuItem
                               key={`primary-nav-item-${dropdownItemLabel}`}
                               onClick={(e) => {
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               {...accordionSubItemRest}
                             >
                               {dropdownItemLabel}
-                            </StyledSubItem>
+                            </MenuItem>
                           );
                         })}
                       </Fragment>
@@ -295,7 +316,15 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              {label as ReactNode}
+              <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+                {label as ReactNode}
+              </StyledLabelTextWrapper>
+              <StyledLabelTextWrapperShadow
+                aria-hidden="true"
+                isNarrow={isNarrow}
+              >
+                {label as ReactNode}
+              </StyledLabelTextWrapperShadow>
 
               {"tag" in item && (
                 <StyledTag

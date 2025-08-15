@@ -175,13 +175,13 @@ export default {
 export const Default = {
   args: {
     buttons: [
-      { children: "Primary", sdsType: "primary" },
+      { children: "Label", sdsType: "primary" },
       {
-        children: "Secondary",
+        children: "Label",
         sdsType: "secondary",
       },
       {
-        children: "My Profile",
+        children: "Label",
         icon: "Person",
         onClick: () => alert("clicked on my profile"),
       },
@@ -200,7 +200,7 @@ export const Default = {
         key: "2",
         label: "Primary",
         onClick: () => console.log("You clicked on a Text PrimaryNavItem!"),
-        tag: "Beta",
+        tag: "Tag",
         tagColor: "beta",
       },
       {
@@ -246,8 +246,9 @@ export const Default = {
       },
     ],
     showSearch: true,
-    tag: "Beta",
+    tag: "Tag",
     tagColor: "beta",
+    title: "Title",
   },
   parameters: {
     controls: {

@@ -17,7 +17,7 @@ export default {
     },
     intent: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["default", "negative", "notice", "positive"],
     },
@@ -39,7 +39,7 @@ export default {
     },
     sdsType: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["label", "value"],
     },

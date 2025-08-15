@@ -1,6 +1,6 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
-import Tag from "../../core/Tag";
+import Tag from "src/core/Tag";
 import CustomSdsIcon from "./customSdsIcon";
 import CustomSvgIcon from "./customSvgIcon";
 
@@ -34,7 +34,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "name with details",
   },
   {
-    icon: <CustomSdsIcon sdsSize="s" color="green" shade={600} />,
+    icon: <CustomSdsIcon sdsSize="s" color="green" shade={400} />,
     name: "Custom SDS Icon",
     section: "With Icon",
   },
