@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
+  fontBodyMediumL,
+  fontBodyMediumS,
+  fontBodySemiboldL,
+  fontBodySemiboldS,
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
@@ -116,6 +120,36 @@ export const StyledDivider = styled(Divider, {
         border-bottom: solid 1px ${getBorderColor()};
         padding-bottom: ${isNarrow ? 0 : spaces?.xxs}px;
       }
+    `;
+  }}
+`;
+
+export const StyledLabelTextWrapper = styled("div")`
+  ${(props: CommonThemeProps & { active?: boolean; isNarrow?: boolean }) => {
+    const { active, isNarrow } = props;
+
+    return [
+      isNarrow
+        ? active
+          ? fontBodySemiboldL(props)
+          : fontBodyMediumL(props)
+        : active
+          ? fontBodySemiboldS(props)
+          : fontBodyMediumS(props),
+      css`
+        position: absolute;
+      `,
+    ];
+  }}
+`;
+
+export const StyledLabelTextWrapperShadow = styled("div")`
+  ${(props: CommonThemeProps & { active?: boolean; isNarrow?: boolean }) => {
+    const { isNarrow } = props;
+    return css`
+      ${isNarrow ? fontBodySemiboldL(props) : fontBodySemiboldS(props)}
+      visibility: hidden;
+      opacity: 0;
     `;
   }}
 `;

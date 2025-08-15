@@ -21,8 +21,8 @@ export const BUTTON_DROPDOWN_ICON_OPTIONS = [
   "Copy",
   "CirclesOverlap2",
   "TrashCan",
-  <CustomSdsIcon key="customSdsIcon" />,
-  <CustomSvgIcon key="customIcon" />,
+  <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />,
 ];
 
 export const BUTTON_DROPDOWN_ICON_LABELS = [

@@ -1,5 +1,11 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
+import {
+  StyledDivider,
+  StyledLabelTextWrapper,
+  StyledLabelTextWrapperShadow,
+  StyledSection,
+  StyledSectionHeader,
+} from "../style";
 import { StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
@@ -86,7 +92,18 @@ export default function NavigationHeaderSecondaryNav({
                   item.onClick?.(event);
                 }}
               >
-                <span>{label}</span>
+                <StyledLabelTextWrapper
+                  active={isDropdownOpen}
+                  isNarrow={isNarrow}
+                >
+                  {label}
+                </StyledLabelTextWrapper>
+                <StyledLabelTextWrapperShadow
+                  aria-hidden="true"
+                  isNarrow={isNarrow}
+                >
+                  {label}
+                </StyledLabelTextWrapperShadow>
                 <Icon
                   sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                   sdsSize="xs"

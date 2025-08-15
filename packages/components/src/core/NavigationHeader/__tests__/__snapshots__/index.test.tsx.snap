@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
+exports[`<NavigationHeader /> Default story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
   class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1652jnx-MuiPaper-root-MuiAppBar-root"
@@ -56,9 +56,19 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
           >
-            Primary
+            <div
+              class="css-n5es2b"
+            >
+              Primary
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              Primary
+            </div>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -71,9 +81,19 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
           >
-            Primary
+            <div
+              class="css-n5es2b"
+            >
+              Primary
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              Primary
+            </div>
             <div
               class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mprc8-MuiChip-root"
             >
@@ -97,10 +117,20 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
             itemtype="dropdown"
           >
-            Primary
+            <div
+              class="css-n5es2b"
+            >
+              Primary
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              Primary
+            </div>
             <div
               class="css-1ft6wgl"
             >
@@ -205,9 +235,17 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         tabindex="0"
         type="button"
       >
-        <span>
+        <div
+          class="css-n5es2b"
+        >
           Secondary
-        </span>
+        </div>
+        <div
+          aria-hidden="true"
+          class="css-fupqvl"
+        >
+          Secondary
+        </div>
         <div
           class="css-1ft6wgl"
         >
@@ -243,7 +281,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
       class="css-1d32ayj"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-p4gusv-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-arjfgo-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -253,7 +291,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-19ltliv-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -293,7 +331,7 @@ exports[`<NavigationHeder /> Default story renders snapshot 1`] = `
 </header>
 `;
 
-exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
+exports[`<NavigationHeader /> DropdownWithSections story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
   class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-1652jnx-MuiPaper-root-MuiAppBar-root"
@@ -331,9 +369,19 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
           >
-            Home
+            <div
+              class="css-n5es2b"
+            >
+              Home
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              Home
+            </div>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -348,10 +396,20 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
             itemtype="dropdown"
           >
-            Products
+            <div
+              class="css-n5es2b"
+            >
+              Products
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              Products
+            </div>
             <div
               class="css-1ft6wgl"
             >
@@ -380,9 +438,19 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-rv3fo8"
+            class="css-1psg5e7"
           >
-            About
+            <div
+              class="css-n5es2b"
+            >
+              About
+            </div>
+            <div
+              aria-hidden="true"
+              class="css-fupqvl"
+            >
+              About
+            </div>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -472,9 +540,17 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
         tabindex="0"
         type="button"
       >
-        <span>
+        <div
+          class="css-n5es2b"
+        >
           New Products
-        </span>
+        </div>
+        <div
+          aria-hidden="true"
+          class="css-fupqvl"
+        >
+          New Products
+        </div>
         <div
           class="css-1ft6wgl"
         >
@@ -499,7 +575,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
       class="css-1d32ayj"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-19ltliv-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -539,7 +615,7 @@ exports[`<NavigationHeder /> DropdownWithSections story renders snapshot 1`] = `
 </header>
 `;
 
-exports[`<NavigationHeder /> matches the snapshot 1`] = `
+exports[`<NavigationHeader /> matches the snapshot 1`] = `
 <DocumentFragment>
   <header
     aria-label="Main navigation"
@@ -596,9 +672,19 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             tabindex="0"
           >
             <span
-              class="css-rv3fo8"
+              class="css-1psg5e7"
             >
-              Primary
+              <div
+                class="css-n5es2b"
+              >
+                Primary
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -611,9 +697,19 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             type="button"
           >
             <span
-              class="css-rv3fo8"
+              class="css-1psg5e7"
             >
-              Primary
+              <div
+                class="css-n5es2b"
+              >
+                Primary
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
               <div
                 class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1mprc8-MuiChip-root"
               >
@@ -637,10 +733,20 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
             type="button"
           >
             <span
-              class="css-rv3fo8"
+              class="css-1psg5e7"
               itemtype="dropdown"
             >
-              Primary
+              <div
+                class="css-n5es2b"
+              >
+                Primary
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
               <div
                 class="css-1ft6wgl"
               >
@@ -745,9 +851,17 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           tabindex="0"
           type="button"
         >
-          <span>
+          <div
+            class="css-n5es2b"
+          >
             Secondary
-          </span>
+          </div>
+          <div
+            aria-hidden="true"
+            class="css-fupqvl"
+          >
+            Secondary
+          </div>
           <div
             class="css-1ft6wgl"
           >
@@ -783,7 +897,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
         class="css-1d32ayj"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-p4gusv-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-arjfgo-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -793,7 +907,7 @@ exports[`<NavigationHeder /> matches the snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-19ltliv-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >

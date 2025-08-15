@@ -29,6 +29,7 @@ export const Autocomplete = <T extends DefaultAutocompleteOption>(
           return option.name === "Type: feature request";
         }}
         {...props}
+        open
       />
     </div>
   );

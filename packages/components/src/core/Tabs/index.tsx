@@ -3,9 +3,16 @@ import { TabProps as RawTabProps, useTheme } from "@mui/material";
 import React, { ReactNode, forwardRef, useContext, useMemo } from "react";
 import { SDSTheme } from "src/core/styles/common/types";
 import { getSemanticColors } from "src/core/styles";
-import LabelWithCount from "./components/LabelWithCount";
 import { TabsContext } from "./components/common";
-import { StyledTab, StyledTabs, TabsProps } from "./style";
+import {
+  StyledCount,
+  StyledLabelTextWrapper,
+  StyledLabelTextWrapperShadow,
+  StyledTab,
+  StyledTabs,
+  StyledWrapper,
+  TabsProps,
+} from "./style";
 
 export type { TabsProps };
 
@@ -45,6 +52,7 @@ export default Tabs;
 
 export interface TabProps extends RawTabProps {
   count?: ReactNode;
+  selected?: boolean;
 }
 
 /**
@@ -52,16 +60,50 @@ export interface TabProps extends RawTabProps {
  */
 export const Tab = forwardRef<HTMLDivElement, TabProps>(
   function Tab(props, ref) {
-    const { count, label, ...rest } = props;
+    const { count, label, selected, ...rest } = props;
     const context = useContext(TabsContext);
     const Label =
       // (thuang): `count` can be 0, which is a valid count value.
       count === undefined ? (
-        label
+        <>
+          <StyledLabelTextWrapper selected={selected} sdsSize={context.sdsSize}>
+            {label}
+          </StyledLabelTextWrapper>
+          <StyledLabelTextWrapperShadow
+            aria-hidden="true"
+            sdsSize={context.sdsSize}
+          >
+            {label}
+          </StyledLabelTextWrapperShadow>
+        </>
       ) : (
-        <LabelWithCount label={label} count={count} />
+        <StyledWrapper sdsSize={context.sdsSize}>
+          <div>
+            <StyledLabelTextWrapper
+              selected={selected}
+              sdsSize={context.sdsSize}
+            >
+              {label}
+            </StyledLabelTextWrapper>
+            <StyledLabelTextWrapperShadow
+              aria-hidden="true"
+              sdsSize={context.sdsSize}
+            >
+              {label}
+            </StyledLabelTextWrapperShadow>
+          </div>
+          <StyledCount sdsSize={context.sdsSize}>{count}</StyledCount>
+        </StyledWrapper>
       );
 
-    return <StyledTab label={Label} ref={ref} {...rest} {...context} />;
+    return (
+      <StyledTab
+        label={Label}
+        ref={ref}
+        selected={selected}
+        {...rest}
+        {...context}
+      />
+    );
   }
 );

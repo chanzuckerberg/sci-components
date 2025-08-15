@@ -57,13 +57,12 @@ export const Subtitle = styled(Typography, {
     const isSmall = sdsSize === "xs" || sdsSize === "s";
 
     const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
 
     return [
       isSmall ? fontBodyXxs(props) : fontBodyXs(props),
       `
         color: ${semanticColors?.base?.textSecondary};
-        padding-top: ${sdsSize === "l" ? spaces?.l : 0}px;
+        padding-top: 0px;
       `,
     ];
   }}

@@ -269,6 +269,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         {...buttonProps}
         sdsStyle="minimal"
         sdsType="secondary"
+        isNarrow={dimensions.isNarrow}
       >
         {buttonProps.children}
       </StyledNarrowIconButton>
@@ -303,6 +304,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
         sdsStyle="rounded"
         hasInvertedStyle={hasInvertedStyle}
+        isNarrow={dimensions.isNarrow}
       />
     );
 

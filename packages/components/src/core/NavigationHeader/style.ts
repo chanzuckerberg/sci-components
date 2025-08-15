@@ -2,6 +2,7 @@ import { AppBar, Divider, Drawer, Toolbar, css } from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyMediumL,
+  fontBodyL,
   fontBodyS,
   fontBodySemiboldL,
   fontHeaderL,
@@ -133,9 +134,13 @@ export interface ExtraButtonProps extends CommonThemeProps {
 
 export const StyledHeaderButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)>`
+})<
+  ExtraButtonProps &
+    (SdsMinimalButtonProps | SdsButtonProps) & { isNarrow?: boolean }
+>`
   ${(props) => {
-    const { sdsType, hasInvertedStyle } = props;
+    const { sdsType, hasInvertedStyle, isNarrow } = props;
+
     const mode = props?.theme?.palette?.mode || "light";
     const semanticColors = getSemanticColors(props);
 
@@ -149,8 +154,11 @@ export const StyledHeaderButton = styled(Button, {
       }
     `;
 
-    return `
-      ${sdsType === "secondary" && hasInvertedStyle ? secondaryButtonStyles : ""}
+    return css`
+      ${sdsType === "secondary" && hasInvertedStyle
+        ? secondaryButtonStyles
+        : ""}
+      ${isNarrow && fontBodyL(props)}
     `;
   }}
 `;
@@ -180,12 +188,16 @@ const invertedNarrowButtonStyles = (
 
 export const StyledNarrowIconButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)>`
+})<
+  ExtraButtonProps &
+    (SdsMinimalButtonProps | SdsButtonProps) & { isNarrow?: boolean }
+>`
   ${(props) => {
-    const { hasInvertedStyle } = props;
+    const { hasInvertedStyle, isNarrow } = props;
 
     return css`
       ${hasInvertedStyle && invertedNarrowButtonStyles(props)}
+      ${isNarrow && fontBodyL(props)}
     `;
   }}
 `;
@@ -635,6 +647,7 @@ export const StyledAccordion = styled(Accordion, {
 
       .MuiCollapse-root .MuiAccordionDetails-root {
         padding: 0;
+        margin-top: ${spaces?.xxs}px;
 
         .MuiButtonBase-root {
           padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px ${spaces?.xl}px !important;

@@ -160,6 +160,7 @@ export const StyledLabel = styled("span", {
     return [
       active ? fontBodySemiboldS(props) : fontBodyMediumS(props),
       css`
+        position: relative;
         display: flex;
         align-items: center;
         gap: ${spaces?.xs}px;

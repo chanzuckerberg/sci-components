@@ -1,7 +1,13 @@
 import { SdsTagColorType } from "src/core/Tag";
 import { PrimaryNavItem, StyledLabel, StyledTag } from "./style";
 import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
-import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
+import {
+  StyledDivider,
+  StyledLabelTextWrapper,
+  StyledLabelTextWrapperShadow,
+  StyledSection,
+  StyledSectionHeader,
+} from "../style";
 import Menu from "src/core/Menu";
 import MenuItem from "src/core/MenuItem";
 import Icon from "src/core/Icon";
@@ -122,7 +128,15 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                   hasInvertedStyle={hasInvertedStyle}
                   isNarrow={isNarrow}
                 >
-                  {label as ReactNode}
+                  <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+                    {label as ReactNode}
+                  </StyledLabelTextWrapper>
+                  <StyledLabelTextWrapperShadow
+                    aria-hidden="true"
+                    isNarrow={isNarrow}
+                  >
+                    {label as ReactNode}
+                  </StyledLabelTextWrapperShadow>
                   <Icon
                     sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                     sdsSize="xs"
@@ -298,7 +312,15 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               hasInvertedStyle={hasInvertedStyle}
               isNarrow={isNarrow}
             >
-              {label as ReactNode}
+              <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+                {label as ReactNode}
+              </StyledLabelTextWrapper>
+              <StyledLabelTextWrapperShadow
+                aria-hidden="true"
+                isNarrow={isNarrow}
+              >
+                {label as ReactNode}
+              </StyledLabelTextWrapperShadow>
 
               {"tag" in item && (
                 <StyledTag

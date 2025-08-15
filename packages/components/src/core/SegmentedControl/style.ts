@@ -81,6 +81,7 @@ export const StyledToggleButton = styled(ToggleButton, {
     const semanticColors = getSemanticColors(props);
 
     return `
+      border: none !important;
       svg {
         color: ${disabled ? semanticColors?.base?.ornamentDisabled : "currentColor"};
       }

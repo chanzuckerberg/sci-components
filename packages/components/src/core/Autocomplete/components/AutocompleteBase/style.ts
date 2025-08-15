@@ -1,4 +1,9 @@
-import { Autocomplete, autocompleteClasses, Paper } from "@mui/material";
+import {
+  Autocomplete,
+  autocompleteClasses,
+  AutocompleteProps,
+  Paper,
+} from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
 import InputSearch from "src/core/InputSearch";
@@ -13,11 +18,18 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+import { DefaultAutocompleteOption } from ".";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;
   icon?: ReactElement;
   search?: boolean;
+  groupBy?: AutocompleteProps<
+    DefaultAutocompleteOption,
+    boolean,
+    boolean,
+    boolean
+  >["groupBy"];
 }
 
 const doNotForwardProps = [
@@ -27,6 +39,7 @@ const doNotForwardProps = [
   "InputBaseProps",
   "PopperBaseProps",
   "onClickAway",
+  "hasGroupBy",
 ];
 
 export const StyledAutocompleteBase = styled(Autocomplete, {
@@ -39,7 +52,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
   }
 
   ${(props: StyleProps) => {
-    const { search } = props;
+    const { search, groupBy } = props;
 
     const spaces = getSpaces(props);
     const borders = getBorders(props);
@@ -72,7 +85,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
-          padding: 0 ${spaces?.xs}px;
+          padding: 0 ${groupBy ? 0 : spaces?.xs}px;
 
           .${autocompleteClasses.option} {
             min-height: unset;
@@ -105,14 +118,14 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
           background-color: ${semanticColors?.base?.surface};
-          padding: 0 ${spaces?.xs}px;
+          padding: 0 ${spaces?.m}px;
         }
 
         .${autocompleteClasses.groupUl} {
           position: relative;
           margin: 0 0 ${spaces?.s}px;
           border-bottom: ${borders?.base?.divider};
-          padding: ${spaces?.xxs}px 0px;
+          padding: ${spaces?.xxs}px ${spaces?.xs}px;
 
           & li:last-of-type {
             position: relative;
@@ -124,7 +137,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         }
 
         .${autocompleteClasses.loading} {
-          padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.xs}px ;
+          padding: 0 ${spaces?.xs}px;
         }
       }
     `;

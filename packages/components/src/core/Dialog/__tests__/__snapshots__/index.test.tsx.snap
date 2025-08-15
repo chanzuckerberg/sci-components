@@ -319,7 +319,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     Title
   </p>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1ebovlb-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-lfg6tk-MuiTypography-root"
   >
     Optional Subtitle
   </p>
