@@ -97,6 +97,44 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       };
     };
 
+    // Create tabs for a single item including its sub-items
+    const createTabsForItem = (item: Item, itemIndex: number) => {
+      const tabs = [
+        <StyledTab
+          key={toKebabCase(item.title)}
+          label={item.title}
+          tabIndex={0}
+          width={width}
+          {...a11yProps(
+            toKebabCase(item.title),
+            item.elementRef.current?.getAttribute("id") ||
+              `navigation-panel-${itemIndex + 1}`
+          )}
+        />,
+      ];
+
+      if (item.subItems) {
+        item.subItems.forEach((subItem, subIndex) => {
+          tabs.push(
+            <StyledTab
+              key={`${toKebabCase(item.title)}-${toKebabCase(subItem.title)}`}
+              label={subItem.title}
+              tabIndex={0}
+              width={width}
+              isSubItem={true}
+              {...a11yProps(
+                toKebabCase(subItem.title),
+                subItem.elementRef.current?.getAttribute("id") ||
+                  `navigation-panel-${itemIndex + 1}-${subIndex + 1}`
+              )}
+            />
+          );
+        });
+      }
+
+      return tabs;
+    };
+
     // Emit changes only once
     const handleOnChange = useCallback(
       (
@@ -195,42 +233,7 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         width={width}
         {...rest}
       >
-        {items.map(({ title, elementRef, subItems }, itemIndex) => {
-          const tabs = [
-            <StyledTab
-              key={toKebabCase(title)}
-              label={title}
-              tabIndex={0}
-              width={width}
-              {...a11yProps(
-                toKebabCase(title),
-                elementRef.current?.getAttribute("id") ||
-                  `navigation-panel-${itemIndex + 1}`
-              )}
-            />,
-          ];
-
-          if (subItems) {
-            subItems.forEach((subItem, subIndex) => {
-              tabs.push(
-                <StyledTab
-                  key={`${toKebabCase(title)}-${toKebabCase(subItem.title)}`}
-                  label={subItem.title}
-                  tabIndex={0}
-                  width={width}
-                  isSubItem={true}
-                  {...a11yProps(
-                    toKebabCase(subItem.title),
-                    subItem.elementRef.current?.getAttribute("id") ||
-                      `navigation-panel-${itemIndex + 1}-${subIndex + 1}`
-                  )}
-                />
-              );
-            });
-          }
-
-          return tabs;
-        })}
+        {items.map((item, itemIndex) => createTabsForItem(item, itemIndex))}
       </StyledTabs>
     );
   }

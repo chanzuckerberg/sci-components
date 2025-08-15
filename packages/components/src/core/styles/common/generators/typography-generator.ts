@@ -1,3 +1,4 @@
+import { TypographyStyle } from "@mui/material";
 import {
   FontSizeValues,
   LineHeightValues,
@@ -5,6 +6,7 @@ import {
   TypographyCategories,
   FontWeight,
 } from "../constants/typography";
+import { Typography, TypographyStyles } from "../types";
 
 function generateTypographyStyle(
   category: keyof typeof TypographyCategories,
@@ -63,14 +65,13 @@ function generateTypographyStyle(
   return baseStyle;
 }
 
-function generateCategoryStyles(
+const generateCategoryStyles = (
   category: keyof typeof TypographyCategories,
   isNarrow: boolean = false,
   tabularNums?: string
-) {
+): TypographyStyle => {
   const config = TypographyCategories[category];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const categoryStyles: any = {};
+  const categoryStyles: Record<string, Record<string, TypographyStyle>> = {};
 
   config.weights.forEach((weight: string) => {
     categoryStyles[weight] = {};
@@ -86,28 +87,38 @@ function generateCategoryStyles(
   });
 
   return categoryStyles;
-}
+};
 
-export function generateTypographyStyles(
+export const generateTypographyStyles = (
   isNarrow: boolean = false,
   tabularNums?: string
-) {
+): TypographyStyles => {
   return {
-    body: generateCategoryStyles("body", isNarrow),
-    caps: generateCategoryStyles("caps", isNarrow),
-    code: generateCategoryStyles("code", isNarrow),
-    header: generateCategoryStyles("header", isNarrow),
-    link: generateCategoryStyles("link", isNarrow),
-    tabular: generateCategoryStyles("tabular", isNarrow, tabularNums),
-    title: generateCategoryStyles("title", isNarrow),
+    body: generateCategoryStyles("body", isNarrow) as TypographyStyles["body"],
+    caps: generateCategoryStyles("caps", isNarrow) as TypographyStyles["caps"],
+    code: generateCategoryStyles("code", isNarrow) as TypographyStyles["code"],
+    header: generateCategoryStyles(
+      "header",
+      isNarrow
+    ) as TypographyStyles["header"],
+    link: generateCategoryStyles("link", isNarrow) as TypographyStyles["link"],
+    tabular: generateCategoryStyles(
+      "tabular",
+      isNarrow,
+      tabularNums
+    ) as TypographyStyles["tabular"],
+    title: generateCategoryStyles(
+      "title",
+      isNarrow
+    ) as TypographyStyles["title"],
   };
-}
+};
 
-export function generateTypographyTheme(
+export const generateTypographyTheme = (
   fontFamily: string,
   fontFamilyCode: string,
   tabularNums: string
-) {
+): Typography => {
   return {
     fontFamily: {
       body: fontFamily,
@@ -121,4 +132,4 @@ export function generateTypographyTheme(
     narrowStyles: generateTypographyStyles(true, tabularNums),
     wideStyles: generateTypographyStyles(false, tabularNums),
   };
-}
+};
