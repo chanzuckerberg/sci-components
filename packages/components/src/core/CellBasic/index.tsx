@@ -1,5 +1,6 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useContext } from "react";
 import Tooltip, { TooltipProps } from "src/core/Tooltip";
+import { RowHoverContext } from "src/core/PreComposedTable";
 import {
   CellBasicExtraProps,
   PrimaryText,
@@ -7,15 +8,17 @@ import {
   PrimaryTextComponentSlotRightWrapper,
   PrimaryTextWrapper,
   SecondaryText,
+  StyledCellBasicLink,
   StyledCellContent,
   StyledCellContentWrapper,
   StyledCellIconWrapper,
   StyledTableData,
   TertiaryText,
 } from "./style";
+import { Link } from "@mui/material";
 
 interface CellBasicContentProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;
@@ -29,6 +32,10 @@ interface CellBasicContentProps
   primaryTextComponentSlotBottom?: React.ReactNode;
   horizontalAlign?: "left" | "right";
   tabularNums?: boolean;
+  as?: React.ElementType;
+  link?: string;
+  linkProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  linkComponent?: React.ElementType;
 }
 
 export interface CellBasicRawProps {
@@ -110,14 +117,26 @@ const CellBasicContent = (props: CellBasicContentProps): JSX.Element | null => {
   );
 };
 
-const CellBasic = forwardRef<HTMLTableCellElement, CellBasicProps>(
+const CellBasic = forwardRef<HTMLDivElement, CellBasicProps>(
   (props: CellBasicProps, ref): JSX.Element | null => {
     const {
       primaryText,
       secondaryText,
       shouldShowTooltipOnHover = true,
       tooltipProps,
+      as = "td",
+      link,
+      linkProps,
+      linkComponent,
     } = props;
+
+    // Get row hover state from context (fallback to false if not available)
+    const { isRowHovered } = useContext(RowHoverContext) || {
+      isRowHovered: false,
+    };
+
+    // Pass the row hover state to the styled component
+    const enhancedProps = { ...props, isRowHovered };
 
     if (shouldShowTooltipOnHover) {
       return (
@@ -130,18 +149,42 @@ const CellBasic = forwardRef<HTMLTableCellElement, CellBasicProps>(
           sdsStyle="dark"
           {...tooltipProps}
         >
-          <StyledTableData ref={ref} {...props}>
-            <CellBasicContent {...props} />
+          <StyledTableData ref={ref} as={as} {...enhancedProps}>
+            {link ? (
+              <StyledCellBasicLink
+                href={link}
+                {...linkProps}
+                component={linkComponent}
+              >
+                <CellBasicContent {...props} />
+              </StyledCellBasicLink>
+            ) : (
+              <CellBasicContent {...props} />
+            )}
           </StyledTableData>
         </Tooltip>
       );
     }
     return (
-      <StyledTableData ref={ref} {...props}>
-        <CellBasicContent {...props} />
+      <StyledTableData ref={ref} as={as} {...enhancedProps}>
+        {link ? (
+          <Link
+            href={link}
+            {...linkProps}
+            underline="none"
+            color="inherit"
+            component={linkComponent as React.ElementType}
+          >
+            <CellBasicContent {...props} />
+          </Link>
+        ) : (
+          <CellBasicContent {...props} />
+        )}
       </StyledTableData>
     );
   }
 );
+
+CellBasic.displayName = "CellBasic";
 
 export default CellBasic;

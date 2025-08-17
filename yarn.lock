@@ -1626,6 +1626,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
+    "@tanstack/react-table": "npm:^8.21.3"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     style-dictionary: "npm:^4.1.0"
@@ -1639,6 +1640,7 @@ __metadata:
     "@mui/icons-material": ^5.15.3
     "@mui/lab": ^5.0.0-alpha.159
     "@mui/material": ^5.15.3
+    "@tanstack/react-table": ^8.21.3
     react: ">=17.0.1"
     react-dom: ">=17.0.1"
   languageName: unknown
@@ -1652,9 +1654,7 @@ __metadata:
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
     d3-scale-chromatic: "npm:^3.0.0"
-    echarts: "npm:^5.4.3"
     jest-environment-jsdom: "npm:^29.6.2"
-    lodash: "npm:^4.17.21"
     react-redux: "npm:^9.1.0"
     simplex-noise: "npm:^4.0.1"
     style-dictionary: "npm:^4.1.0"
@@ -5364,6 +5364,25 @@ __metadata:
   dependencies:
     defer-to-connect: "npm:^1.0.1"
   checksum: 10c0/0594140e027ce4e98970c6d176457fcbff80900b1b3101ac0d08628ca6d21d70e0b94c6aaada94d4f76c1423fcc7195af83da145ce0fd556fc0595ca74a17b8b
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-table@npm:^8.21.3":
+  version: 8.21.3
+  resolution: "@tanstack/react-table@npm:8.21.3"
+  dependencies:
+    "@tanstack/table-core": "npm:8.21.3"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10c0/85d1d0fcb690ecc011f68a5a61c96f82142e31a0270dcf9cbc699a6f36715b1653fe6ff1518302a6d08b7093351fc4cabefd055a7db3cd8ac01e068956b0f944
+  languageName: node
+  linkType: hard
+
+"@tanstack/table-core@npm:8.21.3":
+  version: 8.21.3
+  resolution: "@tanstack/table-core@npm:8.21.3"
+  checksum: 10c0/40e3560e6d55e07cc047024aa7f83bd47a9323d21920d4adabba8071fd2d21230c48460b26cedf392588f8265b9edc133abb1b0d6d0adf4dae0970032900a8c9
   languageName: node
   linkType: hard
 
@@ -9790,16 +9809,6 @@ __metadata:
   version: 0.2.0
   resolution: "eastasianwidth@npm:0.2.0"
   checksum: 10c0/26f364ebcdb6395f95124fda411f63137a4bfb5d3a06453f7f23dfe52502905bd84e0488172e0f9ec295fdc45f05c23d5d91baf16bd26f0fe9acd777a188dc39
-  languageName: node
-  linkType: hard
-
-"echarts@npm:^5.4.3":
-  version: 5.5.1
-  resolution: "echarts@npm:5.5.1"
-  dependencies:
-    tslib: "npm:2.3.0"
-    zrender: "npm:5.6.0"
-  checksum: 10c0/2f7e3037f17fda99d977092767943f4d9b0c8f886f86701ec88591707713b5e5fd683e56086b6ba5245b322f088184bdb06eac488234c20a1869b08cb6b4e523
   languageName: node
   linkType: hard
 
@@ -21731,15 +21740,6 @@ __metadata:
   version: 3.23.8
   resolution: "zod@npm:3.23.8"
   checksum: 10c0/8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
-  languageName: node
-  linkType: hard
-
-"zrender@npm:5.6.0":
-  version: 5.6.0
-  resolution: "zrender@npm:5.6.0"
-  dependencies:
-    tslib: "npm:2.3.0"
-  checksum: 10c0/f7c5a1739dfec60b9bead0d0657c47868391b1009cc82a603f9dbf247fa625df28dcdb3e7b2e18404657e2c987f95e0e1bb5613519c2d823854f3dda44e2ee96
   languageName: node
   linkType: hard
 

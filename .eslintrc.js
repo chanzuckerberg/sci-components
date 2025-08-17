@@ -1,4 +1,6 @@
 // https://robertcooper.me/post/using-eslint-and-prettier-in-a-typescript-project
+const path = require("path");
+
 module.exports = {
   env: {
     browser: true,
@@ -6,8 +8,6 @@ module.exports = {
     jest: true,
     node: true,
   },
-  // Excludes config files from linting
-  ignorePatterns: ["rollup.config.mjs"],
   // Specifies the ESLint parser
   extends: [
     "plugin:import/recommended",
@@ -21,6 +21,8 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
   ],
+  // Excludes config files from linting
+  ignorePatterns: ["rollup.config.mjs"],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier
   // rules in all ComponentName.namespace.tsx files
@@ -83,9 +85,15 @@ module.exports = {
     "import/no-extraneous-dependencies": [
       "error",
       {
-        // Dependencies must be specified in `devDependencies` in the monorepo root
+        // Dependencies must be specified in `devDependencies` or `peerDependencies` in the monorepo root or individual packages
         devDependencies: true,
-        packageDir: __dirname,
+        includeInternal: true,
+        packageDir: [
+          __dirname,
+          path.resolve(__dirname, "./packages/components"),
+          path.resolve(__dirname, "./packages/data-viz"),
+        ],
+        peerDependencies: true,
       },
     ],
     "import/prefer-default-export": "off",

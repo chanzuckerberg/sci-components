@@ -11,11 +11,7 @@ export interface CellComponentExtraProps extends CommonThemeProps {
   verticalAlign?: "top" | "center" | "bottom";
 }
 
-const doNotForwardProps = ["horizontalAlign", "verticalAlign"];
-
-export const StyledCellComponentData = styled("td", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
+export const StyledCellComponentData = styled.div`
   ${fontBodyS}
   ${focusVisibleA11yStyle}
 
