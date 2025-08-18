@@ -1,0 +1,89 @@
+{
+  "Notification": {
+    "props": {
+      "autoDismiss": {
+        "type": "\"true\" | \"false\" | \"4000\" | \"12000\" | \"20000\"",
+        "isRequired": false,
+        "options": [
+          "true",
+          "false",
+          4000,
+          12000,
+          20000
+        ]
+      },
+      "buttonOnClick": {
+        "type": "unknown",
+        "isRequired": false
+      },
+      "buttonPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ]
+      },
+      "extraContent": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
+        "isRequired": false,
+        "options": [
+          "info",
+          "negative",
+          "positive",
+          "notice"
+        ]
+      },
+      "onClose": {
+        "type": "unknown",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "object",
+        "isRequired": false
+      },
+      "slideDirection": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "right"
+        ]
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

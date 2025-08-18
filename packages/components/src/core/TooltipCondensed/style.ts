@@ -18,7 +18,7 @@ const indicatorCSS = (props: TooltipCondensedExtraProps): string => {
       height: ${spaces?.m}px;
       display: block;
       background-color: ${indicatorColor};
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
       margin-right: ${spaces?.m}px;
     }
   `;

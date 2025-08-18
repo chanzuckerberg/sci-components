@@ -54,12 +54,12 @@ export const InvalidSdsTypeDestructiveError = (
 
 const FinalIconSize = (sdsStyle: string, sdsSize: string) => {
   return sdsStyle === "minimal"
-    ? "s"
+    ? "xs"
     : sdsStyle === "icon"
       ? ButtonIconSizeToSdsIconSize[
           sdsSize as keyof typeof ButtonIconSizeToSdsIconSize
         ]
-      : "l";
+      : "s";
 };
 
 // eslint-disable-next-line sonarjs/cognitive-complexity

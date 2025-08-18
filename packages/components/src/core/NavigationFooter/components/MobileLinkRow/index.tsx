@@ -1,8 +1,8 @@
 import { memo, useRef } from "react";
-import { StyledMobileLinkRow } from "../../style";
-import FooterLink from "../FooterLink";
-import { NavigationFooterNavItem } from "../../NavigationFooter.types";
+import { NavigationFooterNavItem } from "src/core/NavigationFooter/NavigationFooter.types";
 import { useLastInRow } from "src/common/helpers/useLastInRow";
+import FooterLink from "../FooterLink";
+import { StyledMobileLinkRow } from "../../style";
 
 interface MobileLinkRowProps {
   links: NavigationFooterNavItem[];
@@ -19,7 +19,7 @@ const MobileLinkRow = memo(
       <StyledMobileLinkRow ref={containerRef}>
         {links.map((link, index) => (
           <FooterLink
-            key={link.label}
+            key={link.label + index}
             link={link}
             showDivider={!noDividerIndices.has(index)}
             hasInvertedStyle={hasInvertedStyle}

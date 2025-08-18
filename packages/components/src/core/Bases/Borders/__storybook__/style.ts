@@ -26,7 +26,7 @@ export const StyledBorderBox = styled("div")`
       background-color: transparent;
       border-radius: ${BORDER_BOX_BORDER_WIDTH_PX}px;
       border: ${border};
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
 
       &:hover {
         animation: pulse 3s infinite;

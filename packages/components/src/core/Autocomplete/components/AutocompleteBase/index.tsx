@@ -66,7 +66,7 @@ export type DefaultAutocompleteOption =
   | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic>; // Represents an option with a custom component and optional basic properties.
 
 interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
-  extends StyleProps {
+  extends Omit<StyleProps, "groupBy"> {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
@@ -391,7 +391,14 @@ const AutocompleteBase = <
   ) {
     let MenuItemContent;
 
-    const { component, details, count, icon, sdsIconProps } = option;
+    const {
+      component,
+      details,
+      count,
+      icon,
+      sdsIconProps,
+      ...restOptionProps
+    } = option;
     const menuItemLabel = getOptionLabel(option);
 
     if (component) {
@@ -418,6 +425,7 @@ const AutocompleteBase = <
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}
+        {...restOptionProps}
         key={option.name}
       >
         {MenuItemContent}

@@ -1,0 +1,56 @@
+{
+  "InputSlider": {
+    "props": {
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "@ignore"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "color": {
+        "type": "\"primary\" | \"secondary\" | \"error\" | \"info\" | \"success\" | \"warning\"",
+        "isRequired": false,
+        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
+        "defaultValue": "primary"
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Name attribute of the hidden `input` element."
+      },
+      "onChange": {
+        "type": "(event: Event, value: number | number[], activeThumb: number) => void",
+        "isRequired": false,
+        "description": "Callback function that is fired when the slider's value changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (any).\n**Warning**: This is a generic event not a change event.\n@param value The new value.\n@param activeThumb Index of the currently moved thumb."
+      },
+      "size": {
+        "type": "\"small\" | \"medium\"",
+        "isRequired": false,
+        "description": "The size of the slider.",
+        "defaultValue": "medium"
+      },
+      "value": {
+        "type": "\"number\" | \"number[]\"",
+        "isRequired": false,
+        "description": "The value of the slider.\nFor ranged sliders, provide an array with two values."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      }
+    }
+  }
+}

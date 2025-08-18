@@ -1,0 +1,35 @@
+{
+  "Banner": {
+    "props": {
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "IconProps<string | number | symbol>",
+        "isRequired": false
+      },
+      "dismissed": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "dismissible": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "onClose": {
+        "type": "function",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
+        "isRequired": true,
+        "description": "The type/variant of the component"
+      }
+    }
+  }
+}

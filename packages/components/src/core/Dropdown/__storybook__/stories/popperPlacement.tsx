@@ -63,6 +63,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "bottom-start",
               groupBy: (option: T) => option.section as string,
@@ -78,6 +79,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "bottom",
               groupBy: (option: T) => option.section as string,
@@ -93,6 +95,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "bottom-end",
               groupBy: (option: T) => option.section as string,
@@ -108,6 +111,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "right-start",
               groupBy: (option: T) => option.section as string,
@@ -123,6 +127,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "right",
               groupBy: (option: T) => option.section as string,
@@ -138,6 +143,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "right-end",
               groupBy: (option: T) => option.section as string,
@@ -153,6 +159,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "top-start",
               groupBy: (option: T) => option.section as string,
@@ -168,6 +175,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "top",
               groupBy: (option: T) => option.section as string,
@@ -183,6 +191,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "top-end",
               groupBy: (option: T) => option.section as string,
@@ -198,6 +207,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "left-start",
               groupBy: (option: T) => option.section as string,
@@ -213,6 +223,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "left",
               groupBy: (option: T) => option.section as string,
@@ -228,6 +239,7 @@ export const PopperPlacementDemo = <
             value={value}
             options={options}
             search={false}
+            InputDropdownProps={{ sdsStyle: "minimal" }}
             DropdownMenuProps={{
               PopperPlacement: "left-end",
               groupBy: (option: T) => option.section as string,

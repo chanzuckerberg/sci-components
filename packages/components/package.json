@@ -21,7 +21,16 @@
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "test": "jest",
-    "sd-build": "node ./src/common/styles-dictionary/build.mjs",
+    "sd-generate-fonts": "tsx ./src/common/styles-dictionary/scripts/generate-font-tokens.ts",
+    "sd-generate-colors": "tsx ./src/common/styles-dictionary/scripts/generate-color-tokens.ts",
+    "sd-generate-corners": "tsx ./src/common/styles-dictionary/scripts/generate-corner-tokens.ts",
+    "sd-generate-spaces": "tsx ./src/common/styles-dictionary/scripts/generate-space-tokens.ts",
+    "sd-generate-shadows": "tsx ./src/common/styles-dictionary/scripts/generate-shadow-tokens.ts",
+    "sd-generate-icon-sizes": "tsx ./src/common/styles-dictionary/scripts/generate-icon-size-tokens.ts",
+    "sd-generate-breakpoints": "tsx ./src/common/styles-dictionary/scripts/generate-breakpoint-tokens.ts",
+    "sd-generate-borders": "tsx ./src/common/styles-dictionary/scripts/generate-border-tokens.ts",
+    "sd-generate-design-tokens": "yarn sd-generate-fonts && yarn sd-generate-colors && yarn sd-generate-corners && yarn sd-generate-spaces && yarn sd-generate-shadows && yarn sd-generate-icon-sizes && yarn sd-generate-breakpoints && yarn sd-generate-borders",
+    "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
@@ -65,8 +74,12 @@
     "react-dom": ">=17.0.1"
   },
   "devDependencies": {
+    "@types/node": "^24.3.0",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
-    "style-dictionary": "^4.1.0"
+    "style-dictionary": "^4.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "5.3.3"
   }
 }

@@ -1,0 +1,67 @@
+{
+  "Autocomplete": {
+    "props": {
+      "groupBy": {
+        "type": "string",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "negative",
+          "notice",
+          "positive"
+        ]
+      },
+      "keepSearchOnSelect": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "string",
+        "isRequired": false
+      },
+      "options": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

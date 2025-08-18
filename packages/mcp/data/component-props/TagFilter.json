@@ -1,0 +1,58 @@
+{
+  "TagFilter": {
+    "props": {
+      "label": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The content of the component."
+      },
+      "onDelete": {
+        "type": "(event: any) => void",
+        "isRequired": true,
+        "description": "Callback fired when the delete icon is clicked.\nIf set, the delete icon will be shown."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "children": {
+        "type": "null",
+        "isRequired": false,
+        "description": "This prop isn't supported.\nUse the `component` prop if you need to change the children structure."
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false,
+        "description": "Icon element."
+      },
+      "size": {
+        "type": "\"small\" | \"medium\"",
+        "isRequired": false,
+        "description": "The size of the component.",
+        "defaultValue": "medium"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      }
+    }
+  }
+}

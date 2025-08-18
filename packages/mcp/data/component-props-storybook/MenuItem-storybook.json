@@ -1,0 +1,74 @@
+{
+  "MenuItem": {
+    "props": {
+      "column": {
+        "type": "string",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "isMultiSelect": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "object",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"determinate\" | \"indeterminate\"",
+        "isRequired": false,
+        "options": [
+          "determinate",
+          "indeterminate"
+        ]
+      },
+      "sdsType": {
+        "type": "\"default\" | \"action\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "action"
+        ]
+      },
+      "selected": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

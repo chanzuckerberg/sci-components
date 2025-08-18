@@ -2,7 +2,7 @@
 
 exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-bgxiuw-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1lov6hv-MuiButtonBase-root-MuiButton-root"
   icon="Download"
   tabindex="0"
   type="button"
@@ -16,13 +16,13 @@ exports[`<ButtonDropdown /> Default story renders snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-        data-file-name="IconDownloadLarge"
-        data-testid="IconDownloadLarge"
+        data-file-name="IconDownloadSmall"
+        data-testid="IconDownloadSmall"
         fillcontrast="white"
         focusable="false"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
       />
     </div>
   </span>

@@ -1,9 +1,20 @@
-import { AccordionDetailsProps } from "@mui/material";
+import { AccordionDetailsProps as RawAccordionDetailsProps } from "@mui/material";
 import { StyledAccordionDetails } from "./style";
 
+export interface SdsAccordionDetailsProps {
+  id?: string;
+}
+
+export type AccordionDetailsProps = RawAccordionDetailsProps &
+  SdsAccordionDetailsProps;
+
 const AccordionDetails = (props: AccordionDetailsProps) => {
-  const { children } = props;
-  return <StyledAccordionDetails>{children}</StyledAccordionDetails>;
+  const { children, id, ...rest } = props;
+  return (
+    <StyledAccordionDetails id={id} {...rest}>
+      {children}
+    </StyledAccordionDetails>
+  );
 };
 
 export default AccordionDetails;

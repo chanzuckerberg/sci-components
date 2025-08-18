@@ -1,0 +1,60 @@
+{
+  "ComplexFilter": {
+    "props": {
+      "DropdownMenuProps": {
+        "type": "object",
+        "isRequired": false,
+        "description": "Props to pass to the underlying DropdownMenu component"
+      },
+      "InputDropdownProps": {
+        "type": "object",
+        "isRequired": false,
+        "description": "Props to pass to the underlying InputDropdown component"
+      },
+      "isTriggerChangeOnOptionClick": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "string",
+        "isRequired": false
+      },
+      "options": {
+        "type": "string",
+        "isRequired": false
+      },
+      "search": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

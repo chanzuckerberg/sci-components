@@ -34,6 +34,7 @@ export default {
 
 export const Default = {
   args: {
+    id: "default-story",
     togglePosition: "right",
   },
 };

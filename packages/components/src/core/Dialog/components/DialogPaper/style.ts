@@ -7,9 +7,11 @@ import {
   getShadows,
   getSpaces,
 } from "src/core/styles";
+import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+import { DialogTitleExtraProps } from "../DialogTitle/style";
 
 export interface StyledPaperProps extends CommonThemeProps, PaperProps {
-  sdsSize: "xs" | "s" | "m" | "l";
+  sdsSize: DialogTitleExtraProps["sdsSize"];
 }
 
 // (thuang): Please keep this in sync with the props used in `ExtraProps`
@@ -22,18 +24,23 @@ export const StyledPaper = styled(Paper, {
     ${paperDimensions}
 
     ${(props) => {
+      const { sdsSize } = props;
+
       const spaces = getSpaces(props);
       const corners = getCorners(props);
       const shadows = getShadows(props);
       const semanticColors = getSemanticColors(props);
+
+      const isSmall = sdsSize === "xs" || sdsSize === "s";
 
       return `
         background-color: ${semanticColors?.base?.surface};
         background-image: none;
         box-shadow: ${shadows?.l};
         max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
-        border-radius: ${corners?.m || 0}px;
-        padding: ${spaces?.xxl || 0}px;
+        border-radius: ${corners?.xl}px;
+        padding: ${isSmall ? spaces?.xl : spaces?.xxl}px;
+        outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};
       `;
     }}
   }

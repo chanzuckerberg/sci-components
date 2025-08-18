@@ -1,4 +1,4 @@
-import { SerializedStyles } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 import {
   Tab as RawTab,
   Tabs as RawTabs,
@@ -7,11 +7,14 @@ import {
 import styled from "@emotion/styled";
 import {
   focusVisibleA11yStyle,
-  fontBodySemiboldS,
-  fontBodySemiboldXs,
   CommonThemeProps,
   getSemanticColors,
   getSpaces,
+  fontBodyS,
+  fontBodyMediumS,
+  fontBodyXs,
+  fontBodyMediumXs,
+  getCorners,
 } from "src/core/styles";
 import { SdsSize } from "./components/common";
 
@@ -49,7 +52,7 @@ export const StyledTabs = styled(TempTabs, {
     return `
       margin-top: ${isLarge ? spaces?.l : spaces?.m}px;
       margin-bottom: ${isLarge ? spaces?.xl : spaces?.m}px;
-      border-bottom: ${underlined ? `2px solid ${semanticColors?.base?.divider};` : "none"};
+      ${underlined ? `box-shadow: inset 0 -1px 0 0 ${semanticColors?.base?.divider}` : ""}
     `;
   }}
 `;
@@ -58,32 +61,37 @@ const TAB_DO_NOT_FORWARD_PROPS = ["sdsSize"];
 
 interface TabProps extends CommonThemeProps {
   sdsSize: SdsSize;
+  selected?: boolean;
 }
 
 export const StyledTab = styled(RawTab, {
   shouldForwardProp: (prop) => !TAB_DO_NOT_FORWARD_PROPS.includes(String(prop)),
 })<TabProps>`
-  min-height: unset;
-  padding: 0;
-  min-width: 32px;
-  opacity: 1 !important;
-
   ${tabFontMixin}
   ${focusVisibleA11yStyle}
 
   ${(props) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
-    return `
-      margin-right: ${spaces?.xl}px;
-      padding-bottom: ${spaces?.xxs}px;
+    return css`
+      position: relative;
+      min-height: unset;
+      padding: ${spaces?.xxxs}px ${spaces?.m}px ${spaces?.xxs}px;
+      min-width: 32px;
 
       color: ${semanticColors?.base?.textSecondary};
 
-      &:hover, :focus {
-        box-shadow: 0 2px 0 0 ${semanticColors?.base?.borderPrimary};
-        color: ${semanticColors?.base?.textPrimary};
+      &:hover {
+        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryHover};
+        background-color: ${semanticColors?.base?.fillOpen};
+        border-top-right-radius: ${corners?.l}px;
+        border-top-left-radius: ${corners?.l}px;
+
+        ${StyledLabelTextWrapper} {
+          color: ${semanticColors?.base?.textPrimary};
+        }
       }
 
       &.Mui-selected {
@@ -109,5 +117,57 @@ function tabFontMixin(props: TabProps): SerializedStyles | null {
   const { sdsSize } = props;
   const isLarge = sdsSize === "large";
 
-  return isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props);
+  return isLarge ? fontBodyS(props) : fontBodyXs(props);
 }
+
+export const StyledWrapper = styled("div")`
+  ${(props: TabProps) => {
+    const spaces = getSpaces(props);
+
+    return css`
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: ${spaces?.s}px;
+    `;
+  }}
+`;
+
+export const StyledCount = styled("span")`
+  ${(props: TabProps) => {
+    const { sdsSize } = props;
+    const isLarge = sdsSize === "large";
+
+    return css`
+      ${isLarge ? fontBodyS(props) : fontBodyXs(props)}
+    `;
+  }}
+`;
+
+export const StyledLabelTextWrapper = styled("span")`
+  ${(props: TabProps) => {
+    const { sdsSize, selected } = props;
+    const isLarge = sdsSize === "large";
+
+    return css`
+      ${isLarge ? fontBodyS(props) : fontBodyXs(props)}
+      ${selected &&
+      (isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props))}
+      position: absolute;
+    `;
+  }}
+`;
+
+export const StyledLabelTextWrapperShadow = styled("span")`
+  ${(props: TabProps) => {
+    const { sdsSize } = props;
+    const isLarge = sdsSize === "large";
+
+    return css`
+      ${isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props)}
+      visibility: hidden;
+      opacity: 0;
+    `;
+  }}
+`;

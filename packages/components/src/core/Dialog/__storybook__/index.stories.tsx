@@ -10,7 +10,7 @@ export default {
   argTypes: {
     buttonPosition: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["left", "right"],
     },
@@ -26,7 +26,7 @@ export default {
     },
     sdsSize: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["xs", "s", "m", "l"],
     },

@@ -6,9 +6,22 @@ import {
 } from "./constants";
 import { ComplexFilter } from "./stories/default";
 import { TestDemo } from "./stories/test";
+import { AUTOCOMPLETE_DATA_OPTIONS } from "src/core/Autocomplete/__storybook__/constants";
 
 export default {
   argTypes: {
+    DropdownMenuProps: {
+      control: {
+        type: "object",
+      },
+      description: "Props to pass to the underlying DropdownMenu component",
+    },
+    InputDropdownProps: {
+      control: {
+        type: "object",
+      },
+      description: "Props to pass to the underlying InputDropdown component",
+    },
     isTriggerChangeOnOptionClick: {
       control: {
         type: "boolean",
@@ -32,6 +45,14 @@ export default {
       mapping: COMPLEX_FILTER_ON_CHANGE_OPTIONS,
       options: Object.keys(COMPLEX_FILTER_ON_CHANGE_OPTIONS),
     },
+    options: {
+      control: {
+        labels: ["One Column", "Two Columns", "Three Columns"],
+        type: "select",
+      },
+      mapping: AUTOCOMPLETE_DATA_OPTIONS,
+      options: Object.keys(AUTOCOMPLETE_DATA_OPTIONS),
+    },
     search: {
       control: {
         type: "boolean",
@@ -49,6 +70,15 @@ export default {
 
 export const Default = {
   args: {
+    DropdownMenuProps: {
+      PopperPlacement: "bottom-start",
+      title: "Complex Filter Title",
+      width: 250,
+    },
+    InputDropdownProps: {
+      sdsStyle: "square",
+      width: 250,
+    },
     isTriggerChangeOnOptionClick: false,
     label: "Click Target",
     multiple: true,

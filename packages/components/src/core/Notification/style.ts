@@ -3,13 +3,10 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontBody,
-  getBorders,
   getCorners,
-  getIconSizes,
   getSemanticColors,
   getShadows,
   getSpaces,
-  getTypography,
 } from "src/core/styles";
 import { ExposedNotificationProps } from ".";
 
@@ -35,43 +32,39 @@ export const StyledNotification = styled(Alert, {
     const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const corners = getCorners(props);
-    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
-    const typography = getTypography(props);
-    const borders = getBorders(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
     const backgroundColor =
       semanticColors?.[intent]?.surfaceSecondary ?? "white";
 
-    // (masoudmanson): The Notification Icon should be vertically centered with the Notification
-    // Title. The padding-top of the Notification Title is calculated based on the difference
-    // between the height of the Icon and the line-height of the Notification Title.
-    const alertMessagePaddingTop = Math.abs(
-      ((iconSizes?.l.height ?? 0) -
-        parseInt(
-          String(typography?.wideStyles?.body?.regular?.xs?.lineHeight ?? "0")
-        )) /
-        2
-    );
-
     return `
+      position: relative;
+      overflow: hidden;
       background-color: ${backgroundColor};
       max-width: 480px;
       min-width: 280px;
       box-sizing: border-box;
       margin: ${spaces?.m}px 0;
-      border-radius: ${corners?.m}px;
+      border-radius: ${corners?.xl}px;
       color: ${semanticColors?.base?.textPrimary};
-      padding: ${spaces?.l}px;
+      padding: ${spaces?.m}px ${spaces?.m}px ${spaces?.m}px ${spaces?.l}px;
       align-items: flex-start;
-      border-left: ${borders?.[intent]?.extraThick};
       box-shadow: ${shadows?.s};
 
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: ${spaces?.xxs}px;
+        height: 100%;
+        background-color: ${semanticColors?.[intent]?.ornament};
+      }
+
       .MuiAlert-icon {
-        height: ${iconSizes?.l.height}px;
-        width: ${iconSizes?.l.width}px;
-        margin-right: ${spaces?.m}px;
+        margin-top: ${spaces?.xxxs}px;
+        margin-right: ${spaces?.s}px;
         padding: 0;
         path {
           fill: ${iconColor};
@@ -79,7 +72,7 @@ export const StyledNotification = styled(Alert, {
       }
 
       .MuiAlert-message {
-        padding: ${alertMessagePaddingTop}px 0px 0px;
+        padding: 0;
         margin-right: ${spaces?.m}px;
         width: 100%;
 

@@ -1,0 +1,90 @@
+{
+  "Callout": {
+    "props": {
+      "autoDismiss": {
+        "type": "\"true\" | \"false\" | \"4000\" | \"12000\" | \"20000\"",
+        "isRequired": false,
+        "description": "If set to a number, the callout will automatically dismiss after that many milliseconds. If set to true, the callout will automatically dismiss after 8000 milliseconds.",
+        "options": [
+          "true",
+          "false",
+          4000,
+          12000,
+          20000
+        ]
+      },
+      "body": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The body text of the callout."
+      },
+      "hideBody": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If true, the body of the callout will be hidden."
+      },
+      "hideTitle": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If true, the title of the callout will be hidden."
+      },
+      "icon": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\"",
+        "isRequired": false,
+        "description": "The icon displayed in the Callout. By default, each Callout intent is paired with a corresponding SDS icon.",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
+        "isRequired": false,
+        "description": "The intent of the callout.",
+        "options": [
+          "info",
+          "negative",
+          "positive",
+          "notice"
+        ]
+      },
+      "sdsStyle": {
+        "type": "\"0\" | \"1\" | \"2\"",
+        "isRequired": false,
+        "description": "The style of the Callout determines its behavior: Persistent Callouts are always visible, Expandable Callouts can be toggled to show or hide extra content, and Dismissible Callouts can be closed by the user.",
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The title of the callout."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

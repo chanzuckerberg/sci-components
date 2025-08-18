@@ -9,7 +9,7 @@ import AutocompleteBase, {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
 } from "../AutocompleteBase";
-import { StyledColumn, StyledColumnIcon, StyledColumnTitle } from "./style";
+import { StyledColumn, StyledColumnTitle } from "./style";
 
 interface ExtraAutocompleteGroupProps<
   T,
@@ -24,7 +24,7 @@ interface ExtraAutocompleteGroupProps<
     FreeSolo
   >;
   onValueChange: (
-    colum: string,
+    column: string,
     event: React.SyntheticEvent,
     value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
     reason: AutocompleteChangeReason,
@@ -81,7 +81,7 @@ const AutocompleteGroup = <
     ...rest
   } = props;
 
-  const { name, width, icon, props: propProps } = autocompleteProps;
+  const { name, width, props: propProps } = autocompleteProps;
 
   const [value, setValue] = useState<
     AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
@@ -126,11 +126,6 @@ const AutocompleteGroup = <
       width={width}
       className="SdsAutocompleteMultiColumn-column-root"
     >
-      {icon && (
-        <StyledColumnIcon className="SdsAutocompleteMultiColumn-column-relation-icon">
-          {icon}
-        </StyledColumnIcon>
-      )}
       <StyledColumnTitle className="SdsAutocompleteMultiColumn-column-title">
         {name}
       </StyledColumnTitle>

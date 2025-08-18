@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mui-mcp": {
+      "command": "npx",
+      "args": ["-y", "@mui/mcp-server"],
+      "enabled": true
+    }
+  }
+}

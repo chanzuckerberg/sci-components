@@ -191,9 +191,9 @@ export function Hello() {
 }
 ```
 
-### Default Theme
+### Theme System
 
-To use the default theme in your React application, complete the following:
+SDS provides comprehensive light/dark theme support. To use the theme system in your React application, complete the following:
 
 1. Add the following HTML to your `index.html` at the `<head>` section:
 
@@ -202,16 +202,18 @@ To use the default theme in your React application, complete the following:
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
   rel="stylesheet"
 />
 ```
 
-2. Import the default theme object and use it in Material UI's `<ThemeProvier />`:
+2. Import and use SDS themes in Material UI's `<ThemeProvider />`:
+
+**Using the default light theme:**
 
 ```javascript
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
@@ -227,23 +229,56 @@ import { defaultTheme } from "@czi-sds/components";
 </StyledEngineProvider>;
 ```
 
-If you want to override the default theme, please use `defaultAppTheme`, override the options, and then call `createTheme` to generate
-the full theme object like below. This is needed because `createTheme` generates
-extra theme variables based on the themeOptions provided, so if you override `defaultTheme` directly, some auxillary theme variables will be based on `defaultAppTheme` instead of your own custom options
+**Using programmatic theme switching:**
+
+```javascript
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { SDSChooseTheme } from "@czi-sds/components";
+
+function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const currentTheme = SDSChooseTheme(isDarkMode ? "dark" : "light");
+
+  return (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={currentTheme}>
+        <EmotionThemeProvider theme={currentTheme}>
+          <YourApp />
+        </EmotionThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
+  );
+}
+```
+
+**Creating custom themes:**
+
+If you want to create a custom theme with your own color palette, use the `makeSdsSemanticAppTheme` function:
 
 ```tsx
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-import { defaultAppTheme, makeThemeOptions } from "@czi-sds/components";
+import { makeSdsSemanticAppTheme, makeThemeOptions } from "@czi-sds/components";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import createTheme from "@mui/material/styles/createTheme";
 
-const customTheme = {
-  ...
-}
+// Define your custom color palette following SDS color structure
+const myCustomColors = {
+  blue: {
+    /* your blue color scale */
+  },
+  gray: {
+    /* your gray color scale */
+  },
+  // ... other colors
+};
 
-const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme })
+// Create a custom SDS theme
+const customSdsTheme = makeSdsSemanticAppTheme(myCustomColors, false); // false = light mode
 
-const theme = createTheme(appTheme)
+// Generate Material UI theme
+const appTheme = makeThemeOptions(customSdsTheme);
+const theme = createTheme(appTheme);
 
 <StyledEngineProvider injectFirst>
   <ThemeProvider theme={theme}>
@@ -251,7 +286,21 @@ const theme = createTheme(appTheme)
       <YourApp />
     </EmotionThemeProvider>
   </ThemeProvider>
-</StyledEngineProvider>
+</StyledEngineProvider>;
+```
+
+**Legacy theme override (deprecated):**
+
+⚠️ **Note:** `defaultAppTheme` is deprecated. Use `SDSLightAppTheme` or create custom themes with `makeSdsSemanticAppTheme` instead.
+
+```tsx
+// DEPRECATED - Use makeSdsSemanticAppTheme instead
+import { defaultAppTheme, makeThemeOptions } from "@czi-sds/components";
+const customTheme = {
+  /* custom properties */
+};
+const appTheme = makeThemeOptions({ ...defaultAppTheme, ...customTheme });
+const theme = createTheme(appTheme);
 ```
 
 💡 CZGE example available [here](https://github.com/chanzuckerberg/czgenepi/blob/trunk/src/frontend/src/common/styles/theme.ts).
@@ -323,6 +372,8 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
 
-## 2022 Plans
+## Code of Conduct
 
-[2022 Plans](https://docs.google.com/presentation/d/1pKAY6Wl3-EHInvOZuf0L3yEDFt2xVvMlO7ZWefQbgjA/edit?usp=sharing)
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/chanzuckerberg/.github/blob/master/CODE_OF_CONDUCT.md).
+By participating, you are expected to uphold this code.
+Please report unacceptable behavior to [opensource@chanzuckerberg.com](mailto:opensource@chanzuckerberg.com).

@@ -72,6 +72,7 @@ const disabledStyled = (props: InputTextExtraProps): SerializedStyles => {
 
       &:hover .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.disabled};
+        background-color: unset;
         opacity: 1;
       }
 
@@ -140,7 +141,7 @@ export const StyledInputBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.notchedOutline} {
-        border-radius: ${corners?.m}px;
+        border-radius: ${corners?.l}px;
         border: ${borders?.base?.default};
       }
 
@@ -162,6 +163,7 @@ export const StyledInputBase = styled(TextField, {
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.hover};
+        background-color: ${semanticColors?.base?.fillHover};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}

@@ -2,13 +2,13 @@
 
 exports[`<Accordion /> Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-11n92rv-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-y89ilr-MuiPaper-root-MuiAccordion-root"
 >
   <div
-    aria-controls="undefined-header-panel-content"
+    aria-controls="default-story-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1q0jqld-MuiButtonBase-root-MuiAccordionSummary-root"
-    id="undefined-header"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-1c7vmp3-MuiButtonBase-root-MuiAccordionSummary-root"
+    id="default-story-header"
     role="button"
     tabindex="0"
   >
@@ -48,12 +48,14 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
         class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
       >
         <div
-          aria-labelledby="undefined-header"
+          aria-labelledby="default-story-header"
           class="MuiAccordion-region"
+          id="default-story-content"
           role="region"
         >
           <div
             class="MuiAccordionDetails-root css-kcniag-MuiAccordionDetails-root"
+            id="default-story-content"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </div>
