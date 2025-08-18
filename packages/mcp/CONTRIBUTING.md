@@ -10,6 +10,7 @@ Welcome to the Science Design System (SDS) MCP Server! This guide will help you 
 - [Testing Your Changes](#testing-your-changes)
 - [Publishing to NPM](#publishing-to-npm)
 - [Real-World Testing](#real-world-testing)
+- [Best Practices](#best-practices)
 
 ## Architecture Overview
 
@@ -75,19 +76,25 @@ git clone https://github.com/chanzuckerberg/sci-components.git
 cd sci-components
 ```
 
-2. Install dependencies:
+2. Install/Use the correct NodeJs version
+
+```bash
+nvm use
+```
+
+3. Install dependencies:
 
 ```bash
 yarn install
 ```
 
-3. Build packages (required for data generation):
+4. Build packages (required for data generation):
 
 ```bash
 yarn build
 ```
 
-4. Navigate to the MCP package:
+5. Navigate to the MCP package:
 
 ```bash
 cd packages/mcp
