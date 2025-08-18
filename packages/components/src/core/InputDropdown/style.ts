@@ -23,6 +23,7 @@ const doNotForwardProps = [
   "shouldPutAColonAfterLabel",
   "value",
   "sdsStyle",
+  "multiple",
 ];
 
 type IntentType = "negative" | "notice" | "positive";
