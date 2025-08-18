@@ -1,0 +1,67 @@
+{
+  "NavigationFooter": {
+    "props": {
+      "hasInvertedStyle": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "images": {
+        "type": "object",
+        "isRequired": false
+      },
+      "logo": {
+        "type": "\"0\" | \"1\" | \"2\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2"
+        ]
+      },
+      "logoUrl": {
+        "type": "string",
+        "isRequired": false
+      },
+      "navItems": {
+        "type": "object",
+        "isRequired": false
+      },
+      "navLinks": {
+        "type": "object",
+        "isRequired": false
+      },
+      "tag": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tagColor": {
+        "type": "string",
+        "isRequired": false
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}

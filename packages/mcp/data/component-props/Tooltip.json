@@ -1,0 +1,86 @@
+{
+  "Tooltip": {
+    "props": {
+      "title": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Tooltip title. Zero-length titles string, undefined, null and false are never displayed."
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "This prop is used to help implement the accessibility logic.\nIf you don't provide this prop. It falls back to a randomly generated id."
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactElement",
+        "isRequired": true,
+        "description": "Tooltip reference element."
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "arrowOffset": {
+        "type": "number",
+        "isRequired": false
+      },
+      "followCursor": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the tooltip follow the cursor over the wrapped element.",
+        "defaultValue": false
+      },
+      "inverted": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"dark\" | \"light\"",
+        "isRequired": false,
+        "description": "The visual style variant of the component"
+      },
+      "hasInvertedStyle": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "subtitle": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"default\" | \"wide\"",
+        "isRequired": false
+      },
+      "textAlign": {
+        "type": "\"left\" | \"right\" | \"center\"",
+        "isRequired": false
+      },
+      "componentSlot": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "onClose": {
+        "type": "(event: Event | SyntheticEvent<Element, Event>) => void",
+        "isRequired": false,
+        "description": "Callback fired when the component requests to be closed.\n@param event The event source of the callback."
+      },
+      "open": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is shown."
+      }
+    }
+  }
+}

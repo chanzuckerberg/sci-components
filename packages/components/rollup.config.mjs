@@ -7,7 +7,7 @@ import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import pkg from "./package.json" assert { type: "json" };
+import pkg from "./package.json" with { type: "json" };
 
 const config = [
   {

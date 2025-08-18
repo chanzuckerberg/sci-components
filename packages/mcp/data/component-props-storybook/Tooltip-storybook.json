@@ -1,0 +1,85 @@
+{
+  "Tooltip": {
+    "props": {
+      "arrowOffset": {
+        "type": "number",
+        "isRequired": false
+      },
+      "componentSlot": {
+        "type": "\"0\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\"",
+        "isRequired": false,
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      "hasInvertedStyle": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "placement": {
+        "type": "\"bottom-start\" | \"bottom\" | \"bottom-end\" | \"left-start\" | \"left\" | \"left-end\" | \"right-start\" | \"right\" | \"right-end\" | \"top-start\" | \"top\" | \"top-end\"",
+        "isRequired": false,
+        "options": [
+          "bottom-start",
+          "bottom",
+          "bottom-end",
+          "left-start",
+          "left",
+          "left-end",
+          "right-start",
+          "right",
+          "right-end",
+          "top-start",
+          "top",
+          "top-end"
+        ]
+      },
+      "textAlign": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false,
+        "options": [
+          "left",
+          "center",
+          "right"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"default\" | \"wide\"",
+        "isRequired": false,
+        "options": [
+          "default",
+          "wide"
+        ]
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React className prop"
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false,
+        "description": "Standard React style prop"
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Standard React children prop"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Standard React id prop"
+      }
+    }
+  }
+}
