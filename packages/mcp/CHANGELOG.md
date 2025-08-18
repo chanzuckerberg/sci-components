@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.2.0...@czi-sds/mcp@0.2.1) (2025-08-18)
+
+### Bug Fixes
+
+- **inputdropdown:** fix props forwarding ([#989](https://github.com/chanzuckerberg/sci-components/issues/989)) ([e0ad0cf](https://github.com/chanzuckerberg/sci-components/commit/e0ad0cf00c3ba8a2994b89afe013df684228d4c2))
+
 # 0.2.0 (2025-08-18)
 
 ### Features
