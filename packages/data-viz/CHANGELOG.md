@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.11.6...@czi-sds/data-viz@0.12.0) (2025-08-18)
+
+### Features
+
+- implement SDS polish changes ([#985](https://github.com/chanzuckerberg/sci-components/issues/985)) ([6fd0caf](https://github.com/chanzuckerberg/sci-components/commit/6fd0caf01a8aae38a7dd0a4ec8dae20be649e9f0)), closes [#6c6c6](https://github.com/chanzuckerberg/sci-components/issues/6c6c6) [#7a7a7](https://github.com/chanzuckerberg/sci-components/issues/7a7a7)
+- SDS MCP Server ([#987](https://github.com/chanzuckerberg/sci-components/issues/987)) ([414d0a9](https://github.com/chanzuckerberg/sci-components/commit/414d0a9c69c07517b903e5e9cbd5f6c16a632401))
+
 ## [0.11.6](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.11.5...@czi-sds/data-viz@0.11.6) (2025-07-28)
 
 **Note:** Version bump only for package @czi-sds/data-viz
