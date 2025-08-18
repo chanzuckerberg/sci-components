@@ -179,7 +179,7 @@ export const myNewTool: Tool<MyToolContext> = {
 Add your tool to `src/tools/index.ts`:
 
 ```typescript
-import { myNewTool } from "./my-new-tool.js";
+import { myNewTool } from "./my-new-tool.ts";
 
 const tools: Tool[] = [
   getComponentPropsTool,
@@ -365,7 +365,7 @@ To test the published version simply use npx to run the mcp server package:
     "sds-mcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@mui/sds-mcp"]
+      "args": ["-y", "@czi-sds/mcp"]
     }
   }
 }
@@ -385,7 +385,7 @@ The server can be integrated with any MCP-compatible client:
     "sds-mcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@mui/sds-mcp"]
+      "args": ["-y", "@czi-sds/mcp"]
     }
   }
 }
