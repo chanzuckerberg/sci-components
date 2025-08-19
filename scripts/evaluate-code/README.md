@@ -58,7 +58,7 @@ The script provides:
 
 - **Compiles (25%)** - Must work
 - **Uses SDS (30%)** - Must use design system
-- **Has Imports (20%)** - Proper setup
+- **Has Imports (15%)** - Proper setup
 - **Lint Passes (15%)** - Code quality
 - **Uses Tokens (5%)** - Design consistency (optional)
 - **Has Accessibility (10%)** - User experience
