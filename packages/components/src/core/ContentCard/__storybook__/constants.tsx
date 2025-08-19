@@ -23,6 +23,8 @@ export const CONTENT_CARD_EXCLUDED_CONTROLS = [
   "imageSize",
   "imagePadding",
   "imagePosition",
+  "clickableCardProps",
+  "classes",
 ];
 
 // Buttons
