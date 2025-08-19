@@ -1,17 +1,3 @@
----
-title: "Link"
-id: 7353061
-uid: "78d741"
-slug: "78d741-link"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/78d741-link"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:57.115Z"
-updated_at: "2025-07-07T20:30:57.340Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Link
 
 Links are interactive elements that, when clicked, navigate the user away from the page they are currently viewing to another page or screen.
@@ -27,7 +13,7 @@ Links are interactive elements that, when clicked, navigate the user away from t
 
 There are two Link variants available to use depending on the background on top of which they are placed and whether that background provides enough contrast for Link – Default to be seen. Links can be used inline or separate from a paragraph of text.
 
-Though visually similar to [Button – Minimal](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/2224d8), Links navigate the user away from the page they are currently viewing to another page. This is in contrast to Button – Minimal, which keeps the user on the same page and facilitates on-screen actions such as opening [Dialogs](https://sds.czi.design/009eaf17b/p/707b97) or indicating less-emphasized actions.
+Though visually similar to Button – Minimal, Links navigate the user away from the page they are currently viewing to another page. This is in contrast to Button – Minimal, which keeps the user on the same page and facilitates on-screen actions such as opening Dialogs or indicating less-emphasized actions.
 
 Links come in two sizes: fontXs and fontS to align with SDS' most common body copy font sizes.
 
@@ -39,13 +25,13 @@ Links come in two sizes: fontXs and fontS to align with SDS' most common body co
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=link--default)
+Default
 
 ---
 
 ### Link – Default
 
-Use Link – Default only when the Link is placed on `surface-primary`, `surface-secondary`, or `surface-tertiary` backgrounds to ensure there is enough contrast to pass visual accessibility standards, otherwise use [Link – Dashed](https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/75fc4d).
+Use Link – Default only when the Link is placed on `surface-primary`, `surface-secondary`, or `surface-tertiary` backgrounds to ensure there is enough contrast to pass visual accessibility standards, otherwise use Link – Dashed.
 
 | Default | Hover | Pressed |
 | --- | --- | --- |
@@ -54,9 +40,9 @@ Use Link – Default only when the Link is placed on `surface-primary`, `surface
 
 ### Link – Dashed
 
-Use Link – Dashed when the Link is placed on a background where the Link – Default does not provide enough contrast to pass visual accessibility standards. The color of the link and its underline should match the color of the text used in the paragraph it is placed within, see [Color R](https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/36fc01)[ules](https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/36fc01) below.
+Use Link – Dashed when the Link is placed on a background where the Link – Default does not provide enough contrast to pass visual accessibility standards. The color of the link and its underline should match the color of the text used in the paragraph it is placed within, see Color Rules below.
 
-See [Borders](https://sds.czi.design/009eaf17b/p/220fd1) section for Link Underline details.
+See Borders section for Link Underline details.
 
 | Default | Hover | Pressed |
 | --- | --- | --- |
@@ -84,11 +70,11 @@ These rules establish how much margin should exist between and around elements.
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Link).
+The component's source code in the SDS codebase can be found here.
 
 ### MUI Documentation
 
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-link/). There are no differences between the SDS and MUI component. 
+Documentation for the underlying MUI component can be found here. There are no differences between the SDS and MUI component. 
 
 ### Props
 

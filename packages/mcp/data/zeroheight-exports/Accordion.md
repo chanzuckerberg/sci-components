@@ -1,17 +1,3 @@
----
-title: "Accordion"
-id: 7353053
-uid: "50d099"
-slug: "50d099-accordion"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/50d099-accordion"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:56.543Z"
-updated_at: "2025-07-07T20:30:56.763Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Accordion
 
 Accordions are expandable/collapsable elements that hide and reveal content to help control the amount of information presented to the user at one time.
@@ -35,7 +21,7 @@ The Accordion indicator arrow may appear to the left or the right of the header.
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=accordion--default)
+Default
 
 ---
 
@@ -69,7 +55,7 @@ These rules establish how much margin should exist between and around elements.
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Accordion).
+The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
@@ -86,7 +72,7 @@ Additionally, there are a couple of MUI props that are not currently supported b
 
 ### MUI Documentation
 
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-accordion/).
+Documentation for the underlying MUI component can be found here.
 
 ### Props
 
@@ -100,7 +86,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `subtitle`				 | `string` | `-` | A text that will be displayed as a subtitle beneath the accordion title. |
 | `useDivider` | `bool` | `false` | Display a divider line between accordion items. |
 
-There are more props that can be used with the `InputDropdown`  component, via those available to [MUI's ](https://mui.com/material-ui/api/accordion/#props)`[Accordion](https://mui.com/material-ui/api/accordion/#props)`[ component.](https://mui.com/material-ui/api/accordion/#props)
+There are more props that can be used with the `InputDropdown`  component, via those available to MUI's `Accordion` component.
 
 ### Code examples
 

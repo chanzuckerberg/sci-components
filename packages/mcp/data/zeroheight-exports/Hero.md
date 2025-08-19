@@ -1,17 +1,3 @@
----
-title: "Hero"
-id: 7353043
-uid: "87f1b1"
-slug: "87f1b1-hero"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/87f1b1-hero"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:51.779Z"
-updated_at: "2025-07-07T20:30:51.992Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Hero
 
 Hero is located at the top of the page above all other content and features key information and visuals which can include images or videos, headlines, and calls-to-action including Buttons and Links.
@@ -23,9 +9,9 @@ Hero is located at the top of the page above all other content and features key 
 |  | In Figma |   |  | Meets Accessibility |   |  | In Code |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-The Hero component was designed to support a wide range of potential product needs, giving teams flexibility to implement content in their applications as desired. Teams can fill the background with their visual of choice (image, video, color, gradient, etc.), overlay any combination of elements (text, image, buttons, links, etc.) on top of their chosen background, as well as turn on a darkening mask to make text easier to read and / or a darkening vignette positioned at the top of the container to make the transition from [Header Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f) to Hero visually smooth.
+The Hero component was designed to support a wide range of potential product needs, giving teams flexibility to implement content in their applications as desired. Teams can fill the background with their visual of choice (image, video, color, gradient, etc.), overlay any combination of elements (text, image, buttons, links, etc.) on top of their chosen background, as well as turn on a darkening mask to make text easier to read and / or a darkening vignette positioned at the top of the container to make the transition from Header Navigation to Hero visually smooth.
 
-Hero has been built to ensure any overlay elements (text, images, videos, etc.) are constrained to a content area that is centered on the page; this is especially necessary when viewed on wide screens. Overlay elements can be freely arranged within this content area. The `max-width` of this area and its left and right padding are dictated by [Breakpoint](https://sds.czi.design/009eaf17b/p/071935). When displayed at Small and Medium Breakpoints, the `max-width` of the content area is `100%` of the screen width with left and right padding of `24px` on Small Breakpoints and `40px` on Medium Breakpoints.
+Hero has been built to ensure any overlay elements (text, images, videos, etc.) are constrained to a content area that is centered on the page; this is especially necessary when viewed on wide screens. Overlay elements can be freely arranged within this content area. The `max-width` of this area and its left and right padding are dictated by Breakpoint. When displayed at Small and Medium Breakpoints, the `max-width` of the content area is `100%` of the screen width with left and right padding of `24px` on Small Breakpoints and `40px` on Medium Breakpoints.
 
 When displayed at Large Breakpoints, the content area has a `max-width` of `1024px` and left and right padding of `120px`. This means that the width of the content area will be dictated by the width of the screen minus the left and right padding of `120px` up until that value is greater than `1024px`. Once the width of the screen goes beyond that value, the viewable area will be set at `1024px`.
 
@@ -50,7 +36,7 @@ The darkening mask is an overlay element used to subtly dim the Hero's backgroun
 
 #### Darkening Vignette
 
-The darkening vignette is an overlay element positioned at the top of Hero that subtly fades from solid to transparent, smoothing the transition from the [Header Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f) to the Hero background.
+The darkening vignette is an overlay element positioned at the top of Hero that subtly fades from solid to transparent, smoothing the transition from the Header Navigation to the Hero background.
 
 | Disabled | Enabled |
 | --- | --- |

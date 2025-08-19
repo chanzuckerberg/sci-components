@@ -1,17 +1,3 @@
----
-title: "Colors"
-id: 7352906
-uid: "09bf09"
-slug: "09bf09-colors"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/09bf09-colors"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:23.796Z"
-updated_at: "2025-07-07T20:30:24.253Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Colors
 
 Color helps communicate usage and intent while providing brand distinction. The SDS palette has been selected for meaning, accessibility, and cohesion.
@@ -20,13 +6,13 @@ Color helps communicate usage and intent while providing brand distinction. The 
 
 ## Color Overview
 
-SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see [Theming](https://sds.czi.design/009eaf17b/v/0/p/169911-theming) for more details about implementing Dark Mode.
+SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see Theming for more details about implementing Dark Mode.
 
 Primitive Colors are base variables that tie directly to hex codes whereas Semantic Colors take these Primitive Color variables and map them to new variables that are specific to UI elements, intents, and states. Visualization Colormaps are specifically for use in data visualizations.
 
 ## Semantic Colors
 
-While [Primitive Color](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors-new/t/148976) variables define the individual colors within the design system, Semantic Color variables define how those colors are used throughout it. Each element in the design system that can have color applied to it, whether a border, a background, a piece of text, etc., is built using Semantic Color variables.
+While Primitive Color variables define the individual colors within the design system, Semantic Color variables define how those colors are used throughout it. Each element in the design system that can have color applied to it, whether a border, a background, a piece of text, etc., is built using Semantic Color variables.
 
 Semantic Color variables are named in such a way as to create predictable usage across SDS. They start with the variable group, followed by the element it is applied to, and then add any number of modifiers to communicate the color's specific application within the UI, such as prominence or state.
 
@@ -49,7 +35,7 @@ Base Surface and Background colors create dimension, hierarchy, and separation b
 
 Always implement the Background Colors in order, such that *background-secondary* is layered on top of *background-primary* and *background-tertiary* is layered on top of *background-secondary*; never layer *background-tertiary* directly on top of *background-primary*.
 
-Use *surface* for elements that are placed at a higher elevation than the page's main content such as the case with [Dropdown Menu](https://sds.czi.design/009eaf17b/p/42bdf2) or [Dialog](https://sds.czi.design/009eaf17b/p/707b97).
+Use *surface* for elements that are placed at a higher elevation than the page's main content such as the case with Dropdown Menu or Dialog.
 
 When greater visual contrast is needed use *background-primary-inverse, background-secondary-inverse,* and *surface-inverse*.
 
@@ -86,7 +72,7 @@ Base Fill colors are used for element backgrounds that are interactive and chang
 
 Base Border colors are used for element borders.
 
-Base *border-table* is intended to be used only on the borders that separate rows and columns in [Tables](https://sds.czi.design/009eaf17b/p/1647a1).
+Base *border-table* is intended to be used only on the borders that separate rows and columns in Tables.
 
 Base *divider* is intended to be used only on horizontal dividers that separate blocks of content.
 
@@ -110,9 +96,9 @@ Base *divider* is intended to be used only on horizontal dividers that separate 
 
 #### Ornament
 
-Base Ornament colors are used primarily in components that contain icons that are integral to their functionality, such as [Accordions](https://sds.czi.design/009eaf17b/p/50d099), [Dropdown Inputs](https://sds.czi.design/009eaf17b/p/1004b1), etc.
+Base Ornament colors are used primarily in components that contain icons that are integral to their functionality, such as Accordions, Dropdown Inputs, etc.
 
-When the fill of the element that the ornament is placed on top of is too dark in both Light Mode and Dark Mode, and using the same color in both modes is needed to pass visual accessibility, such as the icon inside primary [Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/page-47778c-78849540-14cb06-6), use *ornament-on-fill*.
+When the fill of the element that the ornament is placed on top of is too dark in both Light Mode and Dark Mode, and using the same color in both modes is needed to pass visual accessibility, such as the icon inside primary Buttons, use *ornament-on-fill*.
 
 When visual contrast is needed use *ornament-primary-inverse*.
 
@@ -135,11 +121,11 @@ When visual contrast is needed use *ornament-primary-inverse*.
 
 Base Text colors are to be used for text throughout applications built using SDS.
 
-If there is a need to communicate that a text element is interactive, such as a [Link](https://sds.czi.design/009eaf17b/p/78d741), or indicate a specific intent, such as beta, info, negative, neutral, notice, or positive, use the Text Color variable that aligns to those needs as shown in the corresponding sections below.
+If there is a need to communicate that a text element is interactive, such as a Link, or indicate a specific intent, such as beta, info, negative, neutral, notice, or positive, use the Text Color variable that aligns to those needs as shown in the corresponding sections below.
 
-Base *text-primary-inverse* and *text-secondary-inverse* are used only when the fill of the element that the text is placed on top of is too dark or light to be legible and an alternate color is needed to pass visual accessibility, such as the text inside inverted [Tooltips](https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/page-74af45-79939354-63548e-17).
+Base *text-primary-inverse* and *text-secondary-inverse* are used only when the fill of the element that the text is placed on top of is too dark or light to be legible and an alternate color is needed to pass visual accessibility, such as the text inside inverted Tooltips.
 
-When the fill of the element that the text is placed on top of is too dark in both Light Mode and Dark Mode, and using the same color in both modes is needed to pass visual accessibility, such as the text inside primary [Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/page-47778c-78849540-14cb06-6), use *text-on-fill*.
+When the fill of the element that the text is placed on top of is too dark in both Light Mode and Dark Mode, and using the same color in both modes is needed to pass visual accessibility, such as the text inside primary Buttons, use *text-on-fill*.
 
 | Light Mode | Dark Mode |
 | :---: | :---: |
@@ -162,7 +148,7 @@ When the fill of the element that the text is placed on top of is too dark in bo
 
 #### Text
 
-Action Text colors are used to communicate that a block of text is interactive, such as a [Link](https://sds.czi.design/009eaf17b/p/78d741).
+Action Text colors are used to communicate that a block of text is interactive, such as a Link.
 
 | **Name** |   | **Figma Variable** |   | **CSS / SCSS Variable** |
 | --- | --- | --- | --- | --- |
@@ -367,7 +353,7 @@ The negative *text* variable is used whenever text needs to communicate a Negati
 
 ### Neutral Colors
 
->**Note:** Neutral Colors are only used in components that display an intent, such as [Tags](https://sds.czi.design/009eaf17b/p/39dc34). For these elements, Neutral Colors communicate that there is no intent indicated.
+>**Note:** Neutral Colors are only used in components that display an intent, such as Tags. For these elements, Neutral Colors communicate that there is no intent indicated.
 
 #### Surface
 
@@ -513,7 +499,7 @@ The positive *text* variable is used whenever text needs to communicate a Positi
 
 ## Color Overview
 
-SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see [Theming](https://sds.czi.design/009eaf17b/v/0/p/169911-theming) for more details about implementing Dark Mode.
+SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see Theming for more details about implementing Dark Mode.
 
 Primitive Colors are base variables that tie directly to hex codes whereas Semantic Colors take these Primitive Color variables and map them to new variables that are specific to UI elements, intents, and states. Visualization Colormaps are specifically for use in data visualizations.
 
@@ -521,21 +507,21 @@ Primitive Colors are base variables that tie directly to hex codes whereas Seman
 
 The most basic color elements in the design system are Primitive Colors. They are organized by hue into different ramps and saved as variables within the codebase; each ramp is composed of a range of color variables from light to dark within that color hue (e.g., *blue800*, *blue700*, *blue600*, etc.).
 
-Primitive Color variables are **not** intended to be used on their own and are instead mapped to [Semantic](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors-new/t/0fed7f5437)[ Color](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors-new/t/0fed7f5437) variables that communicate how a Primitive Color is applied to different elements in the design system. This helps ensure the colors are applied consistently and removes the guess work for designers and engineers as to which colors should be used where when designing and building features.
+Primitive Color variables are **not** intended to be used on their own and are instead mapped to Semantic Color variables that communicate how a Primitive Color is applied to different elements in the design system. This helps ensure the colors are applied consistently and removes the guess work for designers and engineers as to which colors should be used where when designing and building features.
 
 ### Light
 
-[Storybook](https://chanzuckerberg.github.io/sci-components/?path=/story/bases-colors--primitive-colors)
+Storybook
 
 ### Dark
 
-[Storybook](https://chanzuckerberg.github.io/sci-components/?path=/story/bases-colors--primitive-colors&globals=theme:dark)
+Storybook
 
 ## Visualization Colors
 
 ## Color Overview
 
-SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see [Theming](https://sds.czi.design/009eaf17b/v/0/p/169911-theming) for more details about implementing Dark Mode. Primitive Colors are base variables that tie directly to hex codes whereas Semantic Colors take these Primitive Color variables and map them to new variables that are specific to UI elements, intents, and states. Visualization Colormaps are specifically for use in data visualizations.
+SDS uses a pragmatic naming system for its color variables that ensures consistency around how colors are used across UI elements. Colors are split into three types—Primitive, Semantic, and Visualization—and two modes—Light and Dark (Visualization Colors are currently only available in Light Mode); see Theming for more details about implementing Dark Mode. Primitive Colors are base variables that tie directly to hex codes whereas Semantic Colors take these Primitive Color variables and map them to new variables that are specific to UI elements, intents, and states. Visualization Colormaps are specifically for use in data visualizations.
 
 ## Visualization Colormaps
 
@@ -562,4 +548,86 @@ Magma is perceptually uniform, meaning it has consistent and even changes in bri
 | magma300 |   |   |   | [variable to come] |
 | magma200 |   |   |   | [variable to come] |
 | magma100 |   |   |   | [variable to come] |
+
+---
+
+Color helps communicate usage and intent while providing brand distinction. Our palette has been selected for meaning, accessibility, and cohesion.
+
+## Primary Colors
+
+These are the most frequently used colors in the UI's design. Primary400 is the main brand color and is the default color choice for most interactive elements across the product. Black is featured prominently through headlines and body text with the other shades of Gray and Primary Blue used to help distinguish and differentiate elements throughout the UI.
+
+For the sake of specificity, only those colors used in each scale are documented in our design system. 
+
+### Primary Blue
+
+###  Grays
+
+---
+
+## Admonition Colors
+
+These colors are used on admonition blocks only and should not be used anywhere else in the UI. Each color should be used for the specific admonition type named.
+
+---
+
+## Code Colors
+
+These colors are used in code snippets only and should not be used anywhere else in the UI. Each color should be used for the specific code element type named.
+
+---
+
+Color helps communicate usage and intent while providing brand distinction. Our palette has been selected for meaning, accessibility, and cohesion.
+
+## Primary Colors
+
+These are the most frequently used colors in the UI's design. Primary400 is the main brand color and is the default color choice for most interactive elements across the product. Black is featured prominently through headlines and body text with the other shades of Gray and Primary Purple used to help distinguish and differentiate elements throughout the UI.
+
+### Primary Purple
+
+###  Grays
+
+---
+
+## Feedback Colors
+
+These colors are used for product feedback only, i.e., showing info, success, warnings, and errors. For the sake of specificity, only those colors used in each scale are documented in our design system.
+
+### Info
+
+### Success
+
+### Error
+
+### Warning
+
+---
+
+Color helps communicate usage and intent while providing brand distinction. Our palette has been selected for meaning, accessibility, and cohesion.
+
+## Primary Colors
+
+These are the most frequently used colors in the UI's design. Primary400 is the main brand color and is the default color choice for most interactive elements across the product. Black is featured prominently through headlines and body text with the other shades of Gray and Primary Blue used to help distinguish and differentiate elements throughout the UI.
+
+### Primary Blue
+
+###  Grays
+
+### Secondary Green
+
+---
+
+## Feedback Colors
+
+These colors are used for product feedback only, i.e., showing info, success, warnings, and errors. For the sake of specificity, only those colors used in each scale are documented in our design system.
+
+### Info
+
+### Success
+
+### Error
+
+### Warning
+
+### Beta
 

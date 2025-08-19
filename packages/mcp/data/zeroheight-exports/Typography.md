@@ -1,17 +1,3 @@
----
-title: "Typography"
-id: 7352910
-uid: "62e226"
-slug: "62e226-typography"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/62e226-typography"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:24.601Z"
-updated_at: "2025-07-07T20:30:24.627Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Typography
 
 Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy
@@ -47,7 +33,7 @@ Regular (400) and SemiBold (600) are the two font weights primarily used across 
 
 #### TItle
 
-For use with [Hero](https://sds.czi.design/009eaf17b/p/87f1b1) component.
+For use with Hero component.
 
 | **Font Title L** |   |   |
 | --- | --- | --- |
@@ -176,7 +162,7 @@ For use with `<p>` tags.
 
 #### All-caps
 
-Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal [Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/page-47778c-78852505-14cb06-62).
+Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal Buttons.
 
 | **Font Caps XXS** |   |   |
 | --- | --- | --- |
@@ -199,7 +185,7 @@ Use for emphasis or when there is a need for distinction between fonts on a page
 
 #### Tabular
 
-Use when there is a need for numbers to be an equal width such as in [Tables](https://sds.czi.design/009eaf17b/p/1647a1).
+Use when there is a need for numbers to be an equal width such as in Tables.
 
 | **Font Tabular S** |   |   |
 | --- | --- | --- |
@@ -270,7 +256,7 @@ Regular (400) and SemiBold (600) are the two font weights primarily used across 
 
 #### TItle
 
-For use with [Hero](https://sds.czi.design/009eaf17b/p/87f1b1) component.
+For use with Hero component.
 
 | **Font Title L** |   |   |
 | --- | --- | --- |
@@ -399,7 +385,7 @@ For use with `<p>` tags.
 
 #### All-caps
 
-Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal [Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/page-47778c-78852505-14cb06-62).
+Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal Buttons.
 
 | **Font Caps XXS** |   |   |
 | --- | --- | --- |
@@ -422,7 +408,7 @@ Use for emphasis or when there is a need for distinction between fonts on a page
 
 #### Tabular
 
-Use when there is a need for numbers to be an equal width such as in [Tables](https://sds.czi.design/009eaf17b/p/1647a1).
+Use when there is a need for numbers to be an equal width such as in Tables.
 
 | **Font Tabular S** |   |   |
 | --- | --- | --- |
@@ -466,7 +452,7 @@ Use only when referring to code snippets.
 
 **Using SDS Typography Variables with Tailwind CSS**
 
-The SDS design tokens for Tailwind are exported via **Style Dictionary** and can be found in the [tailwind.json](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/json/tailwind.json) file. These tokens have been updated to adhere to Tailwind’s configuration standards and follow the correct format.
+The SDS design tokens for Tailwind are exported via **Style Dictionary** and can be found in the tailwind.json file. These tokens have been updated to adhere to Tailwind’s configuration standards and follow the correct format.
 
 The typography variables in the sds tailwind.json file are defined as objects with detailed CSS properties, for example:
 
@@ -581,4 +567,203 @@ Once the typography variables are integrated, you can apply them in your compone
   <p>This text uses the custom typography style for narrow body text.</p>
 </div>
 ```
+
+---
+
+Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy.
+
+### Typefaces
+
+Barlow is the primary typeface to be used throughout the product. JetBrains Mono should only be used when referring to code snippets.
+
+| **Visual** |   | **Typeface** |   | **Usage** |
+| --- | --- | --- | --- | --- |
+|   |   | Barlow (600) |   | All headers and emphasized body copy throughout the product. |
+|  |   | Barlow (500) |   | All text used in sidebars. |
+|  |   | Barlow (400) |   | All body copy throughout the product. If emphasized copy is needed, use a font weight of 600. |
+|  |   | JetBrains Mono (400) |   | Use only when referring to code snippets. |
+
+### Font Weights
+
+Regular (400), Medium (500), and SemiBold (600) are the three font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
+|  |   | `fontWeightBold` |   | `font-weight: 700;` |
+|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
+|  |   | `fontWeightMedium` |   | `font-weight: 500;` |
+|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
+|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+
+### Header Variables
+
+The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
+
+| **Visual** |   | **Variable** |   | **Wide screens (≥495px)** |   | **Narrow screens (<494px)** |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |   | `siteTitle` |   |  `font-size: 51px;` `line-height: 63.8px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h1` |   |  `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 24px;` `line-height: 38px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h2` |   |  `font-size: 24px;` `line-height: 36px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h3` |   |  `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 18px;` `line-height: 26px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h4` |   |  `font-size: 17px;` `line-height: 24px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 16px;` `line-height: 23px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h5` |   |  `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;` |
+|  |   | `h6` |   |  `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;` |
+
+### Code Variables
+
+The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
+
+| **Visual** |   | **Variable** |   | **Wide screens (≥495px)** |   | **Narrow screens (<494px)** |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |   | `code` |   |  `font-size: 16px;` `line-height: 28px;` `font-weight: fontWeightRegular;`  |   | `font-size: 10px;` `line-height: 19.3px;` `font-weight: fontWeightRegular;` |
+
+### Sidebar Variables
+
+The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
+
+| **Visual** |   | **Variable** |   | **Wide screens (≥595px)** |   | **Narrow screens (<594px)** |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |   | `fontSidebarHeader` |   |  `font-size: 17px;` `line-height: 29.8px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |   | `font-size: 11px;` `line-height: 20.4px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|  |   | `fontSidebarText` |   |  `font-size: 14px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`  |   | `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;` |
+|  |   | `fontSidebarCode` |   |  `font-size: 13px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`  |   | `font-size: 8.5px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;` |
+
+### Body Variables
+
+The same type variables are used for body fonts on both wide and narrow screen widths. For this reason, screen width does not alter the font values used; simply use the variable corresponding to the font size needed.
+
+`BodyM` is the primary font used for wide screens (495px and wider); `bodyS` is the primary font used for narrow screens (494px and narrower).
+
+>**Warning:** `bodyXxs` is being deprecated and should not be used in new designs moving forward.
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `bodyM` |   |  `font-size: 17px;` `line-height: 25.5px;` `font-weight: fontWeightRegular;`  |
+|  |   | `bodyS` |   |  `font-size: 14px;` `line-height: 17.5px;` `font-weight: fontWeightRegular;`  |
+|  |   | `bodyXs` |   |  `font-size: 12px;` `line-height: 16.5px;` `font-weight: fontWeightRegular;`  |
+|  |   | `bodyXxs` |   |  `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightRegular;`  |
+
+---
+
+Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy.
+
+### Typefaces
+
+Open Sans is the primary typeface to be used throughout product and marketing materials. Andale Mono should only be used when referring to code snippets.
+
+| **Visual** |   | **Typeface** |   | **Usage** |
+| --- | --- | --- | --- | --- |
+|  |   | Open Sans (600) |   | All headers throughout the product and marketing materials and emphasized body copy. |
+|  |   | Open Sans (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
+|  |   | Andale Mono (400) |   | Use only when referring to code snippets. |
+
+### Font Weights
+
+Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
+|  |   | `fontWeightBold` |   | `font-weight: 700;` |
+|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
+|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
+|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+
+### Header Variables
+
+<H1>, <H2>, <H3>, <H4>, <H5>, <H6>
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontHeaderXxl` |   |  `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXl` |   |  `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderL` |   |  `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderM` |   |  `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderS` |   |  `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXs` |   |  `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+
+### Body Variables
+
+<p>
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontBodyL` |   |  `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyM` |   |  `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyS` |   |  `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXs` |   |  `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+
+### All Caps Variables
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontCapsXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+|  |   | `fontCapsXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+|   |   | `fontCapsXxxxs` |   |  `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+
+---
+
+Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy.
+
+### Typefaces
+
+Open Sans is the primary typeface to be used throughout product and marketing materials. Andale Mono should only be used when referring to code snippets.
+
+| **Visual** |   | **Typeface** |   | **Usage** |
+| --- | --- | --- | --- | --- |
+|  |   | Open Sans (600) |   | All headers throughout the product and marketing materials and emphasized body copy. |
+|  |   | Open Sans (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
+|  |   | Andale Mono (400) |   | Use only when referring to code snippets. |
+
+### Font Weights
+
+Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
+|  |   | `fontWeightBold` |   | `font-weight: 700;` |
+|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
+|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
+|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+
+### Header Variables
+
+<H1>, <H2>, <H3>, <H4>, <H5>, <H6>
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontHeaderXxl` |   |  `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXl` |   |  `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderL` |   |  `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderM` |   |  `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderS` |   |  `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXs` |   |  `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+|  |   | `fontHeaderXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+
+### Body Variables
+
+<p>
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontBodyL` |   |  `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyM` |   |  `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyS` |   |  `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXs` |   |  `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+|  |   | `fontBodyXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+
+### All Caps Variables
+
+| **Visual** |   | **Variable** |   | **Value** |
+| --- | --- | --- | --- | --- |
+|  |   | `fontCapsXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+|  |   | `fontCapsXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+|   |   | `fontCapsXxxxs` |   |  `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
 

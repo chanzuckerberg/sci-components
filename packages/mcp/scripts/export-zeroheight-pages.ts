@@ -49,10 +49,23 @@ interface PageGroup {
   combinedContent: string;
 }
 
+interface CachedPage {
+  page: ZeroheightPage;
+  cachedAt: string;
+  lastUpdated: string;
+}
+
+interface CacheData {
+  pages: Record<number, CachedPage>;
+  lastFetch: string;
+}
+
 class ZeroheightExporter {
   private config: ZeroheightConfig;
   private headers: Record<string, string>;
   private pageGroups: Map<string, PageGroup> = new Map();
+  private cacheFilePath: string;
+  private cache: CacheData;
 
   constructor() {
     this.config = getZeroheightConfig();
@@ -61,10 +74,56 @@ class ZeroheightExporter {
       'X-API-KEY': this.config.apiKey,
       'X-API-CLIENT': this.config.apiClient
     };
+    this.cacheFilePath = path.join(dirname, '../data/zeroheight-cache.json');
+    this.cache = this.loadCache();
   }
 
   private sanitizeFilename(filename: string): string {
     return filename.replace(/[^a-zA-Z0-9\-_\s]/g, '').replace(/\s+/g, '-');
+  }
+
+  private loadCache(): CacheData {
+    try {
+      if (fs.existsSync(this.cacheFilePath)) {
+        const cacheContent = fs.readFileSync(this.cacheFilePath, 'utf8');
+        const cache = JSON.parse(cacheContent) as CacheData;
+        console.log(`✓ Loaded cache with ${Object.keys(cache.pages).length} pages (last fetch: ${cache.lastFetch})`);
+        return cache;
+      }
+    } catch (error) {
+      console.warn('⚠️  Could not load cache, starting fresh');
+    }
+    
+    return {
+      pages: {},
+      lastFetch: ''
+    };
+  }
+
+  private saveCache(): void {
+    try {
+      // Ensure data directory exists
+      const dataDir = path.dirname(this.cacheFilePath);
+      if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+      }
+      
+      fs.writeFileSync(this.cacheFilePath, JSON.stringify(this.cache, null, 2));
+      console.log(`✓ Saved cache with ${Object.keys(this.cache.pages).length} pages`);
+    } catch (error) {
+      console.warn('⚠️  Could not save cache:', error);
+    }
+  }
+
+  private isPageCacheValid(pageId: number, lastUpdated: string): boolean {
+    const cachedPage = this.cache.pages[pageId];
+    if (!cachedPage) return false;
+    
+    // Check if the page was updated after we cached it
+    const cacheTime = new Date(cachedPage.cachedAt).getTime();
+    const updateTime = new Date(lastUpdated).getTime();
+    
+    return updateTime <= cacheTime;
   }
 
   private processMarkdownContent(content: string): string {
@@ -104,10 +163,17 @@ class ZeroheightExporter {
     }
   }
 
-  async fetchPageContent(pageId: number): Promise<ZeroheightPage> {
+  async fetchPageContent(pageId: number, lastUpdated: string): Promise<ZeroheightPage> {
+    // Check if we have a valid cached version
+    if (this.isPageCacheValid(pageId, lastUpdated)) {
+      console.log(`  ↳ Using cached version of page ${pageId}`);
+      return this.cache.pages[pageId].page;
+    }
+
     const url = `${this.config.baseUrl}/pages/${pageId}?format=${this.config.format}`;
     
     try {
+      console.log(`  ↳ Fetching fresh data for page ${pageId}`);
       const response = await fetch(url, {
         method: 'GET',
         headers: this.headers
@@ -118,7 +184,16 @@ class ZeroheightExporter {
       }
 
       const data: ZeroheightPageResponse = await response.json();
-      return data.data.page;
+      const page = data.data.page;
+      
+      // Cache the page
+      this.cache.pages[pageId] = {
+        page,
+        cachedAt: new Date().toISOString(),
+        lastUpdated
+      };
+      
+      return page;
     } catch (error) {
       console.error(`Error fetching page ${pageId}:`, error);
       throw error;
@@ -203,23 +278,8 @@ class ZeroheightExporter {
       new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
     );
     
-    // Use the first page for frontmatter metadata
+    // Use the first page for main title
     const primaryPage = sortedPages[0];
-    
-    // Add YAML frontmatter
-    content += '---\n';
-    content += `title: "${primaryPage.name}"\n`;
-    content += `combined_from_ids: [${sortedPages.map(p => p.id).join(', ')}]\n`;
-    content += `primary_id: ${primaryPage.id}\n`;
-    content += `slug: "${primaryPage.slug}"\n`;
-    content += `url: "${primaryPage.url}"\n`;
-    content += `created_at: "${primaryPage.created_at}"\n`;
-    content += `updated_at: "${Math.max(...sortedPages.map(p => new Date(p.updated_at).getTime()))}"\n`;
-    if (primaryPage.status) {
-      content += `status_id: "${primaryPage.status.id}"\n`;
-      content += `status_name: "${primaryPage.status.name}"\n`;
-    }
-    content += '---\n\n';
     
     // Add main title
     content += `# ${primaryPage.name}\n\n`;
@@ -245,8 +305,8 @@ class ZeroheightExporter {
     console.log(`Processing page: ${page.name} (ID: ${page.id})`);
     
     try {
-      // Fetch full page content
-      const fullPage = await this.fetchPageContent(page.id);
+      // Fetch full page content (with caching)
+      const fullPage = await this.fetchPageContent(page.id, page.updated_at);
       
       // Skip pages with minimal content
       if (this.hasMinimalContent(fullPage)) {
@@ -323,6 +383,123 @@ ${Array.from(this.pageGroups.values())
     console.log('✓ Generated index file: README.md');
   }
 
+  /**
+   * Maps a component name to the corresponding Zeroheight file using manual mapping
+   */
+  private mapComponentToFile(componentName: string): string | null {
+    const exportedFiles = Array.from(this.pageGroups.keys());
+    
+    // Manual mapping of component names to Zeroheight file names
+    const componentToFileMap: Record<string, string> = {
+      // Button components
+      'Button': 'Buttons',
+      'ButtonDropdown': 'Buttons', 
+      'ButtonIcon': 'Buttons',
+      'ButtonToggle': 'Buttons',
+      
+      // Table components
+      'TableHeader': 'Table',
+      'TableRow': 'Table',
+      
+      // Input components
+      'InputCheckbox': 'Control-Inputs',
+      'InputRadio': 'Control-Inputs',
+      'InputToggle': 'Control-Inputs',
+      'InputText': 'Field-Inputs',
+      'InputDropdown': 'Dropdown-Input',
+      'InputSearch': 'Search-Input',
+      'InputSlider': 'Control-Inputs',
+      
+      // Dropdown components
+      'Dropdown': 'Dropdown-Menu',
+      'DropdownMenu': 'Dropdown-Menu',
+      
+      // Content components
+      'ContentCard': 'Content-Card',
+      'LoadingIndicator': 'Loading-Indicator',
+      
+      // Navigation components
+      'NavigationFooter': 'Navigation',
+      'NavigationHeader': 'Navigation',
+      'NavigationJumpTo': 'Navigation',
+      
+      // Control components
+      'SegmentedControl': 'Segmented-Control',
+      
+      // List and menu components
+      'List': 'Lists',
+      'Menu': 'Dropdown-Menu',
+      'MenuItem': 'Dropdown-Menu',
+      'MenuSelect': 'Dropdown-Menu',
+      
+      // Tag components
+      'Tag': 'Tags',
+      'TagFilter': 'Tags',
+      
+      // Tooltip components
+      'Tooltip': 'Tooltips',
+      'TooltipCondensed': 'Tooltips',
+      'TooltipTable': 'Tooltips',
+      
+      // Cell components (likely in Table or Lists)
+      'CellBasic': 'Table',
+      'CellComponent': 'Table', 
+      'CellHeader': 'Table',
+      
+      // Filter components
+      'ComplexFilter': 'Filters',
+      
+      // Other components
+      'Icon': 'Icons',
+      'Chip': 'Tags', // Chips are often similar to tags
+      'Pagination': 'Navigation', // Pagination is often part of navigation
+    };
+    
+    // Check manual mapping first
+    const mappedFile = componentToFileMap[componentName];
+    if (mappedFile && exportedFiles.includes(mappedFile)) {
+      return `${mappedFile}.md`;
+    }
+    
+    // Fallback to exact match only
+    if (exportedFiles.includes(componentName)) {
+      return `${componentName}.md`;
+    }
+    
+    return null; // No match found
+  }
+
+  private async validateComponentAlignment(): Promise<void> {
+    const componentListPath = path.join(dirname, '../data/component-list.json');
+    
+    try {
+      const componentListData = fs.readFileSync(componentListPath, 'utf8');
+      const componentList = JSON.parse(componentListData);
+      const allComponents = [...componentList.components, ...componentList['data-viz']];
+      
+      console.log('\n🔍 Component Documentation Mapping:');
+      
+      let found = 0;
+      let notFound = 0;
+      
+      allComponents.forEach(component => {
+        const mappedFile = this.mapComponentToFile(component);
+        if (mappedFile) {
+          console.log(`✓ ${component} → ${mappedFile}`);
+          found++;
+        } else {
+          console.log(`✗ ${component} → No documentation found`);
+          notFound++;
+        }
+      });
+      
+      console.log(`\n📊 Documentation Coverage: ${found}/${allComponents.length} components have docs (${Math.round(found/allComponents.length*100)}%)`);
+      
+    } catch (error) {
+      console.warn('⚠️  Could not validate component alignment:', error instanceof Error ? error.message : 'Unknown error');
+    }
+  }
+
   async exportAll(): Promise<void> {
     console.log('Starting Zeroheight pages export with deduplication...\n');
     
@@ -341,18 +518,32 @@ ${Array.from(this.pageGroups.values())
       const pages = await this.fetchPages();
       console.log(`Found ${pages.length} pages\n`);
       
+      // Update last fetch time
+      this.cache.lastFetch = new Date().toISOString();
+      
       // Process each page (group by name, filter minimal content)
       console.log('Processing pages...');
+      let fetchCount = 0;
+      let cacheHits = 0;
+      
       for (const page of pages) {
         if (!page.hidden) { // Only process visible pages
+          const wasCached = this.isPageCacheValid(page.id, page.updated_at);
+          if (wasCached) cacheHits++;
+          else fetchCount++;
+          
           await this.processPage(page);
           
-          // Add delay to avoid rate limiting
-          await new Promise(resolve => setTimeout(resolve, 500));
+          // Add delay to avoid rate limiting (only for API calls)
+          if (!wasCached) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+          }
         } else {
           console.log(`Skipping hidden page: ${page.name}`);
         }
       }
+      
+      console.log(`\n📊 Cache Performance: ${cacheHits} cache hits, ${fetchCount} API calls`);
       
       console.log(`\n✓ Grouped into ${this.pageGroups.size} unique page groups`);
       
@@ -388,6 +579,12 @@ ${Array.from(this.pageGroups.values())
       if (successful.length > 0) {
         await this.generateIndex(successful);
       }
+      
+      // Validate component alignment
+      await this.validateComponentAlignment();
+      
+      // Save cache for next time
+      this.saveCache();
       
     } catch (error) {
       console.error('Export failed:', error);

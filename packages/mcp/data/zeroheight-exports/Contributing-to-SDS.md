@@ -1,17 +1,3 @@
----
-title: "Contributing to SDS"
-id: 7353057
-uid: "078033"
-slug: "078033-contributing-to-sds"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/078033-contributing-to-sds"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:57.029Z"
-updated_at: "2025-07-07T20:30:57.032Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Contributing to SDS
 
 Use the following guides when you have a new request for something to be added or changed in the design system or want to serve as a contributor to the SDS team
@@ -22,8 +8,8 @@ Use the following guides when you have a new request for something to be added o
 
 #### Assess and Plan
 
-1. Check if the component already exists by checking the [SDS Documentation](https://sds.czi.design/) to confirm
-2. If not, submit the request or idea you want to contribute to the SDS by creating a [github issue](https://github.com/chanzuckerberg/sci-components/issues/new/choose)
+1. Check if the component already exists by checking the SDS Documentation to confirm
+2. If not, submit the request or idea you want to contribute to the SDS by creating a github issue
 3. The SDS Team will assess the request and make sure they understand the needs
 4. **Decision Point**: should it be included in the SDS?
     1. If the needs are joint across multiple projects, the SDS team will likely decide to include it
@@ -51,7 +37,7 @@ Use the following guides when you have a new request for something to be added o
 
 When getting started with contributing, here are guides to follow. Be sure to also partner with an SDS core team member.
 
-* Contributing Design – [SDS Feature Design Process](https://docs.google.com/document/d/1Y7Nuf77Muv6vJVevUkL057FmYR5PrZgvxBCLASSdsrE/edit?usp=sharing)
+* Contributing Design – SDS Feature Design Process
 * Contributing Code – [guide coming soon]
 * Contributing Documentation – [guide coming soon]
 

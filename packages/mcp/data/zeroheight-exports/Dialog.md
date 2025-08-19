@@ -1,17 +1,3 @@
----
-title: "Dialog"
-id: 7353049
-uid: "707b97"
-slug: "707b97-dialog"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/707b97-dialog"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:54.898Z"
-updated_at: "2025-07-07T20:30:55.301Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Dialog
 
 A Dialog is a window element that appears on top of content to provide information or prompt the user for an action. When a Dialog is active, it disables all functionality of the page below and remains on the screen until it is either dismissed or an action has been taken.
@@ -27,11 +13,11 @@ A Dialog is a window element that appears on top of content to provide informati
 
 The interior of a Dialog can be filled with any content needed, whether that is to communicate information to the user or collect data from them via a form.
 
-There are two Dialog variants available—[P](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/6144d6)[ersistent](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/6144d6) and [Dismissible](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/555d03). They are highly customizable and designed to accommodate a range of product needs.
+There are two Dialog variants available—Persistent and Dismissible. They are highly customizable and designed to accommodate a range of product needs.
 
 Any combination of the following properties can be used:
 
-* One or two [Button(s)](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons), positioned to the right or left side of the dialog (positioned right by default)
+* One or two Button(s), positioned to the right or left side of the dialog (positioned right by default)
 * Overline text above the title
 * Subtitle text below the title
 * Artwork above the title (logo, icon, or illustration)
@@ -45,9 +31,9 @@ There are four size options, each with a fixed width and minimum height (except 
 
 Users can dismiss them by:
 
-* Clicking an action [Button](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons) that is configured to close, cancel, or complete a multi-step workflow occurring in the Dialog
+* Clicking an action Button that is configured to close, cancel, or complete a multi-step workflow occurring in the Dialog
 * Pressing the keyboard `Esc` key
-* Clicking the close [Tertiary Icon Button](https://sds.czi.design/009eaf17b/p/47778c-buttons/t/666f45) ([Dismissible variant](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/555d03) only)
+* Clicking the close Tertiary Icon Button (Dismissible variant only)
 * Clicking outside of the Dialog. Doing this will result in any selections the user has made being lost, so it is recommended that this be disabled in instances where losing entered information would be a significant burden to the user
 
 ---
@@ -56,18 +42,18 @@ Users can dismiss them by:
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=dialog--default)
+Default
 
 ---
 
 ### Dialog – Persistent
 
-Use this variant when the user is unable to dismiss the Dialog without making a selection from one of the action [Button(s)](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons). Because there is no way for the user to manually dismiss the Dialog, **this variant must contain at least one action Button**.
+Use this variant when the user is unable to dismiss the Dialog without making a selection from one of the action Button(s). Because there is no way for the user to manually dismiss the Dialog, **this variant must contain at least one action Button**.
 
 Persistent Dialogs are generally used:
 
 * In multi-step workflows where dismissing the Dialog would result in a loss of progress
-* When there is a need for users to confirm they have read the content on the Dialog before proceeding, such as when they are being directed to an external site (see [Dialog Use Cases](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/41b8e5) section below for details).
+* When there is a need for users to confirm they have read the content on the Dialog before proceeding, such as when they are being directed to an external site (see Dialog Use Cases section below for details).
 
 | 1 Button | 2 Buttons | 2 Buttons, left-aligned |
 | --- | --- | --- |
@@ -79,7 +65,7 @@ Persistent Dialogs are generally used:
 
 ### Dialog – Dismissible
 
-Use this variant to allow the user the ability to manually dismiss the Dialog by clicking the close [Tertiary Icon Button](https://sds.czi.design/009eaf17b/p/47778c-buttons/t/666f45) in the Dialog's upper right corner. Dismissing the Dialog will result in any selections the user has made being lost. Dismissible Dialogs should not be used in multi-step workflows where closing the Dialog would result in a loss of progress (see [Dialog Use Cases](https://sds.czi.design/009eaf17b/v/0/p/707b97-dialogs/t/41b8e5) section below for details).
+Use this variant to allow the user the ability to manually dismiss the Dialog by clicking the close Tertiary Icon Button in the Dialog's upper right corner. Dismissing the Dialog will result in any selections the user has made being lost. Dismissible Dialogs should not be used in multi-step workflows where closing the Dialog would result in a loss of progress (see Dialog Use Cases section below for details).
 
 | 0 Buttons | 1 Button | 2 Buttons | 2 Buttons, left-aligned |
 | --- | --- | --- | --- |
@@ -129,15 +115,15 @@ The Dialog should not be dismissible to prevent any accidental loss of progress.
 
 ### SDS Source Code
 
-The `Dialog` component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Dialog/index.tsx).
+The `Dialog` component's source code in the SDS codebase can be found here.
 
 The `Dialog` component is accompanied by a number of other accessory components that can be used to help compose dialogs, but they are not required:
 
-* Main `Dialog` component [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog)
-* `DialogActions`  [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogActions)
-* `DialogContent`  [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogContent)
-* `DialogPaper`  [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogPaper)
-* `DialogTitle`  [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogTitle)
+* Main `Dialog` component source code
+* `DialogActions`  source code
+* `DialogContent`  source code
+* `DialogPaper`  source code
+* `DialogTitle`  source code
 
 ### SDS vs MUI
 
@@ -147,7 +133,7 @@ The SDS `Dialog` does **not** support the `fullScreen` prop that the MUI compone
 
 ### MUI Documentation
 
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-dialog/#scrolling-long-content).
+Documentation for the underlying MUI component can be found here.
 
 ### Props
 

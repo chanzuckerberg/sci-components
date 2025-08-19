@@ -1,8 +1,9 @@
 # Exported Zeroheight Pages
 
-Generated on: 2025-08-19T18:41:00.866Z
+Generated on: 2025-08-19T21:20:44.865Z
 Styleguide ID: 66099
-Total pages exported: 163
+Total files exported: 56
+Total pages combined: 143
 
 ## Files
 
@@ -14,13 +15,10 @@ Total pages exported: 163
 - [Responsive-Design.md](./Responsive-Design.md)
 - [Typography.md](./Typography.md)
 - [Borders.md](./Borders.md)
-- [Bases.md](./Bases.md)
 - [Drop-Shadows.md](./Drop-Shadows.md)
 - [Spacing.md](./Spacing.md)
-- [CELLS.md](./CELLS.md)
 - [Introduction-to-Cells.md](./Introduction-to-Cells.md)
 - [Search.md](./Search.md)
-- [DNA.md](./DNA.md)
 - [Dropdown-Menus.md](./Dropdown-Menus.md)
 - [Introduction-to-DNA.md](./Introduction-to-DNA.md)
 - [Accordions.md](./Accordions.md)
@@ -39,133 +37,88 @@ Total pages exported: 163
 - [Tabs.md](./Tabs.md)
 - [Lists.md](./Lists.md)
 - [Introduction-to-Genes.md](./Introduction-to-Genes.md)
-- [GENES.md](./GENES.md)
-- [BASES.md](./BASES.md)
-- [Introduction-to-Bases-1.md](./Introduction-to-Bases-1.md)
-- [Colors-1.md](./Colors-1.md)
-- [Spacing-1.md](./Spacing-1.md)
-- [Typography-1.md](./Typography-1.md)
-- [Icons-1.md](./Icons-1.md)
-- [Drop-Shadows-1.md](./Drop-Shadows-1.md)
-- [Corners-1.md](./Corners-1.md)
-- [SDS-OVERVIEW.md](./SDS-OVERVIEW.md)
 - [Introduction.md](./Introduction.md)
 - [Element-Status-Tracker.md](./Element-Status-Tracker.md)
 - [Getting-Started.md](./Getting-Started.md)
-- [Cells.md](./Cells.md)
 - [Downloads.md](./Downloads.md)
-- [Search-1.md](./Search-1.md)
-- [Introduction-to-Cells-1.md](./Introduction-to-Cells-1.md)
 - [Notifications.md](./Notifications.md)
-- [Introduction-to-DNA-1.md](./Introduction-to-DNA-1.md)
-- [Filters-1.md](./Filters-1.md)
 - [Panels.md](./Panels.md)
-- [Dialogs-1.md](./Dialogs-1.md)
 - [Callouts.md](./Callouts.md)
-- [Dropdown-Menus-1.md](./Dropdown-Menus-1.md)
-- [DNA-1.md](./DNA-1.md)
-- [Genes.md](./Genes.md)
-- [Introduction-to-Genes-1.md](./Introduction-to-Genes-1.md)
 - [Dropdown-Inputs.md](./Dropdown-Inputs.md)
-- [Tags-1.md](./Tags-1.md)
-- [Text-Link-1.md](./Text-Link-1.md)
-- [Control-Inputs-1.md](./Control-Inputs-1.md)
 - [Field-Inputs.md](./Field-Inputs.md)
-- [Tabs-1.md](./Tabs-1.md)
-- [Lists-1.md](./Lists-1.md)
-- [Buttons-1.md](./Buttons-1.md)
 - [Loading-Indicators.md](./Loading-Indicators.md)
-- [Tooltips-1.md](./Tooltips-1.md)
-- [Borders-1.md](./Borders-1.md)
-- [Corners-2.md](./Corners-2.md)
-- [Typography-2.md](./Typography-2.md)
-- [Introduction-to-Bases-2.md](./Introduction-to-Bases-2.md)
-- [Colors-2.md](./Colors-2.md)
-- [Icons-2.md](./Icons-2.md)
-- [Drop-Shadows-2.md](./Drop-Shadows-2.md)
-- [Spacing-2.md](./Spacing-2.md)
-- [Bases-1.md](./Bases-1.md)
-- [CZ-Gen-Epi-DESIGN-SYSTEM-OVERVIEW.md](./CZ-Gen-Epi-DESIGN-SYSTEM-OVERVIEW.md)
-- [Introduction-1.md](./Introduction-1.md)
-- [Element-Status-Tracker-1.md](./Element-Status-Tracker-1.md)
-- [Getting-Started-1.md](./Getting-Started-1.md)
-- [Cells-1.md](./Cells-1.md)
-- [Downloads-1.md](./Downloads-1.md)
-- [Introduction-to-Cells-2.md](./Introduction-to-Cells-2.md)
-- [Search-2.md](./Search-2.md)
-- [Downloads-2.md](./Downloads-2.md)
-- [Search-3.md](./Search-3.md)
-- [Introduction-to-Cells-3.md](./Introduction-to-Cells-3.md)
-- [Cells-2.md](./Cells-2.md)
-- [Notifications-1.md](./Notifications-1.md)
-- [DNA-2.md](./DNA-2.md)
-- [Panels-1.md](./Panels-1.md)
-- [Introduction-to-DNA-2.md](./Introduction-to-DNA-2.md)
-- [Callouts-1.md](./Callouts-1.md)
-- [Filters-2.md](./Filters-2.md)
-- [Dialogs-2.md](./Dialogs-2.md)
-- [Tables-1.md](./Tables-1.md)
-- [Dropdown-Menus-2.md](./Dropdown-Menus-2.md)
-- [Accordions-1.md](./Accordions-1.md)
-- [Genes-1.md](./Genes-1.md)
-- [Introduction-to-Genes-2.md](./Introduction-to-Genes-2.md)
-- [Tags-2.md](./Tags-2.md)
-- [Text-Link-2.md](./Text-Link-2.md)
-- [Buttons-2.md](./Buttons-2.md)
 - [Segmented-Control.md](./Segmented-Control.md)
-- [Tooltips-2.md](./Tooltips-2.md)
-- [Lists-2.md](./Lists-2.md)
-- [Control-Inputs-2.md](./Control-Inputs-2.md)
-- [Tabs-2.md](./Tabs-2.md)
 - [Banners.md](./Banners.md)
-- [Navigation-1.md](./Navigation-1.md)
-- [Dropdown-Input-1.md](./Dropdown-Input-1.md)
-- [Loading-Indicators-1.md](./Loading-Indicators-1.md)
-- [Field-Inputs-1.md](./Field-Inputs-1.md)
-- [Colors-3.md](./Colors-3.md)
-- [Corners-3.md](./Corners-3.md)
-- [Drop-Shadows-3.md](./Drop-Shadows-3.md)
-- [Bases-2.md](./Bases-2.md)
-- [Borders-2.md](./Borders-2.md)
-- [Introduction-to-Bases-3.md](./Introduction-to-Bases-3.md)
-- [Typography-3.md](./Typography-3.md)
-- [Icons-3.md](./Icons-3.md)
-- [Spacing-3.md](./Spacing-3.md)
-- [CZ-ID-Design-System-Overview.md](./CZ-ID-Design-System-Overview.md)
-- [Element-Status-Tracker-2.md](./Element-Status-Tracker-2.md)
-- [Getting-Started-2.md](./Getting-Started-2.md)
-- [Introduction-2.md](./Introduction-2.md)
 - [Hero.md](./Hero.md)
 - [Content-Card.md](./Content-Card.md)
-- [Navigation-2.md](./Navigation-2.md)
 - [Notification.md](./Notification.md)
-- [Filters-3.md](./Filters-3.md)
 - [Table.md](./Table.md)
 - [Dialog.md](./Dialog.md)
 - [Callout.md](./Callout.md)
-- [Introduction-to-DNA-3.md](./Introduction-to-DNA-3.md)
 - [Dropdown-Menu.md](./Dropdown-Menu.md)
 - [Accordion.md](./Accordion.md)
 - [Panel.md](./Panel.md)
-- [DNA-3.md](./DNA-3.md)
-- [Element-Status-Tracker-3.md](./Element-Status-Tracker-3.md)
 - [Contributing-to-SDS.md](./Contributing-to-SDS.md)
-- [Getting-Started-3.md](./Getting-Started-3.md)
-- [Introduction-3.md](./Introduction-3.md)
-- [SDS-Overview.md](./SDS-Overview.md)
 - [Link.md](./Link.md)
-- [Segmented-Control-1.md](./Segmented-Control-1.md)
-- [Introduction-to-Genes-3.md](./Introduction-to-Genes-3.md)
 - [Intent.md](./Intent.md)
-- [Loading-Indicators-2.md](./Loading-Indicators-2.md)
-- [Control-Inputs-3.md](./Control-Inputs-3.md)
-- [Tooltips-3.md](./Tooltips-3.md)
-- [Buttons-3.md](./Buttons-3.md)
-- [Field-Inputs-2.md](./Field-Inputs-2.md)
-- [Tags-3.md](./Tags-3.md)
-- [Tabs-3.md](./Tabs-3.md)
-- [Lists-3.md](./Lists-3.md)
 - [Banner.md](./Banner.md)
-- [Dropdown-Input-2.md](./Dropdown-Input-2.md)
-- [Genes-2.md](./Genes-2.md)
 - [Cover-page.md](./Cover-page.md)
+
+## Combination Summary
+
+- **Icons.md**: 4 pages combined
+- **Introduction-to-Bases.md**: 4 pages combined
+- **Colors.md**: 4 pages combined
+- **Theming.md**: 1 page combined
+- **Corners.md**: 4 pages combined
+- **Responsive-Design.md**: 1 page combined
+- **Typography.md**: 4 pages combined
+- **Borders.md**: 3 pages combined
+- **Drop-Shadows.md**: 4 pages combined
+- **Spacing.md**: 4 pages combined
+- **Introduction-to-Cells.md**: 4 pages combined
+- **Search.md**: 4 pages combined
+- **Dropdown-Menus.md**: 3 pages combined
+- **Introduction-to-DNA.md**: 4 pages combined
+- **Accordions.md**: 2 pages combined
+- **Tables.md**: 2 pages combined
+- **Filters.md**: 4 pages combined
+- **Dialogs.md**: 3 pages combined
+- **Tags.md**: 4 pages combined
+- **Tooltips.md**: 4 pages combined
+- **Buttons.md**: 4 pages combined
+- **Control-Inputs.md**: 4 pages combined
+- **Text-Link.md**: 3 pages combined
+- **Navigation.md**: 3 pages combined
+- **Search-Input.md**: 1 page combined
+- **Loading-Indicator.md**: 1 page combined
+- **Dropdown-Input.md**: 3 pages combined
+- **Tabs.md**: 4 pages combined
+- **Lists.md**: 4 pages combined
+- **Introduction-to-Genes.md**: 4 pages combined
+- **Introduction.md**: 4 pages combined
+- **Element-Status-Tracker.md**: 4 pages combined
+- **Getting-Started.md**: 4 pages combined
+- **Downloads.md**: 3 pages combined
+- **Notifications.md**: 2 pages combined
+- **Panels.md**: 2 pages combined
+- **Callouts.md**: 2 pages combined
+- **Dropdown-Inputs.md**: 1 page combined
+- **Field-Inputs.md**: 3 pages combined
+- **Loading-Indicators.md**: 3 pages combined
+- **Segmented-Control.md**: 2 pages combined
+- **Banners.md**: 1 page combined
+- **Hero.md**: 1 page combined
+- **Content-Card.md**: 1 page combined
+- **Notification.md**: 1 page combined
+- **Table.md**: 1 page combined
+- **Dialog.md**: 1 page combined
+- **Callout.md**: 1 page combined
+- **Dropdown-Menu.md**: 1 page combined
+- **Accordion.md**: 1 page combined
+- **Panel.md**: 1 page combined
+- **Contributing-to-SDS.md**: 1 page combined
+- **Link.md**: 1 page combined
+- **Intent.md**: 1 page combined
+- **Banner.md**: 1 page combined
+- **Cover-page.md**: 1 page combined

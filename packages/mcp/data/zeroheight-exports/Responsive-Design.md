@@ -1,17 +1,3 @@
----
-title: "Responsive Design"
-id: 7352909
-uid: "071935"
-slug: "071935-responsive-design"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/071935-responsive-design"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:24.457Z"
-updated_at: "2025-07-07T20:30:24.587Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Responsive Design
 
 Applications that are built responsively visually adapt to the screen size that they are viewed on for a better user experience
@@ -38,7 +24,7 @@ Insight into these use cases has resulted in SDS implementing three distinct bre
 
 Small breakpoint will be used when applications are viewed on mobile devices and small-screened tablets. At this breakpoint only the main content should be displayed as there is not enough screen real estate to fit non-primary elements.
 
-[Header Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f) has been designed to collapse into a hamburger menu on narrow screens. Other navigation elements like [Panels](https://sds.czi.design/009eaf17b/p/16422a), [Jump-to-Navigation](https://sds.czi.design/009eaf17b/p/5552ba), as well as supplemental pieces of UI will likely need to be accessed via alternative methods. This could mean tucking them away within a [Dropdown Menu](https://sds.czi.design/009eaf17b/p/42bdf2) or an [Accordion](https://sds.czi.design/009eaf17b/p/50d099), adding them as additional menu items within the hamburger menu, or hiding them altogether. For this reason, designers should take special care to consider how these non-primary elements will be used on narrow screens.
+Header Navigation has been designed to collapse into a hamburger menu on narrow screens. Other navigation elements like Panels, Jump-to-Navigation, as well as supplemental pieces of UI will likely need to be accessed via alternative methods. This could mean tucking them away within a Dropdown Menu or an Accordion, adding them as additional menu items within the hamburger menu, or hiding them altogether. For this reason, designers should take special care to consider how these non-primary elements will be used on narrow screens.
 
 | CSS | SCSS | Tailwind |
 | --- | --- | --- |
@@ -50,7 +36,7 @@ Small breakpoint will be used when applications are viewed on mobile devices and
 
 Medium breakpoint will be used when applications are viewed on small laptops and large-screened tablets. At this breakpoint there is enough space to show both main content as well as a few non-primary elements, though likely not all.
 
-Depending on the number of nav items in the [Header Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f) it will either collapse into a hamburger menu or remain fully visible. This breakpoint gives designers control over which UI elements are displayed and which need to be accessed via alternative methods, offering more flexibility around how users interact with the application. Designing for this breakpoint still requires specific consideration to determine which non-primary elements remain visible vs which must be accessed elsewhere in the UI.
+Depending on the number of nav items in the Header Navigation it will either collapse into a hamburger menu or remain fully visible. This breakpoint gives designers control over which UI elements are displayed and which need to be accessed via alternative methods, offering more flexibility around how users interact with the application. Designing for this breakpoint still requires specific consideration to determine which non-primary elements remain visible vs which must be accessed elsewhere in the UI.
 
 | CSS | SCSS | Tailwind |
 | --- | --- | --- |
@@ -72,7 +58,7 @@ SDS has two sets of typography, one for narrow screens and one for wide. Narrow 
 
 Each typography variable from one set has a corresponding variable in the other, delineated by the word "narrow" or "wide" in its name (e.g., `narrow/fontBodyS`, `wide/fontBodyS`, etc.). This makes it easy to translate from one screen width to the other—simply use the variable with the same name but the opposite width (e.g., `narrow/fontBodyS` should be used for the same text on narrow screens that `wide/fontBodyS` is used for on wide screens).
 
-Below are a few visual examples of the differences. See the [Typography](https://sds.czi.design/009eaf17b/p/62e226) section for a detailed breakdown of the typography variables for each set.
+Below are a few visual examples of the differences. See the Typography section for a detailed breakdown of the typography variables for each set.
 
 | Header XXL – wide | Header XXL – narrow |
 | :--- | :--- |
@@ -97,7 +83,7 @@ Designing and building applications responsively helps ensure a positive viewing
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/common/styles-dictionary/design-tokens).
+The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
@@ -105,7 +91,7 @@ In SDS, we utilize MUI’s breakpoint system with custom values to better align 
 
 ### MUI Documentation
 
-For more information on breakpoints, please refer to the [MUI documentation](https://mui.com/material-ui/customization/breakpoints/).
+For more information on breakpoints, please refer to the MUI documentation.
 
 ### Code examples
 

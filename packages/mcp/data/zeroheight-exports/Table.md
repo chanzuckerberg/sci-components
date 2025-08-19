@@ -1,17 +1,3 @@
----
-title: "Table"
-id: 7353048
-uid: "1647a1"
-slug: "1647a1-table"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/1647a1-table"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:53.761Z"
-updated_at: "2025-07-07T20:30:54.825Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Table
 
 Tables are used to store and visually organize data and other content into a series of cells grouped into a collection of rows and columns, helping users better understand and analyze a given set of information.
@@ -20,7 +6,7 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Table Components
 
-| Tables are built by combining Header Cells with Basic or Component Cells, providing flexibility for teams to create Tables that house any type of content their product's require. Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled.  To avoid slow loading speeds in Tables that contain large amounts of data, they should be split across multiple pages; incorporate a Pagination component to help users navigate between the pages of multi-page Tables.  [Filters](https://sds.czi.design/009eaf17b/p/543108) are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter. |   | **Jump to element:** [Table Anatomy](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/777c08) [Basic Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c) [Component Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b) [Header Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/255d36) [Table Row](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1) [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2) [Pagination](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/891710) |
+| Tables are built by combining Header Cells with Basic or Component Cells, providing flexibility for teams to create Tables that house any type of content their product's require. Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled.  To avoid slow loading speeds in Tables that contain large amounts of data, they should be split across multiple pages; incorporate a Pagination component to help users navigate between the pages of multi-page Tables.  Filters are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter. |   | **Jump to element:** Table Anatomy Basic Cell Component Cell Header Cell Table Row Table Header Pagination |
 | --- | --- | --- |
 
 ### Visual Preview
@@ -42,13 +28,13 @@ Tables are used to store and visually organize data and other content into a ser
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellbasic--default)
+Default
 
 ---
 
 ### Overview
 
-The Basic Cell is intended to be filled with strings of text or numerical values. A range of elements can be included alongside text, such as [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73) or [Tags](https://sds.czi.design/009eaf17b/p/39dc34), to provide additional actions users can take in relation to the content within the cell.
+The Basic Cell is intended to be filled with strings of text or numerical values. A range of elements can be included alongside text, such as Icon Buttons or Tags, to provide additional actions users can take in relation to the content within the cell.
 
 >**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
@@ -62,7 +48,7 @@ The Basic Cell is intended to be filled with strings of text or numerical values
 
 ### Basic Cell Spacing
 
-These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a [Table Row](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1). Stack Table Rows below a [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2) to create a full Table.
+These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
 ---
 
@@ -75,13 +61,13 @@ These rules establish how much margin should exist between and around elements. 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellcomponent--default)
+Default
 
 ---
 
 ### Overview
 
-Component Cells can accept any type of element, including any combination or number of components, but should not be used to display text strings (use a [Basic Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c) for this). Most commonly it is used to hold [Buttons](https://sds.czi.design/009eaf17b/p/47778c), [Toggles](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/54c33d), and [Checkbox Inputs](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/70a4ba).
+Component Cells can accept any type of element, including any combination or number of components, but should not be used to display text strings (use a Basic Cell for this). Most commonly it is used to hold Buttons, Toggles, and Checkbox Inputs.
 
 >**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
@@ -92,7 +78,7 @@ Component Cells can accept any type of element, including any combination or num
 
 ### Component Cell Spacing
 
-These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a [Table Row](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1). Stack Table Rows below a [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2) to create a full Table.
+These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
 ---
 
@@ -105,17 +91,17 @@ These rules establish how much margin should exist between and around elements. 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellheader--default)
+Default
 
 ---
 
 ### Overview
 
-Header Cells are placed at the top of Table columns and serve as the header for the content found in the cells below it. The Header Cell's horizontal alignment should match the text position of the [Basic](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c) or [Component Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b) below it. For Basic or Component Cells with centered-aligned content, the Header Cell should be left aligned. Header Cells' vertical alignment is centered and cannot be adjusted.
+Header Cells are placed at the top of Table columns and serve as the header for the content found in the cells below it. The Header Cell's horizontal alignment should match the text position of the Basic or Component Cell below it. For Basic or Component Cells with centered-aligned content, the Header Cell should be left aligned. Header Cells' vertical alignment is centered and cannot be adjusted.
 
 Users are able to manually sort columns in ascending or descending order by clicking on the Header Cell. On first click, the Table will rearrange itself and sort in the direction indicated on the sort icon. A second click and the sort direction will flip. A third click and the content will return to its non-sorted order.
 
-Each Header Cell can have an optional [Tooltip](https://sds.czi.design/009eaf17b/p/74af45) appear when hovered over. This can be used to display supplemental information or help further define the contents of the column below it.
+Each Header Cell can have an optional Tooltip appear when hovered over. This can be used to display supplemental information or help further define the contents of the column below it.
 
 >**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
@@ -126,7 +112,7 @@ Each Header Cell can have an optional [Tooltip](https://sds.czi.design/009eaf17b
 
 ### Header Cell Spacing
 
-These rules establish how much margin should exist between and around elements. Multiple Header Cells are placed beside each other to create a [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2). Stack [Table Rows](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1) below a Table Header to create a full Table.
+These rules establish how much margin should exist between and around elements. Multiple Header Cells are placed beside each other to create a Table Header. Stack Table Rows below a Table Header to create a full Table.
 
 ---
 
@@ -139,17 +125,17 @@ These rules establish how much margin should exist between and around elements. 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-tablerow--default)
+Default
 
 ---
 
 ### Overview
 
-A Table Row is a container filled with multiple [Basic](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c) or [Component Cells](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b) placed side-by-side to form a row of different, but related pieces of information, for example, data related to a collected sample.
+A Table Row is a container filled with multiple Basic or Component Cells placed side-by-side to form a row of different, but related pieces of information, for example, data related to a collected sample.
 
-The Table Row also has its own set of props that control how the row as a whole behaves. For example, Table Rows can have [Tooltips](https://sds.czi.design/009eaf17b/p/74af45) enabled on them that appear when the row is hovered over, communicating information about an entire row to users. Be sure to only enable Tooltips on either the row or cell and not both, so users don't trigger two Tooltips simultaneously.
+The Table Row also has its own set of props that control how the row as a whole behaves. For example, Table Rows can have Tooltips enabled on them that appear when the row is hovered over, communicating information about an entire row to users. Be sure to only enable Tooltips on either the row or cell and not both, so users don't trigger two Tooltips simultaneously.
 
-Additionally, [Checkbox Inputs](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/86b757) can be placed within a Component Cell in the first column of a row, giving users the ability to select entire rows and complete bulk actions on them, such as downloading, editing, etc. See the [Table Row Actions](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/59ed88) section below for more details.
+Additionally, Checkbox Inputs can be placed within a Component Cell in the first column of a row, giving users the ability to select entire rows and complete bulk actions on them, such as downloading, editing, etc. See the Table Row Actions section below for more details.
 
 | Default | Default (no divider) | Hover + Tooltip | Selected | Disabled |
 | --- | --- | --- | --- | --- |
@@ -158,19 +144,19 @@ Additionally, [Checkbox Inputs](https://sds.czi.design/009eaf17b/v/0/p/548a3d-co
 
 ### Table Row Actions
 
-Table Rows may have actions tied to them, such as the ability to edit, delete, download, etc. Users complete these actions by clicking on corresponding [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73) that are placed within a [Component Cell](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b) in the final column at the end of a Table Row (1). Table Row Actions can either be exposed on hover or can be persistent in the Table at all times.
+Table Rows may have actions tied to them, such as the ability to edit, delete, download, etc. Users complete these actions by clicking on corresponding Icon Buttons that are placed within a Component Cell in the final column at the end of a Table Row (1). Table Row Actions can either be exposed on hover or can be persistent in the Table at all times.
 
 #### Overflow Menu
 
-An overflow Icon Button, represented by the `[DotsHorizontal3](https://sds.czi.design/009eaf17b/p/529e08)` icon (2), can be used to surface a [Dropdown Menu](https://sds.czi.design/009eaf17b/p/42bdf2) (3) that contains additional actions. This should be used in instances where a large number of actions are needed (generally more than three) or the designer wants to save space in wide Tables that contain many columns.
+An overflow Icon Button, represented by the `DotsHorizontal3` icon (2), can be used to surface a Dropdown Menu (3) that contains additional actions. This should be used in instances where a large number of actions are needed (generally more than three) or the designer wants to save space in wide Tables that contain many columns.
 
 #### Bulk Actions
 
-Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73) that are located at the top right of the Table, above the [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/82449e); they should be inactive when no rows are selected (4).
+Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding Icon Buttons that are located at the top right of the Table, above the Table Header; they should be inactive when no rows are selected (4).
 
 #### Selectable Rows
 
-To make Table Rows selectable, designers must include [Checkbox Inputs](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/70a4ba) in the first column of the row (5). It is recommended that only once rows are selected should applicable bulk action [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73) become enabled, allowing users to take action across all selected rows (6). How this functionality is implemented is ultimately up to the product team. Add a counter to indicate how many rows have been selected (7).
+To make Table Rows selectable, designers must include Checkbox Inputs in the first column of the row (5). It is recommended that only once rows are selected should applicable bulk action Icon Buttons become enabled, allowing users to take action across all selected rows (6). How this functionality is implemented is ultimately up to the product team. Add a counter to indicate how many rows have been selected (7).
 
 Because actions taken at the row level will impact stored data in the application, row and bulk actions are completely controlled by the application itself and not the SDS component.
 
@@ -178,7 +164,7 @@ Because actions taken at the row level will impact stored data in the applicatio
 
 ### Table Row Spacing
 
-These rules establish how much margin should exist between and around elements. Stack Table Rows below a  [Table Header](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2) to create a full Table.
+These rules establish how much margin should exist between and around elements. Stack Table Rows below a  Table Header to create a full Table.
 
 ---
 
@@ -191,19 +177,19 @@ These rules establish how much margin should exist between and around elements. 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-tableheader--default)
+Default
 
 ---
 
 ### Overview
 
-A Table Header is a container filled with multiple [Header Cells](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/255d36) placed side-by-side to form a header row. This row is placed at the top of a Table with each Header Cell serving as the column header for the content below it; a 2px border should be placed below it. There can only be one Table Header per Table.
+A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of a Table with each Header Cell serving as the column header for the content below it; a 2px border should be placed below it. There can only be one Table Header per Table.
 
 ---
 
 ### Table Header Spacing
 
-These rules establish how much margin should exist between and around elements. Stack [Table Rows](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1) below a  Table Header to create a full Table.
+These rules establish how much margin should exist between and around elements. Stack Table Rows below a  Table Header to create a full Table.
 
 ---
 
@@ -216,7 +202,7 @@ These rules establish how much margin should exist between and around elements. 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-pagination--default)
+Default
 
 ---
 
@@ -224,7 +210,7 @@ Interact with the live instance below and adjust the available props to better c
 
 Large Tables may have long loading times. To mitigate this, Tables can be split across multiple pages with the addition of a Pagination component to navigate between these pages. Place the Pagination component below the final Table Row on each page. It is right-aligned by default, but can optionally be center or left-aligned.
 
-Users are able to click on any page number to jump immediately to that page; otherwise they can use the forward and back [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73) to navigate page-by-page. For Tables that are longer than seven pages, ellipses are displayed to represent any additional pages not viewable. When enabled, the ellipses between page numbers can be clicked on, allowing users to select a page to jump to via a [Dropdown Menu](https://sds.czi.design/009eaf17b/p/42bdf2). When disabled, the ellipses will still be visible but not interactive.
+Users are able to click on any page number to jump immediately to that page; otherwise they can use the forward and back Icon Buttons to navigate page-by-page. For Tables that are longer than seven pages, ellipses are displayed to represent any additional pages not viewable. When enabled, the ellipses between page numbers can be clicked on, allowing users to select a page to jump to via a Dropdown Menu. When disabled, the ellipses will still be visible but not interactive.
 
 | Default | Default (square) | Hover | Default (ellipsis disabled) | Default (ellipsis enabled) |
 | --- | --- | --- | --- | --- |
@@ -233,13 +219,13 @@ Users are able to click on any page number to jump immediately to that page; oth
 
 ### Pagination Spacing
 
-These rules establish how much margin should exist between and around elements. Place Pagination below the final [Table Row](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1) on each page of the Table.
+These rules establish how much margin should exist between and around elements. Place Pagination below the final Table Row on each page of the Table.
 
 ## Code
 
 ## Table Components
 
-| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled.  To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables.  `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |   | **Jump to component:** [CellBasic](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/703189) [CellComponent](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/440ac7) [CellHeader](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/03de1b) [TableRow](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/4163d9) [Pagination](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/86a541) |
+| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled.  To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables.  `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |   | **Jump to component:** CellBasic CellComponent CellHeader TableRow Pagination |
 | --- | --- | --- |
 
 ### Visual Preview
@@ -254,7 +240,7 @@ These rules establish how much margin should exist between and around elements. 
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellBasic/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -587,7 +573,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellComponent/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -751,7 +737,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellHeader/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -921,7 +907,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableRow/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -1100,7 +1086,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableHeader/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Code examples
 
@@ -1257,7 +1243,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Pagination/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -1430,7 +1416,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Code examples
 
@@ -1727,7 +1713,7 @@ root.render(
 
 ## Table Recipes
 
-| These component recipes show a few of the more complex approaches available for customizing Tables.  |   | **Jump to recipe:** [Text-only Table](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/46319a) [Table with a custom sorting function](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/490982) [Table with custom Tooltips](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/770a4e) [Table with virtualized rows](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/969aef) [Editable Table Cells with Access to Internal Data](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/16881f) [Table with Front-End Pagination](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/41b699) [Table with Back-End Pagination](https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/011922) |
+| These component recipes show a few of the more complex approaches available for customizing Tables.  |   | **Jump to recipe:** Text-only Table Table with a custom sorting function Table with custom Tooltips Table with virtualized rows Editable Table Cells with Access to Internal Data Table with Front-End Pagination Table with Back-End Pagination |
 | --- | --- | --- |
 
 #### Text-only Table

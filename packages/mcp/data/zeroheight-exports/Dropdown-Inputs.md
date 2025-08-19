@@ -1,15 +1,3 @@
----
-title: "Dropdown Inputs"
-id: 7352969
-uid: "9800c1"
-slug: "9800c1-dropdown-inputs"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/9800c1-dropdown-inputs"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:35.689Z"
-updated_at: "2025-07-07T20:30:36.276Z"
----
-
 # Dropdown Inputs
 
 Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users to make selections and communicate choices in the UI.
@@ -18,7 +6,7 @@ Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users
 
 ## Dropdown Input Variants
 
-| There are three Dropdown Input variants available for designers to use depending on the placement location within the UI. Dropdown Inputs are always accompanied by a [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539) which is triggered by the user clicking on the input.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Dropdown Input for any given use case. |   | **Jump to variant:** [Rounded](https://sds.czi.design/009eaf17b/v/0/p/9800c1-dropdown-inputs/t/1604f8) [Square](https://sds.czi.design/009eaf17b/v/0/p/9800c1-dropdown-inputs/t/36eeb7) [Minimal](https://sds.czi.design/009eaf17b/v/0/p/9800c1-dropdown-inputs/t/1714ae) |
+| There are three Dropdown Input variants available for designers to use depending on the placement location within the UI. Dropdown Inputs are always accompanied by a Dropdown Menu which is triggered by the user clicking on the input.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Dropdown Input for any given use case. |   | **Jump to variant:** Rounded Square Minimal |
 | --- | --- | --- |
 
 ### Visual Preview
@@ -34,7 +22,7 @@ Use the links below to jump to information on a specific Dropdown Input variant:
 
 ### Single-select Rounded Dropdown Input
 
-Use when the user is only able to select one option from a group of choices within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu.
 
 May be used within CZ GEN EPI for filtering within Tables and datasets.
 
@@ -50,11 +38,11 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Multi-select Rounded Dropdown Input
 
-Use when the user is able to select more than one option from a group of choices within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Use when the user is able to select more than one option from a group of choices within the triggered Dropdown Menu.
 
 May be used within CZ GEN EPI for filtering within Tables and datasets.
 
-Using the `details` prop, an optional counter can be added to the Input to communicate how many selections the user has chosen within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Using the `details` prop, an optional counter can be added to the Input to communicate how many selections the user has chosen within the triggered Dropdown Menu.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
@@ -68,7 +56,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Rounded Dropdown Input Intent States
 
-The `intent` prop is used to communicate the state of the user's response from the accompanying [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+The `intent` prop is used to communicate the state of the user's response from the accompanying Dropdown Menu.
 
 Use `intent: default` to communicate when a user has entered an accepted or complete response.
 
@@ -96,7 +84,7 @@ These rules establish how much margin should exist between and around elements.
 
 ### Single-select Square Dropdown Input
 
-Use when the user is only able to select one option from a group of choices within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu.
 
 Used within CZ GEN EPI on forms and Dialogs that contain menu options for users.
 
@@ -112,7 +100,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Multi-select Square Dropdown Input
 
-Use when the user is able to select more than one option from a group of choices within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Use when the user is able to select more than one option from a group of choices within the triggered Dropdown Menu.
 
 Used within CZ GEN EPI on forms and Dialogs that contain menu options for users.
 
@@ -128,7 +116,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Square Dropdown Input Intent States
 
-The `intent` prop is used to communicate the state of the user's response from the accompanying [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+The `intent` prop is used to communicate the state of the user's response from the accompanying Dropdown Menu.
 
 Use `intent: default` to communicate when a user has entered an accepted or complete response.
 
@@ -156,7 +144,7 @@ These rules establish how much margin should exist between and around elements.
 |  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Use when the user is only able to select one option from a group of choices within the triggered [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu.
 
 The Minimal Dropdown Input is typically reserved for use in Filters.
 
@@ -169,7 +157,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Minimal Dropdown Input Intent States
 
-The `intent` prop is used to communicate the state of the user's response from the accompanying [Dropdown Menu](https://sds.czi.design/009eaf17b/p/552539).
+The `intent` prop is used to communicate the state of the user's response from the accompanying Dropdown Menu.
 
 Use `intent: default` to communicate when a user has entered an accepted or complete response.
 
@@ -188,7 +176,7 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Dropdown Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** [InputDropdown](https://sds.czi.design/009eaf17b/v/0/p/9800c1-dropdown-inputs/t/028707) |
+| Below you will find an interactive Storybook iframe for Dropdown Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputDropdown |
 | --- | --- | --- |
 
 ---
@@ -197,5 +185,5 @@ These rules establish how much margin should exist between and around elements.
 
 ### InputDropdown
 
-[Storybook](https://chanzuckerberg.github.io/sci-components/?path=/story/inputs-inputdropdown--default)
+Storybook
 

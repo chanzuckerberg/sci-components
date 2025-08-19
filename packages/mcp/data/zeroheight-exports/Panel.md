@@ -1,17 +1,3 @@
----
-title: "Panel"
-id: 7353054
-uid: "16422a"
-slug: "16422a-panel"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/16422a-panel"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:56.783Z"
-updated_at: "2025-07-07T20:30:56.962Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Panel
 
 Panels are elements that contain supplementary information or actions for the page's content they appear on. Where and how they display is determined by the type of content on them.
@@ -20,7 +6,7 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ## Panel Components
 
-| Panels contain containers within which other elements are placed. They come in two different variants depending on the type of content and elements contained within them and their functionality, whether appearing on the page, within the flow of the page's content or outside of it, on top of other elements. |   | **Jump to variant:** [Basic](https://sds.czi.design/009eaf17b/v/0/p/16422a-panels/t/70a4ba) [Overlay](https://sds.czi.design/009eaf17b/v/0/p/16422a-panels/t/283f2f) |
+| Panels contain containers within which other elements are placed. They come in two different variants depending on the type of content and elements contained within them and their functionality, whether appearing on the page, within the flow of the page's content or outside of it, on top of other elements. |   | **Jump to variant:** Basic Overlay |
 | --- | --- | --- |
 
 ---
@@ -36,7 +22,7 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ### Overview
 
-Use Panel – Basic when the elements contained within it are able to make adjustments to the content on the page, such as filters or dataset selectors. Panel – Basic is toggled open or closed using a [Button](https://sds.czi.design/009eaf17b/p/47778c) placed on the page (as opposed to contained within the Panel itself). When toggled open, the page's content is resized to make room for the Panel.
+Use Panel – Basic when the elements contained within it are able to make adjustments to the content on the page, such as filters or dataset selectors. Panel – Basic is toggled open or closed using a Button placed on the page (as opposed to contained within the Panel itself). When toggled open, the page's content is resized to make room for the Panel.
 
 Panel – Basic can be positioned on the left or right side of the screen. Both sides can be open at the same time.
 
@@ -62,7 +48,7 @@ These rules establish how much margin should exist to the left or right of an op
 
 ### Overview
 
-Use Panel – Overlay when needing to display supplementary information about a piece of content on the page beneath it; the elements on Panel – Overlay cannot make adjustments to the page's content. When active, like its name suggests, the Panel – Overlay appears on top of the other content on the page, outside of the page's flow. Panel – Overlay is toggled open by any [Button](https://sds.czi.design/009eaf17b/p/47778c) on the page and is closed by clicking the same on-page Button or using the close Button built into panel itself.
+Use Panel – Overlay when needing to display supplementary information about a piece of content on the page beneath it; the elements on Panel – Overlay cannot make adjustments to the page's content. When active, like its name suggests, the Panel – Overlay appears on top of the other content on the page, outside of the page's flow. Panel – Overlay is toggled open by any Button on the page and is closed by clicking the same on-page Button or using the close Button built into panel itself.
 
 Panel – Overlay can be positioned on the bottom, left, or right side of the screen; use the bottom-positioned Panel – Overlay when the content contained on it is wider than it is tall. A page can contain as many Panel - Overlays per page as needed, but only one can be open at a time. If one is currently open and another is triggered to open, the currently opened Panel – Overlay will close before the newly triggered one opens.
 
@@ -96,7 +82,7 @@ The SDS `Panel` component is built upon the MUI `Drawer` component, but with sev
 
 ### MUI Documentation
 
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-drawer/).
+Documentation for the underlying MUI component can be found here.
 
 ### Props
 

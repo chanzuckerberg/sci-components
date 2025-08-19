@@ -1,17 +1,3 @@
----
-title: "Callout"
-id: 7353050
-uid: "72e266"
-slug: "72e266-callout"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/72e266-callout"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:55.331Z"
-updated_at: "2025-07-07T20:30:55.591Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Callout
 
 Callouts are used within the flow of the page to highlight information to the user whether in response to an action they have completed or to bring their attention to important details.
@@ -27,7 +13,7 @@ Callouts are used within the flow of the page to highlight information to the us
 
 Callouts come in three different variants: Persistent, Dismissible, and Expandable. All Callout variants can be set to automatically dismiss after a designated period of time (8 seconds by default).
 
-Callouts appear within the flow of the page, unlike [Notifications](https://sds.czi.design/009eaf17b/p/56981d) which appear outside of the page's flow on top of other elements. They span the full width of their container.
+Callouts appear within the flow of the page, unlike Notifications which appear outside of the page's flow on top of other elements. They span the full width of their container.
 
 ---
 
@@ -35,7 +21,7 @@ Callouts appear within the flow of the page, unlike [Notifications](https://sds.
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=callout--default)
+Default
 
 ---
 
@@ -89,11 +75,11 @@ Each intent is demonstrated below using the Persistent variant for reference. Re
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Callout/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-The SDS `Callout` component is built upon the MUI `Alert` component (as is the [SDS ](https://sds.czi.design/009eaf17b/v/0/p/56981d-notifications)`[Notification](https://sds.czi.design/009eaf17b/v/0/p/56981d-notifications)`[ component](https://sds.czi.design/009eaf17b/v/0/p/56981d-notifications)), but there are some important differences: 
+The SDS `Callout` component is built upon the MUI `Alert` component (as is the SDS `Notification` component), but there are some important differences: 
 
 * **Color:** SDS's `Callout` component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"info"`, `"error"`, `"success"`, or `"warning"`. MUI's `Alert`  instead uses the `severity` prop for this purpose (`severity` can also be used for SDS's `Notification`,  and will take the same values as `intent`; this is not recommended)
 * **Titles:** SDS's `Callout` uses the `CalloutTitle` in place of the `AlertTitle` used by MUI's `Alert` to wrap title text. It is a stylized version of `AlertTitle`, and can be imported with `import { CalloutTitle } from "@czi-sds/components"`
@@ -109,7 +95,7 @@ The SDS `Callout` component is built upon the MUI `Alert` component (as is the [
 
 ### MUI Documentation
 
-Documentation for the underlying MUI `Alert` component can be found [here](https://mui.com/material-ui/react-alert/).
+Documentation for the underlying MUI `Alert` component can be found here.
 
 ### Props
 

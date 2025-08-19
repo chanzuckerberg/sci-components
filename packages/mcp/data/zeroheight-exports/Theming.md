@@ -1,17 +1,3 @@
----
-title: "Theming"
-id: 7352907
-uid: "169911"
-slug: "169911-theming"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/169911-theming"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:24.370Z"
-updated_at: "2025-07-07T20:30:24.431Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Theming
 
 Themes enable visual changes to be made across the UI, affecting all elements in a consistent way such as in the case of Light and Dark Mode or individual product themes
@@ -20,9 +6,9 @@ Themes enable visual changes to be made across the UI, affecting all elements in
 
 ## Dark Mode
 
-SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the [Semantic Colors](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors/b/65f2c6) and [Primitive Colors](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors/b/534288) documentation.
+SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the Semantic Colors and Primitive Colors documentation.
 
->**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see [Differences in Light Mode vs Dark Mode](https://sds.czi.design/009eaf17b/v/0/p/169911-theming/t/a72b7e7294) for more details.
+>**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
 
 ### Color Indexes
 
@@ -47,7 +33,7 @@ In Dark Mode, `background-primary` is `gray75` (not quite pure black which has p
 
 ### Inverted Style
 
-There are a few components ([Header Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f), [Footer Navigation](https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/91dfb4f43f), [Tooltip](https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/page-74af45-79937672-63548e-5), and [Condensed Tooltip](https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/page-74af45-80021906-63548e-50)) that can be displayed with light or dark backgrounds regardless of which color mode the user's application is set to. Enable this using the prop `hasInvertedStyle` which by default is set to `false`. In Light Mode the component will have a light background and in Dark Mode the component will have a dark background. When set to `true`, the colors will be inverted and in Light Mode the component will have a dark background and in Dark Mode the component will have a light background.
+There are a few components (Header Navigation, Footer Navigation, Tooltip, and Condensed Tooltip) that can be displayed with light or dark backgrounds regardless of which color mode the user's application is set to. Enable this using the prop `hasInvertedStyle` which by default is set to `false`. In Light Mode the component will have a light background and in Dark Mode the component will have a dark background. When set to `true`, the colors will be inverted and in Light Mode the component will have a dark background and in Dark Mode the component will have a light background.
 
 See the individual component pages for more details and visual examples.
 
@@ -58,9 +44,9 @@ See the individual component pages for more details and visual examples.
 
 ## Dark Mode
 
-SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the [Semantic Colors](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors/b/65f2c6) and [Primitive Colors](https://sds.czi.design/009eaf17b/v/0/p/09bf09-colors/b/534288) documentation.
+SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the Semantic Colors and Primitive Colors documentation.
 
->**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see [Differences in Light Mode vs Dark Mode](https://sds.czi.design/009eaf17b/v/0/p/169911-theming/t/a72b7e7294) for more details.
+>**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
 
 ### Dark Mode by Default
 
@@ -191,7 +177,7 @@ root.render(
 
 Users might have a preference for Light or Dark Mode set through their operating system—either systemwide, or for a single user agent.
 
-You can ensure this preference is used in your application with the [useMediaQuery](https://mui.com/material-ui/react-use-media-query/) hook and the [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media query.
+You can ensure this preference is used in your application with the useMediaQuery hook and the prefers-color-scheme media query.
 
 The following demo shows how to enable Dark Mode automatically by checking for the user's preference in their OS or browser settings:
 

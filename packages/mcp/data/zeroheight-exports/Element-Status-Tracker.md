@@ -1,15 +1,3 @@
----
-title: "Element Status Tracker"
-id: 7352953
-uid: "45444a"
-slug: "45444a-element-status-tracker"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/45444a-element-status-tracker"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:33.482Z"
-updated_at: "2025-07-07T20:30:33.486Z"
----
-
 # Element Status Tracker
 
 Use the tables below to check on the status of all elements in the design system and quickly jump to their respective documentation.
@@ -27,46 +15,254 @@ Updated: **March 12, 2023**
 
 | **Element** | **Figma Style** | **In SDS Codebase** | **In napari hub + .org Codebases** | **Guidelines Written** |
 | --- | --- | --- | --- | --- |
-| [Colors](https://sds.czi.design/009eaf17b/p/155c58) |  |  |  |  |
-| [Corners](https://sds.czi.design/009eaf17b/p/06d18b) | - |  |  |  |
+| Colors |  |  |  |  |
+| Corners | - |  |  |  |
 | Data Visualization Colors | - |  |  |  |
-| [Drop Shadows](https://sds.czi.design/009eaf17b/p/5837cb) |  |  |  |  |
-| [Icons](https://sds.czi.design/009eaf17b/p/65c15b) |  |  |  |  |
-| [Spacing](https://sds.czi.design/009eaf17b/p/17942c) |  |  |  |  |
-| [Typography](https://sds.czi.design/009eaf17b/p/04622f) |  |  |  |  |
+| Drop Shadows |  |  |  |  |
+| Icons |  |  |  |  |
+| Spacing |  |  |  |  |
+| Typography |  |  |  |  |
 
 ### Genes
 
 | **Element** | **Figma Component** | **In SDS Codebase** | **In napari hub + .org Codebases** | **Meets Accessibility** | **Guidelines Written** |
 | --- | --- | --- | --- | --- | --- |
-| [Buttons](https://sds.czi.design/009eaf17b/p/19fa79) |  |  |  |  |  |
-| [Control Inputs](https://sds.czi.design/009eaf17b/p/818f0c) |  |  |  |  |  |
-| [Dropdown Input](https://sds.czi.design/009eaf17b/p/25d75a) |  |  |  |  |  |
-| [Lists](https://sds.czi.design/009eaf17b/p/939be4) |  |  |  |  |  |
-| [Loading Indicator](https://sds.czi.design/009eaf17b/p/023b39) |  |  |  |  |  |
-| [Navigation](https://sds.czi.design/009eaf17b/p/106964) |  |  |  |  |  |
-| [Search Input](https://sds.czi.design/009eaf17b/p/25d43a) |  |  |  |  |  |
-| [Tabs](https://sds.czi.design/009eaf17b/p/084160) |  |  |  |  |  |
-| [Tags](https://sds.czi.design/009eaf17b/p/66562c) |  |  |  |  |  |
-| [Text Link](https://sds.czi.design/009eaf17b/p/88655b) |  |  |  |  |  |
-| [Tooltips](https://sds.czi.design/009eaf17b/p/156f2a) |  |  |  |  |  |
+| Buttons |  |  |  |  |  |
+| Control Inputs |  |  |  |  |  |
+| Dropdown Input |  |  |  |  |  |
+| Lists |  |  |  |  |  |
+| Loading Indicator |  |  |  |  |  |
+| Navigation |  |  |  |  |  |
+| Search Input |  |  |  |  |  |
+| Tabs |  |  |  |  |  |
+| Tags |  |  |  |  |  |
+| Text Link |  |  |  |  |  |
+| Tooltips |  |  |  |  |  |
 
 ### DNA
 
 | **Element** | **Figma Component** | **In SDS Codebase** | **In napari hub + .org Codebases** | **Meets Accessibility** | **Guidelines Written** |
 | --- | --- | --- | --- | --- | --- |
-| [Accordions](https://sds.czi.design/009eaf17b/p/76cebb) |  |  |  |  |  |
+| Accordions |  |  |  |  |  |
 | Data Visualizations |  |  |  |  |  |
-| [Dialogs](https://sds.czi.design/009eaf17b/p/559d56) |  |  |  |  |  |
-| [Dropdown Menus](https://sds.czi.design/009eaf17b/p/95546f) |  |  |  |  |  |
-| [Filters](https://sds.czi.design/009eaf17b/p/740252) |  |  |  |  |  |
+| Dialogs |  |  |  |  |  |
+| Dropdown Menus |  |  |  |  |  |
+| Filters |  |  |  |  |  |
 | Headers |  |  |  |  |  |
 | Loading States |  |  |  |  |  |
-| [Tables](https://sds.czi.design/009eaf17b/p/781d66) |  |  |  |  |  |
+| Tables |  |  |  |  |  |
 
 ### Cells
 
 | **Element** | **Meets Accessibility** | **Guidelines Written** |
 | --- | --- | --- |
-| [Search](https://sds.czi.design/009eaf17b/p/90178b) |  |  |
+| Search |  |  |
+
+---
+
+Use the tables below to check on the status of all elements in the design system and quickly jump to their respective documentation.
+
+Updated: **March 7, 2023**
+
+|  | Not Started |
+| --- | --- |
+|  | Work Happening Currently |
+|  | Some Variants Available |
+|  | Ready to Use |
+
+### Bases
+
+| **Element** | **Figma Style** | **In SDS Codebase** | **In CZ GEN EPI Codebase** | **Guidelines Written** |
+| --- | --- | --- | --- | --- |
+| Borders | - |  | - |  |
+| Colors |  |  | - |  |
+| Corners | - |  | - |  |
+| Drop Shadows |  |  | - |  |
+| Icons |  |  | - |  |
+| Spacing |  |  | - |  |
+| Typography |  |  |  |  |
+
+### Genes
+
+| **Element** | **Figma Component** | **In SDS Codebase** | **In CZ GEN EPI Codebase** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- | --- | --- | --- |
+| Banners |  |  |  |  |  |
+| Buttons |  |  |  |  |  |
+| Control Inputs |  |  |  |  |  |
+| Dropdown Inputs |  |  |  |  |  |
+| Field Inputs |  |  |  |  |  |
+| Lists |  |  |  |  |  |
+| Loading Indicators |  |  |  |  |  |
+| Navigation |  |  |  |  |  |
+| Tabs |  |  |  |  |  |
+| Tags |  |  |  |  |  |
+| Text Link |  |  |  |  |  |
+| Tooltips |  |  |  |  |  |
+
+### DNA
+
+| **Element** | **Figma Component** | **In SDS Codebase** | **In CZ GEN EPI Codebase** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- | --- | --- | --- |
+| Accordions |  |  |  |  |  |
+| Callouts |  |  |  |  |  |
+| Data Visualizations |  |  |  |  |  |
+| Dialogs |  |  |  |  |  |
+| Dropdown Menus |  |  |  |  |  |
+| Filters |  |  |  |  |  |
+| Headers |  |  |  |  |  |
+| Loading States |  |  |  |  |  |
+| Notifications |  |  |  |  |  |
+| Panels |  |  |  |  |  |
+| Tables |  |  |  |  |  |
+
+### Cells
+
+| **Element** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- |
+| Data Management (CRUD) |  |  |
+| Downloads |  |  |
+| Search |  |  |
+| Send Data Out |  |  |
+| Upload |  |  |
+
+---
+
+Use the tables below to check on the status of all elements in the design system and quickly jump to their respective documentation.
+
+Updated: **April 12, 2023**
+
+|  | Not Started |
+| --- | --- |
+|  | Work Happening Currently |
+|  | Some Variants Available |
+|  | Ready to Use |
+|  | Documentation Being Updated |
+
+### Bases
+
+| **Element** | **Figma Style** | **In SDS Codebase** | **In CZ ID Codebase** | **Guidelines Written** |
+| --- | --- | --- | --- | --- |
+| Borders | - |  |  |  |
+| Colors |  |  |  |  |
+| Corners | - |  |  |  |
+| Data Visualization Colors | - |  |  |  |
+| Drop Shadows |  |  |  |  |
+| Icons |  |  |  |  |
+| Spacing |  |  |  |  |
+| Typography |  |  |  |  |
+
+### Genes
+
+| **Element** | **Figma Component** | **In SDS Codebase** | **In CZ ID Codebase** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- | --- | --- | --- |
+| Banners |  |  |  |  |  |
+| Buttons |  |  |  |  |  |
+| Control Inputs |  |  |  |  |  |
+| Dropdown Input |  |  |  |  |  |
+| Field Inputs |  |  |  |  |  |
+| Lists |  |  |  |  |  |
+| Loading Indicators |  |  |  |  |  |
+| Navigation |  |  |  |  |  |
+| Segmented Control |  |  |  |  |  |
+| Tabs |  |  |  |  |  |
+| Tags |  |  |  |  |  |
+| Text Link |  |  |  |  |  |
+| Tooltips |  |  |  |  |  |
+
+### DNA
+
+| **Element** | **Figma Component** | **In SDS Codebase** | **In CZ ID Codebase** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- | --- | --- | --- |
+| Accordions |  |  |  |  |  |
+| Callouts |  |  |  |  |  |
+| Data Visualizations |  |  |  |  |  |
+| Dialogs |  |  |  |  |  |
+| Dropdown Menus |  |  |  |  |  |
+| Filters |  |  |  |  |  |
+| Headers |  |  |  |  |  |
+| Loading States |  |  |  |  |  |
+| Notifications |  |  |  |  |  |
+| Panels |  |  |  |  |  |
+| Tables |  |  |  |  |  |
+
+### Cells
+
+| **Element** | **Meets Accessibility** | **Guidelines Written** |
+| --- | --- | --- |
+| Data Management (CRUD) |  |  |
+| Downloads |  |  |
+| Search |  |  |
+| Send Data Out |  |  |
+| Upload |  |  |
+
+---
+
+Use the tables below to check on the status of all elements in the design system and quickly jump to their respective documentation.
+
+Updated: **January 24, 2025**
+
+|  | Not Started |
+| --- | --- |
+|  | Work Happening Currently |
+|  | Some Variants Available |
+|  | Ready to Use |
+|  | Documentation Being Updated |
+
+### Bases
+
+| **Element** | **Figma Style** | **In Codebase** | **Documentation Written** |
+| --- | --- | --- | --- |
+| Borders | - |  |  |
+| Colors |  |  |  |
+| Corners | - |  |  |
+| Drop Shadows |  |  |  |
+| Icons |  |  |  |
+| Responsive Design | - |  |  |
+| Spacing |  |  |  |
+| Theming |  |  |  |
+| Typography |  |  |  |
+
+### Genes
+
+| **Element** | **Figma Component** | **In Codebase** | **Meets Accessibility** | **Documentation Written** |
+| --- | --- | --- | --- | --- |
+| Banner |  |  |  |  |
+| Buttons |  |  |  |  |
+| Control Inputs |  |  |  |  |
+| Dropdown Input |  |  |  |  |
+| Field Inputs |  |  |  |  |
+| Intent |  |  |  |  |
+| Link |  |  |  |  |
+| Lists |  |  |  |  |
+| Loading Indicators |  |  |  |  |
+| Segmented Control |  |  |  |  |
+| Tabs |  |  |  |  |
+| Tags |  |  |  |  |
+| Tooltips |  |  |  |  |
+
+### DNA
+
+| **Element** | **Figma Component** | **In Codebase** | **Meets Accessibility** | **Documentation Written** |
+| --- | --- | --- | --- | --- |
+| Accordion |  |  |  |  |
+| Callout |  |  |  |  |
+| Data Visualizations |  |  |  |  |
+| Dialog |  |  |  |  |
+| Dropdown Menu |  |  |  |  |
+| Filters | - |  |  |  |
+| Loading States |  |  |  |  |
+| Navigation |  |  |  |  |
+| Notification |  |  |  |  |
+| Panel |  |  |  |  |
+| Table |  |  |  |  |
+
+### Cells
+
+| **Element** | **Meets Accessibility** | **Documentation Written** |
+| --- | --- | --- |
+| Data Management (CRUD) |  |  |
+| Downloads |  |  |
+| Search |  |  |
+| Send Data Out |  |  |
+| Upload |  |  |
 

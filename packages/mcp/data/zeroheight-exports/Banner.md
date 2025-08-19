@@ -1,17 +1,3 @@
----
-title: "Banner"
-id: 7353073
-uid: "625266"
-slug: "625266-banner"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/625266-banner"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:31:05.179Z"
-updated_at: "2025-07-07T20:31:05.376Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Banner
 
 Banners are used to communicate product status updates to users, allowing the product teams to provide important information to their users.
@@ -25,7 +11,7 @@ Banners are used to communicate product status updates to users, allowing the pr
 
 ### Banner Variants
 
-Banners communicate product status updates such as system maintenance, new features, known product bugs or issues. etc. and should not be used to respond to actions the user has taken within the product; use a [Callout](https://sds.czi.design/009eaf17b/p/72e266) or [Notification](https://sds.czi.design/009eaf17b/p/56981d) for these purposes.
+Banners communicate product status updates such as system maintenance, new features, known product bugs or issues. etc. and should not be used to respond to actions the user has taken within the product; use a Callout or Notification for these purposes.
 
 There are two Banner variants: a primary Banner if only one Banner is needed and a secondary Banner if two or more Banners need to be shown at one time. This allows multiple Banners to be stacked together while maintaining the ability to differentiate between them.
 
@@ -39,7 +25,7 @@ Banners span the full width of the page.
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=banner--default)
+Default
 
 ---
 
@@ -47,7 +33,7 @@ Interact with the live instance below and adjust the available props to better c
 
 Use Banner – Primary in instances where only one Banner will be used on the page. If using multiple, it should be the first or top Banner used, followed by the secondary variant. Continue alternating variants for as many Banners as are needed. This ensures the Banners can be differentiated without the need for space or divider lines between them.
 
-If additional context or information is needed beyond the space available on the Banner, it is recommended that a [Link](https://sds.czi.design/009eaf17b/p/78d741) to an additional page with this information is included on the Banner which can be inserted using the optional content slot.
+If additional context or information is needed beyond the space available on the Banner, it is recommended that a Link to an additional page with this information is included on the Banner which can be inserted using the optional content slot.
 
 When the information being communicated on the Banner is intended to remain persistent on the screen and is not manually dismissible by the user, use a persistent Banner. To allow the user to manually dismiss the Banner, use a dismissible Banner.
 
@@ -60,7 +46,7 @@ When the information being communicated on the Banner is intended to remain pers
 
 Use only when accompanied by the primary variant. If using multiple, Banner – Secondary should be the second Banner used, followed by the primary variant. Continue alternating variants for as many Banners as are needed. This ensures the Banners can be differentiated without the need for space or divider lines between them.
 
-If additional context or information is needed beyond the space available on the Banner, it is recommended that a [Link](https://sds.czi.design/009eaf17b/p/78d741) to an additional page with this information is included on the Banner which can be inserted using the optional content slot.
+If additional context or information is needed beyond the space available on the Banner, it is recommended that a Link to an additional page with this information is included on the Banner which can be inserted using the optional content slot.
 
 When the information being communicated on the Banner is intended to remain persistent on the screen and is not manually dismissible by the user, use a persistent Banner. To allow the user to manually dismiss the Banner, use a dismissible Banner.
 
@@ -99,7 +85,7 @@ Each intent is demonstrated below using the Dismissible variant for reference. R
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Banner/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 

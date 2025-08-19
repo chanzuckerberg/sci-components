@@ -1,17 +1,3 @@
----
-title: "Content Card"
-id: 7353044
-uid: "006dbc"
-slug: "006dbc-content-card"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/006dbc-content-card"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:52.009Z"
-updated_at: "2025-07-07T20:30:52.394Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Content Card
 
 Content Cards are used throughout the UI to present information in a visually organized format that highlights key information or details in a way that is scannable and easy to digest.
@@ -25,7 +11,7 @@ Content Cards are used throughout the UI to present information in a visually or
 
 ### Content Card Variants
 
-Content Cards come in two different variants: Narrow and Wide. When viewed on [narrow screens](https://sds.czi.design/009eaf17b/p/071935), such as a mobile device, the Narrow variant is automatically displayed. Teams can decide how many cards they wish to arrange horizontally and / or vertically on a page.
+Content Cards come in two different variants: Narrow and Wide. When viewed on narrow screens, such as a mobile device, the Narrow variant is automatically displayed. Teams can decide how many cards they wish to arrange horizontally and / or vertically on a page.
 
 Teams can individually control each element on Content Card including having two slots (one next to the Title text and one in the body of the card) that can be filled with whatever content is needed, providing maximum flexibility and serving a wide range of use cases.
 
@@ -39,13 +25,13 @@ Interact with the live instance below and adjust the available props to better c
 
 ### Content Card – Wide
 
-Content Card – Wide has the text and body content arranged horizontally beside the visual element and is best used by itself or beside one other Content Card; if more than two Content Cards need to be displayed horizontally beside each other, use the [Narrow](https://sds.czi.design/009eaf17b/v/0/p/006dbc-content-card/t/page-72e266-77693596-33affd-18) variant. When the width of the container the Content Card is placed within is reduced to less than 600px, the Wide variant will automatically convert to a Narrow variant.
+Content Card – Wide has the text and body content arranged horizontally beside the visual element and is best used by itself or beside one other Content Card; if more than two Content Cards need to be displayed horizontally beside each other, use the Narrow variant. When the width of the container the Content Card is placed within is reduced to less than 600px, the Wide variant will automatically convert to a Narrow variant.
 
 All text elements (overline text, title text, subtitle text, metadata text, body text) are optional and any combination of these elements can be used as teams see necessary.
 
-The visual element on the Content Card can be an image, an [icon](https://sds.czi.design/009eaf17b/p/529e08), or not used at all. When displaying an image, teams set the width of the image in pixels and its height will automatically adjust as needed based on the overall space available to the Content Card on the page. The image can either be displayed with padding around it or extended to the edge of the Content Card's container. The image can be positioned on the left or right side of the Content Card.
+The visual element on the Content Card can be an image, an icon, or not used at all. When displaying an image, teams set the width of the image in pixels and its height will automatically adjust as needed based on the overall space available to the Content Card on the page. The image can either be displayed with padding around it or extended to the edge of the Content Card's container. The image can be positioned on the left or right side of the Content Card.
 
-Teams can choose whether to display the Content Card with a bounding box, with a decorative border, as well as determine the position of and how many [Buttons](https://sds.czi.design/009eaf17b/p/47778c), if any, are included. For Content Cards with one or zero Buttons, the Content Card itself can function as a Button.
+Teams can choose whether to display the Content Card with a bounding box, with a decorative border, as well as determine the position of and how many Buttons, if any, are included. For Content Cards with one or zero Buttons, the Content Card itself can function as a Button.
 
 #### Visual Element Options
 
@@ -85,13 +71,13 @@ The following states are used regardless of whether there is a visual element in
 
 ### Content Card – Narrow
 
-Content Card – Narrow has the text and body content arranged vertically below the visual element and is best used beside two or more other Content Cards. When viewed on [narrow screens](https://sds.czi.design/009eaf17b/p/071935), such as a mobile device, any horizontally arranged Content Cards will wrap to stack in a single column.
+Content Card – Narrow has the text and body content arranged vertically below the visual element and is best used beside two or more other Content Cards. When viewed on narrow screens, such as a mobile device, any horizontally arranged Content Cards will wrap to stack in a single column.
 
 All text elements (overline text, title text, subtitle text, metadata text, body text) are optional and any combination of these elements can be used as teams see necessary.
 
 The Narrow variant can either use an image as a visual element or not contain a visual element at all. Teams set the height of the image in pixels and its width will automatically adjust as needed based on the overall space available to the Content Card on the page. The image can either be displayed with padding around it or extended to the edge of the Content Card's container.
 
-Teams can choose whether to display the Content Card with a bounding box, with a decorative border, as well as determine the position of and how many [Buttons](https://sds.czi.design/009eaf17b/p/47778c), if any, are included. For Content Cards with one or zero Buttons, the Content Card itself can function as a Button.
+Teams can choose whether to display the Content Card with a bounding box, with a decorative border, as well as determine the position of and how many Buttons, if any, are included. For Content Cards with one or zero Buttons, the Content Card itself can function as a Button.
 
 #### Visual Element Options
 
@@ -139,11 +125,11 @@ These rules establish how much margin should exist between and around elements.
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/ContentCard).
+The component's source code in the SDS codebase can be found here.
 
 ### MUI Documentation
 
-Documentation for the underlying MUI `Card` component can be found [here](https://mui.com/material-ui/react-card/).
+Documentation for the underlying MUI `Card` component can be found here.
 
 ### Props
 

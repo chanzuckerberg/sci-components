@@ -1,17 +1,3 @@
----
-title: "Dropdown Menu"
-id: 7353052
-uid: "42bdf2"
-slug: "42bdf2-dropdown-menu"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/42bdf2-dropdown-menu"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:55.625Z"
-updated_at: "2025-07-07T20:30:56.465Z"
-status_id: "not_applicable"
-status_name: "SDS"
----
-
 # Dropdown Menu
 
 Dropdown Menus are coupled with Dropdown Inputs, Dropdown Buttons, and in some cases Icon Buttons whenever those elements present the user with options to choose from or selections to make.
@@ -20,7 +6,7 @@ Dropdown Menus are coupled with Dropdown Inputs, Dropdown Buttons, and in some c
 
 ## Dropdown Menu Components
 
-| Dropdown Menus offer the user options to adjust or select. The Menu Items found within the Dropdown Menu have multiple format options.  Dropdown Menus can be configured to include a [Search Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/70a4ba), have their Menu Items separated out into different sections or groupings, have a built-in title, or any combination of these features.  Dropdown Menus require a trigger element, such as a [Dropdown Input](https://sds.czi.design/009eaf17b/p/1004b1), [Dropdown Button](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/55921a), or [Icon Button](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73), to open the menu.  Dropdown is a component created as a combination of Dropdown Menu and a trigger element to help make Dropdown Menu easier for developers to implement. |   | **Jump to component:** [Dropdown](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menu/t/17ef2e) [Dropdown Menu](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/750af1) [Menu Item](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/858a2b)  |
+| Dropdown Menus offer the user options to adjust or select. The Menu Items found within the Dropdown Menu have multiple format options.  Dropdown Menus can be configured to include a Search Input, have their Menu Items separated out into different sections or groupings, have a built-in title, or any combination of these features.  Dropdown Menus require a trigger element, such as a Dropdown Input, Dropdown Button, or Icon Button, to open the menu.  Dropdown is a component created as a combination of Dropdown Menu and a trigger element to help make Dropdown Menu easier for developers to implement. |   | **Jump to component:** Dropdown Dropdown Menu Menu Item  |
 | --- | --- | --- |
 
 ### Visual Preview
@@ -34,7 +20,7 @@ Dropdown Menus are coupled with Dropdown Inputs, Dropdown Buttons, and in some c
 
 ### Overview
 
-Dropdown is a component that exists only in the codebase (not in Figma) that is a combination of [Dropdown Menu](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/750af1) and a trigger element to help make Dropdown Menu easier for developers to implement. Trigger elements can be [Dropdown Inputs](https://sds.czi.design/009eaf17b/p/1004b1), [Dropdown Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/55921a), or [Icon Buttons](https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73).
+Dropdown is a component that exists only in the codebase (not in Figma) that is a combination of Dropdown Menu and a trigger element to help make Dropdown Menu easier for developers to implement. Trigger elements can be Dropdown Inputs, Dropdown Buttons, or Icon Buttons.
 
 Dropdown bundles Dropdown Input with Dropdown Menu into a single component with all of the necessary React handlers set up to speed up the implementation process. Since there is no equivalent component in Figma, designers must manually combine Dropdown Menu with their chosen trigger element.
 
@@ -44,7 +30,7 @@ Dropdown bundles Dropdown Input with Dropdown Menu into a single component with 
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=dropdowns-dropdown--default)
+Default
 
 ---
 
@@ -61,13 +47,13 @@ Interact with the live instance below and adjust the available props to better c
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=dropdowns-dropdownmenu--default)
+Default
 
 ---
 
 ### Dropdown Menu – Single-select
 
-Use Single-select when users are only able to select one item from the menu. They can be configured to have their [Menu Items](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/858a2b) separated out into different sections or groupings, have a built-in title at the top of the menu, include a [Search Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/70a4ba) allowing users to easily find specific Menu Items, or a combination of all three.
+Use Single-select when users are only able to select one item from the menu. They can be configured to have their Menu Items separated out into different sections or groupings, have a built-in title at the top of the menu, include a Search Input allowing users to easily find specific Menu Items, or a combination of all three.
 
 | Default | Default + Title | Default + Search | Default + Sections |
 | --- | --- | --- | --- |
@@ -76,7 +62,7 @@ Use Single-select when users are only able to select one item from the menu. The
 
 ### Dropdown Menu – Multi-select 
 
-Use Multi-select when users are able to select one or more items from the menu. They can be configured to have their [Menu Items](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/858a2b) separated out into different sections or groupings, have a built-in title at the top of the menu, include a [Search Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/70a4ba) allowing users to easily find specific Menu Items, include confirmation and cancel Buttons at the bottom of the menu, or a combination of all four.
+Use Multi-select when users are able to select one or more items from the menu. They can be configured to have their Menu Items separated out into different sections or groupings, have a built-in title at the top of the menu, include a Search Input allowing users to easily find specific Menu Items, include confirmation and cancel Buttons at the bottom of the menu, or a combination of all four.
 
 | Default | Default + Title | Default + Search | Default + Sections | Default + Buttons |
 | --- | --- | --- | --- | --- |
@@ -85,9 +71,9 @@ Use Multi-select when users are able to select one or more items from the menu. 
 
 ### Dropdown Menu – Multi-column
 
-Use Multi-column when there is a need to separate [Menu Items](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/858a2b) across multiple columns. Columns can be dependent or independent of each other. With dependent columns, Menu Item selections made in one column will affect the Menu Items in the others, such as reducing the number of Menu Items visible in neighboring columns; use [Indeterminate Menu Item](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menu/t/04a34d5f66)[s](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menu/t/04a34d5f66) when some, but not all sub-options have been made in a subsequent column. With independent columns, Menu Item selections made in one column will have no effect on the Menu Items in other columns. 
+Use Multi-column when there is a need to separate Menu Items across multiple columns. Columns can be dependent or independent of each other. With dependent columns, Menu Item selections made in one column will affect the Menu Items in the others, such as reducing the number of Menu Items visible in neighboring columns; use Indeterminate Menu Items when some, but not all sub-options have been made in a subsequent column. With independent columns, Menu Item selections made in one column will have no effect on the Menu Items in other columns. 
 
-The same configurations are available in the Multi-column variant as the Single-column including a built-in title at the top of the menu, a [Search Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/70a4ba), section names at the top of each column, confirmation and cancel Buttons at the bottom of the menu, or a combination of all four. There can only be one section per column. Additionally, a [Chevron](https://sds.czi.design/009eaf17b/p/529e08-icons/t/75ff38) icon can be placed between columns to help communicate the relationship between them.
+The same configurations are available in the Multi-column variant as the Single-column including a built-in title at the top of the menu, a Search Input, section names at the top of each column, confirmation and cancel Buttons at the bottom of the menu, or a combination of all four. There can only be one section per column. Additionally, a Chevron icon can be placed between columns to help communicate the relationship between them.
 
 Multi-column Dropdown Menus can be Single- or Multi-select.
 
@@ -115,7 +101,7 @@ These rules establish how much margin should exist between and around elements.
 
 Interact with the live instance below and adjust the available props to better conceptualize how it will appear in product:
 
-[Default](https://chanzuckerberg.github.io/sci-components/iframe.html?id=dropdowns-menuitem--default)
+Default
 
 ---
 
@@ -157,7 +143,7 @@ All Menu Item variants can be optionally displayed with an icon.
 
 ## Dropdown Menu Components
 
-| `DropdownMenu` offers the user options to adjust or select. The `MenuItems` found within `DropdownMenu` have multiple format options.  `DropdownMenu` can be configured to include `InputSearch`, have their `MenuItems` separated out into different sections or groupings, have a built-in title, or any combination of these features.  `DropdownMenu` requires a trigger element, such as `InputDropdown`, `ButtonDropdown`, or `ButtonIcon`, to open the menu.  `Dropdown` is a component created as a combination of `DropdownMenu` and a trigger element to help make `DropdownMenu` easier for developers to implement. |   | **Jump to component:** [DropdownMenu](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/909e01) [MenuItem](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/391599) [Dropdown](https://sds.czi.design/009eaf17b/v/0/p/42bdf2-dropdown-menus/t/190c06) |
+| `DropdownMenu` offers the user options to adjust or select. The `MenuItems` found within `DropdownMenu` have multiple format options.  `DropdownMenu` can be configured to include `InputSearch`, have their `MenuItems` separated out into different sections or groupings, have a built-in title, or any combination of these features.  `DropdownMenu` requires a trigger element, such as `InputDropdown`, `ButtonDropdown`, or `ButtonIcon`, to open the menu.  `Dropdown` is a component created as a combination of `DropdownMenu` and a trigger element to help make `DropdownMenu` easier for developers to implement. |   | **Jump to component:** DropdownMenu MenuItem Dropdown |
 | --- | --- | --- |
 
 ### Visual Preview
@@ -170,7 +156,7 @@ All Menu Item variants can be optionally displayed with an icon.
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Dropdown/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
@@ -178,9 +164,9 @@ SDS's `Dropdown` component is a combination of two other SDS components: `Dropdo
 
 These are a few of the most relevant ways in which SDS's `DropdownMenu` (which is used within `Dropdown`) integrates with`Autocomplete` and other MUI components:
 
-* SDS `Dropdown` uses [MUI ](https://mui.com/material-ui/react-autocomplete/)`[Autocomplete](https://mui.com/material-ui/react-autocomplete/)` under the hood, so all props passed to `DropdownMenu` are ultimately passed to the Autocomplete component as well. This means MUI's `Autocomplete` props can be used on SDS's `DropdownMenu` if needed.
-* SDS `Dropdown` uses [MUI ](https://mui.com/material-ui/react-popper/)`[Popper](https://mui.com/material-ui/react-popper/)`. A custom `Popper` component can be passed via `[props.PopperComponent](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27f543)` and/or `[props.PopperBaseProps](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)` to control the popper component.
-* Similarly, SDS `Dropdown` uses [MUI ](https://mui.com/material-ui/react-paper/)`[Paper](https://mui.com/material-ui/react-paper/)`. A custom `Paper` component can be passed via `props.PaperComponent` to enable custom styling.
+* SDS `Dropdown` uses MUI `Autocomplete` under the hood, so all props passed to `DropdownMenu` are ultimately passed to the Autocomplete component as well. This means MUI's `Autocomplete` props can be used on SDS's `DropdownMenu` if needed.
+* SDS `Dropdown` uses MUI `Popper`. A custom `Popper` component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
+* Similarly, SDS `Dropdown` uses MUI `Paper`. A custom `Paper` component can be passed via `props.PaperComponent` to enable custom styling.
 
 ### Props
 
@@ -557,19 +543,19 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/DropdownMenu/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
 Both SDS's `DropdownMenu` and MUI's `Autocomplete` have huge API surfaces, so it is not practical to list every way in which they differ (in part because the list would likely become obsolete quickly!). In summary, these are a few of the most relevant ways in which `DropdownMenu` integrates with `Autocomplete` and other MUI components:
 
-* SDS `DropdownMenu` uses [MUI ](https://mui.com/material-ui/react-autocomplete/)`[Autocomplete](https://mui.com/material-ui/react-autocomplete/)` under the hood, so all props passed to `DropdownMenu` are ultimately passed to the `Autocomplete` component as well. This means MUI's `Autocomplete` props can be used on SDS's `DropdownMenu` if needed.
-* SDS `DropdownMenu` uses [MUI ](https://mui.com/material-ui/react-popper/)`[Popper](https://mui.com/material-ui/react-popper/)`. A custom `Popper` component can be passed via `[props.PopperComponent](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27f543)` and/or `[props.PopperBaseProps](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)` to control the popper component.
-* Similarly, SDS `DropdownMenu` uses [MUI ](https://mui.com/material-ui/react-paper/)`[Paper](https://mui.com/material-ui/react-paper/)`. A custom `Paper` component can be passed via `props.PaperComponent` to enable custom styling.
+* SDS `DropdownMenu` uses MUI `Autocomplete` under the hood, so all props passed to `DropdownMenu` are ultimately passed to the `Autocomplete` component as well. This means MUI's `Autocomplete` props can be used on SDS's `DropdownMenu` if needed.
+* SDS `DropdownMenu` uses MUI `Popper`. A custom `Popper` component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
+* Similarly, SDS `DropdownMenu` uses MUI `Paper`. A custom `Paper` component can be passed via `props.PaperComponent` to enable custom styling.
 
 ### MUI Documentation
 
-Documentation for the underlying MUI `Autocomplete` component can be found [here](https://mui.com/material-ui/react-autocomplete/).
+Documentation for the underlying MUI `Autocomplete` component can be found here.
 
 ### Props
 
@@ -577,21 +563,21 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 | **Name** | **Type** | **Default** | **Description** |
 | --- | --- | --- | --- |
-| `anchorEl` | `HTML element` `| object` `| func` | `null` | Tells the DropdownMenu which element to use as an anchor; see more in the [MUI ](https://mui.com/base-ui/react-popper/components-api/#popper-props)`[Popper](https://mui.com/base-ui/react-popper/components-api/#popper-props)`[ component's API](https://mui.com/base-ui/react-popper/components-api/#popper-props) |
-| `clickAwayListenerProps` | `func` | `-`  | Passes props to the [MUI ](https://mui.com/base-ui/react-click-away-listener/components-api/)`[ClickAwayListener](https://mui.com/base-ui/react-click-away-listener/components-api/)` |
+| `anchorEl` | `HTML element` `| object` `| func` | `null` | Tells the DropdownMenu which element to use as an anchor; see more in the MUI `Popper` component's API |
+| `clickAwayListenerProps` | `func` | `-`  | Passes props to the MUI `ClickAwayListener` |
 | `groupBy` | `func` | `-` | Groups menu items according to their assigned `section` |
-| `isOptionEqualToValue` | `func` | `(option, val): boolean {`     `return option.name === val.name;`   `}` | Changes how a selected value is compared against the available options; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the [DropdownMenu Component Recipes section](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/3864ef)  |
+| `isOptionEqualToValue` | `func` | `(option, val): boolean {`     `return option.name === val.name;`   `}` | Changes how a selected value is compared against the available options; see more in the MUI Autocomplete API or in the DropdownMenu Component Recipes section  |
 | `keepSearchOnSelect` | `bool` | `true` | Maintains a search input when a user selects a menu item (only if multiple selections are allowed via the `multiple` prop; otherwise the dropdown closes upon selection) |
-| `multiple` | `bool` | `false` | Allows user to select multiple menu items; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) |
-| `noOptionsText` | `string` | `"No options"` | Sets the text that displays if there are no matching search results; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) |
+| `multiple` | `bool` | `false` | Allows user to select multiple menu items; see more in the MUI Autocomplete API |
+| `noOptionsText` | `string` | `"No options"` | Sets the text that displays if there are no matching search results; see more in the MUI Autocomplete API |
 | `onClickAway` | `func` | `-` | Sets what happens when a user clicks outside of the DropdownMenu |
-| `onInputChange` | `func` | `noop` | Specifies what happens when a new selection is made; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the [DropdownMenu Component Recipes section](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27791b) |
-| `PopperBaseProps` |   | `-` | Passes custom props to the MUI`Popper` component, which is included as part of the SDS`DropdownMenu` component. Learn more in the [Popper documentation](https://mui.com/material-ui/react-popper/), and see all the props available to pass to it on the [Popper API page](https://mui.com/material-ui/api/popper/). See an example of `PopperBaseProps`  in use in the [DropdownMenu Component Recipes section](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a) |
-| `PopperComponent` | `func` | SDS's `StyledPopper`; see sci-components/packages/components/src/core/DropdownMenu/style.ts, ~ line 202 | The [MUI  ](https://mui.com/material-ui/react-popper/)`[Popper](https://mui.com/material-ui/react-popper/)`[ component](https://mui.com/material-ui/react-popper/) is included as part of the SDS `DropdownMenu` component, and its styles can be changed or added to |
+| `onInputChange` | `func` | `noop` | Specifies what happens when a new selection is made; see more in the MUI Autocomplete API or in the DropdownMenu Component Recipes section |
+| `PopperBaseProps` |   | `-` | Passes custom props to the MUI`Popper` component, which is included as part of the SDS`DropdownMenu` component. Learn more in the Popper documentation, and see all the props available to pass to it on the Popper API page. See an example of `PopperBaseProps`  in use in the DropdownMenu Component Recipes section |
+| `PopperComponent` | `func` | SDS's `StyledPopper`; see sci-components/packages/components/src/core/DropdownMenu/style.ts, ~ line 202 | The MUI  `Popper` component is included as part of the SDS `DropdownMenu` component, and its styles can be changed or added to |
 | `search` | `bool` | `f``alse` | Provides a search bar at the top of the menu from which users can narrow the list of menu items |
 | `title` | `string` | `-` | Sets a heading for the menu |
 
-There are many more props that can be used with the `DropdownMenu`  component, via those available to [MUI's ](https://mui.com/material-ui/api/autocomplete/#props)`[Autocomplete](https://mui.com/material-ui/api/autocomplete/#props)`[  component](https://mui.com/material-ui/api/autocomplete/#props). 
+There are many more props that can be used with the `DropdownMenu`  component, via those available to MUI's `Autocomplete`  component. 
 
 >**Note for use with SDS** **`Table`** **and other components:**
 >
@@ -603,7 +589,7 @@ There are many more props that can be used with the `DropdownMenu`  component, v
 
 This example has the minimum props and menu item metadata needed for the `DropdownMenu`.  
 
-Menu item metadata is stored as an array of objects (one per menu item) passed to the `DropdownMenu` component’s `options` prop.  At minimum each `MenuItem` needs a `name` property, which is the text it displays. `MenuItems` can display more metadata, though; see the “[DropdownMenu with grouped sections](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/1278a9)” and “[DropdownMenu with menu items that have count, icon, and / or details](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/34e282)” examples below. Alternatively, a custom component can be displayed instead of a `MenuItem` component; see the “[DropdownMenu with components in place of menu items](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/059be9)” example below.
+Menu item metadata is stored as an array of objects (one per menu item) passed to the `DropdownMenu` component’s `options` prop.  At minimum each `MenuItem` needs a `name` property, which is the text it displays. `MenuItems` can display more metadata, though; see the “DropdownMenu with grouped sections” and “DropdownMenu with menu items that have count, icon, and / or details” examples below. Alternatively, a custom component can be displayed instead of a `MenuItem` component; see the “DropdownMenu with components in place of menu items” example below.
 
 The minimum width for the `DropdownMenu` is 225px, but longer text will automatically widen the `DropdownMenu` up to the length of the text provided. 
 
@@ -972,7 +958,7 @@ An `InputSearch` component can be incorporated into the `DropdownMenu` component
 
 The search functions by filtering out non-matches as the user types, leaving only menu items with text that match the input. If no matches are found, the `DropdownMenu` displays “No options” below the `InputSearch` by default. This text can be changed via the `noOptionsText` prop as shown below.
 
-By default, the search’s input text is maintained even when a user selects a `MenuItem` (if multiple selections are allowed; otherwise the dropdown closes upon selection). This way users can select multiple `MenuItems` that match the searched term without needing to re-enter it each time. However, this can be changed so that the search input clears upon making a selection; see the “[Dropdown with search and multi-select; does ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/5194ca)*[not](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/5194ca)*[ maintain searched query upon selection of a menu item](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/5194ca)” example below.
+By default, the search’s input text is maintained even when a user selects a `MenuItem` (if multiple selections are allowed; otherwise the dropdown closes upon selection). This way users can select multiple `MenuItems` that match the searched term without needing to re-enter it each time. However, this can be changed so that the search input clears upon making a selection; see the “Dropdown with search and multi-select; does *not* maintain searched query upon selection of a menu item” example below.
 
 1. In the search box, type in "fruit"
 2. `DropdownMenu` will display "Fruit: Apple" and "Fruit: Orange"
@@ -1338,7 +1324,7 @@ To see how this works:
 3. Select "Fruit: Apple"
 4. Note that the search text is now cleared and all dropdown items reappear
 
-Compare this to the default behavior in the "[DropdownMenu with search](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/177008/t/30ea83)" example above, or change the `keepSearchOnSelect`  prop in the example below to `true`.
+Compare this to the default behavior in the "DropdownMenu with search" example above, or change the `keepSearchOnSelect`  prop in the example below to `true`.
 
 **/styles.css**
 
@@ -1517,7 +1503,7 @@ root.render(
 
 `MenuItems` can be displayed in groups with a label.
 
-This requires passing `DropdownMenu` the `groupBy` prop to group options under the returned string. The `groupBy` value is also used as the text for group headings when `[MUI Autocomplete renderGroup](https://mui.com/material-ui/api/autocomplete/#props)` is not provided. For example:
+This requires passing `DropdownMenu` the `groupBy` prop to group options under the returned string. The `groupBy` value is also used as the text for group headings when `MUI Autocomplete renderGroup` is not provided. For example:
 
 `groupBy={(option) => {`
 
@@ -1533,7 +1519,7 @@ This requires passing `DropdownMenu` the `groupBy` prop to group options under t
 
 This `groupBy` prop must be provided or the groups will not render, even if all menu items have `section` properties (see below).
 
->**Warning:** To avoid duplicate headers, please make sure that the options are also sorted with the same dimension that they are grouped by. (See: [Issue](https://github.com/mui/material-ui/issues/21967#issuecomment-665006321) and example below)
+>**Warning:** To avoid duplicate headers, please make sure that the options are also sorted with the same dimension that they are grouped by. (See: Issue and example below)
 
 **/styles.css**
 
@@ -1951,7 +1937,7 @@ Any existing SDS component (must be imported) can be provided to the menu item's
 
 These custom menu items can optionally be assigned metadata just like regular menu items, including `section`, `count`, and `sdsIcon` and `sdsIconProps`.
 
->**Warning:** Currently, there is a bug preventing the `details` property from rendering when used in combination with a custom component in place of a menu item; see issue [#522](https://github.com/chanzuckerberg/sci-components/issues/522) for *details* (pun intended!).
+>**Warning:** Currently, there is a bug preventing the `details` property from rendering when used in combination with a custom component in place of a menu item; see issue #522 for *details* (pun intended!).
 
 **/styles.css**
 
@@ -2183,7 +2169,7 @@ root.render(
 
 ### SDS Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/MenuItem/index.tsx).
+The component's source code in the SDS codebase can be found here.
 
 ### Props
 
@@ -2341,7 +2327,7 @@ root.render(
 
 This example showcases a multi-select `MenuItem` component featuring an SDS `Icon` and a distinct column value.
 
->**SDS Tip:** MenuItem exclusively accepts SDS Icons in `xs` and `s` sizes. To explore a comprehensive list of SDS icons and their available sizes, refer to the [IconBank page](https://chanzuckerberg.github.io/sci-components/?path=/story/icon--icon-bank) within Storybook.
+>**SDS Tip:** MenuItem exclusively accepts SDS Icons in `xs` and `s` sizes. To explore a comprehensive list of SDS icons and their available sizes, refer to the IconBank page within Storybook.
 
 **/styles.css**
 
@@ -2495,14 +2481,14 @@ root.render(
 
 ## DropdownMenu Recipes
 
-| These component recipes show a few of the more complex approaches available for customizing Dropdown Menus.  |   | **Jump to recipe:** [DropdownMenu with customized ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/3864ef)`[isOptionEqualToValue](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/3864ef)` [DropdownMenu with customized ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27791b)`[onChange](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27791b)` [DropdownMenu with custom ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)`[PopperBaseProps](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)` [DropdownMenu with custom ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27f543)`[Popper](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27f543)`[ component](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/27f543) |
+| These component recipes show a few of the more complex approaches available for customizing Dropdown Menus.  |   | **Jump to recipe:** DropdownMenu with customized `isOptionEqualToValue` DropdownMenu with customized `onChange` DropdownMenu with custom `PopperBaseProps` DropdownMenu with custom `Popper` component |
 | --- | --- | --- |
 
 #### **DropdownMenu with customized** **`isOptionEqualToValue`**
 
 The `isOptionEqualToValue` prop changes how a selected value is compared against the available options. By default `option.name === val.name` is used. In the custom example below, the `id` property is used instead of the `name` property.
 
-This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props).
+This is a MUI prop; learn more in the Autocomplete API.
 
 **/styles.css**
 
@@ -2689,7 +2675,7 @@ The optional `onChange` prop specifies what happens when a new selection is made
 
 In the example below, `onChange` has been modified such that making a new selection logs the `value`  and `reason` to the console.
 
-This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props).
+This is a MUI prop; learn more in the Autocomplete API.
 
 **/styles.css**
 
@@ -2881,9 +2867,9 @@ root.render(
 
 `PopperBaseProps` is an SDS-specific prop made for passing custom props to the `Popper` component, which is included as part of the `DropdownMenu` component. 
 
-The `Popper` component is part of MUI; learn more in the [Popper documentation](https://mui.com/material-ui/api/popper/), and see all the props available to pass to it on the [Popper API page](https://mui.com/material-ui/api/popper/).
+The `Popper` component is part of MUI; learn more in the Popper documentation, and see all the props available to pass to it on the Popper API page.
 
-The example below passes the Popper a `className` prop to make some style changes (see the styles.css tab in the code window below) and additionally uses the `sx` prop to make more style changes (learn more on the [MUI ](https://mui.com/system/getting-started/the-sx-prop/)`[sx](https://mui.com/system/getting-started/the-sx-prop/)`[  documentation page](https://mui.com/system/getting-started/the-sx-prop/)).
+The example below passes the Popper a `className` prop to make some style changes (see the styles.css tab in the code window below) and additionally uses the `sx` prop to make more style changes (learn more on the MUI `sx`  documentation page).
 
 **/styles.css**
 
@@ -3064,7 +3050,7 @@ root.render(
 
 #### **DropdownMenu with custom Popper component**
 
-In addition to modifying the `Popper`'s  styles [via ](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)`[PopperBaseProps](https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menus/b/263683/t/92929a)`,  the styles for the `Popper`  component can be overwritten more directly with `styled()`.  
+In addition to modifying the `Popper`'s  styles via `PopperBaseProps`,  the styles for the `Popper`  component can be overwritten more directly with `styled()`.  
 
 To get all the default SDS styles used for `Popper`,  first copy them into a custom-styled `Popper`  (from within sci-components/packages/components/src/core/DropdownMenu/style.ts file). Then replace and / or follow up those styles with custom styles. The example below includes comments for each of these steps within `CustomPopper`.
 

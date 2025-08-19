@@ -1,15 +1,3 @@
----
-title: "Intent"
-id: 7353064
-uid: "88e8a7"
-slug: "88e8a7-intent"
-url: "https://sds.czi.design/009eaf17b/v/latest/p/88e8a7-intent"
-hidden: false
-locked: false
-created_at: "2025-07-07T20:30:57.459Z"
-updated_at: "2025-07-07T20:30:57.536Z"
----
-
 # Intent
 
 Intent components provide additional context to users communicating as to why a negative, notice, or positive intent may have been triggered.
@@ -21,7 +9,7 @@ Intent components provide additional context to users communicating as to why a 
 |  | In Figma |   |  | Meets Accessibility |   |  | In Code |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Intent Messages can be paired with any Input component ([Checkbox](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/page-548a3d-79060787-161363-5), [Radio](https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/page-548a3d-79065161-161363-40), [Text Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/page-1596f8-79142466-5456ee-41), [Search Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/page-1596f8-79141518-5456ee-6), [Dropdown](https://sds.czi.design/009eaf17b/p/1004b1)[ Input](https://sds.czi.design/009eaf17b/p/1004b1)) to communicate statuses or issues with user-supplied responses. There are three intents that Intent Message can display—negative, notice, and positive. Each Intent type has a default icon that accompanies it, though these defaults can be swapped out for any icon desired.
+Intent Messages can be paired with any Input component (Checkbox, Radio, Text Input, Search Input, Dropdown Input) to communicate statuses or issues with user-supplied responses. There are three intents that Intent Message can display—negative, notice, and positive. Each Intent type has a default icon that accompanies it, though these defaults can be swapped out for any icon desired.
 
 Intent messages can be stacked, e.g., different message types can be combined meaning, for example, a user’s response to an input could theoretically have both negative and notice messages accompanying it.
 
@@ -35,7 +23,7 @@ The Intent Indicator is a standalone component within Figma. It has an empty slo
 
 As mentioned above, Intent Message is not a standalone component within Figma, but is instead built into each Input component individually. If needed multiple Intent Message types can be stacked to communicate more than one intent per Input.
 
-The example below shows Intent Message displayed in conjunction with [Text Input](https://sds.czi.design/009eaf17b/v/0/p/1596f8-field-inputs/t/page-1596f8-79142466-5456ee-41) for reference. See the documentation for each Input component for examples specific to that Input type.
+The example below shows Intent Message displayed in conjunction with Text Input for reference. See the documentation for each Input component for examples specific to that Input type.
 
 | Negative | Negative + Notice | Notice | Notice + Positive | Positive |
 | --- | --- | --- | --- | --- |
