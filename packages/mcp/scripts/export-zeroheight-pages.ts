@@ -337,6 +337,14 @@ class ZeroheightExporter {
   private async exportPageGroup(pageGroup: PageGroup): Promise<{ success: boolean; fileName?: string; error?: string }> {
     try {
       const fileName = `${pageGroup.baseName}.md`;
+      
+      // Hardcoded fix: Skip Tables.md if Table.md already exists (to avoid duplicate content)
+      // As of 2025-08-19, Tables and Table had identical/duplicate content in Zeroheight
+      if (fileName === 'Tables.md' && this.pageGroups.has('Table')) {
+        console.log(`⚠️  Skipping ${fileName} to avoid duplication with Table.md`);
+        return { success: false, error: 'Skipped to avoid duplication' };
+      }
+      
       const filePath = path.join(dirname, '../', this.config.outputDir, fileName);
       
       // Generate combined content
