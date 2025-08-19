@@ -23,6 +23,7 @@
     "generate:components-list": "tsx scripts/generate-component-list.ts",
     "generate:component-props": "tsx scripts/generate-component-props.ts",
     "generate:component-props-storybook": "tsx scripts/generate-component-props-from-storybook.ts",
+    "generate:zeroheight-export": "tsx scripts/export-zeroheight-pages.ts",
     "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props && yarn generate:component-props-storybook",
     "prebuild": "yarn generate:all",
     "build": "yarn prebuild && tsup && chmod 755 dist/stdio.js",
