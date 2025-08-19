@@ -33,7 +33,7 @@ node scripts/evaluate-code/index.cjs path/to/component.tsx
 yarn evaluate:batch path/to/directory
 
 # Direct node execution
-node scripts/evaluate-code.js --batch path/to/directory
+node scripts/evaluate-code/index.cjs --batch path/to/directory
 ```
 
 ## Output
