@@ -23,7 +23,7 @@ The evaluation script checks for:
 yarn evaluate:code path/to/component.tsx
 
 # Direct node execution
-node scripts/evaluate-code.js path/to/component.tsx
+node scripts/evaluate-code/index.cjs path/to/component.tsx
 ```
 
 ### Batch Evaluation
