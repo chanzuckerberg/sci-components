@@ -142,6 +142,7 @@ export const StyledCardActionArea = styled(Button, {
       flex-direction: ${flexDirection};
       align-items: unset;
       height: 100%;
+      width: 100%;
       padding: 0;
       margin: 0;
       overflow: auto;

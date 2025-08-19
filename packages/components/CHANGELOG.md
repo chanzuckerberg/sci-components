@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.11.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.1...@czi-sds/components@22.11.2) (2025-08-19)
+
+### Bug Fixes
+
+- **contentcard:** fixed Clickable ContentCard hover styles ([#991](https://github.com/chanzuckerberg/sci-components/issues/991)) ([76c9333](https://github.com/chanzuckerberg/sci-components/commit/76c9333ce5a4fa6fdd66e703d76b953e40fdfe98))
+
 ## [22.11.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.0...@czi-sds/components@22.11.1) (2025-08-18)
 
 ### Bug Fixes
