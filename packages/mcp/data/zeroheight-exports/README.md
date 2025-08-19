@@ -1,8 +1,8 @@
 # Exported Zeroheight Pages
 
-Generated on: 2025-08-19T21:49:54.055Z
+Generated on: 2025-08-19T21:56:30.017Z
 Styleguide ID: 66099
-Total files exported: 56
+Total files exported: 55
 Total pages combined: 143
 
 ## Files
@@ -22,7 +22,6 @@ Total pages combined: 143
 - [Dropdown-Menus.md](./Dropdown-Menus.md)
 - [Introduction-to-DNA.md](./Introduction-to-DNA.md)
 - [Accordions.md](./Accordions.md)
-- [Tables.md](./Tables.md)
 - [Filters.md](./Filters.md)
 - [Dialogs.md](./Dialogs.md)
 - [Tags.md](./Tags.md)
