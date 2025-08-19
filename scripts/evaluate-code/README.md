@@ -56,7 +56,7 @@ The script provides:
 
 ## Weighting
 
-- **Compiles (30%)** - Must work
+- **Compiles (25%)** - Must work
 - **Uses SDS (30%)** - Must use design system
 - **Has Imports (20%)** - Proper setup
 - **Lint Passes (15%)** - Code quality
