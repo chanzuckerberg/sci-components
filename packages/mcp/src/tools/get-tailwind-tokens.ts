@@ -1,16 +1,25 @@
-import { readFile } from "fs/promises";
-import { join } from "path";
 import { z } from "zod";
-import { type Tool } from "../lib/types.js";
+import { TailwindTokens, type Tool } from "../lib/types.js";
+import { fetchTailwindTokens } from "../lib/fetch.js";
+import { getTokenGuidance } from "../lib/tailwind-guidance.js";
 
-export const getTailwindTokensTool: Tool = {
+export const getTailwindTokensTool: Tool<{
+  tailwindTokens: TailwindTokens;
+}> = {
   name: "get_tailwind_tokens",
   description:
-    "Get all available Tailwind tokens from the SDS design system. Returns design tokens including colors, typography, spacing, borders, shadows, and other design system values formatted for Tailwind CSS.",
+    "Get all available Tailwind tokens from the SDS design system. Available design tokens include fontFamily, fontSize, fontVariantNumeric, letterSpacing, lineHeight, textDecoration, textTransform, typography, height, width, borderRadius, boxShadow, breakpoints, colors, spacing, and more.",
   async ctx() {
-    return {};
+    try {
+      const tailwindTokens = await fetchTailwindTokens();
+      return { tailwindTokens };
+    } catch (error) {
+      throw new Error(
+        `Failed to initialize tailwind tokens tool: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
+    }
   },
-  exec(server, { name, description }) {
+  exec(server, { ctx, name, description }) {
     server.tool(
       name,
       description,
@@ -41,22 +50,33 @@ export const getTailwindTokensTool: Tool = {
       },
       async ({ category }) => {
         try {
-          const dataPath = join(process.cwd(), "data", "tailwind.json");
-          const fileContent = await readFile(dataPath, "utf-8");
-          const tokens = JSON.parse(fileContent);
+          const tokens = ctx.tailwindTokens;
+          let result: TailwindTokens | TailwindTokens[keyof TailwindTokens];
 
-          let result = tokens;
-          if (category && category !== "all") {
-            result = tokens[category] || {};
+          if (!category || category === "all") {
+            result = tokens;
+          } else {
+            result = tokens[category as keyof TailwindTokens] || {};
           }
 
+          // Build response content
+          const responseContent = [];
+
+          // Add guidance
+          const guidance = getTokenGuidance(category);
+          responseContent.push({
+            type: "text" as const,
+            text: guidance,
+          });
+
+          // Add token data
+          responseContent.push({
+            type: "text" as const,
+            text: JSON.stringify(result, null, 2),
+          });
+
           return {
-            content: [
-              {
-                type: "text",
-                text: JSON.stringify(result, null, 2),
-              },
-            ],
+            content: responseContent,
           };
         } catch (error) {
           return {
