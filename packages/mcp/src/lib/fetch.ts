@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { ComponentList } from "./types.js";
+import { ComponentList, TailwindTokens } from "./types.js";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -149,6 +149,45 @@ export async function fetchComponentPropsStorybook(
     throw new Error(
       `Failed to load props for ${component}: ${
         error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
+  }
+}
+
+/**
+ * Gets all component names from both packages
+ */
+export async function fetchTailwindTokens(): Promise<TailwindTokens> {
+  try {
+    // Try multiple paths to support both dev (tsx) and prod (built) environments
+    const possiblePaths = [
+      path.join(dirname, "../../data/tailwind.json"), // From src/lib in dev
+      path.join(dirname, "../data/tailwind.json"), // From dist in prod
+      path.join(process.cwd(), "data/tailwind.json"), // From current working directory
+    ];
+
+    let dataPath = "";
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p)) {
+        dataPath = p;
+        break;
+      }
+    }
+
+    if (!dataPath) {
+      throw new Error(
+        "Component list not found in any expected location. Please run 'yarn generate:tailwind-tokens' first."
+      );
+    }
+
+    const fileContent = fs.readFileSync(dataPath, "utf-8");
+    const tailwindTokens: TailwindTokens = JSON.parse(fileContent);
+
+    return tailwindTokens;
+  } catch (error) {
+    throw new Error(
+      `Failed to load tailwind tokens: ${
+        error instanceof Error ? error.message : `Unknown error ${error}`
       }`
     );
   }
