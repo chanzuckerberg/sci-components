@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { TailwindTokens, type Tool } from "../lib/types.js";
 import { fetchTailwindTokens } from "../lib/fetch.js";
+import { getTokenGuidance } from "../lib/tailwind-guidance.js";
 
 export const getTailwindTokensTool: Tool<{
   tailwindTokens: TailwindTokens;
@@ -58,13 +59,24 @@ export const getTailwindTokensTool: Tool<{
             result = tokens[category as keyof TailwindTokens] || {};
           }
 
+          // Build response content
+          const responseContent = [];
+
+          // Add guidance
+          const guidance = getTokenGuidance(category);
+          responseContent.push({
+            type: "text" as const,
+            text: guidance,
+          });
+
+          // Add token data
+          responseContent.push({
+            type: "text" as const,
+            text: JSON.stringify(result, null, 2),
+          });
+
           return {
-            content: [
-              {
-                type: "text",
-                text: JSON.stringify(result, null, 2),
-              },
-            ],
+            content: responseContent,
           };
         } catch (error) {
           return {
