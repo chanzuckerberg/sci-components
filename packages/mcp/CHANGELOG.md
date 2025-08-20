@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.3.0...@czi-sds/mcp@0.4.0) (2025-08-20)
+
+### Features
+
+- **mcp:** fixed get-component-props tool ([#1001](https://github.com/chanzuckerberg/sci-components/issues/1001)) ([1713636](https://github.com/chanzuckerberg/sci-components/commit/17136368961a133ecc6f448b686f28d5d8adf6c3))
+
 # [0.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.2.2...@czi-sds/mcp@0.3.0) (2025-08-20)
 
 ### Features
