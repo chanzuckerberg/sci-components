@@ -175,11 +175,11 @@ const EVALUATION_CONFIG = {
 
 // Validation
 function validateConfig() {
-  // Exclude pass/fail checks from weight validation
-  const weights = { ...EVALUATION_CONFIG.weights };
-  delete weights.typescript; // Pass/fail requirement
+  const totalWeight = Object.values(EVALUATION_CONFIG.weights).reduce(
+    (sum, w) => sum + w,
+    0
+  );
 
-  const totalWeight = Object.values(weights).reduce((sum, w) => sum + w, 0);
   if (Math.abs(totalWeight - 1.0) > 0.001) {
     throw new Error(
       `Evaluation weights (excluding pass/fail checks) must sum to 1.0, got ${totalWeight}`

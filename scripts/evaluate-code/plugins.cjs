@@ -246,9 +246,12 @@ class DesignTokensPlugin extends BasePlugin {
   }
 
   hasCustomStyling(code) {
+    // Remove comments and string literals to avoid false positives
+    const sanitizedCode = this.stripCommentsAndStrings(code);
+
     const customStylingPatterns = [
       /style\s*=\s*\{/, // style={{ ... }}
-      /\bstyled\s*\(/, // styled(Component) - improved to avoid matching in strings/comments
+      /\bstyled\s*\(/, // styled(Component)
       /styled\.\w+/, // styled.div
       /css`/, // css template literals
       /makeStyles/, // Material-UI makeStyles
@@ -262,7 +265,135 @@ class DesignTokensPlugin extends BasePlugin {
       /fontWeight\s*:\s*["'\d]/, // Direct font weight usage
     ];
 
-    return customStylingPatterns.some((pattern) => pattern.test(code));
+    return customStylingPatterns.some((pattern) => pattern.test(sanitizedCode));
+  }
+
+  /**
+   * Strip comments and string literals from code to avoid false positives in regex matching
+   * @param {string} code - The source code to sanitize
+   * @returns {string} - Code with comments and strings removed
+   */
+  stripCommentsAndStrings(code) {
+    let result = "";
+    let i = 0;
+    let state = {
+      inString: false,
+      stringChar: "",
+      inComment: false,
+      inBlockComment: false,
+      inTemplateLiteral: false,
+    };
+
+    while (i < code.length) {
+      const char = code[i];
+      const nextChar = code[i + 1] || "";
+
+      this.processCharacter(char, nextChar, state, result, i);
+      i++;
+    }
+
+    return result;
+  }
+
+  processCharacter(char, nextChar, state, result, _index) {
+    // Handle template literals
+    if (this.isTemplateLiteralStart(char, state)) {
+      state.inTemplateLiteral = !state.inTemplateLiteral;
+      return;
+    }
+
+    // Handle quotes
+    if (this.isQuote(char, state)) {
+      this.handleQuote(char, state);
+      return;
+    }
+
+    // Handle comments
+    if (this.isCommentStart(char, nextChar, state)) {
+      this.handleCommentStart(char, nextChar, state);
+      return;
+    }
+
+    // Handle comment endings
+    if (this.isCommentEnd(char, nextChar, state)) {
+      this.handleCommentEnd(char, nextChar, state);
+      return;
+    }
+
+    // End line comments at newline
+    if (char === "\n" && state.inComment) {
+      state.inComment = false;
+    }
+
+    // Only add characters that are not in strings, comments, or template literals
+    if (!this.shouldSkipCharacter(state)) {
+      result += char;
+    }
+  }
+
+  isTemplateLiteralStart(char, state) {
+    return (
+      char === "`" &&
+      !state.inString &&
+      !state.inComment &&
+      !state.inBlockComment
+    );
+  }
+
+  isQuote(char, state) {
+    return (
+      (char === '"' || char === "'") &&
+      !state.inTemplateLiteral &&
+      !state.inComment &&
+      !state.inBlockComment
+    );
+  }
+
+  handleQuote(char, state) {
+    if (!state.inString) {
+      state.inString = true;
+      state.stringChar = char;
+    } else if (state.stringChar === char) {
+      state.inString = false;
+      state.stringChar = "";
+    }
+  }
+
+  isCommentStart(char, nextChar, state) {
+    return (
+      char === "/" &&
+      nextChar === "/" &&
+      !state.inString &&
+      !state.inTemplateLiteral &&
+      !state.inBlockComment
+    );
+  }
+
+  handleCommentStart(char, nextChar, state) {
+    if (char === "/" && nextChar === "/") {
+      state.inComment = true;
+    } else if (char === "/" && nextChar === "*") {
+      state.inBlockComment = true;
+    }
+  }
+
+  isCommentEnd(char, nextChar, state) {
+    return char === "*" && nextChar === "/" && state.inBlockComment;
+  }
+
+  handleCommentEnd(char, nextChar, state) {
+    if (char === "*" && nextChar === "/") {
+      state.inBlockComment = false;
+    }
+  }
+
+  shouldSkipCharacter(state) {
+    return (
+      state.inString ||
+      state.inComment ||
+      state.inBlockComment ||
+      state.inTemplateLiteral
+    );
   }
 
   generateTokenRecommendations(code, hasCustomStyling, usesTokens) {
