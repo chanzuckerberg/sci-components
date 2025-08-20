@@ -402,12 +402,10 @@ function showHelp() {
   );
   console.log("");
   console.log("The script evaluates:");
-  console.log("  ✅ TypeScript compilation (25%)");
-  console.log("  ✅ ESLint compliance (15%)");
-  console.log("  ✅ SDS component usage (25%)");
-  console.log("  ✅ Import statements (15%)");
+  console.log("  ⚠️ TypeScript compilation (Pass/Fail - mandatory)");
+  console.log("  ✅ SDS component usage (50%)");
+  console.log("  ✅ ESLint compliance (40% - includes jsx-a11y accessibility)");
   console.log("  ✅ Design tokens (10%)");
-  console.log("  ✅ Accessibility features (10%)");
   console.log("");
   console.log("Key features:");
   console.log("  🚀 Plugin architecture for extensibility");

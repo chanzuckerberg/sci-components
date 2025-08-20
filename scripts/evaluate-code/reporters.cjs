@@ -211,7 +211,6 @@ class ConsoleReporter {
       typescript: () => this.reportTypeScriptDetails(details),
       sdsUsage: () => this.reportSdsUsageDetails(details),
       designTokens: () => this.reportDesignTokensDetails(details),
-      accessibility: () => this.reportAccessibilityDetails(details),
     };
 
     const handler = handlers[pluginName];
@@ -259,20 +258,6 @@ class ConsoleReporter {
       );
     }
     if (details.recommendations && details.recommendations.length > 0) {
-      console.log(`      ${this.color("Recommendations:", "yellow")}`);
-      details.recommendations.slice(0, 2).forEach((rec) => {
-        console.log(`        • ${rec}`);
-      });
-    }
-  }
-
-  reportAccessibilityDetails(details) {
-    if (details.attributesFound.length > 0) {
-      console.log(
-        `      ${this.color("A11y Attributes:", "green")} ${details.attributesFound.join(", ")}`
-      );
-    }
-    if (details.recommendations.length > 0) {
       console.log(`      ${this.color("Recommendations:", "yellow")}`);
       details.recommendations.slice(0, 2).forEach((rec) => {
         console.log(`        • ${rec}`);
@@ -427,7 +412,6 @@ class CSVReporter {
       "sdsUsage",
       "imports",
       "designTokens",
-      "accessibility",
     ];
     return plugins.map((plugin) =>
       pluginResults[plugin]?.passed ? "✅" : "❌"
