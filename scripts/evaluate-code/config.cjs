@@ -89,9 +89,9 @@ const EVALUATION_CONFIG = {
   // Scoring weights - must sum to 1.0 (TypeScript is now pass/fail requirement)
   weights: {
     typescript: 0, // Pass/fail requirement - not weighted
-    "sds-usage": 0.4, // Primary goal: proper SDS component usage
+    sdsUsage: 0.4, // Primary goal: proper SDS component usage
     eslint: 0.3, // Code quality and style
-    "design-tokens": 0.2, // Design consistency when styling needed
+    designTokens: 0.2, // Design consistency when styling needed
     accessibility: 0.1, // Accessibility patterns
   },
 

@@ -47,15 +47,15 @@ describe("Code Evaluation Script", () => {
       const pluginNames = plugins.map((p) => p.name);
       expect(pluginNames).toContain("typescript");
       expect(pluginNames).toContain("eslint");
-      expect(pluginNames).toContain("sds-usage");
+      expect(pluginNames).toContain("sdsUsage");
       expect(pluginNames).toContain("imports");
       expect(pluginNames).toContain("accessibility");
     });
 
     test("should get plugin by name", () => {
-      const sdsPlugin = pluginManager.getPlugin("sds-usage");
+      const sdsPlugin = pluginManager.getPlugin("sdsUsage");
       expect(sdsPlugin).toBeDefined();
-      expect(sdsPlugin.name).toBe("sds-usage");
+      expect(sdsPlugin.name).toBe("sdsUsage");
     });
   });
 
@@ -308,12 +308,12 @@ node_modules/@types/react/index.d.ts(100,10): error TS1234: Library error.
         goodCode
       );
 
-      expect(results["sds-usage"].passed).toBe(true);
+      expect(results.sdsUsage.passed).toBe(true);
       expect(results.imports.passed).toBe(true);
       expect(results.accessibility.passed).toBe(true);
 
       // Should have good scores
-      expect(results["sds-usage"].score).toBeGreaterThan(0.5);
+      expect(results.sdsUsage.score).toBeGreaterThan(0.5);
       expect(results.imports.score).toBe(1);
       expect(results.accessibility.score).toBeGreaterThan(0.5);
     });
@@ -336,12 +336,12 @@ node_modules/@types/react/index.d.ts(100,10): error TS1234: Library error.
         poorCode
       );
 
-      expect(results["sds-usage"].passed).toBe(false);
+      expect(results.sdsUsage.passed).toBe(false);
       expect(results.imports.passed).toBe(false);
       expect(results.accessibility.passed).toBe(false);
 
       // Should have low scores
-      expect(results["sds-usage"].score).toBe(0);
+      expect(results.sdsUsage.score).toBe(0);
       expect(results.imports.score).toBe(0);
       expect(results.accessibility.score).toBe(0);
     });

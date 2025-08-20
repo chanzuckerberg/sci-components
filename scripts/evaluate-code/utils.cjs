@@ -89,10 +89,7 @@ function parseTypeScriptErrors(output, filePath) {
     }
 
     // Check if this line relates to our file
-    if (
-      line.includes(filePath) ||
-      line.includes(fileBaseName)
-    ) {
+    if (line.includes(filePath)) {
       const match = line.match(
         /^(.+?)\((\d+),(\d+)\):\s*(error|warning)\s*TS(\d+):\s*(.+)$/
       );
@@ -356,6 +353,19 @@ function getDefaultTSConfig() {
   ];
 }
 
+/**
+ * Ensure directory exists, creating it if necessary
+ */
+function ensureDirectoryExists(dirPath) {
+  try {
+    fs.mkdirSync(dirPath, { recursive: true });
+  } catch (error) {
+    if (error.code !== "EEXIST") {
+      throw error;
+    }
+  }
+}
+
 module.exports = {
   executeWithTimeout,
   processWithConcurrency,
@@ -368,4 +378,5 @@ module.exports = {
   escapeHtml,
   deepMerge,
   parseTSConfig,
+  ensureDirectoryExists,
 };

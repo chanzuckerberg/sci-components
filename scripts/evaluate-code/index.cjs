@@ -55,7 +55,7 @@ class CodeEvaluator {
     const result = { ...target };
 
     for (const key in source) {
-      if (source.hasOwnProperty(key)) {
+      if (Object.hasOwn(source, key)) {
         if (
           typeof source[key] === "object" &&
           source[key] !== null &&
@@ -264,44 +264,21 @@ class CodeEvaluator {
 
   async generateReports(results, formats = ["console"]) {
     const reportPaths = {};
-
-    // Generate timestamp for file names
-    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, "-");
+    const timestamp = this.generateTimestamp();
 
     for (const format of formats) {
       try {
-        let outputPath = null;
-
-        // Set output paths for file-based reports
-        if (format === "json") {
-          outputPath = `evaluation-results-${timestamp}.json`;
-        } else if (format === "csv") {
-          outputPath = `evaluation-results-${timestamp}.csv`;
-        } else if (format === "html") {
-          outputPath = `evaluation-report-${timestamp}.html`;
-        }
-
+        const outputPath = this.getOutputPath(format, timestamp);
         const reporter = this.reporterManager.getReporter(format);
-        if (reporter && format === "console") {
-          // Console reporter handles display differently
-          if (results.length === 1) {
-            reporter.reportSingleFile(results[0]);
-          } else {
-            results.forEach((result) => reporter.reportSingleFile(result));
-            reporter.reportBatchSummary(results);
-          }
-        } else if (reporter) {
-          // File-based reporters
-          if (outputPath) {
-            reporter.outputPath = outputPath;
-          }
-          const output = reporter.reportResults(results);
-          if (outputPath) {
-            reportPaths[format] = outputPath;
-            console.log(
-              `\n📊 ${format.toUpperCase()} report generated: ${outputPath}`
-            );
-          }
+
+        if (reporter) {
+          await this.processReporter(
+            reporter,
+            format,
+            results,
+            outputPath,
+            reportPaths
+          );
         }
       } catch (error) {
         console.error(`Error generating ${format} report:`, error.message);
@@ -311,6 +288,59 @@ class CodeEvaluator {
     return reportPaths;
   }
 
+  generateTimestamp() {
+    return new Date().toISOString().slice(0, 19).replace(/:/g, "-");
+  }
+
+  getOutputPath(format, timestamp) {
+    const pathMap = {
+      json: `evaluation-results-${timestamp}.json`,
+      csv: `evaluation-results-${timestamp}.csv`,
+      html: `evaluation-report-${timestamp}.html`,
+    };
+    return pathMap[format] || null;
+  }
+
+  async processReporter(reporter, format, results, outputPath, reportPaths) {
+    if (format === "console") {
+      this.processConsoleReporter(reporter, results);
+    } else {
+      await this.processFileReporter(
+        reporter,
+        results,
+        outputPath,
+        reportPaths,
+        format
+      );
+    }
+  }
+
+  processConsoleReporter(reporter, results) {
+    if (results.length === 1) {
+      reporter.reportSingleFile(results[0]);
+    } else {
+      results.forEach((result) => reporter.reportSingleFile(result));
+      reporter.reportBatchSummary(results);
+    }
+  }
+
+  async processFileReporter(
+    reporter,
+    results,
+    outputPath,
+    reportPaths,
+    format
+  ) {
+    if (outputPath) {
+      reporter.outputPath = outputPath;
+      reporter.reportResults(results);
+      reportPaths[format] = outputPath;
+      console.log(
+        `\n📊 ${format.toUpperCase()} report generated: ${outputPath}`
+      );
+    }
+  }
+
   displayQuickCopyPaste(results) {
     console.log("\n🎯 Quick Copy-Paste for Google Sheets:");
     console.log("File\tScore\tGrade\tReady\tTS\tSDS\tImports\tA11y");
@@ -318,7 +348,7 @@ class CodeEvaluator {
     results.forEach((result) => {
       const score = (result.summary.score * 100).toFixed(0);
       const ts = result.pluginResults.typescript?.passed ? "1" : "0";
-      const sds = result.pluginResults["sds-usage"]?.passed ? "1" : "0";
+      const sds = result.pluginResults.sdsUsage?.passed ? "1" : "0";
       const imports = result.pluginResults.imports?.passed ? "1" : "0";
       const a11y = result.pluginResults.accessibility?.passed ? "1" : "0";
 

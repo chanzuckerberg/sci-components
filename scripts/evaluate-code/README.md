@@ -17,7 +17,7 @@ This script evaluates LLM-generated UI components to ensure they properly use th
 The evaluation script checks for:
 
 - ⚠️ **TypeScript compilation** (MANDATORY) - Code must compile without errors or automatic FAIL
-- ✅ **SDS component usage** (40%) - Verifies proper use of design system components  
+- ✅ **SDS component usage** (40%) - Verifies proper use of design system components
 - ✅ **ESLint compliance** (30%) - Checks code quality and style
 - ✅ **Design tokens** (20%) - Checks for design token usage when custom styling is present
 - ✅ **Accessibility** (10%) - Verifies accessibility attributes and patterns
@@ -43,7 +43,7 @@ node scripts/evaluate-code/index.cjs --batch ./src --format json,csv,html --verb
 # Generate comprehensive reports
 yarn evaluate:batch ./generated-components --format console,json,csv,html --verbose
 
-# Fast parallel processing  
+# Fast parallel processing
 node scripts/evaluate-code/index.cjs --batch ./src --concurrency 8 --format json
 
 # Custom timeout for slow systems
@@ -115,7 +115,7 @@ The design token check is **contextual and intelligent**:
 
 **Recommended design tokens:**
 - Colors: `getColors()` instead of hardcoded hex values
-- Spacing: `getSpaces()` instead of hardcoded px/rem values  
+- Spacing: `getSpaces()` instead of hardcoded px/rem values
 - Typography: `fontBodyS`, `fontHeaderM` mixins instead of direct font properties
 
 ## Example Output
@@ -126,7 +126,7 @@ The design token check is **contextual and intelligent**:
    ✅ typescript: PASS (1.4s)
    ✅ eslint: PASS (427ms)
    ✅ sds-usage: PASS (1ms)
-   ✅ design-tokens: PASS (0ms)
+   ✅ designTokens: PASS (0ms)
    ✅ accessibility: PASS (0ms)
 
 📊 SUMMARY
@@ -165,9 +165,9 @@ Create a custom configuration file:
 module.exports = {
   weights: {
     typescript: 0,        // Pass/fail requirement (not weighted)
-    'sds-usage': 0.5,     // Emphasize SDS usage  
+    sdsUsage: 0.5,     // Emphasize SDS usage
     eslint: 0.3,          // Code quality
-    'design-tokens': 0.15, // Design consistency
+    designTokens: 0.15, // Design consistency
     accessibility: 0.05   // A11y
   },
   processing: {
@@ -257,7 +257,7 @@ scripts/evaluate-code/
 
 Batch evaluations automatically generate timestamped files:
 - `evaluation-results-YYYY-MM-DDTHH-MM-SS.json` - Complete data
-- `evaluation-results-YYYY-MM-DDTHH-MM-SS.csv` - Spreadsheet format  
+- `evaluation-results-YYYY-MM-DDTHH-MM-SS.csv` - Spreadsheet format
 - `evaluation-report-YYYY-MM-DDTHH-MM-SS.html` - Visual report
 
 ### Google Sheets Integration

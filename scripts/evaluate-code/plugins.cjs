@@ -49,7 +49,7 @@ class TypeScriptPlugin extends BasePlugin {
       : parseTypeScriptErrors(result.stdout + result.stderr, filePath);
     const userErrors = errors.filter(
       (err) => !err.message.includes("node_modules")
-    const userErrors = filterUserErrors(errors);
+    );
 
     return {
       name: this.name,
@@ -117,7 +117,7 @@ class ESLintPlugin extends BasePlugin {
  */
 class SDSUsagePlugin extends BasePlugin {
   constructor() {
-    super("sds-usage", "Checks for proper SDS component usage");
+    super("sdsUsage", "Checks for proper SDS component usage");
   }
 
   async check(_filePath, code) {
@@ -187,7 +187,7 @@ class SDSUsagePlugin extends BasePlugin {
 class DesignTokensPlugin extends BasePlugin {
   constructor() {
     super(
-      "design-tokens",
+      "designTokens",
       "Checks for design token usage when custom styling is present"
     );
   }
