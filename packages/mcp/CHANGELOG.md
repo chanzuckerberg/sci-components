@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.2.2...@czi-sds/mcp@0.3.0) (2025-08-20)
+
+### Features
+
+- Add comprehensive Zeroheight documentation export system ([#997](https://github.com/chanzuckerberg/sci-components/issues/997)) ([e95df68](https://github.com/chanzuckerberg/sci-components/commit/e95df6848e344f8231991c2bd8d999e72343ff9d))
+
 ## [0.2.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.2.1...@czi-sds/mcp@0.2.2) (2025-08-19)
 
 ### Bug Fixes
