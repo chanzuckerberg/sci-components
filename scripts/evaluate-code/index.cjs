@@ -11,6 +11,7 @@ const {
   ProgressIndicator,
   formatDuration,
   calculateFileStats,
+  deepMerge,
 } = require("./utils.cjs");
 const {
   ConsoleReporter,
@@ -37,7 +38,7 @@ const { getSDSComponentsList } = require("./sds-discovery.cjs");
 class CodeEvaluator {
   constructor(options = {}) {
     // Deep merge configuration to preserve nested objects
-    this.config = this.deepMerge(EVALUATION_CONFIG, options);
+    this.config = deepMerge(EVALUATION_CONFIG, options);
     this.pluginManager = new PluginManager();
     this.reporterManager = new ReporterManager();
 
@@ -49,26 +50,6 @@ class CodeEvaluator {
       totalDuration: 0,
       startTime: Date.now(),
     };
-  }
-
-  deepMerge(target, source) {
-    const result = { ...target };
-
-    for (const key in source) {
-      if (Object.hasOwn(source, key)) {
-        if (
-          typeof source[key] === "object" &&
-          source[key] !== null &&
-          !Array.isArray(source[key])
-        ) {
-          result[key] = this.deepMerge(target[key] || {}, source[key]);
-        } else {
-          result[key] = source[key];
-        }
-      }
-    }
-
-    return result;
   }
 
   setupReporters() {

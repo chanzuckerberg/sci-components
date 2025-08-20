@@ -57,10 +57,15 @@ async function processWithConcurrency(items, processor, maxConcurrency = 4) {
   const executing = [];
 
   for (const item of items) {
-    const promise = processor(item).then((result) => {
-      executing.splice(executing.indexOf(promise), 1);
-      return result;
-    });
+    const promise = processor(item)
+      .then((result) => {
+        executing.splice(executing.indexOf(promise), 1);
+        return result;
+      })
+      .catch((error) => {
+        executing.splice(executing.indexOf(promise), 1);
+        return { success: false, error: error.message, stack: error.stack };
+      });
 
     results.push(promise);
     executing.push(promise);
@@ -226,7 +231,15 @@ function deepMerge(target, ...sources) {
   const source = sources.shift();
 
   if (isObject(target) && isObject(source)) {
-    for (const key in source) {
+    mergeObject(target, source);
+  }
+
+  return deepMerge(target, ...sources);
+}
+
+function mergeObject(target, source) {
+  for (const key in source) {
+    if (Object.hasOwn(source, key)) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
         deepMerge(target[key], source[key]);
@@ -235,8 +248,6 @@ function deepMerge(target, ...sources) {
       }
     }
   }
-
-  return deepMerge(target, ...sources);
 }
 
 function isObject(item) {

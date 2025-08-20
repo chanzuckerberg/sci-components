@@ -401,7 +401,15 @@ class CSVReporter {
   formatAsCSV(headers, rows) {
     return [headers, ...rows]
       .map((row) =>
-        row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+        row
+          .map(
+            (cell) =>
+              `"${String(cell)
+                .replace(/"/g, '""')
+                .replace(/\r/g, " ")
+                .replace(/\n/g, " ")}"`
+          )
+          .join(",")
       )
       .join("\n");
   }

@@ -413,7 +413,8 @@ class PluginManager {
           score: 0,
           duration: 0,
           error: error.message,
-          details: { error: error.message },
+          stack: error.stack,
+          details: { error: error.message, stack: error.stack },
         }))
       )
     );
