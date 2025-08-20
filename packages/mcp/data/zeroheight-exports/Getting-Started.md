@@ -6,8 +6,8 @@ Let the following guides serve as starting points for working with the SDS. Unde
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI's science products.  Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs.  The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects.  In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |   | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI's science products. Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs. The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects. In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |     | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
 
 ---
 
@@ -29,8 +29,8 @@ When working on a project, ensure the necessary SDS libraries for your product a
 
 For reference, below are the libraries that should be enabled for napari hub + .org projects:
 
-* SDS Icons
-* napari hub + .org Design System
+- SDS Icons
+- napari hub + .org Design System
 
 For more details around using and working with libraries in Figma, see this helpful guide from the Figma team.
 
@@ -42,10 +42,10 @@ The SDS documentation should be the go-to place to learn about using elements of
 
 Below are a few tips around navigating the documentation:
 
-* Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
-* Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
-* Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
-* On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
+- Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
+- Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
+- Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
+- On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
 
 ---
 
@@ -66,8 +66,8 @@ See a more detailed flow of the component request process here.
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |   | **Jump to section:** Getting Started Usage Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |     | **Jump to section:** Getting Started Usage Contributing to the SDS |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------ |
 
 ---
 
@@ -89,28 +89,15 @@ npm i czifui
 yarn add czifui
 ```
 
- 
+
 
 SDS currently uses Material UI v5
 
 czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```html
-"@emotion/css"
-
- "@emotion/react"
-
- "@emotion/styled"
-
- "@material-ui/core"
-
- "@material-ui/icons"
-
- "@material-ui/lab"
-
- "react"
-
- "react-dom"
+"@emotion/css" "@emotion/react" "@emotion/styled" "@material-ui/core"
+"@material-ui/icons" "@material-ui/lab" "react" "react-dom"
 ```
 
 To install the dependencies:
@@ -141,9 +128,7 @@ import React from "react";
 import { Button } from "czifui";
 
 <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
-
- {text}
-
+  {text}
 </Button>;
 ```
 
@@ -186,16 +171,12 @@ import styled from "@emotion/styled";
 
 import { getColors, getCorners } from "czifui";
 
-
-
 export const Tag = styled.div`
+  // This is a callback function that returns more CSS rules, but the only way
 
- // This is a callback function that returns more CSS rules, but the only way
+  // to access the custom theme object
 
- // to access the custom theme object
-
-   ${(props) => {
-
+  ${(props) => {
     // getColors() is a selector that picks out colors from the theme object
 
     const colors = getColors(props);
@@ -203,8 +184,6 @@ export const Tag = styled.div`
     // getSpaces() is a selector that picks out spacings from the theme object
 
     const spacings = getSpaces(props);
-
-
 
     return `
 
@@ -215,9 +194,7 @@ export const Tag = styled.div`
      margin-bottom: ${spacings?.xxl}px;
 
     `;
-
-   }}
-
+  }}
 `;
 ```
 
@@ -263,11 +240,8 @@ To use the default theme in your React application, complete the following:
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <link
-
   href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-
- rel="stylesheet"
-
+  rel="stylesheet"
 />
 ```
 
@@ -280,20 +254,12 @@ import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-
-
 <StylesProvider injectFirst>
-
- <EmotionThemeProvider theme={defaultTheme}>
-
-  <ThemeProvider theme={defaultTheme}>
-
-   <YourApp />
-
-  </ThemeProvider>
-
- </EmotionThemeProvider>
-
+  <EmotionThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <YourApp />
+    </ThemeProvider>
+  </EmotionThemeProvider>
 </StylesProvider>;
 ```
 
@@ -324,8 +290,8 @@ Let the following guides serve as starting points for working with the SDS. Unde
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI's science products.  Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs.  The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects.  In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |   | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI's science products. Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs. The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects. In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |     | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
 
 ---
 
@@ -347,10 +313,10 @@ When working on a project, ensure the necessary SDS libraries for your product a
 
 For reference, below are the libraries that should be enabled for CZ GEN EPI projects:
 
-* SDS Bases
-* SDS Typography
-* SDS Icons
-* CZ GEN EPI Design System
+- SDS Bases
+- SDS Typography
+- SDS Icons
+- CZ GEN EPI Design System
 
 For more details around using and working with libraries in Figma, see this helpful guide from the Figma team.
 
@@ -362,10 +328,10 @@ The SDS documentation should be the go-to place to learn about using elements of
 
 Below are a few tips around navigating the documentation:
 
-* Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
-* Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
-* Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
-* On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
+- Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
+- Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
+- Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
+- On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
 
 ---
 
@@ -386,8 +352,8 @@ See a more detailed flow of the component request process here.
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |   | **Jump to section:** Getting Started Usage Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |     | **Jump to section:** Getting Started Usage Contributing to the SDS |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------ |
 
 ---
 
@@ -409,29 +375,16 @@ npm i czifui
 yarn add czifui
 ```
 
- SDS currently uses Material UI v5
+SDS currently uses Material UI v5
 
 czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```html
-"@emotion/css"
-
- "@emotion/react"
-
- "@emotion/styled"
-
- "@material-ui/core"
-
- "@material-ui/icons"
-
- "@material-ui/lab"
-
- "react"
-
- "react-dom"
+"@emotion/css" "@emotion/react" "@emotion/styled" "@material-ui/core"
+"@material-ui/icons" "@material-ui/lab" "react" "react-dom"
 ```
 
-  To install the dependencies:
+To install the dependencies:
 
 ```sh
 // with npm
@@ -459,9 +412,7 @@ import React from "react";
 import { Button } from "czifui";
 
 <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
-
- {text}
-
+  {text}
 </Button>;
 ```
 
@@ -504,16 +455,12 @@ import styled from "@emotion/styled";
 
 import { getColors, getCorners } from "czifui";
 
-
-
 export const Tag = styled.div`
+  // This is a callback function that returns more CSS rules, but the only way
 
- // This is a callback function that returns more CSS rules, but the only way
+  // to access the custom theme object
 
- // to access the custom theme object
-
-   ${(props) => {
-
+  ${(props) => {
     // getColors() is a selector that picks out colors from the theme object
 
     const colors = getColors(props);
@@ -521,8 +468,6 @@ export const Tag = styled.div`
     // getSpaces() is a selector that picks out spacings from the theme object
 
     const spacings = getSpaces(props);
-
-
 
     return `
 
@@ -533,13 +478,11 @@ export const Tag = styled.div`
      margin-bottom: ${spacings?.xxl}px;
 
     `;
-
-   }}
-
+  }}
 `;
 ```
 
- 
+
 
 4. **CSS & SCSS Variables** - Variables for the `defaultTheme` to use if your app doesn't support `@emotion/styled`
 
@@ -583,11 +526,8 @@ To use the default theme in your React application, complete the following:
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <link
-
   href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-
- rel="stylesheet"
-
+  rel="stylesheet"
 />
 ```
 
@@ -600,24 +540,16 @@ import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-
-
 <StylesProvider injectFirst>
-
- <EmotionThemeProvider theme={defaultTheme}>
-
-  <ThemeProvider theme={defaultTheme}>
-
-   <YourApp />
-
-  </ThemeProvider>
-
- </EmotionThemeProvider>
-
+  <EmotionThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <YourApp />
+    </ThemeProvider>
+  </EmotionThemeProvider>
 </StylesProvider>;
 ```
 
- 
+
 
 3. If you need to override the default SDS theme, please follow the instructions here.
 
@@ -646,8 +578,8 @@ Let the following guides serve as starting points for working with the SDS. Unde
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI's science products.  Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs.  The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects.  In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |   | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI's science products. Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs. The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects. In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |     | **Jump to section:** Figma SDS Documentation Contributing to the SDS |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
 
 ---
 
@@ -669,10 +601,10 @@ When working on a project, ensure the necessary SDS libraries for your product a
 
 For reference, below are the libraries that should be enabled for CZ ID projects:
 
-* SDS Bases
-* SDS Typography
-* SDS Icons
-* CZ ID Design System
+- SDS Bases
+- SDS Typography
+- SDS Icons
+- CZ ID Design System
 
 For more details around using and working with libraries in Figma, see this helpful guide from the Figma team.
 
@@ -684,10 +616,10 @@ The SDS documentation should be the go-to place to learn about using elements of
 
 Below are a few tips around navigating the documentation:
 
-* Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
-* Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
-* Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
-* On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
+- Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
+- Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
+- Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
+- On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
 
 ---
 
@@ -708,8 +640,8 @@ See a more detailed flow of the component request process here.
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |   | **Jump to section:** Getting Started Usage Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |     | **Jump to section:** Getting Started Usage Contributing to the SDS |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------ |
 
 ---
 
@@ -736,21 +668,8 @@ SDS currently uses Material UI v5
 czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```html
-"@emotion/css"
-
- "@emotion/react"
-
- "@emotion/styled"
-
- "@material-ui/core"
-
- "@material-ui/icons"
-
- "@material-ui/lab"
-
- "react"
-
- "react-dom"
+"@emotion/css" "@emotion/react" "@emotion/styled" "@material-ui/core"
+"@material-ui/icons" "@material-ui/lab" "react" "react-dom"
 ```
 
 To install the dependencies:
@@ -781,9 +700,7 @@ import React from "react";
 import { Button } from "czifui";
 
 <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
-
- {text}
-
+  {text}
 </Button>;
 ```
 
@@ -826,16 +743,12 @@ import styled from "@emotion/styled";
 
 import { getColors, getCorners } from "czifui";
 
-
-
 export const Tag = styled.div`
+  // This is a callback function that returns more CSS rules, but the only way
 
- // This is a callback function that returns more CSS rules, but the only way
+  // to access the custom theme object
 
- // to access the custom theme object
-
-   ${(props) => {
-
+  ${(props) => {
     // getColors() is a selector that picks out colors from the theme object
 
     const colors = getColors(props);
@@ -843,8 +756,6 @@ export const Tag = styled.div`
     // getSpaces() is a selector that picks out spacings from the theme object
 
     const spacings = getSpaces(props);
-
-
 
     return `
 
@@ -855,9 +766,7 @@ export const Tag = styled.div`
      margin-bottom: ${spacings?.xxl}px;
 
     `;
-
-   }}
-
+  }}
 `;
 ```
 
@@ -903,11 +812,8 @@ To use the default theme in your React application, complete the following:
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <link
-
   href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-
- rel="stylesheet"
-
+  rel="stylesheet"
 />
 ```
 
@@ -920,20 +826,12 @@ import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-
-
 <StylesProvider injectFirst>
-
- <EmotionThemeProvider theme={defaultTheme}>
-
-  <ThemeProvider theme={defaultTheme}>
-
-   <YourApp />
-
-  </ThemeProvider>
-
- </EmotionThemeProvider>
-
+  <EmotionThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <YourApp />
+    </ThemeProvider>
+  </EmotionThemeProvider>
 </StylesProvider>;
 ```
 
@@ -964,8 +862,8 @@ Let the following guides serve as starting points for working with the SDS. Unde
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI's science products.  Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs.  The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects.  In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |   | **Jump to** **s****ection:** Figma SDS Documentation Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI's science products. Within Figma, the elements of the SDS are accessible to product designers via a collection of published libraries. These libraries have been built to allow for maximum flexibility depending on each product team's component needs. The SDS Documentation serves as an in-depth guide for both designers and engineers for using elements of the design system within projects. In instances where the available SDS components don't fulfill a product team's needs, there is a straightforward process for requesting additional elements for the design system. |     | **Jump to** **s\*\***ection:\*\* Figma SDS Documentation Contributing to the SDS |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------------------- |
 
 ---
 
@@ -989,28 +887,28 @@ Below are the libraries that should be enabled by product:
 
 CZ ID
 
-* SDS Bases
-* SDS Typography
-* SDS Icons
-* CZ ID Design System
+- SDS Bases
+- SDS Typography
+- SDS Icons
+- CZ ID Design System
 
 CZ GEN EPI
 
-* SDS Bases
-* SDS Typography
-* SDS Icons
-* CZ GEN EPI Design System
+- SDS Bases
+- SDS Typography
+- SDS Icons
+- CZ GEN EPI Design System
 
 Single Cell Biology
 
-* SDS Bases
-* SDS Icons
-* Single Cell Design System
+- SDS Bases
+- SDS Icons
+- Single Cell Design System
 
 Imaging
 
-* SDS Icons
-* napari hub + .org Design System
+- SDS Icons
+- napari hub + .org Design System
 
 For more details around using and working with libraries in Figma, see this helpful guide from the Figma team.
 
@@ -1022,10 +920,10 @@ The SDS documentation should be the go-to place to learn about using elements of
 
 Below are a few tips around navigating the documentation:
 
-* Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
-* Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
-* Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
-* On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
+- Visit the Element Status Tracker page for the most up-to-date view of which elements are available for use within the Figma libraries and the SDS codebase; a more detailed status spreadsheet is linked at the bottom of this page for an in-depth look at status by component variant as well as links to implementation tickets for a granular view of when to expect components to be available for use
+- Most components have a Live Preview section on their Overview tabs; this displays an interactive instance of the element, providing the ability to engage with it and get a better feel for how it will work when included as part of a product build
+- Each variant of every component is viewable on their Overview tabs; aside from displaying all of the available props for each variant, these views are able to be clicked on and inspected to get further design details such as typography and color styles, border radiuses, spacing, etc.
+- On every component page there is a Code tab containing individual iframes imported from Storybook of each variant available to that component; each iframe has all of the same functionality found within Storybook, allowing engineers to explore props, adjust colors and text, see any event handlers, etc. all without leaving the documentation site
 
 ---
 
@@ -1046,8 +944,8 @@ See a more detailed flow of the component request process here.
 
 ## Overview
 
-| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |   | **Jump to** **s****ection:** Getting Started Usage Contributing to the SDS |
-| --- | --- | --- |
+| The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists. |     | **Jump to** **s\*\***ection:\*\* Getting Started Usage Contributing to the SDS |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------ |
 
 ---
 
@@ -1074,21 +972,8 @@ SDS currently uses Material UI v5
 czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
 ```html
-"@emotion/css"
-
- "@emotion/react"
-
- "@emotion/styled"
-
- "@material-ui/core"
-
- "@material-ui/icons"
-
- "@material-ui/lab"
-
- "react"
-
- "react-dom"
+"@emotion/css" "@emotion/react" "@emotion/styled" "@material-ui/core"
+"@material-ui/icons" "@material-ui/lab" "react" "react-dom"
 ```
 
 To install the dependencies:
@@ -1119,9 +1004,7 @@ import React from "react";
 import { Button } from "czifui";
 
 <Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary">
-
- {text}
-
+  {text}
 </Button>;
 ```
 
@@ -1164,16 +1047,12 @@ import styled from "@emotion/styled";
 
 import { getColors, getCorners } from "czifui";
 
-
-
 export const Tag = styled.div`
+  // This is a callback function that returns more CSS rules, but the only way
 
- // This is a callback function that returns more CSS rules, but the only way
+  // to access the custom theme object
 
- // to access the custom theme object
-
-   ${(props) => {
-
+  ${(props) => {
     // getColors() is a selector that picks out colors from the theme object
 
     const colors = getColors(props);
@@ -1181,8 +1060,6 @@ export const Tag = styled.div`
     // getSpaces() is a selector that picks out spacings from the theme object
 
     const spacings = getSpaces(props);
-
-
 
     return `
 
@@ -1193,9 +1070,7 @@ export const Tag = styled.div`
      margin-bottom: ${spacings?.xxl}px;
 
     `;
-
-   }}
-
+  }}
 `;
 ```
 
@@ -1241,11 +1116,8 @@ To use the default theme in your React application, complete the following:
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 
 <link
-
   href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
-
- rel="stylesheet"
-
+  rel="stylesheet"
 />
 ```
 
@@ -1258,20 +1130,12 @@ import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 
-
-
 <StylesProvider injectFirst>
-
- <EmotionThemeProvider theme={defaultTheme}>
-
-  <ThemeProvider theme={defaultTheme}>
-
-   <YourApp />
-
-  </ThemeProvider>
-
- </EmotionThemeProvider>
-
+  <EmotionThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}>
+      <YourApp />
+    </ThemeProvider>
+  </EmotionThemeProvider>
 </StylesProvider>;
 ```
 
@@ -1293,4 +1157,3 @@ Once a request is submitted, the SDS team will conduct an evaluation across all 
 If it is determined that the new component should not become part of the SDS, it will become the requesting product team's responsibility to design and maintain the component on their own.
 
 See a more detailed flow of the component request process here.
-

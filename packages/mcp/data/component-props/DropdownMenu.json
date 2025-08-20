@@ -1,84 +1,44 @@
 {
   "DropdownMenu": {
     "props": {
+      "ClickAwayListenerProps": {
+        "type": "Partial<ClickAwayListenerProps>",
+        "isRequired": false
+      },
+      "groupBy": {
+        "type": "any",
+        "isRequired": false
+      },
       "keepSearchOnSelect": {
         "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "renderInput": {
-        "type": "ReactNode",
-        "isRequired": false
-      },
-      "onInputChange": {
-        "type": "(event: SyntheticEvent",
-        "isRequired": false
-      },
-      "InputBaseProps": {
-        "type": "InputSearchProps",
-        "isRequired": false
-      },
-      "PopperBaseProps": {
-        "type": "Partial<PopperProps>",
-        "isRequired": false
-      },
-      "title": {
-        "type": "ReactNode",
-        "isRequired": false
-      },
-      "headerComponentSlot": {
-        "type": "Element",
         "isRequired": false
       },
       "label": {
         "type": "string",
         "isRequired": false
       },
-      "anchorEl": {
-        "type": "HTMLElement",
-        "isRequired": true
-      },
-      "PopperComponent": {
-        "type": "ReactNode",
+      "multiple": {
+        "type": "any",
         "isRequired": false
       },
-      "PaperComponent": {
-        "type": "ReactNode",
+      "open": {
+        "type": "any",
         "isRequired": false
       },
-      "PopperPlacement": {
-        "type": "complex",
-        "isRequired": false
-      },
-      "onClickAway": {
-        "type": "function",
-        "isRequired": false
-      },
-      "ClickAwayListenerProps": {
-        "type": "Partial<ClickAwayListenerProps>",
-        "isRequired": false
-      },
-      "width": {
-        "type": "\"string\" | \"number\" | \"string & {}\"",
-        "isRequired": false
-      },
-      "count": {
-        "type": "number",
-        "isRequired": false
-      },
-      "icon": {
-        "type": "ReactElement",
+      "options": {
+        "type": "any",
         "isRequired": false
       },
       "search": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "isSearchAutoFocus": {
-        "type": "\"false\" | \"true\"",
+      "title": {
+        "type": "ReactNode",
         "isRequired": false
       },
-      "isMultiColumn": {
-        "type": "\"false\" | \"true\"",
+      "width": {
+        "type": "\"string\" | \"number\" | \"string & {}\"",
         "isRequired": false
       }
     }

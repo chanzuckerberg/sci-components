@@ -6,8 +6,8 @@ Content Cards are used throughout the UI to present information in a visually or
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Content Card Variants
 
@@ -36,27 +36,27 @@ Teams can choose whether to display the Content Card with a bounding box, with a
 #### Visual Element Options
 
 | Image | Icon | None |
-| --- | --- | --- |
+| ----- | ---- | ---- |
 
 #### Image Options
 
 | Image left (padding) | Image left (no padding) | Image right (padding) | Image right (no padding) |
-| --- | --- | --- | --- |
+| -------------------- | ----------------------- | --------------------- | ------------------------ |
 
 #### Content Options
 
 | Text | Slot |
-| --- | --- |
+| ---- | ---- |
 
 #### Additional Options
 
 All of the following options are available regardless of whether the image is positioned on the left or right side of the Content Card
 
 | With decorative border | Without decorative border | With bounding box | Without bounding box |
-| --- | --- | --- | --- |
+| ---------------------- | ------------------------- | ----------------- | -------------------- |
 
 | Left-aligned Buttons | Right-aligned Buttons |
-| --- | --- |
+| -------------------- | --------------------- |
 
 #### Interaction States
 
@@ -65,7 +65,7 @@ For Content Cards with one or zero Buttons, the Content Card itself can function
 The following states are used regardless of whether there is a visual element included on the Content Card and, if the visual element is an image, regardless of whether it is positioned on the left or right side of the Content Card.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -82,25 +82,25 @@ Teams can choose whether to display the Content Card with a bounding box, with a
 #### Visual Element Options
 
 | Image | Icon | None |
-| --- | --- | --- |
+| ----- | ---- | ---- |
 
 #### Image Options
 
 | Padding | No Padding |
-| --- | --- |
+| ------- | ---------- |
 
 #### Content Options
 
 | Text | Slot |
-| --- | --- |
+| ---- | ---- |
 
 #### Additional Options
 
 | With decorative border | Without decorative border | With bounding box | Without bounding box |
-| --- | --- | --- | --- |
+| ---------------------- | ------------------------- | ----------------- | -------------------- |
 
 | Left-aligned Buttons | Right-aligned Buttons |
-| --- | --- |
+| -------------------- | --------------------- |
 
 #### Interaction States
 
@@ -109,7 +109,7 @@ For Content Cards with one or zero Buttons, the Content Card itself can function
 The following states are used regardless of whether there is a visual element included on the Content Card.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -119,7 +119,7 @@ These rules establish how much margin should exist between and around elements.
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## Content Card
 
@@ -135,28 +135,27 @@ Documentation for the underlying MUI `Card` component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `boundingBox` | `boolean` | `true` | If `true`, wraps content and visuals inside a bounded layout with background and padding. |
-| `buttonsPosition` | `"left"` |`"right"` | `"left"` | Determines the alignment of buttons in the ContentCardActions component. |
-| `classes` | `object` | `-` | Custom class names for different card sub-sections (e.g., cardPaper, cardTitle, cardActions, etc.). Could be used to style the component with TailwindCss. Full list of available class names are:`cardPaper`, `cardContent`, `cardHeader`, `cardMedia`, `cardOverline`, `cardTitle`, `cardSubtitle`, `cardMetadata`, `cardActions`, `clickableCardButton` |
-| `decorativeBorder` | `boolean` | `false` | If `true`, shows a decorative border around the card. |
-| `children` | `ReactNode` | `-` | The content to be displayed inside the card body, including custom components and ContentCardActions. |
-| `clickableCard` | `boolean` | `false` | If `true`, wraps the card with an action area and makes it clickable. |
-| `clickableCardProps` | `Partial<SdsMinimalButtonProps>` | `-` | Props forwarded to the clickable card wrapper when clickableCard is true. |
-| `icon` | `ReactNode` | `-` | The icon displayed in the card when `visualElementType` is `icon`. |
-| `image` | `ReactNode` | `-` | The image displayed in the card when `visualElementType` is `image`. |
-| `imagePadding` | `boolean` | `false` | If `true`, applies padding around the image inside the card. |
-| `imagePosition` | `"left"` | `"right"` | `"left"` | Position of the image in the card layout (left or right). |
-| `imageSize` | `number` | `300` | Width of the image area in pixels when `visualElementType` is `image`. |
-| `metadataText` | `ReactNode` | `-` | Optional metadata text, usually used for extra context like date or author. |
-| `overlineText` | `ReactNode` | `-` | A small overline text displayed above the title. |
-| `sdsType` | `"wide"` | `"narrow"` | `"wide"` | Determines the card layout style. `wide` shows the image and content side by side, `narrow` stacks them vertically. |
-| `subtitleText` | `ReactNode` | `-` | Optional subtitle text displayed below the title. |
-| `titleText` | `ReactNode` | `-` | The main title text of the card.  |
-| `visualElementType` | `"image"` | `"icon"` | `"none"` | `"none"` | Specifies what type of visual element to render on the card: an image, an icon, or none. |
+| Name                 | Type                             | Default    | Description                                                                                                                                                                                                                                                                                                                                                |
+| -------------------- | -------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `boundingBox`        | `boolean`                        | `true`     | If `true`, wraps content and visuals inside a bounded layout with background and padding.                                                                                                                                                                                                                                                                  |
+| `buttonsPosition`    | `"left"`                         | `"right"`  | `"left"`                                                                                                                                                                                                                                                                                                                                                   | Determines the alignment of buttons in the ContentCardActions component.                                            |
+| `classes`            | `object`                         | `-`        | Custom class names for different card sub-sections (e.g., cardPaper, cardTitle, cardActions, etc.). Could be used to style the component with TailwindCss. Full list of available class names are:`cardPaper`, `cardContent`, `cardHeader`, `cardMedia`, `cardOverline`, `cardTitle`, `cardSubtitle`, `cardMetadata`, `cardActions`, `clickableCardButton` |
+| `decorativeBorder`   | `boolean`                        | `false`    | If `true`, shows a decorative border around the card.                                                                                                                                                                                                                                                                                                      |
+| `children`           | `ReactNode`                      | `-`        | The content to be displayed inside the card body, including custom components and ContentCardActions.                                                                                                                                                                                                                                                      |
+| `clickableCard`      | `boolean`                        | `false`    | If `true`, wraps the card with an action area and makes it clickable.                                                                                                                                                                                                                                                                                      |
+| `clickableCardProps` | `Partial<SdsMinimalButtonProps>` | `-`        | Props forwarded to the clickable card wrapper when clickableCard is true.                                                                                                                                                                                                                                                                                  |
+| `icon`               | `ReactNode`                      | `-`        | The icon displayed in the card when `visualElementType` is `icon`.                                                                                                                                                                                                                                                                                         |
+| `image`              | `ReactNode`                      | `-`        | The image displayed in the card when `visualElementType` is `image`.                                                                                                                                                                                                                                                                                       |
+| `imagePadding`       | `boolean`                        | `false`    | If `true`, applies padding around the image inside the card.                                                                                                                                                                                                                                                                                               |
+| `imagePosition`      | `"left"`                         | `"right"`  | `"left"`                                                                                                                                                                                                                                                                                                                                                   | Position of the image in the card layout (left or right).                                                           |
+| `imageSize`          | `number`                         | `300`      | Width of the image area in pixels when `visualElementType` is `image`.                                                                                                                                                                                                                                                                                     |
+| `metadataText`       | `ReactNode`                      | `-`        | Optional metadata text, usually used for extra context like date or author.                                                                                                                                                                                                                                                                                |
+| `overlineText`       | `ReactNode`                      | `-`        | A small overline text displayed above the title.                                                                                                                                                                                                                                                                                                           |
+| `sdsType`            | `"wide"`                         | `"narrow"` | `"wide"`                                                                                                                                                                                                                                                                                                                                                   | Determines the card layout style. `wide` shows the image and content side by side, `narrow` stacks them vertically. |
+| `subtitleText`       | `ReactNode`                      | `-`        | Optional subtitle text displayed below the title.                                                                                                                                                                                                                                                                                                          |
+| `titleText`          | `ReactNode`                      | `-`        | The main title text of the card.                                                                                                                                                                                                                                                                                                                           |
+| `visualElementType`  | `"image"`                        | `"icon"`   | `"none"`                                                                                                                                                                                                                                                                                                                                                   | `"none"`                                                                                                            | Specifies what type of visual element to render on the card: an image, an icon, or none. |
 
 ### Code examples
 
->**Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.
-
+> **Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.

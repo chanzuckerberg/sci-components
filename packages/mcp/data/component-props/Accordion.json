@@ -1,29 +1,28 @@
 {
   "Accordion": {
     "props": {
-      "children": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The content of the component."
-      },
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
+      "defaultExpanded": {
+        "type": "any",
         "isRequired": false
       },
       "id": {
         "type": "string",
         "isRequired": false
       },
-      "onChange": {
-        "type": "FormEventHandler<HTMLDivElement>",
+      "togglePosition": {
+        "type": "any",
         "isRequired": false
       },
-      "onClick": {
-        "type": "function",
+      "useDivider": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  },
+  "AccordionHeader": {
+    "props": {
+      "subtitle": {
+        "type": "string",
         "isRequired": false
       }
     }

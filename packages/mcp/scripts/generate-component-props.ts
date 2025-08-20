@@ -1,11 +1,14 @@
-import fs from "fs";
-import path from "path";
+/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable sonarjs/cognitive-complexity */
+import * as fs from "fs";
+import * as path from "path";
 import { fileURLToPath } from "url";
 import {
   withDefaultConfig,
   ParserOptions,
   PropItem,
 } from "react-docgen-typescript";
+import * as ts from "typescript";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,79 +24,18 @@ interface ComponentProps {
   props: Record<string, SimplifiedProp>;
 }
 
-// Configure the parser with options optimized for SDS components
+interface MultiComponentProps {
+  [componentName: string]: ComponentProps;
+}
+
+// Configure the parser to extract ALL props without filtering
 const parserOptions: ParserOptions = {
   savePropValueAsString: true,
   shouldExtractLiteralValuesFromEnum: true,
   shouldExtractValuesFromUnion: true,
   shouldRemoveUndefinedFromOptional: true,
-  // Filter out HTML props and internal React props
-  propFilter: (prop: PropItem) => {
-    // Skip HTML attributes unless they're explicitly defined
-    if (prop.parent?.fileName.includes("node_modules/@types/react")) {
-      // Keep only essential React props
-      return [
-        "children",
-        "className",
-        "style",
-        "onClick",
-        "onChange",
-        "disabled",
-        "id",
-        "name",
-        "value",
-      ].includes(prop.name);
-    }
-
-    // Skip internal props
-    if (
-      prop.name.startsWith("$$") ||
-      prop.name === "key" ||
-      prop.name === "ref"
-    ) {
-      return false;
-    }
-
-    // Keep all SDS props
-    if (prop.name.startsWith("sds")) {
-      return true;
-    }
-
-    // Keep props defined in the component file
-    if (prop.parent?.fileName.includes("/src/core/")) {
-      return true;
-    }
-
-    // Keep commonly used props
-    const commonProps = [
-      "children",
-      "className",
-      "style",
-      "onClick",
-      "onChange",
-      "onClose",
-      "disabled",
-      "id",
-      "name",
-      "value",
-      "placeholder",
-      "label",
-      "icon",
-      "title",
-      "href",
-      "target",
-      "isAllCaps",
-      "isRounded",
-      "open",
-      "variant",
-      "color",
-      "size",
-      "fullWidth",
-      "loading",
-    ];
-
-    return commonProps.includes(prop.name);
-  },
+  // Don't filter any props - we'll filter later based on argTypes
+  propFilter: () => true,
   componentNameResolver: (exp, source) => {
     // Try to get the component name from the file path
     const match = source.fileName.match(/\/([^/]+)\/index\.tsx$/);
@@ -108,6 +50,116 @@ const parserOptions: ParserOptions = {
 
 // Use the default parser which reads tsconfig.json automatically
 const parser = withDefaultConfig(parserOptions);
+
+/**
+ * Extract exported subcomponents from a component file
+ */
+function extractExportedSubcomponents(componentPath: string): string[] {
+  try {
+    const fileContent = fs.readFileSync(componentPath, "utf-8");
+    const sourceFile = ts.createSourceFile(
+      componentPath,
+      fileContent,
+      ts.ScriptTarget.Latest,
+      true
+    );
+
+    const exportedComponents: string[] = [];
+
+    const visit = (node: ts.Node) => {
+      // Look for export { ComponentA, ComponentB } statements
+      if (
+        ts.isExportDeclaration(node) &&
+        node.exportClause &&
+        ts.isNamedExports(node.exportClause)
+      ) {
+        node.exportClause.elements.forEach((element) => {
+          if (ts.isExportSpecifier(element) && ts.isIdentifier(element.name)) {
+            exportedComponents.push(element.name.text);
+          }
+        });
+      }
+    };
+
+    ts.forEachChild(sourceFile, visit);
+    return exportedComponents;
+  } catch (error) {
+    console.log(
+      `    ⚠️  Could not extract subcomponents: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+    return [];
+  }
+}
+
+/**
+ * Extract argTypes from a Storybook file
+ * Returns the list of prop names defined in argTypes
+ */
+function extractArgTypesFromStorybook(storybookPath: string): string[] | null {
+  try {
+    if (!fs.existsSync(storybookPath)) {
+      return null;
+    }
+
+    const fileContent = fs.readFileSync(storybookPath, "utf-8");
+
+    // Use TypeScript compiler to parse the file
+    const sourceFile = ts.createSourceFile(
+      storybookPath,
+      fileContent,
+      ts.ScriptTarget.Latest,
+      true
+    );
+
+    const argTypeProps: string[] = [];
+
+    // Function to traverse the AST
+    const visit = (node: ts.Node): void => {
+      // Look for export default statements
+      if (ts.isExportAssignment(node)) {
+        let expression = node.expression;
+
+        // Handle "as Meta" type assertion
+        if (ts.isAsExpression(expression)) {
+          expression = expression.expression;
+        }
+
+        // Check if it's an object literal with argTypes
+        if (ts.isObjectLiteralExpression(expression)) {
+          expression.properties.forEach((prop) => {
+            if (
+              ts.isPropertyAssignment(prop) &&
+              ts.isIdentifier(prop.name) &&
+              prop.name.text === "argTypes" &&
+              ts.isObjectLiteralExpression(prop.initializer)
+            ) {
+              prop.initializer.properties.forEach((argTypeProp) => {
+                if (
+                  ts.isPropertyAssignment(argTypeProp) &&
+                  (ts.isIdentifier(argTypeProp.name) ||
+                    ts.isStringLiteral(argTypeProp.name))
+                ) {
+                  argTypeProps.push(argTypeProp.name.text);
+                }
+              });
+            }
+          });
+        }
+      }
+
+      ts.forEachChild(node, visit);
+    };
+
+    visit(sourceFile);
+
+    return argTypeProps.length > 0 ? argTypeProps : null;
+  } catch (error) {
+    console.log(
+      `    ⚠️  Could not extract argTypes: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
+    return null;
+  }
+}
 
 function simplifyType(type: string): string {
   // Clean up the type string
@@ -189,53 +241,129 @@ function extractEnumValues(typeValue: PropItem["type"]): string {
   return typeValue.raw || typeValue.name;
 }
 
-function addSDSPropDescriptions(props: Record<string, SimplifiedProp>): void {
-  if (props.sdsStyle && !props.sdsStyle.description) {
-    props.sdsStyle.description = "The visual style variant of the component";
-  }
-  if (props.sdsType && !props.sdsType.description) {
-    props.sdsType.description = "The type/variant of the component";
-  }
-  if (props.sdsSize && !props.sdsSize.description) {
-    props.sdsSize.description = "The size of the component";
-  }
-}
-
 function extractPropsFromComponent(
   componentPath: string,
-  componentName: string
-): ComponentProps | null {
+  componentName: string,
+  storybookPath: string
+): MultiComponentProps | null {
   try {
     console.log(`  🔍 Parsing ${componentName}...`);
 
-    const docs = parser.parse(componentPath);
-    if (docs.length === 0) {
-      console.log(`    ⚠️  No documentation found`);
+    // First, extract the argTypes from Storybook
+    const argTypeProps = extractArgTypesFromStorybook(storybookPath);
+    if (!argTypeProps || argTypeProps.length === 0) {
+      console.log(`    ⚠️  No argTypes found in Storybook file`);
       return null;
     }
+    console.log(
+      `    📚 Found ${argTypeProps.length} props in argTypes: ${argTypeProps.join(", ")}`
+    );
 
-    const componentDoc = docs[0];
-    const props: Record<string, SimplifiedProp> = {};
+    // Extract subcomponents
+    const subcomponents = extractExportedSubcomponents(componentPath);
+    console.log(
+      `    📦 Found ${subcomponents.length} exported subcomponents: ${subcomponents.join(", ")}`
+    );
 
-    for (const [propName, propInfo] of Object.entries(componentDoc.props)) {
-      const defaultValue = propInfo.defaultValue?.value
-        ? parseDefaultValue(propInfo.defaultValue.value)
-        : undefined;
+    // Parse main component and all subcomponents
+    const allComponents: MultiComponentProps = {};
 
-      const typeValue = extractEnumValues(propInfo.type);
+    // Parse main component
+    const mainDocs = parser.parse(componentPath);
+    const mainComponentDoc = mainDocs.length > 0 ? mainDocs[0] : null;
 
-      props[propName] = {
-        type: simplifyType(typeValue),
-        isRequired: propInfo.required,
-        description: propInfo.description || undefined,
-        defaultValue,
-      };
+    // Parse subcomponents
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const subcomponentDocs: Record<string, any> = {};
+    for (const subComp of subcomponents) {
+      const subCompPath = path.join(
+        path.dirname(componentPath),
+        "components",
+        subComp,
+        "index.tsx"
+      );
+
+      if (fs.existsSync(subCompPath)) {
+        const subDocs = parser.parse(subCompPath);
+        if (subDocs.length > 0) {
+          subcomponentDocs[subComp] = subDocs[0];
+        }
+      }
     }
 
-    addSDSPropDescriptions(props);
-    console.log(`    ✅ Found ${Object.keys(props).length} props`);
+    // Now distribute props to their correct components
+    const componentPropsMap: Record<string, Record<string, SimplifiedProp>> = {
+      [componentName]: {},
+    };
 
-    return { props };
+    // Initialize subcomponent prop maps
+    for (const subComp of subcomponents) {
+      componentPropsMap[subComp] = {};
+    }
+
+    // For each prop in argTypes, find which component it belongs to
+    for (const propName of argTypeProps) {
+      let propAssigned = false;
+
+      // First check if it's in the main component
+      if (mainComponentDoc && mainComponentDoc.props[propName]) {
+        const propInfo = mainComponentDoc.props[propName];
+        componentPropsMap[componentName][propName] = {
+          type: simplifyType(extractEnumValues(propInfo.type)),
+          isRequired: propInfo.required,
+          description: propInfo.description || undefined,
+          defaultValue: propInfo.defaultValue?.value
+            ? parseDefaultValue(propInfo.defaultValue.value)
+            : undefined,
+        };
+        propAssigned = true;
+      } else {
+        // Check subcomponents
+        for (const [subCompName, subCompDoc] of Object.entries(
+          subcomponentDocs
+        )) {
+          if (subCompDoc.props[propName]) {
+            const propInfo = subCompDoc.props[propName];
+            componentPropsMap[subCompName][propName] = {
+              type: simplifyType(extractEnumValues(propInfo.type)),
+              isRequired: propInfo.required,
+              description: propInfo.description || undefined,
+              defaultValue: propInfo.defaultValue?.value
+                ? parseDefaultValue(propInfo.defaultValue.value)
+                : undefined,
+            };
+            propAssigned = true;
+            break;
+          }
+        }
+      }
+
+      // If not found anywhere, add to main component as 'any'
+      if (!propAssigned) {
+        componentPropsMap[componentName][propName] = {
+          type: "any",
+          isRequired: false,
+          description: undefined,
+        };
+      }
+    }
+
+    // Build the result object
+    for (const [compName, props] of Object.entries(componentPropsMap)) {
+      if (Object.keys(props).length > 0) {
+        allComponents[compName] = { props };
+      }
+    }
+
+    const totalProps = Object.values(componentPropsMap).reduce(
+      (sum, props) => sum + Object.keys(props).length,
+      0
+    );
+    console.log(
+      `    ✅ Extracted ${totalProps} total props across ${Object.keys(allComponents).length} components`
+    );
+
+    return allComponents;
   } catch (error) {
     console.log(
       `    ❌ Error: ${error instanceof Error ? error.message : "Unknown error"}`
@@ -253,20 +381,37 @@ interface ProcessResult {
 function processComponent(
   componentName: string,
   componentPath: string,
+  storybookPath: string,
+  corePath: string,
   outputDir: string
 ): { success: boolean; propCount?: number } {
   if (!fs.existsSync(componentPath)) {
-    console.log(`❌ ${componentName} - File not found`);
+    console.log(`❌ ${componentName} - Component file not found`);
     return { success: false };
   }
 
-  const props = extractPropsFromComponent(componentPath, componentName);
+  if (!fs.existsSync(storybookPath)) {
+    console.log(`❌ ${componentName} - Storybook file not found`);
+    return { success: false };
+  }
 
-  if (props && Object.keys(props.props).length > 0) {
+  const allComponents = extractPropsFromComponent(
+    componentPath,
+    componentName,
+    storybookPath
+  );
+
+  if (allComponents && Object.keys(allComponents).length > 0) {
     const outputPath = path.join(outputDir, `${componentName}.json`);
-    const output = { [componentName]: props };
-    fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
-    return { success: true, propCount: Object.keys(props.props).length };
+    fs.writeFileSync(outputPath, JSON.stringify(allComponents, null, 2));
+
+    // Count total props across all components
+    const totalPropCount = Object.values(allComponents).reduce(
+      (sum, comp) => sum + Object.keys(comp.props).length,
+      0
+    );
+
+    return { success: true, propCount: totalPropCount };
   }
 
   console.log(`⚠️  ${componentName} - No props extracted`);
@@ -292,7 +437,21 @@ function processPackageComponents(
       componentName,
       "index.tsx"
     );
-    const result = processComponent(componentName, componentPath, outputDir);
+    const storybookPath = path.join(
+      dirname,
+      corePath,
+      componentName,
+      "__storybook__",
+      "index.stories.tsx"
+    );
+    const fullCorePath = path.join(dirname, corePath, componentName);
+    const result = processComponent(
+      componentName,
+      componentPath,
+      storybookPath,
+      fullCorePath,
+      outputDir
+    );
 
     if (result.success) {
       successCount++;

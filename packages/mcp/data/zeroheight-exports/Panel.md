@@ -6,27 +6,27 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ## Basic Panel
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
-Panels are comprised of containers within which other elements are placed. Use the Basic Panel when the elements contained within it are able to functionally adjust the content on the page next to it. In CZ GEN EPI's case, the Basic Panel is positioned on the left-hand side of the screen and contains Filters. 
+Panels are comprised of containers within which other elements are placed. Use the Basic Panel when the elements contained within it are able to functionally adjust the content on the page next to it. In CZ GEN EPI's case, the Basic Panel is positioned on the left-hand side of the screen and contains Filters.
 
 ### Basic Panel Example
 
 The example below shows where in CZ GEN EPI the Basic Panel is used.
 
- 
+
 
 ## Code
 
 ## Panel Components
 
-| Below you will find an interactive Storybook iframe for Panels.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** PanelBasic |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Panels. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** PanelBasic |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### PanelBasic (coming soon) 
 
@@ -38,15 +38,15 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ## Panel Variants
 
-| Panels are comprised of containers within which other elements are placed. They come in two different variants for designers to use depending on the type of content and elements contained within them. These variants also establish how the Panel functions and appears on the page, whether within the flow of the page's content or outside of it, on top of other elements.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Panel for any given use case. |   | **Jump to variant:** Basic Overlay |
-| --- | --- | --- |
+| Panels are comprised of containers within which other elements are placed. They come in two different variants for designers to use depending on the type of content and elements contained within them. These variants also establish how the Panel functions and appears on the page, whether within the flow of the page's content or outside of it, on top of other elements. Follow the usage criteria accompanying each variant as a guide for selecting the correct Panel for any given use case. |     | **Jump to variant:** Basic Overlay |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------- |
 
 ---
 
 ## Basic Panel
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Basic Panel
 
@@ -66,8 +66,8 @@ The examples below show where in CZ ID the Basic Panel is currently being used.
 
 ## Overlay Panel
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Overlay Panel
 
@@ -77,7 +77,7 @@ Overlay Panels can be positioned on the bottom or right side of the screen using
 
 Although Overlay Panels can be designed to contain a wide range of elements, there are a few common configurations used within the products today that have been turned into templates: Sample Details, Taxon Details, Genes Details, and Pipeline Information (templates coming soon).
 
- 
+
 
 ### Overlay Panel Examples
 
@@ -89,20 +89,20 @@ The examples below show where in CZ ID the Overlay Panel is currently being used
 
 ## Panel Components
 
-| Below you will find an interactive Storybook iframe for Panels.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** PanelBasic PanelOverlay |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Panels. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** PanelBasic PanelOverlay |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------- |
 
 ---
 
 ### PanelBasic (coming soon)
 
- 
+
 
 ---
 
 ### PanelOverlay (coming soon)
 
- 
+
 
 ---
 
@@ -112,15 +112,15 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ## Panel Components
 
-| Panels contain containers within which other elements are placed. They come in two different variants depending on the type of content and elements contained within them and their functionality, whether appearing on the page, within the flow of the page's content or outside of it, on top of other elements. |   | **Jump to variant:** Basic Overlay |
-| --- | --- | --- |
+| Panels contain containers within which other elements are placed. They come in two different variants depending on the type of content and elements contained within them and their functionality, whether appearing on the page, within the flow of the page's content or outside of it, on top of other elements. |     | **Jump to variant:** Basic Overlay |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------- |
 
 ---
 
 ## Panel – Basic
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Panel – Basic Anatomy
 
@@ -133,7 +133,7 @@ Use Panel – Basic when the elements contained within it are able to make adjus
 Panel – Basic can be positioned on the left or right side of the screen. Both sides can be open at the same time.
 
 | Left | Right |
-| :---: | :---: |
+| :--: | :---: |
 
 ---
 
@@ -145,8 +145,8 @@ These rules establish how much margin should exist to the left or right of an op
 
 ## Panel – Overlay
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Panel – Overlay Anatomy
 
@@ -159,11 +159,11 @@ Use Panel – Overlay when needing to display supplementary information about a 
 Panel – Overlay can be positioned on the bottom, left, or right side of the screen; use the bottom-positioned Panel – Overlay when the content contained on it is wider than it is tall. A page can contain as many Panel - Overlays per page as needed, but only one can be open at a time. If one is currently open and another is triggered to open, the currently opened Panel – Overlay will close before the newly triggered one opens.
 
 | Bottom | Left | Right |
-| :---: | :---: | :---: |
+| :----: | :--: | :---: |
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## Panel
 
@@ -175,16 +175,16 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS `Panel` component is built upon the MUI `Drawer` component, but with several key differences:
 
-* **Variant vs sdsType:** In MUI’s Drawer, the `variant` prop determines the type of drawer (e.g., persistent, temporary). However, in SDS’s Panel, this is replaced by the `sdsType` prop, which takes two values: `"basic"` and `"overlay"`.
-    * `"basic"` corresponds to MUI’s persistent drawer.
-    * `"overlay"` corresponds to MUI’s temporary drawer.
-* **Position vs Anchor**: Unlike MUI’s Drawer, which uses the `anchor` prop to determine the placement of the drawer (left, right, top, or bottom), the SDS Panel uses a `position` prop.
-    * The `"basic"` Panel can only be positioned to the `left` or `right`.
-    * The `"overlay"` Panel can be positioned to the `left`, `right`, or `bottom`.
-* **Width Prop:** The SDS Panel allows control over the width of the panel using the width prop.
-    * The default width is **240px** for the `"basic"` panel.
-    * The default width is **320px** for the `"overlay"` panel.
-* **Custom Header and Close Button Components:** The `"overlay"` Panel in SDS introduces two additional props that are not available in MUI’s Drawer: `headerComponent` and `closeButtonComponent`. These allow for custom components to be rendered in the panel’s header section, providing greater flexibility for design and functionality.
+- **Variant vs sdsType:** In MUI’s Drawer, the `variant` prop determines the type of drawer (e.g., persistent, temporary). However, in SDS’s Panel, this is replaced by the `sdsType` prop, which takes two values: `"basic"` and `"overlay"`.
+  - `"basic"` corresponds to MUI’s persistent drawer.
+  - `"overlay"` corresponds to MUI’s temporary drawer.
+- **Position vs Anchor**: Unlike MUI’s Drawer, which uses the `anchor` prop to determine the placement of the drawer (left, right, top, or bottom), the SDS Panel uses a `position` prop.
+  - The `"basic"` Panel can only be positioned to the `left` or `right`.
+  - The `"overlay"` Panel can be positioned to the `left`, `right`, or `bottom`.
+- **Width Prop:** The SDS Panel allows control over the width of the panel using the width prop.
+  - The default width is **240px** for the `"basic"` panel.
+  - The default width is **320px** for the `"overlay"` panel.
+- **Custom Header and Close Button Components:** The `"overlay"` Panel in SDS introduces two additional props that are not available in MUI’s Drawer: `headerComponent` and `closeButtonComponent`. These allow for custom components to be rendered in the panel’s header section, providing greater flexibility for design and functionality.
 
 ### MUI Documentation
 
@@ -194,14 +194,14 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `sdsType` | `"basic"` | `"overlay"` | `"basic"` | `"basic"` corresponds to a persistent drawer, and `"overlay"` corresponds to a temporary drawer. |
-| `position` | `"left"` |  `"right"` |  `"bottom"` (only for overlay) | `"left"` | Determines the panel’s position. The `"basic"` panel supports only `"left"` and `"right"`, while the `"overlay"` panel also supports `"bottom"`. |
-| `width` | `number` | `string` | `"240px"` (basic) |  `"320px"` (overlay) | Specifies the `width` of the panel.  |
-| `headerComponent` | `React.ReactNode` | `undefined` | For the `"overlay"` panel only, this prop allows you to pass a custom component to be rendered as the panel’s header. |
-| `closeButtonComponent` | `React.ReactNode` | <Button  sdsStyle="icon" sdsType="tertiary" icon="XMark" aria-label="Panel Toggle" /> | For the `"overlay"` panel only, this prop allows you to pass a custom component to be rendered as the close button. |
-| `closeButtonOnClick` | `React.MouseEventHandler<HTMLDivElement>` | `undefined` | For the `"overlay"` panel only, this is the onClick event handler for the close button. |
+| Name                   | Type                                      | Default                                                                               | Description                                                                                                           |
+| ---------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `sdsType`              | `"basic"`                                 | `"overlay"`                                                                           | `"basic"`                                                                                                             | `"basic"` corresponds to a persistent drawer, and `"overlay"` corresponds to a temporary drawer. |
+| `position`             | `"left"`                                  | `"right"`                                                                             | `"bottom"` (only for overlay)                                                                                         | `"left"`                                                                                         | Determines the panel’s position. The `"basic"` panel supports only `"left"` and `"right"`, while the `"overlay"` panel also supports `"bottom"`. |
+| `width`                | `number`                                  | `string`                                                                              | `"240px"` (basic)                                                                                                     | `"320px"` (overlay)                                                                              | Specifies the `width` of the panel.                                                                                                              |
+| `headerComponent`      | `React.ReactNode`                         | `undefined`                                                                           | For the `"overlay"` panel only, this prop allows you to pass a custom component to be rendered as the panel’s header. |
+| `closeButtonComponent` | `React.ReactNode`                         | <Button  sdsStyle="icon" sdsType="tertiary" icon="XMark" aria-label="Panel Toggle" /> | For the `"overlay"` panel only, this prop allows you to pass a custom component to be rendered as the close button.   |
+| `closeButtonOnClick`   | `React.MouseEventHandler<HTMLDivElement>` | `undefined`                                                                           | For the `"overlay"` panel only, this is the onClick event handler for the close button.                               |
 
 ### Code examples
 
@@ -234,13 +234,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -257,13 +255,11 @@ import "./styles.css";
 function App() {
   const [open, setOpen] = useState(true);
 
-  const Main = (
-    props: { open: boolean; children?: React.ReactNode }
-  ) => {
+  const Main = (props: { open: boolean; children?: React.ReactNode }) => {
     const { open, children } = props;
-  
+
     const margin = "0 0 0 250px";
-  
+
     return (
       <Box
         sx={{
@@ -274,7 +270,7 @@ function App() {
       </Box>
     );
   };
-  
+
   return (
     <div className="app">
       <Main open={open}>
@@ -287,11 +283,33 @@ function App() {
         >
           Toggle Panel
         </Button>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit lectus in enim scelerisque, sed ornare sapien consequat. Proin sed congue quam. Integer consequat elit tristique sodales rhoncus. In bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras scelerisque interdum eros ut porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut in lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat cursus. Phasellus urna massa, sollicitudin id elit et, efficitur faucibus nibh.</p>
-          <p>Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non consequat nulla turpis at ex. Donec hendrerit facilisis nisl at fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac. Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum. Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed varius neque nunc, sed pulvinar neque lobortis posuere.</p>
-        <Panel open={open}>
-          [Panel Content]
-        </Panel>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum.
+          Nullam scelerisque tempor arcu, quis pretium magna semper eu. Nam
+          hendrerit lectus in enim scelerisque, sed ornare sapien consequat.
+          Proin sed congue quam. Integer consequat elit tristique sodales
+          rhoncus. In bibendum dolor sit amet erat porta, nec posuere nibh
+          consectetur. Cras scelerisque interdum eros ut porta. Pellentesque
+          habitant morbi tristique senectus et netus et malesuada fames ac
+          turpis egestas. Ut in lacus et mi efficitur scelerisque. Pellentesque
+          congue purus eu feugiat cursus. Phasellus urna massa, sollicitudin id
+          elit et, efficitur faucibus nibh.
+        </p>
+        <p>
+          Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque
+          dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non
+          consequat nulla turpis at ex. Donec hendrerit facilisis nisl at
+          fringilla. Pellentesque posuere tortor ac ante luctus, at euismod
+          augue vulputate. Vivamus pretium pretium nisi, non convallis nunc
+          volutpat ac. Nam finibus justo leo, vel pellentesque velit gravida
+          vel. Sed in turpis non sem efficitur eleifend vel ac lacus. Sed
+          volutpat feugiat dictum. Pellentesque tristique mollis magna sit amet
+          vestibulum. Nulla ac tellus eu orci volutpat congue. In vitae dolor et
+          est feugiat fringilla. Sed varius neque nunc, sed pulvinar neque
+          lobortis posuere.
+        </p>
+        <Panel open={open}>[Panel Content]</Panel>
       </Main>
     </div>
   );
@@ -337,13 +355,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -364,13 +381,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -404,13 +432,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -426,7 +452,7 @@ import "./styles.css";
 
 function App() {
   const [open, setOpen] = useState(true);
-  
+
   return (
     <div className="app">
       <Button
@@ -438,9 +464,36 @@ function App() {
       >
         Toggle Panel
       </Button>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit lectus in enim scelerisque, sed ornare sapien consequat. Proin sed congue quam. Integer consequat elit tristique sodales rhoncus. In bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras scelerisque interdum eros ut porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut in lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat cursus. Phasellus urna massa, sollicitudin id elit et, efficitur faucibus nibh.</p>
-        <p>Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non consequat nulla turpis at ex. Donec hendrerit facilisis nisl at fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac. Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum. Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed varius neque nunc, sed pulvinar neque lobortis posuere.</p>
-      <Panel open={open} sdsType="overlay" closeButtonOnClick={() => setOpen(false)}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+        facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam
+        scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit
+        lectus in enim scelerisque, sed ornare sapien consequat. Proin sed
+        congue quam. Integer consequat elit tristique sodales rhoncus. In
+        bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras
+        scelerisque interdum eros ut porta. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Ut in
+        lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat
+        cursus. Phasellus urna massa, sollicitudin id elit et, efficitur
+        faucibus nibh.
+      </p>
+      <p>
+        Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque
+        dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non
+        consequat nulla turpis at ex. Donec hendrerit facilisis nisl at
+        fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue
+        vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac.
+        Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis
+        non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum.
+        Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus
+        eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed
+        varius neque nunc, sed pulvinar neque lobortis posuere.
+      </p>
+      <Panel
+        open={open}
+        sdsType="overlay"
+        closeButtonOnClick={() => setOpen(false)}
+      >
         [Panel Content]
       </Panel>
     </div>
@@ -487,13 +540,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -514,13 +566,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -554,13 +617,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -577,12 +638,8 @@ import "./styles.css";
 function App() {
   const [open, setOpen] = useState(true);
 
-  const HeaderComponent = (
-    <Typography variant="h2">
-      Panel Header
-    </Typography>
-  );
-  
+  const HeaderComponent = <Typography variant="h2">Panel Header</Typography>;
+
   return (
     <div className="app">
       <Button
@@ -594,11 +651,34 @@ function App() {
       >
         Toggle Panel
       </Button>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit lectus in enim scelerisque, sed ornare sapien consequat. Proin sed congue quam. Integer consequat elit tristique sodales rhoncus. In bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras scelerisque interdum eros ut porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut in lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat cursus. Phasellus urna massa, sollicitudin id elit et, efficitur faucibus nibh.</p>
-        <p>Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non consequat nulla turpis at ex. Donec hendrerit facilisis nisl at fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac. Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum. Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed varius neque nunc, sed pulvinar neque lobortis posuere.</p>
-      <Panel 
-        open={open} 
-        sdsType="overlay" 
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+        facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam
+        scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit
+        lectus in enim scelerisque, sed ornare sapien consequat. Proin sed
+        congue quam. Integer consequat elit tristique sodales rhoncus. In
+        bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras
+        scelerisque interdum eros ut porta. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Ut in
+        lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat
+        cursus. Phasellus urna massa, sollicitudin id elit et, efficitur
+        faucibus nibh.
+      </p>
+      <p>
+        Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque
+        dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non
+        consequat nulla turpis at ex. Donec hendrerit facilisis nisl at
+        fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue
+        vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac.
+        Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis
+        non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum.
+        Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus
+        eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed
+        varius neque nunc, sed pulvinar neque lobortis posuere.
+      </p>
+      <Panel
+        open={open}
+        sdsType="overlay"
         closeButtonOnClick={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
         position="right"
@@ -649,13 +729,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -676,13 +755,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -716,13 +806,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -739,11 +827,7 @@ import "./styles.css";
 function App() {
   const [open, setOpen] = useState(true);
 
-  const HeaderComponent = (
-    <Typography variant="h2">
-      Panel Header
-    </Typography>
-  );
+  const HeaderComponent = <Typography variant="h2">Panel Header</Typography>;
 
   const CloseButton = (
     <Button
@@ -754,7 +838,7 @@ function App() {
       aria-label="Panel Toggle"
     />
   );
-  
+
   return (
     <div className="app">
       <Button
@@ -766,11 +850,34 @@ function App() {
       >
         Toggle Panel
       </Button>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit lectus in enim scelerisque, sed ornare sapien consequat. Proin sed congue quam. Integer consequat elit tristique sodales rhoncus. In bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras scelerisque interdum eros ut porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut in lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat cursus. Phasellus urna massa, sollicitudin id elit et, efficitur faucibus nibh.</p>
-        <p>Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non consequat nulla turpis at ex. Donec hendrerit facilisis nisl at fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac. Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum. Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed varius neque nunc, sed pulvinar neque lobortis posuere.</p>
-      <Panel 
-        open={open} 
-        sdsType="overlay" 
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+        facilisis tortor et pellentesque pulvinar. Ut at convallis ipsum. Nullam
+        scelerisque tempor arcu, quis pretium magna semper eu. Nam hendrerit
+        lectus in enim scelerisque, sed ornare sapien consequat. Proin sed
+        congue quam. Integer consequat elit tristique sodales rhoncus. In
+        bibendum dolor sit amet erat porta, nec posuere nibh consectetur. Cras
+        scelerisque interdum eros ut porta. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada fames ac turpis egestas. Ut in
+        lacus et mi efficitur scelerisque. Pellentesque congue purus eu feugiat
+        cursus. Phasellus urna massa, sollicitudin id elit et, efficitur
+        faucibus nibh.
+      </p>
+      <p>
+        Nam sit amet tortor varius, lacinia velit quis, lacinia metus. Quisque
+        dictum, nulla at luctus fringilla, ligula diam fringilla nisl, non
+        consequat nulla turpis at ex. Donec hendrerit facilisis nisl at
+        fringilla. Pellentesque posuere tortor ac ante luctus, at euismod augue
+        vulputate. Vivamus pretium pretium nisi, non convallis nunc volutpat ac.
+        Nam finibus justo leo, vel pellentesque velit gravida vel. Sed in turpis
+        non sem efficitur eleifend vel ac lacus. Sed volutpat feugiat dictum.
+        Pellentesque tristique mollis magna sit amet vestibulum. Nulla ac tellus
+        eu orci volutpat congue. In vitae dolor et est feugiat fringilla. Sed
+        varius neque nunc, sed pulvinar neque lobortis posuere.
+      </p>
+      <Panel
+        open={open}
+        sdsType="overlay"
         closeButtonOnClick={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
         CloseButtonComponent={CloseButton}
@@ -822,13 +929,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -849,14 +955,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

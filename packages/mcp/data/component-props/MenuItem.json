@@ -1,18 +1,9 @@
 {
   "MenuItem": {
     "props": {
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "children": {
+      "column": {
         "type": "ReactNode",
-        "isRequired": false,
-        "description": "The content of the component."
+        "isRequired": false
       },
       "disabled": {
         "type": "\"false\" | \"true\"",
@@ -20,38 +11,13 @@
         "description": "If `true`, the component is disabled.",
         "defaultValue": "false\nfalse"
       },
-      "value": {
-        "type": "\"string\" | \"number\" | \"readonly string[]\"",
-        "isRequired": false
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLLIElement>",
-        "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "column": {
-        "type": "ReactNode",
+      "icon": {
+        "type": "any",
         "isRequired": false
       },
       "isMultiSelect": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
-      },
-      "icon": {
-        "type": "any",
-        "isRequired": false
-      },
-      "sdsIcon": {
-        "type": "any",
-        "isRequired": false,
-        "description": "@deprecated Use `icon` instead.\n(masoudmanson): This prop is deprecated and will be removed in the next major version.\nPlease replace instances of `sdsIcon` with `icon`."
       },
       "sdsIconProps": {
         "type": "IconProps<IconName>",
@@ -59,13 +25,17 @@
       },
       "sdsStyle": {
         "type": "\"determinate\" | \"indeterminate\"",
-        "isRequired": false,
-        "description": "The visual style variant of the component"
+        "isRequired": false
       },
       "sdsType": {
         "type": "\"action\" | \"default\"",
+        "isRequired": false
+      },
+      "selected": {
+        "type": "\"false\" | \"true\"",
         "isRequired": false,
-        "description": "The type/variant of the component"
+        "description": "If `true`, the component is selected.",
+        "defaultValue": false
       }
     }
   }

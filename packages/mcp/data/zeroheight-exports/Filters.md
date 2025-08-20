@@ -4,15 +4,15 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Filters are comprised of a Dropdown Input which serves as a clickable Filter label combined with a Dropdown Menu to show the Filter Input options when the Filter Label is active, and Tags to display which options are currently being filtered on. The Dropdown Menu activated when the Filter Label is clicked displays the Filter Input options available.
 
 Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered on.
 
 | **Closed** | **Open** | **Active** |
-| --- | --- | --- |
+| ---------- | -------- | ---------- |
 
 ### Filter Variants
 
@@ -38,12 +38,12 @@ Filtering logic is handled at the product level; however, this section offers so
 
 ## Filter Components
 
-| Below you will find an interactive Storybook iframe for Filters.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** FilterComplex |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Filters. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** FilterComplex |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------ |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### FilterComplex
 
@@ -57,15 +57,15 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Filters are comprised of a Dropdown Input which serves as a clickable Filter label combined with a Dropdown Menu to show the Filter Input options when the Filter Label is active, and Filter Tags to display which options are currently being filtered on.
 
 The Dropdown Menu that is activated when the Filter Label is clicked displays the Filter Input options available and, depending on the needs of the dataset, can be Single-select (Radio Lockup), Multi-select (Checkbox Lockup), or a Range (Slider). Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered on.
 
 | **Closed** | **Open** | **Active** |
-| --- | --- | --- |
+| ---------- | -------- | ---------- |
 
 ### Filter Variants
 
@@ -75,7 +75,7 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 
 ---
 
- 
+
 
 ### Filter Example
 
@@ -99,12 +99,12 @@ Filtering logic is handled at the product level, however, this section offers so
 
 ## Filter Components
 
-| Below you will find an interactive Storybook iframe for Filters.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** FilterComplex |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Filters. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** FilterComplex |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------ |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### FilterComplex
 
@@ -118,15 +118,15 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ## Filter Variants
 
-| Filters come in two different variants for designers to use depending on the filtering needs of the dataset the filter applies to. Simple Filters are used when the dataset has few filter options and there is space within the layout to fit them all, whereas Complex Filters are used when there are multiple filters needed to fit into one layout, necessitating a more compact design.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Filter for any given use case. |   | **Jump to variant:** Simple Complex Filtering Logic |
-| --- | --- | --- |
+| Filters come in two different variants for designers to use depending on the filtering needs of the dataset the filter applies to. Simple Filters are used when the dataset has few filter options and there is space within the layout to fit them all, whereas Complex Filters are used when there are multiple filters needed to fit into one layout, necessitating a more compact design. Follow the usage criteria accompanying each variant as a guide for selecting the correct Filter for any given use case. |     | **Jump to variant:** Simple Complex Filtering Logic |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------- |
 
 ---
 
 ## Simple Filter
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use the Simple Filter when there are only a few options to filter on or there are only a few filter categories needed for a given dataset. Simple Filters are comprised of a Filter Label combined with a Filter Input that is Single-select (Radio Lockup), Multi-select (Checkbox Lockup), or a Range (Slider) depending on the filtering needs of the dataset. In contrast to Complex Filters which keep filter options contained within a Dropdown Menu, Simple Filters have all of the options for each filter exposed in the UI and viewable by the user. Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered.
 
@@ -138,7 +138,7 @@ Use the Simple Filter when there are only a few options to filter on or there ar
 
 The example below shows Simple Filters being used as part of a Basic Panel in CZ ID.
 
- 
+
 
 ---
 
@@ -150,15 +150,15 @@ These rules establish how much margin should exist between and around elements.
 
 ## Complex Filter
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use the Complex Filter when there are multiple filters needed to fit into one layout, necessitating a more compact design than a Simple Filter would allow for. Complex Filters are comprised of a Dropdown Input which serves as a clickable Filter Label combined with a Dropdown Menu to show the Filter Input options when the Filter Label is active, and Filter Tags to display which options are currently being filtered on.
 
 The Dropdown Menu that is activated when the Filter Label is clicked displays the Filter Input options available and, depending on the needs of the dataset, can be Single-select (Radio Lockup), Multi-select (Checkbox Lockup), or a Range (Slider). Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered on.
 
 | **Closed** | **Open** | **Active** |
-| --- | --- | --- |
+| ---------- | -------- | ---------- |
 
 ### Complex Filter Variants
 
@@ -170,7 +170,7 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 
 ---
 
- 
+
 
 ### Complex Filter Example
 
@@ -194,8 +194,8 @@ Filtering logic is handled at the product level, however, this section offers so
 
 ## Filter Components
 
-| Below you will find an interactive Storybook iframe for Panels.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** FilterSimple FilterComplex |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Panels. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** FilterSimple FilterComplex |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------- |
 
 ---
 
@@ -215,8 +215,8 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ## Filter Components
 
-| There are two Filter components available to use depending on the filtering needs of the dataset. Simple Filter is used when the dataset has few filters and there is space within the layout to fit them all, whereas Complex Filter is used when there are many filters needed to fit into one layout, necessitating a more compact design. |   | **Jump to component:** Simple Filter Complex Filter |
-| --- | --- | --- |
+| There are two Filter components available to use depending on the filtering needs of the dataset. Simple Filter is used when the dataset has few filters and there is space within the layout to fit them all, whereas Complex Filter is used when there are many filters needed to fit into one layout, necessitating a more compact design. |     | **Jump to component:** Simple Filter Complex Filter |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------- |
 
 ### Visual Preview
 
@@ -224,12 +224,12 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ## Simple Filter
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
->**Note:** Live instance for Simple Filter will be added soon.
+> **Note:** Live instance for Simple Filter will be added soon.
 
 ---
 
@@ -238,7 +238,7 @@ Filters are used to narrow down large amounts of data based on specific criteria
 Use Simple Filter when there are only a few filter categories or a few options per category needed for a given dataset. Simple Filter is comprised of a label combined with an input that is Single-select (Radio Input), Multi-select (Checkbox Input), or a Range (Slider) depending on the filtering needs of the dataset. It has all of the options for each filter exposed in the UI and viewable by the user. Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered.
 
 | Single-select | Multi-select | Range |
-| --- | --- | --- |
+| ------------- | ------------ | ----- |
 
 ---
 
@@ -256,8 +256,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Complex Filter
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -274,12 +274,12 @@ Use Complex Filter when there are many filters needed to fit into one layout, ne
 The Dropdown Menu triggered when the Dropdown Input is clicked can be Single-select, Multi-select, or a Range (Slider) depending on the needs of the dataset. Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered on.
 
 | Single-select | Single-select + Search | Multi-select | Multi-select + Search | Range |
-| --- | --- | --- | --- | --- |
+| ------------- | ---------------------- | ------------ | --------------------- | ----- |
 
 #### **Complex Filter states**
 
 | Closed | Open | Active |
-| --- | --- | --- |
+| ------ | ---- | ------ |
 
 ---
 
@@ -303,18 +303,18 @@ Filtering logic is handled at the product level, however, this section offers so
 
 ## Filter Components
 
-| There are two `Filter` components available to use depending on the filtering needs of the dataset. `SimpleFilter` is used when the dataset has few filters and there is space within the layout to fit them all, whereas `ComplexFilter` is used when there are many filters needed to fit into one layout, necessitating a more compact design. |   | **Jump to component:** SimpleFilter ComplexFilter |
-| --- | --- | --- |
+| There are two `Filter` components available to use depending on the filtering needs of the dataset. `SimpleFilter` is used when the dataset has few filters and there is space within the layout to fit them all, whereas `ComplexFilter` is used when there are many filters needed to fit into one layout, necessitating a more compact design. |     | **Jump to component:** SimpleFilter ComplexFilter |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
 ## SimpleFilter
 
->**Note:** Code details for `SimpleFilter` will be added soon.
+> **Note:** Code details for `SimpleFilter` will be added soon.
 
 ---
 
@@ -328,21 +328,21 @@ The component's source code in the SDS codebase can be found here.
 
 The `ComplexFilter` is not directly based on any MUI component, but it does use the SDS `Dropdown` component, which in turn is ultimately based on MUI's `Autocomplete` component. As such, props that are available to either SDS's `Dropdown` and / or MUI's `Autocomplete` can be passed to `ComplexFilter` as such:
 
-* **`DropdownMenuProps`****:** use this prop to pass MUI`Autocomplete`-specific props to `ComplexFilter`  
-* **`InputDropdownProps`****:** use this prop to pass SDS `InputDropdown`-specific props to `ComplexFilter`  
+- **`DropdownMenuProps`\*\***:\*\* use this prop to pass MUI`Autocomplete`-specific props to `ComplexFilter`
+- **`InputDropdownProps`\*\***:\*\* use this prop to pass SDS `InputDropdown`-specific props to `ComplexFilter`
 
 ### Props
 
 Any custom SDS props and MUI props required for implementation are found in the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `isTriggerChangeOnOptionClick` | `bool` | `false` | Determines whether changes are triggered in real-time upon clicking an option |
-| `keepSearchOnSelect` | `bool` |   | Maintains a search input when a user selects an option (only if multiple selections are allowed via the `multiple`  prop; otherwise the dropdown closes upon selection) |
-| `label` | `string` | `""` | Sets the label of filter, shown both when closed and open |
-| `multiple` | `bool` | `false` | Defines whether multiple selections or can be made from the filter simultaneously or only one |
-| `onChange` | `func` | `-` | Function to set what happens when a new value is set via the filter |
-| `search` | `bool` | `false` | Provides a search bar at the top of the filter from which users can narrow the list of menu items |
+| Name                           | Type     | Default | Description                                                                                                                                                            |
+| ------------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isTriggerChangeOnOptionClick` | `bool`   | `false` | Determines whether changes are triggered in real-time upon clicking an option                                                                                          |
+| `keepSearchOnSelect`           | `bool`   |         | Maintains a search input when a user selects an option (only if multiple selections are allowed via the `multiple` prop; otherwise the dropdown closes upon selection) |
+| `label`                        | `string` | `""`    | Sets the label of filter, shown both when closed and open                                                                                                              |
+| `multiple`                     | `bool`   | `false` | Defines whether multiple selections or can be made from the filter simultaneously or only one                                                                          |
+| `onChange`                     | `func`   | `-`     | Function to set what happens when a new value is set via the filter                                                                                                    |
+| `search`                       | `bool`   | `false` | Provides a search bar at the top of the filter from which users can narrow the list of menu items                                                                      |
 
 ### Code Examples
 
@@ -375,13 +375,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -397,35 +395,34 @@ const MENU_ITEMS: DefaultDropdownMenuOption[] = [
   {
     name: "Fruit: Apple",
     section: "Fruit",
-    count: 10
+    count: 10,
   },
   {
     name: "Fruit: Cherry",
     section: "Fruit",
-    count: 150
+    count: 150,
   },
   {
     name: "Fruit: Orange",
     section: "Fruit",
-    count: 15
+    count: 15,
   },
   {
     name: "Vegetable: Carrot",
     section: "Vegetable",
-    count: 34
+    count: 34,
   },
   {
     name: "Vegetable: Kale",
-    section: "Vegetable"
+    section: "Vegetable",
   },
   {
     name: "Vegetable: Lettuce",
-    section: "Vegetable"
+    section: "Vegetable",
   },
 ];
 
 function App() {
-  
   return (
     <div className="app">
       <ComplexFilter
@@ -477,13 +474,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -504,13 +500,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -544,13 +551,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -566,35 +571,34 @@ const MENU_ITEMS: DefaultDropdownMenuOption[] = [
   {
     name: "Fruit: Apple",
     section: "Fruit",
-    count: 10
+    count: 10,
   },
   {
     name: "Fruit: Cherry",
     section: "Fruit",
-    count: 150
+    count: 150,
   },
   {
     name: "Fruit: Orange",
     section: "Fruit",
-    count: 15
+    count: 15,
   },
   {
     name: "Vegetable: Carrot",
     section: "Vegetable",
-    count: 34
+    count: 34,
   },
   {
     name: "Vegetable: Kale",
-    section: "Vegetable"
+    section: "Vegetable",
   },
   {
     name: "Vegetable: Lettuce",
-    section: "Vegetable"
+    section: "Vegetable",
   },
 ];
 
 function App() {
-  
   return (
     <div className="app">
       <ComplexFilter
@@ -652,13 +656,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -679,13 +682,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -719,13 +733,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -741,35 +753,34 @@ const MENU_ITEMS: DefaultDropdownMenuOption[] = [
   {
     name: "Fruit: Apple",
     section: "Fruit",
-    count: 10
+    count: 10,
   },
   {
     name: "Fruit: Cherry",
     section: "Fruit",
-    count: 150
+    count: 150,
   },
   {
     name: "Fruit: Orange",
     section: "Fruit",
-    count: 15
+    count: 15,
   },
   {
     name: "Vegetable: Carrot",
     section: "Vegetable",
-    count: 34
+    count: 34,
   },
   {
     name: "Vegetable: Kale",
-    section: "Vegetable"
+    section: "Vegetable",
   },
   {
     name: "Vegetable: Lettuce",
-    section: "Vegetable"
+    section: "Vegetable",
   },
 ];
 
 function App() {
-  
   return (
     <div className="app">
       <ComplexFilter
@@ -828,13 +839,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -855,14 +865,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

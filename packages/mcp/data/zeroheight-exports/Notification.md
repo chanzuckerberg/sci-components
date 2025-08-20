@@ -6,15 +6,15 @@ Notifications appear outside of the flow of the page to highlight information to
 
 ## Notification Variants
 
-| Notifications come in two different variants for designers to use depending on the type of information they need to display and whether they want the user to have the ability to manually dismiss them or not. All Notification variants can be set to automatically dismiss after a designated period of time (8 seconds by default).  Notifications appear outside of the flow of the page on top of other elements as opposed to Callouts which appear within the page's flow.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Notification for any given use case. |   | **Jump to variant:** Persistent Dismissible Intent Variations |
-| --- | --- | --- |
+| Notifications come in two different variants for designers to use depending on the type of information they need to display and whether they want the user to have the ability to manually dismiss them or not. All Notification variants can be set to automatically dismiss after a designated period of time (8 seconds by default). Notifications appear outside of the flow of the page on top of other elements as opposed to Callouts which appear within the page's flow. Follow the usage criteria accompanying each variant as a guide for selecting the correct Notification for any given use case. |     | **Jump to variant:** Persistent Dismissible Intent Variations |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------- |
 
 ---
 
 ## Notification
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Persistent Notification
 
@@ -40,7 +40,7 @@ A Minimal Button can be added to the Notification if additional action from the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
@@ -63,27 +63,27 @@ There are four different intents that all Notification variants can communicate�
 Each intent is demonstrated below using the Persistent Notification for reference. Regardless of variant, the colors and icons used are the same:
 
 | **Error** | **Info** |
-| --- | --- |
+| --------- | -------- |
 
 | **Success** | **Warning** |
-| --- | --- |
+| ----------- | ----------- |
 
 ## Code
 
 ## Notification Component
 
-| Below you will find an interactive Storybook iframe for Notifications.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Notification |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Notifications. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Notification |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ----------------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### Notification
 
 Storybook
 
- 
+
 
 ---
 
@@ -93,15 +93,15 @@ Notifications appear outside of the flow of the page to highlight information to
 
 ## Notification Variants
 
-| Notifications come in two different variants for designers to use depending on the type of information they need to display and whether they want the user to have the ability to manually dismiss them or not. All Notification variants can be set to automatically dismiss after a designated period of time (8 seconds by default).  Notifications appear outside of the flow of the page on top of other elements as opposed to Callouts which appear within the page's flow.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Notification for any given use case. |   | **Jump to variant:** Persistent Dismissible Intent Variations |
-| --- | --- | --- |
+| Notifications come in two different variants for designers to use depending on the type of information they need to display and whether they want the user to have the ability to manually dismiss them or not. All Notification variants can be set to automatically dismiss after a designated period of time (8 seconds by default). Notifications appear outside of the flow of the page on top of other elements as opposed to Callouts which appear within the page's flow. Follow the usage criteria accompanying each variant as a guide for selecting the correct Notification for any given use case. |     | **Jump to variant:** Persistent Dismissible Intent Variations |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------- |
 
 ---
 
 ## Notification
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Persistent Notification
 
@@ -117,7 +117,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
- 
+
 
 ### Dismissible Notification
 
@@ -127,7 +127,7 @@ A Minimal Button can be added to the Notification if additional action from the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
@@ -150,17 +150,17 @@ There are four different intents that all Notification variants can communicate�
 Each intent is demonstrated below using the Persistent Notification for reference. Regardless of variant, the colors and icons used are the same:
 
 | **Error** | **Info** |
-| --- | --- |
+| --------- | -------- |
 
 | **Success** | **Warning** |
-| --- | --- |
+| ----------- | ----------- |
 
 ## Code
 
 ## Notification Component
 
-| Below you will find an interactive Storybook iframe for Notifications.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Notification |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Notifications. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Notification |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ----------------------------------- |
 
 ---
 
@@ -168,7 +168,7 @@ Each intent is demonstrated below using the Persistent Notification for referenc
 
 Storybook
 
- 
+
 
 ---
 
@@ -178,8 +178,8 @@ Notifications appear outside of the flow of the page to highlight information to
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Notification Variants
 
@@ -204,7 +204,7 @@ Use when communicating information that is intended to remain persistent on the 
 A Minimal Button can be added to the Notification if additional action from the user is possible or necessary; the Button is positioned to the right by default, but can optionally be positioned to the left. Relevant components or additional text can be included in the content module block as necessary.
 
 | Default | Default + Button | Default + Content Module | Default + Content Module + Button |
-| --- | --- | --- | --- |
+| ------- | ---------------- | ------------------------ | --------------------------------- |
 
 ---
 
@@ -215,7 +215,7 @@ Use when communicating information that is manually dismissible by the user and 
 A Minimal Button can be added to the Notification if additional action from the user is possible or necessary; the Button is positioned to the right by default, but can optionally be positioned to the left. Relevant components or additional text can be included in the content module block as necessary.
 
 | Default | Default + Button | Default + Content Module | Default + Content Module + Button |
-| --- | --- | --- | --- |
+| ------- | ---------------- | ------------------------ | --------------------------------- |
 
 ---
 
@@ -232,11 +232,11 @@ There are four different intents that all Notifications can communicate—Info, 
 Each intent is demonstrated below using the Persistent variant for reference. Regardless of variant, the colors and icons used are the same:
 
 | Info | Negative | Notice | Positive |
-| --- | --- | --- | --- |
+| ---- | -------- | ------ | -------- |
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## Notification
 
@@ -246,40 +246,38 @@ The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-The SDS `Notification` component is built upon the MUI `Alert`  component (as is the SDS `Callout` component), but has some notable differences:
+The SDS `Notification` component is built upon the MUI `Alert` component (as is the SDS `Callout` component), but has some notable differences:
 
-* **Color:** SDS's `Notification` component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"info"`, `"error"`, `"success"`, or `"warning"`. MUI's `Alert`  instead uses the `severity` prop for this purpose (although `severity`  can also be used for SDS's `Notification`, and will take the same values as `intent`,  this is not recommended)
-* **Title:** In MUI's `Alert` component, an `AlertTitle` component (that holds the title text) is added within the `Alert` component. However, SDS's `Notification` doesn't need the `AlertTitle` component, although it can take one; doing so won't change the style of the text it wraps. Instead of setting the `Notification`'s  title with `AlertTitle`,  wrap the title text directly within the `Notification` component, and append any additional (non-title) text using the `extraContent` variable
-* **Transition:** The SDS `Notification` component is set up by default to use the `Slide` component, with `"left"`  as its default value; alternatively, it accepts `"right"` as a value
-* **Icon:** Like with MUI's `Alert`, SDS's `Notification` also shows an icon to the left of the title text; this can be changed manually (it also changes automatically based on the `intent` setting; see first bullet). The format for setting the `icon` prop for SDS's `Notification` is slightly different than for MUI in that it invokes the `Icon` component:
+- **Color:** SDS's `Notification` component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"info"`, `"error"`, `"success"`, or `"warning"`. MUI's `Alert` instead uses the `severity` prop for this purpose (although `severity` can also be used for SDS's `Notification`, and will take the same values as `intent`, this is not recommended)
+- **Title:** In MUI's `Alert` component, an `AlertTitle` component (that holds the title text) is added within the `Alert` component. However, SDS's `Notification` doesn't need the `AlertTitle` component, although it can take one; doing so won't change the style of the text it wraps. Instead of setting the `Notification`'s title with `AlertTitle`, wrap the title text directly within the `Notification` component, and append any additional (non-title) text using the `extraContent` variable
+- **Transition:** The SDS `Notification` component is set up by default to use the `Slide` component, with `"left"` as its default value; alternatively, it accepts `"right"` as a value
+- **Icon:** Like with MUI's `Alert`, SDS's `Notification` also shows an icon to the left of the title text; this can be changed manually (it also changes automatically based on the `intent` setting; see first bullet). The format for setting the `icon` prop for SDS's `Notification` is slightly different than for MUI in that it invokes the `Icon` component:
 
-	`icon={<Icon sdsSize="l" sdsIcon="download"` `sdsType="static"` `/>`
+  `icon={<Icon sdsSize="l" sdsIcon="download"` `sdsType="static"` `/>`
 
-	Additionally, the `iconMapping` prop does not work to change icons associated to `intent` or `severity` for SDS's `Notification`.
+  Additionally, the `iconMapping` prop does not work to change icons associated to `intent` or `severity` for SDS's `Notification`.
 
-* **Variant****:** SDS does not support the `variant` prop. However, MUI's `Alert` does, and offers two options: `outlined`, which removes the background color but adds a colored border to the alert, and `filled`,  which changes the background color to a more saturated color of the same hue. If the `variant` prop is used in SDS's `Notification` , only `variant="outline"` will have an affect (it will add the colored border, but will also maintain the original background color, whereas MUI's `Alert` removes the background color with this setting)
-
- 
+- **Variant\*\***:\*\* SDS does not support the `variant` prop. However, MUI's `Alert` does, and offers two options: `outlined`, which removes the background color but adds a colored border to the alert, and `filled`, which changes the background color to a more saturated color of the same hue. If the `variant` prop is used in SDS's `Notification` , only `variant="outline"` will have an affect (it will add the colored border, but will also maintain the original background color, whereas MUI's `Alert` removes the background color with this setting)
 
 ### MUI Documentation
 
-Documentation for the underlying MUI `Alert`  component can be found here.
+Documentation for the underlying MUI `Alert` component can be found here.
 
 ### Props
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `autoDismiss` | `bool | number` | `8000 ms` | Determines the auto-dismiss behavior of the component. If set to `true`, the notification will automatically dismiss after `8000 ms`. If set to a number, it specifies the exact duration in milliseconds for auto-dismiss. If set to `false`, the notification will not auto-dismiss. |
-| `buttonOnClick`	 | `(event: React.SyntheticEvent) => void` | `-` | A callback function to be executed when the button within the notification is clicked. |
-| `buttonText` | `string` | `-` | The text displayed on the button within the notification.  |
-| `dismissed` | `bool` | `-` | Controls the dismissed state of the notification. When set to true, the notification will be hidden. You can use this prop to programmatically dismiss the notification. |
-| `onClose` | `function(event: React.SyntheticEvent) => void` | `-` | Callback fired when the component requests to be closed. When provided and no action prop is set, a close icon button is displayed that triggers the callback when clicked. |
-| `slideDirection` | `"left" | "right"` | `"left"` | Specifies the direction from which the notification will slide into view when it appears.  |
-| `intent` | `"info"` `| "negative"` `| "positive"` `| "notice"` | `"positive"` | Defines the intent or purpose of the notification. |
-| `icon` | `ReactNode | Partial<SdsIconProps>` | `-` | icon displayed to the left of the `Notification` title. |
-| `sdsIconProps` | `Partial<SdsIconProps>` | `-` | The props for the icon if an SDS icon is used. |
+| Name             | Type                                            | Default                | Description                                                                                                                                                                 |
+| ---------------- | ----------------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------------------------------- |
+| `autoDismiss`    | `bool                                           | number`                | `8000 ms`                                                                                                                                                                   | Determines the auto-dismiss behavior of the component. If set to `true`, the notification will automatically dismiss after `8000 ms`. If set to a number, it specifies the exact duration in milliseconds for auto-dismiss. If set to `false`, the notification will not auto-dismiss. |
+| `buttonOnClick`  | `(event: React.SyntheticEvent) => void`         | `-`                    | A callback function to be executed when the button within the notification is clicked.                                                                                      |
+| `buttonText`     | `string`                                        | `-`                    | The text displayed on the button within the notification.                                                                                                                   |
+| `dismissed`      | `bool`                                          | `-`                    | Controls the dismissed state of the notification. When set to true, the notification will be hidden. You can use this prop to programmatically dismiss the notification.    |
+| `onClose`        | `function(event: React.SyntheticEvent) => void` | `-`                    | Callback fired when the component requests to be closed. When provided and no action prop is set, a close icon button is displayed that triggers the callback when clicked. |
+| `slideDirection` | `"left"                                         | "right"`               | `"left"`                                                                                                                                                                    | Specifies the direction from which the notification will slide into view when it appears.                                                                                                                                                                                              |
+| `intent`         | `"info"` `                                      | "negative"` `          | "positive"` `                                                                                                                                                               | "notice"`                                                                                                                                                                                                                                                                              | `"positive"` | Defines the intent or purpose of the notification. |
+| `icon`           | `ReactNode                                      | Partial<SdsIconProps>` | `-`                                                                                                                                                                         | icon displayed to the left of the `Notification` title.                                                                                                                                                                                                                                |
+| `sdsIconProps`   | `Partial<SdsIconProps>`                         | `-`                    | The props for the icon if an SDS icon is used.                                                                                                                              |
 
 ### Code examples
 
@@ -312,13 +310,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -328,7 +324,7 @@ h1 {
 
 ```tsx
 // Most minimal Notification (just has the basic requirements)
-      
+
 import { Notification } from "@czi-sds/components";
 import "./styles.css";
 
@@ -382,13 +378,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -409,13 +404,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -449,13 +455,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -473,9 +477,8 @@ function App() {
       <Notification>
         Notification Title
         <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Amet eveniet sapiente, officiis aut possimus suscipit
-          assumenda non?
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet eveniet
+          sapiente, officiis aut possimus suscipit assumenda non?
         </div>
       </Notification>
     </div>
@@ -522,13 +525,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -549,13 +551,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -589,13 +602,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -611,13 +622,14 @@ function App() {
   return (
     <div className="app">
       <Notification
-        onClose={(event) => {console.log("Notification closed!")}}
+        onClose={(event) => {
+          console.log("Notification closed!");
+        }}
       >
         Notification Title
         <div>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Amet eveniet sapiente, officiis aut possimus suscipit
-          assumenda non?
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet eveniet
+          sapiente, officiis aut possimus suscipit assumenda non?
         </div>
       </Notification>
     </div>
@@ -664,13 +676,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -691,18 +702,29 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
-#### Notification with Embedded Button 
+#### Notification with Embedded Button
 
 A `Notification` component that has an integrated `Button` that closes the notification when clicked.
 
@@ -731,13 +753,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -753,12 +773,11 @@ import "./styles.css";
 function App() {
   const [dismissed, setDismissed] = useState(false);
   const handleClick = () => {
-    setDismissed(prev => !prev);
-  }
+    setDismissed((prev) => !prev);
+  };
   return (
     <div className="app">
-      {
-        !dismissed ?
+      {!dismissed ? (
         <Notification
           buttonText="Close"
           buttonOnClick={(event) => setDismissed(true)}
@@ -767,13 +786,15 @@ function App() {
         >
           Notification Title
           <div>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Amet eveniet sapiente, officiis aut possimus suscipit
-            assumenda non?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet
+            eveniet sapiente, officiis aut possimus suscipit assumenda non?
           </div>
-        </Notification> : 
-        <Button onClick={handleClick} sdsType="primary" sdsStyle="rounded">Reset Notification</Button>
-      }
+        </Notification>
+      ) : (
+        <Button onClick={handleClick} sdsType="primary" sdsStyle="rounded">
+          Reset Notification
+        </Button>
+      )}
     </div>
   );
 }
@@ -818,13 +839,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -845,14 +865,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

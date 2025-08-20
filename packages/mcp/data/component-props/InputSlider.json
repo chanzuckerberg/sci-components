@@ -1,55 +1,41 @@
 {
   "InputSlider": {
     "props": {
-      "className": {
-        "type": "string",
-        "isRequired": false,
-        "description": "@ignore"
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "color": {
-        "type": "\"primary\" | \"secondary\" | \"error\" | \"info\" | \"success\" | \"warning\"",
-        "isRequired": false,
-        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
-        "defaultValue": "primary"
-      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false,
         "description": "If `true`, the component is disabled.",
         "defaultValue": false
       },
-      "name": {
-        "type": "string",
+      "marks": {
+        "type": "\"false\" | \"true\" | \"Mark[]\"",
         "isRequired": false,
-        "description": "Name attribute of the hidden `input` element."
+        "description": "Marks indicate predetermined values to which the user can move the slider.\nIf `true` the marks are spaced according the value of the `step` prop.\nIf an array, it should contain objects with `value` and an optional `label` keys.",
+        "defaultValue": false
       },
-      "onChange": {
-        "type": "(event: Event, value: number | number[], activeThumb: number) => void",
+      "max": {
+        "type": "number",
         "isRequired": false,
-        "description": "Callback function that is fired when the slider's value changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (any).\n**Warning**: This is a generic event not a change event.\n@param value The new value.\n@param activeThumb Index of the currently moved thumb."
+        "description": "The maximum allowed value of the slider.\nShould not be equal to min.",
+        "defaultValue": 100
       },
-      "size": {
-        "type": "\"small\" | \"medium\"",
+      "min": {
+        "type": "number",
         "isRequired": false,
-        "description": "The size of the slider.",
-        "defaultValue": "medium"
+        "description": "The minimum allowed value of the slider.\nShould not be equal to max.",
+        "defaultValue": 0
       },
-      "value": {
-        "type": "\"number\" | \"number[]\"",
+      "step": {
+        "type": "number",
         "isRequired": false,
-        "description": "The value of the slider.\nFor ranged sliders, provide an array with two values."
+        "description": "The granularity with which the slider can step through values. (A \"discrete\" slider.)\nThe `min` prop serves as the origin for the valid values.\nWe recommend (max - min) to be evenly divisible by the step.\n\nWhen step is `null`, the thumb can only be slid onto marks provided with the `marks` prop.",
+        "defaultValue": 1
       },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
+      "valueLabelDisplay": {
+        "type": "\"on\" | \"auto\" | \"off\"",
+        "isRequired": false,
+        "description": "Controls when the value label is displayed:\n\n- `auto` the value label will display when the thumb is hovered or focused.\n- `on` will display persistently.\n- `off` will never display.",
+        "defaultValue": "off"
       }
     }
   }

@@ -17,84 +17,87 @@ interface ComponentDocsContext {
 /**
  * Maps a component name to the corresponding Zeroheight file using manual mapping
  */
-function mapComponentToFile(componentName: string, exportedFiles: string[]): string | null {
+function mapComponentToFile(
+  componentName: string,
+  exportedFiles: string[]
+): string | null {
   // Manual mapping of component names to Zeroheight file names
   const componentToFileMap: Record<string, string> = {
     // Button components
-    'Button': 'Buttons',
-    'ButtonDropdown': 'Buttons', 
-    'ButtonIcon': 'Buttons',
-    'ButtonToggle': 'Buttons',
-    
+    Button: "Buttons",
+    ButtonDropdown: "Buttons",
+    ButtonIcon: "Buttons",
+    ButtonToggle: "Buttons",
+
     // Table components
-    'TableHeader': 'Table',
-    'TableRow': 'Table',
-    
+    TableHeader: "Table",
+    TableRow: "Table",
+
     // Input components
-    'InputCheckbox': 'Control-Inputs',
-    'InputRadio': 'Control-Inputs',
-    'InputToggle': 'Control-Inputs',
-    'InputText': 'Field-Inputs',
-    'InputDropdown': 'Dropdown-Input',
-    'InputSearch': 'Search-Input',
-    'InputSlider': 'Control-Inputs',
-    
+    InputCheckbox: "Control-Inputs",
+    InputRadio: "Control-Inputs",
+    InputToggle: "Control-Inputs",
+    InputText: "Field-Inputs",
+    InputDropdown: "Dropdown-Input",
+    InputSearch: "Search-Input",
+    InputSlider: "Control-Inputs",
+
     // Dropdown components
-    'Dropdown': 'Dropdown-Menu',
-    'DropdownMenu': 'Dropdown-Menu',
-    
+    Dropdown: "Dropdown-Menu",
+    DropdownMenu: "Dropdown-Menu",
+
     // Content components
-    'ContentCard': 'Content-Card',
-    'LoadingIndicator': 'Loading-Indicator',
-    
+    ContentCard: "Content-Card",
+    LoadingIndicator: "Loading-Indicator",
+
     // Navigation components
-    'NavigationFooter': 'Navigation',
-    'NavigationHeader': 'Navigation',
-    'NavigationJumpTo': 'Navigation',
-    
+    NavigationFooter: "Navigation",
+    NavigationHeader: "Navigation",
+    NavigationJumpTo: "Navigation",
+
     // Control components
-    'SegmentedControl': 'Segmented-Control',
-    
+    SegmentedControl: "Segmented-Control",
+
     // List and menu components
-    'List': 'Lists',
-    'Menu': 'Dropdown-Menu',
-    'MenuItem': 'Dropdown-Menu',
-    'MenuSelect': 'Dropdown-Menu',
-    
+    List: "Lists",
+    Menu: "Dropdown-Menu",
+    MenuItem: "Dropdown-Menu",
+    MenuSelect: "Dropdown-Menu",
+
     // Tag components
-    'Tag': 'Tags',
-    'TagFilter': 'Tags',
-    
+    Tag: "Tags",
+    TagFilter: "Tags",
+
     // Tooltip components
-    'Tooltip': 'Tooltips',
-    'TooltipCondensed': 'Tooltips',
-    'TooltipTable': 'Tooltips',
-    
+    Tooltip: "Tooltips",
+    TooltipCondensed: "Tooltips",
+    TooltipTable: "Tooltips",
+
     // Table Cell components
-    'CellBasic': 'Table',
-    'CellComponent': 'Table', 
-    'CellHeader': 'Table',
-    
+    CellBasic: "Table",
+    CellComponent: "Table",
+    CellHeader: "Table",
+
     // Filter components
-    'ComplexFilter': 'Filters',
-    
+    ComplexFilter: "Filters",
+
     // Other components
-    'Icon': 'Icons',
-    'Chip': 'Tags', // Chips are often similar to tags
-    'Pagination': 'Navigation', // Pagination is often part of navigation
+    Icon: "Icons",
+    Chip: "Tags", // Chips are often similar to tags
+    Pagination: "Navigation", // Pagination is often part of navigation
   };
-  
+
   // Check manual mapping first
   const mappedFile = componentToFileMap[componentName];
   if (mappedFile && exportedFiles.includes(mappedFile)) {
     return `${mappedFile}.md`;
   }
-  
+
   // Fallback to exact match only
   if (exportedFiles.includes(componentName)) {
     return `${componentName}.md`;
   }
-  
+
   return null; // No match found
 }
 
@@ -119,17 +122,20 @@ function getExportedFiles(): string[] {
     }
 
     if (!exportDir) {
-      console.warn('Export directory not found in any expected location. Please run Zeroheight export first.');
+      console.warn(
+        "Export directory not found in any expected location. Please run Zeroheight export first."
+      );
       return [];
     }
-    
-    const files = fs.readdirSync(exportDir)
-      .filter(file => file.endsWith('.md') && file !== 'README.md')
-      .map(file => file.replace('.md', ''));
-    
+
+    const files = fs
+      .readdirSync(exportDir)
+      .filter((file) => file.endsWith(".md") && file !== "README.md")
+      .map((file) => file.replace(".md", ""));
+
     return files;
   } catch (error) {
-    console.warn('Could not read exported files:', error);
+    console.warn("Could not read exported files:", error);
     return [];
   }
 }
@@ -137,8 +143,11 @@ function getExportedFiles(): string[] {
 /**
  * Get list of components that have documentation available
  */
-function getComponentsWithDocs(allComponents: string[], exportedFiles: string[]): string[] {
-  return allComponents.filter(component => {
+function getComponentsWithDocs(
+  allComponents: string[],
+  exportedFiles: string[]
+): string[] {
+  return allComponents.filter((component) => {
     const mappedFile = mapComponentToFile(component, exportedFiles);
     return mappedFile !== null;
   });
@@ -156,11 +165,14 @@ export const getComponentDocsTool: Tool<ComponentDocsContext> = {
         ...componentList["data-viz"],
       ];
       const exportedFiles = getExportedFiles();
-      const componentsWithDocs = getComponentsWithDocs(allComponents, exportedFiles);
-      
-      return { 
+      const componentsWithDocs = getComponentsWithDocs(
+        allComponents,
+        exportedFiles
+      );
+
+      return {
         componentsWithDocs,
-        exportedFiles 
+        exportedFiles,
       };
     } catch (error) {
       throw new Error(
@@ -181,7 +193,7 @@ export const getComponentDocsTool: Tool<ComponentDocsContext> = {
         try {
           // Map component to documentation file
           const mappedFile = mapComponentToFile(component, ctx.exportedFiles);
-          
+
           if (!mappedFile) {
             return {
               content: [
@@ -211,9 +223,9 @@ export const getComponentDocsTool: Tool<ComponentDocsContext> = {
           if (!filePath) {
             throw new Error(`Documentation file ${mappedFile} not found`);
           }
-          
-          const documentation = fs.readFileSync(filePath, 'utf8');
-          
+
+          const documentation = fs.readFileSync(filePath, "utf8");
+
           return {
             content: [
               {

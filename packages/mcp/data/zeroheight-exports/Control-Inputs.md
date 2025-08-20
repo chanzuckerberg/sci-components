@@ -6,15 +6,15 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ## Control Input Variants
 
-| There are two Control Input components available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |   | **Jump to variant:** Checkbox Radio |
-| --- | --- | --- |
+| There are two Control Input components available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection. Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |     | **Jump to variant:** Checkbox Radio |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------- |
 
 ---
 
 ## Checkbox Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Use when the user can select multiple options from a group of choices. Each Checkbox must be coupled with a label to communicate the result of a selection.
 
@@ -23,7 +23,7 @@ Use `sdsStage: indeterminate` to indicate a mixed selection; reserved for cases 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
@@ -31,9 +31,9 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ### Checkbox Lockups
 
-Each Checkbox must be coupled with a label to communicate the result of a selection. 
+Each Checkbox must be coupled with a label to communicate the result of a selection.
 
- 
+
 
 ---
 
@@ -41,21 +41,21 @@ Each Checkbox must be coupled with a label to communicate the result of a select
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ---
 
 ## Radio Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Use when the user can select only one option from a group of choices. Each Radio Input must be coupled with a label to communicate the result of a selection.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
@@ -69,18 +69,18 @@ Each Radio must be coupled with a label to communicate the result of a selection
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
 ## Control Input Components
 
-| Below you will find interactive Storybook iframes for each component within the Control Input element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputCheckbox InputRadio |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Control Input element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputCheckbox InputRadio |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### InputCheckbox
 
@@ -100,8 +100,8 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ## Control Input Variants
 
-| There is a range of Control Input variants available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |   | **Jump to variant:** Checkbox Radio Toggle |
-| --- | --- | --- |
+| There is a range of Control Input variants available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection. Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |     | **Jump to variant:** Checkbox Radio Toggle |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------ |
 
 ### Visual Preview
 
@@ -111,8 +111,8 @@ Use the links below to jump to information on a specific Control Input variant:
 
 ## Checkbox Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Use when the user can select multiple options from a group of choices. Each Checkbox must be coupled with a label (and optional caption) to communicate the result of a selection.
 
@@ -121,15 +121,15 @@ Use `sdsStage: indeterminate` to indicate a mixed selection; reserved for cases 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
- 
+
 
 ---
 
- 
+
 
 ### Checkbox Intent States
 
@@ -140,9 +140,9 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their response needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
- 
+
 
 ### Checkbox Lockups
 
@@ -158,20 +158,20 @@ These rules establish how much margin should exist between and around elements.
 
 ## Radio Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Use when the user can select only one option from a group of choices. Each Radio must be coupled with a label (and optional caption) to communicate the result of a selection.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 | **Default** | **Disabled** |
-| --- | --- |
+| ----------- | ------------ |
 
- 
+
 
 ### Radio Intent States
 
@@ -182,7 +182,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their response needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Radio Lockups
 
@@ -198,15 +198,15 @@ These rules establish how much margin should exist between and around elements.
 
 ## Toggle
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Use to allow the user to flip a setting or option from off to on and vice versa.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
@@ -220,12 +220,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Control Input Components
 
-| Below you will find interactive Storybook iframes for each component within the Control Input element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputCheckbox InputRadio InputToggle InputSlider |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Control Input element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputCheckbox InputRadio InputToggle InputSlider |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### InputCheckbox
 
@@ -251,8 +251,8 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ## Control Input Variants
 
-| There is a range of Control Input variants available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |   | **Jump to variant:** Checkbox Radio Toggle Slider |
-| --- | --- | --- |
+| There is a range of Control Input variants available for designers to use depending on the type of action or response they are needing to elicit from the user. Checkbox and Radio Inputs must always be accompanied by a label that communicates the result of the selection. Follow the usage criteria accompanying each variant as a guide for selecting the correct Control Input for any given use case. |     | **Jump to variant:** Checkbox Radio Toggle Slider |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------- |
 
 ### Visual Preview
 
@@ -262,8 +262,8 @@ Use the links below to jump to information on a specific Control Input variant:
 
 ## Checkbox Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use when the user can select multiple options from a group of choices. Each Checkbox must be coupled with a label (and optional caption) to communicate the result of a selection.
 
@@ -272,13 +272,13 @@ Use `sdsStage: indeterminate` to indicate a mixed selection; reserved for cases 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
 ---
 
- 
+
 
 ### Checkbox Intent States
 
@@ -289,7 +289,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their response needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Checkbox Lockups
 
@@ -305,18 +305,18 @@ These rules establish how much margin should exist between and around elements.
 
 ## Radio Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use when the user can select only one option from a group of choices. Each Radio must be coupled with a label (and optional caption) to communicate the result of a selection.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 | **Default** | **Disabled** |
-| --- | --- |
+| ----------- | ------------ |
 
 ### Radio Intent States
 
@@ -327,9 +327,9 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their response needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
- 
+
 
 ### Radio Lockups
 
@@ -345,15 +345,15 @@ These rules establish how much margin should exist between and around elements.
 
 ## Toggle
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use to allow the user to flip a setting or option from off to on and vice versa.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Disabled** |
-| --- | --- | --- |
+| ----------- | --------- | ------------ |
 
 ---
 
@@ -367,8 +367,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Slider
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Single-sided Slider
 
@@ -392,8 +392,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Control Input Components
 
-| Below you will find interactive Storybook iframes for each component within the Control Input element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputCheckbox InputRadio InputToggle InputSlider |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Control Input element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputCheckbox InputRadio InputToggle InputSlider |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
 
 ---
 
@@ -427,8 +427,8 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ## Control Input Components
 
-| There are a range of Control Input components available to use depending on the type of action or response the application needs from the user. |   | **Jump to component:** Checkbox Radio Slider Toggle |
-| --- | --- | --- |
+| There are a range of Control Input components available to use depending on the type of action or response the application needs from the user. |     | **Jump to component:** Checkbox Radio Slider Toggle |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------- |
 
 ### Visual Preview
 
@@ -436,8 +436,8 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ## Checkbox
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -458,17 +458,17 @@ Use the indeterminate variant to indicate a mixed selection; reserved for cases 
 Use when Checkbox functionality is needed but a custom label is desired.
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 #### Checkbox – Label
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 #### Checkbox – Label + Caption
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 ---
 
@@ -483,14 +483,14 @@ These rules establish how much margin should exist between and around elements.
 Use Default to communicate that the user has yet to enter a response, Negative to communicate when a user has entered an incorrect or incomplete response, and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| --- | --- | --- | --- | --- |
+| ------- | -------- | ------------------------- | ------ | ----------------------- |
 
 ---
 
 ## Radio
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -509,26 +509,26 @@ Use Radios when the user can only select one option from a group of choices. Eac
 Use when Radio functionality is needed but a custom label is desired.
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 | Default | Disabled |
-| --- | --- |
+| ------- | -------- |
 
 #### Radio – Label
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 | Default | Disabled |
-| --- | --- |
+| ------- | -------- |
 
 #### Radio – Label + Caption
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 | Default | Disabled |
-| --- | --- |
+| ------- | -------- |
 
 ---
 
@@ -543,14 +543,14 @@ These rules establish how much margin should exist between and around elements.
 Use Default to communicate that the user has yet to enter a response, Negative to communicate when a user has entered an incorrect or incomplete response, and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Default | Negative | Negative + Intent Message | Notice | Notice + intent Message |
-| --- | --- | --- | --- | --- |
+| ------- | -------- | ------------------------- | ------ | ----------------------- |
 
 ---
 
 ## Slider
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -569,14 +569,14 @@ Sliders allow users to select specific values or a range of values to input. Opt
 Use when there is a specific datapoint or value within a dataset that the user is able to select.
 
 | No Tick Marks | Tick Marks |
-| --- | --- |
+| ------------- | ---------- |
 
 #### Slider – Double-sided
 
 Use when users need the ability to select a range between two values within a dataset.
 
 | No Tick Marks | Tick Marks |
-| --- | --- |
+| ------------- | ---------- |
 
 ---
 
@@ -588,8 +588,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Toggle Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -604,7 +604,7 @@ Default
 Toggle Inputs allow users to indicate true or false as part of a form or flip a setting or option from off to on (and vise versa). For toggling visibility of UI elements (like Panels), use a Toggle Button.
 
 | Default | Hover | Disabled |
-| --- | --- | --- |
+| ------- | ----- | -------- |
 
 ---
 
@@ -616,12 +616,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Control Input Components
 
-| There are a range of Control Input components available to use depending on the type of action or response the application needs from the user. |   | **Jump to component:** InputCheckbox InputRadio InputSlider InputToggle |
-| --- | --- | --- |
+| There are a range of Control Input components available to use depending on the type of action or response the application needs from the user. |     | **Jump to component:** InputCheckbox InputRadio InputSlider InputToggle |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -635,14 +635,14 @@ The component's source code in the SDS codebase can be found here.
 
 The following props and options differ in how they function across the MUI `Checkbox` component and the SDS `InputCheckbox` component:
 
-* **`size`****:**  Has no effect in SDS
-* **`color`****:**  Has no effect in SDS
-* **`labelPlacement`****:**  Has no effect in SDS
-* **`icon`****:**  SDS's  `InputCheckbox` is not currently set up to support icons (if you add one as shown in the MUI documentation, it will replace the empty checkbox square, but clicking the icon will result in the checked checkbox square appearing in the icon's place)
-* **`stage`** **and checkbox state :**  This is the SDS prop that sets the checkbox's state as `unchecked`, `checked`,  or `indeterminate`. If `stage` is set, interacting with the component has no effect in changing the checkbox state. By contrast, MUI has a boolean `defaultChecked` prop that sets the checkbox's state and *does* allow the user to interact to change the state.
-* **`caption`****:**  This is an SDS-specific prop, which takes a string of text that is displayed below the primary `label` text.
+- **`size`\*\***:\*\* Has no effect in SDS
+- **`color`\*\***:\*\* Has no effect in SDS
+- **`labelPlacement`\*\***:\*\* Has no effect in SDS
+- **`icon`\*\***:\*\* SDS's `InputCheckbox` is not currently set up to support icons (if you add one as shown in the MUI documentation, it will replace the empty checkbox square, but clicking the icon will result in the checked checkbox square appearing in the icon's place)
+- **`stage`** **and checkbox state :** This is the SDS prop that sets the checkbox's state as `unchecked`, `checked`, or `indeterminate`. If `stage` is set, interacting with the component has no effect in changing the checkbox state. By contrast, MUI has a boolean `defaultChecked` prop that sets the checkbox's state and _does_ allow the user to interact to change the state.
+- **`caption`\*\***:\*\* This is an SDS-specific prop, which takes a string of text that is displayed below the primary `label` text.
 
-The following props are available for both the MUI and SDS components: **`required`**, **`disabled`**, and **`indeterminate`****.**  
+The following props are available for both the MUI and SDS components: **`required`**, **`disabled`**, and **`indeterminate`\*\***.\*\*
 
 ### MUI Documentation
 
@@ -652,14 +652,14 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `caption` | `string` | `-` | The caption of the InputCheckbox appears beneath the label in a lighter text color. |
-| `checkboxProps` | `Partial<MUICheckboxProps>` | `{}` | Directly pass these props to the underlying MUI checkbox. |
-| `label` | `string` | `-` | The label of the InputCheckbox. |
-| `stage` | `"checked"` `| "unchecked"` `| "indeterminate"` |   | Defines the stage or state of the checkbox. |
-| `intent` | `"default"`  `| "notice"`  `| "negative"` `| "positive"` | `"default"` | Defines the color of the `InputCheckbox` |
-| `disabled` | `bool` | `false` | If `true`, the component is disabled. |
+| Name            | Type                        | Default        | Description                                                                         |
+| --------------- | --------------------------- | -------------- | ----------------------------------------------------------------------------------- | ----------- | ------------------------------------------- | ---------------------------------------- |
+| `caption`       | `string`                    | `-`            | The caption of the InputCheckbox appears beneath the label in a lighter text color. |
+| `checkboxProps` | `Partial<MUICheckboxProps>` | `{}`           | Directly pass these props to the underlying MUI checkbox.                           |
+| `label`         | `string`                    | `-`            | The label of the InputCheckbox.                                                     |
+| `stage`         | `"checked"` `               | "unchecked"` ` | "indeterminate"`                                                                    |             | Defines the stage or state of the checkbox. |
+| `intent`        | `"default"` `               | "notice"`  `   | "negative"` `                                                                       | "positive"` | `"default"`                                 | Defines the color of the `InputCheckbox` |
+| `disabled`      | `bool`                      | `false`        | If `true`, the component is disabled.                                               |
 
 ### Code examples
 
@@ -692,13 +692,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -713,9 +711,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputCheckbox
-        label="Label"
-      />
+      <InputCheckbox label="Label" />
     </div>
   );
 }
@@ -760,13 +756,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -787,13 +782,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -827,13 +833,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -848,10 +852,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputCheckbox
-        caption="Caption"
-        label="Label"
-      />
+      <InputCheckbox caption="Caption" label="Label" />
     </div>
   );
 }
@@ -896,13 +897,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -923,13 +923,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -963,13 +974,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1072,13 +1081,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1099,13 +1107,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1122,11 +1141,11 @@ The component's source code in the SDS codebase can be found here.
 
 The following props and options differ in whether and how they function across MUI versus SDS's `InputRadio` component:
 
-* **`size`****:**  Has no effect in SDS
-* **`color`****:**  Has no effect in SDS
-* **`labelPlacement`****:**  Has no effect in SDS
-* **`caption`****:**  This is an SDS-specific prop, which takes a string of text that is desplayed below the primary `label` text.
-* **`row`****:** This boolean prop functions the same for both MUI and SDS's `InputRadio` component: its presence reformats the radio buttons (and their labels) within the `RadioGroup` parent component into a horizontal row.
+- **`size`\*\***:\*\* Has no effect in SDS
+- **`color`\*\***:\*\* Has no effect in SDS
+- **`labelPlacement`\*\***:\*\* Has no effect in SDS
+- **`caption`\*\***:\*\* This is an SDS-specific prop, which takes a string of text that is desplayed below the primary `label` text.
+- **`row`\*\***:\*\* This boolean prop functions the same for both MUI and SDS's `InputRadio` component: its presence reformats the radio buttons (and their labels) within the `RadioGroup` parent component into a horizontal row.
 
 ### MUI Documentation
 
@@ -1136,14 +1155,14 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `caption` | `string` | - | The caption of the InputRadio appears beneath the label in a lighter text color. |
-| `label` | `string` | - | The label of the InputCheckbox. |
-| `radioProps` | `Partial<MUIRadioProps>` | `{}` | Directly pass these props to the underlying MUI radio. |
-| `stage` | `"checked" | "unchecked"` | `unchecked` | The stage of the radio input. |
-| `intent` | `"default"`  `| "notice"`  `| "negative"` `| "positive"` | `"default"` | Defines the color of the `InputRadio` |
-| `disabled` | `bool` | `false` | If `true`, the component is disabled. |
+| Name         | Type                     | Default      | Description                                                                      |
+| ------------ | ------------------------ | ------------ | -------------------------------------------------------------------------------- | ----------------------------- | ----------- | ------------------------------------- |
+| `caption`    | `string`                 | -            | The caption of the InputRadio appears beneath the label in a lighter text color. |
+| `label`      | `string`                 | -            | The label of the InputCheckbox.                                                  |
+| `radioProps` | `Partial<MUIRadioProps>` | `{}`         | Directly pass these props to the underlying MUI radio.                           |
+| `stage`      | `"checked"               | "unchecked"` | `unchecked`                                                                      | The stage of the radio input. |
+| `intent`     | `"default"` `            | "notice"`  ` | "negative"` `                                                                    | "positive"`                   | `"default"` | Defines the color of the `InputRadio` |
+| `disabled`   | `bool`                   | `false`      | If `true`, the component is disabled.                                            |
 
 ### Code examples
 
@@ -1176,13 +1195,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1197,9 +1214,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputRadio
-        label="Label"
-      />
+      <InputRadio label="Label" />
     </div>
   );
 }
@@ -1244,13 +1259,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1271,13 +1285,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1311,13 +1336,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1332,10 +1355,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputRadio
-        caption="Caption"
-        label="Label"
-      />
+      <InputRadio caption="Caption" label="Label" />
     </div>
   );
 }
@@ -1380,13 +1400,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1407,13 +1426,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1430,15 +1460,15 @@ The component's source code in the SDS codebase can be found here.
 
 The following props and options differ in how they function across MUI's `Switch` component versus SDS's `InputToggle` component:
 
-* **`size`****:**  Has no effect in SDS
-* **`color`****:**  Has no effect in SDS
+- **`size`\*\***:\*\* Has no effect in SDS
+- **`color`\*\***:\*\* Has no effect in SDS
 
-These are some of the common props that can be used for both the MUI `Switch` component and the SDS `InputToggle` component: 
+These are some of the common props that can be used for both the MUI `Switch` component and the SDS `InputToggle` component:
 
-* **`step`****:**  Sets the step distance between selectable stops (and relatedly, if this prop is left out, the toggle is  continuous, rather than discrete)
-* **`marks`****:**  When present and set to true, invokes the default marks style. When passed a rich array (of objects containing the value and the custom label to show at that value), sets marks and labels only at the positions specified by the array. See the "InputSlider with custom Marks" example below.
-* **`valueLabelDisplay`****:** This prop determines whether and when the value label is displayed, and takes the following props: `auto` (the value label will display when the thumb is hovered or focused), `on` (default; labels display persistently), or `off` (labels are never displayed).
-* **`orientation`****:**  This prop controls which direction the slider is shown: `horizontal` (default) or `vertical`
+- **`step`\*\***:\*\* Sets the step distance between selectable stops (and relatedly, if this prop is left out, the toggle is continuous, rather than discrete)
+- **`marks`\*\***:\*\* When present and set to true, invokes the default marks style. When passed a rich array (of objects containing the value and the custom label to show at that value), sets marks and labels only at the positions specified by the array. See the "InputSlider with custom Marks" example below.
+- **`valueLabelDisplay`\*\***:\*\* This prop determines whether and when the value label is displayed, and takes the following props: `auto` (the value label will display when the thumb is hovered or focused), `on` (default; labels display persistently), or `off` (labels are never displayed).
+- **`orientation`\*\***:\*\* This prop controls which direction the slider is shown: `horizontal` (default) or `vertical`
 
 ### MUI Documentation
 
@@ -1448,16 +1478,16 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `defaultValue` | `Array<number> | number` | - | The default value. Use when the component is not controlled. |
-| `disabled` | `bool` | `false` | If `true`, the component is disabled. |
-| `marks` | `bool` | `false` | Marks indicate predetermined values to which the user can move the slider. If true the marks are spaced according the value of the step prop. If an array, it should contain objects with value and an optional label keys. |
-| `max` | `number` | `100` | The maximum allowed value of the slider. Should not be equal to min. |
-| `min` | `number` | `0` | The minimum allowed value of the slider. Should not be equal to max. |
-| `orientation` | `"horizontal"` | `horizontal` | The component orientation. |
-| `step` | `number` | `1` | The granularity with which the slider can step through values. (A "discrete" slider.) The `min` prop serves as the origin for the valid values. We recommend (max - min) to be evenly divisible by the step. When step is `null`, the thumb can only be slid onto marks provided with the `marks` prop. |
-| `valueLabelDisplay` | `"auto"` `| "off"` `| "on"` | `off` | Controls when the value label is displayed:  `auto`. the value label will display when the thumb is hovered or focused. . `on`. will display persistently. . `off`. will never display. |
+| Name                | Type           | Default      | Description                                                                                                                                                                                                                                                                                             |
+| ------------------- | -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultValue`      | `Array<number> |  number`     | -                                                                                                                                                                                                                                                                                                       | The default value. Use when the component is not controlled. |
+| `disabled`          | `bool`         | `false`      | If `true`, the component is disabled.                                                                                                                                                                                                                                                                   |
+| `marks`             | `bool`         | `false`      | Marks indicate predetermined values to which the user can move the slider. If true the marks are spaced according the value of the step prop. If an array, it should contain objects with value and an optional label keys.                                                                             |
+| `max`               | `number`       | `100`        | The maximum allowed value of the slider. Should not be equal to min.                                                                                                                                                                                                                                    |
+| `min`               | `number`       | `0`          | The minimum allowed value of the slider. Should not be equal to max.                                                                                                                                                                                                                                    |
+| `orientation`       | `"horizontal"` | `horizontal` | The component orientation.                                                                                                                                                                                                                                                                              |
+| `step`              | `number`       | `1`          | The granularity with which the slider can step through values. (A "discrete" slider.) The `min` prop serves as the origin for the valid values. We recommend (max - min) to be evenly divisible by the step. When step is `null`, the thumb can only be slid onto marks provided with the `marks` prop. |
+| `valueLabelDisplay` | `"auto"` `     |  "off"` `    |  "on"`                                                                                                                                                                                                                                                                                                  | `off`                                                        | Controls when the value label is displayed: `auto`. the value label will display when the thumb is hovered or focused. . `on`. will display persistently. . `off`. will never display. |
 
 ### Code examples
 
@@ -1490,13 +1520,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1513,9 +1541,7 @@ function App() {
   return (
     <div className="app">
       <Box sx={{ width: 200 }}>
-        <InputSlider
-          label="Label"
-        />
+        <InputSlider label="Label" />
       </Box>
     </div>
   );
@@ -1561,13 +1587,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1588,20 +1613,31 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
 #### InputSlider with custom Marks
 
-This example shows an `InputSlider` component that features custom marks precisely positioned at `0%`, `50%`, and `100%` of the slider's value. 
+This example shows an `InputSlider` component that features custom marks precisely positioned at `0%`, `50%`, and `100%` of the slider's value.
 
 **/styles.css**
 
@@ -1628,13 +1664,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1721,13 +1755,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1748,13 +1781,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1771,10 +1815,10 @@ The component's source code in the SDS codebase can be found here.
 
 The following props and options differ and how they function across the MUI `Switch` component and the SDS `InputToggle` component:
 
-* **`size`****:** Has no effect in SDS
-* **`color`****:** Has no effect in SDS
-* **`label`** **and**  **`labelPlacement`****:** Has no effect in SDS
-* The **`required`** prop is available for both the MUI and SDS components.
+- **`size`\*\***:\*\* Has no effect in SDS
+- **`color`\*\***:\*\* Has no effect in SDS
+- **`label`** **and** **`labelPlacement`\*\***:\*\* Has no effect in SDS
+- The **`required`** prop is available for both the MUI and SDS components.
 
 ### MUI Documentation
 
@@ -1784,13 +1828,13 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `disabled` | `bool` | `false` | If `true`, the component is disabled. |
+| Name       | Type     | Default | Description                                             |
+| ---------- | -------- | ------- | ------------------------------------------------------- |
+| `disabled` | `bool`   | `false` | If `true`, the component is disabled.                   |
 | `offLabel` | `string` | `"Off"` | The text displayed within the InputToggle when it's off |
-| `onChange` | `func` |   | Sets what happens when a user toggles on the component. |
-| `onLabel` | `string` | `"On"` | The text displayed within the InputToggle when it's off |
-| `width` | `number` | `62` | Controls the `width` of the InputToggle element. |
+| `onChange` | `func`   |         | Sets what happens when a user toggles on the component. |
+| `onLabel`  | `string` | `"On"`  | The text displayed within the InputToggle when it's off |
+| `width`    | `number` | `62`    | Controls the `width` of the InputToggle element.        |
 
 ### Code examples
 
@@ -1823,13 +1867,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1889,13 +1931,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1916,13 +1957,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1956,13 +2008,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1977,11 +2027,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputToggle
-        onLabel="Start"
-        offLabel="Finish"
-        width={72}
-      />
+      <InputToggle onLabel="Start" offLabel="Finish" width={72} />
     </div>
   );
 }
@@ -2026,13 +2072,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2053,14 +2098,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

@@ -4,8 +4,8 @@ The Dropdown Input is an element that triggers Dropdown Menus to open, enabling 
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Dropdown Inputs are always accompanied by a Dropdown Menu which is triggered by the user clicking on the input.
 
@@ -14,7 +14,7 @@ The Dropdown Input is used on napari hub as part of plugin Filters, enabling use
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Open** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | -------- | ------------ |
 
 ---
 
@@ -22,26 +22,26 @@ Click on each state below to enter inspect view and get details on its code attr
 
 These rules establish how much margin should exist between and around elements.
 
- 
 
- 
+
+
 
 ## Code
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Dropdown Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputDropdown |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Dropdown Inputs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputDropdown |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------ |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### InputDropdown
 
 Storybook
 
- 
+
 
 ---
 
@@ -51,8 +51,8 @@ Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users
 
 ## Dropdown Input Variants
 
-| There are three Dropdown Input variants available for designers to use depending on the placement location within the UI. Dropdown Inputs are always accompanied by a Dropdown Menu which is triggered by the user clicking on the input.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Dropdown Input for any given use case. |   | **Jump to variant:** Rounded Square Minimal |
-| --- | --- | --- |
+| There are three Dropdown Input variants available for designers to use depending on the placement location within the UI. Dropdown Inputs are always accompanied by a Dropdown Menu which is triggered by the user clicking on the input. Follow the usage criteria accompanying each variant as a guide for selecting the correct Dropdown Input for any given use case. |     | **Jump to variant:** Rounded Square Minimal |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------- |
 
 ### Visual Preview
 
@@ -62,8 +62,8 @@ Use the links below to jump to information on a specific Dropdown Input variant:
 
 ## Rounded Dropdown Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Single-select Rounded Dropdown Input
 
@@ -76,10 +76,10 @@ Using the `details` prop, optional text can be added to the Input to communicate
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------- | --------- | ----------- | -------- | ------------ |
 
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| --------------------- | --------- | ----------- | -------- | ------------ |
 
 ### Multi-select Rounded Dropdown Input
 
@@ -92,10 +92,10 @@ Using the `details` prop, an optional counter can be added to the Input to commu
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------- | --------- | ----------- | -------- | ------------ |
 
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| --------------------- | --------- | ----------- | -------- | ------------ |
 
 ### Rounded Dropdown Input Intent States
 
@@ -110,7 +110,7 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 Each intent is demonstrated below using the Single-select Dropdown Input for reference; all variants follow the same pattern:
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -122,12 +122,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Square Dropdown Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Single-select Square Dropdown Input
 
-Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu. 
+Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu.
 
 Used within CZ ID on forms and Dialogs that contain menu options for users.
 
@@ -138,10 +138,10 @@ Note: `singleSelect` is the only `sdsType` prop value available for Square Dropd
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------- | --------- | ----------- | -------- | ------------ |
 
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| --------------------- | --------- | ----------- | -------- | ------------ |
 
 ### Square Dropdown Input Intent States
 
@@ -156,7 +156,7 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 Each intent is demonstrated below using the Single-select Dropdown Input for reference; all variants follow the same pattern:
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -168,8 +168,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Minimal Dropdown Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use when the user is only able to select one option from a group of choices within the triggered Dropdown Menu.
 
@@ -180,7 +180,7 @@ Note: `singleSelect` is the only `sdsType` prop value available for Minimal Drop
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------- | --------- | ----------- | -------- | ------------ |
 
 ### Minimal Dropdown Input Intent States
 
@@ -188,8 +188,8 @@ The `intent` prop is used to communicate the state of the user's response from t
 
 Use `intent: default` to communicate when a user has entered an accepted or complete response.
 
-| **Default** |   |   |
-| --- | --- | --- |
+| **Default** |     |     |
+| ----------- | --- | --- |
 
 ---
 
@@ -201,8 +201,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Dropdown Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputDropdown |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Dropdown Inputs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputDropdown |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------ |
 
 ---
 
@@ -218,8 +218,8 @@ Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users
 
 ## Dropdown Input Component
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Dropdown Input Types
 
@@ -227,7 +227,7 @@ There are two Dropdown Input types designers can use depending on whether their 
 
 On click, Dropdown Inputs always trigger a Dropdown Menu to open.
 
->**Note:** The external field label shown as part of the Value variant visual below is for demonstration purposes only and is not built into the component itself; a separate label must be added to achieve this in product.
+> **Note:** The external field label shown as part of the Value variant visual below is for demonstration purposes only and is not built into the component itself; a separate label must be added to achieve this in product.
 
 ---
 
@@ -250,31 +250,31 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 #### Rounded
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
-*Intent Variations*
+_Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| :---: | --- | :---: | --- |
+| :------: | ------------------------- | :----: | ----------------------- |
 
 #### Square
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
-*Intent Variations*
+_Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| :---: | --- | :---: | --- |
+| :------: | ------------------------- | :----: | ----------------------- |
 
 #### Minimal
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
 ---
 
@@ -289,31 +289,31 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 #### **Rounded**
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
-*Intent Variations*
+_Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| :---: | --- | :---: | --- |
+| :------: | ------------------------- | :----: | ----------------------- |
 
 #### **Square**
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
-*Intent Variations*
+_Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| :---: | --- | :---: | --- |
+| :------: | ------------------------- | :----: | ----------------------- |
 
 #### **Minimal**
 
 | Default | Hover | Open | Disabled |
-| :---: | :---: | :---: | :---: |
+| :-----: | :---: | :--: | :------: |
 
 ---
 
@@ -321,11 +321,11 @@ Use Negative to communicate when a user has entered an incorrect or incomplete r
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## InputDropdown
 
@@ -337,10 +337,10 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS's `InputDropdown` component utilizes MUI's `Button` component as its foundation but introduces some SDS-specific enhancements. Below, the key distinctions between the SDS's `InputDropdown` and MUI's `Button` are outlined:
 
-* **Variation**: MUI's `Button` offers a `variant` prop to define different visual styles for buttons. SDS's `InputDropdown`, however, uses the `sdsStyle` prop instead, providing the ability to select between three variants: `square`, `rounded`, or `minimal`.
-* **Color**: In MUI's `Button`, the button's color can be modified using the `color` prop. SDS's `InputDropdown` deviates from this and introduces the `intent` prop. This prop provides the ability to choose between `default`, `warning`, and `error` colors, depending on the state of the `InputDropdown`.
-* **Size**: While MUI's `Button` provides a `size` prop for adjusting the button's size, SDS's `InputDropdown` does not offer this capability. The size of the `InputDropdown` component remains fixed and cannot be altered through props.
-* **Icon**: Unlike MUI's `Button`, which supports custom icons, SDS's `InputDropdown` does not accept external icon components. Instead, SDS's `InputDropdown` incorporates a built-in Chevron icon, which is an integral part of the component and cannot be replaced.
+- **Variation**: MUI's `Button` offers a `variant` prop to define different visual styles for buttons. SDS's `InputDropdown`, however, uses the `sdsStyle` prop instead, providing the ability to select between three variants: `square`, `rounded`, or `minimal`.
+- **Color**: In MUI's `Button`, the button's color can be modified using the `color` prop. SDS's `InputDropdown` deviates from this and introduces the `intent` prop. This prop provides the ability to choose between `default`, `warning`, and `error` colors, depending on the state of the `InputDropdown`.
+- **Size**: While MUI's `Button` provides a `size` prop for adjusting the button's size, SDS's `InputDropdown` does not offer this capability. The size of the `InputDropdown` component remains fixed and cannot be altered through props.
+- **Icon**: Unlike MUI's `Button`, which supports custom icons, SDS's `InputDropdown` does not accept external icon components. Instead, SDS's `InputDropdown` incorporates a built-in Chevron icon, which is an integral part of the component and cannot be replaced.
 
 ### MUI Documentation
 
@@ -350,22 +350,22 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `counter` | `ReactNode` | `-` | If multiple set to `true`, this number shows the number of selected menu items. |
-| `details` | `ReactNode` | `-` | A text showing details for the selected menu item. |
-| `disabled` | `bool` | `false` | If `true`, the component is disabled. |
-| `intent` | `"default"`  `| "negative"`  `| "notice"` `| "positive"` | `default` | The color of the component. |
-| `label` | `ReactNode` | `-`	 | The label of the Input Button. |
-| `multiple` | `bool` | `false` | Allows users to select multiple menu items.`multiple=true` cannot be used with the `minimum` variant. |
-| `onClick` | `func` | `(event: React.MouseEvent<HTMLElement>) => void` | Sets what happens when a user clicks on the component. |
-| `sdsStyle`     | `"minimal"`  `| "square"`  `| "rounded"` | `square` | The visual appearance of the component. |
-| `sdsType` | `"label"`  `| "value"` | `label` | The `label` variant includes the label within the input field and showcases the selected menu item as additional details or sets the counter when in multi-select mode.  The `value` variant replaces the label with the selected value directly within the input field. The detailed information is then displayed in a separate section dedicated to displaying additional details. However, it's important to note that the value variant cannot be used in conjunction with multi-select mode.  |
-| `shouldPutAColonAfterLabel` | `bool` | `true` | If `true`, a colon (:) will be added after the label or value. |
-| `shouldTruncateMinimalDetails` | `bool` | `false` | If `true`, the details section of the minimal variant displays a truncated one-liner with an ellipsis (...), if `false` the details section expands to multiple lines for a comprehensive display. |
-| `value` | `ReactNode` | `-` | The value that will be displayed in the component for the `value` variant. |
+| Name                           | Type          | Default                                          | Description                                                                                                                                                                                        |
+| ------------------------------ | ------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------- |
+| `counter`                      | `ReactNode`   | `-`                                              | If multiple set to `true`, this number shows the number of selected menu items.                                                                                                                    |
+| `details`                      | `ReactNode`   | `-`                                              | A text showing details for the selected menu item.                                                                                                                                                 |
+| `disabled`                     | `bool`        | `false`                                          | If `true`, the component is disabled.                                                                                                                                                              |
+| `intent`                       | `"default"` ` | "negative"`  `                                   | "notice"` `                                                                                                                                                                                        | "positive"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `default`                               | The color of the component. |
+| `label`                        | `ReactNode`   | `-`                                              | The label of the Input Button.                                                                                                                                                                     |
+| `multiple`                     | `bool`        | `false`                                          | Allows users to select multiple menu items.`multiple=true` cannot be used with the `minimum` variant.                                                                                              |
+| `onClick`                      | `func`        | `(event: React.MouseEvent<HTMLElement>) => void` | Sets what happens when a user clicks on the component.                                                                                                                                             |
+| `sdsStyle`                     | `"minimal"` ` | "square"`  `                                     | "rounded"`                                                                                                                                                                                         | `square`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | The visual appearance of the component. |
+| `sdsType`                      | `"label"` `   | "value"`                                         | `label`                                                                                                                                                                                            | The `label` variant includes the label within the input field and showcases the selected menu item as additional details or sets the counter when in multi-select mode. The `value` variant replaces the label with the selected value directly within the input field. The detailed information is then displayed in a separate section dedicated to displaying additional details. However, it's important to note that the value variant cannot be used in conjunction with multi-select mode. |
+| `shouldPutAColonAfterLabel`    | `bool`        | `true`                                           | If `true`, a colon (:) will be added after the label or value.                                                                                                                                     |
+| `shouldTruncateMinimalDetails` | `bool`        | `false`                                          | If `true`, the details section of the minimal variant displays a truncated one-liner with an ellipsis (...), if `false` the details section expands to multiple lines for a comprehensive display. |
+| `value`                        | `ReactNode`   | `-`                                              | The value that will be displayed in the component for the `value` variant.                                                                                                                         |
 
-There are more props that can be used with the `InputDropdown`  component, via those available to MUI's `Button` component.
+There are more props that can be used with the `InputDropdown` component, via those available to MUI's `Button` component.
 
 ### Code Examples
 
@@ -398,13 +398,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -414,7 +412,7 @@ h1 {
 
 ```tsx
 // Most minimal InputDropdown (just has the basic requirements)
-      
+
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
 import { InputDropdown } from "@czi-sds/components";
 import "./styles.css";
@@ -422,7 +420,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <InputDropdown label="Label"/>
+      <InputDropdown label="Label" />
     </div>
   );
 }
@@ -467,13 +465,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -494,18 +491,29 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
->**MUI Tip:** To ensure the InputDropdown button expands to fit the width of its container, users can utilize the `fullWidth` prop provided by MUI. When set to `true`, the `fullWidth` prop enables the InputDropdown button to occupy the entire available width within its parent container.
+> **MUI Tip:** To ensure the InputDropdown button expands to fit the width of its container, users can utilize the `fullWidth` prop provided by MUI. When set to `true`, the `fullWidth` prop enables the InputDropdown button to occupy the entire available width within its parent container.
 
 #### InputDropdown combined with a multi-select Dropdown
 
@@ -536,13 +544,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -584,7 +590,7 @@ function App() {
 
   return (
     <div className="app">
-      <InputDropdown 
+      <InputDropdown
         label="Label"
         onClick={handleClick}
         sdsStyle="square"
@@ -620,22 +626,22 @@ function App() {
       setAnchorEl(event.currentTarget);
       setOpen(true);
     }
-  };
+  }
 
   function handleChange(
     _: React.SyntheticEvent<Element, Event>,
     newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ){
+  ) {
     setPendingValue(newValue);
     setCounter((newValue as DefaultDropdownMenuOption[])?.length.toString());
-  };
+  }
 
-  function handleClickAway(){
+  function handleClickAway() {
     if (open) {
       setOpen(false);
     }
     setValue(pendingValue);
-  };
+  }
 }
 
 export default App;
@@ -678,13 +684,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -705,20 +710,31 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
 #### Rounded InputDropdown combined with a single select Dropdown
 
-Below is an example demonstrating the combined utilization of the default `label` variant `InputDropdown` component and a single-select `Dropdown` component. 
+Below is an example demonstrating the combined utilization of the default `label` variant `InputDropdown` component and a single-select `Dropdown` component.
 
 **/styles.css**
 
@@ -745,13 +761,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -789,7 +803,7 @@ function App() {
 
   return (
     <div className="app">
-      <InputDropdown 
+      <InputDropdown
         label="Label"
         onClick={handleClick}
         sdsStyle="rounded"
@@ -824,12 +838,12 @@ function App() {
       setAnchorEl(event.currentTarget);
       setOpen(true);
     }
-  };
+  }
 
   function handleChange(
     _: React.SyntheticEvent<Element, Event>,
     newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ){
+  ) {
     setOpen(false);
     setValue(newValue);
 
@@ -842,13 +856,13 @@ function App() {
       setDetials(undefined);
       setInputDropdownValue(undefined);
     }
-  };
+  }
 
-  function handleClickAway(){
+  function handleClickAway() {
     if (open) {
       setOpen(false);
     }
-  };
+  }
 }
 
 export default App;
@@ -891,13 +905,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -918,22 +931,33 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
 #### Minimal InputDropdown combined with a single-select Dropdown
 
-An example of the combined use of the value variation `InputDropdown` component and a single-select `Dropdown` component is shown below. 
+An example of the combined use of the value variation `InputDropdown` component and a single-select `Dropdown` component is shown below.
 
->**Warning:** The `value` variant can not be used in conjunction with the multi-select Dropdowns. If you set `sdsType="value"` and `multiple="true"`, the component will default to showing a label and a counter instead.
+> **Warning:** The `value` variant can not be used in conjunction with the multi-select Dropdowns. If you set `sdsType="value"` and `multiple="true"`, the component will default to showing a label and a counter instead.
 
 **/styles.css**
 
@@ -960,13 +984,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1004,7 +1026,7 @@ function App() {
 
   return (
     <div className="app">
-      <InputDropdown 
+      <InputDropdown
         label="Label"
         onClick={handleClick}
         sdsType="value"
@@ -1042,12 +1064,12 @@ function App() {
       setAnchorEl(event.currentTarget);
       setOpen(true);
     }
-  };
+  }
 
   function handleChange(
     _: React.SyntheticEvent<Element, Event>,
     newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
-  ){
+  ) {
     setOpen(false);
     setValue(newValue);
 
@@ -1060,13 +1082,13 @@ function App() {
       setDetials(undefined);
       setInputDropdownValue(undefined);
     }
-  };
+  }
 
-  function handleClickAway(){
+  function handleClickAway() {
     if (open) {
       setOpen(false);
     }
-  };
+  }
 }
 
 export default App;
@@ -1109,13 +1131,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1136,14 +1157,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-
