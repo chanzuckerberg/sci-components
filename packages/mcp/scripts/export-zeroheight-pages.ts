@@ -138,7 +138,8 @@ class ZeroheightExporter {
     let processed = content.replace(imageRegex, '');
     
     // Convert regular markdown links to plain text (keep the link text, remove URL)
-    // This removes noise and improves LLM readability since most links won't be accessible anyway
+    // This removes noise and improves LLM readability since the AI will most likely
+    // not fetch the URL anyway (and should call the tool)
     const linkRegex = /\[([^\]]+)\]\([^)]+\)/g;
     processed = processed.replace(linkRegex, '$1');
     
@@ -472,7 +473,7 @@ ${Array.from(this.pageGroups.values())
       'TooltipCondensed': 'Tooltips',
       'TooltipTable': 'Tooltips',
       
-      // Cell components (likely in Table or Lists)
+      // Table Cell components
       'CellBasic': 'Table',
       'CellComponent': 'Table', 
       'CellHeader': 'Table',
