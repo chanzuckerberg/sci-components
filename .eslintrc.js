@@ -33,6 +33,16 @@ module.exports = {
         "prettier/prettier": "off",
       },
     },
+    {
+      files: ["**/*.cjs"],
+      parserOptions: {
+        sourceType: "script",
+      },
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
