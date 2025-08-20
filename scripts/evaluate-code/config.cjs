@@ -87,11 +87,11 @@ function discoverSDSComponents() {
 
 const EVALUATION_CONFIG = {
   // Scoring weights - must sum to 1.0 (TypeScript is now a pass/fail requirement, see typescriptRequired)
+  // Note: Accessibility is now checked by ESLint's jsx-a11y plugin (included in eslint score)
   weights: {
-    sdsUsage: 0.4, // Primary goal: proper SDS component usage
-    eslint: 0.3, // Code quality and style
-    designTokens: 0.2, // Design consistency when styling needed
-    accessibility: 0.1, // Accessibility patterns
+    sdsUsage: 0.5, // Primary goal: proper SDS component usage (increased from 0.4)
+    eslint: 0.4, // Code quality, style, and accessibility via jsx-a11y (increased from 0.3)
+    designTokens: 0.1, // Design consistency when styling needed (decreased from 0.2)
   },
   // TypeScript is a pass/fail requirement (not weighted)
   typescriptRequired: true,
@@ -121,21 +121,7 @@ const EVALUATION_CONFIG = {
     /fontHeader\w*/g,
   ],
 
-  // Accessibility patterns to check for
-  accessibilityPatterns: [
-    /aria-label=/,
-    /aria-describedby=/,
-    /aria-expanded=/,
-    /aria-hidden=/,
-    /aria-live=/,
-    /role=/,
-    /alt=/,
-    /<label/i,
-    /htmlFor=/,
-    /tabIndex=/,
-    /onKeyDown=/,
-    /onKeyPress=/,
-  ],
+  // Note: Accessibility patterns are now handled by ESLint's jsx-a11y plugin
 
   // TypeScript compiler options
   typescriptOptions: {

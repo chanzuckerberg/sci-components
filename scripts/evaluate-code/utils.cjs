@@ -135,9 +135,9 @@ function parseESLintErrors(output) {
   const warnings = [];
 
   for (const line of lines) {
-    if (line.includes(": error ")) {
+    if (line.includes("Error - ")) {
       errors.push(line.trim());
-    } else if (line.includes(": warning ")) {
+    } else if (line.includes("Warning - ")) {
       warnings.push(line.trim());
     }
   }

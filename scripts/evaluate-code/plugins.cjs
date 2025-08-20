@@ -83,8 +83,7 @@ class ESLintPlugin extends BasePlugin {
       filePath,
       "--format",
       EVALUATION_CONFIG.eslintOptions.format,
-      "--cache",
-      "false",
+      "--no-cache",
     ];
 
     const result = await executeWithTimeout("npx", eslintArgs, {
@@ -276,7 +275,7 @@ class DesignTokensPlugin extends BasePlugin {
   stripCommentsAndStrings(code) {
     let result = "";
     let i = 0;
-    let state = {
+    const state = {
       inString: false,
       stringChar: "",
       inComment: false,
@@ -288,36 +287,39 @@ class DesignTokensPlugin extends BasePlugin {
       const char = code[i];
       const nextChar = code[i + 1] || "";
 
-      this.processCharacter(char, nextChar, state, result, i);
+      const charToAdd = this.processCharacter(char, nextChar, state, i);
+      if (charToAdd !== null) {
+        result += charToAdd;
+      }
       i++;
     }
 
     return result;
   }
 
-  processCharacter(char, nextChar, state, result, _index) {
+  processCharacter(char, nextChar, state, _index) {
     // Handle template literals
     if (this.isTemplateLiteralStart(char, state)) {
       state.inTemplateLiteral = !state.inTemplateLiteral;
-      return;
+      return null;
     }
 
     // Handle quotes
     if (this.isQuote(char, state)) {
       this.handleQuote(char, state);
-      return;
+      return null;
     }
 
     // Handle comments
     if (this.isCommentStart(char, nextChar, state)) {
       this.handleCommentStart(char, nextChar, state);
-      return;
+      return null;
     }
 
     // Handle comment endings
     if (this.isCommentEnd(char, nextChar, state)) {
       this.handleCommentEnd(char, nextChar, state);
-      return;
+      return null;
     }
 
     // End line comments at newline
@@ -326,9 +328,7 @@ class DesignTokensPlugin extends BasePlugin {
     }
 
     // Only add characters that are not in strings, comments, or template literals
-    if (!this.shouldSkipCharacter(state)) {
-      result += char;
-    }
+    return this.shouldSkipCharacter(state) ? null : char;
   }
 
   isTemplateLiteralStart(char, state) {
@@ -427,80 +427,8 @@ class DesignTokensPlugin extends BasePlugin {
   }
 }
 
-/**
- * Accessibility Plugin
- */
-class AccessibilityPlugin extends BasePlugin {
-  constructor() {
-    super("accessibility", "Checks for accessibility attributes and patterns");
-  }
-
-  async check(_filePath, code) {
-    const startTime = Date.now();
-    const patterns = EVALUATION_CONFIG.accessibilityPatterns;
-    const foundAttributes = [];
-
-    for (const pattern of patterns) {
-      const matches = code.match(pattern);
-      if (matches) {
-        foundAttributes.push(...matches);
-      }
-    }
-
-    const uniqueAttributes = [...new Set(foundAttributes)];
-    const hasAccessibility = uniqueAttributes.length > 0;
-
-    // Additional semantic checks
-    const hasSemanticElements =
-      /<(main|nav|section|article|aside|header|footer|h[1-6])/i.test(code);
-    const hasFormLabels = /<label/i.test(code) || /htmlFor=/i.test(code);
-    const hasAltText = /alt=/i.test(code);
-
-    const score = hasAccessibility ? 1.0 : 0;
-
-    return {
-      name: this.name,
-      passed: hasAccessibility,
-      score,
-      duration: Date.now() - startTime,
-      details: {
-        hasAccessibility,
-        attributeCount: uniqueAttributes.length,
-        attributesFound: uniqueAttributes,
-        hasSemanticElements,
-        hasFormLabels,
-        hasAltText,
-        recommendations: this.generateA11yRecommendations(code),
-      },
-    };
-  }
-
-  generateA11yRecommendations(code) {
-    const recommendations = [];
-
-    if (/<button/i.test(code) && !/aria-label/i.test(code)) {
-      recommendations.push(
-        "Consider adding aria-label to buttons for screen readers"
-      );
-    }
-
-    if (
-      /<input/i.test(code) &&
-      !/<label/i.test(code) &&
-      !/aria-label/i.test(code)
-    ) {
-      recommendations.push(
-        "Consider adding labels or aria-label to input fields"
-      );
-    }
-
-    if (/<img/i.test(code) && !/alt=/i.test(code)) {
-      recommendations.push("Add alt text to images for accessibility");
-    }
-
-    return recommendations;
-  }
-}
+// Note: Accessibility checking is now handled by ESLint's jsx-a11y plugin
+// which provides more comprehensive and React-specific accessibility validation
 
 /**
  * Plugin Manager
@@ -511,10 +439,9 @@ class PluginManager {
 
     // Register default plugins
     this.registerPlugin(new TypeScriptPlugin());
-    this.registerPlugin(new ESLintPlugin());
+    this.registerPlugin(new ESLintPlugin()); // ESLint includes jsx-a11y accessibility checking
     this.registerPlugin(new SDSUsagePlugin());
     this.registerPlugin(new DesignTokensPlugin());
-    this.registerPlugin(new AccessibilityPlugin());
 
     // Register any additional plugins
     plugins.forEach((plugin) => this.registerPlugin(plugin));
@@ -563,6 +490,5 @@ module.exports = {
   ESLintPlugin,
   SDSUsagePlugin,
   DesignTokensPlugin,
-  AccessibilityPlugin,
   PluginManager,
 };

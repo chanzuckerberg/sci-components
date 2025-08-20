@@ -11,6 +11,7 @@ export const TestComponent = () => (
       label="Test Input"
       variant="filled"
     />
+    <div onClick={() => {}}>Hi</div>
     <Icon sdsIcon="ChevronRight" sdsSize="s" />
   </div>
 );

@@ -324,17 +324,17 @@ class CodeEvaluator {
 
   displayQuickCopyPaste(results) {
     console.log("\n🎯 Quick Copy-Paste for Google Sheets:");
-    console.log("File\tScore\tGrade\tReady\tTS\tSDS\tImports\tA11y");
+    console.log("File\tScore\tGrade\tReady\tTS\tSDS\tImports\tESLint");
 
     results.forEach((result) => {
       const score = (result.summary.score * 100).toFixed(0);
       const ts = result.pluginResults.typescript?.passed ? "1" : "0";
       const sds = result.pluginResults.sdsUsage?.passed ? "1" : "0";
       const imports = result.pluginResults.imports?.passed ? "1" : "0";
-      const a11y = result.pluginResults.accessibility?.passed ? "1" : "0";
+      const eslintDetails = result.pluginResults.eslint?.passed ? "1" : "0";
 
       console.log(
-        `${path.basename(result.filePath)}\t${score}%\t${result.summary.grade}\t${result.summary.readyForReview ? 1 : 0}\t${ts}\t${sds}\t${imports}\t${a11y}`
+        `${path.basename(result.filePath)}\t${score}%\t${result.summary.grade}\t${result.summary.readyForReview ? 1 : 0}\t${ts}\t${sds}\t${imports}\t${eslintDetails}`
       );
     });
   }

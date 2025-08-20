@@ -100,9 +100,11 @@ class ConsoleReporter {
 
     console.log(`   ${icon} ${name}: ${status} ${duration}`);
 
-    // Always show TypeScript errors, even in non-verbose mode
+    // Always show TypeScript and ESLint errors, even in non-verbose mode
     if (this.shouldShowTypeScriptErrors(name, pluginResult)) {
       this.printTypeScriptErrors(pluginResult);
+    } else if (this.shouldShowESLintErrors(name, pluginResult)) {
+      this.printESLintErrors(pluginResult);
     } else if (this.verbose && pluginResult.details) {
       this.reportPluginDetails(name, pluginResult);
     }
@@ -115,6 +117,41 @@ class ConsoleReporter {
       pluginResult.details &&
       pluginResult.details.errors
     );
+  }
+
+  shouldShowESLintErrors(name, pluginResult) {
+    return (
+      name === "eslint" &&
+      !pluginResult.passed &&
+      pluginResult.details &&
+      pluginResult.details.errors &&
+      pluginResult.details.errors.length > 0
+    );
+  }
+
+  printESLintErrors(pluginResult) {
+    const errorCount = pluginResult.details.errorCount;
+    console.log(`      ${this.color(`${errorCount} ESLint errors:`, "red")}`);
+    pluginResult.details.errors.slice(0, 3).forEach((error) => {
+      // Parse compact format: file: line #, col #, Error - message (rule)
+      const match = error.match(
+        /^(.+):\s*line\s*(\d+),\s*col\s*\d+,\s*Error\s*-\s*(.+?)\s*\(([^)]+)\)/
+      );
+      if (match) {
+        const [, , line, message, rule] = match;
+        console.log(
+          `        Line ${line}: ${message} ${this.color(`(${rule})`, "gray")}`
+        );
+      } else {
+        // Fallback for other formats
+        console.log(`        ${error}`);
+      }
+    });
+    if (pluginResult.details.errors.length > 3) {
+      console.log(
+        `        ${this.color(`... and ${pluginResult.details.errors.length - 3} more errors`, "gray")}`
+      );
+    }
   }
 
   printTypeScriptErrors(pluginResult) {
@@ -362,7 +399,6 @@ class CSVReporter {
       "SDS Usage",
       "Imports",
       "Design Tokens",
-      "Accessibility",
       "SDS Components",
       "Generic Elements",
       "Errors",

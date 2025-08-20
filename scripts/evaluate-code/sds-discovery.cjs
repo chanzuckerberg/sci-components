@@ -287,7 +287,7 @@ function analyzeComponentUsage(code, componentList) {
 /**
  * Generate component usage recommendations
  */
-function generateComponentRecommendations(usage, componentList) {
+function generateComponentRecommendations(usage) {
   const recommendations = [];
 
   // Recommendations for generic elements
