@@ -338,11 +338,31 @@ class ZeroheightExporter {
     try {
       const fileName = `${pageGroup.baseName}.md`;
       
-      // Hardcoded fix: Skip Tables.md if Table.md already exists (to avoid duplicate content)
-      // As of 2025-08-19, Tables and Table had identical/duplicate content in Zeroheight
-      if (fileName === 'Tables.md' && this.pageGroups.has('Table')) {
-        console.log(`⚠️  Skipping ${fileName} to avoid duplication with Table.md`);
-        return { success: false, error: 'Skipped to avoid duplication' };
+      // Hardcoded fixes: Merge plural versions with singular versions (to avoid separate files)
+      // As of 2025-08-20, these pairs contain related content that should be combined
+      const mergePairs = [
+        { plural: 'Tables', singular: 'Table' },
+        { plural: 'Accordions', singular: 'Accordion' },
+        { plural: 'Banners', singular: 'Banner' },
+        { plural: 'Callouts', singular: 'Callout' },
+        { plural: 'Dialogs', singular: 'Dialog' },
+        { plural: 'Dropdown-Inputs', singular: 'Dropdown-Input' },
+        { plural: 'Dropdown-Menus', singular: 'Dropdown-Menu' },
+        { plural: 'Loading-Indicators', singular: 'Loading-Indicator' },
+        { plural: 'Notifications', singular: 'Notification' },
+        { plural: 'Panels', singular: 'Panel' }
+      ];
+      
+      const mergePair = mergePairs.find(pair => 
+        pageGroup.baseName === pair.plural && this.pageGroups.has(pair.singular)
+      );
+      
+      if (mergePair) {
+        // Merge plural content into the singular group
+        const singularGroup = this.pageGroups.get(mergePair.singular)!;
+        singularGroup.pages.push(...pageGroup.pages);
+        console.log(`🔗 Merging ${pageGroup.baseName} content into ${mergePair.singular}.md`);
+        return { success: true, fileName: `${mergePair.singular}.md`, error: 'Merged content' };
       }
       
       const filePath = path.join(dirname, '../', this.config.outputDir, fileName);
@@ -566,14 +586,21 @@ ${Array.from(this.pageGroups.values())
       
       // Generate summary
       const successful = results.filter(r => r.success);
+      const merged = successful.filter(r => r.error === 'Merged content');
+      const exported = successful.filter(r => r.error !== 'Merged content');
       const failed = results.filter(r => !r.success);
       const totalPagesProcessed = Array.from(this.pageGroups.values()).reduce((sum, group) => sum + group.pages.length, 0);
       
       console.log('\n' + '='.repeat(50));
       console.log(`Export Summary:`);
       console.log(`📄 Total pages processed: ${totalPagesProcessed}`);
-      console.log(`📁 Files created: ${successful.length}`);
-      console.log(`✗ Failed exports: ${failed.length}`);
+      console.log(`📁 Files created: ${exported.length}`);
+      if (merged.length > 0) {
+        console.log(`🔗 Content merged: ${merged.length} plural versions merged into singular files`);
+      }
+      if (failed.length > 0) {
+        console.log(`✗ Failed exports: ${failed.length}`);
+      }
       console.log(`📁 Output directory: ${outputPath}`);
       
       if (failed.length > 0) {
