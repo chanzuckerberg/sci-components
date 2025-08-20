@@ -1,18 +1,38 @@
 {
   "ComplexFilter": {
     "props": {
-      "label": {
-        "type": "ReactNode",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void",
+      "DropdownMenuProps": {
+        "type": "any",
         "isRequired": false
       },
       "InputDropdownProps": {
         "type": "InputDropdownPropsType",
         "isRequired": false,
         "defaultValue": "{ sdsStyle: minimal }"
+      },
+      "isTriggerChangeOnOptionClick": {
+        "type": "any",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "any",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void",
+        "isRequired": false
+      },
+      "options": {
+        "type": "any",
+        "isRequired": false
+      },
+      "search": {
+        "type": "any",
+        "isRequired": false
       }
     }
   }

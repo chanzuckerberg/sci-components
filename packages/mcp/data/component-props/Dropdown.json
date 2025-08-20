@@ -1,66 +1,13 @@
 {
   "Dropdown": {
     "props": {
-      "onChange": {
-        "type": "(event: SyntheticEvent",
-        "isRequired": false,
-        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
-      },
-      "className": {
-        "type": "string",
+      "DropdownMenuProps": {
+        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>",
         "isRequired": false
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "This prop is used to help implement the accessibility logic.\nIf you don't provide an id it will fall back to a randomly generated one."
-      },
-      "style": {
-        "type": "CSSProperties",
+      "InputDropdownProps": {
+        "type": "InputDropdownPropsType",
         "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is disabled.",
-        "defaultValue": false
-      },
-      "fullWidth": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the input will take up the full width of its container.",
-        "defaultValue": false
-      },
-      "loading": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is in a loading state.\nThis shows the `loadingText` in place of suggestions (only if there are no suggestions to show, for example `options` are empty).",
-        "defaultValue": false
-      },
-      "size": {
-        "type": "\"small\" | \"medium\"",
-        "isRequired": false,
-        "description": "The size of the component.",
-        "defaultValue": "medium"
-      },
-      "onClose": {
-        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void",
-        "isRequired": false,
-        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
-      },
-      "open": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is shown."
-      },
-      "value": {
-        "type": "any",
-        "isRequired": false,
-        "description": "The value of the autocomplete.\n\nThe value must have reference equality with the option in order to be selected.\nYou can customize the equality behavior with the `isOptionEqualToValue` prop."
       },
       "buttonPosition": {
         "type": "\"left\" | \"right\"",
@@ -74,32 +21,47 @@
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "label": {
-        "type": "ReactNode",
-        "isRequired": true
-      },
-      "search": {
+      "disabled": {
         "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
       },
       "isSearchAutoFocus": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "DropdownMenuProps": {
-        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>",
-        "isRequired": false
+      "label": {
+        "type": "ReactNode",
+        "isRequired": true
       },
-      "InputDropdownProps": {
-        "type": "InputDropdownPropsType",
-        "isRequired": false
-      },
-      "InputDropdownComponent": {
-        "type": "any",
-        "isRequired": false
-      },
-      "isTriggerChangeOnOptionClick": {
+      "multiple": {
         "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
+        "defaultValue": false
+      },
+      "onChange": {
+        "type": "(event: SyntheticEvent",
+        "isRequired": false,
+        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
+      },
+      "onClose": {
+        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void",
+        "isRequired": false,
+        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
+      },
+      "options": {
+        "type": "\"readonly T[]\" | \"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
+        "isRequired": true,
+        "description": "Array of options."
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "ReactNode",
         "isRequired": false
       }
     }

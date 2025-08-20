@@ -1,6 +1,10 @@
 {
   "InputDropdown": {
     "props": {
+      "counter": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
@@ -13,58 +17,32 @@
         "type": "ReactNode",
         "isRequired": true
       },
-      "onClick": {
-        "type": "function",
-        "isRequired": true
-      },
-      "state": {
-        "type": "\"default\" | \"open\"",
-        "isRequired": false
-      },
-      "sdsStyle": {
-        "type": "\"minimal\" | \"square\" | \"rounded\"",
-        "isRequired": false,
-        "description": "The visual style variant of the component"
-      },
-      "sdsType": {
-        "type": "\"label\" | \"value\"",
-        "isRequired": false,
-        "description": "The type/variant of the component"
-      },
       "multiple": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "details": {
-        "type": "ReactNode",
+      "sdsStyle": {
+        "type": "\"minimal\" | \"square\" | \"rounded\"",
         "isRequired": false
       },
-      "counter": {
-        "type": "ReactNode",
-        "isRequired": false
-      },
-      "value": {
-        "type": "ReactNode",
-        "isRequired": false
-      },
-      "shouldTruncateMinimalDetails": {
-        "type": "\"false\" | \"true\"",
+      "sdsType": {
+        "type": "\"label\" | \"value\"",
         "isRequired": false
       },
       "shouldPutAColonAfterLabel": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "width": {
-        "type": "number",
-        "isRequired": false
-      },
-      "className": {
-        "type": "string",
+      "shouldTruncateMinimalDetails": {
+        "type": "\"false\" | \"true\"",
         "isRequired": false
       },
       "style": {
         "type": "CSSProperties",
+        "isRequired": false
+      },
+      "width": {
+        "type": "number",
         "isRequired": false
       }
     }

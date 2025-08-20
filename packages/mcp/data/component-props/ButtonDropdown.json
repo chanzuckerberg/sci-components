@@ -1,31 +1,23 @@
 {
-  "Autocomplete": {
+  "ButtonDropdown": {
     "props": {
-      "groupBy": {
+      "disabled": {
         "type": "any",
         "isRequired": false
       },
-      "intent": {
+      "icon": {
         "type": "any",
         "isRequired": false
       },
-      "keepSearchOnSelect": {
+      "sdsSize": {
         "type": "any",
         "isRequired": false
       },
-      "label": {
+      "sdsStyle": {
         "type": "any",
         "isRequired": false
       },
-      "multiple": {
-        "type": "any",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLDivElement>",
-        "isRequired": false
-      },
-      "options": {
+      "sdsType": {
         "type": "any",
         "isRequired": false
       }
