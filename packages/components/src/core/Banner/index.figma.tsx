@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Banner from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Banner,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8715%3A15398",
   {
     props: {
@@ -18,7 +18,7 @@ figma.connect(
       icon: figma.enum("state (x icon)", {
         hover: "House",
       }),
-      dismissed: figma.boolean("dismissible?"),
+      // dismissed: figma.boolean("dismissible?"),
       dismissible: figma.boolean("dismissible?"),
       intent: figma.enum("intent", {
         info: "info",
@@ -26,6 +26,7 @@ figma.connect(
         notice: "notice",
         positive: "positive",
       }),
+      textChild: figma.textContent("textChild"),
       sdsType: figma.enum("sdsType", {
         primary: "primary",
         secondary: "secondary",
@@ -36,13 +37,15 @@ figma.connect(
       // "slotContent": figma.instance('↪️ slotContent')
     },
     example: (props) => (
-      <Index
+      <Banner
         icon={props.icon}
-        dismissed={props.dismissed}
+        // dismissed={props.dismissed}
         dismissible={props.dismissible}
         intent={props.intent}
         sdsType={props.sdsType}
-      />
+      >
+        {props.textChild}
+      </Banner>
     ),
   }
 );
