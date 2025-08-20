@@ -49,8 +49,8 @@ figma.connect(
       <Index
         disabled={props.disabled}
         intent={props.intent}
-        label={/* TODO */}
-        onClick={/* TODO */}
+        label="Dropdown Label"
+        onClick={() => {}}
         state={props.state}
         sdsStyle={props.sdsStyle}
         sdsType={props.sdsType}

@@ -22,6 +22,6 @@ figma.connect(
       //   "pressed": "pressed"
       // })
     },
-    example: (props) => <Index label={/* TODO */} onDelete={/* TODO */} />,
+    example: (_props) => <Index label="Filter label" onDelete={() => {}} />,
   }
 );

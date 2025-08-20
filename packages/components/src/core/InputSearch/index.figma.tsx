@@ -37,9 +37,9 @@ figma.connect(
     example: (props) => (
       <Index
         disabled={props.disabled}
-        variant={/* TODO */}
-        label={/* TODO */}
-        id={/* TODO */}
+        variant="outlined"
+        label="Search Label"
+        id="search-example"
         intent={props.intent}
         sdsStyle={props.sdsStyle}
       />

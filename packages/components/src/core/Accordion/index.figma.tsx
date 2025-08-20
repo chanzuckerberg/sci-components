@@ -39,10 +39,13 @@ figma.connect(
     },
     example: (props) => (
       <Index
+        id="accordion-example"
         disabled={props.disabled}
         useDivider={props.useDivider}
         togglePosition={props.togglePosition}
-      />
+      >
+        <div>Accordion content here</div>
+      </Index>
     ),
   }
 );

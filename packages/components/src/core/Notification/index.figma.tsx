@@ -38,7 +38,7 @@ figma.connect(
         icon={props.icon}
         buttonPosition={props.buttonPosition}
         dismissed={props.dismissed}
-        slideDirection={/* TODO */}
+        slideDirection="left"
         intent={props.intent}
       />
     ),

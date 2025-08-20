@@ -46,7 +46,7 @@ figma.connect(
     },
     example: (props) => (
       <Index
-        label={/* TODO */}
+        label="Tag label"
         icon={props.icon}
         hover={props.hover}
         sdsType={props.sdsType}

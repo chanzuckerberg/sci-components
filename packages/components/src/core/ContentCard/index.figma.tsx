@@ -61,7 +61,7 @@ figma.connect(
       <Index
         square={props.square}
         image={props.image}
-        visualElementType={/* TODO */}
+        visualElementType="image"
         imagePosition={props.imagePosition}
         imagePadding={props.imagePadding}
         sdsType={props.sdsType}

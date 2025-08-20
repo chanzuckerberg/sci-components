@@ -23,11 +23,13 @@ figma.connect(
     },
     example: (props) => (
       <Index
-        title={/* TODO */}
+        title="Tooltip text"
         inverted={props.inverted}
         hasInvertedStyle={props.hasInvertedStyle}
         indicator={props.indicator}
-      />
+      >
+        <span>Tooltip content</span>
+      </Index>
     ),
   }
 );

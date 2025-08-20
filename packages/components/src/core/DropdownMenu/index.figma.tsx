@@ -33,9 +33,9 @@ figma.connect(
     },
     example: (props) => (
       <Index
-        options={/* TODO */}
+        options={[]}
         search={props.search}
-        anchorEl={/* TODO */}
+        anchorEl={null}
         isMultiColumn={props.isMultiColumn}
       />
     ),

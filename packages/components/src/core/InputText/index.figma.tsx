@@ -42,9 +42,9 @@ figma.connect(
     example: (props) => (
       <Index
         disabled={props.disabled}
-        variant={/* TODO */}
-        label={/* TODO */}
-        id={/* TODO */}
+        variant="outlined"
+        label="Input Label"
+        id="input-example"
         type={props.type}
         intent={props.intent}
         sdsType={props.sdsType}

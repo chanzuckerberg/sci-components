@@ -46,7 +46,9 @@ figma.connect(
         horizontalAlign={props.horizontalAlign}
         hover={props.hover}
         direction={props.direction}
-      />
+      >
+        Header Text
+      </Index>
     ),
   }
 );

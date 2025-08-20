@@ -61,11 +61,12 @@ figma.connect(
       <Index
         disabled={props.disabled}
         type={props.type}
-        sdsStyle={/* TODO */}
-        sdsType={props.sdsType}
-        icon={props.icon}
+        sdsStyle="rounded"
+        sdsType="primary"
         isAllCaps={props.isAllCaps}
-      />
+      >
+        Button Text
+      </Index>
     ),
   }
 );

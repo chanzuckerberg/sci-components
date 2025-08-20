@@ -45,7 +45,7 @@ figma.connect(
     },
     example: (props) => (
       <Index
-        title={/* TODO */}
+        title="Navigation Title"
         hasInvertedStyle={props.hasInvertedStyle}
         primaryNavPosition={props.primaryNavPosition}
         showSearch={props.showSearch}

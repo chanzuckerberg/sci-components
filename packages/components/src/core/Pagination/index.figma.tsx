@@ -53,12 +53,12 @@ figma.connect(
     example: (props) => (
       <Index
         sdsStyle={props.sdsStyle}
-        onPageChange={/* TODO */}
-        onNextPage={/* TODO */}
-        onPreviousPage={/* TODO */}
-        totalCount={/* TODO */}
-        currentPage={/* TODO */}
-        pageSize={/* TODO */}
+        onPageChange={() => {}}
+        onNextPage={() => {}}
+        onPreviousPage={() => {}}
+        totalCount={100}
+        currentPage={1}
+        pageSize={10}
       />
     ),
   }

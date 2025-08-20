@@ -46,7 +46,7 @@ figma.connect(
         horizontalAlign={props.horizontalAlign}
         verticalAlign={props.verticalAlign}
         iconVerticalAlign={props.iconVerticalAlign}
-        primaryText={/* TODO */}
+        primaryText="Cell Text"
         icon={props.icon}
       />
     ),

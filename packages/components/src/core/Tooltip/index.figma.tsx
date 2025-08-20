@@ -46,13 +46,14 @@ figma.connect(
     },
     example: (props) => (
       <Index
-        title={/* TODO */}
+        title="Tooltip text"
         inverted={props.inverted}
         hasInvertedStyle={props.hasInvertedStyle}
         open={props.open}
         placement={props.placement}
-        slots={props.slots}
-      />
+      >
+        <span>Tooltip content</span>
+      </Index>
     ),
   }
 );

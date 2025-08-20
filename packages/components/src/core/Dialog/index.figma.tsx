@@ -34,6 +34,6 @@ figma.connect(
       //   "text": "text"
       // })
     },
-    example: (props) => <Index open={/* TODO */} />,
+    example: (_props) => <Index open={true} />,
   }
 );

@@ -52,6 +52,6 @@ figma.connect(
       //   "seventh": "seventh"
       // })
     },
-    example: (props) => <Index items={/* TODO */} />,
+    example: (_props) => <Index items={[]} />,
   }
 );

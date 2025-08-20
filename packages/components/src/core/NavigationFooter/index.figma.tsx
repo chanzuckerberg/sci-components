@@ -34,7 +34,7 @@ figma.connect(
       <Index
         hasInvertedStyle={props.hasInvertedStyle}
         logo={props.logo}
-        title={/* TODO */}
+        title="Footer Title"
       />
     ),
   }

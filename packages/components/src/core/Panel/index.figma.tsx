@@ -27,8 +27,6 @@ figma.connect(
       //   "overlay": "overlay"
       // })
     },
-    example: (props) => (
-      <Index sdsType={/* TODO */} position={props.position} />
-    ),
+    example: (props) => <Index sdsType="basic" position={props.position} />,
   }
 );

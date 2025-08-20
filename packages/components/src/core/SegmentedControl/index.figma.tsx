@@ -44,7 +44,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index buttonDefinition={/* TODO */} disabled={props.disabled} />
+      <Index buttonDefinition={[]} disabled={props.disabled} />
     ),
   }
 );
