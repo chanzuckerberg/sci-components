@@ -91,7 +91,7 @@ function parseTypeScriptErrors(output, filePath) {
     // Check if this line relates to our file
     if (
       line.includes(filePath) ||
-      line.includes(require("path").basename(filePath))
+      line.includes(fileBaseName)
     ) {
       const match = line.match(
         /^(.+?)\((\d+),(\d+)\):\s*(error|warning)\s*TS(\d+):\s*(.+)$/
