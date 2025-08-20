@@ -248,7 +248,7 @@ class DesignTokensPlugin extends BasePlugin {
   hasCustomStyling(code) {
     const customStylingPatterns = [
       /style\s*=\s*\{/, // style={{ ... }}
-      /styled\(/, // styled(Component)
+      /\bstyled\s*\(/, // styled(Component) - improved to avoid matching in strings/comments
       /styled\.\w+/, // styled.div
       /css`/, // css template literals
       /makeStyles/, // Material-UI makeStyles

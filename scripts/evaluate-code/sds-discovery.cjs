@@ -41,12 +41,16 @@ function extractComponentsFromExports(code) {
     }
   }
 
-  // Match re-exports: export * from './Button';
-  const reExportRegex = /export\s*\*\s*from\s*['"']\.\/(\w+)['"]/g;
+  // Match re-exports: export * from './Button', '../Button', 'some-package/Button', etc.
+  const reExportRegex = /export\s*\*\s*from\s*['"]([^'"]+)['"]/g;
   while ((match = reExportRegex.exec(code)) !== null) {
-    const name = match[1];
-    if (isComponentName(name)) {
-      components.add(name);
+    // Extract the last path segment as the component name, without extension
+    const importPath = match[1];
+    const baseName = path
+      .basename(importPath)
+      .replace(/\.(js|ts|jsx|tsx)$/, "");
+    if (isComponentName(baseName)) {
+      components.add(baseName);
     }
   }
 

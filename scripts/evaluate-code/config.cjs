@@ -86,14 +86,15 @@ function discoverSDSComponents() {
 }
 
 const EVALUATION_CONFIG = {
-  // Scoring weights - must sum to 1.0 (TypeScript is now pass/fail requirement)
+  // Scoring weights - must sum to 1.0 (TypeScript is now a pass/fail requirement, see typescriptRequired)
   weights: {
-    typescript: 0, // Pass/fail requirement - not weighted
     sdsUsage: 0.4, // Primary goal: proper SDS component usage
     eslint: 0.3, // Code quality and style
     designTokens: 0.2, // Design consistency when styling needed
     accessibility: 0.1, // Accessibility patterns
   },
+  // TypeScript is a pass/fail requirement (not weighted)
+  typescriptRequired: true,
 
   // Grade thresholds
   gradeThresholds: {

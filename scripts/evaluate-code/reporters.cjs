@@ -401,17 +401,22 @@ class CSVReporter {
   formatAsCSV(headers, rows) {
     return [headers, ...rows]
       .map((row) =>
-        row
-          .map(
-            (cell) =>
-              `"${String(cell)
-                .replace(/"/g, '""')
-                .replace(/\r/g, " ")
-                .replace(/\n/g, " ")}"`
-          )
-          .join(",")
+        row.map((cell) => CSVReporter.formatCSVCell(cell)).join(",")
       )
       .join("\n");
+  }
+
+  /**
+   * Formats a single cell for CSV output, escaping quotes and replacing newlines.
+   * @param {any} cell
+   * @returns {string}
+   */
+  static formatCSVCell(cell) {
+    return (
+      '"' +
+      String(cell).replace(/"/g, '""').replace(/\r/g, " ").replace(/\n/g, " ") +
+      '"'
+    );
   }
 
   saveOrReturnContent(csvContent) {
