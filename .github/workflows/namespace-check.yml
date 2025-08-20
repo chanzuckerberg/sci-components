@@ -29,6 +29,10 @@ jobs:
       # Step 4: Build the component library in 'dist/' directory
       - name: Build component library in dist/
         run: yarn build
+        env:
+          ZEROHEIGHT_API_CLIENT: ${{ secrets.ZEROHEIGHT_API_CLIENT }}
+          ZEROHEIGHT_API_KEY: ${{ secrets.ZEROHEIGHT_API_KEY }}
+          ZEROHEIGHT_STYLEGUIDE_ID: ${{ secrets.ZEROHEIGHT_STYLEGUIDE_ID }}
 
       # Step 5: Run the Namespace Checking script
       - name: Namespace Checking
