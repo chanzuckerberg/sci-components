@@ -102,6 +102,9 @@ class ZeroheightExporter {
 
   private saveCache(): void {
     try {
+      // Update last fetch time only when we actually save new data
+      this.cache.lastFetch = new Date().toISOString();
+      
       // Ensure data directory exists
       const dataDir = path.dirname(this.cacheFilePath);
       if (!fs.existsSync(dataDir)) {
@@ -545,9 +548,6 @@ ${Array.from(this.pageGroups.values())
       console.log('Fetching pages list...');
       const pages = await this.fetchPages();
       console.log(`Found ${pages.length} pages\n`);
-      
-      // Update last fetch time
-      this.cache.lastFetch = new Date().toISOString();
       
       // Process each page (group by name, filter minimal content)
       console.log('Processing pages...');
