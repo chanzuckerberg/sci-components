@@ -7,7 +7,10 @@ export const server = new McpServer({
   version: "0.1.0",
   capabilities: {
     prompts: {},
-    resources: {},
+    resources: {
+      subscribe: true,
+      listChanged: true
+    },
     tools: {},
   },
 });
