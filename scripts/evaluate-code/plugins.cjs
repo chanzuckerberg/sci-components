@@ -49,7 +49,7 @@ class TypeScriptPlugin extends BasePlugin {
       : parseTypeScriptErrors(result.stdout + result.stderr, filePath);
     const userErrors = errors.filter(
       (err) => !err.message.includes("node_modules")
-    );
+    const userErrors = filterUserErrors(errors);
 
     return {
       name: this.name,
