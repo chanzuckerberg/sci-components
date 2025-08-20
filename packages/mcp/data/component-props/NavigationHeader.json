@@ -1,51 +1,6 @@
 {
   "NavigationHeader": {
     "props": {
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "color": {
-        "type": "\"inherit\" | \"default\" | \"error\" | \"info\" | \"primary\" | \"secondary\" | \"transparent\" | \"success\" | \"warning\"",
-        "isRequired": false,
-        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
-        "defaultValue": "primary"
-      },
-      "children": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The content of the component."
-      },
-      "variant": {
-        "type": "\"elevation\" | \"outlined\"",
-        "isRequired": false,
-        "description": "The variant to use.",
-        "defaultValue": "elevation"
-      },
-      "title": {
-        "type": "string",
-        "isRequired": true
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLElement>",
-        "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "activePrimaryNavKey": {
-        "type": "string",
-        "isRequired": false
-      },
       "buttons": {
         "type": "ReactNode",
         "isRequired": false
@@ -58,21 +13,19 @@
         "type": "ReactNode",
         "isRequired": false
       },
-      "logoUrl": {
-        "type": "string",
-        "isRequired": false
-      },
       "logoLinkComponent": {
         "type": "\"symbol\" | \"object\" | \"style\" | \"div\" | \"clipPath\" | \"filter\" | \"mask\" | \"marker\" | \"p\" | \"header\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | \"ComponentClass",
         "isRequired": false
       },
-      "logoLinkProps": {
-        "type": "LinkProps",
+      "logoUrl": {
+        "type": "string",
         "isRequired": false
       },
-      "scrollElevation": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+      "position": {
+        "type": "\"fixed\" | \"absolute\" | \"sticky\" | \"static\" | \"relative\"",
+        "isRequired": false,
+        "description": "The positioning type. The behavior of the different options is described\n[in the MDN web docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning).\nNote: `sticky` is not universally supported and will fall back to `static` when unavailable.",
+        "defaultValue": "fixed"
       },
       "primaryNavItems": {
         "type": "NavigationHeaderPrimaryNavItem<string>[]",
@@ -82,16 +35,16 @@
         "type": "\"left\" | \"right\"",
         "isRequired": false
       },
+      "scrollElevation": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
       "searchProps": {
         "type": "\"Partial<FilledTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\" | \"Partial<OutlinedTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\" | \"Partial<StandardTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\"",
         "isRequired": false
       },
       "secondaryNavItems": {
         "type": "NavigationHeaderSecondaryNavItem[]",
-        "isRequired": false
-      },
-      "setActivePrimaryNavKey": {
-        "type": "(key: string) => void",
         "isRequired": false
       },
       "showSearch": {
@@ -106,13 +59,9 @@
         "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
         "isRequired": false
       },
-      "drawerOpen": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "setDrawerOpen": {
-        "type": "(open: boolean) => void",
-        "isRequired": false
+      "title": {
+        "type": "string",
+        "isRequired": true
       }
     }
   }

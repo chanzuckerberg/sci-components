@@ -1,0 +1,18 @@
+{
+  "TooltipCondensed": {
+    "props": {
+      "hasInvertedStyle": {
+        "type": "any",
+        "isRequired": false
+      },
+      "indicator": {
+        "type": "any",
+        "isRequired": false
+      },
+      "indicatorColor": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

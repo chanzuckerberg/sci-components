@@ -6,15 +6,15 @@ Tabs allow users to switch between different sets of information or content that
 
 ## Tab Variants
 
-| There are two sizes of Tabs available for use determined by their location in the UI. Individual tabs within each size can optionally include an alert to draw user's attention to something specific on that tab, such as to communicate the content on the tab is newly added or updated. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |   | **Jump to variant:** Large Small |
-| --- | --- | --- |
+| There are two sizes of Tabs available for use determined by their location in the UI. Individual tabs within each size can optionally include an alert to draw user's attention to something specific on that tab, such as to communicate the content on the tab is newly added or updated. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |     | **Jump to variant:** Large Small |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------- |
 
 ---
 
 ## Tabs
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 ### Large Tabs
 
@@ -25,32 +25,32 @@ An optional alert can be added on a per Tab basis to communicate additional deta
 Tabs can also optionally be paired with an underline beneath them that spans the width of the entire div the Tab group is placed within.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Alert** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
 | **Default + Alert + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
 ### Small Tabs
 
 Alternative Tab size to be used in napari hub on plugin detail pages for plugins whose authors are using official formatting for their plugin citations.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Alert** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
 | **Default + Alert + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
 ---
 
@@ -58,18 +58,18 @@ Alternative Tab size to be used in napari hub on plugin detail pages for plugins
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
 ## Tabs Component
 
-| Below you will find an interactive Storybook iframe for Tabs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tabs |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tabs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tabs |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### Tabs 
 
@@ -83,15 +83,15 @@ Tabs allow users to switch between different sets of information or content that
 
 ## Tab Variants
 
-| There are two sizes of Tabs available for use determined by their location in the UI. Each size can include a counter to indicate the number of items on that tab’s screen such as search or filter results. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |   | **Jump to variant:** Large Small |
-| --- | --- | --- |
+| There are two sizes of Tabs available for use determined by their location in the UI. Each size can include a counter to indicate the number of items on that tab’s screen such as search or filter results. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |     | **Jump to variant:** Large Small |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------- |
 
 ---
 
 ## Tabs
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Large Tabs
 
@@ -102,18 +102,18 @@ In CZ GEN EPI, Large Tabs holding quantifiable data sets (like a sample table) s
 Overall, include a counter when necessary to indicate the number of items on that Tab's screen, whether visible or not visible, such as when displaying search or filter results.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
- 
+
 
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
 ### Small Tabs
 
@@ -122,16 +122,16 @@ Alternative Tab size to be used only in conjunction with Large Tabs when a secon
 Include a counter when necessary to indicate the number of items on that Tab's screen, such as in the Members section of CZ GEN EPI, to help delineate between active members and outstanding invitations to the group.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
 ---
 
@@ -139,24 +139,24 @@ Include a counter when necessary to indicate the number of items on that Tab's s
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
 ## Tabs Component
 
-| Below you will find an interactive Storybook iframe for Tabs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tabs |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tabs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tabs |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### Tabs 
 
 Storybook
 
- 
+
 
 ---
 
@@ -166,15 +166,15 @@ Tabs allow users to switch between different sets of information or content that
 
 ## Tab Variants
 
-| There are two sizes of Tabs available for use determined by their location in the UI. Each size can include a counter to indicate the number of items on that tab’s screen such as search or filter results. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |   | **Jump to variant:** Large Small |
-| --- | --- | --- |
+| There are two sizes of Tabs available for use determined by their location in the UI. Each size can include a counter to indicate the number of items on that tab’s screen such as search or filter results. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tab size for any given use case. |     | **Jump to variant:** Large Small |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------- |
 
 ---
 
 ## Tabs
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Large Tabs
 
@@ -185,18 +185,18 @@ In CZ ID, Large Tabs should include a Count when used in conjunction with header
 Include a counter when necessary to indicate the number of items on that Tab's screen such as when displaying search or filter results.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
- 
+
 
 ### Small Tabs
 
@@ -205,16 +205,16 @@ Alternative Tab size to be used only in conjunction with Large Tabs when a secon
 Include a counter when necessary to indicate the number of items on that Tab's screen such as when displaying search or filter results.
 
 | **Default** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ---------- | ------------ |
 
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------- | --------- | ---------- | ------------ |
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------------------- | --------- | ---------- | ------------ |
 
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------------------- | --------- | ---------- | ------------ |
 
 ---
 
@@ -226,8 +226,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Tabs Component
 
-| Below you will find an interactive Storybook iframe for Tabs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tabs |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tabs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tabs |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
@@ -243,8 +243,8 @@ Tabs allow users to switch between different sets of information or content that
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Tabs Sizes
 
@@ -267,7 +267,7 @@ Tabs – Large is used at a top level within the UI. If a secondary layer of tab
 Include a counter when necessary to indicate the number of viewable items available when navigating to that Tab's screen.
 
 | Default | Hover | Active | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------ | -------- |
 
 ---
 
@@ -278,7 +278,7 @@ Tabs – Small is an alternative size to be used only in conjunction with Tabs �
 Include a counter when necessary to indicate the number of viewable items available when navigating to that Tab's screen.
 
 | Default | Hover | Active | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------ | -------- |
 
 ---
 
@@ -288,7 +288,7 @@ These rules establish how much margin should exist between and around elements.
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## Tabs
 
@@ -300,15 +300,15 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS `Tabs` component is built on the MUI `Tabs` component, but the SDS version has a few additional props to provide stylistic options that fit within the SDS designs:
 
-* **`sdsSize`****:**  Takes `large` (default) or `small` as values, and sizes the Tabs component and its label text accordingly
-* **`underlined`****:**  This boolean prop extends a light gray underline beneath the whole of the `Tabs` component when true; without this prop, only the selected tab has an underline of the primary color
-* **count, metadata, and / or component:** Each individual tab within the `Tabs` component can be assigned a count, via a prop associated to that tab's position, such as `tabOneCount` for the first tab. These props take a number value to represent a count, but they can also take text or even another component, for example:
+- **`sdsSize`\*\***:\*\* Takes `large` (default) or `small` as values, and sizes the Tabs component and its label text accordingly
+- **`underlined`\*\***:\*\* This boolean prop extends a light gray underline beneath the whole of the `Tabs` component when true; without this prop, only the selected tab has an underline of the primary color
+- **count, metadata, and / or component:** Each individual tab within the `Tabs` component can be assigned a count, via a prop associated to that tab's position, such as `tabOneCount` for the first tab. These props take a number value to represent a count, but they can also take text or even another component, for example:
 
-		`count={123}`  
+      `count={123}`
 
-		`count={"Hello!"}`
+      `count={"Hello!"}`
 
-		`tabThreeCount={<Tag />}`  ﻿  ﻿
+      `tabThreeCount={<Tag />}`  ﻿  ﻿
 
 This example demonstrates passing a ReactNode as the count prop to a `Tabs` component.
 
@@ -320,10 +320,10 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `sdsSize` | `"small"` `| "large"` | `"large"` | Specifies the size of the Tab element. |
-| `underlined` | `boolean` | `false` | when set to `true`, adds a gray bottom border to the tab group, providing a distinctive visual effect. |
+| Name         | Type        | Default  | Description                                                                                            |
+| ------------ | ----------- | -------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| `sdsSize`    | `"small"` ` | "large"` | `"large"`                                                                                              | Specifies the size of the Tab element. |
+| `underlined` | `boolean`   | `false`  | when set to `true`, adds a gray bottom border to the tab group, providing a distinctive visual effect. |
 
 ### Code examples
 
@@ -356,13 +356,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -381,12 +379,12 @@ function App() {
   const handleTabsChange = (_: SyntheticEvent, tabsValue: unknown) => {
     setValue(tabsValue as number);
   };
-  
+
   return (
     <div className="app">
       <Tabs value={value} sdsSize="large" onChange={handleTabsChange}>
-        <Tab label="First Tab"/>
-        <Tab label="Second Tab"/>
+        <Tab label="First Tab" />
+        <Tab label="Second Tab" />
       </Tabs>
     </div>
   );
@@ -432,13 +430,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -459,13 +456,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -499,13 +507,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -524,12 +530,12 @@ function App() {
   const handleTabsChange = (_: SyntheticEvent, tabsValue: unknown) => {
     setValue(tabsValue as number);
   };
-  
+
   return (
     <div className="app">
       <Tabs value={value} sdsSize="small" onChange={handleTabsChange}>
-        <Tab label="First Tab"/>
-        <Tab label="Second Tab"/>
+        <Tab label="First Tab" />
+        <Tab label="Second Tab" />
       </Tabs>
     </div>
   );
@@ -575,13 +581,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -602,13 +607,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -642,13 +658,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -672,7 +686,7 @@ function App() {
   const CountWrapper = styled("span")`
     margin-right: 5px;
   `;
-  
+
   function BetaTagWithCount() {
     return (
       <>
@@ -681,10 +695,15 @@ function App() {
       </>
     );
   }
-  
+
   return (
     <div className="app">
-      <Tabs value={value} sdsSize="large" onChange={handleTabsChange} underlined>
+      <Tabs
+        value={value}
+        sdsSize="large"
+        onChange={handleTabsChange}
+        underlined
+      >
         <Tab label="First Tab" count="4" />
         <Tab label="Second Tab" count="20" />
         <Tab label="Third Tab" count={<BetaTagWithCount />} />
@@ -733,13 +752,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -760,14 +778,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

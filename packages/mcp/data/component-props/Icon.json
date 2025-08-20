@@ -1,8 +1,8 @@
 {
   "Icon": {
     "props": {
-      "className": {
-        "type": "string",
+      "color": {
+        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
         "isRequired": false
       },
       "sdsIcon": {
@@ -11,12 +11,7 @@
       },
       "sdsSize": {
         "type": "\"xs\" | \"s\" | \"l\" | \"xl\"",
-        "isRequired": true,
-        "description": "The size of the component"
-      },
-      "color": {
-        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
-        "isRequired": false
+        "isRequired": true
       },
       "shade": {
         "type": "\"100\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | \"700\" | \"800\"",

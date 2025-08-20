@@ -6,24 +6,24 @@ Field Inputs are elements that allow users to type within them, providing an are
 
 ## Field Input Variants
 
-| There are two Field Input variants available for designers to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Text Input for any given use case. |   | **Jump to variant:** Rounded Search Square Search Text |
-| --- | --- | --- |
+| There are two Field Input variants available for designers to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed. Follow the usage criteria accompanying each variant as a guide for selecting the correct Text Input for any given use case. |     | **Jump to variant:** Rounded Search Square Search Text |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------ |
 
 ---
 
 ## Rounded Search Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Used in CZ GEN EPI for top-level searches and when searching within Tables.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Rounded Search Input Intent States
 
@@ -36,7 +36,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their search needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -44,23 +44,23 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ---
 
 ## Square Search Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Used in CZ GEN EPI for searches constrained to the element the Input is placed within such as Dropdown Menus or Forms.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Square Search Input Intent States
 
@@ -73,7 +73,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their search needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -81,14 +81,14 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ---
 
 ## Text Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Text Field Input
 
@@ -97,9 +97,9 @@ The Text Field Input is meant to fit one line of text and should be only used wh
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Text Area Input
 
@@ -112,9 +112,9 @@ It can be set to accept a specific number of characters in case there is a need 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Text Input Intent States
 
@@ -127,7 +127,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that the content they've input needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -141,12 +141,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Field Input Components
 
-| Below you will find an interactive Storybook iframe for Field Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputSearch InputText |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Field Inputs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputSearch InputText |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### InputSearch
 
@@ -166,24 +166,24 @@ Field Inputs are elements that allow users to type within them, providing an are
 
 ## Field Input Variants
 
-| There are two Field Input variants available for designers to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Text Input for any given use case. |   | **Jump to variant:** Rounded Search Square Search Text |
-| --- | --- | --- |
+| There are two Field Input variants available for designers to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed. Follow the usage criteria accompanying each variant as a guide for selecting the correct Text Input for any given use case. |     | **Jump to variant:** Rounded Search Square Search Text |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------ |
 
 ---
 
 ## Rounded Search Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Used in CZ ID for top-level searches and when searching within Tables.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Rounded Search Input Intent States
 
@@ -196,7 +196,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their search needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -208,17 +208,17 @@ These rules establish how much margin should exist between and around elements.
 
 ## Square Search Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Used in CZ ID for searches constrained to the element the Input is placed within such as Dropdown Menus or Forms.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Square Search Input Intent States
 
@@ -231,7 +231,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that their search needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -243,8 +243,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Text Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Text Field Input
 
@@ -253,9 +253,9 @@ The Text Field Input is meant to fit one line of text and should be only used wh
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Text Area Input
 
@@ -268,9 +268,9 @@ It can be set to accept a specific number of characters in case there is a need 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Focus** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | --------- | ------------ |
 
- 
+
 
 ### Text Input Intent States
 
@@ -283,7 +283,7 @@ Use `intent: error` to communicate when a user has entered an incorrect or incom
 Use `intent: warning` to communicate when a user needs to be alerted that the content they've input needs attention.
 
 | **Default** | **Error** | **Warning** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -297,8 +297,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Field Input Components
 
-| Below you will find an interactive Storybook iframe for Field Inputs.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** InputSearch InputText |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Field Inputs. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** InputSearch InputText |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------- |
 
 ---
 
@@ -320,8 +320,8 @@ Field Inputs are elements that allow users to type within them, providing an are
 
 ## Field Input Components
 
-| There are two Field Input components available to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed. |   | **Jump to variant:** Search Input Text Input |
-| --- | --- | --- |
+| There are two Field Input components available to use—Search Inputs allow users to enter text to perform a search and Text Inputs provide a free-form space for users to type in information as needed. |     | **Jump to variant:** Search Input Text Input |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------- |
 
 ### Visual Preview
 
@@ -329,8 +329,8 @@ Field Inputs are elements that allow users to type within them, providing an are
 
 ## Search Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Search Input Styles
 
@@ -351,7 +351,7 @@ Use Search Input – Rounded as part of top-level or primary application searche
 After users enter text into the Search field, an `XmarkCircle` icon appears; if clicked the field is reset to default.
 
 | Default | Hover | Focus | Default (user input) | Disabled |
-| --- | --- | --- | --- | --- |
+| ------- | ----- | ----- | -------------------- | -------- |
 
 ---
 
@@ -362,7 +362,7 @@ Use Search Input – Square for searches constrained to the element the Input is
 After users enter text into the Search field, an `XmarkCircle` icon appears; if clicked the field is reset to default.
 
 | Default | Hover | Focus | Default (user input) | Disabled |
-| --- | --- | --- | --- | --- |
+| ------- | ----- | ----- | -------------------- | -------- |
 
 ---
 
@@ -381,14 +381,14 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 Each intent is demonstrated below using the Rounded variant for reference. Regardless of variant, the colors used are the same:
 
 | Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
-| --- | --- | --- | --- | --- |
+| ------- | -------- | ------------------------- | ------ | ----------------------- |
 
 ---
 
 ## Text Input
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Text Input Types
 
@@ -404,10 +404,10 @@ Default
 
 ### Text Input – Field
 
-Text Input – Field is designed to fit one line of text and should be only used when there is a limited amount or a single line's worth of content intended for the user to input. 
+Text Input – Field is designed to fit one line of text and should be only used when there is a limited amount or a single line's worth of content intended for the user to input.
 
 | Default | Hover | Focus | Default (user input) | Disabled |
-| --- | --- | --- | --- | --- |
+| ------- | ----- | ----- | -------------------- | -------- |
 
 ---
 
@@ -420,7 +420,7 @@ It includes a handle in the bottom right corner that the user can grab and drag 
 It can be set to accept a specific number of characters in case there is a need to limit how much content the user can enter.
 
 | Default | Hover | Focus | Default (user input) | Disabled |
-| --- | --- | --- | --- | --- |
+| ------- | ----- | ----- | -------------------- | -------- |
 
 ---
 
@@ -436,19 +436,19 @@ Use Default to communicate that the user has yet to enter a response or the resp
 
 Optionally, Intent Messages can be displayed to further communicate why a Negative, Notice, or Positive intent was triggered. For more information see Intents.
 
-| Default |  Negative | Negative + Intent Message | Notice | Notice + Intent Message | Positive | Positive + Intent Message |
-| :---: | :---: | --- | :---: | --- | :---: | --- |
+| Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message | Positive | Positive + Intent Message |
+| :-----: | :------: | ------------------------- | :----: | ----------------------- | :------: | ------------------------- |
 
 ## Code
 
 ## Control Input Components
 
-| There are two Field Input components available to use—`InputSearch` allows users to enter text to perform a search and `InputText` provide a free-form space for users to type in information as needed. |   | **Jump to component:** InputSearch InputText |
-| --- | --- | --- |
+| There are two Field Input components available to use—`InputSearch` allows users to enter text to perform a search and `InputText` provide a free-form space for users to type in information as needed. |     | **Jump to component:** InputSearch InputText |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -460,41 +460,41 @@ The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-SDS's `InputSearch` is built on MUI's `TextField` component, with `type="search"`.  It also has the SDS "search" icon automatically included, aligned to the right end of the field. 
+SDS's `InputSearch` is built on MUI's `TextField` component, with `type="search"`. It also has the SDS "search" icon automatically included, aligned to the right end of the field.
 
-The following  props are available to MUI's `TextField` component, but do not work the same way (or at all) for SDS's `InputSearch` component:
+The following props are available to MUI's `TextField` component, but do not work the same way (or at all) for SDS's `InputSearch` component:
 
-* **`variants`****:**  SDS's `InputSearch` component is not set up to support values for this prop (aside from `outlined`,  `InputSearch` default), and using other values available to MUI (`filled`,  `standard`) may  result in unreliable outputs
-* **`size`****:**  SDS's `InputSearch` component is not set up to support values for this prop (aside from `small`,  `InputText`'s default), and using other values available to MUI (`medium`,  `large`)  may not have reliable outputs
-* **`required`****:**  SDS's `InputSearch` does not render the expected asterisk (*) following the label when this prop is `true`
-*  **`select`****:**  SDS's `InputSearch` is not set up to support this boolean prop
-* **`hiddenLabel`****:**  The `label` ("Search", by default) for SDS's component is included within the search field, not outside of it, and the MUI `hiddenLabel` prop will not hide the label
+- **`variants`\*\***:\*\* SDS's `InputSearch` component is not set up to support values for this prop (aside from `outlined`, `InputSearch` default), and using other values available to MUI (`filled`, `standard`) may result in unreliable outputs
+- **`size`\*\***:\*\* SDS's `InputSearch` component is not set up to support values for this prop (aside from `small`, `InputText`'s default), and using other values available to MUI (`medium`, `large`) may not have reliable outputs
+- **`required`\*\***:\*_ SDS's `InputSearch` does not render the expected asterisk (_) following the label when this prop is `true`
+- **`select`\*\***:\*\* SDS's `InputSearch` is not set up to support this boolean prop
+- **`hiddenLabel`\*\***:\*\* The `label` ("Search", by default) for SDS's component is included within the search field, not outside of it, and the MUI `hiddenLabel` prop will not hide the label
 
 The following functionality is available to both MUI's `TextField` component and SDS's `InputText` component, but SDS uses different prop names, shown below:
 
-* **`intent`****:**  This prop is the way you can set colors for SDS's `InputText`,  based on its error state. It takes `default` (default, gray), `error`,  or `warning` as values. The related MUI-color-setting prop, `color`,  has no effect for `InputText` in SDS.
+- **`intent`\*\***:\*\* This prop is the way you can set colors for SDS's `InputText`, based on its error state. It takes `default` (default, gray), `error`, or `warning` as values. The related MUI-color-setting prop, `color`, has no effect for `InputText` in SDS.
 
 SDS's `InputSearch` has an additional `sdsStyle` prop to help with setting SDS-specific styles, which takes `square` (default) or `rounded` as values.
 
 ### MUI Documentation
 
-Documentation for the underlying MUI `TextField`  component can be found here.
+Documentation for the underlying MUI `TextField` component can be found here.
 
 ### Props
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `disabled` | `boolean` | `false` | When set to `true`, the component becomes disabled and cannot be interacted with. |
-| `handleSubmit` | `func` | `function(value: string) => void` | This function is called when the Search icon is clicked, allowing user to handle the search operation. |
-| `id` | `string` | `-` | Specifies the unique `id` for the input element,  needed for accessibility. |
-| `intent` | `"default"` `| "negative"` `| "notice"` `| "positive"` | `"default"` | Alters the border color and visual intent of the search input. |
-| `label` | `string` | `-` | Although hidden, this `label` is provided for accessibility purposes. |
-| `onChange` | `func` | `function(event: React.ChangeEvent) => void` | Defines the action to be taken when the input value changes. |
-| `placeholder` | `string` | `"Search"` | Sets the `placeholder` text displayed within the input element. |
-| `sdsStyle` | `"rounded"` `| "square"` | `"square"`  | Determines the visual style of the component, with options for `rounded` or `square` design. |
-| `value` | `string` | `-` | The value of the `input` element, required for a controlled component. |
+| Name           | Type          | Default                                      | Description                                                                                            |
+| -------------- | ------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------- |
+| `disabled`     | `boolean`     | `false`                                      | When set to `true`, the component becomes disabled and cannot be interacted with.                      |
+| `handleSubmit` | `func`        | `function(value: string) => void`            | This function is called when the Search icon is clicked, allowing user to handle the search operation. |
+| `id`           | `string`      | `-`                                          | Specifies the unique `id` for the input element, needed for accessibility.                             |
+| `intent`       | `"default"` ` | "negative"` `                                | "notice"` `                                                                                            | "positive"`                                                                                  | `"default"` | Alters the border color and visual intent of the search input. |
+| `label`        | `string`      | `-`                                          | Although hidden, this `label` is provided for accessibility purposes.                                  |
+| `onChange`     | `func`        | `function(event: React.ChangeEvent) => void` | Defines the action to be taken when the input value changes.                                           |
+| `placeholder`  | `string`      | `"Search"`                                   | Sets the `placeholder` text displayed within the input element.                                        |
+| `sdsStyle`     | `"rounded"` ` | "square"`                                    | `"square"`                                                                                             | Determines the visual style of the component, with options for `rounded` or `square` design. |
+| `value`        | `string`      | `-`                                          | The value of the `input` element, required for a controlled component.                                 |
 
 ### Code examples
 
@@ -527,13 +527,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -550,11 +548,7 @@ function App() {
   return (
     <div className="app">
       <Box sx={{ width: 300 }}>
-        <InputSearch
-          id="search-input"
-          label="search"
-          placeholder="Search"
-        />
+        <InputSearch id="search-input" label="search" placeholder="Search" />
       </Box>
     </div>
   );
@@ -600,13 +594,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -627,13 +620,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -650,16 +654,16 @@ The component's source code in the SDS codebase can be found here.
 
 Like SDS's `InputSearch` (which is also built upon the same MUI component), the following props and options do not work the same way (or at all) for SDS's `InputText` component even though they are available to MUI's `TextField` component.
 
-* **`variants`****:**  SDS's `InputText` component is not set up to support values for this prop (aside from `outlined`,  `InputText`'s default), and using other values available to MUI (`filled`,  `standard`)  may  result in unreliable outputs
-* **`size`****:**  SDS's `InputText` component is not set up to support values for this prop (aside from `small`,  `InputText`'s default), and using other values available to MUI (`medium`,  `large`)  may not have reliable outputs
-* **`required`****:**  SDS's `InputText` does not render the expected asterisk (*) following the label when this prop is `true`
-*  **`select`****:**  SDS's `InputText` is not set up to support this boolean prop
+- **`variants`\*\***:\*\* SDS's `InputText` component is not set up to support values for this prop (aside from `outlined`, `InputText`'s default), and using other values available to MUI (`filled`, `standard`) may result in unreliable outputs
+- **`size`\*\***:\*\* SDS's `InputText` component is not set up to support values for this prop (aside from `small`, `InputText`'s default), and using other values available to MUI (`medium`, `large`) may not have reliable outputs
+- **`required`\*\***:\*_ SDS's `InputText` does not render the expected asterisk (_) following the label when this prop is `true`
+- **`select`\*\***:\*\* SDS's `InputText` is not set up to support this boolean prop
 
 The following functionality is available to both MUI's `TextField` component and SDS's `InputText` component, but SDS uses different prop names, shown below:
 
-* **`sdsType`****:**  This is the SDS-equivalent of MUI's boolean `multiline` prop, and takes `textField` (default) or `textArea` as values
-* **`hideLabel`****:**   This is the SDS-equivalent of the `hiddenLabel` prop used in MUI; both are boolean with the default not including them (value of `false`)
-* **`intent`****:**  This prop is the way you can set colors for SDS's `InputText`,  based on its error state. It takes `default` (default, gray), `error`,  or `warning` as values. The related MUI-color-setting prop, `color`,  has no effect for `InputText` in SDS.
+- **`sdsType`\*\***:\*\* This is the SDS-equivalent of MUI's boolean `multiline` prop, and takes `textField` (default) or `textArea` as values
+- **`hideLabel`\*\***:\*\* This is the SDS-equivalent of the `hiddenLabel` prop used in MUI; both are boolean with the default not including them (value of `false`)
+- **`intent`\*\***:\*\* This prop is the way you can set colors for SDS's `InputText`, based on its error state. It takes `default` (default, gray), `error`, or `warning` as values. The related MUI-color-setting prop, `color`, has no effect for `InputText` in SDS.
 
 ### MUI Documentation
 
@@ -669,15 +673,15 @@ Documentation for the underlying MUI `TextField`component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `disabled` | `boolean` | `false` | When set to `true`, the component becomes disabled and cannot be interacted with. |
-| `hideLabel` | `boolean` | `false` | If `true`, the label is hidden.  |
-| `id` | `string` | `-` | Specifies the unique `id` for the input element,  needed for accessibility. |
-| `intent` | `"default"` `| "negative"` `| "notice"` `| "positive"` | `"default"` | Alters the border color and visual intent of the search input. |
-| `label` | `string` | `-` | The `label` for the input element. |
-| `placeholder` | `string` | `-` | Sets the `placeholder` text displayed within the input element. |
-| `sdsType` | `"textField"` `| "textArea"` | `"textField"` | Defines the type of component to render, with options for a text input or text area. |
+| Name          | Type            | Default       | Description                                                                       |
+| ------------- | --------------- | ------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------- | -------------------------------------------------------------- |
+| `disabled`    | `boolean`       | `false`       | When set to `true`, the component becomes disabled and cannot be interacted with. |
+| `hideLabel`   | `boolean`       | `false`       | If `true`, the label is hidden.                                                   |
+| `id`          | `string`        | `-`           | Specifies the unique `id` for the input element, needed for accessibility.        |
+| `intent`      | `"default"` `   | "negative"` ` | "notice"` `                                                                       | "positive"`                                                                          | `"default"` | Alters the border color and visual intent of the search input. |
+| `label`       | `string`        | `-`           | The `label` for the input element.                                                |
+| `placeholder` | `string`        | `-`           | Sets the `placeholder` text displayed within the input element.                   |
+| `sdsType`     | `"textField"` ` | "textArea"`   | `"textField"`                                                                     | Defines the type of component to render, with options for a text input or text area. |
 
 ### Code examples
 
@@ -710,13 +714,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -726,7 +728,7 @@ h1 {
 
 ```tsx
 import { InputText } from "@czi-sds/components";
-import { Box } from "@mui/material"; 
+import { Box } from "@mui/material";
 import "./styles.css";
 
 function App() {
@@ -784,13 +786,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -811,13 +812,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -851,13 +863,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -867,7 +877,7 @@ h1 {
 
 ```tsx
 import { InputText } from "@czi-sds/components";
-import { Box } from "@mui/material"; 
+import { Box } from "@mui/material";
 import "./styles.css";
 
 function App() {
@@ -925,13 +935,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -952,14 +961,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

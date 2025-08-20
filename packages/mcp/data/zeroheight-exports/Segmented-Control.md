@@ -4,15 +4,15 @@ Segmented Control allows users to toggle between different views within an on-sc
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
- Segmented Control allows users to toggle between different views of an on-screen element. There must be a minimum of two and can be up to four segments.
+Segmented Control allows users to toggle between different views of an on-screen element. There must be a minimum of two and can be up to four segments.
 
 The Segmented Control component is comprised of Segmented Control Items each of which has a Default, Hover, and Active state. Designers can swap out default icons for icons relevant to their needed use case.
 
 | **Default / Active** | **Hover** |
-| --- | --- |
+| -------------------- | --------- |
 
 ---
 
@@ -30,8 +30,8 @@ Segmented control relies on icons to communicate what’s being shown to the use
 
 ## Segmented Control Component
 
-| Below you will find an interactive Storybook iframe for the Segmented Control.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** SegmentedControl |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for the Segmented Control. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** SegmentedControl |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------- |
 
 ---
 
@@ -47,8 +47,8 @@ Segmented Control allows users to toggle between different views within an on-sc
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -63,7 +63,7 @@ Segmented Control allows users to switch between different views of an on-screen
 Icons are used to communicate what will be shown on screen when that segment is clicked. When hovered over, each segment displays Tooltip – Dark to communicate what the icon represents. Any small variant icon can be used as a segment indicator.
 
 | Default / Active | Hover |
-| --- | --- |
+| ---------------- | ----- |
 
 ---
 
@@ -73,7 +73,7 @@ These rules establish how much margin should exist between and around elements.
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## SegmentedControl
 
@@ -85,8 +85,8 @@ The component's source code in the SDS codebase can be found here.
 
 The following props are available to MUI's `ToggleButtonGroup` but not SDS's `SegementedControl`:
 
-* **`exclusive`****:** This boolean prop determines whether just a single button within the control group can be selected at a time (default) or whether multiple can be. SDS's`SegmentedControl` is an exclusive control only, and setting `exclusive` to `false` has no effect.
-* **`size`****:**  Has no effect for SDS's `SegmentedControl`
+- **`exclusive`\*\***:\*\* This boolean prop determines whether just a single button within the control group can be selected at a time (default) or whether multiple can be. SDS's`SegmentedControl` is an exclusive control only, and setting `exclusive` to `false` has no effect.
+- **`size`\*\***:\*\* Has no effect for SDS's `SegmentedControl`
 
 ### MUI Documentation
 
@@ -96,9 +96,9 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `buttonDefinition` | `{`   `disabled?: boolean;`   `iconName: string;`   `tooltipText: string;`   `value: string;` `}[]` | `-` | An array of items containing an icon name and a tooltip text. |
+| Name               | Type                                                                                        | Default | Description                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------- |
+| `buttonDefinition` | `{` `disabled?: boolean;` `iconName: string;` `tooltipText: string;` `value: string;` `}[]` | `-`     | An array of items containing an icon name and a tooltip text. |
 
 ### Code examples
 
@@ -131,13 +131,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -169,7 +167,7 @@ function App() {
   ];
   return (
     <div className="app">
-      <SegmentedControl buttonDefinition={buttonDefinition}/>
+      <SegmentedControl buttonDefinition={buttonDefinition} />
     </div>
   );
 }
@@ -214,13 +212,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -241,13 +238,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -281,13 +289,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -321,9 +327,9 @@ function App() {
   ];
   return (
     <div className="app">
-      <SegmentedControl 
-        buttonDefinition={buttonDefinition} 
-        value={value} 
+      <SegmentedControl
+        buttonDefinition={buttonDefinition}
+        value={value}
         onChange={(e, newValue) => setValue(newValue)}
       />
     </div>
@@ -370,13 +376,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -397,13 +402,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -437,13 +453,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -476,7 +490,7 @@ function App() {
   ];
   return (
     <div className="app">
-      <SegmentedControl buttonDefinition={buttonDefinition}/>
+      <SegmentedControl buttonDefinition={buttonDefinition} />
     </div>
   );
 }
@@ -521,13 +535,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -548,14 +561,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

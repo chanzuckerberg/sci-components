@@ -3,13 +3,11 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { Tool, ToolConfig } from "../lib/types.js";
 import { getComponentPropsTool } from "./get-component-props.js";
 import { listComponentsTool } from "./list-components.js";
-import { getComponentPropsStorybookTool } from "./get-component-props-storybook.js";
 import { getTailwindTokensTool } from "./get-tailwind-tokens.js";
 import { getComponentDocsTool } from "./get-component-docs.js";
 
 const tools: Tool[] = [
   getComponentPropsTool,
-  getComponentPropsStorybookTool,
   getComponentDocsTool,
   listComponentsTool,
   getTailwindTokensTool,

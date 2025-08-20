@@ -6,13 +6,13 @@ Navigation components enable users to move around an application, either between
 
 ## Jump-to Navigation
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 The Jump-to Navigation component can contain as many Nav Items as necessary though must have a minimum of two. Each Nav Item is tied to a a section of the page and functions as a jump link to that page section. It is positioned on the right side of the page, anchored to the top of the page’s first paragraph and remains sticky on the page as the user scrolls; once the user scrolls into a new section, the active indicator on that section is highlighted until the user scrolls beyond it and into the next (or previous) at which point the indictor moves again. When the user clicks on any of the Nav Items, the page will smooth scroll to that section of the page.
 
 | **Default / Active** | **Hover** |
-| --- | --- |
+| -------------------- | --------- |
 
 ---
 
@@ -20,24 +20,24 @@ The Jump-to Navigation component can contain as many Nav Items as necessary thou
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
 ## Jump-to Navigation Component
 
-| Below you will find an interactive Storybook iframe for the Jump-to Navigation.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** NavigationJumpTo |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for the Jump-to Navigation. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** NavigationJumpTo |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### NavigationJumpTo
 
 Default
 
- 
+
 
 ---
 
@@ -47,15 +47,15 @@ Navigation components enable users to move around an application, either between
 
 ## Jump-to Navigation
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 The Jump-to Navigation component can contain as many Nav Items as necessary though must have a minimum of two. Each Nav Item is tied to a a section of the page and functions as a jump link to that page section. It is positioned on the right side of the page, anchored to the top of the page’s first paragraph and remains sticky on the page as the user scrolls; once the user scrolls into a new section, the active indicator on that section is highlighted until the user scrolls beyond it and into the next (or previous) at which point the indictor moves again. When the user clicks on any of the Nav Items, the page will smooth scroll to that section of the page.
 
 Use a positive pixel value in the `offset` prop to adjust where on the page the user is navigated to in relation to the top of each section.
 
 | **Default / Active** | **Hover** |
-| --- | --- |
+| -------------------- | --------- |
 
 ---
 
@@ -63,7 +63,7 @@ Use a positive pixel value in the `offset` prop to adjust where on the page the 
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ---
 
@@ -74,17 +74,17 @@ The color of the position indicator can be adjusted using the `indicatorColor` p
 Each color option is demonstrated below:
 
 | **Beta** | **Error** | **Gray** | **Info** |
-| --- | --- | --- | --- |
+| -------- | --------- | -------- | -------- |
 
 | **Primary** | **Success** | **Warning** |
-| --- | --- | --- |
+| ----------- | ----------- | ----------- |
 
 ## Code
 
 ## Jump-to Navigation Component
 
-| Below you will find an interactive Storybook iframe for the Jump-to Navigation.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** NavigationJumpTo |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for the Jump-to Navigation. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** NavigationJumpTo |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------- |
 
 ---
 
@@ -100,8 +100,8 @@ Navigation components enable users to move around an application, either between
 
 ## Navigation Components
 
-| Header and Footer Navigation provide the primary means for users to move between the top-level pages of an application as well as access important sections and links to relevant external content; they always sit at the top and bottom of the page respectively.  Jump-to Navigation enables users to move between main sections on a single page, making it easy for users to traverse large amounts of content. |   | **Jump to component:** Header Navigation Footer Navigation Jump-to Navigation  |
-| --- | --- | --- |
+| Header and Footer Navigation provide the primary means for users to move between the top-level pages of an application as well as access important sections and links to relevant external content; they always sit at the top and bottom of the page respectively. Jump-to Navigation enables users to move between main sections on a single page, making it easy for users to traverse large amounts of content. |     | **Jump to component:** Header Navigation Footer Navigation Jump-to Navigation |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------------- |
 
 ### Visual Preview
 
@@ -109,8 +109,8 @@ Navigation components enable users to move around an application, either between
 
 ## Header Navigation
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -124,12 +124,12 @@ Default
 
 Header Navigation contains the following elements:
 
-* Logo – when clicked, brings users back to the main landing page of the application
-* Primary navigation group – contains navigation items that serve as the way users move between the main pages of the application
-* Secondary navigation group – contains navigation items that are used to link out to relevant external sites, help or FAQ pages, tutorials, additional resources, etc.
-    * Optionally, secondary navigation items can display sub-navigation items when additional navigation options within the same category are needed
-* Buttons – can be used for application-level tasks, account login and management, etc.
-* Search Input – searches across the entire application
+- Logo – when clicked, brings users back to the main landing page of the application
+- Primary navigation group – contains navigation items that serve as the way users move between the main pages of the application
+- Secondary navigation group – contains navigation items that are used to link out to relevant external sites, help or FAQ pages, tutorials, additional resources, etc.
+  - Optionally, secondary navigation items can display sub-navigation items when additional navigation options within the same category are needed
+- Buttons – can be used for application-level tasks, account login and management, etc.
+- Search Input – searches across the entire application
 
 All elements besides the logo section are optional and their usage should be determined by the application's information architecture.
 
@@ -154,17 +154,17 @@ Use Wide when pages are being displayed at a **Large** or **Medium** breakpoint 
 The arrangement of the primary navigation group and the Search Input can be flipped depending on the application's navigation needs.
 
 | Default | Default (inverted) |
-| --- | --- |
+| ------- | ------------------ |
 
 #### Primary Navigation Items
 
 | Default | Default (expandable) | Hover | Hover (expandable) | Selected | Open (expandable) |
-| --- | --- | --- | --- | --- | --- |
+| ------- | -------------------- | ----- | ------------------ | -------- | ----------------- |
 
 #### Secondary Navigation Items
 
 | Default | Default (expandable) | Hover | Hover (expandable) | Pressed | Open (expandable) |
-| --- | --- | --- | --- | --- | --- |
+| ------- | -------------------- | ----- | ------------------ | ------- | ----------------- |
 
 ---
 
@@ -173,34 +173,34 @@ The arrangement of the primary navigation group and the Search Input can be flip
 Use Narrow when pages are being displayed at a **Small** breakpoint (though in some cases a Header Navigation – Narrow may be preferable for Medium breakpoints; see Responsive Design for more information).
 
 | Default (closed) | Default (closed; inverted) | Default (open) | Default (open; inverted) |
-| --- | --- | --- | --- |
+| ---------------- | -------------------------- | -------------- | ------------------------ |
 
 #### Primary Navigation Items
 
 | Default | Default (collapsed) | Default (expanded) | Hover | Hover (collapsed) | Hover (expanded) | Active |
-| --- | --- | --- | --- | --- | --- | --- |
+| ------- | ------------------- | ------------------ | ----- | ----------------- | ---------------- | ------ |
 
 #### Primary Sub-navigation Items
 
 | Default | Hover |
-| --- | --- |
+| ------- | ----- |
 
 #### Secondary Navigation Items
 
 | Default | Default (collapsed) | Default (expanded) | Hover | Hover (collapsed) | Hover (expanded) |
-| --- | --- | --- | --- | --- | --- |
+| ------- | ------------------- | ------------------ | ----- | ----------------- | ---------------- |
 
 #### Secondary Sub-navigation Items
 
 | Default | Hover |
-| --- | --- |
+| ------- | ----- |
 
 ---
 
 ## Footer Navigation
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -214,11 +214,11 @@ Default
 
 Footer Navigation contains the following elements:
 
-* Primary logo – when clicked, brings users back to the main landing page of the application
-* Secondary logo group – for logos of partner institutions or other entities
-* Navigation group – contains navigation items that serve as the way users move between the pages of the application
-    * It is recommended, though not required, that the Navigation Items in Navigation Footer match the Navigation Items found in the Primary Navigation group in Navigation Header, making for unified navigation across the application
-* Link group – contains links to tertiary pages like Terms of Service, Privacy Policies, etc.
+- Primary logo – when clicked, brings users back to the main landing page of the application
+- Secondary logo group – for logos of partner institutions or other entities
+- Navigation group – contains navigation items that serve as the way users move between the pages of the application
+  - It is recommended, though not required, that the Navigation Items in Navigation Footer match the Navigation Items found in the Primary Navigation group in Navigation Header, making for unified navigation across the application
+- Link group – contains links to tertiary pages like Terms of Service, Privacy Policies, etc.
 
 All elements besides the logo section are optional and their usage should be determined by the application's information architecture.
 
@@ -241,43 +241,43 @@ Once implemented into an application, the Footer Navigation type displayed will 
 Use Wide when pages are being displayed at a **Large** or **Medium** breakpoint (though in some cases Footer Navigation – Narrow may be preferable for Medium breakpoints; see Responsive Design for more information).
 
 | Default | Default (inverted) |
-| --- | --- |
+| ------- | ------------------ |
 
 #### Navigation Items
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 #### Link Items
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
 ### Footer Navigation – Narrow
 
-Use Narrow when pages are being displayed at a **Small** breakpoint  (though in some cases a Footer Navigation – Narrow may be preferable for Medium breakpoints; see Responsive Design for more information).
+Use Narrow when pages are being displayed at a **Small** breakpoint (though in some cases a Footer Navigation – Narrow may be preferable for Medium breakpoints; see Responsive Design for more information).
 
 | Default | Default (inverted) |
-| --- | --- |
+| ------- | ------------------ |
 
 #### Navigation Items
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 #### Link Items
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
 ## Jump-to Navigation
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -292,7 +292,7 @@ Default
 The Jump-to Navigation component can contain as many Nav Items as necessary though must have a minimum of two. Each Nav Item is tied to a a section of the page and functions as a jump link to that page section. It is positioned on the right side of the page, anchored to the top of the page’s first paragraph and remains sticky on the page as the user scrolls; once the user scrolls into a new section, the active indicator on that section is highlighted until the user scrolls beyond it and into the next (or previous) at which point the indictor moves again. When the user clicks on any of the Nav Items, the page will smooth scroll to that section of the page.
 
 | Default / Active | Hover |
-| --- | --- |
+| ---------------- | ----- |
 
 ---
 
@@ -304,12 +304,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Navigation Components
 
-| Header and Footer Navigation provide the primary means for users to move between the top-level pages of an application as well as access important sections and links to relevant external content; they always sit at the top and bottom of the page respectively.  Jump-to Navigation enables users to move between main sections on a single page, making it easy for users to traverse large amounts of content. |   | **Jump to component:** NavigationHeader NavigationFooter NavigationJumpTo |
-| --- | --- | --- |
+| Header and Footer Navigation provide the primary means for users to move between the top-level pages of an application as well as access important sections and links to relevant external content; they always sit at the top and bottom of the page respectively. Jump-to Navigation enables users to move between main sections on a single page, making it easy for users to traverse large amounts of content. |     | **Jump to component:** NavigationHeader NavigationFooter NavigationJumpTo |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -323,36 +323,36 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `activePrimaryNavKey` | `string` | - | The key of the currently active primary navigation item. |
-| `setActivePrimaryNavKey` | `(key: string) => void` | - | Callback function to set the active primary navigation key. |
-| `buttons` | `ButtonProps[]` | - | An array of buttons displayed in the header. |
-| `hasInvertedStyle` | `boolean` | `false` | When set to `true`, applies an inverted color scheme to the header component. |
-| `logo` | `ReactNode` | - | The logo displayed in the header. Can be an image, icon, svg or any ReactNode. |
-| `logoUrl` | `string` | - | URL for the logo link. If provided, clicking the logo navigates to this URL. |
-| `logoLinkComponent` | `ElementType` | `a` | Specifies the component to use for the logo link. |
-| `logoLinkProps` | `LinkProps` | - | Props to pass to the logo link component. |
-| `primaryNavItems` | `NavigationHeaderPrimaryNavItem<T>[]` | - | List of items for the primary navigation section. |
-| `primaryNavPosition` | `"left"` |`"right"` | `"left"` | Position of the primaryNavItems list. If set to `"left"`, the items appear to the left of the search bar. If set to `"right"`, they are positioned next to the secondaryNavItems on the right. |
-| `position` | `string` |  `"sticky"`  | Specifies the CSS position value for the NavigationHeader. Accepts any valid CSS position value (e.g., "relative", "absolute", "fixed"). By default, it uses "sticky" to keep the header fixed at the top of the page while scrolling. |
-| `showSearch` | `boolean` | `true` | Whether to display the search input in the header. |
-| `searchProps` | `Partial<InputSearchProps>` | - | Props passed to the search input component. |
-| `secondaryNavItems` | `NavigationHeaderSecondaryNavItem[]` | - | List of items for the secondary navigation section. |
-| `scrollElevation` | `boolean` | `true` | Controls whether a shadow is shown under the Nav when scrolling. |
-| `tag` | `string` | - | A small label displayed next to the title. |
-| `tagColor` | `| "info"` `| "positive"` `| "notice"` `| "negative"` `| "neutral"` `| "beta"` `| [string, string]` `| [string, string, string]` | `neutral` | The color of the tag label. |
-| `title` | `string` | - | The main title displayed in the header. |
+| Name                     | Type                                  | Default    | Description                                                                                                                                                                                                                            |
+| ------------------------ | ------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------ | --------- | ------------------- | ------------------------- | --------- | --------------------------- |
+| `activePrimaryNavKey`    | `string`                              | -          | The key of the currently active primary navigation item.                                                                                                                                                                               |
+| `setActivePrimaryNavKey` | `(key: string) => void`               | -          | Callback function to set the active primary navigation key.                                                                                                                                                                            |
+| `buttons`                | `ButtonProps[]`                       | -          | An array of buttons displayed in the header.                                                                                                                                                                                           |
+| `hasInvertedStyle`       | `boolean`                             | `false`    | When set to `true`, applies an inverted color scheme to the header component.                                                                                                                                                          |
+| `logo`                   | `ReactNode`                           | -          | The logo displayed in the header. Can be an image, icon, svg or any ReactNode.                                                                                                                                                         |
+| `logoUrl`                | `string`                              | -          | URL for the logo link. If provided, clicking the logo navigates to this URL.                                                                                                                                                           |
+| `logoLinkComponent`      | `ElementType`                         | `a`        | Specifies the component to use for the logo link.                                                                                                                                                                                      |
+| `logoLinkProps`          | `LinkProps`                           | -          | Props to pass to the logo link component.                                                                                                                                                                                              |
+| `primaryNavItems`        | `NavigationHeaderPrimaryNavItem<T>[]` | -          | List of items for the primary navigation section.                                                                                                                                                                                      |
+| `primaryNavPosition`     | `"left"`                              | `"right"`  | `"left"`                                                                                                                                                                                                                               | Position of the primaryNavItems list. If set to `"left"`, the items appear to the left of the search bar. If set to `"right"`, they are positioned next to the secondaryNavItems on the right. |
+| `position`               | `string`                              | `"sticky"` | Specifies the CSS position value for the NavigationHeader. Accepts any valid CSS position value (e.g., "relative", "absolute", "fixed"). By default, it uses "sticky" to keep the header fixed at the top of the page while scrolling. |
+| `showSearch`             | `boolean`                             | `true`     | Whether to display the search input in the header.                                                                                                                                                                                     |
+| `searchProps`            | `Partial<InputSearchProps>`           | -          | Props passed to the search input component.                                                                                                                                                                                            |
+| `secondaryNavItems`      | `NavigationHeaderSecondaryNavItem[]`  | -          | List of items for the secondary navigation section.                                                                                                                                                                                    |
+| `scrollElevation`        | `boolean`                             | `true`     | Controls whether a shadow is shown under the Nav when scrolling.                                                                                                                                                                       |
+| `tag`                    | `string`                              | -          | A small label displayed next to the title.                                                                                                                                                                                             |
+| `tagColor`               | `                                     | "info"` `  | "positive"` `                                                                                                                                                                                                                          | "notice"` `                                                                                                                                                                                    | "negative"` ` | "neutral"` ` | "beta"` ` | [string, string]` ` | [string, string, string]` | `neutral` | The color of the tag label. |
+| `title`                  | `string`                              | -          | The main title displayed in the header.                                                                                                                                                                                                |
 
->**Important Note!**
+> **Important Note!**
 >
->The NavigationHeader component automatically switches to a mobile-friendly version when there isn’t enough space to display the full header.
+> The NavigationHeader component automatically switches to a mobile-friendly version when there isn’t enough space to display the full header.
 
 ### Code examples
 
 The example below shows a NavigationHeader component with all the possible sections available.
 
->**Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.
+> **Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.
 
 ---
 
@@ -366,41 +366,41 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `hasInvertedStyle` | `boolean` | `false` | If true, applies an inverted (dark-on-light) color scheme to the footer. |
-| `images` | `FooterImage[]` | `-` | An array of images displayed in the footer. Each item includes an image, optional link URL, and component. |
-| `logo` | `ReactNode` | `-` | The logo displayed in the footer. Can be any valid React node such as an image, icon, or SVG. |
-| `logoUrl` | `string` | `-` | If provided, clicking the logo will navigate to this URL. |
-| `logoComponent` | `ElementType` | `"a"` | Specifies the component to use for the logo link. Defaults to an anchor tag. |
-| `logoLinkProps` | `Record<string, unknown>` | `-` | Additional props passed to the logo link component. |
-| `navItems` | `NavigationFooterNavItem[]` | `-` | List of navigation items displayed next to the logo. |
-| `navLinks` | `NavigationFooterNavItem[]` | `-` | List of secondary links shown at the bottom section of the footer.  |
-| `tag` | `string` | `-` | A small label displayed next to the title. |
-| `tagColor` | `TagProps["tagColor"]` | `"neutral"` | The color of the tag. Accepts predefined tag color values from the Tag component.  |
-| `title` | `string` | `-` | The main title displayed in the footer. |
+| Name               | Type                        | Default     | Description                                                                                                |
+| ------------------ | --------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------- |
+| `hasInvertedStyle` | `boolean`                   | `false`     | If true, applies an inverted (dark-on-light) color scheme to the footer.                                   |
+| `images`           | `FooterImage[]`             | `-`         | An array of images displayed in the footer. Each item includes an image, optional link URL, and component. |
+| `logo`             | `ReactNode`                 | `-`         | The logo displayed in the footer. Can be any valid React node such as an image, icon, or SVG.              |
+| `logoUrl`          | `string`                    | `-`         | If provided, clicking the logo will navigate to this URL.                                                  |
+| `logoComponent`    | `ElementType`               | `"a"`       | Specifies the component to use for the logo link. Defaults to an anchor tag.                               |
+| `logoLinkProps`    | `Record<string, unknown>`   | `-`         | Additional props passed to the logo link component.                                                        |
+| `navItems`         | `NavigationFooterNavItem[]` | `-`         | List of navigation items displayed next to the logo.                                                       |
+| `navLinks`         | `NavigationFooterNavItem[]` | `-`         | List of secondary links shown at the bottom section of the footer.                                         |
+| `tag`              | `string`                    | `-`         | A small label displayed next to the title.                                                                 |
+| `tagColor`         | `TagProps["tagColor"]`      | `"neutral"` | The color of the tag. Accepts predefined tag color values from the Tag component.                          |
+| `title`            | `string`                    | `-`         | The main title displayed in the footer.                                                                    |
 
 ### FooterImage
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `image` | `ReactNode` | `-` | The image element to be displayed. Can be an icon, image, SVG, or any ReactNode.  |
-| `url` | `string` | `-` | Optional URL to navigate to when the image is clicked.  |
-| `component` | `ElementType` | `"a"` | Custom link component to use for navigation (e.g., a router link).  |
-| `linkProps` | `Record<string, unknown>` | `-` | Additional props passed to the link component. |
+| Name        | Type                      | Default | Description                                                                      |
+| ----------- | ------------------------- | ------- | -------------------------------------------------------------------------------- |
+| `image`     | `ReactNode`               | `-`     | The image element to be displayed. Can be an icon, image, SVG, or any ReactNode. |
+| `url`       | `string`                  | `-`     | Optional URL to navigate to when the image is clicked.                           |
+| `component` | `ElementType`             | `"a"`   | Custom link component to use for navigation (e.g., a router link).               |
+| `linkProps` | `Record<string, unknown>` | `-`     | Additional props passed to the link component.                                   |
 
 ### NavigationFooterNavItem
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | `-` | The text label displayed for the navigation item.  |
-| `url` | `string` | `-` | Optional URL the item links to.  |
-| `component` | `ElementType` | `"a"` | Custom component to render the link (e.g., Next.js Link).  |
-| `linkProps` | `Record<string, unknown>` | `-` | Props forwarded to the link component. |
+| Name        | Type                      | Default | Description                                               |
+| ----------- | ------------------------- | ------- | --------------------------------------------------------- |
+| `label`     | `string`                  | `-`     | The text label displayed for the navigation item.         |
+| `url`       | `string`                  | `-`     | Optional URL the item links to.                           |
+| `component` | `ElementType`             | `"a"`   | Custom component to render the link (e.g., Next.js Link). |
+| `linkProps` | `Record<string, unknown>` | `-`     | Props forwarded to the link component.                    |
 
 ### Code examples
 
->**Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.
+> **Note:** Due to a bug in Zeroheight we are unable to publish code examples at this time; we will update this section once a fix is released.
 
 ---
 
@@ -412,15 +412,15 @@ The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-SDS's `NavigationJumpTo` uses MUI's `Tab`  component under the hood. `NavigationJumpTo` acts as an indicator of where a user is on a page as well as allowing them to navigate to different page sections. It differs from MUI's `Tab` component in a few main ways:
+SDS's `NavigationJumpTo` uses MUI's `Tab` component under the hood. `NavigationJumpTo` acts as an indicator of where a user is on a page as well as allowing them to navigate to different page sections. It differs from MUI's `Tab` component in a few main ways:
 
-**`orientation`****:** SDS's `NavigationJumpTo` design only supports `orientation="vertical"`, which is baked into its code by default, whereas the default `orientation` value for MUI's `Tab`  component is `horizontal`.  Setting `orientation="horizontal"` on `NaviagationJumpTo`  is not recommended.
+**`orientation`\*\***:\*\* SDS's `NavigationJumpTo` design only supports `orientation="vertical"`, which is baked into its code by default, whereas the default `orientation` value for MUI's `Tab` component is `horizontal`. Setting `orientation="horizontal"` on `NaviagationJumpTo` is not recommended.
 
-**`textColor`****:** Changing the text color of a tab within `NavigationJumpTo` is not currently supported. However, you can still change the `indicatorColor`;  it will take any of the SDS colors (`beta`, `error`, `gray`, `info`, `primary`, `success`, `warning`).
+**`textColor`\*\***:\*\* Changing the text color of a tab within `NavigationJumpTo` is not currently supported. However, you can still change the `indicatorColor`; it will take any of the SDS colors (`beta`, `error`, `gray`, `info`, `primary`, `success`, `warning`).
 
-**`icon`****:** `NavigationJumpTo` does not support the inclusion of icons.
+**`icon`\*\***:\*\* `NavigationJumpTo` does not support the inclusion of icons.
 
-**`offsetTop`****:** This prop is exclusive to `NavigationJumpTo` and takes a number between 0 to 100. It means that a section indicator will turn on when the top of that section is the specified number of pixels below the top of the window. This is used to adjust when the section indicator moves to a different section based on the preference of a team. 
+**`offsetTop`\*\***:\*\* This prop is exclusive to `NavigationJumpTo` and takes a number between 0 to 100. It means that a section indicator will turn on when the top of that section is the specified number of pixels below the top of the window. This is used to adjust when the section indicator moves to a different section based on the preference of a team.
 
 ### MUI Documentation
 
@@ -430,11 +430,11 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `items` | `Array<{`     `title: string;`     `elementRef: React.MutableRefObject<HTMLElement | null>;`   `}>;` | `-` | An array of items to be displayed in the NavigationJumpTo component. |
-| `offsetTop` | `number` | `-` | The top offset for scrolling, measured in pixels comes before the target element during scrolling. |
-| `onChange` | `(`   `value: number,`   `event?: React.SyntheticEvent,`   `type?: "click" | "scroll"``) => void;` | `-` | Defines the action to be taken when the value changes. |
+| Name        | Type                                                                       | Default               | Description                                                                                        |
+| ----------- | -------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `items`     | `Array<{` `title: string;` `elementRef: React.MutableRefObject<HTMLElement | null>;`   `}>;`       | `-`                                                                                                | An array of items to be displayed in the NavigationJumpTo component. |
+| `offsetTop` | `number`                                                                   | `-`                   | The top offset for scrolling, measured in pixels comes before the target element during scrolling. |
+| `onChange`  | `(` `value: number,` `event?: React.SyntheticEvent,` `type?: "click"       | "scroll"``) => void;` | `-`                                                                                                | Defines the action to be taken when the value changes.               |
 
 ### Code examples
 
@@ -467,13 +467,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -488,13 +486,15 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <NavigationJumpTo items={[
-        { elementRef: { current: null }, title: "Item 1" },
-        { elementRef: { current: null }, title: "Item 2" },
-        { elementRef: { current: null }, title: "Item 3" },
-        { elementRef: { current: null }, title: "Item 4" },
-        { elementRef: { current: null }, title: "Item 5" },
-      ]} />
+      <NavigationJumpTo
+        items={[
+          { elementRef: { current: null }, title: "Item 1" },
+          { elementRef: { current: null }, title: "Item 2" },
+          { elementRef: { current: null }, title: "Item 3" },
+          { elementRef: { current: null }, title: "Item 4" },
+          { elementRef: { current: null }, title: "Item 5" },
+        ]}
+      />
     </div>
   );
 }
@@ -539,13 +539,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -566,13 +565,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -606,13 +616,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -622,7 +630,11 @@ h1 {
 
 ```tsx
 import { forwardRef, useState, useRef } from "react";
-import { InputSlider, NavigationJumpTo, getSemanticColors } from "@czi-sds/components";
+import {
+  InputSlider,
+  NavigationJumpTo,
+  getSemanticColors,
+} from "@czi-sds/components";
 import { useTheme } from "@mui/material";
 import { Box } from "@mui/material";
 import "./styles.css";
@@ -635,8 +647,8 @@ const TabPanel = forwardRef<HTMLDivElement, TabPanelPropsExtra>(
   (props, ref) => {
     const { children, sdsDemoHeight, ...other } = props;
     const theme = useTheme();
-    const semanticColors = getSemanticColors({theme});
-    
+    const semanticColors = getSemanticColors({ theme });
+
     return (
       <div
         ref={ref}
@@ -668,7 +680,7 @@ const TabPanel = forwardRef<HTMLDivElement, TabPanelPropsExtra>(
 );
 
 function App() {
- const [navPanelHeight, setNavPanelHeight] = useState(100);
+  const [navPanelHeight, setNavPanelHeight] = useState(100);
   const sectionRef0 = useRef(null);
   const sectionRef1 = useRef(null);
   const sectionRef2 = useRef(null);
@@ -813,13 +825,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -840,14 +851,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

@@ -6,8 +6,8 @@ Buttons are one of the primary ways users interact with and provide input to the
 
 ## Button Variants
 
-| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |   | **Jump to variant:** Square Copy Icon |
-| --- | --- | --- |
+| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |     | **Jump to variant:** Square Copy Icon |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------- |
 
 ### Visual Preview
 
@@ -17,8 +17,8 @@ Use the links below to jump to information on a specific Button variant:
 
 ## Square Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 ### Large Primary Square Button
 
@@ -27,7 +27,7 @@ Use for primary or emphasized actions.
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ### Small Primary Square Button
 
@@ -36,7 +36,7 @@ Use for actions that are lower importance or don't require as much emphasis on t
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ### Secondary Square Button
 
@@ -47,7 +47,7 @@ Note: there is no small secondary square Button.
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -59,15 +59,15 @@ These rules establish how much margin should exist between and around elements.
 
 ## Copy Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
-Used inline within body copy when providing instructions to users that involve copying content. Any content that would need to be easily accessible by the user can be tied to the Copy Button. When clicked, the content tied to it is copied to the user's clipboard. 
+Used inline within body copy when providing instructions to users that involve copying content. Any content that would need to be easily accessible by the user can be tied to the Copy Button. When clicked, the content tied to it is copied to the user's clipboard.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -75,14 +75,14 @@ Click on each state below to enter inspect view and get details on its code attr
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ---
 
 ## Icon Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------------------- |
 
 ### Large Icon Button
 
@@ -93,7 +93,7 @@ Use the Icon Button size that is most appropriate for the design it is being use
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Medium Icon Button
 
@@ -104,7 +104,7 @@ Use the Icon Button size that is most appropriate for the design it is being use
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Small Icon Button
 
@@ -115,7 +115,7 @@ Use the Icon Button size that is most appropriate for the design it is being use
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -123,18 +123,18 @@ Click on each state below to enter inspect view and get details on its code attr
 
 These rules establish how much margin should exist between and around elements.
 
- 
+
 
 ## Code
 
 ## Button Components
 
-| Below you will find interactive Storybook iframes for each component within the Button element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Button ButtonIcon |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Button element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Button ButtonIcon |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### Button
 
@@ -154,8 +154,8 @@ Buttons are one of the primary ways users interact with and provide input to the
 
 ## Button Variants
 
-| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |   | **Jump to variant:** Rounded Square Minimal Icon Rounded Dropdown Square Dropdown |
-| --- | --- | --- |
+| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |     | **Jump to variant:** Rounded Square Minimal Icon Rounded Dropdown Square Dropdown |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------------------------------------- |
 
 ### Visual Preview
 
@@ -165,8 +165,8 @@ Use the links below to jump to information on a specific Button variant:
 
 ## Rounded Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Primary Rounded Button
 
@@ -177,14 +177,14 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled**  |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
- 
 
- 
+
+
 
 ### Secondary Rounded Button
 
@@ -195,12 +195,12 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
- 
+
 
 ### Error Rounded Button
 
@@ -210,11 +210,11 @@ Include an icon when needing to provide additional context to users of what acti
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-| **Default** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default** | **Hover** | **Pressed** | **Disabled** |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ---
 
@@ -226,8 +226,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Square Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Primary Square Button
 
@@ -238,10 +238,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ### Secondary Square Button
 
@@ -252,10 +252,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ### Error Square Button
 
@@ -266,10 +266,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 | **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------ | --------- | ----------- | ------------ |
 
 ---
 
@@ -281,8 +281,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Minimal Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Primary Minimal Button
 
@@ -295,12 +295,12 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
- 
+
 
 ### Secondary Minimal Button
 
@@ -311,7 +311,7 @@ Note: only Primary Minimal Buttons can be paired with icons.
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -323,8 +323,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Icon Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Large Primary Icon Button
 
@@ -337,7 +337,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Pressed** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ----------- | ---------------- | -------------- | ------------ |
 
 ### Small Primary Icon Button
 
@@ -350,7 +350,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ### Large Secondary Icon Button
 
@@ -363,7 +363,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ---------------- | -------------- | ------------ |
 
 ### Small Secondary Icon Button
 
@@ -376,7 +376,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ---------------- | -------------- | ------------ |
 
 ### Large Tertiary Icon Button
 
@@ -387,7 +387,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Medium Tertiary Icon Button
 
@@ -398,7 +398,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Small Tertiary Icon Button
 
@@ -409,7 +409,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -421,8 +421,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Rounded Dropdown Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Primary Rounded Dropdown Button
 
@@ -435,9 +435,9 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
- 
+
 
 ### Secondary Rounded Dropdown Button
 
@@ -448,7 +448,7 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -458,12 +458,12 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
- 
+
 
 ## Square Dropdown Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Primary Square Dropdown Button
 
@@ -476,7 +476,7 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ### Secondary Square Dropdown Button
 
@@ -489,7 +489,7 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -501,12 +501,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Button Components
 
-| Below you will find interactive Storybook iframes for each component within the Button element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Button ButtonIcon ButtonDropdown |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Button element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Button ButtonIcon ButtonDropdown |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### Button
 
@@ -532,8 +532,8 @@ Buttons are one of the primary ways users interact with and provide input to the
 
 ## Button Variants
 
-| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |   | **Jump to variant:** Rounded Square Minimal Icon Rounded Dropdown |
-| --- | --- | --- |
+| There are a range of Button variants available for designers to use in their layouts depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. Follow the usage criteria accompanying each variant as a guide for selecting the correct Button for any given use case. |     | **Jump to variant:** Rounded Square Minimal Icon Rounded Dropdown |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------- |
 
 ### Visual Preview
 
@@ -543,8 +543,8 @@ Use the links below to jump to information on a specific Button variant:
 
 ## Rounded Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Primary Rounded Button
 
@@ -555,12 +555,12 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled**  |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
- 
+
 
 ### Secondary Rounded Button
 
@@ -571,10 +571,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ### Error Rounded Button
 
@@ -584,11 +584,11 @@ Include an icon when needing to provide additional context to users of what acti
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-| **Default** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default** | **Hover** | **Pressed** | **Disabled** |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ---
 
@@ -600,8 +600,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Square Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Primary Square Button
 
@@ -612,10 +612,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ### Secondary Square Button
 
@@ -626,10 +626,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** |  **Hover** | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
 ### Error Square Button
 
@@ -640,10 +640,10 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 | **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ------------------ | --------- | ----------- | ------------ |
 
 ---
 
@@ -655,8 +655,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Minimal Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Primary Minimal Button
 
@@ -669,12 +669,12 @@ Include an icon when needing to provide additional context to users of what acti
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
-| **Default + Icon** | **Hover**  | **Pressed**  | **Disabled** |
-| --- | --- | --- | --- |
+| **Default + Icon** | **Hover** | **Pressed** | **Disabled** |
+| ------------------ | --------- | ----------- | ------------ |
 
- 
+
 
 ### Secondary Minimal Button
 
@@ -685,9 +685,9 @@ Note: only Primary Minimal Buttons can be paired with icons.
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
- 
+
 
 ---
 
@@ -699,8 +699,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Icon Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Large Primary Icon Button
 
@@ -713,9 +713,9 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Pressed** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ----------- | ---------------- | -------------- | ------------ |
 
- 
+
 
 ### Small Primary Icon Button
 
@@ -728,7 +728,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ### Large Secondary Icon Button
 
@@ -741,7 +741,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ---------------- | -------------- | ------------ |
 
 ### Small Secondary Icon Button
 
@@ -754,7 +754,7 @@ Icon Buttons can be coupled with a Dropdown Menu when there are multiple options
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Off)** | **Hover (Off)** | **Default (On)** | **Hover (On)** | **Disabled** |
-| --- | --- | --- | --- | --- |
+| ----------------- | --------------- | ---------------- | -------------- | ------------ |
 
 ### Large Tertiary Icon Button
 
@@ -765,7 +765,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Medium Tertiary Icon Button
 
@@ -776,7 +776,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ### Small Tertiary Icon Button
 
@@ -787,7 +787,7 @@ Use the Tertiary Icon Button size that is most appropriate for the design it is 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -799,8 +799,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Rounded Dropdown Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Primary Rounded Dropdown Button
 
@@ -813,9 +813,9 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
- 
+
 
 ### Secondary Rounded Dropdown Button
 
@@ -826,7 +826,7 @@ The options are presented in a dropdown menu; use in conjunction with Dropdown M
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** | **Disabled** |
-| --- | --- | --- | --- |
+| ----------- | --------- | ----------- | ------------ |
 
 ---
 
@@ -838,8 +838,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Button Components
 
-| Below you will find interactive Storybook iframes for each component within the Button element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Button ButtonIcon ButtonDropdown |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Button element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Button ButtonIcon ButtonDropdown |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------- |
 
 ---
 
@@ -867,8 +867,8 @@ Buttons are one of the primary ways users interact with and provide input to the
 
 ## Button Components
 
-| There are a range of Button types available to use depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. |   | **Jump to variant:** Button Dropdown Button Toggle Button |
-| --- | --- | --- |
+| There are a range of Button types available to use depending on the amount of emphasis the Button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. |     | **Jump to variant:** Button Dropdown Button Toggle Button |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------------- |
 
 ### Visual Preview
 
@@ -876,8 +876,8 @@ Buttons are one of the primary ways users interact with and provide input to the
 
 ## Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Button Styles
 
@@ -903,15 +903,15 @@ Use for primary or emphasized actions.
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
@@ -919,15 +919,15 @@ Use for a secondary or deemphasized action; often paired with a primary Button.
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Destructive
 
@@ -935,15 +935,15 @@ Use the destructive Button when the outcome of the user clicking the button will
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -957,15 +957,15 @@ Alternate Button style for primary or emphasized actions.
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### **Secondary**
 
@@ -973,15 +973,15 @@ Use for a secondary or deemphasized action; often paired with a primary Button.
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Destructive
 
@@ -989,15 +989,15 @@ Use the destructive Button when the outcome of the user clicking the button will
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; title case used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1013,15 +1013,15 @@ Use for primary or emphasized actions.
 
 Include an icon when needing to provide additional context to users of what action the Button has. Label text is available in all caps or title case; all caps is used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
@@ -1029,15 +1029,15 @@ Use for a secondary or deemphasized action; often paired with a primary Button.
 
 Label text is available in all caps or title case; all caps is used by default.
 
-*Title Case*
+_Title Case_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*All Caps*
+_All Caps_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1051,58 +1051,58 @@ Optionally, pair Button – Icon with a Tooltip to use as a label to communicate
 
 Primary Button – Icon should be used in places that require the user's primary attention or to emphasize a primary action. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*Medium*
-
-| Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
-
-*Small*
+_Medium_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
+
+_Small_
+
+| Default | Hover | Pressed | Disabled |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
 Secondary Button – Icon should be used for deemphasized or secondary actions. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*Medium*
-
-| Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
-
-*Small*
+_Medium_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
+
+_Small_
+
+| Default | Hover | Pressed | Disabled |
+| ------- | ----- | ------- | -------- |
 
 #### Tertiary
 
 The tertiary Icon Button should be used for lowest level actions that are not a part of the user's main workflow, such as closing a Dialog or expanding an Accordion. It is not usually used in combination with other Buttons or Tooltips.
 
-*Large*
+_Large_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*Medium*
-
-| Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
-
-*Small*
+_Medium_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
+
+_Small_
+
+| Default | Hover | Pressed | Disabled |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1114,8 +1114,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Dropdown Button Styles
 
@@ -1140,14 +1140,14 @@ Use when there is a need to present the user with multiple options for actions t
 The Primary variant should be used in places that require the user's primary attention or to emphasize a primary action.
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
 The Secondary Rounded Dropdown Button should be used for deemphasized or secondary actions.
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1160,14 +1160,14 @@ Alternate Dropdown Button style for use when there is a need to present the user
 The Primary variant should be used in places that require the user's primary attention or to emphasize a primary action.
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
 The Secondary Rounded Dropdown Button should be used for deemphasized or secondary actions.
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1181,39 +1181,39 @@ Optionally, pair Dropdown Button – Icon with a Tooltip to use as a label to co
 
 Primary Dropdown Button – Icon should be used in places that require the user's primary attention or to emphasize a primary action. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*Medium*
-
-| Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
-
-*Small*
+_Medium_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
+
+_Small_
+
+| Default | Hover | Pressed | Disabled |
+| ------- | ----- | ------- | -------- |
 
 #### Secondary
 
 Secondary Dropdown Button – Icon should be used for deemphasized or secondary actions. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
 
-*Medium*
-
-| Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
-
-*Small*
+_Medium_
 
 | Default | Hover | Pressed | Disabled |
-| --- | --- | --- | --- |
+| ------- | ----- | ------- | -------- |
+
+_Small_
+
+| Default | Hover | Pressed | Disabled |
+| ------- | ----- | ------- | -------- |
 
 ---
 
@@ -1225,8 +1225,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Toggle Button
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -1246,39 +1246,39 @@ Optionally, pair Toggle Button with a Tooltip to use as a label to communicate t
 
 Toggle Button – Primary should be used in places that require the user's primary attention or to emphasize a primary action. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
 
-*Medium*
-
-| Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-
-*Small*
+_Medium_
 
 | Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
+
+_Small_
+
+| Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
 
 #### Secondary
 
 Toggle Button – Secondary should be used for deemphasized or secondary actions. Can be paired with other Button components.
 
-*Large*
+_Large_
 
 | Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
 
-*Medium*
-
-| Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-
-*Small*
+_Medium_
 
 | Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
+
+_Small_
+
+| Default (Off) | Hover (Off) | Pressed (On) | Default (On) | Hover (On) | Pressed (Off) | Disabled |
+| :-----------: | :---------: | :----------: | :----------: | :--------: | :-----------: | :------: |
 
 ---
 
@@ -1290,12 +1290,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Button Components
 
-| There are a range of Button types available to use depending on the amount of emphasis the button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. |   | **Jump to component:** Button ButtonDropdown ButtonToggle |
-| --- | --- | --- |
+| There are a range of Button types available to use depending on the amount of emphasis the button needs to have, its location in the UI, and whether it is existing alone or alongside other Buttons. |     | **Jump to component:** Button ButtonDropdown ButtonToggle |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -1309,21 +1309,21 @@ The component's source code in the SDS codebase can be found here.
 
 The following props are available to MUI's `Button` component, but produce no effect (or unexpected effects) for SDS's `Button` component, so **it is recommended to not use them**:
 
-* **`variant`****:**  This prop is intended to set the `Button` to either `text` only, `contained`,  or `outlined`.  With SDS's `Button`, they do not function as described in the MUI documentation; however, similar effects, specific to SDS's styles, can be achieved through a combination of the SDS-only props: `sdsStyle` and `sdsType` (see details below).
-* **`color`****:**  SDS'S`Button`does not support this colors or intents that would be expected through this prop. However, the `sdsType` prop can be used to set the button color as `primary` or `secondary`.
-* **`size`****:**  This prop is not supported for SDS's `Button`
-* **`disableElevation`****:**  The SDS `Button` component doesn't have a visual "elevation" or shadowed treatment by default (which this prop disables for MUI's `Button`).  Setting `disableElevation={false}` will not render the MUI default elevation treatment.
+- **`variant`\*\***:\*\* This prop is intended to set the `Button` to either `text` only, `contained`, or `outlined`. With SDS's `Button`, they do not function as described in the MUI documentation; however, similar effects, specific to SDS's styles, can be achieved through a combination of the SDS-only props: `sdsStyle` and `sdsType` (see details below).
+- **`color`\*\***:\*\* SDS'S`Button`does not support this colors or intents that would be expected through this prop. However, the `sdsType` prop can be used to set the button color as `primary` or `secondary`.
+- **`size`\*\***:\*\* This prop is not supported for SDS's `Button`
+- **`disableElevation`\*\***:\*\* The SDS `Button` component doesn't have a visual "elevation" or shadowed treatment by default (which this prop disables for MUI's `Button`). Setting `disableElevation={false}` will not render the MUI default elevation treatment.
 
 Icons can be used in both MUI and SDS `Button` component, but are called in slightly different ways:
 
-* **`startIcon`** and **`endIcon`****:**  Both of these props are supported by both MUI and SDS's `Buttons`.  However, MUI expects the prop to receive an individual icon as its own component (for example`startIcon={<DeleteIcon />}`), whereas SDS takes the `Icon` component which references which specific icon to call, as one of its props, as such:
+- **`startIcon`** and **`endIcon`\*\***:\*\* Both of these props are supported by both MUI and SDS's `Buttons`. However, MUI expects the prop to receive an individual icon as its own component (for example`startIcon={<DeleteIcon />}`), whereas SDS takes the `Icon` component which references which specific icon to call, as one of its props, as such:
 
-		`startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}`  
+      `startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}`
 
 SDS's `Button` has additional props to allow flexibility while maintaining the SDS styles:
 
-* **`sdsStyle`****:**  takes `minimal` (default), `rounded`,  or `square` or `icon` as values
-* **`sdsType`****:**  takes `primary` (default, filled) or `secondary` (outlined) as values
+- **`sdsStyle`\*\***:\*\* takes `minimal` (default), `rounded`, or `square` or `icon` as values
+- **`sdsType`\*\***:\*\* takes `primary` (default, filled) or `secondary` (outlined) as values
 
 ### MUI Documentation
 
@@ -1335,29 +1335,29 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 If `sdsStyle` is set to either `rounded` or `squared`, the props are as follows:
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `isAllCaps` | `bool` | `false` | When set to `true`, the button text will be displayed in all capital letters. Please note that the `isAllCaps` attribute only applies to buttons with the `sdsStyle` set to `minimal`. |
-| `sdsStyle` | `"rounded" | "square"` | `-` | Style of the button. |
-| `sdsType` | `"primary"`  `| "secondary"`  `| "destructive"` | `-` | Type of the button. |
+| Name        | Type          | Default         | Description                                                                                                                                                                            |
+| ----------- | ------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------- |
+| `isAllCaps` | `bool`        | `false`         | When set to `true`, the button text will be displayed in all capital letters. Please note that the `isAllCaps` attribute only applies to buttons with the `sdsStyle` set to `minimal`. |
+| `sdsStyle`  | `"rounded"    | "square"`       | `-`                                                                                                                                                                                    | Style of the button. |
+| `sdsType`   | `"primary"` ` | "secondary"`  ` | "destructive"`                                                                                                                                                                         | `-`                  | Type of the button. |
 
 If `sdsStyle` is set to `minimal`, the props are listed below:
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `isAllCaps` | `bool` | `false` | When set to `true`, the button text will be displayed in all capital letters. Please note that the `isAllCaps` attribute only applies to buttons with the `sdsStyle` set to `minimal`. |
-| `sdsStyle` | `"minimal"` | `-` | Style of the button. |
-| `sdsType` | `"primary"` `| "secondary"` | `-` | Type of the button. |
+| Name        | Type          | Default      | Description                                                                                                                                                                            |
+| ----------- | ------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `isAllCaps` | `bool`        | `false`      | When set to `true`, the button text will be displayed in all capital letters. Please note that the `isAllCaps` attribute only applies to buttons with the `sdsStyle` set to `minimal`. |
+| `sdsStyle`  | `"minimal"`   | `-`          | Style of the button.                                                                                                                                                                   |
+| `sdsType`   | `"primary"` ` | "secondary"` | `-`                                                                                                                                                                                    | Type of the button. |
 
 And if the `sdsStyle` is set to `icon`, the props are listed below:
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `sdsSize` | `"small"`  `| "medium"`  `| "large"` | `medium` | Determines the size of the button icon. |
-| `sdsStyle` | `"icon"` | `-` | Style of the button. |
-| `sdsType` | `"primary"` `| "secondary"`  `| "tertiary"` | `-` | Type of the button icon. |
-| `icon` | `SDSIcon | React.ReactElement<CustomSVGProps>` | `-` | The actual icon |
-| `sdsIconProps` | `Partial<IconProps>` | `-` | Props for the icon if an sds icon is used. |
+| Name           | Type                 | Default                             | Description                                |
+| -------------- | -------------------- | ----------------------------------- | ------------------------------------------ | --------------- | --------------------------------------- |
+| `sdsSize`      | `"small"` `          | "medium"`  `                        | "large"`                                   | `medium`        | Determines the size of the button icon. |
+| `sdsStyle`     | `"icon"`             | `-`                                 | Style of the button.                       |
+| `sdsType`      | `"primary"` `        | "secondary"`  `                     | "tertiary"`                                | `-`             | Type of the button icon.                |
+| `icon`         | `SDSIcon             | React.ReactElement<CustomSVGProps>` | `-`                                        | The actual icon |
+| `sdsIconProps` | `Partial<IconProps>` | `-`                                 | Props for the icon if an sds icon is used. |
 
 ### Code examples
 
@@ -1390,13 +1390,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1411,7 +1409,9 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Button sdsType="primary" sdsStyle="square">Label</Button>
+      <Button sdsType="primary" sdsStyle="square">
+        Label
+      </Button>
     </div>
   );
 }
@@ -1456,13 +1456,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1483,13 +1482,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1523,13 +1533,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1544,9 +1552,9 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Button 
-        sdsType="secondary" 
-        sdsStyle="square" 
+      <Button
+        sdsType="secondary"
+        sdsStyle="square"
         startIcon={<Icon sdsIcon="Download" sdsSize="s" sdsType="button" />}
       >
         Download
@@ -1595,13 +1603,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1622,13 +1629,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1662,13 +1680,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1683,11 +1699,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Button 
-        sdsType="primary" 
-        sdsStyle="icon" 
-        icon="Download"
-      />
+      <Button sdsType="primary" sdsStyle="icon" icon="Download" />
     </div>
   );
 }
@@ -1732,13 +1744,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1759,13 +1770,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1780,23 +1802,23 @@ The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-The SDS `ButtonDropdown` component is just the regular `Button` component, with the `chevronDown` icon added at the end of the button after the label text, via the MUI `endIcon` prop. Additionally, `ButtonDropdown` requires a `startIcon`.  In SDS, both the `endIcon` and `startIcon` props take the `Icon` component, which references the specific icon to call as one of its props, like so:
+The SDS `ButtonDropdown` component is just the regular `Button` component, with the `chevronDown` icon added at the end of the button after the label text, via the MUI `endIcon` prop. Additionally, `ButtonDropdown` requires a `startIcon`. In SDS, both the `endIcon` and `startIcon` props take the `Icon` component, which references the specific icon to call as one of its props, like so:
 
-		`startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}`  
+    	`startIcon={<Icon sdsIcon="download" sdsSize="s" sdsType="button" />}`
 
 whereas MUI expects the prop to receive an individual icon as its own component (for example`startIcon={<DeleteIcon />}`).
 
 Since `ButtonIcon` is very similar to SDS's `Button` component, similar caveats apply in terms of the MUI props. The following props are available to MUI's `Button` component, but produce no effect (or unexpected effects) for SDS's `ButtonIcon` component, so it is recommended to not use them:
 
-* **`variant`****:**  This prop is intended to set the `Button` to either `text` only, `contained`,  or `outlined`.  With SDS's `ButtonIcon`,  however, they do not function as described in the MUI documentation; however, similar effects, specific to SDS's styles, can be achieved through a combination of the SDS-only `sdsStyle`  and `sdsType` props (see below).
-* **`color`****:**  This prop doesn't work as expected for SDS's `ButtonIcon`,  which doesn't support colors or intents. The `sdsType` prop can be used to set the button as `primary` or `secondary`,  though.
-* **`size`****:**  This prop is not supported for SDS's `ButtonIcon`
-*  **`disableElevation`****:**  The SDS `ButtonIcon` component doesn't have a visual "elevation" or shadowed treatment by default (which this prop disables for MUI's `Button`).  However, setting `disableElevation={false}` will not render the MUI default elevation treatment.
+- **`variant`\*\***:\*\* This prop is intended to set the `Button` to either `text` only, `contained`, or `outlined`. With SDS's `ButtonIcon`, however, they do not function as described in the MUI documentation; however, similar effects, specific to SDS's styles, can be achieved through a combination of the SDS-only `sdsStyle` and `sdsType` props (see below).
+- **`color`\*\***:\*\* This prop doesn't work as expected for SDS's `ButtonIcon`, which doesn't support colors or intents. The `sdsType` prop can be used to set the button as `primary` or `secondary`, though.
+- **`size`\*\***:\*\* This prop is not supported for SDS's `ButtonIcon`
+- **`disableElevation`\*\***:\*\* The SDS `ButtonIcon` component doesn't have a visual "elevation" or shadowed treatment by default (which this prop disables for MUI's `Button`). However, setting `disableElevation={false}` will not render the MUI default elevation treatment.
 
 SDS's `ButtonIcon` has additional props to allow flexibility while maintaining the SDS styles:
 
-* **`sdsStyle`****:**  takes `minimal` (default), `rounded`,  or `square` as values
-* **`sdsType`****:**  takes `primary` (default, filled) or `secondary` (outlined) as values
+- **`sdsStyle`\*\***:\*\* takes `minimal` (default), `rounded`, or `square` as values
+- **`sdsType`\*\***:\*\* takes `primary` (default, filled) or `secondary` (outlined) as values
 
 ### MUI Documentation
 
@@ -1806,19 +1828,19 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `icon` | `SDSIcon | React.ReactElement<CustomSVGProps>` | `-` | An `icon` element placed before the children. |
-| `sdsStyle` | `"icon"`  `| "rounded"`  `| "square"` | `-` | Style of the button. |
-| `sdsType` | `"primary" | "secondary"` | `-` | Type of the button. |
-| `sdsSize` | `"small" | "medium" | "large"` | `"medium"` | Size of the icon. |
-| `sdsIconProps` | `Partial<IconProps>` | `-` | Props for the icon if an SDS icon is used. |
+| Name           | Type                 | Default                             | Description                                |
+| -------------- | -------------------- | ----------------------------------- | ------------------------------------------ | --------------------------------------------- | -------------------- |
+| `icon`         | `SDSIcon             | React.ReactElement<CustomSVGProps>` | `-`                                        | An `icon` element placed before the children. |
+| `sdsStyle`     | `"icon"` `           | "rounded"`  `                       | "square"`                                  | `-`                                           | Style of the button. |
+| `sdsType`      | `"primary"           | "secondary"`                        | `-`                                        | Type of the button.                           |
+| `sdsSize`      | `"small"             | "medium"                            | "large"`                                   | `"medium"`                                    | Size of the icon.    |
+| `sdsIconProps` | `Partial<IconProps>` | `-`                                 | Props for the icon if an SDS icon is used. |
 
 ### Code examples
 
 #### **Default ButtonDropdown**
 
-This example has the minimum props needed for the `ButtonDropdown` component. 
+This example has the minimum props needed for the `ButtonDropdown` component.
 
 **/styles.css**
 
@@ -1845,13 +1867,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1913,13 +1933,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1940,13 +1959,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1980,13 +2010,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -2001,9 +2029,9 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <ButtonDropdown 
+      <ButtonDropdown
         icon={<Icon sdsIcon="Bacteria" sdsSize="s" sdsType="button" />}
-        sdsType="primary" 
+        sdsType="primary"
         sdsStyle="square"
       >
         Bacteria Types
@@ -2052,13 +2080,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2079,13 +2106,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -2106,19 +2144,19 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `icon` | `SDSIcon | React.ReactElement<CustomSVGProps>` | `-` | The `icon` element displayed within the component. |
-| `sdsStage` | `"on"` `| "off"` | `off` | Controls the toggle stage. |
-| `sdsType` | `"primary" | "secondary"` | `-` | Type of the button. |
-| `sdsSize` | `"small" | "medium" | "large"` | `"medium"` | Size of the icon. |
-| `disabled` | `bool` | `false` | Disables the toggle button when set to `true`. |
+| Name       | Type       | Default                             | Description                                    |
+| ---------- | ---------- | ----------------------------------- | ---------------------------------------------- | -------------------------------------------------- | ----------------- |
+| `icon`     | `SDSIcon   | React.ReactElement<CustomSVGProps>` | `-`                                            | The `icon` element displayed within the component. |
+| `sdsStage` | `"on"` `   | "off"`                              | `off`                                          | Controls the toggle stage.                         |
+| `sdsType`  | `"primary" | "secondary"`                        | `-`                                            | Type of the button.                                |
+| `sdsSize`  | `"small"   | "medium"                            | "large"`                                       | `"medium"`                                         | Size of the icon. |
+| `disabled` | `bool`     | `false`                             | Disables the toggle button when set to `true`. |
 
 ### Code examples
 
 #### **Default ButtonToggle**
 
-This example has the minimum props needed for the `ButtonToggle` component. 
+This example has the minimum props needed for the `ButtonToggle` component.
 
 **/styles.css**
 
@@ -2145,13 +2183,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -2160,18 +2196,18 @@ h1 {
 **/App.tsx**
 
 ```tsx
-import * as React from  "react";
+import * as React from "react";
 import { ButtonToggle } from "@czi-sds/components";
 import "./styles.css";
 
 function App() {
   const [toggle, setToggle] = React.useState(0);
-  
+
   return (
     <div className="app">
-      <ButtonToggle 
-        icon="InfoCircle" 
-        sdsStage={toggle ? "on" : "off"} 
+      <ButtonToggle
+        icon="InfoCircle"
+        sdsStage={toggle ? "on" : "off"}
         onClick={() => setToggle((prev) => !prev)}
       >
         Label
@@ -2220,13 +2256,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2247,14 +2282,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

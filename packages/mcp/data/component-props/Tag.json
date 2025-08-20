@@ -1,84 +1,38 @@
 {
   "Tag": {
     "props": {
-      "label": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The content of the component."
-      },
       "color": {
         "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
-        "isRequired": false
-      },
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "children": {
-        "type": "null",
-        "isRequired": false,
-        "description": "This prop isn't supported.\nUse the `component` prop if you need to change the children structure."
-      },
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is disabled.",
-        "defaultValue": false
-      },
-      "icon": {
-        "type": "ReactElement",
-        "isRequired": false,
-        "description": "Icon element."
-      },
-      "size": {
-        "type": "\"small\" | \"medium\"",
-        "isRequired": false,
-        "description": "The size of the component.",
-        "defaultValue": "medium"
-      },
-      "variant": {
-        "type": "\"outlined\" | \"filled\"",
-        "isRequired": false,
-        "description": "The variant to use.",
-        "defaultValue": "filled"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLDivElement>",
-        "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
         "isRequired": false
       },
       "hover": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "sdsType": {
-        "type": "\"primary\" | \"secondary\"",
+      "icon": {
+        "type": "ReactElement",
         "isRequired": false,
-        "description": "The type/variant of the component"
+        "description": "Icon element."
       },
-      "sdsStyle": {
-        "type": "\"square\" | \"rounded\"",
-        "isRequired": false,
-        "description": "The visual style variant of the component"
+      "label": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The content of the component."
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
       },
       "sdsSize": {
         "type": "\"s\" | \"l\"",
-        "isRequired": false,
-        "description": "The size of the component"
+        "isRequired": false
       },
-      "tagColor": {
-        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
+      "sdsStyle": {
+        "type": "\"square\" | \"rounded\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
         "isRequired": false
       }
     }

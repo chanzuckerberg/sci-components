@@ -1,0 +1,18 @@
+{
+  "Tabs": {
+    "props": {
+      "items": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "any",
+        "isRequired": false
+      },
+      "underlined": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

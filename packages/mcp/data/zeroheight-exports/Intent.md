@@ -6,8 +6,8 @@ Intent components provide additional context to users communicating as to why a 
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 Intent Messages can be paired with any Input component (Checkbox, Radio, Text Input, Search Input, Dropdown Input) to communicate statuses or issues with user-supplied responses. There are three intents that Intent Message can display—negative, notice, and positive. Each Intent type has a default icon that accompanies it, though these defaults can be swapped out for any icon desired.
 
@@ -17,7 +17,7 @@ Input Message is not a standalone component within Figma, but is instead built i
 
 Optionally, an Intent Indicator can be displayed to the left of an Input. When enabled, a colored border will appear to help increase visibility of Intent Messages within that group, making it easier for users to see when a response requires their attention. This is especially useful in long forms where users might have to skim through many pages to find the responses they need to update or fix.
 
-The Intent Indicator is a standalone component within Figma. It has an empty slot within it that is meant to be filled with the Input component  designers want the Intent Indicator displayed alongside (or group of components in the case of Checkboxes or Radios where multiple are likely combined under one field label to present a range of options for responses to users).
+The Intent Indicator is a standalone component within Figma. It has an empty slot within it that is meant to be filled with the Input component designers want the Intent Indicator displayed alongside (or group of components in the case of Checkboxes or Radios where multiple are likely combined under one field label to present a range of options for responses to users).
 
 #### Intent Message
 
@@ -26,14 +26,14 @@ As mentioned above, Intent Message is not a standalone component within Figma, b
 The example below shows Intent Message displayed in conjunction with Text Input for reference. See the documentation for each Input component for examples specific to that Input type.
 
 | Negative | Negative + Notice | Notice | Notice + Positive | Positive |
-| --- | --- | --- | --- | --- |
+| -------- | ----------------- | ------ | ----------------- | -------- |
 
 #### Intent Indicator
 
 The example below shows Intent Indicator displayed in conjunction with a range of Input types for reference. See the documentation for each Input component for examples specific to that Input type.
 
 | Empty (Negative) | Negative | Notice | Positive |
-| --- | --- | --- | --- |
+| ---------------- | -------- | ------ | -------- |
 
 ---
 
@@ -43,5 +43,4 @@ These rules establish how much margin should exist between and around elements.
 
 ## Code
 
->**Note:** Code details coming soon
-
+> **Note:** Code details coming soon

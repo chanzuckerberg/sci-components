@@ -20,36 +20,36 @@ Insight into these use cases has resulted in SDS implementing three distinct bre
 
 #### Small
 
-*Screens <512px wide*
+_Screens <512px wide_
 
 Small breakpoint will be used when applications are viewed on mobile devices and small-screened tablets. At this breakpoint only the main content should be displayed as there is not enough screen real estate to fit non-primary elements.
 
 Header Navigation has been designed to collapse into a hamburger menu on narrow screens. Other navigation elements like Panels, Jump-to-Navigation, as well as supplemental pieces of UI will likely need to be accessed via alternative methods. This could mean tucking them away within a Dropdown Menu or an Accordion, adding them as additional menu items within the hamburger menu, or hiding them altogether. For this reason, designers should take special care to consider how these non-primary elements will be used on narrow screens.
 
-| CSS | SCSS | Tailwind |
-| --- | --- | --- |
+| CSS                   | SCSS                 | Tailwind             |
+| --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-sm` | `$sds-breakpoint-sm` | `breakpoints.sds-sm` |
 
 #### Medium
 
-*Screens between 512px-1023px wide*
+_Screens between 512px-1023px wide_
 
 Medium breakpoint will be used when applications are viewed on small laptops and large-screened tablets. At this breakpoint there is enough space to show both main content as well as a few non-primary elements, though likely not all.
 
 Depending on the number of nav items in the Header Navigation it will either collapse into a hamburger menu or remain fully visible. This breakpoint gives designers control over which UI elements are displayed and which need to be accessed via alternative methods, offering more flexibility around how users interact with the application. Designing for this breakpoint still requires specific consideration to determine which non-primary elements remain visible vs which must be accessed elsewhere in the UI.
 
-| CSS | SCSS | Tailwind |
-| --- | --- | --- |
+| CSS                   | SCSS                 | Tailwind             |
+| --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-md` | `$sds-breakpoint-md` | `breakpoints.sds-md` |
 
 #### Large
 
-*Screens >1024px wide*
+_Screens >1024px wide_
 
 Large breakpoint will be used when applications are viewed on large laptops, desktop monitors, and other large displays. At this breakpoint there is enough space to show all content as intended. Considerations should be made for viewing on ultra-wide displays, such as implementing a max-width on pages to ensure UI elements are not stretched out of proportion.
 
-| CSS | SCSS | Tailwind |
-| --- | --- | --- |
+| CSS                   | SCSS                 | Tailwind             |
+| --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-lg` | `$sds-breakpoint-lg` | `breakpoints.sds-lg` |
 
 ### Typography
@@ -61,19 +61,19 @@ Each typography variable from one set has a corresponding variable in the other,
 Below are a few visual examples of the differences. See the Typography section for a detailed breakdown of the typography variables for each set.
 
 | Header XXL – wide | Header XXL – narrow |
-| :--- | :--- |
+| :---------------- | :------------------ |
 
 | Body L – wide | Body L – narrow |
-| :--- | :--- |
+| :------------ | :-------------- |
 
 | Caps XXS – wide | Caps XXS – narrow |
-| :--- | :--- |
+| :-------------- | :---------------- |
 
 | Tabular S – wide | Tabular S – narrow |
-| :--- | :--- |
+| :--------------- | :----------------- |
 
 | Code S – wide | Code S – narrow |
-| :--- | :--- |
+| :------------ | :-------------- |
 
 ## Code
 
@@ -99,7 +99,7 @@ For more information on breakpoints, please refer to the MUI documentation.
 
 This example demonstrates how to access SCS breakpoints to adjust component styling dynamically based on different screen sizes.
 
->**Note:** Use the resize handle to the right of the preview section below to adjust the container width. The background color will change dynamically based on the window width and the styles assigned to each breakpoint.
+> **Note:** Use the resize handle to the right of the preview section below to adjust the container width. The background color will change dynamically based on the window width and the styles assigned to each breakpoint.
 
 **/styles.css**
 
@@ -126,13 +126,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -180,19 +178,15 @@ function App() {
 
   useLayoutEffect(() => {
     handleWidth();
-    
+
     window.addEventListener("resize", () => handleWidth());
 
-    return ()=> {
+    return () => {
       window.removeEventListener("resize", () => handleWidth());
     };
   }, []);
-  
-  return (
-    <StyledDiv>
-      Current width is: {width}
-    </StyledDiv>
-  );
+
+  return <StyledDiv>Current width is: {width}</StyledDiv>;
 }
 
 export default App;
@@ -235,13 +229,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -262,14 +255,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

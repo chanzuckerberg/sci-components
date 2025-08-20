@@ -1,31 +1,23 @@
 {
-  "Autocomplete": {
+  "Dialog": {
     "props": {
-      "groupBy": {
+      "buttonPosition": {
         "type": "any",
         "isRequired": false
       },
-      "intent": {
+      "canClickOutsideClose": {
         "type": "any",
         "isRequired": false
       },
-      "keepSearchOnSelect": {
+      "longContent": {
         "type": "any",
         "isRequired": false
       },
-      "label": {
+      "sdsSize": {
         "type": "any",
         "isRequired": false
       },
-      "multiple": {
-        "type": "any",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLDivElement>",
-        "isRequired": false
-      },
-      "options": {
+      "titleOnClose": {
         "type": "any",
         "isRequired": false
       }

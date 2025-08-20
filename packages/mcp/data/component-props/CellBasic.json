@@ -1,100 +1,72 @@
 {
   "CellBasic": {
     "props": {
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false
-      },
-      "value": {
-        "type": "\"string\" | \"number\" | \"readonly string[]\"",
-        "isRequired": false
-      },
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLTableCellElement>",
-        "isRequired": false
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "shouldShowTooltipOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "tooltipProps": {
-        "type": "TooltipProps",
-        "isRequired": false
-      },
       "horizontalAlign": {
         "type": "\"left\" | \"right\"",
-        "isRequired": false
-      },
-      "verticalAlign": {
-        "type": "\"top\" | \"center\" | \"bottom\"",
-        "isRequired": false
-      },
-      "iconVerticalAlign": {
-        "type": "\"top\" | \"center\" | \"bottom\"",
-        "isRequired": false
-      },
-      "shouldTextWrap": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "primaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
-      },
-      "secondaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
-      },
-      "tertiaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
-      },
-      "tabularNums": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "primaryText": {
-        "type": "string",
-        "isRequired": true
-      },
-      "secondaryText": {
-        "type": "string",
-        "isRequired": false
-      },
-      "tertiaryText": {
-        "type": "string",
         "isRequired": false
       },
       "icon": {
         "type": "ReactElement",
         "isRequired": false
       },
+      "iconVerticalAlign": {
+        "type": "\"top\" | \"center\" | \"bottom\"",
+        "isRequired": false
+      },
+      "primaryText": {
+        "type": "string",
+        "isRequired": true
+      },
+      "primaryTextComponentSlotBottom": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
       "primaryTextComponentSlotRight": {
         "type": "ReactNode",
         "isRequired": false
       },
-      "primaryTextComponentSlotBottom": {
-        "type": "ReactNode",
+      "primaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "secondaryText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "secondaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "shouldTextWrap": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tabularNums": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tertiaryText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tertiaryTextWrapLineCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "TooltipProps",
+        "isRequired": false
+      },
+      "verticalAlign": {
+        "type": "\"top\" | \"center\" | \"bottom\"",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"string\" | \"number\"",
         "isRequired": false
       }
     }

@@ -6,29 +6,29 @@ Utilizing a list to present information makes it easier to digest or act upon wh
 
 ## List Variants
 
-| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list.  Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |   | **Jump to variant:** Unordered Ordered |
-| --- | --- | --- |
+| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list. Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |     | **Jump to variant:** Unordered Ordered |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
 
 ---
 
 ## Lists
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 ### Unordered List
 
 Use when the order of the list's content does not matter.
 
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
-| --- | --- | --- | --- |
+| --------- | --------- | ---------- | ----------- |
 
 ### Ordered List
 
 Use when the list's content needs to be presented in a specific order or sequence.
 
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
-| --- | --- | --- | --- |
+| --------- | --------- | ---------- | ----------- |
 
 ---
 
@@ -37,7 +37,7 @@ Use when the list's content needs to be presented in a specific order or sequenc
 Spacing between List Items changes based on the font mixin size used. See the table below for spacing reference.
 
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
-| --- | --- | --- | --- |
+| --------- | --------- | ---------- | ----------- |
 
 ---
 
@@ -45,12 +45,12 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 ## List Component
 
-| Below you will find an interactive Storybook iframe for Lists.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** List |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Lists. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** List |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### List
 
@@ -64,31 +64,31 @@ Utilizing a list to present information makes it easier to digest or act upon wh
 
 ## List Variants
 
-| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list.  Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |   | **Jump to variant:** Unordered Ordered |
-| --- | --- | --- |
+| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list. Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |     | **Jump to variant:** Unordered Ordered |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
 
 ---
 
 ## Lists
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Unordered List
 
 Use when the order of the list's content does not matter.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
- 
+
 
 ### Ordered List
 
 Use when the list's content needs to be presented in a specific order or sequence.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
 ---
 
@@ -97,7 +97,7 @@ Use when the list's content needs to be presented in a specific order or sequenc
 Spacing between List Items changes based on the font mixin size used. See the table below for spacing reference.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
 ---
 
@@ -105,12 +105,12 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 ## List Component
 
-| Below you will find an interactive Storybook iframe for Lists.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** List |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Lists. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** List |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### List
 
@@ -124,31 +124,31 @@ Utilizing a list to present information makes it easier to digest or act upon wh
 
 ## List Variants
 
-| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list.  Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |   | **Jump to variant:** Unordered Ordered |
-| --- | --- | --- |
+| There are two types of Lists—Unordered Lists where the order of content does not matter and Ordered Lists which communicate a specific sequence for the content. Use a Header with either list type to help provide context to the content presented in the list. Follow the usage criteria accompanying each variant as a guide for selecting the correct List for any given use case. |     | **Jump to variant:** Unordered Ordered |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
 
 ---
 
 ## Lists
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Unordered List
 
 Use when the order of the list's content does not matter.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
- 
+
 
 ### Ordered List
 
 Use when the list's content needs to be presented in a specific order or sequence.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
 ---
 
@@ -157,7 +157,7 @@ Use when the list's content needs to be presented in a specific order or sequenc
 Spacing between List Items changes based on the font mixin size used. See the table below for spacing reference.
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
-| --- | --- | --- | --- | --- | --- |
+| ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
 ---
 
@@ -165,8 +165,8 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 ## List Component
 
-| Below you will find an interactive Storybook iframe for Lists.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** List |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Lists. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** List |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------- |
 
 ---
 
@@ -182,8 +182,8 @@ Utilizing a list to present information makes it easier to digest or act upon wh
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### List Variants
 
@@ -204,7 +204,7 @@ Default
 Use when the list's content needs to be presented in a specific order or sequence.
 
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
-| --- | --- | --- | --- | --- | --- |
+| --------- | --------- | --------- | ---------- | ----------- | ------------ |
 
 ---
 
@@ -213,7 +213,7 @@ Use when the list's content needs to be presented in a specific order or sequenc
 Use when the order of the list's content does not matter.
 
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
-| --- | --- | --- | --- | --- | --- |
+| --------- | --------- | --------- | ---------- | ----------- | ------------ |
 
 ---
 
@@ -222,11 +222,11 @@ Use when the order of the list's content does not matter.
 Spacing between List Items changes based on the font size used. See the table below for spacing reference.
 
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
-| --- | --- | --- | --- | --- | --- |
+| --------- | --------- | --------- | ---------- | ----------- | ------------ |
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## List
 
@@ -238,10 +238,10 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `marginBottom` | `"xxxs"` `| "xxs"` `| "xs"` `| "s"` `| "m"` `| "l"` | `"s"` | Determines the bottom margin size for the list, controlling its spacing from other elements. |
-| `ordered` | `boolean` | `false` | Specifies the type of list component to render. When set to `true`, the list will be an ordered `"ol"` tag, while `false` will render an unordered `"ul"` tag. |
+| Name           | Type       | Default  | Description                                                                                                                                                    |
+| -------------- | ---------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------ | ---- | ----- | -------------------------------------------------------------------------------------------- |
+| `marginBottom` | `"xxxs"` ` | "xxs"` ` | "xs"` `                                                                                                                                                        | "s"` ` | "m"` ` | "l"` | `"s"` | Determines the bottom margin size for the list, controlling its spacing from other elements. |
+| `ordered`      | `boolean`  | `false`  | Specifies the type of list component to render. When set to `true`, the list will be an ordered `"ol"` tag, while `false` will render an unordered `"ul"` tag. |
 
 ## ListItem
 
@@ -253,11 +253,11 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `fontSize` | `"xxxs"` `| "xxs"` `| "xs"` `| "s"` `| "m"` `| "l"` | `"s"` | Sets the font size for the list items, influencing their text size. |
-| `marginBottom` | `"s"` `| "xs"` `| "xxs"` | `"xs"` | Controls the bottom margin size for the list items, affecting the spacing between list items. |
-| `ordered` | `boolean` | `false` | Specifies the style and spacings of the list item components based on the parent list element. |
+| Name           | Type       | Default  | Description                                                                                    |
+| -------------- | ---------- | -------- | ---------------------------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------- | ---- | ----- | ------------------------------------------------------------------- |
+| `fontSize`     | `"xxxs"` ` | "xxs"` ` | "xs"` `                                                                                        | "s"` ` | "m"` `                                                                                        | "l"` | `"s"` | Sets the font size for the list items, influencing their text size. |
+| `marginBottom` | `"s"` `    | "xs"` `  | "xxs"`                                                                                         | `"xs"` | Controls the bottom margin size for the list items, affecting the spacing between list items. |
+| `ordered`      | `boolean`  | `false`  | Specifies the style and spacings of the list item components based on the parent list element. |
 
 ### Code examples
 
@@ -290,13 +290,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -375,13 +373,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -402,13 +399,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -442,13 +450,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -577,13 +583,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -604,14 +609,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-
