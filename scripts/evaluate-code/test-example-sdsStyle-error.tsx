@@ -2,7 +2,7 @@ import { Button, InputText, Icon } from "@czi-sds/components";
 
 export const TestComponent = () => (
   <div>
-    <Button sdsStyle="rqounded" sdsType="primary">
+    <Button sdsStyle="VALUE_DOES_NOT_EXIST" sdsType="primary">
       Click me
     </Button>
     <InputText

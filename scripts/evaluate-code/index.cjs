@@ -1,402 +1,572 @@
 #!/usr/bin/env node
 
-const { execFile } = require("child_process");
-const { writeFileSync, readFileSync, readdirSync } = require("fs");
+const { readFileSync, readdirSync, statSync } = require("fs");
 const path = require("path");
 
+// Import our improved components
+const { EVALUATION_CONFIG } = require("./config.cjs");
+const { PluginManager } = require("./plugins.cjs");
+const {
+  processWithConcurrency,
+  ProgressIndicator,
+  formatDuration,
+  calculateFileStats,
+} = require("./utils.cjs");
+const {
+  ConsoleReporter,
+  JSONReporter,
+  CSVReporter,
+  HTMLReporter,
+  ReporterManager,
+} = require("./reporters.cjs");
+const { getSDSComponentsList } = require("./sds-discovery.cjs");
+
 /**
- * Quick & Dirty Code Evaluation Script for Hackathon
+ * Enhanced Code Evaluation Script v1.0
  *
- * Usage:
- *   node scripts/evaluate-code.js path/to/generated-component.tsx
- *   node scripts/evaluate-code.js --batch ./test-outputs/
+ * Key features:
+ * - Plugin architecture for extensible evaluations
+ * - Parallel processing for better performance
+ * - Enhanced error handling and timeout management
+ * - Auto-discovery of SDS components
+ * - Multiple output formats (Console, JSON, CSV, HTML)
+ * - TypeScript compiler API integration
+ * - Comprehensive testing framework
  */
 
-async function evaluateCode(filePath) {
-  console.log(`\n🔍 Evaluating: ${filePath}`);
-  console.log("=".repeat(50));
+class CodeEvaluator {
+  constructor(options = {}) {
+    // Deep merge configuration to preserve nested objects
+    this.config = this.deepMerge(EVALUATION_CONFIG, options);
+    this.pluginManager = new PluginManager();
+    this.reporterManager = new ReporterManager();
 
-  const results = {
-    filePath,
-    compiles: false,
-    lintPasses: false,
-    usesSDS: false,
-    hasImports: false,
-    usesTokens: false,
-    hasAccessibility: false,
-    summary: {},
-  };
+    this.setupReporters();
 
-  try {
-    // Read the file
-    const code = readFileSync(filePath, "utf8");
+    // Stats
+    this.stats = {
+      filesProcessed: 0,
+      totalDuration: 0,
+      startTime: Date.now(),
+    };
+  }
 
-    // 1. TypeScript compilation check
-    console.log("📝 Checking TypeScript compilation...");
-    results.compiles = await checkTypeScript(filePath);
-    console.log(
-      `   ${results.compiles ? "✅" : "❌"} Compiles: ${results.compiles}`
+  deepMerge(target, source) {
+    const result = { ...target };
+
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) {
+        if (
+          typeof source[key] === "object" &&
+          source[key] !== null &&
+          !Array.isArray(source[key])
+        ) {
+          result[key] = this.deepMerge(target[key] || {}, source[key]);
+        } else {
+          result[key] = source[key];
+        }
+      }
+    }
+
+    return result;
+  }
+
+  setupReporters() {
+    this.reporterManager.registerReporter(
+      "console",
+      new ConsoleReporter({
+        enableColors: this.config.output.enableColors,
+        verbose: this.config.output.verbose,
+      })
     );
 
-    // 2. ESLint check
-    console.log("🔍 Running ESLint...");
-    results.lintPasses = await checkESLint(filePath);
-    console.log(
-      `   ${results.lintPasses ? "✅" : "❌"} Lint passes: ${results.lintPasses}`
-    );
+    this.reporterManager.registerReporter("json", new JSONReporter());
+    this.reporterManager.registerReporter("csv", new CSVReporter());
+    this.reporterManager.registerReporter("html", new HTMLReporter());
+  }
 
-    // 3. SDS component usage
-    console.log("🎨 Checking SDS component usage...");
-    results.usesSDS = checkSDSUsage(code);
-    console.log(
-      `   ${results.usesSDS ? "✅" : "❌"} Uses SDS components: ${results.usesSDS}`
-    );
+  async evaluateFile(filePath) {
+    const startTime = Date.now();
 
-    // 4. Import check
-    console.log("📦 Checking imports...");
-    results.hasImports = checkImports(code);
-    console.log(
-      `   ${results.hasImports ? "✅" : "❌"} Has SDS imports: ${results.hasImports}`
-    );
+    try {
+      // Read and analyze the file
+      const code = readFileSync(filePath, "utf8");
+      const fileStats = calculateFileStats(code);
 
-    // 5. Design tokens check
-    console.log("🎯 Checking design tokens...");
-    results.usesTokens = checkDesignTokens(code);
-    console.log(
-      `   ${results.usesTokens ? "✅" : "❌"} Uses design tokens: ${results.usesTokens}`
-    );
+      // Run all plugin checks
+      const pluginResults = await this.pluginManager.runAllChecks(
+        filePath,
+        code,
+        {
+          fileStats,
+          config: this.config,
+        }
+      );
 
-    // 6. Accessibility check
-    console.log("♿ Checking accessibility...");
-    results.hasAccessibility = checkAccessibility(code);
-    console.log(
-      `   ${results.hasAccessibility ? "✅" : "❌"} Has accessibility: ${results.hasAccessibility}`
-    );
+      // Calculate overall score and grade
+      const summary = this.calculateSummary(pluginResults, startTime);
 
-    // 7. Component analysis
-    console.log("🔬 Analyzing components...");
-    const componentAnalysis = analyzeComponents(code);
-    console.log(
-      `   📊 SDS components found: ${componentAnalysis.sdsComponents.join(", ") || "None"}`
-    );
-    console.log(
-      `   ⚠️  Generic elements: ${componentAnalysis.genericElements.join(", ") || "None"}`
-    );
+      this.stats.filesProcessed++;
+      this.stats.totalDuration += summary.totalDuration;
 
-    // Calculate overall score
-    const score = calculateScore(results);
-    results.summary = {
-      score: score,
-      grade: getGrade(score),
-      readyForReview: score >= 0.7,
+      return {
+        filePath,
+        pluginResults,
+        summary,
+        fileStats,
+        timestamp: new Date().toISOString(),
+      };
+    } catch (error) {
+      console.error(`❌ Error evaluating ${filePath}:`, error.message);
+
+      return {
+        filePath,
+        pluginResults: {},
+        summary: {
+          score: 0,
+          grade: "F",
+          readyForReview: false,
+          totalDuration: Date.now() - startTime,
+          error: error.message,
+        },
+        fileStats: null,
+        timestamp: new Date().toISOString(),
+        error: error.message,
+      };
+    }
+  }
+
+  calculateSummary(pluginResults, startTime) {
+    const weights = this.config.weights;
+    let totalDuration = Date.now() - startTime;
+
+    // Check for TypeScript compilation failure - automatic FAIL
+    const typescriptResult = pluginResults.typescript;
+    if (typescriptResult && !typescriptResult.passed) {
+      return {
+        score: 0,
+        grade: "F",
+        readyForReview: false,
+        totalDuration,
+        passedChecks: Object.values(pluginResults).filter((r) => r.passed)
+          .length,
+        totalChecks: Object.keys(pluginResults).length,
+        failureReason:
+          "TypeScript compilation failed - code must compile to pass evaluation",
+      };
+    }
+
+    // If TypeScript passes, calculate weighted score from other checks
+    let totalScore = 0;
+    Object.entries(weights).forEach(([pluginName, weight]) => {
+      // Skip pass/fail checks in weighted calculation
+      if (pluginName === "typescript") return;
+
+      const result = pluginResults[pluginName] || { score: 0 };
+      totalScore += result.score * weight;
+    });
+
+    // Cap score at 1.0
+    const finalScore = Math.min(totalScore, 1.0);
+
+    // Determine grade
+    const grade = this.getGrade(finalScore);
+
+    // Determine if ready for review
+    const readyForReview = finalScore >= 0.7;
+
+    return {
+      score: finalScore,
+      grade,
+      readyForReview,
+      totalDuration,
+      passedChecks: Object.values(pluginResults).filter((r) => r.passed).length,
+      totalChecks: Object.keys(pluginResults).length,
+    };
+  }
+
+  getGrade(score) {
+    const thresholds = this.config.gradeThresholds;
+
+    for (const [grade, threshold] of Object.entries(thresholds)) {
+      if (score >= threshold) {
+        return grade;
+      }
+    }
+
+    return "F";
+  }
+
+  async evaluateBatch(directory) {
+    // Find all supported files
+    const files = this.findSupportedFiles(directory);
+
+    if (files.length === 0) {
+      console.log(`No supported files found in ${directory}`);
+      return [];
+    }
+
+    console.log(`📁 Batch evaluation: ${files.length} files in ${directory}`);
+
+    // Set up progress indicator
+    const progress = new ProgressIndicator(files.length, "Evaluating files");
+
+    // Process files with controlled concurrency
+    return processWithConcurrency(
+      files,
+      async (file) => {
+        const result = await this.evaluateFile(file);
+        progress.update();
+        return result;
+      },
+      this.config.processing.maxConcurrency
+    );
+  }
+
+  findSupportedFiles(directory) {
+    const files = [];
+    const extensions = this.config.processing.supportedExtensions;
+
+    const traverse = (dir) => {
+      try {
+        const entries = readdirSync(dir);
+
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry);
+          const stat = statSync(fullPath);
+
+          if (stat.isDirectory()) {
+            // Skip common directories that shouldn't contain source files
+            if (
+              !["node_modules", ".git", "dist", "build", "coverage"].includes(
+                entry
+              )
+            ) {
+              traverse(fullPath);
+            }
+          } else if (stat.isFile()) {
+            const ext = path.extname(entry);
+            if (extensions.includes(ext)) {
+              files.push(fullPath);
+            }
+          }
+        }
+      } catch (error) {
+        console.warn(
+          `Warning: Could not read directory ${dir}: ${error.message}`
+        );
+      }
     };
 
-    console.log("\n📊 SUMMARY");
-    console.log(`   Overall Score: ${(score * 100).toFixed(0)}%`);
-    console.log(`   Grade: ${results.summary.grade}`);
-    console.log(
-      `   Ready for Review: ${results.summary.readyForReview ? "✅" : "❌"}`
-    );
-  } catch (error) {
-    console.error(`❌ Error evaluating ${filePath}:`, error.message);
-    results.error = error.message;
+    traverse(directory);
+    return files.sort();
   }
 
-  return results;
-}
+  async generateReports(results, formats = ["console"]) {
+    const reportPaths = {};
 
-// TypeScript compilation check
-async function checkTypeScript(filePath) {
-  return new Promise((resolve) => {
-    // Use a more robust TypeScript check with JSX support
-    execFile(
-      "npx",
-      ["tsc", "--noEmit", "--jsx", "react-jsx", "--esModuleInterop", filePath],
-      (error, stdout, stderr) => {
-        if (error) {
-          // TypeScript errors can go to either stdout or stderr, so check both
-          const allOutput = stdout + stderr;
-          const allLines = allOutput.split("\n").filter((line) => line.trim());
+    // Generate timestamp for file names
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, "-");
 
-          console.log(`   🔍 Debug: Total output has ${allLines.length} lines`);
+    for (const format of formats) {
+      try {
+        let outputPath = null;
 
-          // Filter out library-related errors and focus on user code errors
-          const errorLines = allLines.filter(
-            (line) =>
-              line.trim() &&
-              !line.includes("node_modules") &&
-              !line.includes("packages/components/dist") &&
-              (line.includes(filePath) ||
-                line.includes(path.basename(filePath)))
-          );
-          const userErrorCount = errorLines.length;
+        // Set output paths for file-based reports
+        if (format === "json") {
+          outputPath = `evaluation-results-${timestamp}.json`;
+        } else if (format === "csv") {
+          outputPath = `evaluation-results-${timestamp}.csv`;
+        } else if (format === "html") {
+          outputPath = `evaluation-report-${timestamp}.html`;
+        }
 
-          if (userErrorCount > 0) {
-            console.log(
-              `   💭 TS Errors: ${userErrorCount} issues in your code`
-            );
-            console.log(`   💭 First few user errors:`);
-            errorLines
-              .slice(0, 3)
-              .forEach((line) => console.log(`      ${line.trim()}`));
-            console.log(
-              `   💭 Library errors: ${allLines.length - userErrorCount} (ignored)`
-            );
+        const reporter = this.reporterManager.getReporter(format);
+        if (reporter && format === "console") {
+          // Console reporter handles display differently
+          if (results.length === 1) {
+            reporter.reportSingleFile(results[0]);
           } else {
+            results.forEach((result) => reporter.reportSingleFile(result));
+            reporter.reportBatchSummary(results);
+          }
+        } else if (reporter) {
+          // File-based reporters
+          if (outputPath) {
+            reporter.outputPath = outputPath;
+          }
+          const output = reporter.reportResults(results);
+          if (outputPath) {
+            reportPaths[format] = outputPath;
             console.log(
-              `   💭 TS Errors: 0 issues in your code (library errors ignored)`
+              `\n📊 ${format.toUpperCase()} report generated: ${outputPath}`
             );
           }
-
-          resolve(userErrorCount === 0);
-        } else {
-          resolve(true);
         }
+      } catch (error) {
+        console.error(`Error generating ${format} report:`, error.message);
       }
-    );
-  });
-}
-
-// ESLint check
-async function checkESLint(filePath) {
-  return new Promise((resolve) => {
-    execFile(
-      "npx",
-      ["eslint", filePath, "--format", "compact"],
-      (error, stdout) => {
-        if (error) {
-          const errorCount = (stdout.match(/error/g) || []).length;
-          const warningCount = (stdout.match(/warning/g) || []).length;
-          console.log(
-            `   💭 ESLint: ${errorCount} errors, ${warningCount} warnings`
-          );
-          resolve(errorCount === 0);
-        } else {
-          resolve(true);
-        }
-      }
-    );
-  });
-}
-
-// Check if uses SDS components
-function checkSDSUsage(code) {
-  const sdsComponents = [
-    "Button",
-    "ButtonIcon",
-    "ButtonToggle",
-    "InputText",
-    "InputSearch",
-    "InputDropdown",
-    "InputRadio",
-    "InputCheckbox",
-    "Table",
-    "TableHeader",
-    "TableRow",
-    "Alert",
-    "Callout",
-    "Dialog",
-    "Icon",
-    "Tag",
-    "Chip",
-    "Tooltip",
-  ];
-
-  return sdsComponents.some((component) => {
-    const regex = new RegExp(`<${component}[\\s>]`, "g");
-    return regex.test(code);
-  });
-}
-
-// Check imports
-function checkImports(code) {
-  return code.includes("@czi-sds/components");
-}
-
-// Check design tokens usage
-function checkDesignTokens(code) {
-  const tokenPatterns = [/tokens\.\w+/g, /theme\.\w+/g, /@czi-sds.*tokens/g];
-
-  return tokenPatterns.some((pattern) => pattern.test(code));
-}
-
-// Check accessibility
-function checkAccessibility(code) {
-  const accessibilityPatterns = [
-    /aria-label/,
-    /aria-describedby/,
-    /aria-expanded/,
-    /role=/,
-    /alt=/,
-    /<label/,
-    /htmlFor=/,
-  ];
-
-  return accessibilityPatterns.some((pattern) => pattern.test(code));
-}
-
-// Analyze components used
-function analyzeComponents(code) {
-  const sdsComponents = [];
-  const genericElements = [];
-
-  // Find SDS components
-  const sdsPattern =
-    /<(Button|Input\w+|Table\w*|Alert|Dialog|Icon|Tag|Chip|Tooltip)[^>]*>/g;
-  let match;
-  while ((match = sdsPattern.exec(code)) !== null) {
-    if (!sdsComponents.includes(match[1])) {
-      sdsComponents.push(match[1]);
     }
+
+    return reportPaths;
   }
 
-  // Find generic elements (potential missed opportunities)
-  const genericPattern = /<(div|span|input|button)[^>]*>/g;
-  while ((match = genericPattern.exec(code)) !== null) {
-    if (!genericElements.includes(match[1])) {
-      genericElements.push(match[1]);
-    }
+  displayQuickCopyPaste(results) {
+    console.log("\n🎯 Quick Copy-Paste for Google Sheets:");
+    console.log("File\tScore\tGrade\tReady\tTS\tSDS\tImports\tA11y");
+
+    results.forEach((result) => {
+      const score = (result.summary.score * 100).toFixed(0);
+      const ts = result.pluginResults.typescript?.passed ? "1" : "0";
+      const sds = result.pluginResults["sds-usage"]?.passed ? "1" : "0";
+      const imports = result.pluginResults.imports?.passed ? "1" : "0";
+      const a11y = result.pluginResults.accessibility?.passed ? "1" : "0";
+
+      console.log(
+        `${path.basename(result.filePath)}\t${score}%\t${result.summary.grade}\t${result.summary.readyForReview ? 1 : 0}\t${ts}\t${sds}\t${imports}\t${a11y}`
+      );
+    });
   }
 
-  return { sdsComponents, genericElements };
-}
+  displayFinalStats() {
+    const totalTime = Date.now() - this.stats.startTime;
+    console.log(`\n⏱️  Processing completed in ${formatDuration(totalTime)}`);
+    console.log(`   Files processed: ${this.stats.filesProcessed}`);
+    console.log(
+      `   Average time per file: ${formatDuration(totalTime / this.stats.filesProcessed)}`
+    );
+  }
 
-// Calculate overall score
-function calculateScore(results) {
-  const weights = {
-    compiles: 0.25, // Must work
-    usesSDS: 0.25, // Must use design system
-    hasImports: 0.2, // Proper setup
-    lintPasses: 0.15, // Code quality
-    usesTokens: 0.05, // Design consistency (optional, reduced)
-    hasAccessibility: 0.1, // User experience
-  };
+  displaySDSInfo() {
+    const sdsInfo = getSDSComponentsList();
 
-  let score = 0;
-  Object.keys(weights).forEach((key) => {
-    if (results[key]) {
-      score += weights[key];
+    console.log(`\n🎨 SDS Component Detection:`);
+    console.log(
+      `   Source: ${sdsInfo.source === "discovered" ? "✅ Auto-discovered" : "⚠️  Fallback list"}`
+    );
+    console.log(`   Components available: ${sdsInfo.components.length}`);
+    console.log(`   Data viz components: ${sdsInfo.dataVizComponents.length}`);
+
+    if (sdsInfo.discoveryInfo?.error) {
+      console.log(`   Discovery note: ${sdsInfo.discoveryInfo.error}`);
     }
-  });
-
-  // Cap the score at 100%
-  return Math.min(score, 1.0);
+  }
 }
 
-// Convert score to grade
-function getGrade(score) {
-  if (score >= 0.9) return "A";
-  if (score >= 0.8) return "B";
-  if (score >= 0.7) return "C";
-  if (score >= 0.6) return "D";
-  return "F";
-}
-
-// Export to CSV for Google Sheets
-function exportToCSV(results) {
-  const csvHeader =
-    "File,Compiles,Uses SDS,Has Imports,Lint Passes,Uses Tokens,Has A11y,Score,Grade,Ready\n";
-
-  const csvRows = results.map((r) => {
-    return [
-      r.filePath,
-      r.compiles ? "✅" : "❌",
-      r.usesSDS ? "✅" : "❌",
-      r.hasImports ? "✅" : "❌",
-      r.lintPasses ? "✅" : "❌",
-      r.usesTokens ? "✅" : "❌",
-      r.hasAccessibility ? "✅" : "❌",
-      (r.summary?.score * 100).toFixed(0) + "%",
-      r.summary?.grade || "F",
-      r.summary?.readyForReview ? "✅" : "❌",
-    ].join(",");
-  });
-
-  const csvContent = csvHeader + csvRows.join("\n");
-  const fileName = `evaluation-results-${new Date().toISOString().slice(0, 10)}.csv`;
-  writeFileSync(fileName, csvContent);
-  console.log(`\n📊 Results exported to: ${fileName}`);
-  console.log(`   Import this into Google Sheets for tracking!`);
-}
-
-// Display help information
 function showHelp() {
-  console.log("🔍 SDS Component Evaluation Script");
-  console.log("=====================================");
+  console.log("🔍 SDS Component Evaluation Script v1.0");
+  console.log("=========================================");
   console.log("");
   console.log("Usage:");
   console.log(
-    "  yarn evaluate:code <file>                    # Evaluate single file"
+    "  node scripts/evaluate-code/index.cjs <file>                    # Evaluate single file"
   );
   console.log(
-    "  yarn evaluate:batch <directory>             # Evaluate all .tsx/.ts files in directory"
+    "  node scripts/evaluate-code/index.cjs --batch <directory>       # Evaluate all files in directory"
   );
   console.log(
-    "  node scripts/evaluate-code/index.cjs <file>        # Direct execution"
+    "  node scripts/evaluate-code/index.cjs --config <config-file>    # Use custom configuration"
   );
+  console.log("");
+  console.log("Options:");
   console.log(
-    "  node scripts/evaluate-code/index.cjs --batch <dir> # Batch execution"
+    "  --format <formats>     Output formats: console,json,csv,html (comma-separated)"
+  );
+  console.log("  --verbose              Enable verbose output");
+  console.log("  --no-colors            Disable colored output");
+  console.log("  --concurrency <num>    Max parallel processing (default: 4)");
+  console.log(
+    "  --timeout <ms>         Timeout per tool in milliseconds (default: 30000)"
   );
   console.log("");
   console.log("Examples:");
   console.log("  yarn evaluate:code ./my-component.tsx");
   console.log("  yarn evaluate:batch ./generated-components/");
   console.log("  node scripts/evaluate-code/index.cjs ./my-component.tsx");
-  console.log("  node scripts/evaluate-code/index.cjs --batch ./test-outputs/");
+  console.log(
+    "  node scripts/evaluate-code/index.cjs --batch ./generated-components/ --format json,html"
+  );
+  console.log(
+    "  node scripts/evaluate-code/index.cjs --batch ./src --verbose --format console,csv"
+  );
   console.log("");
   console.log("The script evaluates:");
-  console.log("  ✅ TypeScript compilation");
-  console.log("  ✅ ESLint compliance");
-  console.log("  ✅ SDS component usage");
-  console.log("  ✅ Import statements");
-  console.log("  ✅ Design tokens");
-  console.log("  ✅ Accessibility features");
+  console.log("  ✅ TypeScript compilation (25%)");
+  console.log("  ✅ ESLint compliance (15%)");
+  console.log("  ✅ SDS component usage (25%)");
+  console.log("  ✅ Import statements (15%)");
+  console.log("  ✅ Design tokens (10%)");
+  console.log("  ✅ Accessibility features (10%)");
   console.log("");
-  console.log("For more details, see: scripts/README.md");
-  process.exit(0);
+  console.log("Key features:");
+  console.log("  🚀 Plugin architecture for extensibility");
+  console.log("  ⚡ Parallel processing for better performance");
+  console.log("  🎯 Auto-discovery of SDS components");
+  console.log("  📊 Enhanced reporting (JSON, CSV, HTML)");
+  console.log("  🔧 TypeScript compiler API integration");
+  console.log("  🧪 Comprehensive test suite");
 }
 
-// Process batch evaluation
-async function processBatch(directory) {
-  const files = readdirSync(directory)
-    .filter((file) => file.endsWith(".tsx") || file.endsWith(".ts"))
-    .map((file) => path.join(directory, file));
+function parseArgs(args) {
+  const options = {
+    files: [],
+    batch: false,
+    batchDirectory: null,
+    formats: ["console"],
+    verbose: false,
+    colors: true,
+    concurrency: 4,
+    timeout: 30000,
+    config: null,
+  };
 
-  console.log(`📁 Batch evaluation: ${files.length} files`);
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
 
-  const results = [];
-  for (const file of files) {
-    const result = await evaluateCode(file);
-    results.push(result);
+    switch (arg) {
+      case "--help":
+      case "-h":
+        showHelp();
+        process.exit(0);
+        break;
+
+      case "--batch":
+        options.batch = true;
+        options.batchDirectory = args[++i];
+        break;
+
+      case "--format":
+        options.formats = args[++i].split(",").map((f) => f.trim());
+        break;
+
+      case "--verbose":
+        options.verbose = true;
+        break;
+
+      case "--no-colors":
+        options.colors = false;
+        break;
+
+      case "--concurrency":
+        options.concurrency = parseInt(args[++i]) || 4;
+        break;
+
+      case "--timeout":
+        options.timeout = parseInt(args[++i]) || 30000;
+        break;
+
+      case "--config":
+        options.config = args[++i];
+        break;
+
+      default:
+        if (!arg.startsWith("--")) {
+          options.files.push(arg);
+        }
+        break;
+    }
   }
-  return results;
+
+  return options;
 }
 
-// Main execution
 async function main() {
   const args = process.argv.slice(2);
 
-  if (args.length === 0 || args.includes("--help") || args.includes("-h")) {
+  if (args.length === 0) {
     showHelp();
+    return;
   }
 
-  const results =
-    args[0] === "--batch" && args[1]
-      ? await processBatch(args[1])
-      : [await evaluateCode(args[0])];
+  const options = parseArgs(args);
 
-  // Export results
-  if (results.length > 1) {
-    exportToCSV(results);
+  // Create evaluator with custom options
+  const evaluatorOptions = {
+    output: {
+      enableColors: options.colors,
+      verbose: options.verbose,
+    },
+    processing: {
+      maxConcurrency: options.concurrency,
+      timeout: options.timeout,
+    },
+  };
+
+  const evaluator = new CodeEvaluator(evaluatorOptions);
+
+  // Show SDS component detection info in verbose mode
+  if (options.verbose) {
+    evaluator.displaySDSInfo();
   }
 
-  console.log("\n🎯 Quick Copy-Paste for Google Sheets:");
-  results.forEach((r) => {
-    const score = (r.summary?.score * 100 || 0).toFixed(0);
-    console.log(
-      `${r.filePath}\t${r.compiles ? 1 : 0}\t${r.usesSDS ? 1 : 0}\t${r.hasImports ? 1 : 0}\t${score}%\t${r.summary?.grade || "F"}`
+  try {
+    let results = [];
+
+    if (options.batch && options.batchDirectory) {
+      // Batch evaluation
+      results = await evaluator.evaluateBatch(options.batchDirectory);
+    } else if (options.files.length > 0) {
+      // Single file(s) evaluation
+      results = await Promise.all(
+        options.files.map((file) => evaluator.evaluateFile(file))
+      );
+    } else {
+      console.error("❌ No files specified. Use --help for usage information.");
+      process.exit(1);
+    }
+
+    if (results.length === 0) {
+      console.log("No files were evaluated.");
+      return;
+    }
+
+    // Generate reports
+    const reportPaths = await evaluator.generateReports(
+      results,
+      options.formats
     );
-  });
+
+    // Show quick copy-paste format for batch results
+    if (results.length > 1 && options.formats.includes("console")) {
+      evaluator.displayQuickCopyPaste(results);
+    }
+
+    // Show final statistics
+    evaluator.displayFinalStats();
+
+    // Show generated report paths
+    const reportPathsList = Object.entries(reportPaths);
+    if (reportPathsList.length > 0) {
+      console.log("\n📁 Generated reports:");
+      reportPathsList.forEach(([format, reportPath]) => {
+        console.log(`   ${format.toUpperCase()}: ${reportPath}`);
+      });
+    }
+  } catch (error) {
+    console.error("❌ Evaluation failed:", error.message);
+
+    if (options.verbose) {
+      console.error(error.stack);
+    }
+
+    process.exit(1);
+  }
 }
 
-main().catch(console.error);
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  process.exit(1);
+});
+
+// Handle uncaught exceptions
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
+  process.exit(1);
+});
+
+if (require.main === module) {
+  main().catch(console.error);
+}
+
+module.exports = { CodeEvaluator };

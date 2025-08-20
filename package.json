@@ -151,7 +151,7 @@
     "mcp:release": "yarn workspace @czi-sds/mcp release",
     "evaluate:code": "node scripts/evaluate-code/index.cjs",
     "evaluate:batch": "node scripts/evaluate-code/index.cjs --batch",
-    "evaluate:test": "node scripts/evaluate-code/index.test.cjs"
+    "evaluate:test": "jest scripts/evaluate-code/evaluate.test.cjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
