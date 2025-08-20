@@ -70,7 +70,7 @@ function mapComponentToFile(componentName: string, exportedFiles: string[]): str
     'TooltipCondensed': 'Tooltips',
     'TooltipTable': 'Tooltips',
     
-    // Cell components (likely in Table or Lists)
+    // Table Cell components
     'CellBasic': 'Table',
     'CellComponent': 'Table', 
     'CellHeader': 'Table',
