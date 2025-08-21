@@ -427,9 +427,6 @@ class DesignTokensPlugin extends BasePlugin {
   }
 }
 
-// Note: Accessibility checking is now handled by ESLint's jsx-a11y plugin
-// which provides more comprehensive and React-specific accessibility validation
-
 /**
  * Plugin Manager
  */
@@ -439,7 +436,7 @@ class PluginManager {
 
     // Register default plugins
     this.registerPlugin(new TypeScriptPlugin());
-    this.registerPlugin(new ESLintPlugin()); // ESLint includes jsx-a11y accessibility checking
+    this.registerPlugin(new ESLintPlugin());
     this.registerPlugin(new SDSUsagePlugin());
     this.registerPlugin(new DesignTokensPlugin());
 

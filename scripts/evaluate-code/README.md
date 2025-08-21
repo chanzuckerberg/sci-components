@@ -17,10 +17,9 @@ This script evaluates LLM-generated UI components to ensure they properly use th
 The evaluation script checks for:
 
 - ⚠️ **TypeScript compilation** (MANDATORY) - Code must compile without errors or automatic FAIL
-- ✅ **SDS component usage** (40%) - Verifies proper use of design system components
-- ✅ **ESLint compliance** (30%) - Checks code quality and style
-- ✅ **Design tokens** (20%) - Checks for design token usage when custom styling is present
-- ✅ **Accessibility** (10%) - Verifies accessibility attributes and patterns
+- ✅ **SDS component usage** (50%) - Verifies proper use of design system components
+- ✅ **ESLint compliance** (40%) - Code quality, style, and accessibility via jsx-a11y plugin
+- ✅ **Design tokens** (10%) - Checks for design token usage when custom styling is present
 
 ## Usage
 
@@ -56,6 +55,7 @@ node scripts/evaluate-code/index.cjs --batch ./src --no-colors --format json
 ## Output Formats
 
 ### Console Output (Default)
+
 - **Real-time feedback** during evaluation with colored indicators
 - **Overall score** (0-100%) with letter grade (A-F)
 - **Detailed breakdown** of each evaluation criteria
@@ -63,18 +63,21 @@ node scripts/evaluate-code/index.cjs --batch ./src --no-colors --format json
 - **Batch summary** with statistics and grade distribution
 
 ### JSON Output
+
 - **Machine-readable** format for programmatic consumption
 - **Complete evaluation data** including all plugin results
 - **Batch statistics** and metadata
 - **Structured error information**
 
 ### CSV Output
+
 - **Spreadsheet-compatible** format for data analysis
 - **Google Sheets ready** import format
 - **Sortable columns** for filtering and analysis
 - **Quick copy-paste** format for manual tracking
 
 ### HTML Report
+
 - **Rich visual reports** with interactive elements
 - **Expandable details** for failed evaluations
 - **Grade distribution charts** and summary statistics
@@ -88,16 +91,15 @@ node scripts/evaluate-code/index.cjs --batch ./src --no-colors --format json
 - **D (60-69%)** - Needs work, significant improvements required
 - **F (0-59%)** - Poor, major refactoring needed
 
-## Scoring System
-
 ### Mandatory Requirements
+
 - **⚠️ TypeScript Compilation** - **AUTOMATIC FAIL** if code doesn't compile (0% score regardless of other checks)
 
 ### Weighted Scoring (for code that compiles)
-- **SDS Component Usage (40%)** - Must use design system components
-- **ESLint Compliance (30%)** - Code quality and style standards
-- **Design Tokens (20%)** - Design tokens required only when custom styling is detected
-- **Accessibility (10%)** - Accessibility attributes and patterns
+
+- **SDS Component Usage (50%)** - Must use design system components
+- **ESLint Compliance (40%)** - Code quality, style, and accessibility (includes jsx-a11y rules)
+- **Design Tokens (10%)** - Design tokens required only when custom styling is detected
 
 ### Design Token Evaluation Logic
 
@@ -108,26 +110,27 @@ The design token check is **contextual and intelligent**:
 - **❌ FAIL**: Components with custom styling (inline styles, CSS-in-JS) that don't use design tokens
 
 **Custom styling patterns detected:**
+
 - `style={{ ... }}` - Inline styles
 - `styled()` or `styled.div` - styled-components
 - Direct color/spacing values - `color: '#fff'`, `padding: '16px'`
 - CSS-in-JS libraries - `makeStyles`, `css` template literals
 
 **Recommended design tokens:**
+
 - Colors: `getColors()` instead of hardcoded hex values
 - Spacing: `getSpaces()` instead of hardcoded px/rem values
 - Typography: `fontBodyS`, `fontHeaderM` mixins instead of direct font properties
 
 ## Example Output
 
-```
+```text
 🔍 Evaluating: ./generated-component.tsx
 ============================================================
    ✅ typescript: PASS (1.4s)
    ✅ eslint: PASS (427ms)
-   ✅ sds-usage: PASS (1ms)
+   ✅ sdsUsage: PASS (1ms)
    ✅ designTokens: PASS (0ms)
-   ✅ accessibility: PASS (0ms)
 
 📊 SUMMARY
    Overall Score: 100%
@@ -148,6 +151,7 @@ yarn evaluate:test
 ### Test Coverage
 
 The test suite includes:
+
 - **Configuration validation** - Ensures proper setup
 - **Plugin functionality** - Tests each evaluation plugin
 - **Integration tests** - End-to-end evaluation scenarios
@@ -164,12 +168,11 @@ Create a custom configuration file:
 // evaluation-config.js
 module.exports = {
   weights: {
-    typescript: 0,        // Pass/fail requirement (not weighted)
-    sdsUsage: 0.5,     // Emphasize SDS usage
-    eslint: 0.3,          // Code quality
-    designTokens: 0.15, // Design consistency
-    accessibility: 0.05   // A11y
+    sdsUsage: 0.5,        // Emphasize SDS usage
+    eslint: 0.4,          // Code quality and accessibility (jsx-a11y)
+    designTokens: 0.1,    // Design consistency
   },
+  // Note: TypeScript is pass/fail requirement (not weighted)
   processing: {
     timeout: 45000,       // 45 second timeout
     maxConcurrency: 6     // Higher parallelism
