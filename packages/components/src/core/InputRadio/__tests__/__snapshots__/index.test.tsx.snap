@@ -11,11 +11,11 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-1h62c7l-MuiButtonBase-root-MuiRadio-root"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary css-es7b8r-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
       intent="default"
     >
       <input
-        class="PrivateSwitchBase-input css-1m9pwf3"
+        class="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
         name="radio-buttons-group"
         type="radio"
         value="demo"
