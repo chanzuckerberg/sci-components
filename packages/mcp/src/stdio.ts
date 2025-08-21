@@ -3,9 +3,11 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { server } from "./server.js";
 import { initializeTools } from "./tools/index.js";
+import { initializeResources } from "./resources/index.js";
 
 async function main() {
   await initializeTools(server, {});
+  initializeResources(server);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
