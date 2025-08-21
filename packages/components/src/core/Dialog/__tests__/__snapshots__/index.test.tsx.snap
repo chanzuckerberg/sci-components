@@ -19,7 +19,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="«r1»"
+  id=":r1:"
 >
   <button
     aria-label="Close"
@@ -106,7 +106,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="«r2»"
+  id=":r2:"
 >
   <button
     aria-label="Close"
@@ -193,7 +193,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="«r3»"
+  id=":r3:"
 >
   <button
     aria-label="Close"
@@ -280,7 +280,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="«r4»"
+  id=":r4:"
 >
   <button
     aria-label="Close"
@@ -395,7 +395,7 @@ exports[`<Dialog /> renders Dialog without title X button 1`] = `
 <h2
   class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1dstc27-MuiTypography-root-MuiDialogTitle-root"
   data-testid="dialog-title"
-  id="«r5»"
+  id=":r5:"
 >
   <p
     class="MuiTypography-root MuiTypography-body1 css-19zdsw1-MuiTypography-root"
