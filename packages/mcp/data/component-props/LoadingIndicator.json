@@ -3,8 +3,7 @@
     "props": {
       "sdsStyle": {
         "type": "\"minimal\" | \"tag\"",
-        "isRequired": true,
-        "description": "The visual style variant of the component"
+        "isRequired": true
       }
     }
   }

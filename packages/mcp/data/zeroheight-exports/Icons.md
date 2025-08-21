@@ -1,6 +1,6 @@
 # Icons
 
-Icons are generally used in conjunction with text to further clarify the outcome of a user's action. Occasionally they are used as buttons themselves without accompanying text. 
+Icons are generally used in conjunction with text to further clarify the outcome of a user's action. Occasionally they are used as buttons themselves without accompanying text.
 
 ### Icon Component and Sizes
 
@@ -11,112 +11,112 @@ The first prop, `sdsIcon`, is the name of the icon to be displayed. It is built 
 The second prop, `sdsSize`, dictates the size of the icon to be displayed. There are four icon sizes available and each icon has a pre-established set of sizes available to it. The icon name passed into the `sdsIcon` prop will limit which sizes are available to be passed into the `sdsSize` prop.
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
-| --- | --- | --- | --- |
+| --------------- | --------- | --------- | --------------- |
 
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
-| --- | --- | --- | --- |
+| --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Custom Icons
 
 In rare circumstances, an icon will need added to the UI without using the Icon component (most often in cases where the icon being used is not part of the icon set within the design system). In these cases, an svg of the icon should always be used and its size should be set using one of the sizing variables below. The dimensions established with these variables align to the dimensions used by the `sdsSize` prop on the Icon component.
 
-| **Visual** |   | **SDS Variable** |   | **Value** |   | **Equivalent Value in sdsSize Prop** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `iconSizeXl` |   | `height: 32px` `width: 32px` |   | `extraLarge` |
-|  |   | `iconSizeL` |   | `height: 24px` `width: 24px` |   | `large`  |
-|  |   | `iconSizeS` |   | `height: 16px` `width: 16px` |   | `small` |
-|  |   | `iconSizeXs` |   | `height: 12px` `width: 12px` |   | `extraSmall` |
+| **Visual** |     | **SDS Variable** |     | **Value**                    |     | **Equivalent Value in sdsSize Prop** |
+| ---------- | --- | ---------------- | --- | ---------------------------- | --- | ------------------------------------ |
+|            |     | `iconSizeXl`     |     | `height: 32px` `width: 32px` |     | `extraLarge`                         |
+|            |     | `iconSizeL`      |     | `height: 24px` `width: 24px` |     | `large`                              |
+|            |     | `iconSizeS`      |     | `height: 16px` `width: 16px` |     | `small`                              |
+|            |     | `iconSizeXs`     |     | `height: 12px` `width: 12px` |     | `extraSmall`                         |
 
 ### Icons
 
 The table below provides a visual of each icon, its name to be passed in the `sdsIcon` prop, as well as the sizes available to be passed in the `sdsSize` prop.
 
-| **Bacteria** | **Bar Charts** |   |   |
-| --- | --- | --- | --- |
+| **Bacteria** | **Bar Charts** |     |     |
+| ------------ | -------------- | --- | --- |
 
-| **Book** | **Checks** |   | **Chevrons** |
-| --- | --- | --- | --- |
+| **Book** | **Checks** |     | **Chevrons** |
+| -------- | ---------- | --- | ------------ |
 
-| **Chevrons** |   |   |   |
-| --- | --- | --- | --- |
+| **Chevrons** |     |     |     |
+| ------------ | --- | --- | --- |
 
-| **Chevrons** |   |   | **Circles** |
-| --- | --- | --- | --- |
+| **Chevrons** |     |     | **Circles** |
+| ------------ | --- | --- | ----------- |
 
 | **Code** | **Compass** | **Copy** | **Cube** |
-| --- | --- | --- | --- |
+| -------- | ----------- | -------- | -------- |
 
 | **DNA** | **Document** | **Dots** | **Download** |
-| --- | --- | --- | --- |
+| ------- | ------------ | -------- | ------------ |
 
-| **Edit** | **Envelope** | **Exclamation Marks** |   |
-| --- | --- | --- | --- |
+| **Edit** | **Envelope** | **Exclamation Marks** |     |
+| -------- | ------------ | --------------------- | --- |
 
-| **Eyes** |   | **Filter** | **Flags** |
-| --- | --- | --- | --- |
+| **Eyes** |     | **Filter** | **Flags** |
+| -------- | --- | ---------- | --------- |
 
-| **Flags** |   |   | **Flasks** |
-| --- | --- | --- | --- |
+| **Flags** |     |     | **Flasks** |
+| --------- | --- | --- | ---------- |
 
-| **Flasks** |   | **Gear** | **Github** |
-| --- | --- | --- | --- |
+| **Flasks** |     | **Gear** | **Github** |
+| ---------- | --- | -------- | ---------- |
 
-| **Globes** |   | **Grids** |   |
-| --- | --- | --- | --- |
+| **Globes** |     | **Grids** |     |
+| ---------- | --- | --------- | --- |
 
-| **Grids** |   | **House** | **Info** |
-| --- | --- | --- | --- |
+| **Grids** |     | **House** | **Info** |
+| --------- | --- | --------- | -------- |
 
 | **Info** | **Life Ring** | **Lightbulb** | **Lines** |
-| --- | --- | --- | --- |
+| -------- | ------------- | ------------- | --------- |
 
 | **Lines** | **Link** | **List** | **Loading** |
-| --- | --- | --- | --- |
+| --------- | -------- | -------- | ----------- |
 
-| **Locks** |   | **Minus** | **Open** |
-| --- | --- | --- | --- |
+| **Locks** |     | **Minus** | **Open** |
+| --------- | --- | --------- | -------- |
 
-| **Pause** | **People** |   | **Percentage** |
-| --- | --- | --- | --- |
+| **Pause** | **People** |     | **Percentage** |
+| --------- | ---------- | --- | -------------- |
 
-| **Pins** |   | **Play** | **Pluses** |
-| --- | --- | --- | --- |
+| **Pins** |     | **Play** | **Pluses** |
+| -------- | --- | -------- | ---------- |
 
-| **Pluses** | **Projects** |   | **Puzzle Piece** |
-| --- | --- | --- | --- |
+| **Pluses** | **Projects** |     | **Puzzle Piece** |
+| ---------- | ------------ | --- | ---------------- |
 
-| **Question Marks** |   | **Quote** | **Read** |
-| --- | --- | --- | --- |
+| **Question Marks** |     | **Quote** | **Read** |
+| ------------------ | --- | --------- | -------- |
 
 | **Refresh** | **Report** | **Rocket** | **Rotate** |
-| --- | --- | --- | --- |
+| ----------- | ---------- | ---------- | ---------- |
 
 | **Rotate** | **Save** | **Scale** | **Scatter Plot** |
-| --- | --- | --- | --- |
+| ---------- | -------- | --------- | ---------------- |
 
-| **Search** |   | **Send** | **Share** |
-| --- | --- | --- | --- |
+| **Search** |     | **Send** | **Share** |
+| ---------- | --- | -------- | --------- |
 
 | **Sliders** | **Speech Bubbles** | **Squares** | **Stars** |
-| --- | --- | --- | --- |
+| ----------- | ------------------ | ----------- | --------- |
 
-| **Stars** | **Table** | **Thumbs** |   |
-| --- | --- | --- | --- |
+| **Stars** | **Table** | **Thumbs** |     |
+| --------- | --------- | ---------- | --- |
 
-| **Trash Can** | **Trees** |   |   |
-| --- | --- | --- | --- |
+| **Trash Can** | **Trees** |     |     |
+| ------------- | --------- | --- | --- |
 
-| **Trees** |   |   | **Triangles** |
-| --- | --- | --- | --- |
+| **Trees** |     |     | **Triangles** |
+| --------- | --- | --- | ------------- |
 
-| **Triangles** |   |   | **Update** |
-| --- | --- | --- | --- |
+| **Triangles** |     |     | **Update** |
+| ------------- | --- | --- | ---------- |
 
-| **Upload** | **Viruses** |   | **Widget** |
-| --- | --- | --- | --- |
+| **Upload** | **Viruses** |     | **Widget** |
+| ---------- | ----------- | --- | ---------- |
 
-| **X Marks** |   |   |   |
-| --- | --- | --- | --- |
+| **X Marks** |     |     |     |
+| ----------- | --- | --- | --- |
 
 ---
 
@@ -131,97 +131,97 @@ The first prop, `sdsIcon`, is the name of the icon to be displayed. It is built 
 The second prop, `sdsSize`, dictates the size of the icon to be displayed. There are four icon sizes available and each icon has a pre-established set of sizes available to it. The icon name passed into the `sdsIcon` prop will limit which sizes are available to be passed into the `sdsSize` prop.
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
-| --- | --- | --- | --- |
+| --------------- | --------- | --------- | --------------- |
 
 | Used only for Icon Buttons. | Buttons and Tags | Dropdown Input and Search Inputs | Checkbox Inputs, Tags, Menu Items |
-| --- | --- | --- | --- |
+| --------------------------- | ---------------- | -------------------------------- | --------------------------------- |
 
 ### Custom Icons
 
 In rare circumstances, an icon will need added to the UI without using the Icon component (most often in cases where the icon being used is not part of the icon set within the design system). In these cases, an svg of the icon should always be used and its size should be set using one of the sizing variables below. The dimensions established with these variables align to the dimensions used by the `sdsSize` prop on the Icon component.
 
-| **Visual** |   | **Variable** |   | **Value** |   | **Equivalent sdsSize Value** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `iconSizeXl` |   | `height: 32px` `width: 32px` |   | `extraLarge` |
-|  |   | `iconSizeL` |   | `height: 22px` `width: 22px` |   | `large` |
-|  |   | `iconSizeS` |   | `height: 14px` `width: 14px` |   | `small` |
-|  |   | `iconSizeXs` |   | `height: 10px` `width: 10px` |   | `extraSmall` |
+| **Visual** |     | **Variable** |     | **Value**                    |     | **Equivalent sdsSize Value** |
+| ---------- | --- | ------------ | --- | ---------------------------- | --- | ---------------------------- |
+|            |     | `iconSizeXl` |     | `height: 32px` `width: 32px` |     | `extraLarge`                 |
+|            |     | `iconSizeL`  |     | `height: 22px` `width: 22px` |     | `large`                      |
+|            |     | `iconSizeS`  |     | `height: 14px` `width: 14px` |     | `small`                      |
+|            |     | `iconSizeXs` |     | `height: 10px` `width: 10px` |     | `extraSmall`                 |
 
 ### Icons
 
 The table below provides a visual of each icon, its name to be passed in the `sdsIcon` prop, as well as the sizes available to be passed in the `sdsSize` prop.
 
-| **Bacteria** | **Bar Charts** |   |   |
-| --- | --- | --- | --- |
+| **Bacteria** | **Bar Charts** |     |     |
+| ------------ | -------------- | --- | --- |
 
-| **Book** | **Checks** |   | **Chevrons** |
-| --- | --- | --- | --- |
+| **Book** | **Checks** |     | **Chevrons** |
+| -------- | ---------- | --- | ------------ |
 
-| **Chevrons** |   |   |   |
-| --- | --- | --- | --- |
+| **Chevrons** |     |     |     |
+| ------------ | --- | --- | --- |
 
-|  **Chevrons** | **Circles** | **Code** | **Copy** |
-| --- | --- | --- | --- |
+| **Chevrons** | **Circles** | **Code** | **Copy** |
+| ------------ | ----------- | -------- | -------- |
 
 | **Copy** | **Cube** | **DNA** | **Document** |
-| --- | --- | --- | --- |
+| -------- | -------- | ------- | ------------ |
 
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
-| --- | --- | --- | --- |
+| -------- | ------------ | -------- | --------------------- |
 
-| **Exclamation Marks** | **Eyes** |   | **Filter** |
-| --- | --- | --- | --- |
+| **Exclamation Marks** | **Eyes** |     | **Filter** |
+| --------------------- | -------- | --- | ---------- |
 
-| **Flags** |   |   |   |
-| --- | --- | --- | --- |
+| **Flags** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Flasks** |   |   | **Gear** |
-| --- | --- | --- | --- |
+| **Flasks** |     |     | **Gear** |
+| ---------- | --- | --- | -------- |
 
-| **Globes** |   | **Grids** |   |
-| --- | --- | --- | --- |
+| **Globes** |     | **Grids** |     |
+| ---------- | --- | --------- | --- |
 
-| **Grids** | **House** | **Info** |   |
-| --- | --- | --- | --- |
+| **Grids** | **House** | **Info** |     |
+| --------- | --------- | -------- | --- |
 
-| **Life Ring** | **Lightbulb** | **Lines** |   |
-| --- | --- | --- | --- |
+| **Life Ring** | **Lightbulb** | **Lines** |     |
+| ------------- | ------------- | --------- | --- |
 
 | **Link** | **List** | **Loading** | **Locks** |
-| --- | --- | --- | --- |
+| -------- | -------- | ----------- | --------- |
 
 | **Locks** | **Minus** | **Open** | **People** |
-| --- | --- | --- | --- |
+| --------- | --------- | -------- | ---------- |
 
-| **Person** | **Percentage** | **Pins** |   |
-| --- | --- | --- | --- |
+| **Person** | **Percentage** | **Pins** |     |
+| ---------- | -------------- | -------- | --- |
 
-| **Play** | **Pluses** |   | **Projects** |
-| --- | --- | --- | --- |
+| **Play** | **Pluses** |     | **Projects** |
+| -------- | ---------- | --- | ------------ |
 
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Quote** |
-| --- | --- | --- | --- |
+| ------------ | ---------------- | ----------------- | --------- |
 
-| **Refresh** | **Save** | **Search** |   |
-| --- | --- | --- | --- |
+| **Refresh** | **Save** | **Search** |     |
+| ----------- | -------- | ---------- | --- |
 
 | **Share** | **Sliders** | **Speech Bubbles** | **Squares** |
-| --- | --- | --- | --- |
+| --------- | ----------- | ------------------ | ----------- |
 
-| **Stars** |   | **Table** | **Trash Can** |
-| --- | --- | --- | --- |
+| **Stars** |     | **Table** | **Trash Can** |
+| --------- | --- | --------- | ------------- |
 
-| **Trees** |   |   |   |
-| --- | --- | --- | --- |
+| **Trees** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Trees** |   | **Triangles** |   |
-| --- | --- | --- | --- |
+| **Trees** |     | **Triangles** |     |
+| --------- | --- | ------------- | --- |
 
-| **Triangles** |   | **Upload** | **Viruses** |
-| --- | --- | --- | --- |
+| **Triangles** |     | **Upload** | **Viruses** |
+| ------------- | --- | ---------- | ----------- |
 
-| **Viruses** | **Xmarks** |   |   |
-| --- | --- | --- | --- |
+| **Viruses** | **Xmarks** |     |     |
+| ----------- | ---------- | --- | --- |
 
 ---
 
@@ -236,94 +236,94 @@ The first prop, `sdsIcon`, is the name of the icon to be displayed. It is built 
 The second prop, `sdsSize`, dictates the size of the icon to be displayed. There are four icon sizes available and each icon has a pre-established set of sizes available to it. The icon name passed into the `sdsIcon` prop will limit which sizes are available to be passed into the `sdsSize` prop.
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
-| --- | --- | --- | --- |
+| --------------- | --------- | --------- | --------------- |
 
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
-| --- | --- | --- | --- |
+| --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Custom Icons
 
 In rare circumstances, an icon will need added to the UI without using the Icon component (most often in cases where the icon being used is not part of the icon set within the design system). In these cases, an svg of the icon should always be used and its size should be set using one of the sizing variables below. The dimensions established with these variables align to the dimensions used by the `sdsSize` prop on the Icon component.
 
-| **Visual** |   | **Variable** |   | **Value** |   | **Equivalent sdsSize Value** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `iconSizeXl` |   | `height: 32px` `width: 32px` |   | `extraLarge` |
-|  |   | `iconSizeL` |   | `height: 22px` `width: 22px` |   | `large` |
-|  |   | `iconSizeS` |   | `height: 14px` `width: 14px` |   | `small` |
-|  |   | `iconSizeXs` |   | `height: 10px` `width: 10px` |   | `extraSmall` |
+| **Visual** |     | **Variable** |     | **Value**                    |     | **Equivalent sdsSize Value** |
+| ---------- | --- | ------------ | --- | ---------------------------- | --- | ---------------------------- |
+|            |     | `iconSizeXl` |     | `height: 32px` `width: 32px` |     | `extraLarge`                 |
+|            |     | `iconSizeL`  |     | `height: 22px` `width: 22px` |     | `large`                      |
+|            |     | `iconSizeS`  |     | `height: 14px` `width: 14px` |     | `small`                      |
+|            |     | `iconSizeXs` |     | `height: 10px` `width: 10px` |     | `extraSmall`                 |
 
 ### Icons
 
 The table below provides a visual of each icon, its name to be passed in the `sdsIcon` prop, as well as the sizes available to be passed in the `sdsSize` prop.
 
-| **Bacteria** | **Bar Charts** |   |   |
-| --- | --- | --- | --- |
+| **Bacteria** | **Bar Charts** |     |     |
+| ------------ | -------------- | --- | --- |
 
-| **Book** | **Checks** |   | **Chevrons** |
-| --- | --- | --- | --- |
+| **Book** | **Checks** |     | **Chevrons** |
+| -------- | ---------- | --- | ------------ |
 
-|  **Chevrons** |   |   | **Circles** |
-| --- | --- | --- | --- |
+| **Chevrons** |     |     | **Circles** |
+| ------------ | --- | --- | ----------- |
 
 | **Compass** | **Copy** | **DNA** | **Document** |
-| --- | --- | --- | --- |
+| ----------- | -------- | ------- | ------------ |
 
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
-| --- | --- | --- | --- |
+| -------- | ------------ | -------- | --------------------- |
 
-| **Exclamation Marks** | **Eyes** |   | **Filter** |
-| --- | --- | --- | --- |
+| **Exclamation Marks** | **Eyes** |     | **Filter** |
+| --------------------- | -------- | --- | ---------- |
 
-| **Flags** |   |   |   |
-| --- | --- | --- | --- |
+| **Flags** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Flasks** |   |   | **Gear** |
-| --- | --- | --- | --- |
+| **Flasks** |     |     | **Gear** |
+| ---------- | --- | --- | -------- |
 
-| **Globes** |   | **Grids** |   |
-| --- | --- | --- | --- |
+| **Globes** |     | **Grids** |     |
+| ---------- | --- | --------- | --- |
 
-| **Grids** | **House** | **Info** |   |
-| --- | --- | --- | --- |
+| **Grids** | **House** | **Info** |     |
+| --------- | --------- | -------- | --- |
 
-| **Life Ring** | **Lightbulb** | **Lines** |   |
-| --- | --- | --- | --- |
+| **Life Ring** | **Lightbulb** | **Lines** |     |
+| ------------- | ------------- | --------- | --- |
 
 | **Link** | **List** | **Loading** | **Locks** |
-| --- | --- | --- | --- |
+| -------- | -------- | ----------- | --------- |
 
 | **Locks** | **Minus** | **Open** | **People** |
-| --- | --- | --- | --- |
+| --------- | --------- | -------- | ---------- |
 
-| **People** | **Percentage** | **Pins** |   |
-| --- | --- | --- | --- |
+| **People** | **Percentage** | **Pins** |     |
+| ---------- | -------------- | -------- | --- |
 
-| **Play** | **Pluses** |   | **Projects** |
-| --- | --- | --- | --- |
+| **Play** | **Pluses** |     | **Projects** |
+| -------- | ---------- | --- | ------------ |
 
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Refresh** |
-| --- | --- | --- | --- |
+| ------------ | ---------------- | ----------------- | ----------- |
 
-| **Save** | **Search** |   | **Share** |
-| --- | --- | --- | --- |
+| **Save** | **Search** |     | **Share** |
+| -------- | ---------- | --- | --------- |
 
 | **Sliders** | **Speech Bubbles** | **Squares** | **Stars** |
-| --- | --- | --- | --- |
+| ----------- | ------------------ | ----------- | --------- |
 
 | **Stars** | **Table** | **Trash Can** | **Trees** |
-| --- | --- | --- | --- |
+| --------- | --------- | ------------- | --------- |
 
-| **Trees** |   |   |   |
-| --- | --- | --- | --- |
+| **Trees** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Trees** | **Triangles** |   |   |
-| --- | --- | --- | --- |
+| **Trees** | **Triangles** |     |     |
+| --------- | ------------- | --- | --- |
 
 | **Triangles** | **Upload** | **Virus** | **Xmarks** |
-| --- | --- | --- | --- |
+| ------------- | ---------- | --------- | ---------- |
 
-| **Xmarks** |   |   |   |
-| --- | --- | --- | --- |
+| **Xmarks** |     |     |     |
+| ---------- | --- | --- | --- |
 
 ---
 
@@ -338,95 +338,94 @@ The first prop, `sdsIcon`, is the name of the icon to be displayed. It is built 
 The second prop, `sdsSize`, dictates the size of the icon to be displayed. There are four icon sizes available and each icon has a pre-established set of sizes available to it. The icon name passed into the `sdsIcon` prop will limit which sizes are available to be passed into the `sdsSize` prop.
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
-| --- | --- | --- | --- |
+| --------------- | --------- | --------- | --------------- |
 
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
-| --- | --- | --- | --- |
+| --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Custom Icons
 
 In rare circumstances, an icon will need added to the UI without using the Icon component (most often in cases where the icon being used is not part of the icon set within the design system). In these cases, an svg of the icon should always be used and its size should be set using one of the sizing variables below. The dimensions established with these variables align to the dimensions used by the `sdsSize` prop on the Icon component.
 
-| **Visual** |   | **Variable** |   | **Value** |   | **Equivalent sdsSize Value** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `iconSizeXl` |   | `height: 32px` `width: 32px` |   | `extraLarge` |
-|  |   | `iconSizeL` |   | `height: 22px` `width: 22px` |   | `large` |
-|  |   | `iconSizeS` |   | `height: 14px` `width: 14px` |   | `small` |
-|  |   | `iconSizeXs` |   | `height: 10px` `width: 10px` |   | `extraSmall` |
+| **Visual** |     | **Variable** |     | **Value**                    |     | **Equivalent sdsSize Value** |
+| ---------- | --- | ------------ | --- | ---------------------------- | --- | ---------------------------- |
+|            |     | `iconSizeXl` |     | `height: 32px` `width: 32px` |     | `extraLarge`                 |
+|            |     | `iconSizeL`  |     | `height: 22px` `width: 22px` |     | `large`                      |
+|            |     | `iconSizeS`  |     | `height: 14px` `width: 14px` |     | `small`                      |
+|            |     | `iconSizeXs` |     | `height: 10px` `width: 10px` |     | `extraSmall`                 |
 
 ### Icons
 
 The table below provides a visual of each icon, its name to be passed in the `sdsIcon` prop, as well as the sizes available to be passed in the `sdsSize` prop.
 
-| **Bacteria** | **Bar Charts** |   |   |
-| --- | --- | --- | --- |
+| **Bacteria** | **Bar Charts** |     |     |
+| ------------ | -------------- | --- | --- |
 
-| **Book** | **Checks** |   | **Chevrons** |
-| --- | --- | --- | --- |
+| **Book** | **Checks** |     | **Chevrons** |
+| -------- | ---------- | --- | ------------ |
 
-| **Chevrons** |   |   |   |
-| --- | --- | --- | --- |
+| **Chevrons** |     |     |     |
+| ------------ | --- | --- | --- |
 
 | **Chevrons** | **Circles** | **Code** | **Compass** |
-| --- | --- | --- | --- |
+| ------------ | ----------- | -------- | ----------- |
 
 | **Copy** | **Cube** | **DNA** | **Document** |
-| --- | --- | --- | --- |
+| -------- | -------- | ------- | ------------ |
 
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
-| --- | --- | --- | --- |
+| -------- | ------------ | -------- | --------------------- |
 
-| **Exclamation Marks** | **Eyes** |   | **Filter** |
-| --- | --- | --- | --- |
+| **Exclamation Marks** | **Eyes** |     | **Filter** |
+| --------------------- | -------- | --- | ---------- |
 
-| **Flags** |   |   |   |
-| --- | --- | --- | --- |
+| **Flags** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Flasks** |   |   | **Gear** |
-| --- | --- | --- | --- |
+| **Flasks** |     |     | **Gear** |
+| ---------- | --- | --- | -------- |
 
-| **Globes** |   | **Grids** |   |
-| --- | --- | --- | --- |
+| **Globes** |     | **Grids** |     |
+| ---------- | --- | --------- | --- |
 
-| **Grids** | **House** | **Info** |   |
-| --- | --- | --- | --- |
+| **Grids** | **House** | **Info** |     |
+| --------- | --------- | -------- | --- |
 
-| **Life Ring** | **Lightbulb** | **Lines** |   |
-| --- | --- | --- | --- |
+| **Life Ring** | **Lightbulb** | **Lines** |     |
+| ------------- | ------------- | --------- | --- |
 
 | **Link** | **List** | **Loading** | **Locks** |
-| --- | --- | --- | --- |
+| -------- | -------- | ----------- | --------- |
 
 | **Locks** | **Minus** | **Open** | **People** |
-| --- | --- | --- | --- |
+| --------- | --------- | -------- | ---------- |
 
-| **Person** | **Percentage** | **Pins** |   |
-| --- | --- | --- | --- |
+| **Person** | **Percentage** | **Pins** |     |
+| ---------- | -------------- | -------- | --- |
 
-| **Play** | **Pluses** |   | **Puzzle Piece** |
-| --- | --- | --- | --- |
+| **Play** | **Pluses** |     | **Puzzle Piece** |
+| -------- | ---------- | --- | ---------------- |
 
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Quote** |
-| --- | --- | --- | --- |
+| ------------ | ---------------- | ----------------- | --------- |
 
-| **Refresh** | **Save** | **Search** |   |
-| --- | --- | --- | --- |
+| **Refresh** | **Save** | **Search** |     |
+| ----------- | -------- | ---------- | --- |
 
 | **Share** | **Sliders** | **Speech Bubbles** | **Squares** |
-| --- | --- | --- | --- |
+| --------- | ----------- | ------------------ | ----------- |
 
-| **Stars** |   | **Tables** | **Trash Can** |
-| --- | --- | --- | --- |
+| **Stars** |     | **Tables** | **Trash Can** |
+| --------- | --- | ---------- | ------------- |
 
-| **Trees** |   |   |   |
-| --- | --- | --- | --- |
+| **Trees** |     |     |     |
+| --------- | --- | --- | --- |
 
-| **Trees** |   | **Triangles** |   |
-| --- | --- | --- | --- |
+| **Trees** |     | **Triangles** |     |
+| --------- | --- | ------------- | --- |
 
-| **Triangles** |   | **Upload** | **Viruses** |
-| --- | --- | --- | --- |
+| **Triangles** |     | **Upload** | **Viruses** |
+| ------------- | --- | ---------- | ----------- |
 
-| **Viruses** | **Xmarks** |   |   |
-| --- | --- | --- | --- |
-
+| **Viruses** | **Xmarks** |     |     |
+| ----------- | ---------- | --- | --- |

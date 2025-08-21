@@ -1,14 +1,6 @@
 {
   "Banner": {
     "props": {
-      "icon": {
-        "type": "ReactElement",
-        "isRequired": false
-      },
-      "sdsIconProps": {
-        "type": "IconProps<string | number | symbol>",
-        "isRequired": false
-      },
       "dismissed": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
@@ -17,18 +9,25 @@
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "onClose": {
-        "type": "function",
+      "icon": {
+        "type": "ReactElement",
         "isRequired": false
       },
       "intent": {
         "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
         "isRequired": false
       },
+      "sdsIconProps": {
+        "type": "IconProps<string | number | symbol>",
+        "isRequired": false
+      },
       "sdsType": {
         "type": "\"primary\" | \"secondary\"",
-        "isRequired": true,
-        "description": "The type/variant of the component"
+        "isRequired": true
+      },
+      "textChild": {
+        "type": "any",
+        "isRequired": false
       }
     }
   }

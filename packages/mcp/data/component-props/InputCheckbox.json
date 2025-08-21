@@ -5,9 +5,11 @@
         "type": "string",
         "isRequired": false
       },
-      "checkboxProps": {
-        "type": "Partial<CheckboxProps>",
-        "isRequired": false
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
       },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
@@ -20,56 +22,6 @@
       "stage": {
         "type": "\"indeterminate\" | \"checked\" | \"unchecked\"",
         "isRequired": false
-      },
-      "icon": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The icon to display when the component is unchecked.",
-        "defaultValue": "<CheckBoxOutlineBlankIcon />"
-      },
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is disabled.",
-        "defaultValue": false
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Name attribute of the `input` element."
-      },
-      "value": {
-        "type": "unknown",
-        "isRequired": false,
-        "description": "The value of the component. The DOM API casts this to a string.\nThe browser uses \"on\" as the default value."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the `input` element."
-      },
-      "onChange": {
-        "type": "function",
-        "isRequired": false,
-        "description": "Callback fired when the state is changed.\n@param event The event source of the callback.\nYou can pull out the new checked state by accessing `event.target.checked` (boolean)."
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "size": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false,
-        "description": "The size of the component.\n`small` is equivalent to the dense checkbox styling.",
-        "defaultValue": "medium"
       }
     }
   }

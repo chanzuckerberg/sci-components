@@ -8,24 +8,24 @@ Typography encompasses font style, appearance, and structure which together deli
 
 Inter is the primary typeface to be used throughout product and marketing materials. IBM Plex Mono should only be used when referring to code snippets.
 
-| **Visual** |   | **Typeface** |   | **Usage** |
-| --- | --- | --- | --- | --- |
-|  |   | Inter (600) |   | All headers throughout the product and marketing materials, and emphasized body copy. |
-|  |   | Inter (500) |   | For text that needs slight emphasis. |
-|  |   | Inter (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 500 or 600. |
-|  |   | IBM Plex Mono (400) |   | Use only when referring to code snippets. |
+| **Visual** |     | **Typeface**        |     | **Usage**                                                                                                                    |
+| ---------- | --- | ------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------- |
+|            |     | Inter (600)         |     | All headers throughout the product and marketing materials, and emphasized body copy.                                        |
+|            |     | Inter (500)         |     | For text that needs slight emphasis.                                                                                         |
+|            |     | Inter (400)         |     | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 500 or 600. |
+|            |     | IBM Plex Mono (400) |     | Use only when referring to code snippets.                                                                                    |
 
 ### Font Weights
 
 Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
-|  |   | `fontWeightBold` |   | `font-weight: 700;` |
-|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
-|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
-|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+| **Visual** |     | **Variable**         |     | **Value**           |
+| ---------- | --- | -------------------- | --- | ------------------- |
+|            |     | `fontWeightHeavy`    |     | `font-weight: 800;` |
+|            |     | `fontWeightBold`     |     | `font-weight: 700;` |
+|            |     | `fontWeightSemibold` |     | `font-weight: 600;` |
+|            |     | `fontWeightRegular`  |     | `font-weight: 400;` |
+|            |     | `fontWeightThin`     |     | `font-weight: 300;` |
 
 ---
 
@@ -35,195 +35,195 @@ Regular (400) and SemiBold (600) are the two font weights primarily used across 
 
 For use with Hero component.
 
-| **Font Title L** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontTitleL/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-l-700-font` `$sds-font-title-l-700-font`  `--sds-font-title-l-700-letter-spacing` `$sds-font-title-l-700-letter-spacing` |   | `font: 700 52px/64px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Title M** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontTitleM/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-m-700-font` `$sds-font-title-m-700-font`  `--sds-font-title-m-700-letter-spacing` `$sds-font-title-m-700-letter-spacing` |   | `font: 700 40px/50px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Tile S** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `wide/fontTitleS/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-s-700-font` `$sds-font-title-s-700-font`  `--sds-font-title-s-700-letter-spacing` `$sds-font-title-s-700-letter-spacing` |   | `font: 700 32px/40px "Inter", sans-serif;`  `letter-spacing: 0px;`  |
+| **Font Title L**                                                                                                                          |     |                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------- |
+| _Visual_                                                                                                                                  |     | _Figma Variable_                                                  |
+|                                                                                                                                           |     | `wide/fontTitleL/700`                                             |
+| _CSS / SCSS Variables_                                                                                                                    |     | _Values_                                                          |
+| `--sds-font-title-l-700-font` `$sds-font-title-l-700-font` `--sds-font-title-l-700-letter-spacing` `$sds-font-title-l-700-letter-spacing` |     | `font: 700 52px/64px "Inter", sans-serif;` `letter-spacing: 0px;` |
+|                                                                                                                                           |     |                                                                   |
+| **Font Title M**                                                                                                                          |     |                                                                   |
+| _Visual_                                                                                                                                  |     | _Figma Variable_                                                  |
+|                                                                                                                                           |     | `wide/fontTitleM/700`                                             |
+| _CSS / SCSS Variables_                                                                                                                    |     | _Values_                                                          |
+| `--sds-font-title-m-700-font` `$sds-font-title-m-700-font` `--sds-font-title-m-700-letter-spacing` `$sds-font-title-m-700-letter-spacing` |     | `font: 700 40px/50px "Inter", sans-serif;` `letter-spacing: 0px;` |
+|                                                                                                                                           |     |                                                                   |
+| **Font Tile S**                                                                                                                           |     |                                                                   |
+| _Visual_                                                                                                                                  |     | _Figma Variable_                                                  |
+|                                                                                                                                           |     | `wide/fontTitleS/700`                                             |
+| _CSS / SCSS Variables_                                                                                                                    |     | _Values_                                                          |
+| `--sds-font-title-s-700-font` `$sds-font-title-s-700-font` `--sds-font-title-s-700-letter-spacing` `$sds-font-title-s-700-letter-spacing` |     | `font: 700 32px/40px "Inter", sans-serif;` `letter-spacing: 0px;` |
 
 #### Header
 
 For use with `<H1>`, `<H2>`, `<H3>`, `<H4>`, `<H5>`, `<H6>` tags.
 
-| **Font Header XXL** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderXxl/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxl-600-font` `$sds-font-header-xxl-600-font`  `--sds-font-header-xxl-600-letter-spacing` `$sds-font-header-xxl-600-letter-spacing` |   | `font: 600 26px/34px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header XL** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `wide/fontHeaderXl/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xl-600-font` `$sds-font-header-xl-600-font`  `--sds-font-header-xl-600-letter-spacing` `$sds-font-header-xl-600-letter-spacing` |   | `font: 600 22px/30px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header L** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderL/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-l-600-font` `$sds-font-header-l-600-font`  `--sds-font-header-l-600-letter-spacing` `$sds-font-header-l-600-letter-spacing` |   | `font: 600 18px/24px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header M** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderM/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-m-600-font` `$sds-font-header-m-600-font`  `--sds-font-header-m-600-letter-spacing` `$sds-font-header-m-600-letter-spacing` |   | `font: 600 16px/22px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header S** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderS/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-s-600-font` `$sds-font-header-s-600-font`  `--sds-font-header-s-600-letter-spacing` `$sds-font-header-s-600-letter-spacing` |   | `font: 600 14px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Header XS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderXs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xs-600-font` `$sds-font-header-xs-600-font`  `--sds-font-header-xs-600-letter-spacing` `$sds-font-header-xs-600-letter-spacing` |   | `font: 600 13px/18px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Header XXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderXxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxs-600-font` `$sds-font-header-xxs-600-font`  `--sds-font-header-xxs-600-letter-spacing` `$sds-font-header-xxs-600-letter-spacing` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-|   |   |   |
-| **Font Header XXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontHeaderXxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxxs-600-font` `$sds-font-header-xxxs-600-font`  `--sds-font-header-xxxs-600-letter-spacing` `$sds-font-header-xxxs-600-letter-spacing` |   | `font: 600 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
+| **Font Header XXL**                                                                                                                                       |     |                                                                      |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderXxl/600`                                             |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-xxl-600-font` `$sds-font-header-xxl-600-font` `--sds-font-header-xxl-600-letter-spacing` `$sds-font-header-xxl-600-letter-spacing`     |     | `font: 600 26px/34px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header XL**                                                                                                                                        |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderXl/600`                                              |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-xl-600-font` `$sds-font-header-xl-600-font` `--sds-font-header-xl-600-letter-spacing` `$sds-font-header-xl-600-letter-spacing`         |     | `font: 600 22px/30px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header L**                                                                                                                                         |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderL/600`                                               |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-l-600-font` `$sds-font-header-l-600-font` `--sds-font-header-l-600-letter-spacing` `$sds-font-header-l-600-letter-spacing`             |     | `font: 600 18px/24px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header M**                                                                                                                                         |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderM/600`                                               |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-m-600-font` `$sds-font-header-m-600-font` `--sds-font-header-m-600-letter-spacing` `$sds-font-header-m-600-letter-spacing`             |     | `font: 600 16px/22px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header S**                                                                                                                                         |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderS/600`                                               |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-s-600-font` `$sds-font-header-s-600-font` `--sds-font-header-s-600-letter-spacing` `$sds-font-header-s-600-letter-spacing`             |     | `font: 600 14px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;` |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header XS**                                                                                                                                        |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderXs/600`                                              |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-xs-600-font` `$sds-font-header-xs-600-font` `--sds-font-header-xs-600-letter-spacing` `$sds-font-header-xs-600-letter-spacing`         |     | `font: 600 13px/18px "Inter", sans-serif;` `letter-spacing: 0.08px;` |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header XXS**                                                                                                                                       |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderXxs/600`                                             |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-xxs-600-font` `$sds-font-header-xxs-600-font` `--sds-font-header-xxs-600-letter-spacing` `$sds-font-header-xxs-600-letter-spacing`     |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`  |
+|                                                                                                                                                           |     |                                                                      |
+| **Font Header XXXS**                                                                                                                                      |     |                                                                      |
+| _Visual_                                                                                                                                                  |     | _Figma Variable_                                                     |
+|                                                                                                                                                           |     | `wide/fontHeaderXxxs/600`                                            |
+| _CSS / SCSS Variables_                                                                                                                                    |     | _Values_                                                             |
+| `--sds-font-header-xxxs-600-font` `$sds-font-header-xxxs-600-font` `--sds-font-header-xxxs-600-letter-spacing` `$sds-font-header-xxxs-600-letter-spacing` |     | `font: 600 11px/16px "Inter", sans-serif;` `letter-spacing: 0.1px;`  |
 
 #### Body
 
 For use with `<p>` tags.
 
-| **Font Body L** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontBodyL/600`  `wide/fontBodyL/500`  `wide/fontBodyL/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-l-600-font` `$sds-font-body-l-600-font`  `--sds-font-body-l-600-letter-spacing` `$sds-font-body-l-600-letter-spacing` |   | `font: 600 18px/28px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-l-500-font` `$sds-font-body-l-500-font`  `--sds-font-body-l-500-letter-spacing` `$sds-font-body-l-500-letter-spacing` |   | `font: 500 18px/28px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-l-400-font` `$sds-font-body-l-400-font`  `--sds-font-body-l-400-letter-spacing` `$sds-font-body-l-400-letter-spacing` |   | `font: 400 18px/28px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Body M** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontBodyM/600`  `wide/fontBodyM/500`  `wide/fontBodyM/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-m-600-font` `$sds-font-body-m-600-font``--sds-font-body-m-600-letter-spacing``$sds-font-body-m-600-letter-spacing` |   | `font: 600 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-m-500-font` `$sds-font-body-m-500-font``--sds-font-body-m-500-letter-spacing``$sds-font-body-m-500-letter-spacing` |   | `font: 500 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-m-400-font` `$sds-font-body-m-400-font`  `--sds-font-body-m-400-letter-spacing` `$sds-font-body-m-400-letter-spacing` |   | `font: 400 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Body S** |   |   |
-| *Visual* |   | *Figma Variables* |
-|        |   | `wide/fontBodyS/600`  `wide/fontBodyS/500`  `wide/fontBodyS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-s-600-font` `$sds-font-body-s-600-font`  `--sds-font-body-s-600-letter-spacing` `$sds-font-body-s-600-letter-spacing` |   | `font: 600 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-s-500-font` `$sds-font-body-s-500-font`  `--sds-font-body-s-500-letter-spacing` `$sds-font-body-s-500-letter-spacing` |   | `font: 500 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-s-400-font` `$sds-font-body-s-400-font`  `--sds-font-body-s-400-letter-spacing` `$sds-font-body-s-400-letter-spacing` |   | `font: 400 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Body XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontBodyXs/600`  `wide/fontBodyXs/500`  `wide/fontBodyXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xs-600-font` `$sds-font-body-xs-600-font`  `--sds-font-body-xs-600-letter-spacing` `$sds-font-body-xs-600-letter-spacing` |   | `font: 600 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-xs-500-font` `$sds-font-body-xs-500-font`  `--sds-font-body-xs-500-letter-spacing` `$sds-font-body-xs-500-letter-spacing` |   | `font: 500 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-xs-400-font` `$sds-font-body-xs-400-font`  `--sds-font-body-xs-400-letter-spacing` `$sds-font-body-xs-400-letter-spacing` |   | `font: 400 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Body XXS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontBodyXxs/600`  `wide/fontBodyXxs/500`  `wide/fontBodyXxs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xxs-600-font` `$sds-font-body-xxs-600-font`  `--sds-font-body-xxs-600-letter-spacing` `$sds-font-body-xxs-600-letter-spacing` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxs-500-font` `$sds-font-body-xxs-500-font`  `--sds-font-body-xxs-500-letter-spacing` `$sds-font-body-xxs-500-letter-spacing` |   | `font: 500 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxs-400-font` `$sds-font-body-xxs-400-font`  `--sds-font-body-xxs-400-letter-spacing` `$sds-font-body-xxs-400-letter-spacing` |   | `font: 400 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-|   |   |   |
-| **Font Body XXXS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontBodyXxxs/600`  `wide/fontBodyXxxs/500`  `wide/fontBodyXxxs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xxxs-600-font` `$sds-font-body-xxxs-600-font`  `--sds-font-body-xxxs-600-letter-spacing` `$sds-font-body-xxxs-600-letter-spacing` |   | `font: 600 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxxs-500-font` `$sds-font-body-xxxs-500-font`  `--sds-font-body-xxxs-500-letter-spacing` `$sds-font-body-xxxs-500-letter-spacing` |   | `font: 500 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxxs-400-font` `$sds-font-body-xxxs-400-font`  `--sds-font-body-xxxs-400-letter-spacing` `$sds-font-body-xxxs-400-letter-spacing` |   | `font: 400 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
+| **Font Body L**                                                                                                                                   |     |                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyL/600` `wide/fontBodyL/500` `wide/fontBodyL/400`          |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-l-600-font` `$sds-font-body-l-600-font` `--sds-font-body-l-600-letter-spacing` `$sds-font-body-l-600-letter-spacing`             |     | `font: 600 18px/28px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+| `--sds-font-body-l-500-font` `$sds-font-body-l-500-font` `--sds-font-body-l-500-letter-spacing` `$sds-font-body-l-500-letter-spacing`             |     | `font: 500 18px/28px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+| `--sds-font-body-l-400-font` `$sds-font-body-l-400-font` `--sds-font-body-l-400-letter-spacing` `$sds-font-body-l-400-letter-spacing`             |     | `font: 400 18px/28px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+|                                                                                                                                                   |     |                                                                         |
+| **Font Body M**                                                                                                                                   |     |                                                                         |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyM/600` `wide/fontBodyM/500` `wide/fontBodyM/400`          |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-m-600-font` `$sds-font-body-m-600-font``--sds-font-body-m-600-letter-spacing``$sds-font-body-m-600-letter-spacing`               |     | `font: 600 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+| `--sds-font-body-m-500-font` `$sds-font-body-m-500-font``--sds-font-body-m-500-letter-spacing``$sds-font-body-m-500-letter-spacing`               |     | `font: 500 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+| `--sds-font-body-m-400-font` `$sds-font-body-m-400-font` `--sds-font-body-m-400-letter-spacing` `$sds-font-body-m-400-letter-spacing`             |     | `font: 400 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`       |
+|                                                                                                                                                   |     |                                                                         |
+| **Font Body S**                                                                                                                                   |     |                                                                         |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyS/600` `wide/fontBodyS/500` `wide/fontBodyS/400`          |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-s-600-font` `$sds-font-body-s-600-font` `--sds-font-body-s-600-letter-spacing` `$sds-font-body-s-600-letter-spacing`             |     | `font: 600 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+| `--sds-font-body-s-500-font` `$sds-font-body-s-500-font` `--sds-font-body-s-500-letter-spacing` `$sds-font-body-s-500-letter-spacing`             |     | `font: 500 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+| `--sds-font-body-s-400-font` `$sds-font-body-s-400-font` `--sds-font-body-s-400-letter-spacing` `$sds-font-body-s-400-letter-spacing`             |     | `font: 400 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+|                                                                                                                                                   |     |                                                                         |
+| **Font Body XS**                                                                                                                                  |     |                                                                         |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyXs/600` `wide/fontBodyXs/500` `wide/fontBodyXs/400`       |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-xs-600-font` `$sds-font-body-xs-600-font` `--sds-font-body-xs-600-letter-spacing` `$sds-font-body-xs-600-letter-spacing`         |     | `font: 600 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+| `--sds-font-body-xs-500-font` `$sds-font-body-xs-500-font` `--sds-font-body-xs-500-letter-spacing` `$sds-font-body-xs-500-letter-spacing`         |     | `font: 500 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+| `--sds-font-body-xs-400-font` `$sds-font-body-xs-400-font` `--sds-font-body-xs-400-letter-spacing` `$sds-font-body-xs-400-letter-spacing`         |     | `font: 400 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`    |
+|                                                                                                                                                   |     |                                                                         |
+| **Font Body XXS**                                                                                                                                 |     |                                                                         |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyXxs/600` `wide/fontBodyXxs/500` `wide/fontBodyXxs/400`    |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-xxs-600-font` `$sds-font-body-xxs-600-font` `--sds-font-body-xxs-600-letter-spacing` `$sds-font-body-xxs-600-letter-spacing`     |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
+| `--sds-font-body-xxs-500-font` `$sds-font-body-xxs-500-font` `--sds-font-body-xxs-500-letter-spacing` `$sds-font-body-xxs-500-letter-spacing`     |     | `font: 500 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
+| `--sds-font-body-xxs-400-font` `$sds-font-body-xxs-400-font` `--sds-font-body-xxs-400-letter-spacing` `$sds-font-body-xxs-400-letter-spacing`     |     | `font: 400 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
+|                                                                                                                                                   |     |                                                                         |
+| **Font Body XXXS**                                                                                                                                |     |                                                                         |
+| _Visual_                                                                                                                                          |     | _Figma Variables_                                                       |
+|                                                                                                                                                   |     | `wide/fontBodyXxxs/600` `wide/fontBodyXxxs/500` `wide/fontBodyXxxs/400` |
+| _CSS / SCSS Variables_                                                                                                                            |     | _Values_                                                                |
+| `--sds-font-body-xxxs-600-font` `$sds-font-body-xxxs-600-font` `--sds-font-body-xxxs-600-letter-spacing` `$sds-font-body-xxxs-600-letter-spacing` |     | `font: 600 11px/16px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
+| `--sds-font-body-xxxs-500-font` `$sds-font-body-xxxs-500-font` `--sds-font-body-xxxs-500-letter-spacing` `$sds-font-body-xxxs-500-letter-spacing` |     | `font: 500 11px/16px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
+| `--sds-font-body-xxxs-400-font` `$sds-font-body-xxxs-400-font` `--sds-font-body-xxxs-400-letter-spacing` `$sds-font-body-xxxs-400-letter-spacing` |     | `font: 400 11px/16px "Inter", sans-serif;` `letter-spacing: 0.1px;`     |
 
 #### All-caps
 
 Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal Buttons.
 
-| **Font Caps XXS** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontCapsXxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxs-600-font` `$sds-font-caps-xxs-600-font`  `--sds-font-caps-xxs-600-letter-spacing` `$sds-font-caps-xxs-600-letter-spacing`  `--sds-font-caps-xxs-600-text-transform``$sds-font-caps-xxs-600-text-transform` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;` |
-|   |   |   |
-| **Font Caps XXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `wide/fontCapsXxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxxs-600-font` `$sds-font-caps-xxxs-600-font`  `--sds-font-caps-xxxs-600-letter-spacing` `$sds-font-caps-xxxs-600-letter-spacing`  `--sds-font-caps-xxxs-600-text-transform` `$sds-font-caps-xxxs-600-text-transform` |   | `font: 600 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;` |
-|   |   |   |
-| **Font Caps XXXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `wide/fontCapsXxxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxxxs-600-font` `$sds-font-caps-xxxxs-600-font`  `--sds-font-caps-xxxxs-600-letter-spacing` `$sds-font-caps-xxxxs-600-letter-spacing`  `--sds-font-caps-xxxxs-600-text-transform` `$sds-font-caps-xxxxs-600-text-transform` |   | `font: 600 10px/14px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;`  |
+| **Font Caps XXS**                                                                                                                                                                                                                          |     |                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------ |
+| _Visual_                                                                                                                                                                                                                                   |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                            |     | `wide/fontCapsXxs/600`                                                                           |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                     |     | _Values_                                                                                         |
+| `--sds-font-caps-xxs-600-font` `$sds-font-caps-xxs-600-font` `--sds-font-caps-xxs-600-letter-spacing` `$sds-font-caps-xxs-600-letter-spacing` `--sds-font-caps-xxs-600-text-transform``$sds-font-caps-xxs-600-text-transform`              |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
+|                                                                                                                                                                                                                                            |     |                                                                                                  |
+| **Font Caps XXXS**                                                                                                                                                                                                                         |     |                                                                                                  |
+| _Visual_                                                                                                                                                                                                                                   |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                            |     | `wide/fontCapsXxxs/600`                                                                          |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                     |     | _Values_                                                                                         |
+| `--sds-font-caps-xxxs-600-font` `$sds-font-caps-xxxs-600-font` `--sds-font-caps-xxxs-600-letter-spacing` `$sds-font-caps-xxxs-600-letter-spacing` `--sds-font-caps-xxxs-600-text-transform` `$sds-font-caps-xxxs-600-text-transform`       |     | `font: 600 11px/16px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
+|                                                                                                                                                                                                                                            |     |                                                                                                  |
+| **Font Caps XXXXS**                                                                                                                                                                                                                        |     |                                                                                                  |
+| _Visual_                                                                                                                                                                                                                                   |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                            |     | `wide/fontCapsXxxxs/600`                                                                         |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                     |     | _Values_                                                                                         |
+| `--sds-font-caps-xxxxs-600-font` `$sds-font-caps-xxxxs-600-font` `--sds-font-caps-xxxxs-600-letter-spacing` `$sds-font-caps-xxxxs-600-letter-spacing` `--sds-font-caps-xxxxs-600-text-transform` `$sds-font-caps-xxxxs-600-text-transform` |     | `font: 600 10px/14px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
 
 #### Tabular
 
 Use when there is a need for numbers to be an equal width such as in Tables.
 
-| **Font Tabular S** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|        |   | `wide/fontTabularS/600`  `wide/fontTabularS/500`  `wide/fontTabularS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-tabular-s-600-font` `$sds-font-tabular-s-600-font`  `--sds-font-tabular-s-600-font-variant-numeric` `$sds-font-tabular-s-600-font-variant-numeric`  `--sds-font-tabular-s-600-letter-spacing` `$sds-font-tabular-s-600-letter-spacing` |   | `font: 600 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-s-500-font` `$sds-font-tabular-s-500-font`  `--sds-font-tabular-s-500-font-variant-numeric` `$sds-font-tabular-s-500-font-variant-numeric`  `--sds-font-tabular-s-500-letter-spacing` `$sds-font-tabular-s-500-letter-spacing` |   | `font: 500 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-s-400-font` `$sds-font-tabular-s-400-font`  `--sds-font-tabular-s-400-font-variant-numeric` `$sds-font-tabular-s-400-font-variant-numeric`  `--sds-font-tabular-s-400-letter-spacing` `$sds-font-tabular-s-400-letter-spacing` |   | `font: 400 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Tabular XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `wide/fontTabularXs/600`  `wide/fontTabularXs/500`  `wide/fontTabularXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-tabular-xs-600-font` `$sds-font-tabular-xs-600-font`  `--sds-font-tabular-xs-600-font-variant-numeric` `$sds-font-tabular-xs-600-font-variant-numeric`  `--sds-font-tabular-xs-600-letter-spacing` `$sds-font-tabular-xs-600-letter-spacing` |   | `font: 600 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-xs-500-font` `$sds-font-tabular-xs-500-font`  `--sds-font-tabular-xs-500-font-variant-numeric` `$sds-font-tabular-xs-500-font-variant-numeric`  `--sds-font-tabular-xs-500-letter-spacing` `$sds-font-tabular-xs-500-letter-spacing` |   | `font: 500 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-xs-400-font` `$sds-font-tabular-xs-400-font`  `--sds-font-tabular-xs-400-font-variant-numeric` `$sds-font-tabular-xs-400-font-variant-numeric`  `--sds-font-tabular-xs-400-letter-spacing` `$sds-font-tabular-xs-400-letter-spacing` |   | `font: 400 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
+| **Font Tabular S**                                                                                                                                                                                                                                     |     |                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------- |
+| _Visual_                                                                                                                                                                                                                                               |     | _Figma Variables_                                                                                       |
+|                                                                                                                                                                                                                                                        |     | `wide/fontTabularS/600` `wide/fontTabularS/500` `wide/fontTabularS/400`                                 |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                 |     | _Values_                                                                                                |
+| `--sds-font-tabular-s-600-font` `$sds-font-tabular-s-600-font` `--sds-font-tabular-s-600-font-variant-numeric` `$sds-font-tabular-s-600-font-variant-numeric` `--sds-font-tabular-s-600-letter-spacing` `$sds-font-tabular-s-600-letter-spacing`       |     | `font: 600 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-s-500-font` `$sds-font-tabular-s-500-font` `--sds-font-tabular-s-500-font-variant-numeric` `$sds-font-tabular-s-500-font-variant-numeric` `--sds-font-tabular-s-500-letter-spacing` `$sds-font-tabular-s-500-letter-spacing`       |     | `font: 500 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-s-400-font` `$sds-font-tabular-s-400-font` `--sds-font-tabular-s-400-font-variant-numeric` `$sds-font-tabular-s-400-font-variant-numeric` `--sds-font-tabular-s-400-letter-spacing` `$sds-font-tabular-s-400-letter-spacing`       |     | `font: 400 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+|                                                                                                                                                                                                                                                        |     |                                                                                                         |
+| **Font Tabular XS**                                                                                                                                                                                                                                    |     |                                                                                                         |
+| _Visual_                                                                                                                                                                                                                                               |     | _Figma Variables_                                                                                       |
+|                                                                                                                                                                                                                                                        |     | `wide/fontTabularXs/600` `wide/fontTabularXs/500` `wide/fontTabularXs/400`                              |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                 |     | _Values_                                                                                                |
+| `--sds-font-tabular-xs-600-font` `$sds-font-tabular-xs-600-font` `--sds-font-tabular-xs-600-font-variant-numeric` `$sds-font-tabular-xs-600-font-variant-numeric` `--sds-font-tabular-xs-600-letter-spacing` `$sds-font-tabular-xs-600-letter-spacing` |     | `font: 600 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-xs-500-font` `$sds-font-tabular-xs-500-font` `--sds-font-tabular-xs-500-font-variant-numeric` `$sds-font-tabular-xs-500-font-variant-numeric` `--sds-font-tabular-xs-500-letter-spacing` `$sds-font-tabular-xs-500-letter-spacing` |     | `font: 500 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-xs-400-font` `$sds-font-tabular-xs-400-font` `--sds-font-tabular-xs-400-font-variant-numeric` `$sds-font-tabular-xs-400-font-variant-numeric` `--sds-font-tabular-xs-400-letter-spacing` `$sds-font-tabular-xs-400-letter-spacing` |     | `font: 400 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
 
 #### Code
 
 Use only when referring to code snippets.
 
-| **Font Code S** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|        |   | `wide/fontCodeS/600`  `wide/fontCodeS/500`  `wide/fontCodeS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-code-s-600-font` `$sds-font-code-s-600-font`  `--sds-font-code-s-600-letter-spacing` `$sds-font-code-s-600-letter-spacing` |   | `font: 600 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-s-500-font` `$sds-font-code-s-500-font`  `--sds-font-code-s-500-letter-spacing` `$sds-font-code-s-500-letter-spacing` |   | `font: 500 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-s-400-font` `$sds-font-code-s-400-font`  `--sds-font-code-s-400-letter-spacing` `$sds-font-code-s-400-letter-spacing` |   | `font: 400 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Code XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|        |   | `wide/fontCodeXs/600`  `wide/fontCodeXs/500`  `wide/fontCodeXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-code-xs-600-font` `$sds-font-code-xs-600-font`  `--sds-font-code-xs-600-letter-spacing` `$sds-font-code-xs-600-letter-spacing` |   | `font: 600 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-xs-500-font` `$sds-font-code-xs-500-font`  `--sds-font-code-xs-500-letter-spacing` `$sds-font-code-xs-500-letter-spacing` |   | `font: 500 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-xs-400-font` `$sds-font-code-xs-400-font`  `--sds-font-code-xs-400-letter-spacing` `$sds-font-code-xs-400-letter-spacing` |   | `font: 400 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
+| **Font Code S**                                                                                                                           |     |                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------ |
+| _Visual_                                                                                                                                  |     | _Figma Variables_                                                        |
+|                                                                                                                                           |     | `wide/fontCodeS/600` `wide/fontCodeS/500` `wide/fontCodeS/400`           |
+| _CSS / SCSS Variables_                                                                                                                    |     | _Values_                                                                 |
+| `--sds-font-code-s-600-font` `$sds-font-code-s-600-font` `--sds-font-code-s-600-letter-spacing` `$sds-font-code-s-600-letter-spacing`     |     | `font: 600 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-s-500-font` `$sds-font-code-s-500-font` `--sds-font-code-s-500-letter-spacing` `$sds-font-code-s-500-letter-spacing`     |     | `font: 500 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-s-400-font` `$sds-font-code-s-400-font` `--sds-font-code-s-400-letter-spacing` `$sds-font-code-s-400-letter-spacing`     |     | `font: 400 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+|                                                                                                                                           |     |                                                                          |
+| **Font Code XS**                                                                                                                          |     |                                                                          |
+| _Visual_                                                                                                                                  |     | _Figma Variables_                                                        |
+|                                                                                                                                           |     | `wide/fontCodeXs/600` `wide/fontCodeXs/500` `wide/fontCodeXs/400`        |
+| _CSS / SCSS Variables_                                                                                                                    |     | _Values_                                                                 |
+| `--sds-font-code-xs-600-font` `$sds-font-code-xs-600-font` `--sds-font-code-xs-600-letter-spacing` `$sds-font-code-xs-600-letter-spacing` |     | `font: 600 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-xs-500-font` `$sds-font-code-xs-500-font` `--sds-font-code-xs-500-letter-spacing` `$sds-font-code-xs-500-letter-spacing` |     | `font: 500 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-xs-400-font` `$sds-font-code-xs-400-font` `--sds-font-code-xs-400-letter-spacing` `$sds-font-code-xs-400-letter-spacing` |     | `font: 400 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
 
 ## Narrow
 
@@ -231,24 +231,24 @@ Use only when referring to code snippets.
 
 Inter is the primary typeface to be used throughout product and marketing materials. IBM Plex Mono should only be used when referring to code snippets.
 
-| **Visual** |   | **Typeface** |   | **Usage** |
-| --- | --- | --- | --- | --- |
-|  |   | Inter (600) |   | All headers throughout the product and marketing materials, and emphasized body copy. |
-|  |   | Inter (500) |   | For text that needs slight emphasis. |
-|  |   | Inter (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
-|  |   | IBM Plex Mono (400) |   | Use only when referring to code snippets. |
+| **Visual** |     | **Typeface**        |     | **Usage**                                                                                                             |
+| ---------- | --- | ------------------- | --- | --------------------------------------------------------------------------------------------------------------------- |
+|            |     | Inter (600)         |     | All headers throughout the product and marketing materials, and emphasized body copy.                                 |
+|            |     | Inter (500)         |     | For text that needs slight emphasis.                                                                                  |
+|            |     | Inter (400)         |     | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
+|            |     | IBM Plex Mono (400) |     | Use only when referring to code snippets.                                                                             |
 
 ### Font Weights
 
 Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
-|  |   | `fontWeightBold` |   | `font-weight: 700;` |
-|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
-|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
-|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+| **Visual** |     | **Variable**         |     | **Value**           |
+| ---------- | --- | -------------------- | --- | ------------------- |
+|            |     | `fontWeightHeavy`    |     | `font-weight: 800;` |
+|            |     | `fontWeightBold`     |     | `font-weight: 700;` |
+|            |     | `fontWeightSemibold` |     | `font-weight: 600;` |
+|            |     | `fontWeightRegular`  |     | `font-weight: 400;` |
+|            |     | `fontWeightThin`     |     | `font-weight: 300;` |
 
 ---
 
@@ -258,195 +258,195 @@ Regular (400) and SemiBold (600) are the two font weights primarily used across 
 
 For use with Hero component.
 
-| **Font Title L** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontTitleL/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-l-700-font-narrow` `$sds-font-title-l-700-font-narrow`  `--sds-font-title-l-700-letter-spacing-narrow` `$sds-font-title-l-700-letter-spacing-narrow` |   | `font: 700 40px/50x "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Title M** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontTitleM/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-m-700-font-narrow` `$sds-font-title-m-700-font-narrow`  `--sds-font-title-m-700-letter-spacing-narrow` `$sds-font-title-m-700-letter-spacing-narrow` |   | `font: 700 32px/40px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Tile S** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `narrow/fontTitleS/700` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-title-s-700-font-narrow` `$sds-font-title-s-700-font-narrow`  `--sds-font-title-s-700-letter-spacing-narrow` `$sds-font-title-s-700-letter-spacing-narrow` |   | `font: 700 26px/34px "Inter", sans-serif;`  `letter-spacing: 0px;`  |
+| **Font Title L**                                                                                                                                                      |     |                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------- |
+| _Visual_                                                                                                                                                              |     | _Figma Variable_                                                  |
+|                                                                                                                                                                       |     | `narrow/fontTitleL/700`                                           |
+| _CSS / SCSS Variables_                                                                                                                                                |     | _Values_                                                          |
+| `--sds-font-title-l-700-font-narrow` `$sds-font-title-l-700-font-narrow` `--sds-font-title-l-700-letter-spacing-narrow` `$sds-font-title-l-700-letter-spacing-narrow` |     | `font: 700 40px/50x "Inter", sans-serif;` `letter-spacing: 0px;`  |
+|                                                                                                                                                                       |     |                                                                   |
+| **Font Title M**                                                                                                                                                      |     |                                                                   |
+| _Visual_                                                                                                                                                              |     | _Figma Variable_                                                  |
+|                                                                                                                                                                       |     | `narrow/fontTitleM/700`                                           |
+| _CSS / SCSS Variables_                                                                                                                                                |     | _Values_                                                          |
+| `--sds-font-title-m-700-font-narrow` `$sds-font-title-m-700-font-narrow` `--sds-font-title-m-700-letter-spacing-narrow` `$sds-font-title-m-700-letter-spacing-narrow` |     | `font: 700 32px/40px "Inter", sans-serif;` `letter-spacing: 0px;` |
+|                                                                                                                                                                       |     |                                                                   |
+| **Font Tile S**                                                                                                                                                       |     |                                                                   |
+| _Visual_                                                                                                                                                              |     | _Figma Variable_                                                  |
+|                                                                                                                                                                       |     | `narrow/fontTitleS/700`                                           |
+| _CSS / SCSS Variables_                                                                                                                                                |     | _Values_                                                          |
+| `--sds-font-title-s-700-font-narrow` `$sds-font-title-s-700-font-narrow` `--sds-font-title-s-700-letter-spacing-narrow` `$sds-font-title-s-700-letter-spacing-narrow` |     | `font: 700 26px/34px "Inter", sans-serif;` `letter-spacing: 0px;` |
 
 #### Header
 
 For use with `<H1>`, `<H2>`, `<H3>`, `<H4>`, `<H5>`, `<H6>` tags.
 
-| **Font Header XXL** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderXxl/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxl-600-font-narrow` `$sds-font-header-xxl-600-font-narrow`  `--sds-font-header-xxl-600-letter-spacing-narrow` `$sds-font-header-xxl-600-letter-spacing-narrow` |   | `font: 600 22px/30px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header XL** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `narrow/fontHeaderXl/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xl-600-font-narrow` `$sds-font-header-xl-600-font-narrow`  `--sds-font-header-xl-600-letter-spacing-narrow` `$sds-font-header-xl-600-letter-spacing-narrow` |   | `font: 600 18px/24px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header L** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderL/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-l-600-font-narrow` `$sds-font-header-l-600-font-narrow`  `--sds-font-header-l-600-letter-spacing-narrow` `$sds-font-header-l-600-letter-spacing-narrow` |   | `font: 600 16px/22px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Header M** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderM/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-m-600-font-narrow` `$sds-font-header-m-600-font-narrow`  `--sds-font-header-m-600-letter-spacing-narrow` `$sds-font-header-m-600-letter-spacing-narrow` |   | `font: 600 14px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Header S** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderS/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-s-600-font-narrow` `$sds-font-header-s-600-font-narrow`  `--sds-font-header-s-600-letter-spacing-narrow` `$sds-font-header-s-600-letter-spacing-narrow` |   | `font: 600 14px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Header XS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderXs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xs-600-font-narrow` `$sds-font-header-xs-600-font-narrow`  `--sds-font-header-xs-600-letter-spacing-narrow` `$sds-font-header-xs-600-letter-spacing-narrow` |   | `font: 600 13px/18px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Header XXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderXxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxs-600-font-narrow` `$sds-font-header-xxs-600-font-narrow`  `--sds-font-header-xxs-600-letter-spacing-narrow` `$sds-font-header-xxs-600-letter-spacing-narrow` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-|   |   |   |
-| **Font Header XXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontHeaderXxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-header-xxxs-600-font-narrow` `$sds-font-header-xxxs-600-font-narrow`  `--sds-font-header-xxxs-600-letter-spacing-narrow` `$sds-font-header-xxxs-600-letter-spacing-narrow` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
+| **Font Header XXL**                                                                                                                                                                   |     |                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------- |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderXxl/600`                                           |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-xxl-600-font-narrow` `$sds-font-header-xxl-600-font-narrow` `--sds-font-header-xxl-600-letter-spacing-narrow` `$sds-font-header-xxl-600-letter-spacing-narrow`     |     | `font: 600 22px/30px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header XL**                                                                                                                                                                    |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderXl/600`                                            |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-xl-600-font-narrow` `$sds-font-header-xl-600-font-narrow` `--sds-font-header-xl-600-letter-spacing-narrow` `$sds-font-header-xl-600-letter-spacing-narrow`         |     | `font: 600 18px/24px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header L**                                                                                                                                                                     |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderL/600`                                             |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-l-600-font-narrow` `$sds-font-header-l-600-font-narrow` `--sds-font-header-l-600-letter-spacing-narrow` `$sds-font-header-l-600-letter-spacing-narrow`             |     | `font: 600 16px/22px "Inter", sans-serif;` `letter-spacing: 0px;`    |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header M**                                                                                                                                                                     |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderM/600`                                             |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-m-600-font-narrow` `$sds-font-header-m-600-font-narrow` `--sds-font-header-m-600-letter-spacing-narrow` `$sds-font-header-m-600-letter-spacing-narrow`             |     | `font: 600 14px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;` |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header S**                                                                                                                                                                     |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderS/600`                                             |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-s-600-font-narrow` `$sds-font-header-s-600-font-narrow` `--sds-font-header-s-600-letter-spacing-narrow` `$sds-font-header-s-600-letter-spacing-narrow`             |     | `font: 600 14px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;` |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header XS**                                                                                                                                                                    |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderXs/600`                                            |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-xs-600-font-narrow` `$sds-font-header-xs-600-font-narrow` `--sds-font-header-xs-600-letter-spacing-narrow` `$sds-font-header-xs-600-letter-spacing-narrow`         |     | `font: 600 13px/18px "Inter", sans-serif;` `letter-spacing: 0.08px;` |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header XXS**                                                                                                                                                                   |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderXxs/600`                                           |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-xxs-600-font-narrow` `$sds-font-header-xxs-600-font-narrow` `--sds-font-header-xxs-600-letter-spacing-narrow` `$sds-font-header-xxs-600-letter-spacing-narrow`     |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`  |
+|                                                                                                                                                                                       |     |                                                                      |
+| **Font Header XXXS**                                                                                                                                                                  |     |                                                                      |
+| _Visual_                                                                                                                                                                              |     | _Figma Variable_                                                     |
+|                                                                                                                                                                                       |     | `narrow/fontHeaderXxxs/600`                                          |
+| _CSS / SCSS Variables_                                                                                                                                                                |     | _Values_                                                             |
+| `--sds-font-header-xxxs-600-font-narrow` `$sds-font-header-xxxs-600-font-narrow` `--sds-font-header-xxxs-600-letter-spacing-narrow` `$sds-font-header-xxxs-600-letter-spacing-narrow` |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`  |
 
 #### Body
 
 For use with `<p>` tags.
 
-| **Font Body L** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontBodyL/600`  `narrow/fontBodyL/500`  `narrow/fontBodyL/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-l-600-font-narrow` `$sds-font-body-l-600-font-narrow`  `--sds-font-body-l-600-letter-spacing-narrow` `$sds-font-body-l-600-letter-spacing-narrow` |   | `font: 600 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-l-500-font-narrow` `$sds-font-body-l-500-font-narrow`  `--sds-font-body-l-500-letter-spacing-narrow` `$sds-font-body-l-500-letter-spacing-narrow` |   | `font: 500 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-| `--sds-font-body-l-400-font-narrow` `$sds-font-body-l-400-font-narrow`  `--sds-font-body-l-400-letter-spacing-narrow` `$sds-font-body-l-400-letter-spacing-narrow` |   | `font: 400 16px/26px "Inter", sans-serif;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Body M** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontBodyM/600`  `narrow/fontBodyM/500`  `narrow/fontBodyM/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-m-600-font-narrow` `$sds-font-body-m-600-font-narrow``--sds-font-body-m-600-letter-spacing-narrow``$sds-font-body-m-600-letter-spacing-narrow` |   | `font: 600 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-m-500-font-narrow` `$sds-font-body-m-500-font-narrow``--sds-font-body-m-500-letter-spacing-narrow``$sds-font-body-m-500-letter-spacing-narrow` |   | `font: 500 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-m-400-font-narrow` `$sds-font-body-m-400-font-narrow`  `--sds-font-body-m-400-letter-spacing-narrow` `$sds-font-body-m-400-letter-spacing-narrow` |   | `font: 400 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Body S** |   |   |
-| *Visual* |   | *Figma Variables* |
-|        |   | `narrow/fontBodyS/600`  `narrow/fontBodyS/500`  `narrow/fontBodyS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-s-600-font-narrow` `$sds-font-body-s-600-font-narrow`  `--sds-font-body-s-600-letter-spacing-narrow` `$sds-font-body-s-600-letter-spacing-narrow` |   | `font: 600 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-s-500-font-narrow` `$sds-font-body-s-500-font-narrow`  `--sds-font-body-s-500-letter-spacing-narrow` `$sds-font-body-s-500-letter-spacing-narrow` |   | `font: 500 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-s-400-font-narrow` `$sds-font-body-s-400-font-narrow`  `--sds-font-body-s-400-letter-spacing-narrow` `$sds-font-body-s-400-letter-spacing-narrow` |   | `font: 400 14px/24px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Body XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontBodyXs/600`  `narrow/fontBodyXs/500`  `narrow/fontBodyXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xs-600-font-narrow` `$sds-font-body-xs-600-font-narrow`  `--sds-font-body-xs-600-letter-spacing-narrow` `$sds-font-body-xs-600-letter-spacing-narrow` |   | `font: 600 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-xs-500-font-narrow` `$sds-font-body-xs-500-font-narrow`  `--sds-font-body-xs-500-letter-spacing-narrow` `$sds-font-body-xs-500-letter-spacing-narrow` |   | `font: 500 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-| `--sds-font-body-xs-400-font-narrow` `$sds-font-body-xs-400-font-narrow`  `--sds-font-body-xs-400-letter-spacing-narrow` `$sds-font-body-xs-400-letter-spacing-narrow` |   | `font: 400 13px/20px "Inter", sans-serif;`  `letter-spacing: 0.08px;` |
-|   |   |   |
-| **Font Body XXS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontBodyXxs/600`  `narrow/fontBodyXxs/500`  `narrow/fontBodyXxs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xxs-600-font-narrow` `$sds-font-body-xxs-600-font-narrow`  `--sds-font-body-xxs-600-letter-spacing-narrow` `$sds-font-body-xxs-600-letter-spacing-narrow` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxs-500-font-narrow` `$sds-font-body-xxs-500-font-narrow`  `--sds-font-body-xxs-500-letter-spacing-narrow` `$sds-font-body-xxs-500-letter-spacing-narrow` |   | `font: 500 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxs-400-font-narrow` `$sds-font-body-xxs-400-font-narrow`  `--sds-font-body-xxs-400-letter-spacing-narrow` `$sds-font-body-xxs-400-letter-spacing-narrow` |   | `font: 400 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-|   |   |   |
-| **Font Body XXXS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontBodyXxxs/600`  `narrow/fontBodyXxxs/500`  `narrow/fontBodyXxxs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-body-xxxs-600-font-narrow` `$sds-font-body-xxxs-600-font-narrow`  `--sds-font-body-xxxs-600-letter-spacing-narrow` `$sds-font-body-xxxs-600-letter-spacing-narrow` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxxs-500-font-narrow` `$sds-font-body-xxxs-500-font-narrow`  `--sds-font-body-xxxs-500-letter-spacing-narrow` `$sds-font-body-xxxs-500-letter-spacing-narrow` |   | `font: 500 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
-| `--sds-font-body-xxxs-400-font-narrow` `$sds-font-body-xxxs-400-font-narrow`  `--sds-font-body-xxxs-400-letter-spacing-narrow` `$sds-font-body-xxxs-400-letter-spacing-narrow` |   | `font: 400 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.1px;` |
+| **Font Body L**                                                                                                                                                               |     |                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------------- |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyL/600` `narrow/fontBodyL/500` `narrow/fontBodyL/400`          |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-l-600-font-narrow` `$sds-font-body-l-600-font-narrow` `--sds-font-body-l-600-letter-spacing-narrow` `$sds-font-body-l-600-letter-spacing-narrow`             |     | `font: 600 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`             |
+| `--sds-font-body-l-500-font-narrow` `$sds-font-body-l-500-font-narrow` `--sds-font-body-l-500-letter-spacing-narrow` `$sds-font-body-l-500-letter-spacing-narrow`             |     | `font: 500 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`             |
+| `--sds-font-body-l-400-font-narrow` `$sds-font-body-l-400-font-narrow` `--sds-font-body-l-400-letter-spacing-narrow` `$sds-font-body-l-400-letter-spacing-narrow`             |     | `font: 400 16px/26px "Inter", sans-serif;` `letter-spacing: 0px;`             |
+|                                                                                                                                                                               |     |                                                                               |
+| **Font Body M**                                                                                                                                                               |     |                                                                               |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyM/600` `narrow/fontBodyM/500` `narrow/fontBodyM/400`          |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-m-600-font-narrow` `$sds-font-body-m-600-font-narrow``--sds-font-body-m-600-letter-spacing-narrow``$sds-font-body-m-600-letter-spacing-narrow`               |     | `font: 600 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-m-500-font-narrow` `$sds-font-body-m-500-font-narrow``--sds-font-body-m-500-letter-spacing-narrow``$sds-font-body-m-500-letter-spacing-narrow`               |     | `font: 500 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-m-400-font-narrow` `$sds-font-body-m-400-font-narrow` `--sds-font-body-m-400-letter-spacing-narrow` `$sds-font-body-m-400-letter-spacing-narrow`             |     | `font: 400 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+|                                                                                                                                                                               |     |                                                                               |
+| **Font Body S**                                                                                                                                                               |     |                                                                               |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyS/600` `narrow/fontBodyS/500` `narrow/fontBodyS/400`          |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-s-600-font-narrow` `$sds-font-body-s-600-font-narrow` `--sds-font-body-s-600-letter-spacing-narrow` `$sds-font-body-s-600-letter-spacing-narrow`             |     | `font: 600 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-s-500-font-narrow` `$sds-font-body-s-500-font-narrow` `--sds-font-body-s-500-letter-spacing-narrow` `$sds-font-body-s-500-letter-spacing-narrow`             |     | `font: 500 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-s-400-font-narrow` `$sds-font-body-s-400-font-narrow` `--sds-font-body-s-400-letter-spacing-narrow` `$sds-font-body-s-400-letter-spacing-narrow`             |     | `font: 400 14px/24px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+|                                                                                                                                                                               |     |                                                                               |
+| **Font Body XS**                                                                                                                                                              |     |                                                                               |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyXs/600` `narrow/fontBodyXs/500` `narrow/fontBodyXs/400`       |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-xs-600-font-narrow` `$sds-font-body-xs-600-font-narrow` `--sds-font-body-xs-600-letter-spacing-narrow` `$sds-font-body-xs-600-letter-spacing-narrow`         |     | `font: 600 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-xs-500-font-narrow` `$sds-font-body-xs-500-font-narrow` `--sds-font-body-xs-500-letter-spacing-narrow` `$sds-font-body-xs-500-letter-spacing-narrow`         |     | `font: 500 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+| `--sds-font-body-xs-400-font-narrow` `$sds-font-body-xs-400-font-narrow` `--sds-font-body-xs-400-letter-spacing-narrow` `$sds-font-body-xs-400-letter-spacing-narrow`         |     | `font: 400 13px/20px "Inter", sans-serif;` `letter-spacing: 0.08px;`          |
+|                                                                                                                                                                               |     |                                                                               |
+| **Font Body XXS**                                                                                                                                                             |     |                                                                               |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyXxs/600` `narrow/fontBodyXxs/500` `narrow/fontBodyXxs/400`    |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-xxs-600-font-narrow` `$sds-font-body-xxs-600-font-narrow` `--sds-font-body-xxs-600-letter-spacing-narrow` `$sds-font-body-xxs-600-letter-spacing-narrow`     |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
+| `--sds-font-body-xxs-500-font-narrow` `$sds-font-body-xxs-500-font-narrow` `--sds-font-body-xxs-500-letter-spacing-narrow` `$sds-font-body-xxs-500-letter-spacing-narrow`     |     | `font: 500 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
+| `--sds-font-body-xxs-400-font-narrow` `$sds-font-body-xxs-400-font-narrow` `--sds-font-body-xxs-400-letter-spacing-narrow` `$sds-font-body-xxs-400-letter-spacing-narrow`     |     | `font: 400 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
+|                                                                                                                                                                               |     |                                                                               |
+| **Font Body XXXS**                                                                                                                                                            |     |                                                                               |
+| _Visual_                                                                                                                                                                      |     | _Figma Variables_                                                             |
+|                                                                                                                                                                               |     | `narrow/fontBodyXxxs/600` `narrow/fontBodyXxxs/500` `narrow/fontBodyXxxs/400` |
+| _CSS / SCSS Variables_                                                                                                                                                        |     | _Values_                                                                      |
+| `--sds-font-body-xxxs-600-font-narrow` `$sds-font-body-xxxs-600-font-narrow` `--sds-font-body-xxxs-600-letter-spacing-narrow` `$sds-font-body-xxxs-600-letter-spacing-narrow` |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
+| `--sds-font-body-xxxs-500-font-narrow` `$sds-font-body-xxxs-500-font-narrow` `--sds-font-body-xxxs-500-letter-spacing-narrow` `$sds-font-body-xxxs-500-letter-spacing-narrow` |     | `font: 500 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
+| `--sds-font-body-xxxs-400-font-narrow` `$sds-font-body-xxxs-400-font-narrow` `--sds-font-body-xxxs-400-letter-spacing-narrow` `$sds-font-body-xxxs-400-letter-spacing-narrow` |     | `font: 400 12px/18px "Inter", sans-serif;` `letter-spacing: 0.1px;`           |
 
 #### All-caps
 
 Use for emphasis or when there is a need for distinction between fonts on a page or in a component, such as in Minimal Buttons.
 
-| **Font Caps XXS** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontCapsXxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxs-600-font-narrow` `$sds-font-caps-xxs-600-font-narrow`  `--sds-font-caps-xxs-600-letter-spacing-narrow` `$sds-font-caps-xxs-600-letter-spacing-narrow`  `--sds-font-caps-xxs-600-text-transform-narrow``$sds-font-caps-xxs-600-text-transform-narrow` |   | `font: 600 12px/18px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;` |
-|   |   |   |
-| **Font Caps XXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|  |   | `narrow/fontCapsXxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxxs-600-font-narrow` `$sds-font-caps-xxxs-600-font-narrow`  `--sds-font-caps-xxxs-600-letter-spacing-narrow` `$sds-font-caps-xxxs-600-letter-spacing-narrow`  `--sds-font-caps-xxxs-600-text-transform-narrow` `$sds-font-caps-xxxs-600-text-transform-narrow` |   | `font: 600 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;` |
-|   |   |   |
-| **Font Caps XXXXS** |   |   |
-| *Visual* |   | *Figma Variable* |
-|   |   | `narrow/fontCapsXxxxs/600` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-caps-xxxxs-600-font-narrow` `$sds-font-caps-xxxxs-600-font-narrow`  `--sds-font-caps-xxxxs-600-letter-spacing-narrow` `$sds-font-caps-xxxxs-600-letter-spacing-narrow`  `--sds-font-caps-xxxxs-600-text-transform-narrow` `$sds-font-caps-xxxxs-600-text-transform-narrow` |   | `font: 600 11px/16px "Inter", sans-serif;`  `letter-spacing: 0.5px;`  `text-transform: uppercase;`  |
+| **Font Caps XXS**                                                                                                                                                                                                                                                                    |     |                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------ |
+| _Visual_                                                                                                                                                                                                                                                                             |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                                                                      |     | `narrow/fontCapsXxs/600`                                                                         |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                                               |     | _Values_                                                                                         |
+| `--sds-font-caps-xxs-600-font-narrow` `$sds-font-caps-xxs-600-font-narrow` `--sds-font-caps-xxs-600-letter-spacing-narrow` `$sds-font-caps-xxs-600-letter-spacing-narrow` `--sds-font-caps-xxs-600-text-transform-narrow``$sds-font-caps-xxs-600-text-transform-narrow`              |     | `font: 600 12px/18px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
+|                                                                                                                                                                                                                                                                                      |     |                                                                                                  |
+| **Font Caps XXXS**                                                                                                                                                                                                                                                                   |     |                                                                                                  |
+| _Visual_                                                                                                                                                                                                                                                                             |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                                                                      |     | `narrow/fontCapsXxxs/600`                                                                        |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                                               |     | _Values_                                                                                         |
+| `--sds-font-caps-xxxs-600-font-narrow` `$sds-font-caps-xxxs-600-font-narrow` `--sds-font-caps-xxxs-600-letter-spacing-narrow` `$sds-font-caps-xxxs-600-letter-spacing-narrow` `--sds-font-caps-xxxs-600-text-transform-narrow` `$sds-font-caps-xxxs-600-text-transform-narrow`       |     | `font: 600 11px/16px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
+|                                                                                                                                                                                                                                                                                      |     |                                                                                                  |
+| **Font Caps XXXXS**                                                                                                                                                                                                                                                                  |     |                                                                                                  |
+| _Visual_                                                                                                                                                                                                                                                                             |     | _Figma Variable_                                                                                 |
+|                                                                                                                                                                                                                                                                                      |     | `narrow/fontCapsXxxxs/600`                                                                       |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                                               |     | _Values_                                                                                         |
+| `--sds-font-caps-xxxxs-600-font-narrow` `$sds-font-caps-xxxxs-600-font-narrow` `--sds-font-caps-xxxxs-600-letter-spacing-narrow` `$sds-font-caps-xxxxs-600-letter-spacing-narrow` `--sds-font-caps-xxxxs-600-text-transform-narrow` `$sds-font-caps-xxxxs-600-text-transform-narrow` |     | `font: 600 11px/16px "Inter", sans-serif;` `letter-spacing: 0.5px;` `text-transform: uppercase;` |
 
 #### Tabular
 
 Use when there is a need for numbers to be an equal width such as in Tables.
 
-| **Font Tabular S** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|        |   | `narrow/fontTabularS/600`  `narrow/fontTabularS/500`  `narrow/fontTabularS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-tabular-s-600-font-narrow` `$sds-font-tabular-s-600-font-narrow`  `--sds-font-tabular-s-600-font-variant-numeric-narrow` `$sds-font-tabular-s-600-font-variant-numeric-narrow`  `--sds-font-tabular-s-600-letter-spacing-narrow` `$sds-font-tabular-s-600-letter-spacing-narrow` |   | `font: 600 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-s-500-font-narrow` `$sds-font-tabular-s-500-font-narrow`  `--sds-font-tabular-s-500-font-variant-numeric-narrow` `$sds-font-tabular-s-500-font-variant-numeric-narrow`  `--sds-font-tabular-s-500-letter-spacing-narrow` `$sds-font-tabular-s-500-letter-spacing-narrow` |   | `font: 500 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-s-400-font-narrow` `$sds-font-tabular-s-400-font-narrow`  `--sds-font-tabular-s-400-font-variant-numeric-narrow` `$sds-font-tabular-s-400-font-variant-numeric-narrow`  `--sds-font-tabular-s-400-letter-spacing-narrow` `$sds-font-tabular-s-400-letter-spacing-narrow` |   | `font: 400 14px/24px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Tabular XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|       |   | `narrow/fontTabularXs/600`  `narrow/fontTabularXs/500`  `narrow/fontTabularXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-tabular-xs-600-font-narrow` `$sds-font-tabular-xs-600-font-narrow`  `--sds-font-tabular-xs-600-font-variant-numeric-narrow` `$sds-font-tabular-xs-600-font-variant-numeric-narrow`  `--sds-font-tabular-xs-600-letter-spacing-narrow` `$sds-font-tabular-xs-600-letter-spacing-narrow` |   | `font: 600 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-xs-500-font-narrow` `$sds-font-tabular-xs-500-font-narrow`  `--sds-font-tabular-xs-500-font-variant-numeric-narrow` `$sds-font-tabular-xs-500-font-variant-numeric-narrow`  `--sds-font-tabular-xs-500-letter-spacing-narrow` `$sds-font-tabular-xs-500-letter-spacing-narrow` |   | `font: 500 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
-| `--sds-font-tabular-xs-400-font-narrow` `$sds-font-tabular-xs-400-font-narrow`  `--sds-font-tabular-xs-400-font-variant-numeric-narrow` `$sds-font-tabular-xs-400-font-variant-numeric-narrow`  `--sds-font-tabular-xs-400-letter-spacing-narrow` `$sds-font-tabular-xs-400-letter-spacing-narrow` |   | `font: 400 13px/20px "Inter", sans-serif;`  `font-variant-numeric: tabular-nums;`  `letter-spacing: 0px;` |
+| **Font Tabular S**                                                                                                                                                                                                                                                                               |     |                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------- |
+| _Visual_                                                                                                                                                                                                                                                                                         |     | _Figma Variables_                                                                                       |
+|                                                                                                                                                                                                                                                                                                  |     | `narrow/fontTabularS/600` `narrow/fontTabularS/500` `narrow/fontTabularS/400`                           |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                                                           |     | _Values_                                                                                                |
+| `--sds-font-tabular-s-600-font-narrow` `$sds-font-tabular-s-600-font-narrow` `--sds-font-tabular-s-600-font-variant-numeric-narrow` `$sds-font-tabular-s-600-font-variant-numeric-narrow` `--sds-font-tabular-s-600-letter-spacing-narrow` `$sds-font-tabular-s-600-letter-spacing-narrow`       |     | `font: 600 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-s-500-font-narrow` `$sds-font-tabular-s-500-font-narrow` `--sds-font-tabular-s-500-font-variant-numeric-narrow` `$sds-font-tabular-s-500-font-variant-numeric-narrow` `--sds-font-tabular-s-500-letter-spacing-narrow` `$sds-font-tabular-s-500-letter-spacing-narrow`       |     | `font: 500 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-s-400-font-narrow` `$sds-font-tabular-s-400-font-narrow` `--sds-font-tabular-s-400-font-variant-numeric-narrow` `$sds-font-tabular-s-400-font-variant-numeric-narrow` `--sds-font-tabular-s-400-letter-spacing-narrow` `$sds-font-tabular-s-400-letter-spacing-narrow`       |     | `font: 400 14px/24px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+|                                                                                                                                                                                                                                                                                                  |     |                                                                                                         |
+| **Font Tabular XS**                                                                                                                                                                                                                                                                              |     |                                                                                                         |
+| _Visual_                                                                                                                                                                                                                                                                                         |     | _Figma Variables_                                                                                       |
+|                                                                                                                                                                                                                                                                                                  |     | `narrow/fontTabularXs/600` `narrow/fontTabularXs/500` `narrow/fontTabularXs/400`                        |
+| _CSS / SCSS Variables_                                                                                                                                                                                                                                                                           |     | _Values_                                                                                                |
+| `--sds-font-tabular-xs-600-font-narrow` `$sds-font-tabular-xs-600-font-narrow` `--sds-font-tabular-xs-600-font-variant-numeric-narrow` `$sds-font-tabular-xs-600-font-variant-numeric-narrow` `--sds-font-tabular-xs-600-letter-spacing-narrow` `$sds-font-tabular-xs-600-letter-spacing-narrow` |     | `font: 600 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-xs-500-font-narrow` `$sds-font-tabular-xs-500-font-narrow` `--sds-font-tabular-xs-500-font-variant-numeric-narrow` `$sds-font-tabular-xs-500-font-variant-numeric-narrow` `--sds-font-tabular-xs-500-letter-spacing-narrow` `$sds-font-tabular-xs-500-letter-spacing-narrow` |     | `font: 500 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
+| `--sds-font-tabular-xs-400-font-narrow` `$sds-font-tabular-xs-400-font-narrow` `--sds-font-tabular-xs-400-font-variant-numeric-narrow` `$sds-font-tabular-xs-400-font-variant-numeric-narrow` `--sds-font-tabular-xs-400-letter-spacing-narrow` `$sds-font-tabular-xs-400-letter-spacing-narrow` |     | `font: 400 13px/20px "Inter", sans-serif;` `font-variant-numeric: tabular-nums;` `letter-spacing: 0px;` |
 
 #### Code
 
 Use only when referring to code snippets.
 
-| **Font Code S** |   |   |
-| --- | --- | --- |
-| *Visual* |   | *Figma Variables* |
-|        |   | `narrow/fontCodeS/600`  `narrow/fontCodeS/500`  `narrow/fontCodeS/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-code-s-600-font-narrow` `$sds-font-code-s-600-font-narrow`  `--sds-font-code-s-600-letter-spacing-narrow` `$sds-font-code-s-600-letter-spacing-narrow` |   | `font: 600 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-s-500-font-narrow` `$sds-font-code-s-500-font-narrow`  `--sds-font-code-s-500-letter-spacing-narrow` `$sds-font-code-s-500-letter-spacing-narrow` |   | `font: 500 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-s-400-font-narrow` `$sds-font-code-s-400-font-narrow`  `--sds-font-code-s-400-letter-spacing-narrow` `$sds-font-code-s-400-letter-spacing-narrow` |   | `font: 400 14px/24px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-|   |   |   |
-| **Font Code XS** |   |   |
-| *Visual* |   | *Figma Variables* |
-|        |   | `narrow/fontCodeXs/600`  `narrow/fontCodeXs/500`  `narrow/fontCodeXs/400` |
-| *CSS / SCSS Variables* |   | *Values* |
-| `--sds-font-code-xs-600-font-narrow` `$sds-font-code-xs-600-font-narrow`  `--sds-font-code-xs-600-letter-spacing-narrow` `$sds-font-code-xs-600-letter-spacing-narrow` |   | `font: 600 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-xs-500-font-narrow` `$sds-font-code-xs-500-font-narrow`  `--sds-font-code-xs-500-letter-spacing-narrow` `$sds-font-code-xs-500-letter-spacing-narrow` |   | `font: 500 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
-| `--sds-font-code-xs-400-font-narrow` `$sds-font-code-xs-400-font-narrow`  `--sds-font-code-xs-400-letter-spacing-narrow` `$sds-font-code-xs-400-letter-spacing-narrow` |   | `font: 400 13px/20px "IBM Plex Mono", monospace;`  `letter-spacing: 0px;` |
+| **Font Code S**                                                                                                                                                       |     |                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------ |
+| _Visual_                                                                                                                                                              |     | _Figma Variables_                                                        |
+|                                                                                                                                                                       |     | `narrow/fontCodeS/600` `narrow/fontCodeS/500` `narrow/fontCodeS/400`     |
+| _CSS / SCSS Variables_                                                                                                                                                |     | _Values_                                                                 |
+| `--sds-font-code-s-600-font-narrow` `$sds-font-code-s-600-font-narrow` `--sds-font-code-s-600-letter-spacing-narrow` `$sds-font-code-s-600-letter-spacing-narrow`     |     | `font: 600 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-s-500-font-narrow` `$sds-font-code-s-500-font-narrow` `--sds-font-code-s-500-letter-spacing-narrow` `$sds-font-code-s-500-letter-spacing-narrow`     |     | `font: 500 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-s-400-font-narrow` `$sds-font-code-s-400-font-narrow` `--sds-font-code-s-400-letter-spacing-narrow` `$sds-font-code-s-400-letter-spacing-narrow`     |     | `font: 400 14px/24px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+|                                                                                                                                                                       |     |                                                                          |
+| **Font Code XS**                                                                                                                                                      |     |                                                                          |
+| _Visual_                                                                                                                                                              |     | _Figma Variables_                                                        |
+|                                                                                                                                                                       |     | `narrow/fontCodeXs/600` `narrow/fontCodeXs/500` `narrow/fontCodeXs/400`  |
+| _CSS / SCSS Variables_                                                                                                                                                |     | _Values_                                                                 |
+| `--sds-font-code-xs-600-font-narrow` `$sds-font-code-xs-600-font-narrow` `--sds-font-code-xs-600-letter-spacing-narrow` `$sds-font-code-xs-600-letter-spacing-narrow` |     | `font: 600 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-xs-500-font-narrow` `$sds-font-code-xs-500-font-narrow` `--sds-font-code-xs-500-letter-spacing-narrow` `$sds-font-code-xs-500-letter-spacing-narrow` |     | `font: 500 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
+| `--sds-font-code-xs-400-font-narrow` `$sds-font-code-xs-400-font-narrow` `--sds-font-code-xs-400-letter-spacing-narrow` `$sds-font-code-xs-400-letter-spacing-narrow` |     | `font: 400 13px/20px "IBM Plex Mono", monospace;` `letter-spacing: 0px;` |
 
 ## Code
 
@@ -546,7 +546,7 @@ To integrate SDS typography variables, import the tailwind.json file from SDS in
 
 ```js
 const sds = require("@czi-sds/components/dist/tailwind.json");
-const typography = require('@tailwindcss/typography');
+const typography = require("@tailwindcss/typography");
 
 module.exports = {
   theme: {
@@ -576,57 +576,57 @@ Typography encompasses font style, appearance, and structure which together deli
 
 Barlow is the primary typeface to be used throughout the product. JetBrains Mono should only be used when referring to code snippets.
 
-| **Visual** |   | **Typeface** |   | **Usage** |
-| --- | --- | --- | --- | --- |
-|   |   | Barlow (600) |   | All headers and emphasized body copy throughout the product. |
-|  |   | Barlow (500) |   | All text used in sidebars. |
-|  |   | Barlow (400) |   | All body copy throughout the product. If emphasized copy is needed, use a font weight of 600. |
-|  |   | JetBrains Mono (400) |   | Use only when referring to code snippets. |
+| **Visual** |     | **Typeface**         |     | **Usage**                                                                                     |
+| ---------- | --- | -------------------- | --- | --------------------------------------------------------------------------------------------- |
+|            |     | Barlow (600)         |     | All headers and emphasized body copy throughout the product.                                  |
+|            |     | Barlow (500)         |     | All text used in sidebars.                                                                    |
+|            |     | Barlow (400)         |     | All body copy throughout the product. If emphasized copy is needed, use a font weight of 600. |
+|            |     | JetBrains Mono (400) |     | Use only when referring to code snippets.                                                     |
 
 ### Font Weights
 
 Regular (400), Medium (500), and SemiBold (600) are the three font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
-|  |   | `fontWeightBold` |   | `font-weight: 700;` |
-|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
-|  |   | `fontWeightMedium` |   | `font-weight: 500;` |
-|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
-|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+| **Visual** |     | **Variable**         |     | **Value**           |
+| ---------- | --- | -------------------- | --- | ------------------- |
+|            |     | `fontWeightHeavy`    |     | `font-weight: 800;` |
+|            |     | `fontWeightBold`     |     | `font-weight: 700;` |
+|            |     | `fontWeightSemibold` |     | `font-weight: 600;` |
+|            |     | `fontWeightMedium`   |     | `font-weight: 500;` |
+|            |     | `fontWeightRegular`  |     | `font-weight: 400;` |
+|            |     | `fontWeightThin`     |     | `font-weight: 300;` |
 
 ### Header Variables
 
 The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
 
-| **Visual** |   | **Variable** |   | **Wide screens (≥495px)** |   | **Narrow screens (<494px)** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `siteTitle` |   |  `font-size: 51px;` `line-height: 63.8px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h1` |   |  `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 24px;` `line-height: 38px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h2` |   |  `font-size: 24px;` `line-height: 36px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h3` |   |  `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 18px;` `line-height: 26px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h4` |   |  `font-size: 17px;` `line-height: 24px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 16px;` `line-height: 23px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h5` |   |  `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;` |
-|  |   | `h6` |   |  `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;`  |   | `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;` |
+| **Visual** |     | **Variable** |     | **Wide screens (≥495px)**                                                    |     | **Narrow screens (<494px)**                                                  |
+| ---------- | --- | ------------ | --- | ---------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------- |
+|            |     | `siteTitle`  |     | `font-size: 51px;` `line-height: 63.8px;` `font-weight: fontWeightSemibold;` |     | `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;` |
+|            |     | `h1`         |     | `font-size: 35px;` `line-height: 43.8px;` `font-weight: fontWeightSemibold;` |     | `font-size: 24px;` `line-height: 38px;` `font-weight: fontWeightSemibold;`   |
+|            |     | `h2`         |     | `font-size: 24px;` `line-height: 36px;` `font-weight: fontWeightSemibold;`   |     | `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;`   |
+|            |     | `h3`         |     | `font-size: 20px;` `line-height: 27px;` `font-weight: fontWeightSemibold;`   |     | `font-size: 18px;` `line-height: 26px;` `font-weight: fontWeightSemibold;`   |
+|            |     | `h4`         |     | `font-size: 17px;` `line-height: 24px;` `font-weight: fontWeightSemibold;`   |     | `font-size: 16px;` `line-height: 23px;` `font-weight: fontWeightSemibold;`   |
+|            |     | `h5`         |     | `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;`   |     | `font-size: 14px;` `line-height: 21px;` `font-weight: fontWeightSemibold;`   |
+|            |     | `h6`         |     | `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;`   |     | `font-size: 12px;` `line-height: 18px;` `font-weight: fontWeightSemibold;`   |
 
 ### Code Variables
 
 The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
 
-| **Visual** |   | **Variable** |   | **Wide screens (≥495px)** |   | **Narrow screens (<494px)** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `code` |   |  `font-size: 16px;` `line-height: 28px;` `font-weight: fontWeightRegular;`  |   | `font-size: 10px;` `line-height: 19.3px;` `font-weight: fontWeightRegular;` |
+| **Visual** |     | **Variable** |     | **Wide screens (≥495px)**                                                 |     | **Narrow screens (<494px)**                                                 |
+| ---------- | --- | ------------ | --- | ------------------------------------------------------------------------- | --- | --------------------------------------------------------------------------- |
+|            |     | `code`       |     | `font-size: 16px;` `line-height: 28px;` `font-weight: fontWeightRegular;` |     | `font-size: 10px;` `line-height: 19.3px;` `font-weight: fontWeightRegular;` |
 
 ### Sidebar Variables
 
 The width of the user's screen will determine the font values used for any given variable. Wide screens are 495px or wider; narrow screens are 494px or narrower.
 
-| **Visual** |   | **Variable** |   | **Wide screens (≥595px)** |   | **Narrow screens (<594px)** |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |   | `fontSidebarHeader` |   |  `font-size: 17px;` `line-height: 29.8px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |   | `font-size: 11px;` `line-height: 20.4px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
-|  |   | `fontSidebarText` |   |  `font-size: 14px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`  |   | `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;` |
-|  |   | `fontSidebarCode` |   |  `font-size: 13px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`  |   | `font-size: 8.5px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;` |
+| **Visual** |     | **Variable**        |     | **Wide screens (≥595px)**                                                                                 |     | **Narrow screens (<594px)**                                                                               |
+| ---------- | --- | ------------------- | --- | --------------------------------------------------------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------- |
+|            |     | `fontSidebarHeader` |     | `font-size: 17px;` `line-height: 29.8px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |     | `font-size: 11px;` `line-height: 20.4px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|            |     | `fontSidebarText`   |     | `font-size: 14px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`                                |     | `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;`                                 |
+|            |     | `fontSidebarCode`   |     | `font-size: 13px;` `line-height: 24.5px;` `font-weight: fontWeightMedium;`                                |     | `font-size: 8.5px;` `line-height: 15.8px;` `font-weight: fontWeightMedium;`                               |
 
 ### Body Variables
 
@@ -634,76 +634,14 @@ The same type variables are used for body fonts on both wide and narrow screen w
 
 `BodyM` is the primary font used for wide screens (495px and wider); `bodyS` is the primary font used for narrow screens (494px and narrower).
 
->**Warning:** `bodyXxs` is being deprecated and should not be used in new designs moving forward.
+> **Warning:** `bodyXxs` is being deprecated and should not be used in new designs moving forward.
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `bodyM` |   |  `font-size: 17px;` `line-height: 25.5px;` `font-weight: fontWeightRegular;`  |
-|  |   | `bodyS` |   |  `font-size: 14px;` `line-height: 17.5px;` `font-weight: fontWeightRegular;`  |
-|  |   | `bodyXs` |   |  `font-size: 12px;` `line-height: 16.5px;` `font-weight: fontWeightRegular;`  |
-|  |   | `bodyXxs` |   |  `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightRegular;`  |
-
----
-
-Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy.
-
-### Typefaces
-
-Open Sans is the primary typeface to be used throughout product and marketing materials. Andale Mono should only be used when referring to code snippets.
-
-| **Visual** |   | **Typeface** |   | **Usage** |
-| --- | --- | --- | --- | --- |
-|  |   | Open Sans (600) |   | All headers throughout the product and marketing materials and emphasized body copy. |
-|  |   | Open Sans (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
-|  |   | Andale Mono (400) |   | Use only when referring to code snippets. |
-
-### Font Weights
-
-Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
-
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
-|  |   | `fontWeightBold` |   | `font-weight: 700;` |
-|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
-|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
-|  |   | `fontWeightThin` |   | `font-weight: 300;` |
-
-### Header Variables
-
-<H1>, <H2>, <H3>, <H4>, <H5>, <H6>
-
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontHeaderXxl` |   |  `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXl` |   |  `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderL` |   |  `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderM` |   |  `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderS` |   |  `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXs` |   |  `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-
-### Body Variables
-
-<p>
-
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontBodyL` |   |  `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyM` |   |  `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyS` |   |  `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXs` |   |  `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-
-### All Caps Variables
-
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontCapsXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
-|  |   | `fontCapsXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
-|   |   | `fontCapsXxxxs` |   |  `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+| **Visual** |     | **Variable** |     | **Value**                                                                   |
+| ---------- | --- | ------------ | --- | --------------------------------------------------------------------------- |
+|            |     | `bodyM`      |     | `font-size: 17px;` `line-height: 25.5px;` `font-weight: fontWeightRegular;` |
+|            |     | `bodyS`      |     | `font-size: 14px;` `line-height: 17.5px;` `font-weight: fontWeightRegular;` |
+|            |     | `bodyXs`     |     | `font-size: 12px;` `line-height: 16.5px;` `font-weight: fontWeightRegular;` |
+|            |     | `bodyXxs`    |     | `font-size: 9px;` `line-height: 15.8px;` `font-weight: fontWeightRegular;`  |
 
 ---
 
@@ -713,57 +651,118 @@ Typography encompasses font style, appearance, and structure which together deli
 
 Open Sans is the primary typeface to be used throughout product and marketing materials. Andale Mono should only be used when referring to code snippets.
 
-| **Visual** |   | **Typeface** |   | **Usage** |
-| --- | --- | --- | --- | --- |
-|  |   | Open Sans (600) |   | All headers throughout the product and marketing materials and emphasized body copy. |
-|  |   | Open Sans (400) |   | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
-|  |   | Andale Mono (400) |   | Use only when referring to code snippets. |
+| **Visual** |     | **Typeface**      |     | **Usage**                                                                                                             |
+| ---------- | --- | ----------------- | --- | --------------------------------------------------------------------------------------------------------------------- |
+|            |     | Open Sans (600)   |     | All headers throughout the product and marketing materials and emphasized body copy.                                  |
+|            |     | Open Sans (400)   |     | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
+|            |     | Andale Mono (400) |     | Use only when referring to code snippets.                                                                             |
 
 ### Font Weights
 
 Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontWeightHeavy` |   | `font-weight: 800;` |
-|  |   | `fontWeightBold` |   | `font-weight: 700;` |
-|  |   | `fontWeightSemibold` |   | `font-weight: 600;` |
-|  |   | `fontWeightRegular` |   | `font-weight: 400;` |
-|  |   | `fontWeightThin` |   | `font-weight: 300;` |
+| **Visual** |     | **Variable**         |     | **Value**           |
+| ---------- | --- | -------------------- | --- | ------------------- |
+|            |     | `fontWeightHeavy`    |     | `font-weight: 800;` |
+|            |     | `fontWeightBold`     |     | `font-weight: 700;` |
+|            |     | `fontWeightSemibold` |     | `font-weight: 600;` |
+|            |     | `fontWeightRegular`  |     | `font-weight: 400;` |
+|            |     | `fontWeightThin`     |     | `font-weight: 300;` |
 
 ### Header Variables
 
 <H1>, <H2>, <H3>, <H4>, <H5>, <H6>
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontHeaderXxl` |   |  `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXl` |   |  `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderL` |   |  `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderM` |   |  `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderS` |   |  `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXs` |   |  `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
-|  |   | `fontHeaderXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;`  |
+| **Visual** |     | **Variable**     |     | **Value**                                                                                           |
+| ---------- | --- | ---------------- | --- | --------------------------------------------------------------------------------------------------- |
+|            |     | `fontHeaderXxl`  |     | `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXl`   |     | `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderL`    |     | `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderM`    |     | `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderS`    |     | `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXs`   |     | `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXxs`  |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXxxs` |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
 
 ### Body Variables
 
 <p>
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontBodyL` |   |  `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyM` |   |  `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyS` |   |  `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXs` |   |  `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
-|  |   | `fontBodyXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;`  |
+| **Visual** |     | **Variable**   |     | **Value**                                                                                          |
+| ---------- | --- | -------------- | --- | -------------------------------------------------------------------------------------------------- |
+|            |     | `fontBodyL`    |     | `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyM`    |     | `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyS`    |     | `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXs`   |     | `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXxs`  |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXxxs` |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
 
 ### All Caps Variables
 
-| **Visual** |   | **Variable** |   | **Value** |
-| --- | --- | --- | --- | --- |
-|  |   | `fontCapsXxs` |   |  `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
-|  |   | `fontCapsXxxs` |   |  `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
-|   |   | `fontCapsXxxxs` |   |  `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;`  |
+| **Visual** |     | **Variable**    |     | **Value**                                                                                                                      |
+| ---------- | --- | --------------- | --- | ------------------------------------------------------------------------------------------------------------------------------ |
+|            |     | `fontCapsXxs`   |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|            |     | `fontCapsXxxs`  |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|            |     | `fontCapsXxxxs` |     | `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
 
+---
+
+Typography encompasses font style, appearance, and structure which together deliver a consistent aesthetic while providing easily readable copy.
+
+### Typefaces
+
+Open Sans is the primary typeface to be used throughout product and marketing materials. Andale Mono should only be used when referring to code snippets.
+
+| **Visual** |     | **Typeface**      |     | **Usage**                                                                                                             |
+| ---------- | --- | ----------------- | --- | --------------------------------------------------------------------------------------------------------------------- |
+|            |     | Open Sans (600)   |     | All headers throughout the product and marketing materials and emphasized body copy.                                  |
+|            |     | Open Sans (400)   |     | All body copy throughout the product and marketing materials. If emphasized copy is needed, use a font weight of 600. |
+|            |     | Andale Mono (400) |     | Use only when referring to code snippets.                                                                             |
+
+### Font Weights
+
+Regular (400) and SemiBold (600) are the two font weights primarily used across the product, however additional font weights are available to be selectively used if needed.
+
+| **Visual** |     | **Variable**         |     | **Value**           |
+| ---------- | --- | -------------------- | --- | ------------------- |
+|            |     | `fontWeightHeavy`    |     | `font-weight: 800;` |
+|            |     | `fontWeightBold`     |     | `font-weight: 700;` |
+|            |     | `fontWeightSemibold` |     | `font-weight: 600;` |
+|            |     | `fontWeightRegular`  |     | `font-weight: 400;` |
+|            |     | `fontWeightThin`     |     | `font-weight: 300;` |
+
+### Header Variables
+
+<H1>, <H2>, <H3>, <H4>, <H5>, <H6>
+
+| **Visual** |     | **Variable**     |     | **Value**                                                                                           |
+| ---------- | --- | ---------------- | --- | --------------------------------------------------------------------------------------------------- |
+|            |     | `fontHeaderXxl`  |     | `font-size: 26px;` `line-height: 34px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXl`   |     | `font-size: 22px;` `line-height: 30px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderL`    |     | `font-size: 18px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderM`    |     | `font-size: 16px;` `line-height: 22px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderS`    |     | `font-size: 14px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXs`   |     | `font-size: 13px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXxs`  |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+|            |     | `fontHeaderXxxs` |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightSemibold;` |
+
+### Body Variables
+
+<p>
+
+| **Visual** |     | **Variable**   |     | **Value**                                                                                          |
+| ---------- | --- | -------------- | --- | -------------------------------------------------------------------------------------------------- |
+|            |     | `fontBodyL`    |     | `font-size: 18px;` `line-height: 28px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyM`    |     | `font-size: 16px;` `line-height: 26px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyS`    |     | `font-size: 14px;` `line-height: 24px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXs`   |     | `font-size: 13px;` `line-height: 20px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXxs`  |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+|            |     | `fontBodyXxxs` |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 0.3px;` `font-weight: fontWeightRegular;` |
+
+### All Caps Variables
+
+| **Visual** |     | **Variable**    |     | **Value**                                                                                                                      |
+| ---------- | --- | --------------- | --- | ------------------------------------------------------------------------------------------------------------------------------ |
+|            |     | `fontCapsXxs`   |     | `font-size: 12px;` `line-height: 18px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|            |     | `fontCapsXxxs`  |     | `font-size: 11px;` `line-height: 16px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |
+|            |     | `fontCapsXxxxs` |     | `font-size: 10px;` `line-height: 14px;` `letter-spacing: 1px;` `font-weight: fontWeightSemibold;` `text-transform: uppercase;` |

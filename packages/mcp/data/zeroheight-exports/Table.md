@@ -6,8 +6,8 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Table elements
 
-| Tables are made up of a Table Header with as many Table Rows stacked below it as needed. Table Headers contain multiple Header Cells which serve as top-level indicators for the type of content found in the column of cells below each. Similarly, Table Rows are comprised of Basic Cells which contain the bulk of the data within a Table.  Follow the usage criteria accompanying each variant as a guide for building a Table for any use case. |   | **Jump to element:** Table Anatomy Basic Cell Header Cell Table Row Table Header |
-| --- | --- | --- |
+| Tables are made up of a Table Header with as many Table Rows stacked below it as needed. Table Headers contain multiple Header Cells which serve as top-level indicators for the type of content found in the column of cells below each. Similarly, Table Rows are comprised of Basic Cells which contain the bulk of the data within a Table. Follow the usage criteria accompanying each variant as a guide for building a Table for any use case. |     | **Jump to element:** Table Anatomy Basic Cell Header Cell Table Row Table Header |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------------------------------------------- |
 
 ---
 
@@ -17,8 +17,8 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Basic Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 The Basic Cell is the most common cell type comprising a Table. It is intended to be filled with strings of text or numerical values.
 
@@ -36,14 +36,14 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple Basic Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
- 
+
 
 ---
 
 ## Header Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Header Cells are placed at the top of Table columns and serve as the header or indicator of the content found in the cells below it.
 
@@ -65,8 +65,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Row
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 A Table Row is a container filled with multiple Basic Cells placed side-by-side to form a row of different, but related pieces of information that all connect back to the same data source, such as a collected sample. Each data source should have its own row, meaning the Table will have as many Table Rows as there are data sources.
 
@@ -82,8 +82,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Header
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of the Table with each Header Cell in the row serving as the column header for the data in the content cells below it. There can only be one Table Header per Table.
 
@@ -97,12 +97,12 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Components
 
-| Below you will find an interactive Storybook iframe for Tables.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** CellBasic CellHeader TableRow TableHeader Table |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tables. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** CellBasic CellHeader TableRow TableHeader Table |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------- |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 The technical documentation and code demos can be found here.
 
@@ -142,21 +142,21 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Table elements
 
-| Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled. This will rearrange all of the content in the Table by the category in that column.  Filters are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter.  Follow the usage criteria accompanying each variant as a guide for building a Table for any use case. |   | **Jump to element:** Table Anatomy Content Cells Header Cell Table Row Table Header CZ ID Tables |
-| --- | --- | --- |
+| Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled. This will rearrange all of the content in the Table by the category in that column. Filters are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter. Follow the usage criteria accompanying each variant as a guide for building a Table for any use case. |     | **Jump to element:** Table Anatomy Content Cells Header Cell Table Row Table Header CZ ID Tables |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------ |
 
 ---
 
 ## Table Anatomy
 
-Tables are made up of a Table Header with as many Table Rows stacked below it as needed. Table Headers contain multiple Header Cells which serve as top-level indicators for the type of content found in the column of cells below each. Similarly, Table Rows are comprised of two different types of content cells, Basic Cells and Component Cells; these cell types contain the bulk of the data within a Table and are designed to be flexible in their ability to hold nearly any type of content. For Tables with large amounts of data, only data from visible cells will be loaded (colloquially known as *lazy load*); as the user scrolls down the Table, additional data will be pulled from the server and displayed once the data has fully loaded.
+Tables are made up of a Table Header with as many Table Rows stacked below it as needed. Table Headers contain multiple Header Cells which serve as top-level indicators for the type of content found in the column of cells below each. Similarly, Table Rows are comprised of two different types of content cells, Basic Cells and Component Cells; these cell types contain the bulk of the data within a Table and are designed to be flexible in their ability to hold nearly any type of content. For Tables with large amounts of data, only data from visible cells will be loaded (colloquially known as _lazy load_); as the user scrolls down the Table, additional data will be pulled from the server and displayed once the data has fully loaded.
 
 ---
 
 ## Content Cells
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Basic Cell
 
@@ -174,7 +174,7 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
- 
+
 
 ---
 
@@ -212,14 +212,14 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple content cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
- 
+
 
 ---
 
 ## Header Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Header Cells are placed at the top of Table columns and serve as the header or indicator of the content found in the cells below it.
 
@@ -230,11 +230,11 @@ Users are able to manually sort columns in ascending or descending order by clic
 Each Header Cell can have an optional Tooltip appear when hovered over by using the `shouldShowTooltipOnHover` prop. This can be used to display supplemental information or help further define the contents of the column.
 
 | **Default** | **Hover** |
-| --- | --- |
+| ----------- | --------- |
 
 ---
 
- 
+
 
 ### Header Cell Variants
 
@@ -260,8 +260,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Row
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 A Table Row is a container filled with multiple content cells placed side-by-side to form a row of different, but related pieces of information that all connect back to the same data source, such as a collected sample. Each data source should have its own row, meaning the Table will have as many Table Rows as there are data sources.
 
@@ -277,7 +277,7 @@ Use the `disabled` prop to gray out all of the cells in the row and make it so u
 
 Click on each variant below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
@@ -295,17 +295,17 @@ For advanced Tables, Table Rows may have actions tied to them, such as the abili
 
 An overflow Icon Button, represented by the `DotsHorizontal3` icon (2), can be used to surface a Dropdown Menu (3) that contains additional actions. This should be used in instances where a large number of actions are needed (generally more than three) or the designer wants to save space in wide Tables that contain many columns. Table Row Actions can either be exposed on hover or can be persistent in the Table at all times.
 
- 
+
 
 For efficiency, Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding Icon Buttons that are located at the top right of the Table, above the Table Header; they should be inactive when no rows are selected (1).
 
- 
+
 
 To make Table Rows selectable, designers must include Checkbox Inputs in the first column of the row, providing an input for users to click on and select the row (2); enable the Table Row's `selected` prop to indicate when rows are selected. Once rows are selected, any applicable bulk action Icon Button should become active to allow users to take action across all selected rows (3). In addition to these Icon Buttons, there should be a counter present that indicates how many rows have been selected (4).
 
 Because actions taken at the row level will impact stored data in the application, row and bulk actions are completely controlled by the application itself and not the SDS component.
 
- 
+
 
 ---
 
@@ -317,8 +317,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Header
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of the Table with each Header Cell in the row serving as the column header for the data in the content cells below it. There can only be one Table Header per Table.
 
@@ -348,8 +348,8 @@ The following Table configurations are currently in use in CZ ID.
 
 ## Table Components
 
-| Below you will find an interactive Storybook iframe for Tables.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** CellBasic CellComponent CellHeader TableRow TableHeader Table |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tables. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** CellBasic CellComponent CellHeader TableRow TableHeader Table |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------ |
 
 ---
 
@@ -361,7 +361,7 @@ Storybook
 
 ---
 
- 
+
 
 ### CellComponent
 
@@ -393,7 +393,7 @@ Storybook
 
 Storybook
 
- 
+
 
 ---
 
@@ -403,12 +403,12 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Table Components
 
-| Tables are built by combining Header Cells with Basic or Component Cells, providing flexibility for teams to create Tables that house any type of content their product's require. Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled.  To avoid slow loading speeds in Tables that contain large amounts of data, they should be split across multiple pages; incorporate a Pagination component to help users navigate between the pages of multi-page Tables.  Filters are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter. |   | **Jump to element:** Table Anatomy Basic Cell Component Cell Header Cell Table Row Table Header Pagination |
-| --- | --- | --- |
+| Tables are built by combining Header Cells with Basic or Component Cells, providing flexibility for teams to create Tables that house any type of content their product's require. Tables can be sorted, either ascending or descending, by clicking on any Header Cell that has sorting enabled. To avoid slow loading speeds in Tables that contain large amounts of data, they should be split across multiple pages; incorporate a Pagination component to help users navigate between the pages of multi-page Tables. Filters are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the Table by the parameters indicated in the Filter. |     | **Jump to element:** Table Anatomy Basic Cell Component Cell Header Cell Table Row Table Header Pagination |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+> **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
 ---
 
@@ -418,8 +418,8 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Basic Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -433,13 +433,13 @@ Default
 
 The Basic Cell is intended to be filled with strings of text or numerical values. A range of elements can be included alongside text, such as Icon Buttons or Tags, to provide additional actions users can take in relation to the content within the cell.
 
->**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+> **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
 | Default | Default + Secondary text | Default + Secondary text + Tertiary text | Default (right aligned) |
-| --- | --- | --- | --- |
+| ------- | ------------------------ | ---------------------------------------- | ----------------------- |
 
 | Default (wrapped) | Hover (truncated) + Tooltip | Basic Cell + Icon | Basic Cell + Tag |
-| --- | --- | --- | --- |
+| ----------------- | --------------------------- | ----------------- | ---------------- |
 
 ---
 
@@ -451,8 +451,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Component Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -466,10 +466,10 @@ Default
 
 Component Cells can accept any type of element, including any combination or number of components, but should not be used to display text strings (use a Basic Cell for this). Most commonly it is used to hold Buttons, Toggles, and Checkbox Inputs.
 
->**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+> **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
 | Default | Filled (left aligned) | Filled (center aligned) | Filled (right aligned) | Filled (fit contents) |
-| --- | --- | --- | --- | --- |
+| ------- | --------------------- | ----------------------- | ---------------------- | --------------------- |
 
 ---
 
@@ -481,8 +481,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Header Cell
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -500,10 +500,10 @@ Users are able to manually sort columns in ascending or descending order by clic
 
 Each Header Cell can have an optional Tooltip appear when hovered over. This can be used to display supplemental information or help further define the contents of the column below it.
 
->**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+> **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
 | Default | Default (center aligned) | Default (right aligned) | Hover + Tooltip | Active (ascending) | Active (descending) |
-| --- | --- | --- | --- | --- | --- |
+| ------- | ------------------------ | ----------------------- | --------------- | ------------------ | ------------------- |
 
 ---
 
@@ -515,8 +515,8 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Row
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -535,7 +535,7 @@ The Table Row also has its own set of props that control how the row as a whole 
 Additionally, Checkbox Inputs can be placed within a Component Cell in the first column of a row, giving users the ability to select entire rows and complete bulk actions on them, such as downloading, editing, etc. See the Table Row Actions section below for more details.
 
 | Default | Default (no divider) | Hover + Tooltip | Selected | Disabled |
-| --- | --- | --- | --- | --- |
+| ------- | -------------------- | --------------- | -------- | -------- |
 
 ---
 
@@ -561,14 +561,14 @@ Because actions taken at the row level will impact stored data in the applicatio
 
 ### Table Row Spacing
 
-These rules establish how much margin should exist between and around elements. Stack Table Rows below a  Table Header to create a full Table.
+These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
 
 ---
 
 ## Table Header
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -586,14 +586,14 @@ A Table Header is a container filled with multiple Header Cells placed side-by-s
 
 ### Table Header Spacing
 
-These rules establish how much margin should exist between and around elements. Stack Table Rows below a  Table Header to create a full Table.
+These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
 
 ---
 
 ## Pagination
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -610,7 +610,7 @@ Large Tables may have long loading times. To mitigate this, Tables can be split 
 Users are able to click on any page number to jump immediately to that page; otherwise they can use the forward and back Icon Buttons to navigate page-by-page. For Tables that are longer than seven pages, ellipses are displayed to represent any additional pages not viewable. When enabled, the ellipses between page numbers can be clicked on, allowing users to select a page to jump to via a Dropdown Menu. When disabled, the ellipses will still be visible but not interactive.
 
 | Default | Default (square) | Hover | Default (ellipsis disabled) | Default (ellipsis enabled) |
-| --- | --- | --- | --- | --- |
+| ------- | ---------------- | ----- | --------------------------- | -------------------------- |
 
 ---
 
@@ -622,14 +622,14 @@ These rules establish how much margin should exist between and around elements. 
 
 ## Table Components
 
-| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled.  To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables.  `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |   | **Jump to component:** CellBasic CellComponent CellHeader TableRow Pagination |
-| --- | --- | --- |
+| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled. To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables. `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |     | **Jump to component:** CellBasic CellComponent CellHeader TableRow Pagination |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ----------------------------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+> **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -643,23 +643,23 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `horizontalAlign` | `"left"` `| "center"` `| "right"` | `"left"` | Horizontal alignment of cell content. |
-| `icon` | `Node` | `-` | Places an icon at the left side of the cell component. |
-| `iconVerticalAlign` | `"top"` `| "center"` `| "bottom"` | `"top"` | Vertical alignment of the icon component. |
-| `primaryText` | `string` | `-` | Primary text value. |
-| `primaryTextWrapLineCount` | `number` | `3` | Number of text wrap lines for primary text. |
-| `primaryTextComponentSlotBottom` | `ReactNode` | `null` | Component slot below primary text. This will only show if there is no secondary or tertiary text. Remove the default values of secondary and tertiary text to see this in action. |
-| `primaryTextComponentSlotRight` | `ReactNode` | `null` | Component slot to the right of primary text |
-| `secondaryText` | `string` | `-` | Secondary Text. |
-| `secondaryTextWrapLineCount` | `number` | `1` | Number of text wrap lines for secondary text. |
-| `tertiaryText` | `string` | `-` | Tertiary Text. |
-| `tertiaryTextWrapLineCount` | `number` | `1` | Number of text wrap lines for tertiary text. |
-| `shouldShowTooltipOnHover` | `boolean` | `true` | When set to `true`, a tooltip will be shown on cell hover. |
-| `shouldTextWrap` | `boolean` | `true` | When set to `true`, wraps the content texts by the number of defined wrap line numbers. |
-| `tooltipProps` | `Partial<TooltipProps>` | `{}` | These props will be directly passed to the `Tooltip` component. |
-| `verticalAlign` | `"top"` `| "center"` `| "bottom"` | `"top"` | Vertical alignment of the cell content. |
+| Name                             | Type                    | Default     | Description                                                                                                                                                                       |
+| -------------------------------- | ----------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------- |
+| `horizontalAlign`                | `"left"` `              | "center"` ` | "right"`                                                                                                                                                                          | `"left"` | Horizontal alignment of cell content.     |
+| `icon`                           | `Node`                  | `-`         | Places an icon at the left side of the cell component.                                                                                                                            |
+| `iconVerticalAlign`              | `"top"` `               | "center"` ` | "bottom"`                                                                                                                                                                         | `"top"`  | Vertical alignment of the icon component. |
+| `primaryText`                    | `string`                | `-`         | Primary text value.                                                                                                                                                               |
+| `primaryTextWrapLineCount`       | `number`                | `3`         | Number of text wrap lines for primary text.                                                                                                                                       |
+| `primaryTextComponentSlotBottom` | `ReactNode`             | `null`      | Component slot below primary text. This will only show if there is no secondary or tertiary text. Remove the default values of secondary and tertiary text to see this in action. |
+| `primaryTextComponentSlotRight`  | `ReactNode`             | `null`      | Component slot to the right of primary text                                                                                                                                       |
+| `secondaryText`                  | `string`                | `-`         | Secondary Text.                                                                                                                                                                   |
+| `secondaryTextWrapLineCount`     | `number`                | `1`         | Number of text wrap lines for secondary text.                                                                                                                                     |
+| `tertiaryText`                   | `string`                | `-`         | Tertiary Text.                                                                                                                                                                    |
+| `tertiaryTextWrapLineCount`      | `number`                | `1`         | Number of text wrap lines for tertiary text.                                                                                                                                      |
+| `shouldShowTooltipOnHover`       | `boolean`               | `true`      | When set to `true`, a tooltip will be shown on cell hover.                                                                                                                        |
+| `shouldTextWrap`                 | `boolean`               | `true`      | When set to `true`, wraps the content texts by the number of defined wrap line numbers.                                                                                           |
+| `tooltipProps`                   | `Partial<TooltipProps>` | `{}`        | These props will be directly passed to the `Tooltip` component.                                                                                                                   |
+| `verticalAlign`                  | `"top"` `               | "center"` ` | "bottom"`                                                                                                                                                                         | `"top"`  | Vertical alignment of the cell content.   |
 
 ### Code examples
 
@@ -696,13 +696,11 @@ table {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -771,13 +769,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -798,13 +795,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -838,13 +846,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -862,7 +868,7 @@ function App() {
     maxWidth: 160,
     width: 160,
   };
-  
+
   return (
     <div className="app">
       <table>
@@ -872,11 +878,18 @@ function App() {
               primaryText="Primary Text that is longer than expected."
               secondaryText="Secondary Text that is londer than expected."
               tertiaryText="Tertiary Text that is lonegrt than expected."
-              icon={<Icon sdsIcon="Bacteria" sdsSize="l" sdsType="static" color="notice" />}
+              icon={
+                <Icon
+                  sdsIcon="Bacteria"
+                  sdsSize="l"
+                  sdsType="static"
+                  color="notice"
+                />
+              }
               style={TableCellStyle}
               tooltipProps={{
                 placement: "right",
-                sdsStyle: "light"
+                sdsStyle: "light",
               }}
             />
           </tr>
@@ -926,13 +939,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -953,13 +965,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -976,10 +999,10 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `horizontalAlign` | `"left"` `| "center"` `| "right"` | `"left"` | Specifies the horizontal alignment of the cell content. |
-| `verticalAlign` | `"top"` `| "center"` `| "bottom"` | `"top"` | Specifies the vertical alignment of the cell content. |
+| Name              | Type       | Default     | Description |
+| ----------------- | ---------- | ----------- | ----------- | -------- | ------------------------------------------------------- |
+| `horizontalAlign` | `"left"` ` | "center"` ` | "right"`    | `"left"` | Specifies the horizontal alignment of the cell content. |
+| `verticalAlign`   | `"top"` `  | "center"` ` | "bottom"`   | `"top"`  | Specifies the vertical alignment of the cell content.   |
 
 ### Code examples
 
@@ -1016,13 +1039,11 @@ table {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1090,13 +1111,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1117,13 +1137,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1140,16 +1171,16 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `active` | `boolean` | `false` | When `true`, the component is in active state. |
-| `hover` | `boolean` | `false` | By default, the component is not interactive and does not have a hover state. When set to `true`, it displays a `sortIcon` and changes color on hover. |
-| `direction` | `"asc" | "desc"` | `"desc"` | Changes the chevron icon based on the sort direction. |
-| `hideSortIcon` | `boolean` | `false` | If set to `true`, the sort icon becomes hidden. |
-| `horizontalAlign` | `"left"` `| "center"` `| "right"` | `"left"` | Horizontally aligns the component's content. |
-| `shouldShowTooltipOnHover` | `boolean` | `true` | When `true`, show a tooltip on component hover. |
-| `tooltipText` | `string` | `-` | The content of the tooltip. |
-| `tooltipProps` | `Partial<TooltipProps>` | `{}` | These props are directly passed to the tooltip component. |
+| Name                       | Type                    | Default     | Description                                                                                                                                            |
+| -------------------------- | ----------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- | -------------------------------------------- |
+| `active`                   | `boolean`               | `false`     | When `true`, the component is in active state.                                                                                                         |
+| `hover`                    | `boolean`               | `false`     | By default, the component is not interactive and does not have a hover state. When set to `true`, it displays a `sortIcon` and changes color on hover. |
+| `direction`                | `"asc"                  | "desc"`     | `"desc"`                                                                                                                                               | Changes the chevron icon based on the sort direction. |
+| `hideSortIcon`             | `boolean`               | `false`     | If set to `true`, the sort icon becomes hidden.                                                                                                        |
+| `horizontalAlign`          | `"left"` `              | "center"` ` | "right"`                                                                                                                                               | `"left"`                                              | Horizontally aligns the component's content. |
+| `shouldShowTooltipOnHover` | `boolean`               | `true`      | When `true`, show a tooltip on component hover.                                                                                                        |
+| `tooltipText`              | `string`                | `-`         | The content of the tooltip.                                                                                                                            |
+| `tooltipProps`             | `Partial<TooltipProps>` | `{}`        | These props are directly passed to the tooltip component.                                                                                              |
 
 ### Code examples
 
@@ -1186,13 +1217,11 @@ table {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1210,9 +1239,7 @@ function App() {
       <table>
         <thead>
           <tr>
-            <CellHeader>
-              Header
-            </CellHeader>
+            <CellHeader>Header</CellHeader>
           </tr>
         </thead>
       </table>
@@ -1260,13 +1287,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1287,13 +1313,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1310,17 +1347,17 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `disabled` | `boolean` | `false` | When `true`, the row is disabled. |
-| `hover` | `boolean` | `true` | When `true`, the component has a hover style. |
-| `selected` | `boolean` | `false` | When `true`, component is in the selected state. |
-| `rowHeight` | `number` | `-` | Sets a maximum height for the table row. |
-| `shouldShowTooltipOnHover` | `boolean` | `true` | When `true`, a tooltip shows up on component hover. |
-| `tooltipProps` | `Partial<TooltipProps>` | `{}` | These props are directly passed to the tooltip component. |
-| `tooltipText` | `string` | `-` | Tooltip text. |
-| `tooltipSubtitle` | `string` | `-` | Toltip subtitle. |
-| `useDivider` | `boolean` | `true` | If set to `true`, shows a bottom border under the table row. |
+| Name                       | Type                    | Default | Description                                                  |
+| -------------------------- | ----------------------- | ------- | ------------------------------------------------------------ |
+| `disabled`                 | `boolean`               | `false` | When `true`, the row is disabled.                            |
+| `hover`                    | `boolean`               | `true`  | When `true`, the component has a hover style.                |
+| `selected`                 | `boolean`               | `false` | When `true`, component is in the selected state.             |
+| `rowHeight`                | `number`                | `-`     | Sets a maximum height for the table row.                     |
+| `shouldShowTooltipOnHover` | `boolean`               | `true`  | When `true`, a tooltip shows up on component hover.          |
+| `tooltipProps`             | `Partial<TooltipProps>` | `{}`    | These props are directly passed to the tooltip component.    |
+| `tooltipText`              | `string`                | `-`     | Tooltip text.                                                |
+| `tooltipSubtitle`          | `string`                | `-`     | Toltip subtitle.                                             |
+| `useDivider`               | `boolean`               | `true`  | If set to `true`, shows a bottom border under the table row. |
 
 ### Code examples
 
@@ -1353,13 +1390,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1439,13 +1474,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1466,13 +1500,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1516,13 +1561,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1540,15 +1583,9 @@ function App() {
       <table>
         <thead>
           <tr>
-            <CellHeader>
-              Header
-            </CellHeader>
-            <CellHeader>
-              Header
-            </CellHeader>
-            <CellHeader>
-              Header
-            </CellHeader>
+            <CellHeader>Header</CellHeader>
+            <CellHeader>Header</CellHeader>
+            <CellHeader>Header</CellHeader>
           </tr>
         </thead>
       </table>
@@ -1596,13 +1633,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1623,13 +1659,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1646,16 +1693,16 @@ The component's source code in the SDS codebase can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `onPageChange` | `(page: number) => void;` | `-` | A callback function triggered when the page number is changed. |
-| `onNextPage` | `() => void;` | `-` | A callback function triggered when the "Next" page button is clicked. |
-| `onPreviousPage` | `() => void;` | `-` | A callback function triggered when the "Previous" page button is clicked. |
-| `pageSize` | `number` | `-` | Specifies the number of items to be shown on each page. |
-| `siblingCount` | `number` | `1` | Specifies the number of siblings for each page number. |
-| `sdsStyle` | `"rounded"` `| "square"` | `"rounded"` | The style of the component. |
-| `totalCount` | `number` | `-` | Total number of items to be paginated. |
-| `truncateDropdown` | `boolean` | `true` | If `true`, a dropdown menu is shown for hidden page numbers. |
+| Name               | Type                      | Default   | Description                                                               |
+| ------------------ | ------------------------- | --------- | ------------------------------------------------------------------------- | --------------------------- |
+| `onPageChange`     | `(page: number) => void;` | `-`       | A callback function triggered when the page number is changed.            |
+| `onNextPage`       | `() => void;`             | `-`       | A callback function triggered when the "Next" page button is clicked.     |
+| `onPreviousPage`   | `() => void;`             | `-`       | A callback function triggered when the "Previous" page button is clicked. |
+| `pageSize`         | `number`                  | `-`       | Specifies the number of items to be shown on each page.                   |
+| `siblingCount`     | `number`                  | `1`       | Specifies the number of siblings for each page number.                    |
+| `sdsStyle`         | `"rounded"` `             | "square"` | `"rounded"`                                                               | The style of the component. |
+| `totalCount`       | `number`                  | `-`       | Total number of items to be paginated.                                    |
+| `truncateDropdown` | `boolean`                 | `true`    | If `true`, a dropdown menu is shown for hidden page numbers.              |
 
 ### Code examples
 
@@ -1688,13 +1735,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1708,9 +1753,8 @@ import { useState } from "react";
 import "./styles.css";
 
 function App() {
-  
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   return (
     <div className="app">
       <Pagination
@@ -1769,13 +1813,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1796,13 +1839,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1846,13 +1900,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1861,22 +1913,21 @@ h1 {
 **/App.tsx**
 
 ```tsx
-import { 
-  CellBasic, 
-  CellComponent, 
+import {
+  CellBasic,
+  CellComponent,
   CellHeader,
-  Icon, 
-  InputRadio,  
-  Tag, 
-  Table, 
-  TableRow, 
-  TableHeader 
+  Icon,
+  InputRadio,
+  Tag,
+  Table,
+  TableRow,
+  TableHeader,
 } from "@czi-sds/components";
 import { styled, RadioGroup, FormControlLabel } from "@mui/material";
 import "./styles.css";
 
 function App() {
-  
   const StyledIconCell = styled("div")`
     align-items: center;
     display: flex;
@@ -1926,15 +1977,17 @@ function App() {
               shouldShowTooltipOnHover={false}
             />
             <CellComponent>
-              {["info", "notice", "beta", "negative", "positive"].map((item) => (
-                <Tag
-                  key={item}
-                  color={item as SdsTagColorType}
-                  label={item as string}
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                />
-              ))}
+              {["info", "notice", "beta", "negative", "positive"].map(
+                (item) => (
+                  <Tag
+                    key={item}
+                    color={item as SdsTagColorType}
+                    label={item as string}
+                    sdsStyle="rounded"
+                    sdsType="secondary"
+                  />
+                )
+              )}
             </CellComponent>
             <CellBasic
               primaryText="356"
@@ -2068,13 +2121,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2095,13 +2147,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -2110,8 +2173,8 @@ root.render(
 
 ## Table Recipes
 
-| These component recipes show a few of the more complex approaches available for customizing Tables.  |   | **Jump to recipe:** Text-only Table Table with a custom sorting function Table with custom Tooltips Table with virtualized rows Editable Table Cells with Access to Internal Data Table with Front-End Pagination Table with Back-End Pagination |
-| --- | --- | --- |
+| These component recipes show a few of the more complex approaches available for customizing Tables. |     | **Jump to recipe:** Text-only Table Table with a custom sorting function Table with custom Tooltips Table with virtualized rows Editable Table Cells with Access to Internal Data Table with Front-End Pagination Table with Back-End Pagination |
+| --------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
 #### Text-only Table
 
@@ -2144,13 +2207,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -2322,7 +2383,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -2362,13 +2422,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2389,13 +2448,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -2443,20 +2513,17 @@ h1 {
     }
   }
 }
-
 ```
 
 **tsconfig.json**
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -2634,8 +2701,8 @@ function App() {
                 cell.cell.getValue() === "single"
                   ? "notice"
                   : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
+                    ? "positive"
+                    : "negative"
               }
               sdsStyle="rounded"
               sdsType="secondary"
@@ -2775,7 +2842,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -2815,13 +2881,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2842,13 +2907,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -2882,13 +2958,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -3021,8 +3095,8 @@ const columns = [
             info.cell.getValue() === "Single"
               ? "notice"
               : info.cell.getValue() === "In Relationship"
-              ? "positive"
-              : "negative"
+                ? "positive"
+                : "negative"
           }
           sdsStyle="rounded"
           sdsType="secondary"
@@ -3087,7 +3161,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -3127,13 +3200,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -3154,13 +3226,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -3224,13 +3307,11 @@ thead {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -3402,8 +3483,8 @@ function App() {
                   info.cell.getValue() === "single"
                     ? "notice"
                     : info.cell.getValue() === "relationship"
-                    ? "positive"
-                    : "negative"
+                      ? "positive"
+                      : "negative"
                 }
                 sdsStyle="rounded"
                 sdsType="secondary"
@@ -3552,7 +3633,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -3592,13 +3672,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -3619,13 +3698,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -3677,20 +3767,17 @@ h1 {
   border: none;
   outline: none;
 }
-
 ```
 
 **tsconfig.json**
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -3773,15 +3860,19 @@ declare module "@tanstack/react-table" {
 
 const CellEditor = (cell: CellContext<Person, unknown>) => {
   const theme = useTheme();
-  const semanticColors = getSemanticColors({theme});
-  
+  const semanticColors = getSemanticColors({ theme });
+
   const initialValue = cell.getValue();
   // We need to keep and update the state of the cell normally
   const [value, setValue] = React.useState(initialValue);
 
   // When the input is blurred, we'll call our table meta's updateData function
   const onBlur = () => {
-    cell.table.options.meta?.updateData(cell.row.index, cell.column.id, value as Person);
+    cell.table.options.meta?.updateData(
+      cell.row.index,
+      cell.column.id,
+      value as Person
+    );
   };
 
   // If the initialValue is changed external, sync it up with our state
@@ -3798,7 +3889,7 @@ const CellEditor = (cell: CellContext<Person, unknown>) => {
       style={{ color: semanticColors?.base?.textPrimary }}
     />
   );
-}
+};
 
 // Give our default column cell renderer editing superpowers!
 const defaultColumn: Partial<ColumnDef<Person>> = {
@@ -3954,7 +4045,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -3994,13 +4084,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -4021,13 +4110,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -4072,13 +4172,11 @@ button {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -4237,8 +4335,8 @@ function App() {
                 cell.cell.getValue() === "single"
                   ? "notice"
                   : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
+                    ? "positive"
+                    : "negative"
               }
               sdsStyle="rounded"
               sdsType="secondary"
@@ -4323,7 +4421,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -4363,13 +4460,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -4390,13 +4486,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -4447,20 +4554,17 @@ button {
   padding-left: 5px;
   color: #888;
 }
-
 ```
 
 **tsconfig.json**
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -4650,8 +4754,8 @@ function App() {
                 cell.cell.getValue() === "single"
                   ? "notice"
                   : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
+                    ? "positive"
+                    : "negative"
               }
               sdsStyle="rounded"
               sdsType="secondary"
@@ -4748,7 +4852,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 **/index.tsx**
@@ -4792,13 +4895,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -4819,14 +4921,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

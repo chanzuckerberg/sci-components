@@ -4,8 +4,8 @@ Tags are used to help with categorization on plugin pages or in conjunction with
 
 ## Overview
 
-| There are two Tag component types—standard Tags and Filter Tags. Tags are used to label the attributes of each plugin, helping users identify relevant plugins to use in their workflows whereas Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to the list of plugins.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |   | **Jump to variant:** Tag Filter Tag |
-| --- | --- | --- |
+| There are two Tag component types—standard Tags and Filter Tags. Tags are used to label the attributes of each plugin, helping users identify relevant plugins to use in their workflows whereas Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to the list of plugins. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |     | **Jump to variant:** Tag Filter Tag |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------- |
 
 ### Visual Preview
 
@@ -15,8 +15,8 @@ Use the links below to jump to information on a specific Tag:
 
 ## Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Tags are used to label the attributes of each plugin; these attributes are able to be filtered on using the Filter component. On the plugin list page, when a given parameter is filtered on, any matching attributes will appear as `active` Tags at the bottom of each plugin card. Additional attributes will continue to be displayed as `inactive` Tags. Users can click on any `inactive` Tag to add it as a Filter parameter.
 
@@ -27,7 +27,7 @@ The InfoCircle icons within each Tag can be hovered over to display a Tooltip th
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default (Inactive)** | **Default (Active)** | **Hover** | **Pressed** |
-| --- | --- | --- | --- |
+| ---------------------- | -------------------- | --------- | ----------- |
 
 ---
 
@@ -39,15 +39,15 @@ These rules establish how much margin should exist between and around elements.
 
 ## Filter Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 On the left-side filter panel on the plugin list page, Filter Tags appear underneath each Filter Dropdown Input to communicate that the plugin list is being filtered on the parameter indicated on the Tag. Users can click on the Xmark icon on the tag to remove that parameter from the group of filters being applied.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -59,12 +59,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Tag Components
 
-| Below you will find interactive Storybook iframes for each component within the Tags element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tag TagFilter |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Tags element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tag TagFilter |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------ |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### Tag
 
@@ -84,15 +84,15 @@ Tags are used to label the status of certain elements or in conjunction with fil
 
 ## Tag Variants
 
-| There are two primary Tag variants—Filter Tags and standard Tags. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags are used throughout the UI whenever there's a need to label an element or communicate a status associated with it.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |   | **Jump to variant:** Filter Rounded |
-| --- | --- | --- |
+| There are two primary Tag variants—Filter Tags and standard Tags. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags are used throughout the UI whenever there's a need to label an element or communicate a status associated with it. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |     | **Jump to variant:** Filter Rounded |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------- |
 
 ---
 
 ## Filter Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Filter Tag
 
@@ -101,7 +101,7 @@ Used in conjunction with Filters to communicate that the dataset is being filter
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -113,8 +113,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Rounded Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Secondary Rounded Tag
 
@@ -123,10 +123,10 @@ Used in CZ GEN EPI without an icon to display the status of a sample within tabl
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 | **Default + Icon** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ------------------ | --------- | ----------- |
 
 ---
 
@@ -143,21 +143,21 @@ There are four different intents that Tags can communicate—Info, Error, Succes
 The Info variant is used when the information being communicated is neutral in nature and is meant to draw the user's attention to the element it is placed beside, providing additional context or details. The Error, Success, and Warning variants are meant to be used to communicate the status of the element, feature, or process they are placed beside.
 
 | **Error** | **Info** |
-| --- | --- |
+| --------- | -------- |
 
 | **Success** | **Warning** |
-| --- | --- |
+| ----------- | ----------- |
 
 ## Code
 
 ## Tag Components
 
-| Below you will find interactive Storybook iframes for each component within the Tags element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** TagFilter Tag |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Tags element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** TagFilter Tag |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------ |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### TagFilter
 
@@ -177,22 +177,22 @@ Tags are used to label the status of certain elements or in conjunction with fil
 
 ## Tag Variants
 
-| There are two primary Tag variants—Filter Tags and standard Tags. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags come in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |   | **Jump to variant:** Filter Rounded Square |
-| --- | --- | --- |
+| There are two primary Tag variants—Filter Tags and standard Tags. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags come in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tag for any given use case. |     | **Jump to variant:** Filter Rounded Square |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------ |
 
 ---
 
 ## Filter Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Used in conjunction with Filters to communicate that the dataset is being filtered on the parameter indicated in the Tag. Users click on the Filter Tag to remove that parameter from the group of filters being applied.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -204,8 +204,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Rounded Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Secondary Tag option for a primary label.
 
@@ -214,10 +214,10 @@ Used in CZ ID without an icon to display the status of a sample within a Table. 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 | **Default + Icon** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ------------------ | --------- | ----------- |
 
 ---
 
@@ -229,8 +229,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Square Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Alternate Tag shape for a label.
 
@@ -239,7 +239,7 @@ Used within CZ ID to label taxons as pathogenic.
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
 | **Default** | **Hover** | **Pressed** |
-| --- | --- | --- |
+| ----------- | --------- | ----------- |
 
 ---
 
@@ -251,8 +251,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Tag Components
 
-| Below you will find interactive Storybook iframes for each component within the Tags element group.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** TagFilter Tag |
-| --- | --- | --- |
+| Below you will find interactive Storybook iframes for each component within the Tags element group. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** TagFilter Tag |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------ |
 
 ---
 
@@ -266,7 +266,7 @@ Storybook
 
 Storybook
 
- 
+
 
 ---
 
@@ -276,8 +276,8 @@ Tags are used to label the status of certain elements or in conjunction with fil
 
 ## Tag Components
 
-| There are two types of Tags—standard and filter. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags come in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it. |   | **Jump to variant:** Tag  Filter Tag |
-| --- | --- | --- |
+| There are two types of Tags—standard and filter. Filter Tags are used in conjunction with the Filter component to indicate which filters have been applied to a given dataset. Standard Tags come in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it. |     | **Jump to variant:** Tag Filter Tag |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------- |
 
 ### Visual Preview
 
@@ -285,8 +285,8 @@ Tags are used to label the status of certain elements or in conjunction with fil
 
 ## Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Tag Styles
 
@@ -310,19 +310,19 @@ Tag – Rounded is the default style used across applications, however if an alt
 
 Use Tag – Primary in conjunction with the primary or most important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
 
->**Note:** An icon must be included when using the large variant.
+> **Note:** An icon must be included when using the large variant.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 #### Secondary
 
 Use Tag – Secondary in conjunction with secondary or less important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
 
->**Note:** An icon must be included when using the large variant.
+> **Note:** An icon must be included when using the large variant.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -334,19 +334,19 @@ Tag – Square is to be used when an alternate Tag style is needed as determined
 
 Use Tag – Primary in conjunction with the primary or most important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
 
->**Note:** An icon must be included when using the large variant.
+> **Note:** An icon must be included when using the large variant.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 #### Secondary
 
 Use Tag – Secondary in conjunction with secondary or less important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
 
->**Note:** An icon must be included when using the large variant.
+> **Note:** An icon must be included when using the large variant.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -365,19 +365,19 @@ Each intent is demonstrated below using the default state of the rounded variant
 #### Primary
 
 | Beta | Info | Negative | None | Notice | Positive |
-| --- | --- | --- | --- | --- | --- |
+| ---- | ---- | -------- | ---- | ------ | -------- |
 
 #### Secondary
 
 | Beta | Info | Negative | None | Notice | Positive |
-| --- | --- | --- | --- | --- | --- |
+| ---- | ---- | -------- | ---- | ------ | -------- |
 
 ---
 
 ## Filter Tag
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -392,7 +392,7 @@ Default
 Used Filter Tag in conjunction with Filters to communicate that the dataset is being filtered on the parameter indicated on the Filter Tag. Users click on the `Xmark` icon to remove that parameter from the group of filters being applied.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -404,12 +404,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Tag Components
 
-| There are two types of `Tags`—standard and filter. `TagFilter` is used in conjunction with the `Filter` component to indicate which filters have been applied to a given dataset. `Tag` comes in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it. |   | **Jump to variant:** Tag TagFilter |
-| --- | --- | --- |
+| There are two types of `Tags`—standard and filter. `TagFilter` is used in conjunction with the `Filter` component to indicate which filters have been applied to a given dataset. `Tag` comes in two styles, Rounded and Square, and can be used throughout the UI whenever there's a need to label an element or communicate a status associated with it. |     | **Jump to variant:** Tag TagFilter |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -423,9 +423,9 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS `Tag` component is built on top of MUI's `Chip` component, though SDS is currently set up with distinct `Tag` and `TagFilter` components. The former is clickable but not deletable (whereas MUI's `Chip` can be either, both, or neither). Additionally, SDS's `Tag` component has a couple of props to help display SDS-specific visual properties:
 
-* **`sdsStyle`****:**  This prop allows you specify whether the `Tag` should be `rounded` (default) or `square`.
-* **`sdsType`****:**  This prop takes values of `primary` (default) or `secondary`.
-* **`size`****:**  This prop is not available to SDS's `Tag`; instead its size changes automatically based on whether it is accommodating an icon via the `icon` prop or not.
+- **`sdsStyle`\*\***:\*\* This prop allows you specify whether the `Tag` should be `rounded` (default) or `square`.
+- **`sdsType`\*\***:\*\* This prop takes values of `primary` (default) or `secondary`.
+- **`size`\*\***:\*\* This prop is not available to SDS's `Tag`; instead its size changes automatically based on whether it is accommodating an icon via the `icon` prop or not.
 
 ### MUI Documentation
 
@@ -435,17 +435,19 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `hover` | `bool` | `-` | If `true`,  the component changes color when hovered over. |
-| `label` | `string` | `-` | The label of the Tag. |
-| `sdsType` | `"primary"` `| "secondary"`  | `primary`  | The `primary` variant has a `400` background color and white text color.   The `secondary` variant has a `100` background color and `500`  text color. |
-| `sdsStyle`  | `"square"` `| "rounded"`  | `rounded`  | The shape of the component. |
-| `sdsSize` | `"s" | "l"` | `"s"` | The size of the Tag component. The large-size tag must include an icon. |
-| `color`  | `| "beta"` `| "info"` `| "negative"` `| "notice"` `| "positive"` `| [string, string]` `| [string, string, string]` | `-` | You have the flexibility to define the color of the component in two ways: 1. Choose from the available theme colors, such as `primary`, `info`, and more. 2. Customize the colors using one of the following syntax options: 			
+| Name       | Type          | Default      | Description                                               |
+| ---------- | ------------- | ------------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------- | ------------------- | ------------------------- | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `hover`    | `bool`        | `-`          | If `true`, the component changes color when hovered over. |
+| `label`    | `string`      | `-`          | The label of the Tag.                                     |
+| `sdsType`  | `"primary"` ` | "secondary"` | `primary`                                                 | The `primary` variant has a `400` background color and white text color. The `secondary` variant has a `100` background color and `500` text color. |
+| `sdsStyle` | `"square"` `  | "rounded"`   | `rounded`                                                 | The shape of the component.                                                                                                                         |
+| `sdsSize`  | `"s"          | "l"`         | `"s"`                                                     | The size of the Tag component. The large-size tag must include an icon.                                                                             |
+| `color`    | `             | "beta"` `    | "info"` `                                                 | "negative"` `                                                                                                                                       | "notice"` ` | "positive"` ` | [string, string]` ` | [string, string, string]` | `-` | You have the flexibility to define the color of the component in two ways: 1. Choose from the available theme colors, such as `primary`, `info`, and more. 2. Customize the colors using one of the following syntax options: |
+
     1. [`label and icon color`, `background color`]
     2. [`label color`, `background color`, `icon color`] |
-| `icon`  | `JSX.Element`   | `-` | The icon that appears on the leading edge of the component. |
+
+| `icon` | `JSX.Element` | `-` | The icon that appears on the leading edge of the component. |
 
 ### Code examples
 
@@ -478,13 +480,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -499,7 +499,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tag label="Science Design System"/>
+      <Tag label="Science Design System" />
     </div>
   );
 }
@@ -544,13 +544,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -571,13 +570,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -611,13 +621,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -632,8 +640,8 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tag 
-        label="Virus" 
+      <Tag
+        label="Virus"
         icon={<Icon sdsSize="l" sdsIcon="Virus" />}
         sdsStyle="rounded"
         color="negative"
@@ -683,13 +691,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -710,13 +717,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -750,13 +768,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -771,8 +787,8 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tag 
-        label="Star" 
+      <Tag
+        label="Star"
         icon={<Icon sdsSize="l" sdsIcon="Star" />}
         color={["yellow", "#f23", "orange"]}
         sdsStyle="rounded"
@@ -822,13 +838,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -849,13 +864,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -880,10 +906,10 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `label` | `string` | `-` | The content of the component. |
-| `onDelete` | `func` | `-` | Callback fired when the delete icon is clicked. If set, the delete icon will be shown. |
+| Name       | Type     | Default | Description                                                                            |
+| ---------- | -------- | ------- | -------------------------------------------------------------------------------------- |
+| `label`    | `string` | `-`     | The content of the component.                                                          |
+| `onDelete` | `func`   | `-`     | Callback fired when the delete icon is clicked. If set, the delete icon will be shown. |
 
 ### Code examples
 
@@ -916,13 +942,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -937,10 +961,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <TagFilter 
-        label="Science Design System"
-        onDelete={() => {}}
-      />
+      <TagFilter label="Science Design System" onDelete={() => {}} />
     </div>
   );
 }
@@ -985,13 +1006,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1012,14 +1032,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

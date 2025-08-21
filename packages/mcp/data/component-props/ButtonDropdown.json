@@ -1,0 +1,26 @@
+{
+  "ButtonDropdown": {
+    "props": {
+      "disabled": {
+        "type": "any",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

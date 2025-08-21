@@ -6,15 +6,15 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ## Tooltip Variants
 
-| Tooltips are always used in conjunction with other elements when there is a need to clarify the element's function further, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |   | **Jump to variant:** Tooltip Condensed |
-| --- | --- | --- |
+| Tooltips are always used in conjunction with other elements when there is a need to clarify the element's function further, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |     | **Jump to variant:** Tooltip Condensed |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------- |
 
 ---
 
 ## Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Use to display supplementary information such as definitions, instructions, or expanded details for elements, such as in combination with Tags to provide definitions of the parameter on the Tag.
 
@@ -49,23 +49,23 @@ The `placement` prop indicates from which direction the Tooltip will appear on h
 The Tooltip is positioned relative to the on-screen element as opposed to relative to the user's cursor.
 
 | **Bottom-start** | **Bottom** | **Bottom-End** |
-| --- | --- | --- |
+| ---------------- | ---------- | -------------- |
 
 | **Left-start** | **Left** | **Left-end** |
-| --- | --- | --- |
+| -------------- | -------- | ------------ |
 
 | **Right-start** | **Right** | **Right-end** |
-| --- | --- | --- |
+| --------------- | --------- | ------------- |
 
 | **Top-Start** | **Top** | **Top-end** |
-| --- | --- | --- |
+| ------------- | ------- | ----------- |
 
 ---
 
 ## Condensed Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In napari hub + .org Codebases |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In napari hub + .org Codebases |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------------------------------ |
 
 Use to display smaller bits of text, not full sentences or descriptions, similar to a label, but only viewable on hover. Most often used in Charts, Tables, and Data Visualizations (documentation coming soon).
 
@@ -87,12 +87,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Tooltips.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tooltip TooltipCondensed |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tooltips. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tooltip TooltipCondensed |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------- |
 
 ---
 
->These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
+> These components appear as they are in the default SDS codebase. Once imported into the napari hub or napari.org codebases, use a theme file to enable the napari visual appearance customization.
 
 ### Tooltip
 
@@ -112,8 +112,8 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ## Tooltip Variants
 
-| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |   | **Jump to variant:** Dark Light Condensed Table |
-| --- | --- | --- |
+| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |     | **Jump to variant:** Dark Light Condensed Table |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------- |
 
 ### Visual Preview
 
@@ -123,8 +123,8 @@ Use the links below to jump to information on a specific Tooltip variant:
 
 ## Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 ### Dark Tooltip
 
@@ -140,9 +140,9 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
- 
 
- 
+
+
 
 ### Light Tooltip
 
@@ -154,7 +154,7 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
@@ -173,23 +173,23 @@ The `placement` prop indicates from which direction the Tooltip will appear on h
 The Tooltip is positioned relative to the on-screen element as opposed to relative to the user's cursor.
 
 | **Bottom-start** | **Bottom** | **Bottom-End** |
-| --- | --- | --- |
+| ---------------- | ---------- | -------------- |
 
 | **Left-start** | **Left** | **Left-end** |
-| --- | --- | --- |
+| -------------- | -------- | ------------ |
 
 | **Right-start** | **Right** | **Right-end** |
-| --- | --- | --- |
+| --------------- | --------- | ------------- |
 
 | **Top-Start** | **Top** | **Top-end** |
-| --- | --- | --- |
+| ------------- | ------- | ----------- |
 
 ---
 
 ## Condensed Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Use to display smaller bits of text, not full sentences or descriptions, similar to a label, but only viewable on hover. Most often used in Charts, Tables, and Data Visualizations.
 
@@ -203,7 +203,7 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
- 
+
 
 ---
 
@@ -215,8 +215,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Table Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ GEN EPI Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ GEN EPI Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ---------------------- |
 
 Used in CZ GEN EPI to display complex, dense information that would benefit from being shown in a table format such as additional data or context connected to datasets in Charts, Tables, and Data Visualizations.
 
@@ -242,56 +242,56 @@ Use the following configuration for the `[array]` passed into the `data` prop:
 data = [
   {
     // section with a header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
+      },
     ],
     label: "Section One", // optional
   },
   {
     // section with no header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
-    ], 
+      },
+    ],
   },
-    {
+  {
     // disabled section with no header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
-    ], 
-      disabled: true
+      },
+    ],
+    disabled: true,
   },
 ];
 ```
@@ -306,12 +306,12 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Tooltips.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tooltip TooltipCondensed TooltipTable |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tooltips. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tooltip TooltipCondensed TooltipTable |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------ |
 
 ---
 
->This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
+> This component appears as it is in the default SDS codebase. Once imported into the CZ GEN EPI codebase, use a theme file to enable the CZ GEN EPI visual appearance customization.
 
 ### Tooltip
 
@@ -337,8 +337,8 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ## Tooltip Variants
 
-| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located.  Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |   | **Jump to variant:** Dark Light Condensed Table |
-| --- | --- | --- |
+| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element it is tied to and the area in the UI in which it is located. Follow the usage criteria accompanying each variant as a guide for selecting the correct Tooltip for any given use case. |     | **Jump to variant:** Dark Light Condensed Table |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------- |
 
 ### Visual Preview
 
@@ -348,8 +348,8 @@ Use the links below to jump to information on a specific Tooltip variant:
 
 ## Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 ### Dark Tooltip
 
@@ -363,11 +363,11 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
- 
+
 
 ### Light Tooltip
 
@@ -379,7 +379,7 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
- 
+
 
 ---
 
@@ -398,23 +398,23 @@ The `placement` prop indicates from which direction the Tooltip will appear on h
 The Tooltip is positioned relative to the on-screen element as opposed to relative to the user's cursor.
 
 | **Bottom-start** | **Bottom** | **Bottom-End** |
-| --- | --- | --- |
+| ---------------- | ---------- | -------------- |
 
 | **Left-start** | **Left** | **Left-end** |
-| --- | --- | --- |
+| -------------- | -------- | ------------ |
 
 | **Right-start** | **Right** | **Right-end** |
-| --- | --- | --- |
+| --------------- | --------- | ------------- |
 
 | **Top-Start** | **Top** | **Top-end** |
-| --- | --- | --- |
+| ------------- | ------- | ----------- |
 
 ---
 
 ## Condensed Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
 Use to display smaller bits of text, not full sentences or descriptions, similar to a label, but only viewable on hover. Most often used in Charts, Tables, and Data Visualizations.
 
@@ -438,10 +438,10 @@ These rules establish how much margin should exist between and around elements.
 
 ## Table Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  |  In CZ ID Codebase |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In CZ ID Codebase |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ----------------- |
 
-Used in CZ ID to display complex, dense information that would benefit from being shown in a table format such as additional data or context connected to datasets in Charts, Tables, and Data Visualizations. 
+Used in CZ ID to display complex, dense information that would benefit from being shown in a table format such as additional data or context connected to datasets in Charts, Tables, and Data Visualizations.
 
 The content in the Table Tooltip is determined by the `[array]` passed into the `data` prop. The `[array]` will determine optional section headers, whether a section is disabled or not, as well as each content row's label and item value. There can be as many sections and content rows per section as needed. See the Data Format section below for details about configuring the `[array]`.
 
@@ -465,56 +465,56 @@ Use the following configuration for the `[array]` passed into the `data` prop:
 data = [
   {
     // section with a header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
+      },
     ],
     label: "Section One", // optional
   },
   {
     // section with no header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
-    ], 
+      },
+    ],
   },
-    {
+  {
     // disabled section with no header
-    dataRows: [ 
+    dataRows: [
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }, 
+      },
       {
-        label: "Label", 
+        label: "Label",
         value: "Item",
-      }
-    ], 
-      disabled: true
+      },
+    ],
+    disabled: true,
   },
 ];
 ```
@@ -529,8 +529,8 @@ These rules establish how much margin should exist between and around elements.
 
 ## Dropdown Input Component
 
-| Below you will find an interactive Storybook iframe for Tooltips.  Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |   | **Jump to component:** Tooltip TooltipCondensed TooltipTable |
-| --- | --- | --- |
+| Below you will find an interactive Storybook iframe for Tooltips. Tabs within each iframe provide a different set of tools: The Controls tab allows you to see and adjust all available props. The Actions tab shows you data displayed by event handler arguments. |     | **Jump to component:** Tooltip TooltipCondensed TooltipTable |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------ |
 
 ---
 
@@ -550,7 +550,7 @@ Storybook
 
 Storybook
 
- 
+
 
 ---
 
@@ -560,8 +560,8 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ## Tooltip Components
 
-| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element that triggers it and where it's located in the interface. |   | **Jump to variant:** Tooltip Condensed Tooltip Table Tooltip |
-| --- | --- | --- |
+| Tooltips are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element that triggers it and where it's located in the interface. |     | **Jump to variant:** Tooltip Condensed Tooltip Table Tooltip |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------ |
 
 ### Visual Preview
 
@@ -569,8 +569,8 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ## Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Tooltip Types
 
@@ -595,7 +595,7 @@ Use in conjunction with action UI elements like Buttons or Segmented Control to 
 A subtitle may be added to communicate additional details, like instructions for using the element connected to the Tooltip.
 
 | Default | Default (inverted) | Default + Subtitle | Default + Subtitle (inverted) |
-| --- | --- | --- | --- |
+| ------- | ------------------ | ------------------ | ----------------------------- |
 
 ---
 
@@ -604,7 +604,7 @@ A subtitle may be added to communicate additional details, like instructions for
 Use to display supplementary information like definitions, instructions, or expanded details which require more space for text. The width can be increased up to `550px`.
 
 | Default | Default (inverted) |
-| --- | --- |
+| ------- | ------------------ |
 
 ---
 
@@ -619,23 +619,23 @@ The Tooltip and its triggering element have a standard margin between them.
 A Tooltip appears in one of twelve positions relative to the element it is tied to. For example, a position of `bottom` will appear **below** the trigger element.
 
 | Bottom-start | Bottom | Bottom-end |
-| --- | --- | --- |
+| ------------ | ------ | ---------- |
 
 | Left-start | Left | Left-end |
-| --- | --- | --- |
+| ---------- | ---- | -------- |
 
 | Right-start | Right | Right-end |
-| --- | --- | --- |
+| ----------- | ----- | --------- |
 
 | Top-start | Top | Top-end |
-| --- | --- | --- |
+| --------- | --- | ------- |
 
 ---
 
 ## Condensed Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -654,7 +654,7 @@ The Condensed Tooltip is positioned relative to the user's cursor rather than it
 The Condensed Tooltip can optionally be displayed using an inverted color scheme for better contrast on certain backgrounds.
 
 | Default | Default (inverted) | Default + Indicator | Default + Indicator (inverted) |
-| --- | --- | --- | --- |
+| ------- | ------------------ | ------------------- | ------------------------------ |
 
 ---
 
@@ -666,8 +666,8 @@ The Condensed Tooltip and its triggering element have a standard margin between 
 
 ## Table Tooltip
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Live Instance
 
@@ -686,7 +686,7 @@ By default, Item values are aligned right but can be aligned left.
 The Table Tooltip is positioned relative to the user's cursor rather than its triggering element
 
 | 1 Section | 1 Section + Section Headers | 2 Sections + Section Headers |
-| --- | --- | --- |
+| --------- | --------------------------- | ---------------------------- |
 
 ---
 
@@ -698,12 +698,12 @@ The Table Tooltip and its triggering element have a standard margin between them
 
 ## Tooltip Components
 
-| `Tooltips` are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element that triggers it and where it's located in the interface. |   | **Jump to variant:** Tooltip TooltipCondensed TooltipTable |
-| --- | --- | --- |
+| `Tooltips` are always used in conjunction with other elements when there is a need to further clarify the element's function, provide instructions, or display additional details to the user. The variant used depends on the element that triggers it and where it's located in the interface. |     | **Jump to variant:** Tooltip TooltipCondensed TooltipTable |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ---------------------------------------------------------- |
 
 ### Visual Preview
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ---
 
@@ -717,10 +717,10 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS `Tooltip` component has a number of preset options in addition to, or that modify, the MUI options:
 
-* **`sdsStyle`** **:** This prop takes either `light`  (the default if not specified), or `dark`.  Each of these "unlocks" additional options for other props; see below bullets:
-    * **`width`****:**  SDS `Tooltip`'s  `width`  prop accepts `"default"`(unsurprisingly, the default!) which limits the maximum width to 250px. Additionally, only if `sdsStyle="light"` then it also accepts a value of  `"wide"`,  which translates to a maximum width of 550px. Compare these string options to MUI's `width`  prop, which takes a number for the width in pixels.
-    * **`subtitle`****:**  This SDS-specific prop is only available for dark-styled `Tooltips` (`sdsStyle="dark"`) . It takes a string value that displays below the text set by the `title`  prop.
-* **`arrowOffset`****:**  This SDS-only prop takes a negative or positive value equivalent to the number of pixels by which to move the arrow (if `arrow={true}`) either left or right, respectively. It is possible though for this to move the arrow outside of the `Tooltip` edge itself, so be aware of the `width` setting as well as the length of text within the `Tooltip`.
+- **`sdsStyle`** **:** This prop takes either `light` (the default if not specified), or `dark`. Each of these "unlocks" additional options for other props; see below bullets:
+  - **`width`\*\***:\*\* SDS `Tooltip`'s `width` prop accepts `"default"`(unsurprisingly, the default!) which limits the maximum width to 250px. Additionally, only if `sdsStyle="light"` then it also accepts a value of `"wide"`, which translates to a maximum width of 550px. Compare these string options to MUI's `width` prop, which takes a number for the width in pixels.
+  - **`subtitle`\*\***:\*\* This SDS-specific prop is only available for dark-styled `Tooltips` (`sdsStyle="dark"`) . It takes a string value that displays below the text set by the `title` prop.
+- **`arrowOffset`\*\***:\*\* This SDS-only prop takes a negative or positive value equivalent to the number of pixels by which to move the arrow (if `arrow={true}`) either left or right, respectively. It is possible though for this to move the arrow outside of the `Tooltip` edge itself, so be aware of the `width` setting as well as the length of text within the `Tooltip`.
 
 ### MUI Documentation
 
@@ -730,15 +730,15 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `arrow` | `boolean` | `false` | If `true`, adds an arrow to the tooltip. |
-| `arrowOffset` | `number` | `0` | ArrowOffset changes the position of the tooltip arrow and can be any numeric value within `[-120, 120]`. Exceeding the tooltip width removes the arrow. |
-| `placement` | `"bottom-start"`  `| "bottom"`  `| "bottom-end"`  `| "left-start"`  `| "left"`  `| "left-end"`  `| "right-start"`  `| "right"`  `| "right-end"`  `| "top-start"`  `| "top"`  `| "top-end"` | `"bottom"` | Tooltip placement. |
-| `sdsStyle` | `"light" | "dark"` | `"light"` | Style of the component. |
-| `subtitle` | `string` | `-` | Tooltip subtitle text. |
-| `title` | `Node` | `-` | Tooltip title. Zero-length titles string, undefined, null and false are never displayed. |
-| `width` | `"default" | "wide"` | `"default"` | If set to `wide`, the tooltip is wider. |
+| Name          | Type               | Default      | Description                                                                                                                                             |
+| ------------- | ------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ---------- | -------------- | ----------------- | ----------- | --------------- | --------------- | --------- | ---------- | ---------- | ------------------ |
+| `arrow`       | `boolean`          | `false`      | If `true`, adds an arrow to the tooltip.                                                                                                                |
+| `arrowOffset` | `number`           | `0`          | ArrowOffset changes the position of the tooltip arrow and can be any numeric value within `[-120, 120]`. Exceeding the tooltip width removes the arrow. |
+| `placement`   | `"bottom-start"` ` | "bottom"`  ` | "bottom-end"`  `                                                                                                                                        | "left-start"`  `                        | "left"`  ` | "left-end"`  ` | "right-start"`  ` | "right"`  ` | "right-end"`  ` | "top-start"`  ` | "top"`  ` | "top-end"` | `"bottom"` | Tooltip placement. |
+| `sdsStyle`    | `"light"           | "dark"`      | `"light"`                                                                                                                                               | Style of the component.                 |
+| `subtitle`    | `string`           | `-`          | Tooltip subtitle text.                                                                                                                                  |
+| `title`       | `Node`             | `-`          | Tooltip title. Zero-length titles string, undefined, null and false are never displayed.                                                                |
+| `width`       | `"default"         | "wide"`      | `"default"`                                                                                                                                             | If set to `wide`, the tooltip is wider. |
 
 ### Code examples
 
@@ -773,13 +773,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -794,17 +792,13 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tooltip 
-        arrow 
+      <Tooltip
+        arrow
         sdsStyle="dark"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi." 
-        title="Tooltip title" 
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi."
+        title="Tooltip title"
       >
-        <ButtonIcon
-          sdsType="secondary"
-          sdsSize="large"
-          sdsIcon="InfoCircle"
-        />
+        <ButtonIcon sdsType="secondary" sdsSize="large" sdsIcon="InfoCircle" />
       </Tooltip>
     </div>
   );
@@ -850,13 +844,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -877,18 +870,29 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
 
-#### **Tooltip – Light** 
+#### **Tooltip – Light**
 
 This example showcases a light-themed `Tooltip`.
 
@@ -921,13 +925,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -942,15 +944,11 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tooltip 
-        arrow 
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi." 
+      <Tooltip
+        arrow
+        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi."
       >
-        <ButtonIcon
-          sdsType="secondary"
-          sdsSize="large"
-          sdsIcon="InfoCircle"
-        />
+        <ButtonIcon sdsType="secondary" sdsSize="large" sdsIcon="InfoCircle" />
       </Tooltip>
     </div>
   );
@@ -996,13 +994,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1023,13 +1020,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1038,11 +1046,11 @@ root.render(
 
 This example demonstrates how to add a tooltip to a disabled component, commonly a button.
 
->**Note for Tooltips on** **`Disabled`** **elements**
+> **Note for Tooltips on** **`Disabled`** **elements**
 >
->If the tooltip wraps a disabled component, please make sure to wrap the children in a `<span>` tag.
+> If the tooltip wraps a disabled component, please make sure to wrap the children in a `<span>` tag.
 >
->https://mui.com/components/tooltips/#disabled-elements
+> https://mui.com/components/tooltips/#disabled-elements
 
 **/styles.css**
 
@@ -1073,13 +1081,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1094,10 +1100,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Tooltip 
-        arrow 
-        title="This Button is disabled!" 
-      >
+      <Tooltip arrow title="This Button is disabled!">
         <span>
           <ButtonIcon
             sdsType="secondary"
@@ -1151,13 +1154,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1178,13 +1180,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1199,11 +1212,11 @@ The component's source code in the SDS codebase can be found here.
 
 ### SDS vs MUI
 
-Like the regular SDS `Tooltip` component, the `TooltipCondensed` component is built on MUI's `Tooltip` component, and has its own SDS-specific props and options (which are different from SDS's `Tooltip`  component's SDS-only options):
+Like the regular SDS `Tooltip` component, the `TooltipCondensed` component is built on MUI's `Tooltip` component, and has its own SDS-specific props and options (which are different from SDS's `Tooltip` component's SDS-only options):
 
-* **`indicator`****:**  This boolean prop determines whether or not the `Tooltip` text should be preceded by a colored dot.
-* **`indicatorColor`****:**  Sets the color of the `indicator`,  if included.
-* **`followCursor`****:**  Additionally, `TooltipCondensed` has the `followCursor` behavior, and setting the `followCursor` prop to `false` has no effect.
+- **`indicator`\*\***:\*\* This boolean prop determines whether or not the `Tooltip` text should be preceded by a colored dot.
+- **`indicatorColor`\*\***:\*\* Sets the color of the `indicator`, if included.
+- **`followCursor`\*\***:\*\* Additionally, `TooltipCondensed` has the `followCursor` behavior, and setting the `followCursor` prop to `false` has no effect.
 
 ### MUI Documentation
 
@@ -1213,11 +1226,11 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `indicator` | `boolean` | `false` | This boolean prop determines whether or not the Tooltip text should be preceded by a colored dot. |
-| `indicatorColor` | `color` | `-` | Sets the color of the indicator,  if included. |
-| `title` | `Node` | `-` | Tooltip title. Zero-length titles string, undefined, null and false are never displayed. |
+| Name             | Type      | Default | Description                                                                                       |
+| ---------------- | --------- | ------- | ------------------------------------------------------------------------------------------------- |
+| `indicator`      | `boolean` | `false` | This boolean prop determines whether or not the Tooltip text should be preceded by a colored dot. |
+| `indicatorColor` | `color`   | `-`     | Sets the color of the indicator, if included.                                                     |
+| `title`          | `Node`    | `-`     | Tooltip title. Zero-length titles string, undefined, null and false are never displayed.          |
 
 ### Code examples
 
@@ -1254,13 +1267,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1275,16 +1286,12 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <TooltipCondensed 
+      <TooltipCondensed
         indicator
         indicatorColor="DodgerBlue"
-        title="Tooltip title" 
+        title="Tooltip title"
       >
-        <ButtonIcon
-          sdsType="secondary"
-          sdsSize="large"
-          sdsIcon="InfoCircle"
-        />
+        <ButtonIcon sdsType="secondary" sdsSize="large" sdsIcon="InfoCircle" />
       </TooltipCondensed>
     </div>
   );
@@ -1330,13 +1337,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1357,13 +1363,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -1380,9 +1397,9 @@ The component's source code in the SDS codebase can be found here.
 
 The SDS `TooltipTable` is built off of the MUI `Tooltip` component, but it has a built-in way to add tabular data:
 
-*  **`data`****:** This prop takes an array of objects to be formatted within the `TooltipTable` with two columns, one for `label` and one for `value`.  
-* **`itemAlign`****:**  This prop specific to SDS positions the `value` contents of each row either the `right` or `left` of their column.
-* **`contentAlert`****:** This SDS-specific prop takes a value of `String` (a message),  `Element` (such as a link),  or `None` (the default).
+- **`data`\*\***:\*\* This prop takes an array of objects to be formatted within the `TooltipTable` with two columns, one for `label` and one for `value`.
+- **`itemAlign`\*\***:\*\* This prop specific to SDS positions the `value` contents of each row either the `right` or `left` of their column.
+- **`contentAlert`\*\***:\*\* This SDS-specific prop takes a value of `String` (a message), `Element` (such as a link), or `None` (the default).
 
 ### MUI Documentation
 
@@ -1392,11 +1409,11 @@ Documentation for the underlying MUI component can be found here.
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `contentAlert` | `string | JSX.Element` | `-` | This SDS-specific prop takes a value of String (a message),  Element (such as a link),  or None (the default) |
-| `data` | `Array<{`     `label?: string;`     `dataRows: {`       `label: string;`       `value: string | number;`     `}[];`     `disabled?: boolean;`   `}>` | `-` | This prop takes an array of objects to be formatted within the TooltipTable with two columns, one for label  and one for value.   |
-| `itemAlign` | `"left" | "right"` | `"right"` | This prop specific to SDS positions the value  contents of each row either the `right` or `left` of their column. |
+| Name           | Type                                                                      | Default                                              | Description |
+| -------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `contentAlert` | `string                                                                   | JSX.Element`                                         | `-`         | This SDS-specific prop takes a value of String (a message), Element (such as a link), or None (the default)                    |
+| `data`         | `Array<{` `label?: string;` `dataRows: {` `label: string;` `value: string | number;`     `}[];`     `disabled?: boolean;`   `}>` | `-`         | This prop takes an array of objects to be formatted within the TooltipTable with two columns, one for label and one for value. |
+| `itemAlign`    | `"left"                                                                   | "right"`                                             | `"right"`   | This prop specific to SDS positions the value contents of each row either the `right` or `left` of their column.               |
 
 ### Code examples
 
@@ -1431,13 +1448,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -1459,26 +1474,18 @@ function App() {
       label: "Section 1",
     },
     {
-      dataRows: [
-        { label: "Third", value: 3 },
-      ],
+      dataRows: [{ label: "Third", value: 3 }],
       label: "Section 2",
-    }
+    },
   ];
   return (
     <div className="app">
-      <Tooltip 
-        arrow 
-        title={
-          <TooltipTable itemAlign="right" data={data} />
-        } 
+      <Tooltip
+        arrow
+        title={<TooltipTable itemAlign="right" data={data} />}
         placement="right-end"
       >
-        <ButtonIcon
-          sdsType="secondary"
-          sdsSize="large"
-          sdsIcon="InfoCircle"
-        />
+        <ButtonIcon sdsType="secondary" sdsSize="large" sdsIcon="InfoCircle" />
       </Tooltip>
     </div>
   );
@@ -1524,13 +1531,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1551,14 +1557,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

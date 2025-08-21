@@ -1,98 +1,34 @@
 {
   "InputSearch": {
     "props": {
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "children": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The content of the component.\n@ignore"
-      },
-      "color": {
-        "type": "\"error\" | \"primary\" | \"secondary\" | \"info\" | \"success\" | \"warning\"",
-        "isRequired": false,
-        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
-        "defaultValue": "primary"
-      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false,
         "description": "If `true`, the component is disabled.",
         "defaultValue": false
       },
-      "fullWidth": {
-        "type": "\"false\" | \"true\"",
+      "id": {
+        "type": "string",
         "isRequired": false,
-        "description": "If `true`, the input will take up the full width of its container.",
-        "defaultValue": false
+        "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers."
       },
-      "size": {
-        "type": "\"small\" | \"medium\"",
-        "isRequired": false,
-        "description": "The size of the component."
-      },
-      "variant": {
-        "type": "\"filled\" | \"outlined\" | \"standard\"",
-        "isRequired": false,
-        "description": "The variant to use.",
-        "defaultValue": "outlined\noutlined\noutlined"
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
       },
       "label": {
         "type": "ReactNode",
         "isRequired": false,
         "description": "The label content."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers."
-      },
-      "onChange": {
-        "type": "function",
-        "isRequired": false,
-        "description": "Callback fired when the value is changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string)."
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Name attribute of the `input` element."
-      },
       "placeholder": {
         "type": "string",
         "isRequired": false,
         "description": "The short hint displayed in the `input` before the user enters a value."
       },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value of the `input` element, required for a controlled component."
-      },
-      "handleSubmit": {
-        "type": "(value: string) => void",
-        "isRequired": false
-      },
-      "customTheme": {
-        "type": "\"light\" | \"dark\" | \"auto\"",
-        "isRequired": false
-      },
-      "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
-      },
       "sdsStyle": {
         "type": "\"rounded\" | \"square\"",
-        "isRequired": false,
-        "description": "The visual style variant of the component"
+        "isRequired": false
       }
     }
   }

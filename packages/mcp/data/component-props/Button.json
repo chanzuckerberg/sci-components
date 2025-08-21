@@ -1,107 +1,42 @@
 {
   "Button": {
     "props": {
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "children": {
+      "endIcon": {
         "type": "ReactNode",
         "isRequired": false,
-        "description": "The content of the component.\nThe content of the component."
+        "description": "Element placed after the children."
       },
-      "disabled": {
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": true
+      },
+      "isAllCaps": {
         "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is disabled.",
-        "defaultValue": "false\nfalse"
-      },
-      "color": {
-        "type": "\"inherit\" | \"primary\" | \"secondary\" | \"success\" | \"error\" | \"info\" | \"warning\"",
-        "isRequired": false,
-        "description": "The color of the component.\nIt supports both default and custom theme colors, which can be added as shown in the\n[palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).",
-        "defaultValue": "primary"
-      },
-      "fullWidth": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the button will take up the full width of its container.",
-        "defaultValue": false
-      },
-      "href": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The URL to link to when the button is clicked.\nIf defined, an `a` element will be used as the root node."
-      },
-      "size": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false,
-        "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
-        "defaultValue": "medium"
-      },
-      "variant": {
-        "type": "\"text\" | \"outlined\" | \"contained\"",
-        "isRequired": false,
-        "description": "The variant to use.",
-        "defaultValue": "text"
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false
-      },
-      "value": {
-        "type": "\"string\" | \"number\" | \"readonly string[]\"",
-        "isRequired": false
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "onChange": {
-        "type": "FormEventHandler<HTMLButtonElement>",
         "isRequired": false
       },
       "onClick": {
         "type": "function",
         "isRequired": false
       },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false
+      },
       "sdsStyle": {
         "type": "\"icon\" | \"minimal\" | \"rounded\" | \"square\"",
-        "isRequired": true,
-        "description": "The visual style variant of the component"
+        "isRequired": true
       },
       "sdsType": {
         "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
+        "isRequired": false
+      },
+      "startIcon": {
+        "type": "ReactNode",
         "isRequired": false,
-        "description": "The type/variant of the component"
+        "description": "Element placed before the children."
       },
-      "sdsSize": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false,
-        "description": "The size of the component"
-      },
-      "icon": {
-        "type": "ReactElement",
-        "isRequired": true
-      },
-      "sdsIconProps": {
-        "type": "Partial<IconProps<keyof IconNameToSizes>>",
-        "isRequired": false
-      },
-      "isAllCaps": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "target": {
-        "type": "\"string & {}\" | \"_self\" | \"_blank\" | \"_parent\" | \"_top\"",
-        "isRequired": false
-      },
-      "isRounded": {
-        "type": "\"false\" | \"true\"",
+      "text": {
+        "type": "any",
         "isRequired": false
       }
     }

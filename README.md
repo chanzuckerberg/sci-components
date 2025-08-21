@@ -54,6 +54,8 @@ Common yarn scrips have been moved to the monorepo root. The -- syntax can be us
 - `yarn lint`: Runs linter
 - `yarn build`: Build the packages
 - `yarn ci`: Executes `yarn install --frozen-lockfile` in both packages
+- `yarn evaluate:code <file>`: Evaluates a single component file for SDS compliance
+- `yarn evaluate:batch <directory>`: Evaluates all .tsx/.ts files in a directory
 
 - _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czi-sds/components`._
 
@@ -362,6 +364,31 @@ const theme = createTheme(appTheme);
      );
    }
    ```
+
+## Code Evaluation
+
+We provide a comprehensive evaluation script to assess LLM-generated UI components for SDS compliance and best practices.
+
+### Quick Evaluation
+
+```bash
+# Evaluate a single component
+yarn evaluate:code ./my-component.tsx
+
+# Evaluate all components in a directory
+yarn evaluate:batch ./generated-components/
+```
+
+### What It Evaluates
+
+- ✅ **TypeScript compilation** - Ensures code compiles without errors
+- ✅ **ESLint compliance** - Checks code quality and style
+- ✅ **SDS component usage** - Verifies proper use of design system components
+- ✅ **Import statements** - Ensures SDS components are properly imported
+- ✅ **Design tokens** - Checks for consistent design token usage
+- ✅ **Accessibility** - Verifies accessibility attributes and patterns
+
+For detailed usage instructions and examples, see [scripts/README.md](scripts/README.md).
 
 ## Project status
 

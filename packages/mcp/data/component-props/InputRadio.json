@@ -5,6 +5,11 @@
         "type": "string",
         "isRequired": false
       },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled."
+      },
       "intent": {
         "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
         "isRequired": false
@@ -13,62 +18,9 @@
         "type": "ReactNode",
         "isRequired": false
       },
-      "radioProps": {
-        "type": "Partial<RadioProps>",
-        "isRequired": false
-      },
       "stage": {
         "type": "\"checked\" | \"unchecked\"",
         "isRequired": false
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value of the component. The DOM API casts this to a string."
-      },
-      "icon": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The icon to display when the component is unchecked.",
-        "defaultValue": "<RadioButtonIcon />"
-      },
-      "className": {
-        "type": "string",
-        "isRequired": false
-      },
-      "style": {
-        "type": "CSSProperties",
-        "isRequired": false
-      },
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "If `true`, the component is disabled."
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Name attribute of the `input` element."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the `input` element."
-      },
-      "onChange": {
-        "type": "function",
-        "isRequired": false,
-        "description": "Callback fired when the state is changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).\nYou can pull out the new checked state by accessing `event.target.checked` (boolean)."
-      },
-      "onClick": {
-        "type": "function",
-        "isRequired": false
-      },
-      "size": {
-        "type": "\"small\" | \"medium\"",
-        "isRequired": false,
-        "description": "The size of the component.\n`small` is equivalent to the dense radio styling.",
-        "defaultValue": "medium"
       }
     }
   }

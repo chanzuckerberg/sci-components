@@ -6,8 +6,8 @@ Links are interactive elements that, when clicked, navigate the user away from t
 
 ## Overview
 
-|  | In Figma |   |  | Meets Accessibility |   |  | In Code |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+|     | In Figma |     |     | Meets Accessibility |     |     | In Code |
+| --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Link Variants
 
@@ -17,7 +17,7 @@ Though visually similar to Button – Minimal, Links navigate the user away from
 
 Links come in two sizes: fontXs and fontS to align with SDS' most common body copy font sizes.
 
->**Note:** When including an inline Link in your Figma designs, styles must be manually applied as there is no way to save the Link style in Figma as a text style. Use the Link Figma component for links that are not inline. 
+> **Note:** When including an inline Link in your Figma designs, styles must be manually applied as there is no way to save the Link style in Figma as a text style. Use the Link Figma component for links that are not inline.
 
 ---
 
@@ -34,7 +34,7 @@ Default
 Use Link – Default only when the Link is placed on `surface-primary`, `surface-secondary`, or `surface-tertiary` backgrounds to ensure there is enough contrast to pass visual accessibility standards, otherwise use Link – Dashed.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 ---
 
@@ -45,14 +45,14 @@ Use Link – Dashed when the Link is placed on a background where the Link – D
 See Borders section for Link Underline details.
 
 | Default | Hover | Pressed |
-| --- | --- | --- |
+| ------- | ----- | ------- |
 
 #### Color Rules
 
 The color of Link – Dashed and its underline should match the color of the text used in the paragraph it is placed within.
 
 | Primary Text | Secondary Text | On-fill Text |
-| --- | --- | --- |
+| ------------ | -------------- | ------------ |
 
 ---
 
@@ -60,11 +60,11 @@ The color of Link – Dashed and its underline should match the color of the tex
 
 These rules establish how much margin should exist between and around elements.
 
->**Note:** The underline for Link – Dashed is spaced lower than the default text-decoration underline.
+> **Note:** The underline for Link – Dashed is spaced lower than the default text-decoration underline.
 
 ## Code
 
->**Note:** The code examples below must install dependencies before displaying and may take extra time to load
+> **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
 ## Link
 
@@ -74,17 +74,17 @@ The component's source code in the SDS codebase can be found here.
 
 ### MUI Documentation
 
-Documentation for the underlying MUI component can be found here. There are no differences between the SDS and MUI component. 
+Documentation for the underlying MUI component can be found here. There are no differences between the SDS and MUI component.
 
 ### Props
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `sdsStyle` | `"default"` `| "dashed"` | `"default"` | The style of underline corresponding to the `text-decoration` CSS property. Default is `underline`. |
-| `sdsSize` | `"xs" | "s"` | `"xs"` | The font size of the `Link` component |
-| `fontWeight` | `"normal"`  `| "bold"`  | `"normal"` | The font weight of the `Link` component. |
+| Name         | Type          | Default   | Description |
+| ------------ | ------------- | --------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| `sdsStyle`   | `"default"` ` | "dashed"` | `"default"` | The style of underline corresponding to the `text-decoration` CSS property. Default is `underline`. |
+| `sdsSize`    | `"xs"         | "s"`      | `"xs"`      | The font size of the `Link` component                                                               |
+| `fontWeight` | `"normal"` `  | "bold"`   | `"normal"`  | The font weight of the `Link` component.                                                            |
 
 ### Code examples
 
@@ -117,13 +117,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -138,9 +136,7 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Link href="#">
-        Science Design System
-      </Link>
+      <Link href="#">Science Design System</Link>
     </div>
   );
 }
@@ -185,13 +181,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -212,13 +207,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -252,13 +258,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -273,13 +277,13 @@ import "./styles.css";
 
 function App() {
   const theme = useTheme();
-  const semanticColors = getSemanticColors({theme});
-  
+  const semanticColors = getSemanticColors({ theme });
+
   const StyledParagraph = styled("p")`
     background-color: ${semanticColors?.accent?.surfacePrimary};
     padding: 10px;
   `;
-  
+
   return (
     <div className="app">
       <StyledParagraph>
@@ -333,13 +337,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -360,14 +363,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-

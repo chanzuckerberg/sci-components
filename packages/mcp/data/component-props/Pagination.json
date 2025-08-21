@@ -1,50 +1,25 @@
 {
   "Pagination": {
     "props": {
-      "sdsStyle": {
-        "type": "\"round\" | \"square\"",
-        "isRequired": false,
-        "description": "The visual style variant of the component"
-      },
-      "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "selected": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "truncateDropdown": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "onPageChange": {
-        "type": "(page: number) => void",
-        "isRequired": true
-      },
-      "onNextPage": {
-        "type": "() => void",
-        "isRequired": true
-      },
-      "onPreviousPage": {
-        "type": "() => void",
-        "isRequired": true
-      },
-      "totalCount": {
+      "pageSize": {
         "type": "number",
         "isRequired": true
+      },
+      "sdsStyle": {
+        "type": "\"round\" | \"square\"",
+        "isRequired": false
       },
       "siblingCount": {
         "type": "number",
         "isRequired": false
       },
-      "currentPage": {
+      "totalCount": {
         "type": "number",
         "isRequired": true
       },
-      "pageSize": {
-        "type": "number",
-        "isRequired": true
+      "truncateDropdown": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
       }
     }
   }

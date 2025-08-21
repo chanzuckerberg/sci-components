@@ -8,19 +8,19 @@ Themes enable visual changes to be made across the UI, affecting all elements in
 
 SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the Semantic Colors and Primitive Colors documentation.
 
->**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
+> **Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
 
 ### Color Indexes
 
-The color indexes used in SDS primitive color names (e.g., `gray100`, `gray200`, etc.) refer to the level of contrast of that color against the background it is viewed upon. As a result, primitive colors have a different appearance between Light and Dark Mode, but they have a consistent *functional* appearance relative to their backgrounds. This is why `gray100` in Light Mode is a light gray color, whereas `gray100` in Dark Mode is a dark gray color—both have low contrasts when viewed in relation to their corresponding background colors.
+The color indexes used in SDS primitive color names (e.g., `gray100`, `gray200`, etc.) refer to the level of contrast of that color against the background it is viewed upon. As a result, primitive colors have a different appearance between Light and Dark Mode, but they have a consistent _functional_ appearance relative to their backgrounds. This is why `gray100` in Light Mode is a light gray color, whereas `gray100` in Dark Mode is a dark gray color—both have low contrasts when viewed in relation to their corresponding background colors.
 
 | Light Mode | Dark Mode |
-| :---: | :---: |
+| :--------: | :-------: |
 
 In most cases, each semantic variable will have the same primitive value mapped to it regardless of the mode of that primitive value. For example, the semantic variable `Base.text-primary` has `gray900` mapped to it; in Light Mode `gray900` = `#000000`(black), but in Dark Mode `gray900` = `#ffffff` (white). This means that in both modes primary text is highly visible against the background it is placed on top of, whether a light background in Light Mode or a dark background in Dark Mode.
 
 | Light Mode | Dark Mode |
-| :---: | :---: |
+| :--------: | :-------: |
 
 ### Differences in Light Mode vs Dark Mode
 
@@ -29,7 +29,7 @@ The only instances where the primitive variables mapped to semantic variables di
 In Dark Mode, `background-primary` is `gray75` (not quite pure black which has poor visual accessibility when used across large areas) and `surface` and `fill-primary` are both `gray100` (shades of dark gray that are visible when viewed on top of `gray75` backgrounds). One of the main reasons for this is that drop shadows can't be leveraged in Dark Mode to separate layers in the same way that they can be in Light Mode since shadows are not nearly as visible when viewed on dark backgrounds.
 
 | Light Mode | Dark Mode |
-| :---: | :---: |
+| :--------: | :-------: |
 
 ### Inverted Style
 
@@ -38,7 +38,7 @@ There are a few components (Header Navigation, Footer Navigation, Tooltip, and C
 See the individual component pages for more details and visual examples.
 
 | Default (Light Mode) | Inverted (Light Mode) |
-| :---: | :---: |
+| :------------------: | :-------------------: |
 
 ## Code
 
@@ -46,11 +46,11 @@ See the individual component pages for more details and visual examples.
 
 SDS supports both Light and Dark Mode and they can be implemented to allow users to toggle between them or set either as the application's primary color mode. Every primitive color variable has a Dark Mode equivalent and each semantic color variable has a Dark Mode primitive mapped to it; for specific hex codes and primitive color mappings, see the Semantic Colors and Primitive Colors documentation.
 
->**Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
+> **Note:** the semantic color variable mappings in the Bases color set are not always one-to-one between Light and Dark Modes, see Differences in Light Mode vs Dark Mode for more details.
 
 ### Dark Mode by Default
 
-You can make your application use Dark Mode as the default theme—regardless of the user's preference—by passing `'dark'` to the `Theme` helper. 
+You can make your application use Dark Mode as the default theme—regardless of the user's preference—by passing `'dark'` to the `Theme` helper.
 
 Adding `<CssBaseline />` inside of the `<ThemeProvider>` component will also enable dark mode for the app's background.
 
@@ -79,13 +79,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -100,7 +98,9 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Button sdsType="primary" sdsStyle="square">Label</Button>
+      <Button sdsType="primary" sdsStyle="square">
+        Label
+      </Button>
     </div>
   );
 }
@@ -126,8 +126,8 @@ const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={Theme('dark')}>
-        <EmotionThemeProvider theme={Theme('dark')}>
+      <ThemeProvider theme={Theme("dark")}>
+        <EmotionThemeProvider theme={Theme("dark")}>
           <CssBaseline />
           <App />
         </EmotionThemeProvider>
@@ -135,13 +135,12 @@ root.render(
     </StyledEngineProvider>
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -162,13 +161,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
@@ -206,13 +216,11 @@ h1 {
 
 ```json
 {
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "dom", "es2015" ],
+    "lib": ["dom", "es2015"],
     "jsx": "react-jsx"
   }
 }
@@ -227,7 +235,9 @@ import "./styles.css";
 function App() {
   return (
     <div className="app">
-      <Button sdsType="primary" sdsStyle="square">Label</Button>
+      <Button sdsType="primary" sdsStyle="square">
+        Label
+      </Button>
     </div>
   );
 }
@@ -273,13 +283,12 @@ root.render(
     <RootApp />
   </React.StrictMode>
 );
-
 ```
 
 **/public/index.html**
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -300,14 +309,24 @@ root.render(
     <div id="root"></div>
   </body>
 </html>
-
 ```
 
 **/package.json**
 
 ```json
-{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}
+{
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "main": "/index.tsx"
+}
 ```
 
 ---
-
