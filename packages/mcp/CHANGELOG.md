@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.4.0...@czi-sds/mcp@0.5.0) (2025-08-21)
+
+### Features
+
+- add MCP design system rules for consistent SDS usage ([#1004](https://github.com/chanzuckerberg/sci-components/issues/1004)) ([482027d](https://github.com/chanzuckerberg/sci-components/commit/482027d51f92273f8c3638eaf31e936c6866d6ed))
+
 # [0.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.3.0...@czi-sds/mcp@0.4.0) (2025-08-20)
 
 ### Features
