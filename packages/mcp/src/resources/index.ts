@@ -1,77 +1,101 @@
+/* eslint-disable import/extensions */
 import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const dataDir = join(__dirname, "../../data");
+const FILENAME = fileURLToPath(import.meta.url);
+const DIRNAME = dirname(FILENAME);
+const dataDir = join(DIRNAME, "../../data/resources");
+
+const MIME_TYPE_MARKDOWN = "text/markdown";
+const UNKNOWN_ERROR = "Unknown error";
 
 export function initializeResources(server: McpServer) {
-  // List available resources
-  server.setRequestHandler("resources/list", async () => ({
-    resources: [
-      {
-        uri: "sds://rules/figma",
-        name: "Figma to Code Translation Rules",
-        mimeType: "text/markdown",
-        description: "Rules for translating Figma designs to SDS code"
-      },
-      {
-        uri: "sds://rules/components",
-        name: "SDS Component Usage Rules", 
-        mimeType: "text/markdown",
-        description: "Guidelines for using SDS components correctly"
-      },
-      {
-        uri: "sds://rules/zeroheight",
-        name: "Zeroheight Documentation Rules",
-        mimeType: "text/markdown", 
-        description: "Rules for following Zeroheight documentation"
-      }
-    ]
-  }));
+  // Register Figma rules resource
+  server.resource(
+    "Figma to Code Translation Rules",
+    "sds://rules/figma",
+    {
+      mimeType: MIME_TYPE_MARKDOWN,
+      description: "Rules for translating Figma designs to SDS code",
+    },
+    async () => {
+      try {
+        const filePath = join(dataDir, "figma-rules.md");
+        const content = readFileSync(filePath, "utf-8");
 
-  // Handle resource reading
-  server.setRequestHandler("resources/read", async (request) => {
-    const { uri } = request.params;
-    
-    let filePath: string;
-    let content: string;
-    
-    try {
-      switch (uri) {
-        case "sds://rules/figma":
-          filePath = join(dataDir, "figma-rules.md");
-          content = readFileSync(filePath, "utf-8");
-          break;
-          
-        case "sds://rules/components":
-          filePath = join(dataDir, "sds-component-rules.md");
-          content = readFileSync(filePath, "utf-8");
-          break;
-          
-        case "sds://rules/zeroheight":
-          filePath = join(dataDir, "zeroheight-rules.md");
-          content = readFileSync(filePath, "utf-8");
-          break;
-          
-        default:
-          throw new Error("Unknown resource: " + uri);
+        return {
+          contents: [
+            {
+              uri: "sds://rules/figma",
+              mimeType: MIME_TYPE_MARKDOWN,
+              text: content,
+            },
+          ],
+        };
+      } catch (err) {
+        const message = err instanceof Error ? err.message : UNKNOWN_ERROR;
+        throw new Error("Failed to read Figma rules: " + message);
       }
-      
-      return {
-        contents: [
-          {
-            uri,
-            mimeType: "text/markdown",
-            text: content
-          }
-        ]
-      };
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Unknown error';
-      throw new Error("Failed to read resource " + uri + ": " + message);
     }
-  });
+  );
+
+  // Register SDS component rules resource
+  server.resource(
+    "SDS Component Usage Rules",
+    "sds://rules/components",
+    {
+      mimeType: MIME_TYPE_MARKDOWN,
+      description: "Guidelines for using SDS components correctly",
+    },
+    async () => {
+      try {
+        const filePath = join(dataDir, "sds-component-rules.md");
+        const content = readFileSync(filePath, "utf-8");
+
+        return {
+          contents: [
+            {
+              uri: "sds://rules/components",
+              mimeType: MIME_TYPE_MARKDOWN,
+              text: content,
+            },
+          ],
+        };
+      } catch (err) {
+        const message = err instanceof Error ? err.message : UNKNOWN_ERROR;
+        throw new Error("Failed to read component rules: " + message);
+      }
+    }
+  );
+
+  // Register Zeroheight rules resource
+  server.resource(
+    "Zeroheight Documentation Rules",
+    "sds://rules/zeroheight",
+    {
+      mimeType: MIME_TYPE_MARKDOWN,
+      description: "Rules for following Zeroheight documentation",
+    },
+    async () => {
+      try {
+        const filePath = join(dataDir, "zeroheight-rules.md");
+        const content = readFileSync(filePath, "utf-8");
+
+        return {
+          contents: [
+            {
+              uri: "sds://rules/zeroheight",
+              mimeType: MIME_TYPE_MARKDOWN,
+              text: content,
+            },
+          ],
+        };
+      } catch (err) {
+        const message = err instanceof Error ? err.message : UNKNOWN_ERROR;
+        throw new Error("Failed to read Zeroheight rules: " + message);
+      }
+    }
+  );
 }
