@@ -14,11 +14,13 @@ priority: 90
 # Rules
 
 1. **MCP Queries**
+
    - Use `get_code` to fetch React snippets for the selected Figma node.
    - Use `get_variable_defs` to pull tokens (color, spacing, typography, radius).
    - Use `get_code_connect_map` to check if a Code Connect mapping exists.
 
 2. **Code Generation**
+
    - Default: React + TypeScript + Tailwind.
    - Place components under `src/components/{Group}/{Component}`.
    - PascalCase for filenames and component names.
@@ -27,12 +29,14 @@ priority: 90
    - Accessibility: add semantic roles, aria labels from Figma text layers.
 
 3. **Storybook**
+
    - Generate CSF 3 stories with `@storybook/react` imports.
    - Default story = `Playground`.
    - Add `States`/`Sizes` stories if variants exist.
    - Title format: `Design System/{Group}/{Component}`.
 
 4. **Tokens**
+
    - Always prefer MCP-fetched Figma Variables over hardcoded values.
    - Use CSS custom properties `--ds-*` when possible.
 
