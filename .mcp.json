@@ -4,6 +4,9 @@
       "command": "npx",
       "args": ["-y", "@mui/mcp-server"],
       "enabled": true
+    },
+    "Figma": {
+      "url": "http://127.0.0.1:3845/mcp"
     }
   }
 }

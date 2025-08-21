@@ -1,0 +1,23 @@
+{
+  "codeConnect": {
+    "label": "React",
+    "include": [
+      "**/*.figma.{tsx,jsx}",
+      "packages/components/src/**/*/*.figma.tsx",
+      "packages/**/src/**/*.{ts,tsx,js,jsx}",
+      "packages/**/components/**/*.{ts,tsx,js,jsx}",
+      "apps/**/src/**/*.{ts,tsx,js,jsx}",
+      "src/**/*.{ts,tsx,js,jsx}"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.next/**",
+      "**/docs-build/**",
+      "**/*.stories.{tsx,jsx}",
+      "**/*.test.{ts,tsx,js,jsx}"
+    ]
+  }
+}
+
