@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.5.1...@czi-sds/mcp@0.5.2) (2025-08-27)
+
+### Bug Fixes
+
+- **mcp:** fix light/dark mode tailwind tokens tool on the mcp server ([#1009](https://github.com/chanzuckerberg/sci-components/issues/1009)) ([379ed4c](https://github.com/chanzuckerberg/sci-components/commit/379ed4c2a8f719c8049014f7e96b3eb3b4dbccbb))
+
 ## [0.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.5.0...@czi-sds/mcp@0.5.1) (2025-08-21)
 
 ### Bug Fixes
