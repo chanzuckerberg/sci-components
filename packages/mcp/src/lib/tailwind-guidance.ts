@@ -17,7 +17,7 @@ export const TAILWIND_TOKEN_GUIDANCE: Record<string, TokenGuidance> = {
   colors: {
     category: "Colors",
     description:
-      "Theme-aware color tokens with light/dark mode support. Both light and dark mode colors are using the same token name. Use the dark:color-token-name to use the dark mode color.",
+      "Theme-aware color tokens support both light and dark modes. Both modes follow the same token name structure: use light-token-name for light mode colors and dark:dark-token-name for dark mode colors.",
     prefixes: [
       "bg-",
       "border-",
@@ -40,28 +40,31 @@ export const TAILWIND_TOKEN_GUIDANCE: Record<string, TokenGuidance> = {
     examples: [
       {
         description: "Basic text and background colors",
-        code: `<div className="bg-sds-color-semantic-base-background-primary dark:bg-sds-color-semantic-base-background-primary text-sds-color-semantic-base-text-primary dark:text-sds-color-semantic-base-text-primary">
+        code: `<div className="bg-light-sds-color-semantic-base-background-primary dark:bg-dark-sds-color-semantic-base-background-primary text-light-sds-color-semantic-base-text-primary dark:text-dark-sds-color-semantic-base-text-primary">
   Content with semantic colors
 </div>`,
       },
       {
         description: "Dark mode with hover states",
-        code: `<button className="bg-sds-color-semantic-accent-fill-primary dark:bg-sds-color-semantic-accent-fill-primary
-        hover:bg-sds-color-semantic-accent-fill-hover dark:hover:bg-sds-color-semantic-accent-fill-hover">
+        code: `<button className="bg-light-sds-color-semantic-accent-fill-primary dark:bg-dark-sds-color-semantic-accent-fill-primary
+        hover:bg-light-sds-color-semantic-accent-fill-hover dark:hover:bg-dark-sds-color-semantic-accent-fill-hover">
   Click me
 </button>`,
       },
       {
         description: "Border and focus states",
         code: `<input className="
-  border-sds-color-semantic-base-border-primary
-  hover:border-sds-color-semantic-base-border-primary-hover
-  focus:border-sds-color-semantic-base-border-primary-pressed
+  border-light-sds-color-semantic-base-border-primary
+  hover:border-light-sds-color-semantic-base-border-primary-hover
+  focus:border-light-sds-color-semantic-base-border-primary-pressed
+  dark:border-dark-sds-color-semantic-base-border-primary
+  dark:hover:border-dark-sds-color-semantic-base-border-primary-hover
+  dark:focus:border-dark-sds-color-semantic-base-border-primary-pressed
 "/>`,
       },
     ],
     tips: [
-      "Always use semantic colors (e.g., 'sds-color-semantic-base-background-primary') over primitive colors when possible",
+      "Always use semantic colors (e.g., 'bg-light-sds-color-semantic-base-background-primary dark:bg-dark-sds-color-semantic-base-background-primary') over primitive colors when possible",
       "Include both light and dark variants for proper theme support",
     ],
   },
@@ -241,18 +244,24 @@ QUICK START:
 2. Use semantic tokens over primitive ones when available
 3. Include responsive and theme variants for robust implementations
 4. Use the @czi-sds/components/dist/tailwind.json file to get the exact token name and value
-5. To use the typography tokens, you need to add the @tailwindcss/typography plugin to your tailwind.config.js file and then use the typography tokens in your tailwind classes like prose-[typography-token-name] for example prose-sds-body-m-400-wide.
-6. Colors have been defined in light and dark mode with the same name. Use the dark:color-token-name to use the dark mode color.
-7. Use spacing tokens like sds-m for paddings, margins, etc. for example p-sds-m for padding-medium.
-8. Use borderRadius tokens like sds-default for rounded corners for example rounded-sds-default.
-9. Use boxShadow tokens like sds-s for subtle shadows for example shadow-sds-s.
-10. Use breakpoints tokens like sds-m for medium breakpoints for example md:sds-m.
-11. Use fontFamily tokens like sds-body for body font for example font-sds-body.
-12. Use fontSize tokens like sds-body-m-400-wide for body font size for example text-sds-body-m-400-wide.
-13. Use fontVariantNumeric tokens like sds-body-m-400-wide for body font variant numeric for example font-variant-numeric-sds-body-m-400-wide.
-14. Use letterSpacing tokens like sds-body-m-400-wide for body letter spacing for example tracking-sds-body-m-400-wide.
+5. To use the typography tokens, you need to add the @tailwindcss/typography plugin to your tailwind.config.js file and then use the typography tokens in your Tailwind classes like prose-[typography-token-name] (for example, prose-sds-body-m-400-wide)
+6. Colors are defined for both light and dark modes using the same structure. Use dark:dark-color-token-name for dark mode colors and light-color-token-name for light mode colors
+7. Use spacing tokens like sds-m for paddings, margins, etc. (for example, p-sds-m for padding-medium)
+8. Use borderRadius tokens like sds-default for rounded corners (for example, rounded-sds-default)
+9. Use boxShadow tokens like sds-s for subtle shadows (for example, shadow-sds-s)
+10. Use breakpoint tokens like sds-m for medium breakpoints (for example, md:sds-m)
+11. Use fontFamily tokens like sds-body for body font (for example, font-sds-body)
+12. Use fontSize tokens like sds-body-m-400-wide for body font size (for example, text-sds-body-m-400-wide)
+13. Use fontVariantNumeric tokens like sds-body-m-400-wide for body font variant numeric (for example, font-variant-numeric-sds-body-m-400-wide)
+14. Use letterSpacing tokens like sds-body-m-400-wide for body letter spacing (for example, tracking-sds-body-m-400-wide)
 
-For detailed examples, request a specific category.`;
+For detailed examples, request a specific category. To do so, you'll need to call this tool again and pass the category name as an argument. Below are the categories and their descriptions:
+
+fontFamily, fontSize, fontVariantNumeric, letterSpacing, lineHeight, textDecoration, textTransform: These categories can be used for separately formatting font styles in the tailwind.config.js file
+typography: This category can be used for formatting typography in the tailwind.config.js file using the typography plugin and also for using the typography tokens in your Tailwind classes like prose-[typography-token-name] (for example, prose-sds-body-m-400-wide)
+height, width, borderRadius, boxShadow, breakpoints: These categories can be used for formatting height, width, border radius, box shadow, and breakpoints in the tailwind.config.js file
+spacing: This category can be used for formatting spacing in the tailwind.config.js file
+colors: This category can be used for formatting colors in the tailwind.config.js file`;
   }
 
   const guidance = TAILWIND_TOKEN_GUIDANCE[category];
