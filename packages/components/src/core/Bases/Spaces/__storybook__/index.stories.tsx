@@ -1,5 +1,4 @@
-import { Meta } from "@storybook/react";
-import { BADGE } from "src/common/storybook/storybookBadges";
+import { Meta } from "@storybook/react-webpack5";
 import { StyledSpacingWrapper } from "./style";
 import { Template } from "./stories/default";
 
@@ -8,7 +7,6 @@ export default {
     axe: {
       disabledRules: ["color-contrast"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Bases/Spaces",
 } as Meta;

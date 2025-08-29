@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   MENU_ITEM_EXCLUDED_CONTROLS,
   MENU_ITEM_ICON_OPTIONS,
@@ -52,7 +51,6 @@ export default {
     axe: {
       disabledRules: ["aria-required-parent"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Dropdowns/MenuItem",
 } as Meta;

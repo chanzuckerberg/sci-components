@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   DROPDOWN_MENU_DATA_OPTIONS,
   DROPDOWN_MENU_EXCLUDED_CONTROLS,
@@ -75,7 +74,6 @@ export default {
         "listitem",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Dropdowns/DropdownMenu",
 } as Meta;

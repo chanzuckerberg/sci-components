@@ -1,4 +1,4 @@
-import { IconNameToSizes } from "src/core/Icon";
+import Icon, { IconNameToSizes } from "src/core/Icon";
 import ButtonIcon from "../..";
 import {
   BUTTON_ICON_DISABLED_OPTIONS,
@@ -7,6 +7,7 @@ import {
   BUTTON_ICON_SDS_TYPES,
 } from "../constants";
 import { SDSSizes, SDSTypes } from "../types";
+import Callout from "src/core/Callout";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   const DISPLAY_CONTENTS: React.CSSProperties = {
@@ -22,6 +23,20 @@ export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all SDS_TYPES
   return (
     <>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        body={
+          <>
+            The <strong>ButtnoIcon</strong> component is deprecated!
+            <br />
+            Please use <strong>Button</strong> component with{" "}
+            <strong>Icon</strong> style instead.
+          </>
+        }
+      />
       {BUTTON_ICON_SDS_TYPES.map((sdsType) => {
         return <ButtonIconTypeOption sdsType={sdsType} key={sdsType} />;
       })}

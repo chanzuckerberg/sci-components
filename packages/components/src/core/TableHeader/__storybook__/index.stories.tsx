@@ -1,14 +1,10 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { TableHeader } from "./stories/default";
 import { TestDemo } from "./stories/test";
 
 export default {
   component: TableHeader,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Table/TableHeader",
 } as Meta;
 

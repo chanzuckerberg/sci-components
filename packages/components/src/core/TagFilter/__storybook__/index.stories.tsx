@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { TagFilter } from "./stories/default";
 import { TAG_FILTER_EXCLUDED_CONTROLS } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";
@@ -13,9 +12,6 @@ export default {
     },
   },
   component: TagFilter,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/TagFilter",
 } as Meta;
 

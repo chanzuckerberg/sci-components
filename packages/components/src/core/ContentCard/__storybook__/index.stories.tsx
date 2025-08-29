@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { ContentCard } from "./stories/default";
 import {
   CONTENT_CARD_BUTTONS_LABELS,

@@ -1,6 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Notification } from "./stories/default";
 import {
   NOTIFICATION_BUTTON_ON_CLICK_OPTIONS,
@@ -66,9 +65,6 @@ export default {
     },
   },
   component: Notification,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Notification",
 } as Meta;
 

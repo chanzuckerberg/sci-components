@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,
@@ -52,7 +51,6 @@ export default {
     axe: {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Banner",
 } as Meta<Args>;

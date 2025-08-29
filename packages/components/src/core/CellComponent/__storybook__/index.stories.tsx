@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { CellComponent } from "./stories/default";
 import { CELL_COMPONENT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -29,7 +28,6 @@ export default {
         "label",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Table/CellComponent",
 } as Meta;

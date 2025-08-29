@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Tooltip } from "./stories/default";
 import {
   TOOLTIP_COMPONENT_SLOT_OPTIONS,
@@ -56,7 +55,6 @@ export default {
   },
   component: Tooltip,
   parameters: {
-    badges: [BADGE.STABLE],
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     chromatic: { delay: 5000 },
   },
