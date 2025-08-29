@@ -1,5 +1,4 @@
-import { Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Meta } from "@storybook/react-webpack5";
 import { CALLOUT_ICON_OPTIONS, CALLOUT_SDS_STYLE_OPTIONS } from "./constants";
 import { Callout } from "./stories/default";
 
@@ -68,7 +67,6 @@ export default {
   },
   component: Callout,
   parameters: {
-    badges: [BADGE.STABLE],
     controls: {
       expanded: true,
     },

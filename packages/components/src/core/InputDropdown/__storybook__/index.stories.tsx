@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputDropdown } from "./stories/default";
 import { INPUT_DROPDOWN_EXCLUDED_CONTROLS } from "./constants";
 
@@ -65,9 +64,6 @@ export default {
     },
   },
   component: InputDropdown,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputDropdown",
 } as Meta;
 

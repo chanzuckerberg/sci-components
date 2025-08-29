@@ -1,7 +1,6 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputSlider } from "./stories/default";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { INPUT_SLIDER_EXCLUDED_CONTROLS } from "./constants";
 
 export default {
@@ -45,7 +44,6 @@ export default {
         "label",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Inputs/InputSlider",
 } as Meta;

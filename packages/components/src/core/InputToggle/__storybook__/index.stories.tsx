@@ -1,6 +1,5 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import RawInputToggle from "../index";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { InputToggle } from "./stories/default";
 import { INPUT_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
 import { ControlledDemo } from "./stories/controlled";
@@ -32,7 +31,6 @@ export default {
         "label",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Inputs/InputToggle",
 } as Meta;

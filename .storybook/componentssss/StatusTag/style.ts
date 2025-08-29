@@ -24,13 +24,13 @@ export const StyledLabel = styled("label")`
     const borderColor = TypeToBorderColor[type];
 
     return `
-            margin: 0 16px 0 8px;
-            padding: 1px 4px;
-            font-size: 10px;
-            font-weight: 600;
-            color: ${color};
-            border: solid 1px ${borderColor};
-            border-radius: 2px;
-        `;
+      margin: 0 16px 0 8px;
+      padding: 1px 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: ${color};
+      border: solid 1px ${borderColor};
+      border-radius: 2px;
+    `;
   }}
 `;

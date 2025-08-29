@@ -1,12 +1,8 @@
-import { Meta } from "@storybook/react";
-import { BADGE } from "src/common/storybook/storybookBadges";
+import { Meta } from "@storybook/react-webpack5";
 import { StyledShadowsWrapper } from "./style";
 import { Template } from "./stories/default";
 
 export default {
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Bases/Drop Shadows",
 } as Meta;
 

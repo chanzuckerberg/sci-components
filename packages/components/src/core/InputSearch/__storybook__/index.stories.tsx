@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { INPUT_SEARCH_EXCLUDED_CONTROLS } from "./constants";
 import { InputSearch } from "./stories/default";
 import { TestDemo } from "./stories/test";
@@ -30,9 +29,6 @@ export default {
     },
   },
   component: InputSearch,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputSearch",
 } as Meta;
 
