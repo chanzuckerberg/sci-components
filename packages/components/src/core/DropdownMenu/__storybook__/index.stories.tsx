@@ -70,6 +70,7 @@ export default {
         "aria-required-children",
         "aria-required-parent",
         "button-name",
+        "color-contrast",
         "list",
         "listitem",
       ],

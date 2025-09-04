@@ -60,7 +60,7 @@ module.exports = {
   }),
 
   typescript: {
-    reactDocgen: "react-docgen",
+    reactDocgen: false,
   },
 
   docs: {},
