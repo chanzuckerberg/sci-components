@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawButtonDropdown from "src/core/ButtonDropdown";
 import { BUTTON_DROPDOWN_TEXT } from "../constants";
 import {

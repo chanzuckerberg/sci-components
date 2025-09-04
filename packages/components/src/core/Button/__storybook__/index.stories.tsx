@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,
@@ -10,7 +10,6 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
-import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -70,9 +69,6 @@ export default {
     },
   },
   component: Button,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Buttons/Button",
 } as Meta;
 

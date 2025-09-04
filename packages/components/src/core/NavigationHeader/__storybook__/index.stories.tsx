@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {

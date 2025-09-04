@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawPanel from "src/core/Panel";
 import Button from "src/core/Button";
 import { Box, Typography } from "@mui/material";

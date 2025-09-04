@@ -1,5 +1,5 @@
 import { useTheme } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import Button from "src/core/Button";
 import { getSemanticColors } from "src/core/styles";
 import RawTooltip from "src/core/Tooltip";

@@ -1,6 +1,5 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import RawIcon from "src/core/Icon";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Icon } from "./stories/default";
 import { IconBankDemo } from "./stories/iconBank";
 
@@ -38,9 +37,6 @@ export default {
     },
   },
   component: Icon,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Icon",
 } as Meta;
 

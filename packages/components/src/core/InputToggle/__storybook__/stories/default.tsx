@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawInputToggle from "src/core/InputToggle";
 
 export const InputToggle = (props: Args): JSX.Element => {

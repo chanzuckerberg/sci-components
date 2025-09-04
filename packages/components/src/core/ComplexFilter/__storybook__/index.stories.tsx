@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   COMPLEX_FILTER_EXCLUDED_CONTROLS,
   COMPLEX_FILTER_ON_CHANGE_OPTIONS,
@@ -60,9 +59,6 @@ export default {
     },
   },
   component: ComplexFilter,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Dropdowns/ComplexFilter",
 } as Meta;
 

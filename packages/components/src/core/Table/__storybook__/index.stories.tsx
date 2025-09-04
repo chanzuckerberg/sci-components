@@ -1,13 +1,9 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Table } from "./stories/default";
 import { TestDemo } from "./stories/test";
 
 export default {
   component: Table,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Table/Table",
 } as Meta;
 

@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { LoadingIndicator } from "./stories/default";
 import { LIST_EXCLUDED_CONTROLS } from "./constants";
 import { LivePreviewDemo } from "./stories/livePreview";
@@ -13,9 +12,6 @@ export default {
     },
   },
   component: LoadingIndicator,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/LoadingIndicator",
 } as Meta;
 

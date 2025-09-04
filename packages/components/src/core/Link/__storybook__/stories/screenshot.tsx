@@ -1,3 +1,5 @@
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
 import RawLink from "src/core/Link";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
@@ -9,6 +11,19 @@ export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all SDS_SIZES
   return (
     <>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        body={
+          <>
+            The <strong>Link</strong> component is deprecated!
+            <br />
+            Please use <strong>Link Typography</strong> instead.
+          </>
+        }
+      />
       {SDS_SIZES.map((sdsSize) => {
         return <LinkSize sdsSize={sdsSize} key={sdsSize} />;
       })}

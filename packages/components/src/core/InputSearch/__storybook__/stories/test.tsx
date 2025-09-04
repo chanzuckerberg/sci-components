@@ -1,6 +1,6 @@
-import { action } from "@storybook/addon-actions";
-import { Args } from "@storybook/react";
+import { action } from "storybook/actions";
 import RawInputSearch from "src/core/InputSearch";
+import { Args } from "@storybook/react-webpack5";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

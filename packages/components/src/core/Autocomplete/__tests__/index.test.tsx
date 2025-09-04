@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStory } from "@storybook/react";
+import { composeStory } from "@storybook/react-webpack5";
 import { render, screen } from "@testing-library/react";
 import * as snapshotTestStoryFile from "../__storybook__/index.stories";
 import Meta, { Test as TestStory } from "../__storybook__/index.stories";

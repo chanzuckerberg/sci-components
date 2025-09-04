@@ -1,6 +1,5 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import RawButtonIcon from "src/core/ButtonIcon";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { ButtonIcon } from "./stories/default";
 import {
   BUTTON_ICON_EXCLUDED_CONTROLS,
@@ -38,10 +37,8 @@ export default {
     },
   },
   component: ButtonIcon,
-  parameters: {
-    badges: [BADGE.DEPRECATED],
-  },
-  title: "Deprecated/ButtonIcon [deprecated]",
+  tags: ["deprecated"],
+  title: "Deprecated/ButtonIcon",
 } as Meta;
 
 // Default

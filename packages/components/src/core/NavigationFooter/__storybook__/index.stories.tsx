@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationFooter } from "./stories/default";
 import {
   ExampleLogo,

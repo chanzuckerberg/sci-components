@@ -1,5 +1,5 @@
 import { AutocompleteValue } from "@mui/base";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { useEffect, useState } from "react";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Callout from "src/core/Callout";

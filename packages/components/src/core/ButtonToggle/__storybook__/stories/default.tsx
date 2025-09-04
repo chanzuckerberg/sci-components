@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawButtonToggle from "src/core/ButtonToggle";
 
 export const ButtonToggle = (props: Args): JSX.Element => {

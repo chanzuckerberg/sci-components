@@ -1,5 +1,5 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
 import RawCallout from "src/core/Callout";
 import InputToggle from "src/core/InputToggle";

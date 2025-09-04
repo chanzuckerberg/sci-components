@@ -1,11 +1,7 @@
-import { Meta } from "@storybook/react";
-import { BADGE } from "src/common/storybook/storybookBadges";
+import { Meta } from "@storybook/react-webpack5";
 import Typography from "./components";
 
 export default {
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Bases/Typography",
 } as Meta;
 
@@ -48,5 +44,6 @@ export const TabularTypography = {
 // Link Typography
 
 export const LinkTypography = {
+  tags: ["new"],
   render: () => <Typography categories={["link"]} />,
 };

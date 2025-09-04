@@ -1,4 +1,4 @@
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 import CustomSdsIcon from "src/common/storybook/customSdsIcon";
 import CustomSvgIcon from "src/common/storybook/customSvgIcon";
 import { NotificationProps } from "..";

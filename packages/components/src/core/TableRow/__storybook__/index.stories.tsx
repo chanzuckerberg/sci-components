@@ -1,6 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { TableRow } from "./stories/default";
 import { TABLE_ROW_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -36,9 +35,6 @@ export default {
     },
   },
   component: TableRow,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Table/TableRow",
 } as Meta;
 

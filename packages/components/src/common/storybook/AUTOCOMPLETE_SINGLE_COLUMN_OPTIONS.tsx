@@ -107,22 +107,22 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
           <Tag
             label="bug"
             sdsStyle="rounded"
-            sdsType="secondary"
+            sdsType="primary"
             color="negative"
             hover={false}
           />
           <Tag
             label="feature"
             sdsStyle="rounded"
-            sdsType="secondary"
+            sdsType="primary"
             color="positive"
             hover={false}
           />
           <Tag
             label="refactor"
             sdsStyle="rounded"
-            sdsType="secondary"
-            color="neutral"
+            sdsType="primary"
+            color="notice"
             hover={false}
           />
         </div>

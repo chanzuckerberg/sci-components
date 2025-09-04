@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawMenuItem from "src/core/MenuItem";
 import { DemoWrapper } from "../style";
 

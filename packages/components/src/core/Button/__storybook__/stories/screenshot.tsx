@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawButton from "src/core/Button";
 import {
   BUTTON_DISABLED_OPTIONS,
