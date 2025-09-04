@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { MEDIUM_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import Button from "src/core/Button";
 import ContentCard, {

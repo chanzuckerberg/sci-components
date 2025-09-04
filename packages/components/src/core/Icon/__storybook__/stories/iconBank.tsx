@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { FC, useState } from "react";
 import Callout from "src/core/Callout";
 import RawIcon, { IconNameToSizes, SdsIconWithColor } from "src/core/Icon";

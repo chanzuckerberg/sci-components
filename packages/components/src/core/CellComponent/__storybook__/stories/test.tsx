@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { CellComponent } from "./default";
 import { StyledStoryBody, StyledStoryHeading } from "../style";
 import Tag from "src/core/Tag";

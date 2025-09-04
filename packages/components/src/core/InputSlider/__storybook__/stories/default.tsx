@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { useState, useEffect } from "react";
 import RawInputSlider from "src/core/InputSlider";
 import {

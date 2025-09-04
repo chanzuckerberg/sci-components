@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { Fragment } from "react";
 import RawTagFilter from "src/core/TagFilter";
 import { TAG_FILTER_LABEL_STYLE, TAG_FILTER_PSEUDO_STATES } from "../constants";
