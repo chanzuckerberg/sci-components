@@ -27,6 +27,7 @@
     "@storybook/addon-links": "^9.1.4",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.1",
     "@storybook/react-webpack5": "^9.1.4",
+    "@storybook/test-runner": "^0.23.0",
     "@svgr/rollup": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
     "@swc/core": "^1.13.3",
