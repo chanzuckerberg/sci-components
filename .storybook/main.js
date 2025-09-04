@@ -64,6 +64,11 @@ module.exports = {
   },
 
   docs: {},
+
+  webpackFinal: async (config) => {
+    const customConfig = require("./webpack.config.js");
+    return customConfig({ config });
+  },
 };
 
 function getAbsolutePath(value) {
