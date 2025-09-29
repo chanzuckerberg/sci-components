@@ -17,10 +17,26 @@ The color indexes used in SDS primitive color names (e.g., `gray100`, `gray200`,
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Color_Dark Mode_Color Indexes_gray100_Light**
+
+---
+
+**Color_Dark Mode_Color Indexes_gray100_Dark**
+
+---
+
 In most cases, each semantic variable will have the same primitive value mapped to it regardless of the mode of that primitive value. For example, the semantic variable `Base.text-primary` has `gray900` mapped to it; in Light Mode `gray900` = `#000000`(black), but in Dark Mode `gray900` = `#ffffff` (white). This means that in both modes primary text is highly visible against the background it is placed on top of, whether a light background in Light Mode or a dark background in Dark Mode.
 
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
+
+**Color_Dark Mode_Color Indexes_text-primary_Light**
+
+---
+
+**Color_Dark Mode_Color Indexes_text-primary_Dark**
+
+---
 
 ### Differences in Light Mode vs Dark Mode
 
@@ -31,6 +47,14 @@ In Dark Mode, `background-primary` is `gray75` (not quite pure black which has p
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Color_Dark Mode_Differences_Light**
+
+---
+
+**Color_Dark Mode_Differences_Dark**
+
+---
+
 ### Inverted Style
 
 There are a few components (Header Navigation, Footer Navigation, Tooltip, and Condensed Tooltip) that can be displayed with light or dark backgrounds regardless of which color mode the user's application is set to. Enable this using the prop `hasInvertedStyle` which by default is set to `false`. In Light Mode the component will have a light background and in Dark Mode the component will have a dark background. When set to `true`, the colors will be inverted and in Light Mode the component will have a dark background and in Dark Mode the component will have a light background.
@@ -39,6 +63,14 @@ See the individual component pages for more details and visual examples.
 
 | Default (Light Mode) | Inverted (Light Mode) |
 | :------------------: | :-------------------: |
+
+**Color_Inverted Style_Default**
+
+---
+
+**Color_Inverted Style_Inverted**
+
+---
 
 ## Code
 
@@ -145,15 +177,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theming</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -293,15 +324,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theming</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

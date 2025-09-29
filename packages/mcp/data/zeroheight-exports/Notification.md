@@ -26,9 +26,25 @@ Relevant components such as Tables (documentation coming soon) or Charts (docume
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
 ---
 
 ---
+
+**Default + Child Node (content module)**
+
+---
+
+---
+
+**Default + Button**
+
+---
+
+---
+
+**Default + Child Node (content module) + Button**
 
 ---
 
@@ -42,9 +58,25 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Notification/Notification**
+
 ---
 
 ---
+
+**Notification**
+
+---
+
+---
+
+**Notification**
+
+---
+
+---
+
+**Notification**
 
 ---
 
@@ -53,6 +85,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Notification Spacing
 
 These rules establish how much margin should exist between and around elements. Because Notifications are positioned in the top-right corner of the UI on top of other elements, the top and right spacing rules below indicate the distance between the component and the edges of the browser window.
+
+**Notification spacing**
+
+---
 
 ---
 
@@ -65,8 +101,24 @@ Each intent is demonstrated below using the Persistent Notification for referenc
 | **Error** | **Info** |
 | --------- | -------- |
 
+**Notification**
+
+---
+
+**Notification**
+
+---
+
 | **Success** | **Warning** |
 | ----------- | ----------- |
+
+**Notification**
+
+---
+
+**Notification**
+
+---
 
 ## Code
 
@@ -111,9 +163,25 @@ A Minimal Button can be added to the Notification if additional action from the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
 ---
 
 ---
+
+**Default + Child Node (content module)**
+
+---
+
+---
+
+**Default + Button**
+
+---
+
+---
+
+**Default + Child Node (content module) + Button**
 
 ---
 
@@ -129,9 +197,25 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default**
+
 ---
 
 ---
+
+**Default + Child Node (content module)**
+
+---
+
+---
+
+**Default + Button**
+
+---
+
+---
+
+**Default + Child Node (content module) + Button**
 
 ---
 
@@ -140,6 +224,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Notification Spacing
 
 These rules establish how much margin should exist between and around elements. Because Notifications are positioned in the top-right corner of the UI on top of other elements, the top and right spacing rules below indicate the distance between the component and the edges of the browser window.
+
+**Notification spacing**
+
+---
 
 ---
 
@@ -152,8 +240,24 @@ Each intent is demonstrated below using the Persistent Notification for referenc
 | **Error** | **Info** |
 | --------- | -------- |
 
+**Notification**
+
+---
+
+**Notification**
+
+---
+
 | **Success** | **Warning** |
 | ----------- | ----------- |
+
+**Notification**
+
+---
+
+**Notification**
+
+---
 
 ## Code
 
@@ -187,6 +291,14 @@ Notifications come in two different variants distinguished by whether users to h
 
 Notifications appear outside of the flow of the page on top of other elements as opposed to Callouts which appear within the page's flow.
 
+**Preview_Guidelines_Notification_persistent**
+
+---
+
+**Preview_Guidelines_Notification_dismissible**
+
+---
+
 ---
 
 ### Live Instance
@@ -206,6 +318,22 @@ A Minimal Button can be added to the Notification if additional action from the 
 | Default | Default + Button | Default + Content Module | Default + Content Module + Button |
 | ------- | ---------------- | ------------------------ | --------------------------------- |
 
+**Notification_persistent_default**
+
+---
+
+**Notification_persistent_button**
+
+---
+
+**Notification_persistent_content slot**
+
+---
+
+**Notification_persistent_button + content slot**
+
+---
+
 ---
 
 ### Notification – Dismissible
@@ -217,11 +345,31 @@ A Minimal Button can be added to the Notification if additional action from the 
 | Default | Default + Button | Default + Content Module | Default + Content Module + Button |
 | ------- | ---------------- | ------------------------ | --------------------------------- |
 
+**Notification_dismissible_default**
+
+---
+
+**Notification_dismissible_button**
+
+---
+
+**Notification_dismissible_content slot**
+
+---
+
+**Notification_dismissible_button + content slot**
+
+---
+
 ---
 
 ### Notification Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Notification spacing**
+
+---
 
 ---
 
@@ -233,6 +381,22 @@ Each intent is demonstrated below using the Persistent variant for reference. Re
 
 | Info | Negative | Notice | Positive |
 | ---- | -------- | ------ | -------- |
+
+**Notification_intent_info**
+
+---
+
+**Notification_intent_error**
+
+---
+
+**Notification_intent_warning**
+
+---
+
+**Notification_intent_success**
+
+---
 
 ## Code
 
@@ -388,15 +552,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -535,15 +698,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -686,15 +848,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -849,15 +1010,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

@@ -1,0 +1,49 @@
+{
+  "Hero": {
+    "props": {
+      "maxWidth": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false,
+        "description": "Controls the maximum width of the hero container",
+        "defaultValue": "large"
+      },
+      "useContainerMargin": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "Custom margin behavior - can override default container margin\nSet to false to remove default margins",
+        "defaultValue": true
+      },
+      "headerText": {
+        "type": "ReactNode",
+        "isRequired": true,
+        "description": "The main header text displayed prominently in the hero section"
+      },
+      "captionText": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Optional caption text that appears below the header"
+      },
+      "backgroundFill": {
+        "type": "string | { src: string; alt?: string; }",
+        "isRequired": false,
+        "description": "Background fill that can be either a color string or an image object. When an image is provided, it will stretch to cover the entire component background"
+      },
+      "height": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The height of the hero container"
+      },
+      "className": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Additional CSS class name for custom styling"
+      },
+      "data-testid": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Test ID for testing purposes",
+        "defaultValue": "hero"
+      }
+    }
+  }
+}
