@@ -117,3 +117,6 @@ storybook-static
 
 # OS Files
 .DS_Store
+
+# Claude
+packages/components/ai_task_docs/*

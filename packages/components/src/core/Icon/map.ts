@@ -113,6 +113,7 @@ import { ReactComponent as IconSearchSmall } from "../../common/svgs/IconSearchS
 import { ReactComponent as IconSendLarge } from "../../common/svgs/IconSendLarge.svg";
 import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLarge.svg";
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
+import { ReactComponent as IconSparkleLarge } from "../../common/svgs/IconSparkleLarge.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
@@ -233,6 +234,7 @@ export interface IconNameToSizes {
   Send: "l" | "xl";
   Share: "l" | "xl";
   SlidersHorizontal: "l" | "xl";
+  Sparkle: "l" | "xl";
   SpeechBubbles: "l" | "xl";
   SquareOnDashedSquare: "l" | "xl";
   Starburst: "xs" | "s";
@@ -623,6 +625,10 @@ export const iconMap: Props = {
   },
   SlidersHorizontal: {
     largeIcon: IconSlidersHorizontalLarge,
+    smallIcon: null,
+  },
+  Sparkle: {
+    largeIcon: IconSparkleLarge,
     smallIcon: null,
   },
   SpeechBubbles: {
