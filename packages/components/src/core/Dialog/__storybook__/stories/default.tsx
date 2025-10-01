@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useState } from "react";
 import Button from "src/core/Button";
 import RawDialog from "src/core/Dialog";

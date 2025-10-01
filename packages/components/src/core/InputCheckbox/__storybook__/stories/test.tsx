@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { INPUT_CHECKBOX_TEST_STYLES } from "../constants";
 import { InputCheckbox } from "./default";
 import RawInputCheckbox from "src/core/InputCheckbox";

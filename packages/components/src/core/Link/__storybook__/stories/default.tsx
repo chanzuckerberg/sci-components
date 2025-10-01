@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawLink from "src/core/Link";
 
 export const Link = (props: Args): JSX.Element => {

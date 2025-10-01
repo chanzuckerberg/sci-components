@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawTooltipTableContent from "src/core/TooltipTable";
 import { TOOLTIP_TABLE_DATA } from "../constants";
 

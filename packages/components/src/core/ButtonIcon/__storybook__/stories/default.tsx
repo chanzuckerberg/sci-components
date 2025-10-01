@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawButtonIcon from "src/core/ButtonIcon";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";

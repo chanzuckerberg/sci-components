@@ -1,5 +1,5 @@
 import { Box, Container, useTheme } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useState } from "react";
 import { getSemanticColors } from "src/core/styles";
 import RawNavigationHeader from "src/core/NavigationHeader";

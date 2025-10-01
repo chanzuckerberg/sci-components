@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawBanner from "src/core/Banner";
 
 export const Banner = (props: Args): JSX.Element => {

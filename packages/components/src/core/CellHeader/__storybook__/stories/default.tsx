@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useEffect, useState } from "react";
 import RawCellHeader, { CellHeaderDirection } from "src/core/CellHeader";
 

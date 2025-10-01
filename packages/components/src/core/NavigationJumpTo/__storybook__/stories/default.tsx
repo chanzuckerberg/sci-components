@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawNavigationJumpTo from "src/core/NavigationJumpTo";
 
 export const NavigationJumpTo = (props: Args): JSX.Element => {

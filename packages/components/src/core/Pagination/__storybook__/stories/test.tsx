@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawPagination from "src/core/Pagination";
 
 export const TestDemo = (props: Args): JSX.Element => (

@@ -1,5 +1,5 @@
 import { FormControlLabel } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useState } from "react";
 import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import InputToggle from "src/core/InputToggle";
