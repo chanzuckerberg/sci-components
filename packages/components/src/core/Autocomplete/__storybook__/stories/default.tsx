@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import RawAutocomplete from "src/core/Autocomplete";

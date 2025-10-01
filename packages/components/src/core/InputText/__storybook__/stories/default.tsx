@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawInputText from "src/core/InputText";
 
 export const InputText = (props: Args): JSX.Element => {

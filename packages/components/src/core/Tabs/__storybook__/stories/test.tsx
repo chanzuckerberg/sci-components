@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { TABS_LIVE_PREVIEW_WRAPPER_STYLES } from "../constants";
 import { Tabs } from "./default";
 import { noop } from "src/common/utils";

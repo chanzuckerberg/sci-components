@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawNavigationFooter from "src/core/NavigationFooter/index";
 
 export const TestDemo = (props: Args): JSX.Element => {

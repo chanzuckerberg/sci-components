@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import {
   MENU_ITEM_COLUMN_OPTIONS,
   MENU_ITEM_DISABLED_OPTIONS,

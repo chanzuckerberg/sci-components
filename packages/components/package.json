@@ -78,6 +78,7 @@
     "@types/node": "^24.3.0",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
+    "@storybook/types": "^8.3.4",
     "style-dictionary": "^4.1.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",

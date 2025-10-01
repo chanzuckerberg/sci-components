@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawTag from "src/core/Tag";
 
 export const TestDemo = (props: Args): JSX.Element => {
