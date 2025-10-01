@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.12.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.4...@czi-sds/components@22.12.0) (2025-09-29)
+
+### Features
+
+- Add sparkle icon ([#1012](https://github.com/chanzuckerberg/sci-components/issues/1012)) ([72ac6d2](https://github.com/chanzuckerberg/sci-components/commit/72ac6d28759a1312491f8ac8b3664fbc75fbfe2a))
+
 ## [22.11.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.3...@czi-sds/components@22.11.4) (2025-08-21)
 
 **Note:** Version bump only for package @czi-sds/components
