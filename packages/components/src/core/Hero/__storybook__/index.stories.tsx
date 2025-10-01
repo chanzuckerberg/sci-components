@@ -13,7 +13,7 @@ export default {
       description:
         "Background fill that can be either a color string or an image object",
     },
-    height: {
+    heroHeight: {
       control: {
         type: "text",
       },
@@ -59,6 +59,9 @@ export const Default = {
     headerText: "Header Text",
     captionText:
       "Caption text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+  },
+  parameters: {
+    layout: "fullscreen",
   },
 };
 
