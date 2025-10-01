@@ -25,13 +25,57 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputCheckbox**
+
 ---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
 
 ---
 
 ### Checkbox Lockups
 
 Each Checkbox must be coupled with a label to communicate the result of a selection.
+
+**InputCheckbox Lockup**
+
+---
+
+**InputCheckbox Lockup**
+
+---
 
 
 
@@ -42,6 +86,10 @@ Each Checkbox must be coupled with a label to communicate the result of a select
 These rules establish how much margin should exist between and around elements.
 
 
+
+**Checkbox spacing**
+
+---
 
 ---
 
@@ -57,17 +105,53 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
 ---
 
 ### Radio Lockups
 
 Each Radio must be coupled with a label to communicate the result of a selection.
 
+**InputRadio Lockup**
+
+---
+
+**InputRadio Lockup**
+
+---
+
 ---
 
 ### Radio Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Radio spacing**
+
+---
 
 
 
@@ -107,6 +191,18 @@ Control Inputs are elements that enable users to make selections and communicate
 
 Use the links below to jump to information on a specific Control Input variant:
 
+**InputCheckbox Lockup**
+
+---
+
+**InputRadio Lockup**
+
+---
+
+**InputToggle**
+
+---
+
 ---
 
 ## Checkbox Input
@@ -123,13 +219,49 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
 ---
 
 
 
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
 ---
 
 
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
 
 ### Checkbox Intent States
 
@@ -142,17 +274,49 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
 
 
 ### Checkbox Lockups
 
 Each Checkbox must be coupled with a label to communicate the result of a selection. If additional details about the selection need to be communicated, an optional caption can be included.
 
+**InputCheckbox Lockup_no caption_enabled**
+
+---
+
+**InputCheckbox Lockup_no caption_disabled**
+
+---
+
+**InputCheckbox Lockup_caption_disabled**
+
+---
+
+**InputCheckbox Lockup_caption_disabled**
+
+---
+
 ---
 
 ### Checkbox Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Checkbox spacing**
+
+---
 
 ---
 
@@ -168,8 +332,28 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
 | **Default** | **Disabled** |
 | ----------- | ------------ |
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
 
 
 
@@ -184,15 +368,47 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
 ### Radio Lockups
 
 Each Radio must be coupled with a label to communicate the result of a selection. If additional details about the selection need to be communicated, an optional caption can be included.
+
+**InputRadio Lockup_no caption_enabled**
+
+---
+
+**InputRadio Lockup_no caption_disabled**
+
+---
+
+**InputRadio Lockup_caption_disabled**
+
+---
+
+**InputRadio Lockup_caption_disabled**
+
+---
 
 ---
 
 ### Radio Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Radio spacing**
+
+---
 
 ---
 
@@ -208,6 +424,30 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
 ---
 
 ---
@@ -215,6 +455,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Toggle Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Toggle spacing**
+
+---
 
 ## Code
 
@@ -258,6 +502,22 @@ Control Inputs are elements that enable users to make selections and communicate
 
 Use the links below to jump to information on a specific Control Input variant:
 
+**InputCheckbox Lockup**
+
+---
+
+**InputRadio Lockup**
+
+---
+
+**InputToggle**
+
+---
+
+**InputSlider**
+
+---
+
 ---
 
 ## Checkbox Input
@@ -274,7 +534,43 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputCheckbox**
+
 ---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
 
 ---
 
@@ -291,15 +587,47 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
+**InputCheckbox**
+
+---
+
 ### Checkbox Lockups
 
 Each Checkbox must be coupled with a label to communicate the result of a selection. If additional details about the selection need to be communicated, an optional caption can be included.
+
+**InputCheckbox Lockup_no caption_enabled**
+
+---
+
+**InputCheckbox Lockup_no caption_disabled**
+
+---
+
+**InputCheckbox Lockup_caption_disabled**
+
+---
+
+**InputCheckbox Lockup_caption_disabled**
+
+---
 
 ---
 
 ### Checkbox Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Checkbox spacing**
+
+---
 
 ---
 
@@ -315,8 +643,28 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
 | **Default** | **Disabled** |
 | ----------- | ------------ |
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
 
 ### Radio Intent States
 
@@ -329,17 +677,49 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
+**InputRadio**
+
+---
+
 
 
 ### Radio Lockups
 
 Each Radio must be coupled with a label to communicate the result of a selection. If additional details about the selection need to be communicated, an optional caption can be included.
 
+**InputRadio Lockup_no caption_enabled**
+
+---
+
+**InputRadio Lockup_no caption_disabled**
+
+---
+
+**InputRadio Lockup_caption_disabled**
+
+---
+
+**InputRadio Lockup_caption_disabled**
+
+---
+
 ---
 
 ### Radio Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Radio spacing**
+
+---
 
 ---
 
@@ -355,6 +735,30 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Disabled** |
 | ----------- | --------- | ------------ |
 
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
+---
+
+**InputToggle**
+
 ---
 
 ---
@@ -362,6 +766,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Toggle Switch Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Toggle spacing**
+
+---
 
 ---
 
@@ -374,11 +782,27 @@ These rules establish how much margin should exist between and around elements.
 
 Use when there is a specific datapoint or value within a dataset that the user is able to select.
 
+**InputSlider**
+
+---
+
+---
+
+**InputSlider**
+
 ---
 
 ### Double-sided Slider
 
 Use when users need the ability to select a range between two values within a dataset.
+
+**InputSlider**
+
+---
+
+---
+
+**InputSlider**
 
 ---
 
@@ -387,6 +811,10 @@ Use when users need the ability to select a range between two values within a da
 ### Slider Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Slider spacing**
+
+---
 
 ## Code
 
@@ -432,6 +860,22 @@ Control Inputs are elements that enable users to make selections and communicate
 
 ### Visual Preview
 
+**Preview_Guidelines_InputCheckbox**
+
+---
+
+**Preview_Guidelines_InputRadio**
+
+---
+
+**Preview_Guidelines_InputSlider**
+
+---
+
+**Preview_Guidelines_InputToggle**
+
+---
+
 ---
 
 ## Checkbox
@@ -460,21 +904,133 @@ Use when Checkbox functionality is needed but a custom label is desired.
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Checkbox_No label_Unselected_Default**
+
+---
+
+**Checkbox_No label_Unselected_Hover**
+
+---
+
+**Checkbox_No label_Unselected_Disabled**
+
+---
+
+**Checkbox_No label_Indeterminate_Default**
+
+---
+
+**Checkbox_No label_Indeterminate_Hover**
+
+---
+
+**Checkbox_No label_Indeterminate_Disabled**
+
+---
+
+**Checkbox_No label_Selected_Default**
+
+---
+
+**Checkbox_No label_Selected_Hover**
+
+---
+
+**Checkbox_No label_Selected_Disabled**
+
+---
+
 #### Checkbox – Label
 
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
+
+**Checkbox_Label_Unselected_Default**
+
+---
+
+**Checkbox_Label_Unselected_Hover**
+
+---
+
+**Checkbox_Label_Unselected_Disabled**
+
+---
+
+**Checkbox_Label_Indeterminate_Default**
+
+---
+
+**Checkbox_Label_Indeterminate_Hover**
+
+---
+
+**Checkbox_Label_Indeterminate_Disabled**
+
+---
+
+**Checkbox_Label_Selected_Default**
+
+---
+
+**Checkbox_Label_Selected_Hover**
+
+---
+
+**Checkbox_Label_Selected_Disabled**
+
+---
 
 #### Checkbox – Label + Caption
 
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Checkbox_Label + Caption_Unselected_Default**
+
+---
+
+**Checkbox_Label + Caption_Unselected_Hover**
+
+---
+
+**Checkbox_Label + Caption_Unselected_Disabled**
+
+---
+
+**Checkbox_Label + Caption_Indeterminate_Default**
+
+---
+
+**Checkbox_Label + Caption_Indeterminate_Hover**
+
+---
+
+**Checkbox_Label + Caption_Indeterminate_Disabled**
+
+---
+
+**Checkbox_Label + Caption_Selected_Default**
+
+---
+
+**Checkbox_Label + Caption_Selected_Hover**
+
+---
+
+**Checkbox_Label + Caption_Selected_Disabled**
+
+---
+
 ---
 
 ### Checkbox Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Checkbox spacing**
+
+---
 
 ---
 
@@ -484,6 +1040,26 @@ Use Default to communicate that the user has yet to enter a response, Negative t
 
 | Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | ------- | -------- | ------------------------- | ------ | ----------------------- |
+
+**Checkbox_Intent_Default**
+
+---
+
+**Checkbox_Intent_Negative**
+
+---
+
+**Checkbox_Intent_Negative + Message**
+
+---
+
+**Checkbox_Intent_Notice**
+
+---
+
+**Checkbox_Intent_Notice + Message**
+
+---
 
 ---
 
@@ -511,30 +1087,94 @@ Use when Radio functionality is needed but a custom label is desired.
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Radio_No Label_Unselected_Default**
+
+---
+
+**Radio_No Label_Unselected_Hover**
+
+---
+
+**Radio_No Label_Unselected_Disabled**
+
+---
+
 | Default | Disabled |
 | ------- | -------- |
+
+**Radio_No Label_Selected_Default**
+
+---
+
+**Radio_No Label_Selected_Disabled**
+
+---
 
 #### Radio – Label
 
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Radio_Label_Unselected_Default**
+
+---
+
+**Radio_Label_Unselected_Hover**
+
+---
+
+**Radio_Label_Unselected_Disabled**
+
+---
+
 | Default | Disabled |
 | ------- | -------- |
+
+**Radio_Label_Selected_Default**
+
+---
+
+**Radio_Label_Selected_Disabled**
+
+---
 
 #### Radio – Label + Caption
 
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Radio_Label + Caption_Unselected_Default**
+
+---
+
+**Radio_Label + Caption_Unselected_Hover**
+
+---
+
+**Radio_Label + Caption_Unselected_Disabled**
+
+---
+
 | Default | Disabled |
 | ------- | -------- |
+
+**Radio_Label + Caption_Selected_Default**
+
+---
+
+**Radio_Label + Caption_Selected_Disabled**
+
+---
 
 ---
 
 ### Radio Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Radio spacing**
+
+---
 
 ---
 
@@ -544,6 +1184,26 @@ Use Default to communicate that the user has yet to enter a response, Negative t
 
 | Default | Negative | Negative + Intent Message | Notice | Notice + intent Message |
 | ------- | -------- | ------------------------- | ------ | ----------------------- |
+
+**Radio_Intent_Default**
+
+---
+
+**Radio_Intent_Negative**
+
+---
+
+**Radio_Intent_Negative + Message**
+
+---
+
+**Radio_Intent_Notice**
+
+---
+
+**Radio_Intent_Notice + Message**
+
+---
 
 ---
 
@@ -571,6 +1231,14 @@ Use when there is a specific datapoint or value within a dataset that the user i
 | No Tick Marks | Tick Marks |
 | ------------- | ---------- |
 
+**Slider_Single-sided_No Tick Marks**
+
+---
+
+**Slider_Single-sided_Tick Marks**
+
+---
+
 #### Slider – Double-sided
 
 Use when users need the ability to select a range between two values within a dataset.
@@ -578,11 +1246,23 @@ Use when users need the ability to select a range between two values within a da
 | No Tick Marks | Tick Marks |
 | ------------- | ---------- |
 
+**Slider_Double-sided_No Tick Marks**
+
+---
+
+**Slider_Double-sided_Tick Marks**
+
+---
+
 ---
 
 ### Slider Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Slider spacing**
+
+---
 
 ---
 
@@ -606,11 +1286,39 @@ Toggle Inputs allow users to indicate true or false as part of a form or flip a 
 | Default | Hover | Disabled |
 | ------- | ----- | -------- |
 
+**Toggle_Off_Default**
+
+---
+
+**Toggle_Off_Hover**
+
+---
+
+**Toggle_Off_Disabled**
+
+---
+
+**Toggle_On_Default**
+
+---
+
+**Toggle_On_Hover**
+
+---
+
+**Toggle_On_Disabled**
+
+---
+
 ---
 
 ### Toggle Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Toggle spacing**
+
+---
 
 ## Code
 
@@ -620,6 +1328,22 @@ These rules establish how much margin should exist between and around elements.
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_InputCheckbox**
+
+---
+
+**Preview_Code_InputRadio**
+
+---
+
+**Preview_Code_InputSlider**
+
+---
+
+**Preview_Code_InputToggle**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -766,15 +1490,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -907,15 +1630,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1091,15 +1813,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1269,15 +1990,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1410,15 +2130,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1597,15 +2316,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1765,15 +2483,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1941,15 +2658,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -2082,15 +2798,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

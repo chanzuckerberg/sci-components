@@ -28,9 +28,25 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
+**Default**
+
 ---
 
 ---
+
+**Default + Title**
+
+---
+
+---
+
+**Default + Footer**
+
+---
+
+---
+
+**Default + Title + Footer**
 
 ---
 
@@ -39,6 +55,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tooltip Spacing**
+
+---
 
 ---
 
@@ -51,14 +71,62 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 | **Bottom-start** | **Bottom** | **Bottom-End** |
 | ---------------- | ---------- | -------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Left-start** | **Left** | **Left-end** |
 | -------------- | -------- | ------------ |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 | **Right-start** | **Right** | **Right-end** |
 | --------------- | --------- | ------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Top-Start** | **Top** | **Top-end** |
 | ------------- | ------- | ----------- |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 ---
 
@@ -75,6 +143,14 @@ The Condensed Tooltip is positioned relative to the user's cursor as opposed to 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
+---
+
+**Default + Indicator**
+
 ---
 
 ---
@@ -82,6 +158,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Condensed Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Condensed Tooltip spacing**
+
+---
 
 ## Code
 
@@ -119,6 +199,22 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 Use the links below to jump to information on a specific Tooltip variant:
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**TooltipCondensed**
+
+---
+
+**TooltipTable**
+
+---
+
 ---
 
 ## Tooltip
@@ -138,9 +234,17 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
 ---
 
 
+
+**Default + Subtitle**
+
+---
 
 
 
@@ -156,6 +260,14 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default**
+
+---
+
+---
+
+**Default (Wide)**
+
 ---
 
 ---
@@ -163,6 +275,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tooltip spacing**
+
+---
 
 ---
 
@@ -175,14 +291,62 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 | **Bottom-start** | **Bottom** | **Bottom-End** |
 | ---------------- | ---------- | -------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Left-start** | **Left** | **Left-end** |
 | -------------- | -------- | ------------ |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 | **Right-start** | **Right** | **Right-end** |
 | --------------- | --------- | ------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Top-Start** | **Top** | **Top-end** |
 | ------------- | ------- | ----------- |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 ---
 
@@ -201,15 +365,27 @@ The Condensed Tooltip is positioned relative to the user's cursor as opposed to 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
 ---
 
 
+
+**Default + Indicator**
+
+---
 
 ---
 
 ### Condensed Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Condensed Tooltip spacing**
+
+---
 
 ---
 
@@ -226,9 +402,25 @@ The Table Tooltip is positioned relative to the user's cursor as opposed to the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default (1 Section)**
+
 ---
 
 ---
+
+**Default (1 Section) + Section Headers**
+
+---
+
+---
+
+**Default (2 Sections) + Section Headers**
+
+---
+
+---
+
+**Default (3 Sections) + Section Headers**
 
 ---
 
@@ -301,6 +493,10 @@ data = [
 ### Table Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Table Tooltip spacing**
+
+---
 
 ## Code
 
@@ -344,6 +540,22 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 Use the links below to jump to information on a specific Tooltip variant:
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**TooltipCondensed**
+
+---
+
+**TooltipTable**
+
+---
+
 ---
 
 ## Tooltip
@@ -365,6 +577,14 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default**
+
+---
+
+---
+
+**Default + Subtitle**
+
 ---
 
 
@@ -381,6 +601,14 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default**
+
+---
+
+---
+
+**Default (Wide)**
+
 ---
 
 ---
@@ -388,6 +616,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tooltip spacing**
+
+---
 
 ---
 
@@ -400,14 +632,62 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 | **Bottom-start** | **Bottom** | **Bottom-End** |
 | ---------------- | ---------- | -------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Left-start** | **Left** | **Left-end** |
 | -------------- | -------- | ------------ |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 | **Right-start** | **Right** | **Right-end** |
 | --------------- | --------- | ------------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | **Top-Start** | **Top** | **Top-end** |
 | ------------- | ------- | ----------- |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 ---
 
@@ -426,6 +706,14 @@ The Condensed Tooltip is positioned relative to the user's cursor as opposed to 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
+---
+
+**Default + Indicator**
+
 ---
 
 ---
@@ -433,6 +721,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Condensed Tooltip Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Condensed Tooltip spacing**
+
+---
 
 ---
 
@@ -449,9 +741,25 @@ The Table Tooltip is positioned relative to the user's cursor as opposed to the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default (1 Section)**
+
 ---
 
 ---
+
+**Default (1 Section) + Section Headers**
+
+---
+
+---
+
+**Default (2 Sections) + Section Headers**
+
+---
+
+---
+
+**Default (3 Sections) + Section Headers**
 
 ---
 
@@ -525,6 +833,10 @@ data = [
 
 These rules establish how much margin should exist between and around elements.
 
+**Table Tooltip spacing**
+
+---
+
 ## Code
 
 ## Dropdown Input Component
@@ -565,6 +877,18 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 
 ### Visual Preview
 
+**Preview_Guidelines_Tooltip**
+
+---
+
+**Preview_Guidelines_TooltipCondensed**
+
+---
+
+**Preview_Guidelines_TooltipTable**
+
+---
+
 ---
 
 ## Tooltip
@@ -577,6 +901,14 @@ Tooltips are used throughout the UI and appear whenever users hover over element
 There are two available Tooltip types: Short and Long.
 
 Each Tooltip type can optionally be displayed using an inverted color scheme for better contrast on certain backgrounds.
+
+**Tooltip_Short**
+
+---
+
+**Tooltip_Long**
+
+---
 
 ---
 
@@ -597,6 +929,22 @@ A subtitle may be added to communicate additional details, like instructions for
 | Default | Default (inverted) | Default + Subtitle | Default + Subtitle (inverted) |
 | ------- | ------------------ | ------------------ | ----------------------------- |
 
+**Tooltip_Short_default**
+
+---
+
+**Tooltip_Short_inverted**
+
+---
+
+**Tooltip_Short_Subtitle_default**
+
+---
+
+**Tooltip_Short_Subtitle_inverted**
+
+---
+
 ---
 
 ### Tooltip – Long
@@ -606,11 +954,23 @@ Use to display supplementary information like definitions, instructions, or expa
 | Default | Default (inverted) |
 | ------- | ------------------ |
 
+**Tooltip_Long**
+
+---
+
+**Tooltip_Long_inverted**
+
+---
+
 ---
 
 ### Tooltip Spacing
 
 The Tooltip and its triggering element have a standard margin between them.
+
+**Tooltip spacing**
+
+---
 
 ---
 
@@ -621,14 +981,62 @@ A Tooltip appears in one of twelve positions relative to the element it is tied 
 | Bottom-start | Bottom | Bottom-end |
 | ------------ | ------ | ---------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | Left-start | Left | Left-end |
 | ---------- | ---- | -------- |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 | Right-start | Right | Right-end |
 | ----------- | ----- | --------- |
 
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
 | Top-start | Top | Top-end |
 | --------- | --- | ------- |
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
+
+**Tooltip**
+
+---
 
 ---
 
@@ -656,11 +1064,31 @@ The Condensed Tooltip can optionally be displayed using an inverted color scheme
 | Default | Default (inverted) | Default + Indicator | Default + Indicator (inverted) |
 | ------- | ------------------ | ------------------- | ------------------------------ |
 
+**TooltipCondensed_No Indicator_default**
+
+---
+
+**TooltipCondensed_No Indicator_inverted**
+
+---
+
+**TooltipCondensed_Indicator_default**
+
+---
+
+**TooltipCondensed_Indicator_inverted**
+
+---
+
 ---
 
 ### Condensed Tooltip Spacing
 
 The Condensed Tooltip and its triggering element have a standard margin between them.
+
+**Condensed Tooltip spacing**
+
+---
 
 ---
 
@@ -688,11 +1116,27 @@ The Table Tooltip is positioned relative to the user's cursor rather than its tr
 | 1 Section | 1 Section + Section Headers | 2 Sections + Section Headers |
 | --------- | --------------------------- | ---------------------------- |
 
+**Table Tooltip_One Section**
+
+---
+
+**Table Tooltip_One Section_Section Headers**
+
+---
+
+**Table Tooltip_Two Sections_No Headers**
+
+---
+
 ---
 
 ### Table Tooltip Spacing
 
 The Table Tooltip and its triggering element have a standard margin between them.
+
+**Table Tooltip spacing**
+
+---
 
 ## Code
 
@@ -702,6 +1146,18 @@ The Table Tooltip and its triggering element have a standard margin between them
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ---------------------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_Tooltip**
+
+---
+
+**Preview_Code_TooltipCondensed**
+
+---
+
+**Preview_Code_TooltipTable**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -854,15 +1310,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tooltips</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1004,15 +1459,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tooltips</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1164,15 +1618,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tooltips</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1347,15 +1800,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tooltips</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1541,15 +1993,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tooltips</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

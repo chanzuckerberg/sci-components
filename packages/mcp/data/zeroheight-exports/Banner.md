@@ -26,7 +26,19 @@ When the information being communicated on the Banner is intended to remain pers
 
 
 
+**Default (Persistent)**
+
 ---
+
+---
+
+**Default (Dismissible)**
+
+---
+
+---
+
+**Hover (Dismissible)**
 
 ---
 
@@ -38,7 +50,19 @@ If additional context or information is needed beyond the space available on the
 
 When the information being communicated on the Banner is intended to remain persistent on the screen and is not manually dismissible by the user, use a persistent Banner. To allow the user to manually dismiss the Banner, use a dismissible Banner.
 
+**Default (Persistent)**
+
 ---
+
+---
+
+**Default (Dismissible)**
+
+---
+
+---
+
+**Hover (Dismissible)**
 
 ---
 
@@ -47,6 +71,10 @@ When the information being communicated on the Banner is intended to remain pers
 ### Banner Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Banner spacing**
+
+---
 
 ## Code
 
@@ -82,6 +110,14 @@ Both Banner variants can optionally be set to be manually dismissible by the use
 
 Banners span the full width of the page.
 
+**Preview_Guidelines_Banner_Primary**
+
+---
+
+**Preview_Guidelines_Banner_Secondary**
+
+---
+
 ---
 
 ### Live Instance
@@ -103,6 +139,18 @@ When the information being communicated on the Banner is intended to remain pers
 | Default (Persistent) | Default (Dismissible) | Hover (Dismissible) |
 | -------------------- | --------------------- | ------------------- |
 
+**Banner_Primary_Persistent_Default**
+
+---
+
+**Banner_Primary_Dismissible_Default**
+
+---
+
+**Banner_Primary_Dismissible_Hover**
+
+---
+
 ---
 
 ### Banner – Secondary
@@ -116,11 +164,27 @@ When the information being communicated on the Banner is intended to remain pers
 | Default (Persistent) | Default (Dismissible) | Hover (Dismissible) |
 | -------------------- | --------------------- | ------------------- |
 
+**Banner_Secondary_Persistent_Default**
+
+---
+
+**Banner_Secondary_Dismissible_Default**
+
+---
+
+**Banner_Secondary_Dismissible_Hover**
+
+---
+
 ---
 
 ### Banner Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Banner spacing**
+
+---
 
 ---
 
@@ -135,10 +199,42 @@ Each intent is demonstrated below using the Dismissible variant for reference. R
 | Info | Negative | Notice | Positive |
 | ---- | -------- | ------ | -------- |
 
+**Banner_Primary_Intent_Info**
+
+---
+
+**Banner_Primary_Intent_Negative**
+
+---
+
+**Banner_Primary_Intent_Notice**
+
+---
+
+**Banner_Primary_Intent_Positive**
+
+---
+
 #### Secondary
 
 | Info | Negative | Notice | Positive |
 | ---- | -------- | ------ | -------- |
+
+**Banner_Secondary_Intent_Info**
+
+---
+
+**Banner_Secondary_Intent_Negative**
+
+---
+
+**Banner_Secondary_Intent_Notice**
+
+---
+
+**Banner_Secondary_Intent_Positive**
+
+---
 
 ## Code
 
@@ -155,11 +251,12 @@ The component's source code in the SDS codebase can be found here.
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
 | Name           | Type                 | Default      | Description                                                                                                                                                                                                                                                                            |
-| -------------- | -------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------- | -------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------- |
 | `dismissed`    | `bool`               | `false`      | If `true`, the banner has been dismissed by the user.                                                                                                                                                                                                                                  |
 | `dismissible`  | `bool`               | `true`       | If `true`, the banner can be dismissed by the user.                                                                                                                                                                                                                                    |
 | `sdsType`      | `"primary"` `        | "secondary"` | `primary`                                                                                                                                                                                                                                                                              | The `primary` variant has a `400` background color and white text color. The `secondary` variant has a `100` background color and `primary` text color. |
 | `icon`         | `ReactNode`          | `-`          | The icon to be displayed within the banner. If not provided, a`InfoCircle` icon will be displayed.                                                                                                                                                                                     |
+| `intent`       | `"info"              | "notice"     | "negative"                                                                                                                                                                                                                                                                             | "positive"`                                                                                                                                             | `info` | The intent color of the Banner component |
 | `sdsIconProps` | `Partial<IconProps>` | `-`          | Additional props to be passed to the icon component.                                                                                                                                                                                                                                   |
 | `onClose`      | `fn`                 | `-`          | Callback fired when the component requests to be closed. When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked. **Signature:**`function(event: React.SyntheticEvent) => void` `event`. The event source of the callback. |
 
@@ -270,15 +367,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -413,15 +509,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -560,15 +655,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
