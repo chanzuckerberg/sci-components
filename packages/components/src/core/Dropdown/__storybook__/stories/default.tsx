@@ -1,5 +1,5 @@
 import { AutocompleteValue } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useEffect, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";

@@ -1,6 +1,6 @@
 import { AutocompleteValue } from "@mui/base";
 import styled from "@emotion/styled";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";

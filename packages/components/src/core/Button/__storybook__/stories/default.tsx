@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import React from "react";
 import RawButton from "src/core/Button";
 import Callout from "src/core/Callout";

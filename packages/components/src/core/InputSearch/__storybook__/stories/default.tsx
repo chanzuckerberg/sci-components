@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawInputSearch from "src/core/InputSearch";
 
 export const InputSearch = (props: Args): JSX.Element => {

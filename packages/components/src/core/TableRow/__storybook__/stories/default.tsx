@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import CellBasic from "src/core/CellBasic";
 import RawTableRow from "src/core/TableRow";
 

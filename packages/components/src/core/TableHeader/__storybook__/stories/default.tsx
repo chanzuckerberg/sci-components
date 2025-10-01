@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import CellHeader from "src/core/CellHeader";
 import RawTableHeader from "src/core/TableHeader";
 
