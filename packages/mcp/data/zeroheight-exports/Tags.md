@@ -11,6 +11,14 @@ Tags are used to help with categorization on plugin pages or in conjunction with
 
 Use the links below to jump to information on a specific Tag:
 
+**Tag**
+
+---
+
+**TagFilter**
+
+---
+
 ---
 
 ## Tag
@@ -29,11 +37,31 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default (Inactive)** | **Default (Active)** | **Hover** | **Pressed** |
 | ---------------------- | -------------------- | --------- | ----------- |
 
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
 ---
 
 ### Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tag spacing**
+
+---
 
 ---
 
@@ -49,11 +77,27 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
 ---
 
 ### Filter Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Filter Tag spacing**
+
+---
 
 ## Code
 
@@ -103,11 +147,27 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**TagFilter**
+
+---
+
+**TagFilter**
+
+---
+
+**TagFilter**
+
+---
+
 ---
 
 ### Filter Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Filter Tag spacing**
+
+---
 
 ---
 
@@ -125,14 +185,42 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
 | **Default + Icon** | **Hover** | **Pressed** |
 | ------------------ | --------- | ----------- |
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
 
 ---
 
 ### Rounded Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Rounded Tag spacing_CZ GE**
+
+---
 
 ---
 
@@ -145,8 +233,24 @@ The Info variant is used when the information being communicated is neutral in n
 | **Error** | **Info** |
 | --------- | -------- |
 
+**Error variant**
+
+---
+
+**Info variant**
+
+---
+
 | **Success** | **Warning** |
 | ----------- | ----------- |
+
+**Success variant**
+
+---
+
+**Warning variant**
+
+---
 
 ## Code
 
@@ -194,11 +298,27 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**TagFilter**
+
+---
+
+**TagFilter**
+
+---
+
+**TagFilter**
+
+---
+
 ---
 
 ### Filter Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Filter Tag spacing**
+
+---
 
 ---
 
@@ -216,14 +336,42 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
 | **Default + Icon** | **Hover** | **Pressed** |
 | ------------------ | --------- | ----------- |
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
 
 ---
 
 ### Rounded Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Rounded Tag spacing_CZ ID**
+
+---
 
 ---
 
@@ -241,11 +389,27 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Tag**
+
+---
+
+**Tag**
+
+---
+
+**Tag**
+
+---
+
 ---
 
 ### Square Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Square Tag spacing_CZ ID**
+
+---
 
 ## Code
 
@@ -281,6 +445,14 @@ Tags are used to label the status of certain elements or in conjunction with fil
 
 ### Visual Preview
 
+**Preview_Guidelines_Tag**
+
+---
+
+**Preview_Guidelines_TagFilter**
+
+---
+
 ---
 
 ## Tag
@@ -291,6 +463,14 @@ Tags are used to label the status of certain elements or in conjunction with fil
 ### Tag Styles
 
 The two available Tag styles are shown below, demonstrated here using the primary type. There are five intents that Tags can communicate—see the Intent Variations section below for more details.
+
+**Tag_Rounded**
+
+---
+
+**Tag_Square**
+
+---
 
 ---
 
@@ -315,6 +495,42 @@ Use Tag – Primary in conjunction with the primary or most important content. I
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Tag_Primary_Rounded_Small_No Icon_Default**
+
+---
+
+**Tag_Primary_Rounded_Small_No Icon_Hover**
+
+---
+
+**Tag_Primary_Rounded_Small_No Icon_Pressed**
+
+---
+
+**Tag_Primary_Rounded_Small_Icon_Default**
+
+---
+
+**Tag_Primary_Rounded_Small_Icon_Hover**
+
+---
+
+**Tag_Primary_Rounded_Small_Icon_Pressed**
+
+---
+
+**Tag_Primary_Rounded_Large_Icon_Default**
+
+---
+
+**Tag_Primary_Rounded_Large_Icon_Hover**
+
+---
+
+**Tag_Primary_Rounded_Large_Icon_Pressed**
+
+---
+
 #### Secondary
 
 Use Tag – Secondary in conjunction with secondary or less important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
@@ -323,6 +539,42 @@ Use Tag – Secondary in conjunction with secondary or less important content. I
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
+
+**Tag_Secondary_Rounded_Small_No Icon_Default**
+
+---
+
+**Tag_Secondary_Rounded_Small_No Icon_Hover**
+
+---
+
+**Tag_Secondary_Rounded_Small_No Icon_Pressed**
+
+---
+
+**Tag_Secondary_Rounded_Small_Icon_Default**
+
+---
+
+**Tag_Secondary_Rounded_Small_Icon_Hover**
+
+---
+
+**Tag_Secondary_Rounded_Small_Icon_Pressed**
+
+---
+
+**Tag_Secondary_Rounded_Large_Icon_Default**
+
+---
+
+**Tag_Secondary_Rounded_Large_Icon_Hover**
+
+---
+
+**Tag_Secondary_Rounded_Large_Icon_Pressed**
+
+---
 
 ---
 
@@ -339,6 +591,42 @@ Use Tag – Primary in conjunction with the primary or most important content. I
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Tag_Primary_Square_Small_No Icon_Default**
+
+---
+
+**Tag_Primary_Square_Small_No Icon_Hover**
+
+---
+
+**Tag_Primary_Square_Small_No Icon_Pressed**
+
+---
+
+**Tag_Primary_Square_Small_Icon_Default**
+
+---
+
+**Tag_Primary_Square_Small_Icon_Hover**
+
+---
+
+**Tag_Primary_Square_Small_Icon_Pressed**
+
+---
+
+**Tag_Primary_Square_Large_Icon_Default**
+
+---
+
+**Tag_Primary_Square_Large_Icon_Hover**
+
+---
+
+**Tag_Primary_Square_Large_Icon_Pressed**
+
+---
+
 #### Secondary
 
 Use Tag – Secondary in conjunction with secondary or less important content. Include an icon when needing to provide additional context to users of what content the Tag is connected to.
@@ -348,11 +636,51 @@ Use Tag – Secondary in conjunction with secondary or less important content. I
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Tag_Secondary_Square_Small_No Icon_Default**
+
+---
+
+**Tag_Secondary_Square_Small_No Icon_Hover**
+
+---
+
+**Tag_Secondary_Square_Small_No Icon_Pressed**
+
+---
+
+**Tag_Secondary_Square_Small_Icon_Default**
+
+---
+
+**Tag_Secondary_Square_Small_Icon_Hover**
+
+---
+
+**Tag_Secondary_Square_Small_Icon_Pressed**
+
+---
+
+**Tag_Secondary_Square_Large_Icon_Default**
+
+---
+
+**Tag_Secondary_Square_Large_Icon_Hover**
+
+---
+
+**Tag_Secondary_Square_Large_Icon_Pressed**
+
+---
+
 ---
 
 ### Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tag Spacing**
+
+---
 
 ---
 
@@ -367,10 +695,154 @@ Each intent is demonstrated below using the default state of the rounded variant
 | Beta | Info | Negative | None | Notice | Positive |
 | ---- | ---- | -------- | ---- | ------ | -------- |
 
+**Tag_Primary_Small_No Icon_Intent_Beta**
+
+---
+
+**Tag_Primary_Small_No Icon_Intent_Info**
+
+---
+
+**Tag_Primary_Small_No Icon_Intent_Negative**
+
+---
+
+**Tag_Primary_Small_No Icon_Intent_None**
+
+---
+
+**Tag_Primary_Small_No Icon_Intent_Notice**
+
+---
+
+**Tag_Primary_Small_No Icon_Intent_Positive**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_Beta**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_Info**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_Negative**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_None**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_Notice**
+
+---
+
+**Tag_Primary_Small_Icon_Intent_Positive**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_Beta**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_Info**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_Negative**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_None**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_Notice**
+
+---
+
+**Tag_Primary_Large_No Icon_Intent_Positive**
+
+---
+
 #### Secondary
 
 | Beta | Info | Negative | None | Notice | Positive |
 | ---- | ---- | -------- | ---- | ------ | -------- |
+
+**Tag_Secondary_Small_No Icon_Intent_Beta**
+
+---
+
+**Tag_Secondary_Small_No Icon_Intent_Info**
+
+---
+
+**Tag_Secondary_Small_No Icon_Intent_Negative**
+
+---
+
+**Tag_Secondary_Small_No Icon_Intent_None**
+
+---
+
+**Tag_Secondary_Small_No Icon_Intent_Notice**
+
+---
+
+**Tag_Secondary_Small_No Icon_Intent_Positive**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_Beta**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_Info**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_Negative**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_None**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_Notice**
+
+---
+
+**Tag_Secondary_Small_Icon_Intent_Positive**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_Beta**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_Info**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_Negative**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_None**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_Notice**
+
+---
+
+**Tag_Secondary_Large_No Icon_Intent_Positive**
+
+---
 
 ---
 
@@ -394,11 +866,27 @@ Used Filter Tag in conjunction with Filters to communicate that the dataset is b
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**TagFilter_Default**
+
+---
+
+**TagFilter_Hover**
+
+---
+
+**TagFilter_Pressed**
+
+---
+
 ---
 
 ### Filter Tag Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Filter Tag spacing**
+
+---
 
 ## Code
 
@@ -408,6 +896,14 @@ These rules establish how much margin should exist between and around elements.
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_Tag**
+
+---
+
+**Preview_Code_TagFilter**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -554,15 +1050,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tags</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -701,15 +1196,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tags</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -848,15 +1342,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tags</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1016,15 +1509,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tags</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

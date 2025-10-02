@@ -19,6 +19,14 @@ Links come in two sizes: fontXs and fontS to align with SDS' most common body co
 
 > **Note:** When including an inline Link in your Figma designs, styles must be manually applied as there is no way to save the Link style in Figma as a text style. Use the Link Figma component for links that are not inline.
 
+**Preview_Link_Default**
+
+---
+
+**Preview_Link_Dashed**
+
+---
+
 ---
 
 ### Live Instance
@@ -36,6 +44,18 @@ Use Link – Default only when the Link is placed on `surface-primary`, `surface
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Default Visual Example_Default**
+
+---
+
+**Default Visual Example_Hover**
+
+---
+
+**Default visual example_Pressed**
+
+---
+
 ---
 
 ### Link – Dashed
@@ -47,12 +67,36 @@ See Borders section for Link Underline details.
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Dashed Visual Example_Default**
+
+---
+
+**Dashed Visual Example_Hover**
+
+---
+
+**Dashed Visual Example_Pressed**
+
+---
+
 #### Color Rules
 
 The color of Link – Dashed and its underline should match the color of the text used in the paragraph it is placed within.
 
 | Primary Text | Secondary Text | On-fill Text |
 | ------------ | -------------- | ------------ |
+
+**Dashed Visual Example_Black Text**
+
+---
+
+**Dashed Visual Example_Gray500 text**
+
+---
+
+**Dashed Visual Example_White text**
+
+---
 
 ---
 
@@ -61,6 +105,10 @@ The color of Link – Dashed and its underline should match the color of the tex
 These rules establish how much margin should exist between and around elements.
 
 > **Note:** The underline for Link – Dashed is spaced lower than the default text-decoration underline.
+
+**Dashed Text Link spacing**
+
+---
 
 ## Code
 
@@ -191,15 +239,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Link</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -347,15 +394,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Link</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

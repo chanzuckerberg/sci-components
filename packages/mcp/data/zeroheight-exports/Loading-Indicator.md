@@ -11,11 +11,19 @@ Used in napari hub and napari.org to indicate when on-page components are loadin
 
 Note: icon spins.
 
+**LoadingIndicator**
+
+---
+
 ---
 
 ### Loading Indicator Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Loading Indicator spacing**
+
+---
 
 
 

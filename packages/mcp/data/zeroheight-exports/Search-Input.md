@@ -16,6 +16,26 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Default** | **Focus** | **Disabled** |
 | ----------- | --------- | ----------- | --------- | ------------ |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 
 
 ### Small Search Input
@@ -27,11 +47,35 @@ Used in napari.org for searches within a given page.
 | **Default** | **Hover** | **Default** | **Focus** | **Disabled** |
 | ----------- | --------- | ----------- | --------- | ------------ |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 ---
 
 ### Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Search Input spacing**
+
+---
 
 
 

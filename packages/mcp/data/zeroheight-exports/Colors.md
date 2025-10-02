@@ -16,12 +16,60 @@ While Primitive Color variables define the individual colors within the design s
 
 Semantic Color variables are named in such a way as to create predictable usage across SDS. They start with the variable group, followed by the element it is applied to, and then add any number of modifiers to communicate the color's specific application within the UI, such as prominence or state.
 
+**Color_Semantic Colors_Overview_Naming**
+
+---
+
 Because Semantic Color variables are scoped to individual UI elements, a single Primitive Color variable, such as _blue500_ (Light Mode) or _blue600_ (Dark Mode), can be mapped to a range of Semantic Color variables like _Accent.border_, _Accent.ornament_, _Accent.text-action_, etc. since all of these elements are the same color.
 
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Color_Semantic Colors_Overview_Primitive Scoping_Light**
+
+---
+
+**Color_Semantic Colors_Overview_Primitive Scoping_Dark**
+
+---
+
 ### Semantic Color Variable Groups
+
+**Colors_Semantic_Base**
+
+---
+
+**Colors_Semantic_Action**
+
+---
+
+**Colors_Semantic_Accent**
+
+---
+
+**Colors_Semantic_Beta**
+
+---
+
+**Colors_Semantic_Info**
+
+---
+
+**Colors_Semantic_Negative**
+
+---
+
+**Colors_Semantic_Neutral**
+
+---
+
+**Colors_Semantic_Notice**
+
+---
+
+**Colors_Semantic_Positive**
+
+---
 
 ---
 
@@ -42,6 +90,14 @@ When greater visual contrast is needed use _background-primary-inverse, backgrou
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Color_Semantic Colors_Base_Surface_Light**
+
+---
+
+**Color_Semantic Colors_Base_Surface_Dark**
+
+---
+
 | Name                         |     | Figma Variable                                                                                       |     | CSS / SCSS Variables                                                                                                                                                                                                                                 |
 | ---------------------------- | --- | ---------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | background-primary           |     | Light: Base.background-primary (#ffffff) Dark: Base.background-primary (#101010)                     |     | CSS light / dark: `--sds-color-semantic-component-base-background-primary` SCSS light: `$sds-color-semantic-component-base-background-primary` SCSS dark: `$sds-color-semantic-component-base-background-primary-dark`                               |
@@ -59,14 +115,25 @@ Base Fill colors are used for element backgrounds that are interactive and chang
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
-| Name          |     | Figma Variable                                                                                               |     | CSS / SCSS Variable                                                                                                                                                                                     |
-| ------------- | --- | ------------------------------------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| fill-primary  |     | Light: Base.fill-primary (#ffffff) Dark: Base.fill-primary (#333333)                                         |     | CSS light / dark: `--sds-color-semantic-component-base-fill-primary` SCSS light: `$sds-color-semantic-component-base-fill-primary` SCSS dark: `$sds-color-semantic-component-base-fill-primary-dark`    |
-| fill-hover    |     | Light: Base.fill-hover (rgba(195, 195, 195, 0.2800)) Dark: Base.fill-hover (rgba(105, 105, 105, 0.2800))     |     | CSS light / dark: `--sds-color-semantic-component-base-fill-hover` SCSS light: `$sds-color-semantic-component-base-fill-hover` SCSS dark: `$sds-color-semantic-component-base-fill-hover-dark`          |
-| fill-pressed  |     | Light: Base.fill-pressed (rgba(195, 195, 195, 0.2800)) Dark: Base.fill-pressed (rgba(105, 105, 105, 0.2800)) |     | CSS light / dark: `--sds-color-semantic-component-base-fill-pressed` SCSS light: `$sds-color-semantic-component-base-fill-pressed` SCSS dark: `$sds-color-semantic-component-base-fill-pressed-dark`    |
-| fill-open     |     | Light: Base.fill-open (rgba(195, 195, 195, 0.2800)) Dark: Base.fill-open (rgba(105, 105, 105, 0.2800))       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-open` SCSS light: `$sds-color-semantic-component-base-fill-open` SCSS dark: `$sds-color-semantic-component-base-fill-open-dark`             |
-| fill-selected |     | Light: Base.fill-selected (#000000) Dark: Base.fill-selected (#ffffff)                                       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-selected` SCSS light: `$sds-color-semantic-component-base-fill-selected` SCSS dark: `$sds-color-semantic-component-base-fill-selected-dark` |
-| fill-disabled |     | Light: Base.fill-disabled (#dfdfdf) Dark: Base.fill-disabled (#494949)                                       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-disabled` SCSS light: `$sds-color-semantic-component-base-fill-disabled` SCSS dark: `$sds-color-semantic-component-base-fill-disabled-dark` |
+**Color_Base Colors_Fill_Light**
+
+---
+
+**Color_Base Colors_Fill_Dark**
+
+---
+
+| Name                 |     | Figma Variable                                                                                                               |     | CSS / SCSS Variable                                                                                                                                                                                                          |
+| -------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fill-primary         |     | Light: Base.fill-primary (#ffffff) Dark: Base.fill-primary (#333333)                                                         |     | CSS light / dark: `--sds-color-semantic-component-base-fill-primary` SCSS light: `$sds-color-semantic-component-base-fill-primary` SCSS dark: `$sds-color-semantic-component-base-fill-primary-dark`                         |
+| fill-hover           |     | Light: Base.fill-hover (rgba(195, 195, 195, 0.2000)) Dark: Base.fill-hover (rgba(105, 105, 105, 0.5800))                     |     | CSS light / dark: `--sds-color-semantic-component-base-fill-hover` SCSS light: `$sds-color-semantic-component-base-fill-hover` SCSS dark: `$sds-color-semantic-component-base-fill-hover-dark`                               |
+| fill-pressed         |     | Light: Base.fill-pressed (rgba(195, 195, 195, 0.2000)) Dark: Base.fill-pressed (rgba(105, 105, 105, 0.5800))                 |     | CSS light / dark: `--sds-color-semantic-component-base-fill-pressed` SCSS light: `$sds-color-semantic-component-base-fill-pressed` SCSS dark: `$sds-color-semantic-component-base-fill-pressed-dark`                         |
+| fill-open            |     | Light: Base.fill-open (rgba(195, 195, 195, 0.2000)) Dark: Base.fill-open (rgba(105, 105, 105, 0.5800))                       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-open` SCSS light: `$sds-color-semantic-component-base-fill-open` SCSS dark: `$sds-color-semantic-component-base-fill-open-dark`                                  |
+| fill-selected        |     | Light: Base.fill-selected (#000000) Dark: Base.fill-selected (#ffffff)                                                       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-selected` SCSS light: `$sds-color-semantic-component-base-fill-selected` SCSS dark: `$sds-color-semantic-component-base-fill-selected-dark`                      |
+| fill-hover-inverse   |     | Light: Base.fill-hover-inverse (rgba(195, 195, 195, 0.3400)) Dark: Base.fill-hover-inverse (rgba(105, 105, 105, 0.0800))     |     | CSS light / dark: `--sds-color-semantic-component-base-fill-hover-inverse` SCSS light: `$sds-color-semantic-component-base-fill-hover-inverse` SCSS dark: `$sds-color-semantic-component-base-fill-hover-inverse-dark`       |
+| fill-pressed-inverse |     | Light: Base.fill-pressed-inverse (rgba(195, 195, 195, 0.3400)) Dark: Base.fill-pressed-inverse (rgba(105, 105, 105, 0.0800)) |     | CSS light / dark: `--sds-color-semantic-component-base-fill-pressed-inverse` SCSS light: `$sds-color-semantic-component-base-fill-pressed-inverse` SCSS dark: `$sds-color-semantic-component-base-fill-pressed-inverse-dark` |
+| fill-open-inverse    |     | Light: Base.fill-open-inverse (rgba(195, 195, 195, 0.3400)) Dark: Base.fill-open-inverse (rgba(105, 105, 105, 0.0800))       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-open-inverse` SCSS light: `$sds-color-semantic-component-base-fill-open-inverse` SCSS dark: `$sds-color-semantic-component-base-fill-open-inverse-dark`          |
+| fill-disabled        |     | Light: Base.fill-disabled (#dfdfdf) Dark: Base.fill-disabled (#494949)                                                       |     | CSS light / dark: `--sds-color-semantic-component-base-fill-disabled` SCSS light: `$sds-color-semantic-component-base-fill-disabled` SCSS dark: `$sds-color-semantic-component-base-fill-disabled-dark`                      |
 
 #### Border and Divider
 
@@ -79,9 +146,17 @@ Base _divider_ is intended to be used only on horizontal dividers that separate 
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Color_Base Colors_Border and Divider_Light**
+
+---
+
+**Color_Base Colors_Border and Divider_Dark**
+
+---
+
 | **Name**                        |     | **Figma Variable**                                                                                         |     | **CSS / SCSS Variable**                                                                                                                                                                                                                                       |
 | ------------------------------- | --- | ---------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| border-primary                  |     | Light: Base.border-primary (#7a7a7a) Dark: Base.border-primary (#cdcdcd)                                   |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary` SCSS light: `$sds-color-semantic-component-base-border-primary` SCSS dark: `$sds-color-semantic-component-base-border-primary-dark`                                                    |
+| border-primary                  |     | Light: Base.border-primary (#767676) Dark: Base.border-primary (#cdcdcd)                                   |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary` SCSS light: `$sds-color-semantic-component-base-border-primary` SCSS dark: `$sds-color-semantic-component-base-border-primary-dark`                                                    |
 | border-primary-hover            |     | Light: Base.border-primary-hover (#000000) Dark: Base.border-primary-hover (#ffffff)                       |     | CSS light / dark: `--sds-color-semantic-component-base-border-hover` SCSS light: `$sds-color-semantic-component-base-border-primary-hover` SCSS dark: `$sds-color-semantic-component-base-border-primary-hover-dark`                                          |
 | border-primary-pressed          |     | Light: Base.border-primary-pressed (#000000) Dark: Base.border-primary-pressed (#ffffff)                   |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-pressed` SCSS light: `$sds-color-semantic-component-base-border-primary-pressed` SCSS dark: `$sds-color-semantic-component-base-border-primary-pressed-dark`                            |
 | border-primary-disabled         |     | Light: Base.border-primary-disabled (#c3c3c3) Dark: Base.border-primary-disabled (#696969)                 |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-disabled` SCSS light: `$sds-color-semantic-component-base-border-primary-disabled` SCSS dark: `$sds-color-semantic-component-base-border-primary-disabled-dark`                         |
@@ -89,10 +164,10 @@ Base _divider_ is intended to be used only on horizontal dividers that separate 
 | border-primary-inverse          |     | Light: Base.border-primary-inverse (#c3c3c3) Dark: Base.border-primary-inverse (#696969)                   |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-inverse` SCSS light: `$sds-color-semantic-component-base-border-primary-inverse` SCSS dark: `$sds-color-semantic-component-base-border-primary-inverse-dark`                            |
 | border-primary-hover-inverse    |     | Light: Base.border-primary-hover-inverse (#ffffff) Dark: Base.border-primary-hover-inverse (#000000)       |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-hover-inverse` SCSS light: `$sds-color-semantic-component-base-border-primary-hover-inverse` SCSS dark: `$sds-color-semantic-component-base-border-primary-hover-inverse-dark`          |
 | border-primary-pressed-inverse  |     | Light: Base.border-primary-pressed-inverse (#ffffff) Dark: Base.border-primary-pressed-inverse (#000000)   |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-pressed-inverse` SCSS light: `$sds-color-semantic-component-base-border-primary-pressed-inverse` SCSS dark: `$sds-color-semantic-component-base-border-primary-pressed-inverse-dark`    |
-| border-primary-disabled-inverse |     | Light: Base.border-primary-disabled-inverse (#7a7a7a) Dark: Base.border-primary-disabled-inverse (#cdcdcd) |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-disabled-inverse` SCSS light: `$sds-color-semantic-component-base-border-primary-disabled-inverse` SCSS dark: `$sds-color-semantic-component-base-border-primary-disabled-inverse-dark` |
+| border-primary-disabled-inverse |     | Light: Base.border-primary-disabled-inverse (#767676) Dark: Base.border-primary-disabled-inverse (#cdcdcd) |     | CSS light / dark: `--sds-color-semantic-component-base-border-primary-disabled-inverse` SCSS light: `$sds-color-semantic-component-base-border-primary-disabled-inverse` SCSS dark: `$sds-color-semantic-component-base-border-primary-disabled-inverse-dark` |
 | border-on-fill                  |     | Light: Base.border-on-fill (#ffffff) Dark: Base.border-on-fill (#000000)                                   |     | CSS light / dark: `--sds-color-semantic-component-base-border-on-fill` SCSS light: `$sds-color-semantic-component-base-border-on-fill` SCSS dark: `$sds-color-semantic-component-base-border-on-fill-dark`                                                    |
 | divider                         |     | Light: Base.divider (#dfdfdf) Dark: Base.divider (#494949)                                                 |     | CSS light / dark: `--sds-color-semantic-component-base-divider` SCSS light: `$sds-color-semantic-component-base-divider` SCSS dark: `$sds-color-semantic-component-base-divider-dark`                                                                         |
-| divider-inverse                 |     | Light: Base.divider-inverse (#7a7a7a) Dark: Base.divider-inverse (#cdcdcd)                                 |     | CSS light / dark: `--sds-color-semantic-component-base-divider-inverse` SCSS light: `$sds-color-semantic-component-base-divider-inverse` SCSS dark: `$sds-color-semantic-component-base-divider-inverse-dark`                                                 |
+| divider-inverse                 |     | Light: Base.divider-inverse (#767676) Dark: Base.divider-inverse (#cdcdcd)                                 |     | CSS light / dark: `--sds-color-semantic-component-base-divider-inverse` SCSS light: `$sds-color-semantic-component-base-divider-inverse` SCSS dark: `$sds-color-semantic-component-base-divider-inverse-dark`                                                 |
 
 #### Ornament
 
@@ -105,17 +180,27 @@ When visual contrast is needed use _ornament-primary-inverse_.
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
-| **Name**                   |     | **Figma Variable**                                                                               |     | **CSS / SCSS Variable**                                                                                                                                                                                                                        |
-| -------------------------- | --- | ------------------------------------------------------------------------------------------------ | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ornament-primary           |     | Light: Base.ornament-primary (#000000) Dark: Base.ornament-primary (#ffffff)                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-primary` SCSS light: `$sds-color-semantic-component-base-ornament-primary` SCSS dark: `$sds-color-semantic-component-base-ornament-primary-dark`                               |
-| ornament-secondary         |     | Light: Base.ornament-secondary (#7a7a7a) Dark: Base.ornament-secondary (#cdcdcd)                 |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary` SCSS light: `$sds-color-semantic-component-base-ornament-secondary` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-dark`                         |
-| ornament-secondary-hover   |     | Light: Base.ornament-secondary-hover (#000000) Dark: Base.ornament-secondary-hover (#ffffff)     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-hover` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-hover` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-hover-dark`       |
-| ornament-secondary-pressed |     | Light: Base.ornament-secondary-pressed (#000000) Dark: Base.ornament-secondary-pressed (#ffffff) |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-pressed` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-pressed` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-pressed-dark` |
-| ornament-primary-inverse   |     | Light: Base.ornament-primary-inverse (#ffffff) Dark: Base.ornament-primary-inverse (#000000)     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-primary-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-primary-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-primary-inverse-dark`       |
-| ornament-secondary-inverse |     | Light: Base.ornament-secondary-inverse (#c3c3c3) Dark: Base.ornament-secondary-inverse (#696969) |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-inverse-dark` |
-| ornament-on-fill           |     | Light: Base.ornament-on-fill (#ffffff) Dark: Base.ornament-on-fill (#ffffff)                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-on-fill` SCSS light: `$sds-color-semantic-component-base-ornament-on-fill` SCSS dark: `$sds-color-semantic-component-base-ornament-on-fill-dark`                               |
-| ornament-disabled          |     | Light: Base.ornament-disabled (#c3c3c3) Dark: Base.ornament-disabled (#696969)                   |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-disabled` SCSS light: `$sds-color-semantic-component-base-ornament-disabled` SCSS dark: `$sds-color-semantic-component-base-ornament-disabled-dark`                            |
-| ornament-disabled-inverse  |     | Light: Base.ornament-disabled-inverse (#7a7a7a) Dark: Base.ornament-disabled-inverse (#cdcdcd)   |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-disabled-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-disabled-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-disabled-inverse-dark`    |
+**Colors_Semantic_Base_Icon_Light**
+
+---
+
+**Colors_Semantic_Base_Icon_Dark**
+
+---
+
+| **Name**                           |     | **Figma Variable**                                                                                               |     | **CSS / SCSS Variable**                                                                                                                                                                                                                                                |
+| ---------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ornament-primary                   |     | Light: Base.ornament-primary (#000000) Dark: Base.ornament-primary (#ffffff)                                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-primary` SCSS light: `$sds-color-semantic-component-base-ornament-primary` SCSS dark: `$sds-color-semantic-component-base-ornament-primary-dark`                                                       |
+| ornament-secondary                 |     | Light: Base.ornament-secondary (#767676) Dark: Base.ornament-secondary (#cdcdcd)                                 |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary` SCSS light: `$sds-color-semantic-component-base-ornament-secondary` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-dark`                                                 |
+| ornament-secondary-hover           |     | Light: Base.ornament-secondary-hover (#000000) Dark: Base.ornament-secondary-hover (#ffffff)                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-hover` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-hover` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-hover-dark`                               |
+| ornament-secondary-pressed         |     | Light: Base.ornament-secondary-pressed (#000000) Dark: Base.ornament-secondary-pressed (#ffffff)                 |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-pressed` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-pressed` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-pressed-dark`                         |
+| ornament-primary-inverse           |     | Light: Base.ornament-primary-inverse (#ffffff) Dark: Base.ornament-primary-inverse (#000000)                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-primary-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-primary-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-primary-inverse-dark`                               |
+| ornament-secondary-inverse         |     | Light: Base.ornament-secondary-inverse (#c3c3c3) Dark: Base.ornament-secondary-inverse (#696969)                 |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-inverse-dark`                         |
+| ornament-secondary-hover-inverse   |     | Light: Base.ornament-secondary-hover-inverse (#ffffff) Dark: Base.ornament-secondary-hover-inverse (#000000)     |     | SS light / dark: `--sds-color-semantic-component-base-ornament-secondary-hover-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-hover-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-hover-inverse-dark`        |
+| ornament-secondary-pressed-inverse |     | Light: Base.ornament-secondary-pressed-inverse (#ffffff) Dark: Base.ornament-secondary-pressed-inverse (#000000) |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-secondary-pressed-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-secondary-pressed-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-secondary-pressed-inverse-dark` |
+| ornament-on-fill                   |     | Light: Base.ornament-on-fill (#ffffff) Dark: Base.ornament-on-fill (#ffffff)                                     |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-on-fill` SCSS light: `$sds-color-semantic-component-base-ornament-on-fill` SCSS dark: `$sds-color-semantic-component-base-ornament-on-fill-dark`                                                       |
+| ornament-disabled                  |     | Light: Base.ornament-disabled (#c3c3c3) Dark: Base.ornament-disabled (#696969)                                   |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-disabled` SCSS light: `$sds-color-semantic-component-base-ornament-disabled` SCSS dark: `$sds-color-semantic-component-base-ornament-disabled-dark`                                                    |
+| ornament-disabled-inverse          |     | Light: Base.ornament-disabled-inverse (#767676) Dark: Base.ornament-disabled-inverse (#cdcdcd)                   |     | CSS light / dark: `--sds-color-semantic-component-base-ornament-disabled-inverse` SCSS light: `$sds-color-semantic-component-base-ornament-disabled-inverse` SCSS dark: `$sds-color-semantic-component-base-ornament-disabled-inverse-dark`                            |
 
 #### Text
 
@@ -130,17 +215,25 @@ When the fill of the element that the text is placed on top of is too dark in bo
 | Light Mode | Dark Mode |
 | :--------: | :-------: |
 
+**Colors_Semantic_Base_Text_Light**
+
+---
+
+**Colors_Semantic_Base_Text_Dark**
+
+---
+
 | **Name**          |     | **Figma Variable**                                                             |     | **CSS / SCSS Variable**                                                                                                                                                                              |
 | ----------------- | --- | ------------------------------------------------------------------------------ | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | primary           |     | Light: Text.primary (#000000) Dark: Text.primary (#ffffff)                     |     | CSS light / dark: `--sds-color-semantic-base-text-primary` SCSS light: `$sds-color-semantic-base-text-primary` SCSS dark: `$sds-color-semantic-base-text-primary-dark`                               |
-| secondary         |     | Light: Text.secondary (#7a7a7a) Dark: Text.secondary (#cdcdcd)                 |     | CSS light / dark: `--sds-color-semantic-base-text-secondary` SCSS light: `$sds-color-semantic-base-text-secondary` SCSS dark: `$sds-color-semantic-base-text-secondary-dark`                         |
+| secondary         |     | Light: Text.secondary (#767676) Dark: Text.secondary (#cdcdcd)                 |     | CSS light / dark: `--sds-color-semantic-base-text-secondary` SCSS light: `$sds-color-semantic-base-text-secondary` SCSS dark: `$sds-color-semantic-base-text-secondary-dark`                         |
 | tertiary          |     | Light: Text.tertiary (#a5a5a5) Dark: Text.tertiary (#9b9b9b)                   |     | CSS light / dark: `--sds-color-semantic-base-text-tertiary` SCSS light: `$sds-color-semantic-base-text-tertiary` SCSS dark: `$sds-color-semantic-base-text-tertiary-dark`                            |
 | primary-inverse   |     | Light: Text.primary-inverse (#ffffff) Dark: Text.primary-inverse (#000000)     |     | CSS light / dark: `--sds-color-semantic-base-text-primary-inverse` SCSS light: `$sds-color-semantic-base-text-primary-inverse` SCSS dark: `$sds-color-semantic-base-text-primary-inverse-dark`       |
 | secondary-inverse |     | Light: Text.secondary-inverse (#c3c3c3) Dark: Text.secondary-inverse (#696969) |     | CSS light / dark: `--sds-color-semantic-base-text-secondary-inverse` SCSS light: `$sds-color-semantic-text-base-secondary-inverse` SCSS dark: `$sds-color-semantic-text-base-secondary-inverse-dark` |
 | tertiary-inverse  |     | Light: Text.tertiary-inverse (#969696) Dark: Text.tertiary-inverse (#aaaaaa)   |     | CSS light / dark: `--sds-color-semantic-base-text-tertiary-inverse` SCSS light: `$sds-color-semantic-base-text-tertiary-inverse` SCSS dark: `$sds-color-semantic-base-text-tertiary-inverse-dark`    |
 | on-fill           |     | Light: Text.on-fill (#ffffff) Dark: Text.on-fill (#ffffff)                     |     | CSS light / dark: `--sds-color-semantic-base-text-on-fill` SCSS light: `$sds-color-semantic-base-text-on-fill` SCSS dark: `$sds-color-semantic-base-text-on-fill-dark`                               |
 | disabled          |     | Light: Text.disabled (#c3c3c3) Dark: Text.disabled (#696969)                   |     | CSS light / dark: `--sds-color-semantic-base-text-disabled` SCSS light: `$sds-color-semantic-base-text-disabled` SCSS dark: `$sds-color-semantic-base-text-disabled-dark`                            |
-| disabled-inverse  |     | Light: Text.disabled-inverse (#7a7a7a) Dark: Text.disabled-inverse (#cdcdcd)   |     | CSS light / dark: `--sds-color-semantic-base-text-disabled-inverse` SCSS light: `$sds-color-semantic-base-text-disabled-inverse` SCSS dark: `$sds-color-semantic-base-text-disabled-inverse-dark`    |
+| disabled-inverse  |     | Light: Text.disabled-inverse (#767676) Dark: Text.disabled-inverse (#cdcdcd)   |     | CSS light / dark: `--sds-color-semantic-base-text-disabled-inverse` SCSS light: `$sds-color-semantic-base-text-disabled-inverse` SCSS dark: `$sds-color-semantic-base-text-disabled-inverse-dark`    |
 
 ---
 
@@ -371,7 +464,7 @@ Neutral Fill Colors are used on elements that are interactive and change in resp
 | **Name**       |     | **Figma Variable**                                                             |     | **CSS / SCSS Variable**                                                                                                                                                                                             |
 | -------------- | --- | ------------------------------------------------------------------------------ | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fill-primary   |     | Light: Neutral.fill-primary (#969696) Dark: Neutral.fill-primary (#aaaaaa)     |     | CSS light / dark: `--sds-color-semantic-component-neutral-fill-primary` SCSS light: `$sds-color-semantic-component-neutral-fill-primary` SCSS dark: `$sds-color-semantic-component-neutral-fill-primary-dark`       |
-| fill-hover     |     | Light: Neutral.fill-hover (#7a7a7a) Dark: Neutral.fill-hover (#cdcdcd)         |     | CSS light / dark: `--sds-color-semantic-component-neutral-fill-hover` SCSS light: `$sds-color-semantic-component-neutral-fill-hover` SCSS dark: `$sds-color-semantic-component-neutral-fill-hover-dark`             |
+| fill-hover     |     | Light: Neutral.fill-hover (#767676) Dark: Neutral.fill-hover (#cdcdcd)         |     | CSS light / dark: `--sds-color-semantic-component-neutral-fill-hover` SCSS light: `$sds-color-semantic-component-neutral-fill-hover` SCSS dark: `$sds-color-semantic-component-neutral-fill-hover-dark`             |
 | fill-pressed   |     | Light: Neutral.fill-pressed (#3b3b3b) Dark: Neutral.fill-pressed (#ededed)     |     | CSS light / dark: `--sds-color-semantic-component-neutral-fill-pressed` SCSS light: `$sds-color-semantic-component-neutral-fill-pressed` SCSS dark: `$sds-color-semantic-component-neutral-fill-pressed-dark`       |
 | fill-secondary |     | Light: Neutral.fill-secondary (#dfdfdf) Dark: Neutral.fill-secondary (#494949) |     | CSS light / dark: `--sds-color-semantic-component-neutral-fill-secondary` SCSS light: `$sds-color-semantic-component-neutral-fill-secondary` SCSS dark: `$sds-color-semantic-component-neutral-fill-secondary-dark` |
 
@@ -535,6 +628,10 @@ Magma is a well-vetted, industry-standard colormap from Matplotlib and is the fi
 
 Magma is perceptually uniform, meaning it has consistent and even changes in brightness and hue across the entire colormap. This ensures the colors that get mapped to each datapoint in a visualization are not only an equivalent distance away from each other technically, but visually appear as such, even for folks with visual accessibility concerns who might have trouble perceiving differences between colors.
 
+**Colors_Visualzation_Magma**
+
+---
+
 > **Note:** any color from the Magma colormap can be used in implementation, however the following nine colors have been created as variables for easy use in Figma.
 
 | **Name** |     | **Figma Variable** |     | **CSS / SCSS Variables** |
@@ -561,7 +658,115 @@ For the sake of specificity, only those colors used in each scale are documented
 
 ### Primary Blue
 
+**primary100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #ECF8FF            |
+| RGB      | rgb(236, 248, 255) |
+
+---
+
+**primary200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #D2EFFF            |
+| RGB      | rgb(210, 239, 255) |
+
+---
+
+**primary400**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #80D1FF            |
+| RGB      | rgb(128, 209, 255) |
+
+---
+
+**primary500**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #68C8FF            |
+| RGB      | rgb(104, 200, 255) |
+
+---
+
+**primary600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #009BF2          |
+| RGB      | rgb(0, 155, 242) |
+
+---
+
 ###  Grays
+
+**White**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFFFFF            |
+| RGB      | rgb(255, 255, 255) |
+
+---
+
+**gray100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F7F7F7            |
+| RGB      | rgb(247, 247, 247) |
+
+---
+
+**gray200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EAEAEA            |
+| RGB      | rgb(234, 234, 234) |
+
+---
+
+**gray300**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #CCCCCC            |
+| RGB      | rgb(204, 204, 204) |
+
+---
+
+**gray400**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #999999            |
+| RGB      | rgb(153, 153, 153) |
+
+---
+
+**gray500**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #686868            |
+| RGB      | rgb(104, 104, 104) |
+
+---
+
+**Black**
+
+| Property | Value        |
+| :------- | :----------- |
+| Hex      | #000000      |
+| RGB      | rgb(0, 0, 0) |
+
+---
 
 ---
 
@@ -569,11 +774,182 @@ For the sake of specificity, only those colors used in each scale are documented
 
 These colors are used on admonition blocks only and should not be used anywhere else in the UI. Each color should be used for the specific admonition type named.
 
+**Danger**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FF8080            |
+| RGB      | rgb(255, 128, 128) |
+
+---
+
+**Warning**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFA680            |
+| RGB      | rgb(255, 166, 128) |
+
+---
+
+**Caution**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFC580            |
+| RGB      | rgb(255, 197, 128) |
+
+---
+
+**Error**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FADE7D            |
+| RGB      | rgb(250, 222, 125) |
+
+---
+
+**Important**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F1F379            |
+| RGB      | rgb(241, 243, 121) |
+
+---
+
+**Attention**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #D8F97D            |
+| RGB      | rgb(216, 249, 125) |
+
+---
+
+**Note**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #80FFE0            |
+| RGB      | rgb(128, 255, 224) |
+
+---
+
+**Default**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #80D1FF            |
+| RGB      | rgb(128, 209, 255) |
+
+---
+
+**Hint**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #8094FF            |
+| RGB      | rgb(128, 148, 255) |
+
+---
+
+**Tip**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #CF80FF            |
+| RGB      | rgb(207, 128, 255) |
+
+---
+
 ---
 
 ## Code Colors
 
 These colors are used in code snippets only and should not be used anywhere else in the UI. Each color should be used for the specific code element type named.
+
+**Background**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F7F7F7            |
+| RGB      | rgb(247, 247, 247) |
+
+---
+
+**Comments**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #6F6F6F            |
+| RGB      | rgb(111, 111, 111) |
+
+---
+
+**Functions**
+
+| Property | Value           |
+| :------- | :-------------- |
+| Hex      | #004166         |
+| RGB      | rgb(0, 65, 102) |
+
+---
+
+**HTML Tags**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #5D7A1F          |
+| RGB      | rgb(93, 122, 31) |
+
+---
+
+**Key Words**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #7518A1           |
+| RGB      | rgb(117, 24, 161) |
+
+---
+
+**Operators**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #956441           |
+| RGB      | rgb(149, 100, 65) |
+
+---
+
+**Strings**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #0074B8          |
+| RGB      | rgb(0, 116, 184) |
+
+---
+
+**Text**
+
+| Property | Value        |
+| :------- | :----------- |
+| Hex      | #000000      |
+| RGB      | rgb(0, 0, 0) |
+
+---
+
+**Variables, Numbers, Booleans**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #227B81           |
+| RGB      | rgb(34, 123, 129) |
+
+---
 
 ---
 
@@ -585,7 +961,133 @@ These are the most frequently used colors in the UI's design. Primary400 is the 
 
 ### Primary Purple
 
+**primary100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FCFAFF            |
+| RGB      | rgb(252, 250, 255) |
+
+---
+
+**primary200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F6F2FC            |
+| RGB      | rgb(246, 242, 252) |
+
+---
+
+**primary300**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #D4BFFF            |
+| RGB      | rgb(212, 191, 255) |
+
+---
+
+**primary400**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #511CC1          |
+| RGB      | rgb(81, 28, 193) |
+
+---
+
+**primary500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #4317A1          |
+| RGB      | rgb(67, 23, 161) |
+
+---
+
+**primary600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #371680          |
+| RGB      | rgb(55, 22, 128) |
+
+---
+
 ###  Grays
+
+**White**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFFFFF            |
+| RGB      | rgb(255, 255, 255) |
+
+---
+
+**gray100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F8F8F8            |
+| RGB      | rgb(248, 248, 248) |
+
+---
+
+**gray200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EAEAEA            |
+| RGB      | rgb(234, 234, 234) |
+
+---
+
+**gray300**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #CCCCCC            |
+| RGB      | rgb(204, 204, 204) |
+
+---
+
+**gray400**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #999999            |
+| RGB      | rgb(153, 153, 153) |
+
+---
+
+**gray500**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #767676            |
+| RGB      | rgb(118, 118, 118) |
+
+---
+
+**gray600**
+
+| Property | Value           |
+| :------- | :-------------- |
+| Hex      | #545454         |
+| RGB      | rgb(84, 84, 84) |
+
+---
+
+**Black**
+
+| Property | Value        |
+| :------- | :----------- |
+| Hex      | #000000      |
+| RGB      | rgb(0, 0, 0) |
+
+---
 
 ---
 
@@ -595,11 +1097,227 @@ These colors are used for product feedback only, i.e., showing info, success, wa
 
 ### Info
 
+**info100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EFEBF4            |
+| RGB      | rgb(239, 235, 244) |
+
+---
+
+**info100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F6F2FC            |
+| RGB      | rgb(246, 242, 252) |
+
+---
+
+**info200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F3EDFC            |
+| RGB      | rgb(243, 237, 252) |
+
+---
+
+**info400**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #511CC1          |
+| RGB      | rgb(81, 28, 193) |
+
+---
+
+**info500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #4317A1          |
+| RGB      | rgb(67, 23, 161) |
+
+---
+
+**info600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #371680          |
+| RGB      | rgb(55, 22, 128) |
+
+---
+
 ### Success
+
+**success100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #E4EDE8            |
+| RGB      | rgb(228, 237, 232) |
+
+---
+
+**success100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #ECF5F0            |
+| RGB      | rgb(236, 245, 240) |
+
+---
+
+**success200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #E6F7ED            |
+| RGB      | rgb(230, 247, 237) |
+
+---
+
+**success400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #3CB371           |
+| RGB      | rgb(60, 179, 113) |
+
+---
+
+**success500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #349A61          |
+| RGB      | rgb(52, 154, 97) |
+
+---
+
+**success600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #1C7F48          |
+| RGB      | rgb(28, 127, 72) |
+
+---
 
 ### Error
 
+**error100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F6EAEA            |
+| RGB      | rgb(246, 234, 234) |
+
+---
+
+**error100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FEF2F2            |
+| RGB      | rgb(254, 242, 242) |
+
+---
+
+**error200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F8E8E8            |
+| RGB      | rgb(248, 232, 232) |
+
+---
+
+**error400**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #DC132C          |
+| RGB      | rgb(220, 19, 44) |
+
+---
+
+**error500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #C61128          |
+| RGB      | rgb(198, 17, 40) |
+
+---
+
+**error600**
+
+| Property | Value           |
+| :------- | :-------------- |
+| Hex      | #B70016         |
+| RGB      | rgb(183, 0, 22) |
+
+---
+
 ### Warning
+
+**warning100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F4EEE4            |
+| RGB      | rgb(244, 238, 228) |
+
+---
+
+**warning100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FCF6EC            |
+| RGB      | rgb(252, 246, 236) |
+
+---
+
+**warning200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFF3E1            |
+| RGB      | rgb(255, 243, 225) |
+
+---
+
+**warning400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #F5A623           |
+| RGB      | rgb(245, 166, 35) |
+
+---
+
+**warning500**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #D8921F           |
+| RGB      | rgb(216, 146, 31) |
+
+---
+
+**warning600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #946314          |
+| RGB      | rgb(148, 99, 20) |
+
+---
 
 ---
 
@@ -611,9 +1329,144 @@ These are the most frequently used colors in the UI's design. Primary400 is the 
 
 ### Primary Blue
 
+**primary600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #223F9C          |
+| RGB      | rgb(34, 63, 156) |
+
+---
+
+**primary400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #3867FA           |
+| RGB      | rgb(56, 103, 250) |
+
+---
+
+**primary200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EBEFFC            |
+| RGB      | rgb(235, 239, 252) |
+
+---
+
+**primary500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #2B52CD          |
+| RGB      | rgb(43, 82, 205) |
+
+---
+
+**primary300**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #A9BDFC            |
+| RGB      | rgb(169, 189, 252) |
+
+---
+
+**primary100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F8F9FE            |
+| RGB      | rgb(248, 249, 254) |
+
+---
+
 ###  Grays
 
+**White**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFFFFF            |
+| RGB      | rgb(255, 255, 255) |
+
+---
+
+**gray100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F8F8F8            |
+| RGB      | rgb(248, 248, 248) |
+
+---
+
+**gray200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EAEAEA            |
+| RGB      | rgb(234, 234, 234) |
+
+---
+
+**gray300**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #CCCCCC            |
+| RGB      | rgb(204, 204, 204) |
+
+---
+
+**gray400**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #999999            |
+| RGB      | rgb(153, 153, 153) |
+
+---
+
+**gray500**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #767676            |
+| RGB      | rgb(118, 118, 118) |
+
+---
+
+**gray600**
+
+| Property | Value           |
+| :------- | :-------------- |
+| Hex      | #545454         |
+| RGB      | rgb(84, 84, 84) |
+
+---
+
+**Black**
+
+| Property | Value        |
+| :------- | :----------- |
+| Hex      | #000000      |
+| RGB      | rgb(0, 0, 0) |
+
+---
+
 ### Secondary Green
+
+**secondary400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #9BC74E           |
+| RGB      | rgb(155, 199, 78) |
+
+---
 
 ---
 
@@ -623,10 +1476,280 @@ These colors are used for product feedback only, i.e., showing info, success, wa
 
 ### Info
 
+**info100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #E7EAF4            |
+| RGB      | rgb(231, 234, 244) |
+
+---
+
+**info100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EFF2FC            |
+| RGB      | rgb(239, 242, 252) |
+
+---
+
+**info200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #EBEFFC            |
+| RGB      | rgb(235, 239, 252) |
+
+---
+
+**info400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #3867FA           |
+| RGB      | rgb(56, 103, 250) |
+
+---
+
+**info500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #2B52CD          |
+| RGB      | rgb(43, 82, 205) |
+
+---
+
+**info600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #223F9C          |
+| RGB      | rgb(34, 63, 156) |
+
+---
+
 ### Success
+
+**success100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #E4EDE8            |
+| RGB      | rgb(228, 237, 232) |
+
+---
+
+**success100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #ECF5F0            |
+| RGB      | rgb(236, 245, 240) |
+
+---
+
+**success200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #E6F7ED            |
+| RGB      | rgb(230, 247, 237) |
+
+---
+
+**success400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #3CB371           |
+| RGB      | rgb(60, 179, 113) |
+
+---
+
+**success500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #349A61          |
+| RGB      | rgb(52, 154, 97) |
+
+---
+
+**success600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #1C7F48          |
+| RGB      | rgb(28, 127, 72) |
+
+---
 
 ### Error
 
+**error100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F6EAEA            |
+| RGB      | rgb(246, 234, 234) |
+
+---
+
+**error100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FEF2F2            |
+| RGB      | rgb(254, 242, 242) |
+
+---
+
+**error200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F8E8E8            |
+| RGB      | rgb(248, 232, 232) |
+
+---
+
+**error400**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #DC132C          |
+| RGB      | rgb(220, 19, 44) |
+
+---
+
+**error500**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #C61128          |
+| RGB      | rgb(198, 17, 40) |
+
+---
+
+**error600**
+
+| Property | Value           |
+| :------- | :-------------- |
+| Hex      | #B70016         |
+| RGB      | rgb(183, 0, 22) |
+
+---
+
 ### Warning
 
+**warning100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F4EEE4            |
+| RGB      | rgb(244, 238, 228) |
+
+---
+
+**warning100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FCF6EC            |
+| RGB      | rgb(252, 246, 236) |
+
+---
+
+**warning200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #FFF3E1            |
+| RGB      | rgb(255, 243, 225) |
+
+---
+
+**warning400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #F5A623           |
+| RGB      | rgb(245, 166, 35) |
+
+---
+
+**warning500**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #D8921F           |
+| RGB      | rgb(216, 146, 31) |
+
+---
+
+**warning600**
+
+| Property | Value            |
+| :------- | :--------------- |
+| Hex      | #946314          |
+| RGB      | rgb(148, 99, 20) |
+
+---
+
 ### Beta
+
+**beta100Overlay**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #ECE8F1            |
+| RGB      | rgb(236, 232, 241) |
+
+---
+
+**beta100**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F4F0F9            |
+| RGB      | rgb(244, 240, 249) |
+
+---
+
+**beta200**
+
+| Property | Value              |
+| :------- | :----------------- |
+| Hex      | #F0EBF6            |
+| RGB      | rgb(240, 235, 246) |
+
+---
+
+**beta400**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #7A41CE           |
+| RGB      | rgb(122, 65, 206) |
+
+---
+
+**beta500**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #703CBE           |
+| RGB      | rgb(112, 60, 190) |
+
+---
+
+**beta600**
+
+| Property | Value             |
+| :------- | :---------------- |
+| Hex      | #693BAC           |
+| RGB      | rgb(105, 59, 172) |
+
+---

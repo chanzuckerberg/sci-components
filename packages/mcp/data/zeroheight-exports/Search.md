@@ -25,6 +25,10 @@ Search results are displayed on the current page by filtering down the visible c
 
 
 
+**napari hub + org_On-page Results flow_Overview**
+
+---
+
 ---
 
 #### 1. User types keyword into Search Input
@@ -32,6 +36,10 @@ Search results are displayed on the current page by filtering down the visible c
 It is recommended to position your Search Input at the top level of the content the user will be searching.
 
 For example, if the search will display results for a list of plugins (1), position the Search Input at the top of the list (2).
+
+**On-page Results – 1**
+
+---
 
 #### **2. Search Initiated by User**
 
@@ -47,6 +55,10 @@ Results are displayed by filtering the content in the searchable area (1) so tha
 
 If there are no results, it is recommended that a “No Results” blank state is displayed in the content area instead.
 
+**On-page Results – 3**
+
+---
+
 #### 4. User Takes Action on Results
 
 Depending on the product and the user’s workflow, users may take a number of next actions on the results, possibly including:
@@ -55,6 +67,10 @@ Depending on the product and the user’s workflow, users may take a number of n
 - Sort search results (2).
 - Filter search results (3).
 - Interact with results, such as selecting a single result (4).
+
+**On-page Results – 4**
+
+---
 
 ---
 
@@ -81,6 +97,10 @@ Search results are displayed on a different page than where the search was origi
 
 
 
+**napari hub + org_Results Page flow_Overview**
+
+---
+
 ---
 
 #### 1. User Types Keyword into Search Component
@@ -91,6 +111,10 @@ For example, if the search will display results from across the whole site (1), 
 
 
 
+**Results Page – 1**
+
+---
+
 #### 2. **Search Initiated by User**
 
 Search is initiated when the user clicks a button (1), hits “enter” (2), or some other user action.
@@ -98,6 +122,10 @@ Search is initiated when the user clicks a button (1), hits “enter” (2), or 
 Because results will be displayed on a new page, Live Search is not recommended.
 
 
+
+**Results Page – 2**
+
+---
 
 #### 3. Results Displayed on the Results page
 
@@ -109,6 +137,10 @@ If there are no results, it is recommended to display a bank state on the result
 
 
 
+**Results Page – 3**
+
+---
+
 #### 4. User Takes Action on Results
 
 Depending on the product and the user’s workflow, they may take a number of next actions on the results, possibly including:
@@ -118,6 +150,10 @@ Depending on the product and the user’s workflow, they may take a number of ne
 - Filter or Sort Results.
 
 
+
+**Results Page – 4**
+
+---
 
 ---
 
@@ -137,7 +173,15 @@ This section will describe search in some use cases currently used across CZI pr
 
 When searching the Menu Items within a Dropdown Menu, it is recommended to use the On-Page Results flow type. Why? Think of the Dropdown Menu as the “page” and the Menu Items as the content being searched. As the user searches, the content is filtered down without leaving the open Dropdown Menu.
 
+**Search within Dropdown Menu flow**
+
+---
+
 The following behaviors are recommended for displaying search results within a Dropdown Menu.
+
+**Search within Dropdown Menu behavior**
+
+---
 
 ## Other Considerations
 
@@ -154,11 +198,31 @@ Depending on the use case, there may be a need to combine multiple flow types. H
 
 In most use cases for the Results Page flow, it can be beneficial to provide users with a way to modify their search results by implementing the On-page Results flow within a Results Page design.
 
+**Results Page + On-page Results flow**
+
+---
+
 ---
 
 ## Patterns to Support User Behavior
 
 Below are some example behavior patterns worth considering to help support users in their searching. Evaluate if implementing these will help users’ workflows and if the product can support any technical requirements of implementation.
+
+**Display Search Results Count**
+
+---
+
+**Highlight Search Results**
+
+---
+
+**Surface Deep Results**
+
+---
+
+**Sort Results by a Display Order**
+
+---
 
 ---
 
@@ -179,6 +243,10 @@ CZ GEN EPI only uses the On-page Results flow pattern for adding search or filte
 
 Search results are displayed on the current page by filtering down the visible content within the searchable area(s) to show matches only. This search is the most common pattern; it is used both at the component and the page levels.
 
+**CZ GE_On-page Results flow_Overview**
+
+---
+
 ---
 
 #### **1. User types keyword into Search Input**
@@ -186,6 +254,10 @@ Search results are displayed on the current page by filtering down the visible c
 It is recommended to position the Search Input at the top level of the content the user will be searching within.
 
 For example, if the search will display results for a single Table (1), position the Search Input at the top of the table (2).
+
+**On-page Results – 1**
+
+---
 
 #### **2A. Search Initiated Automatically (Live Search)**
 
@@ -205,6 +277,10 @@ Results are displayed by filtering the content in the searchable area (1) so tha
 
 If there are no results, it is recommended that a “No Results” blank state is displayed in the content area instead.
 
+**On-page Results – 3**
+
+---
+
 
 
 **4. User Takes Action on Results**
@@ -215,6 +291,10 @@ Depending on the product and the user’s workflow, users may take a number of n
 - Filter search results (2).
 - Sort search results (3).
 - Interact with results, like drilling down into a single result, performing actions upon results, etc. (4).
+
+**On-page Results – 4**
+
+---
 
 ---
 
@@ -240,13 +320,37 @@ This section will describe search in some use cases currently used across CZI pr
 
 When searching the Menu Items within a Dropdown Menu, it is recommended to use the On-Page Results flow type. Why? Think of the Dropdown Menu as the “page” and the Menu Items as the content being searched. As the user searches, the content is filtered down without leaving the open Dropdown Menu.
 
+**Search within Dropdown Menu flow**
+
+---
+
 The following behaviors are recommended for displaying search results within a Dropdown Menu.
+
+**Search within Dropdown Menu behavior**
+
+---
 
 ## Other Considerations
 
 ## Patterns to Support User Behavior
 
 Below are some example behavior patterns worth considering to help support users in their searching. Evaluate if implementing these will help users’ workflows and if the product can support any technical requirements of implementation.
+
+**Display Search Results Count**
+
+---
+
+**Highlight Search Results**
+
+---
+
+**Surface Deep Results**
+
+---
+
+**Sort Results by a Display Order**
+
+---
 
 ---
 
@@ -275,6 +379,10 @@ Search is a flexible way for users to find data of interest or filter down their
 
 Search results are displayed on the current page by filtering down the visible content within the searchable area(s) to show matches only. This search is the most common pattern; it is used both at the component and the page levels.
 
+**CZ ID_On-page Results flow_Overview_new**
+
+---
+
 ---
 
 #### **1. User types keyword into Search Input**
@@ -282,6 +390,10 @@ Search results are displayed on the current page by filtering down the visible c
 It is recommended to position the Search Input at the top level of the content the user will be searching within.
 
 For example, if the search will display results in tables across multiple tabs (1), position the Search Input in the header (2).
+
+**On-page Results – 1**
+
+---
 
 #### **2. Search Initiated by User**
 
@@ -295,6 +407,10 @@ Results are displayed by filtering the content in the searchable area (1) so tha
 
 If there are no results, it is recommended that a “No Results” blank state is displayed in the content area instead.
 
+**On-page Results – 3**
+
+---
+
 #### **4. User Takes Action on Results**
 
 Depending on the product and the user’s workflow, users may take a number of next actions on the results, possibly including:
@@ -303,6 +419,10 @@ Depending on the product and the user’s workflow, users may take a number of n
 - Filter search results (2).
 - Sort search results (3).
 - Interact with results, like drilling down into a single result, performing actions upon results, etc. (4).
+
+**On-page Results – 4**
+
+---
 
 ---
 
@@ -324,6 +444,10 @@ That being said, for the On-page Results flow, keep in mind that paginated vs in
 
 Search results are displayed inside a Dropdown Menu that appears below the Search Input. The user will remain on the same page until they select a result from the Dropdown Menu.
 
+**CZ ID_Results Dropdown flow_Overview**
+
+---
+
 ---
 
 #### **1. User Types Keyword into Search Component**
@@ -331,6 +455,10 @@ Search results are displayed inside a Dropdown Menu that appears below the Searc
 It is recommended to position the Search Input at the top level of the content the search will apply to.
 
 For example, if the search will display results from across multiple tabs (1), position the Search Input in the header (2).
+
+**Results Dropdown – 1**
+
+---
 
 #### **2. Search Initiated (Live Update)**
 
@@ -344,6 +472,10 @@ Instead of updating the searched content area, results are displayed in a Dropdo
 
 If there are no results, it is recommended to display a bank state in the Dropdown Menu instead.
 
+**Results Dropdown – 3**
+
+---
+
 #### **4. User Takes Action on Results**
 
 Depending on the product and the user’s workflow, they may take a number of next actions on the results, possibly including:
@@ -351,6 +483,10 @@ Depending on the product and the user’s workflow, they may take a number of ne
 - Refine search results (1); re-starts this flow.
 - Interact with results, such as drilling down into a single result (2) .
 - Initiate a different type of search flow. For example, the user clicks “enter” to filter page by search keyword (3). See Combining Search Types section to learn more.
+
+**Results Dropdown – 4**
+
+---
 
 ## Example Use Cases
 
@@ -362,7 +498,15 @@ This section will describe search in some use cases currently used across CZI pr
 
 When searching the Menu Items within a Dropdown Menu, it is recommended to use the On-Page Results flow type. Why? Think of the Dropdown Menu as the “page” and the Menu Items as the content being searched. As the user searches, the content is filtered down without leaving the open Dropdown Menu.
 
+**Search within Dropdown Menu flow**
+
+---
+
 The following behaviors are recommended for displaying search results within a Dropdown Menu.
+
+**Search within Dropdown Menu behavior**
+
+---
 
 
 
@@ -381,11 +525,31 @@ Depending on the use case, there may be a need to combine multiple flow types. H
 
 CZ ID combines the Results Dropdown and the On-page Results flows. This allows users to jump to a specific result or filter the workspace by the search, depending on their needs.
 
+**Results Dropdown + On-Page Results flow**
+
+---
+
 ---
 
 ## Patterns to Support User Behavior
 
 Below are some example behavior patterns worth considering to help support users in their searching. Evaluate if implementing these will help users’ workflows and if the product can support any technical requirements of implementation.
+
+**Display Search Results Count**
+
+---
+
+**Highlight Search Results**
+
+---
+
+**Surface Deep Results**
+
+---
+
+**Sort Results by a Display Order**
+
+---
 
 ---
 
@@ -416,6 +580,10 @@ Search results are displayed on the current page by filtering down the visible c
 
 The example flow below uses CZ GEN EPI to show the on-page refresh of content that occurs when using the On-page Results flow.
 
+**SDS_On-page Results flow_Overview**
+
+---
+
 ---
 
 #### 1. User types keyword into Search Input
@@ -423,6 +591,10 @@ The example flow below uses CZ GEN EPI to show the on-page refresh of content th
 It is recommended to position the Search Input at the top level of the content the user will be searching within.
 
 For example, if the search will display results for a single Table (1), position the Search Input at the top of the table (2).
+
+**On-page Results – 1**
+
+---
 
 #### 2A. Search Initiated Automatically (Live Search)
 
@@ -442,6 +614,10 @@ Results are displayed by filtering the content in the searchable area (1) so tha
 
 If there are no results, it is recommended that a “No Results” blank state is displayed in the content area instead.
 
+**On-page Results – 3**
+
+---
+
 #### 4. User Takes Action on Results
 
 Depending on the product and the user’s workflow, users may take a number of next actions on the results, possibly including:
@@ -450,6 +626,10 @@ Depending on the product and the user’s workflow, users may take a number of n
 - Filter search results (2).
 - Sort search results (3).
 - Interact with results, like drilling down into a single result, performing actions upon results, etc. (4).
+
+**On-page Results – 4**
+
+---
 
 ---
 
@@ -478,6 +658,10 @@ Search results are displayed inside a Dropdown Menu that appears below the Searc
 
 The example flow below uses CZ ID to show the contents of a Dropdown Menu filtering down to include only the Menu Items that match the keyword entered into the Search Input.
 
+**SDS_Results Dropdown flow_Overview**
+
+---
+
 ---
 
 #### 1. User Types Keyword into Search Component
@@ -485,6 +669,10 @@ The example flow below uses CZ ID to show the contents of a Dropdown Menu filter
 It is recommended to position the Search Input at the top level of the content the search will apply to.
 
 For example, if the search will display results from across multiple tabs (1), position the Search Input in the header (2).
+
+**Results Dropdown – 1**
+
+---
 
 #### 2. Search Initiated (Live Update)
 
@@ -498,6 +686,10 @@ Instead of updating the searched content area, results are displayed in a Dropdo
 
 If there are no results, it is recommended to display a bank state in the Dropdown Menu instead.
 
+**Results Dropdown – 3**
+
+---
+
 #### 4. User Takes Action on Results
 
 Depending on the product and the user’s workflow, they may take a number of next actions on the results, possibly including:
@@ -505,6 +697,10 @@ Depending on the product and the user’s workflow, they may take a number of ne
 - Refine search results (1); re-starts this flow.
 - Interact with results, such as drilling down into a single result (2) .
 - Initiate a different type of search flow. For example, the user clicks “enter” to filter page by search keyword (3). See Combining Search Types section to learn more.
+
+**Results Dropdown – 4**
+
+---
 
 ---
 
@@ -516,6 +712,10 @@ Search results are displayed on a different page than where the search was origi
 
 The example flow below uses napari.org to show the usage of a Results Page to display the outcome of a search.
 
+**SDS_Results Page flow_Overview_new**
+
+---
+
 ---
 
 #### 1. User Types Keyword into Search Component
@@ -524,11 +724,19 @@ It is recommended to position Search Inputs at the top level of the content the 
 
 For example, if the search will display results from across the whole site (1), position the Search Input in a top-level navigation or outside of the page content hierarchy (2).
 
+**Results Page – 1**
+
+---
+
 #### 2. **Search Initiated by User**
 
 Search is initiated when the user clicks a button (1), hits “enter” (2), or some other user action.
 
 Because results will be displayed on a new page, Live Search is not recommended.
+
+**Results Page – 2**
+
+---
 
 #### 3. Results Displayed on the Results page
 
@@ -538,6 +746,10 @@ The results page format depends on the product's use case and content. In the ex
 
 If there are no results, it is recommended to display a bank state on the results page.
 
+**Results Page – 3**
+
+---
+
 #### 4. User Takes Action on Results
 
 Depending on the product and the user’s workflow, they may take a number of next actions on the results, possibly including:
@@ -545,6 +757,10 @@ Depending on the product and the user’s workflow, they may take a number of ne
 - Refine search results (1). It is recommended to use the On-Page Results flow type; see Combining Flow Types.
 - Interact with results, like drilling down into a single result (2) .
 - Filter or Sort Results.
+
+**Results Page – 4**
+
+---
 
 ---
 
@@ -564,7 +780,15 @@ This section will describe search in some use cases currently used across CZI pr
 
 When searching the Menu Items within a Dropdown Menu, it is recommended to use the On-Page Results flow type. Why? Think of the Dropdown Menu as the “page” and the Menu Items as the content being searched. As the user searches, the content is filtered down without leaving the open Dropdown Menu.
 
+**Search within Dropdown Menu flow**
+
+---
+
 The following behaviors are recommended for displaying search results within a Dropdown Menu.
+
+**Search within Dropdown Menu behavior**
+
+---
 
 ## Other Considerations
 
@@ -581,12 +805,36 @@ Depending on the use case, there may be a need to combine multiple flow types. H
 
 In most use cases for the Results Page flow, it can be beneficial to provide users with a way to modify their search results by implementing the On-page Results flow within a Results Page design.
 
+**Results Page + On-page Results flow**
+
+---
+
 ### Results Dropdown + On-page Results Flow
 
 CZ ID combines the Results Dropdown and the On-page Results flows. This allows users to jump to a specific result or filter the workspace by the search, depending on their needs.
+
+**Results Dropdown + On-Page Results flow**
+
+---
 
 ---
 
 ## Patterns to Support User Behavior
 
 Below are some example behavior patterns worth considering to help support users in their searching. Evaluate if implementing these will help users’ workflows and if the product can support any technical requirements of implementation.
+
+**Display Search Results Count**
+
+---
+
+**Highlight Search Results**
+
+---
+
+**Surface Deep Results**
+
+---
+
+**Sort Results by a Display Order**
+
+---

@@ -20,12 +20,32 @@ For example: if the screen is `1200px` wide, the width of the content area would
 | Breakpoint: Large | Breakpoint: Medium | Breakpoint: Small |
 | ----------------- | ------------------ | ----------------- |
 
+**Preview_Guidelines_Hero_large**
+
+---
+
+**Preview_Guidelines_Hero_medium**
+
+---
+
+**Preview_Guidelines_Hero_small**
+
+---
+
 #### Background Fill Options
 
 The Hero component background can be filled with any CSS color, including gradients, or any type of media such as images, videos, GIFs, etc.
 
 | Color | Media |
 | ----- | ----- |
+
+**Hero_background_color**
+
+---
+
+**Hero_background_image**
+
+---
 
 #### Darkening Mask
 
@@ -34,12 +54,28 @@ The darkening mask is an overlay element used to subtly dim the Hero's backgroun
 | Disabled | Enabled |
 | -------- | ------- |
 
+**Hero_darkening mask_false**
+
+---
+
+**Hero_darkening mask_true**
+
+---
+
 #### Darkening Vignette
 
 The darkening vignette is an overlay element positioned at the top of Hero that subtly fades from solid to transparent, smoothing the transition from the Header Navigation to the Hero background.
 
 | Disabled | Enabled |
 | -------- | ------- |
+
+**Hero_darkening vignette_false**
+
+---
+
+**Hero_darkening vignette_true**
+
+---
 
 #### Overlay Content Visibility
 
@@ -48,6 +84,22 @@ Overlay content elements (title text, caption text, and content slot) can be use
 | All elements displayed | Title hidden | Caption hidden | Content slot hidden |
 | ---------------------- | ------------ | -------------- | ------------------- |
 
+**Hero_overlay content_options_all visible**
+
+---
+
+**Hero_overlay content_options_no title**
+
+---
+
+**Hero_overlay content_options_no caption**
+
+---
+
+**Hero_overlay content_options_no slot**
+
+---
+
 #### Text Alignment Options
 
 Alignment settings apply to both title and caption text.
@@ -55,16 +107,64 @@ Alignment settings apply to both title and caption text.
 | Left-aligned | Center-aligned | Right-aligned |
 | ------------ | -------------- | ------------- |
 
+**Hero_overlay text_alignment_left-aligned**
+
+---
+
+**Hero_overlay text_alignment_center-aligned**
+
+---
+
+**Hero_overlay text_alignment_right-aligned**
+
+---
+
 #### Overlay Content Position
 
 | Top-left | Top | Top-right |
 | -------- | --- | --------- |
 
+**Hero_overlay content_position_top-left**
+
+---
+
+**Hero_overlay content_position_top**
+
+---
+
+**Hero_overlay content_position_top-right**
+
+---
+
 | Left | Center | Right |
 | ---- | ------ | ----- |
 
+**Hero_overlay content_position_left**
+
+---
+
+**Hero_overlay content_position_center**
+
+---
+
+**Hero_overlay content_position_right**
+
+---
+
 | Bottom-left | Bottom | Bottom-right |
 | ----------- | ------ | ------------ |
+
+**Hero_overlay content_position_bottom-left**
+
+---
+
+**Hero_overlay content_position_bottom**
+
+---
+
+**Hero_overlay content_position_bottom-right**
+
+---
 
 #### Overlay Media Options
 
@@ -73,16 +173,68 @@ In addition to overlay content, media (images, videos, GIFs, etc.) can be option
 | Overlay media hidden | Overlay media displayed | Larger overlay media | Smaller overlay media |
 | -------------------- | ----------------------- | -------------------- | --------------------- |
 
+**Hero_overlay image_false**
+
+---
+
+**Hero_overlay image_true**
+
+---
+
+**Hero_overlay image_true_larger**
+
+---
+
+**Hero_overlay image_true_smaller**
+
+---
+
 #### Overlay Media Position
 
 | Top-left | Top | Top-right |
 | -------- | --- | --------- |
 
+**Hero_overlay image_position_top-left**
+
+---
+
+**Hero_overlay image_position_top**
+
+---
+
+**Hero_overlay image_position_top-right**
+
+---
+
 | Left | Center | Right |
 | ---- | ------ | ----- |
 
+**Hero_overlay image_position_left**
+
+---
+
+**Hero_overlay image_position_center**
+
+---
+
+**Hero_overlay image_position_right**
+
+---
+
 | Bottom-left | Bottom | Bottom-right |
 | ----------- | ------ | ------------ |
+
+**Hero_overlay image_position_bottom-left**
+
+---
+
+**Hero_overlay image_position_bottom**
+
+---
+
+**Hero_overlay image_position_bottom-right**
+
+---
 
 ## Code
 

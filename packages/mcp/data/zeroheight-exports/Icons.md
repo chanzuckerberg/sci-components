@@ -13,6 +13,22 @@ The second prop, `sdsSize`, dictates the size of the icon to be displayed. There
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
 | --------------- | --------- | --------- | --------------- |
 
+**Lock_Xl**
+
+---
+
+**Lock_L**
+
+---
+
+**Lock_S**
+
+---
+
+**Lock_Xs**
+
+---
+
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
 | --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
 
@@ -34,89 +50,545 @@ The table below provides a visual of each icon, its name to be passed in the `sd
 | **Bacteria** | **Bar Charts** |     |     |
 | ------------ | -------------- | --- | --- |
 
+**Bacteria**
+
+---
+
+**BarChartHorizontal3**
+
+---
+
+**BarChartVertical3**
+
+---
+
+**BarChartVertical4**
+
+---
+
 | **Book** | **Checks** |     | **Chevrons** |
 | -------- | ---------- | --- | ------------ |
+
+**Book**
+
+---
+
+**Check**
+
+---
+
+**CheckCircle**
+
+---
+
+**ChevronDown**
+
+---
 
 | **Chevrons** |     |     |     |
 | ------------ | --- | --- | --- |
 
+**ChevronDown2**
+
+---
+
+**ChevronLeft**
+
+---
+
+**ChevronLeft2**
+
+---
+
+**ChevronRight**
+
+---
+
 | **Chevrons** |     |     | **Circles** |
 | ------------ | --- | --- | ----------- |
+
+**ChevronRight2**
+
+---
+
+**ChevronUp**
+
+---
+
+**ChevronUp2**
+
+---
+
+**CirclesOverlap2**
+
+---
 
 | **Code** | **Compass** | **Copy** | **Cube** |
 | -------- | ----------- | -------- | -------- |
 
+**Code**
+
+---
+
+**Compass**
+
+---
+
+**Copy**
+
+---
+
+**Cube**
+
+---
+
 | **DNA** | **Document** | **Dots** | **Download** |
 | ------- | ------------ | -------- | ------------ |
+
+**DNA**
+
+---
+
+**Document**
+
+---
+
+**DotsHorizontal3**
+
+---
+
+**Download**
+
+---
 
 | **Edit** | **Envelope** | **Exclamation Marks** |     |
 | -------- | ------------ | --------------------- | --- |
 
+**Edit**
+
+---
+
+**Envelope**
+
+---
+
+**ExclamationmarkCircle**
+
+---
+
+**ExclamationmarkSpeechBubble**
+
+---
+
 | **Eyes** |     | **Filter** | **Flags** |
 | -------- | --- | ---------- | --------- |
+
+**EyeClosed**
+
+---
+
+**EyeOpen**
+
+---
+
+**Filter**
+
+---
+
+**FlagCheck**
+
+---
 
 | **Flags** |     |     | **Flasks** |
 | --------- | --- | --- | ---------- |
 
+**FlagOutline**
+
+---
+
+**FlagQuestionmark**
+
+---
+
+**FlagXmark**
+
+---
+
+**Flask**
+
+---
+
 | **Flasks** |     | **Gear** | **Github** |
 | ---------- | --- | -------- | ---------- |
+
+**FlaskPrivate**
+
+---
+
+**FlaskPublic**
+
+---
+
+**Gear**
+
+---
+
+**Github**
+
+---
 
 | **Globes** |     | **Grids** |     |
 | ---------- | --- | --------- | --- |
 
+**Globe**
+
+---
+
+**GlobeBasic**
+
+---
+
+**Grid**
+
+---
+
+**GridDots3**
+
+---
+
 | **Grids** |     | **House** | **Info** |
 | --------- | --- | --------- | -------- |
+
+**GridPrivate**
+
+---
+
+**GridPublic**
+
+---
+
+**House**
+
+---
+
+**InfoCircle**
+
+---
 
 | **Info** | **Life Ring** | **Lightbulb** | **Lines** |
 | -------- | ------------- | ------------- | --------- |
 
+**InfoSpeechBubble**
+
+---
+
+**LifeRing**
+
+---
+
+**Lightbulb**
+
+---
+
+**LinesDashed3Solid1**
+
+---
+
 | **Lines** | **Link** | **List** | **Loading** |
 | --------- | -------- | -------- | ----------- |
+
+**LinesHorizontal3**
+
+---
+
+**Link**
+
+---
+
+**List**
+
+---
+
+**Loading**
+
+---
 
 | **Locks** |     | **Minus** | **Open** |
 | --------- | --- | --------- | -------- |
 
+**Lock**
+
+---
+
+**LockCircle**
+
+---
+
+**Minus**
+
+---
+
+**Open**
+
+---
+
 | **Pause** | **People** |     | **Percentage** |
 | --------- | ---------- | --- | -------------- |
+
+**Pause**
+
+---
+
+**People**
+
+---
+
+**Person**
+
+---
+
+**Percentage**
+
+---
 
 | **Pins** |     | **Play** | **Pluses** |
 | -------- | --- | -------- | ---------- |
 
+**Pin**
+
+---
+
+**PinLocation**
+
+---
+
+**Play**
+
+---
+
+**Plus**
+
+---
+
 | **Pluses** | **Projects** |     | **Puzzle Piece** |
 | ---------- | ------------ | --- | ---------------- |
+
+**PlusCircle**
+
+---
+
+**ProjectPrivate**
+
+---
+
+**ProjectPublic**
+
+---
+
+**PuzzlePiece**
+
+---
 
 | **Question Marks** |     | **Quote** | **Read** |
 | ------------------ | --- | --------- | -------- |
 
+**Questionmark**
+
+---
+
+**QuestionMarkCircle**
+
+---
+
+**Quote**
+
+---
+
+**Read**
+
+---
+
 | **Refresh** | **Report** | **Rocket** | **Rotate** |
 | ----------- | ---------- | ---------- | ---------- |
+
+**Refresh**
+
+---
+
+**Report**
+
+---
+
+**Rocket**
+
+---
+
+**RotateLeft**
+
+---
 
 | **Rotate** | **Save** | **Scale** | **Scatter Plot** |
 | ---------- | -------- | --------- | ---------------- |
 
+**RotateRight**
+
+---
+
+**Save**
+
+---
+
+**Scale**
+
+---
+
+**ScatterPlot**
+
+---
+
 | **Search** |     | **Send** | **Share** |
 | ---------- | --- | -------- | --------- |
+
+**Search**
+
+---
+
+**SearchLinesHorizontal3**
+
+---
+
+**Send**
+
+---
+
+**Share**
+
+---
 
 | **Sliders** | **Speech Bubbles** | **Squares** | **Stars** |
 | ----------- | ------------------ | ----------- | --------- |
 
+**SlidersHorizontal**
+
+---
+
+**SpeechBubbles**
+
+---
+
+**SquareOnDashedSquare**
+
+---
+
+**Star**
+
+---
+
 | **Stars** | **Table** | **Thumbs** |     |
 | --------- | --------- | ---------- | --- |
+
+**Starburst**
+
+---
+
+**Table**
+
+---
+
+**ThumbsDown**
+
+---
+
+**ThumbsUp**
+
+---
 
 | **Trash Can** | **Trees** |     |     |
 | ------------- | --------- | --- | --- |
 
+**TrashCan**
+
+---
+
+**TreeDendogram**
+
+---
+
+**TreeHorizontal**
+
+---
+
+**TreeHorizontalPrivate**
+
+---
+
 | **Trees** |     |     | **Triangles** |
 | --------- | --- | --- | ------------- |
+
+**TreeHorizontalPublic**
+
+---
+
+**TreeHorizontalTopRightFilled**
+
+---
+
+**TreeVertical**
+
+---
+
+**TriangleDown**
+
+---
 
 | **Triangles** |     |     | **Update** |
 | ------------- | --- | --- | ---------- |
 
+**TriangleLeft**
+
+---
+
+**TriangleRight**
+
+---
+
+**TriangleUp**
+
+---
+
+**Update**
+
+---
+
 | **Upload** | **Viruses** |     | **Widget** |
 | ---------- | ----------- | --- | ---------- |
 
+**Upload**
+
+---
+
+**Virus**
+
+---
+
+**VirusCoV2**
+
+---
+
+**Widget**
+
+---
+
 | **X Marks** |     |     |     |
 | ----------- | --- | --- | --- |
+
+**Xmark**
+
+---
+
+**XmarkCircle**
+
+---
 
 ---
 
@@ -132,6 +604,22 @@ The second prop, `sdsSize`, dictates the size of the icon to be displayed. There
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
 | --------------- | --------- | --------- | --------------- |
+
+**Lock_Xl**
+
+---
+
+**Lock_L**
+
+---
+
+**Lock_S**
+
+---
+
+**Lock_Xs**
+
+---
 
 | Used only for Icon Buttons. | Buttons and Tags | Dropdown Input and Search Inputs | Checkbox Inputs, Tags, Menu Items |
 | --------------------------- | ---------------- | -------------------------------- | --------------------------------- |
@@ -154,74 +642,454 @@ The table below provides a visual of each icon, its name to be passed in the `sd
 | **Bacteria** | **Bar Charts** |     |     |
 | ------------ | -------------- | --- | --- |
 
+**Bacteria**
+
+---
+
+**BarChartHorizontal3**
+
+---
+
+**BarChartVertical3**
+
+---
+
+**BarChartVertical4**
+
+---
+
 | **Book** | **Checks** |     | **Chevrons** |
 | -------- | ---------- | --- | ------------ |
 
+**Book**
+
+---
+
+**Check**
+
+---
+
+**CheckCircle**
+
+---
+
+**ChevronDown**
+
+---
+
 | **Chevrons** |     |     |     |
 | ------------ | --- | --- | --- |
+
+**ChevronLeft**
+
+---
+
+**ChevronLeft2**
+
+---
+
+**ChevronRight**
+
+---
+
+**ChevronRight2**
+
+---
 
 | **Chevrons** | **Circles** | **Code** | **Copy** |
 | ------------ | ----------- | -------- | -------- |
 
+**ChevronUp**
+
+---
+
+**CirclesOverlap2**
+
+---
+
+**Code**
+
+---
+
+**Compass**
+
+---
+
 | **Copy** | **Cube** | **DNA** | **Document** |
 | -------- | -------- | ------- | ------------ |
+
+**Copy**
+
+---
+
+**Cube**
+
+---
+
+**DNA**
+
+---
+
+**Document**
+
+---
 
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
 | -------- | ------------ | -------- | --------------------- |
 
+**DotsHorizontal3**
+
+---
+
+**Download**
+
+---
+
+**Edit**
+
+---
+
+**ExclamationmarkCircle**
+
+---
+
 | **Exclamation Marks** | **Eyes** |     | **Filter** |
 | --------------------- | -------- | --- | ---------- |
+
+**ExclamationmarkSpeechBubble**
+
+---
+
+**EyeClosed**
+
+---
+
+**EyeOpen**
+
+---
+
+**Filter**
+
+---
 
 | **Flags** |     |     |     |
 | --------- | --- | --- | --- |
 
+**FlagCheck**
+
+---
+
+**FlagOutline**
+
+---
+
+**FlagQuestionmark**
+
+---
+
+**FlagXmark**
+
+---
+
 | **Flasks** |     |     | **Gear** |
 | ---------- | --- | --- | -------- |
+
+**Flask**
+
+---
+
+**FlaskPrivate**
+
+---
+
+**FlaskPublic**
+
+---
+
+**Gear**
+
+---
 
 | **Globes** |     | **Grids** |     |
 | ---------- | --- | --------- | --- |
 
+**Globe**
+
+---
+
+**GlobeBasic**
+
+---
+
+**Grid**
+
+---
+
+**GridPrivate**
+
+---
+
 | **Grids** | **House** | **Info** |     |
 | --------- | --------- | -------- | --- |
+
+**GridPublic**
+
+---
+
+**House**
+
+---
+
+**InfoCircle**
+
+---
+
+**InfoSpeechBubble**
+
+---
 
 | **Life Ring** | **Lightbulb** | **Lines** |     |
 | ------------- | ------------- | --------- | --- |
 
+**LifeRing**
+
+---
+
+**Lightbulb**
+
+---
+
+**LinesDashed3Solid1**
+
+---
+
+**LinesHorizontal3**
+
+---
+
 | **Link** | **List** | **Loading** | **Locks** |
 | -------- | -------- | ----------- | --------- |
+
+**Link**
+
+---
+
+**List**
+
+---
+
+**Loading**
+
+---
+
+**Lock**
+
+---
 
 | **Locks** | **Minus** | **Open** | **People** |
 | --------- | --------- | -------- | ---------- |
 
+**LockCircle**
+
+---
+
+**Minus**
+
+---
+
+**Open**
+
+---
+
+**People**
+
+---
+
 | **Person** | **Percentage** | **Pins** |     |
 | ---------- | -------------- | -------- | --- |
+
+**Person**
+
+---
+
+**Percentage**
+
+---
+
+**Pin**
+
+---
+
+**PinLocation**
+
+---
 
 | **Play** | **Pluses** |     | **Projects** |
 | -------- | ---------- | --- | ------------ |
 
+**Play**
+
+---
+
+**Plus**
+
+---
+
+**PlusCircle**
+
+---
+
+**ProjectPrivate**
+
+---
+
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Quote** |
 | ------------ | ---------------- | ----------------- | --------- |
+
+**ProjectPublic**
+
+---
+
+**PuzzlePiece**
+
+---
+
+**Questionmark**
+
+---
+
+**Quote**
+
+---
 
 | **Refresh** | **Save** | **Search** |     |
 | ----------- | -------- | ---------- | --- |
 
+**Refresh**
+
+---
+
+**Save**
+
+---
+
+**Search**
+
+---
+
+**SearchLinesHorizontal3**
+
+---
+
 | **Share** | **Sliders** | **Speech Bubbles** | **Squares** |
 | --------- | ----------- | ------------------ | ----------- |
+
+**Share**
+
+---
+
+**SlidersHorizontal**
+
+---
+
+**SpeechBubbles**
+
+---
+
+**SquareOnDashedSquare**
+
+---
 
 | **Stars** |     | **Table** | **Trash Can** |
 | --------- | --- | --------- | ------------- |
 
+**Star**
+
+---
+
+**Starburst**
+
+---
+
+**Table**
+
+---
+
+**TrashCan**
+
+---
+
 | **Trees** |     |     |     |
 | --------- | --- | --- | --- |
+
+**TreeDendogram**
+
+---
+
+**TreeHorizontal**
+
+---
+
+**TreeHorizontalTopRightFilled**
+
+---
+
+**TreeHorizontalPrivate**
+
+---
 
 | **Trees** |     | **Triangles** |     |
 | --------- | --- | ------------- | --- |
 
+**TreeHorizontalPublic**
+
+---
+
+**TreeVertical**
+
+---
+
+**TriangleDown**
+
+---
+
+**TriangleLeft**
+
+---
+
 | **Triangles** |     | **Upload** | **Viruses** |
 | ------------- | --- | ---------- | ----------- |
 
+**TriangleRight**
+
+---
+
+**TriangleUp**
+
+---
+
+**Upload**
+
+---
+
+**Virus**
+
+---
+
 | **Viruses** | **Xmarks** |     |     |
 | ----------- | ---------- | --- | --- |
+
+**VirusCoV2**
+
+---
+
+**Xmark**
+
+---
+
+**XmarkCircle**
+
+---
 
 ---
 
@@ -237,6 +1105,22 @@ The second prop, `sdsSize`, dictates the size of the icon to be displayed. There
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
 | --------------- | --------- | --------- | --------------- |
+
+**Lock_Xl**
+
+---
+
+**Lock_L**
+
+---
+
+**Lock_S**
+
+---
+
+**Lock_Xs**
+
+---
 
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
 | --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
@@ -259,71 +1143,427 @@ The table below provides a visual of each icon, its name to be passed in the `sd
 | **Bacteria** | **Bar Charts** |     |     |
 | ------------ | -------------- | --- | --- |
 
+**Bacteria**
+
+---
+
+**BarChartHorizontal3**
+
+---
+
+**BarChartVertical3**
+
+---
+
+**BarChartVertical4**
+
+---
+
 | **Book** | **Checks** |     | **Chevrons** |
 | -------- | ---------- | --- | ------------ |
+
+**Book**
+
+---
+
+**Check**
+
+---
+
+**CheckCircle**
+
+---
+
+**ChevronDown**
+
+---
 
 | **Chevrons** |     |     | **Circles** |
 | ------------ | --- | --- | ----------- |
 
+**ChevronLeft**
+
+---
+
+**ChevronRight**
+
+---
+
+**ChevronUp**
+
+---
+
+**CirclesOverlap2**
+
+---
+
 | **Compass** | **Copy** | **DNA** | **Document** |
 | ----------- | -------- | ------- | ------------ |
+
+**Compass**
+
+---
+
+**Copy**
+
+---
+
+**DNA**
+
+---
+
+**Document**
+
+---
 
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
 | -------- | ------------ | -------- | --------------------- |
 
+**DotsHorizontal3**
+
+---
+
+**Download**
+
+---
+
+**Edit**
+
+---
+
+**ExclamationmarkCircle**
+
+---
+
 | **Exclamation Marks** | **Eyes** |     | **Filter** |
 | --------------------- | -------- | --- | ---------- |
+
+**ExclamationmarkSpeechBubble**
+
+---
+
+**EyeClosed**
+
+---
+
+**EyeOpen**
+
+---
+
+**Filter**
+
+---
 
 | **Flags** |     |     |     |
 | --------- | --- | --- | --- |
 
+**FlagCheck**
+
+---
+
+**FlagOutline**
+
+---
+
+**FlagQuestionmark**
+
+---
+
+**FlagXmark**
+
+---
+
 | **Flasks** |     |     | **Gear** |
 | ---------- | --- | --- | -------- |
+
+**Flask**
+
+---
+
+**FlaskPrivate**
+
+---
+
+**FlaskPublic**
+
+---
+
+**Gear**
+
+---
 
 | **Globes** |     | **Grids** |     |
 | ---------- | --- | --------- | --- |
 
+**Globe**
+
+---
+
+**GlobeBasic**
+
+---
+
+**Grid**
+
+---
+
+**GridPrivate**
+
+---
+
 | **Grids** | **House** | **Info** |     |
 | --------- | --------- | -------- | --- |
+
+**GridPublic**
+
+---
+
+**House**
+
+---
+
+**InfoCircle**
+
+---
+
+**InfoSpeechBubble**
+
+---
 
 | **Life Ring** | **Lightbulb** | **Lines** |     |
 | ------------- | ------------- | --------- | --- |
 
+**LifeRing**
+
+---
+
+**Lightbulb**
+
+---
+
+**LinesDashed3Solid1**
+
+---
+
+**LinesHorizontal3**
+
+---
+
 | **Link** | **List** | **Loading** | **Locks** |
 | -------- | -------- | ----------- | --------- |
+
+**Link**
+
+---
+
+**List**
+
+---
+
+**Loading**
+
+---
+
+**Lock**
+
+---
 
 | **Locks** | **Minus** | **Open** | **People** |
 | --------- | --------- | -------- | ---------- |
 
+**LockCircle**
+
+---
+
+**Minus**
+
+---
+
+**Open**
+
+---
+
+**People**
+
+---
+
 | **People** | **Percentage** | **Pins** |     |
 | ---------- | -------------- | -------- | --- |
+
+**Person**
+
+---
+
+**Percentage**
+
+---
+
+**Pin**
+
+---
+
+**PinLocation**
+
+---
 
 | **Play** | **Pluses** |     | **Projects** |
 | -------- | ---------- | --- | ------------ |
 
+**Play**
+
+---
+
+**Plus**
+
+---
+
+**PlusCircle**
+
+---
+
+**ProjectPrivate**
+
+---
+
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Refresh** |
 | ------------ | ---------------- | ----------------- | ----------- |
+
+**ProjectPublic**
+
+---
+
+**PuzzlePiece**
+
+---
+
+**Questionmark**
+
+---
+
+**Refresh**
+
+---
 
 | **Save** | **Search** |     | **Share** |
 | -------- | ---------- | --- | --------- |
 
+**Save**
+
+---
+
+**Search**
+
+---
+
+**SearchLinesHorizontal3**
+
+---
+
+**Share**
+
+---
+
 | **Sliders** | **Speech Bubbles** | **Squares** | **Stars** |
 | ----------- | ------------------ | ----------- | --------- |
+
+**SlidersHorizontal**
+
+---
+
+**SpeechBubbles**
+
+---
+
+**SquareOnDashedSquare**
+
+---
+
+**Star**
+
+---
 
 | **Stars** | **Table** | **Trash Can** | **Trees** |
 | --------- | --------- | ------------- | --------- |
 
+**Starburst**
+
+---
+
+**Table**
+
+---
+
+**TrashCan**
+
+---
+
+**TreeDendogram**
+
+---
+
 | **Trees** |     |     |     |
 | --------- | --- | --- | --- |
+
+**TreeHorizontal**
+
+---
+
+**TreeHorizontalTopRightFilled**
+
+---
+
+**TreeHorizontalPrivate**
+
+---
+
+**TreeHorizontalPublic**
+
+---
 
 | **Trees** | **Triangles** |     |     |
 | --------- | ------------- | --- | --- |
 
+**TreeVertical**
+
+---
+
+**TriangleDown**
+
+---
+
+**TriangleLeft**
+
+---
+
+**TriangleRight**
+
+---
+
 | **Triangles** | **Upload** | **Virus** | **Xmarks** |
 | ------------- | ---------- | --------- | ---------- |
 
+**TriangleUp**
+
+---
+
+**Upload**
+
+---
+
+**Virus**
+
+---
+
+**Xmark**
+
+---
+
 | **Xmarks** |     |     |     |
 | ---------- | --- | --- | --- |
+
+**XmarkCircle**
+
+---
 
 ---
 
@@ -339,6 +1579,22 @@ The second prop, `sdsSize`, dictates the size of the icon to be displayed. There
 
 | **Extra Large** | **Large** | **Small** | **Extra Small** |
 | --------------- | --------- | --------- | --------------- |
+
+**Lock_Xl**
+
+---
+
+**Lock_L**
+
+---
+
+**Lock_S**
+
+---
+
+**Lock_Xs**
+
+---
 
 | Used only for Icon Buttons. | Buttons, Callouts, Notifications, Tags, etc. | Dropdown Inputs, Search Inputs, Segmented Control, etc. | Checkbox Inputs, Filter Tags, Multi-select Menu Items, etc. |
 | --------------------------- | -------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
@@ -361,71 +1617,451 @@ The table below provides a visual of each icon, its name to be passed in the `sd
 | **Bacteria** | **Bar Charts** |     |     |
 | ------------ | -------------- | --- | --- |
 
+**Bacteria**
+
+---
+
+**BarChartHorizontal3**
+
+---
+
+**BarChartVertical3**
+
+---
+
+**BarChartVertical4**
+
+---
+
 | **Book** | **Checks** |     | **Chevrons** |
 | -------- | ---------- | --- | ------------ |
+
+**Book**
+
+---
+
+**Check**
+
+---
+
+**CheckCircle**
+
+---
+
+**ChevronDown**
+
+---
 
 | **Chevrons** |     |     |     |
 | ------------ | --- | --- | --- |
 
+**ChevronLeft**
+
+---
+
+**ChevronLeft2**
+
+---
+
+**ChevronRight**
+
+---
+
+**ChevronRight2**
+
+---
+
 | **Chevrons** | **Circles** | **Code** | **Compass** |
 | ------------ | ----------- | -------- | ----------- |
+
+**ChevronUp**
+
+---
+
+**CirclesOverlap2**
+
+---
+
+**Code**
+
+---
+
+**Compass**
+
+---
 
 | **Copy** | **Cube** | **DNA** | **Document** |
 | -------- | -------- | ------- | ------------ |
 
+**Copy**
+
+---
+
+**Cube**
+
+---
+
+**DNA**
+
+---
+
+**Document**
+
+---
+
 | **Dots** | **Download** | **Edit** | **Exclamation Marks** |
 | -------- | ------------ | -------- | --------------------- |
+
+**DotsHorizontal3**
+
+---
+
+**Download**
+
+---
+
+**Edit**
+
+---
+
+**ExclamationmarkCircle**
+
+---
 
 | **Exclamation Marks** | **Eyes** |     | **Filter** |
 | --------------------- | -------- | --- | ---------- |
 
+**ExclamationmarkSpeechBubble**
+
+---
+
+**EyeClosed**
+
+---
+
+**EyeOpen**
+
+---
+
+**Filter**
+
+---
+
 | **Flags** |     |     |     |
 | --------- | --- | --- | --- |
+
+**FlagCheck**
+
+---
+
+**FlagOutline**
+
+---
+
+**FlagQuestionmark**
+
+---
+
+**FlagXmark**
+
+---
 
 | **Flasks** |     |     | **Gear** |
 | ---------- | --- | --- | -------- |
 
+**Flask**
+
+---
+
+**FlaskPrivate**
+
+---
+
+**FlaskPublic**
+
+---
+
+**Gear**
+
+---
+
 | **Globes** |     | **Grids** |     |
 | ---------- | --- | --------- | --- |
+
+**Globe**
+
+---
+
+**GlobeBasic**
+
+---
+
+**Grid**
+
+---
+
+**GridPrivate**
+
+---
 
 | **Grids** | **House** | **Info** |     |
 | --------- | --------- | -------- | --- |
 
+**GridPublic**
+
+---
+
+**House**
+
+---
+
+**InfoCircle**
+
+---
+
+**InfoSpeechBubble**
+
+---
+
 | **Life Ring** | **Lightbulb** | **Lines** |     |
 | ------------- | ------------- | --------- | --- |
+
+**LifeRing**
+
+---
+
+**Lightbulb**
+
+---
+
+**LinesDashed3Solid1**
+
+---
+
+**LinesHorizontal3**
+
+---
 
 | **Link** | **List** | **Loading** | **Locks** |
 | -------- | -------- | ----------- | --------- |
 
+**Link**
+
+---
+
+**List**
+
+---
+
+**Loading**
+
+---
+
+**Lock**
+
+---
+
 | **Locks** | **Minus** | **Open** | **People** |
 | --------- | --------- | -------- | ---------- |
+
+**LockCircle**
+
+---
+
+**Minus**
+
+---
+
+**Open**
+
+---
+
+**People**
+
+---
 
 | **Person** | **Percentage** | **Pins** |     |
 | ---------- | -------------- | -------- | --- |
 
+**Person**
+
+---
+
+**Percentage**
+
+---
+
+**Pin**
+
+---
+
+**PinLocation**
+
+---
+
 | **Play** | **Pluses** |     | **Puzzle Piece** |
 | -------- | ---------- | --- | ---------------- |
+
+**Play**
+
+---
+
+**Plus**
+
+---
+
+**PlusCircle**
+
+---
+
+**ProjectPrivate**
+
+---
 
 | **Projects** | **Puzzle Piece** | **Question Mark** | **Quote** |
 | ------------ | ---------------- | ----------------- | --------- |
 
+**ProjectPublic**
+
+---
+
+**PuzzlePiece**
+
+---
+
+**Questionmark**
+
+---
+
+**Quote**
+
+---
+
 | **Refresh** | **Save** | **Search** |     |
 | ----------- | -------- | ---------- | --- |
+
+**Refresh**
+
+---
+
+**Save**
+
+---
+
+**Search**
+
+---
+
+**SearchLinesHorizontal3**
+
+---
 
 | **Share** | **Sliders** | **Speech Bubbles** | **Squares** |
 | --------- | ----------- | ------------------ | ----------- |
 
+**Share**
+
+---
+
+**SlidersHorizontal**
+
+---
+
+**SpeechBubbles**
+
+---
+
+**SquareOnDashedSquare**
+
+---
+
 | **Stars** |     | **Tables** | **Trash Can** |
 | --------- | --- | ---------- | ------------- |
+
+**Star**
+
+---
+
+**Starburst**
+
+---
+
+**Table**
+
+---
+
+**TrashCan**
+
+---
 
 | **Trees** |     |     |     |
 | --------- | --- | --- | --- |
 
+**TreeDendogram**
+
+---
+
+**TreeHorizontal**
+
+---
+
+**TreeHorizontalTopRightFilled**
+
+---
+
+**TreeHorizontalPrivate**
+
+---
+
 | **Trees** |     | **Triangles** |     |
 | --------- | --- | ------------- | --- |
+
+**TreeHorizontalPublic**
+
+---
+
+**TreeVertical**
+
+---
+
+**TriangleDown**
+
+---
+
+**TriangleLeft**
+
+---
 
 | **Triangles** |     | **Upload** | **Viruses** |
 | ------------- | --- | ---------- | ----------- |
 
+**TriangleRight**
+
+---
+
+**TriangleUp**
+
+---
+
+**Upload**
+
+---
+
+**Virus**
+
+---
+
 | **Viruses** | **Xmarks** |     |     |
 | ----------- | ---------- | --- | --- |
+
+**VirusCoV2**
+
+---
+
+**Xmark**
+
+---
+
+**XmarkCircle**
+
+---

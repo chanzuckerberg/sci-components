@@ -27,14 +27,78 @@ Tabs can also optionally be paired with an underline beneath them that spans the
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Large_No Underline_No Alert_Default**
+
+---
+
+**Large_No Underline_No Alert_Hover**
+
+---
+
+**Large_No Underline_No Alert_Active**
+
+---
+
+**Large_No Underline_No Alert_Disabled**
+
+---
+
 | **Default + Alert** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Large_No Underline_Alert_Default**
+
+---
+
+**Large_No Underline_Alert_Hover**
+
+---
+
+**Large_No Underline_Alert_Active**
+
+---
+
+**Large_No Underline_Alert_Disabled**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
+**Large_Underline_No Alert_Default**
+
+---
+
+**Large_Underline_No Alert_Hover**
+
+---
+
+**Large_Underline_No Alert_Active**
+
+---
+
+**Large_Underline_No Alert_Disabled**
+
+---
+
 | **Default + Alert + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Large_Underline_Alert_Default**
+
+---
+
+**Large_Underline_Alert_Hover**
+
+---
+
+**Large_Underline_Alert_Active**
+
+---
+
+**Large_Underline_Alert_Disabled**
+
+---
 
 ### Small Tabs
 
@@ -43,20 +107,88 @@ Alternative Tab size to be used in napari hub on plugin detail pages for plugins
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Small_No Underline_No Alert_Default**
+
+---
+
+**Small_No Underline_No Alert_Hover**
+
+---
+
+**Small_No Underline_No Alert_Active**
+
+---
+
+**Small_No Underline_No Alert_Disabled**
+
+---
+
 | **Default + Alert** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Small_No Underline_Alert_Default**
+
+---
+
+**Small_No Underline_Alert_Hover**
+
+---
+
+**Small_No Underline_Alert_Active**
+
+---
+
+**Small_No Underline_Alert_Disabled**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
+**Small_Underline_No Alert_Default**
+
+---
+
+**Small_Underline_No Alert_Hover**
+
+---
+
+**Small_Underline_No Alert_Active**
+
+---
+
+**Small_Underline_No Alert_Disabled**
+
+---
+
 | **Default + Alert + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Small_Underline_Alert_Default**
+
+---
+
+**Small_Underline_Alert_Hover**
+
+---
+
+**Small_Underline_Alert_Active**
+
+---
+
+**Small_Underline_Alert_Disabled**
+
+---
 
 ---
 
 ### Tabs Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tabs spacing**
+
+---
 
 
 
@@ -104,16 +236,80 @@ Overall, include a counter when necessary to indicate the number of items on tha
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
 
 
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
 
 ### Small Tabs
 
@@ -124,20 +320,88 @@ Include a counter when necessary to indicate the number of items on that Tab's s
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
+
+**Tabs**
+
+---
 
 ---
 
 ### Tabs Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tabs Spacing**
+
+---
 
 
 
@@ -187,14 +451,78 @@ Include a counter when necessary to indicate the number of items on that Tab's s
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Large_No Underline_No Count_Default**
+
+---
+
+**Large_No Underline_No Count_Hover**
+
+---
+
+**Large_No Underline_No Count_Active**
+
+---
+
+**Large_No Underline_No Count_Disabled**
+
+---
+
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Large_No Underline_Count_Default**
+
+---
+
+**Large_No Underline_Count_Hover**
+
+---
+
+**Large_No Underline_Count_Active**
+
+---
+
+**Large_No Underline_Count_Disabled**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
+**Large_Underline_No Count_Default**
+
+---
+
+**Large_Underline_No Count_Hover**
+
+---
+
+**Large_Underline_No Count_Active**
+
+---
+
+**Large_Underline_No Count_Disabled**
+
+---
+
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Large_Underline_Count_Default**
+
+---
+
+**Large_Underline_Count_Hover**
+
+---
+
+**Large_Underline_Count_Active**
+
+---
+
+**Large_Underline_Count_Disabled**
+
+---
 
 
 
@@ -207,20 +535,88 @@ Include a counter when necessary to indicate the number of items on that Tab's s
 | **Default** | **Hover** | **Active** | **Disabled** |
 | ----------- | --------- | ---------- | ------------ |
 
+**Small_No Underline_No Count_Default**
+
+---
+
+**Small_No Underline_No Count_Hover**
+
+---
+
+**Small_No Underline_No Count_Active**
+
+---
+
+**Small_No Underline_No Count_Disabled**
+
+---
+
 | **Default + Count** | **Hover** | **Active** | **Disabled** |
 | ------------------- | --------- | ---------- | ------------ |
+
+**Small_No Underline_Count_Default**
+
+---
+
+**Small_No Underline_Count_Hover**
+
+---
+
+**Small_No Underline_Count_Active**
+
+---
+
+**Small_No Underline_Count_Disabled**
+
+---
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
 
+**Small_Underline_No Count_Default**
+
+---
+
+**Small_Underline_No Count_Hover**
+
+---
+
+**Small_Underline_No Count_Active**
+
+---
+
+**Small_Underline_No Count_Disabled**
+
+---
+
 | **Default + Count + Underline** | **Hover** | **Active** | **Disabled** |
 | ------------------------------- | --------- | ---------- | ------------ |
+
+**Small_Underline_Count_Default**
+
+---
+
+**Small_Underline_Count_Hover**
+
+---
+
+**Small_Underline_Count_Active**
+
+---
+
+**Small_Underline_Count_Disabled**
+
+---
 
 ---
 
 ### Tabs Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tabs Spacing**
+
+---
 
 ## Code
 
@@ -250,6 +646,14 @@ Tabs allow users to switch between different sets of information or content that
 
 There are two sizes of Tabs available for use which is determined by their location in the UI, the key difference being the size of the text on each Tab. Each size can include a counter to indicate the number of items on that Tab’s screen such as when used as part of Filter results. They can also be paired with an underline that spans the width of the entire div the tab group is placed within to provide visual separation between the Tabs and the content beneath them.
 
+**Tabs_Large**
+
+---
+
+**Tabs_Small**
+
+---
+
 ---
 
 ### Live Instance
@@ -269,6 +673,70 @@ Include a counter when necessary to indicate the number of viewable items availa
 | Default | Hover | Active | Disabled |
 | ------- | ----- | ------ | -------- |
 
+**Large_No Underline_No Count_Default**
+
+---
+
+**Large_No Underline_No Count_Hover**
+
+---
+
+**Large_No Underline_No Count_Active**
+
+---
+
+**Large_No Underline_No Count_Disabled**
+
+---
+
+**Large_No Underline_Count_Default**
+
+---
+
+**Large_No Underline_Count_Hover**
+
+---
+
+**Large_No Underline_Count_Active**
+
+---
+
+**Large_No Underline_Count_Disabled**
+
+---
+
+**Large_Underline_No Count_Default**
+
+---
+
+**Large_Underline_No Count_Hover**
+
+---
+
+**Large_Underline_No Count_Active**
+
+---
+
+**Large_Underline_No Count_Disabled**
+
+---
+
+**Large_Underline_Count_Default**
+
+---
+
+**Large_Underline_Count_Hover**
+
+---
+
+**Large_Underline_Count_Active**
+
+---
+
+**Large_Underline_Count_Disabled**
+
+---
+
 ---
 
 ### Tabs – Small
@@ -280,11 +748,79 @@ Include a counter when necessary to indicate the number of viewable items availa
 | Default | Hover | Active | Disabled |
 | ------- | ----- | ------ | -------- |
 
+**Small_No Underline_No Count_Default**
+
+---
+
+**Small_No Underline_No Count_Hover**
+
+---
+
+**Small_No Underline_No Count_Active**
+
+---
+
+**Small_No Underline_No Count_Disabled**
+
+---
+
+**Small_No Underline_Count_Default**
+
+---
+
+**Small_No Underline_Count_Hover**
+
+---
+
+**Small_No Underline_Count_Active**
+
+---
+
+**Small_No Underline_Count_Disabled**
+
+---
+
+**Small_Underline_No Count_Default**
+
+---
+
+**Small_Underline_No Count_Hover**
+
+---
+
+**Small_Underline_No Count_Active**
+
+---
+
+**Small_Underline_No Count_Disabled**
+
+---
+
+**Small_Underline_Count_Default**
+
+---
+
+**Small_Underline_Count_Hover**
+
+---
+
+**Small_Underline_Count_Active**
+
+---
+
+**Small_Underline_Count_Disabled**
+
+---
+
 ---
 
 ### Tabs Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Tabs Spacing**
+
+---
 
 ## Code
 
@@ -440,15 +976,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -591,15 +1126,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -762,15 +1296,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
