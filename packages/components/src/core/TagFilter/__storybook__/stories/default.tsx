@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { useState } from "react";
 import { TAG_FILTER_DEFAULT_STYLES } from "../constants";
 import RawTagFilter from "src/core/TagFilter";

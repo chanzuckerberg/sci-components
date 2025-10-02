@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawInputToggle from "src/core/InputToggle";
 
 export const InputToggle = (props: Args): JSX.Element => {

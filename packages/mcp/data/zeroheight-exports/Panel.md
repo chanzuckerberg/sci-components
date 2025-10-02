@@ -11,11 +11,19 @@ Panels are elements that contain supplementary information or actions for the pa
 
 Panels are comprised of containers within which other elements are placed. Use the Basic Panel when the elements contained within it are able to functionally adjust the content on the page next to it. In CZ GEN EPI's case, the Basic Panel is positioned on the left-hand side of the screen and contains Filters.
 
+**Basic Panel anatomy**
+
+---
+
 ### Basic Panel Example
 
 The example below shows where in CZ GEN EPI the Basic Panel is used.
 
 
+
+**Basic Panel_left**
+
+---
 
 ## Code
 
@@ -56,9 +64,21 @@ Basic Panels can be positioned on the left or right side of the screen using the
 
 Although Basic Panels can be designed to contain a wide range of elements, there are a few common configurations used within the products today that have been turned into templates: Filter Panel, Info Panel, and Info Panel with Accordions (templates coming soon).
 
+**Basic Panel anatomy**
+
+---
+
 ### Basic Panel Examples
 
 The examples below show where in CZ ID the Basic Panel is currently being used.
+
+**Basic Panel_left**
+
+---
+
+---
+
+**Basic Panel_right**
 
 ---
 
@@ -77,11 +97,23 @@ Overlay Panels can be positioned on the bottom or right side of the screen using
 
 Although Overlay Panels can be designed to contain a wide range of elements, there are a few common configurations used within the products today that have been turned into templates: Sample Details, Taxon Details, Genes Details, and Pipeline Information (templates coming soon).
 
+**Overlay Panel anatomy**
+
+---
+
 
 
 ### Overlay Panel Examples
 
 The examples below show where in CZ ID the Overlay Panel is currently being used.
+
+**Overlay Panel_bottom**
+
+---
+
+---
+
+**Overlay Panel_right**
 
 ---
 
@@ -124,6 +156,10 @@ Panels are elements that contain supplementary information or actions for the pa
 
 ### Panel – Basic Anatomy
 
+**Basic Panel anatomy**
+
+---
+
 ---
 
 ### Overview
@@ -135,11 +171,23 @@ Panel – Basic can be positioned on the left or right side of the screen. Both 
 | Left | Right |
 | :--: | :---: |
 
+**PanelBasic_Left**
+
+---
+
+**PanelBasic_Right**
+
+---
+
 ---
 
 ### Panel – Basic Spacing
 
 These rules establish how much margin should exist to the left or right of an opened Panel – Basic.
+
+**Basic Panel spacing**
+
+---
 
 ---
 
@@ -149,6 +197,10 @@ These rules establish how much margin should exist to the left or right of an op
 | --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Panel – Overlay Anatomy
+
+**Overlay Panel anatomy**
+
+---
 
 ---
 
@@ -160,6 +212,18 @@ Panel – Overlay can be positioned on the bottom, left, or right side of the sc
 
 | Bottom | Left | Right |
 | :----: | :--: | :---: |
+
+**PanelOverlay_Bottom**
+
+---
+
+**PanelOverlay_Left**
+
+---
+
+**PanelOverlay_Right**
+
+---
 
 ## Code
 
@@ -365,15 +429,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -550,15 +613,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -739,15 +801,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -939,15 +1000,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

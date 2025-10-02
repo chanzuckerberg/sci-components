@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { TAG_COLORS, TAG_SANS_SERIF_STYLE, TAG_SDS_TYPES } from "../constants";
 import { CommonScreenshotTestDemo } from "./commonScreenshot";
 

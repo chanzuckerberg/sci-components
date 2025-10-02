@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import Button from "src/core/Button";
 import RawTooltipCondensed from "src/core/TooltipCondensed";
 

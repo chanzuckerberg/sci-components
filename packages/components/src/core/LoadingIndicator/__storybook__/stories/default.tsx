@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawLoadingIndicator from "src/core/LoadingIndicator";
 
 export const LoadingIndicator = (props: Args): JSX.Element => {

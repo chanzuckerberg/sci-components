@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawNotification from "src/core/Notification";
 
 export const TestDemo = (props: Args): JSX.Element => {

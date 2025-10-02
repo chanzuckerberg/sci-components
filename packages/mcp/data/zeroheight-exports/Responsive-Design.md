@@ -30,6 +30,10 @@ Header Navigation has been designed to collapse into a hamburger menu on narrow 
 | --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-sm` | `$sds-breakpoint-sm` | `breakpoints.sds-sm` |
 
+**Breakpoint_small**
+
+---
+
 #### Medium
 
 _Screens between 512px-1023px wide_
@@ -42,6 +46,10 @@ Depending on the number of nav items in the Header Navigation it will either col
 | --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-md` | `$sds-breakpoint-md` | `breakpoints.sds-md` |
 
+**Breakpoint_medium**
+
+---
+
 #### Large
 
 _Screens >1024px wide_
@@ -51,6 +59,10 @@ Large breakpoint will be used when applications are viewed on large laptops, des
 | CSS                   | SCSS                 | Tailwind             |
 | --------------------- | -------------------- | -------------------- |
 | `--sds-breakpoint-lg` | `$sds-breakpoint-lg` | `breakpoints.sds-lg` |
+
+**Breakpoint_large**
+
+---
 
 ### Typography
 
@@ -63,17 +75,57 @@ Below are a few visual examples of the differences. See the Typography section f
 | Header XXL – wide | Header XXL – narrow |
 | :---------------- | :------------------ |
 
+**headerXxl_wide**
+
+---
+
+**headerXxl_narrow**
+
+---
+
 | Body L – wide | Body L – narrow |
 | :------------ | :-------------- |
+
+**bodyL_wide**
+
+---
+
+**bodyL_narrow**
+
+---
 
 | Caps XXS – wide | Caps XXS – narrow |
 | :-------------- | :---------------- |
 
+**capsXxs_wide**
+
+---
+
+**capsXxs_narrow**
+
+---
+
 | Tabular S – wide | Tabular S – narrow |
 | :--------------- | :----------------- |
 
+**tabularS_wide**
+
+---
+
+**tabularS_narrow**
+
+---
+
 | Code S – wide | Code S – narrow |
 | :------------ | :-------------- |
+
+**codeS_wide**
+
+---
+
+**codeS_narrow**
+
+---
 
 ## Code
 

@@ -5,7 +5,7 @@
 // for this story, but enabled for the remaining colors in the ScreenshotTest story,
 // so they can be tested properly.
 
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import {
   TAG_SANS_SERIF_STYLE,
   TAG_SDS_TYPES,

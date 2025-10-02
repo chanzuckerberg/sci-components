@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import { Dialog } from "./default";
 
 export function TestButtonPositionLeftDemo(props: Args): JSX.Element {

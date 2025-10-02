@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import RawTagFilter from "src/core/TagFilter";
 
 export const TestDemo = (props: Args): JSX.Element => {

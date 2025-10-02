@@ -26,17 +26,29 @@ Dialogs may be dismissed by:
 - Clicking the close Icon Button
 - Clicking outside of the Dialog. Doing this will result in any selections the user has made being lost, so it is recommended that the `canOutsideClickClose` prop remain set to `false` (the default setting) in instances where losing entered information would be a significant burden to the user
 
+**Dialog**
+
+---
+
 ---
 
 ### Dialog Spacing
 
 In instances where the length of content contained in the Dialog results in the Dialog filling the entire height of the screen, there must be a minimum of `spaceXxl` margin above and below the Dialog window. The Dialog content scrolls when it exceeds the max-height of the dialog window; the title and any action Buttons are anchored to the top and bottom during scrolling.
 
+**Dialog Spacing (napari hub + .org)**
+
+---
+
 ---
 
 ### Dialog Backdrop
 
 A backdrop appears behind the active Dialog to bring emphasis to it as well as indicate to users that they cannot interact with the content on the page behind it.
+
+**Dialog Backdrop (napari hub + .org)**
+
+---
 
 ## Code
 
@@ -100,9 +112,25 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default (1 button)**
+
 ---
 
 ---
+
+**Default (2 buttons)**
+
+---
+
+---
+
+**Default (2 buttons) + Overline + Subtitle**
+
+---
+
+---
+
+**Default (2 buttons) + Child Node (artwork)**
 
 ---
 
@@ -112,11 +140,31 @@ Use this variant to allow the user the ability to manually dismiss the Dialog by
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
----
+**Default**
 
 ---
 
 ---
+
+**Default (1 button)**
+
+---
+
+---
+
+**Default (2 buttons)**
+
+---
+
+---
+
+**Default (2 buttons) + Overline + Subtitle**
+
+---
+
+---
+
+**Default (2 buttons) + Child Node (artwork)**
 
 ---
 
@@ -126,11 +174,19 @@ Click on each state below to enter inspect view and get details on its code attr
 
 In instances where the length of content contained in the Dialog results in the Dialog filling the entire height of the screen, there must be a minimum of `spaceXxl` margin above and below the Dialog window. The Dialog content scrolls when it exceeds the max-height of the dialog window; title, overline, subtitle, and any action Buttons are anchored to the top and bottom during scrolling.
 
+**Dialog Spacing (CZ GE)**
+
+---
+
 ---
 
 ### Dialog Backdrop
 
 A backdrop appears behind the active Dialog to bring emphasis to it as well as indicate to users that they cannot interact with the content on the page behind it.
+
+**Dialog Backdrop (CZ GE)**
+
+---
 
 ---
 
@@ -146,6 +202,10 @@ Avoid using nested dialogs when possible because it introduces layers of complex
 
 
 
+**Nested Dialogs (CZ GE)**
+
+---
+
 ### Multi-step Dialog Workflow
 
 Dialog workflows should contain no more than three steps. Workflows that are more than three steps should be designed as a full-page experience.
@@ -153,6 +213,10 @@ Dialog workflows should contain no more than three steps. Workflows that are mor
 For a flow that takes place inside a Dialog, all steps within that workflow should take place within the same size Dialog for a consistent user experience. Each step of the workflow should also be clearly communicated within the Dialog using the overline text.
 
 The Dialog should not be dismissible and the `canOutsideClickClose` prop should be set to `false` to prevent any accidental loss of progress.
+
+**Multi-step Workflow (CZ GE)**
+
+---
 
 ## Code
 
@@ -216,9 +280,25 @@ Click on each state below to enter inspect view and get details on its code attr
 
 
 
+**Default (1 button)**
+
 ---
 
 ---
+
+**Default (2 buttons)**
+
+---
+
+---
+
+**Default (2 buttons) + Overline + Subtitle**
+
+---
+
+---
+
+**Default (2 buttons) + Child Node (artwork)**
 
 ---
 
@@ -228,11 +308,31 @@ Use this variant to allow the user the ability to manually dismiss the Dialog by
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
----
+**Default**
 
 ---
 
 ---
+
+**Default (1 button)**
+
+---
+
+---
+
+**Default (2 buttons)**
+
+---
+
+---
+
+**Default (2 buttons) + Overline + Subtitle**
+
+---
+
+---
+
+**Default (2 buttons) + Child Node (artwork)**
 
 ---
 
@@ -244,11 +344,19 @@ In instances where the length of content contained in the Dialog results in the 
 
 
 
+**Dialog Spacing (CZ ID)**
+
+---
+
 ---
 
 ### Dialog Backdrop
 
 A backdrop appears behind the active Dialog to bring emphasis to it as well as indicate to users that they cannot interact with the content on the page behind it.
+
+**Dialog Backdrop (CZ ID)**
+
+---
 
 ---
 
@@ -264,6 +372,10 @@ Avoid using nested dialogs when possible because it introduces layers of complex
 
 
 
+**Nested Dialogs (SDS + CZ ID)**
+
+---
+
 ### Multi-step Dialog Workflow
 
 Dialog workflows should contain no more than three steps. Workflows that are more than three steps should be designed as a full-page experience.
@@ -271,6 +383,10 @@ Dialog workflows should contain no more than three steps. Workflows that are mor
 For a flow that takes place inside a Dialog, all steps within that workflow should take place within the same size Dialog for a consistent user experience. Each step of the workflow should also be clearly communicated within the Dialog using the overline text.
 
 The Dialog should not be dismissible and the `canOutsideClickClose` prop should be set to `false` to prevent any accidental loss of progress.
+
+**Multi-step Workflow (CZ ID)**
+
+---
 
 ## Code
 
@@ -325,6 +441,14 @@ Users can dismiss them by:
 - Clicking the close Tertiary Icon Button (Dismissible variant only)
 - Clicking outside of the Dialog. Doing this will result in any selections the user has made being lost, so it is recommended that this be disabled in instances where losing entered information would be a significant burden to the user
 
+**Preview_Guidelines_Dialog_persistent**
+
+---
+
+**Preview_Guidelines_Dialog_dismissible**
+
+---
+
 ---
 
 ### Live Instance
@@ -347,8 +471,32 @@ Persistent Dialogs are generally used:
 | 1 Button | 2 Buttons | 2 Buttons, left-aligned |
 | -------- | --------- | ----------------------- |
 
+**Dialog_Persistent_1 button**
+
+---
+
+**Dialog_Persistent_2 buttons**
+
+---
+
+**Dialog_Persistent_2 buttons, left**
+
+---
+
 | 2 Buttons, rounded | 2 Buttons + Overline + Subtitle | 2 Buttons + Artwork |
 | ------------------ | ------------------------------- | ------------------- |
+
+**Dialog_Persistent_2 buttons, rounded**
+
+---
+
+**Dialog_Persistent_overline, subtitle**
+
+---
+
+**Dialog_Persistent_artwork**
+
+---
 
 ---
 
@@ -359,14 +507,46 @@ Use this variant to allow the user the ability to manually dismiss the Dialog by
 | 0 Buttons | 1 Button | 2 Buttons | 2 Buttons, left-aligned |
 | --------- | -------- | --------- | ----------------------- |
 
+**Dialog_Dismissible_0 buttons**
+
+---
+
+**Dialog_Dismissible_1 button**
+
+---
+
+**Dialog_Dismissible_2 buttons**
+
+---
+
+**Dialog_Dismissible_2 buttons, left**
+
+---
+
 | 2 Buttons, rounded | 2 Buttons + Overline + Subtitle | 2 Buttons + Artwork |
 | ------------------ | ------------------------------- | ------------------- |
+
+**Dialog_Dismissible_2 buttons, rounded**
+
+---
+
+**Dialog_Dismissible_overline, subtitle**
+
+---
+
+**Dialog_Dismissible_artwork**
+
+---
 
 ---
 
 ### Dialog Spacing
 
 In instances where the length of content contained in the Dialog results in the Dialog filling the entire height of the screen, there must be a minimum of `spaceXxl` margin above and below the Dialog window. The Dialog content scrolls when it exceeds the max-height of the dialog window; title, overline, subtitle, and any action Buttons are anchored to the top and bottom during scrolling.
+
+**Dialog Spacing (SDS)**
+
+---
 
 ---
 
@@ -375,6 +555,10 @@ In instances where the length of content contained in the Dialog results in the 
 A backdrop appears behind the active Dialog to bring emphasis to it as well as indicate to users that they cannot interact with the content on the page behind it.
 
 The default backdrop is dark and customizable at the product level.
+
+**Dialog Backdrop (SDS)**
+
+---
 
 ---
 
@@ -388,6 +572,10 @@ Nested Dialogs should only be used in specific scenarios, most notably when a us
 
 Avoid using nested dialogs when possible because it introduces layers of complexity to pages and may make it more difficult for users to anticipate the results of their actions. It may also impede usability by making it more difficult for users to quickly exit a flow. Instead, explore utilizing a multi-step Dialog workflow (see below).
 
+**Nested Dialogs (SDS + CZ ID)**
+
+---
+
 #### Multi-step Dialog Workflow
 
 Dialog workflows should contain no more than three steps. Workflows that are more than three steps should be designed as a full-page experience.
@@ -395,6 +583,10 @@ Dialog workflows should contain no more than three steps. Workflows that are mor
 For a flow that takes place inside a Dialog, all steps within that workflow should take place within the same size Dialog for a consistent user experience. Each step of the workflow should also be clearly communicated within the Dialog using the overline text.
 
 The Dialog should not be dismissible to prevent any accidental loss of progress.
+
+**Multi-step Workflow (SDS)**
+
+---
 
 ## Code
 
@@ -596,15 +788,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dialog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -776,15 +967,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dialog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -957,15 +1147,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dialog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1152,15 +1341,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dialog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

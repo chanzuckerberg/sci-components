@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/types";
 import {
   HEATMAP_DATA,
   HEATMAP_ENCODE,
