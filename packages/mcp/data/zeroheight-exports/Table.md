@@ -13,6 +13,10 @@ Tables are used to store and visually organize data and other content into a ser
 
 ## Table Anatomy
 
+**Table Anatomy**
+
+---
+
 ---
 
 ## Basic Cell
@@ -28,6 +32,14 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
+**Default**
+
+---
+
+---
+
+**Default (right aligned)**
+
 ---
 
 ---
@@ -36,7 +48,9 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple Basic Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
+**Basic Cell spacing**
 
+---
 
 ---
 
@@ -53,6 +67,14 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
+**Default**
+
+---
+
+---
+
+**Default (right aligned)**
+
 ---
 
 ---
@@ -60,6 +82,10 @@ Click on each variant below to enter inspect view and get details on its code at
 ### Header Cell Spacing
 
 These rules establish how much margin should exist between and around elements. Multiple Header Cells are placed beside each other to create a Table Header. Stack Table Rows below a Table Header to create a full Table.
+
+**Header Cell spacing**
+
+---
 
 ---
 
@@ -72,11 +98,19 @@ A Table Row is a container filled with multiple Basic Cells placed side-by-side 
 
 Click on each variant below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
 ---
 
 ### Table Row Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Row spacing**
+
+---
 
 ---
 
@@ -87,11 +121,19 @@ These rules establish how much margin should exist between and around elements. 
 
 A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of the Table with each Header Cell in the row serving as the column header for the data in the content cells below it. There can only be one Table Header per Table.
 
+**Table Header**
+
+---
+
 ---
 
 ### Table Header Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Header spacing**
+
+---
 
 ## Code
 
@@ -151,6 +193,10 @@ Tables are used to store and visually organize data and other content into a ser
 
 Tables are made up of a Table Header with as many Table Rows stacked below it as needed. Table Headers contain multiple Header Cells which serve as top-level indicators for the type of content found in the column of cells below each. Similarly, Table Rows are comprised of two different types of content cells, Basic Cells and Component Cells; these cell types contain the bulk of the data within a Table and are designed to be flexible in their ability to hold nearly any type of content. For Tables with large amounts of data, only data from visible cells will be loaded (colloquially known as _lazy load_); as the user scrolls down the Table, additional data will be pulled from the server and displayed once the data has fully loaded.
 
+**Table Anatomy**
+
+---
+
 ---
 
 ## Content Cells
@@ -174,17 +220,43 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
-
-
----
+**Default**
 
 ---
 
 ---
 
+**Default + Secondary Text**
+
 ---
 
 ---
+
+**Default + Secondary Text + Tertiary Text**
+
+---
+
+---
+
+**Default (right aligned)**
+
+---
+
+---
+
+**Default (wrapped)**
+
+---
+
+---
+
+**Hover (truncated) + Tooltip**
+
+---
+
+---
+
+**Basic Cell + Icon**
 
 ---
 
@@ -202,7 +274,19 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
+**Default**
+
 ---
+
+---
+
+**Filled**
+
+---
+
+---
+
+**Filled (cell fit to content)**
 
 ---
 
@@ -212,7 +296,9 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple content cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
+**Content Cell spacing**
 
+---
 
 ---
 
@@ -232,9 +318,23 @@ Each Header Cell can have an optional Tooltip appear when hovered over by using 
 | **Default** | **Hover** |
 | ----------- | --------- |
 
+**CellHeader**
+
 ---
 
+**CellHeader**
 
+---
+
+---
+
+**CellHeader**
+
+---
+
+**CellHeader**
+
+---
 
 ### Header Cell Variants
 
@@ -242,11 +342,31 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
----
+**Default**
 
 ---
 
 ---
+
+**Default (right aligned)**
+
+---
+
+---
+
+**Hover + Tooltip**
+
+---
+
+---
+
+**Active (ascending)**
+
+---
+
+---
+
+**Active (descending)**
 
 ---
 
@@ -255,6 +375,10 @@ Click on each variant below to enter inspect view and get details on its code at
 ### Header Cell Spacing
 
 These rules establish how much margin should exist between and around elements. Multiple Header Cells are placed beside each other to create a Table Header. Stack Table Rows below a Table Header to create a full Table.
+
+**Header Cell spacing**
+
+---
 
 ---
 
@@ -277,13 +401,31 @@ Use the `disabled` prop to gray out all of the cells in the row and make it so u
 
 Click on each variant below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
 
+---
+
+---
+
+**Default (no divider)**
 
 ---
 
 ---
 
+**Hover + Tooltip**
+
 ---
+
+---
+
+**Selected**
+
+---
+
+---
+
+**Disabled**
 
 ---
 
@@ -293,25 +435,39 @@ Click on each variant below to enter inspect view and get details on its code at
 
 For advanced Tables, Table Rows may have actions tied to them, such as the ability to edit, delete, download, etc., which allow users to modify or manipulate the contents of the cells within that row. Users complete these actions by clicking on corresponding Icon Buttons that are placed within a Component Cell in the final column at the end of a Table Row (1).
 
+**Table Row actions_default**
+
+---
+
 An overflow Icon Button, represented by the `DotsHorizontal3` icon (2), can be used to surface a Dropdown Menu (3) that contains additional actions. This should be used in instances where a large number of actions are needed (generally more than three) or the designer wants to save space in wide Tables that contain many columns. Table Row Actions can either be exposed on hover or can be persistent in the Table at all times.
 
+**Table Row actions_overflow**
 
+---
 
 For efficiency, Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding Icon Buttons that are located at the top right of the Table, above the Table Header; they should be inactive when no rows are selected (1).
 
+**Bulk Table Row actions_default**
 
+---
 
 To make Table Rows selectable, designers must include Checkbox Inputs in the first column of the row, providing an input for users to click on and select the row (2); enable the Table Row's `selected` prop to indicate when rows are selected. Once rows are selected, any applicable bulk action Icon Button should become active to allow users to take action across all selected rows (3). In addition to these Icon Buttons, there should be a counter present that indicates how many rows have been selected (4).
 
 Because actions taken at the row level will impact stored data in the application, row and bulk actions are completely controlled by the application itself and not the SDS component.
 
+**Bulk Table Row actions_selected**
 
+---
 
 ---
 
 ### Table Row Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Row spacing**
+
+---
 
 ---
 
@@ -322,11 +478,19 @@ These rules establish how much margin should exist between and around elements. 
 
 A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of the Table with each Header Cell in the row serving as the column header for the data in the content cells below it. There can only be one Table Header per Table.
 
+**Table Header**
+
+---
+
 ---
 
 ### Table Header Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Header spacing**
+
+---
 
 ---
 
@@ -336,13 +500,33 @@ The following Table configurations are currently in use in CZ ID.
 
 ### Download Table
 
+**Table Example – Download Table**
+
+---
+
 ### Project Table
+
+**Table Example – Project Table**
+
+---
 
 ### Sample Table – Consensus Genome
 
+**Table Example – Sample Table: Consensus Genome**
+
+---
+
 ### Sample Table – Metagenomic
 
+**Table Example – Sample Table: Metagenomic**
+
+---
+
 ### Taxon Table
+
+**Table Example – Taxon Table**
+
+---
 
 ## Code
 
@@ -360,8 +544,6 @@ The technical documentation and code demos can be found here.
 Storybook
 
 ---
-
-
 
 ### CellComponent
 
@@ -393,8 +575,6 @@ Storybook
 
 Storybook
 
-
-
 ---
 
 Tables are used to store and visually organize data and other content into a series of cells grouped into a collection of rows and columns, helping users better understand and analyze a given set of information.
@@ -410,9 +590,37 @@ Tables are used to store and visually organize data and other content into a ser
 
 > **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
+**Preview_Guidelines_CellBasic**
+
+---
+
+**Preview_Guidelines_CellComponent**
+
+---
+
+**Preview_Guidelines_CellHeader**
+
+---
+
+**Preview_Guidelines_TableRow**
+
+---
+
+**Preview_Guidelines_TableHeader**
+
+---
+
+**Preview_Guidelines_Pagination**
+
+---
+
 ---
 
 ### Table Anatomy
+
+**Table Anatomy**
+
+---
 
 ---
 
@@ -438,14 +646,50 @@ The Basic Cell is intended to be filled with strings of text or numerical values
 | Default | Default + Secondary text | Default + Secondary text + Tertiary text | Default (right aligned) |
 | ------- | ------------------------ | ---------------------------------------- | ----------------------- |
 
+**Basic Cell_left aligned_primary**
+
+---
+
+**Basic Cell_left aligned_primary + secondary**
+
+---
+
+**Basic Cell_left aligned_primary + secondary + tertiary**
+
+---
+
+**Basic Cell_right aligned**
+
+---
+
 | Default (wrapped) | Hover (truncated) + Tooltip | Basic Cell + Icon | Basic Cell + Tag |
 | ----------------- | --------------------------- | ----------------- | ---------------- |
+
+**Basic Cell_wrap**
+
+---
+
+**Basic Cell_truncate**
+
+---
+
+**Basic Cell + Icon**
+
+---
+
+**Basic Cell + Tag**
+
+---
 
 ---
 
 ### Basic Cell Spacing
 
 These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
+
+**Basic Cell_spacing**
+
+---
 
 ---
 
@@ -471,11 +715,35 @@ Component Cells can accept any type of element, including any combination or num
 | Default | Filled (left aligned) | Filled (center aligned) | Filled (right aligned) | Filled (fit contents) |
 | ------- | --------------------- | ----------------------- | ---------------------- | --------------------- |
 
+**Component Cell_empty_left aligned**
+
+---
+
+**Component Cell_filled_left aligned**
+
+---
+
+**Component Cell_filled_center aligned**
+
+---
+
+**Component Cell_filled_right aligned**
+
+---
+
+**Component Cell_filled_fit contents**
+
+---
+
 ---
 
 ### Component Cell Spacing
 
 These rules establish how much margin should exist between and around elements. Multiple Basic and/or Component Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
+
+**Component Cell_spacing**
+
+---
 
 ---
 
@@ -505,11 +773,39 @@ Each Header Cell can have an optional Tooltip appear when hovered over. This can
 | Default | Default (center aligned) | Default (right aligned) | Hover + Tooltip | Active (ascending) | Active (descending) |
 | ------- | ------------------------ | ----------------------- | --------------- | ------------------ | ------------------- |
 
+**Header Cell_left aligned_default**
+
+---
+
+**Header Cell_center aligned_default**
+
+---
+
+**Header Cell_right aligned_default**
+
+---
+
+**Header Cell_left aligned_tooltip**
+
+---
+
+**Header Cell_right aligned_ascending**
+
+---
+
+**Header Cell_left aligned_descending**
+
+---
+
 ---
 
 ### Header Cell Spacing
 
 These rules establish how much margin should exist between and around elements. Multiple Header Cells are placed beside each other to create a Table Header. Stack Table Rows below a Table Header to create a full Table.
+
+**Header Cell spacing**
+
+---
 
 ---
 
@@ -537,19 +833,51 @@ Additionally, Checkbox Inputs can be placed within a Component Cell in the first
 | Default | Default (no divider) | Hover + Tooltip | Selected | Disabled |
 | ------- | -------------------- | --------------- | -------- | -------- |
 
+**TableRow_default_divider**
+
+---
+
+**TableRow_default_no divider**
+
+---
+
+**TableRow_hover + tooltip**
+
+---
+
+**TableRow_selected**
+
+---
+
+**TableRow_disabled**
+
+---
+
 ---
 
 ### Table Row Actions
 
 Table Rows may have actions tied to them, such as the ability to edit, delete, download, etc. Users complete these actions by clicking on corresponding Icon Buttons that are placed within a Component Cell in the final column at the end of a Table Row (1). Table Row Actions can either be exposed on hover or can be persistent in the Table at all times.
 
+**Table Row actions_default**
+
+---
+
 #### Overflow Menu
 
 An overflow Icon Button, represented by the `DotsHorizontal3` icon (2), can be used to surface a Dropdown Menu (3) that contains additional actions. This should be used in instances where a large number of actions are needed (generally more than three) or the designer wants to save space in wide Tables that contain many columns.
 
+**Table Row actions_overflow**
+
+---
+
 #### Bulk Actions
 
 Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding Icon Buttons that are located at the top right of the Table, above the Table Header; they should be inactive when no rows are selected (4).
+
+**Bulk Table Row actions_default**
+
+---
 
 #### Selectable Rows
 
@@ -557,11 +885,19 @@ To make Table Rows selectable, designers must include Checkbox Inputs in the fir
 
 Because actions taken at the row level will impact stored data in the application, row and bulk actions are completely controlled by the application itself and not the SDS component.
 
+**Bulk Table Row actions_selected**
+
+---
+
 ---
 
 ### Table Row Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Row spacing**
+
+---
 
 ---
 
@@ -582,11 +918,19 @@ Default
 
 A Table Header is a container filled with multiple Header Cells placed side-by-side to form a header row. This row is placed at the top of a Table with each Header Cell serving as the column header for the content below it; a 2px border should be placed below it. There can only be one Table Header per Table.
 
+**Table Header**
+
+---
+
 ---
 
 ### Table Header Spacing
 
 These rules establish how much margin should exist between and around elements. Stack Table Rows below a Table Header to create a full Table.
+
+**Table Header spacing**
+
+---
 
 ---
 
@@ -612,22 +956,66 @@ Users are able to click on any page number to jump immediately to that page; oth
 | Default | Default (square) | Hover | Default (ellipsis disabled) | Default (ellipsis enabled) |
 | ------- | ---------------- | ----- | --------------------------- | -------------------------- |
 
+**Pagination_default**
+
+---
+
+**Pagination_default_square**
+
+---
+
+**Pagination_hover**
+
+---
+
+**Pagination_truncated dropdown_false**
+
+---
+
+**Pagination_truncated dropdown_true**
+
+---
+
 ---
 
 ### Pagination Spacing
 
 These rules establish how much margin should exist between and around elements. Place Pagination below the final Table Row on each page of the Table.
 
+**Pagination_spacing**
+
+---
+
 ## Code
 
 ## Table Components
 
-| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled. To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables. `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |     | **Jump to component:** CellBasic CellComponent CellHeader TableRow Pagination |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ----------------------------------------------------------------------------- |
+| `Tables` are built by combining `CellHeader` with `CellBasic` or `CellComponent`, providing flexibility for teams to create `Tables` that house any type of content their product's require. `Tables` can be sorted, either ascending or descending, by clicking on any `CellHeader` that has sorting enabled. To avoid slow loading speeds in `Tables` that contain large amounts of data, they should be split across multiple pages; incorporate `Pagination` to help users navigate between the pages of multi-page Tables. `Filters` are often used in conjunction with Tables, allowing users to manipulate what content is viewable in the `Table` by the parameters indicated in the `Filter`. |     | **Jump to component:** CellBasic CellComponent CellHeader TableRow Pagination PreComposedTable |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ---------------------------------------------------------------------------------------------- |
 
 ### Visual Preview
 
 > **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
+
+**Preview_Code_CellBasic**
+
+---
+
+**Preview_Code_CellComponent**
+
+---
+
+**Preview_Code_CellHeader**
+
+---
+
+**Preview_Code_TableRow**
+
+---
+
+**Preview_Code_Pagination**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -779,15 +1167,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -949,15 +1336,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1121,15 +1507,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1297,15 +1682,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1484,15 +1868,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1643,15 +2026,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1823,15 +2205,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pagination</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -2131,15 +2512,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -2168,6 +2548,34 @@ root.render(
 ```
 
 ---
+
+## PreComposedTable
+
+This component is a fully-featured, composable table built on top of TanStack Table with built-in support for `sorting`, `pagination`, `row selection`, `filtering`, `column pinning`, and `responsive sizing`
+
+### SDS Source Code
+
+The component's source code in the SDS codebase can be found here.
+
+### Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below.
+
+| Name                       | Type                                             | Default  | Description                                                                        |
+| -------------------------- | ------------------------------------------------ | -------- | ---------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------- |
+| `data`                     | `TData[]`                                        | `-`      | Array of data objects to display in the table rows                                 |
+| `columns`                  | `ColumnDef<TData>[]`                             | `-`      | Column definitions that specify how data should be rendered and behave             |
+| `enableSorting`            | `boolean`                                        | `false`  | Enables sorting functionality for table columns                                    |
+| `enableRowSelection`       | `boolean`                                        | `false`  | Adds checkboxes for row selection with select-all functionality                    |
+| `shouldPinSelectRowToLeft` | `boolean`                                        | `true`   | Pins the row selection column to the left/right side of the table                  |
+| `enablePagination`         | `boolean`                                        | `false`  | Enables pagination controls at the bottom of the table                             |
+| `enableGlobalFiltering`    | `boolean`                                        | `false`  | Displays a search input that filters across all columns                            |
+| `paginationConfig`         | `Partial<PaginationProps> & { placement?: "left" | "center" | "right" }`                                                                         | `-` | Config object for pagination settings including placement and page size |
+| `className`                | `string`                                         | `-`      | CSS class name to apply to the table container                                     |
+| `style`                    | `React.CSSProperties`                            | `-`      | Inline styles to apply to the table container                                      |
+| `tableWidth`               | `string`                                         | `100%`   | Sets the width of the table container                                              |
+| `tableRowProps`            | `Partial<TableRowProps>`                         | `-`      | Additional props to pass to each table row component                               |
+| `onRowSelect`              | `(selectedRows: TData[]) => void`                | `-`      | Callback triggered when row selection changes; receives array of selected row data |
 
 ## Component Recipes
 
@@ -2432,15 +2840,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -2891,15 +3298,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -3210,15 +3616,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -3682,15 +4087,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -4094,15 +4498,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -4470,15 +4873,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -4905,15 +5307,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Table</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

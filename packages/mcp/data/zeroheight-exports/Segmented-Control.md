@@ -14,17 +14,33 @@ The Segmented Control component is comprised of Segmented Control Items each of 
 | **Default / Active** | **Hover** |
 | -------------------- | --------- |
 
+**SegmentedControl**
+
+---
+
+**SegmentedControl**
+
+---
+
 ---
 
 ### Segmented Control Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Segmented Control Spacing**
+
+---
+
 ---
 
 ### Segmented Control Best Practices
 
 Segmented control relies on icons to communicate what’s being shown to the user. Because of this, it should always be coupled with a dark Tooltip that displays the name of the segment item when the user hovers over it.
+
+**Segmented Control Best Practice**
+
+---
 
 ## Code
 
@@ -65,11 +81,23 @@ Icons are used to communicate what will be shown on screen when that segment is 
 | Default / Active | Hover |
 | ---------------- | ----- |
 
+**Segmented Control_Default_Active**
+
+---
+
+**Segmented Control_Hover**
+
+---
+
 ---
 
 ### Segmented Control Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Segmented Control Spacing**
+
+---
 
 ## Code
 
@@ -222,15 +250,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segmented Control</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -386,15 +413,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segmented Control</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -545,15 +571,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segmented Control</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

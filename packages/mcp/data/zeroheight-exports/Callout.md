@@ -26,7 +26,13 @@ An additional block of text can be added in addition to the Callout's title if m
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
 
+---
+
+---
+
+**Default + Child Node (alert text)**
 
 ---
 
@@ -40,6 +46,14 @@ An additional block of text can be added in addition to the Callout's title if m
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
+
+---
+
+---
+
+**Default + Child Node (alert text)**
+
 ---
 
 ### Expandable Callout
@@ -52,17 +66,35 @@ Additional content, whether more text or relevant components, can be included in
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default (collapsed) + Child Node (content module)**
 
+---
+
+---
+
+**Default (expanded) + Child Node (content module)**
 
 ---
 
 ---
+
+**Default (collapsed) + Child Node (alert text) + Child Node (content module)**
+
+---
+
+---
+
+**Default (expanded) + Child Node (alert text) + Child Node (content module)**
 
 ---
 
 ### Callout Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Callout spacing**
+
+---
 
 ---
 
@@ -75,8 +107,24 @@ Each intent is demonstrated below using the Persistent Callout for reference. Re
 | **Error** | **Info** |
 | --------- | -------- |
 
+**Callout**
+
+---
+
+**Callout**
+
+---
+
 | **Success** | **Warning** |
 | ----------- | ----------- |
+
+**Callout**
+
+---
+
+**Callout**
+
+---
 
 ## Code
 
@@ -92,8 +140,6 @@ Each intent is demonstrated below using the Persistent Callout for reference. Re
 ### Callout
 
 Storybook
-
-
 
 ---
 
@@ -123,11 +169,15 @@ An additional block of text can be added in addition to the Callout's title if m
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default**
 
 ---
 
+---
 
+**Default + Child Node (alert text)**
+
+---
 
 ### Dismissible Callout
 
@@ -138,6 +188,14 @@ Used in CZ ID to highlight helpful information to users when viewing a page; typ
 An additional block of text can be added in addition to the Callout's title if more space is needed to communicate the Callout's message.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
+
+**Default**
+
+---
+
+---
+
+**Default + Child Node (alert text)**
 
 ---
 
@@ -151,11 +209,25 @@ Additional content, whether more text or relevant components, can be included in
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default (collapsed) + Child Node (content module)**
 
+---
+
+---
+
+**Default (expanded) + Child Node (content module)**
 
 ---
 
 ---
+
+**Default (collapsed) + Child Node (alert text) + Child Node (content module)**
+
+---
+
+---
+
+**Default (expanded) + Child Node (alert text) + Child Node (content module)**
 
 ---
 
@@ -164,6 +236,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Callout Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Callout spacing**
+
+---
 
 ---
 
@@ -176,8 +252,24 @@ Each intent is demonstrated below using the Persistent Callout for reference. Re
 | **Error** | **Info** |
 | --------- | -------- |
 
+**Callout**
+
+---
+
+**Callout**
+
+---
+
 | **Success** | **Warning** |
 | ----------- | ----------- |
+
+**Callout**
+
+---
+
+**Callout**
+
+---
 
 ## Code
 
@@ -209,6 +301,18 @@ Callouts come in three different variants: Persistent, Dismissible, and Expandab
 
 Callouts appear within the flow of the page, unlike Notifications which appear outside of the page's flow on top of other elements. They span the full width of their container.
 
+**Preview_Guidelines_Callout_persistent**
+
+---
+
+**Preview_Guidelines_Callout_dismissible**
+
+---
+
+**Preview_Guidelines_Callout_expandable**
+
+---
+
 ---
 
 ### Live Instance
@@ -226,6 +330,14 @@ Use Callout – Persistent when communicating information that should remain on 
 | Default | Default + Alert Text |
 | ------- | -------------------- |
 
+**Callout_persistent_default**
+
+---
+
+**Callout_persistent_default+alert**
+
+---
+
 ---
 
 ### Callout – Dismissible
@@ -234,6 +346,14 @@ Use when communicating information that doesn't need to remain on the screen and
 
 | Default | Default + Alert Text |
 | ------- | -------------------- |
+
+**Callout_dismissible_default**
+
+---
+
+**Callout_dismissible_default+alert**
+
+---
 
 ---
 
@@ -244,11 +364,31 @@ Use when communicating a lot of information that may be useful, but isn't strict
 | Collapsed | Collapsed + Alert Text | Expanded + Content Module | Expanded + Alert Text + Content Module |
 | --------- | ---------------------- | ------------------------- | -------------------------------------- |
 
+**Callout_expandable_default**
+
+---
+
+**Callout_expandable_default+alert**
+
+---
+
+**Callout_expandable_open**
+
+---
+
+**Callout_expandable_open+alert**
+
+---
+
 ---
 
 ### Callout Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Callout spacing**
+
+---
 
 ---
 
@@ -260,6 +400,22 @@ Each intent is demonstrated below using the Persistent variant for reference. Re
 
 | Info | Negative | Notice | Positive |
 | ---- | -------- | ------ | -------- |
+
+**Callout_intent_info**
+
+---
+
+**Callout_intent_error**
+
+---
+
+**Callout_intent_warning**
+
+---
+
+**Callout_intent_success**
+
+---
 
 ## Code
 
@@ -421,15 +577,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Callout</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -572,15 +727,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Callout</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -739,15 +893,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Callout</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

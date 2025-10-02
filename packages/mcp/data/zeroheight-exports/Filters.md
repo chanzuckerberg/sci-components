@@ -14,7 +14,27 @@ Users can filter using any combination of Filter options presented to them—see
 | **Closed** | **Open** | **Active** |
 | ---------- | -------- | ---------- |
 
+**Filter_Closed**
+
+---
+
+**Filter_Open**
+
+---
+
+**Filter_Active**
+
+---
+
 ### Filter Variants
+
+**Default**
+
+---
+
+---
+
+**Default + Search**
 
 ---
 
@@ -22,17 +42,33 @@ Users can filter using any combination of Filter options presented to them—see
 
 The example below shows Filters being used as part of the plugin search on napari hub.
 
+**Filter_Example**
+
+---
+
 ---
 
 ### Filter Spacing
 
 These rules establish how much margin should exist between and around elements. Follow spacing rules for Dropdown Menus for spacing guidance for the Filter Input.
 
+**Filter_Spacing**
+
+---
+
 ---
 
 ## Filtering Logic
 
 Filtering logic is handled at the product level; however, this section offers some suggestions for best practices to consider when establishing filtering logic.
+
+**Between filter categories: use "AND"**
+
+---
+
+**Within filter categories: use "OR"**
+
+---
 
 ## Code
 
@@ -67,19 +103,49 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 | **Closed** | **Open** | **Active** |
 | ---------- | -------- | ---------- |
 
+**Complex Filter_Closed**
+
+---
+
+**Complex Filter_Open**
+
+---
+
+**Complex Filter_Active**
+
+---
+
 ### Filter Variants
 
----
+**Single-select**
 
 ---
 
 ---
 
+**Single-select + Search**
 
+---
+
+---
+
+**Multi-select**
+
+---
+
+---
+
+**Multi-select + Search**
+
+---
 
 ### Filter Example
 
 The example below shows Complex Filters being used as part of a Basic Panel in CZ GEN EPI.
+
+**Complex Filter_Example**
+
+---
 
 ---
 
@@ -87,11 +153,23 @@ The example below shows Complex Filters being used as part of a Basic Panel in C
 
 These rules establish how much margin should exist between and around elements. Follow spacing rules for Dropdown Menus for spacing guidance for the Complex Filter Input.
 
+**Complex Filter_Spacing**
+
+---
+
 ---
 
 ## Filtering Logic
 
 Filtering logic is handled at the product level, however, this section offers some suggestions for best practices to consider when establishing filtering logic.
+
+**Between filter categories: use "AND"**
+
+---
+
+---
+
+**Within filter categories: use "OR"**
 
 ---
 
@@ -130,7 +208,19 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 Use the Simple Filter when there are only a few options to filter on or there are only a few filter categories needed for a given dataset. Simple Filters are comprised of a Filter Label combined with a Filter Input that is Single-select (Radio Lockup), Multi-select (Checkbox Lockup), or a Range (Slider) depending on the filtering needs of the dataset. In contrast to Complex Filters which keep filter options contained within a Dropdown Menu, Simple Filters have all of the options for each filter exposed in the UI and viewable by the user. Users can filter using any combination of Filter options presented to them—see the Filtering Logic section below for an overview of how applied Filters affect the dataset being filtered.
 
+**Single-select**
+
 ---
+
+---
+
+**Multi-select**
+
+---
+
+---
+
+**Range**
 
 ---
 
@@ -138,13 +228,19 @@ Use the Simple Filter when there are only a few options to filter on or there ar
 
 The example below shows Simple Filters being used as part of a Basic Panel in CZ ID.
 
+**Simple Filter_Example**
 
+---
 
 ---
 
 ### Simple Filter Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Simple Filter Spacing**
+
+---
 
 ---
 
@@ -160,21 +256,55 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 | **Closed** | **Open** | **Active** |
 | ---------- | -------- | ---------- |
 
+**Complex Filter_Closed**
+
+---
+
+**Complex Filter_Open**
+
+---
+
+**Complex Filter_Active**
+
+---
+
 ### Complex Filter Variants
 
----
+**Single-select**
 
 ---
 
 ---
 
+**Single-select + Search**
+
 ---
 
+---
 
+**Multi-select**
+
+---
+
+---
+
+**Multi-select + Search**
+
+---
+
+---
+
+**Range**
+
+---
 
 ### Complex Filter Example
 
 The example below shows Complex Filters being used as part of a Basic Panel in CZ ID.
+
+**Complex Filter_Example**
+
+---
 
 ---
 
@@ -182,11 +312,23 @@ The example below shows Complex Filters being used as part of a Basic Panel in C
 
 These rules establish how much margin should exist between and around elements. Follow spacing rules for Dropdown Menus for spacing guidance for the Complex Filter Input.
 
+**Complex Filter_Spacing**
+
+---
+
 ---
 
 ## Filtering Logic
 
 Filtering logic is handled at the product level, however, this section offers some suggestions for best practices to consider when establishing filtering logic.
+
+**Between filter categories: use “AND”**
+
+---
+
+---
+
+**Within filter category: use “OR”**
 
 ---
 
@@ -220,6 +362,14 @@ Filters are used to narrow down large amounts of data based on specific criteria
 
 ### Visual Preview
 
+**Preview_Guidelines_Filter_Simple**
+
+---
+
+**Preview_Guidelines_Filter_Complex**
+
+---
+
 ---
 
 ## Simple Filter
@@ -240,17 +390,37 @@ Use Simple Filter when there are only a few filter categories or a few options p
 | Single-select | Multi-select | Range |
 | ------------- | ------------ | ----- |
 
+**Simple Filter_Single-select**
+
+---
+
+**Simple Filter_Multi-select**
+
+---
+
+**Simple Filter_Range**
+
+---
+
 ---
 
 ### Simple Filter example
 
 The example below shows Simple Filters being used as part of a Basic Panel (documentation to come) in CZ ID.
 
+**Simple Filter_Example**
+
+---
+
 ---
 
 ### Simple Filter Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Simple Filter Spacing**
+
+---
 
 ---
 
@@ -276,10 +446,42 @@ The Dropdown Menu triggered when the Dropdown Input is clicked can be Single-sel
 | Single-select | Single-select + Search | Multi-select | Multi-select + Search | Range |
 | ------------- | ---------------------- | ------------ | --------------------- | ----- |
 
+**Complex Filter_Input_Single-select**
+
+---
+
+**Complex Filter_Input_Single-select + Search**
+
+---
+
+**Complex Filter_Input_Multi-select**
+
+---
+
+**Complex Filter_Input_Multi-select + Search**
+
+---
+
+**Complex Filter_Input_Range**
+
+---
+
 #### **Complex Filter states**
 
 | Closed | Open | Active |
 | ------ | ---- | ------ |
+
+**Complex Filter_Closed**
+
+---
+
+**Complex Filter_Open**
+
+---
+
+**Complex Filter_Active**
+
+---
 
 ---
 
@@ -287,17 +489,33 @@ The Dropdown Menu triggered when the Dropdown Input is clicked can be Single-sel
 
 The example below shows Complex Filters being used as part of a Basic Panel (documentation to come) in CZ ID.
 
+**Complex Filter_Example**
+
+---
+
 ---
 
 ### Complex Filter Spacing
 
 These rules establish how much margin should exist between and around elements. Follow spacing rules for Dropdown Menus for spacing guidance for the Complex Filter Input.
 
+**Complex Filter_Spacing**
+
+---
+
 ---
 
 ### Filtering Logic
 
 Filtering logic is handled at the product level, however, this section offers some suggestions for best practices to consider when establishing filtering logic.
+
+**Between filter categories: use "AND"**
+
+---
+
+**Within filter categories: use "OR"**
+
+---
 
 ## Code
 
@@ -307,6 +525,14 @@ Filtering logic is handled at the product level, however, this section offers so
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_Filter_Simple**
+
+---
+
+**Preview_Code_Filter_Complex**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -484,15 +710,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -666,15 +891,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -849,15 +1073,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

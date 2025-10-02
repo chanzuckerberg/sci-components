@@ -23,7 +23,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputSearch**
 
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
 
 ### Rounded Search Input Intent States
 
@@ -38,13 +52,27 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 ---
 
 ### Rounded Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Rounded Search Input spacing**
 
+---
 
 ---
 
@@ -60,7 +88,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputSearch**
 
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
 
 ### Square Search Input Intent States
 
@@ -75,13 +117,27 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 ---
 
 ### Square Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Square Search Input spacing**
 
+---
 
 ---
 
@@ -99,7 +155,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputText**
 
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
 
 ### Text Area Input
 
@@ -114,7 +184,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputText**
 
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
 
 ### Text Input Intent States
 
@@ -129,6 +213,30 @@ Use `intent: warning` to communicate when a user needs to be alerted that the co
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
 ---
 
 ---
@@ -136,6 +244,10 @@ Use `intent: warning` to communicate when a user needs to be alerted that the co
 ### Text Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Text Input spacing**
+
+---
 
 ## Code
 
@@ -183,7 +295,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputSearch**
 
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
 
 ### Rounded Search Input Intent States
 
@@ -198,11 +324,27 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 ---
 
 ### Rounded Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Search spacing**
+
+---
 
 ---
 
@@ -218,7 +360,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputSearch**
 
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
 
 ### Square Search Input Intent States
 
@@ -233,11 +389,27 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
+**InputSearch**
+
+---
+
 ---
 
 ### Square Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Square Search Input spacing**
+
+---
 
 ---
 
@@ -255,7 +427,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputText**
 
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
 
 ### Text Area Input
 
@@ -270,7 +456,21 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Focus** | **Disabled** |
 | ----------- | --------- | --------- | ------------ |
 
+**InputText**
 
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
 
 ### Text Input Intent States
 
@@ -285,6 +485,30 @@ Use `intent: warning` to communicate when a user needs to be alerted that the co
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
+---
+
+**InputText**
+
 ---
 
 ---
@@ -292,6 +516,10 @@ Use `intent: warning` to communicate when a user needs to be alerted that the co
 ### Text Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Text Input spacing**
+
+---
 
 ## Code
 
@@ -325,6 +553,14 @@ Field Inputs are elements that allow users to type within them, providing an are
 
 ### Visual Preview
 
+**Preview_Guidelines_InputSearch**
+
+---
+
+**Preview_Guidelines_InputText**
+
+---
+
 ---
 
 ## Search Input
@@ -333,6 +569,14 @@ Field Inputs are elements that allow users to type within them, providing an are
 | --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Search Input Styles
+
+**InputSearch_Styles_Rounded**
+
+---
+
+**InputSearch_Styles_Square**
+
+---
 
 ---
 
@@ -353,6 +597,26 @@ After users enter text into the Search field, an `XmarkCircle` icon appears; if 
 | Default | Hover | Focus | Default (user input) | Disabled |
 | ------- | ----- | ----- | -------------------- | -------- |
 
+**InputSearch_Rounded_Default**
+
+---
+
+**InputSearch_Rounded_Hover**
+
+---
+
+**InputSearch_Rounded_Focus**
+
+---
+
+**InputSearch_Rounded_User Input**
+
+---
+
+**InputSearch_Rounded_Disabled**
+
+---
+
 ---
 
 ### Search Input – Square
@@ -364,11 +628,35 @@ After users enter text into the Search field, an `XmarkCircle` icon appears; if 
 | Default | Hover | Focus | Default (user input) | Disabled |
 | ------- | ----- | ----- | -------------------- | -------- |
 
+**InputSearch_Square_Default**
+
+---
+
+**InputSearch_Square_Hover**
+
+---
+
+**InputSearch_Square_Focus**
+
+---
+
+**InputSearch_Square_User Input**
+
+---
+
+**InputSearch_Square_Disabled**
+
+---
+
 ---
 
 ### Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Search spacing**
+
+---
 
 ---
 
@@ -383,6 +671,26 @@ Each intent is demonstrated below using the Rounded variant for reference. Regar
 | Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | ------- | -------- | ------------------------- | ------ | ----------------------- |
 
+**InputSearch_Intent_Default**
+
+---
+
+**InputSearch_Intent_Negative**
+
+---
+
+**InputSearch_Intent_Negative + Message**
+
+---
+
+**InputSearch_Intent_Notice**
+
+---
+
+**InputSearch_Intent_Notice + Message**
+
+---
+
 ---
 
 ## Text Input
@@ -391,6 +699,14 @@ Each intent is demonstrated below using the Rounded variant for reference. Regar
 | --- | -------- | --- | --- | ------------------- | --- | --- | ------- |
 
 ### Text Input Types
+
+**Text Input_Field**
+
+---
+
+**Text Input_Area**
+
+---
 
 ---
 
@@ -409,6 +725,26 @@ Text Input – Field is designed to fit one line of text and should be only used
 | Default | Hover | Focus | Default (user input) | Disabled |
 | ------- | ----- | ----- | -------------------- | -------- |
 
+**TextInput_Field_Default**
+
+---
+
+**TextInput_Field_Hover**
+
+---
+
+**TextInput_Field_Focus**
+
+---
+
+**TextInput_Field_User Input**
+
+---
+
+**TextInput_Field_Disabled**
+
+---
+
 ---
 
 ### Text Input – Area
@@ -422,11 +758,35 @@ It can be set to accept a specific number of characters in case there is a need 
 | Default | Hover | Focus | Default (user input) | Disabled |
 | ------- | ----- | ----- | -------------------- | -------- |
 
+**TextInput_Area_Default**
+
+---
+
+**TextInput_Area_Hover**
+
+---
+
+**TextInput_Area_Focus**
+
+---
+
+**TextInput_Area_User Input**
+
+---
+
+**TextInput_Area_Disabled**
+
+---
+
 ---
 
 ### Text Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Text Input spacing**
+
+---
 
 ---
 
@@ -439,6 +799,62 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 | Default | Negative | Negative + Intent Message | Notice | Notice + Intent Message | Positive | Positive + Intent Message |
 | :-----: | :------: | ------------------------- | :----: | ----------------------- | :------: | ------------------------- |
 
+**InputText_Field_Default**
+
+---
+
+**InputText_Field_Negative + Message**
+
+---
+
+**InputText_Field_Negative**
+
+---
+
+**InputText_Field_Notice**
+
+---
+
+**InputText_Field_Notice + Message**
+
+---
+
+**InputText_Field_Positive**
+
+---
+
+**InputText_Field_Positive + Message**
+
+---
+
+**InputText_Area_Default**
+
+---
+
+**InputText_Area_Negative**
+
+---
+
+**InputText_Area_Negative + Message**
+
+---
+
+**InputText_Area_Notice**
+
+---
+
+**InputText_Area_Notice + Message**
+
+---
+
+**InputText_Area_Positive**
+
+---
+
+**InputText_Area_Positive + Message**
+
+---
+
 ## Code
 
 ## Control Input Components
@@ -447,6 +863,14 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | -------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_InputSearch**
+
+---
+
+**Preview_Code_InputText**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -604,15 +1028,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Field Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -796,15 +1219,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Field Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -945,15 +1367,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Field Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

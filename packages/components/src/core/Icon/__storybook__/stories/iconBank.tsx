@@ -14,6 +14,7 @@ import {
 } from "src/core/styles";
 import { iconMap } from "src/core/Icon/map";
 import InputSearch from "src/core/InputSearch";
+import { Args } from "@storybook/types";
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {
@@ -232,12 +233,14 @@ export const IconBankDemo = (props: Args): JSX.Element => {
           })}
         </IconBankWrapper>
       ) : (
-        <Callout
-          intent="notice"
-          icon={<RawIcon sdsSize="l" sdsIcon="InfoSpeechBubble" />}
-        >
-          Sorry, there are no matches for your search!
-        </Callout>
+        <div style={{ maxWidth: "400px" }}>
+          <Callout
+            intent="notice"
+            icon={<RawIcon sdsSize="s" sdsIcon="InfoCircle" />}
+            title="No matches"
+            body="Sorry, there are no matches for your search!"
+          />
+        </div>
       )}
     </>
   );

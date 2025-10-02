@@ -23,12 +23,44 @@ Use when the order of the list's content does not matter.
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
 | --------- | --------- | ---------- | ----------- |
 
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
 ### Ordered List
 
 Use when the list's content needs to be presented in a specific order or sequence.
 
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
 | --------- | --------- | ---------- | ----------- |
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
 
 ---
 
@@ -38,6 +70,38 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
 | --------- | --------- | ---------- | ----------- |
+
+**UL_bodyM**
+
+---
+
+**UL_bodyS**
+
+---
+
+**UL_bodyXs**
+
+---
+
+**UL_bodyXxs**
+
+---
+
+---
+
+**OL_bodyM**
+
+---
+
+**OL_bodyS**
+
+---
+
+**OL_bodyXs**
+
+---
+
+**OL_bodyXxs**
 
 ---
 
@@ -81,7 +145,29 @@ Use when the order of the list's content does not matter.
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
+**List**
 
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
 
 ### Ordered List
 
@@ -89,6 +175,30 @@ Use when the list's content needs to be presented in a specific order or sequenc
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
 
 ---
 
@@ -98,6 +208,54 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
+
+**UL_fontL**
+
+---
+
+**UL_fontM**
+
+---
+
+**UL_fontS**
+
+---
+
+**UL_fontXs**
+
+---
+
+**UL_fontXxs**
+
+---
+
+**UL_fontXxxs**
+
+---
+
+---
+
+**OL_fontL**
+
+---
+
+**OL_fontM**
+
+---
+
+**OL_fontS**
+
+---
+
+**OL_fontXs**
+
+---
+
+**OL_fontXxs**
+
+---
+
+**OL_fontXxxs**
 
 ---
 
@@ -141,7 +299,29 @@ Use when the order of the list's content does not matter.
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
 
+**List**
 
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
 
 ### Ordered List
 
@@ -149,6 +329,30 @@ Use when the list's content needs to be presented in a specific order or sequenc
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
+
+**List**
+
+---
 
 ---
 
@@ -158,6 +362,54 @@ Spacing between List Items changes based on the font mixin size used. See the ta
 
 | **fontBodyL** | **fontBodyM** | **fontBodyS** | **fontBodyXs** | **fontBodyXxs** | **fontBodyXxxs** |
 | ------------- | ------------- | ------------- | -------------- | --------------- | ---------------- |
+
+**UL_fontL**
+
+---
+
+**UL_fontM**
+
+---
+
+**UL_fontS**
+
+---
+
+**UL_fontXs**
+
+---
+
+**UL_fontXxs**
+
+---
+
+**UL_fontXxxs**
+
+---
+
+---
+
+**OL_fontL**
+
+---
+
+**OL_fontM**
+
+---
+
+**OL_fontS**
+
+---
+
+**OL_fontXs**
+
+---
+
+**OL_fontXxs**
+
+---
+
+**OL_fontXxxs**
 
 ---
 
@@ -189,6 +441,14 @@ Utilizing a list to present information makes it easier to digest or act upon wh
 
 There are two types of Lists—Unordered where the order of content does not matter and Ordered which communicate a specific sequence for the content. Use a header with either list type to help provide context to the content presented in the list.
 
+**Preview_List_Ordered**
+
+---
+
+**Preview_List_Unordered**
+
+---
+
 ---
 
 ### Live Instance
@@ -206,6 +466,30 @@ Use when the list's content needs to be presented in a specific order or sequenc
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
 | --------- | --------- | --------- | ---------- | ----------- | ------------ |
 
+**List_Ordered_L**
+
+---
+
+**List_Ordered_M**
+
+---
+
+**List_Ordered_S**
+
+---
+
+**List_Ordered_Xs**
+
+---
+
+**List_Ordered_Xxs**
+
+---
+
+**List_Ordered_Xxxs**
+
+---
+
 ---
 
 ### List – Unordered
@@ -215,6 +499,30 @@ Use when the order of the list's content does not matter.
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
 | --------- | --------- | --------- | ---------- | ----------- | ------------ |
 
+**List_Unordered_L**
+
+---
+
+**List_Unordered_M**
+
+---
+
+**List_Unordered_S**
+
+---
+
+**List_Unordered_Xs**
+
+---
+
+**List_Unordered_Xxs**
+
+---
+
+**List_Unordered_Xxxs**
+
+---
+
 ---
 
 ### List Spacing
@@ -223,6 +531,54 @@ Spacing between List Items changes based on the font size used. See the table be
 
 | fontBodyL | fontBodyM | fontBodyS | fontBodyXs | fontBodyXxs | fontBodyXxxs |
 | --------- | --------- | --------- | ---------- | ----------- | ------------ |
+
+**UL_fontL**
+
+---
+
+**UL_fontM**
+
+---
+
+**UL_fontS**
+
+---
+
+**UL_fontXs**
+
+---
+
+**UL_fontXxs**
+
+---
+
+**UL_fontXxxs**
+
+---
+
+**OL_fontL**
+
+---
+
+**OL_fontM**
+
+---
+
+**OL_fontS**
+
+---
+
+**OL_fontXs**
+
+---
+
+**OL_fontXxs**
+
+---
+
+**OL_fontXxxs**
+
+---
 
 ## Code
 
@@ -383,15 +739,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lists</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -593,15 +948,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lists</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

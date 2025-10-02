@@ -11,7 +11,13 @@ Accordions are elements that can be used by designers to hide or reveal content.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Accordion**
 
+---
+
+---
+
+**Accordion**
 
 ---
 
@@ -20,6 +26,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Accordion Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Accordion spacing**
+
+---
 
 ## Code
 
@@ -51,7 +61,19 @@ Once expanded, the content revealed within the Accordion can be whatever the des
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Accordion**
+
 ---
+
+---
+
+**Accordion**
+
+---
+
+---
+
+**Accordion**
 
 ---
 
@@ -60,6 +82,10 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Accordion Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Accordion spacing**
+
+---
 
 ## Code
 
@@ -73,8 +99,6 @@ These rules establish how much margin should exist between and around elements.
 ### Accordion
 
 Storybook
-
-
 
 ---
 
@@ -93,6 +117,14 @@ Accordions are elements that can be used to hide or reveal content. Use the head
 
 The Accordion indicator arrow may appear to the left or the right of the header. Accordions may show a subtitle below the header text. Accordions may show bottom divider lines to help visually separate them from one another.
 
+**Preview_Guidelines_Accordion_toggleLeft**
+
+---
+
+**Preview_Guidelines_Accordion_toggleRight**
+
+---
+
 ---
 
 ### Live Instance
@@ -110,6 +142,22 @@ Left-aligned toggles works well when the Accordion's container is wide, because 
 | Default | Default + Divider | Default + Subtitle | Expanded |
 | ------- | ----------------- | ------------------ | -------- |
 
+**toggleLeft_collapsed_no subtitle_no underline**
+
+---
+
+**toggleLeft_collapsed_no subtitle_underlined**
+
+---
+
+**toggleLeft_collapsed_subtitle_no underline**
+
+---
+
+**toggleLeft_expanded_no subtitle_no underline**
+
+---
+
 ---
 
 ### Accordion – Right Toggle
@@ -119,11 +167,31 @@ Use when there's a preference for the Accordion toggle to appear to the right of
 | Default | Default + Divider | Default + Subtitle | Expanded |
 | ------- | ----------------- | ------------------ | -------- |
 
+**toggleRight_collapsed_no subtitle_no underline_n**
+
+---
+
+**toggleRight_collapsed_no subtitle_underlined_n**
+
+---
+
+**toggleRight_collapsed_subtitle_no underline**
+
+---
+
+**toggleRight_expanded_no subtitle_no underline**
+
+---
+
 ---
 
 ### Accordion Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Accordion spacing**
+
+---
 
 ## Code
 
@@ -223,9 +291,7 @@ function App() {
   return (
     <div className="app">
       <Accordion id="accordion-1" useDivider={false} togglePosition="right">
-        <AccordionHeader id={`accordion-1-header`}>
-          Accordion Header
-        </AccordionHeader>
+        <AccordionHeader>Accordion Header</AccordionHeader>
         <AccordionDetails>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
@@ -285,15 +351,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accordion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -378,10 +443,7 @@ function App() {
   return (
     <div className="app">
       <Accordion id="accordion-1" useDivider={true} togglePosition="right">
-        <AccordionHeader
-          id={`accordion-1-header`}
-          subtitle="Explore the functionalities of our amazing product"
-        >
+        <AccordionHeader subtitle="Explore the functionalities of our amazing product">
           Product Features
         </AccordionHeader>
         <AccordionDetails>
@@ -479,15 +541,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accordion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -572,10 +633,7 @@ function App() {
   return (
     <div className="app">
       <Accordion id="accordion-1" useDivider={true} togglePosition="right">
-        <AccordionHeader
-          id={`accordion-1-header`}
-          subtitle="Explore the functionalities of our amazing product"
-        >
+        <AccordionHeader subtitle="Explore the functionalities of our amazing product">
           Product Features
         </AccordionHeader>
         <AccordionDetails>
@@ -678,15 +736,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accordion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

@@ -16,15 +16,31 @@ Click on each state below to enter inspect view and get details on its code attr
 | **bodyM** | **bodyS** | **bodyXs** | **bodyXxs** |
 | --------- | --------- | ---------- | ----------- |
 
+**Link**
+
+---
+
+**Link**
+
+---
+
+**Link**
+
+---
+
+**Link**
+
+---
+
 ---
 
 ### Text Link Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Text Link spacing**
 
-
-
+---
 
 ## Code
 
@@ -40,8 +56,6 @@ These rules establish how much margin should exist between and around elements.
 ### Link
 
 Storybook
-
-
 
 ---
 
@@ -70,7 +84,17 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Default Visual Example_Default**
 
+---
+
+**Default Visual Example_Hover**
+
+---
+
+**Default visual example_Pressed**
+
+---
 
 ### Dashed Text Link
 
@@ -81,12 +105,36 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Dashed Visual Example_Default**
+
+---
+
+**Dashed Visual Example_Hover**
+
+---
+
+**Dashed Visual Example_Pressed**
+
+---
+
 ### Dashed Text Link Color Examples
 
 See below for visual examples of how the Dashed Text Link should be used in different colors depending on the color of the background it is placed upon.
 
 | **Black Text** | **Gray500 Text** | **White Text** |
 | -------------- | ---------------- | -------------- |
+
+**Dashed Visual Example_Black Text**
+
+---
+
+**Dashed Visual Example_Gray500 text**
+
+---
+
+**Dashed Visual Example_White text**
+
+---
 
 ---
 
@@ -96,7 +144,9 @@ These rules establish how much margin should exist between and around elements.
 
 Note: Default Text Links fall in line with the rest of the text in the paragraph it is part of. Dashed Text Links are spaced lower than a default underline text-decoration.
 
+**Dashed Text Link spacing**
 
+---
 
 ## Code
 
@@ -140,7 +190,17 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Default Visual Example_Default**
 
+---
+
+**Default Visual Example_Hover**
+
+---
+
+**Default visual example_Pressed**
+
+---
 
 ### Dashed Text Link
 
@@ -151,7 +211,17 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Pressed** |
 | ----------- | --------- | ----------- |
 
+**Dashed Visual Example_Default**
 
+---
+
+**Dashed Visual Example_Hover**
+
+---
+
+**Dashed Visual Example_Pressed**
+
+---
 
 ### Dashed Text Link Color Examples
 
@@ -160,6 +230,18 @@ See below for visual examples of how the Dashed Text Link should be used in diff
 | **Black Text** | **Gray500 Text** | **White Text** |
 | -------------- | ---------------- | -------------- |
 
+**Dashed Visual Example_Black Text**
+
+---
+
+**Dashed Visual Example_Gray500 text**
+
+---
+
+**Dashed Visual Example_White text**
+
+---
+
 ---
 
 ### Text Link Spacing
@@ -167,6 +249,10 @@ See below for visual examples of how the Dashed Text Link should be used in diff
 These rules establish how much margin should exist between and around elements.
 
 Note: Default Text Links fall in line with the rest of the text in the paragraph it is part of. Dashed Text Links are spaced lower than a default underline text-decoration.
+
+**Dashed Text Link spacing**
+
+---
 
 ## Code
 
@@ -180,5 +266,3 @@ Note: Default Text Links fall in line with the rest of the text in the paragraph
 ### Link
 
 Storybook
-
-

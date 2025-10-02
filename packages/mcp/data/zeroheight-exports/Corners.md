@@ -2,23 +2,16 @@
 
 Corners (border radiuses) provide visual, and often functional, distinction and help differentiate between different types of similar elements.
 
-### Types of Corners
-
-| **Example** |     | **Corner Type** |     | **Usage**                                                                                                      |
-| ----------- | --- | --------------- | --- | -------------------------------------------------------------------------------------------------------------- |
-|             |     | Large Corner    |     | Rounded elements (for example: rounded Buttons and rounded Dropdown Inputs)                                    |
-|             |     | Medium Corner   |     | Standard, default radius for corners in UI elements ( for example: square Buttons, Dialogs, square Tags, etc.) |
-|             |     | Small Corner    |     | Corners on elements that are smaller than 20px × 20px that need a square corner (for example: Checkboxes)      |
-|             |     | No Set Corner   |     | Corners for elements without any radius (for example: backgrounds on Menu Items and Table Cells)               |
-
 ### Corner Variables
 
-| **Visual** |     | **Figma Variable** |     | **CSS / SCSS Variables**               |     | **Value**              |
-| ---------- | --- | ------------------ | --- | -------------------------------------- | --- | ---------------------- |
-|            |     | `cornerL`          |     | `--sds-corner-l` `$sds-corner-l`       |     | `border-radius: 20px;` |
-|            |     | `cornerM`          |     | `--sds-corner-m` `$sds-corner-m`       |     | `border-radius: 4px;`  |
-|            |     | `cornerS`          |     | `--sds-corner-s` `$sds-corner-s`       |     | `border-radius: 2px;`  |
-|            |     | `cornerNone`       |     | `--sds-corner-none` `$sds-corner-none` |     | `border-radius: 0px;`  |
+| **Visual** |     | **Figma Variable** |     | **CSS / SCSS Variables**                     |     | **Value**              |
+| ---------- | --- | ------------------ | --- | -------------------------------------------- | --- | ---------------------- |
+|            |     | `cornerRounded`    |     | `--sds-corner-rounded` `$sds-corner-rounded` |     | `border-radius: 20px;` |
+|            |     | `cornerXl`         |     | `--sds-corner-xl` `$sds-corner-xl`           |     | `border-radius: 8px;`  |
+|            |     | `cornerL`          |     | `--sds-corner-l` `$sds-corner-l`             |     | `border-radius: 6px;`  |
+|            |     | `cornerM`          |     | `--sds-corner-m` `$sds-corner-m`             |     | `border-radius: 4px;`  |
+|            |     | `cornerS`          |     | `--sds-corner-s` `$sds-corner-s`             |     | `border-radius: 2px;`  |
+|            |     | `cornerNone`       |     | `--sds-corner-none` `$sds-corner-none`       |     | `border-radius: 0px;`  |
 
 ---
 

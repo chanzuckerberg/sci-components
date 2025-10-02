@@ -15,6 +15,18 @@ Individual files can typically be downloaded immediately. If the user can config
 
 The example flow below shows the immediate download of an individual data file. Within CZ GEN EPI, this download type is used for downloading data associated with individual phlyogenetic trees.
 
+**Flow**
+
+---
+
+---
+
+**1. Single-select**
+
+---
+
+**2B. Dropdown Menu**
+
 ---
 
 ---
@@ -24,6 +36,18 @@ The example flow below shows the immediate download of an individual data file. 
 If the files are small enough, users can download multiple files at once by selecting multiple files, then clicking a button to initiate the download. If the user can configure their download (e.g., file type), a dialog may appear. The download will begin within the user’s browser as soon as they confirm their selection.
 
 The example flow below shows the immediate download of multiple data files. Within CZ GEN EPI, this download type is used is used to download data or FASTA files for one or more samples.
+
+**Flow**
+
+---
+
+---
+
+**1. Multi-select**
+
+---
+
+**2B. Download Dialog**
 
 ---
 
@@ -44,6 +68,22 @@ Individual files can typically be downloaded immediately. If the user can config
 
 The example flow below shows the immediate download of an individual data file.
 
+**CZ ID_Individual File, Immediate Download flow**
+
+---
+
+---
+
+**1. Single-select**
+
+---
+
+**2B. Download Dialog**
+
+---
+
+**2C. Dropdown Menu**
+
 ---
 
 ---
@@ -53,6 +93,18 @@ The example flow below shows the immediate download of an individual data file.
 If the files are small enough, users can download multiple files at once by selecting multiple files, then clicking a button to initiate the download. If the user can configure their download (e.g., file type), a dialog may appear. The download will begin within the user’s browser as soon as they confirm their selection.
 
 The example flow below shows the immediate download of multiple data files.
+
+**CZ ID_Multiple Files, Immediate Download flow**
+
+---
+
+---
+
+**1. Multi-select**
+
+---
+
+**2B. Download Dialog**
 
 ---
 
@@ -66,11 +118,27 @@ Once the user confirms their selection, the system will begin generating their d
 
 The example flow below shows the asynchronous download of multiple data files.
 
-
+**CZ ID_Multiple Files, Asynchronous Download flow**
 
 ---
 
+---
 
+**1. Multi-select**
+
+---
+
+**2. Download Dialog**
+
+---
+
+**3. Download Notification**
+
+---
+
+**4. Downloads View**
+
+---
 
 ---
 
@@ -91,6 +159,22 @@ Individual files can typically be downloaded immediately. If the user can config
 
 The example flow below uses Single Cell to show the immediate download of an individual data file.
 
+**Flow**
+
+---
+
+---
+
+**1. Single-select**
+
+---
+
+**2B. Download Dialog**
+
+---
+
+**2C. Dropdown Menu**
+
 ---
 
 ---
@@ -102,6 +186,18 @@ If the files are small enough, users can download multiple files at once by sele
 ### Example from CZ GE
 
 The example flow below uses CZ GE to show the immediate download of multiple data files.
+
+**Multiple Files, Immediate Download flow**
+
+---
+
+---
+
+**1. Multi-select**
+
+---
+
+**2B. Download Dialog**
 
 ---
 
@@ -116,5 +212,25 @@ Once the user confirms their selection, the system will begin generating their d
 ### Example from CZ ID
 
 The example flow below uses CZ ID to show the asynchronous download of multiple data files.
+
+**Flow**
+
+---
+
+---
+
+**1. Multi-select**
+
+---
+
+**2. Download Dialog**
+
+---
+
+**3. Download Notification**
+
+---
+
+**4. Downloads View**
 
 ---

@@ -28,6 +28,26 @@ The example below shows Intent Message displayed in conjunction with Text Input 
 | Negative | Negative + Notice | Notice | Notice + Positive | Positive |
 | -------- | ----------------- | ------ | ----------------- | -------- |
 
+**IntentMessage_Example_Negative**
+
+---
+
+**IntentMessage_Example_Negative + Notice**
+
+---
+
+**IntentMessage_Example_Notice**
+
+---
+
+**IntentMessage_Example_Notice + Positive**
+
+---
+
+**IntentMessage_Example_Positive**
+
+---
+
 #### Intent Indicator
 
 The example below shows Intent Indicator displayed in conjunction with a range of Input types for reference. See the documentation for each Input component for examples specific to that Input type.
@@ -35,11 +55,31 @@ The example below shows Intent Indicator displayed in conjunction with a range o
 | Empty (Negative) | Negative | Notice | Positive |
 | ---------------- | -------- | ------ | -------- |
 
+**IntentIndicator_Example_Empty**
+
+---
+
+**IntentIndicator_Example_Negative**
+
+---
+
+**IntentIndicator_Example_Notice**
+
+---
+
+**IntentIndicator_Example_Positive**
+
+---
+
 ---
 
 ### Intent Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Intent spacing**
+
+---
 
 ## Code
 

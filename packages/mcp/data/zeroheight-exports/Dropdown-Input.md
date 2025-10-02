@@ -16,15 +16,31 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Open** | **Disabled** |
 | ----------- | --------- | -------- | ------------ |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 ---
 
 ###  Dropdown Input Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Dropdown Input spacing**
 
-
-
+---
 
 ## Code
 
@@ -41,8 +57,6 @@ These rules establish how much margin should exist between and around elements.
 
 Storybook
 
-
-
 ---
 
 Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users to make selections and communicate choices in the UI.
@@ -57,6 +71,18 @@ Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling users
 ### Visual Preview
 
 Use the links below to jump to information on a specific Dropdown Input variant:
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
 
 ---
 
@@ -78,8 +104,48 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
 | ----------- | --------- | ----------- | -------- | ------------ |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
 | --------------------- | --------- | ----------- | -------- | ------------ |
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
 
 ### Multi-select Rounded Dropdown Input
 
@@ -94,8 +160,48 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
 | ----------- | --------- | ----------- | -------- | ------------ |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
 | --------------------- | --------- | ----------- | -------- | ------------ |
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
 
 ### Rounded Dropdown Input Intent States
 
@@ -112,11 +218,27 @@ Each intent is demonstrated below using the Single-select Dropdown Input for ref
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 ---
 
 ### Rounded Dropdown Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Rounded Dropdown Input spacing**
+
+---
 
 ---
 
@@ -140,8 +262,48 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
 | ----------- | --------- | ----------- | -------- | ------------ |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 | **Default + Details** | **Hover** | **Default** | **Open** | **Disabled** |
 | --------------------- | --------- | ----------- | -------- | ------------ |
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
 
 ### Square Dropdown Input Intent States
 
@@ -158,11 +320,27 @@ Each intent is demonstrated below using the Single-select Dropdown Input for ref
 | **Default** | **Error** | **Warning** |
 | ----------- | --------- | ----------- |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 ---
 
 ### Square Dropdown Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Square Dropdown Input spacing_CZ ID**
+
+---
 
 ---
 
@@ -182,6 +360,26 @@ Click on each state below to enter inspect view and get details on its code attr
 | **Default** | **Hover** | **Default** | **Open** | **Disabled** |
 | ----------- | --------- | ----------- | -------- | ------------ |
 
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
+**InputDropdown**
+
+---
+
 ### Minimal Dropdown Input Intent States
 
 The `intent` prop is used to communicate the state of the user's response from the accompanying Dropdown Menu.
@@ -191,11 +389,19 @@ Use `intent: default` to communicate when a user has entered an accepted or comp
 | **Default** |     |     |
 | ----------- | --- | --- |
 
+**InputDropdown**
+
+---
+
 ---
 
 ### Minimal Dropdown Input Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Minimal Dropdown Input spacing**
+
+---
 
 ## Code
 
@@ -229,6 +435,14 @@ On click, Dropdown Inputs always trigger a Dropdown Menu to open.
 
 > **Note:** The external field label shown as part of the Value variant visual below is for demonstration purposes only and is not built into the component itself; a separate label must be added to achieve this in product.
 
+**Preview_Guidelines_InputDropdown_Label**
+
+---
+
+**Preview_Guidelines_InputDropdown_Value**
+
+---
+
 ---
 
 ### Live Instance
@@ -252,18 +466,162 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
 
+**InputDropdown_Label_Rounded_No Value_Default**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Hover**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Open**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Disabled**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Default**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Hover**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Open**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Disabled**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Default**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Hover**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Open**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Disabled**
+
+---
+
 _Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | :------: | ------------------------- | :----: | ----------------------- |
+
+**InputDropdown_Label_Rounded_No Value_Negative**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Negative + Message**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Notice**
+
+---
+
+**InputDropdown_Label_Rounded_No Value_Notice + Message**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Negative**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Negative + Message**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Notice**
+
+---
+
+**InputDropdown_Label_Rounded_Value_Notice + Message**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Negative**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Negative + Message**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Notice**
+
+---
+
+**InputDropdown_Label_Rounded_Count_Notice + Message**
+
+---
 
 #### Square
 
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
 
+**InputDropdown_Label_Square_No Value_Default**
+
+---
+
+**InputDropdown_Label_Square_No Value_Hover**
+
+---
+
+**InputDropdown_Label_Square_No Value_Open**
+
+---
+
+**InputDropdown_Label_Square_No Value_Disabled**
+
+---
+
+**InputDropdown_Label_Square_Value_Default**
+
+---
+
+**InputDropdown_Label_Square_Value_Hover**
+
+---
+
+**InputDropdown_Label_Square_Value_Open**
+
+---
+
+**InputDropdown_Label_Square_Value_Disabled**
+
+---
+
+**InputDropdown_Label_Square_Count_Default**
+
+---
+
+**InputDropdown_Label_Square_Count_Hover**
+
+---
+
+**InputDropdown_Label_Square_Count_Open**
+
+---
+
+**InputDropdown_Label_Square_Count_Disabled**
+
+---
+
 _Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
@@ -271,10 +629,90 @@ Use Negative to communicate when a user has entered an incorrect or incomplete r
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | :------: | ------------------------- | :----: | ----------------------- |
 
+**InputDropdown_Label_Square_No Value_Negative**
+
+---
+
+**InputDropdown_Label_Square_No Value_Negative + Message**
+
+---
+
+**InputDropdown_Label_Square_No Value_Notice**
+
+---
+
+**InputDropdown_Label_Square_No Value_Notice + Message**
+
+---
+
+**InputDropdown_Label_Square_Value_Negative**
+
+---
+
+**InputDropdown_Label_Square_Value_Negative + Message**
+
+---
+
+**InputDropdown_Label_Square_Value_Notice**
+
+---
+
+**InputDropdown_Label_Square_Value_Notice + Message**
+
+---
+
+**InputDropdown_Label_Square_Count_Negative**
+
+---
+
+**InputDropdown_Label_Square_Count_Negative + Message**
+
+---
+
+**InputDropdown_Label_Square_Count_Notice**
+
+---
+
+**InputDropdown_Label_Square_Count_Notice + Message**
+
+---
+
 #### Minimal
 
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
+
+**InputDropdown_Label_Minimal_No Value_Default**
+
+---
+
+**InputDropdown_Label_Minimal_No Value_Hover**
+
+---
+
+**InputDropdown_Label_Minimal_No Value_Open**
+
+---
+
+**InputDropdown_Label_Minimal_No Value_Disabled**
+
+---
+
+**InputDropdown_Label_Minimal_Value_Default**
+
+---
+
+**InputDropdown_Label_Minimal_Value_Hover**
+
+---
+
+**InputDropdown_Label_Minimal_Value_Open**
+
+---
+
+**InputDropdown_Label_Minimal_Value_Disabled**
+
+---
 
 ---
 
@@ -291,18 +729,114 @@ Optionally, Intent Messages can be displayed to further communicate why a Negati
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
 
+**InputDropdown_Value_Rounded_No Details_Default**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Hover**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Open**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Disabled**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Default**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Hover**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Open**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Disabled**
+
+---
+
 _Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
 
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | :------: | ------------------------- | :----: | ----------------------- |
+
+**InputDropdown_Value_Rounded_No Details_Negative**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Negative + Message**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Notice**
+
+---
+
+**InputDropdown_Value_Rounded_No Details_Notice + Message**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Negative**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Negative + Message**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Notice**
+
+---
+
+**InputDropdown_Value_Rounded_Details_Notice + Message**
+
+---
 
 #### **Square**
 
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
 
+**InputDropdown_Value_Square_No Details_Default**
+
+---
+
+**InputDropdown_Value_Square_No Details_Hover**
+
+---
+
+**InputDropdown_Value_Square_No Details_Open**
+
+---
+
+**InputDropdown_Value_Square_No Details_Disabled**
+
+---
+
+**InputDropdown_Value_Square_Details_Default**
+
+---
+
+**InputDropdown_Value_Square_Details_Hover**
+
+---
+
+**InputDropdown_Value_Square_Details_Open**
+
+---
+
+**InputDropdown_Value_Square_Details_Disabled**
+
+---
+
 _Intent Variations_
 
 Use Negative to communicate when a user has entered an incorrect or incomplete response and Notice when a user's response needs attention. Optionally, Intent Messages can be displayed to further communicate why a Negative or Notice intent was triggered. For more information see Intents.
@@ -310,10 +844,74 @@ Use Negative to communicate when a user has entered an incorrect or incomplete r
 | Negative | Negative + Intent Message | Notice | Notice + Intent Message |
 | :------: | ------------------------- | :----: | ----------------------- |
 
+**InputDropdown_Value_Square_No Details_Negative**
+
+---
+
+**InputDropdown_Value_Square_No Details_Negative + Message**
+
+---
+
+**InputDropdown_Value_Square_No Details_Notice**
+
+---
+
+**InputDropdown_Value_Square_No Details_Notice + Message**
+
+---
+
+**InputDropdown_Value_Square_Details_Negative**
+
+---
+
+**InputDropdown_Value_Square_Details_Negative + Message**
+
+---
+
+**InputDropdown_Value_Square_Details_Notice**
+
+---
+
+**InputDropdown_Value_Square_Details_Notice + Message**
+
+---
+
 #### **Minimal**
 
 | Default | Hover | Open | Disabled |
 | :-----: | :---: | :--: | :------: |
+
+**InputDropdown_Value_Minimal_No Details_Default**
+
+---
+
+**InputDropdown_Value_Minimal_No Details_Hover**
+
+---
+
+**InputDropdown_Value_Minimal_No Details_Open**
+
+---
+
+**InputDropdown_Value_Minimal_No Details_Disabled**
+
+---
+
+**InputDropdown_Value_Minimal_Details_Default**
+
+---
+
+**InputDropdown_Value_Minimal_Details_Hover**
+
+---
+
+**InputDropdown_Value_Minimal_Details_Open**
+
+---
+
+**InputDropdown_Value_Minimal_Details_Disabled**
+
+---
 
 ---
 
@@ -321,7 +919,9 @@ Use Negative to communicate when a user has entered an incorrect or incomplete r
 
 These rules establish how much margin should exist between and around elements.
 
+**Dropdown Input spacing**
 
+---
 
 ## Code
 
@@ -475,15 +1075,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dropdown Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -694,15 +1293,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dropdown Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -915,15 +1513,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dropdown Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -1141,15 +1738,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dropdown Inputs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>

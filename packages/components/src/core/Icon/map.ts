@@ -60,6 +60,7 @@ import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge
 import { ReactComponent as IconGridPrivateLarge } from "../../common/svgs/IconGridPrivateLarge.svg";
 import { ReactComponent as IconGridPublicLarge } from "../../common/svgs/IconGridPublicLarge.svg";
 import { ReactComponent as IconGridDots3Large } from "../../common/svgs/IconGridDots3Large.svg";
+import { ReactComponent as IconHandSmall } from "../../common/svgs/IconHandSmall.svg";
 import { ReactComponent as IconHouseSmall } from "../../common/svgs/IconHouseSmall.svg";
 import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInfoCircleLarge.svg";
 import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
@@ -113,6 +114,10 @@ import { ReactComponent as IconSearchSmall } from "../../common/svgs/IconSearchS
 import { ReactComponent as IconSendLarge } from "../../common/svgs/IconSendLarge.svg";
 import { ReactComponent as IconShareLarge } from "../../common/svgs/IconShareLarge.svg";
 import { ReactComponent as IconSlidersHorizontalLarge } from "../../common/svgs/IconSlidersHorizontalLarge.svg";
+import { ReactComponent as IconSparkleLarge } from "../../common/svgs/IconSparkleLarge.svg";
+import { ReactComponent as IconSparkleSmall } from "../../common/svgs/IconSparkleSmall.svg";
+import { ReactComponent as IconSparklesLarge } from "../../common/svgs/IconSparklesLarge.svg";
+import { ReactComponent as IconSparklesSmall } from "../../common/svgs/IconSparklesSmall.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
@@ -191,6 +196,7 @@ export interface IconNameToSizes {
   GridPrivate: "l" | "xl";
   GridPublic: "l" | "xl";
   House: "xs" | "s";
+  Hand: "xs" | "s";
   InfoCircle: "xs" | "s" | "l" | "xl";
   InfoSpeechBubble: "l" | "xl";
   LifeRing: "xs" | "s";
@@ -233,6 +239,8 @@ export interface IconNameToSizes {
   Send: "l" | "xl";
   Share: "l" | "xl";
   SlidersHorizontal: "l" | "xl";
+  Sparkle: "xs" | "s" | "l" | "xl";
+  Sparkles: "xs" | "s" | "l" | "xl";
   SpeechBubbles: "l" | "xl";
   SquareOnDashedSquare: "l" | "xl";
   Starburst: "xs" | "s";
@@ -453,6 +461,10 @@ export const iconMap: Props = {
     largeIcon: IconGridPublicLarge,
     smallIcon: null,
   },
+  Hand: {
+    largeIcon: null,
+    smallIcon: IconHandSmall,
+  },
   House: {
     largeIcon: null,
     smallIcon: IconHouseSmall,
@@ -624,6 +636,14 @@ export const iconMap: Props = {
   SlidersHorizontal: {
     largeIcon: IconSlidersHorizontalLarge,
     smallIcon: null,
+  },
+  Sparkle: {
+    largeIcon: IconSparkleLarge,
+    smallIcon: IconSparkleSmall,
+  },
+  Sparkles: {
+    largeIcon: IconSparklesLarge,
+    smallIcon: IconSparklesSmall,
   },
   SpeechBubbles: {
     largeIcon: IconSpeechBubblesLarge,

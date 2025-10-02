@@ -15,6 +15,14 @@ Content Cards come in two different variants: Narrow and Wide. When viewed on na
 
 Teams can individually control each element on Content Card including having two slots (one next to the Title text and one in the body of the card) that can be filled with whatever content is needed, providing maximum flexibility and serving a wide range of use cases.
 
+**Preview_Guidelines_Content Card_Wide**
+
+---
+
+**Preview_Guidelines_Content Card_Narrow**
+
+---
+
 ---
 
 ### Live Instance
@@ -38,15 +46,51 @@ Teams can choose whether to display the Content Card with a bounding box, with a
 | Image | Icon | None |
 | ----- | ---- | ---- |
 
+**Content Card_Visual Element_Image_Wide**
+
+---
+
+**Content Card_Visual Element_Icon_Wide**
+
+---
+
+**Content Card_Visual Element_None_Wide**
+
+---
+
 #### Image Options
 
 | Image left (padding) | Image left (no padding) | Image right (padding) | Image right (no padding) |
 | -------------------- | ----------------------- | --------------------- | ------------------------ |
 
+**Content Card_Image Option_Left_Padding_Wide**
+
+---
+
+**Content Card_Image Option_Left_No Padding_Wide**
+
+---
+
+**Content Card_Image Option_Right_Padding_Wide**
+
+---
+
+**Content Card_Image Option_Right_No Padding_Wide**
+
+---
+
 #### Content Options
 
 | Text | Slot |
 | ---- | ---- |
+
+**Content Card_Content_Text_Wide**
+
+---
+
+**Content Card_Content_Slot_Wide**
+
+---
 
 #### Additional Options
 
@@ -55,8 +99,32 @@ All of the following options are available regardless of whether the image is po
 | With decorative border | Without decorative border | With bounding box | Without bounding box |
 | ---------------------- | ------------------------- | ----------------- | -------------------- |
 
+**Content Card_Additional Option_Buttons Left_Wide**
+
+---
+
+**Content Card_Additional Option_No Decorative Border_Wide**
+
+---
+
+**Content Card_Additional Option_Bounding Box_Wide**
+
+---
+
+**Content Card_Additional Option_No Bounding Box_Wide**
+
+---
+
 | Left-aligned Buttons | Right-aligned Buttons |
 | -------------------- | --------------------- |
+
+**Content Card_Additional Option_Decorative Border_Wide**
+
+---
+
+**Content Card_Additional Option_Buttons Right_Wide**
+
+---
 
 #### Interaction States
 
@@ -66,6 +134,18 @@ The following states are used regardless of whether there is a visual element in
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
+
+**Content Card_Interaction States_Default_Wide**
+
+---
+
+**Content Card_Interaction States_Hover_Wide**
+
+---
+
+**Content Card_Interaction States_Pressed_Wide**
+
+---
 
 ---
 
@@ -84,23 +164,75 @@ Teams can choose whether to display the Content Card with a bounding box, with a
 | Image | Icon | None |
 | ----- | ---- | ---- |
 
+**Content Card_Visual Element_Image_Narrow**
+
+---
+
+**Content Card_Visual Element_Icon_Narrow**
+
+---
+
+**Content Card_Visual Element_None_Narrow**
+
+---
+
 #### Image Options
 
 | Padding | No Padding |
 | ------- | ---------- |
+
+**Content Card_Image Option_Padding_Narrow**
+
+---
+
+**Content Card_Image Option_No Padding_Narrow**
+
+---
 
 #### Content Options
 
 | Text | Slot |
 | ---- | ---- |
 
+**Content Card_Content_Text_Narrow**
+
+---
+
+**Content Card_Content_Slot_Narrow**
+
+---
+
 #### Additional Options
 
 | With decorative border | Without decorative border | With bounding box | Without bounding box |
 | ---------------------- | ------------------------- | ----------------- | -------------------- |
 
+**Content Card_Additional Option_Decorative Border_Narrow**
+
+---
+
+**Content Card_Additional Option_No Decorative Border_Narrow**
+
+---
+
+**Content Card_Additional Option_Bounding Box_Narrow**
+
+---
+
+**Content Card_Additional Option_No Bounding Box_Narrow**
+
+---
+
 | Left-aligned Buttons | Right-aligned Buttons |
 | -------------------- | --------------------- |
+
+**Content Card_Additional Option_Buttons Left_Narrow**
+
+---
+
+**Content Card_Additional Option_Buttons Right_Narrow**
+
+---
 
 #### Interaction States
 
@@ -111,11 +243,27 @@ The following states are used regardless of whether there is a visual element in
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**Content Card_Interaction States_Default_Narrow**
+
+---
+
+**Content Card_Interaction States_Hover_Narrow**
+
+---
+
+**Content Card_Interaction States_Pressed_Narrow**
+
+---
+
 ---
 
 ### Content Card Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Content Card Spacing (SDS)**
+
+---
 
 ## Code
 

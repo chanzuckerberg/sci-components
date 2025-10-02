@@ -14,13 +14,23 @@ The Jump-to Navigation component can contain as many Nav Items as necessary thou
 | **Default / Active** | **Hover** |
 | -------------------- | --------- |
 
+**NavigationJumpTo**
+
+---
+
+**NavigationJumpTo**
+
+---
+
 ---
 
 ### Jump-to Navigation Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Jump-to Navigation spacing**
 
+---
 
 ## Code
 
@@ -36,8 +46,6 @@ These rules establish how much margin should exist between and around elements.
 ### NavigationJumpTo
 
 Default
-
-
 
 ---
 
@@ -57,13 +65,23 @@ Use a positive pixel value in the `offset` prop to adjust where on the page the 
 | **Default / Active** | **Hover** |
 | -------------------- | --------- |
 
+**NavigationJumpTo**
+
+---
+
+**NavigationJumpTo**
+
+---
+
 ---
 
 ### Jump-to Navigation Spacing
 
 These rules establish how much margin should exist between and around elements.
 
+**Jump-to Navigation spacing**
 
+---
 
 ---
 
@@ -76,8 +94,36 @@ Each color option is demonstrated below:
 | **Beta** | **Error** | **Gray** | **Info** |
 | -------- | --------- | -------- | -------- |
 
+**Jump-to Nav_Beta**
+
+---
+
+**Jump-to Nav_Error**
+
+---
+
+**Jump-to Nav_Gray**
+
+---
+
+**Jump-to Nav_Info**
+
+---
+
 | **Primary** | **Success** | **Warning** |
 | ----------- | ----------- | ----------- |
+
+**Jump-to Nav_Primary**
+
+---
+
+**Jump-to Nav_Success**
+
+---
+
+**Jump-to Nav_Warning**
+
+---
 
 ## Code
 
@@ -104,6 +150,18 @@ Navigation components enable users to move around an application, either between
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Guidelines_NavigationHeader**
+
+---
+
+**Preview_Guidelines_NavigationFooter**
+
+---
+
+**Preview_Guidelines_NavigationJumpTo**
+
+---
 
 ---
 
@@ -137,13 +195,29 @@ Header Navigation can optionally be displayed using an inverted color scheme for
 
 #### Wide
 
+**NavigationHeader anatomy_wide**
+
+---
+
 #### Narrow
+
+**NavigationHeader anatomy_narrow**
+
+---
 
 ---
 
 ### Header Navigation Types
 
 Once implemented into an application, the Header Navigation type displayed will be automatically determined by the user's viewport width; the point at which one type is displayed over the other can be manually adjusted in code.
+
+**NavigationHeader_wide**
+
+---
+
+**NavigationHeader_narrow**
+
+---
 
 ---
 
@@ -156,15 +230,71 @@ The arrangement of the primary navigation group and the Search Input can be flip
 | Default | Default (inverted) |
 | ------- | ------------------ |
 
+**NavigationHeader_wide_default**
+
+---
+
+**NavigationHeader_wide_inverted**
+
+---
+
 #### Primary Navigation Items
 
 | Default | Default (expandable) | Hover | Hover (expandable) | Selected | Open (expandable) |
 | ------- | -------------------- | ----- | ------------------ | -------- | ----------------- |
 
+**NavigationHeader_NavItem_Primary_wide_default**
+
+---
+
+**NavigationHeader_NavItem_Primary_wide_default_expandable**
+
+---
+
+**NavigationHeader_NavItem_Primary_wide_hover**
+
+---
+
+**NavigationHeader_NavItem_Primary_wide\_\_hover_expandable**
+
+---
+
+**NavigationHeader_NavItem_Primary_wide_active**
+
+---
+
+**NavigationHeader_NavItem_Primary_wide_active_expandable**
+
+---
+
 #### Secondary Navigation Items
 
 | Default | Default (expandable) | Hover | Hover (expandable) | Pressed | Open (expandable) |
 | ------- | -------------------- | ----- | ------------------ | ------- | ----------------- |
+
+**NavigationHeader_NavItem_Secondary_wide_default**
+
+---
+
+**NavigationHeader_NavItem_Secondary_wide_expandable_default**
+
+---
+
+**NavigationHeader_NavItem_Secondary_wide_hover**
+
+---
+
+**NavigationHeader_NavItem_Secondary_wide_expandable_hover**
+
+---
+
+**NavigationHeader_NavItem_Secondary_wide_pressed**
+
+---
+
+**NavigationHeader_NavItem_Secondary_wide_expandable_open**
+
+---
 
 ---
 
@@ -175,25 +305,109 @@ Use Narrow when pages are being displayed at a **Small** breakpoint (though in s
 | Default (closed) | Default (closed; inverted) | Default (open) | Default (open; inverted) |
 | ---------------- | -------------------------- | -------------- | ------------------------ |
 
+**NavigationHeader_narrow_closed_default**
+
+---
+
+**NavigationHeader_narrow_closed_inverted**
+
+---
+
+**NavigationHeader_narrow_open_default**
+
+---
+
+**NavigationHeader_narrow_open_inverted**
+
+---
+
 #### Primary Navigation Items
 
 | Default | Default (collapsed) | Default (expanded) | Hover | Hover (collapsed) | Hover (expanded) | Active |
 | ------- | ------------------- | ------------------ | ----- | ----------------- | ---------------- | ------ |
+
+**NavigationHeader_NavItem_Primary_narrow_default**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_default_expandable**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_default_expanded**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_hover**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_hover_expandable_closed**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_hover_expandable_open**
+
+---
+
+**NavigationHeader_NavItem_Primary_narrow_active**
+
+---
 
 #### Primary Sub-navigation Items
 
 | Default | Hover |
 | ------- | ----- |
 
+**NavigationHeader_NavSubitem_Primary_narrow_default**
+
+---
+
+**NavigationHeader_NavSubitem_Primary_narrow_hover**
+
+---
+
 #### Secondary Navigation Items
 
 | Default | Default (collapsed) | Default (expanded) | Hover | Hover (collapsed) | Hover (expanded) |
 | ------- | ------------------- | ------------------ | ----- | ----------------- | ---------------- |
 
+**NavigationHeader_NavItem_Secondary_narrow_default**
+
+---
+
+**NavigationHeader_NavItem_Secondary_narrow_expandable_closed_default**
+
+---
+
+**NavigationHeader_NavItem_Secondary_narrow_expandable_open_default**
+
+---
+
+**NavigationHeader_NavItem_Secondary_narrow_hover**
+
+---
+
+**NavigationHeader_NavItem_Secondary_narrow_expandable_closed_hover**
+
+---
+
+**NavigationHeader_NavItem_Secondary_narrow_expandable_open_hover**
+
+---
+
 #### Secondary Sub-navigation Items
 
 | Default | Hover |
 | ------- | ----- |
+
+**NavigationHeader_NavSubitem_Secondary_narrow_default**
+
+---
+
+**NavigationHeader_NavSubitem_Secondary_narrow_hover**
+
+---
 
 ---
 
@@ -226,13 +440,29 @@ Header Navigation can optionally be displayed using an inverted color scheme for
 
 #### Wide
 
+**NavigationFooter anatomy_wide**
+
+---
+
 #### Narrow
+
+**NavigationFooter anatomy_narrow**
+
+---
 
 ---
 
 ### Footer Navigation Types
 
 Once implemented into an application, the Footer Navigation type displayed will be automatically determined by the user's viewport width; the point at which one type is displayed over the other can be manually adjusted in code.
+
+**NavigationFooter_wide**
+
+---
+
+**NavigationFooter_narrow**
+
+---
 
 ---
 
@@ -243,15 +473,47 @@ Use Wide when pages are being displayed at a **Large** or **Medium** breakpoint 
 | Default | Default (inverted) |
 | ------- | ------------------ |
 
+**NavigationFooter_wide_default**
+
+---
+
+**NavigationFooter_wide_inverted**
+
+---
+
 #### Navigation Items
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**NavigationFooter_NavItem_wide_default**
+
+---
+
+**NavigationFooter_NavItem_wide_hover**
+
+---
+
+**NavigationFooter_NavItem_wide_pressed**
+
+---
+
 #### Link Items
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
+
+**NavigationFooter_LinkItem_wide_default**
+
+---
+
+**NavigationFooter_LinkItem_wide_hover**
+
+---
+
+**NavigationFooter_LinkItem_wide_pressed**
+
+---
 
 ---
 
@@ -262,15 +524,47 @@ Use Narrow when pages are being displayed at a **Small** breakpoint (though in s
 | Default | Default (inverted) |
 | ------- | ------------------ |
 
+**NavigationFooter_narrow_default**
+
+---
+
+**NavigationFooter_narrow_inverted**
+
+---
+
 #### Navigation Items
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
 
+**NavigationFooter_NavItem_narrow_default**
+
+---
+
+**NavigationFooter_NavItem_narrow_hover**
+
+---
+
+**NavigationFooter_NavItem_narrow_pressed**
+
+---
+
 #### Link Items
 
 | Default | Hover | Pressed |
 | ------- | ----- | ------- |
+
+**NavigationFooter_LinkItem_narrow_default**
+
+---
+
+**NavigationFooter_LinkItem_narrow_hover**
+
+---
+
+**NavigationFooter_LinkItem_narrow_pressed**
+
+---
 
 ---
 
@@ -294,11 +588,23 @@ The Jump-to Navigation component can contain as many Nav Items as necessary thou
 | Default / Active | Hover |
 | ---------------- | ----- |
 
+**Jump-to Nav_Default_Active**
+
+---
+
+**Jump-to Nav_Hover**
+
+---
+
 ---
 
 ### Jump-to Navigation Spacing
 
 These rules establish how much margin should exist between and around elements.
+
+**Jump-to Navigation spacing**
+
+---
 
 ## Code
 
@@ -308,6 +614,18 @@ These rules establish how much margin should exist between and around elements.
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------------------------------------------------------------------------- |
 
 ### Visual Preview
+
+**Preview_Code_NavigationHeader**
+
+---
+
+**Preview_Code_NavigationFooter**
+
+---
+
+**Preview_Code_NavigationJumpTo**
+
+---
 
 > **Note:** The code examples below must install dependencies before displaying and may take extra time to load
 
@@ -549,15 +867,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navigation Jump To</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -835,15 +1152,14 @@ root.render(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navigation Jump To</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
