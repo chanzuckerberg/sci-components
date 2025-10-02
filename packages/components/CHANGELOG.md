@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.13.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.12.0...@czi-sds/components@22.13.0) (2025-10-02)
+
+### Features
+
+- **icons:** new icons ([#1014](https://github.com/chanzuckerberg/sci-components/issues/1014)) ([f2ad5dd](https://github.com/chanzuckerberg/sci-components/commit/f2ad5dd8e131ae5537f98569761fa1b91e639708))
+
 # [22.12.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.4...@czi-sds/components@22.12.0) (2025-09-29)
 
 ### Features
