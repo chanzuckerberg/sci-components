@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>@storybook/core - Storybook</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>storybook - Storybook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
@@ -46,35 +46,21 @@
     <link href="./sb-manager/runtime.js" rel="modulepreload" />
 
     
-    <link href="./sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/storybook-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
     
     <link href="./sb-addons/links-1/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-controls-2/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/a11y-2/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-actions-3/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/pseudo-states-3/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-backgrounds-4/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/chromatic-com-storybook-4/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-viewport-5/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/docs-5/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-toolbars-6/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/tag-badges-6/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/essentials-measure-7/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/essentials-outline-8/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/interactions-9/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/a11y-10/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/pseudo-states-11/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/geometricpanda-badges-12/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/chromatic-com-storybook-13/manager-bundle.js" rel="modulepreload" />
-    
-    <link href="./sb-addons/storybook-14/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/storybook-7/manager-bundle.js" rel="modulepreload" />
       <meta property="og:description" content="Science Design System by CZI" />
 <meta property="og:title" content="Science Design System" />
 <link
@@ -167,8 +153,13 @@
     margin-right: 6px;
   }
 
+  #storybook-explorer-menu .sidebar-item > a > div,
+  #storybook-explorer-menu .sidebar-item > button > div {
+    margin-right: 6px !important;
+  }
+
   #storybook-explorer-menu .sidebar-item[data-selected="true"] {
-    background-color: #eaeaea;
+    background-color: rgba(192, 192, 192, 0.15) !important;
     color: black;
     font-weight: 600;
   }
@@ -231,7 +222,15 @@
           window['FEATURES'] = {
   "argTypeTargetsV7": true,
   "legacyDecoratorFileOrder": false,
-  "disallowImplicitActionsInRenderV8": true
+  "disallowImplicitActionsInRenderV8": true,
+  "viewport": true,
+  "highlight": true,
+  "controls": true,
+  "interactions": true,
+  "actions": true,
+  "backgrounds": true,
+  "outline": true,
+  "measure": true
 };
         
       
@@ -245,8 +244,7 @@
       
         
           window['DOCS_OPTIONS'] = {
-  "defaultName": "Docs",
-  "autodocs": "tag"
+  "defaultName": "Docs"
 };
         
       
@@ -290,44 +288,26 @@
 
     <script type="module">
       import './sb-manager/globals-runtime.js';
+
       
-      
-        import './sb-addons/storybook-core-core-server-presets-0/common-manager-bundle.js';
+        import './sb-addons/storybook-core-server-presets-0/common-manager-bundle.js';
       
         import './sb-addons/links-1/manager-bundle.js';
       
-        import './sb-addons/essentials-controls-2/manager-bundle.js';
+        import './sb-addons/a11y-2/manager-bundle.js';
       
-        import './sb-addons/essentials-actions-3/manager-bundle.js';
+        import './sb-addons/pseudo-states-3/manager-bundle.js';
       
-        import './sb-addons/essentials-backgrounds-4/manager-bundle.js';
+        import './sb-addons/chromatic-com-storybook-4/manager-bundle.js';
       
-        import './sb-addons/essentials-viewport-5/manager-bundle.js';
+        import './sb-addons/docs-5/manager-bundle.js';
       
-        import './sb-addons/essentials-toolbars-6/manager-bundle.js';
+        import './sb-addons/tag-badges-6/manager-bundle.js';
       
-        import './sb-addons/essentials-measure-7/manager-bundle.js';
+        import './sb-addons/storybook-7/manager-bundle.js';
       
-        import './sb-addons/essentials-outline-8/manager-bundle.js';
-      
-        import './sb-addons/interactions-9/manager-bundle.js';
-      
-        import './sb-addons/a11y-10/manager-bundle.js';
-      
-        import './sb-addons/pseudo-states-11/manager-bundle.js';
-      
-        import './sb-addons/geometricpanda-badges-12/manager-bundle.js';
-      
-        import './sb-addons/chromatic-com-storybook-13/manager-bundle.js';
-      
-        import './sb-addons/storybook-14/manager-bundle.js';
-      
-      
+
       import './sb-manager/runtime.js';
     </script>
-
-    
-    <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
-    
   </body>
 </html>
