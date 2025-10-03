@@ -26,8 +26,6 @@ When the information being communicated on the Banner is intended to remain pers
 
 **Default (Persistent)**
 
-**Default (Persistent)**
-
 ---
 
 ---

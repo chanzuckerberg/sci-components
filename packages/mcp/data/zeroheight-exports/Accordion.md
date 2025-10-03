@@ -19,14 +19,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 **Accordion**
 
-**Accordion**
-
----
-
----
-
-**Accordion**
-
 ---
 
 ---

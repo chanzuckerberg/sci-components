@@ -120,26 +120,6 @@ The example flow below shows the asynchronous download of multiple data files.
 
 **CZ ID_Multiple Files, Asynchronous Download flow**
 
-**CZ ID_Multiple Files, Asynchronous Download flow**
-
----
-
----
-
-**1. Multi-select**
-
----
-
-**2. Download Dialog**
-
----
-
-**3. Download Notification**
-
----
-
-**4. Downloads View**
-
 ---
 
 ---

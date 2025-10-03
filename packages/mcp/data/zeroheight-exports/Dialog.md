@@ -112,8 +112,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 **Default (1 button)**
 
-**Default (1 button)**
-
 ---
 
 ---
@@ -204,10 +202,6 @@ Avoid using nested dialogs when possible because it introduces layers of complex
 
 ---
 
-**Nested Dialogs (CZ GE)**
-
----
-
 ### Multi-step Dialog Workflow
 
 Dialog workflows should contain no more than three steps. Workflows that are more than three steps should be designed as a full-page experience.
@@ -282,8 +276,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 **Default (1 button)**
 
-**Default (1 button)**
-
 ---
 
 ---
@@ -348,10 +340,6 @@ In instances where the length of content contained in the Dialog results in the 
 
 ---
 
-**Dialog Spacing (CZ ID)**
-
----
-
 ---
 
 ### Dialog Backdrop
@@ -373,10 +361,6 @@ Details and guidelines around complex Dialog use cases, such as nested Dialogs a
 Nested Dialogs should only be used in specific scenarios, most notably when a user is being directed to an external site and a final confirmation is needed.
 
 Avoid using nested dialogs when possible because it introduces layers of complexity to pages and may make it more difficult for users to anticipate the results of their actions. It may also impede usability by making it more difficult for users to quickly exit a flow. Instead, explore utilizing a multi-step Dialog workflow (see below).
-
-**Nested Dialogs (SDS + CZ ID)**
-
----
 
 **Nested Dialogs (SDS + CZ ID)**
 

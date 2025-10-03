@@ -34,14 +34,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 **Default + Child Node (alert text)**
 
-**Default**
-
----
-
----
-
-**Default + Child Node (alert text)**
-
 ---
 
 ### Dismissible Callout
@@ -73,8 +65,6 @@ An additional block of text can be added in addition to the Callout's title if m
 Additional content, whether more text or relevant components, can be included in the content module block within the accordion.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-**Default (collapsed) + Child Node (content module)**
 
 **Default (collapsed) + Child Node (content module)**
 
@@ -181,14 +171,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 **Default**
 
-**Default**
-
----
-
----
-
-**Default + Child Node (alert text)**
-
 ---
 
 ---
@@ -226,8 +208,6 @@ An additional block of text can be added in addition to the Callout's title if m
 Additional content, whether more text or relevant components, can be included in the content module block within the accordion.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-**Default (collapsed) + Child Node (content module)**
 
 **Default (collapsed) + Child Node (content module)**
 
