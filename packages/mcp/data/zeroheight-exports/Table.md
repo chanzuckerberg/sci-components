@@ -48,8 +48,6 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple Basic Cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
-
-
 **Basic Cell spacing**
 
 ---
@@ -222,8 +220,6 @@ Click on each variant below to enter inspect view and get details on its code at
 
 **Note:** Dotted lines around the cells below are only for demonstration purposes to show the cells' containers; in application, individual cells have no borders.
 
-
-
 **Default**
 
 ---
@@ -300,8 +296,6 @@ Click on each variant below to enter inspect view and get details on its code at
 
 These rules establish how much margin should exist between and around elements. Multiple content cells are placed beside each other to create a Table Row. Stack Table Rows below a Table Header to create a full Table.
 
-
-
 **Content Cell spacing**
 
 ---
@@ -341,8 +335,6 @@ Each Header Cell can have an optional Tooltip appear when hovered over by using 
 **CellHeader**
 
 ---
-
-
 
 ### Header Cell Variants
 
@@ -409,8 +401,6 @@ Use the `disabled` prop to gray out all of the cells in the row and make it so u
 
 Click on each variant below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Default**
 
 ---
@@ -455,11 +445,7 @@ An overflow Icon Button, represented by the `DotsHorizontal3` icon (2), can be u
 
 ---
 
-
-
 For efficiency, Tables can be designed to allow users to complete actions across multiple Table Rows at the same time, known as bulk actions. Similar to row actions, bulk actions are completed by clicking on corresponding Icon Buttons that are located at the top right of the Table, above the Table Header; they should be inactive when no rows are selected (1).
-
-
 
 **Bulk Table Row actions_default**
 
@@ -468,8 +454,6 @@ For efficiency, Tables can be designed to allow users to complete actions across
 To make Table Rows selectable, designers must include Checkbox Inputs in the first column of the row, providing an input for users to click on and select the row (2); enable the Table Row's `selected` prop to indicate when rows are selected. Once rows are selected, any applicable bulk action Icon Button should become active to allow users to take action across all selected rows (3). In addition to these Icon Buttons, there should be a counter present that indicates how many rows have been selected (4).
 
 Because actions taken at the row level will impact stored data in the application, row and bulk actions are completely controlled by the application itself and not the SDS component.
-
-
 
 **Bulk Table Row actions_selected**
 
@@ -561,8 +545,6 @@ Storybook
 
 ---
 
-
-
 ### CellComponent
 
 Storybook
@@ -592,8 +574,6 @@ Storybook
 ### Table
 
 Storybook
-
-
 
 ---
 

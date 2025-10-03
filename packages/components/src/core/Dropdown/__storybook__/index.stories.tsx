@@ -1,6 +1,5 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import LoadingIndicator from "src/core/LoadingIndicator";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { Dropdown } from "./stories/default";
 import {
   DROPDOWN_BUTTON_POSITION_OPTIONS,
@@ -104,9 +103,6 @@ export default {
     },
   },
   component: Dropdown,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Dropdowns/Dropdown",
 } as Meta;
 

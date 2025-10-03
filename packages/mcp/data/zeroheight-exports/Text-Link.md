@@ -42,10 +42,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
-
-
 ## Code
 
 ## Text Link Component
@@ -60,8 +56,6 @@ These rules establish how much margin should exist between and around elements.
 ### Link
 
 Storybook
-
-
 
 ---
 
@@ -101,8 +95,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Default visual example_Pressed**
 
 ---
-
-
 
 ### Dashed Text Link
 
@@ -155,8 +147,6 @@ Note: Default Text Links fall in line with the rest of the text in the paragraph
 **Dashed Text Link spacing**
 
 ---
-
-
 
 ## Code
 
@@ -212,8 +202,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Dashed Text Link
 
 Use the Dashed Text Link when the Text Link is placed on a background where the Default Text Link does not provide enough contrast to pass visual accessibility standards. The color of the link and its underline is inherited from the color used in the paragraph it is part of, see Dashed Text Link Color Examples below.
@@ -234,8 +222,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Dashed Visual Example_Pressed**
 
 ---
-
-
 
 ### Dashed Text Link Color Examples
 
@@ -280,5 +266,3 @@ Note: Default Text Links fall in line with the rest of the text in the paragraph
 ### Link
 
 Storybook
-
-

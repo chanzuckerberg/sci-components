@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import CellBasic from "src/core/CellBasic";
 import RawTableRow from "src/core/TableRow";
 

@@ -240,13 +240,9 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 **Default + Subtitle**
 
 ---
-
-
 
 ### Light Tooltip
 
@@ -257,8 +253,6 @@ Use the `placement` prop to indicate from which direction the Tooltip will appea
 The Tooltip is positioned relative to the on-screen element as opposed to relative to the user's cursor.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-
 
 **Default**
 
@@ -370,8 +364,6 @@ Click on each state below to enter inspect view and get details on its code attr
 ---
 
 ---
-
-
 
 **Default + Indicator**
 
@@ -575,8 +567,6 @@ The Tooltip is positioned relative to the on-screen element as opposed to relati
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Default**
 
 ---
@@ -587,8 +577,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Light Tooltip
 
 Use to display supplementary information such as definitions, instructions, or expanded details which require more text in the Tooltip. The white background on the Tooltip makes longer blocks of copy easier for the user to read. Use the `width` prop to expand the width of the Light Tooltip to a max width of 550px if there is a need to display particularly long blocks of copy.
@@ -598,8 +586,6 @@ Use the `placement` prop to indicate from which direction the Tooltip will appea
 The Tooltip is positioned relative to the on-screen element as opposed to relative to the user's cursor.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-
 
 **Default**
 
@@ -861,8 +847,6 @@ Storybook
 ### TooltipTable
 
 Storybook
-
-
 
 ---
 

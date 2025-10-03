@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawTooltip from "src/core/Tooltip";
 
 export const TestDemo = (props: Args): JSX.Element => {

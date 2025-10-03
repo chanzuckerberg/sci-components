@@ -169,8 +169,6 @@ Use when the order of the list's content does not matter.
 
 ---
 
-
-
 ### Ordered List
 
 Use when the list's content needs to be presented in a specific order or sequence.
@@ -324,8 +322,6 @@ Use when the order of the list's content does not matter.
 **List**
 
 ---
-
-
 
 ### Ordered List
 

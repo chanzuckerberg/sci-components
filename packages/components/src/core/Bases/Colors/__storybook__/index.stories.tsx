@@ -1,5 +1,4 @@
-import { Meta } from "@storybook/react";
-import { BADGE } from "src/common/storybook/storybookBadges";
+import { Meta } from "@storybook/react-webpack5";
 import { PrimitiveColorsTemplate } from "./stories/primitiveColors";
 import { SemanticColorsTemplate } from "./stories/semanticColors";
 
@@ -8,7 +7,6 @@ export default {
     axe: {
       disabledRules: ["color-contrast"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Bases/Colors",
 } as Meta;

@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { SegmentedControl } from "./stories/default";
 import { SEGMENTED_CONTROL_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -14,9 +13,6 @@ export default {
     },
   },
   component: SegmentedControl,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/SegmentedControl",
 } as Meta;
 

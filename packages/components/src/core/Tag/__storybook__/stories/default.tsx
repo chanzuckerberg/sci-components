@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import Callout from "src/core/Callout";
 import Icon, { IconNameToSizes } from "src/core/Icon";
 import RawTag from "src/core/Tag";

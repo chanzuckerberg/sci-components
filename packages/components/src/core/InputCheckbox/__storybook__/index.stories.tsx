@@ -1,11 +1,10 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputCheckbox } from "./stories/default";
 import {
   INPUT_CHECKBOX_EXCLUDED_CONTROLS,
   INPUT_CHECKBOX_TEST_ID,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -30,9 +29,6 @@ export default {
     },
   },
   component: InputCheckbox,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputCheckbox",
 } as Meta;
 

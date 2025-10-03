@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { ButtonToggle } from "./stories/default";
 import {
   BUTTON_TOGGLE_EXCLUDED_CONTROLS,
@@ -43,9 +42,7 @@ export default {
     },
   },
   component: ButtonToggle,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
+  tags: ["beta"],
   title: "Components/Buttons/ButtonToggle",
 } as Meta;
 

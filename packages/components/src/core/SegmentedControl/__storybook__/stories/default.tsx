@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawSegmentedControl from "src/core/SegmentedControl";
 
 export const SegmentedControl = (props: Args): JSX.Element => {

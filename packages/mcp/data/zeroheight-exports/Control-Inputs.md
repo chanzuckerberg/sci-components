@@ -77,15 +77,11 @@ Each Checkbox must be coupled with a label to communicate the result of a select
 
 ---
 
-
-
 ---
 
 ### Checkbox Spacing
 
 These rules establish how much margin should exist between and around elements.
-
-
 
 **Checkbox spacing**
 
@@ -152,8 +148,6 @@ These rules establish how much margin should exist between and around elements.
 **Radio spacing**
 
 ---
-
-
 
 ## Code
 
@@ -233,8 +227,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 **InputCheckbox**
 
 ---
@@ -248,8 +240,6 @@ Click on each state below to enter inspect view and get details on its code attr
 ---
 
 ---
-
-
 
 **InputCheckbox**
 
@@ -285,8 +275,6 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 **InputCheckbox**
 
 ---
-
-
 
 ### Checkbox Lockups
 
@@ -354,8 +342,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **InputRadio**
 
 ---
-
-
 
 ### Radio Intent States
 
@@ -574,8 +560,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Checkbox Intent States
 
 Use `intent: default` to communicate that user has yet to enter a response.
@@ -688,8 +672,6 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 **InputRadio**
 
 ---
-
-
 
 ### Radio Lockups
 

@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   TAG_COLORS,
   TAG_COLOR_CONTRAST_RULE,
@@ -76,7 +75,6 @@ export default {
     axe: {
       disabledRules: [TAG_COLOR_CONTRAST_RULE],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Tag",
 } as Meta;

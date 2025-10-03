@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawBanner from "src/core/Banner";
 
 export const Banner = (props: Args): JSX.Element => {

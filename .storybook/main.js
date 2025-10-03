@@ -13,14 +13,13 @@ module.exports = {
 
   addons: [
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/react"),
+    getAbsolutePath("@storybook/react-webpack5"),
     getAbsolutePath("storybook-addon-pseudo-states"),
-    getAbsolutePath("@geometricpanda/storybook-addon-badges"),
     getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
     getAbsolutePath("@chromatic-com/storybook"),
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("storybook-addon-tag-badges"),
   ],
 
   framework: {
@@ -61,10 +60,15 @@ module.exports = {
   }),
 
   typescript: {
-    reactDocgen: "react-docgen",
+    reactDocgen: false,
   },
 
   docs: {},
+
+  webpackFinal: async (config) => {
+    const customConfig = require("./webpack.config.js");
+    return customConfig({ config });
+  },
 };
 
 function getAbsolutePath(value) {

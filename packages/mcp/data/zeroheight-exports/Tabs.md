@@ -190,8 +190,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ## Code
 
 ## Tabs Component
@@ -273,8 +271,6 @@ Overall, include a counter when necessary to indicate the number of items on tha
 
 | **Default + Underline** | **Hover** | **Active** | **Disabled** |
 | ----------------------- | --------- | ---------- | ------------ |
-
-
 
 **Tabs**
 
@@ -403,8 +399,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ## Code
 
 ## Tabs Component
@@ -419,8 +413,6 @@ These rules establish how much margin should exist between and around elements.
 ### Tabs 
 
 Storybook
-
-
 
 ---
 
@@ -523,8 +515,6 @@ Include a counter when necessary to indicate the number of items on that Tab's s
 **Large_Underline_Count_Disabled**
 
 ---
-
-
 
 ### Small Tabs
 

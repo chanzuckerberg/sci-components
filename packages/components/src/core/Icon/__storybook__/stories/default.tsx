@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawIcon from "src/core/Icon";
 
 export const Icon = (props: Args): JSX.Element => {

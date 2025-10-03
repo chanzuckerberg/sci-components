@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Dialog } from "./stories/default";
 import { DIALOG_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -37,9 +36,6 @@ export default {
     },
   },
   component: Dialog,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Dialog",
 } as Meta;
 

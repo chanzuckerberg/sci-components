@@ -36,8 +36,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Small Search Input
 
 Used in napari hub for searching within plugin Filter Dropdown Menus when there are more menu items than can be viewed without scrolling.
@@ -77,8 +75,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ## Code
 
 ## Field Input Components
@@ -93,5 +89,3 @@ These rules establish how much margin should exist between and around elements.
 ### InputSearch
 
 Storybook
-
-

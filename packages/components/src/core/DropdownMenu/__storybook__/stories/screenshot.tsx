@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import Tag from "src/core/Tag";
 import { DROPDOWN_MENU_LIVE_PREVIEW_LABELS } from "../constants";
 import { DropdownMenu } from "./default";

@@ -1,12 +1,8 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-webpack5";
 import { Menu } from "./stories/default";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 export default {
   component: Menu,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Dropdowns/Menu",
 } as Meta;
 
