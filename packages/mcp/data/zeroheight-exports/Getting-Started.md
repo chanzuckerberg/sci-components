@@ -89,8 +89,6 @@ npm i czifui
 yarn add czifui
 ```
 
-
-
 SDS currently uses Material UI v5
 
 czifui installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
@@ -482,8 +480,6 @@ export const Tag = styled.div`
 `;
 ```
 
-
-
 4. **CSS & SCSS Variables** - Variables for the `defaultTheme` to use if your app doesn't support `@emotion/styled`
 
 ```css
@@ -548,8 +544,6 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
   </EmotionThemeProvider>
 </StylesProvider>;
 ```
-
-
 
 3. If you need to override the default SDS theme, please follow the instructions here.
 

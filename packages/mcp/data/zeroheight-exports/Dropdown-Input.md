@@ -42,10 +42,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
-
-
 ## Code
 
 ## Dropdown Input Component
@@ -60,8 +56,6 @@ These rules establish how much margin should exist between and around elements.
 ### InputDropdown
 
 Storybook
-
-
 
 ---
 
@@ -928,8 +922,6 @@ These rules establish how much margin should exist between and around elements.
 **Dropdown Input spacing**
 
 ---
-
-
 
 ## Code
 

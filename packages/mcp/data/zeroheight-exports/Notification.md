@@ -56,8 +56,6 @@ A Minimal Button can be added to the Notification if additional action from the 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Notification/Notification**
 
 ---
@@ -135,8 +133,6 @@ Each intent is demonstrated below using the Persistent Notification for referenc
 
 Storybook
 
-
-
 ---
 
 Notifications appear outside of the flow of the page to highlight information to the user whether in response to an action they have completed or to bring their attention to important details.
@@ -185,8 +181,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Dismissible Notification
 
 Use when communicating information that is manually dismissible by the user and does not need to remain persistent on the screen. It can be set to automatically dismiss after a designated period of time using the `autoDismiss` prop; when set to `true`, the automatic dismissal will occur after 8 milliseconds by default, but can be set to a custom length of time by entering a millisecond value into the prop.
@@ -194,8 +188,6 @@ Use when communicating information that is manually dismissible by the user and 
 A Minimal Button can be added to the Notification if additional action from the user is possible or necessary. Relevant components such as Tables (documentation coming soon) or Charts (documentation coming soon), or additional text can be included in the content module block as necessary.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-
 
 **Default**
 
@@ -271,8 +263,6 @@ Each intent is demonstrated below using the Persistent Notification for referenc
 ### Notification
 
 Storybook
-
-
 
 ---
 

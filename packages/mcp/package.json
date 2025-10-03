@@ -1,7 +1,7 @@
 {
   "name": "@czi-sds/mcp",
   "description": "The official MCP server for SDS",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "dist/stdio.js",
   "files": [
     "dist",
@@ -23,7 +23,7 @@
     "generate:components-list": "tsx scripts/generate-component-list.ts",
     "generate:component-props": "tsx scripts/generate-component-props.ts",
     "generate:zeroheight-export": "tsx scripts/export-zeroheight-pages.ts",
-    "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props && yarn generate:zeroheight-export",
+    "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props",
     "prebuild": "yarn generate:all",
     "build": "yarn prebuild && tsup && chmod 755 dist/stdio.js",
     "dev": "tsup --watch",

@@ -26,7 +26,13 @@ An additional block of text can be added in addition to the Callout's title if m
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Default**
 
+---
+
+---
+
+**Default + Child Node (alert text)**
 
 **Default**
 
@@ -68,7 +74,7 @@ Additional content, whether more text or relevant components, can be included in
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default (collapsed) + Child Node (content module)**
 
 **Default (collapsed) + Child Node (content module)**
 
@@ -145,8 +151,6 @@ Each intent is demonstrated below using the Persistent Callout for reference. Re
 
 Storybook
 
-
-
 ---
 
 Callouts are used within the flow of the page to highlight information to the user whether in response to an action they have completed or to bring their attention to important details.
@@ -175,7 +179,7 @@ An additional block of text can be added in addition to the Callout's title if m
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default**
 
 **Default**
 
@@ -187,7 +191,11 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
+---
 
+**Default + Child Node (alert text)**
+
+---
 
 ### Dismissible Callout
 
@@ -219,7 +227,7 @@ Additional content, whether more text or relevant components, can be included in
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default (collapsed) + Child Node (content module)**
 
 **Default (collapsed) + Child Node (content module)**
 

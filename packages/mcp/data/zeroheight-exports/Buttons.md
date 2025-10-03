@@ -155,8 +155,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 These rules establish how much margin should exist between and around elements.
 
-
-
 **Copy Button spacing**
 
 ---
@@ -242,8 +240,6 @@ Click on each state below to enter inspect view and get details on its code attr
 ### Icon Button Spacing
 
 These rules establish how much margin should exist between and around elements.
-
-
 
 **Icon Button spacing**
 
@@ -362,10 +358,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
-
-
 ### Secondary Rounded Button
 
 Use for a secondary action, or deemphasized Button. Often paired with primary Button.
@@ -411,8 +403,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Button**
 
 ---
-
-
 
 ### Error Rounded Button
 
@@ -679,8 +669,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Button**
 
 ---
-
-
 
 ### Secondary Minimal Button
 
@@ -973,8 +961,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Secondary Rounded Dropdown Button
 
 Use for Header-level Actions with multiple result options (generally in same context as Icon Buttons).
@@ -1013,8 +999,6 @@ These rules establish how much margin should exist between and around elements.
 ---
 
 ---
-
-
 
 ## Square Dropdown Button
 
@@ -1203,8 +1187,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Button**
 
 ---
-
-
 
 ### Secondary Rounded Button
 
@@ -1518,8 +1500,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Secondary Minimal Button
 
 Use for a deemphasized action or when paired with a Primary Minimal Button
@@ -1546,8 +1526,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **Button**
 
 ---
-
-
 
 ---
 
@@ -1602,8 +1580,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **ButtonIcon**
 
 ---
-
-
 
 ### Small Primary Icon Button
 
@@ -1814,8 +1790,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **ButtonDropdown**
 
 ---
-
-
 
 ### Secondary Rounded Dropdown Button
 

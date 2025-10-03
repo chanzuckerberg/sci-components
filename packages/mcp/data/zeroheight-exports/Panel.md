@@ -19,8 +19,6 @@ Panels are comprised of containers within which other elements are placed. Use t
 
 The example below shows where in CZ GEN EPI the Basic Panel is used.
 
-
-
 **Basic Panel_left**
 
 ---
@@ -101,8 +99,6 @@ Although Overlay Panels can be designed to contain a wide range of elements, the
 
 ---
 
-
-
 ### Overlay Panel Examples
 
 The examples below show where in CZ ID the Overlay Panel is currently being used.
@@ -128,13 +124,9 @@ The examples below show where in CZ ID the Overlay Panel is currently being used
 
 ### PanelBasic (coming soon)
 
-
-
 ---
 
 ### PanelOverlay (coming soon)
-
-
 
 ---
 

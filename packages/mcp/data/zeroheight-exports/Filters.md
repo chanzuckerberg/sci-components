@@ -139,8 +139,6 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 
 ---
 
-
-
 ### Filter Example
 
 The example below shows Complex Filters being used as part of a Basic Panel in CZ GEN EPI.
@@ -234,8 +232,6 @@ The example below shows Simple Filters being used as part of a Basic Panel in CZ
 
 ---
 
-
-
 ---
 
 ### Simple Filter Spacing
@@ -301,8 +297,6 @@ The Dropdown Menu that is activated when the Filter Label is clicked displays th
 **Range**
 
 ---
-
-
 
 ### Complex Filter Example
 

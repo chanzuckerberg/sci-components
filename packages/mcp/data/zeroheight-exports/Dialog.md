@@ -110,7 +110,7 @@ Persistent Dialogs are generally used in multi-step workflows where dismissing t
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default (1 button)**
 
 **Default (1 button)**
 
@@ -200,7 +200,9 @@ Nested Dialogs should only be used in specific scenarios, most notably when a us
 
 Avoid using nested dialogs when possible because it introduces layers of complexity to pages and may make it more difficult for users to anticipate the results of their actions. It may also impede usability by making it more difficult for users to quickly exit a flow. Instead, explore utilizing a multi-step Dialog workflow (see below).
 
+**Nested Dialogs (CZ GE)**
 
+---
 
 **Nested Dialogs (CZ GE)**
 
@@ -278,7 +280,7 @@ Persistent Dialogs are generally used in multi-step workflows where dismissing t
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
+**Default (1 button)**
 
 **Default (1 button)**
 
@@ -342,7 +344,9 @@ Click on each state below to enter inspect view and get details on its code attr
 
 In instances where the length of content contained in the Dialog results in the Dialog filling the entire height of the screen, there must be a minimum of `spaceXxl` margin above and below the Dialog window. The Dialog content scrolls when it exceeds the max-height of the dialog window; title, overline, subtitle, and any action Buttons are anchored to the top and bottom during scrolling.
 
+**Dialog Spacing (CZ ID)**
 
+---
 
 **Dialog Spacing (CZ ID)**
 
@@ -370,7 +374,9 @@ Nested Dialogs should only be used in specific scenarios, most notably when a us
 
 Avoid using nested dialogs when possible because it introduces layers of complexity to pages and may make it more difficult for users to anticipate the results of their actions. It may also impede usability by making it more difficult for users to quickly exit a flow. Instead, explore utilizing a multi-step Dialog workflow (see below).
 
+**Nested Dialogs (SDS + CZ ID)**
 
+---
 
 **Nested Dialogs (SDS + CZ ID)**
 
@@ -400,8 +406,6 @@ The Dialog should not be dismissible and the `canOutsideClickClose` prop should 
 ### Dialog
 
 Storybook
-
-
 
 ---
 

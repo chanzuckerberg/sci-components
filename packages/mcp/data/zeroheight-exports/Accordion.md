@@ -11,7 +11,13 @@ Accordions are elements that can be used by designers to hide or reveal content.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
+**Accordion**
 
+---
+
+---
+
+**Accordion**
 
 **Accordion**
 
@@ -101,8 +107,6 @@ These rules establish how much margin should exist between and around elements.
 ### Accordion
 
 Storybook
-
-
 
 ---
 

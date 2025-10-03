@@ -24,7 +24,7 @@ If additional context or information is needed beyond the space available on the
 
 When the information being communicated on the Banner is intended to remain persistent on the screen and is not manually dismissible by the user, use a persistent Banner. To allow the user to manually dismiss the Banner, use a dismissible Banner.
 
-
+**Default (Persistent)**
 
 **Default (Persistent)**
 
