@@ -14,7 +14,6 @@ import {
 } from "src/core/styles";
 import { iconMap } from "src/core/Icon/map";
 import InputSearch from "src/core/InputSearch";
-import { Args } from "@storybook/types";
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {
