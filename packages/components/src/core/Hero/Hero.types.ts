@@ -2,6 +2,7 @@
 import { ReactNode } from "react";
 
 export interface HeroProps {
+  className?: string;
   heroHeight?: string;
   children?: ReactNode;
   overlayContainerMinMargin?: {
@@ -49,12 +50,13 @@ export interface HeroProps {
         medium: string;
         large: string;
       };
+  backgroundFill?: string | ReactNode;
 }
 
 export const HeroMargins = {
-  SMALL: 24,
-  MEDIUM: 40,
-  LARGE: 120,
+  SMALL: "24px",
+  MEDIUM: "40px",
+  LARGE: "120px",
 } as const;
 
 export const textAlignmentMapping = {

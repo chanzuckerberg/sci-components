@@ -19,28 +19,35 @@ import {
   textAlignmentMapping,
 } from "./Hero.types";
 
-const doNotForwardProps = ["heroHeight", "overlayContainerMinMargin"];
+const doNotForwardProps = [
+  "heroHeight",
+  "overlayContainerMinMargin",
+  "backgroundFillColor",
+  "overlayContentPosition",
+];
 
 interface StyledHeroProps extends HeroProps, CommonThemeProps {
   heroHeight?: string;
+  backgroundFillColor?: string;
 }
 
 const getResponsivePadding = (props: StyledHeroProps) => {
   const { overlayContainerMinMargin } = props;
   const spaces = getSpaces(props);
+  const breakpoints = getBreakpoints(props);
 
   return css`
     padding: ${spaces?.xxl}px
-      ${overlayContainerMinMargin?.small || HeroMargins.SMALL}px;
+      ${overlayContainerMinMargin?.small || HeroMargins.SMALL};
 
-    @media (min-width: 768px) {
+    ${breakpoints?.up("md")} {
       padding: ${spaces?.xxl}px
-        ${overlayContainerMinMargin?.medium || HeroMargins.MEDIUM}px;
+        ${overlayContainerMinMargin?.medium || HeroMargins.MEDIUM};
     }
 
-    @media (min-width: 1200px) {
+    ${breakpoints?.up("lg")} {
       padding: ${spaces?.xxl}px
-        ${overlayContainerMinMargin?.large || HeroMargins.LARGE}px;
+        ${overlayContainerMinMargin?.large || HeroMargins.LARGE};
     }
   `;
 };
@@ -50,7 +57,11 @@ export const StyledHeroContainer = styled("section", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: StyledHeroProps) => {
-    const { heroHeight = "fit-content", overlayContentPosition } = props;
+    const {
+      heroHeight = "fit-content",
+      overlayContentPosition,
+      backgroundFillColor,
+    } = props;
     const breakpoints = getBreakpoints(props);
 
     return css`
@@ -67,12 +78,31 @@ export const StyledHeroContainer = styled("section", {
       justify-content: ${overlayContentPosition
         ? overlayContentPositionJustifyMapping[overlayContentPosition]
         : "center"};
+      ${backgroundFillColor ? `background-color: ${backgroundFillColor};` : ""}
 
       ${breakpoints?.down("md")} {
         height: fit-content;
       }
     `;
   }}
+`;
+
+export const BackgroundFillContainer = styled("div")`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const OverlayContent = styled("div")`
@@ -154,7 +184,7 @@ export const ContentSlot = styled("div")`
 
 export const DarkeningMask = styled("div")`
   ${(props: StyledHeroProps) => {
-    const { darkeningMaskColor = "#000", darkeningMaskOpacity = 0 } = props;
+    const { darkeningMaskColor = "#000000", darkeningMaskOpacity = 0 } = props;
 
     return css`
       position: absolute;
@@ -174,7 +204,7 @@ export const DemoContentSlot = styled("div")`
     const semanticColors = getSemanticColors(props);
 
     return css`
-      color: ${semanticColors?.base?.textPrimary};
+      color: ${semanticColors?.base?.textSecondary};
       border: 1px dashed ${semanticColors?.base?.borderSecondary};
       display: flex;
       justify-content: center;

@@ -157,7 +157,7 @@ export const InputDropdown = <
       ) : (
         <RawInputDropdown
           disabled={disabled}
-          label={<span style={{ color: "red" }}>Label</span>}
+          label={storybookLabel}
           onClick={handleClick}
           state={open ? "open" : "default"}
           sdsStyle={sdsStyle}

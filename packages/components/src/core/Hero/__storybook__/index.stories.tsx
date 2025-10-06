@@ -1,89 +1,34 @@
 import { Args, Meta } from "@storybook/react-webpack5";
 import { Hero } from "./stories/default";
 import {
+  HERO_BACKGROUND_FILL_LABELS,
+  HERO_BACKGROUND_FILL_OPTIONS,
   HERO_EXCLUDED_CONTROLS,
   HERO_OVERLAY_MEDIA_LABELS,
   HERO_OVERLAY_MEDIA_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { ResponsiveDemo } from "./stories/responsive";
+import { FullFeaturedDemo } from "./stories/fullFeatured";
 
 export default {
   argTypes: {
-    heroHeight: {
+    backgroundFill: {
       control: {
-        type: "text",
-      },
-      description: "The height of the hero container",
-    },
-    maxWidth: {
-      control: {
+        labels: HERO_BACKGROUND_FILL_LABELS,
         type: "select",
       },
-      options: ["small", "medium", "large"],
-      description: "Controls the maximum width of the hero container",
-    },
-    useContainerMargin: {
-      control: {
-        type: "boolean",
+      mapping: HERO_BACKGROUND_FILL_OPTIONS,
+      options: Object.keys(HERO_BACKGROUND_FILL_OPTIONS),
+      table: {
+        type: { summary: "ReactNode" },
       },
-      description: "Whether to apply responsive container margins",
-    },
-    headerText: {
-      control: {
-        type: "text",
-      },
-      description:
-        "The main header text displayed prominently in the hero section",
+      description: "The background fill of the hero",
     },
     captionText: {
       control: {
         type: "text",
       },
       description: "Optional caption text that appears below the header",
-    },
-    headerFontSize: {
-      control: {
-        type: "select",
-      },
-      options: ["s", "m", "l"],
-      description: "The font size of the header text",
-    },
-    textAlignment: {
-      control: {
-        type: "select",
-      },
-      options: ["left", "center", "right"],
-      description: "The text alignment of the header text",
-    },
-    hasInvertTextColor: {
-      control: {
-        type: "boolean",
-      },
-      description: "Whether to invert the text color",
-    },
-    overlayContentWidth: {
-      control: {
-        type: "text",
-      },
-      description: "The width of the overlay content",
-    },
-    overlayContentPosition: {
-      control: {
-        type: "select",
-      },
-      options: [
-        "top-left",
-        "top",
-        "top-right",
-        "left",
-        "center",
-        "right",
-        "bottom-left",
-        "bottom",
-        "bottom-right",
-      ],
-      description: "The position of the overlay content",
     },
     darkeningMask: {
       control: {
@@ -110,6 +55,62 @@ export default {
         type: "boolean",
       },
       description: "Whether to display the darkening vignette",
+    },
+    hasInvertTextColor: {
+      control: {
+        type: "boolean",
+      },
+      description: "Whether to invert the text color",
+    },
+    headerFontSize: {
+      control: {
+        type: "select",
+      },
+      options: ["s", "m", "l"],
+      description: "The font size of the header text",
+    },
+    headerText: {
+      control: {
+        type: "text",
+      },
+      description:
+        "The main header text displayed prominently in the hero section",
+    },
+    heroHeight: {
+      control: {
+        type: "text",
+      },
+      description: "The height of the hero container",
+    },
+    overlayContainerMinMargin: {
+      control: {
+        type: "object",
+      },
+      description:
+        "The margin of the hero container, supports an object with small, medium, and large values",
+    },
+    overlayContentWidth: {
+      control: {
+        type: "text",
+      },
+      description: "The width of the overlay content",
+    },
+    overlayContentPosition: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "top-left",
+        "top",
+        "top-right",
+        "left",
+        "center",
+        "right",
+        "bottom-left",
+        "bottom",
+        "bottom-right",
+      ],
+      description: "The position of the overlay content",
     },
     overlayMedia: {
       control: {
@@ -159,7 +160,15 @@ export default {
       description:
         "The margin of the overlay media, supports a single string or an object with small, medium, and large values",
     },
+    textAlignment: {
+      control: {
+        type: "select",
+      },
+      options: ["left", "center", "right"],
+      description: "The text alignment of the header text",
+    },
   },
+  tags: ["beta"],
   component: Hero,
   title: "Components/Hero",
 } as Meta;
@@ -168,93 +177,66 @@ export default {
 
 export const Default = {
   args: {
-    maxWidth: "large",
-    useContainerMargin: true,
     headerText: "Header Text",
     captionText:
       "Caption text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    darkeningMask: true,
+    darkeningMaskColor: "#000000",
+    darkeningMaskOpacity: 0,
+    darkeningVignette: false,
+    overlayMediaMargin: {
+      small: "0px",
+      medium: "0px",
+      large: "0px",
+    },
+    overlayContainerMinMargin: {
+      small: "24px",
+      medium: "40px",
+      large: "120px",
+    },
   },
   parameters: {
     layout: "fullscreen",
   },
 };
 
-// Responsive Behavior
+// With Children
 
-export const ResponsiveBehavior = {
+export const FullFeatured = {
+  args: {
+    backgroundFill: HERO_BACKGROUND_FILL_OPTIONS[4],
+    darkeningMask: true,
+    darkeningMaskColor: "#000000",
+    darkeningMaskOpacity: 0.5,
+    darkeningVignette: true,
+    overlayMediaMargin: {
+      small: "24px",
+      medium: "40px",
+      large: "120px",
+    },
+    hasInvertTextColor: true,
+    headerFontSize: "l",
+    headerText: "Header Text",
+    heroHeight: "400px",
+    overlayContainerMinMargin: {
+      small: "24px",
+      medium: "40px",
+      large: "120px",
+    },
+    captionText:
+      "Caption text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    overlayContentWidth: "50%",
+    overlayContentPosition: "left",
+    textAlignment: "left",
+    overlayMedia: HERO_OVERLAY_MEDIA_OPTIONS[1],
+    overlayMediaPosition: "right",
+    overlayMediaMaxHeight: "200px",
+    overlayMediaMaxWidth: "400px",
+  },
   parameters: {
-    controls: {
-      exclude: HERO_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
+    layout: "fullscreen",
   },
-  render: (args: Args) => <ResponsiveDemo {...args} />,
-};
-
-// Without Caption
-
-export const WithoutCaption = {
-  args: {
-    maxWidth: "large",
-    useContainerMargin: true,
-    headerText: "Header Text Only",
-  },
-};
-
-// No Container Margins
-
-export const NoContainerMargins = {
-  args: {
-    maxWidth: "large",
-    useContainerMargin: false,
-    headerText: "Full Width Hero",
-    captionText:
-      "This hero extends to the full width without container margins.",
-  },
-};
-
-// Small Width
-
-export const SmallWidth = {
-  args: {
-    maxWidth: "small",
-    useContainerMargin: true,
-    headerText: "Compact Hero",
-    captionText: "A more compact hero design for focused layouts.",
-  },
-};
-
-// Background Fill with Color
-
-export const BackgroundFillColor = {
-  args: {
-    maxWidth: "large",
-    useContainerMargin: true,
-    headerText: "Hero with Color Background",
-    captionText:
-      "This hero uses a color background fill instead of the default background color.",
-    backgroundFill: "#4f46e5",
-    height: "400px",
-  },
-};
-
-// Background Fill with Image
-
-export const BackgroundFillImage = {
-  args: {
-    maxWidth: "large",
-    useContainerMargin: true,
-    headerText: "Hero with Image Background",
-    captionText:
-      "This hero uses an image background that stretches to cover the entire component.",
-    backgroundFill: {
-      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      alt: "Mountain landscape background",
-    },
-    height: "500px",
-  },
+  render: (args: Args) => <FullFeaturedDemo {...args} />,
 };
 
 // Test
@@ -267,6 +249,7 @@ export const Test = {
     snapshot: {
       skip: true,
     },
+    layout: "fullscreen",
   },
   render: (args: Args) => <TestDemo {...args} />,
 };

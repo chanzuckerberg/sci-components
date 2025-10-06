@@ -1,5 +1,6 @@
-import React from "react";
+import React, { isValidElement } from "react";
 import {
+  BackgroundFillContainer,
   ContentSlot,
   DarkeningMask,
   DarkeningVignette,
@@ -25,19 +26,36 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
     overlayContentWidth,
     textAlignment,
     darkeningMask,
-    darkeningMaskColor,
-    darkeningMaskOpacity,
+    darkeningMaskColor = "#000000",
+    darkeningMaskOpacity = 0,
     darkeningVignette,
     overlayMedia,
     overlayMediaPosition,
     overlayMediaMaxHeight,
     overlayMediaMaxWidth,
     overlayMediaMargin,
+    backgroundFill,
     ...rest
   } = props;
 
+  // Determine if backgroundFill is a color string or a React node
+  const isBackgroundFillColorString =
+    typeof backgroundFill === "string" && !isValidElement(backgroundFill);
+  const isBackgroundFillReactNode = isValidElement(backgroundFill);
+
   return (
-    <StyledHeroContainer ref={ref} heroHeight={heroHeight} {...rest}>
+    <StyledHeroContainer
+      ref={ref}
+      heroHeight={heroHeight}
+      backgroundFillColor={
+        isBackgroundFillColorString ? backgroundFill : undefined
+      }
+      {...rest}
+    >
+      {isBackgroundFillReactNode && (
+        <BackgroundFillContainer>{backgroundFill}</BackgroundFillContainer>
+      )}
+
       {darkeningMask && (
         <DarkeningMask
           darkeningMaskColor={darkeningMaskColor}
