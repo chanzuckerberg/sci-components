@@ -1,18 +1,15 @@
 import { Args, Meta } from "@storybook/react-webpack5";
 import { Hero } from "./stories/default";
-import { HERO_EXCLUDED_CONTROLS } from "./constants";
+import {
+  HERO_EXCLUDED_CONTROLS,
+  HERO_OVERLAY_MEDIA_LABELS,
+  HERO_OVERLAY_MEDIA_OPTIONS,
+} from "./constants";
 import { TestDemo } from "./stories/test";
 import { ResponsiveDemo } from "./stories/responsive";
 
 export default {
   argTypes: {
-    backgroundFill: {
-      control: {
-        type: "text",
-      },
-      description:
-        "Background fill that can be either a color string or an image object",
-    },
     heroHeight: {
       control: {
         type: "text",
@@ -44,6 +41,123 @@ export default {
         type: "text",
       },
       description: "Optional caption text that appears below the header",
+    },
+    headerFontSize: {
+      control: {
+        type: "select",
+      },
+      options: ["s", "m", "l"],
+      description: "The font size of the header text",
+    },
+    textAlignment: {
+      control: {
+        type: "select",
+      },
+      options: ["left", "center", "right"],
+      description: "The text alignment of the header text",
+    },
+    hasInvertTextColor: {
+      control: {
+        type: "boolean",
+      },
+      description: "Whether to invert the text color",
+    },
+    overlayContentWidth: {
+      control: {
+        type: "text",
+      },
+      description: "The width of the overlay content",
+    },
+    overlayContentPosition: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "top-left",
+        "top",
+        "top-right",
+        "left",
+        "center",
+        "right",
+        "bottom-left",
+        "bottom",
+        "bottom-right",
+      ],
+      description: "The position of the overlay content",
+    },
+    darkeningMask: {
+      control: {
+        type: "boolean",
+      },
+      description: "Whether to display the darkening mask",
+    },
+    darkeningMaskColor: {
+      control: {
+        type: "color",
+        defaultValue: "#000",
+      },
+      description: "The color of the darkening mask",
+    },
+    darkeningMaskOpacity: {
+      control: {
+        type: "number",
+        defaultValue: 0,
+      },
+      description: "The opacity of the darkening mask",
+    },
+    darkeningVignette: {
+      control: {
+        type: "boolean",
+      },
+      description: "Whether to display the darkening vignette",
+    },
+    overlayMedia: {
+      control: {
+        labels: HERO_OVERLAY_MEDIA_LABELS,
+        type: "select",
+      },
+      description: "The Overlay Media",
+      mapping: HERO_OVERLAY_MEDIA_OPTIONS,
+      options: Object.keys(HERO_OVERLAY_MEDIA_OPTIONS),
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
+    overlayMediaPosition: {
+      control: {
+        type: "select",
+      },
+      options: [
+        "top-left",
+        "top",
+        "top-right",
+        "left",
+        "center",
+        "right",
+        "bottom-left",
+        "bottom",
+        "bottom-right",
+      ],
+      description: "The position of the overlay media",
+    },
+    overlayMediaMaxHeight: {
+      control: {
+        type: "text",
+      },
+      description: "The maximum height of the overlay media",
+    },
+    overlayMediaMaxWidth: {
+      control: {
+        type: "text",
+      },
+      description: "The maximum width of the overlay media",
+    },
+    overlayMediaMargin: {
+      control: {
+        type: "object",
+      },
+      description:
+        "The margin of the overlay media, supports a single string or an object with small, medium, and large values",
     },
   },
   component: Hero,
