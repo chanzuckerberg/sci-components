@@ -9,7 +9,7 @@ export const HERO_OVERLAY_MEDIA_LABELS = ["None", "Image", "Video"];
 
 export const HERO_OVERLAY_MEDIA_OPTIONS = [
   null,
-  <img src="https://picsum.photos/1000" alt="Hero Overlay Media" key="image" />,
+  <img src="https://picsum.photos/1000" alt="Decorative overlay" key="image" />,
   <video
     src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     key="video"
@@ -17,6 +17,7 @@ export const HERO_OVERLAY_MEDIA_OPTIONS = [
     muted
     loop
     playsInline
+    aria-label="Decorative overlay video"
   />,
 ];
 
@@ -34,7 +35,7 @@ export const HERO_BACKGROUND_FILL_OPTIONS = [
   "rgb(178, 150, 242)",
   <img
     src="https://picsum.photos/2000"
-    alt="Hero Background Fill"
+    alt="Decorative background"
     key="image"
   />,
   <video
@@ -44,5 +45,6 @@ export const HERO_BACKGROUND_FILL_OPTIONS = [
     muted
     loop
     playsInline
+    aria-label="Decorative background video"
   />,
 ];

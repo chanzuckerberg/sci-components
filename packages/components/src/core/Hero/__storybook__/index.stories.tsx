@@ -204,7 +204,7 @@ export const Default = {
 
 export const FullFeatured = {
   args: {
-    backgroundFill: HERO_BACKGROUND_FILL_OPTIONS[4],
+    backgroundFill: HERO_BACKGROUND_FILL_OPTIONS[3],
     darkeningMask: true,
     darkeningMaskColor: "#000000",
     darkeningMaskOpacity: 0.5,
@@ -235,6 +235,9 @@ export const FullFeatured = {
   },
   parameters: {
     layout: "fullscreen",
+    snapshot: {
+      skip: true,
+    },
   },
   render: (args: Args) => <FullFeaturedDemo {...args} />,
 };
