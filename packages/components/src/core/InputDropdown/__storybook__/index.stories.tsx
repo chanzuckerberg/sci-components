@@ -59,7 +59,7 @@ export default {
     },
     width: {
       control: {
-        type: "number",
+        type: "text",
       },
     },
   },
