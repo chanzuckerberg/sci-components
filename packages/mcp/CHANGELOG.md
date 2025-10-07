@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.5.3...@czi-sds/mcp@0.5.4) (2025-10-07)
+
+### Bug Fixes
+
+- **navigationheader:** fixes nav header dropdowns position ([#1019](https://github.com/chanzuckerberg/sci-components/issues/1019)) ([c586982](https://github.com/chanzuckerberg/sci-components/commit/c586982ff7603244feca13df212a1aa88dac4a42))
+- **storybook:** upgrade to Storybook v9 ([#1011](https://github.com/chanzuckerberg/sci-components/issues/1011)) ([949f132](https://github.com/chanzuckerberg/sci-components/commit/949f13293332f9be2f8c8492018c163c701ae552))
+
 ## [0.5.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.5.2...@czi-sds/mcp@0.5.3) (2025-10-02)
 
 **Note:** Version bump only for package @czi-sds/mcp
