@@ -23,8 +23,6 @@ Search is a flexible way for users to find data of interest or filter down their
 
 Search results are displayed on the current page by filtering down the visible content within the searchable area(s) to show matches only. This search is the most common pattern; it is used both at the component and the page levels.
 
-
-
 **napari hub + org_On-page Results flow_Overview**
 
 ---
@@ -46,8 +44,6 @@ For example, if the search will display results for a list of plugins (1), posit
 Search is initiated when the user clicks a button, hits “enter”, or completes some other user action.
 
 This method is recommended when search results must be fetched from the backend, or when the user needs to set up other specifications before initiating the search.
-
-
 
 #### **3.** Results Displayed in Searched Content Area
 
@@ -95,8 +91,6 @@ That being said, for the On-page Results flow, keep in mind:
 
 Search results are displayed on a different page than where the search was originally initiated. Depending on the use case, this may be a unique “Results” page, or an existing page where the data is usually located. The Results Page flow is often combined with the On-page Results flow. Learn more about Combining Search Types.
 
-
-
 **napari hub + org_Results Page flow_Overview**
 
 ---
@@ -109,8 +103,6 @@ It is recommended to position Search Inputs at the top level of the content the 
 
 For example, if the search will display results from across the whole site (1), position the Search Input in a top-level navigation or outside of the page content hierarchy (2).
 
-
-
 **Results Page – 1**
 
 ---
@@ -120,8 +112,6 @@ For example, if the search will display results from across the whole site (1), 
 Search is initiated when the user clicks a button (1), hits “enter” (2), or some other user action.
 
 Because results will be displayed on a new page, Live Search is not recommended.
-
-
 
 **Results Page – 2**
 
@@ -135,8 +125,6 @@ The results page format depends on the product's use case and content. In the ex
 
 If there are no results, it is recommended to display a bank state on the results page.
 
-
-
 **Results Page – 3**
 
 ---
@@ -148,8 +136,6 @@ Depending on the product and the user’s workflow, they may take a number of ne
 - Refine search results (1). It is recommended to use the On-Page Results flow type; see Combining Flow Types.
 - Interact with results, like drilling down into a single result (2) .
 - Filter or Sort Results.
-
-
 
 **Results Page – 4**
 
@@ -280,8 +266,6 @@ If there are no results, it is recommended that a “No Results” blank state i
 **On-page Results – 3**
 
 ---
-
-
 
 **4. User Takes Action on Results**
 
@@ -507,8 +491,6 @@ The following behaviors are recommended for displaying search results within a D
 **Search within Dropdown Menu behavior**
 
 ---
-
-
 
 ## Other Considerations
 

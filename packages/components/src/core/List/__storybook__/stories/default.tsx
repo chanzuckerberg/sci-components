@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawList from "src/core/List";
 import ListSubheader from "src/core/List/components/ListSubheader";
 import ListItem from "src/core/List/components/ListItem";

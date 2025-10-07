@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   TOOLTIP_TABLE_DATA,
   TOOLTIP_TABLE_EXCLUDED_CONTROLS,
@@ -23,9 +22,6 @@ export default {
     },
   },
   component: TooltipTableContent,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/TooltipTable",
 } as Meta;
 

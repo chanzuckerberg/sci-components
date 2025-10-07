@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputText } from "./stories/default";
 import { INPUT_TEXT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -32,9 +31,6 @@ export default {
     },
   },
   component: InputText,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputText",
 } as Meta;
 

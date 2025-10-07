@@ -1,12 +1,11 @@
 import { CheckCircleOutline } from "@mui/icons-material";
 import { Snackbar, Button as MUIButton } from "@mui/material";
 import styled from "@emotion/styled";
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import React from "react";
 import Button from "src/core/Button";
 import { defaultTheme } from "src/core/styles/common/defaultTheme";
 import Alert from "../index";
-import { BADGE } from "src/common/storybook/storybookBadges";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";
 
@@ -30,7 +29,7 @@ const Demo = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
             The <strong>Alert</strong> component is deprecated!
@@ -39,9 +38,7 @@ const Demo = (props: Args): JSX.Element => {
             instead.
           </>
         }
-      >
-        The <strong>Alert</strong> component is deprecated!
-      </Callout>
+      />
       <Alert icon={<CheckCircleOutline />} onClose={() => {}} {...props}>
         {text}
       </Alert>
@@ -57,10 +54,8 @@ export default {
     },
   },
   component: Demo,
-  parameters: {
-    badges: [BADGE.DEPRECATED],
-  },
-  title: "Deprecated/Alert [deprecated]",
+  tags: ["deprecated"],
+  title: "Deprecated/Alert",
 } as Meta;
 
 const ExcludedControls = ["text"];
@@ -90,7 +85,7 @@ export const SnackbarAlert = () => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
             The <strong>Alert</strong> component is deprecated!
@@ -99,9 +94,7 @@ export const SnackbarAlert = () => {
             instead.
           </>
         }
-      >
-        The <strong>Alert</strong> component is deprecated!
-      </Callout>
+      />
       <Button sdsType="primary" sdsStyle="square" onClick={handleOpen}>
         Open alert
       </Button>

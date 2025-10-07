@@ -1,5 +1,5 @@
 import { RadioGroup } from "@mui/material";
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import CellBasic from "src/core/CellBasic";
 import CellComponent from "src/core/CellComponent";
 import CellHeader from "src/core/CellHeader";

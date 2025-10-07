@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationJumpTo } from "./stories/default";
 import {
   NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE,
@@ -29,9 +28,6 @@ export default {
     },
   },
   component: NavigationJumpTo,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/NavigationJumpTo",
 } as Meta;
 

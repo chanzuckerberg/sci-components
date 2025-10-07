@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Args } from "@storybook/react-webpack5";
 import { FC, useState } from "react";
 import Callout from "src/core/Callout";
 import RawIcon, { IconNameToSizes, SdsIconWithColor } from "src/core/Icon";
@@ -13,7 +14,6 @@ import {
 } from "src/core/styles";
 import { iconMap } from "src/core/Icon/map";
 import InputSearch from "src/core/InputSearch";
-import { Args } from "@storybook/types";
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {

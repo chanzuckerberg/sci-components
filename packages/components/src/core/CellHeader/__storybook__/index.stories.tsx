@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { CELL_HEADER_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import { CellHeader } from "./stories/default";
@@ -37,9 +36,6 @@ export default {
     },
   },
   component: CellHeader,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Table/CellHeader",
 } as Meta;
 

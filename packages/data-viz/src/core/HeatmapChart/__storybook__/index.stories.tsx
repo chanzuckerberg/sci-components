@@ -1,9 +1,8 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   HEATMAP_AXIS_POINTER_OPTIONS,
   HEATMAP_TOOLTIP_OPTIONS,
 } from "./constants";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import App from "./stories/heatmapDemo/App";
 import { Provider } from "react-redux";
 import { store } from "./stories/heatmapDemo/store";
@@ -52,8 +51,8 @@ export default {
     },
   },
   component: HeatmapChart,
+  tags: ["beta"],
   parameters: {
-    badges: [BADGE.BETA],
     chromatic: {
       disableSnapshot: true,
     },
@@ -61,7 +60,7 @@ export default {
       skip: true,
     },
   },
-  title: "Data Viz/HeatmapChart [beta]",
+  title: "Data Viz/HeatmapChart",
 } as Meta;
 
 // Default

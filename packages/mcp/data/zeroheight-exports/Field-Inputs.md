@@ -39,8 +39,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Rounded Search Input Intent States
 
 The `intent` prop is used to communicate the response state of the user's search inquiry.
@@ -76,8 +74,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ---
 
 ## Square Search Input
@@ -107,8 +103,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **InputSearch**
 
 ---
-
-
 
 ### Square Search Input Intent States
 
@@ -140,8 +134,6 @@ Use `intent: warning` to communicate when a user needs to be alerted that their 
 ### Square Search Input Spacing
 
 These rules establish how much margin should exist between and around elements.
-
-
 
 **Square Search Input spacing**
 
@@ -179,8 +171,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Text Area Input
 
 The Text Area Input is meant to fit multiple lines of text and should be used when there is the potential that the user will want or need to input more than a single line's worth of content.
@@ -209,8 +199,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **InputText**
 
 ---
-
-
 
 ### Text Input Intent States
 
@@ -323,8 +311,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Rounded Search Input Intent States
 
 The `intent` prop is used to communicate the response state of the user's search inquiry.
@@ -389,8 +375,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **InputSearch**
 
 ---
-
-
 
 ### Square Search Input Intent States
 
@@ -459,8 +443,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Text Area Input
 
 The Text Area Input is meant to fit multiple lines of text and should be used when there is the potential that the user will want or need to input more than a single line's worth of content.
@@ -489,8 +471,6 @@ Click on each state below to enter inspect view and get details on its code attr
 **InputText**
 
 ---
-
-
 
 ### Text Input Intent States
 

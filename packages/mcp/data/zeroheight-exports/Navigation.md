@@ -32,8 +32,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ## Code
 
 ## Jump-to Navigation Component
@@ -48,8 +46,6 @@ These rules establish how much margin should exist between and around elements.
 ### NavigationJumpTo
 
 Default
-
-
 
 ---
 
@@ -82,8 +78,6 @@ Use a positive pixel value in the `offset` prop to adjust where on the page the 
 ### Jump-to Navigation Spacing
 
 These rules establish how much margin should exist between and around elements.
-
-
 
 **Jump-to Navigation spacing**
 

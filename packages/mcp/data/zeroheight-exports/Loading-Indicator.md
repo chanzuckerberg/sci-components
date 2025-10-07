@@ -25,8 +25,6 @@ These rules establish how much margin should exist between and around elements.
 
 ---
 
-
-
 ## Code
 
 ## Loading Indicator Component
@@ -41,5 +39,3 @@ These rules establish how much margin should exist between and around elements.
 ### LoadingIndicator
 
 Storybook
-
-

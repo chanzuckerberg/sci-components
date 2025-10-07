@@ -118,8 +118,6 @@ Once the user confirms their selection, the system will begin generating their d
 
 The example flow below shows the asynchronous download of multiple data files.
 
-
-
 **CZ ID_Multiple Files, Asynchronous Download flow**
 
 ---
@@ -141,8 +139,6 @@ The example flow below shows the asynchronous download of multiple data files.
 **4. Downloads View**
 
 ---
-
-
 
 ---
 

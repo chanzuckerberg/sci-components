@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { noop } from "src/common/utils";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";

@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import RawInputSearch from "src/core/InputSearch";
 
 export const InputSearch = (props: Args): JSX.Element => {

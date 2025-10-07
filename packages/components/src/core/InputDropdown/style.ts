@@ -52,7 +52,7 @@ export interface InputDropdownProps
   value?: ReactNode;
   shouldTruncateMinimalDetails?: boolean;
   shouldPutAColonAfterLabel?: boolean;
-  width?: number;
+  width?: string;
   className?: string;
   // (masoudmanson): This is a temporary fix for the issue where the style prop
   // is not correctly passed to the underlying Button component when asserting as
@@ -78,7 +78,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     cursor: pointer;
     padding: ${spaces?.xs}px ${spaces?.m}px;
     justify-content: start;
-    width: ${width}px;
+    width: ${/^\d+$/.test(width) ? `${width}px` : width};
     min-width: 90px !important;
 
     &.MuiButton-text {
@@ -500,7 +500,7 @@ export const LabelWrapper = styled("span", {
     align-items: center;
     display: inline-flex;
     justify-content: start;
-    width: calc(100% - 24px); /* 24px is the width of the icon */
+    width: 100%;
     overflow: hidden;
   }
 `;

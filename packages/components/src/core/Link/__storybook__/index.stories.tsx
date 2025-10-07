@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Link } from "./stories/default";
 import { LINK_EXCLUDED_CONTROLS } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";
@@ -23,10 +22,8 @@ export default {
     },
   },
   component: Link,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
-  title: "Components/Link",
+  tags: ["deprecated"],
+  title: "Deprecated/Link",
 } as Meta;
 
 // Default

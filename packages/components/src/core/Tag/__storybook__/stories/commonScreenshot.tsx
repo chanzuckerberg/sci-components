@@ -1,4 +1,4 @@
-import { Args } from "@storybook/types";
+import { Args } from "@storybook/react-webpack5";
 import React from "react";
 import RawTag from "src/core/Tag";
 import { ExtraTagProps } from "src/core/Tag/style";

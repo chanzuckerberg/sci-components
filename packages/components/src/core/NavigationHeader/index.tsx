@@ -45,6 +45,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const {
       activePrimaryNavKey = "",
       buttons,
+      menuProps = {
+        disableScrollLock: true,
+        disablePortal: true,
+      },
       hasInvertedStyle,
       logo,
       logoUrl,
@@ -188,6 +192,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             onChange={setActivePrimaryNavKey}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
+            menuProps={menuProps}
           />
         )
       );
@@ -201,6 +206,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             items={secondaryNavItems}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
+            menuProps={menuProps}
           />
         )
       );
