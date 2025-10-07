@@ -5,6 +5,10 @@
         "type": "ReactNode",
         "isRequired": false
       },
+      "menuProps": {
+        "type": "Partial<MenuProps>",
+        "isRequired": false
+      },
       "hasInvertedStyle": {
         "type": "\"false\" | \"true\"",
         "isRequired": false

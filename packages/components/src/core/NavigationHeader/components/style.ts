@@ -76,7 +76,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
         top: 0;
         color: ${getTextColor()};
         background-color: ${getBackgroundColor()};
-        padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.s}px;
+        padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.xs}px;
         margin-bottom: 0;
       }
     `;
