@@ -1,0 +1,18 @@
+{
+  "NavigationJumpTo": {
+    "props": {
+      "items": {
+        "type": "Item[]",
+        "isRequired": true
+      },
+      "offsetTop": {
+        "type": "number",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"string\" | \"number\" | \"string & {}\"",
+        "isRequired": false
+      }
+    }
+  }
+}

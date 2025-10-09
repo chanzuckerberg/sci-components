@@ -1,16 +1,10 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputSlider } from "./stories/default";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { INPUT_SLIDER_EXCLUDED_CONTROLS } from "./constants";
 
 export default {
   argTypes: {
-    defaultValue: {
-      control: {
-        type: "number",
-      },
-    },
     disabled: {
       control: { type: "boolean" },
     },
@@ -50,7 +44,6 @@ export default {
         "label",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Inputs/InputSlider",
 } as Meta;
@@ -58,6 +51,20 @@ export default {
 // Default
 
 export const Default = {
+  args: {
+    defaultValue: 75,
+    disabled: false,
+    marks: true,
+    max: 100,
+    min: 0,
+    step: 5,
+    valueLabelDisplay: "on",
+  },
+};
+
+// Range Slider
+
+export const RangeSlider = {
   args: {
     defaultValue: [15, 85],
     disabled: false,

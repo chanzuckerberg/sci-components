@@ -3,6 +3,7 @@ import { Card, CardContent } from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyS,
+  getCorners,
   getSemanticColors,
   getShadows,
   getSpaces,
@@ -48,9 +49,12 @@ export const StyledCard = styled(Card, {
       decorativeBorder = false,
       imagePadding = false,
       visualElementType,
+      clickableCard = false,
     } = props;
 
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+    const shadows = getShadows(props);
 
     const flexDirection =
       sdsType === "wide" && visualElementType === "image"
@@ -71,11 +75,17 @@ export const StyledCard = styled(Card, {
       background-color: transparent;
       background-image: none;
       flex-direction: ${flexDirection};
+      overflow: auto;
       box-shadow: none;
-      overflow: visible;
+      border-radius: ${corners?.xl}px;
 
       .MuiCardActionArea-focusHighlight {
         background: transparent;
+      }
+
+      &:hover,
+      &:active {
+        box-shadow: ${clickableCard ? shadows?.l : shadows?.none} !important;
       }
 
       ${boundingBox &&
@@ -117,7 +127,6 @@ export const StyledCardActionArea = styled(Button, {
     } = props;
 
     const semanticColors = getSemanticColors(props);
-    const shadows = getShadows(props);
 
     const flexDirection =
       cardSdsType === "wide"
@@ -133,6 +142,7 @@ export const StyledCardActionArea = styled(Button, {
       flex-direction: ${flexDirection};
       align-items: unset;
       height: 100%;
+      width: 100%;
       padding: 0;
       margin: 0;
       overflow: auto;
@@ -143,7 +153,6 @@ export const StyledCardActionArea = styled(Button, {
       &:hover,
       &:active {
         background-color: ${semanticColors?.base?.surface};
-        box-shadow: ${shadows?.l} !important;
       }
     `;
   }}

@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawButton from "src/core/Button";
 import {
   BUTTON_DISABLED_OPTIONS,
@@ -136,7 +136,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 sdsStyle={sdsStyle}
                 type={type}
                 icon={
-                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="s" />
+                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="xs" />
                 }
                 key={String(icon)}
               />
@@ -145,7 +145,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                 sdsStyle={sdsStyle}
                 type={type}
                 icon={
-                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="l" />
+                  <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="s" />
                 }
                 key={String(icon)}
               />

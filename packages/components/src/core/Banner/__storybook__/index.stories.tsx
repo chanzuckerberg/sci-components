@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,
@@ -28,13 +27,17 @@ export default {
       mapping: BANNER_ICON_OPTIONS,
       options: Object.keys(BANNER_ICON_OPTIONS),
     },
+    intent: {
+      control: { type: "inline-radio" },
+      options: ["info", "negative", "positive", "notice"],
+    },
     sdsIconProps: {
       control: {
         type: "object",
       },
     },
     sdsType: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["primary", "secondary"],
       required: true,
     },
@@ -48,7 +51,6 @@ export default {
     axe: {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Banner",
 } as Meta<Args>;
@@ -59,6 +61,7 @@ export const Default = {
   args: {
     dismissed: false,
     dismissible: true,
+    intent: "info",
     sdsType: "primary",
     textChild: BANNER_TEXT,
   },
@@ -69,6 +72,7 @@ export const Default = {
 export const Test = {
   args: {
     dismissible: true,
+    intent: "info",
     sdsType: "primary",
     textChild: "test text",
   },

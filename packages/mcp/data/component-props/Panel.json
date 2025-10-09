@@ -1,0 +1,22 @@
+{
+  "Panel": {
+    "props": {
+      "isBackdropClickEnabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "position": {
+        "type": "\"bottom\" | \"left\" | \"right\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"overlay\" | \"basic\"",
+        "isRequired": true
+      },
+      "width": {
+        "type": "\"string\" | \"number\"",
+        "isRequired": false
+      }
+    }
+  }
+}

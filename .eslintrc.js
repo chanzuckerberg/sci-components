@@ -35,6 +35,16 @@ module.exports = {
         "prettier/prettier": "off",
       },
     },
+    {
+      files: ["**/*.cjs"],
+      parserOptions: {
+        sourceType: "script",
+      },
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -111,15 +121,15 @@ module.exports = {
     "react/require-default-props": "off",
     // (thuang): We use nested template literals in @emotion extensively
     "sonarjs/no-nested-template-literals": "off",
-    "sort-keys": [
-      "error",
-      "asc",
-      {
-        caseSensitive: true,
-        minKeys: 2,
-        natural: false,
-      },
-    ],
+    // "sort-keys": [
+    //   "error",
+    //   "asc",
+    //   {
+    //     caseSensitive: true,
+    //     minKeys: 2,
+    //     natural: false,
+    //   },
+    // ],
   },
   settings: {
     react: {

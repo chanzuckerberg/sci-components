@@ -1,4 +1,4 @@
-import { ButtonProps, LinkProps, AppBarProps } from "@mui/material";
+import { ButtonProps, LinkProps, AppBarProps, MenuProps } from "@mui/material";
 import { ReactNode, ElementType } from "react";
 import { SdsProps, SdsIconButtonProps } from "../Button";
 import { InputSearchProps } from "../InputSearch";
@@ -27,6 +27,7 @@ export interface NavigationHeaderProps<T extends string = string>
   title: string;
   drawerOpen?: boolean;
   setDrawerOpen?: (open: boolean) => void;
+  menuProps?: Partial<MenuProps>;
 }
 
 export type IconButtonProps = SdsIconButtonProps & { children?: string };

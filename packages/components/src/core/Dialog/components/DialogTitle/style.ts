@@ -1,61 +1,89 @@
 import { DialogTitle, Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import {
-  CommonThemeProps as DialogTitleExtraProps,
+  CommonThemeProps,
   fontBodyS,
   fontBodyXs,
+  fontBodyXxs,
+  fontHeaderL,
   fontHeaderXl,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
 
-export type { DialogTitleExtraProps };
+export interface DialogTitleExtraProps extends CommonThemeProps {
+  sdsSize: "xs" | "s" | "m" | "l";
+}
 
-export const StyledDialogTitle = styled(DialogTitle)`
+const doNotForwardProps = ["sdsSize"];
+
+export const StyledDialogTitle = styled(DialogTitle, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
   padding: 0;
   ${(props: DialogTitleExtraProps) => {
+    const { sdsSize } = props;
+    const isSmall = sdsSize === "xs" || sdsSize === "s";
+
     const spaces = getSpaces(props);
 
     return `
-      margin-bottom: ${spaces?.xl || 0}px;
+      margin-bottom: ${isSmall ? spaces?.l : spaces?.xl}px;
     `;
   }}
 `;
 
-export const Title = styled(Typography)`
-  ${fontHeaderXl}
+export const Title = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: DialogTitleExtraProps) => {
+    const { sdsSize } = props;
+    const isSmall = sdsSize === "xs" || sdsSize === "s";
 
-  ${(props) => {
     const semanticColors = getSemanticColors(props);
 
-    return `
-      color: ${semanticColors?.base?.textPrimary};
-    `;
+    return [
+      isSmall ? fontHeaderL(props) : fontHeaderXl(props),
+      `color: ${semanticColors?.base?.textPrimary};`,
+    ];
   }}
 `;
 
-export const Subtitle = styled(Typography)`
-  ${fontBodyXs}
+export const Subtitle = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: DialogTitleExtraProps) => {
+    const { sdsSize } = props;
+    const isSmall = sdsSize === "xs" || sdsSize === "s";
 
-  ${(props) => {
     const semanticColors = getSemanticColors(props);
 
-    return `
-      color: ${semanticColors?.base?.textSecondary};
-    `;
+    return [
+      isSmall ? fontBodyXxs(props) : fontBodyXs(props),
+      `
+        color: ${semanticColors?.base?.textSecondary};
+        padding-top: 0px;
+      `,
+    ];
   }}
 `;
 
-export const Overline = styled(Typography)`
-  ${fontBodyS}
+export const Overline = styled(Typography, {
+  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+})`
+  ${(props: DialogTitleExtraProps) => {
+    const { sdsSize } = props;
+    const isSmall = sdsSize === "xs" || sdsSize === "s";
 
-  ${(props) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
-    return `
-      color: ${semanticColors?.base?.textSecondary};
-      padding-bottom: ${spaces?.xxxs}px;
-    `;
+    return [
+      isSmall ? fontBodyXs(props) : fontBodyS(props),
+      `
+        color: ${semanticColors?.base?.textSecondary};
+        padding-bottom: ${spaces?.xxxs}px;
+      `,
+    ];
   }}
 `;

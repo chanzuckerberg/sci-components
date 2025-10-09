@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { Tabs } from "./stories/default";
 import { TABS_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -28,7 +27,6 @@ export default {
   },
   component: Tabs,
   parameters: {
-    badges: [BADGE.STABLE],
     // tab indicator bug known by MUI where width for indicator updates once font is loaded in.
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194

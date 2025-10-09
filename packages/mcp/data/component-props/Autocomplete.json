@@ -1,0 +1,34 @@
+{
+  "Autocomplete": {
+    "props": {
+      "groupBy": {
+        "type": "any",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "any",
+        "isRequired": false
+      },
+      "keepSearchOnSelect": {
+        "type": "any",
+        "isRequired": false
+      },
+      "label": {
+        "type": "any",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "any",
+        "isRequired": false
+      },
+      "onChange": {
+        "type": "FormEventHandler<HTMLDivElement>",
+        "isRequired": false
+      },
+      "options": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "Tooltip": {
+    "props": {
+      "arrowOffset": {
+        "type": "number",
+        "isRequired": false
+      },
+      "componentSlot": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "hasInvertedStyle": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "placement": {
+        "type": "complex",
+        "isRequired": false,
+        "description": "Tooltip placement.",
+        "defaultValue": "bottom"
+      },
+      "textAlign": {
+        "type": "\"left\" | \"right\" | \"center\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Tooltip title. Zero-length titles string, undefined, null and false are never displayed."
+      },
+      "width": {
+        "type": "\"default\" | \"wide\"",
+        "isRequired": false
+      }
+    }
+  }
+}

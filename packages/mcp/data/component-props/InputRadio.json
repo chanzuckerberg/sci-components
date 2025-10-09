@@ -1,0 +1,27 @@
+{
+  "InputRadio": {
+    "props": {
+      "caption": {
+        "type": "string",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled."
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "stage": {
+        "type": "\"checked\" | \"unchecked\"",
+        "isRequired": false
+      }
+    }
+  }
+}

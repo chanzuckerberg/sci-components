@@ -1,0 +1,20 @@
+{
+  "MenuSelect": {
+    "props": {
+      "keepSearchOnSelect": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
+        "defaultValue": false
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

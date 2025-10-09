@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { CellBasic } from "./stories/default";
 import {
   CELL_BASIC_EXCLUDED_CONTROLS,
@@ -11,7 +11,6 @@ import {
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -136,7 +135,6 @@ export default {
   },
   component: CellBasic,
   parameters: {
-    badges: [BADGE.STABLE],
     controls: {
       expanded: true,
     },

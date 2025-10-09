@@ -1,0 +1,30 @@
+{
+  "Accordion": {
+    "props": {
+      "defaultExpanded": {
+        "type": "any",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false
+      },
+      "togglePosition": {
+        "type": "any",
+        "isRequired": false
+      },
+      "useDivider": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  },
+  "AccordionHeader": {
+    "props": {
+      "subtitle": {
+        "type": "string",
+        "isRequired": false
+      }
+    }
+  }
+}

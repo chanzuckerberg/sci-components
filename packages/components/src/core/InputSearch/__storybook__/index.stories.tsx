@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { INPUT_SEARCH_EXCLUDED_CONTROLS } from "./constants";
 import { InputSearch } from "./stories/default";
 import { TestDemo } from "./stories/test";
@@ -14,7 +13,7 @@ export default {
       required: true,
     },
     intent: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["default", "negative", "notice", "positive"],
     },
     label: {
@@ -25,14 +24,11 @@ export default {
       control: { type: "text" },
     },
     sdsStyle: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["rounded", "square"],
     },
   },
   component: InputSearch,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputSearch",
 } as Meta;
 

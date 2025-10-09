@@ -1,0 +1,82 @@
+{
+  "ContentCard": {
+    "props": {
+      "boundingBox": {
+        "type": "any",
+        "isRequired": false
+      },
+      "buttons": {
+        "type": "any",
+        "isRequired": false
+      },
+      "buttonsPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "classes": {
+        "type": "{ cardActions?: string; }",
+        "isRequired": false
+      },
+      "clickableCard": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "clickableCardProps": {
+        "type": "any",
+        "isRequired": false
+      },
+      "decorativeBorder": {
+        "type": "any",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "image": {
+        "type": "any",
+        "isRequired": false
+      },
+      "imagePadding": {
+        "type": "any",
+        "isRequired": false
+      },
+      "imagePosition": {
+        "type": "any",
+        "isRequired": false
+      },
+      "imageSize": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "any",
+        "isRequired": false
+      },
+      "visualElementType": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  },
+  "ContentCardTitle": {
+    "props": {
+      "metadataText": {
+        "type": "BaseContentCardProps",
+        "isRequired": true
+      },
+      "overlineText": {
+        "type": "BaseContentCardProps",
+        "isRequired": true
+      },
+      "subtitleText": {
+        "type": "BaseContentCardProps",
+        "isRequired": true
+      },
+      "titleText": {
+        "type": "BaseContentCardProps",
+        "isRequired": true
+      }
+    }
+  }
+}

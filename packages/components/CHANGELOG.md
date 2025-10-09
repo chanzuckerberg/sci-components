@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.13.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.0...@czi-sds/components@22.13.1) (2025-10-07)
+
+### Bug Fixes
+
+- **inputdropdown:** fix label ([#1017](https://github.com/chanzuckerberg/sci-components/issues/1017)) ([b786962](https://github.com/chanzuckerberg/sci-components/commit/b7869626a9c628f8b32dc4ea1d4862b784bf8847))
+- **navigationheader:** fixes nav header dropdowns position ([#1019](https://github.com/chanzuckerberg/sci-components/issues/1019)) ([c586982](https://github.com/chanzuckerberg/sci-components/commit/c586982ff7603244feca13df212a1aa88dac4a42))
+- **storybook:** upgrade to Storybook v9 ([#1011](https://github.com/chanzuckerberg/sci-components/issues/1011)) ([949f132](https://github.com/chanzuckerberg/sci-components/commit/949f13293332f9be2f8c8492018c163c701ae552))
+
+# [22.13.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.12.0...@czi-sds/components@22.13.0) (2025-10-02)
+
+### Features
+
+- **icons:** new icons ([#1014](https://github.com/chanzuckerberg/sci-components/issues/1014)) ([f2ad5dd](https://github.com/chanzuckerberg/sci-components/commit/f2ad5dd8e131ae5537f98569761fa1b91e639708))
+
+# [22.12.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.4...@czi-sds/components@22.12.0) (2025-09-29)
+
+### Features
+
+- Add sparkle icon ([#1012](https://github.com/chanzuckerberg/sci-components/issues/1012)) ([72ac6d2](https://github.com/chanzuckerberg/sci-components/commit/72ac6d28759a1312491f8ac8b3664fbc75fbfe2a))
+
+## [22.11.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.3...@czi-sds/components@22.11.4) (2025-08-21)
+
+**Note:** Version bump only for package @czi-sds/components
+
+## [22.11.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.2...@czi-sds/components@22.11.3) (2025-08-19)
+
+### Bug Fixes
+
+- Fix content card styles ([#993](https://github.com/chanzuckerberg/sci-components/issues/993)) ([d595b5d](https://github.com/chanzuckerberg/sci-components/commit/d595b5d783a4b17f713956c9bbbdef5fd0bb6a01))
+
+## [22.11.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.1...@czi-sds/components@22.11.2) (2025-08-19)
+
+### Bug Fixes
+
+- **contentcard:** fixed Clickable ContentCard hover styles ([#991](https://github.com/chanzuckerberg/sci-components/issues/991)) ([76c9333](https://github.com/chanzuckerberg/sci-components/commit/76c9333ce5a4fa6fdd66e703d76b953e40fdfe98))
+
+## [22.11.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.11.0...@czi-sds/components@22.11.1) (2025-08-18)
+
+### Bug Fixes
+
+- **inputdropdown:** fix props forwarding ([#989](https://github.com/chanzuckerberg/sci-components/issues/989)) ([e0ad0cf](https://github.com/chanzuckerberg/sci-components/commit/e0ad0cf00c3ba8a2994b89afe013df684228d4c2))
+
+# [22.11.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.10.1...@czi-sds/components@22.11.0) (2025-08-18)
+
+### Features
+
+- implement SDS polish changes ([#985](https://github.com/chanzuckerberg/sci-components/issues/985)) ([6fd0caf](https://github.com/chanzuckerberg/sci-components/commit/6fd0caf01a8aae38a7dd0a4ec8dae20be649e9f0)), closes [#6c6c6](https://github.com/chanzuckerberg/sci-components/issues/6c6c6) [#7a7a7](https://github.com/chanzuckerberg/sci-components/issues/7a7a7)
+- SDS MCP Server ([#987](https://github.com/chanzuckerberg/sci-components/issues/987)) ([414d0a9](https://github.com/chanzuckerberg/sci-components/commit/414d0a9c69c07517b903e5e9cbd5f6c16a632401))
+
 ## [22.10.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.10.0...@czi-sds/components@22.10.1) (2025-07-29)
 
 ### Bug Fixes

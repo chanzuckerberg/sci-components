@@ -1,0 +1,18 @@
+{
+  "Link": {
+    "props": {
+      "fontWeight": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

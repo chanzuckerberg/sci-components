@@ -13,17 +13,17 @@ import {
   getIconSizes,
   getShadows,
   getSpaces,
-  getTypography,
+  fontBodyMediumS,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;
   togglePosition?: "right" | "left";
-  id: string;
+  chevronSize?: "xs" | "s" | "l" | "xl";
 }
 
-const sdsPropNames = ["useDivider", "togglePosition"];
+const sdsPropNames = ["useDivider", "togglePosition", "chevronSize"];
 
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop) => {
@@ -34,7 +34,6 @@ export const StyledAccordion = styled(Accordion, {
     const { useDivider, togglePosition } = props;
 
     const shadows = getShadows(props);
-    const typography = getTypography(props);
     const borders = getBorders(props);
     const spaces = getSpaces(props);
 
@@ -43,13 +42,15 @@ export const StyledAccordion = styled(Accordion, {
         background-color: transparent;
         background-image: none;
         box-shadow: ${shadows?.none};
-        font-family: ${typography?.fontFamily?.body};
         border-bottom: ${useDivider ? borders?.base?.divider : "none"};
         height: fit-content;
+        padding: ${spaces?.s}px;
 
         & .${accordionSummaryClasses.root} {
+          ${fontBodyMediumS(props)}
           ${focusVisibleA11yStyle(props)}
-          min-height: 44px;
+          padding: 0;
+          min-height: unset;
 
           &.${accordionSummaryClasses.focusVisible} {
             background-color: unset;
@@ -63,14 +64,12 @@ export const StyledAccordion = styled(Accordion, {
           & .${accordionSummaryClasses.expandIconWrapper} {
             padding: 0;
             align-self: flex-start;
-            margin-top: ${spaces?.xxxs}px;
           }
         }
 
         .${accordionDetailsClasses.root} {
           ${fontBodyXs(props)}
-          padding: ${spaces?.m}px;
-          padding-top: ${spaces?.xxs}px;
+          padding: ${spaces?.l}px 0 0 0;
         }
 
         &:before {
@@ -95,6 +94,7 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
     &.${accordionClasses.root} {
       & .${accordionSummaryClasses.root} {
         flex-direction: row-reverse;
+        padding: 0;
 
         .${accordionSummaryClasses.content} {
           padding-left: ${spaces?.s}px;
@@ -104,7 +104,6 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
           margin: 0;
           transform: rotate(-90deg);
           align-self: flex-start;
-          margin-top: ${spaces?.xxxs}px;
 
           &.${accordionSummaryClasses.expanded} {
             transform: rotate(0deg);
@@ -114,14 +113,12 @@ const leftPosition = (props: AccordionExtraProps): SerializedStyles => {
 
       /** This is to adjust the padding of the AccordionDetails when the togglePosition is left
         * The padding-left is the sum of the
-        * left padding of the AccordionButton = spaces?.m
+        * left padding of the AccordionButton = spaces?.s
         * the width of the expandIcon = iconSizes?.xs.width
         * and the left padding of the AccordionSummary = spaces?.s 
         */
       & .${accordionDetailsClasses.root} {
-        padding-left: ${(spaces?.m ?? 12) +
-        (iconSizes?.xs.width ?? 12) +
-        (spaces?.s ?? 8)}px;
+        padding-left: ${(spaces?.s ?? 8) + (iconSizes?.xs.width ?? 12)}px;
       }
     }
   `;

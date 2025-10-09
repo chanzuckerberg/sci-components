@@ -1,16 +1,16 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   AUTOCOMPLETE_DATA_OPTIONS,
   AUTOCOMPLETE_EXCLUDED_CONTROLS,
   AUTOCOMPLETE_GROUP_BY_OPTIONS,
   AUTOCOMPLETE_LABEL,
+  AUTOCOMPLETE_ON_CHANGE_OPTIONS,
 } from "./constants";
 import { Autocomplete } from "./stories/default";
-import { AutocompleteSingleColumnDemo } from "./stories/singleColumn";
-import { AutocompleteMultiColumnDemo } from "./stories/multiColumn";
 import { TestDemo } from "./stories/test";
 import { ControlledOpenDemo } from "./stories/controlledOpen";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
 
 export default {
   argTypes: {
@@ -35,6 +35,14 @@ export default {
     multiple: {
       control: { type: "boolean" },
     },
+    onChange: {
+      control: {
+        labels: ["Noop", "console.log(value)"],
+        type: "select",
+      },
+      mapping: AUTOCOMPLETE_ON_CHANGE_OPTIONS,
+      options: Object.keys(AUTOCOMPLETE_ON_CHANGE_OPTIONS),
+    },
     options: {
       control: {
         labels: ["One Column", "Two Columns", "Three Columns"],
@@ -58,11 +66,11 @@ export default {
         "aria-required-children",
         "aria-required-parent",
         "button-name",
+        "color-contrast",
         "list",
         "listitem",
       ],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Dropdowns/Autocomplete",
 } as Meta;
@@ -75,6 +83,7 @@ export const Default = {
     keepSearchOnSelect: true,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
     search: true,
   },
   parameters: {
@@ -92,6 +101,8 @@ export const SingleColumn = {
     keepSearchOnSelect: false,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
+    options: AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
     search: true,
   },
   parameters: {
@@ -102,7 +113,6 @@ export const SingleColumn = {
       skip: true,
     },
   },
-  render: (args: Args) => <AutocompleteSingleColumnDemo {...args} />,
 };
 
 // Multi Column Autocomplete
@@ -113,6 +123,8 @@ export const MultiColumn = {
     keepSearchOnSelect: false,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
+    options: AUTOCOMPLETE_MULTI_COLUMN_OPTIONS,
     search: true,
   },
   parameters: {
@@ -123,7 +135,6 @@ export const MultiColumn = {
       skip: true,
     },
   },
-  render: (args: Args) => <AutocompleteMultiColumnDemo {...args} />,
 };
 
 // Controlled Open
@@ -139,7 +150,10 @@ export const ControlledOpen = {
   },
   parameters: {
     controls: {
-      exclude: ["search"],
+      exclude: AUTOCOMPLETE_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
     },
   },
   render: (args: Args) => <ControlledOpenDemo {...args} />,

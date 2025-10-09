@@ -1,0 +1,10 @@
+{
+  "LoadingIndicator": {
+    "props": {
+      "sdsStyle": {
+        "type": "\"minimal\" | \"tag\"",
+        "isRequired": true
+      }
+    }
+  }
+}

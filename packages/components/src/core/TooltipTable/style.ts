@@ -1,8 +1,8 @@
-import { TableCell } from "@mui/material";
+import { TableCell, TableContainer } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyXs,
+  fontBodyMediumXs,
   fontBodyXxs,
   fontCapsXxxxs,
   fontTabularXs,
@@ -44,6 +44,14 @@ interface SectionProps extends CommonThemeProps {
   label?: string;
 }
 
+export const StyledTableContainer = styled(TableContainer, {
+  shouldForwardProp: (prop) => {
+    return !sdsPropNames.includes(prop.toString());
+  },
+})`
+  min-width: 224px;
+`;
+
 export const Section = styled("div")`
   ${disabledStyle}
 
@@ -60,6 +68,14 @@ export const Section = styled("div")`
       &:not(:first-of-type) {
         padding-top: ${spaces?.m}px;
       }
+
+      .MuiTable-root {
+        .MuiTableRow-root:not(:last-of-type) {
+          .MuiTableCell-root {
+            padding-bottom: ${spaces?.xxs}px;
+          }
+        }
+      }
     `;
   }}
 `;
@@ -75,6 +91,7 @@ export const SectionLabel = styled("div")`
     if (!props.label) return "";
 
     return `
+      text-align: left;
       margin-bottom: ${spaces?.s}px;      
       color: ${semanticColors?.base?.textSecondary};
     `;
@@ -86,17 +103,12 @@ export const RowLabel = styled(TableCell, {
     return !sdsPropNames.includes(prop.toString());
   },
 })`
-  ${fontBodyXs}
+  ${fontBodyMediumXs}
   ${disabledStyle}
-  ${(props: SectionProps) => {
-    const spaces = getSpaces(props);
-    return `
-      padding: 0 0 ${spaces?.xxs}px 0;
-      width: 50%;
-      border-bottom: none;
-      font-weight: 600;
-    `;
-  }}
+  
+  width: 50%;
+  border-bottom: none;
+  padding: 0;
 `;
 
 export const RowValue = styled(TableCell, {

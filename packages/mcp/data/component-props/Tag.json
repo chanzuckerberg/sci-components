@@ -1,0 +1,40 @@
+{
+  "Tag": {
+    "props": {
+      "color": {
+        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false,
+        "description": "Icon element."
+      },
+      "label": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The content of the component."
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "\"s\" | \"l\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"square\" | \"rounded\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
+        "isRequired": false
+      }
+    }
+  }
+}

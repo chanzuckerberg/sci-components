@@ -1,15 +1,22 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { StyledDivider, StyledSection, StyledSectionHeader } from "../style";
-import { StyledAccordion, StyledSubItem, StyledTextItem } from "./style";
+import {
+  StyledDivider,
+  StyledLabelTextWrapper,
+  StyledLabelTextWrapperShadow,
+  StyledSection,
+  StyledSectionHeader,
+} from "../style";
+import { StyledTextItem } from "./style";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
-import { useTheme } from "@mui/material";
+import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
+import { StyledAccordion } from "../../style";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -28,22 +35,28 @@ export type NavigationHeaderSecondaryNavItem =
   | DropdownHeaderSecondaryNavItem;
 
 export interface NavigationHeaderSecondaryNavProps {
+  menuProps?: Partial<MenuProps>;
   items: NavigationHeaderSecondaryNavItem[];
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
 }
 
 export default function NavigationHeaderSecondaryNav({
+  menuProps,
   items,
   hasInvertedStyle,
   isNarrow,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
+    null
+  );
   const theme: SDSTheme = useTheme();
 
   const open = Boolean(anchorEl);
   function onClose() {
     setAnchorEl(null);
+    setActiveDropdownKey(null);
   }
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -59,35 +72,53 @@ export default function NavigationHeaderSecondaryNav({
   }, []);
 
   return (
-    <StyledSection gap="l" isNarrow={isNarrow}>
-      {items.map((item) => {
+    <StyledSection isNarrow={isNarrow}>
+      {items.map((item, index) => {
         const { itemType, label, key, ...rest } = item;
+        const labelKebabCase = label
+          ?.toString()
+          .toLowerCase()
+          .replace(" ", "-");
+        const itemKey = String(key || `${labelKebabCase}-${index}`);
+        const isDropdownOpen = open && activeDropdownKey === itemKey;
 
         if (itemType === "dropdown" && !isNarrow) {
           return (
-            <Fragment key={`${key}-${label}-dropdown`}>
+            <Fragment key={`${itemKey}-${label}-dropdown`}>
               <StyledTextItem
                 {...rest}
                 ref={buttonRef}
                 hasInvertedStyle={hasInvertedStyle}
-                open={open}
+                open={isDropdownOpen}
                 isNarrow={isNarrow}
                 sdsStyle="minimal"
                 onClick={(event) => {
                   setAnchorEl(event.currentTarget);
+                  setActiveDropdownKey(itemKey);
                   item.onClick?.(event);
                 }}
               >
-                <span>{label}</span>
+                <StyledLabelTextWrapper
+                  active={isDropdownOpen}
+                  isNarrow={isNarrow}
+                >
+                  {label}
+                </StyledLabelTextWrapper>
+                <StyledLabelTextWrapperShadow
+                  aria-hidden="true"
+                  isNarrow={isNarrow}
+                >
+                  {label}
+                </StyledLabelTextWrapperShadow>
                 <Icon
-                  sdsIcon={open ? "ChevronUp" : "ChevronDown"}
+                  sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                   sdsSize="xs"
                 />
               </StyledTextItem>
 
               <Menu
                 anchorEl={anchorEl}
-                open={open}
+                open={isDropdownOpen}
                 onClose={onClose}
                 slotProps={{
                   paper: {
@@ -104,6 +135,8 @@ export default function NavigationHeaderSecondaryNav({
                   horizontal: "left",
                   vertical: "top",
                 }}
+                {...menuProps}
+                disablePortal
               >
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);
@@ -146,6 +179,7 @@ export default function NavigationHeaderSecondaryNav({
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               sx={{ minWidth: menuWidth }}
                               {...subItemRest}
                             >
@@ -165,12 +199,11 @@ export default function NavigationHeaderSecondaryNav({
         if (itemType === "dropdown" && isNarrow) {
           return (
             <StyledAccordion
-              key={`${label}-dropdown`}
-              id={`${label}-dropdown`}
+              key={`${labelKebabCase}-dropdown`}
+              id={`${labelKebabCase}-dropdown`}
               hasInvertedStyle={hasInvertedStyle}
-              isNarrow={isNarrow}
             >
-              <AccordionHeader>{label}</AccordionHeader>
+              <AccordionHeader chevronSize="s">{label}</AccordionHeader>
               <AccordionDetails>
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);
@@ -208,16 +241,17 @@ export default function NavigationHeaderSecondaryNav({
                           } = subItem;
 
                           return (
-                            <StyledSubItem
+                            <MenuItem
                               key={`primary-nav-item-${dropdownItemLabel}`}
                               onClick={(e) => {
                                 onClick?.(e);
                                 onClose();
                               }}
+                              sdsType="action"
                               {...accordionSubItemRest}
                             >
                               {dropdownItemLabel}
-                            </StyledSubItem>
+                            </MenuItem>
                           );
                         })}
                       </Fragment>
@@ -235,7 +269,7 @@ export default function NavigationHeaderSecondaryNav({
             {...rest}
             onClick={item.onClick}
             hasInvertedStyle={hasInvertedStyle}
-            open={open}
+            open={false}
             isNarrow={isNarrow}
             sdsStyle="minimal"
           >

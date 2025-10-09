@@ -1,0 +1,26 @@
+{
+  "Pagination": {
+    "props": {
+      "pageSize": {
+        "type": "number",
+        "isRequired": true
+      },
+      "sdsStyle": {
+        "type": "\"round\" | \"square\"",
+        "isRequired": false
+      },
+      "siblingCount": {
+        "type": "number",
+        "isRequired": false
+      },
+      "totalCount": {
+        "type": "number",
+        "isRequired": true
+      },
+      "truncateDropdown": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

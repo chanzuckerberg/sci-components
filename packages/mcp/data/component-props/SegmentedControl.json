@@ -1,0 +1,10 @@
+{
+  "SegmentedControl": {
+    "props": {
+      "buttonDefinition": {
+        "type": "SingleButtonDefinition[]",
+        "isRequired": true
+      }
+    }
+  }
+}

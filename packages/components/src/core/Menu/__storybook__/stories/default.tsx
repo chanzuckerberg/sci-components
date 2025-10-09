@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import React from "react";
 import Button from "src/core/Button";
 import MenuItem from "src/core/MenuItem";

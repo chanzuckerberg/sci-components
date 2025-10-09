@@ -1,0 +1,69 @@
+{
+  "Dropdown": {
+    "props": {
+      "DropdownMenuProps": {
+        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>",
+        "isRequired": false
+      },
+      "InputDropdownProps": {
+        "type": "InputDropdownPropsType",
+        "isRequired": false
+      },
+      "buttonPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "buttons": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "closeOnBlur": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "isSearchAutoFocus": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": true
+      },
+      "multiple": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
+        "defaultValue": false
+      },
+      "onChange": {
+        "type": "(event: SyntheticEvent",
+        "isRequired": false,
+        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
+      },
+      "onClose": {
+        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void",
+        "isRequired": false,
+        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
+      },
+      "options": {
+        "type": "\"readonly T[]\" | \"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
+        "isRequired": true,
+        "description": "Array of options."
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "ReactNode",
+        "isRequired": false
+      }
+    }
+  }
+}

@@ -12,6 +12,20 @@ import {
 
 export type InputDropdownProps = SdsInputDropdownProps;
 
+const VALID_SDS_STYLES = ["minimal", "square", "rounded"] as const;
+
+const validateSdsStyle = (
+  sdsStyle: string | undefined
+): "minimal" | "square" | "rounded" => {
+  if (
+    sdsStyle &&
+    VALID_SDS_STYLES.includes(sdsStyle as (typeof VALID_SDS_STYLES)[number])
+  ) {
+    return sdsStyle as "minimal" | "square" | "rounded";
+  }
+  return "square";
+};
+
 /**
  * @see https://mui.com/material-ui/react-button/
  */
@@ -19,7 +33,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   const {
     label,
     multiple = false,
-    sdsStyle,
+    sdsStyle: rawSdsStyle = "square",
     sdsType = "label",
     details,
     counter,
@@ -27,47 +41,54 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     shouldPutAColonAfterLabel = true,
     value,
   } = props;
+  const sdsStyle = validateSdsStyle(rawSdsStyle);
 
   const isMinimal = sdsStyle === "minimal";
 
   const shouldRenderDetails = !multiple && (details || value) && !isMinimal;
   const shouldRenderInlineMinimalDetails =
-    isMinimal && sdsType === "value" && !multiple;
+    isMinimal && sdsType === "value" && !multiple && details;
   const shouldRenderMinimalDetails = isMinimal && sdsType === "label";
   const shouldRenderCounter =
     multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
   return (
-    <StyledInputDropdown {...props} aria-label="Dropdown input">
-      <LabelWrapper isMinimal={isMinimal}>
-        <StyledLabel
-          className="styled-label"
-          details={details}
-          counter={counter}
-          sdsType={sdsType}
-        >
-          {renderLabelText({
-            counter,
-            details,
-            isMinimal,
-            label,
-            multiple,
-            sdsType,
-            shouldPutAColonAfterLabel,
-            value,
-          })}
-        </StyledLabel>
-        {shouldRenderDetails && (
-          <StyledDetail>
-            {renderDetailsText({ details, sdsType, value })}
-          </StyledDetail>
-        )}
-        {shouldRenderInlineMinimalDetails && (
-          <StyledDetail>
-            {renderDetailsText({ details, sdsType, value })}
-          </StyledDetail>
-        )}
-        {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+    <StyledInputDropdown
+      {...props}
+      sdsStyle={sdsStyle}
+      aria-label="Dropdown input"
+    >
+      <LabelWrapper>
+        <div>
+          <StyledLabel
+            className="styled-label"
+            details={details}
+            counter={counter}
+            sdsType={sdsType}
+          >
+            {renderLabelText({
+              counter,
+              details,
+              isMinimal,
+              label,
+              multiple,
+              sdsType,
+              shouldPutAColonAfterLabel,
+              value,
+            })}
+          </StyledLabel>
+          {shouldRenderDetails && (
+            <StyledDetail>
+              {renderDetailsText({ details, sdsType, value })}
+            </StyledDetail>
+          )}
+          {shouldRenderInlineMinimalDetails && (
+            <StyledDetail>
+              {renderDetailsText({ details, sdsType, value })}
+            </StyledDetail>
+          )}
+          {shouldRenderCounter && <StyledCounter>{counter}</StyledCounter>}
+        </div>
         <IconWrapper>
           <Icon sdsIcon="ChevronDown" sdsSize="xs" />
         </IconWrapper>
@@ -118,7 +139,14 @@ function renderLabelTypeLabelText({
 }: RenderLabelTextProps) {
   if (isMinimal) return label;
 
-  return (counter || value) && shouldPutAColonAfterLabel ? `${label}:` : label;
+  return (counter || value) && shouldPutAColonAfterLabel ? (
+    <>
+      {label}
+      {":"}
+    </>
+  ) : (
+    label
+  );
 }
 
 function renderValueTypeLabelText({
@@ -133,14 +161,26 @@ function renderValueTypeLabelText({
   if (!value || multiple) {
     if (isMinimal) return label;
 
-    return counter && shouldPutAColonAfterLabel ? `${label}:` : label;
+    return !!counter && shouldPutAColonAfterLabel ? (
+      <>
+        {label}
+        {":"}
+      </>
+    ) : (
+      label
+    );
   }
 
   if (isMinimal) return value;
 
-  return (counter || details) && shouldPutAColonAfterLabel
-    ? `${value}:`
-    : value;
+  return (!!counter || !!details) && shouldPutAColonAfterLabel ? (
+    <>
+      {value}
+      {":"}
+    </>
+  ) : (
+    value
+  );
 }
 
 function renderDetailsText({

@@ -1,5 +1,5 @@
 import { AutocompleteValue } from "@mui/base";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { useEffect, useRef, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
@@ -36,9 +36,20 @@ export const WithHeaderComponentDemo = <
   }, []);
 
   const CustomHeaderComponent = () => (
-    <Button sdsStyle="minimal" sdsType="primary">
-      Click Me!
-    </Button>
+    <div style={{ alignItems: "center", display: "flex", gap: 8 }}>
+      <Button
+        sdsStyle="icon"
+        sdsSize="small"
+        icon="InfoCircle"
+        sdsType="tertiary"
+      />
+      <Button
+        sdsStyle="icon"
+        sdsSize="small"
+        icon="Download"
+        sdsType="tertiary"
+      />
+    </div>
   );
 
   return (

@@ -1,0 +1,23 @@
+{
+  "InputToggle": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled."
+      },
+      "offLabel": {
+        "type": "string",
+        "isRequired": false
+      },
+      "onLabel": {
+        "type": "string",
+        "isRequired": false
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false
+      }
+    }
+  }
+}

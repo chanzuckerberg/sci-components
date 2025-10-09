@@ -54,6 +54,8 @@ Common yarn scrips have been moved to the monorepo root. The -- syntax can be us
 - `yarn lint`: Runs linter
 - `yarn build`: Build the packages
 - `yarn ci`: Executes `yarn install --frozen-lockfile` in both packages
+- `yarn evaluate:code <file>`: Evaluates a single component file for SDS compliance
+- `yarn evaluate:batch <directory>`: Evaluates all .tsx/.ts files in a directory
 
 - _To execute any script in the inner package, one can simply use the command `lerna run script --scope=<package>`. For instance, to run the linter only on the sci-components package, use the command `lerna run lint --scope=@czi-sds/components`._
 
@@ -202,11 +204,11 @@ SDS provides comprehensive light/dark theme support. To use the theme system in 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
   rel="stylesheet"
 />
 ```
@@ -363,6 +365,31 @@ const theme = createTheme(appTheme);
    }
    ```
 
+## Code Evaluation
+
+We provide a comprehensive evaluation script to assess LLM-generated UI components for SDS compliance and best practices.
+
+### Quick Evaluation
+
+```bash
+# Evaluate a single component
+yarn evaluate:code ./my-component.tsx
+
+# Evaluate all components in a directory
+yarn evaluate:batch ./generated-components/
+```
+
+### What It Evaluates
+
+- ✅ **TypeScript compilation** - Ensures code compiles without errors
+- ✅ **ESLint compliance** - Checks code quality and style
+- ✅ **SDS component usage** - Verifies proper use of design system components
+- ✅ **Import statements** - Ensures SDS components are properly imported
+- ✅ **Design tokens** - Checks for consistent design token usage
+- ✅ **Accessibility** - Verifies accessibility attributes and patterns
+
+For detailed usage instructions and examples, see [scripts/README.md](scripts/README.md).
+
 ## Project status
 
 This project is under **active development**. Contributions and ideas are welcome! If you would like to contribute, check out the [contribution guidelines](docs/contribution.md) or open an issue.
@@ -372,12 +399,8 @@ This project is governed under the [Contributor Covenant](https://www.contributo
 
 Please note: If you believe you have found a security issue, please responsibly disclose by contacting us at security@chanzuckerberg.com. More information is in our [Security Readme](docs/SECURITY.md)
 
-## 2022 Plans
-
-[2022 Plans](https://docs.google.com/presentation/d/1pKAY6Wl3-EHInvOZuf0L3yEDFt2xVvMlO7ZWefQbgjA/edit?usp=sharing)
-
 ## Code of Conduct
 
 This project adheres to the Contributor Covenant [code of conduct](https://github.com/chanzuckerberg/.github/blob/master/CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code. 
+By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [opensource@chanzuckerberg.com](mailto:opensource@chanzuckerberg.com).

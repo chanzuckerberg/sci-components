@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   MENU_ITEM_EXCLUDED_CONTROLS,
   MENU_ITEM_ICON_OPTIONS,
@@ -33,9 +32,15 @@ export default {
     },
     sdsStyle: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["determinate", "indeterminate"],
+    },
+    sdsType: {
+      control: {
+        type: "inline-radio",
+      },
+      options: ["default", "action"],
     },
     selected: {
       control: { type: "boolean" },
@@ -46,7 +51,6 @@ export default {
     axe: {
       disabledRules: ["aria-required-parent"],
     },
-    badges: [BADGE.STABLE],
   },
   title: "Components/Dropdowns/MenuItem",
 } as Meta;
@@ -63,6 +67,24 @@ export const Default = {
       color: "blue",
     },
     sdsStyle: "determinate",
+    sdsType: "default",
+    selected: false,
+  },
+};
+
+// ActionType
+
+export const ActionType = {
+  args: {
+    column: "123,456",
+    disabled: false,
+    isMultiSelect: false,
+    name: "Text here",
+    sdsIconProps: {
+      color: "blue",
+    },
+    sdsStyle: "determinate",
+    sdsType: "action",
     selected: false,
   },
 };

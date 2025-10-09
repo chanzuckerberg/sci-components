@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawCellBasic from "src/core/CellBasic";
 
 export const CellBasic = (props: Args): JSX.Element => {

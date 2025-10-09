@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import React from "react";
 import RawButton from "src/core/Button";
 import Callout from "src/core/Callout";
@@ -54,12 +54,12 @@ export const InvalidSdsTypeDestructiveError = (
 
 const FinalIconSize = (sdsStyle: string, sdsSize: string) => {
   return sdsStyle === "minimal"
-    ? "s"
+    ? "xs"
     : sdsStyle === "icon"
       ? ButtonIconSizeToSdsIconSize[
           sdsSize as keyof typeof ButtonIconSizeToSdsIconSize
         ]
-      : "l";
+      : "s";
 };
 
 // eslint-disable-next-line sonarjs/cognitive-complexity

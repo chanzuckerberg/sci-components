@@ -10,12 +10,15 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
     "paths": {
       "src/*": ["src/*"]
     },
     "types": [
       "jest",
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "node"
     ]
   }
 }

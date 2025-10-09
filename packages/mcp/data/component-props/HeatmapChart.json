@@ -1,0 +1,29 @@
+{
+  "HeatmapChart": {
+    "props": {
+      "axisPointer": {
+        "type": "\"AxisPointerOption\" | \"AxisPointerOption[]\"",
+        "isRequired": false,
+        "description": "Display reference line and axis value under mouse pointer\nhttps://echarts.apache.org/en/option.html#axisPointer"
+      },
+      "camera": {
+        "type": "{ active: boolean; height: number; width: number; }",
+        "isRequired": false,
+        "description": "The `camera` prop is utilized for implementing camera view port functionality\nwithin a specific area of the chart. This feature empowers users to render\na confined portion of the heatmap. This selective rendering strategy becomes\nespecially advantageous when dealing with extensive datasets. Instead of\nrendering the entire heatmap at once, the chart dynamically loads and renders\nspecific segments as the user scrolls through the data. This approach optimizes\nperformance and enables the creation of heatmaps with large amounts of data.\n\nThe `height` and `width` properties are used to specify the dimensions of the\ncamera view port. The `active` property is used to enable or disable the camera\nview port functionality."
+      },
+      "echartsRendererMode": {
+        "type": "\"svg\" | \"canvas\"",
+        "isRequired": false
+      },
+      "symbol": {
+        "type": "\"circle\" | \"rect\" | \"roundRect\"",
+        "isRequired": false,
+        "description": "The shape of the symbol."
+      },
+      "tooltip": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

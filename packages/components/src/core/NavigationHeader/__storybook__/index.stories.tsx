@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
@@ -13,6 +13,15 @@ export default {
     buttons: {
       control: { type: "object" },
       description: "List of buttons to display in the navigation header.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
+    },
+    menuProps: {
+      control: { type: "object" },
+      description: "Props for the menu component.",
       table: {
         defaultValue: {
           summary: "-",
@@ -175,17 +184,21 @@ export default {
 export const Default = {
   args: {
     buttons: [
-      { children: "Primary", sdsType: "primary" },
+      { children: "Label", sdsType: "primary" },
       {
-        children: "Secondary",
+        children: "Label",
         sdsType: "secondary",
       },
       {
-        children: "My Profile",
+        children: "Label",
         icon: "Person",
         onClick: () => alert("clicked on my profile"),
       },
     ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
     hasInvertedStyle: false,
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
@@ -200,7 +213,7 @@ export const Default = {
         key: "2",
         label: "Primary",
         onClick: () => console.log("You clicked on a Text PrimaryNavItem!"),
-        tag: "Beta",
+        tag: "Tag",
         tagColor: "beta",
       },
       {
@@ -246,8 +259,9 @@ export const Default = {
       },
     ],
     showSearch: true,
-    tag: "Beta",
+    tag: "Tag",
     tagColor: "beta",
+    title: "Title",
   },
   parameters: {
     controls: {
@@ -272,6 +286,10 @@ export const DropdownWithSections = {
         onClick: () => alert("clicked on my profile"),
       },
     ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
     primaryNavItems: [
       {
         itemType: "text",

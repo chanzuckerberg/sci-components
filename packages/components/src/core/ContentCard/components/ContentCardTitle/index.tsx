@@ -7,7 +7,7 @@ import {
   StyledTitleWrapper,
 } from "./style";
 import { EMPTY_OBJECT } from "src/common/utils";
-import { BaseContentCardProps } from "../../ContentCard.types";
+import { BaseContentCardProps } from "src/core/ContentCard/ContentCard.types";
 
 export interface ContentCardTitleProps
   extends Pick<

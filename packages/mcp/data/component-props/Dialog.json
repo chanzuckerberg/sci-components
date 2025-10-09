@@ -1,0 +1,26 @@
+{
+  "Dialog": {
+    "props": {
+      "buttonPosition": {
+        "type": "any",
+        "isRequired": false
+      },
+      "canClickOutsideClose": {
+        "type": "any",
+        "isRequired": false
+      },
+      "longContent": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "any",
+        "isRequired": false
+      },
+      "titleOnClose": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

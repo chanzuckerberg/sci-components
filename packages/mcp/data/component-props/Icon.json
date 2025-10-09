@@ -1,0 +1,22 @@
+{
+  "Icon": {
+    "props": {
+      "color": {
+        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+        "isRequired": false
+      },
+      "sdsIcon": {
+        "type": "complex",
+        "isRequired": true
+      },
+      "sdsSize": {
+        "type": "\"xs\" | \"s\" | \"l\" | \"xl\"",
+        "isRequired": true
+      },
+      "shade": {
+        "type": "\"100\" | \"200\" | \"300\" | \"400\" | \"500\" | \"600\" | \"700\" | \"800\"",
+        "isRequired": false
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "TableRow": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "rowHeight": {
+        "type": "number",
+        "isRequired": false
+      },
+      "selected": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "TooltipProps",
+        "isRequired": false
+      },
+      "tooltipSubtitle": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "useDivider": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

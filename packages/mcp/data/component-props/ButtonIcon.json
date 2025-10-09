@@ -1,0 +1,24 @@
+{
+  "ButtonIcon": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": "false\nfalse"
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": true
+      },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"tertiary\"",
+        "isRequired": false
+      }
+    }
+  }
+}

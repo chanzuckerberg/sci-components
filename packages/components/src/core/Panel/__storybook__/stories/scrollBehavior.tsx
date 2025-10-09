@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawPanel from "src/core/Panel";
 import Button from "src/core/Button";
 import { Box, Typography } from "@mui/material";
@@ -28,10 +28,11 @@ export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
         closeButtonOnClick={() => {
           setOpen(false);
         }}
+        onClose={() => setOpen(false)}
         HeaderComponent={
           <Typography
             variant="h3"
-            sx={{ margin: "0 !important", padding: "6px 0 !important" }}
+            sx={{ margin: "0 !important", padding: "0 !important" }}
           >
             Scrollable Panel
           </Typography>

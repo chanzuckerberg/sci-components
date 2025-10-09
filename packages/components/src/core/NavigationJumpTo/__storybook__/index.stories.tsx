@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationJumpTo } from "./stories/default";
 import {
   NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE,
@@ -29,9 +28,6 @@ export default {
     },
   },
   component: NavigationJumpTo,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/NavigationJumpTo",
 } as Meta;
 
@@ -42,13 +38,26 @@ export const Default = {
     items: [
       {
         elementRef: { current: null },
-        title:
-          "A long title for this item that will wrap to the next line if the component width is not enough.",
+        subItems: [
+          { elementRef: { current: null }, title: "1.1. Subnav Item" },
+          { elementRef: { current: null }, title: "1.2. Subnav Item" },
+        ],
+        title: "1. Nav Item",
       },
-      { elementRef: { current: null }, title: "Item 2" },
-      { elementRef: { current: null }, title: "Item 3" },
-      { elementRef: { current: null }, title: "Item 4" },
-      { elementRef: { current: null }, title: "Item 5" },
+      { elementRef: { current: null }, title: "2. Nav Item" },
+      {
+        elementRef: { current: null },
+        subItems: [
+          { elementRef: { current: null }, title: "3.1. Subnav Item" },
+        ],
+        title: "3. Nav Item",
+      },
+      { elementRef: { current: null }, title: "4. Nav Item" },
+      {
+        elementRef: { current: null },
+        title:
+          "5. A long title for this item that will wrap to the next line if the component width is not enough.",
+      },
     ],
     offsetTop: 0,
     width: "200px",
@@ -86,7 +95,11 @@ export const JumpToNavDemo = {
 export const Test = {
   args: {
     items: [
-      { elementRef: { current: null }, title: "Item 1" },
+      {
+        elementRef: { current: null },
+        subItems: [{ elementRef: { current: null }, title: "Sub Item 1.1" }],
+        title: "Item 1",
+      },
       { elementRef: { current: null }, title: "Item 2" },
       { elementRef: { current: null }, title: "Item 3" },
       { elementRef: { current: null }, title: "Item 4" },

@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import ButtonToggle from "src/core/ButtonToggle";
@@ -85,6 +85,7 @@ export const Panel = (props: Args): JSX.Element => {
         sdsType={sdsType}
         open={open}
         closeButtonOnClick={() => setOpen(false)}
+        onClose={() => setOpen(false)}
         HeaderComponent={HeaderComponent}
         {...props}
       >

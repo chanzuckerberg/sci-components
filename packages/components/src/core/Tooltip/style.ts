@@ -3,13 +3,16 @@ import { Popper } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
+  fontBodyMediumXs,
   fontBodyXs,
   fontBodyXxs,
   fontHeaderXs,
+  getCorners,
   getSemanticColors,
   getShadows,
   getSpaces,
 } from "src/core/styles";
+import { addOpacityToHex } from "../styles/common/utils/opacity";
 
 export interface TooltipExtraProps extends CommonThemeProps {
   // TODO(185930): remove custom `followCursor` prop when we upgrade to MUIv5
@@ -20,6 +23,7 @@ export interface TooltipExtraProps extends CommonThemeProps {
   // @deprecated Use `hasInvertedStyle` instead
   sdsStyle?: "dark" | "light";
   hasInvertedStyle?: boolean;
+  title?: React.ReactNode;
   subtitle?: React.ReactNode;
   width?: "default" | "wide";
   textAlign?: "left" | "center" | "right";
@@ -34,7 +38,7 @@ const dark = (props: TooltipExtraProps): string => {
     ${fontHeaderXs(props)}
     background-color: ${semanticColors?.base?.surfaceInverse};
     color: ${semanticColors?.base?.textPrimaryInverse};
-    padding: ${spaces?.s}px ${spaces?.l}px;
+    padding: ${spaces?.s}px ${spaces?.m}px;
   `;
 };
 
@@ -46,7 +50,7 @@ const light = (props: TooltipExtraProps): string => {
     ${fontBodyXs(props)}
     background-color: ${semanticColors?.base?.surface};
     color: ${semanticColors?.base?.textPrimary};
-    padding: ${spaces?.s}px ${spaces?.l}px;
+    padding: ${spaces?.s}px ${spaces?.m}px;
   `;
 };
 
@@ -63,7 +67,7 @@ const doNotForwardProps = ["hasInvertedStyle", "textAlign"];
 export const StyledTitle = styled("p", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontHeaderXs}
+  ${fontBodyMediumXs}
 
   ${(props: TooltipExtraProps) => {
     const { hasInvertedStyle } = props;
@@ -104,9 +108,12 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
     textAlign,
   } = props;
   const shadows = getShadows(props);
+  const corners = getCorners(props);
+  const semanticColors = getSemanticColors(props);
 
   return css`
     &.MuiTooltip-tooltip {
+      border-radius: ${corners?.l}px;
       box-shadow: ${shadows?.m};
       max-width: ${width === "wide" ? "550px" : "250px"} !important;
       text-align: ${textAlign
@@ -114,6 +121,9 @@ export const tooltipCss = (props: TooltipExtraProps): string => {
         : width === "wide"
           ? "left"
           : "center"} !important;
+
+      ${!hasInvertedStyle &&
+      `outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};`}
 
       ${sdsStyle === "dark" || inverted || hasInvertedStyle
         ? dark(props)
@@ -196,11 +206,11 @@ export const StyledPopper = styled(Popper)`
 `;
 
 export const StyledComponentSlotWrapper = styled("div")`
-  ${(props: TooltipExtraProps) => {
+  ${(props: TooltipExtraProps & { shouldAddMargin: boolean }) => {
+    const { shouldAddMargin } = props;
     const spaces = getSpaces(props);
     return `
-      margin-top: ${spaces?.m}px;
-      margin-bottom: ${spaces?.xxxs}px;
+      margin-top: ${shouldAddMargin ? spaces?.s : 0}px;
     `;
   }}
 `;

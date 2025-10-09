@@ -1,5 +1,5 @@
 import { FormControl } from "@mui/material";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawInputText from "src/core/InputText";
 
 export const TestDemo = (props: Args): JSX.Element => {

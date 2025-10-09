@@ -1,0 +1,42 @@
+{
+  "MenuItem": {
+    "props": {
+      "column": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": "false\nfalse"
+      },
+      "icon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "isMultiSelect": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "IconProps<IconName>",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"determinate\" | \"indeterminate\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"action\" | \"default\"",
+        "isRequired": false
+      },
+      "selected": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is selected.",
+        "defaultValue": false
+      }
+    }
+  }
+}

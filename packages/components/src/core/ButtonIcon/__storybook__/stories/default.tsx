@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import RawButtonIcon from "src/core/ButtonIcon";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";
@@ -12,7 +12,7 @@ export const ButtonIcon = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
             The <strong>ButtnoIcon</strong> component is deprecated!
@@ -21,9 +21,7 @@ export const ButtonIcon = (props: Args): JSX.Element => {
             <strong>Icon</strong> style instead.
           </>
         }
-      >
-        The <strong>Alert</strong> component is deprecated!
-      </Callout>
+      />
       <RawButtonIcon icon={icon} sdsSize="medium" sdsType="primary" {...rest} />
     </>
   );

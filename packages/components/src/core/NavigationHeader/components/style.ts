@@ -1,17 +1,20 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
+  fontBodyMediumL,
+  fontBodyMediumS,
+  fontBodySemiboldL,
+  fontBodySemiboldS,
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
-  Spaces,
 } from "src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
 import ListSubheader from "src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
 
-const doNotForwardProps = ["isNarrow", "hasSection"];
+const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
 
 const NarrowStyledSection = (): SerializedStyles => {
   return css`
@@ -26,12 +29,12 @@ export const StyledSection = styled("section", {
   display: flex;
   align-items: center;
 
-  ${(props: CommonThemeProps & { gap?: keyof Spaces; isNarrow?: boolean }) => {
+  ${(props: CommonThemeProps & { isNarrow?: boolean }) => {
     const { isNarrow } = props;
     const spaces = getSpaces(props);
 
     return css`
-      column-gap: ${spaces?.[props?.gap ?? "xl"]}px;
+      column-gap: ${spaces?.m}px;
 
       ${isNarrow && NarrowStyledSection()}
     `;
@@ -73,7 +76,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
         top: 0;
         color: ${getTextColor()};
         background-color: ${getBackgroundColor()};
-        padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.s}px;
+        padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.xs}px;
         margin-bottom: 0;
       }
     `;
@@ -117,6 +120,36 @@ export const StyledDivider = styled(Divider, {
         border-bottom: solid 1px ${getBorderColor()};
         padding-bottom: ${isNarrow ? 0 : spaces?.xxs}px;
       }
+    `;
+  }}
+`;
+
+export const StyledLabelTextWrapper = styled("div")`
+  ${(props: CommonThemeProps & { active?: boolean; isNarrow?: boolean }) => {
+    const { active, isNarrow } = props;
+
+    return [
+      isNarrow
+        ? active
+          ? fontBodySemiboldL(props)
+          : fontBodyMediumL(props)
+        : active
+          ? fontBodySemiboldS(props)
+          : fontBodyMediumS(props),
+      css`
+        position: absolute;
+      `,
+    ];
+  }}
+`;
+
+export const StyledLabelTextWrapperShadow = styled("div")`
+  ${(props: CommonThemeProps & { active?: boolean; isNarrow?: boolean }) => {
+    const { isNarrow } = props;
+    return css`
+      ${isNarrow ? fontBodySemiboldL(props) : fontBodySemiboldS(props)}
+      visibility: hidden;
+      opacity: 0;
     `;
   }}
 `;

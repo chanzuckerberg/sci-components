@@ -1,6 +1,6 @@
 import { AutocompleteValue } from "@mui/base";
 import styled from "@emotion/styled";
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
@@ -26,12 +26,17 @@ export const ControlledDropdownDemo = <
       outline: none;
     }
 
-    margin: 0 0 24px 8px;
+    margin: 0 0 24px 0;
   `;
 
   return (
     <>
-      <StyledButton onClick={handleClick} sdsStyle="minimal" sdsType="primary">
+      <StyledButton
+        onClick={handleClick}
+        sdsStyle="minimal"
+        isAllCaps={false}
+        sdsType="secondary"
+      >
         Click here to select the first three options
       </StyledButton>
       <br />

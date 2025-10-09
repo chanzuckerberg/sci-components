@@ -1,0 +1,11 @@
+{
+  "TagFilter": {
+    "props": {
+      "label": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The content of the component."
+      }
+    }
+  }
+}

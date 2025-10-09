@@ -1,0 +1,46 @@
+{
+  "DropdownMenu": {
+    "props": {
+      "ClickAwayListenerProps": {
+        "type": "Partial<ClickAwayListenerProps>",
+        "isRequired": false
+      },
+      "groupBy": {
+        "type": "any",
+        "isRequired": false
+      },
+      "keepSearchOnSelect": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false
+      },
+      "multiple": {
+        "type": "any",
+        "isRequired": false
+      },
+      "open": {
+        "type": "any",
+        "isRequired": false
+      },
+      "options": {
+        "type": "any",
+        "isRequired": false
+      },
+      "search": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"string\" | \"number\" | \"string & {}\"",
+        "isRequired": false
+      }
+    }
+  }
+}

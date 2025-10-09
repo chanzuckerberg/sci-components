@@ -4,18 +4,20 @@ import Icon from "src/core/Icon";
 
 export interface SdsAccordionHeaderProps {
   subtitle?: string;
+  chevronSize?: "xs" | "s";
 }
 
 export type AccordionHeaderProps = RawAccordionSummaryProps &
   SdsAccordionHeaderProps;
 
 const AccordionHeader = (props: AccordionHeaderProps) => {
-  const { children, id, subtitle } = props;
+  const { children, subtitle, chevronSize = "xs", ...rest } = props;
+
   return (
     <StyledAccordionHeader
-      aria-controls={`${id}-panel-content`}
-      id={id}
-      expandIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
+      chevronSize={chevronSize}
+      expandIcon={<Icon sdsIcon="ChevronDown" sdsSize={chevronSize} />}
+      {...rest}
     >
       {children}
       {subtitle && <StyledSubtitle>{subtitle}</StyledSubtitle>}

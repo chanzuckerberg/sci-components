@@ -1,0 +1,39 @@
+{
+  "Callout": {
+    "props": {
+      "autoDismiss": {
+        "type": "\"number\" | \"false\" | \"true\"",
+        "isRequired": false
+      },
+      "body": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "hideBody": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "hideTitle": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": true
+      },
+      "sdsStyle": {
+        "type": "\"persistent\" | \"expandable\" | \"dismissible\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "string",
+        "isRequired": false
+      }
+    }
+  }
+}

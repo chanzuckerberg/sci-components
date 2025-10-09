@@ -1,0 +1,39 @@
+{
+  "InputText": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": false
+      },
+      "hideLabel": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers."
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The label content."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The short hint displayed in the `input` before the user enters a value."
+      },
+      "sdsType": {
+        "type": "\"textField\" | \"textArea\"",
+        "isRequired": false
+      }
+    }
+  }
+}

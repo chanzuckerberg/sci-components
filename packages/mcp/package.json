@@ -1,0 +1,66 @@
+{
+  "name": "@czi-sds/mcp",
+  "description": "The official MCP server for SDS",
+  "version": "0.5.4",
+  "main": "dist/stdio.js",
+  "files": [
+    "dist",
+    "data"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "homepage": "https://sds.czi.design",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chanzuckerberg/sci-components",
+    "directory": "packages/mcp"
+  },
+  "scripts": {
+    "generate:tailwind-tokens": "mkdir -p data && cp ../components/src/common/styles-dictionary/json/tailwind.json data/tailwind.json && echo '✓ Copied tailwind.json to data folder'",
+    "generate:components-list": "tsx scripts/generate-component-list.ts",
+    "generate:component-props": "tsx scripts/generate-component-props.ts",
+    "generate:zeroheight-export": "tsx scripts/export-zeroheight-pages.ts",
+    "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props",
+    "prebuild": "yarn generate:all",
+    "build": "yarn prebuild && tsup && chmod 755 dist/stdio.js",
+    "dev": "tsup --watch",
+    "inspect": "node scripts/inspect.js",
+    "inspect:dev": "npx @modelcontextprotocol/inspector npx tsx src/stdio.ts",
+    "serve": "tsx --watch src/http.ts"
+  },
+  "bin": {
+    "sds-mcp": "./dist/stdio.js"
+  },
+  "keywords": [
+    "sds",
+    "mcp-server",
+    "chat",
+    "chatgpt",
+    "mcp"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "express": "^5.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.1",
+    "@types/express": "^5.0.3",
+    "@types/fs-extra": "^11.0.4",
+    "react-docgen-typescript": "^2.4.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  },
+  "gitHead": "140d4b30975015cb8588cb735d5f9dd77318c065"
+}

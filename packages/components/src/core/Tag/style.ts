@@ -112,11 +112,11 @@ const rounded = (props: ExtraTagProps): SerializedStyles => {
     sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
 
   return css`
-    border-radius: ${corners?.l}px;
+    border-radius: ${corners?.rounded}px;
     padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
-      border-radius: ${corners?.l}px;
+      border-radius: ${corners?.rounded}px;
     }
   `;
 };

@@ -1,0 +1,42 @@
+{
+  "NavigationFooter": {
+    "props": {
+      "hasInvertedStyle": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "images": {
+        "type": "FooterImage[]",
+        "isRequired": false
+      },
+      "logo": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "logoUrl": {
+        "type": "string",
+        "isRequired": false
+      },
+      "navItems": {
+        "type": "NavigationFooterNavItem[]",
+        "isRequired": false
+      },
+      "navLinks": {
+        "type": "NavigationFooterNavItem[]",
+        "isRequired": false
+      },
+      "tag": {
+        "type": "string",
+        "isRequired": false
+      },
+      "tagColor": {
+        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
+        "isRequired": false
+      },
+      "title": {
+        "type": "string",
+        "isRequired": true
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "CellHeader": {
+    "props": {
+      "active": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "direction": {
+        "type": "\"asc\" | \"desc\"",
+        "isRequired": false
+      },
+      "hideSortIcon": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "horizontalAlign": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false
+      },
+      "hover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "shouldShowTooltipOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "tooltipProps": {
+        "type": "TooltipProps",
+        "isRequired": false
+      },
+      "tooltipText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "width": {
+        "type": "\"string\" | \"number\"",
+        "isRequired": false
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import Icon from "src/core/Icon";
 import {
   BUTTON_DROPDOWN_ACTIONS,
@@ -8,7 +8,6 @@ import {
   BUTTON_DROPDOWN_TEXT,
 } from "./constants";
 import { ButtonDropdown } from "./stories/default";
-import { BADGE } from "src/common/storybook/storybookBadges";
 
 export default {
   argTypes: {
@@ -42,9 +41,6 @@ export default {
     },
   },
   component: ButtonDropdown,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Buttons/ButtonDropdown",
 } as Meta;
 
@@ -66,7 +62,7 @@ export const Default = {
 export const Test = {
   args: {
     disabled: false,
-    icon: <Icon sdsIcon="Download" sdsSize="l" />,
+    icon: <Icon sdsIcon="Download" sdsSize="s" />,
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
     sdsStyle: "rounded",
     sdsType: "primary",

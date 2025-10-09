@@ -1,0 +1,27 @@
+{
+  "ButtonToggle": {
+    "props": {
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "If `true`, the component is disabled."
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": true
+      },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false
+      },
+      "sdsStage": {
+        "type": "\"off\" | \"on\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
+        "isRequired": false
+      }
+    }
+  }
+}

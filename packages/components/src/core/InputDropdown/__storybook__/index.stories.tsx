@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputDropdown } from "./stories/default";
 import { INPUT_DROPDOWN_EXCLUDED_CONTROLS } from "./constants";
 
@@ -17,7 +16,7 @@ export default {
     },
     intent: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["default", "negative", "notice", "positive"],
     },
@@ -39,7 +38,7 @@ export default {
     },
     sdsType: {
       control: {
-        type: "radio",
+        type: "inline-radio",
       },
       options: ["label", "value"],
     },
@@ -60,14 +59,11 @@ export default {
     },
     width: {
       control: {
-        type: "number",
+        type: "text",
       },
     },
   },
   component: InputDropdown,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputDropdown",
 } as Meta;
 

@@ -1,0 +1,18 @@
+{
+  "TooltipTable": {
+    "props": {
+      "contentAlert": {
+        "type": "\"string\" | \"Element\"",
+        "isRequired": false
+      },
+      "itemAlign": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "showSectionHeader": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      }
+    }
+  }
+}

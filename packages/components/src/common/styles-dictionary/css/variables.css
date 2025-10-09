@@ -2,17 +2,17 @@
   :root {
     --sds-border-accent-default: 1px solid #1a6cef;
     --sds-border-accent-focused: 1px solid #1a6cef;
-    --sds-border-accent-open: 1px solid #1a6cef;
-    --sds-border-accent-selected: 1px solid #1a6cef;
     --sds-border-accent-hover: 1px solid #0041b9;
+    --sds-border-accent-open: 1px solid #1a6cef;
     --sds-border-accent-pressed: 1px solid #002d90;
+    --sds-border-accent-selected: 1px solid #1a6cef;
     --sds-border-base-default: 1px solid #969696;
     --sds-border-base-disabled: 1px solid #c3c3c3;
     --sds-border-base-divider: 1px solid #dfdfdf;
-    --sds-border-base-divider-inverse: 1px solid #6c6c6c;
-    --sds-border-base-hover: 1px dashed #000000;
-    --sds-border-base-inverse: 1px dashed #ffffff;
-    --sds-border-base-pressed: 1px dashed #000000;
+    --sds-border-base-divider-inverse: 1px solid #767676;
+    --sds-border-base-hover: 1px solid #000000;
+    --sds-border-base-inverse: 1px solid #ffffff;
+    --sds-border-base-pressed: 1px solid #000000;
     --sds-border-base-table: 1px solid #c3c3c3;
     --sds-border-beta-default: 1px solid #6526b5;
     --sds-border-beta-extra-thick: 4px solid #6526b5;
@@ -20,11 +20,11 @@
     --sds-border-info-default: 1px solid #0041b9;
     --sds-border-info-extra-thick: 4px solid #0041b9;
     --sds-border-info-thick: 2px solid #0041b9;
-    --sds-border-link-dashed: 1px dashed;
-    --sds-border-link-solid: 1px solid;
-    --sds-border-negative-default: 1px solid #980017;
-    --sds-border-negative-extra-thick: 4px solid #980017;
-    --sds-border-negative-thick: 2px solid #980017;
+    --sds-border-link-dashed: 1px dashed #000000;
+    --sds-border-link-solid: 1px solid #000000;
+    --sds-border-negative-default: 1px solid #b80017;
+    --sds-border-negative-extra-thick: 4px solid #b80017;
+    --sds-border-negative-thick: 2px solid #b80017;
     --sds-border-neutral-default: 1px solid #969696;
     --sds-border-neutral-extra-thick: 4px solid #969696;
     --sds-border-neutral-thick: 2px solid #969696;
@@ -35,10 +35,10 @@
     --sds-border-positive-default: 1px solid #105b2b;
     --sds-border-positive-extra-thick: 4px solid #105b2b;
     --sds-border-positive-thick: 2px solid #105b2b;
-    --sds-breakpoint-sm: 0px;
-    --sds-breakpoint-md: 512px;
     --sds-breakpoint-lg: 1024px;
-    --sds-color-primitive-blue-100: #e2eeff;
+    --sds-breakpoint-md: 512px;
+    --sds-breakpoint-sm: 0px;
+    --sds-color-primitive-blue-100: #edf3fd;
     --sds-color-primitive-blue-200: #cce1ff;
     --sds-color-primitive-blue-300: #9dc6ff;
     --sds-color-primitive-blue-400: #6ca6ff;
@@ -47,17 +47,17 @@
     --sds-color-primitive-blue-700: #002d90;
     --sds-color-primitive-blue-800: #00114a;
     --sds-color-primitive-gray-50: #ffffff;
-    --sds-color-primitive-gray-75: #fafafa;
-    --sds-color-primitive-gray-100: #f3f3f3;
+    --sds-color-primitive-gray-75: #f8f8f8;
+    --sds-color-primitive-gray-100: #ededed;
     --sds-color-primitive-gray-200: #dfdfdf;
     --sds-color-primitive-gray-300: #c3c3c3;
     --sds-color-primitive-gray-400: #a5a5a5;
     --sds-color-primitive-gray-500: #969696;
-    --sds-color-primitive-gray-600: #6c6c6c;
+    --sds-color-primitive-gray-600: #767676;
     --sds-color-primitive-gray-700: #3b3b3b;
     --sds-color-primitive-gray-800: #1b1b1b;
     --sds-color-primitive-gray-900: #000000;
-    --sds-color-primitive-green-100: #daf4de;
+    --sds-color-primitive-green-100: #ebf9ed;
     --sds-color-primitive-green-200: #b9ecc3;
     --sds-color-primitive-green-300: #7fd693;
     --sds-color-primitive-green-400: #50b96d;
@@ -78,7 +78,7 @@
     --sds-color-primitive-red-300: #ffafa8;
     --sds-color-primitive-red-400: #ff7e78;
     --sds-color-primitive-red-500: #db2131;
-    --sds-color-primitive-red-600: #980017;
+    --sds-color-primitive-red-600: #b80017;
     --sds-color-primitive-red-700: #6f0008;
     --sds-color-primitive-red-800: #340000;
     --sds-color-primitive-yellow-100: #fff3db;
@@ -91,49 +91,6 @@
     --sds-color-primitive-yellow-800: #541700;
     --sds-color-primitive-overlay-100: rgba(0, 0, 0, 0.08);
     --sds-color-primitive-overlay-200: rgba(0, 0, 0, 0.03);
-    --sds-color-semantic-base-background-primary: #ffffff;
-    --sds-color-semantic-base-background-primary-inverse: #000000;
-    --sds-color-semantic-base-background-secondary: #f3f3f3;
-    --sds-color-semantic-base-background-secondary-inverse: #3b3b3b;
-    --sds-color-semantic-base-background-tertiary: #dfdfdf;
-    --sds-color-semantic-base-border-primary: #6c6c6c;
-    --sds-color-semantic-base-border-primary-disabled: #c3c3c3;
-    --sds-color-semantic-base-border-primary-disabled-inverse: #6c6c6c;
-    --sds-color-semantic-base-border-primary-hover: #000000;
-    --sds-color-semantic-base-border-primary-hover-inverse: #ffffff;
-    --sds-color-semantic-base-border-primary-inverse: #c3c3c3;
-    --sds-color-semantic-base-border-on-fill: #ffffff;
-    --sds-color-semantic-base-border-primary-pressed: #000000;
-    --sds-color-semantic-base-border-primary-pressed-inverse: #ffffff;
-    --sds-color-semantic-base-border-secondary: #c3c3c3;
-    --sds-color-semantic-base-divider: #dfdfdf;
-    --sds-color-semantic-base-divider-inverse: #6c6c6c;
-    --sds-color-semantic-base-fill-disabled: #dfdfdf;
-    --sds-color-semantic-base-fill-hover: #c3c3c347;
-    --sds-color-semantic-base-fill-open: #c3c3c347;
-    --sds-color-semantic-base-fill-pressed: #c3c3c347;
-    --sds-color-semantic-base-fill-primary: #ffffff;
-    --sds-color-semantic-base-fill-selected: #000000;
-    --sds-color-semantic-base-ornament-disabled: #c3c3c3;
-    --sds-color-semantic-base-ornament-disabled-inverse: #6c6c6c;
-    --sds-color-semantic-base-ornament-on-fill: #ffffff;
-    --sds-color-semantic-base-ornament-primary: #000000;
-    --sds-color-semantic-base-ornament-primary-inverse: #ffffff;
-    --sds-color-semantic-base-ornament-secondary: #6c6c6c;
-    --sds-color-semantic-base-ornament-secondary-inverse: #c3c3c3;
-    --sds-color-semantic-base-ornament-secondary-hover: #000000;
-    --sds-color-semantic-base-ornament-secondary-pressed: #000000;
-    --sds-color-semantic-base-surface: #ffffff;
-    --sds-color-semantic-base-surface-inverse: #000000;
-    --sds-color-semantic-base-text-disabled: #c3c3c3;
-    --sds-color-semantic-base-text-disabled-inverse: #6c6c6c;
-    --sds-color-semantic-base-text-on-fill: #ffffff;
-    --sds-color-semantic-base-text-primary: #000000;
-    --sds-color-semantic-base-text-primary-inverse: #ffffff;
-    --sds-color-semantic-base-text-secondary: #6c6c6c;
-    --sds-color-semantic-base-text-secondary-inverse: #c3c3c3;
-    --sds-color-semantic-base-text-tertiary: #a5a5a5;
-    --sds-color-semantic-base-text-tertiary-inverse: #969696;
     --sds-color-semantic-accent-border: #1a6cef;
     --sds-color-semantic-accent-border-focus: #1a6cef;
     --sds-color-semantic-accent-border-hover: #0041b9;
@@ -150,10 +107,58 @@
     --sds-color-semantic-accent-ornament-pressed: #002d90;
     --sds-color-semantic-accent-ornament-selected: #1a6cef;
     --sds-color-semantic-accent-surface-primary: #1a6cef;
-    --sds-color-semantic-accent-surface-secondary: #e2eeff;
+    --sds-color-semantic-accent-surface-secondary: #edf3fd;
     --sds-color-semantic-accent-text-action: #1a6cef;
     --sds-color-semantic-accent-text-action-hover: #0041b9;
     --sds-color-semantic-accent-text-action-pressed: #002d90;
+    --sds-color-semantic-base-background-primary: #ffffff;
+    --sds-color-semantic-base-background-primary-inverse: #000000;
+    --sds-color-semantic-base-background-secondary: #f8f8f8;
+    --sds-color-semantic-base-background-secondary-inverse: #3b3b3b;
+    --sds-color-semantic-base-background-tertiary: #ededed;
+    --sds-color-semantic-base-border-on-fill: #ffffff;
+    --sds-color-semantic-base-border-primary: #767676;
+    --sds-color-semantic-base-border-primary-disabled: #c3c3c3;
+    --sds-color-semantic-base-border-primary-disabled-inverse: #767676;
+    --sds-color-semantic-base-border-primary-hover: #000000;
+    --sds-color-semantic-base-border-primary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-border-primary-inverse: #c3c3c3;
+    --sds-color-semantic-base-border-primary-pressed: #000000;
+    --sds-color-semantic-base-border-primary-pressed-inverse: #ffffff;
+    --sds-color-semantic-base-border-secondary: #c3c3c3;
+    --sds-color-semantic-base-divider: #dfdfdf;
+    --sds-color-semantic-base-divider-inverse: #767676;
+    --sds-color-semantic-base-fill-disabled: #dfdfdf;
+    --sds-color-semantic-base-fill-hover: #c3c3c333;
+    --sds-color-semantic-base-fill-hover-inverse: #c3c3c357;
+    --sds-color-semantic-base-fill-open: #c3c3c333;
+    --sds-color-semantic-base-fill-open-inverse: #c3c3c357;
+    --sds-color-semantic-base-fill-pressed: #c3c3c333;
+    --sds-color-semantic-base-fill-pressed-inverse: #c3c3c357;
+    --sds-color-semantic-base-fill-primary: #ffffff;
+    --sds-color-semantic-base-fill-selected: #000000;
+    --sds-color-semantic-base-ornament-disabled: #c3c3c3;
+    --sds-color-semantic-base-ornament-disabled-inverse: #767676;
+    --sds-color-semantic-base-ornament-on-fill: #ffffff;
+    --sds-color-semantic-base-ornament-primary: #000000;
+    --sds-color-semantic-base-ornament-primary-inverse: #ffffff;
+    --sds-color-semantic-base-ornament-secondary: #767676;
+    --sds-color-semantic-base-ornament-secondary-hover: #000000;
+    --sds-color-semantic-base-ornament-secondary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-inverse: #c3c3c3;
+    --sds-color-semantic-base-ornament-secondary-pressed: #000000;
+    --sds-color-semantic-base-ornament-secondary-pressed-inverse: #ffffff;
+    --sds-color-semantic-base-surface: #ffffff;
+    --sds-color-semantic-base-surface-inverse: #000000;
+    --sds-color-semantic-base-text-disabled: #c3c3c3;
+    --sds-color-semantic-base-text-disabled-inverse: #767676;
+    --sds-color-semantic-base-text-on-fill: #ffffff;
+    --sds-color-semantic-base-text-primary: #000000;
+    --sds-color-semantic-base-text-primary-inverse: #ffffff;
+    --sds-color-semantic-base-text-secondary: #767676;
+    --sds-color-semantic-base-text-secondary-inverse: #c3c3c3;
+    --sds-color-semantic-base-text-tertiary: #a5a5a5;
+    --sds-color-semantic-base-text-tertiary-inverse: #969696;
     --sds-color-semantic-beta-border: #6526b5;
     --sds-color-semantic-beta-fill-hover: #6526b5;
     --sds-color-semantic-beta-fill-pressed: #490092;
@@ -167,27 +172,27 @@
     --sds-color-semantic-info-fill-hover: #0041b9;
     --sds-color-semantic-info-fill-pressed: #002d90;
     --sds-color-semantic-info-fill-primary: #1a6cef;
-    --sds-color-semantic-info-fill-secondary: #e2eeff;
+    --sds-color-semantic-info-fill-secondary: #edf3fd;
     --sds-color-semantic-info-ornament: #0041b9;
     --sds-color-semantic-info-surface-primary: #1a6cef;
-    --sds-color-semantic-info-surface-secondary: #e2eeff;
+    --sds-color-semantic-info-surface-secondary: #edf3fd;
     --sds-color-semantic-info-text: #0041b9;
-    --sds-color-semantic-negative-border: #980017;
-    --sds-color-semantic-negative-fill-hover: #980017;
+    --sds-color-semantic-negative-border: #b80017;
+    --sds-color-semantic-negative-fill-hover: #b80017;
     --sds-color-semantic-negative-fill-pressed: #6f0008;
     --sds-color-semantic-negative-fill-primary: #db2131;
     --sds-color-semantic-negative-fill-secondary: #ffe8e6;
-    --sds-color-semantic-negative-ornament: #980017;
+    --sds-color-semantic-negative-ornament: #b80017;
     --sds-color-semantic-negative-surface-primary: #db2131;
     --sds-color-semantic-negative-surface-secondary: #ffe8e6;
-    --sds-color-semantic-negative-text: #980017;
-    --sds-color-semantic-neutral-border: #969696;
-    --sds-color-semantic-neutral-fill-hover: #6c6c6c;
-    --sds-color-semantic-neutral-fill-pressed: #3b3b3b;
-    --sds-color-semantic-neutral-fill-primary: #969696;
+    --sds-color-semantic-negative-text: #b80017;
+    --sds-color-semantic-neutral-border: #3b3b3b;
+    --sds-color-semantic-neutral-fill-hover: #3b3b3b;
+    --sds-color-semantic-neutral-fill-pressed: #1b1b1b;
+    --sds-color-semantic-neutral-fill-primary: #767676;
     --sds-color-semantic-neutral-fill-secondary: #dfdfdf;
     --sds-color-semantic-neutral-ornament: #3b3b3b;
-    --sds-color-semantic-neutral-surface-primary: #969696;
+    --sds-color-semantic-neutral-surface-primary: #767676;
     --sds-color-semantic-neutral-surface-secondary: #dfdfdf;
     --sds-color-semantic-neutral-text: #3b3b3b;
     --sds-color-semantic-notice-border: #b07300;
@@ -203,186 +208,665 @@
     --sds-color-semantic-positive-fill-hover: #105b2b;
     --sds-color-semantic-positive-fill-pressed: #07431d;
     --sds-color-semantic-positive-fill-primary: #238444;
-    --sds-color-semantic-positive-fill-secondary: #daf4de;
+    --sds-color-semantic-positive-fill-secondary: #ebf9ed;
     --sds-color-semantic-positive-ornament: #105b2b;
     --sds-color-semantic-positive-surface-primary: #238444;
-    --sds-color-semantic-positive-surface-secondary: #daf4de;
+    --sds-color-semantic-positive-surface-secondary: #ebf9ed;
     --sds-color-semantic-positive-text: #105b2b;
-    --sds-corner-l: 20px;
+    --sds-corner-rounded: 20px;
+    --sds-corner-xl: 8px;
+    --sds-corner-l: 6px;
     --sds-corner-m: 4px;
     --sds-corner-s: 2px;
     --sds-corner-none: 0px;
-    --sds-drop-shadow-l: 0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3);
-    --sds-drop-shadow-m: 0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15);
-    --sds-drop-shadow-s: 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25);
+    --sds-drop-shadow-l: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
+    --sds-drop-shadow-m: 0 2px 4px 0 rgba(0, 0, 0, 0.15),
+      0 2px 10px 0 rgba(0, 0, 0, 0.15);
     --sds-drop-shadow-none: none;
-    --sds-font-font-family-body: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-body-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-caps: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-caps-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-code: "IBM Plex Mono", monospace;
-    --sds-font-font-family-code-narrow: "IBM Plex Mono", monospace;
-    --sds-font-font-family-header: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-header-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-tabular: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-tabular-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-font: 400 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-font-narrow: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-letter-spacing: 0.1px;
-    --sds-font-body-xxxs-400-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-600-letter-spacing: 0.1px;
-    --sds-font-body-xxxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxs-400-font: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-400-font-narrow: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-400-letter-spacing: 0.1px;
-    --sds-font-body-xxs-400-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-600-letter-spacing: 0.1px;
-    --sds-font-body-xxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xs-400-font: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-400-font-narrow: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-400-letter-spacing: 0.08px;
-    --sds-font-body-xs-400-letter-spacing-narrow: 0.08px;
-    --sds-font-body-xs-600-font: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-600-font-narrow: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-600-letter-spacing: 0.08px;
-    --sds-font-body-xs-600-letter-spacing-narrow: 0.08px;
-    --sds-font-body-s-400-font: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-400-letter-spacing: 0.08px;
-    --sds-font-body-s-400-letter-spacing-narrow: 0.08px;
-    --sds-font-body-s-600-font: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-600-letter-spacing: 0.08px;
-    --sds-font-body-s-600-letter-spacing-narrow: 0.08px;
-    --sds-font-body-m-400-font: 400 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-400-letter-spacing: 0px;
-    --sds-font-body-m-400-letter-spacing-narrow: 0px;
-    --sds-font-body-m-600-font: 600 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-600-letter-spacing: 0px;
-    --sds-font-body-m-600-letter-spacing-narrow: 0px;
-    --sds-font-body-l-400-font: 400 18px/28px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-l-400-font-narrow: 400 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --sds-drop-shadow-s: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    --sds-font-body-l-400-font: 400 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-400-font-narrow: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
     --sds-font-body-l-400-letter-spacing: 0px;
     --sds-font-body-l-400-letter-spacing-narrow: 0px;
-    --sds-font-body-l-600-font: 600 18px/28px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-l-600-font-narrow: 600 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --sds-font-body-l-500-font: 500 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-500-font-narrow: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-500-letter-spacing: 0px;
+    --sds-font-body-l-500-letter-spacing-narrow: 0px;
+    --sds-font-body-l-600-font: 600 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-600-font-narrow: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
     --sds-font-body-l-600-letter-spacing: 0px;
     --sds-font-body-l-600-letter-spacing-narrow: 0px;
-    --sds-font-caps-xxxxs-600-font: 600 10px/14px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxxs-600-font-narrow: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxxxs-600-letter-spacing-narrow: 0.5px;
-    --sds-font-caps-xxxxs-600-text-transform: uppercase;
-    --sds-font-caps-xxxxs-600-text-transform-narrow: uppercase;
-    --sds-font-caps-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxs-600-font-narrow: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxxs-600-letter-spacing-narrow: 0.5px;
-    --sds-font-caps-xxxs-600-text-transform: uppercase;
-    --sds-font-caps-xxxs-600-text-transform-narrow: uppercase;
-    --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxs-600-letter-spacing-narrow: 0.5px;
+    --sds-font-body-m-400-font: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-400-letter-spacing: 0px;
+    --sds-font-body-m-400-letter-spacing-narrow: 0px;
+    --sds-font-body-m-500-font: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-500-letter-spacing: 0px;
+    --sds-font-body-m-500-letter-spacing-narrow: 0px;
+    --sds-font-body-m-600-font: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-600-letter-spacing: 0px;
+    --sds-font-body-m-600-letter-spacing-narrow: 0px;
+    --sds-font-body-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-400-letter-spacing: 0px;
+    --sds-font-body-s-400-letter-spacing-narrow: 0px;
+    --sds-font-body-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-500-letter-spacing: 0px;
+    --sds-font-body-s-500-letter-spacing-narrow: 0px;
+    --sds-font-body-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-600-letter-spacing: 0px;
+    --sds-font-body-s-600-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-400-font-narrow: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-400-letter-spacing: 0px;
+    --sds-font-body-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-500-font-narrow: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-500-letter-spacing: 0px;
+    --sds-font-body-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-600-font-narrow: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-600-letter-spacing: 0px;
+    --sds-font-body-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-body-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxs-600-letter-spacing-narrow: 0.4px;
     --sds-font-caps-xxs-600-text-transform: uppercase;
     --sds-font-caps-xxs-600-text-transform-narrow: uppercase;
-    --sds-font-header-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxxs-600-letter-spacing: 0.1px;
-    --sds-font-header-xxxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-header-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxs-600-letter-spacing: 0.1px;
-    --sds-font-header-xxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-header-xs-600-font: 600 13px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xs-600-font-narrow: 600 13px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xs-600-letter-spacing: 0.08px;
-    --sds-font-header-xs-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-s-600-font: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-s-600-font-narrow: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-s-600-letter-spacing: 0.08px;
-    --sds-font-header-s-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-m-600-font: 600 16px/22px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-m-600-font-narrow: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-m-600-letter-spacing: 0px;
-    --sds-font-header-m-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-l-600-font: 600 18px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-l-600-font-narrow: 600 16px/22px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-l-600-letter-spacing: 0px;
-    --sds-font-header-l-600-letter-spacing-narrow: 0px;
-    --sds-font-header-xl-600-font: 600 22px/30px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xl-600-font-narrow: 600 18px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xl-600-letter-spacing: 0px;
-    --sds-font-header-xl-600-letter-spacing-narrow: 0px;
-    --sds-font-header-xxl-600-font: 600 26px/34px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxl-600-font-narrow: 600 22px/30px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxl-600-letter-spacing: 0px;
-    --sds-font-header-xxl-600-letter-spacing-narrow: 0px;
-    --sds-font-tabular-xs-400-font: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-400-font-narrow: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-400-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-xs-400-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-xs-400-letter-spacing: 0px;
-    --sds-font-tabular-xs-400-letter-spacing-narrow: 0px;
-    --sds-font-tabular-xs-600-font: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-600-font-narrow: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-600-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-xs-600-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-xs-600-letter-spacing: 0px;
-    --sds-font-tabular-xs-600-letter-spacing-narrow: 0px;
-    --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-400-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-s-400-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-s-400-letter-spacing: 0px;
-    --sds-font-tabular-s-400-letter-spacing-narrow: 0px;
-    --sds-font-tabular-s-600-font: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-600-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-s-600-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-s-600-letter-spacing: 0px;
-    --sds-font-tabular-s-600-letter-spacing-narrow: 0px;
-    --sds-font-code-xs-400-font: 400 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-400-font-narrow: 400 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-400-letter-spacing: 0px;
-    --sds-font-code-xs-400-letter-spacing-narrow: 0px;
-    --sds-font-code-xs-600-font: 600 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-600-font-narrow: 600 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-600-letter-spacing: 0px;
-    --sds-font-code-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-caps-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxs-600-font-narrow: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxxs-600-letter-spacing-narrow: 0.4px;
+    --sds-font-caps-xxxs-600-text-transform: uppercase;
+    --sds-font-caps-xxxs-600-text-transform-narrow: uppercase;
+    --sds-font-caps-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxxs-600-font-narrow: 600 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxxxs-600-letter-spacing-narrow: 0.4px;
+    --sds-font-caps-xxxxs-600-text-transform: uppercase;
+    --sds-font-caps-xxxxs-600-text-transform-narrow: uppercase;
     --sds-font-code-s-400-font: 400 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-400-font-narrow: 400 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-400-letter-spacing: 0px;
     --sds-font-code-s-400-letter-spacing-narrow: 0px;
+    --sds-font-code-s-500-font: 500 14px/24px "IBM Plex Mono", monospace;
+    --sds-font-code-s-500-font-narrow: 500 14px/24px "IBM Plex Mono", monospace;
+    --sds-font-code-s-500-letter-spacing: 0px;
+    --sds-font-code-s-500-letter-spacing-narrow: 0px;
     --sds-font-code-s-600-font: 600 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-600-font-narrow: 600 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-600-letter-spacing: 0px;
     --sds-font-code-s-600-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-400-font: 400 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-400-font-narrow: 400 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-400-letter-spacing: 0px;
+    --sds-font-code-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-500-font: 500 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-500-font-narrow: 500 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-500-letter-spacing: 0px;
+    --sds-font-code-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-600-font: 600 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-600-font-narrow: 600 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-600-letter-spacing: 0px;
+    --sds-font-code-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-font-family-body: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-body-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-caps: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-caps-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-code: "IBM Plex Mono", monospace;
+    --sds-font-font-family-code-narrow: "IBM Plex Mono", monospace;
+    --sds-font-font-family-header: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-header-narrow: var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-font-family-link: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-link-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-tabular: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-tabular-narrow: var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-font-family-title: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-title-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-header-xxl-600-font: 600 26px/34px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxl-600-font-narrow: 600 22px/30px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxl-600-letter-spacing: 0px;
+    --sds-font-header-xxl-600-letter-spacing-narrow: 0px;
+    --sds-font-header-xl-600-font: 600 22px/30px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xl-600-font-narrow: 600 18px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xl-600-letter-spacing: 0px;
+    --sds-font-header-xl-600-letter-spacing-narrow: 0px;
+    --sds-font-header-l-600-font: 600 18px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-l-600-font-narrow: 600 16px/22px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-l-600-letter-spacing: 0px;
+    --sds-font-header-l-600-letter-spacing-narrow: 0px;
+    --sds-font-header-m-600-font: 600 16px/22px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-m-600-font-narrow: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-m-600-letter-spacing: 0px;
+    --sds-font-header-m-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-s-600-font: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-s-600-font-narrow: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-s-600-letter-spacing: 0.08px;
+    --sds-font-header-s-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-xs-600-font: 600 13px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xs-600-font-narrow: 600 13px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xs-600-letter-spacing: 0.08px;
+    --sds-font-header-xs-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxs-600-letter-spacing: 0.1px;
+    --sds-font-header-xxs-600-letter-spacing-narrow: 0.1px;
+    --sds-font-header-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxxs-600-letter-spacing: 0.1px;
+    --sds-font-header-xxxs-600-letter-spacing-narrow: 0.1px;
+    --sds-font-link-l-400-font: 400 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-400-font-narrow: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-400-letter-spacing: 0px;
+    --sds-font-link-l-400-letter-spacing-narrow: 0px;
+    --sds-font-link-l-400-text-decoration: underline;
+    --sds-font-link-l-400-text-decoration-narrow: underline;
+    --sds-font-link-l-500-font: 500 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-500-font-narrow: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-500-letter-spacing: 0px;
+    --sds-font-link-l-500-letter-spacing-narrow: 0px;
+    --sds-font-link-l-500-text-decoration: underline;
+    --sds-font-link-l-500-text-decoration-narrow: underline;
+    --sds-font-link-l-600-font: 600 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-600-font-narrow: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-600-letter-spacing: 0px;
+    --sds-font-link-l-600-letter-spacing-narrow: 0px;
+    --sds-font-link-l-600-text-decoration: underline;
+    --sds-font-link-l-600-text-decoration-narrow: underline;
+    --sds-font-link-m-400-font: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-400-letter-spacing: 0px;
+    --sds-font-link-m-400-letter-spacing-narrow: 0px;
+    --sds-font-link-m-400-text-decoration: underline;
+    --sds-font-link-m-400-text-decoration-narrow: underline;
+    --sds-font-link-m-500-font: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-500-letter-spacing: 0px;
+    --sds-font-link-m-500-letter-spacing-narrow: 0px;
+    --sds-font-link-m-500-text-decoration: underline;
+    --sds-font-link-m-500-text-decoration-narrow: underline;
+    --sds-font-link-m-600-font: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-600-letter-spacing: 0px;
+    --sds-font-link-m-600-letter-spacing-narrow: 0px;
+    --sds-font-link-m-600-text-decoration: underline;
+    --sds-font-link-m-600-text-decoration-narrow: underline;
+    --sds-font-link-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-400-letter-spacing: 0px;
+    --sds-font-link-s-400-letter-spacing-narrow: 0px;
+    --sds-font-link-s-400-text-decoration: underline;
+    --sds-font-link-s-400-text-decoration-narrow: underline;
+    --sds-font-link-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-500-letter-spacing: 0px;
+    --sds-font-link-s-500-letter-spacing-narrow: 0px;
+    --sds-font-link-s-500-text-decoration: underline;
+    --sds-font-link-s-500-text-decoration-narrow: underline;
+    --sds-font-link-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-600-letter-spacing: 0px;
+    --sds-font-link-s-600-letter-spacing-narrow: 0px;
+    --sds-font-link-s-600-text-decoration: underline;
+    --sds-font-link-s-600-text-decoration-narrow: underline;
+    --sds-font-link-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-400-font-narrow: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-400-letter-spacing: 0px;
+    --sds-font-link-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-400-text-decoration: underline;
+    --sds-font-link-xs-400-text-decoration-narrow: underline;
+    --sds-font-link-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-500-font-narrow: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-500-letter-spacing: 0px;
+    --sds-font-link-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-500-text-decoration: underline;
+    --sds-font-link-xs-500-text-decoration-narrow: underline;
+    --sds-font-link-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-600-font-narrow: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-600-letter-spacing: 0px;
+    --sds-font-link-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-600-text-decoration: underline;
+    --sds-font-link-xs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-400-text-decoration: underline;
+    --sds-font-link-xxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-500-text-decoration: underline;
+    --sds-font-link-xxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-600-text-decoration: underline;
+    --sds-font-link-xxs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-400-text-decoration: underline;
+    --sds-font-link-xxxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-500-text-decoration: underline;
+    --sds-font-link-xxxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-600-text-decoration: underline;
+    --sds-font-link-xxxs-600-text-decoration-narrow: underline;
+    --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-400-letter-spacing: -0.3px;
+    --sds-font-tabular-s-400-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-500-letter-spacing: -0.3px;
+    --sds-font-tabular-s-500-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-600-letter-spacing: -0.3px;
+    --sds-font-tabular-s-600-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-400-font-narrow: 400 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-400-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-400-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-500-font-narrow: 500 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-500-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-500-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-600-font-narrow: 600 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-600-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-600-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-400-font-narrow: 400 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-500-font-narrow: 500 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-400-font-narrow: 400 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-500-font-narrow: 500 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-600-font-narrow: 600 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-s-700-font-narrow: 700 26px/34px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-s-700-letter-spacing: 0px;
+    --sds-font-title-s-700-letter-spacing-narrow: 0px;
+    --sds-font-title-m-700-font: 700 40px/50px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-m-700-font-narrow: 700 32px/40px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-m-700-letter-spacing: 0px;
+    --sds-font-title-m-700-letter-spacing-narrow: 0px;
+    --sds-font-title-l-700-font: 700 52px/64px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-l-700-font-narrow: 700 40px/50px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-l-700-letter-spacing: 0px;
+    --sds-font-title-l-700-letter-spacing-narrow: 0px;
     --sds-icon-size-input-height: 16px;
     --sds-icon-size-input-width: 16px;
-    --sds-icon-size-xs-height: 12px;
-    --sds-icon-size-xs-width: 12px;
-    --sds-icon-size-s-height: 16px;
-    --sds-icon-size-s-width: 16px;
     --sds-icon-size-l-height: 24px;
     --sds-icon-size-l-width: 24px;
+    --sds-icon-size-s-height: 16px;
+    --sds-icon-size-s-width: 16px;
     --sds-icon-size-xl-height: 32px;
     --sds-icon-size-xl-width: 32px;
+    --sds-icon-size-xs-height: 12px;
+    --sds-icon-size-xs-width: 12px;
     --sds-space-default: 12px;
-    --sds-space-xxxs: 2px;
-    --sds-space-xxs: 4px;
-    --sds-space-xs: 6px;
-    --sds-space-s: 8px;
-    --sds-space-m: 12px;
     --sds-space-l: 16px;
+    --sds-space-m: 12px;
+    --sds-space-s: 8px;
     --sds-space-xl: 24px;
+    --sds-space-xs: 6px;
     --sds-space-xxl: 40px;
+    --sds-space-xxs: 4px;
+    --sds-space-xxxs: 2px;
   }
 }
 
@@ -390,17 +874,17 @@
   :root {
     --sds-border-accent-default: 1px solid #a2c9ff;
     --sds-border-accent-focused: 1px solid #a2c9ff;
-    --sds-border-accent-open: 1px solid #a2c9ff;
-    --sds-border-accent-selected: 1px solid #a2c9ff;
     --sds-border-accent-hover: 1px solid #cde3ff;
+    --sds-border-accent-open: 1px solid #a2c9ff;
     --sds-border-accent-pressed: 1px solid #e2eeff;
+    --sds-border-accent-selected: 1px solid #a2c9ff;
     --sds-border-base-default: 1px solid #aaaaaa;
     --sds-border-base-disabled: 1px solid #696969;
     --sds-border-base-divider: 1px solid #494949;
     --sds-border-base-divider-inverse: 1px solid #cdcdcd;
-    --sds-border-base-hover: 1px dashed #ffffff;
-    --sds-border-base-inverse: 1px dashed #000000;
-    --sds-border-base-pressed: 1px dashed #ffffff;
+    --sds-border-base-hover: 1px solid #ffffff;
+    --sds-border-base-inverse: 1px solid #000000;
+    --sds-border-base-pressed: 1px solid #ffffff;
     --sds-border-base-table: 1px solid #696969;
     --sds-border-beta-default: 1px solid #cebef8;
     --sds-border-beta-extra-thick: 4px solid #cebef8;
@@ -408,8 +892,8 @@
     --sds-border-info-default: 1px solid #a2c9ff;
     --sds-border-info-extra-thick: 4px solid #a2c9ff;
     --sds-border-info-thick: 2px solid #a2c9ff;
-    --sds-border-link-dashed: 1px dashed;
-    --sds-border-link-solid: 1px solid;
+    --sds-border-link-dashed: 1px dashed #ffffff;
+    --sds-border-link-solid: 1px solid #ffffff;
     --sds-border-negative-default: 1px solid #ff988a;
     --sds-border-negative-extra-thick: 4px solid #ff988a;
     --sds-border-negative-thick: 2px solid #ff988a;
@@ -423,13 +907,13 @@
     --sds-border-positive-default: 1px solid #85d898;
     --sds-border-positive-extra-thick: 4px solid #85d898;
     --sds-border-positive-thick: 2px solid #85d898;
-    --sds-breakpoint-sm: 0px;
-    --sds-breakpoint-md: 512px;
     --sds-breakpoint-lg: 1024px;
+    --sds-breakpoint-md: 512px;
+    --sds-breakpoint-sm: 0px;
     --sds-color-primitive-blue-100: #0f1d4a;
     --sds-color-primitive-blue-200: #0a216e;
     --sds-color-primitive-blue-300: #0647b8;
-    --sds-color-primitive-blue-400: #2573f4;
+    --sds-color-primitive-blue-400: #2876f9;
     --sds-color-primitive-blue-500: #5b9aff;
     --sds-color-primitive-blue-600: #a2c9ff;
     --sds-color-primitive-blue-700: #cde3ff;
@@ -439,7 +923,7 @@
     --sds-color-primitive-gray-100: #333333;
     --sds-color-primitive-gray-200: #494949;
     --sds-color-primitive-gray-300: #696969;
-    --sds-color-primitive-gray-400: #9b9b9b;
+    --sds-color-primitive-gray-400: #949494;
     --sds-color-primitive-gray-500: #aaaaaa;
     --sds-color-primitive-gray-600: #cdcdcd;
     --sds-color-primitive-gray-700: #ededed;
@@ -448,7 +932,7 @@
     --sds-color-primitive-green-100: #082608;
     --sds-color-primitive-green-200: #063617;
     --sds-color-primitive-green-300: #10632e;
-    --sds-color-primitive-green-400: #278b48;
+    --sds-color-primitive-green-400: #2b8e4b;
     --sds-color-primitive-green-500: #4bae68;
     --sds-color-primitive-green-600: #85d898;
     --sds-color-primitive-green-700: #bcecc5;
@@ -456,7 +940,7 @@
     --sds-color-primitive-purple-100: #331252;
     --sds-color-primitive-purple-200: #410f70;
     --sds-color-primitive-purple-300: #6429b2;
-    --sds-color-primitive-purple-400: #905de6;
+    --sds-color-primitive-purple-400: #9261e6;
     --sds-color-primitive-purple-500: #aa89ef;
     --sds-color-primitive-purple-600: #cebef8;
     --sds-color-primitive-purple-700: #e4dcfc;
@@ -464,8 +948,8 @@
     --sds-color-primitive-red-100: #330603;
     --sds-color-primitive-red-200: #660a12;
     --sds-color-primitive-red-300: #9e1c1c;
-    --sds-color-primitive-red-400: #c73028;
-    --sds-color-primitive-red-500: #e05043;
+    --sds-color-primitive-red-400: #df453c;
+    --sds-color-primitive-red-500: #e06257;
     --sds-color-primitive-red-600: #ff988a;
     --sds-color-primitive-red-700: #ffbdb3;
     --sds-color-primitive-red-800: #ffd8d1;
@@ -479,49 +963,6 @@
     --sds-color-primitive-yellow-800: #ffe6a8;
     --sds-color-primitive-overlay-100: rgba(0, 0, 0, 0.08);
     --sds-color-primitive-overlay-200: rgba(0, 0, 0, 0.03);
-    --sds-color-semantic-base-background-primary: #101010;
-    --sds-color-semantic-base-background-primary-inverse: #ffffff;
-    --sds-color-semantic-base-background-secondary: #333333;
-    --sds-color-semantic-base-background-secondary-inverse: #ededed;
-    --sds-color-semantic-base-background-tertiary: #494949;
-    --sds-color-semantic-base-border-primary: #cdcdcd;
-    --sds-color-semantic-base-border-primary-disabled: #696969;
-    --sds-color-semantic-base-border-primary-disabled-inverse: #cdcdcd;
-    --sds-color-semantic-base-border-primary-hover: #ffffff;
-    --sds-color-semantic-base-border-primary-hover-inverse: #000000;
-    --sds-color-semantic-base-border-primary-inverse: #696969;
-    --sds-color-semantic-base-border-on-fill: #000000;
-    --sds-color-semantic-base-border-primary-pressed: #ffffff;
-    --sds-color-semantic-base-border-primary-pressed-inverse: #000000;
-    --sds-color-semantic-base-border-secondary: #696969;
-    --sds-color-semantic-base-divider: #494949;
-    --sds-color-semantic-base-divider-inverse: #cdcdcd;
-    --sds-color-semantic-base-fill-disabled: #494949;
-    --sds-color-semantic-base-fill-hover: #69696947;
-    --sds-color-semantic-base-fill-open: #69696947;
-    --sds-color-semantic-base-fill-pressed: #69696947;
-    --sds-color-semantic-base-fill-primary: #333333;
-    --sds-color-semantic-base-fill-selected: #ffffff;
-    --sds-color-semantic-base-ornament-disabled: #696969;
-    --sds-color-semantic-base-ornament-disabled-inverse: #cdcdcd;
-    --sds-color-semantic-base-ornament-on-fill: #ffffff;
-    --sds-color-semantic-base-ornament-primary: #ffffff;
-    --sds-color-semantic-base-ornament-primary-inverse: #000000;
-    --sds-color-semantic-base-ornament-secondary: #cdcdcd;
-    --sds-color-semantic-base-ornament-secondary-inverse: #696969;
-    --sds-color-semantic-base-ornament-secondary-hover: #ffffff;
-    --sds-color-semantic-base-ornament-secondary-pressed: #ffffff;
-    --sds-color-semantic-base-surface: #333333;
-    --sds-color-semantic-base-surface-inverse: #ffffff;
-    --sds-color-semantic-base-text-disabled: #696969;
-    --sds-color-semantic-base-text-disabled-inverse: #cdcdcd;
-    --sds-color-semantic-base-text-on-fill: #ffffff;
-    --sds-color-semantic-base-text-primary: #ffffff;
-    --sds-color-semantic-base-text-primary-inverse: #000000;
-    --sds-color-semantic-base-text-secondary: #cdcdcd;
-    --sds-color-semantic-base-text-secondary-inverse: #696969;
-    --sds-color-semantic-base-text-tertiary: #9b9b9b;
-    --sds-color-semantic-base-text-tertiary-inverse: #aaaaaa;
     --sds-color-semantic-accent-border: #a2c9ff;
     --sds-color-semantic-accent-border-focus: #a2c9ff;
     --sds-color-semantic-accent-border-hover: #cde3ff;
@@ -530,52 +971,100 @@
     --sds-color-semantic-accent-border-selected: #a2c9ff;
     --sds-color-semantic-accent-fill-hover: #cde3ff;
     --sds-color-semantic-accent-fill-pressed: #e2eeff;
-    --sds-color-semantic-accent-fill-primary: #2573f4;
+    --sds-color-semantic-accent-fill-primary: #2876f9;
     --sds-color-semantic-accent-ornament: #a2c9ff;
     --sds-color-semantic-accent-ornament-focus: #a2c9ff;
     --sds-color-semantic-accent-ornament-hover: #cde3ff;
     --sds-color-semantic-accent-ornament-open: #a2c9ff;
     --sds-color-semantic-accent-ornament-pressed: #e2eeff;
     --sds-color-semantic-accent-ornament-selected: #a2c9ff;
-    --sds-color-semantic-accent-surface-primary: #2573f4;
+    --sds-color-semantic-accent-surface-primary: #2876f9;
     --sds-color-semantic-accent-surface-secondary: #0f1d4a;
     --sds-color-semantic-accent-text-action: #a2c9ff;
     --sds-color-semantic-accent-text-action-hover: #cde3ff;
     --sds-color-semantic-accent-text-action-pressed: #e2eeff;
+    --sds-color-semantic-base-background-primary: #101010;
+    --sds-color-semantic-base-background-primary-inverse: #ffffff;
+    --sds-color-semantic-base-background-secondary: #333333;
+    --sds-color-semantic-base-background-secondary-inverse: #ededed;
+    --sds-color-semantic-base-background-tertiary: #494949;
+    --sds-color-semantic-base-border-on-fill: #000000;
+    --sds-color-semantic-base-border-primary: #cdcdcd;
+    --sds-color-semantic-base-border-primary-disabled: #696969;
+    --sds-color-semantic-base-border-primary-disabled-inverse: #cdcdcd;
+    --sds-color-semantic-base-border-primary-hover: #ffffff;
+    --sds-color-semantic-base-border-primary-hover-inverse: #000000;
+    --sds-color-semantic-base-border-primary-inverse: #696969;
+    --sds-color-semantic-base-border-primary-pressed: #ffffff;
+    --sds-color-semantic-base-border-primary-pressed-inverse: #000000;
+    --sds-color-semantic-base-border-secondary: #696969;
+    --sds-color-semantic-base-divider: #494949;
+    --sds-color-semantic-base-divider-inverse: #cdcdcd;
+    --sds-color-semantic-base-fill-disabled: #494949;
+    --sds-color-semantic-base-fill-hover: #69696994;
+    --sds-color-semantic-base-fill-hover-inverse: #69696914;
+    --sds-color-semantic-base-fill-open: #69696994;
+    --sds-color-semantic-base-fill-open-inverse: #69696914;
+    --sds-color-semantic-base-fill-pressed: #69696994;
+    --sds-color-semantic-base-fill-pressed-inverse: #69696914;
+    --sds-color-semantic-base-fill-primary: #333333;
+    --sds-color-semantic-base-fill-selected: #ffffff;
+    --sds-color-semantic-base-ornament-disabled: #696969;
+    --sds-color-semantic-base-ornament-disabled-inverse: #cdcdcd;
+    --sds-color-semantic-base-ornament-on-fill: #ffffff;
+    --sds-color-semantic-base-ornament-primary: #ffffff;
+    --sds-color-semantic-base-ornament-primary-inverse: #000000;
+    --sds-color-semantic-base-ornament-secondary: #cdcdcd;
+    --sds-color-semantic-base-ornament-secondary-hover: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-hover-inverse: #000000;
+    --sds-color-semantic-base-ornament-secondary-inverse: #696969;
+    --sds-color-semantic-base-ornament-secondary-pressed: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-pressed-inverse: #000000;
+    --sds-color-semantic-base-surface: #333333;
+    --sds-color-semantic-base-surface-inverse: #ededed;
+    --sds-color-semantic-base-text-disabled: #696969;
+    --sds-color-semantic-base-text-disabled-inverse: #cdcdcd;
+    --sds-color-semantic-base-text-on-fill: #ffffff;
+    --sds-color-semantic-base-text-primary: #ffffff;
+    --sds-color-semantic-base-text-primary-inverse: #000000;
+    --sds-color-semantic-base-text-secondary: #cdcdcd;
+    --sds-color-semantic-base-text-secondary-inverse: #696969;
+    --sds-color-semantic-base-text-tertiary: #949494;
+    --sds-color-semantic-base-text-tertiary-inverse: #aaaaaa;
     --sds-color-semantic-beta-border: #cebef8;
     --sds-color-semantic-beta-fill-hover: #e4dcfc;
     --sds-color-semantic-beta-fill-pressed: #f0ebfe;
-    --sds-color-semantic-beta-fill-primary: #905de6;
+    --sds-color-semantic-beta-fill-primary: #9261e6;
     --sds-color-semantic-beta-fill-secondary: #331252;
     --sds-color-semantic-beta-ornament: #cebef8;
-    --sds-color-semantic-beta-surface-primary: #905de6;
+    --sds-color-semantic-beta-surface-primary: #9261e6;
     --sds-color-semantic-beta-surface-secondary: #331252;
     --sds-color-semantic-beta-text: #cebef8;
     --sds-color-semantic-info-border: #a2c9ff;
     --sds-color-semantic-info-fill-hover: #cde3ff;
     --sds-color-semantic-info-fill-pressed: #e2eeff;
-    --sds-color-semantic-info-fill-primary: #2573f4;
+    --sds-color-semantic-info-fill-primary: #2876f9;
     --sds-color-semantic-info-fill-secondary: #0f1d4a;
     --sds-color-semantic-info-ornament: #a2c9ff;
-    --sds-color-semantic-info-surface-primary: #2573f4;
+    --sds-color-semantic-info-surface-primary: #2876f9;
     --sds-color-semantic-info-surface-secondary: #0f1d4a;
     --sds-color-semantic-info-text: #a2c9ff;
     --sds-color-semantic-negative-border: #ff988a;
     --sds-color-semantic-negative-fill-hover: #ffbdb3;
     --sds-color-semantic-negative-fill-pressed: #ffd8d1;
-    --sds-color-semantic-negative-fill-primary: #c73028;
+    --sds-color-semantic-negative-fill-primary: #df453c;
     --sds-color-semantic-negative-fill-secondary: #330603;
     --sds-color-semantic-negative-ornament: #ff988a;
-    --sds-color-semantic-negative-surface-primary: #c73028;
+    --sds-color-semantic-negative-surface-primary: #df453c;
     --sds-color-semantic-negative-surface-secondary: #330603;
     --sds-color-semantic-negative-text: #ff988a;
-    --sds-color-semantic-neutral-border: #aaaaaa;
+    --sds-color-semantic-neutral-border: #ededed;
     --sds-color-semantic-neutral-fill-hover: #cdcdcd;
     --sds-color-semantic-neutral-fill-pressed: #ededed;
-    --sds-color-semantic-neutral-fill-primary: #aaaaaa;
+    --sds-color-semantic-neutral-fill-primary: #949494;
     --sds-color-semantic-neutral-fill-secondary: #494949;
     --sds-color-semantic-neutral-ornament: #ededed;
-    --sds-color-semantic-neutral-surface-primary: #aaaaaa;
+    --sds-color-semantic-neutral-surface-primary: #949494;
     --sds-color-semantic-neutral-surface-secondary: #494949;
     --sds-color-semantic-neutral-text: #ededed;
     --sds-color-semantic-notice-border: #e5bc63;
@@ -590,186 +1079,665 @@
     --sds-color-semantic-positive-border: #85d898;
     --sds-color-semantic-positive-fill-hover: #bcecc5;
     --sds-color-semantic-positive-fill-pressed: #daf4de;
-    --sds-color-semantic-positive-fill-primary: #278b48;
+    --sds-color-semantic-positive-fill-primary: #2b8e4b;
     --sds-color-semantic-positive-fill-secondary: #082608;
     --sds-color-semantic-positive-ornament: #85d898;
-    --sds-color-semantic-positive-surface-primary: #278b48;
+    --sds-color-semantic-positive-surface-primary: #2b8e4b;
     --sds-color-semantic-positive-surface-secondary: #082608;
     --sds-color-semantic-positive-text: #85d898;
-    --sds-corner-l: 20px;
+    --sds-corner-rounded: 20px;
+    --sds-corner-xl: 8px;
+    --sds-corner-l: 6px;
     --sds-corner-m: 4px;
     --sds-corner-s: 2px;
     --sds-corner-none: 0px;
-    --sds-drop-shadow-l: 0.0px 2.0px 12.0px 0px rgba(0, 0, 0, 0.3);
-    --sds-drop-shadow-m: 0.0px 2.0px 10.0px 0px rgba(0, 0, 0, 0.15), 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.15);
-    --sds-drop-shadow-s: 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.25);
+    --sds-drop-shadow-l: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
+    --sds-drop-shadow-m: 0 2px 4px 0 rgba(0, 0, 0, 0.15),
+      0 2px 10px 0 rgba(0, 0, 0, 0.15);
     --sds-drop-shadow-none: none;
-    --sds-font-font-family-body: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-body-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-caps: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-caps-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-code: "IBM Plex Mono", monospace;
-    --sds-font-font-family-code-narrow: "IBM Plex Mono", monospace;
-    --sds-font-font-family-header: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-header-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-tabular: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-font-family-tabular-narrow: var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-font: 400 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-font-narrow: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-400-letter-spacing: 0.1px;
-    --sds-font-body-xxxs-400-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxxs-600-letter-spacing: 0.1px;
-    --sds-font-body-xxxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxs-400-font: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-400-font-narrow: 400 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-400-letter-spacing: 0.1px;
-    --sds-font-body-xxs-400-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xxs-600-letter-spacing: 0.1px;
-    --sds-font-body-xxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-body-xs-400-font: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-400-font-narrow: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-400-letter-spacing: 0.08px;
-    --sds-font-body-xs-400-letter-spacing-narrow: 0.08px;
-    --sds-font-body-xs-600-font: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-600-font-narrow: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-xs-600-letter-spacing: 0.08px;
-    --sds-font-body-xs-600-letter-spacing-narrow: 0.08px;
-    --sds-font-body-s-400-font: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-400-letter-spacing: 0.08px;
-    --sds-font-body-s-400-letter-spacing-narrow: 0.08px;
-    --sds-font-body-s-600-font: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-s-600-letter-spacing: 0.08px;
-    --sds-font-body-s-600-letter-spacing-narrow: 0.08px;
-    --sds-font-body-m-400-font: 400 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-400-letter-spacing: 0px;
-    --sds-font-body-m-400-letter-spacing-narrow: 0px;
-    --sds-font-body-m-600-font: 600 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-m-600-letter-spacing: 0px;
-    --sds-font-body-m-600-letter-spacing-narrow: 0px;
-    --sds-font-body-l-400-font: 400 18px/28px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-l-400-font-narrow: 400 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --sds-drop-shadow-s: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    --sds-font-body-l-400-font: 400 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-400-font-narrow: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
     --sds-font-body-l-400-letter-spacing: 0px;
     --sds-font-body-l-400-letter-spacing-narrow: 0px;
-    --sds-font-body-l-600-font: 600 18px/28px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-body-l-600-font-narrow: 600 16px/26px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --sds-font-body-l-500-font: 500 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-500-font-narrow: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-500-letter-spacing: 0px;
+    --sds-font-body-l-500-letter-spacing-narrow: 0px;
+    --sds-font-body-l-600-font: 600 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-l-600-font-narrow: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
     --sds-font-body-l-600-letter-spacing: 0px;
     --sds-font-body-l-600-letter-spacing-narrow: 0px;
-    --sds-font-caps-xxxxs-600-font: 600 10px/14px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxxs-600-font-narrow: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxxxs-600-letter-spacing-narrow: 0.5px;
-    --sds-font-caps-xxxxs-600-text-transform: uppercase;
-    --sds-font-caps-xxxxs-600-text-transform-narrow: uppercase;
-    --sds-font-caps-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxs-600-font-narrow: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxxs-600-letter-spacing-narrow: 0.5px;
-    --sds-font-caps-xxxs-600-text-transform: uppercase;
-    --sds-font-caps-xxxs-600-text-transform-narrow: uppercase;
-    --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-caps-xxs-600-letter-spacing: 0.5px;
-    --sds-font-caps-xxs-600-letter-spacing-narrow: 0.5px;
+    --sds-font-body-m-400-font: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-400-letter-spacing: 0px;
+    --sds-font-body-m-400-letter-spacing-narrow: 0px;
+    --sds-font-body-m-500-font: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-500-letter-spacing: 0px;
+    --sds-font-body-m-500-letter-spacing-narrow: 0px;
+    --sds-font-body-m-600-font: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-m-600-letter-spacing: 0px;
+    --sds-font-body-m-600-letter-spacing-narrow: 0px;
+    --sds-font-body-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-400-letter-spacing: 0px;
+    --sds-font-body-s-400-letter-spacing-narrow: 0px;
+    --sds-font-body-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-500-letter-spacing: 0px;
+    --sds-font-body-s-500-letter-spacing-narrow: 0px;
+    --sds-font-body-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-s-600-letter-spacing: 0px;
+    --sds-font-body-s-600-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-400-font-narrow: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-400-letter-spacing: 0px;
+    --sds-font-body-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-500-font-narrow: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-500-letter-spacing: 0px;
+    --sds-font-body-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-body-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-600-font-narrow: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xs-600-letter-spacing: 0px;
+    --sds-font-body-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-body-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxs-600-letter-spacing-narrow: 0.4px;
     --sds-font-caps-xxs-600-text-transform: uppercase;
     --sds-font-caps-xxs-600-text-transform-narrow: uppercase;
-    --sds-font-header-xxxs-600-font: 600 11px/16px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxxs-600-letter-spacing: 0.1px;
-    --sds-font-header-xxxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-header-xxs-600-font: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxs-600-font-narrow: 600 12px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxs-600-letter-spacing: 0.1px;
-    --sds-font-header-xxs-600-letter-spacing-narrow: 0.1px;
-    --sds-font-header-xs-600-font: 600 13px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xs-600-font-narrow: 600 13px/18px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xs-600-letter-spacing: 0.08px;
-    --sds-font-header-xs-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-s-600-font: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-s-600-font-narrow: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-s-600-letter-spacing: 0.08px;
-    --sds-font-header-s-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-m-600-font: 600 16px/22px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-m-600-font-narrow: 600 14px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-m-600-letter-spacing: 0px;
-    --sds-font-header-m-600-letter-spacing-narrow: 0.08px;
-    --sds-font-header-l-600-font: 600 18px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-l-600-font-narrow: 600 16px/22px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-l-600-letter-spacing: 0px;
-    --sds-font-header-l-600-letter-spacing-narrow: 0px;
-    --sds-font-header-xl-600-font: 600 22px/30px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xl-600-font-narrow: 600 18px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xl-600-letter-spacing: 0px;
-    --sds-font-header-xl-600-letter-spacing-narrow: 0px;
-    --sds-font-header-xxl-600-font: 600 26px/34px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxl-600-font-narrow: 600 22px/30px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-header-xxl-600-letter-spacing: 0px;
-    --sds-font-header-xxl-600-letter-spacing-narrow: 0px;
-    --sds-font-tabular-xs-400-font: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-400-font-narrow: 400 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-400-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-xs-400-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-xs-400-letter-spacing: 0px;
-    --sds-font-tabular-xs-400-letter-spacing-narrow: 0px;
-    --sds-font-tabular-xs-600-font: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-600-font-narrow: 600 13px/20px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-xs-600-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-xs-600-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-xs-600-letter-spacing: 0px;
-    --sds-font-tabular-xs-600-letter-spacing-narrow: 0px;
-    --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-400-font-narrow: 400 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-400-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-s-400-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-s-400-letter-spacing: 0px;
-    --sds-font-tabular-s-400-letter-spacing-narrow: 0px;
-    --sds-font-tabular-s-600-font: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-600-font-narrow: 600 14px/24px var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    --sds-font-tabular-s-600-font-variant-numeric: tabular-nums;
-    --sds-font-tabular-s-600-font-variant-numeric-narrow: tabular-nums;
-    --sds-font-tabular-s-600-letter-spacing: 0px;
-    --sds-font-tabular-s-600-letter-spacing-narrow: 0px;
-    --sds-font-code-xs-400-font: 400 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-400-font-narrow: 400 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-400-letter-spacing: 0px;
-    --sds-font-code-xs-400-letter-spacing-narrow: 0px;
-    --sds-font-code-xs-600-font: 600 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-600-font-narrow: 600 13px/20px "IBM Plex Mono", monospace;
-    --sds-font-code-xs-600-letter-spacing: 0px;
-    --sds-font-code-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-caps-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxs-600-font-narrow: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxxs-600-letter-spacing-narrow: 0.4px;
+    --sds-font-caps-xxxs-600-text-transform: uppercase;
+    --sds-font-caps-xxxs-600-text-transform-narrow: uppercase;
+    --sds-font-caps-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxxs-600-font-narrow: 600 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-caps-xxxxs-600-letter-spacing: 0.4px;
+    --sds-font-caps-xxxxs-600-letter-spacing-narrow: 0.4px;
+    --sds-font-caps-xxxxs-600-text-transform: uppercase;
+    --sds-font-caps-xxxxs-600-text-transform-narrow: uppercase;
     --sds-font-code-s-400-font: 400 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-400-font-narrow: 400 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-400-letter-spacing: 0px;
     --sds-font-code-s-400-letter-spacing-narrow: 0px;
+    --sds-font-code-s-500-font: 500 14px/24px "IBM Plex Mono", monospace;
+    --sds-font-code-s-500-font-narrow: 500 14px/24px "IBM Plex Mono", monospace;
+    --sds-font-code-s-500-letter-spacing: 0px;
+    --sds-font-code-s-500-letter-spacing-narrow: 0px;
     --sds-font-code-s-600-font: 600 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-600-font-narrow: 600 14px/24px "IBM Plex Mono", monospace;
     --sds-font-code-s-600-letter-spacing: 0px;
     --sds-font-code-s-600-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-400-font: 400 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-400-font-narrow: 400 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-400-letter-spacing: 0px;
+    --sds-font-code-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-500-font: 500 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-500-font-narrow: 500 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-500-letter-spacing: 0px;
+    --sds-font-code-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-code-xs-600-font: 600 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-600-font-narrow: 600 13px/20px "IBM Plex Mono", monospace;
+    --sds-font-code-xs-600-letter-spacing: 0px;
+    --sds-font-code-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-font-family-body: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-body-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-caps: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-caps-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-code: "IBM Plex Mono", monospace;
+    --sds-font-font-family-code-narrow: "IBM Plex Mono", monospace;
+    --sds-font-font-family-header: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-header-narrow: var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-font-family-link: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-link-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-tabular: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-tabular-narrow: var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-font-family-title: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-font-family-title-narrow: var(--font-inter), Inter, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    --sds-font-header-xxl-600-font: 600 26px/34px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxl-600-font-narrow: 600 22px/30px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxl-600-letter-spacing: 0px;
+    --sds-font-header-xxl-600-letter-spacing-narrow: 0px;
+    --sds-font-header-xl-600-font: 600 22px/30px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xl-600-font-narrow: 600 18px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xl-600-letter-spacing: 0px;
+    --sds-font-header-xl-600-letter-spacing-narrow: 0px;
+    --sds-font-header-l-600-font: 600 18px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-l-600-font-narrow: 600 16px/22px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-l-600-letter-spacing: 0px;
+    --sds-font-header-l-600-letter-spacing-narrow: 0px;
+    --sds-font-header-m-600-font: 600 16px/22px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-m-600-font-narrow: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-m-600-letter-spacing: 0px;
+    --sds-font-header-m-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-s-600-font: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-s-600-font-narrow: 600 14px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-s-600-letter-spacing: 0.08px;
+    --sds-font-header-s-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-xs-600-font: 600 13px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xs-600-font-narrow: 600 13px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xs-600-letter-spacing: 0.08px;
+    --sds-font-header-xs-600-letter-spacing-narrow: 0.08px;
+    --sds-font-header-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxs-600-letter-spacing: 0.1px;
+    --sds-font-header-xxs-600-letter-spacing-narrow: 0.1px;
+    --sds-font-header-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-header-xxxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-header-xxxs-600-letter-spacing: 0.1px;
+    --sds-font-header-xxxs-600-letter-spacing-narrow: 0.1px;
+    --sds-font-link-l-400-font: 400 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-400-font-narrow: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-400-letter-spacing: 0px;
+    --sds-font-link-l-400-letter-spacing-narrow: 0px;
+    --sds-font-link-l-400-text-decoration: underline;
+    --sds-font-link-l-400-text-decoration-narrow: underline;
+    --sds-font-link-l-500-font: 500 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-500-font-narrow: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-500-letter-spacing: 0px;
+    --sds-font-link-l-500-letter-spacing-narrow: 0px;
+    --sds-font-link-l-500-text-decoration: underline;
+    --sds-font-link-l-500-text-decoration-narrow: underline;
+    --sds-font-link-l-600-font: 600 18px/28px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-600-font-narrow: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-l-600-letter-spacing: 0px;
+    --sds-font-link-l-600-letter-spacing-narrow: 0px;
+    --sds-font-link-l-600-text-decoration: underline;
+    --sds-font-link-l-600-text-decoration-narrow: underline;
+    --sds-font-link-m-400-font: 400 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-400-letter-spacing: 0px;
+    --sds-font-link-m-400-letter-spacing-narrow: 0px;
+    --sds-font-link-m-400-text-decoration: underline;
+    --sds-font-link-m-400-text-decoration-narrow: underline;
+    --sds-font-link-m-500-font: 500 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-500-letter-spacing: 0px;
+    --sds-font-link-m-500-letter-spacing-narrow: 0px;
+    --sds-font-link-m-500-text-decoration: underline;
+    --sds-font-link-m-500-text-decoration-narrow: underline;
+    --sds-font-link-m-600-font: 600 16px/26px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-m-600-letter-spacing: 0px;
+    --sds-font-link-m-600-letter-spacing-narrow: 0px;
+    --sds-font-link-m-600-text-decoration: underline;
+    --sds-font-link-m-600-text-decoration-narrow: underline;
+    --sds-font-link-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-400-letter-spacing: 0px;
+    --sds-font-link-s-400-letter-spacing-narrow: 0px;
+    --sds-font-link-s-400-text-decoration: underline;
+    --sds-font-link-s-400-text-decoration-narrow: underline;
+    --sds-font-link-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-500-letter-spacing: 0px;
+    --sds-font-link-s-500-letter-spacing-narrow: 0px;
+    --sds-font-link-s-500-text-decoration: underline;
+    --sds-font-link-s-500-text-decoration-narrow: underline;
+    --sds-font-link-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-s-600-letter-spacing: 0px;
+    --sds-font-link-s-600-letter-spacing-narrow: 0px;
+    --sds-font-link-s-600-text-decoration: underline;
+    --sds-font-link-s-600-text-decoration-narrow: underline;
+    --sds-font-link-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-400-font-narrow: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-400-letter-spacing: 0px;
+    --sds-font-link-xs-400-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-400-text-decoration: underline;
+    --sds-font-link-xs-400-text-decoration-narrow: underline;
+    --sds-font-link-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-500-font-narrow: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-500-letter-spacing: 0px;
+    --sds-font-link-xs-500-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-500-text-decoration: underline;
+    --sds-font-link-xs-500-text-decoration-narrow: underline;
+    --sds-font-link-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-600-font-narrow: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xs-600-letter-spacing: 0px;
+    --sds-font-link-xs-600-letter-spacing-narrow: 0px;
+    --sds-font-link-xs-600-text-decoration: underline;
+    --sds-font-link-xs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-400-text-decoration: underline;
+    --sds-font-link-xxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-500-text-decoration: underline;
+    --sds-font-link-xxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxs-600-text-decoration: underline;
+    --sds-font-link-xxs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-400-font-narrow: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-400-text-decoration: underline;
+    --sds-font-link-xxxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-500-font-narrow: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-500-text-decoration: underline;
+    --sds-font-link-xxxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-600-font-narrow: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxs-600-text-decoration: underline;
+    --sds-font-link-xxxs-600-text-decoration-narrow: underline;
+    --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-400-font-narrow: 400 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-400-letter-spacing: -0.3px;
+    --sds-font-tabular-s-400-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-s-500-font: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-500-font-narrow: 500 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-500-letter-spacing: -0.3px;
+    --sds-font-tabular-s-500-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-s-600-font: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-600-font-narrow: 600 14px/24px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-s-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-s-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-s-600-letter-spacing: -0.3px;
+    --sds-font-tabular-s-600-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-400-font: 400 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-400-font-narrow: 400 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-400-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-400-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-500-font: 500 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-500-font-narrow: 500 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-500-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-500-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xs-600-font: 600 13px/20px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-600-font-narrow: 600 13px/20px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xs-600-letter-spacing: -0.3px;
+    --sds-font-tabular-xs-600-letter-spacing-narrow: -0.3px;
+    --sds-font-tabular-xxs-400-font: 400 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-400-font-narrow: 400 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxs-500-font: 500 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-500-font-narrow: 500 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-600-font-narrow: 600 12px/18px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-400-font: 400 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-400-font-narrow: 400 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-500-font: 500 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-500-font-narrow: 500 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxs-600-font: 600 11px/16px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-600-font-narrow: 600 11px/16px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-s-700-font-narrow: 700 26px/34px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-s-700-letter-spacing: 0px;
+    --sds-font-title-s-700-letter-spacing-narrow: 0px;
+    --sds-font-title-m-700-font: 700 40px/50px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-m-700-font-narrow: 700 32px/40px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-m-700-letter-spacing: 0px;
+    --sds-font-title-m-700-letter-spacing-narrow: 0px;
+    --sds-font-title-l-700-font: 700 52px/64px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-l-700-font-narrow: 700 40px/50px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-title-l-700-letter-spacing: 0px;
+    --sds-font-title-l-700-letter-spacing-narrow: 0px;
     --sds-icon-size-input-height: 16px;
     --sds-icon-size-input-width: 16px;
-    --sds-icon-size-xs-height: 12px;
-    --sds-icon-size-xs-width: 12px;
-    --sds-icon-size-s-height: 16px;
-    --sds-icon-size-s-width: 16px;
     --sds-icon-size-l-height: 24px;
     --sds-icon-size-l-width: 24px;
+    --sds-icon-size-s-height: 16px;
+    --sds-icon-size-s-width: 16px;
     --sds-icon-size-xl-height: 32px;
     --sds-icon-size-xl-width: 32px;
+    --sds-icon-size-xs-height: 12px;
+    --sds-icon-size-xs-width: 12px;
     --sds-space-default: 12px;
-    --sds-space-xxxs: 2px;
-    --sds-space-xxs: 4px;
-    --sds-space-xs: 6px;
-    --sds-space-s: 8px;
-    --sds-space-m: 12px;
     --sds-space-l: 16px;
+    --sds-space-m: 12px;
+    --sds-space-s: 8px;
     --sds-space-xl: 24px;
+    --sds-space-xs: 6px;
     --sds-space-xxl: 40px;
+    --sds-space-xxs: 4px;
+    --sds-space-xxxs: 2px;
   }
 }

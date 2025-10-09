@@ -5,20 +5,19 @@ import {
   AutocompleteCloseReason,
   AutocompleteInputChangeReason,
 } from "@mui/material/useAutocomplete";
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import React, { SyntheticEvent, useState } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "../../../common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import TagFilter from "../../TagFilter";
+import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
+import Callout from "src/core/Callout";
+import Icon from "src/core/Icon";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import {
   CommonThemeProps,
   getColors,
   getCorners,
   getShadows,
-} from "../../styles";
-import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
-import { BADGE } from "../../../common/storybook/storybookBadges";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
+} from "src/core/styles";
+import TagFilter from "src/core/TagFilter";
 
 const StyledPopper = styled(Popper)`
   ${(props: CommonThemeProps) => {
@@ -126,7 +125,7 @@ const MenuSelect = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
             The <strong>MenuSelect</strong> component is deprecated!
@@ -135,9 +134,7 @@ const MenuSelect = (props: Args): JSX.Element => {
             <strong>Autocomplete</strong> component instead.
           </>
         }
-      >
-        The <strong>Alert</strong> component is deprecated!
-      </Callout>
+      />
       <div
         style={{
           width: 221,
@@ -282,10 +279,8 @@ export default {
     },
   },
   component: MenuSelect,
-  parameters: {
-    badges: [BADGE.DEPRECATED],
-  },
-  title: "Deprecated/MenuSelect [deprecated]",
+  tags: ["deprecated"],
+  title: "Deprecated/MenuSelect",
 } as Meta;
 
 // Default

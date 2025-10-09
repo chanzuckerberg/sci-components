@@ -1,0 +1,34 @@
+{
+  "Banner": {
+    "props": {
+      "dismissed": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "dismissible": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
+      "sdsIconProps": {
+        "type": "IconProps<string | number | symbol>",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\"",
+        "isRequired": true
+      },
+      "textChild": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

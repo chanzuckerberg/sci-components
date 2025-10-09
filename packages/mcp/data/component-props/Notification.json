@@ -1,0 +1,45 @@
+{
+  "Notification": {
+    "props": {
+      "autoDismiss": {
+        "type": "\"number\" | \"false\" | \"true\"",
+        "isRequired": false
+      },
+      "buttonOnClick": {
+        "type": "(event: SyntheticEvent<Element, Event>) => void",
+        "isRequired": false
+      },
+      "buttonPosition": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "extraContent": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "icon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
+      },
+      "intent": {
+        "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
+        "isRequired": true
+      },
+      "onClose": {
+        "type": "(event: SyntheticEvent<Element, Event>) => void",
+        "isRequired": false,
+        "description": "Callback fired when the component requests to be closed.\nWhen provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.\n@param event The event source of the callback."
+      },
+      "sdsIconProps": {
+        "type": "IconProps<string | number | symbol>",
+        "isRequired": false
+      },
+      "slideDirection": {
+        "type": "\"left\" | \"right\"",
+        "isRequired": false,
+        "defaultValue": "left"
+      }
+    }
+  }
+}

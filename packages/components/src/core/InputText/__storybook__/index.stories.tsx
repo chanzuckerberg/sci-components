@@ -1,5 +1,4 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import { InputText } from "./stories/default";
 import { INPUT_TEXT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -17,7 +16,7 @@ export default {
       required: true,
     },
     intent: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["default", "negative", "notice", "positive"],
     },
     label: {
@@ -27,14 +26,11 @@ export default {
       control: { type: "text" },
     },
     sdsType: {
-      control: { type: "radio" },
+      control: { type: "inline-radio" },
       options: ["textField", "textArea"],
     },
   },
   component: InputText,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/Inputs/InputText",
 } as Meta;
 

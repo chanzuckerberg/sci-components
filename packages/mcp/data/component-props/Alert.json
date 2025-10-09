@@ -1,0 +1,10 @@
+{
+  "Alert": {
+    "props": {
+      "text": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

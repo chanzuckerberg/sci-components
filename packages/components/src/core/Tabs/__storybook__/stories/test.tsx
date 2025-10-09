@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react";
+import { Args } from "@storybook/react-webpack5";
 import { TABS_LIVE_PREVIEW_WRAPPER_STYLES } from "../constants";
 import { Tabs } from "./default";
 import { noop } from "src/common/utils";
@@ -73,7 +73,8 @@ function BetaTagWithCount() {
         hover={false}
         color="beta"
         sdsStyle="rounded"
-        sdsType="secondary"
+        sdsType="primary"
+        style={{ margin: "0 0 2px 0" }}
       />
     </>
   );

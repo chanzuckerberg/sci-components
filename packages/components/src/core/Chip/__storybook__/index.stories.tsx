@@ -1,10 +1,9 @@
-import { Args, Meta } from "@storybook/react";
+import { Args, Meta } from "@storybook/react-webpack5";
 import React from "react";
-import Button from "../../Button";
 import Chip from "../index";
-import { BADGE } from "../../../common/storybook/storybookBadges";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";
+import Button from "src/core/Button";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;
@@ -20,7 +19,7 @@ const Demo = (props: Args): JSX.Element => {
           intent="negative"
           title="Deprecated!"
           sdsStyle="persistent"
-          icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+          icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
           body={
             <>
               The <strong>Chip</strong> component is deprecated!
@@ -29,9 +28,7 @@ const Demo = (props: Args): JSX.Element => {
               component instead.
             </>
           }
-        >
-          The <strong>Alert</strong> component is deprecated!
-        </Callout>
+        />
         <Button onClick={handleShowChip} sdsType="secondary" sdsStyle="square">
           Click me!
         </Button>
@@ -45,7 +42,7 @@ const Demo = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="l" />}
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
             The <strong>Chip</strong> component is deprecated!
@@ -54,9 +51,7 @@ const Demo = (props: Args): JSX.Element => {
             component instead.
           </>
         }
-      >
-        The <strong>Alert</strong> component is deprecated!
-      </Callout>
+      />
       <Chip {...props} />
     </>
   );
@@ -64,10 +59,8 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   component: Demo,
-  parameters: {
-    badges: [BADGE.DEPRECATED],
-  },
-  title: "Deprecated/Chip [deprecated]",
+  tags: ["deprecated"],
+  title: "Deprecated/Chip",
 } as Meta;
 
 export const MediumSquareChip = {

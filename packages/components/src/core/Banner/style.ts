@@ -3,17 +3,23 @@ import Button, { ButtonProps } from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
-  getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import { BannerIntentType } from "./index";
 
 export interface BannerExtraProps extends CommonThemeProps {
   sdsType: "primary" | "secondary";
+  intent?: BannerIntentType;
 }
 
-type ButtonType = ButtonProps & { bannerType: string } & CommonThemeProps;
-type IconWrapperType = CommonThemeProps & { bannerType: string };
+type ButtonType = ButtonProps & {
+  bannerType: string;
+} & CommonThemeProps;
+type IconWrapperType = CommonThemeProps & {
+  bannerType: string;
+  intent?: BannerIntentType;
+};
 
 export const Centered = styled("div")`
   flex: 1 1 auto;
@@ -22,30 +28,36 @@ export const Centered = styled("div")`
   align-items: center;
 `;
 
-const doNotForwardPropsIconWrapper = ["bannerType"];
+const doNotForwardPropsIconWrapper = ["bannerType", "intent"];
 
 export const IconWrapper = styled("div", {
   shouldForwardProp: (prop: string) =>
     !doNotForwardPropsIconWrapper.includes(prop),
 })`
   ${(props: IconWrapperType) => {
-    const { bannerType } = props;
+    const { bannerType, intent = "info" } = props;
 
-    const iconSizes = getIconSizes(props);
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
+    const iconColor =
+      bannerType === "primary"
+        ? semanticColors?.base?.ornamentOnFill
+        : semanticColors?.[intent]?.ornament;
+
     return `
-      height: ${iconSizes?.l.height}px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-right: ${spaces?.m}px;
       svg {
-        fill: ${bannerType === "primary" ? semanticColors?.base?.ornamentOnFill : semanticColors?.info?.ornament};
+        fill: ${iconColor};
       }
     `;
   }}
 `;
 
-const doNotForwardPropsButtonIcon = ["bannerType", "textChild"];
+const doNotForwardPropsButtonIcon = ["bannerType", "textChild", "intent"];
 
 export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
   shouldForwardProp: (prop: string) =>
@@ -88,24 +100,26 @@ export const Text = styled("div")`
 `;
 
 const primary = (props: BannerExtraProps) => {
+  const { intent = "info" } = props;
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.info?.surfacePrimary};
+    background-color: ${semanticColors?.[intent]?.surfacePrimary};
     color: ${semanticColors?.base?.textOnFill};
   `;
 };
 
 const secondary = (props: BannerExtraProps) => {
+  const { intent = "info" } = props;
   const semanticColors = getSemanticColors(props);
 
   return `
-    background-color: ${semanticColors?.info?.surfaceSecondary};
+    background-color: ${semanticColors?.[intent]?.surfaceSecondary};
     color: ${semanticColors?.base?.textPrimary};
   `;
 };
 
-const doNotForwardProps = ["sdsType", "textChild"];
+const doNotForwardProps = ["sdsType", "textChild", "intent"];
 
 export const StyledBanner = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -120,7 +134,7 @@ export const StyledBanner = styled("div", {
     return `
       display: flex;
       align-items: center;
-      padding: ${spaces?.s}px ${spaces?.l}px;
+      padding: ${spaces?.xs}px ${spaces?.m}px;
   
       ${sdsType === "primary" ? primary(props) : ""}
       ${sdsType === "secondary" ? secondary(props) : ""}

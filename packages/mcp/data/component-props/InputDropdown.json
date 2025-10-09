@@ -1,0 +1,50 @@
+{
+  "InputDropdown": {
+    "props": {
+      "counter": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "intent": {
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "isRequired": false
+      },
+      "label": {
+        "type": "ReactNode",
+        "isRequired": true
+      },
+      "multiple": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"minimal\" | \"square\" | \"rounded\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"label\" | \"value\"",
+        "isRequired": false
+      },
+      "shouldPutAColonAfterLabel": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "shouldTruncateMinimalDetails": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "style": {
+        "type": "CSSProperties",
+        "isRequired": false
+      },
+      "width": {
+        "type": "number",
+        "isRequired": false
+      }
+    }
+  }
+}

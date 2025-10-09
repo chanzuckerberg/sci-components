@@ -1,11 +1,11 @@
-import { Args, Meta } from "@storybook/react";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
+import { Args, Meta } from "@storybook/react-webpack5";
 import {
   TOOLTIP_TABLE_DATA,
   TOOLTIP_TABLE_EXCLUDED_CONTROLS,
 } from "./constants";
 import { TooltipTableContent } from "./stories/default";
 import { TestDemo } from "./stories/test";
+import { WithinTooltipDemo } from "./stories/withTooltip";
 
 export default {
   argTypes: {
@@ -22,9 +22,6 @@ export default {
     },
   },
   component: TooltipTableContent,
-  parameters: {
-    badges: [BADGE.STABLE],
-  },
   title: "Components/TooltipTable",
 } as Meta;
 
@@ -37,6 +34,18 @@ export const Default = {
     itemAlign: "right",
     showSectionHeader: true,
   },
+};
+
+// Within Tooltip
+
+export const WithinTooltip = {
+  args: {
+    contentAlert: "None",
+    data: TOOLTIP_TABLE_DATA,
+    itemAlign: "right",
+    showSectionHeader: true,
+  },
+  render: (args: Args) => <WithinTooltipDemo {...args} />,
 };
 
 // Test
