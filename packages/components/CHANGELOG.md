@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.13.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.0...@czi-sds/components@22.13.1) (2025-10-07)
+
+### Bug Fixes
+
+- **inputdropdown:** fix label ([#1017](https://github.com/chanzuckerberg/sci-components/issues/1017)) ([b786962](https://github.com/chanzuckerberg/sci-components/commit/b7869626a9c628f8b32dc4ea1d4862b784bf8847))
+- **navigationheader:** fixes nav header dropdowns position ([#1019](https://github.com/chanzuckerberg/sci-components/issues/1019)) ([c586982](https://github.com/chanzuckerberg/sci-components/commit/c586982ff7603244feca13df212a1aa88dac4a42))
+- **storybook:** upgrade to Storybook v9 ([#1011](https://github.com/chanzuckerberg/sci-components/issues/1011)) ([949f132](https://github.com/chanzuckerberg/sci-components/commit/949f13293332f9be2f8c8492018c163c701ae552))
+
 # [22.13.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.12.0...@czi-sds/components@22.13.0) (2025-10-02)
 
 ### Features

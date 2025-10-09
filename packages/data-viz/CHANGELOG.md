@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.13.0...@czi-sds/data-viz@0.13.1) (2025-10-07)
+
+### Bug Fixes
+
+- **storybook:** upgrade to Storybook v9 ([#1011](https://github.com/chanzuckerberg/sci-components/issues/1011)) ([949f132](https://github.com/chanzuckerberg/sci-components/commit/949f13293332f9be2f8c8492018c163c701ae552))
+
 # [0.13.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.12.0...@czi-sds/data-viz@0.13.0) (2025-10-02)
 
 ### Features
