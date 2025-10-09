@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyXxxs,
@@ -19,19 +18,23 @@ export const ButtonIconsGroupRight = styled("div")`
       height: 100%;
       border-left: solid 1px ${semanticColors?.base?.divider};
       padding-left: ${spaces?.xs}px;
+
+      button {
+        margin: 0;
+      }
     `;
   }}
 `;
 
 export const ButtonIconsGroupBottom = styled("div")`
-  display: inline-flex;
-`;
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
 
-export const StyledButton = styled(Button)`
-  svg {
-    width: 12px;
-    height: 12px;
-  }
+    return `
+      display: inline-flex;
+      gap: ${spaces?.xs}px;
+    `;
+  }}
 `;
 
 export const EmptySlotRight = styled("div")`

@@ -1,5 +1,5 @@
 import React from "react";
-import { Args, Meta, StoryObj } from "@storybook/react";
+import { Args, Meta, StoryObj } from "@storybook/react-webpack5";
 import PreComposedTable from "../index";
 import {
   COLUMNS_DEFINITION,
@@ -7,7 +7,6 @@ import {
   SAMPLE_DATA,
   TABLE_ON_ROW_SELECT_OPTIONS,
 } from "./constants";
-import { BADGE } from "@geometricpanda/storybook-addon-badges";
 
 export default {
   argTypes: {
@@ -59,10 +58,8 @@ export default {
     },
   },
   component: PreComposedTable,
-  parameters: {
-    badges: [BADGE.BETA],
-  },
-  title: "Components/PreComposedTable [beta]",
+  tags: ["beta"],
+  title: "Components/PreComposedTable",
 } as Meta;
 
 type Story = StoryObj<typeof PreComposedTable<DataType>>;

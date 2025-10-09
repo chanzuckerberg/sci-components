@@ -24,7 +24,7 @@ export const StyledCellComponentData = styled.div`
       text-align: ${horizontalAlign};
       vertical-align: ${verticalAlign};
       overflow: hidden;
-      padding: ${spaces?.l}px ${spaces?.m}px;
+      padding: ${spaces?.m}px;
     `;
   }}
 `;

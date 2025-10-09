@@ -94,7 +94,7 @@ export const StyledCellIconWrapper = styled("div", {
     const spaces = getSpaces(props);
 
     return `
-      padding-right: ${spaces?.l}px;
+      padding-right: ${spaces?.m}px;
       display: flex;
       flex-direction: column;
       justify-content: ${verticalAlignToFlexMap[iconVerticalAlign]};
@@ -142,13 +142,12 @@ export const SecondaryText = styled("span", {
   ${(props: CellBasicExtraProps) => {
     const { secondaryTextWrapLineCount = 1, tabularNums = false } = props;
 
-    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       display: block;
       color: ${semanticColors?.base?.textSecondary};
-      padding-top: ${spaces?.xxxs}px;
+      padding-top: 0px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
@@ -174,7 +173,7 @@ export const TertiaryText = styled("span", {
     return `
       display: block;
       color: ${semanticColors?.base?.textSecondary};
-      padding-top: ${spaces?.s}px;
+      padding-top: ${spaces?.xxxs}px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
@@ -221,7 +220,7 @@ export const StyledTableData = styled.div`
 
     const spaces = getSpaces(props);
     return `
-        padding: ${spaces?.l}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.l}px ${spaces?.m}px;
+        padding: ${spaces?.m}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.m}px ${spaces?.m}px;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         overflow: hidden;
