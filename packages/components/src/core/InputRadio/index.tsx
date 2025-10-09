@@ -11,15 +11,26 @@ import {
   StyledRadioLabel,
 } from "./style";
 import React from "react";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 export interface RadioContentProps
   extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
-  caption?: string;
+  caption?: React.ReactNode;
   intent?: "default" | "negative" | "notice" | "positive";
   label?: React.ReactNode;
   radioProps?: Partial<MUIRadioProps>;
   stage?: "checked" | "unchecked";
   value?: string;
+  classes?: {
+    root?: string;
+    labelCaptionContainer?: string;
+    label?: string;
+    caption?: string;
+    radioButton?: string;
+    radioCheckedIcon?: string;
+    radioCheckedIconDot?: string;
+    radioDefaultIcon?: string;
+  };
 }
 
 export type RadioProps = RadioContentProps & RadioExtraProps;
@@ -35,11 +46,23 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     radioProps,
     stage,
     value,
+    classes = EMPTY_OBJECT,
   } = props;
 
   // (masoudmanson): We don't need to pass the label prop to the radio component
   // so we are destructuring it here.
   const { label, ...restProps } = props;
+
+  const {
+    root,
+    labelCaptionContainer,
+    label: labelClassName,
+    caption: captionClassName,
+    radioButton: radioButtonClassName,
+    radioCheckedIcon: radioCheckedIconClassName,
+    radioCheckedIconDot: radioCheckedIconDotClassName,
+    radioDefaultIcon: radioDefaultIconClassName,
+  }: RadioProps["classes"] = classes;
 
   let newProps: MUIRadioProps;
   switch (stage) {
@@ -67,13 +90,19 @@ const InputRadio = (props: RadioProps): JSX.Element => {
   const captionId = caption ? `${value}-caption` : undefined;
 
   const finalLabel = caption ? (
-    <StyledLabelContainer>
-      <StyledRadioLabel id={labelId}>{label}</StyledRadioLabel>
-      <StyledRadioCaption id={captionId}>{caption}</StyledRadioCaption>
+    <StyledLabelContainer className={labelCaptionContainer}>
+      <StyledRadioLabel id={labelId} className={labelClassName}>
+        {label}
+      </StyledRadioLabel>
+      <StyledRadioCaption id={captionId} className={captionClassName}>
+        {caption}
+      </StyledRadioCaption>
     </StyledLabelContainer>
   ) : (
-    <StyledLabelContainer>
-      <StyledRadioLabel id={labelId}>{label}</StyledRadioLabel>
+    <StyledLabelContainer className={labelCaptionContainer}>
+      <StyledRadioLabel id={labelId} className={labelClassName}>
+        {label}
+      </StyledRadioLabel>
     </StyledLabelContainer>
   );
 
@@ -81,12 +110,18 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledRadioButton
+          className={radioButtonClassName}
           checkedIcon={
-            <StyledRadioCheckedIcon>
-              <StyledRadioDot />
+            <StyledRadioCheckedIcon className={radioCheckedIconClassName}>
+              <StyledRadioDot className={radioCheckedIconDotClassName} />
             </StyledRadioCheckedIcon>
           }
-          icon={<StyledRadioDefaultIcon intent={intent} />}
+          icon={
+            <StyledRadioDefaultIcon
+              intent={intent}
+              className={radioDefaultIconClassName}
+            />
+          }
           intent={intent}
           {...radioProps}
           {...newProps}
@@ -95,6 +130,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
       disabled={disabled}
       label={finalLabel}
       value={value}
+      className={root}
     />
   );
 };
