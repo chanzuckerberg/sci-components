@@ -1,0 +1,82 @@
+{
+  "Hero": {
+    "props": {
+      "backgroundFill": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "captionText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "darkeningMask": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "darkeningMaskColor": {
+        "type": "string",
+        "isRequired": false
+      },
+      "darkeningMaskOpacity": {
+        "type": "number",
+        "isRequired": false
+      },
+      "darkeningVignette": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "hasInvertTextColor": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "headerFontSize": {
+        "type": "\"s\" | \"m\" | \"l\"",
+        "isRequired": false
+      },
+      "headerText": {
+        "type": "string",
+        "isRequired": false
+      },
+      "heroHeight": {
+        "type": "string",
+        "isRequired": false
+      },
+      "overlayContainerMinMargin": {
+        "type": "{ small: number; medium: number; large: number; }",
+        "isRequired": false
+      },
+      "overlayContentWidth": {
+        "type": "string",
+        "isRequired": false
+      },
+      "overlayContentPosition": {
+        "type": "\"left\" | \"center\" | \"right\" | \"top-left\" | \"top\" | \"top-right\" | \"bottom-left\" | \"bottom\" | \"bottom-right\"",
+        "isRequired": false
+      },
+      "overlayMedia": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
+      "overlayMediaPosition": {
+        "type": "\"left\" | \"center\" | \"right\" | \"top-left\" | \"top\" | \"top-right\" | \"bottom-left\" | \"bottom\" | \"bottom-right\"",
+        "isRequired": false
+      },
+      "overlayMediaMaxHeight": {
+        "type": "string",
+        "isRequired": false
+      },
+      "overlayMediaMaxWidth": {
+        "type": "string",
+        "isRequired": false
+      },
+      "overlayMediaMargin": {
+        "type": "\"string\" | \"{ small: string; medium: string; large: string; }\"",
+        "isRequired": false
+      },
+      "textAlignment": {
+        "type": "\"left\" | \"center\" | \"right\"",
+        "isRequired": false
+      }
+    }
+  }
+}
