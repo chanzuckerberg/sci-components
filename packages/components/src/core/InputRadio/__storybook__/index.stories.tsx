@@ -24,6 +24,9 @@ export default {
       },
       options: ["checked", "unchecked"],
     },
+    classes: {
+      control: { type: "object" },
+    },
   },
   component: InputRadio,
   title: "Components/Inputs/InputRadio",
@@ -37,6 +40,16 @@ export const Default = {
     disabled: false,
     intent: "default",
     label: "Label",
+    classes: {
+      root: "",
+      labelCaptionContainer: "",
+      label: "",
+      caption: "",
+      radioButton: "",
+      radioCheckedIcon: "",
+      radioCheckedIconDot: "",
+      radioDefaultIcon: "",
+    },
   },
 };
 
