@@ -6,6 +6,7 @@ import {
 import { ComplexFilter } from "./stories/default";
 import { TestDemo } from "./stories/test";
 import { AUTOCOMPLETE_DATA_OPTIONS } from "src/core/Autocomplete/__storybook__/constants";
+import { DROPDOWN_BUTTON_POSITION_OPTIONS } from "src/core/Dropdown/__storybook__/constants";
 
 export default {
   argTypes: {
@@ -57,6 +58,19 @@ export default {
         type: "boolean",
       },
     },
+    buttonPosition: {
+      control: {
+        labels: ["left", "right"],
+        type: "select",
+      },
+      mapping: DROPDOWN_BUTTON_POSITION_OPTIONS,
+      options: Object.keys(DROPDOWN_BUTTON_POSITION_OPTIONS),
+    },
+    buttons: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
   component: ComplexFilter,
   title: "Components/Dropdowns/ComplexFilter",
@@ -80,6 +94,8 @@ export const Default = {
     multiple: true,
     onChange: COMPLEX_FILTER_ON_CHANGE_OPTIONS[1],
     search: true,
+    buttonPosition: "left",
+    buttons: false,
   },
 };
 

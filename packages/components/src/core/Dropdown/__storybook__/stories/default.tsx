@@ -54,6 +54,8 @@ export const Dropdown = <
         width: 300,
         ...DropdownMenuProps,
       }}
+      onOpen={handleOpen}
+      onClose={handleClose}
       {...rest}
     />
   );
@@ -64,5 +66,13 @@ export const Dropdown = <
   ) {
     setValue(newValue);
     console.log("Dropdown Value:", newValue);
+  }
+
+  function handleOpen(_event: React.SyntheticEvent) {
+    console.log("Dropdown opened");
+  }
+
+  function handleClose(_event: React.SyntheticEvent, reason: string) {
+    console.log("Dropdown closed with reason:", reason);
   }
 };
