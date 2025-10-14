@@ -1,7 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import CellBasic from "src/core/CellBasic";
+import CellComponent from "src/core/CellComponent";
 import CellHeader from "src/core/CellHeader";
 import Link from "src/core/Link";
+import Tag from "src/core/Tag";
 
 export interface DataType {
   id: string;
@@ -185,14 +187,15 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
   {
     accessorKey: "status",
     cell: ({ getValue, ...props }) => (
-      <CellBasic
-        primaryText={getValue() as string}
-        shouldShowTooltipOnHover={false}
-        style={{
-          color: (getValue() as string) === "Active" ? "green" : "red",
-        }}
-        {...props}
-      />
+      <CellComponent {...props}>
+        <Tag
+          label={getValue() as string}
+          color={(getValue() as string) === "Active" ? "positive" : "negative"}
+          sdsStyle="rounded"
+          sdsType="secondary"
+          hover={false}
+        />
+      </CellComponent>
     ),
     header: "Status",
     minSize: 100,

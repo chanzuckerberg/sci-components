@@ -4,7 +4,6 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontHeaderS,
-  getBorders,
   getSemanticColors,
 } from "src/core/styles";
 
@@ -119,14 +118,33 @@ export const StyledTableRow = styled("tr", {
     } = props;
 
     const semanticColors = getSemanticColors(props);
-    const borders = getBorders(props);
 
     return `
       align-items: center;
-      border-bottom: ${useDivider ? borders?.base?.table : borders?.none};
       position: relative;
+      margin: 0;
+      padding: 0;
+      display: table-row;
+
+      ${
+        useDivider &&
+        `
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: ${semanticColors?.base?.borderSecondary};
+            z-index: 1;
+          }
+        `
+      }
 
       td, th {
+        margin: 0;
+        padding: 0;
         position: sticky !important;
         background-color: ${semanticColors?.base?.backgroundPrimary};
 

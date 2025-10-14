@@ -123,10 +123,6 @@ const small = (props: ButtonIconExtraProps): SerializedStyles => {
   const spaces = getSpaces(props);
 
   return css`
-    ${sdsType !== "tertiary"
-      ? `margin: 0 ${spaces?.xxs}px ${spaces?.xxs}px 0;`
-      : ""}
-
     .MuiSvgIcon-root {
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;

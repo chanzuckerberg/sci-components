@@ -81,7 +81,7 @@ export const StyledTableHeader = styled.div`
 
     return `
       color: ${defaultColor};
-      padding: ${spaces?.m}px;
+      padding: ${spaces?.m}px !important;
       text-align: ${horizontalAlign};
       cursor: ${hover ? "pointer" : "default"};
       vertical-align: bottom;

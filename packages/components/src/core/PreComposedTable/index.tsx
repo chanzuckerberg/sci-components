@@ -61,6 +61,7 @@ declare module "@tanstack/react-table" {
 export interface PreComposedTableProps<TData> {
   data: TData[];
   columns: ColumnDef<TData>[];
+  border?: boolean;
   enableSorting?: boolean;
   enableRowSelection?: boolean;
   shouldPinSelectRowToLeft?: boolean;
@@ -75,6 +76,7 @@ export interface PreComposedTableProps<TData> {
   tableWidth?: string;
   tableRowProps?: Partial<TableRowProps>;
   onRowSelect?: (selectedRows: TData[]) => void;
+  sdsStyle?: "lined" | "striped";
 }
 
 // Create context for row hover state
@@ -85,6 +87,7 @@ export const RowHoverContext = createContext<{ isRowHovered: boolean }>({
 const PreComposedTable = <TData extends RowData>({
   data,
   columns,
+  border = true,
   enableSorting = false,
   enableRowSelection = false,
   shouldPinSelectRowToLeft = true,
@@ -97,6 +100,7 @@ const PreComposedTable = <TData extends RowData>({
   tableWidth = "100%",
   onRowSelect,
   tableRowProps,
+  sdsStyle = "lined",
 }: PreComposedTableProps<TData>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
@@ -128,12 +132,12 @@ const PreComposedTable = <TData extends RowData>({
             return (
               <CellComponent
                 horizontalAlign="center"
-                verticalAlign="center"
+                verticalAlign="top"
+                {...props}
                 style={{
                   width: `${cell.column.getSize()}px`,
                   ...pinnedStyle,
                 }}
-                {...props}
               >
                 <InputCheckbox
                   stage={row.getIsSelected() ? "checked" : "unchecked"}
@@ -177,8 +181,9 @@ const PreComposedTable = <TData extends RowData>({
           id: SELECT_COLUMN_ID,
           meta: {
             pinning: shouldPinSelectRowToLeft ? ("left" as const) : undefined,
+            verticalAlign: "top" as const,
           },
-          size: 50,
+          size: 40,
         },
         ...columnsWithoutSelection,
       ];
@@ -293,6 +298,11 @@ const PreComposedTable = <TData extends RowData>({
           primaryText={cell.getValue() as string}
           shouldShowTooltipOnHover={false}
           shouldShowUndelineOnHover={false}
+          verticalAlign={
+            cell.column.columnDef.meta?.verticalAlign === "middle"
+              ? "center"
+              : cell.column.columnDef.meta?.verticalAlign
+          }
           style={{
             width: `${cell.column.getSize()}px`,
           }}
@@ -317,6 +327,11 @@ const PreComposedTable = <TData extends RowData>({
           style={{
             width: `${cell.column.getSize()}px`,
           }}
+          verticalAlign={
+            cell.column.columnDef.meta?.verticalAlign === "middle"
+              ? "center"
+              : cell.column.columnDef.meta?.verticalAlign
+          }
         />
       );
     }
@@ -324,7 +339,13 @@ const PreComposedTable = <TData extends RowData>({
     if (isPinned) {
       return (
         <RowHoverContext.Provider key={cell.id} value={{ isRowHovered }}>
-          <td style={{ ...pinnedStyle, width: `${cell.column.getSize()}px` }}>
+          <td
+            style={{
+              ...pinnedStyle,
+              width: `${cell.column.getSize()}px`,
+              verticalAlign: cell.column.columnDef.meta?.verticalAlign,
+            }}
+          >
             {cellContent}
           </td>
         </RowHoverContext.Provider>
@@ -422,7 +443,7 @@ const PreComposedTable = <TData extends RowData>({
         </div>
       )}
 
-      <StyledTableWrapper>
+      <StyledTableWrapper border={border} sdsStyle={sdsStyle}>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => {
@@ -442,6 +463,7 @@ const PreComposedTable = <TData extends RowData>({
                 onMouseEnter={() => setHoveredRowId(row.id)}
                 onMouseLeave={() => setHoveredRowId(null)}
                 selected={row.getIsSelected()}
+                aria-selected={row.getIsSelected()}
                 {...tableRowProps}
               >
                 {row.getVisibleCells().map((cell: Cell<TData, unknown>) => {

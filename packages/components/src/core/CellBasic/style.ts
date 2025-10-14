@@ -220,7 +220,7 @@ export const StyledTableData = styled.div`
 
     const spaces = getSpaces(props);
     return `
-        padding: ${spaces?.m}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.m}px ${spaces?.m}px;
+        padding: ${spaces?.m}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.m}px ${spaces?.m}px !important;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         overflow: hidden;

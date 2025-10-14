@@ -1,26 +1,108 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSemanticColors, getSpaces } from "../styles";
+import {
+  CommonThemeProps,
+  getCorners,
+  getSemanticColors,
+  getSpaces,
+} from "../styles";
 import InputSearch from "../InputSearch";
+import { css } from "@emotion/react";
 
 export const StyledTableContainer = styled.div`
   width: 100%;
   overflow: hidden;
 `;
 
-export const StyledTableWrapper = styled.div`
-  ${(props: { border?: boolean } & CommonThemeProps) => {
-    const { border = true } = props;
-    const semanticColors = getSemanticColors(props);
+export const stripedStyle = (props: CommonThemeProps) => {
+  const semanticColors = getSemanticColors(props);
 
-    return `
+  return `
+    tr {
+      border: none !important;
+      box-shadow: none !important;
+      &:after {
+        display: none !important;
+      }
+    }
+
+    tr:nth-of-type(odd) {
+      background-color: ${semanticColors?.base?.backgroundSecondary};
+
+      td, th {
+        background-color: ${semanticColors?.base?.backgroundSecondary};
+
+        &::before {
+          background-color: ${semanticColors?.base?.backgroundSecondary};
+        }
+      }
+
+      &:hover {
+        td, th {
+          position: relative;
+          background-color: ${semanticColors?.base?.backgroundPrimary};
+
+          &:before {
+            background-color: ${semanticColors?.base?.fillHover};
+          }
+        }
+      }
+    }
+
+    tr[aria-selected="true"]:nth-of-type(odd) {
+      background-color: ${semanticColors?.accent?.surfaceSecondary};
+
+      td, th {
+        background-color: ${semanticColors?.accent?.surfaceSecondary};
+
+        &::before {
+          background-color: ${semanticColors?.accent?.surfaceSecondary};
+        }
+      }
+
+      &:hover {
+        td, th {
+          position: relative;
+          background-color: ${semanticColors?.accent?.surfaceSecondary};
+
+          &:before {
+            background-color: ${semanticColors?.base?.fillHover};
+          }
+        }
+      }
+    }
+  `;
+};
+
+export const StyledTableWrapper = styled.div`
+  ${(
+    props: {
+      border?: boolean;
+      sdsStyle?: "lined" | "striped";
+    } & CommonThemeProps
+  ) => {
+    const { border = true, sdsStyle = "lined" } = props;
+    const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+
+    return css`
       width: 100%;
       overflow-x: auto;
-      border: 1px solid ${border ? semanticColors?.base?.borderSecondary : "transparent"};
-      border-bottom: none;
+      border: 1px solid
+        ${border ? semanticColors?.base?.borderSecondary : "transparent"};
+      border-radius: ${border ? corners?.xl : 0}px;
 
-      table {
+      tbody {
         width: 100%;
         min-width: max-content;
+
+        ${sdsStyle === "striped" && stripedStyle(props)}
+
+        tr:last-child {
+          border-bottom: none;
+          &:after {
+            display: none !important;
+          }
+        }
       }
     `;
   }}

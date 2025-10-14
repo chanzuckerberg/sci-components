@@ -10,6 +10,10 @@ import {
 
 export default {
   argTypes: {
+    border: {
+      control: "boolean",
+      description: "Show border",
+    },
     columns: {
       control: false,
       description:
@@ -52,6 +56,11 @@ export default {
       control: "boolean",
       description: "Pin the select row to the left",
     },
+    sdsStyle: {
+      control: "inline-radio",
+      description: "Style of the table",
+      options: ["lined", "striped"],
+    },
     tableRowProps: {
       control: "object",
       description: "Props to pass to the table row",
@@ -76,6 +85,8 @@ export const Default: Story = {
     paginationConfig: { pageSize: 10 },
     shouldPinSelectRowToLeft: true,
     tableWidth: "100%",
+    border: true,
+    sdsStyle: "lined",
   },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
