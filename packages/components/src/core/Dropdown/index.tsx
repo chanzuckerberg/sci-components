@@ -60,6 +60,11 @@ export interface ExtraDropdownProps<
   className?: string;
   InputDropdownComponent?: typeof InputDropdown;
   isTriggerChangeOnOptionClick?: boolean;
+  onOpen?: (event: React.SyntheticEvent) => void;
+  onClose?: (
+    event: React.SyntheticEvent,
+    reason: AutocompleteCloseReason
+  ) => void;
 }
 
 type CustomAutocompleteProps<
@@ -238,6 +243,7 @@ const Dropdown = <
     // unapplied changes.
     closeOnBlur = !buttons,
     onClose,
+    onOpen,
     onChange,
     title,
     DropdownMenuProps = {},
@@ -405,6 +411,7 @@ const Dropdown = <
         }
         setAnchorEl(event.currentTarget);
         setOpen(true);
+        onOpen?.(event);
       }
     },
     [
@@ -415,6 +422,7 @@ const Dropdown = <
       setPendingValue,
       value,
       handleDropdownClose,
+      onOpen,
     ]
   );
 
@@ -492,7 +500,13 @@ const Dropdown = <
 
     anchorEl?.focus();
     setOpen(false);
-  }, [multiple, setPendingValue, value, anchorEl]);
+
+    // Create a synthetic event for the onClose callback
+    const syntheticEvent = new Event(
+      "cancel"
+    ) as unknown as React.SyntheticEvent;
+    onClose?.(syntheticEvent, "escape");
+  }, [multiple, setPendingValue, value, anchorEl, onClose]);
 
   // Helper function to count multi-column selections
   const countMultiColumnSelections = useCallback(
@@ -570,6 +584,7 @@ const Dropdown = <
         open={open}
         search={search}
         onClose={handleClose}
+        onOpen={onOpen}
         multiple={multiple as Multiple}
         disableCloseOnSelect={multiple}
         options={options}

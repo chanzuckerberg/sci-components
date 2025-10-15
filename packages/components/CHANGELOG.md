@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.13.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.2...@czi-sds/components@22.13.3) (2025-10-15)
+
+### Bug Fixes
+
+- **complexfilter:** exposed new onopen and onclose events ([#1023](https://github.com/chanzuckerberg/sci-components/issues/1023)) ([71eb3c5](https://github.com/chanzuckerberg/sci-components/commit/71eb3c50c61200c56c79e2b45a7fc3a81a90f4cd))
+
 ## [22.13.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.1...@czi-sds/components@22.13.2) (2025-10-10)
 
 **Note:** Version bump only for package @czi-sds/components
