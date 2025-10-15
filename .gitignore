@@ -122,4 +122,4 @@ storybook-static
 packages/components/ai_task_docs/*
 
 # SWC
-.swc/.swc/
+.swc/
