@@ -5,7 +5,7 @@ exports[`<CellComponent /> Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class="cell-component css-c6mry2"
+        class="cell-component css-z83krp"
         data-testid="CellComponent"
       >
         <p>

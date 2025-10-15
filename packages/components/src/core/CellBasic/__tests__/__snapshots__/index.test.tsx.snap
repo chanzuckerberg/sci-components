@@ -5,7 +5,7 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
         tabindex="0"
@@ -27,7 +27,7 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
               </div>
             </div>
             <span
-              class="css-7ykbdx"
+              class="css-96arrn"
             >
               Secondary Text
             </span>

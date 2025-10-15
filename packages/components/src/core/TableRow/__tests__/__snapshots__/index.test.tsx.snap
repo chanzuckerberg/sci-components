@@ -6,12 +6,12 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
 >
   <tbody>
     <tr
-      class="css-8h6hwo"
+      class="css-39qyyk"
       data-mui-internal-clone-element="true"
       tabindex="0"
     >
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
       >
         <div
           class="css-ov1ktg"
@@ -32,7 +32,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
       >
         <div
           class="css-ov1ktg"
@@ -53,7 +53,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
       >
         <div
           class="css-ov1ktg"
@@ -74,7 +74,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
       >
         <div
           class="css-ov1ktg"
@@ -95,7 +95,7 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1oy0dpy"
+        class="css-1n3e3zg"
       >
         <div
           class="css-ov1ktg"

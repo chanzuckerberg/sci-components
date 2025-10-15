@@ -3,13 +3,13 @@
 exports[`<TableHeader /> Default story renders snapshot 1`] = `
 <table>
   <thead
-    class="css-1426k2b"
+    class="css-81dr9a"
   >
     <tr
-      class="css-18e0zku"
+      class="css-1onol4"
     >
       <th
-        class="css-1qkrocy"
+        class="css-1w3fh4t"
       >
         <div
           class="css-rm9mvq"
@@ -37,7 +37,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1qkrocy"
+        class="css-1w3fh4t"
       >
         <div
           class="css-rm9mvq"
@@ -65,7 +65,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-1qkrocy"
+        class="css-1w3fh4t"
       >
         <div
           class="css-rm9mvq"
