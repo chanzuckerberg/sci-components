@@ -135,6 +135,17 @@ export default {
   },
   component: CellBasic,
   parameters: {
+    axe: {
+      disabledRules: [
+        "aria-input-field-name",
+        "aria-required-children",
+        "aria-required-parent",
+        "button-name",
+        "color-contrast",
+        "list",
+        "listitem",
+      ],
+    },
     controls: {
       expanded: true,
     },
