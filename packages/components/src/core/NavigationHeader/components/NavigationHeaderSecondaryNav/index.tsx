@@ -13,7 +13,7 @@ import MenuItem from "src/core/MenuItem";
 import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
-import { useTheme } from "@mui/material";
+import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
 import { StyledAccordion } from "../../style";
@@ -35,12 +35,14 @@ export type NavigationHeaderSecondaryNavItem =
   | DropdownHeaderSecondaryNavItem;
 
 export interface NavigationHeaderSecondaryNavProps {
+  menuProps?: Partial<MenuProps>;
   items: NavigationHeaderSecondaryNavItem[];
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
 }
 
 export default function NavigationHeaderSecondaryNav({
+  menuProps,
   items,
   hasInvertedStyle,
   isNarrow,
@@ -133,6 +135,8 @@ export default function NavigationHeaderSecondaryNav({
                   horizontal: "left",
                   vertical: "top",
                 }}
+                {...menuProps}
+                disablePortal
               >
                 {(() => {
                   const groupedItems = groupItemsBySection(item.items);

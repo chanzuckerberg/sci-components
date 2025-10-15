@@ -26,6 +26,11 @@ export const ComplexFilter = <
           option.section as string,
         ...DropdownMenuProps,
       }}
+      onOpen={(event) => console.log("onOpen complex filter", event)}
+      onClose={(_event, reason) =>
+        console.log("onClose complex filter", reason)
+      }
+      buttons={false}
       {...rest}
     />
   );

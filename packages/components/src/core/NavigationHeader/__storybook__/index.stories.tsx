@@ -19,6 +19,15 @@ export default {
         },
       },
     },
+    menuProps: {
+      control: { type: "object" },
+      description: "Props for the menu component.",
+      table: {
+        defaultValue: {
+          summary: "-",
+        },
+      },
+    },
     hasInvertedStyle: {
       control: { type: "boolean" },
       description: "Invert the colors of the navigation header.",
@@ -186,6 +195,10 @@ export const Default = {
         onClick: () => alert("clicked on my profile"),
       },
     ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
     hasInvertedStyle: false,
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
@@ -273,6 +286,10 @@ export const DropdownWithSections = {
         onClick: () => alert("clicked on my profile"),
       },
     ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
     primaryNavItems: [
       {
         itemType: "text",
