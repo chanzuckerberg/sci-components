@@ -1,4 +1,5 @@
 import {
+  AutocompleteCloseReason,
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
   ClickAwayListener,
@@ -70,6 +71,11 @@ interface ExtraDropdownMenuProps extends StyleProps {
   onClickAway?: (event: MouseEvent | TouchEvent) => void;
   ClickAwayListenerProps?: Partial<MUIClickAwayListenerProps>;
   width?: number | CSSProperties["width"];
+  onOpen?: (event: React.SyntheticEvent) => void;
+  onClose?: (
+    event: React.SyntheticEvent,
+    reason: AutocompleteCloseReason
+  ) => void;
 }
 
 type CustomAutocompleteProps<
@@ -123,6 +129,8 @@ const DropdownMenu = <
     onClickAway = noop,
     ClickAwayListenerProps,
     width = MINIMUM_DROPDOWN_MENU_POPPER_WIDTH,
+    onOpen,
+    onClose,
     ...rest
   } = props;
 
@@ -193,6 +201,8 @@ const DropdownMenu = <
                 disablePortal
                 onClickAway={noop}
                 onClick={noop}
+                onOpen={onOpen}
+                onClose={onClose}
                 {...rest}
                 InputBaseProps={DefaultInputBaseProps}
               />
