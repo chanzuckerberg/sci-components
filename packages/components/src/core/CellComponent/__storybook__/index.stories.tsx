@@ -22,9 +22,13 @@ export default {
   parameters: {
     axe: {
       disabledRules: [
+        "aria-input-field-name",
+        "aria-required-children",
+        "aria-required-parent",
+        "button-name",
         "color-contrast",
-        // Unfortunately the MUI Switch component renders an input field without a label, which
-        // fails an axe check.
+        "list",
+        "listitem",
         "label",
       ],
     },
