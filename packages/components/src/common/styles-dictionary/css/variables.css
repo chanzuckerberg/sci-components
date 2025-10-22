@@ -368,6 +368,30 @@
       Helvetica, Arial, sans-serif;
     --sds-font-body-xxxs-600-letter-spacing: 0.06px;
     --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -824,6 +848,36 @@
     --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
     --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
     --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-600-letter-spacing-narrow: -0.25px;
     --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -1240,6 +1294,30 @@
       Helvetica, Arial, sans-serif;
     --sds-font-body-xxxs-600-letter-spacing: 0.06px;
     --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -1696,6 +1774,36 @@
     --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
     --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
     --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-600-letter-spacing-narrow: -0.25px;
     --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;

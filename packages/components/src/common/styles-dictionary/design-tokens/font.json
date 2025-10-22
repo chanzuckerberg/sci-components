@@ -193,6 +193,38 @@
               "value": "0.06px"
             }
           }
+        },
+        "xxxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 10px/14px {sds.font.font-family.body.narrowValue}",
+              "value": "400 10px/14px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 10px/14px {sds.font.font-family.body.narrowValue}",
+              "value": "500 10px/14px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 10px/14px {sds.font.font-family.body.narrowValue}",
+              "value": "600 10px/14px {sds.font.font-family.body.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            }
+          }
         }
       },
       "caps": {
@@ -872,6 +904,50 @@
             "font": {
               "narrowValue": "600 11px/16px {sds.font.font-family.tabular.narrowValue}",
               "value": "600 11px/16px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          }
+        },
+        "xxxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 10px/14px {sds.font.font-family.tabular.narrowValue}",
+              "value": "400 10px/14px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 10px/14px {sds.font.font-family.tabular.narrowValue}",
+              "value": "500 10px/14px {sds.font.font-family.tabular.value}"
+            },
+            "font-variant-numeric": {
+              "narrowValue": "tabular-nums",
+              "value": "tabular-nums"
+            },
+            "letter-spacing": {
+              "narrowValue": "-0.25px",
+              "value": "-0.25px"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 10px/14px {sds.font.font-family.tabular.narrowValue}",
+              "value": "600 10px/14px {sds.font.font-family.tabular.value}"
             },
             "font-variant-numeric": {
               "narrowValue": "tabular-nums",

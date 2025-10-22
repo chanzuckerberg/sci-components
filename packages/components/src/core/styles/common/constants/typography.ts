@@ -3,6 +3,7 @@
 export const FontSizeValues = {
   wide: {
     body: {
+      xxxxs: 10,
       xxxs: 11,
       xxs: 12,
       xs: 13,
@@ -30,6 +31,7 @@ export const FontSizeValues = {
       xxxxs: 10,
     },
     tabular: {
+      xxxxs: 10,
       xxxs: 11,
       xxs: 12,
       xs: 13,
@@ -43,6 +45,7 @@ export const FontSizeValues = {
   },
   narrow: {
     body: {
+      xxxxs: 10,
       xxxs: 12,
       xxs: 12,
       xs: 13,
@@ -70,6 +73,7 @@ export const FontSizeValues = {
       xxxxs: 11,
     },
     tabular: {
+      xxxxs: 10,
       xxxs: 11,
       xxs: 12,
       xs: 13,
@@ -86,6 +90,7 @@ export const FontSizeValues = {
 export const LineHeightValues = {
   wide: {
     body: {
+      xxxxs: 14,
       xxxs: 16,
       xxs: 18,
       xs: 20,
@@ -113,6 +118,7 @@ export const LineHeightValues = {
       xxxxs: 14,
     },
     tabular: {
+      xxxxs: 14,
       xxxs: 16,
       xxs: 18,
       xs: 20,
@@ -126,6 +132,7 @@ export const LineHeightValues = {
   },
   narrow: {
     body: {
+      xxxxs: 14,
       xxxs: 18,
       xxs: 18,
       xs: 20,
@@ -153,6 +160,7 @@ export const LineHeightValues = {
       xxxxs: 16,
     },
     tabular: {
+      xxxxs: 14,
       xxxs: 16,
       xxs: 18,
       xs: 20,
@@ -169,6 +177,7 @@ export const LineHeightValues = {
 export const LetterSpacingValues = {
   wide: {
     body: {
+      xxxxs: "0.06px",
       xxxs: "0.06px",
       xxs: "0.06px",
       xs: "0px",
@@ -196,6 +205,7 @@ export const LetterSpacingValues = {
       xxxxs: "0.4px",
     },
     tabular: {
+      xxxxs: "-0.25px",
       xxxs: "-0.25px",
       xxs: "-0.25px",
       xs: "-0.3px",
@@ -209,6 +219,7 @@ export const LetterSpacingValues = {
   },
   narrow: {
     body: {
+      xxxxs: "0.06px",
       xxxs: "0.06px",
       xxs: "0.06px",
       xs: "0px",
@@ -236,6 +247,7 @@ export const LetterSpacingValues = {
       xxxxs: "0.4px",
     },
     tabular: {
+      xxxxs: "-0.25px",
       xxxs: "-0.25px",
       xxs: "-0.25px",
       xs: "-0.3px",
@@ -252,7 +264,7 @@ export const LetterSpacingValues = {
 export const TypographyCategories = {
   body: {
     weights: ["regular", "medium", "semibold"],
-    sizes: ["l", "m", "s", "xs", "xxs", "xxxs"],
+    sizes: ["l", "m", "s", "xs", "xxs", "xxxs", "xxxxs"],
   },
   header: {
     weights: ["semibold"],
@@ -268,7 +280,7 @@ export const TypographyCategories = {
   },
   tabular: {
     weights: ["regular", "medium", "semibold"],
-    sizes: ["s", "xs", "xxs", "xxxs"],
+    sizes: ["s", "xs", "xxs", "xxxs", "xxxxs"],
   },
   title: {
     weights: ["bold"],

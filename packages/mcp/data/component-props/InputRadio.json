@@ -2,7 +2,7 @@
   "InputRadio": {
     "props": {
       "caption": {
-        "type": "string",
+        "type": "ReactNode",
         "isRequired": false
       },
       "disabled": {
@@ -21,6 +21,11 @@
       "stage": {
         "type": "\"checked\" | \"unchecked\"",
         "isRequired": false
+      },
+      "classes": {
+        "type": "complex",
+        "isRequired": false,
+        "description": "Override or extend the styles applied to the component."
       }
     }
   }

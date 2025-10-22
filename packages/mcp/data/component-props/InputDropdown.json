@@ -42,7 +42,7 @@
         "isRequired": false
       },
       "width": {
-        "type": "number",
+        "type": "string",
         "isRequired": false
       }
     }
