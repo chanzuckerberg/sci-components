@@ -17,7 +17,6 @@ const Link = forwardRef(
     ref: ForwardedRef<HTMLAnchorElement>
   ) => {
     const { sdsStyle = "default", ...rest } = props;
-    // const resolvedSdsStyle = sdsStyle ?? "default";
 
     return (
       <StyledLink
