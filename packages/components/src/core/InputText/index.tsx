@@ -32,6 +32,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       sdsType,
       hideLabel,
       classes = EMPTY_OBJECT,
+      className,
       ...rest
     } = props;
 
@@ -83,7 +84,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       <div className={rootClassName}>
         {!hideLabel && finalLabel}
         <StyledInputBase
-          className={inputClassName}
+          className={`${inputClassName} ${className}`}
           ref={ref ? ref : inputRef}
           inputProps={inputProps}
           type="text"

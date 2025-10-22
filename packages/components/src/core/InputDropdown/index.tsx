@@ -54,6 +54,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
     shouldPutAColonAfterLabel = true,
     value,
     classes = EMPTY_OBJECT,
+    className,
   } = props;
   const sdsStyle = validateSdsStyle(rawSdsStyle);
 
@@ -81,7 +82,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown
       {...props}
-      className={rootClassName}
+      className={`${rootClassName} ${className}`}
       sdsStyle={sdsStyle}
       aria-label="Dropdown input"
     >

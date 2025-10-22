@@ -47,6 +47,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     stage,
     value,
     classes = EMPTY_OBJECT,
+    className,
   } = props;
 
   // (masoudmanson): We don't need to pass the label prop to the radio component
@@ -130,7 +131,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
       disabled={disabled}
       label={finalLabel}
       value={value}
-      className={root}
+      className={`${root} ${className}`}
     />
   );
 };

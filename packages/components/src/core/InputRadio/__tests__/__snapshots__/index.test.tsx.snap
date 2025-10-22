@@ -7,7 +7,7 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-bwsowe-MuiFormControlLabel-root"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd undefined css-bwsowe-MuiFormControlLabel-root"
   >
     <span
       caption="Caption"

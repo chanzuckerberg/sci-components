@@ -47,6 +47,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       onChange,
       disabled,
       classes = EMPTY_OBJECT,
+      className,
       ...rest
     } = props;
 
@@ -127,7 +128,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
         <StyledSearchBase
           id={id}
           ref={ref ? ref : inputRef}
-          className={inputClassName}
+          className={`${inputClassName} ${className}`}
           // passed to mui Input
           InputProps={{
             endAdornment: value ? (

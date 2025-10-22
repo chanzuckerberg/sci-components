@@ -46,6 +46,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
     stage,
     value,
     classes = EMPTY_OBJECT,
+    className,
     ...rest
   } = props;
 
@@ -136,7 +137,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
       disabled={disabled}
       label={finalLabel}
       value={value}
-      className={rootClassName}
+      className={`${rootClassName} ${className}`}
     />
   );
 };

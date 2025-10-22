@@ -21,7 +21,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         <div
           aria-hidden="false"
           aria-label="Search Input"
-          class="MuiFormControl-root MuiTextField-root css-w2vqit-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root undefined css-w2vqit-MuiFormControl-root-MuiTextField-root"
           tabindex="0"
         >
           <div
