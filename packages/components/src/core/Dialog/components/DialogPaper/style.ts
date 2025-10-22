@@ -47,7 +47,7 @@ export const StyledPaper = styled(Paper, {
 `;
 
 function paperDimensions(props: StyledPaperProps) {
-  const { sdsSize } = props;
+  const { sdsSize = "m" } = props;
 
   const sizeToDimensions = {
     l: {

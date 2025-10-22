@@ -14,7 +14,7 @@ import ContentCardTitle, {
 import ContentCardActions, {
   ContentCardActionsProps,
 } from "./components/ContentCardActions";
-import { EMPTY_OBJECT, mergeRefs } from "src/common/utils";
+import { EMPTY_OBJECT, mergeRefs, cn } from "src/common/utils";
 import ContentCardImageMedia from "./components/ContentCardImageMedia";
 import {
   CONTENT_CARD_DEFAULT_IMAGE_MEDIA_SIZE,
@@ -162,10 +162,13 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
           imageSize={imageSize}
           image={image}
           imagePosition={imagePosition}
-          className={cardMedia}
+          className={cn(cardMedia)}
         />
       ) : visualElementType === "icon" && icon ? (
-        <StyledIconMediaWrapper boundingBox={boundingBox} className={cardMedia}>
+        <StyledIconMediaWrapper
+          boundingBox={boundingBox}
+          className={cn(cardMedia)}
+        >
           {icon}
         </StyledIconMediaWrapper>
       ) : null;
@@ -176,7 +179,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         <StyledCardContent
           boundingBox={boundingBox}
           clickableCard={clickableCard}
-          className={cardContent}
+          className={cn(cardContent)}
         >
           <ContentCardTitle
             overlineText={overlineText}
@@ -211,7 +214,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
         {...props}
         sdsType={dynamicSdsType}
         boundingBox={boundingBox}
-        className={cardPaper}
+        className={cn(cardPaper)}
       >
         {clickableCard ? (
           <StyledCardActionArea
@@ -223,7 +226,7 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}
-            className={clickableCardButton}
+            className={cn(clickableCardButton)}
           >
             {cardInnerContent}
           </StyledCardActionArea>

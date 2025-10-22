@@ -156,8 +156,12 @@ function addFontData(typography, data, fontValue, name) {
       fontWeight: parsedFont.weight,
       letterSpacing: fontValue["letter-spacing"].value || "0px",
       lineHeight: parsedFont.lineHeight,
-      textDecoration: fontValue["text-decoration"]?.value || "none",
-      textTransform: fontValue["text-transform"]?.value || "none",
+      ...(fontValue["text-decoration"]?.value && {
+        textDecoration: fontValue["text-decoration"]?.value,
+      }),
+      ...(fontValue["text-transform"]?.value && {
+        textTransform: fontValue["text-transform"]?.value,
+      }),
     };
 
     // Add to typography
@@ -167,8 +171,8 @@ function addFontData(typography, data, fontValue, name) {
     data.fontSize[key] = parsedFont.size;
     data.lineHeight[key] = parsedFont.lineHeight;
     data.letterSpacing[key] = sharedStyles.letterSpacing;
-    data.textDecoration[key] = sharedStyles.textDecoration;
-    data.textTransform[key] = sharedStyles.textTransform;
+    data.textDecoration[key] = sharedStyles.textDecoration || "none";
+    data.textTransform[key] = sharedStyles.textTransform || "none";
     data.fontVariantNumeric[key] = sharedStyles.fontVariantNumeric;
   });
 }

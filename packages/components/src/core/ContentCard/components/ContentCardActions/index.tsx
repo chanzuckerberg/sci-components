@@ -6,7 +6,7 @@ import {
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
 import { ContentCardProps } from "../..";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface ContentCardActionsProps {
   buttonsPosition?: "left" | "right";
@@ -86,7 +86,7 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
         <StyledCardActions
           ref={ref}
           buttonsPosition={buttonsPosition}
-          className={cardActions}
+          className={cn(cardActions)}
         >
           {[
             React.cloneElement(
@@ -105,7 +105,7 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
       <StyledCardActions
         ref={ref}
         buttonsPosition={buttonsPosition}
-        className={cardActions}
+        className={cn(cardActions)}
       >
         {validChildren}
       </StyledCardActions>

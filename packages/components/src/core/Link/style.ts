@@ -1,29 +1,18 @@
 import { css } from "@emotion/react";
-import { Link, LinkProps as RawLinkProps } from "@mui/material";
+import { Link } from "@mui/material";
 import styled from "@emotion/styled";
 import {
-  CommonThemeProps as StyleProps,
+  CommonThemeProps,
   focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXs,
   getSemanticColors,
 } from "src/core/styles";
-
-// (thuang): Support `component` prop
-// https://stackoverflow.com/a/66123108
-export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<
-  C,
-  { component?: C }
-> &
-  StyleProps & {
-    fontWeight?: "normal" | "bold";
-    sdsStyle?: "default" | "dashed";
-    sdsSize?: "xs" | "s";
-  };
+import { LinkProps } from ".";
 
 const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];
 
-const defaultStyle = (props: LinkProps) => {
+const defaultStyle = (props: LinkProps & CommonThemeProps) => {
   const semanticColors = getSemanticColors(props);
 
   return css`
@@ -65,11 +54,11 @@ const dashedStyle = () => {
   `;
 };
 
-const smallStyle = (props: LinkProps) => {
+const smallStyle = (props: LinkProps & CommonThemeProps) => {
   return fontBodyS(props);
 };
 
-const extraSmallStyle = (props: LinkProps) => {
+const extraSmallStyle = (props: LinkProps & CommonThemeProps) => {
   return fontBodyXs(props);
 };
 
@@ -82,8 +71,12 @@ export const StyledLink = styled(Link, {
 
   ${focusVisibleA11yStyle}
 
-  ${(props: LinkProps) => {
-    const { fontWeight = "normal", sdsStyle, sdsSize = "s" } = props;
+  ${(props: LinkProps & CommonThemeProps) => {
+    const {
+      fontWeight = "normal",
+      sdsStyle = "default",
+      sdsSize = "s",
+    } = props;
 
     return css`
       ${sdsStyle === "default" && defaultStyle(props)}

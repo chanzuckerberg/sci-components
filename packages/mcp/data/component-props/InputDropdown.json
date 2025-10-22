@@ -5,6 +5,10 @@
         "type": "ReactNode",
         "isRequired": false
       },
+      "classes": {
+        "type": "complex",
+        "isRequired": false
+      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
