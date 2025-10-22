@@ -10,7 +10,7 @@ import {
   StyledIcon,
   StyledLabelContainer,
 } from "./styles";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 interface CheckboxContentProps
   extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
@@ -90,17 +90,17 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
   }
 
   const finalLabel = caption ? (
-    <StyledLabelContainer className={labelCaptionContainerClassName}>
-      <StyledCheckboxLabel className={labelClassName}>
+    <StyledLabelContainer className={cn(labelCaptionContainerClassName)}>
+      <StyledCheckboxLabel className={cn(labelClassName)}>
         {label}
       </StyledCheckboxLabel>
-      <StyledCheckboxCaption className={captionClassName}>
+      <StyledCheckboxCaption className={cn(captionClassName)}>
         {caption}
       </StyledCheckboxCaption>
     </StyledLabelContainer>
   ) : (
-    <StyledLabelContainer className={labelCaptionContainerClassName}>
-      <StyledCheckboxLabel className={labelClassName}>
+    <StyledLabelContainer className={cn(labelCaptionContainerClassName)}>
+      <StyledCheckboxLabel className={cn(labelClassName)}>
         {label}
       </StyledCheckboxLabel>
     </StyledLabelContainer>
@@ -110,21 +110,23 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledCheckbox
-          className={checkboxClassName}
+          className={cn(checkboxClassName)}
           checkedIcon={
-            <StyledCheckboxCheckedIcon className={checkboxCheckedIconClassName}>
+            <StyledCheckboxCheckedIcon
+              className={cn(checkboxCheckedIconClassName)}
+            >
               <StyledIcon sdsIcon="Check" sdsSize="xs" />
             </StyledCheckboxCheckedIcon>
           }
           icon={
             <StyledCheckboxDefaultIcon
               intent={intent}
-              className={checkboxDefaultIconClassName}
+              className={cn(checkboxDefaultIconClassName)}
             />
           }
           indeterminateIcon={
             <StyledCheckboxCheckedIcon
-              className={checkboxIndeterminateIconClassName}
+              className={cn(checkboxIndeterminateIconClassName)}
             >
               <StyledIcon sdsIcon="Minus" sdsSize="xs" />
             </StyledCheckboxCheckedIcon>
@@ -137,7 +139,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
       disabled={disabled}
       label={finalLabel}
       value={value}
-      className={`${rootClassName} ${className}`}
+      className={cn(rootClassName, className)}
     />
   );
 };

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InputText /> Default story renders snapshot 1`] = `
-<div
-  class=""
->
+<div>
   <label
     class="css-1n9rsuo"
     for="Test"
@@ -11,7 +9,7 @@ exports[`<InputText /> Default story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root undefined css-1lqcwpy-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-1lqcwpy-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"

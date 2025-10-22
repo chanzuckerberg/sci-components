@@ -8,7 +8,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary undefined undefined css-1fq3qm2-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1fq3qm2-MuiButtonBase-root-MuiButton-root"
     label="Click Target"
     tabindex="0"
     type="button"
@@ -19,7 +19,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     >
       <div>
         <span
-          class="styled-label undefined css-1ubkbz8"
+          class="styled-label css-1ubkbz8"
         >
           Click Target
         </span>

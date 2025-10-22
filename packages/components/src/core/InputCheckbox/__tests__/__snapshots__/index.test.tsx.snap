@@ -2,7 +2,7 @@
 
 exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
 <label
-  class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd undefined css-15m8e9h-MuiFormControlLabel-root"
+  class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-15m8e9h-MuiFormControlLabel-root"
 >
   <span
     class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium css-5zzv6g-MuiButtonBase-root-MuiCheckbox-root"

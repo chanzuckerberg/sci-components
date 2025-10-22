@@ -6,7 +6,7 @@ import React, { ComponentType, forwardRef } from "react";
 import DialogPaper, { DialogPaperProps } from "./components/DialogPaper";
 import DialogTitle from "./components/DialogTitle";
 import DialogActions from "./components/DialogActions";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface DialogExtraProps {
   canClickOutsideClose?: boolean;
@@ -50,7 +50,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         <PaperComponent
           {...paperProps}
           sdsSize={sdsSize}
-          className={`${paperClassName} ${paperProps.className}`}
+          className={cn(paperClassName, paperProps.className)}
         />
       ),
       [PaperComponent, paperClassName, sdsSize]
@@ -59,7 +59,7 @@ const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     return (
       <RawDialog
         ref={ref}
-        className={rootClassName}
+        className={cn(rootClassName)}
         PaperComponent={PaperWithSize}
         onClose={(
           event: React.SyntheticEvent<Element, Event>,

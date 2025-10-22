@@ -8,7 +8,7 @@ import {
   Title,
   Overline,
 } from "./style";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export {
   Subtitle as DialogTitleSubtitle,
@@ -57,7 +57,7 @@ const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
       <StyledDialogTitle
         ref={ref}
         sdsSize={sdsSize}
-        className={rootClassName}
+        className={cn(rootClassName)}
         {...rest}
       >
         {children || (
@@ -66,16 +66,16 @@ const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
               <CloseButton
                 onClick={onClose}
                 dialogSize={sdsSize}
-                className={closeButtonClassName}
+                className={cn(closeButtonClassName)}
               />
             )}
-            <Overline sdsSize={sdsSize} className={overlineClassName}>
+            <Overline sdsSize={sdsSize} className={cn(overlineClassName)}>
               {overline}
             </Overline>
-            <Title sdsSize={sdsSize} className={titleClassName}>
+            <Title sdsSize={sdsSize} className={cn(titleClassName)}>
               {title}
             </Title>
-            <Subtitle sdsSize={sdsSize} className={subtitleClassName}>
+            <Subtitle sdsSize={sdsSize} className={cn(subtitleClassName)}>
               {subtitle}
             </Subtitle>
           </>

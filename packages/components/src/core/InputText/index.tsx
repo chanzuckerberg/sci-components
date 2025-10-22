@@ -2,7 +2,7 @@ import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import { forwardRef, useRef } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 interface AccessibleInputTextProps {
   label: React.ReactNode;
@@ -73,7 +73,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 
     const finalLabel =
       typeof label === "string" ? (
-        <StyledLabel htmlFor={id} className={labelClassName}>
+        <StyledLabel htmlFor={id} className={cn(labelClassName)}>
           {label}
         </StyledLabel>
       ) : (
@@ -81,10 +81,10 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       );
 
     return (
-      <div className={rootClassName}>
+      <div className={cn(rootClassName)}>
         {!hideLabel && finalLabel}
         <StyledInputBase
-          className={`${inputClassName} ${className}`}
+          className={cn(inputClassName, className)}
           ref={ref ? ref : inputRef}
           inputProps={inputProps}
           type="text"

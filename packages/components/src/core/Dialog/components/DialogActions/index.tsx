@@ -2,7 +2,7 @@ import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
 import { forwardRef } from "react";
 import { StyledDialogActions } from "./style";
 import { DialogExtraProps } from "../../index";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface DialogActionsProps extends RawDialogActionsProps {
   sdsSize?: DialogExtraProps["sdsSize"];
@@ -23,7 +23,7 @@ const DialogActions = forwardRef<HTMLDivElement, DialogActionsProps>(
       <StyledDialogActions
         ref={ref}
         sdsSize={sdsSize}
-        className={rootClassName}
+        className={cn(rootClassName)}
         {...rest}
       />
     );

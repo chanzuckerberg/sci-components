@@ -9,7 +9,7 @@ import {
   StyledInputDropdown,
   StyledLabel,
 } from "./style";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export type InputDropdownProps = SdsInputDropdownProps & {
   classes?: {
@@ -82,14 +82,14 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
   return (
     <StyledInputDropdown
       {...props}
-      className={`${rootClassName} ${className}`}
+      className={cn(rootClassName, className)}
       sdsStyle={sdsStyle}
       aria-label="Dropdown input"
     >
-      <LabelWrapper className={contentWrapperClassName}>
-        <div className={labelDetailsWrapperClassName}>
+      <LabelWrapper className={cn(contentWrapperClassName)}>
+        <div className={cn(labelDetailsWrapperClassName)}>
           <StyledLabel
-            className={`styled-label ${labelClassName}`}
+            className={cn("styled-label", labelClassName)}
             details={details}
             counter={counter}
             sdsType={sdsType}
@@ -106,26 +106,26 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
             })}
           </StyledLabel>
           {shouldRenderDetails && (
-            <StyledDetail className={detailsClassName}>
+            <StyledDetail className={cn(detailsClassName)}>
               {renderDetailsText({ details, sdsType, value })}
             </StyledDetail>
           )}
           {shouldRenderInlineMinimalDetails && (
-            <StyledDetail className={detailsClassName}>
+            <StyledDetail className={cn(detailsClassName)}>
               {renderDetailsText({ details, sdsType, value })}
             </StyledDetail>
           )}
           {shouldRenderCounter && (
-            <StyledCounter className={counterClassName}>
+            <StyledCounter className={cn(counterClassName)}>
               {counter}
             </StyledCounter>
           )}
         </div>
-        <IconWrapper className={iconWrapperClassName}>
+        <IconWrapper className={cn(iconWrapperClassName)}>
           <Icon
             sdsIcon="ChevronDown"
             sdsSize="xs"
-            className={chevronIconClassName}
+            className={cn(chevronIconClassName)}
           />
         </IconWrapper>
       </LabelWrapper>
@@ -133,7 +133,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
       {shouldRenderMinimalDetails && (
         <MinimalDetails
           shouldTruncateMinimalDetails={shouldTruncateMinimalDetails}
-          className={minimalDetailsClassName}
+          className={cn(minimalDetailsClassName)}
         >
           {renderDetailsText({ details, sdsType, value })}
         </MinimalDetails>

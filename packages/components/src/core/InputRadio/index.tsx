@@ -11,7 +11,7 @@ import {
   StyledRadioLabel,
 } from "./style";
 import React from "react";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface RadioContentProps
   extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
@@ -91,17 +91,17 @@ const InputRadio = (props: RadioProps): JSX.Element => {
   const captionId = caption ? `${value}-caption` : undefined;
 
   const finalLabel = caption ? (
-    <StyledLabelContainer className={labelCaptionContainer}>
-      <StyledRadioLabel id={labelId} className={labelClassName}>
+    <StyledLabelContainer className={cn(labelCaptionContainer)}>
+      <StyledRadioLabel id={labelId} className={cn(labelClassName)}>
         {label}
       </StyledRadioLabel>
-      <StyledRadioCaption id={captionId} className={captionClassName}>
+      <StyledRadioCaption id={captionId} className={cn(captionClassName)}>
         {caption}
       </StyledRadioCaption>
     </StyledLabelContainer>
   ) : (
-    <StyledLabelContainer className={labelCaptionContainer}>
-      <StyledRadioLabel id={labelId} className={labelClassName}>
+    <StyledLabelContainer className={cn(labelCaptionContainer)}>
+      <StyledRadioLabel id={labelId} className={cn(labelClassName)}>
         {label}
       </StyledRadioLabel>
     </StyledLabelContainer>
@@ -111,16 +111,16 @@ const InputRadio = (props: RadioProps): JSX.Element => {
     <StyledFormControlLabel
       control={
         <StyledRadioButton
-          className={radioButtonClassName}
+          className={cn(radioButtonClassName)}
           checkedIcon={
-            <StyledRadioCheckedIcon className={radioCheckedIconClassName}>
-              <StyledRadioDot className={radioCheckedIconDotClassName} />
+            <StyledRadioCheckedIcon className={cn(radioCheckedIconClassName)}>
+              <StyledRadioDot className={cn(radioCheckedIconDotClassName)} />
             </StyledRadioCheckedIcon>
           }
           icon={
             <StyledRadioDefaultIcon
               intent={intent}
-              className={radioDefaultIconClassName}
+              className={cn(radioDefaultIconClassName)}
             />
           }
           intent={intent}
@@ -131,7 +131,7 @@ const InputRadio = (props: RadioProps): JSX.Element => {
       disabled={disabled}
       label={finalLabel}
       value={value}
-      className={`${root} ${className}`}
+      className={cn(root, className)}
     />
   );
 };

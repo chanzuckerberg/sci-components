@@ -8,7 +8,7 @@ import {
   StyledSearchBase,
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -121,24 +121,27 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
     }
 
     return (
-      <div className={rootClassName}>
-        <StyledLabel htmlFor={id} className={labelClassName}>
+      <div className={cn(rootClassName)}>
+        <StyledLabel htmlFor={id} className={cn(labelClassName)}>
           {label}
         </StyledLabel>
         <StyledSearchBase
           id={id}
           ref={ref ? ref : inputRef}
-          className={`${inputClassName} ${className}`}
+          className={cn(inputClassName, className)}
           // passed to mui Input
           InputProps={{
             endAdornment: value ? (
               <StyledInputAdornment
                 position="end"
-                className={endAdornmentClassName}
+                className={cn(endAdornmentClassName)}
               >
                 <Button
                   aria-label="clear-button"
-                  className={"input-search-clear-icon " + clearButtonClassName}
+                  className={cn(
+                    "input-search-clear-icon",
+                    clearButtonClassName
+                  )}
                   onClick={clearInput}
                   sdsType="tertiary"
                   sdsSize="small"
@@ -151,7 +154,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
             startAdornment: (
               <StyledInputAdornment
                 position="start"
-                className={startAdornmentClassName}
+                className={cn(startAdornmentClassName)}
               >
                 <Button
                   aria-label="search-button"
@@ -161,7 +164,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsStyle="icon"
                   disabled={disabled}
                   icon="Search"
-                  className={searchButtonClassName}
+                  className={cn(searchButtonClassName)}
                 />
               </StyledInputAdornment>
             ),
