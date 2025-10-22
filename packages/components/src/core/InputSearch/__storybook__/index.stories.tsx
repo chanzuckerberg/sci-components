@@ -27,6 +27,9 @@ export default {
       control: { type: "inline-radio" },
       options: ["rounded", "square"],
     },
+    classes: {
+      control: { type: "object" },
+    },
   },
   component: InputSearch,
   title: "Components/Inputs/InputSearch",
@@ -40,6 +43,15 @@ export const Default = {
     id: "Test",
     label: "Search",
     placeholder: "Search",
+    classes: {
+      root: "",
+      label: "",
+      input: "",
+      endAdornment: "",
+      startAdornment: "",
+      clearButton: "",
+      searchButton: "",
+    },
   },
 };
 

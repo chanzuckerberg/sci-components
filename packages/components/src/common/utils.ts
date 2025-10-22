@@ -5,6 +5,27 @@ export const toKebabCase = (str: string) =>
 
 export const EMPTY_OBJECT = {};
 
+/**
+ * (masoudmanson):
+ * Utility function to concatenate classNames and filter out falsy values.
+ * Returns undefined if no valid classNames are provided, preventing empty class attributes.
+ *
+ * @param classNames - Variable number of className values (string | undefined | null | false)
+ * @returns Concatenated className string or undefined
+ *
+ * @example
+ * cn("foo", "bar") // "foo bar"
+ * cn("foo", undefined, "bar") // "foo bar"
+ * cn(undefined, null, false) // undefined
+ * cn("foo", condition && "bar") // "foo bar" or "foo"
+ */
+export const cn = (
+  ...classNames: (string | undefined | null | false)[]
+): string | undefined => {
+  const result = classNames.filter(Boolean).join(" ");
+  return result || undefined;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Props = { [key: string]: any };
 
