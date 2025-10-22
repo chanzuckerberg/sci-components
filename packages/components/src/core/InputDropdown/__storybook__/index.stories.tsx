@@ -9,6 +9,9 @@ export default {
         type: "number",
       },
     },
+    classes: {
+      control: { type: "object" },
+    },
     disabled: {
       control: {
         type: "boolean",
@@ -74,6 +77,17 @@ export const Default = {
     disabled: false,
     label: "Label",
     sdsStyle: "square",
+    classes: {
+      root: "",
+      contentWrapper: "",
+      labelDetailsWrapper: "",
+      label: "",
+      details: "",
+      counter: "",
+      iconWrapper: "",
+      chevronIcon: "",
+      minimalDetails: "",
+    },
   },
 };
 

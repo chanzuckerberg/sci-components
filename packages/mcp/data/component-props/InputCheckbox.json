@@ -22,6 +22,11 @@
       "stage": {
         "type": "\"indeterminate\" | \"checked\" | \"unchecked\"",
         "isRequired": false
+      },
+      "classes": {
+        "type": "complex",
+        "isRequired": false,
+        "description": "Override or extend the styles applied to the component."
       }
     }
   }
