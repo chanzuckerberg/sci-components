@@ -1,5 +1,5 @@
 import { DialogTitleProps as RawDialogTitleProps } from "@mui/material";
-import { forwardRef, useContext } from "react";
+import { forwardRef } from "react";
 import CloseButton from "./components/CloseButton";
 import {
   DialogTitleExtraProps,
@@ -8,7 +8,7 @@ import {
   Title,
   Overline,
 } from "./style";
-import { DialogContext } from "../common";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 export {
   Subtitle as DialogTitleSubtitle,
@@ -17,32 +17,67 @@ export {
 };
 
 export interface DialogTitleProps
-  extends Omit<DialogTitleExtraProps, "sdsSize">,
+  extends DialogTitleExtraProps,
     RawDialogTitleProps {
   title?: string;
   subtitle?: string;
   overline?: string;
   onClose?: () => void;
+  classes?: {
+    root?: string;
+    title?: string;
+    subtitle?: string;
+    overline?: string;
+    closeButton?: string;
+  };
 }
 
-/**
- * @see https://mui.com/material-ui/react-dialog/
- */
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
   function DialogTitle(props: DialogTitleProps, ref): JSX.Element {
-    const { children, title, subtitle, overline, onClose, ...rest } = props;
-    const { sdsSize } = useContext(DialogContext);
+    const {
+      children,
+      title,
+      subtitle,
+      overline,
+      onClose,
+      sdsSize,
+      classes = EMPTY_OBJECT,
+      ...rest
+    } = props;
+
+    const {
+      root: rootClassName,
+      title: titleClassName,
+      subtitle: subtitleClassName,
+      overline: overlineClassName,
+      closeButton: closeButtonClassName,
+    }: DialogTitleProps["classes"] = classes;
 
     return (
-      <StyledDialogTitle ref={ref} {...rest} sdsSize={sdsSize}>
+      <StyledDialogTitle
+        ref={ref}
+        sdsSize={sdsSize}
+        className={rootClassName}
+        {...rest}
+      >
         {children || (
           <>
             {onClose && (
-              <CloseButton sdsStyle="icon" icon="XMark" onClick={onClose} />
+              <CloseButton
+                onClick={onClose}
+                dialogSize={sdsSize}
+                className={closeButtonClassName}
+              />
             )}
-            <Overline sdsSize={sdsSize}>{overline}</Overline>
-            <Title sdsSize={sdsSize}>{title}</Title>
-            <Subtitle sdsSize={sdsSize}>{subtitle}</Subtitle>
+            <Overline sdsSize={sdsSize} className={overlineClassName}>
+              {overline}
+            </Overline>
+            <Title sdsSize={sdsSize} className={titleClassName}>
+              {title}
+            </Title>
+            <Subtitle sdsSize={sdsSize} className={subtitleClassName}>
+              {subtitle}
+            </Subtitle>
           </>
         )}
       </StyledDialogTitle>

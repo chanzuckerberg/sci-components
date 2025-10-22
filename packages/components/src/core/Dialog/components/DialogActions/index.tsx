@@ -1,18 +1,32 @@
 import { DialogActionsProps as RawDialogActionsProps } from "@mui/material";
-import { forwardRef, useContext } from "react";
-import { DialogContext } from "src/core/Dialog/components/common";
-import { DialogActionsExtraProps, StyledDialogActions } from "./style";
+import { forwardRef } from "react";
+import { StyledDialogActions } from "./style";
+import { DialogExtraProps } from "../../index";
+import { EMPTY_OBJECT } from "src/common/utils";
 
-export type DialogActionsProps = Omit<DialogActionsExtraProps, "sdsSize"> &
-  RawDialogActionsProps;
+export interface DialogActionsProps extends RawDialogActionsProps {
+  sdsSize?: DialogExtraProps["sdsSize"];
+  buttonPosition?: "left" | "right";
+  classes?: {
+    root?: string;
+  };
+}
 
 /**
  * @see https://mui.com/material-ui/react-dialog/
  */
 const DialogActions = forwardRef<HTMLDivElement, DialogActionsProps>(
   function DialogActions(props, ref) {
-    const { sdsSize } = useContext(DialogContext);
-    return <StyledDialogActions ref={ref} {...props} sdsSize={sdsSize} />;
+    const { sdsSize = "m", classes = EMPTY_OBJECT, ...rest } = props;
+    const { root: rootClassName }: DialogActionsProps["classes"] = classes;
+    return (
+      <StyledDialogActions
+        ref={ref}
+        sdsSize={sdsSize}
+        className={rootClassName}
+        {...rest}
+      />
+    );
   }
 );
 

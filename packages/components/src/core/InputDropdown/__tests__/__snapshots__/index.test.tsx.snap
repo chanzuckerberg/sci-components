@@ -13,7 +13,9 @@ exports[`<InputDropdown /> Default story renders snapshot 1`] = `
     <span
       class="css-g6qgry"
     >
-      <div>
+      <div
+        class=""
+      >
         <span
           class="styled-label css-1ubkbz8"
         >

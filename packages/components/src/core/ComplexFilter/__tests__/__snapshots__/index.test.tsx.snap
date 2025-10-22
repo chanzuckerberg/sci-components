@@ -19,7 +19,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     >
       <div>
         <span
-          class="styled-label css-1ubkbz8"
+          class="styled-label undefined css-1ubkbz8"
         >
           Click Target
         </span>

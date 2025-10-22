@@ -2,11 +2,17 @@ import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import { forwardRef, useRef } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import { EMPTY_OBJECT } from "src/common/utils";
 
 interface AccessibleInputTextProps {
   label: React.ReactNode;
   placeholder?: string;
   id: string;
+  classes?: {
+    root?: string;
+    label?: string;
+    input?: string;
+  };
 }
 
 export type InputTextProps = RawTextFieldProps &
@@ -25,8 +31,15 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       placeholder,
       sdsType,
       hideLabel,
+      classes = EMPTY_OBJECT,
       ...rest
     } = props;
+
+    const {
+      root: rootClassName,
+      label: labelClassName,
+      input: inputClassName,
+    }: InputTextProps["classes"] = classes;
 
     /**
      * (masoudmanson): In case that the ref is not provided, we will create a new one.
@@ -59,15 +72,18 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
 
     const finalLabel =
       typeof label === "string" ? (
-        <StyledLabel htmlFor={id}>{label}</StyledLabel>
+        <StyledLabel htmlFor={id} className={labelClassName}>
+          {label}
+        </StyledLabel>
       ) : (
         label
       );
 
     return (
-      <>
+      <div className={rootClassName}>
         {!hideLabel && finalLabel}
         <StyledInputBase
+          className={inputClassName}
           ref={ref ? ref : inputRef}
           inputProps={inputProps}
           type="text"
@@ -81,7 +97,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
           sdsType={sdsType}
           {...rest}
         />
-      </>
+      </div>
     );
   }
 );

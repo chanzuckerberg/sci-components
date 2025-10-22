@@ -1,10 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InputText /> Default story renders snapshot 1`] = `
-<label
-  class="css-1n9rsuo"
-  for="Test"
+<div
+  class=""
 >
-  Label
-</label>
+  <label
+    class="css-1n9rsuo"
+    for="Test"
+  >
+    Label
+  </label>
+  <div
+    class="MuiFormControl-root MuiTextField-root css-1lqcwpy-MuiFormControl-root-MuiTextField-root"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+    >
+      <input
+        aria-invalid="false"
+        aria-label="Label"
+        autocomplete="off"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+        id="Test"
+        name="input-text-name"
+        placeholder="Value"
+        type="text"
+      />
+      <fieldset
+        aria-hidden="true"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="css-ihdtdm"
+        >
+          <span
+            class="notranslate"
+          >
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</div>
 `;

@@ -1,9 +1,11 @@
+import { LinkProps as RawLinkProps } from "@mui/material";
 import React, { ForwardedRef, forwardRef } from "react";
-import { LinkProps as RawLinkProps, StyledLink } from "./style";
+import { StyledLink } from "./style";
 
 export type LinkProps<C extends React.ElementType = "a"> = RawLinkProps<C> & {
   fontWeight?: "normal" | "bold";
   sdsSize?: "xs" | "s";
+  sdsStyle?: "default" | "dashed";
 };
 
 /**
@@ -14,14 +16,17 @@ const Link = forwardRef(
     props: LinkProps<C>,
     ref: ForwardedRef<HTMLAnchorElement>
   ) => {
-    const { sdsStyle } = props;
-    let underline: LinkProps["underline"];
+    const { sdsStyle = "default", ...rest } = props;
+    // const resolvedSdsStyle = sdsStyle ?? "default";
 
-    if (sdsStyle === "default") {
-      underline = "none";
-    }
-
-    return <StyledLink {...props} underline={underline} ref={ref} />;
+    return (
+      <StyledLink
+        {...rest}
+        sdsStyle={sdsStyle}
+        underline={sdsStyle === "default" ? "hover" : "always"}
+        ref={ref}
+      />
+    );
   }
 );
 

@@ -29,6 +29,9 @@ export default {
       control: { type: "inline-radio" },
       options: ["textField", "textArea"],
     },
+    classes: {
+      control: { type: "object" },
+    },
   },
   component: InputText,
   title: "Components/Inputs/InputText",
@@ -44,6 +47,11 @@ export const Default = {
     label: "Label",
     placeholder: "Value",
     sdsType: "textField",
+    classes: {
+      root: "",
+      label: "",
+      input: "",
+    },
   },
 };
 

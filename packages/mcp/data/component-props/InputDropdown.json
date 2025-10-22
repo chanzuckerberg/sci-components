@@ -5,6 +5,10 @@
         "type": "ReactNode",
         "isRequired": false
       },
+      "classes": {
+        "type": "complex",
+        "isRequired": false
+      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
@@ -42,7 +46,7 @@
         "isRequired": false
       },
       "width": {
-        "type": "number",
+        "type": "string",
         "isRequired": false
       }
     }

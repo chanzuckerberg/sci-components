@@ -1,10 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InputSearch /> Default story renders snapshot 1`] = `
-<label
-  class="css-l5xdrx"
-  for="Test"
+<div
+  class=""
 >
-  Search
-</label>
+  <label
+    class="css-l5xdrx"
+    for="Test"
+  >
+    Search
+  </label>
+  <div
+    class="MuiFormControl-root MuiTextField-root css-1ofpht7-MuiFormControl-root-MuiTextField-root"
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
+    >
+      <div
+        class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-3b46cg-MuiInputAdornment-root"
+      >
+        <span
+          class="notranslate"
+        >
+          ​
+        </span>
+        <button
+          aria-label="search-button"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-3px3eh-MuiButtonBase-root-MuiIconButton-root"
+          icon="Search"
+          tabindex="0"
+          type="button"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+              data-file-name="IconSearchSmall"
+              data-testid="IconSearchSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart css-1xp6qmi-MuiInputBase-input-MuiOutlinedInput-input"
+        id="Test"
+        name="input-search-name"
+        placeholder="Search"
+        type="search"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+      >
+        <legend
+          class="css-ihdtdm"
+        >
+          <span
+            class="notranslate"
+          >
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+  </div>
+</div>
 `;
