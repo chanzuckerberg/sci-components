@@ -33,6 +33,11 @@
       "sdsType": {
         "type": "\"textField\" | \"textArea\"",
         "isRequired": false
+      },
+      "classes": {
+        "type": "Partial<TextFieldClasses> & { root?: string; label?: string; input?: string; }",
+        "isRequired": false,
+        "description": "Override or extend the styles applied to the component."
       }
     }
   }

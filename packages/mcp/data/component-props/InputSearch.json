@@ -29,6 +29,11 @@
       "sdsStyle": {
         "type": "\"rounded\" | \"square\"",
         "isRequired": false
+      },
+      "classes": {
+        "type": "Partial",
+        "isRequired": false,
+        "description": "Override or extend the styles applied to the component."
       }
     }
   }

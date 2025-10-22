@@ -10,9 +10,10 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import { DialogExtraProps } from "../..";
 
 export interface DialogTitleExtraProps extends CommonThemeProps {
-  sdsSize: "xs" | "s" | "m" | "l";
+  sdsSize?: DialogExtraProps["sdsSize"];
 }
 
 const doNotForwardProps = ["sdsSize"];
