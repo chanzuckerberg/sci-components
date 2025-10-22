@@ -288,7 +288,7 @@ export const TypographyCategories = {
   },
   link: {
     weights: ["regular", "medium", "semibold"],
-    sizes: ["l", "m", "s", "xs", "xxs", "xxxs"],
+    sizes: ["l", "m", "s", "xs", "xxs", "xxxs", "xxxxs"],
   },
 } as const;
 

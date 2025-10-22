@@ -736,6 +736,50 @@
               "value": "underline"
             }
           }
+        },
+        "xxxxs": {
+          "400": {
+            "font": {
+              "narrowValue": "400 10px/14px {sds.font.font-family.link.narrowValue}",
+              "value": "400 10px/14px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "500": {
+            "font": {
+              "narrowValue": "500 10px/14px {sds.font.font-family.link.narrowValue}",
+              "value": "500 10px/14px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          },
+          "600": {
+            "font": {
+              "narrowValue": "600 10px/14px {sds.font.font-family.link.narrowValue}",
+              "value": "600 10px/14px {sds.font.font-family.link.value}"
+            },
+            "letter-spacing": {
+              "narrowValue": "0.06px",
+              "value": "0.06px"
+            },
+            "text-decoration": {
+              "narrowValue": "underline",
+              "value": "underline"
+            }
+          }
         }
       },
       "tabular": {
