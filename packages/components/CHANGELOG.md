@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.14.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.3...@czi-sds/components@22.14.0) (2025-10-23)
+
+### Bug Fixes
+
+- **dialog:** fix close button size + new tailwind class support for inputs ([#1026](https://github.com/chanzuckerberg/sci-components/issues/1026)) ([5f7e8b1](https://github.com/chanzuckerberg/sci-components/commit/5f7e8b1fc9cd21a9c9309652d9d54d37e478116a))
+
+### Features
+
+- Hero component ([#1018](https://github.com/chanzuckerberg/sci-components/issues/1018)) ([8f7370e](https://github.com/chanzuckerberg/sci-components/commit/8f7370e062df0ddc30ccfddbbf09d7a05dde4cfb))
+- **typography:** Added new xxxxs body and tabular font sizes ([#1028](https://github.com/chanzuckerberg/sci-components/issues/1028)) ([a66e56b](https://github.com/chanzuckerberg/sci-components/commit/a66e56bb95748fd78c146779fe5ddedfbc4f78b8))
+
 ## [22.13.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.2...@czi-sds/components@22.13.3) (2025-10-15)
 
 ### Bug Fixes
