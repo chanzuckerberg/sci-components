@@ -47,7 +47,7 @@
         "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
       },
       "onClose": {
-        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void",
+        "type": "\"(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void\" | \"(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void\"",
         "isRequired": false,
         "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
       },

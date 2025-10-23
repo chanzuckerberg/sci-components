@@ -13,6 +13,7 @@ export const Dialog = (props: Args): JSX.Element => {
     longContent = false,
     isOpen: propsIsOpen = false,
     titleOnClose,
+    sdsSize,
     ...rest
   } = props;
 
@@ -21,9 +22,14 @@ export const Dialog = (props: Args): JSX.Element => {
   return (
     <>
       <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
-        Open {rest.sdsSize}
+        Open {sdsSize}
       </Button>
-      <RawDialog onClose={handleClose} open={isOpen} {...rest}>
+      <RawDialog
+        onClose={handleClose}
+        open={isOpen}
+        sdsSize={sdsSize}
+        {...rest}
+      >
         <DialogTitle
           title="Title"
           subtitle="Optional Subtitle"

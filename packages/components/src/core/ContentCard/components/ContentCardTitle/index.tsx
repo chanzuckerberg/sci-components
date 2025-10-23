@@ -6,7 +6,7 @@ import {
   StyledMetadataText,
   StyledTitleWrapper,
 } from "./style";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 import { BaseContentCardProps } from "src/core/ContentCard/ContentCard.types";
 
 export interface ContentCardTitleProps
@@ -40,7 +40,7 @@ const createTextComponent = (
     if (!text) return null;
 
     return typeof text === "string" ? (
-      <StyledComponent className={className}>{text}</StyledComponent>
+      <StyledComponent className={cn(className)}>{text}</StyledComponent>
     ) : (
       text
     );
@@ -72,7 +72,7 @@ const ContentCardTitle = forwardRef<HTMLDivElement, ContentCardTitleProps>(
 
     return (
       <div ref={ref}>
-        <StyledTitleWrapper className={cardHeader}>
+        <StyledTitleWrapper className={cn(cardHeader)}>
           <OverlineText text={overlineText} className={cardOverline} />
           <TitleText text={titleText} className={cardTitle} />
           <SubtitleText text={subtitleText} className={cardSubtitle} />

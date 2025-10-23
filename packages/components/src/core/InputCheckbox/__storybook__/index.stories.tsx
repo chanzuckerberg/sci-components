@@ -27,6 +27,9 @@ export default {
       },
       options: ["checked", "unchecked", "indeterminate"],
     },
+    classes: {
+      control: { type: "object" },
+    },
   },
   component: InputCheckbox,
   title: "Components/Inputs/InputCheckbox",
@@ -39,6 +42,16 @@ export const Default = {
     caption: "Caption",
     intent: "default",
     label: "Label",
+    classes: {
+      root: "",
+      labelCaptionContainer: "",
+      label: "",
+      caption: "",
+      checkbox: "",
+      checkboxCheckedIcon: "",
+      checkboxDefaultIcon: "",
+      checkboxIndeterminateIcon: "",
+    },
   },
 };
 

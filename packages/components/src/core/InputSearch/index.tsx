@@ -8,6 +8,7 @@ import {
   StyledSearchBase,
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import { EMPTY_OBJECT, cn } from "src/common/utils";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -16,6 +17,15 @@ export interface AccessibleInputSearchProps {
   handleSubmit?: (value: string) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   customTheme?: "light" | "dark" | "auto";
+  classes?: {
+    root?: string;
+    label?: string;
+    input?: string;
+    endAdornment?: string;
+    startAdornment?: string;
+    clearButton?: string;
+    searchButton?: string;
+  };
 }
 
 export type InputSearchProps = RawTextFieldSearchProps &
@@ -36,8 +46,20 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       handleSubmit,
       onChange,
       disabled,
+      classes = EMPTY_OBJECT,
+      className,
       ...rest
     } = props;
+
+    const {
+      root: rootClassName,
+      label: labelClassName,
+      input: inputClassName,
+      endAdornment: endAdornmentClassName,
+      startAdornment: startAdornmentClassName,
+      clearButton: clearButtonClassName,
+      searchButton: searchButtonClassName,
+    }: InputSearchProps["classes"] = classes;
 
     /**
      * (masoudmanson): In case that the ref is not provided, we will create a new one.
@@ -99,18 +121,27 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
     }
 
     return (
-      <>
-        <StyledLabel htmlFor={id}>{label}</StyledLabel>
+      <div className={cn(rootClassName)}>
+        <StyledLabel htmlFor={id} className={cn(labelClassName)}>
+          {label}
+        </StyledLabel>
         <StyledSearchBase
           id={id}
           ref={ref ? ref : inputRef}
+          className={cn(inputClassName, className)}
           // passed to mui Input
           InputProps={{
             endAdornment: value ? (
-              <StyledInputAdornment position="end">
+              <StyledInputAdornment
+                position="end"
+                className={cn(endAdornmentClassName)}
+              >
                 <Button
                   aria-label="clear-button"
-                  className="input-search-clear-icon"
+                  className={cn(
+                    "input-search-clear-icon",
+                    clearButtonClassName
+                  )}
                   onClick={clearInput}
                   sdsType="tertiary"
                   sdsSize="small"
@@ -121,7 +152,10 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
               </StyledInputAdornment>
             ) : null,
             startAdornment: (
-              <StyledInputAdornment position="start">
+              <StyledInputAdornment
+                position="start"
+                className={cn(startAdornmentClassName)}
+              >
                 <Button
                   aria-label="search-button"
                   onClick={localHandleSubmit}
@@ -130,6 +164,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   sdsStyle="icon"
                   disabled={disabled}
                   icon="Search"
+                  className={cn(searchButtonClassName)}
                 />
               </StyledInputAdornment>
             ),
@@ -151,7 +186,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           autoComplete="one-time-code"
           {...rest}
         />
-      </>
+      </div>
     );
   }
 );

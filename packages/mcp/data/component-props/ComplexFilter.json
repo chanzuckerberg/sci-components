@@ -33,6 +33,14 @@
       "search": {
         "type": "any",
         "isRequired": false
+      },
+      "buttonPosition": {
+        "type": "any",
+        "isRequired": false
+      },
+      "buttons": {
+        "type": "any",
+        "isRequired": false
       }
     }
   }
