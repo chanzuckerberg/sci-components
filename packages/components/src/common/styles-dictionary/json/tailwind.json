@@ -45,6 +45,12 @@
     "sds-body-xxxs-500-wide": "11px",
     "sds-body-xxxs-600-narrow": "12px",
     "sds-body-xxxs-600-wide": "11px",
+    "sds-body-xxxxs-400-narrow": "10px",
+    "sds-body-xxxxs-400-wide": "10px",
+    "sds-body-xxxxs-500-narrow": "10px",
+    "sds-body-xxxxs-500-wide": "10px",
+    "sds-body-xxxxs-600-narrow": "10px",
+    "sds-body-xxxxs-600-wide": "10px",
     "sds-caps-xxs-600-narrow": "12px",
     "sds-caps-xxs-600-wide": "12px",
     "sds-caps-xxxs-600-narrow": "11px",
@@ -91,6 +97,12 @@
     "sds-tabular-xxxs-500-wide": "11px",
     "sds-tabular-xxxs-600-narrow": "11px",
     "sds-tabular-xxxs-600-wide": "11px",
+    "sds-tabular-xxxxs-400-narrow": "10px",
+    "sds-tabular-xxxxs-400-wide": "10px",
+    "sds-tabular-xxxxs-500-narrow": "10px",
+    "sds-tabular-xxxxs-500-wide": "10px",
+    "sds-tabular-xxxxs-600-narrow": "10px",
+    "sds-tabular-xxxxs-600-wide": "10px",
     "sds-code-s-400-narrow": "14px",
     "sds-code-s-400-wide": "14px",
     "sds-code-s-500-narrow": "14px",
@@ -144,7 +156,13 @@
     "sds-link-xxxs-500-narrow": "12px",
     "sds-link-xxxs-500-wide": "11px",
     "sds-link-xxxs-600-narrow": "12px",
-    "sds-link-xxxs-600-wide": "11px"
+    "sds-link-xxxs-600-wide": "11px",
+    "sds-link-xxxxs-400-narrow": "10px",
+    "sds-link-xxxxs-400-wide": "10px",
+    "sds-link-xxxxs-500-narrow": "10px",
+    "sds-link-xxxxs-500-wide": "10px",
+    "sds-link-xxxxs-600-narrow": "10px",
+    "sds-link-xxxxs-600-wide": "10px"
   },
   "fontVariantNumeric": {
     "sds-body-l-400-narrow": "normal",
@@ -183,6 +201,12 @@
     "sds-body-xxxs-500-wide": "normal",
     "sds-body-xxxs-600-narrow": "normal",
     "sds-body-xxxs-600-wide": "normal",
+    "sds-body-xxxxs-400-narrow": "normal",
+    "sds-body-xxxxs-400-wide": "normal",
+    "sds-body-xxxxs-500-narrow": "normal",
+    "sds-body-xxxxs-500-wide": "normal",
+    "sds-body-xxxxs-600-narrow": "normal",
+    "sds-body-xxxxs-600-wide": "normal",
     "sds-caps-xxs-600-narrow": "normal",
     "sds-caps-xxs-600-wide": "normal",
     "sds-caps-xxxs-600-narrow": "normal",
@@ -229,6 +253,12 @@
     "sds-tabular-xxxs-500-wide": "tabular-nums",
     "sds-tabular-xxxs-600-narrow": "tabular-nums",
     "sds-tabular-xxxs-600-wide": "tabular-nums",
+    "sds-tabular-xxxxs-400-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-400-wide": "tabular-nums",
+    "sds-tabular-xxxxs-500-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-500-wide": "tabular-nums",
+    "sds-tabular-xxxxs-600-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-600-wide": "tabular-nums",
     "sds-code-s-400-narrow": "normal",
     "sds-code-s-400-wide": "normal",
     "sds-code-s-500-narrow": "normal",
@@ -282,7 +312,13 @@
     "sds-link-xxxs-500-narrow": "normal",
     "sds-link-xxxs-500-wide": "normal",
     "sds-link-xxxs-600-narrow": "normal",
-    "sds-link-xxxs-600-wide": "normal"
+    "sds-link-xxxs-600-wide": "normal",
+    "sds-link-xxxxs-400-narrow": "normal",
+    "sds-link-xxxxs-400-wide": "normal",
+    "sds-link-xxxxs-500-narrow": "normal",
+    "sds-link-xxxxs-500-wide": "normal",
+    "sds-link-xxxxs-600-narrow": "normal",
+    "sds-link-xxxxs-600-wide": "normal"
   },
   "letterSpacing": {
     "sds-body-l-400-narrow": "0px",
@@ -321,6 +357,12 @@
     "sds-body-xxxs-500-wide": "0.06px",
     "sds-body-xxxs-600-narrow": "0.06px",
     "sds-body-xxxs-600-wide": "0.06px",
+    "sds-body-xxxxs-400-narrow": "0.06px",
+    "sds-body-xxxxs-400-wide": "0.06px",
+    "sds-body-xxxxs-500-narrow": "0.06px",
+    "sds-body-xxxxs-500-wide": "0.06px",
+    "sds-body-xxxxs-600-narrow": "0.06px",
+    "sds-body-xxxxs-600-wide": "0.06px",
     "sds-caps-xxs-600-narrow": "0.4px",
     "sds-caps-xxs-600-wide": "0.4px",
     "sds-caps-xxxs-600-narrow": "0.4px",
@@ -367,6 +409,12 @@
     "sds-tabular-xxxs-500-wide": "-0.25px",
     "sds-tabular-xxxs-600-narrow": "-0.25px",
     "sds-tabular-xxxs-600-wide": "-0.25px",
+    "sds-tabular-xxxxs-400-narrow": "-0.25px",
+    "sds-tabular-xxxxs-400-wide": "-0.25px",
+    "sds-tabular-xxxxs-500-narrow": "-0.25px",
+    "sds-tabular-xxxxs-500-wide": "-0.25px",
+    "sds-tabular-xxxxs-600-narrow": "-0.25px",
+    "sds-tabular-xxxxs-600-wide": "-0.25px",
     "sds-code-s-400-narrow": "0px",
     "sds-code-s-400-wide": "0px",
     "sds-code-s-500-narrow": "0px",
@@ -420,7 +468,13 @@
     "sds-link-xxxs-500-narrow": "0.06px",
     "sds-link-xxxs-500-wide": "0.06px",
     "sds-link-xxxs-600-narrow": "0.06px",
-    "sds-link-xxxs-600-wide": "0.06px"
+    "sds-link-xxxs-600-wide": "0.06px",
+    "sds-link-xxxxs-400-narrow": "0.06px",
+    "sds-link-xxxxs-400-wide": "0.06px",
+    "sds-link-xxxxs-500-narrow": "0.06px",
+    "sds-link-xxxxs-500-wide": "0.06px",
+    "sds-link-xxxxs-600-narrow": "0.06px",
+    "sds-link-xxxxs-600-wide": "0.06px"
   },
   "lineHeight": {
     "sds-body-l-400-narrow": "26px",
@@ -459,6 +513,12 @@
     "sds-body-xxxs-500-wide": "16px",
     "sds-body-xxxs-600-narrow": "18px",
     "sds-body-xxxs-600-wide": "16px",
+    "sds-body-xxxxs-400-narrow": "14px",
+    "sds-body-xxxxs-400-wide": "14px",
+    "sds-body-xxxxs-500-narrow": "14px",
+    "sds-body-xxxxs-500-wide": "14px",
+    "sds-body-xxxxs-600-narrow": "14px",
+    "sds-body-xxxxs-600-wide": "14px",
     "sds-caps-xxs-600-narrow": "18px",
     "sds-caps-xxs-600-wide": "18px",
     "sds-caps-xxxs-600-narrow": "16px",
@@ -505,6 +565,12 @@
     "sds-tabular-xxxs-500-wide": "16px",
     "sds-tabular-xxxs-600-narrow": "16px",
     "sds-tabular-xxxs-600-wide": "16px",
+    "sds-tabular-xxxxs-400-narrow": "14px",
+    "sds-tabular-xxxxs-400-wide": "14px",
+    "sds-tabular-xxxxs-500-narrow": "14px",
+    "sds-tabular-xxxxs-500-wide": "14px",
+    "sds-tabular-xxxxs-600-narrow": "14px",
+    "sds-tabular-xxxxs-600-wide": "14px",
     "sds-code-s-400-narrow": "24px",
     "sds-code-s-400-wide": "24px",
     "sds-code-s-500-narrow": "24px",
@@ -558,7 +624,13 @@
     "sds-link-xxxs-500-narrow": "18px",
     "sds-link-xxxs-500-wide": "16px",
     "sds-link-xxxs-600-narrow": "18px",
-    "sds-link-xxxs-600-wide": "16px"
+    "sds-link-xxxs-600-wide": "16px",
+    "sds-link-xxxxs-400-narrow": "14px",
+    "sds-link-xxxxs-400-wide": "14px",
+    "sds-link-xxxxs-500-narrow": "14px",
+    "sds-link-xxxxs-500-wide": "14px",
+    "sds-link-xxxxs-600-narrow": "14px",
+    "sds-link-xxxxs-600-wide": "14px"
   },
   "textDecoration": {
     "sds-body-l-400-narrow": "none",
@@ -597,6 +669,12 @@
     "sds-body-xxxs-500-wide": "none",
     "sds-body-xxxs-600-narrow": "none",
     "sds-body-xxxs-600-wide": "none",
+    "sds-body-xxxxs-400-narrow": "none",
+    "sds-body-xxxxs-400-wide": "none",
+    "sds-body-xxxxs-500-narrow": "none",
+    "sds-body-xxxxs-500-wide": "none",
+    "sds-body-xxxxs-600-narrow": "none",
+    "sds-body-xxxxs-600-wide": "none",
     "sds-caps-xxs-600-narrow": "none",
     "sds-caps-xxs-600-wide": "none",
     "sds-caps-xxxs-600-narrow": "none",
@@ -643,6 +721,12 @@
     "sds-tabular-xxxs-500-wide": "none",
     "sds-tabular-xxxs-600-narrow": "none",
     "sds-tabular-xxxs-600-wide": "none",
+    "sds-tabular-xxxxs-400-narrow": "none",
+    "sds-tabular-xxxxs-400-wide": "none",
+    "sds-tabular-xxxxs-500-narrow": "none",
+    "sds-tabular-xxxxs-500-wide": "none",
+    "sds-tabular-xxxxs-600-narrow": "none",
+    "sds-tabular-xxxxs-600-wide": "none",
     "sds-code-s-400-narrow": "none",
     "sds-code-s-400-wide": "none",
     "sds-code-s-500-narrow": "none",
@@ -696,7 +780,13 @@
     "sds-link-xxxs-500-narrow": "underline",
     "sds-link-xxxs-500-wide": "underline",
     "sds-link-xxxs-600-narrow": "underline",
-    "sds-link-xxxs-600-wide": "underline"
+    "sds-link-xxxs-600-wide": "underline",
+    "sds-link-xxxxs-400-narrow": "underline",
+    "sds-link-xxxxs-400-wide": "underline",
+    "sds-link-xxxxs-500-narrow": "underline",
+    "sds-link-xxxxs-500-wide": "underline",
+    "sds-link-xxxxs-600-narrow": "underline",
+    "sds-link-xxxxs-600-wide": "underline"
   },
   "textTransform": {
     "sds-body-l-400-narrow": "none",
@@ -735,6 +825,12 @@
     "sds-body-xxxs-500-wide": "none",
     "sds-body-xxxs-600-narrow": "none",
     "sds-body-xxxs-600-wide": "none",
+    "sds-body-xxxxs-400-narrow": "none",
+    "sds-body-xxxxs-400-wide": "none",
+    "sds-body-xxxxs-500-narrow": "none",
+    "sds-body-xxxxs-500-wide": "none",
+    "sds-body-xxxxs-600-narrow": "none",
+    "sds-body-xxxxs-600-wide": "none",
     "sds-caps-xxs-600-narrow": "uppercase",
     "sds-caps-xxs-600-wide": "uppercase",
     "sds-caps-xxxs-600-narrow": "uppercase",
@@ -781,6 +877,12 @@
     "sds-tabular-xxxs-500-wide": "none",
     "sds-tabular-xxxs-600-narrow": "none",
     "sds-tabular-xxxs-600-wide": "none",
+    "sds-tabular-xxxxs-400-narrow": "none",
+    "sds-tabular-xxxxs-400-wide": "none",
+    "sds-tabular-xxxxs-500-narrow": "none",
+    "sds-tabular-xxxxs-500-wide": "none",
+    "sds-tabular-xxxxs-600-narrow": "none",
+    "sds-tabular-xxxxs-600-wide": "none",
     "sds-code-s-400-narrow": "none",
     "sds-code-s-400-wide": "none",
     "sds-code-s-500-narrow": "none",
@@ -834,7 +936,13 @@
     "sds-link-xxxs-500-narrow": "none",
     "sds-link-xxxs-500-wide": "none",
     "sds-link-xxxs-600-narrow": "none",
-    "sds-link-xxxs-600-wide": "none"
+    "sds-link-xxxs-600-wide": "none",
+    "sds-link-xxxxs-400-narrow": "none",
+    "sds-link-xxxxs-400-wide": "none",
+    "sds-link-xxxxs-500-narrow": "none",
+    "sds-link-xxxxs-500-wide": "none",
+    "sds-link-xxxxs-600-narrow": "none",
+    "sds-link-xxxxs-600-wide": "none"
   },
   "typography": {
     "sds-body-l-400-narrow": {
@@ -1231,6 +1339,72 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "16px"
+      }
+    },
+    "sds-body-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
       }
     },
     "sds-caps-xxs-600-narrow": {
@@ -1743,6 +1917,72 @@
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
         "lineHeight": "16px"
+      }
+    },
+    "sds-tabular-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
       }
     },
     "sds-code-s-400-narrow": {
@@ -2372,6 +2612,78 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
         "textDecoration": "underline"
       }
     }
