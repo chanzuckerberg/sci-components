@@ -6,7 +6,8 @@ import {
   StyledSection,
   StyledSectionHeader,
 } from "../style";
-import { StyledTextItem } from "./style";
+import { StyledTextItem, StyledTag } from "./style";
+import { SdsTagColorType } from "src/core/Tag";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
@@ -21,6 +22,8 @@ import { StyledAccordion } from "../../style";
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
   itemType: "text";
+  tag?: string;
+  tagColor?: SdsTagColorType;
 }
 
 interface DropdownHeaderSecondaryNavItem
@@ -28,6 +31,8 @@ interface DropdownHeaderSecondaryNavItem
   label: string;
   itemType: "dropdown";
   items: DropdownItem[];
+  tag?: string;
+  tagColor?: SdsTagColorType;
 }
 
 export type NavigationHeaderSecondaryNavItem =
@@ -74,7 +79,7 @@ export default function NavigationHeaderSecondaryNav({
   return (
     <StyledSection isNarrow={isNarrow}>
       {items.map((item, index) => {
-        const { itemType, label, key, ...rest } = item;
+        const { itemType, label, key, tag, tagColor, ...rest } = item;
         const labelKebabCase = label
           ?.toString()
           .toLowerCase()
@@ -110,6 +115,13 @@ export default function NavigationHeaderSecondaryNav({
                 >
                   {label}
                 </StyledLabelTextWrapperShadow>
+                {tag && (
+                  <StyledTag
+                    label={tag}
+                    color={tagColor as SdsTagColorType}
+                    hover={false}
+                  />
+                )}
                 <Icon
                   sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
                   sdsSize="xs"
@@ -274,6 +286,13 @@ export default function NavigationHeaderSecondaryNav({
             sdsStyle="minimal"
           >
             {item.label}
+            {tag && (
+              <StyledTag
+                label={tag}
+                color={tagColor as SdsTagColorType}
+                hover={false}
+              />
+            )}
           </StyledTextItem>
         );
       })}

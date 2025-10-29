@@ -42,7 +42,7 @@ export const StyledAppBar = styled(AppBar, {
     const colors = getSemanticColors(props);
 
     return `
-      background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+      background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
       background-image: none;
       max-width: 100%;
       overflow-x: auto;
@@ -56,10 +56,10 @@ const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
   return css`
     border-bottom: 1px solid
       ${props.hasInvertedStyle
-        ? semanticColors?.base.dividerInverse
+        ? semanticColors?.base.dividerOnDark
         : semanticColors?.base.divider};
     background-color: ${props.hasInvertedStyle
-      ? semanticColors?.base.backgroundPrimaryInverse
+      ? semanticColors?.base.backgroundPrimaryOnDark
       : semanticColors?.base.backgroundPrimary};
     background-image: none;
     box-shadow: none;
@@ -116,7 +116,7 @@ export const StyledShadowCoverElement = styled("div", {
     const colors = getSemanticColors(props);
 
     return `
-      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
       height: 10px;
       display: block;
       position: absolute;
@@ -150,7 +150,7 @@ export const StyledHeaderButton = styled(Button, {
       &:hover {
         background-color: ${semanticColors?.accent?.fillHover};
         box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillHover};
-        color: ${semanticColors?.base?.textPrimaryInverse};
+        color: ${semanticColors?.base?.textPrimaryOnDark};
       }
     `;
 
@@ -169,18 +169,18 @@ const invertedNarrowButtonStyles = (
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.base?.textPrimaryInverse};
+    color: ${semanticColors?.base?.textPrimaryOnDark};
     svg {
-      fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+      fill: ${semanticColors?.base?.ornamentPrimaryOnDark};
     }
 
     &:hover,
     &:focus,
     &:active,
     &:focus-within {
-      color: ${semanticColors?.base?.textPrimaryInverse};
+      color: ${semanticColors?.base?.textPrimaryOnDark};
       svg {
-        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+        fill: ${semanticColors?.base?.ornamentPrimaryOnDark};
       }
     }
   `;
@@ -209,7 +209,7 @@ const invertedWideButtonStyles = (
 
   return css`
     svg {
-      fill: ${semanticColors?.base?.ornamentSecondaryInverse};
+      fill: ${semanticColors?.base?.ornamentSecondaryOnDark};
     }
 
     &:hover,
@@ -217,7 +217,7 @@ const invertedWideButtonStyles = (
     &:active,
     &:focus-within {
       svg {
-        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+        fill: ${semanticColors?.base?.ornamentPrimaryOnDark};
       }
     }
   `;
@@ -281,7 +281,7 @@ export const StyledTitleContainer = styled("div", {
     return css`
       gap: ${spaces?.l}px;
       color: ${props.hasInvertedStyle
-        ? colors?.base.textPrimaryInverse
+        ? colors?.base.textPrimaryOnDark
         : colors?.base.textPrimary};
       margin-right: ${spaces?.xxl}px;
       width: 100%;
@@ -371,18 +371,18 @@ export const StyledSearch = styled(InputSearch, {
       padding: ${isNarrow ? `${spaces?.m}px 0 ${spaces?.l}px` : ""};
       .MuiInputBase-root {
         color: ${hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
+          ? semanticColors?.base.textPrimaryOnDark
           : semanticColors?.base.textPrimary};
         fieldset {
           border-color: ${hasInvertedStyle
-            ? semanticColors?.base?.borderPrimaryInverse
+            ? semanticColors?.base?.borderPrimaryOnDark
             : ""};
         }
 
         .MuiInputBase-input {
           &::placeholder {
             color: ${hasInvertedStyle
-              ? semanticColors?.base?.textTertiaryInverse
+              ? semanticColors?.base?.textTertiaryOnDark
               : semanticColors?.base?.textTertiary};
             opacity: 1;
           }
@@ -392,7 +392,7 @@ export const StyledSearch = styled(InputSearch, {
           .MuiButtonBase-root:last-of-type {
             svg {
               color: ${hasInvertedStyle
-                ? semanticColors?.base?.ornamentSecondaryInverse
+                ? semanticColors?.base?.ornamentSecondaryOnDark
                 : ""};
             }
           }
@@ -401,7 +401,7 @@ export const StyledSearch = styled(InputSearch, {
         &:hover {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPrimaryHoverInverse
+              ? semanticColors?.base?.borderPrimaryHoverOnDark
               : ""} !important;
           }
 
@@ -409,7 +409,7 @@ export const StyledSearch = styled(InputSearch, {
             .MuiButtonBase-root:last-of-type {
               svg {
                 color: ${hasInvertedStyle
-                  ? semanticColors?.base?.ornamentPrimaryInverse
+                  ? semanticColors?.base?.ornamentPrimaryOnDark
                   : ""};
               }
             }
@@ -419,7 +419,7 @@ export const StyledSearch = styled(InputSearch, {
         &.Mui-focused {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPrimaryPressedInverse
+              ? semanticColors?.base?.borderPrimaryPressedOnDark
               : ""} !important;
           }
 
@@ -427,7 +427,7 @@ export const StyledSearch = styled(InputSearch, {
             .MuiButtonBase-root:last-of-type {
               svg {
                 color: ${hasInvertedStyle
-                  ? semanticColors?.base?.ornamentPrimaryInverse
+                  ? semanticColors?.base?.ornamentPrimaryOnDark
                   : ""};
               }
             }
@@ -437,7 +437,7 @@ export const StyledSearch = styled(InputSearch, {
         &.Mui-disabled {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPrimaryDisabledInverse
+              ? semanticColors?.base?.borderPrimaryDisabledOnDark
               : ""} !important;
           }
 
@@ -445,7 +445,7 @@ export const StyledSearch = styled(InputSearch, {
             .MuiButtonBase-root:last-of-type {
               svg {
                 color: ${hasInvertedStyle
-                  ? semanticColors?.base?.ornamentDisabledInverse
+                  ? semanticColors?.base?.ornamentDisabledOnDark
                   : ""};
               }
             }
@@ -462,7 +462,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
   const colors = getSemanticColors(props);
 
   const backgroundColor = props.hasInvertedStyle
-    ? colors?.base.backgroundPrimaryInverse
+    ? colors?.base.backgroundPrimaryOnDark
     : colors?.base.backgroundPrimary;
 
   return css`
@@ -524,7 +524,7 @@ export const StyledDrawer = styled(Drawer, {
 
     return `
       .MuiDrawer-paper {
-        background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryInverse : colors?.base.backgroundPrimary};
+        background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -587,19 +587,19 @@ export const StyledAccordion = styled(Accordion, {
     const corners = getCorners(props);
 
     const textDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.textSecondaryInverse
+      ? semanticColors?.base.textSecondaryOnDark
       : semanticColors?.base.textSecondary;
 
     const textOpenColor = hasInvertedStyle
-      ? semanticColors?.base.textPrimaryInverse
+      ? semanticColors?.base.textPrimaryOnDark
       : semanticColors?.base.textPrimary;
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryOnDark
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryPressedInverse
+      ? semanticColors?.base?.ornamentSecondaryPressedOnDark
       : semanticColors?.base.ornamentSecondaryPressed;
 
     return css`
@@ -619,7 +619,7 @@ export const StyledAccordion = styled(Accordion, {
           color: ${textOpenColor};
 
           background-color: ${hasInvertedStyle
-            ? semanticColors?.base?.fillPressedInverse
+            ? semanticColors?.base?.fillPressedOnDark
             : semanticColors?.base?.fillPressed};
 
           svg {
@@ -631,15 +631,15 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
           box-shadow: none;
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverInverse
+            ? semanticColors?.base.fillHoverOnDark
             : semanticColors?.base.fillHover};
           color: ${hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
 
           svg {
             color: ${hasInvertedStyle
-              ? semanticColors?.base?.ornamentSecondaryHoverInverse
+              ? semanticColors?.base?.ornamentSecondaryHoverOnDark
               : semanticColors?.base.ornamentSecondaryHover} !important;
           }
         }
@@ -654,14 +654,14 @@ export const StyledAccordion = styled(Accordion, {
 
           .primary-text {
             color: ${hasInvertedStyle
-              ? semanticColors?.base.textSecondaryInverse
+              ? semanticColors?.base.textSecondaryOnDark
               : semanticColors?.base.textSecondary} !important;
           }
 
           &:hover {
             .primary-text {
               color: ${hasInvertedStyle
-                ? semanticColors?.base.textPrimaryInverse
+                ? semanticColors?.base.textPrimaryOnDark
                 : semanticColors?.base.textPrimary} !important;
             }
           }
@@ -686,7 +686,7 @@ export const StyledSectionDivider = styled(Divider, {
       margin: ${spaces?.m}px 0;
       border-color: ${
         props.hasInvertedStyle
-          ? semanticColors?.base.dividerInverse
+          ? semanticColors?.base.dividerOnDark
           : semanticColors?.base.divider
       };
     `;

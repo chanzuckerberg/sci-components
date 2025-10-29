@@ -33,7 +33,7 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   const corners = getCorners(props);
 
   const ChevronHoverColor = hasInvertedStyle
-    ? semanticColors?.base?.ornamentSecondaryHoverInverse
+    ? semanticColors?.base?.ornamentSecondaryHoverOnDark
     : semanticColors?.base.ornamentSecondaryHover;
 
   return css`
@@ -42,20 +42,20 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
     padding: ${spaces?.s}px ${spaces?.m}px;
     background-color: ${active
       ? hasInvertedStyle
-        ? semanticColors?.base?.fillPressedInverse
+        ? semanticColors?.base?.fillPressedOnDark
         : semanticColors?.base?.fillPressed
       : "transparent"};
     width: 100%;
 
     &:hover {
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverInverse
+        ? semanticColors?.base.fillHoverOnDark
         : semanticColors?.base.fillHover};
       box-shadow: none;
 
       ${StyledLabel} {
         color: ${hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
+          ? semanticColors?.base.textPrimaryOnDark
           : semanticColors?.base.textPrimary};
       }
 
@@ -81,15 +81,15 @@ export const PrimaryNavItem = styled(Button, {
     const corners = getCorners(props);
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryOnDark
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverInverse
+      ? semanticColors?.base?.ornamentSecondaryHoverOnDark
       : semanticColors?.base.ornamentSecondaryHover;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryPressedInverse
+      ? semanticColors?.base.ornamentSecondaryPressedOnDark
       : semanticColors?.base.ornamentSecondaryPressed;
 
     return css`
@@ -97,7 +97,7 @@ export const PrimaryNavItem = styled(Button, {
       border-radius: ${corners?.l}px;
       background-color: ${active
         ? hasInvertedStyle
-          ? semanticColors?.base?.fillPressedInverse
+          ? semanticColors?.base?.fillPressedOnDark
           : semanticColors?.base?.fillPressed
         : "transparent"};
 
@@ -107,13 +107,13 @@ export const PrimaryNavItem = styled(Button, {
 
       &:hover {
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverInverse
+          ? semanticColors?.base.fillHoverOnDark
           : semanticColors?.base.fillHover};
         box-shadow: none;
 
         ${StyledLabel} {
           color: ${hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
         }
 
@@ -150,11 +150,11 @@ export const StyledLabel = styled("span", {
     const colors = getSemanticColors(props);
 
     const activeColor = hasInvertedStyle
-      ? colors?.base.textPrimaryInverse
+      ? colors?.base.textPrimaryOnDark
       : colors?.base.textPrimary;
 
     const inactiveColor = hasInvertedStyle
-      ? colors?.base.textSecondaryInverse
+      ? colors?.base.textSecondaryOnDark
       : colors?.base.textSecondary;
 
     return [

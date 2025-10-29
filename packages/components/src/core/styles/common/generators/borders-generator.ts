@@ -34,6 +34,12 @@ export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
       default: createBorder("gray", 500, "solid", "default"),
       disabled: createBorder("gray", 300, "solid", "default"),
       divider: createBorder("gray", 200, "solid", "default"),
+      dividerOnDark: createBorder(
+        "gray",
+        isDarkMode ? 200 : 700,
+        "solid",
+        "default"
+      ),
       dividerInverse: createBorder("gray", 600, "solid", "default"),
       hover: createBorder("gray", 900, "solid", "default"),
       inverse: createBorder("gray", 50, "solid", "default"),

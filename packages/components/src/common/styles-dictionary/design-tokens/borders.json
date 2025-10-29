@@ -40,6 +40,10 @@
           "darkValue": "1px solid {sds.color.primitive.gray.200.darkValue}",
           "value": "1px solid {sds.color.primitive.gray.200.value}"
         },
+        "dividerOnDark": {
+          "darkValue": "1px solid {sds.color.primitive.gray.200.darkValue}",
+          "value": "1px solid {sds.color.primitive.gray.700.value}"
+        },
         "dividerInverse": {
           "darkValue": "1px solid {sds.color.primitive.gray.600.darkValue}",
           "value": "1px solid {sds.color.primitive.gray.600.value}"

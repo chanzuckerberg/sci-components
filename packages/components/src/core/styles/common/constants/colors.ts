@@ -24,6 +24,16 @@ export const SDSLightThemeColors: Colors = {
     "800": "#1b1b1b",
     "900": "#000000",
   },
+  indigo: {
+    "100": "#f1f0ff",
+    "200": "#dcd9ff",
+    "300": "#beb5ff",
+    "400": "#9d8bff",
+    "500": "#6e4ff9",
+    "600": "#4e18cc",
+    "700": "#330296",
+    "800": "#1d004d",
+  },
   green: {
     "100": "#ebf9ed",
     "200": "#b9ecc3",
@@ -89,6 +99,16 @@ export const SDSDarkThemeColors: Colors = {
     "75": "#101010",
     "800": "#fafafa",
     "900": "#ffffff",
+  },
+  indigo: {
+    "100": "#1d004d",
+    "200": "#330296",
+    "300": "#521ec9",
+    "400": "#6e4ff9",
+    "500": "#9785ff",
+    "600": "#beb5ff",
+    "700": "#dcd9ff",
+    "800": "#f1f0ff",
   },
   green: {
     "100": "#082608",

@@ -28,6 +28,7 @@ export interface NavigationHeaderProps<T extends string = string>
   drawerOpen?: boolean;
   setDrawerOpen?: (open: boolean) => void;
   menuProps?: Partial<MenuProps>;
+  sdsStyle?: "dropdown" | "drawer";
 }
 
 export type IconButtonProps = SdsIconButtonProps & { children?: string };

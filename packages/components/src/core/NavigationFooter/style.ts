@@ -26,7 +26,7 @@ export const StyledFooter = styled("footer", {
 
     return css`
       background: ${props.hasInvertedStyle
-        ? semanticColors?.base.backgroundPrimaryInverse
+        ? semanticColors?.base.backgroundPrimaryOnDark
         : semanticColors?.base.backgroundPrimary};
       padding: ${spaces?.l}px ${spaces?.xl}px;
 
@@ -34,7 +34,7 @@ export const StyledFooter = styled("footer", {
       css`
         border-top: 1px solid
           ${props.hasInvertedStyle
-            ? semanticColors?.base.dividerInverse
+            ? semanticColors?.base.dividerOnDark
             : semanticColors?.base.divider};
         padding: ${spaces?.xl}px ${spaces?.xl}px ${spaces?.l}px ${spaces?.xl}px;
       `}
@@ -74,7 +74,7 @@ export const StyledLogoWrapper = styled("div", {
         isNarrow ? fontHeader("l", "semibold", true) : fontHeaderL,
         css`
           color: ${props.hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
           white-space: nowrap;
         `,
@@ -129,12 +129,12 @@ export const StyledTopSection = styled("div", {
       }
 
       color: ${props.hasInvertedStyle
-        ? semanticColors?.base.textSecondaryInverse
+        ? semanticColors?.base.textSecondaryOnDark
         : semanticColors?.base.textSecondary};
 
       &:hover {
         color: ${props.hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
+          ? semanticColors?.base.textPrimaryOnDark
           : semanticColors?.base.textPrimary};
         text-decoration: none;
       }

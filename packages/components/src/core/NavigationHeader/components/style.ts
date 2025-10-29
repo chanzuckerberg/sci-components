@@ -53,7 +53,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
     function getBackgroundColor() {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base.backgroundPrimaryInverse
+          ? semanticColors?.base.backgroundPrimaryOnDark
           : semanticColors?.base.backgroundPrimary;
       }
 
@@ -63,7 +63,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
     function getTextColor() {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base.textSecondaryInverse
+          ? semanticColors?.base.textSecondaryOnDark
           : semanticColors?.base.textSecondary;
       }
 
@@ -106,7 +106,7 @@ export const StyledDivider = styled(Divider, {
     const getBorderColor = () => {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base?.dividerInverse
+          ? semanticColors?.base?.dividerOnDark
           : semanticColors?.base?.divider;
       }
 

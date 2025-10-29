@@ -11,6 +11,7 @@ import {
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
+import Tag from "src/core/Tag";
 
 export type StyledTextItemProps = ExtraHeaderProps &
   SdsMinimalButtonProps & { open: boolean };
@@ -33,7 +34,7 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     &:hover {
       box-shadow: none;
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverInverse
+        ? semanticColors?.base.fillHoverOnDark
         : semanticColors?.base.fillHover};
     }
   `;
@@ -56,23 +57,23 @@ export const StyledTextItem = styled(Button, {
     const corners = getCorners(props);
 
     const textDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.textSecondaryInverse
+      ? semanticColors?.base.textSecondaryOnDark
       : semanticColors?.base.textSecondary;
 
     const textOpenColor = hasInvertedStyle
-      ? semanticColors?.base.textPrimaryInverse
+      ? semanticColors?.base.textPrimaryOnDark
       : semanticColors?.base.textPrimary;
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryOnDark
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverInverse
+      ? semanticColors?.base?.ornamentSecondaryHoverOnDark
       : semanticColors?.base.ornamentSecondaryHover;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryPressedInverse
+      ? semanticColors?.base?.ornamentSecondaryPressedOnDark
       : semanticColors?.base.ornamentSecondaryPressed;
 
     return [
@@ -82,7 +83,7 @@ export const StyledTextItem = styled(Button, {
         border-radius: ${corners?.l}px;
         background-color: ${open
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedInverse
+            ? semanticColors?.base?.fillPressedOnDark
             : semanticColors?.base?.fillPressed
           : "transparent"};
 
@@ -95,12 +96,12 @@ export const StyledTextItem = styled(Button, {
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverInverse
+            ? semanticColors?.base.fillHoverOnDark
             : semanticColors?.base.fillHover};
           box-shadow: none;
 
           color: ${hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
 
           svg {
@@ -112,4 +113,8 @@ export const StyledTextItem = styled(Button, {
       `,
     ];
   }}
+`;
+
+export const StyledTag = styled(Tag)`
+  margin: 0;
 `;

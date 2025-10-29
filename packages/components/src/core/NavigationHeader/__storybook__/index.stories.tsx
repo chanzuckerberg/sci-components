@@ -256,6 +256,8 @@ export const Default = {
         itemType: "text",
         label: "Secondary",
         onClick: () => alert("clicked on secondary"),
+        tag: "2",
+        tagColor: "notice",
       },
     ],
     showSearch: true,
