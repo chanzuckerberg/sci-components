@@ -18,11 +18,12 @@ import FooterLink from "./components/FooterLink";
 import MobileLinkRow from "./components/MobileLinkRow";
 import { NavigationFooterProps } from "./NavigationFooter.types";
 import { StyledDivider } from "./components/FooterLink/style";
+import { getMode } from "../styles";
 
 const MemoizedStyledDivider = memo(StyledDivider);
 
 function NavigationFooter({
-  hasInvertedStyle,
+  hasInvertedStyle: hasInvertedStyleProp = false,
   images,
   logo,
   logoUrl,
@@ -37,7 +38,13 @@ function NavigationFooter({
 }: NavigationFooterProps) {
   const footerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
+  const mode = getMode({ theme });
   const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const hasInvertedStyle = useMemo(
+    () => (mode === "light" ? hasInvertedStyleProp : false),
+    [hasInvertedStyleProp, mode]
+  );
 
   const [dimensions, setDimensions] = useState({
     breakpoint: 0,

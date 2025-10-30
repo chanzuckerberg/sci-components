@@ -2,6 +2,7 @@ import React, {
   forwardRef,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -36,6 +37,7 @@ import {
 } from "./NavigationHeader.types";
 import { mergeRefs } from "src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
+import { getMode } from "../styles";
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
@@ -45,12 +47,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const {
       activePrimaryNavKey = "",
       buttons,
-      sdsStyle = "dropdown",
+      // sdsStyle = "dropdown",
       menuProps = {
         disableScrollLock: true,
         disablePortal: true,
       },
-      hasInvertedStyle,
+      hasInvertedStyle: hasInvertedStyleProp = false,
       logo,
       logoUrl,
       logoLinkComponent = "a",
@@ -72,7 +74,13 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const navRef = useRef<HTMLDivElement>(null);
 
     const theme = useTheme();
+    const mode = getMode({ theme });
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+    const hasInvertedStyle = useMemo(
+      () => (mode === "light" ? hasInvertedStyleProp : false),
+      [hasInvertedStyleProp, mode]
+    );
 
     // Use controlled or uncontrolled drawer state
     const [internalDrawerOpen, setInternalDrawerOpen] = useState(false);
