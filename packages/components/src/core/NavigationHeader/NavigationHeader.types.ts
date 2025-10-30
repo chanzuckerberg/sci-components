@@ -10,7 +10,7 @@ export interface NavigationHeaderProps<T extends string = string>
   extends AppBarProps {
   activePrimaryNavKey?: string;
   buttons?: Partial<SdsProps & ButtonProps>[] | React.ReactNode[];
-  hasInvertedStyle?: boolean;
+  backgroundAppearance?: "matchBackground" | "dark";
   logo?: ReactNode;
   logoUrl?: string;
   logoLinkComponent?: ElementType;

@@ -28,12 +28,13 @@ export default {
         },
       },
     },
-    hasInvertedStyle: {
-      control: { type: "boolean" },
-      description: "Invert the colors of the navigation header.",
+    backgroundAppearance: {
+      control: { type: "inline-radio" },
+      description: "The background appearance of the navigation header.",
+      options: ["matchBackground", "dark"],
       table: {
         defaultValue: {
-          summary: "false",
+          summary: "matchBackground",
         },
       },
     },
@@ -199,7 +200,7 @@ export const Default = {
       disablePortal: true,
       disableScrollLock: true,
     },
-    hasInvertedStyle: false,
+    backgroundAppearance: "matchBackground",
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
     position: "sticky",

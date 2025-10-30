@@ -52,7 +52,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         disableScrollLock: true,
         disablePortal: true,
       },
-      hasInvertedStyle: hasInvertedStyleProp = false,
+      backgroundAppearance = "matchBackground",
       logo,
       logoUrl,
       logoLinkComponent = "a",
@@ -77,9 +77,17 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const mode = getMode({ theme });
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
 
+    /**
+     * In Light Mode
+     * - backgroundAppearance: matchBackground would result in the background being light
+     * - backgroundAppearance: dark would result in the background being dark
+     * In Dark Mode
+     * - backgroundAppearance: matchBackground would result in the background being dark
+     * - backgroundAppearance: dark would result in the background being dark
+     */
     const hasInvertedStyle = useMemo(
-      () => (mode === "light" ? hasInvertedStyleProp : false),
-      [hasInvertedStyleProp, mode]
+      () => (mode === "light" ? backgroundAppearance === "dark" : false),
+      [backgroundAppearance, mode]
     );
 
     // Use controlled or uncontrolled drawer state
