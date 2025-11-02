@@ -2,7 +2,7 @@
   "Icon": {
     "props": {
       "color": {
-        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"red\" | \"yellow\"",
+        "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"indigo\" | \"red\" | \"yellow\"",
         "isRequired": false
       },
       "sdsIcon": {

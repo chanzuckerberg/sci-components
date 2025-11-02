@@ -9,8 +9,8 @@
         "type": "Partial<MenuProps>",
         "isRequired": false
       },
-      "hasInvertedStyle": {
-        "type": "\"false\" | \"true\"",
+      "backgroundAppearance": {
+        "type": "\"matchBackground\" | \"dark\"",
         "isRequired": false
       },
       "logo": {

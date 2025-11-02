@@ -47,7 +47,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const {
       activePrimaryNavKey = "",
       buttons,
-      // sdsStyle = "dropdown",
+      sdsStyle = "dropdown",
       menuProps = {
         disableScrollLock: true,
         disablePortal: true,
@@ -210,6 +210,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
+            sdsStyle={sdsStyle}
           />
         )
       );
@@ -224,6 +225,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
+            sdsStyle={sdsStyle}
           />
         )
       );

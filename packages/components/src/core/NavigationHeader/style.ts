@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { AppBar, Divider, Drawer, Toolbar, css } from "@mui/material";
 import {
   CommonThemeProps,
@@ -5,7 +6,10 @@ import {
   fontBodyL,
   fontBodyS,
   fontBodySemiboldL,
+  fontBodySemiboldS,
+  fontBodyXs,
   fontHeaderL,
+  fontHeaderM,
   getCorners,
   getIconSizes,
   getSemanticColors,
@@ -691,4 +695,261 @@ export const StyledSectionDivider = styled(Divider, {
       };
     `;
   }}
+`;
+
+// Hover Drawer Components for sdsStyle="drawer"
+export const StyledMegaMenuDrawer = styled(Drawer, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+    const semanticColors = getSemanticColors(props);
+
+    return css`
+      pointer-events: none;
+
+      .MuiDrawer-paper {
+        background-color: ${hasInvertedStyle
+          ? semanticColors?.base.backgroundPrimaryOnDark
+          : semanticColors?.base.backgroundPrimary};
+        top: 48px;
+        height: auto;
+        max-height: calc(100vh - 48px);
+        overflow: visible;
+        pointer-events: auto;
+        transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      .MuiSlide-root {
+        transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      }
+    `;
+  }}
+`;
+
+export const StyledMegaMenuBackdrop = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${() => {
+    return css`
+      position: fixed;
+      top: 48px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      backdrop-filter: blur(5px);
+      z-index: 1200;
+      animation: fadeInBlur 225ms cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: auto;
+
+      @keyframes fadeInBlur {
+        from {
+          backdrop-filter: blur(0px);
+        }
+        to {
+          backdrop-filter: blur(5px);
+        }
+      }
+    `;
+  }}
+`;
+
+export const StyledMegaMenuContent = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return css`
+      background-color: ${hasInvertedStyle
+        ? semanticColors?.base.backgroundPrimaryOnDark
+        : semanticColors?.base.backgroundPrimary};
+      padding: ${spaces?.xl}px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: ${spaces?.xxl}px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center;
+      animation: fadeInContent 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      @keyframes fadeInContent {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerColumn = styled("div", {
+  shouldForwardProp: (prop: string) =>
+    !doNotForwardProps.includes(prop) && prop !== "totalColumns",
+})<ExtraHeaderProps & { totalColumns?: number }>`
+  ${(props: ExtraHeaderProps & { totalColumns?: number }) => {
+    const spaces = getSpaces(props);
+    const { totalColumns } = props;
+
+    // If more than 4 columns, force exactly 4 per row
+    const shouldForceLayout = totalColumns && totalColumns > 4;
+
+    return css`
+      display: flex;
+      flex-direction: column;
+      gap: ${spaces?.xxs}px;
+      min-width: ${shouldForceLayout ? "0" : "240px"};
+      max-width: ${shouldForceLayout ? "none" : "400px"};
+      flex: ${shouldForceLayout
+        ? `0 0 calc((100% - (3 * ${spaces?.xxl}px)) / 4)`
+        : "1 1 auto"};
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerColumnHeader = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return css`
+      ${fontHeaderM(props)}
+      font-weight: 600;
+      color: ${hasInvertedStyle
+        ? semanticColors?.base.textSecondaryOnDark
+        : semanticColors?.base.textSecondary};
+      padding: 0 0 0 56px;
+      margin-bottom: ${spaces?.m}px;
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItem = styled(Button, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraHeaderProps & { hasIcon?: boolean }>`
+  ${(props: ExtraHeaderProps & { hasIcon?: boolean }) => {
+    const { hasInvertedStyle, hasIcon } = props;
+    const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+    const spaces = getSpaces(props);
+
+    return css`
+      justify-content: flex-start;
+      text-align: left;
+      padding: ${spaces?.s}px ${spaces?.l}px;
+      border-radius: ${corners?.m}px;
+      min-height: auto;
+      width: 100%;
+      margin-left: ${hasIcon ? 0 : 40}px;
+
+      &:hover {
+        background: ${hasInvertedStyle
+          ? semanticColors?.base.fillHoverOnDark
+          : semanticColors?.base.fillHover};
+        box-shadow: none;
+      }
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItemContent = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraHeaderProps>`
+  ${(props: ExtraHeaderProps) => {
+    const spaces = getSpaces(props);
+
+    return css`
+      display: flex;
+      align-items: center;
+      gap: ${spaces?.l}px;
+      width: 100%;
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItemIcon = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
+  ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+    const { hasDetails } = props;
+
+    return css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: ${semanticColors?.accent?.fillPrimary};
+      padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
+
+      svg {
+        color: inherit;
+      }
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItemText = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${() => {
+    return css`
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+      min-width: 0;
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItemTitle = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+    const semanticColors = getSemanticColors(props);
+
+    return css`
+      ${fontBodySemiboldS(props)}
+      color: ${hasInvertedStyle
+        ? semanticColors?.base.textPrimaryOnDark
+        : semanticColors?.base.textPrimary};
+
+      ${StyledHoverDrawerItem}:hover & {
+        color: ${hasInvertedStyle
+          ? semanticColors?.base.textPrimaryOnDark
+          : semanticColors?.base.textPrimary};
+      }
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerItemDetails = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: ExtraHeaderProps) => {
+    const { hasInvertedStyle } = props;
+    const semanticColors = getSemanticColors(props);
+
+    return css`
+      ${fontBodyXs(props)}
+      color: ${hasInvertedStyle
+        ? semanticColors?.base.textSecondaryOnDark
+        : semanticColors?.base.textSecondary};
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerContainer = styled("div")`
+  position: relative;
 `;

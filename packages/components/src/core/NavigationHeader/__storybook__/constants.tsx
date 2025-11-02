@@ -1,3 +1,6 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+import CellByGeneIcon from "src/common/storybook/svg/CellByGeneIcon";
+import CryoEtIcon from "src/common/storybook/svg/CryoEtIcon";
 import { CustomNavigationLogo } from "./stories/default";
 
 export const NAVIGATION_HEADER_LOGO_OPTIONS = [
@@ -7,43 +10,120 @@ export const NAVIGATION_HEADER_LOGO_OPTIONS = [
 
 export const NAVIGATION_HEADER_EXCLUDED_CONTROLS = [];
 
-export const SECTIONED_NAV_ITEMS = [
+export const PRODUCTS = [
   {
-    label: "Data Analysis Tools",
-    onClick: () => alert("Data Analysis Tools clicked"),
-    section: "Analytics",
+    label: "Browse Datasets",
+    onClick: () => alert("Browse Datasets clicked"),
+    section: "Data",
+    details: "Explore all datasets",
+    icon: "Search",
   },
   {
-    label: "Visualization Suite",
-    onClick: () => alert("Visualization Suite clicked"),
-    section: "Analytics",
+    label: "API Reference",
+    onClick: () => alert("API Reference clicked"),
+    section: "Data",
+    details: "Use our CLI or API to access data",
+    icon: "Code",
   },
   {
-    label: "Report Generator",
-    onClick: () => alert("Report Generator clicked"),
-    section: "Analytics",
+    label: "Contribute a Dataset",
+    onClick: () => alert("Contribute a Dataset clicked"),
+    section: "Data",
+    details: "Share your dataset with the community",
+    icon: "Rocket",
   },
   {
-    label: "Cloud Storage",
-    onClick: () => alert("Cloud Storage clicked"),
-    section: "Infrastructure",
+    label: "CZ CELL×GENE",
+    onClick: () => alert("CZ CELL×GENE clicked"),
+    section: "Repositories",
+    details: "Single-cell multiomic data",
+    icon: <CellByGeneIcon />,
   },
   {
-    label: "API Gateway",
-    onClick: () => alert("API Gateway clicked"),
-    section: "Infrastructure",
+    label: "CryoET",
+    onClick: () => alert("CryoET clicked"),
+    section: "Repositories",
+    details: "High-resolution 3D sub-cellular tomograms",
+    icon: <CryoEtIcon />,
   },
   {
-    label: "Authentication",
-    onClick: () => alert("Authentication clicked"),
-    section: "Infrastructure",
+    label: "scBaseCamp",
+    onClick: () => alert("scBaseCamp clicked"),
+    section: "Featured Data",
+    icon: "Sparkle",
+  },
+  {
+    label: "Billion Cell Project",
+    onClick: () => alert("Billion Cell Project clicked"),
+    section: "Featured Data",
+    icon: "Sparkle",
+  },
+  {
+    label: "CELL×STATE",
+    onClick: () => alert("CELL×STATE clicked"),
+    section: "Featured Data",
+    icon: "Sparkle",
+  },
+  {
+    label: "Open Cell Microscopy Images",
+    onClick: () => alert("Open Cell Microscopy Images clicked"),
+    section: "Featured Data",
+    icon: "Sparkle",
+  },
+];
+
+export const SERVICES = [
+  {
+    label: "Technical Support",
+    onClick: () => alert("Technical Support clicked"),
+    section: "Support",
+    details: "Get help from our expert team",
+    icon: "InfoCircle",
+  },
+  {
+    label: "Community Forum",
+    onClick: () => alert("Community Forum clicked"),
+    section: "Support",
+    details: "Connect with other users and share insights",
+    icon: "Users",
   },
   {
     label: "Documentation",
     onClick: () => alert("Documentation clicked"),
+    section: "Support",
+    details: "Comprehensive guides and tutorials",
+    icon: "Book",
   },
   {
-    label: "Help Center",
-    onClick: () => alert("Help Center clicked"),
+    label: "Online Courses",
+    onClick: () => alert("Online Courses clicked"),
+    section: "Training",
+    details: "Self-paced learning modules",
+    icon: "Video",
+  },
+  {
+    label: "Workshops",
+    onClick: () => alert("Workshops clicked"),
+    section: "Training",
+    details: "Live instructor-led sessions",
+    icon: "Calendar",
+  },
+  {
+    label: "Data Analysis Consulting",
+    onClick: () => alert("Data Analysis Consulting clicked"),
+    section: "Consulting",
+    icon: "ChartBar",
+  },
+  {
+    label: "Custom Development",
+    onClick: () => alert("Custom Development clicked"),
+    section: "Consulting",
+    icon: "Code",
+  },
+  {
+    label: "Integration Services",
+    onClick: () => alert("Integration Services clicked"),
+    section: "Consulting",
+    icon: "Link",
   },
 ];

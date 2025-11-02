@@ -4,7 +4,8 @@ import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
   NAVIGATION_HEADER_LOGO_OPTIONS,
-  SECTIONED_NAV_ITEMS,
+  PRODUCTS,
+  SERVICES,
 } from "./constants";
 import { TestDemo } from "./stories/test";
 
@@ -99,6 +100,16 @@ export default {
       table: {
         defaultValue: {
           summary: "left",
+        },
+      },
+    },
+    sdsStyle: {
+      control: { type: "inline-radio" },
+      description: "Style of the navigation header.",
+      options: ["dropdown", "drawer"],
+      table: {
+        defaultValue: {
+          summary: "dropdown",
         },
       },
     },
@@ -302,10 +313,17 @@ export const DropdownWithSections = {
       },
       {
         itemType: "dropdown",
-        items: SECTIONED_NAV_ITEMS,
+        items: PRODUCTS,
         key: "products",
         label: "Products",
         onClick: () => console.log("Products dropdown clicked"),
+      },
+      {
+        itemType: "dropdown",
+        items: SERVICES,
+        key: "services",
+        label: "Services",
+        onClick: () => console.log("Services dropdown clicked"),
       },
       {
         itemType: "text",
@@ -318,7 +336,7 @@ export const DropdownWithSections = {
     secondaryNavItems: [
       {
         itemType: "dropdown",
-        items: SECTIONED_NAV_ITEMS,
+        items: PRODUCTS,
         key: "products",
         label: "New Products",
         onClick: () => console.log("New Products dropdown clicked"),

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, ReactNode, useEffect, useRef, useState } from "react";
 import {
   StyledDivider,
   StyledLabelTextWrapper,
@@ -17,7 +17,21 @@ import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
-import { StyledAccordion } from "../../style";
+import {
+  StyledAccordion,
+  StyledMegaMenuDrawer,
+  StyledMegaMenuBackdrop,
+  StyledMegaMenuContent,
+  StyledHoverDrawerColumn,
+  StyledHoverDrawerColumnHeader,
+  StyledHoverDrawerItem,
+  StyledHoverDrawerItemContent,
+  StyledHoverDrawerItemIcon,
+  StyledHoverDrawerItemText,
+  StyledHoverDrawerItemTitle,
+  StyledHoverDrawerItemDetails,
+  StyledHoverDrawerContainer,
+} from "../../style";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -44,6 +58,7 @@ export interface NavigationHeaderSecondaryNavProps {
   items: NavigationHeaderSecondaryNavItem[];
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
+  sdsStyle?: "dropdown" | "drawer";
 }
 
 export default function NavigationHeaderSecondaryNav({
@@ -51,18 +66,53 @@ export default function NavigationHeaderSecondaryNav({
   items,
   hasInvertedStyle,
   isNarrow,
+  sdsStyle = "dropdown",
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
     null
   );
+  const [activeDrawerKey, setActiveDrawerKey] = useState<string | null>(null);
   const theme: SDSTheme = useTheme();
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const open = Boolean(anchorEl);
+  const drawerOpen = activeDrawerKey !== null;
+
   function onClose() {
     setAnchorEl(null);
     setActiveDropdownKey(null);
   }
+
+  function onDrawerClose() {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDrawerKey(null);
+    }, 300);
+  }
+
+  function onDrawerOpen(key: string) {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setActiveDrawerKey(key);
+  }
+
+  function cancelDrawerClose() {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");
@@ -76,216 +126,123 @@ export default function NavigationHeaderSecondaryNav({
     setMenuWidth(button.offsetWidth);
   }, []);
 
-  return (
-    <StyledSection isNarrow={isNarrow}>
-      {items.map((item, index) => {
-        const { itemType, label, key, tag, tagColor, ...rest } = item;
-        const labelKebabCase = label
-          ?.toString()
-          .toLowerCase()
-          .replace(" ", "-");
-        const itemKey = String(key || `${labelKebabCase}-${index}`);
-        const isDropdownOpen = open && activeDropdownKey === itemKey;
+  const renderDrawerContent = (
+    drawerItems: DropdownItem[],
+    section: string,
+    hasMultipleSections: boolean
+  ) => {
+    return (
+      <>
+        {section && hasMultipleSections && (
+          <StyledHoverDrawerColumnHeader hasInvertedStyle={hasInvertedStyle}>
+            {section}
+          </StyledHoverDrawerColumnHeader>
+        )}
+        {drawerItems.map((subItem: DropdownItem, subIndex: number) => {
+          const {
+            label: subLabel,
+            details,
+            icon,
+            onClick,
+            ...subItemRest
+          } = subItem;
+          const hasDetails = !!details;
+          const hasIcon = !!icon;
+          const iconSize = hasDetails ? "l" : "s";
 
-        if (itemType === "dropdown" && !isNarrow) {
-          return (
-            <Fragment key={`${itemKey}-${label}-dropdown`}>
-              <StyledTextItem
-                {...rest}
-                ref={buttonRef}
+          const renderIcon = () => {
+            if (!icon) return null;
+
+            const iconContent =
+              typeof icon !== "string" ? (
+                icon
+              ) : (
+                <Icon sdsIcon={icon} sdsSize={iconSize} />
+              );
+
+            return (
+              <StyledHoverDrawerItemIcon
+                hasDetails={hasDetails}
                 hasInvertedStyle={hasInvertedStyle}
-                open={isDropdownOpen}
-                isNarrow={isNarrow}
-                sdsStyle="minimal"
-                onClick={(event) => {
-                  setAnchorEl(event.currentTarget);
-                  setActiveDropdownKey(itemKey);
-                  item.onClick?.(event);
-                }}
               >
-                <StyledLabelTextWrapper
-                  active={isDropdownOpen}
-                  isNarrow={isNarrow}
-                >
-                  {label}
-                </StyledLabelTextWrapper>
-                <StyledLabelTextWrapperShadow
-                  aria-hidden="true"
-                  isNarrow={isNarrow}
-                >
-                  {label}
-                </StyledLabelTextWrapperShadow>
-                {tag && (
-                  <StyledTag
-                    label={tag}
-                    color={tagColor as SdsTagColorType}
-                    hover={false}
-                  />
-                )}
-                <Icon
-                  sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
-                  sdsSize="xs"
-                />
-              </StyledTextItem>
+                {iconContent}
+              </StyledHoverDrawerItemIcon>
+            );
+          };
 
-              <Menu
-                anchorEl={anchorEl}
-                open={isDropdownOpen}
-                onClose={onClose}
-                slotProps={{
-                  paper: {
-                    style: {
-                      marginTop: theme?.app?.spacing?.s,
-                    },
-                  },
-                }}
-                anchorOrigin={{
-                  horizontal: "left",
-                  vertical: "bottom",
-                }}
-                transformOrigin={{
-                  horizontal: "left",
-                  vertical: "top",
-                }}
-                {...menuProps}
-                disablePortal
-              >
-                {(() => {
-                  const groupedItems = groupItemsBySection(item.items);
-                  const sections = Object.keys(groupedItems);
-                  const hasMultipleSections =
-                    sections.length > 1 ||
-                    sections.some((section) => section !== "");
-
-                  return sections.map((section, sectionIndex) => {
-                    const sectionItems = groupedItems[section];
-                    const showDivider = hasMultipleSections && sectionIndex > 0;
-
-                    return (
-                      <div key={`section-${section || "default"}`}>
-                        {showDivider && (
-                          <StyledDivider
-                            hasSection={!!section}
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          />
-                        )}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          >
-                            {section}
-                          </StyledSectionHeader>
-                        )}
-                        {sectionItems.map((subItem: DropdownItem) => {
-                          const {
-                            label: subLabel,
-                            onClick,
-                            ...subItemRest
-                          } = subItem;
-                          return (
-                            <MenuItem
-                              key={`menu-item-${subLabel}`}
-                              onClick={(e) => {
-                                onClick?.(e);
-                                onClose();
-                              }}
-                              sdsType="action"
-                              sx={{ minWidth: menuWidth }}
-                              {...subItemRest}
-                            >
-                              {subLabel}
-                            </MenuItem>
-                          );
-                        })}
-                      </div>
-                    );
-                  });
-                })()}
-              </Menu>
-            </Fragment>
-          );
-        }
-
-        if (itemType === "dropdown" && isNarrow) {
           return (
-            <StyledAccordion
-              key={`${labelKebabCase}-dropdown`}
-              id={`${labelKebabCase}-dropdown`}
+            <StyledHoverDrawerItem
+              key={`drawer-item-${section || "default"}-${subLabel}-${subIndex}`}
+              onClick={(e) => {
+                onClick?.(e);
+                setActiveDrawerKey(null);
+              }}
+              sdsStyle="minimal"
+              sdsType="secondary"
               hasInvertedStyle={hasInvertedStyle}
+              hasIcon={hasIcon}
+              {...subItemRest}
             >
-              <AccordionHeader chevronSize="s">{label}</AccordionHeader>
-              <AccordionDetails>
-                {(() => {
-                  const groupedItems = groupItemsBySection(item.items);
-                  const sections = Object.keys(groupedItems);
-                  const hasMultipleSections =
-                    sections.length > 1 ||
-                    sections.some((section) => section !== "");
-
-                  return sections.map((section, sectionIndex) => {
-                    const sectionItems = groupedItems[section];
-                    const showDivider = hasMultipleSections && sectionIndex > 0;
-
-                    return (
-                      <Fragment key={`section-${section || "default"}`}>
-                        {showDivider && (
-                          <StyledDivider
-                            hasSection={!!section}
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          />
-                        )}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          >
-                            {section}
-                          </StyledSectionHeader>
-                        )}
-                        {sectionItems.map((subItem) => {
-                          const {
-                            label: dropdownItemLabel,
-                            onClick,
-                            ...accordionSubItemRest
-                          } = subItem;
-
-                          return (
-                            <MenuItem
-                              key={`primary-nav-item-${dropdownItemLabel}`}
-                              onClick={(e) => {
-                                onClick?.(e);
-                                onClose();
-                              }}
-                              sdsType="action"
-                              {...accordionSubItemRest}
-                            >
-                              {dropdownItemLabel}
-                            </MenuItem>
-                          );
-                        })}
-                      </Fragment>
-                    );
-                  });
-                })()}
-              </AccordionDetails>
-            </StyledAccordion>
+              <StyledHoverDrawerItemContent>
+                {renderIcon()}
+                <StyledHoverDrawerItemText>
+                  <StyledHoverDrawerItemTitle
+                    hasInvertedStyle={hasInvertedStyle}
+                  >
+                    {subLabel}
+                  </StyledHoverDrawerItemTitle>
+                  {details && (
+                    <StyledHoverDrawerItemDetails
+                      hasInvertedStyle={hasInvertedStyle}
+                    >
+                      {details}
+                    </StyledHoverDrawerItemDetails>
+                  )}
+                </StyledHoverDrawerItemText>
+              </StyledHoverDrawerItemContent>
+            </StyledHoverDrawerItem>
           );
-        }
+        })}
+      </>
+    );
+  };
 
-        return (
+  const renderDrawerItem = (
+    item: DropdownHeaderSecondaryNavItem,
+    itemKey: string,
+    label: ReactNode,
+    tag?: string,
+    tagColor?: SdsTagColorType,
+    rest?: Record<string, unknown>
+  ) => {
+    const isDrawerOpen = drawerOpen && activeDrawerKey === itemKey;
+    const groupedItems = groupItemsBySection(item.items);
+    const sections = Object.keys(groupedItems);
+    const hasMultipleSections =
+      sections.length > 1 || sections.some((section) => section !== "");
+
+    return (
+      <Fragment key={`${itemKey}-${label}-drawer`}>
+        <StyledHoverDrawerContainer
+          onMouseEnter={() => onDrawerOpen(itemKey)}
+          onMouseLeave={onDrawerClose}
+        >
           <StyledTextItem
-            key={`${label}-${itemType}`}
             {...rest}
-            onClick={item.onClick}
             hasInvertedStyle={hasInvertedStyle}
-            open={false}
+            open={isDrawerOpen}
             isNarrow={isNarrow}
             sdsStyle="minimal"
           >
-            {item.label}
+            <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
+              {label}
+            </StyledLabelTextWrapper>
+            <StyledLabelTextWrapperShadow
+              aria-hidden="true"
+              isNarrow={isNarrow}
+            >
+              {label}
+            </StyledLabelTextWrapperShadow>
             {tag && (
               <StyledTag
                 label={tag}
@@ -293,9 +250,325 @@ export default function NavigationHeaderSecondaryNav({
                 hover={false}
               />
             )}
+            <Icon
+              sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
+              sdsSize="xs"
+            />
           </StyledTextItem>
-        );
-      })}
-    </StyledSection>
+        </StyledHoverDrawerContainer>
+
+        {isDrawerOpen && (
+          <StyledMegaMenuDrawer
+            anchor="top"
+            open={isDrawerOpen}
+            onClose={() => setActiveDrawerKey(null)}
+            hasInvertedStyle={hasInvertedStyle}
+            hideBackdrop
+            disableScrollLock
+            transitionDuration={225}
+            SlideProps={{
+              onMouseEnter: cancelDrawerClose,
+              onMouseLeave: onDrawerClose,
+            }}
+          >
+            <StyledMegaMenuContent
+              key={`drawer-content-${itemKey}`}
+              hasInvertedStyle={hasInvertedStyle}
+            >
+              {sections.map((section) => (
+                <StyledHoverDrawerColumn
+                  key={`drawer-section-${section || "default"}`}
+                  hasInvertedStyle={hasInvertedStyle}
+                  totalColumns={sections.length}
+                >
+                  {renderDrawerContent(
+                    groupedItems[section],
+                    section,
+                    hasMultipleSections
+                  )}
+                </StyledHoverDrawerColumn>
+              ))}
+            </StyledMegaMenuContent>
+          </StyledMegaMenuDrawer>
+        )}
+      </Fragment>
+    );
+  };
+
+  const renderDropdownItem = (
+    item: DropdownHeaderSecondaryNavItem,
+    itemKey: string,
+    label: ReactNode,
+    tag?: string,
+    tagColor?: SdsTagColorType,
+    rest?: Record<string, unknown>
+  ) => {
+    const isDropdownOpen = open && activeDropdownKey === itemKey;
+
+    return (
+      <Fragment key={`${itemKey}-${label}-dropdown`}>
+        <StyledTextItem
+          {...rest}
+          ref={buttonRef}
+          hasInvertedStyle={hasInvertedStyle}
+          open={isDropdownOpen}
+          isNarrow={isNarrow}
+          sdsStyle="minimal"
+          onClick={(event) => {
+            setAnchorEl(event.currentTarget);
+            setActiveDropdownKey(itemKey);
+            item.onClick?.(event);
+          }}
+        >
+          <StyledLabelTextWrapper active={isDropdownOpen} isNarrow={isNarrow}>
+            {label}
+          </StyledLabelTextWrapper>
+          <StyledLabelTextWrapperShadow aria-hidden="true" isNarrow={isNarrow}>
+            {label}
+          </StyledLabelTextWrapperShadow>
+          {tag && (
+            <StyledTag
+              label={tag}
+              color={tagColor as SdsTagColorType}
+              hover={false}
+            />
+          )}
+          <Icon
+            sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
+            sdsSize="xs"
+          />
+        </StyledTextItem>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={isDropdownOpen}
+          onClose={onClose}
+          slotProps={{
+            paper: {
+              style: {
+                marginTop: theme?.app?.spacing?.s,
+              },
+            },
+          }}
+          anchorOrigin={{
+            horizontal: "left",
+            vertical: "bottom",
+          }}
+          transformOrigin={{
+            horizontal: "left",
+            vertical: "top",
+          }}
+          {...menuProps}
+          disablePortal
+        >
+          {(() => {
+            const groupedItems = groupItemsBySection(item.items);
+            const sections = Object.keys(groupedItems);
+            const hasMultipleSections =
+              sections.length > 1 || sections.some((section) => section !== "");
+
+            return sections.map((section, sectionIndex) => {
+              const sectionItems = groupedItems[section];
+              const showDivider = hasMultipleSections && sectionIndex > 0;
+
+              return (
+                <div key={`section-${section || "default"}`}>
+                  {showDivider && (
+                    <StyledDivider
+                      hasSection={!!section}
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    />
+                  )}
+                  {section && hasMultipleSections && (
+                    <StyledSectionHeader
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    >
+                      {section}
+                    </StyledSectionHeader>
+                  )}
+                  {sectionItems.map((subItem: DropdownItem) => {
+                    const { label: subLabel, onClick } = subItem;
+                    return (
+                      <MenuItem
+                        key={`menu-item-${subLabel}`}
+                        onClick={(e) => {
+                          onClick?.(e);
+                          onClose();
+                        }}
+                        sdsType="action"
+                        sx={{ minWidth: menuWidth }}
+                      >
+                        {subLabel}
+                      </MenuItem>
+                    );
+                  })}
+                </div>
+              );
+            });
+          })()}
+        </Menu>
+      </Fragment>
+    );
+  };
+
+  const renderAccordionItem = (
+    item: DropdownHeaderSecondaryNavItem,
+    labelKebabCase: string,
+    label: ReactNode
+  ) => {
+    return (
+      <StyledAccordion
+        key={`${labelKebabCase}-dropdown`}
+        id={`${labelKebabCase}-dropdown`}
+        hasInvertedStyle={hasInvertedStyle}
+      >
+        <AccordionHeader chevronSize="s">{label}</AccordionHeader>
+        <AccordionDetails>
+          {(() => {
+            const groupedItems = groupItemsBySection(item.items);
+            const sections = Object.keys(groupedItems);
+            const hasMultipleSections =
+              sections.length > 1 || sections.some((section) => section !== "");
+
+            return sections.map((section, sectionIndex) => {
+              const sectionItems = groupedItems[section];
+              const showDivider = hasMultipleSections && sectionIndex > 0;
+
+              return (
+                <Fragment key={`section-${section || "default"}`}>
+                  {showDivider && (
+                    <StyledDivider
+                      hasSection={!!section}
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    />
+                  )}
+                  {section && hasMultipleSections && (
+                    <StyledSectionHeader
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    >
+                      {section}
+                    </StyledSectionHeader>
+                  )}
+                  {sectionItems.map((subItem) => {
+                    const { label: dropdownItemLabel, onClick } = subItem;
+
+                    return (
+                      <MenuItem
+                        key={`primary-nav-item-${dropdownItemLabel}`}
+                        onClick={(e) => {
+                          onClick?.(e);
+                          onClose();
+                        }}
+                        sdsType="action"
+                      >
+                        {dropdownItemLabel}
+                      </MenuItem>
+                    );
+                  })}
+                </Fragment>
+              );
+            });
+          })()}
+        </AccordionDetails>
+      </StyledAccordion>
+    );
+  };
+
+  const renderTextItem = (
+    label: ReactNode,
+    itemType: string,
+    tag?: string,
+    tagColor?: SdsTagColorType,
+    rest?: Record<string, unknown>,
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  ) => {
+    return (
+      <StyledTextItem
+        key={`${label}-${itemType}`}
+        {...rest}
+        onClick={onClick}
+        hasInvertedStyle={hasInvertedStyle}
+        open={false}
+        isNarrow={isNarrow}
+        sdsStyle="minimal"
+      >
+        {label}
+        {tag && (
+          <StyledTag
+            label={tag}
+            color={tagColor as SdsTagColorType}
+            hover={false}
+          />
+        )}
+      </StyledTextItem>
+    );
+  };
+
+  return (
+    <>
+      {drawerOpen && (
+        <StyledMegaMenuBackdrop
+          onClick={() => setActiveDrawerKey(null)}
+          onMouseEnter={onDrawerClose}
+        />
+      )}
+      <StyledSection isNarrow={isNarrow}>
+        {items.map((item, index) => {
+          const { itemType, label, key, tag, tagColor, ...rest } = item;
+          const labelKebabCase = label
+            ?.toString()
+            .toLowerCase()
+            .replace(" ", "-");
+          const itemKey = String(key || `${labelKebabCase}-${index}`);
+
+          // Drawer style (hover-based)
+          if (itemType === "dropdown" && !isNarrow && sdsStyle === "drawer") {
+            return renderDrawerItem(
+              item as DropdownHeaderSecondaryNavItem,
+              itemKey,
+              label,
+              tag,
+              tagColor,
+              rest
+            );
+          }
+
+          // Dropdown style (click-based)
+          if (itemType === "dropdown" && !isNarrow && sdsStyle === "dropdown") {
+            return renderDropdownItem(
+              item as DropdownHeaderSecondaryNavItem,
+              itemKey,
+              label,
+              tag,
+              tagColor,
+              rest
+            );
+          }
+
+          // Narrow/Accordion style
+          if (itemType === "dropdown" && isNarrow) {
+            return renderAccordionItem(
+              item as DropdownHeaderSecondaryNavItem,
+              labelKebabCase,
+              label
+            );
+          }
+
+          // Simple text item
+          return renderTextItem(
+            item.label,
+            itemType,
+            tag,
+            tagColor,
+            rest,
+            item.onClick
+          );
+        })}
+      </StyledSection>
+    </>
   );
 }
