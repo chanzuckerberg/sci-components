@@ -52,7 +52,7 @@ export const StyledAppBar = styled(AppBar, {
       background-image: none;
       max-width: 100%;
       overflow-x: auto;
-      z-index: ${props.theme?.zIndex.drawer ? props.theme?.zIndex.drawer + 10 : 1210};
+      z-index: ${props.theme?.zIndex?.drawer ? props.theme.zIndex.drawer + 10 : 1210};
     `;
   }}
 `;
