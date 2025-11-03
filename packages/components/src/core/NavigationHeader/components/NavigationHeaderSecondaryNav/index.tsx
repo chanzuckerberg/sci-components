@@ -20,7 +20,6 @@ import { groupItemsBySection } from "../../utils";
 import {
   StyledAccordion,
   StyledMegaMenuDrawer,
-  StyledMegaMenuBackdrop,
   StyledMegaMenuContent,
   StyledHoverDrawerColumn,
   StyledHoverDrawerContainer,
@@ -69,6 +68,8 @@ export default function NavigationHeaderSecondaryNav({
   const [activeDrawerKey, setActiveDrawerKey] = useState<string | null>(null);
   const theme: SDSTheme = useTheme();
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [contentKey, setContentKey] = useState<string | null>(null);
+  const [isContentFading, setIsContentFading] = useState(false);
 
   const open = Boolean(anchorEl);
   const drawerOpen = activeDrawerKey !== null;
@@ -84,6 +85,7 @@ export default function NavigationHeaderSecondaryNav({
     }
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveDrawerKey(null);
+      setContentKey(null);
     }, 300);
   }
 
@@ -91,7 +93,21 @@ export default function NavigationHeaderSecondaryNav({
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
     }
-    setActiveDrawerKey(key);
+
+    // If drawer is already open with different content, fade out then change
+    if (activeDrawerKey !== null && activeDrawerKey !== key) {
+      setIsContentFading(true);
+      setTimeout(() => {
+        setActiveDrawerKey(key);
+        setContentKey(key);
+        setIsContentFading(false);
+      }, 150); // Half of the transition duration for smooth effect
+    } else {
+      // First time opening or reopening same drawer
+      setActiveDrawerKey(key);
+      setContentKey(key);
+      setIsContentFading(false);
+    }
   }
 
   function cancelDrawerClose() {
@@ -129,84 +145,39 @@ export default function NavigationHeaderSecondaryNav({
     rest?: Record<string, unknown>
   ) => {
     const isDrawerOpen = drawerOpen && activeDrawerKey === itemKey;
-    const groupedItems = groupItemsBySection(item.items);
-    const sections = Object.keys(groupedItems);
-    const hasMultipleSections =
-      sections.length > 1 || sections.some((section) => section !== "");
 
     return (
-      <Fragment key={`${itemKey}-${label}-drawer`}>
-        <StyledHoverDrawerContainer
-          onMouseEnter={() => onDrawerOpen(itemKey)}
-          onMouseLeave={onDrawerClose}
+      <StyledHoverDrawerContainer
+        key={`${itemKey}-${label}-drawer`}
+        onMouseEnter={() => onDrawerOpen(itemKey)}
+        onMouseLeave={onDrawerClose}
+      >
+        <StyledTextItem
+          {...rest}
+          hasInvertedStyle={hasInvertedStyle}
+          open={isDrawerOpen}
+          isNarrow={isNarrow}
+          sdsStyle="minimal"
         >
-          <StyledTextItem
-            {...rest}
-            hasInvertedStyle={hasInvertedStyle}
-            open={isDrawerOpen}
-            isNarrow={isNarrow}
-            sdsStyle="minimal"
-          >
-            <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
-              {label}
-            </StyledLabelTextWrapper>
-            <StyledLabelTextWrapperShadow
-              aria-hidden="true"
-              isNarrow={isNarrow}
-            >
-              {label}
-            </StyledLabelTextWrapperShadow>
-            {tag && (
-              <StyledTag
-                label={tag}
-                color={tagColor as SdsTagColorType}
-                hover={false}
-              />
-            )}
-            <Icon
-              sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
-              sdsSize="xs"
+          <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
+            {label}
+          </StyledLabelTextWrapper>
+          <StyledLabelTextWrapperShadow aria-hidden="true" isNarrow={isNarrow}>
+            {label}
+          </StyledLabelTextWrapperShadow>
+          {tag && (
+            <StyledTag
+              label={tag}
+              color={tagColor as SdsTagColorType}
+              hover={false}
             />
-          </StyledTextItem>
-        </StyledHoverDrawerContainer>
-
-        {isDrawerOpen && (
-          <StyledMegaMenuDrawer
-            anchor="top"
-            open={isDrawerOpen}
-            onClose={() => setActiveDrawerKey(null)}
-            hasInvertedStyle={hasInvertedStyle}
-            hideBackdrop
-            disableScrollLock
-            transitionDuration={225}
-            SlideProps={{
-              onMouseEnter: cancelDrawerClose,
-              onMouseLeave: onDrawerClose,
-            }}
-          >
-            <StyledMegaMenuContent
-              key={`drawer-content-${itemKey}`}
-              hasInvertedStyle={hasInvertedStyle}
-            >
-              {sections.map((section) => (
-                <StyledHoverDrawerColumn
-                  key={`drawer-section-${section || "default"}`}
-                  hasInvertedStyle={hasInvertedStyle}
-                  totalColumns={sections.length}
-                >
-                  <DrawerContent
-                    drawerItems={groupedItems[section]}
-                    section={section}
-                    hasMultipleSections={hasMultipleSections}
-                    hasInvertedStyle={hasInvertedStyle}
-                    onItemClick={() => setActiveDrawerKey(null)}
-                  />
-                </StyledHoverDrawerColumn>
-              ))}
-            </StyledMegaMenuContent>
-          </StyledMegaMenuDrawer>
-        )}
-      </Fragment>
+          )}
+          <Icon
+            sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
+            sdsSize="xs"
+          />
+        </StyledTextItem>
+      </StyledHoverDrawerContainer>
     );
   };
 
@@ -423,14 +394,16 @@ export default function NavigationHeaderSecondaryNav({
     );
   };
 
+  // Get the active drawer item for rendering shared content
+  const activeDrawerItem = items.find((item, index) => {
+    const { label, key } = item;
+    const labelKebabCase = label?.toString().toLowerCase().replace(" ", "-");
+    const itemKey = String(key || `${labelKebabCase}-${index}`);
+    return item.itemType === "dropdown" && itemKey === contentKey;
+  }) as DropdownHeaderSecondaryNavItem | undefined;
+
   return (
     <>
-      {drawerOpen && (
-        <StyledMegaMenuBackdrop
-          onClick={() => setActiveDrawerKey(null)}
-          onMouseEnter={onDrawerClose}
-        />
-      )}
       <StyledSection isNarrow={isNarrow}>
         {items.map((item, index) => {
           const { itemType, label, key, tag, tagColor, ...rest } = item;
@@ -484,6 +457,63 @@ export default function NavigationHeaderSecondaryNav({
           );
         })}
       </StyledSection>
+
+      {/* Shared drawer for all hover-based dropdown items */}
+      {sdsStyle === "drawer" && !isNarrow && (
+        <StyledMegaMenuDrawer
+          anchor="top"
+          open={drawerOpen}
+          onClose={() => {
+            setActiveDrawerKey(null);
+            setContentKey(null);
+          }}
+          hasInvertedStyle={hasInvertedStyle}
+          hideBackdrop={false}
+          disableScrollLock
+          transitionDuration={225}
+          SlideProps={{
+            onMouseEnter: cancelDrawerClose,
+            onMouseLeave: onDrawerClose,
+          }}
+        >
+          <StyledMegaMenuContent
+            hasInvertedStyle={hasInvertedStyle}
+            style={{
+              opacity: isContentFading ? 0 : 1,
+            }}
+          >
+            {activeDrawerItem &&
+              (() => {
+                const groupedItems = groupItemsBySection(
+                  activeDrawerItem.items
+                );
+                const sections = Object.keys(groupedItems);
+                const hasMultipleSections =
+                  sections.length > 1 ||
+                  sections.some((section) => section !== "");
+
+                return sections.map((section) => (
+                  <StyledHoverDrawerColumn
+                    key={`drawer-section-${section || "default"}`}
+                    hasInvertedStyle={hasInvertedStyle}
+                    totalColumns={sections.length}
+                  >
+                    <DrawerContent
+                      drawerItems={groupedItems[section]}
+                      section={section}
+                      hasMultipleSections={hasMultipleSections}
+                      hasInvertedStyle={hasInvertedStyle}
+                      onItemClick={() => {
+                        setActiveDrawerKey(null);
+                        setContentKey(null);
+                      }}
+                    />
+                  </StyledHoverDrawerColumn>
+                ));
+              })()}
+          </StyledMegaMenuContent>
+        </StyledMegaMenuDrawer>
+      )}
     </>
   );
 }

@@ -51,6 +51,7 @@ export const StyledAppBar = styled(AppBar, {
       background-image: none;
       max-width: 100%;
       overflow-x: auto;
+      z-index: ${props.theme?.zIndex.drawer ? props.theme?.zIndex.drawer + 10 : 1210};
     `;
   }}
 `;
@@ -70,7 +71,6 @@ const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
     box-shadow: none;
     position: sticky !important;
     top: 0;
-    z-index: 1000;
     justify-content: space-between;
   `;
 };
@@ -109,7 +109,6 @@ export const StyledShadowElement = styled("div", {
       width: 100%;
       top: 46px;
       left: 0;
-      z-index: 100;
     `;
   }}
 `;
@@ -128,7 +127,6 @@ export const StyledShadowCoverElement = styled("div", {
       width: 100%;
       top: 56px;
       left: 0;
-      z-index: 100;
     `;
   }}
 `;
@@ -505,7 +503,6 @@ export const StyledButtonSection = styled("section", {
 })`
   display: flex;
   align-items: center;
-  z-index: 10;
 
   ${(props: ExtraHeaderProps) => {
     const { isNarrow } = props;
@@ -716,46 +713,20 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
         background-color: ${hasInvertedStyle
           ? semanticColors?.base.backgroundPrimaryDark
           : semanticColors?.base.backgroundPrimary};
-        top: 48px;
         height: auto;
-        max-height: calc(100vh - 48px);
+        max-height: calc(100vh);
         overflow: visible;
         pointer-events: auto;
-        transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
         background-image: none;
-        padding: ${spaces?.xl}px 0 ${spaces?.xxl}px;
+        padding: ${spaces?.xl ? spaces?.xl + 48 : 48}px ${spaces?.xl}px
+          ${spaces?.xxl}px;
+        transform: translateY(48px);
       }
 
-      .MuiSlide-root {
-        transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      }
-    `;
-  }}
-`;
-
-export const StyledMegaMenuBackdrop = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
-  ${() => {
-    return css`
-      position: fixed;
-      top: 48px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      backdrop-filter: blur(5px);
-      z-index: 1200;
-      animation: fadeInBlur 225ms cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: auto;
-
-      @keyframes fadeInBlur {
-        from {
-          backdrop-filter: blur(0px);
-        }
-        to {
-          backdrop-filter: blur(5px);
-        }
+      .MuiBackdrop-root {
+        background-color: transparent;
+        backdrop-filter: blur(10px);
       }
     `;
   }}
@@ -780,16 +751,7 @@ export const StyledMegaMenuContent = styled("div", {
       max-width: 1200px;
       margin: 0 auto;
       justify-content: center;
-      animation: fadeInContent 200ms cubic-bezier(0.4, 0, 0.2, 1);
-
-      @keyframes fadeInContent {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
+      transition: opacity 300ms ease-in-out;
     `;
   }}
 `;
@@ -808,7 +770,6 @@ export const StyledHoverDrawerColumn = styled("div", {
     return css`
       display: flex;
       flex-direction: column;
-      // gap: ${spaces?.m}px;
       min-width: ${shouldForceLayout ? "0" : "240px"};
       max-width: ${shouldForceLayout ? "none" : "400px"};
       flex: ${shouldForceLayout
@@ -860,6 +821,9 @@ export const StyledHoverDrawerItem = styled(Button, {
         background: ${hasInvertedStyle
           ? semanticColors?.base.fillHoverOnDark
           : semanticColors?.base.fillHover};
+        svg {
+          color: ${semanticColors?.accent?.ornament};
+        }
       }
     `;
   }}
@@ -893,6 +857,7 @@ export const StyledHoverDrawerItemIcon = styled("div", {
       align-items: center;
       justify-content: center;
       padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
+      color: ${semanticColors?.accent?.ornament};
 
       svg {
         color: ${semanticColors?.accent?.ornament};
@@ -921,11 +886,11 @@ export const EmptyIcon = styled("div")<
   ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
     const { hasDetails } = props;
     const spaces = getSpaces(props);
+    const iconSize = getIconSizes(props);
 
     return css`
-      width: ${hasDetails ? 24 : 16}px;
-      height: ${hasDetails ? 24 : 16}px;
-      // margin-left: ${hasDetails ? 0 : spaces?.l}px;
+      width: ${hasDetails ? iconSize?.l?.width : iconSize?.s?.width}px;
+      height: ${hasDetails ? iconSize?.l?.height : iconSize?.s?.height}px;
       padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
       box-sizing: content-box;
     `;
@@ -944,6 +909,11 @@ export const StyledHoverDrawerItemTitle = styled("div", {
       color: ${hasInvertedStyle
         ? semanticColors?.base.textPrimaryOnDark
         : semanticColors?.base.textPrimary};
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
 
       ${StyledHoverDrawerItem}:hover & {
         color: ${hasInvertedStyle
@@ -966,6 +936,10 @@ export const StyledHoverDrawerItemDetails = styled("div", {
       color: ${hasInvertedStyle
         ? semanticColors?.base.textSecondaryOnDark
         : semanticColors?.base.textSecondary};
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     `;
   }}
 `;
