@@ -148,7 +148,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             }
           }
         }
-      }, 350);
+      }, 500);
     }, []);
 
     const checkScrollable = useCallback(() => {

@@ -618,9 +618,17 @@ export const StyledAccordion = styled(Accordion, {
         }
 
         &[aria-expanded="true"] {
+          position: sticky;
+          top: calc(48px + ${spaces?.m}px);
+          z-index: 11;
+          backdrop-filter: blur(8px);
+
           .MuiAccordionSummary-content {
             ${fontBodySemiboldL(props)}
+            position: relative;
+            z-index: 12;
           }
+
           color: ${textOpenColor};
 
           background-color: ${hasInvertedStyle
