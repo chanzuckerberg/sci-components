@@ -29,6 +29,7 @@ import {
   StyledHoverDrawerItemTitle,
   StyledHoverDrawerItemDetails,
   StyledHoverDrawerContainer,
+  EmptyIcon,
 } from "../../style";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
@@ -161,18 +162,19 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             onClick,
             ...subItemRest
           } = subItem;
+
           const hasDetails = !!details;
           const hasIcon = !!icon;
           const iconSize = hasDetails ? "l" : "s";
 
           const renderIcon = () => {
-            if (!icon) return null;
+            if (!icon) return <EmptyIcon hasDetails={hasDetails} />;
 
             const iconContent =
               typeof icon !== "string" ? (
                 icon
               ) : (
-                <Icon sdsIcon={icon} sdsSize={iconSize} />
+                <Icon sdsIcon={icon} sdsSize={iconSize} color="indigo" />
               );
 
             return (
@@ -198,7 +200,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               hasIcon={hasIcon}
               {...subItemRest}
             >
-              <StyledHoverDrawerItemContent>
+              <StyledHoverDrawerItemContent hasDetails={hasDetails}>
                 {renderIcon()}
                 <StyledHoverDrawerItemText>
                   <StyledHoverDrawerItemTitle

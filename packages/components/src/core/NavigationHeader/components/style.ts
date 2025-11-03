@@ -53,7 +53,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
     function getBackgroundColor() {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base.backgroundPrimaryOnDark
+          ? semanticColors?.base.backgroundPrimaryDark
           : semanticColors?.base.backgroundPrimary;
       }
 

@@ -26,7 +26,7 @@ export interface AccentColor {
 
 export interface BaseColor {
   backgroundPrimary: string;
-  backgroundPrimaryOnDark: string;
+  backgroundPrimaryDark: string;
   backgroundPrimaryInverse: string;
   backgroundSecondary: string;
   backgroundSecondaryOnDark: string;

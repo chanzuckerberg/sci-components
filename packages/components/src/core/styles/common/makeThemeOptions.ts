@@ -29,7 +29,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
     },
     base: {
       backgroundPrimary: appTheme.colors.gray[50]!,
-      backgroundPrimaryOnDark: appTheme.colors.gray[900]!,
+      backgroundPrimaryDark: appTheme.colors.gray[900]!,
       backgroundPrimaryInverse: appTheme.colors.gray[900]!,
       backgroundSecondary: addOpacityToHex(appTheme.colors.gray[100], 40),
       backgroundSecondaryOnDark: addOpacityToHex(appTheme.colors.gray[700], 62),
@@ -192,7 +192,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
     },
     base: {
       backgroundPrimary: appTheme.colors.gray[75]!,
-      backgroundPrimaryOnDark: appTheme.colors.gray[75]!,
+      backgroundPrimaryDark: appTheme.colors.gray[75]!,
       backgroundPrimaryInverse: appTheme.colors.gray[75]!,
       backgroundSecondary: addOpacityToHex(appTheme.colors.gray[100], 60),
       backgroundSecondaryOnDark: addOpacityToHex(appTheme.colors.gray[100], 60),

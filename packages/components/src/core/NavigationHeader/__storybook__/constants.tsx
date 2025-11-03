@@ -85,7 +85,7 @@ export const SERVICES = [
     onClick: () => alert("Community Forum clicked"),
     section: "Support",
     details: "Connect with other users and share insights",
-    icon: "Users",
+    icon: "People",
   },
   {
     label: "Documentation",
@@ -95,29 +95,29 @@ export const SERVICES = [
     icon: "Book",
   },
   {
-    label: "Online Courses",
-    onClick: () => alert("Online Courses clicked"),
-    section: "Training",
-    details: "Self-paced learning modules",
-    icon: "Video",
-  },
-  {
     label: "Workshops",
     onClick: () => alert("Workshops clicked"),
     section: "Training",
     details: "Live instructor-led sessions",
-    icon: "Calendar",
+    icon: "SpeechBubbles",
   },
   {
-    label: "Data Analysis Consulting",
-    onClick: () => alert("Data Analysis Consulting clicked"),
-    section: "Consulting",
-    icon: "ChartBar",
+    label: "Online Courses",
+    onClick: () => alert("Online Courses clicked"),
+    section: "Training",
+    details: "This item is without an icon",
+  },
+  {
+    label: "Books and Articles",
+    onClick: () => alert("Online Courses clicked"),
+    section: "Training",
   },
   {
     label: "Custom Development",
     onClick: () => alert("Custom Development clicked"),
     section: "Consulting",
+    details:
+      "Custom development services for your project needs and goals with a team of experts in the field of single-cell biology and single-cell genomics data analysis.",
     icon: "Code",
   },
   {
@@ -125,5 +125,57 @@ export const SERVICES = [
     onClick: () => alert("Integration Services clicked"),
     section: "Consulting",
     icon: "Link",
+  },
+  {
+    label: "Data Analysis Consulting",
+    onClick: () => alert("Data Analysis Consulting clicked"),
+    section: "Consulting",
+  },
+];
+
+export const DOCUMENTATION = [
+  {
+    label: "Documentation",
+    onClick: () => alert("Documentation clicked"),
+    section: "Documentation",
+    details: "Comprehensive guides and tutorials",
+    icon: "Book",
+  },
+  {
+    label: "API Reference",
+    onClick: () => alert("API Reference clicked"),
+    section: "Documentation",
+    details: "Use our CLI or API to access data",
+    icon: "Code",
+  },
+  {
+    label: "Contribute a Dataset",
+    onClick: () => alert("Contribute a Dataset clicked"),
+    section: "Documentation",
+    details: "Share your dataset with the community",
+    icon: "Rocket",
+  },
+  {
+    label: "Code of Conduct",
+    onClick: () => alert("Code of Conduct clicked"),
+    section: "Documentation",
+    details: "Our code of conduct",
+  },
+  {
+    label: "Privacy Policy",
+    onClick: () => alert("Privacy Policy clicked"),
+    section: "Legal",
+    icon: "EyeClosed",
+  },
+  {
+    label: "Terms of Service",
+    onClick: () => alert("Terms of Service clicked"),
+    section: "Legal",
+    icon: "Scale",
+  },
+  {
+    label: "Cookie Policy",
+    onClick: () => alert("Cookie Policy clicked"),
+    section: "Legal",
   },
 ];

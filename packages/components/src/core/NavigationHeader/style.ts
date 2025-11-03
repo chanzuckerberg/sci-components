@@ -46,7 +46,7 @@ export const StyledAppBar = styled(AppBar, {
     const colors = getSemanticColors(props);
 
     return `
-      background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
+      background-color: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryDark : colors?.base.backgroundPrimary};
       background-image: none;
       max-width: 100%;
       overflow-x: auto;
@@ -63,7 +63,7 @@ const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
         ? semanticColors?.base.dividerOnDark
         : semanticColors?.base.divider};
     background-color: ${props.hasInvertedStyle
-      ? semanticColors?.base.backgroundPrimaryOnDark
+      ? semanticColors?.base.backgroundPrimaryDark
       : semanticColors?.base.backgroundPrimary};
     background-image: none;
     box-shadow: none;
@@ -120,7 +120,7 @@ export const StyledShadowCoverElement = styled("div", {
     const colors = getSemanticColors(props);
 
     return `
-      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
+      background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryDark : colors?.base.backgroundPrimary};
       height: 10px;
       display: block;
       position: absolute;
@@ -466,7 +466,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
   const colors = getSemanticColors(props);
 
   const backgroundColor = props.hasInvertedStyle
-    ? colors?.base.backgroundPrimaryOnDark
+    ? colors?.base.backgroundPrimaryDark
     : colors?.base.backgroundPrimary;
 
   return css`
@@ -528,7 +528,9 @@ export const StyledDrawer = styled(Drawer, {
 
     return `
       .MuiDrawer-paper {
-        background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryOnDark : colors?.base.backgroundPrimary};
+        background: ${props.hasInvertedStyle ? colors?.base.backgroundPrimaryDark : colors?.base.backgroundPrimary};
+        box-shadow: none;
+        background-image: none;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -710,7 +712,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
 
       .MuiDrawer-paper {
         background-color: ${hasInvertedStyle
-          ? semanticColors?.base.backgroundPrimaryOnDark
+          ? semanticColors?.base.backgroundPrimaryDark
           : semanticColors?.base.backgroundPrimary};
         top: 48px;
         height: auto;
@@ -719,6 +721,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
         pointer-events: auto;
         transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
+        background-image: none;
       }
 
       .MuiSlide-root {
@@ -765,7 +768,7 @@ export const StyledMegaMenuContent = styled("div", {
 
     return css`
       background-color: ${hasInvertedStyle
-        ? semanticColors?.base.backgroundPrimaryOnDark
+        ? semanticColors?.base.backgroundPrimaryDark
         : semanticColors?.base.backgroundPrimary};
       padding: ${spaces?.xl}px;
       display: flex;
@@ -837,7 +840,7 @@ export const StyledHoverDrawerItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<ExtraHeaderProps & { hasIcon?: boolean }>`
   ${(props: ExtraHeaderProps & { hasIcon?: boolean }) => {
-    const { hasInvertedStyle, hasIcon } = props;
+    const { hasInvertedStyle } = props;
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
     const spaces = getSpaces(props);
@@ -849,13 +852,11 @@ export const StyledHoverDrawerItem = styled(Button, {
       border-radius: ${corners?.m}px;
       min-height: auto;
       width: 100%;
-      margin-left: ${hasIcon ? 0 : 40}px;
 
       &:hover {
         background: ${hasInvertedStyle
           ? semanticColors?.base.fillHoverOnDark
           : semanticColors?.base.fillHover};
-        box-shadow: none;
       }
     `;
   }}
@@ -863,8 +864,8 @@ export const StyledHoverDrawerItem = styled(Button, {
 
 export const StyledHoverDrawerItemContent = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraHeaderProps>`
-  ${(props: ExtraHeaderProps) => {
+})<ExtraHeaderProps & { hasDetails?: boolean }>`
+  ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
     const spaces = getSpaces(props);
 
     return css`
@@ -888,11 +889,10 @@ export const StyledHoverDrawerItemIcon = styled("div", {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: ${semanticColors?.accent?.fillPrimary};
       padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
 
       svg {
-        color: inherit;
+        color: ${semanticColors?.accent?.ornament};
       }
     `;
   }}
@@ -908,6 +908,23 @@ export const StyledHoverDrawerItemText = styled("div", {
       gap: 2px;
       flex: 1;
       min-width: 0;
+    `;
+  }}
+`;
+
+export const EmptyIcon = styled("div")<
+  ExtraHeaderProps & { hasDetails?: boolean }
+>`
+  ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
+    const { hasDetails } = props;
+    const spaces = getSpaces(props);
+
+    return css`
+      width: ${hasDetails ? 24 : 16}px;
+      height: ${hasDetails ? 24 : 16}px;
+      // margin-left: ${hasDetails ? 0 : spaces?.l}px;
+      padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
+      box-sizing: content-box;
     `;
   }}
 `;

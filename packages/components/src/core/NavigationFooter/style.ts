@@ -26,7 +26,7 @@ export const StyledFooter = styled("footer", {
 
     return css`
       background: ${props.hasInvertedStyle
-        ? semanticColors?.base.backgroundPrimaryOnDark
+        ? semanticColors?.base.backgroundPrimaryDark
         : semanticColors?.base.backgroundPrimary};
       padding: ${spaces?.l}px ${spaces?.xl}px;
 
