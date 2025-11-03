@@ -35,7 +35,7 @@ export const StyledSection = styled("section", {
 
     return css`
       column-gap: ${spaces?.m}px;
-
+      row-gap: ${spaces?.s}px;
       ${isNarrow && NarrowStyledSection()}
     `;
   }}

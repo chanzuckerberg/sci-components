@@ -547,7 +547,7 @@ export const StyledDrawerContent = styled("div", {
     const spaces = getSpaces(props);
 
     return css`
-      padding: 0 ${spaces?.xl}px;
+      padding: 0 ${spaces?.l}px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -696,7 +696,7 @@ export const StyledSectionDivider = styled(Divider, {
     const spaces = getSpaces(props);
 
     return `
-      margin: ${spaces?.m}px 0;
+      margin: ${spaces?.s}px 0;
       border-color: ${
         props.hasInvertedStyle
           ? semanticColors?.base.dividerOnDark
