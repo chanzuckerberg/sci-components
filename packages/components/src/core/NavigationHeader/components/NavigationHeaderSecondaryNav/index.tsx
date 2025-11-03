@@ -11,20 +11,19 @@ import { SdsTagColorType } from "src/core/Tag";
 import Menu from "src/core/Menu";
 import Icon from "src/core/Icon";
 import MenuItem from "src/core/MenuItem";
-import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
 import {
-  StyledAccordion,
   StyledMegaMenuDrawer,
   StyledMegaMenuContent,
   StyledHoverDrawerColumn,
   StyledHoverDrawerContainer,
 } from "../../style";
 import DrawerContent from "../shared/DrawerContent";
+import AccordionNavItem from "../shared/AccordionNavItem";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -324,84 +323,22 @@ export default function NavigationHeaderSecondaryNav({
     label: ReactNode
   ) => {
     const accordionId = `${labelKebabCase}-dropdown`;
-    const isExpanded = expandedAccordion === accordionId;
-
-    const handleAccordionChange = () => {
-      const newExpandedState = isExpanded ? null : accordionId;
-      setExpandedAccordion(newExpandedState);
-
-      // Scroll to the accordion if it's being opened
-      if (!isExpanded && scrollToAccordion) {
-        scrollToAccordion(accordionId);
-      }
-    };
 
     return (
-      <StyledAccordion
+      <AccordionNavItem
         key={accordionId}
-        id={accordionId}
+        accordionId={accordionId}
+        label={label}
+        items={item.items}
+        expandedAccordion={expandedAccordion}
+        setExpandedAccordion={setExpandedAccordion}
+        accordionRefs={accordionRefs}
+        scrollToAccordion={scrollToAccordion}
         hasInvertedStyle={hasInvertedStyle}
-        expanded={isExpanded}
-        onChange={handleAccordionChange}
-        ref={(el: HTMLDivElement | null) => {
-          if (el) {
-            accordionRefs.current.set(accordionId, el);
-          } else {
-            accordionRefs.current.delete(accordionId);
-          }
-        }}
-      >
-        <AccordionHeader chevronSize="s">{label}</AccordionHeader>
-        <AccordionDetails>
-          {(() => {
-            const groupedItems = groupItemsBySection(item.items);
-            const sections = Object.keys(groupedItems);
-            const hasMultipleSections =
-              sections.length > 1 || sections.some((section) => section !== "");
-
-            return sections.map((section, sectionIndex) => {
-              const sectionItems = groupedItems[section];
-              const showDivider = hasMultipleSections && sectionIndex > 0;
-
-              return (
-                <Fragment key={`section-${section || "default"}`}>
-                  {showDivider && (
-                    <StyledDivider
-                      hasSection={!!section}
-                      isNarrow={isNarrow}
-                      hasInvertedStyle={hasInvertedStyle}
-                    />
-                  )}
-                  {section && hasMultipleSections && (
-                    <StyledSectionHeader
-                      isNarrow={isNarrow}
-                      hasInvertedStyle={hasInvertedStyle}
-                    >
-                      {section}
-                    </StyledSectionHeader>
-                  )}
-                  {sectionItems.map((subItem) => {
-                    const { label: dropdownItemLabel, onClick } = subItem;
-
-                    return (
-                      <MenuItem
-                        key={`primary-nav-item-${dropdownItemLabel}`}
-                        onClick={(e) => {
-                          onClick?.(e);
-                          onClose();
-                        }}
-                        sdsType="action"
-                      >
-                        {dropdownItemLabel}
-                      </MenuItem>
-                    );
-                  })}
-                </Fragment>
-              );
-            });
-          })()}
-        </AccordionDetails>
-      </StyledAccordion>
+        isNarrow={isNarrow}
+        chevronSize="s"
+        onClose={onClose}
+      />
     );
   };
 

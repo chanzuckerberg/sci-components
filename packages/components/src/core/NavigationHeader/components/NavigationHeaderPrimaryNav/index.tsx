@@ -13,16 +13,15 @@ import MenuItem from "src/core/MenuItem";
 import Icon, { IconNameToSizes } from "src/core/Icon";
 import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
-import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { groupItemsBySection } from "../../utils";
 import {
-  StyledAccordion,
   StyledMegaMenuDrawer,
   StyledMegaMenuContent,
   StyledHoverDrawerColumn,
   StyledHoverDrawerContainer,
 } from "../../style";
 import DrawerContent from "../shared/DrawerContent";
+import AccordionNavItem from "../shared/AccordionNavItem";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -353,87 +352,22 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
       .replace(" ", "-");
 
     const accordionId = `${labelKebabCase}-dropdown`;
-    const isExpanded = expandedAccordion === accordionId;
-
-    const handleAccordionChange = () => {
-      const newExpandedState = isExpanded ? null : accordionId;
-      setExpandedAccordion(newExpandedState);
-
-      // Scroll to the accordion if it's being opened
-      if (!isExpanded && scrollToAccordion) {
-        scrollToAccordion(accordionId);
-      }
-    };
 
     return (
-      <StyledAccordion
+      <AccordionNavItem
         key={accordionId}
-        id={accordionId}
+        accordionId={accordionId}
+        label={item.label}
+        items={item.items}
+        expandedAccordion={expandedAccordion}
+        setExpandedAccordion={setExpandedAccordion}
+        accordionRefs={accordionRefs}
+        scrollToAccordion={scrollToAccordion}
         hasInvertedStyle={hasInvertedStyle}
         isNarrow={isNarrow}
-        expanded={isExpanded}
-        onChange={handleAccordionChange}
-        ref={(el: HTMLDivElement | null) => {
-          if (el) {
-            accordionRefs.current.set(accordionId, el);
-          } else {
-            accordionRefs.current.delete(accordionId);
-          }
-        }}
-      >
-        <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
-          {item.label}
-        </AccordionHeader>
-        <AccordionDetails>
-          {(() => {
-            const groupedItems = groupItemsBySection(item.items);
-            const sections = Object.keys(groupedItems);
-            const hasMultipleSections =
-              sections.length > 1 || sections.some((section) => section !== "");
-
-            return sections.map((section, sectionIndex) => {
-              const sectionItems = groupedItems[section];
-              const showDivider = hasMultipleSections && sectionIndex > 0;
-
-              return (
-                <Fragment key={`section-${section || "default"}`}>
-                  {showDivider && (
-                    <StyledDivider
-                      hasSection={!!section}
-                      isNarrow={isNarrow}
-                      hasInvertedStyle={hasInvertedStyle}
-                    />
-                  )}
-                  {section && hasMultipleSections && (
-                    <StyledSectionHeader
-                      isNarrow={isNarrow}
-                      hasInvertedStyle={hasInvertedStyle}
-                    >
-                      {section}
-                    </StyledSectionHeader>
-                  )}
-                  {sectionItems.map((subItem) => {
-                    const { label: dropdownItemLabel, onClick } = subItem;
-
-                    return (
-                      <MenuItem
-                        key={`primary-nav-item-${dropdownItemLabel}`}
-                        onClick={(e) => {
-                          onClick?.(e);
-                          onClose();
-                        }}
-                        sdsType="action"
-                      >
-                        {dropdownItemLabel}
-                      </MenuItem>
-                    );
-                  })}
-                </Fragment>
-              );
-            });
-          })()}
-        </AccordionDetails>
-      </StyledAccordion>
+        chevronSize={isNarrow ? "s" : "xs"}
+        onClose={onClose}
+      />
     );
   };
 
