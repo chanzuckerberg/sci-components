@@ -133,49 +133,21 @@ export const SERVICES = [
   },
 ];
 
-export const DOCUMENTATION = [
+export const RESEARCH = [
   {
-    label: "Documentation",
-    onClick: () => alert("Documentation clicked"),
-    section: "Documentation",
-    details: "Comprehensive guides and tutorials",
-    icon: "Book",
+    label: "Research",
+    onClick: () => alert("Research clicked"),
+    section: "Research",
+    details:
+      "Explore data portals, software packages, and hardware from the BioHub Network",
+    icon: "Flask",
   },
   {
-    label: "API Reference",
-    onClick: () => alert("API Reference clicked"),
-    section: "Documentation",
-    details: "Use our CLI or API to access data",
-    icon: "Code",
-  },
-  {
-    label: "Contribute a Dataset",
-    onClick: () => alert("Contribute a Dataset clicked"),
-    section: "Documentation",
-    details: "Share your dataset with the community",
-    icon: "Rocket",
-  },
-  {
-    label: "Code of Conduct",
-    onClick: () => alert("Code of Conduct clicked"),
-    section: "Documentation",
-    details: "Our code of conduct",
-  },
-  {
-    label: "Privacy Policy",
-    onClick: () => alert("Privacy Policy clicked"),
-    section: "Legal",
-    icon: "EyeClosed",
-  },
-  {
-    label: "Terms of Service",
-    onClick: () => alert("Terms of Service clicked"),
-    section: "Legal",
-    icon: "Scale",
-  },
-  {
-    label: "Cookie Policy",
-    onClick: () => alert("Cookie Policy clicked"),
-    section: "Legal",
+    label: "Tech Blog",
+    onClick: () => alert("Tech Blog clicked"),
+    section: "Writing",
+    details:
+      "Read about recent technology advancements from the BioHub Network",
+    icon: "LightBulb",
   },
 ];

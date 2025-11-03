@@ -21,16 +21,9 @@ import {
   StyledMegaMenuBackdrop,
   StyledMegaMenuContent,
   StyledHoverDrawerColumn,
-  StyledHoverDrawerColumnHeader,
-  StyledHoverDrawerItem,
-  StyledHoverDrawerItemContent,
-  StyledHoverDrawerItemIcon,
-  StyledHoverDrawerItemText,
-  StyledHoverDrawerItemTitle,
-  StyledHoverDrawerItemDetails,
   StyledHoverDrawerContainer,
-  EmptyIcon,
 } from "../../style";
+import DrawerContent from "../shared/DrawerContent";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -142,88 +135,6 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     setMenuWidth(button.offsetWidth);
   }, []);
 
-  const renderDrawerContent = (
-    drawerItems: DropdownItem[],
-    section: string,
-    hasMultipleSections: boolean
-  ) => {
-    return (
-      <>
-        {section && hasMultipleSections && (
-          <StyledHoverDrawerColumnHeader hasInvertedStyle={hasInvertedStyle}>
-            {section}
-          </StyledHoverDrawerColumnHeader>
-        )}
-        {drawerItems.map((subItem: DropdownItem, index: number) => {
-          const {
-            label: subLabel,
-            details,
-            icon,
-            onClick,
-            ...subItemRest
-          } = subItem;
-
-          const hasDetails = !!details;
-          const hasIcon = !!icon;
-          const iconSize = hasDetails ? "l" : "s";
-
-          const renderIcon = () => {
-            if (!icon) return <EmptyIcon hasDetails={hasDetails} />;
-
-            const iconContent =
-              typeof icon !== "string" ? (
-                icon
-              ) : (
-                <Icon sdsIcon={icon} sdsSize={iconSize} color="indigo" />
-              );
-
-            return (
-              <StyledHoverDrawerItemIcon
-                hasDetails={hasDetails}
-                hasInvertedStyle={hasInvertedStyle}
-              >
-                {iconContent}
-              </StyledHoverDrawerItemIcon>
-            );
-          };
-
-          return (
-            <StyledHoverDrawerItem
-              key={`drawer-item-${section || "default"}-${subLabel}-${index}`}
-              onClick={(e) => {
-                onClick?.(e);
-                setActiveDrawerKey(null);
-              }}
-              sdsStyle="minimal"
-              sdsType="secondary"
-              hasInvertedStyle={hasInvertedStyle}
-              hasIcon={hasIcon}
-              {...subItemRest}
-            >
-              <StyledHoverDrawerItemContent hasDetails={hasDetails}>
-                {renderIcon()}
-                <StyledHoverDrawerItemText>
-                  <StyledHoverDrawerItemTitle
-                    hasInvertedStyle={hasInvertedStyle}
-                  >
-                    {subLabel}
-                  </StyledHoverDrawerItemTitle>
-                  {details && (
-                    <StyledHoverDrawerItemDetails
-                      hasInvertedStyle={hasInvertedStyle}
-                    >
-                      {details}
-                    </StyledHoverDrawerItemDetails>
-                  )}
-                </StyledHoverDrawerItemText>
-              </StyledHoverDrawerItemContent>
-            </StyledHoverDrawerItem>
-          );
-        })}
-      </>
-    );
-  };
-
   const renderDrawerItem = (
     item: DropdownNavigationHeaderPrimaryNavItem<T>,
     key: T,
@@ -302,11 +213,13 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                   hasInvertedStyle={hasInvertedStyle}
                   totalColumns={sections.length}
                 >
-                  {renderDrawerContent(
-                    groupedItems[section],
-                    section,
-                    hasMultipleSections
-                  )}
+                  <DrawerContent
+                    drawerItems={groupedItems[section]}
+                    section={section}
+                    hasMultipleSections={hasMultipleSections}
+                    hasInvertedStyle={hasInvertedStyle}
+                    onItemClick={() => setActiveDrawerKey(null)}
+                  />
                 </StyledHoverDrawerColumn>
               ))}
             </StyledMegaMenuContent>

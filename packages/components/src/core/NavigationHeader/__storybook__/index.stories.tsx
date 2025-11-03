@@ -2,7 +2,7 @@ import { Args, Meta } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
-  DOCUMENTATION,
+  RESEARCH,
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
   NAVIGATION_HEADER_LOGO_OPTIONS,
   PRODUCTS,
@@ -337,10 +337,10 @@ export const DropdownWithSections = {
     secondaryNavItems: [
       {
         itemType: "dropdown",
-        items: DOCUMENTATION,
-        key: "documentation",
-        label: "Documentation",
-        onClick: () => console.log("Documentation dropdown clicked"),
+        items: RESEARCH,
+        key: "research",
+        label: "Research",
+        onClick: () => console.log("Research dropdown clicked"),
       },
     ],
     showSearch: true,

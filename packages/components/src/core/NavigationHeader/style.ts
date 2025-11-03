@@ -7,6 +7,7 @@ import {
   fontBodyS,
   fontBodySemiboldL,
   fontBodySemiboldS,
+  fontBodyMediumS,
   fontBodyXs,
   fontHeaderL,
   fontHeaderM,
@@ -706,6 +707,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
   ${(props: ExtraHeaderProps) => {
     const { hasInvertedStyle } = props;
     const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
 
     return css`
       pointer-events: none;
@@ -722,6 +724,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
         transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
         background-image: none;
+        padding: ${spaces?.xl}px 0 ${spaces?.xxl}px;
       }
 
       .MuiSlide-root {
@@ -770,7 +773,6 @@ export const StyledMegaMenuContent = styled("div", {
       background-color: ${hasInvertedStyle
         ? semanticColors?.base.backgroundPrimaryDark
         : semanticColors?.base.backgroundPrimary};
-      padding: ${spaces?.xl}px;
       display: flex;
       flex-wrap: wrap;
       gap: ${spaces?.xxl}px;
@@ -806,7 +808,7 @@ export const StyledHoverDrawerColumn = styled("div", {
     return css`
       display: flex;
       flex-direction: column;
-      gap: ${spaces?.xxs}px;
+      // gap: ${spaces?.m}px;
       min-width: ${shouldForceLayout ? "0" : "240px"};
       max-width: ${shouldForceLayout ? "none" : "400px"};
       flex: ${shouldForceLayout
@@ -838,9 +840,9 @@ export const StyledHoverDrawerColumnHeader = styled("div", {
 
 export const StyledHoverDrawerItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraHeaderProps & { hasIcon?: boolean }>`
-  ${(props: ExtraHeaderProps & { hasIcon?: boolean }) => {
-    const { hasInvertedStyle } = props;
+})<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
+  ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
+    const { hasInvertedStyle, hasDetails } = props;
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
     const spaces = getSpaces(props);
@@ -849,6 +851,7 @@ export const StyledHoverDrawerItem = styled(Button, {
       justify-content: flex-start;
       text-align: left;
       padding: ${spaces?.s}px ${spaces?.l}px;
+      margin-bottom: ${hasDetails ? spaces?.m : 0}px;
       border-radius: ${corners?.m}px;
       min-height: auto;
       width: 100%;
@@ -932,12 +935,12 @@ export const EmptyIcon = styled("div")<
 export const StyledHoverDrawerItemTitle = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props: ExtraHeaderProps) => {
-    const { hasInvertedStyle } = props;
+  ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
+    const { hasInvertedStyle, hasDetails } = props;
     const semanticColors = getSemanticColors(props);
 
     return css`
-      ${fontBodySemiboldS(props)}
+      ${hasDetails ? fontBodySemiboldS(props) : fontBodyMediumS(props)}
       color: ${hasInvertedStyle
         ? semanticColors?.base.textPrimaryOnDark
         : semanticColors?.base.textPrimary};

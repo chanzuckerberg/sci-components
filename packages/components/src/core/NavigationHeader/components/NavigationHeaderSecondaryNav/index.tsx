@@ -23,15 +23,9 @@ import {
   StyledMegaMenuBackdrop,
   StyledMegaMenuContent,
   StyledHoverDrawerColumn,
-  StyledHoverDrawerColumnHeader,
-  StyledHoverDrawerItem,
-  StyledHoverDrawerItemContent,
-  StyledHoverDrawerItemIcon,
-  StyledHoverDrawerItemText,
-  StyledHoverDrawerItemTitle,
-  StyledHoverDrawerItemDetails,
   StyledHoverDrawerContainer,
 } from "../../style";
+import DrawerContent from "../shared/DrawerContent";
 
 interface TextHeaderSecondaryNavItem extends Partial<SdsMinimalButtonProps> {
   label: string;
@@ -126,87 +120,6 @@ export default function NavigationHeaderSecondaryNav({
     setMenuWidth(button.offsetWidth);
   }, []);
 
-  const renderDrawerContent = (
-    drawerItems: DropdownItem[],
-    section: string,
-    hasMultipleSections: boolean
-  ) => {
-    return (
-      <>
-        {section && hasMultipleSections && (
-          <StyledHoverDrawerColumnHeader hasInvertedStyle={hasInvertedStyle}>
-            {section}
-          </StyledHoverDrawerColumnHeader>
-        )}
-        {drawerItems.map((subItem: DropdownItem, subIndex: number) => {
-          const {
-            label: subLabel,
-            details,
-            icon,
-            onClick,
-            ...subItemRest
-          } = subItem;
-          const hasDetails = !!details;
-          const hasIcon = !!icon;
-          const iconSize = hasDetails ? "l" : "s";
-
-          const renderIcon = () => {
-            if (!icon) return null;
-
-            const iconContent =
-              typeof icon !== "string" ? (
-                icon
-              ) : (
-                <Icon sdsIcon={icon} sdsSize={iconSize} />
-              );
-
-            return (
-              <StyledHoverDrawerItemIcon
-                hasDetails={hasDetails}
-                hasInvertedStyle={hasInvertedStyle}
-              >
-                {iconContent}
-              </StyledHoverDrawerItemIcon>
-            );
-          };
-
-          return (
-            <StyledHoverDrawerItem
-              key={`drawer-item-${section || "default"}-${subLabel}-${subIndex}`}
-              onClick={(e) => {
-                onClick?.(e);
-                setActiveDrawerKey(null);
-              }}
-              sdsStyle="minimal"
-              sdsType="secondary"
-              hasInvertedStyle={hasInvertedStyle}
-              hasIcon={hasIcon}
-              {...subItemRest}
-            >
-              <StyledHoverDrawerItemContent>
-                {renderIcon()}
-                <StyledHoverDrawerItemText>
-                  <StyledHoverDrawerItemTitle
-                    hasInvertedStyle={hasInvertedStyle}
-                  >
-                    {subLabel}
-                  </StyledHoverDrawerItemTitle>
-                  {details && (
-                    <StyledHoverDrawerItemDetails
-                      hasInvertedStyle={hasInvertedStyle}
-                    >
-                      {details}
-                    </StyledHoverDrawerItemDetails>
-                  )}
-                </StyledHoverDrawerItemText>
-              </StyledHoverDrawerItemContent>
-            </StyledHoverDrawerItem>
-          );
-        })}
-      </>
-    );
-  };
-
   const renderDrawerItem = (
     item: DropdownHeaderSecondaryNavItem,
     itemKey: string,
@@ -281,11 +194,13 @@ export default function NavigationHeaderSecondaryNav({
                   hasInvertedStyle={hasInvertedStyle}
                   totalColumns={sections.length}
                 >
-                  {renderDrawerContent(
-                    groupedItems[section],
-                    section,
-                    hasMultipleSections
-                  )}
+                  <DrawerContent
+                    drawerItems={groupedItems[section]}
+                    section={section}
+                    hasMultipleSections={hasMultipleSections}
+                    hasInvertedStyle={hasInvertedStyle}
+                    onItemClick={() => setActiveDrawerKey(null)}
+                  />
                 </StyledHoverDrawerColumn>
               ))}
             </StyledMegaMenuContent>
