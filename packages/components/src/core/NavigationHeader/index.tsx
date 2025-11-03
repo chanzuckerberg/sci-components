@@ -107,9 +107,49 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       isNarrow: isMdScreen,
     });
 
+    // Shared accordion state for both primary and secondary nav
+    const [expandedAccordion, setExpandedAccordion] = useState<string | null>(
+      null
+    );
+    const accordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
     useEffect(() => {
       setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
     }, [isMdScreen]);
+
+    const scrollToAccordion = useCallback((accordionId: string) => {
+      // Wait for accordion animation to complete (MUI default is 300ms)
+      setTimeout(() => {
+        const accordionElement = accordionRefs.current.get(accordionId);
+        if (accordionElement) {
+          const accordionHeader = accordionElement.querySelector(
+            ".MuiAccordionSummary-root"
+          );
+          if (accordionHeader && navRef.current) {
+            // Find the scrollable container (drawer paper for narrow mode)
+            const drawerPaper = accordionElement.closest(".MuiDrawer-paper");
+
+            if (drawerPaper) {
+              // Narrow mode: scroll within the drawer
+              const accordionRect = accordionHeader.getBoundingClientRect();
+              const drawerRect = drawerPaper.getBoundingClientRect();
+              const navRect = navRef.current.getBoundingClientRect();
+
+              // Calculate scroll position: current scroll + accordion position - nav height
+              const currentScroll = drawerPaper.scrollTop;
+              const accordionTop = accordionRect.top - drawerRect.top;
+              const targetScroll =
+                currentScroll + accordionTop - navRect.height - 12;
+
+              drawerPaper.scrollTo({
+                top: Math.max(0, targetScroll),
+                behavior: "smooth",
+              });
+            }
+          }
+        }
+      }, 350);
+    }, []);
 
     const checkScrollable = useCallback(() => {
       if (!navRef.current) return;
@@ -211,6 +251,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
             sdsStyle={sdsStyle}
+            expandedAccordion={expandedAccordion}
+            setExpandedAccordion={setExpandedAccordion}
+            accordionRefs={accordionRefs}
+            scrollToAccordion={scrollToAccordion}
           />
         )
       );
@@ -226,6 +270,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
             sdsStyle={sdsStyle}
+            expandedAccordion={expandedAccordion}
+            setExpandedAccordion={setExpandedAccordion}
+            accordionRefs={accordionRefs}
+            scrollToAccordion={scrollToAccordion}
           />
         )
       );

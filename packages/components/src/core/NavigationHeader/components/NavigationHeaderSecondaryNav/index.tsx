@@ -52,6 +52,10 @@ export interface NavigationHeaderSecondaryNavProps {
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
   sdsStyle?: "dropdown" | "drawer";
+  expandedAccordion?: string | null;
+  setExpandedAccordion?: (value: string | null) => void;
+  accordionRefs?: React.MutableRefObject<Map<string, HTMLDivElement>>;
+  scrollToAccordion?: (accordionId: string) => void;
 }
 
 export default function NavigationHeaderSecondaryNav({
@@ -60,6 +64,10 @@ export default function NavigationHeaderSecondaryNav({
   hasInvertedStyle,
   isNarrow,
   sdsStyle = "dropdown",
+  expandedAccordion: expandedAccordionProp,
+  setExpandedAccordion: setExpandedAccordionProp,
+  accordionRefs: accordionRefsProp,
+  scrollToAccordion,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
@@ -70,6 +78,17 @@ export default function NavigationHeaderSecondaryNav({
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [contentKey, setContentKey] = useState<string | null>(null);
   const [isContentFading, setIsContentFading] = useState(false);
+
+  // Use props if provided, otherwise use local state (for backward compatibility)
+  const [localExpandedAccordion, setLocalExpandedAccordion] = useState<
+    string | null
+  >(null);
+  const localAccordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
+  const expandedAccordion = expandedAccordionProp ?? localExpandedAccordion;
+  const setExpandedAccordion =
+    setExpandedAccordionProp ?? setLocalExpandedAccordion;
+  const accordionRefs = accordionRefsProp ?? localAccordionRefs;
 
   const open = Boolean(anchorEl);
   const drawerOpen = activeDrawerKey !== null;
@@ -304,11 +323,33 @@ export default function NavigationHeaderSecondaryNav({
     labelKebabCase: string,
     label: ReactNode
   ) => {
+    const accordionId = `${labelKebabCase}-dropdown`;
+    const isExpanded = expandedAccordion === accordionId;
+
+    const handleAccordionChange = () => {
+      const newExpandedState = isExpanded ? null : accordionId;
+      setExpandedAccordion(newExpandedState);
+
+      // Scroll to the accordion if it's being opened
+      if (!isExpanded && scrollToAccordion) {
+        scrollToAccordion(accordionId);
+      }
+    };
+
     return (
       <StyledAccordion
-        key={`${labelKebabCase}-dropdown`}
-        id={`${labelKebabCase}-dropdown`}
+        key={accordionId}
+        id={accordionId}
         hasInvertedStyle={hasInvertedStyle}
+        expanded={isExpanded}
+        onChange={handleAccordionChange}
+        ref={(el: HTMLDivElement | null) => {
+          if (el) {
+            accordionRefs.current.set(accordionId, el);
+          } else {
+            accordionRefs.current.delete(accordionId);
+          }
+        }}
       >
         <AccordionHeader chevronSize="s">{label}</AccordionHeader>
         <AccordionDetails>

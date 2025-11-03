@@ -100,7 +100,7 @@ export const StyledDivider = styled(Divider, {
 
     // Calculate margin based on section and narrow state
     const getMarginBottom = () => {
-      return hasSection ? spaces?.s : isNarrow ? 0 : spaces?.xxs;
+      return hasSection ? spaces?.s : spaces?.xxs;
     };
 
     const getBorderColor = () => {
@@ -118,7 +118,7 @@ export const StyledDivider = styled(Divider, {
         position: relative;
         margin: 0 0 ${getMarginBottom()}px;
         border-bottom: solid 1px ${getBorderColor()};
-        padding-bottom: ${isNarrow ? 0 : spaces?.xxs}px;
+        padding-bottom: ${spaces?.xxs}px;
       }
     `;
   }}

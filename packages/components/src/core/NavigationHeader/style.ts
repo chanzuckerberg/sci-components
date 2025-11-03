@@ -471,7 +471,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
   return css`
     background: ${backgroundColor};
     gap: ${spaces?.l}px;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin-left: 0;
     margin-top: ${spaces?.xxl}px;
     padding: ${spaces?.xl}px 0;
@@ -503,6 +503,7 @@ export const StyledButtonSection = styled("section", {
 })`
   display: flex;
   align-items: center;
+  z-index: 100;
 
   ${(props: ExtraHeaderProps) => {
     const { isNarrow } = props;
