@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
 import {
   getSemanticColors,
   getSpaces,
@@ -66,7 +65,7 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   `;
 };
 
-export const PrimaryNavItem = styled(Button, {
+export const PrimaryNavItem = styled("button", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   display: flex;
@@ -74,7 +73,7 @@ export const PrimaryNavItem = styled(Button, {
   min-width: fit-content;
 
   ${(props: PrimaryNavItemProps) => {
-    const { hasInvertedStyle, isNarrow, active } = props;
+    const { hasInvertedStyle, isNarrow, active, sdsStyle } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -93,22 +92,27 @@ export const PrimaryNavItem = styled(Button, {
       : semanticColors?.base.ornamentSecondaryPressed;
 
     return css`
+      border: none;
       padding: ${spaces?.xxxs}px ${spaces?.m}px;
       border-radius: ${corners?.l}px;
-      background-color: ${active
-        ? hasInvertedStyle
-          ? semanticColors?.base?.fillPressedOnDark
-          : semanticColors?.base?.fillPressed
-        : "transparent"};
+      background-color: ${sdsStyle === "drawer"
+        ? "transparent"
+        : active
+          ? hasInvertedStyle
+            ? semanticColors?.base?.fillPressedOnDark
+            : semanticColors?.base?.fillPressed
+          : "transparent"};
 
       svg {
         color: ${active ? ChevronOpenColor : ChevronDefaultColor};
       }
 
       &:hover {
-        background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverOnDark
-          : semanticColors?.base.fillHover};
+        background: ${sdsStyle === "drawer"
+          ? "transparent"
+          : hasInvertedStyle
+            ? semanticColors?.base.fillHoverOnDark
+            : semanticColors?.base.fillHover} !important;
         box-shadow: none;
 
         ${StyledLabel} {

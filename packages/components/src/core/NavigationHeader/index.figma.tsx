@@ -15,7 +15,6 @@ figma.connect(
   {
     props: {
       // These props were automatically mapped based on your linked code:
-      hasInvertedStyle: figma.boolean("hasInvertedStyle?"),
       primaryNavPosition: figma.enum("primaryNavPosition", {
         left: "left",
         right: "right",
@@ -46,7 +45,6 @@ figma.connect(
     example: (props) => (
       <Index
         title="Navigation Title"
-        hasInvertedStyle={props.hasInvertedStyle}
         primaryNavPosition={props.primaryNavPosition}
         showSearch={props.showSearch}
       />

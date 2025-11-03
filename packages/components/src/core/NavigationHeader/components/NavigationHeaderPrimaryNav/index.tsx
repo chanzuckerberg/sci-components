@@ -187,7 +187,6 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         <PrimaryNavItem
           {...rest}
           itemType={item.itemType}
-          sdsStyle="minimal"
           active={isDrawerOpen}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
@@ -195,6 +194,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             onChange(key);
             parentOnClick?.(e);
           }}
+          sdsStyle={sdsStyle}
         >
           <StyledLabel
             itemType={item.itemType}
@@ -236,7 +236,6 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           {...rest}
           itemType={item.itemType}
           ref={buttonRef}
-          sdsStyle="minimal"
           active={isDropdownOpen}
           onClick={(e) => {
             setAnchorEl(e.currentTarget);
@@ -246,6 +245,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           }}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
+          sdsStyle={sdsStyle}
         >
           <StyledLabel
             itemType={item.itemType}
@@ -367,6 +367,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         isNarrow={isNarrow}
         chevronSize={isNarrow ? "s" : "xs"}
         onClose={onClose}
+        sdsStyle={sdsStyle}
       />
     );
   };
@@ -385,8 +386,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
       <PrimaryNavItem
         key={key}
         {...rest}
-        sdsStyle="minimal"
         active={isActive}
+        sdsStyle={sdsStyle}
         onClick={(e) => {
           onChange(key);
           item.onClick?.(e);

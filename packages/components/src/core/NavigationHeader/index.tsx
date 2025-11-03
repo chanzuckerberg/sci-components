@@ -139,7 +139,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
               const currentScroll = drawerPaper.scrollTop;
               const accordionTop = accordionRect.top - drawerRect.top;
               const targetScroll =
-                currentScroll + accordionTop - navRect.height - 12;
+                currentScroll +
+                accordionTop -
+                navRect.height -
+                (sdsStyle === "drawer" ? 0 : 12);
 
               drawerPaper.scrollTo({
                 top: Math.max(0, targetScroll),

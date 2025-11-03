@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
   fontBodyMediumL,
   fontBodyMediumS,
@@ -13,8 +12,7 @@ import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
 
-export type StyledTextItemProps = ExtraHeaderProps &
-  SdsMinimalButtonProps & { open: boolean };
+export type StyledTextItemProps = ExtraHeaderProps & { open: boolean };
 
 const ButtonDoNotForwardProps = ["isNarrow"];
 
@@ -40,14 +38,18 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   `;
 };
 
-export const StyledTextItem = styled(Button, {
+export const StyledTextItem = styled("button", {
   shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
-})`
+})<StyledTextItemProps>`
   ${fontBodyMediumS}
 
   justify-content: flex-start;
   width: fit-content;
-  min-width: unset;
+  min-width: fit-content;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;

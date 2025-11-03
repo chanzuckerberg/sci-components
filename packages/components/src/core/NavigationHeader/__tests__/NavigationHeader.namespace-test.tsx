@@ -26,7 +26,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
           sdsStyle: "icon",
         },
       ]}
-      hasInvertedStyle={false}
+      backgroundAppearance="matchBackground"
       logo={<div>Logo</div>}
       logoUrl="https://chanzuckerberg.com"
       primaryNavItems={[

@@ -79,8 +79,6 @@ export default function DrawerContent({
               onClick?.(e);
               onItemClick();
             }}
-            sdsStyle="minimal"
-            sdsType="secondary"
             hasInvertedStyle={hasInvertedStyle}
             hasIcon={hasIcon}
             hasDetails={hasDetails}

@@ -29,6 +29,7 @@ import Accordion from "../Accordion";
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
+  sdsStyle?: "dropdown" | "drawer";
 }
 
 const doNotForwardProps = [
@@ -569,6 +570,60 @@ export const StyledNarrowButton = styled(Button, {
   }}
 `;
 
+export interface DrawerAccordionStylesProps extends CommonThemeProps {
+  sdsStyle?: "dropdown" | "drawer";
+  hasInvertedStyle?: boolean;
+}
+
+const DrawerAccordionStyles = (
+  props: DrawerAccordionStylesProps
+): SerializedStyles => {
+  const { hasInvertedStyle } = props;
+
+  const semanticColors = getSemanticColors(props);
+  const textOpenColor = hasInvertedStyle
+    ? semanticColors?.base.textPrimaryOnDark
+    : semanticColors?.base.textPrimary;
+
+  return css`
+    border-radius: 0;
+
+    &:hover {
+      background-color: ${hasInvertedStyle
+        ? semanticColors?.base?.backgroundPrimaryDark
+        : semanticColors?.base?.backgroundPrimary};
+    }
+
+    &[aria-expanded="true"] {
+      position: sticky;
+      border-radius: 0;
+      top: 48px;
+      z-index: 11;
+      backdrop-filter: blur(0px);
+      color: ${textOpenColor};
+      background-color: ${hasInvertedStyle
+        ? semanticColors?.base?.backgroundPrimaryDark
+        : semanticColors?.base?.backgroundPrimary};
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-image: linear-gradient(
+          to bottom,
+          ${hasInvertedStyle
+            ? semanticColors?.base?.backgroundPrimaryDark
+            : semanticColors?.base?.backgroundPrimary},
+          transparent
+        );
+      }
+    }
+  `;
+};
+
 export const StyledAccordion = styled(Accordion, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -585,7 +640,7 @@ export const StyledAccordion = styled(Accordion, {
   }
 
   ${(props: ExtraHeaderProps) => {
-    const { hasInvertedStyle } = props;
+    const { hasInvertedStyle, sdsStyle = "dropdown" } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -619,21 +674,20 @@ export const StyledAccordion = styled(Accordion, {
 
         &[aria-expanded="true"] {
           position: sticky;
+          border-radius: ${corners?.l}px;
           top: calc(48px + ${spaces?.m}px);
           z-index: 11;
           backdrop-filter: blur(8px);
+          color: ${textOpenColor};
+          background-color: ${hasInvertedStyle
+            ? semanticColors?.base?.fillPressedOnDark
+            : semanticColors?.base?.fillPressed};
 
           .MuiAccordionSummary-content {
             ${fontBodySemiboldL(props)}
             position: relative;
             z-index: 12;
           }
-
-          color: ${textOpenColor};
-
-          background-color: ${hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed};
 
           svg {
             color: ${ChevronOpenColor} !important;
@@ -656,11 +710,13 @@ export const StyledAccordion = styled(Accordion, {
               : semanticColors?.base.ornamentSecondaryHover} !important;
           }
         }
+
+        ${sdsStyle === "drawer" && DrawerAccordionStyles(props)}
       }
 
       .MuiCollapse-root .MuiAccordionDetails-root {
         padding: 0;
-        margin-top: ${spaces?.xxs}px;
+        margin-top: ${sdsStyle === "drawer" ? spaces?.s : spaces?.xxs}px;
 
         .MuiButtonBase-root {
           padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px ${spaces?.xl}px !important;
@@ -808,7 +864,7 @@ export const StyledHoverDrawerColumnHeader = styled("div", {
   }}
 `;
 
-export const StyledHoverDrawerItem = styled(Button, {
+export const StyledHoverDrawerItem = styled("button", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
   ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
@@ -818,15 +874,18 @@ export const StyledHoverDrawerItem = styled(Button, {
     const spaces = getSpaces(props);
 
     return css`
+      border: none;
+      background: transparent;
       justify-content: flex-start;
       text-align: left;
       padding: ${spaces?.s}px ${spaces?.l}px;
       margin-bottom: ${hasDetails ? spaces?.m : 0}px;
-      border-radius: ${corners?.m}px;
+      border-radius: ${corners?.xl}px;
       min-height: auto;
       width: 100%;
 
       &:hover {
+        cursor: pointer;
         background: ${hasInvertedStyle
           ? semanticColors?.base.fillHoverOnDark
           : semanticColors?.base.fillHover};

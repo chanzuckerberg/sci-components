@@ -3,16 +3,19 @@ import {
   CommonThemeProps,
   fontBodyMediumL,
   fontBodyMediumS,
+  fontBodySemiboldM,
   fontBodySemiboldL,
   fontBodySemiboldS,
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
+  getCorners,
 } from "src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
 import ListSubheader from "src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
+import { AccordionDetails } from "src/core/Accordion";
 
 const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
 
@@ -45,7 +48,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
-    const { isNarrow, hasInvertedStyle } = props;
+    const { isNarrow, hasInvertedStyle, sdsStyle } = props;
 
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
@@ -70,6 +73,17 @@ export const StyledSectionHeader = styled(ListSubheader, {
       return semanticColors?.base?.textSecondary;
     }
 
+    if (sdsStyle === "drawer") {
+      return css`
+        ${fontBodySemiboldM(props)}
+        top: 0;
+        color: ${getTextColor()} !important;
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: ${spaces?.xxs}px !important;
+      `;
+    }
+
     return css`
       &.MuiListSubheader-root {
         ${fontCapsXxxxs(props)}
@@ -79,6 +93,54 @@ export const StyledSectionHeader = styled(ListSubheader, {
         padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.xs}px;
         margin-bottom: 0;
       }
+    `;
+  }}
+`;
+
+export const StyledAccordionDetails = styled(AccordionDetails, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: CommonThemeProps & { sdsStyle?: "dropdown" | "drawer" }) => {
+    const { sdsStyle } = props;
+    const spaces = getSpaces(props);
+
+    return css`
+      ${sdsStyle === "drawer" &&
+      css`
+        display: flex;
+        flex-direction: column;
+        gap: ${spaces?.m}px;
+      `}
+    `;
+  }}
+`;
+
+export const StyledAccordionSection = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(
+    props: CommonThemeProps & {
+      sdsStyle?: "dropdown" | "drawer";
+      hasInvertedStyle?: boolean;
+    }
+  ) => {
+    const { sdsStyle, hasInvertedStyle } = props;
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+
+    if (sdsStyle === "drawer") {
+      return css`
+        border-radius: ${corners?.l}px;
+        padding: ${spaces?.l}px;
+        background-color: ${hasInvertedStyle
+          ? semanticColors?.base?.backgroundSecondaryOnDark
+          : semanticColors?.base?.backgroundSecondary};
+      `;
+    }
+
+    return css`
+      padding: 0;
     `;
   }}
 `;

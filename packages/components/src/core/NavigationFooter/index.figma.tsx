@@ -15,7 +15,6 @@ figma.connect(
   {
     props: {
       // These props were automatically mapped based on your linked code:
-      hasInvertedStyle: figma.boolean("hasInvertedStyle?"),
       logo: figma.instance("↪️ logoSlot"),
       // No matching props could be found for these Figma properties:
       // "showPrimaryLogoText": figma.boolean('showPrimaryLogoText?'),
@@ -30,12 +29,6 @@ figma.connect(
       //   "narrow": "narrow"
       // })
     },
-    example: (props) => (
-      <Index
-        hasInvertedStyle={props.hasInvertedStyle}
-        logo={props.logo}
-        title="Footer Title"
-      />
-    ),
+    example: (props) => <Index logo={props.logo} title="Footer Title" />,
   }
 );

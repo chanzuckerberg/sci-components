@@ -175,7 +175,7 @@ export default function NavigationHeaderSecondaryNav({
           hasInvertedStyle={hasInvertedStyle}
           open={isDrawerOpen}
           isNarrow={isNarrow}
-          sdsStyle="minimal"
+          sdsStyle={sdsStyle}
         >
           <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
             {label}
@@ -217,7 +217,7 @@ export default function NavigationHeaderSecondaryNav({
           hasInvertedStyle={hasInvertedStyle}
           open={isDropdownOpen}
           isNarrow={isNarrow}
-          sdsStyle="minimal"
+          sdsStyle={sdsStyle}
           onClick={(event) => {
             setAnchorEl(event.currentTarget);
             setActiveDropdownKey(itemKey);
@@ -338,6 +338,7 @@ export default function NavigationHeaderSecondaryNav({
         isNarrow={isNarrow}
         chevronSize="s"
         onClose={onClose}
+        sdsStyle={sdsStyle}
       />
     );
   };
@@ -358,7 +359,7 @@ export default function NavigationHeaderSecondaryNav({
         hasInvertedStyle={hasInvertedStyle}
         open={false}
         isNarrow={isNarrow}
-        sdsStyle="minimal"
+        sdsStyle={sdsStyle}
       >
         {label}
         {tag && (
