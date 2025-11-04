@@ -18,13 +18,28 @@ export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
 
   return {
     accent: {
-      default: createBorder("blue", isDarkMode ? 600 : 500, "solid", "default"),
-      focused: createBorder("blue", isDarkMode ? 600 : 500, "solid", "default"),
-      hover: createBorder("blue", isDarkMode ? 700 : 600, "solid", "default"),
-      open: createBorder("blue", isDarkMode ? 600 : 500, "solid", "default"),
-      pressed: createBorder("blue", isDarkMode ? 800 : 700, "solid", "default"),
+      default: createBorder(
+        "indigo",
+        isDarkMode ? 600 : 500,
+        "solid",
+        "default"
+      ),
+      focused: createBorder(
+        "indigo",
+        isDarkMode ? 600 : 500,
+        "solid",
+        "default"
+      ),
+      hover: createBorder("indigo", isDarkMode ? 700 : 600, "solid", "default"),
+      open: createBorder("indigo", isDarkMode ? 600 : 500, "solid", "default"),
+      pressed: createBorder(
+        "indigo",
+        isDarkMode ? 800 : 700,
+        "solid",
+        "default"
+      ),
       selected: createBorder(
-        "blue",
+        "indigo",
         isDarkMode ? 600 : 500,
         "solid",
         "default"

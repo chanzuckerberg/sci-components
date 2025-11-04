@@ -88,7 +88,7 @@ export const StyledToolbar = styled(Toolbar, {
       &.MuiToolbar-root {
         min-height: 48px;
         max-height: 48px;
-        padding: ${spaces?.s}px ${spaces?.xl}px;
+        padding: ${spaces?.s}px ${spaces?.l}px;
 
         ${isNarrow && NarrowToolbar(props)}
       }
@@ -827,19 +827,20 @@ export const StyledHoverDrawerColumn = styled("div", {
 })<ExtraHeaderProps & { totalColumns?: number }>`
   ${(props: ExtraHeaderProps & { totalColumns?: number }) => {
     const spaces = getSpaces(props);
-    const { totalColumns } = props;
+    const { totalColumns = 1 } = props;
 
-    // If more than 4 columns, force exactly 4 per row
-    const shouldForceLayout = totalColumns && totalColumns > 4;
+    // Calculate equal width for all columns based on total columns
+    // Account for gaps between columns
+    const columnsPerRow = totalColumns > 4 ? 4 : totalColumns;
+    const gapCount = columnsPerRow - 1;
+    const columnWidth = `calc((100% - (${gapCount} * ${spaces?.xxl}px)) / ${columnsPerRow})`;
 
     return css`
       display: flex;
       flex-direction: column;
-      min-width: ${shouldForceLayout ? "0" : "240px"};
-      max-width: ${shouldForceLayout ? "none" : "400px"};
-      flex: ${shouldForceLayout
-        ? `0 0 calc((100% - (3 * ${spaces?.xxl}px)) / 4)`
-        : "1 1 auto"};
+      flex: 0 0 ${columnWidth};
+      min-width: 240px;
+      max-width: 400px;
     `;
   }}
 `;
