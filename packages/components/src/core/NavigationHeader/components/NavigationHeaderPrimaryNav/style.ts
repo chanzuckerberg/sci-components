@@ -7,14 +7,18 @@ import {
   fontBodySemiboldS,
   fontBodySemiboldL,
   fontBodyMediumL,
+  CommonThemeProps,
 } from "src/core/styles";
-import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
+import Button from "src/core/Button";
 
-interface PrimaryNavItemProps extends ExtraHeaderProps {
+interface PrimaryNavItemProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
   active?: boolean;
   itemType?: "dropdown" | "text";
+  innerSdsStyle?: "drawer" | "dropdown";
 }
 
 const doNotForwardProps = [
@@ -25,7 +29,7 @@ const doNotForwardProps = [
 ];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
-  const { active, hasInvertedStyle } = props;
+  const { active, hasInvertedStyle, innerSdsStyle } = props;
 
   const spaces = getSpaces(props);
   const semanticColors = getSemanticColors(props);
@@ -39,17 +43,29 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
     border-radius: ${corners?.l}px;
     justify-content: start;
     padding: ${spaces?.s}px ${spaces?.m}px;
-    background-color: ${active
-      ? hasInvertedStyle
-        ? semanticColors?.base?.fillPressedOnDark
-        : semanticColors?.base?.fillPressed
-      : "transparent"};
+    ${innerSdsStyle === "drawer"
+      ? css`
+          background-color: transparent !important;
+        `
+      : css`
+          background-color: ${active
+            ? hasInvertedStyle
+              ? semanticColors?.base?.fillPressedOnDark
+              : semanticColors?.base?.fillPressed
+            : "transparent"};
+        `}
     width: 100%;
 
     &:hover {
-      background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverOnDark
-        : semanticColors?.base.fillHover};
+      ${innerSdsStyle === "drawer"
+        ? css`
+            background: transparent !important;
+          `
+        : css`
+            background: ${hasInvertedStyle
+              ? semanticColors?.base.fillHoverOnDark
+              : semanticColors?.base.fillHover};
+          `}
       box-shadow: none;
 
       ${StyledLabel} {
@@ -65,15 +81,15 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   `;
 };
 
-export const PrimaryNavItem = styled("button", {
+export const PrimaryNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
+})<PrimaryNavItemProps>`
   display: flex;
   align-items: center;
   min-width: fit-content;
 
   ${(props: PrimaryNavItemProps) => {
-    const { hasInvertedStyle, isNarrow, active, sdsStyle } = props;
+    const { hasInvertedStyle, isNarrow, active } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -95,24 +111,20 @@ export const PrimaryNavItem = styled("button", {
       border: none;
       padding: ${spaces?.xxxs}px ${spaces?.m}px;
       border-radius: ${corners?.l}px;
-      background-color: ${sdsStyle === "drawer"
-        ? "transparent"
-        : active
-          ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed
-          : "transparent"};
+      background-color: ${active
+        ? hasInvertedStyle
+          ? semanticColors?.base?.fillPressedOnDark
+          : semanticColors?.base?.fillPressed
+        : "transparent"};
 
       svg {
         color: ${active ? ChevronOpenColor : ChevronDefaultColor};
       }
 
       &:hover {
-        background: ${sdsStyle === "drawer"
-          ? "transparent"
-          : hasInvertedStyle
-            ? semanticColors?.base.fillHoverOnDark
-            : semanticColors?.base.fillHover} !important;
+        background: ${hasInvertedStyle
+          ? semanticColors?.base.fillHoverOnDark
+          : semanticColors?.base.fillHover} !important;
         box-shadow: none;
 
         ${StyledLabel} {

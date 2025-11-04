@@ -351,7 +351,7 @@
             "darkValue": "{sds.color.primitive.gray.75.darkValue}",
             "value": "{sds.color.primitive.gray.50.value}"
           },
-          "background-primary-on-dark": {
+          "background-primary-dark": {
             "darkValue": "{sds.color.primitive.gray.75.darkValue}",
             "value": "{sds.color.primitive.gray.900.value}"
           },

@@ -179,11 +179,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           active={isDrawerOpen}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
+          sdsStyle="minimal"
           onClick={(e) => {
             onChange(key);
             parentOnClick?.(e);
           }}
-          sdsStyle={sdsStyle}
+          innerSdsStyle={sdsStyle}
         >
           <StyledLabel
             itemType={item.itemType}
@@ -234,7 +235,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           }}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
-          sdsStyle={sdsStyle}
+          sdsStyle="minimal"
+          innerSdsStyle={sdsStyle}
         >
           <StyledLabel
             itemType={item.itemType}
@@ -376,13 +378,14 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         key={key}
         {...rest}
         active={isActive}
-        sdsStyle={sdsStyle}
+        sdsStyle="minimal"
         onClick={(e) => {
           onChange(key);
           item.onClick?.(e);
         }}
         hasInvertedStyle={hasInvertedStyle}
         isNarrow={isNarrow}
+        innerSdsStyle={sdsStyle}
       >
         <StyledLabel
           active={isActive}

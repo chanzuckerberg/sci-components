@@ -39,6 +39,10 @@
         "type": "\"left\" | \"right\"",
         "isRequired": false
       },
+      "sdsStyle": {
+        "type": "\"dropdown\" | \"drawer\"",
+        "isRequired": false
+      },
       "scrollElevation": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
