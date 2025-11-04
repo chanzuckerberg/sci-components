@@ -67,9 +67,9 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   onChange(value: T): void;
   value: T;
   sdsStyle?: "dropdown" | "drawer";
-  expandedAccordion?: string | null;
-  setExpandedAccordion?: (value: string | null) => void;
-  accordionRefs?: React.MutableRefObject<Map<string, HTMLDivElement>>;
+  expandedAccordion: string | null;
+  setExpandedAccordion: (value: string | null) => void;
+  accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
 }
 
@@ -81,9 +81,9 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   onChange,
   value,
   sdsStyle = "dropdown",
-  expandedAccordion: expandedAccordionProp,
-  setExpandedAccordion: setExpandedAccordionProp,
-  accordionRefs: accordionRefsProp,
+  expandedAccordion,
+  setExpandedAccordion,
+  accordionRefs,
   scrollToAccordion,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
@@ -95,17 +95,6 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [contentKey, setContentKey] = useState<T | null>(null);
   const [isContentFading, setIsContentFading] = useState(false);
-
-  // Use props if provided, otherwise use local state (for backward compatibility)
-  const [localExpandedAccordion, setLocalExpandedAccordion] = useState<
-    string | null
-  >(null);
-  const localAccordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-
-  const expandedAccordion = expandedAccordionProp ?? localExpandedAccordion;
-  const setExpandedAccordion =
-    setExpandedAccordionProp ?? setLocalExpandedAccordion;
-  const accordionRefs = accordionRefsProp ?? localAccordionRefs;
 
   const open = Boolean(anchorEl);
   const drawerOpen = activeDrawerKey !== null;

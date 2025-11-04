@@ -51,9 +51,9 @@ export interface NavigationHeaderSecondaryNavProps {
   hasInvertedStyle?: boolean;
   isNarrow?: boolean;
   sdsStyle?: "dropdown" | "drawer";
-  expandedAccordion?: string | null;
-  setExpandedAccordion?: (value: string | null) => void;
-  accordionRefs?: React.MutableRefObject<Map<string, HTMLDivElement>>;
+  expandedAccordion: string | null;
+  setExpandedAccordion: (value: string | null) => void;
+  accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
 }
 
@@ -63,9 +63,9 @@ export default function NavigationHeaderSecondaryNav({
   hasInvertedStyle,
   isNarrow,
   sdsStyle = "dropdown",
-  expandedAccordion: expandedAccordionProp,
-  setExpandedAccordion: setExpandedAccordionProp,
-  accordionRefs: accordionRefsProp,
+  expandedAccordion,
+  setExpandedAccordion,
+  accordionRefs,
   scrollToAccordion,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
@@ -77,17 +77,6 @@ export default function NavigationHeaderSecondaryNav({
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [contentKey, setContentKey] = useState<string | null>(null);
   const [isContentFading, setIsContentFading] = useState(false);
-
-  // Use props if provided, otherwise use local state (for backward compatibility)
-  const [localExpandedAccordion, setLocalExpandedAccordion] = useState<
-    string | null
-  >(null);
-  const localAccordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
-
-  const expandedAccordion = expandedAccordionProp ?? localExpandedAccordion;
-  const setExpandedAccordion =
-    setExpandedAccordionProp ?? setLocalExpandedAccordion;
-  const accordionRefs = accordionRefsProp ?? localAccordionRefs;
 
   const open = Boolean(anchorEl);
   const drawerOpen = activeDrawerKey !== null;
