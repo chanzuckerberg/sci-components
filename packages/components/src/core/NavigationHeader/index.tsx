@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import React, {
   forwardRef,
   useCallback,
@@ -72,6 +73,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       title,
       drawerOpen: controlledDrawerOpen,
       setDrawerOpen: onDrawerOpenChange,
+      isSticky = true,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
@@ -448,6 +450,9 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const secondaryNav = renderSecondaryNav();
     const buttonsNode = renderButtonsNode();
 
+    const position =
+      sdsStyle === "drawer" ? "sticky" : isSticky ? "sticky" : "relative";
+
     return (
       <>
         <ElevationScroll {...props} shouldElevate={scrollElevation}>
@@ -457,7 +462,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             ref={mergeRefs([ref, navRef])}
             aria-label="Main navigation"
             tabIndex={0}
-            position="sticky"
+            position={position}
             {...rest}
           >
             {headerContent}
@@ -480,8 +485,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
                 ref={mergeRefs([ref, navRef])}
                 aria-label="Main navigation"
                 tabIndex={0}
+                position={position}
                 {...rest}
-                position="sticky"
               >
                 {headerContent}
               </StyledAppBar>

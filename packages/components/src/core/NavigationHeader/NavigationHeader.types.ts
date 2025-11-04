@@ -7,7 +7,7 @@ import { NavigationHeaderPrimaryNavItem } from "./components/NavigationHeaderPri
 import { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
 
 export interface NavigationHeaderProps<T extends string = string>
-  extends AppBarProps {
+  extends Omit<AppBarProps, "position"> {
   activePrimaryNavKey?: string;
   buttons?: Partial<SdsProps & ButtonProps>[] | React.ReactNode[];
   backgroundAppearance?: "matchBackground" | "dark";
@@ -29,6 +29,7 @@ export interface NavigationHeaderProps<T extends string = string>
   setDrawerOpen?: (open: boolean) => void;
   menuProps?: Partial<MenuProps>;
   sdsStyle?: "dropdown" | "drawer";
+  isSticky?: boolean;
 }
 
 export type IconButtonProps = SdsIconButtonProps & { children?: string };

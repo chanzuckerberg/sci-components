@@ -74,13 +74,13 @@ export default {
         },
       },
     },
-    position: {
-      control: { type: "select" },
-      description: "Position of the navigation header.",
-      options: ["absolute", "fixed", "relative", "static", "sticky"],
+    isSticky: {
+      control: { type: "boolean" },
+      description:
+        "When true, the navigation header sticks to the top of the page on scroll. When false, it scrolls up with the rest of the page.",
       table: {
         defaultValue: {
-          summary: "sticky",
+          summary: "true",
         },
       },
     },
@@ -215,7 +215,7 @@ export const Default = {
     backgroundAppearance: "matchBackground",
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
-    position: "sticky",
+    isSticky: true,
     primaryNavItems: [
       {
         component: "a",

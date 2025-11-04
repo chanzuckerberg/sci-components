@@ -25,11 +25,11 @@
         "type": "string",
         "isRequired": false
       },
-      "position": {
-        "type": "\"fixed\" | \"absolute\" | \"sticky\" | \"static\" | \"relative\"",
+      "isSticky": {
+        "type": "boolean",
         "isRequired": false,
-        "description": "The positioning type. The behavior of the different options is described\n[in the MDN web docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning).\nNote: `sticky` is not universally supported and will fall back to `static` when unavailable.",
-        "defaultValue": "fixed"
+        "description": "When true, the navigation header sticks to the top of the page on scroll. When false, it scrolls up with the rest of the page.",
+        "defaultValue": "true"
       },
       "primaryNavItems": {
         "type": "NavigationHeaderPrimaryNavItem<string>[]",
