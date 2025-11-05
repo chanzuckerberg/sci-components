@@ -922,19 +922,12 @@ export const StyledContentWrapper = styled("div")<
     );
     const headerMargin = spaces?.m || 12;
 
-    if (!needsHeaderPadding)
-      return css`
-        & > *:last-child {
-          margin-bottom: 0;
-        }
-      `;
-
     return css`
-      padding-top: ${headerHeight + headerMargin}px;
-
       & > *:last-child {
         margin-bottom: 0;
       }
+
+      padding-top: ${needsHeaderPadding ? headerHeight + headerMargin : 0}px;
     `;
   }}
 `;
