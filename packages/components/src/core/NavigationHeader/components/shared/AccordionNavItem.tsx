@@ -246,6 +246,7 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
                           }
                         }}
                         component={componentProp}
+                        hasInvertedStyle={hasInvertedStyle}
                         href={href}
                         target={target}
                         rel={rel}
