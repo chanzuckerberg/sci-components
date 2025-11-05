@@ -1,7 +1,4 @@
 import Icon from "src/core/Icon";
-import styled from "@emotion/styled";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
-import { css } from "@emotion/react";
 import {
   StyledHoverDrawerColumnHeader,
   StyledHoverDrawerItem,
@@ -13,6 +10,7 @@ import {
   EmptyIcon,
   StyledHoverDrawerActions,
   StyledButton,
+  StyledContentWrapper,
 } from "../../style";
 import {
   DropdownItem,
@@ -30,26 +28,6 @@ interface DrawerContentProps {
   showHeader?: boolean;
   isLastColumn?: boolean;
 }
-
-// Wrapper to add top padding when header is not shown
-const StyledContentWrapper = styled("div")<
-  CommonThemeProps & { needsHeaderPadding: boolean }
->`
-  ${(props) => {
-    const { needsHeaderPadding } = props;
-    if (!needsHeaderPadding) return css``;
-
-    const spaces = getSpaces(props);
-    // Calculate padding to match header height + margin
-    // fontHeaderM has line-height of 22px, plus margin-bottom of m (12px)
-    const headerHeight = 22; // Line height from fontHeaderM
-    const headerMargin = spaces?.m || 12;
-
-    return css`
-      padding-top: ${headerHeight + headerMargin}px;
-    `;
-  }}
-`;
 
 /**
  * Shared drawer content component used by both NavigationHeaderPrimaryNav and NavigationHeaderSecondaryNav
@@ -170,6 +148,7 @@ export default function DrawerContent({
                     onItemClick();
                   }
                 }}
+                hasInvertedStyle={hasInvertedStyle}
                 component={componentProp}
                 href={href}
                 target={target}

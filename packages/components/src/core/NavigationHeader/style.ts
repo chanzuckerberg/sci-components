@@ -17,6 +17,9 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
+  getColors,
+  getMode,
+  getTypography,
 } from "../styles";
 import Tag from "../Tag";
 import InputSearch from "../InputSearch";
@@ -757,11 +760,11 @@ export const StyledAccordion = styled(Accordion, {
         .MuiButtonBase-root {
           ${sdsStyle === "drawer"
             ? css`
-                padding: ${spaces?.s}px 0;
+                padding: ${spaces?.s}px 0 !important;
               `
             : css`
                 padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px
-                  ${spaces?.xl}px;
+                  ${spaces?.xl}px !important;
               `}
 
           width: 100%;
@@ -900,6 +903,40 @@ export const StyledHoverDrawerColumn = styled("div", {
   }}
 `;
 
+export const StyledContentWrapper = styled("div")<
+  CommonThemeProps & { needsHeaderPadding: boolean }
+>`
+  ${(props) => {
+    const { needsHeaderPadding } = props;
+
+    const spaces = getSpaces(props);
+    const typography = getTypography(props);
+
+    // Calculate padding to match header height + margin
+    // fontHeaderM has line-height of 22px, plus margin-bottom of m (12px)
+    const headerHeight = parseInt(
+      (typography?.wideStyles?.header?.semibold?.m?.lineHeight as string) ||
+        "22px"
+    );
+    const headerMargin = spaces?.m || 12;
+
+    if (!needsHeaderPadding)
+      return css`
+        & > *:last-child {
+          margin-bottom: 0;
+        }
+      `;
+
+    return css`
+      padding-top: ${headerHeight + headerMargin}px;
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
+    `;
+  }}
+`;
+
 export const StyledHoverDrawerColumnHeader = styled("div", {
   shouldForwardProp: (prop: string) =>
     ![...doNotForwardProps, "sdsStyle"].includes(prop),
@@ -950,10 +987,6 @@ export const StyledHoverDrawerItem = styled(
       min-height: auto;
       width: 100%;
       white-space: wrap;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
 
       &:hover {
         border: none;
@@ -1108,19 +1141,31 @@ export const StyledHoverDrawerActions = styled("div", {
       padding-left: ${isNarrow
         ? `calc(${spaces?.l}px + ${spaces?.m}px)`
         : `calc(${spaces?.xxl}px + ${spaces?.xs}px)`};
+      flex-wrap: wrap;
     `;
   }}
 `;
 
-export const StyledButton = styled(Button)`
-  ${(props: CommonThemeProps & SdsButtonProps) => {
+export const StyledButton = styled(Button)<ExtraButtonProps>`
+  ${(props) => {
+    const { hasInvertedStyle } = props;
+
+    const colors = getColors(props);
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
+    const mode = getMode(props);
 
     return css`
-      background-color: ${semanticColors?.base?.backgroundSecondaryInverse};
+      background-color: ${hasInvertedStyle
+        ? colors?.gray["700"]
+        : mode === "dark"
+          ? colors?.gray["100"]
+          : colors?.gray["200"]};
       width: fit-content !important;
       padding: ${spaces?.s}px ${spaces?.m}px !important;
+      color: ${hasInvertedStyle
+        ? semanticColors?.base?.textPrimaryOnDark
+        : semanticColors?.base?.textPrimary};
     `;
   }}
 `;

@@ -318,7 +318,7 @@ export const DrawerStyle = {
       disableScrollLock: true,
     },
     scrollElevation: true,
-    showSearch: true,
+    showSearch: false,
     title: "My App",
     sdsStyle: "drawer",
     initialActivePrimaryNavKey: "home",

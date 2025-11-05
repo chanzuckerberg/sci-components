@@ -16,7 +16,7 @@ export const DrawerStyleDemo = (
     title,
     theme,
     backgroundAppearance,
-    initialActivePrimaryNavKey = "products",
+    initialActivePrimaryNavKey = "home",
     ...rest
   } = props;
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState(

@@ -50,7 +50,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     ref: React.Ref<HTMLDivElement>
   ) => {
     const {
-      activePrimaryNavKey = "",
+      activePrimaryNavKey: controlledActivePrimaryNavKey,
       buttons,
       sdsStyle = "dropdown",
       menuProps = {
@@ -67,7 +67,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       primaryNavPosition = "left",
       searchProps,
       secondaryNavItems,
-      setActivePrimaryNavKey,
+      setActivePrimaryNavKey: onActivePrimaryNavKeyChange,
       showSearch = true,
       tag,
       tagColor,
@@ -81,6 +81,19 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const navRef = useRef<HTMLDivElement>(null);
     const topSlotRef = useRef<HTMLDivElement>(null);
     const [topOffset, setTopOffset] = useState(0);
+
+    // Use controlled or uncontrolled active key state
+    const [internalActivePrimaryNavKey, setInternalActivePrimaryNavKey] =
+      useState("");
+    const activePrimaryNavKey =
+      controlledActivePrimaryNavKey ?? internalActivePrimaryNavKey;
+    const setActivePrimaryNavKey = (key: string) => {
+      if (onActivePrimaryNavKeyChange) {
+        onActivePrimaryNavKeyChange(key);
+      } else {
+        setInternalActivePrimaryNavKey(key);
+      }
+    };
 
     const theme = useTheme();
     const mode = getMode({ theme });
@@ -293,7 +306,6 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
     const renderPrimaryNav = () => {
       return (
-        setActivePrimaryNavKey &&
         primaryNavItems &&
         primaryNavItems.length > 0 && (
           <NavigationHeaderPrimaryNav
