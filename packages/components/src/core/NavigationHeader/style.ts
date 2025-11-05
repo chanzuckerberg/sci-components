@@ -545,10 +545,11 @@ export const StyledButtonSection = styled("section", {
 
 export const StyledDrawer = styled(Drawer, {
   shouldForwardProp: (prop: string) =>
-    ![...doNotForwardProps, "sdsStyle"].includes(prop),
-})`
-  ${(props: ExtraHeaderProps) => {
+    ![...doNotForwardProps, "sdsStyle", "topOffset"].includes(prop),
+})<ExtraHeaderProps & { topOffset?: number }>`
+  ${(props: ExtraHeaderProps & { topOffset?: number }) => {
     const colors = getSemanticColors(props);
+    const { topOffset = 0 } = props;
 
     return `
       .MuiDrawer-paper {
@@ -558,7 +559,8 @@ export const StyledDrawer = styled(Drawer, {
         width: 100%;
         display: flex;
         flex-direction: column;
-        min-height: 100dvh;
+        top: ${topOffset}px;
+        height: calc(100% - ${topOffset}px);
         justify-content: space-between;
       }
     `;
@@ -568,7 +570,7 @@ export const StyledDrawer = styled(Drawer, {
 export const StyledDrawerContent = styled("div", {
   shouldForwardProp: (prop: string) =>
     ![...doNotForwardProps, "sdsStyle"].includes(prop),
-})`
+})<ExtraHeaderProps>`
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
 
@@ -760,7 +762,7 @@ export const StyledAccordion = styled(Accordion, {
         .MuiButtonBase-root {
           ${sdsStyle === "drawer"
             ? css`
-                padding: ${spaces?.s}px 0 !important;
+                padding: ${spaces?.s}px 0;
               `
             : css`
                 padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px

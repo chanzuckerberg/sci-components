@@ -576,6 +576,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             hasInvertedStyle={hasInvertedStyle}
+            topOffset={topOffset}
             role="dialog"
             aria-label="Navigation menu"
           >
@@ -589,8 +590,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
                 ref={mergeRefs([ref, navRef])}
                 aria-label="Main navigation"
                 tabIndex={0}
-                position={position}
-                style={{ top: topOffset }}
+                position="sticky"
                 {...rest}
               >
                 {headerContent}
