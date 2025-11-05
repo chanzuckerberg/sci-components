@@ -26,7 +26,7 @@ export interface NavigationFooterProps {
   navLinks?: NavigationFooterNavItem[];
   tag?: string;
   tagColor?: TagProps["tagColor"];
-  title: string;
+  title?: string;
 }
 
 export interface NavItemProps {

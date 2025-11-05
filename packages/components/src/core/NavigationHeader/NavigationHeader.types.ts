@@ -24,7 +24,7 @@ export interface NavigationHeaderProps<T extends string = string>
   showSearch?: boolean;
   tag?: string;
   tagColor?: SdsTagColorType;
-  title: string;
+  title?: string;
   drawerOpen?: boolean;
   setDrawerOpen?: (open: boolean) => void;
   menuProps?: Partial<MenuProps>;

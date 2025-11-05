@@ -71,7 +71,7 @@
       },
       "title": {
         "type": "string",
-        "isRequired": true
+        "isRequired": false
       }
     }
   }
