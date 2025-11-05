@@ -9,7 +9,7 @@ export default {
       control: {
         type: "select",
       },
-      options: ["blue", "gray", "green", "purple", "red", "yellow"],
+      options: ["blue", "gray", "green", "purple", "red", "yellow", "indigo"],
     },
     sdsIcon: {
       control: {
@@ -44,7 +44,7 @@ export default {
 
 export const Default = {
   args: {
-    color: "blue",
+    color: "indigo",
     sdsIcon: "CheckCircle",
     sdsSize: "xl",
   },
@@ -54,7 +54,7 @@ export const Default = {
 
 export const IconBank = {
   args: {
-    color: "blue",
+    color: "indigo",
   },
   parameters: {
     controls: {
@@ -79,7 +79,7 @@ export const Test = {
     <RawIcon
       sdsIcon="CheckCircle"
       sdsSize="l"
-      color="blue"
+      color="indigo"
       data-testid="icon"
       {...args}
     />

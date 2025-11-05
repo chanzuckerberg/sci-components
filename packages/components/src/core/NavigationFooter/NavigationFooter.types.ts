@@ -16,7 +16,7 @@ export interface FooterImage {
 }
 
 export interface NavigationFooterProps {
-  hasInvertedStyle?: boolean;
+  backgroundAppearance?: "matchBackground" | "dark";
   images?: FooterImage[];
   logo?: ReactNode;
   logoUrl?: string;

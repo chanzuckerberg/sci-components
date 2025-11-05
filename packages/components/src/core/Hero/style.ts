@@ -65,7 +65,7 @@ export const StyledHeroContainer = styled("section", {
     const breakpoints = getBreakpoints(props);
 
     return css`
-      ${getResponsivePadding(props)};
+      ${getResponsivePadding(props)}
       display: flex;
       position: relative;
       overflow: hidden;

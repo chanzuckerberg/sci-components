@@ -1,12 +1,16 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+/* eslint-disable sonarjs/no-duplicate-string */
+import { Args, Meta, StoryContext } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
+  RESEARCH,
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
   NAVIGATION_HEADER_LOGO_OPTIONS,
-  SECTIONED_NAV_ITEMS,
+  PRODUCTS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
+import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
+import { DrawerStyleDemo } from "./stories/drawerStyle";
 
 export default {
   argTypes: {
@@ -28,12 +32,13 @@ export default {
         },
       },
     },
-    hasInvertedStyle: {
-      control: { type: "boolean" },
-      description: "Invert the colors of the navigation header.",
+    backgroundAppearance: {
+      control: { type: "inline-radio" },
+      description: "The background appearance of the navigation header.",
+      options: ["matchBackground", "dark"],
       table: {
         defaultValue: {
-          summary: "false",
+          summary: "matchBackground",
         },
       },
     },
@@ -71,13 +76,23 @@ export default {
         },
       },
     },
-    position: {
-      control: { type: "select" },
-      description: "Position of the navigation header.",
-      options: ["absolute", "fixed", "relative", "static", "sticky"],
+    isSticky: {
+      control: { type: "boolean" },
+      description:
+        "When true, the navigation header sticks to the top of the page on scroll. When false, it scrolls up with the rest of the page.",
       table: {
         defaultValue: {
-          summary: "sticky",
+          summary: "true",
+        },
+      },
+    },
+    topComponentSlot: {
+      control: { type: "object" },
+      description:
+        "A React node to render above the navigation header (e.g., a banner). The navigation will automatically calculate the offset based on this component's height and position itself below it. When the component is dismissed or changes size, the navigation adjusts automatically.",
+      table: {
+        defaultValue: {
+          summary: "-",
         },
       },
     },
@@ -98,6 +113,16 @@ export default {
       table: {
         defaultValue: {
           summary: "left",
+        },
+      },
+    },
+    sdsStyle: {
+      control: { type: "inline-radio" },
+      description: "Style of the navigation header.",
+      options: ["dropdown", "drawer"],
+      table: {
+        defaultValue: {
+          summary: "dropdown",
         },
       },
     },
@@ -181,7 +206,7 @@ export default {
   title: "Components/NavigationHeader",
 } as Meta;
 
-export const Default = {
+export const DropdownStyle = {
   args: {
     buttons: [
       { children: "Label", sdsType: "primary" },
@@ -199,10 +224,10 @@ export const Default = {
       disablePortal: true,
       disableScrollLock: true,
     },
-    hasInvertedStyle: false,
+    backgroundAppearance: "matchBackground",
     logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
     logoUrl: "https://chanzuckerberg.com",
-    position: "sticky",
+    isSticky: true,
     primaryNavItems: [
       {
         component: "a",
@@ -256,6 +281,8 @@ export const Default = {
         itemType: "text",
         label: "Secondary",
         onClick: () => alert("clicked on secondary"),
+        tag: "2",
+        tagColor: "notice",
       },
     ],
     showSearch: true,
@@ -273,11 +300,47 @@ export const Default = {
 
 // Dropdown with Sections Demo
 
-export const DropdownWithSections = {
+export const DrawerStyle = {
   args: {
     buttons: [
       {
-        children: "Sing in",
+        children: "Sign in",
+        sdsType: "secondary",
+      },
+      {
+        children: "My Profile",
+        icon: "Person",
+        onClick: () => alert("clicked on my profile"),
+      },
+    ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
+    scrollElevation: true,
+    showSearch: false,
+    title: "My App",
+    sdsStyle: "drawer",
+    initialActivePrimaryNavKey: "home",
+  },
+  parameters: {
+    controls: {
+      expanded: true,
+    },
+    layout: "fullscreen",
+  },
+  render: (args: Args, context: StoryContext) => {
+    return <DrawerStyleDemo {...args} theme={context.globals.theme} />;
+  },
+};
+
+// With Top Component Slot (Banner Example)
+
+export const WithTopComponent = {
+  args: {
+    buttons: [
+      {
+        children: "Sign in",
         sdsType: "secondary",
       },
       {
@@ -299,36 +362,51 @@ export const DropdownWithSections = {
       },
       {
         itemType: "dropdown",
-        items: SECTIONED_NAV_ITEMS,
+        items: PRODUCTS,
         key: "products",
         label: "Products",
         onClick: () => console.log("Products dropdown clicked"),
-      },
-      {
-        itemType: "text",
-        key: "about",
-        label: "About",
-        onClick: () => console.log("About clicked"),
+        defaultUrl: "https://www.google.com",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        sectionProps: {
+          Repositories: {
+            actions: [
+              {
+                label: "Browse All",
+                href: "/repositories",
+              },
+            ],
+          },
+        },
       },
     ],
     scrollElevation: true,
     secondaryNavItems: [
       {
         itemType: "dropdown",
-        items: SECTIONED_NAV_ITEMS,
-        key: "products",
-        label: "New Products",
-        onClick: () => console.log("New Products dropdown clicked"),
+        items: RESEARCH,
+        key: "research",
+        label: "Research",
+        onClick: () => console.log("Research dropdown clicked"),
+        defaultUrl: "/research",
       },
     ],
-    showSearch: true,
+    showSearch: false,
     title: "My App",
+    sdsStyle: "drawer",
   },
   parameters: {
+    axe: {
+      disabledRules: ["landmark-no-duplicate-banner"],
+    },
     controls: {
       expanded: true,
     },
     layout: "fullscreen",
+  },
+  render: (args: Args, context: StoryContext) => {
+    return <WithTopComponentSlotDemo {...args} theme={context.globals.theme} />;
   },
 };
 

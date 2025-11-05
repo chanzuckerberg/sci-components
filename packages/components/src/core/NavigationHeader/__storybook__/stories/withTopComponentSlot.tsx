@@ -1,36 +1,14 @@
-import { Box, Container, useTheme } from "@mui/material";
 import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
-import { getSemanticColors } from "src/core/styles";
 import RawNavigationHeader, {
   NavigationHeaderPrimaryNavItem,
   NavigationHeaderSecondaryNavItem,
 } from "src/core/NavigationHeader";
+import Banner from "src/core/Banner";
+import { Box, Container } from "@mui/material";
 import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 
-export const CustomNavigationLogo = (): JSX.Element => {
-  const theme = useTheme();
-  const colors = getSemanticColors({ theme });
-
-  return (
-    <div
-      style={{
-        alignItems: "center",
-        border: `1px dashed ${colors?.base.borderPrimary}`,
-        display: "flex",
-        fontSize: 10,
-        fontWeight: "normal",
-        height: 24,
-        justifyContent: "center",
-        width: 50,
-      }}
-    >
-      Logo slot
-    </div>
-  );
-};
-
-export const NavigationHeader = (
+export const WithTopComponentSlotDemo = (
   props: Args & { theme: "light" | "dark" }
 ): JSX.Element => {
   const {
@@ -81,6 +59,11 @@ export const NavigationHeader = (
         title={title}
         activePrimaryNavKey={activePrimaryNavKey}
         setActivePrimaryNavKey={setActivePrimaryNavKey}
+        topComponentSlot={
+          <Banner sdsType="primary">
+            This is a banner to test the top offset - Try closing me!
+          </Banner>
+        }
       />
       <Container>
         <Box>

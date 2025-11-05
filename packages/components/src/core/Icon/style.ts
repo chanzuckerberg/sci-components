@@ -22,6 +22,7 @@ export type SdsIconColorType =
   | "gray"
   | "green"
   | "purple"
+  | "indigo"
   | "red"
   | "yellow";
 
@@ -51,7 +52,7 @@ export const StyledSvgIcon = styled(SvgIcon, {
     const mode = getMode(props);
 
     const {
-      iconColor = "blue",
+      iconColor = "indigo",
       shade = mode === "dark" ? 600 : 500,
       sdsSize,
     } = props;

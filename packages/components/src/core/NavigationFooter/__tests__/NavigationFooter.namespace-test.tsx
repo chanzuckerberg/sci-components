@@ -6,7 +6,7 @@ const NavigationFooterNameSpaceTest = (props: NavigationFooterProps) => {
   return (
     <NavigationFooter
       title="Title"
-      hasInvertedStyle={false}
+      backgroundAppearance="matchBackground"
       logo={<div>Logo</div>}
       logoUrl={LINK_URL}
       navItems={[

@@ -9,8 +9,8 @@
         "type": "Partial<MenuProps>",
         "isRequired": false
       },
-      "hasInvertedStyle": {
-        "type": "\"false\" | \"true\"",
+      "backgroundAppearance": {
+        "type": "\"matchBackground\" | \"dark\"",
         "isRequired": false
       },
       "logo": {
@@ -25,11 +25,13 @@
         "type": "string",
         "isRequired": false
       },
-      "position": {
-        "type": "\"fixed\" | \"absolute\" | \"sticky\" | \"static\" | \"relative\"",
-        "isRequired": false,
-        "description": "The positioning type. The behavior of the different options is described\n[in the MDN web docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning).\nNote: `sticky` is not universally supported and will fall back to `static` when unavailable.",
-        "defaultValue": "fixed"
+      "isSticky": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "topComponentSlot": {
+        "type": "ReactNode",
+        "isRequired": false
       },
       "primaryNavItems": {
         "type": "NavigationHeaderPrimaryNavItem<string>[]",
@@ -37,6 +39,10 @@
       },
       "primaryNavPosition": {
         "type": "\"left\" | \"right\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"dropdown\" | \"drawer\"",
         "isRequired": false
       },
       "scrollElevation": {

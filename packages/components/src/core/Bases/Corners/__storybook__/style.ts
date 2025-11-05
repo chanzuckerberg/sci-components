@@ -43,7 +43,7 @@ export const StyledCornerBox = styled("div")`
       &::after {
         content: "";
         position: absolute;
-        background-color: ${semanticColors?.base?.backgroundSecondary};
+        background-color: ${semanticColors?.base?.backgroundTertiary};
         width: ${BoxSize - 2 * BorderWidth}px;
         height: ${BoxSize - 2 * BorderWidth}px;
         top: ${BorderWidth}px;
