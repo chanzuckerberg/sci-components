@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.15.1...@czi-sds/components@22.16.0) (2025-11-05)
+
+### Features
+
+- **navigationhedaer:** optional header and footer titles ([#1034](https://github.com/chanzuckerberg/sci-components/issues/1034)) ([b4e736b](https://github.com/chanzuckerberg/sci-components/commit/b4e736bdb496fc6643c72c37af1ed4308ab47929))
+
 ## [22.15.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.15.0...@czi-sds/components@22.15.1) (2025-11-05)
 
 ### Bug Fixes
