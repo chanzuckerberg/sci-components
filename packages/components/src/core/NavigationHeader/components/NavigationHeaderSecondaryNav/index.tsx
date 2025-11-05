@@ -99,7 +99,7 @@ export default function NavigationHeaderSecondaryNav({
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveDrawerKey(null);
       setContentKey(null);
-    }, 300);
+    }, 200);
   }
 
   function onDrawerOpen(key: string) {
@@ -114,7 +114,7 @@ export default function NavigationHeaderSecondaryNav({
         setActiveDrawerKey(key);
         setContentKey(key);
         setIsContentFading(false);
-      }, 150); // Half of the transition duration for smooth effect
+      }, 150);
     } else {
       // First time opening or reopening same drawer
       setActiveDrawerKey(key);
